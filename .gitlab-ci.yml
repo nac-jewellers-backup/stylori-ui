@@ -1,0 +1,47 @@
+image: node:latest
+
+stages:
+  - install
+  - build
+  - host
+  - report
+
+cache:
+  paths:
+    - node_modules/
+
+install_dependencies:
+  stage: install
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
+
+build_application:
+  stage: build
+  script:
+    - npm run public
+  artifacts:
+    paths:
+      - public/
+
+host_app:
+  stage: host
+  before_script:
+    - npm i -g pm2
+  script:
+    - npm run local
+
+lighthouse_report:
+  stage: report
+  variables:
+    LIGHTHOUSE_TEST_URL: http://localhost:3000
+  before_script:
+    - npm i -g lighthouse
+  script: 
+    - lighthouse --chrome-flags="--headless --no-sandbox" $LIGHTHOUSE_TEST_URL --output html --output-path ./report.html
+  artifacts:
+    paths:
+          - ./report.html
+    expire_in: 1 week
