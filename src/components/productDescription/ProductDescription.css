@@ -1,0 +1,20 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    grid-gap: 10px;     
+  }
+  .grid-container1 {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    grid-gap: 10px;  
+ 
+  }
+  .grid-item1{    
+    justify-self: center;
+  }
+  .grid-item2{    
+    font-size: 18px !important;
+justify-self: center;
+color: #313f5c;
+    
+  } 
