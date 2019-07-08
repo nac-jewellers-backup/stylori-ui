@@ -3,7 +3,6 @@ image: markhobson/node-chrome
 stages:
   - install
   - build
-  - host
   - report
   - test
 
@@ -28,19 +27,14 @@ build_application:
       - public/
   allow_failure: true
 
-host_app:
-  stage: host
-  before_script:
-    - npm i -g pm2
-  script:
-    - npm run local
-
 lighthouse_report:
-  stage: report
+  stage: host_report
   variables:
     LIGHTHOUSE_TEST_URL: http://localhost:3000
   before_script:
+    - npm i -g pm2
     - npm i -g lighthouse
+    - npm run local
   script: 
     - lighthouse --chrome-flags="--headless --no-sandbox" $LIGHTHOUSE_TEST_URL --output html --output-path ./report.html
   artifacts:
