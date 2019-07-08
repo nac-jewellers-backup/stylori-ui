@@ -28,7 +28,7 @@ build_application:
   allow_failure: true
 
 lighthouse_report:
-  stage: host_report
+  stage: report
   variables:
     LIGHTHOUSE_TEST_URL: http://localhost:3000
   before_script:
