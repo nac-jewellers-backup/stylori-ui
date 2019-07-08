@@ -4,7 +4,11 @@ stages:
   - install
   - build
   - host
+<<<<<<< HEAD
   - report
+=======
+  - test
+>>>>>>> abf444ff6ad811f5010ed1b1b956bef278efa87a
 
 cache:
   paths:
