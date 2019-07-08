@@ -26,6 +26,7 @@ build_application:
   artifacts:
     paths:
       - public/
+  allow_failure: true
 
 host_app:
   stage: host
