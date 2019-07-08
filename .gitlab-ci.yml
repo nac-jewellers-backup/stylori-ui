@@ -40,11 +40,12 @@ lighthouse_report:
   variables:
     LIGHTHOUSE_TEST_URL: http://localhost:3000
   before_script:
-    - apt-get install chromium
+    - apt-get update
+    - apt-get install -y chromium
     - npm i -g lighthouse
   script: 
     - lighthouse --chrome-flags="--headless --no-sandbox" $LIGHTHOUSE_TEST_URL --output html --output-path ./report.html
   artifacts:
     paths:
-          - ./report.html
+      - ./report.html
     expire_in: 1 week
