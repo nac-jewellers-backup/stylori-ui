@@ -1,4 +1,4 @@
-image: node:latest
+image: markhobson/node-chrome
 
 stages:
   - install
@@ -40,8 +40,6 @@ lighthouse_report:
   variables:
     LIGHTHOUSE_TEST_URL: http://localhost:3000
   before_script:
-    - apt-get update
-    - apt-get install -y chromium
     - npm i -g lighthouse
   script: 
     - lighthouse --chrome-flags="--headless --no-sandbox" $LIGHTHOUSE_TEST_URL --output html --output-path ./report.html
