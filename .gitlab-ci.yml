@@ -5,6 +5,7 @@ stages:
   - build
   - host
   - report
+  - test
 
 cache:
   paths:
