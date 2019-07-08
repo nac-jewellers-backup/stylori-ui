@@ -2,9 +2,9 @@ image: markhobson/node-chrome
 
 stages:
   - install
+  - test
   - build
   - report
-  - test
 
 cache:
   paths:
@@ -17,6 +17,12 @@ install_dependencies:
   artifacts:
     paths:
       - node_modules/
+
+linting_application:
+  stage: test
+  script:
+    - npm run lint
+  allow_failure: true
 
 build_application:
   stage: build
