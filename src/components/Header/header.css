@@ -1,27 +1,42 @@
-  .grid-container {
-    display: grid ;
-    grid-template-columns:  auto auto auto ;
-   
-  }.head-icons{
-    color: #394578 !important;
+.head-icons{
     font-size: 20px !important;
     margin-top: 18px !important;
+  }.head-icons i{
+    margin-left: 24px;
+    font-size: 20px;
+    background-size: 219px;
+    background-position: -87px 4px;
+    cursor: pointer;
+    color: #394578;
+  }.head-icons i:hover {
+    font-size: 17px;
+    -webkit-animation: 1s blink step-end infinite;
+    -moz-animation: 1s blink step-end infinite;
+    -ms-animation: 1s blink step-end infinite;
+    -o-animation: 1s blink step-end infinite;
+    animation: 1s blink step-end infinite;
+  }
+  .header-bottom{
+    background:linear-gradient(to left,#fff,#ed1165,#fff);
+    height: 1px;
+    border: 1px solid #f1f1f1;
   }
   .header-appbar{
     background-color: #fff !important;
-    height: 18%;
-    width: 100% !important;
     text-align: center !important;
-    border-bottom:1px solid #ed1165;
-  }.item1{
-    justify-self: center !important;
-  } .grid-container1 {
-    display: grid ;
-    grid-template-columns:  auto auto auto auto auto auto auto auto auto ;
-    bottom: 12px;
-    position: absolute;
+    top: 0;
+    padding-top: 10px;
     width: 100%;
-  }.list{
+    line-height: 1.42857143;
+    font-size: 12px;
+    font-family: sans-serif;
+    box-shadow: none !important;
+
+  }.header-navbar-list{
+    padding: 22px;
+    height: 55px!important;
+
+  }.header-navbar-list a{
     white-space: nowrap;
     width: 100%;
     font-size: 14px;
@@ -29,5 +44,19 @@
     color: #394578;
     text-transform: capitalize;
     font-size: 15px !important;
-    margin-left: 12px;
+    text-decoration: none !important;
+    margin-left: 3%;
+  }.img{
+    height: 40px !important;
+    width: 100%;
+  }.search{
+    border: 1px solid #ccc;
+    width: 165px!important;
+    height: 26px!important;
+    color: #394578!important;
+    padding: 2px 5px!important;
+    font-family: inherit !important;
+  }.MuiBadge-colorSecondary{
+    background-color:  #F699A3 !important;
+    top: -6px !important;
   }
