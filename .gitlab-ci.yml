@@ -1,11 +1,10 @@
-image: node:latest
+image: markhobson/node-chrome
 
 stages:
   - install
-  - build
-  - host
-  - report
   - test
+  - build
+  - report
 
 cache:
   paths:
@@ -19,6 +18,12 @@ install_dependencies:
     paths:
       - node_modules/
 
+linting_application:
+  stage: test
+  script:
+    - npm run lint
+  allow_failure: true
+
 build_application:
   stage: build
   script:
@@ -26,23 +31,19 @@ build_application:
   artifacts:
     paths:
       - public/
-
-host_app:
-  stage: host
-  before_script:
-    - npm i -g pm2
-  script:
-    - npm run local
+  allow_failure: true
 
 lighthouse_report:
   stage: report
   variables:
-    LIGHTHOUSE_TEST_URL: http://localhost:3000
+    LIGHTHOUSE_TEST_URL: http://localhost:8080
   before_script:
+    - npm i -g pm2
     - npm i -g lighthouse
+    - npm run local
   script: 
     - lighthouse --chrome-flags="--headless --no-sandbox" $LIGHTHOUSE_TEST_URL --output html --output-path ./report.html
   artifacts:
     paths:
-          - ./report.html
+      - ./report.html
     expire_in: 1 week
