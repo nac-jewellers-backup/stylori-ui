@@ -5,19 +5,22 @@
   "dependencies": {
     "@material-ui/core": "^4.2.0",
     "@material-ui/icons": "^4.2.1",
+    "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-pose": "^4.0.8",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "react-slideshow-image": "^1.2.0"
   },
+  "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "public": "npm run build && mv build public",
-    "serve-local": "npm run public && serve public",
+    "public": "rm -rf build && npm run build",
+    "serve-local": "npm run public && serve -S build",
     "local": "pm2 serve --spa public --name nac-ecom",
     "rm-local": "pm2 delete nac-ecom"
   },

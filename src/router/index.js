@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { Stylori } from '../screens'
 import routes from "./routes";
 
@@ -7,11 +7,10 @@ import routes from "./routes";
 
 export const RouterApp = () => {
     return (
-        <Router>
-            <Switch>
-                <Route key="stylori" component={Stylori} path={routes.stylori} />
-            </Switch>
-        </Router>
+        <Switch>
+            <Route key="stylori" component={Stylori} exact path={routes.stylori} />
+            <Route key="stylori" component={Stylori} exact path={'/'} />
+        </Switch>
     );
 };
 
