@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,6 +29,7 @@ export default function CustomSeparator() {
   const classes = useStyles();
 
   return (
+    <Container >
     <div className={classes.root}>
 
 
@@ -43,5 +45,6 @@ export default function CustomSeparator() {
         </Breadcrumbs>
       </Paper>
     </div>
+    </Container>
   );
 }

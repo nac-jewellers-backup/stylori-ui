@@ -13,15 +13,11 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import Collapse from '@material-ui/core/Collapse';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import SendIcon from '@material-ui/icons/Send';
-import StarBorder from '@material-ui/icons/StarBorder';
 import ListItemText from '@material-ui/core/ListItemText';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { Hidden } from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
 class Header extends Component {
   constructor(props) {
     super(props)
@@ -29,7 +25,7 @@ class Header extends Component {
       open: false,
       panel: false,
       panel1: false,
-
+      selected: ''
     }
   }
   handleDrawerOpen = () => {
@@ -42,57 +38,46 @@ class Header extends Component {
   handleClick = (e, name, value) => {
     this.setState({ [name]: !value })
   };
-
+  selectItem = (name) => {
+    let { selected } = this.state;
+    let value = selected === name ? "" : name;
+    this.setState({ selected: value })
+  }
   render() {
-    function createData(name) {
-      return { name };
-    }
-    const rows = [
-      createData('Casual'),
-      createData('Classic'),
-      createData('Cocktail'),
-      createData('Engament'),
-      createData('Fashion'),
-      createData('Mens Rings'),
-      createData('View All'),
+    const mainliast = [
+      'Whats New', 'Jewellery', 'Solitaires', 'Gold Coins', 'Gifts', 'Colleactions', 'One Day Shopping', 'Stories'
     ];
-    const rows1 = [
-      createData('Classic'),
-      createData('Casual'),
-      createData('Fashion'),
-      createData('Religious'),
-      createData('Tanmaniya'),
-      createData('View All'),
-    ];
-    const rows2 = [
-      createData('Studs'),
-      createData('Ear Cuffs'),
-      createData('Huggies'),
-      createData('Jhumkas'),
-      createData('Ear Jacket'),
-      createData('View All'),
-    ];
-    const rows4 = [
-      createData('Classic'),
-      createData('Fashion'),
-      createData('Studs Nose Pin'),
-      createData('View All'),
-    ];
-    const rows5 = [
-      createData('Bangles'),
-      createData('Bracelets'),
-      createData('Oval Bracelets'),
-      createData('View All'),
-    ];
-    const rows6 = [
-      createData('Bangles'),
-      createData('Bracelets'),
-      createData('Oval Bracelets'),
-      createData('View All'),
-    ];
+    const mainliast1 = {
+      'Jewellery': [
+        'Earrings',
+        'Pendants',
+        'Rings',
+        'Nose Pins',
+        'Banles & Bracelets',
+        'By Price',
+        'By Collections',
+        'My Materials',
+      ],
+      'Solitaires': [
+        'Solitaire Jewellery'
+      ],
 
+      'Gold Coins': [
+        'Gold Coins'
+      ],
+
+      'Gifts': [
+        'By Occasion',
+        'By Price'
+      ],
+
+      'Colleactions': [
+        'By Colleactions',
+        'By Themes'
+      ],
+    };
+    let { selected } = this.state;
     return (
-<<<<<<< HEAD
       <div>
         <Hidden smDown>
           <AppBar className="header-appbar">
@@ -123,21 +108,6 @@ class Header extends Component {
                   </Badge>
                 </div>
               </Grid>
-=======
-
-        <AppBar className="header-appbar">
-          <Grid container spacing={3} >
-            <Grid item xs={3}>
-              <div className="head-icons">
-                <i class="fa fa-truck "></i>
-                <i class="fa fa-phone"></i>
-              </div>
-            </Grid>
-            <Grid item xs={5}>
-              <div >
-                <img className="img" src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" />
-              </div>
->>>>>>> 9b1f07f396fd964f96d00643fd0a88d71f5e751b
             </Grid>
             <Grid container spacing={12}>
               <Grid item xs={12} className="header-navbar-list">
@@ -153,10 +123,8 @@ class Header extends Component {
                 </nav>
               </Grid>
             </Grid>
-<<<<<<< HEAD
             <div className="header-bottom"></div>
           </AppBar>
-
         </Hidden>
         <Hidden mdUp>
           <AppBar
@@ -198,209 +166,49 @@ class Header extends Component {
             open={this.state.open}
           >
             <div className="header-drawer">
-              <IconButton onClick={this.handleDrawerClose}>
-                Menu
-          </IconButton>
+              <IconButton onClick={this.handleDrawerClose}
+                style={{ float: 'right' }}>
+                <i class="fa fa-times"></i>
+              </IconButton>
+              <Typography className="drawer-menu">Menu</Typography>
             </div>
             <Divider />
-            <List
-              component="nav"
-              className="header-list"
-              aria-labelledby="nested-list-subheader"
-            >
-              <ListItem button className="list-items">
-                <ListItemIcon>
-                  <SendIcon />
-                </ListItemIcon>
-                <ListItemText >
-                  <Typography className="mbl-head-list">Whats New</Typography>
-                </ListItemText>
-              </ListItem>
-              <ListItem button name='panel' className='list-items'
-                value={this.state.panel} button onClick={e => this.handleClick(e, 'panel', this.state.panel)}>
-                <ListItemIcon>
-                  <InboxIcon />
-                </ListItemIcon>
-                <ListItemText >
-                  <Typography className="mbl-head-list">Jewellery</Typography>
-                </ListItemText>
-                {this.state.panel ? <ExpandLess /> : <ExpandMore />}
-              </ListItem>
-
-
-              <Collapse in={this.state.panel} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-
-                  <ListItem button className="list-items"
-                    onClick={e => this.handleClick(e, 'panel1', this.state.panel1)}>
-                    <ListItemIcon>
-                      <StarBorder />
+            <List>
+              {mainliast.map(row => (
+                <>
+                  <ListItem button key={row} className="drawer-list">
+                    <ListItemIcon >
+                      <InboxIcon className="submenu-icons" />
                     </ListItemIcon>
-                    <ListItemText >
-                      <Typography className="Jew-mbl-head-list">Earrings</Typography>
+                    <ListItemText
+                      onClick={() => this.selectItem(row)}
+                    >
+                      <Typography className="list-items"
+                        variant=""
+                      >{row}
+                      </Typography>
                     </ListItemText>
-                    {this.state.panel1 ? <ExpandLess /> : <ExpandMore />}
+                    {this.mainliast ? <ExpandLess className="drawer-arrow" /> : <ExpandMore className="drawer-arrow" />}
                   </ListItem>
-                  {rows2.map(row => (
-                    <Collapse in={this.state.panel1} timeout="auto" unmountOnExit key={row.name}>
-                      <List component="div" disablePadding>
-                        <ListItem button className="list-items" >
-                          <ListItemText >
-                            <Typography className="Jew-mbl-head-list" variant="subtitle1">{row.name}</Typography>
-                          </ListItemText>
-                          <img height="100px" width="100px" src="https://assets-cdn.stylori.com/images/megamenu/studs.jpg"/>
-                        </ListItem>
-                      </List>
-                    </Collapse>
-                  ))}
-                  <ListItem button className="list-items"
-                    onClick={e => this.handleClick(e, 'panel2', this.state.panel2)}>
-                    <ListItemIcon>
-                      <StarBorder />
-                    </ListItemIcon>
-                    <ListItemText>
-                      <Typography className="Jew-mbl-head-list">Pendants</Typography>
-                    </ListItemText>
-                    {this.state.panel2 ? <ExpandLess /> : <ExpandMore />}
-                  </ListItem>
-                  {rows1.map(row => (
-                    <Collapse in={this.state.panel2} timeout="auto" unmountOnExit key={row.name}>
-                      <List component="div" disablePadding>
-                        <ListItem button className="list-items" >
-                          <ListItemText>
-                            <Typography className="Jew-mbl-head-list" variant="subtitle1">{row.name}</Typography>
-                          </ListItemText>
-                          <img height="100px" width="100px" src="https://assets-cdn.stylori.com/images/megamenu/classic-pendants.jpg"/>
-                        </ListItem>
-                      </List>
-                    </Collapse>
-                  ))}
-                  <ListItem button className="list-items"
-                    onClick={e => this.handleClick(e, 'panel3', this.state.panel3)}>
-                    <ListItemIcon>
-                      <StarBorder />
-                    </ListItemIcon>
-                    <ListItemText >
-                      <Typography className="Jew-mbl-head-list">Rings</Typography>
-                    </ListItemText>
-                    {this.state.panel3 ? <ExpandLess /> : <ExpandMore />}
-                  </ListItem>
-                  {rows.map(row => (
-                    <Collapse in={this.state.panel3} timeout="auto" unmountOnExit key={row.name}>
-                      <List component="div" disablePadding>
-                        <ListItem button className="list-items" >
-                          <ListItemText >
-                            <Typography className="Jew-mbl-head-list" variant="subtitle1">{row.name}</Typography>
-                          </ListItemText>
-       <img height="100px" width="100px" src="https://assets-cdn.stylori.com/images/megamenu/casual-rings.jpg"/>
-                        </ListItem>
-                      </List>
-                    </Collapse>
-                  ))}
-                  <ListItem button className="list-items"
-                    onClick={e => this.handleClick(e, 'panel4', this.state.panel4)}>
-                    <ListItemIcon>
-                      <StarBorder />
-                    </ListItemIcon>
-                    <ListItemText >
-                      <Typography className="Jew-mbl-head-list">Nose Pins</Typography>
-                    </ListItemText>
-                    {this.state.panel4 ? <ExpandLess /> : <ExpandMore />}
-                  </ListItem>
-                  {rows4.map(row => (
-                    <Collapse in={this.state.panel4} timeout="auto" unmountOnExit key={row.name}>
-                      <List component="div" disablePadding>
-                        <ListItem button className="list-items" >
-                          <ListItemText >
-                            <Typography className="Jew-mbl-head-list" variant="subtitle1">{row.name}</Typography>
-                          </ListItemText>
-       <img height="100px" width="100px" src="https://assets-cdn.stylori.com/images/megamenu/classic-nosepins.jpg"/>
-
-                        </ListItem>
-                      </List>
-                    </Collapse>
-                  ))}
-
-                  <ListItem button className="list-items"
-                    onClick={e => this.handleClick(e, 'panel5', this.state.panel5)}>
-                    <ListItemIcon>
-                      <StarBorder />
-                    </ListItemIcon>
-                    <ListItemText >
-                      <Typography className="Jew-mbl-head-list">Bangles & Bracelets</Typography>
-                    </ListItemText>
-                    {this.state.panel5 ? <ExpandLess /> : <ExpandMore />}
-                  </ListItem>
-                  {rows5.map(row => (
-                    <Collapse in={this.state.panel5} timeout="auto" unmountOnExit key={row.name}>
-                      <List component="div" disablePadding>
-                        <ListItem button className="list-items" >
-                          <ListItemText >
-                            <Typography className="Jew-mbl-head-list" variant="subtitle1">{row.name}</Typography>
-                          </ListItemText>
-       <img height="100px" width="100px" src="https://assets-cdn.stylori.com/images/megamenu/round-bangles.jpg"/>
-
-                        </ListItem>
-                      </List>
-                    </Collapse>
-                  ))}
-                  <ListItem button
-                    onClick={e => this.handleClick(e, 'panel6', this.state.panel6)}>
-                    <ListItemIcon />
-                    <ListItemText >
-                      <Typography className="Jew-mbl-head-list">Bangles & Bracelets</Typography>
-                    </ListItemText>
-                    {this.state.panel6 ? <ExpandLess /> : <ExpandMore />}
-                  </ListItem>
-                  {rows6.map(row => (
-                    <Collapse in={this.state.panel6} timeout="auto" unmountOnExit key={row.name}>
-                      <List component="div" disablePadding>
-                        <ListItem button  >
-                          <ListItemText >
-                            <Paper>
-                              <Typography className="Jew-mbl-head-list" style={{ borderBottom: "1px solid #eee" }}>
-                                Paper can be used to
+                  {selected === row &&
+                    mainliast1[row] !== undefined && mainliast1[row].map(row => (
+                      <ListItem button key={row}>
+                        <ListItemIcon />
+                        <ListItemText >
+                          <Typography className="Jew-mbl-head-list" variant="">{row}
                           </Typography>
-                            </Paper>
-                            <Typography className="Jew-mbl-head-list" variant="subtitle1">{row.name}</Typography>
-                          </ListItemText>
-                        </ListItem>
-                      </List>
-                    </Collapse>
-                  ))}
-
-                </List>
-              </Collapse>
+                        </ListItemText>
+                        {selected ? <ExpandLess className="drawer-arrow" /> : <ExpandMore className="drawer-arrow" />}
+                      </ListItem>
+                    ))
+                  }
+                </>
+              ))}
             </List>
           </Drawer>
 
         </Hidden>
-=======
-          </Grid>
-          <Grid container spacing={12}>
-            <Grid item xs={12} className="header-navbar-list">
-              <nav >
-                <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
-                <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Jewellery</a>
-                <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Solitaires</a>
-                <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Gold Coins</a>
-                <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Gifts</a>
-                <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Collections</a>
-                <a href=""><i class="fa fa-plus-circle"></i>&nbsp;One Day Sipping</a>
-                <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Stories</a>
-              </nav>
-            </Grid>
-          </Grid>
-          <div className="header-bottom"></div>
-        </AppBar>
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 9b1f07f396fd964f96d00643fd0a88d71f5e751b
       </div>
->>>>>>> 9eed70acc8a2c18bef32fb565af4be38bf8393ab
     )
   }
 }
