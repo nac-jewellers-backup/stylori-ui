@@ -92,6 +92,7 @@ class Header extends Component {
     ];
 
     return (
+<<<<<<< HEAD
       <div>
         <Hidden smDown>
           <AppBar className="header-appbar">
@@ -122,6 +123,21 @@ class Header extends Component {
                   </Badge>
                 </div>
               </Grid>
+=======
+
+        <AppBar className="header-appbar">
+          <Grid container spacing={3} >
+            <Grid item xs={3}>
+              <div className="head-icons">
+                <i class="fa fa-truck "></i>
+                <i class="fa fa-phone"></i>
+              </div>
+            </Grid>
+            <Grid item xs={5}>
+              <div >
+                <img className="img" src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" />
+              </div>
+>>>>>>> 9b1f07f396fd964f96d00643fd0a88d71f5e751b
             </Grid>
             <Grid container spacing={12}>
               <Grid item xs={12} className="header-navbar-list">
@@ -137,6 +153,7 @@ class Header extends Component {
                 </nav>
               </Grid>
             </Grid>
+<<<<<<< HEAD
             <div className="header-bottom"></div>
           </AppBar>
 
@@ -358,7 +375,32 @@ class Header extends Component {
           </Drawer>
 
         </Hidden>
+=======
+          </Grid>
+          <Grid container spacing={12}>
+            <Grid item xs={12} className="header-navbar-list">
+              <nav >
+                <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
+                <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Jewellery</a>
+                <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Solitaires</a>
+                <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Gold Coins</a>
+                <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Gifts</a>
+                <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Collections</a>
+                <a href=""><i class="fa fa-plus-circle"></i>&nbsp;One Day Sipping</a>
+                <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Stories</a>
+              </nav>
+            </Grid>
+          </Grid>
+          <div className="header-bottom"></div>
+        </AppBar>
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> 9b1f07f396fd964f96d00643fd0a88d71f5e751b
       </div>
+>>>>>>> 9eed70acc8a2c18bef32fb565af4be38bf8393ab
     )
   }
 }
