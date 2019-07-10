@@ -8,13 +8,18 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-slideshow-image": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "public": "npm run build && mv build public",
+    "serve-local": "npm run public && serve public",
+    "local": "pm2 serve --spa public --name nac-ecom",
+    "rm-local": "pm2 delete nac-ecom"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +35,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "pm2": "^3.5.1",
+    "serve": "^11.0.2"
   }
 }

@@ -1,70 +1,128 @@
 import React, { Component } from 'react';
 import './ProductDescription.css'
 import CustomSeparator from '../BreadCrumb'
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
+import Hidden from '@material-ui/core/Hidden';
+import Slideshow from '../Carousel/carosul'
 
-
-class ProductDescription extends Component{
-  constructor(props){
+class ProductDescription extends Component {
+  constructor(props) {
     super(props)
   }
-render(){
-debugger
-    return(
-        <>
+  handleOpen = () => {
+    document.getElementById('txtopen').style.display = "inline";
+    document.getElementById('readLess').style.display = "block";
+    document.getElementById('readMore').style.display = "none";
+    document.getElementById('moreDots').style.display = "none";
 
-{/* <div className="div1">
+  }
+  handleClose = () => {
+    document.getElementById('txtopen').style.display = "none";
+    document.getElementById('readLess').style.display = "none";
+    document.getElementById('readMore').style.display = "block";
+    document.getElementById('moreDots').style.display = "inline";
 
-<div className="div1-1">
-<CustomSeparator />
-</div>
-<div className="div1-2">
-Jewellery
-</div>
-</div> */}
+  }
+  render() {
 
+    return (
+      <>
+        <Container >
+          <Grid
+            container
+            direction="row"
+            justify="space-around"
+            alignItems="center">
+            <Grid
+              item
+              container
+              alignItems="center">
+              <Hidden mdDown>
+                <Grid
+                  item
+                  xs={3}
 
+                  style={{ textAlign: 'center' }}
 
+                  alignItems="center">
+                  <CustomSeparator />
+                </Grid>
+              </Hidden>
+              <Hidden mdDown >
+                <Grid
+                  item
+                  xs={6}
 
-        <div class="grid-container">
-         
-    <div class="grid-item1">
-  <CustomSeparator  />
-  </div>
-  <div class="grid-item2">
-      <h2>Jewellery</h2>
-  
-  </div>
-  </div>
-  <div class="grid-container1">
-  <div class="grid-item3">
-      
-      <img src="https://assets-cdn.stylori.com/300x300/images/product/SE0749/SE0749-1Y.jpg" width="120px" height="120px" />
-  
-  </div>
-  <div class="grid-item4">For every occasion and non-occasion. Shop our range of everyday fashion jewellery featuring gold, silver and stone rings and earrings, for work, play and everything in between. Give special occasions a little extra glimmer with our range of bridal jewellery ranging from engagement rings to wedding r... 
-  </div>
-{/*  */}
-{/*  */}
+                  alignItems="center"            >
+                  <h2 className="DescriptionTitle">Jewellery</h2>
+                </Grid>
+              </Hidden>
+              <Hidden lgUp>
+                <Grid
+                  item
+                  xs={6}
 
+                  alignItems="center"            >
+                  <h2 className="DescriptionTitleSmallScreen">Jewellery</h2>
+                </Grid>
+              </Hidden>
+            </Grid>
+            <Grid
+              item
+              container
+              alignItems="center">
+              <Hidden mdDown>
+                <Grid
+                  item
+                  xs={3}
+                  style={{ textAlign: 'center' }}
+                  alignItems="center">
 
-  {/*  */}
-  {/*  */}
-  
-  </div>
-  {/* <div className="col-md-6 text-pdng1 div-ad">
-               
-               <p className="earings-para more-banner">For the most special day in your life, and other days too. Create a memory that lasts a lifetime with engagement rings and wedding rings that form the sacred bond.  Shop from our collection of rings for men and women with a range of casual, classic, solitaire rings and men's rings. Find the latest r<span class="moreellipses" style={{display: 'inline'}}>...&nbsp;</span><span class="morecontentbanner" style={{display: 'none'}}>ing designs, crafted using the finest jewellery design and jewellery making principles.  Buy our jewellery online for fast deliveries and an easy returns policy.<br />For every occasion and non-occasion. Shop our range of everyday fashion jewellery featuring gold, silver and stone rings and earrings, for work, play and everything in between. Give special occasions a little extra glimmer with our range of bridal jewellery ranging from engagement rings to wedding rings to classic party wear.  Crafted using the finest jewellery design and jewellery making principles, buy our jewellery online for fast deliveries and an easy returns policy.<br />&nbsp;&nbsp;</span></p>
-               <p className="know-txt" style={{display: 'block'}}>
-                  <span className="glyphicon glyphicon-play hidden-xs hidden-sm"></span> READ MORE
+                  < Slideshow />
+                </Grid>
+              </Hidden>
+              <Hidden mdDown>
+                <Grid
+                  item
+                  xs={6}
+                  alignItems="center">
+                  <p>
+                    <span className="DescriptionContent">Express yourself with a pendant that defines you. Personalize your look by adding a designer pendant and statement necklace to your ensemble. Gift that special person in your life a pendant that will be treasured forever. Gold pendants and diamond pendants never go out of style. Featuring the latest<span id="moreDots" style={{ display: 'inline' }}>...</span> </span>
+                    <span id="txtopen" className="DescriptionContent" style={{ display: 'none' }}> in pendant designs, Stylori brings to you a range of casual, classic and fashion pendants.  Crafted using the finest jewellery design and jewellery making principles, buy our jewellery online for fast deliveries and an easy returns policy.<br />For every occasion and non-occasion. Shop our range of everyday fashion jewellery featuring gold, silver and stone rings and earrings, for work, play and everything in between. Give special occasions a little extra glimmer with our range of bridal jewellery ranging from engagement rings to wedding rings to classic party wear.  Crafted using the finest jewellery design and jewellery making principles, buy our jewellery online for fast deliveries and an easy returns policy.<br />&nbsp;&nbsp;</span>
+                  </p>
+                  <p onClick={this.handleOpen} className="know-txt" id="readMore" style={{ display: 'block' }}>
+                    <span ><i className="fa">&#xf0da;</i></span> READ MORE
                </p>
-               <p className="close-txt" style={{display: 'none'}}>
-                  <span className="glyphicon glyphicon-triangle-top hidden-xs hidden-sm"></span> CLOSE
+                  <p onClick={this.handleClose} className="know-txt" id="readLess" style={{ display: 'none' }}>
+                    <span ><i className="fa">&#xf0da;</i></span> CLOSE
                </p>
-            </div> */}
-            
-  </>
+                </Grid>
+              </Hidden>
+              <Hidden lgUp>
+                <Grid
+                  item
+                  xs={12}
+                  alignItems="center">
+                  <p>
+                    <span className="DescriptionContent">Express yourself with a pendant that defines you. Personalize your look by adding a designer pendant and statement necklace to your ensemble. Gift that special person in your life a pendant that will be treasured forever. Gold pendants and diamond pendants never go out of style. Featuring the latest<span id="moreDots" style={{ display: 'inline' }}>...</span> </span>
+                    <span id="txtopen" className="DescriptionContent" style={{ display: 'none' }}> in pendant designs, Stylori brings to you a range of casual, classic and fashion pendants.  Crafted using the finest jewellery design and jewellery making principles, buy our jewellery online for fast deliveries and an easy returns policy.<br />For every occasion and non-occasion. Shop our range of everyday fashion jewellery featuring gold, silver and stone rings and earrings, for work, play and everything in between. Give special occasions a little extra glimmer with our range of bridal jewellery ranging from engagement rings to wedding rings to classic party wear.  Crafted using the finest jewellery design and jewellery making principles, buy our jewellery online for fast deliveries and an easy returns policy.<br />&nbsp;&nbsp;</span>
+                  </p>
+                  <p onClick={this.handleOpen} className="know-txt" id="readMore" style={{ display: 'block' }}>
+                    <span ><i className="fa">&#xf0da;</i></span> READ MORE
+               </p>
+                  <p onClick={this.handleClose} className="know-txt" id="readLess" style={{ display: 'none' }}>
+                    <span ><i className="fa">&#xf0da;</i></span> CLOSE
+               </p>
+                </Grid>
+              </Hidden>
+            </Grid>
+          </Grid>
+        </Container>
+
+      </>
     );
-}
+  }
 
 }
 export default ProductDescription;

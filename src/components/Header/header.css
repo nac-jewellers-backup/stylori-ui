@@ -1,0 +1,33 @@
+  .grid-container {
+    display: grid ;
+    grid-template-columns:  auto auto auto ;
+   
+  }.head-icons{
+    color: #394578 !important;
+    font-size: 20px !important;
+    margin-top: 18px !important;
+  }
+  .header-appbar{
+    background-color: #fff !important;
+    height: 18%;
+    width: 100% !important;
+    text-align: center !important;
+    border-bottom:1px solid #ed1165;
+  }.item1{
+    justify-self: center !important;
+  } .grid-container1 {
+    display: grid ;
+    grid-template-columns:  auto auto auto auto auto auto auto auto auto ;
+    bottom: 12px;
+    position: absolute;
+    width: 100%;
+  }.list{
+    white-space: nowrap;
+    width: 100%;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #394578;
+    text-transform: capitalize;
+    font-size: 15px !important;
+    margin-left: 12px;
+  }
