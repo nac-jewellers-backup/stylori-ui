@@ -59,4 +59,50 @@
   }.MuiBadge-colorSecondary{
     background-color:  #F699A3 !important;
     top: -6px !important;
+  }.header-appbar-moblie{
+    background-color: #fff !important;
+    text-align: center !important;
+    top: 0;
+      width: 100%;
+    line-height: 1.42857143;
+    font-size: 12px;
+    font-family: sans-serif;
+    box-shadow: none !important;
+    box-shadow: 1px 1px 1px #ccc !important;
+  }.mobli-icon i{
+    font-size: 18px;
+    cursor: pointer;
+    color: #394578;
+    margin-left: 10px;
+    border-left: 1px solid #c3c3c3;
+    text-align: center !important;
+    width: 25px;
+  }.mobile-img{
+    height: 50px !important;
+    width: 90px;
+  }.header-drawer{
+    width: 270px !important;
+    z-index: 1003;
+  }.mobli-icon{
+    float: right;
+  }.list-items{
+    border-bottom: 1px solid #e0e0e0 !important;
+    font-size: 18px !important;
+  }.mbl-head-list{
+    white-space: nowrap;
+    width: 100%;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #394578;
+    text-transform: capitalize;
+    align-items: center!important;
+    height: 16px!important;
+  }.Jew-mbl-head-list {
+    width: 100%;
+    margin: 0;
+    float: none;
+    font-size: 12px !important;
+    margin-left: 8px!important;
+    color: #394578;
+    border-left: 3px solid #fff;
   }
