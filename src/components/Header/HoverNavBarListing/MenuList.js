@@ -17,12 +17,14 @@ class MenuListItem extends Component {
     render() {
         return (
             <div>
-                <List  >
+                <List component="nav" >
+
                     {
                     menuList.map(menuLists=>(
                     <ListItem component="li" className="ListColor">
 
-                        <ListItemText component="li" variant >
+                        <ListItemText  variant >
+                        <div style={{borderLeft:'5px solid pink'}}></div>
                           {menuLists}
                         </ListItemText>
 
@@ -33,9 +35,10 @@ class MenuListItem extends Component {
                 <List  >
                 {
                     menuListFilters.map(menuLists=>(
-                    <ListItem className="ListColor">
+                    <ListItem component="li" className="ListColor">
 
-                        <ListItemText component="li"  >
+                        <ListItemText   >
+                            <div></div>
                           {menuLists}
                         </ListItemText>
 

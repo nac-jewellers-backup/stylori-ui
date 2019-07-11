@@ -108,10 +108,11 @@ color:white;
     font-family: Roboto;
    
 }  
-.ListColor li:hover{
+.ListColor span:hover div:hover{
   border-left: 3px solid #ed1165;
   color:#ed1165;
 }
+
 .ListColor span:active{
   border-left: 3px solid #ed1165;
   color:#ed1165;

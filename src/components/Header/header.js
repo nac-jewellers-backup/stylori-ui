@@ -28,6 +28,7 @@ class Header extends Component {
       panel: false,
       panel1: false,
       Menuopen: false,
+      Checked:false,
       selected: ''
     }
   }
@@ -120,7 +121,7 @@ class Header extends Component {
               <Grid item xs={12} className="header-navbar-list">
                 <nav >
                   <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
-                  <a href="" onMouseMove={() => { this.setState({ Menuopen: true }) }} ><i class="fa fa-plus-circle"></i>&nbsp;Jewellery</a>
+                  <a href="" onMouseOver={() => { this.setState({ Menuopen: true,Checked:true }) }} ><i class="fa fa-plus-circle"></i>&nbsp;Jewellery</a>
                   <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Solitaires</a>
                   <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Gold Coins</a>
                   <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Gifts</a>
@@ -217,7 +218,7 @@ class Header extends Component {
         </Hidden>
         {
           this.state.Menuopen ?
-            <JewelleryMenuItem onMouseLeave={() => { this.setState({ Menuopen: false }) }} />
+            <JewelleryMenuItem onMouseLeave={() => { this.setState({ Menuopen: false,Checked:false }) }} Checked={this.state.Checked} />
 
             :
             ''
