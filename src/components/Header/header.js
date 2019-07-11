@@ -18,7 +18,12 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { Hidden } from '@material-ui/core';
+<<<<<<< HEAD
 import MailIcon from '@material-ui/icons/Mail';
+=======
+import NotificationMessage from './Notification/HeaderNotification'
+import JewelleryMenuItem from '../../screens/Stylori/JewlleryMenuItem'
+>>>>>>> 5ef588e63f982a51d4c956479fa8ed74b37e481e
 class Header extends Component {
   constructor(props) {
     super(props)
@@ -26,6 +31,7 @@ class Header extends Component {
       open: false,
       panel: false,
       panel1: false,
+      Menuopen: false,
       selected: ''
     }
   }
@@ -129,8 +135,16 @@ class Header extends Component {
     return (
       <div>
         <Hidden smDown>
+          
           <AppBar className="header-appbar">
+<<<<<<< HEAD
             <Grid container spacing={12} >
+=======
+          <NotificationMessage />
+          <br />
+          <br />
+            <Grid container spacing={3} >
+>>>>>>> 5ef588e63f982a51d4c956479fa8ed74b37e481e
               <Grid item xs={3}>
                 <div className="head-icons">
                   <i class="fa fa-truck "></i>
@@ -162,7 +176,7 @@ class Header extends Component {
               <Grid item xs={12} className="header-navbar-list">
                 <nav >
                   <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
-                  <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Jewellery</a>
+                  <a href="" onMouseMove={() => { this.setState({ Menuopen: true }) }} ><i class="fa fa-plus-circle"></i>&nbsp;Jewellery</a>
                   <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Solitaires</a>
                   <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Gold Coins</a>
                   <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Gifts</a>
@@ -256,6 +270,13 @@ class Header extends Component {
           </Drawer>
 
         </Hidden>
+        {
+          this.state.Menuopen ?
+            <JewelleryMenuItem onMouseLeave={() => { this.setState({ Menuopen: false }) }} />
+
+            :
+            ''
+        }
       </div>
     )
   }
