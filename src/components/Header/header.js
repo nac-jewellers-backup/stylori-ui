@@ -12,18 +12,13 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import ListItemText from '@material-ui/core/ListItemText';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { Hidden } from '@material-ui/core';
-<<<<<<< HEAD
 import MailIcon from '@material-ui/icons/Mail';
-=======
-import NotificationMessage from './Notification/HeaderNotification'
-import JewelleryMenuItem from '../../screens/Stylori/JewlleryMenuItem'
->>>>>>> 5ef588e63f982a51d4c956479fa8ed74b37e481e
+import JewelleryMenuItem from '../../screens/Stylori/JewlleryMenuItem';
+import HeaderNotification from './Notification/HeaderNotification'
 class Header extends Component {
   constructor(props) {
     super(props)
@@ -32,7 +27,8 @@ class Header extends Component {
       panel: false,
       panel1: false,
       Menuopen: false,
-      selected: ''
+      selected: '',
+      Checked: false,
     }
   }
   handleDrawerOpen = () => {
@@ -137,14 +133,8 @@ class Header extends Component {
         <Hidden smDown>
           
           <AppBar className="header-appbar">
-<<<<<<< HEAD
+          {/* <HeaderNotification /> */}
             <Grid container spacing={12} >
-=======
-          <NotificationMessage />
-          <br />
-          <br />
-            <Grid container spacing={3} >
->>>>>>> 5ef588e63f982a51d4c956479fa8ed74b37e481e
               <Grid item xs={3}>
                 <div className="head-icons">
                   <i class="fa fa-truck "></i>
@@ -176,7 +166,7 @@ class Header extends Component {
               <Grid item xs={12} className="header-navbar-list">
                 <nav >
                   <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
-                  <a href="" onMouseMove={() => { this.setState({ Menuopen: true }) }} ><i class="fa fa-plus-circle"></i>&nbsp;Jewellery</a>
+                  <a href="" onMouseOver={() => { this.setState({ Menuopen: true, Checked: true }) }} ><i class="fa fa-plus-circle"></i>&nbsp;Jewellery</a>
                   <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Solitaires</a>
                   <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Gold Coins</a>
                   <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Gifts</a>
@@ -190,9 +180,11 @@ class Header extends Component {
           </AppBar>
         </Hidden>
         <Hidden mdUp>
+          
           <AppBar
             className="header-appbar-moblie"
           >
+          
             <Toolbar>
               <Grid item xs={2}>
                 <IconButton
@@ -271,12 +263,12 @@ class Header extends Component {
 
         </Hidden>
         {
-          this.state.Menuopen ?
-            <JewelleryMenuItem onMouseLeave={() => { this.setState({ Menuopen: false }) }} />
-
-            :
-            ''
-        }
+         this.state.Menuopen ?
+           <JewelleryMenuItem Checked={this.state.Checked} onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }} />
+           //onMouseLeave={() => { this.setState({ Menuopen: false,Checked:false }) }}
+           :
+           ''
+       }
       </div>
     )
   }
