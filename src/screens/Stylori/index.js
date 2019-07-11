@@ -8,8 +8,8 @@ export default class Stylori extends Component {
         return (
             <div>
 
+<Filter/>
 
-<Filter />
 
             {/* <Grid container spacing={3}>
                     <Grid item xs={12}>
