@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import posed from 'react-pose';
-import MenuListItem from './MenuList';
+import MenuListItem from '../../components/Header/HoverNavBarListing/MenuList';
 
 
 const Notification = posed.div({

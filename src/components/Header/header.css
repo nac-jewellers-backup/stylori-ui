@@ -77,33 +77,21 @@
     border-left: 1px solid #c3c3c3;
     text-align: center !important;
     width: 25px;
-  }.mobile-img{
-    height: 50px !important;
-    width: 90px;
-  }.header-drawer{
-    width: 270px !important;
-    z-index: 1003;
-  }.mobli-icon{
-    float: right;
   }.list-items{
-    border-bottom: 1px solid #e0e0e0 !important;
-    font-size: 18px !important;
-  }.mbl-head-list{
+    text-align: left;
     white-space: nowrap;
     width: 100%;
     font-size: 14px;
     letter-spacing: 1px;
     color: #394578;
     text-transform: capitalize;
-    align-items: center!important;
-    height: 16px!important;
   }.Jew-mbl-head-list {
     width: 100%;
     margin: 0;
     float: none;
-    font-size: 12px !important;
-    margin-left: 8px!important;
-    color: #394578;
+    font-size: 12px;
+    padding: 14px 11px 14px 18px;
+    position: relative;
     border-left: 3px solid #fff;
   }
   .notificationHeader{
@@ -133,3 +121,21 @@ color:white;
 
 
 }
+    /* color: #394578;
+    line-height: 1.42857143;
+    letter-spacing: 1px !important;
+  } */
+  .drawer-menu{
+    background-color: #ededed;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 15px 11px!important;
+    color: #394578;
+    line-height: 1.42857143;
+  }.drawer-list{
+    border-bottom:1px solid rgba(0,0,0,.13) !important;
+  }.drawer-arrow{
+    /* border-left: 2px solid #e0e0e0 !important; */
+    fill: rgba(0,0,0,.25) !important;
+    height: 44px;
+  }

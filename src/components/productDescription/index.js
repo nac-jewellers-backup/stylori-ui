@@ -38,7 +38,7 @@ class ProductDescription extends Component {
               item
               container
               alignItems="center">
-              <Hidden mdDown>
+              <Hidden smDown>
                 <Grid
                   item
                   xs={3}
@@ -49,7 +49,7 @@ class ProductDescription extends Component {
                   <CustomSeparator />
                 </Grid>
               </Hidden>
-              <Hidden mdDown >
+              <Hidden smDown >
                 <Grid
                   item
                   xs={6}
@@ -58,7 +58,7 @@ class ProductDescription extends Component {
                   <h2 className="DescriptionTitle">Jewellery</h2>
                 </Grid>
               </Hidden>
-              <Hidden lgUp>
+              <Hidden mdUp>
                 <Grid
                   item
                   xs={6}
@@ -72,7 +72,7 @@ class ProductDescription extends Component {
               item
               container
               alignItems="center">
-              <Hidden mdDown>
+              <Hidden smDown>
                 <Grid
                   item
                   xs={3}
@@ -82,7 +82,7 @@ class ProductDescription extends Component {
                   < Slideshow />
                 </Grid>
               </Hidden>
-              <Hidden mdDown>
+              <Hidden smDown>
                 <Grid
                   item
                   xs={6}
@@ -95,11 +95,11 @@ class ProductDescription extends Component {
                     <span ><i className="fa faMore">&#xf0da;</i></span> READ MORE
                </p>
                   <p onClick={this.handleClose} className="know-txt" id="readLess" style={{ display: 'none' }}>
-                    <span ><i  className="fa faMore">&#xf0d8;</i></span> CLOSE
+                    <span ><i className="fa faMore">&#xf0d8;</i></span> CLOSE
                </p>
                 </Grid>
               </Hidden>
-              <Hidden lgUp>
+              <Hidden mdUp>
                 <Grid
                   item
                   xs={12}
@@ -112,7 +112,7 @@ class ProductDescription extends Component {
                     <span ><i className="fa faMore">&#xf0da;</i></span> READ MORE
                </p>
                   <p onClick={this.handleClose} className="know-txt" id="readLess" style={{ display: 'none' }}>
-                    <span ><i  className="fa faMore">&#xf0d8;</i></span> CLOSE
+                    <span ><i className="fa faMore">&#xf0d8;</i></span> CLOSE
                </p>
                 </Grid>
               </Hidden>

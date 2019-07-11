@@ -1,0 +1,33 @@
+.filter-menu {
+    background-color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 15px 11px !important;
+    color: #394578;
+    line-height: 1.42857143;
+    margin-top: 11px !important;
+    right: 0;
+
+}.filter-navbar{
+    width: 20% !important;
+    border: 1px solid #e3e3e3 !important;
+
+}
+
+.filter-navbar {
+    padding-left: 2% !important;
+    width: 100% !important;
+    color: #3a4578 !important;
+    background-color: #fff !important;
+    border-color: #fff !important;
+    border: 1px solid #e3e3e3 !important;
+    border-radius: 0 !important;
+    font-size: 17px !important;
+    font-weight: 500 !important;
+    background: #fff !important;
+    border: 1px solid transparent;
+    box-shadow: none !important;
+    line-height: 1.42857143 !important;
+    height: 65px;
+    float: right !important;
+}
