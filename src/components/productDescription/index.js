@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import './ProductDescription.css'
-import CustomSeparator from '../BreadCrumb'
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import Hidden from '@material-ui/core/Hidden';
-import Slideshow from '../Carousel/carosul'
+import { Container, Hidden, Grid } from '@material-ui/core';
+import { Slideshow, Filter as CustomSeparator } from '../';
 
 class ProductDescription extends Component {
-  constructor(props) {
-    super(props)
-  }
+  
   handleOpen = () => {
     document.getElementById('txtopen').style.display = "inline";
     document.getElementById('readLess').style.display = "block";

@@ -10,7 +10,6 @@ import {
   , IconButton,
   ListItem,
   ListItemText
-  , Button
 } from '@material-ui/core';
 import React from 'react';
 import classNames from 'classnames';
