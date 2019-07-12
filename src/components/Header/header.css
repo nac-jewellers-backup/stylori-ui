@@ -77,6 +77,12 @@
     border-left: 1px solid #c3c3c3;
     text-align: center !important;
     width: 25px;
+  }.mobli-icon i:hover{
+    -webkit-animation: 1s blink step-end infinite;
+    -moz-animation: 1s blink step-end infinite;
+    -ms-animation: 1s blink step-end infinite;
+    -o-animation: 1s blink step-end infinite;
+    animation: 1s blink step-end infinite;
   }.list-items{
     text-align: left;
     white-space: nowrap;
@@ -94,48 +100,59 @@
     position: relative;
     border-left: 3px solid #fff;
   }
-  .notificationHeader{
-height: 33px;
-background-color: #ea5381;
-position: absolute;
-top:0;
-left:0;
-color:white;
-  }
-.ListColor{
-  font-size: 12px;
-    color: #394578;
-    font-family: Roboto;
+ 
    
-}  
-.ListColor li:hover{
-  border-left: 3px solid #ed1165;
-  color:#ed1165;
-}
-.ListColor span:active{
-  border-left: 3px solid #ed1165;
-  color:#ed1165;
-}
-.hrColor{
-  border-bottom: 1px solid #ed1165;
-
-
-}
-    /* color: #394578;
-    line-height: 1.42857143;
-    letter-spacing: 1px !important;
-  } */
   .drawer-menu{
+    padding: 15px 52px !important;
     background-color: #ededed;
-    font-size: 18px;
-    font-weight: 400;
-    padding: 15px 11px!important;
-    color: #394578;
-    line-height: 1.42857143;
+    font-size: 18px !important;
+    font-weight: normal;
+    color: #394578 !important;
   }.drawer-list{
     border-bottom:1px solid rgba(0,0,0,.13) !important;
+
+  }.drawer-list:hover{
+    background-color: rgba(0, 0, 0, 0.08) !important;
   }.drawer-arrow{
-    /* border-left: 2px solid #e0e0e0 !important; */
+    border-left: 2px solid #e0e0e0 !important;
     fill: rgba(0,0,0,.25) !important;
-    height: 44px;
+  }.header-drawer{
+    width: 267px !important;
+
+  }.submenu-icons{
+    fill: rgba(0,0,0,.25) !important;
+    padding: 0 9px;
   }
+ 
+  .notificationHeader{
+    height: 33px;
+    background-color: #ea5381;
+    position: absolute;
+    top:0;
+    left:0;
+    color:white;
+     }
+    .ListColor{
+     font-size: 12px;
+     color: #394578;
+     font-family: Roboto;
+     border-left: 3px solid white;
+    }
+    .ListColor li:hover {
+     border-left: 3px solid #ed1165 !important;
+     color: #ed1165;
+     cursor: pointer;
+    }
+    .ListColor li:active {
+     border-left: 3px solid #ed1165;
+     color: #ed1165;
+     cursor: pointer;
+    }
+    
+    .ListColorActive li {
+     border-left: 3px solid #ed1165;
+     color: #ed1165;
+    }
+    .hrColor {
+     border-bottom: 1px solid #ed1165;
+    }
