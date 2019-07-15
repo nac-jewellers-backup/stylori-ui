@@ -91,4 +91,11 @@ margin-top : 0 !important;
 }.mbl-filter-list :hover{
 background-color: #394578 !important;
 color: #fff;
+}.filter-fixed{
+  height: 45px !important;
+    text-align: center;
+    background-color: #EBEAEA !important;
+    position: fixed!important;
+bottom: 0 !important;    
+top: auto !important;
 }
