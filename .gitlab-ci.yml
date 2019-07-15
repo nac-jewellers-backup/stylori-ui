@@ -42,8 +42,6 @@ lighthouse_report:
     - npm run pm2-serve
   script: 
     - npm run generate-report
-  after_script:
-    - npm run pm2-rm
   artifacts:
     paths:
       - ./report.html

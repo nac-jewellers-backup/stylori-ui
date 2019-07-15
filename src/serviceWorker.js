@@ -108,10 +108,13 @@ function registerValidSW(swUrl, config) {
 
 async function requestNotificationPermission(){
   if(!check()) return false;
-  const permission = await window.Notification ? await window.Notification.requestPermission() : false;
-  if(permission !== 'granted') alert('Enable notifications to have great experience!');
+  const permission = await window.Notification.requestPermission();
+  if(permission !== 'granted'){} //alert('Enable notifications to have great experience!');
   else {
-    await sendNotification('Ohoo.. your first notification 🎉🙌');
+    if(!localStorage.getItem('firstnotify')){
+      await sendNotification('Ohoo.. your first notification 🎉🙌');
+      localStorage.setItem('firstnotify',true);
+    }
     return true;
   };
 }

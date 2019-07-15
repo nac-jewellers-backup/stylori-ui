@@ -25,7 +25,7 @@
     "serve": "npm run build && serve -S build",
     "lint": "eslint src/",
     "generate-report": "lighthouse --chrome-flags=\"--headless --no-sandbox\" http://localhost:8080 --output html --output-path ./report.html",
-    "pm2-serve": "pm2 serve --spa build --name nac-ecom",
+    "pm2-serve": "pm2 delete nac-ecom || pm2 serve --spa build --name nac-ecom",
     "pm2-rm": "pm2 delete nac-ecom"
   },
   "eslintConfig": {
