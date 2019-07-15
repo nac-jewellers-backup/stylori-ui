@@ -117,7 +117,7 @@ async function requestNotificationPermission(){
 }
 
 function check(){
-  debugger;
+
   if (!('serviceWorker' in navigator)) {
     alert('Sorry notifications are not yet supported');
     return false;
