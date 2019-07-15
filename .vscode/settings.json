@@ -1,0 +1,21 @@
+{
+    "sqltools.connections": [
+        {
+            "connectionTimeout": 30,
+            "database": "cdsp_dev",
+            "dialect": "PostgreSQL",
+            "name": "CDSP_DEV",
+            "password": "welcome",
+            "port": 5432,
+            "server": "127.0.0.1",
+            "username": "postgres"
+        }
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#ef7853",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#8af4a3",
+        "activityBarBadge.foreground": "#15202b"
+    }
+}

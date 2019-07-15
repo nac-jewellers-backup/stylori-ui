@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "nac-ecom-ui",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,10 +22,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "public": "rm -rf build && npm run build",
-    "serve-local": "npm run public && serve -S build",
-    "local": "pm2 serve --spa public --name nac-ecom",
-    "rm-local": "pm2 delete nac-ecom"
+    "serve": "npm run build && serve -S build",
+    "lint": "eslint src/",
+    "generate-report": "lighthouse --chrome-flags=\"--headless --no-sandbox\" http://localhost:8080 --output html --output-path ./report.html",
+    "pm2-serve": "pm2 serve --spa build --name nac-ecom",
+    "pm2-rm": "pm2 delete nac-ecom"
   },
   "eslintConfig": {
     "extends": "react-app"
