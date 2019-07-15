@@ -179,8 +179,109 @@ export const banglesbracelets = {
         },
     ]
 }
+export const Price = [{
+    headers:'Under Rs 5000',
+    view:'view all',
+    items:[
+'Pendants','Earrings','Rings','Bracelets','Nosepins',
+    ]
+},
+{
+    headers:'Rs 5000 - Rs 10000',
+    view:'view all',
+    items:[
+'Pendants','Earrings','Rings','Bracelets','Nosepins',
+    ]
+},
+{
+    headers:'Rs 10000 to Rs 20000',
+    view:'view all',
+    items:[
+'Pendants','Earrings','Rings','Bracelets','Nosepins',
+    ]
+},
+{
+    headers:'Above Rs 20000',
+    view:'view all',
+    items:[
+'Pendants','Earrings','Rings','Bracelets','Nosepins',
+    ]
+}
+]
 
-export default { earings, pendants, rings, nosepins, banglesbracelets }
+export const Collection =  [
+      {
+        img: 'https://assets-cdn.stylori.com/223x132/images/megamenu/Carve.jpg',
+        title: 'Breakfast',
+        author: 'jill111',
+    },
+    {
+        img: 'https://assets-cdn.stylori.com/images/megamenu/stylori-blush-collection--collection-tab-223x132.jpg',
+        title: 'Tasty burger',
+        author: 'director90',
+    },
+    {
+        img: 'https://assets-cdn.stylori.com/images/megamenu/stylori-molecute-collections-tab-223x132.jpg',
+        title: 'Tasty burger',
+        author: 'director90',
+    },
+    {
+        img: 'https://assets-cdn.stylori.com/images/megamenu/stylori-gemstone-collections-tab-223x132-08.jpg',
+        title: 'Tasty burger',
+        author: 'director90',
 
+    },
+    {
+        img: 'https://assets-cdn.stylori.com/images/megamenu/stylori_mistletoe.jpg',
+        title: 'Tasty burger',
+        author: 'director90',
+    },
+    {
+        img: 'https://assets-cdn.stylori.com/images/megamenu/stylori_renaissance.jpg',
+        title: 'Tasty burger',
+        author: 'director90',
+    },
+    {
+        img: 'https://assets-cdn.stylori.com/images/megamenu/stylori_monsoon.jpg',
+        title: 'Tasty burger',
+        author: 'director90',
+    },
+    {
+        img: 'https://assets-cdn.stylori.com/images/megamenu/stylori_collection_summer.jpg',
+        title: 'Tasty burger',
+        author: 'director90',
+    },
+]
+
+export const Material =  [{
+    headers:'Diamond',
+    view:'view all',
+    items:[
+'Pendants','Earrings','Rings','Bracelets','Nosepins',
+    ]
+},
+{
+    headers:'Gold',
+    view:'view all',
+    items:[
+'Pendants','Earrings','Rings','Bracelets','Nosepins',
+    ]
+},
+{
+    headers:'Gemstone',
+    view:'view all',
+    items:[
+'Pendants','Earrings','Rings','Bracelets','Nosepins',
+    ]
+},
+{
+    headers:'Solitarie',
+    view:'view all',
+    items:[
+'Pendants','Earrings','Rings','Bracelets','Nosepins',
+    ]
+}
+]
+export default { earings, pendants, rings, nosepins, banglesbracelets, Price, Collection, Material }
 
 

@@ -1,41 +1,89 @@
-.fil-drawer-head{
-    position: relative;
-    margin: 0 auto;
-    z-index: 1;
-    font-size: 12px;
-    color: #394578 !important;
-}.arrow{
-    fill: #394578 !important;
-}.filter-drawer-list{
-    border-bottom:1px solid rgba(0,0,0,.13) !important;
-}.fil-submenu-icons{
-        fill: rgba(0,0,0,.25) !important;
-        padding: 0 9px;
-}.fil-drawer-arrow{
-    fill: rgba(0,0,0,.25) !important;
-}.fil-list-items{
-    position: relative;
-    padding: 10px 0 10px 20px;
-    letter-spacing: 0.01071em;
-    color: #666;
-    font-size: 1rem !important;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: pointer;
-  }.fil-submenu-list{
-    width: 100%;
-    margin: 0;
-    float: none;
-    font-size: 13px;
-    position: relative;
-    border-left: 3px solid #fff;
-    color: #394578;
-    line-height: 1.42857143;
-    letter-spacing: 1px !important;
-  }
-  .fil-main-list span{
-    padding-top: 0 !important;
-    padding-bottom  : 0 !important;
-  }
+.arrow {
+  fill: #394578 !important;
+}
+
+.filter-drawer-list {
+  border-bottom: 1px solid rgba(0, 0, 0, .13) !important;
+}
+
+.fil-submenu-icons {
+  fill: rgba(0, 0, 0, .25) !important;
+  padding: 0 9px;
+}
+
+.fil-drawer-arrow {
+  fill: rgba(0, 0, 0, .25) !important;
+}
+
+.fil-list-items {
+  position: relative;
+  padding: 0 10px;
+  letter-spacing: 0.01071em;
+  color: #666;
+  font-size: 1rem !important;
+  user-select: none;
+  cursor: pointer;
+}
+
+.fil-submenu-list {
+  width: 100%;
+  margin: 0;
+  float: none;
+  font-size: 13px;
+  position: relative;
+  border-left: 3px solid #fff;
+  color: #394578;
+  line-height: 1.42857143;
+
+}
+
+.fil-main-list span {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.main-filter {
+  background-color: #fff !important;
+  box-shadow: none;
+  z-index: 5;
+  border: 1px solid #e3e3e3;
+  margin-top: -2px;
+  box-shadow: none !important;
+  color: #394578 !important;
+}
+
+.fil-drawer-head {
+  background-color: #ededed;
+  font-size: 18px !important;
+  font-weight: normal;
+  color: #394578 !important;
+}
+
+.price-txt input {
+  padding: 0 8px !important;
+  color: #394578;
+  font-weight: 400;
+  font-size: 12px !important;
+  width: 65px;
+  height: 35px;
+}
+
+.price-btn {
+  font-size: 12px !important;
+  background-color: #3a4578 !important;
+  color: #fff !important;
+  line-height: 1.42857143;
+  height: 35px !important;
+  margin-top: 26% !important;
+  box-shadow: none !important;
+}
+/*mobile filter*/
+.filter-mbl-font{
+  padding: 8px 10px;
+  background-color: #F2F2F2;
+  cursor: pointer;
+  color: #394578;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 600;
+}

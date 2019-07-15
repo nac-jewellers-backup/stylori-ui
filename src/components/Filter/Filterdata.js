@@ -1,5 +1,5 @@
 export const filter = [
-    'Price', 'Offers', 'Availability', 'Prodect Type', 'Style', 'Material', 'Theme', 'Collection',
+    'Offers', 'Availability', 'Prodect Type', 'Style', 'Material', 'Theme', 'Collection',
     'Metal Color', 'Metal Purity', 'Occasion', 'No Of Stone', 'Gender', 'Stone Color', 'Stone Shap'
 ];
 
@@ -45,5 +45,12 @@ export const filter1 = {
     'Stone Shap': ['Fashion', 'Chic', 'Cluster', 'Cut Out',
     ],
 };
-
-export default { filter, filter1 }
+export const SortFilter =[
+    'New To Stylori',
+    'Featured',
+    'Price Low to High',
+    'Price High to Low',
+    'Ready To Ship',
+    'Best Seller',
+];
+export default { filter, filter1,SortFilter }
