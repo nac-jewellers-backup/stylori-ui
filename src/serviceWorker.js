@@ -20,8 +20,10 @@ const isLocalhost = Boolean(
     )
 );
 
-export function register(config) {
-  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+export async function register(config) {
+  await requestNotificationPermission();
+
+  if (process.env.NODE_ENV !== 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
     if (publicUrl.origin !== window.location.origin) {
@@ -63,8 +65,11 @@ function registerValidSW(swUrl, config) {
         if (installingWorker == null) {
           return;
         }
-        installingWorker.onstatechange = () => {
+        installingWorker.onstatechange = async () => {
           if (installingWorker.state === 'installed') {
+            let updating = false, 
+              updateMessage='New version of app is installed',
+              installedMessage = 'Your app is installed and works offline'
             if (navigator.serviceWorker.controller) {
               // At this point, the updated precached content has been fetched,
               // but the previous service worker will still serve the older
@@ -77,6 +82,7 @@ function registerValidSW(swUrl, config) {
               // Execute callback
               if (config && config.onUpdate) {
                 config.onUpdate(registration);
+                updating=true
               }
             } else {
               // At this point, everything has been precached.
@@ -86,6 +92,8 @@ function registerValidSW(swUrl, config) {
 
               // Execute callback
               if (config && config.onSuccess) {
+                //Display Notification
+                await sendNotification(updating ? updateMessage : installedMessage);
                 config.onSuccess(registration);
               }
             }
@@ -96,6 +104,34 @@ function registerValidSW(swUrl, config) {
     .catch(error => {
       console.error('Error during service worker registration:', error);
     });
+}
+
+async function requestNotificationPermission(){
+  if(!check()) return false;
+  const permission = await window.Notification ? await window.Notification.requestPermission() : false;
+  if(permission !== 'granted') alert('Enable notifications to have great experience!');
+  else {
+    await sendNotification('Ohoo.. your first notification 🎉🙌');
+    return true;
+  };
+}
+
+function check(){
+  debugger;
+  if (!('serviceWorker' in navigator)) {
+    alert('Sorry notifications are not yet supported');
+    return false;
+  }
+  if (!('PushManager' in window)) {
+    alert('Sorry notifications are not yet supported');
+    return false;
+  }
+
+  return true;
+}
+
+async function sendNotification(message){
+  check() ? await new Notification(message) : await requestNotificationPermission();
 }
 
 function checkValidServiceWorker(swUrl, config) {
