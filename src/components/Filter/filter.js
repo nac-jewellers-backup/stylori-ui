@@ -97,6 +97,21 @@ class Filter extends React.Component {
     let value = selected === name ? "" : name;
     this.setState({ selected: value })
   }
+
+  renderItem = (row) => (
+    <ListItem button key={row} className="" >
+      <Checkbox
+        className="fil-submenu-icons"
+        value="checkedB"
+        color="primary"
+      />
+      <ListItemText>
+        <Typography className="" variant=""
+          className="fil-submenu-list">{row}
+        </Typography>
+      </ListItemText>
+    </ListItem>
+  )
   render() {
 
 
@@ -171,21 +186,7 @@ class Filter extends React.Component {
                   </ListItemText>
                   {this.filter ? <ExpandMore className="fil-drawer-arrow" /> : <ExpandLess className="fil-drawer-arrow" />}
                 </ListItem>
-                {selected === row &&
-                  filter1[row] !== undefined && filter1[row].map(row => (
-                    <ListItem button key={row} className="" >
-                      <Checkbox
-                        className="fil-submenu-icons"
-                        value="checkedB"
-                        color="primary"
-                      />
-                      <ListItemText>
-                        <Typography className="" variant=""
-                          className="fil-submenu-list">{row}
-                        </Typography>
-                      </ListItemText>
-                    </ListItem>
-                  ))
+                {selected === row && filter1[row] !== undefined && filter1[row].map(row => this.renderItem(row))
                 }
               </>
             ))}

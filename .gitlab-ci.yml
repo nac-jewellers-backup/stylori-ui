@@ -36,13 +36,14 @@ build_application:
 lighthouse_report:
   stage: report
   variables:
-    LIGHTHOUSE_TEST_URL: http://localhost:8080
   before_script:
     - npm i -g pm2
     - npm i -g lighthouse
-    - npm run local
+    - npm run pm2-serve
   script: 
-    - lighthouse --chrome-flags="--headless --no-sandbox" $LIGHTHOUSE_TEST_URL --output html --output-path ./report.html
+    - npm run generate-report
+  after_script:
+    - npm run pm2-rm
   artifacts:
     paths:
       - ./report.html
