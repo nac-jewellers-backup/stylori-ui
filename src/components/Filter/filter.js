@@ -1,4 +1,4 @@
-import { ListItem, Drawer, AppBar, Toolbar, List, Typography, Divider, IconButton, Button  }  from '@material-ui/core';
+import { ListItem, Drawer, AppBar, Toolbar, List, Typography, Divider, IconButton, Button } from '@material-ui/core';
 import React from 'react';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
@@ -17,7 +17,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import { Hidden } from '@material-ui/core';
 
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 class Filter extends React.Component {
   state = {
     open: false,
@@ -41,7 +44,8 @@ class Filter extends React.Component {
 
     return (
       <div >
-        {/* <AppBar
+         <Hidden smDown>
+        <AppBar
           className="main-filter"
         >
           <Toolbar disableGutters={!open}>
@@ -141,35 +145,54 @@ class Filter extends React.Component {
               </>
             ))}
           </List>
-        </Drawer> */}
-   <div> 
-   <Grid container spacing={2} xs={12}>
-           <Grid item xs={6} style={{backgroundColor:"#F2F2F2"}}>
-           <Typography  variant="h5" gutterBottom>
-          Filter
-        </Typography>
-        <List>
-        {filter.map(row => (
-                <ListItem button key={row} className=""
-                  onClick={() => this.selectItem(row)}>
-                  <ListItemText
-                  >
-                    <Typography className="filter-mbl-font"
-                      variant=""
-                    >{row}
+        </Drawer>
+        </Hidden>
+        <Hidden mdUp>
+        <div>
+          <div style={{ height: "23px", padding: "9px", borderBottom: "1px solid #e3e3e3" }}>
+            <a >
+              <i style={{ color: "#394578" }} class="fa fa-times"></i>&nbsp;
+           Filter</a>
+            <Button style={{ float: "right", border: '1px solid #ececec', lineHeight: "15px" }}> <b >Clear All</b></Button>
+
+          </div>
+          <Grid container spacing={2} xs={12} className="p">
+            <Grid item xs={6} style={{ backgroundColor: "#F2F2F2" }}>
+              <List className="mbl-filter-list">
+                {filter.map(row => (
+                  <ListItem key={row} className=""
+                    onClick={() => this.selectItem(row)}>
+                    <ListItemText
+                    >
+                      <Typography className="filter-mbl-font"
+                        variant=""
+                      >{row}
+                      </Typography>
+                    </ListItemText>
+                  </ListItem>
+                ))}
+              </List>
+            </Grid>
+            <Grid item xs={6}>
+
+              {filter.map(row => (
+                <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px",width:"100%  " }}>
+                  <Checkbox
+                    value="checked"
+                    color="primary"
+                    icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                    checkedIcon={<CheckBoxIcon fontSize="small" />}
+                  />
+                  <ListItemText>
+                    <Typography variant=""
+                      className="filter-mbl-font">{row}
                     </Typography>
                   </ListItemText>
                 </ListItem>
-                ))}
-        </List>
-           </Grid>
-            <Grid item xs={6}>
-              <List>
-             Clear All
-                </List>
-           </Grid> 
-           </Grid>  </div>
-
+              ))}
+            </Grid>
+          </Grid>  </div>
+</Hidden>
 
 
       </div>

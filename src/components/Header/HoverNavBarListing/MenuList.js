@@ -1,4 +1,4 @@
-import React from "react";
+import React , {Component}from "react";
 import { List, ListItem, ListItemText } from "@material-ui/core";
 
 // const menuList =['Earrings','Pendants','Rings','Nose pins',' Bangles & Bracelets'];
