@@ -12,7 +12,7 @@ import {
   Divider,
   IconButton,
   ListItem,
-  ListItemText
+  ListItemText,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandLess from '@material-ui/icons/ExpandLess';
@@ -21,7 +21,7 @@ import { Hidden } from '@material-ui/core';
 import MailIcon from '@material-ui/icons/Mail';
 import JewelleryMenuItem from '../../screens/Stylori/JewlleryMenuItem';
 import HeaderNotification from './Notification/HeaderNotification'
-import { mainliast, Jewellery } from './headerData'
+import { mainlist, Jewellery ,subheader} from './headerData'
 class Header extends Component {
   constructor(props) {
     super(props)
@@ -155,7 +155,7 @@ class Header extends Component {
             </div>
             <Divider />
             <List className="sideNavListing"  >
-              {mainliast.map(row => (
+              {mainlist.map(row => (
                 <>
                   <ListItem button key={row.name} className="drawer-list" >
                     <img className="submenu-icons" src={row.icon}></img>
@@ -167,7 +167,7 @@ class Header extends Component {
                       >{row.name}
                       </Typography>
                     </ListItemText>
-                    {this.mainliast ? <ExpandLess className="drawer-arrow" /> : <ExpandMore className="drawer-arrow" />}
+                    {this.mainlist ? <ExpandLess className="drawer-arrow" /> : <ExpandMore className="drawer-arrow" />}
                   </ListItem>
                   {selected === row.name &&
                     Object.keys(Jewellery[selected]).map(row => (
@@ -184,6 +184,29 @@ class Header extends Component {
                 </>
               ))}
             </List>
+               <div>
+               <List className="sideNavListing" >
+               {subheader.map(row => (
+                 <>
+          <ListItem className="drawer-list"
+            // onClick={}
+          >
+            <ListItemText>
+            <Typography className="Jew-mbl-head-list" variant="">{row.name}<span className="header-viewal">View All</span>
+                          </Typography>
+            </ListItemText>
+          </ListItem>
+         <ListItem>
+            <ListItemText>
+            <Typography className="Jew-mbl-head-list" variant="">Pendants</Typography>
+            <Typography className="Jew-mbl-head-list" variant="">Pendants</Typography>
+            <Typography className="Jew-mbl-head-list" variant="">Pendants</Typography>
+            </ListItemText>
+            </ListItem>
+            </>
+               ))}
+               </List>
+               </div>
           </Drawer>
 
         </Hidden>

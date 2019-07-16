@@ -35,7 +35,7 @@ class Filter extends React.Component {
     }, function () {
     }.bind(this));
   };
- 
+
   handleDrawerOpen = () => {
     this.setState({ open: true });
   };
@@ -145,14 +145,14 @@ class Filter extends React.Component {
                     {selected === row &&
                       filter1[row] !== undefined && filter1[row].map(row => (
                         <ListItem button key={row}  >
-                        <>
-                  <Checkbox
-                             checked={this.state.isChecked}
-                             onChange={this.toggleChange}
-                            className="fil-submenu-icons"
-                            value="checked"
-                            color="primary"
-                          />
+                          <>
+                            <Checkbox
+                              checked={this.state.isChecked}
+                              onChange={this.toggleChange}
+                              className="fil-submenu-icons"
+                              value="checked"
+                              color="primary"
+                            />
                           </>
                           <ListItemText>
                             <Typography className="" variant=""
@@ -229,7 +229,7 @@ class Filter extends React.Component {
                     </Typography>
                 </IconButton>
 
-                <div style={{ flexGrow: "2"}} />
+                <div style={{ flexGrow: "2" }} />
 
                 <IconButton edge="end" color="inherit">
                   <Typography variant=""
