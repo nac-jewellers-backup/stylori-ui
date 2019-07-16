@@ -15,8 +15,11 @@ export default class Stylori extends Component {
         
 
          <Grid container >
+         {/* <Grid item xs={12}>
+             <Header />
+           </Grid> */}
            <Grid item xs={12}>
-             <Filter />
+             <Header />
            </Grid>
             {/* <Grid item xs={12}>
              <HomeCarousel />
