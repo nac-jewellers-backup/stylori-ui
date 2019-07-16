@@ -1,29 +1,39 @@
-import { ListItem, Drawer, AppBar, Toolbar, List, Typography, Divider, IconButton, Button } from '@material-ui/core';
+import {
+  ListItem,
+  Drawer,
+  AppBar,
+  Toolbar,
+  List,
+  Typography,
+  Divider,
+  IconButton,
+  Button,
+  ListItemText,
+  Checkbox
+} from '@material-ui/core';
 import React from 'react';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import './filter.css';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import { ListItemText, Checkbox } from '@material-ui/core';
-import { filter, filter1 } from './Filterdata';
-import Fab from '@material-ui/core/Fab';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import Avatar from '@material-ui/core/Avatar';
-import MenuIcon from '@material-ui/icons/Menu';
-import AddIcon from '@material-ui/icons/Add';
-import SearchIcon from '@material-ui/icons/Search';
-import MoreIcon from '@material-ui/icons/MoreVert';
+import { filter, filter1, Filterdata } from './Filterdata';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import { Hidden } from '@material-ui/core';
-
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 class Filter extends React.Component {
   state = {
     open: false,
+    isChecked: false,
+    filtercheck: ''
+  };
+  toggleChange = () => {
+    this.setState({
+      isChecked: !this.state.isChecked
+    }, function () {
+    }.bind(this));
   };
 
   handleDrawerOpen = () => {
@@ -37,7 +47,14 @@ class Filter extends React.Component {
     let value = selected === name ? "" : name;
     this.setState({ selected: value })
   }
+  filterValue = (filtercheck) => {
+    if (filtercheck === this.state.filtercheck) {
+      this.setState({ filtercheck: '' })
+    } else {
+      this.setState({ filtercheck })
+    }
 
+  }
   render() {
     let { selected } = this.state;
     const { open } = this.state;
@@ -128,11 +145,15 @@ class Filter extends React.Component {
                     {selected === row &&
                       filter1[row] !== undefined && filter1[row].map(row => (
                         <ListItem button key={row}  >
-                          <Checkbox
-                            className="fil-submenu-icons"
-                            value="checkedB"
-                            color="primary"
-                          />
+                          <>
+                            <Checkbox
+                              checked={this.state.isChecked}
+                              onChange={this.toggleChange}
+                              className="fil-submenu-icons"
+                              value="checked"
+                              color="primary"
+                            />
+                          </>
                           <ListItemText>
                             <Typography className="" variant=""
                               className="fil-submenu-list">{row}
@@ -148,11 +169,11 @@ class Filter extends React.Component {
           </Drawer>
         </Hidden>
         <Hidden mdUp>
-          <div>
+          <div >
             <div style={{ height: "23px", padding: "9px", borderBottom: "1px solid #e3e3e3" }}>
               <a >
                 <i style={{ color: "#394578" }} class="fa fa-times"></i>&nbsp;
-           Filter</a>
+                 Filter</a>
               <Button style={{ float: "right", border: '1px solid #ececec', lineHeight: "15px" }}> <b >Clear All</b></Button>
 
             </div>
@@ -161,7 +182,7 @@ class Filter extends React.Component {
                 <List className="mbl-filter-list">
                   {filter.map(row => (
                     <ListItem key={row} className=""
-                      onClick={() => this.selectItem(row)}>
+                      onClick={() => this.filterValue(row)}>
                       <ListItemText
                       >
                         <Typography className="filter-mbl-font"
@@ -173,34 +194,38 @@ class Filter extends React.Component {
                   ))}
                 </List>
               </Grid>
-              <Grid item xs={6} style={{ height: "575px", overflow: 'scroll' }}>
-
-                {filter.map(row => (
-                  <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
-                    <Checkbox
-                      value="checked"
-                      color="primary"
-                      icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                      checkedIcon={<CheckBoxIcon fontSize="small" />}
-                    />
-                    <ListItemText>
-                      <Typography variant=""
-                        className="filter-mbl-font">{row}
-                      </Typography>
-                    </ListItemText>
-                  </ListItem>
-                ))}
-              </Grid>
+              {
+                this.state.filtercheck !== '' &&
+                <Grid item xs={6} style={{ height: "575px", overflow: 'scroll' }}>
+                  {filter1[this.state.filtercheck].map(row => (
+                    <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
+                      <Checkbox
+                        value="checked"
+                        color="primary"
+                        checked={this.state.isChecked}
+                        onChange={this.toggleChange}
+                        icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                        checkedIcon={<CheckBoxIcon fontSize="small" />}
+                      />
+                      <ListItemText>
+                        <Typography variant=""
+                          className="filter-mbl-font">{row}
+                        </Typography>
+                      </ListItemText>
+                    </ListItem>
+                  ))}
+                </Grid>
+              }
             </Grid>
 
 
 
-
-            <AppBar position="fixed" color="primary" className="filter-fixed">
+            <AppBar color="primary" className="filter-fixed header">
               <Toolbar >
                 <IconButton >
                   <Typography variant=""
-                    className="filter-mbl-font">Filter
+                    className="filter-mbl-font"><i className='filter-icon' class="fa fa-filter"></i> &nbsp;
+                    Filter
                     </Typography>
                 </IconButton>
 
@@ -208,7 +233,8 @@ class Filter extends React.Component {
 
                 <IconButton edge="end" color="inherit">
                   <Typography variant=""
-                    className="filter-mbl-font">Sort
+                    className="filter-mbl-font"><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
+                    Sort
                     </Typography>
                 </IconButton>
               </Toolbar>
