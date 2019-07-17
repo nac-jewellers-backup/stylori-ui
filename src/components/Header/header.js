@@ -18,10 +18,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { Hidden } from '@material-ui/core';
-import MailIcon from '@material-ui/icons/Mail';
 import JewelleryMenuItem from '../../screens/Stylori/JewlleryMenuItem';
 import HeaderNotification from './Notification/HeaderNotification'
-import { mainlist, Jewellery ,subheader} from './headerData'
+import { mainlist, Jewellery, subheader } from './headerData'
 class Header extends Component {
   constructor(props) {
     super(props)
@@ -31,6 +30,7 @@ class Header extends Component {
       panel1: false,
       Menuopen: false,
       selected: '',
+      selected1: '',
       Checked: false,
     }
   }
@@ -49,8 +49,13 @@ class Header extends Component {
     let value = selected === name ? "" : name;
     this.setState({ selected: value })
   }
+  selectItem1 = (name) => {
+    let { selected1 } = this.state;
+    let value = selected1 === name ? "" : name;
+    this.setState({ selected1: value })
+  }
   render() {
-    let { selected } = this.state;
+    let { selected, selected1 } = this.state;
     return (
       <div>
         <Hidden smDown>
@@ -140,7 +145,6 @@ class Header extends Component {
               </Grid>
             </Toolbar>
           </AppBar>
-
           <Drawer
             anchor="left"
             open={this.state.open}
@@ -160,53 +164,54 @@ class Header extends Component {
                   <ListItem button key={row.name} className="drawer-list" >
                     <img className="submenu-icons" src={row.icon}></img>
                     <ListItemText
-                      onClick={() => this.selectItem(row.name)}
+                      onClick={() => Jewellery[row.name] !== undefined ? this.selectItem(row.name) : ''}
                     >
                       <Typography className="list-items"
                         variant=""
                       >{row.name}
                       </Typography>
                     </ListItemText>
-                    {this.mainlist ? <ExpandLess className="drawer-arrow" /> : <ExpandMore className="drawer-arrow" />}
+                    {Jewellery[row.name] !== undefined ? row.name === selected ? <ExpandMore className="drawer-arrow" /> : <ExpandLess className="drawer-arrow" /> : ""}
                   </ListItem>
                   {selected === row.name &&
-                    Object.keys(Jewellery[selected]).map(row => (
-                      <ListItem button key={Jewellery[selected][row].name} className="drawer-list">
-                        <MailIcon className="submenu-icons" />
-                        <ListItemText >
-                          <Typography className="Jew-mbl-head-list" variant="">{Jewellery[selected][row].name}
-                          </Typography>
-                        </ListItemText>
-                        {selected ? <ExpandLess className="drawer-arrow" /> : <ExpandMore className="drawer-arrow" />}
-                      </ListItem>
+                    Object.keys(Jewellery[selected]).map(row2 => (
+                      <>
+                        <ListItem button key={Jewellery[selected][row2].name} className="drawer-list">
+                          <img className="submenu-icons" src={row2.icon}></img>
+                          <ListItemText onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>
+                            <Typography className="Jew-mbl-head-list" variant="">{Jewellery[selected][row2].name}
+                            </Typography>
+                          </ListItemText>
+                          {selected1 === Jewellery[selected][row2].name ? <ExpandMore className="drawer-arrow" /> : <ExpandLess className="drawer-arrow" />}
+                        </ListItem>
+                        {selected1 === Jewellery[selected][row2].name &&
+                          <List className="sideNavListing" >
+                            <ListItem className="drawer-list">
+                              <ListItemText
+                              >
+                                <Typography className="Jew-mbl-head-list" variant="">{subheader[selected1].header}
+                                  <span className="header-viewal">View All</span>
+                                </Typography>
+                              </ListItemText>
+                            </ListItem>
+                            {subheader[selected1].name.map(row => (
+                              <>
+                                <ListItem>
+                                  <ListItemText>
+                                    <Typography className="Jew-mbl-head-list" variant="">{row}</Typography>
+                                  </ListItemText>
+                                </ListItem>
+                              </>
+                            ))}
+
+                          </List>
+                        }
+                      </>
                     ))
                   }
                 </>
               ))}
             </List>
-               <div>
-               <List className="sideNavListing" >
-               {subheader.map(row => (
-                 <>
-          <ListItem className="drawer-list"
-            // onClick={}
-          >
-            <ListItemText>
-            <Typography className="Jew-mbl-head-list" variant="">{row.name}<span className="header-viewal">View All</span>
-                          </Typography>
-            </ListItemText>
-          </ListItem>
-         <ListItem>
-            <ListItemText>
-            <Typography className="Jew-mbl-head-list" variant="">Pendants</Typography>
-            <Typography className="Jew-mbl-head-list" variant="">Pendants</Typography>
-            <Typography className="Jew-mbl-head-list" variant="">Pendants</Typography>
-            </ListItemText>
-            </ListItem>
-            </>
-               ))}
-               </List>
-               </div>
           </Drawer>
 
         </Hidden>
@@ -216,7 +221,7 @@ class Header extends Component {
             //onMouseLeave={() => { this.setState({ Menuopen: false,Checked:false }) }}
             :
             ''
-        } 
+        }
       </div>
     )
   }

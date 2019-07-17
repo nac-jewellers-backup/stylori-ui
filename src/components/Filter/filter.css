@@ -43,6 +43,7 @@
 }
 
 .main-filter {
+  height: 58px !important;
   background-color: #fff !important;
   box-shadow: none;
   z-index: 5;
@@ -100,4 +101,25 @@ bottom: 0 !important;
 top: auto !important;
 }.filter-icon ,.fa{
   font-size: 18px !important;
+}::-webkit-scrollbar {
+  width: 3px;
+  height: 100%;
+  margin: 0 auto;
+  border-radius: 16px;
+    text-align: center;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #CCC
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(57,69,120,1); ; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }

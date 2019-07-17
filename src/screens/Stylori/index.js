@@ -12,17 +12,12 @@ export default class Stylori extends Component {
   render() {
     return (
       <div>
-        
-
          <Grid container >
          <Grid item xs={12}>
-             <Header />
-           </Grid>
-           <Grid item xs={12}>
-             <Header />
+             <Header/>
            </Grid>
             {/* <Grid item xs={12}>
-             <HomeCarousel />
+             <Filter />
            </Grid> */}
            {/* <Grid item xs={12} >
            <Subheader />

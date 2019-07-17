@@ -9,7 +9,9 @@ import {
   IconButton,
   Button,
   ListItemText,
-  Checkbox
+  Checkbox,
+  Grid,
+  TextField,
 } from '@material-ui/core';
 import React from 'react';
 import ExpandLess from '@material-ui/icons/ExpandLess';
@@ -17,24 +19,37 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import './filter.css';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
 import { filter, filter1, Filterdata } from './Filterdata';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import { Hidden } from '@material-ui/core';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import Chip from '@material-ui/core/Chip';
 class Filter extends React.Component {
   state = {
     open: false,
-    isChecked: false,
-    filtercheck: ''
+    checked: {},
+    selected: '',
+    filtercheck: '',
+    chipData: [
+      { key: '', label: '' },
+    ],
   };
-  toggleChange = () => {
+  handleChange(value, name) {
+
+    let { checked, chipData } = this.state;
+    let arr = [];
+    if (name === true) {
+      chipData.push({ key: chipData[chipData.length - 1].key, label: value });
+    } else {
+      arr = chipData.filter(val => val.label !== value);
+      chipData = arr;
+    }
+    checked[value] = name;
     this.setState({
-      isChecked: !this.state.isChecked
-    }, function () {
-    }.bind(this));
-  };
+      checked,
+      chipData
+    })
+  }
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -55,9 +70,20 @@ class Filter extends React.Component {
     }
 
   }
+
+  handleDelete = data => () => {
+    this.setState(state => {
+      const chipData = [...state.chipData];
+      const chipToDelete = chipData.indexOf(data);
+      chipData.splice(chipToDelete, 1);
+      return { chipData };
+    });
+  };
+
   render() {
     let { selected } = this.state;
     const { open } = this.state;
+    const datafilter = filter1;
 
     return (
       <div >
@@ -77,6 +103,17 @@ class Filter extends React.Component {
                   Filter By
             </Typography>
               </IconButton>
+              <div style={{ marginLeft: "10%" }}>
+                {this.state.chipData.map(data => {
+                  return (
+                    <Chip
+                      key={data.key}
+                      label={data.label}
+                      onDelete={this.handleDelete(data)}
+                    />
+                  );
+                })}
+              </div>
             </Toolbar>
           </AppBar>
           <Drawer
@@ -113,7 +150,7 @@ class Filter extends React.Component {
                       variant="outlined"
                     />
                   </Grid>&nbsp;
-        <Grid item xs={4}>
+             <Grid item xs={4}>
                     <TextField
                       className="price-txt"
                       id="outlined-bare"
@@ -122,7 +159,7 @@ class Filter extends React.Component {
                       variant="outlined"
                     />
                   </Grid>&nbsp;
-        <Grid item xs={3}>
+            <Grid item xs={3}>
                     <Button variant="contained" className="price-btn">Go</Button>
                   </Grid>
                 </Grid>
@@ -138,17 +175,18 @@ class Filter extends React.Component {
                       >{row}
                       </Typography>
                     </ListItemText>
-                    {this.filter ? <ExpandMore className="fil-drawer-arrow" /> :
+                    {row === selected ? <ExpandMore className="fil-drawer-arrow" /> :
                       <ExpandLess className="fil-drawer-arrow" />}
                   </ListItem>
                   <div style={{ maxHeight: '200px', overflow: 'auto' }}>
                     {selected === row &&
-                      filter1[row] !== undefined && filter1[row].map(row => (
-                        <ListItem button key={row}  >
+                      datafilter[row] !== undefined && datafilter[row].map(row12 => (
+                        // ( (Object.keys(this.state.checked).length === 0 ) || (this.state.checked[row12] !== undefined || datafilter[row].indexOf() === -1)) &&
+                        <ListItem button key={row12}  >
                           <>
                             <Checkbox
-                              checked={this.state.isChecked}
-                              onChange={this.toggleChange}
+                              checked={this.state.checked[row12] !== undefined ? this.state.checked[row12] : false}
+                              onChange={() => this.handleChange(row12, this.state.checked[row12] !== undefined ? !this.state.checked[row12] : true)}
                               className="fil-submenu-icons"
                               value="checked"
                               color="primary"
@@ -156,7 +194,7 @@ class Filter extends React.Component {
                           </>
                           <ListItemText>
                             <Typography className="" variant=""
-                              className="fil-submenu-list">{row}
+                              className="fil-submenu-list">{row12}
                             </Typography>
                           </ListItemText>
                         </ListItem>
@@ -169,7 +207,7 @@ class Filter extends React.Component {
           </Drawer>
         </Hidden>
         <Hidden mdUp>
-          <div >
+          <div>
             <div style={{ height: "23px", padding: "9px", borderBottom: "1px solid #e3e3e3" }}>
               <a >
                 <i style={{ color: "#394578" }} class="fa fa-times"></i>&nbsp;
@@ -202,8 +240,8 @@ class Filter extends React.Component {
                       <Checkbox
                         value="checked"
                         color="primary"
-                        checked={this.state.isChecked}
-                        onChange={this.toggleChange}
+                        checked={this.state.checked[row] !== undefined ? this.state.checked[row] : false}
+                        onChange={() => this.handleChange(row, this.state.checked[row] !== undefined ? !this.state.checked[row] : true)}
                         icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
                         checkedIcon={<CheckBoxIcon fontSize="small" />}
                       />
@@ -242,6 +280,7 @@ class Filter extends React.Component {
 
 
           </div>
+
         </Hidden>
 
 
