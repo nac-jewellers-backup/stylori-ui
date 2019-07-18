@@ -8,20 +8,24 @@ import Subheader from '../../components/Home/subheader'
 import SubCarousel from '../../components/Home/subcarousel'
 import Socialmediacard from '../../components/Home/socialmediaCard'
 import Footer from '../../components/Home/footer'
+import Card from '@material-ui/core/Card';
 export default class Stylori extends Component {
   render() {
     return (
       <div>
-        
+        <Grid container >
+          <Grid item xs={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+            <Header />
+          </Grid>
 
-         <Grid container >
-           <Grid item xs={12}>
-             <Filter />
-           </Grid>
-            {/* <Grid item xs={12}>
-             <HomeCarousel />
-           </Grid> */}
-           {/* <Grid item xs={12} >
+          <Grid item xs={12}>
+            <ProductDescription />
+            <Filter />
+
+
+          </Grid>
+
+          {/* <Grid item xs={12} >
            <Subheader />
            </Grid>
            <Grid item xs={12} >
@@ -34,8 +38,8 @@ export default class Stylori extends Component {
            <Grid item xs={12} >
          <Footer/>
            </Grid>  */}
-          
-         </Grid>
+
+        </Grid>
 
       </div>
     )

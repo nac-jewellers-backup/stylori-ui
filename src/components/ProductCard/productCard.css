@@ -1,0 +1,63 @@
+.shine {
+    background: #f6f7f8;
+    background-image: linear-gradient(
+      to right,
+      #f6f7f8 0%,
+      #edeef1 20%,
+      #f6f7f8 40%,
+      #f6f7f8 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 800px 104px;
+    display: inline-block;
+    position: relative;
+  
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: placeholderShimmer;
+    -webkit-animation-timing-function: linear;
+  }
+  
+  .price {
+    height: 20px;
+    width: 100px;
+  }
+  
+  .title {
+    height: 40px;
+    width: 100%;
+  }
+  
+  @-webkit-keyframes placeholderShimmer {
+    0% {
+      background-position: -468px 0;
+    }
+  
+    100% {
+      background-position: 468px 0;
+    }
+  }
+  
+  .card-control {
+    z-index: 1;
+    position: absolute;
+  }
+  
+  .card-control-topleft {
+    top: 0px;
+    left: 0px;
+  }
+  .card-control-bottomleft {
+    bottom: 30%;
+    left: 0px;
+  }
+  .card-control-topright {
+    top: 0px;
+    right: 0px;
+  }
+  .card-control-bottomright {
+    bottom: 30%;
+    right: 0px;
+  }
+  
