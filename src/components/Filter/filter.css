@@ -58,6 +58,7 @@
 
 
 .main-filter {
+  height: 58px !important;
   background-color: #fff !important;
   box-shadow: none;
   z-index: 5;

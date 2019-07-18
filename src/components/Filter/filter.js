@@ -103,6 +103,22 @@ class PersistentDrawerLeft extends React.Component {
   state = {
     open: true,
   };
+  handleChange(value, name) {
+
+    let { checked, chipData } = this.state;
+    let arr = [];
+    if (name === true) {
+      chipData.push({ key: chipData[chipData.length - 1].key, label: value });
+    } else {
+      arr = chipData.filter(val => val.label !== value);
+      chipData = arr;
+    }
+    checked[value] = name;
+    this.setState({
+      checked,
+      chipData
+    })
+  }
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -166,7 +182,7 @@ class PersistentDrawerLeft extends React.Component {
                       variant="outlined"
                     />
                   </Grid>&nbsp;
-        <Grid item xs={4}>
+             <Grid item xs={4}>
                     <TextField
                       className="price-txt"
                       id="outlined-bare"
@@ -175,7 +191,7 @@ class PersistentDrawerLeft extends React.Component {
                       variant="outlined"
                     />
                   </Grid>&nbsp;
-        <Grid item xs={3}>
+            <Grid item xs={3}>
                     <Button variant="contained" className="price-btn">Go</Button>
                   </Grid>
                 </Grid>
@@ -191,13 +207,13 @@ class PersistentDrawerLeft extends React.Component {
                       >{row}
                       </Typography>
                     </ListItemText>
-                    {this.filter ? <ExpandMore className="fil-drawer-arrow" /> :
+                    {row === selected ? <ExpandMore className="fil-drawer-arrow" /> :
                       <ExpandLess className="fil-drawer-arrow" />}
                   </ListItem>
                   <div style={{ maxHeight: '200px', overflow: 'auto' }}>
                     {selected === row &&
-                      filter1[row] !== undefined && filter1[row].map(row => (
-                        <ListItem key={row}  >   {/* button */}
+                      filter1[row] !== undefined && filter1[row].map(row12 => (
+                        <ListItem key={row12}  >   {/* button */}
                           <Checkbox
                             className="fil-submenu-icons"
                             value="checkedB"
@@ -205,7 +221,7 @@ class PersistentDrawerLeft extends React.Component {
                           />
                           <ListItemText>
                             <Typography className="" variant=""
-                              className="fil-submenu-list">{row}
+                              className="fil-submenu-list">{row12}
                             </Typography>
                           </ListItemText>
                         </ListItem>
