@@ -42,6 +42,21 @@
   padding-bottom: 0 !important;
 }
 
+/* .main-fileer-header header{
+  top:152px;
+  position: sticky !important;
+ 
+} */
+
+/* .main-fileer-header { */
+  /* margin-top:200px; */
+  /* width: 100%;
+
+
+ 
+} */
+
+
 .main-filter {
   height: 58px !important;
   background-color: #fff !important;
@@ -51,6 +66,8 @@
   margin-top: -2px;
   box-shadow: none !important;
   color: #394578 !important;
+
+ 
 }
 
 .fil-drawer-head {
@@ -58,6 +75,7 @@
   font-size: 18px !important;
   font-weight: normal;
   color: #394578 !important;
+  
 }
 
 .price-txt input {
@@ -99,27 +117,14 @@ color: #fff;
     position: fixed!important;
 bottom: 0 !important;    
 top: auto !important;
-}.filter-icon ,.fa{
-  font-size: 18px !important;
-}::-webkit-scrollbar {
-  width: 3px;
-  height: 100%;
-  margin: 0 auto;
-  border-radius: 16px;
-    text-align: center;
 }
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #CCC
+.headerFilter header{
+position:relative !important;
 }
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: rgba(57,69,120,1); ; 
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+/* .DrawerDiv div { */
+  /* position: absolute  !important; */
+  /* top:'auto'
+} */
+.DrawerDiv div { 
+   top:'auto'
 }

@@ -59,7 +59,7 @@ class Header extends Component {
     return (
       <div>
         <Hidden smDown>
-
+<div className="header-appbar-sticky">
           <AppBar className="header-appbar">
             <HeaderNotification />
             <Grid container spacing={12} >
@@ -107,9 +107,10 @@ class Header extends Component {
             </Grid>
             <div className="header-bottom"></div>
           </AppBar>
+          </div>
         </Hidden>
         <Hidden mdUp>
-
+        <div className="header-appbar-sticky">
           <AppBar
             className="header-appbar-moblie"
           >
@@ -145,6 +146,7 @@ class Header extends Component {
               </Grid>
             </Toolbar>
           </AppBar>
+          </div>    
           <Drawer
             anchor="left"
             open={this.state.open}

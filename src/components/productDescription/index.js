@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './ProductDescription.css'
 import { Container, Hidden, Grid } from '@material-ui/core';
-import { Slideshow, Filter as CustomSeparator } from '../';
+import Slideshow   from '../Carousel/carosul';
+import  CustomSeparator  from '../BreadCrumb/index';
 
 class ProductDescription extends Component {
   

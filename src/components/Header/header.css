@@ -72,6 +72,8 @@
     background-color: #fff !important;
     text-align: center !important;
     top: 0;
+    padding: 0 !important;
+    position: sticky;
       width: 100%;
     line-height: 1.42857143;
     font-size: 12px;
@@ -204,4 +206,8 @@ color: #394578;
        font-size: 11px;
        letter-spacing: 1px!important;
        float: right !important;
+}
+.header-appbar-sticky header{
+  position: sticky;
+  top:0px;
 }

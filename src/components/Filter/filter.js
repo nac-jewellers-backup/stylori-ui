@@ -1,38 +1,107 @@
-import {
-  ListItem,
-  Drawer,
-  AppBar,
-  Toolbar,
-  List,
-  Typography,
-  Divider,
-  IconButton,
-  Button,
-  ListItemText,
-  Checkbox,
-  Grid,
-  TextField,
-} from '@material-ui/core';
 import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ListItem from '@material-ui/core/ListItem';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import { filter, filter1 } from './Filterdata';
+import ListItemText from '@material-ui/core/ListItemText';
+import { Button, Checkbox, Paper } from '@material-ui/core';
 import './filter.css';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { filter, filter1, Filterdata } from './Filterdata';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import { Hidden } from '@material-ui/core';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import Chip from '@material-ui/core/Chip';
-class Filter extends React.Component {
+import ProductCard from '../ProductCard/index';
+import FilterHeader from './FilterHeader';
+const drawerWidth = 280;
+
+const styles = theme => ({
+  root: {
+    display: 'flex',
+
+  },
+  appBar: {
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+
+    }),
+  },
+  appBarShift: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: drawerWidth,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  menuButton: {
+    marginLeft: 12,
+    marginRight: 20,
+  },
+  hide: {
+    display: 'none',
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+
+
+  },
+  drawerPaper: {
+    width: drawerWidth,
+    display: 'sticky',
+    top: '155px'
+
+  },
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+    justifyContent: 'flex-end',
+
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing.unit * 3,
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    marginLeft: -drawerWidth,
+  },
+  contentShift: {
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginLeft: 0,
+  },
+});
+
+
+class PersistentDrawerLeft extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      open: this.props.open,
+    };
+
+  }
   state = {
-    open: false,
-    checked: {},
-    selected: '',
-    filtercheck: '',
-    chipData: [
-      { key: '', label: '' },
-    ],
+    open: true,
   };
   handleChange(value, name) {
 
@@ -62,66 +131,29 @@ class Filter extends React.Component {
     let value = selected === name ? "" : name;
     this.setState({ selected: value })
   }
-  filterValue = (filtercheck) => {
-    if (filtercheck === this.state.filtercheck) {
-      this.setState({ filtercheck: '' })
-    } else {
-      this.setState({ filtercheck })
-    }
-
-  }
-
-  handleDelete = data => () => {
-    this.setState(state => {
-      const chipData = [...state.chipData];
-      const chipToDelete = chipData.indexOf(data);
-      chipData.splice(chipToDelete, 1);
-      return { chipData };
-    });
-  };
-
   render() {
+    const { classes, theme } = this.props;
     let { selected } = this.state;
     const { open } = this.state;
-    const datafilter = filter1;
-
+    console.log('sdfsfs', open)
     return (
-      <div >
-        <Hidden smDown>
-          <AppBar
-            className="main-filter"
-          >
-            <Toolbar disableGutters={!open}>
-              <IconButton
-                color="inherit"
-                onClick={this.handleDrawerOpen}
-              >
-                <ChevronLeftIcon className="arrow" />
-                <Typography variant="h6" color="inherit" noWrap
-                  className="fil-drawer-head"
-                >
-                  Filter By
-            </Typography>
-              </IconButton>
-              <div style={{ marginLeft: "10%" }}>
-                {this.state.chipData.map(data => {
-                  return (
-                    <Chip
-                      key={data.key}
-                      label={data.label}
-                      onDelete={this.handleDelete(data)}
-                    />
-                  );
-                })}
-              </div>
-            </Toolbar>
-          </AppBar>
+      <>
+        <FilterHeader handleDrawerOpen={this.handleDrawerOpen.bind(this)} open={this.state.open} />
+
+        <div className={classes.root} >
+          {/* <CssBaseline /> */}
+
           <Drawer
+            className={classes.drawer}
             variant="persistent"
             anchor="left"
             open={open}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
           >
-            <div style={{ width: "240px" }}>
+
+            <div style={{ width: "240px", position: 'relative' }}>
               <IconButton onClick={this.handleDrawerClose}
                 style={{ float: 'right' }}>
                 <i style={{ color: "#394578", margin: "45%" }} class="fa fa-times"></i>
@@ -166,7 +198,7 @@ class Filter extends React.Component {
               </div>
               {filter.map(row => (
                 <>
-                  <ListItem button key={row} className=""
+                  {/* button */}  <ListItem key={row} className=""
                     onClick={() => this.selectItem(row)}>
                     <ListItemText
                     >
@@ -180,18 +212,13 @@ class Filter extends React.Component {
                   </ListItem>
                   <div style={{ maxHeight: '200px', overflow: 'auto' }}>
                     {selected === row &&
-                      datafilter[row] !== undefined && datafilter[row].map(row12 => (
-                        // ( (Object.keys(this.state.checked).length === 0 ) || (this.state.checked[row12] !== undefined || datafilter[row].indexOf() === -1)) &&
-                        <ListItem button key={row12}  >
-                          <>
-                            <Checkbox
-                              checked={this.state.checked[row12] !== undefined ? this.state.checked[row12] : false}
-                              onChange={() => this.handleChange(row12, this.state.checked[row12] !== undefined ? !this.state.checked[row12] : true)}
-                              className="fil-submenu-icons"
-                              value="checked"
-                              color="primary"
-                            />
-                          </>
+                      filter1[row] !== undefined && filter1[row].map(row12 => (
+                        <ListItem key={row12}  >   {/* button */}
+                          <Checkbox
+                            className="fil-submenu-icons"
+                            value="checkedB"
+                            color="primary"
+                          />
                           <ListItemText>
                             <Typography className="" variant=""
                               className="fil-submenu-list">{row12}
@@ -205,87 +232,25 @@ class Filter extends React.Component {
               ))}
             </List>
           </Drawer>
-        </Hidden>
-        <Hidden mdUp>
-          <div>
-            <div style={{ height: "23px", padding: "9px", borderBottom: "1px solid #e3e3e3" }}>
-              <a >
-                <i style={{ color: "#394578" }} class="fa fa-times"></i>&nbsp;
-                 Filter</a>
-              <Button style={{ float: "right", border: '1px solid #ececec', lineHeight: "15px" }}> <b >Clear All</b></Button>
 
-            </div>
-            <Grid container spacing={2} xs={12} className="p">
-              <Grid item xs={6} style={{ backgroundColor: "#F2F2F2" }}>
-                <List className="mbl-filter-list">
-                  {filter.map(row => (
-                    <ListItem key={row} className=""
-                      onClick={() => this.filterValue(row)}>
-                      <ListItemText
-                      >
-                        <Typography className="filter-mbl-font"
-                          variant=""
-                        >{row}
-                        </Typography>
-                      </ListItemText>
-                    </ListItem>
-                  ))}
-                </List>
-              </Grid>
-              {
-                this.state.filtercheck !== '' &&
-                <Grid item xs={6} style={{ height: "575px", overflow: 'scroll' }}>
-                  {filter1[this.state.filtercheck].map(row => (
-                    <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
-                      <Checkbox
-                        value="checked"
-                        color="primary"
-                        checked={this.state.checked[row] !== undefined ? this.state.checked[row] : false}
-                        onChange={() => this.handleChange(row, this.state.checked[row] !== undefined ? !this.state.checked[row] : true)}
-                        icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                        checkedIcon={<CheckBoxIcon fontSize="small" />}
-                      />
-                      <ListItemText>
-                        <Typography variant=""
-                          className="filter-mbl-font">{row}
-                        </Typography>
-                      </ListItemText>
-                    </ListItem>
-                  ))}
-                </Grid>
-              }
-            </Grid>
+          <div
+            className={classNames(classes.content, {
+              [classes.contentShift]: open,
+            })}
 
-
-
-            <AppBar color="primary" className="filter-fixed header">
-              <Toolbar >
-                <IconButton >
-                  <Typography variant=""
-                    className="filter-mbl-font"><i className='filter-icon' class="fa fa-filter"></i> &nbsp;
-                    Filter
-                    </Typography>
-                </IconButton>
-
-                <div style={{ flexGrow: "2" }} />
-
-                <IconButton edge="end" color="inherit">
-                  <Typography variant=""
-                    className="filter-mbl-font"><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
-                    Sort
-                    </Typography>
-                </IconButton>
-              </Toolbar>
-            </AppBar>
-
-
+          >
+            <ProductCard />
           </div>
 
-        </Hidden>
-
-
-      </div>
+        </div>
+      </>
     );
   }
 }
-export default Filter;
+
+PersistentDrawerLeft.propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles, { withTheme: true })(PersistentDrawerLeft);
