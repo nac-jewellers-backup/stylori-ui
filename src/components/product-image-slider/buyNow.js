@@ -10,12 +10,12 @@ class PriceBuynoe extends React.Component {
             <div>
 
                 <Grid container spacing={12}>
-                    <Grid item xs={4} style={{ textAlign: "left" }}>
+                    <Grid item xs={5} style={{ textAlign: "left" }}>
                         <Button className="buynow-button">
                             Buy Now
                          </Button>
                     </Grid>
-                    <Grid xs={8} style={{ marginTop: "10px" }}>
+                    <Grid xs={7} style={{ marginTop: "10px" }}>
                         <Grid container spacing={12}>
                             <Grid item xs={3} className='buy-subheaders'>
                                 Need Help ?
@@ -35,14 +35,13 @@ class PriceBuynoe extends React.Component {
                         </Grid>
                     </Grid>
                 </Grid>
-                <div style={{ marginTop: "15px" }}>
+                <div style={{ marginTop: "25px" }}>
 
                     <Grid container spacing={12}>
                         <Grid item xs={4}>
-                               <TextField
+                               <input
                                 placeholder='Enter Pin Code'
                                 className='search'
-                                variant="outlined"
                             />
                         </Grid>
                         <Grid item xs={3}>
@@ -51,10 +50,10 @@ class PriceBuynoe extends React.Component {
                         </Grid>
 
                         <Grid item xs={5} className="content">
-                            <p class="ships-by">
+                            <b className="ships-by">
                                 {/* <span class="ship-img"></span> */}
                                 <span > <i class="fa fa-star fa-grey"></i>&nbsp;SHIPS BY 31 Jul 2019</span>
-                            </p>
+                            </b>
                         </Grid>
                     </Grid>
                 </div>

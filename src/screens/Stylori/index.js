@@ -7,64 +7,52 @@ import HomeCarousel from '../../components/Home/homeCarousel'
 import Subheader from '../../components/Home/subheader'
 import SubCarousel from '../../components/Home/subcarousel'
 import Socialmediacard from '../../components/Home/socialmediaCard'
-import Footer from '../../components/Home/footer'
-<<<<<<< HEAD
+import Footer from '../../components/Home/footer';
+import CustomSeparator from '../../components/BreadCrumb/index'
 import ProductImageZoom from '../../components/product-image-slider/productImageZoom'
 import ImagesCarousel from '../../components/product-image-slider/imagesCarousel'
 import ProductPrice from '../../components/product-image-slider/productPrice'
 import PriceTabs from '../../components/product-image-slider/priceTabs'
 import PriceBuynoe from '../../components/product-image-slider/buyNow'
+import ProductDetails from '../../components/product-image-slider/productDetails'
+import PriceCertification from '../../components/product-image-slider/priceCertification'
+import Request from '../../components/product-image-slider/request'
+import MultiCarousel from '../../components/product-image-slider/multicarousel'
+import RatingForm from '../../components/product-image-slider/ratingform'
+import Sublistcarousel from '../../components/product-image-slider/subListcarousel'
 import { Container } from '@material-ui/core';
-=======
-import Card from '@material-ui/core/Card';
->>>>>>> 4093ab1f19e357f2450b8a66acc7170eb801caed
 export default class Stylori extends Component {
   render() {
     return (
       <div>
-<<<<<<< HEAD
+             <Header/>
+            <CustomSeparator/>
         <Container>
-         <Grid container spacing={12}>
-         <Grid item xs={6}>
+
+        <Grid container spacing={12}>
+        <Grid item xs={6}>
             <ProductImageZoom/>
-           </Grid>
-           <Grid item xs={6}>
-             <ProductPrice/>
-             <PriceTabs/>
-             <PriceBuynoe/>
-           </Grid>
-         </Grid>
-         </Container>
-=======
-        <Grid container >
-          <Grid item xs={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
-            <Header />
+              </Grid>
+              <Grid item xs={6}>
+            <ProductPrice/>
+              <PriceTabs/>
+              <PriceBuynoe/>
+              </Grid>
+              
+              </Grid>
+              <Grid container spacing={12}>
+              <Grid item xs={6}>
+        <ProductDetails/>
           </Grid>
-
-          <Grid item xs={12}>
-            <ProductDescription />
-            <Filter />
-
-
+          <Grid item xs={6}>
+          <PriceCertification />
+              <Request/>
+             
           </Grid>
-
-          {/* <Grid item xs={12} >
-           <Subheader />
-           </Grid>
-           <Grid item xs={12} >
-           <SubCarousel />
-           </Grid>
-           <Grid item xs={12} >
-         <Socialmediacard/>
-           </Grid>
-
-           <Grid item xs={12} >
-         <Footer/>
-           </Grid>  */}
-
         </Grid>
-
->>>>>>> 4093ab1f19e357f2450b8a66acc7170eb801caed
+              <RatingForm/>
+        </Container>
+        <Sublistcarousel/>
       </div>
     )
   }

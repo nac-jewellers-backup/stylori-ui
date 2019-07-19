@@ -71,7 +71,7 @@ class Header extends Component {
               </Grid>
               <Grid item xs={4}>
                 <div >
-                  <img className="img" src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" />
+                  <img className="img1" src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" />
                 </div>
               </Grid>
               <Grid item xs={5}>

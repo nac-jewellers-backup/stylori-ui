@@ -56,17 +56,16 @@ class PriceTabs extends React.Component {
                     <TabContainer >
                     </TabContainer>
                     <TabContainer >
-
                         <Grid container spacing={12}>
                             <Grid xs={4}>
                                 <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;SI JU
-</Grid>
+                                </Grid>
                             <Grid xs={4}>
                                 <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;HKMDH
-</Grid>
+                            </Grid>
                             <Grid xs={4}>
                                 <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;HJJDF
-</Grid>
+                          </Grid>
 
                         </Grid>
                     </TabContainer>
