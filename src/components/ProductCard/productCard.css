@@ -60,4 +60,14 @@
     bottom: 30%;
     right: 0px;
   }
-  
+  .productLayoutRoot{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: hidden;
+  }
+  .productLayoutGridList{
+    width: 100%;
+    height: auto;
+    text-align: center;
+  }

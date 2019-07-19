@@ -25,19 +25,7 @@ export default class Stylori extends Component {
 
           </Grid>
 
-          {/* <Grid item xs={12} >
-           <Subheader />
-           </Grid>
-           <Grid item xs={12} >
-           <SubCarousel />
-           </Grid>
-           <Grid item xs={12} >
-         <Socialmediacard/>
-           </Grid>
 
-           <Grid item xs={12} >
-         <Footer/>
-           </Grid>  */}
 
         </Grid>
 

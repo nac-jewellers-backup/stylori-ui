@@ -41,6 +41,9 @@
     font-family: sans-serif;
     box-shadow: none !important;
 
+  }
+  #bigScreen{
+    height:145px;
   }.header-navbar-list{
     padding-top: 22px;
     height: 55px!important;
@@ -207,6 +210,7 @@ color: #394578;
        letter-spacing: 1px!important;
        float: right !important;
 }
+
 .header-appbar-sticky header{
   position: sticky;
   top:0px;

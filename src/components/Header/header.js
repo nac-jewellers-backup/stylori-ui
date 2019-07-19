@@ -34,6 +34,13 @@ class Header extends Component {
       Checked: false,
     }
   }
+  // componentDidMount(){
+  //   let headerHeight =Number( document.getElementById('headers').style.offsetWidth);
+  //   debugger;
+  //   alert(headerHeight);
+  //   debugger;
+  //   this.setState({headHeight:headerHeight});
+  // }
   handleDrawerOpen = () => {
     this.setState({ open: true })
   }
@@ -58,11 +65,11 @@ class Header extends Component {
     let { selected, selected1 } = this.state;
     return (
       <div>
-        <Hidden smDown>
-<div className="header-appbar-sticky">
-          <AppBar className="header-appbar">
-            <HeaderNotification />
-            <Grid container spacing={12} >
+        <Hidden smDown >
+<div className="header-appbar-sticky" >
+          <AppBar className="header-appbar"  >
+            <HeaderNotification  />
+            <Grid container spacing={12} id="headers"  >
               <Grid item xs={3}>
                 <div className="head-icons">
                   <i class="fa fa-truck "></i>
@@ -113,6 +120,7 @@ class Header extends Component {
         <div className="header-appbar-sticky">
           <AppBar
             className="header-appbar-moblie"
+            id="smallScreen"
           >
 
             <Toolbar>

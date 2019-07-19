@@ -16,7 +16,7 @@ function JewelleryMenuItem(props) {
     <div>
       {console.log(tabdata)}
       <Collapse in={Checked}>
-        <Paper style={{ position: "absolute", zIndex: "10000", top: '148px', left: '190px', width: '76vw' }} onMouseLeave={onMouseLeave} >
+        <Paper style={{ position: "absolute", zIndex: "2", top: '148px', left: '190px', width: '76vw' }} onMouseLeave={onMouseLeave} >
           <Grid container>
             <Grid container item xs={3}>
               <MenuListItem handleMouseOver={val => setActivetab(val)} activetab={activetab} />

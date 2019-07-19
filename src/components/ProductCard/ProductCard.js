@@ -24,9 +24,9 @@ export const ProductCard = props => {
     Object.keys(props.controls).map(pos => (
       <CardControl position={pos} {...props.controls[pos]} />
     ));
-
+console.log(props);
   return (
-    <Card style={styles.card}>
+    <Card style={styles.card} >
       {props.controls ? renderControls() : ""}
       <CardMedia
         onMouseOver={() => {
@@ -39,12 +39,13 @@ export const ProductCard = props => {
         component="img"
         className="shine"
         alt={cardstate.dataLoaded && props.title}
-        height="313"
+        height="220"
+        
         image={
           cardstate.dataLoaded &&
-          props.image[cardstate.hovered ? "hoverImage" : "placeImage"]
+          props.data.image[cardstate.hovered ? "hoverImage" : "placeImage"]
         }
-        title={cardstate.dataLoaded && props.title}
+        title={cardstate.dataLoaded && props.data.title}
       />
       <CardContent>
         <Typography
@@ -54,7 +55,7 @@ export const ProductCard = props => {
           component="h2"
           align="left"
         >
-          {cardstate.dataLoaded && props.title}
+          {cardstate.dataLoaded && props.data.title}
         </Typography>
         {/* Pricing Info */}
         <div style={styles.priceHolder}>
@@ -66,7 +67,7 @@ export const ProductCard = props => {
             align="left"
           >
             <del className={`${!cardstate.dataLoaded && "shine"}`}>
-              {cardstate.dataLoaded && props.price}
+              {cardstate.dataLoaded && props.data.price}
             </del>
           </Typography>
           <Typography
@@ -75,7 +76,7 @@ export const ProductCard = props => {
             color="textSecondary"
             component="p"
           >
-            {cardstate.dataLoaded && props.offerPrice}
+            {cardstate.dataLoaded && props.data.offerPrice}
           </Typography>
         </div>
       </CardContent>
@@ -113,7 +114,8 @@ const styles = {
     alignItems: "baseline"
   },
   card: {
-    width: "313px",
+    width: "80%",
+    border:'1px solid black',
     position: "relative"
   }
 };

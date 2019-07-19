@@ -10,13 +10,41 @@ import './filter.css';
 class FilterHeader extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            topHeight:0
     }
+}
+    componentDidMount() {
+        this.screenWidths()
+        window.addEventListener("resize", this.screenWidths);
+       
+       
+      }
+      screenWidths=()=>{
+           // const heights = 0;//this.props.headerHeight
+        const filterHeight = document.getElementById('filterBy').clientHeight;
+        const width=window.innerWidth;
+        if(width>960){
+            const heights = 80;
+            let add=heights+filterHeight;
+            this.setState({ topHeight:add});
+        }
+        else if(width<960){
+            const heights = 0;
+            let add=heights+filterHeight;
+            this.setState({ topHeight:add});
+        }
+        else if(width<600){
+            const heights = -20;
+            let add=heights+filterHeight;
+           this.setState({ topHeight:add});
+        }
+      }
     render() {
 
 
         return (
-            <div style={{ position: 'sticky', top: '155px', width: '100%' }}>
-                <Paper style={{ position: 'sticky', top: '155px', width: '100%' }}>
+                <Paper style={{ position: 'sticky', top: this.state.topHeight, width: '100%', zIndex:'1000' }} id="filterBy">
                     {/* <div style={{position:'sticky',top:'165px'}}> */}
                     <Toolbar disableGutters={!this.props.open}>
                         <IconButton
@@ -33,7 +61,6 @@ class FilterHeader extends Component {
                     </Toolbar>
                     {/* </div> */}
                 </Paper>
-            </div>
         );
     }
 }
