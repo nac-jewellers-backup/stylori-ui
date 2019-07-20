@@ -8,7 +8,7 @@ class Sublistcarousel extends React.Component {
     render() {
         return (
             <div className='sub-carousel'>
-              <b>dddd</b> <p>dddddd</p>
+              <b>Here carousel will appear.... :)</b> 
             </div>
         )
     }

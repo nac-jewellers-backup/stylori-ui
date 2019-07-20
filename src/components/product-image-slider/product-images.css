@@ -4,12 +4,13 @@
     min-height: 476px !important;
 }
 
-.figure:hover img {
+.figure:hover .img {
     opacity: 0 !important;
 }
 
-.img {
+.imgs {
     min-height: 476px !important;
+    /* here is where you have done the mistake Mr.Prakash ------SAME CLASS NAME------ *img -> imgs* */
     display: block !important;
     width: 100% !important;
     pointer-events: none !important;
@@ -148,7 +149,11 @@
 }.search {
     color: #394578; 
     font-size: 13px !important; 
-    width: 100% !important;
+    /* width: 100% !important; */
+    
+    /* This is the place where prakash done the mistake
+        same class name
+    */
     height: 34px !important;
     border: 1px solid #ccc;
     border-radius: 0 !important;

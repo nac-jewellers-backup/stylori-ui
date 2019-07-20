@@ -20,7 +20,7 @@ class ProductImageZoom extends Component {
       <div>
         <div className="imagecard">
           <div className='figure' onMouseMove={this.handleMouseMove} style={this.state}>
-            <img className='img' src={src} />
+            <img className='imgs' src={src} />
           </div>
         </div>
         <div>

@@ -99,18 +99,16 @@ class PersistentDrawerLeft extends React.Component {
     super(props)
     this.state = {
       open: this.props.open,
-    };
-
-  }
-  state = {
-    open: false,
-    checked: {},
+      checked: {},
     selected: '',
     filtercheck: '',
     chipData: [
       { key: '', label: '' },
     ],
-  };
+    };
+
+  }
+
   handleChange(value, name) {
 
     let { checked, chipData } = this.state;
@@ -280,7 +278,7 @@ class PersistentDrawerLeft extends React.Component {
            
         
         </div>
-        {/* <Hidden mdUp>
+        <Hidden mdUp>
           <div>
             <div style={{ height: "23px", padding: "9px", borderBottom: "1px solid #e3e3e3" }}>
               <a >
@@ -289,6 +287,7 @@ class PersistentDrawerLeft extends React.Component {
               <Button style={{ float: "right", border: '1px solid #ececec', lineHeight: "15px" }}> <b >Clear All</b></Button>
 
             </div>
+            <ProductLayout />
             <Grid container spacing={2} xs={12} className="p">
               <Grid item xs={6} style={{ backgroundColor: "#F2F2F2" }}>
                 <List className="mbl-filter-list">
@@ -355,7 +354,7 @@ class PersistentDrawerLeft extends React.Component {
 
           </div>
 
-        </Hidden> */}
+        </Hidden>
 
       </>
     );
