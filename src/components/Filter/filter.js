@@ -64,7 +64,7 @@ const styles = theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    top: '165px'
+    top: '153px'
 
   },
   drawerHeader: {
@@ -99,6 +99,7 @@ class PersistentDrawerLeft extends React.Component {
     super(props)
     this.state = {
       open: this.props.open,
+      openMobile:true,
       checked: {},
     selected: '',
     filtercheck: '',
@@ -128,6 +129,18 @@ class PersistentDrawerLeft extends React.Component {
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
+    document.documentElement.scrollTop = 180;
+    
+
+  };
+  handleDrawerOpenMobile = () => {
+    this.setState({ openMobile: false });
+
+    
+
+  };
+  handleDrawerCloseMobile = () => {
+    this.setState({ openMobile: true });
   };
   handleDrawerClose = () => {
     this.setState({ open: false });
@@ -158,7 +171,7 @@ class PersistentDrawerLeft extends React.Component {
   render() {
     const { classes, theme } = this.props;
     let { selected } = this.state;
-    const { open } = this.state;
+    const { open,openMobile } = this.state;
     const datafilter = filterdatas.filter1;
 
     return (
@@ -279,17 +292,18 @@ class PersistentDrawerLeft extends React.Component {
         
         </div>
         <Hidden mdUp>
-          <div>
-            <div style={{ height: "23px", padding: "9px", borderBottom: "1px solid #e3e3e3" }}>
-              <a >
-                <i style={{ color: "#394578" }} class="fa fa-times"></i>&nbsp;
+        <ProductLayout styles={{display:!openMobile?'none':'block' }}/>
+          <div style={{top:'0'}}>
+            <div style={{ height: "23px", padding: "9px", borderBottom: "1px solid #e3e3e3",display:openMobile?'none':'block' }}>
+              <a onClick={this.handleDrawerCloseMobile}>
+                <i style={{ color: "#394578" }} class="fa fa-times" ></i>&nbsp;
                  Filter</a>
               <Button style={{ float: "right", border: '1px solid #ececec', lineHeight: "15px" }}> <b >Clear All</b></Button>
 
             </div>
-            <ProductLayout />
-            <Grid container spacing={2} xs={12} className="p">
-              <Grid item xs={6} style={{ backgroundColor: "#F2F2F2" }}>
+            
+            <Grid container spacing={2} xs={12} className="p" style={{height:"81vh",overflow:'auto'}}>
+              <Grid item xs={6} style={{display:openMobile?'none':'block', backgroundColor: "#F2F2F2" }}>
                 <List className="mbl-filter-list">
                   {filterdatas.filter.map(row => (
                     <ListItem key={row} className=""
@@ -307,7 +321,7 @@ class PersistentDrawerLeft extends React.Component {
               </Grid>
               {
                 this.state.filtercheck !== '' &&
-                <Grid item xs={6} style={{ height: "575px", overflow: 'scroll' }}>
+                <Grid item xs={6} style={{display:openMobile?'none':'block', height: "575px", overflow: 'auto' }}>
                   {filterdatas.filter1[this.state.filtercheck].map(row => (
                     <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
                       <Checkbox
@@ -331,18 +345,20 @@ class PersistentDrawerLeft extends React.Component {
 
 
 
-            <AppBar color="primary" className="filter-fixed header">
+            <AppBar color="primary" className="filter-fixed header" style={{display:!openMobile?'none':'block' }}>
               <Toolbar >
-                <IconButton >
+                <IconButton onClick={this.handleDrawerOpenMobile}>
                   <Typography variant=""
-                    className="filter-mbl-font"><i className='filter-icon' class="fa fa-filter"></i> &nbsp;
+                    className="filter-mbl-font"><i className='filter-icon' class="fa fa-filter" 
+                    
+                    ></i> &nbsp;
                     Filter
                     </Typography>
                 </IconButton>
 
                 <div style={{ flexGrow: "2" }} />
 
-                <IconButton edge="end" color="inherit">
+                <IconButton edge="end" color="inherit" >
                   <Typography variant=""
                     className="filter-mbl-font"><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
                     Sort

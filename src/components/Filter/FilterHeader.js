@@ -22,29 +22,30 @@ class FilterHeader extends Component {
       }
       screenWidths=()=>{
            // const heights = 0;//this.props.headerHeight
-        const filterHeight = document.getElementById('filterBy').clientHeight;
         const width=window.innerWidth;
         if(width>960){
-            const heights = 80;
+        const filterHeight = document.getElementById('filterBy').clientHeight;
+
+            const heights = 88;
             let add=heights+filterHeight;
             this.setState({ topHeight:add});
         }
-        else if(width<960){
-            const heights = 0;
-            let add=heights+filterHeight;
-            this.setState({ topHeight:add});
-        }
-        else if(width<600){
-            const heights = -20;
-            let add=heights+filterHeight;
-           this.setState({ topHeight:add});
-        }
+        // else if(width<960){
+        //     const heights = 0;
+        //     let add=heights+filterHeight;
+        //     this.setState({ topHeight:add});
+        // }
+        // else if(width<600){
+        //     const heights = -20;
+        //     let add=heights+filterHeight;
+        //    this.setState({ topHeight:add});
+        // }
       }
     render() {
 
 
         return (
-                <Paper style={{ position: 'sticky', top: this.state.topHeight, width: '100%', zIndex:'1000' }} id="filterBy">
+                <Paper style={{ position: 'sticky', top: this.state.topHeight, width: '100%', zIndex:'3',boxShadow:'none',borderBottom:'1px solid #e3e3e3' }} id="filterBy">
                     {/* <div style={{position:'sticky',top:'165px'}}> */}
                     <Toolbar disableGutters={!this.props.open}>
                         <IconButton

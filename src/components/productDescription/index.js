@@ -5,7 +5,9 @@ import Slideshow   from '../Carousel/carosul';
 import  CustomSeparator  from '../BreadCrumb/index';
 
 class ProductDescription extends Component {
-  
+  constructor(props){
+    super(props)
+  }
   handleOpen = () => {
     document.getElementById('txtopen').style.display = "inline";
     document.getElementById('readLess').style.display = "block";
@@ -21,7 +23,7 @@ class ProductDescription extends Component {
 
   }
   render() {
-
+    console.log(this.props)
     return (
       <>
         <Container >
@@ -29,7 +31,9 @@ class ProductDescription extends Component {
             container
             direction="row"
             justify="space-around"
-            alignItems="center">
+            alignItems="center"
+           
+            >
             <Grid
               item
               container

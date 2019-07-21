@@ -51,9 +51,10 @@ console.log(props);
         <Typography
           className={`${!cardstate.dataLoaded && "shine"} title`}
           gutterBottom
-          variant="h5"
-          component="h2"
+          variant="overline"
+          component="div"
           align="left"
+         
         >
           {cardstate.dataLoaded && props.data.title}
         </Typography>
@@ -73,8 +74,8 @@ console.log(props);
           <Typography
             variant="h6"
             className={`${!cardstate.dataLoaded && "shine"} price`}
-            color="textSecondary"
-            component="p"
+            style={{color:'#ED1165'}}
+            
           >
             {cardstate.dataLoaded && props.data.offerPrice}
           </Typography>
@@ -114,8 +115,9 @@ const styles = {
     alignItems: "baseline"
   },
   card: {
-    width: "80%",
-    border:'1px solid black',
+    width: "90%",
+    border:'1px solid #e3e3e3',
+    boxShadow:'none',
     position: "relative"
   }
 };

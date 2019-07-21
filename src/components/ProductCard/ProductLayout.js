@@ -34,20 +34,21 @@ class ProductLayout extends Component
     }
     else if(width>760)
     {
-      this.setState({colSize:3}) 
+      this.setState({colSize:4}) 
     }
     else if(width<760)
     {
-      this.setState({colSize:1}) 
+      this.setState({colSize:2}) 
     }
   
   }
   render(){
  
+ 
 console.log(dataCard)
   return (
-    <div className="productLayoutRoot" >
-      <GridList  cellHeight={"auto"} className="productLayoutGridList" cols={this.state.colSize} >
+    <div className="productLayoutRoot" style={this.props.styles}>
+      <GridList  cellHeight={"auto"} className="productLayoutGridList" cols={this.state.colSize} style={{marginLeft:'12px'}}>
         {dataCard.map(tile => (
           <GridListTile key={tile.title} cols={tile.cols || 1} style={{height:'auto',paddingTop:'2%'}} >
             
