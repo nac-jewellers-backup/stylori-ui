@@ -7,5 +7,8 @@ import Slideshow from "./Carousel/carosul";
 
 
 export {
-    ProductDescription, Header, Filter, Slideshow
+    ProductDescription,
+    Header,
+    Filter,
+    Slideshow
 }

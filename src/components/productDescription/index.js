@@ -23,7 +23,7 @@ class ProductDescription extends Component {
 
   }
   render() {
-    console.log(this.props)
+console.log(this.props)
     return (
       <>
         <Container >
@@ -32,7 +32,6 @@ class ProductDescription extends Component {
             direction="row"
             justify="space-around"
             alignItems="center"
-           
             >
             <Grid
               item

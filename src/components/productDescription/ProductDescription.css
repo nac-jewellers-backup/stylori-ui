@@ -5,24 +5,28 @@
   line-height: 1.1;
   text-align: center;
 }
+
 .DescriptionContent {
   text-align: justify;
   font-size: 12px;
   line-height: 16px;
   color: #666;
 }
+
 .DescriptionTitleSmallScreen {
   font-size: 14px;
   color: #394578;
   font-weight: bold;
   line-height: 1.1;
 }
+
 .know-txt {
   color: #f16981;
   font-size: 11px;
   font-weight: bold;
   cursor: pointer;
 }
+
 .faMore {
   color: #f16981;
   font-size: 16px;
