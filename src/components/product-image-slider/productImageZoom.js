@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import './product-images.css'
 import { Grid } from '@material-ui/core';
+ import VerticalCarousel from './verticalcarousel'
 import TB from './producthoverData'
 const src = 'https://images8.alphacoders.com/387/387613.jpg'
+
+
 class ProductImageZoom extends Component {
   state = {
     backgroundImage: `url(${src})`,
@@ -18,9 +21,14 @@ class ProductImageZoom extends Component {
   render() {
     return (
       <div>
+        <Grid container spacing={12}>
+        <Grid xs={2}>
+          <VerticalCarousel/>
+        </Grid>
+        <Grid xs={10}>
         <div className="imagecard">
           <div className='figure' onMouseMove={this.handleMouseMove} style={this.state}>
-            <img className='imgs' src={src} />
+            <img className='image' src={src} />
           </div>
         </div>
         <div>
@@ -36,6 +44,9 @@ class ProductImageZoom extends Component {
           ))}
         </Grid>
         </div>
+        </Grid>
+        </Grid>
+        
       </div>
 
     )
