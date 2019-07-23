@@ -67,16 +67,15 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.bottom-line {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 0;
-    height: 1px;
+.bottom-line,
+.MuiExpansionPanel-root:before {
+    border: 0 !important;
+    height: 1px !important;
     background: #CB356B;
-    background: -webkit-linear-gradient(to right, #ed1165, #fff);
-    background: linear-gradient(to right, #ed1165, #fff);
-    float: left;
-    width: 100%;
+    background: -webkit-linear-gradient(to right, #ed1165, #fff) !important;
+    background: linear-gradient(to right, #ed1165, #fff) !important;
+    float: left !important;
+    width: 100% !important;
 }
 
 .social-shares {
@@ -136,11 +135,10 @@
 
 .subtabs {
     color: #ed1165 !important;
-    margin-right: 2px;
-    line-height: 1.42857143;
     border: 1px solid transparent;
     border-radius: 4px 4px 0 0;
     text-transform: none !important;
+    font-size: 13px !important;
 }
 
 .PrivateTabIndicator-colorPrimary-170 {
@@ -232,7 +230,7 @@
 
 /*ProductDetails*/
 .product-details {
-    color: #394578;
+    color: #394578 !important;
 }
 
 .product-subhead {
@@ -376,4 +374,18 @@
 
 .price-carosuel {
     height: 200px !important;
+}
+
+.product-details-smrt {
+    font-size: 12px !important;
+    color: #394578 !important;
+
+}
+
+.subtabs-smrt {
+    color: #394578 !important;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    text-transform: none !important;
+    font-size: 13px !important;
 }
