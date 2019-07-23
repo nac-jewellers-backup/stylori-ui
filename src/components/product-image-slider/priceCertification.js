@@ -91,7 +91,6 @@ class PriceCertification extends React.Component {
                                     <img width='85%' height='100%' src={val.img5} />
                                 </Grid>
                             </Grid>
-                            <hr class="bottom-line"></hr>
                         </ExpansionPanel>
                     )}
                 </Hidden>

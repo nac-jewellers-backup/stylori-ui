@@ -9,9 +9,7 @@ import PriceTabs from './priceTabs'
 import dataCard from '../ProductCard/ProductData'
 const render=()=>{
     return( 
-        <div>
       <VerticalCarousel />
-        </div>
       );
     };
 const Productprice = () => {
@@ -41,11 +39,11 @@ const Productprice = () => {
                         </div>
                     </div>
                 </Grid>
-               <Hidden mdUp>
-                   {render()}
-               </Hidden>
                 <hr class="bottom-line product-inform-ation"></hr>
             </Grid>
+            <Hidden mdUp>
+                   {render()}
+               </Hidden>
             <div className='price-info'>
                 <Grid container spacing={12}>
                     <Grid item xs={6} lg={2} className='discount-container'> {val.offerPrice}</Grid>

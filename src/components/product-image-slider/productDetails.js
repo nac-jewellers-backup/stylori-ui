@@ -1,6 +1,6 @@
 import React from "react";
 import './product-images.css';
-import { Grid, ListItemText } from '@material-ui/core';
+import { Grid, ListItemText, Container } from '@material-ui/core';
 import data from './producthoverData'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -22,6 +22,7 @@ class ProductDetails extends React.Component {
         return (
             <div>
                 <Hidden smDown>
+                    <Container>
                     <Grid container spacing={12} >
                         {data.productsDetails.map(val => (
                             <>
@@ -55,7 +56,8 @@ class ProductDetails extends React.Component {
                             </>
                         ))}
                     </Grid>
-                </Hidden>
+                    </Container>
+                       </Hidden>
 
 
 

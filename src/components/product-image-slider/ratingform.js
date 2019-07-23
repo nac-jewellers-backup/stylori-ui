@@ -8,8 +8,8 @@ class RatingForm extends React.Component {
         return (
             <div>
                 <Grid container spacing={12}>
-                    <Grid item xs={1} />
-                    <Grid item xs={8}>
+                    <Grid item lg={1}/>
+                    <Grid item xs={12} lg={8}>
                         <h5 className='rating-form-head'>Rate This</h5>
                         <div className="rating-form">
                             <i class="fa fa-star fa-grey"></i>
@@ -38,7 +38,7 @@ class RatingForm extends React.Component {
                     </Grid>
                 </Grid>
                 <Grid container spacing={12}>
-                    <Grid item xs={8}>
+                    <Grid item xs={12} lg={8}>
                         <div style={{ float: "right" }}>
                             <Button className='form-reviews'>Write a Reviews</Button>
                             <Button className='form-cancel'>Cancel</Button>

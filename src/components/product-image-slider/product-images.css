@@ -19,7 +19,7 @@
 .imagecard {
     width: 95%;
     border: 1px solid #ccc;
-    min-width: 476px !important;
+    min-width: 90% !important;
     min-height: 476px !important;
 }
 
@@ -389,3 +389,8 @@
     text-transform: none !important;
     font-size: 13px !important;
 }
+.slick-carousel img {
+    width: 200px;
+    }
+    
+    
