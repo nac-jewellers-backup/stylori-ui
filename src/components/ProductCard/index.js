@@ -1,8 +1,6 @@
 import React from "react";
-
-import { ProductCard } from "./ProductCard";
-
-
+import  ProductCards  from "./ProductCards";
+import  {ProductCard}  from "./ProductCard";
 function Card(props) {
   const CardControls = {
   controls: {
@@ -34,7 +32,8 @@ function Card(props) {
   }
   return (
  
-      <ProductCard  data={props.data} {...CardControls}/>
+      // <ProductCard  ard  data={props.data} {...CardControls}/>
+      <ProductCards data={props.data} />
 
   );
 }

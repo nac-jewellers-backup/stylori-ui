@@ -213,3 +213,7 @@ color: #394578;
   position: sticky;
   top:0px;
 }
+.logoImgHeader{
+  display: flex;
+  justify-content: flex-end;
+}

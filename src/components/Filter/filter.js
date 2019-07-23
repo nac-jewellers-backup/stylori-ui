@@ -188,6 +188,7 @@ class PersistentDrawerLeft extends React.Component {
 
             <Drawer
               className={classes.drawer}
+
               variant="persistent"
               anchor="left"
               open={open}

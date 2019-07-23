@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import ProductCard from './index';
+import ProductCards from './index';
 import {dataCard} from './ProductData';
 let colSize;
 
@@ -52,7 +53,8 @@ console.log(dataCard)
         {dataCard.map(tile => (
           <GridListTile key={tile.title} cols={tile.cols || 1} style={{height:'auto',paddingTop:'2%'}} >
             
-           <ProductCard data={tile} />
+           {/* <ProductCard data={tile} /> */}
+           <ProductCards data={tile} />
           </GridListTile>
         ))}
 

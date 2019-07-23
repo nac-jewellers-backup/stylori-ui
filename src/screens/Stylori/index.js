@@ -10,7 +10,6 @@ export default class Stylori extends Component {
   }
   render() {
     console.log(this.props)
-    debugger;
     return (
       <div>
         <Grid container >
