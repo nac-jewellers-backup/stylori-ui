@@ -10,8 +10,8 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
   card: {
-    minWidth: "80%",
-    maxWidth: "85%",
+    minWidth: "80",
+    maxWidth: "90%",
     boxShadow: "none",
     padding: "0px",
     border: "1px solid #f5f5f5"
@@ -28,11 +28,9 @@ const useStyles = makeStyles(theme => ({
     padding: "0px"
   },
   media: {
-    width:'auto',
-    height:'63px',  
-    paddingTop: "56.48%", // 16:9
-    marginLeft: "15px",
+    
     marginRight: "15px",
+    marginLeft:'15px',
     marginBottom: "15px"
   }
 }));
@@ -74,6 +72,7 @@ const handleClick = (name) =>{
         }
       />
       <CardMedia
+      component='img'
         onMouseOver={() => {
           setCardState({ ...cardstate, hovered: !cardstate.hovered });
         }}
@@ -85,6 +84,8 @@ const handleClick = (name) =>{
         image={
           props.data.image[cardstate.hovered ? "hoverImage" : "placeImage"]
         }
+        width='100%'
+        height='auto'
         title={props.data.title}
       />
       {/* <CardHeader
