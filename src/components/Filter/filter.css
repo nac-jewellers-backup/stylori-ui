@@ -69,15 +69,41 @@
 
  
 }
-
+.fil-drawer-head-filter-arrow{
+  position: absolute;
+  /* margin-left: 0%; */
+  top: 4%;
+  right: 98%;
+}
 .fil-drawer-head {
-  background-color: #ededed;
+  background-color: white;
   font-size: 18px !important;
   font-weight: normal;
   color: #394578 !important;
   
 }
+.fil-drawer-head-sort{
+position: absolute;
+  right:5%;
+  top:23%;
 
+  cursor: pointer;
+}
+.fil-drawer-sort_font{
+  background-color: white;
+  font-size: 18px !important;
+  font-weight: normal;
+  color: #394578 !important;
+}
+.fil-drawer-head-sort-expand{
+  position: absolute;
+  top:10%;
+}
+.fil-drawer-filter{
+position: relative;
+margin-left:5%;
+cursor: pointer;
+}
 .price-txt input {
   padding: 0 8px !important;
   color: #394578;
