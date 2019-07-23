@@ -5,7 +5,11 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import './product-images.css'
-import { Grid } from '@material-ui/core';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Grid, Hidden } from '@material-ui/core';
 
 function TabContainer({ children, dir }) {
     return (
@@ -19,6 +23,7 @@ function TabContainer({ children, dir }) {
 class PriceTabs extends React.Component {
     state = {
         value: 0,
+        expanded: null
     };
 
     handleChange = (event, value) => {
@@ -28,50 +33,90 @@ class PriceTabs extends React.Component {
     handleChangeIndex = index => {
         this.setState({ value: index });
     };
+    handle = panel => (event, expanded) => {
+        this.setState({
+            expanded: expanded ? panel : false,
+        });
+    };
 
     render() {
+        const { expanded } = this.state;
         return (
             <div>
-                <div className="header-APP">
-                    <AppBar position="static" color="default" className="price-panel"
-                    >
-                        <Tabs
-                            className="price-tabs"
-                            value={this.state.value}
-                            onChange={this.handleChange}
-                            indicatorColor="primary"
+                <Hidden smDown>
+                    <div className="header-APP">
+                        <AppBar position="static" color="default" className="price-panel"
                         >
-                            <Tab className='subtabs' label="Ring Size" />
-                            <Tab className='subtabs' label="Metal Purity" />
-                            <Tab className='subtabs' label="Diamond Clarity" />
-                        </Tabs>
-                    </AppBar>
-                </div>
-                <SwipeableViews
-                    index={this.state.value}
-                    onChangeIndex={this.handleChangeIndex}
-                >
-                    <TabContainer >
-                    </TabContainer>
-                    <TabContainer >
-                    </TabContainer>
-                    <TabContainer >
-                        <Grid container spacing={12}>
-                            <Grid xs={4}>
-                                <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;SI JU
+                            <Tabs
+                                className="price-tabs"
+                                value={this.state.value}
+                                onChange={this.handleChange}
+                                indicatorColor="primary"
+                            >
+                                <Tab className='subtabs' label="Ring Size" />
+                                <Tab className='subtabs' label="Metal Purity" />
+                                <Tab className='subtabs' label="Diamond Clarity" />
+                            </Tabs>
+                        </AppBar>
+                    </div>
+                    <SwipeableViews
+                        index={this.state.value}
+                        onChangeIndex={this.handleChangeIndex}
+                    >
+                        <TabContainer >
+                        </TabContainer>
+                        <TabContainer >
+                        </TabContainer>
+                        <TabContainer >
+                            <Grid container spacing={12}>
+                                <Grid xs={4}>
+                                    <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;SI JU
                                 </Grid>
-                            <Grid xs={4}>
-                                <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;HKMDH
+                                <Grid xs={4}>
+                                    <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;HKMDH
                             </Grid>
-                            <Grid xs={4}>
-                                <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;HJJDF
+                                <Grid xs={4}>
+                                    <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;HJJDF
                           </Grid>
 
-                        </Grid>
-                    </TabContainer>
-                </SwipeableViews>
-                <hr class="bottom-line product-inform-ation"></hr>
+                            </Grid>
+                        </TabContainer>
+                    </SwipeableViews>
+                    <hr class="bottom-line product-inform-ation"></hr>
+                </Hidden>
+                <Hidden mdUp>
+                    <ExpansionPanel expanded={expanded === 'panel1'} onChange={this.handle('panel1')} 
+                    style={{boxShadow:"none",backgroundColor:"none"}}>
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                            <Typography className='subtabs'>Ring Size</Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails style={{padding:0}}>
+                            **********
+          </ExpansionPanelDetails>
+                    </ExpansionPanel>
 
+                    <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handle('panel2')}
+                    style={{boxShadow:"none",backgroundColor:"none"}}>
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                            <Typography className='subtabs'>Diamond Clarity</Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails style={{padding:0}}>
+                            <Grid container spacing={12}>
+                                <Grid xs={4}>
+                                    <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;SI JU
+                                </Grid>
+                                <Grid xs={4}>
+                                    <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;HKM
+                            </Grid>
+                                <Grid xs={4}>
+                                    <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;HJJDF
+                          </Grid>
+
+                            </Grid>
+                        </ExpansionPanelDetails>
+                    </ExpansionPanel>
+
+                </Hidden>
             </div>
         );
     }
