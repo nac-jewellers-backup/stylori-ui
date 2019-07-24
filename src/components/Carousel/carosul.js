@@ -1,45 +1,41 @@
-import React from 'react';
-import { Fade } from 'react-slideshow-image';
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const fadeImages = [
-  'https://assets-cdn.stylori.com/120x120/images/product/SE0218/SE0218-1Y.jpg',
-  'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
-  'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg'
-];
-
-const fadeProperties = {
-  duration: 2000,
-  transitionDuration: 500,
-  infinite: true,
-  indicators: false,
-  arrows: false,
-  onChange: (oldIndex, newIndex) => {
-    console.log(`fade transition from ${oldIndex} to ${newIndex}`);
+class Slideshow extends React.Component {
+  constructor(props){
+    super(props)
+  }
+  render() {
+    // document.getElementsByClassName('fade').slick({
+    //   dots: true,
+    //   infinite: true,
+    //   speed: 500,
+    //   fade: true,
+    //   cssEase: 'linear'
+    // });
+    // const fadeImages = [
+    //   'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+    //   'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
+    //   'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg'
+    // ];
+    
+    var settings = 
+      this.props.dataCarousel;
+  
+    return (
+      <div >
+        <Slider {...settings}>
+          {this.props.fadeImages.map(imgs => (
+            <div >
+              <img src={imgs} />
+            </div>
+          ))}
+        </Slider>
+      </div>
+    );
   }
 }
 
-const Slideshow = () => {
-  return (
-    <Fade {...fadeProperties}>
-      <div className="each-fade">
-        <div className="image-container">
-          <img src={fadeImages[0]}/>
-        </div>
-
-      </div>
-      <div className="each-fade">
-        <div className="image-container">
-          <img src={fadeImages[1]} />
-        </div>
-
-      </div>
-      <div className="each-fade">
-        <div className="image-container">
-          <img src={fadeImages[2]} />
-        </div>
-
-      </div>
-    </Fade>
-  )
-}
 export default Slideshow;

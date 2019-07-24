@@ -17,20 +17,13 @@ const useStyles = makeStyles({
   },
  
 });
-const radioValues = [
-  "New To Stylori",
-  "Featured",
-  "Price Low to High",
-  "Price High to Low",
-  "Ready To Ship",
-  "Best Seller"
-];
-export default function CardRadioButton() {
+
+export default function CardRadioButton(props) {
   const classes = useStyles();
 
   return (
     <Card className={classes.card} style={{ padding: "0px !important",margin:'0px' }}>
-        <RadioBtn radioValues={radioValues} />
+        <RadioBtn radioValues={props.data} />
     </Card>
   );
 }

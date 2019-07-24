@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function RadioBtn(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState("female");
+  const [value, setValue] = React.useState("Sort By");
 
   function handleChange(event) {
     setValue(event.target.value);

@@ -8,6 +8,10 @@ import CardContent from "@material-ui/core/CardContent";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 
+// let theme = createMuiTheme(require('./../../theme.json'));
+// theme = responsiveFontSizes(theme);
+//theme={outerTheme}
+
 const useStyles = makeStyles(theme => ({
   card: {
     minWidth: "80",
@@ -32,6 +36,9 @@ const useStyles = makeStyles(theme => ({
     marginRight: "15px",
     marginLeft:'15px',
     marginBottom: "15px"
+  },
+  colors:{
+    color: theme.palette.secondary.light
   }
 }));
 const handleClick = (name) =>{
@@ -52,25 +59,26 @@ const handleClick = (name) =>{
   });
 
   return (
-    <Card className={classes.card}>
-        <a href ={props.data.image['placeImage']} target={"_blank"} style={{textDecoration:'none'}}>
+    <Card className={classes.card} >
+       
       <CardHeader
         className={classes.header}
         avatar={
           <IconButton aria-label="Settings" className={classes.avatar}>
-            <i style={{ fontSize: "18px", color: "#F699A3" }} className="fa" onClick={handleClick('truck')}>
+            <i style={{ fontSize: "18px",  }}  className={`fa ${classes.colors}`} onClick={handleClick('truck')}>
               &#xf0d1;
             </i>
           </IconButton>
         }
         action={
           <IconButton aria-label="Settings" className={classes.action}>
-            <i style={{ fontSize: "18px", color: "#F699A3" }} class="fa">
+            <i style={{ fontSize: "18px" }} className={`fa ${classes.colors}`}>
               &#xf08a;
             </i>
           </IconButton>
         }
       />
+       <a href ={props.data.image['placeImage']} target={"_blank"} style={{textDecoration:'none'}}>
       <CardMedia
       component='img'
         onMouseOver={() => {
@@ -88,6 +96,7 @@ const handleClick = (name) =>{
         height='auto'
         title={props.data.title}
       />
+        
       {/* <CardHeader
         avatar={
           <Avatar aria-label="Recipe" className={classes.avatar}>
@@ -103,28 +112,30 @@ const handleClick = (name) =>{
       /> */}
       <CardContent>
         <Typography
-          variant="body2"
+          variant="caption"
           color="textSecondary"
-          component="body2"
-          style={{ paddingBottom: "5px", textAlign: "left",textOverflow:'br' }}
+          component="div"
+          style={{ paddingBottom: "5px", textAlign: "left" }}
         >
           {/* Dazzling Gold Bloom Diamond Pendant */}
           {props.data.title}
         </Typography>
         {/*  */}
-        <Typography style={{ display: "flex" }}>
+        <Typography style={{ display: "flex" ,width:'100%' }}>
           <Typography
-            variant="body2"
+            variant="caption"
             color="textSecondary"
             component="p"
-            style={{ display: "flex", alignItems: "center" ,wordBreak:'break-word'}}
+            style={{ display: "flex", alignItems: "center" }}
           >
             <del>₹&nbsp;{props.data.price}</del>
           </Typography>
           <Typography
-            variant="h6"
-            component="h6"
-            style={{ paddingLeft: "25px", color: "#ed1165",wordBreak:'break-word' }}
+          
+            variant="div"
+            component="p"
+            className={`${classes.colors}`}
+            style={{ paddingLeft: "25px"}}
           >
             ₹&nbsp;{props.data.offerPrice}
           </Typography>
@@ -145,7 +156,7 @@ const handleClick = (name) =>{
             You save
           </Typography>
           <Typography
-            variant="subtitle2"
+            variant="caption"
             color="textSecondary"
             component="p"
             style={{ paddingLeft: "10px", color: "#ed1165" }}
