@@ -7,6 +7,9 @@ import CardContent from "@material-ui/core/CardContent";
 
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
+// import { createMuiTheme, responsiveFontSizes  } from '@material-ui/core/styles';
+
+//theme={outerTheme}
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -52,8 +55,8 @@ const handleClick = (name) =>{
   });
 
   return (
-    <Card className={classes.card}>
-        <a href ={props.data.image['placeImage']} target={"_blank"} style={{textDecoration:'none'}}>
+    <Card className={classes.card} >
+       
       <CardHeader
         className={classes.header}
         avatar={
@@ -71,6 +74,7 @@ const handleClick = (name) =>{
           </IconButton>
         }
       />
+       <a href ={props.data.image['placeImage']} target={"_blank"} style={{textDecoration:'none'}}>
       <CardMedia
       component='img'
         onMouseOver={() => {
@@ -88,6 +92,7 @@ const handleClick = (name) =>{
         height='auto'
         title={props.data.title}
       />
+        
       {/* <CardHeader
         avatar={
           <Avatar aria-label="Recipe" className={classes.avatar}>
@@ -117,14 +122,14 @@ const handleClick = (name) =>{
             variant="body2"
             color="textSecondary"
             component="p"
-            style={{ display: "flex", alignItems: "center" ,wordBreak:'break-word'}}
+            style={{ display: "flex", alignItems: "center" }}
           >
             <del>₹&nbsp;{props.data.price}</del>
           </Typography>
           <Typography
             variant="h6"
             component="h6"
-            style={{ paddingLeft: "25px", color: "#ed1165",wordBreak:'break-word' }}
+            style={{ paddingLeft: "25px", color: "#ed1165"}}
           >
             ₹&nbsp;{props.data.offerPrice}
           </Typography>

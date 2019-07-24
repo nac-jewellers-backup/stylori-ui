@@ -48,7 +48,14 @@ class FilterHeader extends Component {
     }
     render() {
 
-
+        const radioValues = [
+            "New To Stylori",
+            "Featured",
+            "Price Low to High",
+            "Price High to Low",
+            "Ready To Ship",
+            "Best Seller"
+          ];
         return (
             <Paper style={{ position: 'sticky', top: this.state.topHeight, width: '100%', zIndex: '3', boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">
                 {/* <div style={{position:'sticky',top:'165px'}}> */}
@@ -79,7 +86,7 @@ class FilterHeader extends Component {
                         </div>
                             <div className={"testMenu"} style={{position: "absolute", right: "15px", top: "45px"}}>
                                 <Collapse in={this.state.expanded} timeout="auto" unmountOnExit >
-                                    <CardRadioButton />
+                                    <CardRadioButton  data={radioValues}/>
                                 </Collapse>
                             </div>
                     </Grid>
