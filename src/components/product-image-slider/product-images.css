@@ -370,7 +370,7 @@
     .imagecard {
         width: 95%;
         border: 1px solid #ccc;
-        height: 475px !important;
+        height: 450px !important;
         cursor: pointer;
         counter-increment: inherit;
     }
@@ -388,4 +388,25 @@
         left: 48%;
         margin-top: -477px !important;
     }
-  
+.vertical-carousel{
+    border: 1px solid #CCC;
+    margin-bottom: 19px!important;
+    margin: 3px 0 0;
+    width: 80px !important;
+    height: 80px !important;
+}.vertical-carousel-img{
+    width: 80px !important;
+    height: 80px !important;
+}
+.subslider-carousel{
+    border: 1px solid #ccc;
+    background-color: #fff;
+    text-align: right !important;
+    width: 80% !important;
+    margin: 14px;
+    min-height: 1px;
+}
+.subslider-carousel-img{
+    text-align: center !important;
+    margin: 4px;
+}

@@ -34,7 +34,22 @@ class ProductImageZoom extends Component {
     element.style.display = 'none';
   }
   render() {
-
+    const fadeImages = [
+      'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+      'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
+      'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+      'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
+    ];
+    
+    const dataCarousel={
+      dots: false,
+          infinite: true,
+          autoplay: true,
+          speed: 1000,
+          fade: true,
+          arrows: true,
+          rows:4
+        }
     return (
       <div>
         {/* <Grid container spacing={12}>
@@ -64,10 +79,10 @@ class ProductImageZoom extends Component {
         </Grid> */}
         <Hidden smDown>
         <Grid container spacing={12}>
-          <Grid xs={3}>
-            <Slideshow />
+          <Grid xs={2}>
+            <Slideshow class="vertical-carousel" class2='vertical-carousel-img' fadeImages={fadeImages} dataCarousel={dataCarousel}/>
           </Grid>
-          <Grid xs={9}>
+          <Grid xs={10}>
             <div  >
             <div className="imagecard" onMouseOut={event => this.zoomOut(event)}  onMouseMove={event => this.zoomIn(event)}> 
               <img id="imgZoom" width="100%" height="100%" 

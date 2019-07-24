@@ -25,6 +25,7 @@ import Slideshow from '../../components/Carousel/carosul'
 
 export default class Stylori extends Component {
   render() {
+
     return (
       <div>
         <Hidden smDown>
@@ -56,7 +57,9 @@ export default class Stylori extends Component {
 
               </Grid>
             </Grid>
+            <Sublistcarousel />
             <RatingForm />
+
             {/* <Sublistcarousel/> */}
             <CustomerReviews />
           </Container>
