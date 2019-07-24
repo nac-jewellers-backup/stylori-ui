@@ -69,7 +69,7 @@ export const productsDetails = [
 ];
 export const productsPendants = [
     {
-        header: "Pendants set in 18 Kt Yellow Gold 1.46 gm with Diamonds (0.04 ct, IJ - SI ) ",
+        header: "Pendants set in 18 Kt Gold 1.46 gm with Diamonds (0.04 ct, IJ - SI ) ",
         name: [
             '#EveryDay', '#Female', '#THree Stone', '#Spots', '#Special Occasion', '#Designer', '#Essentails']
     }
@@ -108,4 +108,45 @@ export const productsubHead = [
     },
 ];
 
-export default { productsubHead, productsDetails, productsPendants };
+export const productstabs = [
+    {
+        tab1:{
+            header:"Ring Size",
+            Children:'JKGH'
+        },
+        tab2:{
+            header:"Metal Purity",
+            Children:'JKGH'
+        },
+        tab3:{
+            header:"Diamond Clarity",
+            Children:'JKGH'
+        }
+    }
+];
+
+export const productsbuy = [
+    {
+        telephone:'98-554-54-54554',
+        phonenum:"+91 7864697459",
+        chat:"Chat",
+        shipby:"SHIPS BY 31 Jul 2019"
+        // chat:{
+        //     header:"chat",
+        //     path:"/"
+        // }
+
+    }
+];
+
+export const imagecertificat = [
+    {
+        header:"Certification",
+        img1:'https://assets-cdn.stylori.com/images/static/Logo1.png',
+        img2:"https://assets-cdn.stylori.com/images/static/Logo3.png" ,
+        img3:"https://assets-cdn.stylori.com/images/static/Logo2.png" ,
+        img4:"https://assets-cdn.stylori.com/images/static/Logo4.png",
+        img5:"https://assets-cdn.stylori.com/images/static/certificate4.jpg"
+    }
+];
+export default { productsubHead, productsDetails, productsPendants,productstabs ,productsbuy,imagecertificat};

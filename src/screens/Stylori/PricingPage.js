@@ -34,55 +34,66 @@ export default class Stylori extends Component {
               <Header />
             </Grid>
             <CustomSeparator />
-            <Container>
-
-              <Grid container spacing={12}>
-                <Grid item xs={6}>
-                  <ProductImageZoom />
-                </Grid>
-                <Grid item xs={6}>
-                  <ProductPrice />
-                  <PriceTabs />
-                  <PriceBuynow />
-                </Grid>
-
-              </Grid>
-              <Grid container spacing={12}>
-                <Grid item xs={6}>
-                  <ProductDetails />
-                </Grid>
-                <Grid item xs={6}>
-                  <PriceCertification />
-                  <Request />
-
-                </Grid>
-
-
-
-              </Grid>
-              <RatingForm />
-            </Container>
           </Grid>
-          {/* <Sublistcarousel/> */}
-          <CustomerReviews />
+          <Container>
+            <Grid container spacing={12}>
+              <Grid item xs={6}>
+                <ProductImageZoom />
+              </Grid>
+              <Grid item xs={6}>
+                <ProductPrice />
+                <PriceTabs />
+                <PriceBuynow />
+              </Grid>
+
+            </Grid>
+            <Grid container spacing={12}>
+              <Grid item xs={6}>
+                <ProductDetails />
+              </Grid>
+              <Grid item xs={6}>
+                <PriceCertification />
+                <Request />
+
+              </Grid>
+            </Grid>
+            <RatingForm />
+            {/* <Sublistcarousel/> */}
+            <CustomerReviews />
+          </Container>
         </Hidden>
+
+
+
 
         <Hidden mdUp>
           <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
             <Grid item xs={12} >
               <Header />
             </Grid>
-           
+          </Grid>
+          <Container>
+            <Grid item xs={12} >
+              <PriceBuynow />
+            </Grid>
+            <Grid item xs={12} >
+              <ProductDetails />
+            </Grid>
 
             <Grid item xs={12} >
-              <ProductPrice />
+              <PriceCertification />
             </Grid>
-           
-            {/* <Grid item xs={12} >
-               <VerticalCarousel/>
-               </Grid> */}
+            <Grid item xs={12} >
+              <Request />
+            </Grid>
+            <Grid item xs={12} >
+              <RatingForm />
+            </Grid>
 
-          </Grid>
+          </Container>
+          <CustomerReviews />
+
+          <br />
         </Hidden>
 
 

@@ -3,7 +3,7 @@ import './product-images.css'
 import { Grid } from '@material-ui/core';
 import { Hidden } from '@material-ui/core';
 import { Fade } from 'react-slideshow-image';
-
+import Slider from "react-slick";
 
 const fadeImages = [
   'https://assets-cdn.stylori.com/120x120/images/product/SE0218/SE0218-1Y.jpg',
@@ -21,23 +21,31 @@ const fadeProperties = {
     console.log(`fade transition from ${oldIndex} to ${newIndex}`);
   }
 }
+
+
 class VerticalCarousel extends Component {
   state = {
 
   }
 
   render() {
+    const settings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
     return (
       <div>
         <Hidden smDown>
 
 
-
-          h
-
-
-
-
+        <Slider {...settings}>
+          <div>
+            <h3>1</h3>
+          </div>
+        </Slider>
 
 
             </Hidden>

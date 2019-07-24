@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './product-images.css'
-import { Grid } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
  import VerticalCarousel from './verticalcarousel'
 import TB from './producthoverData'
 const src = 'https://images8.alphacoders.com/387/387613.jpg'

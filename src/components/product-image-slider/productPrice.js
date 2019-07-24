@@ -6,6 +6,57 @@ import VerticalCarousel from './verticalcarousel'
 import Container from '@material-ui/core/Container';
 import PriceBuynow from './buyNow'
 import PriceTabs from './priceTabs'
+import dataCard from '../ProductCard/ProductData'
+const render=()=>{
+    return( 
+      <VerticalCarousel />
+      );
+    };
+const Productprice = () => {
+    return (
+        <div>
+{dataCard[123].map(val => (
+    <>
+            <Grid container spacing={12} sm={12}>
+                <Grid item xs={8}  sm={7}>
+                    <div className="price-div">
+                        <h1 className="pdp-title">{val.title}</h1>
+                        <p className="pdp-desc">{val.dis}</p>
+                    </div>
+                </Grid>
+                <Grid item xs={4}  sm={5}>
+                    <div className="starts">
+                        <div className="row social-shares">
+                            <i class="fa fa-share-alt"></i>&nbsp;
+                       <i class="fa fa-heart"></i>
+                        </div>
+                        <div className="starts-review">
+                            <i class="fa fa-star fa-grey"></i>
+                            <i class="fa fa-star fa-grey"></i>
+                            <i class="fa fa-star fa-grey"></i>
+                            <i class="fa fa-star fa-grey"></i>
+                            <i class="fa fa-star fa-grey"></i>
+                        </div>
+                    </div>
+                </Grid>
+                <hr class="bottom-line product-inform-ation"></hr>
+            </Grid>
+            <Hidden mdUp>
+                   {render()}
+               </Hidden>
+            <div className='price-info'>
+                <Grid container spacing={12}>
+                    <Grid item xs={6} lg={2} className='discount-container'> {val.offerPrice}</Grid>
+                    <Grid item lg={2} xs={6} sm={6} className="selling-price">{val.save}</Grid>
+                </Grid>
+                <hr class="bottom-line product-inform-ation"></hr>
+            </div>
+            </>
+))}
+        </div>
+    )
+};
+
 class ProductPrice extends Component {
     state = {
     }
@@ -15,92 +66,11 @@ class ProductPrice extends Component {
         return (
             <div>
                 <Hidden smDown>
-                    <div>
-                        <Grid container spacing={12}>
-                            <Grid item xs={7} >
-                                <div className="price-div">
-                                    <h1 className="pdp-title">Cute Bunchberry Diamond Ring</h1>
-                                    <p className="pdp-desc">Rings set in 18 Kt Yellow Gold 1.88 gm with Diamonds (0.25 ct, IJ  - SI )</p>
-                                </div>
-                            </Grid>
-
-                            <Grid item xs={5} >
-                                <div className="starts">
-                                    <div className="row social-shares">
-                                        <i class="fa fa-share-alt"></i>&nbsp;
-                                           <i class="fa fa-heart"></i>
-                                    </div>
-                                    <div className="starts-review">
-                                        <i class="fa fa-star fa-grey"></i>
-                                        <i class="fa fa-star fa-grey"></i>
-                                        <i class="fa fa-star fa-grey"></i>
-                                        <i class="fa fa-star fa-grey"></i>
-                                        <i class="fa fa-star fa-grey"></i>
-                                    </div>
-                                </div>
-                            </Grid>
-                            <hr class="bottom-line product-inform-ation"></hr>
-                        </Grid>
-                        <div className='price-info'>
-                            <Grid container spacing={12}>
-                                <Grid item xs={2} className='discount-container'>
-                                    $ 34,876
-                           </Grid>
-                                <Grid item xs={2} className="selling-price">
-                                    $ 87,7634
-                                   </Grid>
-                                <Grid item xs={12}>
-                                    <p class="discount offer-info">10% Flat off</p>
-                                </Grid>
-                            </Grid>
-                            <hr class="bottom-line product-inform-ation"></hr>
-                        </div>
-                    </div>
+                    {Productprice()}
                 </Hidden>
-
-
                 <Hidden mdUp>
-                    <Container>
-                        <Grid container spacing={12} style={{ marginTop: "20px" }}>
-                            <Grid item xs={8} >
-                                <div className="price-div">
-                                    <h4 className="pdp-title">Cute  Diamond Ring</h4>
-                                    <p className="pdp-desc">Rings set in 18 Kt Yellow Gold 1.88 gm with Diamonds (0.25 ct, IJ  - SI )</p>
-                                </div>
-                            </Grid>
-
-                            <Grid item xs={4} >
-                                <div className="starts">
-                                    <div className="starts-review">
-                                        <i class="fa fa-star fa-grey"></i>
-                                        <i class="fa fa-star fa-grey"></i>
-                                        <i class="fa fa-star fa-grey"></i>
-                                        <i class="fa fa-star fa-grey"></i>
-                                        <i class="fa fa-star fa-grey"></i>
-                                    </div>
-                                </div>
-                            </Grid>
-                            <hr class="bottom-line product-inform-ation"></hr>
-                        </Grid>
-                        <VerticalCarousel />
-                        <PriceBuynow />
-                        <div className='price-info'>
-                            <Grid container spacing={12}>
-                                <Grid item xs={3} className='discount-container'>
-                                    $ 34,876
-                           </Grid>
-                                <Grid item xs={6} className="selling-price">
-                                    $ 87,7634
-                                   </Grid>
-                                <Grid item xs={12}>
-                                    <p class="discount offer-info">10% Flat off</p>
-                                </Grid>
-                            </Grid>
-                        </div>
-                        <hr className="bottom-line product-inform-ation"></hr><br/>
-                    <PriceTabs/>
-
-                    </Container> </Hidden>
+                    {Productprice()}
+                </Hidden>
             </div>
 
 

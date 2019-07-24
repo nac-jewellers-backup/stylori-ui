@@ -24,6 +24,19 @@
         "https://assets-cdn.stylori.com/209x209/images/product/SE0562/HOVER-SE0562-2Y.jpg"
     },
 
+},
+  {
+    offerPrice: "23000.10",
+    price: "29000.0",
+    title: "Diamond Pendant Ring",
+    save:'5999.9',
+    image: {
+      placeImage:
+        "https://assets-cdn.stylori.com/209x209/images/product/SE0562/SE0562-1Y.jpg",
+      hoverImage:
+        "https://assets-cdn.stylori.com/209x209/images/product/SE0562/HOVER-SE0562-2Y.jpg"
+    },
+
   },
   {
     offerPrice: "23000.10",
@@ -144,5 +157,7 @@
 
   },
 
-  
-]
+
+  ]
+
+export default dataCard;
