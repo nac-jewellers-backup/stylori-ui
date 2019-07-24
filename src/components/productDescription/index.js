@@ -78,7 +78,7 @@ console.log(this.props)
                   style={{ textAlign: 'center' }}
                   alignItems="center">
 
-                  < Slideshow />
+                  < Slideshow  fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel}/>
                 </Grid>
               </Hidden>
               <Hidden smDown>
