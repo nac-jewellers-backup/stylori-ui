@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import './product-images.css'
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
-import VerticalCarousel from './verticalcarousel'
+import Slideshow from '../Carousel/carosul'
 import Container from '@material-ui/core/Container';
 import PriceBuynow from './buyNow'
 import PriceTabs from './priceTabs'
 import dataCard from '../ProductCard/ProductData'
 const render=()=>{
     return( 
-      <VerticalCarousel />
+      <Slideshow />
       );
     };
 const Productprice = () => {
@@ -47,7 +47,7 @@ const Productprice = () => {
             <div className='price-info'>
                 <Grid container spacing={12}>
                     <Grid item xs={6} lg={2} className='discount-container'> {val.offerPrice}</Grid>
-                    <Grid item lg={2} xs={6} sm={6} className="selling-price">{val.save}</Grid>
+                    <Grid item lg={2} xs={6} sm={6} className="selling-price"><i class="fa fa-rupee"></i> &nbsp;{val.save}</Grid>
                 </Grid>
                 <hr class="bottom-line product-inform-ation"></hr>
             </div>

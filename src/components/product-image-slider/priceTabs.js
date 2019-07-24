@@ -98,6 +98,12 @@ class PriceTabs extends React.Component {
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails style={{ padding: 0 }}>
                                     <Grid container spacing={12}>
+                                    <Grid xs={4}>
+                                            <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;{val.tab1.Children}
+                                        </Grid>
+                                        <Grid xs={4}>
+                                            <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;{val.tab1.Children}
+                                        </Grid>
                                         <Grid xs={4}>
                                             <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;{val.tab1.Children}
                                         </Grid>
