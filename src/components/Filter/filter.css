@@ -1,6 +1,6 @@
-.arrow {
+/* .arrow {
   fill: #394578 !important;
-}
+} */
 
 .filter-drawer-list {
   border-bottom: 1px solid rgba(0, 0, 0, 0.13) !important;
@@ -32,7 +32,6 @@
   font-size: 13px;
   position: relative;
   border-left: 3px solid #fff;
-  color: #394578;
   line-height: 1.42857143;
 }
 
@@ -75,7 +74,6 @@
   background-color: white;
   font-size: 18px !important;
   font-weight: normal;
-  color: #394578 !important;
 }
 .fil-drawer-head-sort {
   position: absolute;
@@ -88,7 +86,6 @@
   background-color: white;
   font-size: 18px !important;
   font-weight: normal;
-  color: #394578 !important;
 }
 .fil-drawer-head-sort-expand {
   position: absolute;
@@ -110,7 +107,6 @@
 
 .price-btn {
   font-size: 12px !important;
-  background-color: #3a4578 !important;
   color: #fff !important;
   line-height: 1.42857143;
   height: 35px !important;
@@ -122,7 +118,6 @@
   padding: 8px 10px;
   background-color: #f2f2f2;
   cursor: pointer;
-  color: #394578;
   font-family: sans-serif;
   font-size: 12px;
   font-weight: 600;
