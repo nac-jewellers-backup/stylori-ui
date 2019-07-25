@@ -3,6 +3,12 @@ import './ProductDescription.css'
 import { Container, Hidden, Grid } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul';
 import CustomSeparator from '../BreadCrumb/index';
+import { withTheme } from '@material-ui/core/styles';
+import ProductDescriptionTitle from './ProductDescriptionTitle'
+
+
+
+
 
 class ProductDescription extends Component {
   constructor(props) {
@@ -22,7 +28,9 @@ class ProductDescription extends Component {
     document.getElementById('moreDots').style.display = "inline";
 
   }
+  
   render() {
+    
     console.log(this.props)
     return (
       <>
@@ -52,18 +60,18 @@ class ProductDescription extends Component {
                 <Grid
                   item
                   xs={6}
-
+                  className={`DescriptionTitle  ` }
                   alignItems="center"            >
-                  <h2 className="DescriptionTitle">Jewellery</h2>
+                 <ProductDescriptionTitle />
                 </Grid>
               </Hidden>
               <Hidden mdUp>
                 <Grid
                   item
                   xs={6}
-
+                  className={` DescriptionTitleSmallScreen ` }
                   alignItems="center"            >
-                  <h2 className="DescriptionTitleSmallScreen">Jewellery</h2>
+                  <ProductDescriptionTitle />
                 </Grid>
               </Hidden>
             </Grid>

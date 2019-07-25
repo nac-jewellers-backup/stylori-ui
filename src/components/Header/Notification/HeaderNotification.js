@@ -1,6 +1,7 @@
 import React from 'react';
 import posed from 'react-pose';
 import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
 const Notification = posed.div({
     visible: {
@@ -21,6 +22,16 @@ const Notification = posed.div({
     }
 });
 
+const styles = theme => ({
+    colorDark: {
+        backgroundColor: theme.palette.secondary.dark,
+    
+      },
+      colorLight: {
+        backgroundColor: theme.palette.secondary.light,
+    
+      },
+});
 
 class NotificationMessage extends React.Component {
     constructor(props) {
@@ -29,7 +40,9 @@ class NotificationMessage extends React.Component {
     }
 
     render() {
+  
         const { isVisible } = this.state;
+        const { classes } = this.props;
         return (
             <Notification pose={isVisible ? 'visible' : 'hidden'} >
                 <Grid
@@ -37,7 +50,8 @@ class NotificationMessage extends React.Component {
                     direction="row"
                     justify="center"
                     alignItems="center"
-                    className="notificationHeader"
+                    className={`notificationHeader ${classes.colorDark}`}
+
                 >
                     <Grid item xs={7} style={{ textAlign: 'right' }}>
                         Signup on Stylori | Avail Exclusive Offer on Your First Purchase
@@ -53,4 +67,4 @@ class NotificationMessage extends React.Component {
     }
 }
 
-export default NotificationMessage;
+export default withStyles(styles)(NotificationMessage);

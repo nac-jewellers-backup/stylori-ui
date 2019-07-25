@@ -21,6 +21,25 @@ import { Hidden } from '@material-ui/core';
 import JewelleryMenuItem from '../../screens/Stylori/JewlleryMenuItem';
 import HeaderNotification from './Notification/HeaderNotification'
 import { mainlist, Jewellery, subheader } from './headerData'
+import { withStyles } from '@material-ui/core/styles';
+
+
+
+
+
+const styles = theme => ({
+  colorDark: {
+      backgroundColor: theme.palette.secondary.dark,
+  
+    },
+    colorMain: {
+      color: theme.palette.primary.main,
+  
+    },
+    colorLight:{
+      color: theme.palette.primary.main
+    }
+});
 class Header extends Component {
   constructor(props) {
     super(props)
@@ -41,6 +60,10 @@ class Header extends Component {
   //   debugger;
   //   this.setState({headHeight:headerHeight});
   // }
+
+
+
+  
   handleDrawerOpen = () => {
     this.setState({ open: true })
   }
@@ -63,6 +86,7 @@ class Header extends Component {
   }
   render() {
     let { selected, selected1 } = this.state;
+    const { classes } = this.props;
     return (
       <div>
         <Hidden smDown >
@@ -71,7 +95,7 @@ class Header extends Component {
               <HeaderNotification />
               <Grid container spacing={12}  >
                 <Grid item xs={3}>
-                  <div className="head-icons">
+                  <div className={`head-icons ${classes.colorMain}`} >
                     <i class="fa fa-truck "></i>
                     <i class="fa fa-phone"></i>
                   </div>
@@ -82,9 +106,9 @@ class Header extends Component {
                   </div>
                 </Grid>
                 <Grid item xs={5}>
-                  <div className="head-icons" style={{ fontFamily: "fontawesome" }}>
+                  <div className={`head-icons ${classes.colorMain}`}  style={{ fontFamily: "fontawesome" }}>
                     <InputBase
-                      className="search"
+                      className={`search ${classes.colorMain}`}
                       placeholder='&#xf002; Search here'
                     />
                     <i class="fa fa-user"></i>
@@ -98,17 +122,17 @@ class Header extends Component {
                 </Grid>
               </Grid>
               <Grid container spacing={12}>
-                <Grid item xs={12} className="header-navbar-list">
+                <Grid item xs={12} className={`header-navbar-list ${classes.colorLight}`}>
                   <nav >
-                    <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
-                    <a href="" onMouseOver={() => { this.setState({ Menuopen: true, Checked: true }) }} >
-                      <i class="fa fa-plus-circle"></i>&nbsp;Jewellery</a>
-                    <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Solitaires</a>
-                    <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Gold Coins</a>
-                    <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Gifts</a>
-                    <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Collections</a>
-                    <a href=""><i class="fa fa-plus-circle"></i>&nbsp;One Day Sipping</a>
-                    <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Stories</a>
+                    <a href=""  className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
+                    <a href="" onMouseOver={() => { this.setState({ Menuopen: true, Checked: true }) }} className={` ${classes.colorLight}`}>
+                      <i class="fa fa-plus-circle" ></i>&nbsp;Jewellery</a>
+                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Solitaires</a>
+                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Gold Coins</a>
+                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Gifts</a>
+                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Collections</a>
+                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;One Day Sipping</a>
+                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Stories</a>
                   </nav>
                 </Grid>
               </Grid>
@@ -236,4 +260,4 @@ class Header extends Component {
     )
   }
 }
-export default Header;
+export default withStyles(styles)(Header);

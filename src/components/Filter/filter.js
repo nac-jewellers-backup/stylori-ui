@@ -137,7 +137,7 @@ class PersistentDrawerLeft extends React.Component {
   };
   handleDrawerOpenMobile = () => {
     this.setState({ openMobile: false });
-    this.setState({ CardRadio: !this.state.CardRadio })
+    this.setState({ CardRadio: false });
 
 
 
