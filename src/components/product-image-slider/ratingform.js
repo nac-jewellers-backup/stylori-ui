@@ -1,6 +1,6 @@
 import React from "react";
 import './product-images.css';
-import { Grid, TextField, Button, Container } from '@material-ui/core';
+import { Grid, TextField, Button, Container, Hidden } from '@material-ui/core';
 import data from './producthoverData'
 
 class RatingForm extends React.Component {
@@ -8,7 +8,7 @@ class RatingForm extends React.Component {
         return (
             <div>
                 <Container>
-                    <Grid container spacing={12}>
+                    <Grid container spacing={12} style={{marginTop:'20px'}}>
                         <Grid item lg={1} />
                         <Grid item xs={12} lg={8}>
                             <h5 className='rating-form-head'>Rate This</h5>
@@ -36,7 +36,8 @@ class RatingForm extends React.Component {
                             <span className='tool-tips' >Max 250 Characters</span>
                         </Grid>
                     </Grid>
-                    <Grid container spacing={12}>
+                   <Hidden smDown>
+                   <Grid container spacing={12}>
                         <Grid item xs={12} lg={8}>
                             <div style={{ float: "right" }}>
                                 <Button className='form-reviews'>Write a Reviews</Button>
@@ -44,6 +45,18 @@ class RatingForm extends React.Component {
                             </div>
                         </Grid>
                     </Grid>
+                   </Hidden>
+
+                   <Hidden mdUp>
+                   <Grid container spacing={12} style={{marginTop:'20px'}}>
+                        <Grid item xs={12} lg={8}>
+                            <div style={{ float: "right" }}>
+                                <Button className='form-reviews-mob'>Write a Reviews</Button>
+                                <Button className='form-cancel-mob'>Cancel</Button>
+                            </div>
+                        </Grid>
+                    </Grid>
+                   </Hidden>
 
                 </Container>
             </div>

@@ -74,7 +74,6 @@ export default class Stylori extends Component {
               <Header />
             </Grid>
           </Grid>
-          <Container>
             <Grid item xs={12} >
               <PriceBuynow />
             </Grid>
@@ -92,7 +91,6 @@ export default class Stylori extends Component {
               <RatingForm />
             </Grid>
 
-          </Container>
           <CustomerReviews />
 
           <br />

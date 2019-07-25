@@ -23,85 +23,87 @@ class ProductDetails extends React.Component {
             <div>
                 <Hidden smDown>
                     <Container>
-                    <Grid container spacing={12} >
-                        {data.productsDetails.map(val => (
-                            <>
-                                <h4 key={val.name} className="product-details">{val.header}</h4>
-                                <hr class="bottom-line"></hr>
-                                <>{
-                                    val.namedetail !== undefined && val.namedetail.map(res => <Grid container item xs={12} >
-                                        <Grid xs={6}>
-                                            <ListItemText variant='' className="product-subhead">
-                                                <span style={{ fontSize: "12px" }}> {res.name}</span>
-                                            </ListItemText>
+                        <Grid container spacing={12} >
+                            {data.productsDetails.map(val => (
+                                <>
+                                    <h4 key={val.name} className="product-details">{val.header}</h4>
+                                    <hr class="bottom-line"></hr>
+                                    <>{
+                                        val.namedetail !== undefined && val.namedetail.map(res => <Grid container item xs={12} >
+                                            <Grid xs={6}>
+                                                <ListItemText variant='' className="product-subhead">
+                                                    <span style={{ fontSize: "12px" }}> {res.name}</span>
+                                                </ListItemText>
+                                            </Grid>
+                                            <Grid xs={6}>
+                                                <ListItemText variant='' className="product-subhead-list">
+                                                    <span style={{ fontSize: "12px" }}> {res.details}</span>
+                                                </ListItemText>
+                                            </Grid>
                                         </Grid>
-                                        <Grid xs={6}>
-                                            <ListItemText variant='' className="product-subhead-list">
-                                                <span style={{ fontSize: "12px" }}> {res.details}</span>
-                                            </ListItemText>
-                                        </Grid>
+                                        )}</>
+                                </>
+                            ))}
+                        </Grid>
+                        <Grid container spacing={12} >
+                            {data.productsPendants.map(val => (
+                                <>
+                                    <h4 key={val.name} className="product-details">{val.header}</h4>
+                                    <hr class="bottom-line"></hr>
+                                    <Grid item xs={12} className="product-subhead">
+                                        <span style={{ fontSize: "12px" }}>{val.name.join(' ')}</span>
                                     </Grid>
-                                    )}</>
-                            </>
-                        ))}
-                    </Grid>
-                    <Grid container spacing={12} >
-                        {data.productsPendants.map(val => (
-                            <>
-                                <h4 key={val.name} className="product-details">{val.header}</h4>
-                                <hr class="bottom-line"></hr>
-                                <Grid item xs={12} className="product-subhead">
-                                    <span style={{ fontSize: "12px" }}>{val.name.join(' ')}</span>
-                                </Grid>
-                            </>
-                        ))}
-                    </Grid>
+                                </>
+                            ))}
+                        </Grid>
                     </Container>
-                       </Hidden>
+                </Hidden>
 
 
 
 
                 <Hidden mdUp>
                     <div>
-                        {data.productsDetails.map(val => (
-                            <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handle('panel2')}
-                                style={{ boxShadow: "none", backgroundColor: "none" }} key={val.name}>
-                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                                    <Typography className='subtabs-smrt'>{val.header}</Typography>
-                                </ExpansionPanelSummary>
-                                <hr class="bottom-line"></hr>
-                                {
-                                    val.namedetail !== undefined && val.namedetail.map(res =>
-                                        <Grid container spacing xs={12} sm={12}>
-                                            <Grid item xs={6} sm={6}>
-                                                <ListItemText variant='' className="product-subhead">
-                                                    <span style={{ fontSize: "12px" }}> {res.name}</span>
-                                                </ListItemText>
+                        <Container>
+                            {data.productsDetails.map(val => (
+                                <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
+                                    style={{ boxShadow: "none", backgroundColor: "none" }} key={val.name}>
+                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                                        <Typography className='subtabs-smrt'>{val.header}</Typography>
+                                    </ExpansionPanelSummary>
+                                    <hr class="bottom-line"></hr>
+                                    {
+                                        val.namedetail !== undefined && val.namedetail.map(res =>
+                                            <Grid container spacing xs={12} sm={12}>
+                                                <Grid item xs={6} sm={6}>
+                                                    <ListItemText variant='' className="product-subhead">
+                                                        <span style={{ fontSize: "12px" }}> {res.name}</span>
+                                                    </ListItemText>
+                                                </Grid>
+                                                <Grid item xs={6} sm={6}>
+                                                    <ListItemText variant='' className="product-subhead-list">
+                                                        <span style={{ fontSize: "12px" }}> {res.details}</span>
+                                                    </ListItemText>
+                                                </Grid>
                                             </Grid>
-                                            <Grid item xs={6} sm={6}>
-                                                <ListItemText variant='' className="product-subhead-list">
-                                                    <span style={{ fontSize: "12px" }}> {res.details}</span>
-                                                </ListItemText>
-                                            </Grid>
+                                        )}
+                                </ExpansionPanel>
+                            ))}
+                            {data.productsPendants.map(val => (
+                                <ExpansionPanel expanded={expanded === 'panel3'} onChange={this.handle('panel3')}
+                                    style={{ boxShadow: "none", backgroundColor: "none" }}>
+                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                                        <Typography className="product-details-smrt">{val.header}
+                                        </Typography>
+                                    </ExpansionPanelSummary>
+                                    <Grid container spacing={12}>
+                                        <Grid item xs={12} className="product-subhead">
+                                            <span style={{ fontSize: "12px" }}>{val.name.join(' ')}</span>
                                         </Grid>
-                                    )}
-                            </ExpansionPanel>
-                        ))}
-                        {data.productsPendants.map(val => (
-                            <ExpansionPanel expanded={expanded === 'panel3'} onChange={this.handle('panel3')}
-                                style={{ boxShadow: "none", backgroundColor: "none" }}>
-                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                                    <Typography className="product-details-smrt">{val.header}
-                                    </Typography>
-                                </ExpansionPanelSummary>
-                                <Grid container spacing={12}>
-                                    <Grid item xs={12} className="product-subhead">
-                                        <span style={{ fontSize: "12px" }}>{val.name.join(' ')}</span>
                                     </Grid>
-                                </Grid>
-                            </ExpansionPanel>
-                        ))}
+                                </ExpansionPanel>
+                            ))}
+                        </Container>
                     </div>
                 </Hidden>
             </div>

@@ -2,15 +2,15 @@ export const productsDetails = [
     {
         header: "Product Details",
         namedetail: [{
-            name : "Product Code",
-            details : "SP0679-18110000"
+            name: "Product Code",
+            details: "SP0679-18110000"
         },
         {
-            name : "Metal Type",
-            details : "18K Yellow Gold"
-        },{
-            name : "Approximate Metal Weight (in gms)",
-            details : "1.463"
+            name: "Metal Type",
+            details: "18K Yellow Gold"
+        }, {
+            name: "Approximate Metal Weight (in gms)",
+            details: "1.463"
         }],
     }, {
         header: "Diamond Details ",
@@ -18,53 +18,53 @@ export const productsDetails = [
 
         namedetail: [
             {
-                name : "Total No of ",
+                name: "Total No of ",
             },
             {
-                name : "Diamonds",
-                details : "35"
+                name: "Diamonds",
+                details: "35"
             },
             {
-                name : "Color",
-                details : "IF"
+                name: "Color",
+                details: "IF"
             },
             {
-                name : "Clarity",
-                details : "SI"
+                name: "Clarity",
+                details: "SI"
             },
             {
-                name : "Total Weight",
-                details : "0,9484"
+                name: "Total Weight",
+                details: "0,9484"
             },
             {
-                name : "Setting Type",
-                details : "pave"
+                name: "Setting Type",
+                details: "pave"
             },
             {
-                name : "Shape",
-                details : "round"
+                name: "Shape",
+                details: "round"
             },
 
-    ],
+        ],
     },
     {
         header: "Price Breakup",
         namedetail: [{
-            name : "Metal",
-            details : "SP0679-18110000"
+            name: "Metal",
+            details: "SP0679-18110000"
         },
         {
-            name : "Diamond",
-            details : "18K Yellow Gold"
-        },{
-            name : "Making Charges",
-            details : "1.463"
+            name: "Diamond",
+            details: "18K Yellow Gold"
+        }, {
+            name: "Making Charges",
+            details: "1.463"
         },
         {
-            name : "GST",
-            details : "1.463"
+            name: "GST",
+            details: "1.463"
         },
-    ],
+        ],
     },
 ];
 export const productsPendants = [
@@ -110,27 +110,27 @@ export const productsubHead = [
 
 export const productstabs = [
     {
-        tab1:{
-            header:"Ring Size",
-            Children:'JKGH'
+        tab1: {
+            header: "Ring Size",
+            Children:'JHBKJ'
         },
-        tab2:{
-            header:"Metal Purity",
-            Children:'JKGH'
+        tab2: {
+            header: "Metal Purity",
+            Children: 'JKGH'
         },
-        tab3:{
-            header:"Diamond Clarity",
-            Children:'JKGH'
+        tab3: {
+            header: "Diamond Clarity",
+            Children: 'JKGH'
         }
     }
 ];
 
 export const productsbuy = [
     {
-        telephone:'98-554-54-54554',
-        phonenum:"+91 7864697459",
-        chat:"Chat",
-        shipby:"SHIPS BY 31 Jul 2019"
+        telephone: '98-554-54-54554',
+        phonenum: "+91 7864697459",
+        chat: "Chat",
+        shipby: "SHIPS BY 31 Jul 2019"
         // chat:{
         //     header:"chat",
         //     path:"/"
@@ -141,12 +141,51 @@ export const productsbuy = [
 
 export const imagecertificat = [
     {
-        header:"Certification",
-        img1:'https://assets-cdn.stylori.com/images/static/Logo1.png',
-        img2:"https://assets-cdn.stylori.com/images/static/Logo3.png" ,
-        img3:"https://assets-cdn.stylori.com/images/static/Logo2.png" ,
-        img4:"https://assets-cdn.stylori.com/images/static/Logo4.png",
-        img5:"https://assets-cdn.stylori.com/images/static/certificate4.jpg"
+        header: "Certification",
+        img1: 'https://assets-cdn.stylori.com/images/static/Logo1.png',
+        img2: "https://assets-cdn.stylori.com/images/static/Logo3.png",
+        img3: "https://assets-cdn.stylori.com/images/static/Logo2.png",
+        img4: "https://assets-cdn.stylori.com/images/static/Logo4.png",
+        img5: "https://assets-cdn.stylori.com/images/static/certificate4.jpg"
     }
 ];
-export default { productsubHead, productsDetails, productsPendants,productstabs ,productsbuy,imagecertificat};
+
+export const fadeImages1 = [
+    
+    {
+        img:'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+        title:"You recently viewed",
+        price:"98.89789"
+      },{
+        img:'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+        title:"You recently viewed",
+        price:"98.89789"
+      },
+      {
+        img:'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+        title:"You recently viewed",
+        price:"98.89789"
+      },
+      {
+        img:'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+        title:"You recently viewed",
+        price:"98.89789"
+      },
+      {
+        img:'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+        title:"You recently viewed",
+        price:"98.89789"
+      },
+      {
+        img:'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+        title:"You recently viewed",
+        price:"98.89789"
+      },
+      {
+        img:'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+        title:"You recently viewed",
+        price:"98.89789"
+      },
+    
+]
+export default { productsubHead, productsDetails, productsPendants, productstabs, productsbuy, imagecertificat ,fadeImages1};

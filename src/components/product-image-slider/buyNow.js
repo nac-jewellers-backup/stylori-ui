@@ -74,6 +74,7 @@ class PriceBuynow extends React.Component {
 
 
                 <Hidden mdUp>
+                    <Container>
                     {buy.productsbuy.map(val =>
                         <div style={{ marginTop: "25px" }}>
                             <ProductPrice />
@@ -105,7 +106,7 @@ class PriceBuynow extends React.Component {
                             </Grid>
                         </div>
                     )}
-                </Hidden>
+                </Container></Hidden>
             </div>
         );
     }

@@ -7,6 +7,15 @@ class Slideshow extends React.Component {
   constructor(props){
     super(props)
   }
+
+  renderFadeImages = () => {
+    return this.props.fadeImages.map(imgs => (
+      <div className={this.props.class?this.props.class:''} onClick={e => this.props.getmsg ? this.props.getmsg(e) : ''}>
+        <img className={this.props.imgClass?this.props.imgClass:''} src={imgs} />
+      </div>
+    ))
+  }
+
   render() {
     // document.getElementsByClassName('fade').slick({
     //   dots: true,
@@ -27,11 +36,9 @@ class Slideshow extends React.Component {
     return (
       <div >
         <Slider {...settings}>
-          {this.props.fadeImages.map(imgs => (
-            <div className={this.props.class?this.props.class:''}>
-              <img className={this.props.class2?this.props.class2:''} src={imgs} />
-            </div>
-          ))}
+          {/* <div onClick={e => this.props.getmsg ? this.props.getmsg(e) : ''}> */}
+          {this.props.children ? this.props.children : this.renderFadeImages()}
+          {/* </div> */}
         </Slider>
       </div>
     );
