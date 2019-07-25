@@ -28,8 +28,8 @@ class Slideshow extends React.Component {
       <div >
         <Slider {...settings}>
           {this.props.fadeImages.map(imgs => (
-            <div >
-              <img src={imgs} />
+            <div className={this.props.class?this.props.class:''}>
+              <img className={this.props.class2?this.props.class2:''} src={imgs} />
             </div>
           ))}
         </Slider>

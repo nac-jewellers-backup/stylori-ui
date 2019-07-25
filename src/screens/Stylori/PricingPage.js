@@ -22,10 +22,10 @@ import Sublistcarousel from '../../components/product-image-slider/subListcarous
 import CustomerReviews from '../../components/product-image-slider/customer-reviews'
 import { Container, Hidden } from '@material-ui/core';
 import Slideshow from '../../components/Carousel/carosul'
-import VerticalCarousel from '../../components/product-image-slider/verticalcarousel'
 
 export default class Stylori extends Component {
   render() {
+
     return (
       <div>
         <Hidden smDown>
@@ -57,7 +57,9 @@ export default class Stylori extends Component {
 
               </Grid>
             </Grid>
+            <Sublistcarousel />
             <RatingForm />
+
             {/* <Sublistcarousel/> */}
             <CustomerReviews />
           </Container>
