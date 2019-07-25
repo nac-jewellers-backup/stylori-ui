@@ -9,7 +9,7 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Grid, Hidden } from '@material-ui/core';
+import { Grid, Hidden, Container } from '@material-ui/core';
 import H from './producthoverData'
 
 function TabContainer({ children, dir }) {
@@ -89,6 +89,7 @@ class PriceTabs extends React.Component {
                     {this.TabsS()}
                 </Hidden>
                 <Hidden mdUp>
+                    <Container>
                     {H.productstabs.map(val =>
                         <>
                             <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handle('panel2')}
@@ -101,18 +102,12 @@ class PriceTabs extends React.Component {
                                     <Grid xs={4}>
                                             <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;{val.tab1.Children}
                                         </Grid>
-                                        <Grid xs={4}>
-                                            <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;{val.tab1.Children}
-                                        </Grid>
-                                        <Grid xs={4}>
-                                            <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;{val.tab1.Children}
-                                        </Grid>
                                     </Grid>
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
                         </>
                     )}
-                </Hidden>
+               </Container> </Hidden>
             </div>
         );
     }

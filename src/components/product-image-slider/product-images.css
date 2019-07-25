@@ -24,6 +24,7 @@
         font-size: 10px !important;
         margin-bottom: 2px !important;
         text-align: justify;
+        overflow: hidden;
     }
 
     .starts {
@@ -101,6 +102,13 @@
     .price-panel {
         /* padding: 0px; */
         box-shadow: none !important;
+
+    }
+
+    .PrivateTabIndicator-root-683,
+    .PrivateTabIndicator-colorPrimary-684,
+    .MuiTabs-indicator {
+        background:#ed1165 !important;
 
     }
 
@@ -225,11 +233,12 @@
     }
 
     /*request*/
-    .request-text {
+    .request-text,
+    .MuiOutlinedInput-input {
         display: block;
         width: 95%;
         height: 42px !important;
-        padding: 6px 12px;
+        padding: 1.5px 14px !important;
         font-size: 13px;
         line-height: 1.42857143;
         color: #394578 !important;
@@ -258,6 +267,22 @@
     /*rating-form*/
     .rating-form {
         letter-spacing: 12px !important;
+    }
+
+    .requset-button-mob {
+        margin-top: 20px !important;
+        background: #394579 !important;
+        border: 1px solid #394579 !important;
+        color: #fff !important;
+        padding: 9px 15px !important;
+        border-radius: 0px !important;
+        text-align: center !important;
+        min-width: 100px !important;
+        font-size: 16px !important;
+        border: none;
+        cursor: pointer;
+        float: right !important;
+        text-transform: none !important;
     }
 
     .rating-form-head {
@@ -296,6 +321,15 @@
         text-transform: none !important;
     }
 
+    .form-cancel-mob {
+        border-radius: 0px !important;
+        border: 1px solid #394578 !important;
+        text-transform: none !important;
+        background: #FFF !important;
+        color: #394578 !important;
+        padding: 9px 15px !important;
+    }
+
     .form-cancel:hover {
         background-color: #394578 !important;
         color: #fff !important;
@@ -314,6 +348,24 @@
         border-radius: 0px !important;
         text-transform: none !important;
         margin-right: 10px !important;
+    }
+
+    .form-reviews-mob {
+        border-radius: 0px !important;
+        text-transform: none !important;
+        background-color: #394578 !important;
+        border: 1px solid #394579 !important;
+        color: #fff !important;
+        text-align: center;
+        margin-right: 10px !important;
+        min-width: 100px;
+        font-size: 16px;
+        padding: 9px 15px !important;
+    }
+
+    .form-cancel-mob:hover {
+        background-color: #394578 !important;
+        color: #fff !important;
     }
 
     .sub-carousel {}
@@ -365,8 +417,6 @@
         font-size: 13px !important;
     }
 
-
-
     .imagecard {
         width: 95%;
         border: 1px solid #ccc;
@@ -383,30 +433,118 @@
         position: absolute;
         z-index: 3;
         height: 475px !important;
-        background-image: url('https://wallpaperplay.com/walls/full/2/5/3/48901.jpg');
+        background-image: url('https://storage.googleapis.com/media.nacjewellers.com/resources/user_media/Muhurtham-Banner.jpg');
         background-repeat: no-repeat;
-        left: 48%;
+        left: 46%;
         margin-top: -477px !important;
     }
-.vertical-carousel{
-    border: 1px solid #CCC;
-    margin-bottom: 19px!important;
-    margin: 3px 0 0;
-    width: 80px !important;
-    height: 80px !important;
-}.vertical-carousel-img{
-    width: 80px !important;
-    height: 80px !important;
-}
-.subslider-carousel{
-    border: 1px solid #ccc;
-    background-color: #fff;
-    text-align: right !important;
-    width: 80% !important;
-    margin: 14px;
-    min-height: 1px;
-}
-.subslider-carousel-img{
-    text-align: center !important;
-    margin: 4px;
-}
+
+    .vertical-carousel {
+        border: 1px solid #CCC;
+        margin-bottom: 19px !important;
+        width: 90% !important;
+        height: 80px !important;
+    }
+
+    .vertical-carousel-img {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .subslider-carousel {
+        border: 1px solid #ccc;
+        background-color: #fff;
+        width: 85% !important;
+        margin-left: 8% !important;
+        min-height: 1px;
+        text-align: center !important;
+        overflow: hidden;
+    }
+
+    .subslider-carousel-img {
+        padding-left: 16% !important;
+    }
+
+    .sub-carousel-head {
+        padding: 30px;
+    }
+
+    .like-and-recently {
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .like-page {
+        color: #394578 !important;
+        font-size: 15px !important;
+        font-weight: 400 !important;
+        padding-left: 35% !important;
+        border-right: 1px solid #ccc;
+    }
+
+    .recenetly-like-page {
+        color: #394578 !important;
+        font-size: 15px !important;
+        padding-left: 5% !important;
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+        color: #394578 !important;
+    }
+
+    .next-price {
+        font-size: 14px;
+        font-weight: 300;
+        color: #394578;
+    }
+
+    .sub-list-price {
+        font-weight: 500;
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 40px;
+        color: #394578;
+    }
+
+    .responseve-carousel {
+        width: 100% !important;
+        height: 100% !important;
+        text-align: center;
+    }
+
+    .responseve-carousel-img {
+        height: 100% !important;
+        width: 100% !important;
+    }
+
+    /*product-page-fixed-footer*/
+    .product-page-fixed-footer {
+        height: 50px !important;
+        text-align: center;
+        background-color: #EBEAEA !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        top: auto !important;
+    }
+
+    .product-footer-buynow {
+        padding: 14px 20px !important;
+        font-size: 16px;
+        height: 50px !important;
+        border-radius: 0;
+        border: none;
+        background-color: #f36e23;
+        color: #fff;
+        text-align: center;
+        letter-spacing: 2px;
+    }
+
+    .talk-to-us {
+        border-radius: 0;
+        border: medium none;
+        background-color: #ccc;
+        color: #394578;
+        padding: 14px 20px !important;
+        font-size: 14px;
+    }

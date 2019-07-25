@@ -1,7 +1,7 @@
 import React from 'react';
 import './product-images.css'
 import TextField from '@material-ui/core/TextField';
-import { Grid, Button, Hidden } from '@material-ui/core';
+import { Grid, Button, Hidden, Container } from '@material-ui/core';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -10,8 +10,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 const Requestform = () => {
     return (
         <div>
-            <h4 className="product-details">Ask Our Expert</h4>
-            <hr class="bottom-line"></hr>
+            <Hidden smDown>
+                <h4 className="product-details">Ask Our Expert</h4>
+                <hr class="bottom-line"></hr>
+            </Hidden>
             <form>
                 <Grid container spacing={12} >
                     <Grid xs={12} lg={6} >
@@ -47,11 +49,21 @@ const Requestform = () => {
                         />
                     </Grid>
                     <Grid xs={9} />
-                    <Grid xs={2}>
-                        <Button className="requset-button">
-                            Send
+                    <Hidden smDown>
+                        <Grid xs={2}>
+                            <Button className="requset-button">
+                                Send
                         </Button>
-                    </Grid>
+                        </Grid>
+                    </Hidden>
+
+                    <Hidden mdUp>
+                        <Grid xs={2}>
+                            <Button className="requset-button-mob">
+                                Send
+                        </Button>
+                        </Grid>
+                    </Hidden>
                 </Grid>
             </form>
         </div>
@@ -78,20 +90,20 @@ class Request extends React.Component {
 
 
                 <Hidden mdUp>
-                    <ExpansionPanel expanded={expanded === 'panel3'} onChange={this.handle('panel3')}
-                        style={{ boxShadow: "none", backgroundColor: "none" }}>
-                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                            <Typography className="product-details-smrt">Ask Our Expert
+                    <Container>
+                        <ExpansionPanel expanded={expanded === 'panel3'} onChange={this.handle('panel3')}
+                            style={{ boxShadow: "none", backgroundColor: "none" }}>
+                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={{ borderBottom: "1px solid #ed1165" }}>
+                                <Typography className="product-details-smrt">Ask Our Expert
                                     </Typography>
-                        </ExpansionPanelSummary>
-                        <hr class="bottom-line"></hr>
-                        <Grid container spacing={12}>
-                            <Grid item xs={12} className="product-subhead">
-                                <span style={{ fontSize: "12px" }}> {Requestform()}</span>
+                            </ExpansionPanelSummary>
+                            <Grid container spacing={12}>
+                                <Grid item xs={12} className="product-subhead">
+                                    <span style={{ fontSize: "12px" }}> {Requestform()}</span>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </ExpansionPanel>
-                </Hidden>
+                        </ExpansionPanel>
+                    </Container> </Hidden>
             </div>
         )
     }

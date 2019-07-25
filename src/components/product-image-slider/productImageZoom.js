@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import './product-images.css'
-import { Grid, Hidden } from '@material-ui/core';
+import { Grid, Hidden, Container } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul'
 import TB from './producthoverData'
 const src = 'https://images8.alphacoders.com/387/387613.jpg'
 
-
+const fadeImages = [
+  'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+  'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
+  'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+  'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+  'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
+  'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+  'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
+];
 class ProductImageZoom extends Component {
   state = {
     backgroundImage: `url(${src})`,
-    backgroundPosition: '0% 0%'
+    backgroundPosition: '0% 0%',
+    showimage : fadeImages[0]
   }
 
   handleMouseMove = e => {
@@ -33,68 +42,58 @@ class ProductImageZoom extends Component {
     var element = document.getElementById("overlay");
     element.style.display = 'none';
   }
+  getimage = e =>{
+    this.setState({
+      showimage : e.target.src
+    })
+  }
   render() {
-    const fadeImages = [
-      'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
-      'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
-      'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
-      'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
-    ];
     
-    const dataCarousel={
-      dots: false,
-          infinite: true,
-          autoplay: true,
-          speed: 1000,
-          fade: true,
-          arrows: true,
-          rows:4
-        }
+    let { showimage } = this.state;
+    const dataCarousel = {
+      infinite: true,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      vertical: true,
+      verticalSwiping: true,
+      arrows: true,
+    }
     return (
       <div>
-        {/* <Grid container spacing={12}>
-        <Grid xs={2}>
-          <VerticalCarousel/>
-        </Grid>
-        <Grid xs={10}>
-        <div className="imagecard">
-          <div className='figure' onMouseMove={this.handleMouseMove} style={this.state}>
-            <img className='image' src={src} />
-          </div>
-        </div>
-        <div>
-        <Grid container spacing={12}
-         className='features-tags'>
-          {TB.productsubHead.map(val => (
-            <Grid item xs={2} >
-              <div key={val.name}>
-                <img className='features-tags-images' src={val.icon} />
-               <span style={{fontSize:"14px"}}>{val.name} </span> 
-              </div>
+        <Container>
+          <Hidden smDown>
+            <Grid container spacing={1}>
+              <Grid item xs={2}>
+                <div style={{ textAlign: 'center' }}>
+                  <Slideshow getmsg={this.getimage}  class="vertical-carousel" imgClass='vertical-carousel-img' fadeImages={fadeImages} dataCarousel={dataCarousel} />
+                </div>
+              </Grid>
+              <Grid item xs={10}>
+                <div  >
+                  <div className="imagecard" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
+                    <img id="imgZoom" width="100%" height="100%"
+                      src={showimage} />
+
+                  </div>
+                    <div className='overly-img' id="overlay" style={{backgroundImage: `url(${showimage})`}} onMouseOut={event => this.zoomOut(event)}></div>
+                  <div>
+                    <Grid container spacing={12}
+                      className='features-tags'>
+                      {TB.productsubHead.map(val => (
+                        <Grid item xs={2} >
+                          <div key={val.name}>
+                            <img className='features-tags-images' src={val.icon} />
+                            <span style={{ fontSize: "14px" }}>{val.name} </span>
+                          </div>
+                        </Grid>
+                      ))}
+                    </Grid>
+                  </div> </div>
+              </Grid>
             </Grid>
-          ))}
-        </Grid>
-        </div>
-        </Grid>
-        </Grid> */}
-        <Hidden smDown>
-        <Grid container spacing={12}>
-          <Grid xs={2}>
-            <Slideshow class="vertical-carousel" class2='vertical-carousel-img' fadeImages={fadeImages} dataCarousel={dataCarousel}/>
-          </Grid>
-          <Grid xs={10}>
-            <div  >
-            <div className="imagecard" onMouseOut={event => this.zoomOut(event)}  onMouseMove={event => this.zoomIn(event)}> 
-              <img id="imgZoom" width="100%" height="100%" 
-                src="https://wallpaperplay.com/walls/full/2/5/3/48901.jpg" />
+          </Hidden>
 
-            </div>
-            <div className='overly-img' id="overlay"   onMouseOut={event => this.zoomOut(event)}></div>
-            </div>
-          </Grid>
-        </Grid>
-        </Hidden>
-
+        </Container>
       </div>
 
     )
