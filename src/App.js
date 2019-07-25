@@ -13,13 +13,13 @@ const RouterApp = React.lazy(() => import('./router'));
 function App() {
   return (
     <ThemeProvider theme={outerThemes}>
-    <StoreProvider>
-      <Router>
-        <React.Suspense fallback={Loading} >
-          <RouterApp />
-        </React.Suspense>
-      </Router>
-    </StoreProvider>
+      <StoreProvider>
+        <Router>
+          <React.Suspense fallback={Loading} >
+            <RouterApp />
+          </React.Suspense>
+        </Router>
+      </StoreProvider>
     </ThemeProvider>
   );
 }
