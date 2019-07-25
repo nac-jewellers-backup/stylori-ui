@@ -8,6 +8,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
 import CardRadioButton from "../RadioButton/index"
 import './filter.css';
+import filterdatas from './Filterdata';
 import { Grid } from '@material-ui/core';
 
 class FilterHeader extends Component {
@@ -48,14 +49,7 @@ class FilterHeader extends Component {
     }
     render() {
 
-        const radioValues = [
-            "New To Stylori",
-            "Featured",
-            "Price Low to High",
-            "Price High to Low",
-            "Ready To Ship",
-            "Best Seller"
-          ];
+
         return (
             <Paper style={{ position: 'sticky', top: this.state.topHeight, width: '100%', zIndex: '3', boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">
                 {/* <div style={{position:'sticky',top:'165px'}}> */}
@@ -84,11 +78,11 @@ class FilterHeader extends Component {
                                 </span> */}
                             </Typography>
                         </div>
-                            <div className={"testMenu"} style={{position: "absolute", right: "15px", top: "45px"}}>
-                                <Collapse in={this.state.expanded} timeout="auto" unmountOnExit >
-                                    <CardRadioButton  data={radioValues}/>
-                                </Collapse>
-                            </div>
+                        <div className={"testMenu"} style={{ position: "absolute", right: "15px", top: "45px" }}>
+                            <Collapse in={this.state.expanded} timeout="auto" unmountOnExit >
+                                <CardRadioButton data={filterdatas.radioValues} />
+                            </Collapse>
+                        </div>
                     </Grid>
                 </Grid>
                 {/* </div> */}

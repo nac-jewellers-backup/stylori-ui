@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import './ProductDescription.css'
 import { Container, Hidden, Grid } from '@material-ui/core';
-import Slideshow   from '../Carousel/carosul';
-import  CustomSeparator  from '../BreadCrumb/index';
+import Slideshow from '../Carousel/carosul';
+import CustomSeparator from '../BreadCrumb/index';
+import { withTheme } from '@material-ui/core/styles';
+import ProductDescriptionTitle from './ProductDescriptionTitle'
+
+
+
+
 
 class ProductDescription extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
   }
   handleOpen = () => {
@@ -22,8 +28,10 @@ class ProductDescription extends Component {
     document.getElementById('moreDots').style.display = "inline";
 
   }
+  
   render() {
-console.log(this.props)
+    
+    console.log(this.props)
     return (
       <>
         <Container >
@@ -32,7 +40,7 @@ console.log(this.props)
             direction="row"
             justify="space-around"
             alignItems="center"
-            >
+          >
             <Grid
               item
               container
@@ -52,18 +60,18 @@ console.log(this.props)
                 <Grid
                   item
                   xs={6}
-
+                  className={`DescriptionTitle  ` }
                   alignItems="center"            >
-                  <h2 className="DescriptionTitle">Jewellery</h2>
+                 <ProductDescriptionTitle />
                 </Grid>
               </Hidden>
               <Hidden mdUp>
                 <Grid
                   item
                   xs={6}
-
+                  className={` DescriptionTitleSmallScreen ` }
                   alignItems="center"            >
-                  <h2 className="DescriptionTitleSmallScreen">Jewellery</h2>
+                  <ProductDescriptionTitle />
                 </Grid>
               </Hidden>
             </Grid>
@@ -78,7 +86,7 @@ console.log(this.props)
                   style={{ textAlign: 'center' }}
                   alignItems="center">
 
-                  < Slideshow  fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel}/>
+                  < Slideshow fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel} />
                 </Grid>
               </Hidden>
               <Hidden smDown>

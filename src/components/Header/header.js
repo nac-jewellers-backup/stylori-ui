@@ -21,6 +21,25 @@ import { Hidden } from '@material-ui/core';
 import JewelleryMenuItem from '../../screens/Stylori/JewlleryMenuItem';
 import HeaderNotification from './Notification/HeaderNotification'
 import { mainlist, Jewellery, subheader } from './headerData'
+import { withStyles } from '@material-ui/core/styles';
+
+
+
+
+
+const styles = theme => ({
+  colorDark: {
+      backgroundColor: theme.palette.secondary.dark,
+  
+    },
+    colorMain: {
+      color: theme.palette.primary.main,
+  
+    },
+    colorLight:{
+      color: theme.palette.primary.main
+    }
+});
 class Header extends Component {
   constructor(props) {
     super(props)
@@ -41,6 +60,10 @@ class Header extends Component {
   //   debugger;
   //   this.setState({headHeight:headerHeight});
   // }
+
+
+
+  
   handleDrawerOpen = () => {
     this.setState({ open: true })
   }
@@ -63,98 +86,99 @@ class Header extends Component {
   }
   render() {
     let { selected, selected1 } = this.state;
+    const { classes } = this.props;
     return (
       <div>
         <Hidden smDown >
-<div className="header-appbar-sticky" >
-          <AppBar className="header-appbar">
-            <HeaderNotification  />
-            <Grid container spacing={12}  >
-              <Grid item xs={3}>
-                <div className="head-icons">
-                  <i class="fa fa-truck "></i>
-                  <i class="fa fa-phone"></i>
-                </div>
+          <div className="header-appbar-sticky" >
+            <AppBar className="header-appbar">
+              <HeaderNotification />
+              <Grid container spacing={12}  >
+                <Grid item xs={3}>
+                  <div className={`head-icons ${classes.colorMain}`} >
+                    <i class="fa fa-truck "></i>
+                    <i class="fa fa-phone"></i>
+                  </div>
+                </Grid>
+                <Grid item xs={4} className="logoImgHeader">
+                  <div >
+                    <img className="img" src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" />
+                  </div>
+                </Grid>
+                <Grid item xs={5}>
+                  <div className={`head-icons ${classes.colorMain}`}  style={{ fontFamily: "fontawesome" }}>
+                    <InputBase
+                      className={`search ${classes.colorMain}`}
+                      placeholder='&#xf002; Search here'
+                    />
+                    <i class="fa fa-user"></i>
+                    <Badge badgeContent={4} color="secondary">
+                      <i class="fa fa-heart"></i>
+                    </Badge>
+                    <Badge badgeContent={4} color="secondary">
+                      <i class="fa fa-shopping-bag"></i>
+                    </Badge>
+                  </div>
+                </Grid>
               </Grid>
-              <Grid item xs={4} className="logoImgHeader">
-                <div >
-                  <img className="img" src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" />
-                </div>
+              <Grid container spacing={12}>
+                <Grid item xs={12} className={`header-navbar-list ${classes.colorLight}`}>
+                  <nav >
+                    <a href=""  className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
+                    <a href="" onMouseOver={() => { this.setState({ Menuopen: true, Checked: true }) }} className={` ${classes.colorLight}`}>
+                      <i class="fa fa-plus-circle" ></i>&nbsp;Jewellery</a>
+                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Solitaires</a>
+                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Gold Coins</a>
+                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Gifts</a>
+                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Collections</a>
+                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;One Day Sipping</a>
+                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Stories</a>
+                  </nav>
+                </Grid>
               </Grid>
-              <Grid item xs={5}>
-                <div className="head-icons" style={{ fontFamily: "fontawesome" }}>
-                  <InputBase
-                    className="search"
-                    placeholder='&#xf002; Search here'
-                  />
-                  <i class="fa fa-user"></i>
-                  <Badge badgeContent={4} color="secondary">
-                    <i class="fa fa-heart"></i>
-                  </Badge>
-                  <Badge badgeContent={4} color="secondary">
-                    <i class="fa fa-shopping-bag"></i>
-                  </Badge>
-                </div>
-              </Grid>
-            </Grid>
-            <Grid container spacing={12}>
-              <Grid item xs={12} className="header-navbar-list">
-                <nav >
-                  <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
-                  <a href="" onMouseOver={() => { this.setState({ Menuopen: true, Checked: true }) }} >
-                    <i class="fa fa-plus-circle"></i>&nbsp;Jewellery</a>
-                  <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Solitaires</a>
-                  <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Gold Coins</a>
-                  <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Gifts</a>
-                  <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Collections</a>
-                  <a href=""><i class="fa fa-plus-circle"></i>&nbsp;One Day Sipping</a>
-                  <a href=""><i class="fa fa-plus-circle"></i>&nbsp;Stories</a>
-                </nav>
-              </Grid>
-            </Grid>
-            <div className="header-bottom"></div>
-          </AppBar>
+              <div className="header-bottom"></div>
+            </AppBar>
           </div>
         </Hidden>
         <Hidden mdUp>
-        <div className="header-appbar-sticky">
-          <AppBar
-            className="header-appbar-moblie"
-            id="smallScreen"
-          >
+          <div className="header-appbar-sticky">
+            <AppBar
+              className="header-appbar-moblie"
+              id="smallScreen"
+            >
 
-            <Toolbar>
-              <Grid item xs={2}>
-                <IconButton
-                  onClick={this.handleDrawerOpen}
-                >
-                  <MenuIcon style={{ color: '#222', fontSize: '30px' }} />
-                </IconButton>
-              </Grid>
-              <Grid item xs={4}>
-                <div >
-                  <img className="mobile-img" src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" />
-                </div>
-              </Grid>
-              <Grid item xs={6}>
-                <div className="mobli-icon">
-                  <Badge >
-                    <i class="fa fa-comments"></i>
-                  </Badge>
-                  <Badge >
-                    <i class="fa fa-search"></i>
-                  </Badge>
-                  <Badge badgeContent={4} color="secondary">
-                    <i class="fa fa-heart"></i>
-                  </Badge>
-                  <Badge badgeContent={4} color="secondary">
-                    <i class="fa fa-shopping-bag"></i>
-                  </Badge>
-                </div>
-              </Grid>
-            </Toolbar>
-          </AppBar>
-          </div>    
+              <Toolbar>
+                <Grid item xs={2}>
+                  <IconButton
+                    onClick={this.handleDrawerOpen}
+                  >
+                    <MenuIcon style={{ color: '#222', fontSize: '30px' }} />
+                  </IconButton>
+                </Grid>
+                <Grid item xs={4}>
+                  <div >
+                    <img className="mobile-img" src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" />
+                  </div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="mobli-icon">
+                    <Badge >
+                      <i class="fa fa-comments"></i>
+                    </Badge>
+                    <Badge >
+                      <i class="fa fa-search"></i>
+                    </Badge>
+                    <Badge badgeContent={4} color="secondary">
+                      <i class="fa fa-heart"></i>
+                    </Badge>
+                    <Badge badgeContent={4} color="secondary">
+                      <i class="fa fa-shopping-bag"></i>
+                    </Badge>
+                  </div>
+                </Grid>
+              </Toolbar>
+            </AppBar>
+          </div>
           <Drawer
             anchor="left"
             open={this.state.open}
@@ -236,4 +260,4 @@ class Header extends Component {
     )
   }
 }
-export default Header;
+export default withStyles(styles)(Header);

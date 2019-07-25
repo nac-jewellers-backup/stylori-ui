@@ -1,6 +1,5 @@
 .DescriptionTitle {
   font-size: 18px;
-  color: #394578;
   font-weight: 500;
   line-height: 1.1;
   text-align: center;
@@ -15,7 +14,6 @@
 
 .DescriptionTitleSmallScreen {
   font-size: 14px;
-  color: #394578;
   font-weight: bold;
   line-height: 1.1;
 }
