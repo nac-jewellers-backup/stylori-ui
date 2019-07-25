@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
+import { fontWeight } from "@material-ui/system";
 
 // let theme = createMuiTheme(require('./../../theme.json'));
 // theme = responsiveFontSizes(theme);
@@ -32,25 +33,67 @@ const useStyles = makeStyles(theme => ({
     padding: "0px"
   },
   media: {
-    
+
     marginRight: "15px",
-    marginLeft:'15px',
+    marginLeft: '15px',
     marginBottom: "15px"
   },
-  colors:{
-    color: theme.palette.secondary.light
+  colorLight: {
+    color: theme.palette.secondary.light,
+
+  },
+  colorMain: {
+    color: theme.palette.secondary.main
+  },
+  h6FontSize: {
+    // [theme.breakpoints.down('md')]: {
+    //   fontSize:'14px'
+    // },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '16px',
+      fontWeight: 'bold'
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '13px',
+      fontWeight: 'bold'
+
+    },
+
+  },
+  offerPricePadding: {
+    paddingLeft: '15px',
+    [theme.breakpoints.down('xs')]: {
+      paddingLeft: '8px',
+
+    },
+  },
+  deletePrice: {
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '10px',
+      fontWeight: 'bold'
+    },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '10px',
+    },
+  },
+  youSave: {
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '12px',
+    },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '11px',
+    },
   }
 }));
-const handleClick = (name) =>{
-    // alert('deii thangam venum na rendu illa na moonu nal aagum venum na wait pannu')
-    if(name==='truck'){
-        console.log('deii thangam venum na rendu illa na moonu nal aagum venum na wait pannu')
-    }
+const handleClick = (name) => {
+  if (name === 'truck') {
+    console.log('deii thangam venum na rendu illa na moonu nal aagum venum na wait pannu')
+  }
 
 }
 
 
- export default function ProductCards(props)  {
+export default function ProductCards(props) {
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
     hovered: false,
@@ -60,44 +103,44 @@ const handleClick = (name) =>{
 
   return (
     <Card className={classes.card} >
-       
+
       <CardHeader
         className={classes.header}
         avatar={
           <IconButton aria-label="Settings" className={classes.avatar}>
-            <i style={{ fontSize: "18px",  }}  className={`fa ${classes.colors}`} onClick={handleClick('truck')}>
+            <i style={{ fontSize: "18px", }} className={`fa ${classes.colorLight}`} onClick={handleClick('truck')}>
               &#xf0d1;
             </i>
           </IconButton>
         }
         action={
           <IconButton aria-label="Settings" className={classes.action}>
-            <i style={{ fontSize: "18px" }} className={`fa ${classes.colors}`}>
+            <i style={{ fontSize: "18px" }} className={`fa ${classes.colorLight}`}>
               &#xf08a;
             </i>
           </IconButton>
         }
       />
-       <a href ={props.data.image['placeImage']} target={"_blank"} style={{textDecoration:'none'}}>
-      <CardMedia
-      component='img'
-        onMouseOver={() => {
-          setCardState({ ...cardstate, hovered: !cardstate.hovered });
-        }}
-        onMouseOut={() => {
-          setCardState({ ...cardstate, hovered: !cardstate.hovered });
-        }}
-        className={classes.media}
-      
-        image={
-          props.data.image[cardstate.hovered ? "hoverImage" : "placeImage"]
-        }
-        width='100%'
-        height='auto'
-        title={props.data.title}
-      />
-        
-      {/* <CardHeader
+      <a href={props.data.image['placeImage']} target={"_blank"} style={{ textDecoration: 'none' }}>
+        <CardMedia
+          component='img'
+          onMouseOver={() => {
+            setCardState({ ...cardstate, hovered: !cardstate.hovered });
+          }}
+          onMouseOut={() => {
+            setCardState({ ...cardstate, hovered: !cardstate.hovered });
+          }}
+          className={classes.media}
+
+          image={
+            props.data.image[cardstate.hovered ? "hoverImage" : "placeImage"]
+          }
+          width='100%'
+          height='auto'
+          title={props.data.title}
+        />
+
+        {/* <CardHeader
         avatar={
           <Avatar aria-label="Recipe" className={classes.avatar}>
             R
@@ -110,61 +153,58 @@ const handleClick = (name) =>{
         }
        
       /> */}
-      <CardContent>
-        <Typography
-          variant="caption"
-          color="textSecondary"
-          component="div"
-          style={{ paddingBottom: "5px", textAlign: "left" }}
-        >
-          {/* Dazzling Gold Bloom Diamond Pendant */}
-          {props.data.title}
-        </Typography>
-        {/*  */}
-        <Typography style={{ display: "flex" ,width:'100%' }}>
+        <CardContent>
           <Typography
             variant="caption"
             color="textSecondary"
-            component="p"
-            style={{ display: "flex", alignItems: "center" }}
+            component="div"
+            style={{ paddingBottom: "5px", textAlign: "left" }}
           >
-            <del>₹&nbsp;{props.data.price}</del>
+            {/* Dazzling Gold Bloom Diamond Pendant */}
+            {props.data.title}
           </Typography>
-          <Typography
-          
-            variant="div"
-            component="p"
-            className={`${classes.colors}`}
-            style={{ paddingLeft: "25px"}}
-          >
-            ₹&nbsp;{props.data.offerPrice}
+          {/*  */}
+          <Typography style={{ display: "flex", width: '100%' }}>
+            <Typography
+              variant="caption"
+              color="textSecondary"
+              component="p"
+              className={`${classes.deletePrice}`}
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <del>₹&nbsp;{props.data.price}</del>
+            </Typography>
+            <Typography
+
+              variant="h6"
+              component="h6"
+              className={`${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
+
+            >
+              ₹&nbsp;{props.data.offerPrice}
+            </Typography>
           </Typography>
-        </Typography>
-        {/*  */}
-        <Typography style={{ display: "flex" }}>
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            component="p"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              color: "#ed1165",
-             
-            }}
-          >
-            You save
+          {/*  */}
+          <Typography style={{ display: "flex" }}>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              className={`${classes.colorMain} ${classes.youSave}`}
+              component="p"
+
+            >
+              You save
           </Typography>
-          <Typography
-            variant="caption"
-            color="textSecondary"
-            component="p"
-            style={{ paddingLeft: "10px", color: "#ed1165" }}
-          >
-            ₹ {props.data.save}
+            <Typography
+              variant="caption"
+              color="textSecondary"
+              component="p"
+              className={`${classes.colorMain} ${classes.offerPricePadding} `}
+            >
+              ₹ {props.data.save}
+            </Typography>
           </Typography>
-        </Typography>
-      </CardContent>
+        </CardContent>
       </a>
     </Card>
   );

@@ -3,15 +3,15 @@
     "common": { "black": "#000", "white": "#fff" },
     "background": { "paper": "#fff", "default": "#fafafa" },
     "primary": {
-      "light": "rgba(96, 106, 147, 1)",
-      "main": "rgba(57, 69, 120, 1)",
-      "dark": "rgba(39, 48, 84, 1)",
+      "light": "rgba(57, 69, 120, 1)",
+      "main": "rgba(58, 69, 120, 1)",
+      "dark": "rgba(49, 63, 92, 1)",
       "contrastText": "#fff"
     },
     "secondary": {
-      "light": "rgba(240, 64, 131, 1)",
-      "main": "rgba(237, 17, 101, 1)",
-      "dark": "rgba(165, 11, 70, 1)",
+      "light": "rgba(246, 153, 163, 1)",
+      "main": "rgba(241, 72, 128, 1)",
+      "dark": "rgba(234, 83, 129, 1)",
       "contrastText": "#fff"
     },
     "error": {
