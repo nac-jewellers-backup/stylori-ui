@@ -74,25 +74,27 @@ export default class Stylori extends Component {
               <Header />
             </Grid>
           </Grid>
-            <Grid item xs={12} >
-              <PriceBuynow />
-            </Grid>
-            <Grid item xs={12} >
-              <ProductDetails />
-            </Grid>
+          <Grid item xs={12} >
+            <PriceBuynow />
+          </Grid>
+          <Grid item xs={12} >
+            <ProductDetails />
+          </Grid>
 
-            <Grid item xs={12} >
-              <PriceCertification />
-            </Grid>
-            <Grid item xs={12} >
-              <Request />
-            </Grid>
-            <Grid item xs={12} >
-              <RatingForm />
-            </Grid>
+          <Grid item xs={12} >
+            <PriceCertification />
+          </Grid>
+          <Grid item xs={12} >
+            <Request />
+          </Grid>
 
+          <Grid item xs={12} >
+            <Sublistcarousel />
+          </Grid>
           <CustomerReviews />
 
+          <br />
+          <br />
           <br />
         </Hidden>
 

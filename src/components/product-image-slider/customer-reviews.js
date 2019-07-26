@@ -8,8 +8,9 @@ class CustomerReviews extends React.Component {
             <div style={{marginTop:"10px"}}>
                 <Container>
                     <div>
+                        <div className="reviews-header">
                         <span className="reviews-customer">Customer Reviews</span>
-                        <hr style={{ background: "linear-gradient(to bottom,#f6f7f8 0%,#fff 100%)", height: "1px" }} />
+                        </div>
                         <div className="reviews">
                             <span className="data-reviews">No Reviews Found</span>
                         </div>

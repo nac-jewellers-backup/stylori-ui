@@ -63,9 +63,9 @@ class PriceCertification extends React.Component {
                 <Hidden mdUp>
                     <Container>
                         {img.imagecertificat.map(val =>
-                            <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handle('panel2')}
-                                style={{ boxShadow: "none", backgroundColor: "none" }} key={val.name}>
-                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={{ borderBottom: "1px solid #ed1165" }}>
+                            <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
+                            style={{ boxShadow: "none", backgroundColor: "none" }} key={val.name}>
+                                <ExpansionPanelSummary  expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>} style={{ borderBottom: "1px solid #ed1165" }}>
                                     <Typography className='subtabs-smrt'>{val.header}</Typography>
                                 </ExpansionPanelSummary>
                                 <Grid container spacing={12} >

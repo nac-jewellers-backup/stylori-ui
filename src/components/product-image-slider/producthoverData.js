@@ -112,7 +112,7 @@ export const productstabs = [
     {
         tab1: {
             header: "Ring Size",
-            Children:'JHBKJ'
+            Children: 'JHBKJ'
         },
         tab2: {
             header: "Metal Purity",
@@ -150,42 +150,37 @@ export const imagecertificat = [
     }
 ];
 
-export const fadeImages1 = [
-    
+export const fadeImagessublist = [
     {
-        img:'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
-        title:"You recently viewed",
-        price:"98.89789"
-      },{
-        img:'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
-        title:"You recently viewed",
-        price:"98.89789"
-      },
-      {
-        img:'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
-        title:"You recently viewed",
-        price:"98.89789"
-      },
-      {
-        img:'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
-        title:"You recently viewed",
-        price:"98.89789"
-      },
-      {
-        img:'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
-        title:"You recently viewed",
-        price:"98.89789"
-      },
-      {
-        img:'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
-        title:"You recently viewed",
-        price:"98.89789"
-      },
-      {
-        img:'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
-        title:"You recently viewed",
-        price:"98.89789"
-      },
-    
+        img: "https://www.csjewellers.com/assets/web/product/images/zoom/PND8122825.jpg",
+        title: "You recently viewed",
+        price: "98.89789"
+    },
+    {
+        img: 'https://stmed.net/sites/default/files/styles/225x120/public/jewelry-wallpapers-25240-746715.jpg?itok=UH8vm-JU',
+        title: "You recently viewed",
+        price: "98.89789"
+    },
+    {
+        img: 'https://kinclimg4.bluestone.com/f_jpg,c_scale,w_515,b_rgb:f0f0f0/giproduct/BIVT0012P05_YAA18NAV1DIG6XXXX_ABCD00-PICS-00004-1024-18002.png',
+        title: "You recently viewed",
+        price: "98.89789"
+    },
+    {
+        img: 'https://iba-ibacraftspvtltd.netdna-ssl.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/b/s/bsg2747_3__2_1.jpg',
+        title: "You recently viewed",
+        price: "98.89789"
+    },
+    {
+        img: 'https://assets-cdn.stylori.com/200x200/images/product/SP0490/SP0490-1Y.jpg',
+        title: "You recently viewed",
+        price: "98.89789"
+    },
+    {
+        img: 'https://assets-cdn.stylori.com/80x80/images/product/SP0096/SP0096-3Y.jpg',
+        title: "You recently viewed",
+        price: "98.89789"
+    },
+
 ]
-export default { productsubHead, productsDetails, productsPendants, productstabs, productsbuy, imagecertificat ,fadeImages1};
+export default { productsubHead, productsDetails, productsPendants, productstabs, productsbuy, imagecertificat, fadeImagessublist };
