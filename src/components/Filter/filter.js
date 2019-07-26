@@ -358,7 +358,7 @@ class PersistentDrawerLeft extends React.Component {
 
 
 
-            <AppBar color="primary" className="filter-fixed header" style={{ display: !openMobile ? 'none' : 'block' }}>
+            {/* <AppBar color="primary" className="filter-fixed header" style={{ display: !openMobile ? 'none' : 'block' }}>
               <Toolbar >
                 <IconButton onClick={this.handleDrawerOpenMobile}>
                   <Typography variant=""
@@ -378,7 +378,7 @@ class PersistentDrawerLeft extends React.Component {
                     </Typography>
                 </IconButton>
               </Toolbar>
-            </AppBar>
+            </AppBar> */}
 
 
           </div>

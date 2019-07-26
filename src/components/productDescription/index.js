@@ -97,7 +97,7 @@ class ProductDescription extends Component {
                   style={{ textAlign: 'center' }}
                   alignItems="center">
 
-                  < Slideshow fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel} />
+                  < Slideshow fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel} styles={'productDescriptionCarousel'}/>
                 </Grid>
               </Hidden>
               <Hidden smDown>

@@ -10,6 +10,8 @@ const useStyles = makeStyles(theme => ({
   root: {
 
     flexWrap: 'wrap',
+    // display:'flex',
+    // justifyContent:'center'
 
   },
   paper: {
