@@ -42,7 +42,7 @@ class PriceTabs extends React.Component {
                                 >
                                     <Tab className='subtabs' label={val.tab1.header} />
                                     <Tab className='subtabs' label={val.tab2.header} />
-                                    <Tab className='subtabs' label={val.tab3.header} />
+                                    <Tab className='subtabs' label={val.tab3.header} label="Active"/>
                                 </Tabs>
                             </AppBar>
                         </div>
@@ -62,7 +62,6 @@ class PriceTabs extends React.Component {
                                 </Grid>
                             </TabContainer>
                         </SwipeableViews>
-                        <hr class="bottom-line product-inform-ation"></hr>
                     </>
                 )}
             </div>
@@ -94,13 +93,16 @@ class PriceTabs extends React.Component {
                         <>
                             <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handle('panel2')}
                                 style={{ boxShadow: "none", backgroundColor: "none" }}>
-                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                                <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
                                     <Typography className='subtabs'>{val.tab1.header}</Typography>
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails style={{ padding: 0 }}>
                                     <Grid container spacing={12}>
                                     <Grid xs={4}>
-                                            <i style={{ color: "#ed1165" }} class="fa fa-heart"></i>&nbsp;{val.tab1.Children}
+                                    <div className="tabs-gold-icons"></div>
+                                    <div className="tabs-gold-icons"></div>
+                                    
+                                    &nbsp;{val.tab1.Children}
                                         </Grid>
                                     </Grid>
                                 </ExpansionPanelDetails>

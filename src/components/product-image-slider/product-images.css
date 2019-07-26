@@ -79,6 +79,7 @@
         height: 24px;
         font-size: 17px;
         text-decoration: line-through;
+        line-height: 24px !important;
     }
 
     .selling-price {
@@ -95,7 +96,9 @@
         margin-top: 6px;
         font-size: 12px !important;
         padding: 3px 10px !important;
-        width: 58.33333333%;
+        width: 90%;
+        margin-top: 1% !important;
+        margin-bottom: 1% !important;
     }
 
     /*price tabs*/
@@ -105,10 +108,22 @@
 
     }
 
+    .tabs-gold-icons {
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        width: 13px;
+        margin-top: 2px;
+        margin-left: 2px;
+        margin-bottom: 6px;
+        float: left;
+        margin-right: 2px;
+        border-bottom: 6px solid #ffbc19;
+    }
+
     .PrivateTabIndicator-root-683,
     .PrivateTabIndicator-colorPrimary-684,
     .MuiTabs-indicator {
-        background:#ed1165 !important;
+        background: #ed1165 !important;
 
     }
 
@@ -153,6 +168,8 @@
         color: #394578;
         line-height: 1.42857143;
     }
+
+    .price-offers {}
 
     .buynow-search {
         color: #394578;
@@ -368,12 +385,16 @@
         color: #fff !important;
     }
 
-    .sub-carousel {}
-
     /*reviews-customer*/
     .reviews {
         text-align: center !important;
         height: auto !important;
+
+    }
+
+    .reviews-header {
+        border-bottom: 1px solid #ccc !important;
+        height: 30px;
     }
 
     .reviews-customer {
@@ -404,9 +425,17 @@
     }
 
     .product-details-smrt {
-        font-size: 12px !important;
+        font-size: 15px !important;
         color: #394578 !important;
 
+    }
+
+    .expansion-summary,
+    .MuiExpansionPanelSummary-root.Mui-expanded,
+    .MuiExpansionPanelSummary-root {
+        min-height: 45px !important;
+        height: 45px !important;
+        padding: 0 !important;
     }
 
     .subtabs-smrt {
@@ -414,16 +443,21 @@
         border: 1px solid transparent;
         border-radius: 4px 4px 0 0;
         text-transform: none !important;
-        font-size: 13px !important;
+        margin: 0px !important;
+        font-size: 15px !important;
+        padding: 0 !important;
+        min-height: none !important;
     }
 
     .imagecard {
         width: 95%;
         border: 1px solid #ccc;
         height: 450px !important;
-        cursor: pointer;
+        cursor: crosshair;
         counter-increment: inherit;
     }
+
+
 
     .overly-img {
         border: 1px solid #ccc;
@@ -433,10 +467,12 @@
         position: absolute;
         z-index: 3;
         height: 475px !important;
-        background-image: url('https://storage.googleapis.com/media.nacjewellers.com/resources/user_media/Muhurtham-Banner.jpg');
+        /* background-image: url('https://storage.googleapis.com/media.nacjewellers.com/resources/user_media/Muhurtham-Banner.jpg'); */
         background-repeat: no-repeat;
         left: 46%;
         margin-top: -477px !important;
+        background-color: #fff !important;
+        cursor: crosshair;
     }
 
     .vertical-carousel {
@@ -444,6 +480,10 @@
         margin-bottom: 19px !important;
         width: 90% !important;
         height: 80px !important;
+    }
+
+    .vertical-carousel-list-arrow {
+        font-size: 15px;
     }
 
     .vertical-carousel-img {
@@ -456,13 +496,14 @@
         background-color: #fff;
         width: 85% !important;
         margin-left: 8% !important;
-        min-height: 1px;
+        height: 170px !important;
         text-align: center !important;
         overflow: hidden;
     }
 
     .subslider-carousel-img {
-        padding-left: 16% !important;
+        height: 75%;
+        width: 100% !important;
     }
 
     .sub-carousel-head {
@@ -526,6 +567,7 @@
         position: fixed !important;
         bottom: 0 !important;
         top: auto !important;
+        width: 100% !important;
     }
 
     .product-footer-buynow {
@@ -547,4 +589,11 @@
         color: #394578;
         padding: 14px 20px !important;
         font-size: 14px;
+    }
+
+    .side-arrow-symbol {
+        font-family: "FontAwesome" !important;
+        font-size: 15px !important;
+        line-height: 1;
+        color: #394578 !important;
     }

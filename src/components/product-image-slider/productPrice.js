@@ -40,7 +40,7 @@ const Productprice = () => {
 
             <>
                 <Grid container spacing={12} sm={12}>
-                    <Grid item xs={8} sm={7}>
+                    <Grid item xs={8} sm={8}>
                         <div className="price-div">
                             <h1 className="pdp-title">
                                 {/* {val.title} */}Exquisite Pendant
@@ -50,7 +50,7 @@ const Productprice = () => {
                         </p>
                         </div>
                     </Grid>
-                    <Grid item xs={4} sm={5}>
+                    <Grid item xs={4} sm={4}>
                         <div className="starts">
                             <div className="row social-shares">
                                 <i class="fa fa-share-alt"></i>&nbsp;
@@ -72,12 +72,13 @@ const Productprice = () => {
                 </Hidden>
                 <div className='price-info'>
                     <Grid container spacing={12}>
-                        <Grid item xs={6} lg={2} className='discount-container'>
+                        <Grid item xs={4} lg={1} className='discount-container'>
                             {/* {val.offerPrice} */} 955.4944
                     </Grid>
-                        <Grid item lg={5} xs={6} sm={6} className="selling-price"><i class="fa fa-rupee"></i> &nbsp;
+                        <Grid item lg={5} xs={6}  className="selling-price"><i class="fa fa-rupee"></i> &nbsp;
                     {/* {val.save} */} 98.8989
                     </Grid>
+                   <Grid item lg={8} XS={8} sm={8} className='discount'> <span >25% FLAT OFF</span></Grid>
                     </Grid>
                     <hr class="bottom-line product-inform-ation"></hr>
                 </div>
@@ -103,8 +104,8 @@ class ProductPrice extends Component {
 
                     <AppBar color="primary" className="product-page-fixed-footer">
                         <Grid container spacing={12}>
-                            <Grid className='product-footer-buynow ' item xs={6}>Buy Now</Grid>
-                            <Grid className='talk-to-us' item xs={6}>Talk To Us</Grid>
+                            <Grid className='product-footer-buynow ' item xs={6}><i class="fa fa-shopping-bag"></i> Buy Now</Grid>
+                            <Grid className='talk-to-us' item xs={6}><i class="fa fa-comments"></i> &nbsp;Talk To Us</Grid>
                         </Grid>
                     </AppBar>
 
