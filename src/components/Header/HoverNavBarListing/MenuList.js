@@ -1,6 +1,27 @@
 import React , {Component}from "react";
 import { List, ListItem, ListItemText } from "@material-ui/core";
+import { withStyles } from '@material-ui/core/styles';
 
+
+
+
+
+const styles = theme => ({
+  colorDark: {
+      backgroundColor: theme.palette.secondary.dark,
+  
+    },
+    colorMain: {
+      color: theme.palette.primary.main,
+  
+    },
+    colorLight:{
+      color: theme.palette.primary.main
+    },
+    colorMainBorder:{
+border:`1px solid ${theme.palette.secondary.main}`
+    }
+});
 // const menuList =['Earrings','Pendants','Rings','Nose pins',' Bangles & Bracelets'];
 const menuLists =
    [{ value: 'earings', title: 'Earrings', url: '#Earrings' },
@@ -18,14 +39,18 @@ const menuLists =
 
 
 class MenuListItem extends Component {
+    constructor(props){
+        super(props)
+    }
    render() {
+    const { classes} = this.props;
        return (
            <div>
-               <List component="nav" className="ListColor" >
+               <List component="nav" className="ListColor"  className={`${classes.colorMain}`}>
 
                    {
                        menuLists.map(menuList => (
-                           <ListItem component="li" className="ListColor" onMouseOver={() => this.props.handleMouseOver(menuList.value)}
+                           <ListItem component="li"   className={`ListColor ${classes.colorMain}`}  onMouseOver={() => this.props.handleMouseOver(menuList.value)}
                                onClick={() => { window.location.href = '/' + menuList.url }} 
                            >
 
@@ -37,11 +62,11 @@ class MenuListItem extends Component {
                            </ListItem>
                        ))}
                </List>
-               <hr className="hrColor" />
-               <List component="nav" className="ListColor" >
+               <hr className={`${classes.colorMainBorder}`} />
+               <List component="nav" className={`ListColor ${classes.colorMain}`} >
                    {
                        menuListFilters.map(menuListFilter => (
-                           <ListItem component="li" className="ListColor"
+                           <ListItem component="li" className={`ListColor ${classes.colorMain}`}
                            onClick={() => { window.location.href = '/' + menuListFilter.url }}
                            onMouseOver={() => this.props.handleMouseOver(menuListFilter.value)}>
 
@@ -57,4 +82,4 @@ class MenuListItem extends Component {
        );
    }
 }
-export default MenuListItem;
+export default withStyles(styles)(MenuListItem);

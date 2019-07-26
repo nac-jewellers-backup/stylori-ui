@@ -10,6 +10,20 @@ import CardRadioButton from "../RadioButton/index"
 import './filter.css';
 import filterdatas from './Filterdata';
 import { Grid } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+
+      colorMain: {
+        color: theme.palette.primary.main,
+    
+      },
+    
+  });
+
+
+
+
 
 class FilterHeader extends Component {
     constructor(props) {
@@ -49,7 +63,7 @@ class FilterHeader extends Component {
     }
     render() {
 
-
+        const { classes } = this.props;
         return (
             <Paper style={{ position: 'sticky', top: this.state.topHeight, width: '100%', zIndex: '3', boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">
                 {/* <div style={{position:'sticky',top:'165px'}}> */}
@@ -58,10 +72,10 @@ class FilterHeader extends Component {
                         <Toolbar disableGutters={!this.props.open}>
                             <div className="fil-drawer-filter">
                                 <Typography variant="h6" noWrap
-                                    className="fil-drawer-head"
+                                    className={`fil-drawer-head ${classes.colorMain}`}
                                     onClick={this.props.handleDrawerOpen}
                                 >
-                                    <span className="fil-drawer-head-filter-arrow">   <ChevronLeftIcon className="arrow" />      </span> Filter By
+                                    <span className="fil-drawer-head-filter-arrow ">   <ChevronLeftIcon className="arrow" />      </span> Filter By
                             </Typography>
                             </div>
                         </Toolbar>
@@ -69,7 +83,7 @@ class FilterHeader extends Component {
                     <Grid item lg={6}>
                         <div className="fil-drawer-head-sort">
                             <Typography variant="h6" noWrap
-                                className="fil-drawer-sort_font"
+                                className={`fil-drawer-sort_font ${classes.colorMain}`}
                                 onClick={this.handleExpandClick}
                             >
                                 Sort By
@@ -90,4 +104,4 @@ class FilterHeader extends Component {
         );
     }
 }
-export default FilterHeader;
+export default withStyles(styles)(FilterHeader);

@@ -17,6 +17,9 @@ const useStyles = makeStyles(theme => ({
         width: 500,
         height: 450,
     },
+    colorMain:{
+        color:theme.palette.primary.main
+    }
 }));
 
 /**
@@ -45,13 +48,13 @@ export default function HoverTableGrid(props) {
                 {props.tabdata[props.activetab].map(tile =>
                     <Grid container item>
                         
-                        <Grid item xs={6} style={{borderBottom:'1px solid  #d9d9d9',padding:'1%'}} className="stytheading">{tile.headers}</Grid>
+                        <Grid item xs={6} style={{borderBottom:'1px solid  #d9d9d9',padding:'1%'}}  className={`stytheading ${classes.colorMain}`}>{tile.headers}</Grid>
                         <Grid item xs={6} style={{borderBottom:'1px solid  #d9d9d9',padding:'1%',textAlign:'right'}} className="stytheadingView">View All</Grid>
                             {/* <div style={{borderBottom:'2px solid black',padding:'1%'}}></div> */}
                    
                         {
                             tile.items.map(val =>
-                                <Grid item xs={4} justifyContent="space-between" style={{padding:'1%'}} className="stytview">
+                                <Grid item xs={4} justifyContent="space-between" style={{padding:'1%'}} className={`stytview ${classes.colorMain}`}>
                                     {val}
                                 </Grid>
                             )

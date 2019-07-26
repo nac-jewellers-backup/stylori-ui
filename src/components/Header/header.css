@@ -157,9 +157,9 @@
      }
     .ListColor{
      font-size: 12px;
-     color: #394578;
      font-family: "Roboto";
      border-left: 3px solid white;
+     cursor: pointer;
     }
     .ListColor li:hover {
      border-left: 3px solid #ed1165 !important;
@@ -176,16 +176,13 @@
      border-left: 3px solid #ed1165;
      color: #ed1165;
     }
-    .hrColor {
-     border-bottom: 1px solid #ed1165;
-    }
+ 
     .stytheading {
       width: 100%;
       display: block;
       padding: 8px 0 5px;
       font-size: 12px;
       font-weight: 700;
-      color: #394578;
       border-bottom: solid 1px #d9d9d9;
       margin-bottom: 7px;
       text-shadow: none!important;
@@ -196,7 +193,6 @@
   letter-spacing: 1px!important;
 }
 .stytview{
-color: #394578;
     font-size: 12px;
 }.header-viewal{
        color: #f36e23; 

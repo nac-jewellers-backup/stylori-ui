@@ -5,7 +5,18 @@ import Slideshow from '../Carousel/carosul';
 import CustomSeparator from '../BreadCrumb/index';
 import { withTheme } from '@material-ui/core/styles';
 import ProductDescriptionTitle from './ProductDescriptionTitle'
+import { withStyles } from '@material-ui/core/styles';
 
+
+
+
+
+const styles = theme => ({
+
+    colorLight:{
+      color: theme.palette.secondary.light
+    }
+});
 
 
 
@@ -30,8 +41,8 @@ class ProductDescription extends Component {
   }
   
   render() {
+    const { classes } = this.props;
     
-    console.log(this.props)
     return (
       <>
         <Container >
@@ -98,10 +109,10 @@ class ProductDescription extends Component {
                     <span className="DescriptionContent">For every occasion and non-occasion. Shop our range of everyday fashion jewellery featuring gold, silver and stone rings and earrings, for work, play and everything in between. Give special occasions a little extra glimmer with our range of bridal jewellery ranging from engagement rings to wedding r<span id="moreDots" style={{ display: 'inline' }}>...</span> </span>
                     <span id="txtopen" className="DescriptionContent" style={{ display: 'none' }}> ings to classic party wear.  Crafted using the finest jewellery design and jewellery making principles, buy our jewellery online for fast deliveries and an easy returns policy.<br />&nbsp;&nbsp;</span>
                   </p>
-                  <p onClick={this.handleOpen} className="know-txt" id="readMore" style={{ display: 'block' }}>
+                  <p onClick={this.handleOpen}  className={`know-txt ${classes.colorLight}`} id="readMore" style={{ display: 'block' }}>
                     <span ><i className="fa faMore">&#xf0da;</i></span> READ MORE
                </p>
-                  <p onClick={this.handleClose} className="know-txt" id="readLess" style={{ display: 'none' }}>
+                  <p onClick={this.handleClose} className={`know-txt ${classes.colorLight}`} id="readLess" style={{ display: 'none' }}>
                     <span ><i className="fa faMore">&#xf0d8;</i></span> CLOSE
                </p>
                 </Grid>
@@ -115,10 +126,10 @@ class ProductDescription extends Component {
                     <span className="DescriptionContent">For every occasion and non-occasion. Shop our range of everyday fashion jewellery featuring gold, silver and stone rings and earrings, for work, play and everything in between. Give special occasions a little extra glimmer with our range of bridal jewellery ranging from engagement rings to wedding r<span id="moreDots" style={{ display: 'inline' }}>...</span> </span>
                     <span id="txtopen" className="DescriptionContent" style={{ display: 'none' }}> ings to classic party wear.  Crafted using the finest jewellery design and jewellery making principles, buy our jewellery online for fast deliveries and an easy returns policy.<br />&nbsp;&nbsp;</span>
                   </p>
-                  <p onClick={this.handleOpen} className="know-txt" id="readMore" style={{ display: 'block' }}>
+                  <p onClick={this.handleOpen} className={`know-txt ${classes.colorLight}`} id="readMore" style={{ display: 'block' }}>
                     <span ><i className="fa faMore">&#xf0da;</i></span> READ MORE
                </p>
-                  <p onClick={this.handleClose} className="know-txt" id="readLess" style={{ display: 'none' }}>
+                  <p onClick={this.handleClose} className={`know-txt ${classes.colorLight}`} id="readLess" style={{ display: 'none' }}>
                     <span ><i className="fa faMore">&#xf0d8;</i></span> CLOSE
                </p>
                 </Grid>
@@ -132,4 +143,4 @@ class ProductDescription extends Component {
   }
 
 }
-export default ProductDescription;
+export default withStyles(styles)(ProductDescription);
