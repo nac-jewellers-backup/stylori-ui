@@ -11,11 +11,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import AddIcon from '@material-ui/icons/Add';
 import AppBar from '@material-ui/core/AppBar';
 import dataCard from '../ProductCard/ProductData'
-const fadeImages = [
-    'https://assets-cdn.stylori.com/416x416/images/product/SP0198/SP0198-1Y.jpg',
-    'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
-    'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg'
-];
+import T from './producthoverData'
 
 const dataCarousel = {
     dots: false,
@@ -28,7 +24,7 @@ const render = () => {
 
     return (
         <Container>
-            <Slideshow class='responseve-carousel' imgClass='responseve-carousel-img' fadeImages={fadeImages} dataCarousel={dataCarousel} />
+            <Slideshow class='responseve-carousel' imgClass='responseve-carousel-img' fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
         </Container>
     );
 };
@@ -75,10 +71,10 @@ const Productprice = () => {
                         <Grid item xs={4} lg={1} className='discount-container'>
                             {/* {val.offerPrice} */} 955.4944
                     </Grid>
-                        <Grid item lg={5} xs={6}  className="selling-price"><i class="fa fa-rupee"></i> &nbsp;
+                        <Grid item lg={5} xs={6} className="selling-price"><i class="fa fa-rupee"></i> &nbsp;
                     {/* {val.save} */} 98.8989
                     </Grid>
-                   <Grid item lg={8} XS={8} sm={8} className='discount'> <span >25% FLAT OFF</span></Grid>
+                        <Grid item lg={8} XS={8} sm={8} className='discount'> <span >25% FLAT OFF</span></Grid>
                     </Grid>
                     <hr class="bottom-line product-inform-ation"></hr>
                 </div>
@@ -100,7 +96,7 @@ class ProductPrice extends Component {
                     {Productprice()}
                 </Hidden>
                 <Hidden mdUp>
-                     {Productprice()}
+                    {Productprice()}
 
                     <AppBar color="primary" className="product-page-fixed-footer">
                         <Grid container spacing={12}>
@@ -110,11 +106,6 @@ class ProductPrice extends Component {
                     </AppBar>
 
                 </Hidden>
-
-
-
-
-
             </div>
 
 

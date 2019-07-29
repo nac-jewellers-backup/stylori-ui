@@ -7,10 +7,8 @@ import HomeCarousel from '../../components/Home/homeCarousel'
 import Subheader from '../../components/Home/subheader'
 import SubCarousel from '../../components/Home/subcarousel'
 import Socialmediacard from '../../components/Home/socialmediaCard'
-import Footer from '../../components/Home/footer';
 import CustomSeparator from '../../components/BreadCrumb/index'
 import ProductImageZoom from '../../components/product-image-slider/productImageZoom'
-import ImagesCarousel from '../../components/product-image-slider/imagesCarousel'
 import ProductPrice from '../../components/product-image-slider/productPrice'
 import PriceTabs from '../../components/product-image-slider/priceTabs'
 import PriceBuynow from '../../components/product-image-slider/buyNow'
@@ -22,6 +20,8 @@ import Sublistcarousel from '../../components/product-image-slider/subListcarous
 import CustomerReviews from '../../components/product-image-slider/customer-reviews'
 import { Container, Hidden } from '@material-ui/core';
 import Slideshow from '../../components/Carousel/carosul'
+import Footer from "../../components/Footer/Footer"
+
 
 export default class Stylori extends Component {
   render() {
@@ -63,6 +63,9 @@ export default class Stylori extends Component {
             {/* <Sublistcarousel/> */}
             <CustomerReviews />
           </Container>
+          <Grid item xs={12} style={{ paddingTop: '5%' }}>
+            <Footer />
+          </Grid>
         </Hidden>
 
 
@@ -91,8 +94,13 @@ export default class Stylori extends Component {
           <Grid item xs={12} >
             <Sublistcarousel />
           </Grid>
+          <Grid item xs={12} >
+            <RatingForm />
+          </Grid>
           <CustomerReviews />
-
+          <Grid item xs={12} style={{ paddingTop: '5%' }}>
+            <Footer />
+          </Grid>
           <br />
           <br />
           <br />
