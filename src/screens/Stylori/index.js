@@ -29,26 +29,20 @@ export default class Stylori extends Component {
     }
     console.log(this.props)
     return (
-        <Grid container >
-          <Grid item xs={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
-            <Header />
-          </Grid>
-
-          <Grid item xs={12}>
-            <ProductDescription fadeImages={fadeImages} dataCarousel={dataCarousel} />
-
-            <Filter />
-         
-
-
-          </Grid>
-
-          <Grid item  xs={12} >
-            <ChatHelp/>
+      <Grid container >
+        <Grid item xs={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+          <Header />
+        </Grid>
+        <Grid item xs={12}>
+          <ProductDescription fadeImages={fadeImages} dataCarousel={dataCarousel} />
+          <Filter />
+        </Grid>
+        <Grid item xs={12} >
+          <ChatHelp />
 
           <Footer />
-          </Grid>
         </Grid>
+      </Grid>
 
 
     )

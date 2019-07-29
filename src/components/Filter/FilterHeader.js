@@ -4,6 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
 import CardRadioButton from "../RadioButton/index"
@@ -14,12 +15,12 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
 
-      colorMain: {
+    colorMain: {
         color: theme.palette.primary.main,
-    
-      },
-    
-  });
+
+    },
+
+});
 
 
 
@@ -70,14 +71,31 @@ class FilterHeader extends Component {
                 <Grid item container>
                     <Grid item lg={6}>
                         <Toolbar disableGutters={!this.props.open}>
-                            <div className="fil-drawer-filter">
-                                <Typography variant="h6" noWrap
-                                    className={`fil-drawer-head ${classes.colorMain}`}
-                                    onClick={this.props.handleDrawerOpen}
-                                    // onClick={this.props.handleChangeDrawer}
-                                >
-                                    <span className="fil-drawer-head-filter-arrow ">   <ChevronLeftIcon className="arrow" />      </span> Filter By
-                            </Typography>
+
+                            <div style={{ width: "240px" }}>
+                                {this.props.check ?
+                                    <IconButton onClick={this.props.handleChangeDrawer}
+                                        style={{ float: 'right' }}>
+                                        <i style={{ color: "#394578", margin: "45%" }} class="fa fa-times"></i>
+                                    </IconButton >
+                                    :
+                                    ''
+                                }
+
+                                <IconButton onClick={this.props.handleChangeDrawer}>
+                                    {
+                                        this.props.check ? <ChevronRightIcon className={`${classes.colorMain}`} />
+                                            :
+                                            <ChevronLeftIcon className={`${classes.colorMain}`} />
+
+                                    }
+                                    <Typography color="inherit"
+                                        onClick={this.handleDrawerClose} noWrap
+                                        className={` fil-drawer-head ${classes.colorMain}`}
+                                    >
+                                        Filter By
+            </Typography>
+                                </IconButton>
                             </div>
                         </Toolbar>
                     </Grid>
