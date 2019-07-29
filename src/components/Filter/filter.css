@@ -148,3 +148,11 @@
 .DrawerDiv div {
   top: "auto";
 }
+.drawer {
+  height:300px !important;
+}
+.SliderFilter ul{
+  position: sticky;
+  z-index: '6';
+  top: '150px'
+}

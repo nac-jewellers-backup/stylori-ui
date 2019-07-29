@@ -4,6 +4,7 @@ import ProductDescription from '../../components/productDescription';
 import Grid from '@material-ui/core/Grid';
 import Filter from '../../components/Filter/filter'
 import Footer from "../../components/Footer/Footer"
+import { ChatHelp } from '../../components/ChatHelp';
 
 export default class Stylori extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ export default class Stylori extends Component {
         <Grid item xs={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
           <Header />
         </Grid>
+<<<<<<< HEAD
 
         <Grid item xs={12}>
           <ProductDescription fadeImages={fadeImages} dataCarousel={dataCarousel} />
@@ -43,6 +45,15 @@ export default class Stylori extends Component {
         </Grid>
 
         <Grid item xs={12} style={{ paddingTop: '5%' }}>
+=======
+        <Grid item xs={12}>
+          <ProductDescription fadeImages={fadeImages} dataCarousel={dataCarousel} />
+          <Filter />
+        </Grid>
+        <Grid item xs={12} >
+          <ChatHelp />
+
+>>>>>>> 014667be8e799af2d9862e3e134c3423f5f461a6
           <Footer />
         </Grid>
       </Grid>
