@@ -74,6 +74,7 @@ class FilterHeader extends Component {
                                 <Typography variant="h6" noWrap
                                     className={`fil-drawer-head ${classes.colorMain}`}
                                     onClick={this.props.handleDrawerOpen}
+                                    // onClick={this.props.handleChangeDrawer}
                                 >
                                     <span className="fil-drawer-head-filter-arrow ">   <ChevronLeftIcon className="arrow" />      </span> Filter By
                             </Typography>

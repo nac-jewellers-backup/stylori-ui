@@ -4,6 +4,7 @@ import ProductDescription from '../../components/productDescription';
 import Grid from '@material-ui/core/Grid';
 import Filter from '../../components/Filter/filter'
 import Footer from "../../components/Footer/Footer"
+import { ChatHelp } from '../../components/ChatHelp';
 
 export default class Stylori extends Component {
   constructor(props) {
@@ -42,7 +43,9 @@ export default class Stylori extends Component {
 
           </Grid>
 
-          <Grid item  xs={12} style={{paddingTop:'5%'}}>
+          <Grid item  xs={12} >
+            <ChatHelp/>
+
           <Footer />
           </Grid>
         </Grid>

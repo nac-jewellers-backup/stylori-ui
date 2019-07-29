@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
+import Slide from '@material-ui/core/Slide';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -20,7 +21,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import filterdatas from './Filterdata';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Button, Checkbox, Paper } from '@material-ui/core';
+import { Button, Checkbox, Paper, Collapse } from '@material-ui/core';
 import './filter.css';
 import ProductLayout from '../ProductCard/ProductLayout';
 import FilterHeader from './FilterHeader';
@@ -92,10 +93,10 @@ const styles = theme => ({
     }),
     marginLeft: 0,
   },
-  colorMain:{
+  colorMain: {
     color: theme.palette.primary.main
   },
-  colorMainBackground:{
+  colorMainBackground: {
     backgroundColor: theme.palette.primary.main
   },
 });
@@ -111,6 +112,7 @@ class PersistentDrawerLeft extends React.Component {
       checked: {},
       selected: '',
       filtercheck: '',
+      check: false,
       chipData: [
         { key: '', label: '' },
       ],
@@ -176,10 +178,13 @@ class PersistentDrawerLeft extends React.Component {
       return { chipData };
     });
   };
+  handleChangeDrawer = () => {
 
+    this.setState({ check: !this.state.check });
+  };
   render() {
     const { classes, theme } = this.props;
-    let { selected } = this.state;
+    let { selected, check } = this.state;
     const { open, openMobile } = this.state;
     const datafilter = filterdatas.filter1;
 
@@ -188,24 +193,17 @@ class PersistentDrawerLeft extends React.Component {
       <>
 
         <Hidden smDown>
-          <FilterHeader handleDrawerOpen={this.handleDrawerOpen.bind(this)} open={this.state.open} />
+          <FilterHeader handleChangeDrawer={this.handleChangeDrawer} />{/*  handleDrawerOpen={this.handleDrawerOpen.bind(this)} */}
         </Hidden>
         <div className={classes.root} >
-          <Hidden smDown>
+          <Hidden smDown >
 
             {/* <CssBaseline /> */}
+            <div >
+              <Slide direction="right" in={check} mountOnEnter unmountOnExit className="SliderFilter" >
+                <div >
 
-            <Drawer
-              className={classes.drawer}
-
-              variant="persistent"
-              anchor="left"
-              open={open}
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-            >
-
+                              
               <div style={{ width: "240px" }}>
                 <IconButton onClick={this.handleDrawerClose}
                   style={{ float: 'right' }}>
@@ -221,94 +219,94 @@ class PersistentDrawerLeft extends React.Component {
             </Typography>
                 </IconButton>
               </div>
-              <Divider />
-              <List className="fil-main-list">
-                <div style={{ margin: "5px" }}>
-                  <Typography className="fil-list-items">Price</Typography>
-                  <Grid container spacing={12} style={{ paddingLeft: "5px" }}>
-                    <Grid item xs={4} >
-                      <TextField
-                        className="price-txt"
-                        id="outlined-bare"
-                        defaultValue="$ 8774379"
-                        margin="normal"
-                        variant="outlined"
-                      />
-                    </Grid>&nbsp;
+                  <Divider />
+                  <List className="fil-main-list" >
+                    <div style={{ margin: "5px" }}>
+                      <Typography className="fil-list-items">Price</Typography>
+                      <Grid container spacing={12} style={{ paddingLeft: "5px" }}>
+                        <Grid item xs={4} >
+                          <TextField
+                            className="price-txt"
+                            id="outlined-bare"
+                            defaultValue="$ 8774379"
+                            margin="normal"
+                            variant="outlined"
+                          />
+                        </Grid>&nbsp;
              <Grid item xs={4}>
-                      <TextField
-                        className="price-txt"
-                        id="outlined-bare"
-                        defaultValue="$ 76734868"
-                        margin="normal"
-                        variant="outlined"
-                      />
-                    </Grid>&nbsp;
+                          <TextField
+                            className="price-txt"
+                            id="outlined-bare"
+                            defaultValue="$ 76734868"
+                            margin="normal"
+                            variant="outlined"
+                          />
+                        </Grid>&nbsp;
             <Grid item xs={3}>
-                      <Button variant="contained" className= {`price-btn ${classes.colorMainBackground}`}>Go</Button>
-                    </Grid>
-                  </Grid>
-                </div>
-                {filterdatas.filter.map(row => (
-                  <>
-                    {/* button */}  <ListItem key={row} className=""
-                      onClick={() => this.selectItem(row)}>
-                      <ListItemText
-                      >
-                        <Typography className="fil-list-items"
-                          variant=""
-                        >{row}
-                        </Typography>
-                      </ListItemText>
-                      {row === selected ? <ExpandMore className="fil-drawer-arrow" /> :
-                        <ExpandLess className="fil-drawer-arrow" />}
-                    </ListItem>
-                    <div style={{ maxHeight: '200px', overflow: 'auto' }}>
-                      {selected === row &&
-                        filterdatas.filter1[row] !== undefined && filterdatas.filter1[row].map(row12 => (
-                          <ListItem key={row12}  >   {/* button */}
-                            <Checkbox
-                              checked={this.state.checked[row12] !== undefined ? this.state.checked[row12] : false}
-                              onChange={() => this.handleChange(row12, this.state.checked[row12] !== undefined ? !this.state.checked[row12] : true)}
-                              className="fil-submenu-icons"
-                              value="checked"
-                              color="primary"
-                            />
-                            <ListItemText>
-                              <Typography className="" variant=""
-                                className={`fil-submenu-list ${classes.colorMain}`}>{row12}
-                              </Typography>
-                            </ListItemText>
-                          </ListItem>
-                        ))
-                      }
+                          <Button variant="contained" className={`price-btn ${classes.colorMainBackground}`}>Go</Button>
+                        </Grid>
+                      </Grid>
                     </div>
-                  </>
-                ))}
-              </List>
-            </Drawer>
-
-            <div
-              className={classNames(classes.content, {
-                [classes.contentShift]: open,
-              })}
-
-            >
-              <ProductLayout />
-
+                    {filterdatas.filter.map(row => (
+                      <>
+                        {/* button */}  <ListItem key={row} className=""
+                          onClick={() => this.selectItem(row)}>
+                          <ListItemText
+                          >
+                            <Typography className="fil-list-items"
+                              variant=""
+                            >{row}
+                            </Typography>
+                          </ListItemText>
+                          {row === selected ? <ExpandMore className="fil-drawer-arrow" /> :
+                            <ExpandLess className="fil-drawer-arrow" />}
+                        </ListItem>
+                        <div style={{ maxHeight: '200px', overflow: 'auto' }}>
+                          {selected === row &&
+                            filterdatas.filter1[row] !== undefined && filterdatas.filter1[row].map(row12 => (
+                              <ListItem key={row12}  >   {/* button */}
+                                <Checkbox
+                                  checked={this.state.checked[row12] !== undefined ? this.state.checked[row12] : false}
+                                  onChange={() => this.handleChange(row12, this.state.checked[row12] !== undefined ? !this.state.checked[row12] : true)}
+                                  className="fil-submenu-icons"
+                                  value="checked"
+                                  color="primary"
+                                />
+                                <ListItemText>
+                                  <Typography className="" variant=""
+                                    className={`fil-submenu-list ${classes.colorMain}`}>{row12}
+                                  </Typography>
+                                </ListItemText>
+                              </ListItem>
+                            ))
+                          }
+                        </div>
+                      </>
+                    ))}
+                  </List>
+                </div>
+              </Slide>
             </div>
+
           </Hidden>
+          <div
+            style={{ width: check ? '80%' : '100%' }}
 
+          >
+            <ProductLayout />
 
+          </div>
         </div>
+
+
         <Hidden mdUp>
           <ProductLayout styles={{ display: !openMobile || this.state.CardRadio ? 'none' : 'block' }} />
           <div style={{ top: '0' }}>
-            <div style={{ height: "23px", padding: "9px", borderBottom: "1px solid #e3e3e3", display: openMobile ? 'none' : 'block' }} 
-             className={`${classes.colorMain}`}
+            <div style={{ height: "23px", padding: "9px", borderBottom: "1px solid #e3e3e3", display: openMobile ? 'none' : 'block' }}
+              className={`${classes.colorMain}`}
             >
               <a onClick={this.handleDrawerCloseMobile}>
-                <i  className={`fa fa-times ${classes.colorMain}`} ></i>&nbsp;
+                <i className={`fa fa-times ${classes.colorMain}`} ></i>&nbsp;
                  Filter</a>
               <Button style={{ float: "right", border: '1px solid #ececec', lineHeight: "15px" }} className={`${classes.colorMain}`}> <b >Clear All</b></Button>
 

@@ -5,11 +5,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import googlePlaystore from '../../assets/iconsPlayStore.png'
 import visa from '../../assets/visa.jpg'
 import mastercard from '../../assets/mastercard.gif'
-
 import AmericanExpress from '../../assets/American-Express.png'
 import DinersClub from '../../assets/Diners-Club.jpg'
 import Netbanking from '../../assets/mouse.png'
 import cartoonFooter from '../../assets/cartoonFooter.png'
+import './Footer.css'
 const useStyles = makeStyles(theme => ({
     colorMain: {
         backgroundColor: theme.palette.secondary.main,
@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
         padding: '0px 3px',
     },
 
-    searchButton: {
+    searchButtonFooter: {
         border: 0,
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.common.white,
@@ -85,7 +85,7 @@ export default function Footer(props) {
             {/* footer pink color starts */}
             <Grid container item style={{ marginBottom: '-5.5%', zIndex: '4' }}>
                 <Grid item xs="12" >
-                    <img src={cartoonFooter} width="100%" />
+                    <img src={cartoonFooter} width="100%" height="auto"  alt="noImage"/>
                 </Grid>
             </Grid>
 
@@ -108,7 +108,7 @@ export default function Footer(props) {
                                 />
                             </Grid>
                             <Grid item xl={4} lg={4} md={4} xs={4}>
-                                <Button className={`${classes.searchButton}`}>Stay Informed</Button>
+                                <Button className={`${classes.searchButtonFooter}`}>Stay Informed</Button>
                             </Grid>
                         </Grid>
 
@@ -127,7 +127,7 @@ export default function Footer(props) {
                                 />
                             </Grid>
                             <Grid item sm={4} xs={3} xl={4} lg={4} md={4}>
-                                <Button className={`${classes.searchButton}`}>Stay Informed</Button>
+                                <Button className={`${classes.searchButtonFooter}`}>Stay Informed</Button>
                             </Grid>
                         </Grid>
 
@@ -166,7 +166,7 @@ export default function Footer(props) {
                     </Hidden>
                     <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
                         <Grid item xs={6} >
-                            <img src={googlePlaystore} alt="no image" className={`${classes.colorMain}`} />
+                            <img src={googlePlaystore}  className={`${classes.colorMain}`} alt="no image"/>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -181,14 +181,14 @@ export default function Footer(props) {
                     </Grid>
                         </Grid>
 
-                        <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                        <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'flex-end' }} className="footer-icons">
                             <Grid item xs={9}>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px' }} className="fa">&#xf099;</i>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa">&#xf09a;</i>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa">&#xf0d5;</i>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa">&#xf231;</i>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa">&#xf16d;</i>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa">&#xf167;</i>
+                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i>
+                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' ,}} className="fa">&#xf09a;</i>
+                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' ,}} className="fa">&#xf0d5;</i>
+                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' ,}} className="fa">&#xf231;</i>
+                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' ,}} className="fa">&#xf16d;</i>
+                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' ,}} className="fa">&#xf167;</i>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -210,13 +210,13 @@ export default function Footer(props) {
                         Stay social with Stylori.
                         We promise we won’t bore you.
 </Grid>
-                    <Grid item xs={12} sm={6} >
-                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px' }} className="fa">&#xf099;</i>
-                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa">&#xf09a;</i>
-                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa">&#xf0d5;</i>
-                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa">&#xf231;</i>
-                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa">&#xf16d;</i>
-                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa">&#xf167;</i>
+                    <Grid item xs={12} sm={6} className="footer-icons">
+                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px' }} className="fa ">&#xf099;</i>
+                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf09a;</i>
+                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf0d5;</i>
+                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf231;</i>
+                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf16d;</i>
+                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf167;</i>
                     </Grid>
                 </Grid>
 
@@ -250,36 +250,36 @@ export default function Footer(props) {
                         <Grid container item xl={4} lg={4} md={5} xs={12} sm={6}>
                             <Grid item xs={12} style={{ paddingTop: '3%', fontWeight: '500', fontSize: '12px', color: '#808080' }}>
                                 Need Help?
-</Grid>
-                            <Grid item xs={12}>
+                                </Grid>
+                            <Grid item xs={12} className="footer-icons">
                                 <i style={{ fontSize: '24px', textAlign: 'center', paddingLeft: '5%' }} className="fa">
                                     &#xf003;
-<br />
+                                    <br />
                                     <span className={classes.spanSizeColor}>
                                         hello@stylori.com
-</span>
+                                    </span>
                                 </i>
                                 <i style={{ fontSize: '24px', textAlign: 'center', paddingLeft: '5%' }} className="fa">
                                     &#xf0e6;
-<br />
+                                    <br />
                                     <span className={classes.spanSizeColor}>
                                         chat
-</span>
+                                    </span>
                                 </i>
                                 <i style={{ fontSize: '24px', textAlign: 'center', paddingLeft: '5%' }} className="fa">
                                     &#xf095;
-<br />
+                                    <br />
                                     <span className={classes.spanSizeColor}>
                                         1800 102 0330
-</span>
+                                    </span>
                                 </i>
                                 <i style={{ fontSize: '24px', textAlign: 'center', paddingLeft: '5%' }} className="fa">
                                     &#xf232;
-<br />
+                                    <br />
                                     <span className={classes.spanSizeColor}>
 
                                         +91 99526 25252
-</span>
+                                    </span>
                                 </i>
 
                             </Grid>
@@ -346,10 +346,10 @@ export default function Footer(props) {
                         <Grid item xs={12}>
                             <Typography variant="caption" className={`${classes.colorBlue}`}>
                                 POPULAR SEARCH TERMS:
-</Typography>
+                            </Typography>
                             <Typography style={{ fontSize: '10px', color: '#808080' }}>
                                 Gold Jewellery , Gold Ring, Diamond Ring, Platinum Jewellery, Diamond Jewellery, Women’s Rings, Gold Earrings, Diamond Earrings, Platinum Earrings, Jhumkas Earrings, Studs Earrings, Drops Earrings, Huggies Earring, Diamond Pendants, Gold Pendants, Casual Pendants, Fashion Pendants, Traditional Pendants, Modern Pendants, Office Pendants, Diamond Nose Pins, Gold Nose Pins, Ear Cuff Earrings, Engagement Rings, Couple Bands, Gold Bangles, Diamond Bangles, Classic Bangles, Oval Bangles, Bracelets, Diamond Bracelets, Gold Bracelets
-</Typography>
+                            </Typography>
                         </Grid>
                     </Container>
                 </Grid>
