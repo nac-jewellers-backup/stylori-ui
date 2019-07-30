@@ -46,7 +46,8 @@ export default function RadioBtn(props) {
           onChange={handleChange}
         >
           {props.radioValues.map(value => (
-            <FormControlLabel value={value} control={<Radio color="primary" className={classes.radio} />} label={value} />
+            <FormControlLabel value={value} control={<Radio color="primary" 
+            className={classes.radio} />} label={value} />
           ))}
         </RadioGroup>
       </FormControl>

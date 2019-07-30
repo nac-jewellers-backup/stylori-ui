@@ -66,8 +66,13 @@ class PriceCertification extends React.Component {
                         {img.imagecertificat.map(val =>
                             <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
                                 style={{ boxShadow: "none", backgroundColor: "none" }} key={val.name}>
-                                <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>} style={{ borderBottom: "1px solid #ed1165" }}>
-                                    <Typography className='subtabs-smrt'>{val.header}</Typography>
+                                <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
+                                    <i class="fa fa-sort-up" ></i></span>} >
+                                    <div style={{ width: "100%" }} >
+                                        <Typography className='subtabs-smrt'>{val.header}</Typography>
+                                        <hr class="bottom-line border-line-"></hr>
+                                    </div>
+
                                 </ExpansionPanelSummary>
                                 <Grid container spacing={12} >
                                     <Grid item xs={6} style={{ padding: "0px 33px" }}>

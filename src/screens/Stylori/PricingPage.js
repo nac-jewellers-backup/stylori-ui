@@ -95,9 +95,12 @@ export default class Stylori extends Component {
             <Sublistcarousel />
           </Grid>
           <Grid item xs={12} >
+          <CustomerReviews />
+          </Grid>
+          <Grid item xs={12} >
             <RatingForm />
           </Grid>
-          <CustomerReviews />
+          
           <Grid item xs={12} style={{ paddingTop: '5%' }}>
             <Footer />
           </Grid>

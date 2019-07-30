@@ -16,7 +16,8 @@ const Buydetails = () => {
                 <>
                     <Grid container spacing={12}>
                         <Grid item xs={5} style={{ textAlign: "left" }}>
-                            <Button className="buynow-button">Buy Now</Button>
+                            <Button className="buynow-button">
+                                <i class="fa fa-shopping-bag buynow-icon"></i> &nbsp;Buy Now</Button>
                         </Grid>
                         <Grid xs={7} style={{ marginTop: "10px" }}>
                             <Grid container spacing={12}>
@@ -51,8 +52,7 @@ const Buydetails = () => {
                             </Grid>
                             <Grid item xs={5} className="content">
                                 <b className="ships-by">
-                                    {/* <span class="ship-img"></span> */}
-                                    <span > <i class="fa fa-star fa-grey"></i>&nbsp;{val.shipby}</span>
+                                    <span ><i style={{fontSize:"20px"}} class="fa fa-truck"></i>&nbsp;&nbsp;{val.shipby}</span>
                                 </b>
                             </Grid>
                         </Grid>

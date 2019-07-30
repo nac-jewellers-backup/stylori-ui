@@ -36,7 +36,7 @@ class ProductImageZoom extends Component {
     var img = document.getElementById("imgZoom");
     var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
     var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
-    element.style.backgroundPosition = (-posX * 1) + "px " + (-posY *1) + "px";
+    element.style.backgroundPosition = (-posX * 2) + "px " + (-posY * 2) + "px";
 
 
   }

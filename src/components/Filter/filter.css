@@ -109,10 +109,11 @@
   font-size: 12px !important;
   color: #fff !important;
   line-height: 1.42857143;
-  height: 35px !important;
+  height: 60% !important;
   margin-top: 26% !important;
   box-shadow: none !important;
 }
+
 /*mobile filter*/
 .filter-mbl-font {
   padding: 8px 10px;

@@ -30,10 +30,11 @@ class Sublistcarousel extends React.Component {
     const mobiledataCarousel = {
       dots: false,
       infinite: true,
-      speed: 1000,
+      speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      arrows: true
+      autoplay: true,
+      autoplaySpeed: 2000
     }
 
     const dataCarousel = {
@@ -64,19 +65,20 @@ class Sublistcarousel extends React.Component {
           <Container>
             <ExpansionPanel expanded={expanded === 'panel'} onChange={this.handle('panel')}
               style={{ boxShadow: "none", backgroundColor: "none" }}>
-              <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>} style={{ borderBottom: "1px solid #ed1165" }}>
-                <Typography className='subtabs-smrt'>You may also like</Typography>
+              <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
+                <i class="fa fa-sort-up" ></i></span>}>
+                <div style={{ width: "100%" }} >
+                  <Typography className="subtabs-smrt">You may also like</Typography>
+                  <hr class="bottom-line border-line-"></hr>
+                </div>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails style={{ height: "200px" }}>
-                <Slideshow class="" dataCarousel={mobiledataCarousel} >
-                  {D.fadeImagessublist.map(val => (
-                    <div style={{ height: "200px" }}>
-                      <img src={val.img} className='' style={{ width: "50%", height: "50%" }} />
-                      <span className='next-price'>{val.title}</span><br />
-                      <span className='sub-list-price'> <i class="fa fa-rupee"></i> &nbsp;{val.price}</span>
-                    </div>
-                  ))}
-                </Slideshow>
+                <div style={{width:"100%",textAlign:"center"}}>
+                <Slideshow class="subslider-carousel" hoverlist={fade.fadeImagessublist}
+                dataCarousel={mobiledataCarousel} hover={true} >
+                  </Slideshow>
+                </div>
+             
               </ExpansionPanelDetails>
             </ExpansionPanel>
           </Container>    </Hidden>
