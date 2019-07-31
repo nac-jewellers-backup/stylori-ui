@@ -1,4 +1,4 @@
-.shine {
+.shine{
     background: #f6f7f8;
     background-image: linear-gradient(
       to right,
@@ -11,12 +11,11 @@
     background-size: 800px 104px;
     display: inline-block;
     position: relative;
-  
-    -webkit-animation-duration: 1s;
-    -webkit-animation-fill-mode: forwards;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-name: placeholderShimmer;
-    -webkit-animation-timing-function: linear;
+    -webkit-animation-duration: 1s !important;
+    -webkit-animation-fill-mode: forwards !important;
+    -webkit-animation-iteration-count: infinite !important;
+    -webkit-animation-name: placeholderShimmer !important;
+    -webkit-animation-timing-function: linear !important;
   }
   
   .price {

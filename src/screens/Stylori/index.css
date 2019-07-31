@@ -1,0 +1,7 @@
+.animations{
+    -webkit-animation: expand 6s;
+}
+@-webkit-keyframes expand{
+    0%{height:0px}
+    100%{height:100px}
+}

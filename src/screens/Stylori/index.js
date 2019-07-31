@@ -35,16 +35,14 @@ export default class Stylori extends Component {
         </Grid>
 
         <Grid item xs={12}>
-          <ProductDescription fadeImages={fadeImages} dataCarousel={dataCarousel} />
+        <ProductDescription fadeImages={fadeImages} dataCarousel={dataCarousel} />
 
-          <Filter />
-
-
-
+        <Filter />
         </Grid>
+        <Grid item xs={12} >
+          {/* <ChatHelp /> */}
 
-        <Grid item xs={12} style={{ paddingTop: '5%' }}>
-          <Footer />
+          {/* <Footer /> */}
         </Grid>
       </Grid>
 
