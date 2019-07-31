@@ -43,8 +43,11 @@
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
-    .bottom-line,
-    .MuiExpansionPanel-root:before {
+    .border-line- {
+        margin-bottom: -10px !important;
+    }
+
+    .bottom-line {
         border: 0 !important;
         height: 1px !important;
         background: #CB356B;
@@ -108,6 +111,11 @@
 
     }
 
+    .tabs-contants {
+        font-size: 12px !important;
+        color: #394578;
+    }
+
     .tabs-gold-icons {
         border-left: 4px solid transparent;
         border-right: 4px solid transparent;
@@ -159,6 +167,12 @@
         text-align: center;
         letter-spacing: 2px !important;
         width: 95%;
+        text-transform: none !important;
+    }
+
+    .buynow-icon {
+        line-height: 30px !important;
+        margin-top: -5px;
     }
 
     .buy-subheaders {
@@ -236,6 +250,7 @@
     .product-subhead {
         color: #394578;
         font-size: none !important;
+        margin-top: 10px !important;
     }
 
     .product-subhead-list {
@@ -432,10 +447,12 @@
 
     .expansion-summary,
     .MuiExpansionPanelSummary-root.Mui-expanded,
-    .MuiExpansionPanelSummary-root {
+    .MuiExpansionPanelSummary-root,
+    .MuiExpansionPanel-root:before {
         min-height: 45px !important;
         height: 45px !important;
         padding: 0 !important;
+        background: none !important;
     }
 
     .subtabs-smrt {
@@ -469,7 +486,7 @@
         height: 475px !important;
         /* background-image: url('https://storage.googleapis.com/media.nacjewellers.com/resources/user_media/Muhurtham-Banner.jpg'); */
         background-repeat: no-repeat;
-        left: 46%;
+        left: 618px !important;
         margin-top: -477px !important;
         background-color: #fff !important;
         cursor: crosshair;
@@ -494,7 +511,7 @@
     .subslider-carousel {
         border: 1px solid #ccc;
         background-color: #fff;
-        width: 85% !important;
+        width: 100% !important;
         margin-left: 8% !important;
         height: 170px !important;
         text-align: center !important;
@@ -502,7 +519,7 @@
     }
 
     .subslider-carousel-img {
-        height: 75%;
+        height: 100%;
         width: 100% !important;
     }
 
@@ -513,6 +530,7 @@
     .like-and-recently {
         height: 50px;
         line-height: 50px;
+        margin-top: 30px !important;
     }
 
     .like-page {
@@ -545,7 +563,7 @@
         font-size: 12px;
         text-align: center;
         margin-bottom: 40px;
-        color: #394578;
+        color: #fff;
     }
 
     .responseve-carousel {

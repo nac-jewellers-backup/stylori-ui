@@ -71,7 +71,7 @@ export const productsPendants = [
     {
         header: "Pendants set in 18 Kt Gold 1.46 gm with Diamonds (0.04 ct, IJ - SI ) ",
         name: [
-            '#EveryDay', '#Female', '#THree Stone', '#Spots', '#Special Occasion', '#Designer', '#Essentails']
+            '#EveryDay', '#Female', '#THree Stone', '#Spots', '#Special Occasion', '#Designer', '#Essentails','#EveryDay', '#Female', '#THree Stone', '#Spots', '#Special Occasion', '#Designer', '#Essentails',]
     }
 ];
 
@@ -112,15 +112,36 @@ export const productstabs = [
     {
         tab1: {
             header: "Ring Size",
-            Children: 'JHBKJ'
+            Children:
+            [
+                {
+                    name:"18K Yellow",
+                    icon:"https://img.icons8.com/color/48/000000/gold-bars.png"
+                },
+                
+            ]
+        
         },
         tab2: {
             header: "Metal Purity",
-            Children: 'JKGH'
+            Children:  [
+                {
+                    name:"cccc",
+                    icon:"https://img.icons8.com/color/48/000000/gold-bars.png"
+                },
+                
+            ]
+
         },
         tab3: {
             header: "Diamond Clarity",
-            Children: 'JKGH'
+            Children:  [
+                {
+                    name:"cccc",
+                    icon:"https://img.icons8.com/color/48/000000/gold-bars.png"
+                },
+                
+            ]
         }
     }
 ];
@@ -149,38 +170,56 @@ export const imagecertificat = [
         img5: "https://assets-cdn.stylori.com/images/static/certificate4.jpg"
     }
 ];
-
+const fadeImages = [
+    'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
+    'https://stmed.net/sites/default/files/styles/225x120/public/jewelry-wallpapers-25240-746715.jpg?itok=UH8vm-JU',
+    'https://kinclimg4.bluestone.com/f_jpg,c_scale,w_515,b_rgb:f0f0f0/giproduct/BIVT0012P05_YAA18NAV1DIG6XXXX_ABCD00-PICS-00004-1024-18002.png',
+    'https://www.setaswall.com/wp-content/uploads/2018/12/Jewelry-Wallpaper-20-2880x1800-768x480.jpg',
+    'https://iba-ibacraftspvtltd.netdna-ssl.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/b/s/bsg2747_3__2_1.jpg',
+    'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
+  ];
 export const fadeImagessublist = [
     {
-        img: "https://www.csjewellers.com/assets/web/product/images/zoom/PND8122825.jpg",
+        img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
         title: "You recently viewed",
         price: "98.89789"
     },
     {
-        img: 'https://stmed.net/sites/default/files/styles/225x120/public/jewelry-wallpapers-25240-746715.jpg?itok=UH8vm-JU',
+        img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
         title: "You recently viewed",
         price: "98.89789"
     },
     {
-        img: 'https://kinclimg4.bluestone.com/f_jpg,c_scale,w_515,b_rgb:f0f0f0/giproduct/BIVT0012P05_YAA18NAV1DIG6XXXX_ABCD00-PICS-00004-1024-18002.png',
+        img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
         title: "You recently viewed",
         price: "98.89789"
     },
     {
-        img: 'https://iba-ibacraftspvtltd.netdna-ssl.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/b/s/bsg2747_3__2_1.jpg',
+        img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
         title: "You recently viewed",
         price: "98.89789"
     },
     {
-        img: 'https://assets-cdn.stylori.com/200x200/images/product/SP0490/SP0490-1Y.jpg',
+        img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
         title: "You recently viewed",
         price: "98.89789"
     },
     {
-        img: 'https://assets-cdn.stylori.com/80x80/images/product/SP0096/SP0096-3Y.jpg',
+        img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
         title: "You recently viewed",
         price: "98.89789"
     },
+    {
+        img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
+        title: "You recently viewed",
+        price: "98.89789"
+    },
+    {
+        img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
+        title: "You recently viewed",
+        price: "98.89789"
+    },
+    
 
 ]
-export default { productsubHead, productsDetails, productsPendants, productstabs, productsbuy, imagecertificat, fadeImagessublist };
+export default { productsubHead, productsDetails, productsPendants, productstabs, productsbuy,fadeImages, imagecertificat, fadeImagessublist };

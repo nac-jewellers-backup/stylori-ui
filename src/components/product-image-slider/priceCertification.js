@@ -7,6 +7,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Container, Typography } from '@material-ui/core';
+import PropTypes from 'prop-types';
 const PriceCertificat = () => {
     return (
         <div>
@@ -64,9 +65,14 @@ class PriceCertification extends React.Component {
                     <Container>
                         {img.imagecertificat.map(val =>
                             <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
-                            style={{ boxShadow: "none", backgroundColor: "none" }} key={val.name}>
-                                <ExpansionPanelSummary  expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>} style={{ borderBottom: "1px solid #ed1165" }}>
-                                    <Typography className='subtabs-smrt'>{val.header}</Typography>
+                                style={{ boxShadow: "none", backgroundColor: "none" }} key={val.name}>
+                                <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
+                                    <i class="fa fa-sort-up" ></i></span>} >
+                                    <div style={{ width: "100%" }} >
+                                        <Typography className='subtabs-smrt'>{val.header}</Typography>
+                                        <hr class="bottom-line border-line-"></hr>
+                                    </div>
+
                                 </ExpansionPanelSummary>
                                 <Grid container spacing={12} >
                                     <Grid item xs={6} style={{ padding: "0px 33px" }}>
@@ -100,4 +106,9 @@ class PriceCertification extends React.Component {
     }
 
 }
+PriceCertification.propTypes = {
+    PriceCertificat: PropTypes.func.isRequired,
+    handle: PropTypes.isRequired
+};
+
 export default PriceCertification;

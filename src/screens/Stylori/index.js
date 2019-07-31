@@ -33,6 +33,7 @@ export default class Stylori extends Component {
         <Grid item xs={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
           <Header />
         </Grid>
+
         <Grid item xs={12}>
         <ProductDescription fadeImages={fadeImages} dataCarousel={dataCarousel} />
 

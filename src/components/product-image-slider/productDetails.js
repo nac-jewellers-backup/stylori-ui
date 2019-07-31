@@ -68,8 +68,13 @@ class ProductDetails extends React.Component {
                             {data.productsDetails.map(val => (
                                 <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
                                     style={{ boxShadow: "none", backgroundColor: "none" }} key={val.name}>
-                                    <ExpansionPanelSummary className="expansion-summary" expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>} style={{ borderBottom: '1px solid #CB356B' }}>
-                                        <Typography className='subtabs-smrt'>{val.header}</Typography>
+                                    <ExpansionPanelSummary className="expansion-summary"
+                                        expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" >
+                                        </i></span>}>
+                                        <div style={{ width: "100%" }} >
+                                            <Typography className='subtabs-smrt'>{val.header}</Typography>
+                                            <hr class="bottom-line border-line-"></hr>
+                                        </div>
                                     </ExpansionPanelSummary>
                                     {
                                         val.namedetail !== undefined && val.namedetail.map(res =>
@@ -91,13 +96,16 @@ class ProductDetails extends React.Component {
                             {data.productsPendants.map(val => (
                                 <ExpansionPanel expanded={expanded === 'panel'} onChange={this.handle('panel')}
                                     style={{ boxShadow: "none", backgroundColor: "none" }}>
-                                    <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>} style={{ borderBottom: '1px solid #CB356B' }}>
-                                        <Typography className="product-details-smrt">{val.header}
-                                        </Typography>
+                                    <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
+                                        <i class="fa fa-sort-up" ></i></span>}>
+                                        <div style={{ width: "100%" }} >
+                                            <Typography className='product-details-smrt'>{val.header}</Typography>
+                                            <hr class="bottom-line border-line-"></hr>
+                                        </div>
                                     </ExpansionPanelSummary>
 
                                     <Grid container spacing={12}>
-                                        <Grid item xs={12} className="product-subhead">
+                                        <Grid item xs={12} className="product-subhead ">
                                             <span style={{ fontSize: "12px" }}>{val.name.join(' ')}</span>
                                         </Grid>
                                     </Grid>

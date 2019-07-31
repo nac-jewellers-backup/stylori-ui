@@ -3,16 +3,8 @@ import './product-images.css'
 import { Grid, Hidden, Container, Button } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul'
 import TB from './producthoverData'
-const src = 'https://images8.alphacoders.com/387/387613.jpg'
+import T from './producthoverData';
 
-const fadeImages = [
-  'https://www.csjewellers.com/assets/web/product/images/zoom/PND8122825.jpg',
-  'https://stmed.net/sites/default/files/styles/225x120/public/jewelry-wallpapers-25240-746715.jpg?itok=UH8vm-JU',
-  'https://kinclimg4.bluestone.com/f_jpg,c_scale,w_515,b_rgb:f0f0f0/giproduct/BIVT0012P05_YAA18NAV1DIG6XXXX_ABCD00-PICS-00004-1024-18002.png',
-  'https://www.setaswall.com/wp-content/uploads/2018/12/Jewelry-Wallpaper-20-2880x1800-768x480.jpg',
-  'https://iba-ibacraftspvtltd.netdna-ssl.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/b/s/bsg2747_3__2_1.jpg',
-  'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
-];
 class ProductImageZoom extends Component {
   constructor(props) {
     super(props);
@@ -20,16 +12,16 @@ class ProductImageZoom extends Component {
     this.previous = this.previous.bind(this);
   }
   state = {
-    backgroundImage: `url(${src})`,
+    // backgroundImage: `url(${src})`,
     backgroundPosition: '0% 0%',
-    showimage: fadeImages[0],
+    showimage: T.fadeImages[0],
     slider: ""
   }
 
-  next = (e) => {
+  next = () => {
     this.slider.slickNext();
   }
-  previous = (e) => {
+  previous = () => {
     this.slider.slickPrev();
   }
   handleMouseMove = e => {
@@ -44,7 +36,7 @@ class ProductImageZoom extends Component {
     var img = document.getElementById("imgZoom");
     var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
     var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
-    element.style.backgroundPosition = (-posX * 1) + "px " + (-posY * 1) + "px";
+    element.style.backgroundPosition = (-posX * 2) + "px " + (-posY * 2) + "px";
 
 
   }
@@ -67,7 +59,7 @@ class ProductImageZoom extends Component {
       slidesToScroll: 1,
       vertical: true,
       verticalSwiping: true,
-      arrows: false,
+      arrows: false
     }
     return (
       <div>
@@ -76,11 +68,11 @@ class ProductImageZoom extends Component {
             <Grid container spacing={1}>
               <Grid item xs={2}>
                 <div style={{ textAlign: 'center' }}>
-                  <Button onClick={e => this.previous(e)}>
+                  <Button onClick={this.previous}>
                     <i class="fa fa-angle-up" style={{ fontSize: "35px", color: "#F699A3" }}></i>
                   </Button>
-                  <Slideshow getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img' fadeImages={fadeImages} dataCarousel={dataCarousel} />
-                  <Button onClick={e => this.next(e)}>
+                  <Slideshow ref={c => (this.slider = c)} getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img' fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
+                  <Button onClick={this.next}>
                     <i class="fa fa-angle-down" style={{ fontSize: "35px", color: "#F699A3" }}></i>
                   </Button>
                 </div>

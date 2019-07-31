@@ -93,9 +93,13 @@ class Request extends React.Component {
                     <Container>
                         <ExpansionPanel expanded={expanded === 'panel3'} onChange={this.handle('panel3')}
                             style={{ boxShadow: "none", backgroundColor: "none" }}>
-                            <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>} style={{ borderBottom: "1px solid #ed1165" }}>
-                                <Typography className="product-details-smrt">Ask Our Expert
-                                    </Typography>
+                            <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
+                                <i class="fa fa-sort-up" ></i></span>}
+                            >
+                                <div style={{ width: "100%" }} >
+                                    <Typography className="product-details-smrt">Ask Our Expert</Typography>
+                                    <hr class="bottom-line border-line-"></hr>
+                                </div>
                             </ExpansionPanelSummary>
                             <Grid container spacing={12}>
                                 <Grid item xs={12} className="product-subhead">

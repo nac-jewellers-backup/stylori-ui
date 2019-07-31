@@ -8,7 +8,7 @@ import ProductPrice from './productPrice'
 import PriceTabs from "./priceTabs";
 import Container from '@material-ui/core/Container';
 import buy from './producthoverData'
-
+import PropTypes from 'prop-types';
 const Buydetails = () => {
     return (
         <div>
@@ -16,7 +16,8 @@ const Buydetails = () => {
                 <>
                     <Grid container spacing={12}>
                         <Grid item xs={5} style={{ textAlign: "left" }}>
-                            <Button className="buynow-button">Buy Now</Button>
+                            <Button className="buynow-button">
+                                <i class="fa fa-shopping-bag buynow-icon"></i> &nbsp;Buy Now</Button>
                         </Grid>
                         <Grid xs={7} style={{ marginTop: "10px" }}>
                             <Grid container spacing={12}>
@@ -51,8 +52,7 @@ const Buydetails = () => {
                             </Grid>
                             <Grid item xs={5} className="content">
                                 <b className="ships-by">
-                                    {/* <span class="ship-img"></span> */}
-                                    <span > <i class="fa fa-star fa-grey"></i>&nbsp;{val.shipby}</span>
+                                    <span ><i style={{fontSize:"20px"}} class="fa fa-truck"></i>&nbsp;&nbsp;{val.shipby}</span>
                                 </b>
                             </Grid>
                         </Grid>
@@ -75,40 +75,43 @@ class PriceBuynow extends React.Component {
 
                 <Hidden mdUp>
                     <Container>
-                    {buy.productsbuy.map(val =>
-                        <div style={{ marginTop: "25px" }}>
-                            <ProductPrice />
-                            <Grid container spacing={12}>
-                                <Grid item xs={6} className="content">
-                                    <b className="ships-by">
-                                        {/* <span class="ship-img"></span> */}
-                                        <span > <i class="fa fa-star fa-grey"></i>&nbsp; {val.shipby}</span>
-                                    </b>
+                        {buy.productsbuy.map(val =>
+                            <div style={{ marginTop: "25px" }}>
+                                <ProductPrice />
+                                <Grid container spacing={12}>
+                                    <Grid item xs={6} className="content">
+                                        <b className="ships-by">
+                                            {/* <span class="ship-img"></span> */}
+                                            <span > <i class="fa fa-star fa-grey"></i>&nbsp; {val.shipby}</span>
+                                        </b>
+                                    </Grid>
+                                    <Grid item xs={6} className="content">
+                                        <b className="ships-by">
+                                            <span > Top to Zoom</span></b>
+                                    </Grid>
+                                    <hr class="bottom-line product-inform-ation"></hr>
                                 </Grid>
-                                <Grid item xs={6} className="content">
-                                    <b className="ships-by">
-                                        <span > Top to Zoom</span></b>
-                                </Grid>
+                                <PriceTabs />
                                 <hr class="bottom-line product-inform-ation"></hr>
-                            </Grid>
-                            <PriceTabs />
-                            <hr class="bottom-line product-inform-ation"></hr>
-                            <Grid container spacing={12}>
-                                <Grid item xs={8}>
-                                    <input
-                                        placeholder='Enter Pin Code'
-                                        className='buynow-search'
-                                    />
+                                <Grid container spacing={12}>
+                                    <Grid item xs={8}>
+                                        <input
+                                            placeholder='Enter Pin Code'
+                                            className='buynow-search'
+                                        />
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <Button className="search-button">Check for COD </Button>
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={4}>
-                                    <Button className="search-button">Check for COD </Button>
-                                </Grid>
-                            </Grid>
-                        </div>
-                    )}
-                </Container></Hidden>
+                            </div>
+                        )}
+                    </Container></Hidden>
             </div>
         );
     }
 }
+PriceBuynow.propTypes = {
+    Buydetails: PropTypes.func.isRequired,
+};
 export default PriceBuynow;
