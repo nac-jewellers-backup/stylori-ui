@@ -34,13 +34,14 @@ export default class Stylori extends Component {
           <Header />
         </Grid>
         <Grid item xs={12}>
-          <ProductDescription fadeImages={fadeImages} dataCarousel={dataCarousel} />
-          <Filter />
+        <ProductDescription fadeImages={fadeImages} dataCarousel={dataCarousel} />
+
+        <Filter />
         </Grid>
         <Grid item xs={12} >
-          <ChatHelp />
+          {/* <ChatHelp /> */}
 
-          <Footer />
+          {/* <Footer /> */}
         </Grid>
       </Grid>
 
