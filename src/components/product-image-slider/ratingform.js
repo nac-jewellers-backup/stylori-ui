@@ -1,23 +1,26 @@
 import React from "react";
 import './product-images.css';
-import { Grid, TextField, Button, Container, Hidden } from '@material-ui/core';
+import {
+    Grid,
+    TextField,
+    Button,
+    Container,
+    Hidden
+} from '@material-ui/core';
 import data from './producthoverData'
+import Ratings from "../rating/rating";
 
 class RatingForm extends React.Component {
     render() {
         return (
             <div>
                 <Container>
-                    <Grid container spacing={12} style={{marginTop:'20px'}}>
+                    <Grid container spacing={12} style={{ marginTop: '20px' }}>
                         <Grid item lg={1} />
                         <Grid item xs={12} lg={8}>
                             <h5 className='rating-form-head'>Rate This</h5>
                             <div className="rating-form">
-                                <i class="fa fa-star fa-grey"></i>
-                                <i class="fa fa-star fa-grey"></i>
-                                <i class="fa fa-star fa-grey"></i>
-                                <i class="fa fa-star fa-grey"></i>
-                                <i class="fa fa-star fa-grey"></i>
+                                <Ratings />
                             </div>
                             <h3 className='rating-form-head'>Write Your Review</h3>
                             <TextField
@@ -36,31 +39,32 @@ class RatingForm extends React.Component {
                             <span className='tool-tips' >Max 250 Characters</span>
                         </Grid>
                     </Grid>
-                   <Hidden smDown>
-                   <Grid container spacing={12}>
-                        <Grid item xs={12} lg={8}>
-                            <div style={{ float: "right" }}>
-                                <Button className='form-reviews'>Write a Reviews</Button>
-                                <Button className='form-cancel'>Cancel</Button>
-                            </div>
+                    <Hidden smDown>
+                        <Grid container spacing={12}>
+                            <Grid item xs={12} lg={8}>
+                                <div style={{ float: "right" }}>
+                                    <Button className='form-reviews'>Write a Reviews</Button>
+                                    <Button className='form-cancel'>Cancel</Button>
+                                </div>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                   </Hidden>
+                    </Hidden>
 
-                   <Hidden mdUp>
-                   <Grid container spacing={12} style={{marginTop:'20px'}}>
-                        <Grid item xs={12} lg={8}>
-                            <div style={{ float: "right" }}>
-                                <Button className='form-reviews-mob'>Write a Reviews</Button>
-                                <Button className='form-cancel-mob'>Cancel</Button>
-                            </div>
+                    <Hidden mdUp>
+                        <Grid container spacing={12} style={{ marginTop: '20px' }}>
+                            <Grid item xs={12} lg={8}>
+                                <div style={{ float: "right" }}>
+                                    <Button className='form-reviews-mob'>Write a Reviews</Button>
+                                    <Button className='form-cancel-mob'>Cancel</Button>
+                                </div>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                   </Hidden>
+                    </Hidden>
 
                 </Container>
             </div>
         );
     }
 }
+
 export default RatingForm;

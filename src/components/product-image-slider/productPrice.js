@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
-import './product-images.css'
-import Grid from '@material-ui/core/Grid';
-import { Hidden } from '@material-ui/core';
+import {
+    Grid,
+    Hidden,
+    Container,
+    AppBar,
+    Toolbar,
+    AddIcon,
+    Fab
+} from '@material-ui/core';
 import Slideshow from '../Carousel/carosul'
-import Container from '@material-ui/core/Container';
 import PriceBuynow from './buyNow'
 import PriceTabs from './priceTabs'
-import Fab from '@material-ui/core/Fab';
-import Toolbar from '@material-ui/core/Toolbar';
-import AddIcon from '@material-ui/icons/Add';
-import AppBar from '@material-ui/core/AppBar';
 import dataCard from '../ProductCard/ProductData'
 import T from './producthoverData'
-
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import './product-images.css'
 const dataCarousel = {
     dots: false,
     infinite: true,
@@ -112,5 +114,8 @@ class ProductPrice extends Component {
         )
     }
 }
-
+ProductPrice.propTypes = {
+    render: PropTypes.func,
+    Productprice: PropTypes.func,
+};
 export default ProductPrice;

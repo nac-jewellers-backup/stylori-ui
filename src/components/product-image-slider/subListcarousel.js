@@ -1,14 +1,20 @@
+import {
+  Container,
+  Grid,
+  Hidden,
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  ExpansionPanelDetails,
+  Typography,
+  ExpandMoreIcon
+} from '@material-ui/core';
+import fade from './producthoverData'
+import D from './producthoverData'
+import PropTypes from 'prop-types';
 import React from 'react';
 import './product-images.css'
 import Slideshow from '../Carousel/carosul'
-import { Container, Grid, Hidden } from '@material-ui/core';
-import fade from './producthoverData'
-import D from './producthoverData'
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 class Sublistcarousel extends React.Component {
   state = {
     value: 0,
@@ -72,13 +78,13 @@ class Sublistcarousel extends React.Component {
                   <hr class="bottom-line border-line-"></hr>
                 </div>
               </ExpansionPanelSummary>
-              <ExpansionPanelDetails style={{ height: "200px" }}>
-                <div style={{width:"100%",textAlign:"center"}}>
-                <Slideshow class="subslider-carousel" hoverlist={fade.fadeImagessublist}
-                dataCarousel={mobiledataCarousel} hover={true} >
+              <ExpansionPanelDetails >
+                <div style={{ width: "100%", textAlign: "center" }}>
+                  <Slideshow class="subslider-carousel" hoverlist={fade.fadeImagessublist}
+                    dataCarousel={mobiledataCarousel} hover={true}>
                   </Slideshow>
                 </div>
-             
+
               </ExpansionPanelDetails>
             </ExpansionPanel>
           </Container>    </Hidden>
@@ -86,6 +92,8 @@ class Sublistcarousel extends React.Component {
     );
   }
 };
-
+Sublistcarousel.propTypes = {
+  render: PropTypes.func,
+};
 
 export default Sublistcarousel;

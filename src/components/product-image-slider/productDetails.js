@@ -1,13 +1,17 @@
+import {
+    Grid,
+    ListItemText,
+    Container,
+    ExpansionPanel,
+    ExpansionPanelSummary,
+    ExpansionPanelDetails,
+    Hidden,
+    Typography
+} from '@material-ui/core';
+import data from './producthoverData'
+import PropTypes from 'prop-types';
 import React from "react";
 import './product-images.css';
-import { Grid, ListItemText, Container } from '@material-ui/core';
-import data from './producthoverData'
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Hidden, Typography } from '@material-ui/core';
-
 class ProductDetails extends React.Component {
     state = {
         expanded: null
@@ -118,4 +122,7 @@ class ProductDetails extends React.Component {
         );
     }
 }
+ProductDetails.propTypes = {
+    handle: PropTypes.func,
+};
 export default ProductDetails;

@@ -1,12 +1,16 @@
+import {
+    Container,
+    Hidden,
+    ExpansionPanel,
+    ExpansionPanelSummary,
+    ExpansionPanelDetails,
+    Typography,
+    ExpandMoreIcon,
+    Grid
+} from '@material-ui/core';
+import img from './producthoverData'
 import React from 'react';
 import './product-images.css'
-import { Grid, Hidden } from '@material-ui/core';
-import img from './producthoverData'
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Container, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
 const PriceCertificat = () => {
     return (
@@ -107,8 +111,8 @@ class PriceCertification extends React.Component {
 
 }
 PriceCertification.propTypes = {
-    PriceCertificat: PropTypes.func.isRequired,
-    handle: PropTypes.isRequired
+    PriceCertificat: PropTypes.func,
+    handle: PropTypes.func
 };
 
 export default PriceCertification;

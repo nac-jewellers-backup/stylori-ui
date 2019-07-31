@@ -71,7 +71,7 @@ export const productsPendants = [
     {
         header: "Pendants set in 18 Kt Gold 1.46 gm with Diamonds (0.04 ct, IJ - SI ) ",
         name: [
-            '#EveryDay', '#Female', '#THree Stone', '#Spots', '#Special Occasion', '#Designer', '#Essentails','#EveryDay', '#Female', '#THree Stone', '#Spots', '#Special Occasion', '#Designer', '#Essentails',]
+            '#EveryDay', '#Female', '#THree Stone', '#Spots', '#Special Occasion', '#Designer', '#Essentails', '#EveryDay', '#Female', '#THree Stone', '#Spots', '#Special Occasion', '#Designer', '#Essentails',]
     }
 ];
 
@@ -113,34 +113,34 @@ export const productstabs = [
         tab1: {
             header: "Ring Size",
             Children:
-            [
-                {
-                    name:"18K Yellow",
-                    icon:"https://img.icons8.com/color/48/000000/gold-bars.png"
-                },
-                
-            ]
-        
+                [
+                    {
+                        name: "18K Yellow",
+                        icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
+                    },
+
+                ]
+
         },
         tab2: {
             header: "Metal Purity",
-            Children:  [
+            Children: [
                 {
-                    name:"cccc",
-                    icon:"https://img.icons8.com/color/48/000000/gold-bars.png"
+                    name: "cccc",
+                    icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
                 },
-                
+
             ]
 
         },
         tab3: {
             header: "Diamond Clarity",
-            Children:  [
+            Children: [
                 {
-                    name:"cccc",
-                    icon:"https://img.icons8.com/color/48/000000/gold-bars.png"
+                    name: "cccc",
+                    icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
                 },
-                
+
             ]
         }
     }
@@ -177,7 +177,7 @@ const fadeImages = [
     'https://www.setaswall.com/wp-content/uploads/2018/12/Jewelry-Wallpaper-20-2880x1800-768x480.jpg',
     'https://iba-ibacraftspvtltd.netdna-ssl.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/b/s/bsg2747_3__2_1.jpg',
     'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
-  ];
+];
 export const fadeImagessublist = [
     {
         img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
@@ -219,7 +219,7 @@ export const fadeImagessublist = [
         title: "You recently viewed",
         price: "98.89789"
     },
-    
+
 
 ]
-export default { productsubHead, productsDetails, productsPendants, productstabs, productsbuy,fadeImages, imagecertificat, fadeImagessublist };
+export default { productsubHead, productsDetails, productsPendants, productstabs, productsbuy, fadeImages, imagecertificat, fadeImagessublist };

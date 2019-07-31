@@ -21,6 +21,7 @@ import CustomerReviews from '../../components/product-image-slider/customer-revi
 import { Container, Hidden } from '@material-ui/core';
 import Slideshow from '../../components/Carousel/carosul'
 import Footer from "../../components/Footer/Footer"
+import Ratings from '../../components/rating/rating'
 
 
 export default class Stylori extends Component {
@@ -100,7 +101,6 @@ export default class Stylori extends Component {
           <Grid item xs={12} >
             <RatingForm />
           </Grid>
-          
           <Grid item xs={12} style={{ paddingTop: '5%' }}>
             <Footer />
           </Grid>
