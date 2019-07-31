@@ -124,6 +124,25 @@
   }
  
    
+}  
+.ListColor span:hover div:hover{
+  border-left: 3px solid #ed1165;
+  color:#ed1165;
+}
+
+.ListColor span:active{
+  border-left: 3px solid #ed1165;
+  color:#ed1165;
+}
+.hrColor{
+  border-bottom: 1px solid #ed1165;
+
+
+}
+    /* color: #394578;
+    line-height: 1.42857143;
+    letter-spacing: 1px !important;
+  } */
   .drawer-menu{
     padding: 15px 52px !important;
     background-color: #ededed;
