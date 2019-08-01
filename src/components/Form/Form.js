@@ -93,7 +93,7 @@ export class Form extends React.Component {
   renderForm = () => {
     return (
       <>
-       {this.props.inputFields}
+       {this.props.children}
        </>
     );
   };

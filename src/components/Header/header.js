@@ -18,7 +18,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { Hidden } from '@material-ui/core';
-import JewelleryMenuItem from '../../screens/Stylori/JewlleryMenuItem';
+import JewelleryMenuItem from './HoverNavBarListing/JewlleryMenuItem';
 import HeaderNotification from './Notification/HeaderNotification'
 import { mainlist, Jewellery, subheader } from './headerData'
 import { withStyles } from '@material-ui/core/styles';
@@ -51,6 +51,7 @@ class Header extends Component {
       selected: '',
       selected1: '',
       Checked: false,
+      listHoverItem:'Jewellery'
     }
   }
   // componentDidMount(){
@@ -125,12 +126,17 @@ class Header extends Component {
                 <Grid item xs={12} className={`header-navbar-list ${classes.colorLight}`}>
                   <nav >
                     <a href=""  className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
-                    <a href="" onMouseOver={() => { this.setState({ Menuopen: true, Checked: true }) }} className={` ${classes.colorLight}`}>
-                      <i class="fa fa-plus-circle" ></i>&nbsp;Jewellery</a>
-                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Solitaires</a>
-                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Gold Coins</a>
-                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Gifts</a>
-                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Collections</a>
+                    <a href="" onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem:'Jewellery' }) }} className={` ${classes.colorLight}`} ><i class="fa fa-plus-circle" ></i>&nbsp;Jewellery</a>
+                    <a href="" className={` ${classes.colorLight}`} onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem:'Solitaires' }) }}><i class="fa fa-plus-circle"></i>&nbsp;Solitaires</a>
+                    <a href="" className={` ${classes.colorLight}`}
+                    onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem:'GoldCoins' }) }}
+                    ><i class="fa fa-plus-circle"></i>&nbsp;Gold Coins</a>
+                    <a href="" className={` ${classes.colorLight}`}
+                    onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem:'Gifts' }) }}
+                    ><i class="fa fa-plus-circle"></i>&nbsp;Gifts</a>
+                    <a href="" className={` ${classes.colorLight}`}
+                    onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem:'Collection' }) }}
+                    ><i class="fa fa-plus-circle"></i>&nbsp;Collections</a>
                     <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;One Day Sipping</a>
                     <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Stories</a>
                   </nav>
@@ -251,7 +257,7 @@ class Header extends Component {
         </Hidden>
         {
           this.state.Menuopen ?
-            <JewelleryMenuItem Checked={this.state.Checked} onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }} />
+            <JewelleryMenuItem Checked={this.state.Checked} listHoverItem={this.state.listHoverItem} onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }} />
             //onMouseLeave={() => { this.setState({ Menuopen: false,Checked:false }) }}
             :
             ''

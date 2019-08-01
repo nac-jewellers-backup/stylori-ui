@@ -1,3 +1,71 @@
+export const menuLists ={
+    'Jewellery':{
+        'menuOne':
+        [{ value: 'earings', title: 'Earrings', url: '#Earrings' },
+        { value: 'pendants', title: 'Pendants', url: '#' },
+        { value: 'rings', title: 'Rings', url: '#' },
+        { value: 'nosepins', title: 'Nose pins', url: '#' },
+        { value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#' },
+        ],
+        'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
+        { value: 'Collection', title: 'By Collection', url: '#' },
+        { value: 'Material', title: 'By Material', url: '#' },
+        ]
+    },
+    'Solitaires':{
+        'menuOne':
+        [{ value: 'valayal', title: 'valayal', url: '#valayal' },
+        { value: 'pendants', title: 'Pendants', url: '#' },
+        { value: 'rings', title: 'Rings', url: '#' },
+        { value: 'nosepins', title: 'Nose pins', url: '#' },
+        { value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#' },
+        ],
+        'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
+        { value: 'Collection', title: 'By Collection', url: '#' },
+        { value: 'Material', title: 'By Material', url: '#' },
+        ]
+    },
+    'GoldCoins':{
+        'menuOne':
+        [{ value: 'kammal', title: 'kammal', url: '#kammal' },
+        { value: 'pendants', title: 'Pendants', url: '#' },
+        { value: 'rings', title: 'Rings', url: '#' },
+        { value: 'nosepins', title: 'Nose pins', url: '#' },
+        { value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#' },
+        ],
+        'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
+        { value: 'Collection', title: 'By Collection', url: '#' },
+        { value: 'Material', title: 'By Material', url: '#' },
+        ]
+    },
+    'Gifts':{
+        'menuOne':
+        [{ value: 'koluse', title: 'koluse', url: '#koluse' },
+        { value: 'pendants', title: 'Pendants', url: '#' },
+        { value: 'rings', title: 'Rings', url: '#' },
+        { value: 'nosepins', title: 'Nose pins', url: '#' },
+        { value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#' },
+        ],
+        'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
+        { value: 'Collection', title: 'By Collection', url: '#' },
+        { value: 'Material', title: 'By Material', url: '#' },
+        ]
+    },
+    'Collection':{
+        'menuOne':
+        [{ value: 'valayal', title: 'valayal', url: '#valayal' },
+        { value: 'pendants', title: 'Pendants', url: '#' },
+        { value: 'rings', title: 'Rings', url: '#' },
+        { value: 'nosepins', title: 'Nose pins', url: '#' },
+        { value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#' },
+        ],
+        'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
+        { value: 'Collection', title: 'By Collection', url: '#' },
+        { value: 'Material', title: 'By Material', url: '#' },
+        ]
+    }    
+    
+}
 export const earings = {
     images: [
         {
@@ -179,6 +247,90 @@ export const banglesbracelets = {
         },
     ]
 }
+export const valayal = {
+    images: [
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/round-bangles.jpg',
+            title: 'Breakfast',
+            author: 'jill111',
+        },
+        {
+            img: "https://assets-cdn.stylori.com/images/megamenu/line-bracelets.jpg",
+            title: 'Tasty burger',
+            author: 'director90',
+        },
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/oval-bangles.jpg',
+            title: 'Tasty burger',
+            author: 'director90',
+        },
+
+
+    ],
+    sideBanner: [
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/stylori_menu_banner01.jpg',
+            title: 'Breakfast',
+            author: 'jill111',
+        },
+    ]
+}
+export const kammal = {
+    images: [
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/round-bangles.jpg',
+            title: 'Breakfast',
+            author: 'jill111',
+        },
+        {
+            img: "https://assets-cdn.stylori.com/images/megamenu/line-bracelets.jpg",
+            title: 'Tasty burger',
+            author: 'director90',
+        },
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/oval-bangles.jpg',
+            title: 'Tasty burger',
+            author: 'director90',
+        },
+
+
+    ],
+    sideBanner: [
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/stylori_menu_banner01.jpg',
+            title: 'Breakfast',
+            author: 'jill111',
+        },
+    ]
+}
+export const koluse = {
+    images: [
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/round-bangles.jpg',
+            title: 'Breakfast',
+            author: 'jill111',
+        },
+        {
+            img: "https://assets-cdn.stylori.com/images/megamenu/line-bracelets.jpg",
+            title: 'Tasty burger',
+            author: 'director90',
+        },
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/oval-bangles.jpg',
+            title: 'Tasty burger',
+            author: 'director90',
+        },
+
+
+    ],
+    sideBanner: [
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/stylori_menu_banner01.jpg',
+            title: 'Breakfast',
+            author: 'jill111',
+        },
+    ]
+}
 export const Price = [{
     headers:'Under Rs 5000',
     view:'view all',
@@ -282,6 +434,6 @@ export const Material =  [{
     ]
 }
 ]
-export default { earings, pendants, rings, nosepins, banglesbracelets, Price, Collection, Material }
+export default { menuLists, earings, pendants, rings, nosepins, banglesbracelets, Price, Collection, Material, valayal, kammal, koluse }
 
 
