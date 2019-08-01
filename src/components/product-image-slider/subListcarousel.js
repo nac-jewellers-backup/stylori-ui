@@ -79,7 +79,7 @@ class Sublistcarousel extends React.Component {
                 </div>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails >
-                <div style={{ width: "100%", textAlign: "center" }}>
+                <div style={{ width: "100%"}}>
                   <Slideshow class="subslider-carousel" hoverlist={fade.fadeImagessublist}
                     dataCarousel={mobiledataCarousel} hover={true}>
                   </Slideshow>
@@ -87,7 +87,8 @@ class Sublistcarousel extends React.Component {
 
               </ExpansionPanelDetails>
             </ExpansionPanel>
-          </Container>    </Hidden>
+          </Container>
+        </Hidden>
       </div>
     );
   }

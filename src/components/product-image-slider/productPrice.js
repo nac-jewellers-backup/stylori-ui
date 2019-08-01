@@ -22,11 +22,15 @@ const dataCarousel = {
     fade: true,
     arrows: true
 }
-const render = () => {
+const mobilecarousel = () => {
 
     return (
         <Container>
-            <Slideshow class='responseve-carousel' imgClass='responseve-carousel-img' fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
+            <div style={{textAlign:"center" , height:'200px',width:"auto"}}>
+            <Slideshow class='responseve-carousel' imgClass='responseve-carousel-img'
+             fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
+            </div>
+          
         </Container>
     );
 };
@@ -66,17 +70,18 @@ const Productprice = () => {
                     <hr class="bottom-line product-inform-ation"></hr>
                 </Grid>
                 <Hidden mdUp>
-                    {render()}
+                    {mobilecarousel()}
                 </Hidden>
                 <div className='price-info'>
                     <Grid container spacing={12}>
-                        <Grid item xs={4} lg={1} className='discount-container'>
+                        <Grid item xs={4} lg={2} className='discount-container'>
                             {/* {val.offerPrice} */} 955.4944
                     </Grid>
-                        <Grid item lg={5} xs={6} className="selling-price"><i class="fa fa-rupee"></i> &nbsp;
+                        <Grid item lg={5} xs={8} className="selling-price"><i class="fa fa-rupee"></i> &nbsp;
                     {/* {val.save} */} 98.8989
-                    </Grid>
-                        <Grid item lg={8} XS={8} sm={8} className='discount'> <span >25% FLAT OFF</span></Grid>
+                    </Grid></Grid>
+                    <Grid container spacing={12}>
+                        <Grid item lg={12} xs={5} > <span className='discount'>25% FLAT OFF</span></Grid>
                     </Grid>
                     <hr class="bottom-line product-inform-ation"></hr>
                 </div>
@@ -115,7 +120,7 @@ class ProductPrice extends Component {
     }
 }
 ProductPrice.propTypes = {
-    render: PropTypes.func,
+    mobilecarousel: PropTypes.func,
     Productprice: PropTypes.func,
 };
 export default ProductPrice;
