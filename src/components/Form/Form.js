@@ -93,68 +93,8 @@ export class Form extends React.Component {
   renderForm = () => {
     return (
       <>
-        <Input
-          type="email"
-          name="mailId"
-          error={Boolean(this.state.errors.mailId)}
-          helperText={this.state.errors.mailId}
-          placeholder="your-id@email.com"
-          required
-        />
-        <Input
-          type="email"
-          name="confirmMail"
-          error={Boolean(this.state.errors.confirmMail)}
-          helperText={this.state.errors.confirmMail}
-          pattern={this.state.values.mailId}
-          placeholder="your-id@email.com"
-          required
-        />
-        <Input
-          isNumber
-          pattern={/[0-9]{10}/}
-          maxLength={10}
-          minLength={10}
-          name="mobileNo"
-          type="text"
-          error={Boolean(this.state.errors.mobileNo)}
-          helperText={this.state.errors.mobileNo}
-          placeholder="9094194157"
-          required
-        />
-        <Input
-          type={!this.state.show.password && "password"}
-          name="password"
-          error={Boolean(this.state.errors.password)}
-          helperText={this.state.errors.password}
-          placeholder="Your password"
-          required
-        />
-        <Input
-          type={!this.state.show.confirmPassword && "password"}
-          name="confirmPassword"
-          error={Boolean(this.state.errors.confirmPassword)}
-          helperText={this.state.errors.confirmPassword}
-          pattern={this.state.values.password}
-          placeholder="Confirm password"
-          required
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={() => {
-                  let { show } = this.state;
-                  show = { ...show, password: !this.state.show.password };
-                  this.setState({ show });
-                }}
-              >
-                {this.state.show.password ? <Visiblity /> : <VisibilityOff />}
-              </IconButton>
-            </InputAdornment>
-          }
-        />
-        <button type="submit">Signup</button>
-      </>
+       {this.props.inputFields}
+       </>
     );
   };
 
