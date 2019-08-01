@@ -4,7 +4,7 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
+import FormHelperText from "@material-ui/core/FormHelperText";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,10 +29,15 @@ const useStyles = makeStyles(theme => ({
 
 export default function RadioBtn(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState("Sort By");
+  const [value, setValue] = React.useState({
+    sortTitle:"Sort By",
+    values:'',
+    helperText:false
+    }
+  );
 
   function handleChange(event) {
-    setValue(event.target.value);
+    setValue({...value, values:event.target.value, helperText: !Boolean((event.target.value != null && event.target.value !== ""))});
   }
   console.log(value);
   return (
@@ -42,14 +47,15 @@ export default function RadioBtn(props) {
           aria-label="Gender"
           name="gender1"
           className={classes.group}
-          value={value}
+          value={value.values}
           onChange={handleChange}
         >
-          {props.radioValues.map(value => (
-            <FormControlLabel value={value} control={<Radio color="primary" 
-            className={classes.radio} />} label={value} />
+          {props.radioValues.map(data => (
+            <FormControlLabel value={data} control={<Radio color="primary" 
+            className={classes.radio} />} label={data} />
           ))}
         </RadioGroup>
+        {value.helperText && <FormHelperText><b style={{ color: 'red' }}>Required</b></FormHelperText>}
       </FormControl>
     </div>
   );
