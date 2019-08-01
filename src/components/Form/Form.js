@@ -103,7 +103,11 @@ export class Form extends React.Component {
   renderForm = () => {
     return (
       <>
+<<<<<<< HEAD
        {this.props.children(this.state.errorvalid ,this.handleInvalid,this.errors,this.onchnagevalue)}
+=======
+       {this.props.children}
+>>>>>>> 148ec4d5a7f7ca895af4c9d6e6580a259ccd2281
        </>
     );
   };

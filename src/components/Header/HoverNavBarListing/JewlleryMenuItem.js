@@ -1,12 +1,12 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
-import MenuListItem from '../../components/Header/HoverNavBarListing/MenuList';
-import ImageGridList from '../../components/Header/HoverNavBarListing/HoverImagesGrid'
+import MenuListItem from './MenuList';
+import ImageGridList from './HoverImagesGrid'
 import Collapse from '@material-ui/core/Collapse';
 import Grid from '@material-ui/core/Grid';
-import HoverTableGrid from '../../components/Header/HoverNavBarListing/HoverTableGrid';
-import HoverImagesFullGrid from '../../components/Header/HoverNavBarListing/HoverImagesFullGrid';
-import tabdata from '../../components/Header/HoverNavBarListing/tileData';
+import HoverTableGrid from './HoverTableGrid';
+import HoverImagesFullGrid from './HoverImagesFullGrid';
+import tabdata from './tileData';
 
 function JewelleryMenuItem(props) {
   const [activetab, setActivetab] = React.useState("earings");
@@ -18,18 +18,18 @@ function JewelleryMenuItem(props) {
         <Paper style={{ position: "absolute", zIndex: "3", top: '148px', left: '190px', width: '76vw' }} className="animations"  onMouseLeave={onMouseLeave} >
           <Grid container>
             <Grid container item xs={3}>
-              <MenuListItem handleMouseOver={val => setActivetab(val)} activetab={activetab} />
+              <MenuListItem handleMouseOver={val => setActivetab(val)} activetab={activetab} listHoverItem={props.listHoverItem} />
             </Grid>
             {
               (activetab !== 'Price' && activetab !== 'Collection' && activetab !== 'Material' && activetab !== 'Collection') &&
 
               <Grid item >
-                <ImageGridList activetab={activetab} tabdata={tabdata} />
+                <ImageGridList activetab={activetab} tabdata={tabdata} listHoverItem={props.listHoverItem}/>
               </Grid>
             }
             {(activetab === 'Price' || activetab === 'Material') &&
               <Grid item xs={6}>
-                <HoverTableGrid activetab={activetab} tabdata={tabdata} />
+                <HoverTableGrid activetab={activetab} tabdata={tabdata} listHoverItem={props.listHoverItem}/>
               </Grid>
             }
 
