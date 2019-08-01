@@ -22,7 +22,8 @@
     "react-swipeable-views": "^0.13.3",
     "react-swipeable-views-utils": "^0.13.3",
     "semantic-ui-react": "^0.87.3",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "yup": "^0.27.0"
   },
   "homepage": ".",
   "scripts": {
