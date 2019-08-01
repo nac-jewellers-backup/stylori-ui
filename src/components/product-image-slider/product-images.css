@@ -512,10 +512,7 @@
         border: 1px solid #ccc;
         background-color: #fff;
         width: 100% !important;
-        margin-left: 8% !important;
-        height: 170px !important;
         text-align: center !important;
-        overflow: hidden;
     }
 
     .subslider-carousel-img {

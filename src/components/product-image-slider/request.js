@@ -1,12 +1,18 @@
+import {
+    Grid,
+    Button,
+    Hidden,
+    Container,
+    ExpansionPanelDetails,
+    ExpansionPanelSummary,
+    ExpansionPanel,
+    Typography,
+    ExpandMoreIcon
+} from '@material-ui/core';
+import PropTypes from 'prop-types';
 import React from 'react';
 import './product-images.css'
 import TextField from '@material-ui/core/TextField';
-import { Grid, Button, Hidden, Container } from '@material-ui/core';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import { Typography } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 const Requestform = () => {
     return (
         <div>
@@ -111,6 +117,9 @@ class Request extends React.Component {
             </div>
         )
     }
-
 }
+Request.propTypes = {
+    render: PropTypes.func,
+    Requestform: PropTypes.func,
+};
 export default Request;

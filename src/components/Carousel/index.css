@@ -18,7 +18,9 @@
 
 
 .hovereffect {
-  width: 85% !important;
+  width: 90% !important;
+  margin-left: 5% !important;
+  margin-right: 5% !important;
   height: 170px !important;
   float: left;
   overflow: hidden;

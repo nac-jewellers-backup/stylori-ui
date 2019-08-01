@@ -1,12 +1,14 @@
+import {
+    Button,
+    TextField,
+    Hidden,
+    Container,
+    Grid
+} from '@material-ui/core';
 import React from "react";
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
 import './product-images.css'
-import { Hidden } from '@material-ui/core';
 import ProductPrice from './productPrice'
 import PriceTabs from "./priceTabs";
-import Container from '@material-ui/core/Container';
 import buy from './producthoverData'
 import PropTypes from 'prop-types';
 const Buydetails = () => {
@@ -52,7 +54,7 @@ const Buydetails = () => {
                             </Grid>
                             <Grid item xs={5} className="content">
                                 <b className="ships-by">
-                                    <span ><i style={{fontSize:"20px"}} class="fa fa-truck"></i>&nbsp;&nbsp;{val.shipby}</span>
+                                    <span ><i style={{ fontSize: "20px" }} class="fa fa-truck"></i>&nbsp;&nbsp;{val.shipby}</span>
                                 </b>
                             </Grid>
                         </Grid>
@@ -70,8 +72,6 @@ class PriceBuynow extends React.Component {
                 <Hidden smDown>
                     {Buydetails()}
                 </Hidden>
-
-
 
                 <Hidden mdUp>
                     <Container>
@@ -92,7 +92,6 @@ class PriceBuynow extends React.Component {
                                     <hr class="bottom-line product-inform-ation"></hr>
                                 </Grid>
                                 <PriceTabs />
-                                <hr class="bottom-line product-inform-ation"></hr>
                                 <Grid container spacing={12}>
                                     <Grid item xs={8}>
                                         <input
@@ -112,6 +111,6 @@ class PriceBuynow extends React.Component {
     }
 }
 PriceBuynow.propTypes = {
-    Buydetails: PropTypes.func.isRequired,
+    Buydetails: PropTypes.func,
 };
 export default PriceBuynow;

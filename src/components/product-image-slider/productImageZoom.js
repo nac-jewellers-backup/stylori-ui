@@ -1,9 +1,15 @@
-import React, { Component } from 'react';
-import './product-images.css'
-import { Grid, Hidden, Container, Button } from '@material-ui/core';
+import {
+  Grid,
+  Hidden,
+  Container,
+  Button
+} from '@material-ui/core';
 import Slideshow from '../Carousel/carosul'
 import TB from './producthoverData'
 import T from './producthoverData';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import './product-images.css'
 
 class ProductImageZoom extends Component {
   constructor(props) {
@@ -36,7 +42,7 @@ class ProductImageZoom extends Component {
     var img = document.getElementById("imgZoom");
     var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
     var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
-    element.style.backgroundPosition = (-posX * 2) + "px " + (-posY * 2) + "px";
+    element.style.backgroundPosition = (-posX + 100) + "px " + (-posY + 100) + "px";
 
 
   }
@@ -78,7 +84,7 @@ class ProductImageZoom extends Component {
                 </div>
               </Grid>
               <Grid item xs={10}>
-                <div  >
+                <div>
                   <div className="imagecard" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
                     <img id="imgZoom" width="100%" height="100%"
                       src={showimage} />
@@ -97,7 +103,8 @@ class ProductImageZoom extends Component {
                         </Grid>
                       ))}
                     </Grid>
-                  </div> </div>
+                  </div>
+                </div>
               </Grid>
             </Grid>
           </Hidden>
@@ -108,5 +115,12 @@ class ProductImageZoom extends Component {
     )
   }
 }
-
+ProductImageZoom.propTypes = {
+  next: PropTypes.func,
+  previous: PropTypes.func,
+  handleMouseMove: PropTypes.func,
+  zoomIn: PropTypes.func,
+  zoomOut: PropTypes.func,
+  getimage: PropTypes.func,
+};
 export default ProductImageZoom;

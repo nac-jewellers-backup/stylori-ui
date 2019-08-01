@@ -1,10 +1,15 @@
+import {
+    Container,
+    Hidden,
+    ExpansionPanel,
+    ExpansionPanelSummary,
+    ExpansionPanelDetails,
+    Typography,
+
+} from '@material-ui/core';
 import React from "react";
-import { Container, Hidden } from '@material-ui/core';
 import './product-images.css'
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
 
 class CustomerReviews extends React.Component {
     state = {
@@ -36,13 +41,13 @@ class CustomerReviews extends React.Component {
                 <Hidden mdUp>
                     <Container>
                         <ExpansionPanel
-                        style={{boxShadow:"none"}}
+                            style={{ boxShadow: "none" }}
                             square
                             expanded={expanded === 'panel1'}
                             onChange={this.handleChange('panel1')}
                         >
                             <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
-                                        <i class="fa fa-sort-up" ></i></span>}>
+                                <i class="fa fa-sort-up" ></i></span>}>
                                 <div style={{ width: "100%" }} >
                                     <Typography className='subtabs-smrt'>You recently viewed</Typography>
                                     <hr class="bottom-line border-line-"></hr>
@@ -59,4 +64,7 @@ class CustomerReviews extends React.Component {
         );
     }
 }
+CustomerReviews.propTypes = {
+    handleChange: PropTypes.func,
+};
 export default CustomerReviews;
