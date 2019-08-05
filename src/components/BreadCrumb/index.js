@@ -1,10 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Link from '@material-ui/core/Link';
+import {Paper, Breadcrumbs, Link, Container} from '@material-ui/core/';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles(theme => ({
   root: {

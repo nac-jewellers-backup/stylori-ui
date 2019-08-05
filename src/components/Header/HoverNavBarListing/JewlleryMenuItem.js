@@ -1,9 +1,8 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
+import {Paper, Grid} from '@material-ui/core';
 import MenuListItem from './MenuList';
 import ImageGridList from './HoverImagesGrid'
-import Collapse from '@material-ui/core/Collapse';
-import Grid from '@material-ui/core/Grid';
+import PropTypes from 'prop-types';
 import HoverTableGrid from './HoverTableGrid';
 import HoverImagesFullGrid from './HoverImagesFullGrid';
 import tabdata from './tileData';
@@ -14,20 +13,20 @@ function JewelleryMenuItem(props) {
   const { onMouseLeave, onMouseOver } = props;
 
   return (
-    <Paper style={{ position: "relative", left: '160px', width: '76vw' }} className="animations"  onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} >
+    <Paper style={{ position: "relative", left: '160px', width: '76vw' }} className="animations" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} >
       <Grid container>
         <Grid container item xs={3}>
-          <MenuListItem listHoverItem={props.listHoverItem} handleMouseOver={val => setActivetab(val)} activetab={activetab}  />
+          <MenuListItem listHoverItem={props.listHoverItem} handleMouseOver={val => setActivetab(val)} activetab={activetab} />
         </Grid>
         {
           (activetab !== 'Price' && activetab !== 'Collection' && activetab !== 'Material' && activetab !== 'Collection') &&
           <Grid item >
-            <ImageGridList activetab={activetab} tabdata={tabdata}  />
+            <ImageGridList activetab={activetab} tabdata={tabdata} />
           </Grid>
         }
         {(activetab === 'Price' || activetab === 'Material') &&
           <Grid item xs={6}>
-            <HoverTableGrid activetab={activetab} tabdata={tabdata}  />
+            <HoverTableGrid activetab={activetab} tabdata={tabdata} />
           </Grid>
         }
         {(activetab === 'Collection') &&
@@ -39,4 +38,12 @@ function JewelleryMenuItem(props) {
     </Paper>
   );
 }
+
 export default JewelleryMenuItem;
+
+JewelleryMenuItem.propTypes = {
+  onMouseOver: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  listHoverItem: PropTypes.string,
+
+}

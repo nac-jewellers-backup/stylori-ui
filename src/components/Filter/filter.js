@@ -1,32 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import Slide from '@material-ui/core/Slide';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import Pose from 'react-pose';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
+import {
+  Slide, AppBar, Toolbar, List, Typography, Divider, IconButton, ListItem,
+  Grid, TextField, ListItemText, Button, Checkbox, Paper, Hidden
+}
+  from '@material-ui/core';
+import { ExpandLess, ExpandMore, } from '@material-ui/icons';
 import filterdatas from './Filterdata';
-import ListItemText from '@material-ui/core/ListItemText';
-import { Button, Checkbox, Paper, Collapse } from '@material-ui/core';
 import './filter.css';
 import ProductLayout from '../ProductCard/ProductLayout';
 import FilterHeader from './FilterHeader';
-import { Hidden } from '@material-ui/core';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CardRadioButton from '../InputComponents/RadioButton/index'
@@ -222,21 +206,7 @@ class PersistentDrawerLeft extends React.Component {
                     }}
                   >
 
-                    {/* <div style={{ width: "240px" }}>
-                <IconButton onClick={this.handleDrawerClose}
-                  style={{ float: 'right' }}>
-                  <i style={{ color: "#394578", margin: "45%" }} class="fa fa-times"></i>
-                </IconButton >
-                <IconButton onClick={this.handleDrawerClose}>
-                  <ChevronRightIcon className={`${classes.colorMain}`} />
-                  <Typography color="inherit"
-                    onClick={this.handleDrawerClose} noWrap
-                    className={` fil-drawer-head ${classes.colorMain}`}
-                  >
-                    Filter By
-            </Typography>
-                </IconButton>
-              </div> */}
+
                     <Divider />
                     <List className="fil-main-list">
                       <div style={{ margin: "5px" }}>
@@ -420,6 +390,7 @@ class PersistentDrawerLeft extends React.Component {
 PersistentDrawerLeft.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
+  filterdatas: PropTypes.object.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(PersistentDrawerLeft);

@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './index.css'
 import '../product-image-slider/product-images.css'
+import PropTypes from 'prop-types';
 class Slideshow extends React.Component {
   constructor(props) {
     super(props)
@@ -63,3 +64,10 @@ class Slideshow extends React.Component {
 }
 
 export default Slideshow;
+
+Slideshow.propTypes = {
+  fadeImages: PropTypes.object,
+  hoverlist: PropTypes.object,
+  dataCarousel:PropTypes.object,
+
+}
