@@ -20,7 +20,21 @@ const styles = theme => ({
     },
     colorMainBorder:{
 border:`1px solid ${theme.palette.secondary.main}`
-    }
+    },
+    listHover:{
+        "&:hover":{
+            borderLeft: `3px solid ${theme.palette.secondary.dark}`,
+            color:theme.palette.secondary.main,
+            cursor: 'pointer',
+        }
+    },
+    listHovers:{
+        "&:active":{
+            borderLeft: `3px solid ${theme.palette.secondary.dark}`,
+            color:theme.palette.secondary.main,
+            cursor: 'pointer',
+        }
+    },
 });
 // const menuList =['Earrings','Pendants','Rings','Nose pins',' Bangles & Bracelets'];
 
@@ -33,19 +47,22 @@ class MenuListItem extends Component {
         super(props)
     }
    render() {
-      
     const { classes} = this.props;
        return (
            <div>
                <List component="nav" className="ListColor"  className={`${classes.colorMain}`}>
 
                    {
-                       menuList.menuLists[this.props.listHoverItem]['menuOne'].map(menuList => (
-                           <ListItem component="li"   className={`ListColor ${classes.colorMain}`}  onMouseOver={() => this.props.handleMouseOver(menuList.value)}
+(menuList.menuLists[this.props.listHoverItem]!==undefined)&&
+
+                        (menuList.menuLists[this.props.listHoverItem]['menuOne']).map(menuList =>
+                        (
+                            
+                           <ListItem component="li"   className={`ListColor ${classes.listHover} ${classes.colorMain}`}  onMouseOver={() => this.props.handleMouseOver(menuList.value)}
                                onClick={() => { window.location.href = '/' + menuList.url }} 
                            >
 
-                               <ListItemText variant >
+                               <ListItemText variant >  
 
                                    {menuList.title}
                                </ListItemText>
@@ -56,8 +73,9 @@ class MenuListItem extends Component {
                <hr className={`${classes.colorMainBorder}`} />
                <List component="nav" className={`ListColor ${classes.colorMain}`} >
                    {
+                       (menuList.menuLists[this.props.listHoverItem]!==undefined)&&
                       menuList.menuLists[this.props.listHoverItem]['menuTwo'].map(menuListFilter => (
-                           <ListItem component="li" className={`ListColor ${classes.colorMain}`}
+                           <ListItem component="li" className={`ListColor ${classes.listHover} ${classes.colorMain}`}
                            onClick={() => { window.location.href = '/' + menuListFilter.url }}
                            onMouseOver={() => this.props.handleMouseOver(menuListFilter.value)}>
 

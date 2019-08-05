@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import Grid from '@material-ui/core/Grid';
+import './../header.css'
 
 const useStyles = makeStyles(theme => ({
    root: {
@@ -16,23 +17,40 @@ const useStyles = makeStyles(theme => ({
        width: 500,
        height: 450,
    },
+   imgTextColor:{
+       color:theme.palette.primary.main
+   }
 }));
 
 
 function ImageGridList(props) {
 
    const classes = useStyles();
-
    return (
        <div className={classes.root}>
-           <GridList cellHeight={160} className={classes.gridList} cols={3}>
+           <div>
+           <GridList cellHeight={170} className={classes.gridList} cols={3}>
                {props.tabdata[props.activetab].images.map(tile => (
-                   <GridListTile key={tile.img} cols={tile.cols || 1} >
-                       <img src={tile.img} cols={tile.cols || 1} style={{ width: '120px', height: '120px' }} alt="img" />
+
+                   <GridListTile  key={tile.img} cols={tile.cols || 1} >
+            <img src={tile.img}  className={'shine menuListHoverDiv ' } cols={tile.cols || 1}  style={{ width: '120px', height: '120px' }} alt="" />
+            <Grid container justify="center">
+                <Grid item className={classes.imgTextColor}>
+                    {/* {tile.title} */}
+                    Worth things
+                </Grid>
+            </Grid>
                    </GridListTile>
 
+
                ))}
+            
+           
            </GridList>
+           <span style={{color: '#f36e23',position:'relative'}}>
+                View All
+            </span>
+            </div>
            <Grid container xs={3}>
                {props.tabdata[props.activetab].sideBanner.map(tile => (
                    <Grid item>

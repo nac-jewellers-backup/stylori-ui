@@ -25,7 +25,7 @@ export const menuLists ={
         { value: 'Material', title: 'By Material', url: '#' },
         ]
     },
-    'GoldCoins':{
+    'Gold Coins':{
         'menuOne':
         [{ value: 'kammal', title: 'kammal', url: '#kammal' },
         { value: 'pendants', title: 'Pendants', url: '#' },
@@ -435,5 +435,3 @@ export const Material =  [{
 }
 ]
 export default { menuLists, earings, pendants, rings, nosepins, banglesbracelets, Price, Collection, Material, valayal, kammal, koluse }
-
-

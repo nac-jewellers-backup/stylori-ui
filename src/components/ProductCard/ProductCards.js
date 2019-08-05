@@ -4,7 +4,7 @@ import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-
+import './productCard.css'
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { fontWeight } from "@material-ui/system";
@@ -103,10 +103,10 @@ export default function ProductCards(props) {
   });
 
   return (
-    <Card className={classes.card} >
+    <Card className={` ${classes.card}`} >
 
       <CardHeader
-        className={classes.header}
+        className={`${props.data.image? '' : 'shine imgDiv'} classes.header`}
         avatar={
           <IconButton aria-label="Settings" className={classes.avatar}>
             <i style={{ fontSize: "18px", }} className={`fa ${classes.colorLight}`} onClick={handleClick('truck')}>
@@ -131,11 +131,11 @@ export default function ProductCards(props) {
           onMouseOut={() => {
             setCardState({ ...cardstate, hovered: !cardstate.hovered });
           }}
-          className={classes.media}
-
-          image={
-            props.data.image[cardstate.hovered ? "hoverImage" : "placeImage"]
-          }
+          className={`${props.data.image? 'shine imgDiv' :''}`}
+            image={
+              props.data.image[cardstate.hovered ? "hoverImage" : "placeImage"]
+            }
+            alt=""
           width='100%'
           height='auto'
           title={props.data.title}
@@ -159,6 +159,7 @@ export default function ProductCards(props) {
             variant="caption"
             color="textSecondary"
             component="div"
+            className={`${props.data.title!=null & props.data.title!==''? '' : 'shine'}`}
             style={{ paddingBottom: "5px", textAlign: "left" }}
           >
             {/* Dazzling Gold Bloom Diamond Pendant */}
@@ -169,8 +170,8 @@ export default function ProductCards(props) {
             <Typography
               variant="caption"
               color="textSecondary"
+              className={`${props.data.price!=null & props.data.price!==''? '' : 'shine'} ${classes.deletePrice}`}
               component="p"
-              className={`${classes.deletePrice}`}
               style={{ display: "flex", alignItems: "center" }}
             >
               <del>₹&nbsp;{props.data.price}</del>
@@ -179,7 +180,7 @@ export default function ProductCards(props) {
 
               variant="h6"
               component="h6"
-              className={`${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
+              className={`${props.data.offerPrice!=null & props.data.offerPrice!==''? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
 
             >
               ₹&nbsp;{props.data.offerPrice}
@@ -200,7 +201,7 @@ export default function ProductCards(props) {
               variant="caption"
               color="textSecondary"
               component="p"
-              className={`${classes.colorMain} ${classes.offerPricePadding} `}
+              className={`${props.data.save!=null & props.data.save!==''? '' : 'shine'} ${classes.colorMain} ${classes.offerPricePadding} `}
             >
               ₹ {props.data.save}
             </Typography>

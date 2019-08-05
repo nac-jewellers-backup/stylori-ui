@@ -12,10 +12,10 @@ class Slideshow extends React.Component {
   renderFadeImages = () => {
     let { video } = this.props;
     return this.props.fadeImages ? this.props.fadeImages.map(imgs => (
-      <div className={this.props.class ? this.props.class : ''} onClick={e => this.props.getmsg ? this.props.getmsg(e) : ''}>
+      <div className={` ${this.props.class ? this.props.class : ''}`} onClick={e => this.props.getmsg ? this.props.getmsg(e) : ''}>
         {video ?
-          <video className={this.props.imgClass ? this.props.imgClass : ''} src={imgs} />
-          : <img className={this.props.imgClass ? this.props.imgClass : ''} src={imgs} />}
+          <video className={`${imgs?'shine imgDiv2':''} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs} />
+          : <img className={`${imgs?'shine imgDiv2':''} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs} alt=""/>}
       </div>
     )) : ''
   }

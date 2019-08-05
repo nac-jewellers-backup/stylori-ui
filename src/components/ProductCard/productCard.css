@@ -1,23 +1,36 @@
-.shine{
+
+  @keyframes placeHolderShimmer {
+    0% {
+      background-position: -490px 0;
+    }
+    100% {
+      background-position: 490px 0;
+    }
+   }
+   .shine{
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
     background: #f6f7f8;
-    background-image: linear-gradient(
-      to right,
+
+    background-image: -webkit-linear-gradient(
+      left,
       #f6f7f8 0%,
       #edeef1 20%,
       #f6f7f8 40%,
       #f6f7f8 100%
     );
-    background-repeat: no-repeat;
-    background-size: 800px 104px;
-    display: inline-block;
+    background-size: 980px 898px;
+    /* height: 898px; */
     position: relative;
-    -webkit-animation-duration: 1s !important;
-    -webkit-animation-fill-mode: forwards !important;
-    -webkit-animation-iteration-count: infinite !important;
-    -webkit-animation-name: placeholderShimmer !important;
-    -webkit-animation-timing-function: linear !important;
-  }
-  
+   }
+   .imgDiv{
+     width:200px;
+     height:200px;
+     border:none;
+   }
   .price {
     height: 20px;
     width: 100px;
@@ -28,17 +41,7 @@
     width: 100%;
     word-wrap: break-word;
   }
-  
-  @-webkit-keyframes placeholderShimmer {
-    0% {
-      background-position: -468px 0;
-    }
-  
-    100% {
-      background-position: 468px 0;
-    }
-  }
-  
+
   .card-control {
     z-index: 2;
     position: absolute;

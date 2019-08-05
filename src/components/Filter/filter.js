@@ -15,6 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
+import Pose from 'react-pose';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid';
@@ -30,6 +31,7 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CardRadioButton from '../InputComponents/RadioButton/index'
 const drawerWidth = 280;
+
 
 const styles = theme => ({
   root: {
@@ -114,7 +116,7 @@ class PersistentDrawerLeft extends React.Component {
       checked: {},
       selected: '',
       filtercheck: '',
-      productDisplay:true,
+      productDisplay: true,
       check: false,
       chipData: [
         { key: '', label: '' },
@@ -147,14 +149,14 @@ class PersistentDrawerLeft extends React.Component {
 
   };
   handleDrawerOpenMobile = () => {
-    this.setState({ openMobile: false,productDisplay:false });
+    this.setState({ openMobile: false, productDisplay: false });
     this.setState({ CardRadio: false });
 
 
 
   };
   handleDrawerCloseMobile = () => {
-    this.setState({ openMobile: true,productDisplay:true });
+    this.setState({ openMobile: true, productDisplay: true });
   };
   handleDrawerClose = () => {
     this.setState({ open: false });
@@ -307,20 +309,20 @@ class PersistentDrawerLeft extends React.Component {
 
           </Hidden>
           {
-            this.state.productDisplay&&
-          <div
-            style={{ width: check ? '80%' : '100%' }}
+            this.state.productDisplay &&
+            <div
+              style={{ width: check ? '80%' : '100%' }}
 
-          >
-            <ProductLayout />
+            >
+              <ProductLayout />
 
-          </div>}
+            </div>}
         </div>
 
 
         <Hidden mdUp>
-          <div style={{ top: '60px',position:'absolute',backgroundColor:'white',width:'100%' }}>
-            <div style={{ height: "23px", padding: "9px", borderBottom: "1px solid #e3e3e3", display: openMobile ? 'none' : 'block', position:'sticky',top:'0px' }}
+          <div style={{ top: '60px', position: 'absolute', backgroundColor: 'white', width: '100%' }}>
+            <div style={{ height: "23px", padding: "9px", borderBottom: "1px solid #e3e3e3", display: openMobile ? 'none' : 'block', position: 'sticky', top: '0px' }}
               className={`${classes.colorMain}`}
             >
               <a onClick={this.handleDrawerCloseMobile}>
@@ -330,8 +332,8 @@ class PersistentDrawerLeft extends React.Component {
 
             </div>
 
-            <Grid container spacing={2} xs={12} className="p" style={{ overflow: 'scroll',height:'100%' }}>
-              <Grid item xs={6} style={{ display: openMobile ? 'none' : 'block', backgroundColor: "#F2F2F2",overflow: 'scroll',height:'100vh' }}>
+            <Grid container spacing={2} xs={12} className="p" style={{ overflow: 'scroll', height: '100%' }}>
+              <Grid item xs={6} style={{ display: openMobile ? 'none' : 'block', backgroundColor: "#F2F2F2", overflow: 'scroll', height: '100vh' }}>
                 <List className="mbl-filter-list">
                   {filterdatas.filter.map(row => (
                     <ListItem key={row} className=""
@@ -350,7 +352,7 @@ class PersistentDrawerLeft extends React.Component {
               </Grid>
               {
                 this.state.filtercheck !== '' &&
-                <Grid item xs={6} style={{ display: openMobile ? 'none' : 'block',overflow: 'scroll',height:'100vh' }}>
+                <Grid item xs={6} style={{ display: openMobile ? 'none' : 'block', overflow: 'scroll', height: '100vh' }}>
                   {filterdatas.filter1[this.state.filtercheck].map(row => (
                     <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
                       <Checkbox
@@ -387,7 +389,7 @@ class PersistentDrawerLeft extends React.Component {
 
                 <div style={{ flexGrow: "2" }} />
 
-                <IconButton edge="end" color="inherit" onClick={() => this.setState({ CardRadio: !this.state.CardRadio,productDisplay:!this.state.productDisplay })} >
+                <IconButton edge="end" color="inherit" onClick={() => this.setState({ CardRadio: !this.state.CardRadio, productDisplay: !this.state.productDisplay })} >
                   <Typography variant=""
                     className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
                     Sort
@@ -412,6 +414,8 @@ class PersistentDrawerLeft extends React.Component {
     );
   }
 }
+
+
 
 PersistentDrawerLeft.propTypes = {
   classes: PropTypes.object.isRequired,
