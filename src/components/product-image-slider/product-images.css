@@ -90,7 +90,8 @@
         font-size: 22px;
         margin-bottom: 2px;
         color: #ed1165;
-        line-height: 1.42857143
+        line-height: 1.42857143;
+        text-align: left !important; 
     }
 
     .discount {
@@ -99,9 +100,10 @@
         margin-top: 6px;
         font-size: 12px !important;
         padding: 3px 10px !important;
-        width: 90%;
+        width: 200px !important;
         margin-top: 1% !important;
         margin-bottom: 1% !important;
+        float: left !important;
     }
 
     /*price tabs*/
@@ -268,7 +270,7 @@
     .request-text,
     .MuiOutlinedInput-input {
         display: block;
-        width: 95%;
+        width: 95% !important;
         height: 42px !important;
         padding: 1.5px 14px !important;
         font-size: 13px;
@@ -449,8 +451,8 @@
     .MuiExpansionPanelSummary-root.Mui-expanded,
     .MuiExpansionPanelSummary-root,
     .MuiExpansionPanel-root:before {
-        min-height: 45px !important;
-        height: 45px !important;
+        min-height: 55px !important;
+        height: 5px !important; 
         padding: 0 !important;
         background: none !important;
     }
@@ -486,7 +488,7 @@
         height: 475px !important;
         /* background-image: url('https://storage.googleapis.com/media.nacjewellers.com/resources/user_media/Muhurtham-Banner.jpg'); */
         background-repeat: no-repeat;
-        left: 618px !important;
+        left: 46.1% !important;
         margin-top: -477px !important;
         background-color: #fff !important;
         cursor: crosshair;
@@ -565,13 +567,13 @@
 
     .responseve-carousel {
         width: 100% !important;
-        height: 100% !important;
-        text-align: center;
+        height: 200px !important;
+        text-align: center !important;
     }
 
     .responseve-carousel-img {
         height: 100% !important;
-        width: 100% !important;
+        width: auto !important;
     }
 
     /*product-page-fixed-footer*/

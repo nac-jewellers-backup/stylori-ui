@@ -1,9 +1,6 @@
 import React from "react";
 import * as Yup from "yup";
-import { Input } from "../InputComponents/TextField/Input";
 import { Grid, InputAdornment, IconButton } from "@material-ui/core";
-import   VisibilityOff  from "@material-ui/icons/VisibilityOff";
-import  Visiblity  from "@material-ui/icons/Visibility";
 
 // NOTABLE POINTS
 //  Min and Max
@@ -61,12 +58,22 @@ export class Form extends React.Component {
     confirmPassword: {
       invalid: "Passwords do not match!",
       required: "Confirm Password is required"
+    },
+    name : {
+      required: "Confirm Name is required"
+    },
+    request : {
+      required: "Confirm request is required"
+    },
+    title : {
+      required: "Confirm title is required"
     }
   };
 
   state = {
     values: this.initialValues,
     errors: this.initialValues,
+    errorvalid : {},
     show: { password: false, confirmPassword: false }
   };
 
@@ -85,15 +92,22 @@ export class Form extends React.Component {
 
   handleInvalid = type => e => {
     e.preventDefault();
-    let { errors } = this.state;
-    errors[e.target.name] = this.errors[e.target.name][type];
-    this.setState({ errors });
+    let { errorvalid } = this.state;
+    errorvalid[e.target.name] = true;
+    this.setState({ errorvalid });
+  };
+  onchnagevalue = type => e => {
+    this.setState({ errorvalid : {} });
   };
 
   renderForm = () => {
     return (
       <>
+<<<<<<< HEAD
+       {this.props.children(this.state.errorvalid ,this.handleInvalid,this.errors,this.onchnagevalue)}
+=======
        {this.props.children}
+>>>>>>> 148ec4d5a7f7ca895af4c9d6e6580a259ccd2281
        </>
     );
   };
@@ -101,7 +115,6 @@ export class Form extends React.Component {
   render() {
     return (
       <div>
-        <h1>Sign Up</h1>
         <form
           action="javascript:void(0)"
           onSubmit={this.handleSubmit}

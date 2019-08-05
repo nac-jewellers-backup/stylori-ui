@@ -133,10 +133,11 @@ class PriceTabs extends React.Component {
                                         {val.tab1.Children.map(val =>
                                             <Grid container spacing={12}>
                                                 <Grid xs={2}>
-                                                    <img src={val.icon} style={{ width: '35px' }} />
-                                                </Grid>
-                                                <Grid xs={9}>
+                                                    <div>
+                                                    <img src={val.icon} style={{ width: '35px' }} />&nbsp;
                                                     <span className="tabs-contants">  {val.name}</span>
+                                                    </div>
+                                                   
                                                 </Grid>
                                             </Grid>
                                         )}
@@ -156,7 +157,7 @@ class PriceTabs extends React.Component {
                                     <ExpansionPanelDetails style={{ padding: 0 }}>
                                         {val.tab2.Children.map(val =>
                                             <Grid container spacing={12}>
-                                                <Grid xs={2}>
+                                                <Grid xs={1}>
                                                     <img src={val.icon} style={{ width: '35px' }} />
                                                 </Grid>
                                                 <Grid xs={9}>

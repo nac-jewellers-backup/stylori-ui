@@ -115,7 +115,7 @@ export const productstabs = [
             Children:
                 [
                     {
-                        name: "18K Yellow",
+                        name: "18K Yellow Diamond",
                         icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
                     },
 
@@ -126,7 +126,7 @@ export const productstabs = [
             header: "Metal Purity",
             Children: [
                 {
-                    name: "cccc",
+                    name: "Diamond Details",
                     icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
                 },
 
@@ -137,7 +137,7 @@ export const productstabs = [
             header: "Diamond Clarity",
             Children: [
                 {
-                    name: "cccc",
+                    name: "Diamond Details",
                     icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
                 },
 
