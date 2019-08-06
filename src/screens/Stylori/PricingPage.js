@@ -22,21 +22,27 @@ import { Container, Hidden } from '@material-ui/core';
 import Slideshow from '../../components/Carousel/carosul'
 import Footer from "../../components/Footer/Footer"
 import Ratings from '../../components/rating/rating'
-
+import Checkoutbreadcrum from '../../components/Checkout/checkoutbreadcrum';
+import Checkoutcard from '../../components/Checkout/checkoutcard';
 
 export default class Stylori extends Component {
   render() {
 
     return (
       <div>
+
         <Hidden smDown>
           <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
             <Grid item xs={12} >
               <Header />
             </Grid>
-            <CustomSeparator />
           </Grid>
-          <Container>
+          <Container maxWidth='xl'>
+            <Grid Container spacing={12}>
+              <Grid item xs={12}>
+                <CustomSeparator />
+              </Grid>
+            </Grid>
             <Grid container spacing={12}>
               <Grid item xs={6}>
                 <ProductImageZoom />
@@ -60,13 +66,13 @@ export default class Stylori extends Component {
             </Grid>
             <Sublistcarousel />
             <RatingForm />
-
-            {/* <Sublistcarousel/> */}
             <CustomerReviews />
-          </Container>
-          <Grid item xs={12} style={{ paddingTop: '5%' }}>
+          </Container> 
+          {/* <Grid item xs={12} style={{ paddingTop: '5%' }}>
             <Footer />
-          </Grid>
+          </Grid> 
+          {/* <Checkoutbreadcrum/>
+          <Checkoutcard/> */}
         </Hidden>
 
 
@@ -96,7 +102,7 @@ export default class Stylori extends Component {
             <Sublistcarousel />
           </Grid>
           <Grid item xs={12} >
-          <CustomerReviews />
+            <CustomerReviews />
           </Grid>
           <Grid item xs={12} >
             <RatingForm />

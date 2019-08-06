@@ -16,6 +16,7 @@ class ProductImageZoom extends Component {
     super(props);
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
+    this.slider = React.createRef();
   }
   state = {
     // backgroundImage: `url(${src})`,
@@ -25,10 +26,10 @@ class ProductImageZoom extends Component {
   }
 
   next = () => {
-    this.slider.slickNext();
+    this.slider.current.slickNext();
   }
   previous = () => {
-    this.slider.slickPrev();
+    this.slider.current.slickPrev();
   }
   handleMouseMove = e => {
     const { left, top, width, height } = e.target.getBoundingClientRect()
@@ -36,13 +37,16 @@ class ProductImageZoom extends Component {
     const y = (e.pageY - top) / height * 100
     this.setState({ backgroundPosition: `${x}% ${y}%` })
   }
+
+
+
   zoomIn = (event) => {
     var element = document.getElementById("overlay");
     element.style.display = "inline-block";
     var img = document.getElementById("imgZoom");
     var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
     var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
-    element.style.backgroundPosition = (-posX + 100) + "px " + (-posY + 100) + "px";
+    element.style.backgroundPosition = (-posX * 4) + "px " + (-posY * 4) + "px";
 
 
   }
@@ -51,6 +55,7 @@ class ProductImageZoom extends Component {
     var element = document.getElementById("overlay");
     element.style.display = 'none';
   }
+
   getimage = e => {
     this.setState({
       showimage: e.target.src
@@ -77,7 +82,9 @@ class ProductImageZoom extends Component {
                   <Button onClick={this.previous}>
                     <i class="fa fa-angle-up" style={{ fontSize: "35px", color: "#F699A3" }}></i>
                   </Button>
-                  <Slideshow ref={c => (this.slider = c)} getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img' fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
+                  <Slideshow sliderRef={this.slider}
+                    getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img'
+                    fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
                   <Button onClick={this.next}>
                     <i class="fa fa-angle-down" style={{ fontSize: "35px", color: "#F699A3" }}></i>
                   </Button>
@@ -85,12 +92,14 @@ class ProductImageZoom extends Component {
               </Grid>
               <Grid item xs={10}>
                 <div>
-                  <div className="imagecard" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
+                  <div className="imagecard" onMouseOut={event => this.zoomOut(event)}
+                    onMouseMove={event => this.zoomIn(event)}>
                     <img id="imgZoom" width="100%" height="100%"
                       src={showimage} />
 
                   </div>
-                  <div className='overly-img' id="overlay" style={{ backgroundImage: `url(${showimage})` }} onMouseOut={event => this.zoomOut(event)}></div>
+                  <div className='overly-img' id="overlay"
+                    style={{ backgroundImage: `url(${showimage})` }} onMouseOut={event => this.zoomOut(event)}></div>
                   <div>
                     <Grid container spacing={12}
                       className='features-tags'>

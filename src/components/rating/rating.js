@@ -2,24 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Ratings extends Component {
-    static propTypes = {
-        name: PropTypes.string.isRequired,
-        value: PropTypes.number,
-        editing: PropTypes.bool,
-        starCount: PropTypes.number,
-        starColor: PropTypes.string,
-        onStarClick: PropTypes.func,
-        onStarHover: PropTypes.func,
-        onStarHoverOut: PropTypes.func,
-        renderStarIcon: PropTypes.func,
-        renderStarIconHalf: PropTypes.func
-    };
-
-    static defaultProps = {
+     static defaultProps = {
         starCount: 5,
         editing: true,
         starColor: '#ffb400',
-        emptyStarColor: '#333'
+        emptyStarColor: '#ccc'
     };
 
     constructor(props) {
@@ -165,5 +152,16 @@ class Ratings extends Component {
         );
     }
 }
-
+Ratings.propTypes = {
+    name: PropTypes.string.isRequired,
+    value: PropTypes.number,
+    editing: PropTypes.bool,
+    starCount: PropTypes.number,
+    starColor: PropTypes.string,
+    onStarClick: PropTypes.func,
+    onStarHover: PropTypes.func,
+    onStarHoverOut: PropTypes.func,
+    renderStarIcon: PropTypes.func,
+    renderStarIconHalf: PropTypes.func
+};
 export default Ratings;

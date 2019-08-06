@@ -172,10 +172,11 @@ export const imagecertificat = [
 ];
 const fadeImages = [
     'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
-    'https://stmed.net/sites/default/files/styles/225x120/public/jewelry-wallpapers-25240-746715.jpg?itok=UH8vm-JU',
-    'https://kinclimg4.bluestone.com/f_jpg,c_scale,w_515,b_rgb:f0f0f0/giproduct/BIVT0012P05_YAA18NAV1DIG6XXXX_ABCD00-PICS-00004-1024-18002.png',
+    'https://images7.alphacoders.com/452/thumb-1920-452292.jpg',
+    'https://images4.alphacoders.com/611/thumb-1920-611207.jpg',
+    'https://images5.alphacoders.com/405/thumb-1920-405223.jpg',
     'https://www.setaswall.com/wp-content/uploads/2018/12/Jewelry-Wallpaper-20-2880x1800-768x480.jpg',
-    'https://iba-ibacraftspvtltd.netdna-ssl.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/b/s/bsg2747_3__2_1.jpg',
+    'https://images6.alphacoders.com/350/thumb-1920-350607.jpg',
     'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
 ];
 export const fadeImagessublist = [

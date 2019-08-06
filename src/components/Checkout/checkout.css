@@ -1,0 +1,121 @@
+.bread-header {
+    background: #394578 !important;
+    height: 40px !important;
+    width: 100% !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+}
+
+.bread-header-list {
+    font-size: 12px !important;
+    width: 100% !important;
+}
+
+.bread-header ol li a:after {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 35px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 30px solid #394578;
+    position: absolute;
+    top: 50% !important;
+    margin-top: -40px;
+    left: 100%;
+    z-index: 2;
+}
+
+.bread-header ol li a:before {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 35px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 30px solid white;
+    position: absolute;
+    top: 50%;
+    margin-top: -40px;
+    margin-left: 1px !important;
+    left: 100%;
+    z-index: 1;
+}
+
+.bread-header ol li a {
+    color: #FFF;
+    text-decoration: none;
+    padding: 12px 0 10px 35px;
+    background: #394578;
+    position: relative;
+    display: block;
+    float: left;
+    font-size: 11px;
+}
+
+.product-image-thumb {
+    margin-top: 10px !important;
+    text-align: center;
+    width: 100% !important;
+    height: 180px !important;
+    border: 1px solid #CCC;
+    box-shadow: none !important;
+    border-radius: none !important;
+}
+
+.product-image-thumb img {
+    margin-top: -15px !important;
+}
+
+.title {
+    font-size: 19px;
+    color: #394578;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.product-rate {
+    margin: 10px;
+    float: left;
+    margin-left: 0;
+    margin-top: 50px;
+}
+
+.offer-price,
+.text-hint {
+    text-decoration: line-through;
+    font-size: 13px;
+    margin-bottom: 2px;
+    color: #828282;
+}
+
+.price {
+    font-size: 25px;
+    margin-bottom: 2px;
+    color: #ed1165;
+}
+
+.offer-description {
+    margin-bottom: 2px;
+    background: #ed1165;
+    color: #FFF;
+    border-radius: 3px !important;
+    padding: 1px 5px !important;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+}
+
+.remove-product {
+    top: 8px !important;
+    background: url(https://assets-cdn.stylori.com/images/static/icon-close.png) no-repeat !important;
+    width: 15px;
+    height: 15px;
+    position: relative;
+}
+.subhesder{
+    padding: 4px 3px !important;
+    font-size: 12px !important;
+    color: #394578;
+    width: 100% !important;
+}

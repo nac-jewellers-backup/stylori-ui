@@ -28,15 +28,15 @@ const Buydetails = () => {
                             <Grid container spacing={12} style={{ marginTop: "5px" }}>
 
                                 <Grid item xs={4} className='buy-subheaders'>
-                                    <i class="fa fa-heart"></i>&nbsp;{val.telephone}
+                                    <i class="fa fa-phone overall-icons" aria-hidden="true"></i>&nbsp;{val.telephone}
                                 </Grid>
 
                                 <Grid item xs={4} className='buy-subheaders'>
-                                    <i class="fa fa-heart"></i>&nbsp;{val.phonenum}
+                                    <i class="fa fa-whatsapp overall-icons" aria-hidden="true"></i>&nbsp;{val.phonenum}
                                 </Grid>
 
                                 <Grid item xs={2} className='buy-subheaders'>
-                                    <i class="fa fa-heart"></i>&nbsp;{val.chat}
+                                    <i class="fa fa-comments-o overall-icons" aria-hidden="true"></i>&nbsp;{val.chat}
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -45,9 +45,10 @@ const Buydetails = () => {
                         <Grid container spacing={12}>
                             <Grid item xs={4}>
                                 <input
-                                    placeholder='Enter Pin Code'
+                                    placeholder='&#xf041; &nbsp; Enter Pin Code'
                                     className='buynow-search'
                                 />
+
                             </Grid>
                             <Grid item xs={3}>
                                 <Button className="search-button">Check for COD </Button>

@@ -6,7 +6,8 @@ import './index.css'
 import '../product-image-slider/product-images.css'
 class Slideshow extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.slider = React.createRef();
   }
 
   renderFadeImages = () => {
@@ -19,6 +20,8 @@ class Slideshow extends React.Component {
       </div>
     )) : ''
   }
+
+
 
   imagehoverchildrens = (hoverlist) => {
     let { hover } = this.props;
@@ -47,13 +50,13 @@ class Slideshow extends React.Component {
     //   'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg'
     // ];
 
-    var settings =
-      this.props.dataCarousel;
-    let { ref } = this.props;
+    // const { dataCarousel: { settings }, sliderRef } = this.props;
+    const { sliderRef } = this.props;
+    var settings = this.props.dataCarousel;
 
     return (
       <div>
-        <Slider {...ref}  {...settings}>
+        <Slider ref={sliderRef}  {...settings}>
           {this.props.children ? this.props.children : this.renderFadeImages()}
           {this.props.hover ? this.imagehoverchildrens(this.props.hoverlist) : ''}
         </Slider>
@@ -62,4 +65,4 @@ class Slideshow extends React.Component {
   }
 }
 
-export default Slideshow;
+export default React.forwardRef((props, ref) => <Slideshow sliderRef={ref} {...props} />);
