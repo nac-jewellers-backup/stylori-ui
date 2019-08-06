@@ -42,8 +42,10 @@ function JewelleryMenuItem(props) {
 export default JewelleryMenuItem;
 
 JewelleryMenuItem.propTypes = {
-  onMouseOver: PropTypes.func,
-  onMouseLeave: PropTypes.func,
-  listHoverItem: PropTypes.string,
+  onMouseOver: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired,
+  listHoverItem: PropTypes.object.isRequired,
+  tabdata:PropTypes.object.isRequired,
+
 
 }

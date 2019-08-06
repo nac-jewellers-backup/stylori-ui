@@ -4,7 +4,7 @@ import {Card,CardHeader,CardMedia, CardContent, Typography} from "@material-ui/c
 import './productCard.css'
 import IconButton from "@material-ui/core/IconButton";
 import PropTypes from "prop-types";
-
+import { NavLink } from 'react-router-dom'
 
 
 // let theme = createMuiTheme(require('./../../theme.json'));
@@ -119,7 +119,8 @@ export default function ProductCards(props) {
           </IconButton>
         }
       />
-      <a href={props.data.image['placeImage']} target={"_blank"} style={{ textDecoration: 'none' }}>
+      <NavLink to="/pricingPage" style={{textDecoration:'none'}}>
+      {/* <a href={} target={"_blank"} style={{ textDecoration: 'none' }}> */}
         <CardMedia
           component='img'
           onMouseOver={() => {
@@ -204,7 +205,10 @@ export default function ProductCards(props) {
             </Typography>
           </Typography>
         </CardContent>
-      </a>
+      {/* </a> */}
+      </NavLink>
+      {/* props.data.image['placeImage'] */}
+     
     </Card>
   );
 }
