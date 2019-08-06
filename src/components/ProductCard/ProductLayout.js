@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
+import {GridList, GridListTile} from '@material-ui/core';
 import ProductCard from './index';
 import ProductCards from './index';
 import {dataCard} from './ProductData';

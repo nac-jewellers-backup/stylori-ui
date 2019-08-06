@@ -85,7 +85,7 @@ export default function Footer(props) {
             {/* footer pink color starts */}
             <Grid container item style={{ marginBottom: '-5.5%', zIndex: '4' }}>
                 <Grid item xs="12" >
-                    <img src={cartoonFooter} width="100%" height="auto"  alt="noImage"/>
+                    <img src={cartoonFooter} width="100%" height="auto" alt="noImage" />
                 </Grid>
             </Grid>
 
@@ -166,7 +166,7 @@ export default function Footer(props) {
                     </Hidden>
                     <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
                         <Grid item xs={6} >
-                            <img src={googlePlaystore}  className={`${classes.colorMain}`} alt="no image"/>
+                            <img src={googlePlaystore} className={`${classes.colorMain}`} alt="no image" />
                         </Grid>
                     </Grid>
                 </Grid>
@@ -184,11 +184,11 @@ export default function Footer(props) {
                         <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'flex-end' }} className="footer-icons">
                             <Grid item xs={9}>
                                 <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' ,}} className="fa">&#xf09a;</i>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' ,}} className="fa">&#xf0d5;</i>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' ,}} className="fa">&#xf231;</i>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' ,}} className="fa">&#xf16d;</i>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' ,}} className="fa">&#xf167;</i>
+                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%', }} className="fa">&#xf09a;</i>
+                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%', }} className="fa">&#xf0d5;</i>
+                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%', }} className="fa">&#xf231;</i>
+                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%', }} className="fa">&#xf16d;</i>
+                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%', }} className="fa">&#xf167;</i>
                             </Grid>
                         </Grid>
                     </Grid>

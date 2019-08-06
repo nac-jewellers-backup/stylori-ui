@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import Paper from '@material-ui/core/Paper';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
+import {Paper,Toolbar,Typography,IconButton,Collapse} from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Collapse from '@material-ui/core/Collapse';
 import CardRadioButton from "../InputComponents/RadioButton/index"
 import './filter.css';
 import filterdatas from './Filterdata';

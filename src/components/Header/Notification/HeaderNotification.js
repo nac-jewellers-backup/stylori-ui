@@ -5,20 +5,18 @@ import { withStyles } from '@material-ui/core/styles';
 
 const Notification = posed.div({
     visible: {
-
         opacity: 1,
         scaleY: 1,
+        
         transition: {
             opacity: { ease: 'easeOut', duration: 300 },
             default: { ease: 'linear', duration: 500 }
         },
     },
     hidden: {
-        opacity: 0, scaleX: 1,
-        transition: {
-            opacity: { ease: 'easeOut', duration: 300, },
-            default: { ease: 'linear', duration: 500 }
-        },
+        opacity: 0, 
+        transition:{  opacity: { ease: 'linear', duration: 500, left: { x: -100 },
+        right: { x: 100 } }}
     }
 });
 

@@ -14,14 +14,16 @@ import {
   ListItem,
   ListItemText,
 } from '@material-ui/core';
+import tabdata from './HoverNavBarListing/tileData';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { Hidden } from '@material-ui/core';
 import JewelleryMenuItem from './HoverNavBarListing/JewlleryMenuItem';
 import HeaderNotification from './Notification/HeaderNotification'
-import { mainlist, Jewellery, subheader } from './headerData'
+import { mainlist, Jewellery, subheader, menuList, menuListHeader } from './headerData'
 import { withStyles } from '@material-ui/core/styles';
+import tileData from './HoverNavBarListing/tileData';
 
 
 
@@ -29,16 +31,20 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   colorDark: {
-      backgroundColor: theme.palette.secondary.dark,
-  
-    },
-    colorMain: {
-      color: theme.palette.primary.main,
-  
-    },
-    colorLight:{
-      color: theme.palette.primary.main
-    }
+    backgroundColor: theme.palette.secondary.dark,
+
+  },
+  colorMain: {
+    color: theme.palette.primary.main,
+
+  },
+  colorLight: {
+    color: theme.palette.primary.main
+  },
+  menuListCursor:{
+    cursor: 'pointer'
+  }
+
 });
 class Header extends Component {
   constructor(props) {
@@ -51,7 +57,8 @@ class Header extends Component {
       selected: '',
       selected1: '',
       Checked: false,
-      listHoverItem:'Jewellery'
+      load:false,
+      listHoverItem: 'Jewellery'
     }
   }
   // componentDidMount(){
@@ -64,7 +71,7 @@ class Header extends Component {
 
 
 
-  
+
   handleDrawerOpen = () => {
     this.setState({ open: true })
   }
@@ -88,6 +95,8 @@ class Header extends Component {
   render() {
     let { selected, selected1 } = this.state;
     const { classes } = this.props;
+    console.log(tabdata[this.state.listHoverItem]);
+    debugger;
     return (
       <div>
         <Hidden smDown >
@@ -103,11 +112,11 @@ class Header extends Component {
                 </Grid>
                 <Grid item xs={4} className="logoImgHeader">
                   <div >
-                    <img className="img" src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" />
+                    <img className={`img`} src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" onLoad={()=>this.setState({load:true})} onLoadedData={()=>this.setState({load:false})} alt=""/>
                   </div>
                 </Grid>
                 <Grid item xs={5}>
-                  <div className={`head-icons ${classes.colorMain}`}  style={{ fontFamily: "fontawesome" }}>
+                  <div className={`head-icons ${classes.colorMain}`} style={{ fontFamily: "fontawesome" }}>
                     <InputBase
                       className={`search ${classes.colorMain}`}
                       placeholder='&#xf002; Search here'
@@ -123,26 +132,57 @@ class Header extends Component {
                 </Grid>
               </Grid>
               <Grid container spacing={12}>
-                <Grid item xs={12} className={`header-navbar-list ${classes.colorLight}`}>
-                  <nav >
-                    <a href=""  className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
-                    <a href="" onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem:'Jewellery' }) }} className={` ${classes.colorLight}`} ><i class="fa fa-plus-circle" ></i>&nbsp;Jewellery</a>
-                    <a href="" className={` ${classes.colorLight}`} onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem:'Solitaires' }) }}><i class="fa fa-plus-circle"></i>&nbsp;Solitaires</a>
+                <Grid item xs={12} className={`header-navbar-list ${classes.colorLight}`}
+                          onMouseLeave={() => { this.setState({ Menuopen: false,Checked:false }) }}
+
+                >
+
+                  <nav
+                  >
+
+                    {/* <a href="" className={`${classes.colorLight}`} alt=""><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
+
+
+                    <a href=""
+                      onMouseEnter={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: 'Jewellery' }) }}
+                      className={` ${classes.colorLight}`} active><i class="fa fa-plus-circle" ></i>&nbsp;Jewellery</a>
+
+
+                    <a href="" className={` ${classes.colorLight}`} onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: 'Solitaires' }) }}><i class="fa fa-plus-circle"></i>&nbsp;Solitaires</a>
                     <a href="" className={` ${classes.colorLight}`}
-                    onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem:'GoldCoins' }) }}
+                      onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: 'GoldCoins' }) }}
                     ><i class="fa fa-plus-circle"></i>&nbsp;Gold Coins</a>
                     <a href="" className={` ${classes.colorLight}`}
-                    onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem:'Gifts' }) }}
+                      onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: 'Gifts' }) }}
                     ><i class="fa fa-plus-circle"></i>&nbsp;Gifts</a>
                     <a href="" className={` ${classes.colorLight}`}
-                    onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem:'Collection' }) }}
+                      onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: 'Collection' }) }}
                     ><i class="fa fa-plus-circle"></i>&nbsp;Collections</a>
                     <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;One Day Sipping</a>
-                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Stories</a>
+                    <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Stories</a> */}
+                    {
+                      (menuListHeader.map(listName => {
+                        return(
+                          <a href={listName} className={` ${classes.menuListCursor} ${classes.colorLight} ` } onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: listName.replace(/ +/g, "") }) }}><i class="fa fa-plus-circle"></i>&nbsp;{listName}</a>
+                        )
+                        
+                      }))
+                    }
                   </nav>
+                    {
+                      
+                      this.state.Menuopen && tabdata.menuLists[this.state.listHoverItem]  ? 
+                        <JewelleryMenuItem Checked={this.state.Checked} tabdata={tabdata} listHoverItem={tabdata.menuLists[this.state.listHoverItem]}
+                          onMouseOver={() => { this.setState({ Menuopen: true, }) }}
+                          onMouseLeave={() => { this.setState({ Menuopen: false,Checked:false }) }}
+                        />
+                        :
+                        ''
+                    }
                 </Grid>
               </Grid>
               <div className="header-bottom"></div>
+
             </AppBar>
           </div>
         </Hidden>
@@ -163,7 +203,7 @@ class Header extends Component {
                 </Grid>
                 <Grid item xs={4}>
                   <div >
-                    <img className="mobile-img" src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" />
+                    <img className="mobile-img" src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" alt=""/>
                   </div>
                 </Grid>
                 <Grid item xs={6}>
@@ -255,13 +295,7 @@ class Header extends Component {
           </Drawer>
 
         </Hidden>
-        {
-          this.state.Menuopen ?
-            <JewelleryMenuItem Checked={this.state.Checked} listHoverItem={this.state.listHoverItem} onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }} />
-            //onMouseLeave={() => { this.setState({ Menuopen: false,Checked:false }) }}
-            :
-            ''
-        }
+
       </div>
     )
   }

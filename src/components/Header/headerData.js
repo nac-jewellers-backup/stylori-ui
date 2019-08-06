@@ -200,4 +200,6 @@ export const Jewellery = {
         }
     },
 }
-export default { mainlist, Jewellery, subheader } 
+export const menuListHeader = ['Whats New', 'Jewellery', 'Solitaires', 'Gold Coins', 'Gifts', 'Collections', 'One Day Sipping', 'Stories' ]
+  
+export default { mainlist, Jewellery, subheader, menuListHeader } 
