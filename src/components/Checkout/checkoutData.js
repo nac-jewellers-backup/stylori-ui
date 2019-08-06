@@ -9,18 +9,5 @@ export const breadlistsub = [
 ]
 
 
-export const breadlistcard = [
-    {
-        header:'Enchanting Diamond Bloom Gold Pendant',
-         subheadname:['Quality','Metal','Gold Weight','Product Code'],
-         subheaddetails:['SI IJ','18K Yellow Gold','4.3396 GM','SP0346-18110000']
-         }, {
-            header:'Enchanting Diamond Bloom Gold Pendant',
-             subheadname:['Quality','Metal','Gold Weight','Product Code'],
-             subheaddetails:['SI IJ','18K Yellow Gold','4.3396 GM','SP0346-18110000']
-             }, 
-         
-]
 
-
-export default { breadlist, breadlistsub ,breadlistcard};
+export default { breadlist, breadlistsub};

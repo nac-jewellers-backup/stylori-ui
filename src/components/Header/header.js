@@ -96,7 +96,6 @@ class Header extends Component {
     let { selected, selected1 } = this.state;
     const { classes } = this.props;
     console.log(tabdata[this.state.listHoverItem]);
-    debugger;
     return (
       <div>
         <Hidden smDown >

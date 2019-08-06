@@ -22,9 +22,62 @@ class ProductImageZoom extends Component {
     // backgroundImage: `url(${src})`,
     backgroundPosition: '0% 0%',
     showimage: T.fadeImages[0],
-    slider: ""
   }
+  productImageZoom = () => {
+    let { showimage } = this.state;
+    const dataCarousel = {
+      infinite: true,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      vertical: true,
+      verticalSwiping: true,
+      arrows: false
+    }
+    return (
+      <div>
+        <Grid container spacing={1}>
+          <Grid item xs={2}>
+            <div style={{ textAlign: 'center' }}>
+              <Button onClick={this.previous}>
+                <i class="fa fa-angle-up" style={{ fontSize: "35px", color: "#F699A3" }}></i>
+              </Button>
 
+              <Slideshow sliderRef={this.slider}
+                getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img'
+                fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
+
+              <Button onClick={this.next}>
+                <i class="fa fa-angle-down" style={{ fontSize: "35px", color: "#F699A3" }}></i>
+              </Button>
+            </div>
+          </Grid>
+          <Grid item xs={10}>
+            <div>
+              <div className="imagecard" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
+                <img id="imgZoom" width="100%" height="100%" src={showimage} />
+              </div>
+
+              <div className='overly-img' id="overlay"
+                style={{ backgroundImage: `url(${showimage})` }} onMouseOut={event => this.zoomOut(event)}></div>
+              <div>
+                <Grid container spacing={12}
+                  className='features-tags'>
+                  {TB.productsubHead.map(val => (
+                    <Grid item xs={2} >
+                      <div key={val.name}>
+                        <img className='features-tags-images' src={val.icon} />
+                        <span style={{ fontSize: "14px" }}>{val.name} </span>
+                      </div>
+                    </Grid>
+                  ))}
+                </Grid>
+              </div>
+            </div>
+          </Grid>
+        </Grid>
+      </div>
+    )
+  }
   next = () => {
     this.slider.current.slickNext();
   }
@@ -63,59 +116,12 @@ class ProductImageZoom extends Component {
   }
   render() {
 
-    let { showimage } = this.state;
-    const dataCarousel = {
-      infinite: true,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      vertical: true,
-      verticalSwiping: true,
-      arrows: false
-    }
+
     return (
       <div>
         <Container>
           <Hidden smDown>
-            <Grid container spacing={1}>
-              <Grid item xs={2}>
-                <div style={{ textAlign: 'center' }}>
-                  <Button onClick={this.previous}>
-                    <i class="fa fa-angle-up" style={{ fontSize: "35px", color: "#F699A3" }}></i>
-                  </Button>
-                  <Slideshow sliderRef={this.slider}
-                    getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img'
-                    fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
-                  <Button onClick={this.next}>
-                    <i class="fa fa-angle-down" style={{ fontSize: "35px", color: "#F699A3" }}></i>
-                  </Button>
-                </div>
-              </Grid>
-              <Grid item xs={10}>
-                <div>
-                  <div className="imagecard" onMouseOut={event => this.zoomOut(event)}
-                    onMouseMove={event => this.zoomIn(event)}>
-                    <img id="imgZoom" width="100%" height="100%"
-                      src={showimage} />
-
-                  </div>
-                  <div className='overly-img' id="overlay"
-                    style={{ backgroundImage: `url(${showimage})` }} onMouseOut={event => this.zoomOut(event)}></div>
-                  <div>
-                    <Grid container spacing={12}
-                      className='features-tags'>
-                      {TB.productsubHead.map(val => (
-                        <Grid item xs={2} >
-                          <div key={val.name}>
-                            <img className='features-tags-images' src={val.icon} />
-                            <span style={{ fontSize: "14px" }}>{val.name} </span>
-                          </div>
-                        </Grid>
-                      ))}
-                    </Grid>
-                  </div>
-                </div>
-              </Grid>
-            </Grid>
+            {this.productImageZoom()}
           </Hidden>
 
         </Container>
@@ -131,5 +137,6 @@ ProductImageZoom.propTypes = {
   zoomIn: PropTypes.func,
   zoomOut: PropTypes.func,
   getimage: PropTypes.func,
+  productImageZoom: PropTypes.func,
 };
 export default ProductImageZoom;

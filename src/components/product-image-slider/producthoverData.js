@@ -3,13 +3,13 @@ export const productsDetails = [
         header: "Product Details",
         namedetail: [{
             name: "Product Code",
-            details: "SP0679-18110000"
+            details: "SP0-110000"
         },
         {
             name: "Metal Type",
             details: "18K Yellow Gold"
         }, {
-            name: "Approximate Metal Weight (in gms)",
+            name: "Approximate",
             details: "1.463"
         }],
     }, {
@@ -31,18 +31,6 @@ export const productsDetails = [
             {
                 name: "Clarity",
                 details: "SI"
-            },
-            {
-                name: "Total Weight",
-                details: "0,9484"
-            },
-            {
-                name: "Setting Type",
-                details: "pave"
-            },
-            {
-                name: "Shape",
-                details: "round"
             },
 
         ],
@@ -172,12 +160,11 @@ export const imagecertificat = [
 ];
 const fadeImages = [
     'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
-    'https://images7.alphacoders.com/452/thumb-1920-452292.jpg',
-    'https://images4.alphacoders.com/611/thumb-1920-611207.jpg',
-    'https://images5.alphacoders.com/405/thumb-1920-405223.jpg',
-    'https://www.setaswall.com/wp-content/uploads/2018/12/Jewelry-Wallpaper-20-2880x1800-768x480.jpg',
-    'https://images6.alphacoders.com/350/thumb-1920-350607.jpg',
-    'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
+    'https://n3.sdlcdn.com/imgs/d/e/n/Twishq-Single-Line-High-Quality-SDL077149833-1-3793d.jpg  ',
+    'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
+    'https://n3.sdlcdn.com/imgs/d/e/n/Twishq-Single-Line-High-Quality-SDL077149833-1-3793d.jpg  ',
+    'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
+    'https://n3.sdlcdn.com/imgs/d/e/n/Twishq-Single-Line-High-Quality-SDL077149833-1-3793d.jpg  ',
 ];
 export const fadeImagessublist = [
     {
