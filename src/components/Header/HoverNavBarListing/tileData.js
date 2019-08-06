@@ -25,7 +25,7 @@ export const menuLists = {
         { value: 'Material', title: 'By Material', url: '#' },
         ]
     },
-    'Gold Coins': {
+    'GoldCoins': {
         'menuOne':
             [{ value: 'kammal', title: 'kammal', url: '#kammal' },
             { value: 'pendants', title: 'Pendants', url: '#' },
@@ -51,7 +51,7 @@ export const menuLists = {
         { value: 'Material', title: 'By Material', url: '#' },
         ]
     },
-    'Collection': {
+    'Collections': {
         'menuOne':
             [{ value: 'valayal', title: 'valayal', url: '#valayal' },
             { value: 'pendants', title: 'Pendants', url: '#' },

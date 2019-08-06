@@ -5,13 +5,13 @@ import ImageGridList from './HoverImagesGrid'
 import PropTypes from 'prop-types';
 import HoverTableGrid from './HoverTableGrid';
 import HoverImagesFullGrid from './HoverImagesFullGrid';
-import tabdata from './tileData';
 import './../header.css'
 
 function JewelleryMenuItem(props) {
   const [activetab, setActivetab] = React.useState("earings");
   const { onMouseLeave, onMouseOver } = props;
-
+  console.log(props.listHoverItem);
+  debugger
   return (
     <Paper style={{ position: "relative", left: '160px', width: '76vw' }} className="animations" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} >
       <Grid container>
@@ -21,17 +21,17 @@ function JewelleryMenuItem(props) {
         {
           (activetab !== 'Price' && activetab !== 'Collection' && activetab !== 'Material' && activetab !== 'Collection') &&
           <Grid item >
-            <ImageGridList activetab={activetab} tabdata={tabdata} />
+            <ImageGridList activetab={activetab} tabdata={props.tabdata} />
           </Grid>
         }
         {(activetab === 'Price' || activetab === 'Material') &&
           <Grid item xs={6}>
-            <HoverTableGrid activetab={activetab} tabdata={tabdata} />
+            <HoverTableGrid activetab={activetab} tabdata={props.tabdata} />
           </Grid>
         }
         {(activetab === 'Collection') &&
           <Grid item xs={8}>
-            <HoverImagesFullGrid activetab={activetab} tabdata={tabdata} />
+            <HoverImagesFullGrid activetab={activetab} tabdata={props.tabdata} />
           </Grid>
         }
       </Grid>

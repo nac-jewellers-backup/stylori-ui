@@ -14,6 +14,7 @@ import {
   ListItem,
   ListItemText,
 } from '@material-ui/core';
+import tabdata from './HoverNavBarListing/tileData';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
@@ -22,6 +23,7 @@ import JewelleryMenuItem from './HoverNavBarListing/JewlleryMenuItem';
 import HeaderNotification from './Notification/HeaderNotification'
 import { mainlist, Jewellery, subheader, menuList, menuListHeader } from './headerData'
 import { withStyles } from '@material-ui/core/styles';
+import tileData from './HoverNavBarListing/tileData';
 
 
 
@@ -39,6 +41,9 @@ const styles = theme => ({
   colorLight: {
     color: theme.palette.primary.main
   },
+  menuListCursor:{
+    cursor: 'pointer'
+  }
 
 });
 class Header extends Component {
@@ -90,6 +95,8 @@ class Header extends Component {
   render() {
     let { selected, selected1 } = this.state;
     const { classes } = this.props;
+    console.log(tabdata[this.state.listHoverItem]);
+    debugger;
     return (
       <div>
         <Hidden smDown >
@@ -126,6 +133,7 @@ class Header extends Component {
               </Grid>
               <Grid container spacing={12}>
                 <Grid item xs={12} className={`header-navbar-list ${classes.colorLight}`}
+                          onMouseLeave={() => { this.setState({ Menuopen: false,Checked:false }) }}
 
                 >
 
@@ -155,21 +163,22 @@ class Header extends Component {
                     {
                       (menuListHeader.map(listName => {
                         return(
-                          <a href={listName} className={` ${classes.colorLight}`} onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: listName.trim() }) }}><i class="fa fa-plus-circle"></i>&nbsp;{listName}</a>
+                          <a href={listName} className={` ${classes.menuListCursor} ${classes.colorLight} ` } onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: listName.replace(/ +/g, "") }) }}><i class="fa fa-plus-circle"></i>&nbsp;{listName}</a>
                         )
                         
                       }))
                     }
+                  </nav>
                     {
-                      this.state.Menuopen  ?
-                        <JewelleryMenuItem Checked={this.state.Checked} listHoverItem={this.state.listHoverItem}
+                      
+                      this.state.Menuopen && tabdata.menuLists[this.state.listHoverItem]  ? 
+                        <JewelleryMenuItem Checked={this.state.Checked} tabdata={tabdata} listHoverItem={tabdata.menuLists[this.state.listHoverItem]}
                           onMouseOver={() => { this.setState({ Menuopen: true, }) }}
                           onMouseLeave={() => { this.setState({ Menuopen: false,Checked:false }) }}
                         />
                         :
                         ''
                     }
-                  </nav>
                 </Grid>
               </Grid>
               <div className="header-bottom"></div>
