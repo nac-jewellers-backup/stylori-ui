@@ -166,7 +166,7 @@ export default function Footer(props) {
                     </Hidden>
                     <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
                         <Grid item xs={6} >
-                            <img src={googlePlaystore} className={`${classes.colorMain}`} alt="no image" />
+                            <img src={googlePlaystore} className={`${classes.colorMain}`} alt="" />
                         </Grid>
                     </Grid>
                 </Grid>
@@ -289,7 +289,7 @@ export default function Footer(props) {
                         <Grid container item xl={3} lg={3} md={2} xs={12} sm={6} style={{ paddingTop: '2%', display: 'flex', justifyContent: 'flex-end' }}>
                             <Grid item xs={6} >
 
-                                <img src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" />
+                                <img src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" alt="" />
 
                                 <div style={{ color: '#808080', fontSize: '11px' }}>Copyright © 2017 Stylori.com</div>
 

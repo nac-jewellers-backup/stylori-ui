@@ -4,7 +4,6 @@ import {
     Container,
     ExpansionPanel,
     ExpansionPanelSummary,
-    ExpansionPanelDetails,
     Hidden,
     Typography
 } from '@material-ui/core';

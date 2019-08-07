@@ -1,5 +1,5 @@
 import React from "react";
-import { IconButton, Icon, Tooltip } from "@material-ui/core";
+import { IconButton, Tooltip } from "@material-ui/core";
 
 const CardControl = props => {
   let { position, icon, handler } = props;

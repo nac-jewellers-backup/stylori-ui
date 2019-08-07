@@ -8,15 +8,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Checkbox from '@material-ui/core/Checkbox';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { HomeSlider } from './carouselData'
 import './home.css'
-import { AppBar, Toolbar, IconButton } from '@material-ui/core';
 
 
 class Socialmediacard extends React.Component {
@@ -55,17 +52,17 @@ class Socialmediacard extends React.Component {
                         <Grid container item xs={4}>
                             <Grid container spacing={3} style={{ height: "440px" }}>
                                 <Grid container item xs={6}>
-                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' />
+                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' alt=""/>
                                 </Grid>
                                 <Grid container item xs={6}>
-                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' />
+                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' alt=""/>
                                 </Grid>
 
                                 <Grid container item xs={6}>
-                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' />
+                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' alt=""/>
                                 </Grid>
                                 <Grid container item xs={6}>
-                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' />
+                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' alt=""/>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -83,12 +80,12 @@ class Socialmediacard extends React.Component {
                                         <CardContent>
                                             <div >
                                                 <b className="contents"> Stylori<br />20 hours ago</b>
-                                                <h style={{ float: 'right', marginTop: '-28px' }}>  <img height="40px" width="40px" src='https://cdn-images-1.medium.com/max/280/1*MdlEcZxKJmUR-2pVUvWTjg@2x.png' />
+                                                <h style={{ float: 'right', marginTop: '-28px' }}>  <img height="40px" width="40px" src='https://cdn-images-1.medium.com/max/280/1*MdlEcZxKJmUR-2pVUvWTjg@2x.png' alt=""/>
                                                 </h>
                                             </div>
                                             <Typography component="p">
                                                 Lizards are a widespread group of squamate reptiles,
-                                            <a style={{ color: "#049BFF" }}>with over 6,000 species, ranging
+                                            <a style={{ color: "#049BFF" }} href="#123">with over 6,000 species, ranging
                                             across all continents except</a> Antarctica
                                    </Typography>
                                         </CardContent>

@@ -1,33 +1,5 @@
 import React from "react";
-import * as Yup from "yup";
-import { Grid, InputAdornment, IconButton } from "@material-ui/core";
-
-// NOTABLE POINTS
-//  Min and Max
-// Email ID
-// Confirm Email ID
-// Mobile Number
-// Number
-// Password
-// Repeat Password
-// On Button Submit
-// On Moving Out
-// Live
-
-function equalTo(ref, msg) {
-  return Yup.mixed().test({
-    name: "equalTo",
-    exclusive: false,
-    message: msg || "${path} must be the same as ${reference}",
-    params: {
-      reference: ref.path
-    },
-    test: function(value) {
-      return value === this.resolve(ref);
-    }
-  });
-}
-Yup.addMethod(Yup.string, "equalTo", equalTo);
+import { Grid} from "@material-ui/core";
 
 export class Form extends React.Component {
   initialValues = {

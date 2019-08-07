@@ -4,9 +4,6 @@ import {
     Container,
 } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul'
-import PriceBuynow from './buyNow'
-import PriceTabs from './priceTabs'
-import dataCard from '../ProductCard/ProductData'
 import T from './producthoverData'
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';

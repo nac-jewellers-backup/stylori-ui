@@ -6,10 +6,8 @@ import {
   ExpansionPanelSummary,
   ExpansionPanelDetails,
   Typography,
-  ExpandMoreIcon
 } from '@material-ui/core';
 import fade from './producthoverData'
-import D from './producthoverData'
 import PropTypes from 'prop-types';
 import React from 'react';
 import './product-images.css'

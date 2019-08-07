@@ -173,10 +173,9 @@ class PersistentDrawerLeft extends React.Component {
     this.setState({ open: !this.state.open });
   };
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
-    const datafilter = filterdatas.filter1;
 
     return (
 
@@ -261,7 +260,7 @@ class PersistentDrawerLeft extends React.Component {
                                     color="primary"
                                   />
                                   <ListItemText>
-                                    <Typography className="" variant=""
+                                    <Typography  variant=""
                                       className={`fil-submenu-list ${classes.colorMain}`}>{row12}
                                     </Typography>
                                   </ListItemText>
@@ -295,7 +294,7 @@ class PersistentDrawerLeft extends React.Component {
             <div style={{ height: "23px", padding: "9px", borderBottom: "1px solid #e3e3e3", display: openMobile ? 'none' : 'block', position: 'sticky', top: '0px' }}
               className={`${classes.colorMain}`}
             >
-              <a onClick={this.handleDrawerCloseMobile}>
+              <a onClick={this.handleDrawerCloseMobile} href="#123">
                 <i className={`fa fa-times ${classes.colorMain}`} ></i>&nbsp;
                  Filter</a>
               <Button style={{ float: "right", border: '1px solid #ececec', lineHeight: "15px" }} className={`${classes.colorMain}`}> <b >Clear All</b></Button>

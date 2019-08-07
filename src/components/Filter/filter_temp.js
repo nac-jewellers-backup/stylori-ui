@@ -1,18 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Slide from '@material-ui/core/Slide';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ExpandLess from '@material-ui/icons/ExpandLess';
@@ -21,7 +17,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import filterdatas from './Filterdata';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Button, Checkbox, Paper, Collapse } from '@material-ui/core';
+import { Button, Checkbox} from '@material-ui/core';
 import './filter.css';
 import ProductLayout from '../ProductCard/ProductLayout';
 import FilterHeader from './FilterHeader';
@@ -183,10 +179,9 @@ class PersistentDrawerLeft extends React.Component {
     this.setState({ check: !this.state.check });
   };
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
-    const datafilter = filterdatas.filter1;
 
     return (
 
@@ -285,7 +280,7 @@ class PersistentDrawerLeft extends React.Component {
                               color="primary"
                             />
                             <ListItemText>
-                              <Typography className="" variant=""
+                              <Typography  variant=""
                                 className={`fil-submenu-list ${classes.colorMain}`}>{row12}
                               </Typography>
                             </ListItemText>
@@ -318,7 +313,7 @@ class PersistentDrawerLeft extends React.Component {
             <div style={{ height: "23px", padding: "9px", borderBottom: "1px solid #e3e3e3", display: openMobile ? 'none' : 'block' }}
               className={`${classes.colorMain}`}
             >
-              <a onClick={this.handleDrawerCloseMobile}>
+              <a onClick={this.handleDrawerCloseMobile} href="#123">
                 <i className={`fa fa-times ${classes.colorMain}`} ></i>&nbsp;
                  Filter</a>
               <Button style={{ float: "right", border: '1px solid #ececec', lineHeight: "15px" }} className={`${classes.colorMain}`}> <b >Clear All</b></Button>

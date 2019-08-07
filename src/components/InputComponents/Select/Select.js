@@ -29,7 +29,7 @@ export default function SimpleSelect(props) {
     });
 
     React.useEffect(() => {
-        console.info('EVENT', values.age, Boolean((values.age != null && values.age != "")));
+        console.info('EVENT', values.age, Boolean((values.age != null && values.age !=="")));
     },[values.age])
 
     function handleChange(event) {

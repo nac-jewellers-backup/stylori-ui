@@ -36,13 +36,13 @@ class Checkoutcard extends React.Component {
                 <Button style={{ background: "#ccc" }}
                     onClick={() => { this.setState({ cart: !this.state.cart }) }}
                 >click</Button>
-                {this.state.cart == true ?
+                {this.state.cart === true ?
                     <div >
                         <Container>
                             {productsDetails.map(val => (
                                 <Grid container spacing={12} xs={12} lg={12} >
                                     <Grid item xs={1} lg={1} >
-                                        <a style={{ textDecoration: "none" }}><div class="remove-product"></div></a>
+                                        <a style={{ textDecoration: "none" }} href="#123"><div class="remove-product"></div></a>
                                     </Grid>
                                     <Grid item xs={3} lg={2}>
                                         <Card className={`product-image-thumb ${classes.root}`}>
