@@ -28,10 +28,10 @@ class Slideshow extends React.Component {
     let { hover } = this.props;
     return hoverlist.map(val => (
       <div class={"subslider-carousel" + hover ? " hovereffect" : ""}>
-        <img src={val.img} className='subslider-carousel-img img-responsive' />
+        <img src={val.img} className='subslider-carousel-img img-responsive' alt=""/>
         <div class="overlay1">
           <h2 className='next-price'>{val.title}</h2><br />
-          <a class='info'><span className='sub-list-price'> <i class="fa fa-rupee"></i> &nbsp;{val.price}</span></a>
+          <a class='info' href="#"><span className='sub-list-price'> <i class="fa fa-rupee"></i> &nbsp;{val.price}</span></a>
         </div>
       </div>
     ))
@@ -67,3 +67,7 @@ class Slideshow extends React.Component {
 }
 
 export default React.forwardRef((props, ref) => <Slideshow sliderRef={ref} {...props} />);
+Slideshow.propTypes={
+  settings:PropTypes.object.isRequired,
+  fadeImages:PropTypes.array.isRequired
+}
