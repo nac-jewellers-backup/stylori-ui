@@ -32,7 +32,7 @@ class RatingForm extends React.Component {
                     <h5 className='rating-form-head'>Rate This</h5>
                     <div className="rating-form">
                         <Ratings />
-                    </div>
+                    </div><br/>
                     <h3 className='rating-form-head'>Write Your Review</h3>
                     <Input
                         type="text"

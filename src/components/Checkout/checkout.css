@@ -57,14 +57,15 @@
     margin-top: 10px !important;
     text-align: center;
     width: 100% !important;
-    height: 180px !important;
-    border: 1px solid #CCC;
+    height: 90% !important;
+    border: 1px solid #CCC !important;
     box-shadow: none !important;
     border-radius: none !important;
 }
 
-.product-image-thumb image {
-    margin-top: -15px !important;
+.image {
+    width: 100% !important;
+    height: 100% !important;
 }
 
 .title {
@@ -72,7 +73,9 @@
     font-weight: 400;
     height: 15px !important;
 }
-.title-response ,.MuiCardHeader-root{
+
+.title-response,
+.MuiCardHeader-root {
     color: #394578;
     line-height: 1.5em;
     height: 2em;
@@ -83,6 +86,7 @@
     font-size: 15px !important;
     padding: 0 6px !important;
 }
+
 .product-rate {
     float: left;
     margin-left: 0;
@@ -102,13 +106,15 @@
     margin-bottom: 2px;
     color: #ed1165;
 }
-.price-response{
+
+.price-response {
     padding: 0px 10px;
     font-size: 13px !important;
     color: #ed1165;
-         padding-bottom: 25px;
-    padding-top: 10px; 
+    padding-bottom: 25px;
+    padding-top: 10px;
 }
+
 .offer-description {
     margin-bottom: 2px;
     background: #ed1165;
@@ -121,39 +127,48 @@
 
 .remove-product {
     top: 8px !important;
-    background: url(https://assets-cdn.stylori.com/images/static/icon-close.png) no-repeat !important;
     width: 15px;
     height: 15px;
+    background: url(https://assets-cdn.stylori.com/images/static/icon-close.png) no-repeat;
     position: relative;
 }
-.subhesder{
+
+.subhesder {
     padding: 4px 3px !important;
     font-size: 12px !important;
     color: #394578;
     width: 100% !important;
 }
-.subhesder-response{
+
+.subhesder-response {
     padding: 4px 3px !important;
     font-size: 11px !important;
     color: #394578;
     width: 100% !important;
 }
-.checkout-response-card{
+
+.checkout-response-card {
     box-shadow: 0px 0px 28px -9px rgba(0, 0, 0, 0.77) !important;
     margin-bottom: 20px;
+    padding-left: 10px !important;
+    height: 240px !important;
+    overflow-y:  auto !important;
+    width: 95% !important;
 }
-.response-image{
+
+.response-image {
     padding: 0px !important;
     margin: 0px !important;
     width: 90% !important;
-    height: auto !important;
 }
-.response-image1{
+
+.response-image1 {
     width: 100% !important;
     height: 100% !important;
     border: 1px solid #CCC !important;
 }
-.responsive-card-bottom{
+
+.responsive-card-bottom {
     width: 100%;
     bottom: 12px !important;
     font-size: 13px !important;
