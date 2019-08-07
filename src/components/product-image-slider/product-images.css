@@ -446,11 +446,11 @@
     .expansion-summary,
     .MuiExpansionPanelSummary-root.Mui-expanded,
     .MuiExpansionPanelSummary-root,
-    .MuiExpansionPanel-root:before {
-        min-height: 55px !important;
-        height: 5px !important;
+    .MuiExpansionPanel-root:before,
+    .MuiExpansionPanel-root.Mui-expanded {
         padding: 0 !important;
         background: none !important;
+        margin: 0 !important;
     }
 
     .subtabs-smrt {
@@ -487,7 +487,6 @@
         left: 46% !important;
         margin-top: -453px !important;
         background-color: #fff !important;
-        cursor: crosshair;
     }
 
     .vertical-carousel {
@@ -495,6 +494,7 @@
         margin-bottom: 19px !important;
         width: 90% !important;
         height: 80px !important;
+        cursor: pointer;
     }
 
     .vertical-carousel-list-arrow {

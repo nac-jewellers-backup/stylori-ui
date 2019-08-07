@@ -63,20 +63,27 @@
     border-radius: none !important;
 }
 
-.product-image-thumb img {
+.product-image-thumb image {
     margin-top: -15px !important;
 }
 
 .title {
-    font-size: 19px;
     color: #394578;
     font-weight: 400;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    height: 15px !important;
 }
-
+.title-response ,.MuiCardHeader-root{
+    color: #394578;
+    line-height: 1.5em;
+    height: 2em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 92%;
+    font-size: 15px !important;
+    padding: 0 6px !important;
+}
 .product-rate {
-    margin: 10px;
     float: left;
     margin-left: 0;
     margin-top: 50px;
@@ -95,7 +102,13 @@
     margin-bottom: 2px;
     color: #ed1165;
 }
-
+.price-response{
+    padding: 0px 10px;
+    font-size: 13px !important;
+    color: #ed1165;
+         padding-bottom: 25px;
+    padding-top: 10px; 
+}
 .offer-description {
     margin-bottom: 2px;
     background: #ed1165;
@@ -118,4 +131,38 @@
     font-size: 12px !important;
     color: #394578;
     width: 100% !important;
+}
+.subhesder-response{
+    padding: 4px 3px !important;
+    font-size: 11px !important;
+    color: #394578;
+    width: 100% !important;
+}
+.checkout-response-card{
+    box-shadow: 0px 0px 28px -9px rgba(0, 0, 0, 0.77) !important;
+    margin-bottom: 20px;
+}
+.response-image{
+    padding: 0px !important;
+    margin: 0px !important;
+    width: 90% !important;
+    height: auto !important;
+}
+.response-image1{
+    width: 100% !important;
+    height: 100% !important;
+    border: 1px solid #CCC !important;
+}
+.responsive-card-bottom{
+    width: 100%;
+    bottom: 12px !important;
+    font-size: 13px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    color: #394578;
 }

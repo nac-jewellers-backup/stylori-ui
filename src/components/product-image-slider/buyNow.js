@@ -11,6 +11,34 @@ import ProductPrice from './productPrice'
 import PriceTabs from "./priceTabs";
 import buy from './producthoverData'
 import PropTypes from 'prop-types';
+
+const inputsearch=()=>{
+    return(
+        <div style={{ marginTop: "25px" }}>
+            {buy.productsbuy.map(val =>
+        <Grid container spacing={12}>
+            <Grid item lg={4} sm={8}>
+                <input
+                    placeholder='&#xf041; &nbsp; Enter Pin Code'
+                    className='buynow-search'
+                />
+
+            </Grid>
+            <Grid item lg={3} sm={4}>
+                <Button className="search-button">Check for COD </Button>
+            </Grid>
+            <Hidden smDown>
+            <Grid item xs={5} className="content">
+                <b className="ships-by">
+                    <span ><i style={{ fontSize: "20px" }} class="fa fa-truck"></i>&nbsp;&nbsp;{val.shipby}</span>
+                </b>
+            </Grid>
+            </Hidden>
+        </Grid>
+            )}
+    </div>
+    )
+}
 const Buydetails = () => {
     return (
         <div>
@@ -41,25 +69,7 @@ const Buydetails = () => {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <div style={{ marginTop: "25px" }}>
-                        <Grid container spacing={12}>
-                            <Grid item xs={4}>
-                                <input
-                                    placeholder='&#xf041; &nbsp; Enter Pin Code'
-                                    className='buynow-search'
-                                />
-
-                            </Grid>
-                            <Grid item xs={3}>
-                                <Button className="search-button">Check for COD </Button>
-                            </Grid>
-                            <Grid item xs={5} className="content">
-                                <b className="ships-by">
-                                    <span ><i style={{ fontSize: "20px" }} class="fa fa-truck"></i>&nbsp;&nbsp;{val.shipby}</span>
-                                </b>
-                            </Grid>
-                        </Grid>
-                    </div>
+                   {inputsearch()}
                 </>
             )}
         </div>
@@ -93,7 +103,7 @@ class PriceBuynow extends React.Component {
                                     <hr class="bottom-line product-inform-ation"></hr>
                                 </Grid>
                                 <PriceTabs />
-                                <Grid container spacing={12}>
+                                {/* <Grid container spacing={12}>
                                     <Grid item xs={8}>
                                         <input
                                             placeholder='Enter Pin Code'
@@ -103,7 +113,11 @@ class PriceBuynow extends React.Component {
                                     <Grid item xs={4}>
                                         <Button className="search-button">Check for COD </Button>
                                     </Grid>
-                                </Grid>
+                                </Grid> */}
+
+{inputsearch()}
+
+                                
                             </div>
                         )}
                     </Container></Hidden>

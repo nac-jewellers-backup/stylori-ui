@@ -2,10 +2,6 @@ import {
     Grid,
     Hidden,
     Container,
-    AppBar,
-    Toolbar,
-    AddIcon,
-    Fab
 } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul'
 import PriceBuynow from './buyNow'
@@ -104,13 +100,7 @@ class ProductPrice extends Component {
                 <Hidden mdUp>
                     {Productprice()}
 
-                    <AppBar color="primary" className="product-page-fixed-footer">
-                        <Grid container spacing={12}>
-                            <Grid className='product-footer-buynow ' item xs={6}><i class="fa fa-shopping-bag"></i> Buy Now</Grid>
-                            <Grid className='talk-to-us' item xs={6}><i class="fa fa-comments"></i> &nbsp;Talk To Us</Grid>
-                        </Grid>
-                    </AppBar>
-
+                  
                 </Hidden>
             </div>
 
