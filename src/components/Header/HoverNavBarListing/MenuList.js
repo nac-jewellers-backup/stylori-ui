@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { List, ListItem, ListItemText } from "@material-ui/core";
 import { withStyles } from '@material-ui/core/styles';
-import menuList from './tileData'
 import PropTypes from 'prop-types';
 
 
@@ -51,7 +50,7 @@ class MenuListItem extends Component {
         const { classes } = this.props;
         return (
             <div>
-                <List component="nav" className="ListColor" className={`${classes.colorMain}`}>
+                <List component="nav" className={`ListColor ${classes.colorMain}`}>
 
                     {
                         (this.props.listHoverItem !== undefined) &&

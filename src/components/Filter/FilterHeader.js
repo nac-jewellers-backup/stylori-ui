@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import {Paper,Toolbar,Typography,IconButton,Collapse} from '@material-ui/core';
+import { Paper, Toolbar, Typography, IconButton, Collapse } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CardRadioButton from "../InputComponents/RadioButton/index"
 import './filter.css';
 import filterdatas from './Filterdata';
@@ -44,16 +43,7 @@ class FilterHeader extends Component {
             let add = heights + filterHeight;
             this.setState({ topHeight: add });
         }
-        // else if(width<960){
-        //     const heights = 0;
-        //     let add=heights+filterHeight;
-        //     this.setState({ topHeight:add});
-        // }
-        // else if(width<600){
-        //     const heights = -20;
-        //     let add=heights+filterHeight;
-        //    this.setState({ topHeight:add});
-        // }
+
     }
     handleExpandClick = () => {
         this.setState({ expanded: !this.state.expanded });

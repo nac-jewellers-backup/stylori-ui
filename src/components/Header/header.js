@@ -21,9 +21,8 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import { Hidden } from '@material-ui/core';
 import JewelleryMenuItem from './HoverNavBarListing/JewlleryMenuItem';
 import HeaderNotification from './Notification/HeaderNotification'
-import { mainlist, Jewellery, subheader, menuList, menuListHeader } from './headerData'
+import { mainlist, Jewellery, subheader, menuListHeader } from './headerData'
 import { withStyles } from '@material-ui/core/styles';
-import tileData from './HoverNavBarListing/tileData';
 
 
 
@@ -241,7 +240,7 @@ class Header extends Component {
               {mainlist.map(row => (
                 <>
                   <ListItem button key={row.name} className="drawer-list" >
-                    <img className="submenu-icons" src={row.icon}></img>
+                    <img className="submenu-icons" src={row.icon} alt={row.icon}></img>
                     <ListItemText
                       onClick={() => Jewellery[row.name] !== undefined ? this.selectItem(row.name) : ''}
                     >
@@ -256,7 +255,7 @@ class Header extends Component {
                     Object.keys(Jewellery[selected]).map(row2 => (
                       <>
                         <ListItem button key={Jewellery[selected][row2].name} className="drawer-list">
-                          <img className="submenu-icons" src={row2.icon}></img>
+                          <img className="submenu-icons" src={row2.icon} alt=""></img>
                           <ListItemText onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>
                             <Typography className="Jew-mbl-head-list" variant="">{Jewellery[selected][row2].name}
                             </Typography>

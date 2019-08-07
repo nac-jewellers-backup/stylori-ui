@@ -4,11 +4,9 @@ import React from "react";
 import {
   Card,
   CardMedia,
-  CardActionArea,
   CardContent,
   Typography,
   CardActions,
-  Button
 } from "@material-ui/core";
 import PropTypes from "prop-types";
 

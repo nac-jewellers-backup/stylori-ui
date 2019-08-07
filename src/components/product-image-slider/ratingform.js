@@ -2,12 +2,10 @@ import React from "react";
 import './product-images.css';
 import {
     Grid,
-    TextField,
     Button,
     Container,
     Hidden
 } from '@material-ui/core';
-import data from './producthoverData'
 import Ratings from "../rating/rating";
 import { Input } from '../InputComponents/TextField/Input'
 import { Form } from '../Form/Form'

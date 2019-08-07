@@ -15,7 +15,7 @@ class Footer extends React.Component {
     return (
       <div>
         <div style={{ width: "100%", marginBottom: "-10%" }}>
-          <img src="https://assets-cdn.stylori.com/images/static/cartoon.png" />
+          <img src="https://assets-cdn.stylori.com/images/static/cartoon.png" alt=""/>
         </div>
         <div className='homefooter'>
 

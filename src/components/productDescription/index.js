@@ -3,7 +3,6 @@ import './ProductDescription.css'
 import { Container, Hidden, Grid } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul';
 import CustomSeparator from '../BreadCrumb/index';
-import { withTheme } from '@material-ui/core/styles';
 import ProductDescriptionTitle from './ProductDescriptionTitle'
 import { withStyles } from '@material-ui/core/styles';
 

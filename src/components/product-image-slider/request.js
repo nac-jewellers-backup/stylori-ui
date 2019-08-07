@@ -3,11 +3,9 @@ import {
     Button,
     Hidden,
     Container,
-    ExpansionPanelDetails,
     ExpansionPanelSummary,
     ExpansionPanel,
     Typography,
-    ExpandMoreIcon
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';

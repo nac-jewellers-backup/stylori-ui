@@ -54,7 +54,7 @@ class ProductImageZoom extends Component {
           <Grid item xs={10}>
             <div>
               <div className="imagecard" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
-                <img id="imgZoom" width="100%" height="100%" src={showimage} />
+                <img id="imgZoom" width="100%" height="100%" src={showimage} alt=""/>
               </div>
 
               <div className='overly-img' id="overlay"
@@ -65,7 +65,7 @@ class ProductImageZoom extends Component {
                   {TB.productsubHead.map(val => (
                     <Grid item xs={2} >
                       <div key={val.name}>
-                        <img className='features-tags-images' src={val.icon} />
+                        <img className='features-tags-images' src={val.icon} alt=""/>
                         <span style={{ fontSize: "14px" }}>{val.name} </span>
                       </div>
                     </Grid>
