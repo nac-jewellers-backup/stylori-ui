@@ -14,7 +14,8 @@ import SwipeableViews from 'react-swipeable-views';
 import './product-images.css'
 import H from './producthoverData'
 import PropTypes from 'prop-types';
-
+import Slideshow from '../Carousel/carosul'
+import Slider from "react-slick";
 function TabContainer({ children, dir }) {
     return (
         <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
@@ -25,11 +26,24 @@ function TabContainer({ children, dir }) {
 
 
 class PriceTabs extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     state = {
         value: 0,
         expanded: null
     };
     TabsS = () => {
+        const settings = {
+            className: 'center',
+            infinite: true,
+            centerPadding: '60px',
+            slidesToShow: 8,
+            slidesToScroll: 5,
+            afterChange: function (index) {
+                console.log(`Slider Changed to: ${index + 1}, background: #222; color: #bada55`);
+            }
+        };
         return (
             <div>
                 {H.productstabs.map(val =>
@@ -44,8 +58,9 @@ class PriceTabs extends React.Component {
                                     indicatorColor="primary"
                                 >
                                     <Tab className='subtabs' icon={<i class="fa fa-circle-thin"></i>} label={val.tab1.header} />
-                                    <Tab className='subtabs' label={val.tab2.header} />
-                                    <Tab className='subtabs' label={`Active ${val.tab3.header}`}  />
+                                    <Tab className='subtabs' icon={<i class="fa fa-cube"></i>} label={val.tab2.header} />
+                                    <Tab className='subtabs' icon={<i class="fa fa-diamond"></i>
+                                    } label={`Active ${val.tab3.header}`} />
                                 </Tabs>
                             </AppBar>
                         </div>
@@ -54,20 +69,22 @@ class PriceTabs extends React.Component {
                             onChangeIndex={this.handleChangeIndex}
                         >
                             <TabContainer >
-                                {val.tab1.Children.map(val =>
-                                    <Grid container spacing={12} >
-                                        <Grid xs={4}>
-                                            <img src={val.icon} style={{ width: '35px' }} alt=""/>
-                                            <span className="tabs-contants">  {val.name}</span>
-                                        </Grid>
-                                    </Grid>
-                                )}
+                                <Slideshow  dataCarousel={settings} >
+                                    {val.tab1.Children.map(val =>
+                                        <div className="pagination">
+                                        <a href="#" class=
+                                              "page dark">{val}</a>
+                                              </div>
+                                    )}
+
+                                </Slideshow>
+
                             </TabContainer>
                             <TabContainer >
                                 {val.tab2.Children.map(val =>
                                     <Grid container spacing={12}>
                                         <Grid xs={3}>
-                                            <img src={val.icon} style={{ width: '35px' }} alt=""/>
+                                            <img src={val.icon} style={{ width: '35px' }} alt="" />
                                             <span className="tabs-contants">  {val.name}</span>
                                         </Grid>
                                     </Grid>
@@ -77,7 +94,7 @@ class PriceTabs extends React.Component {
                                 {val.tab3.Children.map(val =>
                                     <Grid container spacing={12}>
                                         <Grid xs={3}>
-                                            <img src={val.icon} style={{ width: '35px' }} alt=""/>
+                                            <img src={val.icon} style={{ width: '35px' }} alt="" />
                                             <span className="tabs-contants">  {val.name}</span>
                                         </Grid>
                                     </Grid>
@@ -110,7 +127,7 @@ class PriceTabs extends React.Component {
                                         <Grid container spacing={12}>
                                             <Grid xs={12}>
                                                 <div>
-                                                    <img src={val.icon} style={{ width: '35px' }} alt=""/>&nbsp;
+                                                    <img src={val.icon} style={{ width: '35px' }} alt="" />&nbsp;
                                             <span className="tabs-contants">  {val.name}</span>
                                                 </div>
 
@@ -133,14 +150,14 @@ class PriceTabs extends React.Component {
                                 <ExpansionPanelDetails style={{ padding: 0 }}>
                                     {val.tab2.Children.map(val =>
                                         <Grid container spacing={12}>
-                                        <Grid xs={12}>
-                                            <div>
-                                                <img src={val.icon} style={{ width: '35px' }} alt=""/>&nbsp;
+                                            <Grid xs={12}>
+                                                <div>
+                                                    <img src={val.icon} style={{ width: '35px' }} alt="" />&nbsp;
                                         <span className="tabs-contants">  {val.name}</span>
-                                            </div>
+                                                </div>
 
+                                            </Grid>
                                         </Grid>
-                                    </Grid>
                                     )}
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
@@ -157,14 +174,14 @@ class PriceTabs extends React.Component {
                                 <ExpansionPanelDetails style={{ padding: 0 }}>
                                     {val.tab3.Children.map(val =>
                                         <Grid container spacing={12}>
-                                        <Grid xs={12}>
-                                            <div>
-                                                <img src={val.icon} style={{ width: '35px' }} alt=""/>&nbsp;
+                                            <Grid xs={12}>
+                                                <div>
+                                                    <img src={val.icon} style={{ width: '35px' }} alt="" />&nbsp;
                                         <span className="tabs-contants">  {val.name}</span>
-                                            </div>
+                                                </div>
 
+                                            </Grid>
                                         </Grid>
-                                    </Grid>
                                     )}
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>

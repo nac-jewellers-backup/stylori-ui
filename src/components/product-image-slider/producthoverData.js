@@ -102,10 +102,7 @@ export const productstabs = [
             header: "Ring Size",
             Children:
                 [
-                    {
-                        name: "18K Yellow Diamond",
-                        icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
-                    },
+                   '1','2','3','4','5','6','7','8','9','10','11','12','13'
 
                 ]
 
@@ -114,9 +111,6 @@ export const productstabs = [
             header: "Metal Purity",
             Children: [
                 {
-                    name: "Diamond Details",
-                    icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
-                }, {
                     name: "Diamond Details",
                     icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
                 },

@@ -56,7 +56,7 @@ class CustomerReviews extends React.Component {
                             <ExpansionPanelDetails>
                                 <Typography>
                                     Lorem ipsum dolor malesuada lacus
-            </Typography>
+                        </Typography>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
                     </Container> </Hidden>

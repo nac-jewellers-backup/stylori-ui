@@ -140,14 +140,24 @@
         border-bottom: 1px solid #ddd !important;
     }
 
-    .subtabs,.MuiTab-wrapper,.MuiTabs-flexContainer{
+    .subtabs,
+    .MuiTab-wrapper,
+    .MuiTabs-flexContainer,
+    .MuiTab-labelIcon {
         color: #ed1165 !important;
         border: 1px solid transparent;
         border-radius: 4px 4px 0 0;
         text-transform: none !important;
         font-size: 13px !important;
-         flex-direction: unset !important; 
-         height: 44px !important;
+        flex-direction: unset !important;
+        display: unset !important;
+    }
+
+    .subtabs,
+    .MuiTab-labelIcon,
+    .MuiTabs-root {
+        min-height: 0px !important;
+        height: 42px !important;
     }
 
     .PrivateTabIndicator-colorPrimary-170 {
@@ -615,4 +625,63 @@
 
     .overall-icons {
         font-size: 18px !important;
+    }
+
+  .pagination{
+        width: 7px !important;
+  }
+    .page {
+        display: inline-block;
+        text-align: center !important;
+        height: 33px;
+        line-height: 33px;
+        width: 33px;
+        margin-right: 4px;
+        border-radius: 50%;
+        border: 1px solid #ccc;
+        background: #fff;
+        box-shadow: inset 0px 1px 0px rgba(255, 255, 255, .8), 0px 1px 3px rgba(0, 0, 0, .1);
+        font-size: 15px;
+        text-decoration: none;
+        color: #fff;
+        text-shadow: 0px 1px 0px rgba(255, 255, 255, 1);
+    }
+
+    .page:hover,
+    .page.gradient:hover {
+        background: #394578 !important;
+        color: #fff !important;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FEFEFE), to(#f0f0f0));
+        background: -moz-linear-gradient(0% 0% 270deg, #FEFEFE, #f0f0f0);
+    }
+
+    .page.gradient {
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f8f8f8), to(#e9e9e9));
+        background: -moz-linear-gradient(0% 0% 270deg, #f8f8f8, #e9e9e9);
+    }
+
+    .page.dark {
+        border: solid 1px #ccc;
+        background: #fff;
+        box-shadow: inset 0px 1px 1px rgba(255, 255, 255, .1), 0px 1px 3px rgba(0, 0, 0, .1);
+        color: #000;
+        text-shadow: 0px 1px 0px rgba(0, 0, 0, .5);
+    }
+
+    .page.dark:hover,
+    .page.dark.gradient:hover {
+        background: #3d4f5d;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#547085), to(#3d4f5d));
+        background: -moz-linear-gradient(0% 0% 270deg, #547085, #3d4f5d);
+    }
+
+    .page.dark.active {
+        border: none;
+        background: #2f3237;
+        box-shadow: inset 0px 0px 8px rgba(0, 0, 0, .5), 0px 1px 0px rgba(255, 255, 255, .1);
+    }
+
+    .page.dark.gradient {
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#565b5f), to(#3e4347));
+        background: -moz-linear-gradient(0% 0% 270deg, #565b5f, #3e4347);
     }
