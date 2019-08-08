@@ -11,16 +11,15 @@ function HeaderHoverMenuItem(props) {
   const [activetab, setActivetab] = React.useState("earings");
   const { onMouseLeave, onMouseOver } = props;
   console.log(props.listHoverItem);
-  debugger
   return (
-    <Paper style={{ position: "relative", left: '160px', width: '76vw' }} className="animations" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} >
+    <Paper style={{ position: "relative", left: '12%', width: '76vw' }} className="animations" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} >
       <Grid container>
         <Grid container item xs={3}>
           <MenuListItem listHoverItem={props.listHoverItem} handleMouseOver={val => setActivetab(val)} activetab={activetab} />
         </Grid>
         {
           (activetab !== 'Price' && activetab !== 'Collection' && activetab !== 'Material' && activetab !== 'Collection') &&
-          <Grid item >
+          <Grid item xs={9}>
             <ImageGridList activetab={activetab} tabdata={props.tabdata} />
           </Grid>
         }

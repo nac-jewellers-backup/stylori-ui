@@ -97,7 +97,7 @@ class FilterHeader extends Component {
                                 </span> */}
                             </Typography>
                         </div>
-                        <div className={"testMenu"} style={{ position: "absolute", right: "15px", top: "45px" }}>
+                        <div className={"testMenu"} style={{ position: "absolute", right: "15px", top: "65px",  boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 7px' }}>
                             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit >
                                 <CardRadioButton data={filterdatas.radioValues} />
                             </Collapse>

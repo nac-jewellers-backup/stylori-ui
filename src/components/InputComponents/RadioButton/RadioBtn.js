@@ -12,16 +12,28 @@ const useStyles = makeStyles(theme => ({
 
   },
   formControl: {
-    margin: theme.spacing(1),
-
-    fontFamily: "Roboto"
+    margin: theme.spacing(0.8),
+    fontFamily: "Roboto",
+  
+  },
+  fromControlTwo:{
+    '& span':{
+      fontSize:'0.9rem !important',
+      '& svg':{
+        width:'0.99rem'
+      }
+    },
   },
   group: {
     color: "#394578",
   },
   radio: {
-    color: "#394578",
-    fontSize: '8px !important',
+          color: "#394578",
+    
+   
+      
+    
+
   }
 }));
 
@@ -42,7 +54,7 @@ export default function RadioBtn(props) {
   console.log(value);
   return (
     <div className={classes.root}>
-      <FormControl component="fieldset" className={classes.formControl}>
+      <FormControl component="fieldset" className={`${classes.fromControlTwo} ${classes.formControl}`}>
         <RadioGroup
           aria-label="Gender"
           name="gender1"

@@ -77,9 +77,8 @@
 }
 .fil-drawer-head-sort {
   position: absolute;
-  right: 5%;
+  right: 7%;
   top: 23%;
-
   cursor: pointer;
 }
 .fil-drawer-sort_font {
