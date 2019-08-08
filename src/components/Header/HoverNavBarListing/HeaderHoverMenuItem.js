@@ -11,7 +11,6 @@ function HeaderHoverMenuItem(props) {
   const [activetab, setActivetab] = React.useState("earings");
   const { onMouseLeave, onMouseOver } = props;
   console.log(props.listHoverItem);
-  debugger
   return (
     <Paper style={{ position: "relative", left: '160px', width: '76vw' }} className="animations" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} >
       <Grid container>
