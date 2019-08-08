@@ -168,8 +168,8 @@ class Header extends Component {
                     }
                   </nav>
                     {
-                      
-                      this.state.Menuopen && tabdata.menuLists[this.state.listHoverItem]  ? 
+                    //this.state.Menuopen &&  
+                     tabdata.menuLists[this.state.listHoverItem]  ? 
                         <HeaderHoverMenuItem Checked={this.state.Checked} tabdata={tabdata} listHoverItem={tabdata.menuLists[this.state.listHoverItem]}
                           onMouseOver={() => { this.setState({ Menuopen: true, }) }}
                           onMouseLeave={() => { this.setState({ Menuopen: false,Checked:false }) }}
