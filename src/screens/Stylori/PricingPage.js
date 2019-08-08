@@ -37,7 +37,7 @@ export default class Stylori extends Component {
               <Header />
             </Grid>
           </Grid>
-          {/* <Container maxWidth='xl'>
+          <Container maxWidth='xl'>
             <Grid Container spacing={12}>
               <Grid item xs={12}>
                 <CustomSeparator />
@@ -67,19 +67,19 @@ export default class Stylori extends Component {
             <Sublistcarousel />
             <RatingForm />
             <CustomerReviews />
-          </Container>  */}
-          {/* <Grid item xs={12} style={{ paddingTop: '5%' }}>
+          </Container> 
+          <Grid item xs={12} style={{ paddingTop: '5%' }}>
             <Footer />
-          </Grid>  */}
-           <Checkoutbreadcrum/>
-          <Checkoutcard/>
+          </Grid>  
+           {/* <Checkoutbreadcrum/>
+          <Checkoutcard/> */}
         </Hidden>
 
 
 
 
         <Hidden mdUp>
-          {/* <div style={{paddingBottom:"50px"}}>
+        <div style={{paddingBottom:"50px"}}>
           <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
             <Grid item xs={12} >
               <Header />
@@ -113,8 +113,8 @@ export default class Stylori extends Component {
           </Grid>
           </div>
           
-          <Buynowfixed/> */}
-          <Checkoutcard/>
+          <Buynowfixed/> 
+          {/* <Checkoutcard/> */}
         </Hidden>
 
 

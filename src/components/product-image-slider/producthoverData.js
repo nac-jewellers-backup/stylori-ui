@@ -13,6 +13,19 @@ export const productsDetails = [
             details: "1.463"
         }],
     }, {
+        header: "Product Details",
+        namedetail: [{
+            name: "Product Code",
+            details: "SP0-110000"
+        },
+        {
+            name: "Metal Type",
+            details: "18K Yellow Gold"
+        }, {
+            name: "Approximate",
+            details: "1.463"
+        }],
+    }, {
         header: "Diamond Details ",
 
 
