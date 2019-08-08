@@ -129,6 +129,9 @@ export const productstabs = [
                 {
                     name: "Diamond Details",
                     icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
+                }, {
+                    name: "Diamond Details",
+                    icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
                 },
 
             ]
