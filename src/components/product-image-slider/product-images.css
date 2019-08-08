@@ -140,12 +140,14 @@
         border-bottom: 1px solid #ddd !important;
     }
 
-    .subtabs {
+    .subtabs,.MuiTab-wrapper,.MuiTabs-flexContainer{
         color: #ed1165 !important;
         border: 1px solid transparent;
         border-radius: 4px 4px 0 0;
         text-transform: none !important;
         font-size: 13px !important;
+         flex-direction: unset !important; 
+         height: 44px !important;
     }
 
     .PrivateTabIndicator-colorPrimary-170 {

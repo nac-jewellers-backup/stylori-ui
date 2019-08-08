@@ -13,19 +13,6 @@ export const productsDetails = [
             details: "1.463"
         }],
     }, {
-        header: "Product Details",
-        namedetail: [{
-            name: "Product Code",
-            details: "SP0-110000"
-        },
-        {
-            name: "Metal Type",
-            details: "18K Yellow Gold"
-        }, {
-            name: "Approximate",
-            details: "1.463"
-        }],
-    }, {
         header: "Diamond Details ",
 
 
@@ -127,6 +114,9 @@ export const productstabs = [
             header: "Metal Purity",
             Children: [
                 {
+                    name: "Diamond Details",
+                    icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
+                }, {
                     name: "Diamond Details",
                     icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
                 },
