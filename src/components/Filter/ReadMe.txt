@@ -4,12 +4,13 @@
     <br>    
     Consists of data that need for the filter component
     >   ### Example
-    >       #### MainFilter:
+
+    >       #### **MainFilter**:
     >                   export const filter = [
     >                   'Offers', 'Availability', 'Prodect Type', 'Style', 'Material', 'Theme', 'Collection',
     >                   'Metal Color', 'Metal Purity', 'Occasion', 'No Of Stone', 'Gender', 'Stone Color', 'Stone Shap']
     >
-    >       #### SubFilter:
+    >       #### SubFilter**:
     >                    export const filter1 = {
     >                    'Offers': [
     >                               'Up to  20%',

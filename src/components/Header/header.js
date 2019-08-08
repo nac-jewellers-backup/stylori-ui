@@ -19,7 +19,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { Hidden } from '@material-ui/core';
-import JewelleryMenuItem from './HoverNavBarListing/JewlleryMenuItem';
+import HeaderHoverMenuItem from './HoverNavBarListing/HeaderHoverMenuItem';
 import HeaderNotification from './Notification/HeaderNotification'
 import { mainlist, Jewellery, subheader, menuListHeader } from './headerData'
 import { withStyles } from '@material-ui/core/styles';
@@ -104,7 +104,7 @@ class Header extends Component {
               <Grid container spacing={12}  >
                 <Grid item xs={3}>
                   <div className={`head-icons ${classes.colorMain}`} >
-                    <i class="fa fa-truck "></i>
+                    <i class="fa fa-truck"></i>
                     <i class="fa fa-phone"></i>
                   </div>
                 </Grid>
@@ -170,7 +170,7 @@ class Header extends Component {
                     {
                       
                       this.state.Menuopen && tabdata.menuLists[this.state.listHoverItem]  ? 
-                        <JewelleryMenuItem Checked={this.state.Checked} tabdata={tabdata} listHoverItem={tabdata.menuLists[this.state.listHoverItem]}
+                        <HeaderHoverMenuItem Checked={this.state.Checked} tabdata={tabdata} listHoverItem={tabdata.menuLists[this.state.listHoverItem]}
                           onMouseOver={() => { this.setState({ Menuopen: true, }) }}
                           onMouseLeave={() => { this.setState({ Menuopen: false,Checked:false }) }}
                         />

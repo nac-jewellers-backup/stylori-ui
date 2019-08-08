@@ -7,7 +7,7 @@ import HoverTableGrid from './HoverTableGrid';
 import HoverImagesFullGrid from './HoverImagesFullGrid';
 import './../header.css'
 
-function JewelleryMenuItem(props) {
+function HeaderHoverMenuItem(props) {
   const [activetab, setActivetab] = React.useState("earings");
   const { onMouseLeave, onMouseOver } = props;
   console.log(props.listHoverItem);
@@ -39,9 +39,9 @@ function JewelleryMenuItem(props) {
   );
 }
 
-export default JewelleryMenuItem;
+export default HeaderHoverMenuItem;
 
-JewelleryMenuItem.propTypes = {
+HeaderHoverMenuItem.propTypes = {
   onMouseOver: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
   listHoverItem: PropTypes.object.isRequired,

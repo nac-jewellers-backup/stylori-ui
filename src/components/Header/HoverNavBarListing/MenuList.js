@@ -79,7 +79,7 @@ class MenuListItem extends Component {
                                 onClick={() => { window.location.href = '/' + menuListFilter.url }}
                                 onMouseOver={() => this.props.handleMouseOver(menuListFilter.value)}>
 
-                                <ListItemText   >
+                                <ListItemText>
 
                                     {menuListFilter.title}
                                 </ListItemText>
