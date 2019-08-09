@@ -346,14 +346,14 @@ class PersistentDrawerLeft extends React.Component {
 
             <AppBar color="primary" className="filter-fixed header" style={{ display: !openMobile ? 'none' : 'block' }}>
               <Toolbar >
-                <IconButton onClick={this.handleDrawerOpenMobile}>
+                <div onClick={this.handleDrawerOpenMobile}>
                   <Typography variant=""
                     className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-filter"
 
                     ></i> &nbsp;
                     Filter
                     </Typography>
-                </IconButton>
+                </div>
 
                 <div style={{ flexGrow: "2" }} />
 
