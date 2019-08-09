@@ -54,21 +54,21 @@ class FilterHeader extends Component {
         return (
             <Paper style={{ position: 'sticky', top: this.state.topHeight, width: '100%', zIndex: '3', boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">
                 {/* <div style={{position:'sticky',top:'165px'}}> */}
-                <Grid item container>
+                <Grid container>
                     <Grid item lg={6}>
                         <Toolbar disableGutters={!this.props.open}>
 
                             <div style={{ width: "240px" }}>
                                 {this.props.check ?
-                                    <IconButton onClick={this.props.handleChangeDrawer}
+                                    <div onClick={this.props.handleChangeDrawer}
                                         style={{ float: 'right' }}>
-                                        <i style={{ color: "#394578", margin: "45%" }} class="fa fa-times"></i>
-                                    </IconButton >
+                                        <i style={{ color: "#394578", margin: "40%",cursor:'pointer',fontSize:'16px' }} class="fa fa-times"></i>
+                                    </div >
                                     :
                                     ''
                                 }
 
-                                <IconButton onClick={this.props.handleChangeDrawer}>
+                                <Grid item onClick={this.props.handleChangeDrawer} style={{ display: 'flex', alignItems: 'center',position: 'absolute',top: '29%',left:'5%',cursor:'pointer' }}>
                                     {
                                         this.props.check ? <ChevronRightIcon className={`${classes.colorMain}`} />
                                             :
@@ -81,7 +81,7 @@ class FilterHeader extends Component {
                                     >
                                         Filter By
             </Typography>
-                                </IconButton>
+                                </Grid>
                             </div>
                         </Toolbar>
                     </Grid>
@@ -97,7 +97,7 @@ class FilterHeader extends Component {
                                 </span> */}
                             </Typography>
                         </div>
-                        <div className={"testMenu"} style={{ position: "absolute", right: "15px", top: "65px",  boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 7px' }}>
+                        <div className={"testMenu"} style={{ position: "absolute", right: "15px", top: "65px", boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 7px' }}>
                             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit >
                                 <CardRadioButton data={filterdatas.radioValues} />
                             </Collapse>

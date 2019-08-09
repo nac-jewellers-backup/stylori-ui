@@ -101,7 +101,7 @@ class PersistentDrawerLeft extends React.Component {
       selected: '',
       filtercheck: '',
       productDisplay: true,
-      check: false,
+      check: true,
       chipData: [
         { key: '', label: '' },
       ],
@@ -189,7 +189,7 @@ class PersistentDrawerLeft extends React.Component {
 
             {/* <CssBaseline /> */}
             <div >
-              <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '210px' }} className="SliderFilter" >
+              <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '210px',maxHeight:'68vh',overflowY:'scroll' }} className="SliderFilter scrollBarFilter" >
                 <div >
 
 
@@ -240,15 +240,14 @@ class PersistentDrawerLeft extends React.Component {
                             onClick={() => this.selectItem(row)}>
                             <ListItemText
                             >
-                              <Typography className="fil-list-items"
-                                variant=""
+                              <Typography className="fil-list-items" variant='h4' component="h4"
                               >{row}
                               </Typography>
                             </ListItemText>
                             {row === selected ? <ExpandMore className="fil-drawer-arrow" /> :
                               <ExpandLess className="fil-drawer-arrow" />}
                           </ListItem>
-                          <div style={{ maxHeight: '200px', overflow: 'auto' }}>
+                      <div > {/* style={{ maxHeight: '200px', overflow: 'auto' }} */}
                             {selected === row &&
                               filterdatas.filter1[row] !== undefined && filterdatas.filter1[row].map(row12 => (
                                 <ListItem key={row12}  >   {/* button */}
@@ -347,14 +346,14 @@ class PersistentDrawerLeft extends React.Component {
 
             <AppBar color="primary" className="filter-fixed header" style={{ display: !openMobile ? 'none' : 'block' }}>
               <Toolbar >
-                <IconButton onClick={this.handleDrawerOpenMobile}>
+                <div onClick={this.handleDrawerOpenMobile}>
                   <Typography variant=""
                     className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-filter"
 
                     ></i> &nbsp;
                     Filter
                     </Typography>
-                </IconButton>
+                </div>
 
                 <div style={{ flexGrow: "2" }} />
 
