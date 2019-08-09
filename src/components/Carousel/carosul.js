@@ -12,6 +12,7 @@ class Slideshow extends React.Component {
   }
 
   renderFadeImages = () => {
+
     let { video } = this.props;
     return this.props.fadeImages ? this.props.fadeImages.map(imgs => (
       <div className={` ${this.props.class ? this.props.class : ''}`} onClick={e => this.props.getmsg ? this.props.getmsg(e) : ''}>
@@ -22,9 +23,10 @@ class Slideshow extends React.Component {
     )) : ''
   }
 
-
+  
 
   imagehoverchildrens = (hoverlist) => {
+
     let { hover } = this.props;
     return hoverlist.map(val => (
       <div class={"subslider-carousel" + hover ? " hovereffect" : ""}>

@@ -102,7 +102,7 @@ export const productstabs = [
             header: "Ring Size",
             Children:
                 [
-                   '1','2','3','4','5','6','7','8','9','10','11','12','13'
+                    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'
 
                 ]
 
@@ -157,11 +157,11 @@ export const imagecertificat = [
 ];
 const fadeImages = [
     'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
-    'https://n3.sdlcdn.com/imgs/d/e/n/Twishq-Single-Line-High-Quality-SDL077149833-1-3793d.jpg  ',
+    'https://images7.alphacoders.com/421/421542.jpg ',
     'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
-    'https://n3.sdlcdn.com/imgs/d/e/n/Twishq-Single-Line-High-Quality-SDL077149833-1-3793d.jpg  ',
+    'https://images7.alphacoders.com/421/421542.jpg ',
     'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
-    'https://n3.sdlcdn.com/imgs/d/e/n/Twishq-Single-Line-High-Quality-SDL077149833-1-3793d.jpg  ',
+    'https://images7.alphacoders.com/421/421542.jpg ',
 ];
 export const fadeImagessublist = [
     {

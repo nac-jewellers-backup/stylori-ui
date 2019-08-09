@@ -1,9 +1,9 @@
-  export const dataCard = [
-     {
+export const dataCard = [
+  {
     offerPrice: "23000.10",
     price: "29000.0",
     title: "Diamond Pendant Ring",
-    save:'5999.9',
+    save: '5999.9',
     image: {
       placeImage:
         "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
@@ -16,20 +16,7 @@
     offerPrice: "23000.10",
     price: "29000.0",
     title: "Diamond Pendant Ring",
-    save:'5999.9',
-    image: {
-      placeImage:
-        "https://assets-cdn.stylori.com/209x209/images/product/SE0562/SE0562-1Y.jpg",
-      hoverImage:
-        "https://assets-cdn.stylori.com/209x209/images/product/SE0562/HOVER-SE0562-2Y.jpg"
-    },
-
-},
-  {
-    offerPrice: "23000.10",
-    price: "29000.0",
-    title: "Diamond Pendant Ring",
-    save:'5999.9',
+    save: '5999.9',
     image: {
       placeImage:
         "https://assets-cdn.stylori.com/209x209/images/product/SE0562/SE0562-1Y.jpg",
@@ -42,7 +29,20 @@
     offerPrice: "23000.10",
     price: "29000.0",
     title: "Diamond Pendant Ring",
-    save:'5999.9',
+    save: '5999.9',
+    image: {
+      placeImage:
+        "https://assets-cdn.stylori.com/209x209/images/product/SE0562/SE0562-1Y.jpg",
+      hoverImage:
+        "https://assets-cdn.stylori.com/209x209/images/product/SE0562/HOVER-SE0562-2Y.jpg"
+    },
+
+  },
+  {
+    offerPrice: "23000.10",
+    price: "29000.0",
+    title: "Diamond Pendant Ring",
+    save: '5999.9',
     image: {
       placeImage:
         "https://assets-cdn.stylori.com/204x204/images/product/SE0763/SE0763-1Y.jpg",
@@ -55,7 +55,7 @@
     offerPrice: "23000.10",
     price: "29000.0",
     title: "Diamond Pendant Ring",
-    save:'5999.9',
+    save: '5999.9',
     image: {
       placeImage:
         "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
@@ -68,7 +68,7 @@
     offerPrice: "23000.10",
     price: "29000.0",
     title: "Diamond Pendant Ring",
-    save:'5999.9',
+    save: '5999.9',
     image: {
       placeImage:
         "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
@@ -81,7 +81,7 @@
     offerPrice: "23000.10",
     price: "29000.0",
     title: "Diamond Pendant Ring",
-    save:'5999.9',
+    save: '5999.9',
     image: {
       placeImage:
         "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
@@ -94,7 +94,7 @@
     offerPrice: "23000.10",
     price: "29000.0",
     title: "Diamond Pendant Ring",
-    save:'5999.9',
+    save: '5999.9',
     image: {
       placeImage:
         "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
@@ -107,7 +107,7 @@
     offerPrice: "23000.10",
     price: "29000.0",
     title: "Diamond Pendant Ring",
-    save:'5999.9',
+    save: '5999.9',
     image: {
       placeImage:
         "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
@@ -120,7 +120,7 @@
     offerPrice: "23000.10",
     price: "29000.0",
     title: "Diamond Pendant Ring",
-    save:'5999.9',
+    save: '5999.9',
     image: {
       placeImage:
         "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
@@ -133,7 +133,7 @@
     offerPrice: "23000.10",
     price: "29000.0",
     title: "Diamond Pendant Ring",
-    save:'5999.9',
+    save: '5999.9',
     image: {
       placeImage:
         "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
@@ -146,7 +146,7 @@
     offerPrice: "23000.10",
     price: "29000.0",
     title: "Diamond Pendant Ring",
-    save:'5999.9',
+    save: '5999.9',
     image: {
       placeImage:
         "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
@@ -159,7 +159,7 @@
     offerPrice: "23000.10",
     price: "29000.0",
     title: "Diamond Pendant Ring",
-    save:'5999.9',
+    save: '5999.9',
     image: {
       placeImage:
         "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
@@ -168,13 +168,14 @@
     },
 
   },
-  
-
+];
+export const dataCard1 = [
   {
     offerPrice: "23000.10",
     price: "29000.0",
     title: "Diamond Pendant Ring",
-    save:'5999.9',
+    dis: 'Pendants set in 18 Kt Yellow Gold 3.95 gm with Diamonds (0.52 ct, GH - SI )',
+    save: '5999.9',
     image: {
       placeImage:
         "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
@@ -183,8 +184,6 @@
     },
 
   },
+]
 
-
-  ]
-
-export default dataCard;
+export default { dataCard, dataCard1 };

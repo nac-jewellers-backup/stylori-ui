@@ -15,7 +15,6 @@ import './product-images.css'
 import H from './producthoverData'
 import PropTypes from 'prop-types';
 import Slideshow from '../Carousel/carosul'
-import Slider from "react-slick";
 function TabContainer({ children, dir }) {
     return (
         <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
@@ -28,11 +27,19 @@ function TabContainer({ children, dir }) {
 class PriceTabs extends React.Component {
     constructor(props) {
         super(props);
+        this.handleClick = this.handleClick.bind(this);
     }
     state = {
         value: 0,
+        currentPage: 1,
+        todosPerPage: 3,
         expanded: null
     };
+    handleClick(event) {
+        this.setState({
+          currentPage: Number(event.target.id)
+        });
+      }
     TabsS = () => {
         const settings = {
             className: 'center',
@@ -40,11 +47,9 @@ class PriceTabs extends React.Component {
             centerPadding: '60px',
             slidesToShow: 8,
             slidesToScroll: 5,
-            afterChange: function (index) {
-                console.log(`Slider Changed to: ${index + 1}, background: #222; color: #bada55`);
-            }
         };
-        return (
+        const { todos, currentPage, todosPerPage } = this.state;
+         return (
             <div>
                 {H.productstabs.map(val =>
                     <>
@@ -57,9 +62,9 @@ class PriceTabs extends React.Component {
                                     onChange={this.handleChange}
                                     indicatorColor="primary"
                                 >
-                                    <Tab className='subtabs' icon={<i class="fa fa-circle-thin"></i>} label={val.tab1.header} />
-                                    <Tab className='subtabs' icon={<i class="fa fa-cube"></i>} label={val.tab2.header} />
-                                    <Tab className='subtabs' icon={<i class="fa fa-diamond"></i>
+                                    <Tab className='subtabs' icon={<i class="fa fa-circle-thin tabs-hesd-icon"></i>} label={val.tab1.header} />
+                                    <Tab className='subtabs' icon={<i class="fa fa-cube tabs-hesd-icon"></i>} label={val.tab2.header} />
+                                    <Tab className='subtabs' icon={<i class="fa fa-diamond tabs-hesd-icon"></i>
                                     } label={`Active ${val.tab3.header}`} />
                                 </Tabs>
                             </AppBar>
@@ -68,16 +73,21 @@ class PriceTabs extends React.Component {
                             index={this.state.value}
                             onChangeIndex={this.handleChangeIndex}
                         >
-                            <TabContainer >
-                                <Slideshow  dataCarousel={settings} >
-                                    {val.tab1.Children.map(val =>
-                                        <div className="pagination">
-                                        <a href="#" class=
-                                              "page dark">{val}</a>
-                                              </div>
-                                    )}
+                            <TabContainer>
+                                <div className="pagination-wd" >
+                                    <Slideshow dataCarousel={settings} >
+                                        {val.tab1.Children.map(val =>
+                                            <div id="pagination"
+                                            onClick={this.handleClick}
+                                            >
+                                                <a className=
+                                                    "page dark ">{val}</a>
+                                            </div>
+                                        )}
 
-                                </Slideshow>
+                                    </Slideshow>
+                                </div>
+
 
                             </TabContainer>
                             <TabContainer >

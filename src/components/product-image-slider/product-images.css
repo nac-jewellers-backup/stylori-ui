@@ -36,7 +36,7 @@
 
     .starts-review {
         cursor: pointer;
-        text-align: center;
+        text-align: center !important;
         margin-top: 5px;
         color: #394578;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -106,6 +106,10 @@
     }
 
     /*price tabs*/
+    .tabs-hesd-icon {
+        padding: 0 5px !important;
+    }
+
     .price-panel {
         /* padding: 0px; */
         box-shadow: none !important;
@@ -595,16 +599,21 @@
         width: 100% !important;
     }
 
+    .fixed-grid {
+        background-color: #f36e23 !important;
+    }
+
     .product-footer-buynow {
         padding: 14px 20px !important;
         font-size: 16px;
         height: 50px !important;
         border-radius: 0;
         border: none;
-        background-color: #f36e23;
-        color: #fff;
-        text-align: center;
-        letter-spacing: 2px;
+        background-color: #f36e23 !important;
+        color: #fff !important;
+        text-align: center !important;
+        letter-spacing: 2px !important;
+        text-transform: none !important;
     }
 
     .talk-to-us {
@@ -627,16 +636,16 @@
         font-size: 18px !important;
     }
 
-  .pagination{
+    .pagination {
         width: 7px !important;
-  }
+    }
+
     .page {
-        display: inline-block;
+        display: inline-block !important;
         text-align: center !important;
         height: 33px;
         line-height: 33px;
         width: 33px;
-        margin-right: 4px;
         border-radius: 50%;
         border: 1px solid #ccc;
         background: #fff;
@@ -644,7 +653,7 @@
         font-size: 15px;
         text-decoration: none;
         color: #fff;
-        text-shadow: 0px 1px 0px rgba(255, 255, 255, 1);
+        cursor: pointer;
     }
 
     .page:hover,
@@ -684,4 +693,8 @@
     .page.dark.gradient {
         background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#565b5f), to(#3e4347));
         background: -moz-linear-gradient(0% 0% 270deg, #565b5f, #3e4347);
+    }
+
+    .pagination-wd{
+        width: 75% !important;
     }

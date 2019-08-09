@@ -28,6 +28,7 @@ export default class Stylori extends Component {
             </Grid>
           </Grid>
           <Container maxWidth='xl'>
+          <Container maxWidth='xl'>
             <Grid Container spacing={12}>
               <Grid item xs={12}>
                 <CustomSeparator />
@@ -57,6 +58,7 @@ export default class Stylori extends Component {
             <Sublistcarousel />
             <RatingForm />
             <CustomerReviews />
+          </Container>
           </Container>
           <Grid item xs={12} style={{ paddingTop: '5%' }}>
             <Footer />

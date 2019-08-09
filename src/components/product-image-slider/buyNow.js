@@ -10,32 +10,33 @@ import ProductPrice from './productPrice'
 import PriceTabs from "./priceTabs";
 import buy from './producthoverData'
 import PropTypes from 'prop-types';
+import Buynowbutton from '../Buynow/buynowbutton';
 
-const inputsearch=()=>{
-    return(
+const inputsearch = () => {
+    return (
         <div style={{ marginTop: "25px" }}>
             {buy.productsbuy.map(val =>
-        <Grid container spacing={12}>
-            <Grid item lg={4} sm={8}>
-                <input
-                    placeholder='&#xf041; &nbsp; Enter Pin Code'
-                    className='buynow-search'
-                />
+                <Grid container spacing={12}>
+                    <Grid item lg={4} sm={8}>
+                        <input
+                            placeholder='&#xf041; &nbsp; Enter Pin Code'
+                            className='buynow-search'
+                        />
 
-            </Grid>
-            <Grid item lg={3} sm={4}>
-                <Button className="search-button">Check for COD </Button>
-            </Grid>
-            <Hidden smDown>
-            <Grid item xs={5} className="content">
-                <b className="ships-by">
-                    <span ><i style={{ fontSize: "20px" }} class="fa fa-truck"></i>&nbsp;&nbsp;{val.shipby}</span>
-                </b>
-            </Grid>
-            </Hidden>
-        </Grid>
+                    </Grid>
+                    <Grid item lg={3} sm={4}>
+                        <Button className="search-button">Check for COD </Button>
+                    </Grid>
+                    <Hidden smDown>
+                        <Grid item xs={5} className="content">
+                            <b className="ships-by">
+                                <span ><i style={{ fontSize: "20px" }} class="fa fa-truck"></i>&nbsp;&nbsp;{val.shipby}</span>
+                            </b>
+                        </Grid>
+                    </Hidden>
+                </Grid>
             )}
-    </div>
+        </div>
     )
 }
 const Buydetails = () => {
@@ -45,8 +46,7 @@ const Buydetails = () => {
                 <>
                     <Grid container spacing={12}>
                         <Grid item xs={5} style={{ textAlign: "left" }}>
-                            <Button className="buynow-button">
-                                <i class="fa fa-shopping-bag buynow-icon"></i> &nbsp;Buy Now</Button>
+                            <Buynowbutton class="buynow-button" />
                         </Grid>
                         <Grid xs={7} style={{ marginTop: "10px" }}>
                             <Grid container spacing={12}>
@@ -68,7 +68,7 @@ const Buydetails = () => {
                             </Grid>
                         </Grid>
                     </Grid>
-                   {inputsearch()}
+                    {inputsearch()}
                 </>
             )}
         </div>
@@ -114,9 +114,9 @@ class PriceBuynow extends React.Component {
                                     </Grid>
                                 </Grid> */}
 
-{inputsearch()}
+                                {inputsearch()}
 
-                                
+
                             </div>
                         )}
                     </Container></Hidden>
