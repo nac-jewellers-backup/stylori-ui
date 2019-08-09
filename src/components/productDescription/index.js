@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './ProductDescription.css'
-import { Container, Hidden, Grid } from '@material-ui/core';
+import { Container, Hidden, Grid, Typography } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul';
 import CustomSeparator from '../BreadCrumb/index';
-import ProductDescriptionTitle from './ProductDescriptionTitle'
 import { withStyles } from '@material-ui/core/styles';
 
 
@@ -14,7 +13,11 @@ const styles = theme => ({
 
     colorLight:{
       color: theme.palette.secondary.light
-    }
+    },
+    colorDark: {
+      color: theme.palette.primary.dark,
+  
+    },
 });
 
 
@@ -70,9 +73,11 @@ class ProductDescription extends Component {
                 <Grid
                   item
                   xs={6}
-                  className={`DescriptionTitle  ` }
+                  className={`DescriptionTitle` }
                   alignItems="center"            >
-                 <ProductDescriptionTitle />
+             <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>
+{this.props.title}
+</Typography>
                 </Grid>
               </Hidden>
               <Hidden mdUp>
@@ -81,7 +86,9 @@ class ProductDescription extends Component {
                   xs={6}
                   className={` DescriptionTitleSmallScreen ` }
                   alignItems="center"            >
-                  <ProductDescriptionTitle />
+              <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>
+{this.props.title}
+</Typography>
                 </Grid>
               </Hidden>
             </Grid>
