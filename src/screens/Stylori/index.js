@@ -34,7 +34,7 @@ export default class Stylori extends Component {
         </Grid>
 
         <Grid item xs={12}>
-        <ProductDescription title="Jewllery" fadeImages={fadeImages} dataCarousel={dataCarousel} />
+        <ProductDescription title="Jewellery" fadeImages={fadeImages} dataCarousel={dataCarousel} />
         <Filter />
         </Grid>
         <Grid item xs={12} >

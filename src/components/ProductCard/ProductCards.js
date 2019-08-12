@@ -5,6 +5,7 @@ import './productCard.css'
 import IconButton from "@material-ui/core/IconButton";
 import PropTypes from "prop-types";
 import { NavLink } from 'react-router-dom'
+import { Pricing } from "../Pricing";
 
 
 // let theme = createMuiTheme(require('./../../theme.json'));
@@ -153,57 +154,7 @@ export default function ProductCards(props) {
        
       /> */}
         <CardContent>
-          <Typography
-            variant="caption"
-            color="textSecondary"
-            component="div"
-            className={`${props.data.title!=null & props.data.title!==''? '' : 'shine'}`}
-            style={{ paddingBottom: "5px", textAlign: "left" }}
-          >
-            {/* Dazzling Gold Bloom Diamond Pendant */}
-            {props.data.title}
-          </Typography>
-          {/*  */}
-          <Typography style={{ display: "flex", width: '100%' }}>
-            <Typography
-              variant="caption"
-              color="textSecondary"
-              className={`${props.data.price!=null & props.data.price!==''? '' : 'shine'} ${classes.deletePrice}`}
-              component="p"
-              style={{ display: "flex", alignItems: "center" }}
-            >
-              <del>₹&nbsp;{props.data.price}</del>
-            </Typography>
-            <Typography
-
-              variant="h6"
-              component="h6"
-              className={`${props.data.offerPrice!=null & props.data.offerPrice!==''? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
-
-            >
-              ₹&nbsp;{props.data.offerPrice}
-            </Typography>
-          </Typography>
-          {/*  */}
-          <Typography style={{ display: "flex" }}>
-            <Typography
-              variant="body2"
-              color="textSecondary"
-              className={`${classes.colorMain} ${classes.youSave}`}
-              component="p"
-
-            >
-              You save
-          </Typography>
-            <Typography
-              variant="caption"
-              color="textSecondary"
-              component="p"
-              className={`${props.data.save!=null & props.data.save!==''? '' : 'shine'} ${classes.colorMain} ${classes.offerPricePadding} `}
-            >
-              ₹ {props.data.save}
-            </Typography>
-          </Typography>
+         <Pricing title={props.data.title} price={props.data.price} offerPrice={props.data.offerPrice} save={props.data.save}/>
         </CardContent>
       {/* </a> */}
       </NavLink>

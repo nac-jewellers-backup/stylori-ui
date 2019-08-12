@@ -4,6 +4,7 @@ import { Container, Hidden, Grid, Typography } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul';
 import CustomSeparator from '../BreadCrumb/index';
 import { withStyles } from '@material-ui/core/styles';
+import data from './data'
 
 
 
@@ -44,7 +45,7 @@ class ProductDescription extends Component {
   
   render() {
     const { classes } = this.props;
-    
+   
     return (
       <>
         <Container >
@@ -112,8 +113,20 @@ class ProductDescription extends Component {
                   xs={6}
                   alignItems="center">
                   <p>
-                    <span className="DescriptionContent">For every occasion and non-occasion. Shop our range of everyday fashion jewellery featuring gold, silver and stone rings and earrings, for work, play and everything in between. Give special occasions a little extra glimmer with our range of bridal jewellery ranging from engagement rings to wedding r<span id="moreDots" style={{ display: 'inline' }}>...</span> </span>
-                    <span id="txtopen" className="DescriptionContent" style={{ display: 'none' }}> ings to classic party wear.  Crafted using the finest jewellery design and jewellery making principles, buy our jewellery online for fast deliveries and an easy returns policy.<br />&nbsp;&nbsp;</span>
+                    {/* {this.props.ProductContent.slice(0, 60)} */}
+                    <span className="DescriptionContent">
+                      {/* For every occasion and non-occasion. Shop our range of everyday fashion jewellery featuring gold, silver and stone rings and earrings, for work, play and everything in between. Give special occasions a little extra glimmer with our range of bridal jewellery ranging from engagement rings to wedding r */}
+                    
+                    {
+                    
+                    (data.jewlleryData).slice(0,160)
+                    }
+                    
+                    <span id="moreDots" style={{ display: 'inline' }}>...</span> </span>
+                    <span id="txtopen" className="DescriptionContent" style={{ display: 'none' }}> 
+                    {/* ings to classic party wear.  Crafted using the finest jewellery design and jewellery making principles, buy our jewellery online for fast deliveries and an easy returns policy. */}
+                    {data.jewlleryData}
+                    <br />&nbsp;&nbsp;</span>
                   </p>
                   <p onClick={this.handleOpen}  className={`know-txt ${classes.colorLight}`} id="readMore" style={{ display: 'block' }}>
                     <span ><i className="fa faMore">&#xf0da;</i></span> READ MORE
@@ -129,8 +142,14 @@ class ProductDescription extends Component {
                   xs={12}
                   alignItems="center">
                   <p>
-                    <span className="DescriptionContent">For every occasion and non-occasion. Shop our range of everyday fashion jewellery featuring gold, silver and stone rings and earrings, for work, play and everything in between. Give special occasions a little extra glimmer with our range of bridal jewellery ranging from engagement rings to wedding r<span id="moreDots" style={{ display: 'inline' }}>...</span> </span>
-                    <span id="txtopen" className="DescriptionContent" style={{ display: 'none' }}> ings to classic party wear.  Crafted using the finest jewellery design and jewellery making principles, buy our jewellery online for fast deliveries and an easy returns policy.<br />&nbsp;&nbsp;</span>
+                    <span className="DescriptionContent">
+                      {/* For every occasion and non-occasion. Shop our range of everyday fashion jewellery featuring gold, silver and stone rings and earrings, for work, play and everything in between. Give special occasions a little extra glimmer with our range of bridal jewellery ranging from engagement rings to wedding r */}
+                      {(data.jewlleryData).slice(0,160)}
+                      <span id="moreDots" style={{ display: 'inline' }}>...</span> </span>
+                    <span id="txtopen" className="DescriptionContent" style={{ display: 'none' }}>
+                       {/* ings to classic party wear.  Crafted using the finest jewellery design and jewellery making principles, buy our jewellery online for fast deliveries and an easy returns policy. */}
+                       {data.jewlleryData}
+                       <br />&nbsp;&nbsp;</span>
                   </p>
                   <p onClick={this.handleOpen} className={`know-txt ${classes.colorLight}`} id="readMore" style={{ display: 'block' }}>
                     <span ><i className="fa faMore">&#xf0da;</i></span> READ MORE
