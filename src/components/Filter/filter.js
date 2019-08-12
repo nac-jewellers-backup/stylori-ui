@@ -305,15 +305,14 @@ class PersistentDrawerLeft extends React.Component {
               <Grid item xs={6} style={{  backgroundColor: "#F2F2F2", overflow: 'scroll', height: '73vh' }}>
                 <List className="mbl-filter-list">
                   {filterdatas.filter.map(row => (
-                    <ListItem key={row} className=""
-                      onClick={() => this.filterValue(row)}>
-                      <ListItemText
+                    <ListItem key={row} className="mbl-filter-list"
+                    onClick={() => this.filterValue(row)}
                       >
-                        <Typography className={`filter-mbl-font ${classes.colorMain}`}
-
-                          variant=""
-                        >{row}
-                        </Typography>
+                      <ListItemText
+                    className='filter-mbl-font filter-mbl-fonts'
+                      >
+                       {row}
+                      
                       </ListItemText>
                     </ListItem>
                   ))}
@@ -353,10 +352,10 @@ class PersistentDrawerLeft extends React.Component {
        <AppBar color="primary" className="filter-fixed header" >
            <Grid container item xs={12} justify="flex-end" alignItems="center">
               <Grid item xs={6}>
-                  <Typography variant=""
-                    className={`filter-mbl-font filterBtnMobile`}>
-                    Apply
-                    </Typography>
+                
+                    <Button variant='contained' className={`filterBtnMobile`}>
+                      Apply
+                    </Button>
               </Grid>
            </Grid>
 
