@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import './product-images.css'
 import Ratings from '../rating/rating'
 import card from '../ProductCard/ProductData'
+import Pricing from '../Pricing/index'
 const dataCarousel = {
     dots: false,
     infinite: true,
@@ -38,7 +39,7 @@ const Productprice = () => {
 
                 <>
                     <Grid container spacing={12} sm={12}>
-                        <Grid item xs={7} sm={7}>
+                        <Grid item xs={7} lg={8}>
                             <div className="price-div">
                                 <h1 className="pdp-title">
                                     {val.title}
@@ -48,7 +49,7 @@ const Productprice = () => {
                                 </p>
                             </div>
                         </Grid>
-                        <Grid item xs={5} sm={5}>
+                        <Grid item xs={5} lg={4}>
                             <div className="starts">
                                 <div className="row social-shares">
                                     <i class="fa fa-share-alt overall-icons"></i>&nbsp;
@@ -65,19 +66,21 @@ const Productprice = () => {
                     <Hidden mdUp>
                         {mobilecarousel()}
                     </Hidden>
-                    <div className='price-info'>
-                        <Grid container spacing={12}>
-                            <Grid item xs={4} lg={2} className='discount-container'>
-                                {val.price}
+                    <Pricing price={val.price} offerPrice={val.offerPrice}>
+                        <div className='price-info'>
+                            <Grid container spacing={12}>
+                                <Grid item xs={4} lg={2} className='discount-container'>
+                                    {val.price}
+                                </Grid>
+                                <Grid item lg={5} xs={8} className="selling-price"><i class="fa fa-rupee"></i> &nbsp;
+                              {val.offerPrice}
+                                </Grid></Grid>
+                            <Grid container spacing={12}>
+                                <Grid item lg={12} xs={5} > <span className='discount'>25% FLAT OFF</span></Grid>
                             </Grid>
-                            <Grid item lg={5} xs={8} className="selling-price"><i class="fa fa-rupee"></i> &nbsp;
-                    {val.offerPrice}
-                            </Grid></Grid>
-                        <Grid container spacing={12}>
-                            <Grid item lg={12} xs={5} > <span className='discount'>25% FLAT OFF</span></Grid>
-                        </Grid>
-                        <hr class="bottom-line product-inform-ation"></hr>
-                    </div>
+                            <hr class="bottom-line product-inform-ation"></hr>
+                        </div>
+                    </Pricing>
                 </>
             ))}
         </div>

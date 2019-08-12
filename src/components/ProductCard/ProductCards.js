@@ -5,7 +5,7 @@ import './productCard.css'
 import IconButton from "@material-ui/core/IconButton";
 import PropTypes from "prop-types";
 import { NavLink } from 'react-router-dom'
-import { Pricing } from "../Pricing";
+import  Pricing  from "../Pricing";
 
 
 // let theme = createMuiTheme(require('./../../theme.json'));

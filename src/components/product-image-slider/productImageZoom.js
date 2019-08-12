@@ -35,7 +35,7 @@ class ProductImageZoom extends Component {
     }
     return (
       <div>
-        <Grid container spacing={1}>
+        <Grid container spacing={12}>
           <Grid item xs={2}>
             <div style={{ textAlign: 'center' }}>
               <Button onClick={this.previous}>

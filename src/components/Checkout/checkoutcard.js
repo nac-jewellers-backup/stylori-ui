@@ -13,10 +13,12 @@ import { dataCard1 } from '../ProductCard/ProductData';
 const styles = theme => ({
     cart: {
         [theme.breakpoints.down('xs')]: {
-            overflowX:"scroll"
+            width: "100%",
+            overflowX: "scroll"
         },
         [theme.breakpoints.up('lg')]: {
-            width:"100%"
+            overflowX: "scroll",
+            width: "100%"
         },
     },
 });
@@ -31,6 +33,33 @@ class Checkoutcard extends React.Component {
         return (
             <div className='ckeckout-top'>
                 <Buynowbutton class='chckout-page-buynow' />
+            </div>
+        )
+    }
+    subtotals = () => {
+        return (
+            <div>
+                <Grid container spacing={12}>
+                    <Grid item xs={3} lg={9} />
+                    <Grid item xs={9} lg={3}>
+                        {dataCard1.map(val =>
+                            <Grid container>
+                                <Grid xs={7} lg={5}>
+                                    <Typography class="subhesder">Subtotal</Typography>
+                                    <Typography class="subhesder">You Saved</Typography>
+                                    <Typography class="subhesder">Shipping</Typography>
+                                    <Typography class="subhesder totsl-size">Grand Total</Typography>
+                                </Grid>
+                                <Grid xs={5} lg={5}>
+                                    <Typography class="subhesder">{val.price}</Typography>
+                                    <Typography class="subhesder">{val.save}</Typography>
+                                    <Typography class="subhesder">------- </Typography>
+                                    <Typography class="subhesder totsl-size">{val.offerPrice}</Typography>
+                                </Grid>
+                            </Grid>
+                        )} </Grid>
+                </Grid>
+                {this.checkoutbutton()}
             </div>
         )
     }
@@ -52,11 +81,11 @@ class Checkoutcard extends React.Component {
                             {this.checkoutbutton()}
                             {productsDetails.map(val => (
                                 <div className={classes.cart}>
-                                    <Grid container spacing={12} lg={12} >
-                                        <Grid item lg={1} >
+                                    <Grid container spacing={12} lg={12}  >
+                                        <Grid item lg={1}  >
                                             <a style={{ textDecoration: "none" }} href="#123"><div class="remove-product"></div></a>
                                         </Grid>
-                                        <Grid item lg={2} xs={2}>
+                                        <Grid item lg={2} xs={2} >
                                             <Card className="product-image-thumb">
                                                 <CardHeader style={{ padding: "0px" }}
                                                     action={
@@ -72,14 +101,14 @@ class Checkoutcard extends React.Component {
                                         <Grid item lg={6} style={{ padding: "0 20px" }}>
                                             <h3 class="title">{val.header}</h3>
                                             <Grid container spacing={12} >
-                                                <Grid item lg={6}>
+                                                <Grid item lg={6} >
                                                     {val.namedetail !== undefined && val.namedetail.map(val => (
                                                         <Grid container spacing={12}>
 
-                                                            <Grid item lg={6}>
+                                                            <Grid item lg={6} >
                                                                 <Typography className='subhesder'>{val.name}</Typography>
                                                             </Grid>
-                                                            <Grid item lg={6}>
+                                                            <Grid item lg={6} >
                                                                 <Typography className='subhesder'>{val.details}</Typography>
                                                             </Grid>
                                                         </Grid>
@@ -87,7 +116,7 @@ class Checkoutcard extends React.Component {
                                                     ))}
                                                 </Grid>
 
-                                                <Grid item lg={3}>
+                                                <Grid item lg={3} >
                                                     <Typography className='subhesder'>Quantity 1</Typography>
                                                     <br />
                                                     <Typography className='subhesder'>
@@ -97,7 +126,7 @@ class Checkoutcard extends React.Component {
 
                                             </Grid>
                                         </Grid>
-                                        <Grid item lg={3}>
+                                        <Grid item lg={3} >
                                             {dataCard1.map(val =>
                                                 <div className="product-rate">
                                                     <span class="offer-price">{val.price}</span><br />
@@ -110,33 +139,14 @@ class Checkoutcard extends React.Component {
                             ))}
 
 
-                            <Grid container spacing={12}>
-                                <Grid item xs={9} lg={9} />
-                                <Grid item xs={3} lg={3}>
-                                    {dataCard1.map(val =>
-                                        <Grid container>
-                                            <Grid xs={5} lg={5}>
-                                                <Typography class="subhesder">Subtotal</Typography>
-                                                <Typography class="subhesder">You Saved</Typography>
-                                                <Typography class="subhesder">Shipping</Typography>
-                                                <Typography class="subhesder totsl-size">Grand Total</Typography>
-                                            </Grid>
-                                            <Grid xs={5} lg={5}>
-                                                <Typography class="subhesder">{val.price}</Typography>
-                                                <Typography class="subhesder">{val.save}</Typography>
-                                                <Typography class="subhesder">------- </Typography>
-                                                <Typography class="subhesder totsl-size">{val.offerPrice}</Typography>
-                                            </Grid>
-                                        </Grid>
-                                    )} </Grid>
-                            </Grid>
-                            {this.checkoutbutton()}
+                            {this.subtotals()}
                         </Container>
 
                     </div>
                     :
                     <div>
                         <Container>
+                            {this.checkoutbutton()}
                             <Grid container>
                                 {productsDetails.map(val => (
                                     <Grid item lg={3} xs={12} >
@@ -188,6 +198,7 @@ class Checkoutcard extends React.Component {
                                     </Grid>
                                 ))}
                             </Grid>
+                            {this.subtotals()}
 
                         </Container>
                     </div>

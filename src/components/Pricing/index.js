@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export const Pricing = (props) => {
+export default function Pricing  (props) {
     const classes = useStyles();
     return (
         <div>
@@ -95,7 +95,7 @@ export const Pricing = (props) => {
                     component="p"
 
                 >
-                    You save
+                    {/* You save */}
 </Typography>
                 <Typography
                     variant="caption"
@@ -103,7 +103,7 @@ export const Pricing = (props) => {
                     component="p"
                     className={`${props.save != null & props.save !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.offerPricePadding} `}
                 >
-                    ₹ {props.save}
+                     {props.save}
                 </Typography>
             </Typography>
         </div>
