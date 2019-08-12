@@ -9,9 +9,7 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.secondary.main
     },
     h6FontSize: {
-        // [theme.breakpoints.down('md')]: {
-        //   fontSize:'14px'
-        // },
+
         [theme.breakpoints.down('sm')]: {
             fontSize: '16px',
             fontWeight: 'bold'

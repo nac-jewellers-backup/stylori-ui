@@ -41,48 +41,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.secondary.light,
 
   },
-  colorMain: {
-    color: theme.palette.secondary.main
-  },
-  h6FontSize: {
-    // [theme.breakpoints.down('md')]: {
-    //   fontSize:'14px'
-    // },
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '16px',
-      fontWeight: 'bold'
-    },
-    [theme.breakpoints.down('xs')]: {
-      fontSize: '13px',
-      fontWeight: 'bold'
 
-    },
-
-  },
-  offerPricePadding: {
-    paddingLeft: '15px',
-    [theme.breakpoints.down('xs')]: {
-      paddingLeft: '8px',
-
-    },
-  },
-  deletePrice: {
-    [theme.breakpoints.down('xs')]: {
-      fontSize: '10px',
-      fontWeight: 'bold'
-    },
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '10px',
-    },
-  },
-  youSave: {
-    [theme.breakpoints.down('xs')]: {
-      fontSize: '12px',
-    },
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '11px',
-    },
-  }
 }));
 const handleClick = (name) => {
   if (name === 'truck') {

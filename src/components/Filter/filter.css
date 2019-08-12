@@ -173,3 +173,11 @@
 .scrollBarFilter::-webkit-scrollbar-thumb {
 background-color: #394578;
 }
+.filterButtonMobile{
+position: fixed;  
+bottom:0;  
+}
+.filterBtnMobile{
+color: #f2f2f2 !important;
+background-color: #394578 !important;
+}

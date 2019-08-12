@@ -300,8 +300,9 @@ class PersistentDrawerLeft extends React.Component {
 
             </div>
 
-            <Grid container spacing={2} xs={12} className="p" style={{ overflow: 'scroll', height: '100%' }}>
-              <Grid item xs={6} style={{ display: openMobile ? 'none' : 'block', backgroundColor: "#F2F2F2", overflow: 'scroll', height: '100vh' }}>
+            <Grid container spacing={2} xs={12} className="p" style={{ overflow: 'scroll', height: '100%',display: openMobile ? 'none' : 'block' }}>
+              <Grid container item xs={12}>
+              <Grid item xs={6} style={{  backgroundColor: "#F2F2F2", overflow: 'scroll', height: '73vh' }}>
                 <List className="mbl-filter-list">
                   {filterdatas.filter.map(row => (
                     <ListItem key={row} className=""
@@ -320,7 +321,7 @@ class PersistentDrawerLeft extends React.Component {
               </Grid>
               {
                 this.state.filtercheck !== '' &&
-                <Grid item xs={6} style={{ display: openMobile ? 'none' : 'block', overflow: 'scroll', height: '100vh' }}>
+                <Grid item xs={6} style={{  overflow: 'scroll', height: '73vh' }}>
                   {filterdatas.filter1[this.state.filtercheck].map(row => (
                     <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
                       <Checkbox
@@ -340,6 +341,26 @@ class PersistentDrawerLeft extends React.Component {
                   ))}
                 </Grid>
               }
+              </Grid>
+
+              {/* <Grid container item xs={12} className="filterButtonMobile" justify="flex-end">
+                <Paper>
+                    <Button variant="contained" style={{backgroundColor:'rgba(58, 69, 120, 1)', color:'white'}}>
+                      Apply
+                    </Button>
+                </Paper>    
+              </Grid> */}
+       <AppBar color="primary" className="filter-fixed header" >
+           <Grid container item xs={12} justify="flex-end" alignItems="center">
+              <Grid item xs={6}>
+                  <Typography variant=""
+                    className={`filter-mbl-font filterBtnMobile`}>
+                    Apply
+                    </Typography>
+              </Grid>
+           </Grid>
+
+            </AppBar> 
             </Grid>
 
 
