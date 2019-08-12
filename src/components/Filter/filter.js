@@ -87,6 +87,11 @@ const styles = theme => ({
   colorMainBackground: {
     backgroundColor: theme.palette.primary.main
   },
+  productCards:{
+    [theme.breakpoints.down('md')]: {
+      width:'100% !important'
+    },
+  }
 });
 
 
@@ -280,6 +285,7 @@ class PersistentDrawerLeft extends React.Component {
             this.state.productDisplay &&
             <div
               style={{ width: check ? '80%' : '100%' }}
+              className={classes.productCards}
 
             >
               <ProductLayout />
