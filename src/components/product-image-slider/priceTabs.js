@@ -14,7 +14,9 @@ import SwipeableViews from 'react-swipeable-views';
 import './product-images.css'
 import H from './producthoverData'
 import PropTypes from 'prop-types';
-import Slideshow from '../Carousel/carosul'
+import Slideshow from '../Carousel/carosul';
+import { withStyles } from '@material-ui/core/styles';
+
 function TabContainer({ children, dir }) {
     return (
         <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
@@ -22,7 +24,22 @@ function TabContainer({ children, dir }) {
         </Typography>
     );
 }
-
+const styles = theme => ({
+    pagination: {
+        [theme.breakpoints.down('xs')]: {
+            width: "98%"
+        },
+        [theme.breakpoints.up('lg')]: {
+            width: "75%"
+        },
+    },
+});
+const settings = {
+    className: 'center',
+    infinite: true,
+    slidesToShow: 8,
+    slidesToScroll: 5,
+};
 
 class PriceTabs extends React.Component {
     constructor(props) {
@@ -31,25 +48,20 @@ class PriceTabs extends React.Component {
     }
     state = {
         value: 0,
-        currentPage: 1,
-        todosPerPage: 3,
+        values: "",
         expanded: null
     };
     handleClick(event) {
+        console.log(event.target.value)
         this.setState({
-          currentPage: Number(event.target.id)
+            values: event.target.value,
+
         });
-      }
+    }
+
     TabsS = () => {
-        const settings = {
-            className: 'center',
-            infinite: true,
-            centerPadding: '60px',
-            slidesToShow: 8,
-            slidesToScroll: 5,
-        };
-        const { todos, currentPage, todosPerPage } = this.state;
-         return (
+        const { classes } = this.props;
+        return (
             <div>
                 {H.productstabs.map(val =>
                     <>
@@ -63,7 +75,8 @@ class PriceTabs extends React.Component {
                                     indicatorColor="primary"
                                 >
                                     <Tab className='subtabs' icon={<i class="fa fa-circle-thin tabs-hesd-icon"></i>} label={val.tab1.header} />
-                                    <Tab className='subtabs' icon={<i class="fa fa-cube tabs-hesd-icon"></i>} label={val.tab2.header} />
+                                    <Tab className='subtabs' icon={<i class="fa fa-cube tabs-hesd-icon"></i>}
+                                        label={val.tab2.header} />
                                     <Tab className='subtabs' icon={<i class="fa fa-diamond tabs-hesd-icon"></i>
                                     } label={`Active ${val.tab3.header}`} />
                                 </Tabs>
@@ -74,14 +87,18 @@ class PriceTabs extends React.Component {
                             onChangeIndex={this.handleChangeIndex}
                         >
                             <TabContainer>
-                                <div className="pagination-wd" >
-                                    <Slideshow dataCarousel={settings} >
+                                <div className={classes.pagination}>
+                                    <Slideshow dataCarousel={settings}>
                                         {val.tab1.Children.map(val =>
-                                            <div id="pagination"
-                                            onClick={this.handleClick}
+                                            <div
                                             >
-                                                <a className=
-                                                    "page dark ">{val}</a>
+                                                <button
+                                                    className="page dark"
+                                                    value={val} id={val}
+                                                    onClick={event => this.handleClick(event)}
+                                                >
+                                                    {val}
+                                                </button>
                                             </div>
                                         )}
 
@@ -119,6 +136,7 @@ class PriceTabs extends React.Component {
     }
     mobiletabs = () => {
         const { expanded } = this.state;
+        const { classes } = this.props;
         return (
             <>
                 {H.productstabs.map(val =>
@@ -132,18 +150,23 @@ class PriceTabs extends React.Component {
                                         <hr class="bottom-line border-line-"></hr>
                                     </div>
                                 </ExpansionPanelSummary>
-                                <ExpansionPanelDetails style={{ padding: 0 }}>
-                                    {val.tab1.Children.map(val =>
-                                        <Grid container spacing={12}>
-                                            <Grid xs={12}>
-                                                <div>
-                                                    <img src={val.icon} style={{ width: '35px' }} alt="" />&nbsp;
-                                            <span className="tabs-contants">  {val.name}</span>
+                                <ExpansionPanelDetails style={{ padding: "8px 24px 0px" }}>
+                                    <div className={classes.pagination} >
+                                        <Slideshow dataCarousel={settings} >
+                                            {val.tab1.Children.map(val =>
+                                                <div class={classes.pagination}
+                                                >
+                                                    <button
+                                                        className="page dark"
+                                                        value={val} id={val}
+                                                        onClick={event => this.handleClick(event)}
+                                                    >
+                                                        {val}
+                                                    </button>
                                                 </div>
-
-                                            </Grid>
-                                        </Grid>
-                                    )}
+                                            )}
+                                        </Slideshow>
+                                    </div>
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
                         </>
@@ -235,4 +258,4 @@ PriceTabs.propTypes = {
     handleChangeIndex: PropTypes.func,
     handle: PropTypes.func
 };
-export default PriceTabs;
+export default withStyles(styles, { withTheme: true })(PriceTabs);

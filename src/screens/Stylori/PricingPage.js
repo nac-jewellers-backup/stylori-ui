@@ -28,37 +28,36 @@ export default class Stylori extends Component {
             </Grid>
           </Grid>
           <Container maxWidth='xl'>
-          <Container maxWidth='xl'>
-            <Grid Container spacing={12}>
-              <Grid item xs={12}>
-                <CustomSeparator />
+            <Container maxWidth='xl'>
+              <Grid Container spacing={12}>
+                <Grid item xs={12}>
+                  <CustomSeparator />
+                </Grid>
               </Grid>
-            </Grid>
-            <Grid container spacing={12}>
-              <Grid item xs={6}>
-                <ProductImageZoom />
-              </Grid>
-              <Grid item xs={6}>
-                <ProductPrice />
-                <PriceTabs />
-                <PriceBuynow />
-              </Grid>
-
-            </Grid>
-            <Grid container spacing={12}>
-              <Grid item xs={6}>
-                <ProductDetails />
-              </Grid>
-              <Grid item xs={6}>
-                <PriceCertification />
-                <Request />
+              <Grid container spacing={12}>
+                <Grid item xs={6}>
+                  <ProductImageZoom />
+                </Grid>
+                <Grid item xs={6}>
+                  <ProductPrice />
+                  <PriceTabs />
+                  <PriceBuynow />
+                </Grid>
 
               </Grid>
-            </Grid>
-            <Sublistcarousel />
-            <RatingForm />
-            <CustomerReviews />
-          </Container>
+              <Grid container spacing={12}>
+                <Grid item xs={6}>
+                  <ProductDetails />
+                </Grid>
+                <Grid item xs={6}>
+                  <PriceCertification />
+                  <Request />
+                </Grid>
+              </Grid>
+              <Sublistcarousel />
+              <RatingForm />
+              <CustomerReviews />
+            </Container>
           </Container>
           <Grid item xs={12} style={{ paddingTop: '5%' }}>
             <Footer />

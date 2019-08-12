@@ -50,9 +50,9 @@ class Request extends React.Component {
                             type="taxt"
                             name="name"
                             error={err.name}
-                            helperText={err.name ? errors.name.required : ''}
-                            // onChange={e => onchnagevalue(e)}
-                            // onInvalid={e => errorhandle(e)}
+                            // helperText={err.name ? errors.name.required : ''}
+                            onChange={e => onchnagevalue(e)}
+                            onInvalid={e => errorhandle(e)}
                             placeholder="Name"
                             className="request-text"
                             required

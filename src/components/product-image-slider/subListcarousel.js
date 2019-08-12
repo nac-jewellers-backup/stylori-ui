@@ -77,8 +77,9 @@ class Sublistcarousel extends React.Component {
                 </div>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails >
-                <div style={{ width: "100%"}}>
-                  <Slideshow class="subslider-carousel" hoverlist={fade.fadeImagessublist}
+                <div style={{ width: "100%" }}>
+                  <Slideshow class={` ${fade.fadeImagessublist ? 'subslider-carousel ' : "shine"}`}
+                    hoverlist={fade.fadeImagessublist ? '' : 'shine'}
                     dataCarousel={mobiledataCarousel} hover={true}>
                   </Slideshow>
                 </div>
