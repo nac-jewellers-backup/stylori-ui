@@ -395,7 +395,7 @@ class PersistentDrawerLeft extends React.Component {
 
           </div>
           {this.state.CardRadio ?
-            <div style={{ position: 'absolute', bottom: 35, }}>
+            <div style={{ position: 'fixed', bottom: '42px', }}>
               <CardRadioButton cardWidth="cardSortSmallScreen" data={filterdatas.radioValues} />
             </div>
             :
