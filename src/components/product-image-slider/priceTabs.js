@@ -30,7 +30,8 @@ const styles = theme => ({
             width: "98%"
         },
         [theme.breakpoints.up('lg')]: {
-            width: "75%"
+            width: "75%",
+            textAlign: "center"
         },
     },
 });
@@ -103,6 +104,9 @@ class PriceTabs extends React.Component {
                                         )}
 
                                     </Slideshow>
+                                    <div style={{ marginTop: "10px" }}>
+                                        <span className="my-ringsize">My Ring Size ?</span>
+                                    </div>
                                 </div>
 
 
@@ -110,7 +114,7 @@ class PriceTabs extends React.Component {
                             <TabContainer >
                                 {val.tab2.Children.map(val =>
                                     <Grid container spacing={12}>
-                                        <Grid xs={3}>
+                                        <Grid xs={4}>
                                             <img src={val.icon} style={{ width: '35px' }} alt="" />
                                             <span className="tabs-contants">  {val.name}</span>
                                         </Grid>
@@ -120,7 +124,7 @@ class PriceTabs extends React.Component {
                             <TabContainer >
                                 {val.tab3.Children.map(val =>
                                     <Grid container spacing={12}>
-                                        <Grid xs={3}>
+                                        <Grid xs={4}>
                                             <img src={val.icon} style={{ width: '35px' }} alt="" />
                                             <span className="tabs-contants">  {val.name}</span>
                                         </Grid>

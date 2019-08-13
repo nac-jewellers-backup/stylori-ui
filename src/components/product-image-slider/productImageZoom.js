@@ -42,7 +42,7 @@ class ProductImageZoom extends Component {
                 <i class="fa fa-angle-up" style={{ fontSize: "35px", color: "#F699A3" }}></i>
               </Button>
 
-              <Slideshow sliderRef={this.slider}
+              <Slideshow sliderRef={this.slider} 
                 getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img'
                 fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
 

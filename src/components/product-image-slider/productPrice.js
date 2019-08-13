@@ -66,22 +66,24 @@ const Productprice = () => {
                     <Hidden mdUp>
                         {mobilecarousel()}
                     </Hidden>
-                    <Pricing price={val.price} offerPrice={val.offerPrice} offerDiscount='25% FLAT OFF'>
-                        <div className='price-info'>
-                            <Grid container spacing={12}>
-                                <Grid item xs={4} lg={2} className='discount-container'>
-                                    {val.price}
-                                </Grid>
-                                <Grid item lg={5} xs={8} className="selling-price"><i class="fa fa-rupee"></i> &nbsp;
+                    <>
+                        <Pricing price={val.price} offerPrice={val.offerPrice} offerDiscount='25% FLAT OFF'>
+                            <div className='price-info'>
+                                <Grid container spacing={12}>
+                                    <Grid item xs={4} lg={2} className='discount-container'>
+                                        {val.price}
+                                    </Grid>
+                                    <Grid item lg={5} xs={8} className="selling-price"><i class="fa fa-rupee"></i> &nbsp;
                               {val.offerPrice}
+                                    </Grid>
                                 </Grid>
-                                </Grid>
-                            {/* <Grid container spacing={12}>
+                                {/* <Grid container spacing={12}>
                                 <Grid item lg={12} xs={5} > <span className='discount'>25% FLAT OFF</span></Grid>
                             </Grid> */}
-                            <hr class="bottom-line product-inform-ation"></hr>
-                        </div>
-                    </Pricing>
+                            </div>
+                        </Pricing>
+                        <hr class="bottom-line product-inform-ation"></hr>
+                    </>
                 </>
             ))}
         </div>

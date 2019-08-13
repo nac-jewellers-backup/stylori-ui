@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography, Grid } from '@material-ui/core'
 import { makeStyles } from "@material-ui/core/styles";
-
+import '../product-image-slider/product-images.css'
 
 const useStyles = makeStyles(theme => ({
 
@@ -89,7 +89,7 @@ export default function Pricing(props) {
             {
                 props.offerDiscount?
                 <Grid container spacing={12}>
-                <Grid item lg={12} xs={5} > <span className='discount'>{props.offerDiscount}</span></Grid>
+                <Grid item lg={12} xs={12} > <span className='discount'>{props.offerDiscount}</span></Grid>
             </Grid>
                 :
 

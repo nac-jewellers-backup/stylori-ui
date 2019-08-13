@@ -19,7 +19,8 @@
 .star.selected {
     background-color: #F16882 !important;
 }
-.starts-review{
-    margin-top: 0 !important;
-    margin-left:25% !important;
+
+.starts-review {
+    margin-top: 5px !important;
+    margin-left: 15% !important;
 }

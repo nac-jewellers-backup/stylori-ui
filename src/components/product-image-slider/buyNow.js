@@ -2,7 +2,8 @@ import {
     Button,
     Hidden,
     Container,
-    Grid
+    Grid,
+    Modal
 } from '@material-ui/core';
 import React from "react";
 import './product-images.css'
@@ -11,6 +12,7 @@ import PriceTabs from "./priceTabs";
 import buy from './producthoverData'
 import PropTypes from 'prop-types';
 import Buynowbutton from '../Buynow/buynowbutton';
+import T from './producthoverData';
 
 const inputsearch = () => {
     return (
@@ -76,7 +78,20 @@ const Buydetails = () => {
 }
 
 class PriceBuynow extends React.Component {
+    state = {
+        showimage: T.fadeImages[0],
+        open: false
+    };
+
+    handleOpen = () => {
+        this.setState({ open: true });
+    };
+
+    handleClose = () => {
+        this.setState({ open: false });
+    };
     render() {
+        let { showimage } = this.state;
         return (
             <div>
                 <Hidden smDown>
@@ -97,7 +112,19 @@ class PriceBuynow extends React.Component {
                                     </Grid>
                                     <Grid item xs={6} className="content">
                                         <b className="ships-by">
-                                            <span > Top to Zoom</span></b>
+                                            <span onClick={this.handleOpen}> Top to Zoom</span></b>
+
+                                        <Modal
+                                            aria-labelledby="simple-modal-title"
+                                            aria-describedby="simple-modal-description"
+                                            open={this.state.open}
+                                        >
+                                            <div className='modal-div'>
+                                                <i style={{ fontSize: "20px", color: "#ccc", marginTop: "5%", marginRight: "5%", float: "right" }} className="modal-clos" onClick={this.handleClose} class="fa fa-times-circle"></i>
+                                                <div style={{ backgroundImage: `url(${showimage})`, width: "100%", height: "100%" }}></div>
+                                            </div>
+                                        </Modal>
+
                                     </Grid>
                                     <hr class="bottom-line product-inform-ation"></hr>
                                 </Grid>
