@@ -54,6 +54,7 @@ class ProductImageZoom extends Component {
           <Grid item xs={10}>
             <div>
               <div className='imagecard' onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
+              {/* <span class="one-day-ship" ></span> */}
                 <img id="imgZoom" width="100%" height="100%" className={`${showimage?'':'shine'}`} src={showimage} alt=""/>
               </div>
 

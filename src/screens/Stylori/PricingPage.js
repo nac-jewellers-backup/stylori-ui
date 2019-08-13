@@ -28,34 +28,44 @@ export default class Stylori extends Component {
             </Grid>
           </Grid>
           <Container maxWidth='xl'>
-            <Grid Container spacing={12}>
-              <Grid item xs={12}>
-                <CustomSeparator />
+            <Container maxWidth='xl'>
+              <Grid Container spacing={12}>
+                <Grid item xs={12}>
+                  <CustomSeparator />
+                </Grid>
               </Grid>
-            </Grid>
-            <Grid container spacing={12}>
-              <Grid item xs={6}>
-                <ProductImageZoom />
-              </Grid>
-              <Grid item xs={6}>
-                <ProductPrice />
-                <PriceTabs />
-                <PriceBuynow />
-              </Grid>
+              <Grid container spacing={12}>
+                <Grid item xs={6}>
+                  <ProductImageZoom />
+                </Grid>
+                <Grid item xs={6}>
+                  <div style={{ border: '1px solid #ccc', padding: "15px", marginBottom: "10px" }}>
+                    <ProductPrice />
+                  </div>
+                  <div style={{ border: '1px solid #ccc', padding: "15px", marginBottom: "10px" }}>
+                    <PriceTabs />
+                  </div>
+                  <div style={{ border: '1px solid #ccc', padding: "15px", marginBottom: "10px" }}>
+                    <PriceBuynow />
+                  </div>
+                </Grid>
 
-            </Grid>
-            <Grid container spacing={12}>
-              <Grid item xs={6}>
-                <ProductDetails />
               </Grid>
-              <Grid item xs={6}>
-                <PriceCertification />
-                <Request />
-              </Grid>
-            </Grid>
-            <Sublistcarousel />
-            <RatingForm />
-            <CustomerReviews />
+              <div style={{ paddingTop: "10px", background: "#eaeaea" }}>
+                <Grid container spacing={12}>
+                  <Grid item xs={6}>
+                    <ProductDetails />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <PriceCertification />
+                    <Request />
+                  </Grid>
+                </Grid>
+              </div>
+              <Sublistcarousel />
+              <RatingForm />
+              <CustomerReviews />
+            </Container>
           </Container>
           <Grid item xs={12}>
             <Footer />

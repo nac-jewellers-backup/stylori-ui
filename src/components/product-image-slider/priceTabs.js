@@ -133,7 +133,7 @@ class PriceTabs extends React.Component {
                         </SwipeableViews>
                     </>
                 )}
-                <hr class="bottom-line"></hr>
+                {/* <hr class="bottom-line"></hr> */}
             </div>
         );
     }

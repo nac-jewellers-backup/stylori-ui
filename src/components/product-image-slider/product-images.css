@@ -101,17 +101,20 @@
         padding: 3px 50px !important;
         margin-top: 1% !important;
         margin-bottom: 1% !important;
-        text-align:  center  !important;
+        text-align: center !important;
     }
-    .modal-div{
+
+    .modal-div {
         background: #fff !important;
         width: 100%;
         height: 100%;
     }
-.modal-clos{
-    font-size: 20px !important;
-    right: 5% !important;
-}
+
+    .modal-clos {
+        font-size: 20px !important;
+        right: 5% !important;
+    }
+
     /*price tabs*/
     .tabs-hesd-icon {
         padding: 0 5px !important;
@@ -496,7 +499,18 @@
         counter-increment: inherit;
     }
 
+    .imgzoom-shipping {
+        margin-left: 3%;
+    }
 
+    .one-day-ship {
+        width: 130px;
+        height: 60px;
+        left: 14%;
+        background-image: url(https://assets-cdn.stylori.com/images/static/product-details-icons.png);
+        top: 5px;
+        background-repeat: no-repeat;
+    }
 
     .overly-img {
         border: 1px solid #ccc;
@@ -671,11 +685,13 @@
         /* height: 898px; */
         position: relative;
     }
-.my-ringsize{
-    color: #394578;
-    font-size: 12px;
 
-}
+    .my-ringsize {
+        color: #394578;
+        font-size: 12px;
+
+    }
+
     .pagination {
         width: 7px !important;
     }

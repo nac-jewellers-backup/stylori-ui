@@ -82,7 +82,7 @@ const Productprice = () => {
                             </Grid> */}
                             </div>
                         </Pricing>
-                        <hr class="bottom-line product-inform-ation"></hr>
+                        {/* <hr class="bottom-line product-inform-ation"></hr> */}
                     </>
                 </>
             ))}

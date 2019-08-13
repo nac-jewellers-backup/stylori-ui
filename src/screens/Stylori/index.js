@@ -38,9 +38,9 @@ export default class Stylori extends Component {
         <Filter />
         </Grid>
         <Grid item xs={12} >
-          {/* <ChatHelp /> */}
+          <ChatHelp />
 
-          {/* <Footer /> */}
+          <Footer />
         </Grid>
       </Grid>
 
