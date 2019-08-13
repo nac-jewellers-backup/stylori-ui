@@ -1,7 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import './checkout.css'
-import { Container, Grid, CardHeader, Card, IconButton, CardContent, Button } from '@material-ui/core';
+import { Container, Grid, CardHeader, Card, IconButton, CardContent, Button, Hidden } from '@material-ui/core';
 import { productsDetails } from '../product-image-slider/producthoverData';
 import T from '../product-image-slider/producthoverData';
 import Slideshow from '../Carousel/carosul'
@@ -17,7 +17,6 @@ const styles = theme => ({
             overflowX: "scroll"
         },
         [theme.breakpoints.up('lg')]: {
-            overflowX: "scroll",
             width: "100%"
         },
     },
@@ -75,10 +74,10 @@ class Checkoutcard extends React.Component {
                 <Button style={{ background: "#ccc" }}
                     onClick={() => { this.setState({ cart: !this.state.cart }) }}
                 >click</Button>
-                {this.state.cart === true ?
+                {/* {this.state.cart === true ? */}
+                <Hidden mdDown>
                     <div >
                         <Container>
-                            {this.checkoutbutton()}
                             {productsDetails.map(val => (
                                 <div className={classes.cart}>
                                     <Grid container spacing={12} lg={12}  >
@@ -143,13 +142,14 @@ class Checkoutcard extends React.Component {
                         </Container>
 
                     </div>
-                    :
+                    </Hidden>
+                    {/* : */}
+                    <Hidden mdUp>
                     <div>
                         <Container>
-                            {this.checkoutbutton()}
                             <Grid container>
                                 {productsDetails.map(val => (
-                                    <Grid item lg={3} xs={12} >
+                                    <Grid item lg={4} xs={12} >
                                         <Card className="checkout-response-card">
                                             <CardHeader
                                                 title={<span class="title-response">{val.header}</span>} />
@@ -174,7 +174,7 @@ class Checkoutcard extends React.Component {
                                                     </Grid>
                                                 </Grid>
                                                 <Grid container >
-                                                    <Grid item xs={12} lg={6}>
+                                                    <Grid item xs={12} lg={12}>
                                                         <span class="offer-price">$  52,696</span>
                                                         <span class="price-response">$ 39,522</span>
                                                         <span class="offer-description">25% - OFF</span>
@@ -202,7 +202,8 @@ class Checkoutcard extends React.Component {
 
                         </Container>
                     </div>
-                }
+                    </Hidden>   
+                {/* } */}
 
             </div>
         )

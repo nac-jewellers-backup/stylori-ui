@@ -506,7 +506,6 @@
         position: absolute;
         z-index: 3;
         height: 450px !important;
-        /* background-image: url('https://storage.googleapis.com/media.nacjewellers.com/resources/user_media/Muhurtham-Banner.jpg'); */
         background-repeat: no-repeat;
         left: 46% !important;
         margin-top: -453px !important;
@@ -514,9 +513,10 @@
     }
 
     .vertical-carousel {
+        float: left !important;
         border: 1px solid #CCC;
-        margin-bottom: 19px !important;
-        width: 85% !important;
+        margin-bottom: 15px !important;
+        width: 88% !important;
         height: 80px !important;
         cursor: pointer;
     }

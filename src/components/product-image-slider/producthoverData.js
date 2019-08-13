@@ -166,7 +166,7 @@ const fadeImages = [
 export const fadeImagessublist = [
     {
         img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
-        title: "You recently viewed",
+        title: "Diamond And Gold Floral Ring",
         price: "98.89789"
     },
     {

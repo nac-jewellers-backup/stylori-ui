@@ -31,7 +31,7 @@ const styles = theme => ({
         },
         [theme.breakpoints.up('lg')]: {
             width: "75%",
-            textAlign: "center"
+            textAlign: "center",
         },
     },
 });
@@ -91,8 +91,7 @@ class PriceTabs extends React.Component {
                                 <div className={classes.pagination}>
                                     <Slideshow dataCarousel={settings}>
                                         {val.tab1.Children.map(val =>
-                                            <div
-                                            >
+                                            <>
                                                 <button
                                                     className="page dark"
                                                     value={val} id={val}
@@ -100,7 +99,7 @@ class PriceTabs extends React.Component {
                                                 >
                                                     {val}
                                                 </button>
-                                            </div>
+                                            </>
                                         )}
 
                                     </Slideshow>
@@ -139,7 +138,7 @@ class PriceTabs extends React.Component {
         );
     }
     mobiletabs = () => {
-        const { expanded } = this.state;
+         const { expanded } = this.state;
         const { classes } = this.props;
         return (
             <>

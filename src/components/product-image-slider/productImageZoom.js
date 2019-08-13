@@ -37,7 +37,7 @@ class ProductImageZoom extends Component {
       <div>
         <Grid container spacing={12}>
           <Grid item xs={2}>
-            <div style={{ textAlign: 'center' }}>
+            <div style={{ textAlign: 'center' }} >
               <Button onClick={this.previous}>
                 <i class="fa fa-angle-up" style={{ fontSize: "35px", color: "#F699A3" }}></i>
               </Button>

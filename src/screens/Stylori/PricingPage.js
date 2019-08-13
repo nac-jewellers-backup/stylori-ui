@@ -28,38 +28,36 @@ export default class Stylori extends Component {
             </Grid>
           </Grid>
           <Container maxWidth='xl'>
-            <Container maxWidth='xl'>
-              <Grid Container spacing={12}>
-                <Grid item xs={12}>
-                  <CustomSeparator />
-                </Grid>
+            <Grid Container spacing={12}>
+              <Grid item xs={12}>
+                <CustomSeparator />
               </Grid>
-              <Grid container spacing={12}>
-                <Grid item xs={6}>
-                  <ProductImageZoom />
-                </Grid>
-                <Grid item xs={6}>
-                  <ProductPrice />
-                  <PriceTabs />
-                  <PriceBuynow />
-                </Grid>
+            </Grid>
+            <Grid container spacing={12}>
+              <Grid item xs={6}>
+                <ProductImageZoom />
+              </Grid>
+              <Grid item xs={6}>
+                <ProductPrice />
+                <PriceTabs />
+                <PriceBuynow />
+              </Grid>
 
+            </Grid>
+            <Grid container spacing={12}>
+              <Grid item xs={6}>
+                <ProductDetails />
               </Grid>
-              <Grid container spacing={12}>
-                <Grid item xs={6}>
-                  <ProductDetails />
-                </Grid>
-                <Grid item xs={6}>
-                  <PriceCertification />
-                  <Request />
-                </Grid>
+              <Grid item xs={6}>
+                <PriceCertification />
+                <Request />
               </Grid>
-              <Sublistcarousel />
-              <RatingForm />
-              <CustomerReviews />
-            </Container>
+            </Grid>
+            <Sublistcarousel />
+            <RatingForm />
+            <CustomerReviews />
           </Container>
-          <Grid item xs={12} style={{ paddingTop: '5%' }}>
+          <Grid item xs={12}>
             <Footer />
           </Grid>
         </Hidden>
@@ -97,7 +95,7 @@ export default class Stylori extends Component {
             <Grid item xs={12} >
               <RatingForm />
             </Grid>
-            <Grid item xs={12} style={{ paddingTop: '5%' }}>
+            <Grid item>
               <Footer />
             </Grid>
           </div>

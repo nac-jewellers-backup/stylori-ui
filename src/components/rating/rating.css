@@ -20,7 +20,8 @@
     background-color: #F16882 !important;
 }
 
-.starts-review {
+.star-rating {
     margin-top: 5px !important;
     margin-left: 15% !important;
+    text-align: center !important;
 }
