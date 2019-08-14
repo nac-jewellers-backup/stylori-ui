@@ -24,10 +24,7 @@ class ProductDetails extends React.Component {
 
                         {data.productsDetails.map(val => (
                             <>
-                                <div style={{
-                                    borderRadius: "15px", width: "100%", background: "#f1f3f6", border: '1px solid #ccc',
-                                    padding: "25px", marginBottom: "10px", boxShadow: "0 1px 8px 0 rgba(0,0,0,.06)"
-                                }}>
+                                <div className='overall-boxz'>
                                     <span key={val.name} className="product-details">{val.header}</span>
                                     <hr class="bottom-line"></hr>
                                     <>{

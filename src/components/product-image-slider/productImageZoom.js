@@ -14,7 +14,7 @@ import './product-images.css'
 
 window.onload = function () {
   var flashlight = document.querySelector('#flashlight');
-  document.getElementById('imgZoom').addEventListener('mouseover', function (event) {
+  document.getElementById('divs').addEventListener('mouseover', function (event) {
     flashlight.style.left = (event.pageX - 40) + 'px';
     flashlight.style.top = (event.pageY - 40) + 'px';
   });
@@ -69,7 +69,7 @@ class ProductImageZoom extends Component {
                 {/* <span class="one-day-ship" ></span> */}
                 <div id='flashlight'></div>
 
-                <img style={{ position: "" }} id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
+                <img id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
               </div>
 
               <div className='overly-img' id="overlay"

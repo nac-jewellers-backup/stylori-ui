@@ -72,8 +72,6 @@ class CustomerReviews extends React.Component {
                                                 <img className='features-tags-images' src={val.icon} alt="" />
                                                 <span style={{ fontSize: "12px" }}>{val.name} </span>
                                             </div>
-
-
                                         ))}
                                     </Slideshow>
                                     <div className="loader"></div>
