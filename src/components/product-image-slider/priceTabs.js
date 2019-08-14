@@ -112,14 +112,14 @@ class PriceTabs extends React.Component {
 
                             </TabContainer>
                             <TabContainer >
+                            <Grid container spacing={12}>
                                 {val.tab2.Children.map(val =>
-                                    <Grid container spacing={12}>
                                         <Grid xs={4}>
                                             <img src={val.icon} style={{ width: '35px' }} alt="" />
                                             <span className="tabs-contants">  {val.name}</span>
                                         </Grid>
-                                    </Grid>
                                 )}
+                                </Grid>
                             </TabContainer>
                             <TabContainer >
                                 {val.tab3.Children.map(val =>

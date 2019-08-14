@@ -20,6 +20,7 @@ class RatingForm extends React.Component {
         expanded: null,
         values: this.initialValues,
         errors: this.initialValues,
+        
     };
 
     ratingForm = (err, errors) => {

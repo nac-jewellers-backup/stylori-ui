@@ -32,6 +32,7 @@ export class Form extends React.Component {
       required: "Confirm Password is required"
     },
     name: {
+      invalid: "Passwords do not match!",
       required: "Confirm Name is required"
     },
     request: {
@@ -52,7 +53,6 @@ export class Form extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     let { confirmMail, confirmPassword, ...rest } = this.state.values;
-    console.info("VALUES", rest);
   };
 
   handleChange = e => {
@@ -64,7 +64,7 @@ export class Form extends React.Component {
 
   handleInvalid = type => e => {
     e.preventDefault();
-    let { errorvalid } = this.state;
+    let { errorvalid } = this.state; 
     errorvalid[e.target.name] = true;
     this.setState({ errorvalid });
   };

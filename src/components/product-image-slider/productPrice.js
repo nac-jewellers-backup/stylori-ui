@@ -24,7 +24,7 @@ const mobilecarousel = () => {
     return (
         <Container>
             <div style={{ height: '200px', width: "auto" }}>
-                <Slideshow class='responseve-carousel' imgClass='responseve-carousel-img'
+                <Slideshow class='responseve-carousel testingcur' imgClass='responseve-carousel-img'
                     fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
             </div>
 

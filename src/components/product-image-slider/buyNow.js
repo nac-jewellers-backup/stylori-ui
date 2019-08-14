@@ -122,8 +122,6 @@ class PriceBuynow extends React.Component {
                                             <div className='modal-div'>
                                                 <i style={{ fontSize: "20px", color: "#ccc", marginTop: "5%", marginRight: "5%", float: "right" }} className="modal-clos" onClick={this.handleClose} class="fa fa-times-circle"></i>
                                                 <div style={{ backgroundImage: `url(${showimage})`, width: "100%", height: "100%" }}></div>
-                                           LLLLLL
-                                           
                                             </div>
                                         </Modal>
 

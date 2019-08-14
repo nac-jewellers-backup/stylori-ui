@@ -113,6 +113,12 @@ export const productstabs = [
                 {
                     name: "18k Yellow",
                     icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
+                }, {
+                    name: "18k Yellow",
+                    icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
+                }, {
+                    name: "18k Yellow",
+                    icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
                 },
 
             ]
