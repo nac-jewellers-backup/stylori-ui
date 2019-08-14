@@ -39,29 +39,27 @@ export default class Stylori extends Component {
                   <ProductImageZoom />
                 </Grid>
                 <Grid item xs={6}>
-                  <div style={{ border: '1px solid #ccc', padding: "15px", marginBottom: "10px" }}>
+                  <div style={{ width: "100%", borderRadius: "0 4px 4px 0", border: '1px solid #ccc', padding: "15px", marginBottom: "10px", boxShadow: '0 1px 8px 0 rgba(0,0,0,.06)' }}>
                     <ProductPrice />
                   </div>
-                  <div style={{ border: '1px solid #ccc', padding: "15px", marginBottom: "10px" }}>
+                  <div style={{ width: "100%", borderRadius: "0 4px 4px 0", border: '1px solid #ccc', padding: "15px", marginBottom: "10px", boxShadow: "0 1px 8px 0 rgba(0,0,0,.06)" }}>
                     <PriceTabs />
                   </div>
-                  <div style={{ border: '1px solid #ccc', padding: "15px", marginBottom: "10px" }}>
+                  <div style={{ width: "100%", borderRadius: "0 4px 4px 0", border: '1px solid #ccc', padding: "15px", marginBottom: "10px", boxShadow: "0 1px 8px 0 rgba(0,0,0,.06)" }}>
                     <PriceBuynow />
                   </div>
                 </Grid>
 
               </Grid>
-              <div style={{ paddingTop: "10px", background: "#eaeaea" }}>
-                <Grid container spacing={12}>
-                  <Grid item xs={6}>
-                    <ProductDetails />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <PriceCertification />
-                    <Request />
-                  </Grid>
+              <Grid container spacing={12} style={{ marginTop: "35px" }}>
+                <Grid item xs={6}>
+                  <ProductDetails />
                 </Grid>
-              </div>
+                <Grid item xs={6}>
+                  <PriceCertification />
+                  <Request />
+                </Grid>
+              </Grid>
               <Sublistcarousel />
               <RatingForm />
               <CustomerReviews />

@@ -1,7 +1,7 @@
 .star {
     cursor: pointer;
-    height: 15px;
-    width: 15px;
+    height: 17px;
+    width: 17px;
     float: left;
     background-color: #ccc;
     -webkit-clip-path: polygon(50% 0%,
@@ -22,6 +22,5 @@
 
 .star-rating {
     margin-top: 5px !important;
-    margin-left: 15% !important;
     text-align: center !important;
 }

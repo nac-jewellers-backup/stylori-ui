@@ -35,14 +35,26 @@ class Request extends React.Component {
             expanded: expanded ? panel : false,
         });
     };
-
+    submitbutton = () => {
+        return (
+            <div>
+                <Grid container>
+                    <Grid xs={12} >
+                        <Button type="submit" className="requset-button">
+                            Send
+                            </Button>
+                    </Grid>
+                </Grid>
+            </div>
+        )
+    }
 
     Requestform = (err, errorhandle, errors, onchnagevalue) => {
         return (
             <div>
-                <div style={{ border: '1px solid #ccc', padding: "15px", marginBottom: "10px", width: "100%", background: "#f1f1f1" }}>
+                <div style={{ borderRadius: "15px", width: "100%", background: "#f1f3f6", border: '1px solid #ccc', padding: "0px 15px",paddingTop:"25px",paddingBottom:"25px", marginBottom: "10px", boxShadow: "0 1px 8px 0 rgba(0,0,0,.06)" }}>
                     <Hidden smDown>
-                        <h4 className="product-details">Ask Our Expert</h4>
+                        <span className="product-details">Ask Our Expert</span>
                         <hr class="bottom-line"></hr>
                     </Hidden>
                     <Grid container spacing={12} >
@@ -96,23 +108,9 @@ class Request extends React.Component {
                                 required
                             />
                         </Grid>
-                        <Grid xs={9} />
-                        <Hidden smDown>
-                            <Grid xs={2}>
-                                <Button type="submit" className="requset-button">
-                                    Send
-                            </Button>
-                            </Grid>
-                        </Hidden>
 
-                        <Hidden mdUp>
-                            <Grid xs={2}>
-                                <Button type="submit" className="requset-button-mob">
-                                    Send
-                            </Button>
-                            </Grid>
-                        </Hidden>
                     </Grid>
+                    {this.submitbutton()}
                 </div>
             </div>
         )

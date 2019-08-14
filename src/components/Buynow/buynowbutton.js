@@ -8,7 +8,7 @@ class Buynowbutton extends React.Component {
         return (
             <div>
                 <Button className={this.props.class}>
-                    <i class="fa fa-shopping-bag buynow-icon"></i> &nbsp;Buy Now
+                    <i class="fa fa-shopping-bag buynow-icon"></i> <span className={this.props.button}>Buy Now</span>
              </Button>
             </div>
         )
