@@ -107,6 +107,8 @@ class PersistentDrawerLeft extends React.Component {
       filtercheck: '',
       productDisplay: true,
       check: true,
+      numOne:'',
+      numTwo:'',
       chipData: [
         { key: '', label: '' },
       ],
@@ -115,7 +117,6 @@ class PersistentDrawerLeft extends React.Component {
   }
 
   handleChange(value, name) {
-debugger;
     let { checked, chipData } = this.state;
     let arr = [];
     if (name === true) {
@@ -177,7 +178,40 @@ debugger;
     this.setState({ check: !this.state.check });
     this.setState({ open: !this.state.open });
   };
+  componentDidMount(){
+    var numberOne = 1232224.789;
+    var numberTwo = 1833362.222
+var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
+var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
+this.setState({numOne:numOne, numTwo:numTwo})
+  }
+  
+  onCurrencyChange = (e) => {
+    var numberOne;
+    var numberTwo;
+if (isNaN(Number((document.getElementById('num1').value).charAt(0)))){
+  numberOne=  Number(((document.getElementById('num1').value).substr(1)).replace(/,/g, ''));
+  }
+  else{
+    
+    numberOne=  Number((document.getElementById('num1').value).replace(/,/g, ''));
+  }
+  if (isNaN(Number((document.getElementById('num2').value).charAt(0)))){
+    numberTwo=  Number(((document.getElementById('num2').value).substr(1)).replace(/,/g, ''));
+    }
+    else{
+      
+      numberTwo=  Number((document.getElementById('num2').value).replace(/,/g, ''));
+    }
+  debugger;
+var numOnee = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
+var numTwoo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
+this.setState({numOne:numOnee, numTwo:numTwoo})
+
+  }
+
   render() {
+    console.log(this.state.numOne);
     const { classes } = this.props;
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
@@ -215,27 +249,29 @@ debugger;
                     <List className="fil-main-list">
                       <div style={{ margin: "5px" }}>
                         <Typography className="fil-list-items">Price</Typography>
-                        <Grid container spacing={12} style={{ paddingLeft: "5px" }}>
+                        <Grid container spacing={12} style={{ paddingLeft: "5px" }}   >
                           <Grid item xs={4} >
                             <TextField
+                            onChange={(e)=>{this.setState({numOne:e.target.value})}}
                               className="price-txt"
-                              id="outlined-bare"
-                              defaultValue="$ 8774379"
+                              id="num1"
+                              value={this.state.numOne}
                               margin="normal"
                               variant="outlined"
                             />
                           </Grid>&nbsp;
              <Grid item xs={4}>
                             <TextField
+                              onChange={(e)=>{this.setState({numTwo:e.target.value})}}
                               className="price-txt"
-                              id="outlined-bare"
-                              defaultValue="$ 76734868"
+                              id="num2"
+                              value={this.state.numTwo}
                               margin="normal"
                               variant="outlined"
                             />
                           </Grid>&nbsp;
             <Grid item xs={3}>
-                            <Button variant="contained" className={`price-btn ${classes.colorMainBackground}`}>Go</Button>
+                            <Button variant="contained" className={`price-btn ${classes.colorMainBackground}`} onClick= {() => this.onCurrencyChange()}>Go</Button>
                           </Grid>
                         </Grid>
                       </div>
