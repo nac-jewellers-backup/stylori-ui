@@ -12,13 +12,13 @@ import PropTypes from 'prop-types';
 import './product-images.css'
 
 
-window.onload = function () {
-  var flashlight = document.querySelector('#flashlight');
-  document.getElementById('divs').addEventListener('mouseover', function (event) {
-    flashlight.style.left = (event.pageX - 40) + 'px';
-    flashlight.style.top = (event.pageY - 40) + 'px';
-  });
-};
+// window.onload = function () {
+//   var flashlight = document.querySelector('#flashlight');
+//   document.getElementById('divs').addEventListener('mouseover', function (event) {
+//     flashlight.style.left = (event.pageX - 40) + 'px';
+//     flashlight.style.top = (event.pageY - 40) + 'px';
+//   });
+// };
 
 class ProductImageZoom extends Component {
   constructor(props) {
