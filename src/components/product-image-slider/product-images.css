@@ -30,16 +30,15 @@
     .starts {
         position: relative;
         min-height: 1px;
-        padding-right: 15px;
-        padding-left: 15px;
+
     }
 
     .starts-review {
         cursor: pointer;
-        text-align: center !important;
         margin-top: 5px;
         color: #394578;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        margin-left: 27% !important;
     }
 
     .border-line- {
@@ -185,22 +184,24 @@
 
     /*buynow-button*/
     .buynow-button {
-        height: 50px !important;
         border-radius: 0 !important;
         border: none;
         background-color: #f36e23 !important;
         color: #fff !important;
         font-size: 20px !important;
-        padding: 11px 0 !important;
         text-align: center;
         letter-spacing: 2px !important;
         width: 95%;
         text-transform: none !important;
     }
 
+    .buynow-btn-cont {
+        line-height: 40px !important;
+
+    }
+
     .buynow-icon {
-        line-height: 30px !important;
-        margin-top: -5px;
+        font-size: 16px;
     }
 
     .buy-subheaders {
@@ -250,6 +251,10 @@
         font-size: 12px !important;
     }
 
+    .curser {
+        cursor: pointer !important;
+    }
+
     .features-tags {
         color: #394578;
         font-size: 11px;
@@ -270,6 +275,7 @@
     /*ProductDetails*/
     .product-details {
         color: #394578 !important;
+        font-weight: bold !important;
     }
 
     .product-subhead {
@@ -293,24 +299,22 @@
     .request-text,
     .MuiOutlinedInput-input {
         display: block;
-        width: 95% !important;
+        width: 97% !important;
         height: 42px !important;
-        padding: 1.5px 14px !important;
+        padding: 0 7px !important;
         font-size: 13px;
         line-height: 1.42857143;
         color: #394578 !important;
         border: 1px solid #c3c3c3;
         border-radius: 0px;
         box-shadow: none;
-        background-color: #fff;
+        background-color: #f1f3f6;
     }
 
     .requset-button {
-        margin-top: 20px !important;
         background: #394579 !important;
         border: 1px solid #394579 !important;
         color: #fff !important;
-        padding: 12px 15px !important;
         border-radius: 0px !important;
         text-align: center !important;
         min-width: 100px !important;
@@ -324,22 +328,9 @@
     /*rating-form*/
     .rating-form {
         letter-spacing: 12px !important;
-    }
-
-    .requset-button-mob {
-        margin-top: 20px !important;
-        background: #394579 !important;
-        border: 1px solid #394579 !important;
-        color: #fff !important;
-        padding: 9px 15px !important;
-        border-radius: 0px !important;
-        text-align: center !important;
-        min-width: 100px !important;
-        font-size: 16px !important;
-        border: none;
-        cursor: pointer;
-        float: right !important;
-        text-transform: none !important;
+        width: 100% !important;
+        float: left !important;
+        padding-bottom: 10px;
     }
 
     .rating-form-head {
@@ -347,7 +338,8 @@
         font-size: 13px;
         margin-top: 10px;
         margin-bottom: 10px;
-        font-weight: 500;
+        font-weight: 600;
+        width: 100% !important;
     }
 
     .rating-form-text {
@@ -357,11 +349,15 @@
         width: 100%;
     }
 
-    .tool-tips {
-        margin-top: 3px !important;
+    .tool-tips,
+    .MuiFormHelperText-contained,
+    .MuiFormHelperText-root {
         font-weight: 300;
         font-size: 12px;
         color: #394578;
+        margin: 0 !important;
+        margin-top: 0 !important;
+        min-height: 0 !important;
     }
 
     .form-cancel {
@@ -392,21 +388,6 @@
         color: #fff !important;
     }
 
-    .form-reviews {
-        background-color: #394578 !important;
-        color: #fff !important;
-        border: 1px solid #394578 !important;
-        min-width: 100px !important;
-        font-size: 16px;
-        font-weight: bold !important;
-        line-height: 1.42857143;
-        text-align: center;
-        padding: 12px 15px !important;
-        border-radius: 0px !important;
-        text-transform: none !important;
-        margin-right: 10px !important;
-    }
-
     .form-reviews-mob {
         border-radius: 0px !important;
         text-transform: none !important;
@@ -414,10 +395,10 @@
         border: 1px solid #394579 !important;
         color: #fff !important;
         text-align: center;
-        margin-right: 10px !important;
+        margin-right: 5px !important;
         min-width: 100px;
-        font-size: 16px;
-        padding: 9px 15px !important;
+        font-size: 17px;
+        padding: 10px 17px !important;
     }
 
     .form-cancel-mob:hover {
@@ -491,12 +472,28 @@
         min-height: none !important;
     }
 
+    .imagezoom-cursor {
+        border: 1px solid #ccc !important;
+    }
+
     .imagecard {
-        width: 95%;
+        width: 100%;
         border: 1px solid #ccc;
         height: 450px !important;
-        cursor: crosshair;
         counter-increment: inherit;
+        float: left !important;
+    }
+
+    #flashlight {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: rgb(255, 255, 255);
+        z-index: 2147483647;
+        opacity: 0.5;
+        cursor: crosshair;
+        overflow: hidden !important;
+        text-align: center !important;
     }
 
     .imgzoom-shipping {
@@ -513,16 +510,14 @@
     }
 
     .overly-img {
-        border: 1px solid #ccc;
+        border: 1px solid rgb(204, 204, 204);
         display: none;
-        width: 475px;
+        width: 35%;
         float: left !important;
         position: absolute;
         z-index: 3;
         height: 450px !important;
         background-repeat: no-repeat;
-        left: 46% !important;
-        margin-top: -453px !important;
         background-color: #fff !important;
     }
 

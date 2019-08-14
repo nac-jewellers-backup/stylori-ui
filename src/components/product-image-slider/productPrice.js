@@ -55,10 +55,7 @@ const Productprice = () => {
                                     <i class="fa fa-share-alt overall-icons"></i>&nbsp;
                        <i class="fa fa-heart-o overall-icons"></i>
                                 </div>
-                                <div className="starts-review">
-                                    <Ratings />
-
-                                </div>
+                                <Ratings ratings="starts-review" />
                             </div>
                         </Grid>
                         <hr class="bottom-line product-inform-ation"></hr>

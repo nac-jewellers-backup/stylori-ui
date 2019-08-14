@@ -11,6 +11,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './product-images.css'
 
+
+window.onload = function () {
+  var flashlight = document.querySelector('#flashlight');
+  document.getElementById('imgZoom').addEventListener('mouseover', function (event) {
+    flashlight.style.left = (event.pageX - 40) + 'px';
+    flashlight.style.top = (event.pageY - 40) + 'px';
+  });
+};
+
 class ProductImageZoom extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +32,7 @@ class ProductImageZoom extends Component {
     backgroundPosition: '0% 0%',
     showimage: T.fadeImages[0],
   }
+
   productImageZoom = () => {
     let { showimage } = this.state;
     const dataCarousel = {
@@ -33,6 +43,7 @@ class ProductImageZoom extends Component {
       verticalSwiping: true,
       arrows: false
     }
+
     return (
       <div>
         <Grid container spacing={12}>
@@ -42,7 +53,7 @@ class ProductImageZoom extends Component {
                 <i class="fa fa-angle-up" style={{ fontSize: "35px", color: "#F699A3" }}></i>
               </Button>
 
-              <Slideshow sliderRef={this.slider} 
+              <Slideshow sliderRef={this.slider}
                 getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img'
                 fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
 
@@ -53,9 +64,12 @@ class ProductImageZoom extends Component {
           </Grid>
           <Grid item xs={10}>
             <div>
-              <div className='imagecard' onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
-              {/* <span class="one-day-ship" ></span> */}
-                <img id="imgZoom" width="100%" height="100%" className={`${showimage?'':'shine'}`} src={showimage} alt=""/>
+
+              <div className='imagecard' id="divs" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
+                {/* <span class="one-day-ship" ></span> */}
+                <div id='flashlight'></div>
+
+                <img style={{ position: "" }} id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
               </div>
 
               <div className='overly-img' id="overlay"
@@ -66,7 +80,7 @@ class ProductImageZoom extends Component {
                   {TB.productsubHead.map(val => (
                     <Grid item xs={2} >
                       <div key={val.name}>
-                        <img className='features-tags-images' src={val.icon} alt=""/>
+                        <img className='features-tags-images' src={val.icon} alt="" />
                         <span style={{ fontSize: "14px" }}>{val.name} </span>
                       </div>
                     </Grid>
@@ -100,8 +114,7 @@ class ProductImageZoom extends Component {
     var img = document.getElementById("imgZoom");
     var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
     var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
-    element.style.backgroundPosition = (-posX * 1.5) + "px " + (-posY * 1.5) + "px";
-
+    element.style.backgroundPosition = (-posX - 80) + "px " + (-posY - 80) + "px";
 
   }
 

@@ -47,10 +47,10 @@ const Buydetails = () => {
             {buy.productsbuy.map(val =>
                 <>
                     <Grid container spacing={12}>
-                        <Grid item xs={5} style={{ textAlign: "left" }}>
-                            <Buynowbutton class="buynow-button" />
+                        <Grid item xs={4} >
+                            <Buynowbutton class="buynow-button" button='buynow-btn-cont'/>
                         </Grid>
-                        <Grid xs={7} style={{ marginTop: "10px" }}>
+                        <Grid xs={8} style={{ marginTop: "10px" }}>
                             <Grid container spacing={12}>
                                 <Grid item xs={3} className='buy-subheaders'>Need Help ?</Grid>
                             </Grid>
@@ -111,7 +111,7 @@ class PriceBuynow extends React.Component {
                                         </b>
                                     </Grid>
                                     <Grid item xs={6} className="content">
-                                        <b className="ships-by">
+                                        <b className="ships-by curser">
                                             <span onClick={this.handleOpen}> Top to Zoom</span></b>
 
                                         <Modal

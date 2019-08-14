@@ -29,8 +29,8 @@ class RatingForm extends React.Component {
                 <Grid item xs={12} lg={8}>
                     <h5 className='rating-form-head'>Rate This</h5>
                     <div className="rating-form">
-                        <Ratings />
-                    </div><br/>
+                        <Ratings/>
+                    </div>
                     <h3 className='rating-form-head'>Write Your Review</h3>
                     <Input
                         type="text"
@@ -62,28 +62,14 @@ class RatingForm extends React.Component {
             <div>
                 <Container>
                     <Form children={this.ratingForm} />
-
-                    <Hidden smDown>
-                        <Grid container spacing={12}>
-                            <Grid item xs={12} lg={8}>
-                                <div style={{ float: "right" }}>
-                                    <Button className='form-reviews' type="submit" >Write a Reviews</Button>
-                                    <Button className='form-cancel' >Cancel</Button>
-                                </div>
-                            </Grid>
+                    <Grid container spacing={12} style={{ marginTop: '20px' }}>
+                        <Grid item xs={12} lg={9}>
+                            <div style={{ float: "right" }}>
+                                <Button className='form-reviews-mob' type="submit">Write a Reviews</Button>
+                                <Button className='form-cancel-mob' >Cancel</Button>
+                            </div>
                         </Grid>
-                    </Hidden>
-
-                    <Hidden mdUp>
-                        <Grid container spacing={12} style={{ marginTop: '20px' }}>
-                            <Grid item xs={12} lg={8}>
-                                <div style={{ float: "right" }}>
-                                    <Button className='form-reviews-mob' type="submit">Write a Reviews</Button>
-                                    <Button className='form-cancel-mob' >Cancel</Button>
-                                </div>
-                            </Grid>
-                        </Grid>
-                    </Hidden>
+                    </Grid>
 
                 </Container>
             </div>
