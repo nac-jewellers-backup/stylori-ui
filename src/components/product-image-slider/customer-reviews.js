@@ -1,4 +1,5 @@
 import {
+    Grid,
     Container,
     Hidden,
     ExpansionPanel,
@@ -7,9 +8,11 @@ import {
     Typography,
 
 } from '@material-ui/core';
+import Slideshow from '../Carousel/carosul'
 import React from "react";
 import './product-images.css'
 import PropTypes from 'prop-types';
+import TB from './producthoverData'
 
 class CustomerReviews extends React.Component {
     state = {
@@ -23,6 +26,14 @@ class CustomerReviews extends React.Component {
     };
     render() {
         const { expanded } = this.state;
+        const dataCarousel = {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            fade: true,
+            autoplaySpeed: 5000,
+            arrows: false
+        }
         return (
             <div>
                 <Hidden smDown>
@@ -54,9 +65,19 @@ class CustomerReviews extends React.Component {
                                 </div>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
-                                <Typography>
-                                    Lorem ipsum dolor malesuada lacus
-                        </Typography>
+                                <Typography style={{ height: "40px", width: "100%", textAlign: "center" }}>
+                                    <Slideshow dataCarousel={dataCarousel}>
+                                        {TB.productsubHead.map(val => (
+                                            <div key={val.name} className="wrappercustom">
+                                                <img className='features-tags-images' src={val.icon} alt="" />
+                                                <span style={{ fontSize: "12px" }}>{val.name} </span>
+                                            </div>
+
+
+                                        ))}
+                                    </Slideshow>
+                                    <div className="loader"></div>
+                                </Typography>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
                     </Container> </Hidden>

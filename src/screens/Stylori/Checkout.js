@@ -9,7 +9,6 @@ class Checkout extends React.Component {
             <div>
                     <Grid Container spacing={12}>
                         <Grid item xs={12}>
-                            {/* <Checkoutbreadcrum /> */}
                             <Checkoutcard />
                             <Footer/>
                         </Grid>

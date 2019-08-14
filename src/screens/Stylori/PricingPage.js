@@ -39,27 +39,35 @@ export default class Stylori extends Component {
                   <ProductImageZoom />
                 </Grid>
                 <Grid item xs={6}>
-                  <ProductPrice />
-                  <PriceTabs />
-                  <PriceBuynow />
+                  <div style={{ border: '1px solid #ccc', padding: "15px", marginBottom: "10px" }}>
+                    <ProductPrice />
+                  </div>
+                  <div style={{ border: '1px solid #ccc', padding: "15px", marginBottom: "10px" }}>
+                    <PriceTabs />
+                  </div>
+                  <div style={{ border: '1px solid #ccc', padding: "15px", marginBottom: "10px" }}>
+                    <PriceBuynow />
+                  </div>
                 </Grid>
 
               </Grid>
-              <Grid container spacing={12}>
-                <Grid item xs={6}>
-                  <ProductDetails />
+              <div style={{ paddingTop: "10px", background: "#eaeaea" }}>
+                <Grid container spacing={12}>
+                  <Grid item xs={6}>
+                    <ProductDetails />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <PriceCertification />
+                    <Request />
+                  </Grid>
                 </Grid>
-                <Grid item xs={6}>
-                  <PriceCertification />
-                  <Request />
-                </Grid>
-              </Grid>
+              </div>
               <Sublistcarousel />
               <RatingForm />
               <CustomerReviews />
             </Container>
           </Container>
-          <Grid item xs={12} style={{ paddingTop: '5%' }}>
+          <Grid item xs={12}>
             <Footer />
           </Grid>
         </Hidden>
@@ -97,7 +105,7 @@ export default class Stylori extends Component {
             <Grid item xs={12} >
               <RatingForm />
             </Grid>
-            <Grid item xs={12} style={{ paddingTop: '5%' }}>
+            <Grid item>
               <Footer />
             </Grid>
           </div>

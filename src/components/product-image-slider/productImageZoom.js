@@ -37,12 +37,12 @@ class ProductImageZoom extends Component {
       <div>
         <Grid container spacing={12}>
           <Grid item xs={2}>
-            <div style={{ textAlign: 'center' }}>
+            <div style={{ textAlign: 'center' }} >
               <Button onClick={this.previous}>
                 <i class="fa fa-angle-up" style={{ fontSize: "35px", color: "#F699A3" }}></i>
               </Button>
 
-              <Slideshow sliderRef={this.slider}
+              <Slideshow sliderRef={this.slider} 
                 getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img'
                 fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
 
@@ -54,6 +54,7 @@ class ProductImageZoom extends Component {
           <Grid item xs={10}>
             <div>
               <div className='imagecard' onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
+              {/* <span class="one-day-ship" ></span> */}
                 <img id="imgZoom" width="100%" height="100%" className={`${showimage?'':'shine'}`} src={showimage} alt=""/>
               </div>
 

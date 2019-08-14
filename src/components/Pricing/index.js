@@ -1,7 +1,7 @@
 import React from 'react'
-import { Typography } from '@material-ui/core'
+import { Typography, Grid } from '@material-ui/core'
 import { makeStyles } from "@material-ui/core/styles";
-
+import '../product-image-slider/product-images.css'
 
 const useStyles = makeStyles(theme => ({
 
@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function Pricing  (props) {
+export default function Pricing(props) {
     const classes = useStyles();
     return (
         <div>
@@ -85,6 +85,14 @@ export default function Pricing  (props) {
                 </Typography>
             </Typography>
             {/*  */}
+
+            {
+                props.offerDiscount?
+                <Grid container spacing={12}>
+                <Grid item lg={12} xs={12} > <span className='discount'>{props.offerDiscount}</span></Grid>
+            </Grid>
+                :
+
             <Typography style={{ display: "flex" }}>
                 <Typography
                     variant="body2"
@@ -93,17 +101,19 @@ export default function Pricing  (props) {
                     component="p"
 
                 >
-                    {/* You save */}
-</Typography>
+                     You save 
+                </Typography>
                 <Typography
                     variant="caption"
                     color="textSecondary"
                     component="p"
                     className={`${props.save != null & props.save !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.offerPricePadding} `}
                 >
-                     {props.save}
+                    {props.save}
                 </Typography>
             </Typography>
+        
+        }
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 export class Form extends React.Component {
   initialValues = {
@@ -31,13 +31,13 @@ export class Form extends React.Component {
       invalid: "Passwords do not match!",
       required: "Confirm Password is required"
     },
-    name : {
+    name: {
       required: "Confirm Name is required"
     },
-    request : {
+    request: {
       required: "Confirm request is required"
     },
-    title : {
+    title: {
       required: "Confirm title is required"
     }
   };
@@ -45,7 +45,7 @@ export class Form extends React.Component {
   state = {
     values: this.initialValues,
     errors: this.initialValues,
-    errorvalid : {},
+    errorvalid: {},
     show: { password: false, confirmPassword: false }
   };
 
@@ -68,15 +68,17 @@ export class Form extends React.Component {
     errorvalid[e.target.name] = true;
     this.setState({ errorvalid });
   };
-  onchnagevalue = type => e => {
-    this.setState({ errorvalid : {} });
+
+
+  onchnagevalue = () => {
+    this.setState({ errorvalid: {} });
   };
 
   renderForm = () => {
     return (
       <>
-       {this.props.children(this.state.errorvalid ,this.handleInvalid,this.errors,this.onchnagevalue)}
-       </>
+        {this.props.children(this.state.errorvalid, this.handleInvalid, this.errors, this.onchnagevalue)}
+      </>
     );
   };
 
