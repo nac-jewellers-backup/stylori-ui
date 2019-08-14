@@ -115,7 +115,7 @@ class PersistentDrawerLeft extends React.Component {
   }
 
   handleChange(value, name) {
-
+debugger;
     let { checked, chipData } = this.state;
     let arr = [];
     if (name === true) {

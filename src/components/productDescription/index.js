@@ -6,46 +6,32 @@ import CustomSeparator from '../BreadCrumb/index';
 import { withStyles } from '@material-ui/core/styles';
 import data from './data'
 
-
-
-
-
 const styles = theme => ({
 
-    colorLight:{
-      color: theme.palette.secondary.light
-    },
-    colorDark: {
-      color: theme.palette.primary.dark,
-  
-    },
+  colorLight: {
+    color: theme.palette.secondary.light
+  },
+  colorDark: {
+    color: theme.palette.primary.dark,
+
+  },
 });
-
-
-
 
 class ProductDescription extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      showLess: true
+    }
   }
-  handleOpen = () => {
-    document.getElementById('txtopen').style.display = "inline";
-    document.getElementById('readLess').style.display = "block";
-    document.getElementById('readMore').style.display = "none";
-    document.getElementById('moreDots').style.display = "none";
+  handleReadMore = () => {
+    this.setState({ showLess: !this.state.showLess })
+  }
 
-  }
-  handleClose = () => {
-    document.getElementById('txtopen').style.display = "none";
-    document.getElementById('readLess').style.display = "none";
-    document.getElementById('readMore').style.display = "block";
-    document.getElementById('moreDots').style.display = "inline";
 
-  }
-  
   render() {
     const { classes } = this.props;
-   
+
     return (
       <>
         <Container >
@@ -74,22 +60,22 @@ class ProductDescription extends Component {
                 <Grid
                   item
                   xs={6}
-                  className={`DescriptionTitle` }
+                  className={`DescriptionTitle`}
                   alignItems="center"            >
-             <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>
-{this.props.title}
-</Typography>
+                  <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>
+                    {this.props.title}
+                  </Typography>
                 </Grid>
               </Hidden>
               <Hidden mdUp>
                 <Grid
                   item
                   xs={6}
-                  className={` DescriptionTitleSmallScreen ` }
+                  className={` DescriptionTitleSmallScreen `}
                   alignItems="center"            >
-              <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>
-{this.props.title}
-</Typography>
+                  <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>
+                    {this.props.title}
+                  </Typography>
                 </Grid>
               </Hidden>
             </Grid>
@@ -101,64 +87,41 @@ class ProductDescription extends Component {
                 <Grid
                   item
                   xs={3}
-                  style={{ textAlign: 'center' }}
+                  style={{ paddingLeft: '4%' }}
                   alignItems="center">
 
-                  < Slideshow fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel} styles={'productDescriptionCarousel'}/>
+                  < Slideshow fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel} styles={'productDescriptionCarousel'} />
                 </Grid>
               </Hidden>
-              <Hidden smDown>
-                <Grid
-                  item
-                  xs={6}
-                  alignItems="center">
-                  <p>
-                    {/* {this.props.ProductContent.slice(0, 60)} */}
-                    <span className="DescriptionContent">
-                      {/* For every occasion and non-occasion. Shop our range of everyday fashion jewellery featuring gold, silver and stone rings and earrings, for work, play and everything in between. Give special occasions a little extra glimmer with our range of bridal jewellery ranging from engagement rings to wedding r */}
-                    
+              <Grid
+                item
+                xs={12} sm={12} md={9} lg={9} xl={9}
+                alignItems="center">
+                <p>
+                  <div className="DescriptionContent">
                     {
-                    
-                    (data.jewlleryData).slice(0,160)
+                      this.state.showLess === true ?
+                        <>
+                          {(data.jewlleryData).slice(0, 160)}
+                          <span id="moreDots" style={{ display: 'inline' }}>...</span>
+                          <p onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readMore" >
+                            <span ><i className="fa faMore">&#xf0da;</i></span> READ MORE
+                   </p>
+                        </>
+                        :
+                        <>
+                          {data.jewlleryData}
+                          <p onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readLess" >
+                            <span ><i className="fa faMore">&#xf0d8;</i></span> CLOSE
+               </p>
+                          <br />
+                        </>
                     }
-                    
-                    <span id="moreDots" style={{ display: 'inline' }}>...</span> </span>
-                    <span id="txtopen" className="DescriptionContent" style={{ display: 'none' }}> 
-                    {/* ings to classic party wear.  Crafted using the finest jewellery design and jewellery making principles, buy our jewellery online for fast deliveries and an easy returns policy. */}
-                    {data.jewlleryData}
-                    <br />&nbsp;&nbsp;</span>
-                  </p>
-                  <p onClick={this.handleOpen}  className={`know-txt ${classes.colorLight}`} id="readMore" style={{ display: 'block' }}>
-                    <span ><i className="fa faMore">&#xf0da;</i></span> READ MORE
-               </p>
-                  <p onClick={this.handleClose} className={`know-txt ${classes.colorLight}`} id="readLess" style={{ display: 'none' }}>
-                    <span ><i className="fa faMore">&#xf0d8;</i></span> CLOSE
-               </p>
-                </Grid>
-              </Hidden>
-              <Hidden mdUp>
-                <Grid
-                  item
-                  xs={12}
-                  alignItems="center">
-                  <p>
-                    <span className="DescriptionContent">
-                      {/* For every occasion and non-occasion. Shop our range of everyday fashion jewellery featuring gold, silver and stone rings and earrings, for work, play and everything in between. Give special occasions a little extra glimmer with our range of bridal jewellery ranging from engagement rings to wedding r */}
-                      {(data.jewlleryData).slice(0,160)}
-                      <span id="moreDots" style={{ display: 'inline' }}>...</span> </span>
-                    <span id="txtopen" className="DescriptionContent" style={{ display: 'none' }}>
-                       {/* ings to classic party wear.  Crafted using the finest jewellery design and jewellery making principles, buy our jewellery online for fast deliveries and an easy returns policy. */}
-                       {data.jewlleryData}
-                       <br />&nbsp;&nbsp;</span>
-                  </p>
-                  <p onClick={this.handleOpen} className={`know-txt ${classes.colorLight}`} id="readMore" style={{ display: 'block' }}>
-                    <span ><i className="fa faMore">&#xf0da;</i></span> READ MORE
-               </p>
-                  <p onClick={this.handleClose} className={`know-txt ${classes.colorLight}`} id="readLess" style={{ display: 'none' }}>
-                    <span ><i className="fa faMore">&#xf0d8;</i></span> CLOSE
-               </p>
-                </Grid>
-              </Hidden>
+
+                  </div>
+                </p>
+              </Grid>
+
             </Grid>
           </Grid>
         </Container>
