@@ -22,9 +22,10 @@ const useStyles = makeStyles({
   },
   priceClass: {
     // boxShadow: "0px 0px 5px #F699A3 inset",
+    display: "flex",
     boxShadow: " 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
-    borderTopLeftRadius: "50%",
-    borderTopRightRadius: "50%",
+    borderTopLeftRadius: "20%",
+    borderTopRightRadius: "20%",
     opacity: "1.2",
     "&:hover": {
       boxShadow: "40 0 11px rgba(33,33,33,.2)",
@@ -53,8 +54,12 @@ const useStyles = makeStyles({
       marginBottom: 0
     }
   },
+  cardContent: {
+    margin: "auto"
+  },
   textPriceCardGrid: {
-    marginTop: "10%"
+    width: "260px",
+    padding: "2px"
   },
   youSavePrice: {
     color: "white",
@@ -99,7 +104,7 @@ export default function ImgMediaCard() {
           />
         </CardActionArea>
         <Card className={classes.priceClass}>
-          <CardContent>
+          <CardContent className={classes.cardContent}>
             <Grid
               container
               item
