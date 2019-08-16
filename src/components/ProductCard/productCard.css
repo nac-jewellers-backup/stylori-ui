@@ -27,8 +27,8 @@
     position: relative;
    }
    .imgDiv{
-     width:200px;
-     height:200px;
+     width: auto;
+     height:auto;
      border:none;
    }
   .price {
