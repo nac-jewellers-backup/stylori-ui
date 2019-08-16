@@ -209,7 +209,12 @@ var numTwoo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR
 this.setState({numOne:numOnee, numTwo:numTwoo})
 
   }
+    txtFieldChange(e){
+        if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
 
+      // this.setState({[e.target.name]:e.target.value})
+  }
+  
   render() {
     console.log(this.state.numOne);
     const { classes } = this.props;
@@ -253,6 +258,8 @@ this.setState({numOne:numOnee, numTwo:numTwoo})
                           <Grid item xs={4} >
                             <TextField
                             onChange={(e)=>{this.setState({numOne:e.target.value})}}
+                            onKeyPress = {(e)=>{this.txtFieldChange(e)}}
+                              name="numOne"
                               className="price-txt"
                               id="num1"
                               value={this.state.numOne}
@@ -263,6 +270,8 @@ this.setState({numOne:numOnee, numTwo:numTwoo})
              <Grid item xs={4}>
                             <TextField
                               onChange={(e)=>{this.setState({numTwo:e.target.value})}}
+                            onKeyPress = {(e)=>{this.txtFieldChange(e)}}
+                              name="numTwo"
                               className="price-txt"
                               id="num2"
                               value={this.state.numTwo}
