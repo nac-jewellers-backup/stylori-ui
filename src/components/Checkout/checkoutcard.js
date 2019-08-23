@@ -28,6 +28,92 @@ class Checkoutcard extends React.Component {
             cart: true
         }
     }
+    // sortBy = (key) => {
+    //     let arrayCopy = [...this.state.data];
+    //     arrayCopy.sort(this.compareBy(key));
+    //     this.setState({data: arrayCopy});
+    //   };
+    // remove = (rowId) => {
+    //     // Array.prototype.filter returns new array
+    //     // so we aren't mutating state here
+    //     const arrayCopy = this.state.data.filter((row) => row.id !== rowId);
+    //     this.setState({data: arrayCopy});
+    //   };
+    row = () => {
+        const dataCarousel = {
+            slidesToShow: 1,
+            arrows: false,
+        }
+        const { classes } = this.props;
+        return (
+            <div>
+                {productsDetails.map(val => (
+                    <div className={classes.cart}>
+                        <Grid container spacing={12} lg={12}  >
+                            <Grid item lg={1}  >
+                                <a
+                                    // onClick={() => remove(id)}
+                                    style={{ textDecoration: "none" }} href="#123"><div class="remove-product"></div></a>
+                            </Grid>
+                            <Grid item lg={2} xs={2} >
+                                <Card className="product-image-thumb">
+                                    <CardHeader style={{ padding: "0px" }}
+                                        action={
+                                            <IconButton>
+                                                <i style={{ fontSize: "18px", color: "#337ab7" }} class='fa fa-heart-o'></i>
+                                            </IconButton>
+                                        }
+                                    />
+                                    <Slideshow class="image"
+                                        fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
+                                </Card>
+                            </Grid>
+                            <Grid item lg={6} style={{ padding: "0 20px" }}>
+                                <h3 class="title">{val.header}</h3>
+                                <Grid container spacing={12} >
+                                    <Grid item lg={6} >
+                                        {val.namedetail !== undefined && val.namedetail.map(val => (
+                                            <Grid container spacing={12}>
+
+                                                <Grid item lg={6} >
+                                                    <Typography className='subhesder'>{val.name}</Typography>
+                                                </Grid>
+                                                <Grid item lg={6} >
+                                                    <Typography className='subhesder'>{val.details}</Typography>
+                                                </Grid>
+                                            </Grid>
+
+                                        ))}
+                                    </Grid>
+
+                                    <Grid item lg={3} >
+                                        <Typography className='subhesder'>Quantity 1</Typography>
+                                        <br />
+                                        <Typography className='subhesder'>
+                                            <i class="fa fa-trash"></i>
+                                            &nbsp;Remove</Typography>
+                                    </Grid>
+
+                                </Grid>
+                            </Grid>
+                            <Grid item lg={3} >
+                                {dataCard1.map(val =>
+                                    <div className="product-rate">
+                                        <span class="offer-price">{val.price}</span><br />
+                                        <span class="price">{val.offerPrice}</span><br />
+                                        <span class="offer-description">25% - OFF</span>
+                                    </div>
+                                )} </Grid>
+                        </Grid>
+                    </div>
+                ))}
+
+
+                {this.subtotals()}
+            </div>
+        )
+
+    }
     checkoutbutton = () => {
         return (
             <div className='ckeckout-top'>
@@ -68,83 +154,20 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
 
-        const { classes } = this.props;
         return (
             <div>
                 <Button style={{ background: "#ccc" }}
                     onClick={() => { this.setState({ cart: !this.state.cart }) }}
                 >click</Button>
-                {/* {this.state.cart === true ? */}
-                <Hidden mdDown>
-                    <div >
-                        <Container>
-                            {productsDetails.map(val => (
-                                <div className={classes.cart}>
-                                    <Grid container spacing={12} lg={12}  >
-                                        <Grid item lg={1}  >
-                                            <a style={{ textDecoration: "none" }} href="#123"><div class="remove-product"></div></a>
-                                        </Grid>
-                                        <Grid item lg={2} xs={2} >
-                                            <Card className="product-image-thumb">
-                                                <CardHeader style={{ padding: "0px" }}
-                                                    action={
-                                                        <IconButton>
-                                                            <i style={{ fontSize: "18px", color: "#337ab7" }} class='fa fa-heart-o'></i>
-                                                        </IconButton>
-                                                    }
-                                                />
-                                                <Slideshow class="image"
-                                                    fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
-                                            </Card>
-                                        </Grid>
-                                        <Grid item lg={6} style={{ padding: "0 20px" }}>
-                                            <h3 class="title">{val.header}</h3>
-                                            <Grid container spacing={12} >
-                                                <Grid item lg={6} >
-                                                    {val.namedetail !== undefined && val.namedetail.map(val => (
-                                                        <Grid container spacing={12}>
-
-                                                            <Grid item lg={6} >
-                                                                <Typography className='subhesder'>{val.name}</Typography>
-                                                            </Grid>
-                                                            <Grid item lg={6} >
-                                                                <Typography className='subhesder'>{val.details}</Typography>
-                                                            </Grid>
-                                                        </Grid>
-
-                                                    ))}
-                                                </Grid>
-
-                                                <Grid item lg={3} >
-                                                    <Typography className='subhesder'>Quantity 1</Typography>
-                                                    <br />
-                                                    <Typography className='subhesder'>
-                                                        <i class="fa fa-trash"></i>
-                                                        &nbsp;Remove</Typography>
-                                                </Grid>
-
-                                            </Grid>
-                                        </Grid>
-                                        <Grid item lg={3} >
-                                            {dataCard1.map(val =>
-                                                <div className="product-rate">
-                                                    <span class="offer-price">{val.price}</span><br />
-                                                    <span class="price">{val.offerPrice}</span><br />
-                                                    <span class="offer-description">25% - OFF</span>
-                                                </div>
-                                            )} </Grid>
-                                    </Grid>
-                                </div>
-                            ))}
+                {this.state.cart === true ?
+                    <Container>
+                        <div>
+                            {this.row()}
+                        </div>
+                    </Container>
 
 
-                            {this.subtotals()}
-                        </Container>
-
-                    </div>
-                    </Hidden>
-                    {/* : */}
-                    <Hidden mdUp>
+               : 
                     <div>
                         <Container>
                             <Grid container>
@@ -175,9 +198,13 @@ class Checkoutcard extends React.Component {
                                                 </Grid>
                                                 <Grid container >
                                                     <Grid item xs={12} lg={12}>
-                                                        <span class="offer-price">$  52,696</span>
-                                                        <span class="price-response">$ 39,522</span>
-                                                        <span class="offer-description">25% - OFF</span>
+                                                        {dataCard1.map(val =>
+                                                            <>
+                                                                <span class="offer-price">{val.price}</span>
+                                                                <span class="price-response">{val.offerPrice}</span>
+                                                                <span class="offer-description">25% - OFF</span>
+                                                            </>
+                                                        )}
                                                     </Grid>
                                                 </Grid>
 
@@ -202,8 +229,7 @@ class Checkoutcard extends React.Component {
 
                         </Container>
                     </div>
-                    </Hidden>   
-                {/* } */}
+                 } 
 
             </div>
         )

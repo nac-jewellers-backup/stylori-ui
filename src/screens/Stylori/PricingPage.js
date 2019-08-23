@@ -15,6 +15,7 @@ import CustomerReviews from '../../components/product-image-slider/customer-revi
 import { Container, Hidden } from '@material-ui/core';
 import Footer from "../../components/Footer/Footer"
 import Buynowfixed from '../../components/product-image-slider/buynowfixed'
+import '../../components/product-image-slider/product-images.css'
 export default class Stylori extends Component {
   render() {
 
@@ -39,13 +40,13 @@ export default class Stylori extends Component {
                   <ProductImageZoom />
                 </Grid>
                 <Grid item xs={6}>
-                  <div style={{ width: "100%", borderRadius: "0 4px 4px 0", border: '1px solid #ccc', padding: "15px", marginBottom: "10px", boxShadow: '0 1px 8px 0 rgba(0,0,0,.06)' }}>
+                  <div className='overall-box'>
                     <ProductPrice />
                   </div>
-                  <div style={{ width: "100%", borderRadius: "0 4px 4px 0", border: '1px solid #ccc', padding: "15px", marginBottom: "10px", boxShadow: "0 1px 8px 0 rgba(0,0,0,.06)" }}>
+                  <div className='overall-box'>
                     <PriceTabs />
                   </div>
-                  <div style={{ width: "100%", borderRadius: "0 4px 4px 0", border: '1px solid #ccc', padding: "15px", marginBottom: "10px", boxShadow: "0 1px 8px 0 rgba(0,0,0,.06)" }}>
+                  <div className='overall-box'>
                     <PriceBuynow />
                   </div>
                 </Grid>

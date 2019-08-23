@@ -30,9 +30,9 @@ const styles = theme => ({
             width: "98%"
         },
         [theme.breakpoints.up('lg')]: {
-            paddingLeft:"50px",
-            paddingRight:"50px",
-            textAlign:"center"
+            paddingLeft: "50px",
+            paddingRight: "50px",
+            textAlign: "center"
         },
     },
 });
@@ -112,24 +112,29 @@ class PriceTabs extends React.Component {
 
                             </TabContainer>
                             <TabContainer >
-                            <Grid container spacing={12}>
-                                {val.tab2.Children.map(val =>
+                                <Grid container spacing={12}>
+                                    {val.tab2.Children.map(val =>
                                         <Grid xs={4}>
-                                            <img src={val.icon} style={{ width: '35px' }} alt="" />
-                                            <span className="tabs-contants">  {val.name}</span>
+                                            <div style={{ width: "100%" }}><img src={val.icon} style={{ width: '35px' }} alt="" /></div>
+                                            <div style={{ marginTop: "-10px" }}>
+                                                <span className="tabs-contants">  {val.name}</span>
+                                            </div>
                                         </Grid>
-                                )}
+                                    )}
                                 </Grid>
                             </TabContainer>
                             <TabContainer >
-                                {val.tab3.Children.map(val =>
-                                    <Grid container spacing={12}>
+                            <Grid container spacing={12}>
+                                    {val.tab3.Children.map(val =>
                                         <Grid xs={4}>
-                                            <img src={val.icon} style={{ width: '35px' }} alt="" />
-                                            <span className="tabs-contants">  {val.name}</span>
+                                            <div style={{ width: "100%" }}>
+                                                <img src={val.icon} style={{ width: '35px' }} alt="" /></div>
+                                            <div style={{ marginTop: "-10px" }}>
+                                                <span className="tabs-contants">  {val.name}</span>
+                                            </div>
                                         </Grid>
-                                    </Grid>
-                                )}
+                                    )}
+                                </Grid>
                             </TabContainer>
                         </SwipeableViews>
                     </>
@@ -139,7 +144,7 @@ class PriceTabs extends React.Component {
         );
     }
     mobiletabs = () => {
-         const { expanded } = this.state;
+        const { expanded } = this.state;
         const { classes } = this.props;
         return (
             <>
