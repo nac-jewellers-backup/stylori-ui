@@ -48,15 +48,8 @@ class Request extends React.Component {
             </div>
         )
     }
-    onchangeinput = (e) => {
-        const { values } = this.state;
-        values[e.target.name] = e.target.value
-        this.setState({
-            values
-        })
-    }
-
-    Requestform = (err, errorhandle, errors, onchnagevalue) => {
+ 
+    Requestform = (err, errorhandle, errors) => {
         const { values } = this.state;           
         return (
             <div>
@@ -70,9 +63,7 @@ class Request extends React.Component {
                             <Input
                                 type="taxt"
                                 name="name"
-                                error={err.name}
-                                helperText={err.name ? values.name.length === 0 ?  errors.name.required : errors.name.invalid : ''}
-                                onChange={e => this.onchangeinput(e)}
+                                helperText={ values.name.length === 0 ?  errors.name.required : errors.name.invalid}
                                 value = {values.name}
                                 onInvalid={e => errorhandle(e)}
                                 placeholder="Name"
@@ -84,10 +75,8 @@ class Request extends React.Component {
                             <Input
                                 type="email"
                                 name="mailId"
-                                error={err.mailId}
-                                onChange={e => this.onchangeinput(e)}
                                 value = {values.mailId}
-                                helperText={err.mailId ? values.mailId.length === 0 ?  errors.mailId.required : errors.mailId.invalid : ''}
+                                helperText={errors.mailId ? values.mailId.length === 0 ?  errors.mailId.required : errors.mailId.invalid : ''}
                                 placeholder="your-id@email.com"
                                 className="request-text"
                                 required
@@ -134,7 +123,7 @@ class Request extends React.Component {
             <div>
 
                 <Hidden smDown>
-                    <Form children={this.Requestform} />
+                    <Form children={this.Requestform} inputvalues={this.state.values} />
                 </Hidden>
 
 

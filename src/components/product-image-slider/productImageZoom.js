@@ -81,7 +81,7 @@ class ProductImageZoom extends Component {
                     <Grid item xs={2} >
                       <div key={val.name}>
                         <img className='features-tags-images' src={val.icon} alt="" />
-                        <span style={{ fontSize: "14px" }}>{val.name} </span>
+                        <span style={{ fontSize: "12px" }}>{val.name} </span>
                       </div>
                     </Grid>
                   ))}

@@ -2,13 +2,7 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 
 export class Form extends React.Component {
-  initialValues = {
-    mailId: null,
-    confirmMail: null,
-    mobileNo: null,
-    password: null,
-    confirmPassword: null
-  };
+  
 
   errors = {
     mailId: {
@@ -44,7 +38,7 @@ export class Form extends React.Component {
   };
 
   state = {
-    values: this.initialValues,
+    values:'',
     errors: this.initialValues,
     errorvalid: {},
     show: { password: false, confirmPassword: false }
@@ -70,14 +64,11 @@ export class Form extends React.Component {
   };
 
 
-  onchnagevalue = () => {
-    this.setState({ errorvalid: {} });
-  };
-
+  
   renderForm = () => {
     return (
       <>
-        {this.props.children(this.state.errorvalid, this.handleInvalid, this.errors, this.onchnagevalue)}
+        {this.props.children(this.state.errorvalid, this.handleInvalid, this.errors)}
       </>
     );
   };
