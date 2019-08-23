@@ -33,6 +33,7 @@
     "test": "craco  test",
     "serve": "npm run build && serve -S build",
     "lint": "eslint src/*.js",
+    "hint": "hint http://localhost:8080",
     "generate-report": "lighthouse --chrome-flags=\"--headless --no-sandbox\" http://localhost:8080 --output html --output-path ./report.html",
     "pm2-serve": "pm2 delete nac-ecom || pm2 serve --spa build --name nac-ecom",
     "pm2-rm": "pm2 delete nac-ecom",
@@ -56,6 +57,7 @@
   "devDependencies": {
     "@craco/craco": "5.2.4",
     "@storybook/react": "5.1.10",
+    "hint": "^5.2.0",
     "nodemon": "1.19.1",
     "pm2": "3.5.1",
     "serve": "11.0.2"

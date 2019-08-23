@@ -40,8 +40,9 @@ lighthouse_report:
     - npm i -g pm2
     - npm i -g lighthouse
     - npm run pm2-serve
-  script: 
+  scripts: 
     - npm run generate-report
+    - npm run weblint
   artifacts:
     paths:
       - ./report.html
