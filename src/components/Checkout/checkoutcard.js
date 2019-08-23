@@ -14,7 +14,7 @@ const styles = theme => ({
     cart: {
         [theme.breakpoints.down('xs')]: {
             width: "100%",
-            overflowX: "scroll"
+            overflowX: "auto"
         },
         [theme.breakpoints.up('lg')]: {
             width: "100%"

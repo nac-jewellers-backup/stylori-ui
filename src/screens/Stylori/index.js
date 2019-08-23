@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/header'
 import ProductDescription from '../../components/productDescription';
-import Grid from '@material-ui/core/Grid';
+import {Grid, Hidden} from '@material-ui/core';
 import Filter from '../../components/Filter/filter'
 import Footer from "../../components/Footer/Footer"
 import { ChatHelp } from '../../components/ChatHelp';
@@ -38,9 +38,11 @@ export default class Stylori extends Component {
         <Filter />
         </Grid>
         <Grid item xs={12} >
+        <Hidden smDown>
           <ChatHelp />
 
           <Footer />
+          </Hidden>          
         </Grid>
       </Grid>
 
