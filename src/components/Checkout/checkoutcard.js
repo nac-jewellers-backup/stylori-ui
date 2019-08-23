@@ -14,7 +14,7 @@ const styles = theme => ({
     cart: {
         [theme.breakpoints.down('xs')]: {
             width: "100%",
-            overflowX: "scroll"
+            overflowX: "auto"
         },
         [theme.breakpoints.up('lg')]: {
             width: "100%"
@@ -74,8 +74,8 @@ class Checkoutcard extends React.Component {
                 <Button style={{ background: "#ccc" }}
                     onClick={() => { this.setState({ cart: !this.state.cart }) }}
                 >click</Button>
-                {/* {this.state.cart === true ? */}
-                <Hidden mdDown>
+                {this.state.cart === true ?
+                // <Hidden mdDown>
                     <div >
                         <Container>
                             {productsDetails.map(val => (
@@ -142,9 +142,9 @@ class Checkoutcard extends React.Component {
                         </Container>
 
                     </div>
-                    </Hidden>
-                    {/* : */}
-                    <Hidden mdUp>
+                    // </Hidden>
+                    :
+                    // <Hidden mdUp>
                     <div>
                         <Container>
                             <Grid container>
@@ -202,8 +202,8 @@ class Checkoutcard extends React.Component {
 
                         </Container>
                     </div>
-                    </Hidden>   
-                {/* } */}
+                    // </Hidden>   
+                }
 
             </div>
         )

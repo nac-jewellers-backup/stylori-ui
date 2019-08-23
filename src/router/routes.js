@@ -1,7 +1,7 @@
 export const routes = {
     stylori: '/stylori',
     PricingPage:'/pricingPage',
-    Checkout:'/checkout'
+    Cart:'/cart'
 
 }
 
