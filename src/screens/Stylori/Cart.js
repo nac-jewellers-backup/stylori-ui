@@ -1,7 +1,7 @@
 import React from 'react';
 // import Checkoutbreadcrum from '../../components/Checkout/checkoutbreadcrum';
 import BreadCrumb from '../../components/BreadCrumb/index'
-import Checkoutcard from '../../components/Checkout/checkoutcard';
+import CartCard from '../../components/Checkout/CartCard';
 import Footer from '../../components/Footer/Footer'
 import {Grid,Container} from '@material-ui/core';
 class Checkout extends React.Component {
@@ -11,7 +11,7 @@ class Checkout extends React.Component {
                     <Grid Container spacing={12}>
                         <Grid item xs={12}>
                             <BreadCrumb />
-                            <Checkoutcard />
+                            <CartCard />
                             <Footer/>
                         </Grid>
                     </Grid>
