@@ -1,0 +1,8 @@
+.text-f {
+    width: 98% !important;
+    float: right;
+    border: none !important;
+}
+.MuiInputBase-input{
+    border: none !important; 
+}

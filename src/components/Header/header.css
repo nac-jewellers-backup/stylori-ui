@@ -193,11 +193,11 @@
 .drawer-list:hover {
   background-color: rgba(0, 0, 0, 0.08) !important;
 }
-.drawer-arrow {
-  fill: rgba(0, 0, 0, 0.25) !important;
-  padding: 3px;
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
+.side-arrow-symbol {
+  font-family: "FontAwesome" !important;
+  font-size: 15px !important;
+  line-height: 1;
+  color: #394578 !important;
 }
 .header-drawer {
   width: 267px !important;

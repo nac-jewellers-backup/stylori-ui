@@ -38,7 +38,7 @@ export default function SimpleSelect(props) {
 
     return (
         <form className={classes.root} autoComplete="off">
-            <FormControl required className={classes.formControl}>
+            <FormControl required className={classes.formControl} style={{width:"100%"}}>
                 <InputLabel htmlFor="age-required">Age</InputLabel>
                 <Select
                     value={values.age}

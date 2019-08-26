@@ -9,6 +9,10 @@ export class Form extends React.Component {
       invalid: "Enter a valid mail id",
       required: "Email ID is required!"
     },
+    mail: {
+      invalid: "Enter a valid mail id",
+      required: "Email ID is required!"
+    },
     confirmMail: {
       invalid: "Mail ID's are not matching",
       required: "Email ID is required!"
@@ -50,6 +54,7 @@ export class Form extends React.Component {
   };
 
   handleChange = e => {
+    debugger
     let { values, errors } = this.state;
     errors = { ...errors, [e.target.name]: null };
     values = { ...values, [e.target.name]: e.target.value };

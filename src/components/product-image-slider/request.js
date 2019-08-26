@@ -40,7 +40,7 @@ class Request extends React.Component {
             <div>
                 <Grid container>
                     <Grid xs={12} >
-                        <Button type="submit" className="requset-button">
+                        <Button     type="submit" className="requset-button">
                             Send
                             </Button>
                     </Grid>
@@ -48,9 +48,9 @@ class Request extends React.Component {
             </div>
         )
     }
- 
+
     Requestform = (err, errorhandle, errors) => {
-        const { values } = this.state;           
+        const { values } = this.state;
         return (
             <div>
                 <div className='overall-boxz'>
@@ -61,10 +61,11 @@ class Request extends React.Component {
                     <Grid container spacing={12} >
                         <Grid xs={12} lg={6} >
                             <Input
-                                type="taxt"
+                                type="text"
                                 name="name"
-                                helperText={ values.name.length === 0 ?  errors.name.required : errors.name.invalid}
-                                value = {values.name}
+                                // helperText={err.name ? errors.name.required : ""}
+                                error={values.name ? errors.name.required : errors.name.invalid}
+                                value={values.name}
                                 onInvalid={e => errorhandle(e)}
                                 placeholder="Name"
                                 className="request-text"
@@ -75,8 +76,10 @@ class Request extends React.Component {
                             <Input
                                 type="email"
                                 name="mailId"
-                                value = {values.mailId}
-                                helperText={errors.mailId ? values.mailId.length === 0 ?  errors.mailId.required : errors.mailId.invalid : ''}
+                                value={values.mailId}
+                                error={err.mailId}
+                                // helperText={err.mailId ? errors.mailId.required : ""}
+                                error={values.mailId ? errors.mailId.required : errors.mailId.invalid}
                                 placeholder="your-id@email.com"
                                 className="request-text"
                                 required
@@ -91,10 +94,10 @@ class Request extends React.Component {
                                 minLength={10}
                                 name="mobileNo"
                                 type="text"
-                                error={err.mobileNo}
-                                helperText={err.mobileNo ? errors.mobileNo.required : ""}
+                                value={values.mobileNo}
+                                error={values.mobileNo ? errors.mobileNo.required : errors.mobileNo.invalid}
+                                // helperText={err.mobileNo ? errors.mobileNo.required : ""}
                                 placeholder="909419****"
-                                required
                             />
                         </Grid>
                         <Grid xs={12} lg={6} >
@@ -102,10 +105,10 @@ class Request extends React.Component {
                                 className="request-text"
                                 type="text"
                                 name="request"
-                                error={err.request}
-                                helperText={err.request ? errors.request.required : ""}
+                                value={values.request}
+                                error={values.request ? errors.request.required : errors.request.invalid}
+                                // helperText={err.request ? errors.request.required : ""}
                                 placeholder="Enter Request"
-                                required
                             />
                         </Grid>
 

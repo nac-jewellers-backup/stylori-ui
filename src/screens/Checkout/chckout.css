@@ -1,0 +1,32 @@
+.ckcut-main-body{
+    background: #dfdfdf!important;
+    color: #394578 !important;
+    border-color: #ddd !important;
+    padding: 0;
+    vertical-align: middle;
+    height: 58px;
+}
+.avart-ckc{
+    border-radius: 29px;
+    border: 2px solid #394578;
+    text-align: center;
+    width: 33px;
+    float: left;
+    margin-right: 15px;
+    margin-left: 15px !important;
+    font-weight: 700;
+    background: #394578 !important;
+    color: #FFF;
+    padding: 4px !important;
+}
+.text-chck{
+    padding: 14px 15px;
+    color: #394578;
+    line-height: 1.1;
+    font-weight: 700 !important;
+}
+.arrow-chek,.MuiSvgIcon-root{
+fill:#333 !important;
+border-color: #ddd !important;
+padding-right: 5px;
+}
