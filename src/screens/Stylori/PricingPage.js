@@ -22,51 +22,48 @@ export default class Stylori extends Component {
     return (
       <div>
 
-
-<Hidden smDown>
+        <Hidden smDown>
           <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
             <Grid item xs={12} >
               <Header />
             </Grid>
           </Grid>
-          <Container maxWidth='xl'>
-            <Container maxWidth='xl'>
-              <Grid Container spacing={12}>
-                <Grid item xs={12}>
-                  <CustomSeparator />
-                </Grid>
+            <Grid Container spacing={12}>
+              <Grid item xs={12}>
+                <CustomSeparator />
               </Grid>
-              <Grid container spacing={12}>
-                <Grid item xs={6}>
-                  <ProductImageZoom />
-                </Grid>
-                <Grid item xs={6}>
-                  <div className='overall-box'>
-                    <ProductPrice />
-                  </div>
-                  <div className='overall-box'>
-                    <PriceTabs />
-                  </div>
-                  <div className='overall-box'>
-                    <PriceBuynow />
-                  </div>
-                </Grid>
+            </Grid>
+            <Grid container spacing={12} style={{paddingLeft: "5%", paddingRight: "5%" }}>
+              <Grid item xs={6}>
+                <ProductImageZoom />
+              </Grid>
+              <Grid item xs={6}>
+                <div className='overall-box'>
+                  <ProductPrice />
+                </div>
+                <div className='overall-box'>
+                  <PriceTabs />
+                </div>
+                <div className='overall-box'>
+                  <PriceBuynow />
+                </div>
+              </Grid>
 
-              </Grid>
-              <Grid container spacing={12} style={{ marginTop: "35px" }}>
-                <Grid item xs={6}>
-                  <ProductDetails />
-                </Grid>
-                <Grid item xs={6}>
-                  <PriceCertification />
-                  <Request />
-                </Grid>
-              </Grid>
-              <Sublistcarousel />
-              <RatingForm />
-              <CustomerReviews />
-            </Container>
-          </Container>
+            </Grid>
+          <Grid container spacing={12} style={{ background: "#f1eeee", paddingLeft: "5%", paddingRight: "5%" }} >
+            <Grid item xs={6} style={{ marginTop: "30px", marginBottom: "30px" }}>
+              <ProductDetails />
+            </Grid>
+            <Grid item xs={6} style={{ marginTop: "30px", marginBottom: "30px" }}>
+              <PriceCertification />
+              <Request />
+            </Grid>
+            <br />
+          </Grid>
+          <Sublistcarousel />
+          <RatingForm />
+          <CustomerReviews />
+
           <Grid item xs={12}>
             <Footer />
           </Grid>
