@@ -58,9 +58,9 @@ class Chckoutindex extends React.Component {
                             <Grid item xs={12} lg={12}>
                                 <Addressform />
                             </Grid>
-                            <Grid item xs={12} lg={12}>
+                            {/* <Grid item xs={12} lg={12}>
                                 <Addressdetails />
-                            </Grid>
+                            </Grid> */}
                         </Grid>
                     </ExpansionPanelDetails>
                 </ExpansionPanel>

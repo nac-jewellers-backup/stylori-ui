@@ -1,13 +1,13 @@
-.ckcut-main-body,
-.MuiExpansionPanelSummary-content.Mui-expanded,
-.expansion-summary,
-.MuiExpansionPanelSummary-root.Mui-expanded {
-    background: #dfdfdf !important;
-    color: #394578 !important;
-    border-color: #ddd !important;
-    padding: 0;
-    margin-bottom: 10px !important;
+.ckcut-main-body, .MuiExpansionPanelSummary-root.Mui-expanded {
+        background: #dfdfdf !important;
+        color: #394578 !important;
+        border-color: #ddd !important;
+        padding: 0;
+        margin-bottom: 10px !important;
+    
 }
+
+
 
 .avart-ckc {
     border-radius: 29px;

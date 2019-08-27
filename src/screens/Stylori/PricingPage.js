@@ -33,7 +33,7 @@ export default class Stylori extends Component {
                 <CustomSeparator />
               </Grid>
             </Grid>
-            <Grid container spacing={12} style={{paddingLeft: "5%", paddingRight: "5%" }}>
+            <Grid container spacing={12} style={{paddingLeft: "3%", paddingRight: "7%" }}>
               <Grid item xs={6}>
                 <ProductImageZoom />
               </Grid>
@@ -50,7 +50,7 @@ export default class Stylori extends Component {
               </Grid>
 
             </Grid>
-          <Grid container spacing={12} style={{ background: "#f1eeee", paddingLeft: "5%", paddingRight: "5%" }} >
+          <Grid container spacing={12} style={{ background: "#f1eeee", paddingLeft: "3%", paddingRight: "7%" }} >
             <Grid item xs={6} style={{ marginTop: "30px", marginBottom: "30px" }}>
               <ProductDetails />
             </Grid>

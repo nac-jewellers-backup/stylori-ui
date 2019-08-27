@@ -19,6 +19,7 @@ class PriceCertification extends React.Component {
         const { expanded } = this.state;
         return (
             <div>
+                <Container>
                     {img.imagecertificat.map(val =>
                         <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
                             style={{ boxShadow: "none", backgroundColor: "none" }} key={val.name}>
@@ -55,7 +56,7 @@ class PriceCertification extends React.Component {
                             </Grid>
                         </ExpansionPanel>
                     )}
-            </div>
+</Container></div>
         )
     };
     PriceCertificat = () => {
