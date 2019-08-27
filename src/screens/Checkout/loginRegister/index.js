@@ -22,7 +22,6 @@ class LoginRegisterIndex extends React.Component {
             show: !this.state.show,
             [name]: !value
         });
-        debugger
     }
     render() {
         return (
@@ -56,7 +55,7 @@ class LoginRegisterIndex extends React.Component {
                     <Login />
                 </div>
                 <div style={{ display: this.state.Register == true ? "block" : "none" }}>
-                    <Register />
+                    <Register back={this.state.Register} />
                 </div>
                 <div style={{ display: this.state.Continue == true ? "block" : "none" }}>
                     <Continues />

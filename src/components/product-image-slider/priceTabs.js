@@ -7,7 +7,8 @@ import {
     ExpansionPanelDetails,
     Tabs,
     Tab,
-    Typography
+    Typography,
+    Container
 } from '@material-ui/core';
 import React from 'react';
 import SwipeableViews from 'react-swipeable-views';

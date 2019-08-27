@@ -5,9 +5,23 @@ import { Input } from '../../../components/InputComponents/TextField/Input'
 import SimpleSelect from '../../../components/InputComponents/Select/Select';
 
 class Register extends React.Component {
-
-
-    render() {
+    constructor(props) {
+        super(props)
+        this.state = {
+            Register: false,
+        };
+    }
+    toggle(name, value) {
+        this.setState({
+            Register: !this.state.Register,
+        });
+    }
+    componentWillReceiveProps(props) {
+        this.setState({
+            Register: this.props.back,
+        });
+    }
+    Registerform = (props) => {
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>
@@ -53,11 +67,18 @@ class Register extends React.Component {
                             </Grid>
                         </Grid>
                         <div className='login-butn'>
-                            <Button className='back-b'>Back</Button>
+                            <Button className='back-b' oncl>Back</Button>
                             <Button className='apply-b'>Apply</Button>
                         </div>
                     </Grid>
                 </Grid>
+            </div>
+        )
+    }
+    render() {
+        return (
+            <div>
+                {this.Registerform()}
             </div>
         )
     }

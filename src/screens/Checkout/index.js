@@ -13,8 +13,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Login from './loginRegister/login';
 import Addressform from './addressDetails/addressForm';
 import ProductList from './orderSummary/productList';
-import Checkoutcard from '../../components/Checkout/checkoutcard';
+import CartCard from '../../components/Checkout/CartCard';
 import LoginRegisterIndex from './loginRegister';
+import Addressdetails from './addressDetails/addressDetails';
 class Chckoutindex extends React.Component {
     state = {
         expanded: 'panel1',
@@ -29,7 +30,7 @@ class Chckoutindex extends React.Component {
     render() {
         const { expanded } = this.state;
         return (
-            <div className='pt-sm' style={{marginTop:"20px"}}>
+            <div className='pt-sm' style={{ marginTop: "20px" }}>
                 <ExpansionPanel
                     square
                     expanded={expanded === 'panel1'}
@@ -53,7 +54,14 @@ class Chckoutindex extends React.Component {
                         <Avatar className='avart-ckc'>2</Avatar><Typography className='text-chck'>Address Detail</Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
-                        <Addressform />
+                        <Grid container >
+                            <Grid item xs={12} lg={12}>
+                                <Addressform />
+                            </Grid>
+                            <Grid item xs={12} lg={12}>
+                                <Addressdetails />
+                            </Grid>
+                        </Grid>
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
                 <ExpansionPanel
@@ -67,7 +75,7 @@ class Chckoutindex extends React.Component {
                     <ExpansionPanelDetails>
                         <Grid container >
                             <Grid item xs={12} lg={12}>
-                                <Checkoutcard />
+                                <CartCard />
                             </Grid>
                             <Grid item xs={12} lg={12}>
                                 <ProductList />
