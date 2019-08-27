@@ -48,7 +48,7 @@ export default class Stylori extends Component {
                   <PriceBuynow />
                 </div>
               </Grid>
-
+    
             </Grid>
           <Grid container spacing={12} style={{ background: "#f1eeee", paddingLeft: "3%", paddingRight: "7%" }} >
             <Grid item xs={6} style={{ marginTop: "30px", marginBottom: "30px" }}>
