@@ -19,7 +19,7 @@ export default class Checkout extends Component {
                         <Header />
                     </Grid>
                 </Grid>
-                <Container maxWidth='xl'>
+                <Container>
                     {/* <Login />
                      <Register />
                     <Continues />

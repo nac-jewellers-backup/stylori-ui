@@ -1,32 +1,41 @@
-.ckcut-main-body{
-    background: #dfdfdf!important;
+.ckcut-main-body,
+.MuiExpansionPanelSummary-content.Mui-expanded,
+.expansion-summary,
+.MuiExpansionPanelSummary-root.Mui-expanded {
+    background: #dfdfdf !important;
     color: #394578 !important;
     border-color: #ddd !important;
     padding: 0;
-    vertical-align: middle;
-    height: 58px;
+    margin-bottom: 10px !important;
 }
-.avart-ckc{
+
+.avart-ckc {
     border-radius: 29px;
     border: 2px solid #394578;
     text-align: center;
-    width: 33px;
+    width: 25px !important;
+    height: 25px !important;
+    line-height: 25px !important;
     float: left;
     margin-right: 15px;
     margin-left: 15px !important;
     font-weight: 700;
     background: #394578 !important;
     color: #FFF;
-    padding: 4px !important;
+    padding: 5px !important;
 }
-.text-chck{
-    padding: 14px 15px;
+
+.text-chck {
+    padding: 8px 15px;
     color: #394578;
-    line-height: 1.1;
     font-weight: 700 !important;
 }
-.arrow-chek,.MuiSvgIcon-root{
-fill:#333 !important;
-border-color: #ddd !important;
-padding-right: 5px;
+
+.arrow-chek,
+.MuiSvgIcon-root,
+.MuiExpansionPanelDetails-root,
+.MuiExpansionPanelDetails-root {
+    fill: #333 !important;
+    border-color: #ddd !important;
+    padding-right: 5px !important;
 }

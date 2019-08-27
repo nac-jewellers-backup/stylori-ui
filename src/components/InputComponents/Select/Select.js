@@ -14,7 +14,6 @@ const useStyles = makeStyles(theme => ({
     },
     formControl: {
         margin: theme.spacing(1),
-        minWidth: 120
     },
     selectEmpty: {
         marginTop: theme.spacing(2)
@@ -39,11 +38,11 @@ export default function SimpleSelect(props) {
     return (
         <form className={classes.root} autoComplete="off">
             <FormControl required className={classes.formControl} style={{width:"100%"}}>
-                <InputLabel htmlFor="age-required">Age</InputLabel>
+                <InputLabel htmlFor="age-required">{props.name}</InputLabel>
                 <Select
                     value={values.age}
                     onChange={handleChange}
-                    name="age"
+                    name={props.name}
                     inputProps={{ id: "age-required", "aria-required": true }}
                     MenuProps={{ "aria-required": true }}
                     className={classes.selectEmpty}

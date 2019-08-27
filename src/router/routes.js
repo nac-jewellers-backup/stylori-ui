@@ -3,7 +3,8 @@ export const routes = {
     stylori: '/stylori',
     PricingPage:'/pricingPage',
     Cart:'/cart',
-    Checkout:'/Checkout'
+    Checkout:'/Checkout',
+    Register:'/register'
 
 }
 

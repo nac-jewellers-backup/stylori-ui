@@ -6,12 +6,15 @@ import {
     ExpansionPanelSummary,
     ExpansionPanelDetails,
     Typography,
-    Avatar
+    Avatar,
+    Grid
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Login from './loginRegister/login';
 import Addressform from './addressDetails/addressForm';
 import ProductList from './orderSummary/productList';
+import Checkoutcard from '../../components/Checkout/checkoutcard';
+import LoginRegisterIndex from './loginRegister';
 class Chckoutindex extends React.Component {
     state = {
         expanded: 'panel1',
@@ -26,20 +29,19 @@ class Chckoutindex extends React.Component {
     render() {
         const { expanded } = this.state;
         return (
-            <div className='pt-sm'>
+            <div className='pt-sm' style={{marginTop:"20px"}}>
                 <ExpansionPanel
                     square
                     expanded={expanded === 'panel1'}
                     onChange={this.handleChange('panel1')}
+                    style={{ boxShadow: "none" }}
                 >
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
                         <Avatar className='avart-ckc'>1</Avatar><Typography className='text-chck'> Login or Register</Typography>
                     </ExpansionPanelSummary >
-                    <ExpansionPanelDetails 
+                    <ExpansionPanelDetails
                     >
-                        <Typography>
-                            <Login/>
-                         </Typography>
+                        <LoginRegisterIndex />
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
                 <ExpansionPanel
@@ -51,9 +53,7 @@ class Chckoutindex extends React.Component {
                         <Avatar className='avart-ckc'>2</Avatar><Typography className='text-chck'>Address Detail</Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
-                        <Typography>
-                            <Addressform/>  
-                        </Typography>
+                        <Addressform />
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
                 <ExpansionPanel
@@ -65,9 +65,17 @@ class Chckoutindex extends React.Component {
                         <Avatar className='avart-ckc'>3</Avatar><Typography className='text-chck'>Order Summary</Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
-                        <Typography>
-                           <ProductList/>
-                              </Typography>
+                        <Grid container >
+                            <Grid item xs={12} lg={12}>
+                                <Checkoutcard />
+                            </Grid>
+                            <Grid item xs={12} lg={12}>
+                                <ProductList />
+                            </Grid>
+
+                        </Grid>
+
+
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
                 <ExpansionPanel
@@ -79,9 +87,7 @@ class Chckoutindex extends React.Component {
                         <Avatar className='avart-ckc'>4</Avatar><Typography className='text-chck'>Order Summary</Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
-                        <Typography>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus
-                              </Typography>
+                        it's wait
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
 

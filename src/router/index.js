@@ -4,6 +4,7 @@ import { Stylori } from '../screens'
 import PricingPage from '../screens/Stylori/PricingPage'
 import Cart from '../screens/Stylori/Cart'
 import Checkout from '../screens/Stylori/Checkout'
+import Register from '.././screens/Checkout/loginRegister/register'
 import routes from "./routes";
 
 
@@ -16,6 +17,7 @@ export const RouterApp = () => {
             <Route key="stylori" component={Stylori} exact path={routes.stylori} />
             <Route key="PricingPage" component={PricingPage} exact path={routes.PricingPage} />
             <Route key="Cart" component={Cart} exact path={routes.Cart} />
+            <Route key="Register" component={Register} exact path={routes.Register} />
         </Switch>
     );
 };

@@ -1,5 +1,8 @@
-.pt-sm {
-    padding-top: 10px;
+.pt-sm .MuiExpansionPanelDetails-root{
+    padding-top: 10px !important;
+    padding-bottom: 15px !important;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
 }
 
 .title {
@@ -8,7 +11,7 @@
     margin-top: 0;
     margin-bottom: 10px;
     font-family: inherit;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
     line-height: 1.1;
 }
 
@@ -22,7 +25,7 @@
     color: #394578 !important;
     border-radius: 0px !important;
     border: 1px solid #394578 !important;
-    min-width: 100px !important;
+    min-width: 64px !important;
     font-size: 16px !important;
     padding: 9px 15px !important;
     margin-right: 5px !important;
@@ -50,18 +53,17 @@
     float: right;
 }
 .log-pas{
-    padding-top: 10px !important;
+    width: 100% !important;
 }
 .pas-fr{
     color: #394578;
     font-size: 14px;
     text-decoration: underline;
     margin-bottom: 9px;
-    float: left;
-    width: 50% !important;
+    float: left !important;
 }
 .pas-fb{
-    float: right!important; 
+    float: right !important; 
     color: #394578;
     font-size: 14px;
     margin-bottom: 9px;
