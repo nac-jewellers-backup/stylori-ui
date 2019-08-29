@@ -40,7 +40,7 @@ class Request extends React.Component {
             <div>
                 <Grid container>
                     <Grid xs={12} >
-                        <Button     type="submit" className="requset-button">
+                        <Button type="submit" className="requset-button">
                             Send
                             </Button>
                     </Grid>
@@ -54,6 +54,7 @@ class Request extends React.Component {
         return (
             <div>
                 <div className='overall-boxz'>
+                <div className='overall-bo'>
                     <Hidden smDown>
                         <span className="product-details">Ask Our Expert</span>
                         <hr class="bottom-line"></hr>
@@ -116,6 +117,7 @@ class Request extends React.Component {
                     {this.submitbutton()}
                 </div>
             </div>
+            </div>
         )
     }
 
@@ -126,7 +128,7 @@ class Request extends React.Component {
             <div>
 
                 <Hidden smDown>
-                    <Form children={this.Requestform} inputvalues={this.state.values} />
+                        <Form children={this.Requestform} inputvalues={this.state.values} />
                 </Hidden>
 
 

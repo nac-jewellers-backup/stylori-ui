@@ -56,15 +56,15 @@ class PriceCertification extends React.Component {
                             </Grid>
                         </ExpansionPanel>
                     )}
-</Container></div>
+                </Container></div>
         )
     };
     PriceCertificat = () => {
         return (
             <div>
                 {img.imagecertificat.map(val =>
-                    <>
-                        <div className="overall-boxz">
+                                       <div className="overall-boxz">
+                        <div className="overall-bo">
                             <span className="product-details">{val.header}</span>
                             <hr class="bottom-line"></hr>
                             <Grid container spacing={12} >
@@ -91,7 +91,8 @@ class PriceCertification extends React.Component {
                                 </Grid>
                             </Grid>
                         </div>
-                    </>
+                        </div>
+                   
                 )}
             </div>)
     }

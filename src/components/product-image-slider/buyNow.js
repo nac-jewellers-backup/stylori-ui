@@ -16,7 +16,7 @@ import T from './producthoverData';
 
 const inputsearch = () => {
     return (
-        <div style={{ marginTop: "25px" }}>
+        <div style={{ marginTop: "25px",padding:"0 10px"}}>
             {buy.productsbuy.map(val =>
                 <Grid container spacing={12}>
                     <Grid item lg={4} sm={8}>
@@ -46,21 +46,21 @@ const Buydetails = () => {
         <div>
             {buy.productsbuy.map(val =>
                 <>
-                    <Grid container spacing={12}>
-                        <Grid item xs={4} >
+                    <Grid container spacing={12} style={{padding:"0 10px"}}>
+                        <Grid item xs={4} style={{marginRight:"15px"}}>
                             <Buynowbutton class="buynow-button" button='buynow-btn-cont'/>
                         </Grid>
-                        <Grid xs={8} style={{ marginTop: "10px" }}>
+                        <Grid xs={7} style={{ marginTop: "10px" }}>
                             <Grid container spacing={12}>
                                 <Grid item xs={3} className='buy-subheaders'>Need Help ?</Grid>
                             </Grid>
-                            <Grid container spacing={12} style={{ marginTop: "5px" }}>
+                            <Grid container spacing={12} >
 
-                                <Grid item xs={4} className='buy-subheaders'>
+                                <Grid item xs={5} className='buy-subheaders'>
                                     <i class="fa fa-phone overall-icons" aria-hidden="true"></i>&nbsp;{val.telephone}
                                 </Grid>
 
-                                <Grid item xs={4} className='buy-subheaders'>
+                                <Grid item xs={5} className='buy-subheaders'>
                                     <i class="fa fa-whatsapp overall-icons" aria-hidden="true"></i>&nbsp;{val.phonenum}
                                 </Grid>
 
@@ -103,7 +103,7 @@ class PriceBuynow extends React.Component {
                         {buy.productsbuy.map(val =>
                             <div style={{ marginTop: "25px" }}>
                                 <ProductPrice />
-                                <Grid container spacing={12}>
+                                <Grid container spacing={12} style={{ marginTop: "10px" }}>
                                     <Grid item xs={6} className="content">
                                         <b className="ships-by">
                                             {/* <span class="ship-img"></span> */}

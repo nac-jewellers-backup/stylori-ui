@@ -25,23 +25,25 @@ class ProductDetails extends React.Component {
                         {data.productsDetails.map(val => (
                             <>
                                 <div className='overall-boxz'>
-                                    <span key={val.name} className="product-details">{val.header}</span>
-                                    <hr class="bottom-line"></hr>
-                                    <>{
-                                        val.namedetail !== undefined && val.namedetail.map(res =>
-                                            <Grid container item xs={12} >
-                                                <Grid xs={6}>
-                                                    <ListItemText variant='' className="product-subhead">
-                                                        <span style={{ fontSize: "12px" }}> {res.name}</span>
-                                                    </ListItemText>
+                                    <div className='overall-bo'>
+                                        <span key={val.name} className="product-details">{val.header}</span>
+                                        <hr class="bottom-line"></hr>
+                                        <>{
+                                            val.namedetail !== undefined && val.namedetail.map(res =>
+                                                <Grid container item xs={12} >
+                                                    <Grid xs={6}>
+                                                        <ListItemText variant='' className="product-subhead">
+                                                            <span style={{ fontSize: "12px" }}> {res.name}</span>
+                                                        </ListItemText>
+                                                    </Grid>
+                                                    <Grid xs={6}>
+                                                        <ListItemText variant='' className="product-subhead-list">
+                                                            <span style={{ fontSize: "12px" }}> {res.details}</span>
+                                                        </ListItemText>
+                                                    </Grid>
                                                 </Grid>
-                                                <Grid xs={6}>
-                                                    <ListItemText variant='' className="product-subhead-list">
-                                                        <span style={{ fontSize: "12px" }}> {res.details}</span>
-                                                    </ListItemText>
-                                                </Grid>
-                                            </Grid>
-                                        )}</>
+                                            )}</>
+                                    </div>
                                 </div>
                             </>
                         ))}
@@ -50,17 +52,18 @@ class ProductDetails extends React.Component {
                         {data.productsPendants.map(val => (
                             <>
                                 <div className='overall-boxz'>
-                                    <span key={val.name} className="product-details">{val.header}</span>
-                                    <hr class="bottom-line"></hr>
-                                    <Grid item xs={12} className="product-subhead">
-                                        <span style={{ fontSize: "12px" }}>{val.name.join(' ')}</span>
-                                    </Grid>
+                                    <div className='overall-bo'>
+                                        <span key={val.name} className="product-details">{val.header}</span>
+                                        <hr class="bottom-line"></hr>
+                                        <Grid item xs={12} className="product-subhead">
+                                            <span style={{ fontSize: "12px" }}>{val.name.join(' ')}</span>
+                                        </Grid>
+                                    </div>
                                 </div>
                             </>
                         ))}
                     </Grid>
-                </Container>
-            </div>
+                </Container>  </div>
         )
     };
     mobileproductsDetails = () => {

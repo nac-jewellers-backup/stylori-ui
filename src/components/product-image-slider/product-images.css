@@ -191,12 +191,12 @@
         font-size: 20px !important;
         text-align: center;
         letter-spacing: 2px !important;
-        width: 95%;
+        width: 100%;
         text-transform: none !important;
     }
 
     .buynow-btn-cont {
-        line-height: 40px !important;
+        line-height: 35px !important;
 
     }
 
@@ -299,9 +299,9 @@
     .request-text,
     .MuiOutlinedInput-input {
         display: block;
-        width: 97% !important;
+        width: 98% !important;
         height: 42px !important;
-        padding: 0 7px !important;
+        padding: 0 5px !important;
         font-size: 13px;
         line-height: 1.42857143;
         color: #394578 !important;
@@ -477,7 +477,7 @@
     }
 
     .imagecard {
-        width: 100%;
+        width: 100% !important;
         border: 1px solid #ccc;
         height: 450px !important;
         counter-increment: inherit;
@@ -705,17 +705,18 @@
         color: #fff;
         cursor: pointer;
     }
-
+.header-APP{
+    padding:0 10px;
+}
     .overall-box {
         border-radius: 5px;
-        width: 100%;
+        width: 100% !important;
         border: 1px solid #ccc;
-        padding: 0px 15px !important;
-        padding-bottom: 25px !important;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
         margin-bottom: 10px !important;
         box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .06);
-        padding-top: 25px !important;
-    }
+        }
 
     .page:hover,
     .page.gradient:hover {
@@ -792,12 +793,14 @@
 
     .overall-boxz {
         border-radius: 5px;
-        width: 100%;
+        width: 100% !important;
         background: #fff;
         border: 1px solid #ccc;
-        padding: 0px 15px !important;
         padding-bottom: 25px !important;
         margin-bottom: 10px !important;
         box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .06);
         padding-top: 25px !important;
+    }
+    .overall-bo{
+        padding: 0 10px;
     }

@@ -46,6 +46,7 @@ class ProductImageZoom extends Component {
 
     return (
       <div>
+          <Container>
         <Grid container spacing={12}>
           <Grid item xs={2}>
             <div style={{ textAlign: 'center' }} >
@@ -90,6 +91,7 @@ class ProductImageZoom extends Component {
             </div>
           </Grid>
         </Grid>
+        </Container>
       </div>
     )
   }
@@ -133,12 +135,9 @@ class ProductImageZoom extends Component {
 
     return (
       <div>
-        <Container>
-          <Hidden smDown>
-            {this.productImageZoom()}
-          </Hidden>
-
-        </Container>
+        <Hidden smDown>
+          {this.productImageZoom()}
+        </Hidden>
       </div>
 
     )

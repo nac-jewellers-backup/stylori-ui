@@ -28,12 +28,13 @@ export default class Stylori extends Component {
               <Header />
             </Grid>
           </Grid>
-            <Grid Container spacing={12}>
-              <Grid item xs={12}>
-                <CustomSeparator />
-              </Grid>
+          <Grid Container spacing={12}>
+            <Grid item xs={12}>
+              <CustomSeparator />
             </Grid>
-            <Grid container spacing={12} style={{paddingLeft: "3%", paddingRight: "7%" }}>
+          </Grid>
+          <Container>
+            <Grid container spacing={12}>
               <Grid item xs={6}>
                 <ProductImageZoom />
               </Grid>
@@ -48,9 +49,33 @@ export default class Stylori extends Component {
                   <PriceBuynow />
                 </div>
               </Grid>
-    
             </Grid>
-          <Grid container spacing={12} style={{ background: "#f1eeee", paddingLeft: "3%", paddingRight: "7%" }} >
+          </Container><br />
+          <div style={{ background: "#f1eeee" }}>
+            <Container>
+              <Grid container spacing={12}>
+                <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
+                  <ProductDetails />
+                </Grid>
+                <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
+                  <PriceCertification />
+                  <Request />
+                </Grid>
+                <br />
+              </Grid>
+            </Container>
+          </div>
+          <Sublistcarousel />
+          <RatingForm />
+          <CustomerReviews />
+
+          <Grid item xs={12}>
+            <Footer />
+          </Grid>
+          {/*
+            <div style={{ background: "#f1eeee"}}>
+            <Container>
+            <Grid container spacing={12} >
             <Grid item xs={6} style={{ marginTop: "30px", marginBottom: "30px" }}>
               <ProductDetails />
             </Grid>
@@ -60,13 +85,15 @@ export default class Stylori extends Component {
             </Grid>
             <br />
           </Grid>
+          </Container>
+            </div>
           <Sublistcarousel />
           <RatingForm />
           <CustomerReviews />
 
           <Grid item xs={12}>
             <Footer />
-          </Grid>
+          </Grid> */}
         </Hidden>
 
 

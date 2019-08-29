@@ -38,7 +38,7 @@ const Productprice = () => {
             {card.dataCard1.map(val => (
 
                 <>
-                    <Grid container spacing={12} sm={12}>
+                    <Grid container spacing={12} sm={12} style={{padding:"0 10px"}}>
                         <Grid item xs={7} lg={8}>
                             <div className="price-div">
                                 <h1 className="pdp-title">
@@ -63,8 +63,8 @@ const Productprice = () => {
                     <Hidden mdUp>
                         {mobilecarousel()}
                     </Hidden>
-                    <>
-                        <Pricing price={val.price} offerPrice={val.offerPrice} offerDiscount='25% FLAT OFF'>
+                    <div style={{padding:"0 10px"}}>
+                        <Pricing price={val.price} offerPrice={val.offerPrice} offerDiscount='25% FLAT OFF' >
                             <div className='price-info'>
                                 <Grid container spacing={12}>
                                     <Grid item xs={4} lg={2} className='discount-container'>
@@ -80,7 +80,7 @@ const Productprice = () => {
                             </div>
                         </Pricing>
                         {/* <hr class="bottom-line product-inform-ation"></hr> */}
-                    </>
+                    </div>
                 </>
             ))}
         </div>
@@ -100,8 +100,6 @@ class ProductPrice extends Component {
                 </Hidden>
                 <Hidden mdUp>
                     {Productprice()}
-
-
                 </Hidden>
             </div>
 
