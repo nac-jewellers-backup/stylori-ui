@@ -704,6 +704,8 @@
         text-decoration: none;
         color: #fff;
         cursor: pointer;
+        outline: none !important;
+        
     }
 .header-APP{
     padding:0 10px;

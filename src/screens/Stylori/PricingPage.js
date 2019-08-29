@@ -72,31 +72,7 @@ export default class Stylori extends Component {
           <Grid item xs={12}>
             <Footer />
           </Grid>
-          {/*
-            <div style={{ background: "#f1eeee"}}>
-            <Container>
-            <Grid container spacing={12} >
-            <Grid item xs={6} style={{ marginTop: "30px", marginBottom: "30px" }}>
-              <ProductDetails />
-            </Grid>
-            <Grid item xs={6} style={{ marginTop: "30px", marginBottom: "30px" }}>
-              <PriceCertification />
-              <Request />
-            </Grid>
-            <br />
-          </Grid>
-          </Container>
-            </div>
-          <Sublistcarousel />
-          <RatingForm />
-          <CustomerReviews />
-
-          <Grid item xs={12}>
-            <Footer />
-          </Grid> */}
         </Hidden>
-
-
 
 
         <Hidden mdUp>

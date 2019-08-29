@@ -53,16 +53,21 @@ export default function Pricing(props) {
     const classes = useStyles();
     return (
         <div>
-            <Typography
-                variant="caption"
-                color="textSecondary"
-                component="div"
-                className={`${props.title != null & props.title !== '' ? '' : 'shine'}`}
-                style={{ paddingBottom: "5px", textAlign: "left" }}
-            >
-                {/* Dazzling Gold Bloom Diamond Pendant */}
-                {props.title}
-            </Typography>
+            {
+                props.title ?
+                    <Typography
+                        variant="caption"
+                        color="textSecondary"
+                        component="div"
+                        className={`${props.title != null & props.title !== '' ? '' : 'shine'}`}
+                        style={{ paddingBottom: "5px", textAlign: "left" }}
+                    >
+                        {/* Dazzling Gold Bloom Diamond Pendant */}
+                        {props.title}
+                    </Typography>
+                    :
+                    ""
+            }
             {/*  */}
             <Typography style={{ display: "flex", width: '100%' }}>
                 <Typography
@@ -87,33 +92,33 @@ export default function Pricing(props) {
             {/*  */}
 
             {
-                props.offerDiscount?
-                <Grid container spacing={12}>
-                <Grid item lg={12} xs={12} > <span className='discount'>{props.offerDiscount}</span></Grid>
-            </Grid>
-                :
+                props.offerDiscount ?
+                    <Grid container spacing={12}>
+                        <Grid item lg={12} xs={12} > <span className='discount'>{props.offerDiscount}</span></Grid>
+                    </Grid>
+                    :
 
-            <Typography style={{ display: "flex" }}>
-                <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    className={`${classes.colorMain} ${classes.youSave}`}
-                    component="p"
+                    <Typography style={{ display: "flex" }}>
+                        <Typography
+                            variant="body2"
+                            color="textSecondary"
+                            className={`${classes.colorMain} ${classes.youSave}`}
+                            component="p"
 
-                >
-                     You save 
+                        >
+                            You save
                 </Typography>
-                <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                    className={`${props.save != null & props.save !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.offerPricePadding} `}
-                >
-                    {props.save}
-                </Typography>
-            </Typography>
-        
-        }
+                        <Typography
+                            variant="caption"
+                            color="textSecondary"
+                            component="p"
+                            className={`${props.save != null & props.save !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.offerPricePadding} `}
+                        >
+                            {props.save}
+                        </Typography>
+                    </Typography>
+
+            }
         </div>
     )
 }
