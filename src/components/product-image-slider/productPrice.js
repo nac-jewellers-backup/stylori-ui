@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import './product-images.css'
 import Ratings from '../rating/rating'
 import card from '../ProductCard/ProductData'
+import { withStyles } from '@material-ui/core/styles';
 import Pricing from '../Pricing/index'
 const dataCarousel = {
     dots: false,
@@ -19,6 +20,27 @@ const dataCarousel = {
     arrows: true,
 
 }
+
+const styles = theme => ({
+    pricedetails: {
+        [theme.breakpoints.down('xs')]: {
+            padding: "0"
+
+        },
+        [theme.breakpoints.up('lg')]: {
+            padding: "0 10px"
+        },
+    },
+    width: {
+        [theme.breakpoints.down('xs')]: {
+            padding: "0 10px"
+
+        },
+        [theme.breakpoints.up('lg')]: {
+            padding: "0 22px"
+        },
+    }
+});
 const mobilecarousel = () => {
 
     return (
@@ -31,14 +53,16 @@ const mobilecarousel = () => {
         </Container>
     );
 };
-const Productprice = () => {
+
+const Productprice = (props) => {
+    const { classes } = props;
     return (
         <div>
 
             {card.dataCard1.map(val => (
 
                 <>
-                    <Grid container spacing={12} sm={12} style={{padding:"0 10px"}}>
+                    <Grid container spacing={12} sm={12} className={classes.pricedetails}>
                         <Grid item xs={7} lg={8}>
                             <div className="price-div">
                                 <h1 className="pdp-title">
@@ -63,7 +87,7 @@ const Productprice = () => {
                     <Hidden mdUp>
                         {mobilecarousel()}
                     </Hidden>
-                    <div style={{padding:"0 10px"}}>
+                    <div className={classes.width}>
                         <Pricing price={val.price} offerPrice={val.offerPrice} offerDiscount='25% FLAT OFF' >
                             <div className='price-info'>
                                 <Grid container spacing={12}>
@@ -88,7 +112,8 @@ const Productprice = () => {
 };
 
 class ProductPrice extends Component {
-    state = {
+    constructor(props) {
+        super(props)
     }
 
 
@@ -96,10 +121,12 @@ class ProductPrice extends Component {
         return (
             <div>
                 <Hidden smDown>
-                    {Productprice()}
+                    {Productprice(this.props)}
                 </Hidden>
                 <Hidden mdUp>
-                    {Productprice()}
+                    <Container>
+                        {Productprice(this.props)}
+                    </Container>
                 </Hidden>
             </div>
 
@@ -111,4 +138,4 @@ ProductPrice.propTypes = {
     mobilecarousel: PropTypes.func,
     Productprice: PropTypes.func,
 };
-export default ProductPrice;
+export default withStyles(styles, { withTheme: true })(ProductPrice);

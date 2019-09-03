@@ -58,9 +58,10 @@
         text-align: center;
         width: 100% !important;
         height: 90% !important;
-        border: 1px solid #CCC !important;
+        border: 0.5px solid #CCC !important;
         box-shadow: none !important;
         border-radius: none !important;
+        outline: none !important;
     }
 
     .image {

@@ -17,10 +17,14 @@ const styles = theme => ({
     cart: {
         [theme.breakpoints.down('xs')]: {
             width: "100%",
-            overflowX: "auto"
+            overflowX: "auto",
+         
         },
         [theme.breakpoints.up('lg')]: {
-            width: "100%"
+            width: "100%",
+            border:"0.5px solid #ccc",
+            padding:"10px",
+            marginBottom:"20px"
         },
     },
 });
@@ -121,16 +125,16 @@ class Checkoutcard extends React.Component {
                                 <Card className="product-image-thumb">
                                     <CardHeader style={{ padding: "0px" }}
                                         action={
-                                            <IconButton>
+                                            <IconButton >
                                                 <i style={{ fontSize: "18px", color: "#337ab7" }} class='fa fa-heart-o'></i>
                                             </IconButton>
                                         }
                                     />
-                                    <Slideshow class="image"
+                                    <Slideshow class="image" 
                                         fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
                                 </Card>
                             </Grid>
-                            <Grid item xs={6} style={{ padding: "0 20px" }}>
+                            <Grid item xs={6} style={{ padding: "20px" }}>
                                 <h3 class="title">{val.header}</h3>
                                 <Grid container spacing={12} >
                                     <Grid item xs={6} >

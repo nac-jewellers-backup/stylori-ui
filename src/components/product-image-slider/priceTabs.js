@@ -150,6 +150,7 @@ class PriceTabs extends React.Component {
         return (
             <>
                 {H.productstabs.map(val =>
+                <Container>
                     <>
                         <>
                             <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
@@ -230,7 +231,7 @@ class PriceTabs extends React.Component {
                             </ExpansionPanel>
                         </>
                     </>
-                )}
+                    </Container> )}
             </>
         )
     }

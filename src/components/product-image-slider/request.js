@@ -6,6 +6,7 @@ import {
     ExpansionPanelSummary,
     ExpansionPanel,
     Typography,
+    TextField
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -14,109 +15,119 @@ import { Input } from '../InputComponents/TextField/Input'
 import { Form } from '../Form/Form'
 
 class Request extends React.Component {
-    initialValues = {
-        mailId: "",
-        name: "",
-        mobileNo: "",
-        request: "",
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            expanded: null,
+            mailId: "",
+            names: "",
+            mobileNo: "",
+            request: "",
+            isNumber: false,
 
-    state = {
-        expanded: null,
-        values: this.initialValues,
-        errors: this.initialValues,
-    };
+        };
+    }
+    handleChange(event, name) {
+        this.setState({
+            [name]: event.target.value
+        })
+    }
 
-
-
-
+    handleSubmit = (e) => {
+        // e.preventDefault();
+    }
     handle = panel => (event, expanded) => {
         this.setState({
             expanded: expanded ? panel : false,
         });
     };
-    submitbutton = () => {
-        return (
-            <div>
-                <Grid container>
-                    <Grid xs={12} >
-                        <Button type="submit" className="requset-button">
-                            Send
-                            </Button>
-                    </Grid>
-                </Grid>
-            </div>
-        )
-    }
-
+    handleKeyPress = (event, isNumber) => {
+        if (isNumber) {
+            if (!(event.which >= 48 && event.which <= 57)) event.preventDefault();
+        }
+    };
     Requestform = (err, errorhandle, errors) => {
-        const { values } = this.state;
         return (
             <div>
                 <div className='overall-boxz'>
-                <div className='overall-bo'>
-                    <Hidden smDown>
-                        <span className="product-details">Ask Our Expert</span>
-                        <hr class="bottom-line"></hr>
-                    </Hidden>
-                    <Grid container spacing={12} >
-                        <Grid xs={12} lg={6} >
-                            <Input
-                                type="text"
-                                name="name"
-                                // helperText={err.name ? errors.name.required : ""}
-                                error={values.name ? errors.name.required : errors.name.invalid}
-                                value={values.name}
-                                onInvalid={e => errorhandle(e)}
-                                placeholder="Name"
-                                className="request-text"
-                                required
-                            />
-                        </Grid>
-                        <Grid xs={12} lg={6} >
-                            <Input
-                                type="email"
-                                name="mailId"
-                                value={values.mailId}
-                                error={err.mailId}
-                                // helperText={err.mailId ? errors.mailId.required : ""}
-                                error={values.mailId ? errors.mailId.required : errors.mailId.invalid}
-                                placeholder="your-id@email.com"
-                                className="request-text"
-                                required
-                            />
-                        </Grid>
-                        <Grid xs={12} lg={6} >
-                            <Input
-                                className="request-text"
-                                isNumber
-                                pattern={/[0-9]{10}/}
-                                maxLength={10}
-                                minLength={10}
-                                name="mobileNo"
-                                type="text"
-                                value={values.mobileNo}
-                                error={values.mobileNo ? errors.mobileNo.required : errors.mobileNo.invalid}
-                                // helperText={err.mobileNo ? errors.mobileNo.required : ""}
-                                placeholder="909419****"
-                            />
-                        </Grid>
-                        <Grid xs={12} lg={6} >
-                            <Input
-                                className="request-text"
-                                type="text"
-                                name="request"
-                                value={values.request}
-                                error={values.request ? errors.request.required : errors.request.invalid}
-                                // helperText={err.request ? errors.request.required : ""}
-                                placeholder="Enter Request"
-                            />
-                        </Grid>
+                    <form onSubmit={this.handleSubmit()}>
+                        <div className='overall-bo'>
+                            <Hidden smDown>
+                                <span className="product-details">Ask Our Expert</span>
+                                <hr class="bottom-line"></hr>
+                            </Hidden>
+                            <Grid container spacing={12} >
+                                <Grid xs={12} lg={6} >
+                                    <Input
+                                        margin="normal"
+                                        variant="outlined"
+                                        type="text"
+                                        name="names"
+                                        value={this.state.names}
+                                        // error={this.state.nemes ? this.state.nemes : "**"}
+                                        placeholder="Name"
+                                        className="request-text"
+                                        onChange={event => this.handleChange(event, 'names')}
+                                        required
+                                    />
+                                </Grid>
+                                <Grid xs={12} lg={6} >
+                                    <Input
+                                        margin="normal"
+                                        variant="outlined"
+                                        type="email"
+                                        name="mailId"
+                                        value={this.state.mailId}
+                                        // error={this.state.mailId ? this.state.mailId : "**"}
+                                        placeholder="Enter your mail"
+                                        className="request-text"
+                                        onChange={event => this.handleChange(event, 'mailId')}
+                                    />
+                                </Grid>
+                                <Grid xs={12} lg={6} >
+                                    <Input
+                                        margin="normal"
+                                        variant="outlined"
+                                        isNumber
+                                        // pattern={/[0-9]{10}/}
+                                        maxLength={10}
+                                        minLength={10}
+                                        name="mobileNo"
+                                        value={this.state.mobileNo}
+                                        // error={this.state.mobileNo ? this.state.mobileNo : "**"}
+                                        placeholder="909419****"
+                                        className="request-text"
+                                        onChange={event => this.handleChange(event, 'mobileNo')}
+                                        onKeyPress={event => { this.handleKeyPress(event, 'isNumber') }}
+                                        required
+                                    />
+                                </Grid>
+                                <Grid xs={12} lg={6} >
+                                    <Input
+                                        margin="normal"
+                                        variant="outlined"
+                                        type="text"
+                                        name="request"
+                                        value={this.state.request}
+                                        // error={this.state.request ? this.state.request : "**"}
+                                        placeholder="Enter Request"
+                                        className="request-text"
+                                        onChange={event => this.handleChange(event, 'request')}
+                                        required
+                                    />
+                                </Grid>
 
-                    </Grid>
-                    {this.submitbutton()}
+                            </Grid>
+                            <Grid container>
+                                <Grid xs={12} >
+                                    <Button type="submit" className="requset-button">
+                                        Send
+                            </Button>
+                                </Grid>
+                            </Grid>
+                        </div>
+                    </form>
                 </div>
-            </div>
             </div>
         )
     }
@@ -128,7 +139,9 @@ class Request extends React.Component {
             <div>
 
                 <Hidden smDown>
-                        <Form children={this.Requestform} inputvalues={this.state.values} />
+                    {/* <Form children={this.Requestform} inputvalues={this.state.values} /> */}
+
+                    {this.Requestform()}
                 </Hidden>
 
 
@@ -147,10 +160,7 @@ class Request extends React.Component {
                             <Grid container spacing={12}>
                                 <Grid item xs={12} className="product-subhead">
                                     <span style={{ fontSize: "12px" }}>
-
-
                                         <Form children={this.Requestform} />
-
                                     </span>
                                 </Grid>
                             </Grid>

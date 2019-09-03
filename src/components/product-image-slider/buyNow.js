@@ -16,17 +16,17 @@ import T from './producthoverData';
 
 const inputsearch = () => {
     return (
-        <div style={{ marginTop: "25px",padding:"0 10px"}}>
+        <div style={{ marginTop: "25px", padding: "0 10px" }}>
             {buy.productsbuy.map(val =>
                 <Grid container spacing={12}>
-                    <Grid item lg={4} sm={8}>
+                    <Grid item xs={8} lg={4} sm={8}>
                         <input
                             placeholder='&#xf041; &nbsp; Enter Pin Code'
                             className='buynow-search'
                         />
 
                     </Grid>
-                    <Grid item lg={3} sm={4}>
+                    <Grid item xs={4} lg={3} sm={4}>
                         <Button className="search-button">Check for COD </Button>
                     </Grid>
                     <Hidden smDown>
@@ -46,9 +46,9 @@ const Buydetails = () => {
         <div>
             {buy.productsbuy.map(val =>
                 <>
-                    <Grid container spacing={12} style={{padding:"0 10px"}}>
-                        <Grid item xs={4} style={{marginRight:"15px"}}>
-                            <Buynowbutton class="buynow-button" button='buynow-btn-cont'/>
+                    <Grid container spacing={12} style={{ padding: "0 10px" }}>
+                        <Grid item xs={4} style={{ marginRight: "15px" }}>
+                            <Buynowbutton class="buynow-button" button='buynow-btn-cont' />
                         </Grid>
                         <Grid xs={7} style={{ marginTop: "10px" }}>
                             <Grid container spacing={12}>
@@ -99,10 +99,10 @@ class PriceBuynow extends React.Component {
                 </Hidden>
 
                 <Hidden mdUp>
-                    <Container>
-                        {buy.productsbuy.map(val =>
-                            <div style={{ marginTop: "25px" }}>
-                                <ProductPrice />
+                    {buy.productsbuy.map(val =>
+                        <div style={{ marginTop: "25px" }}>
+                            <ProductPrice />
+                            <Container>
                                 <Grid container spacing={12} style={{ marginTop: "10px" }}>
                                     <Grid item xs={6} className="content">
                                         <b className="ships-by">
@@ -128,8 +128,9 @@ class PriceBuynow extends React.Component {
                                     </Grid>
                                     <hr class="bottom-line product-inform-ation"></hr>
                                 </Grid>
-                                <PriceTabs />
-                                {/* <Grid container spacing={12}>
+                            </Container>
+                            <PriceTabs />
+                            {/* <Grid container spacing={12}>
                                     <Grid item xs={8}>
                                         <input
                                             placeholder='Enter Pin Code'
@@ -141,12 +142,12 @@ class PriceBuynow extends React.Component {
                                     </Grid>
                                 </Grid> */}
 
-                                {inputsearch()}
+                            {inputsearch()}
 
 
-                            </div>
-                        )}
-                    </Container></Hidden>
+                        </div>
+                    )}
+                </Hidden>
             </div>
         );
     }

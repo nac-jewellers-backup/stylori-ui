@@ -4,7 +4,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import { Select, OutlinedInput } from "@material-ui/core";
 import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
@@ -28,8 +28,8 @@ export default function SimpleSelect(props) {
     });
 
     React.useEffect(() => {
-        console.info('EVENT', values.age, Boolean((values.age != null && values.age !=="")));
-    },[values.age])
+        console.info('EVENT', values.age, Boolean((values.age != null && values.age !== "")));
+    }, [values.age])
 
     function handleChange(event) {
         setValues({ [event.target.name]: event.target.value, helperText: !Boolean((event.target.value != null && event.target.value !== "")) })
@@ -37,15 +37,22 @@ export default function SimpleSelect(props) {
 
     return (
         <form className={classes.root} autoComplete="off">
-            <FormControl required className={classes.formControl} style={{width:"100%"}}>
-                <InputLabel htmlFor="age-required">{props.name}</InputLabel>
+            <FormControl required className={classes.formControl} style={{ width: "100%" }}>
+                {props.name ?
+                    <InputLabel htmlFor="outlined-age-native-simple">{props.name}</InputLabel> : ""
+                }
                 <Select
-                    value={values.age}
+                    renderValue={() => {
+                        return (values.age)
+
+                    }}
                     onChange={handleChange}
-                    name={props.name}
-                    inputProps={{ id: "age-required", "aria-required": true }}
+                    name={props.name ? props.name : ""}
+                    input={<OutlinedInput id="outlined-age-native-simple" name={props.name ? props.name : ""} />}
+                    inputProps={{ id: "outlined-age-native-simple", "aria-required": true }}
                     MenuProps={{ "aria-required": true }}
                     className={classes.selectEmpty}
+                    variant="outlined"
                 >
                     <MenuItem value="">
                         <em>None</em>
@@ -60,6 +67,6 @@ export default function SimpleSelect(props) {
     );
 }
 SimpleSelect.propTypes = {
-    handleChange:PropTypes.func,
-    selectData:PropTypes.object.isRequired
+    handleChange: PropTypes.func,
+    selectData: PropTypes.object.isRequired
 }

@@ -33,9 +33,9 @@ class LoginRegisterIndex extends React.Component {
                             {LogRegData.map(val =>
                                 <Grid item xs={12} lg={4}>
                                     <Card className='form-card'>
-                                        <CardContent>
+                                        <CardContent style={{height:"70px"}}>
                                             <div>
-                                                <p className='card-reg'> {val.title}</p>
+                                                <p className='card-reg'> {val.title}</p> 
                                                 <b className='card-reg blt'>{val.dis}</b>
                                             </div>
                                         </CardContent>
@@ -53,7 +53,7 @@ class LoginRegisterIndex extends React.Component {
 
                 <div style={{ display: this.state.Login == true ? "block" : "none" }}>
                     <Login />
-                </div>
+                </div> 
                 <div style={{ display: this.state.Register == true ? "block" : "none" }}>
                     <Register back={this.state.Register} />
                 </div>
