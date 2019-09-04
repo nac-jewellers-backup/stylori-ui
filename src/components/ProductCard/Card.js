@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
@@ -15,7 +15,8 @@ const useStyles = makeStyles({
     justifyContent: "center"
   },
   card: {
-    maxWidth: 345
+    minWidth: "100%",
+    maxWidth: "100%"
   },
   textDel: {
     color: "#828282"
@@ -34,8 +35,22 @@ const useStyles = makeStyles({
     }
     // border: "1px solid #F699A3"
   },
+  cardActionsIcon: {
+    padding: "0 !important",
+    paddingTop: "8px !important",
+    paddingRight: "8px !important",
+    paddingLeft: "8px !important"
+  },
+  cardContentImage: {
+    padding: "0 !important",
+    paddingTop: "8px !important",
+    paddingRight: "8px !important",
+    paddingLeft: "8px !important",
+    paddingBottom: "8px !important"
+  },
   offerMainPrice: {
-    color: "#ed1165"
+    color: "#ed1165",
+    fontSize:'1.3rem'
   },
   offerPrice: {
     fontSize: "0.8rem",
@@ -47,7 +62,7 @@ const useStyles = makeStyles({
     }
   },
   youSave: {
-    fontSize: "0.8rem",
+    fontSize: "0.7rem",
     color: "#828282",
     "&:span": {
       margin: 0,
@@ -66,21 +81,28 @@ const useStyles = makeStyles({
     fontWeight: "bold",
     backgroundColor: "#ed1165",
     borderRadius: "20px",
-    width: "40%"
+    width: "auto",
+    paddingLeft: "5px",
+    paddingRight: "5px"
   }
 });
 
 export default function ImgMediaCard() {
   const classes = useStyles();
-
+  const [state, setState] = useState(false);
+  const imgbef =
+    "https://assets-cdn.stylori.com/276x276/images/product/SE0223/SE0223-1Y.jpg";
+    
+  const imgaft =
+    "https://assets-cdn.stylori.com/296x296/images/product/SP0185/HOVER-SP0185-2Y.jpg";
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
-        <CardActions>
+        <CardActions className={classes.cardActionsIcon}>
           <Grid container xs={12}>
             <Grid container item xs={6} justify="flex-start">
               <i
-                style={{ fontSize: "18px" }}
+                style={{ fontSize: "18px",color: "#f69cad", }}
                 className={`fa ${classes.colorLight}`}
               >
                 &#xf0d1;
@@ -89,7 +111,7 @@ export default function ImgMediaCard() {
 
             <Grid container item xs={6} justify="flex-end">
               <i
-                style={{ fontSize: "18px" }}
+                style={{ fontSize: "18px",color: "#f69cad", }}
                 className={`fa ${classes.colorLight}`}
               >
                 &#xf08a;
@@ -97,12 +119,15 @@ export default function ImgMediaCard() {
             </Grid>
           </Grid>
         </CardActions>
-        <CardActionArea>
+        <CardContent className={classes.cardContentImage}>
           <img
-            src="https://assets-cdn.stylori.com/276x276/images/product/SR0480/SR0480-1W.jpg"
+            onMouseOver={() => setState(true)}
+            onMouseOut={() => setState(false)}
+            src={state ? imgaft : imgbef}
             alt="welcome"
+            style={{ width: "100%" }}
           />
-        </CardActionArea>
+        </CardContent>
         <Card className={classes.priceClass}>
           <CardContent className={classes.cardContent}>
             <Grid
@@ -112,23 +137,23 @@ export default function ImgMediaCard() {
               className={classes.textPriceCardGrid}
               alignItems="center"
             >
-              <Grid container item xs={7} alignItems="center">
+              <Grid container item xs={6} alignItems="center">
                 <Typography
-                  variant="h4"
-                  component="h4"
+                  variant="subtitle1"
+                  component="div"
                   className={classes.offerMainPrice}
                 >
                   <i
-                    style={{ fontSize: "26px", paddingRight: "5px" }}
+                    style={{ paddingRight: "5px" }}
                     className="fa"
                   >
                     &#xf156;
                   </i>
-                  17,000
+                  17,000000
                 </Typography>
               </Grid>
               {/*  */}
-              <Grid item xs={5}>
+              <Grid item xs={6}>
                 <Grid container item xs={12} alignItems="center">
                   <Typography
                     gutterBottom
@@ -140,7 +165,7 @@ export default function ImgMediaCard() {
                       <i style={{ fontSize: "12px" }} className="fa">
                         &#xf156;
                       </i>
-                      &nbsp; 20,000
+                      &nbsp; 20,00000
                     </del>
                   </Typography>
                 </Grid>
@@ -159,7 +184,7 @@ export default function ImgMediaCard() {
                     component="span"
                     className={`${classes.youSave} ${classes.youSavePrice}`}
                   >
-                    20000
+                    2000000
                   </Typography>
                 </Grid>
               </Grid>
