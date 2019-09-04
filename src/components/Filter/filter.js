@@ -13,13 +13,9 @@ import ProductLayout from '../ProductCard/ProductLayout';
 import FilterHeader from './FilterHeader';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-<<<<<<< HEAD
 import CardRadioButton from '../InputComponents/RadioButton/index';
 import { Input } from '../../components/InputComponents/TextField/Input'
-=======
-import CardRadioButton from '../InputComponents/RadioButton/index'
 import { isUndefined } from 'util';
->>>>>>> 0aeeb262c0a151e45474cadf136f8f09b71b9896
 const drawerWidth = 280;
 
 
@@ -303,13 +299,8 @@ class PersistentDrawerLeft extends React.Component {
                             {row === selected ? <ExpandMore className="fil-drawer-arrow" /> :
                               <ExpandLess className="fil-drawer-arrow" />}
                           </ListItem>
-<<<<<<< HEAD
                           <div > {/* style={{ maxHeight: '200px', overflow: 'auto' }} */}
                             {selected === row &&
-=======
-                      <div > {/* style={{ maxHeight: '200px', overflow: 'auto' }} */}
-                            {selected  === row &&
->>>>>>> 0aeeb262c0a151e45474cadf136f8f09b71b9896
                               filterdatas.filter1[row] !== undefined && filterdatas.filter1[row].map(row12 => (
                                 <ListItem key={row12}  >   {/* button */}
                                   <Checkbox
@@ -369,7 +360,6 @@ class PersistentDrawerLeft extends React.Component {
                       <ListItem key={row} className="mbl-filter-list"
                         onClick={() => this.filterValue(row)}
                       >
-<<<<<<< HEAD
                         <ListItemText
                           className='filter-mbl-font filter-mbl-fonts'
                         >
@@ -379,64 +369,32 @@ class PersistentDrawerLeft extends React.Component {
                       </ListItem>
                     ))}
                   </List>
-=======
-                      <ListItemText
-                    className='filter-mbl-font filter-mbl-fonts'
-                      >
-                       {row}
-                      
-                      </ListItemText>
-                    </ListItem>
-                  ))}
-                </List>
-                {console.info('data-filter',filterdatas.filter1,this.state.filtercheck)}
-              </Grid>
-              {
-                this.state.filtercheck !== '' &&
-                <Grid item xs={6} style={{  overflow: 'scroll', height: '73vh' }}>
-                  {filterdatas.filter1[this.state.filtercheck].filter((row,i) => i<4).map(row => {
-             
-                    return(
-                  
-                      <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
-                        <Checkbox
-                          value="checked"
-                          color="primary"
-                          checked={this.state.checked[row] !== undefined ? this.state.checked[row] : false}
-                          onChange={() => this.handleChange(row, this.state.checked[row] !== undefined ? !this.state.checked[row] : true)}
-                          icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                          checkedIcon={<CheckBoxIcon fontSize="small" />}
-                        />
-                        <ListItemText>
-                          <Typography variant=""
-                            className={`filter-mbl-font ${classes.colorMain}`}>{row}
-                          </Typography>
-                        </ListItemText>
-                      </ListItem>
-                    )
-                  })}
->>>>>>> 0aeeb262c0a151e45474cadf136f8f09b71b9896
+                  {console.info('data-filter', filterdatas.filter1, this.state.filtercheck)}
                 </Grid>
                 {
                   this.state.filtercheck !== '' &&
                   <Grid item xs={6} style={{ overflow: 'scroll', height: '73vh' }}>
-                    {filterdatas.filter1[this.state.filtercheck].map(row => (
-                      <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
-                        <Checkbox
-                          value="checked"
-                          color="primary"
-                          checked={this.state.checked[row] !== undefined ? this.state.checked[row] : false}
-                          onChange={() => this.handleChange(row, this.state.checked[row] !== undefined ? !this.state.checked[row] : true)}
-                          icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                          checkedIcon={<CheckBoxIcon fontSize="small" />}
-                        />
-                        <ListItemText>
-                          <Typography variant=""
-                            className={`filter-mbl-font ${classes.colorMain}`}>{row}
-                          </Typography>
-                        </ListItemText>
-                      </ListItem>
-                    ))}
+                    {filterdatas.filter1[this.state.filtercheck].filter((row, i) => i < 4).map(row => {
+
+                      return (
+
+                        <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
+                          <Checkbox
+                            value="checked"
+                            color="primary"
+                            checked={this.state.checked[row] !== undefined ? this.state.checked[row] : false}
+                            onChange={() => this.handleChange(row, this.state.checked[row] !== undefined ? !this.state.checked[row] : true)}
+                            icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                            checkedIcon={<CheckBoxIcon fontSize="small" />}
+                          />
+                          <ListItemText>
+                            <Typography variant=""
+                              className={`filter-mbl-font ${classes.colorMain}`}>{row}
+                            </Typography>
+                          </ListItemText>
+                        </ListItem>
+                      )
+                    })}
                   </Grid>
                 }
               </Grid>
