@@ -53,7 +53,8 @@ console.log(dataCard)
            <ProductCards data={tile} />
           </GridListTile>
         ))}
-
+  {/* <GridList  cellHeight={"auto"} className="productLayoutGridList" cols={this.state.colSize} style={{justifyContent:'center'}}> */}
+          {/* <GridListTile key={tile.title} cols={tile.cols || 1} style={{height:'auto',padding:'8px'}} > */}
       </GridList>
     </div>
     
@@ -61,4 +62,5 @@ console.log(dataCard)
 }
   
 }
+
 export default ProductLayout

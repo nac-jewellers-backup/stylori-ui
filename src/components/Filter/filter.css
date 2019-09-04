@@ -7,7 +7,7 @@
 }
 
 .fil-submenu-icons {
-  fill: rgba(0, 0, 0, 0.25) !important;
+  fill:blue !important;
   padding: 0 9px;
 }
 
@@ -20,8 +20,8 @@
   padding: 0 10px;
   letter-spacing: 0.01071em;
   color: #666;
-  font-size: 1.1rem !important;
-  font-weight: bold;
+  font-size: 1rem !important;
+  /* font-weight: bold; */
   user-select: none;
   cursor: pointer;
 }
@@ -196,4 +196,16 @@ color: #f2f2f2 !important;
 background-color: rgb(251, 100, 27) !important;
 }
 @media only screen and (min-width: 320px) {
+}
+.subFilterSize{
+  line-height: 0.5rem !important;
+  font-size: 0.9rem !important;
+}
+.fil-submenu-icons svg{
+  font-size: 1.2rem;
+  /* border-color: #dddddd; */
+  fill : rgba(58, 69, 120, 1) !important;
+}
+.sublistDisplay{
+  display:none !important;
 }
