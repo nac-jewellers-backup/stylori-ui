@@ -15,19 +15,30 @@ const styles = theme => ({
     cart: {
         [theme.breakpoints.down('xs')]: {
             width: "100%",
-            boxShadow:"none",
-            marginBottom:"25px"
+            boxShadow: "none",
+            marginBottom: "25px"
         },
         [theme.breakpoints.up('lg')]: {
             width: "95%",
-            boxShadow:"none",
+            boxShadow: "none",
         },
     },
 });
 class Productlist extends React.Component {
     state = {
+        message: "",
+        from: "",
+        to: ""
+    }
+    handleChange(event, name) {
+        this.setState({
+            [name]: event.target.value
+        })
     }
 
+    handleSubmit = (e) => {
+        // e.preventDefault();
+    }
     render() {
         const { classes } = this.props;
         return (
@@ -45,7 +56,7 @@ class Productlist extends React.Component {
                                         id="panel1a-header"
                                         className='order-ship'
                                     >
-                                        <h5 className='title' style={{ textAlign: "center"}}> Shipping Address</h5>
+                                        <h5 className='title' style={{ textAlign: "center" }}> Shipping Address</h5>
                                     </ExpansionPanelSummary>
                                     <ExpansionPanelDetails className='order-ship pdng'>
                                         <div style={{ width: "100%" }}>
@@ -71,19 +82,35 @@ class Productlist extends React.Component {
                                     </ExpansionPanelSummary>
                                     <ExpansionPanelDetails className='order-ship pdng'>
                                         <div style={{ width: "100%" }}>
-                                            <Input
-                                                placeholder='Form'
-                                            />
-                                            <Input
-                                                placeholder='To'
-                                            />
-                                            <Input
-                                                placeholder='Message'
-                                            />
-                                            <div className='login-butn'>
-                                                <Button className='apply-b'>Save</Button>
-                                            </div>
-                                        </div>
+                                            <from onSubmit={this.handleSubmit()}>
+                                                <Input
+                                                    placeholder='Form'
+                                                    name="from"
+                                                    type="text"
+                                                    value={this.state.from}
+                                                    required
+                                                    onChange={(event) => this.handleChange(event)}
+                                                />
+                                                <Input
+                                                    placeholder='To'
+                                                    name="to"
+                                                    type="text"
+                                                    value={this.state.to}
+                                                    required
+                                                    onChange={(event) => this.handleChange(event)}
+                                                />
+                                                <Input
+                                                    placeholder='Message'
+                                                    name="message"
+                                                    type="text"
+                                                    value={this.state.message}
+                                                    required
+                                                    onChange={(event) => this.handleChange(event)}
+                                                />
+                                                <div className='login-butn'>
+                                                    <Button className='apply-b' type="submit">Save</Button>
+                                                </div>
+                                            </from></div>
 
                                     </ExpansionPanelDetails>
                                 </ExpansionPanel>

@@ -96,9 +96,9 @@
 }
 .search {
   border: 1px solid #ccc;
-  width: 165px !important;
-  height: 26px !important;
-  padding: 6px 10px !important;
+  width: 190px !important;
+  height: 30px !important;
+  padding: 1px 10px !important;
   font-family: inherit !important;
 }
 .MuiBadge-colorSecondary {

@@ -34,7 +34,6 @@ const styles = theme => ({
 const useStyles = makeStyles(theme => ({
   card: {
     width: "100%",
-    height: "20vh",
     margin: "auto",
     display: "flex"
   },

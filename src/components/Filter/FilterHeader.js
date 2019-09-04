@@ -62,13 +62,13 @@ class FilterHeader extends Component {
                                 {this.props.check ?
                                     <div onClick={this.props.handleChangeDrawer}
                                         style={{ float: 'right' }}>
-                                        <i style={{ color: "#394578", margin: "40%",cursor:'pointer',fontSize:'16px' }} class="fa fa-times"></i>
+                                        <i style={{ color: "#394578", margin: "40%", cursor: 'pointer', fontSize: '18px' }} class="fa fa-times"></i>
                                     </div >
                                     :
                                     ''
                                 }
 
-                                <Grid item onClick={this.props.handleChangeDrawer} style={{ display: 'flex', alignItems: 'center',position: 'absolute',top: '29%',left:'5%',cursor:'pointer' }}>
+                                <Grid item onClick={this.props.handleChangeDrawer} style={{ display: 'flex', alignItems: 'center', position: 'absolute', top: '29%', left: '5%', cursor: 'pointer' }}>
                                     {
                                         this.props.check ? <ChevronRightIcon className={`${classes.colorMain}`} />
                                             :
@@ -85,7 +85,7 @@ class FilterHeader extends Component {
                             </div>
                         </Toolbar>
                     </Grid>
-                    <Grid item lg={6}>
+                    <Grid item lg={6} >
                         <div className="fil-drawer-head-sort">
                             <Typography variant="h6" noWrap
                                 className={`fil-drawer-sort_font ${classes.colorMain}`}
@@ -97,8 +97,11 @@ class FilterHeader extends Component {
                                 </span> */}
                             </Typography>
                         </div>
-                        <div className={"testMenu"} style={{ position: "absolute", right: "15px", top: "65px", boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 7px' }}>
-                            <Collapse in={this.state.expanded} timeout="auto" unmountOnExit >
+                        <div className={"testMenu"} style={{
+                            position: "absolute", width: "200px",
+                            right: "15px", top: "65px", boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 7px'
+                        }}>
+                            <Collapse in={this.state.expanded} timeout="auto">
                                 <CardRadioButton data={filterdatas.radioValues} />
                             </Collapse>
                         </div>

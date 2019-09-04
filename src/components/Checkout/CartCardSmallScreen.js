@@ -8,7 +8,6 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles(theme => ({
   card: {
     width: "100%",
-    height: "20vh",
     margin: "auto",
     display: "flex"
   },
@@ -68,7 +67,7 @@ export default function MediaControlCard() {
     <Card className={classes.card}>
       <div style={{ width: "195px" }}>
         <img
-          src="https://www.udaipurblog.com/wp-content/uploads/2018/12/My-Gold-Guide.jpg"
+          src='http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg'
           width="100%"
           height="100%"
           alt=""

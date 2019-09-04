@@ -11,7 +11,7 @@ class Checkout extends React.Component {
             <div>
                 <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
                     <Grid item xs={12} >
-                        <Header/>
+                        <Header />
                     </Grid>
                 </Grid>
                 <Container>
@@ -19,7 +19,6 @@ class Checkout extends React.Component {
                         <Grid item xs={12}>
                             <BreadCrumb />
                             <CartCard />
-                            <Footer />
                         </Grid>
                     </Grid>
                 </Container>

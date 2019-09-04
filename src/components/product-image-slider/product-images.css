@@ -188,9 +188,9 @@
         border: none;
         background-color: #f36e23 !important;
         color: #fff !important;
-        font-size: 20px !important;
+        font-size: 19px !important;
         text-align: center;
-        letter-spacing: 2px !important;
+        letter-spacing: 1px !important;
         width: 100%;
         text-transform: none !important;
     }
@@ -201,7 +201,9 @@
     }
 
     .buynow-icon {
-        font-size: 16px;
+        font-size: 15px;
+        margin-right: 5px;
+        margin-bottom: 3px;
     }
 
     .buy-subheaders {
@@ -301,6 +303,7 @@
         display: block;
         width: 98% !important;
         height: 42px !important;
+        line-height: 42px !important;
         padding: 0 5px !important;
         font-size: 13px;
         line-height: 1.42857143;
@@ -638,7 +641,7 @@
         border: medium none;
         background-color: #ccc;
         color: #394578;
-        padding: 14px 20px !important;
+        padding: 16px 20px !important;
         font-size: 14px;
     }
 
@@ -705,11 +708,13 @@
         color: #fff;
         cursor: pointer;
         outline: none !important;
-        
+
     }
-.header-APP{
-    padding:0 10px;
-}
+
+    .header-APP {
+        padding: 0 10px;
+    }
+
     .overall-box {
         border-radius: 5px;
         width: 100% !important;
@@ -718,7 +723,7 @@
         padding-bottom: 10px !important;
         margin-bottom: 10px !important;
         box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .06);
-        }
+    }
 
     .page:hover,
     .page.gradient:hover {
@@ -803,6 +808,7 @@
         box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .06);
         padding-top: 25px !important;
     }
-    .overall-bo{
+
+    .overall-bo {
         padding: 0 10px;
     }

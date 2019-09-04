@@ -21,42 +21,42 @@ class Addressform extends React.Component {
         City: "",
         phonenumber: "",
     }
-    showHideDiv = (ele) => {
-        var srcElement = document.getElementById(ele);
-        if (srcElement != null) {
-            if (srcElement.style.display == "block") {
-                srcElement.style.display = 'none';
-            }
-            else {
-                srcElement.style.display = 'block';
-            }
-            return false;
-        }
-    }
-    handleChange(event) {
-        this.setState({ [event.target.name]: event.target.value });
+
+    handleChange(event, name) {
+        this.setState({
+            [name]: event.target.value
+        })
     }
 
-    handleSubmit(event) {
+    handleSubmit = (e) => {
+        // e.preventDefault();
     }
+    myFunction = () => {
+        // if (document.getElementById('myCheck').checked) {
+        //     document.getElementById('text').style.display = 'block';
+        // } else {
+        //     document.getElementById('text').style.display = 'none';
+        // }
+    }
+
     render() {
-        debugger
         return (
             <Container>
                 <div className='pt-sm'>
                     <form onSubmit={this.handleSubmit()}>
-                        <Grid container item xs={12} lg={12}>
+                        <h5 className='title'> Shipping Address</h5>
+                        <p class="form-group tp" >
+                            <Checkboxes id="myCheck" onclick={this.myFunction()} CheckBoxValues={['0']} />
+                            If your billing address is different from the shipping adress please uncheck the box to select billing address.</p>    <Grid container item xs={12} lg={12} >
                             <Grid item xs={12} lg={5}>
-                                <h5 className='title'> Shipping Address</h5>
-                                <p class="form-group tp" >
-                                    <Checkboxes onChange={this.showHideDiv('divMsg')} CheckBoxValues={['0']} /> If your billing address is different from the shipping adress please uncheck the box to select billing address.</p>
+
                                 <Grid container spacing={12}>
                                     <Grid item xs={4} lg={4}>
                                         <SimpleSelect name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                     </Grid>
                                     <Grid item xs={4} lg={4}>
                                         <Input
-                                        name="firstname"
+                                            name="firstname"
                                             className='text-f'
                                             type="text"
                                             value={this.state.firstname}
@@ -152,8 +152,8 @@ class Addressform extends React.Component {
                             {/*  */}
                             {/* <div value="Show/Hide" id='divMsg' style={{display:"none"}}> */}
                             <Grid container item lg={1} />
-                            <Grid item xs={12} lg={5} style={{ marginTop: "8%", float: "right" }}>
-                                <div style={{ float: "right" }}>
+                            <Grid item xs={12} lg={5} style={{ float: "right" }}>
+                                <div style={{ float: "right" }} id="text" style={{ display: "none" }} >
                                     <h5 className='title'>  Billing  address </h5>
                                     <Grid container spacing={12}>
                                         <Grid item xs={4} lg={4}>
@@ -236,7 +236,8 @@ class Addressform extends React.Component {
                                             />
                                         </Grid>
                                     </Grid>
-                                </div> </Grid>
+                                </div>
+                            </Grid>
                             {/* </div> */}
                         </Grid>
 

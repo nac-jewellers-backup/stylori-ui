@@ -37,32 +37,31 @@ export default function SimpleSelect(props) {
 
     return (
         <form className={classes.root} autoComplete="off">
-            <FormControl required className={classes.formControl} style={{ width: "100%" }}>
+            {/* <FormControl required className={classes.formControl} style={{ width: "100%" }}>
                 {props.name ?
                     <InputLabel htmlFor="outlined-age-native-simple">{props.name}</InputLabel> : ""
-                }
-                <Select
-                    renderValue={() => {
-                        return (values.age)
-
-                    }}
-                    onChange={handleChange}
-                    name={props.name ? props.name : ""}
-                    input={<OutlinedInput id="outlined-age-native-simple" name={props.name ? props.name : ""} />}
-                    inputProps={{ id: "outlined-age-native-simple", "aria-required": true }}
-                    MenuProps={{ "aria-required": true }}
-                    className={classes.selectEmpty}
-                    variant="outlined"
-                >
-                    <MenuItem value="">
-                        <em>None</em>
-                    </MenuItem>
-                    {props.selectData.map(data => (
-                        <MenuItem value={data}>{data}</MenuItem>
-                    ))}
-                </Select>
-                {values.helperText && <FormHelperText><b style={{ color: 'red' }}>Required</b></FormHelperText>}
-            </FormControl>
+                } */}
+            <Select
+                style={{ width: "100%" }}
+                displayEmpty
+                renderValue={value => props.name ? props.name : "Select"}
+                onChange={handleChange}
+                // name={props.name ? props.name : ""}
+                input={<OutlinedInput id="outlined-age-native-simple" />}
+                inputProps={{ id: "outlined-age-native-simple", "aria-required": true }}
+                MenuProps={{ "aria-required": true }}
+                className={classes.selectEmpty}
+                variant="outlined"
+            >
+                <MenuItem value="">
+                    <em>None</em>
+                </MenuItem>
+                {props.selectData.map(data => (
+                    <MenuItem value={data}>{data}</MenuItem>
+                ))}
+            </Select>
+            {values.helperText && <FormHelperText><b style={{ color: 'red' }}>Required</b></FormHelperText>}
+            {/* </FormControl> */}
         </form>
     );
 }

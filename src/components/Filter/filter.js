@@ -13,7 +13,8 @@ import ProductLayout from '../ProductCard/ProductLayout';
 import FilterHeader from './FilterHeader';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CardRadioButton from '../InputComponents/RadioButton/index'
+import CardRadioButton from '../InputComponents/RadioButton/index';
+import { Input } from '../../components/InputComponents/TextField/Input'
 const drawerWidth = 280;
 
 
@@ -87,9 +88,9 @@ const styles = theme => ({
   colorMainBackground: {
     backgroundColor: theme.palette.primary.main
   },
-  productCards:{
+  productCards: {
     [theme.breakpoints.down('md')]: {
-      width:'100% !important'
+      width: '100% !important'
     },
   }
 });
@@ -107,8 +108,8 @@ class PersistentDrawerLeft extends React.Component {
       filtercheck: '',
       productDisplay: true,
       check: true,
-      numOne:'',
-      numTwo:'',
+      numOne: '',
+      numTwo: '',
       chipData: [
         { key: '', label: '' },
       ],
@@ -178,43 +179,43 @@ class PersistentDrawerLeft extends React.Component {
     this.setState({ check: !this.state.check });
     this.setState({ open: !this.state.open });
   };
-  componentDidMount(){
+  componentDidMount() {
     var numberOne = 1232224.789;
     var numberTwo = 1833362.222
-var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
-var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
-this.setState({numOne:numOne, numTwo:numTwo})
+    var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
+    var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
+    this.setState({ numOne: numOne, numTwo: numTwo })
   }
-  
+
   onCurrencyChange = (e) => {
     var numberOne;
     var numberTwo;
-if (isNaN(Number((document.getElementById('num1').value).charAt(0)))){
-  numberOne=  Number(((document.getElementById('num1').value).substr(1)).replace(/,/g, ''));
-  }
-  else{
-    
-    numberOne=  Number((document.getElementById('num1').value).replace(/,/g, ''));
-  }
-  if (isNaN(Number((document.getElementById('num2').value).charAt(0)))){
-    numberTwo=  Number(((document.getElementById('num2').value).substr(1)).replace(/,/g, ''));
+    if (isNaN(Number((document.getElementById('num1').value).charAt(0)))) {
+      numberOne = Number(((document.getElementById('num1').value).substr(1)).replace(/,/g, ''));
     }
-    else{
-      
-      numberTwo=  Number((document.getElementById('num2').value).replace(/,/g, ''));
+    else {
+
+      numberOne = Number((document.getElementById('num1').value).replace(/,/g, ''));
     }
-  debugger;
-var numOnee = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
-var numTwoo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
-this.setState({numOne:numOnee, numTwo:numTwoo})
+    if (isNaN(Number((document.getElementById('num2').value).charAt(0)))) {
+      numberTwo = Number(((document.getElementById('num2').value).substr(1)).replace(/,/g, ''));
+    }
+    else {
+
+      numberTwo = Number((document.getElementById('num2').value).replace(/,/g, ''));
+    }
+    debugger;
+    var numOnee = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
+    var numTwoo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
+    this.setState({ numOne: numOnee, numTwo: numTwoo })
 
   }
-    txtFieldChange(e){
-        if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
+  txtFieldChange(e) {
+    if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
 
-      // this.setState({[e.target.name]:e.target.value})
+    // this.setState({[e.target.name]:e.target.value})
   }
-  
+
   render() {
     console.log(this.state.numOne);
     const { classes } = this.props;
@@ -233,7 +234,7 @@ this.setState({numOne:numOnee, numTwo:numTwoo})
 
             {/* <CssBaseline /> */}
             <div >
-              <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '210px',maxHeight:'68vh',overflowY:'scroll' }} className="SliderFilter scrollBarFilter" >
+              <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '210px', maxHeight: '68vh', overflowY: 'scroll' }} className="SliderFilter scrollBarFilter" >
                 <div >
 
 
@@ -252,13 +253,13 @@ this.setState({numOne:numOnee, numTwo:numTwoo})
 
                     <Divider />
                     <List className="fil-main-list">
-                      <div style={{ margin: "5px" }}>
+                      <div className="fil-list-items">
                         <Typography className="fil-list-items">Price</Typography>
                         <Grid container spacing={12} style={{ paddingLeft: "5px" }}   >
                           <Grid item xs={4} >
-                            <TextField
-                            onChange={(e)=>{this.setState({numOne:e.target.value})}}
-                            onKeyPress = {(e)=>{this.txtFieldChange(e)}}
+                            <Input
+                              onChange={(e) => { this.setState({ numOne: e.target.value }) }}
+                              onKeyPress={(e) => { this.txtFieldChange(e) }}
                               name="numOne"
                               className="price-txt"
                               id="num1"
@@ -267,10 +268,10 @@ this.setState({numOne:numOnee, numTwo:numTwoo})
                               variant="outlined"
                             />
                           </Grid>&nbsp;
-             <Grid item xs={4}>
-                            <TextField
-                              onChange={(e)=>{this.setState({numTwo:e.target.value})}}
-                            onKeyPress = {(e)=>{this.txtFieldChange(e)}}
+                     <Grid item xs={4}>
+                            <Input
+                              onChange={(e) => { this.setState({ numTwo: e.target.value }) }}
+                              onKeyPress={(e) => { this.txtFieldChange(e) }}
                               name="numTwo"
                               className="price-txt"
                               id="num2"
@@ -279,8 +280,8 @@ this.setState({numOne:numOnee, numTwo:numTwoo})
                               variant="outlined"
                             />
                           </Grid>&nbsp;
-            <Grid item xs={3}>
-                            <Button variant="contained" className={`price-btn ${classes.colorMainBackground}`} onClick= {() => this.onCurrencyChange()}>Go</Button>
+                         <Grid item xs={3}>
+                            <Button variant="contained" className={`price-btn ${classes.colorMainBackground}`} onClick={() => this.onCurrencyChange()}>Go</Button>
                           </Grid>
                         </Grid>
                       </div>
@@ -290,14 +291,14 @@ this.setState({numOne:numOnee, numTwo:numTwoo})
                             onClick={() => this.selectItem(row)}>
                             <ListItemText
                             >
-                              <Typography className="fil-list-items" variant='h4' component="h4"
+                              <Typography className="fil-list-items"
                               >{row}
                               </Typography>
                             </ListItemText>
                             {row === selected ? <ExpandMore className="fil-drawer-arrow" /> :
                               <ExpandLess className="fil-drawer-arrow" />}
                           </ListItem>
-                      <div > {/* style={{ maxHeight: '200px', overflow: 'auto' }} */}
+                          <div > {/* style={{ maxHeight: '200px', overflow: 'auto' }} */}
                             {selected === row &&
                               filterdatas.filter1[row] !== undefined && filterdatas.filter1[row].map(row12 => (
                                 <ListItem key={row12}  >   {/* button */}
@@ -309,7 +310,7 @@ this.setState({numOne:numOnee, numTwo:numTwoo})
                                     color="primary"
                                   />
                                   <ListItemText>
-                                    <Typography  variant=""
+                                    <Typography variant=""
                                       className={`fil-submenu-list ${classes.colorMain}`}>{row12}
                                     </Typography>
                                   </ListItemText>
@@ -348,49 +349,48 @@ this.setState({numOne:numOnee, numTwo:numTwoo})
                 <i className={`fa fa-times ${classes.colorMain}`} ></i>&nbsp;
                  Filter</a>
               <Button style={{ float: "right", border: '1px solid #ececec', lineHeight: "15px" }} className={`${classes.colorMain}`}> <b >Clear All</b></Button>
-
             </div>
 
-            <Grid container spacing={2} xs={12} className="p" style={{ overflow: 'scroll', height: '100%',display: openMobile ? 'none' : 'block' }}>
+            <Grid container spacing={2} xs={12} className="p" style={{ overflow: 'scroll', height: '100%', display: openMobile ? 'none' : 'block' }}>
               <Grid container item xs={12}>
-              <Grid item xs={6} style={{  backgroundColor: "#F2F2F2", overflow: 'scroll', height: '73vh' }}>
-                <List className="mbl-filter-list">
-                  {filterdatas.filter.map(row => (
-                    <ListItem key={row} className="mbl-filter-list"
-                    onClick={() => this.filterValue(row)}
+                <Grid item xs={6} style={{ backgroundColor: "#F2F2F2", overflow: 'scroll', height: '73vh' }}>
+                  <List className="mbl-filter-list">
+                    {filterdatas.filter.map(row => (
+                      <ListItem key={row} className="mbl-filter-list"
+                        onClick={() => this.filterValue(row)}
                       >
-                      <ListItemText
-                    className='filter-mbl-font filter-mbl-fonts'
-                      >
-                       {row}
-                      
-                      </ListItemText>
-                    </ListItem>
-                  ))}
-                </List>
-              </Grid>
-              {
-                this.state.filtercheck !== '' &&
-                <Grid item xs={6} style={{  overflow: 'scroll', height: '73vh' }}>
-                  {filterdatas.filter1[this.state.filtercheck].map(row => (
-                    <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
-                      <Checkbox
-                        value="checked"
-                        color="primary"
-                        checked={this.state.checked[row] !== undefined ? this.state.checked[row] : false}
-                        onChange={() => this.handleChange(row, this.state.checked[row] !== undefined ? !this.state.checked[row] : true)}
-                        icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                        checkedIcon={<CheckBoxIcon fontSize="small" />}
-                      />
-                      <ListItemText>
-                        <Typography variant=""
-                          className={`filter-mbl-font ${classes.colorMain}`}>{row}
-                        </Typography>
-                      </ListItemText>
-                    </ListItem>
-                  ))}
+                        <ListItemText
+                          className='filter-mbl-font filter-mbl-fonts'
+                        >
+                          {row}
+
+                        </ListItemText>
+                      </ListItem>
+                    ))}
+                  </List>
                 </Grid>
-              }
+                {
+                  this.state.filtercheck !== '' &&
+                  <Grid item xs={6} style={{ overflow: 'scroll', height: '73vh' }}>
+                    {filterdatas.filter1[this.state.filtercheck].map(row => (
+                      <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
+                        <Checkbox
+                          value="checked"
+                          color="primary"
+                          checked={this.state.checked[row] !== undefined ? this.state.checked[row] : false}
+                          onChange={() => this.handleChange(row, this.state.checked[row] !== undefined ? !this.state.checked[row] : true)}
+                          icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                          checkedIcon={<CheckBoxIcon fontSize="small" />}
+                        />
+                        <ListItemText>
+                          <Typography variant=""
+                            className={`filter-mbl-font ${classes.colorMain}`}>{row}
+                          </Typography>
+                        </ListItemText>
+                      </ListItem>
+                    ))}
+                  </Grid>
+                }
               </Grid>
 
               {/* <Grid container item xs={12} className="filterButtonMobile" justify="flex-end">
@@ -400,17 +400,17 @@ this.setState({numOne:numOnee, numTwo:numTwoo})
                     </Button>
                 </Paper>    
               </Grid> */}
-       <AppBar color="primary" className="filter-fixed header" >
-           <Grid container item xs={12} justify="flex-end" alignItems="center">
-              <Grid item xs={6}>
-                
+              <AppBar color="primary" className="filter-fixed header" >
+                <Grid container item xs={12} justify="flex-end" alignItems="center">
+                  <Grid item xs={6}>
+
                     <Button variant='contained' className={`filterBtnMobile`}>
                       Apply
                     </Button>
-              </Grid>
-           </Grid>
+                  </Grid>
+                </Grid>
 
-            </AppBar> 
+              </AppBar>
             </Grid>
 
 

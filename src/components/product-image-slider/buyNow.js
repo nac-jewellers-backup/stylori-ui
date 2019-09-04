@@ -50,7 +50,7 @@ const Buydetails = () => {
                         <Grid item xs={4} style={{ marginRight: "15px" }}>
                             <Buynowbutton class="buynow-button" button='buynow-btn-cont' />
                         </Grid>
-                        <Grid xs={7} style={{ marginTop: "10px" }}>
+                        <Grid xs={7} style={{ marginTop: "7px" }}>
                             <Grid container spacing={12}>
                                 <Grid item xs={3} className='buy-subheaders'>Need Help ?</Grid>
                             </Grid>
