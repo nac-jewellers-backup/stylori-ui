@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import {
   Slide, AppBar, Toolbar, List, Typography, Divider, IconButton, ListItem,
-  Grid, TextField, ListItemText, Button, Checkbox, Paper, Hidden
+  Grid, TextField, ListItemText, Button, Checkbox, Paper, Hidden, Container
 }
   from '@material-ui/core';
 import { ExpandLess, ExpandMore, } from '@material-ui/icons';
@@ -110,8 +110,8 @@ class PersistentDrawerLeft extends React.Component {
       check: true,
       numOne: '',
       numTwo: '',
-      showMore:4,
-      
+      showMore: 4,
+
       chipData: [
         { key: '', label: '' },
       ],
@@ -292,7 +292,7 @@ class PersistentDrawerLeft extends React.Component {
                         {
                           <>
                             {
-                              filterdatas.filter.map((row,i) => {
+                              filterdatas.filter.map((row, i) => {
 
                                 return (
                                   <>
@@ -313,51 +313,51 @@ class PersistentDrawerLeft extends React.Component {
 
                                         <>
                                           {
-                                            filterdatas.filter1[row].filter((row12,i)=> 
-                                            ( i < (this.state[`li_${row}`]  ?  this.state[`li_${row}`] : 4  ))).map(row12 => {
-                                              return (<div>
+                                            filterdatas.filter1[row].filter((row12, i) =>
+                                              (i < (this.state[`li_${row}`] ? this.state[`li_${row}`] : 4))).map(row12 => {
+                                                return (<div>
 
-                                                <ListItem key={row12}  >   {/* button */}
-                                                  <Checkbox
-                                                    checked={this.state.checked[row12] !== undefined ? this.state.checked[row12] : false}
-                                                    onChange={() => this.handleChange(row12, this.state.checked[row12] !== undefined ? !this.state.checked[row12] : true)}
-                                                    className="fil-submenu-icons"
-                                                    value="checked"
-                                                    color="primary"
-                                                  />
-                                                  <ListItemText>
-                                                    <Typography variant=""
-                                                      className={`fil-submenu-list ${classes.colorMain}`}>{row12}
-                                                    </Typography>
-                                                  </ListItemText>
-                                                </ListItem>
-                                              </div>);
-                                            }
+                                                  <ListItem key={row12}  >   {/* button */}
+                                                    <Checkbox
+                                                      checked={this.state.checked[row12] !== undefined ? this.state.checked[row12] : false}
+                                                      onChange={() => this.handleChange(row12, this.state.checked[row12] !== undefined ? !this.state.checked[row12] : true)}
+                                                      className="fil-submenu-icons"
+                                                      value="checked"
+                                                      color="primary"
+                                                    />
+                                                    <ListItemText>
+                                                      <Typography variant=""
+                                                        className={`fil-submenu-list ${classes.colorMain}`}>{row12}
+                                                      </Typography>
+                                                    </ListItemText>
+                                                  </ListItem>
+                                                </div>);
+                                              }
 
-                                            )
+                                              )
 
                                           }
 
                                           {
-                                            (filterdatas.filter1[row].length)-4 !== 0 &&
+                                            (filterdatas.filter1[row].length) - 4 !== 0 &&
                                             <>
-                                            {this.state[`li_${row}`] === undefined || this.state[`li_${row}`] === 4  ?
-                                            
-                                          <div onClick={()=>this.setState({[`li_${row}`]:filterdatas.filter1[row].length})}
-                                          className="fil-submenu-icons"
+                                              {this.state[`li_${row}`] === undefined || this.state[`li_${row}`] === 4 ?
 
-                                          >
-                                         <p style={{fontSize: '14px',paddingLeft:'16px',paddingRight:'16px',color:'rgba(241, 72, 128, 1)',cursor:'pointer'}}>
-                                        +&nbsp;{(filterdatas.filter1[row].length)-4} More  
-                                           </p> 
-                                          </div>
-                                          :
-                                          <div   className="fil-submenu-icons" onClick={()=>this.setState({[`li_${row}`]:4})}>
-                                          <p style={{fontSize: '14px',paddingLeft:'16px',paddingRight:'16px',color:'rgba(241, 72, 128, 1)',cursor:'pointer'}}>Show Less</p>
-                                          </div>}
-                                          </>
-                                        }
-                                          
+                                                <div onClick={() => this.setState({ [`li_${row}`]: filterdatas.filter1[row].length })}
+                                                  className="fil-submenu-icons"
+
+                                                >
+                                                  <p style={{ fontSize: '14px', paddingLeft: '16px', paddingRight: '16px', color: 'rgba(241, 72, 128, 1)', cursor: 'pointer' }}>
+                                                    +&nbsp;{(filterdatas.filter1[row].length) - 4} More
+                                           </p>
+                                                </div>
+                                                :
+                                                <div className="fil-submenu-icons" onClick={() => this.setState({ [`li_${row}`]: 4 })}>
+                                                  <p style={{ fontSize: '14px', paddingLeft: '16px', paddingRight: '16px', color: 'rgba(241, 72, 128, 1)', cursor: 'pointer' }}>Show Less</p>
+                                                </div>}
+                                            </>
+                                          }
+
 
                                         </>
 
@@ -402,15 +402,15 @@ class PersistentDrawerLeft extends React.Component {
             <div style={{ height: "23px", padding: "9px", borderBottom: "1px solid #e3e3e3", display: openMobile ? 'none' : 'block', position: 'sticky', top: '0px' }}
               className={`${classes.colorMain}`}
             >
-              <button onClick={this.handleDrawerCloseMobile} style={{background: 'none',border: 'none',fontWeight: '600',color: 'rgba(58, 69, 120, 1)',padding: '6px 8px'}}>
+              <button onClick={this.handleDrawerCloseMobile} style={{ background: 'none', border: 'none', fontWeight: '600', color: 'rgba(58, 69, 120, 1)', padding: '6px 8px' }}>
                 <i className={`fa fa-times ${classes.colorMain}`} ></i>&nbsp;
                  Filter</button>
               <Button style={{ float: "right", border: '1px solid #ececec', lineHeight: "15px" }} className={`${classes.colorMain}`}> <b >Clear All</b></Button>
 
             </div>
 
-            <Grid container spacing={2} xs={12} className="p" style={{ overflow: 'scroll', height: '100%', display: openMobile ? 'none' : 'block' }}>
-              <Grid container item xs={12}>
+            <Grid container  xs={12} className="p" style={{ overflow: 'scroll', height: '100%', display: openMobile ? 'none' : 'block' }}>
+              <Grid container item xs={12} >
                 <Grid item xs={6} style={{ backgroundColor: "#F2F2F2", overflow: 'scroll', height: '73vh' }}>
                   <List className="mbl-filter-list">
                     {filterdatas.filter.map(row => (
@@ -464,7 +464,7 @@ class PersistentDrawerLeft extends React.Component {
                 </Paper>    
               </Grid> */}
               <AppBar color="primary" className="filter-fixed header" >
-                <Grid container item xs={12} justify="flex-end" alignItems="center">
+                <Grid container item xs={12} justify="flex-end" alignItems="center" style={{padding:'2%'}}>
                   <Grid item xs={6}>
 
                     <Button variant='contained' className={`filterBtnMobile`}>
@@ -479,8 +479,10 @@ class PersistentDrawerLeft extends React.Component {
 
 
             <AppBar color="primary" className="filter-fixed header" style={{ display: !openMobile ? 'none' : 'block' }}>
-              <Toolbar >
-                <div onClick={this.handleDrawerOpenMobile}>
+            <Container>
+            <Container>
+              <Toolbar  >
+              <div onClick={this.handleDrawerOpenMobile}>
                   <Typography variant=""
                     className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-filter"
 
@@ -497,7 +499,12 @@ class PersistentDrawerLeft extends React.Component {
                     Sort
                     </Typography>
                 </IconButton>
+            
+                  
+             
               </Toolbar>
+              </Container>
+              </Container>
             </AppBar>
 
 

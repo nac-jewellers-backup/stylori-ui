@@ -11,7 +11,7 @@
 
   margin: 0px;
 
-  background-color: rgb(242, 242, 242) !important;
+  background-color: whitesmoke !important;
   text-align: center;
 }
 .cardSortSmallScreen label {
@@ -21,5 +21,5 @@
   font-size: 12px;
   font-family: Roboto;
 
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #cccccc5c;
 }
