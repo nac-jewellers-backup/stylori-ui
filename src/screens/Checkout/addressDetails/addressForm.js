@@ -30,7 +30,8 @@ class Addressform extends React.Component {
 
     handleSubmit = (e) => {
         // e.preventDefault();
-    }
+    } 
+    
     myFunction = () => {
         // if (document.getElementById('myCheck').checked) {
         //     document.getElementById('text').style.display = 'block';
