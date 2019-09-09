@@ -160,6 +160,14 @@
   background-color: #394578 !important;
   color: #fff !important;
 }
+.mbl-filter-list :hover span{
+  background-color: #394578 !important;
+  color: #fff !important;
+}
+.mbl-filter-list :hover {
+  background-color: #394578 !important;
+  color: #fff !important;
+}
 
 .filter-fixed {
   height: 45px !important;

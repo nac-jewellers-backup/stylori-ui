@@ -343,17 +343,17 @@ class PersistentDrawerLeft extends React.Component {
                                             <>
                                             {this.state[`li_${row}`] === undefined || this.state[`li_${row}`] === 4  ?
                                             
-                                          <div id={i} onClick={()=>this.setState({[`li_${row}`]:filterdatas.filter1[row].length})}
+                                          <div onClick={()=>this.setState({[`li_${row}`]:filterdatas.filter1[row].length})}
                                           className="fil-submenu-icons"
 
                                           >
-                                         <p style={{fontSize: '14px',paddingLeft:'16px',paddingRight:'16px',color:'rgba(241, 72, 128, 1)'}}>
+                                         <p style={{fontSize: '14px',paddingLeft:'16px',paddingRight:'16px',color:'rgba(241, 72, 128, 1)',cursor:'pointer'}}>
                                         +&nbsp;{(filterdatas.filter1[row].length)-4} More  
                                            </p> 
                                           </div>
                                           :
-                                          <div style={{fontSize: '14px',paddingLeft:'16px',paddingRight:'16px',color:'rgba(241, 72, 128, 1)'}} name={i} onClick={()=>this.setState({[`li_${row}`]:4})}>
-                                          Show Less
+                                          <div   className="fil-submenu-icons" onClick={()=>this.setState({[`li_${row}`]:4})}>
+                                          <p style={{fontSize: '14px',paddingLeft:'16px',paddingRight:'16px',color:'rgba(241, 72, 128, 1)',cursor:'pointer'}}>Show Less</p>
                                           </div>}
                                           </>
                                         }
@@ -402,9 +402,9 @@ class PersistentDrawerLeft extends React.Component {
             <div style={{ height: "23px", padding: "9px", borderBottom: "1px solid #e3e3e3", display: openMobile ? 'none' : 'block', position: 'sticky', top: '0px' }}
               className={`${classes.colorMain}`}
             >
-              <a onClick={this.handleDrawerCloseMobile} href="#123">
+              <button onClick={this.handleDrawerCloseMobile} style={{background: 'none',border: 'none',fontWeight: '600',color: 'rgba(58, 69, 120, 1)',padding: '6px 8px'}}>
                 <i className={`fa fa-times ${classes.colorMain}`} ></i>&nbsp;
-                 Filter</a>
+                 Filter</button>
               <Button style={{ float: "right", border: '1px solid #ececec', lineHeight: "15px" }} className={`${classes.colorMain}`}> <b >Clear All</b></Button>
 
             </div>
@@ -431,7 +431,7 @@ class PersistentDrawerLeft extends React.Component {
                 {
                   this.state.filtercheck !== '' &&
                   <Grid item xs={6} style={{ overflow: 'scroll', height: '73vh' }}>
-                    {filterdatas.filter1[this.state.filtercheck].filter((row, i) => i < 4).map(row => {
+                    {filterdatas.filter1[this.state.filtercheck].map(row => {
 
                       return (
 
