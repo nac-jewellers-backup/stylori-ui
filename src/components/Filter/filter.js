@@ -13,8 +13,7 @@ import ProductLayout from '../ProductCard/ProductLayout';
 import FilterHeader from './FilterHeader';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CardRadioButton from '../InputComponents/RadioButton/index';
-import { Input } from '../../components/InputComponents/TextField/Input'
+import CardRadioButton from '../InputComponents/RadioButton/index'
 import { isUndefined } from 'util';
 const drawerWidth = 280;
 
@@ -111,6 +110,8 @@ class PersistentDrawerLeft extends React.Component {
       check: true,
       numOne: '',
       numTwo: '',
+      showMore:4,
+      
       chipData: [
         { key: '', label: '' },
       ],
@@ -254,11 +255,11 @@ class PersistentDrawerLeft extends React.Component {
 
                     <Divider />
                     <List className="fil-main-list">
-                      <div className="fil-list-items">
+                      <div style={{ margin: "5px" }}>
                         <Typography className="fil-list-items">Price</Typography>
                         <Grid container spacing={12} style={{ paddingLeft: "5px" }}   >
                           <Grid item xs={4} >
-                            <Input
+                            <TextField
                               onChange={(e) => { this.setState({ numOne: e.target.value }) }}
                               onKeyPress={(e) => { this.txtFieldChange(e) }}
                               name="numOne"
@@ -269,8 +270,8 @@ class PersistentDrawerLeft extends React.Component {
                               variant="outlined"
                             />
                           </Grid>&nbsp;
-                     <Grid item xs={4}>
-                            <Input
+             <Grid item xs={4}>
+                            <TextField
                               onChange={(e) => { this.setState({ numTwo: e.target.value }) }}
                               onKeyPress={(e) => { this.txtFieldChange(e) }}
                               name="numTwo"
@@ -281,46 +282,101 @@ class PersistentDrawerLeft extends React.Component {
                               variant="outlined"
                             />
                           </Grid>&nbsp;
-                         <Grid item xs={3}>
+            <Grid item xs={3}>
                             <Button variant="contained" className={`price-btn ${classes.colorMainBackground}`} onClick={() => this.onCurrencyChange()}>Go</Button>
                           </Grid>
                         </Grid>
                       </div>
-                      {filterdatas.filter.map(row => (
-                        <>
-                          {/* button */}  <ListItem key={row} className=""
-                            onClick={() => this.selectItem(row)}>
-                            <ListItemText
-                            >
-                              <Typography className="fil-list-items"
-                              >{row}
-                              </Typography>
-                            </ListItemText>
-                            {row === selected ? <ExpandMore className="fil-drawer-arrow" /> :
-                              <ExpandLess className="fil-drawer-arrow" />}
-                          </ListItem>
-                          <div > {/* style={{ maxHeight: '200px', overflow: 'auto' }} */}
-                            {selected === row &&
-                              filterdatas.filter1[row] !== undefined && filterdatas.filter1[row].map(row12 => (
-                                <ListItem key={row12}  >   {/* button */}
-                                  <Checkbox
-                                    checked={this.state.checked[row12] !== undefined ? this.state.checked[row12] : false}
-                                    onChange={() => this.handleChange(row12, this.state.checked[row12] !== undefined ? !this.state.checked[row12] : true)}
-                                    className="fil-submenu-icons"
-                                    value="checked"
-                                    color="primary"
-                                  />
-                                  <ListItemText>
-                                    <Typography variant=""
-                                      className={`fil-submenu-list ${classes.colorMain}`}>{row12}
-                                    </Typography>
-                                  </ListItemText>
-                                </ListItem>
-                              ))
+                      {/* filter */}
+                      <div>
+                        {
+                          <>
+                            {
+                              filterdatas.filter.map((row,i) => {
+
+                                return (
+                                  <>
+                                    <ListItem key={row} className=""
+                                      onClick={() => this.selectItem(row)}>
+                                      <ListItemText
+                                      >
+                                        <Typography className="fil-list-items" variant='h4' component="h4"
+                                        >{row}
+                                        </Typography>
+                                      </ListItemText>
+                                      {row === selected ? <ExpandMore className="fil-drawer-arrow" /> :
+                                        <ExpandLess className="fil-drawer-arrow" />}
+                                    </ListItem>
+                                    <>
+                                      {(selected === row &&
+                                        filterdatas.filter1[row] !== undefined) &&
+
+                                        <>
+                                          {
+                                            filterdatas.filter1[row].filter((row12,i)=> 
+                                            ( i < (this.state[`li_${row}`]  ?  this.state[`li_${row}`] : 4  ))).map(row12 => {
+                                              return (<div>
+
+                                                <ListItem key={row12}  >   {/* button */}
+                                                  <Checkbox
+                                                    checked={this.state.checked[row12] !== undefined ? this.state.checked[row12] : false}
+                                                    onChange={() => this.handleChange(row12, this.state.checked[row12] !== undefined ? !this.state.checked[row12] : true)}
+                                                    className="fil-submenu-icons"
+                                                    value="checked"
+                                                    color="primary"
+                                                  />
+                                                  <ListItemText>
+                                                    <Typography variant=""
+                                                      className={`fil-submenu-list ${classes.colorMain}`}>{row12}
+                                                    </Typography>
+                                                  </ListItemText>
+                                                </ListItem>
+                                              </div>);
+                                            }
+
+                                            )
+
+                                          }
+
+                                          {
+                                            (filterdatas.filter1[row].length)-4 !== 0 &&
+                                            <>
+                                            {this.state[`li_${row}`] === undefined || this.state[`li_${row}`] === 4  ?
+                                            
+                                          <div id={i} onClick={()=>this.setState({[`li_${row}`]:filterdatas.filter1[row].length})}
+                                          className="fil-submenu-icons"
+
+                                          >
+                                         <p style={{fontSize: '14px',paddingLeft:'16px',paddingRight:'16px',color:'rgba(241, 72, 128, 1)'}}>
+                                        +&nbsp;{(filterdatas.filter1[row].length)-4} More  
+                                           </p> 
+                                          </div>
+                                          :
+                                          <div style={{fontSize: '14px',paddingLeft:'16px',paddingRight:'16px',color:'rgba(241, 72, 128, 1)'}} name={i} onClick={()=>this.setState({[`li_${row}`]:4})}>
+                                          Show Less
+                                          </div>}
+                                          </>
+                                        }
+                                          
+
+                                        </>
+
+
+                                      }
+
+                                    </>
+                                  </>
+
+                                )
+
+                              }
+
+                              )
                             }
-                          </div>
-                        </>
-                      ))}
+                          </>
+                        }
+                      </div>
+                      {/* filter Ends */}
                     </List>
                   </Paper>
                 </div>
@@ -350,6 +406,7 @@ class PersistentDrawerLeft extends React.Component {
                 <i className={`fa fa-times ${classes.colorMain}`} ></i>&nbsp;
                  Filter</a>
               <Button style={{ float: "right", border: '1px solid #ececec', lineHeight: "15px" }} className={`${classes.colorMain}`}> <b >Clear All</b></Button>
+
             </div>
 
             <Grid container spacing={2} xs={12} className="p" style={{ overflow: 'scroll', height: '100%', display: openMobile ? 'none' : 'block' }}>
