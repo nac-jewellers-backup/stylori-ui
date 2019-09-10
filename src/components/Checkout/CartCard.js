@@ -18,7 +18,6 @@ const styles = theme => ({
         [theme.breakpoints.down('xs')]: {
             width: "100%",
             overflowX: "auto",
-
         },
         [theme.breakpoints.up('lg')]: {
             width: "100%",

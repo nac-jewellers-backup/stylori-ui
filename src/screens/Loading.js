@@ -1,8 +1,9 @@
 import React from 'react';
+import './screens.css'
 
 export const Loading = (
-    <div>
-        Loading Page
+    <div className="loader">
+        <div id="loading"></div>
     </div>
 )
 

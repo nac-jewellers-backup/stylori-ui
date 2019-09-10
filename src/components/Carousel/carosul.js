@@ -26,7 +26,7 @@ class Slideshow extends React.Component {
   
 
   imagehoverchildrens = (hoverlist) => {
-
+ 
     let { hover } = this.props;
     return hoverlist.map(val => (
       <div class={"subslider-carousel" + hover ? " hovereffect" : ""}>

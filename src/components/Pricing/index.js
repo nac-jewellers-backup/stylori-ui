@@ -47,8 +47,6 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-
-
 export default function Pricing(props) {
     const classes = useStyles();
     return (

@@ -10,7 +10,8 @@ const useStyles = makeStyles(theme => ({
   card: {
     width: "100%",
     margin: "auto",
-    display: "flex"
+    display: "flex",
+    marginBottom:"15px"
   },
   details: {
     display: "flex",

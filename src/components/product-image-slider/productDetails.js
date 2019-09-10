@@ -19,51 +19,50 @@ class ProductDetails extends React.Component {
     productsDetails = () => {
         return (
             <div>
-                <Container>
-                    <Grid container spacing={12} >
+                <Grid container spacing={12} style={{ paddingRight: "20px" }}>
 
-                        {data.productsDetails.map(val => (
-                            <>
-                                <div className='overall-boxz'>
-                                    <div className='overall-bo'>
-                                        <span key={val.name} className="product-details">{val.header}</span>
-                                        <hr class="bottom-line"></hr>
-                                        <>{
-                                            val.namedetail !== undefined && val.namedetail.map(res =>
-                                                <Grid container item xs={12} >
-                                                    <Grid xs={6}>
-                                                        <ListItemText variant='' className="product-subhead">
-                                                            <span style={{ fontSize: "12px" }}> {res.name}</span>
-                                                        </ListItemText>
-                                                    </Grid>
-                                                    <Grid xs={6}>
-                                                        <ListItemText variant='' className="product-subhead-list">
-                                                            <span style={{ fontSize: "12px" }}> {res.details}</span>
-                                                        </ListItemText>
-                                                    </Grid>
+                    {data.productsDetails.map(val => (
+                        <>
+                            <div className='overall-boxz'>
+                                <div className='overall-bo'>
+                                    <span key={val.name} className="product-details">{val.header}</span>
+                                    <hr class="bottom-line"></hr>
+                                    <>{
+                                        val.namedetail !== undefined && val.namedetail.map(res =>
+                                            <Grid container item xs={12} >
+                                                <Grid xs={6}>
+                                                    <ListItemText variant='' className="product-subhead">
+                                                        <span style={{ fontSize: "12px" }}> {res.name}</span>
+                                                    </ListItemText>
                                                 </Grid>
-                                            )}</>
-                                    </div>
+                                                <Grid xs={6}>
+                                                    <ListItemText variant='' className="product-subhead-list">
+                                                        <span style={{ fontSize: "12px" }}> {res.details}</span>
+                                                    </ListItemText>
+                                                </Grid>
+                                            </Grid>
+                                        )}</>
                                 </div>
-                            </>
-                        ))}
-                    </Grid>
-                    <Grid container spacing={12} >
-                        {data.productsPendants.map(val => (
-                            <>
-                                <div className='overall-boxz'>
-                                    <div className='overall-bo'>
-                                        <span key={val.name} className="product-details">{val.header}</span>
-                                        <hr class="bottom-line"></hr>
-                                        <Grid item xs={12} className="product-subhead">
-                                            <span style={{ fontSize: "12px" }}>{val.name.join(' ')}</span>
-                                        </Grid>
-                                    </div>
+                            </div>
+                        </>
+                    ))}
+                </Grid>
+                <Grid container spacing={12} style={{ paddingRight: "20px" }}>
+                    {data.productsPendants.map(val => (
+                        <>
+                            <div className='overall-boxz'>
+                                <div className='overall-bo'>
+                                    <span key={val.name} className="product-details">{val.header}</span>
+                                    <hr class="bottom-line"></hr>
+                                    <Grid item xs={12} className="product-subhead">
+                                        <span style={{ fontSize: "12px" }}>{val.name.join(' ')}</span>
+                                    </Grid>
                                 </div>
-                            </>
-                        ))}
-                    </Grid>
-                </Container>  </div>
+                            </div>
+                        </>
+                    ))}
+                </Grid>
+            </div>
         )
     };
     mobileproductsDetails = () => {

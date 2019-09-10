@@ -41,7 +41,6 @@ class Register extends React.Component {
                         <Grid item lg={1} />
                         <Grid item xs={12} lg={6}>
                             <h5 className='title'>  New user registration  </h5>
-
                             <Input
                                 margin="normal"
                                 variant="outlined"
@@ -74,7 +73,7 @@ class Register extends React.Component {
                             />
                             <Grid container spacing={12}>
                                 <Grid item lg={4} xs={4}>
-                                    <SimpleSelect age={"ll"} name={'Mr'} selectData={['Mr', 'Mrs', 'Miss']} />
+                                    <SimpleSelect  name={'Mr'} selectData={['Mr', 'Mrs', 'Miss']} />
                                 </Grid>
                                 <Grid item lg={4} xs={4}>
                                     <Input
@@ -86,6 +85,7 @@ class Register extends React.Component {
                                         // error={this.state.confPassword ? this.state.confPassword : "**"}
                                         placeholder="Confirm Password"
                                         onChange={event => this.handleChange(event, 'confPassword')}
+                                        className='text-f'
                                     />
                                 </Grid>
                                 <Grid item lg={4} xs={4}>
@@ -98,6 +98,7 @@ class Register extends React.Component {
                                         // error={this.state.confPassword ? this.state.confPassword : "**"}
                                         placeholder="Confirm Password"
                                         onChange={event => this.handleChange(event, 'confPassword')}
+                                        className='text-f'
                                     />
                                 </Grid>
                             </Grid>

@@ -28,7 +28,7 @@ function TabContainer({ children, dir }) {
 const styles = theme => ({
     pagination: {
         [theme.breakpoints.down('xs')]: {
-            width: "98%"
+            width: "100%"
         },
         [theme.breakpoints.up('lg')]: {
             paddingLeft: "50px",
@@ -125,7 +125,7 @@ class PriceTabs extends React.Component {
                                 </Grid>
                             </TabContainer>
                             <TabContainer >
-                            <Grid container spacing={12}>
+                                <Grid container spacing={12}>
                                     {val.tab3.Children.map(val =>
                                         <Grid xs={4}>
                                             <div style={{ width: "100%" }}>
@@ -150,88 +150,88 @@ class PriceTabs extends React.Component {
         return (
             <>
                 {H.productstabs.map(val =>
-                <Container>
-                    <>
+                    <Container>
                         <>
-                            <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
-                                style={{ boxShadow: "none", backgroundColor: "none" }}>
-                                <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
-                                    <div style={{ width: "100%" }} >
-                                        <Typography className='subtabs'>{val.tab1.header}</Typography>
-                                        <hr class="bottom-line border-line-"></hr>
-                                    </div>
-                                </ExpansionPanelSummary>
-                                <ExpansionPanelDetails style={{ padding: "8px 24px 0px" }}>
-                                    <div className={classes.pagination} >
-                                        <Slideshow dataCarousel={settings} >
-                                            {val.tab1.Children.map(val =>
-                                                <div class={classes.pagination}
-                                                >
-                                                    <button
-                                                        className="page dark"
-                                                        value={val} id={val}
-                                                        onClick={event => this.handleClick(event)}
+                            <>
+                                <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
+                                    style={{ boxShadow: "none", backgroundColor: "none" }}>
+                                    <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
+                                        <div style={{ width: "100%" }} >
+                                            <Typography className='subtabs'>{val.tab1.header}</Typography>
+                                            <hr class="bottom-line border-line-"></hr>
+                                        </div>
+                                    </ExpansionPanelSummary>
+                                    <ExpansionPanelDetails style={{ padding: "8px 24px 0px" }}>
+                                        <div className={classes.pagination} >
+                                            <Slideshow dataCarousel={settings} >
+                                                {val.tab1.Children.map(val =>
+                                                    <div class={classes.pagination}
                                                     >
-                                                        {val}
-                                                    </button>
-                                                </div>
-                                            )}
-                                        </Slideshow>
-                                    </div>
-                                </ExpansionPanelDetails>
-                            </ExpansionPanel>
-                        </>
+                                                        <button
+                                                            className="page dark"
+                                                            value={val} id={val}
+                                                            onClick={event => this.handleClick(event)}
+                                                        >
+                                                            {val}
+                                                        </button>
+                                                    </div>
+                                                )}
+                                            </Slideshow>
+                                        </div>
+                                    </ExpansionPanelDetails>
+                                </ExpansionPanel>
+                            </>
 
-                        <>
-                            <ExpansionPanel expanded={expanded === val.tab2.header} onChange={this.handle(val.tab2.header)}
-                                style={{ boxShadow: "none", backgroundColor: "none" }}>
-                                <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
-                                    <div style={{ width: "100%" }} >
-                                        <Typography className='subtabs'>{val.tab2.header}</Typography>
-                                        <hr class="bottom-line border-line-"></hr>
-                                    </div>
-                                </ExpansionPanelSummary>
-                                <ExpansionPanelDetails style={{ padding: 0 }}>
-                                    {val.tab2.Children.map(val =>
-                                        <Grid container spacing={12}>
-                                            <Grid xs={12}>
-                                                <div>
-                                                    <img src={val.icon} style={{ width: '35px' }} alt="" />&nbsp;
+                            <>
+                                <ExpansionPanel expanded={expanded === val.tab2.header} onChange={this.handle(val.tab2.header)}
+                                    style={{ boxShadow: "none", backgroundColor: "none" }}>
+                                    <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
+                                        <div style={{ width: "100%" }} >
+                                            <Typography className='subtabs'>{val.tab2.header}</Typography>
+                                            <hr class="bottom-line border-line-"></hr>
+                                        </div>
+                                    </ExpansionPanelSummary>
+                                    <ExpansionPanelDetails style={{ padding: 0 }}>
+                                        {val.tab2.Children.map(val =>
+                                            <Grid container spacing={12}>
+                                                <Grid xs={12}>
+                                                    <div>
+                                                        <img src={val.icon} style={{ width: '35px' }} alt="" />&nbsp;
                                         <span className="tabs-contants">  {val.name}</span>
-                                                </div>
+                                                    </div>
 
+                                                </Grid>
                                             </Grid>
-                                        </Grid>
-                                    )}
-                                </ExpansionPanelDetails>
-                            </ExpansionPanel>
-                        </>
-                        <>
-                            <ExpansionPanel expanded={expanded === val.tab3.header} onChange={this.handle(val.tab3.header)}
-                                style={{ boxShadow: "none", backgroundColor: "none" }}>
-                                <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
-                                    <div style={{ width: "100%" }} >
-                                        <Typography className='subtabs'>{val.tab3.header}</Typography>
-                                        <hr class="bottom-line border-line-"></hr>
-                                    </div>
-                                </ExpansionPanelSummary>
-                                <ExpansionPanelDetails style={{ padding: 0 }}>
-                                    {val.tab3.Children.map(val =>
-                                        <Grid container spacing={12}>
-                                            <Grid xs={12}>
-                                                <div>
-                                                    <img src={val.icon} style={{ width: '35px' }} alt="" />&nbsp;
+                                        )}
+                                    </ExpansionPanelDetails>
+                                </ExpansionPanel>
+                            </>
+                            <>
+                                <ExpansionPanel expanded={expanded === val.tab3.header} onChange={this.handle(val.tab3.header)}
+                                    style={{ boxShadow: "none", backgroundColor: "none" }}>
+                                    <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
+                                        <div style={{ width: "100%" }} >
+                                            <Typography className='subtabs'>{val.tab3.header}</Typography>
+                                            <hr class="bottom-line border-line-"></hr>
+                                        </div>
+                                    </ExpansionPanelSummary>
+                                    <ExpansionPanelDetails style={{ padding: 0 }}>
+                                        {val.tab3.Children.map(val =>
+                                            <Grid container spacing={12}>
+                                                <Grid xs={12}>
+                                                    <div>
+                                                        <img src={val.icon} style={{ width: '35px' }} alt="" />&nbsp;
                                         <span className="tabs-contants">  {val.name}</span>
-                                                </div>
+                                                    </div>
 
+                                                </Grid>
                                             </Grid>
-                                        </Grid>
-                                    )}
-                                </ExpansionPanelDetails>
-                            </ExpansionPanel>
+                                        )}
+                                    </ExpansionPanelDetails>
+                                </ExpansionPanel>
+                            </>
                         </>
-                    </>
-                    </Container> )}
+                    </Container>)}
             </>
         )
     }

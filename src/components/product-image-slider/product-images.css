@@ -2,8 +2,6 @@
     .price-div {
         position: relative;
         min-height: 1px;
-        padding-right: 15px;
-        padding-left: 15px;
         font-size: 12px;
         color: #394578;
         line-height: 1.42857143 !important;
@@ -69,7 +67,7 @@
         color: #394578;
         line-height: 1.42857143;
         text-align: center !important;
-    }
+     }
 
     .discount-container {
         font-size: 12px;

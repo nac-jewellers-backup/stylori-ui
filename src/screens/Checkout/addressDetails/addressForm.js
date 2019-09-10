@@ -12,14 +12,25 @@ class Addressform extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     state = {
-        firstname: "",
-        lastname: "",
-        selectcountry: "",
-        zipcode: "",
-        address: "",
-        state: "",
-        City: "",
-        phonenumber: "",
+        adrs_firstname: "",
+        adrs_lastname: "",
+        adrs_selectcountry: "",
+        adrs_zipcode: "",
+        adrs_address: "",
+        adrs_state: "",
+        adrs_City: "",
+        adrs_phonenumber: "",
+        adrs_numcode: "",
+        bill_firstname: "",
+        bill_lastname: "",
+        bill_selectcountry: "",
+        bill_zipcode: "",
+        bill_address: "",
+        bill_state: "",
+        bill_City: "",
+        bill_phonenumber: "",
+        bill_numcode: "",
+        bill_isNumber: false,
         // checked:false
     }
 
@@ -33,13 +44,18 @@ class Addressform extends React.Component {
     handleSubmit = (e) => {
         // e.preventDefault();
     }
+    handleKeyPress = (e, isNumber) => {
+        if (isNumber) {
+            if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
+        }
+    };
 
     render() {
         const hidden_chk1 = this.state.checked ? 'hidden' : '';
         return (
             <Container>
                 <div className='pt-sm'>
-                    <form action="javascript:void(0)" onSubmit={this.handleSubmit()}>
+                    <form onSubmit={this.handleSubmit()}>
                         <h5 className='title'> Shipping Address</h5>
                         <p class="form-group tp" >
                             <Checkboxes CheckBoxValues={['0']} />
@@ -52,23 +68,23 @@ class Addressform extends React.Component {
                                     </Grid>
                                     <Grid item xs={4} lg={4}>
                                         <Input
-                                            name="firstname"
+                                            name="adrs_firstname"
                                             className='text-f'
                                             type="text"
-                                            value={this.state.firstname}
+                                            value={this.state.adrs_firstname}
                                             placeholder="First name"
                                             required
-                                            onChange={(event) => this.handleChange(event, "firstname")}
+                                            onChange={(event) => this.handleChange(event, "adrs_firstname")}
                                         />
                                     </Grid>
                                     <Grid item xs={4} lg={4}>
                                         <Input
                                             className='text-f'
                                             type="text"
-                                            name="lastname"
-                                            value={this.state.lastname}
+                                            name="adrs_lastname"
+                                            value={this.state.adrs_lastname}
                                             placeholder="Last name"
-                                            onChange={(event) => this.handleChange(event, "lastname")}
+                                            onChange={(event) => this.handleChange(event, "adrs_lastname")}
                                         />
                                     </Grid>
                                 </Grid>
@@ -80,10 +96,11 @@ class Addressform extends React.Component {
                                         <Input
                                             className='text-f'
                                             type="text"
-                                            name='zipcode'
+                                            name='adrs_zipcode'
                                             placeholder="Pin Code/Zip Code"
-                                            onChange={(event) => this.handleChange(event, "zipcode")}
-                                            value={this.state.zipcode}
+                                            onChange={(event) => this.handleChange(event, "adrs_zipcode")}
+                                            value={this.state.adrs_zipcode}
+                                            onKeyPress={(e) => this.handleKeyPress(e, "adrs_zipcode")}
                                         />
                                     </Grid>
                                 </Grid>
@@ -93,9 +110,9 @@ class Addressform extends React.Component {
                                             type="text"
                                             placeholder="Address *"
                                             required
-                                            name='address'
-                                            onChange={(event) => this.handleChange(event, "address")}
-                                            value={this.state.address}
+                                            name='adrs_address'
+                                            onChange={(event) => this.handleChange(event, "adrs_address")}
+                                            value={this.state.adrs_address}
 
                                         />
                                     </Grid>
@@ -106,20 +123,20 @@ class Addressform extends React.Component {
                                             style={{ float: "left" }}
                                             className='text-f'
                                             type="text"
-                                            name='state'
+                                            name='adrs_state'
                                             placeholder="State *"
-                                            onChange={(event) => this.handleChange(event, "state")}
-                                            value={this.state.state}
+                                            onChange={(event) => this.handleChange(event, "adrs_state")}
+                                            value={this.state.adrs_state}
                                         />
                                     </Grid>
                                     <Grid item xs={6} lg={6}>
                                         <Input
                                             className='text-f'
                                             type="text"
-                                            name='City'
-                                            placeholder="City *"
-                                            onChange={(event) => this.handleChange(event, "City")}
-                                            value={this.state.City}
+                                            name='adrs_City'
+                                            placeholder="adrs_City *"
+                                            onChange={(event) => this.handleChange(event, "adrs_City")}
+                                            value={this.state.adrs_City}
                                         />
                                     </Grid>
                                 </Grid>
@@ -129,6 +146,10 @@ class Addressform extends React.Component {
                                         <Input
                                             className='text-f'
                                             type="text"
+                                            name="adrs_numcode"
+                                            value={this.state.adrs_numcode}
+                                            onKeyPress={(e) => this.handleKeyPress(e, "adrs_numcode")}
+                                            onChange={(event) => this.handleChange(event, "adrs_numcode")}
                                             placeholder="+ 91"
                                         />
                                     </Grid>
@@ -136,10 +157,10 @@ class Addressform extends React.Component {
                                         <Input
                                             className='text-f'
                                             type="text"
-                                            name='phonenumber'
-                                            onChange={(event) => this.handleChange(event, "phonenumber")}
+                                            name='adrs_phonenumber'
+                                            onChange={(event) => this.handleChange(event, "adrs_phonenumber")}
                                             placeholder="Phone *"
-                                            value={this.state.phonenumber}
+                                            value={this.state.adrs_phonenumber}
                                         />
                                     </Grid>
                                 </Grid>
@@ -148,91 +169,107 @@ class Addressform extends React.Component {
                             {/*  */}
                             {/* <div value="Show/Hide" id='divMsg' style={{display:"none"}}> */}
                             <Grid container item lg={1} />
-                            <Grid item xs={12} lg={5} style={{ float: "right" }}>
-                                <div style={{ float: "right" }} >
-                                    <h5 className='title'>  Billing  address </h5>
-                                    <Grid container spacing={12}>
-                                        <Grid item xs={4} lg={4}>
-                                            <SimpleSelect name={['Select']} selectData={['one', 'tow']} />
-                                        </Grid>
-                                        <Grid item xs={4} lg={4}>
-                                            <Input
-                                                className='text-f'
-                                                type="text"
-                                                value={'3'}
-                                                required
-                                            />
-                                        </Grid>
-                                        <Grid item xs={4} lg={4}>
-                                            <Input
-                                                className='text-f'
-                                                type="text"
-                                                value={'23'}
-                                                required
-                                            />
-                                        </Grid>
+                            <Grid item xs={12} lg={5}>
+                                <Grid container spacing={12}>
+                                    <Grid item xs={4} lg={4}>
+                                        <SimpleSelect name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                     </Grid>
-                                    <Grid container spacing={12}>
-                                        <Grid item xs={6} lg={6}>
-                                            <SimpleSelect name={['India']} selectData={['India']} />
-                                        </Grid>
-                                        <Grid item xs={6} lg={6}>
-                                            <Input
-                                                className='text-f'
-                                                type="text"
-                                                placeholder="Pin Code/Zip Code"
-                                                required
-                                            />
-                                        </Grid>
+                                    <Grid item xs={4} lg={4}>
+                                        <Input
+                                            name="bill_firstname"
+                                            className='text-f'
+                                            type="text"
+                                            value={this.state.bill_firstname}
+                                            placeholder="First name"
+                                            onChange={(event) => this.handleChange(event, "bill_firstname")}
+                                        />
                                     </Grid>
-                                    <Grid container spacing={12}>
-                                        <Grid item xs={12} lg={12}>
-                                            <Input
-                                                type="text"
-                                                placeholder="Address *"
-                                                required
-                                            />
-                                        </Grid>
+                                    <Grid item xs={4} lg={4}>
+                                        <Input
+                                            className='text-f'
+                                            type="text"
+                                            name="bill_lastname"
+                                            value={this.state.bill_lastname}
+                                            placeholder="Last name"
+                                            onChange={(event) => this.handleChange(event, "bill_lastname")}
+                                        />
                                     </Grid>
-                                    <Grid container spacing={12}>
-                                        <Grid item xs={6} lg={6}>
-                                            <Input
-                                                style={{ float: "left" }}
-                                                className='text-f'
-                                                type="text"
-                                                placeholder="State *"
-                                                required
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6} lg={6}>
-                                            <Input
-                                                className='text-f'
-                                                type="text"
-                                                placeholder="City *"
-                                                required
-                                            />
-                                        </Grid>
+                                </Grid>
+                                <Grid container spacing={12}>
+                                    <Grid item xs={6} lg={6}>
+                                        <SimpleSelect name={['India']} selectData={['India']} />
                                     </Grid>
+                                    <Grid item xs={6} lg={6}>
+                                        <Input
+                                            className='text-f'
+                                            type="text"
+                                            name='bill_zipcode'
+                                            placeholder="Pin Code/Zip Code"
+                                            onChange={(event) => this.handleChange(event, "bill_zipcode")}
+                                            value={this.state.bill_zipcode}
+                                            onKeyPress={(e) => this.handleKeyPress(e, "bill_zipcode")}
+                                        />
+                                    </Grid>
+                                </Grid>
+                                <Grid container spacing={12}>
+                                    <Grid item xs={12} lg={12}>
+                                        <Input
+                                            type="text"
+                                            placeholder="Address *"
+                                            name='bill_address'
+                                            onChange={(event) => this.handleChange(event, "bill_address")}
+                                            value={this.state.bill_address}
 
-                                    <Grid container spacing={12}>
-                                        <Grid item xs={3} lg={3}>
-                                            <Input
-                                                className='text-f'
-                                                type="text"
-                                                placeholder="+ 91"
-                                                required
-                                            />
-                                        </Grid>
-                                        <Grid item xs={9} lg={9}>
-                                            <Input
-                                                className='text-f'
-                                                type="text"
-                                                placeholder="Phone *"
-                                                required
-                                            />
-                                        </Grid>
+                                        />
                                     </Grid>
-                                </div>
+                                </Grid>
+                                <Grid container spacing={12}>
+                                    <Grid item xs={6} lg={6}>
+                                        <Input
+                                            style={{ float: "left" }}
+                                            className='text-f'
+                                            type="text"
+                                            name='bill_state'
+                                            placeholder="State *"
+                                            onChange={(event) => this.handleChange(event, "bill_state")}
+                                            value={this.state.bill_state}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={6} lg={6}>
+                                        <Input
+                                            className='text-f'
+                                            type="text"
+                                            name='bill_City'
+                                            placeholder="City *"
+                                            onChange={(event) => this.handleChange(event, "bill_City")}
+                                            value={this.state.bill_City}
+                                        />
+                                    </Grid>
+                                </Grid>
+
+                                <Grid container spacing={12}>
+                                    <Grid item xs={3} lg={3}>
+                                        <Input
+                                            className='text-f'
+                                            type="text"
+                                            name="bill_numcode"
+                                            value={this.state.bill_numcode}
+                                            onKeyPress={(e) => this.handleKeyPress(e, "bill_numcode")}
+                                            onChange={(event) => this.handleChange(event, "bill_numcode")}
+                                            placeholder="+ 91"
+                                        />
+                                    </Grid>
+                                    <Grid item xs={9} lg={9}>
+                                        <Input
+                                            className='text-f'
+                                            type="text"
+                                            name='bill_phonenumber'
+                                            onChange={(event) => this.handleChange(event, "bill_phonenumber")}
+                                            placeholder="Phone *"
+                                            value={this.state.bill_phonenumber}
+                                        />
+                                    </Grid>
+                                </Grid>
                             </Grid>
                             {/* </div> */}
                         </Grid>
