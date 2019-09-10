@@ -51,7 +51,7 @@ export default class Stylori extends Component {
               </Grid>
             </Grid>
           </Container><br />
-          <div style={{ background: "#f1eeee" }}>
+          <div style={{ background: "whitesmoke" }}>
             <Container>
               <Grid container spacing={12}>
                 <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
