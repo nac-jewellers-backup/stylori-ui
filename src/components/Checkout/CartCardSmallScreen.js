@@ -4,7 +4,8 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-
+import { productsDetails } from '../product-image-slider/producthoverData';
+import { dataCard1 } from '../ProductCard/ProductData';
 const useStyles = makeStyles(theme => ({
   card: {
     width: "100%",
@@ -64,65 +65,71 @@ export default function MediaControlCard() {
   const theme = useTheme();
 
   return (
-    <Card className={classes.card}>
-      <div style={{ width: "195px" }}>
-        <img
-          src='http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg'
-          width="100%"
-          height="100%"
-          alt=""
-        />
-      </div>
-      <div className={classes.details}>
-        <CardContent className={classes.content}>
-          <Typography
-            component="div"
-            variant="subtitle1"
-            className={classes.contents}
-          >
-            Sunkissed Splendour Diamond Earrings
-          </Typography>
-          <label className={classes.labelPrice}>
+    <div>
+      {productsDetails.map(val => (
+        <Card className={classes.card}>
+          <div style={{ width: "195px" }}>
+            <img
+              src='http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg'
+              width="100%"
+              height="100%"
+              alt=""
+            />
+          </div>
+          <div className={classes.details}>
+            <CardContent className={classes.content}>
+              <Typography
+                component="div"
+                variant="subtitle1"
+                className={classes.contents}
+              >
+                {val.header}
+              </Typography>
+              {dataCard1.map(val =>
+                <label className={classes.labelPrice}>
+                  <Typography
+                    variant="subtitle1"
+                    color="textSecondary"
+                    className={classes.labelPriceDel}
+                  >
+                    <del>{val.offerPrice}</del>
+                  </Typography>
+                  &nbsp;
             <Typography
-              variant="subtitle1"
-              color="textSecondary"
-              className={classes.labelPriceDel}
-            >
-              <del>Rs 12,0003</del>
-            </Typography>
-            &nbsp;
-            <Typography
-              variant="subtitle1"
-              style={{ color: "#ed1165" }}
-              className={classes.labelPriceOff}
-            >
-              Rs 123,000
-            </Typography>
-          </label>
-        </CardContent>
-        <div className={classes.controls}>
-          <Button
-            variant="contained"
-            style={{
-              backgroundColor: "#f36e23",
-              color: "white",
-              fontSize: "0.7rem"
-            }}
-          >
-            Buy Now
+                    variant="subtitle1"
+                    style={{ color: "#ed1165" }}
+                    className={classes.labelPriceOff}
+                  >
+                    {val.price}
+                  </Typography>
+                </label>
+              )}
+            </CardContent>
+            <div className={classes.controls}>
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: "#f36e23",
+                  color: "white",
+                  fontSize: "0.7rem"
+                }}
+              >
+                Buy Now
           </Button>
-          <label
-            variant="contained"
-            style={{ color: "#394578", cursor: "pointer", fontSize: "0.9rem" }}
-          >
-            <i style={{ fontSize: "16px" }} class="fa">
-              &#xf014;
+              <label
+                variant="contained"
+                style={{ color: "#394578", cursor: "pointer", fontSize: "0.9rem" }}
+              >
+                <i style={{ fontSize: "16px" }} class="fa">
+                  &#xf014;
             </i>
-            &nbsp;
+                &nbsp;
             <span style={{ borderBottom: "1px solid #394578" }}>Remove</span>
-          </label>
-        </div>
-      </div>
-    </Card>
+              </label>
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
   );
 }

@@ -20,34 +20,29 @@ class Addressform extends React.Component {
         state: "",
         City: "",
         phonenumber: "",
+        // checked:false
     }
 
     handleChange(event, name) {
         this.setState({
-            [name]: event.target.value
+            [name]: event.target.value,
+            // checked: !this.state.checked
         })
     }
 
     handleSubmit = (e) => {
         // e.preventDefault();
-    } 
-    
-    myFunction = () => {
-        // if (document.getElementById('myCheck').checked) {
-        //     document.getElementById('text').style.display = 'block';
-        // } else {
-        //     document.getElementById('text').style.display = 'none';
-        // }
     }
 
     render() {
+        const hidden_chk1 = this.state.checked ? 'hidden' : '';
         return (
             <Container>
                 <div className='pt-sm'>
-                    <form onSubmit={this.handleSubmit()}>
+                    <form action="javascript:void(0)" onSubmit={this.handleSubmit()}>
                         <h5 className='title'> Shipping Address</h5>
                         <p class="form-group tp" >
-                            <Checkboxes id="myCheck" onclick={this.myFunction()} CheckBoxValues={['0']} />
+                            <Checkboxes CheckBoxValues={['0']} />
                             If your billing address is different from the shipping adress please uncheck the box to select billing address.</p>    <Grid container item xs={12} lg={12} >
                             <Grid item xs={12} lg={5}>
 
@@ -63,7 +58,7 @@ class Addressform extends React.Component {
                                             value={this.state.firstname}
                                             placeholder="First name"
                                             required
-                                            onChange={(event) => this.handleChange(event)}
+                                            onChange={(event) => this.handleChange(event, "firstname")}
                                         />
                                     </Grid>
                                     <Grid item xs={4} lg={4}>
@@ -73,7 +68,7 @@ class Addressform extends React.Component {
                                             name="lastname"
                                             value={this.state.lastname}
                                             placeholder="Last name"
-                                            onChange={(event) => this.handleChange(event)}
+                                            onChange={(event) => this.handleChange(event, "lastname")}
                                         />
                                     </Grid>
                                 </Grid>
@@ -87,7 +82,7 @@ class Addressform extends React.Component {
                                             type="text"
                                             name='zipcode'
                                             placeholder="Pin Code/Zip Code"
-                                            onChange={(event) => this.handleChange(event)}
+                                            onChange={(event) => this.handleChange(event, "zipcode")}
                                             value={this.state.zipcode}
                                         />
                                     </Grid>
@@ -99,7 +94,7 @@ class Addressform extends React.Component {
                                             placeholder="Address *"
                                             required
                                             name='address'
-                                            onChange={(event) => this.handleChange(event)}
+                                            onChange={(event) => this.handleChange(event, "address")}
                                             value={this.state.address}
 
                                         />
@@ -113,7 +108,7 @@ class Addressform extends React.Component {
                                             type="text"
                                             name='state'
                                             placeholder="State *"
-                                            onChange={(event) => this.handleChange(event)}
+                                            onChange={(event) => this.handleChange(event, "state")}
                                             value={this.state.state}
                                         />
                                     </Grid>
@@ -123,7 +118,7 @@ class Addressform extends React.Component {
                                             type="text"
                                             name='City'
                                             placeholder="City *"
-                                            onChange={(event) => this.handleChange(event)}
+                                            onChange={(event) => this.handleChange(event, "City")}
                                             value={this.state.City}
                                         />
                                     </Grid>
@@ -142,7 +137,7 @@ class Addressform extends React.Component {
                                             className='text-f'
                                             type="text"
                                             name='phonenumber'
-                                            onChange={(event) => this.handleChange(event)}
+                                            onChange={(event) => this.handleChange(event, "phonenumber")}
                                             placeholder="Phone *"
                                             value={this.state.phonenumber}
                                         />
@@ -154,7 +149,7 @@ class Addressform extends React.Component {
                             {/* <div value="Show/Hide" id='divMsg' style={{display:"none"}}> */}
                             <Grid container item lg={1} />
                             <Grid item xs={12} lg={5} style={{ float: "right" }}>
-                                <div style={{ float: "right" }} id="text" style={{ display: "none" }} >
+                                <div style={{ float: "right" }} >
                                     <h5 className='title'>  Billing  address </h5>
                                     <Grid container spacing={12}>
                                         <Grid item xs={4} lg={4}>

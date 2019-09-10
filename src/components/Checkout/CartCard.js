@@ -18,13 +18,13 @@ const styles = theme => ({
         [theme.breakpoints.down('xs')]: {
             width: "100%",
             overflowX: "auto",
-         
+
         },
         [theme.breakpoints.up('lg')]: {
             width: "100%",
-            border:"0.5px solid #ccc",
-            padding:"10px",
-            marginBottom:"20px"
+            border: "0.5px solid #ccc",
+            padding: "10px",
+            marginBottom: "20px"
         },
     },
 });
@@ -32,57 +32,57 @@ const styles = theme => ({
 
 
 const useStyles = makeStyles(theme => ({
-  card: {
-    width: "100%",
-    margin: "auto",
-    display: "flex"
-  },
-  details: {
-    display: "flex",
-    flexDirection: "column",
-    padding: "2%",
-    width: "100%"
-  },
-  content: {
-    flex: "1 0 auto",
-    padding: 0
-  },
-  cover: {
-    width: "30vw"
-  },
-  controls: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-around",
-    "& button": {
-      padding: "2.1px 13.8px"
+    card: {
+        width: "100%",
+        margin: "auto",
+        display: "flex"
     },
-    [theme.breakpoints.down("sm")]: {
-      "& button": {
-        padding: "1.1px 1.8px"
-      }
-    }
-  },
+    details: {
+        display: "flex",
+        flexDirection: "column",
+        padding: "2%",
+        width: "100%"
+    },
+    content: {
+        flex: "1 0 auto",
+        padding: 0
+    },
+    cover: {
+        width: "30vw"
+    },
+    controls: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-around",
+        "& button": {
+            padding: "2.1px 13.8px"
+        },
+        [theme.breakpoints.down("sm")]: {
+            "& button": {
+                padding: "1.1px 1.8px"
+            }
+        }
+    },
 
-  playIcon: {
-    height: 38,
-    width: 38
-  },
-  contents: {
-    fontSize: "0.8rem",
-    color: "#394578"
-  },
-  labelPrice: {
-    display: "flex"
-  },
-  labelPriceDel: {
-    fontSize: "0.8rem",
-    display: "flex",
-    alignItems: "center"
-  },
-  labelPriceOff: {
-    fontSize: "1.1rem"
-  }
+    playIcon: {
+        height: 38,
+        width: 38
+    },
+    contents: {
+        fontSize: "0.8rem",
+        color: "#394578"
+    },
+    labelPrice: {
+        display: "flex"
+    },
+    labelPriceDel: {
+        fontSize: "0.8rem",
+        display: "flex",
+        alignItems: "center"
+    },
+    labelPriceOff: {
+        fontSize: "1.1rem"
+    }
 }));
 class Checkoutcard extends React.Component {
     constructor(props) {
@@ -91,8 +91,8 @@ class Checkoutcard extends React.Component {
             cart: true
         }
     }
-    
-    
+
+
     // sortBy = (key) => {
     //     let arrayCopy = [...this.state.data];
     //     arrayCopy.sort(this.compareBy(key));
@@ -120,7 +120,7 @@ class Checkoutcard extends React.Component {
                                     // onClick={() => remove(id)}
                                     style={{ textDecoration: "none" }} href="#123"><div class="remove-product"></div></a>
                             </Grid>
-                            <Grid item  xs={2} >
+                            <Grid item xs={2} >
                                 <Card className="product-image-thumb">
                                     <CardHeader style={{ padding: "0px" }}
                                         action={
@@ -129,7 +129,7 @@ class Checkoutcard extends React.Component {
                                             </IconButton>
                                         }
                                     />
-                                    <Slideshow class="image" 
+                                    <Slideshow class="image"
                                         fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
                                 </Card>
                             </Grid>
@@ -188,7 +188,7 @@ class Checkoutcard extends React.Component {
     }
     subtotals = () => {
         return (
-            <div>
+            <div style={{marginTop:"10px"}} >
                 <Grid container spacing={12}>
                     <Grid item xs={3} lg={9} />
                     <Grid item xs={9} lg={3}>
@@ -222,14 +222,15 @@ class Checkoutcard extends React.Component {
 
         return (
             <div>
-               <Hidden smDown>
-{this.row()}
-               </Hidden>
-               <Hidden smUp>
-               <CardSmallScreen/>
-               </Hidden>
-                            
-                     
+                <Hidden smDown>
+                    {this.row()}
+                </Hidden>
+                <Hidden smUp>
+                    <CardSmallScreen />
+                    {this.subtotals()}
+                </Hidden>
+
+
             </div>
         )
     }

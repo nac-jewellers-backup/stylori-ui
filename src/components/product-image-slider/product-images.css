@@ -311,7 +311,7 @@
         border: 1px solid #c3c3c3;
         border-radius: 0px;
         box-shadow: none;
-        background-color: #f1f3f6;
+        /* background-color: #f1f3f6; */
     }
 
     .requset-button {
