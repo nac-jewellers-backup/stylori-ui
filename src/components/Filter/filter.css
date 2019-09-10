@@ -133,7 +133,7 @@
   color: #394578;
   cursor: pointer;
   font-family: sans-serif !important;
-  font-size: 12px !important;
+  font-size: 15px !important;
   font-weight: 600 !important;
 }
 
@@ -155,16 +155,26 @@
 .MuiGrid-spacing-xs-2 {
   margin-top: 0 !important;
 }
+/* .MuiGrid-spacing-xs-2 > .MuiGrid-item{
+  padding-top: 0px !important;
+} */
 
+.mbl-filter-list :hover {
+  background-color: #394578 !important;
+  color: #fff !important;
+}
+.mbl-filter-list :hover span{
+  background-color: #394578 !important;
+  color: #fff !important;
+}
 .mbl-filter-list :hover {
   background-color: #394578 !important;
   color: #fff !important;
 }
 
 .filter-fixed {
-  height: 45px !important;
   text-align: center;
-  background-color: #ebeaea !important;
+  background-color: whitesmoke !important;
   position: fixed !important;
   bottom: 0 !important;
   top: auto !important;
