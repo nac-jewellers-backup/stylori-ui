@@ -57,8 +57,11 @@ class Header extends Component {
       selected1: '',
       Checked: false,
       load:false,
-      listHoverItem: 'Jewellery'
+      listHoverItem: 'Jewellery',
+      headerHeightprops:0
+      
     }
+    this.topZero = React.createRef();
   }
   // componentDidMount(){
   //   let headerHeight =Number( document.getElementById('headers').style.offsetWidth);
@@ -91,6 +94,16 @@ class Header extends Component {
     let value = selected1 === name ? "" : name;
     this.setState({ selected1: value })
   }
+  headerTransitions =() =>{
+    document.getElementById('topNav').style.paddingTop="0";
+    document.getElementById('topNav').style.transition="0.5s";
+    // var heightHeader = document.getElementById('headerDiv').clientHeight;
+    
+    document.getElementById("SliderFilter").style.top = "185px";
+    document.getElementById('SliderFilter').style.transition="0.5s";
+    document.getElementById("filterBy").style.top = "120px";
+    document.getElementById('filterBy').style.transition="0.5s";
+  }
   render() {
     let { selected, selected1 } = this.state;
     const { classes } = this.props;
@@ -98,9 +111,10 @@ class Header extends Component {
     return (
       <div>
         <Hidden smDown >
-          <div className="header-appbar-sticky" >
-            <AppBar className="header-appbar">
-              <HeaderNotification />
+        <HeaderNotification headerTransition={()=>{this.headerTransitions()}} />
+
+          <div className="header-appbar-sticky" id='headerDiv'>
+            <AppBar className="header-appbar" id="topNav">
               <Grid container spacing={12}  >
                 <Grid item xs={3}>
                   <div className={`head-icons ${classes.colorMain}`} >
