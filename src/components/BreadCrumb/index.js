@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Paper, Breadcrumbs, Link, Container} from '@material-ui/core/';
+import { Paper, Breadcrumbs, Link, Container } from '@material-ui/core/';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 const useStyles = makeStyles(theme => ({
