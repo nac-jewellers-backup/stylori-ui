@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
   card: {
     minWidth: "80",
     maxWidth: "90%",
+    maxHeight:'auto',
     boxShadow: "none",
     padding: "0px",
     border: "1px solid #f5f5f5"
@@ -50,7 +51,14 @@ const handleClick = (name) => {
 
 }
 
-
+const renderImages = (props, cardstate) => {
+    const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
+    console.info('props.data.image[filterType]',props.data.image[filterType]);
+    return props.data.image[filterType].map(imgs=> `${imgs.img} ${imgs.size}`).toString()
+}
+const renderImagesSrc = (props) => {
+  return props.data.image['placeImage'].map(placeImage => placeImage.img )
+}
 export default function ProductCards(props) {
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
@@ -58,7 +66,8 @@ export default function ProductCards(props) {
     loaded: false,
     dataLoaded: true
   });
-
+  
+  // placeImage.placeImage.map(img => `${img.img} ${img.size}`).toString()
   return (
     <Card className={` ${classes.card}`} >
 
@@ -81,7 +90,7 @@ export default function ProductCards(props) {
       />
       <NavLink to="/pricingPage" style={{textDecoration:'none'}}>
       {/* <a href={} target={"_blank"} style={{ textDecoration: 'none' }}> */}
-        <CardMedia
+        {/* <CardMedia
           component='img'
           onMouseOver={() => {
             setCardState({ ...cardstate, hovered: !cardstate.hovered });
@@ -97,7 +106,31 @@ export default function ProductCards(props) {
           width='100%'
           height='auto'
           title={props.data.title}
-        />
+        /> */}
+<img 
+srcset={renderImages(props, cardstate)}
+sizes="(max-width: 320px) 320w,
+            (max-width: 480px) 375w,
+            (max-width: 600px) 600w,
+            2560w
+"
+src= {renderImagesSrc(props)} className={`${props.data.image? '' : 'shine '}`}     alt=""
+          width='100%'
+          height='100%'
+          
+          title={props.data.title}
+          onMouseOver={() => {
+            setCardState({ ...cardstate, hovered: !cardstate.hovered });
+          }}
+          onMouseOut={() => {
+            setCardState({ ...cardstate, hovered: !cardstate.hovered });
+          }}
+          />
+
+
+
+
+
 
         {/* <CardHeader
         avatar={
