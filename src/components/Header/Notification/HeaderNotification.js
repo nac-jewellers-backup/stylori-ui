@@ -42,20 +42,21 @@ class NotificationMessage extends React.Component {
         const { isVisible } = this.state;
         const { classes } = this.props;
         return (
-            <Notification pose={isVisible ? 'visible' : 'hidden'} >
+                <Notification pose={isVisible ? 'visible' : 'hidden'} >
                 <Grid
                     container
                     direction="row"
                     justify="center"
                     alignItems="center"
                     className={`notificationHeader ${classes.colorDark}`}
+                    style={{zIndex:10000}}
 
                 >
                     <Grid item xs={7} style={{ textAlign: 'right' }}>
                         Signup on Stylori | Avail Exclusive Offer on Your First Purchase
                     </Grid>
                     <Grid item xs={4} style={{ textAlign: 'right', fontSize: '18px' }}>
-                        <i className=' fa fa-times-circle top-close' onClick={() => { this.setState({ isVisible: false }) }}></i>
+                        <i className=' fa fa-times-circle top-close' onClick={() => { this.setState({ isVisible: false });this.props.headerTransition() }}></i>
                     </Grid>
                 </Grid>
 

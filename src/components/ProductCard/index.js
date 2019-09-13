@@ -1,5 +1,5 @@
 import React from "react";
-import  ProductCards  from "./ProductCards";
+import  ProductCards  from "./ProductCards.js";
 // import  {ProductCard}  from "./ProductCard";
 function Card(props) {
   // const CardControls = {

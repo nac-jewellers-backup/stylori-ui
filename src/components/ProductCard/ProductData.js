@@ -1,3 +1,18 @@
+const resolutions = [
+  { res: '318x318', size: '320w' },
+  { res: '372x372', size: '480w' },
+  { res: '422x422', size: '600w' },
+  { res: '247x247', size: '768w' },
+  { res: '204x204', size: '1024w' },
+  { res: '204x204', size: '1440w' },
+  { res: '543x543', size: '2560w' },
+]
+
+const baseUi = "https://assets-cdn.stylori.com/";
+
+const injectUrl = (url) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
+
+
 export const dataCard = [
   {
     offerPrice: "23000.10",
@@ -5,10 +20,8 @@ export const dataCard = [
     title: "Diamond Pendant Ring",
     save: '5999.9',
     image: {
-      placeImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
-      hoverImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/HOVER-SE0176-2R.jpg"
+      placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
+      hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
     },
 
   },
@@ -18,10 +31,8 @@ export const dataCard = [
     title: "Diamond Pendant Ring",
     save: '5999.9',
     image: {
-      placeImage:
-        "https://assets-cdn.stylori.com/209x209/images/product/SE0562/SE0562-1Y.jpg",
-      hoverImage:
-        "https://assets-cdn.stylori.com/209x209/images/product/SE0562/HOVER-SE0562-2Y.jpg"
+      placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
+      hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
     },
 
   },
@@ -31,10 +42,8 @@ export const dataCard = [
     title: "Diamond Pendant Ring",
     save: '5999.9',
     image: {
-      placeImage:
-        "https://assets-cdn.stylori.com/209x209/images/product/SE0562/SE0562-1Y.jpg",
-      hoverImage:
-        "https://assets-cdn.stylori.com/209x209/images/product/SE0562/HOVER-SE0562-2Y.jpg"
+      placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
+      hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
     },
 
   },
@@ -44,10 +53,8 @@ export const dataCard = [
     title: "Diamond Pendant Ring",
     save: '5999.9',
     image: {
-      placeImage:
-        "https://assets-cdn.stylori.com/204x204/images/product/SE0763/SE0763-1Y.jpg",
-      hoverImage:
-        "https://assets-cdn.stylori.com/276x276/images/product/SE0763/HOVER-SE0763-2Y.jpg"
+      placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
+      hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
     },
 
   },
@@ -57,10 +64,8 @@ export const dataCard = [
     title: "Diamond Pendant Ring",
     save: '5999.9',
     image: {
-      placeImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
-      hoverImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/HOVER-SE0176-2R.jpg"
+      placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
+      hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
     },
 
   },
@@ -70,10 +75,8 @@ export const dataCard = [
     title: "Diamond Pendant Ring",
     save: '5999.9',
     image: {
-      placeImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
-      hoverImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/HOVER-SE0176-2R.jpg"
+      placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
+      hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
     },
 
   },
@@ -83,10 +86,8 @@ export const dataCard = [
     title: "Diamond Pendant Ring",
     save: '5999.9',
     image: {
-      placeImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
-      hoverImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/HOVER-SE0176-2R.jpg"
+      placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
+      hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
     },
 
   },
@@ -96,10 +97,28 @@ export const dataCard = [
     title: "Diamond Pendant Ring",
     save: '5999.9',
     image: {
-      placeImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
-      hoverImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/HOVER-SE0176-2R.jpg"
+      placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
+      hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
+    },
+  },
+  {
+    offerPrice: "23000.10",
+    price: "29000.0",
+    title: "Diamond Pendant Ring",
+    save: '5999.9',
+    image: {
+      placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
+      hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
+    },
+  },
+  {
+    offerPrice: "23000.10",
+    price: "29000.0",
+    title: "Diamond Pendant Ring",
+    save: '5999.9',
+    image: {
+      placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
+      hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
     },
 
   },
@@ -109,10 +128,8 @@ export const dataCard = [
     title: "Diamond Pendant Ring",
     save: '5999.9',
     image: {
-      placeImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
-      hoverImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/HOVER-SE0176-2R.jpg"
+      placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
+      hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
     },
 
   },
@@ -122,12 +139,9 @@ export const dataCard = [
     title: "Diamond Pendant Ring",
     save: '5999.9',
     image: {
-      placeImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
-      hoverImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/HOVER-SE0176-2R.jpg"
+      placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
+      hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
     },
-
   },
   {
     offerPrice: "23000.10",
@@ -135,36 +149,8 @@ export const dataCard = [
     title: "Diamond Pendant Ring",
     save: '5999.9',
     image: {
-      placeImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
-      hoverImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/HOVER-SE0176-2R.jpg"
-    },
-
-  },
-  {
-    offerPrice: "23000.10",
-    price: "29000.0",
-    title: "Diamond Pendant Ring",
-    save: '5999.9',
-    image: {
-      placeImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
-      hoverImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/HOVER-SE0176-2R.jpg"
-    },
-
-  },
-  {
-    offerPrice: "23000.10",
-    price: "29000.0",
-    title: "Diamond Pendant Ring",
-    save: '5999.9',
-    image: {
-      placeImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
-      hoverImage:
-        "https://assets-cdn.stylori.com/313x313/images/product/SE0176/HOVER-SE0176-2R.jpg"
+      placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
+      hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
     },
 
   },
