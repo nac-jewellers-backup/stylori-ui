@@ -1,13 +1,12 @@
 import { Container, Grid } from '@material-ui/core';
 import React, { Component } from 'react';
 import Header from '../../components/Header/header'
-import Register from '../../screens/Checkout/loginRegister/register';
-import Login from '../Checkout/loginRegister/login';
-import Continues from '../Checkout/loginRegister/continues';
-import LoginRegisterIndex from '../Checkout/loginRegister';
-import Addressform from '../Checkout/addressDetails/addressForm'
-import Productlist from '../Checkout/orderSummary/productList';
 import Chckoutindex from '../Checkout';
+import Creditform from '../Checkout/paymentOption/creditForm';
+import Debitform from '../Checkout/paymentOption/debitForm';
+import Netbanking from '../Checkout/paymentOption/netBanking';
+import CashonDelivey from '../Checkout/paymentOption/cashonDelivery';
+import PaymentIndex from '../Checkout/paymentOption/paymentindex';
 export default class Checkout extends Component {
     render() {
 
@@ -20,13 +19,12 @@ export default class Checkout extends Component {
                     </Grid>
                 </Grid>
                 <Container>
-                    {/* <Login />
-                     <Register />
-                    <Continues />
-                    <LoginRegisterIndex />
-                    <Addressform /> */}
-                    {/* <Productlist/> */}
-                    <Chckoutindex/>
+                    {/* <Chckoutindex/> */}
+                    {/* <Creditform/>
+                    <Debitform/>
+                    <Netbanking/>
+                    <CashonDelivey/> */}
+                    <PaymentIndex/>
                 </Container>
 
 

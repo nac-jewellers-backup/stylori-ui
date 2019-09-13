@@ -61,7 +61,6 @@ class Addressform extends React.Component {
                             <Checkboxes CheckBoxValues={['0']} />
                             If your billing address is different from the shipping adress please uncheck the box to select billing address.</p>    <Grid container item xs={12} lg={12} >
                             <Grid item xs={12} lg={5}>
-
                                 <Grid container spacing={12}>
                                     <Grid item xs={4} lg={4}>
                                         <SimpleSelect name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
@@ -113,7 +112,6 @@ class Addressform extends React.Component {
                                             name='adrs_address'
                                             onChange={(event) => this.handleChange(event, "adrs_address")}
                                             value={this.state.adrs_address}
-
                                         />
                                     </Grid>
                                 </Grid>

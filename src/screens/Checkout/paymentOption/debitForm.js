@@ -12,14 +12,14 @@ import {
 import './payment.css'
 import { Input } from '../../../components/InputComponents/TextField/Input'
 import Buynowbutton from "../../../components/Buynow/buynowbutton";
-class Creditform extends React.Component {
+class Debitform extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            card_num: "",
-            card_holder: "",
-            expiry: "",
-            cv: "",
+            debit_card_num: "",
+            debit_card_holder: "",
+            debit_expiry: "",
+            debit_cv: "",
         }
     }
     handleChange(event, name) {
@@ -42,45 +42,45 @@ class Creditform extends React.Component {
             <div>
                 <Container>
                     <form onSubmit={(e) => this.handleSubmit()}>
-                        <Grid spacing={12} lg={12} container>
+                        <Grid spacing={12} container>
                             <Grid item lg={12} xs={12}>
                                 <Input
-                                    name="card_num"
+                                    name="debit_card_num"
                                     type="text"
-                                    value={this.state.card_num}
+                                    value={this.state.debit_card_num}
                                     placeholder="Card Number*"
                                     required
-                                    onChange={(event) => this.handleChange(event, "card_num")}
-                                    onKeyPress={(e) => this.handleKeyPress(e, "card_num")}
+                                    onChange={(event) => this.handleChange(event, "debit_card_num")}
+                                    onKeyPress={(e) => this.handleKeyPress(e, "debit_card_num")}
                                 />
                                 <Input
-                                    name="card_holder"
+                                    name="debit_card_holder"
                                     type="text"
-                                    value={this.state.card_holder}
+                                    value={this.state.debit_card_holder}
                                     placeholder="Card Holder Name*"
                                     required
-                                    onChange={(event) => this.handleChange(event, "card_holder")}
+                                    onChange={(event) => this.handleChange(event, "debit_card_holder")}
                                 />
                                 <Grid container lg={12} xs={12}>
                                     <Grid item lg={4} xs={12}>
                                         <Input
-                                            name="expiry"
+                                            name="debit_expiry"
                                             type="text"
-                                            value={this.state.expiry}
+                                            value={this.state.debit_expiry}
                                             placeholder="Expiry MM/YY"
-                                            onChange={(event) => this.handleChange(event, "expiry")}
-                                            onKeyPress={(e) => this.handleKeyPress(e, "expiry")}
+                                            onChange={(event) => this.handleChange(event, "debit_expiry")}
+                                            onKeyPress={(e) => this.handleKeyPress(e, "debit_expiry")}
                                         />
                                     </Grid>
                                     <Grid item lg={4} xs={12}>
                                         <Input
-                                            name="cv"
+                                            name="debit_cv"
                                             className='text-f'
                                             type="text"
-                                            value={this.state.cv}
+                                            value={this.state.debit_cv}
                                             placeholder="CVV"
-                                            onChange={(event) => this.handleChange(event, "cv")}
-                                            onKeyPress={(e) => this.handleKeyPress(e, "cv")}
+                                            onChange={(event) => this.handleChange(event, "debit_cv")}
+                                            onKeyPress={(e) => this.handleKeyPress(e, "debit_cv")}
                                         />
                                     </Grid>
                                     <Grid item lg={4} xs={12}>
@@ -109,4 +109,4 @@ class Creditform extends React.Component {
         )
     }
 }
-export default Creditform;
+export default Debitform;

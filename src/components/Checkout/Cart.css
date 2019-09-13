@@ -200,9 +200,9 @@
         background-color: #f36e23 !important;
         border: 1px solid #f36e23 !important;
         color: #FFF !important;
-        border-radius: 0 !important;
+        border-radius: 0px !important;
         font-size: 17px;
-        min-width: 250px !important;
+        min-width: 230px !important;
         padding: 9px 12px !important;
         font-weight: 400 !important;
     }

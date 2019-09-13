@@ -81,7 +81,7 @@ class PriceTabs extends React.Component {
                                     <Tab className='subtabs' icon={<i class="fa fa-cube tabs-hesd-icon"></i>}
                                         label={val.tab2.header} />
                                     <Tab className='subtabs' icon={<i class="fa fa-diamond tabs-hesd-icon"></i>
-                                    } label={`Active ${val.tab3.header}`} />
+                                    } label={val.tab3.header} />
                                 </Tabs>
                             </AppBar>
                         </div>

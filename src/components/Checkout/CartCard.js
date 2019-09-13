@@ -187,7 +187,7 @@ class Checkoutcard extends React.Component {
     }
     subtotals = () => {
         return (
-            <div style={{marginTop:"10px"}} >
+            <div style={{ marginTop: "10px" }} >
                 <Grid container spacing={12}>
                     <Grid item xs={3} lg={9} />
                     <Grid item xs={9} lg={3}>
