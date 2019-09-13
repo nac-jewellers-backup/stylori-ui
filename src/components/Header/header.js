@@ -14,7 +14,6 @@ import {
   ListItem,
   ListItemText,
 } from '@material-ui/core';
-import tabdata from './HoverNavBarListing/tileData';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
@@ -80,11 +79,11 @@ class Header extends Component {
     document.getElementById('filterBy').style.transition = "0.5s";
   }
   render() {
-
-    const { mainlist, Jewellery, subheader, menuListHeader } = this.props.data;
+    
+    const { mainlist, Jewellery, subheader, menuListHeader, menuLists, earings, rings, pendants, nosepins, banglesbracelets, valayal, kammal, koluse, Price,
+      Collection, Material } = this.props.data;
     let { selected, selected1 } = this.state;
     const { classes } = this.props;
-    console.log(tabdata[this.state.listHoverItem]);
     return (
       <div>
         <Hidden smDown >
@@ -160,8 +159,8 @@ class Header extends Component {
                   </nav>
                   {
 
-                    this.state.Menuopen && tabdata.menuLists[this.state.listHoverItem] ?
-                      <HeaderHoverMenuItem Checked={this.state.Checked} tabdata={tabdata} listHoverItem={tabdata.menuLists[this.state.listHoverItem]}
+                    this.state.Menuopen && menuLists[this.state.listHoverItem] ?
+                      <HeaderHoverMenuItem Checked={this.state.Checked} tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
                         onMouseOver={() => { this.setState({ Menuopen: true, }) }}
                         onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }}
                       />
