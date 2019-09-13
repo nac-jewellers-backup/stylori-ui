@@ -12,21 +12,21 @@ export default class Stylori extends Component {
 
 
   render() {
-    const fadeImages = [
-      'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
-      'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
-      'https://assets-cdn.stylori.com/images/megamenu/ear-jacket.jpg'
-    ];
+    // const fadeImages = [
+    //   'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+    //   'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
+    //   'https://assets-cdn.stylori.com/images/megamenu/ear-jacket.jpg'
+    // ];
 
-    const dataCarousel = {
-      dots: false,
-      infinite: true,
-      autoplay: true,
-      speed: 1000,
-      fade: true,
-      arrows: false
-    }
-    console.log(this.props)
+    // const dataCarousel = {
+    //   dots: false,
+    //   infinite: true,
+    //   autoplay: true,
+    //   speed: 1000,
+    //   fade: true,
+    //   arrows: false
+    // }
+    // console.log(this.props)
     return (
       <Grid container >
         <Grid item xs={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
@@ -34,7 +34,7 @@ export default class Stylori extends Component {
         </Grid>
 
         <Grid item xs={12}>
-        <ProductDescription title="Jewellery" fadeImages={fadeImages} dataCarousel={dataCarousel} />
+        <ProductDescription title="Jewellery" />
         <Filter />
         </Grid>
         <Grid item xs={12} >

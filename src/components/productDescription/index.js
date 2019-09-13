@@ -4,7 +4,8 @@ import { Container, Hidden, Grid, Typography } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul';
 import CustomSeparator from '../BreadCrumb/index';
 import { withStyles } from '@material-ui/core/styles';
-import data from './data'
+import { useDummyRequest } from '../../hooks';
+import { descriptionData } from '../../mappers';
 
 const styles = theme => ({
 
@@ -31,7 +32,13 @@ class ProductDescription extends Component {
 
   render() {
     const { classes } = this.props;
-
+    let path = window.location.pathname.split('/').pop();
+    const descriptionData  = this.props.data;
+    debugger;
+    const settings= descriptionData[path].carouselSettings;
+    const fadeImages = descriptionData[path].carouselImage;
+    const title = descriptionData[path].title;
+    const datadescription = descriptionData[path].description;
     return (
       <>
         <Container >
@@ -63,7 +70,9 @@ class ProductDescription extends Component {
                   className={`DescriptionTitle`}
                   alignItems="center"            >
                   <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>
-                    {this.props.title}
+                    {/* {window.location.pathname.split('/').pop()} */}
+                    {title}
+                    
                   </Typography>
                 </Grid>
               </Hidden>
@@ -74,7 +83,7 @@ class ProductDescription extends Component {
                   className={` DescriptionTitleSmallScreen `}
                   alignItems="center"            >
                   <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>
-                    {this.props.title}
+                    {title}
                   </Typography>
                 </Grid>
               </Hidden>
@@ -90,7 +99,8 @@ class ProductDescription extends Component {
                   style={{ paddingLeft: '4%' }}
                   alignItems="center">
 
-                  < Slideshow fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel} styles={'productDescriptionCarousel'} />
+                  {/* < Slideshow fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel} styles={'productDescriptionCarousel'} /> */}
+                       < Slideshow fadeImages={fadeImages} dataCarousel={settings} styles={'productDescriptionCarousel'} />
                 </Grid>
               </Hidden>
               <Grid
@@ -102,7 +112,7 @@ class ProductDescription extends Component {
                     {
                       this.state.showLess === true ?
                         <>
-                          {(data.jewlleryData).slice(0, 160)}
+                          {(datadescription).slice(0, 160)}
                           <span id="moreDots" style={{ display: 'inline' }}>...</span>
                           <p onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readMore" >
                             <span ><i className="fa faMore">&#xf0da;</i></span> READ MORE
@@ -110,7 +120,7 @@ class ProductDescription extends Component {
                         </>
                         :
                         <>
-                          {data.jewlleryData}
+                          {datadescription}
                           <p onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readLess" >
                             <span ><i className="fa faMore">&#xf0d8;</i></span> CLOSE
                </p>
@@ -131,4 +141,9 @@ class ProductDescription extends Component {
   }
 
 }
-export default withStyles(styles)(ProductDescription);
+export default withStyles(styles)(props => {
+  const { mapped } = useDummyRequest(descriptionData);
+  if (Object.keys(mapped).length === 0) return ''
+
+  return <ProductDescription {...props} data={mapped} />
+});
