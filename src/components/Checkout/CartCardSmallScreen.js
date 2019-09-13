@@ -5,7 +5,9 @@ import CardContent from "@material-ui/core/CardContent";
 import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { productsDetails } from '../product-image-slider/producthoverData';
-import { dataCard1 } from '../ProductCard/ProductData';
+// import { dataCard1 } from '../ProductCard/ProductData';
+import { useDummyRequest } from '../../hooks';
+import { productcarddatas } from '../../mappers';  
 const useStyles = makeStyles(theme => ({
   card: {
     width: "100%",
@@ -61,9 +63,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function MediaControlCard() {
+function MediaControlCard() {
   const classes = useStyles();
   const theme = useTheme();
+  const { dataCard1 } = this.props.data;
 
   return (
     <div>
@@ -134,3 +137,9 @@ export default function MediaControlCard() {
     </div>
   );
 }
+export default (props => {
+  const { mapped } = useDummyRequest(productcarddatas);
+  if (Object.keys(mapped).length === 0) return ''
+
+  return <MediaControlCard {...props} data={mapped} />
+});

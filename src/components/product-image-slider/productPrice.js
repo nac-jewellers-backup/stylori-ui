@@ -9,9 +9,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './product-images.css'
 import Ratings from '../rating/rating'
-import card from '../ProductCard/ProductData'
+// import card from '../ProductCard/ProductData'
+
 import { withStyles } from '@material-ui/core/styles';
 import Pricing from '../Pricing/index'
+import { useDummyRequest } from '../../hooks';
+import { productcarddatas } from '../../mappers';   
 const dataCarousel = {
     dots: false,
     infinite: true,
@@ -43,7 +46,7 @@ const styles = theme => ({
     }
 });
 const mobilecarousel = () => {
-
+  
     return (
         <Container>
             <div style={{ height: '200px', width: "auto" }}>
@@ -57,10 +60,11 @@ const mobilecarousel = () => {
 
 const Productprice = (props) => {
     const { classes } = props;
+    const { dataCard1 } = this.props.data;
     return (
         <div>
 
-            {card.dataCard1.map(val => (
+            {dataCard1.map(val => (
 
                 <>
                     <Grid container spacing={12} sm={12} className={classes.pricedetails}>
@@ -139,4 +143,11 @@ ProductPrice.propTypes = {
     mobilecarousel: PropTypes.func,
     Productprice: PropTypes.func,
 };
-export default withStyles(styles, { withTheme: true })(ProductPrice);
+export default withStyles(styles, { withTheme: true })(props => {
+    const { mapped } = useDummyRequest(productcarddatas);
+    if (Object.keys(mapped).length === 0) return ''
+  
+    return <ProductPrice {...props} data={mapped} />
+  });
+
+

@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
 import {GridList, GridListTile} from '@material-ui/core';
 import ProductCards from './index';
-import {dataCard} from './ProductData';
+
+import { useDummyRequest } from '../../hooks';
+import { productcarddatas } from '../../mappers';
 
 
 
@@ -41,8 +43,8 @@ class ProductLayout extends Component
   }
   render(){
  
- 
-console.log(dataCard)
+    const { dataCard } = this.props.data;
+// console.log(dataCard)
   return (
     <div className="productLayoutRoot" style={this.props.styles}>
       <GridList  cellHeight={"auto"} className="productLayoutGridList" cols={this.state.colSize} style={{marginLeft:'12px'}}>
@@ -63,4 +65,11 @@ console.log(dataCard)
   
 }
 
-export default ProductLayout
+// export default ProductLayout
+
+export default (props => {
+  const { mapped } = useDummyRequest(productcarddatas);
+  if (Object.keys(mapped).length === 0) return ''
+
+  return <ProductLayout {...props} data={mapped} />
+});

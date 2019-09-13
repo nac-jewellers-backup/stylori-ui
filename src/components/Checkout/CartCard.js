@@ -8,7 +8,9 @@ import Slideshow from '../Carousel/carosul'
 import CardActions from "@material-ui/core/CardActions";
 import { withStyles } from '@material-ui/core/styles';
 import Buynowbutton from '../Buynow/buynowbutton';
-import { dataCard1 } from '../ProductCard/ProductData';
+// import { dataCard1 } from '../ProductCard/ProductData'; 
+import { useDummyRequest } from '../../hooks';
+import { productcarddatas } from '../../mappers';  
 import CardSmallScreen from './CartCardSmallScreen.js';
 // 
 // 
@@ -109,6 +111,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         const { classes } = this.props;
+        const { dataCard1 } = this.props.data;
         return (
             <div>
                 {productsDetails.map(val => (
@@ -186,6 +189,7 @@ class Checkoutcard extends React.Component {
         )
     }
     subtotals = () => {
+        const { dataCard1 } = this.props.data;
         return (
             <div style={{marginTop:"10px"}} >
                 <Grid container spacing={12}>
@@ -218,6 +222,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         const { classes } = this.props;
+       
 
         return (
             <div>
@@ -235,4 +240,11 @@ class Checkoutcard extends React.Component {
     }
 
 }
-export default withStyles(styles, { withTheme: true })(Checkoutcard);
+// export default withStyles(styles, { withTheme: true })(Checkoutcard);
+
+export default withStyles(styles, { withTheme: true })(props => {
+    const { mapped } = useDummyRequest(productcarddatas);
+    if (Object.keys(mapped).length === 0) return ''
+  
+    return <Checkoutcard {...props} data={mapped} />
+  });
