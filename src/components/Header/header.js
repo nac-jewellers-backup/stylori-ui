@@ -44,13 +44,7 @@ class Header extends Component {
     }
     this.topZero = React.createRef();
   }
-  // componentDidMount(){
-  //   let headerHeight =Number( document.getElementById('headers').style.offsetWidth);
-  //   debugger;
-  //   alert(headerHeight);
-  //   debugger;
-  //   this.setState({headHeight:headerHeight});
-  // }
+
 
 
 
