@@ -4,7 +4,6 @@ const resolutions = [
     { res: '422x422', size: '600w' },
     { res: '247x247', size: '768w' },
     { res: '204x204', size: '1024w' },
-    { res: '204x204', size: '1440w' },
     { res: '543x543', size: '2560w' },
   ]
   
@@ -42,8 +41,41 @@ const resolutions = [
       title: "Diamond Pendant Ring",
       save: '5999.9',
       image: {
-        placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
-        hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
+        placeImage: injectUrl("/images/product/SE1610/SE1610-1Y.jpg"),
+        hoverImage: injectUrl("/images/product/SE1610/SE1610-2Y.jpg")
+      },
+  
+    },
+    {
+      offerPrice: "23000.10",
+      price: "29000.0",
+      title: "Diamond Pendant Ring",
+      save: '5999.9',
+      image: {
+        placeImage: injectUrl("/images/product/SR0864/SR0864-1Y.jpg"),
+        hoverImage: injectUrl("/images/product/SR0864/HOVER-SR0864-2Y.jpg")
+      },
+  
+    },
+    {
+      offerPrice: "23000.10",
+      price: "29000.0",
+      title: "Diamond Pendant Ring",
+      save: '5999.9',
+      image: {
+        placeImage: injectUrl("/images/product/SE0904/SE0904-1Y.jpg"),
+        hoverImage: injectUrl("/images/product/SE0904/HOVER-SE0904-2Y.jpg")
+      },
+  
+    },
+    {
+      offerPrice: "23000.10",
+      price: "29000.0",
+      title: "Diamond Pendant Ring",
+      save: '5999.9',
+      image: {
+        placeImage: injectUrl("/images/product/SE1596/SE1596-1W.jpg"),
+        hoverImage: injectUrl("/images/product/SE1596/SE1596-2W.jpg")
       },
   
     },
@@ -64,41 +96,8 @@ const resolutions = [
       title: "Diamond Pendant Ring",
       save: '5999.9',
       image: {
-        placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
-        hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
-      },
-  
-    },
-    {
-      offerPrice: "23000.10",
-      price: "29000.0",
-      title: "Diamond Pendant Ring",
-      save: '5999.9',
-      image: {
-        placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
-        hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
-      },
-  
-    },
-    {
-      offerPrice: "23000.10",
-      price: "29000.0",
-      title: "Diamond Pendant Ring",
-      save: '5999.9',
-      image: {
-        placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
-        hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
-      },
-  
-    },
-    {
-      offerPrice: "23000.10",
-      price: "29000.0",
-      title: "Diamond Pendant Ring",
-      save: '5999.9',
-      image: {
-        placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
-        hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
+        placeImage: injectUrl("/images/product/SE1616/SE1616-1Y.jpg"),
+        hoverImage: injectUrl("/images/product/SE1616/SE1616-2Y.jpg")
       },
     },
     {
@@ -128,8 +127,8 @@ const resolutions = [
       title: "Diamond Pendant Ring",
       save: '5999.9',
       image: {
-        placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg"),
-        hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg")
+        placeImage: injectUrl("/images/product/SR0320/SR0320-1YW.jpg"),
+        hoverImage: injectUrl("/images/product/SR0320/HOVER-SR0320-2YW.jpg")
       },
   
     },

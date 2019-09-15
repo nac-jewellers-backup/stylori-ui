@@ -114,9 +114,13 @@ export default function ProductCards(props) {
 <img 
 srcset={renderImages(props, cardstate)}
 sizes="(max-width: 320px) 320w,
-            (max-width: 480px) 375w,
+            (max-width: 480px) 480w,
             (max-width: 600px) 600w,
+            (max-width: 992px) 768w,
+            (max-width: 1440px) 600w,
+            (max-width: 2560px) 2560w,
             2560w
+           
 "
 src= {renderImagesSrc(props)} className={`${props.data.image? '' : 'shine '}`}     alt=""
           width='100%'
