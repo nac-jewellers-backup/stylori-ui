@@ -89,9 +89,23 @@ const styles = theme => ({
   colorMainBackground: {
     backgroundColor: theme.palette.primary.main
   },
-  productCards: {
+  productCardscheck:{
+    width:'80%',
+ 
     [theme.breakpoints.down('md')]: {
       width: '100% !important'
+    },
+    [theme.breakpoints.up('xl')]: {
+      width:  '90%'
+    },
+  },
+  productCardsuncheck: {
+    width:  '100%',
+    [theme.breakpoints.down('md')]: {
+      width: '100% !important'
+    },
+    [theme.breakpoints.up('xl')]: {
+      width:  '100%',
     },
   }
 });
@@ -225,7 +239,7 @@ class PersistentDrawerLeft extends React.Component {
     const { filter, subFilter, sortOptions } = this.props.data;
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
-debugger
+
     return (
 
       <>
@@ -395,8 +409,8 @@ debugger
           {
             this.state.productDisplay &&
             <div
-              style={{ width: check ? '80%' : '100%' }}
-              className={classes.productCards}
+              
+              className={check?classes.productCardscheck : classes.productCardsuncheck }
 
             >
               <ProductLayout />

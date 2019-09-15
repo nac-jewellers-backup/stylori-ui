@@ -1,10 +1,40 @@
 import React,{Component} from 'react';
-import {GridList, GridListTile} from '@material-ui/core';
+import {GridList, GridListTile, Button} from '@material-ui/core';
 import ProductCards from './index';
-
+import { withStyles } from '@material-ui/core/styles';
 import { useDummyRequest } from '../../hooks';
 import { productcarddatas } from '../../mappers';
 
+const styles = theme => ({
+  gridlistmain:{
+    [theme.breakpoints.down('sm')]: {
+      margin: '0px !important'
+    }
+  },
+gridlistmainviewmore:{
+width:'100%',
+textAlign:'center',
+margin:'40px',
+[theme.breakpoints.down('sm')]: {
+  marginBottom:'75px',
+},
+
+
+button: {
+  margin: theme.spacing(1),
+},
+},
+viewmoreColor:{
+backgroundColor:'#3a4578',
+color:'white',
+padding:'6px 12px',
+'&:hover':{
+  backgroundColor:'#3a4578',
+  opacity:'0.8'
+}
+}
+
+});
 
 
 class ProductLayout extends Component
@@ -31,6 +61,14 @@ class ProductLayout extends Component
     {
       this.setState({colSize:4}) 
     }
+    else if(width>1024)
+    {
+      this.setState({colSize:4}) 
+    }
+    else if(width>960)
+    {
+      this.setState({colSize:3}) 
+    }
     else if(width>760)
     {
       this.setState({colSize:4}) 
@@ -42,22 +80,31 @@ class ProductLayout extends Component
   
   }
   render(){
- 
+    const { classes} = this.props;
     const { dataCard } = this.props.data;
 // console.log(dataCard)
   return (
-    <div className="productLayoutRoot" style={this.props.styles}>
-      <GridList  cellHeight={"auto"} className="productLayoutGridList" cols={this.state.colSize} style={{marginLeft:'12px'}}>
-        {dataCard.map(tile => (
+    <div className={`productLayoutRoot `} style={this.props.styles}>
+      <GridList  cellHeight={"auto"} className={`productLayoutGridList ${classes.gridlistmain}`} cols={this.state.colSize} style={{marginLeft:'12px'}}>
+        {
+          dataCard.map(tile => {
+          return(
           <GridListTile key={tile.title} cols={tile.cols || 1} style={{height:'auto',paddingTop:'2%'}} >
             
            {/* <ProductCard data={tile} /> */}
            <ProductCards data={tile} />
           </GridListTile>
-        ))}
-  {/* <GridList  cellHeight={"auto"} className="productLayoutGridList" cols={this.state.colSize} style={{justifyContent:'center'}}> */}
-          {/* <GridListTile key={tile.title} cols={tile.cols || 1} style={{height:'auto',padding:'8px'}} > */}
+        )})
+     
+        }
+   
       </GridList>
+      <div  className={`${classes.gridlistmainviewmore}`}>
+      <Button variant="contained"  className={`${classes.button}  ${classes.viewmoreColor}`}>
+        View {dataCard.length} More Products
+      </Button>
+      </div>
+
     </div>
     
   );
@@ -67,7 +114,7 @@ class ProductLayout extends Component
 
 // export default ProductLayout
 
-export default (props => {
+export default  withStyles(styles, { withTheme: true }) (props => {
   const { mapped } = useDummyRequest(productcarddatas);
   if (Object.keys(mapped).length === 0) return ''
 

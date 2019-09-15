@@ -14,12 +14,16 @@ import  Pricing  from "../Pricing";
 
 const useStyles = makeStyles(theme => ({
   card: {
-    minWidth: "80",
+    minWidth: "80%",
     maxWidth: "90%",
     maxHeight:'auto',
     boxShadow: "none",
     padding: "0px",
-    border: "1px solid #f5f5f5"
+    border: "1px solid #f5f5f5",
+    [theme.breakpoints.down('sm')]: {
+      minWidth: "inherit",
+      maxWidth: "inherit",
+    },
   },
   action: {
     paddingTop: "15px",

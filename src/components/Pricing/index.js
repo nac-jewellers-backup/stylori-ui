@@ -84,7 +84,8 @@ export default function Pricing(props) {
                     className={`${props.offerPrice != null & props.offerPrice !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
 
                 >
-                    ₹&nbsp;{props.offerPrice}
+                    {/* ₹&nbsp;{props.offerPrice} */}
+                   { new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(props.offerPrice)}
                 </Typography>
             </Typography>
             {/*  */}

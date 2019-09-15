@@ -59,8 +59,9 @@ const mobilecarousel = () => {
 };
 
 const Productprice = (props) => {
+    debugger;
     const { classes } = props;
-    const { dataCard1 } = this.props.data;
+    const { dataCard1 } = props.data;
     return (
         <div>
 
