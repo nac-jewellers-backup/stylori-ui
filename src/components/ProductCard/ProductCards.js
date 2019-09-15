@@ -114,7 +114,7 @@ export default function ProductCards(props) {
 <img 
 srcset={renderImages(props, cardstate)}
 sizes="(max-width: 320px) 320w,
-            (max-width: 480px) 480w,
+            (max-width: 480px) 600w,
             (max-width: 600px) 600w,
             (max-width: 992px) 768w,
             (max-width: 1440px) 600w,
