@@ -44,7 +44,6 @@ class LoginRegisterIndex extends React.Component {
                                             <Button className='apply-b'
                                                 onClick={() => { this.toggle(val.button) }}>{val.buttonval}</Button>
                                         </div>
-
                                     </Card>
                                 </Grid>
                             )} 
