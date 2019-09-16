@@ -2,16 +2,18 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import './Cart.css'
 import { Container, Grid, CardHeader, Card, IconButton, CardContent, Button, Hidden } from '@material-ui/core';
-import { productsDetails } from '../product-image-slider/producthoverData';
-import T from '../product-image-slider/producthoverData';
+// import { productsDetails } from '../../mappers/dummydata/productpricingPage';
+// import T from '../../mappers/dummydata/productpricingPage';
 import Slideshow from '../Carousel/carosul'
 import CardActions from "@material-ui/core/CardActions";
 import { withStyles } from '@material-ui/core/styles';
 import Buynowbutton from '../Buynow/buynowbutton';
 // import { dataCard1 } from '../ProductCard/ProductData'; 
 import { useDummyRequest } from '../../hooks';
-import { productcarddatas } from '../../mappers';  
+import { cartdatas } from '../../mappers';
 import CardSmallScreen from './CartCardSmallScreen.js';
+import Pricing from '../Pricing/index'
+
 // 
 // 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -111,7 +113,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         const { classes } = this.props;
-        const { dataCard1 } = this.props.data;
+        const { productsDetails, fadeImages, dataCard1 } = this.props.data;
         return (
             <div>
                 {productsDetails.map(val => (
@@ -132,7 +134,7 @@ class Checkoutcard extends React.Component {
                                         }
                                     />
                                     <Slideshow class="image"
-                                        fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
+                                        fadeImages={fadeImages} dataCarousel={dataCarousel} />
                                 </Card>
                             </Grid>
                             <Grid item xs={6} style={{ padding: "20px" }}>
@@ -163,14 +165,20 @@ class Checkoutcard extends React.Component {
 
                                 </Grid>
                             </Grid>
+
                             <Grid item xs={3} >
-                                {dataCard1.map(val =>
-                                    <div className="product-rate">
-                                        <span class="offer-price">{val.price}</span><br />
-                                        <span class="price">{val.offerPrice}</span><br />
-                                        <span class="offer-description">25% - OFF</span>
-                                    </div>
-                                )} </Grid>
+                                <div style={{ marginTop: "15%" }}>
+                                    {dataCard1.map(val =>
+                                        <Pricing price={val.price} offerPrice={val.offerPrice} >
+                                            <div className="product-rate">
+                                                <span class="offer-price">{val.price}</span><br />
+                                                <span class="price">{val.offerPrice}</span><br />
+                                            </div>
+                                        </Pricing>
+                                    )}
+                                    <span class="offer-description">25% - OFF</span>
+                                </div>
+                            </Grid>
                         </Grid>
                     </div>
                 ))}
@@ -222,7 +230,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         const { classes } = this.props;
-       
+
 
         return (
             <div>
@@ -243,8 +251,8 @@ class Checkoutcard extends React.Component {
 // export default withStyles(styles, { withTheme: true })(Checkoutcard);
 
 export default withStyles(styles, { withTheme: true })(props => {
-    const { mapped } = useDummyRequest(productcarddatas);
+    const { mapped } = useDummyRequest(cartdatas);
     if (Object.keys(mapped).length === 0) return ''
-  
+
     return <Checkoutcard {...props} data={mapped} />
-  });
+});

@@ -161,7 +161,7 @@ export const imagecertificat = [
         img5: "https://assets-cdn.stylori.com/images/static/certificate4.jpg"
     }
 ];
-const fadeImages = [
+export const fadeImages = [
     'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
     'https://images7.alphacoders.com/421/421542.jpg ',
     'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
@@ -213,4 +213,19 @@ export const fadeImagessublist = [
 
 
 ]
-export default { productsubHead, productsDetails, productsPendants, productstabs, productsbuy, fadeImages, imagecertificat, fadeImagessublist };
+export const dataCard1 = [
+    {
+        offerPrice: "23000.10",
+        price: "29000.0",
+        title: "Diamond Pendant Ring",
+        dis: 'Pendants set in 18 Kt Yellow Gold 3.95 gm with Diamonds (0.52 ct, GH - SI )',
+        save: '5999.9',
+        image: {
+            placeImage:
+                "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",
+            hoverImage:
+                "https://assets-cdn.stylori.com/313x313/images/product/SE0176/HOVER-SE0176-2R.jpg"
+        },
+
+    },
+]

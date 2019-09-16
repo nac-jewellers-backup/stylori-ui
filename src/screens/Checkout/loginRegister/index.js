@@ -1,11 +1,11 @@
 import React from 'react';
 import './loginRegisters.css'
 import { Container, Grid, Button, Card, CardContent } from '@material-ui/core';
-import { LogRegData } from './loginregisterData'
-import { NavLink } from 'react-router-dom'
 import Login from './login';
 import Register from './register';
 import Continues from './continues';
+import { useDummyRequest } from '../../../hooks';
+import { checkoutloginRegs } from '../../../mappers';
 class LoginRegisterIndex extends React.Component {
     constructor(props) {
         super(props)
@@ -13,17 +13,18 @@ class LoginRegisterIndex extends React.Component {
             show: true,
             Register: false,
             Continue: false,
-            Login: false
+            Login: false,
+            isActive:""
         };
     }
     toggle(name, value) {
-
         this.setState({
             show: !this.state.show,
             [name]: !value
         });
     }
     render() {
+        const { LogRegData } = this.props.data
         return (
             <Container>
                 <div className='pt-sm' style={{ display: this.state.show == true ? "block" : "none" }}>
@@ -33,9 +34,9 @@ class LoginRegisterIndex extends React.Component {
                             {LogRegData.map(val =>
                                 <Grid item xs={12} lg={4}>
                                     <Card className='form-card'>
-                                        <CardContent style={{height:"70px"}}>
+                                        <CardContent style={{ height: "70px" }}>
                                             <div>
-                                                <p className='card-reg'> {val.title}</p> 
+                                                <p className='card-reg'> {val.title}</p>
                                                 <b className='card-reg blt'>{val.dis}</b>
                                             </div>
                                         </CardContent>
@@ -48,12 +49,12 @@ class LoginRegisterIndex extends React.Component {
                                 </Grid>
                             )}
                         </Grid>
-                    </>
+                    </> 
                 </div>
 
                 <div style={{ display: this.state.Login == true ? "block" : "none" }}>
                     <Login />
-                </div> 
+                </div>
                 <div style={{ display: this.state.Register == true ? "block" : "none" }}>
                     <Register back={this.state.Register} />
                 </div>
@@ -66,4 +67,9 @@ class LoginRegisterIndex extends React.Component {
         )
     }
 }
-export default LoginRegisterIndex;
+export default (props => {
+    const { mapped } = useDummyRequest(checkoutloginRegs);
+    if (Object.keys(mapped).length === 0) return ''
+
+    return <LoginRegisterIndex {...props} data={mapped} />
+});

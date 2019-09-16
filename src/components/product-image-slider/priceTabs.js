@@ -13,11 +13,11 @@ import {
 import React from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import './product-images.css'
-import H from './producthoverData'
 import PropTypes from 'prop-types';
 import Slideshow from '../Carousel/carosul';
 import { withStyles } from '@material-ui/core/styles';
-
+import { useDummyRequest } from '../../hooks';
+import { productpricingPages } from '../../mappers';
 function TabContainer({ children, dir }) {
     return (
         <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
@@ -52,21 +52,23 @@ class PriceTabs extends React.Component {
     state = {
         value: 0,
         values: "",
-        expanded: null
+        expanded: null,
+        isActive: '',
     };
     handleClick(event) {
         console.log(event.target.value)
         this.setState({
-            values: event.target.value,
+            isActive: event.target.name,
 
         });
     }
 
     TabsS = () => {
         const { classes } = this.props;
+        const { productstabs } = this.props.data;
         return (
             <div>
-                {H.productstabs.map(val =>
+                {productstabs.map(val =>
                     <>
                         <div className="header-APP">
                             <AppBar position="static" color="default" className="price-panel"
@@ -92,18 +94,17 @@ class PriceTabs extends React.Component {
                             <TabContainer>
                                 <div className={classes.pagination}>
                                     <Slideshow dataCarousel={settings}>
-                                        {val.tab1.Children.map(val =>
+                                        {val.tab1.Children.map((val,i) =>
                                             <>
-                                                <button
-                                                    className="page dark"
-                                                    value={val} id={val}
-                                                    onClick={event => this.handleClick(event)}
-                                                >
-                                                    {val}
-                                                </button>
+                                                    <button
+                                                        className={this.state.isActive== i ?'dark' : 'page'}
+                                                        value={val} id={val} name={i}
+                                                        onClick={event => this.handleClick(event)}
+                                                    >
+                                                        {val}
+                                                    </button>
                                             </>
                                         )}
-
                                     </Slideshow>
                                     <div style={{ marginTop: "10px" }}>
                                         <span className="my-ringsize">My Ring Size ?</span>
@@ -147,9 +148,10 @@ class PriceTabs extends React.Component {
     mobiletabs = () => {
         const { expanded } = this.state;
         const { classes } = this.props;
+        const { productstabs } = this.props.data;
         return (
             <>
-                {H.productstabs.map(val =>
+                {productstabs.map(val =>
                     <Container>
                         <>
                             <>
@@ -269,4 +271,10 @@ PriceTabs.propTypes = {
     handleChangeIndex: PropTypes.func,
     handle: PropTypes.func
 };
-export default withStyles(styles, { withTheme: true })(PriceTabs);
+export default withStyles(styles, { withTheme: true })
+    (props => {
+        const { mapped } = useDummyRequest(productpricingPages);
+        if (Object.keys(mapped).length === 0) return ''
+
+        return <PriceTabs {...props} data={mapped} />
+    });

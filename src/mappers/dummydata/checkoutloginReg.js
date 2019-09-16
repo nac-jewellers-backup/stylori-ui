@@ -18,4 +18,3 @@ export const LogRegData = [
         buttonval:"Continue as a Guest ",
     },
 ]
-export default {LogRegData};

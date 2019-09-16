@@ -12,6 +12,7 @@ class Register extends React.Component {
             mail: "",
             confPassword: "",
             Password: "",
+            backs: false
         };
     }
     toggle(name, value) {
@@ -32,6 +33,9 @@ class Register extends React.Component {
 
     handleSubmit = (e) => {
         // e.preventDefault();
+    }
+    handleBack = () => {
+
     }
     Registerform = (props) => {
         return (
@@ -73,7 +77,7 @@ class Register extends React.Component {
                             />
                             <Grid container spacing={12}>
                                 <Grid item lg={4} xs={4}>
-                                    <SimpleSelect  name={'Mr'} selectData={['Mr', 'Mrs', 'Miss']} />
+                                    <SimpleSelect name={'Mr'} selectData={['Mr', 'Mrs', 'Miss']} />
                                 </Grid>
                                 <Grid item lg={4} xs={4}>
                                     <Input
@@ -103,7 +107,7 @@ class Register extends React.Component {
                                 </Grid>
                             </Grid>
                             <div className='login-butn'>
-                                <Button className='back-b'  >Back</Button>
+                                <Button className='back-b' >Back</Button>
                                 <Button className='apply-b' type="submit">Apply</Button>
                             </div>
                         </Grid>

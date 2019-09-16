@@ -67,7 +67,7 @@
         color: #394578;
         line-height: 1.42857143;
         text-align: center !important;
-     }
+    }
 
     .discount-container {
         font-size: 12px;
@@ -311,7 +311,7 @@
         box-shadow: none;
         /* background-color: #f1f3f6; */
     }
-  
+
     .requset-button {
         background: #394579 !important;
         border: 1px solid #394579 !important;
@@ -698,15 +698,28 @@
         height: 33px;
         width: 33px;
         border-radius: 50%;
-        border: 1px solid #ccc;
         background: #fff;
         box-shadow: inset 0px 1px 0px rgba(255, 255, 255, .8), 0px 1px 3px rgba(0, 0, 0, .1);
         font-size: 15px;
         text-decoration: none;
-        color: #fff;
+        color: #000;
         cursor: pointer;
         outline: none !important;
+        border: 1px solid #ccc !important;
 
+    }
+
+    
+    .dark {
+        text-align: center !important;
+        height: 33px !important;
+        width: 33px !important;
+        border-radius: 50% !important;
+        background: #394578 !important;
+        color: #fff !important;
+        outline: none !important;
+        cursor: pointer;
+        border: none !important;
     }
 
     .header-APP {
@@ -723,7 +736,7 @@
         box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .06);
     }
 
-    .page:hover,
+    /* .page:hover,
     .page.gradient:hover {
         background: #394578 !important;
         color: #fff !important;
@@ -760,7 +773,7 @@
     .page.dark.gradient {
         background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#565b5f), to(#3e4347));
         background: -moz-linear-gradient(0% 0% 270deg, #565b5f, #3e4347);
-    }
+    } */
 
     .wrappercustom {
         font-family: sans-serif;

@@ -9,15 +9,15 @@ import React from "react";
 import './product-images.css'
 import ProductPrice from './productPrice'
 import PriceTabs from "./priceTabs";
-import buy from './producthoverData'
 import PropTypes from 'prop-types';
 import Buynowbutton from '../Buynow/buynowbutton';
-import T from './producthoverData';
-
-const inputsearch = () => {
+import { useDummyRequest } from '../../hooks';
+import { productpricingPages } from '../../mappers';
+const inputsearch = (props) => {
+    const { productsbuy } = props.data;
     return (
         <div style={{ marginTop: "25px", padding: "0 10px" }}>
-            {buy.productsbuy.map(val =>
+            {productsbuy.map(val =>
                 <Grid container spacing={12}>
                     <Grid item xs={8} lg={4} sm={8}>
                         <input
@@ -41,10 +41,11 @@ const inputsearch = () => {
         </div>
     )
 }
-const Buydetails = () => {
+const Buydetails = (props) => {
+    const { productsbuy, fadeImages } = props.data;
     return (
         <div>
-            {buy.productsbuy.map(val =>
+            {productsbuy.map(val =>
                 <>
                     <Grid container spacing={12} style={{ padding: "0 10px" }}>
                         <Grid item xs={4} style={{ marginRight: "15px" }}>
@@ -70,7 +71,7 @@ const Buydetails = () => {
                             </Grid>
                         </Grid>
                     </Grid>
-                    {inputsearch()}
+                    {inputsearch(props)}
                 </>
             )}
         </div>
@@ -79,7 +80,7 @@ const Buydetails = () => {
 
 class PriceBuynow extends React.Component {
     state = {
-        showimage: T.fadeImages[0],
+        // showimage: fadeImages[0],
         open: false
     };
 
@@ -91,15 +92,16 @@ class PriceBuynow extends React.Component {
         this.setState({ open: false });
     };
     render() {
-        let { showimage } = this.state;
+        // let { showimage } = this.state;
+        const { productsbuy, fadeImages } = this.props.data;
         return (
             <div>
                 <Hidden smDown>
-                    {Buydetails()}
+                    {Buydetails(this.props)}
                 </Hidden>
 
                 <Hidden mdUp>
-                    {buy.productsbuy.map(val =>
+                    {productsbuy.map(val =>
                         <div style={{ marginTop: "25px" }}>
                             <ProductPrice />
                             <Container>
@@ -121,7 +123,7 @@ class PriceBuynow extends React.Component {
                                         >
                                             <div className='modal-div'>
                                                 <i style={{ fontSize: "20px", color: "#ccc", marginTop: "5%", marginRight: "5%", float: "right" }} className="modal-clos" onClick={this.handleClose} class="fa fa-times-circle"></i>
-                                                <div style={{ backgroundImage: `url(${showimage})`, width: "100%", height: "100%" }}></div>
+                                                <div style={{ backgroundImage: `url(${fadeImages})`, width: "100%", height: "100%" }}></div>
                                             </div>
                                         </Modal>
 
@@ -142,7 +144,7 @@ class PriceBuynow extends React.Component {
                                     </Grid>
                                 </Grid> */}
 
-                            {inputsearch()}
+                            {inputsearch(this.props)}
 
 
                         </div>
@@ -155,4 +157,10 @@ class PriceBuynow extends React.Component {
 PriceBuynow.propTypes = {
     Buydetails: PropTypes.func,
 };
-export default PriceBuynow;
+
+export default (props => {
+    const { mapped } = useDummyRequest(productpricingPages);
+    if (Object.keys(mapped).length === 0) return ''
+
+    return <PriceBuynow {...props} data={mapped} />
+});

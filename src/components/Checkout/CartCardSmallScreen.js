@@ -4,7 +4,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import { productsDetails } from '../product-image-slider/producthoverData';
+// import { productsDetails } from '../product-image-slider/producthoverData';
 // import { dataCard1 } from '../ProductCard/ProductData';
 import { useDummyRequest } from '../../hooks';
 import { productcarddatas } from '../../mappers';  
@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
 function MediaControlCard(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const { dataCard1 } = props.data;
+  const { dataCard1,productsDetails } = props.data;
 
   return (
     <div>

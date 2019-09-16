@@ -12,8 +12,8 @@ import Slideshow from '../Carousel/carosul'
 import React from "react";
 import './product-images.css'
 import PropTypes from 'prop-types';
-import TB from './producthoverData'
-
+import { useDummyRequest } from '../../hooks';
+import { productpricingPages } from '../../mappers';
 class CustomerReviews extends React.Component {
     state = {
         expanded: 'panel1',
@@ -34,6 +34,7 @@ class CustomerReviews extends React.Component {
             autoplaySpeed: 5000,
             arrows: false
         }
+        const { productsubHead } = this.props.data
         return (
             <div>
                 <Hidden smDown>
@@ -67,7 +68,7 @@ class CustomerReviews extends React.Component {
                             <ExpansionPanelDetails>
                                 <Typography style={{ height: "40px", width: "100%", textAlign: "center" }}>
                                     <Slideshow dataCarousel={dataCarousel}>
-                                        {TB.productsubHead.map(val => (
+                                        {productsubHead.map(val => (
                                             <div key={val.name} className="wrappercustom">
                                                 <img className='features-tags-images' src={val.icon} alt="" />
                                                 <span style={{ fontSize: "12px" }}>{val.name} </span>
@@ -86,4 +87,9 @@ class CustomerReviews extends React.Component {
 CustomerReviews.propTypes = {
     handleChange: PropTypes.func,
 };
-export default CustomerReviews;
+export default (props => {
+    const { mapped } = useDummyRequest(productpricingPages);
+    if (Object.keys(mapped).length === 0) return ''
+
+    return <CustomerReviews {...props} data={mapped} />
+});

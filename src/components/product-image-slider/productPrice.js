@@ -4,17 +4,15 @@ import {
     Container,
 } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul'
-import T from './producthoverData'
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './product-images.css'
 import Ratings from '../rating/rating'
 // import card from '../ProductCard/ProductData'
-
 import { withStyles } from '@material-ui/core/styles';
 import Pricing from '../Pricing/index'
 import { useDummyRequest } from '../../hooks';
-import { productcarddatas } from '../../mappers';   
+import { productpricingPages } from '../../mappers';
 const dataCarousel = {
     dots: false,
     infinite: true,
@@ -45,13 +43,13 @@ const styles = theme => ({
         },
     }
 });
-const mobilecarousel = () => {
-  
+const mobilecarousel = (props) => {
+    const { fadeImages } = props.data;
     return (
         <Container>
             <div style={{ height: '200px', width: "auto" }}>
                 <Slideshow class='responseve-carousel testingcur' imgClass='responseve-carousel-img'
-                    fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
+                    fadeImages={fadeImages} dataCarousel={dataCarousel} />
             </div>
 
         </Container>
@@ -91,7 +89,7 @@ const Productprice = (props) => {
                         <hr class="bottom-line product-inform-ation"></hr>
                     </Grid>
                     <Hidden mdUp>
-                        {mobilecarousel()}
+                        {mobilecarousel(props)}
                     </Hidden>
                     <div className={classes.width}>
                         <Pricing price={val.price} offerPrice={val.offerPrice} offerDiscount='25% FLAT OFF' >
@@ -99,7 +97,7 @@ const Productprice = (props) => {
                                 <div className='price-info'>
                                     <Grid item xs={4} lg={2} className='discount-container'>
                                         {val.price}
-                                    </Grid>
+                                    </Grid> 
                                     <Grid item lg={5} xs={8} className="selling-price"><i class="fa fa-rupee"></i> &nbsp;
                               {val.offerPrice}
                                     </Grid>
@@ -145,10 +143,10 @@ ProductPrice.propTypes = {
     Productprice: PropTypes.func,
 };
 export default withStyles(styles, { withTheme: true })(props => {
-    const { mapped } = useDummyRequest(productcarddatas);
+    const { mapped } = useDummyRequest(productpricingPages);
     if (Object.keys(mapped).length === 0) return ''
-  
+
     return <ProductPrice {...props} data={mapped} />
-  });
+});
 
 

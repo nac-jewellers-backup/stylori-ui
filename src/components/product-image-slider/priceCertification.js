@@ -6,21 +6,22 @@ import {
     Typography,
     Grid
 } from '@material-ui/core';
-import img from './producthoverData'
 import React from 'react';
 import './product-images.css'
 import PropTypes from 'prop-types';
-
+import { useDummyRequest } from '../../hooks';
+import { productpricingPages } from '../../mappers';
 class PriceCertification extends React.Component {
     state = {
         expanded: null
     };
     mobilePriceCertificat = () => {
         const { expanded } = this.state;
+        const { imagecertificat } = this.props.data
         return (
             <div>
                 <Container>
-                    {img.imagecertificat.map(val =>
+                    {imagecertificat.map(val =>
                         <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
                             style={{ boxShadow: "none", backgroundColor: "none" }} key={val.name}>
                             <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
@@ -60,10 +61,11 @@ class PriceCertification extends React.Component {
         )
     };
     PriceCertificat = () => {
+        const { imagecertificat } = this.props.data
         return (
             <div>
-                {img.imagecertificat.map(val =>
-                                       <div className="overall-boxz">
+                {imagecertificat.map(val =>
+                    <div className="overall-boxz">
                         <div className="overall-bo">
                             <span className="product-details">{val.header}</span>
                             <hr class="bottom-line"></hr>
@@ -91,8 +93,8 @@ class PriceCertification extends React.Component {
                                 </Grid>
                             </Grid>
                         </div>
-                        </div>
-                   
+                    </div>
+
                 )}
             </div>)
     }
@@ -122,4 +124,9 @@ PriceCertification.propTypes = {
     handle: PropTypes.func
 };
 
-export default PriceCertification;
+export default (props => {
+    const { mapped } = useDummyRequest(productpricingPages);
+    if (Object.keys(mapped).length === 0) return ''
+
+    return <PriceCertification {...props} data={mapped} />
+});

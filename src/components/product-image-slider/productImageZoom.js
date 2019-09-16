@@ -5,13 +5,11 @@ import {
   Button
 } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul'
-import TB from './producthoverData'
-import T from './producthoverData';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './product-images.css'
-
-
+import { useDummyRequest } from '../../hooks';
+import { productpricingPages } from '../../mappers';
 // window.onload = function () {
 //   var flashlight = document.querySelector('#flashlight');
 //   document.getElementById('divs').addEventListener('mouseover', function (event) {
@@ -30,11 +28,11 @@ class ProductImageZoom extends Component {
   state = {
     // backgroundImage: `url(${src})`,
     backgroundPosition: '0% 0%',
-    showimage: T.fadeImages[0],
+    showimage: this.props.data.fadeImages[0]
   }
 
   productImageZoom = () => {
-    let { showimage } = this.state;
+    const { showimage } = this.state;
     const dataCarousel = {
       infinite: true,
       slidesToShow: 4,
@@ -43,7 +41,7 @@ class ProductImageZoom extends Component {
       verticalSwiping: true,
       arrows: false
     }
-
+    const { fadeImages, productsubHead } = this.props.data;
     return (
       <div>
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
@@ -55,7 +53,7 @@ class ProductImageZoom extends Component {
 
               <Slideshow sliderRef={this.slider}
                 getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img'
-                fadeImages={T.fadeImages} dataCarousel={dataCarousel} />
+                fadeImages={fadeImages} dataCarousel={dataCarousel} />
 
               <Button onClick={this.next}>
                 <i class="fa fa-angle-down" style={{ fontSize: "35px", color: "#F699A3" }}></i>
@@ -77,7 +75,7 @@ class ProductImageZoom extends Component {
               <div>
                 <Grid container spacing={12}
                   className='features-tags'>
-                  {TB.productsubHead.map(val => (
+                  {productsubHead.map(val => (
                     <Grid item xs={2} >
                       <div key={val.name}>
                         <img className='features-tags-images' src={val.icon} alt="" />
@@ -150,4 +148,9 @@ ProductImageZoom.propTypes = {
   getimage: PropTypes.func,
   productImageZoom: PropTypes.func,
 };
-export default ProductImageZoom;
+export default (props => {
+  const { mapped } = useDummyRequest(productpricingPages);
+  if (Object.keys(mapped).length === 0) return ''
+
+  return <ProductImageZoom {...props} data={mapped} />
+});

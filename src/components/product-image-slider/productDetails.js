@@ -7,21 +7,23 @@ import {
     Hidden,
     Typography
 } from '@material-ui/core';
-import data from './producthoverData'
 import PropTypes from 'prop-types';
 import React from "react";
 import './product-images.css';
+import { useDummyRequest } from '../../hooks';
+import { productpricingPages } from '../../mappers';
 class ProductDetails extends React.Component {
     state = {
         expanded: null
     };
 
     productsDetails = () => {
+        const { productsDetails,productsPendants } = this.props.data;
         return (
             <div>
                 <Grid container spacing={12} style={{ paddingRight: "20px" }}>
 
-                    {data.productsDetails.map(val => (
+                    {productsDetails.map(val => (
                         <>
                             <div className='overall-boxz'>
                                 <div className='overall-bo'>
@@ -48,7 +50,7 @@ class ProductDetails extends React.Component {
                     ))}
                 </Grid>
                 <Grid container spacing={12} style={{ paddingRight: "20px" }}>
-                    {data.productsPendants.map(val => (
+                    {productsPendants.map(val => (
                         <>
                             <div className='overall-boxz'>
                                 <div className='overall-bo'>
@@ -67,11 +69,12 @@ class ProductDetails extends React.Component {
     };
     mobileproductsDetails = () => {
         const { expanded } = this.state;
+        const { productsDetails ,productsPendants} = this.props.data;
         return (
             <div>
                 <div>
                     <Container>
-                        {data.productsDetails.map(val => (
+                        {productsDetails.map(val => (
                             <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
                                 style={{ boxShadow: "none", backgroundColor: "none" }} key={val.name}>
                                 <ExpansionPanelSummary className="expansion-summary"
@@ -99,7 +102,7 @@ class ProductDetails extends React.Component {
                                     )}
                             </ExpansionPanel>
                         ))}
-                        {data.productsPendants.map(val => (
+                        {productsPendants.map(val => (
                             <ExpansionPanel expanded={expanded === 'panel'} onChange={this.handle('panel')}
                                 style={{ boxShadow: "none", backgroundColor: "none" }}>
                                 <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
@@ -146,4 +149,9 @@ ProductDetails.propTypes = {
     mobileproductsDetails: PropTypes.func,
     handle: PropTypes.func,
 };
-export default ProductDetails;
+export default (props => {
+    const { mapped } = useDummyRequest(productpricingPages);
+    if (Object.keys(mapped).length === 0) return ''
+
+    return <ProductDetails {...props} data={mapped} />
+});

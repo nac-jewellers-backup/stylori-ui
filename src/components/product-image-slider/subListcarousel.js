@@ -7,12 +7,12 @@ import {
   ExpansionPanelDetails,
   Typography,
 } from '@material-ui/core';
-import fade from './producthoverData'
 import PropTypes from 'prop-types';
 import React from 'react';
 import './product-images.css'
 import Slideshow from '../Carousel/carosul'
-
+import { useDummyRequest } from '../../hooks';
+import { productpricingPages } from '../../mappers';
 class Sublistcarousel extends React.Component {
   state = {
     value: 0,
@@ -49,6 +49,7 @@ class Sublistcarousel extends React.Component {
       slidesToShow: 4,
       slidesToScroll: 4
     }
+    const { fadeImagessublist } = this.props.data;
     return (
       <div>
         <Hidden smDown>
@@ -59,7 +60,7 @@ class Sublistcarousel extends React.Component {
             </Grid>
           </div> <div className='sub-carousel-head'>
             <Container maxWidth='md'>
-              <Slideshow class="subslider-carousel" hoverlist={fade.fadeImagessublist}
+              <Slideshow class="subslider-carousel" hoverlist={fadeImagessublist}
                 dataCarousel={dataCarousel} hover={true} >
               </Slideshow>
             </Container>
@@ -78,8 +79,8 @@ class Sublistcarousel extends React.Component {
               </ExpansionPanelSummary>
               <ExpansionPanelDetails >
                 <div style={{ width: "100%" }}>
-                  <Slideshow class={` ${fade.fadeImagessublist ? 'subslider-carousel ' : "shine"}`}
-                    hoverlist={fade.fadeImagessublist}
+                  <Slideshow class={` ${fadeImagessublist ? 'subslider-carousel ' : "shine"}`}
+                    hoverlist={fadeImagessublist}
                     dataCarousel={mobiledataCarousel} hover={true}>
                   </Slideshow>
                 </div>
@@ -96,4 +97,9 @@ Sublistcarousel.propTypes = {
   render: PropTypes.func,
 };
 
-export default Sublistcarousel;
+export default (props => {
+  const { mapped } = useDummyRequest(productpricingPages);
+  if (Object.keys(mapped).length === 0) return ''
+
+  return <Sublistcarousel {...props} data={mapped} />
+});

@@ -85,7 +85,7 @@ export default function Pricing(props) {
 
                 >
                     {/* ₹&nbsp;{props.offerPrice} */}
-                   { new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(props.offerPrice)}
+                    {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(props.offerPrice)}
                 </Typography>
             </Typography>
             {/*  */}
@@ -98,7 +98,7 @@ export default function Pricing(props) {
                     :
 
                     <Typography style={{ display: "flex" }}>
-                        <Typography
+                        {/* <Typography
                             variant="body2"
                             color="textSecondary"
                             className={`${classes.colorMain} ${classes.youSave}`}
@@ -106,7 +106,7 @@ export default function Pricing(props) {
 
                         >
                             You save
-                </Typography>
+                </Typography> */}
                         <Typography
                             variant="caption"
                             color="textSecondary"

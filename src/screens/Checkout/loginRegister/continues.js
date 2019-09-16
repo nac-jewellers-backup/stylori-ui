@@ -5,7 +5,6 @@ import { Input } from '../../../components/InputComponents/TextField/Input'
 
 class Continues extends React.Component {
     state = {
-        age: '',
         mail: ""
     }
     handleChange(event, name) {
