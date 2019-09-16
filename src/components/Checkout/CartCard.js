@@ -17,6 +17,7 @@ import Pricing from '../Pricing/index'
 // 
 // 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import CustomSeparator from '../../components/BreadCrumb/index'
 const styles = theme => ({
     cart: {
         [theme.breakpoints.down('xs')]: {
@@ -235,6 +236,7 @@ class Checkoutcard extends React.Component {
         return (
             <div>
                 <Hidden smDown>
+                    <CustomSeparator data={[window.location.hostname, window.location.pathname.split('/').pop()]} />
                     {this.row()}
                 </Hidden>
                 <Hidden smUp>

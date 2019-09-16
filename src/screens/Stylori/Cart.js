@@ -18,7 +18,6 @@ class Checkout extends React.Component {
                 <Container>
                     <Grid Container spacing={12}>
                         <Grid item xs={12}>
-                            <CustomSeparator data={[window.location.hostname, window.location.pathname.split('/').pop()]} />
                             <CartCard />
                         </Grid>
                     </Grid>

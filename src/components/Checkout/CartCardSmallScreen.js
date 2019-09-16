@@ -7,13 +7,14 @@ import Typography from "@material-ui/core/Typography";
 // import { productsDetails } from '../product-image-slider/producthoverData';
 // import { dataCard1 } from '../ProductCard/ProductData';
 import { useDummyRequest } from '../../hooks';
-import { productcarddatas } from '../../mappers';  
+import Pricing from '../Pricing/index'
+import { productcarddatas } from '../../mappers';
 const useStyles = makeStyles(theme => ({
   card: {
     width: "100%",
     margin: "auto",
     display: "flex",
-    marginBottom:"15px"
+    marginBottom: "15px"
   },
   details: {
     display: "flex",
@@ -66,11 +67,11 @@ const useStyles = makeStyles(theme => ({
 function MediaControlCard(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const { dataCard1,productsDetails } = props.data;
+  const { dataCard1 } = props.data;
 
   return (
-    <div style={{background:"whitesmoke"}}>
-      {productsDetails.map(val => (
+    <div style={{ background: "whitesmoke",paddingTop:"10px" }}>
+      {dataCard1.map(val => (
         <Card className={classes.card}>
           <div style={{ width: "195px" }}>
             <img
@@ -87,9 +88,11 @@ function MediaControlCard(props) {
                 variant="subtitle1"
                 className={classes.contents}
               >
-                {val.header}
+                {val.title}
               </Typography>
-              {dataCard1.map(val =>
+
+
+              <Pricing price={val.price} offerPrice={val.offerPrice}  >
                 <label className={classes.labelPrice}>
                   <Typography
                     variant="subtitle1"
@@ -107,7 +110,7 @@ function MediaControlCard(props) {
                     {val.price}
                   </Typography>
                 </label>
-              )}
+              </Pricing>
             </CardContent>
             <div className={classes.controls}>
               <Button
