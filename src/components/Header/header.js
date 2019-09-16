@@ -32,7 +32,7 @@ class Header extends Component {
       open: false,
       panel: false,
       panel1: false,
-      Menuopen: true,
+      Menuopen: false,
       selected: '',
       selected1: '',
       Checked: false,
@@ -121,10 +121,9 @@ class Header extends Component {
               </Grid>
               <Grid container spacing={12}>
                 <Grid item xs={12} className={`header-navbar-list ${classes.colorLight}`}
-                 
+                  onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }}
 
                 >
-                  {/*  onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }} */}
 
                   <nav
                   >
@@ -162,10 +161,9 @@ class Header extends Component {
 
                     this.state.Menuopen && menuLists[this.state.listHoverItem] ?
                       <HeaderHoverMenuItem Checked={this.state.Checked} tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
-                        
+                        onMouseOver={() => { this.setState({ Menuopen: true, }) }}
+                        onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }}
                       />
-                      // onMouseOver={() => { this.setState({ Menuopen: true, }) }}
-                        // onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }}
                       :
                       ''
                   }

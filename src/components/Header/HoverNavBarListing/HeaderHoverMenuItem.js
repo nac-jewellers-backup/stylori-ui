@@ -38,7 +38,7 @@ function HeaderHoverMenuItem(props) {
           </Grid>
         }
         {(activetab === 'Price' || activetab === 'Material') &&
-          <Grid item xs={6}>
+          <Grid item xs={6} >
             <HoverTableGrid activetab={activetab} tabdata={props.tabdata} />
           </Grid>
         }
