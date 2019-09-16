@@ -4,9 +4,11 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import CardRadioButton from "../InputComponents/RadioButton/index"
 import './filter.css';
-import filterdatas from './Filterdata';
+import { useDummyRequest } from '../../hooks';
+import { filterParams } from '../../mappers';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { sortOptions } from '../../mappers/dummydata/filterdata';
 
 const styles = theme => ({
 
@@ -51,6 +53,7 @@ class FilterHeader extends Component {
     render() {
 
         const { classes } = this.props;
+        const {  sortOptions } = this.props.data;
         return (
             <Paper style={{ position: 'sticky', top: this.state.topHeight, width: '100%', zIndex: '3', boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">
                 {/* <div style={{position:'sticky',top:'165px'}}> */}
@@ -102,7 +105,7 @@ class FilterHeader extends Component {
                             right: "15px", top: "65px", boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 7px'
                         }}>
                             <Collapse in={this.state.expanded} timeout="auto">
-                                <CardRadioButton data={filterdatas.radioValues} />
+                                <CardRadioButton data={sortOptions} />
                             </Collapse>
                         </div>
                     </Grid>
@@ -112,4 +115,9 @@ class FilterHeader extends Component {
         );
     }
 }
-export default withStyles(styles)(FilterHeader);
+export default withStyles(styles)(props =>{
+    const { mapped } = useDummyRequest(filterParams);
+    if (Object.keys(mapped).length === 0) return ''
+  return < FilterHeader {...props} data={mapped} />
+  });
+  

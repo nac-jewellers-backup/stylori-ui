@@ -7,7 +7,6 @@ import {
 }
   from '@material-ui/core';
 import { ExpandLess, ExpandMore, } from '@material-ui/icons';
-import filterdatas from './Filterdata';
 import './filter.css';
 import ProductLayout from '../ProductCard/ProductLayout';
 import FilterHeader from './FilterHeader';
@@ -15,6 +14,8 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CardRadioButton from '../InputComponents/RadioButton/index'
 import { isUndefined } from 'util';
+import { useDummyRequest } from '../../hooks';
+import { filterParams } from '../../mappers';
 const drawerWidth = 280;
 
 
@@ -88,9 +89,23 @@ const styles = theme => ({
   colorMainBackground: {
     backgroundColor: theme.palette.primary.main
   },
-  productCards: {
+  productCardscheck:{
+    width:'80%',
+ 
     [theme.breakpoints.down('md')]: {
       width: '100% !important'
+    },
+    [theme.breakpoints.up('xl')]: {
+      width:  '90%'
+    },
+  },
+  productCardsuncheck: {
+    width:  '100%',
+    [theme.breakpoints.down('md')]: {
+      width: '100% !important'
+    },
+    [theme.breakpoints.up('xl')]: {
+      width:  '100%',
     },
   }
 });
@@ -183,7 +198,7 @@ class PersistentDrawerLeft extends React.Component {
   };
   componentDidMount() {
     var numberOne = 1232224.789;
-    var numberTwo = 1833362.222
+    var numberTwo = 1833362.222;
     var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
     var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
     this.setState({ numOne: numOne, numTwo: numTwo })
@@ -219,8 +234,9 @@ class PersistentDrawerLeft extends React.Component {
   }
 
   render() {
-    console.log(this.state.numOne);
-    const { classes } = this.props;
+
+    const { classes} = this.props;
+    const { filter, subFilter, sortOptions } = this.props.data;
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
 
@@ -288,11 +304,17 @@ class PersistentDrawerLeft extends React.Component {
                         </Grid>
                       </div>
                       {/* filter */}
+                      
+                      {console.log(filter)}
+                    
+                      
                       <div>
                         {
+                          
                           <>
                             {
-                              filterdatas.filter.map((row, i) => {
+                              
+                              filter.map((row, i) => {
 
                                 return (
                                   <>
@@ -309,11 +331,11 @@ class PersistentDrawerLeft extends React.Component {
                                     </ListItem>
                                     <>
                                       {(selected === row &&
-                                        filterdatas.filter1[row] !== undefined) &&
+                                        subFilter[row] !== undefined) &&
 
                                         <>
                                           {
-                                            filterdatas.filter1[row].filter((row12, i) =>
+                                            subFilter[row].filter((row12, i) =>
                                               (i < (this.state[`li_${row}`] ? this.state[`li_${row}`] : 4))).map(row12 => {
                                                 return (<div>
 
@@ -339,16 +361,16 @@ class PersistentDrawerLeft extends React.Component {
                                           }
 
                                           {
-                                            (filterdatas.filter1[row].length) - 4 !== 0 &&
+                                            (subFilter[row].length) - 4 !== 0 &&
                                             <>
                                               {this.state[`li_${row}`] === undefined || this.state[`li_${row}`] === 4 ?
 
-                                                <div onClick={() => this.setState({ [`li_${row}`]: filterdatas.filter1[row].length })}
+                                                <div onClick={() => this.setState({ [`li_${row}`]: subFilter[row].length })}
                                                   className="fil-submenu-icons"
 
                                                 >
                                                   <p style={{ fontSize: '14px', paddingLeft: '16px', paddingRight: '16px', color: 'rgba(241, 72, 128, 1)', cursor: 'pointer' }}>
-                                                    +&nbsp;{(filterdatas.filter1[row].length) - 4} More
+                                                    +&nbsp;{(subFilter[row].length) - 4} More
                                            </p>
                                                 </div>
                                                 :
@@ -387,8 +409,8 @@ class PersistentDrawerLeft extends React.Component {
           {
             this.state.productDisplay &&
             <div
-              style={{ width: check ? '80%' : '100%' }}
-              className={classes.productCards}
+              
+              className={check?classes.productCardscheck : classes.productCardsuncheck }
 
             >
               <ProductLayout />
@@ -413,7 +435,7 @@ class PersistentDrawerLeft extends React.Component {
               <Grid container item xs={12} >
                 <Grid item xs={6} style={{ backgroundColor: "#F2F2F2", overflow: 'scroll', height: '73vh' }}>
                   <List className="mbl-filter-list">
-                    {filterdatas.filter.map(row => (
+                    {filter.map(row => (
                       <ListItem key={row} className="mbl-filter-list"
                         onClick={() => this.filterValue(row)}
                       >
@@ -426,12 +448,12 @@ class PersistentDrawerLeft extends React.Component {
                       </ListItem>
                     ))}
                   </List>
-                  {console.info('data-filter', filterdatas.filter1, this.state.filtercheck)}
+                  {console.info('data-filter', subFilter, this.state.filtercheck)}
                 </Grid>
                 {
                   this.state.filtercheck !== '' &&
                   <Grid item xs={6} style={{ overflow: 'scroll', height: '73vh' }}>
-                    {filterdatas.filter1[this.state.filtercheck].map(row => {
+                    {subFilter[this.state.filtercheck].map(row => {
 
                       return (
 
@@ -511,7 +533,7 @@ class PersistentDrawerLeft extends React.Component {
           </div>
           {this.state.CardRadio ?
             <div style={{ position: 'fixed', bottom: '42px', }}>
-              <CardRadioButton cardWidth="cardSortSmallScreen" data={filterdatas.radioValues} />
+              <CardRadioButton cardWidth="cardSortSmallScreen" data={sortOptions} />
             </div>
             :
             ''
@@ -532,4 +554,8 @@ PersistentDrawerLeft.propTypes = {
   filterdatas: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(PersistentDrawerLeft);
+export default withStyles(styles, { withTheme: true })(props =>{
+  const { mapped } = useDummyRequest(filterParams);
+  if (Object.keys(mapped).length === 0) return ''
+return < PersistentDrawerLeft {...props} data={mapped} />
+});

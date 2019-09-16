@@ -5,7 +5,7 @@ import StoryRouter from 'storybook-react-router';
 
 import { Button, Welcome } from '@storybook/react/demo';
 import ProductCards from '../src/components/ProductCard/ProductCards';
-import ProductData from '../src/components/ProductCard/ProductData';
+// import ProductData from '../src/components/ProductCard/ProductData';
 import Cards from '../src/components/ProductCard/Card'
 
 addDecorator(muiTheme());
