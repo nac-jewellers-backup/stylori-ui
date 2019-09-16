@@ -4,6 +4,7 @@ import BreadCrumb from '../../components/BreadCrumb/index'
 import CartCard from '../../components/Checkout/CartCard';
 import Footer from '../../components/Footer/Footer'
 import { Grid, Container } from '@material-ui/core';
+import CustomSeparator from '../../components/BreadCrumb/index'
 import Header from '../../components/Header/header'
 class Checkout extends React.Component {
     render() {
@@ -17,7 +18,7 @@ class Checkout extends React.Component {
                 <Container>
                     <Grid Container spacing={12}>
                         <Grid item xs={12}>
-                            <BreadCrumb />
+                            <CustomSeparator data={[window.location.hostname, window.location.pathname.split('/').pop()]} />
                             <CartCard />
                         </Grid>
                     </Grid>

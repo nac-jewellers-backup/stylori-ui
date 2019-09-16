@@ -47,7 +47,7 @@ class LoginRegisterIndex extends React.Component {
 
                                     </Card>
                                 </Grid>
-                            )}
+                            )} 
                         </Grid>
                     </> 
                 </div>

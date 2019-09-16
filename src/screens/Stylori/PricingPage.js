@@ -30,7 +30,7 @@ export default class Stylori extends Component {
           </Grid>
           <Grid Container spacing={12}>
             <Grid item xs={12}>
-              <CustomSeparator />
+              <CustomSeparator data={[window.location.hostname,window.location.pathname.split('/').pop()]}/>
             </Grid>
           </Grid>
           <Container>
