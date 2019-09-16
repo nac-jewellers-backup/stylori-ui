@@ -1,6 +1,7 @@
 const resolutions = [
-    { res: '318x318', size: '320w' },
-    { res: '372x372', size: '480w' },
+    { res: '318x318', size: '375w' },
+    { res: '372x372', size: '500w' },
+    { res: '276x276', size: '1440w' },
     { res: '422x422', size: '600w' },
     { res: '247x247', size: '768w' },
     { res: '204x204', size: '1024w' },

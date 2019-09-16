@@ -12,13 +12,19 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'space-around',
         overflow: 'hidden',
         backgroundColor: theme.palette.background.paper,
+        padding:'2%'
     },
     gridList: {
         width: 500,
-        height: 450,
+        // height: 450,
     },
     imgTextColor: {
         color: theme.palette.primary.main
+    },
+    ulDiv:{
+        '& div':{
+            textAlign:'left'
+        }
     }
 }));
 
@@ -32,8 +38,8 @@ function ImageGridList(props) {
                 <GridList cellHeight={170} className={classes.gridList} cols={3}>
                     {props.tabdata[props.activetab].images.map(tile => (
 
-                        <GridListTile key={tile.img} cols={tile.cols || 1} >
-                            <img src={tile.img} className={'shine menuListHoverDiv '} cols={tile.cols || 1} style={{ width: '120px', height: '120px' }} alt="" />
+                        <GridListTile key={tile.img} cols={tile.cols || 1} className={`${classes.ulDiv}`} >
+                            <img src={tile.img} className={'shine menuListHoverDiv  '}  cols={tile.cols || 1} style={{ width: '120px', height: '120px' }} alt="" />
                             <Grid container justify="center">
                                 <Grid item className={classes.imgTextColor}>
                                     {/* {tile.title} */}
@@ -54,7 +60,7 @@ function ImageGridList(props) {
             <Grid container xs={3}>
                 {props.tabdata[props.activetab].sideBanner.map(tile => (
                     <Grid item>
-                        <img src={tile.img} cols={tile.cols || 1} alt="img" style={{ width: '100%', height: '100%' }} />
+                        <img src={tile.img} cols={2} alt="img" style={{ width: '100%', height: '100%' }} />
                     </Grid>
 
                 ))}

@@ -11,11 +11,20 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'space-around',
         overflow: 'hidden',
         backgroundColor: theme.palette.background.paper,
+        
     },
     gridList: {
-        width: 500,
-        height: 450,
+        width: '90%',
+        // height: 450,
+       
+        
     },
+    //  gridlistLi:{
+    //     height:'auto !important'
+    // },
+    gridListtitle:{
+        padding:'2%'
+    }
 }));
 
 
@@ -30,8 +39,11 @@ function ImageGridList(props) {
 
 
                 {props.tabdata[props.activetab].map(tile => (
-                    <GridListTile key={tile.img} cols={tile.cols || 1} >
-                        <img src={tile.img} cols={tile.cols || 1} style={{ width: '120px', height: '120px' }} alt="img" />
+                    <GridListTile key={tile.img} cols={tile.cols || 1} className={classes.gridlistLi}>
+                        <img src={tile.img} style={{width:'100%',height:'auto'}}  alt="img" />
+                        <div className={`${classes.gridListtitle}`}>
+                            product
+                        </div >
                     </GridListTile>
 
                 ))}

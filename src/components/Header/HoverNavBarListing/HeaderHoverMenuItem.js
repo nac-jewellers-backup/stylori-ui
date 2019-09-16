@@ -1,35 +1,49 @@
 import React from 'react';
 import {Paper, Grid} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import MenuListItem from './MenuList';
 import ImageGridList from './HoverImagesGrid'
 import PropTypes from 'prop-types';
 import HoverTableGrid from './HoverTableGrid';
 import HoverImagesFullGrid from './HoverImagesFullGrid';
 import './../header.css'
+const useStyles = makeStyles(theme => ({
+  paperdiv:{
+    position: "relative",
+     left: '12%',
+      width: '76vw',
+    [theme.breakpoints.down('md')]: {
+      width:'92vw',
+      left:'3%'
+    },
+  },
+
+}));
 
 function HeaderHoverMenuItem(props) {
   const [activetab, setActivetab] = React.useState("earings");
   const { onMouseLeave, onMouseOver } = props;
-  console.log(props.listHoverItem);
+  const classes = useStyles();
+  // console.log(props.listHoverItem);
   return (
-    <Paper style={{ position: "relative", left: '12%', width: '76vw' }} className="animations" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} >
+    <Paper  className={`${classes.paperdiv} animations`} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} >
       <Grid container>
-        <Grid container item xs={3}>
+        <Grid container item xs={3} className={classes.menulistWidth} >
           <MenuListItem listHoverItem={props.listHoverItem} handleMouseOver={val => setActivetab(val)} activetab={activetab} />
         </Grid>
         {
           (activetab !== 'Price' && activetab !== 'Collection' && activetab !== 'Material' && activetab !== 'Collection') &&
-          <Grid item xs={9}>
+          <Grid item xs={9} style={{margin:'auto'}}>
             <ImageGridList activetab={activetab} tabdata={props.tabdata} />
           </Grid>
         }
         {(activetab === 'Price' || activetab === 'Material') &&
-          <Grid item xs={6}>
+          <Grid item xs={6} >
             <HoverTableGrid activetab={activetab} tabdata={props.tabdata} />
           </Grid>
         }
         {(activetab === 'Collection') &&
-          <Grid item xs={8}>
+          <Grid item xs={9} style={{margin:'auto'}}>
             <HoverImagesFullGrid activetab={activetab} tabdata={props.tabdata} />
           </Grid>
         }
