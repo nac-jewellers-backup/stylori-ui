@@ -14,7 +14,7 @@ class LoginRegisterIndex extends React.Component {
             Register: false,
             Continue: false,
             Login: false,
-            isActive:""
+            isActive: ""
         };
     }
     toggle(name, value) {
@@ -46,11 +46,10 @@ class LoginRegisterIndex extends React.Component {
                                         </div>
                                     </Card>
                                 </Grid>
-                            )} 
+                            )}
                         </Grid>
-                    </> 
+                    </>
                 </div>
-
                 <div style={{ display: this.state.Login == true ? "block" : "none" }}>
                     <Login />
                 </div>
@@ -60,7 +59,6 @@ class LoginRegisterIndex extends React.Component {
                 <div style={{ display: this.state.Continue == true ? "block" : "none" }}>
                     <Continues />
                 </div>
-
 
             </Container>
         )

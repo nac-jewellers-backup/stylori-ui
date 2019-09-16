@@ -69,7 +69,7 @@ function MediaControlCard(props) {
   const { dataCard1,productsDetails } = props.data;
 
   return (
-    <div>
+    <div style={{background:"whitesmoke"}}>
       {productsDetails.map(val => (
         <Card className={classes.card}>
           <div style={{ width: "195px" }}>

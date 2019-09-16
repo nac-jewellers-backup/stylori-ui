@@ -265,7 +265,7 @@ const resolutions = [
   
     },
   ];
-  export const dataCard1 = [
+  export const dataCard1 = [ 
     {
       offerPrice: "23000.10",
       price: "29000.0",
@@ -281,3 +281,60 @@ const resolutions = [
   
     },
   ]
+  export const productsDetails = [
+    {
+        header: "Product Details",
+        namedetail: [{
+            name: "Product Code",
+            details: "SP0-110000"
+        },
+        {
+            name: "Metal Type",
+            details: "18K Yellow Gold"
+        }, {
+            name: "Approximate",
+            details: "1.463"
+        }],
+    }, {
+        header: "Diamond Details ",
+
+
+        namedetail: [
+            {
+                name: "Total No of ",
+            },
+            {
+                name: "Diamonds",
+                details: "35"
+            },
+            {
+                name: "Color",
+                details: "IF"
+            },
+            {
+                name: "Clarity",
+                details: "SI"
+            },
+
+        ],
+    },
+    {
+        header: "Price Breakup",
+        namedetail: [{
+            name: "Metal",
+            details: "SP0679-18110000"
+        },
+        {
+            name: "Diamond",
+            details: "18K Yellow Gold"
+        }, {
+            name: "Making Charges",
+            details: "1.463"
+        },
+        {
+            name: "GST",
+            details: "1.463"
+        },
+        ],
+    },
+];
