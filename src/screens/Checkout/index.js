@@ -17,6 +17,7 @@ import CartCard from '../../components/Checkout/CartCard';
 import LoginRegisterIndex from './loginRegister';
 import { withStyles } from '@material-ui/core/styles';
 import Addressdetails from './addressDetails/addressDetails';
+import PaymentIndex from './paymentOption/paymentindex';
 const styles = theme => ({
     cart: {
         [theme.breakpoints.down('xs')]: {
@@ -110,7 +111,7 @@ class Chckoutindex extends React.Component {
                         <Avatar className='avart-ckc'>4</Avatar><Typography className='text-chck'>Payment Options</Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
-                        it's wait
+                       <PaymentIndex />
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
 

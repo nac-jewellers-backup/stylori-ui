@@ -63,10 +63,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function MediaControlCard() {
+function MediaControlCard(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const { dataCard1 } = this.props.data;
+  const { dataCard1 } = props.data;
 
   return (
     <div>

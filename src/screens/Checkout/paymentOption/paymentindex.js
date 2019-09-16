@@ -1,64 +1,98 @@
 import React from 'react';
-import { Container, Grid, Button } from '@material-ui/core';
+import { Container, Grid, Hidden, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography } from '@material-ui/core';
 import './payment.css';
 import Creditform from './creditForm';
 import Debitform from './debitForm';
 import CashonDelivey from './cashonDelivery';
 import Netbanking from './netBanking';
-var divs = ["Menu1", "Menu2", "Menu3", "Menu4"];
-var visibleDivId = null;
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 class PaymentIndex extends React.Component {
     constructor() {
         super();
         this.state = {
+            isActive: 'Creditform',
         };
     }
 
-    toggleVisibility = (divId) => {
-        if (visibleDivId === divId) {
-            visibleDivId = null;
-        } else {
-            visibleDivId = divId;
-        }
-        this.hideNonVisibleDivs();
+    toggleCollapsed = (name) => {
+        this.setState({ isActive: [name] })
+
     }
-    hideNonVisibleDivs = () => {
-        var i, divId;
-        for (i = 0; i < divs.length; i++) { 
-            divId = divs[i];
-            if (visibleDivId === divId) {
-                document.getElementById('divId').style.display = "block";
-            } else {
-                document.getElementById('divId').style.display = "none";
-            }
-        }
-    }
+
     render() {
         return (
-            <Container>
-                <Grid container spacing={12} className="panel-body">
-                    <Grid item lg={3} className='pay-index-subhed'>
-                        <p onClick={this.toggleVisibility('Menu1')}>  <div className="cc-icon"></div> &nbsp; Credit card </p>
-                        <p onClick={this.toggleVisibility('Menu2')}>  <div className="dc-icon"></div> &nbsp; Debit card </p>
-                        <p onClick={this.toggleVisibility('Menu3')}>  <div className="net-bnk-icon"></div> &nbsp; Net Banking </p>
-                        <p onClick={this.toggleVisibility('Menu4')}>  <div className="code-icon"></div>&nbsp;   Cash On Delivery (COD)</p>
-                    </Grid>
-                    <Grid item lg={7}>
-                        <div id="Menu1" style={{ display: "none" }}>
+            <div className="payment-div">
+                <Container>
+                    <Hidden smDown>
+                        <Grid container spacing={12} className="panel-body">
+                            <Grid item lg={3}>
+                                <div className="pay-index-subhed">
+                                    <p onClick={() => this.toggleCollapsed('Creditform')}> <div className="cc-icon"></div> &nbsp; Credit card </p>
+                                    <p onClick={() => this.toggleCollapsed('Debitform')}>  <div className="dc-icon"></div> &nbsp; Debit card </p>
+                                    <p onClick={() => this.toggleCollapsed('Netbanking')}>  <div className="net-bnk-icon"></div> &nbsp; Net Banking </p>
+                                    <p onClick={() => this.toggleCollapsed('CashonDelivey')}>  <div className="code-icon"></div>&nbsp;   Cash On Delivery (COD)</p>
+                                </div>
+                            </Grid>
+                            <Grid item lg={7}>
+                                <div style={{ marginTop: "20px", width: "100%" }}>
+                                    {
+                                        this.state.isActive == 'Creditform' &&
+                                        <Creditform />
+                                    }
+
+                                    {
+                                        this.state.isActive == 'Debitform' && <Debitform />
+                                    }
+                                    {
+                                        this.state.isActive == 'Netbanking' && <Netbanking />
+                                    }
+                                    {
+                                        this.state.isActive == 'CashonDelivey' && <CashonDelivey />
+                                    }
+                                </div>
+                            </Grid>
+                        </Grid>
+                    </Hidden>
+
+                </Container>
+                <Hidden mdUp>
+                    <ExpansionPanel className="respone-div">
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                            <Typography className="py-head">  Credit card  </Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Creditform />
-                        </div>
-                        <div id="Menu2" style={{ display: "none" }}>
+                        </ExpansionPanelDetails>
+                    </ExpansionPanel>
+
+                    <ExpansionPanel className="respone-div">
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                            <Typography className="py-head">  Debit card  </Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Debitform />
-                        </div>
-                        <div id="Menu3" style={{ display: "none" }}>
+                        </ExpansionPanelDetails>
+                    </ExpansionPanel>
+
+                    <ExpansionPanel className="respone-div">
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                            <Typography className="py-head">  Net Banking  </Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Netbanking />
-                        </div>
-                        <div id="Menu4" style={{ display: "none" }}>
+                        </ExpansionPanelDetails>
+                    </ExpansionPanel>
+
+                    <ExpansionPanel className="respone-div">
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                            <Typography className="py-head">    Cash On Delivery (COD) Credit card  </Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <CashonDelivey />
-                        </div>
-                    </Grid>
-                </Grid>
-            </Container>
+                        </ExpansionPanelDetails>
+                    </ExpansionPanel>
+                </Hidden>
+            </div>
         )
     }
 }

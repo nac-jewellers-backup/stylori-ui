@@ -19,12 +19,7 @@ export default class Checkout extends Component {
                     </Grid>
                 </Grid>
                 <Container>
-                    {/* <Chckoutindex/> */}
-                    {/* <Creditform/>
-                    <Debitform/>
-                    <Netbanking/>
-                    <CashonDelivey/> */}
-                    <PaymentIndex/>
+                    <Chckoutindex/>
                 </Container>
 
 

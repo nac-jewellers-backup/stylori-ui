@@ -72,7 +72,7 @@
 }
 .pay-index-subhed{
     float: left;
-    width: 100%;
+    width: 100% !important;
     background: #f0f0f0;
     border-right: 1px solid #d3d3d3;
     min-height: 400px;
@@ -112,4 +112,23 @@
     width: 24px;
     height: 24px;
     float: left;
+}
+.payment-div{
+    /* margin-top: 20px; */
+}
+.respone-div{
+    box-shadow: none !important;   
+    border: 1px solid #d3d3d3!important;
+     
+}
+.py-head{
+    font-size: 12px!important;
+    background: #f0f0f0 !important;
+    font-weight: 400;
+    margin-right: 0;
+    text-align: left !important;
+    padding: 5px;
+    color: #333!important;
+    cursor: pointer;
+    line-height: 21px;
 }

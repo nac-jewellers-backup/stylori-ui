@@ -103,7 +103,7 @@ class Register extends React.Component {
                                 </Grid>
                             </Grid>
                             <div className='login-butn'>
-                                <Button className='back-b' oncl>Back</Button>
+                                <Button className='back-b'  >Back</Button>
                                 <Button className='apply-b' type="submit">Apply</Button>
                             </div>
                         </Grid>
