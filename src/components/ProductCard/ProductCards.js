@@ -60,8 +60,9 @@ const renderImages = (props, cardstate) => {
     console.info('props.data.image[filterType]',props.data.image[filterType]);
     return props.data.image[filterType].map(imgs=> `${imgs.img} ${imgs.size}`).toString()
 }
-const renderImagesSrc = (props) => {
-  return props.data.image['placeImage'].map(placeImage => placeImage.img )
+const renderImagesSrc = (props, cardstate) => {
+  const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
+  return props.data.image[filterType][6].img
 }
 export default function ProductCards(props) {
   const classes = useStyles();
@@ -114,18 +115,18 @@ export default function ProductCards(props) {
 <img 
 srcset={renderImages(props, cardstate)}
 sizes="(max-width: 320px) 320w,
-            (max-width: 480px) 600w,
+            (max-width: 480px) 375w,
             (max-width: 600px) 600w,
             (max-width: 992px) 768w,
-            (max-width: 1440px) 600w,
+            (max-width: 1440px) 1440w,
             (max-width: 2560px) 2560w,
             2560w
            
 "
-src= {renderImagesSrc(props)} className={`${props.data.image? '' : 'shine '}`}     alt=""
+     alt=""
           width='100%'
           height='100%'
-          
+          src = {renderImagesSrc(props, cardstate)}
           title={props.data.title}
           onMouseOver={() => {
             setCardState({ ...cardstate, hovered: !cardstate.hovered });
@@ -134,7 +135,7 @@ src= {renderImagesSrc(props)} className={`${props.data.image? '' : 'shine '}`}  
             setCardState({ ...cardstate, hovered: !cardstate.hovered });
           }}
           />
-
+{/* src= {renderImagesSrc(props)} className={`${props.data.image? '' : 'shine '}`} */}
 
 
 

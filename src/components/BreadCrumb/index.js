@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function CustomSeparator() {
+export default function CustomSeparator(props) {
   const classes = useStyles();
 
   return (
@@ -34,13 +34,15 @@ export default function CustomSeparator() {
 
         <Paper elevation={0} className={classes.paper} style={{ height: "40px" }}>
           <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="Breadcrumb" style={{ lineHeight: "40px" }}>
+{
+  props.data.map(data=>(
+    <Link color="inherit" onClick={data} className={classes.BreadCrumbs} style={{ fontSize: "14px" }}>
+      {data}
+    </Link>
+  ))
+           
 
-            <Link color="inherit" onClick={window.location.hostname} className={classes.BreadCrumbs} style={{ fontSize: "14px" }}>
-              {window.location.hostname}
-
-            </Link>
-
-            <Link style={{ fontSize: "14px" }} color="textPrimary" className={classes.BreadCrumbs} to={window.location.pathname}>{window.location.pathname.split('/').pop()}</Link>
+}          
           </Breadcrumbs>
         </Paper>
       </div>

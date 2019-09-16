@@ -60,7 +60,7 @@ class ProductDescription extends Component {
                   style={{ textAlign: 'center' }}
 
                   alignItems="center">
-                  <CustomSeparator />
+                  <CustomSeparator data={[window.location.hostname,window.location.pathname.split('/').pop()]}/>
                 </Grid>
               </Hidden>
               <Hidden smDown >
