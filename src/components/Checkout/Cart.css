@@ -162,6 +162,7 @@
         overflow-y: auto !important;
         width: 95% !important;
     }
+
     .response-image {
         padding: 0px !important;
         margin: 0px !important;
@@ -206,3 +207,24 @@
     }
 
     .checkout-page-total {}
+
+    .breadcrums-header {
+        background: #394578 !important;
+        width: 100% !important;
+        padding-top: 1%;
+        padding-bottom: 1%;
+    }
+
+    .breadcrums-sub {
+        background: #394578 !important;
+        color: #fff !important;
+    }
+
+    .MuiBreadcrumbs-li {
+        /* padding: 0 5px;
+        border-top: 18px solid transparent !important;
+        border-bottom: 18px solid transparent !important;
+        border-left: 25px solid #394578 !important;
+        border: 1px solid #CCC !important;*/
+        color: #fff !important;
+    }

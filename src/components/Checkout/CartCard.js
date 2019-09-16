@@ -116,7 +116,7 @@ class Checkoutcard extends React.Component {
         const { classes } = this.props;
         const { productsDetails, fadeImages, dataCard1 } = this.props.data;
         return (
-            <div>
+            <div style={{ marginTop: "10px" }}>
                 {productsDetails.map(val => (
                     <div className={classes.cart}>
                         <Grid container spacing={12} xs={12}  >
@@ -236,7 +236,29 @@ class Checkoutcard extends React.Component {
         return (
             <div>
                 <Hidden smDown>
-                    <CustomSeparator data={[window.location.hostname, window.location.pathname.split('/').pop()]} />
+                    <CustomSeparator
+                        className="breadcrums-header"
+                        classsubhed="breadcrums-sub"
+                        list='MuiBreadcrumbs-li'
+                        data={["Shopping Bag",
+                            "Login/ Register",
+                            "Address Detail",
+                            "Payment Options",
+                            "Order Confirmation",
+                            // 100% Certified
+                            // Jewellery
+                            // Secure
+                            // Payments
+                            // Free Insured
+                            // Shipping
+                            // 25 - Day
+                            // Returns
+                        ]}
+                    /><br />
+                    {this.checkoutbutton()}
+                    <br />
+                    <br />
+                    <br />
                     {this.row()}
                 </Hidden>
                 <Hidden smUp>

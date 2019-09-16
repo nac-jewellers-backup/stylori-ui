@@ -28,24 +28,20 @@ export default function CustomSeparator(props) {
   const classes = useStyles();
 
   return (
+    <div className={props.className}> 
     <Container >
-      <div className={classes.root}>
-
-
-        <Paper elevation={0} className={classes.paper} style={{ height: "40px" }}>
-          <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="Breadcrumb" style={{ lineHeight: "40px" }}>
-{
-  props.data.map(data=>(
-    <Link color="inherit" onClick={data} className={classes.BreadCrumbs} style={{ fontSize: "14px" }}>
-      {data}
-    </Link>
-  ))
-           
-
-}          
+        <Paper elevation={0} className={props.classsubhed}>
+          <Breadcrumbs>
+            {
+              props.data.map(data => (
+                <Link color="inherit" onClick={data}  style={{ fontSize: "14px" }}  className={props.list}>
+                  {data}
+                </Link>
+              ))
+            }
           </Breadcrumbs>
         </Paper>
-      </div>
     </Container>
+    </div>
   );
 }
