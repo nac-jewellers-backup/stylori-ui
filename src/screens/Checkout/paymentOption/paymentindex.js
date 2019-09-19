@@ -58,7 +58,7 @@ class PaymentIndex extends React.Component {
                 <Hidden mdUp>
                     <ExpansionPanel className="respone-div">
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                            <Typography className="py-head">  Credit card  </Typography>
+                            <Typography className="py-head"><div className="cc-icon">&nbsp;</div>Credit card  </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Creditform />
@@ -67,7 +67,7 @@ class PaymentIndex extends React.Component {
 
                     <ExpansionPanel className="respone-div">
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                            <Typography className="py-head">  Debit card  </Typography>
+                            <Typography className="py-head">  <div className="dc-icon"></div> &nbsp; Debit card </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Debitform />
@@ -76,7 +76,7 @@ class PaymentIndex extends React.Component {
 
                     <ExpansionPanel className="respone-div">
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                            <Typography className="py-head">  Net Banking  </Typography>
+                            <Typography className="py-head">  <div className="net-bnk-icon"></div> &nbsp; Net Banking  </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Netbanking />
@@ -85,7 +85,7 @@ class PaymentIndex extends React.Component {
 
                     <ExpansionPanel className="respone-div">
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                            <Typography className="py-head">    Cash On Delivery (COD) Credit card  </Typography>
+                            <Typography className="py-head">  <div className="code-icon"></div>&nbsp;   Cash On Delivery (COD) </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <CashonDelivey />

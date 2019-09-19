@@ -191,7 +191,6 @@
 
     .ckeckout-top {
         margin-top: 1% !important;
-        margin-right: 7% !important;
         float: right !important;
     }
 
@@ -213,11 +212,33 @@
 
     .breadcrums-header {
         width: 100% !important;
+        cursor: pointer;
+    }
 
+    .hov {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .btn-plain {
+        color: #394578;
+        background: #FFF;
+        font-weight: 400;
+        text-decoration: underline;
+        font-size: 15px;
+        padding: 9px 12px;
+        float: right;
+        cursor: pointer;
     }
 
     .breadcrums-sub {
         color: #fff !important;
+    }
+
+    @media screen and (max-width: 1220px) {
+        .breadcrums-sub {
+            display: none !important;
+        }
     }
 
     .MuiBreadcrumbs-li {

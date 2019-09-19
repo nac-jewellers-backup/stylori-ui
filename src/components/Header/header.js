@@ -72,25 +72,25 @@ class Header extends Component {
     document.getElementById('topNav').style.paddingTop = "0";
     document.getElementById('topNav').style.transition = "0.5s";
     // var heightHeader = document.getElementById('headerDiv').clientHeight;
-if(document.getElementById("SliderFilter")){
-  document.getElementById("SliderFilter").style.top = "185px";
-  document.getElementById('SliderFilter').style.transition = "0.5s";
-  document.getElementById("filterBy").style.top = "120px";
-  document.getElementById('filterBy').style.transition = "0.5s";
-}
+    if (document.getElementById("SliderFilter")) {
+      document.getElementById("SliderFilter").style.top = "185px";
+      document.getElementById('SliderFilter').style.transition = "0.5s";
+      document.getElementById("filterBy").style.top = "120px";
+      document.getElementById('filterBy').style.transition = "0.5s";
+    }
 
   }
   render() {
-    
+
     const { mainlist, Jewellery, subheader, menuListHeader, menuLists, earings, rings, pendants, nosepins, banglesbracelets, valayal, kammal, koluse, Price,
       Collection, Material } = this.props.data;
     let { selected, selected1 } = this.state;
     const { classes } = this.props;
+    let path = window.location.pathname.split('/').pop();
     return (
       <div>
         <Hidden smDown >
           <HeaderNotification headerTransition={() => { this.headerTransitions() }} />
-
           <div className="header-appbar-sticky" id='headerDiv'>
             <AppBar className="header-appbar" id="topNav">
               <Grid container spacing={12}  >
@@ -121,16 +121,17 @@ if(document.getElementById("SliderFilter")){
                   </div>
                 </Grid>
               </Grid>
-              <Grid container spacing={12}>
-                <Grid item xs={12} className={`header-navbar-list ${classes.colorLight}`}
-                  onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }}
+              {path == "cart" || 'Checkout' ? "" :
+                <Grid container spacing={12}>
+                  <Grid item xs={12} className={`header-navbar-list ${classes.colorLight}`}
+                    onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }}
 
-                >
-
-                  <nav
                   >
 
-                    {/* <a href="" className={`${classes.colorLight}`} alt=""><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
+                    <nav
+                    >
+
+                      {/* <a href="" className={`${classes.colorLight}`} alt=""><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
   
   
                       <a href=""
@@ -150,27 +151,27 @@ if(document.getElementById("SliderFilter")){
                       ><i class="fa fa-plus-circle"></i>&nbsp;Collections</a>
                       <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;One Day Sipping</a>
                       <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Stories</a> */}
+                      {
+                        (menuListHeader.map(listName => {
+                          return (
+                            <a href={listName} className={` ${classes.menuListCursor} ${classes.colorLight} `} onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: listName.replace(/ +/g, "") }) }}><i class="fa fa-plus-circle"></i>&nbsp;{listName}</a>
+                          )
+
+                        }))
+                      }
+                    </nav>
                     {
-                      (menuListHeader.map(listName => {
-                        return (
-                          <a href={listName} className={` ${classes.menuListCursor} ${classes.colorLight} `} onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: listName.replace(/ +/g, "") }) }}><i class="fa fa-plus-circle"></i>&nbsp;{listName}</a>
-                        )
 
-                      }))
+                      this.state.Menuopen && menuLists[this.state.listHoverItem] ?
+                        <HeaderHoverMenuItem Checked={this.state.Checked} tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
+                          onMouseOver={() => { this.setState({ Menuopen: true, }) }}
+                          onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }}
+                        />
+                        :
+                        ''
                     }
-                  </nav>
-                  {
-
-                    this.state.Menuopen && menuLists[this.state.listHoverItem] ?
-                      <HeaderHoverMenuItem Checked={this.state.Checked} tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
-                        onMouseOver={() => { this.setState({ Menuopen: true, }) }}
-                        onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }}
-                      />
-                      :
-                      ''
-                  }
-                </Grid>
-              </Grid>
+                  </Grid>
+                </Grid>}
               <div className="header-bottom"></div>
 
             </AppBar>

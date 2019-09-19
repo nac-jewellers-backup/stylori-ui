@@ -30,13 +30,15 @@ export default class Stylori extends Component {
           </Grid>
           <Grid Container spacing={12}>
             <Grid item xs={12}>
-              <CustomSeparator
-              list='pricing-loctn'
-              classsubhed='pricing-loctn-head' 
-               data={[window.location.hostname,window.location.pathname.split('/').pop()]}/>
+              <div className="pricing-breadcrums-media">
+                <CustomSeparator
+                  list='pricing-loctn'
+                  classsubhed='pricing-loctn-head'
+                  data={[window.location.hostname, window.location.pathname.split('/').pop()]} />
+              </div>
             </Grid>
           </Grid>
-          <Container>
+          <div className="pricing-imgzom-media">
             <Grid container spacing={12}>
               <Grid item xs={6}>
                 <ProductImageZoom />
@@ -53,20 +55,18 @@ export default class Stylori extends Component {
                 </div>
               </Grid>
             </Grid>
-          </Container><br />
-          <div style={{ background: "whitesmoke" }}>
-            <Container>
-              <Grid container spacing={12}>
-                <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
-                  <ProductDetails />
-                </Grid>
-                <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
-                  <PriceCertification />
-                  <Request />
-                </Grid>
-                <br />
+          </div><br />
+          <div style={{ background: "whitesmoke" }} className="pricing-product-media">
+            <Grid container spacing={12}>
+              <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
+                <ProductDetails />
               </Grid>
-            </Container>
+              <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
+                <PriceCertification />
+                <Request />
+              </Grid>
+              <br />
+            </Grid>
           </div>
           <Sublistcarousel />
           <RatingForm />

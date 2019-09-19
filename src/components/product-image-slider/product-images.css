@@ -479,10 +479,11 @@
     .imagecard {
         width: 100% !important;
         border: 1px solid #ccc;
-        height: 450px !important;
         counter-increment: inherit;
+        height: 480px !important;
         float: left !important;
     }
+
 
     #flashlight {
         position: absolute;
@@ -512,11 +513,11 @@
     .overly-img {
         border: 1px solid rgb(204, 204, 204);
         display: none;
+        height: 480px !important;
         width: 35%;
         float: left !important;
         position: absolute;
         z-index: 3;
-        height: 450px !important;
         background-repeat: no-repeat;
         background-color: #fff !important;
     }
@@ -527,6 +528,7 @@
         margin-bottom: 15px !important;
         width: 90% !important;
         height: 80px !important;
+        outline: none !important;
         cursor: pointer;
     }
 
@@ -544,6 +546,7 @@
         background-color: #fff;
         width: 100% !important;
         text-align: center !important;
+        cursor: pointer !important;
     }
 
     .subslider-carousel-img {
@@ -719,7 +722,8 @@
         border: none !important;
     }
 
-    .header-APP,.MuiTab-root{
+    .header-APP,
+    .MuiTab-root {
         /* padding: 0 10px; */
         /* background: none !important; */
         min-width: 33% !important;
@@ -831,4 +835,22 @@
     .pricing-loctn-head {
         margin-top: 1.5% !important;
         margin-bottom: 1.5% !important;
+    }
+
+    @media screen and (max-width: 1220px),
+    (min-width: 1220px) {
+        .pricing-imgzom-media {
+            padding-left: 5% !important;
+            padding-right: 5% !important;
+        }
+
+        .pricing-product-media {
+            padding-left: 5% !important;
+            padding-right: 5% !important;
+        }
+
+        .pricing-breadcrums-media {
+            padding-left: 5% !important;
+            padding-right: 5% !important;
+        }
     }

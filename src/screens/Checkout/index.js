@@ -9,6 +9,7 @@ import {
     Avatar,
     Grid
 } from '@material-ui/core';
+import "../../components/Checkout/Cart.css";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Login from './loginRegister/login';
 import Addressform from './addressDetails/addressForm';
@@ -18,6 +19,9 @@ import LoginRegisterIndex from './loginRegister';
 import { withStyles } from '@material-ui/core/styles';
 import Addressdetails from './addressDetails/addressDetails';
 import PaymentIndex from './paymentOption/paymentindex';
+import { useDummyRequest } from '../../hooks';
+import { cartdatas } from '../../mappers';
+import CustomSeparator from '../../components/BreadCrumb/index'
 const styles = theme => ({
     cart: {
         [theme.breakpoints.down('xs')]: {
@@ -28,6 +32,12 @@ const styles = theme => ({
             boxShadow: "none",
         },
     },
+    normalcolorback: {
+        background: theme.palette.text.primary
+    },
+    fontwhite: {
+        color: theme.palette.overallButoon.contrastText
+    }
 });
 
 class Chckoutindex extends React.Component {
@@ -45,80 +55,96 @@ class Chckoutindex extends React.Component {
     render() {
         const { expanded } = this.state;
         const { classes } = this.props;
+        const { breadcrumsdata, cartsubdata } = this.props.data;
         return (
-            <div className='pt-sm' style={{ marginTop: "20px" }}>
-                <ExpansionPanel
-                    square
-                    expanded={expanded === 'panel1'}
-                    onChange={this.handleChange('panel1')}
-                    style={{ boxShadow: "none" }}
-                >
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
-                        <Avatar className='avart-ckc'>1</Avatar><Typography className='text-chck'> Login or Register</Typography>
-                    </ExpansionPanelSummary >
-                    <ExpansionPanelDetails
+            <div className='pt-sm checkout-ovralldiv-media' >
+                <CustomSeparator
+                    arrowicon='cart-head-arrows'
+                    className={`breadcrums-header ${classes.normalcolorback}`}
+                    classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
+                    list={`MuiBreadcrumbs-li ${classes.fontwhite}`}
+                    data={breadcrumsdata}
+                    subdata={cartsubdata}
+                />
+                <div style={{ marginTop: "20px" }}>
+                    <ExpansionPanel
+                        square
+                        expanded={expanded === 'panel1'}
+                        onChange={this.handleChange('panel1')}
+                        style={{ boxShadow: "none" }}
                     >
-                        <LoginRegisterIndex />
-                    </ExpansionPanelDetails>
-                </ExpansionPanel>
-                <ExpansionPanel
-                    square
-                    expanded={expanded === 'panel2'}
-                    onChange={this.handleChange('panel2')}
-                    style={{ boxShadow: "none" }}>
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
-                        <Avatar className='avart-ckc'>2</Avatar><Typography className='text-chck'>Address Detail</Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
-                        <Grid container >
-                            <Grid item xs={12} lg={12}>
-                                <Addressform />
-                            </Grid>
-                            {/* <Grid item xs={12} lg={12}>
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
+                            <Avatar className='avart-ckc'>1</Avatar><Typography className='text-chck'> Login or Register</Typography>
+                        </ExpansionPanelSummary >
+                        <ExpansionPanelDetails
+                        >
+                            <LoginRegisterIndex />
+                        </ExpansionPanelDetails>
+                    </ExpansionPanel>
+                    <ExpansionPanel
+                        square
+                        expanded={expanded === 'panel2'}
+                        onChange={this.handleChange('panel2')}
+                        style={{ boxShadow: "none" }}>
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
+                            <Avatar className='avart-ckc'>2</Avatar><Typography className='text-chck'>Address Detail</Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                            <Grid container >
+                                <Grid item xs={12} lg={12}>
+                                    <Addressform />
+                                </Grid>
+                                {/* <Grid item xs={12} lg={12}>
                                 <Addressdetails />
                             </Grid> */}
-                        </Grid>
-                    </ExpansionPanelDetails>
-                </ExpansionPanel>
-                <ExpansionPanel
-                    square
-                    expanded={expanded === 'panel3'}
-                    onChange={this.handleChange('panel3')}
-                    style={{ boxShadow: "none" }} >
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
-                        <Avatar className='avart-ckc'>3</Avatar><Typography className='text-chck'>Order Summary</Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails >
-                        <Grid container >
-                            <Grid item xs={12} lg={12}>
-                                <CartCard />
                             </Grid>
-                            <Grid item xs={12} lg={12} className={classes.cart}>
-                                <ProductList />
+                        </ExpansionPanelDetails>
+                    </ExpansionPanel>
+                    <ExpansionPanel
+                        square
+                        expanded={expanded === 'panel3'}
+                        onChange={this.handleChange('panel3')}
+                        style={{ boxShadow: "none" }} >
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
+                            <Avatar className='avart-ckc'>3</Avatar><Typography className='text-chck'>Order Summary</Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails >
+                            <Grid container >
+                                <Grid item xs={12} lg={12}>
+                                    <CartCard />
+                                </Grid>
+                                <Grid item xs={12} lg={12} className={classes.cart}>
+                                    <ProductList />
+                                </Grid>
+
                             </Grid>
 
-                        </Grid>
 
-
-                    </ExpansionPanelDetails>
-                </ExpansionPanel>
-                <ExpansionPanel
-                    square
-                    expanded={expanded === 'panel4'}
-                    onChange={this.handleChange('panel4')}
-                    style={{ boxShadow: "none" }}  >
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
-                        <Avatar className='avart-ckc'>4</Avatar><Typography className='text-chck'>Payment Options</Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
-                       <PaymentIndex />
-                    </ExpansionPanelDetails>
-                </ExpansionPanel>
+                        </ExpansionPanelDetails>
+                    </ExpansionPanel>
+                    <ExpansionPanel
+                        square
+                        expanded={expanded === 'panel4'}
+                        onChange={this.handleChange('panel4')}
+                        style={{ boxShadow: "none" }}  >
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
+                            <Avatar className='avart-ckc'>4</Avatar><Typography className='text-chck'>Payment Options</Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                            <PaymentIndex />
+                        </ExpansionPanelDetails>
+                    </ExpansionPanel>
 
 
 
+                </div>
             </div>
         )
     }
 }
-export default withStyles(styles, { withTheme: true })(Chckoutindex);
+export default withStyles(styles)(props => {
+    const { mapped } = useDummyRequest(cartdatas);
+    if (Object.keys(mapped).length === 0) return ''
+
+    return <Chckoutindex {...props} data={mapped} />
+});

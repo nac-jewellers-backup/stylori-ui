@@ -80,7 +80,7 @@ class Checkoutcard extends React.Component {
                                     <Grid item xs={3} >
                                         <Typography className={`subhesder ${classes.normalfonts}`}>Quantity 1</Typography>
                                         <br />
-                                        <Typography className={`subhesder ${classes.normalfonts}`}>
+                                        <Typography className={`subhesder hov ${classes.normalfonts}`}>
                                             <i class="fa fa-trash"></i>
                                             &nbsp;Remove</Typography>
                                     </Grid>
@@ -113,14 +113,19 @@ class Checkoutcard extends React.Component {
     }
     checkoutbutton = () => {
         const { classes } = this.props;
+        let path = window.location.pathname.split('/').pop();
         return (
-            <div className='ckeckout-top'>
-                <Buynowbutton class={`chckout-page-buynow ${classes.buttons}`} />
+            <div>
+                {path == "Checkout" ? "" :
+                    <div className='ckeckout-top'>
+                        <Buynowbutton class={`chckout-page-buynow ${classes.buttons}`} />
+                    </div>}
             </div>
         )
     }
     subtotals = () => {
         const { dataCard1 } = this.props.data;
+        let path = window.location.pathname.split('/').pop();
         const { classes } = this.props;
         return (
             <div style={{ marginTop: "10px" }} >
@@ -144,7 +149,15 @@ class Checkoutcard extends React.Component {
                             </Grid>
                         )} </Grid>
                 </Grid>
-                {this.checkoutbutton()}
+                <Grid container>
+                    {path == "Checkout" ? "" :
+                        <Grid xs={12} lg={7}>
+                            <div className='btn-plain'> CONTINUE SHOPPING</div>
+                        </Grid>}
+                    <Grid xs={12} lg={4} >
+                        {this.checkoutbutton()}
+                    </Grid>
+                </Grid>
             </div>
         )
     }
@@ -156,17 +169,21 @@ class Checkoutcard extends React.Component {
         const { breadcrumsdata, cartsubdata } = this.props.data;
 
         const { classes } = this.props;
+        let path = window.location.pathname.split('/').pop();
         return (
             <div>
                 <Hidden smDown>
-                    <CustomSeparator
-                        arrowicon='cart-head-arrows'
-                        className={`breadcrums-header ${classes.normalcolorback}`}
-                        classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
-                        list={`MuiBreadcrumbs-li ${classes.fontwhite}`}
-                        data={breadcrumsdata}
-                        subdata={cartsubdata}
-                    />
+                    {path == "Checkout" ? "" :
+                        <CustomSeparator
+                            arrowicon='cart-head-arrows'
+                            className={`breadcrums-header ${classes.normalcolorback}`}
+                            classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
+                            list={`MuiBreadcrumbs-li ${classes.fontwhite}`}
+                            data={breadcrumsdata}
+                            subdata={cartsubdata}
+                        />
+                    }
+
                     {this.checkoutbutton()}
                     <br />
                     <br />

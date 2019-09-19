@@ -6,6 +6,7 @@ import Footer from '../../components/Footer/Footer'
 import { Grid, Container, Hidden } from '@material-ui/core';
 import CustomSeparator from '../../components/BreadCrumb/index'
 import Header from '../../components/Header/header'
+import './index.css'
 class Checkout extends React.Component {
     render() {
         return (
@@ -17,13 +18,13 @@ class Checkout extends React.Component {
                             <Header />
                         </Grid>
                     </Grid>
-                    <Container>
+                    <div className="cart-ovralldiv-media">
                         <Grid Container spacing={12}>
                             <Grid item xs={12}>
                                 <CartCard />
                             </Grid>
                         </Grid>
-                    </Container>
+                    </div>
                     <Grid Container spacing={12}>
                         <Grid item xs={12}>
                             <Footer />
