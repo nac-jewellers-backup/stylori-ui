@@ -81,7 +81,7 @@ class PriceTabs extends React.Component {
                             index={this.state.value}
                             onChangeIndex={this.handleChangeIndex}
                         >
-                            <TabContainer>
+                            <TabContainer> 
                                 <div className={classes.pagination}>
                                     <Slideshow dataCarousel={settings}>
                                         {val.tab1.Children.map((val, i) =>
