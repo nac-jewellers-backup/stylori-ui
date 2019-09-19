@@ -9,7 +9,8 @@ import {
 import Ratings from "../rating/rating";
 import { Input } from '../InputComponents/TextField/Input'
 import { Form } from '../Form/Form'
-
+import { withStyles } from '@material-ui/core/styles';
+import styles from './style'
 document.getElementById(function () {
     var checkbox = document.getElementById("#trigger");
     var hidden = document.getElementById("#hidden_fields");
@@ -40,15 +41,16 @@ class RatingForm extends React.Component {
         // e.preventDefault();
     }
     ratingForm = (err, errors) => {
+        const { classes } = this.props;
         return (
             <Grid container spacing={12} style={{ marginTop: '20px' }}>
                 <Grid item lg={1} />
                 <Grid item xs={12} lg={8}>
-                    <h5 className='rating-form-head'>Rate This</h5>
+                    <h5 className={`rating-form-head ${classes.normalfonts}`}>Rate This</h5>
                     <div className="rating-form">
                         <Ratings />
                     </div>
-                    <h3 className='rating-form-head'>Write Your Review</h3>
+                    <h3 className={`rating-form-head ${classes.normalfonts}`}>Write Your Review</h3>
                     <Input
                         margin="normal"
                         variant="outlined"
@@ -61,7 +63,7 @@ class RatingForm extends React.Component {
                         onChange={event => this.handleChange(event, 'title')}
                         required
                     />
-                    <span className='tool-tips' >Max 60 Characters</span>
+                    <span className={`tool-tips ${classes.normalfonts}`} >Max 60 Characters</span>
                     <Input
                         margin="normal"
                         variant="outlined"
@@ -73,7 +75,7 @@ class RatingForm extends React.Component {
                         onChange={event => this.handleChange(event, 'reviews')}
                         value={this.state.reviews}
                     />
-                    <span className='tool-tips' >Max 250 Characters</span>
+                    <span className={`tool-tips ${classes.normalfonts}`} >Max 250 Characters</span>
                     {/* <button type="submit" >rr</button> */}
                 </Grid>
             </Grid>
@@ -81,6 +83,7 @@ class RatingForm extends React.Component {
 
     }
     render() {
+        const { classes } = this.props;
         return (
             <div>
                 <Container>
@@ -90,8 +93,8 @@ class RatingForm extends React.Component {
                         <Grid container spacing={12} style={{ marginTop: '20px' }}>
                             <Grid item xs={12} lg={9}>
                                 <div style={{ float: "right" }}>
-                                    <Button className='form-reviews-mob' type="submit">Write a Reviews</Button>
-                                    <Button className='form-cancel-mob' >Cancel</Button>
+                                    <Button className={`form-reviews-mob ${classes.fontwhite} ${classes.normalcolorback}`} type="submit">Write a Reviews</Button>
+                                    <Button className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite}`} >Cancel</Button>
                                 </div>
                             </Grid>
                         </Grid>
@@ -102,4 +105,4 @@ class RatingForm extends React.Component {
     }
 }
 
-export default RatingForm;
+export default withStyles(styles)(RatingForm);

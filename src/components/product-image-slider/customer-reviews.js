@@ -13,7 +13,9 @@ import React from "react";
 import './product-images.css'
 import PropTypes from 'prop-types';
 import { useDummyRequest } from '../../hooks';
+import { withStyles } from '@material-ui/core/styles';
 import { productpricingPages } from '../../mappers';
+import styles from './style'
 class CustomerReviews extends React.Component {
     state = {
         expanded: 'panel1',
@@ -35,16 +37,17 @@ class CustomerReviews extends React.Component {
             arrows: false
         }
         const { productsubHead } = this.props.data
+        const { classes } = this.props;
         return (
             <div>
                 <Hidden smDown>
                     <Container>
                         <div>
                             <div className="reviews-header">
-                                <span className="reviews-customer">Customer Reviews</span>
+                                <span className={`reviews-customer ${classes.normalfonts}`}>Customer Reviews</span>
                             </div>
                             <div className="reviews">
-                                <span className="data-reviews">No Reviews Found</span>
+                                <span className={`data-reviews ${classes.normalfonts}`}>No Reviews Found</span>
                             </div>
                         </div>
                     </Container>
@@ -61,7 +64,7 @@ class CustomerReviews extends React.Component {
                             <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                                 <i class="fa fa-sort-up" ></i></span>}>
                                 <div style={{ width: "100%" }} >
-                                    <Typography className='subtabs-smrt'>You recently viewed</Typography>
+                                    <Typography className={`subtabs-smrt ${classes.normalfonts}`}>You recently viewed</Typography>
                                     <hr class="bottom-line border-line-"></hr>
                                 </div>
                             </ExpansionPanelSummary>
@@ -87,7 +90,7 @@ class CustomerReviews extends React.Component {
 CustomerReviews.propTypes = {
     handleChange: PropTypes.func,
 };
-export default (props => {
+export default withStyles(styles)(props => {
     const { mapped } = useDummyRequest(productpricingPages);
     if (Object.keys(mapped).length === 0) return ''
 

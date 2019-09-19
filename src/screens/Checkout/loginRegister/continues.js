@@ -39,7 +39,7 @@ class Continues extends React.Component {
                                 <p class="form-group"> We don't share these with anybody. Your contact details are secure with us. </p>
 
                                 <div className='login-butn'>
-                                    <Button className='back-b'>Back</Button>
+                                    <Button className='back-b' href="/Checkout">Back</Button>
                                     <Button className='apply-b' type='submit'>Apply</Button>
                                 </div>
                             </Grid>

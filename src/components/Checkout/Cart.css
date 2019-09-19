@@ -69,7 +69,6 @@
     }
 
     .title {
-        color: #394578;
         font-weight: 400;
         height: 15px !important;
     }
@@ -103,7 +102,6 @@
     .price {
         font-size: 25px;
         margin-bottom: 2px;
-        color: #ed1165;
     }
 
     .price-response {
@@ -116,12 +114,15 @@
 
     .offer-description {
         margin-bottom: 2px;
-        background: #ed1165;
         color: #FFF;
         border-radius: 3px !important;
         padding: 1px 5px !important;
         font-weight: 400 !important;
         font-size: 12px !important;
+    }
+
+    .btn-cart-resp:hover {
+        background: #f36e23 !important
     }
 
     .remove-product {
@@ -135,7 +136,6 @@
     .subhesder {
         padding: 4px 3px !important;
         font-size: 12px !important;
-        color: #394578;
         width: 100% !important;
         overflow: hidden;
     }
@@ -190,16 +190,19 @@
     }
 
     .ckeckout-top {
-        margin-bottom: 15px;
+        margin-top: 1% !important;
         margin-right: 7% !important;
         float: right !important;
     }
 
+    .chckout-page-buynow:hover {
+        background: #f36e23 !important;
+        color: #fff !important;
+    }
+
     .chckout-page-buynow {
-        background-color: #f36e23 !important;
         border: 1px solid #f36e23 !important;
         color: #FFF !important;
-        border-radius: 0px !important;
         font-size: 17px;
         min-width: 230px !important;
         padding: 9px 12px !important;
@@ -209,14 +212,11 @@
     .checkout-page-total {}
 
     .breadcrums-header {
-        background: #394578 !important;
         width: 100% !important;
-        padding-top: 1%;
-        padding-bottom: 1%;
+
     }
 
     .breadcrums-sub {
-        background: #394578 !important;
         color: #fff !important;
     }
 
@@ -226,5 +226,15 @@
         border-bottom: 18px solid transparent !important;
         border-left: 25px solid #394578 !important;
         border: 1px solid #CCC !important;*/
-        color: #fff !important;
+        font-size: 12px !important;
+    }
+
+    .cart-head-arrows {
+        margin-bottom: -9px !important;
+        margin-top: -9px !important;
+    }
+
+    .MuiBreadcrumbs-separator {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
     }

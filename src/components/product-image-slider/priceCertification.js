@@ -11,6 +11,8 @@ import './product-images.css'
 import PropTypes from 'prop-types';
 import { useDummyRequest } from '../../hooks';
 import { productpricingPages } from '../../mappers';
+import { withStyles } from '@material-ui/core/styles';
+import styles from './style'
 class PriceCertification extends React.Component {
     state = {
         expanded: null
@@ -18,6 +20,7 @@ class PriceCertification extends React.Component {
     mobilePriceCertificat = () => {
         const { expanded } = this.state;
         const { imagecertificat } = this.props.data
+        const { classes } = this.props;
         return (
             <div>
                 <Container>
@@ -27,7 +30,7 @@ class PriceCertification extends React.Component {
                             <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                                 <i class="fa fa-sort-up" ></i></span>} >
                                 <div style={{ width: "100%" }} >
-                                    <Typography className='subtabs-smrt'>{val.header}</Typography>
+                                    <Typography className={`subtabs-smrt ${classes.normalfonts}`}>{val.header}</Typography>
                                     <hr class="bottom-line border-line-"></hr>
                                 </div>
 
@@ -62,12 +65,13 @@ class PriceCertification extends React.Component {
     };
     PriceCertificat = () => {
         const { imagecertificat } = this.props.data
+        const { classes } = this.props;
         return (
             <div>
                 {imagecertificat.map(val =>
                     <div className="overall-boxz">
                         <div className="overall-bo">
-                            <span className="product-details">{val.header}</span>
+                            <span className={`product-details ${classes.normalfonts}`}>{val.header}</span>
                             <hr class="bottom-line"></hr>
                             <Grid container spacing={12} >
                                 <Grid item xs={6} style={{ padding: "0px 33px" }}>
@@ -124,7 +128,7 @@ PriceCertification.propTypes = {
     handle: PropTypes.func
 };
 
-export default (props => {
+export default withStyles(styles)(props => {
     const { mapped } = useDummyRequest(productpricingPages);
     if (Object.keys(mapped).length === 0) return ''
 

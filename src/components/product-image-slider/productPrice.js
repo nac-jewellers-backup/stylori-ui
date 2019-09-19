@@ -13,36 +13,15 @@ import { withStyles } from '@material-ui/core/styles';
 import Pricing from '../Pricing/index'
 import { useDummyRequest } from '../../hooks';
 import { productpricingPages } from '../../mappers';
+import styles from './style'
 const dataCarousel = {
     dots: false,
     infinite: true,
     speed: 1000,
     fade: true,
     arrows: true,
-
 }
 
-const styles = theme => ({
-    pricedetails: {
-        [theme.breakpoints.down('xs')]: {
-            padding: "0"
-
-        },
-        [theme.breakpoints.up('lg')]: {
-            padding: "0 10px"
-        },
-    },
-    width: {
-        [theme.breakpoints.down('xs')]: {
-            padding: "0 10px"
-
-        },
-        [theme.breakpoints.up('lg')]: {
-            paddingRight: "15px",
-            paddingLeft: "15px",
-        },
-    }
-});
 const mobilecarousel = (props) => {
     const { fadeImages } = props.data;
     return (
@@ -56,15 +35,14 @@ const mobilecarousel = (props) => {
     );
 };
 
+
+
 const Productprice = (props) => {
-    debugger;
     const { classes } = props;
     const { dataCard1 } = props.data;
     return (
         <div>
-
             {dataCard1.map(val => (
-
                 <>
                     <Grid container spacing={12} sm={12} className={classes.pricedetails}>
                         <Grid item xs={7} lg={8}>
@@ -72,16 +50,17 @@ const Productprice = (props) => {
                                 <h1 className="pdp-title">
                                     {val.title}
                                 </h1>
-                                <p className="pdp-desc">
+                                <p className={`pdp-desc ${classes.dis}`}>
                                     {val.dis}
                                 </p>
                             </div>
                         </Grid>
                         <Grid item xs={5} lg={4}>
                             <div className="starts">
-                                <div className="row social-shares">
-                                    <i class="fa fa-share-alt overall-icons"></i>&nbsp;
-                       <i class="fa fa-heart-o overall-icons"></i>
+                                <div className="row social-shares" className={classes.icon}>
+                                    <i class="fa fa-share-alt overall-icons"></i>
+                                    &nbsp;
+                                    <i class="fa fa-heart-o overall-icons"></i>
                                 </div>
                                 <Ratings ratings="starts-review" />
                             </div>
@@ -94,11 +73,11 @@ const Productprice = (props) => {
                     <div className={classes.width}>
                         <Pricing price={val.price} offerPrice={val.offerPrice} offerDiscount='25% FLAT OFF' >
                             <Grid container spacing={12}>
-                                <div className='price-info'>
-                                    <Grid item xs={4} lg={2} className='discount-container'>
+                                <div className={`price-info ${classes.dis}`}>
+                                    <Grid item xs={4} lg={2} className={`discount-container ${classes.dis}`}>
                                         {val.price}
-                                    </Grid> 
-                                    <Grid item lg={5} xs={8} className="selling-price"><i class="fa fa-rupee"></i> &nbsp;
+                                    </Grid>
+                                    <Grid item lg={5} xs={8} className={`selling-price ${classes.backgsecondary}`}><i class="fa fa-rupee"></i> &nbsp;
                               {val.offerPrice}
                                     </Grid>
                                 </div>
@@ -119,14 +98,13 @@ class ProductPrice extends Component {
     constructor(props) {
         super(props)
     }
-
-
     render() {
         return (
             <div>
                 <Hidden smDown>
                     {Productprice(this.props)}
                 </Hidden>
+
                 <Hidden mdUp>
                     <Container>
                         {Productprice(this.props)}

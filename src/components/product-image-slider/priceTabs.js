@@ -18,6 +18,7 @@ import Slideshow from '../Carousel/carosul';
 import { withStyles } from '@material-ui/core/styles';
 import { useDummyRequest } from '../../hooks';
 import { productpricingPages } from '../../mappers';
+import styles from './style'
 function TabContainer({ children, dir }) {
     return (
         <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
@@ -25,18 +26,7 @@ function TabContainer({ children, dir }) {
         </Typography>
     );
 }
-const styles = theme => ({
-    pagination: {
-        [theme.breakpoints.down('xs')]: {
-            width: "100%"
-        },
-        [theme.breakpoints.up('lg')]: {
-            paddingLeft: "50px",
-            paddingRight: "50px",
-            textAlign: "center"
-        },
-    },
-});
+
 const settings = {
     className: 'center',
     infinite: true,
@@ -53,13 +43,12 @@ class PriceTabs extends React.Component {
         value: 0,
         values: "",
         expanded: null,
-        isActive: '',
+        isActive: '2',
     };
     handleClick(event) {
         console.log(event.target.value)
         this.setState({
             isActive: event.target.name,
-
         });
     }
 
@@ -79,10 +68,10 @@ class PriceTabs extends React.Component {
                                     onChange={this.handleChange}
                                     indicatorColor="primary"
                                 >
-                                    <Tab className='subtabs' icon={<i class="fa fa-circle-thin tabs-hesd-icon"></i>} label={val.tab1.header} />
-                                    <Tab className='subtabs' icon={<i class="fa fa-cube tabs-hesd-icon"></i>}
+                                    <Tab className={`subtabs ${classes.tabsheadcolor}`} icon={<i class="fa fa-circle-thin tabs-hesd-icon"></i>} label={val.tab1.header} />
+                                    <Tab className={`subtabs ${classes.tabsheadcolor}`} icon={<i class="fa fa-cube tabs-hesd-icon"></i>}
                                         label={val.tab2.header} />
-                                    <Tab className='subtabs' icon={<i class="fa fa-diamond tabs-hesd-icon"></i>
+                                    <Tab className={`subtabs ${classes.tabsheadcolor}`} icon={<i class="fa fa-diamond tabs-hesd-icon"></i>
                                     } label={val.tab3.header} />
                                 </Tabs>
                             </AppBar>
@@ -94,20 +83,20 @@ class PriceTabs extends React.Component {
                             <TabContainer>
                                 <div className={classes.pagination}>
                                     <Slideshow dataCarousel={settings}>
-                                        {val.tab1.Children.map((val,i) =>
+                                        {val.tab1.Children.map((val, i) =>
                                             <>
-                                                    <button
-                                                        className={this.state.isActive== i ?'dark' : 'page'}
-                                                        value={val} id={val} name={i}
-                                                        onClick={event => this.handleClick(event)}
-                                                    >
-                                                        {val}
-                                                    </button>
+                                                <button
+                                                    className={this.state.isActive == i ? `dark ${classes.tabsRingBckg}` : 'page'}
+                                                    value={val} id={val} name={i}
+                                                    onClick={event => this.handleClick(event)}
+                                                >
+                                                    {val}
+                                                </button>
                                             </>
                                         )}
                                     </Slideshow>
-                                    <div style={{ marginTop: "10px" }}>
-                                        <span className="my-ringsize">My Ring Size ?</span>
+                                    <div style={{ marginTop: "10px", textAlign: "center" }}>
+                                        <span className={`my-ringsize ${classes.normalfonts}`}>My Ring Size ?</span>
                                     </div>
                                 </div>
 
@@ -119,7 +108,7 @@ class PriceTabs extends React.Component {
                                         <Grid xs={4}>
                                             <div style={{ width: "100%" }}><img src={val.icon} style={{ width: '35px' }} alt="" /></div>
                                             <div style={{ marginTop: "-10px" }}>
-                                                <span className="tabs-contants">  {val.name}</span>
+                                                <span className={`tabs-contants ${classes.normalfonts}`}>  {val.name}</span>
                                             </div>
                                         </Grid>
                                     )}
@@ -132,7 +121,7 @@ class PriceTabs extends React.Component {
                                             <div style={{ width: "100%" }}>
                                                 <img src={val.icon} style={{ width: '35px' }} alt="" /></div>
                                             <div style={{ marginTop: "-10px" }}>
-                                                <span className="tabs-contants">  {val.name}</span>
+                                                <span className={`tabs-contants ${classes.normalfonts}`}>  {val.name}</span>
                                             </div>
                                         </Grid>
                                     )}
@@ -159,24 +148,23 @@ class PriceTabs extends React.Component {
                                     style={{ boxShadow: "none", backgroundColor: "none" }}>
                                     <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
                                         <div style={{ width: "100%" }} >
-                                            <Typography className='subtabs'>{val.tab1.header}</Typography>
+                                            <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab1.header}</Typography>
                                             <hr class="bottom-line border-line-"></hr>
                                         </div>
                                     </ExpansionPanelSummary>
                                     <ExpansionPanelDetails style={{ padding: "8px 24px 0px" }}>
                                         <div className={classes.pagination} >
                                             <Slideshow dataCarousel={settings} >
-                                                {val.tab1.Children.map(val =>
-                                                    <div class={classes.pagination}
-                                                    >
+                                                {val.tab1.Children.map((val, i) =>
+                                                    <>
                                                         <button
-                                                            className="page dark"
-                                                            value={val} id={val}
+                                                            className={this.state.isActive == i ? `dark ${classes.tabsRingBckg}` : 'page'}
+                                                            value={val} id={val} name={i}
                                                             onClick={event => this.handleClick(event)}
                                                         >
                                                             {val}
                                                         </button>
-                                                    </div>
+                                                    </>
                                                 )}
                                             </Slideshow>
                                         </div>
@@ -189,7 +177,7 @@ class PriceTabs extends React.Component {
                                     style={{ boxShadow: "none", backgroundColor: "none" }}>
                                     <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
                                         <div style={{ width: "100%" }} >
-                                            <Typography className='subtabs'>{val.tab2.header}</Typography>
+                                            <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab2.header}</Typography>
                                             <hr class="bottom-line border-line-"></hr>
                                         </div>
                                     </ExpansionPanelSummary>
@@ -199,7 +187,7 @@ class PriceTabs extends React.Component {
                                                 <Grid xs={12}>
                                                     <div>
                                                         <img src={val.icon} style={{ width: '35px' }} alt="" />&nbsp;
-                                        <span className="tabs-contants">  {val.name}</span>
+                                        <span className={`tabs-contants ${classes.normalfonts}`}>  {val.name}</span>
                                                     </div>
 
                                                 </Grid>
@@ -213,7 +201,7 @@ class PriceTabs extends React.Component {
                                     style={{ boxShadow: "none", backgroundColor: "none" }}>
                                     <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
                                         <div style={{ width: "100%" }} >
-                                            <Typography className='subtabs'>{val.tab3.header}</Typography>
+                                            <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab3.header}</Typography>
                                             <hr class="bottom-line border-line-"></hr>
                                         </div>
                                     </ExpansionPanelSummary>
@@ -223,7 +211,7 @@ class PriceTabs extends React.Component {
                                                 <Grid xs={12}>
                                                     <div>
                                                         <img src={val.icon} style={{ width: '35px' }} alt="" />&nbsp;
-                                        <span className="tabs-contants">  {val.name}</span>
+                                        <span className={`tabs-contants ${classes.normalfonts}`}>  {val.name}</span>
                                                     </div>
 
                                                 </Grid>

@@ -13,7 +13,8 @@ import React from 'react';
 import './product-images.css'
 import { Input } from '../InputComponents/TextField/Input'
 import { Form } from '../Form/Form'
-
+import { withStyles } from '@material-ui/core/styles';
+import styles from './style'
 class Request extends React.Component {
     constructor(props) {
         super(props);
@@ -26,7 +27,7 @@ class Request extends React.Component {
             isNumber: false,
             fetch: false,
             value: '',
-            errors:false 
+            errors: false
         };
     }
     handleChange(event, name) {
@@ -35,10 +36,10 @@ class Request extends React.Component {
         })
     }
 
-    
-    handleSubmit= (e)=> {
-      //k
-      }
+
+    handleSubmit = (e) => {
+        //k
+    }
     handle = panel => (event, expanded) => {
         this.setState({
             expanded: expanded ? panel : false,
@@ -51,13 +52,14 @@ class Request extends React.Component {
     };
 
     Requestform = (err, errorhandle, errors) => {
+        const { classes } = this.props;
         return (
             <div>
                 <div className='overall-boxz'>
                     <form onSubmit={this.handleSubmit()}>
                         <div className='overall-bo'>
                             <Hidden smDown>
-                                <span className="product-details">Ask Our Expert</span>
+                                <span className={`product-details ${classes.normalfonts}`}>Ask Our Expert</span>
                                 <hr class="bottom-line"></hr>
                             </Hidden>
                             <Grid container spacing={12} >
@@ -124,7 +126,7 @@ class Request extends React.Component {
                             </Grid>
                             <Grid container>
                                 <Grid xs={12} >
-                                    <Button type="submit" className="requset-button">
+                                    <Button type="submit" className={`requset-button ${classes.fontwhite} ${classes.normalcolorback}`}>
                                         Send
                             </Button>
                                 </Grid>
@@ -139,6 +141,7 @@ class Request extends React.Component {
 
     render() {
         const { expanded } = this.state;
+        const { classes } = this.props;
         return (
             <div>
 
@@ -157,7 +160,7 @@ class Request extends React.Component {
                                 <i class="fa fa-sort-up" ></i></span>}
                             >
                                 <div style={{ width: "100%" }} >
-                                    <Typography className="product-details-smrt">Ask Our Expert</Typography>
+                                    <Typography className={`product-details-smrt ${classes.normalfonts}`}>Ask Our Expert</Typography>
                                     <hr class="bottom-line border-line-"></hr>
                                 </div>
                             </ExpansionPanelSummary>
@@ -178,4 +181,4 @@ Request.propTypes = {
     render: PropTypes.func,
     Requestform: PropTypes.func,
 };
-export default Request;
+export default withStyles(styles)(Request);

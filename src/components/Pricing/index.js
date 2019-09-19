@@ -1,64 +1,19 @@
 import React from 'react'
 import { Typography, Grid } from '@material-ui/core'
-import { makeStyles } from "@material-ui/core/styles";
 import '../product-image-slider/product-images.css'
-
-const useStyles = makeStyles(theme => ({
-
-    colorMain: {
-        color: theme.palette.secondary.main
-    },
-    h6FontSize: {
-
-        [theme.breakpoints.down('sm')]: {
-            fontSize: '16px',
-            fontWeight: 'bold'
-        },
-        [theme.breakpoints.down('xs')]: {
-            fontSize: '13px',
-            fontWeight: 'bold'
-
-        },
-
-    },
-    offerPricePadding: {
-        paddingLeft: '15px',
-        [theme.breakpoints.down('xs')]: {
-            paddingLeft: '8px',
-
-        },
-    },
-    deletePrice: {
-        [theme.breakpoints.down('xs')]: {
-            fontSize: '10px',
-            fontWeight: 'bold'
-        },
-        [theme.breakpoints.down('sm')]: {
-            fontSize: '10px',
-        },
-    },
-    youSave: {
-        [theme.breakpoints.down('xs')]: {
-            fontSize: '12px',
-        },
-        [theme.breakpoints.down('sm')]: {
-            fontSize: '11px',
-        },
-    }
-}));
+import styles from './style'
+import './pricing.css'
 
 export default function Pricing(props) {
-    const classes = useStyles();
+    const classes = styles();
     return (
         <div>
             {
                 props.title ?
                     <Typography
                         variant="caption"
-                        color="textSecondary"
                         component="div"
-                        className={`${props.title != null & props.title !== '' ? '' : 'shine'}`}
-                        style={{ paddingBottom: "5px", textAlign: "left" }}
+                        className={`pricing ${props.title != null & props.title !== '' ? '' : 'shine'}`}
                     >
                         {/* Dazzling Gold Bloom Diamond Pendant */}
                         {props.title}
@@ -70,10 +25,8 @@ export default function Pricing(props) {
             <Typography style={{ display: "flex", width: '100%' }}>
                 <Typography
                     variant="caption"
-                    color="textSecondary"
-                    className={`${props.price != null & props.price !== '' ? '' : 'shine'} ${classes.deletePrice}`}
+                    className={`pricing-p${props.price != null & props.price !== '' ? '' : 'shine'} ${classes.deletePrice} ${classes.dis}`}
                     component="p"
-                    style={{ display: "flex", alignItems: "center" }}
                 >
                     <del>₹&nbsp;{props.price}</del>
                 </Typography>
@@ -93,7 +46,7 @@ export default function Pricing(props) {
             {
                 props.offerDiscount ?
                     <Grid container spacing={12}>
-                        <Grid item lg={12} xs={12} > <span className='discount'>{props.offerDiscount}</span></Grid>
+                        <Grid item lg={12} xs={12} > <span className={`discount ${classes.backgsecondary}`}>{props.offerDiscount}</span></Grid>
                     </Grid>
                     :
 
@@ -109,7 +62,6 @@ export default function Pricing(props) {
                 </Typography> */}
                         <Typography
                             variant="caption"
-                            color="textSecondary"
                             component="p"
                             className={`${props.save != null & props.save !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.offerPricePadding} `}
                         >
