@@ -19,7 +19,7 @@ export default function CustomSeparator(props) {
                   props.data.map(data => (
                     <Link color="inherit" onClick={data} style={{ fontSize: "14px" }} className={props.list}>
                       {data}
-                    </Link>
+                    </Link> 
                   ))
                 }
               </Breadcrumbs>
