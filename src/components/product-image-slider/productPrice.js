@@ -70,7 +70,7 @@ const Productprice = (props) => {
                     <Hidden mdUp>
                         {mobilecarousel(props)}
                     </Hidden>
-                    <div className={classes.width}>
+                    <div className={classes.width} style={{padding:"0 10px"}}>
                         <Pricing price={val.price} offerPrice={val.offerPrice} offerDiscount='25% FLAT OFF' >
                             <Grid container spacing={12}>
                                 <div className={`price-info ${classes.dis}`}>

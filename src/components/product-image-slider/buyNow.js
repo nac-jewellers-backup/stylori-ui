@@ -52,24 +52,24 @@ const Buydetails = (props) => {
             {productsbuy.map(val =>
                 <>
                     <Grid container spacing={12} style={{ padding: "0 10px" }}>
-                        <Grid item xs={4} style={{ marginRight: "15px" }}>
+                        <Grid item xs={12} lg={4} style={{ marginRight: "15px" }}>
                             <Buynowbutton class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
                         </Grid>
-                        <Grid xs={7} style={{ marginTop: "7px" }}>
+                        <Grid xs={12} lg={7} style={{ marginTop: "7px" }}>
                             <Grid container spacing={12}>
-                                <Grid item xs={3} className={`buy-subheaders ${classes.normalfonts}`}>Need Help ?</Grid>
+                                <Grid item lg={3} xs={12} className={`buy-subheaders ${classes.normalfonts}`}>Need Help ?</Grid>
                             </Grid>
                             <Grid container spacing={12} >
 
-                                <Grid item xs={5} className={`buy-subheaders ${classes.normalfonts}`}>
+                                <Grid item lg={5} xs={4} className={`buy-subheaders ${classes.normalfonts}`}>
                                     <i class="fa fa-phone overall-icons" aria-hidden="true"></i>&nbsp;{val.telephone}
                                 </Grid>
 
-                                <Grid item xs={5} className={`buy-subheaders ${classes.normalfonts}`}>
+                                <Grid item lg={5} xs={4} className={`buy-subheaders ${classes.normalfonts}`}>
                                     <i class="fa fa-whatsapp overall-icons" aria-hidden="true"></i>&nbsp;{val.phonenum}
                                 </Grid>
 
-                                <Grid item xs={2} className={`buy-subheaders ${classes.normalfonts}`}>
+                                <Grid item lg={2} className={`buy-subheaders ${classes.normalfonts}`}>
                                     <i class="fa fa-comments-o overall-icons" aria-hidden="true"></i>&nbsp;{val.chat}
                                 </Grid>
                             </Grid>

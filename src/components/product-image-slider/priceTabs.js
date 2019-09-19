@@ -68,7 +68,8 @@ class PriceTabs extends React.Component {
                                     onChange={this.handleChange}
                                     indicatorColor="primary"
                                 >
-                                    <Tab className={`subtabs ${classes.tabsheadcolor}`} icon={<i class="fa fa-circle-thin tabs-hesd-icon"></i>} label={val.tab1.header} />
+                                    <Tab className={`subtabs ${classes.tabsheadcolor}`} icon={<i class="fa fa-circle-thin tabs-hesd-icon"></i>}
+                                        label={val.tab1.header} />
                                     <Tab className={`subtabs ${classes.tabsheadcolor}`} icon={<i class="fa fa-cube tabs-hesd-icon"></i>}
                                         label={val.tab2.header} />
                                     <Tab className={`subtabs ${classes.tabsheadcolor}`} icon={<i class="fa fa-diamond tabs-hesd-icon"></i>

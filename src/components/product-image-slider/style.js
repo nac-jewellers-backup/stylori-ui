@@ -21,8 +21,7 @@ const styles = theme => ({
 
         },
         [theme.breakpoints.up('lg')]: {
-            paddingRight: "15px",
-            paddingLeft: "15px",
+            padding: "0 10px"
         },
     },
     // pricetabs
