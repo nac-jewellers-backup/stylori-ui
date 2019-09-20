@@ -6,7 +6,6 @@
 }
 
 .title {
-    color: #394578;
     font-size: 15px !important;
     margin-top: 0;
     margin-bottom: 10px;
@@ -55,7 +54,6 @@
     width: 100% !important;
 }
 .pas-fr{
-    color: #394578;
     font-size: 14px;
     text-decoration: underline;
     margin-bottom: 9px;
@@ -63,7 +61,6 @@
 }
 .pas-fb{
     float: right !important; 
-    color: #394578;
     font-size: 14px;
     margin-bottom: 9px;
 }
@@ -74,7 +71,6 @@
 .form-group{
     margin-bottom: 10px;
     margin: 0 0 10px;
-    color: #394578;
     font-size: 14px;
 }
 .tp{
@@ -95,7 +91,6 @@
 }
 .card-reg{ 
     font-size: 14px !important;
-    color: #333;
     margin: 0 0 10px;
 }
 .blt{

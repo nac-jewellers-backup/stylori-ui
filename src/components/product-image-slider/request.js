@@ -27,7 +27,19 @@ class Request extends React.Component {
             isNumber: false,
             fetch: false,
             value: '',
-            errors: false
+            errors: {
+            },
+            errorMessages: {
+                mobileNo: {
+                    invalid: "Invalid mobile number",
+                    required: "Mobile number is required!"
+                  },
+                  names: {
+                    invalid: "Passwords do not match!",
+                    required: "Confirm Name is required"
+                  },
+
+            }
         };
     }
     handleChange(event, name) {
@@ -36,7 +48,15 @@ class Request extends React.Component {
         })
     }
 
-
+    handleError = (e) => {
+        e.preventDefault();
+        let { errors } = this.state;
+        errors = {
+            ...errors,
+            [e.target.name]: true,
+        }
+        this.setState({ errors })
+    }
     handleSubmit = (e) => {
         //k
     }
@@ -51,7 +71,7 @@ class Request extends React.Component {
         }
     };
 
-    Requestform = (err, errorhandle, errors) => {
+    Requestform = (errors, errorMessages, handleError) => {
         const { classes } = this.props;
         return (
             <div>
@@ -70,12 +90,13 @@ class Request extends React.Component {
                                         type="text"
                                         name="names"
                                         value={this.state.names}
-                                        // error={this.state.nemes ? this.state.nemes : "**"}
+                                        onInvalid={e => handleError(e)}
+                                        error={errors.names ? true : false}
+                                        helperText={errors.names ? errorMessages.names.required : ''}
                                         placeholder="Name"
                                         className="request-text"
                                         onChange={event => this.handleChange(event, 'names')}
-                                        required
-                                    />
+                                        required />
                                 </Grid>
                                 <Grid xs={12} lg={6} >
                                     <Input
@@ -84,7 +105,9 @@ class Request extends React.Component {
                                         type="email"
                                         name="mailId"
                                         value={this.state.mailId}
-                                        // error={this.state.mailId ? this.state.mailId : "**"}
+                                        // onInvalid={e => handleError(e)}
+                                        // error={errors.mailId ? true : false}
+                                        // helperText={errors.mailId ? errorMessages.mailId : ''}
                                         placeholder="Enter your mail"
                                         className="request-text"
                                         onChange={event => this.handleChange(event, 'mailId')}
@@ -100,13 +123,14 @@ class Request extends React.Component {
                                         minLength={10}
                                         name="mobileNo"
                                         value={this.state.mobileNo}
-                                        // error={this.state.mobileNo ? this.state.mobileNo : "**"}
+                                        onInvalid={e => handleError(e)}
+                                        error={errors.mobileNo ? true : false}
+                                        helperText={errors.mobileNo ? errorMessages.mobileNo.required : ''}
                                         placeholder="909419****"
                                         className="request-text"
                                         onChange={event => this.handleChange(event, 'mobileNo')}
                                         onKeyPress={event => { this.handleKeyPress(event, 'isNumber') }}
-                                        required
-                                    />
+                                        required/>
                                 </Grid>
                                 <Grid xs={12} lg={6} >
                                     <Input
@@ -119,7 +143,6 @@ class Request extends React.Component {
                                         placeholder="Enter Request"
                                         className="request-text"
                                         onChange={event => this.handleChange(event, 'request')}
-                                        required
                                     />
                                 </Grid>
 
@@ -140,7 +163,7 @@ class Request extends React.Component {
 
 
     render() {
-        const { expanded } = this.state;
+        const { expanded, errors, errorMessages } = this.state;
         const { classes } = this.props;
         return (
             <div>
@@ -148,7 +171,7 @@ class Request extends React.Component {
                 <Hidden smDown>
                     {/* <Form children={this.Requestform} inputvalues={this.state.values} /> */}
 
-                    {this.Requestform()}
+                    {this.Requestform(errors, errorMessages, this.handleError)}
                 </Hidden>
 
 

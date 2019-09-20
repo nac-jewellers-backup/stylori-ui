@@ -162,10 +162,10 @@ export const imagecertificat = [
     }
 ];
 export const fadeImages = [
-    'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
     'https://images7.alphacoders.com/421/421542.jpg ',
     'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
-    'https://images7.alphacoders.com/421/421542.jpg ',
+    'https://assets-cdn.stylori.com/500x500/images/product/SR0911/SR0911-1Y.jpg',
+    'https://assets-cdn.stylori.com/500x500/images/product/SR0832/SR0832-1Y.jpg ',
     'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
     'https://images7.alphacoders.com/421/421542.jpg ',
 ];

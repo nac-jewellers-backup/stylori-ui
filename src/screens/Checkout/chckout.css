@@ -1,6 +1,5 @@
 .ckcut-main-body {
     background: #dfdfdf !important;
-    color: #394578 !important;
     border-color: #ddd !important;
     padding: 0;
     margin-bottom: 10px !important;
@@ -18,7 +17,6 @@
     margin-right: 15px;
     margin-left: 15px !important;
     font-weight: 700;
-    background: #394578 !important;
     color: #FFF;
     padding: 5px !important;
 }

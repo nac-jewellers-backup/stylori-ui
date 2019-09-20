@@ -11,34 +11,16 @@ import {
 } from '@material-ui/core';
 import "../../components/Checkout/Cart.css";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Login from './loginRegister/login';
 import Addressform from './addressDetails/addressForm';
 import ProductList from './orderSummary/productList';
 import CartCard from '../../components/Checkout/CartCard';
 import LoginRegisterIndex from './loginRegister';
 import { withStyles } from '@material-ui/core/styles';
-import Addressdetails from './addressDetails/addressDetails';
 import PaymentIndex from './paymentOption/paymentindex';
 import { useDummyRequest } from '../../hooks';
 import { cartdatas } from '../../mappers';
 import CustomSeparator from '../../components/BreadCrumb/index'
-const styles = theme => ({
-    cart: {
-        [theme.breakpoints.down('xs')]: {
-            boxShadow: "none",
-            marginTop: "25px"
-        },
-        [theme.breakpoints.up('lg')]: {
-            boxShadow: "none",
-        },
-    },
-    normalcolorback: {
-        background: theme.palette.text.primary
-    },
-    fontwhite: {
-        color: theme.palette.overallButoon.contrastText
-    }
-});
+import styles from '../Checkout/loginRegister/style'
 
 class Chckoutindex extends React.Component {
     state = {
@@ -73,8 +55,8 @@ class Chckoutindex extends React.Component {
                         onChange={this.handleChange('panel1')}
                         style={{ boxShadow: "none" }}
                     >
-                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
-                            <Avatar className='avart-ckc'>1</Avatar><Typography className='text-chck'> Login or Register</Typography>
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className={`ckcut-main-body ${classes.normalfonts}`}>
+                            <Avatar className={`avart-ckc ${classes.normalcolorback}`}>1</Avatar><Typography className='text-chck'> Login or Register</Typography>
                         </ExpansionPanelSummary >
                         <ExpansionPanelDetails
                         >
@@ -86,17 +68,14 @@ class Chckoutindex extends React.Component {
                         expanded={expanded === 'panel2'}
                         onChange={this.handleChange('panel2')}
                         style={{ boxShadow: "none" }}>
-                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
-                            <Avatar className='avart-ckc'>2</Avatar><Typography className='text-chck'>Address Detail</Typography>
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className={`ckcut-main-body ${classes.normalfonts}`}>
+                            <Avatar className={`avart-ckc ${classes.normalcolorback}`}>2</Avatar><Typography className='text-chck'>Address Detail</Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Grid container >
                                 <Grid item xs={12} lg={12}>
                                     <Addressform />
                                 </Grid>
-                                {/* <Grid item xs={12} lg={12}>
-                                <Addressdetails />
-                            </Grid> */}
                             </Grid>
                         </ExpansionPanelDetails>
                     </ExpansionPanel>
@@ -105,8 +84,8 @@ class Chckoutindex extends React.Component {
                         expanded={expanded === 'panel3'}
                         onChange={this.handleChange('panel3')}
                         style={{ boxShadow: "none" }} >
-                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
-                            <Avatar className='avart-ckc'>3</Avatar><Typography className='text-chck'>Order Summary</Typography>
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className={`ckcut-main-body ${classes.normalfonts}`}>
+                            <Avatar className={`avart-ckc ${classes.normalcolorback}`}>3</Avatar><Typography className='text-chck'>Order Summary</Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails >
                             <Grid container >
@@ -127,8 +106,8 @@ class Chckoutindex extends React.Component {
                         expanded={expanded === 'panel4'}
                         onChange={this.handleChange('panel4')}
                         style={{ boxShadow: "none" }}  >
-                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
-                            <Avatar className='avart-ckc'>4</Avatar><Typography className='text-chck'>Payment Options</Typography>
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className={`ckcut-main-body ${classes.normalfonts}`}>
+                            <Avatar className={`avart-ckc ${classes.normalcolorback}`}>4</Avatar><Typography className='text-chck'>Payment Options</Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <PaymentIndex />
