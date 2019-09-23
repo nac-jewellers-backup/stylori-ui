@@ -75,7 +75,6 @@ class Creditform extends React.Component {
                                     <Grid item lg={4} xs={12}>
                                         <Input
                                             name="cv"
-                                            className='text-f'
                                             type="text"
                                             value={this.state.cv}
                                             placeholder="CVV"

@@ -66,7 +66,7 @@ class Addressform extends React.Component {
                                             checkValue: !this.state.checkValue
                                         })
                                     }} checked={this.state.checkValue} />
-                                    {this.state.checkValue + ""}
+                                    {/* {this.state.checkValue + ""} */}
                                     If your billing address is different from the shipping adress please uncheck the box to select billing address.</p>    <Grid container item xs={12} lg={12} >
                                     <Grid item xs={12} lg={5}>
                                         <Grid container spacing={12}>

@@ -75,7 +75,6 @@ class Debitform extends React.Component {
                                     <Grid item lg={4} xs={12}>
                                         <Input
                                             name="debit_cv"
-                                            className='text-f'
                                             type="text"
                                             value={this.state.debit_cv}
                                             placeholder="CVV"

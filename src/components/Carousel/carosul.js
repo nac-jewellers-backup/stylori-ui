@@ -61,7 +61,7 @@ class Slideshow extends React.Component {
       <div>
         <Slider ref={sliderRef}  {...settings}>
           {this.props.children ? this.props.children : this.renderFadeImages()}
-          {this.props.hover ? this.imagehoverchildrens(this.props.hoverlist) : ''}
+          {this.props.hover ? this.imagehoverchildrens(this.props.hoverlist) :""}
         </Slider>
       </div>
     );

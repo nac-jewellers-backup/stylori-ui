@@ -121,7 +121,7 @@ class Header extends Component {
                   </div>
                 </Grid>
               </Grid>
-              {path == "cart" || 'Checkout' ? "" :
+              {path == "cart" || path == 'Checkout' ? "" :
                 <Grid container spacing={12}>
                   <Grid item xs={12} className={`header-navbar-list ${classes.colorLight}`}
                     onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }}
