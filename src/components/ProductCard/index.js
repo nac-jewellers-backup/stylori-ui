@@ -1,7 +1,11 @@
 import React from "react";
 import  ProductCards  from "./ProductCards.js";
+import { useGraphql } from "../../hooks/GraphqlHook.js";
+import productlistmapper from "../../mappers/productlist.js";
+import { productlist as productlistquery } from "../../queries/index.js";
 // import  {ProductCard}  from "./ProductCard";
 function Card(props) {
+  const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
   // const CardControls = {
   // controls: {
   //   topleft: {

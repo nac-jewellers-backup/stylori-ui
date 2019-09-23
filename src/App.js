@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { ApolloProvider } from 'react-apollo';
 import { NetworkProvider, GlobalProvider } from './context';
 import './index.css'
 import Loading from './screens/Loading';
@@ -10,6 +11,9 @@ let outerThemes = responsiveFontSizes(outerTheme);
 const RouterApp = React.lazy(() => import('./router'));
 
 function App() {
+
+
+
   return (
     <GlobalProvider>
       <ThemeProvider theme={outerThemes}>

@@ -3,7 +3,7 @@ import { API_URL, HOME_PAGE_URL } from '../config';
 
 const initialCtx = {
     NetworkCtx: {
-        apiUrl: API_URL, token: null, homePage: HOME_PAGE_URL
+        apiUrl: API_URL, token: null, homePage: HOME_PAGE_URL, graphqlUrl: `${API_URL}/graphql`
     },
     setNetworkCtx: () => null
 }
