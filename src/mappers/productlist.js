@@ -1,17 +1,17 @@
-const refer = {
-    "data": {
-        "allProductLists": {
-            "nodes": [
-                {
-                    "productSeries": 10,
-                    "productName": "Monsoon Memories Diamond Earrings",
-                    "defaultSize": null,
-                    "defaultWeight": null
-                }
-            ]
-        }
-    }
-}
+// const refer = {
+//     "data": {
+//         "allProductLists": {
+//             "nodes": [
+//                 {
+//                     "productSeries": 10,
+//                     "productName": "Monsoon Memories Diamond Earrings",
+//                     "defaultSize": null,
+//                     "defaultWeight": null
+//                 }
+//             ]
+//         }
+//     }
+// }
 
 
 export default function (data) {

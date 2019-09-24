@@ -30,7 +30,11 @@ class Request extends React.Component {
                 mailId: "",
                 names: "",
                 mobileNo: "",
-                request: "",
+            },
+            errorMessage: {
+                mailId: "Please filled out your email Id",
+                names: "Please filled out name",
+                mobileNo: "Please enter yout 10 digit mobile number",
             },
         };
     }
@@ -39,26 +43,23 @@ class Request extends React.Component {
         let value = event.target.value;
         event.preventDefault();
         let errors = this.state.errors;
-
+        let errorMessage = this.state.errorMessage;
         switch (name) {
-            case 'mobileNo':
-                errors.mobileNo =
-                    value.length < 10 || value.mobileNo == ""
-                        ? 'Please enter yout 10 digit mobile number'
-                        : '';
-                break;
             case 'names':
                 errors.names =
-                    value.names == ""
-                        ? 'Fill out this field'
-                        : '';
+                    value.names === "" ? errorMessage : "";
+                break;
+            case 'mobileNo':
+                errors.mobileNo =
+                    value.length < 10 ? errorMessage : "";
                 break;
             case 'mailId':
                 errors.mailId =
-                    value.mailId == ""
-                        ? 'Fill out this field'
+                    value.mailId === ""
+                        ? errorMessage
                         : '';
                 break;
+
         }
         this.setState({ errors, [name]: value }, () => {
             console.log(errors)
@@ -87,7 +88,7 @@ class Request extends React.Component {
         }
     };
 
-    Requestform = (errors, handleError) => {
+    Requestform = (errors, handleError, errorMessage) => {
         const { classes } = this.props;
         debugger
         return (
@@ -109,7 +110,7 @@ class Request extends React.Component {
                                         value={this.state.names}
                                         onInvalid={e => handleError(e)}
                                         error={errors.names ? true : false}
-                                        helperText={errors.names ? errors.names : ''}
+                                        helperText={errors.names ? errorMessage.names : ''}
                                         placeholder="Name"
                                         className="request-text"
                                         onChange={event => this.handleChange(event, 'names')}
@@ -124,7 +125,7 @@ class Request extends React.Component {
                                         value={this.state.mailId}
                                         onInvalid={e => handleError(e)}
                                         error={errors.mailId ? true : false}
-                                        helperText={errors.mailId ? errors.mailId : ''}
+                                        helperText={errors.mailId ? errorMessage.mailId : ''}
                                         placeholder="Enter your mail"
                                         className="request-text"
                                         onChange={event => this.handleChange(event, 'mailId')}
@@ -141,7 +142,7 @@ class Request extends React.Component {
                                         value={this.state.mobileNo}
                                         onInvalid={e => handleError(e)}
                                         error={errors.mobileNo ? true : false}
-                                        helperText={errors.mobileNo ? errors.mobileNo : ''}
+                                        helperText={errors.mobileNo ? errorMessage.mobileNo : ''}
                                         placeholder="909419****"
                                         className="request-text"
                                         onChange={event => this.handleChange(event, 'mobileNo')}
@@ -178,7 +179,7 @@ class Request extends React.Component {
 
 
     render() {
-        const { expanded, errors } = this.state;
+        const { expanded, errors, errorMessage } = this.state;
         const { classes } = this.props;
         return (
             <div>
@@ -186,7 +187,7 @@ class Request extends React.Component {
                 <Hidden smDown>
                     {/* <Form children={this.Requestform} inputvalues={this.state.values} /> */}
 
-                    {this.Requestform(errors, this.handleError)}
+                    {this.Requestform(errors, this.handleError, errorMessage)}
                 </Hidden>
 
 
