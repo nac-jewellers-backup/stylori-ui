@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "baseUrl": "src",
+        "paths": {
+            "app": [ "src", "src/*" ],
+            "contexts":[ "src/contexts/*", "src/contexts" ],
+            "hooks": [ "src/hooks/*", "src/hooks" ],
+            "components": [ "src/components/*", "src/components" ],
+            "router": [ "src/router/*", "src/router" ],
+            "screens": [ "src/screens/*", "src/screens" ],
+            "services": [ "src/services/*", "src/services" ],
+            "mappers": [ "src/mappers/*", "src/mappers" ]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "**/node_modules/*"
+    ]
+}

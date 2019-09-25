@@ -81,7 +81,7 @@ class PriceTabs extends React.Component {
                             index={this.state.value}
                             onChangeIndex={this.handleChangeIndex}
                         >
-                            <TabContainer> 
+                            <TabContainer>
                                 <div className={classes.pagination}>
                                     <Slideshow dataCarousel={settings}>
                                         {val.tab1.Children.map((val, i) =>
@@ -107,9 +107,9 @@ class PriceTabs extends React.Component {
                                 <Grid container spacing={12}>
                                     {val.tab2.Children.map(val =>
                                         <Grid xs={4}>
-                                            <div style={{ width: "100%" }}><img src={val.icon} style={{ width: '35px' }} alt="" /></div>
-                                            <div style={{ marginTop: "-10px" }}>
-                                                <span className={`tabs-contants ${classes.normalfonts}`}>  {val.name}</span>
+                                            <div className="tabs-valus">
+                                                <img src={val.icon} style={{ width: '35px', margin: "auto" }} alt="" />
+                                                <span className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
                                             </div>
                                         </Grid>
                                     )}
@@ -119,10 +119,9 @@ class PriceTabs extends React.Component {
                                 <Grid container spacing={12}>
                                     {val.tab3.Children.map(val =>
                                         <Grid xs={4}>
-                                            <div style={{ width: "100%" }}>
-                                                <img src={val.icon} style={{ width: '35px' }} alt="" /></div>
-                                            <div style={{ marginTop: "-10px" }}>
-                                                <span className={`tabs-contants ${classes.normalfonts}`}>  {val.name}</span>
+                                            <div className="tabs-valus">
+                                                <img src={val.icon} style={{ width: '35px', margin: "auto" }} alt="" />
+                                                <span className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
                                             </div>
                                         </Grid>
                                     )}
@@ -186,11 +185,10 @@ class PriceTabs extends React.Component {
                                         {val.tab2.Children.map(val =>
                                             <Grid container spacing={12}>
                                                 <Grid xs={12}>
-                                                    <div>
-                                                        <img src={val.icon} style={{ width: '35px' }} alt="" />&nbsp;
-                                        <span className={`tabs-contants ${classes.normalfonts}`}>  {val.name}</span>
+                                                    <div className="tabs-valus">
+                                                        <img src={val.icon} style={{ width: '35px', margin: "auto" }} alt="" />
+                                                        <span className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
                                                     </div>
-
                                                 </Grid>
                                             </Grid>
                                         )}
@@ -210,11 +208,10 @@ class PriceTabs extends React.Component {
                                         {val.tab3.Children.map(val =>
                                             <Grid container spacing={12}>
                                                 <Grid xs={12}>
-                                                    <div>
-                                                        <img src={val.icon} style={{ width: '35px' }} alt="" />&nbsp;
-                                        <span className={`tabs-contants ${classes.normalfonts}`}>  {val.name}</span>
+                                                    <div className="tabs-valus">
+                                                        <img src={val.icon} style={{ width: '35px', margin: "auto" }} alt="" />
+                                                        <span className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
                                                     </div>
-
                                                 </Grid>
                                             </Grid>
                                         )}

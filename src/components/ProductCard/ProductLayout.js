@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { GridList, GridListTile, Button } from '@material-ui/core';
 import ProductCards from './index';
 import { withStyles } from '@material-ui/core/styles';
-import { useDummyRequest } from '../../hooks';
-import { productcarddatas } from '../../mappers';
-import productlist from '../../mappers/productlist';
-import { PRODUCTLIST } from '../../queries';
-import { useGraphql } from '../../hooks/GraphqlHook';
+import { useDummyRequest } from 'hooks';
+import { productcarddatas } from 'mappers';
+import productlist from 'mappers/productlist';
+import { PRODUCTLIST } from 'queries';
+import { useGraphql } from 'hooks/GraphqlHook';
 
 const styles = theme => ({
   gridlistmain: {
@@ -40,7 +40,7 @@ const styles = theme => ({
 });
 
 
-class ProductLayout extends Component {
+class ProductLayout extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -110,14 +110,22 @@ class ProductLayout extends Component {
 
 }
 
-// export default ProductLayout
-
-export default withStyles(styles, { withTheme: true })(props => {
+const Component = props => {
   const { mapped } = useDummyRequest(productcarddatas);
-  const { loading, errro, data, mappedData } = useGraphql(PRODUCTLIST, productlist);
-  console.info('MAPPED',loading, errro, data, mappedData);
-  console.info('MAPPED2',mapped);
-  if (Object.keys(mapped).length === 0) return ''
+  const { loading, error, data } = useGraphql(PRODUCTLIST, productlist);
+  if(!loading && !error){
+    console.info('__MAPPED',data);
+    let mapped = productlist(data);
+    // setMappedData(mapped);
+    console.info('__MAPPED2',mapped);
+  }
+  // console.info('MAPPED', loading, error, data, mappedData);
+  // console.info('MAPPED2',mapped);
+  if (Object.keys(mapped).length === 0) return <div></div>
 
   return <ProductLayout {...props} data={mapped} />
-});
+}
+
+// export default ProductLayout
+
+export default withStyles(styles, { withTheme: true })(Component);

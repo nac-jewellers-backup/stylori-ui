@@ -1,15 +1,16 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { Stylori } from '../screens'
-import PricingPage from '../screens/Stylori/PricingPage'
-import Cart from '../screens/Stylori/Cart'
-import Checkout from '../screens/Stylori/Checkout'
-import Register from '.././screens/Checkout/loginRegister/register'
-import routes from "./routes";
+import { Stylori } from 'screens'
+import PricingPage from 'screens/Stylori/PricingPage'
+import Cart from 'screens/Stylori/Cart'
+import Checkout from 'screens/Stylori/Checkout'
+import Register from 'screens/Checkout/loginRegister/register';
+import routes from "router/routes";
 
 
 
 export const RouterApp = () => {
+
     return (
         <Switch>
             <Redirect key="stylori-redirect" from="/" exact to={routes.stylori} />

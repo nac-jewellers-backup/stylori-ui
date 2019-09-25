@@ -1,4 +1,5 @@
-const { whenDev } = require('@craco/craco')
+const { whenDev } = require('@craco/craco');
+const CracoAlias = require('craco-alias');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -6,10 +7,12 @@ module.exports = {
     reactScriptsVersion: "react-scripts",
     style: {
         sass: {
-            loaderOptions: (sassLoaderOptions, { env, paths }) => { return {
-                ...sassLoaderOptions,
-                includePaths: [path.resolve(__dirname, './node_modules')]
-            }; }
+            loaderOptions: (sassLoaderOptions, { env, paths }) => {
+                return {
+                    ...sassLoaderOptions,
+                    includePaths: [path.resolve(__dirname, './node_modules')]
+                };
+            }
         }
     },
     webpack: {
@@ -20,7 +23,7 @@ module.exports = {
                 filename: '[name].css',
                 chunkFilename: '[id].css',
                 ignoreOrder: false, // Enable to remove warnings about conflicting order
-            }),
+            })
         ],
         module: {
             rules: [
@@ -47,6 +50,14 @@ module.exports = {
                     ],
                 },
             ],
-        },
-    }
+        }
+    },
+    plugins: [
+        {
+            plugin: CracoAlias,
+            options: {
+                source: "jsconfig"
+            }
+        }
+    ]
 }
