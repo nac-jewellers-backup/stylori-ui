@@ -15,6 +15,7 @@ import { useDummyRequest } from '../../hooks';
 import { productpricingPages } from '../../mappers';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
+import { NavLink } from 'react-router-dom';
 const inputsearch = (props) => {
     const { productsbuy } = props.data;
     const { classes } = props;
@@ -53,7 +54,9 @@ const Buydetails = (props) => {
                 <>
                     <Grid container spacing={12} style={{ padding: "0 10px" }}>
                         <Grid item xs={12} lg={4} style={{ marginRight: "15px" }}>
-                            <Buynowbutton class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
+                            <NavLink to="/cart" style={{ textDecoration: 'none' }}>
+                                <Buynowbutton class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
+                            </NavLink>
                         </Grid>
                         <Grid xs={12} lg={7} style={{ marginTop: "7px" }}>
                             <Grid container spacing={12}>

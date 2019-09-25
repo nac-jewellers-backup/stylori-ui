@@ -15,9 +15,9 @@ export const GlobalConsumer = GlobalContext.Consumer;
 
 export const GlobalProvider = (props) => {
 
-    const [ Globalctx, setGlobalCtx ] = React.useState(initialCtx.GLobalCtx);
+    const [Globalctx, setGlobalCtx] = React.useState(initialCtx.GLobalCtx);
 
-    return(
+    return (
         <GlobalContext.Provider value={{ Globalctx, setGlobalCtx }} >
             {props.children}
         </GlobalContext.Provider>

@@ -305,7 +305,7 @@ class PersistentDrawerLeft extends React.Component {
                       </div>
                       {/* filter */}
                       
-                      {console.log(filter)}
+                      {/* {console.log(filter)} */}
                     
                       
                       <div>
@@ -448,7 +448,7 @@ class PersistentDrawerLeft extends React.Component {
                       </ListItem>
                     ))}
                   </List>
-                  {console.info('data-filter', subFilter, this.state.filtercheck)}
+                  {/* {console.info('data-filter', subFilter, this.state.filtercheck)} */}
                 </Grid>
                 {
                   this.state.filtercheck !== '' &&

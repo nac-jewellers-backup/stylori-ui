@@ -50,14 +50,13 @@ const useStyles = makeStyles(theme => ({
 }));
 const handleClick = (name) => {
   if (name === 'truck') {
-    console.log('deii thangam venum na rendu illa na moonu nal aagum venum na wait pannu')
   }
 
 }
 
 const renderImages = (props, cardstate) => {
     const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
-    console.info('props.data.image[filterType]',props.data.image[filterType]);
+    // console.info('props.data.image[filterType]',props.data.image[filterType]);
     return props.data.image[filterType].map(imgs=> `${imgs.img} ${imgs.size}`).toString()
 }
 const renderImagesSrc = (props, cardstate) => {
