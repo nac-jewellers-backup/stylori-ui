@@ -30,7 +30,7 @@ class ProductDetails extends React.Component {
                         <>
                             <div className='overall-boxz'>
                                 <div className='overall-bo'>
-                                    <span key={val.name} className={`product-details ${classes.normalfonts}`}>{val.header}</span>
+                                    <span key={val.name} className={`product-details ${classes.normalfonts}`} > {val.header}</span>
                                     <hr class="bottom-line"></hr>
                                     <>{
                                         val.namedetail !== undefined && val.namedetail.map(res =>
