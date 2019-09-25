@@ -10,11 +10,15 @@ let outerTheme = createMuiTheme(require('./theme.json'));
 let outerThemes = responsiveFontSizes(outerTheme);
 const RouterApp = React.lazy(() => import('./router'));
 
+
+// const client = new ApolloClient({
+//   uri: ``,
+// });
+
+
 function App() {
-
-
-
   return (
+    // <ApolloProvider client={client}>
     <GlobalProvider>
       <ThemeProvider theme={outerThemes}>
         <NetworkProvider>
@@ -26,6 +30,7 @@ function App() {
         </NetworkProvider>
       </ThemeProvider>
     </GlobalProvider>
+    // </ApolloProvider>
   );
 }
 

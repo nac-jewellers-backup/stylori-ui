@@ -79,6 +79,7 @@ class ProductLayout extends Component {
     const { classes } = this.props;
     const { dataCard } = this.props.data;
     // console.log(dataCard)
+    // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
     return (
       <div className={`productLayoutRoot `} style={this.props.styles}>
         <GridList cellHeight={"auto"} className={`productLayoutGridList ${classes.gridlistmain}`} cols={this.state.colSize} style={{ marginLeft: '12px' }}>
