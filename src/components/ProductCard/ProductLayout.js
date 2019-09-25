@@ -4,6 +4,9 @@ import ProductCards from './index';
 import { withStyles } from '@material-ui/core/styles';
 import { useDummyRequest } from '../../hooks';
 import { productcarddatas } from '../../mappers';
+import productlist from '../../mappers/productlist';
+import { PRODUCTLIST } from '../../queries';
+import { useGraphql } from '../../hooks/GraphqlHook';
 
 const styles = theme => ({
   gridlistmain: {
@@ -110,6 +113,9 @@ class ProductLayout extends Component {
 
 export default withStyles(styles, { withTheme: true })(props => {
   const { mapped } = useDummyRequest(productcarddatas);
+  const { loading, errro, data, mappedData } = useGraphql(PRODUCTLIST, productlist);
+  console.info('MAPPED',loading, errro, data, mappedData);
+  console.info('MAPPED2',mapped);
   if (Object.keys(mapped).length === 0) return ''
 
   return <ProductLayout {...props} data={mapped} />

@@ -1,11 +1,13 @@
 import React from "react";
-import  ProductCards  from "./ProductCards.js";
+import ProductCards from "./ProductCards.js";
 import { useGraphql } from "../../hooks/GraphqlHook.js";
 import productlistmapper from "../../mappers/productlist.js";
 import { PRODUCTLIST as productlistquery } from "../../queries/index.js";
 // import  {ProductCard}  from "./ProductCard";
 function Card(props) {
-  const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
+  // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
+  // 
+  // console.info('GRAQPH',loading, errro, data, mappedData);
   // const CardControls = {
   // controls: {
   //   topleft: {
@@ -35,9 +37,9 @@ function Card(props) {
   // }
   // }
   return (
- 
-      // <ProductCard  ard  data={props.data} {...CardControls}/>
-      <ProductCards data={props.data} />
+
+    // <ProductCard  ard  data={props.data} {...CardControls}/>
+    <ProductCards data={props.data} />
 
   );
 }
