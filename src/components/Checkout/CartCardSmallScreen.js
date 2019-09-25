@@ -9,68 +9,14 @@ import Typography from "@material-ui/core/Typography";
 import { useDummyRequest } from '../../hooks';
 import Pricing from '../Pricing/index'
 import { productcarddatas } from '../../mappers';
-const useStyles = makeStyles(theme => ({
-  card: {
-    width: "100%",
-    margin: "auto",
-    display: "flex",
-    marginBottom: "15px"
-  },
-  details: {
-    display: "flex",
-    flexDirection: "column",
-    padding: "2%",
-    width: "100%"
-  },
-  content: {
-    flex: "1 0 auto",
-    padding: 0
-  },
-  cover: {
-    width: "30vw"
-  },
-  controls: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-around",
-    "& button": {
-      padding: "2.1px 13.8px"
-    },
-    [theme.breakpoints.down("sm")]: {
-      "& button": {
-        padding: "1.1px 1.8px"
-      }
-    }
-  },
-
-  playIcon: {
-    height: 38,
-    width: 38
-  },
-  contents: {
-    fontSize: "0.8rem",
-    color: "#394578"
-  },
-  labelPrice: {
-    display: "flex"
-  },
-  labelPriceDel: {
-    fontSize: "0.8rem",
-    display: "flex",
-    alignItems: "center"
-  },
-  labelPriceOff: {
-    fontSize: "1.1rem"
-  }
-}));
-
+import { withStyles } from '@material-ui/core/styles';
+import styles from './style'
 function MediaControlCard(props) {
-  const classes = useStyles();
-  const theme = useTheme();
+  const { classes } = props;
   const { dataCard1 } = props.data;
 
   return (
-    <div style={{ background: "whitesmoke",paddingTop:"10px" }}>
+    <div style={{ background: "whitesmoke", paddingTop: "10px" }}>
       {dataCard1.map(val => (
         <Card className={classes.card}>
           <div style={{ width: "195px" }}>
@@ -86,7 +32,7 @@ function MediaControlCard(props) {
               <Typography
                 component="div"
                 variant="subtitle1"
-                className={classes.contents}
+                className={`${classes.contents} ${classes.normalfonts}`}
               >
                 {val.title}
               </Typography>
@@ -114,9 +60,9 @@ function MediaControlCard(props) {
             </CardContent>
             <div className={classes.controls}>
               <Button
+                className={`btn-cart-resp ${classes.buttons}`}
                 variant="contained"
                 style={{
-                  backgroundColor: "#f36e23",
                   color: "white",
                   fontSize: "0.7rem"
                 }}
@@ -125,7 +71,8 @@ function MediaControlCard(props) {
           </Button>
               <label
                 variant="contained"
-                style={{ color: "#394578", cursor: "pointer", fontSize: "0.9rem" }}
+                style={{ cursor: "pointer", fontSize: "0.9rem" }}
+                className={`${classes.normalfonts}`}
               >
                 <i style={{ fontSize: "16px" }} class="fa">
                   &#xf014;
@@ -140,7 +87,7 @@ function MediaControlCard(props) {
     </div>
   );
 }
-export default (props => {
+export default withStyles(styles)(props => {
   const { mapped } = useDummyRequest(productcarddatas);
   if (Object.keys(mapped).length === 0) return ''
 

@@ -13,8 +13,12 @@ import PropTypes from 'prop-types';
 import Buynowbutton from '../Buynow/buynowbutton';
 import { useDummyRequest } from '../../hooks';
 import { productpricingPages } from '../../mappers';
+import { withStyles } from '@material-ui/core/styles';
+import styles from './style'
+import { NavLink } from 'react-router-dom';
 const inputsearch = (props) => {
     const { productsbuy } = props.data;
+    const { classes } = props;
     return (
         <div style={{ marginTop: "25px", padding: "0 10px" }}>
             {productsbuy.map(val =>
@@ -27,11 +31,11 @@ const inputsearch = (props) => {
 
                     </Grid>
                     <Grid item xs={4} lg={3} sm={4}>
-                        <Button className="search-button">Check for COD </Button>
+                        <Button className={`search-button ${classes.normalcolorback} ${classes.fontwhite}`}>Check for COD </Button>
                     </Grid>
                     <Hidden smDown>
                         <Grid item xs={5} className="content">
-                            <b className="ships-by">
+                            <b className={`ships-by ${classes.normalfonts}`}>
                                 <span ><i style={{ fontSize: "20px" }} class="fa fa-truck"></i>&nbsp;&nbsp;{val.shipby}</span>
                             </b>
                         </Grid>
@@ -43,29 +47,32 @@ const inputsearch = (props) => {
 }
 const Buydetails = (props) => {
     const { productsbuy, fadeImages } = props.data;
+    const { classes } = props;
     return (
         <div>
             {productsbuy.map(val =>
                 <>
                     <Grid container spacing={12} style={{ padding: "0 10px" }}>
-                        <Grid item xs={4} style={{ marginRight: "15px" }}>
-                            <Buynowbutton class="buynow-button" button='buynow-btn-cont' />
+                        <Grid item xs={12} lg={4} style={{ marginRight: "15px" }}>
+                            <NavLink to="/cart" style={{ textDecoration: 'none' }}>
+                                <Buynowbutton class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
+                            </NavLink>
                         </Grid>
-                        <Grid xs={7} style={{ marginTop: "7px" }}>
+                        <Grid xs={12} lg={7} style={{ marginTop: "7px" }}>
                             <Grid container spacing={12}>
-                                <Grid item xs={3} className='buy-subheaders'>Need Help ?</Grid>
+                                <Grid item lg={3} xs={12} className={`buy-subheaders ${classes.normalfonts}`}>Need Help ?</Grid>
                             </Grid>
                             <Grid container spacing={12} >
 
-                                <Grid item xs={5} className='buy-subheaders'>
+                                <Grid item lg={5} xs={4} className={`buy-subheaders ${classes.normalfonts}`}>
                                     <i class="fa fa-phone overall-icons" aria-hidden="true"></i>&nbsp;{val.telephone}
                                 </Grid>
 
-                                <Grid item xs={5} className='buy-subheaders'>
+                                <Grid item lg={5} xs={4} className={`buy-subheaders ${classes.normalfonts}`}>
                                     <i class="fa fa-whatsapp overall-icons" aria-hidden="true"></i>&nbsp;{val.phonenum}
                                 </Grid>
 
-                                <Grid item xs={2} className='buy-subheaders'>
+                                <Grid item lg={2} className={`buy-subheaders ${classes.normalfonts}`}>
                                     <i class="fa fa-comments-o overall-icons" aria-hidden="true"></i>&nbsp;{val.chat}
                                 </Grid>
                             </Grid>
@@ -80,7 +87,7 @@ const Buydetails = (props) => {
 
 class PriceBuynow extends React.Component {
     state = {
-        // showimage: fadeImages[0],
+        showimage: this.props.data.fadeImages[0],
         open: false
     };
 
@@ -92,8 +99,9 @@ class PriceBuynow extends React.Component {
         this.setState({ open: false });
     };
     render() {
-        // let { showimage } = this.state;
+        let { showimage } = this.state;
         const { productsbuy, fadeImages } = this.props.data;
+        const { classes } = this.props;
         return (
             <div>
                 <Hidden smDown>
@@ -107,13 +115,13 @@ class PriceBuynow extends React.Component {
                             <Container>
                                 <Grid container spacing={12} style={{ marginTop: "10px" }}>
                                     <Grid item xs={6} className="content">
-                                        <b className="ships-by">
+                                        <b className={`ships-by ${classes.normalfonts}`}>
                                             {/* <span class="ship-img"></span> */}
                                             <span > <i class="fa fa-star fa-grey"></i>&nbsp; {val.shipby}</span>
                                         </b>
                                     </Grid>
                                     <Grid item xs={6} className="content">
-                                        <b className="ships-by curser">
+                                        <b className={`ships-by curser ${classes.normalfonts}`}>
                                             <span onClick={this.handleOpen}> Top to Zoom</span></b>
 
                                         <Modal
@@ -123,7 +131,7 @@ class PriceBuynow extends React.Component {
                                         >
                                             <div className='modal-div'>
                                                 <i style={{ fontSize: "20px", color: "#ccc", marginTop: "5%", marginRight: "5%", float: "right" }} className="modal-clos" onClick={this.handleClose} class="fa fa-times-circle"></i>
-                                                <div style={{ backgroundImage: `url(${fadeImages})`, width: "100%", height: "100%" }}></div>
+                                                <div style={{ backgroundImage: `url(${showimage})`, width: "100%", height: "100%" }}></div>
                                             </div>
                                         </Modal>
 
@@ -158,7 +166,7 @@ PriceBuynow.propTypes = {
     Buydetails: PropTypes.func,
 };
 
-export default (props => {
+export default withStyles(styles)(props => {
     const { mapped } = useDummyRequest(productpricingPages);
     if (Object.keys(mapped).length === 0) return ''
 

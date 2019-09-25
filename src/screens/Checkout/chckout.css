@@ -1,10 +1,9 @@
-.ckcut-main-body{
-        background: #dfdfdf !important;
-        color: #394578 !important;
-        border-color: #ddd !important;
-        padding: 0;
-        margin-bottom: 10px !important;
-    
+.ckcut-main-body {
+    background: #dfdfdf !important;
+    border-color: #ddd !important;
+    padding: 0;
+    margin-bottom: 10px !important;
+
 }
 
 .avart-ckc {
@@ -18,7 +17,6 @@
     margin-right: 15px;
     margin-left: 15px !important;
     font-weight: 700;
-    background: #394578 !important;
     color: #FFF;
     padding: 5px !important;
 }
@@ -35,4 +33,11 @@
 .MuiExpansionPanelDetails-root {
     fill: #333 !important;
     border-color: #ddd !important;
+}
+
+@media screen and (min-width: 1220px) {
+    .checkout-ovralldiv-media {
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+    }
 }

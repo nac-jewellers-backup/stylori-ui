@@ -3,24 +3,30 @@
     float: right;
     border: none !important;
 }
-.MuiInputBase-input{
-    border: none !important; 
+
+.MuiInputBase-input {
+    border: none !important;
 }
-.card-adrs{
+
+.card-adrs {
     padding: 20px !important;
     border: 1px solid #E6E6E6;
     margin-top: 20px;
-}.card-title{
+}
+
+.card-title {
     margin: 0 0 10px !important;
     border-bottom: 1px solid #E6E6E6;
     padding-bottom: 10px !important;
     font-size: 18px !important;
 }
-.address-name{
+
+.address-name {
     padding-left: 5px !important;
     font-size: 18px !important;
 }
-.delete-icon{
+
+.delete-icon {
     width: 14px;
     height: 14px;
     margin-top: 1px;
@@ -28,18 +34,39 @@
     font-size: 25px !important;
     color: #394578 !important;
 }
-.detils-p{
-    color: #394578 !important;
+
+.detils-p {
     font-size: 15px;
     line-height: 25px;
 }
-.card-foo{
+
+.card-foo {
     padding: 20px;
     border-top: 1px solid #E6E6E6;
-    font-size: 14px!important;
+    font-size: 14px !important;
     margin-top: 20px;
 }
-.shipping-phonenumber{
-    color: #394578 !important;
+
+.shipping-phonenumber {
     font-size: 15px;
+}
+
+.add-new-address {
+    background: #FFF !important;
+    border: 1px solid #394578 !important;
+    box-shadow: none !important;
+    padding-left: 45px !important;
+    min-width: 100px !important;
+    font-size: 16px !important;
+    margin-top: 15px !important;
+    text-transform: none !important;
+}
+
+.add-new-address div {
+    position: absolute !important;
+    width: 24px !important;
+    height: 23px !important;
+    background: url(https://assets-cdn.stylori.com/images/static/icon-map.png) no-repeat !important;
+    left: 10px !important;
+    top: 7px !important;
 }

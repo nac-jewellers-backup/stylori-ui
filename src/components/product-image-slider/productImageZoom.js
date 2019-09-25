@@ -10,6 +10,8 @@ import PropTypes from 'prop-types';
 import './product-images.css'
 import { useDummyRequest } from '../../hooks';
 import { productpricingPages } from '../../mappers';
+import { withStyles } from '@material-ui/core/styles';
+import styles from '../Header/styles'
 // window.onload = function () {
 //   var flashlight = document.querySelector('#flashlight');
 //   document.getElementById('divs').addEventListener('mouseover', function (event) {
@@ -24,6 +26,8 @@ class ProductImageZoom extends Component {
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
     this.slider = React.createRef();
+
+
   }
   state = {
     // backgroundImage: `url(${src})`,
@@ -42,11 +46,12 @@ class ProductImageZoom extends Component {
       arrows: false
     }
     const { fadeImages, productsubHead } = this.props.data;
+    const { classes } = this.props
     return (
       <div>
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
           <Grid item xs={2}>
-            <div style={{ textAlign: 'center' }} >
+            <div style={{ textAlign: 'center' }} className="imgzom-sidecraousel-media">
               <Button onClick={this.previous}>
                 <i class="fa fa-angle-up" style={{ fontSize: "35px", color: "#F699A3" }}></i>
               </Button>
@@ -56,12 +61,16 @@ class ProductImageZoom extends Component {
                 fadeImages={fadeImages} dataCarousel={dataCarousel} />
 
               <Button onClick={this.next}>
-                <i class="fa fa-angle-down" style={{ fontSize: "35px", color: "#F699A3" }}></i>
+                <i class="fa fa-angle-down" style={{ fontSize: "35px", color: "#F699A3" }}
+                // className={`${classes.colorMain}`}
+                ></i>
               </Button>
             </div>
           </Grid>
+
           <Grid item xs={10}>
             <div>
+
 
               <div className='imagecard' id="divs" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
                 {/* <span class="one-day-ship" ></span> */}
@@ -79,7 +88,7 @@ class ProductImageZoom extends Component {
                     <Grid item xs={2} >
                       <div key={val.name}>
                         <img className='features-tags-images' src={val.icon} alt="" />
-                        <span style={{ fontSize: "12px" }}>{val.name} </span>
+                        <span style={{ fontSize: "12px" }} className={`${classes.colorLight}`}>{val.name} </span>
                       </div>
                     </Grid>
                   ))}
@@ -148,7 +157,7 @@ ProductImageZoom.propTypes = {
   getimage: PropTypes.func,
   productImageZoom: PropTypes.func,
 };
-export default (props => {
+export default withStyles(styles)(props => {
   const { mapped } = useDummyRequest(productpricingPages);
   if (Object.keys(mapped).length === 0) return ''
 

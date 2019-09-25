@@ -1,93 +1,26 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import './Cart.css'
-import { Container, Grid, CardHeader, Card, IconButton, CardContent, Button, Hidden } from '@material-ui/core';
-// import { productsDetails } from '../../mappers/dummydata/productpricingPage';
-// import T from '../../mappers/dummydata/productpricingPage';
+import {
+    Grid,
+    CardHeader,
+    Card,
+    IconButton,
+    Hidden
+} from '@material-ui/core';
 import Slideshow from '../Carousel/carosul'
-import CardActions from "@material-ui/core/CardActions";
 import { withStyles } from '@material-ui/core/styles';
 import Buynowbutton from '../Buynow/buynowbutton';
-// import { dataCard1 } from '../ProductCard/ProductData'; 
 import { useDummyRequest } from '../../hooks';
 import { cartdatas } from '../../mappers';
 import CardSmallScreen from './CartCardSmallScreen.js';
 import Pricing from '../Pricing/index'
-
+import styles from "./style"
 // 
 // 
-import { makeStyles, useTheme } from "@material-ui/core/styles";
 import CustomSeparator from '../../components/BreadCrumb/index'
-const styles = theme => ({
-    cart: {
-        [theme.breakpoints.down('xs')]: {
-            width: "100%",
-            overflowX: "auto",
-        },
-        [theme.breakpoints.up('lg')]: {
-            width: "100%",
-            border: "0.5px solid #ccc",
-            padding: "10px",
-            marginBottom: "20px"
-        },
-    },
-});
 
 
-
-const useStyles = makeStyles(theme => ({
-    card: {
-        width: "100%",
-        margin: "auto",
-        display: "flex"
-    },
-    details: {
-        display: "flex",
-        flexDirection: "column",
-        padding: "2%",
-        width: "100%"
-    },
-    content: {
-        flex: "1 0 auto",
-        padding: 0
-    },
-    cover: {
-        width: "30vw"
-    },
-    controls: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-around",
-        "& button": {
-            padding: "2.1px 13.8px"
-        },
-        [theme.breakpoints.down("sm")]: {
-            "& button": {
-                padding: "1.1px 1.8px"
-            }
-        }
-    },
-
-    playIcon: {
-        height: 38,
-        width: 38
-    },
-    contents: {
-        fontSize: "0.8rem",
-        color: "#394578"
-    },
-    labelPrice: {
-        display: "flex"
-    },
-    labelPriceDel: {
-        fontSize: "0.8rem",
-        display: "flex",
-        alignItems: "center"
-    },
-    labelPriceOff: {
-        fontSize: "1.1rem"
-    }
-}));
 class Checkoutcard extends React.Component {
     constructor(props) {
         super(props)
@@ -96,18 +29,6 @@ class Checkoutcard extends React.Component {
         }
     }
 
-
-    // sortBy = (key) => {
-    //     let arrayCopy = [...this.state.data];
-    //     arrayCopy.sort(this.compareBy(key));
-    //     this.setState({data: arrayCopy});
-    //   };
-    // remove = (rowId) => {
-    //     // Array.prototype.filter returns new array
-    //     // so we aren't mutating state here
-    //     const arrayCopy = this.state.data.filter((row) => row.id !== rowId);
-    //     this.setState({data: arrayCopy});
-    //   };
     row = () => {
         const dataCarousel = {
             slidesToShow: 1,
@@ -123,7 +44,7 @@ class Checkoutcard extends React.Component {
                             <Grid item xs={1}  >
                                 <a
                                     // onClick={() => remove(id)}
-                                    style={{ textDecoration: "none" }} href="#123"><div class="remove-product"></div></a>
+                                    style={{ textDecoration: "none" }} href=""><div class="remove-product"></div></a>
                             </Grid>
                             <Grid item xs={2} >
                                 <Card className="product-image-thumb">
@@ -139,17 +60,17 @@ class Checkoutcard extends React.Component {
                                 </Card>
                             </Grid>
                             <Grid item xs={6} style={{ padding: "20px" }}>
-                                <h3 class="title">{val.header}</h3>
+                                <h3 class={`title ${classes.normalfonts}`}>{val.header}</h3>
                                 <Grid container spacing={12} >
                                     <Grid item xs={6} >
                                         {val.namedetail !== undefined && val.namedetail.map(val => (
                                             <Grid container spacing={12}>
 
                                                 <Grid item xs={6} >
-                                                    <Typography className='subhesder'>{val.name}</Typography>
+                                                    <Typography className={`subhesder ${classes.normalfonts}`}>{val.name}</Typography>
                                                 </Grid>
                                                 <Grid item xs={6} >
-                                                    <Typography className='subhesder'>{val.details}</Typography>
+                                                    <Typography className={`subhesder ${classes.normalfonts}`}>{val.details}</Typography>
                                                 </Grid>
                                             </Grid>
 
@@ -157,9 +78,9 @@ class Checkoutcard extends React.Component {
                                     </Grid>
 
                                     <Grid item xs={3} >
-                                        <Typography className='subhesder'>Quantity 1</Typography>
+                                        <Typography className={`subhesder ${classes.normalfonts}`}>Quantity 1</Typography>
                                         <br />
-                                        <Typography className='subhesder'>
+                                        <Typography className={`subhesder hov ${classes.normalfonts}`}>
                                             <i class="fa fa-trash"></i>
                                             &nbsp;Remove</Typography>
                                     </Grid>
@@ -177,7 +98,7 @@ class Checkoutcard extends React.Component {
                                             </div>
                                         </Pricing>
                                     )}
-                                    <span class="offer-description">25% - OFF</span>
+                                    <span class={`offer-description ${classes.backgsecondary}`}>25% - OFF</span>
                                 </div>
                             </Grid>
                         </Grid>
@@ -191,14 +112,21 @@ class Checkoutcard extends React.Component {
 
     }
     checkoutbutton = () => {
+        const { classes } = this.props;
+        let path = window.location.pathname.split('/').pop();
         return (
-            <div className='ckeckout-top'>
-                <Buynowbutton class='chckout-page-buynow' />
+            <div>
+                {path == "Checkout" ? "" :
+                    <div className='ckeckout-top'>
+                        <Buynowbutton class={`chckout-page-buynow ${classes.buttons}`} />
+                    </div>}
             </div>
         )
     }
     subtotals = () => {
         const { dataCard1 } = this.props.data;
+        let path = window.location.pathname.split('/').pop();
+        const { classes } = this.props;
         return (
             <div style={{ marginTop: "10px" }} >
                 <Grid container spacing={12}>
@@ -207,21 +135,29 @@ class Checkoutcard extends React.Component {
                         {dataCard1.map(val =>
                             <Grid container>
                                 <Grid xs={7} lg={5}>
-                                    <Typography class="subhesder">Subtotal</Typography>
-                                    <Typography class="subhesder">You Saved</Typography>
-                                    <Typography class="subhesder">Shipping</Typography>
-                                    <Typography class="subhesder totsl-size">Grand Total</Typography>
+                                    <Typography class={`subhesder ${classes.normalfonts}`}>Subtotal</Typography>
+                                    <Typography class={`subhesder ${classes.normalfonts}`}>You Saved</Typography>
+                                    <Typography class={`subhesder ${classes.normalfonts}`}>Shipping</Typography>
+                                    <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>Grand Total</Typography>
                                 </Grid>
                                 <Grid xs={5} lg={5}>
-                                    <Typography class="subhesder">{val.price}</Typography>
-                                    <Typography class="subhesder">{val.save}</Typography>
-                                    <Typography class="subhesder">------- </Typography>
-                                    <Typography class="subhesder totsl-size">{val.offerPrice}</Typography>
+                                    <Typography class={`subhesder ${classes.normalfonts}`}>{val.price}</Typography>
+                                    <Typography class={`subhesder ${classes.normalfonts}`}>{val.save}</Typography>
+                                    <Typography class={`subhesder ${classes.normalfonts}`}>------- </Typography>
+                                    <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>{val.offerPrice}</Typography>
                                 </Grid>
                             </Grid>
                         )} </Grid>
                 </Grid>
-                {this.checkoutbutton()}
+                <Grid container>
+                    {path == "Checkout" ? "" :
+                        <Grid xs={12} lg={7}>
+                            <div className='btn-plain'> CONTINUE SHOPPING</div>
+                        </Grid>}
+                    <Grid xs={12} lg={4} >
+                        {this.checkoutbutton()}
+                    </Grid>
+                </Grid>
             </div>
         )
     }
@@ -230,31 +166,24 @@ class Checkoutcard extends React.Component {
             slidesToShow: 1,
             arrows: false,
         }
+        const { breadcrumsdata, cartsubdata } = this.props.data;
+
         const { classes } = this.props;
-
-
+        let path = window.location.pathname.split('/').pop();
         return (
             <div>
                 <Hidden smDown>
-                    <CustomSeparator
-                        className="breadcrums-header"
-                        classsubhed="breadcrums-sub"
-                        list='MuiBreadcrumbs-li'
-                        data={["Shopping Bag",
-                            "Login/ Register",
-                            "Address Detail",
-                            "Payment Options",
-                            "Order Confirmation",
-                            // 100% Certified
-                            // Jewellery
-                            // Secure
-                            // Payments
-                            // Free Insured
-                            // Shipping
-                            // 25 - Day
-                            // Returns
-                        ]}
-                    /><br />
+                    {path == "Checkout" ? "" :
+                        <CustomSeparator
+                            arrowicon='cart-head-arrows'
+                            className={`breadcrums-header ${classes.normalcolorback}`}
+                            classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
+                            list={`MuiBreadcrumbs-li ${classes.fontwhite}`}
+                            data={breadcrumsdata}
+                            subdata={cartsubdata}
+                        />
+                    }
+
                     {this.checkoutbutton()}
                     <br />
                     <br />
@@ -272,9 +201,7 @@ class Checkoutcard extends React.Component {
     }
 
 }
-// export default withStyles(styles, { withTheme: true })(Checkoutcard);
-
-export default withStyles(styles, { withTheme: true })(props => {
+export default withStyles(styles)(props => {
     const { mapped } = useDummyRequest(cartdatas);
     if (Object.keys(mapped).length === 0) return ''
 

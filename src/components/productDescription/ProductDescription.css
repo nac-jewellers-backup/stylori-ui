@@ -34,3 +34,13 @@
   cursor: pointer;
   line-height: 1;
 }
+
+.product-dis {
+  color: #394578 !important;
+  font-size: 15px !important;
+}
+
+.product-backg {
+  margin-top: 1.5% !important;
+  margin-bottom: 1.5% !important;
+}

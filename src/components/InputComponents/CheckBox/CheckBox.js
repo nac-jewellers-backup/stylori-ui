@@ -16,6 +16,7 @@ export default function Checkboxes(props) {
 
     let handleChange = name => event => {
         setState({ ...state, [name]: event.target.checked });
+        props.change()
     };
     console.log(state)
 

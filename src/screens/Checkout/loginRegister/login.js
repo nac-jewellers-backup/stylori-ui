@@ -3,7 +3,8 @@ import './loginRegisters.css'
 import { Container, Grid, Button } from '@material-ui/core';
 import { Input } from '../../../components/InputComponents/TextField/Input'
 import { Form } from '../../../components/Form/Form';
-
+import styles from './style';
+import { withStyles } from '@material-ui/core/styles';
 class Login extends React.Component {
     initialValues = {
         mail: "",
@@ -26,11 +27,12 @@ class Login extends React.Component {
     }
     Logforms = (err, errorhandle, errors) => {
         const { values } = this.state;
+        const { classes } = this.props;
         return (
             <div className='pt-sm'>
                 <form onSubmit={this.handleSubmit()}>
                     <Grid container item xs={12} lg={6} >
-                        <h5 className='title'>  I already have an account </h5>
+                        <h5 className={`title ${classes.normalfonts}`}>  I already have an account </h5>
                         <Input
                             margin="normal"
                             variant="outlined"
@@ -52,14 +54,14 @@ class Login extends React.Component {
                             onChange={event => this.handleChange(event, 'Password')}
                         />
                         <div className='log-pas'>
-                            <span className='pas-fr'>Forgot Password ?</span>
-                            <div className='pas-fb'>
+                            <span className={`pas-fr ${classes.normalfonts}`}>Forgot Password ?</span>
+                            <div className={`pas-fb ${classes.normalfonts}`}>
                                 <span >Sign me in using</span>
                                 <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img>
                             </div >
                         </div>
                         <div className='login-butn'>
-                            <Button className='back-b' >Back</Button>
+                            <Button className='back-b' onClick={() => this.props.change()} >Back</Button>
                             <Button className='apply-b' type="submit">Apply</Button>
                         </div>
 
@@ -77,4 +79,4 @@ class Login extends React.Component {
         )
     }
 }
-export default Login;
+export default withStyles(styles)(Login);

@@ -12,13 +12,16 @@ import React from "react";
 import './product-images.css';
 import { useDummyRequest } from '../../hooks';
 import { productpricingPages } from '../../mappers';
+import { withStyles } from '@material-ui/core/styles';
+import styles from "./style";
 class ProductDetails extends React.Component {
     state = {
         expanded: null
     };
 
     productsDetails = () => {
-        const { productsDetails,productsPendants } = this.props.data;
+        const { productsDetails, productsPendants } = this.props.data;
+        const { classes } = this.props;
         return (
             <div>
                 <Grid container spacing={12} style={{ paddingRight: "20px" }}>
@@ -27,18 +30,18 @@ class ProductDetails extends React.Component {
                         <>
                             <div className='overall-boxz'>
                                 <div className='overall-bo'>
-                                    <span key={val.name} className="product-details">{val.header}</span>
+                                    <span key={val.name} className={`product-details ${classes.normalfonts}`}>{val.header}</span>
                                     <hr class="bottom-line"></hr>
                                     <>{
                                         val.namedetail !== undefined && val.namedetail.map(res =>
                                             <Grid container item xs={12} >
                                                 <Grid xs={6}>
-                                                    <ListItemText variant='' className="product-subhead">
+                                                    <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
                                                         <span style={{ fontSize: "12px" }}> {res.name}</span>
                                                     </ListItemText>
                                                 </Grid>
                                                 <Grid xs={6}>
-                                                    <ListItemText variant='' className="product-subhead-list">
+                                                    <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
                                                         <span style={{ fontSize: "12px" }}> {res.details}</span>
                                                     </ListItemText>
                                                 </Grid>
@@ -54,9 +57,9 @@ class ProductDetails extends React.Component {
                         <>
                             <div className='overall-boxz'>
                                 <div className='overall-bo'>
-                                    <span key={val.name} className="product-details">{val.header}</span>
+                                    <span key={val.name} className={`product-details ${classes.normalfonts}`}>{val.header}</span>
                                     <hr class="bottom-line"></hr>
-                                    <Grid item xs={12} className="product-subhead">
+                                    <Grid item xs={12} className={`product-subhead ${classes.normalfonts}`}>
                                         <span style={{ fontSize: "12px" }}>{val.name.join(' ')}</span>
                                     </Grid>
                                 </div>
@@ -69,7 +72,8 @@ class ProductDetails extends React.Component {
     };
     mobileproductsDetails = () => {
         const { expanded } = this.state;
-        const { productsDetails ,productsPendants} = this.props.data;
+        const { productsDetails, productsPendants } = this.props.data;
+        const { classes } = this.props;
         return (
             <div>
                 <div>
@@ -81,7 +85,7 @@ class ProductDetails extends React.Component {
                                     expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" >
                                     </i></span>}>
                                     <div style={{ width: "100%" }} >
-                                        <Typography className='subtabs-smrt'>{val.header}</Typography>
+                                        <Typography className={`subtabs-smrt ${classes.normalfonts}`}>{val.header}</Typography>
                                         <hr class="bottom-line border-line-"></hr>
                                     </div>
                                 </ExpansionPanelSummary>
@@ -89,12 +93,12 @@ class ProductDetails extends React.Component {
                                     val.namedetail !== undefined && val.namedetail.map(res =>
                                         <Grid container spacing xs={12} sm={12}>
                                             <Grid item xs={6} sm={6}>
-                                                <ListItemText variant='' className="product-subhead">
+                                                <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
                                                     <span style={{ fontSize: "12px" }}> {res.name}</span>
                                                 </ListItemText>
                                             </Grid>
                                             <Grid item xs={6} sm={6}>
-                                                <ListItemText variant='' className="product-subhead-list">
+                                                <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
                                                     <span style={{ fontSize: "12px" }}> {res.details}</span>
                                                 </ListItemText>
                                             </Grid>
@@ -108,13 +112,13 @@ class ProductDetails extends React.Component {
                                 <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                                     <i class="fa fa-sort-up" ></i></span>}>
                                     <div style={{ width: "100%" }} >
-                                        <Typography className='product-details-smrt'>{val.header}</Typography>
+                                        <Typography className={`product-details-smrt ${classes.normalfonts}`}>{val.header}</Typography>
                                         <hr class="bottom-line border-line-"></hr>
                                     </div>
                                 </ExpansionPanelSummary>
 
                                 <Grid container spacing={12}>
-                                    <Grid item xs={12} className="product-subhead ">
+                                    <Grid item xs={12} className={`product-subhead ${classes.normalfonts}`}>
                                         <span style={{ fontSize: "12px" }}>{val.name.join(' ')}</span>
                                     </Grid>
                                 </Grid>
@@ -149,7 +153,7 @@ ProductDetails.propTypes = {
     mobileproductsDetails: PropTypes.func,
     handle: PropTypes.func,
 };
-export default (props => {
+export default withStyles(styles)(props => {
     const { mapped } = useDummyRequest(productpricingPages);
     if (Object.keys(mapped).length === 0) return ''
 

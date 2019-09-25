@@ -45,7 +45,6 @@ const useStyles = makeStyles(theme => ({
 }));
 const handleClick = (name) => {
   if (name === 'truck') {
-    console.log('deii thangam venum na rendu illa na moonu nal aagum venum na wait pannu')
   }
 
 }

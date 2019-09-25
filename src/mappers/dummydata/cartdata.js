@@ -80,4 +80,25 @@ export const fadeImages = [
     'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
     'https://images7.alphacoders.com/421/421542.jpg ',
 ];
-
+export const breadcrumsdata = [
+    "Shopping Bag",
+    "Login/ Register",
+    "Address Detail",
+    "Payment Options",
+    "Order Confirmation",
+]
+export const cartsubdata = [
+    {
+        name: "100% Certified   Jewellery  ",
+        icon: "https://assets-cdn.stylori.com/images/static/icon-star.png"
+    }, {
+        name: " Secure  Payments   ",
+        icon: "https://assets-cdn.stylori.com/images/static/icon-lock.png"
+    }, {
+        name: "  Free Insured    Shipping   ",
+        icon: "https://assets-cdn.stylori.com/images/static/icon-van.png"
+    }, {
+        name: "  25 - Day   Returns   ",
+        icon: "https://assets-cdn.stylori.com/images/static/icon-return.png"
+    }
+]

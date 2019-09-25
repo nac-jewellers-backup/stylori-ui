@@ -33,9 +33,8 @@ class ProductDescription extends Component {
   render() {
     const { classes } = this.props;
     let path = window.location.pathname.split('/').pop();
-    const descriptionData  = this.props.data;
-    debugger;
-    const settings= descriptionData[path].carouselSettings;
+    const descriptionData = this.props.data;
+    const settings = descriptionData[path].carouselSettings;
     const fadeImages = descriptionData[path].carouselImage;
     const title = descriptionData[path].title;
     const datadescription = descriptionData[path].description;
@@ -60,7 +59,10 @@ class ProductDescription extends Component {
                   style={{ textAlign: 'center' }}
 
                   alignItems="center">
-                  <CustomSeparator data={[window.location.hostname,window.location.pathname.split('/').pop()]}/>
+                  <CustomSeparator
+                    list='product-dis'
+                    classsubhed='product-backg'
+                    data={[window.location.hostname, window.location.pathname.split('/').pop()]} />
                 </Grid>
               </Hidden>
               <Hidden smDown >
@@ -72,7 +74,7 @@ class ProductDescription extends Component {
                   <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>
                     {/* {window.location.pathname.split('/').pop()} */}
                     {title}
-                    
+
                   </Typography>
                 </Grid>
               </Hidden>
@@ -100,7 +102,7 @@ class ProductDescription extends Component {
                   alignItems="center">
 
                   {/* < Slideshow fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel} styles={'productDescriptionCarousel'} /> */}
-                       < Slideshow fadeImages={fadeImages} dataCarousel={settings} styles={'productDescriptionCarousel'} />
+                  < Slideshow fadeImages={fadeImages} dataCarousel={settings} styles={'productDescriptionCarousel'} />
                 </Grid>
               </Hidden>
               <Grid
