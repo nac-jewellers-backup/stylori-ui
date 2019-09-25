@@ -90,7 +90,6 @@ class Request extends React.Component {
 
     Requestform = (errors, handleError, errorMessage) => {
         const { classes } = this.props;
-        debugger
         return (
             <div>
                 <div className='overall-boxz'>

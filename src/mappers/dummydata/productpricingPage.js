@@ -131,7 +131,10 @@ export const productstabs = [
                     name: "SU 9IM",
                     icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
                 },
-
+                {
+                    name: "SU 9IM",
+                    icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
+                },
             ]
         }
     }

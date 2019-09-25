@@ -5,7 +5,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 export default function CustomSeparator(props) {
   let path = window.location.pathname.split('/').pop();
-  let seperators = path == 'cart' || "Checkout" ?
+  let seperators = path === 'cart' || path === "Checkout" ?
     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAQAAAC0NkA6AAAAAmJLR0QA/4ePzL8AAABTSURBVFjD7dfBDYAgFARRqkBCi1ouEa1mbMJPIMw08JK9bUpm9lOclGjiAnowQ6YBL1VGRkZGZjKm0IGbvDbCQQOewLkkJCQkNicGXYchJ8hs8z7oGPzdOrNn/QAAAABJRU5ErkJggg==" className={props.arrowicon} />
     : <NavigateNextIcon />;
   return (
@@ -31,10 +31,10 @@ export default function CustomSeparator(props) {
                   {
                     props.subdata.map(subdata => (
                       <>
-                        <Grid item xs={1} style={{ marginTop: "5px" }}>
-                          <img src={subdata.icon} />
-                        </Grid>
-                        <Grid item xs={2} style={{ float: "left" }}>
+                        {/* <Grid item xs={1} style={{ marginTop: "5px" }}> */}
+                        <img src={subdata.icon} style={{ width: "20px", height: "20px" }} />
+                        {/* </Grid> */}
+                        <Grid item xs={2} style={{ float: "left", lineHeight: "14px" }}>
                           <span style={{ fontSize: "12px" }}> {subdata.name}</span>
                         </Grid>
                       </>

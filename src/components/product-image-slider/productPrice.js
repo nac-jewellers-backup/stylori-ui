@@ -13,7 +13,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Pricing from '../Pricing/index'
 import { useDummyRequest } from '../../hooks';
 import { productpricingPages } from '../../mappers';
-import styles from './style'
+import styles from './style';
+
 const dataCarousel = {
     dots: false,
     infinite: true,
@@ -56,11 +57,18 @@ const Productprice = (props) => {
                             </div>
                         </Grid>
                         <Grid item xs={5} lg={4}>
-                            <div className="starts">
-                                <div className="row social-shares" className={classes.icon}>
-                                    <i class="fa fa-share-alt overall-icons"></i>
-                                    &nbsp;
+                            <div className="starts product-icons" style={{ fontFamily: "fontawesome" }} >
+                                <div className="row social-shares "
+                                    className={classes.icon}>
+                                    <i class="fa fa-share-alt overall-icons"></i> &nbsp;
                                     <i class="fa fa-heart-o overall-icons"></i>
+                                    <div onClick={() => { this.setState({ heart: !this.state.heart }) }}>
+                                        {/* {this.state.heart === true ?
+                                            <i class="fa fa-heart-o overall-icons"></i>
+                                            : <p>heart</p>
+                                        } */}
+                                    </div>
+
                                     <Ratings ratings="starts-review" />
                                 </div>
                             </div>
@@ -70,7 +78,7 @@ const Productprice = (props) => {
                     <Hidden mdUp>
                         {mobilecarousel(props)}
                     </Hidden>
-                    <div className={classes.width} style={{padding:"0 10px"}}>
+                    <div className={classes.width} style={{ padding: "0 10px" }}>
                         <Pricing price={val.price} offerPrice={val.offerPrice} offerDiscount='25% FLAT OFF' >
                             <Grid container spacing={12}>
                                 <div className={`price-info ${classes.dis}`}>
@@ -97,6 +105,9 @@ const Productprice = (props) => {
 class ProductPrice extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            heart: true
+        }
     }
     render() {
         return (
