@@ -65,7 +65,7 @@ export default function Pricing(props) {
                             component="p"
                             className={`${props.save != null & props.save !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.offerPricePadding} `}
                         >
-                            {props.save}
+                           you save {props.save}
                         </Typography>
                     </Typography>
 

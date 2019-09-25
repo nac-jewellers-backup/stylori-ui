@@ -1,13 +1,13 @@
 import { gql } from 'apollo-boost';
 
-export const productlist = gql`query MyQuery {
+export const PRODUCTLIST = `
+{
   allProductLists {
     nodes {
       productName
+      productId
+      productSeries
     }
   }
 }
 `
-export default [
-  productlist
-]

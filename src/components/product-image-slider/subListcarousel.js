@@ -60,9 +60,9 @@ class Sublistcarousel extends React.Component {
             </Grid>
           </div> <div className='sub-carousel-head'>
             <Container maxWidth='md'>
-              <Slideshow class="subslider-carousel" hoverlist={fadeImagessublist}
-                dataCarousel={dataCarousel} hover={true} >
-              </Slideshow>
+                <Slideshow class="subslider-carousel" hoverlist={fadeImagessublist}
+                  dataCarousel={dataCarousel} hover={true} >
+                </Slideshow>
             </Container>
           </div>
         </Hidden>

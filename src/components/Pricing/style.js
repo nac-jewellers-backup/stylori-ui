@@ -1,5 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
 const styles = makeStyles(theme => ({
+    pricing:{
+        float:'left'
+    },
     colorMain: {
         color: theme.palette.secondary.main
     },

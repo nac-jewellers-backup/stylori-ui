@@ -1,0 +1,7 @@
+{
+  "extensions": {
+    "endpoints": {
+      "dev": "http://auth-dev.ap-south-1.elasticbeanstalk.com/graphql"
+    }
+  }
+}
