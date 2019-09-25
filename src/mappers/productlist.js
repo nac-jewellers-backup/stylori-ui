@@ -1,15 +1,15 @@
-import React from "react";
-import { resolutions } from "../utils";
-import { NetworkContext } from "../context/NetworkContext";
-
+import { resolutions } from "utils";
 
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 
-
-export default function (data) {
-    const { NetworkCtx:{ cdnUrl } } = React.useContext(NetworkContext);
-    const { data: { allProductLists: { nodes } } } = data;
-    const _format = nodes.map(k => ({
+export default function (data, cdnUrl) {
+    let mapperdata;
+    try {
+        mapperdata = data.allProductLists.nodes;
+    } catch (error) {
+        mapperdata = [];
+    }
+    const _format = mapperdata.map(k => ({
         offerPrice: "23000.10",
         price: "29000.0",
         title: k.productName,

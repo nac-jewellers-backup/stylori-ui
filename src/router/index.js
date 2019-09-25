@@ -10,6 +10,7 @@ import routes from "router/routes";
 
 
 export const RouterApp = () => {
+
     return (
         <Switch>
             <Redirect key="stylori-redirect" from="/" exact to={routes.stylori} />

@@ -16,6 +16,7 @@ const RouterApp = React.lazy(() => import('router'));
 
 
 function App() {
+
   return (
     // <ApolloProvider client={client}>
     <GlobalProvider>

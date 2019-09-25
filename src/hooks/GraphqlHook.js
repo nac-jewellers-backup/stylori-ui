@@ -1,23 +1,32 @@
 import React from 'react';
-import ApolloClient from 'apollo-boost';
-import { useQuery } from 'react-apollo';
 import { createApolloFetch } from 'apollo-fetch';
 import { NetworkContext } from '../context/NetworkContext';
 
 export const useGraphql = (query, mapper) => {
-    const { NetworkCtx: { graphqlUrl: uri } } = React.useContext(NetworkContext);
-    const client = createApolloFetch({ uri });
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(false);
     const [data, setData] = React.useState({});
     const [mappedData, setMappedData] = React.useState({});
+    const { NetworkCtx: { graphqlUrl: uri, cdnUrl } } = React.useContext(NetworkContext);
+
+    const client = createApolloFetch({ uri });
 
     const makeRequest = () => {
-        client({ query }).then(data => {
+        client({ query: query }).then(resdata => {
             setLoading(false);
             setError(false);
-            setData(data);
-            if (data && mapper) setMappedData(mapper(data));
+            setData(resdata);
+            if (mapper && data) {
+                try {
+                    let mapped = mapper(data,cdnUrl);
+                    setMappedData(mapped);
+                } catch (error) {
+                    console.error('MAPPER ERROR', error);
+                    setError(true);
+                    setMappedData({});
+                }
+            }
+
         }).catch(err => {
             setLoading(false);
             setError(true);
@@ -27,20 +36,10 @@ export const useGraphql = (query, mapper) => {
     }
 
     React.useEffect(() => {
-        makeRequest();
-        console.info('UPDATE', data, loading)
-    }, [])
+        (() => {
+            makeRequest();
+        })()
+    }, []);
 
-    // const client = new ApolloClient({ uri: graphqlUrl })
-    // const { data, error, loading } = useQuery(query, { client })
-
-    // React.useEffect(() => {
-    //     (() => {
-    //         if (!loading && !error) {
-    //             if (mapper) setMappedData(mapper(data))
-    //         }
-    //     })()
-    // }, [])
-
-    return { error, loading, mappedData, data }
+    return { error, loading, data, mappedData, makeRequest }
 }
