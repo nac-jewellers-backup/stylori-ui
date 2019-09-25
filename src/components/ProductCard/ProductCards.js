@@ -123,8 +123,7 @@ sizes="(max-width: 320px) 320w,
            
 "
      alt=""
-          width='100%'
-          height='100%'
+
           src = {renderImagesSrc(props, cardstate)}
           title={props.data.title}
           onMouseOver={() => {
@@ -133,6 +132,8 @@ sizes="(max-width: 320px) 320w,
           onMouseOut={() => {
             setCardState({ ...cardstate, hovered: !cardstate.hovered });
           }}
+
+          className="shine"
           />
 {/* src= {renderImagesSrc(props)} className={`${props.data.image? '' : 'shine '}`} */}
 
