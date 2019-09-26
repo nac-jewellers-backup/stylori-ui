@@ -119,7 +119,7 @@ const Component = props => {
     // setMappedData(mapped);
     console.info('__MAPPED2', mapped);
   }
-  if (Object.keys(mapped).length === 0) return <div></div>
+  if (Object.keys(mapped).length === 0) return <div></div>  
   else {
     return <ProductLayout {...props} data={mapped} />
   }
