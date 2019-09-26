@@ -6,7 +6,7 @@ export const PRODUCTLIST = `
     nodes {
       productName
       productId
-      productSeries
+      productType
     }
   }
 }

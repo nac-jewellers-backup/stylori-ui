@@ -41,8 +41,7 @@ class CustomerReviews extends React.Component {
         return (
             <div>
                 <Hidden smDown>
-                    <Container>
-                        <div>
+                        <div className="pricing-product-media">
                             <div className="reviews-header">
                                 <span className={`reviews-customer ${classes.normalfonts}`}>Customer Reviews</span>
                             </div>
@@ -50,7 +49,6 @@ class CustomerReviews extends React.Component {
                                 <span className={`data-reviews ${classes.normalfonts}`}>No Reviews Found</span>
                             </div>
                         </div>
-                    </Container>
                 </Hidden>
 
                 <Hidden mdUp>

@@ -155,32 +155,38 @@
     .price-tabs {
         border-bottom: 1px solid #ddd !important;
     }
+
     .product-icons {
         font-size: 20px !important;
         margin-top: 18px !important;
-      }
-      .product-icons i{
+    }
+
+    .product-icons i {
         font-size: 20px !important;
         background-size: 219px;
         background-position: -87px 4px;
         cursor: pointer;
-      }
-      @keyframes pulse_animation {
+    }
+
+    @keyframes pulse_animation {
         25% {
-          -webkit-transform: scale(1.3);
-          transform: scale(1.3);
+            -webkit-transform: scale(1.3);
+            transform: scale(1.3);
         }
+
         75% {
-          -webkit-transform: scale(0.8);
-          transform: scale(0.8);
+            -webkit-transform: scale(0.8);
+            transform: scale(0.8);
         }
-      }
-      .product-icons i:hover{
+    }
+
+    .product-icons i:hover {
         animation-name: pulse_animation;
         animation-duration: 1000ms;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
-      }
+    }
+
     .subtabs,
     .MuiTab-wrapper,
     .MuiTabs-flexContainer,
@@ -546,6 +552,7 @@
     }
 
     .overly-img {
+        left: 48.5%;
         border: 1px solid rgb(204, 204, 204);
         display: none;
         height: 480px !important;

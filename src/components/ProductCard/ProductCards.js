@@ -4,7 +4,7 @@ import {Card,CardHeader,CardMedia, CardContent, Typography} from "@material-ui/c
 import './productCard.css'
 import IconButton from "@material-ui/core/IconButton";
 import PropTypes from "prop-types";
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import  Pricing  from "../Pricing";
 
 
@@ -92,7 +92,10 @@ export default function ProductCards(props) {
           </IconButton>
         }
       />
-      <NavLink to="/pricingPage" style={{textDecoration:'none'}}>
+      <Link to={{
+        pathname:"/pricingPage",
+        state:{name:props.data},
+  }} style={{textDecoration:'none'}}>
       {/* <a href={} target={"_blank"} style={{ textDecoration: 'none' }}> */}
         {/* <CardMedia
           component='img'
@@ -157,7 +160,7 @@ sizes="(max-width: 320px) 320w,
          <Pricing title={props.data.title} price={props.data.price} offerPrice={props.data.offerPrice} save={props.data.save}/>
         </CardContent>
       {/* </a> */}
-      </NavLink>
+      </Link>
       {/* props.data.image['placeImage'] */}
      
     </Card>
