@@ -9,7 +9,7 @@ export default function (data, cdnUrl) {
     } catch (error) {
         mapperdata = [];
     }
-    const _format = mapperdata.map(k => ({
+    const _format = mapperdata.map(k =>  ({
         offerPrice: "23000.10",
         price: "29000.0",
         title: k.productName,
