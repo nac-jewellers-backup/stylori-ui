@@ -4,6 +4,7 @@ import {
   Container,
   Button
 } from '@material-ui/core';
+import {withRouter} from 'react-router-dom'
 import Slideshow from '../Carousel/carosul'
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -12,6 +13,10 @@ import { useDummyRequest } from '../../hooks';
 import { productpricingPages } from '../../mappers';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../Header/styles'
+import productDetails from 'mappers/productDetails';
+import { PRODUCTDETAILS } from 'queries';
+import { useGraphql } from 'hooks/GraphqlHook';
+import { CDN_URL } from 'config';
 // window.onload = function () {
 //   var flashlight = document.querySelector('#flashlight');
 //   document.getElementById('divs').addEventListener('mouseover', function (event) {
@@ -21,7 +26,6 @@ import styles from '../Header/styles'
 // };
 
 class ProductImageZoom extends Component {
-
   constructor(props) {
     super(props);
     this.next = this.next.bind(this);
@@ -30,28 +34,25 @@ class ProductImageZoom extends Component {
 
 
   }
-  
   state = {
     // backgroundImage: `url(${src})`,
     backgroundPosition: '0% 0%',
-    showimage: this.props.data.fadeImages[0]
+    showimage: this.props.data[0].fadeImages
   }
 
-  productImageZoom = (props) => {
-   console.log('navlink',props,this.state)
-
+  productImageZoom = () => {
+    const { classes, data } = this.props
     const { showimage } = this.state;
     const dataCarousel = {
       infinite: true,
-      slidesToShow: 4,
+      slidesToShow: data[0].fadeImages.length,
       slidesToScroll: 1,
       vertical: true,
       verticalSwiping: true,
       arrows: false
     }
-    const { fadeImages, productsubHead } = this.props.data;
-    const { classes } = this.props
-    debugger
+    const { productsubHead } = this.props.data;
+    // const { fadeImages, productsubHead } = this.props.data;
     return (
       <div>
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
@@ -63,7 +64,7 @@ class ProductImageZoom extends Component {
 
               <Slideshow sliderRef={this.slider}
                 getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img'
-                fadeImages={fadeImages} dataCarousel={dataCarousel} />
+                fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
 
               <Button onClick={this.next}>
                 <i class="fa fa-angle-down" style={{ fontSize: "35px", color: "#F699A3" }}
@@ -87,7 +88,7 @@ class ProductImageZoom extends Component {
               <div className='overly-img' id="overlay"
                 style={{ backgroundImage: `url(${showimage})` }} onMouseOut={event => this.zoomOut(event)}></div>
               <div>
-                <Grid container spacing={12}
+                {/* <Grid container spacing={12}
                   className='features-tags'>
                   {productsubHead.map(val => (
                     <Grid item xs={2} >
@@ -97,7 +98,7 @@ class ProductImageZoom extends Component {
                       </div>
                     </Grid>
                   ))}
-                </Grid>
+                </Grid> */}
               </div>
             </div>
           </Grid>
@@ -146,7 +147,7 @@ class ProductImageZoom extends Component {
     return (
       <div>
         <Hidden smDown>
-          {this.productImageZoom(this.props)}
+          {this.productImageZoom()}
         </Hidden>
       </div>
 
@@ -162,9 +163,20 @@ ProductImageZoom.propTypes = {
   getimage: PropTypes.func,
   productImageZoom: PropTypes.func,
 };
-export default withStyles(styles)(props => {
-  const { mapped } = useDummyRequest(productpricingPages);
-  if (Object.keys(mapped).length === 0) return ''
+const Components = props => {
+  const { loading, error, data } = useGraphql(PRODUCTDETAILS, productDetails);
+  let mapped = data;
+  if (!loading && !error) {
+    console.info('__MAPPED', data);
+    mapped = productDetails(data);
+    // setMappedData(mapped);
+    console.info('__MAPPED2', mapped);
+  }
+  if (Object.keys(mapped).length === 0) return <div></div>
+  else {
+    return <ProductImageZoom {...props} data={mapped} />
+  }
 
-  return <ProductImageZoom {...props} data={mapped} />
-});
+}
+
+export default withRouter(withStyles(styles)(Components))

@@ -91,10 +91,14 @@ export default function ProductCards(props) {
             </i>
           </IconButton>
         }
-      />
-      <Link to={{pathname:"/pricingPage", state: {
-    data:props
-  }}} style={{textDecoration:'none'}} >
+      /> 
+      <Link to={{
+        pathname:"/pricingPage", 
+        state: {
+            data:props
+           }}}
+        style={{textDecoration:'none'}}
+        >
       {/* <a href={} target={"_blank"} style={{ textDecoration: 'none' }}> */}
         {/* <CardMedia
           component='img'
