@@ -7,6 +7,7 @@ import { productcarddatas } from 'mappers';
 import productlist from 'mappers/productlist';
 import { PRODUCTLIST } from 'queries';
 import { useGraphql } from 'hooks/GraphqlHook';
+import { CDN_URL } from 'config';
 
 const styles = theme => ({
   gridlistmain: {
@@ -76,15 +77,14 @@ class ProductLayout extends React.Component {
 
   }
   render() {
-    const { classes } = this.props;
-    const { dataCard } = this.props.data;
+    const { classes, data } = this.props;
     // console.log(dataCard)
     // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
     return (
       <div className={`productLayoutRoot `} style={this.props.styles}>
         <GridList cellHeight={"auto"} className={`productLayoutGridList ${classes.gridlistmain}`} cols={this.state.colSize} style={{ marginLeft: '12px' }}>
           {
-            dataCard.map(tile => {
+            data.map(tile => {
               return (
                 <GridListTile key={tile.title} cols={tile.cols || 1} style={{ height: 'auto', paddingTop: '2%' }} >
 
@@ -99,7 +99,7 @@ class ProductLayout extends React.Component {
         </GridList>
         <div className={`${classes.gridlistmainviewmore}`}>
           <Button variant="contained" className={`${classes.button}  ${classes.viewmoreColor}`}>
-            View {dataCard.length} More Products
+            View {data.length} More Products
       </Button>
         </div>
 
@@ -111,21 +111,18 @@ class ProductLayout extends React.Component {
 }
 
 const Component = props => {
-  const { mapped } = useDummyRequest(productcarddatas);
   const { loading, error, data } = useGraphql(PRODUCTLIST, productlist);
-  if(!loading && !error){
-    console.info('__MAPPED',data);
-    let mapped = productlist(data);
+  let mapped = data;
+  if (!loading && !error) {
+    console.info('__MAPPED', data);
+    mapped = productlist(data, CDN_URL);
     // setMappedData(mapped);
-    console.info('__MAPPED2',mapped);
+    console.info('__MAPPED2', mapped);
   }
-  // console.info('MAPPED', loading, error, data, mappedData);
-  // console.info('MAPPED2',mapped);
   if (Object.keys(mapped).length === 0) return <div></div>
+  else {
+    return <ProductLayout {...props} data={mapped} />
+  }
 
-  return <ProductLayout {...props} data={mapped} />
 }
-
-// export default ProductLayout
-
 export default withStyles(styles, { withTheme: true })(Component);
