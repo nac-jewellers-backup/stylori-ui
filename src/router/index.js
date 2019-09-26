@@ -16,7 +16,7 @@ export const RouterApp = () => {
             <Redirect key="stylori-redirect" from="/" exact to={routes.stylori} />
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
             <Route key="stylori" component={Stylori} exact path={routes.stylori} />
-            <Route key="PricingPage" component={PricingPage} exact path={routes.PricingPage} />
+            <Route key="PricingPage" component={PricingPage} exact path={routes.PricingPage}  value/>
             <Route key="Cart" component={Cart} exact path={routes.Cart} />
             <Route key="Register" component={Register} exact path={routes.Register} />
         </Switch>

@@ -7,6 +7,7 @@ export const PRODUCTLIST = `
       productName
       productId
       productSeries
+      
     }
   }
 }
