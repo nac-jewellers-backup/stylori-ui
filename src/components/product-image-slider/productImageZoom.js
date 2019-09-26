@@ -21,6 +21,7 @@ import styles from '../Header/styles'
 // };
 
 class ProductImageZoom extends Component {
+
   constructor(props) {
     super(props);
     this.next = this.next.bind(this);
@@ -29,13 +30,16 @@ class ProductImageZoom extends Component {
 
 
   }
+  
   state = {
     // backgroundImage: `url(${src})`,
     backgroundPosition: '0% 0%',
     showimage: this.props.data.fadeImages[0]
   }
 
-  productImageZoom = () => {
+  productImageZoom = (props) => {
+   console.log('navlink',props,this.state)
+
     const { showimage } = this.state;
     const dataCarousel = {
       infinite: true,
@@ -47,6 +51,7 @@ class ProductImageZoom extends Component {
     }
     const { fadeImages, productsubHead } = this.props.data;
     const { classes } = this.props
+    debugger
     return (
       <div>
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
@@ -141,7 +146,7 @@ class ProductImageZoom extends Component {
     return (
       <div>
         <Hidden smDown>
-          {this.productImageZoom()}
+          {this.productImageZoom(this.props)}
         </Hidden>
       </div>
 

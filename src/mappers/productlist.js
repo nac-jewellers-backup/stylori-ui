@@ -22,3 +22,4 @@ export default function (data, cdnUrl) {
     }))
     return _format;
 }
+
