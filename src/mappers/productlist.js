@@ -1,15 +1,15 @@
 import { resolutions } from "utils";
-
+// const baseUi = "https://assets-cdn.stylori.com/";
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 
 export default function (data, cdnUrl) {
-    let mapperdata;
+    let mapperdata = [];
     try {
-        mapperdata = data.allProductLists.nodes;
+        mapperdata = data.data.allProductLists.nodes;
     } catch (error) {
         mapperdata = [];
     }
-    const _format = mapperdata.map(k => ({
+    const _format = mapperdata.map(k =>  ({
         offerPrice: "23000.10",
         price: "29000.0",
         title: k.productName,

@@ -40,6 +40,5 @@ export const useGraphql = (query, mapper) => {
             makeRequest();
         })()
     }, []);
-
-    return { error, loading, data, mappedData, makeRequest }
+return { error, loading, data, mappedData, makeRequest }
 }

@@ -7,7 +7,7 @@ import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 let outerTheme = createMuiTheme(require('./theme.json'));
 let outerThemes = responsiveFontSizes(outerTheme);
-const RouterApp = React.lazy(() => import('router'));
+const RouterApp = React.lazy(() => import('router'));  
 
 
 // const client = new ApolloClient({
