@@ -18,6 +18,8 @@ export default function (data, cdnUrl) {
             placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg", cdnUrl),
             hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg", cdnUrl)
         },
+        productId:k.productId
+        
 
     }))
     return _format;

@@ -72,6 +72,8 @@ export default function ProductCards(props) {
   });
   
   // placeImage.placeImage.map(img => `${img.img} ${img.size}`).toString()
+ 
+  debugger
   return (
     <Card className={` ${classes.card}`} >
 
@@ -91,14 +93,10 @@ export default function ProductCards(props) {
             </i>
           </IconButton>
         }
-      /> 
-      <Link to={{
-        pathname:"/pricingPage", 
-        state: {
-            data:props
-           }}}
-        style={{textDecoration:'none'}}
-        >
+      />
+      <Link to={{pathname:"/pricingPage", state: {
+    data:props.data.productId
+  }}} style={{textDecoration:'none'}} >
       {/* <a href={} target={"_blank"} style={{ textDecoration: 'none' }}> */}
         {/* <CardMedia
           component='img'
@@ -168,6 +166,7 @@ sizes="(max-width: 320px) 320w,
       {/* props.data.image['placeImage'] */}
      
     </Card>
+    
   );
 }
 ProductCards.propTypes = {

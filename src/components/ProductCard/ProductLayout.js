@@ -93,7 +93,7 @@ class ProductLayout extends React.Component {
                 </GridListTile>
               )
             })
-
+ 
           }
 
         </GridList>

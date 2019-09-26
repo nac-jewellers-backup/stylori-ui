@@ -4,7 +4,7 @@ import {
   Container,
   Button
 } from '@material-ui/core';
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import Slideshow from '../Carousel/carosul'
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -14,7 +14,7 @@ import { productpricingPages } from '../../mappers';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../Header/styles'
 import productDetails from 'mappers/productDetails';
-import { PRODUCTDETAILS } from 'queries';
+import { PRODUCTDETAILS, conditions } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { CDN_URL } from 'config';
 // window.onload = function () {
@@ -37,15 +37,16 @@ class ProductImageZoom extends Component {
   state = {
     // backgroundImage: `url(${src})`,
     backgroundPosition: '0% 0%',
-    showimage: this.props.data[0].fadeImages
+    showimage: this.props.data[0].fadeImages[0]
   }
 
   productImageZoom = () => {
     const { classes, data } = this.props
+    const limit = 4;
     const { showimage } = this.state;
     const dataCarousel = {
       infinite: true,
-      slidesToShow: data[0].fadeImages.length,
+      slidesToShow: data[0].fadeImages.length > 4 ? limit : data[0].fadeImages.length,
       slidesToScroll: 1,
       vertical: true,
       verticalSwiping: true,
@@ -164,11 +165,12 @@ ProductImageZoom.propTypes = {
   productImageZoom: PropTypes.func,
 };
 const Components = props => {
-  const { loading, error, data } = useGraphql(PRODUCTDETAILS, productDetails);
+  const productID = props.location.state.data
+  const { loading, error, data } = useGraphql(PRODUCTDETAILS, productDetails, conditions.productId(productID));
   let mapped = data;
   if (!loading && !error) {
     console.info('__MAPPED', data);
-    mapped = productDetails(data);
+    mapped = productDetails(data, productID);
     // setMappedData(mapped);
     console.info('__MAPPED2', mapped);
   }
