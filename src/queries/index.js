@@ -7,6 +7,8 @@ export const PRODUCTLIST = `
       productName
       productId
       productSeries
+      productType
+      width
     }
   }
 }

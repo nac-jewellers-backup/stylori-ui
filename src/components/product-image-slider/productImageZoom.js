@@ -38,8 +38,8 @@ class ProductImageZoom extends Component {
   }
 
   productImageZoom = (props) => {
-   console.log('navlink',props,this.state)
-
+    console.log(props.state)
+debugger
     const { showimage } = this.state;
     const dataCarousel = {
       infinite: true,

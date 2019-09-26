@@ -6,6 +6,7 @@ import './pricing.css'
 
 export default function Pricing(props) {
     const classes = styles();
+    let path = window.location.pathname.split('/').pop();
     return (
         <div>
             {
@@ -63,9 +64,9 @@ export default function Pricing(props) {
                         <Typography
                             variant="caption"
                             component="p"
-                            className={`${props.save != null & props.save !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.offerPricePadding} `}
+                            className={`${props.save != null & props.save !== '' ? '' : 'shine'} ${classes.colorMain}  `}
                         >
-                           you save {props.save}
+                           {path==='stylori' && 'You save'} {props.save}
                         </Typography>
                     </Typography>
 
