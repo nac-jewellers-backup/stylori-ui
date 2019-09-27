@@ -6,9 +6,6 @@ import Cart from 'screens/Stylori/Cart'
 import Checkout from 'screens/Stylori/Checkout'
 import Register from 'screens/Checkout/loginRegister/register';
 import routes from "router/routes";
-
-
-
 export const RouterApp = () => {
 
     return (
@@ -22,5 +19,4 @@ export const RouterApp = () => {
         </Switch>
     );
 };
-
 export default RouterApp;

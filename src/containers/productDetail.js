@@ -1,6 +1,6 @@
 import {
-  Hidden,
-  Grid
+    Hidden,
+    Grid
 } from '@material-ui/core';
 import React, { Component } from 'react';
 import Header from 'components/Header/header'
@@ -22,6 +22,8 @@ import { withRouter } from 'react-router-dom';
 import productDetails from 'mappers/productDetails';
 import { PRODUCTDETAILS, conditions } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
+import { ProductDetailContext  } from 'context/ProductDetailContext';
+import { CDN_URL } from 'config';
 
 
 class ProductDetail extends Component {
@@ -138,18 +140,27 @@ class ProductDetail extends Component {
   }
 }
 const Components = props => {
-  const productID = props.location.state.data
-  const { loading, error, data } = useGraphql(PRODUCTDETAILS, productDetails, conditions.productId(productID));
-  let mapped = data;
-  if (!loading && !error) {
-    console.info('__MAPPED', data);
-    mapped = productDetails(data, productID);
-    // setMappedData(mapped);
-    console.info('__MAPPED2', mapped);
-  }
-  if (Object.keys(mapped).length === 0) return <div></div>
-  else {
-    return <ProductDetail {...props} data={mapped} />
-  }
+  const productId = props.location.state.data
+
+    const { ProductDetailCtx: { data, loading, error } } = React.useContext(ProductDetailContext);
+    
+    console.info('datares', data);
+    const datas = data;
+    console.log(datas)
+
+  
+    let mapped = datas;
+    if (!loading && !error) {
+        mapped = productDetails(datas);
+
+        console.info('__MAPPED2', mapped);
+    }
+    if (Object.keys(mapped).length === 0) return <div></div>
+    else {
+        return  <ProductDetail {...props} data={mapped} />
+
+    }
 }
+
+
 export default withRouter((Components));

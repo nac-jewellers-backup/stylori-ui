@@ -6,7 +6,10 @@ export default class Stylori extends Component {
 
     return (
       <div>
+      
         <ProductDetail />
+    
+       
       </div>
     )
   }

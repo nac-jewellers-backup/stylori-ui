@@ -221,7 +221,6 @@ class PersistentDrawerLeft extends React.Component {
 
       numberTwo = Number((document.getElementById('num2').value).replace(/,/g, ''));
     }
-    debugger;
     var numOnee = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
     var numTwoo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
     this.setState({ numOne: numOnee, numTwo: numTwoo })

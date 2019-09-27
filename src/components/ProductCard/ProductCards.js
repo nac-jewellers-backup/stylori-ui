@@ -73,7 +73,6 @@ export default function ProductCards(props) {
   
   // placeImage.placeImage.map(img => `${img.img} ${img.size}`).toString()
  
-  debugger
   return (
     <Card className={` ${classes.card}`} >
 

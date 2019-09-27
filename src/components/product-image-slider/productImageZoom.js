@@ -28,11 +28,14 @@ class ProductImageZoom extends React.Component {
   }
   state = {
     // backgroundImage: `url(${src})`,
+    
     backgroundPosition: '0% 0%',
     showimage: this.props.data[0].fadeImages[0]
   }
 
+
   productImageZoom = () => {
+    console.log(this.props.data)
     const { classes, data } = this.props
     const limit = 4;
     const { showimage } = this.state;
