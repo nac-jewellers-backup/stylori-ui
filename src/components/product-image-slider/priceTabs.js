@@ -16,8 +16,6 @@ import './product-images.css'
 import PropTypes from 'prop-types';
 import Slideshow from '../Carousel/carosul';
 import { withStyles } from '@material-ui/core/styles';
-import { useDummyRequest } from '../../hooks';
-import { productpricingPages } from '../../mappers';
 import styles from './style'
 function TabContainer({ children, dir }) {
     return (
@@ -52,12 +50,13 @@ class PriceTabs extends React.Component {
         });
     }
 
-    TabsS = () => {
+    TabsComponent = () => {
         const { classes } = this.props;
-        const { productstabs } = this.props.data;
+        const data = this.props.data;
+        debugger
         return (
             <div>
-                {productstabs.map(val =>
+                {data.productTabs.map(val =>
                     <>
                         <div className="header-APP">
                             <AppBar position="static" color="default" className="price-panel"
@@ -77,6 +76,7 @@ class PriceTabs extends React.Component {
                                 </Tabs>
                             </AppBar>
                         </div>
+
                         <SwipeableViews
                             index={this.state.value}
                             onChangeIndex={this.handleChangeIndex}
@@ -100,9 +100,8 @@ class PriceTabs extends React.Component {
                                         <span className={`my-ringsize ${classes.normalfonts}`}>My Ring Size ?</span>
                                     </div>
                                 </div>
-
-
                             </TabContainer>
+
                             <TabContainer >
                                 <Grid container spacing={12}>
                                     {val.tab2.Children.map(val =>
@@ -115,6 +114,7 @@ class PriceTabs extends React.Component {
                                     )}
                                 </Grid>
                             </TabContainer>
+
                             <TabContainer >
                                 <Grid container spacing={12}>
                                     {val.tab3.Children.map(val =>
@@ -127,97 +127,93 @@ class PriceTabs extends React.Component {
                                     )}
                                 </Grid>
                             </TabContainer>
+
                         </SwipeableViews>
                     </>
                 )}
-                {/* <hr class="bottom-line"></hr> */}
             </div>
         );
     }
-    mobiletabs = () => {
+
+    MobileTabs = () => {
         const { expanded } = this.state;
         const { classes } = this.props;
-        const { productstabs } = this.props.data;
+        const data = this.props.data;
         return (
             <>
-                {productstabs.map(val =>
+                {data[0].productTabs.map(val =>
                     <Container>
                         <>
-                            <>
-                                <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
-                                    style={{ boxShadow: "none", backgroundColor: "none" }}>
-                                    <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
-                                        <div style={{ width: "100%" }} >
-                                            <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab1.header}</Typography>
-                                            <hr class="bottom-line border-line-"></hr>
-                                        </div>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails style={{ padding: "8px 24px 0px" }}>
-                                        <div className={classes.pagination} >
-                                            <Slideshow dataCarousel={settings} >
-                                                {val.tab1.Children.map((val, i) =>
-                                                    <>
-                                                        <button
-                                                            className={this.state.isActive == i ? `dark ${classes.tabsRingBckg}` : 'page'}
-                                                            value={val} id={val} name={i}
-                                                            onClick={event => this.handleClick(event)}
-                                                        >
-                                                            {val}
-                                                        </button>
-                                                    </>
-                                                )}
-                                            </Slideshow>
-                                        </div>
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                            </>
+                            <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
+                                style={{ boxShadow: "none", backgroundColor: "none" }}>
+                                <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
+                                    <div style={{ width: "100%" }} >
+                                        <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab1.header}</Typography>
+                                        <hr class="bottom-line border-line-"></hr>
+                                    </div>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails style={{ padding: "8px 24px 0px" }}>
+                                    <div className={classes.pagination} >
+                                        <Slideshow dataCarousel={settings} >
+                                            {val.tab1.Children.map((val, i) =>
+                                                <>
+                                                    <button
+                                                        className={this.state.isActive == i ? `dark ${classes.tabsRingBckg}` : 'page'}
+                                                        value={val} id={val} name={i}
+                                                        onClick={event => this.handleClick(event)}
+                                                    >
+                                                        {val}
+                                                    </button>
+                                                </>
+                                            )}
+                                        </Slideshow>
+                                    </div>
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
 
-                            <>
-                                <ExpansionPanel expanded={expanded === val.tab2.header} onChange={this.handle(val.tab2.header)}
-                                    style={{ boxShadow: "none", backgroundColor: "none" }}>
-                                    <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
-                                        <div style={{ width: "100%" }} >
-                                            <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab2.header}</Typography>
-                                            <hr class="bottom-line border-line-"></hr>
-                                        </div>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails style={{ padding: 0 }}>
-                                        {val.tab2.Children.map(val =>
-                                            <Grid container spacing={12}>
-                                                <Grid xs={12}>
-                                                    <div className="tabs-valus">
-                                                        <img src={val.icon} style={{ width: '35px', margin: "auto" }} alt="" />
-                                                        <span className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
-                                                    </div>
-                                                </Grid>
+                            <ExpansionPanel expanded={expanded === val.tab2.header} onChange={this.handle(val.tab2.header)}
+                                style={{ boxShadow: "none", backgroundColor: "none" }}>
+                                <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
+                                    <div style={{ width: "100%" }} >
+                                        <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab2.header}</Typography>
+                                        <hr class="bottom-line border-line-"></hr>
+                                    </div>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails style={{ padding: 0 }}>
+                                    {val.tab2.Children.map(val =>
+                                        <Grid container spacing={12}>
+                                            <Grid xs={12}>
+                                                <div className="tabs-valus">
+                                                    <img src={val.icon} style={{ width: '35px', margin: "auto" }} alt="" />
+                                                    <span className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
+                                                </div>
                                             </Grid>
-                                        )}
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                            </>
-                            <>
-                                <ExpansionPanel expanded={expanded === val.tab3.header} onChange={this.handle(val.tab3.header)}
-                                    style={{ boxShadow: "none", backgroundColor: "none" }}>
-                                    <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
-                                        <div style={{ width: "100%" }} >
-                                            <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab3.header}</Typography>
-                                            <hr class="bottom-line border-line-"></hr>
-                                        </div>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails style={{ padding: 0 }}>
-                                        {val.tab3.Children.map(val =>
-                                            <Grid container spacing={12}>
-                                                <Grid xs={12}>
-                                                    <div className="tabs-valus">
-                                                        <img src={val.icon} style={{ width: '35px', margin: "auto" }} alt="" />
-                                                        <span className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
-                                                    </div>
-                                                </Grid>
+                                        </Grid>
+                                    )}
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+
+                            <ExpansionPanel expanded={expanded === val.tab3.header} onChange={this.handle(val.tab3.header)}
+                                style={{ boxShadow: "none", backgroundColor: "none" }}>
+                                <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
+                                    <div style={{ width: "100%" }} >
+                                        <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab3.header}</Typography>
+                                        <hr class="bottom-line border-line-"></hr>
+                                    </div>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails style={{ padding: 0 }}>
+                                    {val.tab3.Children.map(val =>
+                                        <Grid container spacing={12}>
+                                            <Grid xs={12}>
+                                                <div className="tabs-valus">
+                                                    <img src={val.icon} style={{ width: '35px', margin: "auto" }} alt="" />
+                                                    <span className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
+                                                </div>
                                             </Grid>
-                                        )}
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                            </>
+                                        </Grid>
+                                    )}
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
                         </>
                     </Container>)}
             </>
@@ -240,10 +236,10 @@ class PriceTabs extends React.Component {
         return (
             <div>
                 <Hidden smDown>
-                    {this.TabsS()}
+                    {this.TabsComponent()}
                 </Hidden>
                 <Hidden mdUp>
-                    {this.mobiletabs()}
+                    {this.MobileTabs()}
                 </Hidden>
             </div>
         );
@@ -252,15 +248,10 @@ class PriceTabs extends React.Component {
 
 PriceTabs.propTypes = {
     TabContainer: PropTypes.func,
-    TabsS: PropTypes.func,
+    TabsComponent: PropTypes.func,
     handleChange: PropTypes.func,
+    MobileTabs: PropTypes.func,
     handleChangeIndex: PropTypes.func,
     handle: PropTypes.func
 };
-export default withStyles(styles, { withTheme: true })
-    (props => {
-        const { mapped } = useDummyRequest(productpricingPages);
-        if (Object.keys(mapped).length === 0) return ''
-
-        return <PriceTabs {...props} data={mapped} />
-    });
+export default withStyles(styles)(PriceTabs);

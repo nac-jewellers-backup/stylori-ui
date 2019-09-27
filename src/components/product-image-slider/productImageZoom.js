@@ -9,8 +9,6 @@ import Slideshow from '../Carousel/carosul'
 import React from 'react';
 import PropTypes from 'prop-types';
 import './product-images.css'
-import { useDummyRequest } from '../../hooks';
-import { productpricingPages } from '../../mappers';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../Header/styles'
 // window.onload = function () {
@@ -27,8 +25,6 @@ class ProductImageZoom extends React.Component {
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
     this.slider = React.createRef();
-
-
   }
   state = {
     // backgroundImage: `url(${src})`,
@@ -40,7 +36,6 @@ class ProductImageZoom extends React.Component {
 
   productImageZoom = () => {
     console.log(this.props.data)
-    debugger
     const { classes, data } = this.props
     const limit = 4;
     const { showimage } = this.state;
@@ -56,15 +51,13 @@ class ProductImageZoom extends React.Component {
       <div>
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
           <Grid item xs={2}>
-            <div style={{ textAlign: 'center'}} className="imgzom-sidecraousel-media">
+            <div style={{ textAlign: 'center' }} className="imgzom-sidecraousel-media">
               <Button onClick={this.previous}>
                 <i class="fa fa-angle-up" style={{ fontSize: "35px", color: "#F699A3" }}></i>
               </Button>
-
-              <Slideshow sliderRef={this.slider} 
+              <Slideshow sliderRef={this.slider}
                 getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img'
                 fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
-
               <Button onClick={this.next}>
                 <i class="fa fa-angle-down" style={{ fontSize: "35px", color: "#F699A3" }}
                 // className={`${classes.colorMain}`}
@@ -75,29 +68,24 @@ class ProductImageZoom extends React.Component {
 
           <Grid item xs={10}>
             <div>
-
-
               <div className='imagecard' id="divs" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
                 {/* <span class="one-day-ship" ></span> */}
                 {/* <div id='flashlight'></div> */}
-
                 <img id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
               </div>
-
               <div className='overly-img' id="overlay"
                 style={{ backgroundImage: `url(${showimage})` }} onMouseOut={event => this.zoomOut(event)}></div>
               <div>
                 <Grid container spacing={12}
                   className='features-tags'>
-                    
-                  {/* {this.props.data.productsubHeaderlists.map(val => (
+                  {data[0].productsubHeaderlist.map(val => (
                     <Grid item xs={2} >
                       <div key={val.name}>
                         <img className='features-tags-images' src={val.icon} alt="" />
                         <span style={{ fontSize: "12px" }} className={`${classes.colorLight}`}>{val.name} </span>
                       </div>
                     </Grid>
-                  ))} */}
+                  ))}
                 </Grid>
               </div>
             </div>
@@ -106,6 +94,7 @@ class ProductImageZoom extends React.Component {
       </div>
     )
   }
+
   next = () => {
     this.slider.current.slickNext();
   }
@@ -119,8 +108,6 @@ class ProductImageZoom extends React.Component {
     this.setState({ backgroundPosition: `${x}% ${y}%` })
   }
 
-
-
   zoomIn = (event) => {
     var element = document.getElementById("overlay");
     element.style.display = "inline-block";
@@ -128,7 +115,6 @@ class ProductImageZoom extends React.Component {
     var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
     var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
     element.style.backgroundPosition = (-posX - 80) + "px " + (-posY - 80) + "px";
-
   }
 
   zoomOut = () => {

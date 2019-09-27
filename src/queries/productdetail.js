@@ -26,16 +26,17 @@ export const conditions = {
     debugger
     let condition = {};
     const filterKeys = Object.keys(filters);
+    console.info('filterKeys', filterKeys, filters);
     filterKeys.map(k => {
       switch (k) {
         case "productId":
           condition["productId"] = filters[k];
-          
           break;
         default: {
 
         }
       }
     })
+    return condition;
   }
 }

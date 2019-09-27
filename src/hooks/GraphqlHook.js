@@ -13,7 +13,7 @@ export const useGraphql = (query, mapper, variables = {}) => {
     const client = createApolloFetch({ uri });
 
     const makeRequest = () => {
-        client({ query, variables: variables }).then(resdata => {
+        client({ query, variables }).then(resdata => {
             setLoading(false);
             setError(false);
             setData(resdata);

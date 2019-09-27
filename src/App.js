@@ -15,7 +15,12 @@ const RouterApp = React.lazy(() => import('router'));
 // });
 
 
-function App() {
+
+function App(props) {
+
+
+  // const productId = props.location.state.data
+  debugger  
 
   return (
     // <ApolloProvider client={client}>
