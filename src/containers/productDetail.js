@@ -1,37 +1,42 @@
+import {
+  Hidden,
+  Grid
+} from '@material-ui/core';
 import React, { Component } from 'react';
-import Header from '../components/Header/header'
-import Grid from '@material-ui/core/Grid';
-import CustomSeparator from '../components/BreadCrumb/index'
-import ProductImageZoom from '../components/product-image-slider/productImageZoom'
-import ProductPrice from '../components/product-image-slider/productPrice'
-import PriceTabs from '../components/product-image-slider/priceTabs'
-import PriceBuynow from '../components/product-image-slider/buyNow'
-import ProductDetails from '../components/product-image-slider/productDetails'
-import PriceCertification from '../components/product-image-slider/priceCertification'
-import Request from '../components/product-image-slider/request'
-import RatingForm from '../components/product-image-slider/ratingform'
-import Sublistcarousel from '../components/product-image-slider/subListcarousel'
-import CustomerReviews from '../components/product-image-slider/customer-reviews'
-import { Container, Hidden } from '@material-ui/core';
-import Footer from "../components/Footer/Footer"
-import Buynowfixed from '../components/product-image-slider/buynowfixed'
-import '../components/product-image-slider/product-images.css'
+import Header from 'components/Header/header'
+import CustomSeparator from 'components/BreadCrumb/index'
+import ProductImageZoom from 'components/product-image-slider/productImageZoom'
+import ProductPrice from 'components/product-image-slider/productPrice'
+import PriceTabs from 'components/product-image-slider/priceTabs'
+import PriceBuynow from 'components/product-image-slider/buyNow'
+import ProductDetails from 'components/product-image-slider/productDetails'
+import PriceCertification from 'components/product-image-slider/priceCertification'
+import Request from 'components/product-image-slider/request'
+import RatingForm from 'components/product-image-slider/ratingform'
+import Sublistcarousel from 'components/product-image-slider/subListcarousel'
+import CustomerReviews from 'components/product-image-slider/customer-reviews'
+import Footer from "components/Footer/Footer"
+import Buynowfixed from 'components/product-image-slider/buynowfixed'
+import 'components/product-image-slider/product-images.css'
 import { withRouter } from 'react-router-dom';
 import productDetails from 'mappers/productDetails';
 import { PRODUCTDETAILS, conditions } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
+
+
 class ProductDetail extends Component {
   render() {
-
     return (
       <div>
 
         <Hidden smDown>
+
           <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
             <Grid item xs={12} >
               <Header />
             </Grid>
           </Grid>
+
           <Grid Container spacing={12}>
             <Grid item xs={12}>
               <div className="pricing-breadcrums-media">
@@ -42,6 +47,7 @@ class ProductDetail extends Component {
               </div>
             </Grid>
           </Grid>
+
           <div className="pricing-imgzom-media">
             <Grid container spacing={12}>
               <Grid item xs={6}>
@@ -49,10 +55,10 @@ class ProductDetail extends Component {
               </Grid>
               <Grid item xs={6}>
                 <div className='overall-box'>
-                  <ProductPrice data={this.props.data} />
+                  <ProductPrice data={this.props.data} />  {/*res...........*/}
                 </div>
                 <div className='overall-box'>
-                  <PriceTabs data={this.props.data} />
+                  <PriceTabs data={this.props.data} />  {/*res...........*/}
                 </div>
                 <div className='overall-box'>
                   <PriceBuynow data={this.props.data} />
@@ -60,6 +66,7 @@ class ProductDetail extends Component {
               </Grid>
             </Grid>
           </div><br />
+
           <div style={{ background: "whitesmoke" }} className="pricing-product-media">
             <Grid container spacing={12}>
               <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
@@ -72,6 +79,7 @@ class ProductDetail extends Component {
               <br />
             </Grid>
           </div>
+
           <Sublistcarousel data={this.props.data} />
           <RatingForm />
           <CustomerReviews />
@@ -89,11 +97,12 @@ class ProductDetail extends Component {
                 <Header />
               </Grid>
             </Grid>
-            <Grid item xs={12} data={this.props.data}>
-              <PriceBuynow data={this.props.data} />
+
+            <Grid item xs={12}>
+              <PriceBuynow />
             </Grid>
             <Grid item xs={12} >
-              <ProductDetails data={this.props.data} />
+              <ProductDetails />
             </Grid>
 
             <Grid item xs={12} >
@@ -104,22 +113,25 @@ class ProductDetail extends Component {
             </Grid>
 
             <Grid item xs={12} >
-              <Sublistcarousel data={this.props.data} />
+              <Sublistcarousel />
             </Grid>
+
             <Grid item xs={12} >
               <CustomerReviews />
             </Grid>
+
             <Grid item xs={12} >
               <RatingForm />
             </Grid>
+
             <Grid item>
               <Footer />
             </Grid>
+
           </div>
 
           <Buynowfixed />
         </Hidden>
-
 
       </div>
     )

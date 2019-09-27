@@ -11,28 +11,28 @@ import ProductPrice from './productPrice'
 import PriceTabs from "./priceTabs";
 import PropTypes from 'prop-types';
 import Buynowbutton from '../Buynow/buynowbutton';
-import { useDummyRequest } from '../../hooks';
-import { productpricingPages } from '../../mappers';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
 import { NavLink } from 'react-router-dom';
+
+
 const inputsearch = (props) => {
-    const { productsbuy } = props.data;
+    const { data } = props;
     const { classes } = props;
     return (
         <div style={{ marginTop: "25px", padding: "0 10px" }}>
-            {productsbuy.map(val =>
+            {data[0].productsbuy.map(val =>
                 <Grid container spacing={12}>
                     <Grid item xs={8} lg={4} sm={8}>
                         <input
                             placeholder='&#xf041; &nbsp; Enter Pin Code'
                             className='buynow-search'
                         />
-
                     </Grid>
                     <Grid item xs={4} lg={3} sm={4}>
                         <Button className={`search-button ${classes.normalcolorback} ${classes.fontwhite}`}>Check for COD </Button>
                     </Grid>
+
                     <Hidden smDown>
                         <Grid item xs={5} className="content">
                             <b className={`ships-by ${classes.normalfonts}`}>
@@ -45,19 +45,22 @@ const inputsearch = (props) => {
         </div>
     )
 }
+
 const Buydetails = (props) => {
-    const { productsbuy, fadeImages } = props.data;
+    const { data } = props;
     const { classes } = props;
     return (
         <div>
-            {productsbuy.map(val =>
+            {data[0].productsbuy.map(val =>
                 <>
                     <Grid container spacing={12} style={{ padding: "0 10px" }}>
+
                         <Grid item xs={12} lg={4} style={{ marginRight: "15px" }}>
                             <NavLink to="/cart" style={{ textDecoration: 'none' }}>
                                 <Buynowbutton class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
                             </NavLink>
                         </Grid>
+
                         <Grid xs={12} lg={7} style={{ marginTop: "7px" }}>
                             <Grid container spacing={12}>
                                 <Grid item lg={3} xs={12} className={`buy-subheaders ${classes.normalfonts}`}>Need Help ?</Grid>
@@ -87,7 +90,7 @@ const Buydetails = (props) => {
 
 class PriceBuynow extends React.Component {
     state = {
-        showimage: this.props.data.fadeImages[0],
+        showimage: this.props.data[0].fadeImages[0],
         open: false
     };
 
@@ -100,8 +103,7 @@ class PriceBuynow extends React.Component {
     };
     render() {
         let { showimage } = this.state;
-        const { productsbuy, fadeImages } = this.props.data;
-        const { classes } = this.props;
+        const { classes, data } = this.props;
         return (
             <div>
                 <Hidden smDown>
@@ -109,7 +111,7 @@ class PriceBuynow extends React.Component {
                 </Hidden>
 
                 <Hidden mdUp>
-                    {productsbuy.map(val =>
+                    {data[0].productsbuy.map(val =>
                         <div style={{ marginTop: "25px" }}>
                             <ProductPrice />
                             <Container>
@@ -140,20 +142,8 @@ class PriceBuynow extends React.Component {
                                 </Grid>
                             </Container>
                             <PriceTabs />
-                            {/* <Grid container spacing={12}>
-                                    <Grid item xs={8}>
-                                        <input
-                                            placeholder='Enter Pin Code'
-                                            className='buynow-search'
-                                        />
-                                    </Grid>
-                                    <Grid item xs={4}>
-                                        <Button className="search-button">Check for COD </Button>
-                                    </Grid>
-                                </Grid> */}
 
                             {inputsearch(this.props)}
-
 
                         </div>
                     )}
@@ -166,9 +156,4 @@ PriceBuynow.propTypes = {
     Buydetails: PropTypes.func,
 };
 
-export default withStyles(styles)(props => {
-    const { mapped } = useDummyRequest(productpricingPages);
-    if (Object.keys(mapped).length === 0) return ''
-
-    return <PriceBuynow {...props} data={mapped} />
-});
+export default withStyles(styles)(PriceBuynow);
