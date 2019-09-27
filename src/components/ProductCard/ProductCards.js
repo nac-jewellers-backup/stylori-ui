@@ -94,7 +94,7 @@ export default function ProductCards(props) {
           </IconButton>
         }
       />
-      <Link to={{pathname:"/pricingPage", state: {
+      <Link to={{pathname:"/productDetail", state: {
     data:props.data.productId
   }}} style={{textDecoration:'none'}} >
       {/* <a href={} target={"_blank"} style={{ textDecoration: 'none' }}> */}
