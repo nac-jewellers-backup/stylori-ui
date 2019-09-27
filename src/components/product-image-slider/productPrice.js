@@ -33,7 +33,7 @@ const mobilecarousel = (props) => {
     );
 };
 
-const Productprice = (props) => {
+const Productprice = (props, share) => {
     const { classes, data } = props;
     return (
         <div>
@@ -53,17 +53,26 @@ const Productprice = (props) => {
 
                         <Grid item xs={5} lg={4}>
                             <div className="starts product-icons" style={{ fontFamily: "fontawesome" }} >
-                                <div className="row social-shares "
+                                <div className="row social-shares"
                                     className={classes.icon}>
-                                    <i class="fa fa-share-alt overall-icons"></i> &nbsp;
-                                    <i class="fa fa-heart-o overall-icons"></i>
-                                    <div onClick={() => { this.setState({ heart: !this.state.heart }) }}>
-                                        {/* {this.state.heart === true ?
+                                    <i class="fa fa-share-alt overall-icons"></i>
+                                    {/* <i
+                                        onClick={() => { this.setState({ share: !share }) }}
+                                        class="fa fa-share-alt overall-icons"></i> &nbsp;
+                                    <i class="fa fa-heart-o overall-icons"></i> */}
+                                    {/* <div onClick={() => { this.setState({ heart: !this.state.heart }) }}>
+                                        {this.state.heart === true ?
                                             <i class="fa fa-heart-o overall-icons"></i>
                                             : <p>heart</p>
-                                        } */}
-                                    </div>
-
+                                        }
+                                        }
+                                    </div> */}
+                                    {/* {this.state.share == true ?
+                                        <div style={{ position: 'fixed' }}>
+                                            share
+                                            </div>
+                                        :
+                                        ''} */}
                                     <Ratings ratings="starts-review" />
                                 </div>
                             </div>
@@ -103,19 +112,22 @@ class ProductPrice extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            share: false,
             heart: true,
         }
     }
+
     render() {
+        const { share } = this.state
         return (
             <div>
                 <Hidden smDown>
-                    {Productprice(this.props)}
+                    {Productprice(this.props, share)}
                 </Hidden>
 
                 <Hidden mdUp>
                     <Container>
-                        {Productprice(this.props)}
+                        {Productprice(this.props, share)}
                     </Container>
                 </Hidden>
             </div>

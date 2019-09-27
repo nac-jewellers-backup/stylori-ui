@@ -17,9 +17,11 @@ export default function (data, cdnUrl) {
         offerDiscount: '25% FLAT OFF',
         dis: "Pendants set in 14 Kt White Gold 0.84 gm with Diamonds (0.06 ct IJ -SI)",
         fadeImages: [
+            'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
             'https://images7.alphacoders.com/421/421542.jpg ',
             'https://images7.alphacoders.com/421/421542.jpg ',
-            'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg', 'https://images7.alphacoders.com/421/421542.jpg ',
+            'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
+            'https://images7.alphacoders.com/421/421542.jpg ',
             'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
             'https://images7.alphacoders.com/421/421542.jpg ',
             'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
@@ -171,11 +173,40 @@ export default function (data, cdnUrl) {
                 price: "98.89789"
             },
             {
+                img: "https://assets-cdn.stylori.com/157x157/images/product/SP0603/SP0603-1Y.jpg",
+                title: "You recently viewed",
+                price: "98.89789"
+            },
+            {
                 img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
                 title: "You recently viewed",
                 price: "98.89789"
             },
-            
+            {
+                img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
+                title: "You recently viewed",
+                price: "98.89789"
+            },
+            {
+                img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
+                title: "You recently viewed",
+                price: "98.89789"
+            },
+            {
+                img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
+                title: "You recently viewed",
+                price: "98.89789"
+            },
+            {
+                img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
+                title: "You recently viewed",
+                price: "98.89789"
+            },
+            {
+                img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
+                title: "You recently viewed",
+                price: "98.89789"
+            },
         ]
     }))
     return _format;

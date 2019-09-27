@@ -26,9 +26,9 @@ class Sublistcarousel extends React.Component {
 
 
   render() {
+    const limit = 4;
     const { expanded } = this.state;
-
-
+    const { data } = this.props;
     const mobiledataCarousel = {
       dots: false,
       infinite: true,
@@ -38,21 +38,18 @@ class Sublistcarousel extends React.Component {
       autoplay: true,
       autoplaySpeed: 2000
     }
-
-    const limit = 4;
     const dataCarousel = {
       arrows: true,
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 4
+      slidesToShow: data[0].fadeImageSublist.length > 4 ? limit : data[0].fadeImageSublist.length,
+      slidesToScroll: 4,
     }
-    const { data } = this.props;
-    debugger
     return (
       <div>
         <Hidden smDown>
+
           <div className='like-and-recently'>
             <Grid container spacing={12}>
               <Grid item xs={6} className="like-page"><span>You may also like</span></Grid>
@@ -60,13 +57,15 @@ class Sublistcarousel extends React.Component {
             </Grid>
           </div> <div className='sub-carousel-head'>
             <Container maxWidth='md'>
-                <Slideshow class="subslider-carousel" hoverlist={data[0].fadeImageSublist}
-                  dataCarousel={dataCarousel} hover={true} >
-                </Slideshow>
+              <Slideshow class="subslider-carousel" hoverlist={data[0].fadeImageSublist}
+                dataCarousel={dataCarousel} hover={true} >
+              </Slideshow>
             </Container>
           </div>
+
         </Hidden>
         <Hidden mdUp>
+
           <Container>
             <ExpansionPanel expanded={expanded === 'panel'} onChange={this.handle('panel')}
               style={{ boxShadow: "none", backgroundColor: "none" }}>
@@ -77,6 +76,7 @@ class Sublistcarousel extends React.Component {
                   <hr class="bottom-line border-line-"></hr>
                 </div>
               </ExpansionPanelSummary>
+
               <ExpansionPanelDetails >
                 <div style={{ width: "100%" }}>
                   <Slideshow class={` ${data[0].fadeImageSublist ? 'subslider-carousel ' : "shine"}`}
@@ -84,17 +84,17 @@ class Sublistcarousel extends React.Component {
                     dataCarousel={mobiledataCarousel} hover={true}>
                   </Slideshow>
                 </div>
-
               </ExpansionPanelDetails>
             </ExpansionPanel>
           </Container>
+
         </Hidden>
       </div>
     );
   }
 };
 Sublistcarousel.propTypes = {
-  render: PropTypes.func,
+  handle: PropTypes.func,
 };
 
 export default Sublistcarousel;
