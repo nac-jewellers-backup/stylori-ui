@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ProductDetail from 'containers/productDetail';
 
-export default class Stylori extends React.Component {
+export default class Stylori extends Component {
   render() {
 
     return (
       <div>
-
-       <ProductDetail />
-
-
+      
+        <ProductDetail />
+    
+       
       </div>
     )
   }

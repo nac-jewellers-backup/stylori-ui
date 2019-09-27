@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core';
 import { withRouter } from 'react-router-dom'
 import Slideshow from '../Carousel/carosul'
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './product-images.css'
 import { useDummyRequest } from '../../hooks';
@@ -21,7 +21,7 @@ import styles from '../Header/styles'
 //   });
 // };
 
-class ProductImageZoom extends Component {
+class ProductImageZoom extends React.Component {
   constructor(props) {
     super(props);
     this.next = this.next.bind(this);
@@ -32,11 +32,15 @@ class ProductImageZoom extends Component {
   }
   state = {
     // backgroundImage: `url(${src})`,
+    
     backgroundPosition: '0% 0%',
     showimage: this.props.data[0].fadeImages[0]
   }
 
+
   productImageZoom = () => {
+    console.log(this.props.data)
+    debugger
     const { classes, data } = this.props
     const limit = 4;
     const { showimage } = this.state;
@@ -83,17 +87,18 @@ class ProductImageZoom extends Component {
               <div className='overly-img' id="overlay"
                 style={{ backgroundImage: `url(${showimage})` }} onMouseOut={event => this.zoomOut(event)}></div>
               <div>
-                {/* <Grid container spacing={12}
+                <Grid container spacing={12}
                   className='features-tags'>
-                  {data.productsubHeaderlist.map(val => (
+                    
+                  {/* {this.props.data.productsubHeaderlists.map(val => (
                     <Grid item xs={2} >
                       <div key={val.name}>
                         <img className='features-tags-images' src={val.icon} alt="" />
                         <span style={{ fontSize: "12px" }} className={`${classes.colorLight}`}>{val.name} </span>
                       </div>
                     </Grid>
-                  ))}
-                </Grid> */}
+                  ))} */}
+                </Grid>
               </div>
             </div>
           </Grid>

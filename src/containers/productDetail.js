@@ -20,6 +20,8 @@ import { withRouter } from 'react-router-dom';
 import productDetails from 'mappers/productDetails';
 import { PRODUCTDETAILS, conditions } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
+import { ProductDetailContext } from 'context/ProductDetailContext';
+import { CDN_URL } from 'config';
 class ProductDetail extends Component {
   render() {
 
@@ -126,18 +128,25 @@ class ProductDetail extends Component {
   }
 }
 const Components = props => {
-  const productID = 'props.location.state.data'
-  const { loading, error, data } = useGraphql(PRODUCTDETAILS, productDetails, conditions.productId(productID));
-  let mapped = data;
-  if (!loading && !error) {
-    console.info('__MAPPED', data);
-    mapped = productDetails(data, productID);
-    // setMappedData(mapped);
+    const value = React.useContext(ProductDetailContext);
+    const datas = value.ProductDetailCtx.data.data.allProductLists.nodes;
+    console.log(datas)
+    
+  const productID = 'SP1135'
+//   const { loading, error, data } = useGraphql(PRODUCTDETAILS, productDetails, conditions.productId(productID));
+  let mapped = datas;
+  if (!value.ProductDetailCtx.loading && !value.ProductDetailCtx.error) {
+    mapped = productDetails(datas);
+  
     console.info('__MAPPED2', mapped);
+    debugger
   }
   if (Object.keys(mapped).length === 0) return <div></div>
   else {
     return <ProductDetail {...props} data={mapped} />
+    
   }
 }
+
+
 export default withRouter((Components));

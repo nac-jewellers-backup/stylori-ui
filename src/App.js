@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { NetworkProvider, GlobalProvider } from 'context';
+import { NetworkProvider, GlobalProvider, ProductDetailProvider } from 'context';
 import './index.css'
 import Loading from 'screens/Loading';
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
@@ -22,11 +22,13 @@ function App() {
     <GlobalProvider>
       <ThemeProvider theme={outerThemes}>
         <NetworkProvider>
+          <ProductDetailProvider productId="SP1135">
           <Router>
             <React.Suspense fallback={Loading} >
               <RouterApp />
             </React.Suspense>
           </Router>
+          </ProductDetailProvider>
         </NetworkProvider>
       </ThemeProvider>
     </GlobalProvider>

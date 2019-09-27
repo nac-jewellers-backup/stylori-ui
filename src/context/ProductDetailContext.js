@@ -16,8 +16,9 @@ export const ProductDetailConsumer = ProductDetailContext.Consumer;
 
 export const ProductDetailProvider = (props) => {
     const { productId } = props;
+    
     const [filters, setFilters] = React.useState({ ringSize: null, metalPurity: null, diamondClarity: null });
-    const { loading, error, data } = useGraphql(PRODUCTDETAILS, () => [], conditions.generateCondition({ ...filters, productId }));
+    const { loading, error, data } = useGraphql(PRODUCTDETAILS, conditions.generateCondition({ ...filters, productId }));
     const ProductDetailCtx = {
         filters, loading, error, data
     }

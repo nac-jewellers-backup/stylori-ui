@@ -41,6 +41,7 @@ const mobilecarousel = (props) => {
 const Productprice = (props) => {
     const { classes } = props;
     const { dataCard1 } = props.data;
+    debugger
     return (
         <div>
             {dataCard1.map(val => (
