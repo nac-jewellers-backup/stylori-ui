@@ -21,7 +21,7 @@ const inputsearch = (props) => {
     const { classes } = props;
     return (
         <div style={{ marginTop: "25px", padding: "0 10px" }}>
-            {data[0].productsbuy.map(val =>
+            {data[0].ProductContactNum.map(val =>
                 <Grid container spacing={12}>
                     <Grid item xs={8} lg={4} sm={8}>
                         <input
@@ -40,6 +40,7 @@ const inputsearch = (props) => {
                             </b>
                         </Grid>
                     </Hidden>
+
                 </Grid>
             )}
         </div>
@@ -51,7 +52,7 @@ const Buydetails = (props) => {
     const { classes } = props;
     return (
         <div>
-            {data[0].productsbuy.map(val =>
+            {data[0].ProductContactNum.map(val =>
                 <>
                     <Grid container spacing={12} style={{ padding: "0 10px" }}>
 
@@ -111,7 +112,7 @@ class PriceBuynow extends React.Component {
                 </Hidden>
 
                 <Hidden mdUp>
-                    {data[0].productsbuy.map(val =>
+                    {data[0].ProductContactNum.map(val =>
                         <div style={{ marginTop: "25px" }}>
                             <ProductPrice />
                             <Container>

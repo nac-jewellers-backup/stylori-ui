@@ -27,117 +27,117 @@ import { CDN_URL } from 'config';
 
 
 class ProductDetail extends Component {
-    render() {
-        return (
-            <div>
+  render() {
+    return (
+      <div>
 
-                <Hidden smDown>
+        <Hidden smDown>
 
-                    <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
-                        <Grid item xs={12} >
-                            <Header />
-                        </Grid>
-                    </Grid>
+          <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+            <Grid item xs={12} >
+              <Header />
+            </Grid>
+          </Grid>
 
-                    <Grid Container spacing={12}>
-                        <Grid item xs={12}>
-                            <div className="pricing-breadcrums-media">
-                                <CustomSeparator
-                                    list='pricing-loctn'
-                                    classsubhed='pricing-loctn-head'
-                                    data={[window.location.hostname, window.location.pathname.split('/').pop()]} />
-                            </div>
-                        </Grid>
-                    </Grid>
+          <Grid Container spacing={12}>
+            <Grid item xs={12}>
+              <div className="pricing-breadcrums-media">
+                <CustomSeparator
+                  list='pricing-loctn'
+                  classsubhed='pricing-loctn-head'
+                  data={[window.location.hostname, window.location.pathname.split('/').pop()]} />
+              </div>
+            </Grid>
+          </Grid>
 
-                    <div className="pricing-imgzom-media">
-                        <Grid container spacing={12}>
-                            <Grid item xs={6}>
-                                <ProductImageZoom data={this.props.data} />
-                            </Grid>
-                            <Grid item xs={6}>
-                                <div className='overall-box'>
-                                    <ProductPrice data={this.props.data} />  {/*res...........*/}
-                                </div>
-                                <div className='overall-box'>
-                                    <PriceTabs data={this.props.data} />  {/*res...........*/}
-                                </div>
-                                <div className='overall-box'>
-                                    <PriceBuynow data={this.props.data} />
-                                </div>
-                            </Grid>
-                        </Grid>
-                    </div><br />
+          <div className="pricing-imgzom-media">
+            <Grid container spacing={12}>
+              <Grid item xs={6}>
+                <ProductImageZoom data={this.props.data} />
+              </Grid>
+              <Grid item xs={6}>
+                <div className='overall-box'>
+                  <ProductPrice data={this.props.data} />  {/*res...........*/}
+                </div>
+                <div className='overall-box'>
+                  <PriceTabs data={this.props.data} />  {/*res...........*/}
+                </div>
+                <div className='overall-box'>
+                  <PriceBuynow data={this.props.data} /> {/*res...........*/}
+                </div>
+              </Grid>
+            </Grid>
+          </div><br />
 
-                    <div style={{ background: "whitesmoke" }} className="pricing-product-media">
-                        <Grid container spacing={12}>
-                            <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
-                                <ProductDetails data={this.props.data} />
-                            </Grid>
-                            <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
-                                <PriceCertification />
-                                <Request />
-                            </Grid>
-                            <br />
-                        </Grid>
-                    </div>
+          <div style={{ background: "whitesmoke" }} className="pricing-product-media">
+            <Grid container spacing={12}>
+              <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
+                <ProductDetails data={this.props.data} /> {/*res...........*/}
+              </Grid>
+              <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
+                <PriceCertification />
+                <Request />
+              </Grid>
+              <br />
+            </Grid>
+          </div>
 
-                    <Sublistcarousel data={this.props.data} />
-                    <RatingForm />
-                    <CustomerReviews />
+          <Sublistcarousel data={this.props.data} />
+          <RatingForm />
+          <CustomerReviews />
 
-                    <Grid item xs={12}>
-                        <Footer />
-                    </Grid>
-                </Hidden>
+          <Grid item xs={12}>
+            <Footer />
+          </Grid>
+        </Hidden>
 
 
-                <Hidden mdUp>
-                    <div style={{ paddingBottom: "50px" }}>
-                        <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
-                            <Grid item xs={12} >
-                                <Header />
-                            </Grid>
-                        </Grid>
+        <Hidden mdUp>
+          <div style={{ paddingBottom: "50px" }}>
+            <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+              <Grid item xs={12} >
+                <Header />
+              </Grid>
+            </Grid>
 
-                        <Grid item xs={12}>
-                            <PriceBuynow />
-                        </Grid>
-                        <Grid item xs={12} >
-                            <ProductDetails />
-                        </Grid>
+            <Grid item xs={12}>
+              <PriceBuynow />
+            </Grid>
+            <Grid item xs={12} >
+              <ProductDetails />
+            </Grid>
 
-                        <Grid item xs={12} >
-                            <PriceCertification />
-                        </Grid>
-                        <Grid item xs={12} >
-                            <Request />
-                        </Grid>
+            <Grid item xs={12} >
+              <PriceCertification />
+            </Grid>
+            <Grid item xs={12} >
+              <Request />
+            </Grid>
 
-                        <Grid item xs={12} >
-                            <Sublistcarousel />
-                        </Grid>
+            <Grid item xs={12} >
+              <Sublistcarousel />
+            </Grid>
 
-                        <Grid item xs={12} >
-                            <CustomerReviews />
-                        </Grid>
+            <Grid item xs={12} >
+              <CustomerReviews />
+            </Grid>
 
-                        <Grid item xs={12} >
-                            <RatingForm />
-                        </Grid>
+            <Grid item xs={12} >
+              <RatingForm />
+            </Grid>
 
-                        <Grid item>
-                            <Footer />
-                        </Grid>
+            <Grid item>
+              <Footer />
+            </Grid>
 
-                    </div>
+          </div>
 
-                    <Buynowfixed />
-                </Hidden>
+          <Buynowfixed />
+        </Hidden>
 
-            </div>
-        )
-    }
+      </div>
+    )
+  }
 }
 const Components = props => {
     const { ProductDetailCtx: { data, loading, error } } = React.useContext(ProductDetailContext);
