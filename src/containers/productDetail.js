@@ -61,7 +61,7 @@ class ProductDetail extends Component {
                   <PriceTabs data={this.props.data} />  {/*res...........*/}
                 </div>
                 <div className='overall-box'>
-                  <PriceBuynow data={this.props.data} />
+                  <PriceBuynow data={this.props.data} /> {/*res...........*/}
                 </div>
               </Grid>
             </Grid>
@@ -70,7 +70,7 @@ class ProductDetail extends Component {
           <div style={{ background: "whitesmoke" }} className="pricing-product-media">
             <Grid container spacing={12}>
               <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
-                <ProductDetails data={this.props.data} />
+                <ProductDetails data={this.props.data} /> {/*res...........*/}
               </Grid>
               <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
                 <PriceCertification />

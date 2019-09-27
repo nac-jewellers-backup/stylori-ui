@@ -11,8 +11,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import './product-images.css'
 import Slideshow from '../Carousel/carosul'
-import { useDummyRequest } from '../../hooks';
-import { productpricingPages } from '../../mappers';
 class Sublistcarousel extends React.Component {
   state = {
     value: 0,
@@ -41,6 +39,7 @@ class Sublistcarousel extends React.Component {
       autoplaySpeed: 2000
     }
 
+    const limit = 4;
     const dataCarousel = {
       arrows: true,
       dots: true,
@@ -49,7 +48,8 @@ class Sublistcarousel extends React.Component {
       slidesToShow: 4,
       slidesToScroll: 4
     }
-    const { fadeImagessublist } = this.props.data;
+    const { data } = this.props;
+    debugger
     return (
       <div>
         <Hidden smDown>
@@ -60,7 +60,7 @@ class Sublistcarousel extends React.Component {
             </Grid>
           </div> <div className='sub-carousel-head'>
             <Container maxWidth='md'>
-                <Slideshow class="subslider-carousel" hoverlist={fadeImagessublist}
+                <Slideshow class="subslider-carousel" hoverlist={data[0].fadeImageSublist}
                   dataCarousel={dataCarousel} hover={true} >
                 </Slideshow>
             </Container>
@@ -79,8 +79,8 @@ class Sublistcarousel extends React.Component {
               </ExpansionPanelSummary>
               <ExpansionPanelDetails >
                 <div style={{ width: "100%" }}>
-                  <Slideshow class={` ${fadeImagessublist ? 'subslider-carousel ' : "shine"}`}
-                    hoverlist={fadeImagessublist}
+                  <Slideshow class={` ${data[0].fadeImageSublist ? 'subslider-carousel ' : "shine"}`}
+                    hoverlist={data[0].fadeImageSublist}
                     dataCarousel={mobiledataCarousel} hover={true}>
                   </Slideshow>
                 </div>
@@ -97,9 +97,4 @@ Sublistcarousel.propTypes = {
   render: PropTypes.func,
 };
 
-export default (props => {
-  const { mapped } = useDummyRequest(productpricingPages);
-  if (Object.keys(mapped).length === 0) return ''
-
-  return <Sublistcarousel {...props} data={mapped} />
-});
+export default Sublistcarousel;
