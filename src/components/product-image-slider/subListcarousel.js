@@ -49,7 +49,6 @@ class Sublistcarousel extends React.Component {
       slidesToScroll: 4
     }
     const { data } = this.props;
-    debugger
     return (
       <div>
         <Hidden smDown>

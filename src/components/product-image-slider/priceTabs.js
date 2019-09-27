@@ -53,10 +53,9 @@ class PriceTabs extends React.Component {
     TabsComponent = () => {
         const { classes } = this.props;
         const data = this.props.data;
-        debugger
         return (
             <div>
-                {data.productTabs.map(val =>
+                {data[0].productTabs.map(val =>
                     <>
                         <div className="header-APP">
                             <AppBar position="static" color="default" className="price-panel"

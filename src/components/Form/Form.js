@@ -54,7 +54,6 @@ export class Form extends React.Component {
   };
 
   handleChange = e => {
-    debugger
     let { values, errors } = this.state;
     errors = { ...errors, [e.target.name]: null };
     values = { ...values, [e.target.name]: e.target.value };

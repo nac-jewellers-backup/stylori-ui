@@ -22,7 +22,7 @@ import { withRouter } from 'react-router-dom';
 import productDetails from 'mappers/productDetails';
 import { PRODUCTDETAILS, conditions } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
-import { ProductDetailContext } from 'context/ProductDetailContext';
+import { ProductDetailContext  } from 'context/ProductDetailContext';
 import { CDN_URL } from 'config';
 
 
@@ -140,7 +140,10 @@ class ProductDetail extends Component {
   }
 }
 const Components = props => {
+  const productId = props.location.state.data
+
     const { ProductDetailCtx: { data, loading, error } } = React.useContext(ProductDetailContext);
+    
     console.info('datares', data);
     const datas = data;
     console.log(datas)
@@ -151,11 +154,10 @@ const Components = props => {
         mapped = productDetails(datas);
 
         console.info('__MAPPED2', mapped);
-        debugger
     }
     if (Object.keys(mapped).length === 0) return <div></div>
     else {
-        return <ProductDetail {...props} data={mapped} />
+        return  <ProductDetail {...props} data={mapped} />
 
     }
 }

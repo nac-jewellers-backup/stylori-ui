@@ -23,7 +23,6 @@ export const conditions = {
   }),
   generateCondition: (filters) => {
     console.log(PRODUCTLIST)
-    debugger
     let condition = {};
     const filterKeys = Object.keys(filters);
     console.info('filterKeys', filterKeys, filters);
