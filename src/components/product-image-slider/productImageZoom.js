@@ -6,17 +6,13 @@ import {
 } from '@material-ui/core';
 import { withRouter } from 'react-router-dom'
 import Slideshow from '../Carousel/carosul'
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './product-images.css'
 import { useDummyRequest } from '../../hooks';
 import { productpricingPages } from '../../mappers';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../Header/styles'
-import productDetails from 'mappers/productDetails';
-import { PRODUCTDETAILS, conditions } from 'queries/productdetail';
-import { useGraphql } from 'hooks/GraphqlHook';
-import { CDN_URL } from 'config';
 // window.onload = function () {
 //   var flashlight = document.querySelector('#flashlight');
 //   document.getElementById('divs').addEventListener('mouseover', function (event) {
@@ -25,7 +21,7 @@ import { CDN_URL } from 'config';
 //   });
 // };
 
-class ProductImageZoom extends Component {
+class ProductImageZoom extends React.Component {
   constructor(props) {
     super(props);
     this.next = this.next.bind(this);
@@ -52,18 +48,16 @@ class ProductImageZoom extends Component {
       verticalSwiping: true,
       arrows: false
     }
-    const { productsubHead } = this.props.data;
-    // const { fadeImages, productsubHead } = this.props.data;
     return (
       <div>
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
           <Grid item xs={2}>
-            <div style={{ textAlign: 'center' }} className="imgzom-sidecraousel-media">
+            <div style={{ textAlign: 'center'}} className="imgzom-sidecraousel-media">
               <Button onClick={this.previous}>
                 <i class="fa fa-angle-up" style={{ fontSize: "35px", color: "#F699A3" }}></i>
               </Button>
 
-              <Slideshow sliderRef={this.slider}
+              <Slideshow sliderRef={this.slider} 
                 getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img'
                 fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
 
@@ -89,17 +83,18 @@ class ProductImageZoom extends Component {
               <div className='overly-img' id="overlay"
                 style={{ backgroundImage: `url(${showimage})` }} onMouseOut={event => this.zoomOut(event)}></div>
               <div>
-                {/* <Grid container spacing={12}
+                <Grid container spacing={12}
                   className='features-tags'>
-                  {productsubHead.map(val => (
+                    
+                  {/* {this.props.data.productsubHeaderlists.map(val => (
                     <Grid item xs={2} >
                       <div key={val.name}>
                         <img className='features-tags-images' src={val.icon} alt="" />
                         <span style={{ fontSize: "12px" }} className={`${classes.colorLight}`}>{val.name} </span>
                       </div>
                     </Grid>
-                  ))}
-                </Grid> */}
+                  ))} */}
+                </Grid>
               </div>
             </div>
           </Grid>
@@ -164,21 +159,5 @@ ProductImageZoom.propTypes = {
   getimage: PropTypes.func,
   productImageZoom: PropTypes.func,
 };
-const Components = props => {
-  const productID = props.location.state.data
-  const { loading, error, data } = useGraphql(PRODUCTDETAILS, productDetails, conditions.productId(productID));
-  let mapped = data;
-  if (!loading && !error) {
-    console.info('__MAPPED', data);
-    mapped = productDetails(data, productID);
-    // setMappedData(mapped);
-    console.info('__MAPPED2', mapped);
-  }
-  if (Object.keys(mapped).length === 0) return <div></div>
-  else {
-    return <ProductImageZoom {...props} data={mapped} />
-  }
 
-}
-
-export default withRouter(withStyles(styles)(Components))
+export default withStyles(styles)(ProductImageZoom);

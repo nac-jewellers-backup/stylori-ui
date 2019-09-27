@@ -573,7 +573,9 @@
         outline: none !important;
         cursor: pointer;
     }
-
+    .imgzom-sidecraousel-media .slick-track{
+        height:auto !important;
+    }
     .vertical-carousel-list-arrow {
         font-size: 15px;
     }
