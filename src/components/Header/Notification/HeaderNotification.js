@@ -52,10 +52,13 @@ class NotificationMessage extends React.Component {
                     style={{zIndex:10000}}
 
                 >
-                    <Grid item xs={7} style={{ textAlign: 'right' }}>
+                    <Grid item xs={2}>
+
+                    </Grid>
+                    <Grid item xs={8} style={{ textAlign: 'center',fontSize:'14px' }}>
                         Signup on Stylori | Avail Exclusive Offer on Your First Purchase
                     </Grid>
-                    <Grid item xs={4} style={{ textAlign: 'right', fontSize: '18px' }}>
+                    <Grid item xs={2} style={{ textAlign: 'center', fontSize: '18px' }}>
                         <i className=' fa fa-times-circle top-close' onClick={() => { this.setState({ isVisible: false });this.props.headerTransition() }}></i>
                     </Grid>
                 </Grid>
