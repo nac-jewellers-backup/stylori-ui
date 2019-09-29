@@ -26,13 +26,13 @@ function App(props) {
     <GlobalProvider>
       <ThemeProvider theme={outerThemes}>
         <NetworkProvider>
-          <ProductDetailProvider productId="SP1135"> {/*productId="SP1135"*/}
+           {/*productId="SP1135" <ProductDetailProvider productId="SP1135">*/ }
           <Router>
             <React.Suspense fallback={Loading} >
               <RouterApp />
             </React.Suspense>
           </Router>
-          </ProductDetailProvider>
+          {/* </ProductDetailProvider> */}
         </NetworkProvider>
       </ThemeProvider>
     </GlobalProvider>
