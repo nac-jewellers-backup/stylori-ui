@@ -1,5 +1,3 @@
-import { PRODUCTLIST } from "queries";
-
 export const PRODUCTDETAILS = `
 query fetchProductDetails($condition: ProductListCondition){
     allProductLists(condition: $condition) {
@@ -12,9 +10,7 @@ query fetchProductDetails($condition: ProductListCondition){
       }
     }
   }
-  
 `
-
 export const conditions = {
   productId: (id) => ({
     "condition": {
@@ -22,10 +18,8 @@ export const conditions = {
     }
   }),
   generateCondition: (filters) => {
-    console.log(PRODUCTLIST)
-    let condition = {};
+    let condition = {}; 
     const filterKeys = Object.keys(filters);
-    console.info('filterKeys', filterKeys, filters);
     filterKeys.map(k => {
       switch (k) {
         case "productId":

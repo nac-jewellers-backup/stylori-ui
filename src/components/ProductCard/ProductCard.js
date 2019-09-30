@@ -9,7 +9,6 @@ import {
   CardActions,
 } from "@material-ui/core";
 import PropTypes from "prop-types";
-
 import "./productCard.css";
 import CardControl from "./CardControl";
 

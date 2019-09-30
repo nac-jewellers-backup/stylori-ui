@@ -64,7 +64,7 @@ const Buydetails = (props) => {
 
                         <Grid xs={12} lg={7} style={{ marginTop: "7px" }}>
                             <Grid container spacing={12}>
-                                <Grid item lg={3} xs={12} className={`buy-subheaders ${classes.normalfonts}`}>Need Help ?</Grid>
+                                <Grid item lg={12} xs={12} className={`buy-subheaders nd-hlp ${classes.normalfonts}`}>Need Help ?</Grid>
                             </Grid>
                             <Grid container spacing={12} >
 

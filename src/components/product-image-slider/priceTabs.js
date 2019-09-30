@@ -17,6 +17,7 @@ import PropTypes from 'prop-types';
 import Slideshow from '../Carousel/carosul';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
+import { ProductDetailContext } from 'context/ProductDetailContext';
 function TabContainer({ children, dir }) {
     return (
         <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
@@ -31,7 +32,6 @@ const settings = {
     slidesToShow: 8,
     slidesToScroll: 5,
 };
-
 class PriceTabs extends React.Component {
     constructor(props) {
         super(props);
@@ -41,12 +41,12 @@ class PriceTabs extends React.Component {
         value: 0,
         values: "",
         expanded: null,
-        isActive: '2',
+        ringSize: '',
     };
+
     handleClick(event) {
-        console.log(event.target.value)
         this.setState({
-            isActive: event.target.name,
+            ringSize: event.target.name,
         });
     }
 
@@ -81,12 +81,12 @@ class PriceTabs extends React.Component {
                             onChangeIndex={this.handleChangeIndex}
                         >
                             <TabContainer>
-                                <div className={classes.pagination}>
+                                <div className={classes.pagination} style={{ overflow: "hidden" }}>
                                     <Slideshow dataCarousel={settings}>
                                         {val.tab1.Children.map((val, i) =>
                                             <>
                                                 <button
-                                                    className={this.state.isActive == i ? `dark ${classes.tabsRingBckg}` : 'page'}
+                                                    className={this.state.ringSize == i ? `dark ${classes.tabsRingBckg}` : 'page'}
                                                     value={val} id={val} name={i}
                                                     onClick={event => this.handleClick(event)}
                                                 >
@@ -156,7 +156,7 @@ class PriceTabs extends React.Component {
                                             {val.tab1.Children.map((val, i) =>
                                                 <>
                                                     <button
-                                                        className={this.state.isActive == i ? `dark ${classes.tabsRingBckg}` : 'page'}
+                                                        className={this.state.ringSize == i ? `dark ${classes.tabsRingBckg}` : 'page'}
                                                         value={val} id={val} name={i}
                                                         onClick={event => this.handleClick(event)}
                                                     >
