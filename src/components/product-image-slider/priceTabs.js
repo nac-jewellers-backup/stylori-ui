@@ -133,7 +133,6 @@ class PriceTabs extends React.Component {
             </div>
         );
     }
-
     MobileTabs = () => {
         const { expanded } = this.state;
         const { classes } = this.props;

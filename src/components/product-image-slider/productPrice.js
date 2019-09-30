@@ -34,6 +34,7 @@ const mobilecarousel = (props) => {
 };
 
 const Productprice = (props, share) => {
+    debugger
     const { classes, data } = props;
     return (
         <div>

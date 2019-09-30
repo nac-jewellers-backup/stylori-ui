@@ -14,6 +14,8 @@ import Slideshow from '../Carousel/carosul'
 class Sublistcarousel extends React.Component {
   state = {
     value: 0,
+    valuse: 0,
+    values: 0,
     expanded: null,
   }
 
@@ -35,7 +37,7 @@ class Sublistcarousel extends React.Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: true,
+      autoplay: true, 
       autoplaySpeed: 2000
     }
     const dataCarousel = {
@@ -49,7 +51,6 @@ class Sublistcarousel extends React.Component {
     return (
       <div>
         <Hidden smDown>
-
           <div className='like-and-recently'>
             <Grid container spacing={12}>
               <Grid item xs={6} className="like-page"><span>You may also like</span></Grid>
@@ -65,7 +66,6 @@ class Sublistcarousel extends React.Component {
 
         </Hidden>
         <Hidden mdUp>
-
           <Container>
             <ExpansionPanel expanded={expanded === 'panel'} onChange={this.handle('panel')}
               style={{ boxShadow: "none", backgroundColor: "none" }}>
@@ -88,7 +88,7 @@ class Sublistcarousel extends React.Component {
             </ExpansionPanel>
           </Container>
 
-        </Hidden>
+        </Hidden >
       </div>
     );
   }

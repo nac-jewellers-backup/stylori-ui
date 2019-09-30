@@ -101,25 +101,25 @@ class ProductDetail extends Component {
             </Grid>
 
             <Grid item xs={12}>
-              <PriceBuynow />
+              <PriceBuynow data={this.props.data}/>
             </Grid>
             <Grid item xs={12} >
-              <ProductDetails />
+              <ProductDetails data={this.props.data}/>
             </Grid>
 
             <Grid item xs={12} >
-              <PriceCertification />
+              <PriceCertification data={this.props.data}/>
             </Grid>
             <Grid item xs={12} >
               <Request />
             </Grid>
 
             <Grid item xs={12} >
-              <Sublistcarousel />
+              <Sublistcarousel data={this.props.data}/>
             </Grid>
 
             <Grid item xs={12} >
-              <CustomerReviews />
+              <CustomerReviews data={this.props.data}/>
             </Grid>
 
             <Grid item xs={12} >
