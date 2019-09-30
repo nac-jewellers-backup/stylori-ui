@@ -16,7 +16,6 @@ export const ProductDetailConsumer = ProductDetailContext.Consumer;
 
 export const ProductDetailProvider = (props) => {
     const { productId } = props;
-
     const [filters, setFilters] = React.useState({ ringSize: null, metalPurity: null, diamondClarity: null, productId:'SE1612' });
     const variables = {
         condition: conditions.generateCondition({ ...filters, productId })

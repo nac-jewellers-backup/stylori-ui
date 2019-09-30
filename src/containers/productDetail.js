@@ -27,7 +27,15 @@ import { CDN_URL } from 'config';
 
 
 class ProductDetail extends Component {
+  constructor(props)
+  {
+    super(props)
+  }
+  
   render() {
+    var loc = this.props.location.pathname;
+    var path = loc.split('/');
+    debugger;
     return (
       <div>
 
@@ -45,7 +53,7 @@ class ProductDetail extends Component {
                 <CustomSeparator
                   list='pricing-loctn'
                   classsubhed='pricing-loctn-head'
-                  data={[window.location.hostname, window.location.pathname.split('/').pop()]} />
+                  data={[window.location.hostname, path[1]]} />
               </div>
             </Grid>
           </Grid>
