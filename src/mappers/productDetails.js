@@ -10,9 +10,10 @@ export default function (data, cdnUrl) {
         mapperdata = [];
     }
     const _format = mapperdata.map(k => ({
-        offerPrice: "23000.10",
-        price: "29000.0",
+
         title: k.productName,
+        price: "29000.0",
+        offerPrice: "23000.10",
         save: '5999.9',
         offerDiscount: '25% FLAT OFF',
         dis: "Pendants set in 14 Kt White Gold 0.84 gm with Diamonds (0.06 ct IJ -SI)",
@@ -20,7 +21,7 @@ export default function (data, cdnUrl) {
             'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
             'https://images7.alphacoders.com/421/421542.jpg ',
             'https://images7.alphacoders.com/421/421542.jpg ',
-            'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
+            'https://assets-cdn.stylori.com/500x500/images/product/SE0175/SE0175-1W.jpg',
             'https://images7.alphacoders.com/421/421542.jpg ',
             'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
             'https://images7.alphacoders.com/421/421542.jpg ',

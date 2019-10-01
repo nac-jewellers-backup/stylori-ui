@@ -7,7 +7,7 @@
 }
 
 .fil-submenu-icons {
-  fill:blue !important;
+  fill: blue !important;
   padding: 0 9px;
 }
 
@@ -109,20 +109,19 @@
 }
 
 .price-txt input {
-  padding: 0 8px !important;
   color: #394578;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 12px !important;
   width: 65px;
-  height: 35px;
+  height: 35px !important;
+  overflow: hidden !important;
 }
 
 .price-btn {
   font-size: 12px !important;
   color: #fff !important;
-  line-height: 1.42857143;
-  height: 60% !important;
-  margin-top: 26% !important;
+  height: 35px !important;
+  margin-top: 24% !important;
   box-shadow: none !important;
 }
 
@@ -155,6 +154,7 @@
 .MuiGrid-spacing-xs-2 {
   margin-top: 0 !important;
 }
+
 /* .MuiGrid-spacing-xs-2 > .MuiGrid-item{
   padding-top: 0px !important;
 } */
@@ -163,10 +163,12 @@
   background-color: #394578 !important;
   color: #fff !important;
 }
-.mbl-filter-list :hover span{
+
+.mbl-filter-list :hover span {
   background-color: #394578 !important;
   color: #fff !important;
 }
+
 .mbl-filter-list :hover {
   background-color: #394578 !important;
   color: #fff !important;
@@ -227,17 +229,54 @@
   color: #f2f2f2 !important;
   background-color: rgb(251, 100, 27) !important;
 }
-@media only screen and (min-width: 320px) {
-}
-.subFilterSize{
+
+@media only screen and (min-width: 320px) {}
+
+.subFilterSize {
   line-height: 0.5rem !important;
   font-size: 0.9rem !important;
 }
-.fil-submenu-icons svg{
+
+.fil-submenu-icons svg {
   font-size: 1.2rem;
   /* border-color: #dddddd; */
-  fill : rgba(58, 69, 120, 1) !important;
+  fill: rgba(58, 69, 120, 1) !important;
 }
-.sublistDisplay{
-  display:none !important;
+
+.sublistDisplay {
+  display: none !important;
+}
+
+.header-chips .MuiSvgIcon-root {
+  font-size: 15px !important;
+  color: #337ab7 !important;
+}
+
+.header-chips-text {
+  color: #3a4578 !important;
+  margin: 1px 5px 3px 0 !important;
+  max-width: 100%;
+  background: none !important;
+  background-clip: padding-box !important;
+}
+
+.Chip {
+  line-height: 64px !important;
+}
+
+.MuiChip-label {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+.search-choice-close {
+  position: absolute;
+  display: block;
+  width: 12px !important;
+  height: 12px !important;
+  background: url(https://alpha-assets.stylori.com/images/static/STY_ICON.png) -42px 1px no-repeat;
+  font-size: 1px !important;
+  margin-top: -1px !important;
+  margin-left: -14px;
+  cursor: pointer;
 }

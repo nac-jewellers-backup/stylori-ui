@@ -28,7 +28,7 @@ class ProductImageZoom extends React.Component {
   }
   state = {
     // backgroundImage: `url(${src})`,
-    
+
     backgroundPosition: '0% 0%',
     showimage: this.props.data[0].fadeImages[0]
   }
@@ -39,6 +39,7 @@ class ProductImageZoom extends React.Component {
     const { classes, data } = this.props
     const limit = 4;
     const { showimage } = this.state;
+
     const dataCarousel = {
       infinite: true,
       slidesToShow: data[0].fadeImages.length > 4 ? limit : data[0].fadeImages.length,

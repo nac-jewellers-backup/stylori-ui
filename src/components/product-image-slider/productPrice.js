@@ -2,6 +2,7 @@ import {
     Grid,
     Hidden,
     Container,
+    Popover,
 } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul'
 import React, { Component } from 'react';
@@ -11,9 +12,7 @@ import Ratings from '../rating/rating'
 import { withStyles } from '@material-ui/core/styles';
 import Pricing from '../Pricing/index'
 import styles from './style';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Popover from '@material-ui/core/Popover';
+
 const dataCarousel = {
     dots: false,
     infinite: true,
@@ -36,6 +35,7 @@ const mobilecarousel = (props) => {
 };
 
 const Productprice = (props, anchorEl, handleClick, handleClose) => {
+    debugger
     const { classes, data } = props;
     const open = anchorEl;
     return (
@@ -85,10 +85,10 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                             <a class="facebook" target="_blank">
                                                 <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
                                             </a>&nbsp;
-                                            <a class="twitter" onclick="return !window.open(this.href, 'twitter', 'width=600,height=350')" target="_blank">
+                                            <a class="twitter" target="_blank">
                                                 <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
                                             </a>&nbsp;
-                                            <a class="google" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;">
+                                            <a class="google" target="_blank">
                                                 <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
                                             </a>
                                         </div>
@@ -134,7 +134,7 @@ class ProductPrice extends Component {
         super(props)
         this.state = {
             share: false,
-            heart: true,
+            heart: false,
             anchorEl: false
         }
     }
@@ -152,15 +152,22 @@ class ProductPrice extends Component {
 
     render() {
         const { anchorEl } = this.state
-        return (
+    return (
             <div>
                 <Hidden smDown>
-                    {Productprice(this.props, anchorEl, this.handleClick, this.handleClose)}
+                    {Productprice(
+                        this.props, anchorEl,
+                        this.handleClick,
+                        this.handleClose)}
                 </Hidden>
 
                 <Hidden mdUp>
                     <Container>
-                        {Productprice(this.props)}
+                        {Productprice(
+                            this.props,
+                            anchorEl,
+                            this.handleClick,
+                            this.handleClose)}
                     </Container>
                 </Hidden>
             </div>

@@ -6,7 +6,7 @@ import {
     Modal
 } from '@material-ui/core';
 import React from "react";
-import './product-images.css'
+import './product-images.css';
 import ProductPrice from './productPrice'
 import PriceTabs from "./priceTabs";
 import PropTypes from 'prop-types';
@@ -92,7 +92,7 @@ const Buydetails = (props) => {
 class PriceBuynow extends React.Component {
     state = {
         showimage: this.props.data[0].fadeImages[0],
-        open: false
+        open: false,
     };
 
     handleOpen = () => {

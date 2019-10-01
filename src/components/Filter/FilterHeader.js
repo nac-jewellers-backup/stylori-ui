@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Paper, Toolbar, Typography, IconButton, Collapse } from '@material-ui/core';
+import { Paper, Toolbar, Typography, IconButton, Collapse, Chip, Avatar } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import CardRadioButton from "../InputComponents/RadioButton/index"
@@ -52,13 +52,13 @@ class FilterHeader extends Component {
     }
     render() {
 
-        const { classes } = this.props;
-        const {  sortOptions } = this.props.data;
+        const { classes, chips } = this.props;
+        const { sortOptions } = this.props.data;
         return (
             <Paper style={{ position: 'sticky', top: this.state.topHeight, width: '100%', zIndex: '3', boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">
                 {/* <div style={{position:'sticky',top:'165px'}}> */}
                 <Grid container>
-                    <Grid item lg={6}>
+                    <Grid item lg={3}>
                         <Toolbar disableGutters={!this.props.open}>
 
                             <div style={{ width: "240px" }}>
@@ -88,7 +88,22 @@ class FilterHeader extends Component {
                             </div>
                         </Toolbar>
                     </Grid>
-                    <Grid item lg={6} >
+                        <div className="header-chips Chip">
+                            {chips.map(data => {
+                                return (
+                                    <Chip
+                                        className="header-chips-text"
+                                        key={data.key}
+                                        label={data.label}
+                                        onClick={this.props.click}
+                                        avatar={data.label ?
+                                            <i className="search-choice-close" class="fa fa-times-circle" aria-hidden="true"></i>
+                                            : ""}
+                                    />
+                                );
+                            })}
+                        </div>
+                    <Grid item lg={2}>
                         <div className="fil-drawer-head-sort">
                             <Typography variant="h6" noWrap
                                 className={`fil-drawer-sort_font ${classes.colorMain}`}
@@ -105,7 +120,7 @@ class FilterHeader extends Component {
                             right: "15px", top: "65px", boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 7px'
                         }}>
                             <Collapse in={this.state.expanded} timeout="auto">
-                                <CardRadioButton data={sortOptions} />
+                               <CardRadioButton data={sortOptions} />
                             </Collapse>
                         </div>
                     </Grid>
@@ -115,9 +130,8 @@ class FilterHeader extends Component {
         );
     }
 }
-export default withStyles(styles)(props =>{
+export default withStyles(styles)(props => {
     const { mapped } = useDummyRequest(filterParams);
     if (Object.keys(mapped).length === 0) return ''
-  return < FilterHeader {...props} data={mapped} />
-  });
-  
+    return < FilterHeader {...props} data={mapped} />
+});

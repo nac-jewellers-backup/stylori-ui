@@ -42,6 +42,8 @@ class PriceTabs extends React.Component {
         values: "",
         expanded: null,
         ringSize: '',
+        metal: "",
+        diamond: ""
     };
 
     handleClick(event) {
@@ -49,7 +51,16 @@ class PriceTabs extends React.Component {
             ringSize: event.target.name,
         });
     }
-
+    handleClickMetal = (event) => {
+        this.setState({
+            metal: event.target.id,
+        });
+    }
+    handleClickDiamond = (event) => {
+        this.setState({
+            diamond: event.target.id,
+        })
+    }
     TabsComponent = () => {
         const { classes } = this.props;
         const data = this.props.data;
@@ -103,12 +114,15 @@ class PriceTabs extends React.Component {
 
                             <TabContainer >
                                 <Grid container spacing={12}>
-                                    {val.tab2.Children.map(val =>
+                                    {val.tab2.Children.map((val, i) =>
                                         <Grid xs={4}>
-                                            <div className="tabs-valus">
+                                            <button className="tabs-valus"
+                                                id={val.name}
+                                                onClick={event => this.handleClickMetal(event)}
+                                            >
                                                 <img src={val.icon} style={{ width: '35px', margin: "auto" }} alt="" />
-                                                <span className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
-                                            </div>
+                                                <span className={`tabs-contants ${classes.normalfonts}`}>{val.name}</span>
+                                            </button>
                                         </Grid>
                                     )}
                                 </Grid>
@@ -118,10 +132,13 @@ class PriceTabs extends React.Component {
                                 <Grid container spacing={12}>
                                     {val.tab3.Children.map(val =>
                                         <Grid xs={4}>
-                                            <div className="tabs-valus">
+                                            <button className="tabs-valus"
+                                                id={val.name}
+                                                onClick={event => this.handleClickDiamond(event)}
+                                            >
                                                 <img src={val.icon} style={{ width: '35px', margin: "auto" }} alt="" />
                                                 <span className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
-                                            </div>
+                                            </button>
                                         </Grid>
                                     )}
                                 </Grid>
@@ -135,8 +152,7 @@ class PriceTabs extends React.Component {
     }
     MobileTabs = () => {
         const { expanded } = this.state;
-        const { classes } = this.props;
-        const data = this.props.data;
+        const { classes, data } = this.props;
         return (
             <>
                 {data[0].productTabs.map(val =>
@@ -181,10 +197,13 @@ class PriceTabs extends React.Component {
                                     {val.tab2.Children.map(val =>
                                         <Grid container spacing={12}>
                                             <Grid xs={12}>
-                                                <div className="tabs-valus">
+                                                <button className="tabs-valus"
+                                                    id={val.name}
+                                                    onClick={event => this.handleClickMetal(event)}
+                                                >
                                                     <img src={val.icon} style={{ width: '35px', margin: "auto" }} alt="" />
                                                     <span className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
-                                                </div>
+                                                </button>
                                             </Grid>
                                         </Grid>
                                     )}
@@ -203,10 +222,13 @@ class PriceTabs extends React.Component {
                                     {val.tab3.Children.map(val =>
                                         <Grid container spacing={12}>
                                             <Grid xs={12}>
-                                                <div className="tabs-valus">
+                                                <button className="tabs-valus"
+                                                    id={val.name}
+                                                    onClick={event => this.handleClickDiamond(event)}
+                                                >
                                                     <img src={val.icon} style={{ width: '35px', margin: "auto" }} alt="" />
                                                     <span className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
-                                                </div>
+                                                </button>
                                             </Grid>
                                         </Grid>
                                     )}

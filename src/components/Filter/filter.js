@@ -89,23 +89,23 @@ const styles = theme => ({
   colorMainBackground: {
     backgroundColor: theme.palette.primary.main
   },
-  productCardscheck:{
-    width:'80%',
- 
+  productCardscheck: {
+    width: '80%',
+
     [theme.breakpoints.down('md')]: {
       width: '100% !important'
     },
     [theme.breakpoints.up('xl')]: {
-      width:  '90%'
+      width: '90%'
     },
   },
   productCardsuncheck: {
-    width:  '100%',
+    width: '100%',
     [theme.breakpoints.down('md')]: {
       width: '100% !important'
     },
     [theme.breakpoints.up('xl')]: {
-      width:  '100%',
+      width: '100%',
     },
   }
 });
@@ -126,7 +126,6 @@ class PersistentDrawerLeft extends React.Component {
       numOne: '',
       numTwo: '',
       showMore: 4,
-
       chipData: [
         { key: '', label: '' },
       ],
@@ -138,7 +137,7 @@ class PersistentDrawerLeft extends React.Component {
     let { checked, chipData } = this.state;
     let arr = [];
     if (name === true) {
-      chipData.push({ key: chipData[chipData.length - 1].key, label: value });
+      chipData.push({ key: chipData, label: value });
     } else {
       arr = chipData.filter(val => val.label !== value);
       chipData = arr;
@@ -154,13 +153,10 @@ class PersistentDrawerLeft extends React.Component {
     this.setState({ open: true });
     document.documentElement.scrollTop = 180;
 
-
   };
   handleDrawerOpenMobile = () => {
     this.setState({ openMobile: false, productDisplay: false });
     this.setState({ CardRadio: false });
-
-
 
   };
   handleDrawerCloseMobile = () => {
@@ -234,7 +230,7 @@ class PersistentDrawerLeft extends React.Component {
 
   render() {
 
-    const { classes} = this.props;
+    const { classes } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data;
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
@@ -244,7 +240,7 @@ class PersistentDrawerLeft extends React.Component {
       <>
 
         <Hidden smDown>
-          <FilterHeader handleChangeDrawer={this.handleChangeDrawer} check={this.state.check} />{/*  handleDrawerOpen={this.handleDrawerOpen.bind(this)} */}
+          <FilterHeader click={this.handleDelete('data')} handleChangeDrawer={this.handleChangeDrawer} check={this.state.check} chips={this.state.chipData} />{/*  handleDrawerOpen={this.handleDrawerOpen.bind(this)} */}
         </Hidden>
         <div className={classes.root} >
           <Hidden smDown >
@@ -253,8 +249,6 @@ class PersistentDrawerLeft extends React.Component {
             <div >
               <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '210px', maxHeight: '68vh', overflowY: 'scroll' }} className="SliderFilter scrollBarFilter" id="SliderFilter" >
                 <div >
-
-
 
                   <Paper
                     className={classes.drawer}
@@ -303,16 +297,16 @@ class PersistentDrawerLeft extends React.Component {
                         </Grid>
                       </div>
                       {/* filter */}
-                      
+
                       {/* {console.log(filter)} */}
-                    
-                      
+
+
                       <div>
                         {
-                          
+
                           <>
                             {
-                              
+
                               filter.map((row, i) => {
 
                                 return (
@@ -338,7 +332,7 @@ class PersistentDrawerLeft extends React.Component {
                                               (i < (this.state[`li_${row}`] ? this.state[`li_${row}`] : 4))).map(row12 => {
                                                 return (<div>
 
-                                                  <ListItem key={row12}  >   {/* button */}
+                                                  <ListItem key={row12}  style={{padding:"5px 25px"}}>   {/* button */}
                                                     <Checkbox
                                                       checked={this.state.checked[row12] !== undefined ? this.state.checked[row12] : false}
                                                       onChange={() => this.handleChange(row12, this.state.checked[row12] !== undefined ? !this.state.checked[row12] : true)}
@@ -359,7 +353,8 @@ class PersistentDrawerLeft extends React.Component {
 
                                           }
 
-                                          {
+                                         <div style={{padding:"0 13px"}}>
+                                         {
                                             (subFilter[row].length) - 4 !== 0 &&
                                             <>
                                               {this.state[`li_${row}`] === undefined || this.state[`li_${row}`] === 4 ?
@@ -378,6 +373,7 @@ class PersistentDrawerLeft extends React.Component {
                                                 </div>}
                                             </>
                                           }
+                                         </div>
 
 
                                         </>
@@ -408,8 +404,8 @@ class PersistentDrawerLeft extends React.Component {
           {
             this.state.productDisplay &&
             <div
-              
-              className={check?classes.productCardscheck : classes.productCardsuncheck }
+
+              className={check ? classes.productCardscheck : classes.productCardsuncheck}
 
             >
               <ProductLayout />
@@ -430,7 +426,7 @@ class PersistentDrawerLeft extends React.Component {
 
             </div>
 
-            <Grid container  xs={12} className="p" style={{ overflow: 'scroll', height: '100%', display: openMobile ? 'none' : 'block' }}>
+            <Grid container xs={12} className="p" style={{ overflow: 'scroll', height: '100%', display: openMobile ? 'none' : 'block' }}>
               <Grid container item xs={12} >
                 <Grid item xs={6} style={{ backgroundColor: "#F2F2F2", overflow: 'scroll', height: '73vh' }}>
                   <List className="mbl-filter-list">
@@ -485,7 +481,7 @@ class PersistentDrawerLeft extends React.Component {
                 </Paper>    
               </Grid> */}
               <AppBar color="primary" className="filter-fixed header" >
-                <Grid container item xs={12} justify="flex-end" alignItems="center" style={{padding:'2%'}}>
+                <Grid container item xs={12} justify="flex-end" alignItems="center" style={{ padding: '2%' }}>
                   <Grid item xs={6}>
 
                     <Button variant='contained' className={`filterBtnMobile`}>
@@ -500,31 +496,31 @@ class PersistentDrawerLeft extends React.Component {
 
 
             <AppBar color="primary" className="filter-fixed header" style={{ display: !openMobile ? 'none' : 'block' }}>
-            <Container>
-            <Container>
-              <Toolbar  >
-              <div onClick={this.handleDrawerOpenMobile}>
-                  <Typography variant=""
-                    className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-filter"
+              <Container>
+                <Container>
+                  <Toolbar  >
+                    <div onClick={this.handleDrawerOpenMobile}>
+                      <Typography variant=""
+                        className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-filter"
 
-                    ></i> &nbsp;
-                    Filter
+                        ></i> &nbsp;
+                        Filter
                     </Typography>
-                </div>
+                    </div>
 
-                <div style={{ flexGrow: "2" }} />
+                    <div style={{ flexGrow: "2" }} />
 
-                <IconButton edge="end" color="inherit" onClick={() => this.setState({ CardRadio: !this.state.CardRadio, productDisplay: !this.state.productDisplay })} >
-                  <Typography variant=""
-                    className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
-                    Sort
+                    <IconButton edge="end" color="inherit" onClick={() => this.setState({ CardRadio: !this.state.CardRadio, productDisplay: !this.state.productDisplay })} >
+                      <Typography variant=""
+                        className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
+                        Sort
                     </Typography>
-                </IconButton>
-            
-                  
-             
-              </Toolbar>
-              </Container>
+                    </IconButton>
+
+
+
+                  </Toolbar>
+                </Container>
               </Container>
             </AppBar>
 
@@ -553,8 +549,8 @@ PersistentDrawerLeft.propTypes = {
   filterdatas: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(props =>{
+export default withStyles(styles, { withTheme: true })(props => {
   const { mapped } = useDummyRequest(filterParams);
   if (Object.keys(mapped).length === 0) return ''
-return < PersistentDrawerLeft {...props} data={mapped} />
+  return < PersistentDrawerLeft {...props} data={mapped} />
 });

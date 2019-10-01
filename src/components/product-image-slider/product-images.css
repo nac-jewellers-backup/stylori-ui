@@ -125,6 +125,8 @@
         padding: 5px;
         background: #fdbac13b;
         border: 1px solid #fdbac13b;
+        align-items: center !important;
+        outline: none !important;
     }
 
     .tabs-contants {

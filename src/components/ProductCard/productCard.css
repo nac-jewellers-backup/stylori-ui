@@ -40,6 +40,8 @@
     height: 40px;
     width: 100%;
     word-wrap: break-word;
+    font-weight: bold !important;
+
   }
 
   .card-control {
