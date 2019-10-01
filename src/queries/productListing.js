@@ -1,32 +1,28 @@
-import { PRODUCTLIST } from "queries";
 
-export const PRODUCTDETAILS = `
+export const PRODUCTLIST = `
 query fetchProductDetails($condition: ProductListCondition){
-    allProductLists(condition: $condition) {
-      nodes {
-        productName
-        productId
-        productSeries
-        productType
-        width
-      }
+  allProductLists(condition: $condition, first: 10) {
+    nodes {
+      productName
+      productId
+      productSeries
+      productType
+      width
     }
   }
+}
+
   
 `
 
+
 export const conditions = {
-  
   productId: (id) => ({
     "condition": {
       "productId": id
-    
     }
-    
   }),
-  
   generateCondition: (filters) => {
-    
     console.log(PRODUCTLIST)
     let condition = {};
     const filterKeys = Object.keys(filters);
@@ -35,6 +31,7 @@ export const conditions = {
       switch (k) {
         case "productId":
           condition["productId"] = filters[k];
+
           break;
         default: {
 
@@ -42,5 +39,6 @@ export const conditions = {
       }
     })
     return condition;
+    
   }
 }

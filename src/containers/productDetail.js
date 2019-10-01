@@ -35,7 +35,6 @@ class ProductDetail extends Component {
   render() {
     var loc = this.props.location.pathname;
     var path = loc.split('/');
-    debugger;
     return (
       <div>
 

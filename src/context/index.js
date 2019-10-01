@@ -1,3 +1,4 @@
 export * from './GlobalContext';
 export * from './NetworkContext';
-export * from './ProductDetailContext'
+export * from './ProductDetailContext';
+export * from './FilterOptionsContext'

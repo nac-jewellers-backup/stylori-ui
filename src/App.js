@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { NetworkProvider, GlobalProvider, ProductDetailProvider } from 'context';
+import { NetworkProvider, GlobalProvider } from 'context';
 import './index.css'
 import Loading from 'screens/Loading';
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';

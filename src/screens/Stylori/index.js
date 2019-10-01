@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../../components/Header/header'
-import ProductDescription from '../../components/productDescription';
-import {Grid, Hidden} from '@material-ui/core';
-import Filter from '../../components/Filter/filter'
-import Footer from "../../components/Footer/Footer"
-import { ChatHelp } from '../../components/ChatHelp';
+import {FilterOptionsProvider} from 'context'
+import ProductListing from 'containers/ProductListing'
 export default class Stylori extends Component {
   constructor(props) {
     super(props)
@@ -28,23 +24,9 @@ export default class Stylori extends Component {
     // }
     // console.log(this.props)
     return (
-      <Grid container >
-        <Grid item xs={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
-          <Header />
-        </Grid>
-
-        <Grid item xs={12}>
-        <ProductDescription title="Jewellery" />
-        <Filter />
-        </Grid>
-        <Grid item xs={12} >
-        <Hidden smDown>
-          <ChatHelp />
-
-          <Footer />
-          </Hidden>          
-        </Grid>
-      </Grid>
+      <FilterOptionsProvider >
+     <ProductListing /> 
+     </FilterOptionsProvider>
 
 
     )
