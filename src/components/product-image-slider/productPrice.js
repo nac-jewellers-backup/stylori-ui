@@ -2,6 +2,7 @@ import {
     Grid,
     Hidden,
     Container,
+    Popover,
 } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul'
 import React, { Component } from 'react';
@@ -33,8 +34,10 @@ const mobilecarousel = (props) => {
     );
 };
 
-const Productprice = (props, share) => {
+const Productprice = (props, anchorEl, handleClick, handleClose) => {
+    debugger
     const { classes, data } = props;
+    const open = anchorEl;
     return (
         <div>
             {data.map(val => (
@@ -55,24 +58,42 @@ const Productprice = (props, share) => {
                             <div className="starts product-icons" style={{ fontFamily: "fontawesome" }} >
                                 <div className="row social-shares"
                                     className={classes.icon}>
-                                    <i class="fa fa-share-alt overall-icons"></i>
-                                    {/* <i
-                                        onClick={() => { this.setState({ share: !share }) }}
-                                        class="fa fa-share-alt overall-icons"></i> &nbsp;
-                                    <i class="fa fa-heart-o overall-icons"></i> */}
-                                    {/* <div onClick={() => { this.setState({ heart: !this.state.heart }) }}>
-                                        {this.state.heart === true ?
-                                            <i class="fa fa-heart-o overall-icons"></i>
-                                            : <p>heart</p>
-                                        }
-                                        }
-                                    </div> */}
-                                    {/* {this.state.share == true ?
-                                        <div style={{ position: 'fixed' }}>
-                                            share
-                                            </div>
-                                        :
-                                        ''} */}
+                                    <i class="fa fa-share-alt overall-icons"
+                                        aria-owns={open ? 'simple-popper' : ""}
+                                        onClick={handleClick}
+                                    ></i> &nbsp;
+                                    <i class="fa fa-heart-o overall-icons"
+                                    //  onClick={() => }
+                                    ></i>
+
+                                    <Popover
+                                        id="simple-popper"
+                                        open={open}
+                                        anchorEl={anchorEl}
+                                        onClose={handleClose}
+                                        anchorOrigin={{
+                                            vertical: 'bottom',
+                                            horizontal: 'center',
+                                        }}
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'center',
+                                        }}
+                                    >
+                                        <div className="product-share">
+                                            <h5>Share the Jewellery</h5>
+                                            <a class="facebook" target="_blank">
+                                                <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
+                                            </a>&nbsp;
+                                            <a class="twitter" target="_blank">
+                                                <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
+                                            </a>&nbsp;
+                                            <a class="google" target="_blank">
+                                                <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
+                                            </a>
+                                        </div>
+                                    </Popover>
+
                                     <Ratings ratings="starts-review" />
                                 </div>
                             </div>
@@ -113,21 +134,40 @@ class ProductPrice extends Component {
         super(props)
         this.state = {
             share: false,
-            heart: true,
+            heart: false,
+            anchorEl: false
         }
     }
+    handleClick = event => {
+        this.setState({
+            anchorEl: event.currentTarget,
+        });
+    };
+
+    handleClose = () => {
+        this.setState({
+            anchorEl: false,
+        });
+    };
 
     render() {
-        const { share } = this.state
-        return (
+        const { anchorEl } = this.state
+    return (
             <div>
                 <Hidden smDown>
-                    {Productprice(this.props, share)}
+                    {Productprice(
+                        this.props, anchorEl,
+                        this.handleClick,
+                        this.handleClose)}
                 </Hidden>
 
                 <Hidden mdUp>
                     <Container>
-                        {Productprice(this.props, share)}
+                        {Productprice(
+                            this.props,
+                            anchorEl,
+                            this.handleClick,
+                            this.handleClose)}
                     </Container>
                 </Hidden>
             </div>

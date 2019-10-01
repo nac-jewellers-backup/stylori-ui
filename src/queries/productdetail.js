@@ -1,20 +1,27 @@
-import { PRODUCTLIST } from "queries";
-
-export const PRODUCTDETAILS = `
-query fetchProductDetails($condition: ProductListCondition){
-    allProductLists(condition: $condition) {
-      nodes {
-        productName
-        productId
-        productSeries
-        productType
-        width
-      }
+export const PRODUCTDETAILS = `query fetchProductDetails($condition: ProductListCondition) {
+  allProductLists(condition: $condition) {
+    nodes {
+      productName
+      productId
     }
   }
-  
+}
 `
-
+// query fetchProductDetails($condition: ProductListCondition) {
+//   allProductLists(condition: $condition) {
+//     nodes {
+//       productName
+//       productId
+//       productDiamondsByProductSku {
+//         nodes {
+//           diamondClarity
+//           diamondColour
+//           diamondType
+//         }
+//       }
+//     }
+//   }
+// }
 export const conditions = {
   
   productId: (id) => ({
@@ -27,10 +34,8 @@ export const conditions = {
   
   generateCondition: (filters) => {
     
-    console.log(PRODUCTLIST)
     let condition = {};
     const filterKeys = Object.keys(filters);
-    console.info('filterKeys', filterKeys, filters);
     filterKeys.map(k => {
       switch (k) {
         case "productId":

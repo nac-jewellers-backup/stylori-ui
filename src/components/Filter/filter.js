@@ -21,7 +21,6 @@ import { FilterOptionsContext } from 'context'
 
 const PersistentDrawerLeft = (props) => {
   const { setFilters } = React.useContext(FilterOptionsContext);
-  debugger
   return <Component setFilters={setFilters} {...props} />
 }
 
@@ -167,7 +166,7 @@ class Component extends React.Component {
       <>
 
         <Hidden smDown>
-          <FilterHeader handleChangeDrawer={this.handleChangeDrawer} check={this.state.check} />{/*  handleDrawerOpen={this.handleDrawerOpen.bind(this)} */}
+          <FilterHeader handleChangeDrawer={this.handleChangeDrawer} chips={this.state.chipData} check={this.state.check} />{/*  handleDrawerOpen={this.handleDrawerOpen.bind(this)} */}
         </Hidden>
         <div className={classes.root} >
           <Hidden smDown >

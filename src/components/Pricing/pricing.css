@@ -1,8 +1,11 @@
 .pricing {
     padding-bottom: 5px !important;
     text-align: left !important;
+    font-weight: bold !important;
+    color: #394578 !important;
 }
-.pricing-p{
+
+.pricing-p {
     display: flex !important;
     align-items: center !important;
 }

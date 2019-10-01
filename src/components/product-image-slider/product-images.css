@@ -125,6 +125,8 @@
         padding: 5px;
         background: #fdbac13b;
         border: 1px solid #fdbac13b;
+        align-items: center !important;
+        outline: none !important;
     }
 
     .tabs-contants {
@@ -258,7 +260,13 @@
         margin-bottom: 8px;
         font-size: 12px;
         color: #394578;
+        font-weight: 600;
         line-height: 1.42857143;
+    }
+
+    .nd-hlp {
+        font-weight: 600;
+        margin-bottom: 10px;
     }
 
     .price-offers {}
@@ -521,7 +529,7 @@
         width: 100% !important;
         border: 1px solid #ccc;
         counter-increment: inherit;
-        height: 480px !important;
+        height: 450px !important;
         float: left !important;
     }
 
@@ -555,7 +563,7 @@
         left: 48.5%;
         border: 1px solid rgb(204, 204, 204);
         display: none;
-        height: 480px !important;
+        height: 450px !important;
         width: 35%;
         float: left !important;
         position: absolute;
@@ -899,4 +907,21 @@
             padding-left: 5% !important;
             padding-right: 5% !important;
         }
+    }
+
+    .product-share {
+        z-index: 2;
+        top: 40px;
+        padding: 11px 13px;
+        text-align: center;
+        border: 1px solid #ccc;
+    }
+
+    .product-share h5 {
+        margin: 0px !important;
+    }
+
+    .product-share .MuiPaper-elevation8 {
+        box-shadow: none !important;
+
     }

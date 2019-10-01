@@ -1,6 +1,6 @@
 import {
-    Hidden,
-    Grid
+  Hidden,
+  Grid
 } from '@material-ui/core';
 import React, { Component } from 'react';
 import Header from 'components/Header/header'
@@ -22,16 +22,15 @@ import { withRouter } from 'react-router-dom';
 import productDetails from 'mappers/productDetails';
 import { PRODUCTDETAILS, conditions } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
-import { ProductDetailContext  } from 'context/ProductDetailContext';
+import { ProductDetailContext } from 'context/ProductDetailContext';
 import { CDN_URL } from 'config';
 
 
 class ProductDetail extends Component {
-  constructor(props)
-  {
+  constructor(props) {
     super(props)
   }
-  
+
   render() {
     var loc = this.props.location.pathname;
     var path = loc.split('/');
@@ -108,25 +107,25 @@ class ProductDetail extends Component {
             </Grid>
 
             <Grid item xs={12}>
-              <PriceBuynow />
+              <PriceBuynow data={this.props.data} />
             </Grid>
             <Grid item xs={12} >
-              <ProductDetails />
+              <ProductDetails data={this.props.data} />
             </Grid>
 
             <Grid item xs={12} >
-              <PriceCertification />
+              <PriceCertification data={this.props.data} />
             </Grid>
             <Grid item xs={12} >
               <Request />
             </Grid>
 
             <Grid item xs={12} >
-              <Sublistcarousel />
+              <Sublistcarousel data={this.props.data} />
             </Grid>
 
             <Grid item xs={12} >
-              <CustomerReviews />
+              <CustomerReviews data={this.props.data} />
             </Grid>
 
             <Grid item xs={12} >
@@ -146,27 +145,18 @@ class ProductDetail extends Component {
     )
   }
 }
-const Components = props => {
-  const productId = props.location.state.data
+const Components = props => { 
+  const { ProductDetailCtx: { data, loading, error } } = React.useContext(ProductDetailContext);
+  const datas = data;
+  let mapped = datas;
+  if (!loading && !error) {
+    mapped = productDetails(datas);
+  }
+  if (Object.keys(mapped).length === 0) return <div></div>
+  else {
+    return <ProductDetail {...props} data={mapped} />
 
-    const { ProductDetailCtx: { data, loading, error } } = React.useContext(ProductDetailContext);
-    
-    console.info('datares', data);
-    const datas = data;
-    console.log(datas)
-
-  
-    let mapped = datas;
-    if (!loading && !error) {
-        mapped = productDetails(datas);
-
-        console.info('__MAPPED2', mapped);
-    }
-    if (Object.keys(mapped).length === 0) return <div></div>
-    else {
-        return  <ProductDetail {...props} data={mapped} />
-
-    }
+  }
 }
 
 

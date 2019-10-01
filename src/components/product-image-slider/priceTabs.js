@@ -17,6 +17,7 @@ import PropTypes from 'prop-types';
 import Slideshow from '../Carousel/carosul';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
+import { ProductDetailContext } from 'context/ProductDetailContext';
 function TabContainer({ children, dir }) {
     return (
         <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
@@ -31,7 +32,6 @@ const settings = {
     slidesToShow: 8,
     slidesToScroll: 5,
 };
-
 class PriceTabs extends React.Component {
     constructor(props) {
         super(props);
@@ -41,15 +41,26 @@ class PriceTabs extends React.Component {
         value: 0,
         values: "",
         expanded: null,
-        isActive: '2',
+        ringSize: '',
+        metal: "",
+        diamond: ""
     };
+
     handleClick(event) {
-        console.log(event.target.value)
         this.setState({
-            isActive: event.target.name,
+            ringSize: event.target.name,
         });
     }
-
+    handleClickMetal = (event) => {
+        this.setState({
+            metal: event.target.id,
+        });
+    }
+    handleClickDiamond = (event) => {
+        this.setState({
+            diamond: event.target.id,
+        })
+    }
     TabsComponent = () => {
         const { classes } = this.props;
         const data = this.props.data;
@@ -81,12 +92,12 @@ class PriceTabs extends React.Component {
                             onChangeIndex={this.handleChangeIndex}
                         >
                             <TabContainer>
-                                <div className={classes.pagination}>
+                                <div className={classes.pagination} style={{ overflow: "hidden" }}>
                                     <Slideshow dataCarousel={settings}>
                                         {val.tab1.Children.map((val, i) =>
                                             <>
                                                 <button
-                                                    className={this.state.isActive == i ? `dark ${classes.tabsRingBckg}` : 'page'}
+                                                    className={this.state.ringSize == i ? `dark ${classes.tabsRingBckg}` : 'page'}
                                                     value={val} id={val} name={i}
                                                     onClick={event => this.handleClick(event)}
                                                 >
@@ -103,12 +114,15 @@ class PriceTabs extends React.Component {
 
                             <TabContainer >
                                 <Grid container spacing={12}>
-                                    {val.tab2.Children.map(val =>
+                                    {val.tab2.Children.map((val, i) =>
                                         <Grid xs={4}>
-                                            <div className="tabs-valus">
+                                            <button className="tabs-valus"
+                                                id={val.name}
+                                                onClick={event => this.handleClickMetal(event)}
+                                            >
                                                 <img src={val.icon} style={{ width: '35px', margin: "auto" }} alt="" />
-                                                <span className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
-                                            </div>
+                                                <span className={`tabs-contants ${classes.normalfonts}`}>{val.name}</span>
+                                            </button>
                                         </Grid>
                                     )}
                                 </Grid>
@@ -118,10 +132,13 @@ class PriceTabs extends React.Component {
                                 <Grid container spacing={12}>
                                     {val.tab3.Children.map(val =>
                                         <Grid xs={4}>
-                                            <div className="tabs-valus">
+                                            <button className="tabs-valus"
+                                                id={val.name}
+                                                onClick={event => this.handleClickDiamond(event)}
+                                            >
                                                 <img src={val.icon} style={{ width: '35px', margin: "auto" }} alt="" />
                                                 <span className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
-                                            </div>
+                                            </button>
                                         </Grid>
                                     )}
                                 </Grid>
@@ -133,11 +150,9 @@ class PriceTabs extends React.Component {
             </div>
         );
     }
-
     MobileTabs = () => {
         const { expanded } = this.state;
-        const { classes } = this.props;
-        const data = this.props.data;
+        const { classes, data } = this.props;
         return (
             <>
                 {data[0].productTabs.map(val =>
@@ -157,7 +172,7 @@ class PriceTabs extends React.Component {
                                             {val.tab1.Children.map((val, i) =>
                                                 <>
                                                     <button
-                                                        className={this.state.isActive == i ? `dark ${classes.tabsRingBckg}` : 'page'}
+                                                        className={this.state.ringSize == i ? `dark ${classes.tabsRingBckg}` : 'page'}
                                                         value={val} id={val} name={i}
                                                         onClick={event => this.handleClick(event)}
                                                     >
@@ -182,10 +197,13 @@ class PriceTabs extends React.Component {
                                     {val.tab2.Children.map(val =>
                                         <Grid container spacing={12}>
                                             <Grid xs={12}>
-                                                <div className="tabs-valus">
+                                                <button className="tabs-valus"
+                                                    id={val.name}
+                                                    onClick={event => this.handleClickMetal(event)}
+                                                >
                                                     <img src={val.icon} style={{ width: '35px', margin: "auto" }} alt="" />
                                                     <span className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
-                                                </div>
+                                                </button>
                                             </Grid>
                                         </Grid>
                                     )}
@@ -204,10 +222,13 @@ class PriceTabs extends React.Component {
                                     {val.tab3.Children.map(val =>
                                         <Grid container spacing={12}>
                                             <Grid xs={12}>
-                                                <div className="tabs-valus">
+                                                <button className="tabs-valus"
+                                                    id={val.name}
+                                                    onClick={event => this.handleClickDiamond(event)}
+                                                >
                                                     <img src={val.icon} style={{ width: '35px', margin: "auto" }} alt="" />
                                                     <span className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
-                                                </div>
+                                                </button>
                                             </Grid>
                                         </Grid>
                                     )}
