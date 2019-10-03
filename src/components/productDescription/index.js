@@ -6,7 +6,7 @@ import CustomSeparator from '../BreadCrumb/index';
 import { withStyles } from '@material-ui/core/styles';
 import { useDummyRequest } from '../../hooks';
 import { descriptionData } from '../../mappers';
-
+import { withRouter } from 'react-router-dom';
 const styles = theme => ({
 
   colorLight: {
@@ -32,12 +32,14 @@ class ProductDescription extends Component {
 
   render() {
     const { classes } = this.props;
-    let path = window.location.pathname.split('/').pop();
+    // let path = window.location.pathname.split('/').pop();
+    var loc = this.props.location.pathname;
+    var path = loc.split('/');
     const descriptionData = this.props.data;
-    const settings = descriptionData[path].carouselSettings;
-    const fadeImages = descriptionData[path].carouselImage;
-    const title = descriptionData[path].title;
-    const datadescription = descriptionData[path].description;
+    const settings = descriptionData[path[1]].carouselSettings;
+    const fadeImages = descriptionData[path[1]].carouselImage;
+    const title = descriptionData[path[1]].title;
+    const datadescription = descriptionData[path[1]].description;
     return (
       <>
         <Container >
@@ -62,7 +64,7 @@ class ProductDescription extends Component {
                   <CustomSeparator
                     list='product-dis'
                     classsubhed='product-backg'
-                    data={[window.location.hostname, window.location.pathname.split('/').pop()]} />
+                    data={[window.location.hostname,  path[1]]} />{/* window.location.pathname.split('/').pop()  */}
                 </Grid>
               </Hidden>
               <Hidden smDown >
@@ -143,9 +145,9 @@ class ProductDescription extends Component {
   }
 
 }
-export default withStyles(styles)(props => {
+export default withRouter(withStyles(styles)(props => {
   const { mapped } = useDummyRequest(descriptionData);
   if (Object.keys(mapped).length === 0) return ''
 
   return <ProductDescription {...props} data={mapped} />
-});
+}));

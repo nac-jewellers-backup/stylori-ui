@@ -9,11 +9,11 @@ export default function (data, cdnUrl) {
     } catch (error) {
         mapperdata = [];
     }
-    const _format = mapperdata.map(k => ({
+    const _format = mapperdata.map(PD => ({
 
-        title: k.productName,
-        price: "29000.0",
-        offerPrice: "23000.10",
+        title: PD.productName,
+        price: PD.transSkuListsByProductId.nodes.markupPrice ? PD.transSkuListsByProductId.nodes.markupPrice : "989.90890",
+        offerPrice: PD.transSkuListsByProductId.nodes.sellingPrice ? PD.transSkuListsByProductId.nodes.sellingPrice : "78878.90890",
         save: '5999.9',
         offerDiscount: '25% FLAT OFF',
         dis: "Pendants set in 14 Kt White Gold 0.84 gm with Diamonds (0.06 ct IJ -SI)",
@@ -67,33 +67,22 @@ export default function (data, cdnUrl) {
             {
                 tab1: {
                     header: "Ring Size",
-                    Children:
-                        [
-                            '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'
-                        ]
+                    Children: PD.sizeVarient
                 },
                 tab2: {
                     header: "Metal Purity",
-                    Children: [
-                        {
-                            name: "18k Yellow", icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
-                        }, {
-                            name: "18k Yellow", icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
-                        }, {
-                            name: "18k Yellow", icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
-                        },
-                    ]
+                    Children: PD.colourVarient
+                    // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
                 },
                 tab3: {
                     header: "Diamond Clarity",
-                    Children: [
-                        {
-                            name: "SU 9IM", icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
-                        },
-                        {
-                            name: "SU 9IM", icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
-                        },
-                    ]
+                    Children:
+                        (PD.productDiamondsByProductSku.nodes).map(P => (
+                            {
+                                name: P.diamondType,
+                                icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
+                            }))
+
                 }
             }
         ],
@@ -123,7 +112,8 @@ export default function (data, cdnUrl) {
             {
                 header: "Diamond Details ",
                 namedetail: [{
-                    name: "Total No of ",
+                    name: "Total No of Diamonds",
+                    details: ["35", '89898', '9988']
                 },
                 {
                     name: "Diamonds",

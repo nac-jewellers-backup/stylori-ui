@@ -93,7 +93,7 @@ class ProductLayout extends React.Component {
                 </GridListTile>
               )
             })
-
+ 
           }
 
         </GridList>
@@ -110,17 +110,5 @@ class ProductLayout extends React.Component {
 
 }
 
-const Component = props => {
-  const { loading, error, data } = useGraphql(PRODUCTLIST, productlist);
-  let mapped = data;
-  if (!loading && !error) {
-    mapped = productlist(data, CDN_URL);
-    // setMappedData(mapped);
-  }
-  if (Object.keys(mapped).length === 0) return <div></div>
-  else {
-    return <ProductLayout {...props} data={mapped} />
-  }
 
-}
-export default withStyles(styles, { withTheme: true })(Component);
+export default withStyles(styles, { withTheme: true })(ProductLayout);

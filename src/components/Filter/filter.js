@@ -12,120 +12,38 @@ import ProductLayout from '../ProductCard/ProductLayout';
 import FilterHeader from './FilterHeader';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CardRadioButton from '../InputComponents/RadioButton/index'
-import { isUndefined } from 'util';
-import { useDummyRequest } from '../../hooks';
-import { filterParams } from '../../mappers';
-const drawerWidth = 280;
+import CardRadioButton from '../InputComponents/RadioButton/index';
+import { useDummyRequest } from 'hooks/index';
+import { filterParams } from 'mappers/index';
+import styles from './styles';
+import { FilterOptionsContext } from 'context'
 
 
-const styles = theme => ({
-  root: {
-    display: 'flex', 
-
-  },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginLeft: 12,
-    marginRight: 20,
-  },
-  hide: {
-    display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
+const PersistentDrawerLeft = (props) => {
+  const { setFilters } = React.useContext(FilterOptionsContext);
+  return <Component setFilters={setFilters} {...props} />
+}
 
 
-
-  },
-  drawerPaper: {
-    width: drawerWidth,
-    position: 'sticky !important',
-    top: '153px'
-
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '0 8px',
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing.unit * 3,
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: -drawerWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
-  },
-  colorMain: {
-    color: theme.palette.primary.main
-  },
-  colorMainBackground: {
-    backgroundColor: theme.palette.primary.main
-  },
-  productCardscheck: {
-    width: '80%',
-
-    [theme.breakpoints.down('md')]: {
-      width: '100% !important'
-    },
-    [theme.breakpoints.up('xl')]: {
-      width: '90%'
-    },
-  },
-  productCardsuncheck: {
-    width: '100%',
-    [theme.breakpoints.down('md')]: {
-      width: '100% !important'
-    },
-    [theme.breakpoints.up('xl')]: {
-      width: '100%',
-    },
-  }
-});
-
-
-class PersistentDrawerLeft extends React.Component {
+class Component extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       open: this.props.open,
       openMobile: true,
       CardRadio: false,
-      checked: {},
+      checked: {
+        Offers: [], Availability: [], ProductType: [], Style: [], Material: [], Theme: [], Collection: [], MetalColor: [], MetalPurity: [], Occasion: [],
+        NoOfStone: [], Gender: [], StoneColor: [], StoneShape: []
+      },
+
       selected: '',
       filtercheck: '',
       productDisplay: true,
       check: true,
       numOne: '',
       numTwo: '',
-      showMore: 4,
+      showMore: 4, 
       chipData: [
         { key: '', label: '' },
       ],
@@ -133,30 +51,37 @@ class PersistentDrawerLeft extends React.Component {
 
   }
 
-  handleChange(value, name) {
-    let { checked, chipData } = this.state;
+  handleChange(value, BoolName, e) {
+    let { chipData } = this.state;
+    let checked = { ...this.state.checked }
     let arr = [];
-    if (name === true) {
-      chipData.push({ key: chipData, label: value });
+    if (BoolName === true) {
+      chipData.push({ key: chipData[chipData.length - 1].key, label: value });
     } else {
       arr = chipData.filter(val => val.label !== value);
       chipData = arr;
     }
-    checked[value] = name;
+    let checkedvalue = {};
+    checkedvalue[value] = BoolName
+    checked[e.target.name] = checkedvalue
+    // checkedvalue={value : BoolName}
+
     this.setState({
-      checked,
-      chipData
-    })
+      checked, chipData
+    }, () => this.props.setFilters(checked))
   }
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
     document.documentElement.scrollTop = 180;
 
+
   };
   handleDrawerOpenMobile = () => {
     this.setState({ openMobile: false, productDisplay: false });
     this.setState({ CardRadio: false });
+
+
 
   };
   handleDrawerCloseMobile = () => {
@@ -230,10 +155,11 @@ class PersistentDrawerLeft extends React.Component {
 
   render() {
 
-    const { classes } = this.props;
+    const { classes, data } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data;
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
+
 
     return (
 
@@ -249,6 +175,8 @@ class PersistentDrawerLeft extends React.Component {
             <div >
               <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '210px', maxHeight: '68vh', overflowY: 'scroll' }} className="SliderFilter scrollBarFilter" id="SliderFilter" >
                 <div >
+
+
 
                   <Paper
                     className={classes.drawer}
@@ -334,11 +262,12 @@ class PersistentDrawerLeft extends React.Component {
 
                                                   <ListItem key={row12} style={{ padding: "5px 25px" }}>   {/* button */}
                                                     <Checkbox
-                                                      checked={this.state.checked[row12] !== undefined ? this.state.checked[row12] : false}
-                                                      onChange={() => this.handleChange(row12, this.state.checked[row12] !== undefined ? !this.state.checked[row12] : true)}
+                                                      checked={this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? this.state.checked[row.replace(/\s/g, "")][row12] : false}
+                                                      onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
                                                       className="fil-submenu-icons"
                                                       value="checked"
                                                       color="primary"
+                                                      name={row.replace(/\s/g, "")}
                                                     />
                                                     <ListItemText>
                                                       <Typography variant=""
@@ -408,7 +337,7 @@ class PersistentDrawerLeft extends React.Component {
               className={check ? classes.productCardscheck : classes.productCardsuncheck}
 
             >
-              <ProductLayout />
+              <ProductLayout data={this.props.datas} />
 
             </div>}
         </div>
@@ -543,7 +472,7 @@ class PersistentDrawerLeft extends React.Component {
 
 
 
-PersistentDrawerLeft.propTypes = {
+Component.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
   filterdatas: PropTypes.object.isRequired

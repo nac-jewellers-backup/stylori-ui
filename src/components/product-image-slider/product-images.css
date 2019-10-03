@@ -127,6 +127,7 @@
         border: 1px solid #fdbac13b;
         align-items: center !important;
         outline: none !important;
+        margin-bottom: 5px;
     }
 
     .tabs-contants {

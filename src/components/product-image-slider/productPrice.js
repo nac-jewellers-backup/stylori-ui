@@ -35,7 +35,6 @@ const mobilecarousel = (props) => {
 };
 
 const Productprice = (props, anchorEl, handleClick, handleClose) => {
-    debugger
     const { classes, data } = props;
     const open = anchorEl;
     return (

@@ -1,6 +1,6 @@
 export const filter = [
-    'Offers', 'Availability', 'Prodect Type', 'Style', 'Material', 'Theme', 'Collection',
-    'Metal Color', 'Metal Purity', 'Occasion', 'No Of Stone', 'Gender', 'Stone Color', 'Stone Shap'
+    'Offers', 'Availability', 'Product Type', 'Style', 'Material', 'Theme', 'Collection',
+    'Metal Color', 'Metal Purity', 'Occasion', 'No Of Stone', 'Gender', 'Stone Color', 'Stone Shape'
 ];
 
 export const subFilter = {
@@ -13,7 +13,7 @@ export const subFilter = {
     'Availability': [
         '1 Day Shipping', '10 Day Shipping', '15 & Above Day Shipping', '5 Day Shipping', '7 Day Shipping',
     ],
-    'Prodect Type': [
+    'Product Type': [
         'Pendants', 'Earrings', 'Rings', 'Bangles', 'Bracelets', 'Nosepins',
     ],
     'Style': [
