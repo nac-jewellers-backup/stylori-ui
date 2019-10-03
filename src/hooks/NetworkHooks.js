@@ -1,6 +1,6 @@
 import React from 'react';
 import { NetworkContext } from '../context/NetworkContext';
-
+import { FieldsOnCorrectType } from 'graphql/validation/rules/FieldsOnCorrectType';
 export const useDummyRequest = (mapper) => {
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState(false);
@@ -14,7 +14,7 @@ export const useDummyRequest = (mapper) => {
         mapper()
             .then(data => {
                 setMapped(data);
-                console.info('MAPPER',data);
+                console.info('MAPPER', data);
             })
             .catch(err => setError(true));
         setLoading(false);
@@ -26,7 +26,7 @@ export const useDummyRequest = (mapper) => {
 }
 
 // HOOK to make network request
-export const useNetworkRequest = (url: string, body: string | object | null = null, mapper: ({ }) => Promise<{}> = null) => {
+export const useNetworkRequest = (urlSignin: string, body: string | object | null = null, mapper: ({ }) => Promise<{}> = null) => {
     const { NetworkCtx: { apiUrl } } = React.useContext(NetworkContext);
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState(false);
@@ -36,18 +36,24 @@ export const useNetworkRequest = (url: string, body: string | object | null = nu
 
     // PARSE FOR NETWORK REQUEST
     const method = data ? 'POST' : 'GET';
-    url = `${apiUrl}${url}`
+    let url = `${apiUrl}${urlSignin}`
     body = typeof body === "string" ? body : JSON.stringify(body);
-
-    React.useEffect(() => {
+    const makeFetch = () => {
         setLoading(true);
-        fetch(url, { method, body })
+        fetch(url, {
+            method, headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            }, body
+        })
             .then(res => {
-                setStatus({ status: res.status, statusText: res.statusText })
+                setStatus({ status: Response.status, statusText: res.message })
                 return res.json();
+
             })
             .then(resdata => {
                 setData(resdata);
+                localStorage.setItem(Object.keys(resdata), Object.values(resdata));
                 setLoading(false);
                 if (mapper) {
                     mapper(resdata)
@@ -58,8 +64,9 @@ export const useNetworkRequest = (url: string, body: string | object | null = nu
             .catch(err => {
                 setError(true);
                 setLoading(false);
+                console.log(Response.status)
             });
-    }, [url, data, body, method, mapper]);
+    }
 
-    return { loading, error, status, data, mapped }
+    return { loading, error, status, data, mapped, makeFetch }
 }

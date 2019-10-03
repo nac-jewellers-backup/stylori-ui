@@ -21,12 +21,17 @@ export const Input = props => {
     maxLength,
     minLength,
     helperText,
+    onChange,
+    onInvalid,
     ...rest
   } = props;
+
   const defaultStyle = {
     margin: "normal",
     variant: "outlined"
   };
+
+  const [invalid, setInvalid] = React.useState(false);
 
   // INTEGRATE THEME HERE
 
@@ -36,13 +41,26 @@ export const Input = props => {
     }
   };
 
+  const handleChange = e => {
+    setInvalid(false);
+    onChange(e);
+  }
+
+  const handleInvalid = e => {
+    e.preventDefault();
+    setInvalid(true);
+  }
+
   return (
     <Grid item xs={12}>
       <TextField
         inputProps={{ pattern, maxLength, minLength }}
         style={{ width: "100%" }}
-        helperText={<b>{helperText}</b>}
+        onInvalid={handleInvalid}
+        error={invalid}
+        helperText={invalid && <b>{helperText}</b>}
         onKeyPress={handleKeyPress}
+        onChange={handleChange}
         {...defaultStyle}
         {...rest}
       />

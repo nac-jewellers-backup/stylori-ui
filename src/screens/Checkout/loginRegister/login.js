@@ -1,82 +1,68 @@
 import React from 'react';
 import './loginRegisters.css'
-import { Container, Grid, Button } from '@material-ui/core';
+import {  Grid, Button } from '@material-ui/core';
 import { Input } from '../../../components/InputComponents/TextField/Input'
-import { Form } from '../../../components/Form/Form';
+
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
-class Login extends React.Component {
-    initialValues = {
-        mail: "",
-        password: "",
-    };
 
-    state = {
-        expanded: null,
-        values: this.initialValues,
-        errors: this.initialValues,
-    };
-    handleChange(event, name) {
-        this.setState({
-            [name]: event.target.value
-        })
-    }
+import useLogin from './useLogin';
 
-    handleSubmit = (e) => {
-        // e.preventDefault();
-    }
-    Logforms = (err, errorhandle, errors) => {
-        const { values } = this.state;
-        const { classes } = this.props;
-        return (
-            <div className='pt-sm'>
-                <form onSubmit={this.handleSubmit()}>
-                    <Grid container item xs={12} lg={6} >
-                        <h5 className={`title ${classes.normalfonts}`}>  I already have an account </h5>
-                        <Input
-                            margin="normal"
-                            variant="outlined"
-                            type="email"
-                            name="mail"
-                            value={this.state.mail}
-                            // error={this.state.mail ? this.state.mail : "**"}
-                            onChange={event => this.handleChange(event, 'mail')}
-                            placeholder="your-id@email.com"
-                        />
-                        <Input
-                            margin="normal"
-                            variant="outlined"
-                            type="password"
-                            name="Password"
-                            value={this.state.Password}
-                            // error={this.state.Password ? this.state.Password : "**"}
-                            placeholder="Your password"
-                            onChange={event => this.handleChange(event, 'Password')}
-                        />
-                        <div className='log-pas'>
-                            <span className={`pas-fr ${classes.normalfonts}`}>Forgot Password ?</span>
-                            <div className={`pas-fb ${classes.normalfonts}`}>
-                                <span >Sign me in using</span>
-                                <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img>
-                            </div >
-                        </div>
-                        <div className='login-butn'>
-                            <Button className='back-b' onClick={() => this.props.change()} >Back</Button>
-                            <Button className='apply-b' type="submit">Apply</Button>
-                        </div>
 
-                    </Grid>
-                </form>
-            </div>
-        )
-    }
-    render() {
-        return (
-            <Container>
-                {/* <Form children={this.Logforms} inputvalues={this.state.values} /> */}
-                {this.Logforms()}
-            </Container>
-        )
-    }
+const Login = (props) => {
+    return <LoginComponent  {...props} />
 }
+
+const LoginComponent = props => {
+    const { classes } = props;
+    const { values, handlers } = useLogin();
+
+    return (
+        <div className='pt-sm'>
+            <form action="javascript:void(0)" onSubmit={() => handlers.doLogin()}>
+                <Grid container item xs={12} lg={6} >
+                    <h5 className={`title ${classes.normalfonts}`}>  I already have an account </h5>
+                    <Input
+                        margin="normal"
+                        variant="outlined"
+                        type="email"
+                        name="email"
+                        value={values.username}
+                        // error={this.state.mail ? this.state.mail : "**"}
+                        onChange={e => handlers.handleChange('username', e.target.value)}
+                        required
+                        helperText="Username is Required"
+                        placeholder="your-id@email.com"
+                    />
+                    <Input
+                        margin="normal"
+                        variant="outlined"
+                        type="password"
+                        name="password"
+                        required
+                        value={values.password}
+                        // error={this.state.Password ? this.state.Password : "**"}
+                        helperText="Password is Required"
+                        placeholder="Your password"
+                        onChange={e => handlers.handleChange('password', e.target.value)}
+                    />
+                    <div className='log-pas'>
+                        <span className={`pas-fr ${classes.normalfonts}`}>Forgot Password ?</span>
+                        <div className={`pas-fb ${classes.normalfonts}`}>
+                            <span >Sign me in using</span>
+                            <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img>
+                        </div >
+                    </div>
+                    <div className='login-butn'>
+                        <Button className='back-b' onClick={() => this.props.change()} >Back</Button>
+                        <Button className='apply-b' type="submit">Apply</Button>
+                    </div>
+
+                </Grid>
+            </form>
+        </div>
+    )
+}
+
+
 export default withStyles(styles)(Login);
