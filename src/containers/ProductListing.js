@@ -47,7 +47,6 @@ const Components = props => {
       mapped = productList(data, CDN_URL);
     }
   }
-
   if (Object.keys(data).length === 0) content = <div></div>
   else content = <Stylori {...props} data={mapped} />
 
