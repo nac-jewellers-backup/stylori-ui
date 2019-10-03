@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { PRODUCTLIST, conditions } from 'queries/productListing';
 import { withRouter } from 'react-router-dom';
@@ -28,32 +28,69 @@ const Provider = (props) => {
         MetalPurity: null, Occasion: null, NoOfStones: null, Gender: null, stoneColor: null, stoneShape: null
     });
 
-    // const mappedQueryUrl = ( Object.keys(filters)).map(filterkeys=>{return(
-    //  filterkeys
-    // //  (Object.values(filters)).map(filterValues=>{return(
-    // //     filterkeys
+    debugger
 
-    // //  )})
-    //     )
-    // })
+        // const mappedQueryUrl = ( Object.keys(filters)).map(filterkeys=>{return(
+        //  filterkeys
+        // //  (Object.values(filters)).map(filterValues=>{return(
+        // //     filterkeys
+        // //  )})
+        //     )
+        // })
+
+
+    // console.log(mappedQueryUrl)
+
+    //--------------------- Filters url ----------------------
+    // let offers = []    
+    // let val ;
+    Object.keys(filters).map((k => {
+        // Object.keys(filters[k]) !== null && offers.push(Object.keys(filters[k]))
+        // console.log(Object.keys(filters[k]))
+        console.log(filters) 
+       }))
+    // var filterkeysObj = filtersKeys.map((k)=>{
+    //     return k
+    var offers = [];
     
-
-// console.log(mappedQueryUrl)
-
-//--------------------- Filters url ----------------------
-
-// Object.values(filters).map((val=>{
-//     let path = val
-//     if(val!==null) props.history.push({
-//         pathname: '/stylori',
-//         search: `${path}`,
+    const pathQueries = () => {
         
+    Object.keys(filters).map(val => {
+      
+        if(filters[val] !== null){
+           
+                Object.keys(filters[val]).map(res => Object.values(filters[val]) !== false &&  offers.push(res)  )
+            
+        }
+      
+     
+    })
+    props.history.push({
+        pathname: '/stylori',
+        search: `${offers}`,
+    })
+    }
         
-//       })
-// }))
-// debugger
+    // })  
+    
+   
+
+    // const pathQueries = () => {
+    //     if (val !== null && val.length !== 0) {
+    //         filterkeysObj.map((k)=>{
+    //             val = filters[k];
+    //         })
+    //         props.history.push({
+    //             pathname: '/stylori',
+    //             search: `${Object.keys(val)}`,
+    //         })
+    //     }
+    // }
+    useEffect(() => {
+        pathQueries()
+    }, [ filters ])
     // React.useEffect ( () => props.history.push(path))
-    
+
 
     const variables = {
         condition: conditions.generateCondition({ ...filters })
