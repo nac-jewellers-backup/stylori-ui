@@ -58,10 +58,15 @@ debugger
             const filter = filters[fk];
             const fv = Object.keys(filter);
             if(fv.length > 0){
-                const qt = `${fk}=${fv[0]}`;
-                queries.push(qt);
+                console.info('filter[fk[0]]', filter[fv[0]], filter, fv)
+                if(filter[fv[0]]){
+                    const qt = `${fk}=${fv[0]}`;
+                    queries.push(qt);
+                }
+                
             }
         })
+        console.info('queries',queries);
         const query = encodeURI(queries.join("&"));
         console.info('QUERYIES',query);
         props.history.push({

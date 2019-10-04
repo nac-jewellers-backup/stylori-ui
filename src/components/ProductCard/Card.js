@@ -1,65 +1,90 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
+import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles({
+
+const useStyles = makeStyles(theme=>({
   root: {
     display: "flex",
     justifyContent: "center"
   },
   card: {
-    minWidth: "100%",
-    maxWidth: "100%"
+    minWidth: "80%",
+    maxWidth: "90%",
+    maxHeight: 'auto',
+    borderRadius: '0 !important',
   },
   textDel: {
     color: "#828282"
   },
   priceClass: {
     // boxShadow: "0px 0px 5px #F699A3 inset",
-    display: "flex",
+    margin: 'auto',
+
+    marginBottom: '1px',
+    height: '50px',
+    display: 'flex',
     boxShadow: " 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
-    borderTopLeftRadius: "20%",
-    borderTopRightRadius: "20%",
+    borderRadius: '0 !important',
+    // borderTopLeftRadius: "20% !important",
+    // borderTopRightRadius: "20% !important",
     opacity: "1.2",
     "&:hover": {
       boxShadow: "40 0 11px rgba(33,33,33,.2)",
       cursor: "pointer"
       // opacity: "2"
-    }
+    },
+    [theme.breakpoints.down('sm')]: {
+      height: '60px',
+      paddingLeft: '10px'
+    },
+    '& div': {
+      padding: '0 !important'
+
+    },
+
     // border: "1px solid #F699A3"
   },
-  cardActionsIcon: {
-    padding: "0 !important",
-    paddingTop: "8px !important",
-    paddingRight: "8px !important",
-    paddingLeft: "8px !important"
-  },
-  cardContentImage: {
-    padding: "0 !important",
-    paddingTop: "8px !important",
-    paddingRight: "8px !important",
-    paddingLeft: "8px !important",
-    paddingBottom: "8px !important"
+  priceClassMain: {
+    margin: 'auto !important',
   },
   offerMainPrice: {
     color: "#ed1165",
-    fontSize:'1.3rem'
+    [theme.breakpoints.down('sm')]: {
+      fontSize:'0.9rem'
+    },
+    '& i':{
+      fontSize: "26px", paddingRight: "5px" ,
+      [theme.breakpoints.down('sm')]: {
+        fontSize:'0.9rem'
+      },
+    }
+
   },
   offerPrice: {
     fontSize: "0.8rem",
     lineHeight: 0,
     color: "#828282",
     fontWeight: "bold",
+    width: 'fit-content',
+    flex: 0.7,
+    textAlign: 'center',
     "&:span": {
       margin: 0
-    }
+    },
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'left',
+    },
   },
   youSave: {
-    fontSize: "0.7rem",
+    fontSize: "0.8rem",
     color: "#828282",
     "&:span": {
       margin: 0,
@@ -70,36 +95,60 @@ const useStyles = makeStyles({
     margin: "auto"
   },
   textPriceCardGrid: {
-    width: "260px",
-    padding: "2px"
+    display: 'flex',
+    width: "225px",
+  },
+  priceOffGridsub: {
+    flex: 1,
+    display: 'flex',
+  },
+  priceOffGrid: {
+    display: 'flex',
+    flexDirection: 'column'
   },
   youSavePrice: {
     color: "white",
     fontWeight: "bold",
     backgroundColor: "#ed1165",
     borderRadius: "20px",
-    width: "auto",
-    paddingLeft: "5px",
-    paddingRight: "5px"
-  }
-});
+    width: "40%",
+    flex: 0.7,
+    textAlign: 'center',
+    [theme.breakpoints.down('sm')]: {
+      flex: 0.3,
+    },
 
+  },
+  offerPricesMain: {
+    flex: 1,
+    display: "flex",
+  }
+}));
+const renderImages = (props, cardstate) => {
+  const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
+  // console.info('props.data.image[filterType]',props.data.image[filterType]);
+  return props.data.image[filterType].map(imgs => `${imgs.img} ${imgs.size}`).toString()
+}
+const renderImagesSrc = (props, cardstate) => {
+  const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
+  return props.data.image[filterType][6].img
+}
 export default function ImgMediaCard() {
   const classes = useStyles();
-  const [state, setState] = useState(false);
-  const imgbef =
-    "https://assets-cdn.stylori.com/276x276/images/product/SE0223/SE0223-1Y.jpg";
-    
-  const imgaft =
-    "https://assets-cdn.stylori.com/296x296/images/product/SP0185/HOVER-SP0185-2Y.jpg";
+  const [cardstate, setCardState] = React.useState({
+    hovered: false,
+    loaded: false,
+    dataLoaded: true
+  });
+
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
-        <CardActions className={classes.cardActionsIcon}>
+        <CardActions>
           <Grid container xs={12}>
             <Grid container item xs={6} justify="flex-start">
               <i
-                style={{ fontSize: "18px",color: "#f69cad", }}
+                style={{ fontSize: "18px" }}
                 className={`fa ${classes.colorLight}`}
               >
                 &#xf0d1;
@@ -108,7 +157,7 @@ export default function ImgMediaCard() {
 
             <Grid container item xs={6} justify="flex-end">
               <i
-                style={{ fontSize: "18px",color: "#f69cad", }}
+                style={{ fontSize: "18px" }}
                 className={`fa ${classes.colorLight}`}
               >
                 &#xf08a;
@@ -116,15 +165,13 @@ export default function ImgMediaCard() {
             </Grid>
           </Grid>
         </CardActions>
-        <CardContent className={classes.cardContentImage}>
+        <CardActionArea>
           <img
-            onMouseOver={() => setState(true)}
-            onMouseOut={() => setState(false)}
-            src={state ? imgaft : imgbef}
+            src="https://assets-cdn.stylori.com/276x276/images/product/SR0480/SR0480-1W.jpg"
             alt="welcome"
-            style={{ width: "100%" }}
+            width="100%" height="auto"
           />
-        </CardContent>
+        </CardActionArea>
         <Card className={classes.priceClass}>
           <CardContent className={classes.cardContent}>
             <Grid
@@ -134,24 +181,24 @@ export default function ImgMediaCard() {
               className={classes.textPriceCardGrid}
               alignItems="center"
             >
-              <Grid container item xs={6} alignItems="center">
+              <Grid container item xs={12} sm={12} md={7} lg={7} xl={7} alignItems="center" className={`${classes.priceClassMain}`}>
                 <Typography
-                  variant="subtitle1"
-                  component="div"
+                  variant="h5"
+                  component="h5"
                   className={classes.offerMainPrice}
                 >
                   <i
-                    style={{ paddingRight: "5px" }}
+                    
                     className="fa"
                   >
                     &#xf156;
                   </i>
-                  17,000000
+                  17,000
                 </Typography>
               </Grid>
               {/*  */}
-              <Grid item xs={6}>
-                <Grid container item xs={12} alignItems="center">
+              <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={`${classes.priceOffGrid}`}>
+                <Grid container item xs={12} alignItems="center" className={`${classes.priceOffGridsub}`}>
                   <Typography
                     gutterBottom
                     variant="body1"
@@ -162,26 +209,26 @@ export default function ImgMediaCard() {
                       <i style={{ fontSize: "12px" }} className="fa">
                         &#xf156;
                       </i>
-                      &nbsp; 20,00000
+                      &nbsp; 20,000
                     </del>
                   </Typography>
                 </Grid>
-                <Grid container item xs={12}>
-                  <Typography
+                <Grid container item xs={12} className={`${classes.offerPricesMain}`}>
+                  {/* <Typography
                     gutterBottom
                     variant="body1"
                     component="span"
                     className={classes.youSave}
                   >
                     you save &nbsp;
-                  </Typography>
+                  </Typography> */}
                   <Typography
                     gutterBottom
                     variant="body1"
                     component="span"
                     className={`${classes.youSave} ${classes.youSavePrice}`}
                   >
-                    2000000
+                    20% Off
                   </Typography>
                 </Grid>
               </Grid>

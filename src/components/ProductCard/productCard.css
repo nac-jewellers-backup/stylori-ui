@@ -70,6 +70,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     overflow: hidden;
+    /* background-color: whitesmoke; */
   }
   .productLayoutGridList{
     width: 100%;
