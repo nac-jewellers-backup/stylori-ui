@@ -24,19 +24,18 @@ export const FilterOptionsConsumer = FilterOptionsContext.Consumer;
 const Provider = (props) => {
     // const  productId  = '';
     const [filters, setFilters] = React.useState({
-        Offers: null, Availability: null, ProductType: null, style: null, material: null, Theme: null, Collection: null, metalColor: null,
-        MetalPurity: null, Occasion: null, NoOfStones: null, Gender: null, stoneColor: null, stoneShape: null
+        Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, metalColor: {},
+        MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}
     });
 
-    debugger
 
-        // const mappedQueryUrl = ( Object.keys(filters)).map(filterkeys=>{return(
-        //  filterkeys
-        // //  (Object.values(filters)).map(filterValues=>{return(
-        // //     filterkeys
-        // //  )})
-        //     )
-        // })
+    // const mappedQueryUrl = ( Object.keys(filters)).map(filterkeys=>{return(
+    //  filterkeys
+    // //  (Object.values(filters)).map(filterValues=>{return(
+    // //     filterkeys
+    // //  )})
+    //     )
+    // })
 
 
     // console.log(mappedQueryUrl)
@@ -47,33 +46,38 @@ const Provider = (props) => {
     Object.keys(filters).map((k => {
         // Object.keys(filters[k]) !== null && offers.push(Object.keys(filters[k]))
         // console.log(Object.keys(filters[k]))
-        console.log(filters) 
-       }))
+        console.log('FILTERS',filters)
+    }))
     // var filterkeysObj = filtersKeys.map((k)=>{
     //     return k
     var offers = [];
-    
+debugger
     const pathQueries = () => {
-        
-    Object.keys(filters).map(val => {
-      
-        if(filters[val] !== null){
-           
-                Object.keys(filters[val]).map(res => Object.values(filters[val]) !== false &&  offers.push(res)  )
-            
-        }
-      
-     
-    })
-    props.history.push({
-        pathname: '/stylori',
-        search: `${offers}`,
-    })
+        let queries = []
+        Object.keys(filters).map(fk => {
+            const filter = filters[fk];
+            const fv = Object.keys(filter);
+            if(fv.length > 0){
+                console.info('filter[fk[0]]', filter[fv[0]], filter, fv)
+                if(filter[fv[0]]){
+                    const qt = `${fk}=${fv[0]}`;
+                    queries.push(qt);
+                }
+                
+            }
+        })
+        console.info('queries',queries);
+        const query = encodeURI(queries.join("&"));
+        console.info('QUERYIES',query);
+        props.history.push({
+            pathname: '/stylori',
+            search: query,
+        })
     }
-        
+
     // })  
-    
-   
+
+
 
     // const pathQueries = () => {
     //     if (val !== null && val.length !== 0) {
@@ -87,8 +91,9 @@ const Provider = (props) => {
     //     }
     // }
     useEffect(() => {
+        console.info('FILTERS',filters);
         pathQueries()
-    }, [ filters ])
+    }, [filters])
     // React.useEffect ( () => props.history.push(path))
 
 

@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCards from "./ProductCards.js";
+import ProductCards from "./ProductCards";
 import { useGraphql } from "../../hooks/GraphqlHook.js";
 import productlistmapper from "../../mappers/productlist.js";
 import { productlist as productlistquery } from "../../queries/index.js";

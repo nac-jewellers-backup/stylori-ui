@@ -12,13 +12,15 @@ import { CDN_URL } from 'config';
 const styles = theme => ({
   gridlistmain: {
     [theme.breakpoints.down('sm')]: {
-      margin: '0px !important'
+      margin: '0px !important',
+      marginTop: '10px !important'
     }
   },
   gridlistmainviewmore: {
     width: '100%',
     textAlign: 'center',
-    margin: '40px',
+    marginTop: '40px',
+    marginBottom: '40px',
     [theme.breakpoints.down('sm')]: {
       marginBottom: '75px',
     },
@@ -36,7 +38,8 @@ const styles = theme => ({
       backgroundColor: '#3a4578',
       opacity: '0.8'
     }
-  }
+  },
+  
 
 });
 
@@ -82,11 +85,11 @@ class ProductLayout extends React.Component {
     // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
     return (
       <div className={`productLayoutRoot `} style={this.props.styles}>
-        <GridList cellHeight={"auto"} className={`productLayoutGridList ${classes.gridlistmain}`} cols={this.state.colSize} style={{ marginLeft: '12px' }}>
+        <GridList cellHeight={"auto"} className={`productLayoutGridList ${classes.gridlistmain}`} cols={this.state.colSize} style={{margin:'25px !important'}}>
           {
             data.map(tile => {
               return (
-                <GridListTile key={tile.title} cols={tile.cols || 1} style={{ height: 'auto', paddingTop: '2%' }} >
+                <GridListTile key={tile.title} cols={tile.cols || 1} style={{ height: 'auto', padding:'0 !important', marginBottom:'10px' }} className={`${classes.liClass}`} >
 
                   {/* <ProductCard data={tile} /> */}
                   <ProductCards data={tile} />

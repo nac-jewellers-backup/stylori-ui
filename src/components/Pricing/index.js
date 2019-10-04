@@ -7,6 +7,7 @@ import './pricing.css'
 export default function Pricing(props) {
     const classes = styles();
     let path = window.location.pathname.split('/').pop();
+    debugger
     return (
         <div>
             {
@@ -14,9 +15,10 @@ export default function Pricing(props) {
                     <Typography
                         variant="caption"
                         component="div"
-                        className={`pricing ${props.title != null & props.title !== '' ? '' : 'shine'}`}
+                        className={`pricing ${props.title != null & props.title !== '' ? '' : 'shine'} ${path == 'stylori'&& 'pricingTitle'}`}
                     >
                         {/* Dazzling Gold Bloom Diamond Pendant */}
+                        
                         {props.title}
                     </Typography>
                     :
@@ -29,7 +31,7 @@ export default function Pricing(props) {
                     className={`pricing-p${props.price != null & props.price !== '' ? '' : 'shine'} ${classes.deletePrice} ${classes.dis}`}
                     component="p"
                 >
-                    <del>₹&nbsp;{props.price}</del>
+                    <del>₹&nbsp;{Math.round(props.price)}</del>
                 </Typography>
                 <Typography
 
@@ -39,7 +41,7 @@ export default function Pricing(props) {
 
                 >
                     {/* ₹&nbsp;{props.offerPrice} */}
-                    {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(props.offerPrice)}
+                    {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(Math.round(props.offerPrice))}
                 </Typography>
             </Typography>
             {/*  */}
