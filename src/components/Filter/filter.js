@@ -33,8 +33,8 @@ class Component extends React.Component {
       openMobile: true,
       CardRadio: false,
       checked: {
-        Offers: [], Availability: [], ProductType: [], Style: [], Material: [], Theme: [], Collection: [], MetalColor: [], MetalPurity: [], Occasion: [],
-        NoOfStone: [], Gender: [], StoneColor: [], StoneShape: []
+        Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
+        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {}
       },
 
       selected: '',
