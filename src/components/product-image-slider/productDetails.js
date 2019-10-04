@@ -18,37 +18,39 @@ class ProductDetails extends React.Component {
         expanded: null
     };
 
-    productsDetails = () => {
-        const { data } = this.props;
+    productsDetails = (data) => {
         const { classes } = this.props;
         return (
             <div>
                 <Grid container spacing={12} style={{ paddingRight: "20px" }}>
-                    {data[0].productsDetails.map(val => (
-                        <>
-                            <div className='overall-boxz'>
-                                <div className='overall-bo'>
-                                    <span key={val.name} className={`product-details ${classes.normalfonts}`} > {val.header}</span>
-                                    <hr class="bottom-line"></hr>
-                                    <>{
-                                        val.namedetail !== undefined && val.namedetail.map(res =>
-                                            <Grid container item xs={12} >
-                                                <Grid xs={6}>
-                                                    <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
-                                                        <span style={{ fontSize: "12px" }}> {res.name}</span>
-                                                    </ListItemText>
+                    {data[0].productsDetails.map(val => {
+                        debugger
+                        return ((data[0].productType !== "Earring" && val.header === 'Gemstone Details')
+                            || (data[0].productType === "Earring" && val.header.trim() === 'Diamond Details')) ? false :
+                            <>
+                                <div className='overall-boxz'>
+                                    <div className='overall-bo'>
+                                        <span key={val.name} className={`product-details ${classes.normalfonts}`} > {val.header}</span>
+                                        <hr class="bottom-line"></hr>
+                                        <>{
+                                            val.namedetail !== undefined && val.namedetail.map(res =>
+                                                <Grid container item xs={12} >
+                                                    <Grid xs={6}>
+                                                        <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
+                                                            <span style={{ fontSize: "12px" }}> {res.name}</span>
+                                                        </ListItemText>
+                                                    </Grid>
+                                                    <Grid xs={6}>
+                                                        <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
+                                                            <span style={{ fontSize: "12px" }}> {res.details}</span>
+                                                        </ListItemText>
+                                                    </Grid>
                                                 </Grid>
-                                                <Grid xs={6}>
-                                                    <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
-                                                        <span style={{ fontSize: "12px" }}> {res.details}</span>
-                                                    </ListItemText>
-                                                </Grid>
-                                            </Grid>
-                                        )}</>
+                                            )}</>
+                                    </div>
                                 </div>
-                            </div>
-                        </>
-                    ))}
+                            </>
+                    })}
                 </Grid>
 
                 <Grid container spacing={12} style={{ paddingRight: "20px" }}>
@@ -136,10 +138,13 @@ class ProductDetails extends React.Component {
         });
     };
     render() {
+        const { data } = this.props;
+        debugger
         return (
             <div>
                 <Hidden smDown>
-                    {this.productsDetails()}
+                    {this.productsDetails(data)}
+
                 </Hidden>
 
                 <Hidden mdUp>

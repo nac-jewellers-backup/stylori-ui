@@ -28,7 +28,6 @@ class ProductImageZoom extends React.Component {
   }
   state = {
     // backgroundImage: `url(${src})`,
-
     backgroundPosition: '0% 0%',
     showimage: this.props.data[0].fadeImages[0]
   }
@@ -115,7 +114,7 @@ class ProductImageZoom extends React.Component {
     var img = document.getElementById("imgZoom");
     var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
     var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
-    element.style.backgroundPosition = (-posX - 80) + "px " + (-posY - 80) + "px";
+    element.style.backgroundPosition = (-posX * 4) + "px " + (-posY * 4) + "px";
   }
 
   zoomOut = () => {

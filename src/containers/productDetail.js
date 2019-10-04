@@ -60,7 +60,7 @@ class ProductDetail extends Component {
             <Grid container spacing={12}>
               <Grid item xs={6}>
                 <ProductImageZoom data={this.props.data} />
-              </Grid>
+              </Grid> 
               <Grid item xs={6}>
                 <div className='overall-box'>
                   <ProductPrice data={this.props.data} />  {/*res...........*/}

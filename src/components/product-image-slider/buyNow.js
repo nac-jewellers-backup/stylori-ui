@@ -20,7 +20,9 @@ const inputsearch = (props) => {
     const { data } = props;
     const { classes } = props;
     return (
-        <div style={{ marginTop: "25px", padding: "0 10px" }}>
+        <div style={{marginTop: "12px", paddingRight: "20px",
+            paddingLeft: "15px"
+        }}>
             {data[0].ProductContactNum.map(val =>
                 <Grid container spacing={12}>
                     <Grid item xs={8} lg={4} sm={8}>
@@ -114,7 +116,7 @@ class PriceBuynow extends React.Component {
                 <Hidden mdUp>
                     {data[0].ProductContactNum.map(val =>
                         <div style={{ marginTop: "25px" }}>
-                            <ProductPrice />
+                            <ProductPrice data={this.props.data} />
                             <Container>
                                 <Grid container spacing={12} style={{ marginTop: "10px" }}>
                                     <Grid item xs={6} className="content">
@@ -142,7 +144,7 @@ class PriceBuynow extends React.Component {
                                     <hr class="bottom-line product-inform-ation"></hr>
                                 </Grid>
                             </Container>
-                            <PriceTabs />
+                            <PriceTabs data={this.props.data} />
 
                             {inputsearch(this.props)}
 

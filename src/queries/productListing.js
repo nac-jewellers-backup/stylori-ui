@@ -1,11 +1,12 @@
 
 export const PRODUCTLIST = `query fetchProductDetails($condition: ProductListCondition) {
-  allProductLists(condition: $condition, first: 10) {
+  allProductLists(condition: $condition, last:50) {
     nodes {
       productName
       productId
       defaultSize
       sizeVarient
+      productType
       productDiamondsByProductSku {
         nodes {
           diamondClarity

@@ -27,7 +27,7 @@ const mobilecarousel = (props) => {
         <Container>
             <div style={{ height: '200px', width: "auto" }}>
                 <Slideshow class='responseve-carousel testingcur' imgClass='responseve-carousel-img'
-                    fadeImages={data.fadeImages} dataCarousel={dataCarousel} />
+                    fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
             </div>
 
         </Container>
@@ -35,7 +35,8 @@ const mobilecarousel = (props) => {
 };
 
 const Productprice = (props, anchorEl, handleClick, handleClose) => {
-    const { classes, data } = props;
+    const { data } = props;
+    const { classes } = props;
     const open = anchorEl;
     return (
         <div>
@@ -106,8 +107,8 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
 
                     <div className={classes.width} style={{ padding: "0 10px" }}>
                         <Pricing
-                            price={val.price}
-                            offerPrice={val.offerPrice}
+                            price={data[0].price[0]}
+                            offerPrice={data[0].offerPrice[0]}
                             offerDiscount={val.offerDiscount}
                         >
                             <Grid container spacing={12}>
@@ -151,7 +152,7 @@ class ProductPrice extends Component {
 
     render() {
         const { anchorEl } = this.state
-    return (
+        return (
             <div>
                 <Hidden smDown>
                     {Productprice(

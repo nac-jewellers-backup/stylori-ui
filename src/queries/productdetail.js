@@ -1,12 +1,19 @@
 export const PRODUCTDETAILS = `query fetchProductDetails($condition: ProductListCondition) {
-  allProductLists(condition: $condition, first: 10) {
+  allProductLists(condition: $condition, last:50) {
     nodes {
       productName
       productId
       defaultSize
       sizeVarient
       colourVarient
-       productDiamondsByProductSku {
+      defaultWeight
+      productType
+      productImagesByProductId {
+        nodes {
+          imageUrl
+        }
+      }
+      productDiamondsByProductSku {
         nodes {
           diamondClarity
           diamondColour
@@ -17,13 +24,28 @@ export const PRODUCTDETAILS = `query fetchProductDetails($condition: ProductList
           stoneCount
         }
       }
-      transSkuListsByProductId {
+      transSkuListsByProductId (condition: {isdefault: true}){
         nodes {
           skuSize
           purity
           markupPrice
           sellingPrice
+          transSkuDescriptionsBySkuId {
+            nodes {
+              skuDescription
+            }
+          }
         }
+      }
+      productGemstonesByProductSku {
+        nodes {
+          gemstoneType
+          gemstoneSize
+          gemstoneShape
+          gemstoneSetting
+          productSku
+          stoneCount
+         }
       }
     }
   }
