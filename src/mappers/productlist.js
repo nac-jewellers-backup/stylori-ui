@@ -10,8 +10,8 @@ export default function (data, cdnUrl) {
         mapperdata = [];
     }
     const _format = mapperdata.map(k =>  ({
-        offerPrice: "23000.10",
-        price: "29000.0",
+        price: k.transSkuListsByProductId.nodes.markupPrice ? k.transSkuListsByProductId.nodes.markupPrice : "989.90890",
+        offerPrice: k.transSkuListsByProductId.nodes.sellingPrice ? k.transSkuListsByProductId.nodes.sellingPrice : "78878.90890",
         title: k.productName,
         save: '5999.9',
         image: {

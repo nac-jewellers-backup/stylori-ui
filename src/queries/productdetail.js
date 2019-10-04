@@ -1,8 +1,30 @@
 export const PRODUCTDETAILS = `query fetchProductDetails($condition: ProductListCondition) {
-  allProductLists(condition: $condition) {
+  allProductLists(condition: $condition, first: 10) {
     nodes {
       productName
       productId
+      defaultSize
+      sizeVarient
+      colourVarient
+       productDiamondsByProductSku {
+        nodes {
+          diamondClarity
+          diamondColour
+          diamondType
+          stoneWeight
+          diamondShape
+          diamondSettings
+          stoneCount
+        }
+      }
+      transSkuListsByProductId {
+        nodes {
+          skuSize
+          purity
+          markupPrice
+          sellingPrice
+        }
+      }
     }
   }
 }
@@ -23,17 +45,17 @@ export const PRODUCTDETAILS = `query fetchProductDetails($condition: ProductList
 //   }
 // }
 export const conditions = {
-  
+
   productId: (id) => ({
     "condition": {
       "productId": id
-    
+
     }
-    
+
   }),
-  
+
   generateCondition: (filters) => {
-    
+
     let condition = {};
     const filterKeys = Object.keys(filters);
     filterKeys.map(k => {

@@ -88,21 +88,21 @@ class FilterHeader extends Component {
                             </div>
                         </Toolbar>
                     </Grid>
-                        <div className="header-chips Chip">
-                            {chips.map(data => {
-                                return (
-                                    <Chip
-                                        className="header-chips-text"
-                                        key={data.key}
-                                        label={data.label}
-                                        onClick={this.props.click}
-                                        avatar={data.label ?
-                                            <i className="search-choice-close" class="fa fa-times-circle" aria-hidden="true"></i>
-                                            : ""}
-                                    />
-                                );
-                            })}
-                        </div>
+                    <div className="header-chips Chip">
+                        {chips.map(data => {
+                            return (
+                                <Chip
+                                    className="header-chips-text"
+                                    key={data.key}
+                                    label={data.label}
+                                    onClick={this.props.click}
+                                    avatar={data.label ?
+                                        <i className="search-choice-close" class="fa fa-times"></i>
+                                        : ""}
+                                />
+                            );
+                        })}
+                    </div>
                     <Grid item lg={2}>
                         <div className="fil-drawer-head-sort">
                             <Typography variant="h6" noWrap
@@ -120,7 +120,7 @@ class FilterHeader extends Component {
                             right: "15px", top: "65px", boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 7px'
                         }}>
                             <Collapse in={this.state.expanded} timeout="auto">
-                               <CardRadioButton data={sortOptions} />
+                                <CardRadioButton data={sortOptions} />
                             </Collapse>
                         </div>
                     </Grid>

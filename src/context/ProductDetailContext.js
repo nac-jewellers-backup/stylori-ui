@@ -7,7 +7,7 @@ const initialCtx = {
         filters: { ringSize: null, metalPurity: null, diamondClarity: null },
         loading: false, error: false, data: []
     },
-    setFilters: () => null
+    setFilters: () => { }
 }
 
 export const ProductDetailContext = React.createContext(initialCtx);
@@ -22,6 +22,17 @@ export const ProductDetailProvider = (props) => {
         diamondClarity: null,
         productId: 'SE1612'
     });
+    // const mappedUrl = (Object.keys(filters)).map(filterkeys => {
+    //     return (filterkeys)
+    // })
+    // Object.values(mappedUrl).map((val => {
+    //     let path = val
+    //     if (val !== null) props.history.push({
+    //         pathname: '/stylori',
+    //         search: `${path}`,
+
+    //     })
+    // }))
     const variables = {
         condition: conditions.generateCondition({ ...filters, productId })
     };

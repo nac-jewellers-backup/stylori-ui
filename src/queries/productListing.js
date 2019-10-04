@@ -1,18 +1,33 @@
 
-export const PRODUCTLIST = `
-query fetchProductDetails($condition: ProductListCondition){
+export const PRODUCTLIST = `query fetchProductDetails($condition: ProductListCondition) {
   allProductLists(condition: $condition, first: 10) {
     nodes {
       productName
       productId
-      productSeries
-      productType
-      width
+      defaultSize
+      sizeVarient
+      productDiamondsByProductSku {
+        nodes {
+          diamondClarity
+          diamondColour
+          diamondType
+          stoneWeight
+          diamondShape
+          diamondSettings
+          stoneCount
+        }
+      }
+      transSkuListsByProductId {
+        nodes {
+          skuSize
+          purity
+          markupPrice
+          sellingPrice
+        }
+      }
     }
   }
 }
-
-  
 `
 
 
