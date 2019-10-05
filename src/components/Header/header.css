@@ -270,9 +270,9 @@
   display: flex;
   justify-content: flex-end;
 }
-.animations{
+/* .animations{
   transition: width .35s ease-in-out !important;
-}
+} */
 .listHovers{
   color:red
 }
