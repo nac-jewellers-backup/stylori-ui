@@ -15,3 +15,20 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+@media screen and (max-width: 600px) {
+    .pricingTitle{
+        white-space: nowrap; 
+        width: 80px; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+ 
+}
+@media screen and (max-width: 900px) {
+    .pricingTitle{
+        white-space: nowrap; 
+        width: 130px; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
