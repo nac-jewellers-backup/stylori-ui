@@ -287,7 +287,7 @@ sizes="(max-width: 320px) 320w,
                     {/* 20% Off */}
                     {Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice))/Math.round(props.data.price))*100) + '% off' }
 
-                  </Typography>
+                  </Typography> 
                 </Grid>
               </Grid>
               <Hidden smDown>
