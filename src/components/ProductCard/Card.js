@@ -86,6 +86,9 @@ const useStyles = makeStyles(theme=>({
     },
     [theme.breakpoints.down('sm')]: {
       textAlign: 'left',
+      padding:'0 !important',
+      paddingTop:'4px !important',
+      paddingBottom:'4px !important'
     },
   },
   youSave: {
