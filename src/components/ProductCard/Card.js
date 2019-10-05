@@ -284,7 +284,9 @@ sizes="(max-width: 320px) 320w,
                     component="span"
                     className={`${classes.youSave} ${classes.youSavePrice}`}
                   >
-                    20% Off
+                    {/* 20% Off */}
+                    {Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice))/Math.round(props.data.price))*100) + '% off' }
+
                   </Typography>
                 </Grid>
               </Grid>
