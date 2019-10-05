@@ -1,7 +1,9 @@
 import { resolutions } from "utils";
 // const baseUi = "https://assets-cdn.stylori.com/";
-const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
-
+const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${(url.imageUrl)}` }))
+let valuesinjectUrl = (imageUrl, cdnUrl) => injectUrl(imageUrl, cdnUrl) 
+let placeImages = (placeImage, cdnUrl) => placeImage.find(filterdata => {return filterdata.ishover === false ? valuesinjectUrl(filterdata.imageUrl, cdnUrl) : ''} );
+let hoverImage = (placeImage, cdnUrl) => placeImage.find(filterdata => {return filterdata.ishover === true ? valuesinjectUrl(filterdata.imageUrl, cdnUrl) : ''} );
 export default function (data, cdnUrl) {
     debugger
     let mapperdata = [];
@@ -16,8 +18,8 @@ export default function (data, cdnUrl) {
         title: k.productName,
         save: '5999.9',
         image: {
-            placeImage: injectUrl("/images/product/SE0775/SE0775-1Y.jpg", cdnUrl),
-            hoverImage: injectUrl("/images/product/SE0775/HOVER-SE0775-2Y.jpg", cdnUrl)
+            placeImage: injectUrl(placeImages(k.productImagesByProductId.nodes), cdnUrl),
+            hoverImage: injectUrl(hoverImage(k.productImagesByProductId.nodes), cdnUrl)
         },
         productId:k.productId
         
@@ -26,3 +28,4 @@ export default function (data, cdnUrl) {
     return _format;
 }
 
+// injectUrl("/images/product/SE0775/SE0775-1Y.jpg", cdnUrl)
