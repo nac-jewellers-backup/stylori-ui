@@ -3,6 +3,7 @@ import { resolutions } from "utils";
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 
 export default function (data, cdnUrl) {
+    debugger
     let mapperdata = [];
     try {
         mapperdata = data.data.allProductLists.nodes;
@@ -10,8 +11,8 @@ export default function (data, cdnUrl) {
         mapperdata = [];
     }
     const _format = mapperdata.map(k =>  ({
-        price: k.transSkuListsByProductId.nodes.markupPrice ? k.transSkuListsByProductId.nodes.markupPrice : "989.90890",
-        offerPrice: k.transSkuListsByProductId.nodes.sellingPrice ? k.transSkuListsByProductId.nodes.sellingPrice : "78878.90890",
+        price: k.transSkuListsByProductId.nodes[0].discountPrice === null ? 15343 : k.transSkuListsByProductId.nodes[0].discountPrice,
+        offerPrice: k.transSkuListsByProductId.nodes[0].markupPrice === null ? 13223 : k.transSkuListsByProductId.nodes[0].markupPrice ,
         title: k.productName,
         save: '5999.9',
         image: {

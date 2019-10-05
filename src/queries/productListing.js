@@ -24,6 +24,7 @@ export const PRODUCTLIST = `query fetchProductDetails($condition: ProductListCon
           purity
           markupPrice
           sellingPrice
+          discountPrice
         }
       }
       productImagesByProductId {

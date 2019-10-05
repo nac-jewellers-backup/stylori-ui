@@ -8,6 +8,8 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { Link } from 'react-router-dom'
+import { Hidden } from "@material-ui/core";
 
 
 const useStyles = makeStyles(theme=>({
@@ -29,6 +31,7 @@ const useStyles = makeStyles(theme=>({
     margin: 'auto',
 
     marginBottom: '1px',
+    paddingTop: '10px',paddingBottom: '10px',paddingLeft: '10px',
     height: '50px',
     display: 'flex',
     boxShadow: " 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
@@ -43,7 +46,8 @@ const useStyles = makeStyles(theme=>({
     },
     [theme.breakpoints.down('sm')]: {
       height: '60px',
-      paddingLeft: '10px'
+      padding: '0 !important',
+      paddingLeft: '10px !important'
     },
     '& div': {
       padding: '0 !important'
@@ -76,6 +80,7 @@ const useStyles = makeStyles(theme=>({
     width: 'fit-content',
     flex: 0.7,
     textAlign: 'center',
+    padding:5,
     "&:span": {
       margin: 0
     },
@@ -110,18 +115,41 @@ const useStyles = makeStyles(theme=>({
     color: "white",
     fontWeight: "bold",
     backgroundColor: "#ed1165",
-    borderRadius: "20px",
+    borderRadius: "3px",
     width: "40%",
     flex: 0.7,
     textAlign: 'center',
     [theme.breakpoints.down('sm')]: {
       flex: 0.3,
+      borderRadius: "3px",
+      fontWeight: "normal",
+      fontSize:'0.7rem'
+
     },
 
   },
   offerPricesMain: {
     flex: 1,
     display: "flex",
+  },
+  titles:{
+    fontSize:'0.7rem',
+    whiteSpace: 'nowrap', 
+  flex:0.6,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    [theme.breakpoints.down('sm')]: {
+      whiteSpace: 'nowrap', 
+      width: '80px', 
+      overflow: 'hidden',
+      textOverflow: 'ellipsis'
+    },
+    [theme.breakpoints.down('md')]: {
+      whiteSpace: 'nowrap', 
+      width: '130px',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis'
+    }
   }
 }));
 const renderImages = (props, cardstate) => {
@@ -133,7 +161,8 @@ const renderImagesSrc = (props, cardstate) => {
   const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
   return props.data.image[filterType][6].img
 }
-export default function ImgMediaCard() {
+export default function ImgMediaCard(props) {
+  debugger
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
     hovered: false,
@@ -165,11 +194,33 @@ export default function ImgMediaCard() {
             </Grid>
           </Grid>
         </CardActions>
+        <Link to={{pathname:`/pricingPage/${props.data.productId}`, state: {
+    data:props.data.productId}}} style={{textDecoration:'none'}} >
         <CardActionArea>
-          <img
-            src="https://assets-cdn.stylori.com/276x276/images/product/SR0480/SR0480-1W.jpg"
-            alt="welcome"
-            width="100%" height="auto"
+       
+        <img 
+srcset={renderImages(props, cardstate)}
+sizes="(max-width: 320px) 320w,
+            (max-width: 480px) 375w,
+            (max-width: 600px) 600w,
+            (max-width: 992px) 768w,
+            (max-width: 1440px) 1440w,
+            (max-width: 2560px) 2560w,
+            2560w
+           
+"
+     alt=""
+
+          src = {renderImagesSrc(props, cardstate)}
+          title={props.data.title}
+          onMouseOver={() => {
+            setCardState({ ...cardstate, hovered: !cardstate.hovered });
+          }}
+          onMouseOut={() => {
+            setCardState({ ...cardstate, hovered: !cardstate.hovered });
+          }}
+          style={{width:'100%',height:'100%'}}
+          className={`${props.data===''?'shine':''}`}
           />
         </CardActionArea>
         <Card className={classes.priceClass}>
@@ -183,17 +234,18 @@ export default function ImgMediaCard() {
             >
               <Grid container item xs={12} sm={12} md={7} lg={7} xl={7} alignItems="center" className={`${classes.priceClassMain}`}>
                 <Typography
-                  variant="h5"
-                  component="h5"
+                  variant="h6"
+                  component="h6"
                   className={classes.offerMainPrice}
                 >
-                  <i
+                  {/* <i
                     
                     className="fa"
                   >
                     &#xf156;
-                  </i>
-                  17,000
+                  </i> */}
+                  {/* {Math.round(props.data.offerPrice)} */}
+                  {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.offerPrice))}
                 </Typography>
               </Grid>
               {/*  */}
@@ -206,10 +258,11 @@ export default function ImgMediaCard() {
                     className={classes.offerPrice}
                   >
                     <del>
-                      <i style={{ fontSize: "12px" }} className="fa">
+                      {/* <i style={{ fontSize: "12px" }} className="fa">
                         &#xf156;
                       </i>
-                      &nbsp; 20,000
+                      &nbsp;  */}
+                      {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0}).format(Math.round(props.data.price))}
                     </del>
                   </Typography>
                 </Grid>
@@ -232,9 +285,22 @@ export default function ImgMediaCard() {
                   </Typography>
                 </Grid>
               </Grid>
+              <Hidden smDown>
+              <Grid container xs={12}>
+                <Grid item xs={12} className={`${classes.titles}`}>
+                  <Typography  variant="body1"
+                    component="span" className={`${classes.titles}`}>
+                    {props.data.title}
+                    </Typography>
+                
+                </Grid>
+              </Grid>
+              </Hidden>
+             
             </Grid>
           </CardContent>
         </Card>
+        </Link>
       </Card>
     </div>
   );
