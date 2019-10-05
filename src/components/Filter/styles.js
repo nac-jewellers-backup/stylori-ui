@@ -72,7 +72,7 @@ const styles = theme => ({
     },
     productCardscheck:{
       width:'80%',
-      backgroundColor:'whitesmoke',
+      // backgroundColor:'whitesmoke',
    
       [theme.breakpoints.down('md')]: {
         width: '100% !important'

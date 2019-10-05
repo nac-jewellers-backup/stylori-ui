@@ -386,10 +386,13 @@ class Component extends React.Component {
                           <Checkbox
                             value="checked"
                             color="primary"
-                            checked={this.state.checked[row] !== undefined ? this.state.checked[row] : false}
-                            onChange={() => this.handleChange(row, this.state.checked[row] !== undefined ? !this.state.checked[row] : true)}
+                            checked={this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] !== undefined ? this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] : false}
+                          
+                            onChange={(e) => this.handleChange(row, this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] !== undefined ? !this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] : true, e)}
+                            // onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
                             icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
                             checkedIcon={<CheckBoxIcon fontSize="small" />}
+                            name={this.state.filtercheck.replace(/\s/g, "")}
                           />
                           <ListItemText>
                             <Typography variant=""

@@ -55,13 +55,15 @@ const handleClick = (name) => {
 }
 
 const renderImages = (props, cardstate) => {
+  debugger
     const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
     // console.info('props.data.image[filterType]',props.data.image[filterType]);
     return props.data.image[filterType].map(imgs=> `${imgs.img} ${imgs.size}`).toString()
+   
 }
 const renderImagesSrc = (props, cardstate) => {
   const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
-  return props.data.image[filterType][6].img
+  return props.data.image[filterType][0].img
 }
 export default function ProductCards(props) {
   const classes = useStyles();

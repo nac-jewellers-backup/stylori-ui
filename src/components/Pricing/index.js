@@ -7,7 +7,6 @@ import './pricing.css'
 export default function Pricing(props) {
     const classes = styles();
     let path = window.location.pathname.split('/').pop();
-    debugger
     return (
         <div>
             {

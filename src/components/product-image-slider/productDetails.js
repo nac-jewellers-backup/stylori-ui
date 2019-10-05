@@ -24,7 +24,6 @@ class ProductDetails extends React.Component {
             <div>
                 <Grid container spacing={12} style={{ paddingRight: "20px" }}>
                     {data[0].productsDetails.map(val => {
-                        debugger
                         return ((data[0].productType !== "Earring" && val.header === 'Gemstone Details')
                             || (data[0].productType === "Earring" && val.header.trim() === 'Diamond Details')) ? false :
                             <>
@@ -139,7 +138,6 @@ class ProductDetails extends React.Component {
     };
     render() {
         const { data } = this.props;
-        debugger
         return (
             <div>
                 <Hidden smDown>

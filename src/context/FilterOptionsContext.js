@@ -51,7 +51,6 @@ const Provider = (props) => {
     // var filterkeysObj = filtersKeys.map((k)=>{
     //     return k
     var offers = [];
-debugger
     const pathQueries = () => {
         let queries = []
         Object.keys(filters).map(fk => {
@@ -98,8 +97,9 @@ debugger
 
 
     const variables = {
-        condition: conditions.generateCondition({ ...filters })
+        condition: conditions.generateCondition({ offers })
     };
+    console.log('variables',variables);
     const { loading, error, data } = useGraphql(PRODUCTLIST, () => { }, variables);
     const FilterOptionsCtx = {
         filters, loading, error, data, setFilters

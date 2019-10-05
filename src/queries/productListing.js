@@ -1,6 +1,6 @@
 
 export const PRODUCTLIST = `query fetchProductDetails($condition: ProductListCondition) {
-  allProductLists(condition: $condition, last:50) {
+  allProductLists(condition: $condition, first:17) {
     nodes {
       productName
       productId
@@ -26,6 +26,13 @@ export const PRODUCTLIST = `query fetchProductDetails($condition: ProductListCon
           sellingPrice
         }
       }
+      productImagesByProductId {
+        nodes {
+          ishover
+          imageUrl
+          imagePosition
+        }
+      }
     }
   }
 }
@@ -35,7 +42,8 @@ export const PRODUCTLIST = `query fetchProductDetails($condition: ProductListCon
 export const conditions = {
   productId: (id) => ({
     "condition": {
-      "productId": id
+      "productId": id,
+      
     }
   }),
   generateCondition: (filters) => {

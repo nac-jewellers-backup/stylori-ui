@@ -15,8 +15,8 @@ export default function (data, cdnUrl) {
         title: k.productName,
         save: '5999.9',
         image: {
-            placeImage: injectUrl("/images/product/SE0262/SE0262-1Y.jpg", cdnUrl),
-            hoverImage: injectUrl("/images/product/SE0262/HOVER-SE0262-2Y.jpg", cdnUrl)
+            placeImage: injectUrl("/images/product/SE0775/SE0775-1Y.jpg", cdnUrl),
+            hoverImage: injectUrl("/images/product/SE0775/HOVER-SE0775-2Y.jpg", cdnUrl)
         },
         productId:k.productId
         
