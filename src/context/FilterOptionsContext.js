@@ -70,7 +70,7 @@ const Provider = (props) => {
         console.info('QUERYIES',query);
         props.history.push({
             pathname: '/stylori',
-            search: query,
+            search: query !== '' ? query : window.location.search,
         })
     }
 
@@ -90,7 +90,7 @@ const Provider = (props) => {
     //     }
     // }
     useEffect(() => {
-        console.info('FILTERS',filters);
+        console.info('FILTERSS',window.location.search);
         pathQueries()
     }, [filters])
     // React.useEffect ( () => props.history.push(path))

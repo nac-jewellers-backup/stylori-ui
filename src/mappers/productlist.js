@@ -5,7 +5,6 @@ let valuesinjectUrl = (imageUrl, cdnUrl) => injectUrl(imageUrl, cdnUrl)
 let placeImages = (placeImage, cdnUrl) => placeImage.find(filterdata => {return filterdata.ishover === false ? valuesinjectUrl(filterdata.imageUrl, cdnUrl) : ''} );
 let hoverImage = (placeImage, cdnUrl) => placeImage.find(filterdata => {return filterdata.ishover === true ? valuesinjectUrl(filterdata.imageUrl, cdnUrl) : ''} );
 export default function (data, cdnUrl) {
-    debugger
     let mapperdata = [];
     try {
         mapperdata = data.data.allProductLists.nodes;

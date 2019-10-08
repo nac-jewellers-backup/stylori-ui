@@ -165,7 +165,6 @@ const renderImagesSrc = (props, cardstate) => {
   return props.data.image[filterType][6].img
 }
 export default function ImgMediaCard(props) {
-  debugger
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
     hovered: false,

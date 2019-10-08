@@ -55,7 +55,6 @@ const handleClick = (name) => {
 }
 
 const renderImages = (props, cardstate) => {
-  debugger
     const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
     // console.info('props.data.image[filterType]',props.data.image[filterType]);
     return props.data.image[filterType].map(imgs=> `${imgs.img} ${imgs.size}`).toString()
