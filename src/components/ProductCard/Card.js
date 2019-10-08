@@ -76,7 +76,7 @@ const useStyles = makeStyles(theme=>({
     fontSize: "0.8rem",
     lineHeight: 0,
     color: "#828282",
-    fontWeight: "bold",
+    // fontWeight: "bold",
     width: 'fit-content',
     flex: 0.7,
     textAlign: 'center',
@@ -105,6 +105,9 @@ const useStyles = makeStyles(theme=>({
   textPriceCardGrid: {
     display: 'flex',
     width: "225px",
+    [theme.breakpoints.down('sm')]: {
+      width: "auto",
+    }
   },
   priceOffGridsub: {
     flex: 1,
@@ -112,7 +115,10 @@ const useStyles = makeStyles(theme=>({
   },
   priceOffGrid: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'row',
+    }
   },
   youSavePrice: {
     color: "white",
@@ -123,7 +129,7 @@ const useStyles = makeStyles(theme=>({
     flex: 0.7,
     textAlign: 'center',
     [theme.breakpoints.down('sm')]: {
-      flex: 0.3,
+      // flex: 0.3,
       borderRadius: "3px",
       fontWeight: "normal",
       fontSize:'0.7rem'
@@ -153,6 +159,9 @@ const useStyles = makeStyles(theme=>({
       overflow: 'hidden',
       textOverflow: 'ellipsis'
     }
+  },
+  iconColor:{
+    color:theme.palette.secondary.light
   }
 }));
 const renderImages = (props, cardstate) => {
@@ -180,7 +189,7 @@ export default function ImgMediaCard(props) {
             <Grid container item xs={6} justify="flex-start">
               <i
                 style={{ fontSize: "18px" }}
-                className={`fa ${classes.colorLight}`}
+                className={`fa ${classes.iconColor}`}
               >
                 &#xf0d1;
               </i>
@@ -189,7 +198,7 @@ export default function ImgMediaCard(props) {
             <Grid container item xs={6} justify="flex-end">
               <i
                 style={{ fontSize: "18px" }}
-                className={`fa ${classes.colorLight}`}
+                className={`fa ${classes.iconColor}`}
               >
                 &#xf08a;
               </i>

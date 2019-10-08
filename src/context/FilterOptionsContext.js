@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { PRODUCTLIST, conditions } from 'queries/productListing';
 import { withRouter } from 'react-router-dom';
-import { productsPendants } from 'mappers/dummydata';
-import { object } from 'prop-types';
+// import { productsPendants } from 'mappers/dummydata';
+// import { object } from 'prop-types';
 
 // let setFilter;
 const initialCtx = {
@@ -22,84 +22,54 @@ export const FilterOptionsContext = React.createContext(initialCtx);
 export const FilterOptionsConsumer = FilterOptionsContext.Consumer;
 
 const Provider = (props) => {
-    // const  productId  = '';
     const [filters, setFilters] = React.useState({
         Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, metalColor: {},
         MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}
     });
 
+   
 
-    // const mappedQueryUrl = ( Object.keys(filters)).map(filterkeys=>{return(
-    //  filterkeys
-    // //  (Object.values(filters)).map(filterValues=>{return(
-    // //     filterkeys
-    // //  )})
-    //     )
-    // })
-
-
-    // console.log(mappedQueryUrl)
-
-    //--------------------- Filters url ----------------------
-    // let offers = []    
-    // let val ;
-    Object.keys(filters).map((k => {
-    // Object.keys(filters[k]) !== null && offers.push(Object.keys(filters[k]))
-        // console.log(Object.keys(filters[k]))
-        console.log('FILTERS',filters)
-    }))
-    // var filterkeysObj = filtersKeys.map((k)=>{
-    //     return k
     var offers = [];
+    var queries = []
     const pathQueries = () => {
-        let queries = []
+        // var queries = []
         Object.keys(filters).map(fk => {
             const filter = filters[fk];
             const fv = Object.keys(filter);
-            if(fv.length > 0){
+            if (fv.length > 0) {
                 console.info('filter[fk[0]]', filter[fv[0]], filter, fv)
-                if(filter[fv[0]]){
+                if (filter[fv[0]]) {
                     const qt = `${fk}=${fv[0]}`;
                     queries.push(qt);
                 }
-                
+
             }
         })
-        console.info('queries',queries);
+        console.info('queries', queries);
         const query = encodeURI(queries.join("&"));
-        console.info('QUERYIES',query);
+        console.info('QUERYIES', query);
         props.history.push({
             pathname: '/stylori',
             search: query !== '' ? query : window.location.search,
         })
     }
 
-    // })  
 
-
-
-    // const pathQueries = () => {
-    //     if (val !== null && val.length !== 0) {
-    //         filterkeysObj.map((k)=>{
-    //             val = filters[k];
-    //         })
-    //         props.history.push({
-    //             pathname: '/stylori',
-    //             search: `${Object.keys(val)}`,
-    //         })
-    //     }
-    // }
     useEffect(() => {
-        console.info('FILTERSS',window.location.search);
+        console.info('FILTERSS', window.location.search);
         pathQueries()
     }, [filters])
-    // React.useEffect ( () => props.history.push(path))
+  
+
+    console.log('queries', queries)
 
 
     const variables = {
-        condition: conditions.generateCondition({ offers })
+        
+        condition: conditions.generateCondition({ filters })
     };
-    console.log('variables',variables);
+    
+    console.log('variables', variables);
     const { loading, error, data } = useGraphql(PRODUCTLIST, () => { }, variables);
     const FilterOptionsCtx = {
         filters, loading, error, data, setFilters

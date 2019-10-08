@@ -53,8 +53,45 @@ class Component extends React.Component {
     };
 
   }
+  componentDidMount() {
+    var numberOne = 1232224.789;
+    var numberTwo = 1833362.222;
+    var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
+    var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
+    this.setState({ numOne: numOne, numTwo: numTwo })
+    // debugger
+    if(window.location.search)
+    {
+      let urlSearchparams = window.location.search;
 
-  handleChange(value, BoolName, e) {
+      let urlSearchparamsDecode = decodeURI(urlSearchparams)
+  
+      let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
+  
+      let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
+      
+      let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val =>{ return val.split('=')})
+      // let 
+      let mapUrlParamsSplitEqual = urlSplitparamsEqual();
+  
+      // let paramsMapUrlSetState = () => mapUrlParamsSplitEqual.map(val=>
+        
+      //   {
+      //     var nameFilter = val[0]
+      //     var keyNameFilter = val[1]
+      //     console.log('val',mapUrlParamsSplitEqual)
+      //     this.handleChange(keyNameFilter,true, ()=>{}, nameFilter)
+      //   }
+      //   )
+        
+      this.handleChange(()=>{} ,true, ()=>{}, mapUrlParamsSplitEqual)
+      
+    }
+
+    // url search params condition ends
+  }
+  handleChange(value, BoolName, e, TargetName) {
+    
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     let arr = [];
@@ -64,13 +101,45 @@ class Component extends React.Component {
       arr = chipData.filter(val => val.label !== value);
       chipData = arr;
     }
-    let checkedvalue = {};
-    checkedvalue[value] = BoolName
-    checked[e.target.name] = checkedvalue
+
+    if(TargetName === undefined){
+      debugger
+      let checkedvalue = {};
+      checkedvalue[value] = BoolName
+      checked[e.target.name] = checkedvalue
+      this.setState({
+        checked
+      }, () => this.props.setFilters(checked))
+    }
+    else{
+      let paramsMapUrlSetState = () => TargetName.map(val=>
+        
+        {
+          var nameFilter = val[0]
+          var keyNameFilter = val[1]
+          debugger
+          console.log('val',TargetName)
+          let checkedvalue = {};
+          checkedvalue[keyNameFilter] = true
+          checked[nameFilter] = checkedvalue
+          this.setState({
+            checked
+          }, () => this.props.setFilters(checked))
+        }
+        )
+
+      console.log('val',TargetName)
+        paramsMapUrlSetState()
+    }
+
+    
+    // let checkedvalue = {};
+    // checkedvalue[value] = BoolName
+    // TargetName === undefined ?  checked[e.target.name] = checkedvalue : checked[TargetName] = checkedvalue
     // checkedvalue={value : BoolName}
 
     this.setState({
-      checked, chipData
+       chipData
     }, () => this.props.setFilters(checked))
   }
 
@@ -120,76 +189,8 @@ class Component extends React.Component {
     this.setState({ check: !this.state.check });
     this.setState({ open: !this.state.open });
   };
-  componentDidMount() {
-    var numberOne = 1232224.789;
-    var numberTwo = 1833362.222;
-    var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
-    var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
-    this.setState({ numOne: numOne, numTwo: numTwo })
-    // debugger
-    // let urlSearchparams = window.location.search;
 
-    // let urlSearchparamsDecode = decodeURI(urlSearchparams)
-
-    // console.log('urlSearchparamsDecode', urlSearchparamsDecode)
-  }
-  // urlSearchparamsDecode ?Offers=Up to  20%
-  // let urlSearchparamsDecode = decodeURI(urlSearchparams)
-  // VM1835:1 Uncaught ReferenceError: urlSearchparams is not defined
-  //     at <anonymous>:1:39
-  // (anonymous) @ VM1835:1
-  // let a = urlSearchparamsDecode
-  // VM1868:1 Uncaught ReferenceError: urlSearchparamsDecode is not defined
-  //     at <anonymous>:1:9
-  // (anonymous) @ VM1868:1
-  // a
-  // VM1879:1 Uncaught ReferenceError: a is not defined
-  //     at <anonymous>:1:1
-  // (anonymous) @ VM1879:1
-  // urlSearchparamsDecode
-  // VM1894:1 Uncaught ReferenceError: urlSearchparamsDecode is not defined
-  //     at <anonymous>:1:1
-  // (anonymous) @ VM1894:1
-  // let urlSearchparamsDecode
-  // VM1971:1 Uncaught SyntaxError: Identifier 'urlSearchparamsDecode' has already been declared
-  //     at <anonymous>:1:1
-  // (anonymous) @ VM1971:1
-  // let a 
-  // VM2019:1 Uncaught SyntaxError: Identifier 'a' has already been declared
-  //     at <anonymous>:1:1
-  // (anonymous) @ VM2019:1
-  // let b
-  // undefined
-  // b = decodeURI(urlSearchparams)
-  // VM2058:1 Uncaught ReferenceError: urlSearchparams is not defined
-  //     at <anonymous>:1:15
-  // (anonymous) @ VM2058:1
-  // let urlSearchparamsDecode = decodeURI(window.location.search)
-  // VM2153:1 Uncaught SyntaxError: Identifier 'urlSearchparamsDecode' has already been declared
-  //     at <anonymous>:1:1
-  // (anonymous) @ VM2153:1
-  // urlSearchparamsDecode
-  // VM2167:1 Uncaught ReferenceError: urlSearchparamsDecode is not defined
-  //     at <anonymous>:1:1
-  // (anonymous) @ VM2167:1
-  // let c = decodeURI(window.location.search)
-  // undefined
-  // c
-  // "?Offers=Up to  20%"
-  // let c = decodeURI(window.location.search)
-  // VM2264:1 Uncaught SyntaxError: Identifier 'c' has already been declared
-  //     at <anonymous>:1:1
-  // (anonymous) @ VM2264:1
-  // c
-  // "?Offers=Up to  20%"
-  // window.location.search
-  // "?Offers=Up%20to%20%2020%25&Availability=1%20Day%20Shipping"
-  // decodeURI(window.location.search)
-  // "?Offers=Up to  20%&Availability=1 Day Shipping"
-  // decodeURI(window.location.search)
-  // "?Offers=Up to  20%&Availability=1 Day Shipping&ProductType=Pendants"
-  // let d = decodeURI(window.location.search).split('&' , '')
-  // undefined
+ 
   onCurrencyChange = (e) => {
     var numberOne;
     var numberTwo;
@@ -219,6 +220,7 @@ class Component extends React.Component {
   }
 
   render() {
+    console.log('urlSplitparamsEqual',this.state.checked)
 
     const { classes, data } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data;
