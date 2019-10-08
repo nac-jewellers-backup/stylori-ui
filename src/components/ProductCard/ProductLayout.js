@@ -89,7 +89,7 @@ class ProductLayout extends React.Component {
           {
             data.map(tile => {
               return (
-                <GridListTile key={tile.title} cols={tile.cols || 1} style={{ height: 'auto', padding:'0 !important', marginBottom:'10px' }} className={`${classes.liClass}`} >
+                <GridListTile key={tile.title} cols={tile.cols || 1} style={{ height: 'auto', padding:'0 !important', marginBottom:'12px', marginTop:'12px' }} className={`${classes.liClass}`} >
 
                   {/* <ProductCard data={tile} /> */}
                   <ProductCards data={tile} />

@@ -153,6 +153,9 @@ const useStyles = makeStyles(theme=>({
       overflow: 'hidden',
       textOverflow: 'ellipsis'
     }
+  },
+  iconColor:{
+    color:theme.palette.secondary.light
   }
 }));
 const renderImages = (props, cardstate) => {
@@ -180,7 +183,7 @@ export default function ImgMediaCard(props) {
             <Grid container item xs={6} justify="flex-start">
               <i
                 style={{ fontSize: "18px" }}
-                className={`fa ${classes.colorLight}`}
+                className={`fa ${classes.iconColor}`}
               >
                 &#xf0d1;
               </i>
@@ -189,7 +192,7 @@ export default function ImgMediaCard(props) {
             <Grid container item xs={6} justify="flex-end">
               <i
                 style={{ fontSize: "18px" }}
-                className={`fa ${classes.colorLight}`}
+                className={`fa ${classes.iconColor}`}
               >
                 &#xf08a;
               </i>
