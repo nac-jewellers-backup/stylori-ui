@@ -40,7 +40,7 @@ export default function Pricing(props) {
 
                 >
                     {/* ₹&nbsp;{props.offerPrice} */}
-                    {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(Math.round(props.offerPrice))}
+                    {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.offerPrice))}
                 </Typography>
             </Typography>
             {/*  */}

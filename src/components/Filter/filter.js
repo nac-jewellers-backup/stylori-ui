@@ -53,10 +53,45 @@ class Component extends React.Component {
     };
 
   }
+  componentDidMount() {
+    var numberOne = 1232224.789;
+    var numberTwo = 1833362.222;
+    var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
+    var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
+    this.setState({ numOne: numOne, numTwo: numTwo })
+    // debugger
+    if(window.location.search)
+    {
+      let urlSearchparams = window.location.search;
 
+      let urlSearchparamsDecode = decodeURI(urlSearchparams)
+  
+      let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
+  
+      let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
+      
+      let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val =>{ return val.split('=')})
+      // let 
+      let mapUrlParamsSplitEqual = urlSplitparamsEqual();
+  
+      // let paramsMapUrlSetState = () => mapUrlParamsSplitEqual.map(val=>
+        
+      //   {
+      //     var nameFilter = val[0]
+      //     var keyNameFilter = val[1]
+      //     console.log('val',mapUrlParamsSplitEqual)
+      //     this.handleChange(keyNameFilter,true, ()=>{}, nameFilter)
+      //   }
+      //   )
+        
+      this.handleChange(()=>{} ,true, ()=>{}, mapUrlParamsSplitEqual)
+      
+    }
+
+    // url search params condition ends
+  }
   handleChange(value, BoolName, e, TargetName) {
     
-debugger
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     let arr = [];
@@ -154,43 +189,7 @@ debugger
     this.setState({ check: !this.state.check });
     this.setState({ open: !this.state.open });
   };
-  componentDidMount() {
-    var numberOne = 1232224.789;
-    var numberTwo = 1833362.222;
-    var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
-    var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
-    this.setState({ numOne: numOne, numTwo: numTwo })
-    // debugger
-    if(window.location.search)
-    {
-      let urlSearchparams = window.location.search;
 
-      let urlSearchparamsDecode = decodeURI(urlSearchparams)
-  
-      let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
-  
-      let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
-      
-      let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val =>{ return val.split('=')})
-      // let 
-      let mapUrlParamsSplitEqual = urlSplitparamsEqual();
-  
-      // let paramsMapUrlSetState = () => mapUrlParamsSplitEqual.map(val=>
-        
-      //   {
-      //     var nameFilter = val[0]
-      //     var keyNameFilter = val[1]
-      //     console.log('val',mapUrlParamsSplitEqual)
-      //     this.handleChange(keyNameFilter,true, ()=>{}, nameFilter)
-      //   }
-      //   )
-        
-      this.handleChange(()=>{} ,true, ()=>{}, mapUrlParamsSplitEqual)
-      
-    }
-
-    // url search params condition ends
-  }
  
   onCurrencyChange = (e) => {
     var numberOne;

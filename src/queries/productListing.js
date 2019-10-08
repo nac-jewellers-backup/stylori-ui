@@ -50,7 +50,8 @@ export const conditions = {
   generateCondition: (filters) => {
     console.log(PRODUCTLIST)
     let condition = {};
-    const filterKeys = Object.keys(filters);
+    const filterKeys = Object.values(filters);
+    debugger
     console.info('filterKeys', filterKeys, filters);
     filterKeys.map(k => {
       switch (k) {
@@ -58,6 +59,13 @@ export const conditions = {
           condition["productId"] = filters[k];
 
           break;
+          case "Collection":
+            condition["Collection"] =    `productCollectionsByProductId(condition: {collectionName: "Loops"}) {
+              nodes {
+                collectionName
+              }
+            }`    
+            break;
         default: {
 
         }
