@@ -44,7 +44,7 @@ const Provider = (props) => {
     // let offers = []    
     // let val ;
     Object.keys(filters).map((k => {
-        // Object.keys(filters[k]) !== null && offers.push(Object.keys(filters[k]))
+    // Object.keys(filters[k]) !== null && offers.push(Object.keys(filters[k]))
         // console.log(Object.keys(filters[k]))
         console.log('FILTERS',filters)
     }))

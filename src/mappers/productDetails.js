@@ -59,8 +59,17 @@ export default function (data, cdnUrl) {
             },
             tab2: {
                 header: "Metal Purity",
+                // Children: {
+                //     metal:
+                //         (PD.transSkuListsByProductId.nodes).map(P => (
+
+                //             P.purity
+                //         )),
+                //     iconcolor: (PD.transSkuListsByProductId.nodes).map(P => (
+                //         P.metalColor
+                //     ))
+                // }
                 Children: PD.colourVarient
-                // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
             },
             tab3: {
                 header: "Diamond Clarity",

@@ -79,34 +79,40 @@ class ProductDetails extends React.Component {
             <div>
                 <Container>
 
-                    {data[0].productsDetails.map(val => (
-                        <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
-                            style={{ boxShadow: "none", backgroundColor: "none" }} key={val.name}>
-                            <ExpansionPanelSummary className="expansion-summary"
-                                expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" >
-                                </i></span>}>
-                                <div style={{ width: "100%" }} >
-                                    <Typography className={`subtabs-smrt ${classes.normalfonts}`}>{val.header}</Typography>
-                                    <hr class="bottom-line border-line-"></hr>
-                                </div>
-                            </ExpansionPanelSummary>
-                            {
-                                val.namedetail !== undefined && val.namedetail.map(res =>
-                                    <Grid container spacing xs={12} sm={12}>
-                                        <Grid item xs={6} sm={6}>
-                                            <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
-                                                <span style={{ fontSize: "12px" }}> {res.name}</span>
-                                            </ListItemText>
-                                        </Grid>
-                                        <Grid item xs={6} sm={6}>
-                                            <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
-                                                <span style={{ fontSize: "12px" }}> {res.details}</span>
-                                            </ListItemText>
-                                        </Grid>
-                                    </Grid>
-                                )}
-                        </ExpansionPanel>
-                    ))}
+                    {data[0].productsDetails.map(val => {
+                        return (
+                            (data[0].productType !== "Earring" && val.header === 'Gemstone Details')
+                            || (data[0].productType === "Earring" && val.header.trim() === 'Diamond Details')) ? false :
+                            <>
+                                <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
+                                    style={{ boxShadow: "none", backgroundColor: "none" }} key={val.name}>
+                                    <ExpansionPanelSummary className="expansion-summary"
+                                        expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" >
+                                        </i></span>}>
+                                        <div style={{ width: "100%" }} >
+                                            <Typography className={`subtabs-smrt ${classes.normalfonts}`}>{val.header}</Typography>
+                                            <hr class="bottom-line border-line-"></hr>
+                                        </div>
+                                    </ExpansionPanelSummary>
+                                    {
+                                        val.namedetail !== undefined && val.namedetail.map(res =>
+                                            <Grid container spacing xs={12} sm={12}>
+                                                <Grid item xs={6} sm={6}>
+                                                    <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
+                                                        <span style={{ fontSize: "12px" }}> {res.name}</span>
+                                                    </ListItemText>
+                                                </Grid>
+                                                <Grid item xs={6} sm={6}>
+                                                    <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
+                                                        <span style={{ fontSize: "12px" }}> {res.details}</span>
+                                                    </ListItemText>
+                                                </Grid>
+                                            </Grid>
+                                        )}
+                                </ExpansionPanel>
+                            </>
+
+                    })}
 
                     {data[0].productsPendants.map(val => (
                         <ExpansionPanel expanded={expanded === 'panel'} onChange={this.handle('panel')}

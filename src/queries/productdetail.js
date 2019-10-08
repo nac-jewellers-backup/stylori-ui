@@ -1,5 +1,5 @@
 export const PRODUCTDETAILS = `query fetchProductDetails($condition: ProductListCondition) {
-  allProductLists(condition: $condition, last:50) {
+  allProductLists(condition: $condition, first: 20) {
     nodes {
       productName
       productId
@@ -10,7 +10,9 @@ export const PRODUCTDETAILS = `query fetchProductDetails($condition: ProductList
       productType
       productImagesByProductId {
         nodes {
+          ishover
           imageUrl
+          imagePosition
         }
       }
       productDiamondsByProductSku {
@@ -24,13 +26,14 @@ export const PRODUCTDETAILS = `query fetchProductDetails($condition: ProductList
           stoneCount
         }
       }
-      transSkuListsByProductId (condition: {isdefault: true}){
+      transSkuListsByProductId(condition: {isdefault: true}) {
         nodes {
           skuSize
-          purity
           markupPrice
           sellingPrice
-          transSkuDescriptionsBySkuId {
+          purity
+          metalColor
+            transSkuDescriptionsBySkuId {
             nodes {
               skuDescription
             }
@@ -45,7 +48,7 @@ export const PRODUCTDETAILS = `query fetchProductDetails($condition: ProductList
           gemstoneSetting
           productSku
           stoneCount
-         }
+        }
       }
     }
   }

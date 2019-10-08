@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { PRODUCTDETAILS, conditions } from 'queries/productdetail';
+import { withRouter } from 'react-router-dom';
 
 const initialCtx = {
     ProductDetailCtx: {
@@ -14,25 +15,31 @@ export const ProductDetailContext = React.createContext(initialCtx);
 
 export const ProductDetailConsumer = ProductDetailContext.Consumer;
 
-export const ProductDetailProvider = (props) => {
+export const TabsProvider = (props) => {
     const { productId } = props;
     const [filters, setFilters] = React.useState({
-        ringSize: null,
-        metalPurity: null,
-        diamondClarity: null,
-        productId: 'SE1612'
+        ringSize: '',
+        metalPurity: '',
+        diamondClarity: '',
     });
-    // const mappedUrl = (Object.keys(filters)).map(filterkeys => {
-    //     return (filterkeys)
-    // })
-    // Object.values(mappedUrl).map((val => {
-    //     let path = val
-    //     if (val !== null) props.history.push({
-    //         pathname: '/stylori',
-    //         search: `${path}`,
 
-    //     })
-    // }))
+    var tabsFilter = [];
+    const pathQueries = () => {
+        let queries = [];
+        queries.push(filters);
+        const url = encodeURI(queries);
+        // props.history.push({
+        //     pathname: '/pricingPage',
+        //     search: url,
+        // })
+    };
+    useEffect(() => {
+        pathQueries()
+    }, [filters])
+
+
+
+
     const variables = {
         condition: conditions.generateCondition({ ...filters, productId })
     };
@@ -47,3 +54,4 @@ export const ProductDetailProvider = (props) => {
         </ProductDetailContext.Provider>
     )
 };
+export const ProductDetailProvider = withRouter(TabsProvider);
