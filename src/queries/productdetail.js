@@ -68,7 +68,7 @@ export const conditions = {
     filterKeys.map(k => {
       switch (k) {
         case "productId":
-          condition["productId"] = ``;
+          condition["productId"] = ``; 
           break;
         case "ringSize":
           condition["ringSize"] = ``;
