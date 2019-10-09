@@ -26,7 +26,7 @@ export default function (data, cdnUrl) {
 
 
     }))
-    console.info('_format', _format);
+    // console.info('_format', _format);
     return _format;
 }
 

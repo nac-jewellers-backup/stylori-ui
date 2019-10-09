@@ -205,8 +205,7 @@ export default function ImgMediaCard(props) {
             </Grid>
           </Grid>
         </CardActions>
-        <Link to={{pathname:`/pricingPage/${props.data.productId}`, state: {
-    data:props.data.productId}}} style={{textDecoration:'none'}} >
+        <Link to={{pathname:`/pricingPage`, search: props.data.productId}} style={{textDecoration:'none'}} >
         <CardActionArea>
        
         <img 

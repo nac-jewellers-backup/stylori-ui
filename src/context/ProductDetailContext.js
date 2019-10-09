@@ -17,6 +17,7 @@ export const ProductDetailConsumer = ProductDetailContext.Consumer;
 
 export const TabsProvider = (props) => {
     const { productId } = props;
+    debugger
     const [filters, setFilters] = React.useState({
         ringSize: '',
         metalPurity: '',

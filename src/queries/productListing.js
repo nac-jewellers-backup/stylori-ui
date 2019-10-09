@@ -44,13 +44,14 @@ export const conditions = {
   productId: (id) => ({
     "condition": {
       "productId": id,
-      
+
     }
   }),
   generateCondition: (filters) => {
-    console.log(PRODUCTLIST)
+    // console.log(PRODUCTLIST)
     let condition = {};
-    const filterKeys = Object.values(filters);
+    // const filterKeys = Object.values(filters);
+    const filterKeys = filters.paramsArrayOfObject.map(val => Object.keys(val))
     debugger
     console.info('filterKeys', filterKeys, filters);
     filterKeys.map(k => {
@@ -59,19 +60,19 @@ export const conditions = {
           condition["productId"] = filters[k];
 
           break;
-          case "Collection":
-            condition["Collection"] =    `productCollectionsByProductId(condition: {collectionName: "Loops"}) {
+        case "Collection":
+          condition["Collection"] = `productCollectionsByProductId(condition: {collectionName: "Loops"}) {
               nodes {
                 collectionName
               }
-            }`    
-            break;
+            }`
+          break;
         default: {
 
         }
       }
     })
     return condition;
-    
+
   }
 }
