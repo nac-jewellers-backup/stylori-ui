@@ -34,7 +34,7 @@ export const subFilter = {
     ],
     'Metal Purity': ['Fashion', 'Chic', 'Cluster', 'Cut Out',
     ],
-    'Occasion': ['Fashion', 'Chic', 'Cluster', 'Cut Out',
+    'Occasion': ['Workwear', 'Special Occasion', 'Anniversary', 'Cut Out',
     ],
     'No Of Stone': ['Fashion', 'Chic', 'Cluster', 'Cut Out',
     ],

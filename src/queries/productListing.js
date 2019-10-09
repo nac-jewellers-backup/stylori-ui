@@ -50,6 +50,14 @@ export const filterProductMatrix = (type, value) => {
       }
       break;
     }
+    case "Occasion": {
+      fc = {
+        table: "productOccassionsByProductId",
+        type: "occassionName"
+      }
+      break;
+    }
+    
 
     default: {
       break;
@@ -72,9 +80,11 @@ export const conditions = {
     let filter = {};
     const filterKeys = filters.map(val => String(Object.keys(val)));
 
-    filterKeys.map(k => {
-      const fval = filters[k];
-      const fquery = filterProductMatrix('Collection', 'Mistletoe');
+    filters.map(k => {
+      debugger
+      const fkey = String(Object.keys(k));
+      const fval = String(Object.values(k));
+      const fquery = filterProductMatrix(fkey, fval);
       filter = { ...filter, ...fquery };
     })
 
