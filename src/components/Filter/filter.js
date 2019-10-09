@@ -103,7 +103,6 @@ class Component extends React.Component {
     }
 
     if(TargetName === undefined){
-      debugger
       let checkedvalue = {};
       checkedvalue[value] = BoolName
       checked[e.target.name] = checkedvalue

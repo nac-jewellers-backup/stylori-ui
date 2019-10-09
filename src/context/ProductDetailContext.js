@@ -16,22 +16,29 @@ export const ProductDetailContext = React.createContext(initialCtx);
 export const ProductDetailConsumer = ProductDetailContext.Consumer;
 
 export const TabsProvider = (props) => {
-    const { productId } = props;
     const [filters, setFilters] = React.useState({
         ringSize: '',
         metalPurity: '',
         diamondClarity: '',
     });
 
-    var tabsFilter = [];
+    let queries = [];
     const pathQueries = () => {
-        let queries = [];
+        debugger
         queries.push(filters);
-        const url = encodeURI(queries);
-        // props.history.push({
-        //     pathname: '/pricingPage',
-        //     search: url,
-        // })
+        const url = encodeURI(queries.join("&"));
+        props.history.push({
+            pathname: '/pricingPage',
+            search: url,
+        })
+
+        // if(queries.length>0){
+        //     const url = encodeURI(queries.join("&"));
+        //     props.history.push({
+        //         pathname: '/pricingPage',
+        //         search: url,
+        //     })
+        // }
     };
     useEffect(() => {
         pathQueries()
@@ -41,7 +48,7 @@ export const TabsProvider = (props) => {
 
 
     const variables = {
-        condition: conditions.generateCondition({ ...filters, productId })
+        condition: conditions.generateCondition({ filters })
     };
     const { loading, error, data } = useGraphql(PRODUCTDETAILS, () => { }, variables);
     const ProductDetailCtx = {

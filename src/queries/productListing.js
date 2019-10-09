@@ -51,7 +51,6 @@ export const conditions = {
     console.log(PRODUCTLIST)
     let condition = {};
     const filterKeys = Object.values(filters);
-    debugger
     console.info('filterKeys', filterKeys, filters);
     filterKeys.map(k => {
       switch (k) {

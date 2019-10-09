@@ -41,7 +41,7 @@ class Component extends React.Component {
         values: "",
         expanded: null,
         ringSize: '',
-        metalPurity: "",
+        metalPurity: '',
         diamond: ""
     };
 
@@ -153,7 +153,7 @@ class Component extends React.Component {
                                                     return (<>
                                                         <button
                                                             className={this.state.ringSize == i ? `dark ${classes.tabsRingBckg}` : 'page'}
-                                                            name={i}
+                                                            name={val}
                                                             onClick={event => this.handleClick(event)}
                                                         >
                                                             {val}

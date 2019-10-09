@@ -80,7 +80,6 @@ export const conditions = {
   }),
 
   generateCondition: (filters) => {
-
     let condition = {};
     const filterKeys = Object.keys(filters);
     filterKeys.map(k => {
@@ -88,9 +87,16 @@ export const conditions = {
         case "productId":
           condition["productId"] = filters[k];
           break;
-        default: {
-
-        }
+          case "ringSize":
+          condition["ringSize"]= filters[k];
+          break;
+          case "metalPurity":
+          condition["metalPurity"]= filters[k];
+          break;
+          case "diamondClarity":
+          condition["diamondClarity"]= filters[k];
+          break;
+          default:
       }
     })
     return condition;

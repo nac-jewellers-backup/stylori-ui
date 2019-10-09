@@ -63,13 +63,13 @@ class ProductDetail extends Component {
               </Grid> 
               <Grid item xs={6}>
                 <div className='overall-box'>
-                  <ProductPrice data={this.props.data} />  {/*res...........*/}
+                  <ProductPrice data={this.props.data} />  
                 </div>
                 <div className='overall-box'>
-                  <PriceTabs data={this.props.data} />  {/*res...........*/}
+                  <PriceTabs data={this.props.data} />  
                 </div>
                 <div className='overall-box'>
-                  <PriceBuynow data={this.props.data} /> {/*res...........*/}
+                  <PriceBuynow data={this.props.data} /> 
                 </div>
               </Grid>
             </Grid>
@@ -78,7 +78,7 @@ class ProductDetail extends Component {
           <div style={{ background: "whitesmoke" }} className="pricing-product-media">
             <Grid container spacing={12}>
               <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
-                <ProductDetails data={this.props.data} /> {/*res...........*/}
+                <ProductDetails data={this.props.data} /> 
               </Grid>
               <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
                 <PriceCertification />
