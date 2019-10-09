@@ -169,10 +169,7 @@ const renderImages = (props, cardstate) => {
   // console.info('props.data.image[filterType]',props.data.image[filterType]);
   return props.data.image[filterType].map(imgs => `${imgs.img} ${imgs.size}`).toString()
 }
-const renderImagesSrc = (props, cardstate) => {
-  const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
-  return props.data.image[filterType][6].img
-}
+
 export default function ImgMediaCard(props) {
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
@@ -220,8 +217,6 @@ sizes="(max-width: 320px) 320w,
            
 "
      alt=""
-
-          src = {renderImagesSrc(props, cardstate)}
           title={props.data.title}
           onMouseOver={() => {
             setCardState({ ...cardstate, hovered: !cardstate.hovered });

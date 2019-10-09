@@ -27,7 +27,7 @@ const Provider = (props) => {
         MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}
     });
 
-   
+
 
     var offers = [];
     var queries = []
@@ -59,50 +59,28 @@ const Provider = (props) => {
         // console.info('FILTERSS', window.location.search);
         pathQueries()
     }, [filters])
-  
+
 
     // console.log('queries', props.location.search)
 
-// Destructuring the query parameters from the URL
-let paramsArrayOfObject = [];
-if(window.location.search)
-{
-  let urlSearchparams = window.location.search;
+    // Destructuring the query parameters from the URL
+    let paramsArrayOfObject = [];
+    if (window.location.search) {
 
-  let urlSearchparamsDecode = decodeURI(urlSearchparams)
+        let urlSearchparamsDecode = decodeURI(window.location.search);
+        let urlParams = urlSearchparamsDecode.replace('?', '').split('&');
+        let urlSplitparamsEqual = urlParams.map(val => {
+            let splitval = val.split('=');
+            return { [splitval[0]]: splitval[1] }
+        })
+        paramsArrayOfObject = urlSplitparamsEqual;
+        console.log('val',paramsArrayOfObject)
 
-  let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
-
-  let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
-  
-  let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val =>{ return val.split('=')})
-  // let 
-  let mapUrlParamsSplitEqual = urlSplitparamsEqual();
-
-
-  let paramsMapUrlSetState = () => mapUrlParamsSplitEqual.map(val=>
-    
-    {
-        let obj ={};
-      var nameFilter = val[0]
-      var keyNameFilter = val[1]
-      obj[nameFilter]=keyNameFilter
-      paramsArrayOfObject.push(obj)
-    //   console.log('val',mapUrlParamsSplitEqual)
-    
     }
-    )
-    paramsMapUrlSetState()
-    // console.log('val',paramsArrayOfObject)
-  
-}
 
 
-    const variables = {
-        
-        condition: conditions.generateCondition({ paramsArrayOfObject })
-    };
-    
+    const variables = conditions.generateFilters(paramsArrayOfObject);
+
     // console.log('variables', variables);
     const { loading, error, data } = useGraphql(PRODUCTLIST, () => { }, variables);
     const FilterOptionsCtx = {
