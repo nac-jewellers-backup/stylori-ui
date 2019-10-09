@@ -24,36 +24,59 @@ export const TabsProvider = (props) => {
 
     let queries = [];
     const pathQueries = () => {
-        debugger
         queries.push(filters);
-        const url = encodeURI(queries.join("&"));
+        const url = encodeURI(queries);
         props.history.push({
             pathname: '/pricingPage',
             search: url,
         })
-
-        // if(queries.length>0){
-        //     const url = encodeURI(queries.join("&"));
-        //     props.history.push({
-        //         pathname: '/pricingPage',
-        //         search: url,
-        //     })
-        // }
     };
+
     useEffect(() => {
         pathQueries()
     }, [filters])
 
+    let paramsArrayOfObject = [];
+if(window.location.search)
+{
+  let urlSearchparams = window.location.search;
+
+  let urlSearchparamsDecode = decodeURI(urlSearchparams)
+
+  let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
+
+  let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
+  
+  let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val =>{ return val.split('=')})
+  // let 
+  let mapUrlParamsSplitEqual = urlSplitparamsEqual();
 
 
-
+  let paramsMapUrlSetState = () => mapUrlParamsSplitEqual.map(val=>
+    
+    {
+        let obj ={};
+      var nameFilter = val[0]
+      var keyNameFilter = val[1]
+      obj[nameFilter]=keyNameFilter
+      paramsArrayOfObject.push(obj)
+    //   console.log('val',mapUrlParamsSplitEqual)
+    
+    }
+    )
+    paramsMapUrlSetState()
+    // console.log('val',paramsArrayOfObject)
+  
+}
+    
     const variables = {
-        condition: conditions.generateCondition({ filters })
+        condition: conditions.generateCondition({ paramsArrayOfObject })
     };
     const { loading, error, data } = useGraphql(PRODUCTDETAILS, () => { }, variables);
     const ProductDetailCtx = {
         filters, loading, error, data
     }
+
 
     return (
         <ProductDetailContext.Provider value={{ ProductDetailCtx, setFilters }} >

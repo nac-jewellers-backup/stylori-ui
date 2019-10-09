@@ -51,7 +51,7 @@ export default function RadioBtn(props) {
   function handleChange(event) {
     setValue({...value, values:event.target.value, helperText: !Boolean((event.target.value != null && event.target.value !== ""))});
   }
-  console.log(value);
+  // console.log(value);
   return (
     <div className={classes.root}>
       <FormControl component="fieldset" className={`${classes.fromControlTwo} ${classes.formControl}`}>

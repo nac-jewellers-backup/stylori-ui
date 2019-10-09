@@ -37,7 +37,7 @@ const Provider = (props) => {
             const filter = filters[fk];
             const fv = Object.keys(filter);
             if (fv.length > 0) {
-                console.info('filter[fk[0]]', filter[fv[0]], filter, fv)
+                // console.info('filter[fk[0]]', filter[fv[0]], filter, fv)
                 if (filter[fv[0]]) {
                     const qt = `${fk}=${fv[0]}`;
                     queries.push(qt);
@@ -45,9 +45,9 @@ const Provider = (props) => {
 
             }
         })
-        console.info('queries', queries);
+        // console.info('queries', queries);
         const query = encodeURI(queries.join("&"));
-        console.info('QUERYIES', query);
+        // console.info('QUERYIES', query);
         props.history.push({
             pathname: '/stylori',
             search: query !== '' ? query : window.location.search,
@@ -56,20 +56,54 @@ const Provider = (props) => {
 
 
     useEffect(() => {
-        console.info('FILTERSS', window.location.search);
+        // console.info('FILTERSS', window.location.search);
         pathQueries()
     }, [filters])
   
 
-    console.log('queries', queries)
+    // console.log('queries', props.location.search)
+
+// Destructuring the query parameters from the URL
+let paramsArrayOfObject = [];
+if(window.location.search)
+{
+  let urlSearchparams = window.location.search;
+
+  let urlSearchparamsDecode = decodeURI(urlSearchparams)
+
+  let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
+
+  let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
+  
+  let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val =>{ return val.split('=')})
+  // let 
+  let mapUrlParamsSplitEqual = urlSplitparamsEqual();
+
+
+  let paramsMapUrlSetState = () => mapUrlParamsSplitEqual.map(val=>
+    
+    {
+        let obj ={};
+      var nameFilter = val[0]
+      var keyNameFilter = val[1]
+      obj[nameFilter]=keyNameFilter
+      paramsArrayOfObject.push(obj)
+    //   console.log('val',mapUrlParamsSplitEqual)
+    
+    }
+    )
+    paramsMapUrlSetState()
+    // console.log('val',paramsArrayOfObject)
+  
+}
 
 
     const variables = {
         
-        condition: conditions.generateCondition({ filters })
+        condition: conditions.generateCondition({ paramsArrayOfObject })
     };
     
-    console.log('variables', variables);
+    // console.log('variables', variables);
     const { loading, error, data } = useGraphql(PRODUCTLIST, () => { }, variables);
     const FilterOptionsCtx = {
         filters, loading, error, data, setFilters

@@ -34,7 +34,7 @@ class ProductImageZoom extends React.Component {
 
 
   productImageZoom = () => {
-    console.log(this.props.data)
+    // console.log(this.props.data)
     const { classes, data } = this.props
     const limit = 4;
     const { showimage } = this.state;
@@ -114,7 +114,7 @@ class ProductImageZoom extends React.Component {
     var img = document.getElementById("imgZoom");
     var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
     var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
-    element.style.backgroundPosition = (-posX * 4) + "px " + (-posY * 4) + "px";
+    element.style.backgroundPosition = (-posX * 1) + "px " + (-posY * 1) + "px";
   }
 
   zoomOut = () => {

@@ -54,49 +54,42 @@ export const PRODUCTDETAILS = `query fetchProductDetails($condition: ProductList
   }
 }
 `
-// query fetchProductDetails($condition: ProductListCondition) {
-//   allProductLists(condition: $condition) {
-//     nodes {
-//       productName
-//       productId
-//       productDiamondsByProductSku {
-//         nodes {
-//           diamondClarity
-//           diamondColour
-//           diamondType
-//         }
-//       }
-//     }
-//   }
-// }
 export const conditions = {
-
   productId: (id) => ({
     "condition": {
       "productId": id
-
     }
-
   }),
 
   generateCondition: (filters) => {
+    debugger
     let condition = {};
-    const filterKeys = Object.keys(filters);
+    const filterKeys = filters.paramsArrayOfObject.map(val => String(Object.keys(val)))
     filterKeys.map(k => {
       switch (k) {
         case "productId":
-          condition["productId"] = filters[k];
+          condition["productId"] = ``;
           break;
-          case "ringSize":
-          condition["ringSize"]= filters[k];
+        case "ringSize":
+          condition["ringSize"] = ``;
           break;
-          case "metalPurity":
-          condition["metalPurity"]= filters[k];
+        case "metalPurity":
+          condition["metalPurity"] = ``;
           break;
-          case "diamondClarity":
-          condition["diamondClarity"]= filters[k];
+        case "diamondClarity":
+          condition["diamondClarity"] = `query fetchProductDetails($condition: ProductListCondition) {
+            allProductLists(condition: $condition, first: 20) {
+              nodes {
+               productDiamondsByProductSku {
+                      nodes {
+                        diamondClarity
+                      }
+                    }
+            }
+           }
+          }`;
           break;
-          default:
+        default:
       }
     })
     return condition;

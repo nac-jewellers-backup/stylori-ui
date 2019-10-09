@@ -18,7 +18,7 @@ export default function Checkboxes(props) {
         setState({ ...state, [name]: event.target.checked });
         props.change()
     };
-    console.log(state)
+    // console.log(state)
 
     return (
         <Grid container className={`${props.classNames}`} xs={12}>

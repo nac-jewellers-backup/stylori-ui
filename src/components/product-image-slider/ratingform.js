@@ -61,7 +61,7 @@ class RatingForm extends React.Component {
 
         }
         this.setState({ errors, [name]: value }, () => {
-            console.log(errors)
+            // console.log(errors)
         })
     }
     handleError = (e) => {
