@@ -21,7 +21,7 @@ export const resolutions = [
     
 //       let values = {};
 //   // Object.keys(kv).map(k => {
-//     values[type] = { [clause]: value }
+//     values[type] = { [clause]: value } 
 //   // });
 // console.log(values)
 //   return values;
