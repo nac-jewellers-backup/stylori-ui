@@ -67,7 +67,7 @@ const Provider = (props) => {
     let paramsArrayOfObject = [];
     if (window.location.search) {
 
-        let urlSearchparamsDecode = decodeURI(window.location.search);
+        let urlSearchparamsDecode = decodeURI(filters);
         let urlParams = urlSearchparamsDecode.replace('?', '').split('&');
         let urlSplitparamsEqual = urlParams.map(val => {
             let splitval = val.split('=');
