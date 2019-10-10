@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 const initialCtx = {
     ProductDetailCtx: {
+
         filters: { ringSize: null, metalPurity: null, diamondClarity: null },
         loading: false, error: false, data: []
     },
@@ -26,10 +27,12 @@ export const TabsProvider = (props) => {
     const pathQueries = () => {
         queries.push(filters);
         const url = encodeURI(queries);
-        props.history.push({
-            pathname: '/pricingPage',
-            search: url,
-        })
+        if (filters.length > 0) {
+            props.history.push({
+                pathname: '/pricingPage',
+                search: url,
+            })
+        }
     };
 
     useEffect(() => {
@@ -37,41 +40,33 @@ export const TabsProvider = (props) => {
     }, [filters])
 
     let paramsArrayOfObject = [];
-if(window.location.search)
-{
-  let urlSearchparams = window.location.search;
-
-  let urlSearchparamsDecode = decodeURI(urlSearchparams)
-
-  let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
-
-  let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
-  
-  let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val =>{ return val.split('=')})
-  // let 
-  let mapUrlParamsSplitEqual = urlSplitparamsEqual();
-
-
-  let paramsMapUrlSetState = () => mapUrlParamsSplitEqual.map(val=>
-    
-    {
-        let obj ={};
-      var nameFilter = val[0]
-      var keyNameFilter = val[1]
-      obj[nameFilter]=keyNameFilter
-      paramsArrayOfObject.push(obj)
-    //   console.log('val',mapUrlParamsSplitEqual)
-    
+    debugger
+    if (window.location.search) {
+        let urlSearchparams = window.location.search;
+        let urlSearchparamsDecode = decodeURI(urlSearchparams)
+        let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
+        let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
+        let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
+        debugger
+        let mapUrlParamsSplitEqual = urlSplitparamsEqual();
+        let paramsMapUrlSetState = () => mapUrlParamsSplitEqual.map(val => {
+            let obj = {};
+            var nameFilter = val[0]
+            if (val[0] == 'metalColor') {
+                var keyNameFilter = val[1].split(' ')
+                obj[nameFilter] = keyNameFilter[1]
+            } else {
+                var keyNameFilter = val[1]
+                obj[nameFilter] = keyNameFilter
+            }
+            paramsArrayOfObject.push(obj)
+        }
+        )
+        paramsMapUrlSetState()
     }
-    )
-    paramsMapUrlSetState()
-    // console.log('val',paramsArrayOfObject)
-  
-}
-    
-    const variables = {
-        condition: conditions.generateCondition({ paramsArrayOfObject })
-    };
+
+    const variables = conditions.generateFilters(paramsArrayOfObject);
+
     const { loading, error, data } = useGraphql(PRODUCTDETAILS, () => { }, variables);
     const ProductDetailCtx = {
         filters, loading, error, data

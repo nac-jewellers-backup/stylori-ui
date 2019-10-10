@@ -1,5 +1,6 @@
-export const PRODUCTDETAILS = `query fetchProductDetails($condition: ProductListCondition) {
-  allProductLists(condition: $condition, first: 20) {
+import { filterGenerator } from "utils";
+export const PRODUCTDETAILS = `query fetchProductDetails($filter: ProductListFilter) {
+  allProductLists(filter: $filter){
     nodes {
       productName
       productId
@@ -33,6 +34,8 @@ export const PRODUCTDETAILS = `query fetchProductDetails($condition: ProductList
           sellingPrice
           purity
           metalColor
+          discountPrice
+          generatedSku
             transSkuDescriptionsBySkuId {
             nodes {
               skuDescription
@@ -54,6 +57,48 @@ export const PRODUCTDETAILS = `query fetchProductDetails($condition: ProductList
   }
 }
 `
+export const filterProductMatrix = (type, value) => {
+  debugger
+  let fc = { table: "", type: "" }
+  switch (type) {
+    case "productId": {
+      fc = {
+        table: "",
+        type: "productId"
+      }
+      break;
+    }
+    case "sizeVarient": {
+      fc = {
+        table: "",
+        type: "sizeVarient"
+      }
+      break;
+    }
+    case "metalColor": {
+      fc = {
+        table: "transSkuListsByProductId",
+        type: "metalColor"
+      }
+      break;
+    }
+    case "diamondType": {
+      fc = {
+        table: "productDiamondsByProductSku",
+        type: "diamondType"
+      }
+      break;
+    }
+
+
+    default: {
+      break;
+    }
+  }
+
+  return filterGenerator(fc.type, value, fc.table);
+}
+
 export const conditions = {
   productId: (id) => ({
     "condition": {
@@ -61,37 +106,23 @@ export const conditions = {
     }
   }),
 
-  generateCondition: (filters) => {
-    debugger
-    let condition = {};
-    const filterKeys = filters.paramsArrayOfObject.map(val => String(Object.keys(val)))
+
+  generateFilters: (filters) => {
+    let filter = {};
+    const filterKeys = filters.map(val => val);
+
     filterKeys.map(k => {
-      switch (k) {
-        case "productId":
-          condition["productId"] = ``; 
-          break;
-        case "ringSize":
-          condition["ringSize"] = ``;
-          break;
-        case "metalPurity":
-          condition["metalPurity"] = ``;
-          break;
-        case "diamondClarity":
-          condition["diamondClarity"] = `query fetchProductDetails($condition: ProductListCondition) {
-            allProductLists(condition: $condition, first: 20) {
-              nodes {
-               productDiamondsByProductSku {
-                      nodes {
-                        diamondClarity
-                      }
-                    }
-            }
-           }
-          }`;
-          break;
-        default:
-      }
+      debugger
+      const fk = String(Object.keys(k));
+      const fval = String(Object.values(k));
+      const fquery = filterProductMatrix(fk, fval);
+      filter = { ...filter, ...fquery };
     })
-    return condition;
+
+    if (Object.keys(filter).length > 0) {
+      return { filter };
+    } else {
+      return {};
+    }
   }
 }

@@ -27,7 +27,7 @@ export const subFilter = {
         'Fashion', 'Chic', 'Cluster', 'Cut Out',
     ],
     'Collection': [
-        'Diamond', 'Gemstone', 'Gold', 'Slitarie', 'Diamond', 'Gemstone', 'Gold', 'Slitarie',
+        'Geometric', 'Mistletoe', 'Gold', 'Slitarie', 'Diamond', 'Gemstone', 'Gold', 'Loops',
     ],
     'Metal Color': [
         'Fashion', 'Chic', 'Cluster', 'Cut Out',

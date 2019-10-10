@@ -41,8 +41,8 @@ class Component extends React.Component {
         values: "",
         expanded: null,
         ringSize: '',
-        metalPurity: '',
-        diamondClarity: ""
+        metalColor: '',
+        diamondType: ""
     };
 
     handleClick = (event) => {
@@ -50,21 +50,21 @@ class Component extends React.Component {
         const ringSize = event.target.name;
         this.setState({
             ringSize,
-        }, () => this.props.setFilters(ringSize));
+        }, () => this.props.setFilters('sizeVarient=' + ringSize));
     }
     handleClickMetal = (event) => {
         console.log(event.target.id)
-        const metalPurity = event.target.id;
+        const metalColor = event.target.id;
         this.setState({
-            metalPurity,
-        }, () => this.props.setFilters(metalPurity));
+            metalColor,
+        }, () => this.props.setFilters('metalColor=' + metalColor));
     }
     handleClickDiamond = (event) => {
         console.log(event.target.id)
-        const diamondClarity = event.target.id
+        const diamondType = event.target.id
         this.setState({
-            diamondClarity,
-        }, () => this.props.setFilters('diamondClarity=' + diamondClarity))
+            diamondType,
+        }, () => this.props.setFilters('diamondType=' + diamondType))
     }
     handleChange = (event, value) => {
         this.setState({ value });

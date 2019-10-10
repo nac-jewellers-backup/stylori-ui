@@ -1,6 +1,7 @@
+import { filterGenerator } from "utils";
 
-export const PRODUCTLIST = `query fetchProductDetails($condition: ProductListCondition) {
-  allProductLists(condition: $condition, first:17) {
+export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter) {
+  allProductLists(filter: $filter, first: 5) {
     nodes {
       productName
       productId
@@ -25,6 +26,7 @@ export const PRODUCTLIST = `query fetchProductDetails($condition: ProductListCon
           markupPrice
           sellingPrice
           discountPrice
+          generatedSku
         }
       }
       productImagesByProductId {
@@ -38,6 +40,25 @@ export const PRODUCTLIST = `query fetchProductDetails($condition: ProductListCon
   }
 }
 `
+export const filterProductMatrix = (type, value) => {
+  let fc = { table: "", type: "" }
+  switch (type) {
+    case "Collection": {
+      fc = {
+        table: "productCollectionsByProductId",
+        type: "collectionName"
+      }
+      break;
+    }
+
+    default: {
+      break;
+    }
+  }
+
+  return filterGenerator(fc.type, value, fc.table);
+}
+
 
 
 export const conditions = {
@@ -47,31 +68,21 @@ export const conditions = {
 
     }
   }),
-  generateCondition: (filters) => {
-    // console.log(PRODUCTLIST)
-    let condition = {};
-    // const filterKeys = Object.values(filters);
-    const filterKeys = filters.paramsArrayOfObject.map(val => Object.keys(val))
-    console.info('filterKeys', filterKeys, filters);
+  generateFilters: (filters) => {
+    let filter = {};
+    const filterKeys = filters.map(val => String(Object.keys(val)));
+
     filterKeys.map(k => {
-      switch (k) {
-        case "productId":
-          condition["productId"] = filters[k];
-
-          break;
-        case "Collection":
-          condition["Collection"] = `productCollectionsByProductId(condition: {collectionName: "Loops"}) {
-              nodes {
-                collectionName
-              }
-            }`
-          break;
-        default: {
-
-        }
-      }
+      const fval = filters[k];
+      const fquery = filterProductMatrix('Collection', 'Mistletoe');
+      filter = { ...filter, ...fquery };
     })
-    return condition;
 
+    debugger
+    if (Object.keys(filter).length > 0) {
+      return { filter };
+    } else {
+      return {};
+    }
   }
 }

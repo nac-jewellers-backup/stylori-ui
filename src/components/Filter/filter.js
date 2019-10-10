@@ -116,7 +116,6 @@ class Component extends React.Component {
         {
           var nameFilter = val[0]
           var keyNameFilter = val[1]
-          debugger
           console.log('val',TargetName)
           let checkedvalue = {};
           checkedvalue[keyNameFilter] = true
