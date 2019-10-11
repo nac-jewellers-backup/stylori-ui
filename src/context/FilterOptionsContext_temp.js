@@ -9,8 +9,8 @@ import { withRouter } from 'react-router-dom';
 const initialCtx = {
     FilterOptionsCtx: {
         filters: {
-            Offers: null, Availability: null, ProductType: null, style: null, material: null, Theme: null, Collection: null, metalColor: null,
-            MetalPurity: null, Occasion: null, NoOfStones: null, Gender: null, stoneColor: null, stoneShape: null
+            Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, metalColor: {},
+            MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}
         },
         loading: false, error: false, data: []
     },
@@ -22,16 +22,15 @@ export const FilterOptionsContext = React.createContext(initialCtx);
 export const FilterOptionsConsumer = FilterOptionsContext.Consumer;
 
 const Provider = (props) => {
-    const [filters, setFilters] = React.useState({
-        Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, metalColor: {},
-        MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}
-    });
+    const [filters, setFilters] = React.useState(initialCtx.FilterOptionsCtx.filters);
+    const { loading, error, data, makeRequest } = useGraphql(PRODUCTLIST, () => { }, {});
 
 
 
     var offers = [];
     var queries = []
     const pathQueries = () => {
+
         // var queries = []
         Object.keys(filters).map(fk => {
             const filter = filters[fk];
@@ -50,15 +49,9 @@ const Provider = (props) => {
         // console.info('QUERYIES', query);
         props.history.push({
             pathname: '/stylori',
-            search: query !== '' ? query : window.location.search,
+            search: query
         })
     }
-
-
-    useEffect(() => {
-        // console.info('FILTERSS', window.location.search);
-        pathQueries()
-    }, [filters])
 
 
     // console.log('queries', props.location.search)
@@ -74,18 +67,22 @@ const Provider = (props) => {
             return { [splitval[0]]: splitval[1] }
         })
         paramsArrayOfObject = urlSplitparamsEqual;
-        console.log('val',paramsArrayOfObject)
+        console.log('val', paramsArrayOfObject)
 
     }
-    debugger
 
+debugger
     const variables = conditions.generateFilters(paramsArrayOfObject);
 
     // console.log('variables', variables);
-    const { loading, error, data } = useGraphql(PRODUCTLIST, () => { }, variables);
-    const FilterOptionsCtx = {
-        filters, loading, error, data, setFilters
-    }
+    const FilterOptionsCtx = { filters, loading, error, data }
+
+    useEffect(() => {
+        // console.info('FILTERSS', window.location.search);
+        pathQueries();
+        console.info('VARIABLES', variables);
+        makeRequest(variables);
+    }, [filters])
 
 
     return (

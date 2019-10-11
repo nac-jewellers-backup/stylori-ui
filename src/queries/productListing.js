@@ -1,7 +1,7 @@
 import { filterGenerator } from "utils";
 
 export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter) {
-  allProductLists(filter: $filter, first: 5) {
+  allProductLists(filter: $filter, first: 30) {
     nodes {
       productName
       productId
@@ -57,7 +57,48 @@ export const filterProductMatrix = (type, value) => {
       }
       break;
     }
-    
+    case "Theme": {
+      fc = {
+        table: "productThemesByProductId",
+        type: "themeName"
+      }
+      break;
+    }
+    case "Style": {
+      fc = {
+        table: "productStylesByProductId",
+        type: "styleName"
+      }
+      break;
+    }
+    case "ProductType": {
+      fc = {
+        table: "",
+        type: "productType"
+      }
+      break;
+    }
+    case "MetalColor": {
+      fc = {
+        table: "transSkuListsByProductId",
+        type: "metalColor"
+      }
+      break;
+    }
+    case "MetalPurity": {
+      fc = {
+        table: "transSkuListsByProductId",
+        type: "purity"
+      }
+      break;
+    }
+    case "Gender": {
+      fc = {
+        table: "",
+        type: "gender"
+      }
+      break;
+    }
 
     default: {
       break;
