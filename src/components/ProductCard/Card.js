@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Link } from 'react-router-dom'
 import { Hidden } from "@material-ui/core";
+import './productCard.css'
 
 
 const useStyles = makeStyles(theme=>({
@@ -202,8 +203,10 @@ export default function ImgMediaCard(props) {
             </Grid>
           </Grid>
         </CardActions>
-        <Link to={{pathname:`/pricingPage`, search: `productId=${props.data.productId}`}} style={{textDecoration:'none'}} >
-        <CardActionArea>
+        <Link to={{pathname:`/pricingPage`, 
+        state: {productId: props.data.productId,defaultVariant:{diamondType:props.data.diamondType,metalColor:props.data.metalColor,purity:props.data.purity
+      } }}} style={{textDecoration:'none'}} >
+        <CardActionArea >
        
         <img 
 srcset={renderImages(props, cardstate)}
@@ -225,7 +228,8 @@ sizes="(max-width: 320px) 320w,
             setCardState({ ...cardstate, hovered: !cardstate.hovered });
           }}
           style={{width:'100%',height:'100%'}}
-          className={`${props.data===''?'shine':''}`}
+          className={`${props.data.image.placeImage.length === 0 || props.data.image.hoverImage.length === 0 ? 'shine' : '' }`}
+          
           />
         </CardActionArea>
         <Card className={classes.priceClass}>

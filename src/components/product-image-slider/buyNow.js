@@ -20,7 +20,8 @@ const inputsearch = (props) => {
     const { data } = props;
     const { classes } = props;
     return (
-        <div style={{marginTop: "12px", paddingRight: "20px",
+        <div style={{
+            marginTop: "12px", paddingRight: "20px",
             paddingLeft: "15px"
         }}>
             {data[0].ProductContactNum.map(val =>
@@ -52,6 +53,31 @@ const inputsearch = (props) => {
 const Buydetails = (props) => {
     const { data } = props;
     const { classes } = props;
+    const handleLocalStorage = () => {
+        var skuId = data[0].skuId;
+        var products = [];
+        var cartId = "";
+        var userId = "";
+        var obj = { sku_id: '', qty: '', price: '' }
+
+       
+
+        obj['sku_id'] = skuId;
+        obj['qty'] = 1
+        obj['price'] = data[0].offerPrice[0]
+
+        products.push(obj)
+        var skuObj = {"cart_id":cartId,"user_id":userId,"products":products}
+        // var skuIdLocalStorage = `products: ${JSON.parse(products)}`
+
+        localStorage.setItem('cartDetails', JSON.stringify(skuObj));
+
+
+        //    var arr = localStorage.getItem('skuId', skuId);
+        //    debugger
+        //     localStorage.setItem('skuId', skuId);
+        window.location.href = "/cart"
+    }
     return (
         <div>
             {data[0].ProductContactNum.map(val =>
@@ -59,9 +85,12 @@ const Buydetails = (props) => {
                     <Grid container spacing={12} style={{ padding: "0 10px" }}>
 
                         <Grid item xs={12} lg={4} style={{ marginRight: "15px" }}>
-                            <NavLink to="/cart" style={{ textDecoration: 'none' }}>
+                            {/* <NavLink to="/cart" style={{ textDecoration: 'none' }} > */}
+                            <div onClick={handleLocalStorage.bind(this)}>
                                 <Buynowbutton class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
-                            </NavLink>
+                            </div>
+
+                            {/* </NavLink> */}
                         </Grid>
 
                         <Grid xs={12} lg={7} style={{ marginTop: "7px" }}>

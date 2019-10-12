@@ -1,7 +1,7 @@
 import { filterGenerator } from "utils";
 
 export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter) {
-  allProductLists(filter: $filter, first: 30) {
+  allProductLists(filter: $filter, last: 200, orderBy: PRIMARY_KEY_DESC,condition: {isactive: true} ) {
     nodes {
       productName
       productId
@@ -19,10 +19,12 @@ export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter
           stoneCount
         }
       }
-      transSkuListsByProductId {
+      transSkuListsByProductId (condition: {isdefault: true}) {
         nodes {
           skuSize
           purity
+          diamondType
+          metalColor
           markupPrice
           sellingPrice
           discountPrice
@@ -122,14 +124,12 @@ export const conditions = {
     const filterKeys = filters.map(val => String(Object.keys(val)));
 
     filters.map(k => {
-      debugger
       const fkey = String(Object.keys(k));
       const fval = String(Object.values(k));
       const fquery = filterProductMatrix(fkey, fval);
       filter = { ...filter, ...fquery };
     })
 
-    debugger
     if (Object.keys(filter).length > 0) {
       return { filter };
     } else {

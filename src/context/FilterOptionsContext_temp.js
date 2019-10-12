@@ -71,7 +71,6 @@ const Provider = (props) => {
 
     }
 
-debugger
     const variables = conditions.generateFilters(paramsArrayOfObject);
 
     // console.log('variables', variables);

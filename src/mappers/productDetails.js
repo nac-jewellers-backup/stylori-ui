@@ -12,6 +12,7 @@ export default function (data, cdnUrl) {
     const _format = mapperdata.map(PD => ({
 
         title: PD.productName,
+        skuId:PD.transSkuListsByProductId.nodes=== undefined ? '' : PD.transSkuListsByProductId.nodes.map(skus=>skus.generatedSku),
         price: (PD.transSkuListsByProductId.nodes).map(val => (
             val.markupPrice
         )),
@@ -20,7 +21,7 @@ export default function (data, cdnUrl) {
         )),
         save: '5999.9',
         offerDiscount: '25% FLAT OFF',
-        dis: PD.transSkuListsByProductId.nodes[0].transSkuDescriptionsBySkuId.nodes[0].skuDescription,
+        dis: PD.transSkuListsByProductId.nodes[0].transSkuDescriptionsBySkuId.nodes[0] !== undefined ?PD.transSkuListsByProductId.nodes[0].transSkuDescriptionsBySkuId.nodes[0].skuDescription :'',
         productType: PD.productType,
         fadeImages: (PD.productImagesByProductId.nodes.map(val => (
             `https://s3.ap-south-1.amazonaws.com/staging-assets.stylori.com/base_images/${val.imageUrl}`

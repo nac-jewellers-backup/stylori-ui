@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 const initialCtx = {
     ProductDetailCtx: {
 
-        filters: { ringSize: null, metalPurity: null, diamondClarity: null },
+        filters: { productId: '', defaultVariants: { diamondType: '', metalColor: '', purity: ''} },
         loading: false, error: false, data: []
     },
     setFilters: () => { }
@@ -17,56 +17,40 @@ export const ProductDetailContext = React.createContext(initialCtx);
 export const ProductDetailConsumer = ProductDetailContext.Consumer;
 
 export const TabsProvider = (props) => {
-    const [filters, setFilters] = React.useState({
-        ringSize: '',
-        metalPurity: '',
-        diamondClarity: '',
-    });
+    const [filters, setFilters] = React.useState(initialCtx.ProductDetailCtx.filters);
 
     let queries = [];
     const pathQueries = () => {
-        queries.push(filters);
-        const url = encodeURI(queries);
-        if (filters.length > 0) {
-            props.history.push({
-                pathname: '/pricingPage',
-                search: url,
-            })
-        }
+
+
+        setFilters(filters)
+
     };
 
     useEffect(() => {
+        let a = props;
+
         pathQueries()
     }, [filters])
 
-    let paramsArrayOfObject = [];
-    debugger
-    if (window.location.search) {
-        let urlSearchparams = window.location.search;
-        let urlSearchparamsDecode = decodeURI(urlSearchparams)
-        let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
-        let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
-        let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
-        debugger
-        let mapUrlParamsSplitEqual = urlSplitparamsEqual();
-        let paramsMapUrlSetState = () => mapUrlParamsSplitEqual.map(val => {
-            let obj = {};
-            var nameFilter = val[0]
-            if (val[0] == 'metalColor') {
-                var keyNameFilter = val[1].split(' ')
-                obj[nameFilter] = keyNameFilter[1]
-            } else {
-                var keyNameFilter = val[1]
-                obj[nameFilter] = keyNameFilter
-            }
-            paramsArrayOfObject.push(obj)
-        }
-        )
-        paramsMapUrlSetState()
+
+    if (filters.productId === "") {
+        let productDetailProps = props.location.state;
+        let productId = productDetailProps.productId;
+        let defaultVariants = productDetailProps.defaultVariant;
+        filters['productId'] = productId;
+        filters['defaultVariants'] = defaultVariants
     }
 
-    const variables = conditions.generateFilters(paramsArrayOfObject);
-
+    useEffect(() => {
+        setFilters(filters)
+        pathQueries()
+    }, [filters])
+    const variables = { 'conditionfilter': filters.defaultVariants, 'filter': { "productId": filters.productId } }
+    // {
+    //     "conditionfilter": {"diamondType": "SI GH","purity":"18K","metalColor": "White" },
+    //     "filter": {"productId": "SB0010"}
+    //   }
     const { loading, error, data } = useGraphql(PRODUCTDETAILS, () => { }, variables);
     const ProductDetailCtx = {
         filters, loading, error, data

@@ -1,6 +1,7 @@
 import { filterGenerator } from "utils";
-export const PRODUCTDETAILS = `query fetchProductDetails($filter: ProductListFilter) {
-  allProductLists(filter: $filter){
+// SR3261
+export const PRODUCTDETAILS = `query fetchProductDetails($conditionfilter:TransSkuListCondition,$filter: ProductListCondition) {
+  allProductLists(condition:$filter ) {
     nodes {
       productName
       productId
@@ -9,7 +10,7 @@ export const PRODUCTDETAILS = `query fetchProductDetails($filter: ProductListFil
       colourVarient
       defaultWeight
       productType
-      productImagesByProductId {
+      productImagesByProductId (condition: {isdefault: true}) {
         nodes {
           ishover
           imageUrl
@@ -27,7 +28,7 @@ export const PRODUCTDETAILS = `query fetchProductDetails($filter: ProductListFil
           stoneCount
         }
       }
-      transSkuListsByProductId(condition: {isdefault: true}) {
+      transSkuListsByProductId (condition:$conditionfilter ) {
         nodes {
           skuSize
           markupPrice
@@ -36,11 +37,12 @@ export const PRODUCTDETAILS = `query fetchProductDetails($filter: ProductListFil
           metalColor
           discountPrice
           generatedSku
-            transSkuDescriptionsBySkuId {
+          transSkuDescriptionsBySkuId {
             nodes {
               skuDescription
             }
           }
+          diamondType
         }
       }
       productGemstonesByProductSku {
@@ -56,9 +58,9 @@ export const PRODUCTDETAILS = `query fetchProductDetails($filter: ProductListFil
     }
   }
 }
+
 `
 export const filterProductMatrix = (type, value) => {
-  debugger
   let fc = { table: "", type: "" }
   switch (type) {
     case "productId": {
@@ -112,7 +114,6 @@ export const conditions = {
     const filterKeys = filters.map(val => val);
 
     filterKeys.map(k => {
-      debugger
       const fk = String(Object.keys(k));
       const fval = String(Object.values(k));
       const fquery = filterProductMatrix(fk, fval);

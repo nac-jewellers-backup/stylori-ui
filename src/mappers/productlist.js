@@ -1,9 +1,10 @@
 import { resolutions } from "utils";
 // const baseUi = "https://assets-cdn.stylori.com/";
-const injectUrl = (url, baseUi) => url ? resolutions.map(k => ({ ...k, img: `${baseUi}${url.imageUrl}` })) : [];
+const injectUrl = (url, baseUi) => url ? resolutions.map(k => ({ ...k, img: `${baseUi}${url.imageUrl===undefined ? url : url.imageUrl}` })) : [];
 // const valuesinjectUrl = (imageUrl, cdnUrl) => injectUrl(imageUrl, cdnUrl);in
-const placeImages = (placeImage) => placeImage.find(fd => !fd.ishover);
-const hoverImage = (placeImage) => placeImage.find(fd => fd.ishover);
+const placeImages = (placeImage) => placeImage.length === 0 ?'product/SR0662/SR0662-1Y.jpg' : placeImage.find(fd => !fd.ishover);
+const hoverImage = (placeImage) => placeImage.length === 0 ?'product/SR0662/HOVER-SR0662-2Y.jpg' : placeImage.find(fd => fd.ishover); 
+
 
 export default function (data, cdnUrl) {
 
@@ -15,11 +16,10 @@ export default function (data, cdnUrl) {
     }
     const _format = mapperdata.map(k => {
         let _d;
-
         try {
             _d = {
-                price: k.transSkuListsByProductId.nodes[0].discountPrice === null ? 15343 : k.transSkuListsByProductId.nodes[0].discountPrice,
-                offerPrice: k.transSkuListsByProductId.nodes[0].markupPrice === null ? 13203 : k.transSkuListsByProductId.nodes[0].markupPrice,
+                price:(k.transSkuListsByProductId.nodes[0] === undefined  )? 15343 : k.transSkuListsByProductId.nodes[0].discountPrice,
+                offerPrice: k.transSkuListsByProductId.nodes[0] === undefined   ? 13203 : k.transSkuListsByProductId.nodes[0].markupPrice,
                 title: k.productName,
                 save: '5999.9',
                 image: {
@@ -27,7 +27,13 @@ export default function (data, cdnUrl) {
                     hoverImage: injectUrl(hoverImage(k.productImagesByProductId.nodes), cdnUrl),
 
                 },
-                productId: k.productId
+                productId: k.productId,
+                
+                diamondType:k.transSkuListsByProductId.nodes[0] === undefined ? '' : k.transSkuListsByProductId.nodes[0].diamondType,
+                metalColor:k.transSkuListsByProductId.nodes[0] === undefined ? '' : k.transSkuListsByProductId.nodes[0].metalColor,
+                purity:k.transSkuListsByProductId.nodes[0] === undefined ? '' : k.transSkuListsByProductId.nodes[0].purity,
+                skuSize:k.transSkuListsByProductId.nodes[0] === undefined ? '' : k.transSkuListsByProductId.nodes[0].skuSize,
+
             }
         } catch (error) {
             console.info('error', error);

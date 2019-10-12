@@ -39,7 +39,6 @@ class Stylori extends React.Component {
 
 const Components = props => {
   let { FilterOptionsCtx: { data, loading, error } } = React.useContext(FilterOptionsContext);
-
   let content, mapped;
 
   if (!loading && !error) {

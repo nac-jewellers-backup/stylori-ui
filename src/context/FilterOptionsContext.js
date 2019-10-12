@@ -18,7 +18,6 @@ const initialCtx = {
 }
 
 export const FilterOptionsContext = React.createContext(initialCtx);
-
 export const FilterOptionsConsumer = FilterOptionsContext.Consumer;
 
 const Provider = (props) => {
@@ -77,7 +76,7 @@ const Provider = (props) => {
         console.log('val',paramsArrayOfObject)
 
     }
-    debugger
+
 
     const variables = conditions.generateFilters(paramsArrayOfObject);
 

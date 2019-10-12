@@ -14,7 +14,7 @@
     animation-name: placeHolderShimmer;
     animation-timing-function: linear;
     background: #f6f7f8;
-
+/* min-height:20px; */
     background-image: -webkit-linear-gradient(
       left,
       #f6f7f8 0%,
