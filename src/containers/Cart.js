@@ -69,6 +69,7 @@ class Cart extends React.Component {
 
 const Components = props => {
     let { CartCtx: { data, loading, error } } = React.useContext(CartContext);
+    debugger
     let content, mapped;
 
     if (!loading && !error) {

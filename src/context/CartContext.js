@@ -33,6 +33,7 @@ const Provider = (props) => {
     // alert(skuId)
     }
     skuId = localStorage.getItem('cartDetails')
+    debugger
     var id = JSON.parse(skuId);
      skus = id.products[0].sku_id[0];
 

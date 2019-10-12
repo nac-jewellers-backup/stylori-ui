@@ -12,7 +12,7 @@ class Addressdetails extends React.Component {
         values: this.props.state
     }
     Addressdetails = () => {
-        const { classes } = this.props;
+        const { classes, values } = this.props;
         return (
             <div className='pt-sm'>
                 {/* {this.props.state.map(val=>(
@@ -25,20 +25,23 @@ class Addressdetails extends React.Component {
                             <h4 class="card-title">
                                 <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                 {/* {name1.adrs_firstname} */}
-                                <span class="address-name">1 1
+                                <span class="address-name">{values.adrs_firstname}{values.adrs_lastname}
                               </span>
                                 <i style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                     class="fa fa-pencil-square-o"></i>
                                 <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
                                     className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
                             </h4>
-                            <p className={`detils-p ${classes.normalfonts}`} >jjjjjj <br />fffffff <br />vvvvvv <br />ffff</p>
+                            <p className={`detils-p ${classes.normalfonts}`} >
+                            {values.adrs_City} <br />
+                            {values.bill_selectcountry}-{values.adrs_zipcode} <br />IN</p>
                             <div className="card-foo">
-                                <span className={`shipping-phonenumber ${classes.normalfonts}`}>  2343234543</span>
+                                <span className={`shipping-phonenumber ${classes.normalfonts}`}> 
+                               {values.adrs_phonenumber} </span>
                                 <Button style={{ float: "right" }} className='apply-b'>Select and  Review </Button>
                             </div>
                         </div>
-                        <Button className={`add-new-address ${classes.normalfonts}`}>
+                        <Button onClick={() => this.props.redirectForm()} className={`add-new-address ${classes.normalfonts}`}>
                             <div></div>
                             Add New Address
                             </Button>

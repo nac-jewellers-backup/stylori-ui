@@ -70,7 +70,7 @@ class LoginRegisterIndex extends React.Component {
                     }} />
                 </div>
                 <div style={{ display: this.state.Continue == true ? "block" : "none" }}>
-                    <Continues change={() => {
+                    <Continues changePanel={this.props.changePanel} change={() => {
                         this.setState({
                             show: true,
                             Continue: false

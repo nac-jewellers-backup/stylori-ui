@@ -1,31 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './loginRegisters.css'
 import { Container, Grid, Button } from '@material-ui/core';
 import { Input } from '../../../components/InputComponents/TextField/Input';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style';
+import ContinuesLogin from './ContinuesLogin';
 
 
-class Continues extends React.Component {
-    state = {
-        mail: ""
-    }
-    handleChange(event, name) {
-        this.setState({
-            [name]: event.target.value
-        })
-    }
+const Continues = (props) => {
+    return <ContinuesComponent  {...props} />
+}
+const ContinuesComponent = (props) => {
 
-    handleSubmit = (e) => {
-        // e.preventDefault();
-    }
-    render() {
-        const { classes } = this.props;
+        const [isenterotp , setIsotp] = useState(false);
+        const { classes } = props;
+        const { values, handle } = ContinuesLogin();
         return (
             <Container>
                 <div className='pt-sm'>
-                    <form onSubmit={this.handleSubmit()}>
-                        <Grid container spacing={12}>
+                    <form onSubmit={e =>handle.handleSubmit(e, setIsotp)}>
+                        <>
+                        {!isenterotp && <Grid container spacing={12}>
                             <Grid item lg={1} />
                             <Grid item xs={12} lg={6}>
                                 <h5 className={`title ${classes.normalfonts}`}>  Skip registration or login. continue as a guest  </h5>
@@ -35,10 +30,10 @@ class Continues extends React.Component {
                                     variant="outlined"
                                     type="email"
                                     name="mail"
-                                    value={this.state.mail}
+                                    value={values.mail}
                                     // error={this.state.mail ? this.state.mail : "**"}
                                     placeholder="Your Mail ID"
-                                    onChange={event => this.handleChange(event, 'mail')}
+                                    onChange={event => handle.handleChange(event, 'mail')}
                                 />
                                 <p className={`form-group ${classes.normalfonts}`}> We don't share these with anybody. Your contact details are secure with us. </p>
 
@@ -47,11 +42,36 @@ class Continues extends React.Component {
                                     <Button className='apply-b' type='submit'>Apply</Button>
                                 </div>
                             </Grid>
-                        </Grid>
+                        </Grid>}
+
+                       {
+                        isenterotp && 
+                        <Grid container spacing={12}>
+                            <Grid item lg={1} />
+                            <Grid item xs={12} lg={6}>
+                                <Input
+                                    margin="normal"
+                                    variant="outlined"
+                                    type="type"
+                                    name="otp"
+                                    value={values.otp}
+                                    // error={this.state.mail ? this.state.mail : "**"}
+                                    placeholder="Enetr your otp"
+                                    onChange={event => handle.handleChange(event, 'otp')}
+                                    required
+                                />
+
+                                <div className='login-butn'>
+                                    <Button className='back-b' onClick={() => setIsotp(false)} >Back</Button>
+                                    <Button className='apply-b' type="submit" onClick={() => props.changePanel(2,values.mail )}>Apply</Button>
+                                </div>
+                            </Grid>
+                        </Grid>}
+                        </>
                     </form>
                 </div>
             </Container>
         )
     }
-}
+// }
 export default withStyles(styles)(Continues);

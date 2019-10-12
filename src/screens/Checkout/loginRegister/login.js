@@ -54,7 +54,7 @@ const LoginComponent = props => {
                         </div >
                     </div>
                     <div className='login-butn'>
-                        <Button className='back-b' onClick={() => this.props.change()} >Back</Button>
+                        <Button className='back-b' onClick={() => props.change()} >Back</Button>
                         <Button className='apply-b' type="submit">Apply</Button>
                     </div>
 

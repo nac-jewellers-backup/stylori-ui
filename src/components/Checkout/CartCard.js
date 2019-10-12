@@ -16,6 +16,7 @@ import { cartdatas } from '../../mappers';
 import CardSmallScreen from './CartCardSmallScreen.js';
 import Pricing from '../Pricing/index'
 import styles from "./style"
+import { NavLink } from 'react-router-dom';
 // 
 // 
 import CustomSeparator from '../../components/BreadCrumb/index'
@@ -118,9 +119,11 @@ class Checkoutcard extends React.Component {
         let path = window.location.pathname.split('/').pop();
         return (
             <div>
-                {path == "Checkout" ? "" :
+                {path == "checkout" ? "" :
                     <div className='ckeckout-top'>
+                            <NavLink to="/checkout" style={{ textDecoration: 'none' }}>
                         <Buynowbutton class={`chckout-page-buynow ${classes.buttons}`} />
+                        </NavLink>
                     </div>}
             </div>
         )
@@ -173,8 +176,8 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         var data = this.props.data
-        
-        const { breadcrumsdata, cartsubdata } = this.props.data;
+        debugger
+        // const {  cartsubdata } = this.props.data;
 
         
         const { classes } = this.props;
@@ -182,14 +185,14 @@ class Checkoutcard extends React.Component {
         return (
             <div>
                 <Hidden smDown>
-                    {path == "Checkout" ? "" :
+                    {path === "checkout" ? "" :
                         <CustomSeparator
                             arrowicon='cart-head-arrows'
                             className={`breadcrums-header ${classes.normalcolorback}`}
                             classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
                             list={`MuiBreadcrumbs-li ${classes.fontwhite}`}
                             data={this.props.data[0].breadcrumsdata}
-                            subdata={cartsubdata}
+                            subdata={this.props.data[0].cartsubdata}
                         />
                     }
 

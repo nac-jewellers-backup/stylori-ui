@@ -34,7 +34,7 @@ class Addressform extends React.Component {
         bill_numcode: "",
         bill_isNumber: false,
         addrs: true,
-        checkValue: false
+        checkValue: true
     }
 
     handleChange(event, name) {
@@ -51,7 +51,9 @@ class Addressform extends React.Component {
             if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
         }
     };
-
+    redirectForm = () => { 
+        this.setState({ addrs: !this.state.addrs })
+    }
     render() {
         return (
             <Container>
@@ -61,7 +63,7 @@ class Addressform extends React.Component {
                             <form onSubmit={this.handleSubmit()}>
                                 <h5 className='title'> Shipping Address</h5>
                                 <p class="form-group tp" >
-                                    <Checkboxes CheckBoxValues={['0']} change={() => {
+                                    <Checkboxes CheckBoxValues={['']} change={() => {
                                         this.setState({
                                             checkValue: !this.state.checkValue
                                         })
@@ -71,7 +73,7 @@ class Addressform extends React.Component {
                                     <Grid item xs={12} lg={5}>
                                         <Grid container spacing={12}>
                                             <Grid item xs={4} lg={4}>
-                                                <SimpleSelect name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
+                                                <SimpleSelect name={['Select']} selectData={['Select']} />
                                             </Grid>
                                             <Grid item xs={4} lg={4}>
                                                 <Input
@@ -178,7 +180,7 @@ class Addressform extends React.Component {
                                         <Grid item xs={12} lg={5}>
                                             <Grid container spacing={12}>
                                                 <Grid item xs={4} lg={4}>
-                                                    <SimpleSelect name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
+                                                    <SimpleSelect name={['Select']} selectData={['Select']} />
                                                 </Grid>
                                                 <Grid item xs={4} lg={4}>
                                                     <Input
@@ -281,12 +283,15 @@ class Addressform extends React.Component {
 
                                 <div className='login-butn'>
                                     <Button type="submit"
-                                        onClick={() => { this.setState({ addrs: !this.state.addrs }) }}
+                                        onClick={() => { 
+                                            this.setState({ addrs: !this.state.addrs });
+                                            this.props.changePanel(3)
+                                        }}
                                         className='apply-b'>Save and Review</Button>
                                 </div>
                             </form>
                         </div>
-                        : <Addressdetails values={this.state} />}
+                        : <Addressdetails values={this.state} redirectForm = {this.redirectForm} />}
                 </div>
             </Container>
         )
