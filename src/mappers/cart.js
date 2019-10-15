@@ -113,7 +113,6 @@ export default function (data) {
         mapperdata = [];
     }
     const _format = mapperdata.map(k => {
-        debugger
         let _d;
 
         try {

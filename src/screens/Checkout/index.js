@@ -38,7 +38,6 @@ class Chckoutindex extends React.Component {
     };
 
     changePanel = (panel, mailId) => {
-        debugger
         this.setState({
             expanded: 'panel' + panel,
             expandedlimit: panel,
@@ -51,7 +50,6 @@ class Chckoutindex extends React.Component {
         
         const { expanded, mailId, expandedlimit } = this.state;
         const { classes } = this.props;
-        debugger
         const { breadcrumsdata, cartsubdata } = this.props.data;
 
         return (
@@ -145,7 +143,6 @@ class Chckoutindex extends React.Component {
 }
 export default withStyles(styles)(props => {
     const { mapped } = useDummyRequest(cartdatas);
-    debugger
     if (Object.keys(mapped).length === 0) return ''
 
     return <Chckoutindex {...props} data={mapped} />

@@ -8,7 +8,6 @@ const ContinuesLogin = () => {
     const [ invalids, setInvalids ] = React.useState({ mail:false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/guestlogin', values, () => []);
     const handleChange = (event, name) => {
-        debugger
         setValues({
             ...values,
             [name]: event.target.value

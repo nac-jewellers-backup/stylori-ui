@@ -8,6 +8,7 @@ import productlist from 'mappers/productlist';
 import { PRODUCTLIST } from 'queries';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { CDN_URL } from 'config';
+import { FilterOptionsContext } from 'context'
 
 const styles = theme => ({
   gridlistmain: {
@@ -39,12 +40,15 @@ const styles = theme => ({
       opacity: '0.8'
     }
   },
-  
+
 
 });
+const ProductLayout = (props) => {
+  const { setOffset, setFirst, FilterOptionsCtx: { offset } } = React.useContext(FilterOptionsContext);
+  return <Component offset={offset} setOffset={setOffset} setFirst={setFirst}  {...props} />
+}
 
-
-class ProductLayout extends React.Component {
+class Component extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -79,29 +83,34 @@ class ProductLayout extends React.Component {
     }
 
   }
+  handleOffset = () => {
+    const offsets = this.props.offset + 10
+    // console.log('offsets', offsets)
+    this.props.setOffset(offsets)
+  }
   render() {
     const { classes, data } = this.props;
     // console.log(dataCard)
     // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
     return (
       <div className={`productLayoutRoot `} style={this.props.styles}>
-        <GridList cellHeight={"auto"} className={`productLayoutGridList ${classes.gridlistmain}`} cols={this.state.colSize} style={{margin:'25px !important'}}>
+        <GridList cellHeight={"auto"} className={`productLayoutGridList ${classes.gridlistmain}`} cols={this.state.colSize} style={{ margin: '25px !important' }}>
           {
             data.map(tile => {
               return (
-                <GridListTile key={tile.title} cols={tile.cols || 1} style={{ height: 'auto', padding:'0 !important', marginBottom:'12px', marginTop:'12px' }} className={`${classes.liClass}`} >
+                <GridListTile key={tile.title} cols={tile.cols || 1} style={{ height: 'auto', padding: '0 !important', marginBottom: '12px', marginTop: '12px' }} className={`${classes.liClass}`} >
 
                   {/* <ProductCard data={tile} /> */}
                   <ProductCards data={tile} />
                 </GridListTile>
               )
             })
- 
+
           }
 
         </GridList>
         <div className={`${classes.gridlistmainviewmore}`}>
-          <Button variant="contained" className={`${classes.button}  ${classes.viewmoreColor}`}>
+          <Button variant="contained" className={`${classes.button}  ${classes.viewmoreColor}`} onClick={() => { this.handleOffset() }}>
             View {data.length} More Products
       </Button>
         </div>

@@ -148,6 +148,7 @@ class ProductDetail extends Component {
 const Components = props => { 
   const { ProductDetailCtx: { data, loading, error } } = React.useContext(ProductDetailContext);
   const datas = data;
+  debugger
   let mapped = datas;
   if (!loading && !error) {
     mapped = productDetails(datas);

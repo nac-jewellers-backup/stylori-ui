@@ -1,7 +1,7 @@
 import { filterGenerator } from "utils";
 
-export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter) {
-  allProductLists(filter: $filter, last: 200, orderBy: PRIMARY_KEY_DESC,condition: {isactive: true} ) {
+export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter,$offsetvar:Int,$firstvar:Int) {
+  allProductLists(filter: $filter,offset: $offsetvar, first:$firstvar, orderBy: PRIMARY_KEY_DESC,condition: {isactive: true} ) {
     nodes {
       productName
       productId

@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { PRODUCTLIST, conditions } from 'queries/productListing';
 import { withRouter } from 'react-router-dom';
+import productlist from 'mappers/productlist';
+import { CDN_URL } from 'config';
 // import { productsPendants } from 'mappers/dummydata';
 // import { object } from 'prop-types';
 
@@ -12,9 +14,12 @@ const initialCtx = {
             Offers: null, Availability: null, ProductType: null, style: null, material: null, Theme: null, Collection: null, metalColor: null,
             MetalPurity: null, Occasion: null, NoOfStones: null, Gender: null, stoneColor: null, stoneShape: null
         },
-        loading: false, error: false, data: []
+        loading: false, error: false, data: [], offset: 3, dataArr: [], first: 2
     },
-    setFilters: (filterData) => { }
+    setFilters: (filterData) => { },
+    setOffset: () => { },
+    setFirst: () => { },
+    updateProductList: () => { },
 }
 
 export const FilterOptionsContext = React.createContext(initialCtx);
@@ -25,10 +30,10 @@ const Provider = (props) => {
         Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, metalColor: {},
         MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}
     });
+    const [offset, setOffset] = React.useState(3)
+    const [first, setFirst] = React.useState(2)
+    const [dataArr, setDataArr] = React.useState([])
 
-
-
-    var offers = [];
     var queries = []
     const pathQueries = () => {
         // var queries = []
@@ -36,7 +41,6 @@ const Provider = (props) => {
             const filter = filters[fk];
             const fv = Object.keys(filter);
             if (fv.length > 0) {
-                // console.info('filter[fk[0]]', filter[fv[0]], filter, fv)
                 if (filter[fv[0]]) {
                     const qt = `${fk}=${fv[0]}`;
                     queries.push(qt);
@@ -44,51 +48,62 @@ const Provider = (props) => {
 
             }
         })
-        // console.info('queries', queries);
         const query = encodeURI(queries.join("&"));
-        // console.info('QUERYIES', query);
         props.history.push({
             pathname: '/stylori',
             search: query !== '' ? query : window.location.search,
         })
     }
 
+    const paramObjects = () => {
+        // Destructuring the query parameters from the URL
+        let paramsAo = [];
+        if (window.location.search) {
+            let urlSearchparamsDecode = decodeURI(window.location.search);
+            let urlParams = urlSearchparamsDecode.replace('?', '').split('&');
+            let urlSplitparamsEqual = urlParams.map(val => {
+                let splitval = val.split('=');
+                return { [splitval[0]]: splitval[1] }
+            })
+            paramsAo = urlSplitparamsEqual;
+            console.log('val', paramsAo)
+        }
+        return paramsAo;
+    }
+
+    const { loading, error, data, makeRequest } = useGraphql(PRODUCTLIST, () => { }, {});
+    const a = [];
+    const updateProductList = () => {
+        const conditionFilters = conditions.generateFilters(paramObjects())
+        const variables = { ...conditionFilters, 'offsetvar': offset, 'firstvar': first }
+        makeRequest(variables);
+    }
+
+    useEffect(() => console.info('FILTERS', filters), [filters]);
 
     useEffect(() => {
-        // console.info('FILTERSS', window.location.search);
-        pathQueries()
-    }, [filters])
+        pathQueries();
+        updateProductList();
+    }, [filters, offset])
 
+    useEffect(() => {
+        const mapped = productlist(data, CDN_URL);
+        console.log('dataArr',dataArr)
+        const newUpdatedList = [...dataArr, ...mapped];
+        console.info('LISTUPDATE', a, data, mapped, newUpdatedList, dataArr)
+        setDataArr(newUpdatedList);
+  
 
-    // console.log('queries', props.location.search)
+    }, [data])
 
-    // Destructuring the query parameters from the URL
-    let paramsArrayOfObject = [];
-    if (window.location.search) {
+    useEffect(() => console.info('DATAARRA', dataArr), [dataArr])
 
-        let urlSearchparamsDecode = decodeURI(window.location.search);
-        let urlParams = urlSearchparamsDecode.replace('?', '').split('&');
-        let urlSplitparamsEqual = urlParams.map(val => {
-            let splitval = val.split('=');
-            return { [splitval[0]]: splitval[1] }
-        })
-        paramsArrayOfObject = urlSplitparamsEqual;
-        console.log('val',paramsArrayOfObject)
-
-    }
-
-
-    const variables = conditions.generateFilters(paramsArrayOfObject);
-
-    // console.log('variables', variables);
-    const { loading, error, data } = useGraphql(PRODUCTLIST, () => { }, variables);
     const FilterOptionsCtx = {
-        filters, loading, error, data, setFilters
+        filters, loading, error, data, setFilters, offset, setOffset, dataArr, first, setFirst
     }
-
 
     return (
-        <FilterOptionsContext.Provider value={{ FilterOptionsCtx, setFilters }} >
+        <FilterOptionsContext.Provider value={{ FilterOptionsCtx, setFilters, setOffset, setFirst, updateProductList }} >
             {props.children}
         </FilterOptionsContext.Provider>
     )

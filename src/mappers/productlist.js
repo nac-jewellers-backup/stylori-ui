@@ -37,7 +37,6 @@ export default function (data, cdnUrl) {
             }
         } catch (error) {
             console.info('error', error);
-            throw error;
         }
 
         return _d;

@@ -33,20 +33,25 @@ const Provider = (props) => {
     // alert(skuId)
     }
     skuId = localStorage.getItem('cartDetails')
-    debugger
     var id = JSON.parse(skuId);
      skus = id.products[0].sku_id[0];
 
+    const { loading, error, data, makeRequest } = useGraphql(CART, () => { }, {});
+
+    const updateProductList = () => {
+        const variables = {"productList":[skus]};
+        makeRequest(variables);
+    }
     useEffect(() => {
-        pathQueries()
+        pathQueries();
+        setCartFilters(skus)
+        updateProductList();
+        console.log('cartFilters',cartFilters)
     }, [cartFilters])
-
-
-
-    const variables = {"productList":[skus]};
+    
 
     // console.log('variables', variables);
-    const { loading, error, data } = useGraphql(CART, () => { }, variables);
+    // const { loading, error, data } = useGraphql(CART, () => { }, variables);
     const CartCtx = {
         cartFilters, loading, error, data, setCartFilters
     }

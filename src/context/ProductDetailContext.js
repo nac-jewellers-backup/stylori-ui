@@ -40,18 +40,27 @@ export const TabsProvider = (props) => {
         let defaultVariants = productDetailProps.defaultVariant;
         filters['productId'] = productId;
         filters['defaultVariants'] = defaultVariants
+        debugger
     }
 
-    useEffect(() => {
-        setFilters(filters)
-        pathQueries()
-    }, [filters])
-    const variables = { 'conditionfilter': filters.defaultVariants, 'filter': { "productId": filters.productId } }
+
+    
     // {
     //     "conditionfilter": {"diamondType": "SI GH","purity":"18K","metalColor": "White" },
     //     "filter": {"productId": "SB0010"}
     //   }
-    const { loading, error, data } = useGraphql(PRODUCTDETAILS, () => { }, variables);
+    // const { loading, error, data } = useGraphql(PRODUCTDETAILS, () => { }, variables);
+    const { loading, error, data, makeRequest } = useGraphql(PRODUCTDETAILS, () => { }, {});
+    const updateProductList = () => {
+        const variables = { 'conditionfilter': filters.defaultVariants, 'filter': { "productId": filters.productId } }
+        makeRequest(variables);
+    }
+    
+    useEffect(() => {
+        setFilters(filters)
+        pathQueries()
+        updateProductList()
+    }, [filters])
     const ProductDetailCtx = {
         filters, loading, error, data
     }

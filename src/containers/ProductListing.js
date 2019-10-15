@@ -38,17 +38,16 @@ class Stylori extends React.Component {
 // const history = (props, aa) => props.history.push(`/stylori?${aa}`);
 
 const Components = props => {
-  let { FilterOptionsCtx: { data, loading, error } } = React.useContext(FilterOptionsContext);
-  let content, mapped;
+  let { FilterOptionsCtx: { data, loading, error, dataArr } } = React.useContext(FilterOptionsContext);
+  let content, mapped = [];
 
   if (!loading && !error) {
     if (Object.keys(data).length !== 0) {
       mapped = productList(data, CDN_URL);
     }
   }
-  if (Object.keys(data).length === 0) content = <div></div>
-  else content = <Stylori {...props} data={mapped} />
-
+  if (Object.keys(data).length === 0) content = <div>Loading...</div>
+  else content = <Stylori {...props} data={dataArr} />
   return content
 }
 

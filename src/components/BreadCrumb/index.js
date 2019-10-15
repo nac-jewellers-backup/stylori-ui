@@ -10,7 +10,7 @@ export default function CustomSeparator(props) {
     : <NavigateNextIcon />;
   return (
     <div className={props.className}>
-      <Paper elevation={0} className={props.classsubhed}>
+      <Paper className={props.classsubhed}>
         <Grid container>
           <Grid item lg={7}>
             <Breadcrumbs separator={seperators}>

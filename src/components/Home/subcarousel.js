@@ -100,7 +100,7 @@ class SubCarousel extends React.Component {
                                         // <img className={classes.img} src={step.imgPath} alt={step.label} />
 
                                         <div className="subcrousel">
-                                            <Paper square elevation={0} className={classes.header}>
+                                            <Paper square className={classes.header}>
                                                 <Typography style={{ color: "#394578" }}>{tutorialSteps[activeStep].label}</Typography>
                                             </Paper>
 

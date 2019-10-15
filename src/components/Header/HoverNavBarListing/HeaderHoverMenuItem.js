@@ -26,7 +26,7 @@ function HeaderHoverMenuItem(props) {
   const classes = useStyles();
   // console.log(props.listHoverItem);
   return (
-    <Paper  className={`${classes.paperdiv} `} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} >
+    <Paper  className={classes.paperdiv} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} >
       <Grid container>
         <Grid container item xs={3} className={classes.menulistWidth} >
           <MenuListItem listHoverItem={props.listHoverItem} handleMouseOver={val => setActivetab(val)} activetab={activetab} />

@@ -10,7 +10,7 @@ export const PRODUCTDETAILS = `query fetchProductDetails($conditionfilter:TransS
       colourVarient
       defaultWeight
       productType
-      productImagesByProductId (condition: {isdefault: true}) {
+      productImagesByProductId  {
         nodes {
           ishover
           imageUrl

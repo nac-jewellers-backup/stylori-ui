@@ -36,9 +36,9 @@ function ImageGridList(props) {
         <div className={classes.root}>
             <div>
                 <GridList cellHeight={170} className={classes.gridList} cols={3}>
-                    {props.tabdata[props.activetab].images.map(tile => (
+                    {props.tabdata[props.activetab].images.map((tile,i) => (
 
-                        <GridListTile key={tile.img} cols={tile.cols || 1} className={`${classes.ulDiv}`} >
+                        <GridListTile key={`${tile.img}-${i}`} cols={tile.cols || 1} className={`${classes.ulDiv}`} >
                             <img src={tile.img} className={'shine menuListHoverDiv  '}  cols={tile.cols || 1} style={{ width: '120px', height: '120px' }} alt="" />
                             <Grid container justify="center">
                                 <Grid item className={classes.imgTextColor}>

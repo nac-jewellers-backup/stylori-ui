@@ -10,7 +10,6 @@ export default function (data, cdnUrl) {
         mapperdata = [];
     }
     const _format = mapperdata.map(PD => ({
-
         title: PD.productName,
         skuId:PD.transSkuListsByProductId.nodes=== undefined ? '' : PD.transSkuListsByProductId.nodes.map(skus=>skus.generatedSku),
         price: (PD.transSkuListsByProductId.nodes).map(val => (
@@ -21,7 +20,7 @@ export default function (data, cdnUrl) {
         )),
         save: '5999.9',
         offerDiscount: '25% FLAT OFF',
-        dis: PD.transSkuListsByProductId.nodes[0].transSkuDescriptionsBySkuId.nodes[0] !== undefined ?PD.transSkuListsByProductId.nodes[0].transSkuDescriptionsBySkuId.nodes[0].skuDescription :'',
+        dis: PD.transSkuListsByProductId.nodes[0] !== undefined ?PD.transSkuListsByProductId.nodes[0].transSkuDescriptionsBySkuId.nodes[0].skuDescription :'',
         productType: PD.productType,
         fadeImages: (PD.productImagesByProductId.nodes.map(val => (
             `https://s3.ap-south-1.amazonaws.com/staging-assets.stylori.com/base_images/${val.imageUrl}`
@@ -115,23 +114,18 @@ export default function (data, cdnUrl) {
             header: "Diamond Details ",
             namedetail: [{
                 name: "Total No of Diamonds",
-                details: (PD.productDiamondsByProductSku.nodes).map(val => (
-                    val.stoneCount
-                ))
+                details: PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].stoneCount
             },
 
             {
                 name: "Color",
-                details: (PD.productDiamondsByProductSku.nodes).map(val => (
-                    val.diamondColour
-                ))
+                details: PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].diamondColour
+                
             },
 
             {
                 name: "Clarity",
-                details: (PD.productDiamondsByProductSku.nodes).map(val => (
-                    val.diamondClarity
-                ))
+                details: PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes[0].diamondClarity
             },
             {
                 name: "Shape",
@@ -183,7 +177,7 @@ export default function (data, cdnUrl) {
             },
             {
                 name: "Diamond",
-                details: "18K Yellow Gold"
+                details: PD.transSkuListsByProductId.nodes[0] && PD.transSkuListsByProductId.nodes[0].purity
             }, {
                 name: "Making Charges",
                 details: "1.463"

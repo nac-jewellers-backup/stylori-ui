@@ -2,7 +2,7 @@ import React from 'react';
 import { createApolloFetch } from 'apollo-fetch';
 import { NetworkContext } from 'context/NetworkContext';
 
-export const useGraphql = (query, mapper, variables = {}) => {
+export const useGraphql = (query, mapper, variables = {}, initRequest = false) => {
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(false);
     const [data, setData] = React.useState({});
@@ -10,8 +10,9 @@ export const useGraphql = (query, mapper, variables = {}) => {
     const { NetworkCtx: { graphqlUrl: uri, cdnUrl } } = React.useContext(NetworkContext);
     const client = createApolloFetch({ uri });
 
-    const makeRequest = () => {
-        client({ query, variables }).then(resdata => {
+    const makeRequest = (reqvars) => {
+       
+        client({ query, variables: { ...variables, ...reqvars } }).then(resdata => {
             setLoading(false);
             setError(false);
             setData(resdata);
@@ -35,9 +36,7 @@ export const useGraphql = (query, mapper, variables = {}) => {
     }
 
     React.useEffect(() => {
-        (() => {
-            makeRequest();
-        })()
+        if(initRequest) makeRequest();
     }, []);
 return { error, loading, data, mappedData, makeRequest }
 }

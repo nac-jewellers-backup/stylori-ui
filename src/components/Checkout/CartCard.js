@@ -132,7 +132,6 @@ class Checkoutcard extends React.Component {
         // const { dataCard1 } = this.props.data;
         const dataCard1 = this.props.data[0].dataCard1[0];
         const yousave = Math.round(Number(dataCard1.price) - Number(dataCard1.offerPrice))
-        debugger
         let path = window.location.pathname.split('/').pop();
         const { classes } = this.props;
         return (
