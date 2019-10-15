@@ -9,6 +9,7 @@ import { FilterOptionsContext } from 'context'
 import productList from 'mappers/productlist'
 import { CDN_URL } from 'config';
 import { withRouter } from "react-router"
+import  'screens/screens.css';
 
 class Stylori extends React.Component {
   render() {
@@ -46,7 +47,8 @@ const Components = props => {
       mapped = productList(data, CDN_URL);
     }
   }
-  if (Object.keys(data).length === 0) content = <div>Loading...</div>
+  if (Object.keys(data).length === 0) content =  <div className="overall-loader"><div id="loading"></div></div>
+  
   else content = <Stylori {...props} data={dataArr} />
   return content
 }

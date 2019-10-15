@@ -124,11 +124,11 @@ async function requestNotificationPermission(){
 function check(){
 
   if (!('serviceWorker' in navigator)) {
-    alert('Sorry notifications are not yet supported');
+    console.log('Sorry notifications are not yet supported');//alert
     return false;
   }
   if (!('PushManager' in window)) {
-    alert('Sorry notifications are not yet supported');
+    console.log('Sorry notifications are not yet supported');//alert
     return false;
   }
 

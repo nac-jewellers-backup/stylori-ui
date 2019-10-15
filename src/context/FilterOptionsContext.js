@@ -14,7 +14,7 @@ const initialCtx = {
             Offers: null, Availability: null, ProductType: null, style: null, material: null, Theme: null, Collection: null, metalColor: null,
             MetalPurity: null, Occasion: null, NoOfStones: null, Gender: null, stoneColor: null, stoneShape: null
         },
-        loading: false, error: false, data: [], offset: 3, dataArr: [], first: 2
+        loading: false, error: false, data: [], offset: 0, dataArr: [], first: 24
     },
     setFilters: (filterData) => { },
     setOffset: () => { },
@@ -30,8 +30,8 @@ const Provider = (props) => {
         Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, metalColor: {},
         MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}
     });
-    const [offset, setOffset] = React.useState(3)
-    const [first, setFirst] = React.useState(2)
+    const [offset, setOffset] = React.useState(0)
+    const [first, setFirst] = React.useState(24)
     const [dataArr, setDataArr] = React.useState([])
 
     var queries = []
@@ -87,14 +87,34 @@ const Provider = (props) => {
     }, [filters, offset])
 
     useEffect(() => {
-        const mapped = productlist(data, CDN_URL);
-        console.log('dataArr',dataArr)
-        const newUpdatedList = [...dataArr, ...mapped];
-        console.info('LISTUPDATE', a, data, mapped, newUpdatedList, dataArr)
-        setDataArr(newUpdatedList);
+        // const mapped = productlist(data, CDN_URL);
+        // console.log('dataArr',dataArr)
+        // const newUpdatedList = [...dataArr, ...mapped];
+        // console.info('LISTUPDATE', a, data, mapped, newUpdatedList, dataArr)
+        // setDataArr(newUpdatedList);
   
+        if(window.location.search !== ''){
+            const mapped = productlist(data, CDN_URL);
+            console.log('dataArr',dataArr)
+            const newUpdatedList = [...dataArr, ...mapped];
+            console.info('LISTUPDATE', a, data, mapped, newUpdatedList, dataArr)
+            setDataArr(newUpdatedList);   
+        }
+      
+    }, [data]);
 
-    }, [data])
+    useEffect(()=>{
+        if(window.location.search === ''){
+            setDataArr([])
+            console.log('dataArr',dataArr)
+            const mapped = productlist(data, CDN_URL);
+
+            const newUpdatedList = [...dataArr, ...mapped];
+            
+            console.info('LISTUPDATE', a, data, mapped, newUpdatedList, dataArr)
+            setDataArr(newUpdatedList);   
+        }
+    },[data])
 
     useEffect(() => console.info('DATAARRA', dataArr), [dataArr])
 

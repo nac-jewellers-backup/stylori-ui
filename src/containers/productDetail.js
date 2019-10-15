@@ -24,6 +24,7 @@ import { PRODUCTDETAILS, conditions } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { ProductDetailContext } from 'context/ProductDetailContext';
 import { CDN_URL } from 'config';
+import  'screens/screens.css';
 
 
 class ProductDetail extends Component {
@@ -153,7 +154,7 @@ const Components = props => {
   if (!loading && !error) {
     mapped = productDetails(datas);
   }
-  if (Object.keys(mapped).length === 0) return <div></div>
+  if (Object.keys(mapped).length === 0) return <div className="overall-loader"><div id="loading"></div></div>
   else {
     return <ProductDetail {...props} data={mapped} />
 

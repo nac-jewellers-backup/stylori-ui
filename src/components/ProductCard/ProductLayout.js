@@ -84,7 +84,7 @@ class Component extends React.Component {
 
   }
   handleOffset = () => {
-    const offsets = this.props.offset + 10
+    const offsets = this.props.offset + 24
     // console.log('offsets', offsets)
     this.props.setOffset(offsets)
   }

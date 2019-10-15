@@ -3,6 +3,7 @@ import { resolutions } from "utils";
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 
 export default function (data, cdnUrl) {
+    debugger
     let mapperdata = [];
     try {
         mapperdata = data.data.allProductLists.nodes;
@@ -10,6 +11,7 @@ export default function (data, cdnUrl) {
         mapperdata = [];
     }
     const _format = mapperdata.map(PD => ({
+        
         title: PD.productName,
         skuId:PD.transSkuListsByProductId.nodes=== undefined ? '' : PD.transSkuListsByProductId.nodes.map(skus=>skus.generatedSku),
         price: (PD.transSkuListsByProductId.nodes).map(val => (
@@ -114,7 +116,7 @@ export default function (data, cdnUrl) {
             header: "Diamond Details ",
             namedetail: [{
                 name: "Total No of Diamonds",
-                details: PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].stoneCount
+                details: (PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].length > 0) && PD.productDiamondsByProductSku.nodes[0].stoneCount
             },
 
             {
@@ -129,43 +131,31 @@ export default function (data, cdnUrl) {
             },
             {
                 name: "Shape",
-                details: (PD.productDiamondsByProductSku.nodes).map(val => (
-                    val.diamondShape
-                ))
+                details: PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].diamondShape
             }]
         },
         {
             header: "Gemstone Details",
             namedetail: [{
                 name: "Stone Type",
-                details: (PD.productGemstonesByProductSku.nodes).map(val => (
-                    val.gemstoneType
-                ))
+                details: (PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].length > 0) ? PD.productGemstonesByProductSku.nodes[0].gemstoneType : ''
             },
             {
                 name: "Shape",
-                details: (PD.productGemstonesByProductSku.nodes).map(val => (
-                    val.gemstoneShape
-                ))
+                details: (PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].length > 0) && PD.productGemstonesByProductSku.nodes[0].gemstoneShape
             },
             {
                 name: "Total No of Stones",
-                details: (PD.productGemstonesByProductSku.nodes).map(val => (
-                    val.stoneCount
-                ))
+                details: (PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].length > 0) && PD.productGemstonesByProductSku.nodes[0].stoneCount
             },
             {
                 name: "Size",
-                details: (PD.productGemstonesByProductSku.nodes).map(val => (
-                    val.gemstoneSize
-                ))
+                details: (PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].length > 0) && PD.productGemstonesByProductSku.nodes[0].gemstoneSize
             },
 
             {
                 name: "Setting",
-                details: (PD.productGemstonesByProductSku.nodes).map(val => (
-                    val.gemstoneSetting
-                ))
+                details: (PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].length > 0) && PD.productGemstonesByProductSku.nodes[0].gemstoneSetting
             }]
         },
 
@@ -177,7 +167,7 @@ export default function (data, cdnUrl) {
             },
             {
                 name: "Diamond",
-                details: PD.transSkuListsByProductId.nodes[0] && PD.transSkuListsByProductId.nodes[0].purity
+                details: (PD.transSkuListsByProductId.nodes[0] && PD.transSkuListsByProductId.nodes[0].length > 0) && PD.transSkuListsByProductId.nodes[0].purity
             }, {
                 name: "Making Charges",
                 details: "1.463"

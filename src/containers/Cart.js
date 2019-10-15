@@ -9,6 +9,7 @@ import Header from 'components/Header/header'
 import 'screens/Stylori/index.css'
 import {CartContext} from 'context'
 import cart from 'mappers/cart'
+import  'screens/screens.css';
 // data.map(data=>{
     // return(
     //     <Grid item xs={12}>
@@ -76,7 +77,7 @@ const Components = props => {
             mapped = cart(data);
         }
     }
-    if (Object.keys(data).length === 0) content = <div>Loading....</div>
+    if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
     else content = <Cart {...props} data={mapped} />
 
     return content
