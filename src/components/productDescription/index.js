@@ -64,7 +64,7 @@ class ProductDescription extends Component {
                   <CustomSeparator
                     list='product-dis'
                     classsubhed='product-backg'
-                    data={[window.location.hostname, path[1]]} />{/* window.location.pathname.split('/').pop()  */}
+                    data={[ path[1]]} />{/* window.location.pathname.split('/').pop()  */}
                 </Grid>
               </Hidden>
               <Hidden smDown >
