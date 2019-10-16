@@ -77,6 +77,7 @@ export default function (data, cdnUrl) {
                 header: "Diamond Clarity",
                 Children:
                     (PD.productDiamondsByProductSku.nodes).map(P => (
+                        
                         {
                             name: P.diamondType,
                             icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
@@ -96,11 +97,11 @@ export default function (data, cdnUrl) {
             header: "Product Details",
             namedetail: [{
                 name: "Product Code",
-                details: "SP0-110000"
+                details: PD.transSkuListsByProductId.nodes.length > 0 ? PD.transSkuListsByProductId.nodes[0].generatedSku : ''
             },
             {
                 name: "Metal Type",
-                details: PD.colourVarient
+                details: PD.transSkuListsByProductId.nodes.length > 0 && PD.transSkuListsByProductId.nodes[0].purity +' '+ PD.transSkuListsByProductId.nodes[0].metalColor
             }, {
                 name: "Approximate",
                 details: PD.defaultWeight

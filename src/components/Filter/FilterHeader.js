@@ -73,13 +73,15 @@ class FilterHeader extends Component {
 
                                 <Grid item onClick={this.props.handleChangeDrawer} style={{ display: 'flex', alignItems: 'center', position: 'absolute', top: '29%', left: '5%', cursor: 'pointer' }}>
                                     {
-                                        this.props.check ? <ChevronRightIcon className={`${classes.colorMain}`} />
+                                        this.props.check ? <i style={{fontSize:'22px',paddingRight:'15px'}} className={`fa ${classes.colorMain}`}>&#xf0b0;</i>
                                             :
-                                            <ChevronLeftIcon className={`${classes.colorMain}`} />
+                                            // <ChevronLeftIcon className={`${classes.colorMain}`} />
+                                            <i style={{fontSize:'22px',paddingRight:'15px'}} className={`fa ${classes.colorMain}`}>&#xf0b0;</i>
+                                            
 
                                     }
                                     <Typography color="inherit"
-                                        onClick={this.handleDrawerClose} noWrap
+                                        onClick={this.handleDrawerClose} 
                                         className={` fil-drawer-head ${classes.colorMain}`}
                                     >
                                         Filter By

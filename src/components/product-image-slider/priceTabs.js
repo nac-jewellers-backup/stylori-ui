@@ -46,6 +46,7 @@ class Component extends React.Component {
     };
 
     handleClick = (event,key) => {
+        debugger
         console.log(this.state.ringSize)
         var filters = {...this.props.filters}
         if(key === 'purity' ){
@@ -58,6 +59,7 @@ class Component extends React.Component {
            this.props.setFilters(filters);
         }
         else{
+            debugger
             filters['defaultVariants'][key]= event.target.id
             this.props.setFilters(filters);
         }

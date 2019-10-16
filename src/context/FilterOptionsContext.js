@@ -33,6 +33,10 @@ const Provider = (props) => {
     const [offset, setOffset] = React.useState(0)
     const [first, setFirst] = React.useState(24)
     const [dataArr, setDataArr] = React.useState([])
+    const [ { filterLogic }, setFilterLogic ] = React.useState({ filterLogic: () => [] });
+
+    useEffect(() => { setFilterLogic({ filterLogic: (d, t) => t }) },[ filters ])
+    useEffect(() => { setFilterLogic({ filterLogic: (d,t) => [...d,...t] }) },[ offset ])
 
     var queries = []
     const pathQueries = () => {
@@ -76,7 +80,7 @@ const Provider = (props) => {
     const updateProductList = () => {
         const conditionFilters = conditions.generateFilters(paramObjects())
         const variables = { ...conditionFilters, 'offsetvar': offset, 'firstvar': first }
-        makeRequest(variables);
+        makeRequest(variables)
     }
 
     useEffect(() => console.info('FILTERS', filters), [filters]);
@@ -96,7 +100,9 @@ const Provider = (props) => {
         if(window.location.search !== ''){
             const mapped = productlist(data, CDN_URL);
             console.log('dataArr',dataArr)
-            const newUpdatedList = [...dataArr, ...mapped];
+            // const newUpdatedList = [...dataArr, ...mapped];
+            const newUpdatedList = filterLogic(dataArr, mapped);
+            console.info('PROPERDATA',newUpdatedList)
             console.info('LISTUPDATE', a, data, mapped, newUpdatedList, dataArr)
             setDataArr(newUpdatedList);   
         }
@@ -106,15 +112,12 @@ const Provider = (props) => {
     useEffect(()=>{
         if(window.location.search === ''){
             setDataArr([])
-            console.log('dataArr',dataArr)
             const mapped = productlist(data, CDN_URL);
-
             const newUpdatedList = [...dataArr, ...mapped];
-            
             console.info('LISTUPDATE', a, data, mapped, newUpdatedList, dataArr)
             setDataArr(newUpdatedList);   
         }
-    },[data])
+    },[ data ])
 
     useEffect(() => console.info('DATAARRA', dataArr), [dataArr])
 

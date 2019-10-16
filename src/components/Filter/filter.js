@@ -95,12 +95,34 @@ class Component extends React.Component {
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     let arr = [];
-    if (BoolName === true) {
-      chipData.push({ key: chipData[chipData.length - 1].key, label: value });
-    } else {
-      arr = chipData.filter(val => val.label !== value);
-      chipData = arr;
-    }
+    var queries = [{}]
+  
+    
+    Object.keys(checked).map(fk => {
+      const filter = checked[fk];
+      const fv = Object.keys(filter);
+      if (fv.length > 0) {
+          if (filter[fv[0]]) {
+              const qt = `${fk}:${fv[0]}`;
+              queries.push(qt);
+          }
+
+      }
+  })
+
+console.log('queries',queries)
+debugger
+// queries.map(val =>{
+  // chipData.push({ key:'1', label: 'o' });
+// })
+  // chipData.push({ key: queries.key, label: value });
+
+    // if (BoolName === true) {
+    //   chipData.push({ key: queries.key, label: value });
+    // } else {
+    //   arr = chipData.filter(val => val.label !== value);
+    //   chipData = arr;
+    // }
 
     if(TargetName === undefined){
       let checkedvalue = {};
