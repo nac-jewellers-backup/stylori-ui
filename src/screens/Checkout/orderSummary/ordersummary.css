@@ -41,7 +41,10 @@
     color: #fff !important;
     text-transform: none !important;
 }
-
+.sml{
+    margin: 11px !important;
+    margin-bottom: 0px !important;
+}
 .side-arrow-symbol {
     font-family: "FontAwesome" !important;
     font-size: 18px !important;

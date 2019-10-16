@@ -3,7 +3,7 @@ import { useNetworkRequest } from 'hooks/index';
 
 
 const useLogin = () => {
-    const [ values, setValues ] = React.useState({ username:null, password: null, email:'nac@dinesh.com', roles:'admin' });
+    const [ values, setValues ] = React.useState({ username:null, password: null});
     const [ invalids, setInvalids ] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/signin', values, () => []);
 

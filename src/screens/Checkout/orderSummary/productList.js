@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 import { Input } from '../../../components/InputComponents/TextField/Input';
 import { withStyles } from '@material-ui/core/styles';
-
+import Checkoutcard from '../../../components/Checkout/CartCard';
 const styles = theme => ({
     cart: {
         [theme.breakpoints.down('xs')]: {
@@ -28,19 +28,32 @@ class Productlist extends React.Component {
     state = {
         message: "",
         from: "",
-        to: ""
+        to: "",
+        expanded1: "panel1",
+        expanded2: "panel2",
+        expanded3: "panel3",
+        values: localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
     }
     handleChange(event, name) {
         this.setState({
             [name]: event.target.value
         })
     }
-
+    componentWillReceiveProps(newprops) {
+        this.setState({
+            values: this.props.values
+        })
+    }
     handleSubmit = (e) => {
         // e.preventDefault();
     }
+    //  handleChangemodal = panel => (event, newExpanded) => {
+    //     this.setState(newExpanded ? panel : false);
+    //   };
     render() {
         const { classes } = this.props;
+        let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
+        const { expanded1, expanded2, expanded3 } = this.state;
         return (
             <Container>
                 <div className='pt-sm'>
@@ -49,9 +62,13 @@ class Productlist extends React.Component {
                         <Grid container spacing={12}>
                             <Grid item xs={12} lg={4}>
 
-                                <ExpansionPanel className={classes.cart} >
+                                <ExpansionPanel className={classes.cart}
+                                    square
+                                    className={classes.cart}
+                                    expanded={expanded1 === 'panel1'} >
                                     <ExpansionPanelSummary
-                                        expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}
+                                        aria-controls="panel1d-content" id="panel1d-header"
+                                        expandIcon={<span className='side-arrow-symbol '><i class="fa fa-sort-up sml"></i></span>}
                                         aria-controls="panel1a-content"
                                         id="panel1a-header"
                                         className='order-ship'
@@ -61,9 +78,11 @@ class Productlist extends React.Component {
                                     <ExpansionPanelDetails className='order-ship pdng'>
                                         <div style={{ width: "100%" }}>
 
-                                            <p className='dis-phn btm'>Prakash pravi</p>
-                                            <p className='dis-phn btm'> 11 , North West Delhi - 110034</p>
-                                            <p className='dis-phn'>Phone : +91 734897348743</p>
+                                            <p className='dis-phn btm'>{value.firstname}{value.lastname}</p>
+                                            <p className='dis-phn btm'><div
+                                                style={{ width: "100%", overflow: "hidden", textOverflow: "ellipsis" }} >{value.adrs_address}</div> &nbsp;{value.city}
+                                                &nbsp;{value.state}-{value.pincode}</p>
+                                            <p className='dis-phn'>Phone : +91  {value.contactno} </p>
                                         </div>
 
                                     </ExpansionPanelDetails>
@@ -71,9 +90,13 @@ class Productlist extends React.Component {
                             </Grid>
 
                             <Grid item xs={12} lg={4}>
-                                <ExpansionPanel className={classes.cart} >
+                                <ExpansionPanel
+                                    square
+                                    className={classes.cart}
+                                    expanded={expanded2 === 'panel2'} >
                                     <ExpansionPanelSummary
-                                        expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}
+                                        aria-controls="panel1d-content" id="panel1d-header"
+                                        expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up sml" ></i></span>}
                                         aria-controls="panel1a-content"
                                         id="panel1a-header"
                                         className='order-ship'
@@ -119,9 +142,12 @@ class Productlist extends React.Component {
 
 
                             <Grid item xs={12} lg={4}>
-                                <ExpansionPanel className={classes.cart} >
+                                <ExpansionPanel className={classes.cart}
+                                    square
+                                    expanded={expanded3 === 'panel3'} >
                                     <ExpansionPanelSummary
-                                        expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}
+                                        aria-controls="panel1d-content" id="panel1d-header"
+                                        expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up sml" ></i></span>}
                                         aria-controls="panel1a-content"
                                         id="panel1a-header"
                                         className='order-ship'

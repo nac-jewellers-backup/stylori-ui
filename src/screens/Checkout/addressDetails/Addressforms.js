@@ -3,77 +3,84 @@ import { useNetworkRequest } from 'hooks/index';
 
 
 const Addressforms = () => {
+    // let valuesData = localStorage.getItem("valuessetdata") ?  JSON.parse(localStorage.getItem("valuessetdata")) :{}
+    const errorMessages = {
+        firstname: 'someerror'
+    }
+    const [errors, setError] = React.useState({})
+    const handleError = e => {
+        e.preventDefault();
+        setError({
+            ...errors,
+            [e.target.name]: true,
+        })
+    }
+    let cart_id = localStorage.getItem("addtocart") ? JSON.parse(localStorage.getItem("addtocart")).cart_id : {}
+    let user_id = localStorage.getItem("response") ? JSON.parse(localStorage.getItem("response")).user.id : {}
+    var address = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
+    delete address['addrs'];
+    let obj = {}
+    obj['cart_id'] = cart_id
+    obj['user_id'] = user_id
+    obj['address'] = [address]
+    debugger
     const [values, setValues] = React.useState({
-        adrs_firstname: null,
-        adrs_lastname: null,
-        adrs_selectcountry: null,
-        adrs_zipcode: null,
-        adrs_address: null,
-        adrs_state: null,
-        adrs_City: null,
-        adrs_phonenumber: null,
-        adrs_numcode: null,
-        bill_firstname: null,
-        bill_lastname: null,
-        bill_selectcountry: null,
-        bill_zipcode: null,
-        bill_address: null,
-        bill_state: null,
-        bill_City: null,
-        bill_phonenumber: null,
-        bill_numcode: null,
-        bill_isNumber: false,
-        addrs: true,
-        checkValue: false
+        cart_id,
+        user_id,
+        address: [
+            {
+
+                address,
+                // cart_id, user_id,
+                // firstname: '',
+                // lastname: '',
+                // country: '',
+                // pincode: '',
+                // addressline1: '',
+                // addressline2: '',
+                // state: '',
+                // city: '',
+                // contactno: '',
+                // country_code: '',
+                addresstype: 1
+            }
+        ],
+        // bill_firstname: null,
+        // bill_lastname: null,
+        // bill_selectcountry: null,
+        // bill_zipcode: null,
+        // bill_address: null,
+        // bill_state: null,
+        // bill_City: null,
+        // bill_phonenumber: null,
+        // bill_numcode: null,
+        // bill_isNumber: false,
+        addrs: localStorage.getItem("valuessetdata") ? false : true,
+        checkValue: true,
+        checkValue1: true,
     });
-    const [invalids, setInvalids] = React.useState({
-        adrs_firstname: false,
-        adrs_lastname: false,
-        adrs_selectcountry: false,
-        adrs_zipcode: false,
-        adrs_address: false,
-        adrs_state: false,
-        adrs_City: false,
-        adrs_phonenumber: false,
-        adrs_numcode: false,
-        bill_firstname: false,
-        bill_lastname: false,
-        bill_selectcountry: false,
-        bill_zipcode: false,
-        bill_address: false,
-        bill_state: false,
-        bill_City: false,
-        bill_phonenumber: false,
-        bill_numcode: false,
-    });
-    const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addaddress', values, () => []);
+    const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addaddress', obj, () => []);
 
     const handleChange = (type, value) => {
         setValues({
             ...values,
-            [type]: value
+            [value]: type.target.value
         })
     }
-
-    const handleInvalid = (type, status) => {
-        setInvalids({
-            ...invalids,
-            [type]: status
-        })
-    }
-
-    const handleSubmit = () => {
-
+    const handleSubmit = (e) => {
+        e.preventDefault()
         makeFetch();
+        return false;
     }
     const handleKeyPress = (e, isNumber) => {
         if (isNumber) {
             if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
         }
     };
-    const handle = { handleChange, handleInvalid, handleSubmit, handleKeyPress };
-
-    return { values, handle }
+    const redirectForm = () => {
+        setValues({ addrs: !values.addrs })
+    }
+    const handle = { handleChange, handleSubmit, handleKeyPress, redirectForm };
+    return { values, handle, setValues, errors, handleError, errorMessages }
 }
-
 export default Addressforms;

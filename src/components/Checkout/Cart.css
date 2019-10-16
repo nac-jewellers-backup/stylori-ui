@@ -25,6 +25,21 @@
         left: 100%;
         z-index: 2;
     }
+    .ch-d-vl{
+        position: relative;
+        top: 5px;
+        left: 10px;
+        text-align: center;
+        text-decoration: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        color: #777 !important;
+        font-size: 13px !important;
+        font-weight: 100 !important;
+    }
+ 
+ 
 
     .bread-header ol li a:before {
         content: " ";

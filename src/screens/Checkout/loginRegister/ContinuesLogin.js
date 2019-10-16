@@ -1,11 +1,9 @@
 import React from 'react';
 import { useNetworkRequest } from 'hooks/index';
-import { FlashAuto } from '@material-ui/icons';
-
 
 const ContinuesLogin = () => {
-    const [ values, setValues ] = React.useState({ mail:null});
-    const [ invalids, setInvalids ] = React.useState({ mail:false });
+    const [values, setValues] = React.useState({ email: null });
+    // const [invalids, setInvalids] = React.useState({ email: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/guestlogin', values, () => []);
     const handleChange = (event, name) => {
         setValues({
@@ -13,24 +11,14 @@ const ContinuesLogin = () => {
             [name]: event.target.value
         })
     }
-
-    const handleInvalid = (type, status) => {
-        setInvalids({
-            ...invalids,
-            [type]: status
-        })
-    }
-
-    const handleSubmit = async (e, handleOtp) => {
+    const handleSubmit = (e, handleOtp) => {
         e.preventDefault()
-        await makeFetch();
+        makeFetch();
         handleOtp(true);
         return false;
     }
-
-    const handle = { handleChange, handleInvalid , handleSubmit};
-
-    return { values, handle  }
+    const handle = { handleChange, handleSubmit };
+    return { values, handle, data }
 }
 
 export default ContinuesLogin;
