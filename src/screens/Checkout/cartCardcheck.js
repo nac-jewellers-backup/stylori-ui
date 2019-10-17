@@ -94,15 +94,15 @@ class CartCardCheck extends React.Component {
                             expanded={expanded === 'panel2'}
                             onChange={this.handleChange(1)}
                             style={{ boxShadow: "none" }}>
-                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className={`ckcut-main-body ${classes.normalfonts}`}>
+                            <ExpansionPanelSummary style={{width:"100%",overflow:"hidden"}} expandIcon={<ExpandMoreIcon className='arrow-chek' />} className={`ckcut-main-body ${classes.normalfonts}`}>
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>2</Avatar>
                                 <Typography className='text-chck'>Address Detail
 
-                                <div className="ch-d-vl">
+                                {/* <div className="ch-d-vl">
                                         {value.firstname}{value.lastname}&nbsp;
                                 {value.addressline1}&nbsp;{value.city}
                                         {value.state}&nbsp;{value.pincode}
-                                    </div>
+                                    </div> */}
 
                                 </Typography>
                             </ExpansionPanelSummary>
