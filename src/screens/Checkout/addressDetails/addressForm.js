@@ -11,7 +11,7 @@ const Addressform = (props) => {
     return <AddressComponent   {...props} />
 }
 
-const AddressComponent = (props) => { 
+const AddressComponent = (props) => {
     const { values, handle, setValues } = Addressforms();
     const cl = <input onChange={() => setValues({
         ...values,
@@ -29,7 +29,7 @@ const AddressComponent = (props) => {
                             //
                         }}>
                             <h5 className='title'> Shipping Address</h5>
-                            <p class="form-group tp ts" style={{ width: "480px" }}>
+                            <p class="form-group tp" style={{ width: "480px" }}>
                                 {/* <Checkboxes CheckBoxValues={['']} change={() => {
                                     setValues({
                                         checkValue: !values.checkValue
@@ -38,11 +38,12 @@ const AddressComponent = (props) => {
                                 {cl}
                                 {/* {values.checkValue + ""} */}
                                 {/* If your billing address is different from the shipping adress please uncheck the box to select billing address. */}
-                                
-                                {!values.checkValue &&'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
-                                {values.checkValue &&'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
-                                </p>  <Grid container item xs={12} lg={12} >
+
+
+                            </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={5}>
+                                    {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
+                                    {values.checkValue && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
                                     <Grid container spacing={12}>
                                         <Grid item xs={4} lg={4}>
                                             <SimpleSelect name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
@@ -328,24 +329,24 @@ const AddressComponent = (props) => {
                                                     required
                                                 /> */}
                                                 <FormControl disabled style={{ width: "100%", marginTop: '13%' }}>
-                                                <InputLabel htmlFor="name-disabled"
-                                                    style={{
-                                                        marginLeft: '40%',
-                                                        marginTop: '-4%'
-                                                    }}>+91</InputLabel>
-                                                <Select
-                                                    input={<OutlinedInput id="name-disabled" />}
-                                                    style={{ width: "100%" }}
-                                                    variant="outlined"
-                                                    value={values.name}
-                                                    //   onChange={handleChange}
-                                                    inputProps={{
-                                                        name: 'name',
-                                                        id: 'name-disabled',
-                                                    }}
-                                                >
-                                                </Select>
-                                            </FormControl>
+                                                    <InputLabel htmlFor="name-disabled"
+                                                        style={{
+                                                            marginLeft: '40%',
+                                                            marginTop: '-4%'
+                                                        }}>+91</InputLabel>
+                                                    <Select
+                                                        input={<OutlinedInput id="name-disabled" />}
+                                                        style={{ width: "100%" }}
+                                                        variant="outlined"
+                                                        value={values.name}
+                                                        //   onChange={handleChange}
+                                                        inputProps={{
+                                                            name: 'name',
+                                                            id: 'name-disabled',
+                                                        }}
+                                                    >
+                                                    </Select>
+                                                </FormControl>
                                             </Grid>
                                             <Grid item xs={9} lg={9}>
                                                 <Input

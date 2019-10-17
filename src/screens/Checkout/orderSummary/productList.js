@@ -80,7 +80,7 @@ class Productlist extends React.Component {
 
                                             <p className='dis-phn btm'>{value.firstname}{value.lastname}</p>
                                             <p className='dis-phn btm'><div
-                                                style={{ width: "100%", overflow: "hidden", textOverflow: "ellipsis" }} >{value.adrs_address}</div> &nbsp;{value.city}
+                                                style={{ width: "100%", overflow: "hidden", textOverflow: "ellipsis" }} >{value.addressline1}</div> &nbsp;{value.city}
                                                 &nbsp;{value.state}-{value.pincode}</p>
                                             <p className='dis-phn'>Phone : +91  {value.contactno} </p>
                                         </div>
@@ -105,14 +105,16 @@ class Productlist extends React.Component {
                                     </ExpansionPanelSummary>
                                     <ExpansionPanelDetails className='order-ship pdng'>
                                         <div style={{ width: "100%" }}>
-                                            <from onSubmit={this.handleSubmit()}>
+                                            <from onSubmit={(e) => this.handleSubmit(e)}>
                                                 <Input
-                                                    placeholder='Form'
                                                     name="from"
                                                     type="text"
                                                     value={this.state.from}
+                                                    placeholder="From"
                                                     required
-                                                    onChange={(event) => this.handleChange(event)}
+                                                    onChange={(event) => this.handleChange(event, "from")}
+                                                    helperText="From is required"
+
                                                 />
                                                 <Input
                                                     placeholder='To'
