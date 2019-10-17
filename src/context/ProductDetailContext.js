@@ -40,7 +40,6 @@ export const TabsProvider = (props) => {
         let defaultVariants = productDetailProps.defaultVariant;
         filters['productId'] = productId;
         filters['defaultVariants'] = defaultVariants
-        debugger
     }
 
 

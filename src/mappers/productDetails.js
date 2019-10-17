@@ -3,7 +3,6 @@ import { resolutions } from "utils";
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 
 export default function (data, cdnUrl) {
-    debugger
     let mapperdata = [];
     try {
         mapperdata = data.data.allProductLists.nodes;

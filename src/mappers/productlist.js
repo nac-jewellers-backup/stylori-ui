@@ -7,7 +7,7 @@ const hoverImage = (placeImage) => placeImage.length === 0 ?'product/SR0662/HOVE
 
 
 export default function (data, cdnUrl) {
-
+    debugger
     let mapperdata = [];
     try {
         mapperdata = data.data.allProductLists.nodes;
@@ -15,9 +15,11 @@ export default function (data, cdnUrl) {
         mapperdata = [];
     }
     const _format = mapperdata.map(k => {
+        
         let _d;
         try {
             _d = {
+                totalCount: 500,//data.length>0 ? data.length : data.data.allProductLists.totalCount 
                 price:(k.transSkuListsByProductId.nodes[0] === undefined  )? 15343 : k.transSkuListsByProductId.nodes[0].discountPrice,
                 offerPrice: k.transSkuListsByProductId.nodes[0] === undefined   ? 13203 : k.transSkuListsByProductId.nodes[0].markupPrice,
                 title: k.productName,

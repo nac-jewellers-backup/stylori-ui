@@ -28,7 +28,6 @@ export default function SimpleSelect(props) {
        // console.info('EVENT', values.age, Boolean((values.age != null && values.age !== "")));
    }, [values.age])
    function handleChange(event) {
-       debugger
        setValues({ [event.target.name]: event.target.value, helperText: !Boolean((event.target.value != null && event.target.value !== "")) })
    }
    return (

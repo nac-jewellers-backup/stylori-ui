@@ -52,7 +52,7 @@ class Component extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      colSize: window.innerWidth
+      colSize: window.innerWidth,
     }
   }
   componentDidMount() {
@@ -90,6 +90,9 @@ class Component extends React.Component {
   }
   render() {
     const { classes, data } = this.props;
+    debugger
+    const {disabledstate} = this.state
+    // const disabledstate = this.props.data.length < 24 ? 'disabled=true' : ''
     // console.log(dataCard)
     // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
     return (
@@ -110,8 +113,8 @@ class Component extends React.Component {
 
         </GridList>
         <div className={`${classes.gridlistmainviewmore}`}>
-          <Button variant="contained" className={`${classes.button}  ${classes.viewmoreColor}`} onClick={() => { this.handleOffset() }}>
-            View {data.length} More Products
+          <Button variant="contained"  className={`${classes.button}  ${classes.viewmoreColor}`} onClick={() => { this.handleOffset() }} disabled={data.length < 24} >
+          { data.length === 0 && `No products found` }  {data.length >= 24 && ` View ${data.length > 0 ? data[0].totalCount-data.length : ''} More Products`} {(data.length >0 && data.length< 24) && `Only ${data.length > 0 ? data[0].totalCount-data.length : ''} products avalilable`}
       </Button>
         </div>
 

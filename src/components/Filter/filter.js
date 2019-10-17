@@ -334,8 +334,9 @@ debugger
                                         >{row}
                                         </Typography>
                                       </ListItemText>
-                                      {row === selected ? <ExpandMore className="fil-drawer-arrow" /> :
-                                        <ExpandLess className="fil-drawer-arrow" />}
+                                      {row === selected ? <ExpandLess className="fil-drawer-arrow" /> :
+                                        
+                                        <ExpandMore className="fil-drawer-arrow" />}
                                     </ListItem>
                                     <>
                                       {(selected === row &&
@@ -370,7 +371,8 @@ debugger
                                           }
 
                                           {
-                                            (subFilter[row].length) - 4 !== 0 &&
+                                            (subFilter[row].length) - 4 !== 0 && (subFilter[row].length) - 4 > 0  &&
+                                            
                                             <>
                                               {this.state[`li_${row}`] === undefined || this.state[`li_${row}`] === 4 ?
 

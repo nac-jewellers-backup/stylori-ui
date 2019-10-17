@@ -18,9 +18,7 @@ class Addressdetails extends React.Component {
     }
     Addressdetails = (props, value) => {
         const { setValues, values } = props;
-        debugger
         const cl = <input onChange={(e) => {
-            debugger
             setValues({
                 ...values,
                 checkValue1: !values.checkValue1
