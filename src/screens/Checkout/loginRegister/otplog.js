@@ -37,7 +37,7 @@ const OtpComponent = (props) => {
                                 placeholder="Enetr your otp"
                                 onChange={event => handle.handleChange(event, 'otp')}
                                 onKeyPress={event => handle.handleKeyPress(event, 'isNumber')}
-                                helperText="your OTP is Required"
+                                helperText="Please enter your otp"
                                 required
                             />
                             <div className='login-butn'>

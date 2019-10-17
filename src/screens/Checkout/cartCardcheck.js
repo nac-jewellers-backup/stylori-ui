@@ -22,16 +22,16 @@ import { cartdatas } from '../../mappers';
 import CustomSeparator from '../../components/BreadCrumb/index'
 import styles from '../Checkout/loginRegister/style';
 import CartCard from '../../components/Checkout/CartCard'
-import {CartContext} from '../../context/CartContext';
+import { CartContext } from '../../context/CartContext';
 import cart from '../../mappers/cart';
 
 class CartCardCheck extends React.Component {
     state = {
-        expanded: 'panel'+(localStorage.getItem("panel") ? localStorage.getItem("panel") : 1),
+        expanded: 'panel' + (localStorage.getItem("panel") ? localStorage.getItem("panel") : 1),
         expandedlimit: localStorage.getItem("panel") ? localStorage.getItem("panel") : 1,
         //   expanded: 'panel2',
         // expandedlimit: 1,
-        
+
         mailId: null
     }
 
@@ -52,30 +52,22 @@ class CartCardCheck extends React.Component {
         })
     }
 
-    datalist = (datalist) => {
-        let { CartCtx: { data, loading, error } } = datalist;
-    let  mapped;
-            mapped = cart(data);
-    return mapped;
-    }
     render() {
 
         const { expanded, mailId, expandedlimit } = this.state;
-        const { classes } = this.props;
+        const { classes, data } = this.props;
         const { breadcrumsdata, cartsubdata } = this.props.data;
         let email = localStorage.getItem("email") ? JSON.parse(localStorage.getItem("email")).email : ''
         let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
         return (
-            <CartContext.Consumer>
-            {cartContext => <>
-
+            <>
                 <CustomSeparator
                     arrowicon='cart-head-arrows'
                     className={`breadcrums-header ${classes.normalcolorback}`}
                     classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
                     list={`MuiBreadcrumbs-li ${classes.fontwhite}`}
-                    data={breadcrumsdata}
-                    subdata={cartsubdata}
+                    data={this.props.data[0].breadcrumsdata}
+                    subdata={this.props.data[0].cartsubdata}
                 />
                 <div className='pt-sm checkout-ovralldiv-media' >
 
@@ -105,14 +97,14 @@ class CartCardCheck extends React.Component {
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className={`ckcut-main-body ${classes.normalfonts}`}>
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>2</Avatar>
                                 <Typography className='text-chck'>Address Detail
-                                
+
                                 <div className="ch-d-vl">
-                                {value.firstname}{value.lastname}&nbsp;
+                                        {value.firstname}{value.lastname}&nbsp;
                                 {value.adrs_address}&nbsp;{value.city}
-                                {value.state}&nbsp;{value.pincode}
-                                </div>
-                                
-                                 </Typography>
+                                        {value.state}&nbsp;{value.pincode}
+                                    </div>
+
+                                </Typography>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
                                 <Grid container >
@@ -134,7 +126,7 @@ class CartCardCheck extends React.Component {
                                 <Grid container >
                                     <Grid item xs={12} lg={12}>
                                         {/* {JSON.stringify(this.datalist(cartContext))} */}
-                                        {/* <CartCard  data={this.datalist(cartContext)}/> */}
+                                        <CartCard data={data} />
                                     </Grid>
                                     <Grid item xs={12} lg={12} className={classes.cart}>
                                         <ProductList />
@@ -160,13 +152,26 @@ class CartCardCheck extends React.Component {
 
                     </div>
                 </div>
-            </>}
-            </CartContext.Consumer>
+            </>
         )
     }
 }
-export default withStyles(styles)(props => {
-    const { mapped } = useDummyRequest(cartdatas);
-    if (Object.keys(mapped).length === 0) return '';
-    return <CartCardCheck {...props} data={mapped} />
-});
+// export default withStyles(styles)(props => {
+//     const { mapped } = useDummyRequest(cartdatas);
+//     if (Object.keys(mapped).length === 0) return '';
+//     return <CartCardCheck {...props} data={mapped} />
+// });
+const Components = props => {
+    let { CartCtx: { data, loading, error } } = React.useContext(CartContext);
+    let content, mapped;
+    if (!loading && !error) {
+        if (Object.keys(data).length !== 0) {
+            mapped = cart(data);
+        }
+    }
+    if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
+    else content = <CartCardCheck {...props} data={mapped} />
+
+    return content
+}
+export default withStyles(styles)(Components);

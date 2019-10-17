@@ -36,7 +36,7 @@ const ContinuesComponent = (props) => {
                                     value={values.email}
                                     // error={this.state.mail ? this.state.mail : "**"}
                                     required
-                                    helperText="Guest login is required"
+                                    helperText="Please enter your mail Id"
                                     onChange={event => handle.handleChange(event, 'email')}
                                 />
                                 <p className={`form-group ${classes.normalfonts}`}> We don't share these with anybody. Your contact details are secure with us. </p>

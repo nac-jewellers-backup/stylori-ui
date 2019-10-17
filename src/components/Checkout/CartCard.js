@@ -39,7 +39,7 @@ class Checkoutcard extends React.Component {
         const { productsDetails, fadeImages, dataCard1 } = this.props.data;
         return (
             <div style={{ marginTop: "10px" }}>
-                {this.props.data.map(data=>(
+                {this.props.data.map(data => (
                     data.productsDetails.map(val => (
                         <div className={classes.cart}>
                             <Grid container spacing={12} xs={12}  >
@@ -67,7 +67,7 @@ class Checkoutcard extends React.Component {
                                         <Grid item xs={6} >
                                             {val.namedetail !== undefined && val.namedetail.map(val => (
                                                 <Grid container spacing={12}>
-    
+
                                                     <Grid item xs={6} >
                                                         <Typography className={`subhesder ${classes.normalfonts}`}>{val.name}</Typography>
                                                     </Grid>
@@ -75,10 +75,10 @@ class Checkoutcard extends React.Component {
                                                         <Typography className={`subhesder ${classes.normalfonts}`}>{val.details}</Typography>
                                                     </Grid>
                                                 </Grid>
-    
+
                                             ))}
                                         </Grid>
-    
+
                                         <Grid item xs={3} >
                                             <Typography className={`subhesder ${classes.normalfonts}`}>Quantity 1</Typography>
                                             <br />
@@ -86,10 +86,10 @@ class Checkoutcard extends React.Component {
                                                 <i class="fa fa-trash"></i>
                                                 &nbsp;Remove</Typography>
                                         </Grid>
-    
+
                                     </Grid>
                                 </Grid>
-    
+
                                 <Grid item xs={3} >
                                     <div style={{ marginTop: "15%" }}>
                                         {data.dataCard1.map(val =>
@@ -121,8 +121,8 @@ class Checkoutcard extends React.Component {
             <div>
                 {path == "checkout" ? "" :
                     <div className='ckeckout-top'>
-                            <NavLink to="/checkout" style={{ textDecoration: 'none' }}>
-                        <Buynowbutton class={`chckout-page-buynow ${classes.buttons}`} />
+                        <NavLink to="/checkout" style={{ textDecoration: 'none' }}>
+                            <Buynowbutton class={`chckout-page-buynow ${classes.buttons}`} />
                         </NavLink>
                     </div>}
             </div>
@@ -140,25 +140,25 @@ class Checkoutcard extends React.Component {
                     <Grid item xs={3} lg={9} />
                     <Grid item xs={9} lg={3}>
                         {/* {dataCard1.map(val => */}
-                            <Grid container>
-                                <Grid xs={7} lg={5}>
-                                    <Typography class={`subhesder ${classes.normalfonts}`}>Subtotal</Typography>
-                                    <Typography class={`subhesder ${classes.normalfonts}`}>You Saved</Typography>
-                                    <Typography class={`subhesder ${classes.normalfonts}`}>Shipping</Typography>
-                                    <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>Grand Total</Typography>
-                                </Grid>
-                                <Grid xs={5} lg={5}>
-                                    <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(dataCard1.offerPrice)}</Typography>
-                                    <Typography class={`subhesder ${classes.normalfonts}`}>{yousave}</Typography>
-                                    <Typography class={`subhesder ${classes.normalfonts}`}>------- </Typography>
-                                    <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>{Math.round(dataCard1.offerPrice)}</Typography>
-                                </Grid>
+                        <Grid container>
+                            <Grid xs={7} lg={5}>
+                                <Typography class={`subhesder ${classes.normalfonts}`}>Subtotal</Typography>
+                                <Typography class={`subhesder ${classes.normalfonts}`}>You Saved</Typography>
+                                <Typography class={`subhesder ${classes.normalfonts}`}>Shipping</Typography>
+                                <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>Grand Total</Typography>
                             </Grid>
-                        {/* // )}  */}
+                            <Grid xs={5} lg={5}>
+                                <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(dataCard1.offerPrice)}</Typography>
+                                <Typography class={`subhesder ${classes.normalfonts}`}>{yousave}</Typography>
+                                <Typography class={`subhesder ${classes.normalfonts}`}>------- </Typography>
+                                <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>{Math.round(dataCard1.offerPrice)}</Typography>
+                            </Grid>
                         </Grid>
+                        {/* // )}  */}
+                    </Grid>
                 </Grid>
                 <Grid container>
-                    {path == "Checkout" ? "" :
+                    {path == "checkout" ? "" :
                         <Grid xs={12} lg={7}>
                             <div className='btn-plain'> CONTINUE SHOPPING</div>
                         </Grid>}
@@ -178,7 +178,7 @@ class Checkoutcard extends React.Component {
         debugger
         // const {  cartsubdata } = this.props.data;
 
-        
+
         const { classes } = this.props;
         let path = window.location.pathname.split('/').pop();
         return (
