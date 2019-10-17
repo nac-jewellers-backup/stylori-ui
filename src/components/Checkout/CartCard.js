@@ -19,7 +19,6 @@ import styles from "./style"
 import { NavLink } from 'react-router-dom';
 // 
 // 
-import CustomSeparator from '../../components/BreadCrumb/index'
 
 
 class Checkoutcard extends React.Component {
@@ -35,12 +34,13 @@ class Checkoutcard extends React.Component {
             slidesToShow: 1,
             arrows: false,
         }
-        const { classes } = this.props;
+        const { classes, data } = this.props;
         const { productsDetails, fadeImages, dataCard1 } = this.props.data;
+        debugger
         return (
             <div style={{ marginTop: "10px" }}>
-                {this.props.data.map(data => (
-                    data.productsDetails.map(val => (
+                {this.props.data.map(dataval => (
+                    dataval.productsDetails.map(val => (
                         <div className={classes.cart}>
                             <Grid container spacing={12} xs={12}  >
                                 <Grid item xs={1}  >
@@ -58,7 +58,7 @@ class Checkoutcard extends React.Component {
                                             }
                                         />
                                         <Slideshow class="image"
-                                            fadeImages={fadeImages} dataCarousel={dataCarousel} />
+                                            fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
                                     </Card>
                                 </Grid>
                                 <Grid item xs={6} style={{ padding: "20px" }}>
@@ -92,7 +92,7 @@ class Checkoutcard extends React.Component {
 
                                 <Grid item xs={3} >
                                     <div style={{ marginTop: "15%" }}>
-                                        {data.dataCard1.map(val =>
+                                        {dataval.dataCard1.map(val =>
                                             <Pricing price={val.price} offerPrice={val.offerPrice} >
                                                 <div className="product-rate">
                                                     <span class="offer-price">{val.price}</span><br />
@@ -184,17 +184,6 @@ class Checkoutcard extends React.Component {
         return (
             <div>
                 <Hidden smDown>
-                    {path === "checkout" ? "" :
-                        <CustomSeparator
-                            arrowicon='cart-head-arrows'
-                            className={`breadcrums-header ${classes.normalcolorback}`}
-                            classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
-                            list={`MuiBreadcrumbs-li ${classes.fontwhite}`}
-                            data={this.props.data[0].breadcrumsdata}
-                            subdata={this.props.data[0].cartsubdata}
-                        />
-                    }
-
                     {this.checkoutbutton()}
                     <br />
                     <br />
@@ -205,8 +194,6 @@ class Checkoutcard extends React.Component {
                     <CardSmallScreen />
                     {this.subtotals()}
                 </Hidden>
-
-
             </div>
         )
     }

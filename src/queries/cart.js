@@ -12,6 +12,11 @@ export const CART = `query MyQuery($productList: [String!]) {
             markupPrice
           }
         }
+        productImagesByProductId {
+          nodes {
+            imageUrl
+          }
+        }
       }
     }
   }`

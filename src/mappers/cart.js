@@ -192,14 +192,9 @@ export default function (data) {
                 
                     },
                 ],
-                fadeImages : [
-                    'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
-                    'https://images7.alphacoders.com/421/421542.jpg ',
-                    'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
-                    'https://images7.alphacoders.com/421/421542.jpg ',
-                    'http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg',
-                    'https://images7.alphacoders.com/421/421542.jpg ',
-                ],
+                fadeImages: (k.productImagesByProductId.nodes.map(val => (
+                    `https://s3.ap-south-1.amazonaws.com/staging-assets.stylori.com/base_images/${val.imageUrl}`
+                ))),
                 breadcrumsdata : [
                     "Shopping Bag",
                     "Login/ Register",

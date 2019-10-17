@@ -10,6 +10,10 @@ import 'screens/Stylori/index.css'
 import {CartContext} from 'context'
 import cart from 'mappers/cart'
 import  'screens/screens.css';
+import CustomSeparator from '../components/BreadCrumb/index'
+import styles from "../components/Checkout/style"
+import { withStyles } from '@material-ui/core/styles';
+
 // data.map(data=>{
     // return(
     //     <Grid item xs={12}>
@@ -20,8 +24,9 @@ import  'screens/screens.css';
         
 class Cart extends React.Component {
     render() {
-        const {data} = this.props 
-        return (
+        const {data,classes} = this.props 
+        let path = window.location.pathname.split('/').pop();
+          return (
             
                 <div>
 
@@ -31,6 +36,18 @@ class Cart extends React.Component {
                                 <Header />
                             </Grid>
                         </Grid>
+
+
+                        {path === "checkout" ? "" :
+                        <CustomSeparator
+                            arrowicon='cart-head-arrows'
+                            className={`breadcrums-header ${classes.normalcolorback}`}
+                            classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
+                            list={`MuiBreadcrumbs-li ${classes.fontwhite}`}
+                            data={this.props.data[0].breadcrumsdata}
+                            subdata={this.props.data[0].cartsubdata}
+                        />
+                    }
                         <div className="cart-ovralldiv-media">
                             <Grid Container spacing={12}>
                                 
@@ -84,4 +101,4 @@ const Components = props => {
 }
 
 
-export default Components;
+export default withStyles(styles) (Components);

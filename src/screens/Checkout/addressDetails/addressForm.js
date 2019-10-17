@@ -11,7 +11,7 @@ const Addressform = (props) => {
     return <AddressComponent   {...props} />
 }
 
-const AddressComponent = (props) => {
+const AddressComponent = (props) => { 
     const { values, handle, setValues } = Addressforms();
     const cl = <input onChange={() => setValues({
         ...values,
@@ -37,7 +37,11 @@ const AddressComponent = (props) => {
                                 }} checked={values.checkValue} /> */}
                                 {cl}
                                 {/* {values.checkValue + ""} */}
-                                If your billing address is different from the shipping adress please uncheck the box to select billing address.</p>    <Grid container item xs={12} lg={12} >
+                                {/* If your billing address is different from the shipping adress please uncheck the box to select billing address. */}
+                                
+                                {!values.checkValue &&'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
+                                {values.checkValue &&'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
+                                </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={5}>
                                     <Grid container spacing={12}>
                                         <Grid item xs={4} lg={4}>
@@ -88,10 +92,6 @@ const AddressComponent = (props) => {
                                                         id: 'name-disabled',
                                                     }}
                                                 >
-                                                    {/* <MenuItem value="">
-                                                        <em>None</em>
-                                                    </MenuItem>
-                                                    <MenuItem value={10}>Ten</MenuItem> */}
                                                 </Select>
                                             </FormControl>
                                         </Grid>
@@ -114,9 +114,9 @@ const AddressComponent = (props) => {
                                             <Input
                                                 type="text"
                                                 placeholder="Address *"
-                                                name='adrs_address'
-                                                onChange={(event) => handle.handleChange(event, "adrs_address")}
-                                                value={values.adrs_address}
+                                                name='addressline1'
+                                                onChange={(event) => handle.handleChange(event, "addressline1")}
+                                                value={values.addressline1}
                                                 helperText="Address is required"
                                                 required />
                                         </Grid>
@@ -149,7 +149,7 @@ const AddressComponent = (props) => {
 
                                     <Grid container spacing={12}>
                                         <Grid item xs={3} lg={3}>
-                                            <Input
+                                            {/* <Input
                                                 className='text-f'
                                                 type="text"
                                                 name="country_code"
@@ -160,7 +160,26 @@ const AddressComponent = (props) => {
                                                 maxLength={2}
                                                 minLength={2}
                                                 required
-                                            />
+                                            /> */}
+                                            <FormControl disabled style={{ width: "100%", marginTop: '13%' }}>
+                                                <InputLabel htmlFor="name-disabled"
+                                                    style={{
+                                                        marginLeft: '40%',
+                                                        marginTop: '-4%'
+                                                    }}>+91</InputLabel>
+                                                <Select
+                                                    input={<OutlinedInput id="name-disabled" />}
+                                                    style={{ width: "100%" }}
+                                                    variant="outlined"
+                                                    value={values.name}
+                                                    //   onChange={handleChange}
+                                                    inputProps={{
+                                                        name: 'name',
+                                                        id: 'name-disabled',
+                                                    }}
+                                                >
+                                                </Select>
+                                            </FormControl>
                                         </Grid>
                                         <Grid item xs={9} lg={9}>
                                             <Input
@@ -172,8 +191,8 @@ const AddressComponent = (props) => {
                                                 placeholder="Phone *"
                                                 value={values.contactno}
                                                 helperText="Please enter yout 10 digit Phone no**"
-                                                maxLength={2}
-                                                minLength={2}
+                                                maxLength={10}
+                                                minLength={10}
                                                 required />
                                         </Grid>
                                     </Grid>
@@ -182,7 +201,7 @@ const AddressComponent = (props) => {
                                 {/*  */}
                                 {/*  */}
                                 <Grid container item lg={1} />
-                                {values.checkValue &&
+                                {!values.checkValue &&
                                     <Grid item xs={12} lg={5}>
                                         <h5 className='title'> Billing Address</h5>
                                         <Grid container spacing={12}>
@@ -295,7 +314,7 @@ const AddressComponent = (props) => {
 
                                         <Grid container spacing={12}>
                                             <Grid item xs={3} lg={3}>
-                                                <Input
+                                                {/* <Input
                                                     className='text-f'
                                                     type="text"
                                                     name="bill_country_code"
@@ -307,7 +326,26 @@ const AddressComponent = (props) => {
                                                     maxLength={2}
                                                     minLength={2}
                                                     required
-                                                />
+                                                /> */}
+                                                <FormControl disabled style={{ width: "100%", marginTop: '13%' }}>
+                                                <InputLabel htmlFor="name-disabled"
+                                                    style={{
+                                                        marginLeft: '40%',
+                                                        marginTop: '-4%'
+                                                    }}>+91</InputLabel>
+                                                <Select
+                                                    input={<OutlinedInput id="name-disabled" />}
+                                                    style={{ width: "100%" }}
+                                                    variant="outlined"
+                                                    value={values.name}
+                                                    //   onChange={handleChange}
+                                                    inputProps={{
+                                                        name: 'name',
+                                                        id: 'name-disabled',
+                                                    }}
+                                                >
+                                                </Select>
+                                            </FormControl>
                                             </Grid>
                                             <Grid item xs={9} lg={9}>
                                                 <Input

@@ -100,7 +100,7 @@ class CartCardCheck extends React.Component {
 
                                 <div className="ch-d-vl">
                                         {value.firstname}{value.lastname}&nbsp;
-                                {value.adrs_address}&nbsp;{value.city}
+                                {value.addressline1}&nbsp;{value.city}
                                         {value.state}&nbsp;{value.pincode}
                                     </div>
 

@@ -29,7 +29,6 @@ const Addressforms = () => {
         user_id,
         address: [
             {
-
                 address,
                 // cart_id, user_id,
                 // firstname: '',
