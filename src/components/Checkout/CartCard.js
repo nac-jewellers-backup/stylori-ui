@@ -175,7 +175,6 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         var data = this.props.data
-        debugger
         // const {  cartsubdata } = this.props.data;
 
 

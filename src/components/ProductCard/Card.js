@@ -168,7 +168,7 @@ const useStyles = makeStyles(theme=>({
 const renderImages = (props, cardstate) => {
   const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
   // console.info('props.data.image[filterType]',props.data.image[filterType]);
-  return props.data.image[filterType].map(imgs => `${imgs.img} ${imgs.size}`).toString()
+  return props.data.image['hoverImage'].length === 0 ?props.data.image['placeImage'].map(imgs => `${imgs.img} ${imgs.size}`).toString() : props.data.image[filterType].map(imgs => `${imgs.img} ${imgs.size}`).toString()
 }
 
 export default function ImgMediaCard(props) {

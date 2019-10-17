@@ -23,7 +23,6 @@ const Addressforms = () => {
     obj['cart_id'] = cart_id
     obj['user_id'] = user_id
     obj['address'] = [address]
-    debugger
     const [values, setValues] = React.useState({
         cart_id,
         user_id,

@@ -2,6 +2,7 @@ import { filterGenerator } from "utils";
 
 export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter,$offsetvar:Int,$firstvar:Int) {
   allProductLists(filter: $filter,offset: $offsetvar, first:$firstvar,condition: {isactive: true} ) {
+    totalCount
     nodes {
       productName
       productId
