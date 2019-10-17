@@ -55,7 +55,7 @@ class PriceCertification extends React.Component {
                             </Grid>
                             <Grid spacing={12}>
                                 <Grid item xs={12} className='certification-img'>
-                                    <img width='85%' height='100%' src={val.img5} alt="" />
+                                    <img width='100%' height='100%' src={val.img5} alt="" />
                                 </Grid>
                             </Grid>
                         </ExpansionPanel>
@@ -93,7 +93,7 @@ class PriceCertification extends React.Component {
                             </Grid>
                             <Grid spacing={12}>
                                 <Grid item xs={12} className='certification-img'>
-                                    <img width='85%' height='100%' src={val.img5} alt="" />
+                                    <img width='100%' height='100%' src={val.img5} alt="" />
                                 </Grid>
                             </Grid>
                         </div>

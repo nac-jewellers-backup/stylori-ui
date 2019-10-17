@@ -62,7 +62,6 @@ class Addressdetails extends React.Component {
                             </Button>
                     </Grid>
                     {values.checkValue1 &&
-
                         <Grid item xs={12} lg={6}>
                             <h5 className='title'> Billing address</h5>
                             <br />
@@ -70,7 +69,7 @@ class Addressdetails extends React.Component {
                                 <h4 class="card-title">
                                     <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                     {/* {name1.adrs_firstname} */}
-                                    <span class="address-name">{value.firstname}{value.lastname}
+                                    <span class="address-name">{value.bill_firstname}{value.bill_lastname}
                                     </span>
                                     <i style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                         class="fa fa-pencil-square-o"></i>
@@ -78,11 +77,11 @@ class Addressdetails extends React.Component {
                                         className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
                                 </h4>
                                 <p className={`detils-p ${classes.normalfonts}`} >
-                                    {value.adrs_address} <br />
-                                    {value.state}-{value.pincode} <br />IN</p>
+                                    {value.bill_adrs_address} <br />
+                                    {value.bill_state}-{value.bill_pincode} <br />IN</p>
                                 <div className="card-foo">
                                     <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                        {value.contactno} </span>
+                                        {value.bill_contactno} </span>
                                     <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                         this.props.changevalue(3)
                                     }}>Select and  Review </Button>

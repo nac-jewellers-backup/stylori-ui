@@ -40,12 +40,12 @@ class ProductImageZoom extends React.Component {
     const { showimage } = this.state;
 
     const dataCarousel = {
-      infinite: true,
+      infinite: false,
       slidesToShow: data[0].fadeImages.length > 4 ? limit : data[0].fadeImages.length,
       slidesToScroll: 1,
       vertical: true,
       verticalSwiping: true,
-      arrows: false
+      arrows: false,
     }
     return (
       <div>
@@ -114,7 +114,7 @@ class ProductImageZoom extends React.Component {
     var img = document.getElementById("imgZoom");
     var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
     var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
-    element.style.backgroundPosition = (-posX * 1) + "px " + (-posY * 1) + "px";
+    element.style.backgroundPosition = (-posX * 1.3) + "px " + (-posY * 1.3) + "px";
   }
 
   zoomOut = () => {

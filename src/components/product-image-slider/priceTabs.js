@@ -104,9 +104,24 @@ class Component extends React.Component {
             );
         }
 
-        if (val == '18K White' || val == "14K White") {
+        if (val == "14K White") {
             return (
                 <img id={val} src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABcUlEQVRoge2VzU6EQBCEq8fBBzAmeyJ41N19nPUvnrz4rN6NnjYhDEffwCjtQdlsNhsY6J5MjF0nCNQ0xRR8gMlkMplMf1iktVBd1xdFUTwz82Lk1g8Aq7IstxpzncYiAOC9f4x4eAA4BfCgNVctADNfD10+OL/TmqsSIISwJqKrI5f6Bz+s6mXTNEuN2SoBiOjY2+8w8I055240ZmtVaLN33EWufasxWBwghLAGsAQAIvqasKZKjcQBiOiJiD4BgJlPJg1XqJFGhe6Z2c/0imsUDTIpqFKBLnoHpKBKBbroAFJQpQJdVAApqFKCLiqAFFQpQRdbISmokoFu9C/0u/0vwA+opvzru65bEZGT+Kuqehu6Z3QHpKBKDbqYCklAtVHwD2pXodygmuvf7UBuUM317wLkBtVcvwPyg0rid0B+UEn8fYVyg2q2n3KDSur3PWiY2c8EzVlOP7Vt+w7gfIpxT68AFpn9JpPJZDKZTP9W35wuE6GNZKzYAAAAAElFTkSuQmCC' style={{ width: '30px', margin: "auto" }} alt="" />
+            );
+        }
+        if (val == '18K White') {
+            return (
+                <img id={val} src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAABmUlEQVQ4jcVSsW4TURCc3buzX+yLhRQao4BksHWFJQukNG6IoKdLlyogB6VKyyfQUqfOF9DTAR2uLlKwI0uJBB1I9uXu3bvntxRgxRc5ChVsOTszmtEu8L+HblqMx+N31SBoA0BeFON2u3341wbD4fBOfW3txA+CJgAURfE9N6bb6/V+XufyKgNVqbyy1jZ1lkFnGebWNgPP21vFXWkA4OkKbPvWCqPR6P16GPZFRFlj3HQ6PQKARqMx8CsVJiI9S5LPnU7nxULjL4mrRZ5HP/J848qevjGzzJJk/Q9SBxBNJhPVarV0qYLJsh0ieljqR7QtIs/KmelRmqY7pQqncfxm7twuMd8HoAFoAUIR4d8acgQkABQAJc5deMzHUbf7luI4fhyG4cfA92sAkKbpJwGee8xflVIPACDX+hzM0bwoPtTq9T4AGGP0ZZr2fXFucDmb1ZZCRgAOLLCps2wRe9Mnem2d6xhjFjzFRC/ZY35y7TIbQjSQ5ROLsHVuH8DdZaI4t+U7kYlHdFZaiNwjoi+3YfOb/+gfzi/hpqiprs8PWAAAAABJRU5ErkJggg==' style={{ width: '30px', margin: "auto" }} alt="" />
+            );
+        }
+        if (val == "14K Rose") {
+            return (
+                <img id={val} src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAABe0lEQVQ4jcWSMU8UURSFv/tmJkx2HUOCzZpFsqtkChICic02GO3t6KjQrMaKlp9ga23NL6C3UzqoIAGUCZBoCXGX2TfMvLkWumF3WSIV3PJ75957Tu6D+y656UGPjj8RTDwDIM++S3Nm7dYDdCeZJPL28LwaAM79ItU5mZ85G9WasetD95a8qGEzsBnkRY1AV8dJxw/ALF1n5Yv/RtDD002iagstQ4q85Hf6GYCHlTZ+YBBj6Vxsyez0636Pf9V8OEGRx5ydT10Z8X6CU7q9CHoAVSDWJAml0bDDES7NMiLN67bl5Yjrp6S6PBRB95N1XLmCmGkQC2qBB+i/BUIJdEFC0BAtT/HMhsSNj6K7BwtE0VcCvwJAmn6jvHyFXz0gDJ4AYPMTyGKc+UK10vrrOLd0uy0f8dpc9CoDFmPU/0CR1bG2z+p48h7nZjnv9FmI8d8YxCyOZJwC1wYdPLHBle+ARyPa5z6QIPwY5t5jRLeHkJoxTG74R3dZfwD4SINLo+uBVgAAAABJRU5ErkJggg==' style={{ width: '30px', margin: "auto" }} alt="" />
+            );
+        }
+        if (val == '18K Rose') {
+            return (
+                <img id={val} src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAABp0lEQVQ4jcVSu24TURScc3ftfTjgR9IYJRQ85CIKSqQUuIDI9HTpqAAZREXLJ9BSU/MFSJS4CiCECFIkCh6KFCSsRFHstXbXd6/XOzRJ8FpGoYJTzpkzZ+beA/zvkj814k87zyzXuwIAYz385q+uPP5rgV5nu+Kctz5Lwa4DAEdp18RYrty41pvmqlkCheLoPo2pZ1GMLIpBY+pF29ydxZ0pIMq6OY0RsnFmhGh752WxWmmSdKmTLDkKngOAUyu3xXWUiGjT678tra3cPpmxTze8+upEOmiY7v78adPCTxBM+8G5Y6hEoMFOx5VWS+ci6IXBphJcytmmbJBo5TPL5cgrbeYihO8+PAFxR0SWBKJBaoJzEwsygYQQcQm6JH9A8GLu+vpTCbferxaq1S04BR8AxoPBG6/r3dJLoy/K9y8CQBbHe+7hfmNYrr22yuUmADAxOg37TVuUaqdB4E+4bAxrySNEspiG8bFNWRx6lYdZMrrKg8MTnitQ95RQ1qZ+Zp6UNvn7fQgqcvxAgIUck7JuZ8JdJfJ9Es8yXlBKPp6JgTPv6N/WLx+/ra26yLQYAAAAAElFTkSuQmCC' style={{ width: '30px', margin: "auto" }} alt="" />
             );
         }
     }
@@ -234,8 +249,6 @@ class Component extends React.Component {
             </div>
         );
     }
-
-
     MobileTabs = () => {
         const { expanded } = this.state;
         const { classes, data } = this.props;

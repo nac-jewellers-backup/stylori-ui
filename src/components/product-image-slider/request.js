@@ -88,12 +88,12 @@ class Request extends React.Component {
         }
     };
 
-    Requestform = (errors, handleError, errorMessage) => {
+    Requestform = (errors, handleError, errorMessage, handleChange) => {
         const { classes } = this.props;
         return (
             <div>
                 <div className='overall-boxz'>
-                    <form onSubmit={this.handleSubmit()}>
+                    <form onSubmit={(e) => this.handleSubmit(e)}>
                         <div className='overall-bo'>
                             <Hidden smDown>
                                 <span className={`product-details ${classes.normalfonts}`}>Ask Our Expert</span>
@@ -112,7 +112,7 @@ class Request extends React.Component {
                                         helperText={errors.names ? errorMessage.names : ''}
                                         placeholder="Name"
                                         className="request-text"
-                                        onChange={event => this.handleChange(event, 'names')}
+                                        onChange={event => handleChange(event, 'names')}
                                         required />
                                 </Grid>
                                 <Grid xs={12} lg={6} >
@@ -127,7 +127,7 @@ class Request extends React.Component {
                                         helperText={errors.mailId ? errorMessage.mailId : ''}
                                         placeholder="Enter your mail"
                                         className="request-text"
-                                        onChange={event => this.handleChange(event, 'mailId')}
+                                        onChange={event => handleChange(event, 'mailId')}
                                         required />
                                 </Grid>
                                 <Grid xs={12} lg={6} >
@@ -144,7 +144,7 @@ class Request extends React.Component {
                                         helperText={errors.mobileNo ? errorMessage.mobileNo : ''}
                                         placeholder="909419****"
                                         className="request-text"
-                                        onChange={event => this.handleChange(event, 'mobileNo')}
+                                        onChange={event => handleChange(event, 'mobileNo')}
                                         onKeyPress={event => { this.handleKeyPress(event, 'isNumber') }}
                                         required />
                                 </Grid>
@@ -157,7 +157,7 @@ class Request extends React.Component {
                                         value={this.state.request}
                                         placeholder="Enter Request"
                                         className="request-text"
-                                        onChange={event => this.handleChange(event, 'request')}
+                                        onChange={event => handleChange(event, 'request')}
                                     />
                                 </Grid>
 
@@ -186,7 +186,7 @@ class Request extends React.Component {
                 <Hidden smDown>
                     {/* <Form children={this.Requestform} inputvalues={this.state.values} /> */}
 
-                    {this.Requestform(errors, this.handleError, errorMessage)}
+                    {this.Requestform(errors, this.handleError, errorMessage, this.handleChange)}
                 </Hidden>
 
 

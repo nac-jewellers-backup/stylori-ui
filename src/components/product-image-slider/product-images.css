@@ -128,6 +128,7 @@
         align-items: center !important;
         outline: none !important;
         margin-bottom: 5px;
+        cursor: pointer !important;
     }
 
     .tabs-contants {
