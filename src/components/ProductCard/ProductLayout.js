@@ -90,7 +90,6 @@ class Component extends React.Component {
   }
   render() {
     const { classes, data } = this.props;
-    debugger
     const {disabledstate} = this.state
     // const disabledstate = this.props.data.length < 24 ? 'disabled=true' : ''
     // console.log(dataCard)

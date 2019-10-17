@@ -111,7 +111,6 @@ class Component extends React.Component {
   })
 
 console.log('queries',queries)
-debugger
 // queries.map(val =>{
   // chipData.push({ key:'1', label: 'o' });
 // })
