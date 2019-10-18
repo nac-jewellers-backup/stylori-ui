@@ -46,7 +46,9 @@ class Addressdetails extends React.Component {
                                 </span>
                                 <i style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                     class="fa fa-pencil-square-o"></i>
-                                <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
+                                <i onClick={()=>{
+                                    localStorage.removeItem('valuessetdata')
+                                }} style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
                                     className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
                             </h4>
                             <p className={`detils-p ${classes.normalfonts}`} >
@@ -77,7 +79,10 @@ class Addressdetails extends React.Component {
                                     </span>
                                     <i style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                         class="fa fa-pencil-square-o"></i>
-                                    <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
+                                    <i 
+                                    onClick={()=>{
+                                        localStorage.removeItem('valuessetdata')
+                                    }} style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
                                         className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
                                 </h4>
                                 <p className={`detils-p ${classes.normalfonts}`} >

@@ -22,7 +22,7 @@ const Addressforms = () => {
     let obj = {}
     obj['cart_id'] = 'cart_id'
     obj['user_id'] = 'user_id'
-    obj['address'] = [address]
+    obj['address'] = [address] 
     const [values, setValues] = React.useState({
         cart_id,
         user_id,
