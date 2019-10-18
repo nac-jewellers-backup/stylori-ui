@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react';
 import { useGraphql } from 'hooks/GraphqlHook';
+import { useNetworkRequest } from 'hooks/NetworkHooks'
 import { PRODUCTLIST, conditions } from 'queries/productListing';
 import { withRouter } from 'react-router-dom';
 import productlist from 'mappers/productlist';
+import filterData from 'mappers/filterData'
 import { CDN_URL } from 'config';
-// import { productsPendants } from 'mappers/dummydata';
-// import { object } from 'prop-types';
 
-// let setFilter;
+
 const initialCtx = {
     FilterOptionsCtx: {
         filters: {
-            Offers: null, Availability: null, ProductType: null, style: null, material: null, Theme: null, Collection: null, metalColor: null,
+            Offers: null, Availability: null, ProductType: null, style: null, Material: null, Theme: null, Collection: null, metalColor: null,
             MetalPurity: null, Occasion: null, NoOfStones: null, Gender: null, stoneColor: null, stoneShape: null
         },
-        loading: false, error: false, data: [], offset: 0, dataArr: [], first: 24
+        loading: false, error: false, data: [], offset: 0, dataArr: [], first: 24, mappedFilters: []
     },
     setFilters: (filterData) => { },
     setOffset: () => { },
@@ -33,10 +33,11 @@ const Provider = (props) => {
     const [offset, setOffset] = React.useState(0)
     const [first, setFirst] = React.useState(24)
     const [dataArr, setDataArr] = React.useState([])
-    const [ { filterLogic }, setFilterLogic ] = React.useState({ filterLogic: () => [] });
+    const [mappedFilters, setMappedFilters] = React.useState([])
+    const [{ filterLogic }, setFilterLogic] = React.useState({ filterLogic: () => [] });
 
-    useEffect(() => { setFilterLogic({ filterLogic: (d, t) => t }) },[ filters ])
-    useEffect(() => { setFilterLogic({ filterLogic: (d,t) => [...d,...t] }) },[ offset ])
+    useEffect(() => { setFilterLogic({ filterLogic: (d, t) => t }) }, [filters])
+    useEffect(() => { setFilterLogic({ filterLogic: (d, t) => [...d, ...t] }) }, [offset])
 
     var queries = []
     const pathQueries = () => {
@@ -76,57 +77,40 @@ const Provider = (props) => {
     }
 
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTLIST, () => { }, {});
-    const a = [];
+    const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/filterlist', () => { }, {})
+
     const updateProductList = () => {
         const conditionFilters = conditions.generateFilters(paramObjects())
-        const variables = { ...conditionFilters, 'offsetvar': offset, 'firstvar': first }
+        const variables = { ...conditionFilters, offsetvar: offset, firstvar: first }
         makeRequest(variables)
     }
 
-    useEffect(() => console.info('FILTERS', filters), [filters]);
+
+    useEffect(() => setMappedFilters(ntxdata), [ntxdata]);
 
     useEffect(() => {
         pathQueries();
         updateProductList();
-    }, [filters, offset])
+    }, [filters, offset]);
 
     useEffect(() => {
-        // const mapped = productlist(data, CDN_URL);
-        // console.log('dataArr',dataArr)
-        // const newUpdatedList = [...dataArr, ...mapped];
-        // console.info('LISTUPDATE', a, data, mapped, newUpdatedList, dataArr)
-        // setDataArr(newUpdatedList);
-  
-        if(window.location.search !== ''){
-            const mapped = productlist(data, CDN_URL);
-            console.log('dataArr',dataArr)
-            // const newUpdatedList = [...dataArr, ...mapped];
-            const newUpdatedList = filterLogic(dataArr, mapped);
-            console.info('PROPERDATA',newUpdatedList)
-            console.info('LISTUPDATE', a, data, mapped, newUpdatedList, dataArr)
-            setDataArr(newUpdatedList);   
-        }
-      
+        const mapped = productlist(data, CDN_URL);
+        const newUpdatedList = filterLogic(dataArr, mapped);
+        setDataArr(newUpdatedList);
     }, [data]);
 
-    useEffect(()=>{
-        if(window.location.search === ''){
-            setDataArr([])
-            const mapped = productlist(data, CDN_URL);
-            const newUpdatedList = [...dataArr, ...mapped];
-            console.info('LISTUPDATE', a, data, mapped, newUpdatedList, dataArr)
-            setDataArr(newUpdatedList);   
-        }
-    },[ data ])
-
-    useEffect(() => console.info('DATAARRA', dataArr), [dataArr])
+    const updateFilters = (filters) => {
+        setFilters(filters);
+        const bodyvar = '';
+        if(!ntx) makeFetch(bodyvar);
+    }
 
     const FilterOptionsCtx = {
-        filters, loading, error, data, setFilters, offset, setOffset, dataArr, first, setFirst
+        filters, loading, error, data, setFilters: updateFilters, offset, setOffset, dataArr, first, setFirst, mappedFilters
     }
 
     return (
-        <FilterOptionsContext.Provider value={{ FilterOptionsCtx, setFilters, setOffset, setFirst, updateProductList }} >
+        <FilterOptionsContext.Provider value={{ FilterOptionsCtx, setFilters: updateFilters, setOffset, setFirst, updateProductList }} >
             {props.children}
         </FilterOptionsContext.Provider>
     )

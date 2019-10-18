@@ -1,3 +1,3 @@
-export const API_URL = "http://auth-dev.ap-south-1.elasticbeanstalk.com"
+export const API_URL = "https://api.stylori.net"
 export const HOME_PAGE_URL = ""
-export const CDN_URL = "https://s3.ap-south-1.amazonaws.com/staging-assets.stylori.com/base_images/"
+export const CDN_URL = "https://assets.stylori.net/base_images/"

@@ -38,7 +38,7 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
     const method = data ? 'POST' : 'GET';
     let url = `${apiUrl}${urlSignin}`
     body = typeof body === "string" ? body : JSON.stringify(body);
-    const makeFetch = () => {
+    const makeFetch = (bodyvar) => {
         setLoading(true);
         fetch(url, {
             method, headers: {
@@ -47,13 +47,12 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
             }, body
         })
             .then(res => {
-                setStatus({ status: Response.status, statusText: res.message })
+                setStatus({ ...status, status: Response.status, statusText: res.message })
                 return res.json();
-
             })
             .then(resdata => {
                 setData(resdata);
-                localStorage.setItem(Object.keys(resdata), Object.values(resdata));
+                //localStorage.setItem(Object.keys(resdata), Object.values(resdata));
                 setLoading(false);
                 if (mapper) {
                     mapper(resdata)
@@ -67,6 +66,8 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
                 console.log(Response.status)
             });
     }
-
+    React.useEffect(() => {
+        makeFetch();
+    }, []);
     return { loading, error, status, data, mapped, makeFetch }
 }

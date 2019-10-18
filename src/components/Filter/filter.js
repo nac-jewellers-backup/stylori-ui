@@ -242,7 +242,8 @@ console.log('queries',queries)
     console.log('urlSplitparamsEqual',this.state.checked)
 
     const { classes, data } = this.props;
-    const { filter, subFilter, sortOptions } = this.props.data;
+    debugger
+    const { filter, subFilter, sortOptions } = this.props.data[0];
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
 
@@ -567,8 +568,9 @@ Component.propTypes = {
   filterdatas: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(props => {
-  const { mapped } = useDummyRequest(filterParams);
-  if (Object.keys(mapped).length === 0) return ''
-  return < PersistentDrawerLeft {...props} data={mapped} />
-});
+export default withStyles(styles, { withTheme: true })(PersistentDrawerLeft)
+// (props => {
+//   const { mapped } = useDummyRequest(filterParams);
+//   if (Object.keys(mapped).length === 0) return ''
+//   return < PersistentDrawerLeft {...props} data={mapped} />
+// });

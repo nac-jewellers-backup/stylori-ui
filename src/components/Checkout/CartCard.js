@@ -36,7 +36,6 @@ class Checkoutcard extends React.Component {
         }
         const { classes, data } = this.props;
         const { productsDetails, fadeImages, dataCard1 } = this.props.data;
-        debugger
         return (
             <div style={{ marginTop: "10px" }}>
                 {this.props.data.map(dataval => (
