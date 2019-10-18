@@ -26,42 +26,46 @@ const Addressforms = () => {
     const [values, setValues] = React.useState({
         cart_id,
         user_id,
+        addressOne: {
+            firstname: '',
+            lastname: '',
+            country: '',
+            pincode: '',
+            addressline1: '',
+            addressline2: '',
+            state: '',
+            city: '',
+            contactno: '',
+            country_code: '',
+            addresstype: 1
+        },
+        addressTwo: {
+            firstname: '',
+            lastname: '',
+            country: '',
+            pincode: '',
+            addressline1: '',
+            addressline2: '',
+            state: '',
+            city: '',
+            contactno: '',
+            country_code: '',
+            addresstype: 2
+        },
         address: [
-            {
-                address,
-                // cart_id, user_id,
-                // firstname: '',
-                // lastname: '',
-                // country: '',
-                // pincode: '',
-                // addressline1: '',
-                // addressline2: '',
-                // state: '',
-                // city: '',
-                // contactno: '',
-                // country_code: '',
-                addresstype: 1
-            }
+            address
         ],
-        bill_lastname: '',
-        bill_country: '',
-        bill_pincode: '',
-        bill_addressline1: '',
-        bill_addressline2: '',
-        bill_state: '',
-        bill_city: '',
-        bill_contactno: '',
-        bill_country_code: '',
         addrs: localStorage.getItem("valuessetdata") ? false : true,
         checkValue: true,
         checkValue1: true,
     });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addaddress', obj, () => []);
 
-    const handleChange = (type, value) => {
-        setValues({
+    const handleChange = (name, event) => {
+    debugger
+    setValues({
             ...values,
-            [value]: type.target.value
+            [name]: event.target.value
         })
     }
     const handleSubmit = (e) => {
