@@ -10,7 +10,6 @@ import Addressforms from './Addressforms'
 const Addressform = (props) => {
     return <AddressComponent   {...props} />
 }
-
 const AddressComponent = (props) => {
     const { values, handle, setValues } = Addressforms();
     const cl = <input onChange={() => setValues({
@@ -30,16 +29,7 @@ const AddressComponent = (props) => {
                         }}>
                             <h5 className='title'> Shipping Address</h5>
                             <p class="form-group tp" style={{ width: "480px" }}>
-                                {/* <Checkboxes CheckBoxValues={['']} change={() => {
-                                    setValues({
-                                        checkValue: !values.checkValue
-                                    })
-                                }} checked={values.checkValue} /> */}
                                 {cl}
-                                {/* {values.checkValue + ""} */}
-                                {/* If your billing address is different from the shipping adress please uncheck the box to select billing address. */}
-
-
                             </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={5}>
                                     {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
@@ -53,7 +43,7 @@ const AddressComponent = (props) => {
                                                 name="firstname"
                                                 className='text-f'
                                                 type="text"
-                                                value={values.firstname}
+                                                value={values.addressOne.firstname}
                                                 placeholder="First name"
                                                 required
                                                 onChange={(event) => handle.handleChange(event, "firstname")}
@@ -65,7 +55,7 @@ const AddressComponent = (props) => {
                                                 className='text-f'
                                                 type="text"
                                                 name="lastname"
-                                                value={values.lastname}
+                                                value={values.addressOne.lastname}
                                                 placeholder="Last name"
                                                 required onChange={(event) => handle.handleChange(event, "lastname")}
                                                 helperText="Lastname is required"
@@ -75,7 +65,7 @@ const AddressComponent = (props) => {
                                     <Grid container spacing={12}>
                                         <Grid item xs={6} lg={6}>
                                             {/* <SimpleSelect name={['country']} selectData={['country']}
-                                                value={values.state} /> */}
+                                                value={values.addressOne.state} /> */}
                                             <FormControl disabled style={{ width: "100%", marginTop: '7%' }}>
                                                 <InputLabel htmlFor="name-disabled"
                                                     style={{
@@ -86,7 +76,7 @@ const AddressComponent = (props) => {
                                                     input={<OutlinedInput id="name-disabled" />}
                                                     style={{ width: "100%" }}
                                                     variant="outlined"
-                                                    value={values.name}
+                                                    value={values.addressOne.name}
                                                     //   onChange={handleChange}
                                                     inputProps={{
                                                         name: 'name',
@@ -103,7 +93,7 @@ const AddressComponent = (props) => {
                                                 name='pincode'
                                                 placeholder="Pin Code/Zip Code"
                                                 onChange={(event) => handle.handleChange(event, "pincode")}
-                                                value={values.pincode}
+                                                value={values.addressOne.pincode}
                                                 onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
                                                 helperText="Pin Code is required"
                                                 required />
@@ -117,7 +107,7 @@ const AddressComponent = (props) => {
                                                 placeholder="Address *"
                                                 name='addressline1'
                                                 onChange={(event) => handle.handleChange(event, "addressline1")}
-                                                value={values.addressline1}
+                                                value={values.addressOne.addressline1}
                                                 helperText="Address is required"
                                                 required />
                                         </Grid>
@@ -131,7 +121,7 @@ const AddressComponent = (props) => {
                                                 name='state'
                                                 placeholder="State *"
                                                 onChange={(event) => handle.handleChange(event, "state")}
-                                                value={values.state}
+                                                value={values.addressOne.state}
                                                 helperText="State is required"
                                                 required />
                                         </Grid>
@@ -142,7 +132,7 @@ const AddressComponent = (props) => {
                                                 name='city'
                                                 placeholder="city *"
                                                 onChange={(event) => handle.handleChange(event, "city")}
-                                                value={values.city}
+                                                value={values.addressOne.city}
                                                 helperText="City is required"
                                                 required />
                                         </Grid>
@@ -154,7 +144,7 @@ const AddressComponent = (props) => {
                                                 className='text-f'
                                                 type="text"
                                                 name="country_code"
-                                                value={values.country_code}
+                                                value={values.addressOne.country_code}
                                                 onChange={(event) => handle.handleChange(event, "country_code")}
                                                 onKeyPress={(e) => handle.handleKeyPress(e, "country_code")}
                                                 placeholder="+ 91"
@@ -172,6 +162,12 @@ const AddressComponent = (props) => {
                                                     input={<OutlinedInput id="name-disabled" />}
                                                     style={{ width: "100%" }}
                                                     variant="outlined"
+                                                    // value={values.addressOne.name}
+                                                    //   onChange={handleChange}
+                                                    inputProps={{
+                                                        name: 'name',
+                                                        id: 'name-disabled',
+                                                    }}
                                                 >
                                                 </Select>
                                             </FormControl>
@@ -184,7 +180,7 @@ const AddressComponent = (props) => {
                                                 onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
                                                 onChange={(event) => handle.handleChange(event, "contactno")}
                                                 placeholder="Phone *"
-                                                value={values.contactno}
+                                                value={values.addressOne.contactno}
                                                 helperText="Please enter yout 10 digit Phone no**"
                                                 maxLength={10}
                                                 minLength={10}
@@ -205,13 +201,13 @@ const AddressComponent = (props) => {
                                             </Grid>
                                             <Grid item xs={4} lg={4}>
                                                 <Input
-                                                    name="bill_firstname"
+                                                    name="firstname"
                                                     className='text-f'
                                                     type="text"
-                                                    value={values.bill_firstname}
+                                                    value={values.addressTwo.firstname}
                                                     placeholder="First name"
                                                     required
-                                                    onChange={(event) => handle.handleChange(event, "bill_firstname")}
+                                                    onChange={(event) => handle.handleChange(event, "firstname")}
                                                     helperText="Firstname is required"
                                                 />
                                             </Grid>
@@ -219,10 +215,10 @@ const AddressComponent = (props) => {
                                                 <Input
                                                     className='text-f'
                                                     type="text"
-                                                    name="bill_lastname"
-                                                    value={values.bill_lastname}
+                                                    name="lastname"
+                                                    value={values.addressTwo.lastname}
                                                     placeholder="Last name"
-                                                    required onChange={(event) => handle.handleChange(event, "bill_lastname")}
+                                                    required onChange={(event) => handle.handleChange(event, "lastname")}
                                                     helperText="Lastname is required"
                                                 />
                                             </Grid>
@@ -230,7 +226,7 @@ const AddressComponent = (props) => {
                                         <Grid container spacing={12}>
                                             <Grid item xs={6} lg={6}>
                                                 {/* <SimpleSelect name={['country']} selectData={['country']}
-                                                value={values.bill_state} /> */}
+                                                value={values.addressTwo.state} /> */}
                                                 <FormControl disabled style={{ width: "100%", marginTop: '7%' }}>
                                                     <InputLabel htmlFor="name-disabled"
                                                         style={{
@@ -241,7 +237,7 @@ const AddressComponent = (props) => {
                                                         input={<OutlinedInput id="name-disabled" />}
                                                         style={{ width: "100%" }}
                                                         variant="outlined"
-                                                        value={values.bill_name}
+                                                        value={values.addressTwo.name}
                                                         //   onChange={handleChange}
                                                         inputProps={{
                                                             name: 'name',
@@ -259,11 +255,11 @@ const AddressComponent = (props) => {
                                                 <Input
                                                     className='text-f'
                                                     type="text"
-                                                    name='bill_pincode'
+                                                    name='pincode'
                                                     placeholder="Pin Code/Zip Code"
-                                                    onChange={(event) => handle.handleChange(event, "bill_pincode")}
-                                                    value={values.bill_pincode}
-                                                    onKeyPress={(e) => handle.handleKeyPress(e, "bill_pincode")}
+                                                    onChange={(event) => handle.handleChange(event, "pincode")}
+                                                    value={values.addressTwo.pincode}
+                                                    onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
                                                     helperText="Pin Code is required"
                                                     required />
 
@@ -274,9 +270,9 @@ const AddressComponent = (props) => {
                                                 <Input
                                                     type="text"
                                                     placeholder="Address *"
-                                                    name='bill_addressline1'
-                                                    onChange={(event) => handle.handleChange(event, "bill_addressline1")}
-                                                    value={values.bill_addressline1}
+                                                    name='addressline1'
+                                                    onChange={(event) => handle.handleChange(event, "addressline1")}
+                                                    value={values.addressTwo.addressline1}
                                                     helperText="Address is required"
                                                     required />
                                             </Grid>
@@ -287,10 +283,10 @@ const AddressComponent = (props) => {
                                                     style={{ float: "left" }}
                                                     className='text-f'
                                                     type="text"
-                                                    name='bill_state'
+                                                    name='state'
                                                     placeholder="State *"
-                                                    onChange={(event) => handle.handleChange(event, "bill_state")}
-                                                    value={values.bill_state}
+                                                    onChange={(event) => handle.handleChange(event, "state")}
+                                                    value={values.addressTwo.state}
                                                     helperText="State is required"
                                                     required />
                                             </Grid>
@@ -298,10 +294,10 @@ const AddressComponent = (props) => {
                                                 <Input
                                                     className='text-f'
                                                     type="text"
-                                                    name='bill_city'
+                                                    name='city'
                                                     placeholder="city *"
-                                                    onChange={(event) => handle.handleChange(event, "bill_city")}
-                                                    value={values.bill_city}
+                                                    onChange={(event) => handle.handleChange(event, "city")}
+                                                    value={values.addressTwo.city}
                                                     helperText="City is required"
                                                     required />
                                             </Grid>
@@ -312,10 +308,10 @@ const AddressComponent = (props) => {
                                                 {/* <Input
                                                     className='text-f'
                                                     type="text"
-                                                    name="bill_country_code"
-                                                    value={values.bill_country_code}
-                                                    onChange={(event) => handle.handleChange(event, "bill_country_code")}
-                                                    onKeyPress={(e) => handle.handleKeyPress(e, "bill_country_code")}
+                                                    name="country_code"
+                                                    value={values.addressTwo.country_code}
+                                                    onChange={(event) => handle.handleChange(event, "country_code")}
+                                                    onKeyPress={(e) => handle.handleKeyPress(e, "country_code")}
                                                     placeholder="+ 91"
                                                     isNumber
                                                     maxLength={2}
@@ -332,7 +328,7 @@ const AddressComponent = (props) => {
                                                         input={<OutlinedInput id="name-disabled" />}
                                                         style={{ width: "100%" }}
                                                         variant="outlined"
-                                                        value={values.name}
+                                                        // value={values.addressTwo}
                                                         //   onChange={handleChange}
                                                         inputProps={{
                                                             name: 'name',
@@ -346,11 +342,11 @@ const AddressComponent = (props) => {
                                                 <Input
                                                     className='text-f'
                                                     type="text"
-                                                    name='bill_contactno'
-                                                    onChange={(event) => handle.handleChange(event, "bill_contactno")}
-                                                    onKeyPress={(e) => handle.handleKeyPress(e, "bill_contactno")}
+                                                    name='contactno'
+                                                    onChange={(event) => handle.handleChange(event, "contactno")}
+                                                    onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
                                                     placeholder="Phone *"
-                                                    value={values.bill_contactno}
+                                                    value={values.addressTwo.contactno}
                                                     helperText="Please enter your 10 digit Phone no**"
                                                     isNumber
                                                     maxLength={10}
