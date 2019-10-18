@@ -139,7 +139,7 @@ class ProductDetail extends Component {
 
           </div>
 
-          <Buynowfixed />
+          <Buynowfixed data={this.props.data}/>
         </Hidden>
 
       </div>

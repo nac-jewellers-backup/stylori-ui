@@ -29,14 +29,15 @@ class Addressdetails extends React.Component {
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>
-                    
+
                     <h5 className='title'> Shipping Address</h5>
                     <Grid item xs={12} lg={6}>
-                        <div class="form-group tp ts" style={{ width: "480px" }}>
+                        <div class="form-group tp ts">
                             {cl}
                             {!values.checkValue1 && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
                             {values.checkValue1 && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
-                        </div><div className='card-adrs'>
+                        </div><div className='card-adrs wd'
+                            style={{ marginTop: "5px" }}>
                             <h4 class="card-title">
                                 <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                 {/* {name1.adrs_firstname} */}
@@ -59,16 +60,13 @@ class Addressdetails extends React.Component {
                                 }}>Select and  Review </Button>
                             </div>
                         </div>
-                        <Button onClick={() => this.props.redirectForm()} className={`add-new-address ${classes.normalfonts}`}>
-                            <div></div>
-                            Add New Address
-                            </Button>
+                        
                     </Grid>
                     {!values.checkValue1 &&
                         <Grid item xs={12} lg={6}>
                             <h5 className='title'> Billing address</h5>
                             <br />
-                            <div className='card-adrs'>
+                            <div className='card-adrs wd' >
                                 <h4 class="card-title">
                                     <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                     {/* {name1.adrs_firstname} */}
@@ -103,7 +101,9 @@ class Addressdetails extends React.Component {
                             </Button> */}
                         </Grid>}
                 </Grid>
-
+                <Button onClick={() => this.props.redirectForm()} className={`add-new-address ${classes.normalfonts}`}>
+                          <div></div>  Add New Address
+                            </Button>
             </div>
         )
     }

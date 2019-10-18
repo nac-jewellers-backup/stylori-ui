@@ -1,6 +1,7 @@
 import React from 'react';
 import { NetworkContext } from '../context/NetworkContext';
 import { FieldsOnCorrectType } from 'graphql/validation/rules/FieldsOnCorrectType';
+import { circIn } from '@popmotion/easing';
 export const useDummyRequest = (mapper) => {
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState(false);
@@ -52,13 +53,26 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
             })
             .then(resdata => {
                 setData(resdata);
-                //localStorage.setItem(Object.keys(resdata), Object.values(resdata));
-                setLoading(false);
-                if (mapper) {
-                    mapper(resdata)
-                        .then(mappeddata => setMapped(mappeddata))
-                        .catch(err => setError(true));
-                }
+                // localStorage.setItem('response', JSON.stringify(resdata));
+                // var responseId = localStorage.getItem("response") ? localStorage.getItem("response") : {}
+                // var user_id = JSON.parse(responseId).user.id ? JSON.parse(responseId).user.id : {}
+                // var cart = localStorage.getItem("cartDetails") ? localStorage.getItem("cartDetails") : {};
+                // var addtocart = JSON.parse(cart).products ? JSON.parse(cart).products : {}
+                // var values = ({ user_id, addtocart })
+                // let urladdcart = `${apiUrl}${'/addtocart'}`
+                // fetch('http://auth-dev.ap-south-1.elasticbeanstalk.com/addtocart', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify(values)
+                // }).then(values => {
+                //     localStorage.setItem('addtocart', JSON.stringify(values));
+                //     console.log('resdata', values)
+                // }).catch((error) => {
+                //     console.error(error);
+                //     console.log('resdata', error)
+                // });
             })
             .catch(err => {
                 setError(true);

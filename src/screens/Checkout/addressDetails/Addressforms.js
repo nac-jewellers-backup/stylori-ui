@@ -20,8 +20,8 @@ const Addressforms = () => {
     var address = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
     delete address['addrs'];
     let obj = {}
-    obj['cart_id'] = cart_id
-    obj['user_id'] = user_id
+    obj['cart_id'] = 'cart_id'
+    obj['user_id'] = 'user_id'
     obj['address'] = [address]
     const [values, setValues] = React.useState({
         cart_id,

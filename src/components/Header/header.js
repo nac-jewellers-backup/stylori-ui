@@ -156,7 +156,6 @@ class Header extends Component {
                           return (
                             <a href={listName} className={` ${classes.menuListCursor} ${classes.colorLight} `} onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: listName.replace(/ +/g, "") }) }}><i class="fa fa-plus-circle"></i>&nbsp;{listName}</a>
                           )
-
                         }))
                       }
                     </nav>
