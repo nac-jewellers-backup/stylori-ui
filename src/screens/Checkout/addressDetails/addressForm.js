@@ -172,12 +172,6 @@ const AddressComponent = (props) => {
                                                     input={<OutlinedInput id="name-disabled" />}
                                                     style={{ width: "100%" }}
                                                     variant="outlined"
-                                                    value={values.name}
-                                                    //   onChange={handleChange}
-                                                    inputProps={{
-                                                        name: 'name',
-                                                        id: 'name-disabled',
-                                                    }}
                                                 >
                                                 </Select>
                                             </FormControl>

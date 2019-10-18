@@ -57,8 +57,8 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
                 var responseId = localStorage.getItem("response") ? localStorage.getItem("response") : {}
                 var user_id = JSON.parse(responseId).user.id ? JSON.parse(responseId).user.id : {}
                 var cart = localStorage.getItem("cartDetails") ? localStorage.getItem("cartDetails") : {};
-                var addtocart = JSON.parse(cart).products ? JSON.parse(cart).products : {}
-                var values = ({ user_id, addtocart })
+                var products = JSON.parse(cart).products ? JSON.parse(cart).products : {}
+                var values = ({ user_id, products })
                 // let urladdcart = `${apiUrl}${'/addtocart'}`
                 fetch('http://auth-dev.ap-south-1.elasticbeanstalk.com/addtocart', {
                     method: 'POST',
@@ -66,13 +66,17 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(values)
-                }).then(values => {
-                    localStorage.setItem('addtocart', JSON.stringify(values));
-                    console.log('resdata', values)
-                }).catch((error) => {
-                    console.error(error);
-                    console.log('resdata', error)
-                });
+                })
+                    .then(res => {
+                        setStatus({ status: Response.status, statusText: res.message })
+                        return res.json();
+                    })
+                    .then(values => {
+                        localStorage.setItem('addtocart', JSON.stringify(values));
+                    }).catch((error) => {
+                        console.error(error);
+                        console.log('resdata', error)
+                    });
             })
             .catch(err => {
                 setError(true);

@@ -122,7 +122,7 @@ class Checkoutcard extends React.Component {
                 {path == "checkout" ? "" :
                     <div className='ckeckout-top'>
                         <NavLink to="/checkout" style={{ textDecoration: 'none' }}>
-                            <Buynowbutton class={`chckout-page-buynow ${classes.buttons}`} />
+                            <Buynowbutton class={`chckout-page-buynow ${classes.buttons}`} buttonname='Buy Now'/>
                         </NavLink>
                     </div>}
             </div>
@@ -174,12 +174,6 @@ class Checkoutcard extends React.Component {
             slidesToShow: 1,
             arrows: false,
         }
-        var data = this.props.data
-        // const {  cartsubdata } = this.props.data;
-
-
-        const { classes } = this.props;
-        let path = window.location.pathname.split('/').pop();
         return (
             <div>
                 <Hidden smDown>

@@ -34,7 +34,7 @@ class Buynowfixed extends React.Component {
                     <Grid container spacing={12}>
                         <Grid item xs={6} className='fixed-grid'>
                             <div onClick={handleLocalStorage.bind(this)}>
-                            <Buynowbutton class='product-footer-buynow ' />
+                            <Buynowbutton class='product-footer-buynow ' buttonname='Buy Now'/>
                             </div>
                              </Grid>
                         <Grid className='talk-to-us' item xs={6}><i class="fa fa-comments"></i> &nbsp;Talk To Us</Grid>
