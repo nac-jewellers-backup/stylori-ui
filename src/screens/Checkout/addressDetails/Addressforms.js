@@ -61,11 +61,11 @@ const Addressforms = () => {
     });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addaddress', obj, () => []);
 
-    const handleChange = (type, value) => {
-    debugger
-    setValues({
+    const handleChange = (name, event) => {
+        debugger
+        setValues({
             ...values,
-            [value]: type.target.value
+            [name]: event.target.value
         })
     }
     const handleSubmit = (e) => {

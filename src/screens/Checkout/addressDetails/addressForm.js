@@ -46,7 +46,7 @@ const AddressComponent = (props) => {
                                                 value={values.addressOne.firstname}
                                                 placeholder="First name"
                                                 required
-                                                onChange={(event) => handle.handleChange(event, "firstname")}
+                                                onChange={(event) => handle.handleChange(event, event.target.value)}
                                                 helperText="Firstname is required"
                                             />
                                         </Grid>
@@ -57,7 +57,7 @@ const AddressComponent = (props) => {
                                                 name="lastname"
                                                 value={values.addressOne.lastname}
                                                 placeholder="Last name"
-                                                required onChange={(event) => handle.handleChange(event, "lastname")}
+                                                required onChange={(event) => handle.handleChange(event, event.target.value)}
                                                 helperText="Lastname is required"
                                             />
                                         </Grid>
@@ -92,7 +92,7 @@ const AddressComponent = (props) => {
                                                 type="text"
                                                 name='pincode'
                                                 placeholder="Pin Code/Zip Code"
-                                                onChange={(event) => handle.handleChange(event, "pincode")}
+                                                onChange={(event) => handle.handleChange(event, event.target.value)}
                                                 value={values.addressOne.pincode}
                                                 onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
                                                 helperText="Pin Code is required"
@@ -106,7 +106,7 @@ const AddressComponent = (props) => {
                                                 type="text"
                                                 placeholder="Address *"
                                                 name='addressline1'
-                                                onChange={(event) => handle.handleChange(event, "addressline1")}
+                                                onChange={(event) => handle.handleChange(event, event.target.value)}
                                                 value={values.addressOne.addressline1}
                                                 helperText="Address is required"
                                                 required />
@@ -120,7 +120,7 @@ const AddressComponent = (props) => {
                                                 type="text"
                                                 name='state'
                                                 placeholder="State *"
-                                                onChange={(event) => handle.handleChange(event, "state")}
+                                                onChange={(event) => handle.handleChange(event, event.target.value)}
                                                 value={values.addressOne.state}
                                                 helperText="State is required"
                                                 required />
@@ -131,7 +131,7 @@ const AddressComponent = (props) => {
                                                 type="text"
                                                 name='city'
                                                 placeholder="city *"
-                                                onChange={(event) => handle.handleChange(event, "city")}
+                                                onChange={(event) => handle.handleChange(event, event.target.value)}
                                                 value={values.addressOne.city}
                                                 helperText="City is required"
                                                 required />
@@ -178,7 +178,7 @@ const AddressComponent = (props) => {
                                                 type="text"
                                                 name='contactno'
                                                 onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
-                                                onChange={(event) => handle.handleChange(event, "contactno")}
+                                                onChange={(event) => handle.handleChange(event, event.target.value)}
                                                 placeholder="Phone *"
                                                 value={values.addressOne.contactno}
                                                 helperText="Please enter yout 10 digit Phone no**"
@@ -207,7 +207,7 @@ const AddressComponent = (props) => {
                                                     value={values.addressTwo.firstname}
                                                     placeholder="First name"
                                                     required
-                                                    onChange={(event) => handle.handleChange(event, "firstname")}
+                                                    onChange={(event) => handle.handleChange(event, event.target.value)}
                                                     helperText="Firstname is required"
                                                 />
                                             </Grid>
@@ -218,7 +218,7 @@ const AddressComponent = (props) => {
                                                     name="lastname"
                                                     value={values.addressTwo.lastname}
                                                     placeholder="Last name"
-                                                    required onChange={(event) => handle.handleChange(event, "lastname")}
+                                                    required onChange={(event) => handle.handleChange(event, event.target.value)}
                                                     helperText="Lastname is required"
                                                 />
                                             </Grid>
@@ -257,7 +257,7 @@ const AddressComponent = (props) => {
                                                     type="text"
                                                     name='pincode'
                                                     placeholder="Pin Code/Zip Code"
-                                                    onChange={(event) => handle.handleChange(event, "pincode")}
+                                                    onChange={(event) => handle.handleChange(event, event.target.value)}
                                                     value={values.addressTwo.pincode}
                                                     onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
                                                     helperText="Pin Code is required"
@@ -271,7 +271,7 @@ const AddressComponent = (props) => {
                                                     type="text"
                                                     placeholder="Address *"
                                                     name='addressline1'
-                                                    onChange={(event) => handle.handleChange(event, "addressline1")}
+                                                    onChange={(event) => handle.handleChange(event, event.target.value)}
                                                     value={values.addressTwo.addressline1}
                                                     helperText="Address is required"
                                                     required />
@@ -285,7 +285,7 @@ const AddressComponent = (props) => {
                                                     type="text"
                                                     name='state'
                                                     placeholder="State *"
-                                                    onChange={(event) => handle.handleChange(event, "state")}
+                                                    onChange={(event) => handle.handleChange(event, event.target.value)}
                                                     value={values.addressTwo.state}
                                                     helperText="State is required"
                                                     required />
@@ -296,7 +296,7 @@ const AddressComponent = (props) => {
                                                     type="text"
                                                     name='city'
                                                     placeholder="city *"
-                                                    onChange={(event) => handle.handleChange(event, "city")}
+                                                    onChange={(event) => handle.handleChange(event, event.target.value)}
                                                     value={values.addressTwo.city}
                                                     helperText="City is required"
                                                     required />
@@ -343,7 +343,7 @@ const AddressComponent = (props) => {
                                                     className='text-f'
                                                     type="text"
                                                     name='contactno'
-                                                    onChange={(event) => handle.handleChange(event, "contactno")}
+                                                    onChange={(event) => handle.handleChange(event, event.target.value)}
                                                     onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
                                                     placeholder="Phone *"
                                                     value={values.addressTwo.contactno}

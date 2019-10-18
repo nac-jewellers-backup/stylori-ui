@@ -59,7 +59,7 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
                 var cart = localStorage.getItem("cartDetails") ? localStorage.getItem("cartDetails") : {};
                 var products = JSON.parse(cart).products ? JSON.parse(cart).products : {}
                 var values = ({ user_id, products })
-                // let urladdcart = `${apiUrl}${'/addtocart'}`
+                // let urladdcart = `${apiUrl}${'/addtocart'}` 
                 fetch('http://auth-dev.ap-south-1.elasticbeanstalk.com/addtocart', {
                     method: 'POST',
                     headers: {
