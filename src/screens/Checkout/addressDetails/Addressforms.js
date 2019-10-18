@@ -16,16 +16,16 @@ const Addressforms = () => {
         })
     }
     let cart_id = localStorage.getItem("addtocart") ? JSON.parse(localStorage.getItem("addtocart")).cart_id : {}
-    // let user_id = localStorage.getItem("response") ? JSON.parse(localStorage.getItem("response")).user.id : {}
+    let user_id = localStorage.getItem("response") ? JSON.parse(localStorage.getItem("response")).user.id : {}
     var address = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
     delete address['addrs'];
     let obj = {}
     obj['cart_id'] = 'cart_id'
-    // obj['user_id'] = 'user_id'
+    obj['user_id'] = 'user_id'
     obj['address'] = [address]
     const [values, setValues] = React.useState({
         cart_id,
-        // user_id,
+        user_id,
         addressOne: {
             firstname: '',
             lastname: '',
@@ -44,7 +44,7 @@ const Addressforms = () => {
             lastname: '',
             country: '',
             pincode: '',
-            addressline1: '', 
+            addressline1: '',
             addressline2: '',
             state: '',
             city: '',
