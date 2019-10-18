@@ -10,6 +10,7 @@ import Addressforms from './Addressforms'
 const Addressform = (props) => {
     return <AddressComponent   {...props} />
 }
+
 const AddressComponent = (props) => {
     const { values, handle, setValues } = Addressforms();
     const cl = <input onChange={() => setValues({
@@ -29,7 +30,16 @@ const AddressComponent = (props) => {
                         }}>
                             <h5 className='title'> Shipping Address</h5>
                             <p class="form-group tp" style={{ width: "480px" }}>
+                                {/* <Checkboxes CheckBoxValues={['']} change={() => {
+                                    setValues({
+                                        checkValue: !values.checkValue
+                                    })
+                                }} checked={values.checkValue} /> */}
                                 {cl}
+                                {/* {values.checkValue + ""} */}
+                                {/* If your billing address is different from the shipping adress please uncheck the box to select billing address. */}
+
+
                             </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={5}>
                                     {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
@@ -46,7 +56,7 @@ const AddressComponent = (props) => {
                                                 value={values.addressOne.firstname}
                                                 placeholder="First name"
                                                 required
-                                                onChange={(event) => handle.handleChange(event, event.target.value)}
+                                                onChange={(event) => handle.handleChange(event,event.target.value)}
                                                 helperText="Firstname is required"
                                             />
                                         </Grid>
@@ -79,7 +89,7 @@ const AddressComponent = (props) => {
                                                     value={values.addressOne.name}
                                                     //   onChange={handleChange}
                                                     inputProps={{
-                                                        name: 'name',
+                                                        // name: 'name',
                                                         id: 'name-disabled',
                                                     }}
                                                 >
@@ -162,10 +172,10 @@ const AddressComponent = (props) => {
                                                     input={<OutlinedInput id="name-disabled" />}
                                                     style={{ width: "100%" }}
                                                     variant="outlined"
-                                                    // value={values.addressOne.name}
+                                                    value={values.addressOne.name}
                                                     //   onChange={handleChange}
                                                     inputProps={{
-                                                        name: 'name',
+                                                        // name: 'name',
                                                         id: 'name-disabled',
                                                     }}
                                                 >
@@ -226,7 +236,7 @@ const AddressComponent = (props) => {
                                         <Grid container spacing={12}>
                                             <Grid item xs={6} lg={6}>
                                                 {/* <SimpleSelect name={['country']} selectData={['country']}
-                                                value={values.addressTwo.state} /> */}
+                                                value={values.addressTwo.bill_state} /> */}
                                                 <FormControl disabled style={{ width: "100%", marginTop: '7%' }}>
                                                     <InputLabel htmlFor="name-disabled"
                                                         style={{
@@ -237,10 +247,10 @@ const AddressComponent = (props) => {
                                                         input={<OutlinedInput id="name-disabled" />}
                                                         style={{ width: "100%" }}
                                                         variant="outlined"
-                                                        value={values.addressTwo.name}
+                                                        // value={values.addressTwo.bill_name}
                                                         //   onChange={handleChange}
                                                         inputProps={{
-                                                            name: 'name',
+                                                            // name: 'name',
                                                             id: 'name-disabled',
                                                         }}
                                                     >
@@ -308,10 +318,10 @@ const AddressComponent = (props) => {
                                                 {/* <Input
                                                     className='text-f'
                                                     type="text"
-                                                    name="country_code"
-                                                    value={values.addressTwo.country_code}
-                                                    onChange={(event) => handle.handleChange(event, "country_code")}
-                                                    onKeyPress={(e) => handle.handleKeyPress(e, "country_code")}
+                                                    name="bill_country_code"
+                                                    value={values.addressTwo.bill_country_code}
+                                                    onChange={(event) => handle.handleChange(event, "bill_country_code")}
+                                                    onKeyPress={(e) => handle.handleKeyPress(e, "bill_country_code")}
                                                     placeholder="+ 91"
                                                     isNumber
                                                     maxLength={2}
@@ -328,10 +338,10 @@ const AddressComponent = (props) => {
                                                         input={<OutlinedInput id="name-disabled" />}
                                                         style={{ width: "100%" }}
                                                         variant="outlined"
-                                                        // value={values.addressTwo}
+                                                        // value={values.addressTwo.name}
                                                         //   onChange={handleChange}
                                                         inputProps={{
-                                                            name: 'name',
+                                                            // name: 'name',
                                                             id: 'name-disabled',
                                                         }}
                                                     >

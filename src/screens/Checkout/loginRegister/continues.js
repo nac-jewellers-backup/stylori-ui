@@ -19,7 +19,7 @@ const ContinuesComponent = (props) => {
         <Container>
             <div className='pt-sm'>
                 <form onSubmit={e => {
-                    // localStorage.setItem("email", JSON.stringify(values))
+                    localStorage.setItem("email", JSON.stringify(values))
                     handle.handleSubmit(e, setIsotp)
                 }}>
                     <>

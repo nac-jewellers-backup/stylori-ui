@@ -24,7 +24,6 @@ import styles from '../Checkout/loginRegister/style';
 import CartCard from '../../components/Checkout/CartCard'
 import { CartContext } from '../../context/CartContext';
 import cart from '../../mappers/cart';
-import Buynowbutton from '../../components/Buynow/buynowbutton';
 
 class CartCardCheck extends React.Component {
     state = {
@@ -95,7 +94,7 @@ class CartCardCheck extends React.Component {
                             expanded={expanded === 'panel2'}
                             onChange={this.handleChange(1)}
                             style={{ boxShadow: "none" }}>
-                            <ExpansionPanelSummary style={{ width: "100%", overflow: "hidden" }} expandIcon={<ExpandMoreIcon className='arrow-chek' />} className={`ckcut-main-body ${classes.normalfonts}`}>
+                            <ExpansionPanelSummary style={{width:"100%",overflow:"hidden"}} expandIcon={<ExpandMoreIcon className='arrow-chek' />} className={`ckcut-main-body ${classes.normalfonts}`}>
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>2</Avatar>
                                 <Typography className='text-chck'>Address Detail
 
@@ -123,22 +122,11 @@ class CartCardCheck extends React.Component {
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className={`ckcut-main-body ${classes.normalfonts}`}>
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>3</Avatar><Typography className='text-chck'>Order Summary</Typography>
                             </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
+                            <ExpansionPanelDetails >
                                 <Grid container >
                                     <Grid item xs={12} lg={12}>
                                         {/* {JSON.stringify(this.datalist(cartContext))} */}
-                                        <div
-                                            style={{ float: "right" }}>
-                                            <Buynowbutton class={`chckout-page-buynow ${classes.buttons}`}
-                                                buttonname='Continue to Pay' />
-                                        </div>
                                         <CartCard data={data} />
-                                        <div
-                                            style={{ float: "right" }}>
-                                            <Buynowbutton class={`chckout-page-buynow ${classes.buttons}`}
-                                                buttonname='Continue to Pay' />
-                                        </div>
-
                                     </Grid>
                                     <Grid item xs={12} lg={12} className={classes.cart}>
                                         <ProductList />

@@ -79,8 +79,7 @@ const Buydetails = (props) => {
                         <Grid item xs={12} lg={4} style={{ marginRight: "15px" }}>
                             {/* <NavLink to="/cart" style={{ textDecoration: 'none' }} > */}
                             <div onClick={handleLocalStorage.bind(this)}>
-                                <Buynowbutton
-                                 class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' buttonname='Buy Now'/>
+                                <Buynowbutton class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
                             </div>
                             {/* </NavLink> */}
                         </Grid>

@@ -4,7 +4,7 @@ import { useNetworkRequest } from 'hooks/index';
 const OtpLogin = () => {
     // var a = localStorage.getItem("email")?localStorage.getItem("email"):{}
     // var email = JSON.parse(a).email?JSON.parse(a).email:{};
-    let email = localStorage.getItem("email") ? JSON.parse(localStorage.getItem("email")).email : {}
+    let email = localStorage.getItem("email") ? JSON.parse(localStorage.getItem("email")).email : ''
     const [values, setValues] = React.useState({ otp: null, email });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/verifyotp', values, () => []);
     const handleChange = (event, name) => {

@@ -16,16 +16,16 @@ const Addressforms = () => {
         })
     }
     let cart_id = localStorage.getItem("addtocart") ? JSON.parse(localStorage.getItem("addtocart")).cart_id : {}
-    let user_id = localStorage.getItem("response") ? JSON.parse(localStorage.getItem("response")).user.id : {}
+    // let user_id = localStorage.getItem("response") ? JSON.parse(localStorage.getItem("response")).user.id : {}
     var address = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
     delete address['addrs'];
     let obj = {}
     obj['cart_id'] = 'cart_id'
-    obj['user_id'] = 'user_id'
+    // obj['user_id'] = 'user_id'
     obj['address'] = [address]
     const [values, setValues] = React.useState({
         cart_id,
-        user_id,
+        // user_id,
         addressOne: {
             firstname: '',
             lastname: '',
@@ -60,12 +60,11 @@ const Addressforms = () => {
         checkValue1: true,
     });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addaddress', obj, () => []);
-
-    const handleChange = (name, event) => {
+    const handleChange = (type,value) => {
         debugger
         setValues({
             ...values,
-            [name]: event.target.value
+            [value]: type.target.value
         })
     }
     const handleSubmit = (e) => {
