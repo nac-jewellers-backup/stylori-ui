@@ -125,7 +125,12 @@ const Provider = (props) => {
     console.info('dataResponsed', ntxdata)
     const updateProductList = () => {
         const conditionFilters = conditions.generateFilters(paramObjects())
-        const variables = { ...conditionFilters, offsetvar: offset, firstvar: first }
+        const conditionImageColor = {}
+        debugger
+        var a = Object.keys(filters.MetalColor)
+        conditionImageColor["productColor"]=a[0]
+        const variables = { ...conditionFilters, offsetvar: offset, firstvar: first,'conditionImage':conditionImageColor  }
+        debugger
         makeRequest(variables)
     }
 

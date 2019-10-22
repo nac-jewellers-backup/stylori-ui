@@ -1,6 +1,6 @@
 import { filterGenerator } from "utils";
 
-export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter,$offsetvar:Int,$firstvar:Int) {
+export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter,$offsetvar:Int,$firstvar:Int,$conditionImage:ProductImageCondition) {
   allProductLists(filter: $filter,offset: $offsetvar, first:$firstvar,condition: {isactive: true} ) {
     totalCount
     nodes {
@@ -32,7 +32,7 @@ export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter
           generatedSku
         }
       }
-      productImagesByProductId(orderBy: IMAGE_POSITION_ASC) {
+      productImagesByProductId(condition:$conditionImage,orderBy: IMAGE_POSITION_ASC) {
         nodes {
           ishover
           imageUrl

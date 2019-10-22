@@ -38,6 +38,7 @@ export const TabsProvider = (props) => {
         let productDetailProps = props.location.state;
         let productId = productDetailProps.productId;
         let defaultVariants = productDetailProps.defaultVariant;
+        
         filters['productId'] = productId;
         filters['defaultVariants'] = defaultVariants
     }
@@ -51,7 +52,7 @@ export const TabsProvider = (props) => {
     // const { loading, error, data } = useGraphql(PRODUCTDETAILS, () => { }, variables);
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTDETAILS, () => { }, {});
     const updateProductList = () => {
-        const variables = { 'conditionfilter': filters.defaultVariants, 'filter': { "productId": filters.productId } }
+        const variables = { 'conditionfilter': filters.defaultVariants, 'filter': { "productId": filters.productId },'conditionImage':{"productColor":filters.defaultVariants.metalColor} }
         makeRequest(variables);
     }
     

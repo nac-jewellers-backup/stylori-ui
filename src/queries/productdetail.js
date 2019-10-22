@@ -1,6 +1,6 @@
 import { filterGenerator } from "utils";
 // SR3261
-export const PRODUCTDETAILS = `query fetchProductDetails($conditionfilter:TransSkuListCondition,$filter: ProductListCondition) {
+export const PRODUCTDETAILS = `query fetchProductDetails($conditionfilter:TransSkuListCondition,$filter: ProductListCondition,$conditionImage:ProductImageCondition) {
   allProductLists(condition:$filter ) {
     nodes {
       productName
@@ -10,7 +10,7 @@ export const PRODUCTDETAILS = `query fetchProductDetails($conditionfilter:TransS
       colourVarient
       defaultWeight
       productType
-      productImagesByProductId  {
+      productImagesByProductId (condition:$conditionImage,orderBy: IMAGE_POSITION_ASC) {
         nodes {
           ishover
           imageUrl

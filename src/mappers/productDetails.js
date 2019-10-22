@@ -4,6 +4,7 @@ import {CDN_URL} from 'config'
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 
 export default function (data, cdnUrl) {
+    debugger
     let mapperdata = [];
     try {
         mapperdata = data.data.allProductLists.nodes;
@@ -11,20 +12,21 @@ export default function (data, cdnUrl) {
         mapperdata = [];
     }
     const _format = mapperdata.map(PD => ({
+       
         
         title: PD.productName,
-        skuId:PD.transSkuListsByProductId.nodes=== undefined ? '' : PD.transSkuListsByProductId.nodes[0].generatedSku,
-        price: (PD.transSkuListsByProductId.nodes).map(val => (
+        skuId:PD.transSkuListsByProductId.nodes && PD.transSkuListsByProductId.nodes=== undefined ? '' : PD.transSkuListsByProductId.nodes[0].generatedSku,
+        price: PD.transSkuListsByProductId.nodes &&(PD.transSkuListsByProductId.nodes).map(val => (
             val.markupPrice
         )),
-        offerPrice: (PD.transSkuListsByProductId.nodes).map(val => (
+        offerPrice:PD.transSkuListsByProductId.nodes && (PD.transSkuListsByProductId.nodes).map(val => (
             val.sellingPrice
         )),
         save: '5999.9',
         offerDiscount: '25% FLAT OFF',
-        dis: PD.transSkuListsByProductId.nodes[0] !== undefined ?PD.transSkuListsByProductId.nodes[0].transSkuDescriptionsBySkuId.nodes[0].skuDescription :'',
-        productType: PD.productType,
-        fadeImages: (PD.productImagesByProductId.nodes.map(val => (
+        dis:PD.transSkuListsByProductId.nodes &&  PD.transSkuListsByProductId.nodes[0] !== undefined && PD.transSkuListsByProductId.nodes[0].transSkuDescriptionsBySkuId.nodes[0].skuDescription !=='' ?PD.transSkuListsByProductId.nodes[0].transSkuDescriptionsBySkuId.nodes[0].skuDescription :'',
+        productType: PD && PD.productType,
+        fadeImages:PD.productImagesByProductId.nodes && (PD.productImagesByProductId.nodes.map(val => (
             `${CDN_URL}${val.imageUrl}`
         ))),
 
@@ -57,7 +59,7 @@ export default function (data, cdnUrl) {
         productTabs: [{
             tab1: {
                 header: "Ring Size",
-                Children: PD.sizeVarient
+                Children: PD && PD.sizeVarient
             },
             tab2: {
                 header: "Metal Purity",
@@ -71,12 +73,12 @@ export default function (data, cdnUrl) {
                 //         P.metalColor
                 //     ))
                 // }
-                Children: PD.colourVarient
+                Children:PD && PD.colourVarient
             },
             tab3: {
                 header: "Diamond Clarity",
                 Children:
-                    (PD.productDiamondsByProductSku.nodes).map(P => (
+                PD.productDiamondsByProductSku.nodes && (PD.productDiamondsByProductSku.nodes).map(P => (
                         
                         {
                             name: P.diamondType,
@@ -97,19 +99,19 @@ export default function (data, cdnUrl) {
             header: "Product Details",
             namedetail: [{
                 name: "Product Code",
-                details: PD.transSkuListsByProductId.nodes.length > 0 ? PD.transSkuListsByProductId.nodes[0].generatedSku : ''
+                details: PD.transSkuListsByProductId.nodes && PD.transSkuListsByProductId.nodes.length > 0 && PD.transSkuListsByProductId.nodes[0].generatedSku !== '' ? PD.transSkuListsByProductId.nodes[0].generatedSku : ''
             },
             {
                 name: "Metal Type",
-                details: PD.transSkuListsByProductId.nodes.length > 0 && PD.transSkuListsByProductId.nodes[0].purity +' '+ PD.transSkuListsByProductId.nodes[0].metalColor
+                details:PD.transSkuListsByProductId.nodes && PD.transSkuListsByProductId.nodes.length > 0 && PD.transSkuListsByProductId.nodes[0].purity +' '+ PD.transSkuListsByProductId.nodes[0].metalColor
             }, {
                 name: "Approximate",
-                details: PD.defaultWeight
+                details:PD && PD.defaultWeight
             },
 
             {
                 name: "Size",
-                details: PD.sizeVarient
+                details:PD && PD.sizeVarient
             }],
         },
 
@@ -117,46 +119,46 @@ export default function (data, cdnUrl) {
             header: "Diamond Details ",
             namedetail: [{
                 name: "Total No of Diamonds",
-                details: (PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].length > 0) && PD.productDiamondsByProductSku.nodes[0].stoneCount
+                details:PD.productDiamondsByProductSku.nodes && (PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].length > 0) && PD.productDiamondsByProductSku.nodes[0].stoneCount
             },
 
             {
                 name: "Color",
-                details: PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].diamondColour
+                details:PD.productDiamondsByProductSku.nodes &&  PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].diamondColour
                 
             },
 
             {
                 name: "Clarity",
-                details: PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes[0].diamondClarity
+                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length>0) &&  PD.productDiamondsByProductSku.nodes[0].diamondClarity
             },
             {
                 name: "Shape",
-                details: PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].diamondShape
+                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length>0 && PD.productDiamondsByProductSku.nodes[0].diamondClarity !== '' ) && PD.productDiamondsByProductSku.nodes[0].diamondShape
             }]
         },
         {
             header: "Gemstone Details",
             namedetail: [{
                 name: "Stone Type",
-                details: (PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].length > 0) ? PD.productGemstonesByProductSku.nodes[0].gemstoneType : ''
+                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length > 0) ? PD.productGemstonesByProductSku.nodes[0].gemstoneType : ''
             },
             {
                 name: "Shape",
-                details: (PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].length > 0) && PD.productGemstonesByProductSku.nodes[0].gemstoneShape
+                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length > 0) && PD.productGemstonesByProductSku.nodes[0].gemstoneShape
             },
             {
                 name: "Total No of Stones",
-                details: (PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].length > 0) && PD.productGemstonesByProductSku.nodes[0].stoneCount
+                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length > 0) && PD.productGemstonesByProductSku.nodes[0].stoneCount
             },
             {
                 name: "Size",
-                details: (PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].length > 0) && PD.productGemstonesByProductSku.nodes[0].gemstoneSize
+                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length > 0) && PD.productGemstonesByProductSku.nodes[0].gemstoneSize
             },
 
             {
                 name: "Setting",
-                details: (PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].length > 0) && PD.productGemstonesByProductSku.nodes[0].gemstoneSetting
+                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length > 0) && PD.productGemstonesByProductSku.nodes[0].gemstoneSetting
             }]
         },
 
@@ -168,7 +170,7 @@ export default function (data, cdnUrl) {
             },
             {
                 name: "Diamond",
-                details: (PD.transSkuListsByProductId.nodes[0] && PD.transSkuListsByProductId.nodes[0].length > 0) && PD.transSkuListsByProductId.nodes[0].purity
+                details: (PD.transSkuListsByProductId.nodes && PD.transSkuListsByProductId.nodes[0].length > 0) && PD.transSkuListsByProductId.nodes[0].purity
             }, {
                 name: "Making Charges",
                 details: "1.463"
