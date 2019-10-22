@@ -54,7 +54,7 @@ const Buydetails = (props) => {
     const { data } = props;
     const { classes } = props;
     const handleLocalStorage = () => {
-        var skuId = data[0].skuId[0];
+        var skuId = data[0].skuId;
         var products = [];
         var cartId = "";
         var userId = "";

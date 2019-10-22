@@ -6,8 +6,7 @@ const placeImages = (placeImage) => placeImage.length === 0 ?'product/SR0662/SR0
 const hoverImage = (placeImage) => placeImage.length === 0 ?'product/SR0662/HOVER-SR0662-2Y.jpg' : placeImage.find(fd => fd.ishover); 
 
 
-export default function (data, cdnUrl) {
-    debugger
+    export default function (data, cdnUrl) {
     let mapperdata = [];
     try {
         mapperdata = data.data.allProductLists.nodes;

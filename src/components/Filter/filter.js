@@ -21,6 +21,8 @@ import { FilterOptionsContext } from 'context'
 
 const PersistentDrawerLeft = (props) => {
   const { setFilters } = React.useContext(FilterOptionsContext);
+  const loc = window.location.search
+  
   return <Component setFilters={setFilters} {...props} />
 }
 
@@ -59,9 +61,12 @@ class Component extends React.Component {
     var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
     var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
     this.setState({ numOne: numOne, numTwo: numTwo })
-    // debugger
+   
+
+    // This is used for checking the check boxes if we copy and pasted the url to new tab or new window
     if(window.location.search)
     {
+      
       let urlSearchparams = window.location.search;
 
       let urlSearchparamsDecode = decodeURI(urlSearchparams)
@@ -71,24 +76,14 @@ class Component extends React.Component {
       let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
       
       let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val =>{ return val.split('=')})
-      // let 
       let mapUrlParamsSplitEqual = urlSplitparamsEqual();
-  
-      // let paramsMapUrlSetState = () => mapUrlParamsSplitEqual.map(val=>
-        
-      //   {
-      //     var nameFilter = val[0]
-      //     var keyNameFilter = val[1]
-      //     console.log('val',mapUrlParamsSplitEqual)
-      //     this.handleChange(keyNameFilter,true, ()=>{}, nameFilter)
-      //   }
-      //   )
-        
       this.handleChange(()=>{} ,true, ()=>{}, mapUrlParamsSplitEqual)
       
     }
+    // This is used for checking the check boxes if we copy and pasted the url to new tab or new window 
+    // *****Ends*****
 
-    // url search params condition ends
+   
   }
   handleChange(value, BoolName, e, TargetName) {
     
@@ -242,7 +237,7 @@ console.log('queries',queries)
     console.log('urlSplitparamsEqual',this.state.checked)
 
     const { classes, data } = this.props;
-    const { filter, subFilter, sortOptions } = this.props.data;
+    const { filter, subFilter, sortOptions } = this.props.data[0];
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
 
@@ -567,8 +562,9 @@ Component.propTypes = {
   filterdatas: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(props => {
-  const { mapped } = useDummyRequest(filterParams);
-  if (Object.keys(mapped).length === 0) return ''
-  return < PersistentDrawerLeft {...props} data={mapped} />
-});
+export default withStyles(styles, { withTheme: true })(PersistentDrawerLeft)
+// (props => {
+//   const { mapped } = useDummyRequest(filterParams);
+//   if (Object.keys(mapped).length === 0) return ''
+//   return < PersistentDrawerLeft {...props} data={mapped} />
+// });

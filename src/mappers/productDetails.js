@@ -1,4 +1,5 @@
 import { resolutions } from "utils";
+import {CDN_URL} from 'config'
 // const baseUi = "https://assets-cdn.stylori.com/";
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 
@@ -12,7 +13,7 @@ export default function (data, cdnUrl) {
     const _format = mapperdata.map(PD => ({
         
         title: PD.productName,
-        skuId:PD.transSkuListsByProductId.nodes=== undefined ? '' : PD.transSkuListsByProductId.nodes.map(skus=>skus.generatedSku),
+        skuId:PD.transSkuListsByProductId.nodes=== undefined ? '' : PD.transSkuListsByProductId.nodes[0].generatedSku,
         price: (PD.transSkuListsByProductId.nodes).map(val => (
             val.markupPrice
         )),
@@ -24,7 +25,7 @@ export default function (data, cdnUrl) {
         dis: PD.transSkuListsByProductId.nodes[0] !== undefined ?PD.transSkuListsByProductId.nodes[0].transSkuDescriptionsBySkuId.nodes[0].skuDescription :'',
         productType: PD.productType,
         fadeImages: (PD.productImagesByProductId.nodes.map(val => (
-            `https://s3.ap-south-1.amazonaws.com/staging-assets.stylori.com/base_images/${val.imageUrl}`
+            `${CDN_URL}${val.imageUrl}`
         ))),
 
 

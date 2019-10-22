@@ -203,9 +203,8 @@ class Component extends React.Component {
                                             {arr2.map((val, i) => {
                                                 return (
                                                     <Grid xs={4}>
-                                                        <button 
-                                                            className={this.state.metalColor == i ? 'tabs-valus tbs_active' : 'tabs-valus'}
-                                                            id={val} name={i}
+                                                        <button className="tabs-valus"
+                                                            id={val}
                                                             onClick={event => this.handleClick(event, 'purity')}
                                                         >
                                                             {this.imageRender(val)}
@@ -224,13 +223,12 @@ class Component extends React.Component {
                                 <>
                                     {value === 2 && <TabContainer >
                                         <Grid container spacing={12}>
-                                            {val.tab3.Children.map((val,i) => {
+                                            {val.tab3.Children.map(val => {
                                                 return (
                                                     <Grid xs={4}>
-                                                        <button
-                                                            className={this.state.diamondType == i ? 'tabs-valus tbs_active' : 'tabs-valus'}
+                                                        <button className="tabs-valus"
                                                             // id={val.name}
-                                                            id={val.name} 
+                                                            id={val.name}
                                                             onClick={event => this.handleClick(event, 'diamondType')}
                                                         // onClick={event => this.handleClickDiamond(event)}
                                                         >

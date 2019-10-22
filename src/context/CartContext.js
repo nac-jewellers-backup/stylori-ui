@@ -29,7 +29,7 @@ const Provider = (props) => {
     const pathQueries = () => {
     skuId = localStorage.getItem('cartDetails')
     var id = JSON.parse(skuId);
-     skus = id.products[0].sku_id[0];
+     skus = id.products[0].sku_id;
     // alert(skuId)
     }
     skuId = localStorage.getItem('cartDetails')

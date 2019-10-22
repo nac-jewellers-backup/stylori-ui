@@ -38,8 +38,12 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
     // PARSE FOR NETWORK REQUEST
     const method = data ? 'POST' : 'GET';
     let url = `${apiUrl}${urlSignin}`
-    body = typeof body === "string" ? body : JSON.stringify(body);
-    const makeFetch = () => {
+    
+    const makeFetch = (bodyvar) => {
+       const bodyvariable= typeof body === "string" ? body : JSON.stringify(body)
+        body = JSON.parse(bodyvariable).length === 0? bodyvariable : JSON.stringify( bodyvar);
+        
+        // const allBody = {...body, ...bodyvar}
         setLoading(true);
         fetch(url, {
             method, headers: {
@@ -48,36 +52,32 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
             }, body
         })
             .then(res => {
-                setStatus({ status: Response.status, statusText: res.message })
+                setStatus({ ...status, status: Response.status, statusText: res.message })
                 return res.json();
             })
             .then(resdata => {
                 setData(resdata);
-                localStorage.setItem('response', JSON.stringify(resdata));
-                var responseId = localStorage.getItem("response") ? localStorage.getItem("response") : {}
-                var user_id = JSON.parse(responseId).user.id ? JSON.parse(responseId).user.id : {}
-                var cart = localStorage.getItem("cartDetails") ? localStorage.getItem("cartDetails") : {};
-                var products = JSON.parse(cart).products ? JSON.parse(cart).products : {}
-                var values = ({ user_id, products })
+                console.info('resdataaaa',resdata,body)
+                // localStorage.setItem('response', JSON.stringify(resdata));
+                // var responseId = localStorage.getItem("response") ? localStorage.getItem("response") : {}
+                // var user_id = JSON.parse(responseId).user.id ? JSON.parse(responseId).user.id : {}
+                // var cart = localStorage.getItem("cartDetails") ? localStorage.getItem("cartDetails") : {};
+                // var addtocart = JSON.parse(cart).products ? JSON.parse(cart).products : {}
+                // var values = ({ user_id, addtocart })
                 // let urladdcart = `${apiUrl}${'/addtocart'}`
-                fetch('http://auth-dev.ap-south-1.elasticbeanstalk.com/addtocart', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(values)
-                })
-                .then(res => {
-                    setStatus({ status: Response.status, statusText: res.message })
-                    return res.json();
-                })
-                .then(values => {
-                    localStorage.setItem('addtocart', JSON.stringify(values));
-                    console.log('resdata', values)
-                }).catch((error) => {
-                    console.error(error);
-                    console.log('resdata', error)
-                });
+                // fetch('http://auth-dev.ap-south-1.elasticbeanstalk.com/addtocart', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify(values)
+                // }).then(values => {
+                //     localStorage.setItem('addtocart', JSON.stringify(values));
+                //     console.log('resdata', values)
+                // }).catch((error) => {
+                //     console.error(error);
+                //     console.log('resdata', error)
+                // });
             })
             .catch(err => {
                 setError(true);
@@ -85,5 +85,9 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
                 console.log(Response.status)
             });
     }
+    console.info('object', data)
+    React.useEffect(() => {
+        makeFetch();
+    }, []);
     return { loading, error, status, data, mapped, makeFetch }
 }

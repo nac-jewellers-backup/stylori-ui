@@ -102,6 +102,13 @@ export const filterProductMatrix = (type, value) => {
       }
       break;
     }
+    case "Material":{
+      fc={
+        table:"productMaterialsByProductSku",
+        type:"materialName"
+      }
+      break;
+    }
 
     default: {
       break;

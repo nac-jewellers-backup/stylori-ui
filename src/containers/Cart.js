@@ -77,13 +77,18 @@ class Cart extends React.Component {
                         </Grid>
                     </Hidden>
                 </div>
+            
+
         )
     }
 }
 // export default Checkout;
+
+
 const Components = props => {
     let { CartCtx: { data, loading, error } } = React.useContext(CartContext);
     let content, mapped;
+
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
             mapped = cart(data);
