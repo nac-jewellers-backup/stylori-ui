@@ -147,16 +147,41 @@ const Provider = (props) => {
     // useEffect(()=>{
     //     setFilters(filters);
     // },[filters])
-    
+    var newObj = {}
     const updateFilters = (filters) => {
         setFilters(filters);
-        var newObj = {}
+     
+      
         var len;
         let bodyvar;
          bodyvar = paramObjects();
-      if(bodyvar.length===0){
-          pathQueries()
-          bodyvar = paramObjects();
+      if(queries.length===0){
+          try {
+            Object.keys(filters).map(fk => {
+                const filter = filters[fk];
+                const fv = Object.keys(filter);
+                if (fv.length > 0) {
+                    if (filter[fv[0]]) {
+                        const qt = `${fk}=${fv[0]}`;
+                        const qtf = {}
+                        qtf[`${fk}`] = `${fv[0]}`
+                        queries.push(qt);
+                        // qtfArr.push(qtf);
+    
+                    }
+    
+                }
+            })
+            const query = encodeURI(queries.join("&"));
+    
+            props.history.push({
+                pathname: '/stylori',
+                search: query,
+            })
+            bodyvar = paramObjects();
+          } catch (error) {
+              console.log(error)
+          }
       }
         var k = bodyvar.map(val => Object.values(val));
         var keyy = bodyvar.map(val => Object.keys(val))

@@ -32,7 +32,7 @@ export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter
           generatedSku
         }
       }
-      productImagesByProductId {
+      productImagesByProductId(orderBy: IMAGE_POSITION_ASC) {
         nodes {
           ishover
           imageUrl
