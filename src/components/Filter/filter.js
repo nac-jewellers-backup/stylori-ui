@@ -151,7 +151,7 @@ console.log('queries',queries)
     // checkedvalue[value] = BoolName
     // TargetName === undefined ?  checked[e.target.name] = checkedvalue : checked[TargetName] = checkedvalue
     // checkedvalue={value : BoolName}
-
+//haii
     this.setState({
        chipData
     }, () => this.props.setFilters(checked))
