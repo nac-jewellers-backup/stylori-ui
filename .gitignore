@@ -93,4 +93,17 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
 # End of https://www.gitignore.io/api/node
