@@ -141,24 +141,24 @@ export default function (data, cdnUrl) {
             header: "Gemstone Details",
             namedetail: [{
                 name: "Stone Type",
-                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length > 0) ? PD.productGemstonesByProductSku.nodes[0].gemstoneType : ''
+                details: PD.productGemstonesByProductSku.nodes && PD.productGemstonesByProductSku.nodes.length===0   ?'': PD.productGemstonesByProductSku.nodes[0].gemstoneType
             },
             {
                 name: "Shape",
-                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length > 0) && PD.productGemstonesByProductSku.nodes[0].gemstoneShape
+                details: PD.productGemstonesByProductSku.nodes && PD.productGemstonesByProductSku.nodes.length===0   ? '':PD.productGemstonesByProductSku.nodes[0].gemstoneShape
             },
             {
                 name: "Total No of Stones",
-                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length > 0) && PD.productGemstonesByProductSku.nodes[0].stoneCount
+                details: PD.productGemstonesByProductSku.nodes && PD.productGemstonesByProductSku.nodes.length===0  ? '' : PD.productGemstonesByProductSku.nodes[0].stoneCount
             },
             {
                 name: "Size",
-                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length > 0) && PD.productGemstonesByProductSku.nodes[0].gemstoneSize
+                details: PD.productGemstonesByProductSku.nodes && PD.productGemstonesByProductSku.nodes.length===0  ? '' : PD.productGemstonesByProductSku.nodes[0].gemstoneSize
             },
 
             {
                 name: "Setting",
-                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length > 0) && PD.productGemstonesByProductSku.nodes[0].gemstoneSetting
+                details:PD.productGemstonesByProductSku.nodes && PD.productGemstonesByProductSku.nodes.length===0   ? '' : PD.productGemstonesByProductSku.nodes[0].gemstoneSetting 
             }]
         },
 
