@@ -127,7 +127,8 @@ const Provider = (props) => {
         const conditionFilters = conditions.generateFilters(paramObjects())
         const conditionImageColor = {}
         debugger
-        var a = Object.keys(filters.MetalColor)
+        var a = filters.length === 0 ? Object.keys(filters.MetalColor) : ''
+        // var a = filters.metalColor ? filters.metalColor : null;
         conditionImageColor["productColor"]=a[0]
         const variables = { ...conditionFilters, offsetvar: offset, firstvar: first,'conditionImage':conditionImageColor  }
         debugger

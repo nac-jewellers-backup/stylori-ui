@@ -346,8 +346,15 @@
         font-size: 13px !important;
         width: 100%;
         overflow: auto;
+        margin:auto !important;
+       
     }
-
+    /* //:nth-child(2n) */
+    .product-subhead-list span { 
+        
+        display: flex;
+        flex:1;
+    }
     /*certification*/
     .certification-img {
         width: 100% !important;

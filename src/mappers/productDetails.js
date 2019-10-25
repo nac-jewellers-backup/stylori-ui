@@ -119,46 +119,54 @@ export default function (data, cdnUrl) {
             header: "Diamond Details ",
             namedetail: [{
                 name: "Total No of Diamonds",
-                details:PD.productDiamondsByProductSku.nodes && (PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].length > 0) && PD.productDiamondsByProductSku.nodes[0].stoneCount
+                details:PD.productDiamondsByProductSku.nodes && (PD.productDiamondsByProductSku.nodes.length>0) && PD.productDiamondsByProductSku.nodes.map(val=>{return val.stoneCount})
             },
 
             {
                 name: "Color",
-                details:PD.productDiamondsByProductSku.nodes &&  PD.productDiamondsByProductSku.nodes[0] && PD.productDiamondsByProductSku.nodes[0].diamondColour
+                details:PD.productDiamondsByProductSku.nodes && (PD.productDiamondsByProductSku.nodes.length>0) && PD.productDiamondsByProductSku.nodes.map(val=>{return val.diamondColour})
                 
             },
 
             {
                 name: "Clarity",
-                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length>0) &&  PD.productDiamondsByProductSku.nodes[0].diamondClarity
+                details: PD.productDiamondsByProductSku.nodes && (PD.productDiamondsByProductSku.nodes.length>0) && PD.productDiamondsByProductSku.nodes.map(val=>{return val.diamondClarity})
+            },
+            {
+                name:"Total Weight",
+                details:PD.productDiamondsByProductSku.nodes && (PD.productDiamondsByProductSku.nodes.length>0) && PD.productDiamondsByProductSku.nodes.map(val=>{return val.stoneWeight})
+            },
+            {
+                name:"Setting Type",
+                details:PD.productDiamondsByProductSku.nodes && (PD.productDiamondsByProductSku.nodes.length>0) && PD.productDiamondsByProductSku.nodes.map(val=>{return val.diamondSettings})
             },
             {
                 name: "Shape",
-                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length>0 && PD.productDiamondsByProductSku.nodes[0].diamondClarity !== '' ) && PD.productDiamondsByProductSku.nodes[0].diamondShape
+                details: PD.productDiamondsByProductSku.nodes && (PD.productDiamondsByProductSku.nodes.length>0) && PD.productDiamondsByProductSku.nodes.map(val=>{return val.diamondShape})
             }]
         },
         {
             header: "Gemstone Details",
             namedetail: [{
                 name: "Stone Type",
-                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length > 0) ? PD.productGemstonesByProductSku.nodes[0].gemstoneType : ''
+                details: PD.productGemstonesByProductSku.nodes && PD.productGemstonesByProductSku.nodes.length===0   ?'': PD.productGemstonesByProductSku.nodes[0].gemstoneType
             },
             {
                 name: "Shape",
-                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length > 0) && PD.productGemstonesByProductSku.nodes[0].gemstoneShape
+                details: PD.productGemstonesByProductSku.nodes && PD.productGemstonesByProductSku.nodes.length===0   ? '':PD.productGemstonesByProductSku.nodes[0].gemstoneShape
             },
             {
                 name: "Total No of Stones",
-                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length > 0) && PD.productGemstonesByProductSku.nodes[0].stoneCount
+                details: PD.productGemstonesByProductSku.nodes && PD.productGemstonesByProductSku.nodes.length===0  ? '' : PD.productGemstonesByProductSku.nodes[0].stoneCount
             },
             {
                 name: "Size",
-                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length > 0) && PD.productGemstonesByProductSku.nodes[0].gemstoneSize
+                details: PD.productGemstonesByProductSku.nodes && PD.productGemstonesByProductSku.nodes.length===0  ? '' : PD.productGemstonesByProductSku.nodes[0].gemstoneSize
             },
 
             {
                 name: "Setting",
-                details: (PD.productDiamondsByProductSku.nodes && PD.productDiamondsByProductSku.nodes.length > 0) && PD.productGemstonesByProductSku.nodes[0].gemstoneSetting
+                details:PD.productGemstonesByProductSku.nodes && PD.productGemstonesByProductSku.nodes.length===0   ? '' : PD.productGemstonesByProductSku.nodes[0].gemstoneSetting 
             }]
         },
 
