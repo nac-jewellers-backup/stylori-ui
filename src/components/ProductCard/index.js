@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCards from "./Card.js";
+import {ImgMediaCard} from "./Card.js";
 import { useGraphql } from "../../hooks/GraphqlHook.js";
 import productlistmapper from "../../mappers/productlist.js";
 import { productlist as productlistquery } from "../../queries/index.js";
@@ -39,7 +39,7 @@ function Card(props) {
   return (
 
     // <ProductCard  ard  data={props.data} {...CardControls}/>
-    <ProductCards data={props.data} />
+    <ImgMediaCard data={props.data} />
 
   );
 }

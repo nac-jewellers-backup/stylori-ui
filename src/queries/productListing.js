@@ -32,6 +32,11 @@ export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter
           generatedSku
         }
       }
+      productMaterialsByProductSku {
+        nodes {
+          materialName
+        }
+      }
       productImagesByProductId(condition:$conditionImage,orderBy: IMAGE_POSITION_ASC) {
         nodes {
           ishover

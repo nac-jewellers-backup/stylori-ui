@@ -35,7 +35,8 @@ export const RouterApp = () => {
             <Redirect key="stylori-redirect" from="/" exact to={routes.stylori} />
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
             <Route key="stylori" component={Stylori}  path={routes.stylori} />
-            <Route key="PricingPage" component={PricingPage} exact path={routes.PricingPage} />
+            <Route  component={PricingPage}  path={`/:productCategory/:productType/:material/:productName`} />
+            {/* {https://www.stylori.com/jewellery/earrings/diamond/Lavender-Love?skuid=54269} */}
             <Route key="Cart" component={Cart} exact path={routes.Cart} />
             <Route key="Register" component={Register} exact path={routes.Register} />
         </Switch>

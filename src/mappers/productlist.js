@@ -14,7 +14,6 @@ const hoverImage = (placeImage) => placeImage.length === 0 ?'product/SR0662/HOVE
         mapperdata = [];
     }
     const _format = mapperdata.map(k => {
-        
         let _d;
         try {
             _d = {
@@ -34,6 +33,9 @@ const hoverImage = (placeImage) => placeImage.length === 0 ?'product/SR0662/HOVE
                 metalColor:k.transSkuListsByProductId.nodes[0] === undefined ? '' : k.transSkuListsByProductId.nodes[0].metalColor,
                 purity:k.transSkuListsByProductId.nodes[0] === undefined ? '' : k.transSkuListsByProductId.nodes[0].purity,
                 skuSize:k.transSkuListsByProductId.nodes[0] === undefined ? '' : k.transSkuListsByProductId.nodes[0].skuSize,
+                material:k.productMaterialsByProductSku.nodes[0] === undefined ? '' : k.productMaterialsByProductSku.nodes[0].materialName,
+                productType:k.productType,
+                skuId:k.transSkuListsByProductId.nodes[0].generatedSku
 
             }
         } catch (error) {

@@ -13,6 +13,26 @@ import { Hidden } from "@material-ui/core";
 import './productCard.css'
 
 
+import { ProductDetailContext } from 'context'
+
+
+export const ImgMediaCard = (props) => {
+  const { ProductDetailCtx,setFilters } = React.useContext(ProductDetailContext);
+  const loc = window.location.search
+  
+  return <Component filters={ProductDetailCtx.filters} setFilters={setFilters} {...props} />
+}
+
+const handleProductDetatiContext = (props) =>{
+  props.filters['defaultVariants']['diamondType']  = props.data.diamondType
+  props.filters['defaultVariants']['metalColor']  = props.data.metalColor
+  props.filters['defaultVariants']['purity']  = props.data.purity
+  props.filters['defaultVariants']['skuSize']  = props.data.skuSize
+props.setFilters(props.filters)
+
+console.log('props.filters',props.filters)
+}
+
 const useStyles = makeStyles(theme=>({
   root: {
     display: "flex",
@@ -166,19 +186,28 @@ const useStyles = makeStyles(theme=>({
   }
 }));
 const renderImages = (props, cardstate) => {
+  
   const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
   // console.info('props.data.image[filterType]',props.data.image[filterType]);
   return props.data.image['hoverImage'].length === 0 ?props.data.image['placeImage'].map(imgs => `${imgs.img} ${imgs.size}`).toString() : props.data.image[filterType].map(imgs => `${imgs.img} ${imgs.size}`).toString()
 }
 
-export default function ImgMediaCard(props) {
+ function Component(props) {
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
     hovered: false,
     loaded: false,
     dataLoaded: true
   });
+// let a=[];
 
+// ['ProductType','Material'].map(val=>{
+//   if(Object.values(props.filters[val]))
+//   a.push(Object.keys(props.filters[val]))
+ 
+//  })
+
+  console.log('productTypeMaterial')
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
@@ -203,9 +232,8 @@ export default function ImgMediaCard(props) {
             </Grid>
           </Grid>
         </CardActions>
-        <Link to={{pathname:`/pricingPage`, 
-        state: {productId: props.data.productId,defaultVariant:{diamondType:props.data.diamondType,metalColor:props.data.metalColor,purity:props.data.purity
-      } }}} style={{textDecoration:'none'}} >
+        {/* /:productCategory/:productType/:material/:productName */}
+        <Link to={{pathname:`${'jewellery'}/${props.data.productType}/${props.data.material}/${(props.data.title).replace(/ /g, "-")}`, search:`skuId=${props.data.skuId}` }} style={{textDecoration:'none'}} onClick={handleProductDetatiContext(props)}>
         <CardActionArea >
        
         <img 

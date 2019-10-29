@@ -36,6 +36,7 @@ const mobilecarousel = (props) => {
 
 const Productprice = (props, anchorEl, handleClick, handleClose) => {
     const { data } = props;
+    debugger
     const { classes } = props;
     const open = anchorEl;
     return (
@@ -107,8 +108,8 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
 
                     <div className={classes.width} style={{ padding: "0 10px" }}>
                         <Pricing
-                            price={data[0].price[0]}
-                            offerPrice={data[0].offerPrice[0]}
+                            price={data[0].price}
+                            offerPrice={data[0].offerPrice}
                             offerDiscount={val.offerDiscount}
                         >
                             <Grid container spacing={12}>

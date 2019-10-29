@@ -152,6 +152,7 @@ const Components = props => {
   let mapped = datas;
   if (!loading && !error) {
     mapped = productDetails(datas);
+    debugger
   }
   if (Object.keys(mapped).length === 0) return <div className="overall-loader"><div id="loading"></div></div>
   else {

@@ -119,19 +119,16 @@ const Provider = (props) => {
 
     
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTLIST, () => { }, {});
-    debugger
     const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/filterlist', {}, {})
 
     console.info('dataResponsed', ntxdata)
     const updateProductList = () => {
         const conditionFilters = conditions.generateFilters(paramObjects())
         const conditionImageColor = {}
-        debugger
         var a = filters.length === 0 ? Object.keys(filters.MetalColor) : ''
         // var a = filters.metalColor ? filters.metalColor : null;
         conditionImageColor["productColor"]=a[0]
         const variables = { ...conditionFilters, offsetvar: offset, firstvar: first,'conditionImage':conditionImageColor  }
-        debugger
         makeRequest(variables)
     }
 
@@ -192,7 +189,6 @@ const Provider = (props) => {
         var k = bodyvar.map(val => Object.values(val));
         var keyy = bodyvar.map(val => Object.keys(val))
         console.log(filters)
-        debugger
         len = keyy.length
         while (len--) {
             var key = keyy[len]

@@ -49,12 +49,18 @@ class Component extends React.Component {
         console.log(this.state.ringSize)
         var filters = { ...this.props.filters }
         if (key === 'purity') {
+
             var kv = event.target.id
             var objVal = kv.split(" ")
             var arrPurity = objVal[0]
             var arrColor = objVal[1]
+            var diamondTypes = filters['defaultVariants']['diamondType']
+            debugger
             filters['defaultVariants']['purity'] = arrPurity
             filters['defaultVariants']['metalColor'] = arrColor
+            
+            // filters['defaultVariants']['skuSize']=diamondTypes
+            filters['defaultVariants']['diamondType']=diamondTypes
             this.props.setFilters(filters);
         }
         else {

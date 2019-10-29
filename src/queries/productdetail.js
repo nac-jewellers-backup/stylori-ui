@@ -1,23 +1,30 @@
 import { filterGenerator } from "utils";
 // SR3261
-export const PRODUCTDETAILS = `query fetchProductDetails($conditionfilter:TransSkuListCondition,$filter: ProductListCondition,$conditionImage:ProductImageCondition) {
-  allProductLists(condition:$filter ) {
+export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondition, $conditionImage: ProductImageCondition,$productnamefilter:TransSkuListFilter,$number: Int) {
+  allTransSkuLists(condition: $conditionfilter, filter:$productnamefilter, first: $number) {
     nodes {
-      productName
+      skuSize
+      markupPrice
+      sellingPrice
+      purity
+      metalColor
+      discountPrice
+      generatedSku
+      transSkuDescriptionsBySkuId {
+        nodes {
+          skuDescription
+        }
+      }
+      diamondType
+      productListByProductId{
+           productName
       productId
       defaultSize
       sizeVarient
       colourVarient
       defaultWeight
       productType
-      productImagesByProductId (condition:$conditionImage,orderBy: IMAGE_POSITION_ASC) {
-        nodes {
-          ishover
-          imageUrl
-          imagePosition
-        }
-      }
-      productDiamondsByProductSku {
+             productDiamondsByProductSku {
         nodes {
           diamondClarity
           diamondColour
@@ -28,24 +35,7 @@ export const PRODUCTDETAILS = `query fetchProductDetails($conditionfilter:TransS
           stoneCount
         }
       }
-      transSkuListsByProductId (condition:$conditionfilter ) {
-        nodes {
-          skuSize
-          markupPrice
-          sellingPrice
-          purity
-          metalColor
-          discountPrice
-          generatedSku
-          transSkuDescriptionsBySkuId {
-            nodes {
-              skuDescription
-            }
-          }
-          diamondType
-        }
-      }
-      productGemstonesByProductSku {
+         productGemstonesByProductSku {
         nodes {
           gemstoneType
           gemstoneSize
@@ -55,9 +45,18 @@ export const PRODUCTDETAILS = `query fetchProductDetails($conditionfilter:TransS
           stoneCount
         }
       }
+           productImagesByProductId (condition:$conditionImage,orderBy: IMAGE_POSITION_ASC) {
+        nodes {
+          ishover
+          imageUrl
+          imagePosition
+        }
+      }
+      }
     }
   }
 }
+
 
 `
 export const filterProductMatrix = (type, value) => {

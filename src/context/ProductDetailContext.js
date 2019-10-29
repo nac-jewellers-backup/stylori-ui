@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 const initialCtx = {
     ProductDetailCtx: {
 
-        filters: { productId: '', defaultVariants: { diamondType: '', metalColor: '', purity: ''} },
+        filters: { productId: '', defaultVariants: { diamondType: '', metalColor: '', purity: '', skuSize: '' }, skuId: '' },
         loading: false, error: false, data: []
     },
     setFilters: () => { }
@@ -32,40 +32,118 @@ export const TabsProvider = (props) => {
 
         pathQueries()
     }, [filters])
+    let variables;
 
 
-    if (filters.productId === "") {
-        let productDetailProps = props.location.state;
-        let productId = productDetailProps.productId;
-        let defaultVariants = productDetailProps.defaultVariant;
-        
-        filters['productId'] = productId;
-        filters['defaultVariants'] = defaultVariants
-    }
 
 
-    
-    // {
-    //     "conditionfilter": {"diamondType": "SI GH","purity":"18K","metalColor": "White" },
-    //     "filter": {"productId": "SB0010"}
-    //   }
-    // const { loading, error, data } = useGraphql(PRODUCTDETAILS, () => { }, variables);
+    console.log('SkuId......', filters)
+    debugger;
+
+
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTDETAILS, () => { }, {});
-    const updateProductList = () => {
-        const variables = { 'conditionfilter': filters.defaultVariants, 'filter': { "productId": filters.productId },'conditionImage':{"productColor":filters.defaultVariants.metalColor} }
-        makeRequest(variables);
-    }
-    
     useEffect(() => {
+        if (filters.productId === "") {
+            if(window.location.search.length>0){
+                let loc = window.location.search.split('=')
+
+                let productDetailProps = loc[1];
+                filters["skuId"] = productDetailProps
+                setFilters(filters)
+                variables = { conditionfilter: { 'generatedSku': filters["skuId"] } }
+            }
+            else {
+console.log(window.location.href)
+var urls = window.location.href
+var urlssplit = urls.split('/');
+var urlReplace = urlssplit[urlssplit.length-1].replace(/-/g, ' ')
+variables = { productnamefilter: { productListByProductId:{'productName':{equalTo: urlReplace}} }, number:1 }
+            }
+            
+
+        }
+       
+        console.log('filtersDefaultvariants', filters.skuId)
+        // var metalColors =filters.defaultVariants.metalColor.length>0 ? {productColor:filters.defaultVariants.metalColor  }: null;
+        // variables = { conditionfilter: { 'generatedSku': filters["skuId"] }, conditionImage:{...metalColors} }
+        
+ 
+    }, [])
+    useEffect(() => {
+        console.log('dataaaaaaaaa', data, Object.entries(data).length !== 0 && data.constructor === Object && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0)
+        if (Object.entries(data).length !== 0 && data.constructor === Object) {
+            if (data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
+                handleProductDetatiContext()
+
+
+            }
+
+        }
+
+        debugger
+    }, [filters])
+    const updateProductList = () => {
+        console.info('filtersssss',filters)
+       if(Object.entries(variables).length !== 0 && variables.constructor === Object){
+        makeRequest(variables);
+       }
+       else{
+           return {}
+       }
+       
+        
+    }
+    console.log('datadata', data)
+    const handleProductDetatiContext = () => {
+        // filters['defaultVariants'] = {
+        //     ...data.allTransSkuLists.nodes[0]
+        // }
+        if(window.location.search.length>0){
+        let loc = window.location.search.split('=')
+        let productDetailProps = loc[1].split('-')
+        filters['productId'] = productDetailProps[0]
+        }
+        
+        // filters['defaultVariants']['diamondType'] = data.data.allTransSkuLists.nodes[0].diamondType
+        // filters['defaultVariants']['metalColor'] = data.data.allTransSkuLists.nodes[0].metalColor
+        // filters['defaultVariants']['purity'] = data.data.allTransSkuLists.nodes[0].purity
+        // filters['defaultVariants']['skuSize'] = data.data.allTransSkuLists.nodes[0].skuSize
+        // setFilters(filters)
+        var variants = filters['defaultVariants']
+        var metalColors =filters.defaultVariants.metalColor.length>0 ? {productColor:filters.defaultVariants.metalColor  }: null;
+        var ProductVariants = {conditionfilter: { 'productId': filters["productId"],  ...variants  }}
+        var ConditionimagesMetalColor =  {conditionImage:metalColors}
+        variables = { ...ProductVariants,...ConditionimagesMetalColor } 
+
+
+
+    }
+    useEffect(()=>{
+        if (Object.entries(data).length !== 0 && data.constructor === Object) {
+            if (data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
+             filters['defaultVariants']['diamondType'] = data.data.allTransSkuLists.nodes[0].diamondType
+        filters['defaultVariants']['metalColor'] = data.data.allTransSkuLists.nodes[0].metalColor
+        filters['defaultVariants']['purity'] = data.data.allTransSkuLists.nodes[0].purity
+        filters['defaultVariants']['skuSize'] = data.data.allTransSkuLists.nodes[0].skuSize
+        if(window.location.search.length===0){
+            filters['productId']=data.data.allTransSkuLists.nodes[0].productListByProductId.productId
+        }
+        setFilters(filters)
+            }}
+    }, [loading, error, data])
+    useEffect(() => {
+
         setFilters(filters)
         pathQueries()
         updateProductList()
+
     }, [filters])
+
     const ProductDetailCtx = {
         filters, loading, error, data
     }
 
-
+    console.info('filtersssassss',filters)
     return (
         <ProductDetailContext.Provider value={{ ProductDetailCtx, setFilters }} >
             {props.children}
