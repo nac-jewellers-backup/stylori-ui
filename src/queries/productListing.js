@@ -114,6 +114,13 @@ export const filterProductMatrix = (type, value) => {
       }
       break;
     }
+    case "StoneColor":{
+      fc={
+        table:"productStonecolorsByProductId",
+        type:"stonecolor"
+      }
+      break;
+    }
 
     default: {
       break;

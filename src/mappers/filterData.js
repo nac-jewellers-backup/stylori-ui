@@ -57,8 +57,9 @@ export default function (data) {
                     'Gender': get(data[0].master_gender).map(val =>{
                         return val.gender_name
                      }),
-                    'Stone Color': ['Fashion', 'Chic', 'Cluster', 'Cut Out',
-                    ],
+                    'Stone Color': get(data[0].master_stonecolor).map(val =>{
+                        return val.stonecolor
+                     }),
                     'Stone Shape': get(data[0].gemstone_shape).map(val =>{
                         return val.gemstone_shape
                      }),
