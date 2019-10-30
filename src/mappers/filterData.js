@@ -52,8 +52,9 @@ export default function (data) {
                     'Occasion':get(data[0].master_occassion).map(val =>{
                         return val.occassion_name
                      }),
-                    'No Of Stone': ['Fashion', 'Chic', 'Cluster', 'Cut Out',
-                    ],
+                    'No Of Stone': get(data[0].master_stonecount).map(val =>{
+                        return val.stonecount
+                     }),
                     'Gender': get(data[0].master_gender).map(val =>{
                         return val.gender_name
                      }),
