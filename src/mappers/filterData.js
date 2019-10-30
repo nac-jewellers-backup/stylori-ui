@@ -54,12 +54,14 @@ export default function (data) {
                      }),
                     'No Of Stone': ['Fashion', 'Chic', 'Cluster', 'Cut Out',
                     ],
-                    'Gender': ['Female', 'Male',  'Unisex'  
-                    ],
+                    'Gender': get(data[0].master_gender).map(val =>{
+                        return val.gender_name
+                     }),
                     'Stone Color': ['Fashion', 'Chic', 'Cluster', 'Cut Out',
                     ],
-                    'Stone Shape': ['Fashion', 'Chic', 'Cluster', 'Cut Out',
-                    ],
+                    'Stone Shape': get(data[0].gemstone_shape).map(val =>{
+                        return val.gemstone_shape
+                     }),
                 },
                 
                 sortOptions : [

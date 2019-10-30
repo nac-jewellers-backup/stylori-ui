@@ -27,7 +27,6 @@
     "semantic-ui-react": "0.87.3",
     "slick-carousel": "1.8.1"
   },
-  "homepage": ".",
   "scripts": {
     "start": "craco  start",
     "build": "craco build",
@@ -68,3 +67,7 @@
   },
   "cracoConfig": "craco-config.js"
 }
+
+
+
+
