@@ -1,5 +1,7 @@
 import { resolutions } from "utils";
 import { CDN_URL } from 'config'
+import moment from "moment";
+import { NavigateBeforeSharp } from "@material-ui/icons";
 // const baseUi = "https://assets-cdn.stylori.com/";
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 const generateImgurls = (PD, val) => {
@@ -33,7 +35,22 @@ const generatedimondClarity = (val) => {
         icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
     }))
 }
+const generateShipsBy = () =>{
+    var isReadytoShip=false
+    var numberOfDays = 5
+    var date = moment().format(' h a')
+    console.log(date)
+    if(isReadytoShip){
+        debugger
+        if(JSON.stringify(date)>" 1 pm"){
+            return 'Ships by' +' '+ moment().add(1, 'days').format('MMM Do YY');
+        }
+    }
 
+    else{
+        return 'Ships by' +' '+ moment().add(numberOfDays, 'days').format('MMM Do YY');
+    }
+}
 // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
 export default function (data, cdnUrl) {
     console.info('datapd', data)
@@ -116,8 +133,9 @@ export default function (data, cdnUrl) {
             telephone: '1800-102-0330',
             phonenum: "+91 99526 25252",
             chat: "Chat",
-            shipby: "SHIPS BY 31 Jul 2019"
+            shipby: generateShipsBy()
         }],
+        // "SHIPS BY 31 Jul 2019"
         // //////////////////////////     productsDetails    ////////////////////////////////////////////
         productsDetails: [{
             header: "Product Details",
