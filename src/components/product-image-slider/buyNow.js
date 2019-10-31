@@ -14,11 +14,43 @@ import Buynowbutton from '../Buynow/buynowbutton';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
 import { NavLink } from 'react-router-dom';
+import { ProductDetailContext } from 'context/ProductDetailContext';
+import { useCheckForCod } from 'hooks/CheckForCodHook';
+import { CheckForCod } from 'queries/productdetail';
 
 
-const inputsearch = (props) => {
+
+const inputsearch = (props, state, handleChanges) => {
+
     const { data } = props;
     const { classes } = props;
+    // const [] = React.useState()
+    const handleCodChange = () => {
+
+
+
+        if (state.values) {
+
+
+            var variab = {}
+            variab["pincode"]=state.values
+            if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
+                props.makeRequestCod(variab);
+                
+                // this.setState({pincodeValues:this.props.CodData})
+                // console.log('variables',variables,queryvariables,data)
+                // console.info('objectdataobject', data, data[0].price> state.pincodeValues.data.allPincodeMasters.nodes[0].maxCartvalue, props.CodData)
+            }
+            else {
+                return {}
+            }
+        }
+        // else {
+        //     alert('PLEASE ENTER THE PINCODE')
+        // }
+
+    }
+    console.info('object2', props.filters)
     return (
         <div style={{
             marginTop: "12px", paddingRight: "20px",
@@ -30,10 +62,15 @@ const inputsearch = (props) => {
                         <input
                             placeholder='&#xf041; &nbsp; Enter Pin Code'
                             className='buynow-search'
+                            type="text"
+                            value={state.values}
+                            onChange={(event) => { handleChanges(event) }}
+                            required
+
                         />
                     </Grid>
                     <Grid item xs={4} lg={3} sm={4}>
-                        <Button className={`search-button ${classes.normalcolorback} ${classes.fontwhite}`}>Check for COD </Button>
+                        <Button className={`search-button ${classes.normalcolorback} ${classes.fontwhite}`} onClick={handleCodChange}>{state.CheckForCodtitle}</Button>
                     </Grid>
 
                     <Hidden smDown>
@@ -50,7 +87,7 @@ const inputsearch = (props) => {
     )
 }
 
-const Buydetails = (props) => {
+const Buydetails = (props, state, handleChanges) => {
     const { data } = props;
     const { classes } = props;
     const handleLocalStorage = () => {
@@ -63,7 +100,7 @@ const Buydetails = (props) => {
         obj['qty'] = 1
         obj['price'] = data[0].offerPrice[0]
         products.push(obj)
-        var skuObj = {"cart_id":cartId,"user_id":userId,"products":products}
+        var skuObj = { "cart_id": cartId, "user_id": userId, "products": products }
         // var skuIdLocalStorage = `products: ${JSON.parse(products)}`
         localStorage.setItem('cartDetails', JSON.stringify(skuObj));
         //    var arr = localStorage.getItem('skuId', skuId);
@@ -104,18 +141,50 @@ const Buydetails = (props) => {
                             </Grid>
                         </Grid>
                     </Grid>
-                    {inputsearch(props)}
+                    {inputsearch(props, state, handleChanges)}
                 </>
             )}
         </div>
     )
 }
 
-class PriceBuynow extends React.Component {
+
+
+
+const PriceBuynow = (props) => {
+    const { loading, error, data:CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
+    const { ProductDetailCtx, setFilters } = React.useContext(ProductDetailContext);
+
+    return <Component setFilters={setFilters} filters={ProductDetailCtx.filters} makeRequestCod={makeRequestCod} CodData={CodData} {...props} />
+}
+
+
+class Component extends React.Component {
     state = {
         showimage: this.props.data[0].fadeImages[0],
         open: false,
+        values: '',
+        pincodeValues:{},
+        CheckForCodtitle:'Check for COD'
     };
+    componentDidUpdate(prevProps) {
+        // Typical usage (don't forget to compare props):
+        
+        var variab = {}
+        variab["pincode"]=this.state.values
+        if (prevProps.CodData !==this.props.CodData) {
+         
+                // this.props.makeRequestCod(variab)
+            if(this.props.data[0].price> this.props.CodData.data.allPincodeMasters.nodes[0].maxCartvalue){
+                this.setState({CheckForCodtitle:'COD Not Available'})
+            }
+            else{
+                this.setState({CheckForCodtitle:'COD is Available'})
+            }
+          
+    }
+      }
+     
 
     handleOpen = () => {
         this.setState({ open: true });
@@ -123,13 +192,16 @@ class PriceBuynow extends React.Component {
     handleClose = () => {
         this.setState({ open: false });
     };
+    handleChanges = (e) => {
+        this.setState({ values: e.target.value, CheckForCodtitle:'Check for COD' })
+    }
     render() {
         let { showimage } = this.state;
         const { classes, data } = this.props;
         return (
             <div>
                 <Hidden smDown>
-                    {Buydetails(this.props)}
+                    {Buydetails(this.props, this.state, this.handleChanges)}
                 </Hidden>
 
                 <Hidden mdUp>
@@ -165,7 +237,7 @@ class PriceBuynow extends React.Component {
                             </Container>
                             <PriceTabs data={this.props.data} />
 
-                            {inputsearch(this.props)}
+                            {inputsearch(this.props, this.state, this.handleChanges)}
 
                         </div>
                     )}

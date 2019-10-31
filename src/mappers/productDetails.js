@@ -3,7 +3,6 @@ import { CDN_URL } from 'config'
 // const baseUi = "https://assets-cdn.stylori.com/";
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 const generateImgurls = (PD, val) => {
-    debugger
 
     var arrOfurls = []
     console.log(typeof imgurlsplit, typeof metalcolor)
