@@ -10,6 +10,8 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
       metalColor
       discountPrice
       generatedSku
+      isReadyToShip
+      vendorDeliveryTime
       transSkuDescriptionsBySkuId {
         nodes {
           skuDescription
