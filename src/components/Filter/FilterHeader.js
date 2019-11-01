@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Paper, Toolbar, Typography, IconButton, Collapse, Chip, Avatar } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -9,7 +9,7 @@ import { filterParams } from '../../mappers';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { sortOptions } from '../../mappers/dummydata/filterdata';
-
+import { FilterOptionsContext } from 'context'
 const styles = theme => ({
 
     colorMain: {
@@ -19,11 +19,15 @@ const styles = theme => ({
 
 });
 
+const FilterHeader = (props) => {
+    const { setSort, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
+    const loc = window.location.search
+    
+    return <Component setSort={setSort} sort={FilterOptionsCtx.sort}  {...props} />
+  }
 
 
-
-
-class FilterHeader extends Component {
+class Component extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -31,6 +35,7 @@ class FilterHeader extends Component {
             expanded: false,
         }
     }
+
     componentDidMount() {
         this.screenWidths()
         window.addEventListener("resize", this.screenWidths);
@@ -49,6 +54,9 @@ class FilterHeader extends Component {
     }
     handleExpandClick = () => {
         this.setState({ expanded: !this.state.expanded });
+    }
+    handleChange = (event) =>{
+        this.props.setSort({ values:event.target.value})
     }
     render() {
 
@@ -122,7 +130,7 @@ class FilterHeader extends Component {
                             right: "15px", top: "65px", boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 7px'
                         }}>
                             <Collapse in={this.state.expanded} timeout="auto">
-                                <CardRadioButton data={sortOptions} />
+                                <CardRadioButton data={sortOptions} onChange={this.handleChange} values={this.props.sort}/>
                             </Collapse>
                         </div>
                     </Grid>

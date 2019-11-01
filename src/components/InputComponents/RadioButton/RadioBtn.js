@@ -40,6 +40,7 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function RadioBtn(props) {
+  debugger
   const classes = useStyles();
   const [value, setValue] = React.useState({
     sortTitle:"Sort By",
@@ -48,10 +49,15 @@ export default function RadioBtn(props) {
     }
   );
 
-  function handleChange(event) {
-    setValue({...value, values:event.target.value, helperText: !Boolean((event.target.value != null && event.target.value !== ""))});
+  const handleChange = e => {
+    props.onChange(e);
   }
+
+  // function handleChange(event) {
+  //   setValue({...value, values:event.target.value, helperText: !Boolean((event.target.value != null && event.target.value !== ""))});
+  // }
   // console.log(value);
+  console.info('objectvaluesobjectvalues', props.values.values)
   return (
     <div className={classes.root}>
       <FormControl component="fieldset" className={`${classes.fromControlTwo} ${classes.formControl}`}>
@@ -59,7 +65,7 @@ export default function RadioBtn(props) {
           aria-label="Gender"
           name="gender1"
           className={classes.group}
-          value={value.values}
+          value={props.values.values}
           onChange={handleChange}
         >
           {props.radioValues.map(data => (

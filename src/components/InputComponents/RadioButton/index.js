@@ -7,7 +7,7 @@ export default function CardRadioButton(props) {
 
   return (
     <Paper className={props.cardWidth !== '' ? props.cardWidth : 'card'} >
-      <RadioBtn radioValues={props.data} />
+      <RadioBtn radioValues={props.data} onChange={props.onChange} values={props.values}/>
     </Paper>
   );
 }

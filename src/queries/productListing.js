@@ -128,6 +128,7 @@ export const filterProductMatrix = (type, value) => {
       }
       break;
     }
+ 
 
     default: {
       break;
