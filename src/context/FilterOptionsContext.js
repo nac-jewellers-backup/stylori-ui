@@ -11,14 +11,16 @@ const initialCtx = {
     FilterOptionsCtx: {
         filters: {
             Offers: null, Availability: null, ProductType: null, style: null, Material: null, Theme: null, Collection: null, metalColor: null,
-            MetalPurity: null, Occasion: null, NoOfStones: null, Gender: null, stoneColor: null, stoneShape: null
+            MetalPurity: null, Occasion: null, NoOfStones: null, Gender: null, stoneColor: null, stoneShape: null 
         },
+        sort:'',
         loading: false, error: false, data: [], offset: 0, dataArr: [], first: 24, mappedFilters: []
     },
     setFilters: (filterData) => { },
     setOffset: () => { },
     setFirst: () => { },
     updateProductList: () => { },
+    setSort:()=>{}
 }
 
 export const FilterOptionsContext = React.createContext(initialCtx);
@@ -29,6 +31,7 @@ const Provider = (props) => {
         Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, metalColor: {},
         MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}
     });
+    const [sort, setSort] = React.useState(initialCtx.FilterOptionsCtx.sort) 
     const [offset, setOffset] = React.useState(0)
     const [first, setFirst] = React.useState(24)
     const [dataArr, setDataArr] = React.useState([])
@@ -37,6 +40,12 @@ const Provider = (props) => {
 
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => t }) }, [filters])
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => [...d, ...t] }) }, [offset])
+
+
+    useEffect(()=>{
+        console.log('sort', sort)
+        if(sort) window.location.search= `sort=${sort.values}`
+    }, [sort])
 
     useEffect(()=>{
         if(window.location.search)
@@ -128,7 +137,9 @@ const Provider = (props) => {
         var a = filters.length === 0 ? Object.keys(filters.MetalColor) : ''
         // var a = filters.metalColor ? filters.metalColor : null;
         conditionImageColor["productColor"]=a[0]
-        const variables = { ...conditionFilters, offsetvar: offset, firstvar: first,'conditionImage':conditionImageColor  }
+        // conditionImageColor["isdefault"]=true
+        const variables = { ...conditionFilters, offsetvar: offset, firstvar: first,'conditionImage':{...conditionImageColor}  }
+        debugger;
         makeRequest(variables)
     }
 
@@ -202,11 +213,11 @@ const Provider = (props) => {
    
     console.log('ntxdataresdata', ntxdata)
     const FilterOptionsCtx = {
-        filters, loading, error, data, setFilters: updateFilters, offset, setOffset, dataArr, first, setFirst, mappedFilters
+        filters,sort, loading, error, data, setFilters: updateFilters, offset, setOffset, dataArr, first, setFirst, mappedFilters
     }
 
     return (
-        <FilterOptionsContext.Provider value={{ FilterOptionsCtx, setFilters: updateFilters, setOffset, setFirst, updateProductList }} >
+        <FilterOptionsContext.Provider value={{ FilterOptionsCtx, setFilters: updateFilters, setOffset, setFirst, updateProductList, setSort }} >
             {props.children}
         </FilterOptionsContext.Provider>
     )

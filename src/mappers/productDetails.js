@@ -153,7 +153,7 @@ export default function (data, cdnUrl) {
                 telephone: '1800-102-0330',
                 phonenum: "+91 99526 25252",
                 chat: "Chat",
-                shipby: "SHIPS BY 31 Jul 2019"
+                shipby: generateShipsBy()
             }],
             // //////////////////////////     productsDetails    ////////////////////////////////////////////
             productsDetails: [{
