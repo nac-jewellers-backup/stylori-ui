@@ -65,7 +65,6 @@ class Component extends React.Component {
             var arrPurity = objVal[0]
             var arrColor = objVal[1]
             var diamondTypes = filters['defaultVariants']['diamondType']
-            debugger
             filters['defaultVariants']['purity'] = arrPurity
             filters['defaultVariants']['metalColor'] = arrColor
 

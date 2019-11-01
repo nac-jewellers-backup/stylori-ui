@@ -10,6 +10,8 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
       metalColor
       discountPrice
       generatedSku
+      isReadyToShip
+      vendorDeliveryTime
       transSkuDescriptionsBySkuId {
         nodes {
           skuDescription
@@ -71,6 +73,18 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
 }
 
 
+`
+export  const CheckForCod= `query CheckForCod($pincode:String) {
+  allPincodeMasters(first: 1, condition: {pincode:$pincode}) {
+    nodes {
+      isDelivery
+      maxCartvalue
+      minCartvalue
+      isCod
+      pincode
+    }
+  }
+}
 `
 export const filterProductMatrix = (type, value) => {
   let fc = { table: "", type: "" }

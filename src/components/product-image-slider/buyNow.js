@@ -14,11 +14,19 @@ import Buynowbutton from '../Buynow/buynowbutton';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
 import { NavLink } from 'react-router-dom';
+import { ProductDetailContext } from 'context/ProductDetailContext';
+import { useCheckForCod } from 'hooks/CheckForCodHook';
+import { CheckForCod } from 'queries/productdetail';
 
 
-const inputsearch = (props) => {
+
+const inputsearch = (props, state, handleChanges, handleCodChange) => {
+
     const { data } = props;
     const { classes } = props;
+    // const [] = React.useState()
+
+    console.info('object2', props.filters)
     return (
         <div style={{
             marginTop: "12px", paddingRight: "20px",
@@ -26,31 +34,40 @@ const inputsearch = (props) => {
         }}>
             {data[0].ProductContactNum.map(val =>
                 <Grid container spacing={12}>
+                  
                     <Grid item xs={8} lg={4} sm={8}>
                         <input
                             placeholder='&#xf041; &nbsp; Enter Pin Code'
                             className='buynow-search'
+                            type="text"
+                            value={state.values}
+                            onChange={(event) => { handleChanges(event) }}
+                            onKeyPress={(e)=>{if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();}}
+                            
+
+
                         />
                     </Grid>
                     <Grid item xs={4} lg={3} sm={4}>
-                        <Button className={`search-button ${classes.normalcolorback} ${classes.fontwhite}`}>Check for COD </Button>
+                        <Button className={`search-button ${classes.normalcolorback} ${classes.fontwhite}`} onClick={()=>{handleCodChange()}}>{state.CheckForCodtitle}</Button>
                     </Grid>
+                    
 
                     <Hidden smDown>
-                        <Grid item xs={5} className="content">
+                        <Grid container item justify="center" xs={12} sm={12} lg={5} className="content" style={{margin: 'auto'}}>
                             <b className={`ships-by ${classes.normalfonts}`}>
                                 <span ><i style={{ fontSize: "20px" }} class="fa fa-truck"></i>&nbsp;&nbsp;{val.shipby}</span>
                             </b>
                         </Grid>
                     </Hidden>
-
+<label style={{padding:'4px', fontWeight:'bold', color:'rgba(185, 74, 72, 1)'}}>{(state.isRequired && 'Please fill out this field') || (state.pincodeNotFound && 'Pincode not found')  }</label>
                 </Grid>
             )}
         </div>
     )
 }
 
-const Buydetails = (props) => {
+const Buydetails = (props, state, handleChanges, handleCodChange) => {
     const { data } = props;
     const { classes } = props;
     const handleLocalStorage = () => {
@@ -63,7 +80,7 @@ const Buydetails = (props) => {
         obj['qty'] = 1
         obj['price'] = data[0].offerPrice[0]
         products.push(obj)
-        var skuObj = {"cart_id":cartId,"user_id":userId,"products":products}
+        var skuObj = { "cart_id": cartId, "user_id": userId, "products": products }
         // var skuIdLocalStorage = `products: ${JSON.parse(products)}`
         localStorage.setItem('cartDetails', JSON.stringify(skuObj));
         //    var arr = localStorage.getItem('skuId', skuId);
@@ -104,18 +121,62 @@ const Buydetails = (props) => {
                             </Grid>
                         </Grid>
                     </Grid>
-                    {inputsearch(props)}
+                    {inputsearch(props, state, handleChanges, handleCodChange)}
                 </>
             )}
         </div>
     )
 }
 
-class PriceBuynow extends React.Component {
-    state = {
-        showimage: this.props.data[0].fadeImages[0],
-        open: false,
-    };
+
+
+
+const PriceBuynow = (props) => {
+    const { loading, error, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
+    const { ProductDetailCtx, setFilters } = React.useContext(ProductDetailContext);
+
+    return <Component setFilters={setFilters} filters={ProductDetailCtx.filters} makeRequestCod={makeRequestCod} CodData={CodData} {...props} />
+}
+
+
+class Component extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            showimage: this.props.data[0].fadeImages[0],
+            open: false,
+            values: '',
+            pincodeValues: {},
+            CheckForCodtitle: 'Check for COD',
+            isRequired:false,
+            pincodeNotFound:false
+        }
+    }
+    
+    componentDidUpdate(prevProps) {
+        // Typical usage (don't forget to compare props):
+
+        var variab = {}
+        variab["pincode"] = this.state.values
+        if (prevProps.CodData !== this.props.CodData) {
+
+            // Here i have handeled the "check for COD" condition because the response is not setting to the props instantly
+            if(this.props.CodData.data.allPincodeMasters.nodes.length>0){
+                if (this.props.data[0].price > this.props.CodData.data.allPincodeMasters.nodes[0].maxCartvalue) {
+                    this.setState({ CheckForCodtitle: 'COD Not Available' })
+                }
+                else {
+                    this.setState({ CheckForCodtitle: 'COD is Available' })
+                }
+            }
+            else{
+                this.setState({pincodeNotFound:true})
+            }
+            
+
+        }
+    }
+
 
     handleOpen = () => {
         this.setState({ open: true });
@@ -123,13 +184,38 @@ class PriceBuynow extends React.Component {
     handleClose = () => {
         this.setState({ open: false });
     };
+    handleChanges = (e) => {
+        this.setState({ values: e.target.value, CheckForCodtitle: 'Check for COD',pincodeNotFound:false,isRequired:false })
+    }
+     handleCodChange = () => {
+        if (this.state.values) {
+            this.setState({isRequired:false})
+            var variab = {}
+            variab["pincode"] = this.state.values
+            if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
+                this.props.makeRequestCod(variab);
+
+                // this.setState({pincodeValues:this.props.CodData})
+                // console.log('variables',variables,queryvariables,data)
+                // console.info('objectdataobject', data, data[0].price> state.pincodeValues.data.allPincodeMasters.nodes[0].maxCartvalue, props.CodData)
+            }
+            else {
+                return {}
+            }
+        }
+        else {
+         this.setState({isRequired:true})
+        // alert('Please enter the pincode')
+        }
+
+    }
     render() {
         let { showimage } = this.state;
         const { classes, data } = this.props;
         return (
             <div>
                 <Hidden smDown>
-                    {Buydetails(this.props)}
+                    {Buydetails(this.props, this.state, this.handleChanges, this.handleCodChange)}
                 </Hidden>
 
                 <Hidden mdUp>
@@ -165,7 +251,7 @@ class PriceBuynow extends React.Component {
                             </Container>
                             <PriceTabs data={this.props.data} />
 
-                            {inputsearch(this.props)}
+                            {inputsearch(this.props, this.state, this.handleChanges, this.handleCodChange)}
 
                         </div>
                     )}
