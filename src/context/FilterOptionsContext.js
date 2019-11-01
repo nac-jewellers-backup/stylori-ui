@@ -137,7 +137,7 @@ const Provider = (props) => {
         var a = filters.length === 0 ? Object.keys(filters.MetalColor) : ''
         // var a = filters.metalColor ? filters.metalColor : null;
         conditionImageColor["productColor"]=a[0]
-        conditionImageColor["isdefault"]=true
+        // conditionImageColor["isdefault"]=true
         const variables = { ...conditionFilters, offsetvar: offset, firstvar: first,'conditionImage':{...conditionImageColor}  }
         debugger;
         makeRequest(variables)
