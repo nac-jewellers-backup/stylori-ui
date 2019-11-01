@@ -1,7 +1,7 @@
 import { filterGenerator } from "utils";
 // SR3261
-export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondition, $conditionImage: ProductImageCondition,$productnamefilter:TransSkuListFilter,$number: Int) {
-  allTransSkuLists(condition: $conditionfilter, filter:$productnamefilter, first: $number) {
+export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondition, $conditionImage: ProductImageCondition, $productnamefilter: TransSkuListFilter, $number: Int) {
+  allTransSkuLists(condition: $conditionfilter, filter: $productnamefilter, first: $number) {
     nodes {
       skuSize
       markupPrice
@@ -18,42 +18,55 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
         }
       }
       diamondType
-      productListByProductId{
-           productName
-      productId
-      defaultSize
-      sizeVarient
-      colourVarient
-      defaultWeight
-      productType
-             productDiamondsByProductSku {
-        nodes {
-          diamondClarity
-          diamondColour
-          diamondType
-          stoneWeight
-          diamondShape
-          diamondSettings
-          stoneCount
+      productListByProductId {
+        productName
+        productId
+        defaultSize
+        sizeVarient
+        colourVarient
+        defaultWeight
+        productType
+        productDiamondsByProductSku {
+          nodes {
+            diamondClarity
+            diamondColour
+            diamondType
+            stoneWeight
+            diamondShape
+            diamondSettings
+            stoneCount
+          }
+        }
+        productGemstonesByProductSku {
+          nodes {
+            gemstoneType
+            gemstoneSize
+            gemstoneShape
+            gemstoneSetting
+            productSku
+            stoneCount
+            stoneWeight
+          }
+        }
+        productImagesByProductId(condition: $conditionImage, orderBy: IMAGE_POSITION_ASC) {
+          nodes {
+            ishover
+            imageUrl
+            imagePosition
+          }
         }
       }
-         productGemstonesByProductSku {
-        nodes {
-          gemstoneType
-          gemstoneSize
-          gemstoneShape
-          gemstoneSetting
-          productSku
-          stoneCount
-        }
+      pricingSkuMaterialByProductSku {
+        component
+        discountPrice
+        sellingPrice
       }
-           productImagesByProductId (condition:$conditionImage,orderBy: IMAGE_POSITION_ASC) {
+      pricingSkuMetalsByProductSku {
         nodes {
-          ishover
-          imageUrl
-          imagePosition
+          markup
+          discountPrice
+          sellingPrice
         }
-      }
       }
     }
   }
@@ -104,8 +117,6 @@ export const filterProductMatrix = (type, value) => {
       }
       break;
     }
-
-
     default: {
       break;
     }

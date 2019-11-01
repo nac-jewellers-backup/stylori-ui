@@ -17,7 +17,6 @@ export default function Pricing(props) {
                         className={`pricing ${props.title != null & props.title !== '' ? '' : 'shine'} ${path == 'stylori'&& 'pricingTitle'}`}
                     >
                         {/* Dazzling Gold Bloom Diamond Pendant */}
-                        
                         {props.title}
                     </Typography>
                     :

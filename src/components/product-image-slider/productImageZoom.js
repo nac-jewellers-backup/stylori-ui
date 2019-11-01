@@ -32,7 +32,12 @@ class ProductImageZoom extends React.Component {
     showimage: this.props.data[0].fadeImages[0]
   }
 
-
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.data[0].fadeImages[0] !== prevProps.data[0].fadeImages[0]) {
+      this.setState({ showimage: this.props.data[0].fadeImages[0] })
+    }
+  }
   productImageZoom = () => {
     // console.log(this.props.data)
     const { classes, data } = this.props

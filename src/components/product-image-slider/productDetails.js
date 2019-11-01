@@ -18,15 +18,15 @@ class ProductDetails extends React.Component {
     state = {
         expanded: null
     };
-
     productsDetails = (data) => {
         const { classes } = this.props;
         return (
             <div>
+
                 <Grid container spacing={12} style={{ paddingRight: "20px" }}>
                     {data[0].productsDetails.map(val => {
-                        return ((data[0].productType !== "Earring" && val.header === 'Gemstone Details')
-                            || (data[0].productType === "Earring" && val.header.trim() === 'Diamond Details')) ? false :
+                        return ((data[0].productType !== "Earrings" && val.header === 'Gemstone Details')
+                            || (data[0].productType === "Earrings" && val.header=== 'Diamond Details')) ? false :
                             <>
                                 <div className='overall-boxz'>
                                     <div className='overall-bo'>
@@ -34,7 +34,8 @@ class ProductDetails extends React.Component {
                                         <hr class="bottom-line"></hr>
                                         <>{
                                             val.namedetail !== undefined && val.namedetail.map(res => {
-                                                return (
+                                                debugger
+                                                 return (
                                                     <Grid container item xs={12} >
                                                         <Grid xs={4}>
                                                             <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
@@ -42,16 +43,12 @@ class ProductDetails extends React.Component {
                                                             </ListItemText>
                                                         </Grid>
                                                         <Grid container item xs={8}  >
-
-
                                                             {
                                                                 isArray(res.details) ?
                                                                     <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
                                                                         {res.details.map(val => {
                                                                             return (
-
                                                                                 <span style={{ fontSize: "12px", textAlign:'left' }}> {val}</span>
-
                                                                             )
                                                                         })}
                                                                     </ListItemText>
@@ -60,12 +57,10 @@ class ProductDetails extends React.Component {
                                                                         <span style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</span>
                                                                     </ListItemText>
                                                             }
-
                                                         </Grid>
                                                     </Grid>
                                                 )
                                             }
-
                                             )}</>
                                     </div>
                                 </div>
