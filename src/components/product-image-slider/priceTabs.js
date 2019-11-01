@@ -44,7 +44,17 @@ class Component extends React.Component {
         metalColor: '',
         diamondType: ""
     };
-
+    // componentDidUpdate(prevProps) {
+    //     const { ringSize, metalColor, } = this.state;
+    //     // Typical usage (don't forget to compare props):
+    //     if (ringSize !== prevProps.ringSize) {
+    //         this.setState({
+    //             ringSize,
+    //             // metalColor,
+    //             // diamondType
+    //         })
+    //     }
+    // }
     handleClick = (event, key) => {
         console.log(this.state.ringSize)
         var filters = { ...this.props.filters }
@@ -58,9 +68,9 @@ class Component extends React.Component {
             debugger
             filters['defaultVariants']['purity'] = arrPurity
             filters['defaultVariants']['metalColor'] = arrColor
-            
+
             // filters['defaultVariants']['skuSize']=diamondTypes
-            filters['defaultVariants']['diamondType']=diamondTypes
+            filters['defaultVariants']['diamondType'] = diamondTypes
             this.props.setFilters(filters);
         }
         else {
@@ -210,6 +220,7 @@ class Component extends React.Component {
                                                 return (
                                                     <Grid xs={4}>
                                                         <button className="tabs-valus"
+                                                            // className={this.state.metalColor == i ? `dark ${classes.tabsRingBckg}` : 'page'}
                                                             id={val}
                                                             onClick={event => this.handleClick(event, 'purity')}
                                                         >
