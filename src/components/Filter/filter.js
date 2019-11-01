@@ -473,10 +473,11 @@ console.log('queries',queries)
                             icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
                             checkedIcon={<CheckBoxIcon fontSize="small" />}
                             name={this.state.filtercheck.replace(/\s/g, "")}
-                          />
+                            onClick={this.handleDrawerCloseMobile} />
                           <ListItemText>
                             <Typography variant=""
-                              className={`filter-mbl-font ${classes.colorMain}`}>{row}
+                              className={`filter-mbl-font fnts ${classes.colorMain}`}>
+                              <div onClick={this.handleDrawerCloseMobile}> {row}</div> 
                             </Typography>
                           </ListItemText>
                         </ListItem>
@@ -493,7 +494,7 @@ console.log('queries',queries)
                     </Button>
                 </Paper>    
               </Grid> */}
-              <AppBar color="primary" className="filter-fixed header" >
+              {/* <AppBar color="primary" className="filter-fixed header" >
                 <Grid container item xs={12} justify="flex-end" alignItems="center" style={{ padding: '2%' }}>
                   <Grid item xs={6}>
 
@@ -503,7 +504,7 @@ console.log('queries',queries)
                   </Grid>
                 </Grid>
 
-              </AppBar>
+              </AppBar> */}
             </Grid>
 
 

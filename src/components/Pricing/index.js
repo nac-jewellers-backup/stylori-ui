@@ -12,9 +12,9 @@ export default function Pricing(props) {
             {
                 props.title ?
                     <Typography
-                        variant="caption"
-                        component="div"
-                        className={`pricing ${props.title != null & props.title !== '' ? '' : 'shine'} ${path == 'stylori'&& 'pricingTitle'}`}
+                        // variant="caption"
+                        // component="div"
+                        className={`pricing  ${props.title != null & props.title !== '' ? '' : 'shine'} ${path == 'stylori' && 'pricingTitle'}`}
                     >
                         {/* Dazzling Gold Bloom Diamond Pendant */}
                         {props.title}
@@ -23,54 +23,61 @@ export default function Pricing(props) {
                     ""
             }
             {/*  */}
-            <Typography style={{ display: "flex", width: '100%' }}>
-                <Typography
-                    variant="caption"
-                    className={`pricing-p${props.price != null & props.price !== '' ? '' : 'shine'} ${classes.deletePrice} ${classes.dis}`}
-                    component="p"
-                >
-                    <del>₹&nbsp;{Math.round(props.price)}</del>
-                </Typography>
-                <Typography
+            <Grid spacing={12} container lg={12} xs={12}>
+                <Grid item lg={3} xs={6}>
+                    <Typography style={{ display: "flex", width: '100%' }}>
 
-                    variant="h6"
-                    component="h6"
-                    className={`${props.offerPrice != null & props.offerPrice !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
 
-                >
-                    {/* ₹&nbsp;{props.offerPrice} */}
-                    {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.offerPrice))}
-                </Typography>
-            </Typography>
-            {/*  */}
-
-            {
-                props.offerDiscount ?
-                    <Grid container spacing={12}>
-                        <Grid item lg={12} xs={12} > <span className={`discount ${classes.backgsecondary}`}>{props.offerDiscount}</span></Grid>
-                    </Grid>
-                    :
-
-                    <Typography style={{ display: "flex" }}>
-                        {/* <Typography
-                            variant="body2"
-                            color="textSecondary"
-                            className={`${classes.colorMain} ${classes.youSave}`}
-                            component="p"
-
-                        >
-                            You save
-                </Typography> */}
                         <Typography
-                            variant="caption"
-                            component="p"
-                            className={`${props.save != null & props.save !== '' ? '' : 'shine'} ${classes.colorMain}  `}
+
+                            variant="h6"
+                            component="h6"
+                            className={`${props.offerPrice != null & props.offerPrice !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
                         >
-                           {path==='stylori' && 'You save'} {props.save}
+                            {/* ₹&nbsp;{props.offerPrice} */}
+                            {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.offerPrice))}
                         </Typography>
                     </Typography>
+                </Grid>
+                <Grid item lg={6} xs={6}>
+                    <Grid spacing={12} container lg={12} xs={12}>
+                        <Grid item lg={12} xs={12}>
+                            <Typography style={{ display: "flex", width: '100%' }}>
+                                <Typography
+                                    // variant="caption"
+                                    className={`pricing-p${props.price != null & props.price !== '' ? '' : 'shine'} ${classes.deletePrice} ${classes.dis}`}
+                                // component="p"
+                                >
+                                    <del>₹&nbsp;{Math.round(props.price)}</del>
+                                </Typography>
 
-            }
+                            </Typography>
+                        </Grid>
+                        <Grid item lg={12} xs={12}>
+                            {
+                                props.offerDiscount ?
+                                    <span className={`discount ${classes.backgsecondary}`}>{props.offerDiscount}</span>
+                                    :
+
+                                    <Typography style={{ display: "flex" }}>
+                                        <Typography
+                                            variant="caption"
+                                            component="p"
+                                            className={`${props.save != null & props.save !== '' ? '' : 'shine'} ${classes.colorMain}  `}
+                                        >
+                                            {path === 'stylori' && 'You save'} {props.save}
+                                        </Typography>
+                                    </Typography>
+
+                            }
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            {/*  */}
+
+
         </div>
     )
 }

@@ -1,4 +1,13 @@
 const styles = theme => ({
+    title:{
+        [theme.breakpoints.down('lg')]: {
+            fontSize: '15px',
+            // fontWeight: 'bold'
+        },
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '11px',
+        },
+    },
     dis: {
         color: theme.palette.text.secondary,
     },

@@ -43,9 +43,6 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                             value={state.values}
                             onChange={(event) => { handleChanges(event) }}
                             onKeyPress={(e)=>{if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();}}
-                            
-
-
                         />
                     </Grid>
                     <Grid item xs={4} lg={3} sm={4}>

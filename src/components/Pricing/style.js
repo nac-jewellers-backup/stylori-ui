@@ -1,16 +1,17 @@
 import { makeStyles } from "@material-ui/core/styles";
 const styles = makeStyles(theme => ({
-    pricing:{
-        float:'left'
+   
+    pricing: {
+        float: 'left'
     },
     colorMain: {
         color: theme.palette.secondary.main
     },
     h6FontSize: {
 
-        [theme.breakpoints.down('sm')]: {
-            fontSize: '16px',
-            fontWeight: 'bold'
+        [theme.breakpoints.down('lg')]: {
+            fontSize: '22px',
+            // fontWeight: 'bold'
         },
         [theme.breakpoints.down('xs')]: {
             fontSize: '13px',
@@ -21,6 +22,7 @@ const styles = makeStyles(theme => ({
     },
     offerPricePadding: {
         paddingLeft: '15px',
+        marginTop: '7px',
         [theme.breakpoints.down('xs')]: {
             paddingLeft: '8px',
 
@@ -32,7 +34,7 @@ const styles = makeStyles(theme => ({
             fontWeight: 'bold'
         },
         [theme.breakpoints.down('sm')]: {
-            fontSize: '10px',
+            fontSize: '11px',
         },
     },
     youSave: {

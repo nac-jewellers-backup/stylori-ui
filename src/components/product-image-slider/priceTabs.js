@@ -40,26 +40,25 @@ class Component extends React.Component {
         value: 1,
         values: "",
         expanded: null,
-        ringSize: '',
-        metalColor: '',
+        skuSize: '',
+        purity: '',
         diamondType: ""
     };
     // componentDidUpdate(prevProps) {
-    //     const { ringSize, metalColor, } = this.state;
-    //     // Typical usage (don't forget to compare props):
+    //     const { ringSize } = this.state;
     //     if (ringSize !== prevProps.ringSize) {
     //         this.setState({
-    //             ringSize,
+    //             ringSize
     //             // metalColor,
     //             // diamondType
     //         })
     //     }
     // }
     handleClick = (event, key) => {
-        console.log(this.state.ringSize)
+        console.log('lklkkoik9',this.state.skuSize)
+        debugger
         var filters = { ...this.props.filters }
         if (key === 'purity') {
-
             var kv = event.target.id
             var objVal = kv.split(" ")
             var arrPurity = objVal[0]
@@ -67,18 +66,16 @@ class Component extends React.Component {
             var diamondTypes = filters['defaultVariants']['diamondType']
             filters['defaultVariants']['purity'] = arrPurity
             filters['defaultVariants']['metalColor'] = arrColor
-
             // filters['defaultVariants']['skuSize']=diamondTypes
             filters['defaultVariants']['diamondType'] = diamondTypes
             this.props.setFilters(filters);
         }
         else {
             filters['defaultVariants'][key] = event.target.id
+            // this.setState({skuSize:filters})
             this.props.setFilters(filters);
         }
-
         // const ringSize = event.target.name;
-
     }
     // handleClickMetal = (event) => {
     //     console.log(event.target.id)
@@ -103,7 +100,6 @@ class Component extends React.Component {
                 <img id={val} src='https://img.icons8.com/color/48/000000/gold-bars.png' style={{ width: '30px', margin: "auto" }} alt="" />
             );
         } if (val == '22K Yellow') {
-
             return (
                 <img id={val} src='https://img.icons8.com/color/48/000000/gold-bars.png' style={{ width: '30px', margin: "auto" }} alt="" />
             );
@@ -113,12 +109,10 @@ class Component extends React.Component {
                 <img id={val} src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABhklEQVRoge2VsU7DQBBEZ88WlEiARAkFBST+nAQbUdHky+j4kfQIKiSEW4TTR46XwhYkUogv3j2dEDud5ZvdW9/4HmAymUwm0x8WaRVavBUXSDAHcNbTcEnLdHx0+fCq0ddpFGkr0T16Ng8ADBw0h/WdWlutQkQ8/f0t88ZaoNDqqzJAVeYZA9dbXnUbp42oMuPq83060uitMgCx2/b1G+z4xxySG43eOhEiTNaeGp/a5JBrtBYPUJV5BvAIAIiw8q2pFSPxAMRuRoS621SyX3N5jOQRIr5lRjrIqhAjb5BJQRUKdP4nIAVVINB5DyAFVSjQeQ0gBVVI0HkNIAVVSND5RUgKqoCg672FqjLPCPQEtKDa565veDUmck7iPzl/fNm1pvcEpKAKDbr+CAlABcJE7O9d0ik2qIb6f04gNqgG+r8HiA2qoX4HxAeVxO+A+KCS+NsIxQaVwE+xQSX1p8RuRo5rZqSDQMN0HNNPi7L4AHC6j3FNz2ivvph+k8lkMplMpn+rL4l9D4el2eifAAAAAElFTkSuQmCC' style={{ width: '30px', margin: "auto" }} alt="" />
             );
         } if (val == '24K Yellow') {
-
             return (
                 <img id={val} src='https://img.icons8.com/color/48/000000/gold-bars.png' style={{ width: '30px', margin: "auto" }} alt="" />
             );
         }
-
         if (val == "14K White") {
             return (
                 <img id={val} src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABcUlEQVRoge2VzU6EQBCEq8fBBzAmeyJ41N19nPUvnrz4rN6NnjYhDEffwCjtQdlsNhsY6J5MjF0nCNQ0xRR8gMlkMplMf1iktVBd1xdFUTwz82Lk1g8Aq7IstxpzncYiAOC9f4x4eAA4BfCgNVctADNfD10+OL/TmqsSIISwJqKrI5f6Bz+s6mXTNEuN2SoBiOjY2+8w8I055240ZmtVaLN33EWufasxWBwghLAGsAQAIvqasKZKjcQBiOiJiD4BgJlPJg1XqJFGhe6Z2c/0imsUDTIpqFKBLnoHpKBKBbroAFJQpQJdVAApqFKCLiqAFFQpQRdbISmokoFu9C/0u/0vwA+opvzru65bEZGT+Kuqehu6Z3QHpKBKDbqYCklAtVHwD2pXodygmuvf7UBuUM317wLkBtVcvwPyg0rid0B+UEn8fYVyg2q2n3KDSur3PWiY2c8EzVlOP7Vt+w7gfIpxT68AFpn9JpPJZDKZTP9W35wuE6GNZKzYAAAAAElFTkSuQmCC' style={{ width: '30px', margin: "auto" }} alt="" />
@@ -193,7 +187,7 @@ class Component extends React.Component {
 
                                                     return (<>
                                                         <button
-                                                            className={this.state.ringSize == i ? `dark ${classes.tabsRingBckg}` : 'page'}
+                                                            className={this.state.skuSize == i ? `dark ${classes.tabsRingBckg}` : 'page'}
                                                             id={val}
                                                             onClick={event => this.handleClick(event, 'skuSize')}
                                                         >
@@ -219,7 +213,7 @@ class Component extends React.Component {
                                                 return (
                                                     <Grid xs={4}>
                                                         <button className="tabs-valus"
-                                                            // className={this.state.metalColor == i ? `dark ${classes.tabsRingBckg}` : 'page'}
+                                                            // className={this.state.purity == i ? `dark ${classes.tabsRingBckg}` : 'page'}
                                                             id={val}
                                                             onClick={event => this.handleClick(event, 'purity')}
                                                         >

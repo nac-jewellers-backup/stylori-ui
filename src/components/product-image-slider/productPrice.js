@@ -43,9 +43,32 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
             {data.map(val => (
                 <>
                     <Grid container spacing={12} sm={12} className={classes.pricedetails}>
-                        <Grid item xs={7} lg={8}>
+                        <Hidden mdUp>
+                            {mobilecarousel(props)}
+
+                            <div className={classes.width} style={{ padding: "0 10px" }}>
+                                <Pricing
+                                    price={data[0].price}
+                                    offerPrice={data[0].offerPrice}
+                                    offerDiscount={val.offerDiscount}
+                                >
+                                    <Grid container spacing={12}>
+                                        <div className={`price-info ${classes.dis}`}>
+                                            <Grid item xs={4} lg={2} className={`discount-container ${classes.dis}`}>
+                                                {val.price}
+                                            </Grid>
+                                            <Grid item lg={5} xs={8} className={`selling-price ${classes.backgsecondary}`}><i class="fa fa-rupee"></i> &nbsp;
+                              {val.offerPrice}
+                                            </Grid>
+                                        </div>
+                                    </Grid>
+                                </Pricing>
+                                </div>
+                                <hr class="bottom-line product-inform-ation"></hr>
+                        </Hidden>
+                        <Grid item xs={12} lg={8}>
                             <div className="price-div">
-                                <h1 className="pdp-title">
+                                <h1 className={`pdp-title ${classes.title}`}>
                                     {val.title}
                                 </h1>
                                 <p className={`pdp-desc ${classes.dis}`}>
@@ -54,7 +77,8 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                             </div>
                         </Grid>
 
-                        <Grid item xs={5} lg={4}>
+                        <Hidden smDown>
+                        <Grid item xs={12} lg={4}>
                             <div className="starts product-icons" style={{ fontFamily: "fontawesome" }} >
                                 <div className="row social-shares"
                                     className={classes.icon}>
@@ -98,31 +122,32 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                 </div>
                             </div>
                         </Grid>
+                        </Hidden>
                         <hr class="bottom-line product-inform-ation"></hr>
                     </Grid>
 
-                    <Hidden mdUp>
-                        {mobilecarousel(props)}
-                    </Hidden>
 
-                    <div className={classes.width} style={{ padding: "0 10px" }}>
-                        <Pricing
-                            price={data[0].price}
-                            offerPrice={data[0].offerPrice}
-                            offerDiscount={val.offerDiscount}
-                        >
-                            <Grid container spacing={12}>
-                                <div className={`price-info ${classes.dis}`}>
-                                    <Grid item xs={4} lg={2} className={`discount-container ${classes.dis}`}>
-                                        {val.price}
-                                    </Grid>
-                                    <Grid item lg={5} xs={8} className={`selling-price ${classes.backgsecondary}`}><i class="fa fa-rupee"></i> &nbsp;
+
+                    <Hidden smDown>
+                        <div className={classes.width} style={{ padding: "0 10px" }}>
+                            <Pricing
+                                price={data[0].price}
+                                offerPrice={data[0].offerPrice}
+                                offerDiscount={val.offerDiscount}
+                            >
+                                <Grid container spacing={12}>
+                                    <div className={`price-info ${classes.dis}`}>
+                                        <Grid item xs={4} lg={2} className={`discount-container ${classes.dis}`}>
+                                            {val.price}
+                                        </Grid>
+                                        <Grid item lg={5} xs={8} className={`selling-price ${classes.backgsecondary}`}><i class="fa fa-rupee"></i> &nbsp;
                               {val.offerPrice}
-                                    </Grid>
-                                </div>
-                            </Grid>
-                        </Pricing>
-                    </div>
+                                        </Grid>
+                                    </div>
+                                </Grid>
+                            </Pricing>
+                        </div>
+                    </Hidden>
                 </>
             ))}
         </div>
