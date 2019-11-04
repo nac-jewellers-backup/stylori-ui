@@ -14,6 +14,7 @@ const styles = makeStyles(theme => ({
         },
         [theme.breakpoints.down('xs')]: {
             fontSize: '1.2rem',
+            letterSpacing:"1px"
 
         },
     },

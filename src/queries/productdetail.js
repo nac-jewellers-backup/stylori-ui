@@ -12,6 +12,7 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
       generatedSku
       isReadyToShip
       vendorDeliveryTime
+      discountPriceTax
       transSkuDescriptionsBySkuId {
         nodes {
           skuDescription
@@ -65,7 +66,7 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
       }
       pricingSkuMetalsByProductSku {
         nodes {
-          markup
+          materialName
           discountPrice
           sellingPrice
         }

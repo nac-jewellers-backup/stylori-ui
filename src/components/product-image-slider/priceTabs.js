@@ -52,7 +52,7 @@ class Component extends React.Component {
     //         })
     //     }
     // }
-    handleClick = (event, key) => { 
+    handleClick = (event, key) => {
         console.log('lklkkoik9', this.state.skuSize)
         debugger
         var filters = { ...this.props.filters }
@@ -279,8 +279,7 @@ class Component extends React.Component {
                         <Container>
                             <>
                                 {arr.length > 0 ?
-                                    <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
-                                        style={{ boxShadow: "none", backgroundColor: "none" }}>
+                                    <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}>
                                         <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
                                             <div style={{ width: "100%" }} >
                                                 <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab1.header}</Typography>
@@ -306,17 +305,16 @@ class Component extends React.Component {
                                         </ExpansionPanelDetails>
                                     </ExpansionPanel>
                                     : ""}
-
+                                {/* className="panel-head" */}
                                 {arr2 || arr2.length > 0 ?
-                                    <ExpansionPanel expanded={expanded === val.tab2.header} onChange={this.handle(val.tab2.header)}
-                                        style={{ boxShadow: "none", backgroundColor: "none" }}>
+                                    <ExpansionPanel expanded={expanded === val.tab2.header} onChange={this.handle(val.tab2.header)}>
                                         <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
                                             <div style={{ width: "100%" }} >
                                                 <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab2.header}</Typography>
-                                                <hr class="bottom-line border-line-"></hr>
+                                                {/* <hr class="bottom-line border-line-"></hr> */}
                                             </div>
                                         </ExpansionPanelSummary>
-                                        <ExpansionPanelDetails style={{ padding: 0, width: "100%", overflow: "auto" }}>
+                                        <ExpansionPanelDetails style={{ padding: '0 5px', width: "100%", overflow: "auto" }}>
                                             {arr2.map(val =>
                                                 <Grid container spacing={12} >
                                                     <Grid xs={12}>
@@ -333,15 +331,14 @@ class Component extends React.Component {
                                         </ExpansionPanelDetails>
                                     </ExpansionPanel> : ""}
                                 {val.tab3.Children.length > 0 ?
-                                    <ExpansionPanel expanded={expanded === val.tab3.header} onChange={this.handle(val.tab3.header)}
-                                        style={{ boxShadow: "none", backgroundColor: "none" }}>
+                                    <ExpansionPanel expanded={expanded === val.tab3.header} onChange={this.handle(val.tab3.header)}>
                                         <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
                                             <div style={{ width: "100%" }} >
                                                 <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab3.header}</Typography>
-                                                <hr class="bottom-line border-line-"></hr>
+                                                {/* <hr class="bottom-line border-line-"></hr> */}
                                             </div>
                                         </ExpansionPanelSummary>
-                                        <ExpansionPanelDetails style={{ padding: 0, width: "100%", overflow: "auto" }}>
+                                        <ExpansionPanelDetails style={{ padding: '0 5px', width: "100%", overflow: "auto" }}>
                                             {val.tab3.Children.map(val =>
                                                 <Grid container spacing={12}>
                                                     <Grid xs={12}>

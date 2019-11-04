@@ -150,8 +150,8 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                     </div>
                                 </div>
                             </Grid>
+                            <hr class="bottom-line product-inform-ation"></hr>
                         </Hidden>
-                        <hr class="bottom-line product-inform-ation"></hr>
                     </Grid>
 
 

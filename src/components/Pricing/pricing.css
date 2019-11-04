@@ -10,7 +10,7 @@
     align-items: center !important;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
     font-weight: 500 !important;
-    letter-spacing: 0.0075em !important;
+    letter-spacing: 1px !important;
 }
 
 .pricingTitle {

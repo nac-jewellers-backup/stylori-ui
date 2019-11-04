@@ -33,7 +33,6 @@ const calculatetotalms = (arr) => {
     var a = 0;
     arr.map(val => {
         a =
-
             new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.sellingPrice))
     });
     return a;
@@ -83,6 +82,7 @@ export default function (data, cdnUrl) {
     let mapperdata = [];
     try {
         mapperdata = data.data.allTransSkuLists.nodes;
+        debugger
     } catch (error) {
         mapperdata = [];
     }
@@ -90,8 +90,8 @@ export default function (data, cdnUrl) {
         {
             title: PD.productListByProductId.productName,
             skuId: PD && PD === undefined ? '' : PD.generatedSku,
-            price: PD.markupPrice,
-            offerPrice: PD.sellingPrice,
+            price:PD.discountPrice,
+            offerPrice: PD.markupPrice,
             save: '5999.9',
             offerDiscount: '25% FLAT OFF',
             dis: PD && PD !== undefined && PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription !== '' ? PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription : '',
@@ -293,7 +293,7 @@ export default function (data, cdnUrl) {
                 {
                     name: "GST",
                     details:
-                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPrice))
+                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPriceTax))
                 },
                 {
                     name: "Total",
@@ -369,6 +369,6 @@ const calculatetotals = (arr) => {
 }
 const calculatetotalm = (arr) => {
     var a = 0;
-    arr.map(val => { a = Math.round(a + val.markup) });
+    arr.map(val => { a = Math.round(a + val.discountPrice) });
     return a;
 }

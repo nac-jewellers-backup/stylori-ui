@@ -26,7 +26,7 @@ class ProductDetails extends React.Component {
                 <Grid container spacing={12} style={{ paddingRight: "20px" }}>
                     {data[0].productsDetails.map(val => {
                         return ((data[0].productType !== "Earrings" && val.header === 'Gemstone Details')
-                            || (data[0].productType === "Earrings" && val.header=== 'Diamond Details')) ? false :
+                            || (data[0].productType === "Earrings" && val.header === 'Diamond Details')) ? false :
                             <>
                                 <div className='overall-boxz'>
                                     <div className='overall-bo'>
@@ -34,7 +34,7 @@ class ProductDetails extends React.Component {
                                         <hr class="bottom-line"></hr>
                                         <>{
                                             val.namedetail !== undefined && val.namedetail.map(res => {
-                                                 return (
+                                                return (
                                                     <Grid container item xs={12} >
                                                         <Grid xs={4}>
                                                             <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
@@ -47,7 +47,7 @@ class ProductDetails extends React.Component {
                                                                     <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
                                                                         {res.details.map(val => {
                                                                             return (
-                                                                                <span style={{ fontSize: "12px", textAlign:'left' }}> {val}</span>
+                                                                                <span style={{ fontSize: "12px", textAlign: 'left' }}> {val}</span>
                                                                             )
                                                                         })}
                                                                     </ListItemText>
@@ -73,7 +73,7 @@ class ProductDetails extends React.Component {
                             <div className='overall-boxz'>
                                 <div className='overall-bo'>
                                     <span key={val.name} className={`product-details ${classes.normalfonts}`}>{val.header}</span>
-                                    <hr class="bottom-line"></hr>
+                                    {/* <hr class="bottom-line"></hr> */}
                                     <Grid item xs={12} className={`product-subhead ${classes.normalfonts}`}>
                                         <span style={{ fontSize: "12px" }}>{val.name.join(' ')}</span>
                                     </Grid>
@@ -99,69 +99,68 @@ class ProductDetails extends React.Component {
                             (data[0].productType !== "Earring" && val.header === 'Gemstone Details')
                             || (data[0].productType === "Earring" && val.header.trim() === 'Diamond Details')) ? false :
                             <>
-                                <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
-                                    style={{ boxShadow: "none", backgroundColor: "none" }} key={val.name}>
+                                <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
                                     <ExpansionPanelSummary className="expansion-summary"
                                         expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" >
                                         </i></span>}>
                                         <div style={{ width: "100%" }} >
                                             <Typography className={`subtabs-smrt ${classes.normalfonts}`}>{val.header}</Typography>
-                                            <hr class="bottom-line border-line-"></hr>
+                                            {/* <hr class="bottom-line border-line-"></hr> */}
                                         </div>
                                     </ExpansionPanelSummary>
-                                    {
-                                        val.namedetail !== undefined && val.namedetail.map(res =>
-                                            <Grid container item xs={12} >
-                                            <Grid xs={4}>
-                                                <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
-                                                    <span style={{ fontSize: "12px" }}> {res.name}</span>
-                                                </ListItemText>
-                                            </Grid>
-                                            <Grid container item xs={8}  >
-
-
-                                                {
-                                                    isArray(res.details) ?
-                                                        <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
-                                                            {res.details.map(val => {
-                                                                return (
-
-                                                                    <span style={{ fontSize: "12px", textAlign:'left' }}> {val}</span>
-
-                                                                )
-                                                            })}
+                                    <div style={{ padding: "10px" }}>
+                                        {
+                                            val.namedetail !== undefined && val.namedetail.map(res =>
+                                                <Grid container item xs={12} >
+                                                    <Grid xs={4}>
+                                                        <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
+                                                            <span style={{ fontSize: "12px" }}> {res.name}</span>
                                                         </ListItemText>
-                                                        :
-                                                        <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
-                                                            <span style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</span>
-                                                        </ListItemText>
-                                                }
-
-                                            </Grid>
-                                        </Grid>
-                                        )}
+                                                    </Grid>
+                                                    <Grid container item xs={8}  >
+                                                        {
+                                                            isArray(res.details) ?
+                                                                <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
+                                                                    {res.details.map(val => {
+                                                                        return (
+                                                                            <span style={{ fontSize: "12px", textAlign: 'left' }}> {val}</span>
+                                                                        )
+                                                                    })}
+                                                                </ListItemText>
+                                                                :
+                                                                <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
+                                                                    <span style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</span>
+                                                                </ListItemText>
+                                                        }
+                                                    </Grid>
+                                                </Grid>
+                                            )}
+                                    </div>
                                 </ExpansionPanel>
                             </>
-
-                    })}
+                    })}<br/>
 
                     {data[0].productsPendants.map(val => (
-                        <ExpansionPanel expanded={expanded === 'panel'} onChange={this.handle('panel')}
-                            style={{ boxShadow: "none", backgroundColor: "none" }}>
+                        <div>
+                            <ExpansionPanel expanded={expanded === 'panel'} onChange={this.handle('panel')}>
                             <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                                 <i class="fa fa-sort-up" ></i></span>}>
                                 <div style={{ width: "100%" }} >
                                     <Typography className={`product-details-smrt ${classes.normalfonts}`}>{val.header}</Typography>
-                                    <hr class="bottom-line border-line-"></hr>
+                                    {/* <hr class="bottom-line border-line-"></hr> */}
                                 </div>
                             </ExpansionPanelSummary>
 
-                            <Grid container spacing={12}>
-                                <Grid item xs={12} className={`product-subhead ${classes.normalfonts}`}>
-                                    <span style={{ fontSize: "12px" }}>{val.name.join(' ')}</span>
+                            <div style={{ padding: "10px" }}>
+                                <Grid container spacing={12}>
+                                    <Grid item xs={12} className={`product-subhead ${classes.normalfonts}`}>
+                                        <span style={{ fontSize: "12px" }}>{val.name.join(' ')}</span>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
+                            </div>
                         </ExpansionPanel>
+                        <br/>
+                        </div>
                     ))}
 
                 </Container>
