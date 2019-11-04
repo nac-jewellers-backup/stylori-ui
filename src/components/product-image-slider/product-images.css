@@ -920,9 +920,8 @@
     }
 
     .respc {
-        padding-top: 10px !important;
-        padding-right: 10px !important;
-        padding-left: 10px !important;
+        padding-right: 5px !important;
+        padding-left: 5px !important;
     }
 
     @media screen and (max-width: 1220px),

@@ -215,7 +215,7 @@ class Component extends React.Component {
                 </Hidden>
 
                 <Hidden mdUp>
-                    <div style={{ marginTop: "5px" }}>
+                    <div style={{ marginTop: "10px" }}>
                         <ProductPrice data={this.props.data} />
                         <PriceTabs data={this.props.data} />
                         {inputsearch(this.props, this.state, this.handleChanges, this.handleCodChange)}

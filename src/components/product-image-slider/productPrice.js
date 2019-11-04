@@ -45,7 +45,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                 <>
                     <Grid container spacing={12} sm={12} className={classes.pricedetails}>
                         <Hidden mdUp>
-                            <div className="resp">
+                            <div className="resp" style={{paddingTop:"5px"}}>
                                 <div className="respc">
                                     <h1 className={`pdp-title ${classes.title}`}>
                                         {val.title}
@@ -60,8 +60,6 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                             <Grid container item xs={8} xs={8} justify={'flex-end'}>
                                                 <div className="one-day-ship-mb"></div>
                                             </Grid>
-
-
                                         </Grid>
                                     </Grid>
                                 </div>
