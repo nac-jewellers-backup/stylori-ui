@@ -10,8 +10,7 @@
 
     .pdp-title {
         margin-top: 0;
-        margin-bottom: 10px;
-        line-height: 20px;
+        line-height: 13px;
         text-transform: capitalize;
         text-align: justify;
     }
@@ -92,8 +91,17 @@
         font-weight: bold;
         border-radius: 3px;
         background-color: #ed1165 !important;
-        font-size: 12px !important;
         padding: 3px !important;
+    }
+
+    .one-day-ship-mb {
+        height: 20px !important;
+        position: relative !important;
+        background-image: url(https://assets-cdn.stylori.com/images/static/product-details-icons.png);
+        background-repeat: no-repeat !important;
+        background-position: -38px -37px !important;
+        /* margin-left: 20px !important; */
+        flex:1
     }
 
     .modal-div {
@@ -902,6 +910,19 @@
     .pricing-loctn-head {
         margin-top: 0.5% !important;
         margin-bottom: 0.5% !important;
+    }
+
+    .resp {
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+            0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+            0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+        width: 100% !important;
+    }
+
+    .respc {
+        padding-top: 10px !important;
+        padding-right: 10px !important;
+        padding-left: 10px !important;
     }
 
     @media screen and (max-width: 1220px),

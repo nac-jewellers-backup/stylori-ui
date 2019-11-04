@@ -38,8 +38,6 @@ export const TabsProvider = (props) => {
 
 
     console.log('SkuId......', filters)
-    debugger;
-
 
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTDETAILS, () => { }, {});
     useEffect(() => {
@@ -80,7 +78,6 @@ variables = { productnamefilter: { productListByProductId:{'productName':{equalT
 
         }
 
-        debugger
     }, [filters])
     const updateProductList = () => {
         console.info('filtersssss',filters)

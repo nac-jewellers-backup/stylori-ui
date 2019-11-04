@@ -10,7 +10,6 @@
 //     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/guestlogin', values, () => []);
 
 //     const handleChange = (type, value) => {
-//         debugger
 //         setValues({
 //             ...values,
 //             [type]: value

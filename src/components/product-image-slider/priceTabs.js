@@ -45,17 +45,15 @@ class Component extends React.Component {
         diamondType: ""
     };
     // componentDidUpdate(prevProps) {
-    //     const { ringSize } = this.state;
-    //     if (ringSize !== prevProps.ringSize) {
+    //     var filters = { ...this.props.filters }
+    //     if (filters.defaultVariants.purity !== prevProps.filters.defaultVariants.purity) {
     //         this.setState({
-    //             ringSize
-    //             // metalColor,
-    //             // diamondType
+    //             skuSize: filters.defaultVariants.purity
     //         })
     //     }
     // }
-    handleClick = (event, key) => {
-        console.log('lklkkoik9',this.state.skuSize)
+    handleClick = (event, key) => { 
+        console.log('lklkkoik9', this.state.skuSize)
         debugger
         var filters = { ...this.props.filters }
         if (key === 'purity') {
@@ -64,7 +62,7 @@ class Component extends React.Component {
             var arrPurity = objVal[0]
             var arrColor = objVal[1]
             var diamondTypes = filters['defaultVariants']['diamondType']
-            filters['defaultVariants']['purity'] = arrPurity 
+            filters['defaultVariants']['purity'] = arrPurity
             filters['defaultVariants']['metalColor'] = arrColor
             // filters['defaultVariants']['skuSize']=diamondTypes
             filters['defaultVariants']['diamondType'] = diamondTypes

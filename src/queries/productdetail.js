@@ -56,10 +56,12 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
           }
         }
       }
-      pricingSkuMaterialByProductSku {
-        component
-        discountPrice
-        sellingPrice
+      pricingSkuMaterialsByProductSku {
+        nodes {
+          costPrice
+          component
+          discountPrice
+        }
       }
       pricingSkuMetalsByProductSku {
         nodes {

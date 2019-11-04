@@ -24,7 +24,6 @@ class Buynowfixed extends React.Component {
             // var skuIdLocalStorage = `products: ${JSON.parse(products)}`
             localStorage.setItem('cartDetails', JSON.stringify(skuObj));
             //    var arr = localStorage.getItem('skuId', skuId);
-            //    debugger
             //     localStorage.setItem('skuId', skuId);
             window.location.href = "/cart"
         }

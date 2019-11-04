@@ -22,12 +22,20 @@ const generateImgurls = (PD, val) => {
 }
 const calculatetotalmm = (arr) => {
     var a = 0;
-    arr.map(val => { a = Math.round(a + val.discountPrice) });
+    arr.map(val => {
+        a =
+            new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.discountPrice))
+    });
     return a;
 }
+
 const calculatetotalms = (arr) => {
     var a = 0;
-    arr.map(val => { a = Math.round(a + val.sellingPrice) });
+    arr.map(val => {
+        a =
+
+            new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.sellingPrice))
+    });
     return a;
 }
 const generatedDiamondType = (PD, valProductDiamond, type) => {
@@ -39,7 +47,6 @@ const gemstoneType = (PD, valGemstoneType, type) => {
     console.log('PD,valGemstoneType, type', PD, valGemstoneType, type)
     var arrOfGemstoneType = []
     valGemstoneType.map(val => {
-        debugger
         PD.map(valPD => {
             if (val.gemstoneType === valPD.gemstoneType) { arrOfGemstoneType.push(val[type]) } return arrOfGemstoneType
         })
@@ -55,20 +62,19 @@ const generatedimondClarity = (val) => {
         icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
     }))
 }
-const generateShipsBy = () =>{
-    var isReadytoShip=false
+const generateShipsBy = () => {
+    var isReadytoShip = false
     var numberOfDays = 5
     var date = moment().format(' h a')
     console.log(date)
-    if(isReadytoShip){
-        debugger
-        if(JSON.stringify(date)>" 1 pm"){
-            return 'Ships by' +' '+ moment().add(1, 'days').format('MMM Do YY');
+    if (isReadytoShip) {
+        if (JSON.stringify(date) > " 1 pm") {
+            return 'Ships by' + ' ' + moment().add(1, 'days').format('MMM Do YY');
         }
     }
 
-    else{
-        return 'Ships by' +' '+ moment().add(numberOfDays, 'days').format('MMM Do YY');
+    else {
+        return 'Ships by' + ' ' + moment().add(numberOfDays, 'days').format('MMM Do YY');
     }
 }
 // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
@@ -77,7 +83,6 @@ export default function (data, cdnUrl) {
     let mapperdata = [];
     try {
         mapperdata = data.data.allTransSkuLists.nodes;
-        debugger
     } catch (error) {
         mapperdata = [];
     }
@@ -266,34 +271,19 @@ export default function (data, cdnUrl) {
                 },
                 {
                     name: "Diamond",
-                    details: (PD.pricingSkuMaterialByProductSku !== null ?
-                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.pricingSkuMaterialByProductSku.discountPrice))
-                        : '')
-                        // && PD.pricingSkuMaterialByProductSku.nodes.length === 0 ? '' :
-                        // calculatetotalmm(PD.pricingSkuMaterialByProductSku.nodes)) 
-                        + '  ' +
-
-                        (PD.pricingSkuMaterialByProductSku !== null ?
-                            new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.pricingSkuMaterialByProductSku.sellingPrice))
-                            : '')
-                    // && PD.pricingSkuMaterialByProductSku.nodes.length === 0 ? '' :
-                    // calculatetotalms(PD.pricingSkuMaterialByProductSku.nodes))
+                    details: PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                        calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : ""
+                            + '  ' +
+                            PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                            calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : ""
                 },
                 {
                     name: "Gemstone",
-                    details: (PD.pricingSkuMaterialByProductSku !== null ?
-                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.pricingSkuMaterialByProductSku.discountPrice))
-                        : '')
-                        // && PD.pricingSkuMaterialByProductSku.nodes.length === 0 ? '' :
-                        // calculatetotalmm(PD.pricingSkuMaterialByProductSku.nodes)) 
-                        + '  ' +
-
-                        (PD.pricingSkuMaterialByProductSku !== null ?
-                            new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.pricingSkuMaterialByProductSku.sellingPrice))
-                            : '')
-                    // && PD.pricingSkuMaterialByProductSku.nodes.length === 0 ? '' :
-                    // calculatetotalms(PD.pricingSkuMaterialByProductSku.nodes))
-                    // type: (PD.pricingSkuMaterialByProductSku !== null ? PD.pricingSkuMaterialByProductSku.component : '')
+                    details: PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                        calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : ""
+                            + '  ' +
+                            PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                            calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : ""
                 },
                 {
                     name: "Making Charges",
@@ -302,7 +292,8 @@ export default function (data, cdnUrl) {
                 },
                 {
                     name: "GST",
-                    details: "1.463"
+                    details:
+                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPrice))
                 },
                 {
                     name: "Total",
