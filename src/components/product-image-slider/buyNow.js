@@ -33,7 +33,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
         }}>
             {data[0].ProductContactNum.map(val =>
                 <Grid container spacing={12}>
-                  
+
                     <Grid item xs={8} lg={4} sm={8}>
                         <input
                             placeholder='&#xf041; &nbsp; Enter Pin Code'
@@ -41,25 +41,22 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                             type="text"
                             value={state.values}
                             onChange={(event) => { handleChanges(event) }}
-                            onKeyPress={(e)=>{if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();}}
-                            
-
-
+                            onKeyPress={(e) => { if (!(e.which >= 48 && e.which <= 57)) e.preventDefault(); }}
                         />
                     </Grid>
                     <Grid item xs={4} lg={3} sm={4}>
-                        <Button className={`search-button ${classes.normalcolorback} ${classes.fontwhite}`} onClick={()=>{handleCodChange()}}>{state.CheckForCodtitle}</Button>
+                        <Button className={`search-button ${classes.normalcolorback} ${classes.fontwhite}`} onClick={() => { handleCodChange() }}>{state.CheckForCodtitle}</Button>
                     </Grid>
-                    
+
 
                     <Hidden smDown>
-                        <Grid container item justify="center" xs={12} sm={12} lg={5} className="content" style={{margin: 'auto'}}>
+                        <Grid container item justify="center" xs={12} sm={12} lg={5} className="content" style={{ margin: 'auto' }}>
                             <b className={`ships-by ${classes.normalfonts}`}>
                                 <span ><i style={{ fontSize: "20px" }} class="fa fa-truck"></i>&nbsp;&nbsp;{val.shipby}</span>
                             </b>
                         </Grid>
                     </Hidden>
-<label style={{padding:'4px', fontWeight:'bold', color:'rgba(185, 74, 72, 1)'}}>{(state.isRequired && 'Please fill out this field') || (state.pincodeNotFound && 'Pincode not found')  }</label>
+                    <label style={{ padding: '4px', fontWeight: 'bold', color: 'rgba(185, 74, 72, 1)' }}>{(state.isRequired && 'Please fill out this field') || (state.pincodeNotFound && 'Pincode not found')}</label>
                 </Grid>
             )}
         </div>
@@ -83,7 +80,6 @@ const Buydetails = (props, state, handleChanges, handleCodChange) => {
         // var skuIdLocalStorage = `products: ${JSON.parse(products)}`
         localStorage.setItem('cartDetails', JSON.stringify(skuObj));
         //    var arr = localStorage.getItem('skuId', skuId);
-        //    debugger
         //     localStorage.setItem('skuId', skuId);
         window.location.href = "/cart"
     }
@@ -139,7 +135,7 @@ const PriceBuynow = (props) => {
 
 
 class Component extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
             showimage: this.props.data[0].fadeImages[0],
@@ -147,11 +143,11 @@ class Component extends React.Component {
             values: '',
             pincodeValues: {},
             CheckForCodtitle: 'Check for COD',
-            isRequired:false,
-            pincodeNotFound:false
+            isRequired: false,
+            pincodeNotFound: false
         }
     }
-    
+
     componentDidUpdate(prevProps) {
         // Typical usage (don't forget to compare props):
 
@@ -160,7 +156,7 @@ class Component extends React.Component {
         if (prevProps.CodData !== this.props.CodData) {
 
             // Here i have handeled the "check for COD" condition because the response is not setting to the props instantly
-            if(this.props.CodData.data.allPincodeMasters.nodes.length>0){
+            if (this.props.CodData.data.allPincodeMasters.nodes.length > 0) {
                 if (this.props.data[0].price > this.props.CodData.data.allPincodeMasters.nodes[0].maxCartvalue) {
                     this.setState({ CheckForCodtitle: 'COD Not Available' })
                 }
@@ -168,10 +164,10 @@ class Component extends React.Component {
                     this.setState({ CheckForCodtitle: 'COD is Available' })
                 }
             }
-            else{
-                this.setState({pincodeNotFound:true})
+            else {
+                this.setState({ pincodeNotFound: true })
             }
-            
+
 
         }
     }
@@ -184,11 +180,11 @@ class Component extends React.Component {
         this.setState({ open: false });
     };
     handleChanges = (e) => {
-        this.setState({ values: e.target.value, CheckForCodtitle: 'Check for COD',pincodeNotFound:false,isRequired:false })
+        this.setState({ values: e.target.value, CheckForCodtitle: 'Check for COD', pincodeNotFound: false, isRequired: false })
     }
-     handleCodChange = () => {
+    handleCodChange = () => {
         if (this.state.values) {
-            this.setState({isRequired:false})
+            this.setState({ isRequired: false })
             var variab = {}
             variab["pincode"] = this.state.values
             if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
@@ -203,8 +199,8 @@ class Component extends React.Component {
             }
         }
         else {
-         this.setState({isRequired:true})
-        // alert('Please enter the pincode')
+            this.setState({ isRequired: true })
+            // alert('Please enter the pincode')
         }
 
     }
@@ -218,42 +214,12 @@ class Component extends React.Component {
                 </Hidden>
 
                 <Hidden mdUp>
-                    {data[0].ProductContactNum.map(val =>
-                        <div style={{ marginTop: "25px" }}>
-                            <ProductPrice data={this.props.data} />
-                            <Container>
-                                <Grid container spacing={12} style={{ marginTop: "10px" }}>
-                                    <Grid item xs={6} className="content">
-                                        <b className={`ships-by ${classes.normalfonts}`}>
-                                            {/* <span class="ship-img"></span> */}
-                                            <span > <i class="fa fa-star fa-grey"></i>&nbsp; {val.shipby}</span>
-                                        </b>
-                                    </Grid>
-                                    <Grid item xs={6} className="content">
-                                        <b className={`ships-by curser ${classes.normalfonts}`}>
-                                            <span onClick={this.handleOpen}> Top to Zoom</span></b>
+                    <div style={{ marginTop: "10px" }}>
+                        <ProductPrice data={this.props.data} />
+                        <PriceTabs data={this.props.data} />
+                        {inputsearch(this.props, this.state, this.handleChanges, this.handleCodChange)}
+                    </div>
 
-                                        <Modal
-                                            aria-labelledby="simple-modal-title"
-                                            aria-describedby="simple-modal-description"
-                                            open={this.state.open}
-                                        >
-                                            <div className='modal-div'>
-                                                <i style={{ fontSize: "20px", color: "#ccc", marginTop: "5%", marginRight: "5%", float: "right" }} className="modal-clos" onClick={this.handleClose} class="fa fa-times-circle"></i>
-                                                <div style={{ backgroundImage: `url(${showimage})`, width: "100%", height: "100%" }}></div>
-                                            </div>
-                                        </Modal>
-
-                                    </Grid>
-                                    <hr class="bottom-line product-inform-ation"></hr>
-                                </Grid>
-                            </Container>
-                            <PriceTabs data={this.props.data} />
-
-                            {inputsearch(this.props, this.state, this.handleChanges, this.handleCodChange)}
-
-                        </div>
-                    )}
                 </Hidden>
             </div>
         );

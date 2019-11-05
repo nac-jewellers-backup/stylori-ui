@@ -26,6 +26,7 @@ const mobilecarousel = (props) => {
     return (
         <Container>
             <div style={{ height: '200px', width: "auto" }}>
+
                 <Slideshow class='responseve-carousel testingcur' imgClass='responseve-carousel-img'
                     fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
             </div>
@@ -43,86 +44,138 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
             {data.map(val => (
                 <>
                     <Grid container spacing={12} sm={12} className={classes.pricedetails}>
-                        <Grid item xs={7} lg={8}>
+                        <Hidden mdUp>
+                            <div className="resp" style={{paddingTop:"5px"}}>
+                                <div className="respc">
+                                    <h1 className={`pdp-title ${classes.title}`}>
+                                        {val.title}
+                                    </h1>
+                                    <Grid container spacing={12} xs={12}>
+                                        <Grid container item xs={6} justify={'flex-start'}>
+                                            <Pricing
+                                                offerDiscount={val.offerDiscount}
+                                            />
+                                        </Grid>
+                                        <Grid container item xs={6} md={6} justify={'flex-end'}>
+                                            <Grid container item xs={8} xs={8} justify={'flex-end'}>
+                                                <div className="one-day-ship-mb"></div>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                {mobilecarousel(props)}
+
+                                <div style={{ background: "rgb(238, 238, 238)", width: "100%" }}>
+                                    <div className="respc">
+                                        <Grid container spacing={12} xs={12}>
+                                            <Grid container item xs={6} justify={'flex-start'}>
+                                                <Pricing
+                                                    price={data[0].price}
+                                                    offerPrice={data[0].offerPrice}
+                                                />
+                                            </Grid>
+                                            <Grid container item xs={6} justify={'flex-end'}>
+                                                <div>
+                                                    {data[0].ProductContactNum.map(val =>
+                                                        <div style={{ marginTop: "10px" }}>
+                                                            <b className={`ships-by ${classes.normalfonts}`}>
+                                                                {/* <span class="ship-img"></span> */}
+                                                                <span > <i class="fa fa-star fa-grey"></i>&nbsp; {val.shipby}</span>
+                                                            </b>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </Grid>
+                                        </Grid>
+                                    </div>
+                                </div>
+                                {/* <hr class="bottom-line product-inform-ation"></hr> */}
+                            </div>
+                        </Hidden>
+                        <Grid item xs={12} lg={8}>
                             <div className="price-div">
-                                <h1 className="pdp-title">
-                                    {val.title}
-                                </h1>
+                                <Hidden smDown>
+                                    <h1 className={`pdp-title ${classes.title}`}>
+                                        {val.title}
+                                    </h1>
+                                </Hidden>
                                 <p className={`pdp-desc ${classes.dis}`}>
                                     {val.dis}
                                 </p>
                             </div>
                         </Grid>
 
-                        <Grid item xs={5} lg={4}>
-                            <div className="starts product-icons" style={{ fontFamily: "fontawesome" }} >
-                                <div className="row social-shares"
-                                    className={classes.icon}>
-                                    <i class="fa fa-share-alt overall-icons"
-                                        aria-owns={open ? 'simple-popper' : ""}
-                                        onClick={handleClick}
-                                    ></i> &nbsp;
+                        <Hidden smDown>
+                            <Grid item xs={12} lg={4}>
+                                <div className="starts product-icons" style={{ fontFamily: "fontawesome" }} >
+                                    <div className="row social-shares"
+                                        className={classes.icon}>
+                                        <i class="fa fa-share-alt overall-icons"
+                                            aria-owns={open ? 'simple-popper' : ""}
+                                            onClick={handleClick}
+                                        ></i> &nbsp;
                                     <i class="fa fa-heart-o overall-icons"
-                                    //  onClick={() => }
-                                    ></i>
+                                        //  onClick={() => }
+                                        ></i>
 
-                                    <Popover
-                                        id="simple-popper"
-                                        open={open}
-                                        anchorEl={anchorEl}
-                                        onClose={handleClose}
-                                        anchorOrigin={{
-                                            vertical: 'bottom',
-                                            horizontal: 'center',
-                                        }}
-                                        transformOrigin={{
-                                            vertical: 'top',
-                                            horizontal: 'center',
-                                        }}
-                                    >
-                                        <div className="product-share">
-                                            <h5>Share the Jewellery</h5>
-                                            <a class="facebook" target="_blank">
-                                                <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
-                                            </a>&nbsp;
+                                        <Popover
+                                            id="simple-popper"
+                                            open={open}
+                                            anchorEl={anchorEl}
+                                            onClose={handleClose}
+                                            anchorOrigin={{
+                                                vertical: 'bottom',
+                                                horizontal: 'center',
+                                            }}
+                                            transformOrigin={{
+                                                vertical: 'top',
+                                                horizontal: 'center',
+                                            }}
+                                        >
+                                            <div className="product-share">
+                                                <h5>Share the Jewellery</h5>
+                                                <a class="facebook" target="_blank">
+                                                    <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
+                                                </a>&nbsp;
                                             <a class="twitter" target="_blank">
-                                                <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
-                                            </a>&nbsp;
+                                                    <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
+                                                </a>&nbsp;
                                             <a class="google" target="_blank">
-                                                <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
-                                            </a>
-                                        </div>
-                                    </Popover>
+                                                    <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
+                                                </a>
+                                            </div>
+                                        </Popover>
 
-                                    <Ratings ratings="starts-review" />
-                                </div>
-                            </div>
-                        </Grid>
-                        <hr class="bottom-line product-inform-ation"></hr>
-                    </Grid>
-
-                    <Hidden mdUp>
-                        {mobilecarousel(props)}
-                    </Hidden>
-
-                    <div className={classes.width} style={{ padding: "0 10px" }}>
-                        <Pricing
-                            price={data[0].price}
-                            offerPrice={data[0].offerPrice}
-                            offerDiscount={val.offerDiscount}
-                        >
-                            <Grid container spacing={12}>
-                                <div className={`price-info ${classes.dis}`}>
-                                    <Grid item xs={4} lg={2} className={`discount-container ${classes.dis}`}>
-                                        {val.price}
-                                    </Grid>
-                                    <Grid item lg={5} xs={8} className={`selling-price ${classes.backgsecondary}`}><i class="fa fa-rupee"></i> &nbsp;
-                              {val.offerPrice}
-                                    </Grid>
+                                        <Ratings ratings="starts-review" />
+                                    </div>
                                 </div>
                             </Grid>
-                        </Pricing>
-                    </div>
+                            <hr class="bottom-line product-inform-ation"></hr>
+                        </Hidden>
+                    </Grid>
+
+
+
+                    <Hidden smDown>
+                        <div className={classes.width} style={{ padding: "0 10px" }}>
+                            <Pricing
+                                price={data[0].price}
+                                offerPrice={data[0].offerPrice}
+                                offerDiscount={val.offerDiscount}
+                            >
+                                <Grid container spacing={12}>
+                                    <div className={`price-info ${classes.dis}`}>
+                                        <Grid item xs={4} lg={2} className={`discount-container ${classes.dis}`}>
+                                            {val.price}
+                                        </Grid>
+                                        <Grid item lg={5} xs={8} className={`selling-price ${classes.backgsecondary}`}><i class="fa fa-rupee"></i> &nbsp;
+                              {val.offerPrice}
+                                        </Grid>
+                                    </div>
+                                </Grid>
+                            </Pricing>
+                        </div>
+                    </Hidden>
                 </>
             ))}
         </div>

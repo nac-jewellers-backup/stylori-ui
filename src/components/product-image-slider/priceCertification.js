@@ -25,13 +25,14 @@ class PriceCertification extends React.Component {
             <div>
                 <Container>
                     {imagecertificat.map(val =>
-                        <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
-                            style={{ boxShadow: "none", backgroundColor: "none" }} key={val.name}>
+                        <>
+                        
+                        <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
                             <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                                 <i class="fa fa-sort-up" ></i></span>} >
                                 <div style={{ width: "100%" }} >
                                     <Typography className={`subtabs-smrt ${classes.normalfonts}`}>{val.header}</Typography>
-                                    <hr class="bottom-line border-line-"></hr>
+                                    {/* <hr class="bottom-line border-line-"></hr> */}
                                 </div>
 
                             </ExpansionPanelSummary>
@@ -59,7 +60,7 @@ class PriceCertification extends React.Component {
                                 </Grid>
                             </Grid>
                         </ExpansionPanel>
-                    )}
+                    <br/></>)}
                 </Container></div>
         )
     };

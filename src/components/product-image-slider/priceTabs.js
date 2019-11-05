@@ -40,25 +40,23 @@ class Component extends React.Component {
         value: 1,
         values: "",
         expanded: null,
-        ringSize: '',
-        metalColor: '',
+        skuSize: '',
+        purity: '',
         diamondType: ""
     };
     // componentDidUpdate(prevProps) {
-    //     const { ringSize, metalColor, } = this.state;
-    //     // Typical usage (don't forget to compare props):
-    //     if (ringSize !== prevProps.ringSize) {
+    //     var filters = { ...this.props.filters }
+    //     if (filters.defaultVariants.purity !== prevProps.filters.defaultVariants.purity) {
     //         this.setState({
-    //             ringSize,
-    //             // metalColor,
-    //             // diamondType
+    //             skuSize: filters.defaultVariants.purity
     //         })
     //     }
     // }
     handleClick = (event, key) => {
+        console.log('lklkkoik9', this.state.skuSize)
+        debugger
         var filters = { ...this.props.filters }
         if (key === 'purity') {
-
             var kv = event.target.id
             var objVal = kv.split(" ")
             var arrPurity = objVal[0]
@@ -66,18 +64,16 @@ class Component extends React.Component {
             var diamondTypes = filters['defaultVariants']['diamondType']
             filters['defaultVariants']['purity'] = arrPurity
             filters['defaultVariants']['metalColor'] = arrColor
-
             // filters['defaultVariants']['skuSize']=diamondTypes
             filters['defaultVariants']['diamondType'] = diamondTypes
             this.props.setFilters(filters);
         }
         else {
             filters['defaultVariants'][key] = event.target.id
+            // this.setState({skuSize:filters})
             this.props.setFilters(filters);
         }
-
         // const ringSize = event.target.name;
-
     }
     // handleClickMetal = (event) => {
     //     console.log(event.target.id)
@@ -102,7 +98,6 @@ class Component extends React.Component {
                 <img id={val} src='https://img.icons8.com/color/48/000000/gold-bars.png' style={{ width: '30px', margin: "auto" }} alt="" />
             );
         } if (val == '22K Yellow') {
-
             return (
                 <img id={val} src='https://img.icons8.com/color/48/000000/gold-bars.png' style={{ width: '30px', margin: "auto" }} alt="" />
             );
@@ -112,12 +107,10 @@ class Component extends React.Component {
                 <img id={val} src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABhklEQVRoge2VsU7DQBBEZ88WlEiARAkFBST+nAQbUdHky+j4kfQIKiSEW4TTR46XwhYkUogv3j2dEDud5ZvdW9/4HmAymUwm0x8WaRVavBUXSDAHcNbTcEnLdHx0+fCq0ddpFGkr0T16Ng8ADBw0h/WdWlutQkQ8/f0t88ZaoNDqqzJAVeYZA9dbXnUbp42oMuPq83060uitMgCx2/b1G+z4xxySG43eOhEiTNaeGp/a5JBrtBYPUJV5BvAIAIiw8q2pFSPxAMRuRoS621SyX3N5jOQRIr5lRjrIqhAjb5BJQRUKdP4nIAVVINB5DyAFVSjQeQ0gBVVI0HkNIAVVSND5RUgKqoCg672FqjLPCPQEtKDa565veDUmck7iPzl/fNm1pvcEpKAKDbr+CAlABcJE7O9d0ik2qIb6f04gNqgG+r8HiA2qoX4HxAeVxO+A+KCS+NsIxQaVwE+xQSX1p8RuRo5rZqSDQMN0HNNPi7L4AHC6j3FNz2ivvph+k8lkMplMpn+rL4l9D4el2eifAAAAAElFTkSuQmCC' style={{ width: '30px', margin: "auto" }} alt="" />
             );
         } if (val == '24K Yellow') {
-
             return (
                 <img id={val} src='https://img.icons8.com/color/48/000000/gold-bars.png' style={{ width: '30px', margin: "auto" }} alt="" />
             );
         }
-
         if (val == "14K White") {
             return (
                 <img id={val} src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABcUlEQVRoge2VzU6EQBCEq8fBBzAmeyJ41N19nPUvnrz4rN6NnjYhDEffwCjtQdlsNhsY6J5MjF0nCNQ0xRR8gMlkMplMf1iktVBd1xdFUTwz82Lk1g8Aq7IstxpzncYiAOC9f4x4eAA4BfCgNVctADNfD10+OL/TmqsSIISwJqKrI5f6Bz+s6mXTNEuN2SoBiOjY2+8w8I055240ZmtVaLN33EWufasxWBwghLAGsAQAIvqasKZKjcQBiOiJiD4BgJlPJg1XqJFGhe6Z2c/0imsUDTIpqFKBLnoHpKBKBbroAFJQpQJdVAApqFKCLiqAFFQpQRdbISmokoFu9C/0u/0vwA+opvzru65bEZGT+Kuqehu6Z3QHpKBKDbqYCklAtVHwD2pXodygmuvf7UBuUM317wLkBtVcvwPyg0rid0B+UEn8fYVyg2q2n3KDSur3PWiY2c8EzVlOP7Vt+w7gfIpxT68AFpn9JpPJZDKZTP9W35wuE6GNZKzYAAAAAElFTkSuQmCC' style={{ width: '30px', margin: "auto" }} alt="" />
@@ -192,7 +185,7 @@ class Component extends React.Component {
 
                                                     return (<>
                                                         <button
-                                                            className={this.state.ringSize == i ? `dark ${classes.tabsRingBckg}` : 'page'}
+                                                            className={this.state.skuSize == i ? `dark ${classes.tabsRingBckg}` : 'page'}
                                                             id={val}
                                                             onClick={event => this.handleClick(event, 'skuSize')}
                                                         >
@@ -218,7 +211,7 @@ class Component extends React.Component {
                                                 return (
                                                     <Grid xs={4}>
                                                         <button className="tabs-valus"
-                                                            // className={this.state.metalColor == i ? `dark ${classes.tabsRingBckg}` : 'page'}
+                                                            // className={this.state.purity == i ? `dark ${classes.tabsRingBckg}` : 'page'}
                                                             id={val}
                                                             onClick={event => this.handleClick(event, 'purity')}
                                                         >
@@ -286,8 +279,7 @@ class Component extends React.Component {
                         <Container>
                             <>
                                 {arr.length > 0 ?
-                                    <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}
-                                        style={{ boxShadow: "none", backgroundColor: "none" }}>
+                                    <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)}>
                                         <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
                                             <div style={{ width: "100%" }} >
                                                 <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab1.header}</Typography>
@@ -313,17 +305,16 @@ class Component extends React.Component {
                                         </ExpansionPanelDetails>
                                     </ExpansionPanel>
                                     : ""}
-
+                                {/* className="panel-head" */}
                                 {arr2 || arr2.length > 0 ?
-                                    <ExpansionPanel expanded={expanded === val.tab2.header} onChange={this.handle(val.tab2.header)}
-                                        style={{ boxShadow: "none", backgroundColor: "none" }}>
+                                    <ExpansionPanel expanded={expanded === val.tab2.header} onChange={this.handle(val.tab2.header)}>
                                         <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
                                             <div style={{ width: "100%" }} >
                                                 <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab2.header}</Typography>
-                                                <hr class="bottom-line border-line-"></hr>
+                                                {/* <hr class="bottom-line border-line-"></hr> */}
                                             </div>
                                         </ExpansionPanelSummary>
-                                        <ExpansionPanelDetails style={{ padding: 0, width: "100%", overflow: "auto" }}>
+                                        <ExpansionPanelDetails style={{ padding: '0 5px', width: "100%", overflow: "auto" }}>
                                             {arr2.map(val =>
                                                 <Grid container spacing={12} >
                                                     <Grid xs={12}>
@@ -340,15 +331,14 @@ class Component extends React.Component {
                                         </ExpansionPanelDetails>
                                     </ExpansionPanel> : ""}
                                 {val.tab3.Children.length > 0 ?
-                                    <ExpansionPanel expanded={expanded === val.tab3.header} onChange={this.handle(val.tab3.header)}
-                                        style={{ boxShadow: "none", backgroundColor: "none" }}>
+                                    <ExpansionPanel expanded={expanded === val.tab3.header} onChange={this.handle(val.tab3.header)}>
                                         <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
                                             <div style={{ width: "100%" }} >
                                                 <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab3.header}</Typography>
-                                                <hr class="bottom-line border-line-"></hr>
+                                                {/* <hr class="bottom-line border-line-"></hr> */}
                                             </div>
                                         </ExpansionPanelSummary>
-                                        <ExpansionPanelDetails style={{ padding: 0, width: "100%", overflow: "auto" }}>
+                                        <ExpansionPanelDetails style={{ padding: '0 5px', width: "100%", overflow: "auto" }}>
                                             {val.tab3.Children.map(val =>
                                                 <Grid container spacing={12}>
                                                     <Grid xs={12}>

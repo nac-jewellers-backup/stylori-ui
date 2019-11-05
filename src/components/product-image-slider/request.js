@@ -192,14 +192,13 @@ class Request extends React.Component {
 
                 <Hidden mdUp>
                     <Container>
-                        <ExpansionPanel expanded={expanded === 'panel3'} onChange={this.handle('panel3')}
-                            style={{ boxShadow: "none", backgroundColor: "none" }}>
+                        <ExpansionPanel expanded={expanded === 'panel3'} onChange={this.handle('panel3')}>
                             <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                                 <i class="fa fa-sort-up" ></i></span>}
                             >
                                 <div style={{ width: "100%" }} >
                                     <Typography className={`product-details-smrt ${classes.normalfonts}`}>Ask Our Expert</Typography>
-                                    <hr class="bottom-line border-line-"></hr>
+                                    {/* <hr class="bottom-line border-line-"></hr> */}
                                 </div>
                             </ExpansionPanelSummary>
                             <Grid container spacing={12}>
@@ -209,7 +208,7 @@ class Request extends React.Component {
                                     </span>
                                 </Grid>
                             </Grid>
-                        </ExpansionPanel>
+                        </ExpansionPanel><br/>
                     </Container> </Hidden>
             </div>
         )

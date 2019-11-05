@@ -54,7 +54,6 @@ class CustomerReviews extends React.Component {
                 <Hidden mdUp>
                     <Container>
                         <ExpansionPanel
-                            style={{ boxShadow: "none" }}
                             square
                             expanded={expanded === 'panel1'}
                             onChange={this.handleChange('panel1')}
@@ -63,7 +62,7 @@ class CustomerReviews extends React.Component {
                                 <i class="fa fa-sort-up" ></i></span>}>
                                 <div style={{ width: "100%" }} >
                                     <Typography className={`subtabs-smrt ${classes.normalfonts}`}>You recently viewed</Typography>
-                                    <hr class="bottom-line border-line-"></hr>
+                                    {/* <hr class="bottom-line border-line-"></hr> */}
                                 </div>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>

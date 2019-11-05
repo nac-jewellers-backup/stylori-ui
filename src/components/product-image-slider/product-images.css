@@ -10,9 +10,7 @@
 
     .pdp-title {
         margin-top: 0;
-        margin-bottom: 10px;
-        font-size: 15px;
-        line-height: 20px;
+        line-height: 13px;
         text-transform: capitalize;
         text-align: justify;
     }
@@ -53,6 +51,10 @@
         width: 100% !important;
     }
 
+    /* .MuiPaper-elevation1 {
+        box-shadow: 0px 0px 2px 0px #ed1165 !important;
+    } */
+
     .social-shares {
         padding-left: 14px !important;
         padding-right: 14px !important;
@@ -87,12 +89,23 @@
     }
 
     .discount {
-        margin-top: 6px;
-        font-size: 12px !important;
-        padding: 3px 50px !important;
-        margin-top: 1% !important;
-        margin-bottom: 1% !important;
-        text-align: center !important;
+        flex: 0.7;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 3px;
+        background-color: #ed1165 !important;
+        padding: 3px !important;
+    }
+
+    .one-day-ship-mb {
+        height: 20px !important;
+        position: relative !important;
+        background-image: url(https://assets-cdn.stylori.com/images/static/product-details-icons.png);
+        background-repeat: no-repeat !important;
+        background-position: -38px -37px !important;
+        /* margin-left: 20px !important; */
+        flex: 1
     }
 
     .modal-div {
@@ -346,15 +359,17 @@
         font-size: 13px !important;
         width: 100%;
         overflow: auto;
-        margin:auto !important;
-       
+        margin: auto !important;
+
     }
+
     /* //:nth-child(2n) */
-    .product-subhead-list span { 
-        
+    .product-subhead-list span {
+
         display: flex;
-        flex:1;
+        flex: 1;
     }
+
     /*certification*/
     .certification-img {
         width: 100% !important;
@@ -511,15 +526,23 @@
         font-size: 15px !important;
 
     }
+    .MuiExpansionPanelSummary-root.Mui-expanded{
+        border-bottom: 0.2px solid #f5cacc !important;
+    }
 
     .expansion-summary,
     .MuiExpansionPanelSummary-root.Mui-expanded,
     .MuiExpansionPanelSummary-root,
     .MuiExpansionPanel-root:before,
-    .MuiExpansionPanel-root.Mui-expanded {
-        padding: 0 !important;
-        background: none !important;
-        margin: 0 !important;
+    .MuiExpansionPanel-root.Mui-expanded .MuiExpansionPanel-rounded:last-child .MuiExpansionPanel-rounded:first-child {
+        padding: 0  !important;
+        border-bottom-left-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+    }
+
+    .MuiExpansionPanel-rounded:first-child.MuiExpansionPanel-rounded:first-child {
+        border-top-left-radius: 0px !important;
+        border-top-right-radius: 0px !important;
     }
 
     .subtabs-smrt {
@@ -899,6 +922,18 @@
     .pricing-loctn-head {
         margin-top: 0.5% !important;
         margin-bottom: 0.5% !important;
+    }
+
+    .resp {
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+            0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+            0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+        width: 100% !important;
+    }
+
+    .respc {
+        padding-right: 5px !important;
+        padding-left: 5px !important;
     }
 
     @media screen and (max-width: 1220px),

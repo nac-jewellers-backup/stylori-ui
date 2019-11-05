@@ -38,7 +38,6 @@ export const TabsProvider = (props) => {
 
 
 
-
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTDETAILS, () => { }, {});
     useEffect(() => {
         if (filters.productId === "") {

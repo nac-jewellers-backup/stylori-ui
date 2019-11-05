@@ -494,10 +494,11 @@ class Component extends React.Component {
                             icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
                             checkedIcon={<CheckBoxIcon fontSize="small" />}
                             name={this.state.filtercheck.replace(/\s/g, "")}
-                          />
+                            onClick={this.handleDrawerCloseMobile} />
                           <ListItemText>
                             <Typography variant=""
-                              className={`filter-mbl-font ${classes.colorMain}`}>{row}
+                              className={`filter-mbl-font fnts ${classes.colorMain}`}>
+                              <div onClick={this.handleDrawerCloseMobile}> {row}</div> 
                             </Typography>
                           </ListItemText>
                         </ListItem>
@@ -514,7 +515,7 @@ class Component extends React.Component {
                     </Button>
                 </Paper>    
               </Grid> */}
-              <AppBar color="primary" className="filter-fixed header" >
+              {/* <AppBar color="primary" className="filter-fixed header" >
                 <Grid container item xs={12} justify="flex-end" alignItems="center" style={{ padding: '2%' }}>
                   <Grid item xs={6}>
 
@@ -524,7 +525,7 @@ class Component extends React.Component {
                   </Grid>
                 </Grid>
 
-              </AppBar>
+              </AppBar> */}
             </Grid>
 
 

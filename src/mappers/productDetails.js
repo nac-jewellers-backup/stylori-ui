@@ -20,12 +20,19 @@ const generateImgurls = (PD, val) => {
 }
 const calculatetotalmm = (arr) => {
     var a = 0;
-    arr.map(val => { a = Math.round(a + val.discountPrice) });
+    arr.map(val => {
+        a =
+            new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.discountPrice))
+    });
     return a;
 }
+
 const calculatetotalms = (arr) => {
     var a = 0;
-    arr.map(val => { a = Math.round(a + val.sellingPrice) });
+    arr.map(val => {
+        a =
+            new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.sellingPrice))
+    });
     return a;
 }
 const generatedDiamondType = (PD, valProductDiamond, type) => {
@@ -51,19 +58,19 @@ const generatedimondClarity = (val) => {
         icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
     }))
 }
-const generateShipsBy = () =>{
-    var isReadytoShip=false
+const generateShipsBy = () => {
+    var isReadytoShip = false
     var numberOfDays = 5
     var date = moment().format(' h a')
-    if(isReadytoShip){
-        
-        if(JSON.stringify(date)>" 1 pm"){
-            return 'Ships by' +' '+ moment().add(1, 'days').format('MMM Do YY');
+    console.log(date)
+    if (isReadytoShip) {
+        if (JSON.stringify(date) > " 1 pm") {
+            return 'Ships by' + ' ' + moment().add(1, 'days').format('MMM Do YY');
         }
     }
 
-    else{
-        return 'Ships by' +' '+ moment().add(numberOfDays, 'days').format('MMM Do YY');
+    else {
+        return 'Ships by' + ' ' + moment().add(numberOfDays, 'days').format('MMM Do YY');
     }
 }
 // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
@@ -78,8 +85,8 @@ export default function (data, cdnUrl) {
         {
             title: PD.productListByProductId.productName,
             skuId: PD && PD === undefined ? '' : PD.generatedSku,
-            price: PD.markupPrice,
-            offerPrice: PD.sellingPrice,
+            price:PD.discountPrice,
+            offerPrice: PD.markupPrice,
             save: '5999.9',
             offerDiscount: '25% FLAT OFF',
             dis: PD && PD !== undefined && PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription !== '' ? PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription : '',
@@ -259,34 +266,19 @@ export default function (data, cdnUrl) {
                 },
                 {
                     name: "Diamond",
-                    details: (PD.pricingSkuMaterialsByProductSku !== null ?
-                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.pricingSkuMaterialsByProductSku.discountPrice))
-                        : '')
-                        // && PD.pricingSkuMaterialsByProductSku.nodes.length === 0 ? '' :
-                        // calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes)) 
-                        + '  ' +
-
-                        (PD.pricingSkuMaterialsByProductSku !== null ?
-                            new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.pricingSkuMaterialsByProductSku.sellingPrice))
-                            : '')
-                    // && PD.pricingSkuMaterialsByProductSku.nodes.length === 0 ? '' :
-                    // calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes))
+                    details: PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                        calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : ""
+                            + '  ' +
+                            PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                            calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : ""
                 },
                 {
                     name: "Gemstone",
-                    details: (PD.pricingSkuMaterialsByProductSku !== null ?
-                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.pricingSkuMaterialsByProductSku.discountPrice))
-                        : '')
-                        // && PD.pricingSkuMaterialsByProductSku.nodes.length === 0 ? '' :
-                        // calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes)) 
-                        + '  ' +
-
-                        (PD.pricingSkuMaterialsByProductSku !== null ?
-                            new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.pricingSkuMaterialsByProductSku.sellingPrice))
-                            : '')
-                    // && PD.pricingSkuMaterialsByProductSku.nodes.length === 0 ? '' :
-                    // calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes))
-                    // type: (PD.pricingSkuMaterialsByProductSku !== null ? PD.pricingSkuMaterialsByProductSku.component : '')
+                    details: PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                        calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : ""
+                            + '  ' +
+                            PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                            calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : ""
                 },
                 {
                     name: "Making Charges",
@@ -295,7 +287,8 @@ export default function (data, cdnUrl) {
                 },
                 {
                     name: "GST",
-                    details: "1.463"
+                    details:
+                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPriceTax))
                 },
                 {
                     name: "Total",
@@ -371,6 +364,6 @@ const calculatetotals = (arr) => {
 }
 const calculatetotalm = (arr) => {
     var a = 0;
-    arr.map(val => { a = Math.round(a + val.markup) });
+    arr.map(val => { a = Math.round(a + val.discountPrice) });
     return a;
 }

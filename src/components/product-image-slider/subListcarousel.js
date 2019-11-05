@@ -67,13 +67,12 @@ class Sublistcarousel extends React.Component {
         </Hidden>
         <Hidden mdUp>
           <Container>
-            <ExpansionPanel expanded={expanded === 'panel'} onChange={this.handle('panel')}
-              style={{ boxShadow: "none", backgroundColor: "none" }}>
+            <ExpansionPanel expanded={expanded === 'panel'} onChange={this.handle('panel')}>
               <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                 <i class="fa fa-sort-up" ></i></span>}>
                 <div style={{ width: "100%" }} >
                   <Typography className="subtabs-smrt">You may also like</Typography>
-                  <hr class="bottom-line border-line-"></hr>
+                  {/* <hr class="bottom-line border-line-"></hr> */}
                 </div>
               </ExpansionPanelSummary>
 
@@ -85,7 +84,7 @@ class Sublistcarousel extends React.Component {
                   </Slideshow>
                 </div>
               </ExpansionPanelDetails>
-            </ExpansionPanel>
+            </ExpansionPanel><br/>
           </Container>
 
         </Hidden >

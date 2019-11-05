@@ -122,9 +122,7 @@ sizes="(max-width: 320px) 320w,
             (max-width: 992px) 768w,
             (max-width: 1440px) 1440w,
             (max-width: 2560px) 2560w,
-            2560w
-           
-"
+            2560w"
      alt=""
 
           src = {renderImagesSrc(props, cardstate)}
