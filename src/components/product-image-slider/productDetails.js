@@ -34,7 +34,6 @@ class ProductDetails extends React.Component {
                                         <hr class="bottom-line"></hr>
                                         <>{
                                             val.namedetail !== undefined && val.namedetail.map(res => {
-                                                debugger
                                                  return (
                                                     <Grid container item xs={12} >
                                                         <Grid xs={4}>

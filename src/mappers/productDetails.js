@@ -6,12 +6,10 @@ import { NavigateBeforeSharp } from "@material-ui/icons";
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 const generateImgurls = (PD, val) => {
     var arrOfurls = []
-    console.log(typeof imgurlsplit, typeof metalcolor)
     val.map(imgurl => {
         var imgurlsplit = imgurl.imageUrl.split('.')[0].charAt(imgurl.imageUrl.split('.')[0].length - 1)
         var metalcolor = PD.metalColor.charAt(0)
         if (imgurlsplit === metalcolor) {
-            console.log('${CDN_URL}${val.imageUrl}', `${CDN_URL}${imgurl.imageUrl}`)
             arrOfurls.push(`${CDN_URL}${imgurl.imageUrl}`)
 
         }
@@ -36,10 +34,8 @@ const generatedDiamondType = (PD, valProductDiamond, type) => {
     return arrOfdiamondType
 }
 const gemstoneType = (PD, valGemstoneType, type) => {
-    console.log('PD,valGemstoneType, type', PD, valGemstoneType, type)
     var arrOfGemstoneType = []
     valGemstoneType.map(val => {
-        debugger
         PD.map(valPD => {
             if (val.gemstoneType === valPD.gemstoneType) { arrOfGemstoneType.push(val[type]) } return arrOfGemstoneType
         })
@@ -59,9 +55,8 @@ const generateShipsBy = () =>{
     var isReadytoShip=false
     var numberOfDays = 5
     var date = moment().format(' h a')
-    console.log(date)
     if(isReadytoShip){
-        debugger
+        
         if(JSON.stringify(date)>" 1 pm"){
             return 'Ships by' +' '+ moment().add(1, 'days').format('MMM Do YY');
         }
@@ -73,11 +68,9 @@ const generateShipsBy = () =>{
 }
 // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
 export default function (data, cdnUrl) {
-    console.info('datapd', data)
     let mapperdata = [];
     try {
         mapperdata = data.data.allTransSkuLists.nodes;
-        debugger
     } catch (error) {
         mapperdata = [];
     }
@@ -266,34 +259,34 @@ export default function (data, cdnUrl) {
                 },
                 {
                     name: "Diamond",
-                    details: (PD.pricingSkuMaterialByProductSku !== null ?
-                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.pricingSkuMaterialByProductSku.discountPrice))
+                    details: (PD.pricingSkuMaterialsByProductSku !== null ?
+                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.pricingSkuMaterialsByProductSku.discountPrice))
                         : '')
-                        // && PD.pricingSkuMaterialByProductSku.nodes.length === 0 ? '' :
-                        // calculatetotalmm(PD.pricingSkuMaterialByProductSku.nodes)) 
+                        // && PD.pricingSkuMaterialsByProductSku.nodes.length === 0 ? '' :
+                        // calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes)) 
                         + '  ' +
 
-                        (PD.pricingSkuMaterialByProductSku !== null ?
-                            new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.pricingSkuMaterialByProductSku.sellingPrice))
+                        (PD.pricingSkuMaterialsByProductSku !== null ?
+                            new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.pricingSkuMaterialsByProductSku.sellingPrice))
                             : '')
-                    // && PD.pricingSkuMaterialByProductSku.nodes.length === 0 ? '' :
-                    // calculatetotalms(PD.pricingSkuMaterialByProductSku.nodes))
+                    // && PD.pricingSkuMaterialsByProductSku.nodes.length === 0 ? '' :
+                    // calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes))
                 },
                 {
                     name: "Gemstone",
-                    details: (PD.pricingSkuMaterialByProductSku !== null ?
-                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.pricingSkuMaterialByProductSku.discountPrice))
+                    details: (PD.pricingSkuMaterialsByProductSku !== null ?
+                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.pricingSkuMaterialsByProductSku.discountPrice))
                         : '')
-                        // && PD.pricingSkuMaterialByProductSku.nodes.length === 0 ? '' :
-                        // calculatetotalmm(PD.pricingSkuMaterialByProductSku.nodes)) 
+                        // && PD.pricingSkuMaterialsByProductSku.nodes.length === 0 ? '' :
+                        // calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes)) 
                         + '  ' +
 
-                        (PD.pricingSkuMaterialByProductSku !== null ?
-                            new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.pricingSkuMaterialByProductSku.sellingPrice))
+                        (PD.pricingSkuMaterialsByProductSku !== null ?
+                            new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.pricingSkuMaterialsByProductSku.sellingPrice))
                             : '')
-                    // && PD.pricingSkuMaterialByProductSku.nodes.length === 0 ? '' :
-                    // calculatetotalms(PD.pricingSkuMaterialByProductSku.nodes))
-                    // type: (PD.pricingSkuMaterialByProductSku !== null ? PD.pricingSkuMaterialByProductSku.component : '')
+                    // && PD.pricingSkuMaterialsByProductSku.nodes.length === 0 ? '' :
+                    // calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes))
+                    // type: (PD.pricingSkuMaterialsByProductSku !== null ? PD.pricingSkuMaterialsByProductSku.component : '')
                 },
                 {
                     name: "Making Charges",

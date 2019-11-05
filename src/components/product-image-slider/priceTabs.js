@@ -56,7 +56,6 @@ class Component extends React.Component {
     //     }
     // }
     handleClick = (event, key) => {
-        console.log(this.state.ringSize)
         var filters = { ...this.props.filters }
         if (key === 'purity') {
 

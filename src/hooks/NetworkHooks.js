@@ -15,7 +15,6 @@ export const useDummyRequest = (mapper) => {
         mapper()
             .then(data => {
                 setMapped(data);
-                console.info('MAPPER', data);
             })
             .catch(err => setError(true));
         setLoading(false);
@@ -57,7 +56,6 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
             })
             .then(resdata => {
                 setData(resdata);
-                console.info('resdataaaa',resdata,body)
                 // localStorage.setItem('response', JSON.stringify(resdata));
                 // var responseId = localStorage.getItem("response") ? localStorage.getItem("response") : {}
                 // var user_id = JSON.parse(responseId).user.id ? JSON.parse(responseId).user.id : {}
@@ -89,5 +87,6 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
     React.useEffect(() => {
         makeFetch();
     }, []);
+    console.log('network request', data)
     return { loading, error, status, data, mapped, makeFetch }
 }
