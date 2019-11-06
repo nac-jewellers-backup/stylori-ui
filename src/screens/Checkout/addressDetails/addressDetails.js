@@ -24,12 +24,10 @@ class Addressdetails extends React.Component {
                 checkValue1: !values.checkValue1
             })
         }} type='checkbox' checked={values.checkValue1} />
-
         const { classes } = props;
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>
-
                     <h5 className='title'> Shipping Address</h5>
                     <Grid item xs={12} lg={6}>
                         <div class="form-group tp ts">
@@ -41,27 +39,29 @@ class Addressdetails extends React.Component {
                             <h4 class="card-title">
                                 <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                 {/* {name1.adrs_firstname} */}
-                                <span class="address-name">{value.firstname}{value.lastname}
+                                <span class="address-name">{value.addressOne.firstname}{value.addressOne.lastname}
                                 </span>
                                 <i style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                     class="fa fa-pencil-square-o"></i>
                                 <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
-                                    className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
+                                    onClick={() => {
+                                        localStorage.removeItem('valuessetdata')
+                                    }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
                             </h4>
                             <p className={`detils-p ${classes.normalfonts}`} >
-                                {value.addressline1} <br />
-                                {value.city} <br />
-                                {value.state}-{value.pincode} <br />IN</p>
+                                {value.addressOne.addressline1} <br />
+                                {value.addressOne.city} <br />
+                                {value.addressOne.state}-{value.addressOne.pincode} <br />IN</p>
                             <div className="card-foo">
                                 <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                    +91 {value.contactno} </span>
+                                    +91 {value.addressOne.contactno} </span>
                                 <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                     this.props.changevalue(3)
                                 }}>Select and  Review </Button>
                             </div>
                         </div>
-                        
                     </Grid>
+
                     {!values.checkValue1 &&
                         <Grid item xs={12} lg={6}>
                             <h5 className='title'> Billing address</h5>
@@ -71,8 +71,8 @@ class Addressdetails extends React.Component {
                                     <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                     {/* {name1.adrs_firstname} */}
                                     <span class="address-name">
-                                        {value.bill_firstname ? value.bill_firstname : value.firstname}
-                                        {value.bill_lastname ? value.bill_lastname : value.lastname}
+                                        {value.addressTwo.firstname ? value.addressTwo.firstname : value.addressOne.firstname}
+                                        {value.addressTwo.lastname ? value.addressTwo.lastname : value.addressOne.lastname}
                                     </span>
                                     <i style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                         class="fa fa-pencil-square-o"></i>
@@ -80,15 +80,15 @@ class Addressdetails extends React.Component {
                                         className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
                                 </h4>
                                 <p className={`detils-p ${classes.normalfonts}`} >
-                                    {value.bill_addressline1 ? value.bill_addressline1 : value.addressline1}
+                                    {value.addressTwo.addressline1 ? value.addressTwo.addressline1 : value.addressOne.addressline1}
                                     <br />
-                                    {value.bill_city ? value.bill_city : value.city}<br />
-                                    {value.bill_state ? value.bill_state : value.state}-
-                                     {value.bill_pincode ? value.bill_pincode : value.pincode}
+                                    {value.addressTwo.city ? value.addressTwo.city : value.addressOne.city}<br />
+                                    {value.addressTwo.state ? value.addressTwo.state : value.addressOne.state}-
+                                    {value.addressTwo.pincode ? value.addressTwo.pincode : value.addressOne.pincode}
                                     <br />IN</p>
                                 <div className="card-foo">
                                     <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                        +91 {value.bill_contactno ? value.bill_contactno : value.contactno}
+                                        +91 {value.addressTwo.contactno ? value.addressTwo.contactno : value.addressOne.contactno}
                                     </span>
                                     <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                         this.props.changevalue(3)
@@ -102,7 +102,7 @@ class Addressdetails extends React.Component {
                         </Grid>}
                 </Grid>
                 <Button onClick={() => this.props.redirectForm()} className={`add-new-address ${classes.normalfonts}`}>
-                          <div></div>  Add New Address
+                    <div></div>  Add New Address
                             </Button>
             </div>
         )

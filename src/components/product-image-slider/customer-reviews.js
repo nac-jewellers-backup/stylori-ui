@@ -54,11 +54,11 @@ class CustomerReviews extends React.Component {
                 <Hidden mdUp>
                     <Container>
                         <ExpansionPanel
-                            square
+                           style={{boxShadow:"0px 0px 2px 0px #ed1165"}} square
                             expanded={expanded === 'panel1'}
                             onChange={this.handleChange('panel1')}
                         >
-                            <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
+                            <ExpansionPanelSummary  expandIcon={<span className='side-arrow-symbol'>
                                 <i class="fa fa-sort-up" ></i></span>}>
                                 <div style={{ width: "100%" }} >
                                     <Typography className={`subtabs-smrt ${classes.normalfonts}`}>You recently viewed</Typography>

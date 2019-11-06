@@ -82,7 +82,6 @@ export default function (data, cdnUrl) {
     let mapperdata = [];
     try {
         mapperdata = data.data.allTransSkuLists.nodes;
-        debugger
     } catch (error) {
         mapperdata = [];
     }
@@ -90,7 +89,7 @@ export default function (data, cdnUrl) {
         {
             title: PD.productListByProductId.productName,
             skuId: PD && PD === undefined ? '' : PD.generatedSku,
-            price:PD.discountPrice,
+            price: PD.discountPrice,
             offerPrice: PD.markupPrice,
             save: '5999.9',
             offerDiscount: '25% FLAT OFF',
@@ -266,8 +265,9 @@ export default function (data, cdnUrl) {
                 header: "Price Breakup",
                 namedetail: [{
                     name: "Metal",
-                    details:
-                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(calculatetotalm(PD.pricingSkuMetalsByProductSku.nodes)))
+                    details: calculatetotalm(PD.pricingSkuMetalsByProductSku.nodes, "goldprice")
+                        + ' ' + calculatetotalss(PD.pricingSkuMetalsByProductSku.nodes, "goldprice")
+
                 },
                 {
                     name: "Diamond",
@@ -275,7 +275,8 @@ export default function (data, cdnUrl) {
                         calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : ""
                             + '  ' +
                             PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
-                            calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : ""
+                            calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : "",
+
                 },
                 {
                     name: "Gemstone",
@@ -287,8 +288,8 @@ export default function (data, cdnUrl) {
                 },
                 {
                     name: "Making Charges",
-                    details: calculatetotal(PD.pricingSkuMetalsByProductSku.nodes)
-                        + ' ' + calculatetotals(PD.pricingSkuMetalsByProductSku.nodes)
+                    details: calculatetotal(PD.pricingSkuMetalsByProductSku.nodes, "makingcharge")
+                        + ' ' + calculatetotals(PD.pricingSkuMetalsByProductSku.nodes, "makingcharge")
                 },
                 {
                     name: "GST",
@@ -299,7 +300,7 @@ export default function (data, cdnUrl) {
                     name: "Total",
                     details:
                         new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.markupPrice)) + ' ' +
-                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.sellingPrice)),
+                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPrice)),
                 }],
             },
             ],
@@ -356,19 +357,40 @@ export default function (data, cdnUrl) {
 }
 
 
-const calculatetotal = (arr) => {
+const calculatetotal = (arr, name) => {
     var a = 0;
-    arr.map(val => { a = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a + val.discountPrice)) }
+    arr.map(val => {
+        if (val.materialName === name || name === undefined) {
+            a = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a + val.discountPrice))
+        }
+    }
     );
     return a;
 }
-const calculatetotals = (arr) => {
+const calculatetotals = (arr, name) => {
     var a = 0;
-    arr.map(val => { a = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a + val.sellingPrice)) });
+    arr.map(val => {
+        if (val.materialName === name || name === undefined) {
+            a = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a + val.sellingPrice))
+        }
+    });
     return a;
 }
-const calculatetotalm = (arr) => {
+const calculatetotalm = (arr, name) => {
     var a = 0;
-    arr.map(val => { a = Math.round(a + val.discountPrice) });
+    arr.map(val => {
+        if (val.materialName === name || name === undefined) {
+            a = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a + val.discountPrice))
+        }
+    });
+    return a;
+}
+const calculatetotalss = (arr, name) => {
+    var a = 0;
+    arr.map(val => {
+        if (val.materialName === name || name === undefined) {
+            a = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a + val.sellingPrice))
+        }
+    });
     return a;
 }

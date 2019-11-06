@@ -21,10 +21,23 @@
     padding: 5px !important;
 }
 
+.summaryOrder-pay-btn {
+    background: #fe6c00 !important;
+    color: #FFF !important;
+    padding: 12px 15px !important;
+    border-radius: 0px !important;
+    border: 1px solid #fe6c00 !important;
+    font-size: 16px !important;
+    min-width: 100px !important;
+    text-transform: none !important;
+}
+
 .text-chck {
     padding: 8px 15px;
     color: #394578;
     font-weight: 700 !important;
+    width: 100% !important;
+    float: left !important;
 }
 
 .arrow-chek,

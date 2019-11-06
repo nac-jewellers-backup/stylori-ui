@@ -59,9 +59,10 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
       }
       pricingSkuMaterialsByProductSku {
         nodes {
-          costPrice
+          materialName
           component
           discountPrice
+          sellingPrice
         }
       }
       pricingSkuMetalsByProductSku {
@@ -77,7 +78,7 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
 
 
 `
-export  const CheckForCod= `query CheckForCod($pincode:String) {
+export const CheckForCod = `query CheckForCod($pincode:String) {
   allPincodeMasters(first: 1, condition: {pincode:$pincode}) {
     nodes {
       isDelivery
@@ -85,10 +86,32 @@ export  const CheckForCod= `query CheckForCod($pincode:String) {
       minCartvalue
       isCod
       pincode
-    }
+      state
+      country
+     }
   }
 }
 `
+export const ADDRESSDETAILS = `
+query MyQuery($id: UUID) {
+  allUserAddresses(first: 1, condition: {id: $id}) {
+    nodes {
+      addressline1
+      addressline2
+      id
+      city
+      contactNumber
+      country
+      countryCode
+      defaultBilling
+      defaultShipping
+      firstname
+      lastname
+      pincode
+      state
+    }
+  }
+}`
 export const filterProductMatrix = (type, value) => {
   let fc = { table: "", type: "" }
   switch (type) {

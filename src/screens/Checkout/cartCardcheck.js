@@ -7,10 +7,12 @@ import {
     ExpansionPanelDetails,
     Typography,
     Avatar,
-    Grid
+    Grid,
+    Button
 } from '@material-ui/core';
 import "../../components/Checkout/Cart.css";
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import "./chckout.css";
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import Addressform from './addressDetails/addressForm';
 import ProductList from './orderSummary/productList';
 import Cart from 'containers/Cart';
@@ -28,10 +30,9 @@ import cart from '../../mappers/cart';
 class CartCardCheck extends React.Component {
     state = {
         expanded: 'panel' + (localStorage.getItem("panel") ? localStorage.getItem("panel") : 1),
-        expandedlimit: localStorage.getItem("panel") ? localStorage.getItem("panel") : 1,
-        //   expanded: 'panel2',
+        // expanded: 'panel2',
+        // expandedlimit: localStorage.getItem("panel") ? localStorage.getItem("panel") : 1,
         // expandedlimit: 1,
-
         mailId: null
     }
 
@@ -53,12 +54,11 @@ class CartCardCheck extends React.Component {
     }
 
     render() {
-
         const { expanded, mailId, expandedlimit } = this.state;
         const { classes, data } = this.props;
         const { breadcrumsdata, cartsubdata } = this.props.data;
-        let email = localStorage.getItem("email") ? JSON.parse(localStorage.getItem("email")).email : ''
-        let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
+        let email = localStorage.getItem("email") ? localStorage.getItem("email") : '';
+        let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : {};
         return (
             <>
                 <CustomSeparator
@@ -78,7 +78,7 @@ class CartCardCheck extends React.Component {
                             // onChange={this.handleChange(0)}
                             style={{ boxShadow: "none" }}
                         >
-                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className={`ckcut-main-body ${classes.normalfonts}`}>
+                            <ExpansionPanelSummary expandIcon={<ExpandLessIcon className='arrow-chek' />} className='ckcut-main-body'>
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>1</Avatar><Typography className='text-chck'> Login or Register
                             <div className="ch-d-vl">{email}</div></Typography>
                             </ExpansionPanelSummary >
@@ -88,21 +88,19 @@ class CartCardCheck extends React.Component {
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
 
-
                         <ExpansionPanel
                             square
                             expanded={expanded === 'panel2'}
                             onChange={this.handleChange(1)}
                             style={{ boxShadow: "none" }}>
-                            <ExpansionPanelSummary style={{width:"100%",overflow:"hidden"}} expandIcon={<ExpandMoreIcon className='arrow-chek' />} className={`ckcut-main-body ${classes.normalfonts}`}>
+                            <ExpansionPanelSummary style={{ width: "100%", overflow: "hidden" }} expandIcon={<ExpandLessIcon className='arrow-chek' />} className='ckcut-main-body'>
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>2</Avatar>
                                 <Typography className='text-chck'>Address Detail
 
-                                {/* <div className="ch-d-vl">
-                                        {value.firstname}{value.lastname}&nbsp;
-                                {value.addressline1}&nbsp;{value.city}
+                                 <div className="ch-d-vl">
+                                        {value.firstname}{value.lastname}&nbsp;{value.addressline1}&nbsp;{value.city}
                                         {value.state}&nbsp;{value.pincode}
-                                    </div> */}
+                                    </div>
 
                                 </Typography>
                             </ExpansionPanelSummary>
@@ -119,14 +117,22 @@ class CartCardCheck extends React.Component {
                             expanded={expanded === 'panel3'}
                             onChange={this.handleChange(2)}
                             style={{ boxShadow: "none" }} >
-                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className={`ckcut-main-body ${classes.normalfonts}`}>
+                            <ExpansionPanelSummary expandIcon={<ExpandLessIcon className='arrow-chek' />} className='ckcut-main-body'>
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>3</Avatar><Typography className='text-chck'>Order Summary</Typography>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails >
                                 <Grid container >
                                     <Grid item xs={12} lg={12}>
                                         {/* {JSON.stringify(this.datalist(cartContext))} */}
+                                        <div style={{ float: "right" }}>
+                                            <Button
+                                                onClick={() => this.changePanel(4)} className="summaryOrder-pay-btn">Continue to Pay</Button>
+                                        </div>
                                         <CartCard data={data} />
+                                        <div style={{ float: "right", marginBottom: "5px" }}>
+                                            <Button onClick={() => this.changePanel(4)}
+                                                className="summaryOrder-pay-btn">Continue to Pay</Button>
+                                        </div>
                                     </Grid>
                                     <Grid item xs={12} lg={12} className={classes.cart}>
                                         <ProductList />
@@ -140,7 +146,7 @@ class CartCardCheck extends React.Component {
                             expanded={expanded === 'panel4'}
                             onChange={this.handleChange(3)}
                             style={{ boxShadow: "none" }}  >
-                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className={`ckcut-main-body ${classes.normalfonts}`}>
+                            <ExpansionPanelSummary expandIcon={<ExpandLessIcon className='arrow-chek' />} className='ckcut-main-body'>
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>4</Avatar><Typography className='text-chck'>Payment Options</Typography>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>

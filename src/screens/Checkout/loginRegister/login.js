@@ -1,19 +1,16 @@
 import React from 'react';
 import './loginRegisters.css'
-import {  Grid, Button } from '@material-ui/core';
+import { Grid, Button } from '@material-ui/core';
 import { Input } from '../../../components/InputComponents/TextField/Input'
-
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
-
 import useLogin from './useLogin';
-
 
 const Login = (props) => {
     return <LoginComponent  {...props} />
 }
 
-const LoginComponent = props => {
+const LoginComponent = (props) => {
     const { classes } = props;
     const { values, handlers } = useLogin();
 
@@ -26,7 +23,7 @@ const LoginComponent = props => {
                         margin="normal"
                         variant="outlined"
                         type="email"
-                        name="email"
+                        name="username"
                         value={values.username}
                         // error={this.state.mail ? this.state.mail : "**"}
                         onChange={e => handlers.handleChange('username', e.target.value)}
@@ -55,7 +52,8 @@ const LoginComponent = props => {
                     </div>
                     <div className='login-butn'>
                         <Button className='back-b' onClick={() => props.change()} >Back</Button>
-                        <Button className='apply-b' type="submit">Apply</Button>
+                        <Button className='apply-b' type="submit" onClick={() =>
+                            props.changePanel(2)}>Apply</Button>
                     </div>
 
                 </Grid>

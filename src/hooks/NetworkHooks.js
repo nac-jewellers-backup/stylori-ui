@@ -27,7 +27,7 @@ export const useDummyRequest = (mapper) => {
 }
 
 // HOOK to make network request
-export const useNetworkRequest = (urlSignin: string, body: string | object | null = null, mapper: ({ }) => Promise<{}> = null) => {
+export const useNetworkRequest = (urlSignin: string, body: string | object | null = null, initRequest = true, mapper: ({ }) => Promise<{}> = null) => {
     const { NetworkCtx: { apiUrl } } = React.useContext(NetworkContext);
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState(false);
@@ -38,12 +38,11 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
     // PARSE FOR NETWORK REQUEST
     const method = data ? 'POST' : 'GET';
     let url = `${apiUrl}${urlSignin}`
-    
     const makeFetch = (bodyvar) => {
-       const bodyvariable= typeof body === "string" ? body : JSON.stringify(body)
-        body = JSON.parse(bodyvariable).length === 0? bodyvariable : JSON.stringify( bodyvar);
-        
-        // const allBody = {...body, ...bodyvar}
+        // console.log('bodyvar',typeof bodyvar)
+        // body = typeof body === "string" ? body : JSON.stringify(body)
+        const bodyvariable = typeof body === "string" ? body : JSON.stringify(body)
+        body = JSON.parse(bodyvariable).length === 0 ? bodyvariable : JSON.stringify(bodyvar);
         setLoading(true);
         fetch(url, {
             method, headers: {
@@ -52,32 +51,12 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
             }, body
         })
             .then(res => {
-                setStatus({ ...status, status: Response.status, statusText: res.message })
+                setStatus({ status: Response.status, statusText: res.message })
                 return res.json();
             })
             .then(resdata => {
                 setData(resdata);
-                console.info('resdataaaa',resdata,body)
-                // localStorage.setItem('response', JSON.stringify(resdata));
-                // var responseId = localStorage.getItem("response") ? localStorage.getItem("response") : {}
-                // var user_id = JSON.parse(responseId).user.id ? JSON.parse(responseId).user.id : {}
-                // var cart = localStorage.getItem("cartDetails") ? localStorage.getItem("cartDetails") : {};
-                // var addtocart = JSON.parse(cart).products ? JSON.parse(cart).products : {}
-                // var values = ({ user_id, addtocart })
-                // let urladdcart = `${apiUrl}${'/addtocart'}`
-                // fetch('http://auth-dev.ap-south-1.elasticbeanstalk.com/addtocart', {
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type': 'application/json'
-                //     },
-                //     body: JSON.stringify(values)
-                // }).then(values => {
-                //     localStorage.setItem('addtocart', JSON.stringify(values));
-                //     console.log('resdata', values)
-                // }).catch((error) => {
-                //     console.error(error);
-                //     console.log('resdata', error)
-                // });
+                setLoading(false);
             })
             .catch(err => {
                 setError(true);
@@ -85,9 +64,8 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
                 console.log(Response.status)
             });
     }
-    console.info('object', data)
     React.useEffect(() => {
-        makeFetch();
+        if (initRequest) makeFetch();
     }, []);
     return { loading, error, status, data, mapped, makeFetch }
 }

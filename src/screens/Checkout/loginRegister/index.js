@@ -54,7 +54,7 @@ class LoginRegisterIndex extends React.Component {
                     </>
                 </div>
                 <div style={{ display: this.state.Login == true ? "block" : "none" }}>
-                    <Login change={() => {
+                    <Login changePanel={this.props.changePanel} change={() => {
                         this.setState({
                             show: true,
                             Login: false
@@ -62,7 +62,7 @@ class LoginRegisterIndex extends React.Component {
                     }} />
                 </div>
                 <div style={{ display: this.state.Register == true ? "block" : "none" }}>
-                    <Register change={() => {
+                    <Register changePanel={this.props.changePanel} change={() => {
                         this.setState({
                             show: true,
                             Register: false

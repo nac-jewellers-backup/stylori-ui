@@ -2,6 +2,7 @@
     width: 98% !important;
     float: right;
     border: none !important;
+    cursor: pointer !important;
 }
 
 .MuiInputBase-input {
@@ -9,7 +10,8 @@
 }
 
 .card-adrs {
-    padding: 20px !important;
+    padding: 0 10px !important;
+    padding-top: 10px !important;
     border: 1px solid #E6E6E6;
     margin-top: 20px;
 }
@@ -41,7 +43,6 @@
 }
 
 .card-foo {
-    padding: 20px;
     border-top: 1px solid #E6E6E6;
     font-size: 14px !important;
     margin-top: 20px;
@@ -49,6 +50,7 @@
 
 .shipping-phonenumber {
     font-size: 15px;
+    line-height: 40px !important;
 }
 
 .add-new-address {
@@ -70,7 +72,21 @@
     left: 10px !important;
     top: 7px !important;
 }
-.wd{
+
+.wd {
     width: 93% !important;
     overflow: auto !important;
+}
+
+.ckcut-main-body {
+    background: #dfdfdfbd !important;
+    margin-bottom: 5px !important;
+}
+
+.arrow-chek {
+    font-size: 22px !important;
+}
+
+.MuiExpansionPanelSummary-content {
+    margin: 7px 0 !important;
 }

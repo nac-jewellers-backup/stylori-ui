@@ -17,6 +17,7 @@ import { NavLink } from 'react-router-dom';
 import { ProductDetailContext } from 'context/ProductDetailContext';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CheckForCod } from 'queries/productdetail';
+import { CartContext } from 'context'
 
 
 
@@ -67,23 +68,12 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
 const Buydetails = (props, state, handleChanges, handleCodChange) => {
     const { data } = props;
     const { classes } = props;
-    const handleLocalStorage = () => {
-        var skuId = data[0].skuId;
-        var products = [];
-        var cartId = "";
-        var userId = "";
-        var obj = { sku_id: '', qty: '', price: '' }
-        obj['sku_id'] = skuId;
-        obj['qty'] = 1
-        obj['price'] = data[0].offerPrice[0]
-        products.push(obj)
-        var skuObj = { "cart_id": cartId, "user_id": userId, "products": products }
-        // var skuIdLocalStorage = `products: ${JSON.parse(products)}`
-        localStorage.setItem('cartDetails', JSON.stringify(skuObj));
-        //    var arr = localStorage.getItem('skuId', skuId);
-        //     localStorage.setItem('skuId', skuId);
-        window.location.href = "/cart"
-    }
+    const handleLocalStorage = () => (
+        props.setCartFilters({
+            skuId: data[0].skuId, qty: 1, price: data[0].offerPrice
+        }),
+        window.location.pathname = '/cart'
+    )
     return (
         <div>
             {data[0].ProductContactNum.map(val =>
@@ -130,8 +120,9 @@ const Buydetails = (props, state, handleChanges, handleCodChange) => {
 const PriceBuynow = (props) => {
     const { loading, error, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     const { ProductDetailCtx, setFilters } = React.useContext(ProductDetailContext);
+    const { setCartFilters } = React.useContext(CartContext);
 
-    return <Component setFilters={setFilters} filters={ProductDetailCtx.filters} makeRequestCod={makeRequestCod} CodData={CodData} {...props} />
+    return <Component setCartFilters={setCartFilters} setFilters={setFilters} filters={ProductDetailCtx.filters} makeRequestCod={makeRequestCod} CodData={CodData} {...props} />
 }
 
 
@@ -151,11 +142,9 @@ class Component extends React.Component {
 
     componentDidUpdate(prevProps) {
         // Typical usage (don't forget to compare props):
-
         var variab = {}
         variab["pincode"] = this.state.values
         if (prevProps.CodData !== this.props.CodData) {
-
             // Here i have handeled the "check for COD" condition because the response is not setting to the props instantly
             if (this.props.CodData.data.allPincodeMasters.nodes.length > 0) {
                 if (this.props.data[0].price > this.props.CodData.data.allPincodeMasters.nodes[0].maxCartvalue) {
@@ -168,8 +157,6 @@ class Component extends React.Component {
             else {
                 this.setState({ pincodeNotFound: true })
             }
-
-
         }
     }
 
@@ -183,11 +170,11 @@ class Component extends React.Component {
     handleChanges = (e) => {
         this.setState({ values: e.target.value, CheckForCodtitle: 'Check for COD', pincodeNotFound: false, isRequired: false })
     }
-    handleCodChange = () => {
+    handleCodChange = () => { 
         if (this.state.values) {
             this.setState({ isRequired: false })
             var variab = {}
-            variab["pincode"] = this.state.values
+            variab["pincode"] = this.state.values   
             if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
                 this.props.makeRequestCod(variab);
 

@@ -67,7 +67,7 @@ class Sublistcarousel extends React.Component {
         </Hidden>
         <Hidden mdUp>
           <Container>
-            <ExpansionPanel expanded={expanded === 'panel'} onChange={this.handle('panel')}>
+            <ExpansionPanel style={{boxShadow:"0px 0px 2px 0px #ed1165"}} expanded={expanded === 'panel'} onChange={this.handle('panel')}>
               <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                 <i class="fa fa-sort-up" ></i></span>}>
                 <div style={{ width: "100%" }} >

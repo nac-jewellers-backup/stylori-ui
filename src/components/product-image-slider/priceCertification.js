@@ -27,7 +27,7 @@ class PriceCertification extends React.Component {
                     {imagecertificat.map(val =>
                         <>
                         
-                        <ExpansionPanel expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
+                        <ExpansionPanel style={{boxShadow:"0px 0px 2px 0px #ed1165"}} expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
                             <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                                 <i class="fa fa-sort-up" ></i></span>} >
                                 <div style={{ width: "100%" }} >

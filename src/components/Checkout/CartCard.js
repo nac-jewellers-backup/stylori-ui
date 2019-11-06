@@ -93,10 +93,10 @@ class Checkoutcard extends React.Component {
                                     <div style={{ marginTop: "15%" }}>
                                         {dataval.dataCard1.map(val =>
                                             <Pricing price={val.price} offerPrice={val.offerPrice} >
-                                                <div className="product-rate">
+                                                {/* <div className="product-rate">
                                                     <span class="offer-price">{val.price}</span><br />
                                                     <span class="price">{val.offerPrice}</span><br />
-                                                </div>
+                                                </div> */}
                                             </Pricing>
                                         )}
                                         <span class={`offer-description ${classes.backgsecondary}`}>25% - OFF</span>

@@ -52,7 +52,7 @@ class Productlist extends React.Component {
     //   };
     render() {
         const { classes } = this.props;
-        let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
+        let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : {}
         const { expanded1, expanded2, expanded3 } = this.state;
         return (
             <Container>
