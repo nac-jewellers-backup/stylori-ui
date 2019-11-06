@@ -22,7 +22,7 @@ class Stylori extends React.Component {
         </Grid>
 
         <Grid item xs={12}>
-          <ProductDescription title="Jewellery" data={data} />
+          <ProductDescription title="Jewellery" data={dataFilter} />
           <Filter datas={data} data={dataFilter}/>
         </Grid>
         <Grid item xs={12} >
@@ -45,9 +45,8 @@ const Components = props => {
 
   var arrFilters = Array(mappedFilters)
   let mappedFiltersList = filterData(arrFilters)
-
+debugger
   // let mappedFilter = filterData(mappedFilters)
-
   if (!loading && !error) {
     if (Object.keys(data).length !== 0) {
       mapped = productList(data, CDN_URL);

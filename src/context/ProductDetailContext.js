@@ -37,7 +37,6 @@ export const TabsProvider = (props) => {
 
 
 
-    console.log('SkuId......', filters)
 
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTDETAILS, () => { }, {});
     useEffect(() => {
@@ -51,7 +50,6 @@ export const TabsProvider = (props) => {
                 variables = { conditionfilter: { 'generatedSku': filters["skuId"] } }
             }
             else {
-console.log(window.location.href)
 var urls = window.location.href
 var urlssplit = urls.split('/');
 var urlReplace = urlssplit[urlssplit.length-1].replace(/-/g, ' ')
@@ -61,14 +59,13 @@ variables = { productnamefilter: { productListByProductId:{'productName':{equalT
 
         }
        
-        console.log('filtersDefaultvariants', filters.skuId)
         // var metalColors =filters.defaultVariants.metalColor.length>0 ? {productColor:filters.defaultVariants.metalColor  }: null;
         // variables = { conditionfilter: { 'generatedSku': filters["skuId"] }, conditionImage:{...metalColors} }
         
  
     }, [])
     useEffect(() => {
-        console.log('dataaaaaaaaa', data, Object.entries(data).length !== 0 && data.constructor === Object && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0)
+    
         if (Object.entries(data).length !== 0 && data.constructor === Object) {
             if (data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
                 handleProductDetatiContext()
@@ -80,7 +77,6 @@ variables = { productnamefilter: { productListByProductId:{'productName':{equalT
 
     }, [filters])
     const updateProductList = () => {
-        console.info('filtersssss',filters)
        if(Object.entries(variables).length !== 0 && variables.constructor === Object){
         makeRequest(variables);
        }
@@ -90,7 +86,6 @@ variables = { productnamefilter: { productListByProductId:{'productName':{equalT
        
         
     }
-    console.log('datadata', data)
     const handleProductDetatiContext = () => {
         // filters['defaultVariants'] = {
         //     ...data.allTransSkuLists.nodes[0]
@@ -140,7 +135,6 @@ variables = { productnamefilter: { productListByProductId:{'productName':{equalT
         filters, loading, error, data
     }
 
-    console.info('filtersssassss',filters)
     return (
         <ProductDetailContext.Provider value={{ ProductDetailCtx, setFilters }} >
             {props.children}

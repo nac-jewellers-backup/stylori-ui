@@ -27,15 +27,14 @@ import routes from "router/routes";
 //     }
 // }
 
-
 export const RouterApp = () => {
 
     return (
         <Switch>
-            <Redirect key="stylori-redirect" from="/" exact to={routes.stylori} />
+            {/* <Redirect key="stylori-redirect" from="/" exact to={routes.stylori} /> */}
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
-            <Route key="stylori" component={Stylori}  path={routes.stylori} />
-            <Route  component={PricingPage}  path={`/:productCategory/:productType/:material/:productName`} />
+            <Route exact key="stylori" component={Stylori}  path={"/:listingpage"} />
+            <Route  exact component={PricingPage}  path={`/:productCategory/:productType/:material/:productName`} />
             {/* {https://www.stylori.com/jewellery/earrings/diamond/Lavender-Love?skuid=54269} */}
             <Route key="Cart" component={Cart} exact path={routes.Cart} />
             <Route key="Register" component={Register} exact path={routes.Register} />
