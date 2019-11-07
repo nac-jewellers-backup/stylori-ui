@@ -34,8 +34,8 @@ const Addressforms = () => {
             contactno: "",
             addresstype: 2
         },
-        // addrs: localStorage.getItem("valuessetdata") ? false : true,
-        addrs: true,
+        addrs: localStorage.getItem("valuessetdata") ? false : true,
+        // addrs: true,
         checkValue: true,
         checkValue1: true,
     });
@@ -46,6 +46,7 @@ const Addressforms = () => {
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addaddress', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     useEffect(() => {
+        debugger
         const a = CodData.data ? CodData.data : ""
         if (a) {
             var res = CodData.data.allPincodeMasters.nodes[0].state
