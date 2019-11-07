@@ -42,7 +42,8 @@ const Provider = (props) => {
     }, [crtdata])
     useEffect(() => {
         if (userIds.length > 0) {
-            if (JSON.stringify(cartdetails).length > 0) {
+            if (cartdetails && JSON.stringify(cartdetails).length > 0) {
+
                 // const user_id = userIds
                 // makeFetch({--login---})
             }
