@@ -16,7 +16,10 @@ const LoginComponent = (props) => {
 
     return (
         <div className='pt-sm'>
-            <form action="javascript:void(0)" onSubmit={() => handlers.doLogin()}>
+            <form action="javascript:void(0)" onSubmit={() => {
+                props.changePanel(2)
+                handlers.doLogin()
+            }}>
                 <Grid container item xs={12} lg={6} >
                     <h5 className={`title ${classes.normalfonts}`}>  I already have an account </h5>
                     <Input
@@ -40,20 +43,19 @@ const LoginComponent = (props) => {
                         value={values.password}
                         // error={this.state.Password ? this.state.Password : "**"}
                         helperText="Password is Required"
-                        placeholder="Your password"
+                        placeholder="enter your password"
                         onChange={e => handlers.handleChange('password', e.target.value)}
                     />
                     <div className='log-pas'>
-                        <span className={`pas-fr ${classes.normalfonts}`}>Forgot Password ?</span>
-                        <div className={`pas-fb ${classes.normalfonts}`}>
-                            <span >Sign me in using</span>
+                        <span className={`pas-fr ${classes.normalfonts}`} style={{ cursor: "pointer" }}>Forgot Password ?</span>
+                        <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>
+                            <span>Sign me in using</span>
                             <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img>
                         </div >
                     </div>
                     <div className='login-butn'>
                         <Button className='back-b' onClick={() => props.change()} >Back</Button>
-                        <Button className='apply-b' type="submit" onClick={() =>
-                            props.changePanel(2)}>Apply</Button>
+                        <Button className='apply-b' type="submit">Apply</Button>
                     </div>
 
                 </Grid>

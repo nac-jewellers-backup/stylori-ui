@@ -21,6 +21,7 @@ const ContinuesComponent = (props) => {
                 value={values.email}
                 // error={this.state.mail ? this.state.mail : "**"}
                 required
+                placeholder="please enetr your mail Id"
                 helperText="Please enter your mail Id"
                 onChange={e => handlers.setMail(e.target.value)}
             />
@@ -40,20 +41,22 @@ const ContinuesComponent = (props) => {
                 isNumber
                 maxLength={6}
                 minLength={6}
-                placeholder="Enetr your otp"
+                helperText="Please enter your otp"
+                placeholder="please enetr your otp"
                 onChange={e => handlers.setOtp(e.target.value)}
                 onKeyPress={e => {
                     if (!(e.which >= 48 && e.which <= 57)) e.preventDefault()
                 }}
-                helperText="Please enter your otp"
                 required
             />
         </>
     )
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
         if (enterotp) {
             handlers.otpFetch(values);
+            // props.submit(e)
+            props.changePanel(2)
         } else {
             handlers.mailFetch({ email: values.email });
         }
@@ -62,15 +65,14 @@ const ContinuesComponent = (props) => {
     return (
         <Container>
             <div className='pt-sm'>
-                <form action="javascript:void(0)" onSubmit={handleSubmit}>
+                <form action="javascript:void(0)" onSubmit={(e)=>handleSubmit(e)}>
                     <Grid container spacing={12}>
                         <Grid item lg={1} />
                         <Grid item xs={12} lg={6}>
                             {enterotp ? <OtpForm /> : <MailForm />}
                             <div className='login-butn'>
                                 <Button className='back-b' onClick={() => props.change()} >Back</Button>
-                                {enterotp ? <Button className='apply-b'type='submit' onClick={()=>
-                                props.changePanel(2)} >Apply</Button>
+                                {enterotp ? <Button className='apply-b'type='submit'>Apply</Button>
                                     : <Button className='apply-b' type='submit'>Apply</Button>}
                             </div>
                         </Grid>

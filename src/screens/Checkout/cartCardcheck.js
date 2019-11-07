@@ -98,7 +98,10 @@ class CartCardCheck extends React.Component {
                                 <Typography className='text-chck'>Address Detail
 
                                  <div className="ch-d-vl">
-                                        {value.firstname}{value.lastname}&nbsp;{value.addressline1}&nbsp;{value.city}
+                                        {value.firstname}
+                                        &nbsp;{value.lastname}
+                                        &nbsp;{value.addressline1}
+                                        &nbsp;{value.city}
                                         {value.state}&nbsp;{value.pincode}
                                     </div>
 

@@ -2,22 +2,18 @@ import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
 
 
-const useRegister = () => {
+const usePromo = () => {
     const [values, setValues] = React.useState({
-        email: null,
-        password: null,
-        confirmpassword: null,
-        roles: ["user"]
+        promocode: null,
     });
-    const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
+    // const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     const { data, error, loading, makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
-    useEffect(() => {
-        // if(data.message=="Email ID Already Exist")
-        var v = data.email ? data.email : ""
-        if (v.length > 0) {
-            localStorage.setItem("email", data.email)
-        }
-    }, [data])
+    // useEffect(() => {
+    //     var v = data.email ? data.email : ""
+    //     if (v.length > 0) {
+    //         localStorage.setItem("email", data.email)
+    //     }
+    // }, [data])
     const handleChange = (type, value) => {
         setValues({
             ...values,
@@ -31,7 +27,7 @@ const useRegister = () => {
 
     const handlers = { handleSubmit, handleChange };
 
-    return { values, handlers ,data}
+    return { values, handlers }
 }
 
-export default useRegister;
+export default usePromo;

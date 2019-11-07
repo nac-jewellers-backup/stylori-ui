@@ -9,29 +9,29 @@ const Addressforms = () => {
     const [address, setAddress] = React.useState({})
     const [values, setValues] = React.useState({
         addressOne: {
-            firstname: '',
-            lastname: '',
-            country: '',
-            pincode: '',
-            addressline1: '',
-            addressline2: '',
-            state: '',
-            city: '',
-            contactno: '',
-            country_code: '',
+            firstname: "",
+            lastname: "",
+            addressline1: "",
+            addressline2: "",
+            pincode: "",
+            city: "",
+            state: "",
+            country: "",
+            country_code: "",
+            contactno: "",
             addresstype: 1
         },
         addressTwo: {
-            firstname: '',
-            lastname: '',
-            country: '',
-            pincode: '',
-            addressline1: '',
-            addressline2: '',
-            state: '',
-            city: '',
-            contactno: '',
-            country_code: '',
+            firstname: "",
+            lastname: "",
+            addressline1: "",
+            addressline2: "",
+            pincode: "",
+            city: "",
+            state: "",
+            country: "",
+            country_code: "",
+            contactno: "",
             addresstype: 2
         },
         addrs: localStorage.getItem("valuessetdata") ? false : true,
@@ -41,20 +41,24 @@ const Addressforms = () => {
     });
     var addObj = {};
     console.log('debugger', addObj)
-    addObj["user_id"] = user_id
-    addObj["cart_id"] = cart_id
+    addObj[JSON.stringify("user_id")] = user_id
+    addObj[JSON.stringify("cart_id")] = cart_id
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addaddress', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     useEffect(() => {
+        debugger
         const a = CodData.data ? CodData.data : ""
         if (a) {
             var res = CodData.data.allPincodeMasters.nodes[0].state
             var res1 = CodData.data.allPincodeMasters.nodes[0].country
-            if (values.checkValue == true)
-                values['addressOne']['state'] = res
+            var res2 = CodData.data.allPincodeMasters.nodes[0].district
+            values['addressOne']['state'] = res
             values['addressOne']['country'] = res1
+            values['addressOne']['city'] = res2
+
             values['addressTwo']['state'] = res
             values['addressTwo']['country'] = res1
+            values['addressTwo']['city'] = res2
             setValues({ ...values, values })
         }
     }, [CodData])
@@ -71,7 +75,6 @@ const Addressforms = () => {
                 }
             }
         }
-
         setValues({ ...values, values })
     }
 
@@ -81,10 +84,10 @@ const Addressforms = () => {
         var a2 = values.addressTwo
         if (values.checkValue == true) {
             // setAddress(a1)
-            addObj['address'] = [a1];
+            addObj[JSON.stringify('address')] = [a1];
         } if (values.checkValue == false) {
             // setAddress({ a1, a2 })
-            addObj['address'] = [a1, a2];
+            addObj[JSON.stringify('address')] = [a1, a2];
         }
         makeFetch(addObj);
     }

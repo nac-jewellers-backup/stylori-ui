@@ -1,22 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 
 const useLogin = () => {
     const [values, setValues] = React.useState({
-        password:null,
-        email:"nac@dinesh.com",
-        roles:["user"]
+        password: null,
+        email: "nac@dinesh.com",
+        roles: ["user"]
     });
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/signin', {}, []);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     // React.useEffect(() => {
     //     // localStorage.setItem('l',JSON.stringify(data))
-    //     const a = data ? data : ""
+    //     const a = data? data: ""
     //     if (a) {
-    //         makeRequestCod(data);
+    //         makeRequestCod(data.userprofile.id);
     //     }
     // }, [data])
     const handleChange = (type, value) => {

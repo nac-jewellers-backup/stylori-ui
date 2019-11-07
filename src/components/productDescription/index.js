@@ -35,13 +35,11 @@ class ProductDescription extends Component {
     // let path = window.location.pathname.split('/').pop();
     var loc = this.props.location.pathname;
     var path = loc.split('/');
-    // const descriptionData = this.props.data;
-debugger
-    const settings = this.props.data[0].dataCarousel;
-    const fadeImages = this.props.data[0].carouselImage;
-    const title = this.props.title;
-    const datadescription = this.props.data[0].seoText;
-    debugger
+    const descriptionData = this.props.data;
+    const settings = descriptionData[path[1]].carouselSettings;
+    const fadeImages = descriptionData[path[1]].carouselImage;
+    const title = descriptionData[path[1]].title;
+    const datadescription = descriptionData[path[1]].description;
     return (
       <>
         <Container >
@@ -147,5 +145,9 @@ debugger
   }
 
 }
-export default withRouter(withStyles(styles)(ProductDescription))
+export default withRouter(withStyles(styles)(props => {
+  const { mapped } = useDummyRequest(descriptionData);
+  if (Object.keys(mapped).length === 0) return ''
 
+  return <ProductDescription {...props} data={mapped} />
+}));

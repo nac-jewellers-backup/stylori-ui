@@ -39,6 +39,7 @@ const hoverImage = (placeImage) => placeImage.length === 0 ?'product/SR0662/HOVE
 
             }
         } catch (error) {
+            console.info('error', error);
         }
 
         return _d;
