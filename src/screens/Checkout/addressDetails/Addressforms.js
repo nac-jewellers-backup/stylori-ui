@@ -41,12 +41,11 @@ const Addressforms = () => {
     });
     var addObj = {};
     console.log('debugger', addObj)
-    addObj[JSON.stringify("user_id")] = user_id
-    addObj[JSON.stringify("cart_id")] = cart_id
+    addObj["user_id"] = user_id
+    addObj["cart_id"] = cart_id
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addaddress', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     useEffect(() => {
-        debugger
         const a = CodData.data ? CodData.data : ""
         if (a) {
             var res = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].state : ''
@@ -66,7 +65,7 @@ const Addressforms = () => {
         values[type][field] = value;
         if (field === 'pincode') {
             values[type]['pincode'] = value;
-            const val = values.addressOne.pincode
+            const val = values.addressOne.pincode || values.addressTwo.pincode
             var variab = {}
             variab["pincode"] = val
             if (val.length > 5) {
@@ -84,10 +83,10 @@ const Addressforms = () => {
         var a2 = values.addressTwo
         if (values.checkValue == true) {
             // setAddress(a1)
-            addObj[JSON.stringify('address')] = [a1];
+            addObj['address'] = [a1];
         } if (values.checkValue == false) {
             // setAddress({ a1, a2 })
-            addObj[JSON.stringify('address')] = [a1, a2];
+            addObj['address'] = [a1, a2];
         }
         makeFetch(addObj);
     }
