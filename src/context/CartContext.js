@@ -34,7 +34,6 @@ const Provider = (props) => {
     const guestlogId = cartFilters.user_id ? cartFilters.user_id : ''
     // const prices = cartFilters.price ? cartFilters.price : ''
     useEffect(() => {
-        debugger
         if (JSON.stringify(crtdata).length > 10) {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))
         }

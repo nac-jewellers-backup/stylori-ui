@@ -25,6 +25,8 @@ class Addressdetails extends React.Component {
             })
         }} type='checkbox' checked={values.checkValue1} />
         const { classes } = props;
+        const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
+        const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>
@@ -39,7 +41,9 @@ class Addressdetails extends React.Component {
                             <h4 class="card-title">
                                 <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                 {/* {name1.adrs_firstname} */}
-                                <span class="address-name">{value.addressOne.firstname}{value.addressOne.lastname}
+                                <span class="address-name">
+                                    {aa ? aa + '.' : ""}
+                                    {value.addressOne.firstname}&nbsp;{value.addressOne.lastname}
                                 </span>
                                 <i style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                     class="fa fa-pencil-square-o"></i>
@@ -71,8 +75,9 @@ class Addressdetails extends React.Component {
                                     <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                     {/* {name1.adrs_firstname} */}
                                     <span class="address-name">
+                                        {aa1 ? aa1 + '.' : ""}
                                         {value.addressTwo.firstname ? value.addressTwo.firstname : value.addressOne.firstname}
-                                        {value.addressTwo.lastname ? value.addressTwo.lastname : value.addressOne.lastname}
+                                        &nbsp;        {value.addressTwo.lastname ? value.addressTwo.lastname : value.addressOne.lastname}
                                     </span>
                                     <i style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                         class="fa fa-pencil-square-o"></i>

@@ -23,11 +23,17 @@ export default function SimpleSelect(props) {
     const [values, setValues] = React.useState({
         age: null,
         helperText: false
-    }); 
+    });
     React.useEffect(() => {
         // console.info('EVENT', values.age, Boolean((values.age != null && values.age !== "")));
     }, [values.age])
     function handleChange(event) {
+        if (props.val == "1") {
+            localStorage.setItem('m', event.target.value)
+        }
+        if (props.val == "2") {
+            localStorage.setItem('m1', event.target.value)
+        }
         setValues({ [event.target.name]: event.target.value, helperText: !Boolean((event.target.value != null && event.target.value !== "")) })
     }
     return (

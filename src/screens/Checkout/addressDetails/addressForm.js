@@ -162,7 +162,7 @@ const AddressComponent = (props) => {
                                         <h5 className='title'> Billing Address</h5>
                                         <Grid container spacing={12}>
                                             <Grid item xs={4} lg={4}>
-                                                <SimpleSelect name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
+                                                <SimpleSelect val={"2"} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                             </Grid>
                                             <Grid item xs={4} lg={4}>
                                                 <Input
