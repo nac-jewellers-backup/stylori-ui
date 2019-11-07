@@ -29,8 +29,8 @@ import cart from '../../mappers/cart';
 
 class CartCardCheck extends React.Component {
     state = {
-        expanded: 'panel' + (localStorage.getItem("panel") ? localStorage.getItem("panel") : 1),
-        // expanded: 'panel2',
+        // expanded: 'panel' + (localStorage.getItem("panel") ? localStorage.getItem("panel") : 1),
+        expanded: 'panel2',
         // expandedlimit: localStorage.getItem("panel") ? localStorage.getItem("panel") : 1,
         // expandedlimit: 1,
         mailId: null
@@ -98,7 +98,10 @@ class CartCardCheck extends React.Component {
                                 <Typography className='text-chck'>Address Detail
 
                                  <div className="ch-d-vl">
-                                        {value.firstname}{value.lastname}&nbsp;{value.addressline1}&nbsp;{value.city}
+                                        {value.firstname}
+                                        &nbsp;{value.lastname}
+                                        &nbsp;{value.addressline1}
+                                        &nbsp;{value.city}
                                         {value.state}&nbsp;{value.pincode}
                                     </div>
 

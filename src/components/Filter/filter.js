@@ -17,15 +17,13 @@ import { useDummyRequest } from 'hooks/index';
 import { filterParams } from 'mappers/index';
 import styles from './styles';
 import { FilterOptionsContext } from 'context'
-import { useGraphql } from 'hooks/GraphqlHook';
-import { seoUrlResult } from 'queries/productListing';
 
 
 const PersistentDrawerLeft = (props) => {
   const { setFilters } = React.useContext(FilterOptionsContext);
   const loc = window.location.search
-  const { loading: seoloading, error: seoError, data: seoData, makeRequest: makeRequestSeo } = useGraphql(seoUrlResult, () => { }, {});
-  return <Component setFilters={setFilters} seoData={seoData} makeRequestSeo={makeRequestSeo} {...props} />
+  
+  return <Component setFilters={setFilters} {...props} />
 }
 
 
@@ -57,7 +55,6 @@ class Component extends React.Component {
     };
 
   }
-  
   componentDidMount() {
     var numberOne = 1232224.789;
     var numberTwo = 1833362.222;
@@ -83,35 +80,13 @@ class Component extends React.Component {
       this.handleChange(()=>{} ,true, ()=>{}, mapUrlParamsSplitEqual)
       
     }
-  //   else if(window.location.pathname.split('/')[2] !== ''){
-  //     console.log('hey man asaSasaS... :)', window.location.pathname)
-  //     var a;
-  //     const filterdata = window.location.pathname.split('/')[2]
-  //     const splitNtxData = filterdata && filterdata.split('-')
-  //      a = filterdata && splitNtxData.map(val => {
-  //         const valPlusSplit = val.replace('+', ' ')
-  //         return valPlusSplit
-  //     })
-      
-    
-  //     const conditionfiltersSeo = { seofilter: { seoUrl: { in: a } } }
-  //      this.props.makeRequestSeo(conditionfiltersSeo)
-  //     var paramsfilter = (Object.entries(this.props.seoData).length !== 0 && this.props.seoData.constructor === Object && this.props.seoData.data.allSeoUrlPriorities) && this.props.seoData.data.allSeoUrlPriorities.nodes.map(val => {
-  //         var obj = {}
-
-  //         obj[val.attributeName.replace(/\s/g, '')] = val.attributeValue
-  //         return obj
-
-  //     })
-     
-  //     this.handleChange(()=>{} ,true, ()=>{}, paramsfilter)
-  // }
     // This is used for checking the check boxes if we copy and pasted the url to new tab or new window 
     // *****Ends*****
 
    
   }
   handleChange(value, BoolName, e, TargetName) {
+    
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     let arr = [];
@@ -130,6 +105,7 @@ class Component extends React.Component {
       }
   })
 
+console.log('queries',queries)
 // queries.map(val =>{
   // chipData.push({ key:'1', label: 'o' });
 // })
@@ -156,6 +132,7 @@ class Component extends React.Component {
         {
           var nameFilter = val[0]
           var keyNameFilter = val[1]
+          console.log('val',TargetName)
           let checkedvalue = {};
           checkedvalue[keyNameFilter] = true
           checked[nameFilter] = checkedvalue
@@ -165,6 +142,7 @@ class Component extends React.Component {
         }
         )
 
+      console.log('val',TargetName)
         paramsMapUrlSetState()
     }
 
@@ -256,6 +234,7 @@ class Component extends React.Component {
   }
 
   render() {
+    console.log('urlSplitparamsEqual',this.state.checked)
 
     const { classes, data } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];

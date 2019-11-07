@@ -48,29 +48,9 @@ export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter
   }
 }
 `
-export const seoUrlResult = `query CheckForSeo($seofilter: SeoUrlPriorityFilter ) {
-  allSeoUrlPriorities( filter: $seofilter) {
-    nodes {
-      attributeName
-      attributeValue
-      
-    }
-  }
-}
-`
-
-
 export const filterProductMatrix = (type, value) => {
   let fc = { table: "", type: "" }
   switch (type) {
-    
-    case "Category": {
-      fc = {
-        table: "",
-        type: "productCategory"
-      }
-      break;
-    }
     case "Collection": {
       fc = {
         table: "productCollectionsByProductId",

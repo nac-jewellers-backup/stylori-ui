@@ -10,7 +10,6 @@ export default function (data) {
     }
     const _format = mapperdata.map(k => {
         const get = (data) => data ? data : [] 
-        const getstring = (data) => data ? data : '' 
         let _d;
         try {
             _d = {
@@ -75,19 +74,6 @@ export default function (data) {
                     "Ready To Ship",
                     "Best Seller"
                 ],
-                seoText:getstring(data[0].seo_text),
-                 dataCarousel : {
-                    dots: false,
-                    infinite: true,
-                    autoplay: true,
-                    speed: 1000,
-                    fade: true,
-                    arrows: false
-                  },
-                  carouselImage: ['https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
-                  'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
-                  'https://assets-cdn.stylori.com/images/megamenu/ear-jacket.jpg'],
-                 
 
             }
         } catch (error) {

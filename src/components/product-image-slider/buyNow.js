@@ -27,6 +27,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
     const { classes } = props;
     // const [] = React.useState()
 
+    console.info('object2', props.filters)
     return (
         <div style={{
             marginTop: "12px", paddingRight: "20px",

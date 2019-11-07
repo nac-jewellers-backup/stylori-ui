@@ -88,6 +88,7 @@ export const CheckForCod = `query CheckForCod($pincode:String) {
       pincode
       state
       country
+      district
      }
   }
 }

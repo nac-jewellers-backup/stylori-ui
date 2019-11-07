@@ -34,7 +34,8 @@ const Provider = (props) => {
     const guestlogId = cartFilters.user_id ? cartFilters.user_id : ''
     // const prices = cartFilters.price ? cartFilters.price : ''
     useEffect(() => {
-        if (crtdata.length > 0) {
+        debugger
+        if (JSON.stringify(crtdata).length > 10) {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))
         }
         // localStorage.setItem('cart_id', JSON.stringify(crtdata))
@@ -49,7 +50,6 @@ const Provider = (props) => {
         if (guestlogId.length > 0) {
             localStorage.setItem("user_id", cartFilters.user_id)
             if (JSON.stringify(cartdetails).length > 0) {
-                debugger
                 var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
                 const user_id = cartFilters.user_id
                 var addcart = ({ products, user_id })
@@ -73,7 +73,7 @@ const Provider = (props) => {
                 localStorage.setItem('cartDetails', JSON.stringify(skuObj));
             }
         }
-    }, [user_id ,price])
+    }, [user_id, price])
 
     var skus;
     // const pathQueries = () => {

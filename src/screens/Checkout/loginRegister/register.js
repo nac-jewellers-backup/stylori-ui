@@ -10,10 +10,14 @@ const Register = (props) => {
 }
 
 const RegisterComponent = (props) => {
-    const { values, handlers } = useRegister();
+    debugger
+    const { values, handlers, data } = useRegister();
     return (
         <div className='pt-sm'>
-            <form action="javascript:void(0)" onSubmit={() => handlers.handleSubmit()}>
+            <form action="javascript:void(0)" onSubmit={() => {
+                props.changePanel(2)
+                handlers.handleSubmit()
+            }}>
                 <Grid container spacing={12}>
                     <Grid item lg={1} />
                     <Grid item xs={12} lg={6}>
@@ -24,9 +28,11 @@ const RegisterComponent = (props) => {
                             type="email"
                             name="email"
                             value={values.email}
-                            // error={this.state.mail ? this.state.mail : "**"}
-                            placeholder="Your Mail ID"
+                            error={data.message ? true : false}
+                            helperText="Mail is Required"
+                            placeholder="enter your email Id"
                             onChange={e => handlers.handleChange('email', e.target.value)}
+                            required
                         />
                         <Input
                             margin="normal"
@@ -35,8 +41,10 @@ const RegisterComponent = (props) => {
                             name="password"
                             value={values.password}
                             // error={this.state.password ? this.state.password : "**"}
-                            placeholder="Your password"
+                            helperText="password is Required"
+                            placeholder="enter your password"
                             onChange={e => handlers.handleChange('password', e.target.value)}
+                            required
                         />
                         <Input
                             margin="normal"
@@ -45,8 +53,10 @@ const RegisterComponent = (props) => {
                             name="confirmpassword"
                             value={values.confirmpassword}
                             // error={this.state.confirmpassword ? this.state.confpassword : "**"}
-                            placeholder="Confirm password"
+                            helperText="Confirm password is Required"
+                            placeholder="enter your Confirm password"
                             onChange={e => handlers.handleChange('confirmpassword', e.target.value)}
+                            required
                         />
                         {/* <Grid container spacing={12}>
                                 <Grid item lg={4} xs={4}>
@@ -82,7 +92,7 @@ const RegisterComponent = (props) => {
                         <div className='login-butn'>
                             <Button className='back-b' onClick={() => props.change()} >Back</Button>
                             <Button className='apply-b' type="submit"
-                                onClick={() => props.changePanel(2)}>Apply</Button>
+                            >Apply</Button>
                         </div>
                     </Grid>
                 </Grid>
