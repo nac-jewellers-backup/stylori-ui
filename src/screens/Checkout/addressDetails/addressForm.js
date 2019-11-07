@@ -37,7 +37,7 @@ const AddressComponent = (props) => {
                                     {values.checkValue && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
                                     <Grid container spacing={12}>
                                         <Grid item xs={4} lg={4}>
-                                            <SimpleSelect val={'1'} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
+                                            <SimpleSelect val={'1'}  name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                         </Grid>
                                         <Grid item xs={4} lg={4}> 
                                             <Input

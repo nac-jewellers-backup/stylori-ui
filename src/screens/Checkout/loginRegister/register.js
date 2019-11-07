@@ -28,7 +28,7 @@ const RegisterComponent = (props) => {
                             type="email"
                             name="email"
                             value={values.email}
-                            error={data.message ? true : false}
+                            // error={data.message ? true : false}
                             helperText="Mail is Required"
                             placeholder="enter your email Id"
                             onChange={e => handlers.handleChange('email', e.target.value)}
