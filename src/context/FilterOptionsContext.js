@@ -45,15 +45,15 @@ const Provider = (props) => {
     const [ErrorSeoQuery, setErrorSeoQuery] = React.useState(false)
     const [DataSeoQuery, setDataSeoQuery] = React.useState([])
     const [paramsAo, setParamsAo] = React.useState([])
-    useEffect(() => { setFilterLogic({ filterLogic: (d, t) => t }) }, [filters])
+    useEffect(() => { setFilterLogic({ filterLogic: (d, t) => t }) }, [filters,sort])
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => [...d, ...t] }) }, [offset])
     const { NetworkCtx: { graphqlUrl: uri } } = React.useContext(NetworkContext);
     const client = createApolloFetch({ uri });
 
-    useEffect(() => {
-        console.log('sort', sort)
-        if (sort) window.location.search = `sort=${sort.values}`
-    }, [sort])
+    // useEffect(() => {
+    //     console.log('sort', sort)
+    //     if (sort) window.location.search = `sort=${sort.values}`
+    // }, [sort])
 
     useEffect(() => {
         if (window.location.search) {
@@ -111,10 +111,10 @@ const Provider = (props) => {
             })
             const query = encodeURI(queries.join("&"));
 
-            props.history.push({
-                pathname: ntxdata.seo_url,
-                search: query,
-            })
+            // props.history.push({
+            //     pathname: ntxdata.seo_url,
+            //     search: query,
+            // })
         }
     }
 
@@ -161,18 +161,9 @@ const Provider = (props) => {
     const seoUrlFetch = () => {
 
         const conditionfiltersSeo = { seofilter: { seoUrl: { in: paramObjects(mappedFilters.seo_url) } } }
-        // client({ query:seoUrlResult, variables: {...conditionfiltersSeo} }).then(resdata => {
-        //     setLoadingSeoQurey(false);
-        //     setErrorSeoQuery(false);
-        //     setDataSeoQuery(resdata);
-        // }).catch(err => {
-        //     setLoadingSeoQurey(false);
-        //     setErrorSeoQuery(true);
-        //     setDataSeoQuery([]);
-        // })
         makeRequestSeo(conditionfiltersSeo)
         console.log('paramObjects', paramObjects(mappedFilters.seo_url), DataSeoQuery, conditionfiltersSeo)
-       
+
         console.log('DataSeoQuery', DataSeoQuery)
     }
 
@@ -183,6 +174,7 @@ const Provider = (props) => {
             const conditionImageColor = {}
             var a = filters && filters.length === 0 ? Object.keys(filters.MetalColor) : ''
             // var a = filters.metalColor ? filters.metalColor : null;
+            console.log(a,filters,'filters metal color')
             conditionImageColor["productColor"] = a[0]
             // conditionImageColor["isdefault"]=true
             const variables = { ...conditionFilters, offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
@@ -201,19 +193,6 @@ const Provider = (props) => {
 
 
     }
-
-    // useEffect(() => {
-    //     console.info('objecobjecobject1', ntxdata.seo_url !== "jewellery", DataSeoQuery)
-    //     // Start from here........ 
-    //     //paramObjects(mappedFilters.seo_url) is not updating
-    //     if (ntxdata.seo_url !== 'jewellery') {
-    //         paramObjects(mappedFilters.seo_url)
-    //         console.log(DataSeoQuery, paramObjects(mappedFilters.seo_url).length, 'DataSeoQuery')
-    //         console.log('vanakkamNanba2', window.location.pathname.replace('/', ''), window.location.pathname)
-    //         seoUrlFetch()
-    //     }
-
-    // }, [ntxdata.seo_url])
     useEffect(() => { setMappedFilters(ntxdata) }, [ntxdata]);
 
     useEffect(() => {
@@ -232,31 +211,60 @@ const Provider = (props) => {
         setDataArr(newUpdatedList);
     }, [data]);
 
-    useEffect(()=>{
-if((Object.entries(DataSeoQuery).length !== 0 && DataSeoQuery.constructor === Object)){
-    var paramsfilter = (Object.entries(DataSeoQuery).length !== 0 && DataSeoQuery.constructor === Object && DataSeoQuery.data.allSeoUrlPriorities) && DataSeoQuery.data.allSeoUrlPriorities.nodes.map(val => {
-        var a = {}
+    const updatefiltersSort= () =>{
+        if ((Object.entries(DataSeoQuery).length !== 0 && DataSeoQuery.constructor === Object)) {
+            var paramsfilter = (Object.entries(DataSeoQuery).length !== 0 && DataSeoQuery.constructor === Object && DataSeoQuery.data.allSeoUrlPriorities) && DataSeoQuery.data.allSeoUrlPriorities.nodes.map(val => {
+                var a = {}
 
-        a[val.attributeName.replace(/\s/g, '')] = val.attributeValue
-        return a
+                a[val.attributeName.replace(/\s/g, '')] = val.attributeValue
+                return a
 
-    })
-    console.info('muthaakannasekuramvaadaa', paramsfilter)
-    if((Object.entries(seoData).length !== 0 && DataSeoQuery.constructor === Object) ){
-        const conditionFilters = conditions.generateFilters(paramsfilter.splice(1))
+            })
+            console.info('muthaakannasekuramvaadaa', paramsfilter)
+            if ((Object.entries(seoData).length !== 0 && DataSeoQuery.constructor === Object)) {
+                const conditionFilters = conditions.generateFilters(paramsfilter.splice(1))
 
-        console.info('objectparamsfilterconditionFilters',conditionFilters )
-    const conditionImageColor = {}
-    var a = filters && filters.length === 0 ? Object.keys(filters.MetalColor) : ''
-    // var a = filters.metalColor ? filters.metalColor : null;
-    conditionImageColor["productColor"]=a[0]
-    // conditionImageColor["isdefault"]=true
-    const variables = { ...conditionFilters, offsetvar: offset, firstvar: first,'conditionImage':{...conditionImageColor}  }
-    debugger;
-    makeRequest(variables)
+                console.info('objectparamsfilterconditionFilters', conditionFilters)
+                const conditionImageColor = {}
+                var a = filters && filters.length === 0 ? Object.keys(filters.MetalColor) : ''
+                console.log(a,filters,'filters metal color')
+                var variables ={}
+                // var a = filters.metalColor ? filters.metalColor : null;
+                conditionImageColor["productColor"] = a[0]
+
+                // conditionImageColor["isdefault"]=true
+                if(window.location.search){
+                    const orderbyvarCondition = () =>{
+                            console.info('orderby', 'hey i have came in... orderbyvarCondition', sort)
+                            switch(sort.values)
+                            {
+                                case 'New To Stylori': {
+                                                    return "CREATED_AT_DESC"
+                                                    break;
+                                                }
+                        
+                                                case 'Featured':
+                                                    return "IS_FEATURED_ASC"
+                                                    break;
+                                                default: 
+                            }
+                        
+                    }
+                    variables = { ...conditionFilters, orderbyvar:orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+                }
+                else{
+                    variables = { ...conditionFilters, offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+                }
+                 
+                debugger;
+                makeRequest(variables)
+            }
+        }
     }
-}
-    },[seoData])
+    useEffect(() => {
+        debugger
+        updatefiltersSort()
+    }, [seoData])
     var newObj = {}
     const updateFilters = async (filters) => {
         setFilters(filters);
@@ -264,46 +272,8 @@ if((Object.entries(DataSeoQuery).length !== 0 && DataSeoQuery.constructor === Ob
         debugger
         var len;
         let bodyvar;
-        //  bodyvar = paramObjects();
-        if (window.location.search) {
-            try {
-                Object.keys(filters).map(fk => {
-                    const filter = filters[fk];
-                    const fv = Object.keys(filter);
-                    if (fv.length > 0) {
-                        if (filter[fv[0]]) {
-                            const qt = `${fk}=${fv[0]}`;
-                            const qtf = {}
-                            qtf[`${fk}`] = `${fv[0]}`
-                            queries.push(qt);
-                            // qtfArr.push(qtf);
-
-                        }
-
-                    }
-                })
-                const query = encodeURI(queries.join("&"));
-
-                props.history.push({
-                    pathname: '/stylori',
-                    search: query,
-                })
-                bodyvar = paramObjects();
-            } catch (error) {
-                console.log(error)
-            }
-            var k = bodyvar.map(val => Object.values(val));
-            var keyy = bodyvar.map(val => Object.keys(val))
-            console.log(filters)
-            len = keyy.length
-            while (len--) {
-                var key = keyy[len]
-                var toLowerCase = key[0].toLowerCase()
-                newObj[toLowerCase] = k[len][0]
-            }
-            makeFetch(newObj);
-        }
-        else {
+         bodyvar = paramObjects();
+        // else {
             try {
                 Object.keys(filters).map(fk => {
                     const filter = filters[fk];
@@ -347,51 +317,28 @@ if((Object.entries(DataSeoQuery).length !== 0 && DataSeoQuery.constructor === Ob
 
                 if (ntxdata.seo_url === "jewellery") {
                     setMappedFilters(ntxdata)
-                    //     console.log('Object.values(ntxdata.seo_url)==="jewellery"',Boolean(mappedFilters.seo_url !== "jewellery") === true, ntxdata.seo_url, ntxdata, mappedFilters, mappedFilters.seo_url !== "jewellery"  )
-                    //     debugger
-
-                    //     do{
-
-                    //         setMappedFilters(ntxdata)
-                    //         console.log('Object.values(ntxdata.seo_url)==="jewellery"',ntxdata.seo_url==="jewellery", ntxdata.seo_url, ntxdata, mappedFilters )
-
-                    //    }  while(ntxdata.seo_url !== "jewellery") 
-                    // while(Boolean(mappedFilters.seo_url !== "jewellery") === true){
-
-                    //     setMappedFilters(ntxdata)
-                    //     console.log('Object.values(ntxdata.seo_url)==="jewellery"',ntxdata.seo_url==="jewellery", ntxdata.seo_url, ntxdata, mappedFilters )
-
-                    // }
-
                 }
 
             } catch (error) {
                 console.log(error)
             }
-
             console.log('ntxdataresdata1', ntxdata.seo_url, mappedFilters.seo_url, ntxdata)
-
-        }
-
-
+        // }
+        
         console.log('newObj', filters)
     }
+    
     useEffect(() => {
+        debugger
         console.info('i have came in brother', 'seoUrlFetch()')
         if ((Object.entries(ntxdata).length !== 0 && ntxdata.constructor === Object)) {
             // if(ntxdata.seo_url !=="jewellery" ){
-                if(window.location.pathname !== "jewellery"){
-            props.history.push({
-                pathname: `${mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ''}`
-
-            })
-        }
-        // else{
-        //     props.history.push({
-        //         pathname: window.location.pathname
-
-        //     })
-        // }
+            if (window.location.pathname !== "jewellery") {
+                props.history.push({
+                    pathname: `${mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ''}`,
+                })
+            }
+            setSort('')
             paramObjects(mappedFilters.seo_url)
 
             seoUrlFetch()
@@ -400,25 +347,34 @@ if((Object.entries(DataSeoQuery).length !== 0 && DataSeoQuery.constructor === Ob
             // }
         }
     }, [mappedFilters])
+    useEffect(()=>{
+        if(Object.entries(sort).length>0 && sort.constructor === Object){
+            props.history.push({
+                pathname: `${mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ''}`,
+                        search: sort && `sort=${sort.values}`
+            })
+            updatefiltersSort()
+        }
+    }, [sort])
     useEffect(() => {
         if (paramObjects(mappedFilters.seo_url).length > 0) {
             setParamsAo(paramObjects(mappedFilters.seo_url))
         }
     }, [ntxdata, filters, mappedFilters, seoData])
     useEffect(() => {
-        if(window.location.pathname !== "jewellery"){
+        if (window.location.pathname !== "jewellery") {
             matchPath(window.location.pathname, {
                 path: ":listingpage",
-    
+
             });
         }
-        else{
+        else {
             matchPath(`/${mappedFilters.seo_url}`, {
                 path: ":listingpage",
-    
+
             });
         }
-        
+
     })
     console.log('ntxdataresdata', ntxdata.seo_url, mappedFilters.seo_url)
     const FilterOptionsCtx = {
