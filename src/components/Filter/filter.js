@@ -15,6 +15,8 @@ import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CardRadioButton from '../InputComponents/RadioButton/index';
 import { useDummyRequest } from 'hooks/index';
 import { filterParams } from 'mappers/index';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel'
 import styles from './styles';
 import { FilterOptionsContext } from 'context'
 
@@ -343,19 +345,26 @@ console.log('queries',queries)
                                                 return (<div>
 
                                                   <ListItem key={row12}  >   {/* button */}
-                                                    <Checkbox
-                                                      checked={this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? this.state.checked[row.replace(/\s/g, "")][row12] : false}
-                                                      onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
-                                                      className="fil-submenu-icons"
-                                                      value="checked"
-                                                      color="primary"
-                                                      name={row.replace(/\s/g, "")}
-                                                    />
-                                                    <ListItemText>
-                                                      <Typography variant=""
-                                                        className={`fil-submenu-list ${classes.colorMain}`}>{row12}
-                                                      </Typography>
-                                                    </ListItemText>
+                                                  <FormGroup row>
+        <FormControlLabel
+          control={
+            <Checkbox
+            checked={this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? this.state.checked[row.replace(/\s/g, "")][row12] : false}
+            onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
+            className="fil-submenu-icons"
+            value="checked"
+            color="primary"
+            name={row.replace(/\s/g, "")}
+            />
+          }
+          label={<Typography variant=""
+          className={`fil-submenu-list ${classes.colorMain}`}>{row12}
+        </Typography>}
+        />
+        </FormGroup>
+
+
+
                                                   </ListItem>
                                                 </div>);
                                               }
