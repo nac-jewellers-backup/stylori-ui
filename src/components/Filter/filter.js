@@ -239,6 +239,8 @@ console.log('queries',queries)
     this.props.setSort({ values:event.target.value})
     
     this.setState({ CardRadio: false})
+
+    this.setState({ productDisplay: true });
 }
   render() {
     console.log('urlSplitparamsEqual',this.state.checked)
