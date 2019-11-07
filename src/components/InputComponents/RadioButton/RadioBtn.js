@@ -40,6 +40,7 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function RadioBtn(props) {
+  debugger
   const classes = useStyles();
   const [value, setValue] = React.useState({
     sortTitle:"Sort By",
@@ -51,12 +52,11 @@ export default function RadioBtn(props) {
   const handleChange = e => {
     props.onChange(e);
   }
-  console.log("hey i am sort123", props.values.values)
   // function handleChange(event) {
   //   setValue({...value, values:event.target.value, helperText: !Boolean((event.target.value != null && event.target.value !== ""))});
   // }
   // console.log(value);
-  console.info('objectvaluesobjectvalues', props.values.values)
+  // console.info('objectvaluesobjectvalues', props.values.values)
   return (
     <div className={classes.root}>
       <FormControl component="fieldset" className={`${classes.fromControlTwo} ${classes.formControl}`}>
