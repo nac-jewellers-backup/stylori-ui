@@ -1,0 +1,12 @@
+.noproductsfound{
+    height: 125px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.continueshopping{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}

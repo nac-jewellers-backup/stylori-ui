@@ -1,17 +1,14 @@
-export const CART = `query MyQuery($productList: [String!]) {
-    allProductLists(filter: {transSkuListsByProductId: {some: {generatedSku: {in: $productList}}}}) {
-      nodes {
-        productName
+export const CART = `query myquerycart($productList: [String!]) {
+  allTransSkuLists(filter: {generatedSku: {in: $productList}}) {
+    nodes {
+      generatedSku
+      purity
+      metalColor
+      discountPrice
+      markupPrice
+      productListByProductId {
         productId
-        transSkuListsByProductId {
-          nodes {
-            generatedSku
-            purity
-            metalColor
-            discountPrice
-            markupPrice
-          }
-        }
+        productName
         productImagesByProductId {
           nodes {
             imageUrl
@@ -19,4 +16,5 @@ export const CART = `query MyQuery($productList: [String!]) {
         }
       }
     }
-  }`
+  }
+}`

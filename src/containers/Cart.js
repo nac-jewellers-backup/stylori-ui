@@ -13,6 +13,7 @@ import  'screens/screens.css';
 import CustomSeparator from '../components/BreadCrumb/index'
 import styles from "../components/Checkout/style"
 import { withStyles } from '@material-ui/core/styles';
+import './index.css'
 
 // data.map(data=>{
     // return(
@@ -21,10 +22,32 @@ import { withStyles } from '@material-ui/core/styles';
     //     </Grid>
     //         )
     //     })
-        
+   const breadcrumsdata = [
+        "Shopping Bag",
+        "Login/ Register",
+        "Address Detail",
+        "Payment Options",
+        "Order Confirmation",
+    ]
+    const  cartsubdata = [
+        {
+            name: "100% Certified   Jewellery  ",
+            icon: "https://assets-cdn.stylori.com/images/static/icon-star.png"
+        }, {
+            name: " Secure  Payments   ",
+            icon: "https://assets-cdn.stylori.com/images/static/icon-lock.png"
+        }, {
+            name: "  Free Insured    Shipping   ",
+            icon: "https://assets-cdn.stylori.com/images/static/icon-van.png"
+        }, {
+            name: "  25 - Day   Returns   ",
+            icon: "https://assets-cdn.stylori.com/images/static/icon-return.png"
+        }
+    ]
 class Cart extends React.Component {
     render() {
         const {data,classes} = this.props 
+        debugger
         let path = window.location.pathname.split('/').pop();
           return (
             
@@ -44,16 +67,16 @@ class Cart extends React.Component {
                             className={`breadcrums-header ${classes.normalcolorback}`}
                             classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
                             list={`MuiBreadcrumbs-li ${classes.fontwhite}`}
-                            data={this.props.data[0].breadcrumsdata}
-                            subdata={this.props.data[0].cartsubdata}
+                            data={this.props.data.length>0 ? this.props.data[0].breadcrumsdata : breadcrumsdata}
+                            subdata={this.props.data.length>0? this.props.data[0].cartsubdata : cartsubdata}
                         />
                     }
                         <div className="cart-ovralldiv-media">
                             <Grid Container spacing={12}>
                                 
-                                <Grid item xs={12}>
+                                {this.props.data.length>0 ? <Grid item xs={12}>
                                     <CartCard data={data}/>
-                                </Grid>
+                                </Grid> : <><div className="noproductsfound">There are no items in this cart. </div><a href="/jewellery"> <div className="continueshopping">CONTINUE SHOPPING</div></a></> }
                             </Grid>
                         </div>
                         <Grid Container spacing={12}>
@@ -65,9 +88,9 @@ class Cart extends React.Component {
                     <Hidden mdUp>
                         <Container>
                             <Grid Container spacing={12}>
-                                <Grid item xs={12}>
+                               {this.props.data.length>0 ? <Grid item xs={12}>
                                     <CartCard data={data}/>
-                                </Grid>
+                                </Grid>: <><div className="noproductsfound">There are no items in this cart.</div><a href="/jewellery"> <div className="continueshopping">CONTINUE SHOPPING</div></a></>}
                             </Grid>
                         </Container>
                         <Grid Container spacing={12}>
@@ -88,7 +111,7 @@ class Cart extends React.Component {
 const Components = props => {
     let { CartCtx: { data, loading, error } } = React.useContext(CartContext);
     let content, mapped;
-
+debugger
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
             mapped = cart(data);
