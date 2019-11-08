@@ -4,7 +4,6 @@ import RadioBtn from "./RadioBtn";
 import './index.css'
 
 export default function CardRadioButton(props) {
-
   return (
     <Paper className={props.cardWidth !== '' ? props.cardWidth : 'card'} >
       <RadioBtn radioValues={props.data} onChange={props.onChange} values={props.values}/>

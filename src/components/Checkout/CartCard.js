@@ -29,7 +29,21 @@ class Checkoutcard extends React.Component {
             cart: true
         }
     }
-
+    handleDeleteLocalStorage= (e) =>{
+        var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
+        debugger
+        var currentValue = e.target.id
+       var a = local_storage.products.filter(val=>{ 
+            if(currentValue!==val.sku_id){
+                return val
+            }
+        })
+        var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
+        var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
+        var localstorage = JSON.stringify({"cart_id":`${cartId}`,"user_id":`${userId}`,"products":a})
+        localStorage.setItem('cartDetails', localstorage)
+        window.location.reload();
+    }
     row = () => {
         const dataCarousel = {
             slidesToShow: 1,
@@ -45,9 +59,7 @@ class Checkoutcard extends React.Component {
                         <div className={classes.cart}>
                             <Grid container spacing={12} xs={12}  >
                                 <Grid item xs={1}  >
-                                    <a
-                                        // onClick={() => remove(id)}
-                                        style={{ textDecoration: "none" }} href=""><div class="remove-product"></div></a>
+                                    <div id={val.namedetail[0].details} onClick={(event)=>this.handleDeleteLocalStorage(event)} class="remove-product"></div>
                                 </Grid>
                                 <Grid item xs={2} >
                                     <Card className="product-image-thumb">
@@ -59,7 +71,7 @@ class Checkoutcard extends React.Component {
                                             }
                                         />
                                         <Slideshow class="image"
-                                            fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
+                                            fadeImages={dataval.fadeImages} dataCarousel={dataCarousel} />
                                     </Card>
                                 </Grid>
                                 <Grid item xs={6} style={{ padding: "20px" }}>
@@ -131,8 +143,17 @@ class Checkoutcard extends React.Component {
     }
     subtotals = () => {
         // const { dataCard1 } = this.props.data;
-        const dataCard1 = this.props.data[0].dataCard1[0];
-        const yousave = Math.round(Number(dataCard1.price) - Number(dataCard1.offerPrice))
+        const dataCard1 = this.props.data.map(val=>{return val.dataCard1[0].offerPrice}).reduce(myFunc);
+        debugger
+        // this.props.data.map(val=>{return val.dataCard1[0].offerPrice}).reduce(myFunc)
+        
+      var yousave=  this.props.data.map((_data) => {
+            return _data.dataCard1[0].price - _data.dataCard1[0].offerPrice
+        }).reduce(myFunc)
+        function myFunc(total, num) {
+            return Math.round(total + num);
+          }
+        // const yousave = Math.round(Number(dataCard1.price) - Number(dataCard1.offerPrice))
         let path = window.location.pathname.split('/').pop();
         const { classes } = this.props;
         return (
@@ -151,7 +172,7 @@ class Checkoutcard extends React.Component {
                                 <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>Grand Total</Typography>
                             </Grid>
                             <Grid xs={5} lg={5}>
-                                <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(dataCard1.offerPrice)}</Typography>
+                                <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(dataCard1)}</Typography>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>{yousave}</Typography>
                                 {localStorage.getItem('pro') ?
                                     <Typography className="subhesder">  {localStorage.getItem('pro') ? localStorage.getItem('pro') : ""}</Typography>
@@ -169,7 +190,10 @@ class Checkoutcard extends React.Component {
                 <Grid container>
                     {path == "checkout" ? "" :
                         <Grid xs={12} lg={7}>
+                            <NavLink to="/jewellery">
                             <div className='btn-plain'> CONTINUE SHOPPING</div>
+                            </NavLink>
+                           
                         </Grid>}
                     <Grid xs={12} lg={4} >
                         {this.checkoutbutton()}

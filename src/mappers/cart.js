@@ -108,7 +108,7 @@ export default function (data) {
 
     let mapperdata = [];
     try {
-        mapperdata = data.data.allProductLists.nodes;
+        mapperdata = data.data.allTransSkuLists.nodes;
     } catch (error) {
         mapperdata = [];
     }
@@ -122,11 +122,11 @@ export default function (data) {
                         header: "Product Details",
                         namedetail: [{
                             name: "Product Code",
-                            details: k.transSkuListsByProductId.nodes[0].generatedSku
+                            details: k.generatedSku
                         },
                         {
                             name: "Metal Type",
-                            details: k.transSkuListsByProductId.nodes[0].purity +' '+k.transSkuListsByProductId.nodes[0].metalColor
+                            details: k.purity +' '+k.metalColor
                         }, {
                             name: "Approximate",
                             details: "1.463"
@@ -178,8 +178,8 @@ export default function (data) {
                 // 
                 dataCard1 : [
                     {
-                        offerPrice:k.transSkuListsByProductId.nodes[0].markupPrice,
-                        price: k.transSkuListsByProductId.nodes[0].discountPrice,
+                        offerPrice:k.markupPrice,
+                        price: k.discountPrice,
                         title: "Diamond Pendant Ring",
                         dis: 'Pendants set in 18 Kt Yellow Gold 3.95 gm with Diamonds (0.52 ct, GH - SI )',
                         save: '5999.9',
@@ -192,8 +192,8 @@ export default function (data) {
                 
                     },
                 ],
-                fadeImages: (k.productImagesByProductId.nodes.map(val => (
-                    `https://s3.ap-south-1.amazonaws.com/staging-assets.stylori.com/base_images/${val.imageUrl}`
+                fadeImages: (k.productListByProductId.productImagesByProductId.nodes.map(val => (
+                    `https://assets.stylori.net/base_images/${val.imageUrl}`
                 ))),
                 breadcrumsdata : [
                     "Shopping Bag",

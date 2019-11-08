@@ -20,10 +20,10 @@ import { FilterOptionsContext } from 'context'
 
 
 const PersistentDrawerLeft = (props) => {
-  const { setFilters } = React.useContext(FilterOptionsContext);
+  const { setSort,setFilters, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
   const loc = window.location.search
   
-  return <Component setFilters={setFilters} {...props} />
+  return <Component setSort={setSort} setFilters={setFilters} sort={FilterOptionsCtx.sort} {...props} />
 }
 
 
@@ -232,12 +232,20 @@ console.log('queries',queries)
 
     // this.setState({[e.target.name]:e.target.value})
   }
+  handleChangesort = (event) =>{
+       
+    this.props.setSort({ values:event.target.value})
+    
+    this.setState({ CardRadio: false})
 
+    this.setState({ productDisplay: true });
+}
   render() {
     console.log('urlSplitparamsEqual',this.state.checked)
 
     const { classes, data } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];
+    debugger
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
 
@@ -542,7 +550,7 @@ console.log('queries',queries)
           </div>
           {this.state.CardRadio ?
             <div style={{ position: 'fixed', bottom: '42px', }}>
-              <CardRadioButton cardWidth="cardSortSmallScreen" data={sortOptions} />
+              <CardRadioButton cardWidth="cardSortSmallScreen" data={sortOptions} onChange={this.handleChangesort} values={this.props.sort}/>
             </div>
             :
             ''
