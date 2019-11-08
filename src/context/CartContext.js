@@ -58,7 +58,8 @@ const Provider = (props) => {
             }
         }
         else {
-            if (cartFilters && cartFilters.price > 0) {
+            if (cartFilters.price > 0) {
+                debugger
                 var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
                 var local_storage_products = []
                 if (Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
