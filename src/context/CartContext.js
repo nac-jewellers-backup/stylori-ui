@@ -42,8 +42,10 @@ const Provider = (props) => {
     useEffect(() => {
         if (userIds.length > 0) {
             if (JSON.stringify(cartdetails).length > 0) {
-                // const user_id = userIds
-                // makeFetch({--login---})
+                var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
+                const user_id = userIds
+                var addcart = ({ products, user_id })
+                addtocart(addcart)
             }
         }
         if (guestlogId.length > 0) {
@@ -52,12 +54,12 @@ const Provider = (props) => {
                 var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
                 const user_id = cartFilters.user_id
                 var addcart = ({ products, user_id })
-                console.log('verifiedMaill', addcart)
                 addtocart(addcart)
             }
         }
         else {
             if (cartFilters.price > 0) {
+                // alert("hai")
                 var skuId = cartFilters.skuId;
                 var products = [];
                 var obj = {};
@@ -70,6 +72,7 @@ const Provider = (props) => {
                 products.push(obj)
                 var skuObj = { "cart_id": cartId, "user_id": userId, "products": products }
                 localStorage.setItem('cartDetails', JSON.stringify(skuObj));
+                console.log('dddssddsds', skuObj)
             }
         }
     }, [user_id, price])

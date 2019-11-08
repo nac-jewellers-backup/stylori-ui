@@ -4,8 +4,11 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CheckForCod } from 'queries/productdetail';
 
 const Addressforms = () => {
+    // var regid = localStorage.getItem('regid') ? localStorage.getItem('regid') : ""
+    var cont = localStorage.getItem('true') ? localStorage.getItem('true') : ""
     let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : {}
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
+    let changeaddr = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
     const [address, setAddress] = React.useState({})
     const [values, setValues] = React.useState({
         addressOne: {
@@ -34,19 +37,30 @@ const Addressforms = () => {
             contactno: "",
             addresstype: 2
         },
-        addrs: localStorage.getItem("valuessetdata") ? false : true,
+        addrs: localStorage.getItem("valuessetdata") || changeaddr ? false : true,
         // addrs: true,
         checkValue: true,
         checkValue1: true,
+        // changeaddr:false
     });
+    // useEffect(() => {
+    //     if (localStorage.getItem("valuessetdata") || changeaddr.length > 0) {
+    //         const stat = values.addrs
+    //         setValues({
+    //             stat: false,
+    //             ...values,
+    //         })
+    //     }
+    // }, [])
     var addObj = {};
     console.log('debugger', addObj)
     addObj["user_id"] = user_id
     addObj["cart_id"] = cart_id
+    addObj["isguestlogin"] = cont ? false : true
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addaddress', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     useEffect(() => {
-        const a = CodData.data ? CodData.data : ""
+        const a = CodData.data ? CodData.data.allPincodeMasters : ""
         if (a) {
             var res = CodData.data.allPincodeMasters.nodes[0].state
             var res1 = CodData.data.allPincodeMasters.nodes[0].country
@@ -96,7 +110,7 @@ const Addressforms = () => {
         }
     };
     const redirectForm = () => {
-        setValues({ addrs: !values.addrs })
+        setValues({ ...values, addrs: !values.addrs })
     }
     const handle = { handleChange, handleSubmit, handleKeyPress, redirectForm };
     return { values, handle, setValues }

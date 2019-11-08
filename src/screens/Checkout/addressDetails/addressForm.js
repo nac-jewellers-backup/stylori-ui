@@ -17,16 +17,17 @@ const AddressComponent = (props) => {
         ...values,
         checkValue: !values.checkValue
     })} type='checkbox' checked={values.checkValue} />
+    var local_storages = (localStorage.getItem("vals"));
+    console.log('sdfdsfkdlsjfldsk',local_storages )
     return (
         <Container>
             <div>
-                {values.addrs === true ?
+                {(local_storages === null ? true :false) && values.addrs === true ?
                     <div className='pt-sm'>
                         <form onSubmit={(e) => {
                             localStorage.setItem("valuessetdata", JSON.stringify(values))
                             handle.handleSubmit(e)
                             setValues({ addrs: !values.addrs });
-                            //
                         }} autoComplete={true}>
                             <h5 className='title'> Shipping Address</h5>
                             <p class="form-group tp" style={{ width: "480px" }}>

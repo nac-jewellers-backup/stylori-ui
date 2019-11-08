@@ -19,11 +19,11 @@ const PromoComponent = (props) => {
                             <Input
                                 helperText="Promocode is required"
                                 placeholder='Enter Promocode'
-                                name="promocode"
+                                name="vouchercode"
                                 type="text"
-                                value={values.promocode}
+                                value={values.vouchercode}
                                 required
-                                onChange={e => handlers.handleChange('promocode', e.target.value)}
+                                onChange={e => handlers.handleChange('vouchercode', e.target.value)}
                             />
                         </Grid>
                         <Grid item xs={4} lg={4}>

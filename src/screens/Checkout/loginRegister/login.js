@@ -12,24 +12,29 @@ const Login = (props) => {
 
 const LoginComponent = (props) => {
     const { classes } = props;
-    const { values, handlers } = useLogin();
+    const { values, handlers, data } = useLogin();
+    const vl = data.message ? data.message : ""
+    var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
+    // alert(JSON.stringify(data))
 
     return (
         <div className='pt-sm'>
             <form action="javascript:void(0)" onSubmit={() => {
-                props.changePanel(2)
+                // if (cc) {
+                    props.changePanel(2)
+                // }
                 handlers.doLogin()
             }}>
-                <Grid container item xs={12} lg={6} >
+                <Grid container item xs={12} lg={6}>
                     <h5 className={`title ${classes.normalfonts}`}>  I already have an account </h5>
                     <Input
                         margin="normal"
                         variant="outlined"
                         type="email"
-                        name="username"
-                        value={values.username}
-                        // error={this.state.mail ? this.state.mail : "**"}
-                        onChange={e => handlers.handleChange('username', e.target.value)}
+                        name="email"
+                        value={values.email}
+                        // error={data.message ? true : false}
+                        onChange={e => handlers.handleChange('email', e.target.value)}
                         required
                         helperText="Username is Required"
                         placeholder="your-id@email.com"
@@ -55,7 +60,7 @@ const LoginComponent = (props) => {
                     </div>
                     <div className='login-butn'>
                         <Button className='back-b' onClick={() => props.change()} >Back</Button>
-                        <Button className='apply-b' type="submit">Apply</Button>
+                        <Button className='apply-b'  type="submit">Apply</Button>
                     </div>
 
                 </Grid>

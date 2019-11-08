@@ -40,7 +40,6 @@ class Component extends React.Component {
         this.screenWidths()
         window.addEventListener("resize", this.screenWidths);
     }
-
     screenWidths = () => {
         // const heights = 0;//this.props.headerHeight
         const width = window.innerWidth;
@@ -53,21 +52,16 @@ class Component extends React.Component {
         }
 
     }
-    
     handleExpandClick = () => {
         this.setState({ expanded: !this.state.expanded });
     }
     handleChange = (event) =>{
-       
         this.props.setSort({ values:event.target.value})
-        
-        this.setState({ expanded: false })
     }
     render() {
 
         const { classes, chips } = this.props;
         const { sortOptions } = this.props.data;
-        console.log("hey i am sort", this.props.sort)
         return (
             <Paper style={{ position: 'sticky', top: this.state.topHeight, width: '100%', zIndex: '3', boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">
                 {/* <div style={{position:'sticky',top:'165px'}}> */}

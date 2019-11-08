@@ -17,6 +17,7 @@ class Addressdetails extends React.Component {
         })
     }
     Addressdetails = (props, value) => {
+        debugger
         const { setValues, values } = props;
         const cl = <input onChange={(e) => {
             setValues({
@@ -27,6 +28,8 @@ class Addressdetails extends React.Component {
         const { classes } = props;
         const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
         const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
+        let lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
+        let lgn1 = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>
@@ -40,10 +43,9 @@ class Addressdetails extends React.Component {
                             style={{ marginTop: "5px" }}>
                             <h4 class="card-title">
                                 <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
-                                {/* {name1.adrs_firstname} */}
                                 <span class="address-name">
                                     {aa ? aa + '.' : ""}
-                                    {value.addressOne.firstname}&nbsp;{value.addressOne.lastname}
+                                    {lgn && lgn.firstname ? lgn.firstname : value && value.addressOne && value.addressOne.firstname}&nbsp;{lgn && lgn.lastname ? lgn.lastname : value && value.addressOne && value.addressOne.lastname}
                                 </span>
                                 <i style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                     class="fa fa-pencil-square-o"></i>
@@ -53,12 +55,13 @@ class Addressdetails extends React.Component {
                                     }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
                             </h4>
                             <p className={`detils-p ${classes.normalfonts}`} >
-                                {value.addressOne.addressline1} <br />
-                                {value.addressOne.city} <br />
-                                {value.addressOne.state}-{value.addressOne.pincode} <br />IN</p>
+                                {lgn && lgn.addressline1 ? lgn.addressline1 : value && value.addressOne && value.addressOne.addressline1} <br />
+                                {lgn && lgn.city ? lgn.city : value && value.addressOne && value.addressOne.city} <br />
+                                {lgn && lgn.state ? lgn.state : value && value.addressOne && value.addressOne.state}-{lgn && lgn.pincode ? lgn.pincode : value && value.addressOne && value.addressOne.pincode} <br />IN
+                                </p>
                             <div className="card-foo">
-                                <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                    +91 {value.addressOne.contactno} </span>
+                                {/* <span className={`shipping-phonenumber ${classes.normalfonts}`}>
+                                    +91 {lgn.contactNumber ? lgn.contactNumber : value.addressOne.contactno} </span> */}
                                 <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                     this.props.changevalue(3)
                                 }}>Select and  Review </Button>
@@ -76,8 +79,9 @@ class Addressdetails extends React.Component {
                                     {/* {name1.adrs_firstname} */}
                                     <span class="address-name">
                                         {aa1 ? aa1 + '.' : ""}
-                                        {value.addressTwo.firstname ? value.addressTwo.firstname : value.addressOne.firstname}
-                                        &nbsp;        {value.addressTwo.lastname ? value.addressTwo.lastname : value.addressOne.lastname}
+                                        {lgn1 && lgn1.firstname ? lgn1 && lgn1.firstname : lgn && lgn.firstname ||
+                                            value && value.addressTwo && value.addressTwo.firstname ? value && value.addressTwo && value.addressTwo.firstname : value && value.addressOne && value.addressOne.firstname}
+                                        {/* &nbsp;        {lgn1 || (value.addressTwo.lastname ? value.addressTwo.lastname : value.addressOne.lastname)} */}
                                     </span>
                                     <i style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                         class="fa fa-pencil-square-o"></i>
@@ -85,15 +89,15 @@ class Addressdetails extends React.Component {
                                         className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
                                 </h4>
                                 <p className={`detils-p ${classes.normalfonts}`} >
-                                    {value.addressTwo.addressline1 ? value.addressTwo.addressline1 : value.addressOne.addressline1}
+                                    {lgn1 && lgn1.addressline1 ? lgn1 && lgn1.addressline1 : lgn && lgn.addressline1 || value && value.addressTwo && value.addressTwo.addressline1 ? value && value.addressTwo && value.addressTwo.addressline1 : value && value.addressOne && value.addressOne.addressline1}
                                     <br />
-                                    {value.addressTwo.city ? value.addressTwo.city : value.addressOne.city}<br />
-                                    {value.addressTwo.state ? value.addressTwo.state : value.addressOne.state}-
-                                    {value.addressTwo.pincode ? value.addressTwo.pincode : value.addressOne.pincode}
+                                    {lgn1 && lgn1.city ? lgn1 && lgn1.city : lgn && lgn.city || value && value.addressTwo && value.addressTwo.city ? value && value.addressTwo && value.addressTwo.city : value && value.addressOne && value.addressOne.city}<br />
+                                    {lgn1 && lgn1.state ? lgn1 && lgn1.state : lgn && lgn.state || value && value.addressTwo && value.addressTwo.state ? value && value.addressTwo && value.addressTwo.state : value && value.addressOne && value.addressOne.state}-
+                                    {lgn1 && lgn1.pincode ? lgn1 && lgn1.pincode : lgn && lgn.pincode || value && value.addressTwo && value.addressTwo.pincode ? value && value.addressTwo && value.addressTwo.pincode : value && value.addressOne && value.addressOne.pincode}
                                     <br />IN</p>
                                 <div className="card-foo">
                                     <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                        +91 {value.addressTwo.contactno ? value.addressTwo.contactno : value.addressOne.contactno}
+                                        +91 {lgn1 && lgn1.contactNumber ? lgn1 && lgn1.contactNumber : lgn && lgn.contactNumber || value && value.addressTw && value.addressTwo.contactno ? value && value.addressTwo && value.addressTwo.contactno : value.addressOne.contactno}
                                     </span>
                                     <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                         this.props.changevalue(3)

@@ -53,7 +53,6 @@ class Component extends React.Component {
     super(props)
     this.state = {
       colSize: window.innerWidth,
-      loading:true,
     }
   }
   componentDidMount() {
@@ -61,7 +60,6 @@ class Component extends React.Component {
     this.screenWidth()
     // Additionally I could have just used an arrow function for the binding `this` to the component...
     window.addEventListener("resize", this.screenWidth);
-    setTimeout(function(){ this.setState({loading:false}); }.bind(this), 2000);
   }
   screenWidth = () => {
     const width = window.innerWidth;
@@ -85,17 +83,6 @@ class Component extends React.Component {
     }
 
   }
-
-  componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
-    if(this.props.offset === prevProps.data){
-      if (this.props.data!== prevProps.data) {
-        this.setState({loading:true})
-        setTimeout(function(){ this.setState({loading:false}); }.bind(this), 2000);
-      }
-    }
-    
-  }
   handleOffset = () => {
     const offsets = this.props.offset + 24
     // console.log('offsets', offsets)
@@ -109,11 +96,7 @@ class Component extends React.Component {
     // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
     return (
       <div className={`productLayoutRoot `} style={this.props.styles}>
-        {
-        <>
-{this.state.loading && <div className="overall-loaders"><div id="loadings"><img src="https://alpha-assets.stylori.com/images/static/loadingimg.gif" alt="loading..." /></div></div>}
-  {this.state.loading === false && <div>
-  <GridList cellHeight={"auto"} className={`productLayoutGridList ${classes.gridlistmain}`} cols={this.state.colSize} style={{ margin: '25px !important' }}>
+        <GridList cellHeight={"auto"} className={`productLayoutGridList ${classes.gridlistmain}`} cols={this.state.colSize} style={{ margin: '25px !important' }}>
           {
             data.map(tile => {
               return (
@@ -132,10 +115,8 @@ class Component extends React.Component {
           <Button variant="contained"  className={`${classes.button}  ${classes.viewmoreColor}`} onClick={() => { this.handleOffset() }} disabled={data.length < 24} >
           { data.length === 0 && `No products found` }  {data.length >= 24 && ` View ${data.length > 0 ? data[0].totalCount-data.length : ''} More Products`} {(data.length >0 && data.length< 24) && `Only ${data.length > 0 ? data[0].totalCount-data.length : ''} products avalilable`}
       </Button>
-        </div>  
-  </div>}  
-        </>      
-}
+        </div>
+
       </div>
 
     );

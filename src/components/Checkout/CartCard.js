@@ -17,6 +17,7 @@ import CardSmallScreen from './CartCardSmallScreen.js';
 import Pricing from '../Pricing/index'
 import styles from "./style"
 import { NavLink } from 'react-router-dom';
+// import { useNetworkRequest } from 'hooks/index';
 // 
 // 
 
@@ -36,6 +37,7 @@ class Checkoutcard extends React.Component {
         }
         const { classes, data } = this.props;
         const { productsDetails, fadeImages, dataCard1 } = this.props.data;
+        // const { data:propmocode, error, loading, makeFetch } = useNetworkRequest('/applyvoucher', {}, false);
         return (
             <div style={{ marginTop: "10px" }}>
                 {this.props.data.map(dataval => (
@@ -143,12 +145,20 @@ class Checkoutcard extends React.Component {
                             <Grid xs={7} lg={5}>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>Subtotal</Typography>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>You Saved</Typography>
+                                {localStorage.getItem('pro') ? <Typography class={`subhesder ${classes.normalfonts}`}>Registration</Typography> : ""}
+                                {localStorage.getItem('prop') ? <Typography class={`subhesder ${classes.normalfonts}`}>GST</Typography> : ""}
                                 <Typography class={`subhesder ${classes.normalfonts}`}>Shipping</Typography>
                                 <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>Grand Total</Typography>
                             </Grid>
                             <Grid xs={5} lg={5}>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(dataCard1.offerPrice)}</Typography>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>{yousave}</Typography>
+                                {localStorage.getItem('pro') ?
+                                    <Typography className="subhesder">  {localStorage.getItem('pro') ? localStorage.getItem('pro') : ""}</Typography>
+                                    : ""}
+                                {localStorage.getItem('pro') ?
+                                    <Typography className="subhesder">{localStorage.getItem('prop') ? localStorage.getItem('prop') : ""}</Typography>
+                                    : ""}
                                 <Typography class={`subhesder ${classes.normalfonts}`}>------- </Typography>
                                 <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>{Math.round(dataCard1.offerPrice)}</Typography>
                             </Grid>

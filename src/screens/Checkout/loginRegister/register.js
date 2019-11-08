@@ -10,13 +10,15 @@ const Register = (props) => {
 }
 
 const RegisterComponent = (props) => {
-    debugger
     const { values, handlers, data } = useRegister();
+    var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
     return (
         <div className='pt-sm'>
             <form action="javascript:void(0)" onSubmit={() => {
-                props.changePanel(2)
-                handlers.handleSubmit()
+                // if (cc) {
+                    props.changePanel(2)
+                // }
+                handlers.handleSubmit(values)
             }}>
                 <Grid container spacing={12}>
                     <Grid item lg={1} />
@@ -40,7 +42,7 @@ const RegisterComponent = (props) => {
                             type="password"
                             name="password"
                             value={values.password}
-                            // error={this.state.password ? this.state.password : "**"}
+                            // error={values.error.pass ? true : false}
                             helperText="password is Required"
                             placeholder="enter your password"
                             onChange={e => handlers.handleChange('password', e.target.value)}
@@ -52,6 +54,7 @@ const RegisterComponent = (props) => {
                             type="password"
                             name="confirmpassword"
                             value={values.confirmpassword}
+                            // error={values.error.confirmPassword ? true : false}
                             // error={this.state.confirmpassword ? this.state.confpassword : "**"}
                             helperText="Confirm password is Required"
                             placeholder="enter your Confirm password"
@@ -91,8 +94,7 @@ const RegisterComponent = (props) => {
                             </Grid> */}
                         <div className='login-butn'>
                             <Button className='back-b' onClick={() => props.change()} >Back</Button>
-                            <Button className='apply-b' type="submit"
-                            >Apply</Button>
+                            <Button className='apply-b' type="submit">Apply</Button>
                         </div>
                     </Grid>
                 </Grid>
