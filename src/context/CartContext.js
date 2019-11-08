@@ -62,7 +62,7 @@ const Provider = (props) => {
                 debugger
                 var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
                 var local_storage_products = []
-                if (Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
+                if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
                     console.log('hey i came inside the local_storage....', local_storage)
                     local_storage_products = JSON.parse(localStorage.getItem('cartDetails')).products.map(val => { return val })
                 }
