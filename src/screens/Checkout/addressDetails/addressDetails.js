@@ -44,7 +44,7 @@ class Addressdetails extends React.Component {
                             <h4 class="card-title">
                                 <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                 <span class="address-name">
-                                    {aa ? aa + '.' : ""}
+                                    {aa ? aa + ' ' : ""}
                                     {lgn && lgn.firstname ? lgn.firstname : value && value.addressOne && value.addressOne.firstname}&nbsp;{lgn && lgn.lastname ? lgn.lastname : value && value.addressOne && value.addressOne.lastname}
                                 </span>
                                 <i style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
@@ -78,9 +78,9 @@ class Addressdetails extends React.Component {
                                     <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                     {/* {name1.adrs_firstname} */}
                                     <span class="address-name">
-                                        {aa1 ? aa1 + '.' : ""}
-                                        {lgn1 && lgn1.firstname ? lgn1 && lgn1.firstname : lgn.firstname  ||
-                                            value && value.addressTwo && value.addressTwo.firstname ? value && value.addressTwo && value.addressTwo.firstname : value && value.addressOne && value.addressOne.firstname}
+                                        {aa1 ? aa1 + '.' : aa + ' '}
+                                        {lgn1 && lgn1.firstname ? lgn1 && lgn1.firstname : lgn.firstname}
+                                        {value && value.addressTwo && value.addressTwo.firstname ? value && value.addressTwo && value.addressTwo.firstname : value && value.addressOne && value.addressOne.firstname}
                                         {/* &nbsp;        {lgn1 || (value.addressTwo.lastname ? value.addressTwo.lastname : value.addressOne.lastname)} */}
                                     </span>
                                     <i style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
@@ -89,15 +89,15 @@ class Addressdetails extends React.Component {
                                         className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
                                 </h4>
                                 <p className={`detils-p ${classes.normalfonts}`} >
-                                    {lgn1 && lgn1.addressline1 ? lgn1 && lgn1.addressline1 : lgn && lgn.addressline1 || value && value.addressTwo && value.addressTwo.addressline1 ? value && value.addressTwo && value.addressTwo.addressline1 : value && value.addressOne && value.addressOne.addressline1}
+                                    {lgn1 && lgn1.addressline1 ? lgn1 && lgn1.addressline1 : lgn && lgn.addressline1}{value && value.addressTwo && value.addressTwo.addressline1 ? value && value.addressTwo && value.addressTwo.addressline1 : value && value.addressOne && value.addressOne.addressline1}
                                     <br />
-                                    {lgn1 && lgn1.city ? lgn1 && lgn1.city : lgn && lgn.city || value && value.addressTwo && value.addressTwo.city ? value && value.addressTwo && value.addressTwo.city : value && value.addressOne && value.addressOne.city}<br />
-                                    {lgn1 && lgn1.state ? lgn1 && lgn1.state : lgn && lgn.state || value && value.addressTwo && value.addressTwo.state ? value && value.addressTwo && value.addressTwo.state : value && value.addressOne && value.addressOne.state}-
-                                    {lgn1 && lgn1.pincode ? lgn1 && lgn1.pincode : lgn && lgn.pincode || value && value.addressTwo && value.addressTwo.pincode ? value && value.addressTwo && value.addressTwo.pincode : value && value.addressOne && value.addressOne.pincode}
+                                    {lgn1 && lgn1.city ? lgn1 && lgn1.city : lgn && lgn.city}{value && value.addressTwo && value.addressTwo.city ? value && value.addressTwo && value.addressTwo.city : value && value.addressOne && value.addressOne.city}<br />
+                                    {lgn1 && lgn1.state ? lgn1 && lgn1.state : lgn && lgn.state}{value && value.addressTwo && value.addressTwo.state ? value && value.addressTwo && value.addressTwo.state : value && value.addressOne && value.addressOne.state}-
+                                    {lgn1 && lgn1.pincode ? lgn1 && lgn1.pincode : lgn && lgn.pincode}{value && value.addressTwo && value.addressTwo.pincode ? value && value.addressTwo && value.addressTwo.pincode : value && value.addressOne && value.addressOne.pincode}
                                     <br />IN</p>
                                 <div className="card-foo">
                                     <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                        +91 {lgn1 && lgn1.contactNumber ? lgn1 && lgn1.contactNumber : lgn && lgn.contactNumber || value && value.addressTwo && value.addressTwo.contactno ? value && value.addressTwo && value.addressTwo.contactno : value.addressOne.contactno}
+                                        +91 {lgn1 && lgn1.contactNumber ? lgn1 && lgn1.contactNumber : lgn && lgn.contactNumber}{value && value.addressTwo && value.addressTwo.contactno ? value && value.addressTwo && value.addressTwo.contactno : value && value.addressTwo && value.addressTwo.contactno}
                                     </span>
                                     <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                         this.props.changevalue(3)
@@ -110,9 +110,9 @@ class Addressdetails extends React.Component {
                             </Button> */}
                         </Grid>}
                 </Grid>
-                <Button onClick={() => this.props.redirectForm()} className={`add-new-address ${classes.normalfonts}`}>
+                {/* <Button onClick={() => this.props.redirectForm()} className={`add-new-address ${classes.normalfonts}`}>
                     <div></div>  Add New Address
-                            </Button>
+                            </Button> */}
             </div>
         )
     }

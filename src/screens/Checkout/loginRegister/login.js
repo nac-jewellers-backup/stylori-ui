@@ -13,17 +13,17 @@ const Login = (props) => {
 const LoginComponent = (props) => {
     const { classes } = props;
     const { values, handlers, data } = useLogin();
-    const vl = data.message ? data.message : ""
-    var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
+    // const vl = data.message ? data.message : ""
+    var cc = data.allUserAddresses?data.allUserAddresses.nodes[0] : ""
     // alert(JSON.stringify(data))
 
     return (
         <div className='pt-sm'>
             <form action="javascript:void(0)" onSubmit={() => {
-                if (!vl) {
+                if (!data.message&&!cc) {
                     props.changePanel(3)
                 }
-                handlers.doLogin()
+                handlers.handelSubmit()
             }}>
                 <Grid container item xs={12} lg={6}>
                     <h5 className={`title ${classes.normalfonts}`}>  I already have an account </h5>
@@ -33,7 +33,7 @@ const LoginComponent = (props) => {
                         type="email"
                         name="email"
                         value={values.email}
-                        // error={data.message ? true : false}
+                        error={data.message ? true : false}
                         onChange={e => handlers.handleChange('email', e.target.value)}
                         required
                         helperText="Username is Required"

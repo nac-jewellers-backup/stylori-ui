@@ -51,18 +51,16 @@ const useLogin = (props) => {
         })
     }
 
-    const vl = data && data.message
-    const doLogin = (e) => {
+    // const vl = data && data.message
+    const handelSubmit = (e) => {
         // e.preventDefault();
         makeFetch(values);
-        // if (!vl) {
-        //     props.changePanel(3)
-        // }else{
-        //     return false
-        // }
+        if (!data.message) {
+           return false
+        }
     }
 
-    const handlers = { handleChange, handleInvalid, doLogin };
+    const handlers = { handleChange, handleInvalid, handelSubmit };
 
     return { values, handlers, data }
 }
