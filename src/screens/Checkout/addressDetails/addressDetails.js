@@ -79,7 +79,7 @@ class Addressdetails extends React.Component {
                                     {/* {name1.adrs_firstname} */}
                                     <span class="address-name">
                                         {aa1 ? aa1 + '.' : ""}
-                                        {lgn1 && lgn1.firstname ? lgn1 && lgn1.firstname : lgn && lgn.firstname ||
+                                        {lgn1 && lgn1.firstname ? lgn1 && lgn1.firstname : lgn.firstname  ||
                                             value && value.addressTwo && value.addressTwo.firstname ? value && value.addressTwo && value.addressTwo.firstname : value && value.addressOne && value.addressOne.firstname}
                                         {/* &nbsp;        {lgn1 || (value.addressTwo.lastname ? value.addressTwo.lastname : value.addressOne.lastname)} */}
                                     </span>

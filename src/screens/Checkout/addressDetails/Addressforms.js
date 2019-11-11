@@ -3,13 +3,13 @@ import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CheckForCod } from 'queries/productdetail';
 import { argumentsObjectFromField } from 'apollo-utilities';
+window.cache = {}
 
 const Addressforms = () => {
     // var regid = localStorage.getItem('regid') ? localStorage.getItem('regid') : ""
     var cont = localStorage.getItem('true') ? localStorage.getItem('true') : ""
     let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : {}
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
-let cache = {}
     let changeaddr = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
     const [address, setAddress] = React.useState({})
     const [values, setValues] = React.useState({
@@ -67,14 +67,15 @@ let cache = {}
             var res = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].state : ''
             var res1 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].country : ''
             var res2 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].district : ''
-            if (cache.addressOne) {
-                cache = {}
+            if (window.cache.addressOne) {
+                debugger
+                window.cache = {}
                 values['addressOne']['state'] = res
                 values['addressOne']['country'] = res1
                 values['addressOne']['city'] = res2
             }
-            if (cache.addressTwo) {
-                cache = {}
+            if (window.cache.addressTwo) {
+                window.cache = {}
                 values['addressTwo']['state'] = res
                 values['addressTwo']['country'] = res1
                 values['addressTwo']['city'] = res2
@@ -97,7 +98,7 @@ let cache = {}
                 }
             }
         }
-        cache[type] = true
+        window.cache[type] = true
         setValues({ ...values, values })
     }
 
