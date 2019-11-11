@@ -13,7 +13,9 @@ const initialCtx = {
             skuId: '',
             qty: '',
             price: '',
-            user_id: ''
+            user_id: '',
+            discounted_price: "",
+            tax_price: ''
         },
         loading: false, error: false, data: []
     },
@@ -30,7 +32,7 @@ const Provider = (props) => {
     const price = cartFilters.price ? cartFilters.price : ""
     const { loading: crtloading, error: crterror, data: crtdata, makeFetch: addtocart } = useNetworkRequest('/addtocart', { user_id, products }, false)
     const userIds = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ''
-    var cartdetails = JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products.length>0 ? JSON.parse(localStorage.getItem("cartDetails")).products[0].price : ''
+    var cartdetails = JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")).products[0].price : ''
     const guestlogId = cartFilters.user_id ? cartFilters.user_id : ''
     // const prices = cartFilters.price ? cartFilters.price : ''
     useEffect(() => {
@@ -80,7 +82,7 @@ const Provider = (props) => {
                 var products_sku_list = () => {
                     if (local_storage_products.length > 0) {
                         local_storage_products.push(obj);
-                        console.log(local_storage_products,local_storage_products)
+                        console.log(local_storage_products, local_storage_products)
                         return local_storage_products
 
                     }
@@ -91,7 +93,7 @@ const Provider = (props) => {
 
                 }
                 console.log('hey i came inside the local_storage....', local_storage, local_storage_products.length > 0, products_sku_list())
-                
+
                 var skuObj = { "cart_id": cartId, "user_id": userId, "products": products_sku_list() }
                 localStorage.setItem('cartDetails', JSON.stringify(skuObj));
             }
@@ -102,7 +104,7 @@ const Provider = (props) => {
     // const pathQueries = () => {
     //     skus = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : ''
     // }
-    skus = localStorage.getItem("cartDetails") && JSON.parse(localStorage.getItem("cartDetails")).products.length>0 ? JSON.parse(localStorage.getItem("cartDetails")).products.map(val=>val.sku_id) : ''
+    skus = localStorage.getItem("cartDetails") && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")).products.map(val => val.sku_id) : ''
     const { loading, error, data, makeRequest } = useGraphql(CART, () => { }, {});
 
     const updateProductList = () => {

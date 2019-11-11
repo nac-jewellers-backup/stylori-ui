@@ -13,14 +13,15 @@ const Login = (props) => {
 const LoginComponent = (props) => {
     const { classes } = props;
     const { values, handlers, data } = useLogin();
-    // const vl = data.message ? data.message : ""
-    var cc = data.allUserAddresses?data.allUserAddresses.nodes[0] : ""
+    const vl = data && data.message
+    // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
+    var prof = data.userprofile ? data.userprofile.email : ""
     // alert(JSON.stringify(data))
 
     return (
         <div className='pt-sm'>
             <form action="javascript:void(0)" onSubmit={() => {
-                if (!data.message&&!cc) {
+                if (prof.length > 5) {
                     props.changePanel(3)
                 }
                 handlers.handelSubmit()
@@ -33,7 +34,7 @@ const LoginComponent = (props) => {
                         type="email"
                         name="email"
                         value={values.email}
-                        error={data.message ? true : false}
+                        // error={data.message ? true : false}
                         onChange={e => handlers.handleChange('email', e.target.value)}
                         required
                         helperText="Username is Required"
@@ -46,7 +47,7 @@ const LoginComponent = (props) => {
                         name="password"
                         required
                         value={values.password}
-                        // error={this.state.Password ? this.state.Password : "**"}
+                        error={data.message ? true : false}
                         helperText="Password is Required"
                         placeholder="enter your password"
                         onChange={e => handlers.handleChange('password', e.target.value)}
@@ -60,7 +61,7 @@ const LoginComponent = (props) => {
                     </div>
                     <div className='login-butn'>
                         <Button className='back-b' onClick={() => props.change()} >Back</Button>
-                        <Button className='apply-b'  type="submit">Apply</Button>
+                        <Button className='apply-b' type="submit">Apply</Button>
                     </div>
 
                 </Grid>

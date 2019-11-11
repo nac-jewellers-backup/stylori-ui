@@ -5,7 +5,6 @@ import { ADDRESSDETAILS } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
 
 const useLogin = (props) => {
-    debugger
     const [values, setValues] = React.useState({
         password: null,
         email: null,
@@ -55,8 +54,8 @@ const useLogin = (props) => {
     const handelSubmit = (e) => {
         // e.preventDefault();
         makeFetch(values);
-        if (!data.message) {
-           return false
+        if(data.message){
+            return false
         }
     }
 

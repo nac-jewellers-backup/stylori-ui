@@ -12,6 +12,7 @@ const Addressform = (props) => {
 }
 
 const AddressComponent = (props) => {
+    debugger
     const { values, handle, setValues } = Addressforms();
     const cl = <input onChange={() => setValues({
         ...values,
@@ -27,14 +28,20 @@ const AddressComponent = (props) => {
                             handle.handleSubmit(e)
                             setValues({ addrs: !values.addrs });
                             localStorage.setItem("valuessetdata", JSON.stringify(values))
-                        }} autoComplete={true}>
-                            <h5 className='title'> Shipping Address</h5>
+                            // window.location.reload(); 
+                            }} autoComplete={true}>
+                           {localStorage.getItem("valuessetdata")&&localStorage.getItem("vals")?"": <h5 className='title'> Shipping Address</h5>}
                             <p class="form-group tp" style={{ width: "480px" }}>
-                                {cl}
+                                {localStorage.getItem("valuessetdata")&&localStorage.getItem("vals")?"":cl}
                             </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={5}>
-                                    {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
+                                   {localStorage.getItem("valuessetdata")&&localStorage.getItem("vals")?
+                                   <h5 className='title'>Edit Address</h5>:
+                                   <>
+                                   {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
                                     {values.checkValue && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
+                                    </>
+                                }
                                     <Grid container spacing={12}>
                                         <Grid item xs={4} lg={4}>
                                             <SimpleSelect val={'1'} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
@@ -104,7 +111,9 @@ const AddressComponent = (props) => {
                                                 onChange={(event) => handle.handleChange('addressOne', 'state', event.target.value)}
                                                 value={values.addressOne.state}
                                                 helperText="State is required"
-                                                required />
+                                                InputProps={{
+                                                    readOnly: true,
+                                                }} required />
                                         </Grid>
                                         <Grid item xs={6} lg={6}>
                                             <Input
@@ -115,7 +124,9 @@ const AddressComponent = (props) => {
                                                 onChange={(event) => handle.handleChange('addressOne', 'city', event.target.value)}
                                                 value={values.addressOne.city}
                                                 helperText="City is required"
-                                                required />
+                                                InputProps={{
+                                                    readOnly: true,
+                                                }} required />
                                         </Grid>
                                     </Grid>
 
@@ -229,7 +240,9 @@ const AddressComponent = (props) => {
                                                     onChange={(event) => handle.handleChange('addressTwo', 'state', event.target.value)}
                                                     value={values.addressTwo.state}
                                                     helperText="State is required"
-                                                    required />
+                                                    InputProps={{
+                                                        readOnly: true,
+                                                    }} required />
                                             </Grid>
                                             <Grid item xs={6} lg={6}>
                                                 <Input
@@ -240,7 +253,9 @@ const AddressComponent = (props) => {
                                                     onChange={(event) => handle.handleChange('addressTwo', 'city', event.target.value)}
                                                     value={values.addressTwo.city}
                                                     helperText="City is required"
-                                                    required />
+                                                    InputProps={{
+                                                        readOnly: true,
+                                                    }} required />
                                             </Grid>
                                         </Grid>
 

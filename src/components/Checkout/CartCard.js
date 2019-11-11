@@ -142,7 +142,6 @@ class Checkoutcard extends React.Component {
     subtotals = () => {
         // const { dataCard1 } = this.props.data;
         const dataCard1 = this.props.data.map(val=>{return val.dataCard1[0].offerPrice}).reduce(myFunc);
-        debugger
         // this.props.data.map(val=>{return val.dataCard1[0].offerPrice}).reduce(myFunc)
         
       var yousave=  this.props.data.map((_data) => {
@@ -198,10 +197,8 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         var data = this.props.data
-        // const {  cartsubdata } = this.props.data;
-
-
-        const { classes } = this.props;
+        const { classes} = this.props;
+        // alert(discounted_price)
         let path = window.location.pathname.split('/').pop();
         return (
             <div>

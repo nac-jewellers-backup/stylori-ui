@@ -44,25 +44,22 @@ const useRegister = () => {
     }
     const handleSubmit = (e) => {
         // e.preventDefault();
-
+        
         if (values.password !== values.confirmpassword) {
             alert("Passwords Don't Match");
             return false
         }
-        else if (values.password == '') {
+        else if (values.password == '') { 
             alert("Passwords must not be empty");
-            return false
-        }
-        else if (data.message) {
             return false
         }
         else {
             makeFetch(values);
-        }
-
+        }   
+        
     }
 
-    const handlers = { handleSubmit, handleChange };
+    const handlers = { handleSubmit, handleChange    };
 
     return { values, handlers, data }
 }
