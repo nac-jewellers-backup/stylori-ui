@@ -18,16 +18,15 @@ const AddressComponent = (props) => {
         checkValue: !values.checkValue
     })} type='checkbox' checked={values.checkValue} />
     var local_storages = (localStorage.getItem("vals"));
-    console.log('sdfdsfkdlsjfldsk',local_storages )
     return (
         <Container>
             <div>
-                {(local_storages === null ? true :false) && values.addrs === true ?
+                {(local_storages === null ? true : false) && values.addrs === true ?
                     <div className='pt-sm'>
                         <form onSubmit={(e) => {
-                            localStorage.setItem("valuessetdata", JSON.stringify(values))
                             handle.handleSubmit(e)
                             setValues({ addrs: !values.addrs });
+                            localStorage.setItem("valuessetdata", JSON.stringify(values))
                         }} autoComplete={true}>
                             <h5 className='title'> Shipping Address</h5>
                             <p class="form-group tp" style={{ width: "480px" }}>
@@ -38,9 +37,9 @@ const AddressComponent = (props) => {
                                     {values.checkValue && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
                                     <Grid container spacing={12}>
                                         <Grid item xs={4} lg={4}>
-                                            <SimpleSelect val={'1'}  name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
+                                            <SimpleSelect val={'1'} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                         </Grid>
-                                        <Grid item xs={4} lg={4}> 
+                                        <Grid item xs={4} lg={4}>
                                             <Input
                                                 name="firstname"
                                                 className='text-f'

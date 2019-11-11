@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CheckForCod } from 'queries/productdetail';
+import { argumentsObjectFromField } from 'apollo-utilities';
+window.cache = {}
 
 const Addressforms = () => {
     // var regid = localStorage.getItem('regid') ? localStorage.getItem('regid') : ""
@@ -59,23 +61,33 @@ const Addressforms = () => {
     addObj["isguestlogin"] = cont ? false : true
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addaddress', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
-    useEffect(() => {
+    useEffect((...args) => {
+        debugger
         const a = CodData.data ? CodData.data.allPincodeMasters : ""
         if (a) {
             var res = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].state : ''
             var res1 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].country : ''
             var res2 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].district : ''
-            values['addressOne']['state'] = res
-            values['addressOne']['country'] = res1
-            values['addressOne']['city'] = res2
+            if (window.cache.addressOne) {
+                debugger
+                window.cache = {}
+                values['addressOne']['state'] = res
+                values['addressOne']['country'] = res1
+                values['addressOne']['city'] = res2
+            }
+            if (window.cache.addressTwo) {
+                window.cache = {}
+                values['addressTwo']['state'] = res
+                values['addressTwo']['country'] = res1
+                values['addressTwo']['city'] = res2
+            }
 
-            values['addressTwo']['state'] = res
-            values['addressTwo']['country'] = res1
-            values['addressTwo']['city'] = res2
             setValues({ ...values, values })
+
         }
     }, [CodData])
     const handleChange = (type, field, value) => {
+        debugger
         values[type][field] = value;
         if (field === 'pincode') {
             values[type]['pincode'] = value;
@@ -88,9 +100,31 @@ const Addressforms = () => {
                 }
             }
         }
+        window.cache[type] = true
         setValues({ ...values, values })
     }
 
+
+    // var locl = values
+    // var locl_products = []
+    // var local = {}
+    // if (locl && Object.entries(locl).length > 0 && locl.constructor === Object) {
+    // var locl = values
+    //     locl_products = values.map(val => { return val })
+    // }
+
+    // var products_sku_list = () => {
+    //     if (locl_products.length > 0) {
+    //         locl_products.push(local);
+    //         return locl_products
+
+    //     }
+    //     else {
+    //         locl_products.push(local)
+    //         return locl_products
+    //     }
+
+    // }
     const handleSubmit = (e) => {
         e.preventDefault()
         var a1 = values.addressOne
@@ -103,7 +137,9 @@ const Addressforms = () => {
             addObj['address'] = [a1, a2];
         }
         makeFetch(addObj);
+        // localStorage.setItem("valuessetdata", JSON.stringify(products_sku_list()))
     }
+
     const handleKeyPress = (e, isNumber) => {
         if (isNumber) {
             if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();

@@ -20,9 +20,9 @@ const LoginComponent = (props) => {
     return (
         <div className='pt-sm'>
             <form action="javascript:void(0)" onSubmit={() => {
-                // if (cc) {
-                    props.changePanel(2)
-                // }
+                if (!vl) {
+                    props.changePanel(3)
+                }
                 handlers.doLogin()
             }}>
                 <Grid container item xs={12} lg={6}>

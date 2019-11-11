@@ -9,10 +9,6 @@ const useRegister = () => {
         email: null,
         password: null,
         confirmpassword: null,
-        error:{
-            pass:false,
-            confirmPassword:false
-        },
         roles: ["user"]
     });
 
@@ -44,31 +40,26 @@ const useRegister = () => {
         setValues({
             ...values,
             [type]: value,
-            error:{
-                pass:false,
-                confirmPassword:false
-            }
         })
     }
-    const handleSubmit = (e) => { 
+    const handleSubmit = (e) => {
         // e.preventDefault();
-        if(values.password !== values.confirmpassword){
-            // alert("The passwords doesn't match");
-            setValues({
-                ...values,
-                error:{
-                    pass:true,
-                    confirmPassword:true
-                }
-            })
-            return false; 
-        }        
-            makeFetch(values);
-     }
         
-    
+        if (values.password !== values.confirmpassword) {
+            alert("Passwords Don't Match");
+            return false
+        }
+        else if (values.password == '') { 
+            alert("Passwords must not be empty");
+            return false
+        }
+        else {
+            makeFetch(values);
+        }
+        
+    }
 
-    const handlers = { handleSubmit, handleChange };
+    const handlers = { handleSubmit, handleChange    };
 
     return { values, handlers, data }
 }

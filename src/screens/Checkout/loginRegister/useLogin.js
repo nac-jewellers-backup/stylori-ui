@@ -4,7 +4,8 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
 
-const useLogin = () => {
+const useLogin = (props) => {
+    debugger
     const [values, setValues] = React.useState({
         password: null,
         email: null,
@@ -15,12 +16,11 @@ const useLogin = () => {
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
 
     React.useEffect(() => {
-        debugger
         var a = data.userprofile ? data.userprofile : ""
         if (JSON.stringify(a).length > 10) {
             var bbn = data.userprofile.id ? data.userprofile.id : ""
             if (bbn || bbn !== undefined) {
-                localStorage.setItem("email",data.userprofile.email)
+                localStorage.setItem("email", data.userprofile.email)
                 var obj = {}
                 var bb = data.userprofile.id ? data.userprofile.id : ""
                 obj['userprofileId'] = bb
@@ -51,13 +51,20 @@ const useLogin = () => {
         })
     }
 
-    const doLogin = () => {
+    const vl = data && data.message
+    const doLogin = (e) => {
+        // e.preventDefault();
         makeFetch(values);
+        // if (!vl) {
+        //     props.changePanel(3)
+        // }else{
+        //     return false
+        // }
     }
 
     const handlers = { handleChange, handleInvalid, doLogin };
 
-    return { values, handlers ,data}
+    return { values, handlers, data }
 }
 
 export default useLogin;
