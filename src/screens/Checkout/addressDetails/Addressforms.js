@@ -3,13 +3,13 @@ import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CheckForCod } from 'queries/productdetail';
 import { argumentsObjectFromField } from 'apollo-utilities';
-window.cache = {}
 
 const Addressforms = () => {
     // var regid = localStorage.getItem('regid') ? localStorage.getItem('regid') : ""
     var cont = localStorage.getItem('true') ? localStorage.getItem('true') : ""
     let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : {}
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
+let cache = {}
     let changeaddr = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
     const [address, setAddress] = React.useState({})
     const [values, setValues] = React.useState({
@@ -62,21 +62,19 @@ const Addressforms = () => {
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addaddress', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     useEffect((...args) => {
-        debugger
         const a = CodData.data ? CodData.data.allPincodeMasters : ""
         if (a) {
             var res = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].state : ''
             var res1 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].country : ''
             var res2 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].district : ''
-            if (window.cache.addressOne) {
-                debugger
-                window.cache = {}
+            if (cache.addressOne) {
+                cache = {}
                 values['addressOne']['state'] = res
                 values['addressOne']['country'] = res1
                 values['addressOne']['city'] = res2
             }
-            if (window.cache.addressTwo) {
-                window.cache = {}
+            if (cache.addressTwo) {
+                cache = {}
                 values['addressTwo']['state'] = res
                 values['addressTwo']['country'] = res1
                 values['addressTwo']['city'] = res2
@@ -87,7 +85,6 @@ const Addressforms = () => {
         }
     }, [CodData])
     const handleChange = (type, field, value) => {
-        debugger
         values[type][field] = value;
         if (field === 'pincode') {
             values[type]['pincode'] = value;
@@ -100,7 +97,7 @@ const Addressforms = () => {
                 }
             }
         }
-        window.cache[type] = true
+        cache[type] = true
         setValues({ ...values, values })
     }
 

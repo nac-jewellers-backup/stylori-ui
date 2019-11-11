@@ -16,7 +16,7 @@ const RegisterComponent = (props) => {
     return (
         <div className='pt-sm'>
             <form action="javascript:void(0)" onSubmit={() => {
-                if (values.password == values.confirmpassword) {
+                if (values.password == values.confirmpassword&&!data.message) {
                     props.changePanel(2)
                 }
                 handlers.handleSubmit(values)

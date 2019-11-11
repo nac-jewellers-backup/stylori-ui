@@ -1,4 +1,14 @@
+#loadings {
+  display: block;
+  margin: auto;
+  /* background-image: url("https://alpha-assets.stylori.com/images/static/loadingimg.gif"); */
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
+.overall-loaders {
+  display: flex;
+}
   @keyframes placeHolderShimmer {
     0% {
       background-position: -490px 0;
@@ -71,6 +81,7 @@
     justify-content: space-around;
     overflow: hidden;
     /* background-color: whitesmoke; */
+    height: 100%;
   }
   .productLayoutGridList{
     width: 100%;

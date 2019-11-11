@@ -94,8 +94,8 @@ export const CheckForCod = `query CheckForCod($pincode:String) {
 }
 `
 export const ADDRESSDETAILS = `
-query MyQuery($userprofileId: String) {
-  allUserAddresses( condition: {userprofileId: $userprofileId}) {
+query MyQuery($id: UUID) {
+  allUserAddresses(first: 1, condition: {id: $id}) {
     nodes {
       addressline1
       addressline2

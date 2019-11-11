@@ -41,11 +41,10 @@ const Provider = (props) => {
     }, [crtdata])
     useEffect(() => {
         if (userIds.length > 0) {
-            if (JSON.stringify(cartdetails).length > 0) {
-                var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
-                const user_id = userIds
-                var addcart = ({ products, user_id })
-                addtocart(addcart)
+            if (cartdetails && JSON.stringify(cartdetails).length > 0) {
+
+                // const user_id = userIds
+                // makeFetch({--login---})
             }
         }
         if (guestlogId.length > 0) {
@@ -54,6 +53,7 @@ const Provider = (props) => {
                 var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
                 const user_id = cartFilters.user_id
                 var addcart = ({ products, user_id })
+                console.log('verifiedMaill', addcart)
                 addtocart(addcart)
             }
         }
@@ -94,7 +94,6 @@ const Provider = (props) => {
                 
                 var skuObj = { "cart_id": cartId, "user_id": userId, "products": products_sku_list() }
                 localStorage.setItem('cartDetails', JSON.stringify(skuObj));
-                console.log('dddssddsds', skuObj)
             }
         }
     }, [user_id, price])

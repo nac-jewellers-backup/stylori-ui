@@ -6,6 +6,7 @@ import Cart from 'screens/Stylori/Cart'
 import Checkout from 'screens/Stylori/Checkout'
 import Register from 'screens/Checkout/loginRegister/register';
 import routes from "router/routes";
+import { withRouter } from "react-router";
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
       
@@ -27,19 +28,20 @@ import routes from "router/routes";
 //     }
 // }
 
-
-export const RouterApp = () => {
-
+export const RouterApp = (props) => {
+console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
     return (
         <Switch>
-            <Redirect key="stylori-redirect" from="/" exact to={routes.stylori} />
+            <Redirect key="stylori-redirect" from="/" exact to={"/jewellery"} />
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
-            <Route key="stylori" component={Stylori}  path={routes.stylori} />
-            <Route  component={PricingPage}  path={`/:productCategory/:productType/:material/:productName`} />
-            {/* {https://www.stylori.com/jewellery/earrings/diamond/Lavender-Love?skuid=54269} */}
-            <Route key="Cart" component={Cart} exact path={routes.Cart} />
+            
+            {(props.location.pathname !== "/cart" && props.location.pathname !== "/checkout") &&
+             <Route exact={true} component={Stylori}  path={"/:listingpage"} />}
+            
+            <Route  exact component={PricingPage}  path={`/:productCategory/:productType/:material/:productName`} />
+             <Route key="cart" exact component={Cart}  path={routes.Cart} />
             <Route key="Register" component={Register} exact path={routes.Register} />
         </Switch>
     );
 };
-export default RouterApp;
+export default withRouter(RouterApp);
