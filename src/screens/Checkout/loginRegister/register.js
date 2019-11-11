@@ -12,11 +12,11 @@ const Register = (props) => {
 const RegisterComponent = (props) => {
     const { values, handlers, data } = useRegister();
     var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
-    var ccc= data.message?data.message:""
+    // var ccc = data.message ? data.message : ""
     return (
         <div className='pt-sm'>
             <form action="javascript:void(0)" onSubmit={() => {
-                if (values.password == values.confirmpassword&&!data.message) {
+                if (values.password == values.confirmpassword && !data.message) {
                     props.changePanel(2)
                 }
                 handlers.handleSubmit(values)
@@ -36,7 +36,7 @@ const RegisterComponent = (props) => {
                             placeholder="enter your email Id"
                             onChange={e => handlers.handleChange('email', e.target.value)}
                             required
-                            />
+                        />
                         <Input
                             margin="normal"
                             variant="outlined"
