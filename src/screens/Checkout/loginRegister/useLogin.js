@@ -8,7 +8,15 @@ const useLogin = (props) => {
     const [values, setValues] = React.useState({
         password: null,
         email: null,
-        roles: ["user"]
+        roles: ["user"],
+        errortext: {
+            emerr: "",
+            passerr: "",
+        },
+        error: {
+            passerr: false,
+            emerr: false,
+        }
     });
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/signin', {}, []);
@@ -52,11 +60,42 @@ const useLogin = (props) => {
 
     // const vl = data && data.message
     const handelSubmit = (e) => {
+        debugger
+        console.log('valuesvaluesstate', 'hey i have came in... handle submit')
         // e.preventDefault();
-        makeFetch(values);
-        if(data.message){
-            return false
+        if (values.email === null) {
+            values['error']['emerr'] = true
+            values['errortext']['emerr'] = 'Mail is Required'
+            setValues({
+                ...values,
+                values,
+            })
         }
+        if (values.password === null) {
+            values['error']['passerr'] = true
+            values['errortext']['passerr'] = 'password is Required'
+            setValues({
+                ...values,
+                values,
+            })
+
+        }
+        if (values.confirmpassword === null) {
+            values['error']['cnfpasserr'] = true
+            values['errortext']['cnfpasserr'] = 'Confirm password is Required'
+            setValues({
+                ...values,
+                values,
+            })
+        }
+        // if (data.message > 5) {
+        //     values['error']['emerr'] = true
+        //     values['errortext']['emerr'] = 'your mail is already exists'
+        //     setValues({
+        //         emerr: "your mail is already exists"
+        //     })
+        // }
+        makeFetch(values);
     }
 
     const handlers = { handleChange, handleInvalid, handelSubmit };

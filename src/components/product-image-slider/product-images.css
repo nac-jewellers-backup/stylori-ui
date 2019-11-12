@@ -526,7 +526,8 @@
         font-size: 15px !important;
 
     }
-    .MuiExpansionPanelSummary-root.Mui-expanded{
+
+    .MuiExpansionPanelSummary-root.Mui-expanded {
         border-bottom: 0.2px solid #f5cacc !important;
     }
 
@@ -535,7 +536,7 @@
     .MuiExpansionPanelSummary-root,
     .MuiExpansionPanel-root:before,
     .MuiExpansionPanel-root.Mui-expanded .MuiExpansionPanel-rounded:last-child .MuiExpansionPanel-rounded:first-child {
-        padding: 0  !important;
+        padding: 0 !important;
         border-bottom-left-radius: 0px !important;
         border-bottom-right-radius: 0px !important;
     }
@@ -584,13 +585,21 @@
         margin-left: 3%;
     }
 
+    .img-zooming- {
+        margin-top: -12% !important;
+    }
+
+    .modalin-ring {
+   
+    }
+
     .one-day-ship {
-        width: 130px;
-        height: 60px;
-        left: 14%;
+        width: 152px !important;
+        height: 12% !important;
         background-image: url(https://assets-cdn.stylori.com/images/static/product-details-icons.png);
-        top: 5px;
-        background-repeat: no-repeat;
+        margin-top: -30px !important;
+        background-repeat: no-repeat !important;
+        margin-left: -6%;
     }
 
     .overly-img {

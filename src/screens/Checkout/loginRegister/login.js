@@ -33,25 +33,24 @@ const LoginComponent = (props) => {
                         variant="outlined"
                         type="email"
                         name="email"
-                        value={values.email}
-                        // error={data.message ? true : false}
+                        error={values.error && values.error.emerr ? true : false}
+                        helperText={values.errortext && values.errortext.emerr}
                         onChange={e => handlers.handleChange('email', e.target.value)}
-                        required
-                        helperText="Username is Required"
                         placeholder="your-id@email.com"
                     />
+                    <label className='errtext'> {values.errortext && values.errortext.emerr}</label>
                     <Input
                         margin="normal"
                         variant="outlined"
                         type="password"
                         name="password"
-                        required
                         value={values.password}
-                        error={data.message ? true : false}
-                        helperText="Password is Required"
+                        error={values.error && values.error.passerr ? true : false}
+                        helperText={values.errortext && values.errortext.passerr}
                         placeholder="enter your password"
                         onChange={e => handlers.handleChange('password', e.target.value)}
                     />
+                    <label className='errtext'> {values.errortext && values.errortext.passerr}</label>
                     <div className='log-pas'>
                         <span className={`pas-fr ${classes.normalfonts}`} style={{ cursor: "pointer" }}>Forgot Password ?</span>
                         <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>

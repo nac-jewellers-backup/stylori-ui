@@ -9,7 +9,17 @@ const useRegister = () => {
         email: null,
         password: null,
         confirmpassword: null,
-        roles: ["user"]
+        roles: ["user"],
+        errortext: {
+            emerr: "",
+            passerr: "",
+            cnfpasserr: "",
+        },
+        error: {
+            passerr: false,
+            emerr: false,
+            cnfpasserr: false
+        }
     });
 
     const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
@@ -43,23 +53,58 @@ const useRegister = () => {
         })
     }
     const handleSubmit = (e) => {
-        // e.preventDefault();
-        
+        debugger
+        if (values.email === null) {
+            values['error']['emerr'] = true
+            values['errortext']['emerr'] = 'Mail is Required'
+            setValues({
+                ...values,
+                values,
+            })
+        }
+        if (values.password === null) {
+            values['error']['passerr'] = true
+            values['errortext']['passerr'] = 'password is Required'
+            setValues({
+                ...values,
+                values,
+            })
+
+        }
+        if (values.confirmpassword === null) {
+            values['error']['cnfpasserr'] = true
+            values['errortext']['cnfpasserr'] = 'Confirm password is Required'
+            setValues({
+                ...values,
+                values,
+            })
+        }
         if (values.password !== values.confirmpassword) {
-            alert("Passwords Don't Match");
-            return false
+            values['error']['passerr'] = true
+            values['error']['cnfpasserr'] = true
+            values['errortext']['passerr'] = "Passwords Don't Match"
+            values['errortext']['cnfpasserr'] = "Passwords Don't Match"
+            setValues({
+                ...values,
+                values,
+            })
+            return false 
         }
-        else if (values.password == '') { 
-            alert("Passwords must not be empty");
-            return false
-        }
-        else {
-            makeFetch(values);
-        }   
-        
+
+        //  if (data.message > 5) {
+        //     values['error']['emerr'] = true
+        //     values['errortext']['emerr'] = 'your mail is already exists'
+        //     setValues({
+        //         emerr: "your mail is already exists"
+        //     })
+        // }
+        makeFetch(values);
+        // setValues({
+        //     err
+        // })
     }
 
-    const handlers = { handleSubmit, handleChange    };
+    const handlers = { handleSubmit, handleChange };
 
     return { values, handlers, data }
 }

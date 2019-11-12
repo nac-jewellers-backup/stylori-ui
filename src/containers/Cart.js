@@ -108,8 +108,7 @@ class Cart extends React.Component {
 
 
 const Components = props => {
-    let { CartCtx: { data, loading, error } } = React.useContext(CartContext);
-
+    let { CartCtx: {cartFilters:{discounted_price}, data, loading, error } } = React.useContext(CartContext);
     let content, mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {

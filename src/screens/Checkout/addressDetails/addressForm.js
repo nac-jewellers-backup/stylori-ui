@@ -22,26 +22,26 @@ const AddressComponent = (props) => {
     return (
         <Container>
             <div>
-                {(local_storages === null ? true : false) && values.addrs === true ?
+                {(local_storages === null ? false:true  ) && values.addrs === true ?
                     <div className='pt-sm'>
                         <form onSubmit={(e) => {
                             handle.handleSubmit(e)
                             setValues({ addrs: !values.addrs });
                             localStorage.setItem("valuessetdata", JSON.stringify(values))
                             // window.location.reload(); 
-                            }} autoComplete={true}>
-                           {localStorage.getItem("valuessetdata")&&localStorage.getItem("vals")?"": <h5 className='title'> Shipping Address</h5>}
+                        }} autoComplete={true}>
+                            {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <h5 className='title'> Shipping Address</h5>}
                             <p class="form-group tp" style={{ width: "480px" }}>
-                                {localStorage.getItem("valuessetdata")&&localStorage.getItem("vals")?"":cl}
+                                {cl}
                             </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={5}>
-                                   {localStorage.getItem("valuessetdata")&&localStorage.getItem("vals")?
-                                   <h5 className='title'>Edit Address</h5>:
-                                   <>
-                                   {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
-                                    {values.checkValue && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
-                                    </>
-                                }
+                                    {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ?
+                                        <h5 className='title'>Edit Address</h5> :
+                                        <>
+                                            {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
+                                            {values.checkValue && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
+                                        </>
+                                    }
                                     <Grid container spacing={12}>
                                         <Grid item xs={4} lg={4}>
                                             <SimpleSelect val={'1'} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />

@@ -57,8 +57,10 @@ class ProductDetails extends React.Component {
                                                                                 })}
                                                                             </ListItemText>
                                                                             :
+
                                                                             <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
-                                                                                <span style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</span>
+                                                                                {/* {data[0].productsDetails[3].namedetail[1].length > 0} */}
+                                                                                    <del style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</del>
                                                                             </ListItemText>
                                                                     }
                                                                 </Grid>
@@ -106,7 +108,7 @@ class ProductDetails extends React.Component {
                             (data[0].productType !== "Earring" && val.header === 'Gemstone Details')
                             || (data[0].productType === "Earring" && val.header.trim() === 'Diamond Details')) ? false :
                             <>
-                                <ExpansionPanel style={{ boxShadow: "0px 0px 2px 0px #ed1165" }} expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
+                                <ExpansionPanel style={{ boxShadow: "none" }} expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
                                     <ExpansionPanelSummary className="expansion-summary"
                                         expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" >
                                         </i></span>}>
@@ -153,7 +155,7 @@ class ProductDetails extends React.Component {
 
                     {data[0].productsPendants.map(val => (
                         <div>
-                            <ExpansionPanel style={{ boxShadow: "0px 0px 2px 0px #ed1165" }} expanded={expanded === 'panel'} onChange={this.handle('panel')}>
+                            <ExpansionPanel style={{ boxShadow: "none" }} expanded={expanded === 'panel'} onChange={this.handle('panel')}>
                                 <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                                     <i class="fa fa-sort-up" ></i></span>}>
                                     <div style={{ width: "100%" }} >

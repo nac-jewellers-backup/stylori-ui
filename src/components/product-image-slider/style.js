@@ -1,5 +1,5 @@
 const styles = theme => ({
-    title:{
+    title: {
         [theme.breakpoints.down('lg')]: {
             fontSize: '15px',
             // fontWeight: 'bold'
@@ -34,6 +34,26 @@ const styles = theme => ({
         },
     },
     // pricetabs
+    modals: {
+        [theme.breakpoints.down('xs')]: {
+            background: '#fff !important',
+            height: 'auto',
+            width: '60%',
+            marginTop: '3%',
+            marginBottom: '3%',
+            marginLeft: '20%',
+            outline: 'none !important',
+        },
+        [theme.breakpoints.up('lg')]: {
+            background: '#fff !important',
+            height: 'auto',
+            width: '60%',
+            marginTop: '3%',
+            marginBottom: '3%',
+            marginLeft: '20%',
+            outline: 'none !important',
+        },
+    },
     pagination: {
         [theme.breakpoints.down('xs')]: {
             textAlign: "center",
