@@ -41,9 +41,9 @@ class ProductImageZoom extends React.Component {
   productImageZoom = () => {
     // console.log(this.props.data)
     const { classes, data } = this.props
+    debugger
     const limit = 4;
     const { showimage } = this.state;
-
     const dataCarousel = {
       infinite: false,
       slidesToShow: data[0] && data[0].fadeImages.length > 4 ? limit : data[0].fadeImages.length,
@@ -74,9 +74,9 @@ class ProductImageZoom extends React.Component {
           <Grid item xs={10}>
             <div>
               <div className='imagecard' id="divs" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
-                {/* <span class="one-day-ship" ></span> */}
+                {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship" ></div> : ""}
                 {/* <div id='flashlight'></div> */}
-                <img id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
+                <img className='img-zooming-' id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
               </div>
               <div className='overly-img' id="overlay"
                 style={{ backgroundImage: `url(${showimage})` }} onMouseOut={event => this.zoomOut(event)}></div>

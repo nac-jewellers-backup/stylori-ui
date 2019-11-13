@@ -4,12 +4,22 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { resetWarningCache } from 'prop-types';
 
-const useRegister = () => {
+const useRegister = (changePanel) => {
     const [values, setValues] = React.useState({
         email: null,
         password: null,
         confirmpassword: null,
-        roles: ["user"]
+        roles: ["user"],
+        errortext: {
+            emerr: "",
+            passerr: "",
+            cnfpasserr: "",
+        },
+        error: {
+            passerr: false,
+            emerr: false,
+            cnfpasserr: false
+        }
     });
 
     const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
@@ -42,24 +52,47 @@ const useRegister = () => {
             [type]: value,
         })
     }
+    const errmsg = data.message ? data.message : ""
+    const user = data.user_profile_id ? data.user_profile_id : ""
     const handleSubmit = (e) => {
-        // e.preventDefault();
+        if (values.email === null && values.password === null && values.confirmpassword === null) {
+            values['error']['emerr'] = true
+            values['errortext']['emerr'] = 'Mail is Required'
+            values['error']['passerr'] = true
+            values['errortext']['passerr'] = 'password is Required'
+            values['error']['cnfpasserr'] = true
+            values['errortext']['cnfpasserr'] = 'Confirm password is Required'
+            setValues({
+                ...values,
+                values,
+            })
+            return false
+        }
 
         if (values.password !== values.confirmpassword) {
-            alert("Passwords Don't Match");
+            values['error']['passerr'] = true
+            values['error']['cnfpasserr'] = true
+            values['errortext']['passerr'] = "Passwords Don't Match"
+            values['errortext']['cnfpasserr'] = "Passwords Don't Match"
+            setValues({
+                ...values,
+                values,
+            })
             return false
         }
-        else if (values.password == '') {
-            alert("Passwords must not be empty");
+        makeFetch(values);
+        if (errmsg.length > 0) {
+            values['error']['emerr'] = true
+            values['errortext']['emerr'] = 'your mail is already exists'
+            setValues({
+                ...values,
+                values,
+            })
             return false
         }
-        else if (data.message) {
-            return false
+        if (user.length>0) {
+            changePanel(3)
         }
-        else {
-            makeFetch(values);
-        }
-
     }
 
     const handlers = { handleSubmit, handleChange };

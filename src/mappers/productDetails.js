@@ -61,8 +61,8 @@ const generatedimondClarity = (val) => {
         icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
     }))
 }
-const generateShipsBy = () => {
-    var isReadytoShip = false
+const generateShipsBy = (PD) => {
+    var isReadytoShip = PD.isReadyToShip
     var numberOfDays = 5
     var date = moment().format(' h a')
     console.log(date)
@@ -157,7 +157,8 @@ export default function (data, cdnUrl) {
                 telephone: '1800-102-0330',
                 phonenum: "+91 99526 25252",
                 chat: "Chat",
-                shipby: generateShipsBy()
+                shipby: generateShipsBy(PD),
+                isReadyToShip: PD.isReadyToShip
             }],
             // //////////////////////////     productsDetails    ////////////////////////////////////////////
             productsDetails: [{

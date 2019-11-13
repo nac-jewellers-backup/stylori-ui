@@ -8,7 +8,7 @@ import {
     Tabs,
     Tab,
     Typography,
-    Container
+    Container, Modal, Button
 } from '@material-ui/core';
 import React from 'react';
 import SwipeableViews from 'react-swipeable-views';
@@ -42,7 +42,15 @@ class Component extends React.Component {
         expanded: null,
         skuSize: '',
         purity: '',
-        diamondType: ""
+        diamondType: "",
+        open: false
+    };
+    handleOpen = () => {
+        this.setState({ open: true });
+    };
+
+    handleClose = () => {
+        this.setState({ open: false });
     };
     // componentDidUpdate(prevProps) {
     //     var filters = { ...this.props.filters }
@@ -194,8 +202,19 @@ class Component extends React.Component {
                                                 }
                                                 )}
                                             </Slideshow>
+                                            <Modal
+                                                aria-labelledby="simple-modal-title"
+                                                aria-describedby="simple-modal-description"
+                                                open={this.state.open}
+                                                onClose={this.handleClose}
+                                                style={{ overflowY: 'scroll' }}
+                                            >
+                                                <div className={`${classes.modals} "modalin-ring"`}>
+                                                    <img height='100%' width='100%' src='https://assets-cdn.stylori.com/images/static/Ring-size.jpg' />
+                                                </div>
+                                            </Modal>
                                             <div style={{ marginTop: "10px", textAlign: "center" }}>
-                                                <span className={`my-ringsize ${classes.normalfonts}`}>My Ring Size ?</span>
+                                                <span style={{ cursor: "pointer" }} className={`my-ringsize ${classes.normalfonts} `} onClick={this.handleOpen}>My Ring Size ?</span>
                                             </div>
                                         </div>
                                     </TabContainer>}
@@ -278,11 +297,11 @@ class Component extends React.Component {
                         <Container>
                             <>
                                 {arr.length > 0 ?
-                                    <ExpansionPanel style={{boxShadow:"0px 0px 2px 0px #ed1165"}} style={{boxShadow:"0px 0px 2px 0px #ed1165"}} expanded={expanded === val.header} onChange={this.handle(val.header)}>
+                                    <ExpansionPanel style={{ boxShadow: "none" }} expanded={expanded === val.header} onChange={this.handle(val.header)}>
                                         <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
                                             <div style={{ width: "100%" }} >
                                                 <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab1.header}</Typography>
-                                                <hr class="bottom-line border-line-"></hr>
+                                                {/* <hr class="bottom-line border-line-"></hr> */}
                                             </div>
                                         </ExpansionPanelSummary>
                                         <ExpansionPanelDetails style={{ padding: "8px 24px 0px" }}>
@@ -297,16 +316,19 @@ class Component extends React.Component {
                                                             >
                                                                 {val}
                                                             </button>
+                                                            <div style={{ marginTop: "10px", textAlign: "center" }}>
+                                                                
+                                                            </div>
                                                         </>
                                                     )}
                                                 </Slideshow>
-                                            </div>
+                                                <span style={{ cursor: "pointer" }} className={`my-ringsize ${classes.normalfonts}`} onClick={this.handleOpen}>My Ring Size ?</span> </div>
                                         </ExpansionPanelDetails>
                                     </ExpansionPanel>
                                     : ""}
                                 {/* className="panel-head" */}
                                 {arr2 || arr2.length > 0 ?
-                                    <ExpansionPanel style={{boxShadow:"0px 0px 2px 0px #ed1165"}} expanded={expanded === val.tab2.header} onChange={this.handle(val.tab2.header)}>
+                                    <ExpansionPanel style={{ boxShadow: "none" }} expanded={expanded === val.tab2.header} onChange={this.handle(val.tab2.header)}>
                                         <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
                                             <div style={{ width: "100%" }} >
                                                 <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab2.header}</Typography>
@@ -330,7 +352,7 @@ class Component extends React.Component {
                                         </ExpansionPanelDetails>
                                     </ExpansionPanel> : ""}
                                 {val.tab3.Children.length > 0 ?
-                                    <ExpansionPanel style={{boxShadow:"0px 0px 2px 0px #ed1165"}} expanded={expanded === val.tab3.header} onChange={this.handle(val.tab3.header)}>
+                                    <ExpansionPanel style={{ boxShadow: "none" }} expanded={expanded === val.tab3.header} onChange={this.handle(val.tab3.header)}>
                                         <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
                                             <div style={{ width: "100%" }} >
                                                 <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab3.header}</Typography>

@@ -12,18 +12,16 @@ const Login = (props) => {
 
 const LoginComponent = (props) => {
     const { classes } = props;
-    const { values, handlers, data } = useLogin();
-    // const vl = data.message ? data.message : ""
-    var cc = data.allUserAddresses?data.allUserAddresses.nodes[0] : ""
+    const { values, handlers, data } = useLogin(() => props.changePanel(3));
+    const vl = data && data.message
+    // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
+    var prof = data.userprofile ? data.userprofile.email : ""
     // alert(JSON.stringify(data))
-
+    console.log('valuesvaluesvalues', values)
     return (
         <div className='pt-sm'>
-            <form action="javascript:void(0)" onSubmit={() => {
-                if (!data.message&&!cc) {
-                    props.changePanel(3)
-                }
-                handlers.handelSubmit()
+            <form action="javascript:void(0)" onSubmit={(e) => {
+                handlers.handelSubmit(e)
             }}>
                 <Grid container item xs={12} lg={6}>
                     <h5 className={`title ${classes.normalfonts}`}>  I already have an account </h5>
@@ -33,24 +31,24 @@ const LoginComponent = (props) => {
                         type="email"
                         name="email"
                         value={values.email}
-                        error={data.message ? true : false}
+                        error={values.error && values.error.emerr ? true : false}
+                        helperText={values.errortext && values.errortext.emerr}
                         onChange={e => handlers.handleChange('email', e.target.value)}
-                        required
-                        helperText="Username is Required"
                         placeholder="your-id@email.com"
                     />
+                    <label className='errtext'> {values.errortext && values.errortext.emerr}</label>
                     <Input
                         margin="normal"
                         variant="outlined"
                         type="password"
                         name="password"
-                        required
                         value={values.password}
-                        // error={this.state.Password ? this.state.Password : "**"}
-                        helperText="Password is Required"
+                        error={values.error && values.error.passerr ? true : false}
+                        helperText={values.errortext && values.errortext.passerr}
                         placeholder="enter your password"
                         onChange={e => handlers.handleChange('password', e.target.value)}
                     />
+                    <label className='errtext'> {values.errortext && values.errortext.passerr}</label>
                     <div className='log-pas'>
                         <span className={`pas-fr ${classes.normalfonts}`} style={{ cursor: "pointer" }}>Forgot Password ?</span>
                         <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>
@@ -60,7 +58,7 @@ const LoginComponent = (props) => {
                     </div>
                     <div className='login-butn'>
                         <Button className='back-b' onClick={() => props.change()} >Back</Button>
-                        <Button className='apply-b'  type="submit">Apply</Button>
+                        <Button className='apply-b' type="submit">Apply</Button>
                     </div>
 
                 </Grid>

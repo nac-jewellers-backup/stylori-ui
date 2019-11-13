@@ -4,11 +4,19 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
 
-const useLogin = (props) => {
+const useLogin = (changePanel) => {
     const [values, setValues] = React.useState({
         password: null,
         email: null,
-        roles: ["user"]
+        roles: ["user"],
+        errortext: {
+            emerr: "",
+            passerr: "",
+        },
+        error: {
+            passerr: false,
+            emerr: false,
+        }
     });
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/signin', {}, []);
@@ -51,12 +59,41 @@ const useLogin = (props) => {
     }
 
     // const vl = data && data.message
+    const errmsg = data.message ? data.message : ""
+    const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
-        // e.preventDefault();
-        makeFetch(values);
-        if (!data.message) {
-           return false
+        if (values.email === null) {
+            values['error']['emerr'] = true
+            values['errortext']['emerr'] = 'Mail is Required'
+            setValues({
+                ...values,
+                values,
+            })
+            return false
         }
+        if (values.password === null) {
+            values['error']['passerr'] = true
+            values['errortext']['passerr'] = 'password is Required'
+            setValues({
+                ...values,
+                values,
+            })
+            return false
+        }
+        makeFetch(values);
+        if (errmsg.length > 0) {
+            values['error']['passerr'] = true
+            values['errortext']['passerr'] = 'Invalid Password!'
+            setValues({
+                ...values,
+                values,
+            })
+            return false
+        }
+        if (auth.length > 0) {
+            changePanel(3)
+        }
+
     }
 
     const handlers = { handleChange, handleInvalid, handelSubmit };

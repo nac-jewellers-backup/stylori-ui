@@ -192,7 +192,7 @@ class Request extends React.Component {
 
                 <Hidden mdUp>
                     <Container>
-                        <ExpansionPanel style={{boxShadow:"0px 0px 2px 0px #ed1165"}} expanded={expanded === 'panel3'} onChange={this.handle('panel3')}>
+                        <ExpansionPanel style={{boxShadow:"none"}} expanded={expanded === 'panel3'} onChange={this.handle('panel3')}>
                             <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                                 <i class="fa fa-sort-up" ></i></span>}
                             >

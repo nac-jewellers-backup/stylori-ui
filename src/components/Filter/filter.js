@@ -110,21 +110,9 @@ class Component extends React.Component {
     this.props.setloadingfilters(true)
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
-    let arr = [];
     var queries = [{}]
-  
     
-    Object.keys(checked).map(fk => {
-      const filter = checked[fk];
-      const fv = Object.keys(filter);
-      if (fv.length > 0) {
-          if (filter[fv[0]]) {
-              const qt = `${fk}:${fv[0]}`;
-              queries.push(qt);
-          }
 
-      }
-  })
 
 console.log('queries',queries)
 // queries.map(val =>{
@@ -167,7 +155,10 @@ console.log('queries',queries)
         paramsMapUrlSetState()
     }
 
-    
+    let arr = [];
+    if (BoolName === true) {
+      arr=  chipData.push({ key: chipData, label: value });
+    }  
     // let checkedvalue = {};
     // checkedvalue[value] = BoolName
     // TargetName === undefined ?  checked[e.target.name] = checkedvalue : checked[TargetName] = checkedvalue

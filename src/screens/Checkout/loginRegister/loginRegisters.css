@@ -13,7 +13,10 @@
     font-weight: 600 !important;
     line-height: 1.1;
 }
-
+.errtext{
+    color: #b94a48 !important;
+    font-size: 15px !important;
+}
 .login-butn {
     float: right !important;
     margin-top: 10px !important;

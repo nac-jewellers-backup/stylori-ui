@@ -2,11 +2,14 @@ import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CheckForCod } from 'queries/productdetail';
-import { argumentsObjectFromField } from 'apollo-utilities';
-window.cache = {}
+// window.cache = {}
 
 const Addressforms = () => {
+    debugger
     // var regid = localStorage.getItem('regid') ? localStorage.getItem('regid') : ""
+    let lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
+    let lgn1 = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
+    let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
     var cont = localStorage.getItem('true') ? localStorage.getItem('true') : ""
     let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : {}
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
@@ -55,7 +58,7 @@ const Addressforms = () => {
     //     }
     // }, [])
     var addObj = {};
-    console.log('debugger', addObj)
+    console.log('debugger', values)
     addObj["user_id"] = user_id
     addObj["cart_id"] = cart_id
     addObj["isguestlogin"] = cont ? false : true
@@ -67,18 +70,18 @@ const Addressforms = () => {
             var res = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].state : ''
             var res1 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].country : ''
             var res2 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].district : ''
-            if (window.cache.addressOne) {
-                window.cache = {}
-                values['addressOne']['state'] = res
-                values['addressOne']['country'] = res1
-                values['addressOne']['city'] = res2
-            }
-            if (window.cache.addressTwo) {
-                window.cache = {}
-                values['addressTwo']['state'] = res
-                values['addressTwo']['country'] = res1
-                values['addressTwo']['city'] = res2
-            }
+            // if (window.cache.addressOne == true) {
+            //     window.cache = {}
+            values['addressOne']['state'] = res
+            values['addressOne']['country'] = res1
+            values['addressOne']['city'] = res2
+            // }
+            // if (window.cache.addressTwo == true) {
+            // window.cache = {}
+            values['addressTwo']['state'] = res
+            values['addressTwo']['country'] = res1
+            values['addressTwo']['city'] = res2
+            // }
 
             setValues({ ...values, values })
 
@@ -97,44 +100,26 @@ const Addressforms = () => {
                 }
             }
         }
-        window.cache[type] = true
+        // window.cache[type] = true
         setValues({ ...values, values })
     }
 
-
-    // var locl = values
-    // var locl_products = []
-    // var local = {}
-    // if (locl && Object.entries(locl).length > 0 && locl.constructor === Object) {
-    // var locl = values
-    //     locl_products = values.map(val => { return val })
-    // }
-
-    // var products_sku_list = () => {
-    //     if (locl_products.length > 0) {
-    //         locl_products.push(local);
-    //         return locl_products
-
-    //     }
-    //     else {
-    //         locl_products.push(local)
-    //         return locl_products
-    //     }
-
-    // }
     const handleSubmit = (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         var a1 = values.addressOne
         var a2 = values.addressTwo
+        // if (a1 == a1) {
+        //     addObj['address'] = [a1];
+        // } else {
         if (values.checkValue == true) {
             // setAddress(a1)
             addObj['address'] = [a1];
         } if (values.checkValue == false) {
             // setAddress({ a1, a2 })
             addObj['address'] = [a1, a2];
+            // }
         }
         makeFetch(addObj);
-        // localStorage.setItem("valuessetdata", JSON.stringify(products_sku_list()))
     }
 
     const handleKeyPress = (e, isNumber) => {
@@ -142,10 +127,59 @@ const Addressforms = () => {
             if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
         }
     };
-    const redirectForm = () => {
-        setValues({ ...values, addrs: !values.addrs })
+    const redirectForm = (event) => {
+        values['addressOne']['firstname'] = value.addressOne.firstname   //lgn.firstname//
+        values['addressOne']['lastname'] = value.addressOne.lastname
+        values['addressOne']['addressline1'] = value.addressOne.addressline1
+        values['addressOne']['addressline2'] = value.addressOne.addressline2
+        values['addressOne']['city'] = value.addressOne.city
+        values['addressOne']['state'] = value.addressOne.state
+        values['addressOne']['country'] = value.addressOne.country
+        values['addressOne']['country_code'] = value.addressOne.country_code
+        values['addressOne']['contactno'] = value.addressOne.contactno
+        values['addressOne']['pincode'] = value.addressOne.pincode
+        values['addressTwo']['firstname'] = value.addressTwo.firstname   //lgn.firstname//
+        values['addressTwo']['lastname'] = value.addressTwo.lastname
+        values['addressTwo']['addressline1'] = value.addressTwo.addressline1
+        values['addressTwo']['addressline2'] = value.addressTwo.addressline2
+        values['addressTwo']['city'] = value.addressTwo.city
+        values['addressTwo']['state'] = value.addressTwo.state
+        values['addressTwo']['country'] = value.addressTwo.country
+        values['addressTwo']['country_code'] = value.addressTwo.country_code
+        values['addressTwo']['contactno'] = value.addressTwo.contactno
+        values['addressTwo']['pincode'] = value.addressTwo.pincode
+
+        // values['addressOne']['firstname'] = lgn.firstname   //lgn.firstname//
+        // values['addressOne']['lastname'] = lgn.lastname
+        // values['addressOne']['addressline1'] = lgn.addressline1
+        // values['addressOne']['addressline2'] = lgn.addressline2
+        // values['addressOne']['city'] = lgn.city
+        // values['addressOne']['state'] = lgn.state
+        // values['addressOne']['country'] = lgn.country
+        // values['addressOne']['country_code'] = lgn.country_code
+        // values['addressOne']['contactno'] = lgn.contactno
+        // values['addressOne']['pincode'] = lgn.pincode
+
+        // values['addressTwo']['firstname'] = lgn1.firstname 
+        // values['addressTwo']['lastname'] = lgn1.lastname 
+        // values['addressTwo']['addressline1'] = lgn1.addressline1 
+        // values['addressTwo']['addressline2'] = lgn1.addressline2 
+        // values['addressTwo']['city'] = lgn1.city 
+        // values['addressTwo']['state'] = lgn1.state 
+        // values['addressTwo']['country'] = lgn1.country 
+        // values['addressTwo']['country_code'] = lgn1.country_code 
+        // values['addressTwo']['contactno'] = lgn1.contactno
+        // values['addressTwo']['pincode'] = lgn1.pincode 
+        // const valu = localStorage.getItem("valuessetdata")? values : localStorage.setItem('vale', JSON.stringify(values))
+
+        setValues({
+            ...values,
+            values,
+            addrs: !values.addrs
+        })
+        // localStorage.setItem('vale', JSON.stringify(values))
     }
     const handle = { handleChange, handleSubmit, handleKeyPress, redirectForm };
-    return { values, handle, setValues }
+    return { values, setValues, handle }
 }
 export default Addressforms;

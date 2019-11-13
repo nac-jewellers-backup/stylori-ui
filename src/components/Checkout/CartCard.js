@@ -196,10 +196,9 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         var data = this.props.data
-        // const {  cartsubdata } = this.props.data;
-
-
-        const { classes } = this.props;
+        debugger
+        const { classes} = this.props;
+        // alert(discounted_price)
         let path = window.location.pathname.split('/').pop();
         return (
             <div>

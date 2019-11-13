@@ -10,16 +10,15 @@ const Register = (props) => {
 }
 
 const RegisterComponent = (props) => {
-    const { values, handlers, data } = useRegister();
+    const { values, handlers, data } = useRegister(()=>props.changePanel(2));
     var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
-    // var ccc = data.message ? data.message : ""
+    var ccc = data.user_profile_id ? data.user_profile_id : ""
+    console.log(values, 'valuesvaluesstate')
     return (
         <div className='pt-sm'>
-            <form action="javascript:void(0)" onSubmit={() => {
-                if (values.password == values.confirmpassword && !data.message) {
-                    props.changePanel(2)
-                }
-                handlers.handleSubmit(values)
+            <form action="javascript:void(0)" onSubmit={(e) => {
+                console.log('valuesvaluesstate', 'hey i have came in...')
+                handlers.handleSubmit(e)
             }}>
                 <Grid container spacing={12}>
                     <Grid item lg={1} />
@@ -31,37 +30,36 @@ const RegisterComponent = (props) => {
                             type="email"
                             name="email"
                             value={values.email}
-                            error={data.message ? true : false}
-                            helperText="Mail is Required"
+                            error={values.error && values.error.emerr ? true : false}
+                            helperText={values.errortext && values.errortext.emerr}
                             placeholder="enter your email Id"
                             onChange={e => handlers.handleChange('email', e.target.value)}
-                            required
                         />
+                        <label className='errtext'> {values.errortext && values.errortext.emerr}</label>
                         <Input
                             margin="normal"
                             variant="outlined"
                             type="password"
                             name="password"
                             value={values.password}
-                            // error={values.error.pass ? true : false}
-                            helperText="password is Required"
+                            error={values.error && values.error.passerr ? true : false}
+                            helperText={values.errortext && values.errortext.passerr}
                             placeholder="enter your password"
                             onChange={e => handlers.handleChange('password', e.target.value)}
-                            required
                         />
+                        <label className='errtext'> {values.errortext && values.errortext.passerr}</label>
                         <Input
                             margin="normal"
                             variant="outlined"
                             type="password"
                             name="confirmpassword"
                             value={values.confirmpassword}
-                            // error={values.error.confirmPassword ? true : false}
-                            // error={this.state.confirmpassword ? this.state.confpassword : "**"}
-                            helperText="Confirm password is Required"
+                            error={values.error && values.error.cnfpasserr ? true : false}
+                            helperText={values.errortext && values.errortext.cnfpasserr}
                             placeholder="enter your Confirm password"
                             onChange={e => handlers.handleChange('confirmpassword', e.target.value)}
-                            required
                         />
+                        <label className='errtext'> {values.errortext && values.errortext.cnfpasserr}</label>
                         {/* <Grid container spacing={12}>
                                 <Grid item lg={4} xs={4}>
                                     <SimpleSelect name={'Mr'} selectData={['Mr', 'Mrs', 'Miss']} />
