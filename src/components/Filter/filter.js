@@ -155,10 +155,10 @@ console.log('queries',queries)
         paramsMapUrlSetState()
     }
 
-    let arr = [];
-    if (BoolName === true) {
-      arr=  chipData.push({ key: chipData, label: value });
-    }  
+    // let arr = [];
+    // if (BoolName === true) {
+    //   arr=  chipData.push({ key: chipData, label: value });
+    // }  
     // let checkedvalue = {};
     // checkedvalue[value] = BoolName
     // TargetName === undefined ?  checked[e.target.name] = checkedvalue : checked[TargetName] = checkedvalue
