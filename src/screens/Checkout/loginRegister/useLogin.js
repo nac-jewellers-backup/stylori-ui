@@ -5,7 +5,6 @@ import { ADDRESSDETAILS } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
 
 const useLogin = (props) => {
-    debugger
     const [values, setValues] = React.useState({
         password: null,
         email: null,

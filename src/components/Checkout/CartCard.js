@@ -30,7 +30,6 @@ class Checkoutcard extends React.Component {
     }
     handleDeleteLocalStorage= (e) =>{
         var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
-        debugger
         var currentValue = e.target.id
        var a = local_storage.products.filter(val=>{ 
             if(currentValue!==val.sku_id){
@@ -142,7 +141,6 @@ class Checkoutcard extends React.Component {
     subtotals = () => {
         // const { dataCard1 } = this.props.data;
         const dataCard1 = this.props.data.map(val=>{return val.dataCard1[0].offerPrice}).reduce(myFunc);
-        debugger
         // this.props.data.map(val=>{return val.dataCard1[0].offerPrice}).reduce(myFunc)
         
       var yousave=  this.props.data.map((_data) => {

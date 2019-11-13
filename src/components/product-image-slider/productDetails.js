@@ -34,7 +34,6 @@ class ProductDetails extends React.Component {
                                         <hr class="bottom-line"></hr>
                                         <>{
                                             val.namedetail !== undefined && val.namedetail.map(res => {
-                                                debugger
                                                 return (
                                                     <span>
                                                         {((data[0].productType !== "Earring" && res.name === 'Gemstone')

@@ -14,6 +14,9 @@ import './productCard.css'
 
 
 import { ProductDetailContext } from 'context'
+import { LazyLoadImage, trackWindowScroll }
+  from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 export const ImgMediaCard = (props) => {
@@ -22,7 +25,95 @@ export const ImgMediaCard = (props) => {
   
   return <Component filters={ProductDetailCtx.filters} setFilters={setFilters} {...props} />
 }
+// const MyImage = ( props, callmouseover, callmouseout, cardstate ) => {  debugger
+//   return(
 
+//   <LazyLoadImage
+//     alt={'props.data.title'}
+//     effect="blur"
+//     srcset={renderImages(props, cardstate)}
+//     sizes="(max-width: 320px) 320w,
+//             (max-width: 480px) 375w,
+//             (max-width: 600px) 600w,
+//             (max-width: 992px) 768w,
+//             (max-width: 1440px) 1440w,
+//             (max-width: 2560px) 2560w,
+//             2560w
+           
+// "
+// title={props.data.title}
+// onMouseOver={() => {
+//  callmouseover()
+// }}
+// onMouseOut={() => {
+//   callmouseout()
+// }}
+// style={{width:'100%',height:'100%'}}
+// visibleByDefault={renderImages(props, cardstate) === 'https://alpha-assets.stylori.com/276x276/images/static/Image_Not_Available.jpg'} 
+//     />
+// );
+// }
+const Gallery = ( props, callmouseover, callmouseout, cardstate, scrollPosition ) => (
+  <div>
+
+      <LazyLoadImage
+           alt={'props.data.title'}
+           effect="blur"
+           src="https://alpha-assets.stylori.com/276x276/images/static/Image_Not_Available.jpg"
+           srcset={renderImages(props, cardstate)}
+           sizes="(max-width: 320px) 320w,
+                   (max-width: 480px) 375w,
+                   (max-width: 600px) 600w,
+                   (max-width: 992px) 768w,
+                   (max-width: 1440px) 1440w,
+                   (max-width: 2560px) 2560w,
+                   2560w
+                  
+       "
+       title={props.data.title}
+       onMouseOver={() => {
+        callmouseover()
+       }}
+       onMouseOut={() => {
+         callmouseout()
+       }}
+       style={{width:'100%',height:'100%'}}
+        scrollPosition={scrollPosition}
+        
+        // If the image we are creating here has the same src than before,
+        // we can directly display it with no need to lazy-load.
+        placeholderSrc={renderImages(props, cardstate) === '' ? 'https://alpha-assets.stylori.com/276x276/images/static/Image_Not_Available.jpg' : ''}
+        // placeholder	= { <div >loading.....</div> }
+        />
+        
+ 
+  </div>
+);
+ 
+export default trackWindowScroll(Gallery);
+// <img 
+// srcset={renderImages(props, cardstate)}
+// sizes="(max-width: 320px) 320w,
+//             (max-width: 480px) 375w,
+//             (max-width: 600px) 600w,
+//             (max-width: 992px) 768w,
+//             (max-width: 1440px) 1440w,
+//             (max-width: 2560px) 2560w,
+//             2560w
+           
+// "
+//      alt=""
+//           title={props.data.title}
+//           onMouseOver={() => {
+//             setCardState({ ...cardstate, hovered: !cardstate.hovered });
+//           }}
+//           onMouseOut={() => {
+//             setCardState({ ...cardstate, hovered: !cardstate.hovered });
+//           }}
+//           style={{width:'100%',height:'100%'}}
+//           className={`${props.data.image.placeImage.length === 0 || props.data.image.hoverImage.length === 0 ? 'shine' : '' }`}
+          
+//           />
 const handleProductDetatiContext = (props) =>{
   props.filters['defaultVariants']['diamondType']  = props.data.diamondType
   props.filters['defaultVariants']['metalColor']  = props.data.metalColor
@@ -206,7 +297,12 @@ const renderImages = (props, cardstate) => {
 //   a.push(Object.keys(props.filters[val]))
  
 //  })
-
+const callmouseover= () =>{
+  setCardState({ ...cardstate, hovered: !cardstate.hovered });
+}
+const callmouseout = () =>{
+  setCardState({ ...cardstate, hovered: !cardstate.hovered });
+}
   console.log('productTypeMaterial')
   return (
     <div className={classes.root}>
@@ -236,7 +332,7 @@ const renderImages = (props, cardstate) => {
         <Link to={{pathname:`${'jewellery'}/${props.data.productType}/${props.data.material}/${(props.data.title).replace(/ /g, "-")}`, search:`skuId=${props.data.skuId}` }} style={{textDecoration:'none'}} onClick={handleProductDetatiContext(props)}>
         <CardActionArea >
        
-        <img 
+        {/* <img 
 srcset={renderImages(props, cardstate)}
 sizes="(max-width: 320px) 320w,
             (max-width: 480px) 375w,
@@ -258,7 +354,8 @@ sizes="(max-width: 320px) 320w,
           style={{width:'100%',height:'100%'}}
           className={`${props.data.image.placeImage.length === 0 || props.data.image.hoverImage.length === 0 ? 'shine' : '' }`}
           
-          />
+          /> */}
+          {Gallery( props, callmouseover, callmouseout, cardstate )}
         </CardActionArea>
         <Card className={classes.priceClass}>
           <CardContent className={classes.cardContent}>

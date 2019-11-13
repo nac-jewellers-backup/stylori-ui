@@ -10,7 +10,6 @@ const Register = (props) => {
 }
 
 const RegisterComponent = (props) => {
-    debugger
     const { values, handlers, data } = useRegister();
     var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
     // var ccc = data.message ? data.message : ""

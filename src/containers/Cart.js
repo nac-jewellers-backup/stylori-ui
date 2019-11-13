@@ -47,7 +47,6 @@ import './index.css'
 class Cart extends React.Component {
     render() {
         const {data,classes} = this.props 
-        debugger
         let path = window.location.pathname.split('/').pop();
           return (
             
@@ -111,7 +110,6 @@ class Cart extends React.Component {
 const Components = props => {
     let { CartCtx: { data, loading, error } } = React.useContext(CartContext);
     let content, mapped;
-debugger
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
             mapped = cart(data);

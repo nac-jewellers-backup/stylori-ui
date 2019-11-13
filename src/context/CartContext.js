@@ -59,13 +59,14 @@ const Provider = (props) => {
         }
         else {
             if (cartFilters.price > 0) {
-                debugger
                 var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
                 var local_storage_products = []
                 if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
                     console.log('hey i came inside the local_storage....', local_storage)
+                    
                     local_storage_products = JSON.parse(localStorage.getItem('cartDetails')).products.map(val => { return val })
                 }
+
                 var skuId = cartFilters.skuId;
                 var products = [];
                 var obj = {};
@@ -91,12 +92,12 @@ const Provider = (props) => {
 
                 }
                 console.log('hey i came inside the local_storage....', local_storage, local_storage_products.length > 0, products_sku_list())
-                
+              
                 var skuObj = { "cart_id": cartId, "user_id": userId, "products": products_sku_list() }
                 localStorage.setItem('cartDetails', JSON.stringify(skuObj));
             }
         }
-    }, [user_id, price])
+    }, [user_id, price, cartFilters])
 
     var skus;
     // const pathQueries = () => {

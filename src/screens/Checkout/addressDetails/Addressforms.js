@@ -68,7 +68,6 @@ const Addressforms = () => {
             var res1 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].country : ''
             var res2 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].district : ''
             if (window.cache.addressOne) {
-                debugger
                 window.cache = {}
                 values['addressOne']['state'] = res
                 values['addressOne']['country'] = res1
