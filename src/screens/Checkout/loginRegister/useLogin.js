@@ -4,7 +4,7 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
 
-const useLogin = (props) => {
+const useLogin = (changePanel) => {
     const [values, setValues] = React.useState({
         password: null,
         email: null,
@@ -59,10 +59,9 @@ const useLogin = (props) => {
     }
 
     // const vl = data && data.message
+    const errmsg = data.message ? data.message : ""
+    const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
-        debugger
-        console.log('valuesvaluesstate', 'hey i have came in... handle submit')
-        // e.preventDefault();
         if (values.email === null) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Mail is Required'
@@ -70,6 +69,7 @@ const useLogin = (props) => {
                 ...values,
                 values,
             })
+            return false
         }
         if (values.password === null) {
             values['error']['passerr'] = true
@@ -78,24 +78,22 @@ const useLogin = (props) => {
                 ...values,
                 values,
             })
-
+            return false
         }
-        if (values.confirmpassword === null) {
-            values['error']['cnfpasserr'] = true
-            values['errortext']['cnfpasserr'] = 'Confirm password is Required'
+        makeFetch(values);
+        if (errmsg.length > 0) {
+            values['error']['passerr'] = true
+            values['errortext']['passerr'] = 'Invalid Password!'
             setValues({
                 ...values,
                 values,
             })
+            return false
         }
-        // if (data.message > 5) {
-        //     values['error']['emerr'] = true
-        //     values['errortext']['emerr'] = 'your mail is already exists'
-        //     setValues({
-        //         emerr: "your mail is already exists"
-        //     })
-        // }
-        makeFetch(values);
+        if (auth.length > 0) {
+            changePanel(3)
+        }
+
     }
 
     const handlers = { handleChange, handleInvalid, handelSubmit };

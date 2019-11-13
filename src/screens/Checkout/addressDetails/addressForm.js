@@ -22,7 +22,7 @@ const AddressComponent = (props) => {
     return (
         <Container>
             <div>
-                {(local_storages === null ? false:true  ) && values.addrs === true ?
+                {(local_storages === null ? true : false) && values.addrs === true ?
                     <div className='pt-sm'>
                         <form onSubmit={(e) => {
                             handle.handleSubmit(e)
@@ -298,7 +298,7 @@ const AddressComponent = (props) => {
 
                             <div className='login-butn'>
                                 <Button type="submit"
-                                    className='apply-b'>Save and Review</Button>
+                                    onClick={() => window.location.reload()} className='apply-b'>Save and Review</Button>
                             </div>
                         </form>
                     </div>

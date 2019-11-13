@@ -10,16 +10,13 @@ const Register = (props) => {
 }
 
 const RegisterComponent = (props) => {
-    const { values, handlers, data } = useRegister();
+    const { values, handlers, data } = useRegister(()=>props.changePanel(2));
     var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
     var ccc = data.user_profile_id ? data.user_profile_id : ""
     console.log(values, 'valuesvaluesstate')
     return (
         <div className='pt-sm'>
             <form action="javascript:void(0)" onSubmit={(e) => {
-                if (ccc.length > 5) {
-                    props.changePanel(2)
-                }
                 console.log('valuesvaluesstate', 'hey i have came in...')
                 handlers.handleSubmit(e)
             }}>

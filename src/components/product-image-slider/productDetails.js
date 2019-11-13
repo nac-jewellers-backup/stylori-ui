@@ -60,7 +60,7 @@ class ProductDetails extends React.Component {
 
                                                                             <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
                                                                                 {/* {data[0].productsDetails[3].namedetail[1].length > 0} */}
-                                                                                    <del style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</del>
+                                                                                    <span style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</span>
                                                                             </ListItemText>
                                                                     }
                                                                 </Grid>

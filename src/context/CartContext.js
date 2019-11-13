@@ -24,7 +24,6 @@ const initialCtx = {
 
 export const CartContext = React.createContext(initialCtx);
 export const CartConsumer = CartContext.Consumer;
-
 const Provider = (props) => {
     const [cartFilters, setCartFilters] = React.useState(initialCtx.CartCtx);
     var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
@@ -33,8 +32,14 @@ const Provider = (props) => {
     const { loading: crtloading, error: crterror, data: crtdata, makeFetch: addtocart } = useNetworkRequest('/addtocart', { user_id, products }, false)
     const userIds = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ''
     var cartdetails = JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")).products[0].price : ''
+    const discounted_price = cartFilters.discounted_price ? cartFilters.discounted_price : ""
     const guestlogId = cartFilters.user_id ? cartFilters.user_id : ''
     // const prices = cartFilters.price ? cartFilters.price : ''
+    useEffect(() => {
+        setCartFilters({
+            discounted_price
+        })
+    }, [discounted_price])
     useEffect(() => {
         if (JSON.stringify(crtdata).length > 10) {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))
@@ -61,7 +66,6 @@ const Provider = (props) => {
         }
         else {
             if (cartFilters.price > 0) {
-                debugger
                 var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
                 var local_storage_products = []
                 if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {

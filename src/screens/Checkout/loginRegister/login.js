@@ -12,19 +12,16 @@ const Login = (props) => {
 
 const LoginComponent = (props) => {
     const { classes } = props;
-    const { values, handlers, data } = useLogin();
+    const { values, handlers, data } = useLogin(() => props.changePanel(3));
     const vl = data && data.message
     // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
     var prof = data.userprofile ? data.userprofile.email : ""
     // alert(JSON.stringify(data))
-
+    console.log('valuesvaluesvalues', values)
     return (
         <div className='pt-sm'>
-            <form action="javascript:void(0)" onSubmit={() => {
-                if (prof.length > 5) {
-                    props.changePanel(3)
-                }
-                handlers.handelSubmit()
+            <form action="javascript:void(0)" onSubmit={(e) => {
+                handlers.handelSubmit(e)
             }}>
                 <Grid container item xs={12} lg={6}>
                     <h5 className={`title ${classes.normalfonts}`}>  I already have an account </h5>
@@ -33,6 +30,7 @@ const LoginComponent = (props) => {
                         variant="outlined"
                         type="email"
                         name="email"
+                        value={values.email}
                         error={values.error && values.error.emerr ? true : false}
                         helperText={values.errortext && values.errortext.emerr}
                         onChange={e => handlers.handleChange('email', e.target.value)}

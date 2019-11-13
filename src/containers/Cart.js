@@ -48,7 +48,7 @@ class Cart extends React.Component {
     render() {
         const { data, classes } = this.props
         let path = window.location.pathname.split('/').pop();
-        return (
+    return (
 
             <div>
 
@@ -108,7 +108,8 @@ class Cart extends React.Component {
 
 
 const Components = props => {
-    let { CartCtx: {cartFilters:{discounted_price}, data, loading, error } } = React.useContext(CartContext);
+    let { CartCtx: { cartFilters: { discounted_price }, data, loading, error } } = React.useContext(CartContext);
+    console.log(discounted_price)
     let content, mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
