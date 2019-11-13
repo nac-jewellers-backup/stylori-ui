@@ -12,17 +12,17 @@ const Addressform = (props) => {
 }
 
 const AddressComponent = (props) => {
-    debugger
     const { values, handle, setValues } = Addressforms();
     const cl = <input onChange={() => setValues({
         ...values,
         checkValue: !values.checkValue
     })} type='checkbox' checked={values.checkValue} />
     var local_storages = (localStorage.getItem("vals"));
-    return (
+    var isedit = (localStorage.getItem("isedit"));
+    return ( 
         <Container>
             <div>
-                {(local_storages === null ? true : false) && values.addrs === true ?
+                {(isedit === '1' ? true : false) && values.addrs === true ?
                     <div className='pt-sm'>
                         <form onSubmit={(e) => {
                             handle.handleSubmit(e)
@@ -104,7 +104,7 @@ const AddressComponent = (props) => {
                                     <Grid container spacing={12}>
                                         <Grid item xs={6} lg={6}>
                                             <Input
-                                                style={{ float: "left", width: "99%" }}
+                                                style={{ float: "left", width: "99%", background: "rgba(192, 192, 192, 0.41)" }}
                                                 type="text"
                                                 name='state'
                                                 placeholder="State *"
@@ -121,6 +121,7 @@ const AddressComponent = (props) => {
                                                 type="text"
                                                 name='city'
                                                 placeholder="city *"
+                                                style={{ background: "rgba(192, 192, 192, 0.41)" }}
                                                 onChange={(event) => handle.handleChange('addressOne', 'city', event.target.value)}
                                                 value={values.addressOne.city}
                                                 helperText="City is required"
@@ -233,7 +234,7 @@ const AddressComponent = (props) => {
                                         <Grid container spacing={12}>
                                             <Grid item xs={6} lg={6}>
                                                 <Input
-                                                    style={{ float: "left", width: "99%" }}
+                                                    style={{ float: "left", width: "99%", background: "rgba(192, 192, 192, 0.41)" }}
                                                     type="text"
                                                     name='statetwo'
                                                     placeholder="State *"
@@ -250,6 +251,7 @@ const AddressComponent = (props) => {
                                                     type="text"
                                                     name='citytwo'
                                                     placeholder="city *"
+                                                    style={{ background: "rgba(192, 192, 192, 0.41)" }}
                                                     onChange={(event) => handle.handleChange('addressTwo', 'city', event.target.value)}
                                                     value={values.addressTwo.city}
                                                     helperText="City is required"
@@ -297,8 +299,7 @@ const AddressComponent = (props) => {
                                 } </Grid>
 
                             <div className='login-butn'>
-                                <Button type="submit"
-                                    onClick={() => window.location.reload()} className='apply-b'>Save and Review</Button>
+                                <Button type="submit" className='apply-b'>Save and Review</Button>
                             </div>
                         </form>
                     </div>

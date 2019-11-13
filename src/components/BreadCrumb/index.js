@@ -9,7 +9,8 @@ export default function CustomSeparator(props) {
    : <NavigateNextIcon />;
  return (
    <div className={props.className}>
-     <Paper elevation={0} className={props.classsubhed}>
+     <Paper elevation={0} className={props.classsubhed} >
+     {/* style={{height:'44px'}} */}
        <Grid container>
          <Grid item lg={7}>
            <Breadcrumbs separator={seperators}>
@@ -25,7 +26,7 @@ export default function CustomSeparator(props) {
          <Grid item lg={5}>
            {props.subdata ?
              <div>
-               <Grid container style={{ height: "32px", lineHeight: "32px" }}>
+               <Grid container style={{ height: "32px", lineHeight: "32px"}}>
                  {
                    props.subdata.map(subdata => (
                      <>

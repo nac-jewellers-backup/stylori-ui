@@ -19,7 +19,7 @@ const ContinuesComponent = (props) => {
                 variant="outlined"
                 type="email"
                 name="email"
-                value={values.email}
+                value={values.email} 
                 // error={edata ? true : false}
                 required
                 placeholder="please enetr your mail Id"

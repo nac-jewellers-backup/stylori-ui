@@ -31,7 +31,7 @@ const RegisterComponent = (props) => {
                             name="email"
                             value={values.email}
                             error={values.error && values.error.emerr ? true : false}
-                            helperText={values.errortext && values.errortext.emerr}
+                            // helperText={values.errortext && values.errortext.emerr}
                             placeholder="enter your email Id"
                             onChange={e => handlers.handleChange('email', e.target.value)}
                         />
@@ -43,7 +43,7 @@ const RegisterComponent = (props) => {
                             name="password"
                             value={values.password}
                             error={values.error && values.error.passerr ? true : false}
-                            helperText={values.errortext && values.errortext.passerr}
+                            // helperText={values.errortext && values.errortext.passerr}
                             placeholder="enter your password"
                             onChange={e => handlers.handleChange('password', e.target.value)}
                         />

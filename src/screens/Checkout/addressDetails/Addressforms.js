@@ -5,7 +5,6 @@ import { CheckForCod } from 'queries/productdetail';
 // window.cache = {}
 
 const Addressforms = () => {
-    debugger
     // var regid = localStorage.getItem('regid') ? localStorage.getItem('regid') : ""
     let lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
     let lgn1 = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
@@ -42,7 +41,7 @@ const Addressforms = () => {
             contactno: "",
             addresstype: 2
         },
-        addrs: localStorage.getItem("valuessetdata") || changeaddr ? false : true,
+        addrs: (localStorage.getItem("valuessetdata") || changeaddr) ? false : true,
         // addrs: true,
         checkValue: true,
         checkValue1: true,
@@ -120,6 +119,7 @@ const Addressforms = () => {
             // }
         }
         makeFetch(addObj);
+        // window.location.reload()
     }
 
     const handleKeyPress = (e, isNumber) => {
@@ -128,27 +128,15 @@ const Addressforms = () => {
         }
     };
     const redirectForm = (event) => {
-        values['addressOne']['firstname'] = value.addressOne.firstname   //lgn.firstname//
-        values['addressOne']['lastname'] = value.addressOne.lastname
-        values['addressOne']['addressline1'] = value.addressOne.addressline1
-        values['addressOne']['addressline2'] = value.addressOne.addressline2
-        values['addressOne']['city'] = value.addressOne.city
-        values['addressOne']['state'] = value.addressOne.state
-        values['addressOne']['country'] = value.addressOne.country
-        values['addressOne']['country_code'] = value.addressOne.country_code
-        values['addressOne']['contactno'] = value.addressOne.contactno
-        values['addressOne']['pincode'] = value.addressOne.pincode
-        values['addressTwo']['firstname'] = value.addressTwo.firstname   //lgn.firstname//
-        values['addressTwo']['lastname'] = value.addressTwo.lastname
-        values['addressTwo']['addressline1'] = value.addressTwo.addressline1
-        values['addressTwo']['addressline2'] = value.addressTwo.addressline2
-        values['addressTwo']['city'] = value.addressTwo.city
-        values['addressTwo']['state'] = value.addressTwo.state
-        values['addressTwo']['country'] = value.addressTwo.country
-        values['addressTwo']['country_code'] = value.addressTwo.country_code
-        values['addressTwo']['contactno'] = value.addressTwo.contactno
-        values['addressTwo']['pincode'] = value.addressTwo.pincode
-
+        value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
+        lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
+        if (Object.keys(lgn).length > 0) {
+            lgn = {
+                addressOne: lgn,
+                addressTwo: lgn1 ? lgn1 : lgn
+            }
+        }
+        //  if(lgn.length>5) {
         // values['addressOne']['firstname'] = lgn.firstname   //lgn.firstname//
         // values['addressOne']['lastname'] = lgn.lastname
         // values['addressOne']['addressline1'] = lgn.addressline1
@@ -160,23 +148,45 @@ const Addressforms = () => {
         // values['addressOne']['contactno'] = lgn.contactno
         // values['addressOne']['pincode'] = lgn.pincode
 
-        // values['addressTwo']['firstname'] = lgn1.firstname 
-        // values['addressTwo']['lastname'] = lgn1.lastname 
-        // values['addressTwo']['addressline1'] = lgn1.addressline1 
-        // values['addressTwo']['addressline2'] = lgn1.addressline2 
-        // values['addressTwo']['city'] = lgn1.city 
-        // values['addressTwo']['state'] = lgn1.state 
-        // values['addressTwo']['country'] = lgn1.country 
-        // values['addressTwo']['country_code'] = lgn1.country_code 
+        // values['addressTwo']['firstname'] = lgn1.firstname
+        // values['addressTwo']['lastname'] = lgn1.lastname
+        // values['addressTwo']['addressline1'] = lgn1.addressline1
+        // values['addressTwo']['addressline2'] = lgn1.addressline2
+        // values['addressTwo']['city'] = lgn1.city
+        // values['addressTwo']['state'] = lgn1.state
+        // values['addressTwo']['country'] = lgn1.country
+        // values['addressTwo']['country_code'] = lgn1.country_code
         // values['addressTwo']['contactno'] = lgn1.contactno
-        // values['addressTwo']['pincode'] = lgn1.pincode 
-        // const valu = localStorage.getItem("valuessetdata")? values : localStorage.setItem('vale', JSON.stringify(values))
-
+        // values['addressTwo']['pincode'] = lgn1.pincode
+        // }if(value.length>5){
+        // values['addressOne']['firstname'] = value.addressOne.firstname   //lgn.firstname//
+        // values['addressOne']['lastname'] = value.addressOne.lastname
+        // values['addressOne']['addressline1'] = value.addressOne.addressline1
+        // values['addressOne']['addressline2'] = value.addressOne.addressline2 
+        // values['addressOne']['city'] = value.addressOne.city
+        // values['addressOne']['state'] = value.addressOne.state
+        // values['addressOne']['country'] = value.addressOne.country
+        // values['addressOne']['country_code'] = value.addressOne.country_code
+        // values['addressOne']['contactno'] = value.addressOne.contactno
+        // values['addressOne']['pincode'] = value.addressOne.pincode
+        // values['addressTwo']['firstname'] = value.addressTwo.firstname   //lgn.firstname//
+        // values['addressTwo']['lastname'] = value.addressTwo.lastname
+        // values['addressTwo']['addressline1'] = value.addressTwo.addressline1
+        // values['addressTwo']['addressline2'] = value.addressTwo.addressline2
+        // values['addressTwo']['city'] = value.addressTwo.city
+        // values['addressTwo']['state'] = value.addressTwo.state
+        // values['addressTwo']['country'] = value.addressTwo.country
+        // values['addressTwo']['country_code'] = value.addressTwo.country_code
+        // values['addressTwo']['contactno'] = value.addressTwo.contactno
+        // values['addressTwo']['pincode'] = value.addressTwo.pincode
+        // }
         setValues({
-            ...values,
-            values,
+            ...value,
+            ...lgn,
+            // values,
             addrs: !values.addrs
         })
+        localStorage.setItem("isedit", !values.addrs ? 1 : 0)
         // localStorage.setItem('vale', JSON.stringify(values))
     }
     const handle = { handleChange, handleSubmit, handleKeyPress, redirectForm };

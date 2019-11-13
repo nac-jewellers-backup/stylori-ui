@@ -45,6 +45,15 @@ const useLogin = (changePanel) => {
         }
     }, [CodData])
     const handleChange = (type, value) => {
+        if (values.email !== null) {
+            values['error']['emerr'] = false
+            values['errortext']['emerr'] = ''
+        }
+        if (values.password !== null) {
+            values['error']['passerr'] = false
+            values['errortext']['passerr'] = ''
+
+        }
         setValues({
             ...values,
             [type]: value
@@ -69,7 +78,6 @@ const useLogin = (changePanel) => {
                 ...values,
                 values,
             })
-            return false
         }
         if (values.password === null) {
             values['error']['passerr'] = true

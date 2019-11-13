@@ -29,7 +29,6 @@ const useGift = () => {
         })
     }
     const handleSubmit = (e) => {
-        debugger
         // e.preventDefault();
         makeFetch(values);
     }

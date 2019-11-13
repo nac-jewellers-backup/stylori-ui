@@ -32,14 +32,9 @@ const Provider = (props) => {
     const { loading: crtloading, error: crterror, data: crtdata, makeFetch: addtocart } = useNetworkRequest('/addtocart', { user_id, products }, false)
     const userIds = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ''
     var cartdetails = JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")).products[0].price : ''
-    const discounted_price = cartFilters.discounted_price ? cartFilters.discounted_price : ""
     const guestlogId = cartFilters.user_id ? cartFilters.user_id : ''
     // const prices = cartFilters.price ? cartFilters.price : ''
-    useEffect(() => {
-        setCartFilters({
-            discounted_price
-        })
-    }, [discounted_price])
+    const discounted_price = cartFilters.discounted_price ? cartFilters.discounted_price : ""
     useEffect(() => {
         if (JSON.stringify(crtdata).length > 10) {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))
@@ -122,7 +117,7 @@ const Provider = (props) => {
     }, [])
 
     const CartCtx = {
-        cartFilters, loading, error, data, setCartFilters
+        cartFilters, loading, error, data, setCartFilters,
     }
 
     return (

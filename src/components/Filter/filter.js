@@ -238,7 +238,6 @@ console.log('queries',queries)
 
     const { classes, data } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];
-    debugger
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
 

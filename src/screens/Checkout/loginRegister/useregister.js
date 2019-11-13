@@ -31,7 +31,11 @@ const useRegister = (changePanel) => {
         if (v.length > 0) {
             var obj = {}
             obj['userprofileId'] = bb
-            var bb = data.user_profile_id ? data.user_profile_id : ""
+            var bb = data.user_profile_id ? data.user_profile_id : "";
+            if(bb.length > 0){
+                changePanel(3)
+                localStorage.setItem("isedit", 1)
+            }
             localStorage.setItem("email", data.user.email)
             localStorage.setItem("user_id", data.user_profile_id)
             makeRequestCod(obj);
@@ -47,19 +51,45 @@ const useRegister = (changePanel) => {
     //     }
     // }, [CodData])
     const handleChange = (type, value) => {
+        if (values.email !== null) {
+            values['error']['emerr'] = false
+            values['errortext']['emerr'] = ''
+        }
+        if (values.password !== null) {
+            values['error']['passerr'] = false
+            values['errortext']['passerr'] = ''
+
+        } if (values.confirmpassword !== null) {
+            values['error']['cnfpasserr'] = false
+            values['errortext']['cnfpasserr'] = ''
+        }
         setValues({
             ...values,
             [type]: value,
         })
     }
+
     const errmsg = data.message ? data.message : ""
     const user = data.user_profile_id ? data.user_profile_id : ""
     const handleSubmit = (e) => {
-        if (values.email === null && values.password === null && values.confirmpassword === null) {
+        if (values.email === null) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Mail is Required'
+            setValues({
+                ...values,
+                values,
+            })
+        }
+      
+        if (values.password === null) {
             values['error']['passerr'] = true
             values['errortext']['passerr'] = 'password is Required'
+            setValues({
+                ...values,
+                values,
+            })
+        }
+        if (values.confirmpassword === null) {
             values['error']['cnfpasserr'] = true
             values['errortext']['cnfpasserr'] = 'Confirm password is Required'
             setValues({
@@ -70,10 +100,10 @@ const useRegister = (changePanel) => {
         }
 
         if (values.password !== values.confirmpassword) {
-            values['error']['passerr'] = true
+            // values['error']['passerr'] = true
             values['error']['cnfpasserr'] = true
-            values['errortext']['passerr'] = "Passwords Don't Match"
-            values['errortext']['cnfpasserr'] = "Passwords Don't Match"
+            // values['errortext']['passerr'] = "password doesn't match"
+            values['errortext']['cnfpasserr'] = "password doesn't match"
             setValues({
                 ...values,
                 values,
@@ -90,11 +120,11 @@ const useRegister = (changePanel) => {
             })
             return false
         }
-        if (user.length>0) {
-            changePanel(3)
-        }
+      
     }
-
+    // if (user.length > 0) {
+    //     changePanel(3)
+    // }
     const handlers = { handleSubmit, handleChange };
 
     return { values, handlers, data }

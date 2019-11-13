@@ -62,7 +62,6 @@ class Component extends React.Component {
     // }
     handleClick = (event, key) => {
         console.log('lklkkoik9', this.state.skuSize)
-        debugger
         var filters = { ...this.props.filters }
         if (key === 'purity') {
             var kv = event.target.id
