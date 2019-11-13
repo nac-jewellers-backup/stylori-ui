@@ -53,7 +53,8 @@ class Component extends React.Component {
     super(props)
     this.state = {
       colSize: window.innerWidth,
-      loading:true,
+      loading: false,
+      loadingtext: false
     }
   }
   componentDidMount() {
@@ -61,7 +62,7 @@ class Component extends React.Component {
     this.screenWidth()
     // Additionally I could have just used an arrow function for the binding `this` to the component...
     window.addEventListener("resize", this.screenWidth);
-    setTimeout(function(){ this.setState({loading:false}); }.bind(this), 2000);
+    // setTimeout(function () { this.setState({ loading: false }); }.bind(this), 2000);
   }
   screenWidth = () => {
     const width = window.innerWidth;
@@ -83,59 +84,71 @@ class Component extends React.Component {
     else if (width < 760) {
       this.setState({ colSize: 2 })
     }
-
+    console.log(this.props.data, 'this.props.dataProductlayout')
   }
 
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
-    if(this.props.offset === prevProps.data){
-      if (this.props.data!== prevProps.data) {
-        this.setState({loading:true})
-        setTimeout(function(){ this.setState({loading:false}); }.bind(this), 2000);
-      }
+
+    if (this.props.data !== prevProps.data) {
+      this.setState({ loadingtext: false })
+      // setTimeout(function(){ this.setState({loading:false}); }.bind(this), 2000);
     }
-    
+
+
+
   }
   handleOffset = () => {
     const offsets = this.props.offset + 24
     // console.log('offsets', offsets)
+    this.setState({ loadingtext: true })
     this.props.setOffset(offsets)
+
   }
   render() {
     const { classes, data } = this.props;
-    const {disabledstate} = this.state
+    debugger
+    const { disabledstate } = this.state
     // const disabledstate = this.props.data.length < 24 ? 'disabled=true' : ''
     // console.log(dataCard)
     // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
     return (
       <div className={`productLayoutRoot `} style={this.props.styles}>
         {
-        <>
-{this.state.loading && <div className="overall-loaders"><div id="loadings"><img src="https://alpha-assets.stylori.com/images/static/loadingimg.gif" alt="loading..." /></div></div>}
-  {this.state.loading === false && <div>
-  <GridList cellHeight={"auto"} className={`productLayoutGridList ${classes.gridlistmain}`} cols={this.state.colSize} style={{ margin: '25px !important' }}>
-          {
-            data.map(tile => {
-              return (
-                <GridListTile key={tile.title} cols={tile.cols || 1} style={{ height: 'auto', padding: '0 !important', marginBottom: '12px', marginTop: '12px' }} className={`${classes.liClass}`} >
+          <>
+            {this.state.loading && <div className="overall-loaders"><div id="loadings"><img src="https://alpha-assets.stylori.com/images/static/loadingimg.gif" alt="loading..." /></div></div>}
+            {this.state.loading === false && <div>
+              <GridList cellHeight={"auto"} className={`productLayoutGridList ${classes.gridlistmain}`} cols={this.state.colSize} style={{ margin: '25px !important' }}>
+                {
+                  data.map(tile => {
 
-                  {/* <ProductCard data={tile} /> */}
-                  <ProductCards data={tile} />
-                </GridListTile>
-              )
-            })
+                    return (
+                      <GridListTile key={tile.title} cols={tile.cols || 1} style={{ height: 'auto', padding: '0 !important', marginBottom: '12px', marginTop: '12px' }} className={`${classes.liClass}`} >
 
-          }
+                        {/* <ProductCard data={tile} /> */}
+                        <ProductCards data={tile} />
+                      </GridListTile>
+                    )
+                  })
 
-        </GridList>
-        <div className={`${classes.gridlistmainviewmore}`}>
-          <Button variant="contained"  className={`${classes.button}  ${classes.viewmoreColor}`} onClick={() => { this.handleOffset() }} disabled={data.length < 24} >
-          { data.length === 0 && `No products found` }  {data.length >= 24 && ` View ${data.length > 0 ? data[0].totalCount-data.length : ''} More Products`} {(data.length >0 && data.length< 24) && `Only ${data.length > 0 ? data[0].totalCount-data.length : ''} products avalilable`}
-      </Button>
-        </div>  
-  </div>}  
-        </>      
-}
+                }
+
+              </GridList>
+
+              <div className={`${classes.gridlistmainviewmore}`}>
+                {this.state.loadingtext
+                  ?
+                  <div style={{ textAlign: 'center' }}>Loading...</div>
+                  :
+                  <Button variant="contained" className={`${classes.button}  ${classes.viewmoreColor}`} onClick={() => { this.handleOffset() }} disabled={data.length < 24} >
+                    {data.length === 0 && `No products found`}  {data.length >= 24 && ` View ${data.length > 0 ? data[0].totalCount - data.length : ''} More Products`} {(data.length > 0 && data.length < 24) && `Only ${data.length > 0 ? data[0].totalCount - data.length : ''} products avalilable`}
+                  </Button>}
+              </div>
+
+
+            </div>}
+          </>
+        }
       </div>
 
     );

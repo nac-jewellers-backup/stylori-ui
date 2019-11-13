@@ -7,7 +7,7 @@ import {
 }
   from '@material-ui/core';
 import { ExpandLess, ExpandMore, } from '@material-ui/icons';
-import './filter.css';
+import './filter.css';  
 import ProductLayout from '../ProductCard/ProductLayout';
 import FilterHeader from './FilterHeader';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
@@ -22,10 +22,10 @@ import { FilterOptionsContext } from 'context'
 
 
 const PersistentDrawerLeft = (props) => {
-  const { setSort,setFilters, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
+  const { setSort,setFilters,setloadingfilters, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
   const loc = window.location.search
   
-  return <Component setSort={setSort} setFilters={setFilters} sort={FilterOptionsCtx.sort} {...props} />
+  return <Component setSort={setSort} setFilters={setFilters} setloadingfilters={setloadingfilters} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort} {...props} />
 }
 
 
@@ -58,8 +58,9 @@ class Component extends React.Component {
 
   }
   componentDidMount() {
-    var numberOne = 1232224.789;
-    var numberTwo = 1833362.222;
+    console.log('price_props', typeof this.props.data[0].subFilter['Price Range'])
+    var numberOne = Number(this.props.data[0].subFilter['Price Range'].min);
+    var numberTwo = Number(this.props.data[0].subFilter['Price Range'].max);
     var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
     var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
     this.setState({ numOne: numOne, numTwo: numTwo })
@@ -87,8 +88,26 @@ class Component extends React.Component {
 
    
   }
-  handleChange(value, BoolName, e, TargetName) {
+
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    console.log(this.props, 'filters')
+    if ( this.props.data[0].subFilter['Price Range'] !== prevProps.data[0].subFilter['Price Range']) {
+
+      console.log('price_props', typeof this.props.data[0].subFilter['Price Range'], this.props.data[0].subFilter['Price Range'].length, this.props.data[0].subFilter['Price Range'][0] !== undefined, Number(this.props.data[0].subFilter['Price Range'].max))
+      var numberOne = this.props.data[0].subFilter['Price Range'][0] ? this.props.data[0].subFilter['Price Range'][0].min: 0;
+      var numberTwo = this.props.data[0].subFilter['Price Range'][0] ? this.props.data[0].subFilter['Price Range'][0].max : 0;
+      var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
+      var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
+      this.setState({ numOne: numOne, numTwo: numTwo })
+      debugger
+    // if( this.props.data[0].subFilter['Price Range'].length > 0 && this.props.data[0].subFilter['Price Range'][0] !== undefined){ 
+    //   this.props.setFilters({pricemax:numberTwo, pricemin:numberOne})}  
+    }
     
+  }
+  handleChange(value, BoolName, e, TargetName) {
+    this.props.setloadingfilters(true)
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
@@ -136,10 +155,10 @@ console.log('queries',queries)
         paramsMapUrlSetState()
     }
 
-    let arr = [];
-    if (BoolName === true) {
-      arr=  chipData.push({ key: chipData, label: value });
-    }  
+    // let arr = [];
+    // if (BoolName === true) {
+    //   arr=  chipData.push({ key: chipData, label: value });
+    // }  
     // let checkedvalue = {};
     // checkedvalue[value] = BoolName
     // TargetName === undefined ?  checked[e.target.name] = checkedvalue : checked[TargetName] = checkedvalue
@@ -238,6 +257,7 @@ console.log('queries',queries)
 
     const { classes, data } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];
+    
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
 
@@ -536,7 +556,7 @@ console.log('queries',queries)
                         className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
                         Sort
                     </Typography>
-                    </IconButton>
+                    </IconButton> 
 
 
 

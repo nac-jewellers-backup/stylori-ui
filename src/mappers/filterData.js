@@ -65,8 +65,17 @@ export default function (data) {
                     'Stone Shape': get(data[0].gemstone_shape).map(val =>{
                         return val.gemstone_shape
                      }),
+                     'Price Range':get(data[0].price_range).map(val =>{
+                        return val
+                     }),
+
                 },
-                
+                // // [ 
+                //     { 
+                //         "max":5231.559,
+                //         "min":0
+                //      }
+                //   ],
                 sortOptions : [
                     "New To Stylori",
                     "Featured",

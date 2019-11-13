@@ -13,10 +13,35 @@ import  'screens/screens.css';
 import filterData from 'mappers/filterData'
 
 class Stylori extends React.Component {
+  constructor(props){
+    super()
+    this.state = {loading:false};
+  }
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    console.log(this.props.mappedFilters, prevProps.mappedFilters, this.props.data, 'prevProps.mappedFiltersprevProps.mappedFilters')
+  
+    //  if(this.props.dataFilter !== prevProps.dataFilter){
+
+      if(this.props.mappedFilters !== prevProps.mappedFilters){
+        
+        this.props.setloadingfilters(false)
+
+      // }
+    // setTimeout(function(){ alert("Hello"); }, 3000);
+    // setTimeout(function(){  this.props.setloadingfilters(false); }.bind(this), 5000);
+  }
+
+  }
   render() {
     const { data, dataFilter } = this.props
     return (
+     <>
+ 
       <Grid container >
+            {this.props.loadingfilters && <div className="overlayloadingfilter">
+              <div className="text">Filters updating...</div>
+              </div>}
         <Grid item xs={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
           <Header data={data} />
         </Grid>
@@ -33,6 +58,7 @@ class Stylori extends React.Component {
           </Hidden>
         </Grid>
       </Grid>
+      </>
     )
   }
 }
@@ -40,12 +66,11 @@ class Stylori extends React.Component {
 // const history = (props, aa) => props.history.push(`/stylori?${aa}`);
 
 const Components = props => {
-  let { FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters } } = React.useContext(FilterOptionsContext);
+  let { FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, loadingfilters}, setloadingfilters } = React.useContext(FilterOptionsContext);
   let content, mapped = [];
 
   var arrFilters = Array(mappedFilters)
   let mappedFiltersList = filterData(arrFilters)
-debugger
   // let mappedFilter = filterData(mappedFilters)
   if (!loading && !error) {
     if (Object.keys(data).length !== 0) {
@@ -54,7 +79,7 @@ debugger
   }
   if (Object.keys(data).length === 0) content =  <div className="overall-loader"><div id="loading"></div></div>
   
-  else content = <Stylori {...props} data={dataArr} dataFilter={mappedFiltersList}/>
+  else content = <Stylori {...props} data={dataArr} dataFilter={mappedFiltersList} loadingfilters={loadingfilters} mappedFilters={mappedFilters} setloadingfilters={setloadingfilters}/>
   return content
 }
 

@@ -36,12 +36,10 @@ class ProductDescription extends Component {
     var loc = this.props.location.pathname;
     var path = loc.split('/');
     // const descriptionData = this.props.data;
-debugger
     const settings = this.props.data[0].dataCarousel;
     const fadeImages = this.props.data[0].carouselImage;
     const title = this.props.title;
     const datadescription = this.props.data[0].seoText;
-    debugger
     return (
       <>
         <Container >

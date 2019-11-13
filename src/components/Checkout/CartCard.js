@@ -32,7 +32,6 @@ class Checkoutcard extends React.Component {
     }
     handleDeleteLocalStorage = (e) => {
         var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
-
         var currentValue = e.target.id
         var a = local_storage.products.filter(val => {
             if (currentValue !== val.sku_id) {
