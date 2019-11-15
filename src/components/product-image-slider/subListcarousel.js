@@ -58,8 +58,8 @@ class Sublistcarousel extends React.Component {
         <Hidden smDown>
           <div className='like-and-recently'>
             <Grid container spacing={12}>
-              <Grid item xs={6} className="like-page" ><span onClick={()=>this.setState({dataToShow:'YouMayLike'})}>You may also like</span></Grid>
-              <Grid item xs={6} className="recenetly-like-page"><span onClick={()=>this.setState({dataToShow:'YouRecentlyViewed'})}>You recently viewed</span></Grid>
+              <Grid item xs={6} className={`${'like-page'} ${this.state.dataToShow==='YouMayLike' ?'recenetly-like-page-active' :''}`} ><span onClick={()=>this.setState({dataToShow:'YouMayLike'})}>You may also like</span></Grid>
+              <Grid item xs={6} className={`${'recenetly-like-page'} ${this.state.dataToShow==='YouRecentlyViewed' ?'recenetly-like-page-active' :''}`} ><span onClick={()=>this.setState({dataToShow:'YouRecentlyViewed'})}>You recently viewed</span></Grid>
             </Grid>
           </div> <div className='sub-carousel-head'>
             <Container maxWidth='md'>
