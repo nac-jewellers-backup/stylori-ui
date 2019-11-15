@@ -93,6 +93,9 @@ export const CheckForCod = `query CheckForCod($pincode:String) {
   }
 }
 `
+
+
+
 export const ADDRESSDETAILS = `
 query MyQuery($id: UUID) {
   allUserAddresses(first: 1, condition: {id: $id}) {
@@ -113,6 +116,89 @@ query MyQuery($id: UUID) {
     }
   }
 }`
+export const YouMayAlsoLike = `query MyQuery($filterdata: ProductListFilter,$filterdatatranssku: TransSkuListCondition,$filterdata2:ProductListFilter,$filterdatatranssku2: TransSkuListCondition, $imgposition:ProductImageCondition ) {
+  youMayalsolike1:  allProductLists(filter: $filterdata, orderBy: CREATED_AT_DESC, first:16) {
+      nodes {
+        productImagesByProductId(condition:$imgposition){
+          nodes{
+            imageUrl
+          }
+        }
+        transSkuListsByProductId(condition:$filterdatatranssku) {
+          nodes {
+            discountPrice
+            generatedSku
+        
+            productListByProductId{
+           
+              productMaterialsByProductSku{
+                nodes{
+                  materialName
+                }
+              }
+            }
+          }
+        }
+        productName
+       
+        createdAt
+     
+      }
+      totalCount
+    }
+    youMayalsolike2:  allProductLists(filter: $filterdata2, orderBy: CREATED_AT_DESC, first:8) {
+      nodes {
+           productImagesByProductId(condition:$imgposition){
+          nodes{
+            imageUrl
+          }
+        }
+        transSkuListsByProductId(condition:$filterdatatranssku2) {
+          nodes {
+            discountPrice
+            generatedSku
+         
+            productListByProductId{
+              
+              productMaterialsByProductSku{
+                nodes{
+                  materialName
+                }
+              }
+            }
+          }
+        }
+        productName
+        productType
+        createdAt
+      }
+      totalCount
+    }
+  }`
+  export const youRecentlyViewed = `query youRecentlyViewed($filtersku:  TransSkuListFilter, $imgcondition:ProductImageCondition) {
+    allTransSkuLists(filter: $filtersku) {
+      nodes {
+        discountPrice
+        generatedSku
+        productListByProductId {
+          productName
+          productType
+          productMaterialsByProductSku {
+            nodes {
+              materialName
+            }
+          }
+          productImagesByProductId(condition:$imgcondition) {
+            nodes {
+              imagePosition
+              imageUrl
+            }
+          }
+        }
+      }
+    }
+  }
+  `
 export const filterProductMatrix = (type, value) => {
   let fc = { table: "", type: "" }
   switch (type) {

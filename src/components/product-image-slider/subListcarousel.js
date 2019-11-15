@@ -17,6 +17,7 @@ class Sublistcarousel extends React.Component {
     valuse: 0,
     values: 0,
     expanded: null,
+    dataToShow:"YouMayLike"
   }
 
 
@@ -45,22 +46,32 @@ class Sublistcarousel extends React.Component {
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: data[0].fadeImageSublist.length > 4 ? limit : data[0].fadeImageSublist.length,
+      slidesToShow: this.state.dataToShow === "YouMayLike" ? data[0].fadeImageSublist.length > 4 ? limit : data[0].fadeImageSublist.length  :
+      data[0].fadeImageSublistRecentlyViewed.length > 4 ? limit : data[0].fadeImageSublistRecentlyViewed.length
+      ,
       slidesToScroll: 4,
     }
+    // this.state.dataToShow==="YouMayLike" ? data[0].fadeImageSublist : data[0].fadeImageSublistRecentlyViewed
+    console.info('vadamapla_objectu',data[0].fadeImageSublist)
     return (
       <div>
         <Hidden smDown>
           <div className='like-and-recently'>
             <Grid container spacing={12}>
-              <Grid item xs={6} className="like-page"><span>You may also like</span></Grid>
-              <Grid item xs={6} className="recenetly-like-page"><span >You recently viewed</span></Grid>
+              <Grid item xs={6} className="like-page" ><span onClick={()=>this.setState({dataToShow:'YouMayLike'})}>You may also like</span></Grid>
+              <Grid item xs={6} className="recenetly-like-page"><span onClick={()=>this.setState({dataToShow:'YouRecentlyViewed'})}>You recently viewed</span></Grid>
             </Grid>
           </div> <div className='sub-carousel-head'>
             <Container maxWidth='md'>
-              <Slideshow class="subslider-carousel" hoverlist={data[0].fadeImageSublist}
+            { this.state.dataToShow==="YouMayLike" && data[0].fadeImageSublist.length<0 || this.state.dataToShow==="YouRecentlyViewed" && data[0].fadeImageSublistRecentlyViewed.length<0 ? 
+            
+            <span>No products found </span>
+            :
+             <Slideshow class="subslider-carousel" hoverlist={
+              this.state.dataToShow==="YouMayLike" ? data[0].fadeImageSublist : data[0].fadeImageSublistRecentlyViewed
+              }
                 dataCarousel={dataCarousel} hover={true} >
-              </Slideshow>
+              </Slideshow>}
             </Container>
           </div>
 

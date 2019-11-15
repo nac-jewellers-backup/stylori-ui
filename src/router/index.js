@@ -32,7 +32,7 @@ export const RouterApp = (props) => {
 console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
     return (
         <Switch>
-            <Redirect key="stylori-redirect" from="/" exact to={"/jewellery"} />
+            {/* <Redirect key="stylori-redirect" component={} from="/" exact to={"/hemow"} /> */}
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
             
             {(props.location.pathname !== "/cart" && props.location.pathname !== "/checkout") &&

@@ -119,6 +119,7 @@ const handleProductDetatiContext = (props) =>{
   props.filters['defaultVariants']['metalColor']  = props.data.metalColor
   props.filters['defaultVariants']['purity']  = props.data.purity
   props.filters['defaultVariants']['skuSize']  = props.data.skuSize
+  props.filters['skuId'] = props.data.generatedSku
 props.setFilters(props.filters)
 
 console.log('props.filters',props.filters)

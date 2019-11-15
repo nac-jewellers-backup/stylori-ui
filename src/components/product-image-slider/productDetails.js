@@ -18,22 +18,24 @@ class ProductDetails extends React.Component {
     state = {
         expanded: null
     };
+  
     productsDetails = (data) => {
         const { classes } = this.props;
         return (
             <div>
 
                 <Grid container spacing={12} style={{ paddingRight: "20px" }}>
-                    {data[0].productsDetails.map(val => {
-                        return ((data[0].productType !== "Earrings" && val.header === 'Gemstone Details')
-                            || (data[0].productType === "Earrings" && val.header === 'Diamond Details')) ? false :
+                    {data[0].productsDetails.map(valueofproductdetail => {
+                        return ((data[0].productType !== "Earrings" && valueofproductdetail.header === 'Gemstone Details')
+                            || (data[0].productType === "Earrings" && valueofproductdetail.header === 'Diamond Details')) ? false :
                             <>
                                 <div className='overall-boxz'>
                                     <div className='overall-bo'>
-                                        <span key={val.name} className={`product-details ${classes.normalfonts}`} > {val.header}</span>
+                                        <span key={valueofproductdetail.name} className={`product-details ${classes.normalfonts}`} > {valueofproductdetail.header}</span>
                                         <hr class="bottom-line"></hr>
                                         <>{
-                                            val.namedetail !== undefined && val.namedetail.map(res => {
+                                            valueofproductdetail.namedetail !== undefined && valueofproductdetail.namedetail.map(res => {
+                                                console.info('objectobjectobject', res)
                                                 return (
                                                     <span>
                                                         {((data[0].productType !== "Earring" && res.name === 'Gemstone')
@@ -48,10 +50,18 @@ class ProductDetails extends React.Component {
                                                                 <Grid container item xs={8}  >
                                                                     {
                                                                         isArray(res.details) ?
+                                                                        
                                                                             <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
-                                                                                {res.details.map(val => {
+                                                                                {res.details.map((val,index) => {
                                                                                     return (
-                                                                                        <span style={{ fontSize: "12px", textAlign: 'left' }}> {val}</span>
+                                                                                    <span style={{ fontSize: "12px", textAlign: 'left' }}> 
+                                                                                    { 
+                                                                                    valueofproductdetail.header === 'Price Breakup' && res.name !== 'GST' ?
+                                                                                     index === 0 ? <del>{val}</del> : val
+                                                                                     :
+                                                                                     val
+                                                                                    }
+                                                                                     </span>
                                                                                     )
                                                                                 })}
                                                                             </ListItemText>
@@ -59,7 +69,7 @@ class ProductDetails extends React.Component {
 
                                                                             <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
                                                                                 {/* {data[0].productsDetails[3].namedetail[1].length > 0} */}
-                                                                                    <span style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</span>
+                                                                               {  <span style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</span>}
                                                                             </ListItemText>
                                                                     }
                                                                 </Grid>

@@ -61,9 +61,9 @@ const generatedimondClarity = (val) => {
         icon: "https://img.icons8.com/color/48/000000/gold-bars.png"
     }))
 }
-const generateShipsBy = (PD) => {
-    var isReadytoShip = PD.isReadyToShip
-    var numberOfDays = 5
+const generateShipsBy = (readytoship, vendorDeliveryTime) => {
+    var isReadytoShip = readytoship
+    var numberOfDays = vendorDeliveryTime
     var date = moment().format(' h a')
     console.log(date)
     if (isReadytoShip) {
@@ -77,7 +77,7 @@ const generateShipsBy = (PD) => {
     }
 }
 // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
-export default function (data, cdnUrl) {
+export default function (data, like_data, viewedddatas) {
     console.info('datapd', data)
     let mapperdata = [];
     try {
@@ -157,7 +157,7 @@ export default function (data, cdnUrl) {
                 telephone: '1800-102-0330',
                 phonenum: "+91 99526 25252",
                 chat: "Chat",
-                shipby: generateShipsBy(PD),
+                shipby: generateShipsBy(PD.isReadyToShip, PD.vendorDeliveryTime),
                 isReadyToShip: PD.isReadyToShip
             }],
             // //////////////////////////     productsDetails    ////////////////////////////////////////////
@@ -266,42 +266,41 @@ export default function (data, cdnUrl) {
                 header: "Price Breakup",
                 namedetail: [{
                     name: "Metal",
-                    details: calculatetotalm(PD.pricingSkuMetalsByProductSku.nodes, "goldprice")
-                        + ' ' + calculatetotalss(PD.pricingSkuMetalsByProductSku.nodes, "goldprice")
+                    details: [calculatetotalm(PD.pricingSkuMetalsByProductSku.nodes, "goldprice"),
+                    calculatetotalss(PD.pricingSkuMetalsByProductSku.nodes, "goldprice")]
 
                 },
                 {
                     name: "Diamond",
-                    details: PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
-                        calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : ""
-                            + '  ' +
-                            PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
-                            calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : "",
+                    details: [PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                        calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : 0
+                        ,
+                    PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                        calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : 0],
 
                 },
                 {
                     name: "Gemstone",
-                    details: PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
-                        calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : ""
-                            + '  ' +
-                            PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
-                            calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : ""
+                    details: [PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                        calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : 0
+                        ,
+                    PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                        calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : 0]
                 },
                 {
                     name: "Making Charges",
-                    details: calculatetotal(PD.pricingSkuMetalsByProductSku.nodes, "makingcharge")
-                        + ' ' + calculatetotals(PD.pricingSkuMetalsByProductSku.nodes, "makingcharge")
+                    details: [calculatetotal(PD.pricingSkuMetalsByProductSku.nodes, "makingcharge"), calculatetotals(PD.pricingSkuMetalsByProductSku.nodes, "makingcharge")]
                 },
                 {
                     name: "GST",
                     details:
-                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPriceTax))
+                        [new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPriceTax)), new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPriceTax))]
                 },
                 {
                     name: "Total",
                     details:
-                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.markupPrice)) + ' ' +
-                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPrice)),
+                        [new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.markupPrice)),
+                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPrice))],
                 }],
             },
             ],
@@ -311,47 +310,46 @@ export default function (data, cdnUrl) {
                 name: [
                     '#EveryDay', '#Female', '#THree Stone', '#Spots', '#Special Occasion', '#Designer', '#Essentails', '#EveryDay', '#Female', '#THree Stone', '#Spots', '#Special Occasion', '#Designer', '#Essentails',]
             }],
-
-            fadeImageSublist: [{
-                img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
-                title: "Diamond And Gold Floral Ring",
-                price: "98.89789"
-            },
-            {
-                img: "https://assets-cdn.stylori.com/157x157/images/product/SP0603/SP0603-1Y.jpg",
-                title: "You recently viewed",
-                price: "98.89789"
-            },
-            {
-                img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
-                title: "You recently viewed",
-                price: "98.89789"
-            },
-            {
-                img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
-                title: "You recently viewed",
-                price: "98.89789"
-            },
-            {
-                img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
-                title: "You recently viewed",
-                price: "98.89789"
-            },
-            {
-                img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
-                title: "You recently viewed",
-                price: "98.89789"
-            },
-            {
-                img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
-                title: "You recently viewed",
-                price: "98.89789"
-            },
-            {
-                img: "http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg",
-                title: "You recently viewed",
-                price: "98.89789"
-            }]
+            // like_data.data.youMayalsolike1.nodes
+            fadeImageSublist:
+                like_data &&like_data.data && Object.entries(like_data.data).length>0 && like_data.data.youMayalsolike1 && (like_data.data.youMayalsolike1.nodes.length!==0  || like_data.data.youMayalsolike2.nodes.length!==0) ?
+                    like_data.data.youMayalsolike1 && like_data.data.youMayalsolike1.nodes.length >0 ?
+                        like_data.data.youMayalsolike1.nodes.map(
+                            val => {
+                                return ({
+                                    img: `${CDN_URL}${val.productImagesByProductId.nodes[0].imageUrl}`,
+                                    title: val.productName,
+                                    price: Math.round(val.transSkuListsByProductId.nodes[0].discountPrice),
+                                    url:`jewellery/${val.productType}/${val.transSkuListsByProductId.nodes[0].productListByProductId.productMaterialsByProductSku.nodes[0].materialName}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes[0].generatedSku}`
+                                })
+                            }
+                        )
+                        :
+                        like_data.data.youMayalsolike2.nodes.map(
+                            val => {
+                                return ({
+                                    img: `${CDN_URL}${val.productImagesByProductId.nodes[0].imageUrl}`,
+                                    title: val.productName,
+                                    price: Math.round(val.transSkuListsByProductId.nodes[0].discountPrice),
+                                    url:`/jewellery/${val.productType}/${val.transSkuListsByProductId.nodes[0].productListByProductId.productMaterialsByProductSku.nodes[0].materialName}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes[0].generatedSku}`
+                                })
+                            }
+                        )
+                    :
+                    [],
+                    fadeImageSublistRecentlyViewed:viewedddatas && viewedddatas.data && Object.entries(viewedddatas.data).length>0 && viewedddatas.constructor === Object && viewedddatas.data.allTransSkuLists.nodes.length>0 ?
+                    
+                    viewedddatas.data.allTransSkuLists.nodes.map(val=>{
+                        debugger
+                        return({
+                            img:`${CDN_URL}${val.productListByProductId.productImagesByProductId.nodes[0].imageUrl}`,
+                            title:val.productListByProductId.productName,
+                            price:Math.round(val.discountPrice),
+                            url:`/jewellery/${val.productListByProductId.productType}/${val.productListByProductId.productMaterialsByProductSku.nodes[0].materialName}/${val.productListByProductId.productName}?skuId=${val.generatedSku}`
+                        })
+                    })
+                    :
+                    []
 
         }))
     return _format;
