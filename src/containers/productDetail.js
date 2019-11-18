@@ -24,7 +24,7 @@ import { PRODUCTDETAILS, conditions } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { ProductDetailContext } from 'context/ProductDetailContext';
 import { CDN_URL } from 'config';
-import  'screens/screens.css';
+import 'screens/screens.css';
 
 
 class ProductDetail extends Component {
@@ -61,16 +61,16 @@ class ProductDetail extends Component {
             <Grid container spacing={12}>
               <Grid item xs={6}>
                 <ProductImageZoom data={this.props.data} />
-              </Grid> 
+              </Grid>
               <Grid item xs={6}>
                 <div className='overall-box'>
-                  <ProductPrice data={this.props.data} />  
+                  <ProductPrice data={this.props.data} />
                 </div>
                 <div className='overall-box'>
-                  <PriceTabs data={this.props.data} />  
+                  <PriceTabs data={this.props.data} />
                 </div>
                 <div className='overall-box'>
-                  <PriceBuynow data={this.props.data} /> 
+                  <PriceBuynow data={this.props.data} />
                 </div>
               </Grid>
             </Grid>
@@ -79,7 +79,7 @@ class ProductDetail extends Component {
           <div style={{ background: "whitesmoke" }} className="pricing-product-media">
             <Grid container spacing={12}>
               <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
-                <ProductDetails data={this.props.data} /> 
+                <ProductDetails data={this.props.data} />
               </Grid>
               <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
                 <PriceCertification />
@@ -139,19 +139,19 @@ class ProductDetail extends Component {
 
           </div>
 
-          <Buynowfixed data={this.props.data}/>
+          <Buynowfixed data={this.props.data} />
         </Hidden>
 
       </div>
     )
   }
 }
-const Components = props => { 
-  const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas } } = React.useContext(ProductDetailContext);
+const Components = props => {
+  const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating } } = React.useContext(ProductDetailContext);
   const datas = data;
   let mapped = datas;
   if (!loading && !error) {
-    mapped = productDetails(datas, likedatas, viewedddatas);
+    mapped = productDetails(datas, likedatas, viewedddatas, rating);
   }
   if (Object.keys(mapped).length === 0) return <div className="overall-loader"><div id="loading"></div></div>
   else {

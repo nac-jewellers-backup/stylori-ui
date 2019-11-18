@@ -77,16 +77,19 @@ const generateShipsBy = (readytoship, vendorDeliveryTime) => {
     }
 }
 // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
-export default function (data, like_data, viewedddatas) {
+export default function (data, like_data, rating, viewedddatas) {
     console.info('datapd', data)
     let mapperdata = [];
     try {
+        // mapperda = ;
         mapperdata = data.data.allTransSkuLists.nodes;
+        debugger
     } catch (error) {
         mapperdata = [];
     }
     const _format = mapperdata.map(PD => (
         {
+            // lk: rating,
             title: PD.productListByProductId.productName,
             skuId: PD && PD === undefined ? '' : PD.generatedSku,
             price: PD.discountPrice,
@@ -304,7 +307,38 @@ export default function (data, like_data, viewedddatas) {
                 }],
             },
             ],
-
+            productsubHead: [
+                {
+                    name: "From the House of NAC",
+                    icon: 'https://img.icons8.com/wired/64/000000/diamond.png',
+                    url: "/#/",
+                },
+                {
+                    name: "Quality Assurance",
+                    icon: 'https://img.icons8.com/wired/64/000000/diamond.png',
+                    url: "/#/",
+                },
+                {
+                    name: "Easy Returns",
+                    url: "/#/",
+                    icon: 'https://img.icons8.com/wired/64/000000/diamond.png',
+                },
+                {
+                    name: "Diverse Styles",
+                    url: "/#/",
+                    icon: 'https://img.icons8.com/wired/64/000000/diamond.png',
+                },
+                {
+                    name: "Secure Payments",
+                    url: "/#/",
+                    icon: 'https://img.icons8.com/wired/64/000000/diamond.png',
+                },
+                {
+                    name: "Gold Coins",
+                    url: "/#/",
+                    icon: 'https://img.icons8.com/wired/64/000000/diamond.png',
+                },
+            ],
             productsPendants: [{
                 header: PD && PD !== undefined && PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription !== '' ? PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription : '',
                 name: [
@@ -312,15 +346,15 @@ export default function (data, like_data, viewedddatas) {
             }],
             // like_data.data.youMayalsolike1.nodes
             fadeImageSublist:
-                like_data &&like_data.data && Object.entries(like_data.data).length>0 && like_data.data.youMayalsolike1 && (like_data.data.youMayalsolike1.nodes.length!==0  || like_data.data.youMayalsolike2.nodes.length!==0) ?
-                    like_data.data.youMayalsolike1 && like_data.data.youMayalsolike1.nodes.length >0 ?
+                like_data && like_data.data && Object.entries(like_data.data).length > 0 && like_data.data.youMayalsolike1 && (like_data.data.youMayalsolike1.nodes.length !== 0 || like_data.data.youMayalsolike2.nodes.length !== 0) ?
+                    like_data.data.youMayalsolike1 && like_data.data.youMayalsolike1.nodes.length > 0 ?
                         like_data.data.youMayalsolike1.nodes.map(
                             val => {
                                 return ({
                                     img: `${CDN_URL}${val.productImagesByProductId.nodes[0].imageUrl}`,
                                     title: val.productName,
                                     price: Math.round(val.transSkuListsByProductId.nodes[0].discountPrice),
-                                    url:`jewellery/${val.productType}/${val.transSkuListsByProductId.nodes[0].productListByProductId.productMaterialsByProductSku.nodes[0].materialName}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes[0].generatedSku}`
+                                    url: `jewellery/${val.productType}/${val.transSkuListsByProductId.nodes[0].productListByProductId.productMaterialsByProductSku.nodes[0].materialName}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes[0].generatedSku}`
                                 })
                             }
                         )
@@ -331,25 +365,24 @@ export default function (data, like_data, viewedddatas) {
                                     img: `${CDN_URL}${val.productImagesByProductId.nodes[0].imageUrl}`,
                                     title: val.productName,
                                     price: Math.round(val.transSkuListsByProductId.nodes[0].discountPrice),
-                                    url:`/jewellery/${val.productType}/${val.transSkuListsByProductId.nodes[0].productListByProductId.productMaterialsByProductSku.nodes[0].materialName}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes[0].generatedSku}`
+                                    url: `/jewellery/${val.productType}/${val.transSkuListsByProductId.nodes[0].productListByProductId.productMaterialsByProductSku.nodes[0].materialName}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes[0].generatedSku}`
                                 })
                             }
                         )
                     :
                     [],
-                    fadeImageSublistRecentlyViewed:viewedddatas && viewedddatas.data && Object.entries(viewedddatas.data).length>0 && viewedddatas.constructor === Object && viewedddatas.data.allTransSkuLists.nodes.length>0 ?
-                    
-                    viewedddatas.data.allTransSkuLists.nodes.map(val=>{
-                        debugger
-                        return({
-                            img:`${CDN_URL}${val.productListByProductId.productImagesByProductId.nodes[0].imageUrl}`,
-                            title:val.productListByProductId.productName,
-                            price:Math.round(val.discountPrice),
-                            url:`/jewellery/${val.productListByProductId.productType}/${val.productListByProductId.productMaterialsByProductSku.nodes[0].materialName}/${val.productListByProductId.productName}?skuId=${val.generatedSku}`
-                        })
+            fadeImageSublistRecentlyViewed: viewedddatas && viewedddatas.data && Object.entries(viewedddatas.data).length > 0 && viewedddatas.constructor === Object && viewedddatas.data.allTransSkuLists.nodes.length > 0 ?
+
+                viewedddatas.data.allTransSkuLists.nodes.map(val => {
+                    return ({
+                        img: `${CDN_URL}${val.productListByProductId.productImagesByProductId.nodes[0].imageUrl}`,
+                        title: val.productListByProductId.productName,
+                        price: Math.round(val.discountPrice),
+                        url: `/jewellery/${val.productListByProductId.productType}/${val.productListByProductId.productMaterialsByProductSku.nodes[0].materialName}/${val.productListByProductId.productName}?skuId=${val.generatedSku}`
                     })
-                    :
-                    []
+                })
+                :
+                []
 
         }))
     return _format;
