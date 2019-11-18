@@ -147,11 +147,11 @@ class ProductDetail extends Component {
   }
 }
 const Components = props => { 
-  const { ProductDetailCtx: { data, loading, error } } = React.useContext(ProductDetailContext);
+  const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas } } = React.useContext(ProductDetailContext);
   const datas = data;
   let mapped = datas;
   if (!loading && !error) {
-    mapped = productDetails(datas);
+    mapped = productDetails(datas, likedatas, viewedddatas);
   }
   if (Object.keys(mapped).length === 0) return <div className="overall-loader"><div id="loading"></div></div>
   else {

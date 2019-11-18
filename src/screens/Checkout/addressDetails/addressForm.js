@@ -19,7 +19,12 @@ const AddressComponent = (props) => {
     })} type='checkbox' checked={values.checkValue} />
     var local_storages = (localStorage.getItem("vals"));
     var isedit = (localStorage.getItem("isedit"));
-    return ( 
+    let lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
+    let lgn1 = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
+    const a = values.addressOne
+    const b = values.addressTwo ? values.addressTwo : a
+    const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
+    return (
         <Container>
             <div>
                 {(isedit === '1' ? true : false) && values.addrs === true ?
@@ -27,7 +32,20 @@ const AddressComponent = (props) => {
                         <form onSubmit={(e) => {
                             handle.handleSubmit(e)
                             setValues({ addrs: !values.addrs });
-                            localStorage.setItem("valuessetdata", JSON.stringify(values))
+                            if (Object.keys(lgn).length > 0) {
+                                lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
+                                var data = {}
+                                var allUserAddresses = {}
+                                var nodes = {}
+                                data['data'] = allUserAddresses
+                                allUserAddresses['allUserAddresses'] = nodes
+                                nodes['nodes'] = [{ a, b }]
+                                // const nodes = [a]
+                                localStorage.setItem("vals", JSON.stringify(data))
+                            }
+                            else {
+                                localStorage.setItem("valuessetdata", JSON.stringify(values))
+                            }
                             // window.location.reload(); 
                         }} autoComplete={true}>
                             {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <h5 className='title'> Shipping Address</h5>}
@@ -44,7 +62,7 @@ const AddressComponent = (props) => {
                                     }
                                     <Grid container spacing={12}>
                                         <Grid item xs={4} lg={4}>
-                                            <SimpleSelect val={'1'} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
+                                            <SimpleSelect val={'1'} name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                         </Grid>
                                         <Grid item xs={4} lg={4}>
                                             <Input
@@ -153,11 +171,11 @@ const AddressComponent = (props) => {
                                             <Input
                                                 className='text-f'
                                                 type="text"
-                                                name='contactno'
-                                                onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
-                                                onChange={(event) => handle.handleChange('addressOne', 'contactno', event.target.value)}
+                                                name='contactNumber'
+                                                onKeyPress={(e) => handle.handleKeyPress(e, "contactNumber")}
+                                                onChange={(event) => handle.handleChange('addressOne', 'contactNumber', event.target.value)}
                                                 placeholder="Phone *"
-                                                value={values.addressOne.contactno}
+                                                value={values.addressOne.contactNumber}
                                                 helperText="Please enter yout 10 digit Phone no**"
                                                 maxLength={10}
                                                 minLength={10}
@@ -211,7 +229,7 @@ const AddressComponent = (props) => {
                                                     type="text"
                                                     name='pincodetwo'
                                                     placeholder="Pin Code/Zip Code"
-                                                    onChange={(event) => handle.handleChange('addressTwo', 'pincode', event.target.value)}
+                                                    onChange={(event) => handle.handleChange('addressTwo', 'pincode', event.target.value, 'pincode2')}
                                                     value={values.addressTwo.pincode}
                                                     onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
                                                     helperText="Pin Code is required"
@@ -283,11 +301,11 @@ const AddressComponent = (props) => {
                                                 <Input
                                                     className='text-f'
                                                     type="text"
-                                                    name='contactnotwo'
-                                                    onChange={(event) => handle.handleChange('addressTwo', 'contactno', event.target.value)}
-                                                    onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
+                                                    name='contactNumbertwo'
+                                                    onChange={(event) => handle.handleChange('addressTwo', 'contactNumber', event.target.value)}
+                                                    onKeyPress={(e) => handle.handleKeyPress(e, "contactNumber")}
                                                     placeholder="Phone *"
-                                                    value={values.addressTwo.contactno}
+                                                    value={values.addressTwo.contactNumber}
                                                     helperText="Please enter your 10 digit Phone no**"
                                                     isNumber
                                                     maxLength={10}

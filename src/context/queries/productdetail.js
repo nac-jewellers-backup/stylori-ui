@@ -58,8 +58,8 @@ export const PRODUCTDETAILS = `query fetchProductDetails($conditionfilter:TransS
     }
   }
 }
-
 `
+
 export const filterProductMatrix = (type, value) => {
   let fc = { table: "", type: "" }
   switch (type) {

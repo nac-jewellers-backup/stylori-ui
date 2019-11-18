@@ -23,7 +23,7 @@ const ContinuesComponent = (props) => {
                 value={email.email}
                 // error={edata ? true : false}
                 required
-                placeholder="please enetr your mail Id"
+                placeholder="Please enetr your mail Id"
                 helperText="Please enter your mail Id"
                 onChange={e => handlers.handleChangeemail("email", e.target.value)}
             />
@@ -45,7 +45,7 @@ const ContinuesComponent = (props) => {
                 minLength={6}
                 // error={edata ? true : false}
                 helperText="Please enter your otp"
-                placeholder="please enetr your otp"
+                placeholder="Please enetr your otp"
                 onChange={e => handlers.handleChangeotp("otp", e.target.value)}
                 onKeyPress={e => {
                     if (!(e.which >= 48 && e.which <= 57)) e.preventDefault()

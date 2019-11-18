@@ -215,9 +215,9 @@ class Checkoutcard extends React.Component {
             slidesToShow: 1,
             arrows: false,
         }
-        var data = this.props
-
-        const { classes } = this.props;
+        var data = this.props.data
+        const { classes} = this.props;
+        // alert(discounted_price)
         let path = window.location.pathname.split('/').pop();
         return (
             <div>

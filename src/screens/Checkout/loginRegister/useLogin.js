@@ -73,7 +73,7 @@ const useLogin = (changePanel) => {
     const handelSubmit = (e) => {
         if (values.email === null) {
             values['error']['emerr'] = true
-            values['errortext']['emerr'] = 'Mail is Required'
+            values['errortext']['emerr'] = 'Mail is required'
             setValues({
                 ...values,
                 values,
@@ -81,7 +81,7 @@ const useLogin = (changePanel) => {
         }
         if (values.password === null) {
             values['error']['passerr'] = true
-            values['errortext']['passerr'] = 'password is Required'
+            values['errortext']['passerr'] = 'Password is required'
             setValues({
                 ...values,
                 values,

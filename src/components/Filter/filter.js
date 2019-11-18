@@ -100,7 +100,6 @@ class Component extends React.Component {
       var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
       var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
       this.setState({ numOne: numOne, numTwo: numTwo })
-      debugger
     // if( this.props.data[0].subFilter['Price Range'].length > 0 && this.props.data[0].subFilter['Price Range'][0] !== undefined){ 
     //   this.props.setFilters({pricemax:numberTwo, pricemin:numberOne})}  
     }
