@@ -124,7 +124,7 @@ query MyQuery($id: UUID) {
     }
   }
 }`
-export const YouMayAlsoLike = `query MyQuery($filterdata: ProductListFilter,$filterdatatranssku: TransSkuListCondition,$filterdata2:ProductListFilter,$filterdatatranssku2: TransSkuListCondition, $imgposition:ProductImageCondition ) {
+export const YouMayAlsoLike = `query MyQuery($filterdata: ProductListFilter,$filterdatatranssku:  TransSkuListFilter,$filterdatatranssku2:  TransSkuListFilter,$filterdata2:ProductListFilter,, $imgposition:ProductImageCondition,$Conditiondatatranssku:TransSkuListCondition,$Conditiondatatranssku2:TransSkuListCondition ) {
   youMayalsolike1:  allProductLists(filter: $filterdata, orderBy: CREATED_AT_DESC, first:16) {
       nodes {
         productImagesByProductId(condition:$imgposition){
@@ -132,7 +132,7 @@ export const YouMayAlsoLike = `query MyQuery($filterdata: ProductListFilter,$fil
             imageUrl
           }
         }
-        transSkuListsByProductId(condition:$filterdatatranssku) {
+        transSkuListsByProductId(condition:$Conditiondatatranssku,filter:$filterdatatranssku) {
           nodes {
             discountPrice
             generatedSku
@@ -161,7 +161,7 @@ export const YouMayAlsoLike = `query MyQuery($filterdata: ProductListFilter,$fil
             imageUrl
           }
         }
-        transSkuListsByProductId(condition:$filterdatatranssku2) {
+        transSkuListsByProductId(condition:$Conditiondatatranssku2,filter:$filterdatatranssku2) {
           nodes {
             discountPrice
             generatedSku
@@ -237,6 +237,7 @@ export const filterProductMatrix = (type, value) => {
         type: "diamondType"
       }
       break;
+
     }
     default: {
       break;
