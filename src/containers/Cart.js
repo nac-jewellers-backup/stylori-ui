@@ -49,18 +49,14 @@ class Cart extends React.Component {
     render() {
         const { data, classes } = this.props
         let path = window.location.pathname.split('/').pop();
-    return (
-
+        return (
             <div>
-
                 <Hidden smDown>
                     <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
                         <Grid item xs={12} >
                             <Header />
                         </Grid>
                     </Grid>
-
-
                     {path === "checkout" ? "" :
                         <CustomSeparator
                             arrowicon='cart-head-arrows'
@@ -73,7 +69,6 @@ class Cart extends React.Component {
                     }
                     <div className="cart-ovralldiv-media">
                         <Grid Container spacing={12}>
-
                             {this.props.data.length > 0 ? <Grid item xs={12}>
                                 <CartCard data={data} />
                             </Grid> : <><div className="noproductsfound">There are no items in this cart. </div>  <NavLink to="/jewellery" style={{ textDecoration: 'none' }} > <div className="continueshopping">CONTINUE SHOPPING</div></NavLink></>}
@@ -100,17 +95,13 @@ class Cart extends React.Component {
                     </Grid>
                 </Hidden>
             </div>
-
-
         )
     }
 }
 // export default Checkout;
 
-
 const Components = props => {
-    let { CartCtx: { cartFilters: { discounted_price }, data, loading, error } } = React.useContext(CartContext);
-    console.log(discounted_price)
+    let { CartCtx: { cartFilters, data, loading, error } } = React.useContext(CartContext);
     let content, mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
@@ -119,7 +110,6 @@ const Components = props => {
     }
     if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
     else content = <Cart {...props} data={mapped} />
-
     return content
 }
 

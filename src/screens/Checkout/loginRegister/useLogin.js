@@ -45,6 +45,15 @@ const useLogin = (changePanel) => {
         }
     }, [CodData])
     const handleChange = (type, value) => {
+        if (values.email !== null) {
+            values['error']['emerr'] = false
+            values['errortext']['emerr'] = ''
+        }
+        if (values.password !== null) {
+            values['error']['passerr'] = false
+            values['errortext']['passerr'] = ''
+
+        }
         setValues({
             ...values,
             [type]: value
@@ -64,16 +73,15 @@ const useLogin = (changePanel) => {
     const handelSubmit = (e) => {
         if (values.email === null) {
             values['error']['emerr'] = true
-            values['errortext']['emerr'] = 'Mail is Required'
+            values['errortext']['emerr'] = 'Mail is required'
             setValues({
                 ...values,
                 values,
             })
-            return false
         }
         if (values.password === null) {
             values['error']['passerr'] = true
-            values['errortext']['passerr'] = 'password is Required'
+            values['errortext']['passerr'] = 'Password is required'
             setValues({
                 ...values,
                 values,

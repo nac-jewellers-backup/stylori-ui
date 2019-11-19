@@ -7,8 +7,9 @@ import styles from './style';
 import { useVerifyOtp } from './verifyOtp';
 
 const ContinuesComponent = (props) => {
-    const { handlers, values, status, enterotp } = useVerifyOtp(() => props.changePanel(2, values.email));
+    const { handlers, email, otp, status, enterotp } = useVerifyOtp();
     const { classes } = props;
+    const values = { email: email.email, otp: otp.otp }
     const edata = status.data.edata.message ? status.data.edata.message : ""
     const MailForm = () => (
         <>
@@ -19,12 +20,12 @@ const ContinuesComponent = (props) => {
                 variant="outlined"
                 type="email"
                 name="email"
-                value={values.email}
+                value={email.email}
                 // error={edata ? true : false}
                 required
-                placeholder="please enetr your mail Id"
+                placeholder="Please enetr your mail Id"
                 helperText="Please enter your mail Id"
-                onChange={e => handlers.setMail(e.target.value)}
+                onChange={e => handlers.handleChangeemail("email", e.target.value)}
             />
             <p className={`form-group ${classes.normalfonts}`}> We don't share these with anybody. Your contact details are secure with us. </p>
         </>
@@ -38,14 +39,14 @@ const ContinuesComponent = (props) => {
                 variant="outlined"
                 type="text"
                 name="otp"
-                value={values.otp}
+                value={otp.otp}
                 isNumber
                 maxLength={6}
                 minLength={6}
                 // error={edata ? true : false}
                 helperText="Please enter your otp"
-                placeholder="please enetr your otp"
-                onChange={e => handlers.setOtp(e.target.value)}
+                placeholder="Please enetr your otp"
+                onChange={e => handlers.handleChangeotp("otp", e.target.value)}
                 onKeyPress={e => {
                     if (!(e.which >= 48 && e.which <= 57)) e.preventDefault()
                 }}

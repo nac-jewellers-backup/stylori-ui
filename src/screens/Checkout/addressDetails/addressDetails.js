@@ -46,19 +46,33 @@ class Addressdetails extends React.Component {
                                     {aa ? aa + ' ' : ""}
                                     {lgn && lgn.firstname ? lgn.firstname : value && value.addressOne && value.addressOne.firstname}&nbsp;{lgn && lgn.lastname ? lgn.lastname : value && value.addressOne && value.addressOne.lastname}
                                 </span>
-                                    <i onClick={() => this.props.redirectForm()} style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
-                                        class="fa fa-pencil-square-o"></i>
-                                        {localStorage.getItem("valuessetdata")? <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
-                                        onClick={() => {
-                                            localStorage.removeItem('valuessetdata')
-                                            // localStorage.removeItem('vals')
-                                            window.location.reload();
-                                        }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> :""}
-                                        {localStorage.getItem("vals")? <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
-                                        onClick={() => {
-                                            alert('Address already in use')
-                                        }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> :""}
-                                          
+                                {/* <i onClick={() => {
+                                    localStorage.setItem("isedit", 1)
+                                    this.props.redirectForm()
+                                }} style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
+                                    class="fa fa-pencil-square-o"></i> */}
+
+
+
+
+                                <i onClick={() => {
+                                    // localStorage.setItem("isedit", 1)
+                                    this.props.redirectForm()
+                                }} style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
+                                    class="fa fa-pencil-square-o"></i>
+
+
+                                {localStorage.getItem("valuessetdata") ? <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
+                                    onClick={() => {
+                                        localStorage.removeItem('valuessetdata')
+                                        // localStorage.removeItem('vals')
+                                        window.location.reload();
+                                    }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> : ""}
+                                {localStorage.getItem("vals") ? <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
+                                    onClick={() => {
+                                        alert('Address already in use')
+                                    }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> : ""}
+
                             </h4>
                             <p className={`detils-p ${classes.normalfonts}`} >
                                 {lgn && lgn.addressline1 ? lgn.addressline1 : value && value.addressOne && value.addressOne.addressline1} <br />
@@ -92,12 +106,12 @@ class Addressdetails extends React.Component {
                                     </span>
                                     <i onClick={() => this.props.redirectForm()} style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                         class="fa fa-pencil-square-o"></i>
-                                <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
-                                    onClick={() => {
-                                        localStorage.removeItem('valuessetdata')
-                                        // localStorage.removeItem('vals')
-                                        window.location.reload();
-                                    }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
+                                    <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
+                                        onClick={() => {
+                                            localStorage.removeItem('valuessetdata')
+                                            // localStorage.removeItem('vals')
+                                            window.location.reload();
+                                        }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
                                 </h4>
                                 <p className={`detils-p ${classes.normalfonts}`} >
                                     {lgn1 && lgn1.addressline1 ? lgn1 && lgn1.addressline1 : lgn && lgn.addressline1}{value && value.addressTwo && value.addressTwo.addressline1 ? value && value.addressTwo && value.addressTwo.addressline1 : value && value.addressOne && value.addressOne.addressline1}

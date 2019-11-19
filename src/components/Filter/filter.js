@@ -7,7 +7,7 @@ import {
 }
   from '@material-ui/core';
 import { ExpandLess, ExpandMore, } from '@material-ui/icons';
-import './filter.css';
+import './filter.css';  
 import ProductLayout from '../ProductCard/ProductLayout';
 import FilterHeader from './FilterHeader';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
@@ -555,7 +555,7 @@ console.log('queries',queries)
                         className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
                         Sort
                     </Typography>
-                    </IconButton>
+                    </IconButton> 
 
 
 

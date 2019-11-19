@@ -43,7 +43,7 @@ export default function SimpleSelect(props) {
                    <InputLabel htmlFor="outlined-age-native-simple">{props.name}</InputLabel> : ""
                } */}
             <Select
-                style={{ width: "100%" }}
+                style={{ width: "100%", background: props.disabled ? "rgba(192, 192, 192, 0.41)" : "" }}
                 displayEmpty
                 renderValue={value => values[props.name] ? values[props.name] : props.name ? props.name : "Select"}
                 onChange={(e) => handleChange(e)}
@@ -55,6 +55,7 @@ export default function SimpleSelect(props) {
                 MenuProps={{ "aria-required": true }}
                 className={classes.selectEmpty}
                 variant="outlined"
+                helperText="err"
             >
                 {props.selectData.map(data => (
                     <MenuItem value={data}>{data}</MenuItem>

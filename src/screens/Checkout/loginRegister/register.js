@@ -10,7 +10,7 @@ const Register = (props) => {
 }
 
 const RegisterComponent = (props) => {
-    const { values, handlers, data } = useRegister(()=>props.changePanel(2));
+    const { values, handlers, data } = useRegister(() => props.changePanel(2));
     var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
     var ccc = data.user_profile_id ? data.user_profile_id : ""
     console.log(values, 'valuesvaluesstate')
@@ -30,9 +30,9 @@ const RegisterComponent = (props) => {
                             type="email"
                             name="email"
                             value={values.email}
-                            error={values.error && values.error.emerr ? true : false}
-                            helperText={values.errortext && values.errortext.emerr}
-                            placeholder="enter your email Id"
+                            error={data.error && data.error.emerr? true : false}
+                            // helperText={values.errortext && values.errortext.emerr}
+                            placeholder="Enter your mail Id"
                             onChange={e => handlers.handleChange('email', e.target.value)}
                         />
                         <label className='errtext'> {values.errortext && values.errortext.emerr}</label>
@@ -43,8 +43,8 @@ const RegisterComponent = (props) => {
                             name="password"
                             value={values.password}
                             error={values.error && values.error.passerr ? true : false}
-                            helperText={values.errortext && values.errortext.passerr}
-                            placeholder="enter your password"
+                            // helperText={values.errortext && values.errortext.passerr}
+                            placeholder="Enter your password"
                             onChange={e => handlers.handleChange('password', e.target.value)}
                         />
                         <label className='errtext'> {values.errortext && values.errortext.passerr}</label>
@@ -56,44 +56,50 @@ const RegisterComponent = (props) => {
                             value={values.confirmpassword}
                             error={values.error && values.error.cnfpasserr ? true : false}
                             helperText={values.errortext && values.errortext.cnfpasserr}
-                            placeholder="enter your Confirm password"
+                            placeholder="Enter your Confirm password"
                             onChange={e => handlers.handleChange('confirmpassword', e.target.value)}
                         />
                         <label className='errtext'> {values.errortext && values.errortext.cnfpasserr}</label>
-                        {/* <Grid container spacing={12}>
-                                <Grid item lg={4} xs={4}>
-                                    <SimpleSelect name={'Mr'} selectData={['Mr', 'Mrs', 'Miss']} />
-                                </Grid>
-                                <Grid item lg={4} xs={4}>
-                                    <Input
-                                        margin="normal"
-                                        variant="outlined"
-                                        type="Password"
-                                        name="confPassword"
-                                        value={values.confPassword}
-                                        // error={this.state.confPassword ? this.state.confPassword : "**"}
-                                        placeholder="Confirm Password"
-                                        onChange={event => this.handleChange(event, 'confPassword')}
-                                        className='text-f'
-                                    />
-                                </Grid>
-                                <Grid item lg={4} xs={4}>
-                                    <Input
-                                        margin="normal"
-                                        variant="outlined"
-                                        type="Password"
-                                        name="confPassword"
-                                        value={values.confPassword}
-                                        // error={this.state.confPassword ? this.state.confPassword : "**"}
-                                        placeholder="Confirm Password"
-                                        onChange={event => this.handleChange(event, 'confPassword')}
-                                        className='text-f'
-                                    />
-                                </Grid>
-                            </Grid> */}
+                        <Grid container spacing={12}>
+                            <Grid item lg={4} xs={4}>
+                                <SimpleSelect val={'1'} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
+                            </Grid>
+                            <Grid item lg={4} xs={4}>
+                                <Input
+                                    margin="normal"
+                                    variant="outlined"
+                                    type="text"
+                                    name="firstname"
+                                    value={values.firstname}
+                                    error={values.error && values.error.firstname ? true : false}
+                                    helperText={values.errortext && values.errortext.firstname}
+                                    placeholder="Enter FirstName*"
+                                    onChange={e => handlers.handleChange('firstname', e.target.value)}
+                                    className='text-f'
+                                // helperText=""
+                                />
+                                <label className='errtext'> {values.errortext && values.errortext.firstname}</label>
+                            </Grid>
+                            <Grid item lg={4} xs={4}>
+                                <Input
+                                    margin="normal"
+                                    variant="outlined"
+                                    type="text"
+                                    name="lastname"
+                                    value={values.lastname}
+                                    error={values.error && values.error.lastname ? true : false}
+                                    helperText={values.errortext && values.errortext.lastname}
+                                    placeholder="Enter LastName*"
+                                    onChange={e => handlers.handleChange('lastname', e.target.value)}
+                                    className='text-f'
+                                // helperText=""
+                                />
+                                <label className='errtext'> {values.errortext && values.errortext.lastname}</label>
+                            </Grid>
+                        </Grid>
                         <div className='login-butn'>
                             <Button className='back-b' onClick={() => props.change()} >Back</Button>
-                            <Button className='apply-b' type="submit">Apply</Button>
+                            <Button className='apply-b' type="submit" >Register</Button>
                         </div>
                     </Grid>
                 </Grid>
