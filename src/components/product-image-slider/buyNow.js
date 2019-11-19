@@ -18,6 +18,7 @@ import { ProductDetailContext } from 'context/ProductDetailContext';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CheckForCod } from 'queries/productdetail';
 import { CartContext } from 'context'
+import { withRouter } from "react-router";
 
 
 
@@ -66,25 +67,26 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
 }
 
 const Buydetails = (props, state, handleChanges, handleCodChange) => {
+    debugger
     const { data } = props;
     const { classes } = props;
-    const handleLocalStorage = () => (
-        props.setCartFilters({
-            skuId: data[0].skuId, qty: 1, price: data[0].offerPrice
-        }),
-        window.location.pathname = '/cart'
-    )
+    const handleLocalStorage = () => {
+        props.setCartFilters({skuId: data[0].skuId, qty: 1, price: data[0].offerPrice})
+        props.history.push('/cart')
+        
+    }
     return (
         <div>
             {data[0].ProductContactNum.map(val =>
                 <>
                     <Grid container spacing={12} style={{ padding: "0 10px" }}>
                         <Grid item xs={12} lg={4} style={{ marginRight: "15px" }}>
-                            {/* <NavLink to="/cart" style={{ textDecoration: 'none' }} > */}
+                            {/* <NavLink to="/cart" style={{ textDecoration: 'none' }} onClick={handleLocalStorage.bind(this)}> */}
                             <div onClick={handleLocalStorage.bind(this)}>
                                 <Buynowbutton class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
                             </div>
                             {/* </NavLink> */}
+
                         </Grid>
 
                         <Grid xs={12} lg={7} style={{ marginTop: "7px" }}>
@@ -217,4 +219,4 @@ PriceBuynow.propTypes = {
     Buydetails: PropTypes.func,
 };
 
-export default withStyles(styles)(PriceBuynow);
+export default withStyles(styles)(withRouter(PriceBuynow));

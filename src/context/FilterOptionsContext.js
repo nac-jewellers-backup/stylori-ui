@@ -174,9 +174,9 @@ const Provider = (props) => {
 
         console.log('DataSeoQuery', DataSeoQuery)
     }
-// useEffect(()=>{
-//     setloadingfilters(true)
-// },[data])
+    // useEffect(()=>{
+    //     setloadingfilters(true)
+    // },[data])
     const updateProductList = () => {
         // console.info('objecobjecobject',mappedFilters.seo_url !== "jewellery")
         if (window.location.search || window.location.pathname.replace('/', '') === "jewellery") {
@@ -197,8 +197,43 @@ const Provider = (props) => {
                     }
                 }
             }
-            const variables = { ...conditionFilters, offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+            var variables;
+            if (window.location.search) {
+                const orderbyvarCondition = () => {
+                    console.info('orderby', 'hey i have came in... orderbyvarCondition', sort)
+                    switch (sort.values) {
+                        case 'New To Stylori': {
+                            return "CREATED_AT_DESC"
+                            break;
+                        }
+
+                        case 'Featured': {
+                            return "IS_FEATURED_ASC"
+                            break;
+                        }
+
+                        case 'Best Seller': {
+                            return "SELLING_QTY_DESC"
+                            break;
+                        }
+                        default:
+                    }
+
+                }
+                if (Object.keys(conditionFilters.filter) > 0) {
+                    debugger
+                    variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+                }
+                else {
+                    variables = { orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+                }
+            }
+            else {
+                variables = { ...conditionFilters, offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+            }
+
             makeRequest(variables)
+            console.log('came inside view moreproducts', filters)
 
         }
 
@@ -261,9 +296,15 @@ const Provider = (props) => {
                                 break;
                             }
 
-                            case 'Featured':
+                            case 'Featured': {
                                 return "IS_FEATURED_ASC"
                                 break;
+                            }
+
+                            case 'Best Seller': {
+                                return "SELLING_QTY_DESC"
+                                break;
+                            }
                             default:
                         }
 

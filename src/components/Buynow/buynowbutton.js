@@ -1,5 +1,6 @@
 import React from 'react';
 import '../product-image-slider/product-images.css'
+import { withRouter } from "react-router";
 import {
     Button,
 } from '@material-ui/core';
@@ -14,4 +15,4 @@ class Buynowbutton extends React.Component {
         )
     }
 }
-export default Buynowbutton;
+export default withRouter(Buynowbutton);

@@ -107,48 +107,72 @@ export const TabsProvider = (props) => {
             }
 
         }
-        if (filters.skuId) {
-            var _sessionStorage = sessionStorage.getItem('skuId')
-            var arr = []
-            if (_sessionStorage && _sessionStorage.length > 0) {
-                arr.push(_sessionStorage)
-                arr.push(filters.skuId)
-                sessionStorage.setItem('skuId', arr)
+        if(filters.skuId){
+           var _sessionStorage = sessionStorage.getItem('skuId')
+           var arr = []
+          if(_sessionStorage && _sessionStorage.length>0){
+            // arr.push(_sessionStorage.split(','))
+            arr = _sessionStorage.split(',')
+            arr.push(filters.skuId);
+           var uniqueArray =  [...new Set(arr)]
+           
+           var removingCurrentProduct = uniqueArray.filter(val=>
+            {
+                if(window.location.search.split('=')[1] !== val){
+                return val
+                }
             }
-            else {
-                sessionStorage.setItem('skuId', filters.skuId)
+        )
+            debugger
+            sessionStorage.setItem('skuId', removingCurrentProduct)
+          }
+          else{
+              sessionStorage.setItem('skuId', filters.skuId)
+          }
+          let variablesviewed = {}
+          variablesviewed["imgcondition"]= {
+            "imagePosition": 1,
+            "isdefault": true
+          }
+          if (_sessionStorage && _sessionStorage.indexOf(',') > -1) {
+            variablesviewed["filtersku"]= {generatedSku:{in:sessionStorage.getItem('skuId').split(',')}}
+          }
+          else{
+            variablesviewed["filtersku"]= {generatedSku:{in:[sessionStorage.getItem('skuId')]}}
+          }
+          let variableslike = {}
+          let recommended_products= window.location.pathname.split('/')
+          
+          variableslike['filterdata'] = { "productType": { equalTo: recommended_products[2] } }
+          variableslike['filterdata']['transSkuListsByProductId'] = { some: {discountPrice: { lessThan: price-5000, greaterThan: price+5000 }} }
+          variableslike['filterdata']["isactive"]= {"equalTo": true}
+          variableslike["Conditiondatatranssku"]= {
+              "isdefault": true
+          }
+          variableslike["filterdatatranssku"]= {
+            "generatedSku": {
+                "notEqualTo": "SB0012-18110000-2.4"
+              }
+        }
+       
+      
+            
+          variableslike['filterdata2'] = { "productType": { equalTo: recommended_products[2] } }
+          // variableslike['filterdata2']['transSkuListsByProductId'] = { some: { isdefault: { equalTo: true }} }
+          variableslike['filterdata2']["isactive"]= {"equalTo": true}
+          variableslike["Conditiondatatranssku2"]= {
+            "isdefault": true
+        }
+        variableslike["filterdatatranssku2"]= {
+          "generatedSku": {
+              "notEqualTo": "SB0012-18110000-2.4"
             }
-            let variablesviewed = {}
-            variablesviewed["imgcondition"] = {
-                "imagePosition": 1,
-                "isdefault": true
-            }
-            if (_sessionStorage && _sessionStorage.indexOf(',') > -1) {
-                variablesviewed["filtersku"] = { generatedSku: { in: sessionStorage.getItem('skuId').split(',') } }
-            }
-            else {
-                variablesviewed["filtersku"] = { generatedSku: { in: [sessionStorage.getItem('skuId')] } }
-            }
-            let variableslike = {}
-            let recommended_products = window.location.pathname.split('/')
-
-            variableslike['filterdata'] = { "productType": { equalTo: recommended_products[2] } }
-            variableslike['filterdata']['transSkuListsByProductId'] = { some: { discountPrice: { lessThan: price - 5000, greaterThan: price + 5000 } } }
-            variableslike['filterdata']["isactive"] = { "equalTo": true }
-            variableslike["filterdatatranssku"] = {
-                "isdefault": true
-            }
-
-            variableslike['filterdata2'] = { "productType": { equalTo: recommended_products[2] } }
-            // variableslike['filterdata2']['transSkuListsByProductId'] = { some: { isdefault: { equalTo: true }} }
-            variableslike['filterdata2']["isactive"] = { "equalTo": true }
-            variableslike["filterdatatranssku2"] = {
-                "isdefault": true
-            }
-            let vardata = { ...variableslike }
-            console.log('vardata', vardata)
-            likemakeRequest(vardata)
-            viewmakeRequest(variablesviewed)
+      }
+     
+          let vardata = { ...variableslike }
+              console.log('vardata', vardata)
+          likemakeRequest(vardata)
+          viewmakeRequest(variablesviewed)
         }
 
 
@@ -196,12 +220,12 @@ export const TabsProvider = (props) => {
     useEffect(() => {
         if (Object.entries(data).length !== 0 && data.constructor === Object) {
             if (data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
-                // var conditionValidate = data && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes 
-                // debugger
-                // filters['defaultVariants']['diamondType'] =  data.data.allTransSkuLists.nodes[0].diamondType
-                // filters['defaultVariants']['metalColor'] =  data.data.allTransSkuLists.nodes[0].metalColor
-                // filters['defaultVariants']['purity'] =  data.data.allTransSkuLists.nodes[0].purity
-                // filters['defaultVariants']['skuSize'] = data.data.allTransSkuLists.nodes[0].skuSize
+                var conditionValidate = data && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes 
+                debugger
+                filters['defaultVariants']['diamondType'] =  data.data.allTransSkuLists.nodes[0].diamondType
+                filters['defaultVariants']['metalColor'] =  data.data.allTransSkuLists.nodes[0].metalColor
+                filters['defaultVariants']['purity'] =  data.data.allTransSkuLists.nodes[0].purity
+                filters['defaultVariants']['skuSize'] = data.data.allTransSkuLists.nodes[0].skuSize
                 if (window.location.search.length === 0) {
                     filters['productId'] = data.data.allTransSkuLists.nodes[0].productListByProductId.productId
                 }

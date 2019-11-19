@@ -14,6 +14,7 @@ import CustomSeparator from '../components/BreadCrumb/index'
 import styles from "../components/Checkout/style"
 import { withStyles } from '@material-ui/core/styles';
 import './index.css'
+import { NavLink } from 'react-router-dom';
 
 // data.map(data=>{
 // return(
@@ -70,7 +71,7 @@ class Cart extends React.Component {
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>
                                 <CartCard data={data} />
-                            </Grid> : <><div className="noproductsfound">There are no items in this cart. </div><a href="/jewellery"> <div className="continueshopping">CONTINUE SHOPPING</div></a></>}
+                            </Grid> : <><div className="noproductsfound">There are no items in this cart. </div>  <NavLink to="/jewellery" style={{ textDecoration: 'none' }} > <div className="continueshopping">CONTINUE SHOPPING</div></NavLink></>}
                         </Grid>
                     </div>
                     <Grid Container spacing={12}>

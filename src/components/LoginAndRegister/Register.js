@@ -111,7 +111,7 @@ const RegisterComponent = (props) => {
                                     <div className={`pas-fr ${classes.normalfonts}`} style={{
                                         cursor: "pointer", fontSize: "14px",
                                         marginRight: "50%"
-                                    }} onClick={() => { window.location.href = "/registers" }} >Back to login</div>
+                                    }} onClick={() => { window.location.href = "/login" }} >Back to login</div>
                                 </Grid>
                             </Grid>
                         </form>
