@@ -17,7 +17,6 @@ const RegisterComponent = (props) => {
     return (
         <div className='pt-sm'>
             <form action="javascript:void(0)" onSubmit={(e) => {
-                console.log('valuesvaluesstate', 'hey i have came in...')
                 handlers.handleSubmit(e)
             }}>
                 <Grid container spacing={12}>

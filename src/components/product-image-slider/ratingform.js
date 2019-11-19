@@ -11,6 +11,7 @@ import { Input } from '../InputComponents/TextField/Input'
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style';
 import useRating from "./userating"
+import { withRouter } from "react-router";
 
 const RatingForm = (props) => {
     return <RatingComponent  {...props} />
@@ -20,7 +21,7 @@ const RatingComponent = (props) => {
     const { classes } = props;
     const { values, handlers, data } = useRating();
     return (
-        <form action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e)}>
+        <form action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e,props)}>
             <Grid container spacing={12} style={{ marginTop: '20px' }}>
                 <Grid item lg={1} />
                 <Grid item xs={12} lg={8}>
@@ -74,4 +75,4 @@ const RatingComponent = (props) => {
         </form>
     )
 }
-export default withStyles(styles)(RatingForm);
+export default withRouter(withStyles(styles)(RatingForm));

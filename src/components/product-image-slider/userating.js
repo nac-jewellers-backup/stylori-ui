@@ -6,6 +6,7 @@ import { useGraphql } from 'hooks/GraphqlHook';
 // const { setGlobalCtx } = React.useContext(GlobalContext);
 import { ProductDetailContext } from 'context/ProductDetailContext';
 
+
 const useRating = (props) => {
     const { setrating } = React.useContext(ProductDetailContext);
     const [values, setValues] = React.useState({
@@ -30,7 +31,7 @@ const useRating = (props) => {
             [type]: value
         })
     }
-    variab['productSku'] = values.product_sku
+    // variab['productSku'] = values.product_sku
     useEffect(() => {
         var rating = CodData.data ? CodData.data.allCustomerReviews.nodes : ""
         if (rating.length > 0) {
@@ -49,7 +50,9 @@ const useRating = (props) => {
             // console.log('starsSelectedstarsSelected',props.starsSelected)
             mapUrlParamsSplitEqual.map(val => {
                 values['product_sku'] = val[1]
+               if(val[1].length>0){
                 variab['productSku'] = val[1]
+               }
                 values['user_id'] = user_id
                 values['rate'] = "4"
                 // setFilters(values)
@@ -68,7 +71,7 @@ const useRating = (props) => {
         })
     }
 
-    const handelSubmit = (e) => {
+    const handelSubmit = (e, props) => {
         // if (values.rate !== "" && values.rate !== null){
         //     values['errortext']['rate'] = 'Rate this'
         //     setValues({
@@ -80,9 +83,11 @@ const useRating = (props) => {
         if (user_id.length > 0) {
             makeFetch(values);
             makeRequestCod(variab)
+            // window.location.href="/login"
 
         } else {
             alert("You will be able to review only after purchasing the product")
+            window.location.href="/login"
         }
 
     }

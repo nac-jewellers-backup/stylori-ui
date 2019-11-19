@@ -25,6 +25,7 @@ export const TabsProvider = (props) => {
     const [likedatas, setlikedata] = React.useState([])
     const [viewedddatas, setvieweddata] = React.useState([])
     const [rating, setrating] = React.useState([])
+    debugger
     const [price, setPrice] = React.useState(0)
 
     let queries = [];

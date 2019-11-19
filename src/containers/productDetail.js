@@ -91,7 +91,7 @@ class ProductDetail extends Component {
 
           <Sublistcarousel data={this.props.data} />
           <RatingForm />
-          <CustomerReviews />
+          <CustomerReviews rating={this.props.rating}/>
 
           <Grid item xs={12}>
             <Footer />
@@ -150,12 +150,13 @@ const Components = props => {
   const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating } } = React.useContext(ProductDetailContext);
   const datas = data;
   let mapped = datas;
-  if (!loading && !error) {
-    mapped = productDetails(datas, likedatas, viewedddatas, rating);
+  console.log("mapped",data,rating)
+  if (!loading && !error) { 
+  mapped = productDetails(datas, likedatas, viewedddatas, rating);
   }
   if (Object.keys(mapped).length === 0) return <div className="overall-loader"><div id="loading"></div></div>
   else {
-    return <ProductDetail {...props} data={mapped} />
+    return <ProductDetail {...props} data={mapped} rating={rating}/>
 
   }
 }

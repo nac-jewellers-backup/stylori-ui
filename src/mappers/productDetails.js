@@ -20,6 +20,13 @@ const generateImgurls = (PD, val) => {
 
     return arrOfurls
 }
+// const calculaterate = (data, name) => {
+//     data && data.map(val => {
+//         if(name==="message"){
+//             return val.message
+//         }
+//     })
+// }
 const calculatetotalmm = (arr) => {
     var a = 0;
     arr.map(val => {
@@ -77,19 +84,21 @@ const generateShipsBy = (readytoship, vendorDeliveryTime) => {
     }
 }
 // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
-export default function (data, like_data, rating, viewedddatas) {
+export default function (data, like_data, viewedddatas, rating) {
     console.info('datapd', data)
     let mapperdata = [];
     try {
         // mapperda = ;
-        mapperdata = data.data.allTransSkuLists.nodes;
-        debugger
+    debugger
+    mapperdata = data.data.allTransSkuLists.nodes;
     } catch (error) {
         mapperdata = [];
     }
     const _format = mapperdata.map(PD => (
         {
-            // lk: rating,
+            message: rating && rating.CodData && rating.CodData.data && rating.CodData.data.allCustomerReviews.nodes,
+            // title: rating.CodData.data.allCustomerReviews.nodes[0].title,
+            // ratings: rating.CodData.data.allCustomerReviews.nodes[0].rating,
             title: PD.productListByProductId.productName,
             skuId: PD && PD === undefined ? '' : PD.generatedSku,
             price: PD.discountPrice,

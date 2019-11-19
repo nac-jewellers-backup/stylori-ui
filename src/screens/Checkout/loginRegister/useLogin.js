@@ -45,7 +45,7 @@ const useLogin = (changePanel) => {
         }
     }, [CodData])
     const handleChange = (type, value) => {
-        if (values.email !== null) {
+        if (values.email !== null || errmsg.length < 0) {
             values['error']['emerr'] = false
             values['errortext']['emerr'] = ''
         }
@@ -58,6 +58,7 @@ const useLogin = (changePanel) => {
             ...values,
             [type]: value
         })
+        makeFetch(values)
     }
 
     const handleInvalid = (type, status) => {
@@ -98,9 +99,7 @@ const useLogin = (changePanel) => {
             })
             return false
         }
-        if (auth.length > 0) {
             changePanel(3)
-        }
 
     }
 

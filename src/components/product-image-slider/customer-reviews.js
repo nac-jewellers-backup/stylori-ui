@@ -40,8 +40,17 @@ class CustomerReviews extends React.Component {
             arrows: false
         }
         const { productsubHead } = this.props.data
-        const { classes, rating } = this.props;
+        const { classes, data } = this.props;
         debugger
+        var rat_val = this.props.rating && this.props.rating.CodData && this.props.rating.CodData.data && this.props.rating.CodData.data.allCustomerReviews && this.props.rating.CodData.data.allCustomerReviews.nodes
+        // var rat_map_message = rat_val.map(val => {
+        //     var value;
+        //     if (val.message !== "" && val.message !== undefined && val.message !== null) {
+        //         value = val.message
+        //     }
+        //     return value
+        // })
+        // console.log('rating_val', rat_val)
         return (
             <div>
                 <Hidden smDown>
@@ -51,13 +60,9 @@ class CustomerReviews extends React.Component {
                         </div>
                         <div className="reviews">
                             <span className={`data-reviews ${classes.normalfonts}`}>No Reviews Found
-                            {/* {rating.map(val=>(
-                                <>
-                                <div>{val.message}</div>
-                                <div></div>
-                                </>
-                            ))} */}
-
+                            {JSON.stringify(rat_val)}
+                                {/* <div>{rat_map_message}</div> */}
+                                {/* {rat_val.message} */}
                             </span>
                         </div>
                     </div>
@@ -97,15 +102,16 @@ class CustomerReviews extends React.Component {
     }
 }
 const Components = props => {
-    const { ProductDetailCtx: { filters, data, loading, error, rating} } = React.useContext(ProductDetailContext);
+    const { ProductDetailCtx: { filters, data, loading, error, rating } } = React.useContext(ProductDetailContext);
     const datas = data;
+    debugger
     let mapped = datas;
     if (!loading && !error) {
-        mapped = productDetails(datas,rating);
+        mapped = productDetails(datas, rating);
     }
     if (Object.keys(mapped).length === 0) return <div className="overall-loader"><div id="loading"></div></div>
     else {
-        return <CustomerReviews {...props} data={mapped} filters={filters} rating={filters} />
+        return <CustomerReviews {...props} data={mapped} filters={filters} rating={rating} />
     }
 }
 export default withStyles(styles)(Components);
