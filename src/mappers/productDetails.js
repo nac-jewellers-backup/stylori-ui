@@ -94,6 +94,7 @@ export default function (data, like_data, viewedddatas, rating) {
         mapperdata = [];
     }
     const _format = mapperdata.map(PD => (
+        
         {
             message: rating && rating.CodData && rating.CodData.data && rating.CodData.data.allCustomerReviews.nodes,
             // title: rating.CodData.data.allCustomerReviews.nodes[0].title,
@@ -277,41 +278,39 @@ export default function (data, like_data, viewedddatas, rating) {
                 header: "Price Breakup",
                 namedetail: [{
                     name: "Metal",
-                    details: [calculatetotalm(PD.pricingSkuMetalsByProductSku.nodes, "goldprice"),
-                    calculatetotalss(PD.pricingSkuMetalsByProductSku.nodes, "goldprice")]
+                    details: [calculatetotalss(PD.pricingSkuMetalsByProductSku.nodes, "goldprice"),calculatetotalm(PD.pricingSkuMetalsByProductSku.nodes, "goldprice")]
 
                 },
                 {
                     name: "Diamond",
-                    details: [PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
-                        calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : 0
-                        ,
-                    PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
-                        calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : 0],
+                    details: [
+                        PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                        calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : 0,
+                        PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                        calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : 0
+                        ],
 
                 },
                 {
                     name: "Gemstone",
                     details: [PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
-                        calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : 0
-                        ,
-                    PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
-                        calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : 0]
+                        calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : 0,
+                        PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                        calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : 0]
                 },
                 {
                     name: "Making Charges",
-                    details: [calculatetotal(PD.pricingSkuMetalsByProductSku.nodes, "makingcharge"), calculatetotals(PD.pricingSkuMetalsByProductSku.nodes, "makingcharge")]
+                    details: [calculatetotal(PD.pricingSkuMetalsByProductSku.nodes, "makingcharge"),calculatetotals(PD.pricingSkuMetalsByProductSku.nodes, "makingcharge")]
                 },
                 {
                     name: "GST",
                     details:
-                        [new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPriceTax)), new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPriceTax))]
+                        [new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPriceTax)),new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPriceTax))]
                 },
                 {
                     name: "Total",
                     details:
-                        [new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.markupPrice)),
-                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPrice))],
+                        [new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPrice)),new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.markupPrice))],
                 }],
             },
             ],
