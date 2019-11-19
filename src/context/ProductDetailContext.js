@@ -218,6 +218,8 @@ export const TabsProvider = (props) => {
                 filters['defaultVariants']['metalColor'] = data.data.allTransSkuLists.nodes[0].metalColor
                 filters['defaultVariants']['purity'] = data.data.allTransSkuLists.nodes[0].purity
                 filters['defaultVariants']['skuSize'] = data.data.allTransSkuLists.nodes[0].skuSize
+                filters['skuId']=data.data.allTransSkuLists.nodes[0].generatedSku
+                // window.location.search=`${`skuId=${filters['skuId']}`}`
                 if (window.location.search.length === 0) {
                     filters['productId'] = data.data.allTransSkuLists.nodes[0].productListByProductId.productId
                 }
@@ -230,8 +232,18 @@ export const TabsProvider = (props) => {
         setFilters(filters)
         pathQueries()
         updateProductList()
+        // window.location.search=`${`skuId=${filters['skuId']}`}`
 
     }, [filters])
+    useEffect(()=>{
+        if (window.location.search.length > 0) {
+            let loc = window.location.search.split('=')
+            let productDetailProps = loc[1]
+            debugger
+            if(filters['skuId'] !== productDetailProps) props.history.push(`${props.location.pathname}?${`skuId=${filters['skuId']}`}`)
+        }
+  
+    },[data, loading, error])
 
     const ProductDetailCtx = {
         filters, loading, error, data, likedata, likeloading, likeerror, likedatas, vieweddata,viewederror,viewedloading, viewedddatas
