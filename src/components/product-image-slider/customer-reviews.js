@@ -19,16 +19,60 @@ import styles from './style'
 import { ProductDetailContext } from 'context/ProductDetailContext';
 import productDetails from 'mappers/productDetails';
 
+
+const Star = ({ selected = false, onClick = f => f }) =>
+    <div className={(selected) ? "star selected" : "star"}
+        onClick={onClick}>
+    </div>
+
 class CustomerReviews extends React.Component {
-    state = {
-        expanded: 'panel1',
-    };
+    constructor(props) {
+        super(props)
+        this.state = {
+            starsSelected: '',
+            expanded: 'panel1',
+        }
+    }
 
     handleChange = panel => (event, expanded) => {
         this.setState({
             expanded: expanded ? panel : false,
         });
     };
+    // rat_map_message = () => this.props.rating && this.props.rating.CodData && this.props.rating.CodData.data && this.props.rating.CodData.data.allCustomerReviews && this.props.rating.CodData.data.allCustomerReviews.nodes.map(val => {
+    //     var value;
+    //     if (val.message !== "" && val.message !== undefined && val.message !== null) {
+    //         value = <> {val.message}</>
+    //     }
+    //     return value
+    // })
+    rat_map_title = () => this.props.rating && this.props.rating.CodData && this.props.rating.CodData.data && this.props.rating.CodData.data.allCustomerReviews && this.props.rating.CodData.data.allCustomerReviews.nodes.map(val => {
+        var value;
+        if (val.title !== "" && val.title !== undefined && val.title !== null ||
+            val.message !== "" && val.message !== undefined && val.message !== null ||
+            val.rate !== "" && val.rate !== undefined && val.rate !== null) {
+            value = <>
+                <div>{val.title}</div>
+                <div>{val.message}</div>
+                <div>
+                    {[1, 2, 3, 4, 5].map((n, i) =>
+                        <Star key={i}
+                            selected={i < val.rating}
+                            onClick={() => this.change(i + 1)}
+                        />
+                    )}
+                </div>
+                <br />
+                <hr />
+            </>
+        }
+        return value
+    })
+    componentDidUpdate(prevProps) {
+        // const rating = rating.CodData.data ? rating.CodData.data : ""
+        // const rating_if = this.props.rating && this.props.rating.CodData && this.props.rating.CodData.data
+        // if (rating_if !== prevProps.rating.CodData && rating.CodData.data) this.rat_map_message()
+    }
     render() {
         const { expanded } = this.state;
         const dataCarousel = {
@@ -41,16 +85,7 @@ class CustomerReviews extends React.Component {
         }
         const { productsubHead } = this.props.data
         const { classes, data } = this.props;
-        debugger
-        var rat_val = this.props.rating && this.props.rating.CodData && this.props.rating.CodData.data && this.props.rating.CodData.data.allCustomerReviews && this.props.rating.CodData.data.allCustomerReviews.nodes
-        // var rat_map_message = rat_val.map(val => {
-        //     var value;
-        //     if (val.message !== "" && val.message !== undefined && val.message !== null) {
-        //         value = val.message
-        //     }
-        //     return value
-        // })
-        // console.log('rating_val', rat_val)
+        const { starsSelected } = this.state;
         return (
             <div>
                 <Hidden smDown>
@@ -59,10 +94,10 @@ class CustomerReviews extends React.Component {
                             <span className={`reviews-customer ${classes.normalfonts}`}>Customer Reviews</span>
                         </div>
                         <div className="reviews">
-                            <span className={`data-reviews ${classes.normalfonts}`}>No Reviews Found
-                            {JSON.stringify(rat_val)}
-                                {/* <div>{rat_map_message}</div> */}
-                                {/* {rat_val.message} */}
+                            <span className={`data-reviews ${classes.normalfonts}`}>
+                                <Grid spacing={12} container style={{ float: "left", padding: "2%", lineHeight: "23px" }}>
+                                    <Grid item lg={12}>{this.rat_map_title()}</Grid>
+                                </Grid>
                             </span>
                         </div>
                     </div>
@@ -104,7 +139,6 @@ class CustomerReviews extends React.Component {
 const Components = props => {
     const { ProductDetailCtx: { filters, data, loading, error, rating } } = React.useContext(ProductDetailContext);
     const datas = data;
-    debugger
     let mapped = datas;
     if (!loading && !error) {
         mapped = productDetails(datas, rating);

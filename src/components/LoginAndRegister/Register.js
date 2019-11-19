@@ -6,7 +6,8 @@ import SimpleSelect from '../../components/InputComponents/Select/Select'
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 import useRegister from './useregister';
-
+import Header from 'components/Header/header'
+import Footer from "components/Footer/Footer"
 
 const UserRegister = (props) => {
     return <RegisterComponent  {...props} />
@@ -17,20 +18,25 @@ const RegisterComponent = (props) => {
     const { values, handlers } = useRegister();
     return (
         <>
-            <Grid spacing={12} container style={{ padding: "4%" }}>
-                <Grid item xs={6} lg={6}>
+            <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+                <Grid item xs={12} >
+                    <Header />
+                </Grid>
+            </Grid>
+            <Grid spacing={12} container style={{ padding: "3%" }}>
+                <Grid item xs={6} lg={6} xs={12}>
                     <div >
                         <img width="100%" height="100%" src="https://assets-cdn.stylori.com/images/static/inner-page/banner.png" />
                     </div>
                 </Grid>
-                <Grid item xs={6} lg={6}>
+                <Grid item xs={6} lg={6} xs={12}>
                     <div className='pt-sm' style={{ width: "90%", float: "right" }}>
                         <form action="javascript:void(0)" onSubmit={(e) => {
                             handlers.handleSubmit(e)
                         }}>
                             <Grid container spacing={12}>
                                 <Grid item xs={12} lg={12}>
-                                    <h5 className={`title ${classes.normalfonts}`}>  New user registration  </h5>
+                                    <h5 className={`title ${classes.normalfonts}`}>  Register  </h5>
                                     <Input
                                         margin="normal"
                                         variant="outlined"
@@ -108,16 +114,20 @@ const RegisterComponent = (props) => {
                                         <Button className='apply-b' type="submit" >Register</Button>
                                     </div>
 
-                                    <div className={`pas-fr ${classes.normalfonts}`} style={{
+                                    <div className={`${classes.normalfonts}`} style={{
                                         cursor: "pointer", fontSize: "14px",
                                         marginRight: "50%"
                                     }} onClick={() => { window.location.href = "/login" }} >Back to login</div>
+
                                 </Grid>
                             </Grid>
                         </form>
                     </div>
                 </Grid>
 
+            </Grid>
+            <Grid item xs={12}>
+                <Footer />
             </Grid>
         </>
     )

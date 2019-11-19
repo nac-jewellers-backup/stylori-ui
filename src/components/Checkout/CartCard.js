@@ -141,7 +141,7 @@ class Checkoutcard extends React.Component {
         )
     }
     subtotals = (props) => {
-        // alert(JSON.stringify(props.cartFilters.discount_price))
+        // alert(JSON.stringify(props.cartFilters.discounted_price))
         // const { dataCard1 } = this.props.data;
         const dataCard1 = this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
         // this.props.data.map(val=>{return val.dataCard1[0].offerPrice}).reduce(myFunc)
@@ -154,12 +154,11 @@ class Checkoutcard extends React.Component {
         //     return Math.round(total + num);
         // }
 
-        function myFunc(total, num) {
-
-            var discount_price = props.cartFilters.discount_price ? JSON.stringify(props.cartFilters.discount_price) : ""
-            if (discount_price.length > 0) {
+        function myFunc(total, num, discounted_price) {
+            var discounted_price = props.cartFilters.discounted_price ? JSON.stringify(props.cartFilters.discounted_price) : ""
+            if (discounted_price.length > 0) {
                 var a = Math.round(total + num);
-                var cart_price = (a - discount_price)
+                var cart_price = (a - discounted_price)
             } else {
                 var cart_price = Math.round(total + num);
             }
@@ -216,7 +215,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         var data = this.props.data
-        const { classes} = this.props;
+        const { classes } = this.props;
         // alert(discounted_price)
         let path = window.location.pathname.split('/').pop();
         return (
@@ -240,6 +239,7 @@ class Checkoutcard extends React.Component {
 const Components = props => {
     let { CartCtx: { cartFilters } } = React.useContext(CartContext);
     let content;
+    console.log('props.cartFilters.discounted_price',cartFilters)
     content = <Checkoutcard {...props} cartFilters={cartFilters} />
     return content
 }

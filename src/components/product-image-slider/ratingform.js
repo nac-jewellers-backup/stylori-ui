@@ -19,9 +19,9 @@ const RatingForm = (props) => {
 
 const RatingComponent = (props) => {
     const { classes } = props;
-    const { values, handlers, data } = useRating();
+    const { values, handlers } = useRating();
     return (
-        <form action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e,props)}>
+        <form action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e, props)}>
             <Grid container spacing={12} style={{ marginTop: '20px' }}>
                 <Grid item lg={1} />
                 <Grid item xs={12} lg={8}>
@@ -40,11 +40,9 @@ const RatingComponent = (props) => {
                         placeholder="Title"
                         className="rating-form-text"
                         onChange={e => handlers.handleChange('title', e.target.value)}
-                        maxLength={60}
-                        minLength={60} 
                         helperText="please Enter review title"
                         required
-                        />
+                    />
                     <span className={`tool-tips ${classes.normalfonts}`} >Max 60 Characters</span>
                     <Input
                         margin="normal"
@@ -55,8 +53,6 @@ const RatingComponent = (props) => {
                         className="rating-form-text"
                         value={values.message}
                         onChange={e => handlers.handleChange('message', e.target.value)}
-                        maxLength={250}
-                        minLength={250} 
                         helperText="please Enter review text"
                         required />
                     <span className={`tool-tips ${classes.normalfonts}`} >Max 250 Characters</span>

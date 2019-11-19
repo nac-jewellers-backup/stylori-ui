@@ -67,7 +67,6 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
 }
 
 const Buydetails = (props, state, handleChanges, handleCodChange) => {
-    debugger
     const { data } = props;
     const { classes } = props;
     const handleLocalStorage = () => {

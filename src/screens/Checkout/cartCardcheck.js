@@ -28,9 +28,9 @@ import { CartContext } from '../../context/CartContext';
 import cart from '../../mappers/cart';
 
 class CartCardCheck extends React.Component {
-    state = { 
+    state = {
         expanded: 'panel' + (localStorage.getItem("panel") ? localStorage.getItem("panel") : 1),
-        // expanded: 'panel1',
+        // expanded: 'panel3',
         // expandedlimit: localStorage.getItem("panel") ? localStorage.getItem("panel") : 1,
         // expandedlimit: 1,
         mailId: null

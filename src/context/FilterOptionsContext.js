@@ -221,7 +221,6 @@ const Provider = (props) => {
 
                 }
                 if (Object.keys(conditionFilters.filter) > 0) {
-                    debugger
                     variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
                 else {

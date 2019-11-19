@@ -89,7 +89,6 @@ export default function (data, like_data, viewedddatas, rating) {
     let mapperdata = [];
     try {
         // mapperda = ;
-    debugger
     mapperdata = data.data.allTransSkuLists.nodes;
     } catch (error) {
         mapperdata = [];

@@ -45,7 +45,7 @@ const LoginComponent = (props) => {
                         value={values.password}
                         error={values.error && values.error.passerr ? true : false}
                         helperText={values.errortext && values.errortext.passerr}
-                        placeholder="enter your password"
+                        placeholder="Enter your password"
                         onChange={e => handlers.handleChange('password', e.target.value)}
                     />
                     <label className='errtext'> {values.errortext && values.errortext.passerr}</label>

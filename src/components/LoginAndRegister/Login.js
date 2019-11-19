@@ -5,6 +5,12 @@ import { Input } from '../../components/InputComponents/TextField/Input'
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 import useLogin from './uselogin';
+import Header from 'components/Header/header'
+import Footer from "components/Footer/Footer"
+import {
+    Checkbox
+} from '@material-ui/core';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const UserLogin = (props) => {
     return <LoginComponent  {...props} />
@@ -17,21 +23,25 @@ const LoginComponent = (props) => {
     // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
     var prof = data.userprofile ? data.userprofile.email : ""
     // alert(JSON.stringify(data))
-    console.log('valuesvaluesvalues', values)
     return (
         <>
-            <Grid spacing={12} container style={{ padding: "4%" }}>
-                <Grid item xs={6} lg={6}>
+            <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+                <Grid item xs={12} >
+                    <Header />
+                </Grid>
+            </Grid>
+            <Grid spacing={12} container style={{ padding: "3%" }}>
+                <Grid item xs={6} lg={6} xs={12}>
                     <div >
                         <img width="100%" height="100%" src="https://assets-cdn.stylori.com/images/static/inner-page/banner.png" />
                     </div>
                 </Grid>
-                <Grid item xs={6} lg={6}>
+                <Grid item xs={6} lg={6} xs={12}>
                     <div className='pt-sm' style={{ width: "90%", float: "right" }}>
                         <form action="javascript:void(0)" onSubmit={(e) => {
                             handlers.handelSubmit(e)
                         }}>
-                            <h5 className={`title ${classes.normalfonts}`}>  Login </h5>
+                            <div className={`${classes.normalfonts}`} style={{ fontSize: "18px" }}>  Login </div>
                             <Input
                                 margin="normal"
                                 variant="outlined"
@@ -52,12 +62,19 @@ const LoginComponent = (props) => {
                                 value={values.password}
                                 error={values.error && values.error.passerr ? true : false}
                                 helperText={values.errortext && values.errortext.passerr}
-                                placeholder="enter your password"
+                                placeholder="Enter your password"
                                 onChange={e => handlers.handleChange('password', e.target.value)}
                             />
                             <label className='errtext'> {values.errortext && values.errortext.passerr}</label>
                             <div className='log-pas'>
-                                <span className={` ${classes.normalfonts}`} style={{ cursor: "pointer" }}><input type="checkbox" />Remember Me </span>
+                                <span className={` ${classes.normalfonts}`} style={{ cursor: "pointer", fontSize: "14px" }}>
+                                    <Checkbox
+                                        // checked={state.checkedB}
+                                        // onChange={handleChange('checkedB')}
+                                        value="checkedB"
+                                        color="primary"
+                                    />
+                                    Remember Me </span>
                                 <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>
                                     <span>Sign me in using</span>
                                     <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img>
@@ -68,7 +85,7 @@ const LoginComponent = (props) => {
 
                             <Grid spacing={12} container>
                                 <Grid item xs={6} lg={6} style={{ float: "left" }}>
-                                    <div className={`pas-fr ${classes.normalfonts}`} style={{ cursor: "pointer" }}>Forgot password?</div>
+                                    <div className={`${classes.normalfonts}`} style={{ cursor: "pointer", fontSize: "14px" }}>Forgot password?</div>
                                     <br />
                                     <div className={classes.normalfonts} style={{
                                         cursor: "pointer", fontSize: "14px",
@@ -90,6 +107,9 @@ const LoginComponent = (props) => {
                     </div>
                 </Grid>
 
+            </Grid>
+            <Grid item xs={12}>
+                <Footer />
             </Grid>
         </>
     )

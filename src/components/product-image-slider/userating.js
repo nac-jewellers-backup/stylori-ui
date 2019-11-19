@@ -25,17 +25,12 @@ const useRating = (props) => {
     var variab = {}
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CUSTOMERREVIEWS, () => { }, {});
 
-    const handleChange = (type, value) => {
-        setValues({
-            ...values,
-            [type]: value
-        })
-    }
+
     // variab['productSku'] = values.product_sku
     useEffect(() => {
         var rating = CodData.data ? CodData.data.allCustomerReviews.nodes : ""
         if (rating.length > 0) {
-            setrating({CodData})
+            setrating({ CodData })
         }
     }, [CodData])
     useEffect(() => {
@@ -50,13 +45,13 @@ const useRating = (props) => {
             // console.log('starsSelectedstarsSelected',props.starsSelected)
             mapUrlParamsSplitEqual.map(val => {
                 values['product_sku'] = val[1]
-               if(val[1].length>0){
-                variab['productSku'] = val[1]
-               }
+                if (val[1].length > 0) {
+                    variab['productSku'] = val[1]
+                    makeRequestCod(variab)
+                }
                 values['user_id'] = user_id
                 values['rate'] = "4"
                 // setFilters(values)
-                makeRequestCod(variab)
                 setValues({
                     ...values,
                     values
@@ -64,32 +59,28 @@ const useRating = (props) => {
             })
         }
     }, [])
+
     const handleInvalid = (type, status) => {
         setInvalids({
             ...invalids,
             [type]: status
         })
     }
-
+    const handleChange = (type, value) => {
+        setValues({
+            ...values,
+            [type]: value
+        })
+    }
     const handelSubmit = (e, props) => {
-        // if (values.rate !== "" && values.rate !== null){
-        //     values['errortext']['rate'] = 'Rate this'
-        //     setValues({
-        //         ...values,
-        //         values,
-        //     })
-        // }
-            let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
+        let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
         if (user_id.length > 0) {
             makeFetch(values);
             makeRequestCod(variab)
-            // window.location.href="/login"
-
         } else {
             alert("You will be able to review only after purchasing the product")
-            window.location.href="/login"
+            window.location.href = "/login"
         }
-
     }
 
     const handlers = { handleChange, handleInvalid, handelSubmit };

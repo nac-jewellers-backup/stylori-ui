@@ -39,7 +39,7 @@ const AddressComponent = (props) => {
                                 var nodes = {}
                                 data['data'] = allUserAddresses
                                 allUserAddresses['allUserAddresses'] = nodes
-                                nodes['nodes'] = [{ a, b }]
+                                nodes['nodes'] = [a]
                                 // const nodes = [a]
                                 localStorage.setItem("vals", JSON.stringify(data))
                             }

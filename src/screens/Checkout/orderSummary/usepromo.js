@@ -17,6 +17,7 @@ const usePromo = (props) => {
 
         var m = data.discounted_price ? JSON.stringify(data.discounted_price) : ""
         if (m.length > 2) {
+            debugger
             setCartFilters({
                 discounted_price: data.discounted_price,
                 tax_price: data.tax_price

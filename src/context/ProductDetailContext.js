@@ -25,7 +25,6 @@ export const TabsProvider = (props) => {
     const [likedatas, setlikedata] = React.useState([])
     const [viewedddatas, setvieweddata] = React.useState([])
     const [rating, setrating] = React.useState([])
-    debugger
     const [price, setPrice] = React.useState(0)
 
     let queries = [];
@@ -107,72 +106,70 @@ export const TabsProvider = (props) => {
             }
 
         }
-        if(filters.skuId){
-           var _sessionStorage = sessionStorage.getItem('skuId')
-           var arr = []
-          if(_sessionStorage && _sessionStorage.length>0){
-            // arr.push(_sessionStorage.split(','))
-            arr = _sessionStorage.split(',')
-            arr.push(filters.skuId);
-           var uniqueArray =  [...new Set(arr)]
-           
-           var removingCurrentProduct = uniqueArray.filter(val=>
-            {
-                if(window.location.search.split('=')[1] !== val){
-                return val
+        if (filters.skuId) {
+            var _sessionStorage = sessionStorage.getItem('skuId')
+            var arr = []
+            if (_sessionStorage && _sessionStorage.length > 0) {
+                // arr.push(_sessionStorage.split(','))
+                arr = _sessionStorage.split(',')
+                arr.push(filters.skuId);
+                var uniqueArray = [...new Set(arr)]
+
+                var removingCurrentProduct = uniqueArray.filter(val => {
+                    if (window.location.search.split('=')[1] !== val) {
+                        return val
+                    }
+                }
+                )
+                sessionStorage.setItem('skuId', removingCurrentProduct)
+            }
+            else {
+                sessionStorage.setItem('skuId', filters.skuId)
+            }
+            let variablesviewed = {}
+            variablesviewed["imgcondition"] = {
+                "imagePosition": 1,
+                "isdefault": true
+            }
+            if (_sessionStorage && _sessionStorage.indexOf(',') > -1) {
+                variablesviewed["filtersku"] = { generatedSku: { in: sessionStorage.getItem('skuId').split(',') } }
+            }
+            else {
+                variablesviewed["filtersku"] = { generatedSku: { in: [sessionStorage.getItem('skuId')] } }
+            }
+            let variableslike = {}
+            let recommended_products = window.location.pathname.split('/')
+
+            variableslike['filterdata'] = { "productType": { equalTo: recommended_products[2] } }
+            variableslike['filterdata']['transSkuListsByProductId'] = { some: { discountPrice: { lessThan: price - 5000, greaterThan: price + 5000 } } }
+            variableslike['filterdata']["isactive"] = { "equalTo": true }
+            variableslike["Conditiondatatranssku"] = {
+                "isdefault": true
+            }
+            variableslike["filterdatatranssku"] = {
+                "generatedSku": {
+                    "notEqualTo": "SB0012-18110000-2.4"
                 }
             }
-        )
-            debugger
-            sessionStorage.setItem('skuId', removingCurrentProduct)
-          }
-          else{
-              sessionStorage.setItem('skuId', filters.skuId)
-          }
-          let variablesviewed = {}
-          variablesviewed["imgcondition"]= {
-            "imagePosition": 1,
-            "isdefault": true
-          }
-          if (_sessionStorage && _sessionStorage.indexOf(',') > -1) {
-            variablesviewed["filtersku"]= {generatedSku:{in:sessionStorage.getItem('skuId').split(',')}}
-          }
-          else{
-            variablesviewed["filtersku"]= {generatedSku:{in:[sessionStorage.getItem('skuId')]}}
-          }
-          let variableslike = {}
-          let recommended_products= window.location.pathname.split('/')
-          
-          variableslike['filterdata'] = { "productType": { equalTo: recommended_products[2] } }
-          variableslike['filterdata']['transSkuListsByProductId'] = { some: {discountPrice: { lessThan: price-5000, greaterThan: price+5000 }} }
-          variableslike['filterdata']["isactive"]= {"equalTo": true}
-          variableslike["Conditiondatatranssku"]= {
-              "isdefault": true
-          }
-          variableslike["filterdatatranssku"]= {
-            "generatedSku": {
-                "notEqualTo": "SB0012-18110000-2.4"
-              }
-        }
-       
-      
-            
-          variableslike['filterdata2'] = { "productType": { equalTo: recommended_products[2] } }
-          // variableslike['filterdata2']['transSkuListsByProductId'] = { some: { isdefault: { equalTo: true }} }
-          variableslike['filterdata2']["isactive"]= {"equalTo": true}
-          variableslike["Conditiondatatranssku2"]= {
-            "isdefault": true
-        }
-        variableslike["filterdatatranssku2"]= {
-          "generatedSku": {
-              "notEqualTo": "SB0012-18110000-2.4"
+
+
+
+            variableslike['filterdata2'] = { "productType": { equalTo: recommended_products[2] } }
+            // variableslike['filterdata2']['transSkuListsByProductId'] = { some: { isdefault: { equalTo: true }} }
+            variableslike['filterdata2']["isactive"] = { "equalTo": true }
+            variableslike["Conditiondatatranssku2"] = {
+                "isdefault": true
             }
-      }
-     
-          let vardata = { ...variableslike }
-              console.log('vardata', vardata)
-          likemakeRequest(vardata)
-          viewmakeRequest(variablesviewed)
+            variableslike["filterdatatranssku2"] = {
+                "generatedSku": {
+                    "notEqualTo": "SB0012-18110000-2.4"
+                }
+            }
+
+            let vardata = { ...variableslike }
+            console.log('vardata', vardata)
+            likemakeRequest(vardata)
+            viewmakeRequest(variablesviewed)
         }
 
 
@@ -217,11 +214,10 @@ export const TabsProvider = (props) => {
     useEffect(() => {
         if (Object.entries(data).length !== 0 && data.constructor === Object) {
             if (data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
-                var conditionValidate = data && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes 
-                debugger
-                filters['defaultVariants']['diamondType'] =  data.data.allTransSkuLists.nodes[0].diamondType
-                filters['defaultVariants']['metalColor'] =  data.data.allTransSkuLists.nodes[0].metalColor
-                filters['defaultVariants']['purity'] =  data.data.allTransSkuLists.nodes[0].purity
+                var conditionValidate = data && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes
+                filters['defaultVariants']['diamondType'] = data.data.allTransSkuLists.nodes[0].diamondType
+                filters['defaultVariants']['metalColor'] = data.data.allTransSkuLists.nodes[0].metalColor
+                filters['defaultVariants']['purity'] = data.data.allTransSkuLists.nodes[0].purity
                 filters['defaultVariants']['skuSize'] = data.data.allTransSkuLists.nodes[0].skuSize
                 if (window.location.search.length === 0) {
                     filters['productId'] = data.data.allTransSkuLists.nodes[0].productListByProductId.productId
@@ -231,12 +227,20 @@ export const TabsProvider = (props) => {
         }
     }, [loading, error, data])
     useEffect(() => {
+        if (window.location.search.length > 0) {
+            let loc = window.location.search.split('=')
+            let productDetailProps = loc[1]
+            if (filters['skuId'] !== productDetailProps) props.history.push(`${props.location.pathname}?${`skuId=${filters['skuId']}`}`)
+        }
+
+    }, [data, loading, error])
+    useEffect(() => {
 
         setFilters(filters)
         pathQueries()
         updateProductList()
 
-    }, [filters]) 
+    }, [filters])
 
     const ProductDetailCtx = {
         filters, loading, error, data, likedata, likeloading, likeerror, likedatas, vieweddata, viewederror, viewedloading, viewedddatas, rating
