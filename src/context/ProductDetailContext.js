@@ -105,9 +105,20 @@ export const TabsProvider = (props) => {
            var _sessionStorage = sessionStorage.getItem('skuId')
            var arr = []
           if(_sessionStorage && _sessionStorage.length>0){
-            arr.push(_sessionStorage)
-            arr.push(filters.skuId)
-            sessionStorage.setItem('skuId', arr)
+            // arr.push(_sessionStorage.split(','))
+            arr = _sessionStorage.split(',')
+            arr.push(filters.skuId);
+           var uniqueArray =  [...new Set(arr)]
+           
+           var removingCurrentProduct = uniqueArray.filter(val=>
+            {
+                if(window.location.search.split('=')[1] !== val){
+                return val
+                }
+            }
+        )
+            debugger
+            sessionStorage.setItem('skuId', removingCurrentProduct)
           }
           else{
               sessionStorage.setItem('skuId', filters.skuId)
@@ -129,16 +140,29 @@ export const TabsProvider = (props) => {
           variableslike['filterdata'] = { "productType": { equalTo: recommended_products[2] } }
           variableslike['filterdata']['transSkuListsByProductId'] = { some: {discountPrice: { lessThan: price-5000, greaterThan: price+5000 }} }
           variableslike['filterdata']["isactive"]= {"equalTo": true}
-          variableslike["filterdatatranssku"]= {
+          variableslike["Conditiondatatranssku"]= {
               "isdefault": true
           }
+          variableslike["filterdatatranssku"]= {
+            "generatedSku": {
+                "notEqualTo": "SB0012-18110000-2.4"
+              }
+        }
+       
+      
             
           variableslike['filterdata2'] = { "productType": { equalTo: recommended_products[2] } }
           // variableslike['filterdata2']['transSkuListsByProductId'] = { some: { isdefault: { equalTo: true }} }
           variableslike['filterdata2']["isactive"]= {"equalTo": true}
-          variableslike["filterdatatranssku2"]= {
-              "isdefault": true
+          variableslike["Conditiondatatranssku2"]= {
+            "isdefault": true
+        }
+        variableslike["filterdatatranssku2"]= {
+          "generatedSku": {
+              "notEqualTo": "SB0012-18110000-2.4"
             }
+      }
+     
           let vardata = { ...variableslike }
               console.log('vardata', vardata)
           likemakeRequest(vardata)
