@@ -6,15 +6,19 @@ import { useGraphql } from 'hooks/GraphqlHook';
 // const { setGlobalCtx } = React.useContext(GlobalContext);
 import { ProductDetailContext } from 'context/ProductDetailContext';
 
+
 const useRating = (props) => {
-    const { setFilters } = React.useContext(ProductDetailContext);
+    const { setrating } = React.useContext(ProductDetailContext);
     const [values, setValues] = React.useState({
         user_id: null,
         rate: null,
         product_id: null,
         product_sku: null,
         title: null,
-        message: null
+        message: null,
+        errortext: {
+            rate: "",
+        },
     });
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addproductreview', {}, []);
@@ -27,15 +31,11 @@ const useRating = (props) => {
             [type]: value
         })
     }
-    variab['productSku'] = values.product_sku
+    // variab['productSku'] = values.product_sku
     useEffect(() => {
-        var rating = CodData.data ? CodData.data.allCustomerReviews.nodes[0] : ""
+        var rating = CodData.data ? CodData.data.allCustomerReviews.nodes : ""
         if (rating.length > 0) {
-            setFilters({
-                rate: CodData.data.allCustomerReviews.nodes[0].rating,
-                title: CodData.data.allCustomerReviews.nodes[0].title,
-                message: CodData.data.allCustomerReviews.nodes[0].message
-            })
+            setrating({CodData})
         }
     }, [CodData])
     useEffect(() => {
@@ -50,9 +50,13 @@ const useRating = (props) => {
             // console.log('starsSelectedstarsSelected',props.starsSelected)
             mapUrlParamsSplitEqual.map(val => {
                 values['product_sku'] = val[1]
+               if(val[1].length>0){
+                variab['productSku'] = val[1]
+               }
                 values['user_id'] = user_id
-                values['rate'] = '3'
+                values['rate'] = "4"
                 // setFilters(values)
+                makeRequestCod(variab)
                 setValues({
                     ...values,
                     values
@@ -67,15 +71,25 @@ const useRating = (props) => {
         })
     }
 
-    const handelSubmit = (e) => {
-        let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
+    const handelSubmit = (e, props) => {
+        // if (values.rate !== "" && values.rate !== null){
+        //     values['errortext']['rate'] = 'Rate this'
+        //     setValues({
+        //         ...values,
+        //         values,
+        //     })
+        // }
+            let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
         if (user_id.length > 0) {
             makeFetch(values);
             makeRequestCod(variab)
+            // window.location.href="/login"
 
         } else {
             alert("You will be able to review only after purchasing the product")
+            window.location.href="/login"
         }
+
     }
 
     const handlers = { handleChange, handleInvalid, handelSubmit };

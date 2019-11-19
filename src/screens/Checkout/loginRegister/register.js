@@ -17,7 +17,6 @@ const RegisterComponent = (props) => {
     return (
         <div className='pt-sm'>
             <form action="javascript:void(0)" onSubmit={(e) => {
-                console.log('valuesvaluesstate', 'hey i have came in...')
                 handlers.handleSubmit(e)
             }}>
                 <Grid container spacing={12}>
@@ -30,7 +29,7 @@ const RegisterComponent = (props) => {
                             type="email"
                             name="email"
                             value={values.email}
-                            error={data.error && data.error.emerr? true : false}
+                            error={values.error && values.error.emerr? true : false}
                             // helperText={values.errortext && values.errortext.emerr}
                             placeholder="Enter your mail Id"
                             onChange={e => handlers.handleChange('email', e.target.value)}

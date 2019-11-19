@@ -16,6 +16,9 @@ import { useDummyRequest } from '../../hooks';
 import { withStyles } from '@material-ui/core/styles';
 import { productpricingPages } from '../../mappers';
 import styles from './style'
+import { ProductDetailContext } from 'context/ProductDetailContext';
+import productDetails from 'mappers/productDetails';
+
 class CustomerReviews extends React.Component {
     state = {
         expanded: 'panel1',
@@ -37,28 +40,42 @@ class CustomerReviews extends React.Component {
             arrows: false
         }
         const { productsubHead } = this.props.data
-        const { classes } = this.props;
+        const { classes, data } = this.props;
+        debugger
+        var rat_val = this.props.rating && this.props.rating.CodData && this.props.rating.CodData.data && this.props.rating.CodData.data.allCustomerReviews && this.props.rating.CodData.data.allCustomerReviews.nodes
+        // var rat_map_message = rat_val.map(val => {
+        //     var value;
+        //     if (val.message !== "" && val.message !== undefined && val.message !== null) {
+        //         value = val.message
+        //     }
+        //     return value
+        // })
+        // console.log('rating_val', rat_val)
         return (
             <div>
                 <Hidden smDown>
-                        <div className="pricing-product-media">
-                            <div className="reviews-header">
-                                <span className={`reviews-customer ${classes.normalfonts}`}>Customer Reviews</span>
-                            </div>
-                            <div className="reviews">
-                                <span className={`data-reviews ${classes.normalfonts}`}>No Reviews Found</span>
-                            </div>
+                    <div className="pricing-product-media">
+                        <div className="reviews-header">
+                            <span className={`reviews-customer ${classes.normalfonts}`}>Customer Reviews</span>
                         </div>
+                        <div className="reviews">
+                            <span className={`data-reviews ${classes.normalfonts}`}>No Reviews Found
+                            {JSON.stringify(rat_val)}
+                                {/* <div>{rat_map_message}</div> */}
+                                {/* {rat_val.message} */}
+                            </span>
+                        </div>
+                    </div>
                 </Hidden>
 
                 <Hidden mdUp>
                     <Container>
                         <ExpansionPanel
-                           style={{boxShadow:"none"}} square
+                            style={{ boxShadow: "none" }} square
                             expanded={expanded === 'panel1'}
                             onChange={this.handleChange('panel1')}
                         >
-                            <ExpansionPanelSummary  expandIcon={<span className='side-arrow-symbol'>
+                            <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                                 <i class="fa fa-sort-up" ></i></span>}>
                                 <div style={{ width: "100%" }} >
                                     <Typography className={`subtabs-smrt ${classes.normalfonts}`}>You recently viewed</Typography>
@@ -68,7 +85,7 @@ class CustomerReviews extends React.Component {
                             <ExpansionPanelDetails>
                                 <Typography style={{ height: "40px", width: "100%", textAlign: "center" }}>
                                     <Slideshow dataCarousel={dataCarousel}>
-                                        {productsubHead.map(val => (
+                                        {this.props.data[0].productsubHead.map(val => (
                                             <div key={val.name} className="wrappercustom">
                                                 <img className='features-tags-images' src={val.icon} alt="" />
                                                 <span style={{ fontSize: "12px" }}>{val.name} </span>
@@ -84,12 +101,17 @@ class CustomerReviews extends React.Component {
         );
     }
 }
-CustomerReviews.propTypes = {
-    handleChange: PropTypes.func,
-};
-export default withStyles(styles)(props => {
-    const { mapped } = useDummyRequest(productpricingPages);
-    if (Object.keys(mapped).length === 0) return ''
-
-    return <CustomerReviews {...props} data={mapped} />
-});
+const Components = props => {
+    const { ProductDetailCtx: { filters, data, loading, error, rating } } = React.useContext(ProductDetailContext);
+    const datas = data;
+    debugger
+    let mapped = datas;
+    if (!loading && !error) {
+        mapped = productDetails(datas, rating);
+    }
+    if (Object.keys(mapped).length === 0) return <div className="overall-loader"><div id="loading"></div></div>
+    else {
+        return <CustomerReviews {...props} data={mapped} filters={filters} rating={rating} />
+    }
+}
+export default withStyles(styles)(Components);

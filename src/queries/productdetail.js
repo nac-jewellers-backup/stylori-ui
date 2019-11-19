@@ -94,7 +94,15 @@ export const CheckForCod = `query CheckForCod($pincode:String) {
 }
 `
 
-
+export const CUSTOMERREVIEWS = `query MyQuery($productSku:String) {
+  allCustomerReviews(condition: {productSku:$productSku}, first: 1) {
+    nodes {
+      message
+      title
+      rating
+    }
+  }
+}`
 
 export const ADDRESSDETAILS = `
 query MyQuery($id: UUID) {
@@ -175,7 +183,7 @@ export const YouMayAlsoLike = `query MyQuery($filterdata: ProductListFilter,$fil
       totalCount
     }
   }`
-  export const youRecentlyViewed = `query youRecentlyViewed($filtersku:  TransSkuListFilter, $imgcondition:ProductImageCondition) {
+export const youRecentlyViewed = `query youRecentlyViewed($filtersku:  TransSkuListFilter, $imgcondition:ProductImageCondition) {
     allTransSkuLists(filter: $filtersku) {
       nodes {
         discountPrice

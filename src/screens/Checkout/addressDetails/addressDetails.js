@@ -43,7 +43,7 @@ class Addressdetails extends React.Component {
                             <h4 class="card-title">
                                 <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                 <span class="address-name">
-                                    {aa ? aa + ' ' : ""}
+                                    {aa ? aa + '.' : ""}
                                     {lgn && lgn.firstname ? lgn.firstname : value && value.addressOne && value.addressOne.firstname}&nbsp;{lgn && lgn.lastname ? lgn.lastname : value && value.addressOne && value.addressOne.lastname}
                                 </span>
                                 {/* <i onClick={() => {
@@ -51,8 +51,6 @@ class Addressdetails extends React.Component {
                                     this.props.redirectForm()
                                 }} style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                     class="fa fa-pencil-square-o"></i> */}
-
-
 
 
                                 <i onClick={() => {

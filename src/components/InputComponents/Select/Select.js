@@ -55,7 +55,6 @@ export default function SimpleSelect(props) {
                 MenuProps={{ "aria-required": true }}
                 className={classes.selectEmpty}
                 variant="outlined"
-                helperText="err"
             >
                 {props.selectData.map(data => (
                     <MenuItem value={data}>{data}</MenuItem>
