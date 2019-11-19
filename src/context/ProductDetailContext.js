@@ -213,9 +213,6 @@ export const TabsProvider = (props) => {
         var ProductVariants = { conditionfilter: { 'productId': filters["productId"], ...variants } }
         var ConditionimagesMetalColor = { conditionImage: metalColors }
         variables = { ...ProductVariants, ...ConditionimagesMetalColor }
-
-
-
     }
     useEffect(() => {
         if (Object.entries(data).length !== 0 && data.constructor === Object) {
