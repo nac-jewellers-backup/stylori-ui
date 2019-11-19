@@ -31,7 +31,7 @@ class CustomerReviews extends React.Component {
         this.state = {
             starsSelected: '',
             expanded: 'panel1',
-        } 
+        }
     }
 
     handleChange = panel => (event, expanded) => {
