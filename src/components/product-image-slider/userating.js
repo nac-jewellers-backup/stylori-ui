@@ -73,10 +73,13 @@ const useRating = (props) => {
         })
     }
     const handelSubmit = (e, props) => {
+
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
+        debugger
         if (user_id.length > 0) {
             makeFetch(values);
             makeRequestCod(variab)
+            // window.location.href = "/login"
         } else {
             alert("You will be able to review only after purchasing the product")
             window.location.href = "/login"
