@@ -370,9 +370,9 @@ export default function (data, like_data, viewedddatas, rating) {
                             val => {
                                 return ({
                                     img: `${CDN_URL}${val.productImagesByProductId.nodes[0].imageUrl}`,
-                                    title: val.productName,
-                                    price: Math.round(val.transSkuListsByProductId.nodes[0].discountPrice),
-                                    url: `/jewellery/${val.productType}/${val.transSkuListsByProductId.nodes[0].productListByProductId.productMaterialsByProductSku.nodes[0].materialName}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes[0].generatedSku}`
+                                    title: val && val.productName ? val.productName:'',
+                                    price: val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? Math.round(val.transSkuListsByProductId.nodes[0].discountPrice): 0,
+                                    url: `/jewellery/${val.productType}/${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].productListByProductId.productMaterialsByProductSku.nodes[0].materialName:''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
                                 })
                             }
                         )

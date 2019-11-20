@@ -186,6 +186,7 @@ const Provider = (props) => {
             // var a = filters.metalColor ? filters.metalColor : null;
             console.log(a, filters, 'filters metal color')
             conditionImageColor["productColor"] = a[0]
+            conditionImageColor['isdefault']= true
             // conditionImageColor["isdefault"]=true
             const pricerange = {
                 transSkuListsByProductId: {
@@ -228,7 +229,7 @@ const Provider = (props) => {
                 }
             }
             else {
-                variables = { ...conditionFilters, offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+                variables = { ...conditionFilters,orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
             }
 
             makeRequest(variables)
@@ -284,6 +285,7 @@ const Provider = (props) => {
                 var variables = {}
                 // var a = filters.metalColor ? filters.metalColor : null;
                 conditionImageColor["productColor"] = a[0]
+                conditionImageColor['isdefault']= true
 
                 // conditionImageColor["isdefault"]=true
                 if (window.location.search) {
@@ -311,7 +313,7 @@ const Provider = (props) => {
                     variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
                 else {
-                    variables = { ...conditionFilters, offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+                    variables = { ...conditionFilters,orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
 
                 makeRequest(variables)

@@ -1,7 +1,7 @@
 import { filterGenerator } from "utils";
 
-export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter,$offsetvar:Int,$firstvar:Int,$orderbyvar:[ProductListsOrderBy!],$conditionImage:ProductImageCondition) {
-  allProductLists(filter: $filter, orderBy:$orderbyvar offset: $offsetvar, first:$firstvar,condition: {isactive: true} ) {
+export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter, $offsetvar: Int, $firstvar: Int, $orderbyvar: [ProductListsOrderBy!], $conditionImage: ProductImageCondition) {
+  allProductLists(filter: $filter, orderBy: $orderbyvar, offset: $offsetvar, first: $firstvar, condition: {isactive: true}) {
     totalCount
     nodes {
       productName
@@ -20,7 +20,7 @@ export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter
           stoneCount
         }
       }
-      transSkuListsByProductId (condition: {isdefault: true}) {
+      transSkuListsByProductId(condition: {isdefault: true}) {
         nodes {
           skuSize
           purity
@@ -30,6 +30,16 @@ export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter
           sellingPrice
           discountPrice
           generatedSku
+          productListByProductId {
+            productImagesByProductId(condition: $conditionImage, orderBy: IMAGE_POSITION_ASC) {
+              nodes {
+                ishover
+                imageUrl
+                imagePosition
+                isdefault
+              }
+            }
+          }
         }
       }
       productMaterialsByProductSku {
@@ -37,16 +47,10 @@ export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter
           materialName
         }
       }
-      productImagesByProductId(condition:$conditionImage,orderBy: IMAGE_POSITION_ASC) {
-        nodes {
-          ishover
-          imageUrl
-          imagePosition
-        }
-      }
     }
   }
 }
+
 `
 export const seoUrlResult = `query CheckForSeo($seofilter: SeoUrlPriorityFilter ) {
   allSeoUrlPriorities( filter: $seofilter) {

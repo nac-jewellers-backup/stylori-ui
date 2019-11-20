@@ -23,8 +23,8 @@ const hoverImage = (placeImage) => placeImage.length === 0 ?'product/SR0662/HOVE
                 title: k.productName,
                 save: '5999.9',
                 image: {
-                    placeImage: injectUrl(placeImages(k.productImagesByProductId.nodes), cdnUrl),
-                    hoverImage: injectUrl(hoverImage(k.productImagesByProductId.nodes), cdnUrl),
+                    placeImage: injectUrl(placeImages(k.transSkuListsByProductId.nodes[0].productListByProductId.productImagesByProductId.nodes), cdnUrl),
+                    hoverImage: injectUrl(hoverImage(k.transSkuListsByProductId.nodes[0].productListByProductId.productImagesByProductId.nodes), cdnUrl),
 
                 },
                 productId: k.productId,

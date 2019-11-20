@@ -104,9 +104,11 @@ export const TabsProvider = (props) => {
 
         }
         if (filters.skuId) {
+
             var _sessionStorage = sessionStorage.getItem('skuId')
             var arr = []
             if (_sessionStorage && _sessionStorage.length > 0) {
+                debugger
                 // arr.push(_sessionStorage.split(','))
                 arr = _sessionStorage.split(',')
                 arr.push(filters.skuId);
@@ -118,7 +120,7 @@ export const TabsProvider = (props) => {
                     }
                 }
                 )
-                sessionStorage.setItem('skuId', removingCurrentProduct)
+                sessionStorage.setItem('skuId', uniqueArray)
             }
             else {
                 sessionStorage.setItem('skuId', filters.skuId)
