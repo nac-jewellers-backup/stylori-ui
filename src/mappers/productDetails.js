@@ -382,7 +382,7 @@ export default function (data, like_data, viewedddatas, rating) {
 
                 viewedddatas.data.allTransSkuLists.nodes.map(val => {
                     return ({
-                        img: `${CDN_URL}${val.productListByProductId.productImagesByProductId.nodes[0].imageUrl}`,
+                        img: `${CDN_URL}${val.productListByProductId.productImagesByProductId.nodes && val.productListByProductId.productImagesByProductId.nodes[0] && val.productListByProductId.productImagesByProductId.nodes[0].imageUrl}`,
                         title: val.productListByProductId.productName,
                         price: Math.round(val.discountPrice),
                         url: `/jewellery/${val.productListByProductId.productType}/${val.productListByProductId.productMaterialsByProductSku.nodes[0].materialName}/${val.productListByProductId.productName}?skuId=${val.generatedSku}`
