@@ -4,7 +4,8 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
 
-const useLogin = (changePanel) => {
+
+const useLogin = (changePanel, props) => {
     const [values, setValues] = React.useState({
         password: null,
         email: null,
@@ -71,6 +72,7 @@ const useLogin = (changePanel) => {
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
+        debugger
         if (values.email === null) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Mail is required'
@@ -97,6 +99,9 @@ const useLogin = (changePanel) => {
                 values,
             })
             return false
+        }
+        else{
+            window.history.back();
         }
         // if (auth.length > 0) {
         //     changePanel(3)

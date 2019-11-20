@@ -32,7 +32,7 @@ const RegisterComponent = (props) => {
                 <Grid item xs={6} lg={6} xs={12}>
                     <div className='pt-sm' style={{ width: "90%", float: "right" }}>
                         <form action="javascript:void(0)" onSubmit={(e) => {
-                            handlers.handleSubmit(e)
+                            handlers.handleSubmit(e, props)
                         }}>
                             <Grid container spacing={12}>
                                 <Grid item xs={12} lg={12}>
