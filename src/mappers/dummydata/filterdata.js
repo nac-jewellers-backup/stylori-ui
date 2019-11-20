@@ -1,6 +1,6 @@
 export const filter = [
     'Offers', 'Availability', 'Product Type', 'Style', 'Material', 'Theme', 'Collection',
-    'Metal Color', 'Metal Purity', 'Occasion', 'No Of Stone', 'Gender', 'Stone Color', 'Stone Shape'
+    'Metal Color', 'Metal Purity', 'Occasion', 'No Of Stones', 'Gender', 'Stone Color', 'Stone Shape'
 ];
 
 export const subFilter = {
@@ -36,7 +36,7 @@ export const subFilter = {
     ],
     'Occasion': ['Workwear', 'Special Occasion', 'Anniversary', 'Cut Out',
     ],
-    'No Of Stone': ['Fashion', 'Chic', 'Cluster', 'Cut Out',
+    'No Of Stones': ['Fashion', 'Chic', 'Cluster', 'Cut Out',
     ],
     'Gender': ['Female', 'Male', 'Kids, Female', 'Unisex, Kids, Female', 'Unisex, Female', 'Male, Female',  'Male, Kids, Female', 'Unisex'
     ],

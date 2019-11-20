@@ -40,6 +40,8 @@ export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter
               }
             }
           }
+          isReadyToShip
+          vendorDeliveryTime
         }
       }
       productMaterialsByProductSku {
@@ -145,7 +147,7 @@ export const filterProductMatrix = (type, value) => {
       }
       break;
     }
-    case "NoOfStone":{
+    case "NoOfStones":{
       fc={
         table:"productStonecolorsByProductId",
         type:"stonecolor"

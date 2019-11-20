@@ -38,11 +38,11 @@ class Component extends React.Component {
       CardRadio: false,
       checked: {
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
-        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {}
+        NoOfStones: {}, Gender: {}, StoneColor: {}, StoneShape: {}
       },
       checkedArrayObj: {
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
-        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {}
+        NoOfStones: {}, Gender: {}, StoneColor: {}, StoneShape: {}
       },
       selected: '',
       filtercheck: '',

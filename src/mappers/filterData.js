@@ -16,7 +16,7 @@ export default function (data) {
             _d = {
                 filter : [
                     'Offers', 'Availability', 'Product Type', 'Style', 'Material', 'Theme', 'Collection',
-                    'Metal Color', 'Metal Purity', 'Occasion', 'No Of Stone', 'Gender', 'Stone Color', 'Stone Shape'
+                    'Metal Color', 'Metal Purity', 'Occasion', 'No Of Stones', 'Gender', 'Stone Color', 'Stone Shape'
                 ],
                 
                 subFilter : {
@@ -53,7 +53,7 @@ export default function (data) {
                     'Occasion':get(data[0].master_occassion).map(val =>{
                         return val.occassion_name
                      }),
-                    'No Of Stone': get(data[0].master_stonecount).map(val =>{
+                    'No Of Stones': get(data[0].master_stonecount).map(val =>{
                         return val.stonecount
                      }),
                     'Gender': get(data[0].master_gender).map(val =>{
