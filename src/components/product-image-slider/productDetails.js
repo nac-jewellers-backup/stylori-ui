@@ -26,8 +26,8 @@ class ProductDetails extends React.Component {
 
                 <Grid container spacing={12} style={{ paddingRight: "20px" }}>
                     {data[0].productsDetails.map(valueofproductdetail => {
-                        return ((data[0].productType !== "Earrings" && valueofproductdetail.header === 'Gemstone Details')
-                            || (data[0].productType === "Earrings" && valueofproductdetail.header === 'Diamond Details')) ? false :
+                        
+                        return (valueofproductdetail.namedetail.length===0) ? false :
                             <>
                                 <div className='overall-boxz'>
                                     <div className='overall-bo'>
@@ -35,11 +35,11 @@ class ProductDetails extends React.Component {
                                         <hr class="bottom-line"></hr>
                                         <>{
                                             valueofproductdetail.namedetail !== undefined && valueofproductdetail.namedetail.map(res => {
+                                                debugger
                                                 console.info('objectobjectobject', res)
                                                 return (
                                                     <span>
-                                                        {((data[0].productType !== "Earring" && res.name === 'Gemstone')
-                                                            || (data[0].productType === "Earring" && res.name === 'Diamond')) ? false :
+                                                        {res.details !== null && res.details.length === 0 ? false :
 
                                                             <Grid container item xs={12} >
                                                                 <Grid xs={4}>

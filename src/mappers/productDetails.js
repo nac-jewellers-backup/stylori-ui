@@ -196,7 +196,11 @@ export default function (data, like_data, viewedddatas, rating) {
 
             {
                 header: "Diamond Details",
-                namedetail: [{
+                namedetail: 
+                PD && PD.productListByProductId && PD.productListByProductId.productDiamondsByProductSku && 
+                PD.productListByProductId.productDiamondsByProductSku.nodes && PD.productListByProductId.productDiamondsByProductSku.nodes.length>0?
+                [
+                    {
                     name: "Total No of Diamonds",
                     details: PD.productListByProductId.productDiamondsByProductSku.nodes && (PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0) &&
                         generatedDiamondType(PD, PD.productListByProductId.productDiamondsByProductSku.nodes, 'stoneCount')
@@ -229,10 +233,16 @@ export default function (data, like_data, viewedddatas, rating) {
                         (PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0) &&
                         generatedDiamondType(PD, PD.productListByProductId.productDiamondsByProductSku.nodes, 'diamondShape')
                 }]
+                :
+                []
             },
             {
                 header: "Gemstone Details",
-                namedetail: [{
+                namedetail: 
+                PD && PD.productListByProductId && PD.productListByProductId.productGemstonesByProductSku && 
+                PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length>0
+                ?
+                [{
                     name: "Stone Type",
                     details: PD.productListByProductId.productGemstonesByProductSku.nodes &&
                         PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
@@ -273,6 +283,8 @@ export default function (data, like_data, viewedddatas, rating) {
                             PD.productListByProductId.productGemstonesByProductSku.nodes, 'stoneWeight')
                 }
                 ]
+                :
+                []
             },
 
             {
@@ -284,20 +296,31 @@ export default function (data, like_data, viewedddatas, rating) {
                 },
                 {
                     name: "Diamond",
-                    details: [
+                    details: 
+                    PD && PD.productListByProductId && PD.productListByProductId.productDiamondsByProductSku && 
+                    PD.productListByProductId.productDiamondsByProductSku.nodes && PD.productListByProductId.productDiamondsByProductSku.nodes.length>0?
+                    [
+                     
                         PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
                         calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : 0,
                         PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
                         calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : 0
-                        ],
+                        ]
+                        :
+                        []
 
                 },
                 {
                     name: "Gemstone",
-                    details: [PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                    details: 
+                    PD && PD.productListByProductId && PD.productListByProductId.productGemstonesByProductSku && 
+                    PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length>0 ? 
+                    [PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
                         calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : 0,
                         PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
                         calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : 0]
+                        :
+                        []
                 },
                 {
                     name: "Making Charges",
