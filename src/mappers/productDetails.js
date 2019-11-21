@@ -43,11 +43,9 @@ const generateImgurls = (PD, val) => {
 // }
 
 const calculatetotalms = (arr, name, price) => {
-    debugger
 
     var a = 0;
     var filtering = arr.map(val => {
-        debugger
         var nameValidator = () => {
             if (name === "gemstone") {
                 return val.component.slice(0, 8)
@@ -111,7 +109,6 @@ const generateShipsBy = (readytoship, vendorDeliveryTime) => {
 }
 // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
 export default function (data, like_data, viewedddatas, rating) {
-    debugger
     console.info('datapd', data)
     let mapperdata = [];
     try {

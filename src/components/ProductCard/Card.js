@@ -20,6 +20,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 export const ImgMediaCard = (props) => {
+  debugger
   const { ProductDetailCtx,setFilters } = React.useContext(ProductDetailContext);
   const loc = window.location.search
   
@@ -285,6 +286,7 @@ const renderImages = (props, cardstate) => {
 }
 
  function Component(props) {
+   debugger
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
     hovered: false,
@@ -311,12 +313,11 @@ const callmouseout = () =>{
         <CardActions>
           <Grid container xs={12}>
             <Grid container item xs={6} justify="flex-start">
-              <i
-                style={{ fontSize: "18px" }}
-                className={`fa ${classes.iconColor}`}
-              >
-                &#xf0d1;
-              </i>
+            {props.data.oneDayShipping ?<div class="one-day-ship-listing-page" >
+<span class="one-day-ship-listing-page-label">1 day shipping</span>
+
+            </div> : ''}
+            
             </Grid>
 
             <Grid container item xs={6} justify="flex-end">

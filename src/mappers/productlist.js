@@ -35,7 +35,8 @@ const hoverImage = (placeImage) => placeImage.length === 0 ?'product/SR0662/HOVE
                 skuSize:k.transSkuListsByProductId.nodes[0] === undefined ? '' : k.transSkuListsByProductId.nodes[0].skuSize,
                 material:k.productMaterialsByProductSku.nodes[0] === undefined ? '' : k.productMaterialsByProductSku.nodes[0].materialName,
                 productType:k.productType,
-                skuId:k.transSkuListsByProductId.nodes[0].generatedSku
+                skuId:k.transSkuListsByProductId.nodes[0].generatedSku,
+                oneDayShipping:k.transSkuListsByProductId.nodes[0].isReadyToShip
 
             }
         } catch (error) {

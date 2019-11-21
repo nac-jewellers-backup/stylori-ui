@@ -35,7 +35,6 @@ class ProductDetails extends React.Component {
                                         <hr class="bottom-line"></hr>
                                         <>{
                                             valueofproductdetail.namedetail !== undefined && valueofproductdetail.namedetail.map(res => {
-                                                debugger
                                                 console.info('objectobjectobject', res)
                                                 return (
                                                     <span>
