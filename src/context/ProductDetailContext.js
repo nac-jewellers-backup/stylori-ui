@@ -7,11 +7,11 @@ const initialCtx = {
     ProductDetailCtx: {
 
         filters: { productId: '', defaultVariants: { diamondType: '', metalColor: '', purity: '', skuSize: '' }, skuId: '' },
-        loading: false, error: false, data: [], likedatas: [], viewedddatas:[], price:0
+        loading: false, error: false, data: [], likedatas: [], viewedddatas: [], price: 0
     },
     setFilters: () => { },
     setlikedata: () => { },
-    setrating: () =>{}
+    setrating: () => { }
 }
 
 export const ProductDetailContext = React.createContext(initialCtx);
@@ -35,7 +35,7 @@ export const TabsProvider = (props) => {
 
     useEffect(() => {
         let a = props;
-     
+
         pathQueries()
     }, [filters])
     let variables;
@@ -46,26 +46,27 @@ export const TabsProvider = (props) => {
     console.log('SkuId......', filters)
 
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTDETAILS, () => { }, {});
- 
-    const { loading: likeloading, error: likeerror, data: likedata, makeRequest:likemakeRequest } = useGraphql(YouMayAlsoLike,() =>{}, {}, false);
+
+    const { loading: likeloading, error: likeerror, data: likedata, makeRequest: likemakeRequest } = useGraphql(YouMayAlsoLike, () => { }, {}, false);
     // youRecentlyViewed
 
-    
-// "filtersku": {"generatedSku": {"in": ["SB0013-18110000","SB0013-18210000"]}}
-    const { loading: viewedloading, error: viewederror, data: vieweddata, makeRequest:viewmakeRequest } = useGraphql(youRecentlyViewed,() =>{}, {}, false);
+
+    // "filtersku": {"generatedSku": {"in": ["SB0013-18110000","SB0013-18210000"]}}
+    const { loading: viewedloading, error: viewederror, data: vieweddata, makeRequest: viewmakeRequest } = useGraphql(youRecentlyViewed, () => { }, {}, false);
 
 
     // useEffect(()=>{
     //     likemakeRequest(vardata)
     // },[])
     useEffect(() => {
+        debugger
         setlikedata(likedata)
-       
-    }, [likedata])
 
-    useEffect(()=>{
+    }, [likedata, likeloading, likeerror, filters, price, data])
+
+    useEffect(() => {
         setvieweddata(vieweddata)
-    },[vieweddata])
+    }, [vieweddata, price, data])
     useEffect(() => {
         if (filters.productId === "") {
             if (window.location.search.length > 0) {
@@ -103,6 +104,8 @@ export const TabsProvider = (props) => {
             }
 
         }
+    }, [filters])
+    useEffect(() => {
         if (filters.skuId) {
 
             var _sessionStorage = sessionStorage.getItem('skuId')
@@ -139,8 +142,21 @@ export const TabsProvider = (props) => {
             let variableslike = {}
             let recommended_products = window.location.pathname.split('/')
 
+            variableslike["imgcondition"] = {
+                "imagePosition": 1,
+                "isdefault": true
+            }
             variableslike['filterdata'] = { "productType": { equalTo: recommended_products[2] } }
-            variableslike['filterdata']['transSkuListsByProductId'] = { some: { discountPrice: { lessThan: price - 5000, greaterThan: price + 5000 } } }
+            var greaterthanprice = (price - 5000) > 0 ? price - 5000 : 0  
+            variableslike['filterdata']['transSkuListsByProductId'] = {
+                every: {
+                    discountPrice: {
+                        lessThanOrEqualTo:
+
+                            price + 5000, greaterThanOrEqualTo: greaterthanprice
+                    }
+                }
+            }
             variableslike['filterdata']["isactive"] = { "equalTo": true }
             variableslike["Conditiondatatranssku"] = {
                 "isdefault": true
@@ -167,16 +183,22 @@ export const TabsProvider = (props) => {
 
             let vardata = { ...variableslike }
             console.log('vardata', vardata)
+
             likemakeRequest(vardata)
+            setlikedata(likedata)
             viewmakeRequest(variablesviewed)
+
+
+
         }
+    }, [price, filters])
+    useEffect(() => {
+        console.log(price, 'datadatadata123')
+        if (Object.entries(data).length > 0 && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes) {
+            setPrice(data.data.allTransSkuLists.nodes[0].markupPrice)
 
-
-    }, [filters])
-    useEffect(()=>{
-        console.log(data,'datadatadata123')
-        if(data&&data.allTransSkuLists&&data.allTransSkuLists.nodes) setPrice(data.allTransSkuLists.nodes[0].markupPrice)
-    },[loading, error, data])
+        }
+    }, [loading, error, data, price])
     const updateProductList = () => {
         console.info('filtersssss', filters)
         if (Object.entries(variables).length !== 0 && variables.constructor === Object) {
@@ -220,7 +242,7 @@ export const TabsProvider = (props) => {
                 filters['defaultVariants']['metalColor'] = data.data.allTransSkuLists.nodes[0].metalColor
                 filters['defaultVariants']['purity'] = data.data.allTransSkuLists.nodes[0].purity
                 filters['defaultVariants']['skuSize'] = data.data.allTransSkuLists.nodes[0].skuSize
-                filters['skuId']=data.data.allTransSkuLists.nodes[0].generatedSku
+                filters['skuId'] = data.data.allTransSkuLists.nodes[0].generatedSku
                 // window.location.search=`${`skuId=${filters['skuId']}`}`
                 if (window.location.search.length === 0) {
                     filters['productId'] = data.data.allTransSkuLists.nodes[0].productListByProductId.productId
@@ -245,23 +267,33 @@ export const TabsProvider = (props) => {
         // window.location.search=`${`skuId=${filters['skuId']}`}`
 
     }, [filters])
-    useEffect(()=>{
+    useEffect(() => {
         if (window.location.search.length > 0) {
             let loc = window.location.search.split('=')
             let productDetailProps = loc[1]
             debugger
-            if(filters['skuId'] !== productDetailProps) props.history.push(`${props.location.pathname}?${`skuId=${filters['skuId']}`}`)
+            if (filters['skuId'] !== productDetailProps) props.history.push(`${props.location.pathname}?${`skuId=${filters['skuId']}`}`)
         }
-  
-    },[data, loading, error])
 
+    }, [data, loading, error])
+    useEffect(() => {
+        console.info('likedata', likedata)
+    }, [likedata, likeerror, likeloading, loading, error, data, price, filters])
+
+    // useEffect(()=>{
+    //     console.info('priceprice_price',price, data )
+    //     // if(data && data.allTransSkuLists) console.info('priceprice_price123',data )
+    //     if(Object.entries(data).length>0 ) {
+    //         console.info('priceprice_price123',data )
+    //     }
+    // },[data,filters,error,loading])
     const ProductDetailCtx = {
-        filters, loading, error, data, likedata, likeloading, likeerror, likedatas, vieweddata,viewederror,viewedloading, viewedddatas, rating
+        filters, loading, error, data, likedata, likeloading, likeerror, likedatas, vieweddata, viewederror, viewedloading, viewedddatas, rating
     }
 
     console.info('filtersssassss', filters)
     return (
-        <ProductDetailContext.Provider value={{ ProductDetailCtx, setFilters, setlikedata, setvieweddata,setrating }} >
+        <ProductDetailContext.Provider value={{ ProductDetailCtx, setFilters, setlikedata, setvieweddata, setrating }} >
             {props.children}
         </ProductDetailContext.Provider>
     )

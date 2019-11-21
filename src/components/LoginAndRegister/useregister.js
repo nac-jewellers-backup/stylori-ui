@@ -157,6 +157,9 @@ const useRegister = (changePanel, props) => {
             })
             return false
         }
+        else{
+            window.history.back();
+        }
 
         // changePanel(3)
     }
