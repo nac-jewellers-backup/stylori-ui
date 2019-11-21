@@ -59,7 +59,6 @@ export const TabsProvider = (props) => {
     //     likemakeRequest(vardata)
     // },[])
     useEffect(() => {
-        debugger
         setlikedata(likedata)
 
     }, [likedata, likeloading, likeerror, filters, price, data])
@@ -111,7 +110,6 @@ export const TabsProvider = (props) => {
             var _sessionStorage = sessionStorage.getItem('skuId')
             var arr = []
             if (_sessionStorage && _sessionStorage.length > 0) {
-                debugger
                 // arr.push(_sessionStorage.split(','))
                 arr = _sessionStorage.split(',')
                 arr.push(filters.skuId);
@@ -271,7 +269,6 @@ export const TabsProvider = (props) => {
         if (window.location.search.length > 0) {
             let loc = window.location.search.split('=')
             let productDetailProps = loc[1]
-            debugger
             if (filters['skuId'] !== productDetailProps) props.history.push(`${props.location.pathname}?${`skuId=${filters['skuId']}`}`)
         }
 

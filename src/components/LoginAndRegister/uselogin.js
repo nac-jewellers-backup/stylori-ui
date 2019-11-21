@@ -72,7 +72,6 @@ const useLogin = (changePanel, props) => {
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
-        debugger
         if (values.email === null) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Mail is required'

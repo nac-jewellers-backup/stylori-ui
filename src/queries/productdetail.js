@@ -124,10 +124,10 @@ query MyQuery($id: UUID) {
     }
   }
 }`
-export const YouMayAlsoLike = `query MyQuery($filterdata: ProductListFilter,$filterdatatranssku:  TransSkuListFilter,$filterdatatranssku2:  TransSkuListFilter,$filterdata2:ProductListFilter,, $imgposition:ProductImageCondition,$Conditiondatatranssku:TransSkuListCondition,$Conditiondatatranssku2:TransSkuListCondition ) {
+export const YouMayAlsoLike = `query MyQuery($filterdata: ProductListFilter,$filterdatatranssku:  TransSkuListFilter,$filterdatatranssku2:  TransSkuListFilter,$filterdata2:ProductListFilter,, $imgcondition:ProductImageCondition,$Conditiondatatranssku:TransSkuListCondition,$Conditiondatatranssku2:TransSkuListCondition ) {
   youMayalsolike1:  allProductLists(filter: $filterdata, orderBy: CREATED_AT_DESC, first:16) {
       nodes {
-        productImagesByProductId(condition:$imgposition){
+        productImagesByProductId(condition:$imgcondition){
           nodes{
             imageUrl
           }
@@ -148,7 +148,7 @@ export const YouMayAlsoLike = `query MyQuery($filterdata: ProductListFilter,$fil
           }
         }
         productName
-       
+        productType
         createdAt
      
       }
@@ -156,7 +156,7 @@ export const YouMayAlsoLike = `query MyQuery($filterdata: ProductListFilter,$fil
     }
     youMayalsolike2:  allProductLists(filter: $filterdata2, orderBy: CREATED_AT_DESC, first:8) {
       nodes {
-           productImagesByProductId(condition:$imgposition){
+           productImagesByProductId(condition:$imgcondition){
           nodes{
             imageUrl
           }
