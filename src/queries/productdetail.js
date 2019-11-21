@@ -63,6 +63,7 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
           component
           discountPrice
           sellingPrice
+          markup
         }
       }
       pricingSkuMetalsByProductSku {
@@ -70,6 +71,7 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
           materialName
           discountPrice
           sellingPrice
+          markup
         }
       }
     }

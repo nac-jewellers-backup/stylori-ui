@@ -27,22 +27,48 @@ const generateImgurls = (PD, val) => {
 //         }
 //     })
 // }
-const calculatetotalmm = (arr) => {
-    var a = 0;
-    arr.map(val => {
-        a =
-            new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.discountPrice))
-    });
-    return a;
-}
+// const calculatetotalmm = (arr, name) => {
+//     var a = 0;
+//     var filtering = arr.filter(val =>{
 
-const calculatetotalms = (arr) => {
+//         if(val.component.split('_')[0].slice(0,7) === name ){
+//         return val
+//         }
+//         })
+//         filtering.map(val => {
+//         a =
+//             new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.discountPrice))
+//     });
+//     return a;
+// }
+
+const calculatetotalms = (arr, name, price) => {
+    debugger
+
     var a = 0;
-    arr.map(val => {
-        a =
-            new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.sellingPrice))
-    });
-    return a;
+    var filtering = arr.map(val => {
+        debugger
+        var nameValidator = () => {
+            if (name === "gemstone") {
+                return val.component.slice(0, 8)
+            }
+            else {
+                return val.component.split('_')[0].slice(0, 7)
+            }
+        }
+        if (nameValidator() === name) {
+
+            return val[price]
+        }
+        else {
+            return 0
+        }
+
+    })
+
+    a = filtering.reduce((a, b) => a + b, 0)
+    console.log(filtering)
+    return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a));
 }
 const generatedDiamondType = (PD, valProductDiamond, type) => {
     var arrOfdiamondType = []
@@ -90,12 +116,12 @@ export default function (data, like_data, viewedddatas, rating) {
     let mapperdata = [];
     try {
         // mapperda = ;
-    mapperdata = data.data.allTransSkuLists.nodes;
+        mapperdata = data.data.allTransSkuLists.nodes;
     } catch (error) {
         mapperdata = [];
     }
     const _format = mapperdata.map(PD => (
-        
+
         {
             message: rating && rating.CodData && rating.CodData.data && rating.CodData.data.allCustomerReviews.nodes,
             // title: rating.CodData.data.allCustomerReviews.nodes[0].title,
@@ -196,145 +222,148 @@ export default function (data, like_data, viewedddatas, rating) {
 
             {
                 header: "Diamond Details",
-                namedetail: 
-                PD && PD.productListByProductId && PD.productListByProductId.productDiamondsByProductSku && 
-                PD.productListByProductId.productDiamondsByProductSku.nodes && PD.productListByProductId.productDiamondsByProductSku.nodes.length>0?
-                [
-                    {
-                    name: "Total No of Diamonds",
-                    details: PD.productListByProductId.productDiamondsByProductSku.nodes && (PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0) &&
-                        generatedDiamondType(PD, PD.productListByProductId.productDiamondsByProductSku.nodes, 'stoneCount')
-                },
+                namedetail:
+                    PD && PD.productListByProductId && PD.productListByProductId.productDiamondsByProductSku &&
+                        PD.productListByProductId.productDiamondsByProductSku.nodes && PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0 ?
+                        [
+                            {
+                                name: "Total No of Diamonds",
+                                details: PD.productListByProductId.productDiamondsByProductSku.nodes && (PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0) &&
+                                    generatedDiamondType(PD, PD.productListByProductId.productDiamondsByProductSku.nodes, 'stoneCount')
+                            },
 
-                {
-                    name: "Color",
-                    details: PD.productListByProductId.productDiamondsByProductSku.nodes && (PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0) && generatedDiamondType(PD, PD.productListByProductId.productDiamondsByProductSku.nodes, 'diamondColour')
+                            {
+                                name: "Color",
+                                details: PD.productListByProductId.productDiamondsByProductSku.nodes && (PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0) && generatedDiamondType(PD, PD.productListByProductId.productDiamondsByProductSku.nodes, 'diamondColour')
 
-                },
+                            },
 
-                {
-                    name: "Clarity",
-                    details: PD.productListByProductId.productDiamondsByProductSku.nodes && (PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0) &&
-                        generatedDiamondType(PD, PD.productListByProductId.productDiamondsByProductSku.nodes, 'diamondClarity')
-                },
-                {
-                    name: "Total Weight (in Carat)",
-                    details: PD.productListByProductId.productDiamondsByProductSku.nodes && (PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0) &&
-                        generatedDiamondType(PD, PD.productListByProductId.productDiamondsByProductSku.nodes, 'stoneWeight')
-                },
-                {
-                    name: "Setting Type",
-                    details: PD.productListByProductId.productDiamondsByProductSku.nodes && (PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0) &&
-                        generatedDiamondType(PD, PD.productListByProductId.productDiamondsByProductSku.nodes, 'diamondSettings')
-                },
-                {
-                    name: "Shape",
-                    details: PD.productListByProductId.productDiamondsByProductSku.nodes &&
-                        (PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0) &&
-                        generatedDiamondType(PD, PD.productListByProductId.productDiamondsByProductSku.nodes, 'diamondShape')
-                }]
-                :
-                []
+                            {
+                                name: "Clarity",
+                                details: PD.productListByProductId.productDiamondsByProductSku.nodes && (PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0) &&
+                                    generatedDiamondType(PD, PD.productListByProductId.productDiamondsByProductSku.nodes, 'diamondClarity')
+                            },
+                            {
+                                name: "Total Weight (in Carat)",
+                                details: PD.productListByProductId.productDiamondsByProductSku.nodes && (PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0) &&
+                                    generatedDiamondType(PD, PD.productListByProductId.productDiamondsByProductSku.nodes, 'stoneWeight')
+                            },
+                            {
+                                name: "Setting Type",
+                                details: PD.productListByProductId.productDiamondsByProductSku.nodes && (PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0) &&
+                                    generatedDiamondType(PD, PD.productListByProductId.productDiamondsByProductSku.nodes, 'diamondSettings')
+                            },
+                            {
+                                name: "Shape",
+                                details: PD.productListByProductId.productDiamondsByProductSku.nodes &&
+                                    (PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0) &&
+                                    generatedDiamondType(PD, PD.productListByProductId.productDiamondsByProductSku.nodes, 'diamondShape')
+                            }]
+                        :
+                        []
             },
             {
                 header: "Gemstone Details",
-                namedetail: 
-                PD && PD.productListByProductId && PD.productListByProductId.productGemstonesByProductSku && 
-                PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length>0
-                ?
-                [{
-                    name: "Stone Type",
-                    details: PD.productListByProductId.productGemstonesByProductSku.nodes &&
-                        PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
-                        gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
-                            PD.productListByProductId.productGemstonesByProductSku.nodes, 'gemstoneType')
-                },
-                {
-                    name: "Shape",
-                    details: PD.productListByProductId.productGemstonesByProductSku.nodes &&
-                        PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
-                        gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
-                            PD.productListByProductId.productGemstonesByProductSku.nodes, 'gemstoneShape')
+                namedetail:
+                    PD && PD.productListByProductId && PD.productListByProductId.productGemstonesByProductSku &&
+                        PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length > 0
+                        ?
+                        [{
+                            name: "Stone Type",
+                            details: PD.productListByProductId.productGemstonesByProductSku.nodes &&
+                                PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
+                                gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
+                                    PD.productListByProductId.productGemstonesByProductSku.nodes, 'gemstoneType')
+                        },
+                        {
+                            name: "Shape",
+                            details: PD.productListByProductId.productGemstonesByProductSku.nodes &&
+                                PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
+                                gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
+                                    PD.productListByProductId.productGemstonesByProductSku.nodes, 'gemstoneShape')
 
-                },
-                {
-                    name: "Total No of Stones",
-                    details: PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
-                        gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
-                            PD.productListByProductId.productGemstonesByProductSku.nodes, 'stoneCount')
-                },
-                {
-                    name: "Size (in mm)",
-                    details: PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
-                        gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
-                            PD.productListByProductId.productGemstonesByProductSku.nodes, 'gemstoneSize')
-                },
+                        },
+                        {
+                            name: "Total No of Stones",
+                            details: PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
+                                gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
+                                    PD.productListByProductId.productGemstonesByProductSku.nodes, 'stoneCount')
+                        },
+                        {
+                            name: "Size (in mm)",
+                            details: PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
+                                gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
+                                    PD.productListByProductId.productGemstonesByProductSku.nodes, 'gemstoneSize')
+                        },
 
-                {
-                    name: "Setting",
-                    details: PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
-                        gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
-                            PD.productListByProductId.productGemstonesByProductSku.nodes, 'gemstoneSetting')
-                },
-                {
-                    name: "Weight (Carat)",
-                    details: PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
-                        gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
-                            PD.productListByProductId.productGemstonesByProductSku.nodes, 'stoneWeight')
-                }
-                ]
-                :
-                []
+                        {
+                            name: "Setting",
+                            details: PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
+                                gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
+                                    PD.productListByProductId.productGemstonesByProductSku.nodes, 'gemstoneSetting')
+                        },
+                        {
+                            name: "Weight (Carat)",
+                            details: PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
+                                gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
+                                    PD.productListByProductId.productGemstonesByProductSku.nodes, 'stoneWeight')
+                        }
+                        ]
+                        :
+                        []
             },
 
             {
                 header: "Price Breakup",
                 namedetail: [{
                     name: "Metal",
-                    details: [calculatetotalss(PD.pricingSkuMetalsByProductSku.nodes, "goldprice"),calculatetotalm(PD.pricingSkuMetalsByProductSku.nodes, "goldprice")]
+                    details: [calculatetotalss(PD.pricingSkuMetalsByProductSku.nodes, "goldprice"), calculatetotalm(PD.pricingSkuMetalsByProductSku.nodes, "goldprice")]
 
                 },
                 {
                     name: "Diamond",
-                    details: 
-                    PD && PD.productListByProductId && PD.productListByProductId.productDiamondsByProductSku && 
-                    PD.productListByProductId.productDiamondsByProductSku.nodes && PD.productListByProductId.productDiamondsByProductSku.nodes.length>0?
-                    [
-                     
-                        PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
-                        calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : 0,
-                        PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
-                        calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : 0
-                        ]
-                        :
-                        []
+                    details:
+                        PD && PD.productListByProductId && PD.productListByProductId.productDiamondsByProductSku &&
+                            PD.productListByProductId.productDiamondsByProductSku.nodes && PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0 ?
+                            [
+
+                                PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                                    calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes, "diamond", "discountPrice"
+                                    ) : 0,
+                                PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                                    calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes, "diamond", "markup") : 0
+                            ]
+                            :
+                            []
 
                 },
                 {
                     name: "Gemstone",
-                    details: 
-                    PD && PD.productListByProductId && PD.productListByProductId.productGemstonesByProductSku && 
-                    PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length>0 ? 
-                    [PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
-                        calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes) : 0,
-                        PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
-                        calculatetotalmm(PD.pricingSkuMaterialsByProductSku.nodes) : 0]
-                        :
-                        []
+                    details:
+                        PD && PD.productListByProductId && PD.productListByProductId.productGemstonesByProductSku &&
+                            PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length > 0 ?
+
+                            [PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                                calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes, "gemstone", "discountPrice") : 0,
+                            PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                                calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes, "gemstone", "markup") : 0
+                            ]
+                            :
+                            []
                 },
                 {
                     name: "Making Charges",
-                    details: [calculatetotal(PD.pricingSkuMetalsByProductSku.nodes, "makingcharge"),calculatetotals(PD.pricingSkuMetalsByProductSku.nodes, "makingcharge")]
+                    details: [calculatetotal(PD.pricingSkuMetalsByProductSku.nodes, "makingcharge"), calculatetotals(PD.pricingSkuMetalsByProductSku.nodes, "makingcharge")]
                 },
                 {
                     name: "GST",
                     details:
-                        [new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPriceTax)),new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPriceTax))]
+                        [new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPriceTax)), new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPriceTax))]
                 },
                 {
                     name: "Total",
                     details:
-                        [new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPrice)),new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.markupPrice))],
+                        [new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPrice)), new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.markupPrice))],
                 }],
             },
             ],
@@ -385,7 +414,7 @@ export default function (data, like_data, viewedddatas, rating) {
                                     img: `${CDN_URL}${val.productImagesByProductId.nodes[0].imageUrl}`,
                                     title: val.productName,
                                     price: Math.round(val.transSkuListsByProductId.nodes[0].discountPrice),
-                                    url: `/jewellery/${val && val.productType?val.productType : ''}/${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].productListByProductId.productMaterialsByProductSku.nodes[0].materialName:''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
+                                    url: `/jewellery/${val && val.productType ? val.productType : ''}/${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].productListByProductId.productMaterialsByProductSku.nodes[0].materialName : ''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
                                 })
                             }
                         )
@@ -394,9 +423,9 @@ export default function (data, like_data, viewedddatas, rating) {
                             val => {
                                 return ({
                                     img: `${CDN_URL}${val.productImagesByProductId.nodes[0].imageUrl}`,
-                                    title: val && val.productName ? val.productName:'',
-                                    price: val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? Math.round(val.transSkuListsByProductId.nodes[0].discountPrice): 0,
-                                    url: `/jewellery/${val.productType}/${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].productListByProductId.productMaterialsByProductSku.nodes[0].materialName:''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
+                                    title: val && val.productName ? val.productName : '',
+                                    price: val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? Math.round(val.transSkuListsByProductId.nodes[0].discountPrice) : 0,
+                                    url: `/jewellery/${val.productType}/${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].productListByProductId.productMaterialsByProductSku.nodes[0].materialName : ''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
                                 })
                             }
                         )
@@ -434,7 +463,7 @@ const calculatetotals = (arr, name) => {
     var a = 0;
     arr.map(val => {
         if (val.materialName === name || name === undefined) {
-            a = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a + val.sellingPrice))
+            a = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a + val.markup))
         }
     });
     return a;
@@ -452,7 +481,7 @@ const calculatetotalss = (arr, name) => {
     var a = 0;
     arr.map(val => {
         if (val.materialName === name || name === undefined) {
-            a = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a + val.sellingPrice))
+            a = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a + val.markup))
         }
     });
     return a;

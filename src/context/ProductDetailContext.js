@@ -200,7 +200,7 @@ export const TabsProvider = (props) => {
     }, [price, filters])
     useEffect(() => {
         console.log(price, 'datadatadata123')
-        if (Object.entries(data).length > 0 && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes) {
+        if (Object.entries(data).length > 0 && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes) {
             setPrice(data.data.allTransSkuLists.nodes[0].markupPrice)
 
         }
@@ -243,7 +243,7 @@ export const TabsProvider = (props) => {
     }
     useEffect(() => {
         if (Object.entries(data).length !== 0 && data.constructor === Object) {
-            if (data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
+            if (data.data &&data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
                 filters['defaultVariants']['diamondType'] = data.data.allTransSkuLists.nodes[0].diamondType
                 filters['defaultVariants']['metalColor'] = data.data.allTransSkuLists.nodes[0].metalColor
                 filters['defaultVariants']['purity'] = data.data.allTransSkuLists.nodes[0].purity
