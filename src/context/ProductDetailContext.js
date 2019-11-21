@@ -159,11 +159,18 @@ export const TabsProvider = (props) => {
             variableslike["Conditiondatatranssku"] = {
                 "isdefault": true
             }
-            variableslike["filterdatatranssku"] = {
-                "generatedSku": {
-                    "notEqualTo": "SB0012-18110000-2.4"
-                }
-            }
+   
+                // let loc = window.location.search.split('=')[1]
+            //     variablesviewed["filterdatatranssku"] = {
+            //     "generatedSku": {
+            //         "notEqualTo": loc
+            //     }
+            // }
+            // variableslike["filterdatatranssku"] = {
+            //     "generatedSku": {
+            //         "notEqualTo": data && data.allTransSkuLists && data.allTransSkuLists.nodes ? data.allTransSkuLists.nodes[0].generatedSku:''
+            //     }
+            // }
 
 
 
@@ -173,9 +180,10 @@ export const TabsProvider = (props) => {
             variableslike["Conditiondatatranssku2"] = {
                 "isdefault": true
             }
+            let loc = window.location.search.split('=')[1]
             variableslike["filterdatatranssku2"] = {
                 "generatedSku": {
-                    "notEqualTo": "SB0012-18110000-2.4"
+                    "notEqualTo": loc
                 }
             }
 
