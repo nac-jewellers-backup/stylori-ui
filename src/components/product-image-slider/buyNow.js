@@ -18,6 +18,7 @@ import { ProductDetailContext } from 'context/ProductDetailContext';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CheckForCod } from 'queries/productdetail';
 import { CartContext } from 'context'
+import { withRouter } from "react-router";
 
 
 
@@ -68,23 +69,23 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
 const Buydetails = (props, state, handleChanges, handleCodChange) => {
     const { data } = props;
     const { classes } = props;
-    const handleLocalStorage = () => (
-        props.setCartFilters({
-            skuId: data[0].skuId, qty: 1, price: data[0].offerPrice
-        }),
-        window.location.pathname = '/cart'
-    )
+    const handleLocalStorage = () => {
+        props.setCartFilters({ skuId: data[0].skuId, qty: 1, price: data[0].offerPrice })
+        // props.history.push('/cart')
+        window.location.pathname = "/cart"
+    }
     return (
         <div>
             {data[0].ProductContactNum.map(val =>
                 <>
                     <Grid container spacing={12} style={{ padding: "0 10px" }}>
                         <Grid item xs={12} lg={4} style={{ marginRight: "15px" }}>
-                            {/* <NavLink to="/cart" style={{ textDecoration: 'none' }} > */}
+                            {/* <NavLink to="/cart" style={{ textDecoration: 'none' }} onClick={handleLocalStorage.bind(this)}> */}
                             <div onClick={handleLocalStorage.bind(this)}>
                                 <Buynowbutton class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
                             </div>
                             {/* </NavLink> */}
+
                         </Grid>
 
                         <Grid xs={12} lg={7} style={{ marginTop: "7px" }}>
@@ -170,11 +171,11 @@ class Component extends React.Component {
     handleChanges = (e) => {
         this.setState({ values: e.target.value, CheckForCodtitle: 'Check for COD', pincodeNotFound: false, isRequired: false })
     }
-    handleCodChange = () => { 
+    handleCodChange = () => {
         if (this.state.values) {
             this.setState({ isRequired: false })
             var variab = {}
-            variab["pincode"] = this.state.values   
+            variab["pincode"] = this.state.values
             if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
                 this.props.makeRequestCod(variab);
 
@@ -217,4 +218,4 @@ PriceBuynow.propTypes = {
     Buydetails: PropTypes.func,
 };
 
-export default withStyles(styles)(PriceBuynow);
+export default withStyles(styles)(withRouter(PriceBuynow));

@@ -1,0 +1,15 @@
+.animations{
+    -webkit-animation: expand 6s;
+}
+@-webkit-keyframes expand{
+    0%{height:0px}
+    100%{height:100px}
+}
+@media screen and (max-width: 1220px),
+(min-width: 1220px) {
+    .cart-ovralldiv-media {
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+    }
+
+}

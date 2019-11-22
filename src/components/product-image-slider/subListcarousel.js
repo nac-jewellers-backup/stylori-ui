@@ -44,10 +44,12 @@ class Sublistcarousel extends React.Component {
     const dataCarousel = {
       arrows: true,
       dots: true,
-      infinite: true,
+      infinite: false,
+      accessibility:true,
+      
       speed: 500,
       slidesToShow: this.state.dataToShow === "YouMayLike" ? data[0].fadeImageSublist.length > 4 ? limit : data[0].fadeImageSublist.length  :
-      data[0].fadeImageSublistRecentlyViewed.length > 4 ? limit : data[0].fadeImageSublistRecentlyViewed.length
+      data[0].fadeImageSublistRecentlyViewed.length > 4 ? limit : 4
       ,
       slidesToScroll: 4,
     }
@@ -63,9 +65,9 @@ class Sublistcarousel extends React.Component {
             </Grid>
           </div> <div className='sub-carousel-head'>
             <Container maxWidth='md'>
-            { this.state.dataToShow==="YouMayLike" && data[0].fadeImageSublist.length<0 || this.state.dataToShow==="YouRecentlyViewed" && data[0].fadeImageSublistRecentlyViewed.length<0 ? 
+            { this.state.dataToShow==="YouMayLike" && data[0].fadeImageSublist.length<0 || this.state.dataToShow==="YouRecentlyViewed" && data[0].fadeImageSublistRecentlyViewed.length===0 ? 
             
-            <span>No products found </span>
+            <span className="NoProducts">{this.state.dataToShow=== "YouMayLike" ? "No products found" : "No products viewed yet" }</span>
             :
              <Slideshow class="subslider-carousel" hoverlist={
               this.state.dataToShow==="YouMayLike" ? data[0].fadeImageSublist : data[0].fadeImageSublistRecentlyViewed

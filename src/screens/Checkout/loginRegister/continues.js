@@ -25,7 +25,7 @@ const ContinuesComponent = (props) => {
                 required
                 placeholder="Please enetr your mail Id"
                 helperText="Please enter your mail Id"
-                onChange={e => handlers.handleChangeemail("email", e.target.value)}
+                onChange={e => handlers.handleChange("email", e.target.value)}
             />
             <p className={`form-group ${classes.normalfonts}`}> We don't share these with anybody. Your contact details are secure with us. </p>
         </>
@@ -46,7 +46,7 @@ const ContinuesComponent = (props) => {
                 // error={edata ? true : false}
                 helperText="Please enter your otp"
                 placeholder="Please enetr your otp"
-                onChange={e => handlers.handleChangeotp("otp", e.target.value)}
+                onChange={e => handlers.handleChange("otp", e.target.value)}
                 onKeyPress={e => {
                     if (!(e.which >= 48 && e.which <= 57)) e.preventDefault()
                 }}
@@ -73,6 +73,7 @@ const ContinuesComponent = (props) => {
                         <Grid item lg={1} />
                         <Grid item xs={12} lg={6}>
                             {enterotp ? <OtpForm /> : <MailForm />}
+                            {/* <MailForm/> */}
                             <div className='login-butn'>
                                 <Button className='back-b' onClick={() => props.change()} >Back</Button>
                                 {enterotp ? <Button className='apply-b' type='submit'>Apply</Button>

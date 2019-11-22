@@ -2,9 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -22,8 +25,23 @@
     -->
     <title>Stylori</title>
   </head>
-  <body>
+  <body >
+    <!-- onload="passWord()" -->
     <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <script>
+      function passWord() {
+        var input;
+        input = prompt("Access to this page requires a password");
+        if (input === null || input === "") {
+          window.location.href = "/jewellery"; //break out of the function early
+        } else if (input !== "123") {
+          window.location.href = "/jewellery";
+        } else {
+          return;
+        }
+      }
+    </script> 
     <div id="root"></div>
     <!--
       This HTML file is a template.

@@ -24,6 +24,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { useDummyRequest } from '../../hooks';
 import { headerData } from '../../mappers';
 import styles from './styles';
+import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
   constructor(props) {
@@ -111,7 +112,11 @@ class Header extends Component {
                       className={`search ${classes.colorMain}`}
                       placeholder='&#xf002; Search here'
                     />
-                    <i class="fa fa-user"></i>
+                    {/* <NavLink to="/login"> */}
+                    <i onClick={() => window.location.pathname = "/login"} class="fa fa-user"></i>
+                    {/* </NavLink> */}
+
+                    {/* <i class="fa fa-user"></i> */}
                     <Badge badgeContent={4} color="secondary">
                       <i class="fa fa-heart"></i>
                     </Badge>
@@ -154,7 +159,7 @@ class Header extends Component {
                       {
                         (menuListHeader.map(listName => {
                           return (
-                            <a href={listName} className={` ${classes.menuListCursor} ${classes.colorLight} `} onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: listName.replace(/ +/g, "") }) }}><i class="fa fa-plus-circle"></i>&nbsp;{listName}</a>
+                            <a href={`/jewellery`} className={` ${classes.menuListCursor} ${classes.colorLight} `} onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: listName.replace(/ +/g, "") }) }}><i class="fa fa-plus-circle"></i>&nbsp;{listName}</a>
                           )
                         }))
                       }

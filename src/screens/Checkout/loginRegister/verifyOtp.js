@@ -11,6 +11,7 @@ export const useVerifyOtp = (changePanel) => {
     const [otp, setOtp] = React.useState({
         otp: null
     });
+    const [invalids, setInvalids] = React.useState({ email: false, otp: false });
     const { loading: eload, error: mailerr, data: edata, makeFetch: mailFetch } = useNetworkRequest('/api/auth/guestlogin', { email: email.email }, false);
     const { loading: otpload, error: otperr, data: otpdata, makeFetch: otpFetch } = useNetworkRequest('/api/auth/verifyotp', { email: email.email, otp: otp.otp }, false);
     const { setGlobalCtx } = React.useContext(GlobalContext);
@@ -20,19 +21,6 @@ export const useVerifyOtp = (changePanel) => {
     const err = Boolean(mailerr || otperr);
     const loading = Boolean(eload || otpload);
     const data = { edata, otpdata }
-
-    const handleChangeemail = (type, value) => {
-        setMail({
-            ...email,
-            [type]: value
-        })
-    }
-    const handleChangeotp = (type, value) => {
-        setOtp({
-            ...otp,
-            [type]: value
-        })
-    }
     React.useEffect(() => {
         console.info('MAILERR', Boolean(!mailerr && Object.keys(edata).length), mailerr, edata);
         if (!mailerr && Object.keys(edata).length) {
@@ -50,8 +38,12 @@ export const useVerifyOtp = (changePanel) => {
         if (verifiedMail) {
             var user_id = edata.user.id;
             localStorage.setItem("true", false)
+            // const email=
+            debugger
+            const mail = email ? email.email : ""
             setGlobalCtx(
-                localStorage.setItem('email', email), {
+                localStorage.setItem("isedit", 1),
+                localStorage.setItem('email', mail), {
                     email,
                     user_id,
                 })
@@ -60,7 +52,29 @@ export const useVerifyOtp = (changePanel) => {
             })
         }
     }, [otpload])
-    const handlers = { handleChangeemail, handleChangeotp, mailFetch, otpFetch }
+    const handleInvalid = (type, status) => {
+        setInvalids({
+            ...invalids,
+            [type]: status
+        })
+    }
+
+    const handleChange = (type, value) => {
+        debugger
+        if (type === "email") {
+            setMail({
+                ...email,
+                [type]: value
+            })
+        } else {
+            setOtp({
+                ...otp,
+                [type]: value
+            })
+        }
+    }
+
+    const handlers = { handleChange, mailFetch, otpFetch, handleInvalid, setEnterOtp }
 
     return { handlers, otp, email, status: { err, loading, data }, enterotp }
 }

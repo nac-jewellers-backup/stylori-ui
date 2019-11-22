@@ -6,6 +6,8 @@ import Cart from 'screens/Stylori/Cart'
 import Checkout from 'screens/Stylori/Checkout'
 import HomePageStylori from 'screens/Stylori/HomePage'
 import Register from 'screens/Checkout/loginRegister/register';
+import UserLogin from '../components/LoginAndRegister/Login';
+import UserRegister from '../components/LoginAndRegister/Register';
 import routes from "router/routes";
 import { withRouter } from "react-router";
 // const Tacos = ({ props }) => {
@@ -37,12 +39,14 @@ export const RouterApp = (props) => {
             <Route key="HomePageStylori" component={HomePageStylori} exact path={routes.HomePageStylori} />
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
 
-            {(props.location.pathname !== "/cart" && props.location.pathname !== "/checkout") &&
+            {(props.location.pathname !== "/cart" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout") &&
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />}
 
             <Route exact component={PricingPage} path={`/:productCategory/:productType/:material/:productName`} />
             <Route key="cart" exact component={Cart} path={routes.Cart} />
             <Route key="Register" component={Register} exact path={routes.Register} />
+            <Route key="login" component={UserLogin} exact path={routes.UserLogin} />
+            <Route key="registers" component={UserRegister} exact path={routes.UserRegister} />
         </Switch>
     );
 };

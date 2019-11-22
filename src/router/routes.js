@@ -5,6 +5,8 @@ export const routes = {
     Cart: '/cart',
     Checkout: '/Checkout',
     Register: '/register',
+    UserLogin: '/login',
+    UserRegister: '/registers',
     HomePageStylori: '/home'
 
 }

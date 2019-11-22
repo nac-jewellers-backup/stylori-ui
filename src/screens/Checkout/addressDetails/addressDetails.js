@@ -43,7 +43,7 @@ class Addressdetails extends React.Component {
                             <h4 class="card-title">
                                 <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                 <span class="address-name">
-                                    {aa ? aa + ' ' : ""}
+                                    {aa ? aa + '.' : ""}
                                     {lgn && lgn.firstname ? lgn.firstname : value && value.addressOne && value.addressOne.firstname}&nbsp;{lgn && lgn.lastname ? lgn.lastname : value && value.addressOne && value.addressOne.lastname}
                                 </span>
                                 {/* <i onClick={() => {
@@ -51,8 +51,6 @@ class Addressdetails extends React.Component {
                                     this.props.redirectForm()
                                 }} style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                     class="fa fa-pencil-square-o"></i> */}
-
-
 
 
                                 <i onClick={() => {
@@ -81,7 +79,7 @@ class Addressdetails extends React.Component {
                                 </p>
                             <div className="card-foo">
                                 <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                    +91 {lgn && lgn.contactNumber ? lgn && lgn.contactNumber : value && value.addressOne && value.addressOne.contactno} </span>
+                                    +91 {lgn && lgn.contactNumber ? lgn && lgn.contactNumber : value && value.addressOne && value.addressOne.contactNumber} </span>
                                 <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                     this.props.changevalue(3)
                                 }}>Select and  Review </Button>
@@ -123,7 +121,7 @@ class Addressdetails extends React.Component {
                                 <div className="card-foo">
                                     <span className={`shipping-phonenumber ${classes.normalfonts}`}>
                                         +91 {lgn1 && lgn1.contactNumber ? lgn1 && lgn1.contactNumber : lgn && lgn.contactNumber}
-                                        {value && value.addressTwo && value.addressTwo.contactno ? value && value.addressTwo && value.addressTwo.contactno : value && value.addressOne && value.addressOne.contactno}
+                                        {value && value.addressTwo && value.addressTwo.contactno ? value && value.addressTwo && value.addressTwo.contactno : value && value.addressOne && value.addressOne.contactNumber}
                                     </span>
                                     <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                         this.props.changevalue(3)
