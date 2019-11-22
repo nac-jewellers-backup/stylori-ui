@@ -131,11 +131,12 @@ export const TabsProvider = (props) => {
                 "imagePosition": 1,
                 "isdefault": true
             }
+            // let locviewdata = data.data.allTransSkuLists.nodes[0].generatedSku
             if (_sessionStorage && _sessionStorage.indexOf(',') > -1) {
-                variablesviewed["filtersku"] = { generatedSku: { in: sessionStorage.getItem('skuId').split(',') } }
+                variablesviewed["filtersku"] = { generatedSku: { in: sessionStorage.getItem('skuId').split(','), notEqualTo:filters.skuId } }
             }
             else {
-                variablesviewed["filtersku"] = { generatedSku: { in: [sessionStorage.getItem('skuId')] } }
+                variablesviewed["filtersku"] = { generatedSku: { in: [sessionStorage.getItem('skuId')], notEqualTo:filters.skuId } }
             }
             let variableslike = {}
             let recommended_products = window.location.pathname.split('/')
