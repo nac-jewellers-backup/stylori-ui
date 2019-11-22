@@ -5,12 +5,8 @@ import { CartContext } from 'context'
 
 
 export const useVerifyOtp = (changePanel) => {
-    const [email, setMail] = React.useState({
-        email: null
-    })
-    const [otp, setOtp] = React.useState({
-        otp: null
-    });
+    const [email, setMail] = React.useState({ email: null })
+    const [otp, setOtp] = React.useState({ otp: null });
     const [invalids, setInvalids] = React.useState({ email: false, otp: false });
     const { loading: eload, error: mailerr, data: edata, makeFetch: mailFetch } = useNetworkRequest('/api/auth/guestlogin', { email: email.email }, false);
     const { loading: otpload, error: otperr, data: otpdata, makeFetch: otpFetch } = useNetworkRequest('/api/auth/verifyotp', { email: email.email, otp: otp.otp }, false);

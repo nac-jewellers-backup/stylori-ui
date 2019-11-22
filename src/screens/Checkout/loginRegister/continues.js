@@ -21,11 +21,11 @@ const ContinuesComponent = (props) => {
                 type="email"
                 name="email"
                 value={email.email}
+                onChange={e => handlers.handleChange("email", e.target.value)}
                 // error={edata ? true : false}
-                required
                 placeholder="Please enetr your mail Id"
                 helperText="Please enter your mail Id"
-                onChange={e => handlers.handleChange("email", e.target.value)}
+                required
             />
             <p className={`form-group ${classes.normalfonts}`}> We don't share these with anybody. Your contact details are secure with us. </p>
         </>
