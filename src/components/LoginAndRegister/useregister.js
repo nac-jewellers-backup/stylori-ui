@@ -38,14 +38,17 @@ const useRegister = (changePanel, props) => {
             var obj = {}
             obj['userprofileId'] = bb
             var bb = data.user_profile_id ? data.user_profile_id : "";
-            // if(bb.length > 0){
+            // 
             localStorage.setItem("isedit", 1)
             // }
             localStorage.setItem("email", data.user.email)
             localStorage.setItem("user_id", data.user_profile_id)
             makeRequestCod(obj);
-            window.history.back();
-          }
+            // window.history.back();
+            if (bb.length > 0) {
+                window.history.back()
+            }
+        }
         //     obj['id'] = bb
         //     makeRequestCod(obj);
         localStorage.setItem("true", false)
@@ -139,7 +142,7 @@ const useRegister = (changePanel, props) => {
             })
             return false
         }
-        makeFetch(values);
+
         if (errmsg.length > 0) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'your mail is already exists'
@@ -163,6 +166,7 @@ const useRegister = (changePanel, props) => {
         // }
 
         // changePanel(3)
+        makeFetch(values);
     }
     const handlers = { handleSubmit, handleChange };
 
