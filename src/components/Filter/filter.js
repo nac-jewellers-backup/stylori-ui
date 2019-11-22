@@ -7,7 +7,7 @@ import {
 }
   from '@material-ui/core';
 import { ExpandLess, ExpandMore, } from '@material-ui/icons';
-import './filter.css';  
+import './filter.css';
 import ProductLayout from '../ProductCard/ProductLayout';
 import FilterHeader from './FilterHeader';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
@@ -22,9 +22,9 @@ import { FilterOptionsContext } from 'context'
 
 
 const PersistentDrawerLeft = (props) => {
-  const { setSort,setFilters,setloadingfilters, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
+  const { setSort, setFilters, setloadingfilters, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
   const loc = window.location.search
-  
+
   return <Component setSort={setSort} setFilters={setFilters} setloadingfilters={setloadingfilters} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort} {...props} />
 }
 
@@ -64,60 +64,59 @@ class Component extends React.Component {
     var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
     var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
     this.setState({ numOne: numOne, numTwo: numTwo })
-   
+
 
     // This is used for checking the check boxes if we copy and pasted the url to new tab or new window
-    if(window.location.search)
-    {
-      
+    if (window.location.search) {
+
       let urlSearchparams = window.location.search;
 
       let urlSearchparamsDecode = decodeURI(urlSearchparams)
-  
+
       let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
-  
+
       let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
-      
-      let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val =>{ return val.split('=')})
+
+      let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
       let mapUrlParamsSplitEqual = urlSplitparamsEqual();
-      this.handleChange(()=>{} ,true, ()=>{}, mapUrlParamsSplitEqual)
-      
+      this.handleChange(() => { }, true, () => { }, mapUrlParamsSplitEqual)
+
     }
     // This is used for checking the check boxes if we copy and pasted the url to new tab or new window 
     // *****Ends*****
 
-   
+
   }
 
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     console.log(this.props, 'filters')
-    if ( this.props.data[0].subFilter['Price Range'] !== prevProps.data[0].subFilter['Price Range']) {
+    if (this.props.data[0].subFilter['Price Range'] !== prevProps.data[0].subFilter['Price Range']) {
 
       console.log('price_props', typeof this.props.data[0].subFilter['Price Range'], this.props.data[0].subFilter['Price Range'].length, this.props.data[0].subFilter['Price Range'][0] !== undefined, Number(this.props.data[0].subFilter['Price Range'].max))
-      var numberOne = this.props.data[0].subFilter['Price Range'][0] ? this.props.data[0].subFilter['Price Range'][0].min: 0;
+      var numberOne = this.props.data[0].subFilter['Price Range'][0] ? this.props.data[0].subFilter['Price Range'][0].min : 0;
       var numberTwo = this.props.data[0].subFilter['Price Range'][0] ? this.props.data[0].subFilter['Price Range'][0].max : 0;
       var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
       var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
       this.setState({ numOne: numOne, numTwo: numTwo })
-    // if( this.props.data[0].subFilter['Price Range'].length > 0 && this.props.data[0].subFilter['Price Range'][0] !== undefined){ 
-    //   this.props.setFilters({pricemax:numberTwo, pricemin:numberOne})}  
+      // if( this.props.data[0].subFilter['Price Range'].length > 0 && this.props.data[0].subFilter['Price Range'][0] !== undefined){ 
+      //   this.props.setFilters({pricemax:numberTwo, pricemin:numberOne})}  
     }
-    
+
   }
   handleChange(value, BoolName, e, TargetName) {
     this.props.setloadingfilters(true)
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
-    
 
 
-console.log('queries',queries)
-// queries.map(val =>{
-  // chipData.push({ key:'1', label: 'o' });
-// })
-  // chipData.push({ key: queries.key, label: value });
+
+    console.log('queries', queries)
+    // queries.map(val =>{
+    // chipData.push({ key:'1', label: 'o' });
+    // })
+    // chipData.push({ key: queries.key, label: value });
 
     // if (BoolName === true) {
     //   chipData.push({ key: queries.key, label: value });
@@ -126,7 +125,7 @@ console.log('queries',queries)
     //   chipData = arr;
     // }
 
-    if(TargetName === undefined){
+    if (TargetName === undefined) {
       let checkedvalue = {};
       checkedvalue[value] = BoolName
       checked[e.target.name] = checkedvalue
@@ -134,37 +133,58 @@ console.log('queries',queries)
         checked
       }, () => this.props.setFilters(checked))
     }
-    else{
-      let paramsMapUrlSetState = () => TargetName.map(val=>
-        
-        {
-          var nameFilter = val[0]
-          var keyNameFilter = val[1]
-          console.log('val',TargetName)
-          let checkedvalue = {};
-          checkedvalue[keyNameFilter] = true
-          checked[nameFilter] = checkedvalue
-          this.setState({
-            checked
-          }, () => this.props.setFilters(checked))
-        }
-        )
+    else {
+      let paramsMapUrlSetState = () => TargetName.map(val => {
+        var nameFilter = val[0]
+        var keyNameFilter = val[1]
+        console.log('val', TargetName)
+        let checkedvalue = {};
+        checkedvalue[keyNameFilter] = true
+        checked[nameFilter] = checkedvalue
+        this.setState({
+          checked
+        }, () => this.props.setFilters(checked))
+      }
+      )
 
-      console.log('val',TargetName)
-        paramsMapUrlSetState()
+      console.log('val', TargetName)
+      paramsMapUrlSetState()
     }
 
     // let arr = [];
-    // if (BoolName === true) {
+    // if (BoolName === true) { 
     //   arr=  chipData.push({ key: chipData, label: value });
     // }  
     // let checkedvalue = {};
     // checkedvalue[value] = BoolName
     // TargetName === undefined ?  checked[e.target.name] = checkedvalue : checked[TargetName] = checkedvalue
     // checkedvalue={value : BoolName}
-//haii
+    //haii\
+    // const fk = Object.keys(value);
+    // if (fk.length > 0) {
+    //   debugger
+    //   chipData.push({ key: fk, label: value });
+    // }
+    Object.keys(checked).map(fk => {
+      const filter = checked[fk];
+      const fv = Object.keys(filter);
+      debugger
+      if (fv.length > 0) {
+        if (filter[fv[0]]) {
+          const qt = `${fk}=${fv[0]}`;
+          const qtf = {}
+          qtf[`${fk}`] = `${fv[0]}`
+          // queries.push(qt);
+          // qtfArr.push(qtf);
+
+        }
+
+        chipData.push({ key: fk, label: value });
+      }
+    })
+
     this.setState({
-       chipData
+      chipData
     }, () => this.props.setFilters(checked))
   }
 
@@ -177,9 +197,6 @@ console.log('queries',queries)
   handleDrawerOpenMobile = () => {
     this.setState({ openMobile: false, productDisplay: false });
     this.setState({ CardRadio: false });
-
-
-
   };
   handleDrawerCloseMobile = () => {
     this.setState({ openMobile: true, productDisplay: true });
@@ -215,7 +232,7 @@ console.log('queries',queries)
     this.setState({ open: !this.state.open });
   };
 
- 
+
   onCurrencyChange = (e) => {
     var numberOne;
     var numberTwo;
@@ -243,20 +260,20 @@ console.log('queries',queries)
 
     // this.setState({[e.target.name]:e.target.value})
   }
-  handleChangesort = (event) =>{
-       
-    this.props.setSort({ values:event.target.value})
-    
-    this.setState({ CardRadio: false})
+  handleChangesort = (event) => {
+
+    this.props.setSort({ values: event.target.value })
+
+    this.setState({ CardRadio: false })
 
     this.setState({ productDisplay: true });
-}
+  }
   render() {
-    console.log('urlSplitparamsEqual',this.state.checked)
+    console.log('urlSplitparamsEqual', this.state.checked)
 
     const { classes, data } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];
-    
+
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
 
@@ -348,7 +365,7 @@ console.log('queries',queries)
                                         </Typography>
                                       </ListItemText>
                                       {row === selected ? <ExpandLess className="fil-drawer-arrow" /> :
-                                        
+
                                         <ExpandMore className="fil-drawer-arrow" />}
                                     </ListItem>
                                     <>
@@ -362,23 +379,23 @@ console.log('queries',queries)
                                                 return (<div>
 
                                                   <ListItem key={row12}  >   {/* button */}
-                                                  <FormGroup row>
-        <FormControlLabel
-          control={
-            <Checkbox
-            checked={this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? this.state.checked[row.replace(/\s/g, "")][row12] : false}
-            onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
-            className="fil-submenu-icons"
-            value="checked"
-            color="primary"
-            name={row.replace(/\s/g, "")}
-            />
-          }
-          label={<Typography variant=""
-          className={`fil-submenu-list ${classes.colorMain}`}>{row12}
-        </Typography>}
-        />
-        </FormGroup>
+                                                    <FormGroup row>
+                                                      <FormControlLabel
+                                                        control={
+                                                          <Checkbox
+                                                            checked={this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? this.state.checked[row.replace(/\s/g, "")][row12] : false}
+                                                            onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
+                                                            className="fil-submenu-icons"
+                                                            value="checked"
+                                                            color="primary"
+                                                            name={row.replace(/\s/g, "")}
+                                                          />
+                                                        }
+                                                        label={<Typography variant=""
+                                                          className={`fil-submenu-list ${classes.colorMain}`}>{row12}
+                                                        </Typography>}
+                                                      />
+                                                    </FormGroup>
 
 
 
@@ -391,8 +408,8 @@ console.log('queries',queries)
                                           }
 
                                           {
-                                            (subFilter[row].length) - 4 !== 0 && (subFilter[row].length) - 4 > 0  &&
-                                            
+                                            (subFilter[row].length) - 4 !== 0 && (subFilter[row].length) - 4 > 0 &&
+
                                             <>
                                               {this.state[`li_${row}`] === undefined || this.state[`li_${row}`] === 4 ?
 
@@ -444,7 +461,7 @@ console.log('queries',queries)
               className={check ? classes.productCardscheck : classes.productCardsuncheck}
 
             >
-              <ProductLayout data={this.props.datas}  style={{backgroundColor:'whitesmoke'}}/>
+              <ProductLayout data={this.props.datas} style={{ backgroundColor: 'whitesmoke' }} />
 
             </div>}
         </div>
@@ -493,7 +510,7 @@ console.log('queries',queries)
                             value="checked"
                             color="primary"
                             checked={this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] !== undefined ? this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] : false}
-                          
+
                             onChange={(e) => this.handleChange(row, this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] !== undefined ? !this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] : true, e)}
                             // onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
                             icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
@@ -503,7 +520,7 @@ console.log('queries',queries)
                           <ListItemText>
                             <Typography variant=""
                               className={`filter-mbl-font fnts ${classes.colorMain}`}>
-                              <div onClick={this.handleDrawerCloseMobile}> {row}</div> 
+                              <div onClick={this.handleDrawerCloseMobile}> {row}</div>
                             </Typography>
                           </ListItemText>
                         </ListItem>
@@ -555,7 +572,7 @@ console.log('queries',queries)
                         className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
                         Sort
                     </Typography>
-                    </IconButton> 
+                    </IconButton>
 
 
 
@@ -568,7 +585,7 @@ console.log('queries',queries)
           </div>
           {this.state.CardRadio ?
             <div style={{ position: 'fixed', bottom: '42px', }}>
-              <CardRadioButton cardWidth="cardSortSmallScreen" data={sortOptions} onChange={this.handleChangesort} values={this.props.sort}/>
+              <CardRadioButton cardWidth="cardSortSmallScreen" data={sortOptions} onChange={this.handleChangesort} values={this.props.sort} />
             </div>
             :
             ''

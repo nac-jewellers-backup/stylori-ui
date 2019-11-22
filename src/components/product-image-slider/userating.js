@@ -25,7 +25,7 @@ const useRating = (props) => {
     var variab = {}
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CUSTOMERREVIEWS, () => { }, {});
 
-
+    const count = localStorage.getItem("count") ? localStorage.getItem("count") : ""
     // variab['productSku'] = values.product_sku
     useEffect(() => {
         var rating = CodData.data ? CodData.data.allCustomerReviews.nodes : ""
@@ -50,7 +50,7 @@ const useRating = (props) => {
                     makeRequestCod(variab)
                 }
                 values['user_id'] = user_id
-                values['rate'] = "4"
+                values['rate'] = count
                 // setFilters(values)
                 setValues({
                     ...values,

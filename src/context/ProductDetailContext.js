@@ -5,54 +5,40 @@ import { withRouter } from 'react-router-dom';
 
 const initialCtx = {
     ProductDetailCtx: {
-
         filters: { productId: '', defaultVariants: { diamondType: '', metalColor: '', purity: '', skuSize: '' }, skuId: '' },
-        loading: false, error: false, data: [], likedatas: [], viewedddatas:[], price:0
+        loading: false, error: false, data: [], likedatas: [], viewedddatas: [], price: 0, rating: [], ratingcounts: []
     },
     setFilters: () => { },
     setlikedata: () => { },
-    setrating: () =>{}
+    setrating: () => { },
+    setratingcounts: () => { },
 }
-
 export const ProductDetailContext = React.createContext(initialCtx);
-
 export const ProductDetailConsumer = ProductDetailContext.Consumer;
-
 export const TabsProvider = (props) => {
     const [filters, setFilters] = React.useState(initialCtx.ProductDetailCtx.filters);
     const [likedatas, setlikedata] = React.useState([])
     const [viewedddatas, setvieweddata] = React.useState([])
     const [rating, setrating] = React.useState([])
+    const [ratingcounts, setratingcounts] = React.useState([])
     const [price, setPrice] = React.useState(0)
 
     let queries = [];
     const pathQueries = () => {
-
-
         setFilters(filters)
-
     };
-
     useEffect(() => {
         let a = props;
-     
         pathQueries()
     }, [filters])
     let variables;
-
-
-
-
-    console.log('SkuId......', filters)
-
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTDETAILS, () => { }, {});
- 
-    const { loading: likeloading, error: likeerror, data: likedata, makeRequest:likemakeRequest } = useGraphql(YouMayAlsoLike,() =>{}, {}, false);
+    const { loading: likeloading, error: likeerror, data: likedata, makeRequest: likemakeRequest } = useGraphql(YouMayAlsoLike, () => { }, {}, false);
     // youRecentlyViewed
 
-    
-// "filtersku": {"generatedSku": {"in": ["SB0013-18110000","SB0013-18210000"]}}
-    const { loading: viewedloading, error: viewederror, data: vieweddata, makeRequest:viewmakeRequest } = useGraphql(youRecentlyViewed,() =>{}, {}, false);
+
+    // "filtersku": {"generatedSku": {"in": ["SB0013-18110000","SB0013-18210000"]}}
+    const { loading: viewedloading, error: viewederror, data: vieweddata, makeRequest: viewmakeRequest } = useGraphql(youRecentlyViewed, () => { }, {}, false);
 
 
     // useEffect(()=>{
@@ -60,12 +46,12 @@ export const TabsProvider = (props) => {
     // },[])
     useEffect(() => {
         setlikedata(likedata)
-       
+
     }, [likedata])
 
-    useEffect(()=>{
+    useEffect(() => {
         setvieweddata(vieweddata)
-    },[vieweddata])
+    }, [vieweddata])
     useEffect(() => {
         if (filters.productId === "") {
             if (window.location.search.length > 0) {
@@ -171,10 +157,10 @@ export const TabsProvider = (props) => {
 
 
     }, [filters])
-    useEffect(()=>{
-        console.log(data,'datadatadata123')
-        if(data&&data.allTransSkuLists&&data.allTransSkuLists.nodes) setPrice(data.allTransSkuLists.nodes[0].markupPrice)
-    },[loading, error, data])
+    useEffect(() => {
+        console.log(data, 'datadatadata123')
+        if (data && data.allTransSkuLists && data.allTransSkuLists.nodes) setPrice(data.allTransSkuLists.nodes[0].markupPrice)
+    }, [loading, error, data])
     const updateProductList = () => {
         console.info('filtersssss', filters)
         if (Object.entries(variables).length !== 0 && variables.constructor === Object) {
@@ -218,7 +204,7 @@ export const TabsProvider = (props) => {
                 filters['defaultVariants']['metalColor'] = data.data.allTransSkuLists.nodes[0].metalColor
                 filters['defaultVariants']['purity'] = data.data.allTransSkuLists.nodes[0].purity
                 filters['defaultVariants']['skuSize'] = data.data.allTransSkuLists.nodes[0].skuSize
-                filters['skuId']=data.data.allTransSkuLists.nodes[0].generatedSku
+                filters['skuId'] = data.data.allTransSkuLists.nodes[0].generatedSku
                 // window.location.search=`${`skuId=${filters['skuId']}`}`
                 if (window.location.search.length === 0) {
                     filters['productId'] = data.data.allTransSkuLists.nodes[0].productListByProductId.productId
@@ -243,23 +229,21 @@ export const TabsProvider = (props) => {
         // window.location.search=`${`skuId=${filters['skuId']}`}`
 
     }, [filters])
-    useEffect(()=>{
+    useEffect(() => {
         if (window.location.search.length > 0) {
             let loc = window.location.search.split('=')
             let productDetailProps = loc[1]
             debugger
-            if(filters['skuId'] !== productDetailProps) props.history.push(`${props.location.pathname}?${`skuId=${filters['skuId']}`}`)
+            if (filters['skuId'] !== productDetailProps) props.history.push(`${props.location.pathname}?${`skuId=${filters['skuId']}`}`)
         }
-  
-    },[data, loading, error])
+
+    }, [data, loading, error])
 
     const ProductDetailCtx = {
-        filters, loading, error, data, likedata, likeloading, likeerror, likedatas, vieweddata,viewederror,viewedloading, viewedddatas, rating
+        filters, loading, error, data, likedata, likeloading, likeerror, likedatas, vieweddata, viewederror, viewedloading, viewedddatas, rating, ratingcounts
     }
-
-    console.info('filtersssassss', filters)
     return (
-        <ProductDetailContext.Provider value={{ ProductDetailCtx, setFilters, setlikedata, setvieweddata,setrating }} >
+        <ProductDetailContext.Provider value={{ ProductDetailCtx, setFilters, setlikedata, setvieweddata, setrating, setratingcounts }} >
             {props.children}
         </ProductDetailContext.Provider>
     )

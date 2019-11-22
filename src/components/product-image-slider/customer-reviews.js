@@ -96,7 +96,7 @@ class CustomerReviews extends React.Component {
                         <div className="reviews">
                             <span className={`data-reviews ${classes.normalfonts}`}>
                                 <Grid spacing={12} container style={{ float: "left", padding: "2%", lineHeight: "23px" }}>
-                                    <Grid item lg={12}>{this.rat_map_title()}</Grid>
+                                    <Grid item lg={12}>{this.rat_map_title() ? this.rat_map_title() : "No Reviews Found"}</Grid>
                                 </Grid>
                             </span>
                         </div>
