@@ -35,11 +35,11 @@ const AddressComponent = (props) => {
                             if (Object.keys(lgn).length > 0) {
                                 lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
                                 var data = {}
-                                var allUserAddresses = {}
+                                var allUserAddresses = {}   
                                 var nodes = {}
                                 data['data'] = allUserAddresses
                                 allUserAddresses['allUserAddresses'] = nodes
-                                nodes['nodes'] = [a]
+                                nodes['nodes'] = [a,b]
                                 // const nodes = [a]
                                 localStorage.setItem("vals", JSON.stringify(data))
                             }
@@ -192,7 +192,7 @@ const AddressComponent = (props) => {
                                         <h5 className='title'> Billing Address</h5>
                                         <Grid container spacing={12}>
                                             <Grid item xs={4} lg={4}>
-                                                <SimpleSelect val={"2"} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
+                                                <SimpleSelect val={"2"} name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                             </Grid>
                                             <Grid item xs={4} lg={4}>
                                                 <Input

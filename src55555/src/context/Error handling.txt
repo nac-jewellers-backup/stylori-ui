@@ -1,0 +1,17 @@
+null
+undeined
+''
+NaN
+
+
+
+string
+
+obj
+
+int
+
+float
+
+bool
+
