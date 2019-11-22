@@ -17,20 +17,20 @@ class Slideshow extends React.Component {
     return this.props.fadeImages ? this.props.fadeImages.map(imgs => (
       <div className={` ${this.props.class ? this.props.class : ''}`} onClick={e => this.props.getmsg ? this.props.getmsg(e) : ''}>
         {video ?
-          <video className={`${imgs?'shine imgDiv2':''} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs} />
-          : <img className={`${imgs?'shine imgDiv2':''} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs} alt=""/>}
+          <video className={`${imgs ? 'shine imgDiv2' : ''} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs} />
+          : <img className={`${imgs ? 'shine imgDiv2' : ''} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs} alt="" />}
       </div>
     )) : ''
   }
 
-  
+
 
   imagehoverchildrens = (hoverlist) => {
- 
+
     let { hover } = this.props;
     return hoverlist.map(val => (
       <div class={"subslider-carousel" + hover ? " hovereffect" : ""}>
-        <img src={val.img} className='subslider-carousel-img img-responsive' alt=""/>
+        <img src={val.img} className='subslider-carousel-img img-responsive' alt="" />
         <div class="overlay1">
           <h2 className='next-price'>{val.title}</h2><br />
           <a class='info' href={val.price}><span className='sub-list-price'> <i class="fa fa-rupee"></i> &nbsp;{val.price}</span></a>
@@ -61,7 +61,7 @@ class Slideshow extends React.Component {
       <div>
         <Slider ref={sliderRef}  {...settings}>
           {this.props.children ? this.props.children : this.renderFadeImages()}
-          {this.props.hover ? this.imagehoverchildrens(this.props.hoverlist) :""}
+          {this.props.hover ? this.imagehoverchildrens(this.props.hoverlist) : ""}
         </Slider>
       </div>
     );
@@ -69,7 +69,7 @@ class Slideshow extends React.Component {
 }
 
 export default React.forwardRef((props, ref) => <Slideshow sliderRef={ref} {...props} />);
-Slideshow.propTypes={
-  settings:PropTypes.object.isRequired,
-  fadeImages:PropTypes.array.isRequired
+Slideshow.propTypes = {
+  settings: PropTypes.object.isRequired,
+  fadeImages: PropTypes.array.isRequired
 }

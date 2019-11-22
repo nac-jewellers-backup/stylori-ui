@@ -589,9 +589,7 @@
         margin-top: -12% !important;
     }
 
-    .modalin-ring {
-   
-    }
+    .modalin-ring {}
 
     .one-day-ship {
         width: 152px !important;
@@ -677,7 +675,7 @@
 
     .slick-prev:before,
     .slick-next:before {
-        color: #394578 !important;
+        color: red !important;
     }
 
     .next-price {

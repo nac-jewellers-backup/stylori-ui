@@ -4,12 +4,13 @@ import { Stylori } from 'screens'
 import PricingPage from 'screens/Stylori/PricingPage'
 import Cart from 'screens/Stylori/Cart'
 import Checkout from 'screens/Stylori/Checkout'
+import HomePageStylori from 'screens/Stylori/HomePage'
 import Register from 'screens/Checkout/loginRegister/register';
 import routes from "router/routes";
 import { withRouter } from "react-router";
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
-      
+
 //         return (
 //             <Route
 //                 path={`/stylori     ${window.location.search}`}
@@ -29,17 +30,18 @@ import { withRouter } from "react-router";
 // }
 
 export const RouterApp = (props) => {
-console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
+    console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
     return (
         <Switch>
             <Redirect key="stylori-redirect" from="/" exact to={"/jewellery"} />
+            <Route key="HomePageStylori" component={HomePageStylori} exact path={routes.HomePageStylori} />
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
-            
+
             {(props.location.pathname !== "/cart" && props.location.pathname !== "/checkout") &&
-             <Route exact={true} component={Stylori}  path={"/:listingpage"} />}
-            
-            <Route  exact component={PricingPage}  path={`/:productCategory/:productType/:material/:productName`} />
-             <Route key="cart" exact component={Cart}  path={routes.Cart} />
+                <Route exact={true} component={Stylori} path={"/:listingpage"} />}
+
+            <Route exact component={PricingPage} path={`/:productCategory/:productType/:material/:productName`} />
+            <Route key="cart" exact component={Cart} path={routes.Cart} />
             <Route key="Register" component={Register} exact path={routes.Register} />
         </Switch>
     );
