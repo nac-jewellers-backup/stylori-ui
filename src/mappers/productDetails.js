@@ -408,7 +408,7 @@ export default function (data, like_data, viewedddatas, rating) {
                         like_data.data.youMayalsolike1.nodes.map(
                             val => {
                                 return ({
-                                    img: `${CDN_URL}${val.productImagesByProductId.nodes[0].imageUrl}`,
+                                    img: `${CDN_URL}${val && val.productImagesByProductId && val.productImagesByProductId.nodes &&val.productImagesByProductId.nodes[0] && val.productImagesByProductId.nodes[0].imageUrl}`,
                                     title: val.productName,
                                     price: Math.round(val.transSkuListsByProductId.nodes[0].discountPrice),
                                     url: `/jewellery/${val && val.productType ? val.productType : ''}/${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].productListByProductId.productMaterialsByProductSku.nodes[0].materialName : ''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`

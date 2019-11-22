@@ -701,7 +701,13 @@
         line-height: 50px;
         margin-top: 30px !important;
     }
-
+.NoProducts{
+    display: flex;
+    justify-content: center;
+     color: #394578 !important;
+     font-size: 15px !important;
+     font-weight: 400 !important;
+}
     .like-page {
         color: #394578 !important;
         font-size: 15px !important;
