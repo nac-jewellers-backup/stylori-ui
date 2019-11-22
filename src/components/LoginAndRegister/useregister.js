@@ -44,7 +44,8 @@ const useRegister = (changePanel, props) => {
             localStorage.setItem("email", data.user.email)
             localStorage.setItem("user_id", data.user_profile_id)
             makeRequestCod(obj);
-        }
+            window.history.back();
+          }
         //     obj['id'] = bb
         //     makeRequestCod(obj);
         localStorage.setItem("true", false)
@@ -157,9 +158,9 @@ const useRegister = (changePanel, props) => {
             })
             return false
         }
-        else{
-            window.history.back();
-        }
+        // else{
+        //     window.history.back();
+        // }
 
         // changePanel(3)
     }
