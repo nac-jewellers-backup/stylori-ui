@@ -7,7 +7,7 @@ import {
 }
   from '@material-ui/core';
 import { ExpandLess, ExpandMore, } from '@material-ui/icons';
-import './filter.css';
+import './filter.css';  
 import ProductLayout from '../ProductCard/ProductLayout';
 import FilterHeader from './FilterHeader';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
@@ -100,7 +100,6 @@ class Component extends React.Component {
       var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
       var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
       this.setState({ numOne: numOne, numTwo: numTwo })
-      debugger
     // if( this.props.data[0].subFilter['Price Range'].length > 0 && this.props.data[0].subFilter['Price Range'][0] !== undefined){ 
     //   this.props.setFilters({pricemax:numberTwo, pricemin:numberOne})}  
     }
@@ -556,7 +555,7 @@ console.log('queries',queries)
                         className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
                         Sort
                     </Typography>
-                    </IconButton>
+                    </IconButton> 
 
 
 

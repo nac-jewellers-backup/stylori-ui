@@ -41,7 +41,6 @@ class ProductImageZoom extends React.Component {
   productImageZoom = () => {
     // console.log(this.props.data)
     const { classes, data } = this.props
-    debugger
     const limit = 4;
     const { showimage } = this.state;
     const dataCarousel = {

@@ -28,7 +28,7 @@ import { CartContext } from '../../context/CartContext';
 import cart from '../../mappers/cart';
 
 class CartCardCheck extends React.Component {
-    state = {
+    state = { 
         expanded: 'panel' + (localStorage.getItem("panel") ? localStorage.getItem("panel") : 1),
         // expanded: 'panel1',
         // expandedlimit: localStorage.getItem("panel") ? localStorage.getItem("panel") : 1,
@@ -76,7 +76,7 @@ class CartCardCheck extends React.Component {
                         <ExpansionPanel
                             square
                             expanded={expanded === 'panel1'}
-                            // onChange={this.handleChange(0)}
+                            onChange={this.handleChange(0)}
                             style={{ boxShadow: "none" }}
                         >
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>

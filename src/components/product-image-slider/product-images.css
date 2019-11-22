@@ -665,12 +665,18 @@
         font-weight: 400 !important;
         padding-left: 35% !important;
         border-right: 1px solid #ccc;
-    }
+        cursor: pointer;
 
+    }
+    .recenetly-like-page-active{
+        font-weight: bold !important;
+    }
+  
     .recenetly-like-page {
         color: #394578 !important;
         font-size: 15px !important;
         padding-left: 5% !important;
+        cursor: pointer;
     }
 
     .slick-prev:before,

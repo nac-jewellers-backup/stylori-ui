@@ -5,19 +5,34 @@ import { CartContext } from 'context'
 
 
 export const useVerifyOtp = (changePanel) => {
-    const [email, setMail] = React.useState(null)
-    const [otp, setOtp] = React.useState(null);
-    const { loading: eload, error: mailerr, data: edata, makeFetch: mailFetch } = useNetworkRequest('/api/auth/guestlogin', { email }, false);
-    const { loading: otpload, error: otperr, data: otpdata, makeFetch: otpFetch } = useNetworkRequest('/api/auth/verifyotp', { email, otp }, false);
+    const [email, setMail] = React.useState({
+        email: null
+    })
+    const [otp, setOtp] = React.useState({
+        otp: null
+    });
+    const { loading: eload, error: mailerr, data: edata, makeFetch: mailFetch } = useNetworkRequest('/api/auth/guestlogin', { email: email.email }, false);
+    const { loading: otpload, error: otperr, data: otpdata, makeFetch: otpFetch } = useNetworkRequest('/api/auth/verifyotp', { email: email.email, otp: otp.otp }, false);
     const { setGlobalCtx } = React.useContext(GlobalContext);
     const { setCartFilters } = React.useContext(CartContext);
     const [enterotp, setEnterOtp] = React.useState(false);
-    const handlers = { setMail, setOtp, mailFetch, otpFetch }
-    const values = { email, otp }
+    // const values = { email, otp }
     const err = Boolean(mailerr || otperr);
     const loading = Boolean(eload || otpload);
     const data = { edata, otpdata }
 
+    const handleChangeemail = (type, value) => {
+        setMail({
+            ...email,
+            [type]: value
+        })
+    }
+    const handleChangeotp = (type, value) => {
+        setOtp({
+            ...otp,
+            [type]: value
+        })
+    }
     React.useEffect(() => {
         console.info('MAILERR', Boolean(!mailerr && Object.keys(edata).length), mailerr, edata);
         if (!mailerr && Object.keys(edata).length) {
@@ -45,8 +60,9 @@ export const useVerifyOtp = (changePanel) => {
             })
         }
     }, [otpload])
+    const handlers = { handleChangeemail, handleChangeotp, mailFetch, otpFetch }
 
-    return { handlers, values, status: { err, loading, data }, enterotp }
+    return { handlers, otp, email, status: { err, loading, data }, enterotp }
 }
 
 

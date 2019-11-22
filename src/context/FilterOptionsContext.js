@@ -159,7 +159,6 @@ const Provider = (props) => {
 
 
     const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/filterlist', {}, {})
-    debugger
     // {transSkuListsByProductId: {some: {discountPrice: {greaterThan: 1.5}}}}
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTLIST, () => { }, {})
     // {filter:{transSkuListsByProductId:{every:{markupPrice:{  "greaterThanOrEqualTo":   20000,

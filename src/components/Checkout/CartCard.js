@@ -17,6 +17,8 @@ import CardSmallScreen from './CartCardSmallScreen.js';
 import Pricing from '../Pricing/index'
 import styles from "./style"
 import { NavLink } from 'react-router-dom';
+import { CartContext } from 'context'
+import cart from 'mappers/cart'
 // 
 // 
 
@@ -28,21 +30,21 @@ class Checkoutcard extends React.Component {
             cart: true
         }
     }
-    handleDeleteLocalStorage= (e) =>{
+    handleDeleteLocalStorage = (e) => {
         var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
         var currentValue = e.target.id
-       var a = local_storage.products.filter(val=>{ 
-            if(currentValue!==val.sku_id){
+        var a = local_storage.products.filter(val => {
+            if (currentValue !== val.sku_id) {
                 return val
             }
         })
         var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
         var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
-        var localstorage = JSON.stringify({"cart_id":`${cartId}`,"user_id":`${userId}`,"products":a})
+        var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
         localStorage.setItem('cartDetails', localstorage)
         window.location.reload();
     }
-    row = () => {
+    row = (props) => {
         const dataCarousel = {
             slidesToShow: 1,
             arrows: false,
@@ -56,7 +58,7 @@ class Checkoutcard extends React.Component {
                         <div className={classes.cart}>
                             <Grid container spacing={12} xs={12}  >
                                 <Grid item xs={1}  >
-                                    <div id={val.namedetail[0].details} onClick={(event)=>this.handleDeleteLocalStorage(event)} class="remove-product"></div>
+                                    <div id={val.namedetail[0].details} onClick={(event) => this.handleDeleteLocalStorage(event)} class="remove-product"></div>
                                 </Grid>
                                 <Grid item xs={2} >
                                     <Card className="product-image-thumb">
@@ -119,7 +121,7 @@ class Checkoutcard extends React.Component {
                 ))}
 
 
-                {this.subtotals()}
+                {this.subtotals(props)}
             </div>
         )
 
@@ -138,17 +140,32 @@ class Checkoutcard extends React.Component {
             </div>
         )
     }
-    subtotals = () => {
+    subtotals = (props) => {
+        // alert(JSON.stringify(props.cartFilters.discount_price))
         // const { dataCard1 } = this.props.data;
-        const dataCard1 = this.props.data.map(val=>{return val.dataCard1[0].offerPrice}).reduce(myFunc);
+        const dataCard1 = this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
         // this.props.data.map(val=>{return val.dataCard1[0].offerPrice}).reduce(myFunc)
-        
-      var yousave=  this.props.data.map((_data) => {
+
+        var yousave = this.props.data.map((_data) => {
             return _data.dataCard1[0].price - _data.dataCard1[0].offerPrice
         }).reduce(myFunc)
+
+        // function myFunc(total, num) {
+        //     return Math.round(total + num);
+        // }
+
         function myFunc(total, num) {
-            return Math.round(total + num);
-          }
+
+            var discount_price = props.cartFilters.discount_price ? JSON.stringify(props.cartFilters.discount_price) : ""
+            if (discount_price.length > 0) {
+                var a = Math.round(total + num);
+                var cart_price = (a - discount_price)
+            } else {
+                var cart_price = Math.round(total + num);
+            }
+            return cart_price
+        }
+
         // const yousave = Math.round(Number(dataCard1.price) - Number(dataCard1.offerPrice))
         let path = window.location.pathname.split('/').pop();
         const { classes } = this.props;
@@ -162,12 +179,15 @@ class Checkoutcard extends React.Component {
                             <Grid xs={7} lg={5}>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>Subtotal</Typography>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>You Saved</Typography>
+                                {props.cartFilters.tax_price ? <Typography class={`subhesder ${classes.normalfonts}`}>GST</Typography> : ""}
                                 <Typography class={`subhesder ${classes.normalfonts}`}>Shipping</Typography>
                                 <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>Grand Total</Typography>
                             </Grid>
                             <Grid xs={5} lg={5}>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(dataCard1)}</Typography>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>{yousave}</Typography>
+                                {props.cartFilters.tax_price ? <Typography class={`subhesder ${classes.normalfonts}`}>
+                                    {props.cartFilters.tax_price}</Typography> : ""}
                                 <Typography class={`subhesder ${classes.normalfonts}`}>FREE </Typography>
                                 <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>{Math.round(dataCard1)}</Typography>
                             </Grid>
@@ -179,9 +199,9 @@ class Checkoutcard extends React.Component {
                     {path == "checkout" ? "" :
                         <Grid xs={12} lg={7}>
                             <NavLink to="/jewellery">
-                            <div className='btn-plain'> CONTINUE SHOPPING</div>
+                                <div className='btn-plain'> CONTINUE SHOPPING</div>
                             </NavLink>
-                           
+
                         </Grid>}
                     <Grid xs={12} lg={4} >
                         {this.checkoutbutton()}
@@ -196,26 +216,31 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         var data = this.props.data
-        debugger
         const { classes} = this.props;
         // alert(discounted_price)
         let path = window.location.pathname.split('/').pop();
         return (
             <div>
                 <Hidden smDown>
-                    {this.checkoutbutton()}
+                    {this.checkoutbutton(this.props)}
                     <br />
                     <br />
                     <br />
-                    {this.row()}
+                    {this.row(this.props)}
                 </Hidden>
                 <Hidden smUp>
                     <CardSmallScreen />
-                    {this.subtotals()}
+                    {this.subtotals(this.props)}
                 </Hidden>
             </div>
         )
     }
 
 }
-export default withStyles(styles)(Checkoutcard)
+const Components = props => {
+    let { CartCtx: { cartFilters } } = React.useContext(CartContext);
+    let content;
+    content = <Checkoutcard {...props} cartFilters={cartFilters} />
+    return content
+}
+export default withStyles(styles)(Components)
