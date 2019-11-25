@@ -111,7 +111,7 @@ export const ADDRESSDETAILS = `
 query MyQuery($id: UUID) {
   allUserAddresses(first: 1, condition: {id: $id}) {
     nodes {
-      addressline1
+      addressline1 
       addressline2
       id
       city
