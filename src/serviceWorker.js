@@ -33,7 +33,7 @@ const cacheCheck = async() =>{
                 if(Number(local_storage) !== Number(obj.version)){
                   
                   localStorage.setItem('version', Number(obj.version))
-                  window.location.reload()
+                  // window.location.reload()
                 }
                 return request.responseText;
             }
