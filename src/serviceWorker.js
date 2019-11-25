@@ -11,21 +11,48 @@
 // opt-in, read https://bit.ly/CRA-PWA
 
 const cacheCheck = async() =>{
-  debugger
+ 
+ 
+    // read text from URL location
+    var request = new XMLHttpRequest();
+
+
+  // alert('i came in', myJson)
   
-  const response = await fetch('/meta.json');
-  const myJson = await response.json();
-  console.log('versionversion',JSON.stringify(myJson));
-  alert('i came in', myJson)
   var local_storage = localStorage.getItem('version')
   if(local_storage && local_storage.length>0){
-
+    request.open('GET', '/meta.json', true);
+    request.send(null);
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            var type = request.getResponseHeader('Content-Type');
+            if (type.indexOf("json") !== 1) {
+              var obj = JSON.parse(request.responseText)
+              console.log('json',request.responseText)
+                if(local_storage !== obj.version){
+                  
+                  localStorage.setItem('version', obj.version)
+                  window.location.reload()
+                }
+                return request.responseText;
+            }
+        }
+    }
   }
   else{
-    const response = await fetch('http://localhost:5000/meta.json');
-const myJson = await response.json();
-console.log('versionversion',JSON.stringify(myJson));
-    localStorage.getItem('version')
+    request.open('GET', '/meta.json', true);
+    request.send(null);
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            var type = request.getResponseHeader('Content-Type');
+            if (type.indexOf("json") !== 1) {
+              var obj = JSON.parse(request.responseText)
+              localStorage.setItem('version', obj.version)
+
+            }
+        }
+    }
+  
   }
 }
 const isLocalhost = Boolean(
@@ -54,7 +81,7 @@ export async function register(config) {
     window.addEventListener('load', () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
       console.log('versionversion','123123123'); 
-      cacheCheck()
+      
     
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
