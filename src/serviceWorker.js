@@ -11,8 +11,8 @@
 // opt-in, read https://bit.ly/CRA-PWA
 
 const cacheCheck = async() =>{
-  
-  const response = await fetch('https://uat.stylori.net/meta.json');
+  debugger
+  const response = await fetch('/meta.json');
   const myJson = await response.json();
   console.log('versionversion',JSON.stringify(myJson));
 
