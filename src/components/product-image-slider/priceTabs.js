@@ -317,7 +317,7 @@ class Component extends React.Component {
                                                                 {val}
                                                             </button>
                                                             <div style={{ marginTop: "10px", textAlign: "center" }}>
-                                                                
+
                                                             </div>
                                                         </>
                                                     )}

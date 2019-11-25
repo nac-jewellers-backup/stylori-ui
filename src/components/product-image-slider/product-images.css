@@ -731,7 +731,7 @@
 
     .slick-prev:before,
     .slick-next:before {
-        color: #394578 !important;
+        color: red !important;
     }
 
     .next-price {
