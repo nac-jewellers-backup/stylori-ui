@@ -28,7 +28,7 @@ const cacheCheck = async() =>{
             var type = request.getResponseHeader('Content-Type');
             if (type.indexOf("json") !== 1) {
              
-              var obj = JSON.parse(request.responseText)
+              var obj = request.responseText
               console.log('json',type.indexOf("json") !== 1, Number(local_storage), Number(obj.version))
                 if(Number(local_storage) !== Number(obj.version)){
                   
