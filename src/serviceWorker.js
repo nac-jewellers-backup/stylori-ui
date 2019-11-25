@@ -27,8 +27,9 @@ const cacheCheck = async() =>{
         if (request.readyState === 4 && request.status === 200) {
             var type = request.getResponseHeader('Content-Type');
             if (type.indexOf("json") !== 1) {
-              var obj = JSON.parse(request.responseText)
               console.log('json',request.responseText)
+              var obj = JSON.parse(request.responseText)
+             
                 if(local_storage !== obj.version){
                   
                   localStorage.setItem('version', obj.version)
