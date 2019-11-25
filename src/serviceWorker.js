@@ -10,8 +10,22 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
-// import {version} from `publicUrl`;
+const cacheCheck = async() =>{
 
+
+  var local_storage = localStorage.getItem('version')
+  if(local_storage && local_storage.length>0){
+    const response = await fetch('http://uat.stylori.net/meta.json');
+const myJson = await response.json();
+console.log('versionversion',JSON.stringify(myJson));
+  }
+  else{
+    const response = await fetch('http://uat.stylori.net/meta.json');
+const myJson = await response.json();
+console.log('versionversion',JSON.stringify(myJson));
+    localStorage.getItem('version')
+  }
+}
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
@@ -21,11 +35,8 @@ const isLocalhost = Boolean(
       /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
     )
 );
-// console.log(/service-worker.js,'packageVersion')
-
 
 export async function register(config) {
-  
   await requestNotificationPermission();
 
   if (process.env.NODE_ENV !== 'production' && 'serviceWorker' in navigator) {
@@ -40,7 +51,8 @@ export async function register(config) {
 
     window.addEventListener('load', () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
-
+       cacheCheck()
+    
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
         checkValidServiceWorker(swUrl, config);
@@ -55,7 +67,6 @@ export async function register(config) {
         });
       } else {
         // Is not localhost. Just register service worker
-        window.location.reload()
         registerValidSW(swUrl, config);
       }
     });
@@ -67,15 +78,13 @@ function registerValidSW(swUrl, config) {
     .register(swUrl)
     .then(registration => {
       registration.onupdatefound = () => {
-        window.location.reload()
         const installingWorker = registration.installing;
-        sendNotification('App is being cached locally for offline purpose!')
+        sendNotification('App is being cached localyy for offline purpose!')
         if (installingWorker == null) {
           return;
         }
         installingWorker.onstatechange = async () => {
           if (installingWorker.state === 'installed') {
-            
             let updating = false, 
               updateMessage='New version of app is installed',
               installedMessage = 'Your app is installed and works offline'

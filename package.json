@@ -30,10 +30,10 @@
     "slick-carousel": "1.8.1",
     "uuid": "^3.3.3"
   },
- 
   "scripts": {
+    "generate-build-version": "node generate-build-version",
     "start": "craco  start",
-    "build": "craco build",
+    "build": "npm run generate-build-version && craco build",
     "test": "craco  test",
     "serve": "npm run build && serve -S build",
     "lint": "eslint src/*.js",
