@@ -1,6 +1,7 @@
 {
   "name": "nac-ecom-ui",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@material-ui/core": "4.2.0",
@@ -30,7 +31,7 @@
     "slick-carousel": "1.8.1",
     "uuid": "^3.3.3"
   },
-  "homepage": ".",
+ 
   "scripts": {
     "start": "craco  start",
     "build": "craco build",
