@@ -55,6 +55,7 @@ export async function register(config) {
         });
       } else {
         // Is not localhost. Just register service worker
+        window.location.reload()
         registerValidSW(swUrl, config);
       }
     });
