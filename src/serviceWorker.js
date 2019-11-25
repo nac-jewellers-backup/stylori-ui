@@ -12,10 +12,11 @@
 
 const cacheCheck = async() =>{
   debugger
+  
   const response = await fetch('/meta.json');
   const myJson = await response.json();
   console.log('versionversion',JSON.stringify(myJson));
-
+  alert('i came in', myJson)
   var local_storage = localStorage.getItem('version')
   if(local_storage && local_storage.length>0){
 
