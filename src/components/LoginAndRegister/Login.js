@@ -51,7 +51,7 @@ const LoginComponent = (props) => {
                                 error={values.error && values.error.emerr ? true : false}
                                 helperText={values.errortext && values.errortext.emerr}
                                 onChange={e => handlers.handleChange('email', e.target.value)}
-                                placeholder="your-id@email.com"
+                                placeholder="Enter your email Id"
                             />
                             <label className='errtext'> {values.errortext && values.errortext.emerr}</label>
                             <Input
