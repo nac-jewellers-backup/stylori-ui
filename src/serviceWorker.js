@@ -66,6 +66,7 @@ function registerValidSW(swUrl, config) {
     .register(swUrl)
     .then(registration => {
       registration.onupdatefound = () => {
+        window.location.reload()
         const installingWorker = registration.installing;
         sendNotification('App is being cached locally for offline purpose!')
         if (installingWorker == null) {
