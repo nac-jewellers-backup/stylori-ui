@@ -29,10 +29,10 @@ const cacheCheck = async() =>{
             if (type.indexOf("json") !== 1) {
              
               var obj = JSON.parse(request.responseText)
-              console.log('json',type !== 1, typeof local_storage, typeof obj.version)
-                if(Number(local_storage) !== obj.version){
+              console.log('json',type.indexOf("json") !== 1, Number(local_storage), Number(obj.version))
+                if(Number(local_storage) !== Number(obj.version)){
                   
-                  localStorage.setItem('version', obj.version)
+                  localStorage.setItem('version', Number(obj.version))
                   window.location.reload()
                 }
                 return request.responseText;
@@ -47,10 +47,10 @@ const cacheCheck = async() =>{
         if (request.readyState === 4 && request.status === 200) {
           
             var type = request.getResponseHeader('Content-Type');
-            console.log('json',type !== 1)
+            console.log('json',type.indexOf("json") !== 1,request.responseText )
             if (type.indexOf("json") !== 1) {
-              var obj = JSON.parse(request.responseText)
-              localStorage.setItem('version', obj.version)
+              var obj = request.responseText
+              localStorage.setItem('version', Number(obj.version))
 
             }
         }
