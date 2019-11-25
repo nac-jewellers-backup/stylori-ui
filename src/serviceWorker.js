@@ -10,7 +10,7 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
-
+import {version} from './appversion';
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
@@ -20,8 +20,22 @@ const isLocalhost = Boolean(
       /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
     )
 );
+// console.log(version(),'packageVersion')
+const cache_clearing =async () =>{
+  const local_storage = localStorage.getItem('version')
+  if(local_storage && local_storage.length>0){
+    const response = await fetch('http://example.com/movies.json');
+    const myJson = await response.json();
+    console.log(JSON.stringify(myJson));
+  }
+  else{
+    localStorage.setItem("version",version())
+  }
+}
+// cache_clearing()
 
 export async function register(config) {
+  
   await requestNotificationPermission();
 
   if (process.env.NODE_ENV !== 'production' && 'serviceWorker' in navigator) {
