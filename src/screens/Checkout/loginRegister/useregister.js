@@ -86,7 +86,7 @@ const useRegister = (changePanel, props) => {
     const handleSubmit = (e) => {
         if (values.email === null) {
             values['error']['emerr'] = true
-            values['errortext']['emerr'] = 'Mail is required'
+            values['errortext']['emerr'] = 'Email is required'
             setValues({
                 ...values,
                 values,
@@ -111,7 +111,7 @@ const useRegister = (changePanel, props) => {
         }
         if (values.firstname === null) {
             values['error']['firstname'] = true
-            values['errortext']['firstname'] = 'FirstName is required'
+            values['errortext']['firstname'] = 'First Name is required'
             setValues({
                 ...values,
                 values,
@@ -119,7 +119,7 @@ const useRegister = (changePanel, props) => {
         }
         if (values.lastname === null) {
             values['error']['lastname'] = true
-            values['errortext']['lastname'] = 'LastName is required'
+            values['errortext']['lastname'] = 'Last Name is required'
             setValues({
                 ...values,
                 values,
@@ -141,7 +141,7 @@ const useRegister = (changePanel, props) => {
         makeFetch(values);
         if (errmsg.length > 0) {
             values['error']['emerr'] = true
-            values['errortext']['emerr'] = 'your mail is already exists'
+            values['errortext']['emerr'] = 'Your email is already exists'
             setValues({
                 ...values,
                 values,

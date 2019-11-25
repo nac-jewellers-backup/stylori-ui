@@ -45,7 +45,7 @@ const RegisterComponent = (props) => {
                                         value={values.email}
                                         error={values.error && values.error.emerr ? true : false}
                                         // helperText={values.errortext && values.errortext.emerr}
-                                        placeholder="Enter your mail Id"
+                                        placeholder="Enter your email Id"
                                         onChange={e => handlers.handleChange('email', e.target.value)}
                                     />
                                     <label className='errtext'> {values.errortext && values.errortext.emerr}</label>

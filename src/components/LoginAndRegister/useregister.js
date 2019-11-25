@@ -3,9 +3,11 @@ import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { resetWarningCache } from 'prop-types';
+import { ProductDetailContext } from 'context/ProductDetailContext';
 
 const useRegister = (changePanel, props) => {
     const [values, setValues] = React.useState({
+        // url:null 
         email: null,
         password: null,
         confirmpassword: null,
@@ -31,6 +33,10 @@ const useRegister = (changePanel, props) => {
     const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     const { data, error, loading, makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
+    // const { loading: viewedloading, error: viewederror, data: vieweddata, makeRequest: viewmakeRequest } = useGraphql(youRecentlyViewed, () => { }, {}, false);
+    const { ProductDetailCtx: { registerurl } } = React.useContext(ProductDetailContext);
+    debugger
+    alert(JSON.stringify(registerurl))
     useEffect(() => {
         // if(data.message=="Email ID Already Exist")
         var v = data.user_profile_id ? data.user_profile_id : ""
@@ -45,9 +51,9 @@ const useRegister = (changePanel, props) => {
             localStorage.setItem("user_id", data.user_profile_id)
             makeRequestCod(obj);
             // window.history.back();
-            if (bb.length > 0) {
-                window.history.back()
-            }
+            // if (bb.length > 0) {
+            //     window.history.back()
+            // }
         }
         //     obj['id'] = bb
         //     makeRequestCod(obj);
@@ -56,7 +62,8 @@ const useRegister = (changePanel, props) => {
     // useEffect(() => {
     //     var resin = CodData.data ? JSON.stringify(CodData.data) : ""
     //     if (resin.length > 30) {
-    //         localStorage.setItem('regaddr', JSON.stringify(CodData.data.allUserAddresses.nodes[0]))
+
+    //         // localStorage.setItem('regaddr', JSON.stringify(CodData.data.allUserAddresses.nodes[0]))
     //     }
     // }, [CodData])
     const errmsg = data.message ? data.message : ""
@@ -90,7 +97,7 @@ const useRegister = (changePanel, props) => {
     const handleSubmit = (e) => {
         if (values.email === null) {
             values['error']['emerr'] = true
-            values['errortext']['emerr'] = 'Mail is required'
+            values['errortext']['emerr'] = 'Email is required'
             setValues({
                 ...values,
                 values,
@@ -115,7 +122,7 @@ const useRegister = (changePanel, props) => {
         }
         if (values.firstname === null) {
             values['error']['firstname'] = true
-            values['errortext']['firstname'] = 'FirstName is required'
+            values['errortext']['firstname'] = 'First Name is required'
             setValues({
                 ...values,
                 values,
@@ -123,7 +130,7 @@ const useRegister = (changePanel, props) => {
         }
         if (values.lastname === null) {
             values['error']['lastname'] = true
-            values['errortext']['lastname'] = 'LastName is required'
+            values['errortext']['lastname'] = 'Last Name is required'
             setValues({
                 ...values,
                 values,
@@ -142,10 +149,10 @@ const useRegister = (changePanel, props) => {
             })
             return false
         }
-
+        makeFetch(values);
         if (errmsg.length > 0) {
             values['error']['emerr'] = true
-            values['errortext']['emerr'] = 'your mail is already exists'
+            values['errortext']['emerr'] = 'Your email is already exists'
             setValues({
                 ...values,
                 values,
@@ -166,7 +173,7 @@ const useRegister = (changePanel, props) => {
         // }
 
         // changePanel(3)
-        makeFetch(values);
+        // makeFetch(values);
     }
     const handlers = { handleSubmit, handleChange };
 

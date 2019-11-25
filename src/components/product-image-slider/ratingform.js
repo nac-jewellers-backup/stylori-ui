@@ -37,6 +37,7 @@ const RatingComponent = (props) => {
                         type="text"
                         name="title"
                         value={values.title}
+                        maxLength={60}
                         placeholder="Title"
                         className="rating-form-text"
                         onChange={e => handlers.handleChange('title', e.target.value)}
@@ -51,6 +52,7 @@ const RatingComponent = (props) => {
                         name="message"
                         placeholder='Your Reviews'
                         className="rating-form-text"
+                        maxLength={250}
                         value={values.message}
                         onChange={e => handlers.handleChange('message', e.target.value)}
                         helperText="please Enter review text"
