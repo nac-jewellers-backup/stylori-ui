@@ -11,16 +11,17 @@
 // opt-in, read https://bit.ly/CRA-PWA
 
 const cacheCheck = async() =>{
-
+  
+  const response = await fetch('https://uat.stylori.net/meta.json');
+  const myJson = await response.json();
+  console.log('versionversion',JSON.stringify(myJson));
 
   var local_storage = localStorage.getItem('version')
   if(local_storage && local_storage.length>0){
-    const response = await fetch('http://uat.stylori.net/meta.json');
-const myJson = await response.json();
-console.log('versionversion',JSON.stringify(myJson));
+
   }
   else{
-    const response = await fetch('http://uat.stylori.net/meta.json');
+    const response = await fetch('http://localhost:5000/meta.json');
 const myJson = await response.json();
 console.log('versionversion',JSON.stringify(myJson));
     localStorage.getItem('version')
@@ -51,7 +52,8 @@ export async function register(config) {
 
     window.addEventListener('load', () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
-       cacheCheck()
+      console.log('versionversion','123123123'); 
+      cacheCheck()
     
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
