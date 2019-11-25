@@ -10,7 +10,8 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
-import {version} from './appversion';
+// import {version} from `publicUrl`;
+
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
@@ -20,19 +21,8 @@ const isLocalhost = Boolean(
       /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
     )
 );
-// console.log(version(),'packageVersion')
-const cache_clearing =async () =>{
-  const local_storage = localStorage.getItem('version')
-  if(local_storage && local_storage.length>0){
-    const response = await fetch('http://example.com/movies.json');
-    const myJson = await response.json();
-    console.log(JSON.stringify(myJson));
-  }
-  else{
-    localStorage.setItem("version",version())
-  }
-}
-// cache_clearing()
+// console.log(/service-worker.js,'packageVersion')
+
 
 export async function register(config) {
   
@@ -77,12 +67,13 @@ function registerValidSW(swUrl, config) {
     .then(registration => {
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
-        sendNotification('App is being cached localyy for offline purpose!')
+        sendNotification('App is being cached locally for offline purpose!')
         if (installingWorker == null) {
           return;
         }
         installingWorker.onstatechange = async () => {
           if (installingWorker.state === 'installed') {
+            
             let updating = false, 
               updateMessage='New version of app is installed',
               installedMessage = 'Your app is installed and works offline'

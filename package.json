@@ -30,6 +30,7 @@
     "slick-carousel": "1.8.1",
     "uuid": "^3.3.3"
   },
+  "homepage": ".",
   "scripts": {
     "start": "craco  start",
     "build": "craco build",
