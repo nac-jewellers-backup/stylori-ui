@@ -35,7 +35,7 @@ const cacheCheck = async() =>{
                 var obj =await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? request.responseText : ''
                 console.info('objectlocal_storage, obj.version', local_storage, obj.version)
                 console.log('json',type.indexOf("json") !== 1,typeof request.responseText, request.responseText, obj )
-                alert(local_storage, obj.version)
+                // alert(local_storage, obj.version)
                  if(obj !== '' && Number(local_storage) !== Number(obj.version)){
                 localStorage.setItem('version', JSON.parse(obj).version)
                 window.location.reload()
@@ -57,7 +57,7 @@ const condition_async = async() =>{
         
          var type = await request.getResponseHeader('Content-Type');
           debugger
-          alert(request.responseText)
+          // alert(request.responseText)
 
           if (type.indexOf("json") !== 1) {
              var obj =await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? request.responseText : ''
@@ -83,7 +83,7 @@ const isLocalhost = Boolean(
 );
 cacheCheck()
 // setTimeout(function(){ cacheCheck(); }, 20000);
-// setInterval(function(){ cacheCheck(); }, 5000);
+setInterval(function(){ cacheCheck(); }, 30000);
 export async function register(config) {
   await requestNotificationPermission();
 
