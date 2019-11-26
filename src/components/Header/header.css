@@ -1,13 +1,29 @@
+@import "../../fonts/font.css";
 
-  @keyframes placeHolderShimmer {
-    0% {
-      background-position: -490px 0;
-    }
-    100% {
-      background-position: 490px 0;
-    }
-   }
-.shine{
+body {
+
+  margin: 0;
+  font-family: 'Robot-Black ';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -490px 0;
+  }
+
+  100% {
+    background-position: 490px 0;
+  }
+}
+
+.MuiTypography-body1 ,.MuiTypography-h6 {
+  font-family: 'Robot-Black ' !important;
+}
+
+.shine {
   animation-duration: 1s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
@@ -15,28 +31,29 @@
   animation-timing-function: linear;
   background: #f6f7f8;
 
-  background-image: -webkit-linear-gradient(
-    left,
-    #f6f7f8 0%,
-    #edeef1 20%,
-    #f6f7f8 40%,
-    #f6f7f8 100%
-  );
+  background-image: -webkit-linear-gradient(left,
+      #f6f7f8 0%,
+      #edeef1 20%,
+      #f6f7f8 40%,
+      #f6f7f8 100%);
   background-size: 980px 898px;
   /* height: 898px; */
   position: relative;
- }
- .menuListHoverDiv{
-   width: 120px;
-   height: 120px;
-   background-color: grey;
-   border:none !important;
-  
-  }
+}
+
+.menuListHoverDiv {
+  width: 120px;
+  height: 120px;
+  background-color: grey;
+  border: none !important;
+
+}
+
 .head-icons {
   font-size: 20px !important;
   margin-top: 18px !important;
 }
+
 .head-icons i {
   margin-left: 24px;
   font-size: 20px;
@@ -44,16 +61,19 @@
   background-position: -87px 4px;
   cursor: pointer;
 }
+
 @keyframes pulse_animation {
   25% {
     -webkit-transform: scale(1.3);
     transform: scale(1.3);
   }
+
   75% {
     -webkit-transform: scale(0.8);
     transform: scale(0.8);
   }
 }
+
 .head-icons i:hover {
   animation-name: pulse_animation;
   animation-duration: 1000ms;
@@ -64,8 +84,9 @@
 .header-bottom {
   background: linear-gradient(to left, #fff, #ed1165, #fff) !important;
   height: 1px !important;
-  border: 1px solid #f1f1f1 !important  ;
+  border: 1px solid #f1f1f1 !important;
 }
+
 .header-appbar {
   background-color: #fff !important;
   text-align: center !important;
@@ -74,13 +95,15 @@
   width: 100%;
   line-height: 1.42857143;
   font-size: 12px;
-  font-family: sans-serif;
+  /* font-family: 'Robot-Black' !important; */
   box-shadow: none !important;
 }
+
 .header-navbar-list {
   padding-top: 22px;
   height: 55px !important;
 }
+
 .header-navbar-list a {
   white-space: nowrap;
   width: 100%;
@@ -91,21 +114,25 @@
   text-decoration: none !important;
   margin: 1.5%;
 }
+
 .img {
   height: 60px !important;
   width: 100%;
 }
+
 .search {
   border: 1px solid #ccc;
   width: 190px !important;
   height: 30px !important;
   padding: 1px 10px !important;
-  font-family: inherit !important;
+  font-family: 'Robot-Black' !important;
 }
+
 .MuiBadge-colorSecondary {
   background-color: #f699a3 !important;
   top: -6px !important;
 }
+
 .header-appbar-moblie {
   background-color: #fff !important;
   text-align: center !important;
@@ -115,10 +142,11 @@
   width: 100%;
   line-height: 1.42857143;
   font-size: 12px;
-  font-family: sans-serif;
+  font-family: 'Robot-Black' !important;
   box-shadow: none !important;
   box-shadow: 1px 1px 1px #ccc !important;
 }
+
 .mobli-icon i {
   font-size: 18px;
   cursor: pointer;
@@ -128,22 +156,26 @@
   text-align: center !important;
   width: 25px;
 }
+
 @keyframes pulse_animation {
   25% {
     -webkit-transform: scale(1.3);
     transform: scale(1.3);
   }
+
   75% {
     -webkit-transform: scale(0.8);
     transform: scale(0.8);
   }
 }
+
 .mobli-icon i:hover {
   animation-name: pulse_animation;
   animation-duration: 1000ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
+
 .list-items {
   text-align: left;
   white-space: nowrap;
@@ -153,6 +185,7 @@
   color: #394578;
   text-transform: capitalize;
 }
+
 .Jew-mbl-head-list {
   color: #394578;
   width: 100%;
@@ -174,9 +207,11 @@
   border-left: 3px solid #ed1165;
   color: #ed1165;
 }
+
 .hrColor {
   border-bottom: 1px solid #ed1165;
 }
+
 /* color: #394578;
     line-height: 1.42857143;
     letter-spacing: 1px !important;
@@ -188,26 +223,32 @@
   font-weight: normal;
   color: #394578 !important;
 }
+
 .drawer-list {
   border-bottom: 1px solid rgba(0, 0, 0, 0.13) !important;
 }
+
 .drawer-list:hover {
   background-color: rgba(0, 0, 0, 0.08) !important;
 }
+
 .side-arrow-symbol {
   font-family: "FontAwesome" !important;
   font-size: 15px !important;
   line-height: 1;
   color: #394578 !important;
 }
+
 .header-drawer {
   width: 267px !important;
 }
+
 .submenu-icons {
   fill: rgba(0, 0, 0, 0.25) !important;
   padding: 0 9px;
   font-size: 18px !important;
 }
+
 .notificationHeader {
   height: 33px;
   position: absolute;
@@ -215,17 +256,20 @@
   left: 0;
   color: white;
 }
+
 .ListColor {
   font-size: 12px;
-  font-family: "Roboto";
+  font-family: "Robot-Black";
   border-left: 3px solid white;
   cursor: pointer;
 }
+
 .ListColor li:hover {
   border-left: 3px solid #ed1165 !important;
   color: #ed1165;
   cursor: pointer;
 }
+
 .ListColor li:active {
   border-left: 3px solid #ed1165;
   color: #ed1165;
@@ -247,14 +291,17 @@
   margin-bottom: 7px;
   text-shadow: none !important;
 }
+
 .stytheadingView {
   color: #f36e23;
   font-size: 11px;
   letter-spacing: 1px !important;
 }
+
 .stytview {
   font-size: 12px;
 }
+
 .header-viewal {
   color: #f36e23;
   font-size: 11px;
@@ -266,13 +313,15 @@
   position: sticky;
   top: 0px;
 }
+
 .logoImgHeader {
   display: flex;
   justify-content: flex-end;
 }
+
 /* .animations{
   transition: width .35s ease-in-out !important;
 } */
-.listHovers{
-  color:red
+.listHovers {
+  color: red
 }

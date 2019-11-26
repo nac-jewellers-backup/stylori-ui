@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f078632a089da6fe7742",
+    "revision": "c240c8348d46eabb0234",
     "url": "/0.css"
   },
   {
@@ -8,11 +8,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/2.css"
   },
   {
-    "revision": "e3d71c6fb3db952be614",
+    "revision": "14cf28cf930d861a9ebf",
     "url": "/3.css"
   },
   {
-    "revision": "3039e5da99b991932d060c3f5c267584",
+    "revision": "5be92f490589c481daf98cc85f74c399",
     "url": "/index.html"
   },
   {
@@ -20,11 +20,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/2.5f966f18.chunk.css"
   },
   {
-    "revision": "e3d71c6fb3db952be614",
-    "url": "/static/css/3.61e4ee32.chunk.css"
+    "revision": "14cf28cf930d861a9ebf",
+    "url": "/static/css/3.f850cb7d.chunk.css"
   },
   {
-    "revision": "f078632a089da6fe7742",
+    "revision": "c240c8348d46eabb0234",
     "url": "/static/css/main.740a324f.chunk.css"
   },
   {
@@ -32,20 +32,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.c19c62b6.chunk.js"
   },
   {
-    "revision": "e3d71c6fb3db952be614",
-    "url": "/static/js/3.e059057b.chunk.js"
+    "revision": "14cf28cf930d861a9ebf",
+    "url": "/static/js/3.e0e7042a.chunk.js"
   },
   {
     "revision": "8bf49df122d9142d3645",
     "url": "/static/js/4.dd946afb.chunk.js"
   },
   {
-    "revision": "f078632a089da6fe7742",
-    "url": "/static/js/main.5917c23f.chunk.js"
+    "revision": "c240c8348d46eabb0234",
+    "url": "/static/js/main.099b08bb.chunk.js"
   },
   {
-    "revision": "94b8d40470d8708d6ece",
-    "url": "/static/js/runtime~main.d1f7fcd8.js"
+    "revision": "cf14042d559334d220d8",
+    "url": "/static/js/runtime~main.70f8b48b.js"
   },
   {
     "revision": "d20d098dccc3deb830808f97fb14f3ca",
@@ -54,6 +54,42 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "92e2d23a1a2929823738532362c05eea",
     "url": "/static/media/FlowerDimon.92e2d23a.jpg"
+  },
+  {
+    "revision": "5e7f2b4f906f319de3f6359e318577d5",
+    "url": "/static/media/Roboto-Black.5e7f2b4f.ttf"
+  },
+  {
+    "revision": "e357d9e01aa2acd88d6742088ff1d8af",
+    "url": "/static/media/Roboto-BlackItalic.e357d9e0.ttf"
+  },
+  {
+    "revision": "9db5fdfc3ab94234844ff9dea7c59676",
+    "url": "/static/media/Roboto-Bold_0.9db5fdfc.ttf"
+  },
+  {
+    "revision": "93b13a58dedeebe519846555a543523b",
+    "url": "/static/media/Roboto-Italic_0.93b13a58.ttf"
+  },
+  {
+    "revision": "1d2846ac49eba86da31aa544c33f148d",
+    "url": "/static/media/Roboto-MediumItalic_0.1d2846ac.ttf"
+  },
+  {
+    "revision": "76d23a92c2821603e62071257d8fe9a3",
+    "url": "/static/media/Roboto-Medium_0.76d23a92.ttf"
+  },
+  {
+    "revision": "5673da52c98bb6cb33ada5aaf649703e",
+    "url": "/static/media/Roboto-Regular_0.5673da52.ttf"
+  },
+  {
+    "revision": "d273f4e52eb69f4491d83ad699ba62b3",
+    "url": "/static/media/Roboto-ThinItalic_0.d273f4e5.ttf"
+  },
+  {
+    "revision": "a45f063b686a5b3da09ce5e92f8d1037",
+    "url": "/static/media/Roboto-Thin_0.a45f063b.ttf"
   },
   {
     "revision": "c3f7641ef11bd405cfe12138f25f089f",

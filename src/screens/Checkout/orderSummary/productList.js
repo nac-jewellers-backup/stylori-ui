@@ -31,9 +31,11 @@ const Productlist = (props) => {
 const ProductlistComponent = (props) => {
     const { handlers, values, val } = useGift();
     const { classes } = props;
-    let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
+    let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : {};
+    var value1 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : {};
     const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
     let lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
+    let lgn1 = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
     const { expanded1, expanded2, expanded3 } = val;
     return (
         <Container>
@@ -60,16 +62,20 @@ const ProductlistComponent = (props) => {
                                     <div style={{ width: "100%" }}>
                                         <p className='dis-phn btm'>
                                             {aa ? aa + ' ' : ""}
-                                            {lgn && lgn.firstname ? lgn.firstname : value && value.addressOne && value.addressOne.firstname}&nbsp;{lgn && lgn.lastname ? lgn.lastname : value && value.addressOne && value.addressOne.lastname}
+                                            {lgn && lgn.firstname ? lgn && lgn.firstname || lgn1 && lgn1.firstname : value && value.firstname || value1 && value1.firstname}
+                                            &nbsp;
+                                        {lgn && lgn.lastname ? lgn && lgn.lastname || lgn1 && lgn1.lastname : value && value.lastname || value1 && value1.lastname}
                                         </p>
                                         <p className='dis-phn btm'><div
                                             style={{ width: "100%", overflow: "hidden", textOverflow: "ellipsis" }} >
-                                            {lgn && lgn.addressline1 ? lgn.addressline1 : value && value.addressOne && value.addressOne.addressline1}</div>
+                                            {lgn && lgn.addressline1 ? lgn && lgn.addressline1 || lgn1 && lgn1.addressline1 : value && value.addressline1 || value1 && value1.addressline1}
+                                        </div>
 
-                                            {lgn && lgn.city ? lgn.city : value && value.addressOne && value.addressOne.city} <br />
-                                            {lgn && lgn.state ? lgn.state : value && value.addressOne && value.addressOne.state}-{lgn && lgn.pincode ? lgn.pincode : value && value.addressOne && value.addressOne.pincode} <br />IN</p>
+                                            {lgn && lgn.city ? lgn && lgn.city || lgn1 && lgn1.city : value && value.city || value1 && value1.city} <br />
+                                            {lgn && lgn.state ? lgn && lgn.state || lgn1 && lgn1.state : value && value.state || value1 && value1.state}-
+                                            {lgn && lgn.pincode ? lgn && lgn.pincode || lgn1 && lgn1.pincode : value && value.pincode || value1 && value1.pincode}<br />IN</p>
                                         <p className='dis-phn'>Phone :
-                                        +91 {lgn && lgn.contactNumber ? lgn && lgn.contactNumber : value && value.addressOne && value.addressOne.contactno} </p>
+                                        +91 {lgn && lgn.contactNumber ? lgn && lgn.contactNumber || lgn1 && lgn1.contactNumber : value && value.contactNumber || value1 &&  value1.contactNumber} </p>
                                     </div>
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
