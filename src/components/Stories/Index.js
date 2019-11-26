@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         backgroundColor: "#fff",
         width: "100%",
-        padding: "0px 8px 0px 22px"
+        padding: "0px 22px 0px 22px"
 
 
     },
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
             width: "1170px !important",
             margin: "auto",
             backgroundColor: "#fff",
-            padding: "0px 8px 0px 22px"
+            padding: "0px 22px 0px 22px"
 
         }
     },
@@ -104,7 +104,7 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         justifyContent: " center",
         alignContent: 'center',
-        minHeight: "25px",
+        minHeight: "40px",
         color: "#394578",
         fontWeight: '500',
         fontSize: "13px",
@@ -208,33 +208,31 @@ export default function ImageGridList(props) {
                             <img onClick={() => previous()} className={classes.imgleft} />
                         </Grid>
                         <Grid item style={{ width: "94%", padding: "0px 15px" }}  >
-                            <Grid item className={classes.Titlehead}>
-                                <Typography variant="h3" className={classes.titleTypo}>Celebrity Wedding Season: Style lessons from the best
-                                   </Typography>
-                            </Grid>
-                            <Grid container>
-                                <Grid item item xs={12} alignItems="center">
-                                    <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
-                                        {props.carosolData.map((val, index) => <>
+                            <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
+                                {props.carosolData.map((val, index) => <>
+                                    <Grid item className={classes.Titlehead}>
+                                        <Typography variant="h3" className={classes.titleTypo}>{val.Title}
+                                        </Typography>
+                                    </Grid>
+                                    <Grid container>
+                                        <Grid item item xs={12} alignItems="center">
                                             <Grid container>
                                                 <Grid item className={classes.testimonialRight}>
                                                     <Grid item >
-                                                        <img className={classes.imgcoin} src={"https://alpha-assets.stylori.com/images/stories/stylori_blog_cover_01_bollywood_buck.png"} />
+                                                        <a href={val.navigateUrl}>
+                                                            <img className={classes.imgcoin} src={val.img} />
+                                                        </a>
                                                     </Grid>
-
                                                 </Grid>
                                                 <Grid item style={{ width: "75%" }} className={classes.testimonialInner}>
-                                                    <Typography className={classes.textInner}>Thanks for your very good product. A real value for a beautiful workmanship.
-                                                            Thanks for your very good product. A real value for a beautiful workmanship.
-                                                            It is my pleasure to have the same. Product and presentation is awesome. You deserve total Appreciation.
-                                                 </Typography>
-
+                                                    <Typography className={classes.textInner}>{val.content}
+                                                    </Typography>
                                                 </Grid>
                                             </Grid>
-                                        </>)}
-                                    </Slideshow>
-                                </Grid>
-                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </>)}
+                            </Slideshow>
                         </Grid>
                         <Grid item style={{ width: "3%" }} className={classes.imgRightGrid}>
                             <img onClick={() => next()} className={classes.imgRight} />
@@ -251,23 +249,31 @@ export default function ImageGridList(props) {
                         <Grid item style={{ marginBottom: "15px", width: "89%" }}>
                             <Grid container justify="center">
                                 <Grid item item xs={12} md={3} lg={3} sm={6} xs={12} alignItems="center">
-                                    {/* <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}> */}
-                                    <Typography className={classes.testimonyTitle}>
-                                        1 Gm Lakshmi Gold Coin - 24 K
-                                    </Typography>
-                                    <Grid container>
-                                        <Grid item style={{ textAlign: 'center' }}>
-                                            <img className={classes.imgcoinsm} src={"https://alpha-assets.stylori.com/images/stories/stylori_blog_cover_01_bollywood_buck.png"} />
-                                        </Grid>
-                                        <Grid item style={{}}>
-                                            <Grid>
-                                                <Typography style={{ fontSize: "12px", color: "rgb(102, 102, 102)", marginTop: "10px" }}>
-                                                    It looks like summer was forgotten this year with everyone talking about.</Typography></Grid>
-                                            <a style={{ fontSize: "12px", color: '#a77e6c' }} href="">Read more</a>
-                                        </Grid>
-                                    </Grid>
+                                    <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
+                                        {props.carosolData.map((val, index) => <>
+                                            <Grid container justify="center">
+                                                <Typography style={{ textAlign: "center" }} className={classes.testimonyTitle}>
+                                                    {val.Title}
+                                                </Typography>
+                                                <Grid container>
+                                                    <Grid item style={{ textAlign: 'center' }}>
+                                                        <a href={val.navigateUrl}>
+                                                            <img className={classes.imgcoinsm} src={val.img} />
+                                                        </a>
+                                                    </Grid>
+                                                    <Grid item >
+                                                        <Grid>
+                                                            <Typography style={{ fontSize: "12px", color: "rgb(102, 102, 102)", marginTop: "10px" }}>
+                                                                {val.content}
+                                                            </Typography>
+                                                        </Grid>
+                                                        <a style={{ fontSize: "12px", color: '#a77e6c' }} href="">Read more</a>
+                                                    </Grid>
+                                                </Grid>
+                                            </Grid>
+                                        </>)}
+                                    </Slideshow>
                                 </Grid>
-
                             </Grid>
                         </Grid>
                         <Grid item className={classes.smleftGrid}>

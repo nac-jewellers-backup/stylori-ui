@@ -99,7 +99,7 @@ class HomeStylori extends React.Component {
 
                     <Grid item xs={12} alignItems="center">
                         <Hidden smDown>
-                            {homePageStylori[0].carouselTopSetting.arrowsImg && <>
+                            {homePageStylori.carouselTopSetting.arrowsImg && <>
                                 <Grid onClick={this.previous} className={"imagePrevios"}>
                                 </Grid>
                                 <Grid onClick={this.next} className={"imagenext"}>
@@ -107,7 +107,7 @@ class HomeStylori extends React.Component {
                             </>
                             }
                         </Hidden >
-                        <Slideshow sliderRef={this.slider} fadeImages={homePageStylori[1].fadeImages} dataCarousel={homePageStylori[0].carouselTopSetting} imgClass={`classforimage`} />
+                        <Slideshow sliderRef={this.slider} fadeImages={homePageStylori.fadeImages} dataCarousel={homePageStylori.carouselTopSetting} imgClass={`classforimage`} />
                     </Grid>
                     <Hidden mdUp>
                         <Grid container >
@@ -136,12 +136,12 @@ class HomeStylori extends React.Component {
 
                     <Grid Container className="GridConatiner">
                         <Grid item className="GridListImg">
-                            <GridList GridImage={homePageStylori[2].tileData} />
+                            <GridList GridImage={homePageStylori.tileData} />
                         </Grid>
                     </Grid>
-                    <Testimony dataCarousel={homePageStylori[3].datacaroTestimony} GridImage={homePageStylori[5].bangleGrid} carosolData={homePageStylori[4].testimonycarodata} />
+                    <Testimony dataCarousel={homePageStylori.datacaroTestimony} GridImage={homePageStylori.bangleGrid} carosolData={homePageStylori.testimonycarodata} />
                     <Hidden smDown>
-                        <Feedes fadeImages={homePageStylori[7].NewsContainer} dataCarousel={homePageStylori[6].NewsdataCarousel} />
+                        <Feedes fadeImages={homePageStylori.NewsContainer} dataCarousel={homePageStylori.NewsdataCarousel} />
                     </Hidden>
                     <Grid Container style={{ width: "100%" }}>
                         <Grid item className="selectionHead">
@@ -152,7 +152,7 @@ class HomeStylori extends React.Component {
                             <em className="rightImage"></em>
                         </Grid>
                     </Grid >
-                    <Stories dataCarousel={homePageStylori[8].carosolStories} carosolData={productsubHead} />
+                    <Stories dataCarousel={homePageStylori.carosolStories} carosolData={homePageStylori.carosolStoriesData} />
                     <Grid item xs={12} >
                         <Footer />
                     </Grid>
