@@ -20,6 +20,9 @@ const useStyles = makeStyles(theme => ({
         imagefulllong: {
             width: "100%",
         },
+        firstcolumn: {
+            padding: "0px 8px 0px 0px !important"
+        },
     },
     [theme.breakpoints.only("sm")]: {
         daisyday: {
@@ -35,7 +38,8 @@ const useStyles = makeStyles(theme => ({
         firstcolumn: {
             width: '53.12% !important',
             float: "left",
-            marginLeft: '2.66% !important'
+            marginLeft: '2.66% !important',
+            padding: "0px !important"
         },
         marginAuto: {
             padding: "0px 0px 0px 0px !important",
@@ -59,10 +63,10 @@ const useStyles = makeStyles(theme => ({
         height: "auto",
     },
     marginAuto: {
-        padding: "0px 0px 0px 16px"
+        padding: "0px 0px 0px 6px"
     },
     firstcolumn: {
-        padding: "0px 0px 0px 0px"
+        padding: "0px 8px 0px 0px"
     },
     [theme.breakpoints.up("lg")]: {
         gridList: {

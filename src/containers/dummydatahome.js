@@ -19,23 +19,23 @@ export const homePageStylori = {
     ],
     "tileData": [
         {
-            img: "https://assets-cdn.stylori.com/170x85/images/homepage/Stylori-ring-tile.jpg",
+            img: "https://assets-cdn.stylori.com/images/homepage/Stylori-ring-tile.jpg",
             navigateUrl: "https://www.stylori.com/rings-jewellery?sort=latest",
         },
         {
-            img: "https://assets-cdn.stylori.com/80x80/images/homepage/276X276 PIXELS MANGO COLLECTIONS TILE-01 (1).jpg",
+            img: "https://assets-cdn.stylori.com/images/homepage/276X276 PIXELS MANGO COLLECTIONS TILE-01 (1).jpg",
             navigateUrl: "",
         },
         {
-            img: "https://assets-cdn.stylori.com/80x80/images/homepage/Hallo Collection_Website-01.jpg",
+            img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTpZO7VW7iqYr7r5WurRxOq_sUh-BN5ziaOTQYFWz0BgHbyviMc5A6vsCoN3LH7vn-qu-LY1gxrFFQeLjDH6sinONcmQbYVyROgiCL3wjnHXcCniBLon9dM&usqp=CAc",
             navigateUrl: "",
         },
         {
-            img: "https://assets-cdn.stylori.com/170x85/images/homepage/Stylori_ Daisy Days.jpg",
+            img: "https://assets-cdn.stylori.com/images/homepage/Stylori_ Daisy Days.jpg",
             navigateUrl: "",
         },
         {
-            img: "https://assets-cdn.stylori.com/276x567/images/homepage/blush 3.jpg",
+            img: "https://assets-cdn.stylori.com/images/homepage/blush 3.jpg",
             navigateUrl: "",
         },
     ],
@@ -50,7 +50,7 @@ export const homePageStylori = {
     "testimonycarodata": [
         {
             imageTitle: "1 Gm Lakshmi Gold Coin - 24 K",
-            img: "https://assets-cdn.stylori.com/110x110/images/product/SGC020/SGC020-1Y.jpg",
+            img: "https://assets-cdn.stylori.com/200x200/images/product/SGC020/SGC020-1Y.jpg",
             navigateUrl: "https://www.stylori.com/pendants-jewellery?sort=latest",
             content: "Wowwww it's a great experience with stylori. Specially thanks to Bushra from customer service who help me to find a best product with detail explanation on each and every point of product. ",
             name: "Rajesh Tiwari",
@@ -94,23 +94,23 @@ export const homePageStylori = {
     ],
     "bangleGrid": [
         {
-            img: "https://assets-cdn.stylori.com/310x635/images/homepage/PendantVertical.png",
+            img: "https://assets-cdn.stylori.com/images/homepage/PendantVertical.png",
             navigateUrl: "https://www.stylori.com/pendants-jewellery?sort=latest",
         },
         {
-            img: "https://assets-cdn.stylori.com/199x199/images/homepage/BangleSquare.png",
+            img: "https://assets-cdn.stylori.com/images/homepage/BangleSquare.png",
             navigateUrl: "",
         },
         {
-            img: "https://assets-cdn.stylori.com/408x204/images/homepage/EarringRectangle.png",
+            img: "https://assets-cdn.stylori.com/images/homepage/EarringRectangle.png",
             navigateUrl: "",
         },
         {
-            img: "https://assets-cdn.stylori.com/408x204/images/homepage/RingRectangle.png",
+            img: "https://assets-cdn.stylori.com/images/homepage/RingRectangle.png",
             navigateUrl: "",
         },
         {
-            img: "https://assets-cdn.stylori.com/199x199/images/homepage/nosepinSquare.png",
+            img: "https://assets-cdn.stylori.com/images/homepage/nosepinSquare.png",
             navigateUrl: "",
         },
     ],

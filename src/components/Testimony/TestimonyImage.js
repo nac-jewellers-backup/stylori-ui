@@ -130,13 +130,13 @@ export default function ImageGridList(props) {
                             </Grid>
                         </Grid>
                         <Grid container className={classes.lazyload2}>
-                            <Grid item style={{ width: 'calc(50% - 5px) !important' }}>
+                            <Grid md={6} sm={6} xs={6} item style={{ width: 'calc(50% - 5px) !important',padding:"0px 4px 0px 0px" }}>
                                 <a href={props.GridImage[3].navigateUrl}>
                                     <img className={classes.lazyload} alt="addSection" src={props.GridImage[1].img} />
                                 </a>
                             </Grid>
 
-                            <Grid item style={{ width: 'calc(50% - 5px) !important', paddingLeft: "9px" }}>
+                            <Grid md={6} sm={6} xs={6} item style={{ width: 'calc(50% - 5px) !important',padding:"0px 0px 0px 4px" }}>
                                 <a href={props.GridImage[4].navigateUrl}>
                                     <img className={classes.lazyload} alt="addSection" src={props.GridImage[4].img} />
                                 </a>
