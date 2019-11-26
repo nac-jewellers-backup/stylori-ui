@@ -9,6 +9,8 @@ const Addressforms = () => {
     let lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
     let lgn1 = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
     let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
+    let value11 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : {}
+    let value12 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : {}
     var cont = localStorage.getItem('true') ? localStorage.getItem('true') : ""
     let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : {}
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
@@ -128,7 +130,8 @@ const Addressforms = () => {
         }
     };
     const redirectForm = (event) => {
-        value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
+        value11 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : {}
+        value12 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : {}
         lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
         if (Object.keys(lgn).length > 0) {
             lgn = {
@@ -136,8 +139,14 @@ const Addressforms = () => {
                 addressTwo: lgn1 ? lgn1 : lgn
             }
         }
+        // if (Object.keys(value11&&value12).length > 0) {
+            value11 = {
+                addressOne: value11 ? value11 : {},
+                addressTwo: value12 ? value12 : {}
+            // }
+        }
         setValues({
-            ...value,
+            ...value11,
             ...lgn,
             // values,
             addrs: !values.addrs

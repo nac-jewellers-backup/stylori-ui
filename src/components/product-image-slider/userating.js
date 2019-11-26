@@ -16,6 +16,7 @@ const useRating = (props) => {
         product_sku: null,
         title: null,
         message: null,
+        username:null,
         errortext: {
             rate: "",
         },

@@ -29,6 +29,19 @@ class Addressdetails extends React.Component {
         const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
         let lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
         let lgn1 = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
+
+        //         const nmj = () => {
+        //             if (objj === objj1) {
+        //           objj['value'] = value
+        //       } else {
+        //           objj['addressOne'] = value.addressOne
+        //       }
+        // }
+
+        var objj = {};
+        objj['addressOne'] = value.addressOne
+        var objj1 = {};
+        objj1['addressTwo'] = value.addressTwo
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>
@@ -44,7 +57,10 @@ class Addressdetails extends React.Component {
                                 <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                 <span class="address-name">
                                     {aa ? aa + '.' : ""}
-                                    {lgn && lgn.firstname ? lgn.firstname : value && value.addressOne && value.addressOne.firstname}&nbsp;{lgn && lgn.lastname ? lgn.lastname : value && value.addressOne && value.addressOne.lastname}
+                                    {value && value.addressOne && value.addressOne.firstname || lgn && lgn.firstname ? value && value.addressOne && value.addressOne.firstname || lgn.firstname : value && value.addressTwo && value.addressTwo.firstname || value && value.addressOne && value.addressOne.firstname}
+
+                                    &nbsp;
+                                    {value && value.addressOne && value.addressOne.lastname || lgn && lgn.lastname ? value && value.addressOne && value.addressOne.lastname || lgn.lastname : value && value.addressTwo && value.addressTwo.lastname || value && value.addressOne && value.addressOne.lastname}
                                 </span>
                                 {/* <i onClick={() => {
                                     localStorage.setItem("isedit", 1)
@@ -62,7 +78,8 @@ class Addressdetails extends React.Component {
 
                                 {localStorage.getItem("valuessetdata") ? <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
                                     onClick={() => {
-                                        localStorage.removeItem('valuessetdata')
+                                        localStorage.removeItem("valuessetdata")
+                                        localStorage.setItem("valuessetdata", JSON.stringify(objj1))
                                         // localStorage.removeItem('vals')
                                         window.location.reload();
                                     }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> : ""}
@@ -73,14 +90,18 @@ class Addressdetails extends React.Component {
 
                             </h4>
                             <p className={`detils-p ${classes.normalfonts}`} >
-                                {lgn && lgn.addressline1 ? lgn.addressline1 : value && value.addressOne && value.addressOne.addressline1} <br />
-                                {lgn && lgn.city ? lgn.city : value && value.addressOne && value.addressOne.city} <br />
-                                {lgn && lgn.state ? lgn.state : value && value.addressOne && value.addressOne.state}-{lgn && lgn.pincode ? lgn.pincode : value && value.addressOne && value.addressOne.pincode} <br />IN
+                                {value && value.addressOne && value.addressOne.addressline1 || lgn && lgn.addressline1 ? value && value.addressOne && value.addressOne.addressline1 || lgn.addressline1 : value && value.addressTwo && value.addressTwo.addressline1 || value && value.addressOne && value.addressOne.addressline1}
+                                <br />
+                                {value && value.addressOne && value.addressOne.city || lgn && lgn.city ? value && value.addressOne && value.addressOne.city || lgn.city : value && value.addressTwo && value.addressTwo.city || value && value.addressOne && value.addressOne.city}
+                                <br />
+                                {value && value.addressOne && value.addressOne.state || lgn && lgn.state ? value && value.addressOne && value.addressOne.state || lgn.state : value && value.addressTwo && value.addressTwo.state || value && value.addressOne && value.addressOne.state}-
+                                {value && value.addressOne && value.addressOne.pincode || lgn && lgn.pincode ? value && value.addressOne && value.addressOne.pincode || lgn.pincode : value && value.addressTwo && value.addressTwo.pincode || value && value.addressOne && value.addressOne.pincode}
+                                <br />IN
                                 </p>
                             <div className="card-foo">
                                 <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                    +91 {lgn && lgn.contactNumber ? lgn && lgn.contactNumber : value && value.addressOne && value.addressOne.contactNumber} </span>
-                                <Button style={{ float: "right" }} className='apply-b' onClick={() => {
+                                    +91 {value && value.addressOne && value.addressOne.contactNumber || lgn && lgn.contactNumber ? value && value.addressOne && value.addressOne.contactNumber || lgn && lgn.contactNumber : value && value.addressTwo && value.addressTwo.contactNumber || value && value.addressOne && value.addressOne.contactNumber}
+                                </span> <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                     this.props.changevalue(3)
                                 }}>Select and  Review </Button>
                             </div>
@@ -104,12 +125,20 @@ class Addressdetails extends React.Component {
                                     </span>
                                     <i onClick={() => this.props.redirectForm()} style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                         class="fa fa-pencil-square-o"></i>
-                                    <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
+                                    {localStorage.getItem("valuessetdata") ?
+                                        <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
+                                            onClick={() => {
+                                                localStorage.removeItem("valuessetdata")
+                                                localStorage.setItem("valuessetdata", JSON.stringify(objj))
+                                                // localStorage.removeItem('vals')
+                                                window.location.reload();
+                                                // localStorage.getItem("valuessetdata")==={}?this.props.redirectForm():""
+                                            }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> : ""}
+                                    {localStorage.getItem("vals") ? <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
                                         onClick={() => {
-                                            localStorage.removeItem('valuessetdata')
-                                            // localStorage.removeItem('vals')
-                                            window.location.reload();
-                                        }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
+                                            alert('Address already in use')
+                                        }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> : ""}
+
                                 </h4>
                                 <p className={`detils-p ${classes.normalfonts}`} >
                                     {lgn1 && lgn1.addressline1 ? lgn1 && lgn1.addressline1 : lgn && lgn.addressline1}{value && value.addressTwo && value.addressTwo.addressline1 ? value && value.addressTwo && value.addressTwo.addressline1 : value && value.addressOne && value.addressOne.addressline1}

@@ -36,7 +36,7 @@ const useRegister = (changePanel, props) => {
     // const { loading: viewedloading, error: viewederror, data: vieweddata, makeRequest: viewmakeRequest } = useGraphql(youRecentlyViewed, () => { }, {}, false);
     const { ProductDetailCtx: { registerurl } } = React.useContext(ProductDetailContext);
     debugger
-    alert(JSON.stringify(registerurl))
+    // alert(JSON.stringify(registerurl))
     useEffect(() => {
         // if(data.message=="Email ID Already Exist")
         var v = data.user_profile_id ? data.user_profile_id : ""

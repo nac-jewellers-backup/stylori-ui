@@ -59,7 +59,9 @@ class CartCardCheck extends React.Component {
         const { breadcrumsdata, cartsubdata } = this.props.data;
         let email = localStorage.getItem("email") ? localStorage.getItem("email") : '';
         let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : {};
+        var value1 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : {};
         var lgn = localStorage.getItem("vals") ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
+        var lgn1 = localStorage.getItem("vals") ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
         return (
             <>
                 <CustomSeparator
@@ -99,11 +101,14 @@ class CartCardCheck extends React.Component {
                                 <Typography className='text-chck'>Address Detail
 
                                  <div className="ch-d-vl">
-                                        {lgn && lgn.firstname ? lgn && lgn.firstname : value && value.firstname}
-                                        &nbsp;{lgn && lgn.addressline1 ? lgn && lgn.addressline1 : value && value.addressline1}
-                                        &nbsp;{lgn && lgn.city ? lgn && lgn.city : value && value.city}
-                                        {lgn && lgn.state ? lgn && lgn.state : value && value.state}&nbsp;
-                                        {lgn && lgn.pincode ? lgn && lgn.pincode : value && value.pincode}
+                                        {lgn && lgn.firstname ? lgn1 && lgn1.firstname || lgn1 && lgn1.firstname : value && value.firstname || value1 && value1.firstname}
+                                        &nbsp;
+                                        {lgn && lgn.lastname ? lgn1 && lgn1.lastname || lgn1 && lgn1.lastname : value && value.lastname || value1 && value1.lastname}
+                                        &nbsp;
+                                        {lgn && lgn.addressline1 ? lgn && lgn.addressline1 || lgn1 && lgn1.addressline1 : value && value.addressline1 || value1 && value1.addressline1}
+                                        &nbsp;{lgn && lgn.city ? lgn && lgn.city || lgn1 && lgn1.city : value && value.city || value1 && value1.city}
+                                        {lgn && lgn.state ? lgn && lgn.state || lgn1 && lgn1.state : value && value.state || value1 && value1.state}&nbsp;
+                                        {lgn && lgn.pincode ? lgn && lgn.pincode || lgn1 && lgn1.pincode : value && value.pincode || value1 && value1.pincode}
                                     </div>
 
                                 </Typography>

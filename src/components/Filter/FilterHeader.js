@@ -111,7 +111,7 @@ class Component extends React.Component {
                                     className="header-chips-text"
                                     key={data.key}
                                     label={data.label}
-                                    onClick={this.props.click}
+                                    onClick={() =>this.props.click(data.label)}
                                     avatar={data.label ?
                                         <i className="search-choice-close" class="fa fa-times"></i>
                                         : ""}
