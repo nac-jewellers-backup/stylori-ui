@@ -23,7 +23,7 @@ const cacheCheck = async() =>{
   if(local_storage && local_storage.length>0){
     debugger
     const condition_async = async() =>{
-      request.open('GET', 'https://uat.stylori.net/meta.json', true);
+      request.open('GET', '/meta.json', true);
       request.send(null);
       request.onreadystatechange = async function () {
           // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
@@ -50,7 +50,7 @@ const cacheCheck = async() =>{
   else{
     debugger
 const condition_async = async() =>{
-  request.open('GET', 'https://uat.stylori.net/meta.json', true);
+  request.open('GET', '/meta.json', true);
   request.send(null);
   request.onreadystatechange = async function () {
       // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
