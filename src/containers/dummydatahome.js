@@ -6,16 +6,25 @@ export const homePageStylori = {
     "carouselTopSetting": {
         dots: false,
         infinite: true,
-        autoplay: 7000,
+        autoplay: false,
         speed: 1000,
         fade: false,
         arrows: false,
         arrowsImg: true,
     },
-    "fadeImages": [
-        FlowerDimon,
-        closeheart,
-        nosepin
+    "fadeImages": [{
+        img: FlowerDimon,
+        navigateUrl: "https://www.stylori.com/rings-jewellery?sort=latest",
+    },
+    {
+        img: closeheart,
+        navigateUrl: "https://www.stylori.com/rings-jewellery?sort=latest",
+    },
+    {
+        img: nosepin,
+        navigateUrl: "https://www.stylori.com/rings-jewellery?sort=latest",
+    },
+
     ],
     "tileData": [
         {

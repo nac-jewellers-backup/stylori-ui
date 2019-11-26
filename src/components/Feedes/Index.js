@@ -11,7 +11,6 @@ import Avatar from '@material-ui/core/Avatar';
 const useStyles = makeStyles(theme => ({
     containItems: {
         padding: "0px 15px",
-        margin: "0px 12px",
         width: "100%"
     },
     [theme.breakpoints.up("lg")]: {
