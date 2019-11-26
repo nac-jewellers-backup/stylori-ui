@@ -29,11 +29,12 @@ const cacheCheck = async() =>{
           // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
             
              var type = await request.getResponseHeader('Content-Type');
-              console.log('json',type.indexOf("json") !== 1,typeof request.responseText )
+             
               debugger
               if (type.indexOf("json") !== 1) {
                 var obj =await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
                 console.info('objectlocal_storage, obj.version', local_storage, obj.version)
+                console.log('json',type.indexOf("json") !== 1,typeof request.responseText, request.responseText, obj )
                 alert(local_storage, obj.version)
                  if(obj !== '' && Number(local_storage) !== Number(obj.version)){
                 localStorage.setItem('version', obj.version)
@@ -55,13 +56,14 @@ const condition_async = async() =>{
       // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
         
          var type = await request.getResponseHeader('Content-Type');
-          console.log('json',type.indexOf("json") !== 1,typeof request.responseText )
           debugger
           alert(request.responseText)
+
           if (type.indexOf("json") !== 1) {
              var obj =await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
+             console.log('json',type.indexOf("json") !== 1,typeof request.responseText, request.responseText, obj )
             if( obj !== '') localStorage.setItem('version', obj.version)
-            else localStorage.setItem('version', 0)
+            
 
           }
       // }
