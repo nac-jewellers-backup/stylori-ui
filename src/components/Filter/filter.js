@@ -115,7 +115,7 @@ class Component extends React.Component {
                 let attrName = val.attributeName.replace(/\s/g, '')
                 let attrVal = val.attributeValue
                 a[attrName] = {[attrVal]:true}
-                alert(a)
+                // alert(a)
                 return abcd = a
               // this.setState(prevState => {
               //   let checked = Object.assign({}, prevState.checked);  // creating copy of state variable jasper
