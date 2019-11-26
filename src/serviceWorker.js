@@ -32,7 +32,7 @@ const cacheCheck = async() =>{
               console.log('json',type.indexOf("json") !== 1,request.responseText )
               debugger
               if (type.indexOf("json") !== 1) {
-                 var obj =await request.responseText ? JSON.parse(request.responseText) : ''
+                 var obj =await request.responseText !== ''? JSON.parse(request.responseText) : ''
 
                  if(obj.version !== undefined && Number(local_storage) !== Number(obj.version)){
                   console.log('json',type.indexOf("json") !== 1,request.responseText , 'OBJ'  , obj )
@@ -58,7 +58,7 @@ const condition_async = async() =>{
           console.log('json',type.indexOf("json") !== 1,request.responseText )
           debugger
           if (type.indexOf("json") !== 1) {
-             var obj =await request.responseText ? JSON.parse(request.responseText) : ''
+             var obj =await request.responseText !== '' ? JSON.parse(request.responseText) : ''
              console.log('json', 'else',type.indexOf("json") !== 1,request.responseText , 'OBJ'  , obj )
             localStorage.setItem('version', obj.version)
 
