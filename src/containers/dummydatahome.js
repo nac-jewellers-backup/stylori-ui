@@ -63,7 +63,8 @@ export const homePageStylori = {
             navigateUrl: "https://www.stylori.com/pendants-jewellery?sort=latest",
             content: "Wowwww it's a great experience with stylori. Specially thanks to Bushra from customer service who help me to find a best product with detail explanation on each and every point of product. ",
             name: "Rajesh Tiwari",
-            country: "India"
+            country: "India",
+            price: "4472"
         },
         {
             imageTitle: "1 Gm Lakshmi Gold Coin - 24 K",
@@ -71,7 +72,8 @@ export const homePageStylori = {
             navigateUrl: "https://www.stylori.com/pendants-jewellery?sort=latest",
             content: "Wowwww it's a great experience with stylori. Specially thanks to Bushra from customer service who help me to find a best product with detail explanation on each and every point of product. ",
             name: "Rajesh Tiwari",
-            country: "India"
+            country: "India",
+            price: "4472"
         },
         {
             imageTitle: "1 Gm Lakshmi Gold Coin - 24 K",
