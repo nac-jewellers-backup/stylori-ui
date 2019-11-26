@@ -34,8 +34,6 @@ export const useVerifyOtp = (changePanel) => {
         if (verifiedMail) {
             var user_id = edata.user.id;
             localStorage.setItem("true", false)
-            // const email=
-            debugger
             const mail = email ? email.email : ""
             setGlobalCtx(
                 localStorage.setItem("isedit", 1),

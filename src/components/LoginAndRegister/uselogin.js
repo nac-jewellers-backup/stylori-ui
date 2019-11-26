@@ -76,7 +76,7 @@ const useLogin = (changePanel, props) => {
         debugger
         if (values.email === null) {
             values['error']['emerr'] = true
-            values['errortext']['emerr'] = 'Mail is required'
+            values['errortext']['emerr'] = 'Email is required'
             setValues({
                 ...values,
                 values,

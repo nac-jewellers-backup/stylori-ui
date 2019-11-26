@@ -96,21 +96,22 @@ export const CheckForCod = `query CheckForCod($pincode:String) {
 }
 `
 
-export const CUSTOMERREVIEWS = `query MyQuery($productSku:String) {
-  allCustomerReviews(condition: {productSku:$productSku},first:5) {
+export const CUSTOMERREVIEWS = `query MyQuery($productSku: String) {
+  allCustomerReviews(condition: {productSku: $productSku}, last: 5) {
     nodes {
       message
       title
       rating
     }
   }
-}`
+}
+`
 
 export const ADDRESSDETAILS = `
 query MyQuery($id: UUID) {
   allUserAddresses(first: 1, condition: {id: $id}) {
     nodes {
-      addressline1
+      addressline1 
       addressline2
       id
       city

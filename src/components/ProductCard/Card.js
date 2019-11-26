@@ -20,13 +20,12 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 export const ImgMediaCard = (props) => {
-  debugger
   const { ProductDetailCtx,setFilters } = React.useContext(ProductDetailContext);
   const loc = window.location.search
   
   return <Component filters={ProductDetailCtx.filters} setFilters={setFilters} {...props} />
 }
-// const MyImage = ( props, callmouseover, callmouseout, cardstate ) => {  debugger
+// const MyImage = ( props, callmouseover, callmouseout, cardstate ) => {  
 //   return(
 
 //   <LazyLoadImage
@@ -286,7 +285,7 @@ const renderImages = (props, cardstate) => {
 }
 
  function Component(props) {
-   debugger
+   
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
     hovered: false,
