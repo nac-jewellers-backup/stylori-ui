@@ -31,13 +31,10 @@ const cacheCheck = async() =>{
              var type = await request.getResponseHeader('Content-Type');
               console.log('json',type.indexOf("json") !== 1,request.responseText )
               debugger
-              var obj =await request.responseText !== ''? request.responseText : ''
-              if (type.indexOf("json") !== 1 && request.responseText && request.responseText !== undefined) {
-               
-
-                 if(obj.version !== undefined && Number(local_storage) !== Number(obj.version)){
-                  console.log('json',type.indexOf("json") !== 1,request.responseText , 'OBJ'  , obj )
-                localStorage.setItem('version', JSON.parse(obj).version)
+              if (type.indexOf("json") !== 1) {
+                var obj =await request.responseText && request.responseText !== '' && typeof JSON.parse(request.responseText) ? JSON.parse(request.responseText) : ''
+                 if(obj !== '' && Number(local_storage) !== Number(obj.version)){
+                localStorage.setItem('version', obj.version)
                 window.location.reload()
                  }
     
@@ -56,13 +53,12 @@ const condition_async = async() =>{
       // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
         
          var type = await request.getResponseHeader('Content-Type');
-          console.log('json',type.indexOf("json") !== 1, request.responseText )
+          console.log('json',type.indexOf("json") !== 1,request.responseText )
           debugger
-          var obj =await request.responseText !== '' ? request.responseText : ''
-          if (type.indexOf("json") !== 1 && request.responseText && request.responseText !== '') {
-            
-             console.log('json', 'else',type.indexOf("json") !== 1,request.responseText , 'OBJ'  , obj )
-             localStorage.setItem('version', JSON.parse(obj).version)
+          if (type.indexOf("json") !== 1) {
+             var obj =await request.responseText && request.responseText !== '' && typeof JSON.parse(request.responseText) ? JSON.parse(request.responseText) : ''
+            if( obj !== '') localStorage.setItem('version', obj.version)
+            else localStorage.setItem('version', 0)
 
           }
       // }
