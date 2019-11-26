@@ -6,7 +6,6 @@ const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
         margin: "auto",
-        padding: "0px 15px 0px 15px",
         backgroundColor: "#fff",
     },
     [theme.breakpoints.up('lg')]: {
@@ -14,7 +13,6 @@ const useStyles = makeStyles(theme => ({
             display: 'flex',
             width: "1170px !important",
             margin: "auto",
-            padding: "0px 15px 0px 15px",
             backgroundColor: "#fff",
         }
     },
@@ -42,7 +40,8 @@ const useStyles = makeStyles(theme => ({
         float: 'left',
         marginRight: '1.25% !important',
         marginLeft: '2.66% !important'
-    }, secondcolumn: {
+    },
+    secondcolumn: {
         width: '53.12% !important',
         float: 'right',
         marginRight: '2.66% !important'
@@ -130,13 +129,13 @@ export default function ImageGridList(props) {
                             </Grid>
                         </Grid>
                         <Grid container className={classes.lazyload2}>
-                            <Grid md={6} sm={6} xs={6} item style={{ width: 'calc(50% - 5px) !important',padding:"0px 4px 0px 0px" }}>
+                            <Grid md={6} sm={6} xs={6} item style={{ width: 'calc(50% - 5px) !important', padding: "0px 4px 0px 0px" }}>
                                 <a href={props.GridImage[3].navigateUrl}>
                                     <img className={classes.lazyload} alt="addSection" src={props.GridImage[1].img} />
                                 </a>
                             </Grid>
 
-                            <Grid md={6} sm={6} xs={6} item style={{ width: 'calc(50% - 5px) !important',padding:"0px 0px 0px 4px" }}>
+                            <Grid md={6} sm={6} xs={6} item style={{ width: 'calc(50% - 5px) !important', padding: "0px 0px 0px 4px" }}>
                                 <a href={props.GridImage[4].navigateUrl}>
                                     <img className={classes.lazyload} alt="addSection" src={props.GridImage[4].img} />
                                 </a>

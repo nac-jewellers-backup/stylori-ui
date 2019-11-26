@@ -17,6 +17,21 @@ const useStyles = makeStyles(theme => ({
             padding: "0px 15px 10px 15px"
         }
     },
+    [theme.breakpoints.only('xs')]: {
+        imgcoinsm: {
+            verticalAlign: 'middle',
+            width: "157px !important",
+            height: "157px !important"
+        },
+    },
+    [theme.breakpoints.only('sm')]: {
+        imgcoinsm: {
+            verticalAlign: 'middle',
+            width: "144px !important",
+            height: "144px !important"
+        },
+    },
+
     [theme.breakpoints.down('sm')]: {
         middlecontainersm: {
             marginLeft: "0 !important",
@@ -40,6 +55,9 @@ const useStyles = makeStyles(theme => ({
             borderFadius: '0px',
             padding: '7px 15px',
             borderColor: '#ccc',
+            '&:hover': {
+                backgroundColor: '#454f7a'
+            }
         },
     },
     [theme.breakpoints.up('sm')]: {
@@ -137,15 +155,14 @@ const useStyles = makeStyles(theme => ({
         padding: '5px',
         marginTop: '15px',
         marginBottom: '15px',
-        verticalAlign: 'middle'
+        verticalAlign: 'middle',
+        width: "calc(100% - 20px) !important",
+        marginLeft: "4px"
     },
     imgcoinsm: {
-        boxShadow: 'none !important',
-        // float: 'left',
-        // padding: '5px',
-        // marginTop: '15px',
-        // marginBottom: '15px',
-        verticalAlign: 'middle'
+        verticalAlign: 'middle',
+        width: "110px",
+        height: "110px"
     },
     Button: {
         fontSize: '12px',
@@ -156,6 +173,9 @@ const useStyles = makeStyles(theme => ({
         borderFadius: '0px',
         padding: '7px 15px',
         borderColor: '#ccc',
+        '&:hover': {
+            backgroundColor: '#454f7a'
+        }
     },
     exclIcon: {
         backgroundImage: 'url(https://alpha-assets.stylori.com/images/static/home/Testimonial_icons.png)',
@@ -268,11 +288,15 @@ export default function ImageGridList(props) {
                                                     <Typography className={classes.testimonyTitle}>
                                                         {val.imageTitle}
                                                     </Typography>
+
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
-                                                        <img className={classes.imgcoin} src={val.img} />
+                                                        <Slideshow>
+                                                            <img className={classes.imgcoin} src={val.img} />
+                                                        </Slideshow>
+
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
-                                                        <span>{val.price}</span>
+                                                        <Typography variant="body2" style={{ color: "#394578" }}> {val.price}</Typography>
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
                                                         <a style={{ textDecoration: 'none' }} href={val.navigateUrl}><Button type="button" className={classes.Button}>Shop Now</Button></a>
@@ -323,7 +347,9 @@ export default function ImageGridList(props) {
                                                     </Typography>
                                                     <Grid container>
                                                         <Grid item xs={6} sm={6} style={{ textAlign: 'center' }}>
-                                                            <img className={classes.imgcoinsm} src={val.img} />
+                                                            <Grid>
+                                                                <img className={classes.imgcoinsm} src={val.img} />
+                                                            </Grid>
                                                         </Grid>
                                                         <Grid item xs={6} sm={6} className={classes.buttonTypo}>
                                                             <Grid><Typography> {val.price}</Typography></Grid>

@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         backgroundColor: "#fff",
         width: "100%",
-        padding: "0px 22px 0px 22px"
+        padding: "0px 15px 0px 15px"
 
 
     },
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
             width: "1170px !important",
             margin: "auto",
             backgroundColor: "#fff",
-            padding: "0px 22px 0px 22px"
+            padding: "0px 15px 0px 15px"
 
         }
     },
