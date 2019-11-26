@@ -132,7 +132,7 @@ class Component extends React.Component {
             });
         }
         // this.handleChange(()=>{}, true, ()=>{}, {}, paramsfilter)
-        alert(abcd)
+        // alert(abcd)
       }
       filters_checked()
      
