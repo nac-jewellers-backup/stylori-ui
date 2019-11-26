@@ -11,7 +11,7 @@
 // opt-in, read https://bit.ly/CRA-PWA
 
 const cacheCheck = async() =>{
- 
+ debugger
  
     // read text from URL location
     var request = new XMLHttpRequest();
@@ -21,41 +21,49 @@ const cacheCheck = async() =>{
   
   var local_storage = localStorage.getItem('version')
   if(local_storage && local_storage.length>0){
-    request.open('GET', '/meta.json', true);
-    request.send(null);
-    request.onreadystatechange = function () {
-        if (request.readyState === 4 && request.status === 200) {
-            var type = request.getResponseHeader('Content-Type');
-            if (type.indexOf("json") !== 1) {
-             
-              var obj = request.responseText
-              console.log('json',type.indexOf("json") !== 1, Number(local_storage), Number(obj.version))
-                if(Number(local_storage) !== Number(obj.version)){
-                  
-                  localStorage.setItem('version', Number(obj.version))
-                  // window.location.reload()
-                }
-                return request.responseText;
-            }
-        }
+    debugger
+    const condition_async = async() =>{
+      request.open('GET', '/meta.json', true);
+      request.send(null);
+      request.onreadystatechange = async function () {
+          // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
+            
+             var type = await request.getResponseHeader('Content-Type');
+              console.log('json',type.indexOf("json") !== 1,request.responseText )
+              debugger
+              if (type.indexOf("json") !== 1) {
+                 var obj =await request.responseText ? JSON.parse(request.responseText) : ''
+                 if(obj.version !== undefined && Number(local_storage) !== Number(obj.version)){
+                localStorage.setItem('version', obj.version)
+                window.location.reload()
+                 }
+    
+              }
+          // }
+      }
     }
+    condition_async()
   }
   else{
-    request.open('GET', '/meta.json', true);
-    request.send(null);
-    request.onreadystatechange = function () {
-        if (request.readyState === 4 && request.status === 200) {
-          
-            var type = request.getResponseHeader('Content-Type');
-            console.log('json',type.indexOf("json") !== 1,request.responseText )
-            if (type.indexOf("json") !== 1) {
-              var obj = request.responseText
-              localStorage.setItem('version', Number(obj.version))
+    debugger
+const condition_async = async() =>{
+  request.open('GET', '/meta.json', true);
+  request.send(null);
+  request.onreadystatechange = async function () {
+      // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
+        
+         var type = await request.getResponseHeader('Content-Type');
+          console.log('json',type.indexOf("json") !== 1,request.responseText )
+          debugger
+          if (type.indexOf("json") !== 1) {
+             var obj =await request.responseText ? JSON.parse(request.responseText) : ''
+            localStorage.setItem('version', obj.version)
 
-            }
-        }
-    }
-  
+          }
+      // }
+  }
+}
+condition_async()
   }
 }
 const isLocalhost = Boolean(
@@ -68,6 +76,8 @@ const isLocalhost = Boolean(
     )
 );
 cacheCheck()
+// setTimeout(function(){ cacheCheck(); }, 20000);
+// setInterval(function(){ cacheCheck(); }, 5000);
 export async function register(config) {
   await requestNotificationPermission();
 
