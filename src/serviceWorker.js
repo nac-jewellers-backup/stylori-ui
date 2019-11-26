@@ -37,7 +37,7 @@ const cacheCheck = async() =>{
                 console.log('jsonjsonjson', Number(local_storage) !== Number(obj.version) )
                 // alert(local_storage, obj.version)
                  if(obj !== '' && Number(local_storage) !== Number(obj.version)){
-                localStorage.setItem('version', JSON.parse(obj).version)
+                localStorage.setItem('version', obj.version)
               
                 window.location.reload()
                  }
@@ -63,7 +63,7 @@ const condition_async = async() =>{
           if (type.indexOf("json") !== 1) {
              var obj =await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
              console.log('json',type.indexOf("json") !== 1,typeof request.responseText, request.responseText, obj )
-            if( obj !== '') localStorage.setItem('version', JSON.parse(obj).version)
+            if( obj !== '') localStorage.setItem('version', obj.version)
             
 
           }
