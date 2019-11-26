@@ -32,12 +32,13 @@ const cacheCheck = async() =>{
              
               debugger
               if (type.indexOf("json") !== 1) {
-                var obj =await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? request.responseText : ''
+                var obj =await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
                 console.info('objectlocal_storage, obj.version', local_storage, obj.version)
-                console.log('json',type.indexOf("json") !== 1,typeof request.responseText, request.responseText, obj )
+                console.log('jsonjsonjson', Number(local_storage) !== Number(obj.version) )
                 // alert(local_storage, obj.version)
                  if(obj !== '' && Number(local_storage) !== Number(obj.version)){
                 localStorage.setItem('version', JSON.parse(obj).version)
+              
                 window.location.reload()
                  }
     
@@ -60,7 +61,7 @@ const condition_async = async() =>{
           // alert(request.responseText)
 
           if (type.indexOf("json") !== 1) {
-             var obj =await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? request.responseText : ''
+             var obj =await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
              console.log('json',type.indexOf("json") !== 1,typeof request.responseText, request.responseText, obj )
             if( obj !== '') localStorage.setItem('version', JSON.parse(obj).version)
             
