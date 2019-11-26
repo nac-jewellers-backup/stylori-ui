@@ -60,36 +60,154 @@ const Provider = (props) => {
     //     if (sort) window.location.search = `sort=${sort.values}`
     // }, [sort])
 
-    useEffect(() => {
-        if (window.location.search) {
+    // useEffect(() => {
+    //     if (window.location.search) {
 
-            let urlSearchparams = window.location.search;
+    //         let urlSearchparams = window.location.search;
 
-            let urlSearchparamsDecode = decodeURI(urlSearchparams)
+    //         let urlSearchparamsDecode = decodeURI(urlSearchparams)
 
-            let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
+    //         let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
 
-            let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
+    //         let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
 
-            let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
-            // let 
-            let mapUrlParamsSplitEqual = urlSplitparamsEqual();
+    //         let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
+    //         // let 
+    //         let mapUrlParamsSplitEqual = urlSplitparamsEqual();
 
-            mapUrlParamsSplitEqual.map(val => {
+    //         mapUrlParamsSplitEqual.map(val => {
 
-                let obj = {}
-                obj[val[1]] = true
-                let value = val[0]
-                filters[value] = obj
-                console.log('{[val[0]]:obj}', { value: obj })
-                setFilters(filters)
-            })
+    //             let obj = {}
+    //             obj[val[1]] = true
+    //             let value = val[0]
+    //             filters[value] = obj
+    //             console.log('{[val[0]]:obj}', { value: obj })
+    //             setFilters(filters)
+    //         })
 
 
-            //   this.handleChange(()=>{} ,true, ()=>{}, mapUrlParamsSplitEqual)
+    //         //   this.handleChange(()=>{} ,true, ()=>{}, mapUrlParamsSplitEqual)
 
+    //     }
+    // }, [])
+    const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/filterlist', {},false, {})
+    useEffect( () => {
+        
+        const fetch_data = async () =>{
+            var len;
+        //    if(window.location.pathname === "/jewellery"){
+            
+
+               // props.location.push(window.location.pathname)
+               matchPath(window.location.pathname, {
+                   path: ":listingpage",
+       
+               })
+                let pathnameSplit = window.location.pathname.split('/')
+                const splitHiphen = () => {if(pathnameSplit[1].indexOf('-')){
+                    return pathnameSplit[1].split('-')
+                    }}
+            
+                    
+                    const conditionfiltersSeo = { seofilter: { seoUrl: { in: splitHiphen() } } }
+                    // makeRequestSeo(conditionfiltersSeo)
+                    function status(response) {
+                        
+                        if (response.status >= 200 && response.status < 300) {
+                          return Promise.resolve(response)
+                        } else {
+                          return Promise.reject(new Error(response.statusText))
+                        }
+                      }
+                      
+                      function json(response) {
+                          
+                        return response.json()
+                      }
+                      
+        
+        
+                     await fetch(uri, {
+                         
+                        method: 'post',
+                        // body: {query:seoUrlResult,variables:splitHiphen()}
+                        // body: JSON.stringify({query:seoUrlResult}),
+        
+                        headers: {
+                            'Content-Type': 'application/json',
+                          },
+                          body: JSON.stringify({
+                            query:seoUrlResult,
+                            variables: {...conditionfiltersSeo},
+                          }),
+                    
+        
+                      })
+                      .then(status)
+                      .then(json)
+                      .then(async function(data) {
+                        
+
+                        //   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
+                        console.log('Request succeeded with JSON response', data);
+                        var a = {}
+                        var paramsfilter = (Object.entries(data).length !== 0 && data.constructor === Object && data.data.allSeoUrlPriorities) && data.data.allSeoUrlPriorities.nodes.map(val => {
+                           
+                            let attrName = val.attributeName.replace(/\s/g, '')
+                            let attrVal = val.attributeValue
+                            filters[attrName] = {[attrVal]:true}
+                          
+                            setFilters(filters)
+                        
+                            a[val.attributeName.replace(/\s/g, '')] = val.attributeValue
+                            return a
+            
+                        })
+                        Object.keys(filters).map(fk => {
+                            const filter = filters[fk];
+                            const fv = Object.keys(filter);
+                            if (fv.length > 0) {
+                                if (filter[fv[0]]) {
+                                    const qt = `${fk}=${fv[0]}`;
+                                    const qtf = {}
+                                    qtf[`${fk}`] = `${fv[0]}`
+                                    // queries.push(qt);
+                                    qtfArr.push(qtf);
+            
+                                }
+            
+                            }
+                        })
+                        console.log('qtf', qtfArr)
+                        var k = qtfArr.map(val => Object.values(val));
+                        var keyy = qtfArr.map(val => Object.keys(val))
+                        console.log(filters)
+                        len = keyy.length
+                        while (len--) {
+                            var key = keyy[len]
+                            var toLowerCase = key[0].toLowerCase()
+                            newObj[toLowerCase] = k[len][0]
+                        }
+                        
+                        await makeFetch(newObj)
+                        //  seoUrlFetch()
+                       //  test =filters
+                        // setSeoComponentMount(data)
+                        var abcd = data
+                        
+                      }).catch(function(error) {
+                          
+                        console.log('Request failed', error, uri, status.code );
+                       //  setSeoComponentMount(data)
+                      });
+        
+       //  alert(JSON.stringify(test))
+                      
+        
+            // }
         }
-    }, [])
+        fetch_data()
+            }, [])
 
 
 
@@ -155,7 +273,7 @@ const Provider = (props) => {
 
 
 
-    const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/filterlist', {}, {})
+    
     // {transSkuListsByProductId: {some: {discountPrice: {greaterThan: 1.5}}}}
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTLIST, () => { }, {})
     // {filter:{transSkuListsByProductId:{every:{markupPrice:{  "greaterThanOrEqualTo":   20000,
@@ -165,8 +283,10 @@ const Provider = (props) => {
     console.info('dataResponsed', ntxdata)
     const seoUrlFetch = () => {
 
-        const conditionfiltersSeo = { seofilter: { seoUrl: { in: paramObjects(mappedFilters.seo_url) } } }
-        makeRequestSeo(conditionfiltersSeo)
+var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mappedFilters.seo_url : window.location.pathname.split('/')[1]  
+        const conditionfiltersSeo = { seofilter: { seoUrl: { in: paramObjects(path_name) } } }
+        var req = async() => {await makeRequestSeo(conditionfiltersSeo)}
+        req()
         console.log('paramObjects', paramObjects(mappedFilters.seo_url), DataSeoQuery, conditionfiltersSeo)
 
         console.log('DataSeoQuery', DataSeoQuery)
@@ -228,8 +348,9 @@ const Provider = (props) => {
             else {
                 variables = { ...conditionFilters,orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
             }
-
-            makeRequest(variables)
+            
+           var req = async() =>{await makeRequest(variables)}
+           req()
             console.log('came inside view moreproducts', filters)
 
         }
@@ -244,9 +365,10 @@ const Provider = (props) => {
 
 
     }
-    useEffect(() => { setMappedFilters(ntxdata) }, [ntxdata]);
+    useEffect(() => { setMappedFilters(ntxdata) }, [ntxdata, ntxerr, ntx]);
 
     useEffect(() => {
+        
         pathQueries();
         updateProductList();
 
@@ -257,6 +379,7 @@ const Provider = (props) => {
 
     }, [seoData, seoloading, seoError])
     useEffect(() => {
+        
         const mapped = productlist(data, CDN_URL);
         const newUpdatedList = filterLogic(dataArr, mapped);
         setDataArr(newUpdatedList);
@@ -313,7 +436,8 @@ const Provider = (props) => {
                     variables = { ...conditionFilters,orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
 
-                makeRequest(variables)
+                var req = async() =>{await makeRequest(variables)}
+                req()
             }
         }
     }
@@ -322,6 +446,7 @@ const Provider = (props) => {
     }, [seoData])
     var newObj = {}
     const updateFilters = async (filters) => {
+        
         setFilters(filters);
         // setloadingfilters(true)
         var len;
@@ -361,6 +486,7 @@ const Provider = (props) => {
             var toLowerCase = key[0].toLowerCase()
             newObj[toLowerCase] = k[len][0]
         }
+        
         await makeFetch(newObj);
         //    props.history.push({
         //     pathname: `/stylori${mappedFilters.seo_url   ?`/${mappedFilters.seo_url}` : '' }`,
@@ -410,6 +536,7 @@ const Provider = (props) => {
         }
     }, [sort])
     useEffect(() => {
+        
         if (paramObjects(mappedFilters.seo_url).length > 0) {
             setParamsAo(paramObjects(mappedFilters.seo_url))
         }

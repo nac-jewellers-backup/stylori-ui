@@ -19,13 +19,16 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import styles from './styles';
 import { FilterOptionsContext } from 'context'
-
+import { NetworkContext } from 'context/NetworkContext';
 
 const PersistentDrawerLeft = (props) => {
   const { setSort, setFilters, setloadingfilters, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
   const loc = window.location.search
+  const { NetworkCtx} = React.useContext(NetworkContext);
 
-  return <Component setSort={setSort} setFilters={setFilters} setloadingfilters={setloadingfilters} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort} {...props} />
+  return <Component setSort={setSort} setFilters={setFilters} setloadingfilters={setloadingfilters} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort}
+  uri={NetworkCtx.graphqlUrl}
+  {...props} />
 }
 
 
@@ -84,8 +87,56 @@ class Component extends React.Component {
     }
     // This is used for checking the check boxes if we copy and pasted the url to new tab or new window 
     // *****Ends*****
+    var paramsfilter;
+    var abcd;
+      const filters_checked = async() =>{
+        if(window.location.pathname.split('/')[1] === 'jewellery'){
+          function status(response) {
+            if (response.status >= 200 && response.status < 300) {
+              return Promise.resolve(response)
+            } else {
+              return Promise.reject(new Error(response.statusText))
+            }
+          }
+          
+          function json(response) {
+            return response.json()
+          }
+          var a = {}
+       
+          await fetch(this.props.uri)
+            .then(status)
+            .then(json)
+            .then(function(data) {
+              console.log('Request succeeded with JSON response', data);
+              var {checked} = this.state
+               paramsfilter = (Object.entries(data).length !== 0 && data.constructor === Object && data.data.allSeoUrlPriorities) && data.data.allSeoUrlPriorities.nodes.map(val => {
+                           
+                let attrName = val.attributeName.replace(/\s/g, '')
+                let attrVal = val.attributeValue
+                a[attrName] = {[attrVal]:true}
+                alert(a)
+                return abcd = a
+              // this.setState(prevState => {
+              //   let checked = Object.assign({}, prevState.checked);  // creating copy of state variable jasper
+              //   checked[attrName] = {[attrVal]:true}                     // update the name property, assign a new value                 
+              //   return { checked };                                 // return new object jasper object
+              // })
+                // this.setState(checked:checked[attrName] = {[attrVal]:true})
+                // this.handleChange(()=>{}, true, ()=>{}, {}, paramsfilter)
 
-
+            })
+            this.handleChange(()=>{}, true, ()=>{}, {}, paramsfilter)
+            }).catch(function(error) {
+              console.log('Request failed', error);
+            });
+        }
+        // this.handleChange(()=>{}, true, ()=>{}, {}, paramsfilter)
+        alert(abcd)
+      }
+      filters_checked()
+     
+      
   }
 
   componentDidUpdate(prevProps) {
