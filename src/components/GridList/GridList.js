@@ -14,35 +14,32 @@ const useStyles = makeStyles(theme => ({
         margin: "15px 0px 20px 0px "
     },
     [theme.breakpoints.down("md")]: {
-        // root: {
-        //     display: 'flex',
-        //     flexWrap: 'wrap',
-        //     justifyContent: 'space-around',
-        //     overflow: 'hidden',
-        //     backgroundColor: theme.palette.background.paper,
-        //     width: "100%",
-        //     margin: "25px 0px 20px 0px ",
-        //     marginLeft: '2.66% !important'
-        // },
-        // firstcolumn: {
-        //     width: '53.12% !important'
-        // },
         imagefull: {
             width: "100%",
         },
         imagefulllong: {
             width: "100%",
         },
-        // marginAuto: {
-        //     padding: "0px 0px 0px 0px !important",
-        //     width: '40.31% !important',
-        //     marginLeft: '1.25% !important',
-        //     marginRight: '2.66% !important'
-        // },
+        firstcolumn: {
+            padding: "0px 8px 0px 0px !important"
+        },
     },
+    [theme.breakpoints.only("sm")]: {
+        daisyday: {
+            marginTop: "7.5px !important",
+            width: "100%",
+        },
+        img2container: {
+            marginTop: "7.5px !important",
+        }
+    }
+    ,
     [theme.breakpoints.down("sm")]: {
         firstcolumn: {
-            width: '53.12% !important'
+            width: '53.12% !important',
+            float: "left",
+            marginLeft: '2.66% !important',
+            padding: "0px !important"
         },
         marginAuto: {
             padding: "0px 0px 0px 0px !important",
@@ -58,7 +55,6 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: theme.palette.background.paper,
             width: "100%",
             margin: "25px 0px 20px 0px ",
-            // marginLeft: '2.66% !important'
         },
     },
 
@@ -67,10 +63,10 @@ const useStyles = makeStyles(theme => ({
         height: "auto",
     },
     marginAuto: {
-        padding: "0px 0px 0px 16px"
+        padding: "0px 0px 0px 6px"
     },
     firstcolumn: {
-        padding: "0px 0px 0px 0px"
+        padding: "0px 8px 0px 0px"
     },
     [theme.breakpoints.up("lg")]: {
         gridList: {
@@ -91,7 +87,15 @@ const useStyles = makeStyles(theme => ({
     imagefull: {
         width: "100%",
         verticalAlign: "center"
+    },
+    daisyday: {
+        marginTop: 0,
+        width: "100%",
+    },
+    img2container: {
+        marginTop: 0,
     }
+
 }));
 
 
@@ -106,20 +110,20 @@ export default function ImageGridList(props) {
                 <Grid container>
                     <Grid item className={classes.firstcolumn} md={9} lg={0} xl={0}>
                         <Grid container >
-                            <Grid item md={12} sm={12} xs={12} p0>
+                            <Grid item md={12} sm={12} xs={12}>
                                 <div>
                                     <a className={classes.imagefull} href={tileData[0].navigateUrl}>
                                         <img className={classes.imagefull} src={tileData[0].img} /></a>
                                 </div>
                             </Grid>
-                            <Grid item md={12} sm={12} xs={12} style={{ marginTop: "6.50575px !important" }}>
+                            <Grid item md={12} sm={12} xs={12} >
                                 <div>
                                     <a className={classes.imagefull} href={tileData[3].navigateUrl}>
-                                        <img className={classes.imagefull} src={tileData[3].img} style={{ paddingTop: "2px" }} />
+                                        <img className={classes.daisyday} src={tileData[3].img} style={{ paddingTop: "2px" }} />
                                     </a>
                                 </div>
                             </Grid>
-                            <Grid item container style={{ paddingTop: "2px" }}>
+                            <Grid item container style={{ paddingTop: "2px" }} className={classes.img2container}>
                                 <Grid item md={6} sm={6} xs={6} className={classes.imgsmall} >
                                     <div style={{ paddingRight: "3px" }}>
                                         <a className={classes.imagefull} href={tileData[2].navigateUrl}>

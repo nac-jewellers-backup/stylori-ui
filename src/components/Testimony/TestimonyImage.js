@@ -26,11 +26,32 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: "#fff",
         }
     },
+    [theme.breakpoints.only('sm')]: {
+        lazyload2: {
+            width: "100%",
+            verticalAlign: " middle",
+            marginTop: '14px !important'
+        }
+    },
     lazyload: {
         width: "100%",
         verticalAlign: " middle"
+    },
+    firstColumn: {
+        width: '40.31% !important',
+        float: 'left',
+        marginRight: '1.25% !important',
+        marginLeft: '2.66% !important'
+    }, secondcolumn: {
+        width: '53.12% !important',
+        float: 'right',
+        marginRight: '2.66% !important'
+    },
+    lazyload2: {
+        width: "100%",
+        verticalAlign: " middle",
+        marginTop: '6.50575px '
     }
-
 }));
 
 
@@ -89,46 +110,36 @@ export default function ImageGridList(props) {
             </Hidden>
             <Hidden mdUp>
                 <Grid container md={12} sm={12} xs={12} style={{ margin: "15px 0px 20px 0px" }}>
-                    <Grid item md={3} sm={5} xs={6} style={{ padding: '0px !important' }}>
-                        <div style={{}}>
-                            <a href={props.GridImage[0].navigateUrl}>
-                                <img className={classes.lazyload} alt="addSection" src={props.GridImage[0].img} />
-                            </a>
-                        </div>
+                    <Grid item className={classes.firstColumn}>
+                        <a href={props.GridImage[0].navigateUrl}>
+                            <img className={classes.lazyload} alt="addSection" src={props.GridImage[0].img} />
+                        </a>
                     </Grid>
-                    <Grid item md={9} sm={7} xs={6} >
+                    <Grid item className={classes.secondcolumn}>
                         <Grid container >
                             <Grid item md={4}>
-                                <div style={{}}>
-                                    <a href={props.GridImage[1].navigateUrl}>
-                                        <img className={classes.lazyload} alt="addSection" src={props.GridImage[2].img} />
-                                    </a>
-                                </div>
+                                <a href={props.GridImage[1].navigateUrl}>
+                                    <img className={classes.lazyload} alt="addSection" src={props.GridImage[2].img} />
+                                </a>
                             </Grid>
 
                             <Grid item md={8}>
-                                <div style={{}}>
-                                    <a href={props.GridImage[2].navigateUrl}>
-                                        <img className={classes.lazyload} alt="addSection" src={props.GridImage[3].img} />
-                                    </a>
-                                </div>
+                                <a href={props.GridImage[2].navigateUrl}>
+                                    <img className={classes.lazyload2} alt="addSection" src={props.GridImage[3].img} />
+                                </a>
                             </Grid>
                         </Grid>
-                        <Grid container >
-                            <Grid item sm={6} xs={6}>
-                                <div style={{}}>
-                                    <a href={props.GridImage[3].navigateUrl}>
-                                        <img className={classes.lazyload} alt="addSection" src={props.GridImage[1].img} />
-                                    </a>
-                                </div>
+                        <Grid container className={classes.lazyload2}>
+                            <Grid md={6} sm={6} xs={6} item style={{ width: 'calc(50% - 5px) !important',padding:"0px 4px 0px 0px" }}>
+                                <a href={props.GridImage[3].navigateUrl}>
+                                    <img className={classes.lazyload} alt="addSection" src={props.GridImage[1].img} />
+                                </a>
                             </Grid>
 
-                            <Grid item sm={6} xs={6}>
-                                <div style={{}}>
-                                    <a href={props.GridImage[4].navigateUrl}>
-                                        <img className={classes.lazyload} alt="addSection" src={props.GridImage[4].img} />
-                                    </a>
-                                </div>
+                            <Grid md={6} sm={6} xs={6} item style={{ width: 'calc(50% - 5px) !important',padding:"0px 0px 0px 4px" }}>
+                                <a href={props.GridImage[4].navigateUrl}>
+                                    <img className={classes.lazyload} alt="addSection" src={props.GridImage[4].img} />
+                                </a>
                             </Grid>
                         </Grid>
                     </Grid>
