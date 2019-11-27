@@ -21,7 +21,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function HeaderHoverMenuItem(props) {
-  const [activetab, setActivetab] = React.useState("earings");
+  console.log(props.listHoverItem)
+  debugger
+  const [activetab, setActivetab] = React.useState(props.listHoverItem.menuOne[0].value);
+ 
   const { onMouseLeave, onMouseOver } = props;
   const classes = useStyles();
   // console.log(props.listHoverItem);
