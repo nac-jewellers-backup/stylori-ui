@@ -230,7 +230,7 @@ class Component extends React.Component {
       Object.values(valx).map(val1 => {
         var n = valx && Object.keys(valx)[0].length > 0
         const s1s = val1 ? val1[0] : ""
-        if (val1 !== undefined && val1 !== null && n) { 
+        if (val1 !== undefined && val1 !== null && n) {
           valx2 = s1s
           mm = valx ? Object.keys(valx)[0] : ""
           checked[val[0]] = { [mm]: false }
@@ -289,28 +289,28 @@ class Component extends React.Component {
     }
 
     let arr = [];
-    // let checkTitle = true;
-    // chipData.map(val => {
-    //   debugger
-    //   if (val.title === title) {
-    //     checkTitle = false
-    //   }
-    // })
-    // if (BoolName === true) {
-    //   debugger
-    //   // chipData.push({ key: chipData[chipData.length - 1].key, label: value });
-    //   if (checkTitle) {
-    //     chipData.push({ key: chipData, label: value, title: title });
-    //   } else {
-    //     arr = chipData.filter(val => val.title !== title)
-    //     arr.push({ key: chipData, label: value, title: title });
-    //     chipData = arr;
-    //   }
+    let checkTitle = true;
+    chipData.map(val => {
+      debugger
+      if (val.title === title) {
+        checkTitle = false
+      }
+    })
+    if (BoolName === true) {
+      debugger
+      // chipData.push({ key: chipData[chipData.length - 1].key, label: value });
+      if (checkTitle) {
+        chipData.push({ key: chipData, label: value, title: title });
+      } else {
+        arr = chipData.filter(val => val.title !== title)
+        arr.push({ key: chipData, label: value, title: title });
+        chipData = arr;
+      }
 
-    // } else {
-    //   arr = chipData.filter(val => val.label !== value);
-    //   chipData = arr;
-    // };
+    } else {
+      arr = chipData.filter(val => val.label !== value);
+      chipData = arr;
+    };
     this.setState({
       chipData
     }, () => this.props.setFilters(checked))

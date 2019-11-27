@@ -1,0 +1,55 @@
+.ckcut-main-body {
+    background: #dfdfdf !important;
+    border-color: #ddd !important;
+    padding: 0;
+    margin-bottom: 10px !important;
+
+}
+
+.avart-ckc {
+    border-radius: 29px;
+    border: 2px solid #394578;
+    text-align: center;
+    width: 25px !important;
+    height: 25px !important;
+    line-height: 25px !important;
+    float: left;
+    margin-right: 15px;
+    margin-left: 15px !important;
+    font-weight: 700;
+    color: #FFF;
+    padding: 5px !important;
+}
+
+.summaryOrder-pay-btn {
+    background: #fe6c00 !important;
+    color: #FFF !important;
+    border-radius: 0px !important;
+    border: 1px solid #fe6c00 !important;
+    font-size: 16px !important;
+    min-width: 100px !important;
+    text-transform: none !important;
+}
+
+.text-chck {
+    padding: 8px 15px;
+    color: #394578;
+    font-weight: 700 !important;
+    width: 100% !important;
+    float: left !important;
+}
+
+.arrow-chek,
+.MuiSvgIcon-root,
+.MuiExpansionPanelDetails-root,
+.MuiExpansionPanelDetails-root {
+    fill: #333 !important;
+    border-color: #ddd !important;
+}
+
+@media screen and (min-width: 1220px) {
+    .checkout-ovralldiv-media {
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+    }
+}

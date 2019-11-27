@@ -62,7 +62,6 @@ class Component extends React.Component {
 
         const { classes, chips } = this.props;
         const { sortOptions } = this.props.data;
-        console.log("hey i am sort", this.props.sort)
         return (
             <Paper style={{ position: 'sticky', top: this.state.topHeight, width: '100%', zIndex: '3', boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">
                 {/* <div style={{position:'sticky',top:'165px'}}> */}
