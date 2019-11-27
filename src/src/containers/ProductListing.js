@@ -9,55 +9,55 @@ import { FilterOptionsContext } from 'context'
 import productList from 'mappers/productlist'
 import { CDN_URL } from 'config';
 import { withRouter } from "react-router"
-import  'screens/screens.css';
+import 'screens/screens.css';
 import filterData from 'mappers/filterData'
 
 class Stylori extends React.Component {
-  constructor(props){
+  constructor(props) {
     super()
-    this.state = {loading:false};
+    this.state = { loading: false };
   }
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     console.log(this.props.mappedFilters, prevProps.mappedFilters, this.props.data, 'prevProps.mappedFiltersprevProps.mappedFilters')
-  
+
     //  if(this.props.dataFilter !== prevProps.dataFilter){
 
-      if(this.props.mappedFilters !== prevProps.mappedFilters){
-        
-        this.props.setloadingfilters(false)
+    if (this.props.mappedFilters !== prevProps.mappedFilters) {
+
+      this.props.setloadingfilters(false)
 
       // }
-    // setTimeout(function(){ alert("Hello"); }, 3000);
-    // setTimeout(function(){  this.props.setloadingfilters(false); }.bind(this), 5000);
-  }
+      // setTimeout(function(){ alert("Hello"); }, 3000);
+      // setTimeout(function(){  this.props.setloadingfilters(false); }.bind(this), 5000);
+    }
 
   }
   render() {
     const { data, dataFilter } = this.props
     return (
-     <>
- 
-      <Grid container >
-            {this.props.loadingfilters && <div className="overlayloadingfilter">
-              <div className="text">Filters updating...</div>
-              </div>}
-        <Grid item xs={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
-          <Header data={data} />
-        </Grid>
+      <>
 
-        <Grid item xs={12}>
-          <ProductDescription title="Jewellery" data={dataFilter} />
-          <Filter datas={data} data={dataFilter}/>
-        </Grid>
-        <Grid item xs={12} >
-          <Hidden smDown>
-            <ChatHelp data={data} />
+        <Grid container >
+          {this.props.loadingfilters && <div className="overlayloadingfilter">
+            <div className="text">Filters updating...</div>
+          </div>}
+          <Grid item xs={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+            <Header data={data} cartcount={this.props.cartcount} />
+          </Grid>
 
-            <Footer />
-          </Hidden>
+          <Grid item xs={12}>
+            <ProductDescription title="Jewellery" data={dataFilter} />
+            <Filter datas={data} data={dataFilter} />
+          </Grid>
+          <Grid item xs={12} >
+            <Hidden smDown>
+              <ChatHelp data={data} />
+
+              <Footer />
+            </Hidden>
+          </Grid>
         </Grid>
-      </Grid>
       </>
     )
   }
@@ -66,9 +66,10 @@ class Stylori extends React.Component {
 // const history = (props, aa) => props.history.push(`/stylori?${aa}`);
 
 const Components = props => {
-  let { FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, loadingfilters}, setloadingfilters } = React.useContext(FilterOptionsContext);
+  let { FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters }, setloadingfilters } = React.useContext(FilterOptionsContext);
   let content, mapped = [];
-
+  debugger
+  // alert(JSON.stringify(cartcount))
   var arrFilters = Array(mappedFilters)
   let mappedFiltersList = filterData(arrFilters)
   // let mappedFilter = filterData(mappedFilters)
@@ -77,9 +78,9 @@ const Components = props => {
       mapped = productList(data, CDN_URL);
     }
   }
-  if (Object.keys(data).length === 0) content =  <div className="overall-loader"><div id="loading"></div></div>
-  
-  else content = <Stylori {...props} data={dataArr} dataFilter={mappedFiltersList} loadingfilters={loadingfilters} mappedFilters={mappedFilters} setloadingfilters={setloadingfilters}/>
+  if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
+
+  else content = <Stylori {...props} cartcount={cartcount} data={dataArr} dataFilter={mappedFiltersList} loadingfilters={loadingfilters} mappedFilters={mappedFilters} setloadingfilters={setloadingfilters} />
   return content
 }
 

@@ -128,16 +128,28 @@ class Component extends React.Component {
                 <img id={val} src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAABmUlEQVQ4jcVSsW4TURCc3buzX+yLhRQao4BksHWFJQukNG6IoKdLlyogB6VKyyfQUqfOF9DTAR2uLlKwI0uJBB1I9uXu3bvntxRgxRc5ChVsOTszmtEu8L+HblqMx+N31SBoA0BeFON2u3341wbD4fBOfW3txA+CJgAURfE9N6bb6/V+XufyKgNVqbyy1jZ1lkFnGebWNgPP21vFXWkA4OkKbPvWCqPR6P16GPZFRFlj3HQ6PQKARqMx8CsVJiI9S5LPnU7nxULjL4mrRZ5HP/J848qevjGzzJJk/Q9SBxBNJhPVarV0qYLJsh0ieljqR7QtIs/KmelRmqY7pQqncfxm7twuMd8HoAFoAUIR4d8acgQkABQAJc5deMzHUbf7luI4fhyG4cfA92sAkKbpJwGee8xflVIPACDX+hzM0bwoPtTq9T4AGGP0ZZr2fXFucDmb1ZZCRgAOLLCps2wRe9Mnem2d6xhjFjzFRC/ZY35y7TIbQjSQ5ROLsHVuH8DdZaI4t+U7kYlHdFZaiNwjoi+3YfOb/+gfzi/hpqiprs8PWAAAAABJRU5ErkJggg==' style={{ width: '30px', margin: "auto" }} alt="" />
             );
         }
+        if (val == '14K Rose_White') {
+            return (
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAABrUlEQVQ4jcWSO28TQRSFvzte26tN4liyheQoPAxEVoQUBYnGDRH0dOmoABlERctPoKWm5hfQ00E6QkWkOGgRSCAFEoNfu96dnUsBRlnLCCq41ejcO2e+MzPwv0t+1zjaCx97Jf8igE3ig9p688FfG/R2w6or8Ua8QgPA2eyTl5lL1Y2zvdlZM8/AanInS23DRhNsNMEltpGS3Jo3O9fAibk6y+kytv4Y4cveu2d+ZbGNOt9OrJt8Gz0BKC8vdLyyZxATx/3hTn393I3pHm+66Ha7ZTeyrfHnXu0XnpGPmEyTwWgpGQCwINAKw9BvNptxLkJ1yDai52cAt9SZaycVhQvBsd3ORTh83X0I3BTktAqxKLGqLmJ+HuBwIjJUwRfFV/QD8PTU5tojOdzd3ywtBy9MsRgApIPo5XExvV7H3y/4pTMAWZS8/1q0raUxz0uVoA3gJmmcDMZtT5FO0o8CiH4giraqaeF+qvFqOoqnpKsV0XtWZS0+6k81HzG3jcDlXGqVGs51yD+xcSJ3Beq5+1C94imEBvP2ZMMZu2LUe5XT1K4Y8pri5v6jf1vfAZkcsJvDWHBmAAAAAElFTkSuQmCC" style={{ width: '30px', margin: "auto" }} />
+            );
+        }
+        if (val == '18K Rose_White') {
+            return (
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAABr0lEQVQ4jcWSv08UQRzF33d2w87eCjl+JLIIGkFCQQKYGJMrlGCjhXbXUYE5jRUNhX8CjQU1tY0hoSAh0NCBCQWGkFB4mosSc0pzm5O5nd29m68NoHt3RCv5lm/efL7vZQa46qHLDr5tHSxLz70DAFqFn248nlz4Z0Bp7UPWcXBkOR0+ADR0XE74dPzW0weVZq9oB7BM9LwRJn4cKMSBQkMnvhW7c+28bQGCrIetKk//tUJ582Dd9btzbFjWlTbh92AFANz+bMH2pCBBOixX3vtPJp+1AIobRUeGlUMAoxc7gUXBzEz05o8LxaSqJm7PzehUBakreQDDTQmnWdBMqggwYnd6+VSC49W910w8S6AhQdDMpBl8DaCzBWwIdErE0jAkg4+J6e1Q/v4Sld7tTXkDXTt2xskAgD75uauM+6jTiT92dGduAkAS1L7WvpyMyf6ebed6Vw4A6irSqlzN2RahEP2oZqLfKcdcEb1KQh5MAnWuDdpZ72VS06P10oVT2hbNC7Jwt6l3r2EuIP3EAowXBOpLOYnv2Wy4JCA+p3TwAJj209xWzbBp+4/+7/wC1Qunw1A32fwAAAAASUVORK5CYII=" style={{ width: '30px', margin: "auto" }} />
+            );
+        }
         if (val == "14K Rose") {
             return (
                 <img id={val} src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAABe0lEQVQ4jcWSMU8UURSFv/tmJkx2HUOCzZpFsqtkChICic02GO3t6KjQrMaKlp9ga23NL6C3UzqoIAGUCZBoCXGX2TfMvLkWumF3WSIV3PJ75957Tu6D+y656UGPjj8RTDwDIM++S3Nm7dYDdCeZJPL28LwaAM79ItU5mZ85G9WasetD95a8qGEzsBnkRY1AV8dJxw/ALF1n5Yv/RtDD002iagstQ4q85Hf6GYCHlTZ+YBBj6Vxsyez0636Pf9V8OEGRx5ydT10Z8X6CU7q9CHoAVSDWJAml0bDDES7NMiLN67bl5Yjrp6S6PBRB95N1XLmCmGkQC2qBB+i/BUIJdEFC0BAtT/HMhsSNj6K7BwtE0VcCvwJAmn6jvHyFXz0gDJ4AYPMTyGKc+UK10vrrOLd0uy0f8dpc9CoDFmPU/0CR1bG2z+p48h7nZjnv9FmI8d8YxCyOZJwC1wYdPLHBle+ARyPa5z6QIPwY5t5jRLeHkJoxTG74R3dZfwD4SINLo+uBVgAAAABJRU5ErkJggg==' style={{ width: '30px', margin: "auto" }} alt="" />
             );
         }
+
         if (val == '18K Rose') {
             return (
                 <img id={val} src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAABp0lEQVQ4jcVSu24TURScc3ftfTjgR9IYJRQ85CIKSqQUuIDI9HTpqAAZREXLJ9BSU/MFSJS4CiCECFIkCh6KFCSsRFHstXbXd6/XOzRJ8FpGoYJTzpkzZ+beA/zvkj814k87zyzXuwIAYz385q+uPP5rgV5nu+Kctz5Lwa4DAEdp18RYrty41pvmqlkCheLoPo2pZ1GMLIpBY+pF29ydxZ0pIMq6OY0RsnFmhGh752WxWmmSdKmTLDkKngOAUyu3xXWUiGjT678tra3cPpmxTze8+upEOmiY7v78adPCTxBM+8G5Y6hEoMFOx5VWS+ci6IXBphJcytmmbJBo5TPL5cgrbeYihO8+PAFxR0SWBKJBaoJzEwsygYQQcQm6JH9A8GLu+vpTCbferxaq1S04BR8AxoPBG6/r3dJLoy/K9y8CQBbHe+7hfmNYrr22yuUmADAxOg37TVuUaqdB4E+4bAxrySNEspiG8bFNWRx6lYdZMrrKg8MTnitQ95RQ1qZ+Zp6UNvn7fQgqcvxAgIUck7JuZ8JdJfJ9Es8yXlBKPp6JgTPv6N/WLx+/ra26yLQYAAAAAElFTkSuQmCC' style={{ width: '30px', margin: "auto" }} alt="" />
             );
         }
+
     }
 
     TabsComponent = () => {
@@ -317,7 +329,7 @@ class Component extends React.Component {
                                                                 {val}
                                                             </button>
                                                             <div style={{ marginTop: "10px", textAlign: "center" }}>
-                                                                
+
                                                             </div>
                                                         </>
                                                     )}

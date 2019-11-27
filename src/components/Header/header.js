@@ -120,7 +120,7 @@ class Header extends Component {
                     <Badge badgeContent={4} color="secondary">
                       <i class="fa fa-heart"></i>
                     </Badge>
-                    <Badge badgeContent={4} color="secondary">
+                    <Badge badgeContent={"2"} color="secondary">
                       <i class="fa fa-shopping-bag"></i>
                     </Badge>
                   </div>

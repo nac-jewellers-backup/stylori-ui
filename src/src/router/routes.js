@@ -6,7 +6,8 @@ export const routes = {
     Checkout: '/Checkout',
     Register: '/register',
     UserLogin: '/login',
-    UserRegister: '/registers'
+    UserRegister: '/registers',
+    HomePageStylori: '/home'
 
 }
 

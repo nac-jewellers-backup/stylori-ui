@@ -10,7 +10,69 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
+const cacheCheck = async() =>{
+ debugger
+ 
+    // read text from URL location
+    var request = new XMLHttpRequest();
 
+
+  // alert('i came in', myJson)
+  
+  var local_storage = localStorage.getItem('version')
+  if(local_storage && local_storage.length>0){
+    debugger
+    const condition_async = async() =>{
+      request.open('GET', '/meta.json', true);
+      request.send(null);
+      request.onreadystatechange = async function () {
+          // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
+            
+             var type = await request.getResponseHeader('Content-Type');
+             
+              debugger
+              if (type.indexOf("json") !== 1) {
+                var obj =await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
+                console.info('objectlocal_storage, obj.version', local_storage, obj.version)
+                console.log('jsonjsonjson', Number(local_storage) !== Number(obj.version) )
+                // alert(local_storage, obj.version)
+                 if(obj !== '' && Number(local_storage) !== Number(obj.version)){
+                localStorage.setItem('version', obj.version)
+              
+                window.location.reload()
+                 }
+    
+              }
+          // }
+      }
+    }
+    condition_async()
+  }
+  else{
+    debugger
+const condition_async = async() =>{
+  request.open('GET', '/meta.json', true);
+  request.send(null);
+  request.onreadystatechange = async function () {
+      // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
+        
+         var type = await request.getResponseHeader('Content-Type');
+          debugger
+          // alert(request.responseText)
+
+          if (type.indexOf("json") !== 1) {
+             var obj =await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
+             console.log('json',type.indexOf("json") !== 1,typeof request.responseText, request.responseText, obj )
+            if( obj !== '') localStorage.setItem('version', obj.version)
+            
+
+          }
+      // }
+  }
+}
+condition_async()
+  }
+}
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
@@ -20,7 +82,9 @@ const isLocalhost = Boolean(
       /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
     )
 );
-
+cacheCheck()
+// setTimeout(function(){ cacheCheck(); }, 20000);
+setInterval(function(){ cacheCheck(); }, 30000);
 export async function register(config) {
   await requestNotificationPermission();
 
@@ -36,7 +100,9 @@ export async function register(config) {
 
     window.addEventListener('load', () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
-
+      console.log('versionversion','123123123'); 
+      
+    
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
         checkValidServiceWorker(swUrl, config);

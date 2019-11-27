@@ -24,6 +24,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { useDummyRequest } from '../../hooks';
 import { headerData } from '../../mappers';
 import styles from './styles';
+import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
   constructor(props) {
@@ -111,11 +112,15 @@ class Header extends Component {
                       className={`search ${classes.colorMain}`}
                       placeholder='&#xf002; Search here'
                     />
-                    <i class="fa fa-user"></i>
+                    {/* <NavLink to="/login"> */}
+                    <i onClick={() => window.location.pathname = "/login"} class="fa fa-user"></i>
+                    {/* </NavLink> */}
+
+                    {/* <i class="fa fa-user"></i> */}
                     <Badge badgeContent={4} color="secondary">
                       <i class="fa fa-heart"></i>
                     </Badge>
-                    <Badge badgeContent={4} color="secondary">
+                    <Badge badgeContent={"2"} color="secondary">
                       <i class="fa fa-shopping-bag"></i>
                     </Badge>
                   </div>

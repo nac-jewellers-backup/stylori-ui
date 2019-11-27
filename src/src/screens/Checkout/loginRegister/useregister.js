@@ -32,19 +32,37 @@ const useRegister = (changePanel, props) => {
     const { data, error, loading, makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     useEffect(() => {
-        // if(data.message=="Email ID Already Exist")
-        var v = data.user_profile_id ? data.user_profile_id : ""
-        if (v.length > 0) {
-            var obj = {}
-            obj['userprofileId'] = bb
-            var bb = data.user_profile_id ? data.user_profile_id : "";
-            // if(bb.length > 0){
-            localStorage.setItem("isedit", 1)
-            // }
-            localStorage.setItem("email", data.user.email)
-            localStorage.setItem("user_id", data.user_profile_id)
-            makeRequestCod(obj);
+        var ms = data && data.message
+        if (ms) {
+            values['error']['emerr'] = true
+            values['errortext']['emerr'] = 'Your email is already exists'
+            setValues({
+                ...values,
+                values,
+            })
+            // return false
+        }else{
+            var v = data.user_profile_id ? data.user_profile_id : ""
+            if (v.length > 0) {
+                values['error']['emerr'] = false
+                values['errortext']['emerr'] = ''
+                setValues({
+                    ...values,
+                    values,
+                })
+                var obj = {}
+                obj['userprofileId'] = bb
+                var bb = data.user_profile_id ? data.user_profile_id : "";
+                // if(bb.length > 0){
+                localStorage.setItem("isedit", 1)
+                // }
+                localStorage.setItem("email", data.user.email)
+                localStorage.setItem("user_id", data.user_profile_id)
+                makeRequestCod(obj);
+                changePanel(3)
+            }
         }
+        
         //     obj['id'] = bb
         //     makeRequestCod(obj);
         localStorage.setItem("true", false)
@@ -57,7 +75,7 @@ const useRegister = (changePanel, props) => {
     // }, [CodData])
     const errmsg = data.message ? data.message : ""
     const handleChange = (type, value) => {
-        if (values.email !== null || errmsg.length < 0) {
+        if (values.email !== null && type === 'email') {
             values['error']['emerr'] = false
             values['errortext']['emerr'] = ''
         }
@@ -79,14 +97,14 @@ const useRegister = (changePanel, props) => {
             ...values,
             [type]: value,
         })
-        makeFetch(values)
+        // makeFetch(values)
     }
 
     const user = data.user_profile_id ? data.user_profile_id : ""
     const handleSubmit = (e) => {
         if (values.email === null) {
             values['error']['emerr'] = true
-            values['errortext']['emerr'] = 'Mail is required'
+            values['errortext']['emerr'] = 'Email is required'
             setValues({
                 ...values,
                 values,
@@ -111,7 +129,7 @@ const useRegister = (changePanel, props) => {
         }
         if (values.firstname === null) {
             values['error']['firstname'] = true
-            values['errortext']['firstname'] = 'FirstName is required'
+            values['errortext']['firstname'] = 'First Name is required'
             setValues({
                 ...values,
                 values,
@@ -119,7 +137,7 @@ const useRegister = (changePanel, props) => {
         }
         if (values.lastname === null) {
             values['error']['lastname'] = true
-            values['errortext']['lastname'] = 'LastName is required'
+            values['errortext']['lastname'] = 'Last Name is required'
             setValues({
                 ...values,
                 values,
@@ -139,26 +157,6 @@ const useRegister = (changePanel, props) => {
             return false
         }
         makeFetch(values);
-        if (errmsg.length > 0) {
-            values['error']['emerr'] = true
-            values['errortext']['emerr'] = 'your mail is already exists'
-            setValues({
-                ...values,
-                values,
-            })
-            return false
-        }
-        if (errmsg.length < 0) {
-            values['error']['emerr'] = false
-            values['errortext']['emerr'] = ''
-            setValues({
-                ...values,
-                values,
-            })
-            return false
-        }
-
-        changePanel(3)
     }
     const handlers = { handleSubmit, handleChange };
 

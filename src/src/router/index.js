@@ -4,6 +4,7 @@ import { Stylori } from 'screens'
 import PricingPage from 'screens/Stylori/PricingPage'
 import Cart from 'screens/Stylori/Cart'
 import Checkout from 'screens/Stylori/Checkout'
+import HomePageStylori from 'screens/Stylori/HomePage'
 import Register from 'screens/Checkout/loginRegister/register';
 import UserLogin from '../components/LoginAndRegister/Login';
 import UserRegister from '../components/LoginAndRegister/Register';
@@ -34,7 +35,8 @@ export const RouterApp = (props) => {
     console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
     return (
         <Switch>
-            {/* <Redirect key="stylori-redirect" component={} from="/" exact to={"/hemow"} /> */}
+            <Redirect key="stylori-redirect" from="/" exact to={"/jewellery"} />
+            <Route key="HomePageStylori" component={HomePageStylori} exact path={routes.HomePageStylori} />
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
 
             {(props.location.pathname !== "/cart" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout") &&

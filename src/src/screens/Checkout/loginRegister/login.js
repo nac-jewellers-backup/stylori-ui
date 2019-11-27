@@ -15,7 +15,7 @@ const LoginComponent = (props) => {
     const { values, handlers, data } = useLogin(() => props.changePanel(3));
     const vl = data && data.message
     // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
-    var prof = data.userprofile ? data.userprofile.email : ""
+    var prof = data && data.message
     // alert(JSON.stringify(data))
     console.log('valuesvaluesvalues', values)
     return (
@@ -31,10 +31,10 @@ const LoginComponent = (props) => {
                         type="email"
                         name="email"
                         value={values.email}
-                        error={values.error && values.error.emerr ? true : false}
-                        helperText={values.errortext && values.errortext.emerr}
+                        error={values.error && values.error.emerr  ? true : false}
+                        // helperText={values.errortext && values.errortext.emerr}
                         onChange={e => handlers.handleChange('email', e.target.value)}
-                        placeholder="your-id@email.com"
+                        placeholder="Enter your email Id"
                     />
                     <label className='errtext'> {values.errortext && values.errortext.emerr}</label>
                     <Input
@@ -44,7 +44,7 @@ const LoginComponent = (props) => {
                         name="password"
                         value={values.password}
                         error={values.error && values.error.passerr ? true : false}
-                        helperText={values.errortext && values.errortext.passerr}
+                        // helperText={values.errortext && values.errortext.passerr}
                         placeholder="Enter your password"
                         onChange={e => handlers.handleChange('password', e.target.value)}
                     />

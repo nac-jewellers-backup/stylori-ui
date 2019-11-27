@@ -43,6 +43,7 @@ const useLogin = (changePanel, props) => {
         var a = CodData ? CodData : ""
         if (JSON.stringify(a).length > 10) {
             localStorage.setItem("vals", JSON.stringify(CodData))
+            window.history.back();
         }
     }, [CodData])
     const handleChange = (type, value) => {
@@ -72,9 +73,10 @@ const useLogin = (changePanel, props) => {
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
+        debugger
         if (values.email === null) {
             values['error']['emerr'] = true
-            values['errortext']['emerr'] = 'Mail is required'
+            values['errortext']['emerr'] = 'Email is required'
             setValues({
                 ...values,
                 values,
@@ -99,9 +101,9 @@ const useLogin = (changePanel, props) => {
             })
             return false
         }
-        else{
-            window.history.back();
-        }
+        // else{
+        //     window.history.back();
+        // }
         // if (auth.length > 0) {
         //     changePanel(3)
         // }

@@ -3,14 +3,14 @@
 body {
 
     margin: 0;
-    font-family: 'Robot-Black ';
+    font-family: 'Robot-Regular';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
 }
 
 .MuiTab-root ,.MuiButton-root,.MuiInputBase-input{
-    font-family: 'Robot-Black ' !important;
+    font-family: 'Robot-Regular' !important;
 }
 
 /* product hovering price*/
@@ -163,7 +163,7 @@ body {
     font-size: 12px !important;
     font-weight: bold;
     margin: auto !important;
-    font-family: 'Robot-Black ' !important;
+    font-family: 'Robot-Regular' !important;
 }
 
 .tabs-gold-icons {
@@ -950,7 +950,7 @@ body {
     } */
 
 .wrappercustom {
-    font-family: "Robot-Black " !important;
+    font-family: "Robot-Regular" !important;
     width: 100% !important;
     height: 35px;
     color: #394578 !important;

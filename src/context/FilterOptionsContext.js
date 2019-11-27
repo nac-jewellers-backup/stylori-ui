@@ -19,14 +19,15 @@ const initialCtx = {
         },
         sort: '',
         loadingfilters: false,
-        loading: false, error: false, data: [], offset: 0, dataArr: [], first: 24, mappedFilters: []
+        loading: false, error: false, data: [], offset: 0, dataArr: [], first: 24, mappedFilters: [], cartcount: ['1']
     },
     setFilters: (filterData) => { },
     setOffset: () => { },
     setFirst: () => { },
     updateProductList: () => { },
     setSort: () => { },
-    setloadingfilters: () => { }
+    setloadingfilters: () => { },
+    setcartcount: () => { }
 }
 
 export const FilterOptionsContext = React.createContext(initialCtx);
@@ -43,6 +44,8 @@ const Provider = (props) => {
     const [offset, setOffset] = React.useState(0)
     const [first, setFirst] = React.useState(24)
     const [dataArr, setDataArr] = React.useState([])
+    const [cartcount, setcartcount] = React.useState([])
+    debugger
     const [mappedFilters, setMappedFilters] = React.useState([])
     const [{ filterLogic }, setFilterLogic] = React.useState({ filterLogic: () => [] });
     const [LoadingSeoQuery, setLoadingSeoQurey] = React.useState(true)
@@ -303,7 +306,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
             // var a = filters.metalColor ? filters.metalColor : null;
             console.log(a, filters, 'filters metal color')
             conditionImageColor["productColor"] = a[0]
-            conditionImageColor['isdefault']= true
+            conditionImageColor['isdefault'] = true
             // conditionImageColor["isdefault"]=true
             const pricerange = {
                 transSkuListsByProductId: {
@@ -346,7 +349,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                 }
             }
             else {
-                variables = { ...conditionFilters,orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+                variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
             }
             
           makeRequest(variables)
@@ -405,7 +408,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                 var variables = {}
                 // var a = filters.metalColor ? filters.metalColor : null;
                 conditionImageColor["productColor"] = a[0]
-                conditionImageColor['isdefault']= true
+                conditionImageColor['isdefault'] = true
 
                 // conditionImageColor["isdefault"]=true
                 if (window.location.search) {
@@ -433,7 +436,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                     variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
                 else {
-                    variables = { ...conditionFilters,orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+                    variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
 
             makeRequest(variables)
@@ -558,11 +561,10 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     })
     console.log('ntxdataresdata', ntxdata.seo_url, mappedFilters.seo_url)
     const FilterOptionsCtx = {
-        filters, sort, loading, error, data, setFilters: updateFilters, offset, setOffset, dataArr, first, setFirst, mappedFilters, loadingfilters
+        cartcount, filters, sort, loading, error, data, setFilters: updateFilters, offset, setOffset, dataArr, first, setFirst, mappedFilters, loadingfilters
     }
-
     return (
-        <FilterOptionsContext.Provider value={{ FilterOptionsCtx, setFilters: updateFilters, setOffset, setFirst, updateProductList, setSort, setloadingfilters }} >
+        <FilterOptionsContext.Provider value={{setcartcount, FilterOptionsCtx, setFilters: updateFilters, setOffset, setFirst, updateProductList, setSort, setloadingfilters }} >
             {props.children}
         </FilterOptionsContext.Provider>
     )

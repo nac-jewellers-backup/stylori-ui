@@ -11,21 +11,16 @@ import { withStyles } from '@material-ui/core/styles';
 import { sortOptions } from '../../mappers/dummydata/filterdata';
 import { FilterOptionsContext } from 'context'
 const styles = theme => ({
-
     colorMain: {
         color: theme.palette.primary.main,
-
     },
-
 });
 
 const FilterHeader = (props) => {
     const { setSort, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
     const loc = window.location.search
-    
     return <Component setSort={setSort} sort={FilterOptionsCtx.sort}  {...props} />
   }
-
 
 class Component extends React.Component {
     constructor(props) {
@@ -67,7 +62,6 @@ class Component extends React.Component {
 
         const { classes, chips } = this.props;
         const { sortOptions } = this.props.data;
-        console.log("hey i am sort", this.props.sort)
         return (
             <Paper style={{ position: 'sticky', top: this.state.topHeight, width: '100%', zIndex: '3', boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">
                 {/* <div style={{position:'sticky',top:'165px'}}> */}

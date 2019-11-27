@@ -197,26 +197,38 @@ class Component extends React.Component {
     }
 
   }
+
+  valz = () => Object.entries(this.state.checked).map(val => {
+    debugger
+    const { checked } = this.state;
+    var obj = {};
+    var mm;
+    var valx; var valx2;
+    if (val !== undefined && val !== null) {
+      const ss = val ? val[1] : ""
+      valx = ss
+      Object.values(valx).map(val1 => {
+        var n = valx && Object.keys(valx)[0].length > 0
+        const s1s = val1 ? val1[0] : ""
+        if (val1 !== undefined && val1 !== null && n) {
+          valx2 = s1s
+          mm = valx ? Object.keys(valx)[0] : ""
+          checked[val[0]] = { [mm]: false }
+          // obj[mm] = false
+          // checked['checked'] = obj
+          this.setState({ ...checked, checked }, () => this.props.setFilters(checked))
+        }
+      })
+    }
+    // alert(JSON.stringify(this.state.checked))
+    return mm
+  })
   handleChange(value, BoolName, e, title, TargetName) {
     debugger
     this.props.setloadingfilters(true)
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
-
-
-    console.log('queries', queries)
-    // queries.map(val =>{
-    // chipData.push({ key:'1', label: 'o' });
-    // })
-    // chipData.push({ key: queries.key, label: value });
-
-    // if (BoolName === true) {
-    //   chipData.push({ key: queries.key, label: value });
-    // } else {
-    //   arr = chipData.filter(val => val.label !== value);
-    //   chipData = arr;
-    // }
 
     if (TargetName === undefined) {
       let checkedvalue = {};
@@ -244,31 +256,32 @@ class Component extends React.Component {
     }
 
     let arr = [];
-    // let checkTitle = true;
-    // chipData.map(val => {
-    //   debugger
-    //   if (val.title === title) {
-    //     checkTitle = false
-    //   }
-    // })
-    // if (BoolName === true) {
-    //   debugger
-    //   // chipData.push({ key: chipData[chipData.length - 1].key, label: value });
-    //   if (checkTitle) {
-    //     chipData.push({ key: chipData, label: value, title: title });
-    //   } else {
-    //     arr = chipData.filter(val => val.title !== title)
-    //     arr.push({ key: chipData, label: value, title: title });
-    //     chipData = arr;
-    //   }
+    let checkTitle = true;
+    chipData.map(val => {
+      debugger
+      if (val.title === title) {
+        checkTitle = false
+      }
+    })
+    if (BoolName === true) {
+      debugger
+      // chipData.push({ key: chipData[chipData.length - 1].key, label: value });
+      if (checkTitle) {
+        chipData.push({ key: chipData, label: value, title: title });
+      } else {
+        arr = chipData.filter(val => val.title !== title)
+        arr.push({ key: chipData, label: value, title: title });
+        chipData = arr;
+      }
 
-    // } else {
-    //   arr = chipData.filter(val => val.label !== value);
-    //   chipData = arr;
-    // };
+    } else {
+      arr = chipData.filter(val => val.label !== value);
+      chipData = arr;
+    };
     this.setState({
       chipData
     }, () => this.props.setFilters(checked))
+    // alert(JSON.stringify(this.state.checked))
   }
 
   handleDelete = (value) => {
@@ -277,9 +290,14 @@ class Component extends React.Component {
     let { chipData, checked } = this.state
     arr = chipData.filter(val => val.label !== value);
     debugger
-    // alert(JSON.stringify(checked)) 
     if (checked) {
-      arr1 = Object.values(this.state.checked).filter(val => Object.values(val).indexOf(value) === -1)
+      arr1 = this.valz().filter(val => {
+        var dlt;
+        if (val !== undefined && val !== null) {
+          dlt = Object.values(val) === -1
+        }
+        return dlt;
+      })
       checked = arr1;
     }
     chipData = arr;
@@ -368,6 +386,15 @@ class Component extends React.Component {
 
     this.setState({ productDisplay: true });
   }
+  // chck_res = () => this.state.chipData.map(data => {
+  //   debugger
+  //   var value;
+  //   if (data.label.length > 0 && data.label !== "" && data.label !== undefined) {
+  //     value = <>{data.label}</>
+  //   }
+  //   return value
+  // })
+
   render() {
     console.log('urlSplitparamsEqual', this.state.checked)
 
@@ -376,7 +403,11 @@ class Component extends React.Component {
 
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
-    const chck_res = () => this.state.chipData.map(data => { return data.label })
+    //  const chck_res =  this.state.chipData.map(data => {
+    //   return (
+    //     data.label
+    //   );
+    // })
     return (
       <>
         <Hidden smDown>
@@ -567,16 +598,13 @@ class Component extends React.Component {
             <Grid container xs={12} className="p" style={{ overflow: 'scroll', height: '100%', display: openMobile ? 'none' : 'block' }}>
               <Grid container item xs={12} >
                 <Grid item xs={6} style={{ backgroundColor: "#F2F2F2", overflow: 'scroll', height: '73vh' }}>
-                  {chck_res.length > 0 ? < List className="mbl-filter-list">
-                    <ListItem className="mbl-filter-list"
+                  {/* {chck_res ?
+                    <ListItemText
+                      className='filter-mbl-font filter-mbl-fonts'
                     >
-                      <ListItemText
-                        className='filter-mbl-font filter-mbl-fonts'
-                      >
-                        llll
+                      llllccc
                         </ListItemText>
-                    </ListItem>
-                  </List> : ""}
+                    : ""} */}
                   <List className="mbl-filter-list">
                     {filter.map(row => (
                       <ListItem key={row} className="mbl-filter-list"
@@ -596,7 +624,7 @@ class Component extends React.Component {
                 {
                   this.state.filtercheck !== '' &&
                   <Grid item xs={6} style={{ overflow: 'scroll', height: '73vh' }}>
-                    <>
+                    {/* <>
                       <div className="header-chips Chip">
                         {this.state.chipData.map(data => {
                           return (
@@ -612,7 +640,7 @@ class Component extends React.Component {
                           );
                         })}
                       </div>
-                    </>
+                    </> */}
                     <>
                       {subFilter[this.state.filtercheck].map(row => {
                         return (
@@ -627,11 +655,14 @@ class Component extends React.Component {
                               icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
                               checkedIcon={<CheckBoxIcon fontSize="small" />}
                               name={this.state.filtercheck.replace(/\s/g, "")}
-                              onClick={this.handleDrawerCloseMobile} />
+                              onClick={this.handleDrawerCloseMobile}
+                            />
                             <ListItemText>
                               <Typography variant=""
                                 className={`filter-mbl-font fnts ${classes.colorMain}`}>
-                                <div onClick={this.handleDrawerCloseMobile}> {row}</div>
+                                <div
+                                  onClick={this.handleDrawerCloseMobile}
+                                > {row}</div>
                               </Typography>
                             </ListItemText>
                           </ListItem>

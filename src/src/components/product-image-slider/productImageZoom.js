@@ -118,7 +118,7 @@ class ProductImageZoom extends React.Component {
     var img = document.getElementById("imgZoom");
     var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
     var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
-    element.style.backgroundPosition = (-posX * 1.3) + "px " + (-posY * 1.3) + "px";
+    element.style.backgroundPosition = (-posX - 40) + "px " + (-posY - 40) + "px";
   }
 
   zoomOut = () => {

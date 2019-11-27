@@ -3,7 +3,25 @@
 body {
 
   margin: 0;
-  font-family: 'Robot-Black ';
+  font-family: 'Robot-Regular';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+html {
+
+  margin: 0;
+  font-family: 'Robot-Regular';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+* {
+
+  margin: 0;
+  font-family: 'Robot-Regular';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -20,7 +38,7 @@ body {
 }
 
 .MuiTypography-body1 ,.MuiTypography-h6 {
-  font-family: 'Robot-Black ' !important;
+  font-family: 'Robot-Regular' !important;
 }
 
 .shine {
@@ -83,7 +101,7 @@ body {
 
 .header-bottom {
   background: linear-gradient(to left, #fff, #ed1165, #fff) !important;
-  height: 1px !important;
+  height: 2px !important;
   border: 1px solid #f1f1f1 !important;
 }
 

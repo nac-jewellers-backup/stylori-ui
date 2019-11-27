@@ -19,6 +19,7 @@ import styles from "./style"
 import { NavLink } from 'react-router-dom';
 import { CartContext } from 'context'
 import cart from 'mappers/cart'
+// import { FilterOptionsContext } from 'context/FilterOptionsContext';
 // 
 // 
 
@@ -51,9 +52,16 @@ class Checkoutcard extends React.Component {
         }
         const { classes, data } = this.props;
         const { productsDetails, fadeImages, dataCard1 } = this.props.data;
+        // const { FilterOptionsCtx: { setcartcount } } = React.useContext(FilterOptionsContext);
+        // React.useEffect(()=>{
+        //     setcartcount({
+        //         cartcount: this.props.data.length
+        //     })
+        // },[data])
         return (
             <div style={{ marginTop: "10px" }}>
                 {this.props.data.map(dataval => (
+                    
                     dataval.productsDetails.map(val => (
                         <div className={classes.cart}>
                             <Grid container spacing={12} xs={12}  >
@@ -119,8 +127,6 @@ class Checkoutcard extends React.Component {
                         </div>
                     ))
                 ))}
-
-
                 {this.subtotals(props)}
             </div>
         )
@@ -214,6 +220,7 @@ class Checkoutcard extends React.Component {
             slidesToShow: 1,
             arrows: false,
         }
+       
         var data = this.props.data
         const { classes } = this.props;
         // alert(discounted_price)
@@ -228,7 +235,11 @@ class Checkoutcard extends React.Component {
                     {this.row(this.props)}
                 </Hidden>
                 <Hidden smUp>
-                    <CardSmallScreen />
+                    <CardSmallScreen data={this.props.data}
+                        handleDeleteLocalStorage={(event) => this.handleDeleteLocalStorage(event)}
+                        //  subtotals={Math.round(dataCard1)}
+                        checkoutbutton={this.checkoutbutton()}
+                    />
                     {this.subtotals(this.props)}
                 </Hidden>
             </div>
@@ -239,7 +250,7 @@ class Checkoutcard extends React.Component {
 const Components = props => {
     let { CartCtx: { cartFilters } } = React.useContext(CartContext);
     let content;
-    console.log('props.cartFilters.discounted_price',cartFilters)
+    console.log('props.cartFilters.discounted_price', cartFilters)
     content = <Checkoutcard {...props} cartFilters={cartFilters} />
     return content
 }

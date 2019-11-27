@@ -11,21 +11,16 @@ import { withStyles } from '@material-ui/core/styles';
 import { sortOptions } from '../../mappers/dummydata/filterdata';
 import { FilterOptionsContext } from 'context'
 const styles = theme => ({
-
     colorMain: {
         color: theme.palette.primary.main,
-
     },
-
 });
 
 const FilterHeader = (props) => {
     const { setSort, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
     const loc = window.location.search
-    
     return <Component setSort={setSort} sort={FilterOptionsCtx.sort}  {...props} />
   }
-
 
 class Component extends React.Component {
     constructor(props) {
@@ -111,7 +106,7 @@ class Component extends React.Component {
                                     className="header-chips-text"
                                     key={data.key}
                                     label={data.label}
-                                    onClick={this.props.click}
+                                    onClick={() =>this.props.click(data.label)}
                                     avatar={data.label ?
                                         <i className="search-choice-close" class="fa fa-times"></i>
                                         : ""}

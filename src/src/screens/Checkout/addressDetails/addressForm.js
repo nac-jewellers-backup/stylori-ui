@@ -19,11 +19,13 @@ const AddressComponent = (props) => {
     })} type='checkbox' checked={values.checkValue} />
     var local_storages = (localStorage.getItem("vals"));
     var isedit = (localStorage.getItem("isedit"));
+    let lgn_chk = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes : ""
     let lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
     let lgn1 = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
     const a = values.addressOne
     const b = values.addressTwo ? values.addressTwo : a
     const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
+    let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : ""
     return (
         <Container>
             <div>
@@ -39,7 +41,7 @@ const AddressComponent = (props) => {
                                 var nodes = {}
                                 data['data'] = allUserAddresses
                                 allUserAddresses['allUserAddresses'] = nodes
-                                nodes['nodes'] = [a]
+                                nodes['nodes'] = [a, b]
                                 // const nodes = [a]
                                 localStorage.setItem("vals", JSON.stringify(data))
                             }
@@ -49,12 +51,13 @@ const AddressComponent = (props) => {
                             // window.location.reload(); 
                         }} autoComplete={true}>
                             {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <h5 className='title'> Shipping Address</h5>}
+                            {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? <h5 className='title'> Edit Address</h5>: ""}
                             <p class="form-group tp" style={{ width: "480px" }}>
                                 {cl}
                             </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={5}>
                                     {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ?
-                                        <h5 className='title'>Edit Address</h5> :
+                                        <h5 className='title'>Shipping Address</h5> :
                                         <>
                                             {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
                                             {values.checkValue && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
@@ -192,7 +195,7 @@ const AddressComponent = (props) => {
                                         <h5 className='title'> Billing Address</h5>
                                         <Grid container spacing={12}>
                                             <Grid item xs={4} lg={4}>
-                                                <SimpleSelect val={"2"} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
+                                                <SimpleSelect val={"2"} name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                             </Grid>
                                             <Grid item xs={4} lg={4}>
                                                 <Input
@@ -316,7 +319,12 @@ const AddressComponent = (props) => {
                                     </Grid>
                                 } </Grid>
 
+                            {/* <div style={{float:"right"}}>
+                                
+                            </div> */}
                             <div className='login-butn'>
+                                {lgn_chk || value ? <Button onClick={() =>  handle.redirectForm()} style={{ borderRadius: "0px", padding: "6px 8px", lineHeight: "1.75", border: "1px solid #394578" }} 
+                                className=''>Cancel</Button> : ""} &nbsp;
                                 <Button type="submit" className='apply-b'>Save and Review</Button>
                             </div>
                         </form>

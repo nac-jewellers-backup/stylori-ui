@@ -31,7 +31,7 @@ const useRating = (props) => {
     useEffect(() => {
         var rating = CodData.data ? CodData.data.allCustomerReviews.nodes : ""
         if (rating.length > 0) {
-            setrating({ CodData }) 
+            setrating({ CodData })  
         }
     }, [CodData])
     useEffect(() => {
@@ -77,6 +77,7 @@ const useRating = (props) => {
     const handelSubmit = (e, props) => {
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
         if (user_id.length > 0) {
+            makeFetch(values);
             debugger
             if (window.location.search) {
                 let urlSearchparams = window.location.search;
@@ -101,7 +102,6 @@ const useRating = (props) => {
                     })
                 })
             }
-            makeFetch(values);
             // window.location.href = "/login"
         } else {
             // alert("You will be able to review only after purchasing the product")

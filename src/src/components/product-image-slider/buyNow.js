@@ -70,9 +70,9 @@ const Buydetails = (props, state, handleChanges, handleCodChange) => {
     const { data } = props;
     const { classes } = props;
     const handleLocalStorage = () => {
-        props.setCartFilters({skuId: data[0].skuId, qty: 1, price: data[0].offerPrice})
-        props.history.push('/cart')
-        
+        props.setCartFilters({ skuId: data[0].skuId, qty: 1, price: data[0].offerPrice })
+        // props.history.push('/cart')
+        window.location.pathname = "/cart"
     }
     return (
         <div>
@@ -171,11 +171,11 @@ class Component extends React.Component {
     handleChanges = (e) => {
         this.setState({ values: e.target.value, CheckForCodtitle: 'Check for COD', pincodeNotFound: false, isRequired: false })
     }
-    handleCodChange = () => { 
+    handleCodChange = () => {
         if (this.state.values) {
             this.setState({ isRequired: false })
             var variab = {}
-            variab["pincode"] = this.state.values   
+            variab["pincode"] = this.state.values
             if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
                 this.props.makeRequestCod(variab);
 

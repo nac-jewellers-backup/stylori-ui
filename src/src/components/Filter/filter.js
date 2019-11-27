@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import {
   Slide, AppBar, Toolbar, List, Typography, Divider, IconButton, ListItem,
-  Grid, TextField, ListItemText, Button, Checkbox, Paper, Hidden, Container
+  Grid, TextField, ListItemText, Button, Checkbox, Paper, Hidden, Container, Chip
 }
   from '@material-ui/core';
 import { ExpandLess, ExpandMore, } from '@material-ui/icons';
@@ -44,7 +44,7 @@ class Component extends React.Component {
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
         NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {}
       },
-      selected: '',
+      selected: [],
       filtercheck: '',
       productDisplay: true,
       check: true,
@@ -104,12 +104,58 @@ class Component extends React.Component {
     }
 
   }
-  handleChange(value, BoolName, e, TargetName) {
+  // valz = () => Object.entries(this.state.checked).map(val => {
+  //   debugger
+  //   // var valx;
+  //   var valx2;
+  //   var obj = {};
+  //   if (val !== undefined && val !== null) {
+  //     Object.values(val).map(val2 => {
+  //       val[1].map(valv => {
+  //         if (val2 !== undefined && val2 !== null) {
+  //           var vl2 = Object.keys(val2) ? Object.keys(val2)[0] : ""
+  //           valx2 = valv[0];
+  //           obj[val[0]] = { valx2: false }
+  //           this.setState({ obj })
+  //         }
+  //       })
+  //     })
+  //   }
+  //   return valx2
+  // })
+
+
+  valz = () => Object.entries(this.state.checked).map(val => {
+    debugger
+    const { checked } = this.state;
+    var obj = {};
+    var mm;
+    var valx; var valx2;
+    if (val !== undefined && val !== null) {
+      const ss = val ? val[1] : ""
+      valx = ss
+      Object.values(valx).map(val1 => {
+        var n = valx && Object.keys(valx)[0].length > 0
+        const s1s = val1 ? val1[0] : ""
+        if (val1 !== undefined && val1 !== null && n) {
+          valx2 = s1s
+          mm = valx ? Object.keys(valx)[0] : ""
+          checked[val[0]] = { [mm]: false }
+          // obj[mm] = false
+          // checked['checked'] = obj
+          this.setState({ ...checked, checked }, () => this.props.setFilters(checked))
+        }
+      })
+    }
+    // alert(JSON.stringify(this.state.checked))
+    return mm
+  })
+  handleChange(value, BoolName, e, title, TargetName) {
+    debugger
     this.props.setloadingfilters(true)
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
-
 
     console.log('queries', queries)
     // queries.map(val =>{
@@ -150,10 +196,24 @@ class Component extends React.Component {
     }
 
     let arr = [];
+    let checkTitle = true;
+    chipData.map(val => {
+      debugger
+      if (val.title === title) {
+        checkTitle = false
+      }
+    })
     if (BoolName === true) {
       debugger
       // chipData.push({ key: chipData[chipData.length - 1].key, label: value });
-      chipData.push({ key: chipData, label: value });
+      if (checkTitle) {
+        chipData.push({ key: chipData, label: value, title: title });
+      } else {
+        arr = chipData.filter(val => val.title !== title)
+        arr.push({ key: chipData, label: value, title: title });
+        chipData = arr;
+      }
+
     } else {
       arr = chipData.filter(val => val.label !== value);
       chipData = arr;
@@ -161,28 +221,47 @@ class Component extends React.Component {
     this.setState({
       chipData
     }, () => this.props.setFilters(checked))
+    // alert(JSON.stringify(this.state.checked))
   }
 
-  handleDelete = data => () => {
+  handleDelete = (value) => {
     debugger
-    this.setState(state => {
-      const chipData = [...state.chipData];
-      const chipToDelete = chipData.indexOf(data);
-      chipData.splice(chipToDelete, 1);
-      return { chipData };
-    });
+    let arr = [], arr1 = [];
+    let { chipData, checked } = this.state
+    arr = chipData.filter(val => val.label !== value);
+    debugger
+    if (checked) {
+      arr1 = this.valz().filter(val => {
+        var dlt;
+        if (val !== undefined && val !== null) {
+          dlt = Object.values(val) === -1
+        }
+        return dlt;
+      })
+      checked = arr1;
+    }
+    chipData = arr;
+    this.setState({
+      chipData,
+      checked
+    })
+    // console.log("valssss",chipData,checked)
+    // alert(JSON.stringify(data))
+    // this.setState(state => {
+    //   const chipData = [...state.chipData];
+    //   const chipToDelete = chipData.indexOf(data);
+    //   chipData.splice(chipToDelete, 1);
+    //   return { chipData };
+    // });
   };
+
   handleDrawerOpen = () => {
     this.setState({ open: true });
     document.documentElement.scrollTop = 180;
-
-
   };
   handleDrawerOpenMobile = () => {
     this.setState({ openMobile: false, productDisplay: false });
     this.setState({ CardRadio: false });
-
-
 
   };
   handleDrawerCloseMobile = () => {
@@ -247,6 +326,15 @@ class Component extends React.Component {
 
     this.setState({ productDisplay: true });
   }
+  // chck_res = () => this.state.chipData.map(data => {
+  //   debugger
+  //   var value;
+  //   if (data.label.length > 0 && data.label !== "" && data.label !== undefined) {
+  //     value = <>{data.label}</>
+  //   }
+  //   return value
+  // })
+
   render() {
     console.log('urlSplitparamsEqual', this.state.checked)
 
@@ -255,10 +343,15 @@ class Component extends React.Component {
 
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
+    //  const chck_res =  this.state.chipData.map(data => {
+    //   return (
+    //     data.label
+    //   );
+    // })
     return (
       <>
         <Hidden smDown>
-          <FilterHeader click={this.handleDelete(data)}
+          <FilterHeader click={this.handleDelete}
             handleChangeDrawer={this.handleChangeDrawer}
             chips={this.state.chipData} check={this.state.check}
           />{/*  handleDrawerOpen={this.handleDrawerOpen.bind(this)} */}
@@ -271,11 +364,8 @@ class Component extends React.Component {
               <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '210px', maxHeight: '68vh', overflowY: 'scroll' }} className="SliderFilter scrollBarFilter" id="SliderFilter" >
                 <div >
 
-
-
                   <Paper
                     className={classes.drawer}
-
                     variant="persistent"
                     anchor="left"
                     open={open}
@@ -283,8 +373,6 @@ class Component extends React.Component {
                       paper: classes.drawerPaper,
                     }}
                   >
-
-
                     <Divider />
                     <List className="fil-main-list">
                       <div style={{ margin: "5px" }}>
@@ -320,18 +408,13 @@ class Component extends React.Component {
                         </Grid>
                       </div>
                       {/* filter */}
-
                       {/* {console.log(filter)} */}
-
-
                       <div>
                         {
-
                           <>
                             {
 
                               filter.map((row, i) => {
-
                                 return (
                                   <>
                                     <ListItem key={row} className=""
@@ -343,13 +426,12 @@ class Component extends React.Component {
                                         </Typography>
                                       </ListItemText>
                                       {row === selected ? <ExpandLess className="fil-drawer-arrow" /> :
-
                                         <ExpandMore className="fil-drawer-arrow" />}
                                     </ListItem>
                                     <>
+                                      {/* {JSON.stringify()} */}
                                       {(selected === row &&
                                         subFilter[row] !== undefined) &&
-
                                         <>
                                           {
                                             subFilter[row].filter((row12, i) =>
@@ -361,8 +443,8 @@ class Component extends React.Component {
                                                       <FormControlLabel
                                                         control={
                                                           <Checkbox
-                                                            checked={this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? this.state.checked[row.replace(/\s/g, "")][row12] : false}
-                                                            onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
+                                                            checked={this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] : false}
+                                                            onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e, row)}
                                                             className="fil-submenu-icons"
                                                             value="checked"
                                                             color="primary"
@@ -374,13 +456,9 @@ class Component extends React.Component {
                                                         </Typography>}
                                                       />
                                                     </FormGroup>
-
-
-
                                                   </ListItem>
                                                 </div>);
                                               }
-
                                               )
 
                                           }
@@ -460,6 +538,13 @@ class Component extends React.Component {
             <Grid container xs={12} className="p" style={{ overflow: 'scroll', height: '100%', display: openMobile ? 'none' : 'block' }}>
               <Grid container item xs={12} >
                 <Grid item xs={6} style={{ backgroundColor: "#F2F2F2", overflow: 'scroll', height: '73vh' }}>
+                  {/* {chck_res ?
+                    <ListItemText
+                      className='filter-mbl-font filter-mbl-fonts'
+                    >
+                      llllccc
+                        </ListItemText>
+                    : ""} */}
                   <List className="mbl-filter-list">
                     {filter.map(row => (
                       <ListItem key={row} className="mbl-filter-list"
@@ -479,31 +564,51 @@ class Component extends React.Component {
                 {
                   this.state.filtercheck !== '' &&
                   <Grid item xs={6} style={{ overflow: 'scroll', height: '73vh' }}>
-                    {subFilter[this.state.filtercheck].map(row => {
+                    {/* <>
+                      <div className="header-chips Chip">
+                        {this.state.chipData.map(data => {
+                          return (
+                            <Chip
+                              className="header-chips-text"
+                              key={data.key}
+                              label={data.label}
+                              onClick={() => this.handleDelete}
+                              avatar={data.label ?
+                                <i className="search-choice-close" class="fa fa-times"></i>
+                                : ""}
+                            />
+                          );
+                        })}
+                      </div>
+                    </> */}
+                    <>
+                      {subFilter[this.state.filtercheck].map(row => {
+                        return (
+                          <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
+                            <Checkbox
+                              value="checked"
+                              color="primary"
+                              checked={this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] !== undefined ? this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] : false}
 
-                      return (
-
-                        <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
-                          <Checkbox
-                            value="checked"
-                            color="primary"
-                            checked={this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] !== undefined ? this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] : false}
-
-                            onChange={(e) => this.handleChange(row, this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] !== undefined ? !this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] : true, e)}
-                            // onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
-                            icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                            checkedIcon={<CheckBoxIcon fontSize="small" />}
-                            name={this.state.filtercheck.replace(/\s/g, "")}
-                            onClick={this.handleDrawerCloseMobile} />
-                          <ListItemText>
-                            <Typography variant=""
-                              className={`filter-mbl-font fnts ${classes.colorMain}`}>
-                              <div onClick={this.handleDrawerCloseMobile}> {row}</div>
-                            </Typography>
-                          </ListItemText>
-                        </ListItem>
-                      )
-                    })}
+                              onChange={(e) => this.handleChange(row, this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] !== undefined ? !this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] : true, e)}
+                              // onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
+                              icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                              checkedIcon={<CheckBoxIcon fontSize="small" />}
+                              name={this.state.filtercheck.replace(/\s/g, "")}
+                              onClick={this.handleDrawerCloseMobile}
+                            />
+                            <ListItemText>
+                              <Typography variant=""
+                                className={`filter-mbl-font fnts ${classes.colorMain}`}>
+                                <div
+                                  onClick={this.handleDrawerCloseMobile}
+                                > {row}</div>
+                              </Typography>
+                            </ListItemText>
+                          </ListItem>
+                        )
+                      })}
+                    </>
                   </Grid>
                 }
               </Grid>

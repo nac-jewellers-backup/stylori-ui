@@ -43,9 +43,11 @@
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out
 }
-.slick-slide img{
+
+.slick-slide img {
   display: inline !important;
 }
+
 .hovereffect img {
   display: block;
   position: relative;
@@ -116,11 +118,13 @@
   0% {
     background-position: -490px 0;
   }
+
   100% {
     background-position: 490px 0;
   }
- }
- .shine{
+}
+
+.shine {
   animation-duration: 1s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
@@ -128,19 +132,18 @@
   animation-timing-function: linear;
   background: #f6f7f8;
 
-  background-image: -webkit-linear-gradient(
-    left,
-    #f6f7f8 0%,
-    #edeef1 20%,
-    #f6f7f8 40%,
-    #f6f7f8 100%
-  );
+  background-image: -webkit-linear-gradient(left,
+      #f6f7f8 0%,
+      #edeef1 20%,
+      #f6f7f8 40%,
+      #f6f7f8 100%);
   background-size: 980px 898px;
   /* height: 898px; */
   position: relative;
- }
- .imgDiv2{
-   width:120px !important;
-   height:120px !important;
-   border:none !important;
- }
+}
+
+.imgDiv2 {
+  width: 120px !important;
+  height: 120px !important;
+  border: none !important;
+}

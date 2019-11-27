@@ -16,12 +16,11 @@ import { withRouter } from "react-router";
 const RatingForm = (props) => {
     return <RatingComponent  {...props} />
 }
-
 const RatingComponent = (props) => {
     const { classes } = props;
     const { values, handlers } = useRating();
     return (
-        <form action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e, props)}>
+        <form id="Resetform" action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e, props)}>
             <Grid container spacing={12} style={{ marginTop: '20px' }}>
                 <Grid item lg={1} />
                 <Grid item xs={12} lg={8}>
@@ -37,6 +36,7 @@ const RatingComponent = (props) => {
                         type="text"
                         name="title"
                         value={values.title}
+                        maxLength={60}
                         placeholder="Title"
                         className="rating-form-text"
                         onChange={e => handlers.handleChange('title', e.target.value)}
@@ -51,6 +51,7 @@ const RatingComponent = (props) => {
                         name="message"
                         placeholder='Your Reviews'
                         className="rating-form-text"
+                        maxLength={250}
                         value={values.message}
                         onChange={e => handlers.handleChange('message', e.target.value)}
                         helperText="please Enter review text"
@@ -58,13 +59,12 @@ const RatingComponent = (props) => {
                     <span className={`tool-tips ${classes.normalfonts}`} >Max 250 Characters</span>
                     {/* <button type="submit" >rr</button> */}
                 </Grid>
-
             </Grid>
             <Grid container spacing={12} style={{ marginTop: '20px' }}>
                 <Grid item xs={12} lg={9}>
                     <div style={{ float: "right" }}>
                         <Button className={`form-reviews-mob ${classes.fontwhite} ${classes.normalcolorback}`} type="submit">Write a Reviews</Button>
-                        <Button className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite}`} >Cancel</Button>
+                        <Button onClick={()=>document.getElementById("Resetform").reset()} className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite}`} >Cancel</Button>
                     </div>
                 </Grid>
             </Grid>

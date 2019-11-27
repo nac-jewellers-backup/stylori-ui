@@ -159,7 +159,7 @@ class CartCardCheck extends React.Component {
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>4</Avatar><Typography className='text-chck'>Payment Options</Typography>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
-                                <PaymentIndex />
+                                <PaymentIndex data={data}/>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
 
