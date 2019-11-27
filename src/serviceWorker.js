@@ -10,81 +10,76 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
-const cacheCheck = async() =>{
- debugger
- 
-    // read text from URL location
-    var request = new XMLHttpRequest();
+const cacheCheck = async () => {
+
+  // read text from URL location
+  var request = new XMLHttpRequest();
 
 
   // alert('i came in', myJson)
-  
+
   var local_storage = localStorage.getItem('version')
-  if(local_storage && local_storage.length>0){
-    debugger
-    const condition_async = async() =>{
+  if (local_storage && local_storage.length > 0) {
+    const condition_async = async () => {
       request.open('GET', '/meta.json', true);
       request.send(null);
       request.onreadystatechange = async function () {
-          // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
-            
-             var type = await request.getResponseHeader('Content-Type');
-             
-              debugger
-              if (type.indexOf("json") !== 1) {
-                var obj =await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
-                console.info('objectlocal_storage, obj.version', local_storage, obj.version)
-                console.log('jsonjsonjson', Number(local_storage) !== Number(obj.version) )
-                // alert(local_storage, obj.version)
-                 if(obj !== '' && Number(local_storage) !== Number(obj.version)){
-                localStorage.setItem('version', obj.version)
-              
-                window.location.reload()
-                 }
-    
-              }
-          // }
+        // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
+
+        var type = await request.getResponseHeader('Content-Type');
+
+        if (type.indexOf("json") !== 1) {
+          var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
+          console.info('objectlocal_storage, obj.version', local_storage, obj.version)
+          console.log('jsonjsonjson', Number(local_storage) !== Number(obj.version))
+          // alert(local_storage, obj.version)
+          if (obj !== '' && Number(local_storage) !== Number(obj.version)) {
+            localStorage.setItem('version', obj.version)
+
+            window.location.reload()
+          }
+
+        }
+        // }
       }
     }
     condition_async()
   }
-  else{
-    debugger
-const condition_async = async() =>{
-  request.open('GET', '/meta.json', true);
-  request.send(null);
-  request.onreadystatechange = async function () {
-      // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
-        
-         var type = await request.getResponseHeader('Content-Type');
-          debugger
-          // alert(request.responseText)
+  else {
+    const condition_async = async () => {
+      request.open('GET', '/meta.json', true);
+      request.send(null);
+      request.onreadystatechange = async function () {
+        // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
 
-          if (type.indexOf("json") !== 1) {
-             var obj =await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
-             console.log('json',type.indexOf("json") !== 1,typeof request.responseText, request.responseText, obj )
-            if( obj !== '') localStorage.setItem('version', obj.version)
-            
+        var type = await request.getResponseHeader('Content-Type');
+        // alert(request.responseText)
 
-          }
-      // }
-  }
-}
-condition_async()
+        if (type.indexOf("json") !== 1) {
+          var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
+          console.log('json', type.indexOf("json") !== 1, typeof request.responseText, request.responseText, obj)
+          if (obj !== '') localStorage.setItem('version', obj.version)
+
+
+        }
+        // }
+      }
+    }
+    condition_async()
   }
 }
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
-    // [::1] is the IPv6 localhost address.
-    window.location.hostname === '[::1]' ||
-    // 127.0.0.1/8 is considered localhost for IPv4.
-    window.location.hostname.match(
-      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-    )
+  // [::1] is the IPv6 localhost address.
+  window.location.hostname === '[::1]' ||
+  // 127.0.0.1/8 is considered localhost for IPv4.
+  window.location.hostname.match(
+    /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+  )
 );
-cacheCheck()
+
 // setTimeout(function(){ cacheCheck(); }, 20000);
-setInterval(function(){ cacheCheck(); }, 30000);
+setInterval(function () { cacheCheck(); }, 30000);
 export async function register(config) {
   await requestNotificationPermission();
 
@@ -100,9 +95,9 @@ export async function register(config) {
 
     window.addEventListener('load', () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
-      console.log('versionversion','123123123'); 
-      
-    
+      cacheCheck()
+
+
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
         checkValidServiceWorker(swUrl, config);
@@ -112,7 +107,7 @@ export async function register(config) {
         navigator.serviceWorker.ready.then(() => {
           console.log(
             'This web app is being served cache-first by a service ' +
-              'worker. To learn more, visit https://bit.ly/CRA-PWA'
+            'worker. To learn more, visit https://bit.ly/CRA-PWA'
           );
         });
       } else {
@@ -135,8 +130,8 @@ function registerValidSW(swUrl, config) {
         }
         installingWorker.onstatechange = async () => {
           if (installingWorker.state === 'installed') {
-            let updating = false, 
-              updateMessage='New version of app is installed',
+            let updating = false,
+              updateMessage = 'New version of app is installed',
               installedMessage = 'Your app is installed and works offline'
             if (navigator.serviceWorker.controller) {
               // At this point, the updated precached content has been fetched,
@@ -144,13 +139,13 @@ function registerValidSW(swUrl, config) {
               // content until all client tabs are closed.
               console.log(
                 'New content is available and will be used when all ' +
-                  'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
+                'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
               );
 
               // Execute callback
               if (config && config.onUpdate) {
                 config.onUpdate(registration);
-                updating=true
+                updating = true
               }
             } else {
               // At this point, everything has been precached.
@@ -174,20 +169,20 @@ function registerValidSW(swUrl, config) {
     });
 }
 
-async function requestNotificationPermission(){
-  if(!check()) return false;
+async function requestNotificationPermission() {
+  if (!check()) return false;
   const permission = await window.Notification.requestPermission();
-  if(permission !== 'granted'){} //alert('Enable notifications to have great experience!');
+  if (permission !== 'granted') { } //alert('Enable notifications to have great experience!');
   else {
-    if(!localStorage.getItem('firstnotify')){
+    if (!localStorage.getItem('firstnotify')) {
       await sendNotification('Ohoo.. your first notification 🎉🙌');
-      localStorage.setItem('firstnotify',true);
+      localStorage.setItem('firstnotify', true);
     }
     return true;
   };
 }
 
-function check(){
+function check() {
 
   if (!('serviceWorker' in navigator)) {
     console.log('Sorry notifications are not yet supported');//alert
@@ -201,7 +196,7 @@ function check(){
   return true;
 }
 
-async function sendNotification(message){
+async function sendNotification(message) {
   check() ? await new Notification(message) : await requestNotificationPermission();
 }
 
@@ -241,10 +236,10 @@ export function unregister() {
   }
 }
 
-window.addEventListener('online',e => {
+window.addEventListener('online', e => {
   sendNotification('Lost internet connection !')
 })
 
-window.addEventListener('offline',e => {
+window.addEventListener('offline', e => {
   sendNotification('Network connection restored !')
 })

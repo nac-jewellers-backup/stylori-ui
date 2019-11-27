@@ -19,13 +19,16 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import styles from './styles';
 import { FilterOptionsContext } from 'context'
-
-
+import { NetworkContext } from 'context/NetworkContext';
+import { PRODUCTLIST, conditions, seoUrlResult } from 'queries/productListing';
 const PersistentDrawerLeft = (props) => {
   const { setSort, setFilters, setloadingfilters, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
   const loc = window.location.search
+  const { NetworkCtx } = React.useContext(NetworkContext);
 
-  return <Component setSort={setSort} setFilters={setFilters} setloadingfilters={setloadingfilters} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort} {...props} />
+  return <Component setSort={setSort} setFilters={setFilters} setloadingfilters={setloadingfilters} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort}
+    uri={NetworkCtx.graphqlUrl}
+    {...props} />
 }
 
 
@@ -84,7 +87,97 @@ class Component extends React.Component {
     }
     // This is used for checking the check boxes if we copy and pasted the url to new tab or new window 
     // *****Ends*****
+    var paramsfilter;
+    var abcd;
+    const filters_checked = () => {
+      const {checked} = this.state
+      if (window.location.pathname.split('/')[1] !== 'jewellery') {
+        function status(response) {
 
+          if (response.status >= 200 && response.status < 300) {
+            return Promise.resolve(response)
+          } else {
+            return Promise.reject(new Error(response.statusText))
+          }
+        }
+
+        function json(response) {
+          return response.json()
+        }
+        var a = {}
+        let pathnameSplit = window.location.pathname.split('/')
+        const splitHiphen = () => {
+          if (pathnameSplit[1].indexOf('-')) {
+            return pathnameSplit[1].split('-')
+          }
+        }
+
+        var conditionfiltersSeo = { seofilter: { seoUrl: { in: splitHiphen() } } }
+        //  alert(JSON.stringify(this.state.checked))
+        fetch(this.props.uri, {
+
+          method: 'post',
+          // body: {query:seoUrlResult,variables:splitHiphen()}
+          // body: JSON.stringify({query:seoUrlResult}),
+
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            query: seoUrlResult,
+            variables: { ...conditionfiltersSeo },
+          })
+        })
+          .then(status)
+          .then(json)
+          .then(function (data) {
+            console.log('Request succeeded with JSON response', data);
+            // alert(data)
+            // var {checked} = this.state
+            //    data.data.allSeoUrlPriorities.nodes.map(val => {
+            //     alert(JSON.stringify(data))
+            //     let attrName = val.attributeName.replace(/\s/g, '')
+            //     let attrVal = val.attributeValue
+            //     checked[attrName] = {[attrVal]:true}
+            //     data.allSeoUrlPriorities.nodes.map(val =>{return val})
+            //     this.setState({checked},()=>{alert(JSON.stringify(checked))})
+            //     return abcd = a
+
+            //     // this.handleChange(()=>{}, true, ()=>{}, {}, paramsfilter)
+
+            // })
+            paramsfilter = data && data.data && data.data.allSeoUrlPriorities && data.data.allSeoUrlPriorities.nodes && data.data.allSeoUrlPriorities.nodes.map(val => {
+              var attrName = val.attributeName.replace(/\s/g, '')
+              var attrVal = val.attributeValue
+              
+              a[attrName] = {[attrVal] : true}
+              // checked[attrName] = a
+
+              // alert(JSON.stringify(attrName))
+              return a
+
+              // return val
+            })
+            // this.setState(checked)
+            debugger
+            Object.entries(paramsfilter[0]).map(val=>{
+              var keys = val[0]
+              var values = val[1]
+              checked[keys] = values
+             
+            })
+            this.setState(checked)
+            debugger
+          }).catch(function (error) {
+            console.log('Request failed', error);
+          });
+      }
+  
+    }
+    filters_checked()
+    if(paramsfilter && paramsfilter.length>0){
+      this.handleChange(()=>{}, true, ()=>{}, {}, paramsfilter)
+     }
 
   }
 
@@ -196,28 +289,28 @@ class Component extends React.Component {
     }
 
     let arr = [];
-    let checkTitle = true;
-    chipData.map(val => {
-      debugger
-      if (val.title === title) {
-        checkTitle = false
-      }
-    })
-    if (BoolName === true) {
-      debugger
-      // chipData.push({ key: chipData[chipData.length - 1].key, label: value });
-      if (checkTitle) {
-        chipData.push({ key: chipData, label: value, title: title });
-      } else {
-        arr = chipData.filter(val => val.title !== title)
-        arr.push({ key: chipData, label: value, title: title });
-        chipData = arr;
-      }
+    // let checkTitle = true;
+    // chipData.map(val => {
+    //   debugger
+    //   if (val.title === title) {
+    //     checkTitle = false
+    //   }
+    // })
+    // if (BoolName === true) {
+    //   debugger
+    //   // chipData.push({ key: chipData[chipData.length - 1].key, label: value });
+    //   if (checkTitle) {
+    //     chipData.push({ key: chipData, label: value, title: title });
+    //   } else {
+    //     arr = chipData.filter(val => val.title !== title)
+    //     arr.push({ key: chipData, label: value, title: title });
+    //     chipData = arr;
+    //   }
 
-    } else {
-      arr = chipData.filter(val => val.label !== value);
-      chipData = arr;
-    };
+    // } else {
+    //   arr = chipData.filter(val => val.label !== value);
+    //   chipData = arr;
+    // };
     this.setState({
       chipData
     }, () => this.props.setFilters(checked))

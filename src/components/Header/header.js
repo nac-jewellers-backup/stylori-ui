@@ -158,8 +158,9 @@ class Header extends Component {
                       <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Stories</a> */}
                       {
                         (menuListHeader.map(listName => {
+                          debugger
                           return (
-                            <a href={`/jewellery`} className={` ${classes.menuListCursor} ${classes.colorLight} `} onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: listName.replace(/ +/g, "") }) }}><i class="fa fa-plus-circle"></i>&nbsp;{listName}</a>
+                            <a href={listName.url} className={` ${classes.menuListCursor} ${classes.colorLight} `} onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: listName.title.replace(/ +/g, "") }) }}><i class="fa fa-plus-circle"></i>&nbsp;{listName.title}</a>
                           )
                         }))
                       }

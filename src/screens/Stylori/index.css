@@ -27,7 +27,7 @@
     vertical-align: center
 }
 
-@media screen and (max-width: 1442px) {
+@media screen and (max-width: 1438px) {
 
     .imagePrevios {
         width: 35px !important;
@@ -41,7 +41,7 @@
         border-left: 0px;
         background: none;
         left: 0px;
-        top: 38% !important;
+        top: 33% !important;
         margin-top: -30px;
         font-size: 20px;
         color: #fff;
@@ -65,13 +65,12 @@
         z-index: 9;
         float: right;
         right: 0px;
-        top: 38% !important;
+        top: 33% !important;
         margin-top: -30px;
     }
 }
 
 .imagePrevios {
-
 
     width: 35px !important;
     height: 42px !important;

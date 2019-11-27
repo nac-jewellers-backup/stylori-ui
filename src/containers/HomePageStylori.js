@@ -29,6 +29,7 @@ class HomeStylori extends React.Component {
     previous = () => {
         this.slider.current.slickPrev();
     }
+
     render() {
 
         const dataCarousel = {
@@ -76,15 +77,24 @@ class HomeStylori extends React.Component {
 
                 <Grid item xs={12} alignItems="center">
                     <Hidden smDown>
-                        {homePageStylori.carouselTopSetting.arrowsImg && <>
-                            <Grid onClick={this.previous} className={"imagePrevios"}>
+                        {homePageStylori.carouselTopSetting.arrowsImg && <Grid container>
+                            <Grid item onClick={this.previous} className={"imagePrevios"}>
                             </Grid>
-                            <Grid onClick={this.next} className={"imagenext"}>
+                            <Grid item onClick={this.next} className={"imagenext"}>
                             </Grid>
-                        </>
+                        </Grid>
                         }
                     </Hidden >
-                    <Slideshow sliderRef={this.slider} fadeImages={homePageStylori.fadeImages} dataCarousel={homePageStylori.carouselTopSetting} imgClass={`classforimage`} />
+                    <Slideshow sliderRef={this.slider} dataCarousel={homePageStylori.carouselTopSetting} >
+                        {homePageStylori.fadeImages.map((val, index) =>
+                            <Grid container key={index}>
+                                <a href={val.navigateUrl}>
+                                    <img src={val.img} style={{ width: "100%", height: "100%" }} />
+                                </a>
+                            </Grid>
+
+                        )}
+                    </Slideshow>
                 </Grid>
                 <Hidden mdUp>
                     <Grid container >
