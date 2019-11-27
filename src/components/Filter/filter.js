@@ -197,26 +197,6 @@ class Component extends React.Component {
     }
 
   }
-  // valz = () => Object.entries(this.state.checked).map(val => {
-  //   debugger
-  //   // var valx;
-  //   var valx2;
-  //   var obj = {};
-  //   if (val !== undefined && val !== null) {
-  //     Object.values(val).map(val2 => {
-  //       val[1].map(valv => {
-  //         if (val2 !== undefined && val2 !== null) {
-  //           var vl2 = Object.keys(val2) ? Object.keys(val2)[0] : ""
-  //           valx2 = valv[0];
-  //           obj[val[0]] = { valx2: false }
-  //           this.setState({ obj })
-  //         }
-  //       })
-  //     })
-  //   }
-  //   return valx2
-  // })
-
 
   valz = () => Object.entries(this.state.checked).map(val => {
     debugger
@@ -249,19 +229,6 @@ class Component extends React.Component {
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
-
-    console.log('queries', queries)
-    // queries.map(val =>{
-    // chipData.push({ key:'1', label: 'o' });
-    // })
-    // chipData.push({ key: queries.key, label: value });
-
-    // if (BoolName === true) {
-    //   chipData.push({ key: queries.key, label: value });
-    // } else {
-    //   arr = chipData.filter(val => val.label !== value);
-    //   chipData = arr;
-    // }
 
     if (TargetName === undefined) {
       let checkedvalue = {};

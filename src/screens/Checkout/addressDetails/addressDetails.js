@@ -5,17 +5,6 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from "./style"
 
 class Addressdetails extends React.Component {
-    // constructor(props) {
-    //     super(props)
-    // }
-    // state = {
-    //     values: localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
-    // }
-    // componentWillReceiveProps(newprops) {
-    //     this.setState({
-    //         values: this.props.values
-    //     })
-    // }
     Addressdetails = (props, value) => {
         const { setValues, values } = props;
         const cl = <input onChange={(e) => {
@@ -33,8 +22,51 @@ class Addressdetails extends React.Component {
         var objj = {};
         var objj1 = {};
 
-        objj['addressOne'] = value.addressOne
-        objj1['addressTwo'] = value.addressTwo
+        var chk_locl = value && value.addressOne ? Object.values(value && value.addressOne) : ""
+        var chk_locl2 = value && value.addressTwo ? Object.values(value && value.addressTwo) : ""
+
+        if (chk_locl.length > 0 && chk_locl2.length > 0) {
+            objj['addressOne'] = value.addressOne
+            objj1['addressTwo'] = value.addressTwo
+        }
+        const dlt_locl1 = (dlt) => {
+            var val;
+            if (chk_locl !== undefined || chk_locl !== null) {
+                if (chk_locl === chk_locl2 || chk_locl2 == "") {
+                    localStorage.removeItem("valuessetdata")
+                    val = ""
+                    window.location.reload();
+                    return false
+                }
+            }
+            if (chk_locl !== undefined || chk_locl !== null) {
+                if (chk_locl !== chk_locl2|| chk_locl2 == "") {
+                    val = objj
+                    window.location.reload();
+                }
+            }
+
+            return JSON.stringify(val)
+        }
+        const dlt_locl2 = (dlt) => {
+            var val;
+            if (chk_locl2 !== undefined || chk_locl2 !== null) {
+                if (chk_locl === chk_locl2 || chk_locl == "") {
+                    localStorage.removeItem("valuessetdata")
+                    val = ""
+                    window.location.reload();
+                    return false
+                }
+            }
+            if (chk_locl2 !== undefined || chk_locl2 !== null) {
+                if (chk_locl !== chk_locl2 || chk_locl == "") {
+                    val = objj1
+                    window.location.reload();
+                }
+            }
+            return JSON.stringify(val)
+        }
+
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>
@@ -71,10 +103,9 @@ class Addressdetails extends React.Component {
 
                                 {localStorage.getItem("valuessetdata") ? <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
                                     onClick={() => {
-                                        localStorage.removeItem("valuessetdata")
-                                        localStorage.setItem("valuessetdata", JSON.stringify(objj1))
+                                        // localStorage.removeItem("valuessetdata")
+                                        localStorage.setItem("valuessetdata", dlt_locl2())
                                         // localStorage.removeItem('vals')
-                                        window.location.reload();
                                     }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> : ""}
                                 {localStorage.getItem("vals") ? <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
                                     onClick={() => {
@@ -121,10 +152,9 @@ class Addressdetails extends React.Component {
                                     {localStorage.getItem("valuessetdata") ?
                                         <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
                                             onClick={() => {
-                                                localStorage.removeItem("valuessetdata")
-                                                localStorage.setItem("valuessetdata", JSON.stringify(objj))
+                                                // localStorage.removeItem("valuessetdata")
+                                                localStorage.setItem("valuessetdata", dlt_locl1())
                                                 // localStorage.removeItem('vals')
-                                                window.location.reload();
                                                 // localStorage.getItem("valuessetdata")==={}?this.props.redirectForm():""
                                             }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> : ""}
                                     {localStorage.getItem("vals") ? <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}

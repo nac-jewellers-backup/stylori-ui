@@ -79,9 +79,9 @@ const Addressforms = () => {
             // }
             // if (window.cache.addressTwo == true) {
             // window.cache = {}
-            values['addressTwo']['state'] = res
-            values['addressTwo']['country'] = res1
-            values['addressTwo']['city'] = res2
+            // values['addressTwo']['state'] = res
+            // values['addressTwo']['country'] = res1
+            // values['addressTwo']['city'] = res2
             // }
 
             setValues({ ...values, values })
