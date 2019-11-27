@@ -8,29 +8,29 @@
   }
   @font-face {
     font-family: 'Robot-Bold';
-    src: url('./roboto/Roboto-Bold_0.ttf');
-  }
+    src: url('./roboto/Roboto-Bold.ttf');
+  } 
   @font-face {
     font-family: 'Robot-Italic';
-    src: url('./roboto/Roboto-Italic_0.ttf');
+    src: url('./roboto/Roboto-Italic.ttf');
   }
   @font-face {
     font-family: 'Robot-Medium';
-    src: url('./roboto/Roboto-Medium_0.ttf');
+    src: url('./roboto/Roboto-Medium.ttf');
   }
   @font-face {
     font-family: 'Robot-MediumItalic';
-    src: url('./roboto/Roboto-MediumItalic_0.ttf');
+    src: url('./roboto/Roboto-MediumItalic.ttf');
   }
   @font-face {
     font-family: 'Robot-Regular';
-    src: url('./roboto/Roboto-Regular_0.ttf');
+    src: url('./roboto/Roboto-Regular.ttf');
   }
   @font-face {
     font-family: 'Robot-Thin';
-    src: url('./roboto/Roboto-Thin_0.ttf');
+    src: url('./roboto/Roboto-Thin.ttf');
   }
   @font-face {
     font-family: 'Robot-ThinItalic';
-    src: url('./roboto/Roboto-ThinItalic_0.ttf');
+    src: url('./roboto/Roboto-ThinItalic.ttf');
   }

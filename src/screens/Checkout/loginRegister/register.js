@@ -12,7 +12,7 @@ const Register = (props) => {
 const RegisterComponent = (props) => {
     const { values, handlers, data } = useRegister(() => props.changePanel(2));
     var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
-    var ccc = data.user_profile_id ? data.user_profile_id : ""
+    var ccc = data.message ? data.message : ""
     console.log(values, 'valuesvaluesstate')
     return (
         <div className='pt-sm'>
@@ -29,7 +29,7 @@ const RegisterComponent = (props) => {
                             type="email"
                             name="email"
                             value={values.email}
-                            error={values.error && values.error.emerr? true : false}
+                            error={values.error && values.error.emerr ? true : false}
                             // helperText={values.errortext && values.errortext.emerr}
                             placeholder="Enter your email Id"
                             onChange={e => handlers.handleChange('email', e.target.value)}
@@ -54,7 +54,7 @@ const RegisterComponent = (props) => {
                             name="confirmpassword"
                             value={values.confirmpassword}
                             error={values.error && values.error.cnfpasserr ? true : false}
-                            helperText={values.errortext && values.errortext.cnfpasserr}
+                            // helperText={values.errortext && values.errortext.cnfpasserr}
                             placeholder="Enter your Confirm password"
                             onChange={e => handlers.handleChange('confirmpassword', e.target.value)}
                         />
@@ -71,7 +71,7 @@ const RegisterComponent = (props) => {
                                     name="firstname"
                                     value={values.firstname}
                                     error={values.error && values.error.firstname ? true : false}
-                                    helperText={values.errortext && values.errortext.firstname}
+                                    // helperText={values.errortext && values.errortext.firstname}
                                     placeholder="Enter FirstName*"
                                     onChange={e => handlers.handleChange('firstname', e.target.value)}
                                     className='text-f'
@@ -87,7 +87,7 @@ const RegisterComponent = (props) => {
                                     name="lastname"
                                     value={values.lastname}
                                     error={values.error && values.error.lastname ? true : false}
-                                    helperText={values.errortext && values.errortext.lastname}
+                                    // helperText={values.errortext && values.errortext.lastname}
                                     placeholder="Enter LastName*"
                                     onChange={e => handlers.handleChange('lastname', e.target.value)}
                                     className='text-f'

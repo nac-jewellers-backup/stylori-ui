@@ -11,21 +11,16 @@ import { withStyles } from '@material-ui/core/styles';
 import { sortOptions } from '../../mappers/dummydata/filterdata';
 import { FilterOptionsContext } from 'context'
 const styles = theme => ({
-
     colorMain: {
         color: theme.palette.primary.main,
-
     },
-
 });
 
 const FilterHeader = (props) => {
     const { setSort, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
     const loc = window.location.search
-    
     return <Component setSort={setSort} sort={FilterOptionsCtx.sort}  {...props} />
   }
-
 
 class Component extends React.Component {
     constructor(props) {

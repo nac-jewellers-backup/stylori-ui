@@ -21,44 +21,61 @@ const useLogin = (changePanel) => {
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/signin', {}, []);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
-
     React.useEffect(() => {
-        var a = data.userprofile ? data.userprofile : ""
+        debugger
+        var a = CodData ? CodData : ""
         if (JSON.stringify(a).length > 10) {
+            localStorage.setItem("vals", JSON.stringify(CodData))
+            changePanel(3)
+        }
+    }, [CodData])
+    React.useEffect(() => {
+        var ms = data && data.message
+        if (ms) {
+            values['error']['passerr'] = true
+            values['errortext']['passerr'] = '!Invalid password'
+            setValues({
+                ...values,
+                values,
+            })
+            // return false
+        } else {
+            var a = data.userprofile ? data.userprofile : ""
+        if (JSON.stringify(a).length > 10) {
+            values['error']['passerr'] = false
+            values['errortext']['passerr'] = ''
+            setValues({
+                ...values,
+                values,
+            })
             var bbn = data.userprofile.id ? data.userprofile.id : ""
-            if (bbn || bbn !== undefined) {
+            if (bbn.length > 0 || bbn !== undefined) {
                 localStorage.setItem("email", data.userprofile.email)
                 var obj = {}
                 var bb = data.userprofile.id ? data.userprofile.id : ""
                 obj['userprofileId'] = bb
                 localStorage.setItem('user_id', bb)
                 makeRequestCod(obj);
+                // changePanel(3)
             }
-
         }
+        }
+
     }, [data])
-
-    React.useEffect(() => {
-        var a = CodData ? CodData : ""
-        if (JSON.stringify(a).length > 10) {
-            localStorage.setItem("vals", JSON.stringify(CodData))
-        }
-    }, [CodData])
     const handleChange = (type, value) => {
-        if (values.email !== null || errmsg.length < 0) {
+        if (values.email !== null || type === 'email') {
             values['error']['emerr'] = false
             values['errortext']['emerr'] = ''
         }
         if (values.password !== null) {
             values['error']['passerr'] = false
             values['errortext']['passerr'] = ''
-
         }
         setValues({
             ...values,
             [type]: value
         })
-        makeFetch(values)
+        // makeFetch(values)
     }
 
     const handleInvalid = (type, status) => {
@@ -72,6 +89,7 @@ const useLogin = (changePanel) => {
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
+        debugger
         if (values.email === null) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'
@@ -90,16 +108,7 @@ const useLogin = (changePanel) => {
             return false
         }
         makeFetch(values);
-        if (errmsg.length > 0) {
-            values['error']['passerr'] = true
-            values['errortext']['passerr'] = 'Invalid Password!'
-            setValues({
-                ...values,
-                values,
-            })
-            return false
-        }
-            changePanel(3)
+        // changePanel(3)
 
     }
 

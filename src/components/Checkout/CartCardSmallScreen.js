@@ -11,85 +11,94 @@ import Pricing from '../Pricing/index'
 import { productcarddatas } from '../../mappers';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
+import { NavLink } from 'react-router-dom';
+
 function MediaControlCard(props) {
   const { classes } = props;
   const { dataCard1 } = props.data;
+  debugger
 
   return (
     <div style={{ background: "whitesmoke", paddingTop: "10px" }}>
-      {dataCard1.map(val => (
-        <Card className={classes.card}>
-          <div style={{ width: "195px" }}>
-            <img
-              src='http://www.voguediamond.co.uk/uploads/voguediamond/product_168_3657550958c487cc8.jpg'
-              width="100%"
-              height="100%"
-              alt=""
-            />
-          </div>
-          <div className={classes.details}>
-            <CardContent className={classes.content}>
-              <Typography
-                component="div"
-                variant="subtitle1"
-                className={`${classes.contents} ${classes.normalfonts}`}
-              >
-                {val.title}
-              </Typography>
-
-
-              <Pricing price={val.price} offerPrice={val.offerPrice}  >
-                <label className={classes.labelPrice}>
-                  <Typography
-                    variant="subtitle1"
-                    color="textSecondary"
-                    className={classes.labelPriceDel}
-                  >
-                    <del>{val.offerPrice}</del>
-                  </Typography>
-                  &nbsp;
-            <Typography
-                    variant="subtitle1"
-                    style={{ color: "#ed1165" }}
-                    className={classes.labelPriceOff}
-                  >
-                    {val.price}
-                  </Typography>
-                </label>
-              </Pricing>
-            </CardContent>
-            <div className={classes.controls}>
-              <Button
-                className={`btn-cart-resp ${classes.buttons}`}
-                variant="contained"
-                style={{
-                  color: "white",
-                  fontSize: "0.7rem"
-                }}
-              >
-                Buy Now
-          </Button>
-              <label
-                variant="contained"
-                style={{ cursor: "pointer", fontSize: "0.9rem" }}
-                className={`${classes.normalfonts}`}
-              >
-                <i style={{ fontSize: "16px" }} class="fa">
-                  &#xf014;
-            </i>
-                &nbsp;
-            <span style={{ borderBottom: "1px solid #394578" }}>Remove</span>
-              </label>
+      <span style={{ color: "#666", fontSize: "14px", margin: "0px 0px 10px" }}>   Shopping cart  </span> <br />
+      <div> <span style={{ color: "#394578", fontSize: "14px", fontWeight: "bold" }}>Item:</span> ({props.data.length})</div><br />
+      {props.checkoutbutton}<br /><br /><br />
+      {props.data.map(dataval => (
+        dataval.productsDetails.map(val => (
+          <Card className={classes.card}>
+            <div style={{ width: "195px" }}>
+              <img
+                src={dataval.fadeImages[0]}
+                width="100%"
+                height="100%"
+                alt=""
+              />
             </div>
-          </div>
-        </Card>
+            <div className={classes.details}>
+              <CardContent className={classes.content}>
+                <Typography
+                  component="div"
+                  variant="subtitle1"
+                  className={`${classes.contents} ${classes.normalfonts}`}
+                >
+                  {val.header}
+                </Typography>
+
+                {dataval.dataCard1.map(val =>
+                  <Pricing price={val.price} offerPrice={val.offerPrice}  >
+                    <label className={classes.labelPrice}>
+                      <Typography
+                        variant="subtitle1"
+                        color="textSecondary"
+                        className={classes.labelPriceDel}
+                      >
+                        <del>{val.offerPrice}</del>
+                      </Typography>
+                      &nbsp;
+            <Typography
+                        variant="subtitle1"
+                        style={{ color: "#ed1165" }}
+                        className={classes.labelPriceOff}
+                      >
+                        {val.price}
+                      </Typography>
+                    </label>
+                  </Pricing>
+                )}
+              </CardContent>
+              <div className={classes.controls}>
+                <NavLink to="/checkout" style={{ textDecoration: 'none' }}>
+                  <Button
+                    className={`btn-cart-resp ${classes.buttons}`}
+                    variant="contained"
+                    style={{
+                      color: "white",
+                      fontSize: "0.7rem"
+                    }}
+                  >
+                    Buy Now
+          </Button>
+                </NavLink>
+
+                <label
+                  variant="contained"
+                  style={{ cursor: "pointer", fontSize: "0.9rem" }}
+                  className={`${classes.normalfonts}`}
+                >
+                  <i style={{ fontSize: "16px" }} class="fa">
+                    &#xf014;
+            </i>
+                  &nbsp;
+
+           <div id={val.namedetail[0].details} onClick={(event) => props.handleDeleteLocalStorage(event)}>  <span
+                    style={{ borderBottom: "1px solid #394578" }}>Remove</span>
+                  </div></label>
+              </div>
+            </div>
+          </Card>
+        ))
       ))}
     </div>
   );
 }
-export default withStyles(styles)(props => {
-  const { mapped } = useDummyRequest(productcarddatas);
-  if (Object.keys(mapped).length === 0) return ''
-
-  return <MediaControlCard {...props} data={mapped} />
-});
+export default withStyles(styles)(MediaControlCard)

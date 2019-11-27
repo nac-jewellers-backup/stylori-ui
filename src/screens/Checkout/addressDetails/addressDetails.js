@@ -29,18 +29,11 @@ class Addressdetails extends React.Component {
         const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
         let lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
         let lgn1 = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
-
-        //         const nmj = () => {
-        //             if (objj === objj1) {
-        //           objj['value'] = value
-        //       } else {
-        //           objj['addressOne'] = value.addressOne
-        //       }
-        // }
-
+        debugger
         var objj = {};
-        objj['addressOne'] = value.addressOne
         var objj1 = {};
+
+        objj['addressOne'] = value.addressOne
         objj1['addressTwo'] = value.addressTwo
         return (
             <div className='pt-sm'>
