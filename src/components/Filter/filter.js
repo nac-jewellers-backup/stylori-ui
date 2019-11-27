@@ -230,7 +230,7 @@ class Component extends React.Component {
       Object.values(valx).map(val1 => {
         var n = valx && Object.keys(valx)[0].length > 0
         const s1s = val1 ? val1[0] : ""
-        if (val1 !== undefined && val1 !== null && n) {
+        if (val1 !== undefined && val1 !== null && n) { 
           valx2 = s1s
           mm = valx ? Object.keys(valx)[0] : ""
           checked[val[0]] = { [mm]: false }
