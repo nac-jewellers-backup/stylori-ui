@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { List, ListItem, ListItemText } from "@material-ui/core";
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+
 
 
 
@@ -57,20 +57,17 @@ class MenuListItem extends Component {
 
                         (this.props.listHoverItem['menuOne']).map(menuList =>
                             (
-                                
-                               
-                                    <ListItem component="li" className={`ListColor ${classes.listHover} ${classes.colorMain}`} onMouseOver={() => this.props.handleMouseOver(menuList.value)}
 
-                                    >
+                                <ListItem component="li" className={`ListColor ${classes.listHover} ${classes.colorMain}`} onMouseOver={() => this.props.handleMouseOver(menuList.value)}
 
+                                >
+                                    <a href={menuList.url} style={{ textDecoration: 'none' }}>
                                         <ListItemText variant >
-                                        <Link href={menuList.url} style={{ padding:'none' }}>
-                                            {menuList.title}
-                                            </Link>
-                                        </ListItemText>
 
-                                    </ListItem>
-                               
+                                            {menuList.title}
+                                        </ListItemText>
+                                    </a>
+                                </ListItem>
                             ))}
                 </List>
                 <hr className={`${classes.colorMainBorder}`} />

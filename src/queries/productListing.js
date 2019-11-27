@@ -149,8 +149,15 @@ export const filterProductMatrix = (type, value) => {
     }
     case "NoOfStones":{
       fc={
-        table:"productStonecolorsByProductId",
-        type:"stonecolor"
+        table:"productStonecountsByProductId",
+        type:"stonecount"
+      }
+      break;
+    }
+    case "StoneShape":{
+      fc={
+        table:"productGemstonesByProductSku",
+        type:"gemstoneShape"
       }
       break;
     }

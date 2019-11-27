@@ -285,8 +285,8 @@ const Provider = (props) => {
 
 var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mappedFilters.seo_url : window.location.pathname.split('/')[1]  
         const conditionfiltersSeo = { seofilter: { seoUrl: { in: paramObjects(path_name) } } }
-        var req = async() => {await makeRequestSeo(conditionfiltersSeo)}
-        req()
+        makeRequestSeo(conditionfiltersSeo)
+    
         console.log('paramObjects', paramObjects(mappedFilters.seo_url), DataSeoQuery, conditionfiltersSeo)
 
         console.log('DataSeoQuery', DataSeoQuery)
@@ -349,8 +349,8 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                 variables = { ...conditionFilters,orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
             }
             
-           var req = async() =>{await makeRequest(variables)}
-           req()
+          makeRequest(variables)
+   
             console.log('came inside view moreproducts', filters)
 
         }
@@ -383,7 +383,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
         const mapped = productlist(data, CDN_URL);
         const newUpdatedList = filterLogic(dataArr, mapped);
         setDataArr(newUpdatedList);
-    }, [data]);
+    }, [data, error, loading]);
 
     const updatefiltersSort = () => {
         if ((Object.entries(DataSeoQuery).length !== 0 && DataSeoQuery.constructor === Object)) {
@@ -436,8 +436,8 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                     variables = { ...conditionFilters,orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
 
-                var req = async() =>{await makeRequest(variables)}
-                req()
+            makeRequest(variables)
+            
             }
         }
     }
