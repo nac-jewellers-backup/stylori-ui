@@ -30,7 +30,7 @@ import cart from '../../mappers/cart';
 class CartCardCheck extends React.Component {
     state = {
         expanded: 'panel' + (localStorage.getItem("panel") ? localStorage.getItem("panel") : 1),
-        // expanded: 'panel2',
+        // expanded: 'panel1',
         // expandedlimit: localStorage.getItem("panel") ? localStorage.getItem("panel") : 1,
         // expandedlimit: 1,
         mailId: null
@@ -159,7 +159,7 @@ class CartCardCheck extends React.Component {
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>4</Avatar><Typography className='text-chck'>Payment Options</Typography>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
-                                <PaymentIndex />
+                                <PaymentIndex data={data}/>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
 

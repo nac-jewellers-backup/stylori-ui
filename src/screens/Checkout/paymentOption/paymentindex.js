@@ -88,7 +88,7 @@ class PaymentIndex extends React.Component {
                             <Typography className="py-head">  <div className="code-icon"></div>&nbsp;   Cash On Delivery (COD) </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails style={{ padding: "0px" }}>
-                            <CashonDelivey />
+                            <CashonDelivey data={this.props.data}/>
                         </ExpansionPanelDetails>
                     </ExpansionPanel>
                 </Hidden>
