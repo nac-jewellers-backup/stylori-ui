@@ -446,7 +446,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     }, [seoData])
     var newObj = {}
     const updateFilters = async (filters) => {
-        
+        debugger
         setFilters(filters);
         // setloadingfilters(true)
         var len;
