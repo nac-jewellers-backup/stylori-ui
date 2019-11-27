@@ -59,14 +59,14 @@ class MenuListItem extends Component {
                             (
 
                                 <ListItem component="li" className={`ListColor ${classes.listHover} ${classes.colorMain}`} onMouseOver={() => this.props.handleMouseOver(menuList.value)}
-                                    onClick={() => { window.location.href = '/' + menuList.url }}
+
                                 >
+                                    <a href={menuList.url} style={{ textDecoration: 'none' }}>
+                                        <ListItemText variant >
 
-                                    <ListItemText variant >
-
-                                        {menuList.title}
-                                    </ListItemText>
-
+                                            {menuList.title}
+                                        </ListItemText>
+                                    </a>
                                 </ListItem>
                             ))}
                 </List>
@@ -76,14 +76,14 @@ class MenuListItem extends Component {
                         (this.props.listHoverItem !== undefined) &&
                         this.props.listHoverItem['menuTwo'].map(menuListFilter => (
                             <ListItem component="li" className={`ListColor ${classes.listHover} ${classes.colorMain}`}
-                                onClick={() => { window.location.href = '/' + menuListFilter.url }}
+
                                 onMouseOver={() => this.props.handleMouseOver(menuListFilter.value)}>
+                                <a href={menuListFilter.url} style={{ textDecoration: 'none' }}>
+                                    <ListItemText>
 
-                                <ListItemText>
-
-                                    {menuListFilter.title}
-                                </ListItemText>
-
+                                        {menuListFilter.title}
+                                    </ListItemText>
+                                </a>
                             </ListItem>
                         ))}
                 </List>
