@@ -51,7 +51,7 @@ class Addressdetails extends React.Component {
         const dlt_locl2 = (dlt) => {
             var val;
             if (chk_locl2 !== undefined || chk_locl2 !== null) {
-                if (chk_locl === chk_locl2 || chk_locl == "") {
+                if (chk_locl === chk_locl2 || chk_locl == "") { 
                     localStorage.removeItem("valuessetdata")
                     val = ""
                     window.location.reload();
