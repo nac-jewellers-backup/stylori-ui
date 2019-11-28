@@ -45,7 +45,6 @@ const Provider = (props) => {
     const [first, setFirst] = React.useState(24)
     const [dataArr, setDataArr] = React.useState([])
     const [cartcount, setcartcount] = React.useState([])
-    debugger
     const [mappedFilters, setMappedFilters] = React.useState([])
     const [{ filterLogic }, setFilterLogic] = React.useState({ filterLogic: () => [] });
     const [LoadingSeoQuery, setLoadingSeoQurey] = React.useState(true)
@@ -288,6 +287,7 @@ const Provider = (props) => {
 
 var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mappedFilters.seo_url : window.location.pathname.split('/')[1]  
         const conditionfiltersSeo = { seofilter: { seoUrl: { in: paramObjects(path_name) } } }
+        debugger
         makeRequestSeo(conditionfiltersSeo)
     
         console.log('paramObjects', paramObjects(mappedFilters.seo_url), DataSeoQuery, conditionfiltersSeo)
@@ -389,8 +389,9 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     }, [data, error, loading]);
 
     const updatefiltersSort = () => {
-        if ((Object.entries(DataSeoQuery).length !== 0 && DataSeoQuery.constructor === Object)) {
-            var paramsfilter = (Object.entries(DataSeoQuery).length !== 0 && DataSeoQuery.constructor === Object && DataSeoQuery.data.allSeoUrlPriorities) && DataSeoQuery.data.allSeoUrlPriorities.nodes.map(val => {
+        debugger
+        if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object)) {
+            var paramsfilter = (Object.entries(seoData).length !== 0 && seoData.constructor === Object && seoData.data.allSeoUrlPriorities) && seoData.data.allSeoUrlPriorities.nodes.map(val => {
                 var a = {}
 
                 a[val.attributeName.replace(/\s/g, '')] = val.attributeValue
@@ -398,7 +399,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
 
             })
             console.info('muthaakannasekuramvaadaa', paramsfilter)
-            if ((Object.entries(seoData).length !== 0 && DataSeoQuery.constructor === Object)) {
+            if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object)) {
                 const conditionFilters = conditions.generateFilters(paramsfilter.splice(1))
 
                 console.info('objectparamsfilterconditionFilters', conditionFilters)
@@ -436,6 +437,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                     variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
                 else {
+                    debugger
                     variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
 

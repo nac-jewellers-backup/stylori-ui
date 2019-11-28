@@ -262,6 +262,7 @@ export const earings = {
             img: 'https://assets-cdn.stylori.com/images/megamenu/studs.jpg',
             title: 'Breakfast',
             author: 'jill111',
+
         },
         {
             img: 'https://assets-cdn.stylori.com/images/megamenu/drops.jpg',
@@ -304,6 +305,7 @@ export const occassion = {
             img: 'https://assets-cdn.stylori.com/images/megamenu/casual-rings.jpg',
             title: 'Breakfast',
             author: 'jill111',
+
         },
         {
             img: 'https://assets-cdn.stylori.com/images/megamenu/classic-rings.jpg',
@@ -427,18 +429,20 @@ export const solitairejewellery = {
     images: [
         {
             img: 'https://assets-cdn.stylori.com/images/megamenu/classic-nosepins.jpg',
-            title: 'Breakfast',
-            author: 'jill111',
-        },
+            title: 'Place your title of the image to display',
+            url:'#'
+                  },
         {
             img: 'https://assets-cdn.stylori.com/images/megamenu/fashion-nosepins.jpg',
-            title: 'Tasty burger',
-            author: 'director90',
+            title: 'Place your title of the image to display',
+            url:'#'
+            
         },
         {
             img: 'https://assets-cdn.stylori.com/images/megamenu/stud-nosepins.jpg',
-            title: 'Tasty burger',
-            author: 'director90',
+            title: 'Place your title of the image to display',
+            url:'#'
+            
         },
 
 
@@ -446,8 +450,8 @@ export const solitairejewellery = {
     sideBanner: [
         {
             img: 'https://assets-cdn.stylori.com/images/megamenu/stylori_menu_banner01.jpg',
-            title: 'Breakfast',
-            author: 'jill111',
+            title: 'Place your title of the image to display',
+            url:'#'
         },
     ]
 }

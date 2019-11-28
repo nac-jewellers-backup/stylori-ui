@@ -159,7 +159,6 @@ class Component extends React.Component {
               // return val
             })
             // this.setState(checked)
-            debugger
             Object.entries(paramsfilter[0]).map(val=>{
               var keys = val[0]
               var values = val[1]
@@ -167,7 +166,6 @@ class Component extends React.Component {
              
             })
             this.setState(checked)
-            debugger
           }).catch(function (error) {
             console.log('Request failed', error);
           });
@@ -199,7 +197,6 @@ class Component extends React.Component {
   }
 
   valz = () => Object.entries(this.state.checked).map(val => {
-    debugger
     const { checked } = this.state;
     var obj = {};
     var mm;
@@ -224,7 +221,6 @@ class Component extends React.Component {
     return mm
   })
   handleChange(value, BoolName, e, title, TargetName) {
-    debugger
     this.props.setloadingfilters(true)
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
@@ -255,41 +251,39 @@ class Component extends React.Component {
       paramsMapUrlSetState()
     }
 
-    let arr = [];
-    let checkTitle = true;
-    chipData.map(val => {
-      debugger
-      if (val.title === title) {
-        checkTitle = false
-      }
-    })
-    if (BoolName === true) {
-      debugger
-      // chipData.push({ key: chipData[chipData.length - 1].key, label: value });
-      if (checkTitle) {
-        chipData.push({ key: chipData, label: value, title: title });
-      } else {
-        arr = chipData.filter(val => val.title !== title)
-        arr.push({ key: chipData, label: value, title: title });
-        chipData = arr;
-      }
+    // let arr = [];
+    // let checkTitle = true;
+    // chipData.map(val => {
+    //   debugger
+    //   if (val.title === title) {
+    //     checkTitle = false
+    //   }
+    // })
+    // if (BoolName === true) {
+    //   debugger
+    //   // chipData.push({ key: chipData[chipData.length - 1].key, label: value });
+    //   if (checkTitle) {
+    //     chipData.push({ key: chipData, label: value, title: title });
+    //   } else {
+    //     arr = chipData.filter(val => val.title !== title)
+    //     arr.push({ key: chipData, label: value, title: title });
+    //     chipData = arr;
+    //   }
 
-    } else {
-      arr = chipData.filter(val => val.label !== value);
-      chipData = arr;
-    };
-    this.setState({
-      chipData
-    }, () => this.props.setFilters(checked))
+    // } else {
+    //   arr = chipData.filter(val => val.label !== value);
+    //   chipData = arr;
+    // };
+    // this.setState({
+    //   chipData
+    // }, () => this.props.setFilters(checked))
     // alert(JSON.stringify(this.state.checked))
   }
 
   handleDelete = (value) => {
-    debugger
     let arr = [], arr1 = [];
     let { chipData, checked } = this.state
     arr = chipData.filter(val => val.label !== value);
-    debugger
     if (checked) {
       arr1 = this.valz().filter(val => {
         var dlt;
