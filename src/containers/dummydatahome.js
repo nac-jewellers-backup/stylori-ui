@@ -165,12 +165,6 @@ export const homePageStylori = {
     }, {
         img: 'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
         content: "The launch of Stylori on New Indian Express – Indulge",
-    }, {
-        img: 'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
-        content: "The launch of Stylori on New Indian Express – Indulge",
-    }, {
-        img: 'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
-        content: "The launch of Stylori on New Indian Express – Indulge",
     }],
     "carosolStories": {
         slidesToShow: 1,
