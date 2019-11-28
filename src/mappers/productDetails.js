@@ -207,14 +207,26 @@ export default function (data, like_data, viewedddatas, rating) {
                     name: "Metal Type",
                     details: PD && PD.purity + ' ' + PD.metalColor
                 }, {
-                    name: "Approximate Metal weight (in gram)",
+                    name: "Approx Metal Weight (in gm)",
                     details: PD.productListByProductId && PD.productListByProductId.defaultWeight
                 },
 
                 {
-                    name: "Size (in mm)",
+                    
+                    name: PD && PD.skuSize ?"Size" : '',
                     details: PD && PD.generatedSku !== '' ? PD.skuSize : ''
-                }],
+                },
+                {
+                    
+                    name: PD && PD.productListByProductId.width ?"Height (in mm)" : '',
+                    details: PD && PD.productListByProductId.width !== '' ? PD.productListByProductId.width : ''
+                },
+                {
+                    
+                    name: PD && PD.productListByProductId.height ?"Width (in mm)" : '',
+                    details: PD && PD.productListByProductId.height !== '' ? PD.productListByProductId.height : ''
+                }
+            ],
             },
 
             {
@@ -355,7 +367,7 @@ export default function (data, like_data, viewedddatas, rating) {
                 {
                     name: "GST",
                     details:
-                        [new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPriceTax)), new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPriceTax))]
+                        [new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.discountPriceTax)), new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(PD.markupPriceTax))]
                 },
                 {
                     name: "Total",
