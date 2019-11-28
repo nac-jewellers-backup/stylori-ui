@@ -8,7 +8,7 @@ import { ProductDetailContext } from 'context/ProductDetailContext';
 
 
 const useRating = (props) => {
-    const { setrating } = React.useContext(ProductDetailContext);
+    const { setrating, setregisterurl } = React.useContext(ProductDetailContext);
     const [values, setValues] = React.useState({
         user_id: null,
         rate: null,
@@ -45,6 +45,7 @@ const useRating = (props) => {
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
             // console.log('starsSelectedstarsSelected',props.starsSelected)
             mapUrlParamsSplitEqual.map(val => {
+                debugger
                 values['product_sku'] = val[1]
                 if (val[1].length > 0) {
                     variab['productSku'] = val[1]
@@ -52,7 +53,10 @@ const useRating = (props) => {
                     // alert(JSON.stringify(variab))
                 }
                 values['user_id'] = user_id
-                values['rate'] = count
+                values['rate'] = 4
+                var a = window.location.search.split('=')
+                var b = a[1].split('-')[0]
+                values['product_id']= b
                 // setFilters(values)
                 setValues({
                     ...values,
@@ -77,7 +81,9 @@ const useRating = (props) => {
     const handelSubmit = (e, props) => {
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
         if (user_id.length > 0) {
+            debugger
             makeFetch(values);
+            alert(JSON.stringify(data))
             debugger
             if (window.location.search) {
                 let urlSearchparams = window.location.search;
@@ -89,6 +95,7 @@ const useRating = (props) => {
                 let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
                 // console.log('starsSelectedstarsSelected',props.starsSelected)
                 mapUrlParamsSplitEqual.map(val => {
+
                     values['product_sku'] = val[1]
                     if (val[1].length > 0) {
                         variab['productSku'] = val[1]
@@ -106,6 +113,7 @@ const useRating = (props) => {
         } else {
             // alert("You will be able to review only after purchasing the product")
             // props.location.pathname="/login"
+            localStorage.setItem('review_location',`${window.location.href}`)
             props.history.push("/login")
         }
     }

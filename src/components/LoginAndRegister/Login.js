@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import useLogin from './uselogin';
 import Header from 'components/Header/header'
 import Footer from "components/Footer/Footer"
+import { withRouter } from "react-router";
 import {
     Checkbox
 } from '@material-ui/core';
@@ -116,4 +117,4 @@ const LoginComponent = (props) => {
 }
 
 
-export default withStyles(styles)(UserLogin);
+export default withStyles(styles)(withRouter(UserLogin));

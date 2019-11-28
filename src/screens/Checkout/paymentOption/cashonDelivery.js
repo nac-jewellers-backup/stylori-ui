@@ -6,19 +6,33 @@ import { CartContext } from 'context'
 import cart from 'mappers/cart'
 import { useNetworkRequest } from 'hooks/index';
 var obj = {}
+
 class CashonDelivey extends React.Component {
-    makeFetch = () => {
-        fetch('/api/auth/signin', {
+    constructor(props){
+        super(props)
+            this.state={
+                res_data:null
+            }
+        
+    }
+    makeFetch = async() => {
+        await fetch('https://api.stylori.net/createorder', {
             method: 'post',
             body: JSON.stringify(obj)
-        }).then(function (response) {
-            return response.json();
+        }).then(function async(response) {
+            alert('Order Placed Successfully')
         }).then(function (data) {
             console.log('data',data)
         });
     }
+    componentDidUpdate(prevProps, prevState) {
+        if(this.state.res_data !== prevState.res_data){
+            // in 1.6.2 there will not execute
+             alert(this.state.res_data)
+  }
+}
     render() {
-        let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
+        let cart_id = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")) : ""
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
         const data = this.props.data ? this.props.data : ""
         debugger

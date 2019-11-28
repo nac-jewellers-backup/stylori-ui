@@ -3,8 +3,8 @@ import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
-
-
+import { ProductDetailContext } from 'context/ProductDetailContext';
+import { withRouter } from "react-router";
 const useLogin = (changePanel, props) => {
     const [values, setValues] = React.useState({
         password: null,
@@ -19,6 +19,7 @@ const useLogin = (changePanel, props) => {
             emerr: false,
         }
     });
+    const { ProductDetailCtx } = React.useContext(ProductDetailContext);
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/signin', {}, []);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
@@ -43,7 +44,7 @@ const useLogin = (changePanel, props) => {
         var a = CodData ? CodData : ""
         if (JSON.stringify(a).length > 10) {
             localStorage.setItem("vals", JSON.stringify(CodData))
-            window.history.back();
+            window.location.href=localStorage.getItem('review_location')
         }
     }, [CodData])
     const handleChange = (type, value) => {

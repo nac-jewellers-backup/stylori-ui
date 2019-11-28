@@ -2,8 +2,8 @@ import { resolutions } from "utils";
 // const baseUi = "https://assets-cdn.stylori.com/";
 const injectUrl = (url, baseUi) => url ? resolutions.map(k => ({ ...k, img: `${baseUi}${url.imageUrl===undefined  ? url : url.imageUrl}` })) : [];
 // const valuesinjectUrl = (imageUrl, cdnUrl) => injectUrl(imageUrl, cdnUrl);in
-const placeImages = (placeImage) => placeImage.length === 0 ?'product/SR0662/SR0662-1Y.jpg' : placeImage.find(fd => !fd.ishover);
-const hoverImage = (placeImage) => placeImage.length === 0 ?'product/SR0662/HOVER-SR0662-2Y.jpg' : placeImage.find(fd => fd.ishover); 
+const placeImages = (placeImage) => placeImage.length === 0 ?'https://alpha-assets.stylori.com/276x276/images/static/Image_Not_Available.jpg' : placeImage.find(fd => !fd.ishover);
+const hoverImage = (placeImage) => placeImage.length === 0 ?'https://alpha-assets.stylori.com/276x276/images/static/Image_Not_Available.jpg' : placeImage.find(fd => fd.ishover); 
 
 
     export default function (data, cdnUrl) {

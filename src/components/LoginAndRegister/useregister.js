@@ -50,7 +50,7 @@ const useRegister = (changePanel, props) => {
             localStorage.setItem("email", data.user.email)
             localStorage.setItem("user_id", data.user_profile_id)
             makeRequestCod(obj);
-            // window.history.back();
+            window.location.href=localStorage.getItem('review_location')
             // if (bb.length > 0) {
             //     window.history.back()
             // }
@@ -90,7 +90,7 @@ const useRegister = (changePanel, props) => {
             ...values,
             [type]: value,
         })
-        makeFetch(values)
+        // makeFetch(values)
     }
 
     const user = data.user_profile_id ? data.user_profile_id : ""
@@ -160,8 +160,10 @@ const useRegister = (changePanel, props) => {
             return false
         }
         if (errmsg.length < 0) {
+            debugger
             values['error']['emerr'] = false
             values['errortext']['emerr'] = ''
+
             setValues({
                 ...values,
                 values,
