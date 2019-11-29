@@ -79,7 +79,7 @@ const isLocalhost = Boolean(
 );
 
 // setTimeout(function(){ cacheCheck(); }, 20000);
-setInterval(function () { cacheCheck(); }, 30000);
+
 export async function register(config) {
   await requestNotificationPermission();
 
@@ -95,7 +95,7 @@ export async function register(config) {
 
     window.addEventListener('load', () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
-      cacheCheck()
+      setInterval(function () { cacheCheck(); }, 30000);
 
 
       if (isLocalhost) {
