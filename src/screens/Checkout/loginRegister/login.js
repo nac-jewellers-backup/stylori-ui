@@ -32,7 +32,7 @@ const LoginComponent = (props) => {
                 emerr: false,
             }
         })
-        props.change()
+        props.change() 
     }
     return (
         <div className='pt-sm'>

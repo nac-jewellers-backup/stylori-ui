@@ -32,11 +32,13 @@ class Addressdetails extends React.Component {
         var objj = {};
         var objj1 = {};
 
-        objj['addressOne'] = value.addressOne
-        objj1['addressTwo'] = value.addressTwo
+        objj['addressOne'] = value.addressOne || lgn
+        objj1['addressTwo'] = value.addressTwo || lgn1
 
-        var chk_locl = value && value.addressOne ? value.addressOne.addressline1 : chk_locl2
-        var chk_locl2 = value && value.addressTwo ? value.addressTwo.addressline1 : chk_locl;
+        var chk_locl = (value && value.addressOne ? value.addressOne.addressline1 || value.addressOne.lastname : chk_locl2) ||
+            (lgn ? lgn.addressline1 || lgn.lastname : chk_locl2)
+        var chk_locl2 = (value && value.addressTwo ? value.addressTwo.addressline1 || value.addressTwo.lastname : chk_locl) ||
+            (lgn1 ? lgn1.addressline1 || lgn1.lastname : chk_locl)
 
         const dlt_locl1 = (dlt) => {
             debugger

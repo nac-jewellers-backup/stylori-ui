@@ -20,16 +20,9 @@ const useLogin = (changePanel) => {
     });
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/signin', {}, []);
-    const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     const { setCartFilters } = React.useContext(CartContext);
-    React.useEffect(() => {
-        debugger
-        var a = CodData ? CodData : ""
-        if (JSON.stringify(a).length > 10) {
-            localStorage.setItem("vals", JSON.stringify(CodData))
-            changePanel(3)
-        }
-    }, [CodData])
+    const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
+    var obj = {}
     React.useEffect(() => {
         var ms = data && data.message
         if (ms && values['error'] && values['errortext']) {
@@ -52,19 +45,28 @@ const useLogin = (changePanel) => {
             var bbn = data && data.userprofile && data.userprofile.id ? data.userprofile.id : ""
             if (bbn.length > 0 || bbn !== undefined) {
                 localStorage.setItem("email", data.userprofile.email)
-                var obj = {}
                 var bb = data.userprofile.id ? data.userprofile.id : ""
                 obj['userprofileId'] = bb
-                localStorage.setItem('user_id', bb)
-                setValues({user_id:data.userprofile.id})
-                setCartFilters({user_id:data.userprofile.id})
                 makeRequestCod(obj);
+                localStorage.setItem('user_id', bb)
+                // setValues({user_id:data.userprofile.id})
+
+                
                 // changePanel(3)
             }
         }
         }
 
     }, [data])
+    React.useEffect(() => {
+        debugger
+        var a = CodData ? CodData : ""
+        if (JSON.stringify(a).length > 10) {
+            localStorage.setItem("vals", JSON.stringify(CodData))
+            setCartFilters({user_id:obj})
+            changePanel(3)
+        }
+    }, [CodData])
     const handleChange = (type, value) => {
         if (values.email !== "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = false
