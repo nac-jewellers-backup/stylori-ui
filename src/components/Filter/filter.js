@@ -31,7 +31,6 @@ const PersistentDrawerLeft = (props) => {
     {...props} />
 }
 
-
 class Component extends React.Component {
   constructor(props) {
     super(props)
@@ -90,7 +89,7 @@ class Component extends React.Component {
     var paramsfilter;
     var abcd;
     const filters_checked = () => {
-      const {checked} = this.state
+      const { checked } = this.state
       if (window.location.pathname.split('/')[1] !== 'jewellery') {
         function status(response) {
 
@@ -149,8 +148,8 @@ class Component extends React.Component {
             paramsfilter = data && data.data && data.data.allSeoUrlPriorities && data.data.allSeoUrlPriorities.nodes && data.data.allSeoUrlPriorities.nodes.map(val => {
               var attrName = val.attributeName.replace(/\s/g, '')
               var attrVal = val.attributeValue
-              
-              a[attrName] = {[attrVal] : true}
+
+              a[attrName] = { [attrVal]: true }
               // checked[attrName] = a
 
               // alert(JSON.stringify(attrName))
@@ -159,23 +158,23 @@ class Component extends React.Component {
               // return val
             })
             // this.setState(checked)
-            Object.entries(paramsfilter[0]).map(val=>{
+            Object.entries(paramsfilter[0]).map(val => {
               var keys = val[0]
               var values = val[1]
               checked[keys] = values
-             
+
             })
             this.setState(checked)
           }).catch(function (error) {
             console.log('Request failed', error);
           });
       }
-  
+
     }
     filters_checked()
-    if(paramsfilter && paramsfilter.length>0){
-      this.handleChange(()=>{}, true, ()=>{}, {}, paramsfilter)
-     }
+    if (paramsfilter && paramsfilter.length > 0) {
+      this.handleChange(() => { }, true, () => { }, {}, paramsfilter)
+    }
 
   }
 
@@ -196,11 +195,14 @@ class Component extends React.Component {
 
   }
 
-  valz = () => Object.entries(this.state.checked).map(val => {
+  valz = (value) => Object.entries(this.state.checked).map(val => {
+    debugger
     const { checked } = this.state;
     var obj = {};
     var mm;
+    var bz;
     var valx; var valx2;
+
     if (val !== undefined && val !== null) {
       const ss = val ? val[1] : ""
       valx = ss
@@ -210,15 +212,16 @@ class Component extends React.Component {
         if (val1 !== undefined && val1 !== null && n) {
           valx2 = s1s
           mm = valx ? Object.keys(valx)[0] : ""
-          checked[val[0]] = { [mm]: false }
-          // obj[mm] = false
-          // checked['checked'] = obj
-          this.setState({ ...checked, checked }, () => this.props.setFilters(checked))
+          if (value === mm) {
+            bz=mm
+            checked[val[0]] = { [mm]: false }
+            this.setState({ ...checked, checked }, () => this.props.setFilters(checked))
+          }
+          return false
         }
       })
     }
-    // alert(JSON.stringify(this.state.checked))
-    return mm
+    return bz
   })
   handleChange(value, BoolName, e, title, TargetName) {
     this.props.setloadingfilters(true)
@@ -235,14 +238,19 @@ class Component extends React.Component {
       }, () => this.props.setFilters(checked))
     }
     else {
+      let arr1 = [];
       let paramsMapUrlSetState = () => TargetName.map(val => {
         var nameFilter = val[0]
         var keyNameFilter = val[1]
         console.log('val', TargetName)
         let checkedvalue = {};
+        debugger
         checkedvalue[keyNameFilter] = true
         checked[nameFilter] = checkedvalue
+        // arr.push({ key: chipData, label: nameFilter, title: title });
+        // chipData = arr;
         this.setState({
+          chipData,
           checked
         }, () => this.props.setFilters(checked))
       }
@@ -254,13 +262,13 @@ class Component extends React.Component {
     let arr = [];
     let checkTitle = true;
     chipData.map(val => {
-      
+
       if (val.title === title) {
         checkTitle = false
       }
     })
     if (BoolName === true) {
-      
+
       // chipData.push({ key: chipData[chipData.length - 1].key, label: value });
       if (checkTitle) {
         chipData.push({ key: chipData, label: value, title: title });
@@ -269,7 +277,6 @@ class Component extends React.Component {
         arr.push({ key: chipData, label: value, title: title });
         chipData = arr;
       }
-
     } else {
       arr = chipData.filter(val => val.label !== value);
       chipData = arr;
@@ -281,20 +288,20 @@ class Component extends React.Component {
   }
 
   handleDelete = (value) => {
-    
+    debugger
     let arr = [], arr1 = [];
     let { chipData, checked } = this.state
     arr = chipData.filter(val => val.label !== value);
-    
+
     if (checked) {
-      arr1 = this.valz().filter(val => {
+      arr1 = this.valz(value).filter(val => {
         var dlt;
         if (val !== undefined && val !== null) {
           dlt = Object.values(val) === -1
         }
         return dlt;
       })
-      checked = arr1;
+      chipData = arr1;
     }
     chipData = arr;
     this.setState({

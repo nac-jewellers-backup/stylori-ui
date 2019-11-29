@@ -26,6 +26,10 @@ const AddressComponent = (props) => {
     const b = values.addressTwo ? values.addressTwo : a
     const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
     let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : ""
+    var bb = {};
+    var bb1 = {};
+    bb['addressOne'] = values.addressOne
+    bb1['addressTwo'] = values.addressTwo
     return (
         <Container>
             <div>
@@ -46,23 +50,33 @@ const AddressComponent = (props) => {
                                 localStorage.setItem("vals", JSON.stringify(data))
                             }
                             else {
-                                localStorage.setItem("valuessetdata", JSON.stringify(values))
+                                if (values.checkValue === false) {
+                                    debugger
+                                    localStorage.setItem("valuessetdata", JSON.stringify(values))
+                                    return false
+                                } else {
+                                    if (values.addressOne.firstname.length > 0) {
+                                        localStorage.setItem("valuessetdata", JSON.stringify(bb))
+                                    }
+                                    if (values.addressTwo.firstname.length > 0) {
+                                        localStorage.setItem("valuessetdata", JSON.stringify(bb1))
+                                    }
+                                }
+
+                                // localStorage.setItem("valuessetdata", JSON.stringify(values))
                             }
                             // window.location.reload(); 
                         }} autoComplete={true}>
-                            {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <h5 className='title'> Shipping Address</h5>}
-                            {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? <h5 className='title'> Edit Address</h5>: ""}
+                            {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? <h5 className='title'> Edit Address</h5> : ""}
                             <p class="form-group tp" style={{ width: "480px" }}>
                                 {cl}
                             </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={5}>
-                                    {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ?
-                                        <h5 className='title'>Shipping Address</h5> :
+                                        <h5 className='title'>Shipping Address</h5> 
                                         <>
                                             {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
                                             {values.checkValue && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
                                         </>
-                                    }
                                     <Grid container spacing={12}>
                                         <Grid item xs={4} lg={4}>
                                             <SimpleSelect val={'1'} name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
@@ -102,7 +116,7 @@ const AddressComponent = (props) => {
                                                 type="text"
                                                 name='pincode'
                                                 placeholder="Pin Code/Zip Code"
-                                                onChange={(event) => handle.handleChange('addressOne', 'pincode', event.target.value)}
+                                                onChange={(event) => handle.handleChange('addressOne', 'pincode', event.target.value,"pincode1")}
                                                 value={values.addressOne.pincode}
                                                 onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
                                                 helperText="Pin Code is required"
@@ -323,8 +337,8 @@ const AddressComponent = (props) => {
                                 
                             </div> */}
                             <div className='login-butn'>
-                                {lgn_chk || value ? <Button onClick={() =>  handle.redirectForm()} style={{ borderRadius: "0px", padding: "6px 8px", lineHeight: "1.75", border: "1px solid #394578" }} 
-                                className=''>Cancel</Button> : ""} &nbsp;
+                                {lgn_chk || value ? <Button onClick={() => handle.redirectForm()} style={{ borderRadius: "0px", padding: "6px 8px", lineHeight: "1.75", border: "1px solid #394578" }}
+                                    className=''>Cancel</Button> : ""} &nbsp;
                                 <Button type="submit" className='apply-b'>Save and Review</Button>
                             </div>
                         </form>

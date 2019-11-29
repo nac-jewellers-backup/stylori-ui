@@ -45,6 +45,7 @@ const Provider = (props) => {
     const [first, setFirst] = React.useState(24)
     const [dataArr, setDataArr] = React.useState([])
     const [cartcount, setcartcount] = React.useState([])
+    debugger
     const [mappedFilters, setMappedFilters] = React.useState([])
     const [{ filterLogic }, setFilterLogic] = React.useState({ filterLogic: () => [] });
     const [LoadingSeoQuery, setLoadingSeoQurey] = React.useState(true)

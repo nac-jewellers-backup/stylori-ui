@@ -6,12 +6,12 @@ import { resetWarningCache } from 'prop-types';
 
 const useRegister = (changePanel, props) => {
     const [values, setValues] = React.useState({
-        email: null,
-        password: null,
-        confirmpassword: null,
+        email: "",
+        password: "",
+        confirmpassword: "",
         roles: ["user"],
-        firstname: null,
-        lastname: null,
+        firstname: "",
+        lastname: "",
         errortext: {
             emerr: "",
             passerr: "",
@@ -33,7 +33,7 @@ const useRegister = (changePanel, props) => {
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     useEffect(() => {
         var ms = data && data.message
-        if (ms) {
+        if (ms && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Your email is already exists'
             setValues({
@@ -41,9 +41,9 @@ const useRegister = (changePanel, props) => {
                 values,
             })
             // return false
-        }else{
+        } else {
             var v = data.user_profile_id ? data.user_profile_id : ""
-            if (v.length > 0) {
+            if (v.length > 0 && values['error'] && values['errortext']) {
                 values['error']['emerr'] = false
                 values['errortext']['emerr'] = ''
                 setValues({
@@ -62,7 +62,7 @@ const useRegister = (changePanel, props) => {
                 changePanel(3)
             }
         }
-        
+
         //     obj['id'] = bb
         //     makeRequestCod(obj);
         localStorage.setItem("true", false)
@@ -75,23 +75,23 @@ const useRegister = (changePanel, props) => {
     // }, [CodData])
     const errmsg = data.message ? data.message : ""
     const handleChange = (type, value) => {
-        if (values.email !== null && type === 'email') {
+        if (values.email !== "" && type === 'email' && values['error'] && values['errortext']) {
             values['error']['emerr'] = false
-            values['errortext']['emerr'] = ''
+            values['errortext']['emerr'] = ""
         }
-        if (values.password !== null) {
+        if (values.password !== "" && values['error'] && values['errortext']) {
             values['error']['passerr'] = false
-            values['errortext']['passerr'] = ''
+            values['errortext']['passerr'] = ""
 
-        } if (values.firstname !== null) {
+        } if (values.firstname !== "" && values['error'] && values['errortext']) {
             values['error']['firstname'] = false
-            values['errortext']['firstname'] = ''
-        } if (values.confirmpassword !== null) {
+            values['errortext']['firstname'] = ""
+        } if (values.confirmpassword !== "" && values['error'] && values['errortext']) {
             values['error']['cnfpasserr'] = false
-            values['errortext']['cnfpasserr'] = ''
-        } if (values.lastname !== null) {
+            values['errortext']['cnfpasserr'] = ""
+        } if (values.lastname !== "" && values['error'] && values['errortext']) {
             values['error']['lastname'] = false
-            values['errortext']['lastname'] = ''
+            values['errortext']['lastname'] = ""
         }
         setValues({
             ...values,
@@ -102,7 +102,8 @@ const useRegister = (changePanel, props) => {
 
     const user = data.user_profile_id ? data.user_profile_id : ""
     const handleSubmit = (e) => {
-        if (values.email === null) {
+        debugger
+        if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'
             setValues({
@@ -111,7 +112,7 @@ const useRegister = (changePanel, props) => {
             })
         }
 
-        if (values.password === null) {
+        if (values.password === "" && values['error'] && values['errortext']) {
             values['error']['passerr'] = true
             values['errortext']['passerr'] = 'Password is required'
             setValues({
@@ -119,7 +120,7 @@ const useRegister = (changePanel, props) => {
                 values,
             })
         }
-        if (values.confirmpassword === null) {
+        if (values.confirmpassword === "" && values['error'] && values['errortext']) {
             values['error']['cnfpasserr'] = true
             values['errortext']['cnfpasserr'] = 'Confirm password is required'
             setValues({
@@ -127,7 +128,7 @@ const useRegister = (changePanel, props) => {
                 values,
             })
         }
-        if (values.firstname === null) {
+        if (values.firstname === "" && values['error'] && values['errortext']) {
             values['error']['firstname'] = true
             values['errortext']['firstname'] = 'First Name is required'
             setValues({
@@ -135,7 +136,7 @@ const useRegister = (changePanel, props) => {
                 values,
             })
         }
-        if (values.lastname === null) {
+        if (values.lastname === "" && values['error'] && values['errortext']) {
             values['error']['lastname'] = true
             values['errortext']['lastname'] = 'Last Name is required'
             setValues({
@@ -145,7 +146,7 @@ const useRegister = (changePanel, props) => {
             return false
         }
 
-        if (values.password !== values.confirmpassword) {
+        if (values.password !== values.confirmpassword && values['error'] && values['errortext']) {
             // values['error']['passerr'] = true
             values['error']['cnfpasserr'] = true
             // values['errortext']['passerr'] = "password doesn't match"
@@ -160,7 +161,7 @@ const useRegister = (changePanel, props) => {
     }
     const handlers = { handleSubmit, handleChange };
 
-    return { values, handlers, data }
+    return { values, setValues, handlers, data }
 }
 
 export default useRegister;

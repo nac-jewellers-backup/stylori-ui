@@ -151,7 +151,7 @@ class Component extends React.Component {
 
     let arr = [];
     if (BoolName === true) {
-      
+      debugger
       // chipData.push({ key: chipData[chipData.length - 1].key, label: value });
       chipData.push({ key: chipData, label: value });
     } else {
@@ -164,7 +164,7 @@ class Component extends React.Component {
   }
 
   handleDelete = data => () => {
-    
+    debugger
     this.setState(state => {
       const chipData = [...state.chipData];
       const chipToDelete = chipData.indexOf(data);

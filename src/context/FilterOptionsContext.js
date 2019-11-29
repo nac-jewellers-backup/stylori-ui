@@ -45,10 +45,6 @@ const Provider = (props) => {
     const [first, setFirst] = React.useState(24)
     const [dataArr, setDataArr] = React.useState([])
     const [cartcount, setcartcount] = React.useState([])
-<<<<<<< HEAD
-    
-=======
->>>>>>> 51584625c7c527ac4178e32738176d2b7693caa6
     const [mappedFilters, setMappedFilters] = React.useState([])
     const [{ filterLogic }, setFilterLogic] = React.useState({ filterLogic: () => [] });
     const [LoadingSeoQuery, setLoadingSeoQurey] = React.useState(true)
@@ -455,7 +451,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     }, [seoData])
     var newObj = {}
     const updateFilters = async (filters) => {
-        
+        debugger
         setFilters(filters);
         // setloadingfilters(true)
         var len;

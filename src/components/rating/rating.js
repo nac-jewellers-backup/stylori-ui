@@ -11,6 +11,7 @@ const Star = ({ selected = false, onClick = f => f }) =>
 // }
 
 class Ratings extends React.Component {
+
     constructor(props) {
         super(props)
         this.state = {

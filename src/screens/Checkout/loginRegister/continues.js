@@ -7,7 +7,7 @@ import styles from './style';
 import { useVerifyOtp } from './verifyOtp';
 
 const ContinuesComponent = (props) => {
-    const { handlers, email, otp, status, enterotp } = useVerifyOtp();
+    const { handlers, email, otp, status, enterotp, setMail } = useVerifyOtp();
     const { classes } = props;
     const values = { email: email.email, otp: otp.otp }
     const edata = status.data.edata.message ? status.data.edata.message : ""
@@ -15,7 +15,13 @@ const ContinuesComponent = (props) => {
     // )
     // const OtpForm = () => (
     // )
-
+    const clear = () => {
+        debugger
+        setMail({
+            email: "",
+        })
+        props.change()
+    }
     const handleSubmit = (e) => {
         if (enterotp) {
             handlers.otpFetch(values);
@@ -75,7 +81,7 @@ const ContinuesComponent = (props) => {
                                 </>}
                             {/* <MailForm/> */}
                             <div className='login-butn'>
-                                <Button className='back-b' onClick={() => props.change()} >Back</Button>
+                                <Button className='back-b' onClick={() => clear()} >Back</Button>
                                 {enterotp ? <Button className='apply-b' type='submit'>Apply</Button>
                                     : <Button className='apply-b' type='submit' >Apply</Button>}
                             </div>

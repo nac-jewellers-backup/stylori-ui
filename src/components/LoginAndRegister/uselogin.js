@@ -3,17 +3,11 @@ import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
-<<<<<<< HEAD
 
 const useLogin = (changePanel) => {
-=======
-import { ProductDetailContext } from 'context/ProductDetailContext';
-import { withRouter } from "react-router";
-const useLogin = (changePanel, props) => {
->>>>>>> 51584625c7c527ac4178e32738176d2b7693caa6
     const [values, setValues] = React.useState({
-        password: null,
-        email: null,
+        password: "",
+        email: "",
         roles: ["user"],
         errortext: {
             emerr: "",
@@ -24,23 +18,22 @@ const useLogin = (changePanel, props) => {
             emerr: false,
         }
     });
-    const { ProductDetailCtx } = React.useContext(ProductDetailContext);
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/signin', {}, []);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     React.useEffect(() => {
-        
+        debugger
         var a = CodData ? CodData : ""
         if (JSON.stringify(a).length > 10) {
             localStorage.setItem("vals", JSON.stringify(CodData))
-            changePanel(3)
+            window.location.href=localStorage.getItem('review_location')
         }
     }, [CodData])
     React.useEffect(() => {
         var ms = data && data.message
-        if (ms) {
+        if (ms && values['error'] && values['errortext']) {
             values['error']['passerr'] = true
-            values['errortext']['passerr'] = '!Invalid password'
+            values['errortext']['passerr'] = 'Invalid password!'
             setValues({
                 ...values,
                 values,
@@ -48,9 +41,9 @@ const useLogin = (changePanel, props) => {
             // return false
         } else {
             var a = data.userprofile ? data.userprofile : ""
-        if (JSON.stringify(a).length > 10) {
+        if (JSON.stringify(a).length > 10 && values['error'] && values['errortext']) {
             values['error']['passerr'] = false
-            values['errortext']['passerr'] = ''
+            values['errortext']['passerr'] = ""
             setValues({
                 ...values,
                 values,
@@ -70,13 +63,13 @@ const useLogin = (changePanel, props) => {
 
     }, [data])
     const handleChange = (type, value) => {
-        if (values.email !== null || type === 'email') {
+        if (values.email !== "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = false
-            values['errortext']['emerr'] = ''
+            values['errortext']['emerr'] = ""
         }
-        if (values.password !== null) {
+        if (values.password !== "" && values['error'] && values['errortext']) {
             values['error']['passerr'] = false
-            values['errortext']['passerr'] = ''
+            values['errortext']['passerr'] = ""
         }
         setValues({
             ...values,
@@ -96,8 +89,8 @@ const useLogin = (changePanel, props) => {
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
-        
-        if (values.email === null) {
+        debugger
+        if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'
             setValues({
@@ -105,7 +98,7 @@ const useLogin = (changePanel, props) => {
                 values,
             })
         }
-        if (values.password === null) {
+        if (values.password === "" && values['error'] && values['errortext']) {
             values['error']['passerr'] = true
             values['errortext']['passerr'] = 'Password is required'
             setValues({
@@ -121,7 +114,7 @@ const useLogin = (changePanel, props) => {
 
     const handlers = { handleChange, handleInvalid, handelSubmit };
 
-    return { values, handlers, data }
+    return { values, handlers,setValues, data }
 }
 
 export default useLogin;

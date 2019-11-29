@@ -5,6 +5,7 @@
 var fs = require('fs');
 console.log("Incrementing build number...");
 fs.readFile('./public/meta.json',function(err,content){
+  debugger
     if(err) throw err;
     var metadata = JSON.parse(content);
     metadata.version = metadata.version+ 1;

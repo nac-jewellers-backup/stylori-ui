@@ -12,12 +12,28 @@ const Login = (props) => {
 
 const LoginComponent = (props) => {
     const { classes } = props;
-    const { values, handlers, data } = useLogin(() => props.changePanel(3));
-    const vl = data && data.message
-    // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
-    var prof = data && data.message
-    // alert(JSON.stringify(data))
-    console.log('valuesvaluesvalues', values)
+    const { values, handlers, setValues, data } = useLogin(() => props.changePanel(3));
+    // const vl = data && data.message
+    // // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
+    // var prof = data && data.message
+    // // alert(JSON.stringify(data))
+    // console.log('valuesvaluesvalues', values)
+    const clear = () => {
+        debugger
+        setValues({
+            password: "",
+            email: "",
+            errortext: {
+                emerr: "",
+                passerr: "",
+            },
+            error: {
+                passerr: false,
+                emerr: false,
+            }
+        })
+        props.change()
+    }
     return (
         <div className='pt-sm'>
             <form action="javascript:void(0)" onSubmit={(e) => {
@@ -31,7 +47,7 @@ const LoginComponent = (props) => {
                         type="email"
                         name="email"
                         value={values.email}
-                        error={values.error && values.error.emerr  ? true : false}
+                        error={values.error && values.error.emerr ? true : false}
                         // helperText={values.errortext && values.errortext.emerr}
                         onChange={e => handlers.handleChange('email', e.target.value)}
                         placeholder="Enter your email Id"
@@ -57,7 +73,7 @@ const LoginComponent = (props) => {
                         </div >
                     </div>
                     <div className='login-butn'>
-                        <Button className='back-b' onClick={() => props.change()} >Back</Button>
+                        <Button className='back-b' onClick={() => clear()} >Back</Button>
                         <Button className='apply-b' type="submit">Apply</Button>
                     </div>
 
