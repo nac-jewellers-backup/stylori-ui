@@ -10,13 +10,37 @@ const Register = (props) => {
 }
 
 const RegisterComponent = (props) => {
-    const { values, handlers, data } = useRegister(() => props.changePanel(2));
-    var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
-    var ccc = data.message ? data.message : ""
-    console.log(values, 'valuesvaluesstate')
+    const { values, setValues, handlers, data } = useRegister(() => props.changePanel(2));
+    // var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
+    // var ccc = data.message ? data.message : ""
+    const clear = () => {
+        debugger
+        setValues({
+            email: "",
+            password: "",
+            confirmpassword: "",
+            firstname: "",
+            lastname: "",
+            errortext: {
+                emerr: "",
+                passerr: "",
+                cnfpasserr: "",
+                firstname: "",
+                lastname: ""
+            },
+            error: {
+                passerr: false,
+                emerr: false,
+                cnfpasserr: false,
+                firstname: false,
+                lastname: false
+            }
+        })
+        props.change()
+    }
     return (
         <div className='pt-sm'>
-            <form action="javascript:void(0)" onSubmit={(e) => {
+            <form action="javascript:void(0)" id="restform" onSubmit={(e) => {
                 handlers.handleSubmit(e)
             }}>
                 <Grid container spacing={12}>
@@ -97,7 +121,7 @@ const RegisterComponent = (props) => {
                             </Grid>
                         </Grid>
                         <div className='login-butn'>
-                            <Button className='back-b' onClick={() => props.change()} >Back</Button>
+                            <Button className='back-b' onClick={() => clear()} >Back</Button>
                             <Button className='apply-b' type="submit" >Register</Button>
                         </div>
                     </Grid>

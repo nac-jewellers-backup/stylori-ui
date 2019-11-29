@@ -6,9 +6,8 @@ import { useGraphql } from 'hooks/GraphqlHook';
 import { CartContext } from 'context'
 const useLogin = (changePanel) => {
     const [values, setValues] = React.useState({
-        password: null,
-        email: null,
-        user_id:null,
+        password: "",
+        email: "",
         roles: ["user"],
         errortext: {
             emerr: "",
@@ -21,22 +20,14 @@ const useLogin = (changePanel) => {
     });
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/signin', {}, []);
-    const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     const { setCartFilters } = React.useContext(CartContext);
-    React.useEffect(() => {
-        debugger
-        var a = CodData ? CodData : ""
-        if (JSON.stringify(a).length > 10) {
-            localStorage.setItem("vals", JSON.stringify(CodData))
-            changePanel(3)
-        }
-    }, [CodData])
+    const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
+    var obj = {}
     React.useEffect(() => {
         var ms = data && data.message
-        var user_id = data && data.userprofile && data.userprofile.id
-        if (ms) {
+        if (ms && values['error'] && values['errortext']) {
             values['error']['passerr'] = true
-            values['errortext']['passerr'] = '!Invalid password'
+            values['errortext']['passerr'] = 'Invalid password!'
             setValues({
                 ...values,
                 values,
@@ -44,9 +35,9 @@ const useLogin = (changePanel) => {
             // return false
         } else {
             var a = data.userprofile ? data.userprofile : ""
-        if (JSON.stringify(a).length > 10) {
+        if (JSON.stringify(a).length > 10 && values['error'] && values['errortext']) {
             values['error']['passerr'] = false
-            values['errortext']['passerr'] = ''
+            values['errortext']['passerr'] = ""
             setValues({
                 ...values,
                 values,
@@ -54,27 +45,36 @@ const useLogin = (changePanel) => {
             var bbn = data && data.userprofile && data.userprofile.id ? data.userprofile.id : ""
             if (bbn.length > 0 || bbn !== undefined) {
                 localStorage.setItem("email", data.userprofile.email)
-                var obj = {}
                 var bb = data.userprofile.id ? data.userprofile.id : ""
                 obj['userprofileId'] = bb
-                localStorage.setItem('user_id', bb)
-                setValues({user_id:data.userprofile.id})
-                setCartFilters({user_id})
                 makeRequestCod(obj);
+                localStorage.setItem('user_id', bb)
+                // setValues({user_id:data.userprofile.id})
+
+                
                 // changePanel(3)
             }
         }
         }
 
     }, [data])
-    const handleChange = (type, value) => {
-        if (values.email !== null || type === 'email') {
-            values['error']['emerr'] = false
-            values['errortext']['emerr'] = ''
+    React.useEffect(() => {
+        debugger
+        var a = CodData ? CodData : ""
+        if (JSON.stringify(a).length > 10) {
+            localStorage.setItem("vals", JSON.stringify(CodData))
+            setCartFilters({user_id:obj})
+            changePanel(3)
         }
-        if (values.password !== null) {
+    }, [CodData])
+    const handleChange = (type, value) => {
+        if (values.email !== "" && values['error'] && values['errortext']) {
+            values['error']['emerr'] = false
+            values['errortext']['emerr'] = ""
+        }
+        if (values.password !== "" && values['error'] && values['errortext']) {
             values['error']['passerr'] = false
-            values['errortext']['passerr'] = ''
+            values['errortext']['passerr'] = ""
         }
         setValues({
             ...values,
@@ -95,7 +95,7 @@ const useLogin = (changePanel) => {
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
         debugger
-        if (values.email === null) {
+        if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'
             setValues({
@@ -103,7 +103,7 @@ const useLogin = (changePanel) => {
                 values,
             })
         }
-        if (values.password === null) {
+        if (values.password === "" && values['error'] && values['errortext']) {
             values['error']['passerr'] = true
             values['errortext']['passerr'] = 'Password is required'
             setValues({
@@ -119,7 +119,7 @@ const useLogin = (changePanel) => {
 
     const handlers = { handleChange, handleInvalid, handelSubmit };
 
-    return { values, handlers, data }
+    return { values, handlers,setValues, data }
 }
 
 export default useLogin;

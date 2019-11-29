@@ -3,7 +3,6 @@ import './address.css'
 import { Container, Grid, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import styles from "./style"
-
 class Addressdetails extends React.Component {
     // constructor(props) {
     //     super(props)
@@ -29,18 +28,58 @@ class Addressdetails extends React.Component {
         const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
         let lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
         let lgn1 = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
-        debugger
+
         var objj = {};
         var objj1 = {};
-        // if (Object.values(value && value.addressOne)!==undefined&& Object.values(value && value.addressOne)!==null&&Object.values(value && value.addressOne) === Object.values(value && value.addressTwo)) {
-        //     objj['value'] = ""
-        //     objj['value'] = ""
-        // } if (Object.values(value && value.addressOne) !== Object.values(value && value.addressTwo)) {
-        //     objj['addressOne'] = value.addressOne
-        //     objj1['addressTwo'] = value.addressTwo
-        // }
-        objj['addressOne'] = value.addressOne
-        objj1['addressTwo'] = value.addressTwo
+
+        objj['addressOne'] = value.addressOne || lgn
+        objj1['addressTwo'] = value.addressTwo || lgn1
+
+        var chk_locl = (value && value.addressOne ? value.addressOne.addressline1 || value.addressOne.lastname : chk_locl2) ||
+            (lgn ? lgn.addressline1 || lgn.lastname : chk_locl2)
+        var chk_locl2 = (value && value.addressTwo ? value.addressTwo.addressline1 || value.addressTwo.lastname : chk_locl) ||
+            (lgn1 ? lgn1.addressline1 || lgn1.lastname : chk_locl)
+
+        const dlt_locl1 = (dlt) => {
+            debugger
+            if (chk_locl !== undefined && chk_locl !== null && chk_locl2 !== undefined && chk_locl2 !== null && chk_locl !== chk_locl2) {
+                localStorage.removeItem("valuessetdata")
+                if (objj.addressOne && objj.addressOne.lastname.length > 0) {
+                    localStorage.setItem("valuessetdata", JSON.stringify(objj ? objj : localStorage.removeItem("valuessetdata")))
+                }
+                return false
+            } else {
+                localStorage.removeItem("valuessetdata")
+                if (values.addrs === false) {
+                    setValues({
+                        ...values,
+                        addrs: true
+                    })
+                }
+                // this.props.redirectForm()
+                return false
+            }
+        }
+        const dlt_locl2 = (dlt) => {
+            debugger
+            if (chk_locl2 !== undefined && chk_locl2 !== null && chk_locl !== undefined && chk_locl !== null && chk_locl !== chk_locl2) {
+                localStorage.removeItem("valuessetdata")
+                if (objj1.addressTwo && objj1.addressTwo.lastname.length > 0) {
+                    localStorage.setItem("valuessetdata", JSON.stringify(objj1 ? objj1 : localStorage.removeItem("valuessetdata")))
+                }
+                return false
+            } else {
+                localStorage.removeItem("valuessetdata")
+                if (values.addrs === false) {
+                    setValues({
+                        ...values,
+                        addrs: true
+                    })
+                }
+                // this.props.redirectForm()
+                return false
+            }
+        }
 
         return (
             <div className='pt-sm'>
@@ -56,9 +95,8 @@ class Addressdetails extends React.Component {
                             <h4 class="card-title">
                                 <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                 <span class="address-name">
-                                    {aa ? aa + '.' : ""}
+                                    {aa ? aa + ' ' : aa1 + ' '}
                                     {value && value.addressOne && value.addressOne.firstname || lgn && lgn.firstname ? value && value.addressOne && value.addressOne.firstname || lgn.firstname : value && value.addressTwo && value.addressTwo.firstname || value && value.addressOne && value.addressOne.firstname}
-
                                     &nbsp;
                                     {value && value.addressOne && value.addressOne.lastname || lgn && lgn.lastname ? value && value.addressOne && value.addressOne.lastname || lgn.lastname : value && value.addressTwo && value.addressTwo.lastname || value && value.addressOne && value.addressOne.lastname}
                                 </span>
@@ -67,19 +105,16 @@ class Addressdetails extends React.Component {
                                     this.props.redirectForm()
                                 }} style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                     class="fa fa-pencil-square-o"></i> */}
-
-
                                 <i onClick={() => {
                                     // localStorage.setItem("isedit", 1)
                                     this.props.redirectForm()
                                 }} style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                     class="fa fa-pencil-square-o"></i>
-
-
                                 {localStorage.getItem("valuessetdata") ? <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
                                     onClick={() => {
-                                        localStorage.removeItem("valuessetdata")
-                                        localStorage.setItem("valuessetdata", JSON.stringify(objj1))
+                                        // localStorage.removeItem("valuessetdata")
+                                        // dlt_locl1()
+                                        dlt_locl2()
                                         // localStorage.removeItem('vals')
                                         window.location.reload();
                                     }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> : ""}
@@ -87,7 +122,6 @@ class Addressdetails extends React.Component {
                                     onClick={() => {
                                         alert('Address already in use')
                                     }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> : ""}
-
                             </h4>
                             <p className={`detils-p ${classes.normalfonts}`} >
                                 {value && value.addressOne && value.addressOne.addressline1 || lgn && lgn.addressline1 ? value && value.addressOne && value.addressOne.addressline1 || lgn.addressline1 : value && value.addressTwo && value.addressTwo.addressline1 || value && value.addressOne && value.addressOne.addressline1}
@@ -107,7 +141,6 @@ class Addressdetails extends React.Component {
                             </div>
                         </div>
                     </Grid>
-
                     {!values.checkValue1 &&
                         <Grid item xs={12} lg={6}>
                             <h5 className='title'> Billing address</h5>
@@ -117,7 +150,7 @@ class Addressdetails extends React.Component {
                                     <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                     {/* {name1.adrs_firstname} */}
                                     <span class="address-name">
-                                        {aa1 ? aa1 + '.' : aa + ' '}
+                                        {aa1 ? aa1 + ' ' : aa + ' '}
                                         {lgn1 && lgn1.firstname ? lgn1 && lgn1.firstname : lgn.firstname}
                                         {value && value.addressTwo && value.addressTwo.firstname ? value && value.addressTwo && value.addressTwo.firstname : value && value.addressOne && value.addressOne.firstname}&nbsp;
                                         {value && value.addressTwo && value.addressTwo.lastname ? value && value.addressTwo && value.addressTwo.lastname : value && value.addressOne && value.addressOne.lastname}
@@ -128,8 +161,9 @@ class Addressdetails extends React.Component {
                                     {localStorage.getItem("valuessetdata") ?
                                         <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
                                             onClick={() => {
-                                                localStorage.removeItem("valuessetdata")
-                                                localStorage.setItem("valuessetdata", JSON.stringify(objj))
+                                                // localStorage.removeItem("valuessetdata")
+                                                // localStorage.setItem("valuessetdata", JSON.stringify(objj))
+                                                dlt_locl1()
                                                 // localStorage.removeItem('vals')
                                                 window.location.reload();
                                                 // localStorage.getItem("valuessetdata")==={}?this.props.redirectForm():""
@@ -138,7 +172,6 @@ class Addressdetails extends React.Component {
                                         onClick={() => {
                                             alert('Address already in use')
                                         }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> : ""}
-
                                 </h4>
                                 <p className={`detils-p ${classes.normalfonts}`} >
                                     {lgn1 && lgn1.addressline1 ? lgn1 && lgn1.addressline1 : lgn && lgn.addressline1}{value && value.addressTwo && value.addressTwo.addressline1 ? value && value.addressTwo && value.addressTwo.addressline1 : value && value.addressOne && value.addressOne.addressline1}
@@ -150,7 +183,7 @@ class Addressdetails extends React.Component {
                                 <div className="card-foo">
                                     <span className={`shipping-phonenumber ${classes.normalfonts}`}>
                                         +91 {lgn1 && lgn1.contactNumber ? lgn1 && lgn1.contactNumber : lgn && lgn.contactNumber}
-                                        {value && value.addressTwo && value.addressTwo.contactno ? value && value.addressTwo && value.addressTwo.contactno : value && value.addressOne && value.addressOne.contactNumber}
+                                        {value && value.addressTwo && value.addressTwo.contactNumber ? value && value.addressTwo && value.addressTwo.contactNumber : value && value.addressOne && value.addressOne.contactNumber}
                                     </span>
                                     <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                         this.props.changevalue(3)

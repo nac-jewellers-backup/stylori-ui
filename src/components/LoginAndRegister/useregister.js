@@ -3,18 +3,14 @@ import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { resetWarningCache } from 'prop-types';
-import { ProductDetailContext } from 'context/ProductDetailContext';
-import { CartContext } from 'context'
 const useRegister = (changePanel, props) => {
     const [values, setValues] = React.useState({
-        // url:null 
-        email: null,
-        password: null,
-        confirmpassword: null,
+        email: "",
+        password: "",
+        confirmpassword: "",
         roles: ["user"],
-        firstname: null,
-        user_id:null,
-        lastname: null,
+        firstname: "",
+        lastname: "",
         errortext: {
             emerr: "",
             passerr: "",
@@ -34,32 +30,38 @@ const useRegister = (changePanel, props) => {
     const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     const { data, error, loading, makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
-    const { setCartFilters } = React.useContext(CartContext);
-    // const { loading: viewedloading, error: viewederror, data: vieweddata, makeRequest: viewmakeRequest } = useGraphql(youRecentlyViewed, () => { }, {}, false);
-    const { ProductDetailCtx: { registerurl } } = React.useContext(ProductDetailContext);
-    debugger
-    // alert(JSON.stringify(registerurl))
     useEffect(() => {
-        // if(data.message=="Email ID Already Exist")
-        var v = data.user_profile_id ? data.user_profile_id : ""
-        var user_id = values.user_id
-        if (v.length > 0) {
-            var obj = {}
-            obj['userprofileId'] = bb
-            var bb = data.user_profile_id ? data.user_profile_id : "";
-            // 
-            localStorage.setItem("isedit", 1)
-            // }
-            localStorage.setItem("email", data.user.email)
-            localStorage.setItem("user_id", data.user_profile_id)
-            debugger
-            setValues({user_id:data.user_profile_id},()=>{ setCartFilters({user_id}) })
-            makeRequestCod(obj);
-            window.location.href=localStorage.getItem('review_location')
-            // if (bb.length > 0) {
-            //     window.history.back()
-            // }
+        var ms = data && data.message
+        if (ms && values['error'] && values['errortext']) {
+            values['error']['emerr'] = true
+            values['errortext']['emerr'] = 'Your email is already exists'
+            setValues({
+                ...values,
+                values,
+            })
+            // return false
+        } else {
+            var v = data.user_profile_id ? data.user_profile_id : ""
+            if (v.length > 0 && values['error'] && values['errortext']) {
+                values['error']['emerr'] = false
+                values['errortext']['emerr'] = ''
+                setValues({
+                    ...values,
+                    values,
+                })
+                var obj = {}
+                obj['userprofileId'] = bb
+                var bb = data.user_profile_id ? data.user_profile_id : "";
+                // if(bb.length > 0){
+                localStorage.setItem("isedit", 1)
+                // }
+                localStorage.setItem("email", data.user.email)
+                localStorage.setItem("user_id", data.user_profile_id)
+                makeRequestCod(obj);
+                window.location.href = localStorage.getItem('review_location')
+            }
         }
+
         //     obj['id'] = bb
         //     makeRequestCod(obj);
         localStorage.setItem("true", false)
@@ -67,29 +69,28 @@ const useRegister = (changePanel, props) => {
     // useEffect(() => {
     //     var resin = CodData.data ? JSON.stringify(CodData.data) : ""
     //     if (resin.length > 30) {
-
-    //         // localStorage.setItem('regaddr', JSON.stringify(CodData.data.allUserAddresses.nodes[0]))
+    //         localStorage.setItem('regaddr', JSON.stringify(CodData.data.allUserAddresses.nodes[0]))
     //     }
     // }, [CodData])
     const errmsg = data.message ? data.message : ""
     const handleChange = (type, value) => {
-        if (values.email !== null || errmsg.length < 0) {
+        if (values.email !== "" && type === 'email' && values['error'] && values['errortext']) {
             values['error']['emerr'] = false
-            values['errortext']['emerr'] = ''
+            values['errortext']['emerr'] = ""
         }
-        if (values.password !== null) {
+        if (values.password !== "" && values['error'] && values['errortext']) {
             values['error']['passerr'] = false
-            values['errortext']['passerr'] = ''
+            values['errortext']['passerr'] = ""
 
-        } if (values.firstname !== null) {
+        } if (values.firstname !== "" && values['error'] && values['errortext']) {
             values['error']['firstname'] = false
-            values['errortext']['firstname'] = ''
-        } if (values.confirmpassword !== null) {
+            values['errortext']['firstname'] = ""
+        } if (values.confirmpassword !== "" && values['error'] && values['errortext']) {
             values['error']['cnfpasserr'] = false
-            values['errortext']['cnfpasserr'] = ''
-        } if (values.lastname !== null) {
+            values['errortext']['cnfpasserr'] = ""
+        } if (values.lastname !== "" && values['error'] && values['errortext']) {
             values['error']['lastname'] = false
-            values['errortext']['lastname'] = ''
+            values['errortext']['lastname'] = ""
         }
         setValues({
             ...values,
@@ -100,7 +101,8 @@ const useRegister = (changePanel, props) => {
 
     const user = data.user_profile_id ? data.user_profile_id : ""
     const handleSubmit = (e) => {
-        if (values.email === null) {
+        debugger
+        if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'
             setValues({
@@ -109,7 +111,7 @@ const useRegister = (changePanel, props) => {
             })
         }
 
-        if (values.password === null) {
+        if (values.password === "" && values['error'] && values['errortext']) {
             values['error']['passerr'] = true
             values['errortext']['passerr'] = 'Password is required'
             setValues({
@@ -117,7 +119,7 @@ const useRegister = (changePanel, props) => {
                 values,
             })
         }
-        if (values.confirmpassword === null) {
+        if (values.confirmpassword === "" && values['error'] && values['errortext']) {
             values['error']['cnfpasserr'] = true
             values['errortext']['cnfpasserr'] = 'Confirm password is required'
             setValues({
@@ -125,7 +127,7 @@ const useRegister = (changePanel, props) => {
                 values,
             })
         }
-        if (values.firstname === null) {
+        if (values.firstname === "" && values['error'] && values['errortext']) {
             values['error']['firstname'] = true
             values['errortext']['firstname'] = 'First Name is required'
             setValues({
@@ -133,7 +135,7 @@ const useRegister = (changePanel, props) => {
                 values,
             })
         }
-        if (values.lastname === null) {
+        if (values.lastname === "" && values['error'] && values['errortext']) {
             values['error']['lastname'] = true
             values['errortext']['lastname'] = 'Last Name is required'
             setValues({
@@ -143,7 +145,7 @@ const useRegister = (changePanel, props) => {
             return false
         }
 
-        if (values.password !== values.confirmpassword) {
+        if (values.password !== values.confirmpassword && values['error'] && values['errortext']) {
             // values['error']['passerr'] = true
             values['error']['cnfpasserr'] = true
             // values['errortext']['passerr'] = "password doesn't match"
@@ -155,37 +157,10 @@ const useRegister = (changePanel, props) => {
             return false
         }
         makeFetch(values);
-        debugger
-        if (errmsg.length > 0) {
-            values['error']['emerr'] = true
-            values['errortext']['emerr'] = 'Your email is already exists'
-            setValues({
-                ...values,
-                values,
-            })
-            return false
-        }
-        if (errmsg.length < 0) {
-            debugger
-            values['error']['emerr'] = false
-            values['errortext']['emerr'] = ''
-
-            setValues({
-                ...values,
-                values,
-            })
-            return false
-        }
-        // else{
-        //     window.history.back();
-        // }
-
-        // changePanel(3)
-        // makeFetch(values);
     }
     const handlers = { handleSubmit, handleChange };
 
-    return { values, handlers, data }
+    return { values, setValues, handlers, data }
 }
 
 export default useRegister;

@@ -16,6 +16,9 @@ const Addressforms = () => {
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
     let changeaddr = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
     const [address, setAddress] = React.useState({})
+    const [pincods, setpincod] = React.useState({
+        pincod: ""
+    })
     const [values, setValues] = React.useState({
         addressOne: {
             firstname: "",
@@ -27,7 +30,7 @@ const Addressforms = () => {
             state: "",
             country: "",
             country_code: "",
-            contactno: "",
+            contactNumber: "",
             addresstype: 1
         },
         addressTwo: {
@@ -40,8 +43,8 @@ const Addressforms = () => {
             state: "",
             country: "",
             country_code: "",
-            contactno: "",
-            addresstype: 2
+            contactNumber: "",
+            // addresstype: 2
         },
         addrs: (localStorage.getItem("valuessetdata") || changeaddr) ? false : true,
         // addrs: true,
@@ -65,43 +68,44 @@ const Addressforms = () => {
     addObj["isguestlogin"] = cont ? false : true
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addaddress', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
-    useEffect((...args) => {
-        const a = CodData.data ? CodData.data.allPincodeMasters : ""
+    useEffect((event) => {
+        const a = CodData.data ? CodData.data.allPincodeMasters : "";
+        // alert(JSON.stringify(CodData))
         if (a) {
             var res = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].state : ''
             var res1 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].country : ''
             var res2 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].district : ''
-            // if (window.cache.addressOne == true) {
-            //     window.cache = {}
-            values['addressOne']['state'] = res
-            values['addressOne']['country'] = res1
-            values['addressOne']['city'] = res2
-            // }
-            // if (window.cache.addressTwo == true) {
-            // window.cache = {}
-            // values['addressTwo']['state'] = res
-            // values['addressTwo']['country'] = res1
-            // values['addressTwo']['city'] = res2
-            // }
+            if (pincods.pincod === "pincode1") {
+                values['addressOne']['state'] = res
+                values['addressOne']['country'] = res1
+                values['addressOne']['city'] = res2
 
+            } else {
+                values['addressTwo']['state'] = res
+                values['addressTwo']['country'] = res1
+                values['addressTwo']['city'] = res2
+            }
             setValues({ ...values, values })
-
         }
     }, [CodData])
-    const handleChange = (type, field, value) => {
+    const handleChange = (type, field, value, pincod) => {
+        debugger
         values[type][field] = value;
         if (field === 'pincode') {
             values[type]['pincode'] = value;
             const val = values.addressOne.pincode || values.addressTwo.pincode
             var variab = {}
-            variab["pincode"] = val
-            if (val.length > 5) {
+            variab["pincode"] = value
+            if (value.length > 5) {
+                // alert(JSON.stringify(value))
                 if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
                     makeRequestCod(variab);
                 }
             }
         }
         // window.cache[type] = true
+        pincods["pincod"] = pincod
+        setpincod({ ...pincods, pincods })
         setValues({ ...values, values })
     }
 
@@ -135,14 +139,14 @@ const Addressforms = () => {
         lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
         if (Object.keys(lgn).length > 0) {
             lgn = {
-                addressOne: lgn,
+                addressOne: lgn ? lgn : lgn1,
                 addressTwo: lgn1 ? lgn1 : lgn
             }
         }
         // if (Object.keys(value11&&value12).length > 0) {
-            value11 = {
-                addressOne: value11 ? value11 : {},
-                addressTwo: value12 ? value12 : {}
+        value11 = {
+            addressOne: value11 ? value11 : value12,
+            addressTwo: value12 ? value12 : value11
             // }
         }
         setValues({
