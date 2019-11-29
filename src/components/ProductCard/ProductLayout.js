@@ -105,12 +105,25 @@ class Component extends React.Component {
     this.props.setOffset(offsets)
 
   }
+  hide = () => {
+    var vls
+    var vc
+    const vl = this.props.data.length > 0 ? this.props.data[0].totalCount : ''
+    if (vl !== undefined && vl !== null) {
+      vls = vl - this.props.data.length
+      if (vls !== undefined && vls !== null && vls === 0) {
+        vc = vls
+      }
+    }
+    return vc
+  }
   render() {
     const { classes, data } = this.props;
     const { disabledstate } = this.state
     // const disabledstate = this.props.data.length < 24 ? 'disabled=true' : ''
     // console.log(dataCard)
     // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
+
     return (
       <div className={`productLayoutRoot `} style={this.props.styles}>
         {
@@ -139,16 +152,18 @@ class Component extends React.Component {
                   ?
                   <div style={{ textAlign: 'center' }}>Loading...</div>
                   :
-                 <>
-                  <Button variant="contained" className={`${classes.button}  ${classes.viewmoreColor}`} onClick={() => { this.handleOffset() }} disabled={data.length < 24} >
-                    {data.length === 0 && `No products found`}
-                    {data.length >= 24 && ` View ${data.length > 0 ? data[0].totalCount - data.length : ''} More Products`}
-                    {(data.length > 0 && data.length < 24)
-                      && `Only ${data.length > 0 ? data[0].totalCount - data.length : ''} products avalilable`}
-                  </Button>
-                </>
+                  <>
+                    {this.hide() ? "" :
+                      <Button variant="contained" className={`${classes.button}  ${classes.viewmoreColor}`} onClick={() => { this.handleOffset() }} disabled={data.length < 24} >
+                        {data.length === 0 && `No products found`}
+                        {data.length >= 24 && ` View ${data.length > 0 ? data[0].totalCount - data.length : ''} More Products`}
+                        {(data.length > 0 && data.length < 24)
+                          && `Only ${data.length > 0 ? data[0].totalCount - data.length : ''} products avalilable`}
+                      </Button>
+                    }
+                  </>
                 }
-                  
+
               </div>
 
 

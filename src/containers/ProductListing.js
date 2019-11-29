@@ -68,7 +68,6 @@ class Stylori extends React.Component {
 const Components = props => {
   let { FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters }, setloadingfilters } = React.useContext(FilterOptionsContext);
   let content, mapped = [];
-  debugger
   // alert(JSON.stringify(cartcount))
   var arrFilters = Array(mappedFilters)
   let mappedFiltersList = filterData(arrFilters)

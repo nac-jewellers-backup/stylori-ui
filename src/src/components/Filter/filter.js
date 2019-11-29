@@ -105,7 +105,7 @@ class Component extends React.Component {
 
   }
   // valz = () => Object.entries(this.state.checked).map(val => {
-  //   debugger
+  //   
   //   // var valx;
   //   var valx2;
   //   var obj = {};
@@ -130,6 +130,7 @@ class Component extends React.Component {
     const { checked } = this.state;
     var obj = {};
     var mm;
+    var nnn;
     var valx; var valx2;
     if (val !== undefined && val !== null) {
       const ss = val ? val[1] : ""
@@ -141,9 +142,11 @@ class Component extends React.Component {
           valx2 = s1s
           mm = valx ? Object.keys(valx)[0] : ""
           checked[val[0]] = { [mm]: false }
+          // nnn=checked
           // obj[mm] = false
           // checked['checked'] = obj
-          this.setState({ ...checked, checked }, () => this.props.setFilters(checked))
+          this.setState({checked }, () => this.props.setFilters(checked))
+          break;
         }
       })
     }
@@ -151,7 +154,6 @@ class Component extends React.Component {
     return mm
   })
   handleChange(value, BoolName, e, title, TargetName) {
-    debugger
     this.props.setloadingfilters(true)
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
@@ -198,13 +200,12 @@ class Component extends React.Component {
     let arr = [];
     let checkTitle = true;
     chipData.map(val => {
-      debugger
+      
       if (val.title === title) {
         checkTitle = false
       }
     })
     if (BoolName === true) {
-      debugger
       // chipData.push({ key: chipData[chipData.length - 1].key, label: value });
       if (checkTitle) {
         chipData.push({ key: chipData, label: value, title: title });
@@ -229,12 +230,12 @@ class Component extends React.Component {
     let arr = [], arr1 = [];
     let { chipData, checked } = this.state
     arr = chipData.filter(val => val.label !== value);
-    debugger
+    
     if (checked) {
       arr1 = this.valz().filter(val => {
         var dlt;
         if (val !== undefined && val !== null) {
-          dlt = Object.values(val) === -1
+          dlt = Object.values(val).indexOf(value) === -1
         }
         return dlt;
       })
@@ -327,7 +328,7 @@ class Component extends React.Component {
     this.setState({ productDisplay: true });
   }
   // chck_res = () => this.state.chipData.map(data => {
-  //   debugger
+  //   
   //   var value;
   //   if (data.label.length > 0 && data.label !== "" && data.label !== undefined) {
   //     value = <>{data.label}</>

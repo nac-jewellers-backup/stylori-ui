@@ -11,7 +11,7 @@
 // opt-in, read https://bit.ly/CRA-PWA
 
 const cacheCheck = async() =>{
- debugger
+ 
  
     // read text from URL location
     var request = new XMLHttpRequest();
@@ -21,7 +21,7 @@ const cacheCheck = async() =>{
   
   var local_storage = localStorage.getItem('version')
   if(local_storage && local_storage.length>0){
-    debugger
+    
     const condition_async = async() =>{
       request.open('GET', '/meta.json', true);
       request.send(null);
@@ -30,7 +30,7 @@ const cacheCheck = async() =>{
             
              var type = await request.getResponseHeader('Content-Type');
              
-              debugger
+              
               if (type.indexOf("json") !== 1) {
                 var obj =await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
                 console.info('objectlocal_storage, obj.version', local_storage, obj.version)
@@ -49,7 +49,7 @@ const cacheCheck = async() =>{
     condition_async()
   }
   else{
-    debugger
+    
 const condition_async = async() =>{
   request.open('GET', '/meta.json', true);
   request.send(null);
@@ -57,7 +57,7 @@ const condition_async = async() =>{
       // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
         
          var type = await request.getResponseHeader('Content-Type');
-          debugger
+          
           // alert(request.responseText)
 
           if (type.indexOf("json") !== 1) {

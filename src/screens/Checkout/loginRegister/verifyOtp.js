@@ -54,7 +54,6 @@ export const useVerifyOtp = (changePanel) => {
     }
 
     const handleChange = (type, value) => {
-        debugger
         if (type === "email") {
             setMail({
                 ...email,

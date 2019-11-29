@@ -16,7 +16,6 @@ import { NavLink } from 'react-router-dom';
 function MediaControlCard(props) {
   const { classes } = props;
   const { dataCard1 } = props.data;
-  debugger
 
   return (
     <div style={{ background: "whitesmoke", paddingTop: "10px" }}>

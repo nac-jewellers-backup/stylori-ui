@@ -71,7 +71,6 @@ export const TabsProvider = (props) => {
         // variables = { conditionfilter: { 'generatedSku': filters["skuId"] }, conditionImage:{...metalColors} }
 
         if (window.location.search.length > 0) {
-            debugger
             setregisterurl({
                 registerurl: window.location.pathname + window.location.search
             })

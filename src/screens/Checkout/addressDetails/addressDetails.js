@@ -29,16 +29,9 @@ class Addressdetails extends React.Component {
         const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
         let lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
         let lgn1 = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
-        debugger
         var objj = {};
         var objj1 = {};
-        // if (Object.values(value && value.addressOne)!==undefined&& Object.values(value && value.addressOne)!==null&&Object.values(value && value.addressOne) === Object.values(value && value.addressTwo)) {
-        //     objj['value'] = ""
-        //     objj['value'] = ""
-        // } if (Object.values(value && value.addressOne) !== Object.values(value && value.addressTwo)) {
-        //     objj['addressOne'] = value.addressOne
-        //     objj1['addressTwo'] = value.addressTwo
-        // }
+       
         objj['addressOne'] = value.addressOne
         objj1['addressTwo'] = value.addressTwo
 

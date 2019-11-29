@@ -21,6 +21,7 @@ const useRating = (props) => {
             rate: "",
         },
     });
+    console.log('JSON.stringify(props)',JSON.stringify(props))
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addproductreview', {}, []);
     var variab = {}
@@ -78,7 +79,6 @@ const useRating = (props) => {
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
         if (user_id.length > 0) {
             makeFetch(values);
-            debugger
             if (window.location.search) {
                 let urlSearchparams = window.location.search;
                 let urlSearchparamsDecode = decodeURI(urlSearchparams)
