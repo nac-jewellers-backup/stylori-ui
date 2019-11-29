@@ -15,7 +15,7 @@ const useRegister = (changePanel, props) => {
         errortext: {
             emerr: "",
             passerr: "",
-            cnfpasserr: "",
+            cnfpasserr: "", 
             firstname: "",
             lastname: ""
         },
