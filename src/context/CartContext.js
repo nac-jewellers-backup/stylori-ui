@@ -10,7 +10,7 @@ import { useNetworkRequest } from 'hooks/NetworkHooks'
 const initialCtx = {
     CartCtx: {
         cartFilters: {
-            skuId: '',
+            skuId:  '',
             qty: '',
             price: '',
             user_id: '',
@@ -21,14 +21,14 @@ const initialCtx = {
     },
     setCartFilters: (filterData) => { }
 }
-debugger
+
 
 export const CartContext = React.createContext(initialCtx);
 export const CartConsumer = CartContext.Consumer;
 const Provider = (props) => {
-    debugger
+    
     const [cartFilters, setCartFilters] = React.useState(initialCtx.CartCtx);
-    debugger
+    
     var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
     const user_id = cartFilters.user_id ? cartFilters.user_id : ""
     const price = cartFilters.price ? cartFilters.price : ""
@@ -36,7 +36,7 @@ const Provider = (props) => {
     const userIds = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ''
     var cartdetails = JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : {}
     const guestlogId = cartFilters.user_id ? cartFilters.user_id : ''
-    debugger
+    
     // const prices = cartFilters.price ? cartFilters.price : ''
     const discounted_price = cartFilters.discounted_price ? cartFilters.discounted_price : ""
     useEffect(() => {
@@ -53,7 +53,7 @@ const Provider = (props) => {
                 // makeFetch({--login---})
             } 
         }
-        debugger
+        
         if (guestlogId.length > 0) {
             localStorage.setItem("user_id", cartFilters.user_id)
             if (JSON.stringify(cartdetails).length > 0) {

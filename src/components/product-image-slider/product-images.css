@@ -654,11 +654,12 @@ body {
 
 .one-day-ship {
     width: 152px !important;
-    height: 12% !important;
+    height: 9% !important;
     background-image: url(https://assets-cdn.stylori.com/images/static/product-details-icons.png);
-    margin-top: -30px !important;
+    /* margin-top: -30px !important; */
+    position: absolute;
     background-repeat: no-repeat !important;
-    margin-left: -6%;
+    margin-left: 0px;
     cursor: pointer !important;
 }
 

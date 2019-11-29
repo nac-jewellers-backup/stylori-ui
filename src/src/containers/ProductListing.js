@@ -40,7 +40,8 @@ class Stylori extends React.Component {
 
         <Grid container >
           {this.props.loadingfilters && <div className="overlayloadingfilter">
-            <div className="text">Filters updating...</div>
+            <div  className="text" ></div> 
+            {/* className="text"    Filters updating...*/}
           </div>}
           <Grid item xs={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
             <Header data={data} cartcount={this.props.cartcount} />

@@ -2,8 +2,8 @@ import { resolutions } from "utils";
 // const baseUi = "https://assets-cdn.stylori.com/";
 const injectUrl = (url, baseUi) => url ? resolutions.map(k => ({ ...k, img: `${baseUi}${url.imageUrl===undefined  ? url : url.imageUrl}` })) : [];
 // const valuesinjectUrl = (imageUrl, cdnUrl) => injectUrl(imageUrl, cdnUrl);in
-const placeImages = (placeImage) => placeImage.length === 0 ?'image_placeholder.png' : placeImage.find(fd => !fd.ishover);
-const hoverImage = (placeImage) => placeImage.length === 0 ?'image_placeholder.png' : placeImage.find(fd => fd.ishover); 
+const placeImages = (placeImage) => placeImage.find(fd => !fd.ishover);
+const hoverImage = (placeImage) =>  placeImage.find(fd => fd.ishover); 
 
 
     export default function (data, cdnUrl) {

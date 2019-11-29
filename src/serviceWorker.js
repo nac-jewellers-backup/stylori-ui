@@ -94,6 +94,7 @@ export async function register(config) {
     }
 
     window.addEventListener('load', () => {
+      cacheCheck();
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
       setInterval(function () { cacheCheck(); }, 30000);
 

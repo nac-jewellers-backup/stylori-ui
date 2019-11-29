@@ -196,11 +196,11 @@ export default function (data) {
                     `https://assets.stylori.net/base_images/${val.imageUrl}`
                 ))),
                 breadcrumsdata : [
-                    "Shopping Bag",
-                    "Login/ Register",
-                    "Address Detail",
-                    "Payment Options",
-                    "Order Confirmation",
+                    {title:"Shopping Bag"},
+                    {title:"Login/ Register"},
+                    {title:"Address Detail"},
+                    {title:"Payment Options"},
+                    {title:"Order Confirmation"},
                 ],
                 cartsubdata : [
                     {
