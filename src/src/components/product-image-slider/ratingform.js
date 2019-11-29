@@ -58,7 +58,7 @@ const RatingComponent = (props) => {
                         required />
                     <span className={`tool-tips ${classes.normalfonts}`} >Max 250 Characters</span>
                     {/* <button type="submit" >rr</button> */}
-                </Grid>
+                </Grid> 
             </Grid>
             <Grid container spacing={12} style={{ marginTop: '20px' }}>
                 <Grid item xs={12} lg={9}>
