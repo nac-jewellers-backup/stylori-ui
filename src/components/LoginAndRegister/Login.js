@@ -14,6 +14,7 @@ import {
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const UserLogin = (props) => {
+
     return <LoginComponent  {...props} />
 }
 
@@ -24,6 +25,10 @@ const LoginComponent = (props) => {
     // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
     var prof = data.userprofile ? data.userprofile.email : ""
     // alert(JSON.stringify(data))
+    React.useEffect(() => {
+        window.scrollTo(0, 0)
+      
+    }, [])
     return (
         <>
             <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>

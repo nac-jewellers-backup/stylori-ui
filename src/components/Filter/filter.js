@@ -35,6 +35,7 @@ const PersistentDrawerLeft = (props) => {
 class Component extends React.Component {
   constructor(props) {
     super(props)
+    this.myRef = React.createRef();
     this.state = {
       open: this.props.open,
       openMobile: true,
@@ -67,7 +68,8 @@ class Component extends React.Component {
     var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
     var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
     this.setState({ numOne: numOne, numTwo: numTwo })
-
+      
+    
 
     // This is used for checking the check boxes if we copy and pasted the url to new tab or new window
     if (window.location.search) {
@@ -179,9 +181,14 @@ class Component extends React.Component {
 
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     // Typical usage (don't forget to compare props):
     console.log(this.props, 'filters')
+    if(this.state.checked !== prevState.checked) 
+    {
+      // this.myRef.scrollTop()
+      window.scrollTo(0, this.myRef.scrollTop)
+  }
     if (this.props.data[0].subFilter['Price Range'] !== prevProps.data[0].subFilter['Price Range']) {
 
       console.log('price_props', typeof this.props.data[0].subFilter['Price Range'], this.props.data[0].subFilter['Price Range'].length, this.props.data[0].subFilter['Price Range'][0] !== undefined, Number(this.props.data[0].subFilter['Price Range'].max))
@@ -571,7 +578,7 @@ class Component extends React.Component {
               className={check ? classes.productCardscheck : classes.productCardsuncheck}
 
             >
-              <ProductLayout data={this.props.datas} style={{ backgroundColor: 'whitesmoke' }} />
+              <ProductLayout data={this.props.datas} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef}/>
 
             </div>}
         </div>
