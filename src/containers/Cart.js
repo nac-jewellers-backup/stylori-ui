@@ -24,11 +24,11 @@ import { NavLink } from 'react-router-dom';
 //         )
 //     })
 const breadcrumsdata = [
-    "Shopping Bag",
-    "Login/ Register",
-    "Address Detail",
-    "Payment Options",
-    "Order Confirmation",
+    {title:"Shopping Bag"},
+    {title:"Login/ Register"},
+    {title:"Address Detail"},
+    {title:"Payment Options"},
+    {title:"Order Confirmation"},
 ]
 const cartsubdata = [
     {

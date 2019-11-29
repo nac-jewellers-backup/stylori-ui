@@ -59,7 +59,7 @@ const Gallery = ( props, callmouseover, callmouseout, cardstate, scrollPosition 
       <LazyLoadImage
            alt={'props.data.title'}
            effect="blur"
-           src="https://alpha-assets.stylori.com/276x276/images/static/Image_Not_Available.jpg"
+           src="https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg"
            srcset={renderImages(props, cardstate)}
            sizes="(max-width: 320px) 320w,
                    (max-width: 480px) 375w,
@@ -70,6 +70,7 @@ const Gallery = ( props, callmouseover, callmouseout, cardstate, scrollPosition 
                    2560w
                   
        "
+       onerror="this.onerror=null;this.src='https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg';"
        title={props.data.title}
        onMouseOver={() => {
         callmouseover()

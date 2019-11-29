@@ -284,10 +284,10 @@ const Provider = (props) => {
 
     console.info('dataResponsed', ntxdata)
     const seoUrlFetch = () => {
-debugger
+
 var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mappedFilters.seo_url : window.location.pathname.split('/')[1]  
         const conditionfiltersSeo = { seofilter: { seoUrl: { in: paramObjects(path_name) } } }
-        debugger
+        
         makeRequestSeo(conditionfiltersSeo)
     
         console.log('paramObjects', paramObjects(mappedFilters.seo_url), DataSeoQuery, conditionfiltersSeo)
@@ -298,7 +298,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     //     setloadingfilters(true)
     // },[data])
     const updateProductList = async() => {
-debugger
+
         // console.info('objecobjecobject',mappedFilters.seo_url !== "jewellery")
         if (window.location.search) {
             const conditionFilters = conditions.generateFilters(paramObjects())
@@ -372,7 +372,7 @@ debugger
     useEffect(() => { setMappedFilters(ntxdata) }, [ntxdata, ntxerr, ntx]);
 
     useEffect(() => {
-        debugger
+        
         pathQueries();
         updateProductList();
 
@@ -393,7 +393,7 @@ debugger
         console.info('objectdataArr_objectdataArr', dataArr)
     }, [data, error, loading])
     const updatefiltersSort = async() => {
-        debugger
+        
         if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object) ) {
             var paramsfilter = (Object.entries(seoData).length !== 0 && seoData.constructor === Object ) && seoData.data.allSeoUrlPriorities.nodes.map(val => {
                 var a = {}
@@ -441,10 +441,10 @@ debugger
                     variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
                 else {
-                    debugger
+                    
                     variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
-debugger
+
             await makeRequest(variables)
             
             }
@@ -466,12 +466,12 @@ function usePrevious(value) {
     return ref.current;
   }
     useEffect(() => {
-       debugger
+       
        updatefiltersSort()
     }, [seoData])
     var newObj = {}
     const updateFilters = async (filters) => {
-        debugger
+        
         setFilters(filters);
         // setloadingfilters(true)
         var len;
@@ -545,7 +545,7 @@ function usePrevious(value) {
             setSort('')
             paramObjects(mappedFilters.seo_url)
 
-debugger
+
             seoUrlFetch()
             console.info('object', DataSeoQuery, 'pazahakkam')
 

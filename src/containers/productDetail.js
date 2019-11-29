@@ -31,10 +31,21 @@ class ProductDetail extends Component {
   constructor(props) {
     super(props)
   }
+  renderUrl = () =>{
+    var loc = this.props.location.pathname;
+    var path = loc.split('/');
+    if(path[2] === 'Bracelets') return "/bracelets-jewellery"
+    if(path[2] === 'Pendants') return   "/pendants-jewellery"
+    if(path[2] === 'Nosepins') return   "/nose+pin+online-jewellery"
+    if(path[2] === 'Earrings') return   "/earrings-jewellery"
+    if(path[2] === 'Bangles') return "/bangles-jewellery"
+    if(path[2] === 'Rings') return "/rings-jewellery"
 
+  }
   render() {
     var loc = this.props.location.pathname;
     var path = loc.split('/');
+    var data_json = [{title:'home' ,url:'/home'}, {title:path[2] ,url:this.renderUrl()}, {title:path[4]}]
     return (
       <div>
 
@@ -52,7 +63,7 @@ class ProductDetail extends Component {
                 <CustomSeparator
                   list='pricing-loctn'
                   classsubhed='pricing-loctn-head'
-                  data={[window.location.hostname, path[1]]} />
+                  data={data_json} />
               </div>
             </Grid>
           </Grid>
