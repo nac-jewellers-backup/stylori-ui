@@ -81,6 +81,7 @@ const isLocalhost = Boolean(
 // setTimeout(function(){ cacheCheck(); }, 20000);
 
 export async function register(config) {
+  cacheCheck()
   await requestNotificationPermission();
 
   if (process.env.NODE_ENV !== 'production' && 'serviceWorker' in navigator) {
