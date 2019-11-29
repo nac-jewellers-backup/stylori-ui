@@ -109,7 +109,14 @@ const Provider = (props) => {
 
     const updateProductList = () => {
         const variables = { "productList": skus };
+        var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
+        const user_id = cartFilters.user_id
+        var addcart = ({ products, user_id })
+        console.log('verifiedMaill', addcart)
+        
         makeRequest(variables);
+        addtocart(addcart)
+
     }
     useEffect(() => {
         // pathQueries();

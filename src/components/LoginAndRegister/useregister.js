@@ -4,7 +4,7 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { resetWarningCache } from 'prop-types';
 import { ProductDetailContext } from 'context/ProductDetailContext';
-
+import { CartContext } from 'context'
 const useRegister = (changePanel, props) => {
     const [values, setValues] = React.useState({
         // url:null 
@@ -13,6 +13,7 @@ const useRegister = (changePanel, props) => {
         confirmpassword: null,
         roles: ["user"],
         firstname: null,
+        user_id:null,
         lastname: null,
         errortext: {
             emerr: "",
@@ -33,6 +34,7 @@ const useRegister = (changePanel, props) => {
     const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     const { data, error, loading, makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
+    const { setCartFilters } = React.useContext(CartContext);
     // const { loading: viewedloading, error: viewederror, data: vieweddata, makeRequest: viewmakeRequest } = useGraphql(youRecentlyViewed, () => { }, {}, false);
     const { ProductDetailCtx: { registerurl } } = React.useContext(ProductDetailContext);
     debugger
@@ -40,6 +42,7 @@ const useRegister = (changePanel, props) => {
     useEffect(() => {
         // if(data.message=="Email ID Already Exist")
         var v = data.user_profile_id ? data.user_profile_id : ""
+        var user_id = values.user_id
         if (v.length > 0) {
             var obj = {}
             obj['userprofileId'] = bb
@@ -49,6 +52,8 @@ const useRegister = (changePanel, props) => {
             // }
             localStorage.setItem("email", data.user.email)
             localStorage.setItem("user_id", data.user_profile_id)
+            debugger
+            setValues({user_id:data.user_profile_id},()=>{ setCartFilters({user_id}) })
             makeRequestCod(obj);
             window.location.href=localStorage.getItem('review_location')
             // if (bb.length > 0) {
@@ -150,6 +155,7 @@ const useRegister = (changePanel, props) => {
             return false
         }
         makeFetch(values);
+        debugger
         if (errmsg.length > 0) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Your email is already exists'

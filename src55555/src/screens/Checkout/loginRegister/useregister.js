@@ -12,6 +12,7 @@ const useRegister = (changePanel, props) => {
         roles: ["user"],
         firstname: null,
         lastname: null,
+        user_id:null,
         errortext: {
             emerr: "",
             passerr: "",
@@ -43,6 +44,7 @@ const useRegister = (changePanel, props) => {
             // }
             localStorage.setItem("email", data.user.email)
             localStorage.setItem("user_id", data.user_profile_id)
+            setValues({user_id:data.user_profile_id})
             makeRequestCod(obj);
         }
         //     obj['id'] = bb
