@@ -74,7 +74,7 @@ class MenuListItem extends Component {
                 <List component="nav" className={`ListColor ${classes.colorMain}`} >
                     {
                         (this.props.listHoverItem !== undefined) &&
-                        this.props.listHoverItem['menuTwo'].map(menuListFilter => (
+                        this.props.listHoverItem['menuTwo'] && this.props.listHoverItem['menuTwo'].map(menuListFilter => (
                             <ListItem component="li" className={`ListColor ${classes.listHover} ${classes.colorMain}`}
 
                                 onMouseOver={() => this.props.handleMouseOver(menuListFilter.value)}>

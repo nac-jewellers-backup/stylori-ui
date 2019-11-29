@@ -16,9 +16,10 @@ export default function CustomSeparator(props) {
            <Breadcrumbs separator={seperators}>
              {
                props.data.map(data => (
-                 <Link color="inherit" onClick={data} style={{ fontSize: "14px" }} className={props.list}>
-                   {data}
-                 </Link>
+                //  <Link color="inherit" to={{pathname:data.url}} style={{ fontSize: "14px" }} className={props.list}>
+                   <a style={{ fontSize: "14px" }} className={props.list} href={data.url}>{data.title}</a>
+                   
+                //  </Link>
                ))
              }
            </Breadcrumbs>

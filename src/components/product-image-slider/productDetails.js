@@ -51,17 +51,10 @@ class ProductDetails extends React.Component {
                                                                         isArray(res.details) ?
                                                                         
                                                                             <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
-                                                                                {res.details.map((val,index) => {
-                                                                                    return (
-                                                                                    <span style={{ fontSize: "12px", textAlign: 'left' }}> 
-                                                                                    { 
-                                                                                    valueofproductdetail.header === 'Price Breakup' && res.name !== 'GST' ?
-                                                                                     index === 0 ? <del>{val}</del> : val
-                                                                                     :
-                                                                                     val
-                                                                                    }
-                                                                                     </span>
-                                                                                    )
+                                                                               {res.details.map((Item , Index) => {
+                                                                                    return(<span style={{ fontSize: "12px", textAlign: 'left' }}> { 
+                                                                                    (valueofproductdetail.header === 'Price Breakup' && res.name !== 'GST') ? 
+                                                                                ( (Index === 0 && (res.details[Index] !== res.details[Index + 1] ) ? <del>{Item}</del> : Item  ) ) : Item } </span>)
                                                                                 })}
                                                                             </ListItemText>
                                                                             :

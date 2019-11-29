@@ -45,7 +45,10 @@ const Provider = (props) => {
     const [first, setFirst] = React.useState(24)
     const [dataArr, setDataArr] = React.useState([])
     const [cartcount, setcartcount] = React.useState([])
+<<<<<<< HEAD
     
+=======
+>>>>>>> 51584625c7c527ac4178e32738176d2b7693caa6
     const [mappedFilters, setMappedFilters] = React.useState([])
     const [{ filterLogic }, setFilterLogic] = React.useState({ filterLogic: () => [] });
     const [LoadingSeoQuery, setLoadingSeoQurey] = React.useState(true)
@@ -288,8 +291,9 @@ const Provider = (props) => {
 
 var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mappedFilters.seo_url : window.location.pathname.split('/')[1]  
         const conditionfiltersSeo = { seofilter: { seoUrl: { in: paramObjects(path_name) } } }
-        var req = async() => {await makeRequestSeo(conditionfiltersSeo)}
-        req()
+        debugger
+        makeRequestSeo(conditionfiltersSeo)
+    
         console.log('paramObjects', paramObjects(mappedFilters.seo_url), DataSeoQuery, conditionfiltersSeo)
 
         console.log('DataSeoQuery', DataSeoQuery)
@@ -352,8 +356,8 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                 variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
             }
             
-           var req = async() =>{await makeRequest(variables)}
-           req()
+          makeRequest(variables)
+   
             console.log('came inside view moreproducts', filters)
 
         }
@@ -386,11 +390,12 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
         const mapped = productlist(data, CDN_URL);
         const newUpdatedList = filterLogic(dataArr, mapped);
         setDataArr(newUpdatedList);
-    }, [data]);
+    }, [data, error, loading]);
 
     const updatefiltersSort = () => {
-        if ((Object.entries(DataSeoQuery).length !== 0 && DataSeoQuery.constructor === Object)) {
-            var paramsfilter = (Object.entries(DataSeoQuery).length !== 0 && DataSeoQuery.constructor === Object && DataSeoQuery.data.allSeoUrlPriorities) && DataSeoQuery.data.allSeoUrlPriorities.nodes.map(val => {
+        debugger
+        if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object)) {
+            var paramsfilter = (Object.entries(seoData).length !== 0 && seoData.constructor === Object && seoData.data.allSeoUrlPriorities) && seoData.data.allSeoUrlPriorities.nodes.map(val => {
                 var a = {}
 
                 a[val.attributeName.replace(/\s/g, '')] = val.attributeValue
@@ -398,7 +403,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
 
             })
             console.info('muthaakannasekuramvaadaa', paramsfilter)
-            if ((Object.entries(seoData).length !== 0 && DataSeoQuery.constructor === Object)) {
+            if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object)) {
                 const conditionFilters = conditions.generateFilters(paramsfilter.splice(1))
 
                 console.info('objectparamsfilterconditionFilters', conditionFilters)
@@ -436,11 +441,12 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                     variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
                 else {
+                    debugger
                     variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
 
-                var req = async() =>{await makeRequest(variables)}
-                req()
+            makeRequest(variables)
+            
             }
         }
     }

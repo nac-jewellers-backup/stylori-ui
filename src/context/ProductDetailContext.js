@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 const initialCtx = {
     ProductDetailCtx: {
         filters: { productId: '', defaultVariants: { diamondType: '', metalColor: '', purity: '', skuSize: '' }, skuId: '' },
-        loading: false, error: false, data: [], likedatas: [], viewedddatas: [], price: 0, rating: [], ratingcounts: [], registerurl: []
+        loading: false, error: false, data: [], likedatas: [], viewedddatas: [], price: 0, rating: [], ratingcounts: [], registerurl: ""
     },
     setFilters: () => { },
     setlikedata: () => { },
@@ -22,7 +22,7 @@ export const TabsProvider = (props) => {
     const [likedatas, setlikedata] = React.useState([])
     const [viewedddatas, setvieweddata] = React.useState([])
     const [rating, setrating] = React.useState([])
-    const [registerurl, setregisterurl] = React.useState([])
+    const [registerurl, setregisterurl] = React.useState("")
     const [ratingcounts, setratingcounts] = React.useState([])
     const [price, setPrice] = React.useState(0)
     let queries = [];
@@ -183,7 +183,7 @@ export const TabsProvider = (props) => {
     }, [price, filters])
     useEffect(() => {
         console.log(price, 'datadatadata123')
-        if (Object.entries(data).length > 0 && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes) {
+        if (Object.entries(data).length > 0 && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]) {
             setPrice(data.data.allTransSkuLists.nodes[0].markupPrice)
 
         }

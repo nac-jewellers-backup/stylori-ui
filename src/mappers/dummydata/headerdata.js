@@ -223,55 +223,36 @@ export const menuLists = {
     },
     'Solitaires': {
         'menuOne':
-            [{ value: 'valayal', title: 'valayal', url: '#valayal' },
-            { value: 'pendants', title: 'Pendants', url: '#' },
-            { value: 'rings', title: 'Rings', url: '#' },
-            { value: 'nosepins', title: 'Nose pins', url: '#' },
-            { value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#' },
-            ],
-        'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
-        { value: 'Collection', title: 'By Collection', url: '#' },
-        { value: 'Material', title: 'By Material', url: '#' },
-        ]
+            [{ value: 'solitairejewellery', title: ' Solitaire Jewellery', url: '/solitaire-jewellery' }]
     },
-    'GoldCoins': {
-        'menuOne':
-            [{ value: 'kammal', title: 'kammal', url: '#kammal' },
-            { value: 'pendants', title: 'Pendants', url: '#' },
-            { value: 'rings', title: 'Rings', url: '#' },
-            { value: 'nosepins', title: 'Nose pins', url: '#' },
-            { value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#' },
-            ],
-        'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
-        { value: 'Collection', title: 'By Collection', url: '#' },
-        { value: 'Material', title: 'By Material', url: '#' },
-        ]
-    },
+    // 'GoldCoins': {
+    //     'menuOne':
+    //         [{ value: 'kammal', title: 'kammal', url: '#kammal' },
+    //         { value: 'pendants', title: 'Pendants', url: '#' },
+    //         { value: 'rings', title: 'Rings', url: '#' },
+    //         { value: 'nosepins', title: 'Nose pins', url: '#' },
+    //         { value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#' },
+    //         ],
+    //     'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
+    //     { value: 'Collection', title: 'By Collection', url: '#' },
+    //     { value: 'Material', title: 'By Material', url: '#' },
+    //     ]
+    // },
     'Gifts': {
         'menuOne':
-            [{ value: 'koluse', title: 'koluse', url: '#koluse' },
-            { value: 'pendants', title: 'Pendants', url: '#' },
-            { value: 'rings', title: 'Rings', url: '#' },
-            { value: 'nosepins', title: 'Nose pins', url: '#' },
-            { value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#' },
+            [
+            { value: 'occassion', title: 'By Occassion', url: '#' },
+            { value: 'Price', title: 'By Price', url: '#' }
             ],
-        'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
-        { value: 'Collection', title: 'By Collection', url: '#' },
-        { value: 'Material', title: 'By Material', url: '#' },
-        ]
+   
     },
     'Collections': {
         'menuOne':
-            [{ value: 'valayal', title: 'valayal', url: '#valayal' },
-            { value: 'pendants', title: 'Pendants', url: '#' },
-            { value: 'rings', title: 'Rings', url: '#' },
-            { value: 'nosepins', title: 'Nose pins', url: '#' },
-            { value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#' },
+            [{ value: 'collections', title: 'By Collections', url: '#' },
+            { value: 'themes', title: 'By Themes', url: '/jewellery' },
+
             ],
-        'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
-        { value: 'Collection', title: 'By Collection', url: '#' },
-        { value: 'Material', title: 'By Material', url: '#' },
-        ]
+       
     }
 
 }
@@ -281,6 +262,7 @@ export const earings = {
             img: 'https://assets-cdn.stylori.com/images/megamenu/studs.jpg',
             title: 'Breakfast',
             author: 'jill111',
+
         },
         {
             img: 'https://assets-cdn.stylori.com/images/megamenu/drops.jpg',
@@ -305,6 +287,49 @@ export const earings = {
         },
         {
             img: 'https://assets-cdn.stylori.com/images/megamenu/ear-jacket.jpg',
+            title: 'Tasty burger',
+            author: 'director90',
+        },
+    ],
+    sideBanner: [
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/stylori_menu_banner01.jpg',
+            title: 'Breakfast',
+            author: 'jill111',
+        },
+    ]
+}
+export const occassion = {
+    images: [
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/casual-rings.jpg',
+            title: 'Breakfast',
+            author: 'jill111',
+
+        },
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/classic-rings.jpg',
+            title: 'Tasty burger',
+            author: 'director90',
+        },
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/cocktail-rings.jpg',
+            title: 'Tasty burger',
+            author: 'director90',
+        },
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/engagement-rings.jpg',
+            title: 'Tasty burger',
+            author: 'director90',
+
+        },
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/fashion-rings.jpg',
+            title: 'Tasty burger',
+            author: 'director90',
+        },
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/mens-rings.jpg',
             title: 'Tasty burger',
             author: 'director90',
         },
@@ -400,6 +425,37 @@ export const pendants = {
     ]
 }
 
+export const solitairejewellery = {
+    images: [
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/classic-nosepins.jpg',
+            title: 'Place your title of the image to display',
+            url:'#'
+                  },
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/fashion-nosepins.jpg',
+            title: 'Place your title of the image to display',
+            url:'#'
+            
+        },
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/stud-nosepins.jpg',
+            title: 'Place your title of the image to display',
+            url:'#'
+            
+        },
+
+
+    ],
+    sideBanner: [
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/stylori_menu_banner01.jpg',
+            title: 'Place your title of the image to display',
+            url:'#'
+        },
+    ]
+}
+
 export const nosepins = {
     images: [
         {
@@ -423,6 +479,73 @@ export const nosepins = {
     sideBanner: [
         {
             img: 'https://assets-cdn.stylori.com/images/megamenu/stylori_menu_banner01.jpg',
+            title: 'Breakfast',
+            author: 'jill111',
+        },
+    ]
+}
+
+export const collections = {
+    images: [
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/classic-nosepins.jpg',
+            title: 'Breakfast',
+            author: 'jill111',
+        },
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/fashion-nosepins.jpg',
+            title: 'Tasty burger',
+            author: 'director90',
+        },
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/stud-nosepins.jpg',
+            title: 'Tasty burger',
+            author: 'director90',
+        },
+
+
+    ],
+    sideBanner: [
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/stylori_menu_banner01.jpg',
+            title: 'Breakfast',
+            author: 'jill111',
+        },
+    ]
+}
+export const themes = {
+    images: [
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/classic-pendants.jpg',
+            title: 'Breakfast',
+            author: 'jill111',
+        },
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/casual-pendants.jpg',
+            title: 'Tasty burger',
+            author: 'director90',
+        },
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/fashion-pendants.jpg',
+            title: 'Tasty burger',
+            author: 'director90',
+        },
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/religious-pendants.jpg',
+            title: 'Tasty burger',
+            author: 'director90',
+
+        },
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/tanmaniya-pendants.jpg',
+            title: 'Tasty burger',
+            author: 'director90',
+        },
+
+    ],
+    sideBanner: [
+        {
+            img: 'https://assets-cdn.stylori.com/images/megamenu/stylori_butterfly_new_campaign_megamenu.png',
             title: 'Breakfast',
             author: 'jill111',
         },

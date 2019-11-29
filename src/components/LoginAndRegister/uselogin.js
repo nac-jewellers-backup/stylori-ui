@@ -3,8 +3,14 @@ import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
+<<<<<<< HEAD
 
 const useLogin = (changePanel) => {
+=======
+import { ProductDetailContext } from 'context/ProductDetailContext';
+import { withRouter } from "react-router";
+const useLogin = (changePanel, props) => {
+>>>>>>> 51584625c7c527ac4178e32738176d2b7693caa6
     const [values, setValues] = React.useState({
         password: null,
         email: null,
@@ -18,6 +24,7 @@ const useLogin = (changePanel) => {
             emerr: false,
         }
     });
+    const { ProductDetailCtx } = React.useContext(ProductDetailContext);
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/signin', {}, []);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});

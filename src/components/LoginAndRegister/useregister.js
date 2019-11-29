@@ -115,7 +115,7 @@ const useRegister = (changePanel, props) => {
             values['error']['passerr'] = true
             values['errortext']['passerr'] = 'Password is required'
             setValues({
-                ...values,
+                ...values, 
                 values,
             })
         }

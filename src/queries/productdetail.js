@@ -13,6 +13,7 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
       isReadyToShip
       vendorDeliveryTime
       discountPriceTax
+      markupPriceTax
       transSkuDescriptionsBySkuId {
         nodes {
           skuDescription
@@ -23,6 +24,8 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
         productName
         productId
         defaultSize
+        width
+        height
         sizeVarient
         colourVarient
         defaultWeight
@@ -77,6 +80,9 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
     }
   }
 }
+
+
+
 
 
 `

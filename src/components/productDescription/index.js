@@ -35,6 +35,7 @@ class ProductDescription extends Component {
     // let path = window.location.pathname.split('/').pop();
     var loc = this.props.location.pathname;
     var path = loc.split('/');
+    var data_json = [{title:'home' ,url:'/home'}, {title:path[1] ,url:loc}]
     // const descriptionData = this.props.data;
     const settings = this.props.data[0].dataCarousel;
     const fadeImages = this.props.data[0].carouselImage;
@@ -64,7 +65,7 @@ class ProductDescription extends Component {
                   <CustomSeparator
                     list='product-dis'
                     classsubhed='product-backg'
-                    data={[ path[1]]} />{/* window.location.pathname.split('/').pop()  */}
+                    data={data_json} />{/* window.location.pathname.split('/').pop()  */}
                 </Grid>
               </Hidden>
               <Hidden smDown >

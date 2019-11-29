@@ -46,7 +46,7 @@ console.log(props);
           cardstate.dataLoaded &&
           props.data.image[cardstate.hovered ? "hoverImage" : "placeImage"]
         }
-        title={cardstate.dataLoaded && props.data.title}
+        title={cardstate.dataLoaded && 'props.data.title'}
       />
       <CardContent>
         <Typography
