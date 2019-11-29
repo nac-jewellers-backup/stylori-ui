@@ -291,7 +291,7 @@ class Component extends React.Component {
     debugger
     let arr = [], arr1 = [];
     let { chipData, checked } = this.state
-    arr = chipData.filter(val => val.label !== value);
+    arr = chipData.filter(val => val.label !== value); 
 
     if (checked) {
       arr1 = this.valz(value).filter(val => {
