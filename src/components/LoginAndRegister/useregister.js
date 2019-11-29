@@ -119,7 +119,7 @@ const useRegister = (changePanel, props) => {
                 values,
             })
         }
-        if (values.confirmpassword === null) {
+        if (values.confirmpassword === null) { 
             values['error']['cnfpasserr'] = true
             values['errortext']['cnfpasserr'] = 'Confirm password is required'
             setValues({
