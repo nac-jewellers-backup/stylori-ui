@@ -3,7 +3,6 @@ import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { resetWarningCache } from 'prop-types';
-
 const useRegister = (changePanel, props) => {
     const [values, setValues] = React.useState({
         email: "",

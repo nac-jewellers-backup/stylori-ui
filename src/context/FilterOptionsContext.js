@@ -284,7 +284,7 @@ const Provider = (props) => {
 
     console.info('dataResponsed', ntxdata)
     const seoUrlFetch = () => {
-
+debugger
 var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mappedFilters.seo_url : window.location.pathname.split('/')[1]  
         const conditionfiltersSeo = { seofilter: { seoUrl: { in: paramObjects(path_name) } } }
         debugger
@@ -297,9 +297,10 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     // useEffect(()=>{
     //     setloadingfilters(true)
     // },[data])
-    const updateProductList = () => {
+    const updateProductList = async() => {
+debugger
         // console.info('objecobjecobject',mappedFilters.seo_url !== "jewellery")
-        if (window.location.search || window.location.pathname.replace('/', '') === "jewellery") {
+        if (window.location.search) {
             const conditionFilters = conditions.generateFilters(paramObjects())
             const conditionImageColor = {}
             var a = filters && filters.length === 0 ? Object.keys(filters.MetalColor) : ''
@@ -352,46 +353,49 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                 variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
             }
             
-          makeRequest(variables)
+          await makeRequest(variables)
    
             console.log('came inside view moreproducts', filters)
 
         }
 
-        else {
-            // ////////////////////////////////////////////////////////////////////////////////////////////////
-            console.log('vanakkamNanba', window.location.pathname.replace('/', ''), window.location.pathname, paramObjects(mappedFilters.seo_url), seoData)
-            console.info('i have came in brother', 'else()')
-            seoUrlFetch()
+        // else {
+        //     // ////////////////////////////////////////////////////////////////////////////////////////////////
+        //     console.log('vanakkamNanba', window.location.pathname.replace('/', ''), window.location.pathname, paramObjects(mappedFilters.seo_url), seoData)
+        //     console.info('i have came in brother', 'else()')
+        //    await seoUrlFetch()
 
-        }
+        // }
 
 
     }
     useEffect(() => { setMappedFilters(ntxdata) }, [ntxdata, ntxerr, ntx]);
 
     useEffect(() => {
-        
+        debugger
         pathQueries();
         updateProductList();
 
-    }, [filters, offset]);
+    }, [offset, filters]);
     useEffect(() => {
         setDataSeoQuery(seoData)
         console.log(seoData, 'vaadaa')
 
     }, [seoData, seoloading, seoError])
     useEffect(() => {
-        
+    
         const mapped = productlist(data, CDN_URL);
         const newUpdatedList = filterLogic(dataArr, mapped);
         setDataArr(newUpdatedList);
     }, [data, error, loading]);
 
-    const updatefiltersSort = () => {
+    useEffect(() => {
+        console.info('objectdataArr_objectdataArr', dataArr)
+    }, [data, error, loading])
+    const updatefiltersSort = async() => {
         debugger
-        if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object)) {
-            var paramsfilter = (Object.entries(seoData).length !== 0 && seoData.constructor === Object && seoData.data.allSeoUrlPriorities) && seoData.data.allSeoUrlPriorities.nodes.map(val => {
+        if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object) ) {
+            var paramsfilter = (Object.entries(seoData).length !== 0 && seoData.constructor === Object ) && seoData.data.allSeoUrlPriorities.nodes.map(val => {
                 var a = {}
 
                 a[val.attributeName.replace(/\s/g, '')] = val.attributeValue
@@ -440,14 +444,30 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                     debugger
                     variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
-
-            makeRequest(variables)
+debugger
+            await makeRequest(variables)
             
             }
         }
     }
+    const prevseoData = usePrevious(seoData);
+    // Hook
+function usePrevious(value) {
+    // The ref object is a generic container whose current property is mutable ...
+    // ... and can hold any value, similar to an instance property on a class
+    const ref = React.useRef();
+    
+    // Store current value in ref
     useEffect(() => {
-        updatefiltersSort()
+      ref.current = value;
+    }, [value]); // Only re-run if value changes
+    
+    // Return previous value (happens before update in useEffect above)
+    return ref.current;
+  }
+    useEffect(() => {
+       debugger
+       updatefiltersSort()
     }, [seoData])
     var newObj = {}
     const updateFilters = async (filters) => {
@@ -525,18 +545,20 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
             setSort('')
             paramObjects(mappedFilters.seo_url)
 
+debugger
             seoUrlFetch()
             console.info('object', DataSeoQuery, 'pazahakkam')
 
             // }
         }
-    }, [mappedFilters])
+    }, [mappedFilters, offset])
     useEffect(() => {
         if (Object.entries(sort).length > 0 && sort.constructor === Object) {
             props.history.push({
                 pathname: `${mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ''}`,
                 search: sort && `sort=${sort.values}`
             })
+
             updatefiltersSort()
         }
     }, [sort])

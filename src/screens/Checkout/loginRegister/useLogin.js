@@ -3,7 +3,7 @@ import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
-
+import { CartContext } from 'context'
 const useLogin = (changePanel) => {
     const [values, setValues] = React.useState({
         password: "",
@@ -21,6 +21,7 @@ const useLogin = (changePanel) => {
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/signin', {}, []);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
+    const { setCartFilters } = React.useContext(CartContext);
     React.useEffect(() => {
         debugger
         var a = CodData ? CodData : ""
@@ -48,13 +49,15 @@ const useLogin = (changePanel) => {
                 ...values,
                 values,
             })
-            var bbn = data.userprofile.id ? data.userprofile.id : ""
+            var bbn = data && data.userprofile && data.userprofile.id ? data.userprofile.id : ""
             if (bbn.length > 0 || bbn !== undefined) {
                 localStorage.setItem("email", data.userprofile.email)
                 var obj = {}
                 var bb = data.userprofile.id ? data.userprofile.id : ""
                 obj['userprofileId'] = bb
                 localStorage.setItem('user_id', bb)
+                setValues({user_id:data.userprofile.id})
+                setCartFilters({user_id})
                 makeRequestCod(obj);
                 // changePanel(3)
             }

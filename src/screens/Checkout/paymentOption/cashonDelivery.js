@@ -18,6 +18,10 @@ class CashonDelivey extends React.Component {
     makeFetch = async() => {
         await fetch('https://api.stylori.net/createorder', {
             method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+              },
             body: JSON.stringify(obj)
         }).then(function async(response) {
             alert('Order Placed Successfully')
@@ -32,7 +36,7 @@ class CashonDelivey extends React.Component {
   }
 }
     render() {
-        let cart_id = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")) : ""
+        let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
         const data = this.props.data ? this.props.data : ""
         debugger
@@ -41,7 +45,7 @@ class CashonDelivey extends React.Component {
         if (data.length > 0 && data !== undefined && data !== null) {
             dataCard1 = this.props.data && this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
             function myFunc(total, num, discounted_price) {
-                var discounted_price = this.props.cartFilters.discounted_price ? JSON.stringify(this.props.cartFilters.discounted_price) : ""
+                 discounted_price = this && this.props.cartFilters.discounted_price ? JSON.stringify(this.props.cartFilters.discounted_price) : ""
                 if (discounted_price.length > 0) {
                     var a = Math.round(total + num);
                     var cart_price = (a - discounted_price)
@@ -51,7 +55,7 @@ class CashonDelivey extends React.Component {
                 return cart_price
             }
         }
-        obj['price'] = dataCard1
+        obj['payment_mode'] = "COD"
         obj['user_id'] = user_id
         obj['cart_id'] = cart_id
         // alert(JSON.stringify(dataCard1))

@@ -3,7 +3,7 @@ import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { resetWarningCache } from 'prop-types';
-
+import { CartContext } from 'context'
 const useRegister = (changePanel, props) => {
     const [values, setValues] = React.useState({
         email: "",
@@ -30,6 +30,7 @@ const useRegister = (changePanel, props) => {
 
     const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     const { data, error, loading, makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
+    const { setCartFilters } = React.useContext(CartContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     useEffect(() => {
         var ms = data && data.message
@@ -46,6 +47,7 @@ const useRegister = (changePanel, props) => {
             if (v.length > 0 && values['error'] && values['errortext']) {
                 values['error']['emerr'] = false
                 values['errortext']['emerr'] = ''
+                var user_id = data && data.user_profile_id
                 setValues({
                     ...values,
                     values,
@@ -58,6 +60,9 @@ const useRegister = (changePanel, props) => {
                 // }
                 localStorage.setItem("email", data.user.email)
                 localStorage.setItem("user_id", data.user_profile_id)
+                debugger
+                setValues({user_id:data.user_profile_id})
+                setCartFilters({user_id})
                 makeRequestCod(obj);
                 changePanel(3)
             }
