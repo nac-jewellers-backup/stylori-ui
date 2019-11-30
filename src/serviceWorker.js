@@ -81,6 +81,7 @@ const isLocalhost = Boolean(
 // setTimeout(function(){ cacheCheck(); }, 20000);
 
 export async function register(config) {
+  cacheCheck()
   await requestNotificationPermission();
 
   if (process.env.NODE_ENV !== 'production' && 'serviceWorker' in navigator) {
@@ -95,8 +96,9 @@ export async function register(config) {
 
     window.addEventListener('load', () => {
       cacheCheck();
+      setInterval(function () { cacheCheck(); }, 100);
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
-      setInterval(function () { cacheCheck(); }, 30000);
+      
 
 
       if (isLocalhost) {
@@ -106,6 +108,7 @@ export async function register(config) {
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
         navigator.serviceWorker.ready.then(() => {
+          cacheCheck();
           console.log(
             'This web app is being served cache-first by a service ' +
             'worker. To learn more, visit https://bit.ly/CRA-PWA'
@@ -120,10 +123,12 @@ export async function register(config) {
 }
 
 function registerValidSW(swUrl, config) {
+  cacheCheck();
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
       registration.onupdatefound = () => {
+        cacheCheck();
         const installingWorker = registration.installing;
         sendNotification('App is being cached localyy for offline purpose!')
         if (installingWorker == null) {

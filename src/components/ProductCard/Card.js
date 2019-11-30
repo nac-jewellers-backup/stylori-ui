@@ -84,7 +84,7 @@ const Gallery = ( props, callmouseover, callmouseout, cardstate, scrollPosition 
         // If the image we are creating here has the same src than before,
         // we can directly display it with no need to lazy-load.
         // onerror={this.src=}
-        placeholderSrc={renderImages(props, cardstate) === '' ? 'https://alpha-assets.stylori.com/276x276/images/static/Image_Not_Available.jpg' : ''}
+        placeholderSrc={renderImages(props, cardstate) === '' ? 'https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg' : ''}
         // placeholder	= { <div >loading.....</div> }
         />
         
@@ -135,8 +135,16 @@ const useStyles = makeStyles(theme=>({
   card: {
     minWidth: "80%",
     maxWidth: "90%",
-    maxHeight: 'auto',
+  
     borderRadius: '0 !important',
+    [theme.breakpoints.down('xs')]: {
+      minHeight: '242px !important',
+      maxHeight:'242px !important',
+    },
+    [theme.breakpoints.down('sm')]: {
+      minHeight: '241px !important',
+      maxHeight:'308px !important',
+    },
   },
   textDel: {
     color: "#828282"
@@ -283,7 +291,7 @@ const renderImages = (props, cardstate) => {
   
   const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
   // console.info('props.data.image[filterType]',props.data.image[filterType]);
-  return props.data.image['hoverImage'].length === 0 ?"https://alpha-assets.stylori.com/276x276/images/static/Image_Not_Available.jpg" : props.data.image[filterType].map(imgs => `${imgs.img} ${imgs.size}`).toString()
+  return props.data.image['hoverImage'].length === 0 ?"https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg" : props.data.image[filterType].map(imgs => `${imgs.img} ${imgs.size}`).toString()
 }
 
  function Component(props) {
