@@ -8,33 +8,39 @@ import { useNetworkRequest } from 'hooks/index';
 var obj = {}
 
 class CashonDelivey extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-            this.state={
-                res_data:null
-            }
-        
+        this.state = {
+            res_data: null
+        }
+
     }
-    makeFetch = async() => {
-        await fetch('https://api.stylori.net/createorder', {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-              },
-            body: JSON.stringify(obj)
-        }).then(function async(response) {
-            alert('Order Placed Successfully')
-        }).then(function (data) {
-            console.log('data',data)
-        });
+    makeFetch = async (props) => {
+        const bb = this.props && this.props.dataCard1
+        // if (bb.length <0) {
+        //    return
+        // } else {
+            await fetch('https://api.stylori.net/createorder', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: JSON.stringify(obj)
+            }).then(function async(response) {
+                alert('Order Placed Successfully')
+            }).then(function (data) {
+                console.log('data', data)
+            });
+            window.location.pathname = "/jewellery"
+        // }
     }
     componentDidUpdate(prevProps, prevState) {
-        if(this.state.res_data !== prevState.res_data){
+        if (this.state.res_data !== prevState.res_data) { 
             // in 1.6.2 there will not execute
-             alert(this.state.res_data)
-  }
-}
+            alert(this.state.res_data)
+        }
+    }
     render() {
         let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
@@ -45,7 +51,7 @@ class CashonDelivey extends React.Component {
         if (data.length > 0 && data !== undefined && data !== null) {
             dataCard1 = this.props.data && this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
             function myFunc(total, num, discounted_price) {
-                 discounted_price = this && this.props.cartFilters.discounted_price ? JSON.stringify(this.props.cartFilters.discounted_price) : ""
+                discounted_price = this && this.props.cartFilters.discounted_price ? JSON.stringify(this.props.cartFilters.discounted_price) : ""
                 if (discounted_price.length > 0) {
                     var a = Math.round(total + num);
                     var cart_price = (a - discounted_price)
@@ -68,7 +74,7 @@ class CashonDelivey extends React.Component {
                         <div className="credit-btn-div">
                             {Math.round(dataCard1)}
                             <Button className="credit-button" type="submit"
-                                onClick={() => this.makeFetch()}
+                                onClick={() => this.makeFetch(this.props)}
                             >Place COD order</Button>
                         </div>
 

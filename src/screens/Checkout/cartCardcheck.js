@@ -26,11 +26,18 @@ import styles from '../Checkout/loginRegister/style';
 import CartCard from '../../components/Checkout/CartCard'
 import { CartContext } from '../../context/CartContext';
 import cart from '../../mappers/cart';
+import { CheckForCod } from 'queries/productdetail';
+import { useCheckForCod } from 'hooks/CheckForCodHook';
+var variab = {}
+const CartCardCheck = (props) => {
+    const { loading, error, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
+    return <Component  {...props} CodData={CodData} makeRequestCod={makeRequestCod} />
+}
 
-class CartCardCheck extends React.Component { 
+class Component extends React.Component {
     state = {
-        expanded: 'panel' + (localStorage.getItem("panel") ? localStorage.getItem("panel") : 1),
-        // expanded: 'panel2',
+        // expanded: 'panel' + (localStorage.getItem("panel") ? localStorage.getItem("panel") : 1),
+        expanded: 'panel3',
         // expandedlimit: localStorage.getItem("panel") ? localStorage.getItem("panel") : 1,
         // expandedlimit: 1,
         mailId: null
@@ -52,7 +59,11 @@ class CartCardCheck extends React.Component {
             mailId: mailId ? mailId : this.state.mailId
         })
     }
-
+    pincodeapi = () => {
+        debugger
+       this.props.makeRequestCod(variab)
+        this.changePanel(4)
+    }
     render() {
         const { expanded, mailId, expandedlimit } = this.state;
         const { classes, data } = this.props;
@@ -62,6 +73,9 @@ class CartCardCheck extends React.Component {
         var value1 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : {};
         var lgn = localStorage.getItem("vals") ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
         var lgn1 = localStorage.getItem("vals") ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
+        debugger
+        variab["pincode"] = lgn&&lgn.pincode || value&&value.pincode
+
         return (
             <>
                 <CustomSeparator
@@ -73,7 +87,6 @@ class CartCardCheck extends React.Component {
                     subdata={this.props.data[0].cartsubdata}
                 />
                 <div className='pt-sm checkout-ovralldiv-media' >
-
                     <div style={{ marginTop: "20px" }}>
                         <ExpansionPanel
                             square
@@ -135,11 +148,11 @@ class CartCardCheck extends React.Component {
                                         {/* {JSON.stringify(this.datalist(cartContext))} */}
                                         <div style={{ float: "right" }}>
                                             <Button
-                                                onClick={() => this.changePanel(4)} className="summaryOrder-pay-btn">Continue to Pay</Button>
+                                                onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">Continue to Pay</Button>
                                         </div>
                                         <CartCard data={data} />
                                         <div style={{ float: "right", marginBottom: "5px" }}>
-                                            <Button onClick={() => this.changePanel(4)}
+                                            <Button onClick={() => this.pincodeapi()}
                                                 className="summaryOrder-pay-btn">Continue to Pay</Button>
                                         </div>
                                     </Grid>
@@ -159,7 +172,7 @@ class CartCardCheck extends React.Component {
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>4</Avatar><Typography className='text-chck'>Payment Options</Typography>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
-                                <PaymentIndex data={data}/>
+                                <PaymentIndex data={data} CodData={this.props.CodData}/>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
 
