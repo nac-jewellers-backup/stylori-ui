@@ -34,7 +34,7 @@ const usePromo = (props) => {
     const handleSubmit = (e) => {
         // e.preventDefault();
         makeFetch(values);
-        alert("Your Promo code applied Successfully")
+        alert("Your Promo code applied Successfully") 
     }
 
     const handlers = { handleSubmit, handleChange };
