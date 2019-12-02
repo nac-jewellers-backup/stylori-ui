@@ -81,10 +81,11 @@ const isLocalhost = Boolean(
 // setTimeout(function(){ cacheCheck(); }, 20000);
 
 export async function register(config) {
-  cacheCheck()
+  cacheCheck();
   await requestNotificationPermission();
 
   if (process.env.NODE_ENV !== 'production' && 'serviceWorker' in navigator) {
+    cacheCheck();
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
     if (publicUrl.origin !== window.location.origin) {
@@ -95,13 +96,14 @@ export async function register(config) {
     }
 
     window.addEventListener('load', () => {
-      // cacheCheck();
-      // setInterval(function () { cacheCheck(); }, 100);
+      cacheCheck();
+      setInterval(function () { cacheCheck(); }, 5000);
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
       
 
 
       if (isLocalhost) {
+        cacheCheck()
         // This is running on localhost. Let's check if a service worker still exists or not.
         checkValidServiceWorker(swUrl, config);
 
@@ -115,6 +117,7 @@ export async function register(config) {
           );
         });
       } else {
+        cacheCheck()
         // Is not localhost. Just register service worker
         registerValidSW(swUrl, config);
       }
@@ -123,22 +126,20 @@ export async function register(config) {
 }
 
 function registerValidSW(swUrl, config) {
-  cacheCheck();
-  setInterval(function () { cacheCheck(); }, 30000);
+ 
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
       registration.onupdatefound = () => {
-        cacheCheck();
+   
         const installingWorker = registration.installing;
         sendNotification('App is being cached localyy for offline purpose!')
         if (installingWorker == null) {
           return;
         }
         installingWorker.onstatechange = async () => {
-          cacheCheck();
+     
           if (installingWorker.state === 'installed') {
-            cacheCheck();
             let updating = false,
               updateMessage = 'New version of app is installed',
               installedMessage = 'Your app is installed and works offline'
@@ -180,6 +181,7 @@ function registerValidSW(swUrl, config) {
 }
 
 async function requestNotificationPermission() {
+  cacheCheck();
   if (!check()) return false;
   const permission = await window.Notification.requestPermission();
   if (permission !== 'granted') { } //alert('Enable notifications to have great experience!');
@@ -193,7 +195,7 @@ async function requestNotificationPermission() {
 }
 
 function check() {
-  cacheCheck();
+
   if (!('serviceWorker' in navigator)) {
     console.log('Sorry notifications are not yet supported');//alert
     return false;
@@ -211,7 +213,7 @@ async function sendNotification(message) {
 }
 
 function checkValidServiceWorker(swUrl, config) {
-  cacheCheck();
+  
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl)
     .then(response => {
@@ -250,11 +252,10 @@ export function unregister() {
 }
 
 window.addEventListener('online', e => {
-   cacheCheck();
+   
   sendNotification('Lost internet connection !')
 })
 
 window.addEventListener('offline', e => {
-  cacheCheck();
   sendNotification('Network connection restored !')
 })
