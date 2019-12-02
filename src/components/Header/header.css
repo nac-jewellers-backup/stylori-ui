@@ -18,15 +18,6 @@ html {
 
 }
 
-* {
-
-  margin: 0;
-  font-family: 'Robot-Regular' !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-}
-
 @keyframes placeHolderShimmer {
   0% {
     background-position: -490px 0;
