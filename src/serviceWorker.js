@@ -123,7 +123,7 @@ export async function register(config) {
 }
 
 function registerValidSW(swUrl, config) {
-  // cacheCheck();
+  cacheCheck();
   setInterval(function () { cacheCheck(); }, 30000);
   navigator.serviceWorker
     .register(swUrl)
@@ -138,6 +138,7 @@ function registerValidSW(swUrl, config) {
         installingWorker.onstatechange = async () => {
           cacheCheck();
           if (installingWorker.state === 'installed') {
+            cacheCheck();
             let updating = false,
               updateMessage = 'New version of app is installed',
               installedMessage = 'Your app is installed and works offline'
@@ -192,7 +193,7 @@ async function requestNotificationPermission() {
 }
 
 function check() {
-
+  cacheCheck();
   if (!('serviceWorker' in navigator)) {
     console.log('Sorry notifications are not yet supported');//alert
     return false;
@@ -210,9 +211,11 @@ async function sendNotification(message) {
 }
 
 function checkValidServiceWorker(swUrl, config) {
+  cacheCheck();
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl)
     .then(response => {
+      cacheCheck();
       // Ensure service worker exists, and that we really are getting a JS file.
       const contentType = response.headers.get('content-type');
       if (
@@ -238,6 +241,7 @@ function checkValidServiceWorker(swUrl, config) {
 }
 
 export function unregister() {
+  cacheCheck();
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(registration => {
       registration.unregister();
@@ -251,5 +255,6 @@ window.addEventListener('online', e => {
 })
 
 window.addEventListener('offline', e => {
+  cacheCheck();
   sendNotification('Network connection restored !')
 })
