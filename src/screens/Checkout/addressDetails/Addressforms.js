@@ -20,6 +20,12 @@ const Addressforms = () => {
         pincod: ""
     })
     const [values, setValues] = React.useState({
+        errortext: {
+            pinerr: "",
+        },
+        error: {
+            pinerr: false,
+        },
         addressOne: {
             firstname: "",
             lastname: "",
@@ -44,8 +50,9 @@ const Addressforms = () => {
             country: "",
             country_code: "",
             contactNumber: "",
-            // addresstype: 2
+            addresstype: 2
         },
+
         addrs: (localStorage.getItem("valuessetdata") || changeaddr) ? false : true,
         // addrs: true,
         checkValue: true,
@@ -75,21 +82,36 @@ const Addressforms = () => {
             var res = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].state : ''
             var res1 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].country : ''
             var res2 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].district : ''
-            if (pincods.pincod === "pincode1") {
-                values['addressOne']['state'] = res
-                values['addressOne']['country'] = res1
-                values['addressOne']['city'] = res2
+            if (res.length > 0 && res2.length > 0) {
+                debugger
+                if (pincods.pincod === "pincode1") {
+                    values['addressOne']['state'] = res
+                    values['addressOne']['country'] = res1
+                    values['addressOne']['city'] = res2
 
+                } else {
+                    values['addressTwo']['state'] = res
+                    values['addressTwo']['country'] = res1
+                    values['addressTwo']['city'] = res2
+                }
             } else {
-                values['addressTwo']['state'] = res
-                values['addressTwo']['country'] = res1
-                values['addressTwo']['city'] = res2
+                if (values['error'] && values['errortext']) {
+                    values['error']['pinerr'] = true
+                    values['errortext']['pinerr'] = 'Pincode is false'
+                    setValues({
+                        ...values,
+                        values,
+                    })
+                }
             }
             setValues({ ...values, values })
         }
     }, [CodData])
     const handleChange = (type, field, value, pincod) => {
-        debugger
+        if (values.addressOne.pincode !== "" && values['error'] && values['errortext']) {
+            values['error']['pinerr'] = false
+            values['errortext']['pinerr'] = ""
+        }
         values[type][field] = value;
         if (field === 'pincode') {
             values[type]['pincode'] = value;
@@ -102,7 +124,8 @@ const Addressforms = () => {
                     makeRequestCod(variab);
                 }
             }
-        } 
+        }
+
         // window.cache[type] = true
         pincods["pincod"] = pincod
         setpincod({ ...pincods, pincods })
@@ -111,6 +134,25 @@ const Addressforms = () => {
 
     const handleSubmit = (e) => {
         // e.preventDefault()
+        debugger
+        if (values.addressOne.pincode.length === "" && values['error'] && values['errortext']) {
+            values['error']['pinerr'] = true
+            values['errortext']['pinerr'] = 'Pincode is r'
+            setValues({
+                ...values,
+                values,
+            })
+        }
+        if (values.addressOne.pincode.length < 5 && values['error'] && values['errortext']) {
+            values['error']['pinerr'] = true
+            values['errortext']['pinerr'] = 'Pincode is 5'
+            setValues({
+                ...values,
+                values,
+            })
+            return false
+        }
+
         var a1 = values.addressOne
         var a2 = values.addressTwo
         // if (a1 == a1) {
@@ -124,9 +166,14 @@ const Addressforms = () => {
             addObj['address'] = [a1, a2];
             // }
         }
+        if (values.addressOne.pincode.length > 5) {
         makeFetch(addObj);
+        setValues({ addrs: !values.addrs });
         // window.location.reload()
     }
+}
+
+
 
     const handleKeyPress = (e, isNumber) => {
         if (isNumber) {
