@@ -108,7 +108,7 @@ export async function register(config) {
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
         navigator.serviceWorker.ready.then(() => {
-          cacheCheck();
+        
           console.log(
             'This web app is being served cache-first by a service ' +
             'worker. To learn more, visit https://bit.ly/CRA-PWA'
@@ -123,12 +123,12 @@ export async function register(config) {
 }
 
 function registerValidSW(swUrl, config) {
-  cacheCheck();
+
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
       registration.onupdatefound = () => {
-        cacheCheck();
+      
         const installingWorker = registration.installing;
         sendNotification('App is being cached localyy for offline purpose!')
         if (installingWorker == null) {
@@ -243,6 +243,7 @@ export function unregister() {
 }
 
 window.addEventListener('online', e => {
+   cacheCheck();
   sendNotification('Lost internet connection !')
 })
 

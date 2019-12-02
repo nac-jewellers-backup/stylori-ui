@@ -102,7 +102,7 @@ const Addressforms = () => {
                     makeRequestCod(variab);
                 }
             }
-        }
+        } 
         // window.cache[type] = true
         pincods["pincod"] = pincod
         setpincod({ ...pincods, pincods })
