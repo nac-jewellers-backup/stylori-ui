@@ -24,7 +24,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { useDummyRequest } from '../../hooks';
 import { headerData } from '../../mappers';
 import styles from './styles';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
   constructor(props) {
@@ -114,8 +114,16 @@ class Header extends Component {
                     />
                     {/* <NavLink to="/login"> */}
                     {localStorage.getItem("user_id") ?
-                      <i onClick={() => window.location.pathname = "/login"} class="fa fa-sign-out" ></i>
-                      : <i onClick={() => window.location.pathname = "/login"} class="fa fa-user"></i>
+                      <Link to="/login" style={{textDecoration:"none"}}>
+                        <i class="fa fa-sign-out" ></i>
+                      </Link>
+
+                      :
+                      <Link to="/login" style={{textDecoration:"none"}}>
+                        <i class="fa fa-user"></i>
+                      </Link>
+
+
                     }
                     {/* </NavLink> */}
 

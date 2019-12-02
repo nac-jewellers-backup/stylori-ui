@@ -34,6 +34,7 @@ const LoginComponent = (props) => {
         })
         props.change() 
     }
+
     return (
         <div className='pt-sm'>
             <form action="javascript:void(0)" onSubmit={(e) => {
