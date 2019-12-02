@@ -147,7 +147,7 @@ class Header extends Component {
   
                       <a href=""
                         onMouseEnter={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: 'Jewellery' }) }}
-                        className={` ${classes.colorLight}`} active><i class="fa fa-plus-circle" ></i>&nbsp;Jewellery</a>
+                        className={ ` ${classes.colorLight}`} active><i class="fa fa-plus-circle" ></i>&nbsp;Jewellery</a>
   
   
                       <a href="" className={` ${classes.colorLight}`} onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: 'Solitaires' }) }}><i class="fa fa-plus-circle"></i>&nbsp;Solitaires</a>
