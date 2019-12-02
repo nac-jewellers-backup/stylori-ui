@@ -180,25 +180,36 @@ html {
 /* .mobli-icon i {
   
 } */
+.mobli-icon i {
+  font-size: 18px;
+  cursor: pointer;
+  color: #394578;
+  margin-left: 10px;
+  border-left: 1px solid #c3c3c3;
+  text-align: center !important;
+  width: 25px;
+}
+.MuiAppBar-colorPrimary {
+  color: rgba(58, 69, 120, 1) !important;
+}
 
 @keyframes pulse_animation {
   25% {
     -webkit-transform: scale(1.3);
     transform: scale(1.3);
   }
-
   75% {
     -webkit-transform: scale(0.8);
     transform: scale(0.8);
   }
 }
-
 .mobli-icon i:hover {
   animation-name: pulse_animation;
   animation-duration: 1000ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
+
 
 .list-items {
   text-align: left;
