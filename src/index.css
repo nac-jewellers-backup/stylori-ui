@@ -1,13 +1,23 @@
 @import "../src/fonts/font.css";
 
 * {
-    font-family: "Robot-Regular";
+    margin: 0;
+    font-family: 'Robot-Regular' !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 html {
-    font-family: "Robot-Regular";
+    margin: 0;
+    font-family: 'Robot-Regular' !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
     margin: 0;
-} 
+    margin: 0;
+    font-family: 'Robot-Regular' !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
