@@ -3,7 +3,7 @@
 body {
 
   margin: 0;
-  font-family: 'Robot-Regular';
+  font-family: 'Robot-Regular' !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -12,16 +12,7 @@ body {
 html {
 
   margin: 0;
-  font-family: 'Robot-Regular';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-}
-
-* {
-
-  margin: 0;
-  font-family: 'Robot-Regular';
+  font-family: 'Robot-Regular' !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

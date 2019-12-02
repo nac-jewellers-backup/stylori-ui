@@ -48,7 +48,8 @@ React.useEffect(() => {
                             localStorage.removeItem("email")
                             localStorage.removeItem("vals")
                             localStorage.removeItem("valuessetdata")
-                            window.location.reload()
+                            localStorage.removeItem("panel")
+                            window.location.reload() 
                         }
                         }>Logout</Button>
                     </div>
