@@ -31,11 +31,15 @@ import love from "../../assets/Icons/love.svg"
 import shopping from "../../assets/Icons/shopping.svg"
 import delivery from "../../assets/Icons/delivery.svg"
 import telephone from "../../assets/Icons/telephone.svg"
+import Button from '@material-ui/core/Button';
+import Popover from '@material-ui/core/Popover';
 class Header extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      anchorEl: null,
       open: false,
+      open1: false,
       panel: false,
       panel1: false,
       Menuopen: false,
@@ -86,6 +90,18 @@ class Header extends Component {
     }
 
   }
+  handleClickp = event => {
+    this.setState({
+      anchorEl: 'simple-popper',
+    });
+  };
+
+  handleClosep = () => {
+    this.setState({
+
+      anchorEl: null,
+    });
+  };
   render() {
 
     const { mainlist, Jewellery, subheader, menuListHeader, menuLists, earings, rings, pendants, nosepins, banglesbracelets, valayal, kammal, koluse, Price,
@@ -93,6 +109,8 @@ class Header extends Component {
     let { selected, selected1 } = this.state;
     const { classes } = this.props;
     let path = window.location.pathname.split('/').pop();
+    const { anchorEl } = this.state;
+    const open1 = Boolean(anchorEl);
     return (
       <div>
         <Hidden smDown >
@@ -102,8 +120,8 @@ class Header extends Component {
               <Grid container spacing={12}  >
                 <Grid item xs={3}>
                   <div className={`head-icons ${classes.colorMain}`} >
-                    <span><img className="icons-header-sizes" src={delivery}/></span>
-                    <span><img className="icons-header-sizes" src={telephone}/></span>
+                    <span><img className="icons-header-sizes" src={delivery} /></span>
+                    <span><img className="icons-header-sizes" src={telephone} /></span>
                   </div>
                 </Grid>
                 <Grid item xs={4} className="logoImgHeader">
@@ -118,22 +136,56 @@ class Header extends Component {
                       placeholder='&#xf002; Search here'
                     />
                     {/* <NavLink to="/login"> */}
+                    {/* <Button
+                     
+                      variant="contained"
+                      onClick={() => { this.handleClickp() }}
+                    >
+                     <img className="icons-header-sizes" src={usershape} />
+        </Button> */}
 
                     {localStorage.getItem("user_id") ?
-                      <span onClick={() => window.location.pathname = "/login"}> <img className="icons-header-sizes" src={logout}/></span>
+                      <span
+                        aria-owns={open1}
+                        aria-haspopup="true"
+                        onClick={() => { this.handleClickp() }}
+                      >
+                        <img className="icons-header-sizes" src={usershape} /></span>
                       // <img className="icons-header-sizes" src={usershape}/>
-                      : <span onClick={() => window.location.pathname = "/login"}><img className="icons-header-sizes" src={usershape}/></span>
+                      : <span onClick={() => window.location.pathname = "/login"}>
+                        <img className="icons-header-sizes" src={usershape} /></span>
                     }
                     {/* </NavLink> */}
-
+                    <Popover
+                      id="simple-popper"
+                      open={open1}
+                      onClose={this.handleClosep}
+                      anchorEl={anchorEl}
+                      anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                      }}
+                    >
+                      <div
+                        style={{ width: "120px", height: "45px", lineHeight: "45px",cursor:"pointer" }}
+                        onClick={() => {
+                          localStorage.removeItem("user_id")
+                          localStorage.removeItem("email")
+                          localStorage.removeItem("vals")
+                          localStorage.removeItem("valuessetdata")
+                          localStorage.removeItem("panel")
+                          window.location.reload()
+                          window.location.pathname = "/login"
+                        }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout</div>
+                    </Popover>
                     {/* <i class="fa fa-user"></i> */}
                     <Badge badgeContent={4} color="secondary">
-                    <img className="icons-header-sizes" src={love}/>
+                      <img className="icons-header-sizes" src={love} />
                     </Badge>
                     <Badge badgeContent={"2"} color="secondary">
-                    <img className="icons-header-sizes" src={shopping}/>
+                      <img className="icons-header-sizes" src={shopping} />
                     </Badge>
-                  </div> 
+                  </div>
                 </Grid>
               </Grid>
               {path == "cart" || path == 'checkout' ? "" :
