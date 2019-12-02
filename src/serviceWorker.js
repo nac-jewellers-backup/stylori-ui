@@ -123,7 +123,7 @@ export async function register(config) {
 }
 
 function registerValidSW(swUrl, config) {
-  // cacheCheck();
+  cacheCheck();
   setInterval(function () { cacheCheck(); }, 30000);
   navigator.serviceWorker
     .register(swUrl)
@@ -210,9 +210,11 @@ async function sendNotification(message) {
 }
 
 function checkValidServiceWorker(swUrl, config) {
+  cacheCheck();
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl)
     .then(response => {
+      cacheCheck();
       // Ensure service worker exists, and that we really are getting a JS file.
       const contentType = response.headers.get('content-type');
       if (
