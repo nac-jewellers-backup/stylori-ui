@@ -113,7 +113,10 @@ class Header extends Component {
                       placeholder='&#xf002; Search here'
                     />
                     {/* <NavLink to="/login"> */}
-                    <i onClick={() => window.location.pathname = "/login"} class="fa fa-user"></i>
+                    {localStorage.getItem("user_id") ?
+                      <i onClick={() => window.location.pathname = "/login"} class="fa fa-sign-out" ></i>
+                      : <i onClick={() => window.location.pathname = "/login"} class="fa fa-user"></i>
+                    }
                     {/* </NavLink> */}
 
                     {/* <i class="fa fa-user"></i> */}
@@ -130,14 +133,10 @@ class Header extends Component {
                 <Grid container spacing={12}>
                   <Grid item xs={12} className={`header-navbar-list ${classes.colorLight}`}
                     onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }}
-
                   >
-
                     <nav
                     >
-
                       {/* <a href="" className={`${classes.colorLight}`} alt=""><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
-  
   
                       <a href=""
                         onMouseEnter={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: 'Jewellery' }) }}
@@ -177,7 +176,6 @@ class Header extends Component {
                   </Grid>
                 </Grid>}
               <div className="header-bottom"></div>
-
             </AppBar>
           </div>
         </Hidden>
@@ -187,7 +185,6 @@ class Header extends Component {
               className="header-appbar-moblie"
               id="smallScreen"
             >
-
               <Toolbar>
                 <Grid item xs={2}>
                   <IconButton

@@ -146,7 +146,7 @@ const ProductlistComponent = (props) => {
                                     id="panel1a-header"
                                     className='order-ship'
                                 >
-                                    <h5 className='title' style={{ textAlign: "center" }}> Gift Wrap</h5>
+                                    <h5 className='title' style={{ textAlign: "center" }}> Promo Code</h5>
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails className='order-ship pdng'>
                                     <Promo />

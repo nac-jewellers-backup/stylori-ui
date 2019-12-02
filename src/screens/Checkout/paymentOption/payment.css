@@ -72,12 +72,12 @@
 }
 .pay-index-subhed{
     float: left;
-    width: 100% !important;
     background: #f0f0f0;
     border-right: 1px solid #d3d3d3;
     min-height: 400px;
     font-size: 12px!important;
     color: #333!important;
+    width: 215px !important;
 }
 .pay-index-subhed p{
     padding: 0 15px;

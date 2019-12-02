@@ -14,7 +14,6 @@ import {
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const UserLogin = (props) => {
-
     return <LoginComponent  {...props} />
 }
 
@@ -25,10 +24,6 @@ const LoginComponent = (props) => {
     // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
     var prof = data.userprofile ? data.userprofile.email : ""
     // alert(JSON.stringify(data))
-    React.useEffect(() => {
-        window.scrollTo(0, 0)
-      
-    }, [])
     return (
         <>
             <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
@@ -42,76 +37,88 @@ const LoginComponent = (props) => {
                         <img width="100%" height="100%" src="https://assets-cdn.stylori.com/images/static/inner-page/banner.png" />
                     </div>
                 </Grid>
-                <Grid item xs={6} lg={6} xs={12}>
-                    <div className='pt-sm' style={{ width: "90%", float: "right" }}>
-                        <form action="javascript:void(0)" onSubmit={(e) => {
-                            handlers.handelSubmit(e)
-                        }}>
-                            <div className={`${classes.normalfonts}`} style={{ fontSize: "18px" }}>  Login </div>
-                            <Input
-                                margin="normal"
-                                variant="outlined"
-                                type="email"
-                                name="email"
-                                value={values.email}
-                                error={values.error && values.error.emerr ? true : false}
-                                helperText={values.errortext && values.errortext.emerr}
-                                onChange={e => handlers.handleChange('email', e.target.value)}
-                                placeholder="Enter your email Id"
-                            />
-                            <label className='errtext'> {values.errortext && values.errortext.emerr}</label>
-                            <Input
-                                margin="normal"
-                                variant="outlined"
-                                type="password"
-                                name="password"
-                                value={values.password}
-                                error={values.error && values.error.passerr ? true : false}
-                                helperText={values.errortext && values.errortext.passerr}
-                                placeholder="Enter your password"
-                                onChange={e => handlers.handleChange('password', e.target.value)}
-                            />
-                            <label className='errtext'> {values.errortext && values.errortext.passerr}</label>
-                            <div className='log-pas'>
-                                <span className={` ${classes.normalfonts}`} style={{ cursor: "pointer", fontSize: "14px" }}>
-                                    <Checkbox
-                                        // checked={state.checkedB}
-                                        // onChange={handleChange('checkedB')}
-                                        value="checkedB"
-                                        color="primary"
-                                    />
-                                    Remember Me </span>
-                                <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>
-                                    <span>Sign me in using</span>
-                                    <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img>
-                                </div >
-                            </div>
-                            <br />
-                            <br />
+                {localStorage.getItem("user_id") ? <>
+                    <div style={{ textAlign: "center", width: "50%", marginTop: "15%" }}>
+                        <Button className='apply-b' onClick={() => {
+                            localStorage.removeItem("user_id")
+                            localStorage.removeItem("email")
+                            localStorage.removeItem("vals")
+                            localStorage.removeItem("valuessetdata")
+                            window.location.reload()
+                        }
+                        }>Logout</Button>
+                    </div>
+                </> :
+                    <Grid item xs={6} lg={6} xs={12}>
+                        <div className='pt-sm' style={{ width: "90%", float: "right" }}>
+                            <form action="javascript:void(0)" onSubmit={(e) => {
+                                handlers.handelSubmit(e)
+                            }}>
+                                <div className={`${classes.normalfonts}`} style={{ fontSize: "18px" }}>  Login </div>
+                                <Input
+                                    margin="normal"
+                                    variant="outlined"
+                                    type="email"
+                                    name="email"
+                                    value={values.email}
+                                    error={values.error && values.error.emerr ? true : false}
+                                    helperText={values.errortext && values.errortext.emerr}
+                                    onChange={e => handlers.handleChange('email', e.target.value)}
+                                    placeholder="Enter your email Id"
+                                />
+                                <label className='errtext'> {values.errortext && values.errortext.emerr}</label>
+                                <Input
+                                    margin="normal"
+                                    variant="outlined"
+                                    type="password"
+                                    name="password"
+                                    value={values.password}
+                                    error={values.error && values.error.passerr ? true : false}
+                                    helperText={values.errortext && values.errortext.passerr}
+                                    placeholder="Enter your password"
+                                    onChange={e => handlers.handleChange('password', e.target.value)}
+                                />
+                                <label className='errtext'> {values.errortext && values.errortext.passerr}</label>
+                                <div className='log-pas'>
+                                    <span className={` ${classes.normalfonts}`} style={{ cursor: "pointer", fontSize: "14px" }}>
+                                        <Checkbox
+                                            // checked={state.checkedB}
+                                            // onChange={handleChange('checkedB')}
+                                            value="checkedB"
+                                            color="primary"
+                                        />
+                                        Remember Me </span>
+                                    <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>
+                                        <span>Sign me in using</span>
+                                        <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img>
+                                    </div >
+                                </div>
+                                <br />
+                                <br />
 
-                            <Grid spacing={12} container>
-                                <Grid item xs={6} lg={6} style={{ float: "left" }}>
-                                    <div className={`${classes.normalfonts}`} style={{ cursor: "pointer", fontSize: "14px" }}>Forgot password?</div>
-                                    <br />
-                                    <div className={classes.normalfonts} style={{
-                                        cursor: "pointer", fontSize: "14px",
-                                        marginRight: "50%"
-                                    }} onClick={() => { window.location.href = "/registers" }} >Click here to Register</div>
+                                <Grid spacing={12} container>
+                                    <Grid item xs={6} lg={6} style={{ float: "left" }}>
+                                        <div className={`${classes.normalfonts}`} style={{ cursor: "pointer", fontSize: "14px" }}>Forgot password?</div>
+                                        <br />
+                                        <div className={classes.normalfonts} style={{
+                                            cursor: "pointer", fontSize: "14px",
+                                            marginRight: "50%"
+                                        }} onClick={() => { window.location.href = "/registers" }} >Click here to Register</div>
+                                    </Grid>
+                                    <Grid item xs={6} lg={6} style={{ float: "right", marginLeft: "80%" }}>
+                                        <Button className='apply-b' type="submit">Login</Button>
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={6} lg={6} style={{ float: "right", marginLeft: "80%" }}>
-                                    <Button className='apply-b' type="submit">Login</Button>
-                                </Grid>
-                            </Grid>
-                            <br />
+                                <br />
 
-                            {/* <div style={{float:"right"}}>
+                                {/* <div style={{float:"right"}}>
                                 <Button className='back-b' onClick={() => props.change()} >Back</Button>
                                 <Button className='apply-b' type="submit">Apply</Button>
                             </div> */}
 
-                        </form>
-                    </div>
-                </Grid>
+                            </form>
+                        </div>
+                    </Grid>}
 
             </Grid>
             <Grid item xs={12}>
