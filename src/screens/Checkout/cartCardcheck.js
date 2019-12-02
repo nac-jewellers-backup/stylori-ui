@@ -35,7 +35,7 @@ const CartCardCheck = (props) => {
 }
 
 class Component extends React.Component {
-    state = {
+    state = { 
         expanded: 'panel' + (localStorage.getItem("panel") ? localStorage.getItem("panel") : 1),
         // expanded: 'panel3',
         // expandedlimit: localStorage.getItem("panel") ? localStorage.getItem("panel") : 1,
