@@ -133,7 +133,7 @@ class Header extends Component {
                     <Badge badgeContent={"2"} color="secondary">
                     <img className="icons-header-sizes" src={shopping}/>
                     </Badge>
-                  </div>
+                  </div> 
                 </Grid>
               </Grid>
               {path == "cart" || path == 'checkout' ? "" :
