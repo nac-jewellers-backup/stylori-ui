@@ -95,8 +95,8 @@ export async function register(config) {
     }
 
     window.addEventListener('load', () => {
-      cacheCheck();
-      setInterval(function () { cacheCheck(); }, 100);
+      // cacheCheck();
+      // setInterval(function () { cacheCheck(); }, 100);
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
       
 
@@ -123,7 +123,8 @@ export async function register(config) {
 }
 
 function registerValidSW(swUrl, config) {
-
+  cacheCheck();
+  setInterval(function () { cacheCheck(); }, 100);
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
