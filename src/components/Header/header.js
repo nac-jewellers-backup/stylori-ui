@@ -24,8 +24,13 @@ import { withStyles } from '@material-ui/core/styles';
 import { useDummyRequest } from '../../hooks';
 import { headerData } from '../../mappers';
 import styles from './styles';
-import { Link } from 'react-router-dom';
-
+import { NavLink } from 'react-router-dom';
+import usershape from "../../assets/Icons/user-shape.svg"
+import logout from "../../assets/Icons/logout.svg"
+import love from "../../assets/Icons/love.svg"
+import shopping from "../../assets/Icons/shopping.svg"
+import delivery from "../../assets/Icons/delivery.svg"
+import telephone from "../../assets/Icons/telephone.svg"
 class Header extends Component {
   constructor(props) {
     super(props)
@@ -97,8 +102,8 @@ class Header extends Component {
               <Grid container spacing={12}  >
                 <Grid item xs={3}>
                   <div className={`head-icons ${classes.colorMain}`} >
-                    <i class="fa fa-truck"></i>
-                    <i class="fa fa-phone"></i>
+                    <span><img className="icons-header-sizes" src={delivery}/></span>
+                    <span><img className="icons-header-sizes" src={telephone}/></span>
                   </div>
                 </Grid>
                 <Grid item xs={4} className="logoImgHeader">
@@ -113,28 +118,22 @@ class Header extends Component {
                       placeholder='&#xf002; Search here'
                     />
                     {/* <NavLink to="/login"> */}
+
                     {localStorage.getItem("user_id") ?
-                      <Link to="/login" style={{textDecoration:"none"}}>
-                        <i class="fa fa-sign-out" ></i>
-                      </Link>
-
-                      :
-                      <Link to="/login" style={{textDecoration:"none"}}>
-                        <i class="fa fa-user"></i>
-                      </Link>
-
-
+                      <span onClick={() => window.location.pathname = "/login"}> <img className="icons-header-sizes" src={logout}/></span>
+                      // <img className="icons-header-sizes" src={usershape}/>
+                      : <span onClick={() => window.location.pathname = "/login"}><img className="icons-header-sizes" src={usershape}/></span>
                     }
                     {/* </NavLink> */}
 
                     {/* <i class="fa fa-user"></i> */}
                     <Badge badgeContent={4} color="secondary">
-                      <i class="fa fa-heart"></i>
+                    <img className="icons-header-sizes" src={love}/>
                     </Badge>
                     <Badge badgeContent={"2"} color="secondary">
-                      <i class="fa fa-shopping-bag"></i>
+                    <img className="icons-header-sizes" src={shopping}/>
                     </Badge>
-                  </div>
+                  </div> 
                 </Grid>
               </Grid>
               {path == "cart" || path == 'checkout' ? "" :
@@ -148,7 +147,7 @@ class Header extends Component {
   
                       <a href=""
                         onMouseEnter={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: 'Jewellery' }) }}
-                        className={` ${classes.colorLight}`} active><i class="fa fa-plus-circle" ></i>&nbsp;Jewellery</a>
+                        className={ ` ${classes.colorLight}`} active><i class="fa fa-plus-circle" ></i>&nbsp;Jewellery</a>
   
   
                       <a href="" className={` ${classes.colorLight}`} onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: 'Solitaires' }) }}><i class="fa fa-plus-circle"></i>&nbsp;Solitaires</a>

@@ -27,6 +27,7 @@ const useLogin = (changePanel) => {
         if (JSON.stringify(a).length > 10) {
             localStorage.setItem("vals", JSON.stringify(CodData))
             window.location.href=localStorage.getItem('review_location')
+            // window.history.push()
         }
     }, [CodData])
     React.useEffect(() => {
