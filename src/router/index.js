@@ -10,6 +10,7 @@ import UserLogin from '../components/LoginAndRegister/Login';
 import UserRegister from '../components/LoginAndRegister/Register';
 import routes from "router/routes";
 import { withRouter } from "react-router";
+import { createBrowserHistory } from "history";
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
 
@@ -30,11 +31,15 @@ import { withRouter } from "react-router";
 //         )
 //     }
 // }
+const browserHistory = createBrowserHistory();
 
+browserHistory.listen((location, action) => {
+  window.scrollTo(0, 0);
+});
 export const RouterApp = (props) => {
     console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
     return (
-        <Switch>
+        <Switch history={browserHistory}>
             <Redirect key="stylori-redirect" from="/" exact to={"/jewellery"} />
             <Route key="HomePageStylori" component={HomePageStylori} exact path={routes.HomePageStylori} />
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />

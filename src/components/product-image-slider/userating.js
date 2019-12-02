@@ -114,7 +114,7 @@ const useRating = (props) => {
             // alert("You will be able to review only after purchasing the product")
             // props.location.pathname="/login"
             localStorage.setItem('review_location',`${window.location.href}`)
-            props.history.push("/login")
+            props.history.push({pathname:"/login"})
         }
     }
 
