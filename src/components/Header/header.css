@@ -3,7 +3,7 @@
 body {
 
   margin: 0;
-  font-family: 'Robot-Regular' !important;
+  font-family: 'Roboto' !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -12,7 +12,7 @@ body {
 html {
 
   margin: 0;
-  font-family: 'Robot-Regular' !important;
+  font-family: 'Roboto' !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -29,7 +29,19 @@ html {
 }
 
 .MuiTypography-body1 ,.MuiTypography-h6 {
-  font-family: 'Robot-Regular' !important;
+  font-family: 'Roboto' !important;
+}
+.icons-header-sizes{
+  height: 18px !important;
+  cursor: pointer !important;
+  width: 18px !important;
+  margin-left: 24px;
+}
+.icons-header-sizes:hover {
+  animation-name: pulse_animation;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 .shine {
@@ -63,13 +75,13 @@ html {
   margin-top: 18px !important;
 }
 
-.head-icons i {
+/* .head-icons i {
   margin-left: 24px;
   font-size: 20px;
   background-size: 219px;
   background-position: -87px 4px;
   cursor: pointer;
-}
+} */
 
 @keyframes pulse_animation {
   25% {
@@ -83,12 +95,6 @@ html {
   }
 }
 
-.head-icons i:hover {
-  animation-name: pulse_animation;
-  animation-duration: 1000ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
 
 .header-bottom {
   background: linear-gradient(to left, #fff, #ed1165, #fff) !important;
@@ -156,15 +162,9 @@ html {
   box-shadow: 1px 1px 1px #ccc !important;
 }
 
-.mobli-icon i {
-  font-size: 18px;
-  cursor: pointer;
-  color: #394578;
-  margin-left: 10px;
-  border-left: 1px solid #c3c3c3;
-  text-align: center !important;
-  width: 25px;
-}
+/* .mobli-icon i {
+  
+} */
 
 @keyframes pulse_animation {
   25% {

@@ -3,14 +3,14 @@
 body {
 
     margin: 0;
-    font-family: 'Robot-Regular';
+    font-family: 'Roboto';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
 }
 
 .MuiTab-root ,.MuiButton-root,.MuiInputBase-input{
-    font-family: 'Robot-Regular' !important;
+    font-family: 'Roboto' !important;
 }
 
 /* product hovering price*/
@@ -163,7 +163,7 @@ body {
     font-size: 12px !important;
     font-weight: bold;
     margin: auto !important;
-    font-family: 'Robot-Regular' !important;
+    font-family: 'Roboto' !important;
 }
 
 .tabs-gold-icons {
@@ -951,7 +951,7 @@ body {
     } */
 
 .wrappercustom {
-    font-family: "Robot-Regular" !important;
+    font-family: "Roboto" !important;
     width: 100% !important;
     height: 35px;
     color: #394578 !important;

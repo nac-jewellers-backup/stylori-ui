@@ -2,6 +2,7 @@ import React from 'react';
 import posed from 'react-pose';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
+import close from "../../../assets/Icons/close.svg"
 
 const Notification = posed.div({
     visible: {
@@ -59,7 +60,10 @@ class NotificationMessage extends React.Component {
                         Signup on Stylori | Avail Exclusive Offer on Your First Purchase
                     </Grid>
                     <Grid item xs={2} style={{ textAlign: 'center', fontSize: '18px' }}>
-                        <i className=' fa fa-times-circle top-close' onClick={() => { this.setState({ isVisible: false });this.props.headerTransition() }}></i>
+                        {/* <span
+                        onClick={() => { this.setState({ isVisible: false });this.props.headerTransition() }}
+                        ><img className="icons-header-size-snot-hover" src={close}/></span> */}
+                        {/* <i className=' fa fa-times-circle top-close' ></i> */}
                     </Grid>
                 </Grid>
 
