@@ -28,15 +28,25 @@ html {
   }
 }
 
-.MuiTypography-body1 ,.MuiTypography-h6 {
+.MuiTypography-body1,
+.MuiTypography-h6 {
   font-family: 'Roboto' !important;
 }
-.icons-header-sizes{
+
+.icons-header-sizes {
   height: 18px !important;
   cursor: pointer !important;
   width: 18px !important;
   margin-left: 24px;
 }
+
+.icons-header-size-snot-hover {
+  height: 18px !important;
+  cursor: pointer !important;
+  width: 18px !important;
+  margin-left: 24px;
+}
+
 .icons-header-sizes:hover {
   animation-name: pulse_animation;
   animation-duration: 1000ms;

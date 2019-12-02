@@ -60,9 +60,9 @@ class NotificationMessage extends React.Component {
                         Signup on Stylori | Avail Exclusive Offer on Your First Purchase
                     </Grid>
                     <Grid item xs={2} style={{ textAlign: 'center', fontSize: '18px' }}>
-                        {/* <span
+                        <span
                         onClick={() => { this.setState({ isVisible: false });this.props.headerTransition() }}
-                        ><img className="icons-header-size-snot-hover" src={close}/></span> */}
+                        ><img className="icons-header-size-snot-hover" src={close}/></span>
                         {/* <i className=' fa fa-times-circle top-close' ></i> */}
                     </Grid>
                 </Grid>
