@@ -123,19 +123,20 @@ export async function register(config) {
 }
 
 function registerValidSW(swUrl, config) {
-  cacheCheck();
-  setInterval(function () { cacheCheck(); }, 100);
+  // cacheCheck();
+  setInterval(function () { cacheCheck(); }, 30000);
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
       registration.onupdatefound = () => {
-      
+        cacheCheck();
         const installingWorker = registration.installing;
         sendNotification('App is being cached localyy for offline purpose!')
         if (installingWorker == null) {
           return;
         }
         installingWorker.onstatechange = async () => {
+          cacheCheck();
           if (installingWorker.state === 'installed') {
             let updating = false,
               updateMessage = 'New version of app is installed',
@@ -162,6 +163,7 @@ function registerValidSW(swUrl, config) {
 
               // Execute callback
               if (config && config.onSuccess) {
+                
                 //Display Notification
                 await sendNotification(updating ? updateMessage : installedMessage);
                 config.onSuccess(registration);
