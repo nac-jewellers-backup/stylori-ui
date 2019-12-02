@@ -26,7 +26,7 @@ import styles from '../Checkout/loginRegister/style';
 import CartCard from '../../components/Checkout/CartCard'
 import { CartContext } from '../../context/CartContext';
 import cart from '../../mappers/cart';
-import { CheckForCod } from 'queries/productdetail';
+import { CheckForCod } from 'queries/productdetail'; 
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 var variab = {}
 const CartCardCheck = (props) => {
