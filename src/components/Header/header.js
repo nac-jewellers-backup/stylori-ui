@@ -177,7 +177,7 @@ class Header extends Component {
                           window.location.reload()
                           window.location.pathname = "/login"
                         }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout</div>
-                    </Popover>
+                    </Popover> 
                     {/* <i class="fa fa-user"></i> */}
                     <Badge badgeContent={4} color="secondary">
                       <img className="icons-header-sizes" src={love} />
