@@ -138,6 +138,7 @@ function registerValidSW(swUrl, config) {
         installingWorker.onstatechange = async () => {
           cacheCheck();
           if (installingWorker.state === 'installed') {
+            cacheCheck();
             let updating = false,
               updateMessage = 'New version of app is installed',
               installedMessage = 'Your app is installed and works offline'
@@ -192,7 +193,7 @@ async function requestNotificationPermission() {
 }
 
 function check() {
-
+  cacheCheck();
   if (!('serviceWorker' in navigator)) {
     console.log('Sorry notifications are not yet supported');//alert
     return false;
@@ -240,6 +241,7 @@ function checkValidServiceWorker(swUrl, config) {
 }
 
 export function unregister() {
+  cacheCheck();
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(registration => {
       registration.unregister();
@@ -253,5 +255,6 @@ window.addEventListener('online', e => {
 })
 
 window.addEventListener('offline', e => {
+  cacheCheck();
   sendNotification('Network connection restored !')
 })
