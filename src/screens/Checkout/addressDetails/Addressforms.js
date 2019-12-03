@@ -77,7 +77,7 @@ const Addressforms = () => {
             var res2 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].district : ''
             if (pincods.pincod === "pincode1") {
                 values['addressOne']['state'] = res
-                values['addressOne']['country'] = res1
+                values['addressOne']['country'] = res1 
                 values['addressOne']['city'] = res2
 
             } else {

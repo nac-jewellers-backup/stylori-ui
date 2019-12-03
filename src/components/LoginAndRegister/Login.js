@@ -41,19 +41,7 @@ React.useEffect(() => {
                         <img width="100%" height="100%" src="https://assets-cdn.stylori.com/images/static/inner-page/banner.png" />
                     </div>
                 </Grid>
-                {localStorage.getItem("user_id") ? <>
-                    <div style={{ textAlign: "center", width: "50%", marginTop: "15%" }}>
-                        <Button className='apply-b' onClick={() => {
-                            localStorage.removeItem("user_id")
-                            localStorage.removeItem("email")
-                            localStorage.removeItem("vals")
-                            localStorage.removeItem("valuessetdata")
-                            localStorage.removeItem("panel")
-                            window.location.reload() 
-                        }
-                        }>Logout</Button>
-                    </div>
-                </> :
+             
                     <Grid item xs={6} lg={6} xs={12}>
                         <div className='pt-sm' style={{ width: "90%", float: "right" }}>
                             <form action="javascript:void(0)" onSubmit={(e) => {
@@ -123,7 +111,7 @@ React.useEffect(() => {
 
                             </form>
                         </div>
-                    </Grid>}
+                    </Grid>
 
             </Grid>
             <Grid item xs={12}>

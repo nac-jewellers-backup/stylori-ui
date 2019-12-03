@@ -20,23 +20,24 @@ class CashonDelivey extends React.Component {
         // if (bb.length <0) {
         //    return
         // } else {
-            await fetch('https://api.stylori.net/createorder', {
-                method: 'post',
-                headers: {
-                    'Content-Type': 'application/json'
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: JSON.stringify(obj)
-            }).then(function async(response) {
-                alert('Order Placed Successfully')
-            }).then(function (data) {
-                console.log('data', data)
-            });
-            window.location.pathname = "/jewellery"
+        await fetch('https://api.stylori.net/createorder', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify(obj)
+        }).then(function async(response) {
+            alert('Order Placed Successfully')
+        }).then(function (data) {
+            console.log('data', data)
+        });
+        window.location.pathname = "/jewellery"
+        localStorage.removeItem("cartDetails")
         // }
     }
     componentDidUpdate(prevProps, prevState) {
-        if (this.state.res_data !== prevState.res_data) { 
+        if (this.state.res_data !== prevState.res_data) {
             // in 1.6.2 there will not execute
             alert(this.state.res_data)
         }

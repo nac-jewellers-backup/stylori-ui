@@ -26,16 +26,16 @@ import styles from '../Checkout/loginRegister/style';
 import CartCard from '../../components/Checkout/CartCard'
 import { CartContext } from '../../context/CartContext';
 import cart from '../../mappers/cart';
-import { CheckForCod } from 'queries/productdetail';
+import { CheckForCod } from 'queries/productdetail'; 
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 var variab = {}
-const CartCardCheck = (props) => {
+const CartCardCheck = (props) => { 
     const { loading, error, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     return <Component  {...props} CodData={CodData} makeRequestCod={makeRequestCod} />
 }
 
 class Component extends React.Component {
-    state = {
+    state = { 
         expanded: 'panel' + (localStorage.getItem("panel") ? localStorage.getItem("panel") : 1),
         // expanded: 'panel3',
         // expandedlimit: localStorage.getItem("panel") ? localStorage.getItem("panel") : 1,

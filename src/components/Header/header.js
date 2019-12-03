@@ -24,13 +24,22 @@ import { withStyles } from '@material-ui/core/styles';
 import { useDummyRequest } from '../../hooks';
 import { headerData } from '../../mappers';
 import styles from './styles';
-import { Link } from 'react-router-dom';
-
+import { NavLink } from 'react-router-dom';
+import usershape from "../../assets/Icons/user-shape.svg"
+import logout from "../../assets/Icons/logout.svg"
+import love from "../../assets/Icons/love.svg"
+import shopping from "../../assets/Icons/shopping.svg"
+import delivery from "../../assets/Icons/delivery.svg"
+import telephone from "../../assets/Icons/telephone.svg"
+import Button from '@material-ui/core/Button';
+import Popover from '@material-ui/core/Popover';
 class Header extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      anchorEl: null,
       open: false,
+      open1: false,
       panel: false,
       panel1: false,
       Menuopen: false,
@@ -81,6 +90,18 @@ class Header extends Component {
     }
 
   }
+  handleClickp = event => {
+    this.setState({
+      anchorEl: 'simple-popper',
+    });
+  };
+
+  handleClosep = () => {
+    this.setState({
+
+      anchorEl: null,
+    });
+  };
   render() {
 
     const { mainlist, Jewellery, subheader, menuListHeader, menuLists, earings, rings, pendants, nosepins, banglesbracelets, valayal, kammal, koluse, Price,
@@ -88,6 +109,8 @@ class Header extends Component {
     let { selected, selected1 } = this.state;
     const { classes } = this.props;
     let path = window.location.pathname.split('/').pop();
+    const { anchorEl } = this.state;
+    const open1 = Boolean(anchorEl);
     return (
       <div>
         <Hidden smDown >
@@ -97,8 +120,8 @@ class Header extends Component {
               <Grid container spacing={12}  >
                 <Grid item xs={3}>
                   <div className={`head-icons ${classes.colorMain}`} >
-                    <i class="fa fa-truck"></i>
-                    <i class="fa fa-phone"></i>
+                    <span><img className="icons-header-sizes" src={delivery} /></span>
+                    <span><img className="icons-header-sizes" src={telephone} /></span>
                   </div>
                 </Grid>
                 <Grid item xs={4} className="logoImgHeader">
@@ -113,26 +136,54 @@ class Header extends Component {
                       placeholder='&#xf002; Search here'
                     />
                     {/* <NavLink to="/login"> */}
+                    {/* <Button
+                     
+                      variant="contained"
+                      onClick={() => { this.handleClickp() }}
+                    >
+                     <img className="icons-header-sizes" src={usershape} />
+        </Button> */}
+
                     {localStorage.getItem("user_id") ?
-                      <Link to="/login" style={{textDecoration:"none"}}>
-                        <i class="fa fa-sign-out" ></i>
-                      </Link>
-
-                      :
-                      <Link to="/login" style={{textDecoration:"none"}}>
-                        <i class="fa fa-user"></i>
-                      </Link>
-
-
+                      <span
+                        aria-owns={open1}
+                        aria-haspopup="true"
+                        onClick={() => { this.handleClickp() }}
+                      >
+                        <img className="icons-header-sizes" src={usershape} /></span>
+                      // <img className="icons-header-sizes" src={usershape}/>
+                      : <span onClick={() => window.location.pathname = "/login"}>
+                        <img className="icons-header-sizes" src={usershape} /></span>
                     }
                     {/* </NavLink> */}
-
+                    <Popover
+                      id="simple-popper"
+                      open={open1}
+                      onClose={this.handleClosep}
+                      anchorEl={anchorEl}
+                      anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                      }}
+                    >
+                      <div
+                        style={{ width: "120px", height: "45px", lineHeight: "45px",cursor:"pointer" }}
+                        onClick={() => {
+                          localStorage.removeItem("user_id")
+                          localStorage.removeItem("email")
+                          localStorage.removeItem("vals")
+                          localStorage.removeItem("valuessetdata")
+                          localStorage.removeItem("panel")
+                          window.location.reload()
+                          window.location.pathname = "/login"
+                        }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout</div>
+                    </Popover> 
                     {/* <i class="fa fa-user"></i> */}
                     <Badge badgeContent={4} color="secondary">
-                      <i class="fa fa-heart"></i>
+                      <img className="icons-header-sizes" src={love} />
                     </Badge>
                     <Badge badgeContent={"2"} color="secondary">
-                      <i class="fa fa-shopping-bag"></i>
+                      <img className="icons-header-sizes" src={shopping} />
                     </Badge>
                   </div>
                 </Grid>
