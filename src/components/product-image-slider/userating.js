@@ -128,7 +128,7 @@ const useRating = (props) => {
                 }
                 // window.location.href = "/login"
 
-            } else {
+            } else { 
                 // alert("You will be able to review only after purchasing the product")
                 // props.location.pathname="/login"
                 localStorage.setItem('review_location', `${window.location.href}`)
