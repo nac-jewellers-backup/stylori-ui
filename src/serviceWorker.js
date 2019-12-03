@@ -81,7 +81,7 @@ export async function register(config) {
   // cacheCheck();
   await requestNotificationPermission();
 
-  if (process.env.NODE_ENV !== 'production' && 'serviceWorker' in navigator) {
+  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // cacheCheck();
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location);
@@ -91,10 +91,10 @@ export async function register(config) {
       // serve assets; see https://github.com/facebook/create-react-app/issues/2374
       return;
     }
-
+    setInterval(function () { cacheCheck(); }, 5000);
     window.addEventListener('load', () => {
-      // cacheCheck();
-      setInterval(function () { cacheCheck(); }, 5000);
+      cacheCheck();
+      
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
       
 
