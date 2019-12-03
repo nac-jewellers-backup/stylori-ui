@@ -121,7 +121,7 @@ const useRating = (props) => {
                         }
                         // setFilters(values)
                         setValues({
-                            ...values,
+                            ...values, 
                             values
                         })
                     })
