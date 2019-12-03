@@ -58,7 +58,6 @@ class Component extends React.Component {
     }
   }
   componentDidMount() {
-    console.log(this.state.height);
     this.screenWidth()
     // Additionally I could have just used an arrow function for the binding `this` to the component...
     window.addEventListener("resize", this.screenWidth);
@@ -84,7 +83,6 @@ class Component extends React.Component {
     else if (width < 760) {
       this.setState({ colSize: 2 })
     }
-    console.log(this.props.data, 'this.props.dataProductlayout')
   }
 
   componentDidUpdate(prevProps) {

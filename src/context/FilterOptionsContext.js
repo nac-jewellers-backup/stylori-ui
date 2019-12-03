@@ -39,7 +39,6 @@ const Provider = (props) => {
         Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, metalColor: {},
         MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}, pricemax: 0, pricemin: 0
     });
-    console.log('Price max min', filters.pricemax, filters.pricemin)
     const [sort, setSort] = React.useState(initialCtx.FilterOptionsCtx.sort)
     const [offset, setOffset] = React.useState(0)
     const [first, setFirst] = React.useState(24)
@@ -151,7 +150,6 @@ const Provider = (props) => {
                         
 
                         //   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
-                        console.log('Request succeeded with JSON response', data);
                         var a = {}
                         var paramsfilter = (Object.entries(data).length !== 0 && data.constructor === Object && data.data.allSeoUrlPriorities) && data.data.allSeoUrlPriorities.nodes.map(val => {
                            
@@ -180,10 +178,8 @@ const Provider = (props) => {
             
                             }
                         })
-                        console.log('qtf', qtfArr)
                         var k = qtfArr.map(val => Object.values(val));
                         var keyy = qtfArr.map(val => Object.keys(val))
-                        console.log(filters)
                         len = keyy.length
                         while (len--) {
                             var key = keyy[len]
@@ -252,7 +248,6 @@ const Provider = (props) => {
                 return { [splitval[0]]: splitval[1] }
             })
             paramsAo = urlSplitparamsEqual;
-            console.log('val', paramsAo)
         }
         else if (filtersparms !== undefined && filtersparms !== "jewellery") {
 
@@ -264,10 +259,8 @@ const Provider = (props) => {
             //     return valPlusSplit
             // })
 
-            console.log('hey man cool... :)', splitNtxData)
             return paramsAo = splitNtxData
         }
-        console.log('paramsAo', paramsAo)
         setParamsAo(paramsAo)
         return paramsAo;
 
@@ -282,7 +275,6 @@ const Provider = (props) => {
     // "lessThanOrEqualTo":70000}}}}}
     const { loading: seoloading, error: seoError, data: seoData, makeRequest: makeRequestSeo } = useGraphql(seoUrlResult, () => { }, {});
 
-    console.info('dataResponsed', ntxdata)
     const seoUrlFetch = () => {
 
 var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mappedFilters.seo_url : window.location.pathname.split('/')[1]  
@@ -290,9 +282,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
         
         makeRequestSeo(conditionfiltersSeo)
     
-        console.log('paramObjects', paramObjects(mappedFilters.seo_url), DataSeoQuery, conditionfiltersSeo)
 
-        console.log('DataSeoQuery', DataSeoQuery)
     }
     // useEffect(()=>{
     //     setloadingfilters(true)
@@ -305,7 +295,6 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
             const conditionImageColor = {}
             var a = filters && filters.length === 0 ? Object.keys(filters.MetalColor) : ''
             // var a = filters.metalColor ? filters.metalColor : null;
-            console.log(a, filters, 'filters metal color')
             conditionImageColor["productColor"] = a[0]
             conditionImageColor['isdefault'] = true
             // conditionImageColor["isdefault"]=true
@@ -322,7 +311,6 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
             var variables;
             if (window.location.search) {
                 const orderbyvarCondition = () => {
-                    console.info('orderby', 'hey i have came in... orderbyvarCondition', sort)
                     switch (sort.values) {
                         case 'New To Stylori': {
                             return "CREATED_AT_DESC"
@@ -355,14 +343,12 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
             
           await makeRequest(variables)
    
-            console.log('came inside view moreproducts', filters)
 
         }
 
         // else {
         //     // ////////////////////////////////////////////////////////////////////////////////////////////////
-        //     console.log('vanakkamNanba', window.location.pathname.replace('/', ''), window.location.pathname, paramObjects(mappedFilters.seo_url), seoData)
-        //     console.info('i have came in brother', 'else()')
+        //   
         //    await seoUrlFetch()
 
         // }
@@ -379,7 +365,6 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     }, [offset, filters]);
     useEffect(() => {
         setDataSeoQuery(seoData)
-        console.log(seoData, 'vaadaa')
 
     }, [seoData, seoloading, seoError])
     useEffect(() => {
@@ -390,7 +375,6 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     }, [data, error, loading]);
 
     useEffect(() => {
-        console.info('objectdataArr_objectdataArr', dataArr)
     }, [data, error, loading])
     const updatefiltersSort = async() => {
         
@@ -402,14 +386,11 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                 return a
 
             })
-            console.info('muthaakannasekuramvaadaa', paramsfilter)
             if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object)) {
                 const conditionFilters = conditions.generateFilters(paramsfilter.splice(1))
 
-                console.info('objectparamsfilterconditionFilters', conditionFilters)
                 const conditionImageColor = {}
                 var a = filters && filters.length === 0 ? Object.keys(filters.MetalColor) : ''
-                console.log(a, filters, 'filters metal color')
                 var variables = {}
                 // var a = filters.metalColor ? filters.metalColor : null;
                 conditionImageColor["productColor"] = a[0]
@@ -418,7 +399,6 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                 // conditionImageColor["isdefault"]=true
                 if (window.location.search) {
                     const orderbyvarCondition = () => {
-                        console.info('orderby', 'hey i have came in... orderbyvarCondition', sort)
                         switch (sort.values) {
                             case 'New To Stylori': {
                                 return "CREATED_AT_DESC"
@@ -501,10 +481,8 @@ function usePrevious(value) {
         } catch (error) {
             console.log(error)
         }
-        console.log('qtf', qtfArr)
         var k = qtfArr.map(val => Object.values(val));
         var keyy = qtfArr.map(val => Object.keys(val))
-        console.log(filters)
         len = keyy.length
         while (len--) {
             var key = keyy[len]
@@ -527,14 +505,11 @@ function usePrevious(value) {
         } catch (error) {
             console.log(error)
         }
-        console.log('ntxdataresdata1', ntxdata.seo_url, mappedFilters.seo_url, ntxdata)
         // }
 
-        console.log('newObj', filters)
     }
 
     useEffect(() => {
-        console.info('i have came in brother', 'seoUrlFetch()')
         if ((Object.entries(ntxdata).length !== 0 && ntxdata.constructor === Object)) {
             // if(ntxdata.seo_url !=="jewellery" ){
             if (window.location.pathname !== "jewellery") {
@@ -547,7 +522,6 @@ function usePrevious(value) {
 
 
             seoUrlFetch()
-            console.info('object', DataSeoQuery, 'pazahakkam')
 
             // }
         }
@@ -583,7 +557,6 @@ function usePrevious(value) {
         }
 
     })
-    console.log('ntxdataresdata', ntxdata.seo_url, mappedFilters.seo_url)
     const FilterOptionsCtx = {
         cartcount, filters, sort, loading, error, data, setFilters: updateFilters, offset, setOffset, dataArr, first, setFirst, mappedFilters, loadingfilters
     }

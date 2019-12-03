@@ -60,7 +60,6 @@ class Component extends React.Component {
         })
     }
     pincodeapi = () => {
-        debugger
        this.props.makeRequestCod(variab)
         this.changePanel(4)
     }
@@ -73,7 +72,6 @@ class Component extends React.Component {
         var value1 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : {};
         var lgn = localStorage.getItem("vals") ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
         var lgn1 = localStorage.getItem("vals") ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
-        debugger
         variab["pincode"] = lgn&&lgn.pincode || value&&value.pincode
 
         return (

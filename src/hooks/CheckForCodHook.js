@@ -21,7 +21,6 @@ export const useCheckForCod = (query, mapper, variables = {}, initRequest = fals
                     let mapped = mapper(data,cdnUrl);
                     setMappedData(mapped);
                 } catch (error) {
-                    console.error('MAPPER ERROR', error);
                     setError(true);
                     setMappedData({});
                 }

@@ -45,7 +45,6 @@ const useRating = (props) => {
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
             // console.log('starsSelectedstarsSelected',props.starsSelected)
             mapUrlParamsSplitEqual.map(val => {
-                debugger
                 values['product_sku'] = val[1]
                 if (val[1].length > 0) {
                     variab['productSku'] = val[1]
@@ -81,10 +80,8 @@ const useRating = (props) => {
     const handelSubmit = (e, props) => {
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
         if (user_id.length > 0) {
-            debugger
             makeFetch(values);
             alert(JSON.stringify(data))
-            debugger
             if (window.location.search) {
                 let urlSearchparams = window.location.search;
                 let urlSearchparamsDecode = decodeURI(urlSearchparams)

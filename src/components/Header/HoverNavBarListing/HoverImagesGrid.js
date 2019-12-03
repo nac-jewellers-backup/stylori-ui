@@ -31,7 +31,6 @@ const useStyles = makeStyles(theme => ({
 
 function ImageGridList(props) {
 const {activetab} = props
-debugger
     const classes = useStyles();
     return (
         <div className={classes.root}>

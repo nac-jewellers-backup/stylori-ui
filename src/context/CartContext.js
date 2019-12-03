@@ -60,7 +60,6 @@ const Provider = (props) => {
                 var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
                 const user_id = cartFilters.user_id
                 var addcart = ({ products, user_id })
-                console.log('verifiedMaill', addcart)
                 addtocart(addcart)
             }
         }
@@ -69,7 +68,6 @@ const Provider = (props) => {
                 var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
                 var local_storage_products = []
                 if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
-                    console.log('hey i came inside the local_storage....', local_storage)
                     
                     local_storage_products = JSON.parse(localStorage.getItem('cartDetails')).products.map(val => { return val })
                 }
@@ -88,7 +86,6 @@ const Provider = (props) => {
                 var products_sku_list = () => {
                     if (local_storage_products.length > 0) {
                         local_storage_products.push(obj);
-                        console.log(local_storage_products, local_storage_products)
                         return local_storage_products
 
                     }
@@ -98,7 +95,6 @@ const Provider = (props) => {
                     }
 
                 }
-                console.log('hey i came inside the local_storage....', local_storage, local_storage_products.length > 0, products_sku_list())
                 var skuObj = { "cart_id": cartId, "user_id": userId, "products": products_sku_list() }
                 localStorage.setItem('cartDetails', JSON.stringify(skuObj));
             }

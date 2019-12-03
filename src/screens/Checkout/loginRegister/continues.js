@@ -16,7 +16,6 @@ const ContinuesComponent = (props) => {
     // const OtpForm = () => (
     // )
     const clear = () => {
-        debugger
         setMail({
             email: "",
         })

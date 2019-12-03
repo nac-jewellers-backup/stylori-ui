@@ -250,7 +250,6 @@ class Checkoutcard extends React.Component {
 const Components = props => {
     let { CartCtx: { cartFilters } } = React.useContext(CartContext);
     let content;
-    console.log('props.cartFilters.discounted_price', cartFilters)
     content = <Checkoutcard {...props} cartFilters={cartFilters} />
     return content
 }

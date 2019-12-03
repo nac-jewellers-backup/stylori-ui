@@ -30,9 +30,6 @@ const cacheCheck = async () => {
 
         if (type.indexOf("json") !== 1) {
           var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
-          console.info('objectlocal_storage, obj.version', local_storage, obj.version)
-          console.log('jsonjsonjson', Number(local_storage) !== Number(obj.version))
-          // alert(local_storage, obj.version)
           if (obj !== '' && Number(local_storage) !== Number(obj.version)) {
             localStorage.setItem('version', obj.version)
 
@@ -53,11 +50,11 @@ const cacheCheck = async () => {
         // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
 
         var type = await request.getResponseHeader('Content-Type');
-        // alert(request.responseText)
+       
 
         if (type.indexOf("json") !== 1) {
           var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
-          console.log('json', type.indexOf("json") !== 1, typeof request.responseText, request.responseText, obj)
+      
           if (obj !== '') localStorage.setItem('version', obj.version)
 
 
@@ -81,13 +78,13 @@ const isLocalhost = Boolean(
 // setTimeout(function(){ cacheCheck(); }, 20000);
 
 export async function register(config) {
-  cacheCheck();
+  // cacheCheck();
   await requestNotificationPermission();
 
   if (process.env.NODE_ENV !== 'production' && 'serviceWorker' in navigator) {
-    cacheCheck();
+    // cacheCheck();
     // The URL constructor is available in all browsers that support SW.
-    const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
+    const publicUrl = new URL(process.env.PUBLIC_URL, window.location);
     if (publicUrl.origin !== window.location.origin) {
       // Our service worker won't work if PUBLIC_URL is on a different origin
       // from what our page is served on. This might happen if a CDN is used to
@@ -96,17 +93,16 @@ export async function register(config) {
     }
 
     window.addEventListener('load', () => {
-      cacheCheck();
+      // cacheCheck();
       setInterval(function () { cacheCheck(); }, 5000);
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
       
 
-
       if (isLocalhost) {
-        cacheCheck()
+        // cacheCheck()
         // This is running on localhost. Let's check if a service worker still exists or not.
         checkValidServiceWorker(swUrl, config);
-        alert('haii')
+       
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
         navigator.serviceWorker.ready.then(() => {
@@ -117,7 +113,7 @@ export async function register(config) {
           );
         });
       } else {
-        cacheCheck()
+        // cacheCheck()
         // Is not localhost. Just register service worker
         registerValidSW(swUrl, config);
       }
@@ -181,7 +177,7 @@ function registerValidSW(swUrl, config) {
 }
 
 async function requestNotificationPermission() {
-  cacheCheck();
+  // cacheCheck();
   if (!check()) return false;
   const permission = await window.Notification.requestPermission();
   if (permission !== 'granted') { } //alert('Enable notifications to have great experience!');
@@ -217,7 +213,7 @@ function checkValidServiceWorker(swUrl, config) {
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl)
     .then(response => {
-      cacheCheck();
+      // cacheCheck();
       // Ensure service worker exists, and that we really are getting a JS file.
       const contentType = response.headers.get('content-type');
       if (
@@ -243,7 +239,7 @@ function checkValidServiceWorker(swUrl, config) {
 }
 
 export function unregister() {
-  cacheCheck();
+  // cacheCheck();
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(registration => {
       registration.unregister();

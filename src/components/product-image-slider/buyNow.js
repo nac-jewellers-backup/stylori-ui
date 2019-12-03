@@ -70,7 +70,6 @@ const Buydetails = (props, state, handleChanges, handleCodChange) => {
     const { data } = props;
     const { classes } = props;
     const handleLocalStorage = () => {
-        debugger
         props.setCartFilters({ skuId: data[0].skuId, qty: 1, price: data[0].offerPrice })
         // props.history.push('/cart')
         window.location.pathname = "/cart"

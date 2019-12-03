@@ -59,7 +59,6 @@ export const TabsProvider = (props) => {
                 variables = { conditionfilter: { 'generatedSku': filters["skuId"] } }
             }
             else {
-                console.log(window.location.href)
                 var urls = window.location.href
                 var urlssplit = urls.split('/');
                 var urlReplace = urlssplit[urlssplit.length - 1].replace(/-/g, ' ')
@@ -71,17 +70,16 @@ export const TabsProvider = (props) => {
         // variables = { conditionfilter: { 'generatedSku': filters["skuId"] }, conditionImage:{...metalColors} }
 
         if (window.location.search.length > 0) {
-            debugger
             setregisterurl({
                 registerurl: window.location.pathname + window.location.search
             })
 
         }
-        console.log('filtersDefaultvariantsss', registerurl)
+        
     }, [])
     
     useEffect(() => {
-        console.log('dataaaaaaaaa', data, Object.entries(data).length !== 0 && data.constructor === Object && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0)
+       
         if (Object.entries(data).length !== 0 && data.constructor === Object) {
             if (data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
                 handleProductDetatiContext()
@@ -171,7 +169,6 @@ export const TabsProvider = (props) => {
             }
 
             let vardata = { ...variableslike }
-            console.log('vardata', vardata)
 
             likemakeRequest(vardata)
             setlikedata(likedata)
@@ -182,14 +179,12 @@ export const TabsProvider = (props) => {
         }
     }, [price, filters])
     useEffect(() => {
-        console.log(price, 'datadatadata123')
         if (Object.entries(data).length > 0 && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]) {
             setPrice(data.data.allTransSkuLists.nodes[0].markupPrice)
 
         }
     }, [loading, error, data, price])
     const updateProductList = () => {
-        console.info('filtersssss', filters)
         if (Object.entries(variables).length !== 0 && variables.constructor === Object) {
             makeRequest(variables);
         }
@@ -199,7 +194,6 @@ export const TabsProvider = (props) => {
 
 
     }
-    console.log('datadata', data)
     const handleProductDetatiContext = () => {
         // filters['defaultVariants'] = {
         //     ...data.allTransSkuLists.nodes[0]
@@ -265,7 +259,6 @@ export const TabsProvider = (props) => {
 
     }, [data, loading, error])
     useEffect(() => {
-        console.info('likedata', likedata)
     }, [likedata, likeerror, likeloading, loading, error, data, price, filters])
 
     // useEffect(()=>{

@@ -19,7 +19,6 @@ const LoginComponent = (props) => {
     // // alert(JSON.stringify(data))
     // console.log('valuesvaluesvalues', values)
     const clear = () => {
-        debugger
         setValues({
             password: "",
             email: "",

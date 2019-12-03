@@ -19,7 +19,6 @@ class Stylori extends React.Component {
   }
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
-    console.log(this.props.mappedFilters, prevProps.mappedFilters, this.props.data, 'prevProps.mappedFiltersprevProps.mappedFilters')
 
     //  if(this.props.dataFilter !== prevProps.dataFilter){
 
@@ -69,7 +68,6 @@ class Stylori extends React.Component {
 const Components = props => {
   let { FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters }, setloadingfilters } = React.useContext(FilterOptionsContext);
   let content, mapped = [];
-  debugger
   // alert(JSON.stringify(cartcount))
   var arrFilters = Array(mappedFilters)
   let mappedFiltersList = filterData(arrFilters)

@@ -6,12 +6,10 @@ import { NavigateBeforeSharp } from "@material-ui/icons";
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 const generateImgurls = (PD, val) => {
     var arrOfurls = []
-    console.log(typeof imgurlsplit, typeof metalcolor)
     val.map(imgurl => {
         var imgurlsplit = imgurl.imageUrl.split('.')[0].charAt(imgurl.imageUrl.split('.')[0].length - 1)
         var metalcolor = PD.metalColor.charAt(0)
         if (imgurlsplit === metalcolor) {
-            console.log('${CDN_URL}${val.imageUrl}', `${CDN_URL}${imgurl.imageUrl}`)
             arrOfurls.push(`${CDN_URL}${imgurl.imageUrl}`)
 
         }
@@ -65,7 +63,6 @@ const calculatetotalms = (arr, name, price) => {
     })
 
     a = filtering.reduce((a, b) => a + b, 0)
-    console.log(filtering)
     return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a));
 }
 const generatedDiamondType = (PD, valProductDiamond, type) => {
@@ -74,7 +71,6 @@ const generatedDiamondType = (PD, valProductDiamond, type) => {
     return arrOfdiamondType
 }
 const gemstoneType = (PD, valGemstoneType, type) => {
-    console.log('PD,valGemstoneType, type', PD, valGemstoneType, type)
     var arrOfGemstoneType = []
     valGemstoneType.map(val => {
         PD.map(valPD => {
@@ -96,7 +92,6 @@ const generateShipsBy = (readytoship, vendorDeliveryTime) => {
     var isReadytoShip = readytoship
     var numberOfDays = vendorDeliveryTime
     var date = moment().format(' h a')
-    console.log(date)
     if (isReadytoShip) {
         if (JSON.stringify(date) > " 1 pm") {
             return 'Ships by' + ' ' + moment().add(1, 'days').format('MMM Do YY');
@@ -109,7 +104,6 @@ const generateShipsBy = (readytoship, vendorDeliveryTime) => {
 }
 // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
 export default function (data, like_data, viewedddatas, rating) {
-    console.info('datapd', data)
     let mapperdata = [];
     try {
         // mapperda = ;

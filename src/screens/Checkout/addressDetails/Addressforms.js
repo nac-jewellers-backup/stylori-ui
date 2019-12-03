@@ -62,7 +62,6 @@ const Addressforms = () => {
     //     }
     // }, [])
     var addObj = {};
-    console.log('debugger', values)
     addObj["user_id"] = user_id
     addObj["cart_id"] = cart_id
     addObj["isguestlogin"] = cont ? false : true
@@ -89,7 +88,6 @@ const Addressforms = () => {
         }
     }, [CodData])
     const handleChange = (type, field, value, pincod) => {
-        debugger
         values[type][field] = value;
         if (field === 'pincode') {
             values[type]['pincode'] = value;
