@@ -54,7 +54,6 @@ class Sublistcarousel extends React.Component {
       slidesToScroll: 4,
     }
     // this.state.dataToShow==="YouMayLike" ? data[0].fadeImageSublist : data[0].fadeImageSublistRecentlyViewed
-    console.info('vadamapla_objectu',data[0].fadeImageSublist)
     return (
       <div>
         <Hidden smDown>

@@ -101,7 +101,6 @@ const useRegister = (changePanel, props) => {
 
     const user = data.user_profile_id ? data.user_profile_id : ""
     const handleSubmit = (e) => {
-        debugger
         if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'

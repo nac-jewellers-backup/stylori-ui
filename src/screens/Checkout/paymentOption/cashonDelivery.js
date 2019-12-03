@@ -46,7 +46,6 @@ class CashonDelivey extends React.Component {
         let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
         const data = this.props.data ? this.props.data : ""
-        debugger
         // var { data:coddata, error, loading, makeFetch} = useNetworkRequest('/api/auth/signin', {}, false);
         var dataCard1;
         if (data.length > 0 && data !== undefined && data !== null) {

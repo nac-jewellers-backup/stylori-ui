@@ -53,7 +53,6 @@ const useRating = (props) => {
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
             // console.log('starsSelectedstarsSelected',props.starsSelected)
             mapUrlParamsSplitEqual.map(val => {
-                debugger
                 values['product_sku'] = val[1]
                 if (val[1].length > 0) {
                     variab['productSku'] = val[1]

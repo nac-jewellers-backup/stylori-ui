@@ -124,7 +124,6 @@ const handleProductDetatiContext = (props) =>{
   props.filters['skuId'] = props.data.generatedSku
 props.setFilters(props.filters)
 
-console.log('props.filters',props.filters)
 }
 
 const useStyles = makeStyles(theme=>({
@@ -315,7 +314,6 @@ const callmouseover= () =>{
 const callmouseout = () =>{
   setCardState({ ...cardstate, hovered: !cardstate.hovered });
 }
-  console.log('productTypeMaterial')
   return (
     <div className={classes.root}>
       <Card className={classes.card}>

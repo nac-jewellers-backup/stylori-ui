@@ -18,7 +18,6 @@ export const useVerifyOtp = (changePanel) => {
     const loading = Boolean(eload || otpload);
     const data = { edata, otpdata }
     React.useEffect(() => {
-        console.info('MAILERR', Boolean(!mailerr && Object.keys(edata).length), mailerr, edata);
         if (!mailerr && Object.keys(edata).length) {
             // setGlobaCtx({
             //     ...GLobalCtx,
@@ -54,7 +53,6 @@ export const useVerifyOtp = (changePanel) => {
     }
 
     const handleChange = (type, value) => {
-        debugger
         if (type === "email") {
             setMail({
                 ...email,

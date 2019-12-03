@@ -17,7 +17,6 @@ export const PaymentProvider = (props) => {
 
     const [Paymentctx, setPaymentCtx] = React.useState(initialCtx.PaymentCtx);
 
-    console.info('object', 'total value in the cart', Paymentctx)
 
     return (
         <PaymentContext.Provider value={{ Paymentctx, setPaymentCtx }} >

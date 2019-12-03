@@ -57,7 +57,6 @@ class PaymentIndex extends React.Component {
         //     }
         //     return va
         // }
-        debugger
         return (
             <div className="payment-div">
                 <Container>

@@ -59,7 +59,6 @@ const useLogin = (changePanel) => {
 
     }, [data])
     React.useEffect(() => {
-        debugger
         var a = CodData ? CodData : ""
         if (JSON.stringify(a).length > 10) {
             localStorage.setItem("vals", JSON.stringify(CodData))
@@ -94,7 +93,6 @@ const useLogin = (changePanel) => {
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
-        debugger
         if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'

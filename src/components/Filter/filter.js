@@ -203,7 +203,6 @@ class Component extends React.Component {
   }
 
   valz = (value) => Object.entries(this.state.checked).map(val => {
-    debugger
     const { checked } = this.state;
     var obj = {};
     var mm;
@@ -251,7 +250,6 @@ class Component extends React.Component {
         var keyNameFilter = val[1]
         console.log('val', TargetName)
         let checkedvalue = {};
-        debugger
         checkedvalue[keyNameFilter] = true
         checked[nameFilter] = checkedvalue
         // arr.push({ key: chipData, label: nameFilter, title: title });
@@ -295,7 +293,6 @@ class Component extends React.Component {
   }
 
   handleDelete = (value) => {
-    debugger
     let arr = [], arr1 = [];
     let { chipData, checked } = this.state
     arr = chipData.filter(val => val.label !== value); 
