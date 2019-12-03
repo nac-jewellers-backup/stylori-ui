@@ -423,7 +423,6 @@ body {
 
 /*rating-form*/
 .rating-form {
-    letter-spacing: 12px !important;
     width: 100% !important;
     float: left !important;
     padding-bottom: 10px;

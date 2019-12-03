@@ -7,7 +7,8 @@ export const routes = {
     Register: '/register',
     UserLogin: '/login',
     UserRegister: '/registers',
-    HomePageStylori: '/home'
+    HomePageStylori: '/home',
+    Account: '/account'
 
 }
 

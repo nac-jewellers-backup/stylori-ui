@@ -11,7 +11,6 @@ import {
     Container, Modal, Button
 } from '@material-ui/core';
 import React from 'react';
-import SwipeableViews from 'react-swipeable-views';
 import './product-images.css'
 import PropTypes from 'prop-types';
 import Slideshow from '../Carousel/carosul';

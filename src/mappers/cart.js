@@ -117,68 +117,69 @@ export default function (data) {
 
         try {
             _d = {
-                productsDetails : [
+                productsDetails: [
                     {
                         header: "Product Details",
+                        pro_header: k.productListByProductId.productName,
                         namedetail: [{
                             name: "Product Code",
                             details: k.generatedSku
                         },
                         {
                             name: "Metal Type",
-                            details: k.purity +' '+k.metalColor
+                            details: k.purity + ' ' + k.metalColor
                         }, {
                             name: "Approximate",
                             details: "1.463"
                         }],
-                    // }, {
-                    //     header: "Diamond Details ",
-                
-                
-                    //     namedetail: [
-                    //         {
-                    //             name: "Total No of ",
-                    //         },
-                    //         {
-                    //             name: "Diamonds",
-                    //             details: "35"
-                    //         },
-                    //         {
-                    //             name: "Color",
-                    //             details: "IF"
-                    //         },
-                    //         {
-                    //             name: "Clarity",
-                    //             details: "SI"
-                    //         },
-                
-                    //     ],
-                    // },
-                    // {
-                    //     header: "Price Breakup",
-                    //     namedetail: [{
-                    //         name: "Metal",
-                    //         details: "SP0679-18110000"
-                    //     },
-                    //     {
-                    //         name: "Diamond",
-                    //         details: "18K Yellow Gold"
-                    //     }, {
-                    //         name: "Making Charges",
-                    //         details: "1.463"
-                    //     },
-                    //     {
-                    //         name: "GST",
-                    //         details: "1.463"
-                    //     },
-                    //     ],
+                        // }, {
+                        //     header: "Diamond Details ",
+
+
+                        //     namedetail: [
+                        //         {
+                        //             name: "Total No of ",
+                        //         },
+                        //         {
+                        //             name: "Diamonds",
+                        //             details: "35"
+                        //         },
+                        //         {
+                        //             name: "Color",
+                        //             details: "IF"
+                        //         },
+                        //         {
+                        //             name: "Clarity",
+                        //             details: "SI"
+                        //         },
+
+                        //     ],
+                        // },
+                        // {
+                        //     header: "Price Breakup",
+                        //     namedetail: [{
+                        //         name: "Metal",
+                        //         details: "SP0679-18110000"
+                        //     },
+                        //     {
+                        //         name: "Diamond",
+                        //         details: "18K Yellow Gold"
+                        //     }, {
+                        //         name: "Making Charges",
+                        //         details: "1.463"
+                        //     },
+                        //     {
+                        //         name: "GST",
+                        //         details: "1.463"
+                        //     },
+                        //     ],
                     },
                 ],
                 // 
                 // 
-                dataCard1 : [
+                dataCard1: [
                     {
-                        offerPrice:k.markupPrice,
+                        offerPrice: k.markupPrice,
                         price: k.discountPrice,
                         title: "Diamond Pendant Ring",
                         dis: 'Pendants set in 18 Kt Yellow Gold 3.95 gm with Diamonds (0.52 ct, GH - SI )',
@@ -189,20 +190,20 @@ export default function (data) {
                             hoverImage:
                                 "https://assets-cdn.stylori.com/313x313/images/product/SE0176/HOVER-SE0176-2R.jpg"
                         },
-                
+
                     },
                 ],
                 fadeImages: (k.productListByProductId.productImagesByProductId.nodes.map(val => (
                     `https://assets.stylori.net/base_images/${val.imageUrl}`
                 ))),
-                breadcrumsdata : [
-                    {title:"Shopping Bag"},
-                    {title:"Login/ Register"},
-                    {title:"Address Detail"},
-                    {title:"Payment Options"},
-                    {title:"Order Confirmation"},
+                breadcrumsdata: [
+                    { title: "Shopping Bag" },
+                    { title: "Login/ Register" },
+                    { title: "Address Detail" },
+                    { title: "Payment Options" },
+                    { title: "Order Confirmation" },
                 ],
-                cartsubdata : [
+                cartsubdata: [
                     {
                         name: "100% Certified   Jewellery  ",
                         icon: "https://assets-cdn.stylori.com/images/static/icon-star.png"
@@ -232,7 +233,7 @@ export default function (data) {
 }
 
 
-/* 
+/*
 {
   "productList": ["SB0010-18220000","SB0011-18520000"]
 }

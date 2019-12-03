@@ -58,10 +58,10 @@ class Checkoutcard extends React.Component {
         //         cartcount: this.props.data.length
         //     })
         // },[data])
-        return (
+debugger
+return (
             <div style={{ marginTop: "10px" }}>
                 {this.props.data.map(dataval => (
-                    
                     dataval.productsDetails.map(val => (
                         <div className={classes.cart}>
                             <Grid container spacing={12} xs={12}  >
@@ -82,7 +82,7 @@ class Checkoutcard extends React.Component {
                                     </Card>
                                 </Grid>
                                 <Grid item xs={6} style={{ padding: "20px" }}>
-                                    <h3 class={`title ${classes.normalfonts}`}>{val.header}</h3>
+                                    <h3 class={`title ${classes.normalfonts}`}>{val.pro_header}</h3>
                                     <Grid container spacing={12} >
                                         <Grid item xs={6} >
                                             {val.namedetail !== undefined && val.namedetail.map(val => (
@@ -102,7 +102,8 @@ class Checkoutcard extends React.Component {
                                         <Grid item xs={3} >
                                             <Typography className={`subhesder ${classes.normalfonts}`}>Quantity 1</Typography>
                                             <br />
-                                            <Typography className={`subhesder hov ${classes.normalfonts}`}>
+                                            <Typography className={`subhesder hov ${classes.normalfonts}`}
+                                                id={val.namedetail[0].details} onClick={(event) => this.handleDeleteLocalStorage(event)}>
                                                 <i class="fa fa-trash"></i>
                                                 &nbsp;Remove</Typography>
                                         </Grid>
@@ -220,7 +221,7 @@ class Checkoutcard extends React.Component {
             slidesToShow: 1,
             arrows: false,
         }
-       
+
         var data = this.props.data
         const { classes } = this.props;
         // alert(discounted_price)

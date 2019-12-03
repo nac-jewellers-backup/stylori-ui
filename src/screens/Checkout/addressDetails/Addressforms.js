@@ -30,8 +30,12 @@ const Addressforms = () => {
             state: "",
             country: "",
             country_code: "",
-            contactNumber: "",
-            addresstype: 1
+            contactno: "",
+            addresstype: 1,
+            errortext: {
+                pinerr: "",
+                pinerr1: "",
+            },
         },
         addressTwo: {
             firstname: "",
@@ -43,14 +47,19 @@ const Addressforms = () => {
             state: "",
             country: "",
             country_code: "",
-            contactNumber: "",
-            // addresstype: 2
+            contactno: "",
+            addresstype: 2,
+            errortext: {
+                pinerr: "",
+                pinerr1: "",
+            },
         },
         addrs: (localStorage.getItem("valuessetdata") || changeaddr) ? false : true,
         // addrs: true,
         checkValue: true,
         checkValue1: true,
         // changeaddr:false
+
     });
     // useEffect(() => {
     //     if (localStorage.getItem("valuessetdata") || changeaddr.length > 0) {
@@ -75,15 +84,28 @@ const Addressforms = () => {
             var res = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].state : ''
             var res1 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].country : ''
             var res2 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].district : ''
-            if (pincods.pincod === "pincode1") {
-                values['addressOne']['state'] = res
-                values['addressOne']['country'] = res1 
-                values['addressOne']['city'] = res2
+            if (res2.length > 0) {
+                if (pincods.pincod === "pincode1") {
+                    values['addressOne']['state'] = res
+                    values['addressOne']['country'] = res1
+                    values['addressOne']['city'] = res2
 
+                } else {
+                    values['addressTwo']['state'] = res
+                    values['addressTwo']['country'] = res1
+                    values['addressTwo']['city'] = res2
+                }
             } else {
-                values['addressTwo']['state'] = res
-                values['addressTwo']['country'] = res1
-                values['addressTwo']['city'] = res2
+                if (pincods.pincod === "pincode1") {
+                    debugger
+                    if (res2.length < 0 || res2 === "" || values["addressOne"]['errortext']) {
+                        values["addressOne"]['errortext']['pinerr'] = "Your pincode is !Invalid"
+                    }
+                } else {
+                    if (res2.length < 0 || res2 === "" || values["addressOne"]['errortext']) {
+                        values["addressTwo"]['errortext']['pinerr1'] = "Your pincode is !Invalid"
+                    }
+                }
             }
             setValues({ ...values, values })
         }
@@ -96,21 +118,36 @@ const Addressforms = () => {
             const val = values.addressOne.pincode || values.addressTwo.pincode
             var variab = {}
             variab["pincode"] = value
-            if (value.length > 5) {
+            if (value.length > 5 || variab !== undefined) {
                 // alert(JSON.stringify(value))
                 if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
                     makeRequestCod(variab);
                 }
             }
-        } 
+            if (pincods.pincod === "pincode1") {
+                debugger
+                values["addressOne"]['errortext']['pinerr'] = ""
+            } else {
+                values["addressTwo"]['errortext']['pinerr1'] = ""
+            }
+        }
         // window.cache[type] = true
         pincods["pincod"] = pincod
         setpincod({ ...pincods, pincods })
         setValues({ ...values, values })
     }
-
     const handleSubmit = (e) => {
+        const val = values.addressOne.pincode || values.addressTwo.pincode
         // e.preventDefault()
+        // if (val.length < 5) {
+        //     if (pincods.pincod === "pincode1") {
+        //         debugger
+        //             values["addressOne"]['errortext']['pinerr'] = "Your pincode is !e"
+        //     } else {
+        //             values["addressTwo"]['errortext']['pinerr1'] = "Your pincode is !e"
+        //     }
+        //     return false
+        // }
         var a1 = values.addressOne
         var a2 = values.addressTwo
         // if (a1 == a1) {

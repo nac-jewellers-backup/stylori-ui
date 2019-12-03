@@ -276,10 +276,10 @@ export const TabsProvider = (props) => {
     //     }
     // },[data,filters,error,loading])
     const ProductDetailCtx = {
-        filters, loading, error, data, likedata, likeloading, likeerror, likedatas, vieweddata, viewederror, viewedloading, viewedddatas, rating, registerurl
+        ratingcounts, filters, loading, error, data, likedata, likeloading, likeerror, likedatas, vieweddata, viewederror, viewedloading, viewedddatas, rating, registerurl
     }
     return (
-        <ProductDetailContext.Provider value={{ ProductDetailCtx, setFilters, setlikedata, setvieweddata, setrating, setregisterurl }} >
+        <ProductDetailContext.Provider value={{ setratingcounts,ProductDetailCtx, setFilters, setlikedata, setvieweddata, setrating, setregisterurl }} >
             {props.children}
         </ProductDetailContext.Provider>
     )
