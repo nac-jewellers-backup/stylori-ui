@@ -73,7 +73,7 @@ const useRating = (props) => {
         }
     }, [])
 
-    const handleInvalid = (type, status) => {
+    const handleInvalid = (type, status) => { 
         setInvalids({
             ...invalids,
             [type]: status
