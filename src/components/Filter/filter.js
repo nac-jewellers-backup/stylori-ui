@@ -64,8 +64,8 @@ class Component extends React.Component {
     console.log('price_props', typeof this.props.data[0].subFilter['Price Range'])
     var numberOne = Number(this.props.data[0].subFilter['Price Range'].min);
     var numberTwo = Number(this.props.data[0].subFilter['Price Range'].max);
-    var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
-    var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
+    var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(numberOne));
+    var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(numberTwo));
     this.setState({ numOne: numOne, numTwo: numTwo })
       
     
@@ -193,8 +193,8 @@ class Component extends React.Component {
       console.log('price_props', typeof this.props.data[0].subFilter['Price Range'], this.props.data[0].subFilter['Price Range'].length, this.props.data[0].subFilter['Price Range'][0] !== undefined, Number(this.props.data[0].subFilter['Price Range'].max))
       var numberOne = this.props.data[0].subFilter['Price Range'][0] ? this.props.data[0].subFilter['Price Range'][0].min : 0;
       var numberTwo = this.props.data[0].subFilter['Price Range'][0] ? this.props.data[0].subFilter['Price Range'][0].max : 0;
-      var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
-      var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
+      var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(numberOne));
+      var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(numberTwo));
       this.setState({ numOne: numOne, numTwo: numTwo })
       // if( this.props.data[0].subFilter['Price Range'].length > 0 && this.props.data[0].subFilter['Price Range'][0] !== undefined){ 
       //   this.props.setFilters({pricemax:numberTwo, pricemin:numberOne})}  
@@ -375,8 +375,8 @@ class Component extends React.Component {
 
       numberTwo = Number((document.getElementById('num2').value).replace(/,/g, ''));
     }
-    var numOnee = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberOne);
-    var numTwoo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(numberTwo);
+    var numOnee = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(numberOne));
+    var numTwoo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(numberTwo));
     this.setState({ numOne: numOnee, numTwo: numTwoo })
 
   }
@@ -404,7 +404,7 @@ class Component extends React.Component {
 
   render() {
     console.log('urlSplitparamsEqual', this.state.checked)
-
+    
     const { classes, data } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];
 
@@ -507,11 +507,14 @@ class Component extends React.Component {
 
                                                   <ListItem key={row12}  >   {/* button */}
                                                     <FormGroup row>
-                                                      <FormControlLabel
+                                             { 
+                                             row12.constructor === Object ?
+                                                     <FormControlLabel
                                                         control={
                                                           <Checkbox
-                                                            checked={this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] : false}
-                                                            onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e, row)}
+                                                            checked={this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] !== undefined ?
+                                                             this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] : false}
+                                                            onChange={(e) => this.handleChange(row12.value, this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12.value] : true, e, row)}
                                                             className="fil-submenu-icons"
                                                             value="checked"
                                                             color="primary"
@@ -519,9 +522,27 @@ class Component extends React.Component {
                                                           />
                                                         }
                                                         label={<Typography variant=""
-                                                          className={`fil-submenu-list ${classes.colorMain}`}>{row12}
+                                                          className={`fil-submenu-list ${classes.colorMain}`}>{row12.title}
                                                         </Typography>}
                                                       />
+                                                      :
+                                                      <FormControlLabel
+                                                      control={
+                                                        <Checkbox
+                                                          checked={this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ?
+                                                           this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] : false}
+                                                          onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e, row)}
+                                                          className="fil-submenu-icons"
+                                                          value="checked"
+                                                          color="primary"
+                                                          name={row.replace(/\s/g, "")}
+                                                        />
+                                                      }
+                                                      label={<Typography variant=""
+                                                        className={`fil-submenu-list ${classes.colorMain}`}>{row12}
+                                                      </Typography>}
+                                                    />
+                                                      }
                                                     </FormGroup>
                                                   </ListItem>
                                                 </div>);

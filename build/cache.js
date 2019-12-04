@@ -11,6 +11,7 @@ const cacheFiles = [
 // NOTE: Caching custom files
 // eslint-disable-next-line no-restricted-globals
 self.addEventListener('install', function(event) {
+   
     console.info('OFFLINE ENTRY TESTING','offline cache testing');
     event.waitUntil(
       caches.open(_cacheName_one).then(function(cache) {
@@ -21,6 +22,7 @@ self.addEventListener('install', function(event) {
 
 
   self.addEventListener("fetch", e => {
+    console.info('FOUND-e', e);
     e.respondWith(caches.match(e.request).then(async res => {
         if (res) {
             console.info('FOUND', e.request.url);

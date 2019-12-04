@@ -14,7 +14,7 @@ import { filterParams } from 'mappers';
 const initialCtx = {
     FilterOptionsCtx: {
         filters: {
-            Offers: null, Availability: null, ProductType: null, style: null, Material: null, Theme: null, Collection: null, metalColor: null,
+            Offers: null, Availability: null, ProductType: null, style: null, Material: null, Theme: null, Collection: null, MetalColor: null,
             MetalPurity: null, Occasion: null, NoOfStones: null, Gender: null, stoneColor: null, stoneShape: null, pricemax: 0, pricemin: 0
         },
         sort: '',
@@ -36,7 +36,7 @@ export const FilterOptionsConsumer = FilterOptionsContext.Consumer;
 const Provider = (props) => {
 
     const [filters, setFilters] = React.useState({
-        Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, metalColor: {},
+        Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, MetalColor: {},
         MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}, pricemax: 0, pricemin: 0
     });
     const [sort, setSort] = React.useState(initialCtx.FilterOptionsCtx.sort)
@@ -291,12 +291,34 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
 
         // console.info('objecobjecobject',mappedFilters.seo_url !== "jewellery")
         if (window.location.search) {
-            const conditionFilters = conditions.generateFilters(paramObjects())
+            // const conditionFilters = conditions.generateFilters(paramObjects())
+            // const conditionTransSkuFilters = conditions.generateTransSkuFilters(paramObjects())
+            debugger
+            const _paramsfilter = paramObjects()
+            var conditionTransSkuFilters = {}
+            var filtersss = _paramsfilter.filter(val=>{
+                debugger
+                var a = Object.keys(val)
+                if(a[0] ==='MetalPurity')return a
+                if(a[0] === 'MetalColor')return a
+                if(a[0] === 'Availability') return a
+                })
+            if(filtersss.length>0){
+            conditionTransSkuFilters =conditions.generateTransSkuFilters(_paramsfilter)
+        }
+        else{
+            conditionTransSkuFilters = {filterTransSku:{isdefault:{equalTo:true}}}
+        }
+        
+            const conditionFilters = conditions.generateFilters(_paramsfilter)
+         
             const conditionImageColor = {}
-            var a = filters && filters.length === 0 ? Object.keys(filters.MetalColor) : ''
+            var a = filters && Object.entries(filters).length >  0 ? Object.keys(filters.MetalColor) : ''
             // var a = filters.metalColor ? filters.metalColor : null;
-            conditionImageColor["productColor"] = a[0]
-            conditionImageColor['isdefault'] = true
+            
+            if(filters && Object.entries(filters).length > 0 & Object.entries(filters.MetalColor).length >0  && Object.values(filters.MetalColor)[0]) conditionImageColor["productColor"] = a[0] 
+            
+          if((filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length >0 && Object.values(filters.MetalColor)[0])===false) conditionImageColor['isdefault'] = true
             // conditionImageColor["isdefault"]=true
             const pricerange = {
                 transSkuListsByProductId: {
@@ -330,15 +352,27 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                     }
 
                 }
-                if (Object.keys(conditionFilters.filter) > 0) {
-                    variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+                
+                if (Object.keys(conditionFilters.filter).length > 0) {
+                    if(Object.keys(conditionTransSkuFilters) > 0){
+                        variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor }, ...conditionTransSkuFilters }
+                    }else{
+                        variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+                    }
+                 
                 }
                 else {
                     variables = { orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
             }
             else {
-                variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+                if(Object.keys(conditionTransSkuFilters).length > 0){
+                    variables = { ...conditionFilters, ...conditionTransSkuFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+                }
+                else{
+                    variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+                }
+               
             }
             
           await makeRequest(variables)
@@ -355,6 +389,12 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
 
 
     }
+    // "filterTransSku": {
+    //     "purity": {
+    //       "equalTo": "55K"
+    //     }
+    //   }
+    
     useEffect(() => { setMappedFilters(ntxdata) }, [ntxdata, ntxerr, ntx]);
 
     useEffect(() => {
@@ -387,14 +427,36 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
 
             })
             if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object)) {
-                const conditionFilters = conditions.generateFilters(paramsfilter.splice(1))
+                
+                const _paramsfilter = paramsfilter.splice(1)
+               
+                var conditionTransSkuFilters = {}
+                var filtersss = _paramsfilter.filter(val=>{
+                    
+                    var a = Object.keys(val)
+                    if(a[0] ==='MetalPurity')return a
+                    if(a[0] === 'MetalColor')return a
+                    if(a[0] === 'Availability') return a
+                    })
+                if(filtersss.length>0){
+                conditionTransSkuFilters =conditions.generateTransSkuFilters(filtersss)
+            }
+            else{
+                conditionTransSkuFilters = {filterTransSku:{isdefault:{equalTo:true}}}
+            }
+            
+                const conditionFilters = conditions.generateFilters(_paramsfilter)
+                
 
                 const conditionImageColor = {}
-                var a = filters && filters.length === 0 ? Object.keys(filters.MetalColor) : ''
+                var a = filters && Object.entries(filters).length > 0 ? Object.keys(filters.MetalColor) : ''
                 var variables = {}
                 // var a = filters.metalColor ? filters.metalColor : null;
-                conditionImageColor["productColor"] = a[0]
-                conditionImageColor['isdefault'] = true
+                
+                
+                if(filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length >0  && Object.values(filters.MetalColor)[0] )conditionImageColor["productColor"] = a[0] 
+                
+              if((filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length >0 && Object.values(filters.MetalColor)[0])===false) conditionImageColor['isdefault'] = true
 
                 // conditionImageColor["isdefault"]=true
                 if (window.location.search) {
@@ -418,11 +480,20 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                         }
 
                     }
-                    variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+                    // variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+                    if(Object.keys(conditionTransSkuFilters).length > 0){
+                        variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor }, ...conditionTransSkuFilters }
+                    }else{
+                        variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
+                    }
                 }
                 else {
+                    if(conditionTransSkuFilters && Object.keys(conditionTransSkuFilters).length > 0){
+                        variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor },...conditionTransSkuFilters }
+                    }else{
+                        variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor} }
+                    }
                     
-                    variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
 
             await makeRequest(variables)
