@@ -65,10 +65,10 @@ return (
                     dataval.productsDetails.map(val => (
                         <div className={classes.cart}>
                             <Grid container spacing={12} xs={12}  >
-                                <Grid item xs={1}  >
+                                {/* <Grid item xs={1}  >
                                     <div id={val.namedetail[0].details} onClick={(event) => this.handleDeleteLocalStorage(event)} class="remove-product"></div>
-                                </Grid>
-                                <Grid item xs={2} >
+                                </Grid> */}
+                                <Grid item xs={3} >
                                     <Card className="product-image-thumb">
                                         <CardHeader style={{ padding: "0px" }}
                                             action={

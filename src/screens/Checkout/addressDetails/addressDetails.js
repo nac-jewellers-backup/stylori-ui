@@ -35,12 +35,13 @@ class Addressdetails extends React.Component {
         objj['addressOne'] = value.addressOne || lgn
         objj1['addressTwo'] = value.addressTwo || lgn1
 
-        var chk_locl = (value && value.addressOne ? value.addressOne.addressline1 || value.addressOne.lastname : chk_locl2) ||
-            (lgn ? lgn.addressline1 || lgn.lastname : chk_locl2)
-        var chk_locl2 = (value && value.addressTwo ? value.addressTwo.addressline1 || value.addressTwo.lastname : chk_locl) ||
-            (lgn1 ? lgn1.addressline1 || lgn1.lastname : chk_locl)
+        var chk_locl = (value && value.addressOne ? value.addressOne.pincode || value.addressOne.addressline1 || value.addressOne.lastname : chk_locl2) ||
+            (lgn ? lgn.addressline1 || lgn.pincode || lgn.lastname : chk_locl2)
+        var chk_locl2 = (value && value.addressTwo ? value.addressTwo.pincode || value.addressTwo.addressline1 || value.addressTwo.lastname : chk_locl) ||
+            (lgn1 ? lgn1.pincode || lgn1.addressline1 || lgn1.lastname : chk_locl)
 
         const dlt_locl1 = (dlt) => {
+            debugger
             if (chk_locl !== undefined && chk_locl !== null && chk_locl2 !== undefined && chk_locl2 !== null && chk_locl !== chk_locl2) {
                 localStorage.removeItem("valuessetdata")
                 if (objj.addressOne && objj.addressOne.lastname.length > 0) {
@@ -50,9 +51,11 @@ class Addressdetails extends React.Component {
             } else {
                 localStorage.removeItem("valuessetdata")
                 if (values.addrs === false) {
+                    debugger
+                    values["addrs"] = true
                     setValues({
                         ...values,
-                        addrs: true
+                        values
                     })
                 }
                 // this.props.redirectForm()
@@ -60,6 +63,7 @@ class Addressdetails extends React.Component {
             }
         }
         const dlt_locl2 = (dlt) => {
+            debugger
             if (chk_locl2 !== undefined && chk_locl2 !== null && chk_locl !== undefined && chk_locl !== null && chk_locl !== chk_locl2) {
                 localStorage.removeItem("valuessetdata")
                 if (objj1.addressTwo && objj1.addressTwo.lastname.length > 0) {
@@ -69,9 +73,11 @@ class Addressdetails extends React.Component {
             } else {
                 localStorage.removeItem("valuessetdata")
                 if (values.addrs === false) {
+                    debugger
+                    values["addrs"] = true
                     setValues({
                         ...values,
-                        addrs: true
+                        values
                     })
                 }
                 // this.props.redirectForm()
@@ -132,7 +138,7 @@ class Addressdetails extends React.Component {
                                 </p>
                             <div className="card-foo">
                                 <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                    +91 {value && value.addressOne && value.addressOne.contactNumber || lgn && lgn.contactNumber ? value && value.addressOne && value.addressOne.contactNumber || lgn && lgn.contactNumber : value && value.addressTwo && value.addressTwo.contactNumber || value && value.addressOne && value.addressOne.contactNumber}
+                                    +91 {value && value.addressOne && value.addressOne.contactno || lgn && lgn.contactNumber ? value && value.addressOne && value.addressOne.contactno || lgn && lgn.contactNumber : value && value.addressTwo && value.addressTwo.contactno || value && value.addressOne && value.addressOne.contactno}
                                 </span> <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                     this.props.changevalue(3)
                                 }}>Select and  Review </Button>
@@ -181,7 +187,7 @@ class Addressdetails extends React.Component {
                                 <div className="card-foo">
                                     <span className={`shipping-phonenumber ${classes.normalfonts}`}>
                                         +91 {lgn1 && lgn1.contactNumber ? lgn1 && lgn1.contactNumber : lgn && lgn.contactNumber}
-                                        {value && value.addressTwo && value.addressTwo.contactNumber ? value && value.addressTwo && value.addressTwo.contactNumber : value && value.addressOne && value.addressOne.contactNumber}
+                                        {value && value.addressTwo && value.addressTwo.contactno ? value && value.addressTwo && value.addressTwo.contactno : value && value.addressOne && value.addressOne.contactno}
                                     </span>
                                     <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                         this.props.changevalue(3)

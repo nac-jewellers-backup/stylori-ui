@@ -94,6 +94,16 @@ const Addressforms = () => {
                     values['addressTwo']['country'] = res1
                     values['addressTwo']['city'] = res2
                 }
+                if (pincods.pincod === "pincode1") {
+                    debugger
+                    if ( res2 === "" || values["addressOne"]['errortext']) {
+                        values["addressOne"]['errortext']['pinerr'] = ""
+                    }
+                } else {
+                    if ( res2 === "" || values["addressOne"]['errortext']) {
+                        values["addressTwo"]['errortext']['pinerr1'] = ""
+                    }
+                }
             } else {
                 if (pincods.pincod === "pincode1") {
                     debugger
@@ -122,12 +132,11 @@ const Addressforms = () => {
                     makeRequestCod(variab);
                 }
             }
-            if (pincods.pincod === "pincode1") {
-                debugger
-                values["addressOne"]['errortext']['pinerr'] = ""
-            } else {
-                values["addressTwo"]['errortext']['pinerr1'] = ""
-            }
+            // if (pincods.pincod === "pincode1") {
+            //     values["addressOne"]['errortext']['pinerr'] = ""
+            // } if(pincods.pincod === "pincode2") {
+            //     values["addressTwo"]['errortext']['pinerr1'] = ""
+            // }
         }
         // window.cache[type] = true
         pincods["pincod"] = pincod

@@ -37,7 +37,7 @@ const AddressComponent = (props) => {
                     <div className='pt-sm'>
                         <form onSubmit={(e) => {
                             handle.handleSubmit(e)
-                            if (values.addressOne.errortext.pinerr.length > 0 || values.addressOne.errortext.pinerr !== "") {
+                            if (values.addressTwo.errortext.pinerr1.length > 0 ||values.addressTwo.errortext.pinerr1 !== ""||values.addressOne.errortext.pinerr.length > 0 || values.addressOne.errortext.pinerr !== "") {
                                 return false
                             } else {
                                 setValues({ addrs: !values.addrs });
