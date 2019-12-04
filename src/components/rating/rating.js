@@ -1,5 +1,6 @@
 import React from "react";
 import "./rating.css";
+import { ProductDetailContext } from 'context/ProductDetailContext';
 const Star = ({ selected = false, onClick = f => f }) =>
     <div className={(selected) ? "star selected" : "star"}
         onClick={onClick}>
@@ -9,9 +10,12 @@ const Star = ({ selected = false, onClick = f => f }) =>
 //   selected: React.PropTypes.bool,
 //   onClick: React.PropTypes.func
 // }
+const Ratings = (props) => {
+    const { setratingcounts } = React.useContext(ProductDetailContext);
+    return <Component setratingcounts={setratingcounts}  {...props} />
+}
 
-class Ratings extends React.Component {
-
+class Component extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -22,6 +26,7 @@ class Ratings extends React.Component {
 
     change(starsSelected) {
         this.setState({ starsSelected })
+        this.props.setratingcounts({ ratingcounts: starsSelected })
         localStorage.setItem("count", starsSelected)
     }
 

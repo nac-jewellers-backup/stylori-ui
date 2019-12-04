@@ -33,10 +33,10 @@ html {
   font-family: 'Roboto' !important;
 }
 
-.MuiPopover-paper {
+/* .MuiPopover-paper {
   margin-left: -13% !important;
   margin-top: 4% !important;
-}
+} */
 
 .icons-header-sizes {
   height: 18px !important;

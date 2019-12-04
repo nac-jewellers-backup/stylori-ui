@@ -37,45 +37,51 @@ const AddressComponent = (props) => {
                     <div className='pt-sm'>
                         <form onSubmit={(e) => {
                             handle.handleSubmit(e)
-                            setValues({ addrs: !values.addrs });
-                            if (Object.keys(lgn).length > 0) {
-                                lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
-                                var data = {}
-                                var allUserAddresses = {}
-                                var nodes = {}
-                                data['data'] = allUserAddresses
-                                allUserAddresses['allUserAddresses'] = nodes
-                                nodes['nodes'] = [a, b]
-                                // const nodes = [a]
-                                localStorage.setItem("vals", JSON.stringify(data))
-                            }
-                            else {
-                                if (values.checkValue === false) {
-                                    localStorage.setItem("valuessetdata", JSON.stringify(values))
-                                    return false
-                                } else {
-                                    if (values.addressOne.firstname.length > 0) {
-                                        localStorage.setItem("valuessetdata", JSON.stringify(bb))
-                                    }
-                                    if (values.addressTwo.firstname.length > 0) {
-                                        localStorage.setItem("valuessetdata", JSON.stringify(bb1))
-                                    }
+                            if (values.addressTwo.errortext.pinerr1.length > 0 ||values.addressTwo.errortext.pinerr1 !== ""||values.addressOne.errortext.pinerr.length > 0 || values.addressOne.errortext.pinerr !== "") {
+                                return false
+                            } else {
+                                setValues({ addrs: !values.addrs });
+                                if (Object.keys(lgn).length > 0) {
+                                    lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
+                                    var data = {}
+                                    var allUserAddresses = {}
+                                    var nodes = {}
+                                    data['data'] = allUserAddresses
+                                    allUserAddresses['allUserAddresses'] = nodes
+                                    nodes['nodes'] = [a, b]
+                                    // const nodes = [a]
+                                    localStorage.setItem("vals", JSON.stringify(data))
                                 }
+                                else {
+                                    if (values.checkValue === false) {
+                                        debugger
+                                        localStorage.setItem("valuessetdata", JSON.stringify(values))
+                                        return false
+                                    } else {
+                                        if (values.addressOne.firstname.length > 0) {
+                                            localStorage.setItem("valuessetdata", JSON.stringify(bb))
+                                        }
+                                        if (values.addressTwo.firstname.length > 0) {
+                                            localStorage.setItem("valuessetdata", JSON.stringify(bb1))
+                                        }
+                                    }
 
-                                // localStorage.setItem("valuessetdata", JSON.stringify(values))
+                                    // localStorage.setItem("valuessetdata", JSON.stringify(values))
+                                }
                             }
                             // window.location.reload(); 
-                        }} autoComplete={true}>
+                        }} action="javascript:void(0)" autoComplete={true}>
                             {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? <h5 className='title'> Edit Address</h5> : ""}
                             <p class="form-group tp" style={{ width: "480px" }}>
                                 {cl}
+                                {/* {JSON.stringify(values.errortext && values.errortext.pinerr)} */}
                             </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={5}>
-                                        <h5 className='title'>Shipping Address</h5> 
-                                        <>
-                                            {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
-                                            {values.checkValue && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
-                                        </>
+                                    <h5 className='title'>Shipping Address</h5>
+                                    <>
+                                        {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
+                                        {values.checkValue && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
+                                    </>
                                     <Grid container spacing={12}>
                                         <Grid item xs={4} lg={4}>
                                             <SimpleSelect val={'1'} name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
@@ -115,12 +121,13 @@ const AddressComponent = (props) => {
                                                 type="text"
                                                 name='pincode'
                                                 placeholder="Pin Code/Zip Code"
-                                                onChange={(event) => handle.handleChange('addressOne', 'pincode', event.target.value,"pincode1")}
+                                                onChange={(event) => handle.handleChange('addressOne', 'pincode', event.target.value, "pincode1")}
                                                 value={values.addressOne.pincode}
                                                 onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
                                                 helperText="Pin Code is required"
                                                 required />
 
+                                            <label className='errtext'> {values.addressOne && values.addressOne.errortext && values.addressOne.errortext.pinerr}</label>
                                         </Grid>
                                     </Grid>
                                     <Grid container spacing={12}>
@@ -187,11 +194,11 @@ const AddressComponent = (props) => {
                                             <Input
                                                 className='text-f'
                                                 type="text"
-                                                name='contactNumber'
-                                                onKeyPress={(e) => handle.handleKeyPress(e, "contactNumber")}
-                                                onChange={(event) => handle.handleChange('addressOne', 'contactNumber', event.target.value)}
+                                                name='contactno'
+                                                onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
+                                                onChange={(event) => handle.handleChange('addressOne', 'contactno', event.target.value)}
                                                 placeholder="Phone *"
-                                                value={values.addressOne.contactNumber}
+                                                value={values.addressOne.contactno}
                                                 helperText="Please enter yout 10 digit Phone no**"
                                                 maxLength={10}
                                                 minLength={10}
@@ -205,6 +212,7 @@ const AddressComponent = (props) => {
                                 <Grid container item lg={1} />
                                 {!values.checkValue &&
                                     <Grid item xs={12} lg={5}>
+                                        <br /><br />
                                         <h5 className='title'> Billing Address</h5>
                                         <Grid container spacing={12}>
                                             <Grid item xs={4} lg={4}>
@@ -250,7 +258,7 @@ const AddressComponent = (props) => {
                                                     onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
                                                     helperText="Pin Code is required"
                                                     required />
-
+                                                <label className='errtext'> {values.addressOne && values.addressTwo.errortext && values.addressTwo.errortext.pinerr1}</label>
                                             </Grid>
                                         </Grid>
                                         <Grid container spacing={12}>
@@ -317,11 +325,11 @@ const AddressComponent = (props) => {
                                                 <Input
                                                     className='text-f'
                                                     type="text"
-                                                    name='contactNumbertwo'
-                                                    onChange={(event) => handle.handleChange('addressTwo', 'contactNumber', event.target.value)}
-                                                    onKeyPress={(e) => handle.handleKeyPress(e, "contactNumber")}
+                                                    name='contactnotwo'
+                                                    onChange={(event) => handle.handleChange('addressTwo', 'contactno', event.target.value)}
+                                                    onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
                                                     placeholder="Phone *"
-                                                    value={values.addressTwo.contactNumber}
+                                                    value={values.addressTwo.contactno}
                                                     helperText="Please enter your 10 digit Phone no**"
                                                     isNumber
                                                     maxLength={10}

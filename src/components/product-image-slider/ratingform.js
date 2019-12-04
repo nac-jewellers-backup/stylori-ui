@@ -12,13 +12,31 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './style';
 import useRating from "./userating"
 import { withRouter } from "react-router";
-
+import { ProductDetailContext } from 'context/ProductDetailContext';
 const RatingForm = (props) => {
     return <RatingComponent  {...props} />
 }
 const RatingComponent = (props) => {
     const { classes } = props;
-    const { values, handlers } = useRating();
+    const { values, handlers, setValues } = useRating(props.ratingcounts);
+    const clear = () => {
+        debugger
+        setValues({
+            user_id: "",
+            rate: "",
+            product_id: "",
+            product_sku: "",
+            title: "",
+            message: "",
+            errortext: {
+                rateerr: "",
+            },
+            error: {
+                rateerr: false,
+            },
+        })
+    }
+
     return (
         <form id="Resetform" action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e, props)}>
             <Grid container spacing={12} style={{ marginTop: '20px' }}>
@@ -26,8 +44,8 @@ const RatingComponent = (props) => {
                 <Grid item xs={12} lg={8}>
                     <h5 className={`rating-form-head ${classes.normalfonts}`}>Rate This</h5>
                     <div className="rating-form">
-                        <Ratings />
-                        <label className='errtext'> {values.errortext.rate ? values.errortext.rate : ""}</label>
+                        <Ratings /><br />
+                        <label className='errtext'> {values.errortext.rateerr ? values.errortext.rateerr : ""}</label>
                     </div>
                     <h3 className={`rating-form-head ${classes.normalfonts}`}>Write Your Review</h3>
                     <Input
@@ -64,11 +82,17 @@ const RatingComponent = (props) => {
                 <Grid item xs={12} lg={9}>
                     <div style={{ float: "right" }}>
                         <Button className={`form-reviews-mob ${classes.fontwhite} ${classes.normalcolorback}`} type="submit">Write a Reviews</Button>
-                        <Button onClick={()=>document.getElementById("Resetform").reset()} className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite}`} >Cancel</Button>
+                        <Button onClick={() => clear()} className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite}`} >Cancel</Button>
                     </div>
                 </Grid>
             </Grid>
         </form>
     )
 }
-export default withRouter(withStyles(styles)(RatingForm));
+const Components = props => {
+    const { ProductDetailCtx: { ratingcounts } } = React.useContext(ProductDetailContext);
+    return <RatingForm {...props} ratingcounts={ratingcounts} />
+}
+
+
+export default withRouter(withStyles(styles)(Components));
