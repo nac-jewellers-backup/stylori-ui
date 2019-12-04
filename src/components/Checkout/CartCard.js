@@ -76,9 +76,10 @@ class Checkoutcard extends React.Component {
                     dataval.productsDetails.map(val => (
                         <div className={classes.cart}>
                             <Grid container spacing={12} xs={12}  >
+                            {window.location.pathname !== "/checkout" ? 
                                 <Grid item xs={1}  >
                                     <a href={`jewellery/${dataval.productType}/${dataval.materialName[0]}/${val.pro_header}?skuId=${dataval.generatedSku}`}>Redirect</a>
-                                </Grid>
+                                </Grid>:""}
                                 <Grid item xs={2} >
                                     <Card className="product-image-thumb">
                                         <CardHeader style={{ padding: "0px" }}
