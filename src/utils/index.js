@@ -28,18 +28,38 @@ export const resolutions = [
 //   }
 // }
 
-export const filterGenerator = (type, value, table, clause = "equalTo") => {
+export const filterGenerator = (type, value, table,filter,clause = "equalTo") => {
+  debugger
+  var _obj = Object.keys(filter).filter(val=>{ if(val === "transSkuListsByProductId") return true})
   if (table.length > 0) {
-    return {
-      [table]: {
-        some: {
-          [type]: {
-            [clause]: value
-          },
+    if(_obj[0]=== table){
+      debugger
+      return {
+        [table]: {
+          some: {
+            ...filter.transSkuListsByProductId.some,
+            [type]: {
+              [clause]: value
+            },
+          }
         }
+  
       }
-
     }
+    else{
+      return {
+        [table]: {
+          some: {
+            
+            [type]: {
+              [clause]: value
+            },
+          }
+        }
+  
+      }
+    }
+
   }
   else {
     return {
@@ -50,3 +70,20 @@ export const filterGenerator = (type, value, table, clause = "equalTo") => {
   }
 }
 
+export const filterTransSkuGenerator = (type, value) =>{
+  if(type !== 'price'){
+    let clause="equalTo"
+    return{
+      [type]:{
+        [clause]:value
+      }
+    }
+  }
+
+}
+
+// "filterTransSku": {
+//   "purity": {
+//     "equalTo": "55K"
+//   }
+// },

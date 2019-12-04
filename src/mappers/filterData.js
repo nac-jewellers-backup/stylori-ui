@@ -27,7 +27,8 @@ export default function (data) {
                         'Up to  50%',
                     ],
                     'Availability': [
-                        '1 Day Shipping', '10 Day Shipping', '15 & Above Day Shipping', '5 Day Shipping', '7 Day Shipping',
+                        {title:'1 Day Shipping',value:"1 Day Shipping"},{title:'5 Day Shipping',value:'5 Day Shipping'},{title:'7 Day Shipping',value:'7 Day Shipping'},{title:'10 Day Shipping',value:'10 Day Shipping'},{title:'15 & Above Days Shipping',value:'15 & Above Days Shipping'}
+                        
                     ],
                     'Product Type': get(data[0].master_product_type).map(val =>{
                         return val.product_type

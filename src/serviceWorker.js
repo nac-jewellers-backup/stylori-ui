@@ -129,7 +129,7 @@ function registerValidSW(swUrl, config) {
       registration.onupdatefound = () => {
    
         const installingWorker = registration.installing;
-        sendNotification('App is being cached localyy for offline purpose!')
+        sendNotification('App is being cached locally for offline purpose!')
         if (installingWorker == null) {
           return;
         }
@@ -249,9 +249,9 @@ export function unregister() {
 
 window.addEventListener('online', e => {
    
-  sendNotification('Lost internet connection !')
+  sendNotification('Network connection restored !')
 })
 
 window.addEventListener('offline', e => {
-  sendNotification('Network connection restored !')
+  sendNotification('Lost internet connection ! ')
 })
