@@ -30,6 +30,8 @@ const AddressComponent = (props) => {
     var bb1 = {};
     bb['addressOne'] = values.addressOne
     bb1['addressTwo'] = values.addressTwo
+    // var arr=[];
+    // arr["valuesarr"]=values
     return (
         <Container>
             <div>
@@ -37,7 +39,7 @@ const AddressComponent = (props) => {
                     <div className='pt-sm'>
                         <form onSubmit={(e) => {
                             handle.handleSubmit(e)
-                            if (values.addressTwo.errortext.pinerr1.length > 0 ||values.addressTwo.errortext.pinerr1 !== ""||values.addressOne.errortext.pinerr.length > 0 || values.addressOne.errortext.pinerr !== "") {
+                            if (values.addressTwo.errortext.pinerr1.length > 0 || values.addressTwo.errortext.pinerr1 !== "" || values.addressOne.errortext.pinerr.length > 0 || values.addressOne.errortext.pinerr !== "") {
                                 return false
                             } else {
                                 setValues({ addrs: !values.addrs });
@@ -73,7 +75,7 @@ const AddressComponent = (props) => {
                         }} action="javascript:void(0)" autoComplete={true}>
                             {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? <h5 className='title'> Edit Address</h5> : ""}
                             <p class="form-group tp" style={{ width: "480px" }}>
-                                {cl}
+                                {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <>{cl}</>}
                                 {/* {JSON.stringify(values.errortext && values.errortext.pinerr)} */}
                             </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={5}>

@@ -9,12 +9,21 @@ export const CART = `query myquerycart($productList: [String!]) {
       productListByProductId {
         productId
         productName
-        productImagesByProductId {
+        productImagesByProductId(filter: {isdefault: {equalTo: true}, imagePosition: {equalTo: 1}}) {
           nodes {
             imageUrl
           }
         }
-      }
+        productType
+        productMaterialsByProductSku {
+          nodes {
+            materialName
+          }
+        }
+       }
+      skuWeight
+      diamondType
+      skuSize
     }
   }
 }`

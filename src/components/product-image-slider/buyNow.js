@@ -38,10 +38,17 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                 <Grid container spacing={12}>
 
                     <Grid item xs={8} lg={4} sm={8}>
-                        <input
+                        {/* <input
                             placeholder='&#xf041; &nbsp; Enter Pin Code'
                             className='buynow-search'
                             type="text"
+                            value={state.values}
+                            onChange={(event) => { handleChanges(event) }}
+                            onKeyPress={(e) => { if (!(e.which >= 48 && e.which <= 57)) e.preventDefault(); }}
+                        /> */}
+                        <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+                            placeholder="Enter Pincode"
+                            className="pincode-cust buynow-search"
                             value={state.values}
                             onChange={(event) => { handleChanges(event) }}
                             onKeyPress={(e) => { if (!(e.which >= 48 && e.which <= 57)) e.preventDefault(); }}
@@ -74,7 +81,7 @@ const Buydetails = (props, state, handleChanges, handleCodChange) => {
         // props.history.push('/cart')
         window.location.pathname = "/cart"
     }
- 
+
 
     return (
         <div>
@@ -84,13 +91,13 @@ const Buydetails = (props, state, handleChanges, handleCodChange) => {
                         <Grid item xs={12} lg={4} style={{ marginRight: "15px" }}>
                             {/* <NavLink to="/cart" style={{ textDecoration: 'none' }} onClick={handleLocalStorage.bind(this)}> */}
                             <div onClick={handleLocalStorage.bind(this)}>
-                                <Buynowbutton class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
+                                <Buynowbutton sku={data[0].skuId} class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
                             </div>
                             {/* </NavLink> */}
 
                         </Grid>
 
-                        <Grid xs={12} lg={7} style={{ marginTop: "7px" }}>
+                        <Grid xs={12} lg={7} style={{ marginBottom: "7px" }}>
                             <Grid container spacing={12}>
                                 <Grid item lg={12} xs={12} className={`buy-subheaders nd-hlp ${classes.normalfonts}`}>Need Help ?</Grid>
                             </Grid>
@@ -104,7 +111,7 @@ const Buydetails = (props, state, handleChanges, handleCodChange) => {
                                     <i class="fa fa-whatsapp overall-icons" aria-hidden="true"></i>&nbsp;{val.phonenum}
                                 </Grid>
 
-                                <Grid item lg={2} className={`buy-subheaders ${classes.normalfonts}`}>
+                                <Grid item lg={2} style={{ cursor: "pointer !important" }} className={`buy-subheaders ${classes.normalfonts}`}>
                                     <i class="fa fa-comments-o overall-icons" aria-hidden="true"></i>&nbsp;{val.chat}
                                 </Grid>
                             </Grid>
