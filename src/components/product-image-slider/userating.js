@@ -17,9 +17,13 @@ const useRating = (props) => {
         message: "",
         errortext: {
             rateerr: "",
+            ratetitle: "",
+            ratemsg: "",
         },
         error: {
             rateerr: false,
+            ratetitle: false,
+            ratemsg: false,
         },
     });
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
@@ -32,7 +36,20 @@ const useRating = (props) => {
     useEffect(() => {
         var ratingdataerr = data.message ? data.message : ""
         if (ratingdataerr.length > 0) {
-            alert(JSON.stringify(data.message))
+            values["errortext"]["ratetitle"] = ""
+            values["errortext"]["ratemsg"] = ""
+            values["error"]["ratetitle"] = false
+            values["error"]["ratemsg"] = false
+            setValues({
+                ...values,
+                values
+            })
+            if (data.message === "updated successfully") {
+                alert("Your review has been sent to our team. Will post it soon. Thanks!")
+                return false
+            } else {
+                alert("Your reviewed this product  already.")
+            }
         }
     }, [data])
 
@@ -73,7 +90,7 @@ const useRating = (props) => {
         }
     }, [])
 
-    const handleInvalid = (type, status) => { 
+    const handleInvalid = (type, status) => {
         setInvalids({
             ...invalids,
             [type]: status
@@ -84,11 +101,20 @@ const useRating = (props) => {
             ...values,
             [type]: value
         })
+        if (values.title !== "" && values['error'] && values['errortext']) {
+            values["errortext"]["ratetitle"] = ""
+            values["error"]["ratetitle"] = false
+        }
+        if (values.message !== "" && values['error'] && values['errortext']) {
+            values["errortext"]["ratemsg"] = ""
+            values["error"]["ratemsg"] = false
+        }
     }
     const handelSubmit = (e, props) => {
         var rats = props.ratingcounts.ratingcounts ? props.ratingcounts.ratingcounts : ""
         debugger
-        if (rats > 0 || rats !== "") {
+        if (rats > 0 && values && values.title !== "" &&
+            values && values.message !== "") {
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
             if (user_id.length > 0) {
                 // alert(JSON.stringify(data.message))
@@ -111,6 +137,10 @@ const useRating = (props) => {
                             // alert(JSON.stringify(variab))
                         }
                         if (rats > 0 || rats !== undefined || rats !== "") {
+                            values["errortext"]["ratetitle"] = ""
+                            values["errortext"]["ratemsg"] = ""
+                            values["error"]["ratetitle"] = false
+                            values["error"]["ratemsg"] = false
                             // alert(JSON.stringify(rats))
                             values['rate'] = props.ratingcounts.ratingcounts ? JSON.stringify(props.ratingcounts.ratingcounts) : ""
                             setValues({
@@ -121,14 +151,14 @@ const useRating = (props) => {
                         }
                         // setFilters(values)
                         setValues({
-                            ...values, 
+                            ...values,
                             values
                         })
                     })
                 }
                 // window.location.href = "/login"
 
-            } else { 
+            } else {
                 // alert("You will be able to review only after purchasing the product")
                 // props.location.pathname="/login"
                 localStorage.setItem('review_location', `${window.location.href}`)
@@ -139,6 +169,23 @@ const useRating = (props) => {
                 values
             })
         } else {
+            debugger
+            if (values.title === "" && values['error'] && values['errortext']) {
+                values["errortext"]["ratetitle"] = "Enter review title"
+                values["error"]["ratetitle"] = true
+                setValues({
+                    ...values,
+                    values,
+                })
+            }
+            if (values.message === "" && values['error'] && values['errortext']) {
+                values["errortext"]["ratemsg"] = "Enter review text"
+                values["error"]["ratemsg"] = true
+                setValues({
+                    ...values,
+                    values,
+                })
+            }
             values["errortext"]["rateerr"] = "Rate this"
             setValues({
                 ...values,

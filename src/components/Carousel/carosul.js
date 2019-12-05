@@ -29,13 +29,14 @@ class Slideshow extends React.Component {
 
     let { hover } = this.props;
     return hoverlist.map(val => (
-      <div class={"subslider-carousel" + hover ? " hovereffect" : ""}>
-        <img src={val.img} className='subslider-carousel-img img-responsive' alt="" />
-        <div class="overlay1">
-          <h2 className='next-price'>{val.title}</h2><br />
-          <a class='info' href={val.url}><span className='sub-list-price'> <i class="fa fa-rupee"></i> &nbsp;{val.price}</span></a>
-        </div>
-      </div>
+      <a class='info' href={val.url}>
+        <div class={"subslider-carousel" + hover ? " hovereffect" : ""}>
+          <img src={val.img} className='subslider-carousel-img img-responsive' alt="" />
+          <div class="overlay1">
+            <h2 className='next-price'>{val.title}</h2><br />
+            <a class='info' href={val.url}><span className='sub-list-price'> <i class="fa fa-rupee"></i> &nbsp;{val.price}</span></a>
+          </div>
+        </div></a>
     ))
   };
   //className={this.props.styles?this.props.styles:''}

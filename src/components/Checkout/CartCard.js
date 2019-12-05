@@ -78,8 +78,7 @@ class Checkoutcard extends React.Component {
                 <Grid container>
                     <Grid xs={12} lg={7} />
                     <Grid xs={12} lg={4} >
-                        {this.checkoutbutton()}
-                    </Grid>
+                           {this.checkoutbutton()}</Grid>
                 </Grid><br />
                 {this.props.data.map(dataval => (
                     dataval.productsDetails.map(val => (
@@ -260,13 +259,8 @@ class Checkoutcard extends React.Component {
             <div>
                 <Hidden smDown>
                     <Container>
-                        {/* {this.checkoutbutton(this.props)}
-                    <br />
-                    <br />
-                    <br /> */}
                         {this.row(this.props)}
                     </Container>
-
                 </Hidden>
                 <Hidden smUp>
                     <CardSmallScreen data={this.props.data}

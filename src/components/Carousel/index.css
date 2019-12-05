@@ -68,6 +68,8 @@
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
   padding: 10px;
+  height: 50px !important;
+  overflow: hidden;
 }
 
 .hovereffect a.info {

@@ -67,7 +67,7 @@ class Cart extends React.Component {
                             subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata}
                         />
                     }
-                    <div className="cart-ovralldiv-media">
+                    <div className="cart-ovralldiv-media">  
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>
                                 <CartCard data={data} />
@@ -82,6 +82,12 @@ class Cart extends React.Component {
                     </Grid>
                 </Hidden>
                 <Hidden mdUp>
+                {path === "checkout" ? "" :
+                 <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+                        <Grid item xs={12} >
+                            <Header />
+                        </Grid>
+                    </Grid>}
                     <Container>
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>

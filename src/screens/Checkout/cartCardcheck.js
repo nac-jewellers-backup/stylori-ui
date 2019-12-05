@@ -26,16 +26,16 @@ import styles from '../Checkout/loginRegister/style';
 import CartCard from '../../components/Checkout/CartCard'
 import { CartContext } from '../../context/CartContext';
 import cart from '../../mappers/cart';
-import { CheckForCod } from 'queries/productdetail'; 
+import { CheckForCod } from 'queries/productdetail';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 var variab = {}
-const CartCardCheck = (props) => { 
+const CartCardCheck = (props) => {
     const { loading, error, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     return <Component  {...props} CodData={CodData} makeRequestCod={makeRequestCod} />
 }
 
 class Component extends React.Component {
-    state = { 
+    state = {
         expanded: 'panel' + (localStorage.getItem("panel") ? localStorage.getItem("panel") : 1),
         // expanded: 'panel2',
         // expandedlimit: localStorage.getItem("panel") ? localStorage.getItem("panel") : 1,
@@ -60,7 +60,7 @@ class Component extends React.Component {
         })
     }
     pincodeapi = () => {
-       this.props.makeRequestCod(variab)
+        this.props.makeRequestCod(variab)
         this.changePanel(4)
     }
     render() {
@@ -72,7 +72,7 @@ class Component extends React.Component {
         var value1 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : {};
         var lgn = localStorage.getItem("vals") ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
         var lgn1 = localStorage.getItem("vals") ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
-        variab["pincode"] = lgn&&lgn.pincode || value&&value.pincode
+        variab["pincode"] = lgn && lgn.pincode || value && value.pincode
 
         return (
             <>
@@ -144,15 +144,29 @@ class Component extends React.Component {
                                 <Grid container >
                                     <Grid item xs={12} lg={12}>
                                         {/* {JSON.stringify(this.datalist(cartContext))} */}
-                                        <div style={{ float: "right" }}>
-                                            <Button
-                                                onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">Continue to Pay</Button>
-                                        </div>
+                                        <Grid container>
+                                            <Grid xs={12} lg={7} />
+                                            <Grid xs={12} lg={4} >
+                                                <div style={{ float: "right" }}>
+                                                    <Button
+                                                        onClick={() => this.pincodeapi()}
+                                                        className="summaryOrder-pay-btn">Continue to Pay</Button>
+                                                </div>
+                                            </Grid>
+                                        </Grid><br />
+
                                         <CartCard data={data} />
-                                        <div style={{ float: "right", marginBottom: "5px" }}>
-                                            <Button onClick={() => this.pincodeapi()}
-                                                className="summaryOrder-pay-btn">Continue to Pay</Button>
-                                        </div>
+                                        
+                                        <Grid container>
+                                            <Grid xs={12} lg={7} />
+                                            <Grid xs={12} lg={4} >
+                                                <div style={{ float: "right",marginBottom: "5px"  }}>
+                                                    <Button
+                                                        onClick={() => this.pincodeapi()}
+                                                        className="summaryOrder-pay-btn">Continue to Pay</Button>
+                                                </div>
+                                            </Grid>
+                                        </Grid><br />
                                     </Grid>
                                     <Grid item xs={12} lg={12} className={classes.cart}>
                                         <ProductList />
@@ -170,7 +184,7 @@ class Component extends React.Component {
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>4</Avatar><Typography className='text-chck'>Payment Options</Typography>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
-                                <PaymentIndex data={data} CodData={this.props.CodData}/>
+                                <PaymentIndex data={data} CodData={this.props.CodData} />
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
 

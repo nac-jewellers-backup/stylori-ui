@@ -89,18 +89,20 @@ class CustomerReviews extends React.Component {
         return (
             <div>
                 <Hidden smDown>
+                <Container>
                     <div className="pricing-product-media">
                         <div className="reviews-header">
                             <span className={`reviews-customer ${classes.normalfonts}`}>Customer Reviews</span>
                         </div>
                         <div className="reviews">
                             <span className={`data-reviews ${classes.normalfonts}`}>
-                                <Grid spacing={12} container style={{ float: "left", padding: "2%", lineHeight: "23px" }}>
-                                    <Grid item lg={12}>{this.rat_map_title() ? this.rat_map_title() : "No Reviews Found"}</Grid>
+                               <Grid spacing={12} container style={{ float: "left", padding: "2%", lineHeight: "23px" }}>
+                                    <Grid item lg={12}>{this.rat_map_title() ? this.rat_map_title() : <div style={{ textAlign: "center", fontWeight: "bold" }}> No Reviews Found</div>}</Grid>
                                 </Grid>
                             </span>
                         </div>
                     </div>
+                    </Container>
                 </Hidden>
 
                 <Hidden mdUp>

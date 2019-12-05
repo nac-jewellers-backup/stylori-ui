@@ -411,6 +411,11 @@ body {
     /* background-color: #f1f3f6; */
 }
 
+.MuiOutlinedInput-inputMultiline {
+    margin-top: -20px !important;
+    margin-left: -14px !important;
+}
+
 .requset-button {
     background: #394579 !important;
     border-radius: 0px !important;
@@ -450,6 +455,7 @@ body {
     background-position: -22px -22px !important;
     background-size: 100px !important;
 }
+
 .rating-form-head {
     font-size: 13px;
     margin-top: 10px;
@@ -463,6 +469,12 @@ body {
     font-weight: 400;
     font-size: 12px;
     width: 100%;
+}
+
+.back_img {
+    background-image: url(https://assets-cdn.stylori.com/images/static/bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .tool-tips,
@@ -1010,10 +1022,10 @@ body {
     width: 100% !important;
     background: #fff;
     border: 1px solid #ccc;
-    padding-bottom: 25px !important;
+    padding-bottom: 20px !important;
     margin-bottom: 10px !important;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .06);
-    padding-top: 25px !important;
+    padding-top: 20px !important;
 }
 
 .overall-bo {
