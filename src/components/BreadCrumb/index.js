@@ -25,7 +25,7 @@ export default function CustomSeparator(props) {
         localStorage.setItem("panel", 2)
       )
     }
-    if (data && data.title === "Payment Options") {
+    if (data && data.title === "Payment Options") { 
       return (
         localStorage.setItem("panel", 3)
       )
