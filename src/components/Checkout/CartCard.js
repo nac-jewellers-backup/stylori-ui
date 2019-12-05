@@ -6,7 +6,9 @@ import {
     CardHeader,
     Card,
     IconButton,
-    Hidden
+    Hidden,
+    Container
+
 } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul'
 import { withStyles } from '@material-ui/core/styles';
@@ -257,11 +259,14 @@ class Checkoutcard extends React.Component {
         return (
             <div>
                 <Hidden smDown>
-                    {/* {this.checkoutbutton(this.props)}
+                    <Container>
+                        {/* {this.checkoutbutton(this.props)}
                     <br />
                     <br />
                     <br /> */}
-                    {this.row(this.props)}
+                        {this.row(this.props)}
+                    </Container>
+
                 </Hidden>
                 <Hidden smUp>
                     <CardSmallScreen data={this.props.data}
