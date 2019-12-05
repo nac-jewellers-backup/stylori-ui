@@ -56,7 +56,10 @@ const useStyles = makeStyles(theme => ({
   newcontent: {
     color: "rgb(57, 69, 120)",
     margin: "10px 0px 10px 0px ",
-    maxHeight: 26
+    maxHeight: 26,
+    minHeight: 26,
+    maxWidth: "250px",
+    overflow: "hidden"
   },
   newscontain: {
     padding: "4px 4px",
@@ -185,7 +188,7 @@ export default function StaticView(props) {
                       <Grid item className={classes.newstop}>
                         <Typography
                           className={classes.newcontent}
-                          style={{ fontSize: "12px" }}
+                          style={{ fontSize: "12px", fontWeight: 600, lineHeight: 1.1 }}
                         >
                           {val.content}
                         </Typography>
@@ -195,7 +198,7 @@ export default function StaticView(props) {
                               fontSize: "12px",
                               color: "rgb(51, 122, 183)"
                             }}
-                            he
+
                           >
                             Read more
                           </Typography>
@@ -244,8 +247,8 @@ export default function StaticView(props) {
                     </Grid>
                   </Grid>
                 ) : (
-                  ""
-                )}
+                    ""
+                  )}
               </Grid>
             </Grid>
           </Grid>
