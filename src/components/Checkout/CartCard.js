@@ -31,6 +31,17 @@ class Checkoutcard extends React.Component {
             cart: true
         }
     }
+
+    // handlereloadcart = (val) => {
+    //     const data = this.props.data
+    //     debugger
+    //     var redirect_url;
+    //     redirect_url = data.map(val =>
+    //         "/jewellery" + "/" + val.productType + "/" + val.materialName + "/" + val.prdheader + "/" + val.generatedSku
+    //     )
+    //     return alert(JSON.stringify(redirect_url))
+
+    // }
     handleDeleteLocalStorage = (e) => {
         debugger
         var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
@@ -45,16 +56,6 @@ class Checkoutcard extends React.Component {
         var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
         localStorage.setItem('cartDetails', localstorage)
         window.location.reload();
-    }
-    handlereloadcart = (val) => {
-        const data = this.props.data
-        debugger
-        var redirect_url;
-        redirect_url = data.map(val =>
-            "/jewellery" + "/" + val.productType + "/" + val.materialName + "/" + val.prdheader + "/" + val.generatedSku
-        )
-        return alert(JSON.stringify(redirect_url))
-
     }
     row = (props) => {
         const dataCarousel = {
@@ -71,16 +72,22 @@ class Checkoutcard extends React.Component {
         // },[data])
         debugger
         return (
-            <div style={{ marginTop: "10px", cursor: "pointer" }}>
+            <div style={{ marginTop: "10px" }}>
+                <Grid container>
+                    <Grid xs={12} lg={7} />
+                    <Grid xs={12} lg={4} >
+                        {this.checkoutbutton()}
+                    </Grid>
+                </Grid><br />
                 {this.props.data.map(dataval => (
                     dataval.productsDetails.map(val => (
                         <div className={classes.cart}>
                             <Grid container spacing={12} xs={12}  >
-                            {window.location.pathname !== "/checkout" ? 
-                                <Grid item xs={1}  >
-                                    <a href={`jewellery/${dataval.productType}/${dataval.materialName[0]}/${val.pro_header}?skuId=${dataval.generatedSku}`}>Redirect</a>
-                                </Grid>:""}
-                                <Grid item xs={2} >
+                                {/* {window.location.pathname !== "/checkout" ?
+                                    <Grid item xs={1}  >
+                                        <a>Redirect</a>
+                                    </Grid> : ""} */}
+                                <Grid item xs={3} >
                                     <Card className="product-image-thumb">
                                         <CardHeader style={{ padding: "0px" }}
                                             action={
@@ -89,17 +96,22 @@ class Checkoutcard extends React.Component {
                                                 </IconButton>
                                             }
                                         />
-                                        <Slideshow class="image"
-                                            fadeImages={dataval.fadeImages} dataCarousel={dataCarousel} />
+                                        {window.location.pathname !== "/checkout" ? <NavLink to={`jewellery/${dataval.productType}/${dataval.materialName[0]}/${val.pro_header}?skuId=${dataval.generatedSku}`} style={{ textDecoration: 'none' }}>
+                                            <Slideshow class="image"
+                                                fadeImages={dataval.fadeImages} dataCarousel={dataCarousel} />
+                                        </NavLink> : <Slideshow class="image"
+                                            fadeImages={dataval.fadeImages} dataCarousel={dataCarousel} />}
                                     </Card>
                                 </Grid>
+
                                 <Grid item xs={6} style={{ padding: "20px" }}>
-                                    <h3 class={`title ${classes.normalfonts}`}>{val.pro_header}</h3>
+                                    {window.location.pathname !== "/checkout" ? <NavLink to={`jewellery/${dataval.productType}/${dataval.materialName[0]}/${val.pro_header}?skuId=${dataval.generatedSku}`} style={{ textDecoration: 'none' }}>
+                                        <h3 class={`title ${classes.normalfonts}`}>{val.pro_header}</h3>
+                                    </NavLink> : <h3 class={`title ${classes.normalfonts}`}>{val.pro_header}</h3>}
                                     <Grid container spacing={12} >
                                         <Grid item xs={6} >
                                             {val.namedetail !== undefined && val.namedetail.map(val => (
                                                 <Grid container spacing={12}>
-
                                                     <Grid item xs={6} >
                                                         <Typography className={`subhesder ${classes.normalfonts}`}>{val.name}</Typography>
                                                     </Grid>
@@ -114,10 +126,10 @@ class Checkoutcard extends React.Component {
                                         <Grid item xs={3} >
                                             <Typography className={`subhesder ${classes.normalfonts}`}>Quantity 1</Typography>
                                             <br />
-                                            {window.location.pathname !== "/checkout" ? <Typography className={`subhesder hov ${classes.normalfonts}`}
-                                                id={val.namedetail[0].details} onClick={(event) => this.handleDeleteLocalStorage(event)}>
+                                            {window.location.pathname !== "/checkout" ? <div className={`subhesder hov ${classes.normalfonts}`}
+                                                id={val.namedetail[4].details} onClick={(event) => this.handleDeleteLocalStorage(event)}>
                                                 <i class="fa fa-trash"></i>
-                                                &nbsp;Remove</Typography> : ""}
+                                                &nbsp;Remove</div> : ""}
                                         </Grid>
 
                                     </Grid>
@@ -126,14 +138,13 @@ class Checkoutcard extends React.Component {
                                 <Grid item xs={3} >
                                     <div style={{ marginTop: "15%" }}>
                                         {dataval.dataCard1.map(val =>
-                                            <Pricing price={val.price} offerPrice={val.offerPrice} >
-                                                {/* <div className="product-rate">
-                                                    <span class="offer-price">{val.price}</span><br />
-                                                    <span class="price">{val.offerPrice}</span><br />
-                                                </div> */}
+                                            <Pricing
+                                                offerDiscount={"25% - OFF"}
+                                                price={val.price}
+                                                offerPrice={val.offerPrice} >
                                             </Pricing>
                                         )}
-                                        <span class={`offer-description ${classes.backgsecondary}`}>25% - OFF</span>
+                                        {/* <span class={`offer-description ${classes.backgsecondary}`}>25% - OFF</span> */}
                                     </div>
                                 </Grid>
                             </Grid>
@@ -246,11 +257,11 @@ class Checkoutcard extends React.Component {
         return (
             <div>
                 <Hidden smDown>
-                    {this.checkoutbutton(this.props)}
+                    {/* {this.checkoutbutton(this.props)}
                     <br />
                     <br />
-                    <br />
-                    <div> {this.row(this.props)}</div>
+                    <br /> */}
+                    {this.row(this.props)}
                 </Hidden>
                 <Hidden smUp>
                     <CardSmallScreen data={this.props.data}

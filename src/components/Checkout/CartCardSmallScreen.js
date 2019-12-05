@@ -88,10 +88,12 @@ function MediaControlCard(props) {
                     &#xf014;
             </i>
                   &nbsp;
-
+{window.location.pathname !== "/checkout" ?
            <div id={val.namedetail[0].details} onClick={(event) => props.handleDeleteLocalStorage(event)}>  <span
                     style={{ borderBottom: "1px solid #394578" }}>Remove</span>
-                  </div></label>
+                  </div>
+                  :""}
+                  </label>
               </div>
             </div>
           </Card>

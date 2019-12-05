@@ -32,16 +32,16 @@ const breadcrumsdata = [
 ]
 const cartsubdata = [
     {
-        name: "100% Certified   Jewellery  ",
+        name: "100% Certified Jewellery",
         icon: "https://assets-cdn.stylori.com/images/static/icon-star.png"
     }, {
-        name: " Secure  Payments   ",
+        name: "Secure Payments",
         icon: "https://assets-cdn.stylori.com/images/static/icon-lock.png"
     }, {
-        name: "  Free Insured    Shipping   ",
+        name: "Free Insured Shipping",
         icon: "https://assets-cdn.stylori.com/images/static/icon-van.png"
     }, {
-        name: "  25 - Day   Returns   ",
+        name: "25-Day Returns",
         icon: "https://assets-cdn.stylori.com/images/static/icon-return.png"
     }
 ]
@@ -67,6 +67,7 @@ class Cart extends React.Component {
                             subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata}
                         />
                     }
+                    <Container>
                     <div className="cart-ovralldiv-media">
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>
@@ -74,6 +75,7 @@ class Cart extends React.Component {
                             </Grid> : <><div className="noproductsfound">There are no items in this cart. </div>  <NavLink to="/jewellery" style={{ textDecoration: 'none' }} > <div className="continueshopping">CONTINUE SHOPPING</div></NavLink></>}
                         </Grid>
                     </div>
+                    </Container>
                     <Grid Container spacing={12}>
                         <Grid item xs={12}>
                             <Footer />

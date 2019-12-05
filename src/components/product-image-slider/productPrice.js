@@ -163,7 +163,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                 offerPrice={data[0].offerPrice}
                                 offerDiscount={val.offerDiscount}
                             >
-                                <Grid container spacing={12}>
+                                {/* <Grid container spacing={12}>
                                     <div className={`price-info ${classes.dis}`}>
                                         <Grid item xs={4} lg={2} className={`discount-container ${classes.dis}`}>
                                             {val.price}
@@ -172,7 +172,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                               {val.offerPrice}
                                         </Grid>
                                     </div>
-                                </Grid>
+                                </Grid> */}
                             </Pricing>
                         </div>
                     </Hidden>
