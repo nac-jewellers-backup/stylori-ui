@@ -32,7 +32,7 @@ export default function CustomSeparator(props) {
     }
     if (data && data.title === "Order Confirmation") {
       return (
-        localStorage.setItem("panel", 4)
+        localStorage.setItem("panel", 4) 
       )
     }
 
