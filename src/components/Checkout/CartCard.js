@@ -214,7 +214,7 @@ class Checkoutcard extends React.Component {
                             </Grid>
                             <Grid xs={5} lg={5}>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(dataCard1)}</Typography>
-                                <Typography class={`subhesder ${classes.normalfonts}`}>{yousave}</Typography>
+                                <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(yousave)}</Typography>
                                 {props.cartFilters.tax_price ? <Typography class={`subhesder ${classes.normalfonts}`}>
                                     {props.cartFilters.tax_price}</Typography> : ""}
                                 <Typography class={`subhesder ${classes.normalfonts}`}>FREE </Typography>

@@ -4,23 +4,23 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "a7999201e04a22b2c341",
+    "revision": "a21034451d3215dfd09f",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "abb5aed0a3461c305309",
+    "revision": "b793442f9fe53e4b80b2",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "67f99934471c5175a466",
+    "revision": "0dc4f87928aa1779a904",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "a7999201e04a22b2c341",
+    "revision": "a21034451d3215dfd09f",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "abb5aed0a3461c305309",
+    "revision": "b793442f9fe53e4b80b2",
     "url": "/static/js/3.js"
   },
   {
@@ -28,7 +28,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/4.js"
   },
   {
-    "revision": "67f99934471c5175a466",
+    "revision": "0dc4f87928aa1779a904",
     "url": "/static/js/main.js"
   },
   {
@@ -48,7 +48,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/cartoonFooter.png"
   },
   {
-    "revision": "7996bd6992d473ba217275885f52812f",
+    "revision": "2b3d63f761a61e5c65a4773359c4eb40",
     "url": "/static/media/close.svg"
   },
   {
@@ -56,15 +56,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/closeheart.jpg"
   },
   {
-    "revision": "6916c84be4a82b94cf15503ef25d48f2",
+    "revision": "731e5ecd2c7827cef3f847ec91080214",
     "url": "/static/media/delivery.svg"
   },
   {
-    "revision": "51fc5370cb4d7e537c06ea117f090ba2",
+    "revision": "6e25bad6f003be8fe1ddf1c68d2b4dd9",
     "url": "/static/media/logout.svg"
   },
   {
-    "revision": "37ef37619d53e7631c8ab218a5722c1e",
+    "revision": "162c55add6a47b0d4045ee2e69d2e824",
     "url": "/static/media/love.svg"
   },
   {
@@ -72,7 +72,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/nosepin.gif"
   },
   {
-    "revision": "b0c24c44cdbcd2228f0f6fef2740195f",
+    "revision": "57b56bb10faf3b9dbb17bc91e6be7baf",
     "url": "/static/media/shopping.svg"
   },
   {
@@ -92,11 +92,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/slick.woff"
   },
   {
-    "revision": "5a712650392a83e01a75498ebc83837b",
+    "revision": "26f4adaec0fa060fe6ef92c4c4f7c485",
     "url": "/static/media/telephone.svg"
   },
   {
-    "revision": "c7359aa61314bf6d37f83ccc97dd0694",
+    "revision": "bcc776345852aa9836e64bcc3e000864",
     "url": "/static/media/user-shape.svg"
   },
   {
