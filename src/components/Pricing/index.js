@@ -29,7 +29,7 @@ export default function Pricing(props) {
                         <Typography style={{ display: "flex", width: '100%' }}>
                             <Typography
                                 variant="h6"
-                                component="h6"
+                                component="h6" 
                                 className={`${props.offerPrice != null & props.offerPrice !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
                             >
                                 {/* ₹&nbsp;{props.offerPrice} */}
