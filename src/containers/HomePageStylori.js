@@ -81,7 +81,7 @@ class HomeStylori extends React.Component {
 
         <Grid item xs={12}>
           <Hidden smDown>
-            {homePageStylori.carouselTopSetting.arrowsImg && (
+            {homePageStylori.carouselTop.setting.arrowsImg && (
               <Grid container>
                 <Grid
                   item
@@ -94,9 +94,9 @@ class HomeStylori extends React.Component {
           </Hidden>
           <Slideshow
             sliderRef={this.slider}
-            dataCarousel={homePageStylori.carouselTopSetting}
+            dataCarousel={homePageStylori.carouselTop.setting}
           >
-            {homePageStylori.fadeImages.map((val, index) => (
+            {homePageStylori.carouselTop.data.map((val, index) => (
               <Grid container key={index}>
                 <a href={val.navigateUrl}>
                   <img
@@ -174,18 +174,18 @@ class HomeStylori extends React.Component {
 
         <Grid Container className="GridConatiner">
           <Grid item className="GridListImg">
-            <GridList GridImage={homePageStylori.tileData} />
+            <GridList GridImage={homePageStylori.collectionGrid} />
           </Grid>
         </Grid>
         <Testimony
-          dataCarousel={homePageStylori.datacaroTestimony}
-          GridImage={homePageStylori.bangleGrid}
-          carosolData={homePageStylori.testimonycarodata}
+          dataCarousel={homePageStylori.Testimony.carousel.setting}
+          GridImage={homePageStylori.Testimony.bangleGrid}
+          carosolData={homePageStylori.Testimony.carousel.data}
         />
         <Hidden smDown>
           <Feedes
-            fadeImages={homePageStylori.NewsContainer}
-            dataCarousel={homePageStylori.NewsdataCarousel}
+            fadeImages={homePageStylori.NewsFeeds.carousel.data}
+            dataCarousel={homePageStylori.NewsFeeds.carousel.setting}
           />
         </Hidden>
         <Grid Container style={{ width: "100%" }}>
@@ -198,8 +198,8 @@ class HomeStylori extends React.Component {
           </Grid>
         </Grid>
         <Stories
-          dataCarousel={homePageStylori.carosolStories}
-          carosolData={homePageStylori.carosolStoriesData}
+          dataCarousel={homePageStylori.Stories.carousel.setting}
+          carosolData={homePageStylori.Stories.carousel.data}
         />
         <Grid item xs={12}>
           <Footer />
