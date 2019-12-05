@@ -32,6 +32,7 @@ class Checkoutcard extends React.Component {
         }
     }
     handleDeleteLocalStorage = (e) => {
+        debugger
         var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
         var currentValue = e.target.id
         var a = local_storage.products.filter(val => {
@@ -44,6 +45,16 @@ class Checkoutcard extends React.Component {
         var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
         localStorage.setItem('cartDetails', localstorage)
         window.location.reload();
+    }
+    handlereloadcart = (val) => {
+        const data = this.props.data
+        debugger
+        var redirect_url;
+        redirect_url = data.map(val =>
+            "/jewellery" + "/" + val.productType + "/" + val.materialName + "/" + val.prdheader + "/" + val.generatedSku
+        )
+        return alert(JSON.stringify(redirect_url))
+
     }
     row = (props) => {
         const dataCarousel = {
@@ -58,17 +69,18 @@ class Checkoutcard extends React.Component {
         //         cartcount: this.props.data.length
         //     })
         // },[data])
-debugger
-return (
-            <div style={{ marginTop: "10px" }}>
+        debugger
+        return (
+            <div style={{ marginTop: "10px", cursor: "pointer" }}>
                 {this.props.data.map(dataval => (
                     dataval.productsDetails.map(val => (
                         <div className={classes.cart}>
                             <Grid container spacing={12} xs={12}  >
-                                {/* <Grid item xs={1}  >
-                                    <div id={val.namedetail[0].details} onClick={(event) => this.handleDeleteLocalStorage(event)} class="remove-product"></div>
-                                </Grid> */}
-                                <Grid item xs={3} >
+                            {window.location.pathname !== "/checkout" ? 
+                                <Grid item xs={1}  >
+                                    <a href={`jewellery/${dataval.productType}/${dataval.materialName[0]}/${val.pro_header}?skuId=${dataval.generatedSku}`}>Redirect</a>
+                                </Grid>:""}
+                                <Grid item xs={2} >
                                     <Card className="product-image-thumb">
                                         <CardHeader style={{ padding: "0px" }}
                                             action={
@@ -102,10 +114,10 @@ return (
                                         <Grid item xs={3} >
                                             <Typography className={`subhesder ${classes.normalfonts}`}>Quantity 1</Typography>
                                             <br />
-                                            <Typography className={`subhesder hov ${classes.normalfonts}`}
+                                            {window.location.pathname !== "/checkout" ? <Typography className={`subhesder hov ${classes.normalfonts}`}
                                                 id={val.namedetail[0].details} onClick={(event) => this.handleDeleteLocalStorage(event)}>
                                                 <i class="fa fa-trash"></i>
-                                                &nbsp;Remove</Typography>
+                                                &nbsp;Remove</Typography> : ""}
                                         </Grid>
 
                                     </Grid>
@@ -216,6 +228,9 @@ return (
             </div>
         )
     }
+
+
+
     render() {
         const dataCarousel = {
             slidesToShow: 1,
@@ -223,9 +238,11 @@ return (
         }
 
         var data = this.props.data
+        console.log(data, 'data_data-data')
         const { classes } = this.props;
         // alert(discounted_price)
         let path = window.location.pathname.split('/').pop();
+
         return (
             <div>
                 <Hidden smDown>
@@ -233,7 +250,7 @@ return (
                     <br />
                     <br />
                     <br />
-                    {this.row(this.props)}
+                    <div> {this.row(this.props)}</div>
                 </Hidden>
                 <Hidden smUp>
                     <CardSmallScreen data={this.props.data}

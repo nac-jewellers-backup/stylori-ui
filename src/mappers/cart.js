@@ -117,21 +117,41 @@ export default function (data) {
 
         try {
             _d = {
+                generatedSku: k.generatedSku,
+                materialName: k.productListByProductId.productMaterialsByProductSku.nodes === undefined ? '' : k.productListByProductId.productMaterialsByProductSku.nodes.map(val => {
+                    return val.materialName
+                }),
+                // materialName: k.productMaterialsByProductSku.nodes[0].materialName,
+                productType: k.productListByProductId.productType,
+                prdheader: k.productListByProductId.productName,
                 productsDetails: [
+                    //                     Quality	
+                    // Metal	
+                    // Gold 
+                    // Product Code
                     {
                         header: "Product Details",
                         pro_header: k.productListByProductId.productName,
-                        namedetail: [{
-                            name: "Product Code",
-                            details: k.generatedSku
-                        },
-                        {
-                            name: "Metal Type",
-                            details: k.purity + ' ' + k.metalColor
-                        }, {
-                            name: "Approximate",
-                            details: "1.463"
-                        }],
+                        namedetail: [
+                            {
+                                name: "Quality",
+                                details: k.diamondType
+                            },
+                            {
+                                name: "Metal",
+                                details: k.purity + ' ' + k.metalColor
+                            }, {
+                                name: "Gold",
+                                details: k.skuWeight + " " + "GM"
+                            },
+                            {
+                                name: k.skuSize&&k.skuSize.length > 0 ? "Ring" : "",
+                                details: k.skuSize
+                            },
+                            {
+                                name: "Product Code",
+                                details: k.generatedSku
+                            }],
                         // }, {
                         //     header: "Diamond Details ",
 

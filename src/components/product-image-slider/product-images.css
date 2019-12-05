@@ -9,7 +9,9 @@ body {
 
 }
 
-.MuiTab-root ,.MuiButton-root,.MuiInputBase-input{
+.MuiTab-root,
+.MuiButton-root,
+.MuiInputBase-input {
     font-family: 'Roboto' !important;
 }
 
@@ -20,8 +22,8 @@ body {
     font-size: 12px;
     color: #394578;
     line-height: 1.42857143 !important;
-    padding: 0 10px !important;  
-} 
+    padding: 0 10px !important;
+}
 
 .pdp-title {
     margin-top: 0;
@@ -428,6 +430,26 @@ body {
     padding-bottom: 10px;
 }
 
+.pincode-cust {
+    color: #394578;
+    font-size: 12px;
+    background-image: url(https://assets-cdn.stylori.com/images/static/location.png);
+    background-position: 7px 8px;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 30px;
+    float: left;
+    padding-left: 25px !important;
+    border: 1px solid #ccc;
+}
+
+.buy-now-iconz {
+    background-repeat: no-repeat !important;
+    padding-left: 31px !important;
+    background-image: url(https://assets-cdn.stylori.com/images/static/icons.png) !important;
+    background-position: -22px -22px !important;
+    background-size: 100px !important;
+}
 .rating-form-head {
     font-size: 13px;
     margin-top: 10px;
