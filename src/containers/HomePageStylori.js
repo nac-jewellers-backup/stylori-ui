@@ -37,7 +37,7 @@ class HomeStylori extends React.Component {
       autoplay: true,
       infinite: true,
       fade: false,
-      dots: true,
+      dots: false,
       autoplaySpeed: 5000,
       arrows: false
     };
@@ -201,7 +201,7 @@ class HomeStylori extends React.Component {
           dataCarousel={homePageStylori.Stories.carousel.setting}
           carosolData={homePageStylori.Stories.carousel.data}
         />
-        <Grid item xs={12}>
+        <Grid item xs={12} style={{ marginTop: 20 }}>
           <Footer />
         </Grid>
       </Grid>
