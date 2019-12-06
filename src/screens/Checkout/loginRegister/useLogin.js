@@ -62,8 +62,8 @@ const useLogin = (changePanel) => {
         var a = CodData ? CodData : ""
         if (JSON.stringify(a).length > 10) {
             localStorage.setItem("vals", JSON.stringify(CodData))
-            setCartFilters({user_id:obj})
             changePanel(3)
+            setCartFilters({user_id:obj})
         }
     }, [CodData])
     const handleChange = (type, value) => {
