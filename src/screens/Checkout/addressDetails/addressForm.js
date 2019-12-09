@@ -27,11 +27,10 @@ const AddressComponent = (props) => {
     const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
     let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : ""
     var bb1 = {};
-    // var _addressOne = values.addressOne
     bb1['addressTwo'] = values.addressTwo
     var allUsers_address1 = [];
     var addr_one = {};
-    addr_one['addressOne'] = values.addressOne
+    addr_one['addressOne'] = [values.addressOne]
     const savedAddressOne = () => {
         debugger
         var local_storage = JSON.parse(localStorage.getItem('valuessetdata'))
@@ -44,9 +43,6 @@ const AddressComponent = (props) => {
             return JSON.stringify(allUsers_address1)
         }
         else {
-            // if (_addressOne !== undefined || _addressOne !== null) {
-            //     addr_one.addressOne=_addressOne;
-            // }
             allUsers_address1.push(addr_one);
             return JSON.stringify(allUsers_address1)
         }
@@ -83,7 +79,7 @@ const AddressComponent = (props) => {
                                         return false
                                     } else {
                                         if (values && values.addressOne && values.addressOne.firstname.length > 0) {
-                                            localStorage.setItem("valuessetdata", JSON.stringify(addr_one))
+                                            localStorage.setItem("valuessetdata", savedAddressOne())
                                         }
                                         if (values && values.addressTwo && values.addressTwo.firstname.length > 0) {
                                             localStorage.setItem("valuessetdata", JSON.stringify(bb1))
