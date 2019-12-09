@@ -46,7 +46,7 @@ const useRating = (props) => {
             })
             if (data.message === "updated successfully") {
                 alert("Your review has been sent to our team. Will post it soon. Thanks!")
-                return false
+                // return false
             } else {
                 alert("Your reviewed this product  already.")
             }
