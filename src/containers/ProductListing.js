@@ -11,6 +11,7 @@ import { CDN_URL } from 'config';
 import { withRouter } from "react-router"
 import 'screens/screens.css';
 import filterData from 'mappers/filterData'
+import { async } from 'q';
 
 class Stylori extends React.Component {
   constructor(props) {
@@ -74,7 +75,7 @@ const Components = props => {
   // let mappedFilter = filterData(mappedFilters)
   if (!loading && !error) {
     if (Object.keys(data).length !== 0) {
-      mapped = productList(data, CDN_URL);
+      mapped =async ()=>await productList(data, CDN_URL);
     }
   }
   if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>

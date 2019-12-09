@@ -95,7 +95,6 @@ const Addressforms = () => {
                     values['addressTwo']['city'] = res2
                 }
                 if (pincods.pincod === "pincode1") {
-                    debugger
                     if ( res2 === "" || values["addressOne"]['errortext']) {
                         values["addressOne"]['errortext']['pinerr'] = ""
                     }
@@ -106,7 +105,6 @@ const Addressforms = () => {
                 }
             } else {
                 if (pincods.pincod === "pincode1") {
-                    debugger
                     if (res2.length < 0 || res2 === "" || values["addressOne"]['errortext']) {
                         values["addressOne"]['errortext']['pinerr'] = "Your pincode is !Invalid"
                     }
@@ -148,7 +146,7 @@ const Addressforms = () => {
         // e.preventDefault()
         // if (val.length < 5) {
         //     if (pincods.pincod === "pincode1") {
-        //         debugger
+        //         
         //             values["addressOne"]['errortext']['pinerr'] = "Your pincode is !e"
         //     } else {
         //             values["addressTwo"]['errortext']['pinerr1'] = "Your pincode is !e"

@@ -41,7 +41,6 @@ class Addressdetails extends React.Component {
             (lgn1 ? lgn1.pincode || lgn1.addressline1 || lgn1.lastname : chk_locl)
 
         const dlt_locl1 = (dlt) => {
-            debugger
             if (chk_locl !== undefined && chk_locl !== null && chk_locl2 !== undefined && chk_locl2 !== null && chk_locl !== chk_locl2) {
                 localStorage.removeItem("valuessetdata")
                 if (objj.addressOne && objj.addressOne.lastname.length > 0) {
@@ -51,7 +50,6 @@ class Addressdetails extends React.Component {
             } else {
                 localStorage.removeItem("valuessetdata")
                 if (values.addrs === false) {
-                    debugger
                     values["addrs"] = true
                     setValues({
                         ...values,
@@ -63,7 +61,6 @@ class Addressdetails extends React.Component {
             }
         }
         const dlt_locl2 = (dlt) => {
-            debugger
             if (chk_locl2 !== undefined && chk_locl2 !== null && chk_locl !== undefined && chk_locl !== null && chk_locl !== chk_locl2) {
                 localStorage.removeItem("valuessetdata")
                 if (objj1.addressTwo && objj1.addressTwo.lastname.length > 0) {
@@ -73,7 +70,6 @@ class Addressdetails extends React.Component {
             } else {
                 localStorage.removeItem("valuessetdata")
                 if (values.addrs === false) {
-                    debugger
                     values["addrs"] = true
                     setValues({
                         ...values,

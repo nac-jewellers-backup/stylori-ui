@@ -19,7 +19,7 @@ const initialCtx = {
         },
         sort: '',
         loadingfilters: false,
-        loading: false, error: false, data: [], offset: 0, dataArr: [], first: 24, mappedFilters: [], cartcount: ['1']
+        loading: false, error: false, data: [], offset: 0, dataArr: [], first: 1, mappedFilters: [], cartcount: ['1']
     },
     setFilters: (filterData) => { },
     setOffset: () => { },
@@ -41,7 +41,7 @@ const Provider = (props) => {
     });
     const [sort, setSort] = React.useState(initialCtx.FilterOptionsCtx.sort)
     const [offset, setOffset] = React.useState(0)
-    const [first, setFirst] = React.useState(24)
+    const [first, setFirst] = React.useState(1)
     const [dataArr, setDataArr] = React.useState([])
     const [cartcount, setcartcount] = React.useState([])
     const [mappedFilters, setMappedFilters] = React.useState([])
@@ -100,10 +100,12 @@ const Provider = (props) => {
             
 
                // props.location.push(window.location.pathname)
-               matchPath(window.location.pathname, {
+               matchPath(`${window.location.pathname}${window.location.search}`, {
                    path: ":listingpage",
        
                })
+               let window_location_search = window.location.search;
+               let split_ampersand = window_location_search
                 let pathnameSplit = window.location.pathname.split('/')
                 const splitHiphen = () => {if(pathnameSplit[1].indexOf('-')){
                     return pathnameSplit[1].split('-')
@@ -293,11 +295,11 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
         if (window.location.search) {
             // const conditionFilters = conditions.generateFilters(paramObjects())
             // const conditionTransSkuFilters = conditions.generateTransSkuFilters(paramObjects())
-            debugger
+            
             const _paramsfilter = paramObjects()
             var conditionTransSkuFilters = {}
             var filtersss = _paramsfilter.filter(val=>{
-                debugger
+                
                 var a = Object.keys(val)
                 if(a[0] ==='MetalPurity')return a
                 if(a[0] === 'MetalColor')return a

@@ -59,17 +59,17 @@ const Gallery = ( props, callmouseover, callmouseout, cardstate, scrollPosition 
       <LazyLoadImage
            alt={'props.data.title'}
            effect="blur"
-           src="https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg"
-           srcset={renderImages(props, cardstate)}
-           sizes="(max-width: 320px) 320w,
-                   (max-width: 480px) 375w,
-                   (max-width: 600px) 600w,
-                   (max-width: 992px) 768w,
-                   (max-width: 1440px) 1440w,
-                   (max-width: 2560px) 2560w,
-                   2560w
+           src={renderImages(props, cardstate)}
+          //  srcset={renderImages(props, cardstate)}
+      //      sizes="(max-width: 320px) 320w,
+      //              (max-width: 480px) 375w,
+      //              (max-width: 600px) 600w,
+      //              (max-width: 992px) 768w,
+      //              (max-width: 1440px) 1440w,
+      //              (max-width: 2560px) 2560w,
+      //              2560w
                   
-       "
+      //  "
        onerror="this.onerror=null;this.src='https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg';"
        title={props.data.title}
        onMouseOver={() => {
@@ -287,14 +287,14 @@ const useStyles = makeStyles(theme=>({
   }
 }));
 const renderImages = (props, cardstate) => {
-  
   const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
+  
   // console.info('props.data.image[filterType]',props.data.image[filterType]);
-  return props.data.image['hoverImage'].length === 0 ?"https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg" : props.data.image[filterType].map(imgs => `${imgs.img} ${imgs.size}`).toString()
+  // return props.data.image['hoverImage'].length === 0 ?"https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg" : props.data.image[filterType].map(imgs => `${imgs.img} ${imgs.size}`).toString()
+  return props.data.image['hoverImage'].length === 0 ?"https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg" : props.data.image[filterType].img
 }
 
  function Component(props) {
-   
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
     hovered: false,
