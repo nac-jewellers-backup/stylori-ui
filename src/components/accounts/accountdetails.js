@@ -34,7 +34,7 @@ class Accountdetails extends Component {
                     <Grid item lg={2}>
                         <div className="pay-index-subhed">
                             <p className={this.state.isActive == '1' ? "backgrund" : ""}
-                                onClick={() => this.Activeaccounts('1')}
+                                onClick={() => this.Activeaccounts('1')} 
                              >
                                 Personal Information</p>
                             <p className={this.state.isActive == '2' ? "backgrund" : ""}
