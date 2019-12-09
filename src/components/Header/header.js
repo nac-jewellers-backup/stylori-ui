@@ -144,7 +144,7 @@ class Header extends Component {
                      <img className="icons-header-sizes" src={usershape} />
         </Button> */}
 
-                    {localStorage.getItem("true") ?  
+                    {localStorage.getItem("true") ?
                       <span
                         aria-owns={open1}
                         aria-haspopup="true"
@@ -173,6 +173,7 @@ class Header extends Component {
                           localStorage.removeItem("email")
                           localStorage.removeItem("vals")
                           localStorage.removeItem("valuessetdata")
+                          localStorage.removeItem("true")
                           localStorage.removeItem("panel")
                           localStorage.removeItem("cartDetails")
                           window.location.reload()
