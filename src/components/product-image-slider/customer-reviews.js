@@ -108,7 +108,7 @@ class CustomerReviews extends React.Component {
                 <Hidden mdUp>
                     <Container>
                         <ExpansionPanel
-                            style={{ boxShadow: "none" }} square
+                            style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important",padding:"0 5px" }} square
                             expanded={expanded === 'panel1'}
                             onChange={this.handleChange('panel1')}
                         >

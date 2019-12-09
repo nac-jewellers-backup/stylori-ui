@@ -144,7 +144,7 @@ class Header extends Component {
                      <img className="icons-header-sizes" src={usershape} />
         </Button> */}
 
-                    {localStorage.getItem("user_id") ?
+                    {localStorage.getItem("true") ?
                       <span
                         aria-owns={open1}
                         aria-haspopup="true"
@@ -167,17 +167,18 @@ class Header extends Component {
                       }}
                     >
                       <div
-                        style={{ width: "120px", height: "45px", lineHeight: "45px",cursor:"pointer" }}
+                        style={{ width: "120px", height: "45px", lineHeight: "45px", cursor: "pointer" }}
                         onClick={() => {
                           localStorage.removeItem("user_id")
                           localStorage.removeItem("email")
                           localStorage.removeItem("vals")
                           localStorage.removeItem("valuessetdata")
                           localStorage.removeItem("panel")
+                          localStorage.removeItem("cartDetails")
                           window.location.reload()
                           window.location.pathname = "/login"
                         }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout</div>
-                    </Popover> 
+                    </Popover>
                     {/* <i class="fa fa-user"></i> */}
                     <Badge badgeContent={4} color="secondary">
                       <img className="icons-header-sizes" src={love} />

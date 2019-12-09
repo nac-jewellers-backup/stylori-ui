@@ -4,6 +4,8 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { CartContext } from 'context'
+var obj = {}
+var obj1 = {}
 const useLogin = (changePanel) => {
     const [values, setValues] = React.useState({
         password: "",
@@ -22,8 +24,8 @@ const useLogin = (changePanel) => {
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/signin', {}, []);
     const { setCartFilters } = React.useContext(CartContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
-    var obj = {}
     React.useEffect(() => {
+        debugger
         var ms = data && data.message
         if (ms && values['error'] && values['errortext']) {
             values['error']['passerr'] = true
@@ -35,35 +37,37 @@ const useLogin = (changePanel) => {
             // return false
         } else {
             var a = data.userprofile ? data.userprofile : ""
-        if (JSON.stringify(a).length > 10 && values['error'] && values['errortext']) {
-            values['error']['passerr'] = false
-            values['errortext']['passerr'] = ""
-            setValues({
-                ...values,
-                values,
-            })
-            var bbn = data && data.userprofile && data.userprofile.id ? data.userprofile.id : ""
-            if (bbn.length > 0 || bbn !== undefined) {
-                localStorage.setItem("email", data.userprofile.email)
-                var bb = data.userprofile.id ? data.userprofile.id : ""
-                obj['userprofileId'] = bb
-                makeRequestCod(obj);
-                localStorage.setItem('user_id', bb)
-                // setValues({user_id:data.userprofile.id})
+            if (JSON.stringify(a).length > 10 && values['error'] && values['errortext']) {
+                values['error']['passerr'] = false
+                values['errortext']['passerr'] = ""
+                setValues({
+                    ...values,
+                    values,
+                })
+                var bbn = data && data.userprofile && data.userprofile.id ? data.userprofile.id : ""
+                if (bbn.length > 0 || bbn !== undefined) {
+                    localStorage.setItem("email", data.userprofile.email)
+                    var bb = data.userprofile.id ? data.userprofile.id : ""
+                    obj['userprofileId'] = bb
+                    obj1['user_id'] = bb
+                    makeRequestCod(obj);
+                    localStorage.setItem('user_id', bb)
+                    // setValues({user_id:data.userprofile.id})
 
-                
-                // changePanel(3)
+
+                    // changePanel(3)
+                }
             }
-        }
         }
 
     }, [data])
     React.useEffect(() => {
         var a = CodData ? CodData : ""
         if (JSON.stringify(a).length > 10) {
+            setCartFilters(obj1)
             localStorage.setItem("vals", JSON.stringify(CodData))
             changePanel(3)
-            setCartFilters({user_id:obj})
+            localStorage.setItem("true", false)
         }
     }, [CodData])
     const handleChange = (type, value) => {
@@ -93,9 +97,12 @@ const useLogin = (changePanel) => {
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
+        debugger
+
         if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'
+
             setValues({
                 ...values,
                 values,
@@ -110,6 +117,18 @@ const useLogin = (changePanel) => {
             })
             return false
         }
+        let lastAtPos = values.email.lastIndexOf('@');
+        let lastDotPos = values.email.lastIndexOf('.');
+        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && values.email.indexOf('@@') == -1 && lastDotPos > 2 && (values.email.length - lastDotPos) > 2)) {
+            debugger
+            values['error']['emerr'] = true
+            values['errortext']['emerr'] = 'An email address must contain a single @/.'
+            setValues({
+                ...values,
+                values,
+            })
+            return false
+        }
         makeFetch(values);
         // changePanel(3)
 
@@ -117,7 +136,7 @@ const useLogin = (changePanel) => {
 
     const handlers = { handleChange, handleInvalid, handelSubmit };
 
-    return { values, handlers,setValues, data }
+    return { values, handlers, setValues, data }
 }
 
 export default useLogin;

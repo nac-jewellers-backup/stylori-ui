@@ -15,7 +15,7 @@ const useRegister = (changePanel, props) => {
         errortext: {
             emerr: "",
             passerr: "",
-            cnfpasserr: "", 
+            cnfpasserr: "",
             firstname: "",
             lastname: ""
         },
@@ -45,6 +45,7 @@ const useRegister = (changePanel, props) => {
         } else {
             var v = data.user_profile_id ? data.user_profile_id : ""
             if (v.length > 0 && values['error'] && values['errortext']) {
+                localStorage.setItem("true", false)
                 values['error']['emerr'] = false
                 values['errortext']['emerr'] = ''
                 var user_id = data && data.user_profile_id
@@ -60,8 +61,8 @@ const useRegister = (changePanel, props) => {
                 // }
                 localStorage.setItem("email", data.user.email)
                 localStorage.setItem("user_id", data.user_profile_id)
-                setValues({user_id:data.user_profile_id})
-                setCartFilters({user_id})
+                setValues({ user_id: data.user_profile_id })
+                setCartFilters({ user_id })
                 makeRequestCod(obj);
                 changePanel(3)
             }
@@ -69,7 +70,6 @@ const useRegister = (changePanel, props) => {
 
         //     obj['id'] = bb
         //     makeRequestCod(obj);
-        localStorage.setItem("true", false)
     }, [data])
     // useEffect(() => {
     //     var resin = CodData.data ? JSON.stringify(CodData.data) : ""
@@ -154,6 +154,18 @@ const useRegister = (changePanel, props) => {
             values['error']['cnfpasserr'] = true
             // values['errortext']['passerr'] = "password doesn't match"
             values['errortext']['cnfpasserr'] = "Password doesn't match"
+            setValues({
+                ...values,
+                values,
+            })
+            return false
+        }
+        let lastAtPos = values.email.lastIndexOf('@');
+        let lastDotPos = values.email.lastIndexOf('.');
+        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && values.email.indexOf('@@') == -1 && lastDotPos > 2 && (values.email.length - lastDotPos) > 2)) {
+            debugger
+            values['error']['emerr'] = true
+            values['errortext']['emerr'] = 'An email address must contain a single @/.'
             setValues({
                 ...values,
                 values,

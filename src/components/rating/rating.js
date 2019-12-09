@@ -27,7 +27,7 @@ class Component extends React.Component {
     change(starsSelected) {
         this.setState({ starsSelected })
         this.props.setratingcounts({ ratingcounts: starsSelected })
-        localStorage.setItem("count", starsSelected)
+        // localStorage.setItem("count", starsSelected)
     }
 
     render() {

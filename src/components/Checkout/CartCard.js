@@ -72,7 +72,6 @@ class Checkoutcard extends React.Component {
         //         cartcount: this.props.data.length
         //     })
         // },[data])
-        debugger
         return (
             <div style={{ marginTop: "10px" }}>
                 <Grid container>
@@ -248,7 +247,6 @@ class Checkoutcard extends React.Component {
             slidesToShow: 1,
             arrows: false,
         }
-
         var data = this.props.data
         console.log(data, 'data_data-data')
         const { classes } = this.props;

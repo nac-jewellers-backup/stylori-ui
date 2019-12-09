@@ -200,9 +200,9 @@ class Addressdetails extends React.Component {
                             </Button> */}
                         </Grid>}
                 </Grid>
-                {/* <Button onClick={() => this.props.redirectForm()} className={`add-new-address ${classes.normalfonts}`}>
+                <Button onClick={() => this.props.redirectForm1()} className={`add-new-address ${classes.normalfonts}`}>
                     <div></div>  Add New Address
-                            </Button> */}
+                            </Button>
             </div>
         )
     }

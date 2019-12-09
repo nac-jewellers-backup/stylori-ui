@@ -308,7 +308,7 @@ class Component extends React.Component {
                         <Container>
                             <>
                                 {arr.length > 0 ?
-                                    <ExpansionPanel style={{ boxShadow: "none" }} expanded={expanded === val.header} onChange={this.handle(val.header)}>
+                                    <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important",padding:"0 5px" }} expanded={expanded === val.header} onChange={this.handle(val.header)}>
                                         <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
                                             <div style={{ width: "100%" }} >
                                                 <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab1.header}</Typography>
@@ -339,7 +339,7 @@ class Component extends React.Component {
                                     : ""}
                                 {/* className="panel-head" */}
                                 {arr2 || arr2.length > 0 ?
-                                    <ExpansionPanel style={{ boxShadow: "none" }} expanded={expanded === val.tab2.header} onChange={this.handle(val.tab2.header)}>
+                                    <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important",padding:"0 5px" }} expanded={expanded === val.tab2.header} onChange={this.handle(val.tab2.header)}>
                                         <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
                                             <div style={{ width: "100%" }} >
                                                 <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab2.header}</Typography>
@@ -363,7 +363,7 @@ class Component extends React.Component {
                                         </ExpansionPanelDetails>
                                     </ExpansionPanel> : ""}
                                 {val.tab3.Children.length > 0 ?
-                                    <ExpansionPanel style={{ boxShadow: "none" }} expanded={expanded === val.tab3.header} onChange={this.handle(val.tab3.header)}>
+                                    <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important",padding:"0 5px" }} expanded={expanded === val.tab3.header} onChange={this.handle(val.tab3.header)}>
                                         <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
                                             <div style={{ width: "100%" }} >
                                                 <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab3.header}</Typography>

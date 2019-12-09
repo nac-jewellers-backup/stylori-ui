@@ -115,11 +115,11 @@ const useRating = (props) => {
         debugger
         if (rats > 0 && values && values.title !== "" &&
             values && values.message !== "") {
+            values["errortext"]["rateerr"] = ""
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
             if (user_id.length > 0) {
                 // alert(JSON.stringify(data.message))
                 var rats = props.ratingcounts.ratingcounts ? props.ratingcounts.ratingcounts : ""
-                values["errortext"]["rateerr"] = ""
                 if (window.location.search) {
                     let urlSearchparams = window.location.search;
                     let urlSearchparamsDecode = decodeURI(urlSearchparams)

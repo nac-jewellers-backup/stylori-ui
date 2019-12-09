@@ -14,16 +14,21 @@ const usePromo = (props) => {
     // const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     const { data, error, loading, makeFetch } = useNetworkRequest('/applyvoucher', {}, false);
     useEffect(() => {
-
-        var m = data.discounted_price ? JSON.stringify(data.discounted_price) : ""
-        if (m.length > 2) {
-            setCartFilters({
-                discounted_price: data.discounted_price,
-                tax_price: data.tax_price
-            })
-            // localStorage.setItem('pro', data.discounted_price)
-            // localStorage.setItem('prop', data.tax_price)
+        if (data.message === "Enter valid coupon") {
+            alert("Enter valid coupon")
+        } else {
+            var m = data.discounted_price ? JSON.stringify(data.discounted_price) : ""
+            if (m.length > 2) {
+                setCartFilters({
+                    discounted_price: data.discounted_price,
+                    tax_price: data.tax_price
+                })
+                // localStorage.setItem('pro', data.discounted_price)
+                // localStorage.setItem('prop', data.tax_price)
+                alert("Your Promo code applied Successfully")
+            }
         }
+
     }, [data])
     const handleChange = (type, value) => {
         setValues({
@@ -34,7 +39,6 @@ const usePromo = (props) => {
     const handleSubmit = (e) => {
         // e.preventDefault();
         makeFetch(values);
-        alert("Your Promo code applied Successfully") 
     }
 
     const handlers = { handleSubmit, handleChange };

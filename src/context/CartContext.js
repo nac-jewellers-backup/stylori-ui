@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { CART } from 'queries/cart';
+import { ALLORDERS } from 'queries/cart';
 import { withRouter } from 'react-router-dom';
 import { useNetworkRequest } from 'hooks/NetworkHooks'
 // import { productsPendants } from 'mappers/dummydata';
@@ -10,25 +11,28 @@ import { useNetworkRequest } from 'hooks/NetworkHooks'
 const initialCtx = {
     CartCtx: {
         cartFilters: {
-            skuId:  '',
+            skuId: '',
             qty: '',
             price: '',
             user_id: '',
             discounted_price: "",
             tax_price: ''
         },
-        loading: false, error: false, data: []
+        loading: false, error: false, data: [], allorderdata: []
     },
-    setCartFilters: (filterData) => { }
+    setCartFilters: (filterData) => { },
+    setallorderdata: () => { },
+
 }
 
 
 export const CartContext = React.createContext(initialCtx);
 export const CartConsumer = CartContext.Consumer;
 const Provider = (props) => {
-    
+
     const [cartFilters, setCartFilters] = React.useState(initialCtx.CartCtx);
-    
+    const [allorderdata, setallorderdata] = React.useState([])
+    console.log("hdjhjhkjfh", allorderdata)
     var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
     const user_id = cartFilters.user_id ? cartFilters.user_id : ""
     const price = cartFilters.price ? cartFilters.price : ""
@@ -36,7 +40,7 @@ const Provider = (props) => {
     const userIds = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ''
     var cartdetails = JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : {}
     const guestlogId = cartFilters.user_id ? cartFilters.user_id : ''
-    
+    const { loading: allorderloading, error: allordererror, data: allorder, makeRequest: allordermakeRequest } = useGraphql(ALLORDERS, () => { }, {});
     // const prices = cartFilters.price ? cartFilters.price : ''
     const discounted_price = cartFilters.discounted_price ? cartFilters.discounted_price : ""
     useEffect(() => {
@@ -46,21 +50,35 @@ const Provider = (props) => {
         // localStorage.setItem('cart_id', JSON.stringify(crtdata))
     }, [crtdata])
     useEffect(() => {
+        const orderall = allorder ? allorder&&allorder.data&&allorder.data.allOrders&&allorder.data.allOrders.nodes : ""
+        if (orderall && orderall.length > 0) {
+            debugger
+            var _allorders = allorder.data.allOrders
+            setallorderdata(_allorders)
+
+        }
+        // localStorage.setItem('cart_id', JSON.stringify(crtdata))
+    }, [allorder])
+    useEffect(() => {
         if (userIds.length > 0) {
             if (cartdetails && JSON.stringify(cartdetails).length > 0) {
 
                 // const user_id = userIds
                 // makeFetch({--login---})
-            } 
+            }
         }
-        
+
         if (guestlogId.length > 0) {
+            debugger
             localStorage.setItem("user_id", cartFilters.user_id)
             if (JSON.stringify(cartdetails).length > 0) {
+                var orderobj = {}
                 var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
                 const user_id = cartFilters.user_id
                 var addcart = ({ products, user_id })
                 addtocart(addcart)
+                orderobj["userProfileId"] = user_id
+                allordermakeRequest(orderobj);
             }
         }
         else {
@@ -68,7 +86,6 @@ const Provider = (props) => {
                 var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
                 var local_storage_products = []
                 if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
-                    
                     local_storage_products = JSON.parse(localStorage.getItem('cartDetails')).products.map(val => { return val })
                 }
 
@@ -119,11 +136,10 @@ const Provider = (props) => {
     }, [])
 
     const CartCtx = {
-        cartFilters, loading, error, data, setCartFilters,
+        cartFilters, loading, error, data, setCartFilters, allorderdata
     }
-
     return (
-        <CartContext.Provider value={{ CartCtx, setCartFilters }} >
+        <CartContext.Provider value={{ CartCtx, setCartFilters, setallorderdata }} >
             {props.children}
         </CartContext.Provider>
     )

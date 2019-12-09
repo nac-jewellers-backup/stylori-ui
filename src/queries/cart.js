@@ -14,7 +14,7 @@ export const CART = `query myquerycart($productList: [String!]) {
             imageUrl
           }
         }
-        productType
+        productType 
         productMaterialsByProductSku {
           nodes {
             materialName
@@ -27,3 +27,16 @@ export const CART = `query myquerycart($productList: [String!]) {
     }
   }
 }`
+export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
+  allOrders(filter: {userProfileId: {in: $userProfileId}}) {
+    nodes {
+      orderStatus
+      paymentMode
+      paymentStatus
+      userProfileId
+      createdAt
+      updatedAt
+    }
+  }
+}
+`
