@@ -40,7 +40,7 @@ class Component extends React.Component {
         // expanded: 'panel1',
         // expandedlimit: localStorage.getItem("panel") ? localStorage.getItem("panel") : 1,
         // expandedlimit: 1,
-        mailId: null
+        mailId: null 
     }
 
     handleChange = panel => (event, expanded) => {
