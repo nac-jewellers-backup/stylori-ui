@@ -26,47 +26,33 @@ const AddressComponent = (props) => {
     const b = values.addressTwo ? values.addressTwo : a
     const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
     let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : ""
-    var allUsers = [];
-    var allUsers1 = [];
-    var bb = {};
     var bb1 = {};
-    bb['addressOne'] = values.addressOne
+    // var _addressOne = values.addressOne
     bb1['addressTwo'] = values.addressTwo
-    const addres1 = () => {
+    var allUsers_address1 = [];
+    var addr_one = {};
+    addr_one['addressOne'] = values.addressOne
+    const savedAddressOne = () => {
         debugger
         var local_storage = JSON.parse(localStorage.getItem('valuessetdata'))
-        var allUsers12;
+        var allUsersmap;
         if (local_storage && local_storage.length > 0 || local_storage !== null) {
-            allUsers.push(local_storage)
-            allUsers12 = allUsers[0].map(val => { return val.addressOne })
+            allUsersmap = local_storage.map(val => { return val.addressOne })
         }
-        if (allUsers12 && allUsers12.length > 0) {
-            localStorage.removeItem('valuessetdata')
-            return JSON.stringify(allUsers12)
+        if (allUsersmap && allUsersmap.length > 0) {
+            allUsers_address1 && allUsers_address1.addressOne.push(allUsersmap);
+            return JSON.stringify(allUsers_address1)
         }
         else {
-            allUsers1.push(bb);
-            return JSON.stringify(allUsers1)
+            // if (_addressOne !== undefined || _addressOne !== null) {
+            //     addr_one.addressOne=_addressOne;
+            // }
+            allUsers_address1.push(addr_one);
+            return JSON.stringify(allUsers_address1)
         }
     }
     const chk_err1 = values && values.addressOne && values.addressOne.errortext && values.addressOne.errortext.pinerr ? values && values.addressOne && values.addressOne.errortext && values.addressOne.errortext.pinerr : ""
     const chk_err2 = values && values.addressTwo && values.addressTwo.errortext && values.addressTwo.errortext.pinerr ? values && values.addressTwo && values.addressTwo.errortext && values.addressTwo.errortext.pinerr : ""
-    // var addressform = () => {
-    //     debugger
-    //     var obj = {};
-    //     var local_address = JSON.parse(localStorage.getItem('valuessetdata'))
-    //     var local_storage_addresses = []
-    //     if (local_address && Object.entries(local_address).length > 0 && local_address.constructor === Object) {
-    //         local_sto4rage_addresses =objs.map(val => { return val })
-    //     }
-    //     if (local_storage_addresses.length > 0) {
-    //         local_storage_addresses.push(obj);
-    //         return local_storage_addresses
-    //     }
-    //     else {
-    //         return values
-    //     }
-    // }
     return (
         <Container>
             <div>
@@ -97,7 +83,7 @@ const AddressComponent = (props) => {
                                         return false
                                     } else {
                                         if (values && values.addressOne && values.addressOne.firstname.length > 0) {
-                                            localStorage.setItem("valuessetdata", JSON.stringify(bb))
+                                            localStorage.setItem("valuessetdata", JSON.stringify(addr_one))
                                         }
                                         if (values && values.addressTwo && values.addressTwo.firstname.length > 0) {
                                             localStorage.setItem("valuessetdata", JSON.stringify(bb1))

@@ -222,7 +222,7 @@ const Addressforms = () => {
             checkValue1: true,
         }
         setValues({
-            // ...value11,
+            ...value11,
             // ...lgn,
             ...values,
             addrs: !values.addrs
