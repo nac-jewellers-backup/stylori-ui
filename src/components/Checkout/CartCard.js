@@ -72,6 +72,7 @@ class Checkoutcard extends React.Component {
         //         cartcount: this.props.data.length
         //     })
         // },[data])
+        debugger
         return (
             <div style={{ marginTop: "10px" }}>
                 <Grid container>

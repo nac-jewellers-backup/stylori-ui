@@ -104,7 +104,7 @@
 // ]
 
 
-export default function (data, allorderdata, val) {
+export default function (data) {
     debugger
     let mapperdata = [];
     try {
@@ -124,7 +124,7 @@ export default function (data, allorderdata, val) {
                 // materialName: k.productMaterialsByProductSku.nodes[0].materialName,
                 productType: k.productListByProductId.productType,
                 prdheader: k.productListByProductId.productName,
-                allorderdata: allorderdata,
+                // allorderdata: allorderdata,
                 productsDetails: [
                     //                     Quality	
                     // Metal	

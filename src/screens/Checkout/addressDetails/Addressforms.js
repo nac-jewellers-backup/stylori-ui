@@ -95,21 +95,21 @@ const Addressforms = () => {
                     values['addressTwo']['city'] = res2
                 }
                 if (pincods.pincod === "pincode1") {
-                    if (res2 === "" || values["addressOne"]['errortext']) {
+                    if (res2 === "" || values["addressOne"] && values["addressOne"]['errortext']) {
                         values["addressOne"]['errortext']['pinerr'] = ""
                     }
                 } else {
-                    if (res2 === "" || values["addressOne"]['errortext']) {
+                    if (res2 === "" || values["addressOne"] && values["addressOne"]['errortext']) {
                         values["addressTwo"]['errortext']['pinerr1'] = ""
                     }
                 }
             } else {
                 if (pincods.pincod === "pincode1") {
-                    if (res2.length < 0 || res2 === "" || values["addressOne"]['errortext']) {
+                    if (res2.length < 0 || res2 === "" || values["addressOne"] && values["addressOne"]['errortext']) {
                         values["addressOne"]['errortext']['pinerr'] = "Your pincode is !Invalid"
                     }
                 } else {
-                    if (res2.length < 0 || res2 === "" || values["addressOne"]['errortext']) {
+                    if (res2.length < 0 || res2 === "" || values["addressOne"] && values["addressOne"]['errortext']) {
                         values["addressTwo"]['errortext']['pinerr1'] = "Your pincode is !Invalid"
                     }
                 }
@@ -222,33 +222,35 @@ const Addressforms = () => {
             checkValue1: true,
         }
         setValues({
-            ...value11,
+            // ...value11,
             // ...lgn,
             ...values,
             addrs: !values.addrs
         })
     }
     const redirectForm = (event) => {
-        value11 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : {}
-        value12 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : {}
+        value11 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : ""
+        value12 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : ""
         lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
-        if (Object.keys(lgn).length > 0) {
+        if (Object.keys(lgn || lgn1).length > 0) {
             lgn = {
                 addressOne: lgn ? lgn : "",
                 addressTwo: lgn1 ? lgn1 : ""
             }
         }
         // if (Object.keys(value11&&value12).length > 0) {
-        value11 = {
-            addressOne: value11 ? value11 : "",
-            addressTwo: value12 ? value12 : ""
-            // }
+        if (Object.keys(value11 || value12).length > 0) {
+            value11 = {
+                addressOne: value11 ? value11 : "",
+                addressTwo: value12 ? value12 : ""
+                // }
+            }
         }
         setValues({
             ...value11,
             ...lgn,
-            values,
-            ...values,
+            // values,
+            // ...values,
             addrs: !values.addrs
         })
         localStorage.setItem("isedit", !values.addrs ? 1 : 0)

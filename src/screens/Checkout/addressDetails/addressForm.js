@@ -96,10 +96,10 @@ const AddressComponent = (props) => {
                                         localStorage.setItem("valuessetdata", JSON.stringify(values))
                                         return false
                                     } else {
-                                        if (values.addressOne.firstname.length > 0) {
+                                        if (values && values.addressOne && values.addressOne.firstname.length > 0) {
                                             localStorage.setItem("valuessetdata", JSON.stringify(bb))
                                         }
-                                        if (values.addressTwo.firstname.length > 0) {
+                                        if (values && values.addressTwo && values.addressTwo.firstname.length > 0) {
                                             localStorage.setItem("valuessetdata", JSON.stringify(bb1))
                                         }
                                     }

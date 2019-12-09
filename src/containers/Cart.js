@@ -112,7 +112,7 @@ const Components = props => {
     let content, mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
-            mapped = cart(allorderdata,data);
+            mapped = cart(data);
         }
     }
     if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
