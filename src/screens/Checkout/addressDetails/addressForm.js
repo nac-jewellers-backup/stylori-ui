@@ -28,25 +28,28 @@ const AddressComponent = (props) => {
     let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : ""
     var bb1 = {};
     bb1['addressTwo'] = values.addressTwo
+
+
     var allUsers_address1 = [];
     var addr_one = {};
-    addr_one['addressOne'] = [values.addressOne]
+    addr_one['addressOne'] = values.addressOne
     const savedAddressOne = () => {
-        debugger
         var local_storage = JSON.parse(localStorage.getItem('valuessetdata'))
         var allUsersmap;
-        if (local_storage && local_storage.length > 0 || local_storage !== null) {
-            allUsersmap = local_storage.map(val => { return val.addressOne })
+        if (local_storage !== null && local_storage.addressOne && local_storage.addressOne.length > 0) {
+            allUsersmap = local_storage.addressOne;
         }
         if (allUsersmap && allUsersmap.length > 0) {
-            allUsers_address1 && allUsers_address1.addressOne.push(allUsersmap);
-            return JSON.stringify(allUsers_address1)
+            debugger
+            allUsersmap.push(values.addressOne);
+            return JSON.stringify({ addressOne: allUsersmap })
         }
         else {
             allUsers_address1.push(addr_one);
-            return JSON.stringify(allUsers_address1)
+            return JSON.stringify(addr_one)
         }
     }
+
     const chk_err1 = values && values.addressOne && values.addressOne.errortext && values.addressOne.errortext.pinerr ? values && values.addressOne && values.addressOne.errortext && values.addressOne.errortext.pinerr : ""
     const chk_err2 = values && values.addressTwo && values.addressTwo.errortext && values.addressTwo.errortext.pinerr ? values && values.addressTwo && values.addressTwo.errortext && values.addressTwo.errortext.pinerr : ""
     return (
@@ -79,7 +82,7 @@ const AddressComponent = (props) => {
                                         return false
                                     } else {
                                         if (values && values.addressOne && values.addressOne.firstname.length > 0) {
-                                            localStorage.setItem("valuessetdata", savedAddressOne())
+                                            localStorage.setItem("valuessetdata", JSON.stringify(addr_one))
                                         }
                                         if (values && values.addressTwo && values.addressTwo.firstname.length > 0) {
                                             localStorage.setItem("valuessetdata", JSON.stringify(bb1))
