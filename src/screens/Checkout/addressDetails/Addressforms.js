@@ -95,21 +95,21 @@ const Addressforms = () => {
                     values['addressTwo']['city'] = res2
                 }
                 if (pincods.pincod === "pincode1") {
-                    if ( res2 === "" || values["addressOne"]['errortext']) {
+                    if (res2 === "" || values["addressOne"] && values["addressOne"]['errortext']) {
                         values["addressOne"]['errortext']['pinerr'] = ""
                     }
                 } else {
-                    if ( res2 === "" || values["addressOne"]['errortext']) {
+                    if (res2 === "" || values["addressOne"] && values["addressOne"]['errortext']) {
                         values["addressTwo"]['errortext']['pinerr1'] = ""
                     }
                 }
             } else {
                 if (pincods.pincod === "pincode1") {
-                    if (res2.length < 0 || res2 === "" || values["addressOne"]['errortext']) {
+                    if (res2.length < 0 || res2 === "" || values["addressOne"] && values["addressOne"]['errortext']) {
                         values["addressOne"]['errortext']['pinerr'] = "Your pincode is !Invalid"
                     }
                 } else {
-                    if (res2.length < 0 || res2 === "" || values["addressOne"]['errortext']) {
+                    if (res2.length < 0 || res2 === "" || values["addressOne"] && values["addressOne"]['errortext']) {
                         values["addressTwo"]['errortext']['pinerr1'] = "Your pincode is !Invalid"
                     }
                 }
@@ -175,32 +175,88 @@ const Addressforms = () => {
             if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
         }
     };
-    const redirectForm = (event) => {
-        value11 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : {}
-        value12 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : {}
-        lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
-        if (Object.keys(lgn).length > 0) {
-            lgn = {
-                addressOne: lgn ? lgn : lgn1,
-                addressTwo: lgn1 ? lgn1 : lgn
-            }
+    const redirectForm1 = (event) => {
+        lgn = {
+            addressOne: "",
+            addressTwo: ""
         }
         // if (Object.keys(value11&&value12).length > 0) {
         value11 = {
-            addressOne: value11 ? value11 : value12,
-            addressTwo: value12 ? value12 : value11
-            // }
+            addressOne: {
+                firstname: "",
+                lastname: "",
+                addressline1: "",
+                addressline2: "",
+                pincode: "",
+                city: "",
+                state: "",
+                country: "",
+                country_code: "",
+                contactno: "",
+                addresstype: 1,
+                errortext: {
+                    pinerr: "",
+                    pinerr1: "",
+                },
+            },
+            addressTwo: {
+                firstname: "",
+                lastname: "",
+                addressline1: "",
+                addressline2: "",
+                pincode: "",
+                city: "",
+                state: "",
+                country: "",
+                country_code: "",
+                contactno: "",
+                addresstype: 2,
+                errortext: {
+                    pinerr: "",
+                    pinerr1: "",
+                },
+            },
+            addrs: (localStorage.getItem("valuessetdata") || changeaddr) ? false : true,
+            // addrs: true,
+            checkValue: true,
+            checkValue1: true,
+        }
+        setValues({
+            ...value11,
+            // ...lgn,
+            ...values,
+            addrs: !values.addrs
+        })
+    }
+    const redirectForm = (event) => {
+        value11 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : ""
+        value12 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : ""
+        lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
+        if (Object.keys(lgn || lgn1).length > 0) {
+            lgn = {
+                addressOne: lgn ? lgn : "",
+                addressTwo: lgn1 ? lgn1 : ""
+            }
+        }
+        // if (Object.keys(value11&&value12).length > 0) {
+        if (Object.keys(value11 || value12).length > 0) {
+            value11 = {
+                addressOne: value11 ? value11 : "",
+                addressTwo: value12 ? value12 : ""
+                // }
+            }
         }
         setValues({
             ...value11,
             ...lgn,
             // values,
+            // ...values,
             addrs: !values.addrs
         })
         localStorage.setItem("isedit", !values.addrs ? 1 : 0)
         // localStorage.setItem('vale', JSON.stringify(values))
     }
-    const handle = { handleChange, handleSubmit, handleKeyPress, redirectForm };
+    const handle = { handleChange, handleSubmit, handleKeyPress, redirectForm1, redirectForm };
     return { values, setValues, handle }
 }
 export default Addressforms;
