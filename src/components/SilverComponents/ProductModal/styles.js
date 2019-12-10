@@ -11,15 +11,15 @@ export const useStyles = makeStyles(theme => ({
 
     },
     btnshop: {
-        color: "rgba(0, 0, 0, 0.87)",
-        boxShadow: "0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)",
-        backgroundColor: "#e0e0e0",
-        borderRadius: "3px",
-        padding: '6px 16px',
-        fontWeight: '500',
-        letterSpacing: '0.02857em',
-        fontSize: '0.875rem',
-        lineHeight: 1.75
+        backgroundColor: theme.palette.secondary.dark,
+        borderRadius: 0,
+        color: 'white',
+        boxShadow: '0 8px 16px 0 #ccc, 0 6px 20px 0 #ccc',
+        padding: '0px 22px',
+        fontWeight: 'bold',
+        fontFamily: 'Robot-Bold',
+        letterSpacing: '5px',
+        fontSize: '22px'
     },
     productCardTitle: {
         fontFamily: 'Robot-Bold',

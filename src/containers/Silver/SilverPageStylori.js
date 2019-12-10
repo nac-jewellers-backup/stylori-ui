@@ -3,7 +3,7 @@ import Header from "components/SilverComponents/Header";
 import { Grid, Container } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import ProductModal from 'components/SilverComponents/ProductModal'
-
+import MultipleSections from 'components/SilverComponents/MultipleSections'
 
 class HomeStylori extends React.Component {
     constructor(props) {
@@ -19,7 +19,7 @@ class HomeStylori extends React.Component {
                 </Grid>
                 <Container maxWidth="md">
                     <ProductModal />
-                    {/* <MultipleSections /> */}
+                    <MultipleSections />
                 </Container>
             </Grid>
         );

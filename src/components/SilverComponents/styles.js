@@ -1,4 +1,4 @@
-import '../../fonts/font.css'
+// import '../../fonts/font.css'
 import { makeStyles } from '@material-ui/core/styles';
 
 export const styles = theme => ({
