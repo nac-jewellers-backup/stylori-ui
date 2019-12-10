@@ -4,17 +4,7 @@ import { Container, Grid, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import styles from "./style"
 class Addressdetails extends React.Component {
-    // constructor(props) {
-    //     super(props)
-    // }
-    // state = {
-    //     values: localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
-    // }
-    // componentWillReceiveProps(newprops) {
-    //     this.setState({
-    //         values: this.props.values
-    //     })
-    // }
+  
     Addressdetails = (props, value) => {
         const { setValues, values } = props;
         const cl = <input onChange={(e) => {
@@ -196,9 +186,9 @@ class Addressdetails extends React.Component {
                             </Button> */}
                         </Grid>}
                 </Grid>
-                {/* <Button onClick={() => this.props.redirectForm()} className={`add-new-address ${classes.normalfonts}`}>
+                <Button onClick={() => this.props.redirectForm1()} className={`add-new-address ${classes.normalfonts}`}>
                     <div></div>  Add New Address
-                            </Button> */}
+                            </Button>
             </div>
         )
     }

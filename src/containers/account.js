@@ -7,12 +7,12 @@ import 'components/product-image-slider/product-images.css'
 import 'screens/screens.css';
 import Header from 'components/Header/header'
 import Accountdetails from "../components/accounts/accountdetails"
-import cart from '../mappers/cart';
-import { CartContext } from '../context/CartContext';
-const Accounts = (props) => {
-    return <Componentz {...props} />
-}
-class Componentz extends React.Component {
+import { CartContext } from 'context'
+import cart from 'mappers/cart'
+// const Accounts = (props) => {
+//     return <Componentz {...props} />
+// }
+class Accounts extends React.Component {
     render() {
         return (
             <div>
@@ -24,7 +24,7 @@ class Componentz extends React.Component {
                     </Grid>
 
                     <Grid item xs={12}>
-                        <Accountdetails data={this.props.data} />
+                        <Accountdetails data={this.props.data} allorderdata={this.props.allorderdata} />
                     </Grid>
                 </Hidden>
 
@@ -46,16 +46,16 @@ class Componentz extends React.Component {
     }
 }
 const Components = props => {
-    let { CartCtx: { data, loading, error } } = React.useContext(CartContext);
+    let { CartCtx: { cartFilters, data, loading, error, allorderdata } } = React.useContext(CartContext);
     let content, mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
-            mapped = cart(data);
+            mapped = cart(data, allorderdata);
         }
     }
     if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
-    else content = <Accounts {...props} data={mapped} />
-
+    else content = <Accounts {...props} data={mapped} allorderdata={allorderdata}/>
     return content
 }
+
 export default (Components);

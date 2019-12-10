@@ -108,6 +108,7 @@ export const CUSTOMERREVIEWS = `query MyQuery($productSku: String) {
       message
       title
       rating
+      customerName
     }
   }
 }

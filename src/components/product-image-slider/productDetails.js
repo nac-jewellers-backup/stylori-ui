@@ -108,7 +108,7 @@ class ProductDetails extends React.Component {
                             (data[0].productType !== "Earring" && val.header === 'Gemstone Details')
                             || (data[0].productType === "Earring" && val.header.trim() === 'Diamond Details')) ? false :
                             <>
-                                <ExpansionPanel style={{ boxShadow: "none" }} expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
+                                <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important",padding:"0 5px" }} expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
                                     <ExpansionPanelSummary className="expansion-summary"
                                         expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" >
                                         </i></span>}>
@@ -155,7 +155,7 @@ class ProductDetails extends React.Component {
 
                     {data[0].productsPendants.map(val => (
                         <div>
-                            <ExpansionPanel style={{ boxShadow: "none" }} expanded={expanded === 'panel'} onChange={this.handle('panel')}>
+                            <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important",padding:"0 5px" }} expanded={expanded === 'panel'} onChange={this.handle('panel')}>
                                 <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                                     <i class="fa fa-sort-up" ></i></span>}>
                                     <div style={{ width: "100%" }} >

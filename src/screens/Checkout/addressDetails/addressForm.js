@@ -26,20 +26,41 @@ const AddressComponent = (props) => {
     const b = values.addressTwo ? values.addressTwo : a
     const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
     let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : ""
-    var bb = {};
     var bb1 = {};
-    bb['addressOne'] = values.addressOne
     bb1['addressTwo'] = values.addressTwo
-    // var arr=[];
-    // arr["valuesarr"]=values
+
+
+    var allUsers_address1 = [];
+    var addr_one = {};
+    addr_one['addressOne'] = values.addressOne
+    const savedAddressOne = () => {
+        var local_storage = JSON.parse(localStorage.getItem('valuessetdata'))
+        var allUsersmap;
+        if (local_storage !== null && local_storage.addressOne && local_storage.addressOne.length > 0) {
+            allUsersmap = local_storage.addressOne;
+        }
+        if (allUsersmap && allUsersmap.length > 0) {
+            debugger
+            allUsersmap.push(values.addressOne);
+            return JSON.stringify({ addressOne: allUsersmap })
+        }
+        else {
+            allUsers_address1.push(addr_one);
+            return JSON.stringify(addr_one)
+        }
+    }
+
+    const chk_err1 = values && values.addressOne && values.addressOne.errortext && values.addressOne.errortext.pinerr ? values && values.addressOne && values.addressOne.errortext && values.addressOne.errortext.pinerr : ""
+    const chk_err2 = values && values.addressTwo && values.addressTwo.errortext && values.addressTwo.errortext.pinerr ? values && values.addressTwo && values.addressTwo.errortext && values.addressTwo.errortext.pinerr : ""
     return (
         <Container>
             <div>
                 {(isedit === '1' ? true : false) && values.addrs === true ?
                     <div className='pt-sm'>
                         <form onSubmit={(e) => {
+                            debugger
                             handle.handleSubmit(e)
-                            if (values.addressTwo.errortext.pinerr1.length > 0 || values.addressTwo.errortext.pinerr1 !== "" || values.addressOne.errortext.pinerr.length > 0 || values.addressOne.errortext.pinerr !== "") {
+                            if (chk_err2.length > 0 || chk_err2 === undefined || chk_err1.length > 0 || chk_err1 === undefined) {
                                 return false
                             } else {
                                 setValues({ addrs: !values.addrs });
@@ -59,10 +80,10 @@ const AddressComponent = (props) => {
                                         localStorage.setItem("valuessetdata", JSON.stringify(values))
                                         return false
                                     } else {
-                                        if (values.addressOne.firstname.length > 0) {
-                                            localStorage.setItem("valuessetdata", JSON.stringify(bb))
+                                        if (values && values.addressOne && values.addressOne.firstname.length > 0) {
+                                            localStorage.setItem("valuessetdata", JSON.stringify(addr_one))
                                         }
-                                        if (values.addressTwo.firstname.length > 0) {
+                                        if (values && values.addressTwo && values.addressTwo.firstname.length > 0) {
                                             localStorage.setItem("valuessetdata", JSON.stringify(bb1))
                                         }
                                     }
@@ -74,7 +95,8 @@ const AddressComponent = (props) => {
                         }} action="javascript:void(0)" autoComplete={true}>
                             {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? <h5 className='title'> Edit Address</h5> : ""}
                             <p class="form-group tp" style={{ width: "480px" }}>
-                                {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <>{cl}</>}
+                                {/* {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <>{cl}</>} */}
+                                {cl}
                                 {/* {JSON.stringify(values.errortext && values.errortext.pinerr)} */}
                             </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={5}>
@@ -210,6 +232,7 @@ const AddressComponent = (props) => {
 
                                 {/*  */}
                                 {/*  */}
+                                {/* {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <> */}
                                 <Grid container item lg={1} />
                                 {!values.checkValue &&
                                     <Grid item xs={12} lg={5}>
@@ -339,7 +362,9 @@ const AddressComponent = (props) => {
                                             </Grid>
                                         </Grid>
                                     </Grid>
-                                } </Grid>
+                                }
+                                {/* </>} */}
+                            </Grid>
 
                             {/* <div style={{float:"right"}}>
                                 
@@ -351,7 +376,7 @@ const AddressComponent = (props) => {
                             </div>
                         </form>
                     </div>
-                    : <Addressdetails values={values} setValues={setValues} changevalue={props.changePanel} redirectForm={handle.redirectForm} />}
+                    : <Addressdetails values={values} setValues={setValues} changevalue={props.changePanel} redirectForm1={handle.redirectForm1} redirectForm={handle.redirectForm} />}
             </div>
         </Container>
     )

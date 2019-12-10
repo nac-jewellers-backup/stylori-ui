@@ -248,7 +248,6 @@ class Checkoutcard extends React.Component {
             slidesToShow: 1,
             arrows: false,
         }
-
         var data = this.props.data
         console.log(data, 'data_data-data')
         const { classes } = this.props;
