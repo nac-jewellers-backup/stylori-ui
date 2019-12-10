@@ -177,7 +177,7 @@ class Header extends Component {
 
                                 <Grid item xs={3} className="logoImgHeader1">
                                     <div className="logoDiv1">
-                                        <img className={`img`} src={LogoSmallScreen} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                        <img className={`imgsilver`} src={LogoSmallScreen} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                     </div>
                                 </Grid>
                                 <Grid item xs={8}>

@@ -50,6 +50,20 @@ class Slideshow extends React.Component {
         </a>}</>
     ))
   };
+  imagewithouthoverchildrens = (hoverlist) => {
+    return (
+      <div class={"subslider-carousel-silver "} style={{ display: "block !important " }}>
+        <img src={hoverlist.img} className='subslider-carousel-img-Silver img-responsive' style={{ width: "auto !important", height: 'auto', display: "block !important  " }} alt="" />
+        {/* <div class="overlay1">
+          <div style={{paddingTop:'40%'}}>
+        <h2 className='next-price'>{hoverlist.title}</h2><br />
+        <a class='info' href={hoverlist.price}><span className='sub-list-price'> <i class="fa fa-rupee"></i> &nbsp;{hoverlist.price}</span></a>
+          </div>
+      </div> */}
+      </div>
+    )
+
+  };
   //className={this.props.styles?this.props.styles:''}
   render() {
     // document.getElementsByClassName('fade').slick({
@@ -74,7 +88,8 @@ class Slideshow extends React.Component {
         <Slider ref={sliderRef}  {...settings}>
           {this.props.children ? this.props.children : this.renderFadeImages()}
           {this.props.hover ? this.imagehoverchildrens(this.props.hoverlist) : ""}
-          {this.props.hovereffect ? this.imagehoverchildrens(this.props.hoverlist) : ""}
+          {this.props.hovereffect ? this.imagehoverchildrens(this.props.hoverlist) :""}
+          {this.props.WithoutHoverhover ?  this.imagewithouthoverchildrens(this.props.hoverlist):""}
         </Slider>
       </div>
     );

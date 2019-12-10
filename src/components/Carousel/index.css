@@ -45,7 +45,7 @@
 }
 
 .slick-slide img {
-  display: inline !important;
+  display: inline;
 }
 
 .hovereffect img {

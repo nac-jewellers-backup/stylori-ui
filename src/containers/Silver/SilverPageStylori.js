@@ -14,7 +14,7 @@ class HomeStylori extends React.Component {
     render() {
         return (
             <Grid container>
-                <Grid item style={{ width: "100%" }}>
+                <Grid item style={{ width: "100%", position: 'sticky', top: 0, zIndex: 10000 }}>
                     <Header />
                 </Grid>
                 <Container maxWidth="md">
