@@ -8,7 +8,8 @@ export const routes = {
     UserLogin: '/login',
     UserRegister: '/registers',
     HomePageStylori: '/home',
-    Account: '/account'
+    Account: '/account',
+    Silver: '/silver'
 
 }
 
