@@ -54,13 +54,11 @@ export const ImgMediaCard = (props) => {
 // );
 // }
 const imageOnError = (e, res) => {
-  debugger
   try {
     e.target.onError = null;
     e.target.src.lastIndexOf('\.')
     var src_img = (e.target.src).lastIndexOf('\.')
     const testImage = (URL) => {
-      debugger
       var tester = new Image();
       tester.onload = imageFound(e);
       tester.onerror = imageNotFound(e);

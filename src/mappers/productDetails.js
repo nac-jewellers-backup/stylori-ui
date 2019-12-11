@@ -53,7 +53,6 @@ const  screenWidth = () => {
     }
   }
 var screen_width_type =  (screen_res) =>{ 
-    debugger
     // const {window_width, browser_type} = await lambda_func_front_end()
     var window_width = JSON.parse(localStorage.getItem('browserDetails'))
 
@@ -109,10 +108,8 @@ const injectUrl_url_construct =  (url, baseUi, screen_res) => {
 
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 const generateImgurls = (PD, val, screen_res) => {
-    debugger
     var arrOfurls = []
     val.map(imgurl => {
-        debugger
         var imgurlsplit = imgurl.imageUrl.split('.')[0].charAt(imgurl.imageUrl.split('.')[0].length - 1)
         var metalcolor = PD.metalColor.charAt(0)
         if (imgurlsplit === metalcolor) {
