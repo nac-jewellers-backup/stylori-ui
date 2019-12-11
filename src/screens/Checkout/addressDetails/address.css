@@ -90,3 +90,7 @@
 .MuiExpansionPanelSummary-content {
     margin: 7px 0 !important;
 }
+
+.address_card_disabled{
+    filter: grayscale(5) !important; 
+}

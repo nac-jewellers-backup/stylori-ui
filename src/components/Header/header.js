@@ -176,6 +176,7 @@ class Header extends Component {
                           localStorage.removeItem("true")
                           localStorage.removeItem("panel")
                           localStorage.removeItem("cartDetails")
+                          localStorage.removeItem("check_dlt")
                           window.location.reload()
                           window.location.pathname = "/login"
                         }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout</div>

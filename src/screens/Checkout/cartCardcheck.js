@@ -44,11 +44,11 @@ class Component extends React.Component {
     }
 
     handleChange = panel => (event, expanded) => {
-        if (this.state.expandedlimit > panel) {
+        debugger
+        // alert("va",JSON.stringify(panel))
             this.setState({
                 expanded: 'panel' + panel,
             });
-        }
     };
 
     changePanel = (panel, mailId) => {

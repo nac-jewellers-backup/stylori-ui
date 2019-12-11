@@ -2,23 +2,26 @@ import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CheckForCod } from 'queries/productdetail';
+import { ADDRESSDETAILS } from 'queries/productdetail';
 // window.cache = {}
 
-const Addressforms = () => {
+const Addressforms = (changePanel) => {
     // var regid = localStorage.getItem('regid') ? localStorage.getItem('regid') : ""
-    let lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
-    let lgn1 = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
-    let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
+    var obj = {}
+    var delet = {}
     let value11 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : {}
     let value12 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : {}
     var cont = localStorage.getItem('true') ? localStorage.getItem('true') : ""
     let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : {}
+    let addres_id = localStorage.getItem("addres_id") ? localStorage.getItem("addres_id") : {}
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
+    let check_dlt = localStorage.getItem("check_dlt") ? localStorage.getItem("check_dlt") : {}
     let changeaddr = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
     const [address, setAddress] = React.useState({})
     const [pincods, setpincod] = React.useState({
         pincod: ""
     })
+    const { loading: addresloading, error: addreserror, data: addresData, makeRequestCod: addresmakeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     const [values, setValues] = React.useState({
         addressOne: {
             firstname: "",
@@ -54,28 +57,40 @@ const Addressforms = () => {
                 pinerr1: "",
             },
         },
-        addrs: (localStorage.getItem("valuessetdata") || changeaddr) ? false : true,
+        addrs: true,
         // addrs: true,
         checkValue: true,
         checkValue1: true,
-        // changeaddr:false
-
+        addressvalues: null,
+        edit_addresId: false,
+        Id: "",
+        Id2: ""
     });
-    // useEffect(() => {
-    //     if (localStorage.getItem("valuessetdata") || changeaddr.length > 0) {
-    //         const stat = values.addrs
-    //         setValues({
-    //             stat: false,
-    //             ...values,
-    //         })
-    //     }
-    // }, [])
     var addObj = {};
     addObj["user_id"] = user_id
-    addObj["cart_id"] = cart_id
+    addObj["cart_id"] = ""
     addObj["isguestlogin"] = cont ? false : true
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addaddress', {}, false);
+    const { makeFetch: deleteaddress, } = useNetworkRequest('/deleteaddress', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
+    useEffect(() => {
+        debugger
+        var a = addresData ? addresData : ""
+        if (JSON.stringify(a).length > 10) {
+            values["addressvalues"] = addresData
+            values["addrs"] = false
+            setValues({
+                values,
+                ...values
+            })
+        }
+    }, [addresData])
+    React.useEffect(() => {
+        if (user_id.length > 0) {
+            obj['userprofileId'] = user_id
+            addresmakeRequestCod(obj);
+        }
+    }, [])
     useEffect((event) => {
         const a = CodData.data ? CodData.data.allPincodeMasters : "";
         // alert(JSON.stringify(CodData))
@@ -89,7 +104,7 @@ const Addressforms = () => {
                     values['addressOne']['country'] = res1
                     values['addressOne']['city'] = res2
 
-                } else {
+                } if (pincods.pincod === "pincode2") {
                     values['addressTwo']['state'] = res
                     values['addressTwo']['country'] = res1
                     values['addressTwo']['city'] = res2
@@ -124,63 +139,112 @@ const Addressforms = () => {
             const val = values.addressOne.pincode || values.addressTwo.pincode
             var variab = {}
             variab["pincode"] = value
-            if (value.length > 5 || variab !== undefined) {
+            if (value.length > 5) {
                 // alert(JSON.stringify(value))
                 if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
                     makeRequestCod(variab);
                 }
             }
-            // if (pincods.pincod === "pincode1") {
-            //     values["addressOne"]['errortext']['pinerr'] = ""
-            // } if(pincods.pincod === "pincode2") {
-            //     values["addressTwo"]['errortext']['pinerr1'] = ""
-            // }
         }
-        // window.cache[type] = true
         pincods["pincod"] = pincod
         setpincod({ ...pincods, pincods })
         setValues({ ...values, values })
     }
-    const handleSubmit = (e) => {
-        const val = values.addressOne.pincode || values.addressTwo.pincode
-        // e.preventDefault()
-        // if (val.length < 5) {
-        //     if (pincods.pincod === "pincode1") {
-        //         debugger
-        //             values["addressOne"]['errortext']['pinerr'] = "Your pincode is !e"
-        //     } else {
-        //             values["addressTwo"]['errortext']['pinerr1'] = "Your pincode is !e"
-        //     }
-        //     return false
-        // }
-        var a1 = values.addressOne
-        var a2 = values.addressTwo
-        // if (a1 == a1) {
-        //     addObj['address'] = [a1];
-        // } else {
-        if (values.checkValue == true) {
-            // setAddress(a1)
-            addObj['address'] = [a1];
-        } if (values.checkValue == false) {
-            // setAddress({ a1, a2 })
-            addObj['address'] = [a1, a2];
-            // }
-        }
-        makeFetch(addObj);
-        // window.location.reload()
-    }
 
+    const handleSubmit = (e) => {
+        debugger
+        if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length < 5) {
+            window.location.reload();
+            obj['userprofileId'] = user_id
+            var addressOne = values.addressOne
+            var addressTwo = values.addressTwo
+            if (addressOne.addressline1 === addressTwo.addressline1) {
+                values["addressOne"]["addresstype"] = 3
+                setValues({
+                    values,
+                    ...values,
+                })
+                addObj['address'] = [addressOne];
+                return false
+            } else {
+                if (values.checkValue === true) {
+                    addObj['address'] = [addressOne];
+                } if (values.checkValue === false) {
+                    addObj['address'] = [addressOne, addressTwo];
+                }
+            }
+            if (values.edit_addresId === true) {
+                addObj["id"] = addres_id
+                delet["id"] = addres_id
+            } else {
+                addObj["id"] = ""
+            }
+            makeFetch(addObj);
+            addresmakeRequestCod(obj);
+        } else {
+            alert("allowed the five address only")
+            window.location.reload();
+        }
+    }
+    const selectaddreses = (val_addrs, num) => {
+        debugger
+        addObj["cart_id"] = cart_id
+        if (values.checkValue1 === true) {
+            alert("your address send on succesfully")
+        }
+        if (values.checkValue1 === false) {
+            if (num === 2) {
+                values["Id"] = val_addrs && val_addrs.id
+                setValues({
+                    values,
+                    ...values,
+                })
+                alert("please select your shipping address")
+            } else {
+                if (num === 1) {
+                    values["Id2"] = val_addrs && val_addrs.id
+                    setValues({
+                        values,
+                        ...values,
+                    })
+                    alert("please select your billing address")
+                }
+            }
+            if ((values && values.Id && values.Id.length > 0) && (values && values.Id2 && values.Id2.length > 0)) {
+                alert("your address send on succesfully")
+                // changePanel(3)
+            }
+            debugger
+            // if (values.checkValue1 === true) {
+
+            // }
+
+        }
+    }
+    const Delete_address = () => {
+        if (check_dlt === false) {
+            if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 1) {
+                delet["id"] = addres_id
+                deleteaddress(delet)
+            } else {
+                alert('Address already in use')
+            }
+            return false
+        } else {
+            delet["id"] = addres_id
+            deleteaddress(delet)
+        }
+
+    }
     const handleKeyPress = (e, isNumber) => {
         if (isNumber) {
             if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
         }
     };
     const redirectForm1 = (event) => {
-        lgn = {
-            addressOne: "",
-            addressTwo: ""
-        }
-        // if (Object.keys(value11&&value12).length > 0) {
+        debugger
+        values["addressOne"] = ""
+        values["addressTwo"] = ""
         value11 = {
             addressOne: {
                 firstname: "",
@@ -216,47 +280,32 @@ const Addressforms = () => {
                     pinerr1: "",
                 },
             },
-            addrs: (localStorage.getItem("valuessetdata") || changeaddr) ? false : true,
-            // addrs: true,
-            checkValue: true,
-            checkValue1: true,
+            addrs: true,
         }
+        values["addrs"] = true
         setValues({
-            ...value11,
-            // ...lgn,
+            values,
             ...values,
-            addrs: !values.addrs
+            ...value11,
+            // addrs: !values.addrs
         })
     }
-    const redirectForm = (event) => {
-        value11 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : ""
-        value12 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : ""
-        lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
-        if (Object.keys(lgn || lgn1).length > 0) {
-            lgn = {
-                addressOne: lgn ? lgn : "",
-                addressTwo: lgn1 ? lgn1 : ""
-            }
-        }
-        // if (Object.keys(value11&&value12).length > 0) {
-        if (Object.keys(value11 || value12).length > 0) {
-            value11 = {
-                addressOne: value11 ? value11 : "",
-                addressTwo: value12 ? value12 : ""
-                // }
-            }
-        }
+    const redirectForm = (val_addrs, num, isAdressOne, isAdressTwo, ) => {
+        debugger
+        values["addressOne"] = val_addrs
+        values["addressTwo"] = ""
+        values["checkValue"] = isAdressTwo
+        values["number"] = num
+        values["edit_addresId"] = isAdressOne
         setValues({
-            ...value11,
-            ...lgn,
-            // values,
-            // ...values,
-            addrs: !values.addrs
+            values,
+            ...values,
+            addrs: !values.addrs,
         })
         localStorage.setItem("isedit", !values.addrs ? 1 : 0)
         // localStorage.setItem('vale', JSON.stringify(values))
     }
-    const handle = { handleChange, handleSubmit, handleKeyPress, redirectForm1, redirectForm };
+    const handle = { Delete_address, handleChange, handleSubmit, handleKeyPress, redirectForm1, redirectForm, selectaddreses };
     return { values, setValues, handle }
 }
 export default Addressforms;
