@@ -28,7 +28,7 @@ import { CartContext } from '../../context/CartContext';
 import cart from '../../mappers/cart';
 import { CheckForCod } from 'queries/productdetail';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
-var variab = {}
+var variab = {} 
 const CartCardCheck = (props) => {
     const { loading, error, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     return <Component  {...props} CodData={CodData} makeRequestCod={makeRequestCod} />
