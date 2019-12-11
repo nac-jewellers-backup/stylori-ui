@@ -77,7 +77,6 @@ const useRating = (props) => {
                     // alert(JSON.stringify(variab))
                 }
                 values['user_id'] = user_id
-                
                 var a = window.location.search.split('=')
                 var b = a[1].split('-')[0]
                 values['product_id'] = b
@@ -112,9 +111,7 @@ const useRating = (props) => {
     }
     const handelSubmit = (e, props) => {
         var rats = props.ratingcounts.ratingcounts ? props.ratingcounts.ratingcounts : ""
-        
-        if (rats > 0 && values && values.title !== "" &&
-            values && values.message !== "") {
+        if (rats > 0 || rats !== "") {
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
             if (user_id.length > 0) {
                 // alert(JSON.stringify(data.message))

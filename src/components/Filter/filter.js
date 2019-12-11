@@ -22,11 +22,11 @@ import { FilterOptionsContext } from 'context'
 import { NetworkContext } from 'context/NetworkContext';
 import { PRODUCTLIST, conditions, seoUrlResult } from 'queries/productListing';
 const PersistentDrawerLeft = (props) => {
-  const { setSort, setFilters, setloadingfilters, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
+  const { setSort, setFilters, setloadingfilters, setPriceMax,setPriceMin, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
   const loc = window.location.search
   const { NetworkCtx } = React.useContext(NetworkContext);
 
-  return <Component setSort={setSort} setFilters={setFilters} setloadingfilters={setloadingfilters} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort}
+  return <Component setSort={setSort}  setFilters={setFilters} setloadingfilters={setloadingfilters} setPriceMax={setPriceMax} setPriceMin={setPriceMin} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort}
     uri={NetworkCtx.graphqlUrl}
     {...props} />
 }
@@ -41,11 +41,11 @@ class Component extends React.Component {
       CardRadio: false,
       checked: {
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
-        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {}
+        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {},pricemax: 0, pricemin: 0
       },
       checkedArrayObj: {
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
-        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {}
+        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {},pricemax: 0, pricemin: 0
       },
       selected: [],
       filtercheck: '',
@@ -54,6 +54,7 @@ class Component extends React.Component {
       numOne: '',
       numTwo: '',
       showMore: 4,
+      Price_button_click:false,
       chipData: [
         { key: '', label: '' },
       ],
@@ -61,12 +62,18 @@ class Component extends React.Component {
 
   }
   componentDidMount() {
+    var {checked, numOne, numTwo} = this.state
     console.log('price_props', typeof this.props.data[0].subFilter['Price Range'])
-    var numberOne = Number(this.props.data[0].subFilter['Price Range'].min);
-    var numberTwo = Number(this.props.data[0].subFilter['Price Range'].max);
-    var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(numberOne));
-    var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(numberTwo));
-    this.setState({ numOne: numOne, numTwo: numTwo })
+    var price_min = Number(this.props.data[0].subFilter['Price Range'].min);
+    var price_max = Number(this.props.data[0].subFilter['Price Range'].max);
+    var _price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_min));
+    var _price_max = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_max));
+    
+    checked['pricemax'] = _price_max
+    checked['pricemin'] = _price_min
+    this.setState(checked)
+    this.setState({ numOne: _price_min, numTwo: _price_max })  
+    
       
     
 
@@ -195,7 +202,7 @@ class Component extends React.Component {
       var numberTwo = this.props.data[0].subFilter['Price Range'][0] ? this.props.data[0].subFilter['Price Range'][0].max : 0;
       var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(numberOne));
       var numTwo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(numberTwo));
-      this.setState({ numOne: numOne, numTwo: numTwo })
+      this.state.Price_button_click === false && this.setState({ numOne: numOne, numTwo: numTwo })
       // if( this.props.data[0].subFilter['Price Range'].length > 0 && this.props.data[0].subFilter['Price Range'][0] !== undefined){ 
       //   this.props.setFilters({pricemax:numberTwo, pricemin:numberOne})}  
     }
@@ -358,27 +365,34 @@ class Component extends React.Component {
   };
 
 
-  onCurrencyChange = (e) => {
-    var numberOne;
-    var numberTwo;
+  onCurrencyChange_click = (e) => {
+    const { checked } = this.state
+    this.setState({Price_button_click:true})
+    var _price_min;
+    var _price_max;
     if (isNaN(Number((document.getElementById('num1').value).charAt(0)))) {
-      numberOne = Number(((document.getElementById('num1').value).substr(1)).replace(/,/g, ''));
+      _price_min = Number(((document.getElementById('num1').value).substr(1)).replace(/,/g, ''));
     }
     else {
 
-      numberOne = Number((document.getElementById('num1').value).replace(/,/g, ''));
+      _price_min = Number((document.getElementById('num1').value).replace(/,/g, ''));
     }
     if (isNaN(Number((document.getElementById('num2').value).charAt(0)))) {
-      numberTwo = Number(((document.getElementById('num2').value).substr(1)).replace(/,/g, ''));
+      _price_max = Number(((document.getElementById('num2').value).substr(1)).replace(/,/g, ''));
     }
     else {
 
-      numberTwo = Number((document.getElementById('num2').value).replace(/,/g, ''));
+      _price_max = Number((document.getElementById('num2').value).replace(/,/g, ''));
     }
-    var numOnee = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(numberOne));
-    var numTwoo = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(numberTwo));
-    this.setState({ numOne: numOnee, numTwo: numTwoo })
+    var price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(_price_min));
+    var price_max = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(_price_max));
+    
 
+    var pricemin = Number(price_min.substr(2).replace(/\,/g,''))
+    var pricemax =  Number(price_max.substr(2).replace(/\,/g,''))
+    this.setState(checked)
+    this.setState({ numOne: price_min, numTwo: price_max },() =>{this.props.setPriceMax(pricemax);this.props.setPriceMin(pricemin)})
+    console.log('_checked_checked',checked)
   }
   txtFieldChange(e) {
     if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
@@ -470,7 +484,7 @@ class Component extends React.Component {
                             />
                           </Grid>&nbsp;
             <Grid item xs={3}>
-                            <Button variant="contained" className={`price-btn ${classes.colorMainBackground}`} onClick={() => this.onCurrencyChange()}>Go</Button>
+                            <Button variant="contained" className={`price-btn ${classes.colorMainBackground}`} onClick={() => this.onCurrencyChange_click()}>Go</Button>
                           </Grid>
                         </Grid>
                       </div>

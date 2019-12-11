@@ -1,4 +1,7 @@
-import { async } from "q"
+import React from 'react'
+import { GlobalContext } from 'context'
+
+
 
 export const resolutions = [
   // { res: '318x318', size: '375w' },
@@ -82,15 +85,6 @@ export const filterTransSkuGenerator = (type, value) =>{
   }
 
 }
-
-// "filterTransSku": {
-//   "purity": {
-//     "equalTo": "55K"
-//   }
-// },
-
-
-
 async function supportsWebp() {
   if (!window.createImageBitmap) return false;
   
@@ -98,19 +92,32 @@ async function supportsWebp() {
   const blob = await fetch(webpData).then(r => r.blob());
   return createImageBitmap(blob).then(() => true, () => false);
 }
-export const lambda_func_front_end =async () =>{
-  
-    var browser_type = null
+
+//  const { GlobalCtx, setGlobaCtx } = React.useContext(GlobalContext);
+
+  const lambda_func_front_end = async() =>{
+  // const { GlobalCtx, setGlobaCtx } = React.useContext(GlobalContext);
+  var browser_type = null
   var window_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
   var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
   
+  await(async () => {
     if(await supportsWebp()) {
       console.log('does support');
       browser_type = '.webp'
     }
     else {
       console.log('does not support');
-      browser_type = '.jpeg'
-    } 
-    return({browser_type, window_width})
+      browser_type = '.jpg'
+    }
+  })();
+ var browserDetails = {}
+ browserDetails['browser_type'] = browser_type
+ browserDetails['browser_width'] = window_width
+  localStorage.setItem('browserDetails',JSON.stringify(browserDetails))
+  // localStorage.setItem('screen_width',window_width)
+  // await setGlobaCtx({browser_type:GlobalCtx.browser_type})
+  // return await {browser_type, window_width}
 }
+
+lambda_func_front_end()
