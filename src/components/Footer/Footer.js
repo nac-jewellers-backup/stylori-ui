@@ -65,7 +65,7 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function Footer(props) {
-
+    const silver = props.silver
     const classes = useStyles();
     const footerData = [
 
@@ -83,11 +83,12 @@ export default function Footer(props) {
         >
 
             {/* footer pink color starts */}
-            <Grid container item style={{ marginBottom: '-5.5%', zIndex: '4' }}>
-                <Grid item xs="12" >
-                    <img src={cartoonFooter} width="100%" height="auto" alt="noImage" />
-                </Grid>
-            </Grid>
+            {silver ? "" : <>
+                <Grid container item style={{ marginBottom: '-5.5%', zIndex: '4' }}>
+                    <Grid item xs="12" >
+                        <img src={cartoonFooter} width="100%" height="auto" alt="noImage" />
+                    </Grid>
+                </Grid></>}
 
             <Grid container item className={`${classes.colorMain} ${classes.paddingSpace} ${classes.colorWhite}`} xs={12}
 

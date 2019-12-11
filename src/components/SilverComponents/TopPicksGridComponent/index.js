@@ -5,7 +5,7 @@ import { useStyles } from './style'
 export const TopPicksGridComponent = (props) => {
     const classes = useStyles();
     return (
-        <Grid container xs={12} spacing={2} style={{ margin: "20px 0px 20px 0px", padding: "24px 5px 10px 10px" }} justify="center">
+        <Grid container xs={12} spacing={2} style={{ margin: "40px 0px 40px 0px", padding: "40px 5px 10px 10px" }} justify="center">
             <Grid item xs={12} sm={12} md={3} lg={3} xl={3} spacing={2}>
                 <img src={props.data[0]["topPicksOne"]} style={{ width: '100%', height: '100%' }} className={`${classes.img}`} />
             </Grid>

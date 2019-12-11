@@ -4,6 +4,7 @@ import { Grid, Container } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import ProductModal from 'components/SilverComponents/ProductModal'
 import MultipleSections from 'components/SilverComponents/MultipleSections'
+import Footer from "components/Footer/Footer";
 
 class HomeStylori extends React.Component {
     constructor(props) {
@@ -21,6 +22,9 @@ class HomeStylori extends React.Component {
                     <ProductModal />
                     <MultipleSections />
                 </Container>
+                <Grid item>
+                    <Footer silver={true} />
+                </Grid>
             </Grid>
         );
     }

@@ -27,6 +27,15 @@ const dataCarouselFeature = {
     dotsClass: "featureCarousel",
 }
 
+const datacaroTestimony = {
+    dots: true,
+    infinite: true,
+    autoplay: false,
+    speed: 2000,
+    fade: false,
+    arrows: false,
+    dotsClass: "featureCarousel",
+}
 export const fadeImagessublist = [
     { img: `${img1}`, title: "EVERYDAY", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ", price: "98.89789" },
     { img: `${img2}`, title: "FOLKLORE", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ", price: "98.89789" },
@@ -42,6 +51,12 @@ const Featured = ["https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1F
     "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
 ]
+
+const testimonycarodata = [{
+    Content: "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown ",
+    name: "Selvan",
+location:'Chennai'}]
 export const TopPicksimages = [{ topPicksOne, topPicksTwo, topPicksThree, topPicksFour, topPicksFive }]
 
 export const FeaturedCarousel = [{ settings: dataCarouselFeature, images: Featured }]
+export const testimonyCarousel = [{ settings: datacaroTestimony, images: testimonycarodata }]
