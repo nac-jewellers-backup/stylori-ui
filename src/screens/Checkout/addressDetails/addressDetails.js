@@ -32,7 +32,7 @@ class Addressdetails extends React.Component {
                     {values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.map((val_addrs1, index) => 
           <>
                         <Grid item xs={12} lg={6} style={{ paddingRight: "15px" }}>
-                            <div className='card-adrs wd' className={(values.Id === val_addrs1.id) ? "address_card_disabled" : ""}
+                            <div className='card-adrs wd' className={(values.Id === val_addrs1.id)||(values.Id2 === val_addrs1.id) ? "address_card_disabled" : ""}
                                 style={{ marginTop: "5px" }}>
                                 <h4 class="card-title">
                                     <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
@@ -98,7 +98,7 @@ class Addressdetails extends React.Component {
                                         <Grid item xs={12} lg={6} style={{ paddingRight: "15px" }}>
                                             <h5 className='title'> Billing Address</h5><br />
                                             <div className='card-adrs wd'
-                                                style={{ marginTop: "5px" }} className={(values.Id2 === val_addrs2.id) ? "address_card_disabled" : ""}>
+                                                style={{ marginTop: "5px" }} className={(values.Id2 === val_addrs2.id)||(values.Id === val_addrs2.id) ? "address_card_disabled" : ""}>
                                                 <h4 class="card-title">
                                                     <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                                     <span class="address-name">

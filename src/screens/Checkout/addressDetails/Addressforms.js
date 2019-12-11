@@ -170,7 +170,11 @@ const Addressforms = (changePanel) => {
                 if (values.checkValue === true) {
                     addObj['address'] = [addressOne];
                 } if (values.checkValue === false) {
+                  if(values.edit_addresId===true){
+                    addObj['address'] = [addressOne];
+                  }else{
                     addObj['address'] = [addressOne, addressTwo];
+                  }
                 }
             }
             if (values.edit_addresId === true) {
@@ -185,7 +189,9 @@ const Addressforms = (changePanel) => {
             addresmakeRequestCod(obj);
         }
         else {
-            alert("allowed the five address only")
+            if (values.edit_addresId === false) {
+                alert("allowed the five address only")
+            }
             // window.location.reload();
         }
         window.location.reload();

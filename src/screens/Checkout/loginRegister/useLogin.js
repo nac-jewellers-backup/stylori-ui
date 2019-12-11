@@ -75,6 +75,7 @@ const useLogin = (changePanel) => {
             val["addrs"] = false
             addressetValues(val)
             changePanel(2)
+            window.location.reload();
         }
     }, [addresData])
     // React.useEffect(() => {
