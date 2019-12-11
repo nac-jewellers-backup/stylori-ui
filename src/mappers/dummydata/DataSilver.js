@@ -6,15 +6,25 @@ import topPicksOne from '../../assets/topPicksOne.jpg'
 import topPicksTwo from '../../assets/topPicksTwo.jpg'
 import topPicksThree from '../../assets/topPicksThree.jpg'
 import topPicksFour from '../../assets/topPicksFour.jpg'
-import topPicksFive from '../../assets/topPicksFive.jpg'
+// import topPicksFive from '../../assets/topPicksFive.jpg'
 
+const topPicksFive = "https://assets-cdn.stylori.com/552x276/images/homepage/Stylori_ Daisy Days.jpg"
 const dataCarousel = {
-    dots: false,
+    dots: true,
     infinite: true,
     autoplay: true,
-    speed: 1000,
-    fade: true,
+    speed: 2000,
+    fade: false,
     arrows: false
+}
+const dataCarouselFeature = {
+    dots: true,
+    infinite: true,
+    autoplay: false,
+    speed: 2000,
+    fade: false,
+    arrows: false,
+    dotsClass: "featureCarousel",
 }
 
 export const fadeImagessublist = [
@@ -28,7 +38,10 @@ export const titleContiner = ['TOP PICKS', 'FEATURED', 'TESTIMONIALS']
 
 
 
-const Featured = [topPicksOne, topPicksTwo, topPicksThree, topPicksFour, topPicksFive]
+const Featured = ["https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
+]
 export const TopPicksimages = [{ topPicksOne, topPicksTwo, topPicksThree, topPicksFour, topPicksFive }]
 
-export const FeaturedCarousel = [{ settings: dataCarousel, images: Featured }]
+export const FeaturedCarousel = [{ settings: dataCarouselFeature, images: Featured }]

@@ -4,6 +4,7 @@ import Title from '../ProductTitle'
 import { TopPicksGridComponent } from '../TopPicksGridComponent/index'
 import { useDummyRequest } from '../../../hooks';
 import { HomedataSilver } from '../../../mappers';
+import { FeaturedGridComponent } from '../FeaturedGridComponent'
 
 const MultipleSections = (props) => {
     const { titleContiner, TopPicksimages, FeaturedCarousel } = props.data;
@@ -18,8 +19,8 @@ const MultipleSections = (props) => {
                             <Title title={title} />
 
                             {title == 'TOP PICKS' && <TopPicksGridComponent data={TopPicksimages} />}
-                            {/* {title=='FEATURED' &&<FeaturedGridComponent data={FeaturedCarousel}/>} */}
-                            {/* component */}
+                            {title == 'FEATURED' && <FeaturedGridComponent data={FeaturedCarousel} />}
+                            {title == 'TESTIMONIALS' && <FeaturedGridComponent data={FeaturedCarousel} />}
 
                         </>
                     );

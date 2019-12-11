@@ -16,10 +16,10 @@ const ProductModal = (props) => {
     const { fadeImagessublist } = props.data;
     const classes = useStyles();
     return (
-        <Grid container xs={12} style={{ marginTop: "5%" }} justify="space-evenly" >
+        <Grid container xs={12} style={{ margin: "3% 0% 3% 0%" }} justify="space-evenly" >
             {fadeImagessublist.map(tile => {
                 return (
-                    <Grid item xs={12} sm={5} md={5} lg={5} xl={5} className={`ProductGrids ${classes.ProductGrids}`}>
+                    <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={`ProductGrids ${classes.ProductGrids}`}>
                         <Hidden smDown>
                             <Slideshow class="subslider-carousel"
                                 dataCarousel={dataCarousel} hoverlist={[tile]} hover={false} hovereffect={true} type='hover' />

@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles(theme => ({
 
     ProductGrids: {
-        paddingBottom: '5%'
+        padding: "2%"
     },
     productCardDetail: {
         paddingTop: '8%',
