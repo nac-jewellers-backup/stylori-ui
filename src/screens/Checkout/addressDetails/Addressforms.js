@@ -9,11 +9,12 @@ const Addressforms = (changePanel) => {
     // var regid = localStorage.getItem('regid') ? localStorage.getItem('regid') : ""
     var obj = {}
     var delet = {}
+    var addObjall = {}
     let value11 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : {}
     let value12 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : {}
     var cont = localStorage.getItem('true') ? localStorage.getItem('true') : ""
     let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : {}
-    let addres_id = localStorage.getItem("addres_id") ? localStorage.getItem("addres_id") : {}
+    // let addres_id = localStorage.getItem("addres_id") ? localStorage.getItem("addres_id") : {}
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
     let check_dlt = localStorage.getItem("check_dlt") ? localStorage.getItem("check_dlt") : {}
     let changeaddr = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
@@ -64,13 +65,13 @@ const Addressforms = (changePanel) => {
         addressvalues: null,
         edit_addresId: false,
         Id: "",
-        Id2: ""
+        Id2: "",
+        addres_id: ""
     });
     var addObj = {};
-    addObj["user_id"] = user_id
-    addObj["cart_id"] = ""
-    addObj["isguestlogin"] = cont ? false : true
-    const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addaddress', {}, false);
+    addObjall["isguestlogin"] = cont ? false : true
+    const { makeFetch } = useNetworkRequest('/adduseraddress', {}, false);
+    const { data, error, loading, makeFetch: makeFetchall, mapped, status } = useNetworkRequest('/addaddress', {}, false);
     const { makeFetch: deleteaddress, } = useNetworkRequest('/deleteaddress', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     useEffect(() => {
@@ -154,7 +155,6 @@ const Addressforms = (changePanel) => {
     const handleSubmit = (e) => {
         debugger
         if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length < 5) {
-            window.location.reload();
             obj['userprofileId'] = user_id
             var addressOne = values.addressOne
             var addressTwo = values.addressTwo
@@ -174,23 +174,38 @@ const Addressforms = (changePanel) => {
                 }
             }
             if (values.edit_addresId === true) {
-                addObj["id"] = addres_id
-                delet["id"] = addres_id
+                addObj["id"] = values && values.addres_id
+                delet["id"] = values && values.addres_id
             } else {
                 addObj["id"] = ""
             }
+            // addObj["cart_id"] = ""
+            addObj["user_id"] = user_id
             makeFetch(addObj);
             addresmakeRequestCod(obj);
-        } else {
-            alert("allowed the five address only")
-            window.location.reload();
         }
+        else {
+            alert("allowed the five address only")
+            // window.location.reload();
+        }
+        window.location.reload();
     }
     const selectaddreses = (val_addrs, num) => {
         debugger
-        addObj["cart_id"] = cart_id
+        var addressOne = values.addressOne
+        var addressTwo = values.addressTwo
         if (values.checkValue1 === true) {
+            values["Id"] = val_addrs && val_addrs.id
+            setValues({
+                values,
+                ...values,
+            })
+            addObjall["user_id"] = user_id
+            addObjall["cart_id"] = cart_id
+            addObjall['address'] = [addressOne];
+            makeFetchall(addObjall);
             alert("your address send on succesfully")
+            changePanel(3)
         }
         if (values.checkValue1 === false) {
             if (num === 2) {
@@ -211,8 +226,12 @@ const Addressforms = (changePanel) => {
                 }
             }
             if ((values && values.Id && values.Id.length > 0) && (values && values.Id2 && values.Id2.length > 0)) {
+                addObjall["user_id"] = user_id
+                addObjall["cart_id"] = cart_id
+                addObjall['address'] = [addressOne, addressTwo];
                 alert("your address send on succesfully")
-                // changePanel(3)
+                makeFetchall(addObjall);
+                changePanel(3)
             }
             debugger
             // if (values.checkValue1 === true) {
@@ -224,14 +243,14 @@ const Addressforms = (changePanel) => {
     const Delete_address = () => {
         if (check_dlt === false) {
             if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 1) {
-                delet["id"] = addres_id
+                delet["id"] = values && values.addres_id
                 deleteaddress(delet)
             } else {
                 alert('Address already in use')
             }
             return false
         } else {
-            delet["id"] = addres_id
+            delet["id"] = values && values.addres_id
             deleteaddress(delet)
         }
 
@@ -292,11 +311,19 @@ const Addressforms = (changePanel) => {
     }
     const redirectForm = (val_addrs, num, isAdressOne, isAdressTwo, ) => {
         debugger
+        if (val_addrs && val_addrs.id.length > 0) {
+            values["addres_id"] = val_addrs && val_addrs.id
+            setValues({
+                values,
+                ...values,
+            })
+        }
         values["addressOne"] = val_addrs
         values["addressTwo"] = ""
         values["checkValue"] = isAdressTwo
         values["number"] = num
         values["edit_addresId"] = isAdressOne
+        values["addressOne"]["contactno"] = val_addrs && val_addrs.contactNumber&&val_addrs.contactNumber
         setValues({
             values,
             ...values,

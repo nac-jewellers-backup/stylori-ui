@@ -22,15 +22,15 @@ class Addressdetails extends React.Component {
         //     window.localStorage.removeItem('valuessetdata');
         //     window.localStorage.setItem('valuessetdata', JSON.stringify(local_storage));
         // }
-        debugger
         // const back_color = () => {
         // }
+        debugger
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>
                     <h5 className='title'> Shipping Address</h5>
-                    {values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.map((val_addrs1, index) => (
-                       <>
+                    {values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.map((val_addrs1, index) => 
+          <>
                         <Grid item xs={12} lg={6} style={{ paddingRight: "15px" }}>
                             <div className='card-adrs wd' className={(values.Id === val_addrs1.id) ? "address_card_disabled" : ""}
                                 style={{ marginTop: "5px" }}>
@@ -68,7 +68,7 @@ class Addressdetails extends React.Component {
                                                </p>
                                 <div className="card-foo">
                                     <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                        +91 {val_addrs1.contactno}
+                                        +91 {val_addrs1.contactNumber}
                                     </span> <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                         this.props.selectaddreses(val_addrs1, 1)
                                         // this.props.changevalue(3)
@@ -77,7 +77,7 @@ class Addressdetails extends React.Component {
                             </div>
                         </Grid><br/>
                        </>
-                    ))}
+                    )}
                 </Grid>
                 {values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 5 ? "" :
                     <Button onClick={() => this.props.redirectForm1()} className={`add-new-address ${classes.normalfonts}`}>
@@ -132,7 +132,7 @@ class Addressdetails extends React.Component {
                                                    </p>
                                                 <div className="card-foo">
                                                     <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                                        +91 {val_addrs2.contactno}
+                                                        +91 {val_addrs2.contactNumber}
                                                     </span> <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                                         this.props.selectaddreses(val_addrs2, 2)
                                                         // this.props.changevalue(3)

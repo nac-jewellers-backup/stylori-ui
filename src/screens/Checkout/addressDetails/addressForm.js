@@ -33,7 +33,7 @@ const AddressComponent = (props) => {
                             {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? <h5 className='title'> Edit Address</h5> : ""}
                             <p class="form-group tp" style={{ width: "480px" }}>
                                 {/* {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <>{cl}</>} */}
-                                {values.hidebilling === true ? "" : <>{cl}</>}
+                                {values.edit_addresId === true ? "" : <>{cl}</>}
                                 {/* {JSON.stringify(values.errortext && values.errortext.pinerr)} */}
                             </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={5}>
@@ -171,7 +171,7 @@ const AddressComponent = (props) => {
                                 {/*  */}
                                 {/*  */}
                                 {/* {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <> */}
-                                {values.hidebilling === true ? "" : <>
+                                {values.edit_addresId === true ? "" : <>
                                     <Grid container item lg={1} />
                                     {!values.checkValue &&
                                         <Grid item xs={12} lg={5}>
