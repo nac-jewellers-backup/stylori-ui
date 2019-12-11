@@ -158,7 +158,7 @@ const Addressforms = (changePanel) => {
             obj['userprofileId'] = user_id
             var addressOne = values.addressOne
             var addressTwo = values.addressTwo
-            if (addressOne.addressline1 === addressTwo.addressline1) {
+            if (addressOne.addressline1 === addressTwo.addressline1 && addressOne.firstname === addressTwo.firstname && addressOne.pincode === addressTwo.pincode) {
                 values["addressOne"]["addresstype"] = 3
                 setValues({
                     values,
