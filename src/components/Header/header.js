@@ -13,6 +13,7 @@ import {
   IconButton,
   ListItem,
   ListItemText,
+  Container
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandLess from '@material-ui/icons/ExpandLess';
@@ -196,6 +197,7 @@ class Header extends Component {
                   <Grid item xs={12} className={`header-navbar-list ${classes.colorLight}`}
                     onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }}
                   >
+                    <Container maxWidthLg>
                     <nav
                     >
                       {/* <a href="" className={`${classes.colorLight}`} alt=""><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
@@ -225,6 +227,8 @@ class Header extends Component {
                         }))
                       }
                     </nav>
+                     </Container> 
+                    
                     {
 
                       this.state.Menuopen && menuLists[this.state.listHoverItem] ?

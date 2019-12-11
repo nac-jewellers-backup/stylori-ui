@@ -24,8 +24,6 @@ class Addressdetails extends React.Component {
         // }
         debugger
         // const back_color = () => {
-
-
         // }
         return (
             <div className='pt-sm'>

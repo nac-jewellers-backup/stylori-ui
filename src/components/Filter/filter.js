@@ -71,21 +71,21 @@ class Component extends React.Component {
     
 
     // This is used for checking the check boxes if we copy and pasted the url to new tab or new window
-    if (window.location.search) {
+    // if (window.location.search) {
 
-      let urlSearchparams = window.location.search;
+    //   let urlSearchparams = window.location.search;
 
-      let urlSearchparamsDecode = decodeURI(urlSearchparams)
+    //   let urlSearchparamsDecode = decodeURI(urlSearchparams)
 
-      let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
+    //   let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
 
-      let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
+    //   let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
 
-      let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
-      let mapUrlParamsSplitEqual = urlSplitparamsEqual();
-      this.handleChange(() => { }, true, () => { }, mapUrlParamsSplitEqual)
+    //   let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
+    //   let mapUrlParamsSplitEqual = urlSplitparamsEqual();
+    //   this.handleChange(() => { }, true, () => { }, mapUrlParamsSplitEqual)
 
-    }
+    // }
     // This is used for checking the check boxes if we copy and pasted the url to new tab or new window 
     // *****Ends*****
     var paramsfilter;
@@ -100,7 +100,7 @@ class Component extends React.Component {
           } else {
             return Promise.reject(new Error(response.statusText))
           }
-        }
+        } 
 
         function json(response) {
           return response.json()

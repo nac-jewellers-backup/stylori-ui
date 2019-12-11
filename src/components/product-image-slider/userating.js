@@ -77,7 +77,7 @@ const useRating = (props) => {
                     // alert(JSON.stringify(variab))
                 }
                 values['user_id'] = user_id
-                debugger
+                
                 var a = window.location.search.split('=')
                 var b = a[1].split('-')[0]
                 values['product_id'] = b
@@ -112,7 +112,7 @@ const useRating = (props) => {
     }
     const handelSubmit = (e, props) => {
         var rats = props.ratingcounts.ratingcounts ? props.ratingcounts.ratingcounts : ""
-        debugger
+        
         if (rats > 0 && values && values.title !== "" &&
             values && values.message !== "") {
             values["errortext"]["rateerr"] = ""
@@ -169,7 +169,7 @@ const useRating = (props) => {
                 values
             })
         } else {
-            debugger
+            
             if (values.title === "" && values['error'] && values['errortext']) {
                 values["errortext"]["ratetitle"] = "Enter review title"
                 values["error"]["ratetitle"] = true

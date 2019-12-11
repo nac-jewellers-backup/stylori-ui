@@ -13,7 +13,14 @@ export const
         fade: false,
         arrows: false,
         arrowsImg: true,
-        dotsClass: "slickdev"
+        dotsClass: "slickdev",
+        accessibility: true,
+        centerMode: false,
+        focusOnSelect: false,
+        pauseOnHover: false,
+        pauseOnDotsHover: false,
+        pauseOnFocus: true,
+        swipe: false
       },
       "data": [
         {
@@ -65,7 +72,14 @@ export const
           autoplay: false,
           fade: false,
           autoplaySpeed: false,
-          arrows: false
+          arrows: false,
+          accessibility: true,
+          centerMode: false,
+          focusOnSelect: false,
+          pauseOnHover: false,
+          pauseOnDotsHover: false,
+          pauseOnFocus: true,
+          swipe: false
         },
         "data": [
           {
@@ -160,7 +174,14 @@ export const
           arrows: false,
           arrowsImg: true,
           autoplay: false,
-          autoplaySpeed: 4000
+          autoplaySpeed: 4000,
+          accessibility: true,
+          centerMode: false,
+          focusOnSelect: false,
+          pauseOnHover: false,
+          pauseOnDotsHover: false,
+          pauseOnFocus: true,
+          swipe: false
         },
         "data": [
           {
@@ -211,7 +232,14 @@ export const
           autoplay: false,
           fade: false,
           autoplaySpeed: false,
-          arrows: false
+          arrows: false,
+          accessibility: true,
+          centerMode: false,
+          focusOnSelect: false,
+          pauseOnHover: false,
+          pauseOnDotsHover: false,
+          pauseOnFocus: true,
+          swipe: false
         },
         "data": [
           {

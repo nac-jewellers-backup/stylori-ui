@@ -105,7 +105,8 @@ class Component extends React.Component {
   }
   render() {
     const { classes, data } = this.props;
-    const { disabledstate } = this.state
+    const { disabledstate } = this.state;
+    debugger
     // const disabledstate = this.props.data.length < 24 ? 'disabled=true' : ''
     // console.log(dataCard)
     // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
