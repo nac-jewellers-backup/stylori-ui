@@ -4,11 +4,12 @@ import { Grid, Hidden, Typography, Button } from '@material-ui/core';
 import Slideshow from '../../../components/Carousel/carosul';
 import './index.css'
 import Quodes from '../../../assets/Quotes'
+import Arrows from '../../../assets/arrows'
 
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
-        backgroundColor: "#e8e8ea",
+
         margin: "50px 0px 0px 0px "
     },
     [theme.breakpoints.up('lg')]: {
@@ -35,19 +36,19 @@ const useStyles = makeStyles(theme => ({
     },
     textInner: {
         color: '#666666',
-        fontSize: '13px',
+        fontSize: '15px',
         lineHeight: '30px',
         maxHeight: "140px ",
         overflow: "hidden"
     },
     name: {
-        fontSize: '16px',
+        fontSize: '24px',
         fontWeight: 600,
-        color: "#394578"
+        color: "#606061"
     },
     namecountry: {
-        fontSize: "13px",
-        color: "#394578",
+        fontSize: "16px",
+        color: "#606061",
         paddingBottom: "55px"
     },
     excliconright: {
@@ -69,10 +70,28 @@ const useStyles = makeStyles(theme => ({
         width: "100px",
         fill: "#fff",
         float: 'right',
-        position: "absolute",
         bottom: 0,
         right: 0
 
+    },
+    imgleftGrid: {
+        width: "6%",
+        alignItems: "center",
+        justifyContent: "center",
+        display: "flex"
+    },
+    imgleft: {
+        width: "14px",
+        height: "12px",
+        transform: "rotate(180deg)",
+        fill: "  #949494",
+        cursor: "pointer"
+    },
+    imgRight: {
+        width: "14px",
+        height: "12px",
+        fill: "  #949494",
+        cursor: "pointer"
     }
 
 
@@ -92,34 +111,49 @@ export default function ImageGridList(props) {
     }
     return (
         <Grid container className={classes.root}>
-            <Grid item style={{ width: "100%", boxShadow: '10px 10px 5px #ccc' }}>
-                <Slideshow dataCarousel={props.data[0].settings} >
+            <Grid item className={classes.imgleftGrid}>
+                {/* <img onClick={() => previous()} className={classes.imgleft} /> */}
+                <div onClick={() => previous()}>
+                    <Arrows className={classes.imgleft} />
+                </div>
+            </Grid>
+            <Grid item style={{ width: "88%", boxShadow: '10px 10px 5px #ccc', backgroundColor: "#e8e8ea", }}>
+                <Slideshow dataCarousel={props.data[0].settings} sliderRef={slider}>
                     {props.data[0].images.map((val, Index) =>
-                        <Grid container>
+                        <Grid container style={{ height: "100%" }}>
                             <Grid item>
                                 <Quodes className={classes.Quodes} />
 
                             </Grid>
                             <Grid item className={classes.testimonialInner}>
-                                <Typography className={classes.textInner}>{val.Content}
+                                <Typography className={classes.textInner} >{val.Content}
                                 </Typography>
-                                <Grid className={classes.textInner}>
-                                    <Typography className={classes.name}>
-                                        {val.name}
-                                    </Typography>
-                                    <Typography className={classes.namecountry}>
-                                        {val.location}
-                                    </Typography>
+                                <Grid container className={classes.textInner}>
+                                    <Grid style={{ width: "50%" }} item>
+                                        <Typography className={classes.name}>
+                                            {val.name}
+                                        </Typography>
+                                        <Typography className={classes.namecountry}>
+                                            <i>{val.location}</i>
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item style={{ width: "50%" }}>
+                                        <Quodes className={classes.Quode1} />
+                                    </Grid>
+
                                 </Grid>
-                            </Grid>
-                            <Grid item >
-                                {/* <span className={classes.excliconright}></span> */}
-                                <Quodes className={classes.Quode1} />
                             </Grid>
 
                         </Grid>
                     )}
                 </Slideshow>
+            </Grid>
+            <Grid item className={classes.imgleftGrid}>
+                {/* <img onClick={() => next()} className={classes.imgRight} />
+             */}
+                <div onClick={() => next()}>
+                    <Arrows className={classes.imgRight} />
+                </div>
             </Grid>
         </Grid >
     );

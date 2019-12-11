@@ -2,6 +2,22 @@ import { makeStyles } from '@material-ui/core/styles';
 // import '../../fonts/font.css'
 export const useStyles = makeStyles(theme => ({
 
+    containerTop: {
+        display: 'flex',
+        backgroundColor: "#fff",
+        width: "100%",
+        margin: "3% 0% 3% 0%"
+    },
+    [theme.breakpoints.up('lg')]: {
+        containerTop: {
+            width: "1170px !important",
+            margin: "auto",
+            marginTop: "3%",
+            marginBottom: "1%",
+            backgroundColor: "#fff",
+        }
+    },
+
     ProductGrids: {
         padding: "2%"
     },

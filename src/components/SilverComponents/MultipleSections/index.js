@@ -6,12 +6,13 @@ import { useDummyRequest } from '../../../hooks';
 import { HomedataSilver } from '../../../mappers';
 import { FeaturedGridComponent } from '../FeaturedGridComponent'
 import Testimonialsmodel from '../TestimonialModel'
+import { useStyles } from './style.js'
 
 const MultipleSections = (props) => {
     const { titleContiner, TopPicksimages, FeaturedCarousel, testimonyCarousel } = props.data;
-
+    const classes = useStyles();
     return (
-        <Grid container xs={12} style={{ padding: "20px 0px 80px 0px" }}>
+        <Grid container className={classes.containerTop}>
             {
                 titleContiner.map(title => {
                     return (

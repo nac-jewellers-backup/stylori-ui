@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import ProductModal from 'components/SilverComponents/ProductModal'
 import MultipleSections from 'components/SilverComponents/MultipleSections'
 import Footer from "components/Footer/Footer";
+import CarosolTop from 'components/SilverComponents/SilvercarosolPhoto'
 
 class HomeStylori extends React.Component {
     constructor(props) {
@@ -18,10 +19,9 @@ class HomeStylori extends React.Component {
                 <Grid item style={{ width: "100%", position: 'sticky', top: 0, zIndex: 10000 }}>
                     <Header />
                 </Grid>
-                <Container maxWidth="md">
-                    <ProductModal />
-                    <MultipleSections />
-                </Container>
+                <CarosolTop />
+                <ProductModal />
+                <MultipleSections />
                 <Grid item>
                     <Footer silver={true} />
                 </Grid>

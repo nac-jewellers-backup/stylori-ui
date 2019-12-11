@@ -16,7 +16,7 @@ const ProductModal = (props) => {
     const { fadeImagessublist } = props.data;
     const classes = useStyles();
     return (
-        <Grid container xs={12} style={{ margin: "3% 0% 3% 0%" }} justify="space-evenly" >
+        <Grid container className={classes.containerTop} justify="space-evenly" >
             {fadeImagessublist.map(tile => {
                 return (
                     <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={`ProductGrids ${classes.ProductGrids}`}>
