@@ -293,11 +293,11 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
         if (window.location.search) {
             // const conditionFilters = conditions.generateFilters(paramObjects())
             // const conditionTransSkuFilters = conditions.generateTransSkuFilters(paramObjects())
-            debugger
+            
             const _paramsfilter = paramObjects()
             var conditionTransSkuFilters = {}
             var filtersss = _paramsfilter.filter(val=>{
-                debugger
+                
                 var a = Object.keys(val)
                 if(a[0] ==='MetalPurity')return a
                 if(a[0] === 'MetalColor')return a

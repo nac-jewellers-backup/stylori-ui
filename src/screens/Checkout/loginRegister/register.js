@@ -67,20 +67,25 @@ const RegisterComponent = (props) => {
                             />}
                         <label className='errtext'> {values.errortext && values.errortext.emerr}</label>
                         {paths ?
-                            <Input
-                                margin="normal"
-                                variant="outlined"
-                                type="password"
-                                name="password"
-                                value={values.password}
-                                error={values.error && values.error.passerr ? true : false}
-                                // helperText={values.errortext && values.errortext.passerr}
-                                placeholder="Enter your password"
-                                onChange={e => handlers.handleChange('password', e.target.value)}
-                                InputProps={{
-                                    readOnly: true,
-                                }}
-                            /> : <Input
+                            <Grid container spacing={12}>
+                                <Grid item lg={6} >
+                                    <Input
+                                        margin="normal"
+                                        variant="outlined"
+                                        type="password"
+                                        name="password"
+                                        value={"........"}
+                                        error={values.error && values.error.passerr ? true : false}
+                                        // helperText={values.errortext && values.errortext.passerr}
+                                        placeholder="Enter your password"
+                                        onChange={e => handlers.handleChange('password', e.target.value)}
+                                        InputProps={{
+                                            readOnly: true,
+                                        }}
+                                    /> </Grid>
+                                <Grid item lg={6} style={{ textAlign: "center",lineHeight:"66px",color:"#337ab7" }}>
+                                    <a> Change password </a> </Grid>
+                            </Grid> : <Input
                                 margin="normal"
                                 variant="outlined"
                                 type="password"

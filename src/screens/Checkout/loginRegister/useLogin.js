@@ -29,7 +29,7 @@ const useLogin = (changePanel) => {
     const { setValues: addressetValues } = Addressforms();
     const { loading: codloading, error: coderror, data: addresData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     React.useEffect(() => {
-        debugger
+        
         var ms = data && data.message
         if (ms && values['error'] && values['errortext']) {
             values['error']['passerr'] = true
@@ -64,7 +64,6 @@ const useLogin = (changePanel) => {
 
     }, [data])
     React.useEffect(() => {
-        debugger
         var a = addresData ? addresData : ""
         if (JSON.stringify(a).length > 10) {
             setCartFilters(obj1)
@@ -74,6 +73,7 @@ const useLogin = (changePanel) => {
             val["addressvalues"] = addresData
             val["addrs"] = false
             addressetValues(val)
+            localStorage.setItem("c_k_l",true)
             changePanel(2)
             window.location.reload();
         }
@@ -111,7 +111,7 @@ const useLogin = (changePanel) => {
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
-        debugger
+        
         if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'
@@ -133,7 +133,7 @@ const useLogin = (changePanel) => {
         let lastAtPos = values.email.lastIndexOf('@');
         let lastDotPos = values.email.lastIndexOf('.');
         if (!(lastAtPos < lastDotPos && lastAtPos > 0 && values.email.indexOf('@@') == -1 && lastDotPos > 2 && (values.email.length - lastDotPos) > 2)) {
-            debugger
+            
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'An email address must contain a single @/.'
             setValues({

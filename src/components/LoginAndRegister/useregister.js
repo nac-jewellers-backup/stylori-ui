@@ -3,6 +3,7 @@ import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { resetWarningCache } from 'prop-types';
+import { CartContext } from 'context'
 const useRegister = (changePanel, props) => {
     const [values, setValues] = React.useState({
         email: "",
@@ -29,6 +30,7 @@ const useRegister = (changePanel, props) => {
 
     const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     const { data, error, loading, makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
+    const { setCartFilters } = React.useContext(CartContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     useEffect(() => {
         var ms = data && data.message
@@ -43,8 +45,10 @@ const useRegister = (changePanel, props) => {
         } else {
             var v = data.user_profile_id ? data.user_profile_id : ""
             if (v.length > 0 && values['error'] && values['errortext']) {
+                localStorage.setItem("true", false)
                 values['error']['emerr'] = false
                 values['errortext']['emerr'] = ''
+                var user_id = data && data.user_profile_id
                 setValues({
                     ...values,
                     values,
@@ -57,6 +61,9 @@ const useRegister = (changePanel, props) => {
                 // }
                 localStorage.setItem("email", data.user.email)
                 localStorage.setItem("user_id", data.user_profile_id)
+                // localStorage.setItem("addres_id", data.user.id)
+                setValues({ user_id: data.user_profile_id })
+                setCartFilters({ user_id })
                 makeRequestCod(obj);
                 window.location.href = localStorage.getItem('review_location')
             }
@@ -64,7 +71,6 @@ const useRegister = (changePanel, props) => {
 
         //     obj['id'] = bb
         //     makeRequestCod(obj);
-        localStorage.setItem("true", false)
     }, [data])
     // useEffect(() => {
     //     var resin = CodData.data ? JSON.stringify(CodData.data) : ""
@@ -158,7 +164,6 @@ const useRegister = (changePanel, props) => {
         let lastAtPos = values.email.lastIndexOf('@');
         let lastDotPos = values.email.lastIndexOf('.');
         if (!(lastAtPos < lastDotPos && lastAtPos > 0 && values.email.indexOf('@@') == -1 && lastDotPos > 2 && (values.email.length - lastDotPos) > 2)) {
-            debugger
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'An email address must contain a single @/.'
             setValues({

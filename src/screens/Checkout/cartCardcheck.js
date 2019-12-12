@@ -44,7 +44,6 @@ class Component extends React.Component {
     }
 
     handleChange = panel => (event, expanded) => {
-        debugger
         // alert("va",JSON.stringify(panel))
             this.setState({
                 expanded: 'panel' + panel,

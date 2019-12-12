@@ -6,6 +6,7 @@ import { CartContext } from 'context'
 import cart from 'mappers/cart'
 import { useNetworkRequest } from 'hooks/index';
 var obj = {}
+let gut_lg = localStorage.getItem("gut_lg") ? JSON.parse(localStorage.getItem("gut_lg")) : {}
 
 class CashonDelivey extends React.Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class CashonDelivey extends React.Component {
 
     }
     makeFetch = async (props) => {
+        debugger
         const bb = this.props && this.props.dataCard1
         // if (bb.length <0) {
         //    return
@@ -32,10 +34,16 @@ class CashonDelivey extends React.Component {
         }).then(function (data) {
             console.log('data', data)
         });
-        window.location.pathname = "/jewellery"
         localStorage.removeItem("cartDetails")
         localStorage.removeItem("panel")
+        if (gut_lg === true) {
+            localStorage.removeItem("user_id")
+            localStorage.removeItem("cart_id")
+            localStorage.removeItem("isedit")
+            localStorage.removeItem("gut_lg")
+        }
         // }
+        window.location.pathname = "/jewellery"
     }
     componentDidUpdate(prevProps, prevState) {
         if (this.state.res_data !== prevState.res_data) {
