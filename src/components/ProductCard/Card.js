@@ -84,7 +84,6 @@ const imageOnError = (e, res) => {
 const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => (
   <div>
 
-<<<<<<< HEAD
     <LazyLoadImage
       alt={'props.data.title'}
       effect="blur"
@@ -102,25 +101,6 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
       onError={(e) => imageOnError(e, props.data.imageResolution)}
       title={props.data.title}
       onMouseOver={() => {
-=======
-      <LazyLoadImage
-           alt={'props.data.title'}
-           effect="blur"
-           src="https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg"
-           srcset={renderImages(props, cardstate)}
-           sizes="(max-width: 320px) 320w,
-                   (max-width: 480px) 375w,
-                   (max-width: 600px) 600w,
-                   (max-width: 992px) 768w,
-                   (max-width: 1440px) 1440w,
-                   (max-width: 2560px) 2560w,
-                   2560w
-                  
-       "
-       onerror="this.onerror=null;this.src='https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg';"
-       title={props.data.title}
-       onMouseOver={() => {
->>>>>>> 045049a85cc617b47222f615da2275e7a6889255
         callmouseover()
       }}
       onMouseOut={() => {
@@ -328,7 +308,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 const renderImages = (props, cardstate) => {
-<<<<<<< HEAD
 
   const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
 
@@ -338,16 +317,6 @@ const renderImages = (props, cardstate) => {
 }
 
 function Component(props) {
-=======
-  
-  const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
-  // console.info('props.data.image[filterType]',props.data.image[filterType]);
-  return props.data.image['hoverImage'].length === 0 ?"https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg" : props.data.image[filterType].map(imgs => `${imgs.img} ${imgs.size}`).toString()
-}
-
- function Component(props) {
-   
->>>>>>> 045049a85cc617b47222f615da2275e7a6889255
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
     hovered: false,
