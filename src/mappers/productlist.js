@@ -1,4 +1,5 @@
 import { resolutions } from "utils";
+<<<<<<< HEAD
 
 var colSize = null
 const  screenWidth = () => {
@@ -102,13 +103,16 @@ const injectUrl =  (url, baseUi) => {
 
 }
 
+=======
+// const baseUi = "https://assets-cdn.stylori.com/";
+const injectUrl = (url, baseUi) => url ? resolutions.map(k => ({ ...k, img: `${baseUi}${url.imageUrl===undefined  ? url : url.imageUrl}` })) : [];
+>>>>>>> 045049a85cc617b47222f615da2275e7a6889255
 // const valuesinjectUrl = (imageUrl, cdnUrl) => injectUrl(imageUrl, cdnUrl);in
 const placeImages = (placeImage) => placeImage.find(fd => !fd.ishover);
 const hoverImage = (placeImage) =>  placeImage.find(fd => fd.ishover); 
 
 
     export default function (data, cdnUrl) {
-        
     let mapperdata = [];
     try {
         mapperdata = data.data.allProductLists.nodes;
@@ -116,7 +120,10 @@ const hoverImage = (placeImage) =>  placeImage.find(fd => fd.ishover);
         mapperdata = [];
     }
     const _format = mapperdata.map(k => {
+<<<<<<< HEAD
         console.log(injectUrl(placeImages(k.transSkuListsByProductId.nodes[0].productListByProductId.productImagesByProductId.nodes), cdnUrl),'injectUrl')
+=======
+>>>>>>> 045049a85cc617b47222f615da2275e7a6889255
         let _d;
         try {
             _d = {
@@ -150,7 +157,6 @@ const hoverImage = (placeImage) =>  placeImage.find(fd => fd.ishover);
     })
     // console.info('_format', _format);
     return _format;
-    
 
 
 }

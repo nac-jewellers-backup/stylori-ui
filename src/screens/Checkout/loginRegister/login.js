@@ -12,7 +12,7 @@ const Login = (props) => {
 
 const LoginComponent = (props) => {
     const { classes } = props;
-    const { values, handlers, setValues, data } = useLogin(() => props.changePanel(3));
+    const { values, handlers, setValues, data } = useLogin(() => props.changePanel(2));
     // const vl = data && data.message
     // // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
     // var prof = data && data.message

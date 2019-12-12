@@ -34,6 +34,7 @@ class CashonDelivey extends React.Component {
         });
         window.location.pathname = "/jewellery"
         localStorage.removeItem("cartDetails")
+        localStorage.removeItem("panel")
         // }
     }
     componentDidUpdate(prevProps, prevState) {

@@ -108,14 +108,15 @@ export const CUSTOMERREVIEWS = `query MyQuery($productSku: String) {
       message
       title
       rating
+      customerName
     }
   }
 }
 `
 
 export const ADDRESSDETAILS = `
-query MyQuery($id: UUID) {
-  allUserAddresses(first: 1, condition: {id: $id}) {
+query MyQuery($userprofileId: String) {
+  allUserAddresses(condition: {userprofileId: $userprofileId}) {
     nodes {
       addressline1 
       addressline2

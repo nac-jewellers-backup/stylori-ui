@@ -6,9 +6,12 @@ const styles = theme => ({
         },
         [theme.breakpoints.up('lg')]: {
             width: "100%",
-            border: "0.5px solid #ccc",
+            // border: "0.5px solid #ccc",
+            boxShadow: "1px 2px 13px 7px #DEDADA!important",
             padding: "10px",
-            marginBottom: "20px"
+            marginBottom: "20px",
+            outline: "none !important"
+
         },
     },
     card: {

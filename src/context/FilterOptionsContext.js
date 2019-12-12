@@ -106,13 +106,11 @@ const Provider = (props) => {
             
 
                // props.location.push(window.location.pathname)
-               matchPath(`${window.location.pathname}${window.location.search}`, {
+               matchPath(window.location.pathname, {
                    path: ":listingpage",
                    search:window.location.search
        
                })
-               let window_location_search = window.location.search;
-               let split_ampersand = window_location_search
                 let pathnameSplit = window.location.pathname.split('/')
                 const splitHiphen = () => {if(pathnameSplit[1].indexOf('-')){
                     return pathnameSplit[1].split('-')
@@ -302,9 +300,17 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
         if (window.location.search) {
             // const conditionFilters = conditions.generateFilters(paramObjects())
             // const conditionTransSkuFilters = conditions.generateTransSkuFilters(paramObjects())
+<<<<<<< HEAD
             const _paramsfilter = paramObjects()
             var conditionTransSkuFilters = {}
             var filtersss = _paramsfilter.filter(val=>{
+=======
+            debugger
+            const _paramsfilter = paramObjects()
+            var conditionTransSkuFilters = {}
+            var filtersss = _paramsfilter.filter(val=>{
+                debugger
+>>>>>>> 045049a85cc617b47222f615da2275e7a6889255
                 var a = Object.keys(val)
                 if(a[0] ==='MetalPurity')return a
                 if(a[0] === 'MetalColor')return a

@@ -46,7 +46,7 @@ const useRating = (props) => {
             })
             if (data.message === "updated successfully") {
                 alert("Your review has been sent to our team. Will post it soon. Thanks!")
-                return false
+                // return false
             } else {
                 alert("Your reviewed this product  already.")
             }
@@ -111,12 +111,18 @@ const useRating = (props) => {
     }
     const handelSubmit = (e, props) => {
         var rats = props.ratingcounts.ratingcounts ? props.ratingcounts.ratingcounts : ""
+<<<<<<< HEAD
         if (rats > 0 || rats !== "") {
+=======
+        
+        if (rats > 0 && values && values.title !== "" &&
+            values && values.message !== "") {
+            values["errortext"]["rateerr"] = ""
+>>>>>>> 045049a85cc617b47222f615da2275e7a6889255
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
             if (user_id.length > 0) {
                 // alert(JSON.stringify(data.message))
                 var rats = props.ratingcounts.ratingcounts ? props.ratingcounts.ratingcounts : ""
-                values["errortext"]["rateerr"] = ""
                 if (window.location.search) {
                     let urlSearchparams = window.location.search;
                     let urlSearchparamsDecode = decodeURI(urlSearchparams)

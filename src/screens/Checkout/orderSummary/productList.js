@@ -75,7 +75,7 @@ const ProductlistComponent = (props) => {
                                             {lgn && lgn.state ? lgn && lgn.state || lgn1 && lgn1.state : value && value.state || value1 && value1.state}-
                                             {lgn && lgn.pincode ? lgn && lgn.pincode || lgn1 && lgn1.pincode : value && value.pincode || value1 && value1.pincode}<br />IN</p>
                                         <p className='dis-phn'>Phone :
-                                        +91 {lgn && lgn.contactNumber ? lgn && lgn.contactNumber || lgn1 && lgn1.contactNumber : value && value.contactNumber || value1 &&  value1.contactNumber} </p>
+                                        +91 {lgn && lgn.contactNumber ? lgn && lgn.contactNumber || lgn1 && lgn1.contactNumber : value && value.contactno || value1 &&  value1.contactno} </p>
                                     </div>
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>

@@ -28,7 +28,7 @@ import { CartContext } from '../../context/CartContext';
 import cart from '../../mappers/cart';
 import { CheckForCod } from 'queries/productdetail';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
-var variab = {}
+var variab = {} 
 const CartCardCheck = (props) => {
     const { loading, error, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     return <Component  {...props} CodData={CodData} makeRequestCod={makeRequestCod} />
@@ -44,11 +44,11 @@ class Component extends React.Component {
     }
 
     handleChange = panel => (event, expanded) => {
-        if (this.state.expandedlimit > panel) {
+        debugger
+        // alert("va",JSON.stringify(panel))
             this.setState({
-                expanded: expanded ? 'panel' + (panel + 1) : false,
+                expanded: 'panel' + panel,
             });
-        }
     };
 
     changePanel = (panel, mailId) => {
@@ -89,7 +89,7 @@ class Component extends React.Component {
                         <ExpansionPanel
                             square
                             expanded={expanded === 'panel1'}
-                            onChange={this.handleChange(0)}
+                            onChange={this.handleChange(1)}
                             style={{ boxShadow: "none" }}
                         >
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
@@ -105,7 +105,7 @@ class Component extends React.Component {
                         <ExpansionPanel
                             square
                             expanded={expanded === 'panel2'}
-                            onChange={this.handleChange(1)}
+                            onChange={this.handleChange(2)}
                             style={{ boxShadow: "none" }}>
                             <ExpansionPanelSummary style={{ width: "100%", overflow: "hidden" }} expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>2</Avatar>
@@ -135,7 +135,7 @@ class Component extends React.Component {
                         <ExpansionPanel
                             square
                             expanded={expanded === 'panel3'}
-                            onChange={this.handleChange(2)}
+                            onChange={this.handleChange(3)}
                             style={{ boxShadow: "none" }} >
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>3</Avatar><Typography className='text-chck'>Order Summary</Typography>
@@ -156,11 +156,11 @@ class Component extends React.Component {
                                         </Grid><br />
 
                                         <CartCard data={data} />
-                                        
+
                                         <Grid container>
                                             <Grid xs={12} lg={7} />
                                             <Grid xs={12} lg={4} >
-                                                <div style={{ float: "right",marginBottom: "5px"  }}>
+                                                <div style={{ float: "right", marginBottom: "5px" }}>
                                                     <Button
                                                         onClick={() => this.pincodeapi()}
                                                         className="summaryOrder-pay-btn">Continue to Pay</Button>
@@ -178,7 +178,7 @@ class Component extends React.Component {
                         <ExpansionPanel
                             square
                             expanded={expanded === 'panel4'}
-                            onChange={this.handleChange(3)}
+                            onChange={this.handleChange(4)}
                             style={{ boxShadow: "none" }}  >
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>4</Avatar><Typography className='text-chck'>Payment Options</Typography>
