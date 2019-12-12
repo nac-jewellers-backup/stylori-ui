@@ -166,7 +166,7 @@ const Provider = (props) => {
                             let attrVal = val.attributeValue
                             filters[attrName] = {[attrVal]:true}
                           
-                            setFilters(filters)
+                            // setFilters(filters)
                         
                             a[val.attributeName.replace(/\s/g, '')] = val.attributeValue
                             return a
@@ -320,10 +320,11 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
             const conditionFilters = conditions.generateFilters(_paramsfilter)
          
             const conditionImageColor = {}
-            var a = filters && Object.entries(filters).length >  0 ? Object.keys(filters.MetalColor) : ''
+            var metal_color_append_AND = filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length>0? Object.keys(filters.MetalColor)[0].replace(' ', ' and '):''
+            var a = filters && Object.entries(filters).length >  0 ? metal_color_append_AND : ''
             // var a = filters.metalColor ? filters.metalColor : null;
             
-            if(filters && Object.entries(filters).length > 0 & Object.entries(filters.MetalColor).length >0  && Object.values(filters.MetalColor)[0]) conditionImageColor["productColor"] = a[0] 
+            if(filters && Object.entries(filters).length > 0 & Object.entries(filters.MetalColor).length >0  && Object.values(filters.MetalColor)) conditionImageColor["productColor"] = a 
             
           if((filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length >0 && Object.values(filters.MetalColor)[0])===false) conditionImageColor['isdefault'] = true
             // conditionImageColor["isdefault"]=true
@@ -455,12 +456,13 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                 
 
                 const conditionImageColor = {}
-                var a = filters && Object.entries(filters).length > 0 ? Object.keys(filters.MetalColor) : ''
+                var metal_color_append_AND =filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length>0? Object.keys(filters.MetalColor)[0].replace(' ', ' and '): ''
+                var a = filters && Object.entries(filters).length > 0 ? metal_color_append_AND : ''
                 var variables = {}
                 // var a = filters.metalColor ? filters.metalColor : null;
                 
                 
-                if(filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length >0  && Object.values(filters.MetalColor)[0] )conditionImageColor["productColor"] = a[0] 
+                if(filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length >0  && Object.values(filters.MetalColor)[0] )conditionImageColor["productColor"] = a 
                 
               if((filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length >0 && Object.values(filters.MetalColor)[0])===false) conditionImageColor['isdefault'] = true
 
@@ -565,8 +567,9 @@ function usePrevious(value) {
     }, [seoData])
     var newObj = {}
     const updateFilters = async (filters) => {
-        
+        debugger
         setFilters(filters);
+
         // setloadingfilters(true)
         var len;
         let bodyvar;
@@ -603,7 +606,7 @@ function usePrevious(value) {
             var toLowerCase = key[0].toLowerCase()
             newObj[toLowerCase] = k[len][0]
         }
-        
+        console.log('i came in as update filters function',"123123")
         await makeFetch(newObj);
         //    props.history.push({
         //     pathname: `/stylori${mappedFilters.seo_url   ?`/${mappedFilters.seo_url}` : '' }`,
@@ -687,7 +690,7 @@ function usePrevious(value) {
         cartcount, filters, sort, loading, error, data, setFilters: updateFilters, offset, setOffset, dataArr, first, setFirst, mappedFilters, loadingfilters, pricemax, pricemin
     }
     return (
-        <FilterOptionsContext.Provider value={{setcartcount, FilterOptionsCtx, setFilters: updateFilters, setOffset, setFirst, updateProductList, setSort, setloadingfilters, setPriceMax, setPriceMin }} >
+        <FilterOptionsContext.Provider value={{setcartcount, FilterOptionsCtx, setOffset, setFirst, updateProductList, setSort, setloadingfilters, setPriceMax, setPriceMin }} >
             {props.children}
         </FilterOptionsContext.Provider>
     )

@@ -22,11 +22,11 @@ import { FilterOptionsContext } from 'context'
 import { NetworkContext } from 'context/NetworkContext';
 import { PRODUCTLIST, conditions, seoUrlResult } from 'queries/productListing';
 const PersistentDrawerLeft = (props) => {
-  const { setSort, setFilters, setloadingfilters, setPriceMax,setPriceMin, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
+  const { setSort, setloadingfilters, setPriceMax,setPriceMin, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
   const loc = window.location.search
   const { NetworkCtx } = React.useContext(NetworkContext);
 
-  return <Component setSort={setSort}  setFilters={setFilters} setloadingfilters={setloadingfilters} setPriceMax={setPriceMax} setPriceMin={setPriceMin} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort}
+  return <Component setSort={setSort}  setFilters={FilterOptionsCtx.setFilters} setloadingfilters={setloadingfilters} setPriceMax={setPriceMax} setPriceMin={setPriceMin} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort}
     uri={NetworkCtx.graphqlUrl}
     {...props} />
 }
@@ -228,7 +228,7 @@ class Component extends React.Component {
           if (value === mm) {
             bz=mm
             checked[val[0]] = { [mm]: false }
-            this.setState({ ...checked, checked }, () => this.props.setFilters(checked))
+            this.setState({ ...checked, checked })
           }
           return false
         }

@@ -23,6 +23,8 @@ const  screenWidth = () => {
     }
   }
   var img_res;
+  var url_construct_1000x1000;
+ 
 var screen_width_type =  () =>{ 
     // const {window_width, browser_type} = await lambda_func_front_end()
     var window_width = JSON.parse(localStorage.getItem('browserDetails'))
@@ -58,19 +60,31 @@ const injectUrl =  (url, baseUi) => {
     var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
     var resolution =     screen_width_type()
     var _resolutions = `${resolution}X${resolution}`
+    var _resolutions_1000x1000 = "1000X1000"
     var url_split;
+    var url_split_1000X1000;
     var extension_split;
     var url_construct;
     var browser_type_append;
+    var extension_split_1000x1000;
+    var browser_type_append_1000x1000;
     
-    if(url.imageUrl.length>0){
+    if(url && url.imageUrl.length>0){
         
         url_split = url.imageUrl.split('/')
+        url_split_1000X1000 = url.imageUrl.split('/')
          extension_split = url_split[url_split.length-1]
+        extension_split_1000x1000 = url_split_1000X1000[url_split_1000X1000.length-1]
         browser_type_append = extension_split.split('\.')[0].concat(`${browser_type.browser_type}`)
+        browser_type_append_1000x1000 = extension_split_1000x1000.split('\.')[0].concat(`${browser_type.browser_type}`)
         url_split[url_split.length-1] = browser_type_append 
+        url_split_1000X1000[url_split_1000X1000.length-1] = browser_type_append_1000x1000 
          url_split.splice(2, 0, _resolutions);
+         url_split_1000X1000[url_split_1000X1000.length-1] = browser_type_append_1000x1000 
+         url_split_1000X1000.splice(2, 0, _resolutions_1000x1000);
           url_construct = url_split.join().replace(/\,/g,'/')
+          url_construct_1000x1000 = url_split_1000X1000.join().replace(/\,/g,'/')
+
     }
     else{
         var img_not_found = "product/250X250/productnotfound.webp"
@@ -126,7 +140,7 @@ const hoverImage = (placeImage) =>  placeImage.find(fd => fd.ishover);
                 productType:k.productType,
                 skuId:k.transSkuListsByProductId.nodes[0].generatedSku,
                 oneDayShipping:k.transSkuListsByProductId.nodes[0].isReadyToShip,
-                imageResolution:img_res
+                imageResolution:{img_res:img_res,url_1000x1000:url_construct_1000x1000}
 
             }
         } catch (error) {
