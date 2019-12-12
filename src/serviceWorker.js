@@ -30,7 +30,7 @@ const cacheCheck = async () => {
 
         if (type.indexOf("json") !== 1) {
           var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
-          if (obj !== '' && Number(local_storage) !== Number(obj.version)) {
+          if (obj && Number(local_storage) !== Number(obj.version)) {
             localStorage.setItem('version', obj.version)
 
             window.location.reload()
