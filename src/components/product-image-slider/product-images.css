@@ -740,10 +740,25 @@ body {
     cursor: pointer !important;
 }
 
+.subslider-carousel-silver {
+    background-color: #fff;
+    width: 100% !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    display: block !important
+}
+
 .subslider-carousel-img {
     height: 100%;
     width: auto !important;
 }
+
+.subslider-carousel-img-Silver {
+    height: 100%;
+    width: 100% !important;
+    display: block !important;
+}
+
 
 .sub-carousel-head {
     padding: 30px;

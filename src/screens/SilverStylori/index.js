@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import HomePageStylori from 'containers/HomePageStylori';
+import SilverPageStylori from 'containers/Silver/SilverPageStylori';
 import { withRouter } from 'react-router-dom';
 
-class HomePage extends Component {
+class SilverStylori extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -13,9 +13,9 @@ class HomePage extends Component {
     render() {
         return (
             <div>
-                <HomePageStylori />
+                <SilverPageStylori />
             </div>
         )
     }
 }
-export default withRouter(HomePage)
+export default withRouter(SilverStylori)
