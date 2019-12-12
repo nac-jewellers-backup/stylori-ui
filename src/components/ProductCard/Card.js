@@ -65,11 +65,13 @@ const imageOnError = (e, res) => {
       tester.src = URL;
     }
     const imageFound = (e) => {
-      e.target.src = (e.target.src).substr(0, src_img).concat('.jpg')
+      if(e.target.src === res.url_1000x1000) e.target.src = res.url_1000x1000
+      else e.target.src = (e.target.src).substr(0, src_img).concat('.jpg')
     }
+  
     const imageNotFound = (e) => {
-      // e.target.src = `${CDN_URL}product/${res}X${res}/productnotfound.webp`
-      e.target.src = "https://alpha-assets.stylori.com/276x276/images/static/Image_Not_Available.jpg"
+      e.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
+      // e.target.src = "https://alpha-assets.stylori.com/276x276/images/static/Image_Not_Available.jpg"
       return false
     }
     var url= (e.target.src).substr(0, src_img).concat('.jpg')
