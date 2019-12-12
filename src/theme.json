@@ -1,30 +1,34 @@
 {
   "palette": {
     "common": { "black": "#000", "white": "#fff" },
-    "background": { "paper": "#fff", "default": "#fafafa" },
+    "background": { "paper": "#fff", "default": "#FAFAFA" },
     "primary": {
-      "light": "rgba(226, 213, 185, 1)",
-      "main": "rgba(218, 185, 122, 1)",
-      "dark": "rgba(165, 131, 79, 1)",
-      "contrastText": "rgba(255, 255, 255, 1)"
+      "light": "rgba(57, 69, 120, 1)",
+      "main": "rgba(58, 69, 120, 1)",
+      "dark": "rgba(49, 63, 92, 1)",
+      "contrastText": "#fff"
     },
     "secondary": {
-      "light": "rgba(208, 210, 211, 1)",
-      "main": "rgba(166, 168, 171, 1)",
-      "dark": "rgba(109, 110, 112, 1)",
-      "contrastText": "rgba(255, 255, 255, 1)"
+      "light": "rgba(246, 153, 163, 1)",
+      "main": "rgba(241, 72, 128, 1)",
+      "dark": "rgba(234, 83, 129, 1)",
+      "contrastText": "#fff"
     },
     "error": {
-      "light": "#e57373",
-      "main": "#f44336",
-      "dark": "#d32f2f",
+      "light": "rgba(199, 110, 108, 1)",
+      "main": "rgba(185, 74, 72, 1)",
+      "dark": "rgba(129, 51, 50, 1)",
       "contrastText": "#fff"
     },
     "text": {
-      "primary": "rgba(0, 0, 0, 0.87)",
+      "primary": "#394578",
       "secondary": "rgba(0, 0, 0, 0.54)",
-      "disabled": "rgba(0, 0, 0, 0.38)",
+      "disabled": "#7B7B7B",
       "hint": "rgba(0, 0, 0, 0.38)"
+    },
+    "overallButoon": {
+      "primary": "#F36E23",
+      "contrastText": "#fff"
     }
   }
 }
