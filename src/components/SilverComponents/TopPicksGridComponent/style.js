@@ -2,8 +2,17 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles(theme => ({
 
-img:{
-    boxShadow: '10px 10px 5px #ccc',
-}
+    img: {
+        boxShadow: '10px 10px 5px #ccc',
+    },
+    containerset: {
+        margin: "40px 0px 40px 0px", padding: "40px 5px 10px 10px"
+    },
+    [theme.breakpoints.down('sm')]: {
+        containerset: {
+            margin: "8px 0px 10px 0px !important",
+            padding: "10px 5px 10px 5px !important"
+        },
+    },
 
 }))

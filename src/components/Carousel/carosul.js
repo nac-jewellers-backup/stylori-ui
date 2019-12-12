@@ -35,7 +35,8 @@ class Slideshow extends React.Component {
           <div class="overlay1">
             <div style={{ paddingTop: '40%' }}>
               <h2 className='next-price'>{val.title}</h2><br />
-              <a class='info' href={val.url}><span className='sub-list-price'> <i class="fa fa-rupee"></i> &nbsp;{val.price}</span></a>
+              <h5 className="contenttext">{val.description}</h5>
+              <a class='info' href={val.url}><span class='shop'>SHOP</span></a>
             </div>
           </div>
         </div>
@@ -88,8 +89,8 @@ class Slideshow extends React.Component {
         <Slider ref={sliderRef}  {...settings}>
           {this.props.children ? this.props.children : this.renderFadeImages()}
           {this.props.hover ? this.imagehoverchildrens(this.props.hoverlist) : ""}
-          {this.props.hovereffect ? this.imagehoverchildrens(this.props.hoverlist) :""}
-          {this.props.WithoutHoverhover ?  this.imagewithouthoverchildrens(this.props.hoverlist):""}
+          {this.props.hovereffect ? this.imagehoverchildrens(this.props.hoverlist) : ""}
+          {this.props.WithoutHoverhover ? this.imagewithouthoverchildrens(this.props.hoverlist) : ""}
         </Slider>
       </div>
     );

@@ -13,7 +13,16 @@ export const useStyles = makeStyles(theme => ({
             width: "1300px !important",
             margin: "auto",
             backgroundColor: "#fff",
-            padding: "20px 0px 80px 0px"
+            padding: "20px 0px 80px 0px !important"
+        }
+    },
+    [theme.breakpoints.down('sm')]: {
+        containerTop: {
+            display: 'flex',
+            backgroundColor: "#fff",
+            width: "100%",
+            margin: "0px",
+            padding: "10px 0px 30px 0px !important"
         }
     },
 

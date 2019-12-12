@@ -17,6 +17,30 @@ export const useStyles = makeStyles(theme => ({
             backgroundColor: "#fff",
         }
     },
+    [theme.breakpoints.down('sm')]: {
+        containerTop: {
+            display: 'flex',
+            backgroundColor: "#fff",
+            width: "100%",
+            margin: "2% 0% 0% 0% !important"
+        },
+        productCardDetail: {
+            paddingTop: '4% !important',
+            paddingBottom: '4% !important'
+        },
+    },
+    [theme.breakpoints.down('md')]: {
+        containerTop: {
+            display: 'flex',
+            backgroundColor: "#fff",
+            width: "100%",
+            margin: "2% 0% 2% 0% !important"
+        },
+        productCardDetail: {
+            paddingTop: '4% !important',
+            paddingBottom: '4% !important'
+        },
+    },
 
     ProductGrids: {
         padding: "2%"

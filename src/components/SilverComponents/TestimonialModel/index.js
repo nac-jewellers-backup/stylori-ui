@@ -12,8 +12,10 @@ const useStyles = makeStyles(theme => ({
 
         margin: "50px 0px 0px 0px "
     },
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.down('sm')]: {
+        root: {  display: 'flex',
 
+        margin: "24px 0px 0px 0px !important"}
     },
     [theme.breakpoints.only('xs')]: {
 
