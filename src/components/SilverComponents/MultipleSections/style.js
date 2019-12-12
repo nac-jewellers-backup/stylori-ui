@@ -16,6 +16,14 @@ export const useStyles = makeStyles(theme => ({
             padding: "20px 0px 80px 0px !important"
         }
     },
+    [theme.breakpoints.only('xl')]: {
+        containerTop: {
+            width: "1700px !important",
+            margin: "auto",
+            backgroundColor: "#fff",
+            padding: "20px 0px 80px 0px !important"
+        }
+    },
     [theme.breakpoints.down('sm')]: {
         containerTop: {
             display: 'flex',

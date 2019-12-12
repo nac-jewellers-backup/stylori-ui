@@ -13,12 +13,47 @@ const useStyles = makeStyles(theme => ({
         margin: "50px 0px 0px 0px "
     },
     [theme.breakpoints.down('sm')]: {
-        root: {  display: 'flex',
+        root: {
+            display: 'flex',
 
-        margin: "24px 0px 0px 0px !important"}
+            margin: "24px 0px 0px 0px !important"
+        },
+        imgleftGrid: {
+            width: "8% !important",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            display: "flex"
+        },
+        imgleftGrid2: {
+            width: "8% !important",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            display: "flex"
+        },
+        menuCenter: {
+            width: "84% !important",
+            boxShadow: '10px 10px 5px #ccc',
+            backgroundColor: "#e8e8ea"
+        },
     },
-    [theme.breakpoints.only('xs')]: {
-
+    [theme.breakpoints.only('sm')]: {
+        imgleftGrid: {
+            width: "8% !important",
+            alignItems: "center",
+            justifyContent: "center !important",
+            display: "flex"
+        },
+        imgleftGrid2: {
+            width: "8% !important",
+            alignItems: "center",
+            justifyContent: "center !important",
+            display: "flex"
+        },
+        menuCenter: {
+            width: "84% !important",
+            boxShadow: '10px 10px 5px #ccc',
+            backgroundColor: "#e8e8ea"
+        },
     },
     exclIcon: {
         backgroundImage: 'url(https://www.flaticon.com/premium-icon/icons/svg/644/644079.svg)',
@@ -77,10 +112,21 @@ const useStyles = makeStyles(theme => ({
 
     },
     imgleftGrid: {
-        width: "6%",
+        width: "3%",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         display: "flex"
+    },
+    imgleftGrid2: {
+        width: "3%",
+        alignItems: "center",
+        justifyContent: "flex-end",
+        display: "flex"
+    },
+    menuCenter: {
+        width: "94%",
+        boxShadow: '10px 10px 5px #ccc',
+        backgroundColor: "#e8e8ea"
     },
     imgleft: {
         width: "14px",
@@ -119,13 +165,12 @@ export default function ImageGridList(props) {
                     <Arrows className={classes.imgleft} />
                 </div>
             </Grid>
-            <Grid item style={{ width: "88%", boxShadow: '10px 10px 5px #ccc', backgroundColor: "#e8e8ea", }}>
+            <Grid item className={classes.menuCenter} >
                 <Slideshow dataCarousel={props.data[0].settings} sliderRef={slider}>
                     {props.data[0].images.map((val, Index) =>
                         <Grid container style={{ height: "100%" }}>
                             <Grid item>
                                 <Quodes className={classes.Quodes} />
-
                             </Grid>
                             <Grid item className={classes.testimonialInner}>
                                 <Typography className={classes.textInner} >{val.Content}
@@ -142,15 +187,13 @@ export default function ImageGridList(props) {
                                     <Grid item style={{ width: "50%" }}>
                                         <Quodes className={classes.Quode1} />
                                     </Grid>
-
                                 </Grid>
                             </Grid>
-
                         </Grid>
                     )}
                 </Slideshow>
             </Grid>
-            <Grid item className={classes.imgleftGrid}>
+            <Grid item className={classes.imgleftGrid2}>
                 {/* <img onClick={() => next()} className={classes.imgRight} />
              */}
                 <div onClick={() => next()}>

@@ -51,7 +51,6 @@ export const fadeImagessublist = [
 export const titleContiner = ['TOP PICKS', 'FEATURED', 'TESTIMONIALS']
 
 
-
 const Featured = ["https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
@@ -83,18 +82,39 @@ const topcontent = "Lorem Ipsum is simply dummy text of the printing and typeset
 
 const testimonycarodata = [{
     Content: "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.",
-    name: "Selvan RadhaKrishnan",
+    name: "Selvan",
     location: 'Chennai'
 },
 {
     Content: "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown ",
-    name: "Baskar Radhakrishnan",
+    name: "Baskar",
     location: 'Chennai'
 },
 {
     Content: "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown ",
     name: "Avinash avi",
     location: 'Chennai'
+}]
+const featurecarodata = [{
+    Content: "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.",
+    SubTitle: "Inspiring anklets",
+    Title: "Boho",
+    Navlink: '',
+    Image: topPicksThree
+},
+{
+    Content: "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown ",
+    SubTitle: "Inspiring anklets",
+    Title: "Zippo",
+    Navlink: '',
+    Image: topPicksThree
+},
+{
+    Content: "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown ",
+    SubTitle: "Inspiring anklets",
+    Title: "Style",
+    Navlink: '',
+    Image: topPicksThree
 }]
 
 export const TopPicksimages = [{ topPicksOne, topPicksTwo, topPicksThree, topPicksFour, topPicksFive }]
