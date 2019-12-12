@@ -498,16 +498,27 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                             var _search_loc = window.location.search
                             var _minValue = Number(_search_loc.split('?')[1].split('&')[0].split('=')[1])
                             var _maxValue = Number(_search_loc.split('?')[1].split('&')[1].split('=')[1])
-                            
+                            debugger
                             var price = conditionFilters
                             var obj = {}
 
-
+                            if(price["filter"]){
+                                
                             price["filter"]['transSkuListsByProductId'] =  {'every':{"markupPrice":{
                                 "greaterThanOrEqualTo": _minValue,
                                 "lessThanOrEqualTo": _maxValue
                             }}
                               }
+                            }
+                            else{
+                                price["filter"] =  {"transSkuListsByProductId":{'every':{"markupPrice":{
+                                    "greaterThanOrEqualTo": _minValue,
+                                    "lessThanOrEqualTo": _maxValue
+                                }}}
+                                  }
+                            }
+
+                       
                                            
                             //   conditionFilters['filter'] = obj1.filter
                             //   conditionFilters['filter'] = obj2.filter

@@ -1,38 +1,42 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e353884863d2cc5843ed36fb720e730f",
+    "revision": "c7f8659f4184073d1a743d9b2dc2e621",
     "url": "/index.html"
   },
   {
-    "revision": "11c882eb8e9650ca979a",
+    "revision": "82d80c4dd26fd93b4acf",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "cb0a31502a9d0cdf6521",
+    "revision": "ad94a7657e4c7651c489",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "eccff85a2c631da5c0f7",
+    "revision": "4c820938f351d838f199",
+    "url": "/static/css/4.css"
+  },
+  {
+    "revision": "75a6c14ce39cb2d47acc",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "11c882eb8e9650ca979a",
+    "revision": "82d80c4dd26fd93b4acf",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "cb0a31502a9d0cdf6521",
+    "revision": "ad94a7657e4c7651c489",
     "url": "/static/js/3.js"
   },
   {
-    "revision": "946d10205d59b7f1f3a6",
+    "revision": "4c820938f351d838f199",
     "url": "/static/js/4.js"
   },
   {
-    "revision": "eccff85a2c631da5c0f7",
+    "revision": "75a6c14ce39cb2d47acc",
     "url": "/static/js/main.js"
   },
   {
-    "revision": "67501ddb9e15004a2ab4",
+    "revision": "265884b522a19a75c49d",
     "url": "/static/js/runtime~main.js"
   },
   {
@@ -58,6 +62,22 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "6916c84be4a82b94cf15503ef25d48f2",
     "url": "/static/media/delivery.svg"
+  },
+  {
+    "revision": "28cd30ea4ad92b4520d9a3fb2634a87d",
+    "url": "/static/media/img1ProductModal.jpg"
+  },
+  {
+    "revision": "b944ac0307e92dae56a16dc18b6318a1",
+    "url": "/static/media/img2ProductModal.jpg"
+  },
+  {
+    "revision": "2e0c3b28d442f07cf1fb810420137dc5",
+    "url": "/static/media/img3ProductModal.jpg"
+  },
+  {
+    "revision": "337eef9d867ffd752a548702f05cb8e6",
+    "url": "/static/media/img4ProductModal.jpg"
   },
   {
     "revision": "51fc5370cb4d7e537c06ea117f090ba2",
@@ -92,8 +112,28 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/slick.woff"
   },
   {
+    "revision": "4ab5e81bb7847802b7a01ffe64e69740",
+    "url": "/static/media/stylori-silver-logo-small-screen.png"
+  },
+  {
+    "revision": "92c0fa80ff8c401b154438a2c4ba0b5a",
+    "url": "/static/media/stylori-silver-logo.png"
+  },
+  {
     "revision": "5a712650392a83e01a75498ebc83837b",
     "url": "/static/media/telephone.svg"
+  },
+  {
+    "revision": "1737e5e0a88de55dc6cf1a773e4b0816",
+    "url": "/static/media/topPicksOne.jpg"
+  },
+  {
+    "revision": "35f5ee82b7e9b5e66f70a99aefcb3865",
+    "url": "/static/media/topPicksThree.jpg"
+  },
+  {
+    "revision": "37b89e280ecc047a56d66fdb6404bb23",
+    "url": "/static/media/topPicksTwo.jpg"
   },
   {
     "revision": "c7359aa61314bf6d37f83ccc97dd0694",
