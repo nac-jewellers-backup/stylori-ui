@@ -10,7 +10,7 @@ export const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.up('lg')]: {
         containerTop: {
-            width: "1170px !important",
+            width: "1300px !important",
             margin: "auto",
             marginTop: "3%",
             marginBottom: "1%",

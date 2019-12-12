@@ -6,15 +6,15 @@ export const useStyles = makeStyles(theme => ({
         backgroundColor: "#fff",
         width: "100%",
         margin: "0px",
-        padding: "20px 0px 80px 0px" 
+        padding: "20px 0px 80px 0px"
     },
     [theme.breakpoints.up('lg')]: {
         containerTop: {
-            width: "1170px !important",
+            width: "1300px !important",
             margin: "auto",
             backgroundColor: "#fff",
-            padding: "20px 0px 80px 0px" 
+            padding: "20px 0px 80px 0px"
         }
     },
-   
+
 }));
