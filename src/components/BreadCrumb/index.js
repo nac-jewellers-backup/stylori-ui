@@ -12,7 +12,6 @@ export default function CustomSeparator(props) {
   const tabs = localStorage.getItem("panel")
 
   const activetabsclik = (data) => {
-    debugger
     if (path === '/checkout' || path === '/cart') {
       if (data && data.title === "Login/ Register" || data && data.title === "Shopping Bag") {
         return (

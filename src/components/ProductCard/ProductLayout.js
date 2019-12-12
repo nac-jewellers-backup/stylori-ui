@@ -58,6 +58,7 @@ class Component extends React.Component {
     }
   }
   componentDidMount() {
+
     this.screenWidth()
     // Additionally I could have just used an arrow function for the binding `this` to the component...
     window.addEventListener("resize", this.screenWidth);
@@ -81,6 +82,7 @@ class Component extends React.Component {
       this.setState({ colSize: 4 })
     }
     else if (width < 760) {
+
       this.setState({ colSize: 2 })
     }
   }
@@ -105,7 +107,7 @@ class Component extends React.Component {
   }
   render() {
     const { classes, data } = this.props;
-    const { disabledstate } = this.state
+    const { disabledstate } = this.state;
     // const disabledstate = this.props.data.length < 24 ? 'disabled=true' : ''
     // console.log(dataCard)
     // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
@@ -114,17 +116,20 @@ class Component extends React.Component {
         {
           <>
             {this.state.loading && <div className="overall-loaders"><div id="loadings"><img src="https://alpha-assets.stylori.com/images/static/loadingimg.gif" alt="loading..." /></div></div>}
-            {this.state.loading === false && <div>
+            {this.state.loading === false && <>
               <GridList cellHeight={"auto"} className={`productLayoutGridList ${classes.gridlistmain}`} cols={this.state.colSize} style={{ margin: '25px !important' }}>
                 {
                   data.map(tile => {
-
+                    
                     return (
+                      tile && Object.entries(tile).length>0?
                       <GridListTile key={tile.title} cols={tile.cols || 1} style={{ height: 'auto', padding: '0 !important', marginBottom: '12px', marginTop: '12px' }} className={`${classes.liClass}`} >
 
                         {/* <ProductCard data={tile} /> */}
                         <ProductCards data={tile} />
                       </GridListTile>
+                      :
+                      ''
                     )
                   })
 
@@ -150,7 +155,7 @@ class Component extends React.Component {
               </div>
 
 
-            </div>}
+            </>}
           </>
         }
       </div>

@@ -36,7 +36,7 @@ class Checkoutcard extends React.Component {
 
     // handlereloadcart = (val) => {
     //     const data = this.props.data
-    //     debugger
+    //     
     //     var redirect_url;
     //     redirect_url = data.map(val =>
     //         "/jewellery" + "/" + val.productType + "/" + val.materialName + "/" + val.prdheader + "/" + val.generatedSku
@@ -45,7 +45,6 @@ class Checkoutcard extends React.Component {
 
     // }
     handleDeleteLocalStorage = (e) => {
-        debugger
         var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
         var currentValue = e.target.id
         var a = local_storage.products.filter(val => {
@@ -58,6 +57,15 @@ class Checkoutcard extends React.Component {
         var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
         localStorage.setItem('cartDetails', localstorage)
         window.location.reload();
+    }
+    handlereloadcart = (val) => {
+        const data = this.props.data
+        var redirect_url;
+        redirect_url = data.map(val =>
+            "/jewellery" + "/" + val.productType + "/" + val.materialName + "/" + val.prdheader + "/" + val.generatedSku
+        )
+        return alert(JSON.stringify(redirect_url))
+
     }
     row = (props) => {
         const dataCarousel = {
@@ -72,7 +80,6 @@ class Checkoutcard extends React.Component {
         //         cartcount: this.props.data.length
         //     })
         // },[data])
-        debugger
         return (
             <div style={{ marginTop: "10px" }}>
                 <Grid container>

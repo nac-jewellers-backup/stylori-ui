@@ -3,6 +3,7 @@ import React from 'react';
 const initialCtx = {
     GLobalCtx: {
         loggedIn: false,
+        browserType: 'jpg'
     },
 
     setGlobaCtx: () => null

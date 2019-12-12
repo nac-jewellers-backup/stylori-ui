@@ -68,7 +68,6 @@ export const seoUrlResult = `query CheckForSeo($seofilter: SeoUrlPriorityFilter 
 
 export const filterProductMatrix = (type, value, filter) => {
 
-  debugger
   let fc = { table: "", type: "" }
   switch (type) {
     case "Availability": {
@@ -177,6 +176,13 @@ export const filterProductMatrix = (type, value, filter) => {
       }
       break;
     }
+    case "Price":{
+      fc={
+        table:"productStonecountsByProductId",
+        type:"stonecount"
+      }
+      break;
+    }
  
 
     default: {
@@ -188,7 +194,6 @@ export const filterProductMatrix = (type, value, filter) => {
 }
 
 export const filterTransSkuMatrix = (type, value) => {
-  debugger
   let fc = { table: "", type: "" }
   switch (type) {
     
@@ -259,7 +264,6 @@ export const conditions = {
     }
   },
   generateTransSkuFilters: (filters) => {
-    debugger
     let filterTransSku = {};
     // const filterKeys = filters.map(val => String(Object.keys(val)));
 
