@@ -1,9 +1,7 @@
 
 
 const cacheFiles = [
-'/appversion.js',
 '/asset-manifest.json',
-'/cache.js',
 '/index.html',
 '/manifest.json'
 ], _cacheName_one = 'test-cache';
@@ -34,6 +32,7 @@ self.addEventListener('install', function(event) {
             
             console.info('LOADING CACHES FROM',inA ? cacheKeys[0] : cacheKeys[1]);
             return caches.open(inA ? cacheKeys[0] : cacheKeys[1]).then(c => {
+                window.location.reload(true)
                 c.put(e.request.url, res.clone());
                 return res;
             })

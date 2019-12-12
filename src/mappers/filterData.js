@@ -46,7 +46,7 @@ export default function (data) {
                        return val.collection_name
                     }),
                     'Metal Color': get(data[0].master_colors).map(val =>{
-                        return val.metal_color
+                        return val.product_color
                      }),
                     'Metal Purity': get(data[0].master_purity).map(val =>{
                         return val.purity

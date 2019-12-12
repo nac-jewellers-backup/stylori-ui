@@ -77,7 +77,6 @@ const useRating = (props) => {
                     // alert(JSON.stringify(variab))
                 }
                 values['user_id'] = user_id
-                
                 var a = window.location.search.split('=')
                 var b = a[1].split('-')[0]
                 values['product_id'] = b

@@ -1,7 +1,7 @@
 {
   "palette": {
     "common": { "black": "#000", "white": "#fff" },
-    "background": { "paper": "#fff", "default": "#fafafa" },
+    "background": { "paper": "#fff", "default": "#FAFAFA" },
     "primary": {
       "light": "rgba(57, 69, 120, 1)",
       "main": "rgba(58, 69, 120, 1)",
@@ -23,12 +23,12 @@
     "text": {
       "primary": "#394578",
       "secondary": "rgba(0, 0, 0, 0.54)",
-      "disabled": "#7b7b7b",
+      "disabled": "#7B7B7B",
       "hint": "rgba(0, 0, 0, 0.38)"
     },
-    "overallButoon":{
-      "primary":"#f36e23",
+    "overallButoon": {
+      "primary": "#F36E23",
       "contrastText": "#fff"
-}
+    }
   }
 }

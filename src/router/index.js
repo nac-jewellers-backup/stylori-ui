@@ -6,6 +6,7 @@ import Cart from 'screens/Stylori/Cart'
 import Account from 'screens/Stylori/accounts'
 import Checkout from 'screens/Stylori/Checkout'
 import HomePageStylori from 'screens/Stylori/HomePage'
+import Silver from 'screens/SilverStylori'
 import Faqs from 'screens/Stylori/faqs'
 import Register from 'screens/Checkout/loginRegister/register';
 import UserLogin from '../components/LoginAndRegister/Login';
@@ -44,6 +45,7 @@ export const RouterApp = (props) => {
         <Switch history={browserHistory}>
             <Redirect key="stylori-redirect" from="/" exact to={"/jewellery"} />
             <Route key="HomePageStylori" component={HomePageStylori} exact path={routes.HomePageStylori} />
+            <Route key="Silver" component={Silver} exact path={routes.Silver} />
             <Route key="Faqs" component={Faqs} exact path={routes.Faqs} />
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
 
