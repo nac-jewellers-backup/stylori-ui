@@ -49,17 +49,16 @@ export const ALLUSERWISHLISTS = `query MyQuery($userprofileId: [UUID!]) {
       skuId
       productListByProductId {
         productName
-        transSkuListsByProductId {
-          nodes {
-            markupPrice
-            discountPrice
-          }
-        }
-        productImagesByProductId(condition: {isdefault: true, imagePosition: 1})  {
+        productImagesByProductId(condition: {isdefault: true, imagePosition: 1}) {
           nodes {
             imageUrl
           }
         }
+      }
+      transSkuListBySkuId {
+        discountPrice
+        markupPrice
+        generatedSku
       }
     }
   }

@@ -31,7 +31,6 @@ class Accountdetails extends Component {
     //     }
     // }
     render() {
-        debugger
         let c_k_l = localStorage.getItem("c_k_l") ? localStorage.getItem("c_k_l") : {}
         // const { wishlistdata } = this.props.wishlistdata;
         return (
@@ -68,9 +67,12 @@ class Accountdetails extends Component {
                         <div className="pay-index-subhed_datas">
                             {
                                 this.state.isActive == '1' &&
-                                <>{c_k_l !== true ?
-                                    <Register /> : <Login />
-                                }</>
+                                <>
+                                {/* {c_k_l !== true ? */}
+                                    <Register />
+                                     {/* : <Login /> */}
+                                {/* } */}
+                                </>
 
                             }
                             {

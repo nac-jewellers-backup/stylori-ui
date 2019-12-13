@@ -27,7 +27,7 @@ const useRegister = (changePanel, props) => {
             lastname: false
         }
     });
-
+    const pathnames = window.location.pathname === "/account"
     const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     const { data, error, loading, makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
     const { setCartFilters } = React.useContext(CartContext);
@@ -150,16 +150,18 @@ const useRegister = (changePanel, props) => {
             return false
         }
 
-        if (values.password !== values.confirmpassword && values['error'] && values['errortext']) {
-            // values['error']['passerr'] = true
-            values['error']['cnfpasserr'] = true
-            // values['errortext']['passerr'] = "password doesn't match"
-            values['errortext']['cnfpasserr'] = "Password doesn't match"
-            setValues({
-                ...values,
-                values,
-            })
-            return false
+        if (!pathnames) {
+            if (values.password !== values.confirmpassword && values['error'] && values['errortext']) {
+                // values['error']['passerr'] = true
+                values['error']['cnfpasserr'] = true
+                // values['errortext']['passerr'] = "password doesn't match"
+                values['errortext']['cnfpasserr'] = "Password doesn't match"
+                setValues({ 
+                    ...values,
+                    values,
+                })
+                return false
+            }
         }
         let lastAtPos = values.email.lastIndexOf('@');
         let lastDotPos = values.email.lastIndexOf('.');

@@ -13,10 +13,10 @@ const Addressforms = (changePanel) => {
     let value11 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : {}
     let value12 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : {}
     var cont = localStorage.getItem('true') ? localStorage.getItem('true') : ""
-    let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : {}
-    // let addres_id = localStorage.getItem("addres_id") ? localStorage.getItem("addres_id") : {}
-    let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
-    let check_dlt = localStorage.getItem("check_dlt") ? localStorage.getItem("check_dlt") : {}
+    let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
+    // let addres_id = localStorage.getItem("addres_id") ? localStorage.getItem("addres_id") : ""
+    let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
+    let check_dlt = localStorage.getItem("check_dlt") ? localStorage.getItem("check_dlt") : ""
     let changeaddr = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
     const [address, setAddress] = React.useState({})
     const [pincods, setpincod] = React.useState({
@@ -70,15 +70,16 @@ const Addressforms = (changePanel) => {
     });
     var addObj = {};
     addObjall["isguestlogin"] = cont ? false : true
-    const { makeFetch } = useNetworkRequest('/adduseraddress', {}, false);
+    const { data: userdata, makeFetch } = useNetworkRequest('/adduseraddress', {}, false);
     const { data, error, loading, makeFetch: makeFetchall, mapped, status } = useNetworkRequest('/addaddress', {}, false);
     const { makeFetch: deleteaddress, } = useNetworkRequest('/removeaddress', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     const pathnames = Window && Window.location && Window.location.pathname === "/account"
     useEffect(() => {
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
-        var a = addresData ? addresData : null
-        if (JSON.stringify(a).length > 10) {
+        debugger
+        var adrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes : null
+        if (adrs !== undefined && adrs.length > 0) {
             values["addressvalues"] = addresData
             values["addrs"] = false
             setValues({
@@ -88,6 +89,7 @@ const Addressforms = (changePanel) => {
         }
     }, [addresData])
     React.useEffect(() => {
+        debugger
         if (user_id.length > 0) {
             obj['userprofileId'] = user_id
             addresmakeRequestCod(obj);
@@ -155,7 +157,6 @@ const Addressforms = (changePanel) => {
 
     const handleSubmit = (e) => {
         // if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length < 5) {
-        obj['userprofileId'] = user_id
         var addressOne = values.addressOne
         var addressTwo = values.addressTwo
         if (addressOne.addressline1 === addressTwo.addressline1 && addressOne.firstname === addressTwo.firstname && addressOne.pincode === addressTwo.pincode) {
@@ -165,6 +166,7 @@ const Addressforms = (changePanel) => {
                 ...values,
             })
             addObj['address'] = [addressOne];
+            // addresmakeRequestCod(obj);
             return false
         } else {
             if (values.checkValue === true) {
@@ -185,8 +187,17 @@ const Addressforms = (changePanel) => {
         }
         // addObj["cart_id"] = ""
         addObj["user_id"] = user_id
-        makeFetch(addObj);
-        addresmakeRequestCod(obj);
+        obj['userprofileId'] = user_id
+        if (values.checkValue === true) {
+            if (values && values.addressOne && values.addressOne.firstname.length > 0) {
+                makeFetch(addObj);
+            }
+        }
+        if (values.checkValue === false) {
+            if ((values && values.addressOne && values.addressOne.firstname.length > 0) && (values && values.addressTwo && values.addressTwo.firstname.length > 0)) {
+                makeFetch(addObj);
+            }
+        }
         // }
         // else {
         //     if (values.edit_addresId === false) {
@@ -207,12 +218,15 @@ const Addressforms = (changePanel) => {
             })
             addObjall["user_id"] = user_id
             addObjall["cart_id"] = cart_id
-            addObjall['address'] = [addressOne];
-            makeFetchall(addObjall);
+            if (values && values.addressOne && values.addressOne.firstname.length > 0) {
+                addObjall['address'] = [addressOne];
+                makeFetchall(addObjall);
+            }
             alert("your address send on succesfully")
             if (!pathnames) {
                 changePanel(3)
             }
+            return false
         }
         if (values.checkValue1 === false) {
             if (num === 2) {
@@ -237,7 +251,9 @@ const Addressforms = (changePanel) => {
                 addObjall["cart_id"] = cart_id
                 addObjall['address'] = [addressOne, addressTwo];
                 alert("your address send on succesfully")
-                makeFetchall(addObjall);
+                if ((values && values.addressOne && values.addressOne.firstname.length > 0) && (values && values.addressTwo && values.addressTwo.firstname.length > 0)) {
+                    makeFetchall(addObjall);
+                }
                 if (!pathnames) {
                     changePanel(3)
                 }

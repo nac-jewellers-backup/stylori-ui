@@ -496,7 +496,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                             var _search_loc = window.location.search
                             var _minValue = Number(_search_loc.split('?')[1].split('&')[0].split('=')[1])
                             var _maxValue = Number(_search_loc.split('?')[1].split('&')[1].split('=')[1])
-                            debugger
+                            
                             var price = conditionFilters
                             var obj = {}
 
@@ -576,7 +576,7 @@ function usePrevious(value) {
     }, [seoData])
     var newObj = {}
     const updateFilters = async (filters) => {
-        debugger
+        
         setFilters(filters);
 
         // setloadingfilters(true)
