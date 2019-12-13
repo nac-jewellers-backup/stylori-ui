@@ -36,6 +36,7 @@ export const useVerifyOtp = (changePanel) => {
             const mail = email ? email.email : ""
             setGlobalCtx(
                 localStorage.setItem("isedit", 1),
+                localStorage.setItem("gut_lg", true),
                 localStorage.setItem('email', mail), {
                     email,
                     user_id,

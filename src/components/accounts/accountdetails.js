@@ -9,6 +9,9 @@ import "./accounts.css"
 import CartCard from 'components/Checkout/CartCard';
 import Register from 'screens/Checkout/loginRegister/register';
 import Addressform from 'screens/Checkout/addressDetails/addressForm';
+import Allorders from './allorders';
+import Wishlists from './whislists';
+import Login from 'screens/Checkout/loginRegister/login';
 class Accountdetails extends Component {
     constructor(props) {
         super(props);
@@ -21,21 +24,23 @@ class Accountdetails extends Component {
         this.setState({ isActive: [name] })
 
     }
-    fun=()=>{
-        const allorder=this.props.allorderdata?this.props.allorderdata:""
-        if(allorder.length>0){
-            localStorage.setItem("order",this.props.allorderdata)
-        }
-    }
+    // fun = () => {
+    //     const allorder = this.props.allorderdata ? this.props.allorderdata : ""
+    //     if (allorder.length > 0) {
+    //         localStorage.setItem("order", this.props.allorderdata)
+    //     }
+    // }
     render() {
+        let c_k_l = localStorage.getItem("c_k_l") ? localStorage.getItem("c_k_l") : {}
+        // const { wishlistdata } = this.props.wishlistdata;
         return (
             <div>
                 <Grid container spacing={12} className="panel-body">
                     <Grid item lg={2}>
                         <div className="pay-index-subhed">
                             <p className={this.state.isActive == '1' ? "backgrund" : ""}
-                                onClick={() => this.Activeaccounts('1')} 
-                             >
+                                onClick={() => this.Activeaccounts('1')}
+                            >
                                 Personal Information</p>
                             <p className={this.state.isActive == '2' ? "backgrund" : ""}
                                 onClick={() => this.Activeaccounts('2')}
@@ -48,7 +53,10 @@ class Accountdetails extends Component {
                             <p className={this.state.isActive == '4' ? "backgrund" : ""}
                                 onClick={() => this.Activeaccounts('4')}
                             >
-                                Wishlist (0)</p>
+                                Wishlist ({this.props.wishlistdata &&
+                                    this.props.wishlistdata.wishlistdata &&
+                                    this.props.wishlistdata.wishlistdata.nodes.length
+                                })</p>
                             <p className={this.state.isActive == '5' ? "backgrund" : ""}
                                 onClick={() => this.Activeaccounts('5')}
                             >
@@ -58,7 +66,14 @@ class Accountdetails extends Component {
                     <Grid item lg={7}>
                         <div className="pay-index-subhed_datas">
                             {
-                                this.state.isActive == '1' && <Register />
+                                this.state.isActive == '1' &&
+                                <>
+                                {/* {c_k_l !== true ? */}
+                                    <Register />
+                                     {/* : <Login /> */}
+                                {/* } */}
+                                </>
+
                             }
                             {
                                 this.state.isActive == '2' && <Addressform />
@@ -67,13 +82,18 @@ class Accountdetails extends Component {
                                 this.state.isActive == '3' && <CartCard data={this.props.data} />
                             }
                             {
-                                this.state.isActive == '4' && " <4 />"
+                                this.state.isActive == '4' && <>
+                                    <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
+                                    {/* {JSON.stringify(this.props.wishlistdata)} */}
+                                </>
                             }
                             {
-                                this.state.isActive == '5' &&  <>
-                                {JSON.stringify(this.props.allorderdata)}
+                                this.state.isActive == '5' && <>
+                                    <Allorders allorderdata={this.props.allorderdata} data={this.props.data} />
+
+                                    {/* {JSON.stringify(this.props.allorderdata)} */}
                                 </>
-                                
+
                             }
                         </div>
                     </Grid>

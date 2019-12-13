@@ -168,19 +168,26 @@ class Header extends Component {
                       }}
                     >
                       <div
-                        style={{ width: "120px", height: "45px", lineHeight: "45px", cursor: "pointer" }}
-                        onClick={() => {
-                          localStorage.removeItem("user_id")
-                          localStorage.removeItem("email")
-                          localStorage.removeItem("vals")
-                          localStorage.removeItem("valuessetdata")
-                          localStorage.removeItem("true")
-                          localStorage.removeItem("panel")
-                          localStorage.removeItem("cartDetails")
-                          localStorage.removeItem("check_dlt")
-                          window.location.reload()
-                          window.location.pathname = "/login"
-                        }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout</div>
+                        style={{ width: "220px", height: "45px", lineHeight: "45px", cursor: "pointer" }}
+                      >
+                        <a
+                          onClick={() => {
+                            localStorage.removeItem("user_id")
+                            localStorage.removeItem("email")
+                            localStorage.removeItem("vals")
+                            localStorage.removeItem("valuessetdata")
+                            localStorage.removeItem("true")
+                            localStorage.removeItem("panel")
+                            localStorage.removeItem("cartDetails")
+                            localStorage.removeItem("check_dlt")
+                            window.location.reload()
+                            window.location.pathname = "/login"
+                          }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
+                      </a>&nbsp;/&nbsp;
+                      <NavLink to="/account">
+                          My Account
+                        </NavLink>
+                      </div>
                     </Popover>
                     {/* <i class="fa fa-user"></i> */}
                     <Badge badgeContent={4} color="secondary">
@@ -198,9 +205,9 @@ class Header extends Component {
                     onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }}
                   >
                     <Container maxWidthLg>
-                    <nav
-                    >
-                      {/* <a href="" className={`${classes.colorLight}`} alt=""><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
+                      <nav
+                      >
+                        {/* <a href="" className={`${classes.colorLight}`} alt=""><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
   
                       <a href=""
                         onMouseEnter={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: 'Jewellery' }) }}
@@ -219,16 +226,16 @@ class Header extends Component {
                       ><i class="fa fa-plus-circle"></i>&nbsp;Collections</a>
                       <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;One Day Sipping</a>
                       <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Stories</a> */}
-                      {
-                        (menuListHeader.map(listName => {
-                          return (
-                            <a href={listName.url} className={` ${classes.menuListCursor} ${classes.colorLight} `} onMouseOverCapture={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: listName.title.replace(/ +/g, "") }) }}><i class="fa fa-plus-circle"></i>&nbsp;{listName.title}</a>
-                          )
-                        }))
-                      }
-                    </nav>
-                     </Container> 
-                    
+                        {
+                          (menuListHeader.map(listName => {
+                            return (
+                              <a href={listName.url} className={` ${classes.menuListCursor} ${classes.colorLight} `} onMouseOverCapture={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: listName.title.replace(/ +/g, "") }) }}><i class="fa fa-plus-circle"></i>&nbsp;{listName.title}</a>
+                            )
+                          }))
+                        }
+                      </nav>
+                    </Container>
+
                     {
 
                       this.state.Menuopen && menuLists[this.state.listHoverItem] ?

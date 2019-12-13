@@ -12,6 +12,7 @@ import Ratings from '../rating/rating'
 import { withStyles } from '@material-ui/core/styles';
 import Pricing from '../Pricing/index'
 import styles from './style';
+import Wishlist from 'components/wishlist/wishlist';
 
 const dataCarousel = {
     dots: false,
@@ -114,9 +115,8 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                             aria-owns={open ? 'simple-popper' : ""}
                                             onClick={handleClick}
                                         ></i> &nbsp;
-                                    <i class="fa fa-heart-o overall-icons"
-                                        //  onClick={() => }
-                                        ></i>
+                                        {/* {JSON.stringify(val.productId)} */}
+                                        <Wishlist sku={val.skuId} productId={val.productId} />
 
                                         <Popover
                                             id="simple-popper"

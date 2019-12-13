@@ -54,7 +54,8 @@ const RegisterComponent = (props) => {
                                 InputProps={{
                                     readOnly: true,
                                 }}
-                            /> : <Input
+                            /> : <>
+                            <Input
                                 margin="normal"
                                 variant="outlined"
                                 type="email"
@@ -64,9 +65,29 @@ const RegisterComponent = (props) => {
                                 // helperText={values.errortext && values.errortext.emerr}
                                 placeholder="Enter your email Id"
                                 onChange={e => handlers.handleChange('email', e.target.value)}
-                            />}
-                        <label className='errtext'> {values.errortext && values.errortext.emerr}</label>
+                            />
+                        <label className='errtext'> {values.errortext && values.errortext.emerr}</label></>
+                    }
                         {paths ?
+                            <Grid container spacing={12}>
+                                <Grid item lg={6} >
+                                    <Input
+                                        margin="normal"
+                                        variant="outlined"
+                                        type="password"
+                                        name="password"
+                                        value={"........"}
+                                        error={values.error && values.error.passerr ? true : false}
+                                        // helperText={values.errortext && values.errortext.passerr}
+                                        placeholder="Enter your password"
+                                        onChange={e => handlers.handleChange('password', e.target.value)}
+                                        InputProps={{
+                                            readOnly: true,
+                                        }}
+                                    /> </Grid>
+                                <Grid item lg={6} style={{ textAlign: "center",lineHeight:"66px",color:"#337ab7" }}>
+                                    <a> Change password </a> </Grid>
+                            </Grid> : <>
                             <Input
                                 margin="normal"
                                 variant="outlined"
@@ -77,22 +98,11 @@ const RegisterComponent = (props) => {
                                 // helperText={values.errortext && values.errortext.passerr}
                                 placeholder="Enter your password"
                                 onChange={e => handlers.handleChange('password', e.target.value)}
-                                InputProps={{
-                                    readOnly: true,
-                                }}
-                            /> : <Input
-                                margin="normal"
-                                variant="outlined"
-                                type="password"
-                                name="password"
-                                value={values.password}
-                                error={values.error && values.error.passerr ? true : false}
-                                // helperText={values.errortext && values.errortext.passerr}
-                                placeholder="Enter your password"
-                                onChange={e => handlers.handleChange('password', e.target.value)}
-                            />}
-                        <label className='errtext'> {values.errortext && values.errortext.passerr}</label>
+                            />
+                        <label className='errtext'> {values.errortext && values.errortext.passerr}</label></>
+                    }
                         {paths ? "" :
+                           <>
                             <Input
                                 margin="normal"
                                 variant="outlined"
@@ -103,8 +113,10 @@ const RegisterComponent = (props) => {
                                 // helperText={values.errortext && values.errortext.cnfpasserr}
                                 placeholder="Enter your Confirm password"
                                 onChange={e => handlers.handleChange('confirmpassword', e.target.value)}
-                            />}
+                            />
                         <label className='errtext'> {values.errortext && values.errortext.cnfpasserr}</label>
+                        </>
+                    }
                         <Grid container spacing={12}>
                             <Grid item lg={4} xs={4}>
                                 <SimpleSelect val={'1'} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />

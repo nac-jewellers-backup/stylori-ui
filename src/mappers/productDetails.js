@@ -201,6 +201,7 @@ export default function (data, like_data, viewedddatas, rating) {
             message: rating && rating.CodData && rating.CodData.data && rating.CodData.data.allCustomerReviews.nodes,
             // title: rating.CodData.data.allCustomerReviews.nodes[0].title,
             // ratings: rating.CodData.data.allCustomerReviews.nodes[0].rating,
+            productId: PD.productListByProductId && PD.productListByProductId.productId,
             title: PD.productListByProductId.productName,
             skuId: PD && PD === undefined ? '' : PD.generatedSku,
             price: PD.discountPrice,
@@ -255,7 +256,7 @@ export default function (data, like_data, viewedddatas, rating) {
                     //         P.metalColor
                     //     ))
                     // }
-                    Children: PD.productListByProductId && PD.productListByProductId.colourVarient
+                    Children: PD.productListByProductId && PD.productListByProductId.colourVarient,
                 },
                 tab3: {
                     header: "Diamond Clarity",
