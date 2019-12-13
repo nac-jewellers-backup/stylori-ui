@@ -35,6 +35,15 @@ const useStyles = makeStyles(theme => ({
             boxShadow: '10px 10px 5px #ccc',
             backgroundColor: "#e8e8ea"
         },
+        Quode1: {
+            height: "80px !important",
+            width: "80px !important",
+            fill: "#fff",
+            float: 'right',
+            bottom: 0,
+            right: 0,
+            paddingTop: "20px"
+        },
     },
     [theme.breakpoints.only('sm')]: {
         imgleftGrid: {
@@ -68,15 +77,15 @@ const useStyles = makeStyles(theme => ({
         color: '#666666',
         fontSize: '13px',
         lineHeight: '30px',
-        paddingLeft: "6%",
-        paddingRight: "4%"
+
     },
     textInner: {
         color: '#666666',
         fontSize: '15px',
         lineHeight: '30px',
         maxHeight: "140px ",
-        overflow: "hidden"
+        overflow: "hidden",
+        paddingLeft: "6%",
     },
     name: {
         fontSize: '24px',
@@ -141,8 +150,6 @@ const useStyles = makeStyles(theme => ({
         fill: "  #949494",
         cursor: "pointer"
     }
-
-
 }));
 
 
@@ -175,8 +182,8 @@ export default function ImageGridList(props) {
                             <Grid item className={classes.testimonialInner}>
                                 <Typography className={classes.textInner} >{val.Content}
                                 </Typography>
-                                <Grid container className={classes.textInner}>
-                                    <Grid style={{ width: "50%" }} item>
+                                <Grid container >
+                                    <Grid style={{ width: "50%" }} item className={classes.textInner}>
                                         <Typography className={classes.name}>
                                             {val.name}
                                         </Typography>
