@@ -9,8 +9,10 @@ export const routes = {
     UserRegister: '/registers',
     HomePageStylori: '/home',
     Account: '/account',
-    Faqs:'/faqs',
+    Silver: '/silverjewellery',
+    Faqs: '/faqs',
     Stories:'/stories'
+    
 
 }
 

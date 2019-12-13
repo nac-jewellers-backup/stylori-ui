@@ -27,17 +27,43 @@ class Slideshow extends React.Component {
 
   imagehoverchildrens = (hoverlist) => {
 
-    let { hover } = this.props;
+    let { hover, hovereffect } = this.props;
     return hoverlist.map(val => (
-      <a class='info' href={val.url}>
-        <div class={"subslider-carousel" + hover ? " hovereffect" : ""}>
-          <img src={val.img} className='subslider-carousel-img img-responsive' alt="" />
+      <>{hovereffect ?
+        <div class={"subslider-carousel" + hovereffect ? "hovereffectSilver" : ""}>
+          <img src={val.img} className='subslider-carousel-img img-responsive' style={{ width: '100%', height: 'auto' }} alt="" />
           <div class="overlay1">
-            <h2 className='next-price'>{val.title}</h2><br />
-            <a class='info' href={val.url}><span className='sub-list-price'> <i class="fa fa-rupee"></i> &nbsp;{val.price}</span></a>
+            <div style={{ paddingTop: '40%' }}>
+              <h2 className='next-price'>{val.title}</h2><br />
+              <h5 className="contenttext">{val.description}</h5>
+              <a class='info' href={val.url}><span class='shop'>SHOP</span></a>
+            </div>
           </div>
-        </div></a>
+        </div>
+        : <a class='info' href={val.url}>
+          <div class={"subslider-carousel" + hover ? "hovereffect" : ""}>
+            <img src={val.img} className='subslider-carousel-img img-responsive' alt="" />
+            <div class="overlay1">
+              <h2 className='next-price'>{val.title}</h2><br />
+              <a class='info' href={val.url}><span className='sub-list-price'> <i class="fa fa-rupee"></i> &nbsp;{val.price}</span></a>
+            </div>
+          </div>
+        </a>}</>
     ))
+  };
+  imagewithouthoverchildrens = (hoverlist) => {
+    return (
+      <div class={"subslider-carousel-silver "} style={{ display: "block !important " }}>
+        <img src={hoverlist.img} className='subslider-carousel-img-Silver img-responsive' style={{ width: "auto !important", height: 'auto', display: "block !important  " }} alt="" />
+        {/* <div class="overlay1">
+          <div style={{paddingTop:'40%'}}>
+        <h2 className='next-price'>{hoverlist.title}</h2><br />
+        <a class='info' href={hoverlist.price}><span className='sub-list-price'> <i class="fa fa-rupee"></i> &nbsp;{hoverlist.price}</span></a>
+          </div>
+      </div> */}
+      </div>
+    )
+
   };
   //className={this.props.styles?this.props.styles:''}
   render() {
@@ -63,6 +89,8 @@ class Slideshow extends React.Component {
         <Slider ref={sliderRef}  {...settings}>
           {this.props.children ? this.props.children : this.renderFadeImages()}
           {this.props.hover ? this.imagehoverchildrens(this.props.hoverlist) : ""}
+          {this.props.hovereffect ? this.imagehoverchildrens(this.props.hoverlist) : ""}
+          {this.props.WithoutHoverhover ? this.imagewithouthoverchildrens(this.props.hoverlist) : ""}
         </Slider>
       </div>
     );
