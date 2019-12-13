@@ -160,9 +160,12 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center"
   },
   card: {
-    minWidth: "80%",
-    maxWidth: "90%",
-
+    minWidth: "100%",
+    maxWidth: "100%",
+    [theme.breakpoints.down('sm')]: {
+      minWidth: "100%",
+      maxWidth: "100%",
+    },
     borderRadius: '0 !important',
 
   },

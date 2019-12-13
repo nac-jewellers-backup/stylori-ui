@@ -41,11 +41,11 @@ class Component extends React.Component {
       CardRadio: false,
       checked: {
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
-        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {},pricemax: 0, pricemin: 0
+        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {}
       },
       checkedArrayObj: {
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
-        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {},pricemax: 0, pricemin: 0
+        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {}
       },
       selected: [],
       filtercheck: '',
@@ -69,8 +69,8 @@ class Component extends React.Component {
     var _price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_min));
     var _price_max = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_max));
     
-    checked['pricemax'] = _price_max
-    checked['pricemin'] = _price_min
+    // checked['pricemax'] = _price_max
+    // checked['pricemin'] = _price_min
     this.setState(checked)
     this.setState({ numOne: _price_min, numTwo: _price_max })  
     
@@ -295,7 +295,8 @@ class Component extends React.Component {
     };
     this.setState({
       chipData
-    }, () => this.props.setFilters(checked))
+    })
+    // , () => this.props.setFilters(checked)
     // alert(JSON.stringify(this.state.checked))
   }
 
