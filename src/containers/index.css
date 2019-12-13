@@ -64,9 +64,17 @@
   width: 100%;
   height: auto,
 }
+.menuqans{
+  width: 100%;
+  height: auto,
+}
 
 @media only screen and (max-width: 768px) and (min-width: 0px) {
   .GridListImg {
+    width: 100%;
+    height: auto,
+  }
+  .menuqans{
     width: 100%;
     height: auto,
   }
@@ -74,6 +82,10 @@
 
 @media only screen and (min-width: 1200px) {
   .GridListImg {
+    width: 1170px;
+    height: auto,
+  }
+  .menuqans{
     width: 1170px;
     height: auto,
   }
@@ -230,3 +242,4 @@
     background: transparent;
   }
 }
+
