@@ -13,7 +13,7 @@ class Buynowbutton extends React.Component {
         var vals;
         valus_locl && valus_locl.map(val => {
             const vlx = this.props && this.props.sku
-            if (vlx !== val.sku_id) {
+            if (vlx === val.sku_id) {
                 vals = 1
                 return false
             } else {
@@ -27,7 +27,7 @@ class Buynowbutton extends React.Component {
         return (
             <div>
                 <Button className={this.props.class} style={{ borderRadius: "5px" }}>
-                    {path !== "cart" && path !== "checkout" && this.valus(this.props) === 0 ? <>
+                    {path !== "cart" && path !== "checkout" && this.valus(this.props) === 1 ? <>
                         <i class="fa fa-shopping-bag buynow-icon"></i>
                         <span> In bag!</span>
                     </> : <>

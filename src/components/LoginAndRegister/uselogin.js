@@ -15,7 +15,7 @@ const useLogin = (changePanel) => {
         },
         error: {
             passerr: false,
-            emerr: false,
+            emerr: false, 
         }
     });
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
@@ -100,6 +100,18 @@ const useLogin = (changePanel) => {
         if (values.password === "" && values['error'] && values['errortext']) {
             values['error']['passerr'] = true
             values['errortext']['passerr'] = 'Password is required'
+            setValues({
+                ...values,
+                values,
+            })
+            return false
+        }
+        let lastAtPos = values.email.lastIndexOf('@');
+        let lastDotPos = values.email.lastIndexOf('.');
+        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && values.email.indexOf('@@') == -1 && lastDotPos > 2 && (values.email.length - lastDotPos) > 2)) {
+            debugger
+            values['error']['emerr'] = true
+            values['errortext']['emerr'] = 'An email address must contain a single @/.'
             setValues({
                 ...values,
                 values,

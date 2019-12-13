@@ -120,9 +120,7 @@ function MediaControlCard(props) {
                   >
                     &nbsp;
                     <div id={val.namedetail[0].details} onClick={(event) => props.handleDeleteLocalStorage(event)}>
-                      <i style={{ fontSize: "16px" }} class="fa">
-                        &#xf014;
-            </i>&nbsp;<span
+                      <i style={{ fontSize: "16px" }} class="fa"> &#xf014;</i>&nbsp;<span
                         style={{ borderBottom: "1px solid #394578" }}>Remove</span>
                     </div>
 

@@ -42,15 +42,16 @@ const RatingComponent = (props) => {
 
     return (
         <form id="Resetform" action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e, props)}>
-            <Grid container spacing={12} style={{ marginTop: '20px' }}>
+            <Grid container spacing={12} style={{ marginTop: '20px' }} className="bg-clr2">
+                <Container>
                 <Grid item lg={1} />
-                <Grid item xs={12} lg={7}>
-                    <div className="rating-form">
+                <Grid item xs={12} lg={8}>
+                    <div className="rating-form ">
                         <h5 className={`rating-form-head ${classes.normalfonts}`}>Rate This</h5>
                         <label className='errtext'> {values.errortext.rateerr ? values.errortext.rateerr : ""}</label>
                         <Ratings />
                     </div>
-                    <h6 className={`rating-form-head ${classes.normalfonts}`}>Write Your Review</h6>
+                    <h6 className={`rating-form-head ${classes.normalfonts}`} style={{marginBottom: "-3px"}}>Write Your Review</h6>
                     <label className='errtext'> {values.errortext.ratetitle ? values.errortext.ratetitle : ""}</label>
                     <Input
                         margin="normal"
@@ -88,14 +89,16 @@ const RatingComponent = (props) => {
                     <div className={`tool-tips ${classes.normalfonts}`} >Max 250 Characters</div>
                     {/* <button type="submit" >rr</button> */}
                 </Grid>
-            </Grid>
+          
             <Grid container spacing={12} style={{ marginTop: '20px' }}>
-                <Grid item xs={12} lg={8}>
+                <Grid item xs={12} lg={9}>
                     <div style={{ float: "right" }}>
                         <Button className={`form-reviews-mob ${classes.fontwhite} ${classes.normalcolorback}`} type="submit">Write a Reviews</Button>
                         <Button onClick={() => clear()} className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite}`} >Cancel</Button>
                     </div>
                 </Grid>
+                </Grid>
+                </Container>
             </Grid>
         </form>
     )

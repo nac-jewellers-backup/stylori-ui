@@ -24,11 +24,11 @@ import { NavLink } from 'react-router-dom';
 //         )
 //     })
 const breadcrumsdata = [
-    {title:"Shopping Bag"},
-    {title:"Login/ Register"},
-    {title:"Address Detail"},
-    {title:"Payment Options"},
-    {title:"Order Confirmation"},
+    { title: "Shopping Bag" },
+    { title: "Login/ Register" },
+    { title: "Address Detail" },
+    { title: "Payment Options" },
+    { title: "Order Confirmation" },
 ]
 const cartsubdata = [
     {
@@ -67,14 +67,14 @@ class Cart extends React.Component {
                             subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata}
                         />
                     }
-                    <div className="cart-ovralldiv-media">  
+                    <div className="cart-ovralldiv-media">
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>
                                 <CartCard data={data} />
                             </Grid> : <><div className="noproductsfound">There are no items in this cart. </div>  <NavLink to="/jewellery" style={{ textDecoration: 'none' }} > <div className="continueshopping">CONTINUE SHOPPING</div></NavLink></>}
                         </Grid>
                     </div>
-                  
+
                     <Grid Container spacing={12}>
                         <Grid item xs={12}>
                             <Footer />
@@ -82,12 +82,12 @@ class Cart extends React.Component {
                     </Grid>
                 </Hidden>
                 <Hidden mdUp>
-                {path === "checkout" ? "" :
-                 <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
-                        <Grid item xs={12} >
-                            <Header />
-                        </Grid>
-                    </Grid>}
+                    {path === "checkout" ? "" :
+                        <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+                            <Grid item xs={12} >
+                                <Header />
+                            </Grid>
+                        </Grid>}
                     <Container>
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>
@@ -108,7 +108,7 @@ class Cart extends React.Component {
 // export default Checkout;
 
 const Components = props => {
-    let { CartCtx: { cartFilters, data, loading, error } } = React.useContext(CartContext);
+    let { CartCtx: { cartFilters, data, loading, error, allorderdata } } = React.useContext(CartContext);
     let content, mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {

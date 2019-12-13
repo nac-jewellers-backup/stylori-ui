@@ -10,7 +10,9 @@ export const routes = {
     HomePageStylori: '/home',
     Account: '/account',
     Silver: '/silverjewellery',
-    Faqs: '/faqs'
+    Faqs: '/faqs',
+    Stories:'/stories'
+    
 
 }
 

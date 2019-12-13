@@ -12,28 +12,29 @@ export default function CustomSeparator(props) {
   const tabs = localStorage.getItem("panel")
 
   const activetabsclik = (data) => {
-    if (path === '/checkout' || path === '/cart') {
-      if (data && data.title === "Login/ Register" || data && data.title === "Shopping Bag") {
-        return (
-          localStorage.removeItem("panel")
-        )
-      }
-    }
-    if (data && data.title === "Address Detail") {
-      return (
-        localStorage.setItem("panel", 2)
-      )
-    }
-    if (data && data.title === "Payment Options") { 
-      return (
-        localStorage.setItem("panel", 3)
-      )
-    }
-    if (data && data.title === "Order Confirmation") {
-      return (
-        localStorage.setItem("panel", 4) 
-      )
-    }
+    debugger
+    // if (path === '/checkout' || path === '/cart') {
+    //   if (data && data.title === "Login/ Register" || data && data.title === "Shopping Bag") {
+    //     return (
+    //       localStorage.removeItem("panel")
+    //     )
+    //   }
+    // }
+    // if (data && data.title === "Address Detail") {
+    //   return (
+    //     localStorage.setItem("panel", 2)
+    //   )
+    // }
+    // if (data && data.title === "Payment Options") { 
+    //   return (
+    //     localStorage.setItem("panel", 3)
+    //   )
+    // }
+    // if (data && data.title === "Order Confirmation") {
+    //   return (
+    //     localStorage.setItem("panel", 4) 
+    //   )
+    // }
 
   }
   const activetabs = (data) => {

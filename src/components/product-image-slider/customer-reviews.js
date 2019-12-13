@@ -52,7 +52,7 @@ class CustomerReviews extends React.Component {
             val.message !== "" && val.message !== undefined && val.message !== null ||
             val.rate !== "" && val.rate !== undefined && val.rate !== null) {
             value = <>
-                <div style={{ width: "100%", fontSize: "16px", marginBottom: "5px" }}>{val.title}</div>
+                <div style={{ width: "100%", fontSize: "16px", marginBottom: "5px" }}>{val.customerName}</div>
                 <div style={{ width: "100%", fontSize: "14px", marginBottom: "5px" }}>{val.message}</div>
                 <div>
                     {[1, 2, 3, 4, 5].map((n, i) =>
@@ -108,7 +108,7 @@ class CustomerReviews extends React.Component {
                 <Hidden mdUp>
                     <Container>
                         <ExpansionPanel
-                            style={{ boxShadow: "none" }} square
+                            style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important",padding:"0 5px" }} square
                             expanded={expanded === 'panel1'}
                             onChange={this.handleChange('panel1')}
                         >

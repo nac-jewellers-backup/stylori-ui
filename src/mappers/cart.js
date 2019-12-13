@@ -105,7 +105,7 @@
 
 
 export default function (data) {
-
+    debugger
     let mapperdata = [];
     try {
         mapperdata = data.data.allTransSkuLists.nodes;
@@ -124,6 +124,7 @@ export default function (data) {
                 // materialName: k.productMaterialsByProductSku.nodes[0].materialName,
                 productType: k.productListByProductId.productType,
                 prdheader: k.productListByProductId.productName,
+                // allorderdata: allorderdata,
                 productsDetails: [
                     //                     Quality	
                     // Metal	
@@ -145,7 +146,7 @@ export default function (data) {
                                 details: k.skuWeight + " " + "GM"
                             },
                             {
-                                name: k.skuSize&&k.skuSize.length > 0 ? "Ring" : "",
+                                name: k.skuSize && k.skuSize.length > 0 ? "Ring" : "",
                                 details: k.skuSize
                             },
                             {
