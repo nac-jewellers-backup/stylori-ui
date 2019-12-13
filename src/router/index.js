@@ -6,6 +6,7 @@ import Cart from 'screens/Stylori/Cart'
 import Account from 'screens/Stylori/accounts'
 import Checkout from 'screens/Stylori/Checkout'
 import HomePageStylori from 'screens/Stylori/HomePage'
+import Silver from 'screens/SilverStylori'
 import Faqs from 'screens/Stylori/faqs'
 import Register from 'screens/Checkout/loginRegister/register';
 import UserLogin from '../components/LoginAndRegister/Login';
@@ -13,6 +14,7 @@ import UserRegister from '../components/LoginAndRegister/Register';
 import routes from "router/routes";
 import { withRouter } from "react-router";
 import { createBrowserHistory } from "history";
+import stories from 'screens/Stylori/stories';
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
 
@@ -44,9 +46,10 @@ export const RouterApp = (props) => {
         <Switch history={browserHistory}>
             <Redirect key="stylori-redirect" from="/" exact to={"/jewellery"} />
             <Route key="HomePageStylori" component={HomePageStylori} exact path={routes.HomePageStylori} />
+            <Route key="Silver" component={Silver} exact path={routes.Silver} />
             <Route key="Faqs" component={Faqs} exact path={routes.Faqs} />
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
-
+            <Route key="sto" component={stories} exact path={routes.Stories} />
             {(props.location.pathname !== "/cart" && props.location.pathname !== "/account" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout") &&
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />}
 
@@ -56,6 +59,7 @@ export const RouterApp = (props) => {
             <Route key="login" component={UserLogin} exact path={routes.UserLogin} />
             <Route key="Account" component={Account} exact path={routes.Account} />
             <Route key="registers" component={UserRegister} exact path={routes.UserRegister} />
+            
         </Switch>
     );
 };

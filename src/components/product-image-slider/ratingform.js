@@ -20,7 +20,6 @@ const RatingComponent = (props) => {
     const { classes } = props;
     const { values, handlers, setValues } = useRating(props.ratingcounts);
     const clear = () => {
-        
         setValues({
             user_id: "",
             rate: "",
