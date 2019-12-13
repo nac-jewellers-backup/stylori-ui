@@ -30,13 +30,41 @@ export const CART = `query myquerycart($productList: [String!]) {
 export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
   allOrders(filter: {userProfileId: {in: $userProfileId}}) {
     nodes {
-      paymentStatus
-      userProfileByUserProfileId {
-        firstName
-        email
-        lastName
+      shoppingCartByCartId {
+        shoppingCartItemsByShoppingCartId {
+          nodes {
+            transSkuListByProductSku {
+              discountPrice
+              generatedSku
+              sellingPrice
+              purity
+              metalColor
+              productListByProductId {
+                productImagesByProductId(filter: {isdefault: {equalTo: true}, imagePosition: {equalTo: 1}}) {
+                  nodes {
+                    imageUrl
+                  }
+                }
+                productName
+              }
+              skuWeight
+            }
+          }
+        }
+        cartAddressesByCartId {
+          nodes {
+            addressline1
+            city
+            contactNumber
+            country
+            countryCode
+            firstname
+            lastname
+            pincode
+            state
+          }
+        }
       }
-      userProfileId
     }
   }
 }
