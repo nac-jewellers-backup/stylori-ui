@@ -14,5 +14,21 @@ export const useStyles = makeStyles(theme => ({
             padding: "10px 5px 10px 5px !important"
         },
     },
+    middle: {
+        transition: ".5s ease",
+        opacity: '0',
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        msTransform: "translate(-50%, -50%)",
+        textAlign: "center"
+    },
+    text: {
+        backgroundColor: "#4CAF50",
+        color: "#fff",
+        fontSize: "16px",
+        padding: "16px 32px"
+    }
 
 }))

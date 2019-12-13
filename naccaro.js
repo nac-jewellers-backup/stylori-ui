@@ -1,8 +1,7 @@
 import React from 'react'
-import { Grid, Hidden, Typography } from '@material-ui/core'
+import { Grid, Hidden } from '@material-ui/core'
 import { useStyles } from './style'
 import Slideshow from '../../Carousel/carosul'
-import './index.css'
 
 export const TopPicksGridComponent = (props) => {
     const classes = useStyles();
@@ -43,48 +42,30 @@ export const TopPicksGridComponent = (props) => {
             <Hidden smDown>
                 <Grid container xs={12} spacing={2} className={classes.containerset} justify="center">
                     <Grid item xs={12} sm={12} md={3} lg={3} xl={3} spacing={2}>
-                        <Grid container class="classval">
-                            <img src={props.data[0].img} class="imagetop" />
-                            <Grid item class="letterMiddle">
-                                <Typography className={"typos"}>{props.data[0].title}</Typography>
-                            </Grid>
-                        </Grid>
+                        <Slideshow class="subslider-carousel"
+                            dataCarousel={dataCarousel} hoverlist={[props.data[0]]} TopPic={true} type='hover' />
+                        {/* <img src={props.data[0]["topPicksOne"]} style={{ width: '100%', height: '100%' }} className={`${classes.img}`} /> */}
                     </Grid>
                     <Grid container item xs={12} sm={12} md={6} lg={6} xl={6} justify="center">
                         <Grid container item xs={12} justify="center">
+
                             <Grid item xs={6} style={{ padding: "0px 8px 8px 0px" }}>
-                                <Grid container class="classval">
-                                    <img src={props.data[3].img} class="imagetop" />
-                                    <Grid item class="letterMiddle">
-                                        <Typography className={"typos"}>{props.data[0].title}</Typography>
-                                    </Grid>
-                                </Grid>
+                                <Slideshow class="subslider-carousel"
+                                    dataCarousel={dataCarousel} hoverlist={[props.data[3]]} TopPic={true} type='hover' />
                             </Grid>
                             <Grid item xs={6} style={{ padding: "0px 0px 8px 8px" }}>
-                                <Grid container class="classval">
-                                    <img src={props.data[2].img} class="imagetop" />
-                                    <Grid item class="letterMiddle">
-                                        <Typography className={"typos"}>{props.data[0].title}</Typography>
-                                    </Grid>
-                                </Grid>
+                                <Slideshow class="subslider-carousel"
+                                    dataCarousel={dataCarousel} hoverlist={[props.data[3]]} TopPic={true} type='hover' />
                             </Grid>
                             <Grid item xs={12} style={{ textAlign: 'center', padding: "8px 0px 0px 0px" }}>
-                                <Grid container class="classval">
-                                    <img src={props.data[4].img} class="imagetop" />
-                                    <Grid item class="letterMiddle">
-                                        <Typography className={"typos"}>{props.data[0].title}</Typography>
-                                    </Grid>
-                                </Grid>
+                                <Slideshow class="subslider-carousel"
+                                    dataCarousel={dataCarousel} hoverlist={[props.data[4]]} TopPic={true} type='hover' />
                             </Grid>
                         </Grid>
                     </Grid>
                     <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
-                        <Grid container class="classval">
-                            <img src={props.data[1].img} class="imagetop" />
-                            <Grid item class="letterMiddle">
-                                <Typography className={"typos"}>{props.data[0].title}</Typography>
-                            </Grid>
-                        </Grid>
+                        <Slideshow class="subslider-carousel"
+                            dataCarousel={dataCarousel} hoverlist={[props.data[1]]} TopPic={true} type='hover' />
                     </Grid>
                 </Grid>
             </Hidden>
