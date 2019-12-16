@@ -208,7 +208,7 @@ const Addressforms = (changePanel) => {
         window.location.reload();
     }
     const selectaddreses = (val_addrs, num) => {
-        var addressOne = values.addressOne
+        var addressOne = val_addrs
         var addressTwo = values.addressTwo
         if (values.checkValue1 === true) {
             values["Id2"] = val_addrs && val_addrs.id
@@ -218,7 +218,7 @@ const Addressforms = (changePanel) => {
             })
             addObjall["user_id"] = user_id
             addObjall["cart_id"] = cart_id
-            if (values && values.addressOne && values.addressOne.firstname.length > 0) {
+            if (val_addrs && val_addrs.firstname.length > 0) {
                 addObjall['address'] = [addressOne];
                 makeFetchall(addObjall);
             }
@@ -251,7 +251,7 @@ const Addressforms = (changePanel) => {
                 addObjall["cart_id"] = cart_id
                 addObjall['address'] = [addressOne, addressTwo];
                 alert("your address send on succesfully")
-                if ((values && values.addressOne && values.addressOne.firstname.length > 0) && (values && values.addressTwo && values.addressTwo.firstname.length > 0)) {
+                if (val_addrs && val_addrs.firstname.length > 0) {
                     makeFetchall(addObjall);
                 }
                 if (!pathnames) {

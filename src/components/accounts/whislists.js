@@ -61,23 +61,25 @@ class Component extends React.Component {
                             <Grid item lg={8}>
                                 <div>
                                     <div className="wislist_title">{first_map.productListByProductId.productName}</div><br />
-                                    <div className="wislist_price">{first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice}</div><br />
+
+                                    <div className="wislist_price">{Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice))}</div><br />
                                     <div onClick={() => {
                                         this.props.setCartFilters({
                                             skuId: first_map.skuId,
                                             qty: 1,
                                             price: first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice
                                         })
-                                        // window.location.pathname = "/cart"
+                                        // window.location.pathname = "/cart" 
                                     }}>
-                                        {/* <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} /> */}
+                                        <>
+                                        <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} /></>
                                         <Button className="add-bag">
                                             <i class="fa fa-shopping-bag"></i>&nbsp;Add to Bag
                         </Button>
                                     </div>
                                 </div>
                             </Grid>
-                        </Grid>
+                        </Grid> 
                         {/* )}  */}
                     </>
                 )}</>:<div style={{ textAlign: "center",color:"#394578" }}>Nothing added your Wishlists</div>}

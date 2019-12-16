@@ -33,7 +33,8 @@ class Addressdetails extends React.Component {
                     {values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes.map((val_addrs1, index) =>
                         <>
                             <Grid item xs={12} lg={6} style={{ paddingRight: "15px" }}>
-                                <div className='card-adrs wd' className={values.Id === val_addrs1.id || values.Id2 === val_addrs1.id ? "address_card_disabled" : ""}
+                                <div className='card-adrs wd' 
+                                // className={values.Id === val_addrs1.id || values.Id2 === val_addrs1.id ? "address_card_disabled" : ""}
                                     style={{ marginTop: "5px" }}>
                                     <h4 class="card-title">
                                         <i style={{ fontSize: "25px", color: "#394578" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
@@ -73,10 +74,10 @@ class Addressdetails extends React.Component {
                                         </span>
                                         {values.Id2 === val_addrs1.id || values.Id === val_addrs1.id ? <>
                                             <Button disabled
-                                                style={{ float: "right" }} className='apply-b' onClick={() => {
-                                                    this.props.selectaddreses(val_addrs1, 1)
+                                                style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
+                                                    // this.props.selectaddreses(val_addrs1, 1)
                                                     // this.props.changevalue(3)
-                                                }}>Your Shipping address</Button></> : <>
+                                                }}> <i class="fa fa-check-circle" style={{color:"#fff"}}></i> &nbsp;Your Shipping address</Button></> : <>
                                                 <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                                     this.props.selectaddreses(val_addrs1, 1)
                                                     // this.props.changevalue(3)
@@ -108,7 +109,8 @@ class Addressdetails extends React.Component {
                                         <>
                                             <Grid item xs={12} lg={6} style={{ paddingRight: "15px" }}>
                                                 <div className='card-adrs wd'
-                                                    style={{ marginTop: "5px" }} className={values.Id2 === val_addrs2.id || values.Id === val_addrs2.id ? "address_card_disabled" : ""}>
+                                                    style={{ marginTop: "5px" }}
+                                                     >
                                                     <h4 class="card-title">
                                                         <i style={{ fontSize: "25px", color: "#394578" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                                         <span class="address-name">
@@ -144,10 +146,10 @@ class Addressdetails extends React.Component {
                                                         <span className={`shipping-phonenumber ${classes.normalfonts}`}>
                                                             +91 {val_addrs2.contactNumber}
                                                         </span>{values.Id === val_addrs2.id || values.Id2 === val_addrs2.id ? <>
-                                                            <Button disabled style={{ float: "right" }} className='apply-b' onClick={() => {
-                                                                this.props.selectaddreses(val_addrs2, 2)
+                                                            <Button disabled style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
+                                                                // this.props.selectaddreses(val_addrs2, 2)
                                                                 // this.props.changevalue(3)
-                                                            }}>Your Billing address </Button></> : <>
+                                                            }}> <i class="fa fa-check-circle" style={{color:"#fff"}}></i> &nbsp;Your Billing address </Button></> : <>
                                                                 <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                                                     this.props.selectaddreses(val_addrs2, 2)
                                                                     // this.props.changevalue(3)
