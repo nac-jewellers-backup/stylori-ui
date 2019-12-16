@@ -326,13 +326,7 @@ function Component(props) {
     loaded: false,
     dataLoaded: true
   });
-  // let a=[];
-
-  // ['ProductType','Material'].map(val=>{
-  //   if(Object.values(props.filters[val]))
-  //   a.push(Object.keys(props.filters[val]))
-
-  //  })
+  const _height = props.data.imageResolution.img_res
   const callmouseover = () => {
     setCardState({ ...cardstate, hovered: !cardstate.hovered });
   }
@@ -340,8 +334,8 @@ function Component(props) {
     setCardState({ ...cardstate, hovered: !cardstate.hovered });
   }
   return (
-    <div className={classes.root}>
-      <Card className={classes.card}>
+    <div className={classes.root} >
+      <Card className={classes.card} >
         <CardActions>
           <Grid container xs={12}>
             <Grid container item xs={6} justify="flex-start">
@@ -364,7 +358,7 @@ function Component(props) {
         </CardActions>
         {/* /:productCategory/:productType/:material/:productName */}
         <Link to={{ pathname: `${'jewellery'}/${props.data.productType}/${props.data.material}/${(props.data.title).replace(/ /g, "-")}`, search: `skuId=${props.data.skuId}` }} style={{ textDecoration: 'none' }} onClick={handleProductDetatiContext(props)}>
-          <CardActionArea >
+          <CardActionArea style={{height:`${_height?`${_height}px` : '300px'}`}}>
 
             {/* <img 
 srcset={renderImages(props, cardstate)}
