@@ -45,9 +45,9 @@ export const TopPicksGridComponent = (props) => {
                     <Grid item xs={12} sm={12} md={3} lg={3} xl={3} spacing={2}>
                         <Grid container class="classval">
                             <img src={props.data[0].img} class="imagetop" />
-                            <Grid item class="letterMiddle">
+                            {/* <Grid item class="letterMiddle">
                                 <Typography className={"typos"}>{props.data[0].title}</Typography>
-                            </Grid>
+                            </Grid> */}
                         </Grid>
                     </Grid>
                     <Grid container item xs={12} sm={12} md={6} lg={6} xl={6} justify="center">
@@ -55,25 +55,25 @@ export const TopPicksGridComponent = (props) => {
                             <Grid item xs={6} style={{ padding: "0px 8px 8px 0px" }}>
                                 <Grid container class="classval">
                                     <img src={props.data[3].img} class="imagetop" />
-                                    <Grid item class="letterMiddle">
+                                    {/* <Grid item class="letterMiddle">
                                         <Typography className={"typos"}>{props.data[0].title}</Typography>
-                                    </Grid>
+                                    </Grid> */}
                                 </Grid>
                             </Grid>
                             <Grid item xs={6} style={{ padding: "0px 0px 8px 8px" }}>
                                 <Grid container class="classval">
                                     <img src={props.data[2].img} class="imagetop" />
-                                    <Grid item class="letterMiddle">
+                                    {/* <Grid item class="letterMiddle">
                                         <Typography className={"typos"}>{props.data[0].title}</Typography>
-                                    </Grid>
+                                    </Grid> */}
                                 </Grid>
                             </Grid>
                             <Grid item xs={12} style={{ textAlign: 'center', padding: "8px 0px 0px 0px" }}>
                                 <Grid container class="classval">
                                     <img src={props.data[4].img} class="imagetop" />
-                                    <Grid item class="letterMiddle">
+                                    {/* <Grid item class="letterMiddle">
                                         <Typography className={"typos"}>{props.data[0].title}</Typography>
-                                    </Grid>
+                                    </Grid> */}
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -81,9 +81,9 @@ export const TopPicksGridComponent = (props) => {
                     <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
                         <Grid container class="classval">
                             <img src={props.data[1].img} class="imagetop" />
-                            <Grid item class="letterMiddle">
+                            {/* <Grid item class="letterMiddle">
                                 <Typography className={"typos"}>{props.data[0].title}</Typography>
-                            </Grid>
+                            </Grid> */}
                         </Grid>
                     </Grid>
                 </Grid>
