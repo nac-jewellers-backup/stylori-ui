@@ -3,7 +3,7 @@ import { useNetworkRequest } from 'hooks/index';
 import { GlobalContext } from 'context';
 import { CartContext } from 'context'
 
-
+ 
 export const useVerifyOtp = (changePanel) => {
     const [email, setMail] = React.useState({ email: "" })
     const [otp, setOtp] = React.useState({ otp: "" });
