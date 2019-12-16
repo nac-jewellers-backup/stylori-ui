@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Popper, List, ListItem, ListItemText } from '@material-ui/core';
+import { Grid, Popper, List, ListItem, ListItemText, Typography } from '@material-ui/core';
 import { useStyles } from '../styles'
 import PropTypes from 'prop-types';
 
@@ -24,24 +24,42 @@ function HeaderHoverMenuItem(props) {
       <Grid container item xs={12} className={classes.paperdiv} >
         <Popper open={opens} anchorEl={target} transition className={classes.mouseOverPopover}>
           <List component="nav" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
+            <Grid className={classes.subtopic1}>
+              {
+                (props.listHoverItem !== undefined) &&
+                (props.listHoverItem['menuOne']).map(menuList =>
+                  (
 
-            {
-              (props.listHoverItem !== undefined) &&
+                    <ListItem className={classes.listedItems} component="li"
+                      onClick={() => { window.location.href = '/' + menuList.url }}
+                    >
+                      <ListItemText variant >
+                        <Typography className={classes.listedItemsvalue} >
+                          {menuList.title.toUpperCase()}
+                        </Typography>
+                      </ListItemText>
 
-              (props.listHoverItem['menuOne']).map(menuList =>
-                (
+                    </ListItem>
+                  ))}
+            </Grid>
+            <Grid className={classes.subtopic2}>
+              {
+                (props.listHoverItem !== undefined) &&
+                (props.listHoverItem['menuTwo']).map(menuList =>
+                  (
+                    <ListItem className={classes.listedItemsub} component="li"
+                      onClick={() => { window.location.href = '/' + menuList.url }}
+                    >
+                      <ListItemText variant >
+                        <Typography className={classes.listedItemsvalue} >
+                          {menuList.title.toUpperCase()}
+                        </Typography>
+                      </ListItemText>
 
-                  <ListItem component="li"
-                    onClick={() => { window.location.href = '/' + menuList.url }}
-                  >
+                    </ListItem>
+                  ))}
+            </Grid>
 
-                    <ListItemText variant >
-
-                      {menuList.title}
-                    </ListItemText>
-
-                  </ListItem>
-                ))}
           </List>
         </Popper>
       </Grid>
