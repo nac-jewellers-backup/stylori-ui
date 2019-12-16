@@ -27,9 +27,10 @@ const useLogin = (changePanel) => {
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/signin', {}, []);
     const { setCartFilters } = React.useContext(CartContext);
     const { setValues: addressetValues } = Addressforms();
+    const pathnames = window.location.pathname === "/login"
     const { loading: codloading, error: coderror, data: addresData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     React.useEffect(() => {
-        
+
         var ms = data && data.message
         if (ms && values['error'] && values['errortext']) {
             values['error']['passerr'] = true
@@ -73,8 +74,19 @@ const useLogin = (changePanel) => {
             val["addressvalues"] = addresData
             val["addrs"] = false
             addressetValues(val)
-            localStorage.setItem("c_k_l",true)
-            changePanel(2)
+            localStorage.setItem("c_k_l", true)
+            if (!pathnames) {
+                changePanel(2)
+                return false
+            } else {
+                if (localStorage.getItem('review_location') && localStorage.getItem('review_location').length > 0) {
+                    window.location.href = localStorage.getItem('review_location')
+                    return false
+                } else {
+                    window.location.href = "/home"
+                    return false
+                }
+            }
             window.location.reload();
         }
     }, [addresData])
@@ -111,7 +123,7 @@ const useLogin = (changePanel) => {
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
-        
+
         if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'
@@ -133,7 +145,7 @@ const useLogin = (changePanel) => {
         let lastAtPos = values.email.lastIndexOf('@');
         let lastDotPos = values.email.lastIndexOf('.');
         if (!(lastAtPos < lastDotPos && lastAtPos > 0 && values.email.indexOf('@@') == -1 && lastDotPos > 2 && (values.email.length - lastDotPos) > 2)) {
-            
+
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'An email address must contain a single @/.'
             setValues({

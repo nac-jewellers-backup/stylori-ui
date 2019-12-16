@@ -41,11 +41,11 @@ const useWishlists = (props) => {
             makeFetch(values);
         }else{
             alert("Please login your email Id")
+            window.location.href="/login"
         }
         // changePanel(3)
     }
     const handelRemove = (num) => {
-        debugger
         if (user_id.length > 0) {
             values["isactive"] = num
             values["user_id"] = user_id

@@ -28,7 +28,7 @@ import { CartContext } from '../../context/CartContext';
 import cart from '../../mappers/cart';
 import { CheckForCod } from 'queries/productdetail';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
-var variab = {} 
+var variab = {}
 const CartCardCheck = (props) => {
     const { loading, error, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     return <Component  {...props} CodData={CodData} makeRequestCod={makeRequestCod} />
@@ -42,12 +42,12 @@ class Component extends React.Component {
         // expandedlimit: 1,
         mailId: null
     }
- 
+
     handleChange = panel => (event, expanded) => {
         // alert("va",JSON.stringify(panel))
-            this.setState({
-                expanded: 'panel' + panel,
-            });
+        this.setState({
+            expanded: 'panel' + panel,
+        });
     };
 
     changePanel = (panel, mailId) => {
@@ -67,11 +67,8 @@ class Component extends React.Component {
         const { classes, data } = this.props;
         const { breadcrumsdata, cartsubdata } = this.props.data;
         let email = localStorage.getItem("email") ? localStorage.getItem("email") : '';
-        let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : {};
-        var value1 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : {};
-        var lgn = localStorage.getItem("vals") ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
-        var lgn1 = localStorage.getItem("vals") ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
-        variab["pincode"] = lgn && lgn.pincode || value && value.pincode
+        let value = localStorage.getItem("select_addres") ? JSON.parse(localStorage.getItem("select_addres")) : {};
+        variab["pincode"] = value && value.pincode
 
         return (
             <>
@@ -111,14 +108,14 @@ class Component extends React.Component {
                                 <Typography className='text-chck'>Address Detail
 
                                  <div className="ch-d-vl">
-                                        {lgn && lgn.firstname ? lgn1 && lgn1.firstname || lgn1 && lgn1.firstname : value && value.firstname || value1 && value1.firstname}
+                                        {value && value.firstname}
                                         &nbsp;
-                                        {lgn && lgn.lastname ? lgn1 && lgn1.lastname || lgn1 && lgn1.lastname : value && value.lastname || value1 && value1.lastname}
+                                        {value && value.lastname}
                                         &nbsp;
-                                        {lgn && lgn.addressline1 ? lgn && lgn.addressline1 || lgn1 && lgn1.addressline1 : value && value.addressline1 || value1 && value1.addressline1}
-                                        &nbsp;{lgn && lgn.city ? lgn && lgn.city || lgn1 && lgn1.city : value && value.city || value1 && value1.city}
-                                        {lgn && lgn.state ? lgn && lgn.state || lgn1 && lgn1.state : value && value.state || value1 && value1.state}&nbsp;
-                                        {lgn && lgn.pincode ? lgn && lgn.pincode || lgn1 && lgn1.pincode : value && value.pincode || value1 && value1.pincode}
+                                        {value && value.addressline1}
+                                        &nbsp;{value && value.city}
+                                        {value && value.state}&nbsp;
+                                        {value && value.pincode}
                                     </div>
 
                                 </Typography>

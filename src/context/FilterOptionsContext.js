@@ -404,7 +404,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     useEffect(() => { setMappedFilters(ntxdata) }, [ntxdata, ntxerr, ntx]);
 
     useEffect(() => {
-        debugger
+        
         pathQueries();
         updateProductList();
 
@@ -422,29 +422,18 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     useEffect(() => {
     }, [data, error, loading])
     const updatefiltersSort = async() => {
-        debugger
-        if ((Object.entries(filters).length !== 0 && filters.constructor === Object) ) {
-            var paramsfilter = () =>{ 
-                Object.keys(filters).map(fk => {
-                const filter = filters[fk];
-                const fv = Object.keys(filter);
-                if (fv.length > 0) {
-                    if (filter[fv[0]]) {
-                        const qt = `${fk}=${fv[0]}`;
-                        const qtf = {}
-                        qtf[`${fk}`] = `${fv[0]}`
-                        // queries.push(qt);
-                        qtfArr.push(qtf);
+        
+        if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object) ) {
+            var paramsfilter = (Object.entries(seoData).length !== 0 && seoData.constructor === Object ) && seoData.data.allSeoUrlPriorities.nodes.map(val => {
+                var a = {}
 
-                    }
+                a[val.attributeName.replace(/\s/g, '')] = val.attributeValue
+                return a
 
-                }
             })
-            return qtfArr
-        }
             if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object)) {
                 
-                const _paramsfilter = paramsfilter()
+                const _paramsfilter = paramsfilter.splice(1)
                
                 var conditionTransSkuFilters = {}
                 var filtersss = _paramsfilter.filter(val=>{
@@ -503,7 +492,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                         if((Object.entries(sort).length > 0 && sort.constructor === Object)&&(pricemin !==null && pricemax !== null)){
                            return sort && `sort=${sort.values}&startprice=${pricemin}&endprice=${pricemax}`
                         }
-                        else if(pricemin !==0){
+                        else if(pricemin !==null && pricemin>null){
                             var _search_loc = window.location.search
                             var _minValue = Number(_search_loc.split('?')[1].split('&')[0].split('=')[1])
                             var _maxValue = Number(_search_loc.split('?')[1].split('&')[1].split('=')[1])
@@ -584,7 +573,7 @@ function usePrevious(value) {
     useEffect(() => {
        
        updatefiltersSort()
-    }, [filters, seoData])
+    }, [seoData])
     var newObj = {}
     const updateFilters = async (filters) => {
         

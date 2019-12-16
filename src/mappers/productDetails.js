@@ -173,6 +173,7 @@ const generatedimondClarity = (val) => {
     }))
 }
 const generateShipsBy = (readytoship, vendorDeliveryTime) => {
+    debugger
     var isReadytoShip = readytoship
     var numberOfDays = vendorDeliveryTime
     var date = moment().format(' h a')

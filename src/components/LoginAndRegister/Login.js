@@ -1,10 +1,10 @@
 import React from 'react';
 // import './product-image-slider/loginRegisters.css'
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button, Container } from '@material-ui/core';
 import { Input } from '../../components/InputComponents/TextField/Input'
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
-import useLogin from './uselogin';
+import useLogin from '../../screens/Checkout/loginRegister/useLogin';
 import Header from 'components/Header/header'
 import Footer from "components/Footer/Footer"
 import { withRouter } from "react-router";
@@ -12,6 +12,7 @@ import {
     Checkbox
 } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Login from 'screens/Checkout/loginRegister/login';
 
 const UserLogin = (props) => {
     return <LoginComponent  {...props} />
@@ -20,9 +21,9 @@ const UserLogin = (props) => {
 const LoginComponent = (props) => {
     const { classes } = props;
     const { values, handlers, data } = useLogin(() => props.changePanel(3));
-    const vl = data && data.message
+    // const vl = data && data.message
     // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
-    var prof = data.userprofile ? data.userprofile.email : ""
+    // var prof = data.userprofile ? data.userprofile.email : ""
    
 React.useEffect(() => {
     window.scrollTo(0, 0)
@@ -43,7 +44,8 @@ React.useEffect(() => {
                 </Grid>
              
                     <Grid item xs={6} lg={6} xs={12}>
-                        <div className='pt-sm' style={{ width: "90%", float: "right" }}>
+                        <Container>
+                        {/* <div className='pt-sm' style={{ width: "90%", float: "right" }}>
                             <form action="javascript:void(0)" onSubmit={(e) => {
                                 handlers.handelSubmit(e)
                             }}>
@@ -86,7 +88,8 @@ React.useEffect(() => {
                                         <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img>
                                     </div >
                                 </div>
-                                <br />
+                                <br /> */}
+                                <Login/>
                                 <br />
 
                                 <Grid spacing={12} container>
@@ -98,9 +101,9 @@ React.useEffect(() => {
                                             marginRight: "50%"
                                         }} onClick={() => { window.location.href = "/registers" }} >Click here to Register</div>
                                     </Grid>
-                                    <Grid item xs={6} lg={6} style={{ float: "right", marginLeft: "80%" }}>
+                                    {/* <Grid item xs={6} lg={6} style={{ float: "right", marginLeft: "80%" }}>
                                         <Button className='apply-b' type="submit">Login</Button>
-                                    </Grid>
+                                    </Grid> */}
                                 </Grid>
                                 <br />
 
@@ -109,9 +112,9 @@ React.useEffect(() => {
                                 <Button className='apply-b' type="submit">Apply</Button>
                             </div> */}
 
-                            </form>
-                        </div>
-                    </Grid>
+                            {/* </form> */}
+                        {/* </div> */}
+                        </Container>  </Grid>
 
             </Grid>
             <Grid item xs={12}>

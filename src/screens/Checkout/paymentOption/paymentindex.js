@@ -59,10 +59,9 @@ class PaymentIndex extends React.Component {
         // }
         return (
             <div className="payment-div">
-                <Container>
                     <Hidden smDown>
-                        <Grid container spacing={12} className="panel-body">
-                            <Grid item lg={3}>
+                        <Grid container spacing={12} lg={12} className="panel-body">
+                            <Grid item lg={5}>
                                 <div className="pay-index-subhed">
                                     <p style={{ background: "#dfdfdf" }}
                                     // onClick={() => this.toggleCollapsed('Creditform')}
@@ -83,7 +82,7 @@ class PaymentIndex extends React.Component {
                                 </div>
                             </Grid>
                             <Grid item lg={7}>
-                                <div style={{ marginTop: "20px", width: "100%" }}>
+                                <div style={{ marginTop: "20px" }} className="pay-index-subhed_datas dz">
                                     {
                                         this.state.isActive == 'Creditform' && <Creditform />
                                     }
@@ -94,16 +93,15 @@ class PaymentIndex extends React.Component {
                                         this.state.isActive == 'Netbanking' && <Netbanking />
                                     }
                                     {
-                                        dataCard1.length > 0 ? <div
-                                            style={{ marginTop: "20%", width: "650px" }}>cash on delivery is not available</div> :
+                                        // !dataCard1.length > 0 ?
                                             this.state.isActive == 'CashonDelivey' && <CashonDelivey />
+                                            // :"cash on delivery is not available"
                                     }
                                 </div>
                             </Grid>
                         </Grid>
                     </Hidden>
 
-                </Container>
                 <Hidden mdUp>
                     <ExpansionPanel className="respone-div">
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>

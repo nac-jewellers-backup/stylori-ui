@@ -42,48 +42,49 @@ class Component extends React.Component {
         return (
             <>
                 {/* {JSON.stringify(this.props.wishlistdata)} */}
-                {wishlistdata && wishlistdata.nodes.length>0?
+                {wishlistdata && wishlistdata.nodes.length > 0 ?
                     <>
-                    {wishlistdata && wishlistdata.nodes.map(first_map =>
-                    <>
-                        {/* {first_map && first_map.productListByProductId && first_map.productListByProductId.transSkuListsByProductId && first_map.productListByProductId.transSkuListsByProductId.nodes.map(thrd_map =>  */}
-                        <Grid container spacing={12}>
-                            <Grid item lg={1}>
-                                <div className="remove-product">
-                                    <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} />
-                                </div>
-                            </Grid>
-                            <Grid item lg={3}>
-                                <div className="wishlist_img">
-                                    <img className="viewport-img" src={`https://assets.stylori.net/base_images/${first_map.productListByProductId.productImagesByProductId.nodes[0].imageUrl}`
-                                    } />
-                                </div></Grid>
-                            <Grid item lg={8}>
-                                <div>
-                                    <div className="wislist_title">{first_map.productListByProductId.productName}</div><br />
+                        {wishlistdata && wishlistdata.nodes.map(first_map =>
+                            <>
+                                 {/* {first_map && first_map.productListByProductId && first_map.productListByProductId.transSkuListsByProductId && first_map.productListByProductId.transSkuListsByProductId.nodes.map(thrd_map =>  */}
+                                <Grid container spacing={12}>
+                                    <Grid item lg={1}>
+                                          <div className="remove-product">
+                                            <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} />
+                                        </div>
+                                    </Grid>
+                                    <Grid item lg={3}>
+                                        <div className="wishlist_img">
+                                            <img className="viewport-img" src={`https://assets.stylori.net/base_images/${first_map.productListByProductId.productImagesByProductId.nodes[0].imageUrl}`
+                                            } />
+                                         </div></Grid>
+                                    <Grid item lg={8}>
+                                        <div>
+                                            <div className="wislist_title">{first_map.productListByProductId.productName}</div><br />
 
-                                    <div className="wislist_price">{Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice))}</div><br />
-                                    <div onClick={() => {
-                                        this.props.setCartFilters({
-                                            skuId: first_map.skuId,
-                                            qty: 1,
-                                            price: first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice
-                                        })
-                                        // window.location.pathname = "/cart" 
-                                    }}>
-                                        <>
-                                        <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} /></>
-                                        <Button className="add-bag">
-                                            <i class="fa fa-shopping-bag"></i>&nbsp;Add to Bag
-                        </Button>
-                                    </div>
-                                </div>
-                            </Grid>
-                        </Grid> 
-                        {/* )}  */}
-                    </>
-                )}</>:<div style={{ textAlign: "center",color:"#394578" }}>Nothing added your Wishlists</div>}
-                
+                                            <div className="wislist_price">{Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice))}</div><br />
+                                            <div >
+                                                <>
+                                                    <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} /></>
+                                                <Button
+                                                    onClick={() => {
+                                                        this.props.setCartFilters({
+                                                            skuId: first_map.skuId,
+                                                            qty: 1,
+                                                            price: first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice
+                                                        })
+                                                        window.location.pathname = "/cart"
+                                                    }} className="add-bag">
+                                                    <i class="fa fa-shopping-bag"></i>&nbsp;Add to Bag
+                                    </Button>
+                                            </div>
+                                        </div>
+                                    </Grid>
+                                </Grid>
+                                {/* )}  */}
+                            </>
+                        )}</> : <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Wishlists</div>}
+
 
 
             </>

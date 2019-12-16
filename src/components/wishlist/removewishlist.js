@@ -11,9 +11,8 @@ const RemoveWishlistComponent = (props) => {
     const { values, setValues, handlers } = useWishlists();
 
     return (
-        <div
+        <div style={{color:"#fff"}}
             onClick={() => {
-                debugger
                 values["product_sku"] = props.sku
                 values["product_id"] = props.productId
                 setValues({ values, ...values });

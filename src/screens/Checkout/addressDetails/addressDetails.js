@@ -8,7 +8,7 @@ class Addressdetails extends React.Component {
         const { setValues, values } = props;
         const cl = <input onChange={(e) => {
             setValues({
-                ...values,
+                values,  ...values,
                 checkValue1: !values.checkValue1
             })
         }} type='checkbox' checked={values.checkValue1} />
@@ -25,7 +25,6 @@ class Addressdetails extends React.Component {
         // }
         // const back_color = () => {
         // }
-        debugger
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>
@@ -33,8 +32,8 @@ class Addressdetails extends React.Component {
                     {values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes.map((val_addrs1, index) =>
                         <>
                             <Grid item xs={12} lg={6} style={{ paddingRight: "15px" }}>
-                                <div className='card-adrs wd' 
-                                // className={values.Id === val_addrs1.id || values.Id2 === val_addrs1.id ? "address_card_disabled" : ""}
+                                <div className='card-adrs wd'
+                                    // className={values.Id === val_addrs1.id || values.Id2 === val_addrs1.id ? "address_card_disabled" : ""}
                                     style={{ marginTop: "5px" }}>
                                     <h4 class="card-title">
                                         <i style={{ fontSize: "25px", color: "#394578" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
@@ -72,16 +71,17 @@ class Addressdetails extends React.Component {
                                         <span className={`shipping-phonenumber ${classes.normalfonts}`}>
                                             +91 {val_addrs1.contactNumber}
                                         </span>
-                                        {values.Id2 === val_addrs1.id || values.Id === val_addrs1.id ? <>
-                                            <Button disabled
-                                                style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
-                                                    // this.props.selectaddreses(val_addrs1, 1)
-                                                    // this.props.changevalue(3)
-                                                }}> <i class="fa fa-check-circle" style={{color:"#fff"}}></i> &nbsp;Your Shipping address</Button></> : <>
-                                                <Button style={{ float: "right" }} className='apply-b' onClick={() => {
-                                                    this.props.selectaddreses(val_addrs1, 1)
-                                                    // this.props.changevalue(3)
-                                                }}>Select and  Review </Button></>}
+                                        {window.location.pathname !== "/account" ?
+                                            <>{values.Id2 === val_addrs1.id || values.Id === val_addrs1.id ? <>
+                                                <Button disabled
+                                                    style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
+                                                        // this.props.selectaddreses(val_addrs1, 1)
+                                                        // this.props.changevalue(3)
+                                                    }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Your Shipping address</Button></> : <>
+                                                    <Button style={{ float: "right" }} className='apply-b' onClick={() => {
+                                                        this.props.selectaddreses(val_addrs1, 1)
+                                                        // this.props.changevalue(3)
+                                                    }}>Select and  Review </Button></>}</> : ""}
                                     </div>
                                 </div>
                             </Grid><br />
@@ -110,7 +110,7 @@ class Addressdetails extends React.Component {
                                             <Grid item xs={12} lg={6} style={{ paddingRight: "15px" }}>
                                                 <div className='card-adrs wd'
                                                     style={{ marginTop: "5px" }}
-                                                     >
+                                                >
                                                     <h4 class="card-title">
                                                         <i style={{ fontSize: "25px", color: "#394578" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                                         <span class="address-name">
@@ -149,7 +149,7 @@ class Addressdetails extends React.Component {
                                                             <Button disabled style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
                                                                 // this.props.selectaddreses(val_addrs2, 2)
                                                                 // this.props.changevalue(3)
-                                                            }}> <i class="fa fa-check-circle" style={{color:"#fff"}}></i> &nbsp;Your Billing address </Button></> : <>
+                                                            }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Your Billing address </Button></> : <>
                                                                 <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                                                     this.props.selectaddreses(val_addrs2, 2)
                                                                     // this.props.changevalue(3)

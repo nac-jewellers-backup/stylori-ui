@@ -718,7 +718,7 @@ body {
     border: 1px solid #CCC;
     margin-bottom: 15px !important;
     width: 90% !important;
-    height: 80px !important;
+    /* height: 80px !important; */
     outline: none !important;
     cursor: pointer;
 }

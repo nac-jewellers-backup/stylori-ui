@@ -32,6 +32,7 @@ const useRegister = (changePanel, props) => {
     const { data, error, loading, makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
     const { setCartFilters } = React.useContext(CartContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
+    const pathnamelog = window.location.pathname === "/registers"
     useEffect(() => {
         var ms = data && data.message
         if (ms && values['error'] && values['errortext']) {
@@ -65,7 +66,18 @@ const useRegister = (changePanel, props) => {
                 setValues({ user_id: data.user_profile_id })
                 setCartFilters({ user_id })
                 makeRequestCod(obj);
-                changePanel(3)
+                    if (!pathnamelog) {
+                        changePanel(2)
+                        // return false
+                    } else {
+                        if (localStorage.getItem('review_location') && localStorage.getItem('review_location').length > 0) {
+                            window.location.href = localStorage.getItem('review_location')
+                            return false
+                        } else {
+                            window.location.href = "/home"
+                            return false
+                        }
+                    }
             }
         }
 
@@ -156,7 +168,7 @@ const useRegister = (changePanel, props) => {
                 values['error']['cnfpasserr'] = true
                 // values['errortext']['passerr'] = "password doesn't match"
                 values['errortext']['cnfpasserr'] = "Password doesn't match"
-                setValues({ 
+                setValues({
                     ...values,
                     values,
                 })
