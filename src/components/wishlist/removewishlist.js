@@ -13,7 +13,6 @@ const RemoveWishlistComponent = (props) => {
     return (
         <div
             onClick={() => {
-                debugger
                 values["product_sku"] = props.sku
                 values["product_id"] = props.productId
                 setValues({ values, ...values });

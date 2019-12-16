@@ -404,7 +404,6 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     useEffect(() => { setMappedFilters(ntxdata) }, [ntxdata, ntxerr, ntx]);
 
     useEffect(() => {
-        debugger
         pathQueries();
         updateProductList();
 
@@ -422,7 +421,6 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     useEffect(() => {
     }, [data, error, loading])
     const updatefiltersSort = async() => {
-        debugger
         if ((Object.entries(filters).length !== 0 && filters.constructor === Object) ) {
             var paramsfilter = () =>{ 
                 Object.keys(filters).map(fk => {

@@ -5,6 +5,8 @@ import './index.css'
 import Loading from 'screens/Loading';
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import  Theme  from './Theme.js'
+import { withRouter } from 'react-router-dom';
 let jewellery_theme = createMuiTheme(require('./jewellery_theme.json'));
 let silver_jewellery_theme = createMuiTheme(require('./silver_jewellery_theme.json'));
 let jewelleryThemes = responsiveFontSizes(jewellery_theme);
@@ -16,9 +18,10 @@ const RouterApp = React.lazy(() => import('router'));
 //   uri: ``,
 // });
 
-const theme_func = () =>{
+const theme_func = (props) =>{
+  console.log('props.match.path', props.match.path)
 
-if(window.location.pathname === "silverjewellery"){
+if(props.location.pathname === "/silverjewellery" || props.location.pathname === "/silver-jewellery"){
   return silverThemes
 }
 else{
@@ -35,7 +38,7 @@ function App(props) {
   return (
     // <ApolloProvider client={client}>
     <GlobalProvider>
-      <ThemeProvider theme={theme_func()}>
+      <Theme>
         <NetworkProvider>
           {/*productId="SP1135" <ProductDetailProvider productId="SP1135">*/}
           <Router>
@@ -45,10 +48,10 @@ function App(props) {
           </Router>
           {/* </ProductDetailProvider> */}
         </NetworkProvider>
-      </ThemeProvider>
+      </Theme>
     </GlobalProvider>
     // </ApolloProvider>
   );
 }
 
-export default App;
+export default withRouter(App);

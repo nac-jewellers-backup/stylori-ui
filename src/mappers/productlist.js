@@ -115,7 +115,7 @@ const hoverImage = (placeImage) =>  placeImage.find(fd => fd.ishover);
         mapperdata = [];
     }
     const _format = mapperdata.map(k => {
-        console.log(injectUrl(placeImages(k.transSkuListsByProductId.nodes[0].productListByProductId.productImagesByProductId.nodes), cdnUrl),'injectUrl')
+        debugger
         let _d;
         try {
             _d = {
