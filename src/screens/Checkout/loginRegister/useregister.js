@@ -161,7 +161,15 @@ const useRegister = (changePanel, props) => {
             })
             return false
         }
-
+        if (values.email === "" && values['error'] && values['errortext']) {
+            values['error']['emerr'] = true
+            values['errortext']['emerr'] = 'Email is required'
+            setValues({
+                ...values,
+                values,
+            })
+            return false
+        }
         if (!pathnames) {
             if (values.password !== values.confirmpassword && values['error'] && values['errortext']) {
                 // values['error']['passerr'] = true
@@ -175,9 +183,8 @@ const useRegister = (changePanel, props) => {
                 return false
             }
         }
-        let lastAtPos = values.email.lastIndexOf('@');
-        let lastDotPos = values.email.lastIndexOf('.');
-        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && values.email.indexOf('@@') == -1 && lastDotPos > 2 && (values.email.length - lastDotPos) > 2)) {
+        var emailvld = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
+        if (!emailvld.test(values.email)) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'An email address must contain a single @/.'
             setValues({

@@ -123,7 +123,7 @@ const useLogin = (changePanel) => {
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
-
+debugger
         if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'
@@ -142,10 +142,18 @@ const useLogin = (changePanel) => {
             })
             return false
         }
-        let lastAtPos = values.email.lastIndexOf('@');
-        let lastDotPos = values.email.lastIndexOf('.');
-        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && values.email.indexOf('@@') == -1 && lastDotPos > 2 && (values.email.length - lastDotPos) > 2)) {
+        if (values.email === "" && values['error'] && values['errortext']) {
+            values['error']['emerr'] = true
+            values['errortext']['emerr'] = 'Email is required'
 
+            setValues({
+                ...values,
+                values,
+            })
+            return false
+        }
+        var emailvld = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
+        if (!emailvld.test(values.email)) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'An email address must contain a single @/.'
             setValues({

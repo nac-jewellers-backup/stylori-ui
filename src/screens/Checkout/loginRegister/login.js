@@ -40,11 +40,13 @@ const LoginComponent = (props) => {
                 handlers.handelSubmit(e)
             }}>
                 <Grid container item xs={12} lg={window.location.pathname === "/login" ? 12 : 6}>
-                    <h5 className={`title ${classes.normalfonts}`}>  I already have an account </h5>
+                    <h5 className={`title ${classes.normalfonts}`}>
+                    {window.location.pathname === "/login" ? "Login" : "I already have an account"}
+                           </h5>
                     <Input
                         margin="normal"
                         variant="outlined"
-                        type="email"
+                        // type="email"
                         name="email"
                         value={values.email}
                         error={values.error && values.error.emerr ? true : false}

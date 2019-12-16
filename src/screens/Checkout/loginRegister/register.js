@@ -14,7 +14,7 @@ const RegisterComponent = (props) => {
     const { values, setValues, handlers, data } = useRegister(() => props.changePanel(2));
     // var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
     // var ccc = data.message ? data.message : ""
-    const paths = window.location.pathname === "/account" 
+    const paths = window.location.pathname === "/account"
     const clear = () => {
         setValues({
             email: "",
@@ -47,7 +47,9 @@ const RegisterComponent = (props) => {
                 <Grid container spacing={12}>
                     <Grid item lg={1} />
                     <Grid item xs={12} lg={window.location.pathname === "/registers" ? 12 : 6}>
-                        <h5 className='title'>  New user registration  </h5>
+                        <h5 className='title'>
+                            {window.location.pathname === "/registers" ? "Register" : "New user registration"}
+                        </h5>
                         {paths ?
                             <Input
                                 value={email}
@@ -58,7 +60,7 @@ const RegisterComponent = (props) => {
                                 <Input
                                     margin="normal"
                                     variant="outlined"
-                                    type="email"
+                                    // type="email"
                                     name="email"
                                     value={values.email}
                                     error={values.error && values.error.emerr ? true : false}
