@@ -404,6 +404,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     useEffect(() => { setMappedFilters(ntxdata) }, [ntxdata, ntxerr, ntx]);
 
     useEffect(() => {
+        
         pathQueries();
         updateProductList();
 
@@ -421,18 +422,10 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     useEffect(() => {
     }, [data, error, loading])
     const updatefiltersSort = async() => {
-        if ((Object.entries(filters).length !== 0 && filters.constructor === Object) ) {
-            var paramsfilter = () =>{ 
-                Object.keys(filters).map(fk => {
-                const filter = filters[fk];
-                const fv = Object.keys(filter);
-                if (fv.length > 0) {
-                    if (filter[fv[0]]) {
-                        const qt = `${fk}=${fv[0]}`;
-                        const qtf = {}
-                        qtf[`${fk}`] = `${fv[0]}`
-                        // queries.push(qt);
-                        qtfArr.push(qtf);
+        
+        if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object) ) {
+            var paramsfilter = (Object.entries(seoData).length !== 0 && seoData.constructor === Object ) && seoData.data.allSeoUrlPriorities.nodes.map(val => {
+                var a = {}
 
                 a[val.attributeName.replace(/\s/g, '')] = val.attributeValue
                 return a
@@ -712,4 +705,4 @@ function usePrevious(value) {
     )
 };
 
-export const FilterOptionsProvider = withRouter(Provider);
+export const FilterOptionsProvider = withRouter(Provider); 
