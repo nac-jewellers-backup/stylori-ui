@@ -10,6 +10,7 @@ import FaqsTitle from 'components/faqs/faqsTitle';
 import FaqsHelp from "components/faqs/faqsHelp";
 import FaqsCustomer from 'components/faqs/faqsCustomer'
 import Accordian from 'components/faqs/accordian'
+import ProductCare from 'components/ProductCare/productCare'
 
 class FaqsBlock extends React.Component {
     constructor(props) {
@@ -49,10 +50,11 @@ class FaqsBlock extends React.Component {
                                     <FaqsHelp />
                                     <FaqsCustomer />
                                 </Grid>
-
+                      
                                 <Grid item style={{ width: "82%"}}>
                                     <Grid style={{marginLeft:"4%" }}>
-                            <Accordian />
+                            {/* <Accordian /> */}
+                            <ProductCare />
                                     </Grid>
                     </Grid>
                             </Grid>
