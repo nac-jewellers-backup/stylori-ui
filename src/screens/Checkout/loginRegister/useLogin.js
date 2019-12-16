@@ -83,7 +83,7 @@ const useLogin = (changePanel) => {
                     window.location.href = localStorage.getItem('review_location')
                     return false
                 } else {
-                    window.location.href = "/home"
+                    window.location.href = "/home" 
                     return false
                 }
             }
