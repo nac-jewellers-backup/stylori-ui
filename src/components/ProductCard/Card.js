@@ -17,6 +17,7 @@ import { ProductDetailContext } from 'context'
 import { LazyLoadImage, trackWindowScroll }
   from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import Wishlist from "components/wishlist/wishlist";
 
 
 export const ImgMediaCard = (props) => {
@@ -172,12 +173,9 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center"
   },
   card: {
-    minWidth: "100%",
-    maxWidth: "100%",
-    [theme.breakpoints.down('sm')]: {
-      minWidth: "100%",
-      maxWidth: "100%",
-    },
+    minWidth: "80%",
+    maxWidth: "90%",
+
     borderRadius: '0 !important',
 
   },
@@ -359,20 +357,21 @@ function Component(props) {
             </Grid>
 
             <Grid container item xs={6} justify="flex-end">
-              <i
+              {/* <i
                 style={{ fontSize: "18px" }}
                 className={`fa ${classes.iconColor}`}
               >
                 &#xf08a;
-              </i>
-            </Grid>
+              </i> */}
+              <Wishlist sku={props.data.skuId} productId={props.data.productId} />
+          </Grid>
           </Grid>
         </CardActions>
         {/* /:productCategory/:productType/:material/:productName */}
         <Link to={{ pathname: `${'jewellery'}/${props.data.productType}/${props.data.material}/${(props.data.title).replace(/ /g, "-")}`, search: `skuId=${props.data.skuId}` }} style={{ textDecoration: 'none' }} onClick={handleProductDetatiContext(props)}>
           <CardActionArea style={{ height: `${_height ? `${_height}px` : '300px'}` }}>
 
-            {/* <img 
+          {/* <img 
 srcset={renderImages(props, cardstate)}
 sizes="(max-width: 320px) 320w,
             (max-width: 480px) 375w,
@@ -395,53 +394,53 @@ sizes="(max-width: 320px) 320w,
           className={`${props.data.image.placeImage.length === 0 || props.data.image.hoverImage.length === 0 ? 'shine' : '' }`}
           
           /> */}
-            {Gallery(props, callmouseover, callmouseout, cardstate)}
-          </CardActionArea>
-          <Card className={classes.priceClass}>
-            <CardContent className={classes.cardContent}>
-              <Grid
-                container
-                item
-                xs={12}
-                className={classes.textPriceCardGrid}
-                alignItems="center"
-              >
-                <Grid container item xs={12} sm={12} md={7} lg={7} xl={7} alignItems="center" className={`${classes.priceClassMain}`}>
-                  <Typography
-                    variant="h6"
-                    component="h6"
-                    className={classes.offerMainPrice}
-                  >
-                    {/* <i
+          {Gallery(props, callmouseover, callmouseout, cardstate)}
+        </CardActionArea>
+        <Card className={classes.priceClass}>
+          <CardContent className={classes.cardContent}>
+            <Grid
+              container
+              item
+              xs={12}
+              className={classes.textPriceCardGrid}
+              alignItems="center"
+            >
+              <Grid container item xs={12} sm={12} md={7} lg={7} xl={7} alignItems="center" className={`${classes.priceClassMain}`}>
+                <Typography
+                  variant="h6"
+                  component="h6"
+                  className={classes.offerMainPrice}
+                >
+                  {/* <i
                     
                     className="fa"
                   >
                     &#xf156;
                   </i> */}
-                    {/* {Math.round(props.data.offerPrice)} */}
-                    {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.offerPrice))}
-                  </Typography>
-                </Grid>
-                {/*  */}
-                <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={`${classes.priceOffGrid}`}>
-                  <Grid container item xs={12} alignItems="center" className={`${classes.priceOffGridsub}`}>
-                    <Typography
-                      gutterBottom
-                      variant="body1"
-                      component="span"
-                      className={classes.offerPrice}
-                    >
-                      <del>
-                        {/* <i style={{ fontSize: "12px" }} className="fa">
+                  {/* {Math.round(props.data.offerPrice)} */}
+                  {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.offerPrice))}
+                </Typography>
+              </Grid>
+              {/*  */}
+              <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={`${classes.priceOffGrid}`}>
+                <Grid container item xs={12} alignItems="center" className={`${classes.priceOffGridsub}`}>
+                  <Typography
+                    gutterBottom
+                    variant="body1"
+                    component="span"
+                    className={classes.offerPrice}
+                  >
+                    <del>
+                      {/* <i style={{ fontSize: "12px" }} className="fa">
                         &#xf156;
                       </i>
                       &nbsp;  */}
-                        {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
-                      </del>
-                    </Typography>
-                  </Grid>
-                  <Grid container item xs={12} className={`${classes.offerPricesMain}`}>
-                    {/* <Typography
+                      {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
+                    </del>
+                  </Typography>
+                </Grid>
+                <Grid container item xs={12} className={`${classes.offerPricesMain}`}>
+                  {/* <Typography
                     gutterBottom
                     variant="body1"
                     component="span"
@@ -449,35 +448,35 @@ sizes="(max-width: 320px) 320w,
                   >
                     you save &nbsp;
                   </Typography> */}
-                    <Typography
-                      gutterBottom
-                      variant="body1"
-                      component="span"
-                      className={`${classes.youSave} ${classes.youSavePrice}`}
-                    >
-                      {/* 20% Off */}
-                      {Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice)) / Math.round(props.data.price)) * 100) + '% off'}
+                  <Typography
+                    gutterBottom
+                    variant="body1"
+                    component="span"
+                    className={`${classes.youSave} ${classes.youSavePrice}`}
+                  >
+                    {/* 20% Off */}
+                    {Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice)) / Math.round(props.data.price)) * 100) + '% off'}
 
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Hidden smDown>
+                <Grid container xs={12}>
+                  <Grid item xs={12} className={`${classes.titles}`}>
+                    <Typography variant="body1"
+                      component="span" className={`${classes.titles}`}>
+                      {props.data.title}
                     </Typography>
+
                   </Grid>
                 </Grid>
-                <Hidden smDown>
-                  <Grid container xs={12}>
-                    <Grid item xs={12} className={`${classes.titles}`}>
-                      <Typography variant="body1"
-                        component="span" className={`${classes.titles}`}>
-                        {props.data.title}
-                      </Typography>
+              </Hidden>
 
-                    </Grid>
-                  </Grid>
-                </Hidden>
-
-              </Grid>
-            </CardContent>
-          </Card>
-        </Link>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Link>
       </Card>
-    </div>
+    </div >
   );
 }

@@ -32,6 +32,7 @@ const useRegister = (changePanel, props) => {
     const { data, error, loading, makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
     const { setCartFilters } = React.useContext(CartContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
+    const pathnamelog = window.location.pathname === "/registers"
     useEffect(() => {
         var ms = data && data.message
         if (ms && values['error'] && values['errortext']) {
@@ -65,7 +66,18 @@ const useRegister = (changePanel, props) => {
                 setValues({ user_id: data.user_profile_id })
                 setCartFilters({ user_id })
                 makeRequestCod(obj);
-                changePanel(3)
+                    if (!pathnamelog) {
+                        changePanel(2)
+                        // return false
+                    } else {
+                        if (localStorage.getItem('review_location') && localStorage.getItem('review_location').length > 0) {
+                            window.location.href = localStorage.getItem('review_location')
+                            return false
+                        } else {
+                            window.location.href = "/home"
+                            return false
+                        }
+                    }
             }
         }
 
@@ -149,23 +161,30 @@ const useRegister = (changePanel, props) => {
             })
             return false
         }
-
+        if (values.email === "" && values['error'] && values['errortext']) {
+            values['error']['emerr'] = true
+            values['errortext']['emerr'] = 'Email is required'
+            setValues({
+                ...values,
+                values,
+            })
+            return false
+        }
         if (!pathnames) {
             if (values.password !== values.confirmpassword && values['error'] && values['errortext']) {
                 // values['error']['passerr'] = true
                 values['error']['cnfpasserr'] = true
                 // values['errortext']['passerr'] = "password doesn't match"
                 values['errortext']['cnfpasserr'] = "Password doesn't match"
-                setValues({ 
+                setValues({
                     ...values,
                     values,
                 })
                 return false
             }
         }
-        let lastAtPos = values.email.lastIndexOf('@');
-        let lastDotPos = values.email.lastIndexOf('.');
-        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && values.email.indexOf('@@') == -1 && lastDotPos > 2 && (values.email.length - lastDotPos) > 2)) {
+        var emailvld = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
+        if (!emailvld.test(values.email)) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'An email address must contain a single @/.'
             setValues({

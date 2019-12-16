@@ -6,6 +6,7 @@ export const CART = `query myquerycart($productList: [String!]) {
       metalColor
       discountPrice
       markupPrice
+      
       productListByProductId {
         productId
         productName
@@ -39,6 +40,8 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
               sellingPrice
               purity
               metalColor
+              isReadyToShip
+              vendorDeliveryTime
               productListByProductId {
                 productImagesByProductId(filter: {isdefault: {equalTo: true}, imagePosition: {equalTo: 1}}) {
                   nodes {

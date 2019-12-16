@@ -22,6 +22,7 @@ const Addressforms = (changePanel) => {
     const [pincods, setpincod] = React.useState({
         pincod: ""
     })
+    const { loading: userloading, error: usererror, data: userdata, makeFetch: makeFetch } = useNetworkRequest('/adduseraddress', {}, false);
     const { loading: addresloading, error: addreserror, data: addresData, makeRequestCod: addresmakeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     const [values, setValues] = React.useState({
         addressOne: {
@@ -66,15 +67,18 @@ const Addressforms = (changePanel) => {
         edit_addresId: false,
         Id: "",
         Id2: "",
-        addres_id: null
+        addres_id: null,
     });
     var addObj = {};
+    var adars1 = {}
+    var adars2 = {}
     addObjall["isguestlogin"] = cont ? false : true
-    const { data: userdata, makeFetch } = useNetworkRequest('/adduseraddress', {}, false);
     const { data, error, loading, makeFetch: makeFetchall, mapped, status } = useNetworkRequest('/addaddress', {}, false);
     const { makeFetch: deleteaddress, } = useNetworkRequest('/removeaddress', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
-    const pathnames = Window && Window.location && Window.location.pathname === "/account"
+    const pathnames = window.location.pathname === "/account"
+    // var stst = values.ref ? values.ref : ""
+    debugger
     useEffect(() => {
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
         var adrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes : null
@@ -86,8 +90,15 @@ const Addressforms = (changePanel) => {
                 ...values
             })
         }
-    }, [addresData])
+    }, [addresData, userdata])
     React.useEffect(() => {
+        if (user_id.length > 0) {
+            obj['userprofileId'] = user_id
+            addresmakeRequestCod(obj);
+        }
+    }, [userdata])
+    React.useEffect(() => {
+
         if (user_id.length > 0) {
             obj['userprofileId'] = user_id
             addresmakeRequestCod(obj);
@@ -154,6 +165,7 @@ const Addressforms = (changePanel) => {
     }
 
     const handleSubmit = (e) => {
+        debugger
         // if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length < 5) {
         var addressOne = values.addressOne
         var addressTwo = values.addressTwo
@@ -168,6 +180,7 @@ const Addressforms = (changePanel) => {
             return false
         } else {
             if (values.checkValue === true) {
+
                 addObj['address'] = [addressOne];
             } if (values.checkValue === false) {
                 if (values.edit_addresId === true) {
@@ -203,11 +216,15 @@ const Addressforms = (changePanel) => {
         //     }
         //     // window.location.reload();
         // }
-        window.location.reload();
-    }
+        // window.location.reload();
+        // values["edit_ref"] = true
+        window.location.reload();  }
     const selectaddreses = (val_addrs, num) => {
-        var addressOne = val_addrs
-        var addressTwo = values.addressTwo
+        // var addressOne = val_addrs
+        // var addressTwo = values.addressTwo
+
+
+        localStorage.setItem("select_addres", JSON.stringify(val_addrs))
         if (values.checkValue1 === true) {
             values["Id2"] = val_addrs && val_addrs.id
             setValues({
@@ -217,7 +234,8 @@ const Addressforms = (changePanel) => {
             addObjall["user_id"] = user_id
             addObjall["cart_id"] = cart_id
             if (val_addrs && val_addrs.firstname.length > 0) {
-                addObjall['address'] = [addressOne];
+                adars1['addressOne'] = val_addrs
+                addObjall['address'] = [adars1.addressOne];
                 makeFetchall(addObjall);
             }
             alert("your address send on succesfully")
@@ -227,16 +245,24 @@ const Addressforms = (changePanel) => {
             return false
         }
         if (values.checkValue1 === false) {
+            debugger
             if (num === 2) {
                 values["Id"] = val_addrs && val_addrs.id
+                if (val_addrs && val_addrs.firstname.length > 0) {
+                    adars2['addressTwo'] = val_addrs
+                }
                 setValues({
                     values,
                     ...values,
                 })
                 alert("please select your shipping address")
             } else {
+
                 if (num === 1) {
                     values["Id2"] = val_addrs && val_addrs.id
+                    if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
+                        adars1['addressOne'] = val_addrs
+                    }
                     setValues({
                         values,
                         ...values,
@@ -247,9 +273,9 @@ const Addressforms = (changePanel) => {
             if ((values && values.Id && values.Id.length > 0) && (values && values.Id2 && values.Id2.length > 0)) {
                 addObjall["user_id"] = user_id
                 addObjall["cart_id"] = cart_id
-                addObjall['address'] = [addressOne, addressTwo];
+                addObjall['address'] = [adars1.addressOne, adars2.addressTwo];
                 alert("your address send on succesfully")
-                if (val_addrs && val_addrs.firstname.length > 0) {
+                if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                     makeFetchall(addObjall);
                 }
                 if (!pathnames) {
@@ -275,7 +301,7 @@ const Addressforms = (changePanel) => {
         } else {
             delet["address_id"] = val_addrs && val_addrs.id
             deleteaddress(delet)
-            window.location.reload();
+            // window.location.reload();
         }
 
     }
@@ -285,6 +311,7 @@ const Addressforms = (changePanel) => {
         }
     };
     const redirectForm1 = (event) => {
+
         values["addressOne"] = ""
         values["addressTwo"] = ""
         value11 = {

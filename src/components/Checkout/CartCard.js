@@ -7,7 +7,8 @@ import {
     Card,
     IconButton,
     Hidden,
-    Container
+    Container,
+    Button
 
 } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul'
@@ -21,6 +22,7 @@ import styles from "./style"
 import { NavLink } from 'react-router-dom';
 import { CartContext } from 'context'
 import cart from 'mappers/cart'
+import Wishlist from 'components/wishlist/wishlist';
 // import { FilterOptionsContext } from 'context/FilterOptionsContext';
 // 
 // 
@@ -44,9 +46,10 @@ class Checkoutcard extends React.Component {
     //     return alert(JSON.stringify(redirect_url))
 
     // }
-    handleDeleteLocalStorage = (e) => {
+    handleDeleteLocalStorage = (e, dlt) => {
+        debugger
         var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
-        var currentValue = e.target.id
+        var currentValue = e.target.id || dlt
         var a = local_storage.products.filter(val => {
             if (currentValue !== val.sku_id) {
                 return val
@@ -85,23 +88,24 @@ class Checkoutcard extends React.Component {
                 <Grid container>
                     <Grid xs={12} lg={7} />
                     <Grid xs={12} lg={4} >
-                           {this.checkoutbutton()}</Grid>
+                        {this.checkoutbutton()}</Grid>
                 </Grid><br />
                 {this.props.data.map(dataval => (
                     dataval.productsDetails.map(val => (
                         <div className={classes.cart}>
-                            <Grid container spacing={12} xs={12}  >
+                            {localStorage.setItem("a__c_t", this.props.data.length > 0 ? this.props.data.length : "")}   <Grid container spacing={12} xs={12}  >
                                 {/* {window.location.pathname !== "/checkout" ?
                                     <Grid item xs={1}  >
                                         <a>Redirect</a>
                                     </Grid> : ""} */}
                                 <Grid item xs={3} >
                                     <Card className="product-image-thumb">
-                                        <CardHeader style={{ padding: "0px" }}
+                                        <CardHeader style={{ padding: "0px", paddingTop: "10px" }}
+                                            id={dataval.generatedSku}
                                             action={
-                                                <IconButton >
-                                                    <i style={{ fontSize: "18px", color: "#337ab7" }} class='fa fa-heart-o'></i>
-                                                </IconButton>
+                                                <Button id={dataval.generatedSku} onClick={(event) => this.handleDeleteLocalStorage(event, dataval.generatedSku)}>
+                                                    <Wishlist sku={dataval.generatedSku} productId={dataval.productId} />
+                                                </Button>
                                             }
                                         />
                                         {window.location.pathname !== "/checkout" ? <NavLink to={`jewellery/${dataval.productType}/${dataval.materialName[0]}/${val.pro_header}?skuId=${dataval.generatedSku}`} style={{ textDecoration: 'none' }}>

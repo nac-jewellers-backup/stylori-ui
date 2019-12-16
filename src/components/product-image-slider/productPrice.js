@@ -35,7 +35,7 @@ const mobilecarousel = (props) => {
         </Container>
     );
 };
-
+ 
 const Productprice = (props, anchorEl, handleClick, handleClose) => {
     const { data } = props;
     const { classes } = props;

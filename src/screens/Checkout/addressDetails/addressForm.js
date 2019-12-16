@@ -14,7 +14,7 @@ const Addressform = (props) => {
 const AddressComponent = (props) => {
     const { values, handle, setValues } = Addressforms(() => props.changePanel(3));
     const cl = <input onChange={() => setValues({
-        ...values,
+        values, ...values,
         checkValue: !values.checkValue
     })} type='checkbox' checked={values.checkValue} />
     var isedit = (localStorage.getItem("isedit"));
@@ -309,7 +309,7 @@ const AddressComponent = (props) => {
                                 
                             </div> */}
                             <div className='login-butn'>
-                                {values.edit_addresId === false ? <Button onClick={() => handle.redirectForm()} style={{ borderRadius: "0px", padding: "6px 8px", lineHeight: "1.75", border: "1px solid #394578" }}
+                                {values.edit_addresId === true ? <Button onClick={() => handle.redirectForm()} style={{ borderRadius: "0px", padding: "6px 8px", lineHeight: "1.75", border: "1px solid #394578" }}
                                     className=''>Cancel</Button> : ""} &nbsp;
                                 <Button type="submit" className='apply-b'>Save and Review</Button>
                             </div>

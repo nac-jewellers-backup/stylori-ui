@@ -17,6 +17,7 @@ class CashonDelivey extends React.Component {
 
     }
     makeFetch = async (props) => {
+        debugger
         const bb = this.props && this.props.dataCard1
         // if (bb.length <0) {
         //    return
@@ -40,6 +41,11 @@ class CashonDelivey extends React.Component {
             localStorage.removeItem("cart_id")
             localStorage.removeItem("isedit")
             localStorage.removeItem("gut_lg")
+
+            localStorage.removeItem("select_addres")
+            localStorage.removeItem("email")
+            localStorage.removeItem("a__c_t")
+            // localStorage.removeItem("gut_lg")
         }
         // }
         window.location.pathname = "/jewellery"
@@ -74,13 +80,14 @@ class CashonDelivey extends React.Component {
         obj['cart_id'] = cart_id
         // alert(JSON.stringify(dataCard1))
         return (
-            <Container>
+            <div>
                 <Grid spacing={12} container lg={12} xs={12} style={{ width: "100%" }}>
                     <Grid item lg={12} xs={12}>
                         <div className="amout-pay"> Amount Payable </div>
-                        <i class="fa fa-inr rups" aria-hidden="true">&nbsp;</i>
                         <div className="credit-btn-div">
-                            {Math.round(dataCard1)}
+                            <span className="rups">
+                                {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(dataCard1))}
+                               </span>&nbsp;
                             <Button className="credit-button" type="submit"
                                 onClick={() => this.makeFetch(this.props)}
                             >Place COD order</Button>
@@ -92,7 +99,7 @@ class CashonDelivey extends React.Component {
                         </div>
                 </Grid>
 
-            </Container>
+            </div>
         )
     }
 }

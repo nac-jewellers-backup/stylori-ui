@@ -34,6 +34,7 @@ import delivery from "../../assets/Icons/delivery.svg"
 import telephone from "../../assets/Icons/telephone.svg"
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
+let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
 class Header extends Component {
   constructor(props) {
     super(props)
@@ -180,7 +181,13 @@ class Header extends Component {
                             localStorage.removeItem("true")
                             localStorage.removeItem("panel")
                             localStorage.removeItem("cartDetails")
+                            localStorage.removeItem("cart_id")
+                            localStorage.removeItem("isedit")
                             localStorage.removeItem("check_dlt")
+                            localStorage.removeItem("a__w_l")
+                            localStorage.removeItem("a__c_t")
+                            localStorage.removeItem("c_k_l")
+                            localStorage.removeItem("select_addres")
                             window.location.reload()
                             window.location.pathname = "/login"
                           }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
@@ -191,12 +198,19 @@ class Header extends Component {
                       </div>
                     </Popover>
                     {/* <i class="fa fa-user"></i> */}
-                    <Badge badgeContent={4} color="secondary">
-                      <img className="icons-header-sizes" src={love} />
+
+                    <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">
+                      <img onClick={() => {
+                        if (user_id.length > 0) {
+                          window.location.href = "/account"
+                        } else {
+                          window.location.href = "/login"
+                        }
+                      }} className="icons-header-sizes" src={love} />
                     </Badge>
-                    <Badge badgeContent={"2"} color="secondary">
-                      <img className="icons-header-sizes" src={shopping} />
-                    </Badge>
+                    <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                      <NavLink to="/cart">   <img className="icons-header-sizes" src={shopping} />
+                      </NavLink> </Badge>
                   </div>
                 </Grid>
               </Grid>
@@ -280,10 +294,10 @@ class Header extends Component {
                     <Badge >
                       <i class="fa fa-search"></i>
                     </Badge>
-                    <Badge badgeContent={4} color="secondary">
+                    <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">
                       <i class="fa fa-heart"></i>
                     </Badge>
-                    <Badge badgeContent={4} color="secondary">
+                    <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
                       <i class="fa fa-shopping-bag"></i>
                     </Badge>
                   </div>
