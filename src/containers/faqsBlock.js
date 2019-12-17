@@ -17,7 +17,6 @@ import { faqs, ProductCare } from "./dummydatafaqs";
 class FaqsBlock extends React.Component {
     constructor(props) {
         super(props);
-        debugger
     }
     render() {
         return (
