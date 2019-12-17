@@ -30,14 +30,23 @@ class Buynowfixed extends React.Component {
         return (
             <div>
                 <AppBar color="primary" className="product-page-fixed-footer">
+                    <Grid container spacing={12} style={{width:"100%"}}>
+                        <Grid item xs={6} >
+                          <span className='fixed_grid_price'>5435353</span>
+                          <span className='fixed_grid_price'>5435353</span>
+                        </Grid>
+                        <Grid className="" item xs={6}>
+                            </Grid>
+                    </Grid>
+
                     <Grid container spacing={12}>
                         <Grid item xs={6} className='fixed-grid'>
                             <div onClick={handleLocalStorage.bind(this)}>
-                            <Buynowbutton sku={data[0].skuId} class='product-footer-buynow ' />
+                                <Buynowbutton sku={data[0].skuId} class='product-footer-buynow ' />
                             </div>
-                             </Grid>
+                        </Grid>
                         <Grid className='talk-to-us' item xs={6}><i class="fa fa-comments">
-                            </i> &nbsp;Talk To Us</Grid>
+                        </i> &nbsp;Talk To Us</Grid>
                     </Grid>
                 </AppBar>
 

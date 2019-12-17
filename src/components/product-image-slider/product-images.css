@@ -17,16 +17,16 @@ body {
 
 /* product hovering price*/
 .price-div {
-    position: relative;
+    /* position: relative; */
     min-height: 1px;
     font-size: 12px;
     color: #394578;
     line-height: 1.42857143 !important;
-    padding: 0 10px !important;
+    /* padding: 0 10px !important; */
 }
 
 .pdp-title {
-    margin-top: 0;
+    margin-top: 10px;
     line-height: 13px;
     text-transform: capitalize;
     text-align: justify;
@@ -39,8 +39,8 @@ body {
 }
 
 .pdp-desc {
-    font-size: 10px !important;
-    margin-bottom: 2px !important;
+    font-size: 11px !important;
+    margin-top: -4px !important;
     text-align: justify;
     overflow: hidden;
 }
@@ -159,8 +159,8 @@ body {
     /* display: flex; */
     /* flex-direction: column;
     padding: 5px; */
-    background: #fdbac13b;
-    border: 1px solid #fdbac13b;
+    background: #fdbac15c;
+    border: none !important;
     /* align-items: center !important;
     outline: none !important;
     margin-bottom: 5px; */
@@ -170,10 +170,11 @@ body {
 }
 
 .tabs-contants {
-    font-size: 14px !important;
+    font-size: 13px !important;
     margin: auto !important;
     font-family: 'Roboto' !important;
     font-weight: bold !important;
+    text-align: center !important;
 }
 
 .tabs-gold-icons {
@@ -350,6 +351,10 @@ body {
 
 .ships-by {
     font-size: 12px !important;
+}
+
+.slick-dots {
+    position: unset !important;
 }
 
 .curser {
@@ -826,6 +831,61 @@ body {
     color: #fff;
 }
 
+.css-ts7n45_wishlist {
+    /* position: absolute !important; */
+    z-index: 2 !important;
+    float: right !important;
+    margin-top: 10px !important;
+}
+
+.css-ts7n45-redy_toship {
+    z-index: 2 !important;
+    margin-top: 8px !important;
+}
+
+.css-ts7n45 {
+    /* position: absolute !important; */
+    margin-top: 7px !important;
+    z-index: 2 !important;
+}
+
+.css-fn26pt {
+    font-size: 1.6rem !important;
+}
+
+.css-5pjie5 {
+    background:
+        rgb(242, 222, 188) none repeat scroll 0% 0% !important;
+    text-transform: uppercase;
+    display: inline-block !important;
+    position: relative !important;
+    pointer-events: none !important;
+    height: 20px !important;
+    line-height: 20px !important;
+    padding: 0px 8px !important;
+    font-size: 12px !important;
+}
+
+.css-5pjie5::after {
+    content: "" !important;
+    height: 0px;
+    width: 0px;
+    border-style: solid !important;
+    border-width: 10px !important;
+    border-color:
+        rgb(242, 222, 188) transparent !important;
+    position: absolute !important;
+    top: 0px;
+    right: -10px !important;
+}
+
+.css-5pjie5 {
+    text-transform: uppercase !important;
+    pointer-events: none;
+    line-height: 20px !important;
+    font-size: 12px !important;
+}
+
 .responseve-carousel {
     width: 100% !important;
     /* height: 200px !important; */
@@ -834,12 +894,12 @@ body {
 
 .responseve-carousel-img {
     height: 100% !important;
-    width: auto !important;
+    width: 100% !important;
 }
 
 /*product-page-fixed-footer*/
 .product-page-fixed-footer {
-    height: 50px !important;
+    height: 100px !important;
     text-align: center;
     background-color: #EBEAEA !important;
     position: fixed !important;
@@ -850,6 +910,14 @@ body {
 
 .fixed-grid {
     background-color: #f36e23 !important;
+}
+
+.fixed_grid_price {
+    font-size: 13px !important;
+    color: #231535;
+    font-weight: 300;
+    line-height: normal;
+    float: left;
 }
 
 .product-footer-buynow {
@@ -927,23 +995,26 @@ body {
 .pagetabs {
     text-align: center !important;
     height: 40px !important;
-    width: 90%;
-    border: 1px solid #9d9d9d  !important;
+    /* width: 70%; */
+    /* border: 1px solid #9d9d9d  !important; */
     border-radius: 15%;
     outline: none !important;
 }
+
 .pagetabslst {
     text-align: center !important;
     height: 40px;
-    width: 90%;
-    border: 1px solid #9d9d9d  !important;
+    /* width: 70%; */
+    /* border: 1px solid #9d9d9d  !important; */
     border-radius: 15%;
     outline: none !important;
 
 }
-.PriceTabs-pagination{
+
+.PriceTabs-pagination {
     outline: none !important;
 }
+
 .page {
     display: inline-block !important;
     text-align: center !important;
@@ -952,7 +1023,7 @@ body {
     border-radius: 15%;
     background: #fff;
     box-shadow: inset 0px 1px 0px rgba(255, 255, 255, .8), 0px 1px 3px rgba(0, 0, 0, .1);
-    font-size: 15px;
+    font-size: 13px;
     text-decoration: none;
     color: #394578 !important;
     cursor: pointer;
@@ -962,42 +1033,48 @@ body {
 }
 
 .rings_tabs {
-    font-size: 15px !important;
+    font-size: 14px !important;
     color: #394578 !important;
     width: 100% !important;
     padding: 10px;
+    /* display: flex ;
+    margin: auto; */
     font-weight: 600;
 
 }
-.rings_tabsvls{
+
+.rings_tabsvls {
     font-size: 15px !important;
     color: #ccc !important;
     width: 100% !important;
-    font-weight: 600; 
+    font-weight: 600;
     text-align: center;
 }
-.rings_tabsvls_active{
-    font-size: 15px !important;
+
+.rings_tabsvls_active {
+    font-size: 13px !important;
     color: #394578 !important;
-    width: 100% !important; 
+    width: 100% !important;
     font-weight: 600;
     text-align: center;
 
 }
+
 .darktabs {
-    border: 2px solid #ed1165 !important;
+    border: 2px solid #ed1165cf !important;
     border-radius: 15% !important;
     text-align: center !important;
     height: 40px !important;
-    width: 90% !important;
+    width: 70% !important;
     outline: none !important;
 }
+
 .darktabslst {
-    border: 2px solid #ed1165 !important;
+    border: 2px solid #ed1165cf !important;
     border-radius: 15% !important;
     text-align: center !important;
     height: 40px !important;
-    width: 90% !important;
+    width: 70% !important;
     outline: none !important;
 
 }
@@ -1010,8 +1087,8 @@ body {
     color: #fff !important;
     outline: none !important;
     cursor: pointer;
-    border: 2px solid #ed1165 !important;
-    background:#f699a3 !important;
+    border: 2px solid #ed116566 !important;
+    background: #f699a3 !important;
 }
 
 .header-APP,
@@ -1130,10 +1207,10 @@ body {
 }
 
 .resp {
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-        0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-        0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+    box-shadow: 1px 2px 13px 7px #DEDADA !important;
     width: 100% !important;
+    height: auto !important;
+    /* padding: 10px; */
 }
 
 .respc {

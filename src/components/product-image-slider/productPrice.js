@@ -16,22 +16,31 @@ import Wishlist from 'components/wishlist/wishlist';
 
 const dataCarousel = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 1000,
     fade: true,
     arrows: false,
 }
 
-const mobilecarousel = (props) => {
-    const { data } = props;
+const mobilecarousel = (props, val) => {
+    const { data, classes } = props;
     return (
-        <Container>
-            <div style={{  width: "auto" }}>
-                {/* <div style={{background:"red"}}>Earrings in 18K Yellow Gold and Peridot for Kids</div> */}
-                <Slideshow class='responseve-carousel testingcur' imgClass='responseve-carousel-img'
-                    fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
-            </div>
-        </Container>
+        <div>
+            <Grid container spacing={12} xs={12} style={{ position: "absolute" }}>
+                <Grid container item xs={6}>
+                    <div className="css-ts7n45 e5toz5w4"><span style={{ color: "#000" }} className="e195g4sk5 css-5pjie5 ekntgft2">{val.offerDiscount}</span><br />
+                        {data[0].ProductContactNum[0].isReadyToShip === true ? <div className="css-ts7n45-redy_toship one-day-ship-mb"></div> : ""}
+                    </div>
+                </Grid>
+                <Grid container item xs={4} />
+                <Grid container item xs={2} className="css-ts7n45_wishlist">
+                    <Wishlist props={"1"} />
+                </Grid>
+            </Grid>
+            {/* <div style={{background:"red"}}>Earrings in 18K Yellow Gold and Peridot for Kids</div> */}
+            <Slideshow class='responseve-carousel testingcur' imgClass='responseve-carousel-img'
+                fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
+        </div>
     );
 };
 
@@ -45,27 +54,27 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                 <>
                     <Grid container spacing={12} sm={12} className={classes.pricedetails}>
                         <Hidden mdUp>
-                            <div className="resp" style={{ paddingTop: "5px" }}>
-                                <div className="respc">
-                                    <h1 className={`pdp-title ${classes.title}`}>
+                            <div className="resp" >
+                                {/* <div className="respc"> */}
+                                {/* <h1 className={`pdp-title ${classes.title}`}>
                                         {val.title}
-                                    </h1>
-                                    <Grid container spacing={12} xs={12}>
-                                        <Grid container item xs={6} justify={'flex-start'}>
+                                    </h1> */}
+                                {/* <Grid container spacing={12} xs={12}> */}
+                                {/* <Grid container item xs={6} justify={'flex-start'}>
                                             <Pricing
-                                                offerDiscount={val.offerDiscount}
+                                                offerDiscount={}
                                             />
-                                        </Grid>
-                                        <Grid container item xs={6} md={6} justify={'flex-end'}>
+                                        </Grid> */}
+                                {/* <Grid container item xs={6} md={6} justify={'flex-end'}>
                                             <Grid container item xs={8} xs={8} justify={'flex-end'}>
                                                 {data[0].ProductContactNum[0].isReadyToShip == true ? <div className="one-day-ship-mb"></div> : ""}
                                             </Grid>
                                         </Grid>
                                     </Grid>
-                                </div>
-                                {mobilecarousel(props)}
+                                </div> */}
+                                {mobilecarousel(props, val)}
 
-                                <div style={{ background: "rgb(238, 238, 238)", width: "100%" }}>
+                                {/* <div style={{ background: "rgb(238, 238, 238)", width: "100%" }}>
                                     <div className="respc">
                                         <Grid container spacing={12} xs={12}>
                                             <Grid container item xs={6} justify={'flex-start'}>
@@ -73,27 +82,50 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                     price={data[0].price}
                                                     offerPrice={data[0].offerPrice}
                                                 />
-                                            </Grid>
-                                            <Grid container item xs={6} justify={'flex-end'}>
+                                            </Grid> */}
+                                {/* <Grid container item xs={6} justify={'flex-end'}>
                                                 <div>
                                                     {data[0].ProductContactNum.map(val =>
                                                         <div style={{ marginTop: "10px" }}>
-                                                            <b className={`ships-by ${classes.normalfonts}`}>
-                                                                {/* <span class="ship-img"></span> */}
-                                                                <span > <i class="fa fa-star fa-grey"></i>&nbsp; {val.shipby}</span>
+                                                            <b className={`ships-by ${classes.normalfonts}`}> */}
+                                {/* <span class="ship-img"></span> */}
+                                {/* <span > {val.shipby}</span>
                                                             </b>
                                                         </div>
                                                     )}
                                                 </div>
-                                            </Grid>
-                                        </Grid>
+                                            </Grid> */}
+                                {/* </Grid>
                                     </div>
-                                </div>
+                                </div> */}
                                 {/* <hr class="bottom-line product-inform-ation"></hr> */}
+                                {/* <br /><br /> */}
+
                             </div>
                         </Hidden>
                         <Grid item xs={12} lg={9}>
                             <div className="price-div">
+                                <Hidden mdUp>
+                                    <Grid container spacing={12} xs={12}>
+                                        <Grid container item xs={8}>
+                                            <h1 className={`pdp-title ${classes.title}`} style={{width:"90%"}}>
+                                                {val.title}
+                                            </h1>
+                                        </Grid>
+                                        <Grid container item xs={4} >
+                                            <div>
+                                                {data[0].ProductContactNum.map(val =>
+                                                    <div style={{ marginTop: "8px" }}>
+                                                        <b className={`ships-by ${classes.normalfonts}`}>
+                                                            {/* <span class="ship-img"></span> */}
+                                                            <span > {val.shipby}</span>
+                                                        </b>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </Grid>
+                                    </Grid>
+                                </Hidden>
                                 <Hidden smDown>
                                     <h1 className={`pdp-title ${classes.title}`}>
                                         {val.title}

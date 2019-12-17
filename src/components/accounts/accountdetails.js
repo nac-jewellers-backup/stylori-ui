@@ -36,6 +36,7 @@ class Accountdetails extends Component {
         // const { wishlistdata } = this.props.wishlistdata;
         return (
             <Container>
+            <Container>
                 <div className="panel_body">
                     <Grid container spacing={12} >
                         <Grid item lg={2}>
@@ -101,6 +102,7 @@ class Accountdetails extends Component {
                         </Grid>
                     </Grid>
                 </div>
+            </Container>
             </Container>
         )
     }

@@ -517,7 +517,7 @@ class Component extends React.Component {
                                           {
                                             subFilter[row].filter((row12, i) =>
                                               (i < (this.state[`li_${row}`] ? this.state[`li_${row}`] : 4))).map(row12 => {
-                                                return (<div>
+                                                return (<div style={{padding:"0 20px"}}>
 
                                                   <ListItem key={row12}  >   {/* button */}
                                                     <FormGroup row>

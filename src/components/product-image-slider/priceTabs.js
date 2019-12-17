@@ -38,7 +38,7 @@ class Component extends React.Component {
     state = {
         value: 1,
         values: "",
-        expanded: null,
+        expanded: "1",
         skuSize: '',
         purity: '',
         diamondType: "",
@@ -51,15 +51,9 @@ class Component extends React.Component {
     handleClose = () => {
         this.setState({ open: false });
     };
-    // componentDidUpdate(prevProps) {
-    //     var filters = { ...this.props.filters }
-    //     if (filters.defaultVariants.purity !== prevProps.filters.defaultVariants.purity) {
-    //         this.setState({
-    //             skuSize: filters.defaultVariants.purity
-    //         })
-    //     }
-    // }
+
     handleClick = (event, key) => {
+        debugger
         console.log('lklkkoik9', this.state.skuSize)
         var filters = { ...this.props.filters }
         if (key === 'purity') {
@@ -72,11 +66,16 @@ class Component extends React.Component {
             filters['defaultVariants']['metalColor'] = arrColor
             // filters['defaultVariants']['skuSize']=diamondTypes
             filters['defaultVariants']['diamondType'] = diamondTypes
+            this.setState({
+                purity: kv,
+                diamondTypes: diamondTypes
+            })
             this.props.setFilters(filters);
         }
-        else { 
+        else {
             filters['defaultVariants'][key] = event.target.id
             // this.setState({skuSize:filters})
+            this.setState({ skuSize: event.target.id })
             this.props.setFilters(filters);
         }
         // const ringSize = event.target.name;
@@ -161,7 +160,7 @@ class Component extends React.Component {
             infinite: true,
             // slidesToShow: data[0].productTabs[0].tab1.Children.length > 8 ? limit :data[0].productTabs[0].tab1.Children.length,
             slidesToScroll: 5,
-            slidesToShow: 8,
+            slidesToShow: 7,
             arrow: true,
         };
         return (
@@ -171,11 +170,11 @@ class Component extends React.Component {
                     const arr2 = val.tab2.Children !== null && (val.tab2.Children).split(',')
                     return (
                         <>
-                          {arr.length > 0 ?  <Grid container spacing={12} lg={12} style={{marginBottom:"20px"}}>
-                    <Grid item lg={3}><div className="rings_tabs">{val.tab1.header}&nbsp;<a
+                            {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "20px" }}>
+                                <Grid item lg={3} xs={3}><div className="rings_tabs">{val.tab1.header}&nbsp;<a
                                     onClick={this.handleOpen}
                                     className="my-ringsize">Size Guide </a></div></Grid>
-                                <Grid item lg={9}>
+                                <Grid item lg={9} xs={9}>
                                     {arr.length > 0 ?
                                         <>
                                             <div className={classes.pagination} style={{ overflow: "hidden" }}>
@@ -183,7 +182,7 @@ class Component extends React.Component {
                                                     {arr.map((val, i) => {
                                                         return (<>
                                                             <button
-                                                                className={this.state.skuSize == i ? 'dark' : 'page'}
+                                                                className={val === this.state.skuSize ? 'dark' : 'page'}
                                                                 id={val}
                                                                 onClick={event => this.handleClick(event, 'skuSize')}
                                                             >
@@ -211,52 +210,52 @@ class Component extends React.Component {
                                         </>
                                         : ""}
                                 </Grid>
-                            </Grid>: ""}        
+                            </Grid> : ""}
                             {arr2.length > 0 ?
-                            <Grid container spacing={12} lg={12} style={{marginBottom:"10px"}}>
-                                                <Grid item lg={3}><div className="rings_tabs">{val.tab2.header}</div></Grid>
-                                <Grid item lg={9}>
-                                    <Grid container spacing={12} lg={12}>
-                                        {arr2.map((val, i) => {
-                                            var kv =val
-                                            var objVal = kv.split(" ")
-                                            var arrPurity = objVal[0]
-                                            var arrColor = objVal[1]
-                                            return (
-                                                <Grid item lg={2} style={{ marginLeft: "5px" }}>
+                                <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
+                                    <Grid item lg={3} xs={3}><div className="rings_tabs">{val.tab2.header}</div></Grid>
+                                    <Grid item lg={9} xs={9}>
+                                        <Grid container spacing={12} lg={12}>
+                                            {arr2.map((val, i) => {
+                                                var kv = val
+                                                var objVal = kv.split(" ")
+                                                var arrPurity = objVal[0]
+                                                var arrColor = objVal[1]
+                                                return (
+                                                    <Grid item lg={2} xs={2} style={{ marginLeft: "5px", textAlign: "center" }}>
                                                         <button
-                                                        style={{ background: this.imageRender(val) }}
-                                                        className={this.state.purity == i ? 'darktabs tabs-valus' : 'pagetabs tabs-valus'}
-                                                        id={val}
-                                                        onClick={event => this.handleClick(event, 'purity')}
-                                                    >
-                                                        {/* {this.imageRender(val)} */}
-                                                    <span id={val} className={`tabs-contants ${classes.normalfonts}`}>{arrPurity}</span>
-                                                    </button>
-                                                    <div className={this.state.purity == i ? "rings_tabsvls_active":"rings_tabsvls"}>{arrColor}</div>
-                                                </Grid>
-                                            )
-                                        }
-                                        )}
+                                                            style={{ background: this.imageRender(val) }}
+                                                            className={this.state.purity === val ? 'darktabs tabs-valus' : 'pagetabs tabs-valus'}
+                                                            id={val}
+                                                            onClick={event => this.handleClick(event, 'purity')}
+                                                        >
+                                                            {/* {this.imageRender(val)} */}
+                                                            <span id={val} className={`tabs-contants ${classes.normalfonts}`}>{arrPurity}</span>
+                                                        </button>
+                                                        <div className={this.state.purity === val ? "rings_tabsvls_active" : "rings_tabsvls"}>{arrColor}</div>
+                                                    </Grid>
+                                                )
+                                            }
+                                            )}
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            </Grid>: ""} 
+                                </Grid> : ""}
 
-                            {val.tab3.Children.length > 0 ?  <Grid container spacing={12} lg={12}>
-                                    <Grid item lg={3}><div className="rings_tabs">{val.tab3.header}</div></Grid>
-                                <Grid item lg={9}>
+                            {val.tab3.Children.length > 0 ? <Grid container spacing={12} lg={12}>
+                                <Grid item lg={3} xs={3}><div className="rings_tabs">{val.tab3.header}</div></Grid>
+                                <Grid item lg={9} xs={9}>
                                     <Grid container spacing={12} lg={12}>
                                         {val.tab3.Children.map((val, i) => {
                                             return (
-                                                <Grid item lg={2} style={{ marginLeft: "5px" }}>
-                                                        <button
+                                                <Grid item lg={2} xs={2} style={{ marginLeft: "5px", textAlign: "center" }}>
+                                                    <button
                                                         style={{ background: this.imageRender(val) }}
-                                                        className={this.state.purity == i ? 'darktabslst tabs-valus' : 'pagetabslst tabs-valus'}
+                                                        className={this.state.diamondType === val.name ? 'darktabslst tabs-valus' : 'pagetabslst tabs-valus'}
                                                         id={val.name}
                                                         onClick={event => this.handleClick(event, 'diamondType')}
                                                     >
                                                         {/* {this.imageRender(val)} */}
-                                                    <span id={val.name} className={`tabs-contants ${classes.normalfonts}`}>{val.name}</span>
+                                                        <span id={val.name} className={`tabs-contants ${classes.normalfonts}`}>{val.name}</span>
                                                     </button>
                                                     {/* <div className={this.state.diamondType == i ? "rings_tabsvls_active":"rings_tabsvls"}>{arrColor}</div> */}
                                                 </Grid>
@@ -265,121 +264,13 @@ class Component extends React.Component {
                                         )}
                                     </Grid>
                                 </Grid>
-                            </Grid> :""}
+                            </Grid> : ""}
                         </>
                     );
                 }
                 )}
             </div>
         );
-    }
-    MobileTabs = () => {
-        const { expanded } = this.state;
-        const { classes, data } = this.props;
-        const limit = 8
-        const settings = {
-            className: 'center',
-            infinite: true,
-            // slidesToShow: data[0].productTabs[0].tab1.Children[0].rings.length
-            //     > 8 ? limit : data[0].productTabs[0].tab1.Children[0].rings.length,
-            slidesToScroll: 2,
-            slidesToShow: 5,
-            arrow: true
-        };
-        return (
-            <>
-                {data[0].productTabs.map(val => {
-                    const arr = val.tab1.Children !== null && (val.tab1.Children).split(',')
-                    const arr2 = val.tab2.Children !== null && (val.tab2.Children).split(',')
-                    return (
-                        <Container>
-                            <>
-                                {arr.length > 0 ?
-                                    <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important", padding: "0 5px" }} expanded={expanded === val.header} onChange={this.handle(val.header)}>
-                                        <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
-                                            <div style={{ width: "100%" }} >
-                                                <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab1.header}</Typography>
-                                                {/* <hr class="bottom-line border-line-"></hr> */}
-                                            </div>
-                                        </ExpansionPanelSummary>
-                                        <ExpansionPanelDetails style={{ padding: "8px 24px 0px" }}>
-                                            <div className={classes.pagination} >
-                                                <Slideshow dataCarousel={settings} >
-                                                    {arr.map((val, i) =>
-                                                        <>
-                                                            <button
-                                                                className={this.state.ringSize == i ? `dark ${classes.tabsRingBckg}` : 'page'}
-                                                                id={val}
-                                                                onClick={event => this.handleClick(event, 'skuSize')}
-                                                            >
-                                                                {val}
-                                                            </button>
-                                                            <div style={{ marginTop: "10px", textAlign: "center" }}>
-
-                                                            </div>
-                                                        </>
-                                                    )}
-                                                </Slideshow>
-                                                <span style={{ cursor: "pointer" }} className={`my-ringsize ${classes.normalfonts}`} onClick={this.handleOpen}>My Ring Size ?</span> </div>
-                                        </ExpansionPanelDetails>
-                                    </ExpansionPanel>
-                                    : ""}
-                                {/* className="panel-head" */}
-                                {arr2 || arr2.length > 0 ?
-                                    <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important", padding: "0 5px" }} expanded={expanded === val.tab2.header} onChange={this.handle(val.tab2.header)}>
-                                        <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
-                                            <div style={{ width: "100%" }} >
-                                                <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab2.header}</Typography>
-                                                {/* <hr class="bottom-line border-line-"></hr> */}
-                                            </div>
-                                        </ExpansionPanelSummary>
-                                        <ExpansionPanelDetails style={{ padding: '0 5px', width: "100%", overflow: "auto" }}>
-                                            {arr2.map(val =>
-                                                <Grid container spacing={12} >
-                                                    <Grid xs={12}>
-                                                        <button className="tabs-valus"
-                                                            id={val}
-                                                            onClick={event => this.handleClick(event, 'purity')}
-                                                        >
-                                                            {this.imageRender(val)}
-                                                            <span id={val} className={`tabs-contants ${classes.normalfonts}`}> {val}</span>
-                                                        </button>
-                                                    </Grid>
-                                                </Grid>
-                                            )}
-                                        </ExpansionPanelDetails>
-                                    </ExpansionPanel> : ""}
-                                {val.tab3.Children.length > 0 ?
-                                    <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important", padding: "0 5px" }} expanded={expanded === val.tab3.header} onChange={this.handle(val.tab3.header)}>
-                                        <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" ></i></span>}>
-                                            <div style={{ width: "100%" }} >
-                                                <Typography className={`subtabs ${classes.tabsheadcolor}`}>{val.tab3.header}</Typography>
-                                                {/* <hr class="bottom-line border-line-"></hr> */}
-                                            </div>
-                                        </ExpansionPanelSummary>
-                                        <ExpansionPanelDetails style={{ padding: '0 5px', width: "100%", overflow: "auto" }}>
-                                            {val.tab3.Children.map(val =>
-                                                <Grid container spacing={12}>
-                                                    <Grid xs={12}>
-                                                        <button className="tabs-valus"
-                                                            id={val.name}
-                                                            onClick={event => this.handleClick(event, 'diamondType')}
-                                                        >
-                                                            <img src={val.icon} id={val.name} style={{ width: '35px', margin: "auto" }} alt="" />
-                                                            <span id={val.name} className={`tabs-contants ${classes.normalfonts}`}> {val.name}</span>
-                                                        </button>
-                                                    </Grid>
-                                                </Grid>
-                                            )}
-                                        </ExpansionPanelDetails>
-                                    </ExpansionPanel> : ""}
-                            </>
-                        </Container>
-                    )
-                }
-                )}
-            </>
-        )
     }
     // handleChange = (event, value) => {
     //     this.setState({ value });
@@ -401,7 +292,7 @@ class Component extends React.Component {
                     {this.TabsComponent()}
                 </Hidden>
                 <Hidden mdUp>
-                    {this.MobileTabs()}
+                <Container>{this.TabsComponent()}</Container>
                 </Hidden>
             </div>
         );

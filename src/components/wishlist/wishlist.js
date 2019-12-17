@@ -13,7 +13,7 @@ const WishlistComponent = (props) => {
     return (
         <>
         {values.isactive !== 2 ? <>
-            <i class="fa fa-heart-o overall-icons"
+            <i class="fa fa-heart-o overall-icons" style={{color:props.props?"rgb(242, 222, 188)":""}}
                 onClick={() => {
                     values["product_sku"] = props.sku
                     values["product_id"] = props.productId
