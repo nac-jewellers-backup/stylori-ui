@@ -74,7 +74,7 @@ class Component extends React.Component {
             filters['defaultVariants']['diamondType'] = diamondTypes
             this.props.setFilters(filters);
         }
-        else {
+        else { 
             filters['defaultVariants'][key] = event.target.id
             // this.setState({skuSize:filters})
             this.props.setFilters(filters);
