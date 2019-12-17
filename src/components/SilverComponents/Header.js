@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import './header.css';
 import {
     AppBar,
@@ -104,7 +105,7 @@ class Header extends Component {
                                             <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
                                             <Typography className={classes.callerNum}>1800 102 0330</Typography>
                                             <InputBase
-                                                className={`search ${classes.colorMain}`}
+                                                className={`search`}
                                                 placeholder=" SEARCH"
                                                 endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
                                                 </div></InputAdornment>}
@@ -164,8 +165,8 @@ class Header extends Component {
                             id="smallScreen"
                         >
 
-                            <Toolbar>
-                                <Grid container item xs={2} sm={1} md={1} lg={1} xl={1}>
+                            <Toolbar className="toolbarsetting" >
+                                <Grid container item xs={2} sm={1} md={1} lg={1} xl={1} justify="center" alignItems="center">
                                     <IconButton
                                         onClick={this.handleDrawerOpen}
                                     >
@@ -180,11 +181,15 @@ class Header extends Component {
                                 </Grid>
                                 <Grid item xs={8}>
                                     <div className="mobli-icon1">
-                                        <Grid item xs={12} >
+                                        <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center" }}>
                                             <div className={`head-icons1 ${classes.headIcons}`} >
-
+                                                <InputBase
+                                                    className={`searchmobile`}
+                                                    placeholder=" SEARCH"
+                                                    endAdornment={<InputAdornment position="end"><div className={classes.searchcontainTop}><Seach className={"searchsvgmobile"} />
+                                                    </div></InputAdornment>}
+                                                />
                                                 <i class="fa fa-user"></i>
-                                                <i class="fa fa-sign-in"></i>
                                                 <i class="fa fa-heart"></i>
                                                 <i class="fa fa-shopping-cart"></i>
                                             </div>
@@ -197,12 +202,17 @@ class Header extends Component {
                     <Drawer
                         anchor="left"
                         open={this.state.open}
-                        className="nav-drawer"
+                        classes={{
+                            paper: classNames(
+                                classes.drawerPaper,
+                            )
+                        }}
+
                     >
-                        <div className="header-drawer1">
+                        <div className={classes.menuheader} >
                             <IconButton onClick={this.handleDrawerClose}
-                                style={{ float: 'right' }}>
-                                <i class="fa fa-times"></i>
+                                style={{ float: 'right' }} className={classes.iconbuttons}>
+                                <i class="fa fa-times closebus" ></i>
                             </IconButton>
                             {/* <Typography className="drawer-menu1">Menu</Typography> */}
                         </div>
@@ -211,16 +221,15 @@ class Header extends Component {
                             {mainlist.map(row => (
                                 <>
                                     <ListItem button key={row.name} className="drawer-list1" >
-                                        {/* <img className="submenu-icons1" src={row.icon} alt={row.icon}></img> */}
                                         <ListItemText
                                             onClick={() => Jewellery[row.name] !== undefined ? this.selectItem(row.name) : ''}
                                         >
                                             <Typography className="list-items1"
                                                 variant=""
-                                            >{row.name}
+                                            >{row.name.toUpperCase()}
                                             </Typography>
                                         </ListItemText>
-                                        {Jewellery[row.name] !== undefined ? row.name === selected ? <ExpandMore className="drawer-arrow" /> : <ExpandLess className="drawer-arrow" /> : ""}
+                                        {Jewellery[row.name] !== undefined ? row.name === selected ? <i class="fa fa-caret-down drawer-arrow"></i> : <i class="fa fa-caret-up drawer-arrow"></i> : ""}
                                     </ListItem>
                                     {selected === row.name &&
                                         Object.keys(Jewellery[selected]).map(row2 => (

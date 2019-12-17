@@ -3,17 +3,32 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const styles = theme => ({
   headIcons: {
-    color: theme.palette.primary.main,
+    color: theme.palette.secondary.dark,
     fontFamily: "fontawesome",
     textAlign: 'right',
     fontSize: '20px !important',
     marginTop: '18px !important',
     display: "flex",
     alignContent: "center",
+    alignItems: "center",
     justifyContent: "flex-end",
   },
   searchcontainer: {
     padding: "4px",
+    backgroundColor: theme.palette.secondary.dark,
+    display: "flex",
+    justifyContent: "center",
+    alignContent: "center"
+  },
+  searchcontainTop: {
+    padding: "2px",
+    backgroundColor: theme.palette.secondary.dark,
+    display: "flex",
+    justifyContent: "center",
+    alignContent: "center"
+  },
+  [theme.breakpoints.only('xs')]: {
+    padding: "3px !important",
     backgroundColor: theme.palette.secondary.dark,
     display: "flex",
     justifyContent: "center",
@@ -73,7 +88,24 @@ export const styles = theme => ({
     }
   },
   mobileNavIcon: {
-    fill: "rgba(166, 168, 171, 1) !important",
+    fill: theme.palette.secondary.dark + "!important",
+  },
+  menuheader: {
+    width: "200px !important",
+    position: "sticky",
+    top: "0px",
+    zIndex: 10000
+  },
+  drawerPaper: {
+    maxHeight: "100% !important",
+    height: "max-content",
+    backgroundColor: theme.palette.background.darkFade,
+  },
+  iconbuttons: {
+    position: "fixed",
+    right: "88px",
+    top: "-9px"
+
   }
 });
 
@@ -124,7 +156,10 @@ export const useStyles = makeStyles(theme => ({
     padding: "10px 0px 10px 0px",
     borderTop: "1px solid",
     backgroundColor: theme.palette.background.darkFade,
-  }
+  },
+  drawer: {
+    backgroundColor: "#394578",
+  },
 
 }));
 
