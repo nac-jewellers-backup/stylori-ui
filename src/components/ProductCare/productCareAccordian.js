@@ -9,17 +9,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import '../faqs/faqs.css'
 
 
-import { borderBottom, lineHeight } from '@material-ui/system';
-import Icon from '@material-ui/core/Icon';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+
 import Collapse from '@material-ui/core/Collapse';
 import { faqsStylori } from "../../containers/dummyDataProductCare";
-
+import Plus from '../../../src/assets/plus';
+import Minus from '../../../src/assets/minus';
 
 
 const useStyles = makeStyles(theme => ({
@@ -49,6 +47,11 @@ const useStyles = makeStyles(theme => ({
         fontWeight: 600,
         fontSize: "14px"
     },
+    icon:{
+        height:"10px",
+        width:"10px",
+        marginRight:"3px",
+    },
     listeditems:{
         '&:hover':{
             backgroundColor:"#fff !important"
@@ -59,6 +62,34 @@ const useStyles = makeStyles(theme => ({
 
 export default function ProductCareAccordian(props) {
     const value = props.value;
+console.log(value)
+    
+    const checkerOpen = ()=>{
+        
+        if(props.accordian==="Plus"){
+           return <Minus className={classes.icon} /> 
+            }
+        
+        else if (props.accordian==="Arrows"){
+            return <ExpandLess /> 
+        }
+        else{
+            return ""
+        }
+    }
+    const checkerClose = ()=>{
+        
+        if(props.accordian==="Plus"){
+           return <Plus className={classes.icon} /> 
+            }
+        
+        else if (props.accordian==="Arrows"){
+            return <ExpandMore /> 
+        }
+        else{
+            return ""
+        }
+    }
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -67,11 +98,11 @@ export default function ProductCareAccordian(props) {
     };
     return(
         
-        <Grid className={classes.root} style={{marginBottom:"10px"}}>
-                    <List style={{paddingBottom:"4px",paddingTop:"4px"}}>
-                        <ListItem style={{padding:"0px"}} autoFocus={false} className={classes.listeditems} button onClick={handleClick}>
+        <Grid className={classes.root} style={{marginBottom:"10px"}} >
+                    <List style={{paddingBottom:"4px",paddingTop:"4px"}} >
+                        <ListItem style={{padding:"0px"}}  autoFocus={false} className={classes.listeditems} button onClick={handleClick}>
                             <Typography style={{width:"100%"}} className={classes.details} >{value.Questions}</Typography>
-                           <List style={{float:"end"}}> { open ? <ExpandLess /> : <ExpandMore />}</List>
+                           <List style={{float:"end"}}> { open ? checkerOpen():checkerClose()}</List>
                         </ListItem>
                         <Collapse in={open} timeout="auto" unmountOnExit>
                             <List component="div" disablePadding>
@@ -92,13 +123,13 @@ export default function ProductCareAccordian(props) {
                                                     } 
                                                     </Grid>      
                                             <Grid item>
-                                            <Grid style={{width:"100%",marginBottom:"20px",marginTop:"10px"}}> 
-                                                 <img src={value.img} />
+                                            <Grid> 
+                                                 <img style={{width:"100%"}} class="imgPadding" src={value.img} />
                                             </Grid>
                                             
                                             </Grid>
                                             <Grid container>
-                                                <Grid item style={{width:"50%"}}>
+                                                <Grid item class="fifty">
                                                 {value.basicTitle &&
                                                     <Typography style={{ fontSize: "13px", color: "#394578", paddingBottom: "8px",fontWeight: 700 }}>
                                                     {value.basicTitle}
@@ -110,15 +141,15 @@ export default function ProductCareAccordian(props) {
                                                 </Grid>
                                                
                                                
-                                                <Grid item style={{width:"50%" }}>
+                                                <Grid item class="fiftyImg">
                                                 {value.rightContent &&
-                                                    <Typography style={{ fontWeight: 500, fontSize: "13px", paddingBottom: "12px",color: "#666"}}>
+                                                    <Typography class="rightContent" >
                                                         {value.rightContent}
                                                     </Typography>
                                                 }
                                                 {value.rightImg &&
-                                                    <Typography style={{ fontWeight: 700, color: "#394578", fontSize: "13px", paddingBottom: "12px"}}>
-                                                       <img src={value.rightImg} />
+                                                    <Typography>
+                                                       <img class="rightImg" style={{justifyContent:`${value.align}`,display:"flex"}} src={value.rightImg} />
                                                     </Typography>
                                                 }
                                                 </Grid>

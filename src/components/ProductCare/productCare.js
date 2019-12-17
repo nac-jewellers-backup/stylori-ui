@@ -59,7 +59,7 @@ export default function ProductCare() {
             </Grid>
    
             {val.accordian.map((value, index) =>
-                <ProductCareAccordian value={value} key={index}/>
+                <ProductCareAccordian value={value} accordian ={val.accordianIcon} key={index}/>
                 )}
         </Grid>)
         }</>

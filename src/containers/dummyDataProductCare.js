@@ -1,4 +1,4 @@
-import FlowerDimon from "../assets/FlowerDimon.jpg";
+// import FlowerDimon from "../assets/FlowerDimon.jpg";
 
 
 export const
@@ -23,14 +23,15 @@ export const
       },
       "data": [
         {
-          img: FlowerDimon,
+          img: "https://alpha-assets.stylori.com/images/static/stylori_care_guide.png",
         },
       
       ]
     },
     "faqs":[
         {
-    "Title":"Frequently asked Questions",
+    "Title":"Product care",
+    "accordianIcon":"Plus",
     "font":"h2",
     "accordian":[
         {
@@ -55,6 +56,8 @@ export const
 },
 {
     "Title":"Help",
+    "accordianIcon":"Arrows",
+
     "font":"h4",
     "accordian":[
         {
@@ -62,7 +65,9 @@ export const
             Questions:"What is Stylori ?",
             Answers:"Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
         },
-        {
+        {   
+            rightImg:"https://assets-cdn.stylori.com/images/static/platinum-product-care.jpg",
+            align:"center",
             Questions:"What is Stylori ?",
             Answers:"Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
         },
