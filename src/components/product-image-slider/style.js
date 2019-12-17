@@ -60,9 +60,9 @@ const styles = theme => ({
             width: "100%"
         },
         [theme.breakpoints.up('lg')]: {
-            paddingLeft: "50px",
-            paddingRight: "50px",
-            textAlign: "center"
+            paddingLeft: "25px",
+            paddingRight: "25px",
+            // textAlign: "center"
         },
     },
     tabsheadcolor: {

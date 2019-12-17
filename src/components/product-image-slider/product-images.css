@@ -31,11 +31,13 @@ body {
     text-transform: capitalize;
     text-align: justify;
 }
+
 .bg-clr2 {
-    background: linear-gradient(to bottom,#f6f7f8 0%,#fff 100%);
-    top: 0px!important;
+    background: linear-gradient(to bottom, #f6f7f8 0%, #fff 100%);
+    top: 0px !important;
     padding: 20px 0 10px;
 }
+
 .pdp-desc {
     font-size: 10px !important;
     margin-bottom: 2px !important;
@@ -53,9 +55,9 @@ body {
 .starts-review {
     cursor: pointer;
     margin-top: 5px;
-    color: #394578;
+    color: #ccc;
     font-family: "Robot-Black" !important;
-    margin-left: 27% !important;
+    /* margin-left: 27% !important;  */
 }
 
 .border-line- {
@@ -153,23 +155,25 @@ body {
 }
 
 .tabs-valus {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
+    /* width: 70%; */
+    /* display: flex; */
+    /* flex-direction: column;
+    padding: 5px; */
     background: #fdbac13b;
     border: 1px solid #fdbac13b;
-    align-items: center !important;
+    /* align-items: center !important;
     outline: none !important;
-    margin-bottom: 5px;
+    margin-bottom: 5px; */
     cursor: pointer !important;
+    font-weight: bold !important;
+
 }
 
 .tabs-contants {
-    font-size: 12px !important;
-    font-weight: bold;
+    font-size: 14px !important;
     margin: auto !important;
     font-family: 'Roboto' !important;
+    font-weight: bold !important;
 }
 
 .tabs-gold-icons {
@@ -824,7 +828,7 @@ body {
 
 .responseve-carousel {
     width: 100% !important;
-    height: 200px !important;
+    /* height: 200px !important; */
     text-align: center !important;
 }
 
@@ -910,40 +914,104 @@ body {
 }
 
 .my-ringsize {
-    font-size: 12px;
-
+    font-size: 15px;
+    color: #ed1165 !important;
+    text-decoration: underline !important;
+    cursor: pointer;
 }
 
 .pagination {
     width: 7px !important;
 }
 
+.pagetabs {
+    text-align: center !important;
+    height: 40px !important;
+    width: 90%;
+    border: 1px solid #9d9d9d  !important;
+    border-radius: 15%;
+    outline: none !important;
+}
+.pagetabslst {
+    text-align: center !important;
+    height: 40px;
+    width: 90%;
+    border: 1px solid #9d9d9d  !important;
+    border-radius: 15%;
+    outline: none !important;
+
+}
+.PriceTabs-pagination{
+    outline: none !important;
+}
 .page {
     display: inline-block !important;
     text-align: center !important;
-    height: 33px;
-    width: 33px;
-    border-radius: 50%;
+    height: 40px;
+    width: 90%;
+    border-radius: 15%;
     background: #fff;
     box-shadow: inset 0px 1px 0px rgba(255, 255, 255, .8), 0px 1px 3px rgba(0, 0, 0, .1);
     font-size: 15px;
     text-decoration: none;
-    color: #000;
+    color: #394578 !important;
     cursor: pointer;
     outline: none !important;
     border: 1px solid #ccc !important;
+    font-weight: bold !important;
+}
+
+.rings_tabs {
+    font-size: 15px !important;
+    color: #394578 !important;
+    width: 100% !important;
+    padding: 10px;
+    font-weight: 600;
+
+}
+.rings_tabsvls{
+    font-size: 15px !important;
+    color: #ccc !important;
+    width: 100% !important;
+    font-weight: 600; 
+    text-align: center;
+}
+.rings_tabsvls_active{
+    font-size: 15px !important;
+    color: #394578 !important;
+    width: 100% !important; 
+    font-weight: 600;
+    text-align: center;
+
+}
+.darktabs {
+    border: 2px solid #ed1165 !important;
+    border-radius: 15% !important;
+    text-align: center !important;
+    height: 40px !important;
+    width: 90% !important;
+    outline: none !important;
+}
+.darktabslst {
+    border: 2px solid #ed1165 !important;
+    border-radius: 15% !important;
+    text-align: center !important;
+    height: 40px !important;
+    width: 90% !important;
+    outline: none !important;
 
 }
 
 .dark {
     text-align: center !important;
-    height: 33px !important;
-    width: 33px !important;
-    border-radius: 50% !important;
+    height: 40px !important;
+    width: 90% !important;
+    border-radius: 15% !important;
     color: #fff !important;
     outline: none !important;
     cursor: pointer;
-    border: none !important;
+    border: 2px solid #ed1165 !important;
+    background:#f699a3 !important;
 }
 
 .header-APP,

@@ -2,8 +2,14 @@ import React from "react";
 import "./rating.css";
 import { ProductDetailContext } from 'context/ProductDetailContext';
 const Star = ({ selected = false, onClick = f => f }) =>
-    <div className={(selected) ? "star selected" : "star"}
-        onClick={onClick}>
+    <div onClick={onClick}>
+        {selected ? <div class="star-rating" >
+            <input type="radio" />
+            <label for="1-stars" class="star">&#9733;</label>
+        </div> : <div class="star-rating">
+                <input type="radio" />
+                <div for="1-stars" >&#9733;</div>
+            </div>}
     </div>
 
 // Star.propTypes = {

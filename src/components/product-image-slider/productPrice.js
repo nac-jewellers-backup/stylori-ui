@@ -15,27 +15,26 @@ import styles from './style';
 import Wishlist from 'components/wishlist/wishlist';
 
 const dataCarousel = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 1000,
     fade: true,
-    arrows: true,
+    arrows: false,
 }
 
 const mobilecarousel = (props) => {
     const { data } = props;
     return (
         <Container>
-            <div style={{ height: '200px', width: "auto" }}>
-
+            <div style={{  width: "auto" }}>
+                {/* <div style={{background:"red"}}>Earrings in 18K Yellow Gold and Peridot for Kids</div> */}
                 <Slideshow class='responseve-carousel testingcur' imgClass='responseve-carousel-img'
                     fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
             </div>
-
         </Container>
     );
 };
- 
+
 const Productprice = (props, anchorEl, handleClick, handleClose) => {
     const { data } = props;
     const { classes } = props;
@@ -93,7 +92,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                 {/* <hr class="bottom-line product-inform-ation"></hr> */}
                             </div>
                         </Hidden>
-                        <Grid item xs={12} lg={8}>
+                        <Grid item xs={12} lg={9}>
                             <div className="price-div">
                                 <Hidden smDown>
                                     <h1 className={`pdp-title ${classes.title}`}>
@@ -107,7 +106,10 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                         </Grid>
 
                         <Hidden smDown>
-                            <Grid item xs={12} lg={4}>
+                            <Grid item xs={12} lg={3} style={{
+                                display: "flex",
+                                lineHeight: "20px"
+                            }}>
                                 <div className="starts product-icons" style={{ fontFamily: "fontawesome" }} >
                                     <div className="row social-shares"
                                         className={classes.icon}>
@@ -146,7 +148,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                             </div>
                                         </Popover>
 
-                                        <Ratings ratings="starts-review" />
+                                        <div><Ratings ratings="starts-review" /></div>
                                     </div>
                                 </div>
                             </Grid>

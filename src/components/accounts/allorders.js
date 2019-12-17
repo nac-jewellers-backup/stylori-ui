@@ -19,21 +19,22 @@ function myFunc(total, num) {
 }
 class Allorders extends React.Component {
     state = {
-        expanded: "1",
+        expanded: "",
     }
 
     handleChange = panel => (event, expanded) => {
+        debugger
         this.setState({
             expanded: panel,
         });
     };
 
-    changePanel = (panel, mailId) => {
-        this.setState({
-            expanded: panel,
-            expandedlimit: panel,
-        })
-    }
+    // changePanel = (panel, mailId) => {
+    //     this.setState({
+    //         expanded: panel,
+    //         expandedlimit: panel,
+    //     })
+    // }
     // const dataCard1 = this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
 
     calculatetotal = (arr) => {
@@ -73,7 +74,7 @@ class Allorders extends React.Component {
                                 <ExpansionPanel
                                     square
                                     expanded={expanded === '1'}
-                                    onChange={this.handleChange(1)}
+                                    onChange={this.handleChange('1')}
                                     style={{ boxShadow: "none", boxShadow: "rgb(242, 242, 242) 4px 10px 20px 5px" }}
                                 >
                                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>

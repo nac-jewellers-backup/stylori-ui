@@ -48,7 +48,8 @@ const RegisterComponent = (props) => {
                     <Grid item lg={1} />
                     <Grid item xs={12} lg={window.location.pathname === "/registers" ? 12 : 6}>
                         <h5 className='title'>
-                            {window.location.pathname === "/registers" ? "Register" : "New user registration"}
+                        {window.location.pathname === "/account" ?"":  <>
+                        {window.location.pathname === "/registers" ? "Register" : "New user registration"}</>}
                         </h5>
                         {paths ?
                             <Input

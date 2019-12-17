@@ -13,7 +13,8 @@ const useWishlists = (props) => {
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addwishlist', {}, []);
     const { data: removedata, makeFetch: removemakeFetch, } = useNetworkRequest('/removewishlist', {}, []);
     const { setCartFilters } = React.useContext(CartContext);
-    let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
+    let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
+    const check_gustlog = localStorage.getItem("true") ? localStorage.getItem("true") : {}
     // useEffect(() => {
     //     // orderobj["product_sku"] = sku
     //     setValues(orderobj);
@@ -34,19 +35,19 @@ const useWishlists = (props) => {
     }
 
     const handelSubmit = (num) => {
-        if (user_id.length > 0) {
+        if (user_id.length > 0 && check_gustlog === "false") {
             values["isactive"] = num
             values["user_id"] = user_id
             setValues({ values, ...values });
             makeFetch(values);
-        }else{
+        } else {
             alert("Please login your email Id")
-            window.location.href="/login"
+            window.location.href = "/login"
         }
         // changePanel(3)
     }
     const handelRemove = (num) => {
-        if (user_id.length > 0) {
+        if (user_id.length > 0 && check_gustlog === "false") {
             values["isactive"] = num
             values["user_id"] = user_id
             setValues({ values, ...values });

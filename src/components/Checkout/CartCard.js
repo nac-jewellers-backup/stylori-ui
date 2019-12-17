@@ -93,21 +93,21 @@ class Checkoutcard extends React.Component {
                 {this.props.data.map(dataval => (
                     dataval.productsDetails.map(val => (
                         <div className={classes.cart}>
-                            {localStorage.setItem("a__c_t", this.props.data.length > 0 ? this.props.data.length : "")}   <Grid container spacing={12} xs={12}  >
+                            <Grid container spacing={12} xs={12}  >
                                 {/* {window.location.pathname !== "/checkout" ?
                                     <Grid item xs={1}  >
                                         <a>Redirect</a>
                                     </Grid> : ""} */}
                                 <Grid item xs={3} >
                                     <Card className="product-image-thumb">
-                                        <CardHeader style={{ padding: "0px", paddingTop: "10px" }}
+                                        {/* <CardHeader style={{ padding: "0px", paddingTop: "10px" }}
                                             id={dataval.generatedSku}
                                             action={
                                                 <Button id={dataval.generatedSku} onClick={(event) => this.handleDeleteLocalStorage(event, dataval.generatedSku)}>
                                                     <Wishlist sku={dataval.generatedSku} productId={dataval.productId} />
                                                 </Button>
                                             }
-                                        />
+                                        /> */}
                                         {window.location.pathname !== "/checkout" ? <NavLink to={`jewellery/${dataval.productType}/${dataval.materialName[0]}/${val.pro_header}?skuId=${dataval.generatedSku}`} style={{ textDecoration: 'none' }}>
                                             <Slideshow class="image"
                                                 fadeImages={dataval.fadeImages} dataCarousel={dataCarousel} />
@@ -238,17 +238,18 @@ class Checkoutcard extends React.Component {
                 </Grid>
                 <Grid container>
                     {path == "checkout" ? "" :
-                        <Grid xs={12} lg={7}>
-                            <NavLink to="/jewellery">
-                                <div className='btn-plain'> CONTINUE SHOPPING</div>
-                            </NavLink>
+                       <> 
+                       < Grid xs={12} lg={7}>
+                           <NavLink to="/jewellery">
+                       <div className='btn-plain'> CONTINUE SHOPPING</div>
+                   </NavLink>
 
-                        </Grid>}
+               </Grid></>}
                     <Grid xs={12} lg={4} >
-                        {this.checkoutbutton()}
-                    </Grid>
+                    {this.checkoutbutton()}
                 </Grid>
-            </div>
+                </Grid>
+            </div >
         )
     }
 
