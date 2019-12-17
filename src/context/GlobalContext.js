@@ -3,7 +3,8 @@ import React from 'react';
 const initialCtx = {
     GLobalCtx: {
         loggedIn: false,
-        browserType: 'jpg'
+        browserType: 'jpg',
+        pathName:'jewellery'
     },
 
     setGlobaCtx: () => null
@@ -18,6 +19,9 @@ export const GlobalProvider = (props) => {
 
     const [Globalctx, setGlobalCtx] = React.useState(initialCtx.GLobalCtx);
 
+    React.useEffect(()=>{
+         setGlobalCtx({pathName:window.location.pathname})
+    })
     return (
         <GlobalContext.Provider value={{ Globalctx, setGlobalCtx }} >
             {props.children}

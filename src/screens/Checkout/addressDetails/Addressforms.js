@@ -81,7 +81,6 @@ const Addressforms = (changePanel) => {
     debugger
     useEffect(() => {
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
-        debugger
         var adrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes : null
         if (adrs !== undefined && adrs.length > 0) {
             values["addressvalues"] = addresData
@@ -93,7 +92,6 @@ const Addressforms = (changePanel) => {
         }
     }, [addresData, userdata])
     React.useEffect(() => {
-        debugger
         if (user_id.length > 0) {
             obj['userprofileId'] = user_id
             addresmakeRequestCod(obj);

@@ -54,29 +54,41 @@ export const ImgMediaCard = (props) => {
 //     />
 // );
 // }
-const imageOnError = (e, res) => {
+const imageOnError = (event, res) => {
+  var e = event
+  e.target.src.lastIndexOf('\.')
+  var src_img = (e.target.src).lastIndexOf('\.')
+  var _arr = e.target.src.split('/')
+  _arr.splice(_arr.length - 2, 1, '1000X1000')
+  const URL_1000x1000 = _arr.join('/')
+  var URL_JPG = (e.target.src).substr(0, src_img).concat('.jpg')
+
   try {
-    e.target.onError = null;
-    e.target.src.lastIndexOf('\.')
-    var src_img = (e.target.src).lastIndexOf('\.')
-    const testImage = (URL) => {
+
+    var _image = ''
+    e.target.onerror = null;
+
+    const testImage = (URL, e) => {
+      debugger
       var tester = new Image();
-      tester.onload = imageFound(e);
-      tester.onerror = imageNotFound(e);
       tester.src = URL;
+      tester.onload = imageFound;
+      tester.onerror = imageNotFound;
+      // tester.on("error" , imageNotFound)
+
+
+
     }
     const imageFound = (e) => {
-      if (e.target.src === res.url_1000x1000) e.target.src = res.url_1000x1000
-      else e.target.src = (e.target.src).substr(0, src_img).concat('.jpg')
-    }
+      e.target.src = URL_1000x1000
 
+    }
     const imageNotFound = (e) => {
       e.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
-      // e.target.src = "https://alpha-assets.stylori.com/276x276/images/static/Image_Not_Available.jpg"
-      return false
+
+
     }
-    var url = (e.target.src).substr(0, src_img).concat('.jpg')
-    testImage(url);
+    return testImage(URL_1000x1000, e);
     // e.target.src = (e.target.src).substr(0, src_img).concat('.jpg')
   } catch (error) {
     console.log(error)
@@ -107,13 +119,13 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
       onMouseOut={() => {
         callmouseout()
       }}
-      style={{ width: '100%', height: '100%' }}
+      style={{ width: '100%', height: '-webkit-fill-available' }}
       scrollPosition={scrollPosition}
 
-      // If the image we are creating here has the same src than before,
-      // we can directly display it with no need to lazy-load.
-      // onerror={this.src=}
-      placeholderSrc={renderImages(props, cardstate) === '' ? 'https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg' : ''}
+    // If the image we are creating here has the same src than before,
+    // we can directly display it with no need to lazy-load.
+    // onerror={this.src=}
+    // placeholderSrc={renderImages(props, cardstate) === '' ? 'https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg' : ''}
     // placeholder	= { <div >loading.....</div> }
     />
 
@@ -324,13 +336,7 @@ function Component(props) {
     loaded: false,
     dataLoaded: true
   });
-  // let a=[];
-
-  // ['ProductType','Material'].map(val=>{
-  //   if(Object.values(props.filters[val]))
-  //   a.push(Object.keys(props.filters[val]))
-
-  //  })
+  const _height = props.data.imageResolution.img_res
   const callmouseover = () => {
     setCardState({ ...cardstate, hovered: !cardstate.hovered });
   }
@@ -338,8 +344,8 @@ function Component(props) {
     setCardState({ ...cardstate, hovered: !cardstate.hovered });
   }
   return (
-    <div className={classes.root}>
-      <Card className={classes.card}>
+    <div className={classes.root} >
+      <Card className={classes.card} >
         <CardActions>
           <Grid container xs={12}>
             <Grid container item xs={6} justify="flex-start">
@@ -361,9 +367,9 @@ function Component(props) {
           </Grid>
           </Grid>
         </CardActions>
-      {/* /:productCategory/:productType/:material/:productName */}
-      <Link to={{ pathname: `${'jewellery'}/${props.data.productType}/${props.data.material}/${(props.data.title).replace(/ /g, "-")}`, search: `skuId=${props.data.skuId}` }} style={{ textDecoration: 'none' }} onClick={handleProductDetatiContext(props)}>
-        <CardActionArea >
+        {/* /:productCategory/:productType/:material/:productName */}
+        <Link to={{ pathname: `${'jewellery'}/${props.data.productType}/${props.data.material}/${(props.data.title).replace(/ /g, "-")}`, search: `skuId=${props.data.skuId}` }} style={{ textDecoration: 'none' }} onClick={handleProductDetatiContext(props)}>
+          <CardActionArea style={{ height: `${_height ? `${_height}px` : '300px'}` }}>
 
           {/* <img 
 srcset={renderImages(props, cardstate)}

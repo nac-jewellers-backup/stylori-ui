@@ -115,7 +115,8 @@ class Header extends Component {
               <Grid container spacing={12}  >
                 <Grid item xs={3}>
                   <div className={`head-icons ${classes.colorMain}`} >
-                    <span><img className="icons-header-sizes" src={delivery} /></span>
+                    {/* <span><img className="icons-header-sizes" src={delivery} /></span> */}
+                    <i class="track-icon icon-truck"></i>
                     <span><img className="icons-header-sizes" src={telephone} /></span>
                   </div>
                 </Grid>
