@@ -10,7 +10,9 @@ import FaqsTitle from 'components/faqs/faqsTitle';
 import FaqsHelp from "components/faqs/faqsHelp";
 import FaqsCustomer from 'components/faqs/faqsCustomer'
 import Accordian from 'components/faqs/accordian'
-
+import ProductCare from 'components/ProductCare/productCare'
+// import Hidden from '@material-ui/core/Hidden'
+import PropTypes from 'prop-types';
 class FaqsBlock extends React.Component {
     constructor(props) {
         super(props);
@@ -42,17 +44,21 @@ class FaqsBlock extends React.Component {
                 </Grid>
                 <Grid item xs={12} style={{ marginTop: 15, display: "flex", justifyContent: "center" }}>
                     <Grid container class="menuqans">
-                        <Grid item style={{ width: "100%" }}>
+                        <Grid item class="mainWidth">
                             <Grid container>
-                                <Grid item style={{ borderRight: "1px solid #e8e8e8 ", width: "18%",marginTop:"5px" }}>
+                            <Hidden smDown>
+
+                                <Grid item class="sideContent" lg={3} xl={3}>
                                     <FaqsTitle />
                                     <FaqsHelp />
                                     <FaqsCustomer />
                                 </Grid>
-
-                                <Grid item style={{ width: "82%"}}>
-                                    <Grid style={{marginLeft:"4%" }}>
-                            <Accordian />
+                                </Hidden>
+                      
+                                <Grid item class="mainContent" lg={9} xl={9} >
+                                    <Grid >
+                            {/* <Accordian /> */}
+                            <ProductCare />
                                     </Grid>
                     </Grid>
                             </Grid>
@@ -69,6 +75,7 @@ class FaqsBlock extends React.Component {
         );
     }
 }
+
 
 const Components = () => {
     let content = <FaqsBlock />;
