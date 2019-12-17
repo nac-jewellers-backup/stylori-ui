@@ -91,7 +91,7 @@ export const styles = theme => ({
     fill: theme.palette.secondary.dark + "!important",
   },
   menuheader: {
-    width: "200px !important",
+    width: "230px !important",
     position: "sticky",
     top: "0px",
     zIndex: 10000
@@ -99,14 +99,33 @@ export const styles = theme => ({
   drawerPaper: {
     maxHeight: "100% !important",
     height: "max-content",
-    backgroundColor: theme.palette.background.darkFade,
+    backgroundColor: theme.palette.background.fade,
   },
   iconbuttons: {
     position: "fixed",
-    right: "88px",
+    right: "58px",
     top: "-9px"
 
-  }
+  },
+  subtitles: {
+    color: theme.palette.background.darkFade,
+    textAlign: "left",
+    width: "100%",
+    fontSize: "11px",
+    letterSpacing: "1px",
+    fontFamily: "Roboto",
+  },
+  subtitleContainer: {
+    backgroundColor: "#fff !important",
+    '&:hover': {
+      backgroundColor: "#fff !important",
+    }
+  },
+  subtitle2Container: {
+    backgroundColor: theme.palette.background.darkFade,
+
+  },
+
 });
 
 

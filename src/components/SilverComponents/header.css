@@ -169,14 +169,13 @@
 }
 
 .Jew-mbl-head-list1 {
-  color: #394578;
+  color: #fff;
   width: 100%;
   margin: 0;
   float: none;
   font-size: 12px;
   padding: 0 6px;
   position: relative;
-  border-left: 3px solid #fff;
   letter-spacing: 1px;
 }
 
@@ -207,7 +206,7 @@
 }
 
 .drawer-list1 {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.13) !important;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.13) !important; */
 }
 
 .drawer-list1:hover {

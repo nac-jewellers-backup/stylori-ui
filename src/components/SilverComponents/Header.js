@@ -10,7 +10,6 @@ import {
     Toolbar,
     List,
     Typography,
-    Divider,
     IconButton,
     ListItem,
     ListItemText,
@@ -18,8 +17,6 @@ import {
     InputAdornment
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
 import { Hidden } from '@material-ui/core';
 import HeaderHoverMenuItem from './HoverNavBarListing/HeaderHoverMenuItem';
 // import HeaderNotification from './Notification/HeaderNotification'
@@ -27,7 +24,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { useDummyRequest } from '../../hooks';
 import { headerDataSilver } from '../../mappers';
 import { styles } from './styles';
-import Logo from '../../assets/stylori-silver-logo.png'
 import LogoSmallScreen from '../../assets/stylori-silver-logo-small-screen.png';
 import Seach from '../../assets/search'
 
@@ -214,9 +210,7 @@ class Header extends Component {
                                 style={{ float: 'right' }} className={classes.iconbuttons}>
                                 <i class="fa fa-times closebus" ></i>
                             </IconButton>
-                            {/* <Typography className="drawer-menu1">Menu</Typography> */}
                         </div>
-                        {/* <Divider /> */}
                         <List className="sideNavListing"  >
                             {mainlist.map(row => (
                                 <>
@@ -234,29 +228,28 @@ class Header extends Component {
                                     {selected === row.name &&
                                         Object.keys(Jewellery[selected]).map(row2 => (
                                             <>
-                                                <ListItem button key={Jewellery[selected][row2].name} className="drawer-list1">
-                                                    <img className="submenu-icons1" src={row2.icon} alt=""></img>
+                                                <ListItem button key={Jewellery[selected][row2].name} className={classes.subtitleContainer}>
                                                     <ListItemText onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>
-                                                        <Typography className="Jew-mbl-head-list1" variant="">{Jewellery[selected][row2].name}
+                                                        <Typography className={classes.subtitles} variant="">{Jewellery[selected][row2].name.toUpperCase()}
                                                         </Typography>
                                                     </ListItemText>
-                                                    {selected1 === Jewellery[selected][row2].name ? <ExpandMore className="drawer-arrow" /> : <ExpandLess className="drawer-arrow" />}
+                                                    {selected1 === Jewellery[selected][row2].name ? <i class="fa fa-caret-down drawer-arrow"></i> : <i class="fa fa-caret-up drawer-arrow"></i>}
                                                 </ListItem>
                                                 {selected1 === Jewellery[selected][row2].name &&
                                                     <List className="sideNavListing" >
                                                         <ListItem className="drawer-list1">
                                                             <ListItemText
                                                             >
-                                                                <Typography className="Jew-mbl-head-list1" variant="">{subheader[selected1].header}
-                                                                    <span className="header-viewal1">View All</span>
+                                                                <Typography className="list-items1" variant="">{subheader[selected1].header.toUpperCase()}
                                                                 </Typography>
+                                                                <span style={{ paddingTop: "5px" }} className="header-viewal1">View All</span>
                                                             </ListItemText>
                                                         </ListItem>
                                                         {subheader[selected1].name.map(row => (
                                                             <>
-                                                                <ListItem>
+                                                                <ListItem className={classes.subtitle2Container}>
                                                                     <ListItemText>
-                                                                        <Typography className="Jew-mbl-head-list1" variant="">{row}</Typography>
+                                                                        <Typography className="list-items1" variant="">{row.toUpperCase()}</Typography>
                                                                     </ListItemText>
                                                                 </ListItem>
                                                             </>
