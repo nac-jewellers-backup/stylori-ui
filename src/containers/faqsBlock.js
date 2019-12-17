@@ -52,7 +52,7 @@ class FaqsBlock extends React.Component {
                                 <Grid item class="mainContent" lg={9} xl={9} >
                                     <Grid >
                                         {this.props.titleUrl === '/faqs' && <Accordian faqs={faqs} />}
-                                        {this.props.titleUrl === '/privacypolicy' && <ProductCareComp ProductCare={ProductCare} />}
+                                        {this.props.titleUrl === '/productcare' && <ProductCareComp ProductCare={ProductCare} />}
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -69,7 +69,7 @@ class FaqsBlock extends React.Component {
 }
 
 const Components = (props) => {
-    let content = <FaqsBlock  {...props}/>;
+    let content = <FaqsBlock  {...props} />;
     return content;
 };
 

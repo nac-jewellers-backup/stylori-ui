@@ -1,12 +1,13 @@
 import React from 'react';
 import { Grid } from '@material-ui/core'
 import './faqs.css'
+import Link from '@material-ui/core/Link';
 
 class FaqsTitle extends React.Component {
     constructor(props) {
-
         super(props);
     }
+
     render() {
         return (
             <Grid style={{ marginTop: "4%" }}>
@@ -17,7 +18,7 @@ class FaqsTitle extends React.Component {
                     <a href="/deliveryreturns"> Shipping And Returns</a>
                 </Grid>
                 <Grid item xs={12} class="main">
-                    <a href="/productcare">   Product Care </a>
+                    <Link href={"/productcare"}>   Product Care </Link >
                 </Grid>
                 <Grid item xs={12} class="main">
                     <a href="/privacypolicy"> Privacy & Cookie Policy </a>
