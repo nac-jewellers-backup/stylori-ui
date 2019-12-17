@@ -83,8 +83,7 @@ class Header extends Component {
 
     render() {
 
-        const { mainlist, Jewellery, subheader, menuListHeader, menuLists, earings, rings, pendants, nosepins, banglesbracelets, valayal, kammal, koluse, Price,
-            Collection, Material } = this.props.data;
+        const { mainlist, Jewellery, subheader, menuListHeader, menuLists } = this.props.data;
         let { selected, selected1 } = this.state;
         const { classes } = this.props;
         return (
@@ -113,7 +112,7 @@ class Header extends Component {
                                     </Grid>
                                 </Grid>
                             </Container>
-                            <Container maxWidth="lg">
+                            <Container maxWidth="lg" >
                                 <Grid container spacing={12}  >
                                     <Grid item xs={3} className="logoImgHeader1">
                                         <div className="logoDiv1">
