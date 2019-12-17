@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
 import '../faqs/faqs.css'
-import { faqsStylori } from "../../containers/dummyDataProductCare";
 import { borderBottom, lineHeight } from '@material-ui/system';
 import Icon from '@material-ui/core/Icon';
 import ExpandLess from '@material-ui/icons/ExpandLess';
@@ -49,11 +48,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function ProductCare() {
+export default function ProductCare(props) {
     const classes = useStyles();
     
     return (
-        <>{faqsStylori.faqs.map((val, index) => <Grid key={index} container>
+        <>{props.ProductCare.faqs.map((val, index) => <Grid key={index} container>
             <Grid>
                 <Typography className={val.font === "h2" ? classes.titleColor : classes.titleColorsmall} gutterBottom>{val.Title}</Typography>
             </Grid>

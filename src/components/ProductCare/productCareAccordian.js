@@ -15,7 +15,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
 import Collapse from '@material-ui/core/Collapse';
-import { faqsStylori } from "../../containers/dummyDataProductCare";
 import Plus from '../../../src/assets/plus';
 import Minus from '../../../src/assets/minus';
 

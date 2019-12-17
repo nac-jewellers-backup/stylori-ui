@@ -48,6 +48,10 @@ export const RouterApp = (props) => {
             <Route key="HomePageStylori" component={HomePageStylori} exact path={routes.HomePageStylori} />
             <Route key="Silver" component={Silver} exact path={routes.Silver} />
             <Route key="Faqs" component={Faqs} exact path={routes.Faqs} />
+            <Route key="Faqs" component={Faqs} exact path={routes.ProductCare} />
+            <Route key="Faqs" component={Faqs} exact path={routes.Shipping} />
+            <Route key="Faqs" component={Faqs} exact path={routes.PrivacyPolicy} />
+            <Route key="Faqs" component={Faqs} exact path={routes.TermsConditions} />
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
             <Route key="sto" component={stories} exact path={routes.Stories} />
             {(props.location.pathname !== "/cart" && props.location.pathname !== "/account" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout") &&
@@ -59,7 +63,7 @@ export const RouterApp = (props) => {
             <Route key="login" component={UserLogin} exact path={routes.UserLogin} />
             <Route key="Account" component={Account} exact path={routes.Account} />
             <Route key="registers" component={UserRegister} exact path={routes.UserRegister} />
-            
+
         </Switch>
     );
 };

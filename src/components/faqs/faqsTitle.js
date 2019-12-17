@@ -4,27 +4,28 @@ import './faqs.css'
 
 class FaqsTitle extends React.Component {
     constructor(props) {
+
         super(props);
     }
-    render(){
-        return(
-            <Grid style={{marginTop:"4%"}}>
-            <Grid item xs={12} class="main">
-                    <a href="#"><span>Frequently Asked Questions</span></a>
+    render() {
+        return (
+            <Grid style={{ marginTop: "4%" }}>
+                <Grid item xs={12} class="main">
+                    <a href="/faqs"><span>Frequently Asked Questions</span></a>
                 </Grid>
                 <Grid item xs={12} class="main">
-                    <a href="#"> Shipping And Returns</a>
+                    <a href="/deliveryreturns"> Shipping And Returns</a>
                 </Grid>
                 <Grid item xs={12} class="main">
-                    <a href="#">   Product Care </a>
+                    <a href="/productcare">   Product Care </a>
                 </Grid>
                 <Grid item xs={12} class="main">
-                    <a href="#"> Privacy & Cookie Policy </a>
+                    <a href="/privacypolicy"> Privacy & Cookie Policy </a>
                 </Grid>
                 <Grid item xs={12} class="main">
-                    <a href="#"> Terms & Conditions </a>
+                    <a href="/termsconditions"> Terms & Conditions </a>
                 </Grid>
-                </Grid>
+            </Grid>
         )
     }
 

@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
 import './faqs.css'
-import { faqsStylori } from "../../containers/dummydatafaqs";
 import { borderBottom, lineHeight } from '@material-ui/system';
 import Icon from '@material-ui/core/Icon';
 import ExpandLess from '@material-ui/icons/ExpandLess';
@@ -49,7 +48,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function Accordian() {
+export default function Accordian(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -57,13 +56,13 @@ export default function Accordian() {
         setOpen(!open);
     };
     return (
-        <>{faqsStylori.faqs.map((val, index) => <Grid key={index} container>
+        <>{props.faqs.faqs.map((val, index) => <Grid key={index} container>
             <Grid>
                 <Typography className={val.font === "h2" ? classes.titleColor : classes.titleColorsmall} gutterBottom>{val.Title}</Typography>
             </Grid>
             {val.accordian.map((value, index) =>
-                <AccordianElement value={value} key={index}/>
-                )}
+                <AccordianElement value={value} key={index} />
+            )}
         </Grid>)
         }</>
     )

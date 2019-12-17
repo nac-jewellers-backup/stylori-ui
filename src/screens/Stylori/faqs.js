@@ -4,17 +4,14 @@ import { withRouter } from 'react-router-dom';
 class faqs extends Component {
     constructor(props) {
         super(props)
-        
     }
 
     render() {
         return (
             <div>
-                <FaqsBlock />
-             
-     
+                <FaqsBlock titleUrl={this.props.match.path} />
             </div>
-            )   
+        )
     }
 }
 export default withRouter(faqs)

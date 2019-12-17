@@ -11,9 +11,11 @@ export const routes = {
     Account: '/account',
     Silver: '/silverjewellery',
     Faqs: '/faqs',
-    Stories:'/stories'
-    
-
+    Stories: '/stories',
+    ProductCare: '/productcare',
+    Shipping: '/deliveryreturns',
+    PrivacyPolicy: '/privacypolicy',
+    TermsConditions: '/termsconditions'
 }
 
 export default routes;
