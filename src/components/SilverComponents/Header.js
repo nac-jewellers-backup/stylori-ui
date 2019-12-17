@@ -13,7 +13,8 @@ import {
     IconButton,
     ListItem,
     ListItemText,
-    Container
+    Container,
+    InputAdornment
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandLess from '@material-ui/icons/ExpandLess';
@@ -27,6 +28,7 @@ import { headerDataSilver } from '../../mappers';
 import { styles } from './styles';
 import Logo from '../../assets/stylori-silver-logo.png'
 import LogoSmallScreen from '../../assets/stylori-silver-logo-small-screen.png';
+import Seach from '../../assets/search'
 
 
 class Header extends Component {
@@ -96,66 +98,62 @@ class Header extends Component {
                     <div className="header-appbar-sticky1" id='headerDiv'>
                         <AppBar className="header-appbarsilver1" id="topNav">
                             <Container maxWidth="lg">
-                                <Grid container spacing={12}  >
-
-                                    <Grid item xs={3} className="logoImgHeader1">
-                                        <div className="logoDiv1">
-                                            <img className={`imgsilver1`} src={Logo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                <Grid container spacing={12} style={{ marginTop: "40px" }}>
+                                    <Grid container item xs={12} justify="flex-end" alignItems="center">
+                                        <div className={`head-icons1 ${classes.headIcons}`} >
+                                            <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
+                                            <Typography className={classes.callerNum}>1800 102 0330</Typography>
+                                            <InputBase
+                                                className={`search ${classes.colorMain}`}
+                                                placeholder=" SEARCH"
+                                                endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
+                                                </div></InputAdornment>}
+                                            />
+                                            <i class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                            <i class={`fa fa-heart  ${classes.iconFafaheart}`}></i>
+                                            <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
                                         </div>
                                     </Grid>
-
-                                    <Grid container item xs={9} >
-                                        <Grid container item xs={12} justify="flex-end" alignItems="center">
-                                            <Grid item xs={12} >
-                                                <div className={`head-icons1 ${classes.headIcons}`} >
-
-                                                    <i class="fa fa-user"></i>
-                                                    <i class="fa fa-sign-in"></i>
-                                                    <i class="fa fa-heart"></i>
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                </div>
-                                            </Grid>
-
-                                        </Grid>
-                                        <Grid container item xs={12} justify="flex-end" alignItems="center" className={`header-navbar-list1 ${classes.headerNavbarList}`}
-                                            onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false, targetopen: null }) }}
-
-                                        >
-                                            <Grid item xs={12}>
-                                                <nav
-                                                >
-                                                    {
-                                                        (menuListHeader.map(listName => {
-                                                            return (
-                                                                <a href={listName} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, targetopen: event.currentTarget, Checked: true, listHoverItem: listName.replace(/ +/g, "") }) }}>{listName}</a>
-                                                            )
-
-                                                        }))
-                                                    }
-                                                </nav>
+                                </Grid>
+                            </Container>
+                            <Container maxWidth="lg">
+                                <Grid container spacing={12}  >
+                                    <Grid item xs={3} className="logoImgHeader1">
+                                        <div className="logoDiv1">
+                                            <img className={`img`} src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                        </div>
+                                    </Grid>
+                                    <Grid container item xs={9} justify="flex-end" alignItems="center" className={`header-navbar-list1 ${classes.headerNavbarList}`}
+                                        onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false, targetopen: null }) }}
+                                    >
+                                        <Grid item xs={12} style={{ marginTop: "10px" }}>
+                                            <nav
+                                            >
                                                 {
+                                                    (menuListHeader.map(listName => {
+                                                        return (
+                                                            <a href={listName} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, targetopen: event.currentTarget, Checked: true, listHoverItem: listName.replace(/ +/g, "") }) }}>{listName}</a>
+                                                        )
 
-                                                    this.state.Menuopen && menuLists[this.state.listHoverItem] ?
-                                                        <HeaderHoverMenuItem Checked={this.state.Checked} tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
-                                                            onMouseOver={(event) => { this.setState({ Menuopen: true }) }}
-                                                            onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false, targetopen: null }) }}
-                                                            opened={this.state.Menuopen} targetopened={this.state.targetopen}
-
-                                                        />
-                                                        :
-                                                        ''
+                                                    }))
                                                 }
-                                            </Grid>
+                                            </nav>
+                                            {
 
+                                                this.state.Menuopen && menuLists[this.state.listHoverItem] ?
+                                                    <HeaderHoverMenuItem Checked={this.state.Checked} tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
+                                                        onMouseOver={(event) => { this.setState({ Menuopen: true }) }}
+                                                        onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false, targetopen: null }) }}
+                                                        opened={this.state.Menuopen} targetopened={this.state.targetopen}
+
+                                                    />
+                                                    :
+                                                    ''
+                                            }
                                         </Grid>
                                     </Grid>
                                 </Grid>
-
-
                             </Container>
-
-                            {/* <div className="header-bottom"></div> */}
-
                         </AppBar>
                     </div>
                 </Hidden>
@@ -206,14 +204,14 @@ class Header extends Component {
                                 style={{ float: 'right' }}>
                                 <i class="fa fa-times"></i>
                             </IconButton>
-                            <Typography className="drawer-menu1">Menu</Typography>
+                            {/* <Typography className="drawer-menu1">Menu</Typography> */}
                         </div>
-                        <Divider />
+                        {/* <Divider /> */}
                         <List className="sideNavListing"  >
                             {mainlist.map(row => (
                                 <>
                                     <ListItem button key={row.name} className="drawer-list1" >
-                                        <img className="submenu-icons1" src={row.icon} alt={row.icon}></img>
+                                        {/* <img className="submenu-icons1" src={row.icon} alt={row.icon}></img> */}
                                         <ListItemText
                                             onClick={() => Jewellery[row.name] !== undefined ? this.selectItem(row.name) : ''}
                                         >
