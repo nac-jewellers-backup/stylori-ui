@@ -103,7 +103,6 @@ class Header extends Component {
             document.getElementById("headerContainer").style.boxShadow = "none";
             document.getElementById("logoImage").style.width = "100%";
             document.getElementById("headerContainer").style.height = "auto";
-            document.getElementById("titleTop").style.marginTop = "12px";
             document.getElementById("containerTitle").style.height = "auto";
             document.getElementById("logoDiv1").style.paddingTop = "2%";
             document.getElementById("fullcontainer").style.height = "auto";
