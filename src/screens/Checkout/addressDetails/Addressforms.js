@@ -224,7 +224,7 @@ const Addressforms = (changePanel) => {
     const selectaddreses = (val_addrs, num) => { 
         // var addressOne = val_addrs
         // var addressTwo = values.addressTwo
-
+ 
 
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
         if (values.checkValue1 === true) {
