@@ -48,10 +48,12 @@ const RegisterComponent = (props) => {
                     <Grid item lg={1} />
                     <Grid item xs={12} lg={window.location.pathname === "/registers" ? 12 : 6}>
                         <h5 className='title'>
-                            {window.location.pathname === "/registers" ? "Register" : "New user registration"}
+                            {window.location.pathname === "/account" ? "" : <>
+                                {window.location.pathname === "/registers" ? "Register" : "New user registration"}</>}
                         </h5>
                         {paths ?
                             <Input
+                                style={{ background: "rgba(192, 192, 192, 0.41)" ,width:"100%"}}
                                 value={email}
                                 InputProps={{
                                     readOnly: true,
@@ -79,10 +81,10 @@ const RegisterComponent = (props) => {
                                         type="password"
                                         name="password"
                                         value={"........"}
-                                        error={values.error && values.error.passerr ? true : false}
                                         // helperText={values.errortext && values.errortext.passerr}
                                         placeholder="Enter your password"
                                         onChange={e => handlers.handleChange('password', e.target.value)}
+                                        style={{ background: "rgba(192, 192, 192, 0.41)" }}
                                         InputProps={{
                                             readOnly: true,
                                         }}

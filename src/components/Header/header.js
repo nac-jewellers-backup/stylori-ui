@@ -39,25 +39,19 @@ class Header extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      anchorEl: null,
       open: false,
-      open1: false,
       panel: false,
-      panel1: false,
       Menuopen: false,
       selected: '',
       selected1: '',
       Checked: false,
       load: false,
       listHoverItem: 'Jewellery',
-      headerHeightprops: 0
-
+      headerHeightprops: 0,
+      anchorEl: false
     }
     this.topZero = React.createRef();
   }
-
-
-
 
 
   handleDrawerOpen = () => {
@@ -92,16 +86,15 @@ class Header extends Component {
     }
 
   }
-  handleClickp = event => {
+  handleClickPopover = (event) => {
     this.setState({
-      anchorEl: 'simple-popper',
+      anchorEl: event.currentTarget,
     });
   };
 
-  handleClosep = () => {
+  handleClosePopover = () => {
     this.setState({
-
-      anchorEl: null,
+      anchorEl: false,
     });
   };
   render() {
@@ -112,7 +105,7 @@ class Header extends Component {
     const { classes } = this.props;
     let path = window.location.pathname.split('/').pop();
     const { anchorEl } = this.state;
-    const open1 = Boolean(anchorEl);
+    const openPopover = anchorEl;
     return (
       <div>
         <Hidden smDown >
@@ -149,9 +142,8 @@ class Header extends Component {
 
                     {localStorage.getItem("true") ?
                       <span
-                        aria-owns={open1}
-                        aria-haspopup="true"
-                        onClick={() => { this.handleClickp() }}
+                        aria-owns={openPopover ? 'simple-popper' : ""}
+                        onClick={this.handleClickPopover}
                       >
                         <img className="icons-header-sizes" src={usershape} /></span>
                       // <img className="icons-header-sizes" src={usershape}/>
@@ -161,12 +153,16 @@ class Header extends Component {
                     {/* </NavLink> */}
                     <Popover
                       id="simple-popper"
-                      open={open1}
-                      onClose={this.handleClosep}
+                      open={openPopover}
                       anchorEl={anchorEl}
+                      onClose={this.handleClosePopover}
                       anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'center',
+                      }}
+                      transformOrigin={{
                         vertical: 'top',
-                        horizontal: 'right',
+                        horizontal: 'center',
                       }}
                     >
                       <div
@@ -200,13 +196,13 @@ class Header extends Component {
                     {/* <i class="fa fa-user"></i> */}
 
                     <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">
-                      <img onClick={() => {
+                      <i class="fa fa-heart icons-header-sizes" onClick={() => {
                         if (user_id.length > 0) {
                           window.location.href = "/account"
                         } else {
                           window.location.href = "/login"
                         }
-                      }} className="icons-header-sizes" src={love} />
+                      }}  ></i>
                     </Badge>
                     <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
                       <NavLink to="/cart">   <img className="icons-header-sizes" src={shopping} />
@@ -295,11 +291,17 @@ class Header extends Component {
                       <i class="fa fa-search"></i>
                     </Badge>
                     <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">
-                      <i class="fa fa-heart"></i>
+                      <i class="fa fa-heart" onClick={() => {
+                        if (user_id.length > 0) {
+                          window.location.href = "/account"
+                        } else {
+                          window.location.href = "/login"
+                        }
+                      }}  ></i>
                     </Badge>
                     <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                      <i class="fa fa-shopping-bag"></i>
-                    </Badge>
+                      <NavLink to="/cart">  <i class="fa fa-shopping-bag"></i>
+                      </NavLink> </Badge>
                   </div>
                 </Grid>
               </Toolbar>

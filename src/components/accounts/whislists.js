@@ -63,20 +63,20 @@ class Component extends React.Component {
                                             <div className="wislist_title">{first_map.productListByProductId.productName}</div><br />
 
                                             <div className="wislist_price">{Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice))}</div><br />
-                                            <div >
+                                            <div className="add-bag">
                                                 <>
-                                                    <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} /></>
-                                                <Button
-                                                    onClick={() => {
+                                                    <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} add={first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice}/></>
+                                                {/* <Button "> */}
+                                                    {/* onClick={() => {
                                                         this.props.setCartFilters({
                                                             skuId: first_map.skuId,
                                                             qty: 1,
                                                             price: first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice
                                                         })
-                                                        window.location.pathname = "/cart"
-                                                    }} className="add-bag">
+                                                       
+                                                    }} className="add-bag"> */}
                                                     <i class="fa fa-shopping-bag"></i>&nbsp;Add to Bag
-                                    </Button>
+                                    {/* </Button> */}
                                             </div>
                                         </div>
                                     </Grid>

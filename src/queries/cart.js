@@ -73,7 +73,7 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
 }
 `
 export const ALLUSERWISHLISTS = `query MyQuery($userprofileId: [UUID!]) {
-  allUserWhislists(filter: {userprofileId: {in: $userprofileId}}) {
+  allUserWhislists(filter: {userprofileId: {in: $userprofileId}, isActive: {equalTo: true}}) {
     nodes {
       userprofileId
       productId
@@ -85,6 +85,7 @@ export const ALLUSERWISHLISTS = `query MyQuery($userprofileId: [UUID!]) {
             imageUrl
           }
         }
+        isactive
       }
       transSkuListBySkuId {
         discountPrice

@@ -31,7 +31,8 @@
     font-size: 14px !important;
     font-weight: 600;
     /* line-height: 20px; */
-    box-shadow: 1px 2px 35px 3px #DEDADA !important;
+    /* box-shadow: 1px 2px 35px 3px #DEDADA !important; */
+    box-shadow: 1px 0px 10px 0px #DEDADA !important;
 }
 
 .pay-index-subhed p:hover {
@@ -48,27 +49,30 @@
     font-size: 13px;
     float: left !important;
 }
-.address_details{
+
+.address_details {
     /* box-shadow: 5px 0px 58px 2px #DEDADA!important; */
     /* box-shadow: 1px 2px 13px 7px #DEDADA!important; */
     padding: 15px;
 }
-.rups{
-    color:rgba(241, 72, 128, 1);
-    font-weight:500;
+
+.rups {
+    color: rgba(241, 72, 128, 1);
+    font-weight: 500;
     font-size: 22px;
 }
+
 /* .order_addres div.span {
     font-weight: bold;
 } */
 
 .panel_body {
     margin-top: 10px !important;
-    overflow-y: scroll ! important;
+    /* overflow-y: scroll ! important; */
     height: 70vh !important;
     width: 100% !important;
     border: none !important;
-    box-shadow: 1px 0px 90px 18px #DEDADA !important;
+    /* box-shadow: 1px 0px 90px 18px #DEDADA !important; */
     /* box-shadow: 1px 2px 13px 7px #DEDADA !important; */
 }
 
@@ -109,11 +113,16 @@
 
 .add-bag {
     color: #333 !important;
-    padding: 5px 10px;
     border: 1px solid #333 !important;
     text-align: center !important;
     float: left !important;
     font-size: 12px !important;
+    border-radius: 5%;
+    line-height: 10px;
+    height: 30px;
+    padding: 2px;
+    width: 15%;
+    cursor: pointer;
 }
 
 .wislist_title {

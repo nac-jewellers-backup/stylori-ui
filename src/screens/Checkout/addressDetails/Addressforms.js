@@ -79,6 +79,7 @@ const Addressforms = (changePanel) => {
     const pathnames = window.location.pathname === "/account"
     // var stst = values.ref ? values.ref : ""
     useEffect(() => {
+        debugger
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
         var adrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes : null
         if (adrs !== undefined && adrs.length > 0) {
@@ -91,6 +92,7 @@ const Addressforms = (changePanel) => {
         }
     }, [addresData, userdata])
     React.useEffect(() => {
+        debugger
         if (user_id.length > 0) {
             obj['userprofileId'] = user_id
             addresmakeRequestCod(obj);
@@ -178,7 +180,6 @@ const Addressforms = (changePanel) => {
             return false
         } else {
             if (values.checkValue === true) {
-
                 addObj['address'] = [addressOne];
             } if (values.checkValue === false) {
                 if (values.edit_addresId === true) {
@@ -212,15 +213,16 @@ const Addressforms = (changePanel) => {
         //     if (values.edit_addresId === false) {
         //         alert("allowed the five address only")
         //     }
-        //     // window.location.reload();
-        // }
+        //     // window.location.reload(); 
+        // } 
         // window.location.reload();
         // values["edit_ref"] = true
-        window.location.reload();  }
-    const selectaddreses = (val_addrs, num) => {
+        // window.location.reload(); 
+    }
+    const selectaddreses = (val_addrs, num) => { 
         // var addressOne = val_addrs
         // var addressTwo = values.addressTwo
-
+ 
 
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
         if (values.checkValue1 === true) {
@@ -355,6 +357,14 @@ const Addressforms = (changePanel) => {
             // addrs: !values.addrs
         })
     }
+    const redirectFormss = () => {
+        debugger
+        values["addrs"] = false
+        setValues({
+            values,
+            ...values,
+        })
+    }
     const redirectForm = (val_addrs, num, isAdressOne, isAdressTwo, ) => {
         if (val_addrs && val_addrs.id.length > 0) {
             values["addres_id"] = val_addrs && val_addrs.id
@@ -368,7 +378,9 @@ const Addressforms = (changePanel) => {
         values["checkValue"] = isAdressTwo
         values["number"] = num
         values["edit_addresId"] = isAdressOne
-        values["addressOne"]["contactno"] = val_addrs && val_addrs.contactNumber && val_addrs.contactNumber
+        if (values && values["addressOne"]) {
+            values["addressOne"]["contactno"] = val_addrs && val_addrs.contactNumber && val_addrs.contactNumber
+        }
         setValues({
             values,
             ...values,
@@ -377,7 +389,7 @@ const Addressforms = (changePanel) => {
         localStorage.setItem("isedit", !values.addrs ? 1 : 0)
         // localStorage.setItem('vale', JSON.stringify(values))
     }
-    const handle = { Delete_address, handleChange, handleSubmit, handleKeyPress, redirectForm1, redirectForm, selectaddreses };
+    const handle = { redirectFormss, Delete_address, handleChange, handleSubmit, handleKeyPress, redirectForm1, redirectForm, selectaddreses };
     return { values, setValues, handle }
 }
 export default Addressforms;

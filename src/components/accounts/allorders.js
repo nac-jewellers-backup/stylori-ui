@@ -19,7 +19,7 @@ function myFunc(total, num) {
 }
 class Allorders extends React.Component {
     state = {
-        expanded: "1",
+        expanded: "",
     }
 
     handleChange = panel => (event, expanded) => {
@@ -31,12 +31,12 @@ class Allorders extends React.Component {
     changePanel = (panel, mailId) => {
         this.setState({
             expanded: panel,
-            expandedlimit: panel,
         })
     }
     // const dataCard1 = this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
 
     calculatetotal = (arr) => {
+        
         var a
         a = arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
             return cart.transSkuListByProductSku.discountPrice
@@ -49,12 +49,12 @@ class Allorders extends React.Component {
         var date = moment().format(' h a')
         if (isReadytoShip) {
             if (JSON.stringify(date) > " 1 pm") {
-                return 'Ships by' + ' ' + moment().add(1, 'days').format('MMM Do YY');
+                return 'Ships by' + ' ' + moment().add(1, 'days').format('MMM Do YYYY');
             }
         }
 
         else {
-            return 'Ships by' + ' ' + moment().add(numberOfDays, 'days').format('MMM Do YY');
+            return 'Ships by' + ' ' + moment().add(numberOfDays, 'days').format('MMM Do YYYY');
         }
     }
     render() {
@@ -70,9 +70,10 @@ class Allorders extends React.Component {
                             {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map(val => (
                                 <ExpansionPanel
                                     square
-                                    expanded={expanded === '1'}
-                                    onChange={this.handleChange(1)}
+                                    expanded={expanded === val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}
+                                    onChange={this.handleChange(val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname)}
                                     style={{ boxShadow: "none", boxShadow: "rgb(242, 242, 242) 4px 10px 20px 5px" }}
+                                    key={val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}
                                 >
                                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
                                         <Typography className='text-chck'>

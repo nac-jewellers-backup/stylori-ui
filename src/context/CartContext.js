@@ -69,13 +69,17 @@ const Provider = (props) => {
             // localStorage.setItem("allorder", allorder.data.allOrders)
             localStorage.setItem("a__w_l", wishlistdatas && wishlistdatas.length)
             setwishlistdata(objwishlist)
+        }else{
+            localStorage.setItem("a__w_l", 0)
         }
     }, [wishlistDATA])
     useEffect(() => {
-        orderobj["userProfileId"] = userIds
-        orderobj1["userprofileId"] = userIds
-        allordermakeRequest(orderobj);
-        wishlistmakeRequest(orderobj1)
+        // if (window.location.pathname = "/account") {
+            orderobj["userProfileId"] = userIds
+            orderobj1["userprofileId"] = userIds
+            allordermakeRequest(orderobj);
+            wishlistmakeRequest(orderobj1)
+        // }
     }, [])
     useEffect(() => {
         if (userIds.length > 0) {
@@ -95,6 +99,7 @@ const Provider = (props) => {
                 addtocart(addcart)
                 orderobj["userProfileId"] = user_id
                 allordermakeRequest(orderobj);
+                // wishlistmakeRequest(orderobj1) 
             }
         }
         else {

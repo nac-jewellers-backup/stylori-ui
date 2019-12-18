@@ -37,10 +37,10 @@ class ProductDescription extends Component {
     var path = loc.split('/');
     var data_json = [{title:'home' ,url:'/home'}, {title:'jewellery' ,url:"/jewellery"}]
     // const descriptionData = this.props.data;
-    const settings = this.props.data[0].dataCarousel;
-    const fadeImages = this.props.data[0].carouselImage;
+    const settings = this.props.data&&this.props.data[0]&&this.props.data[0].dataCarousel;
+    const fadeImages = this.props.data&&this.props.data[0]&&this.props.data[0].carouselImage;
     const title = this.props.title;
-    const datadescription = this.props.data[0].seoText;
+    const datadescription = this.props.data&&this.props.data[0]&&this.props.data[0].seoText;
     const renderTitle = () =>{
       var pathname_split_hyphen = path[1].split('-')
       var a = window.location.pathname.split('/')

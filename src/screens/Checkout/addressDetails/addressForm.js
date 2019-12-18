@@ -33,11 +33,11 @@ const AddressComponent = (props) => {
                             {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? <h5 className='title'> Edit Address</h5> : ""}
                             <p class="form-group tp" style={{ width: "480px" }}>
                                 {/* {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <>{cl}</>} */}
-                                {values.edit_addresId === true ? "" : <>{cl}</>}
+                                {window.location.pathname === "/account" || values.edit_addresId === true ? "" : <>{cl}</>}
                                 {/* {JSON.stringify(values.errortext && values.errortext.pinerr)} */}
                             </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={5}>
-                                    {values.hidebilling === true ? "" : <>
+                                    {window.location.pathname === "/account"||values.hidebilling === true ? "" : <>
                                         <h5 className='title'>Shipping Address</h5>
                                         <>
                                             {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
@@ -171,7 +171,7 @@ const AddressComponent = (props) => {
                                 {/*  */}
                                 {/*  */}
                                 {/* {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <> */}
-                                {values.edit_addresId === true ? "" : <>
+                                {window.location.pathname === "/account" || values.edit_addresId === true ? "" : <>
                                     <Grid container item lg={1} />
                                     {!values.checkValue &&
                                         <Grid item xs={12} lg={5}>
@@ -309,7 +309,7 @@ const AddressComponent = (props) => {
                                 
                             </div> */}
                             <div className='login-butn'>
-                                {values.edit_addresId === true ? <Button onClick={() => handle.redirectForm()} style={{ borderRadius: "0px", padding: "6px 8px", lineHeight: "1.75", border: "1px solid #394578" }}
+                                {values.edit_addresId === true ? <Button onClick={() => handle.redirectFormss()} style={{ borderRadius: "0px", padding: "6px 8px", lineHeight: "1.75", border: "1px solid #394578" }}
                                     className=''>Cancel</Button> : ""} &nbsp;
                                 <Button type="submit" className='apply-b'>Save and Review</Button>
                             </div>
