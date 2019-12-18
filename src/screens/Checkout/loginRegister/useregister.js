@@ -183,7 +183,7 @@ const useRegister = (changePanel, props) => {
                 return false
             }
         }
-        var emailvld = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
+        var emailvld =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!emailvld.test(values.email)) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'An email address must contain a single @/.'

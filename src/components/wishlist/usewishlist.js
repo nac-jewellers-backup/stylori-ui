@@ -6,6 +6,7 @@ const useWishlists = (props) => {
     const [values, setValues] = React.useState({
         user_id: "",
         product_id: "",
+        add: "",
         product_sku: "",
         // isactive: 1
     });
@@ -51,8 +52,15 @@ const useWishlists = (props) => {
             values["isactive"] = num
             values["user_id"] = user_id
             setValues({ values, ...values });
+                setCartFilters({
+                    skuId: values.product_sku,
+                    qty: 1,
+                    price: values.add
+                })
+                window.location.pathname = "/cart"
             removemakeFetch(values);
         }
+
         // changePanel(3)
     }
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Grid, Typography } from '@material-ui/core';
-debugger
 const useStyles = makeStyles(theme => ({
     containItems: {
         padding: "0px 15px",

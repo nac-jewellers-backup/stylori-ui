@@ -115,7 +115,6 @@ const hoverImage = (placeImage) =>  placeImage.find(fd => fd.ishover);
         mapperdata = [];
     }
     const _format = mapperdata.map(k => {
-        debugger
         let _d;
         try {
             _d = {

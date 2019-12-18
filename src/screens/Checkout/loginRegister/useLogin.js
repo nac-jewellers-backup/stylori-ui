@@ -77,7 +77,6 @@ const useLogin = (changePanel) => {
             localStorage.setItem("c_k_l", true)
             if (!pathnames) {
                 changePanel(2)
-                return false
             } else {
                 if (localStorage.getItem('review_location') && localStorage.getItem('review_location').length > 0) {
                     window.location.href = localStorage.getItem('review_location')
@@ -123,7 +122,6 @@ const useLogin = (changePanel) => {
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
-debugger
         if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'
@@ -152,7 +150,7 @@ debugger
             })
             return false
         }
-        var emailvld = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
+        var emailvld =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!emailvld.test(values.email)) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'An email address must contain a single @/.'

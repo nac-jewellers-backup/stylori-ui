@@ -30,19 +30,19 @@ class Buynowfixed extends React.Component {
         return (
             <div>
                 <AppBar color="primary" className="product-page-fixed-footer">
-                    <Grid container spacing={12} style={{width:"100%"}}>
-                        <Grid item xs={6} >
-                          <span className='fixed_grid_price'>5435353</span>
-                          <span className='fixed_grid_price'>5435353</span>
+                    {/* price={data[0].price}
+                    offerPrice={data[0].offerPrice} */}
+                    <Grid container spacing={12} >
+                        <Grid item xs={12} style={{ textAlign: "center",background:"#f9f9f9" }}>
+                            <div class="css-ocmcwm eu70xvk2"><span class="css-kqsna2">
+                                {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(data[0].offerPrice))}</span><span class="css-tg000w">
+                                    {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(data[0].price))}</span></div>
                         </Grid>
-                        <Grid className="" item xs={6}>
-                            </Grid>
                     </Grid>
-
-                    <Grid container spacing={12}>
-                        <Grid item xs={6} className='fixed-grid'>
+                    <Grid container spacing={12} >
+                        <Grid item xs={6} className='fixed-grid' style={{ textAlign: "center" ,background:"#EBEAEA"}}>
                             <div onClick={handleLocalStorage.bind(this)}>
-                                <Buynowbutton sku={data[0].skuId} class='product-footer-buynow ' />
+                                <Buynowbutton sku={data[0].skuId} class='product-footer-buynow' />
                             </div>
                         </Grid>
                         <Grid className='talk-to-us' item xs={6}><i class="fa fa-comments">

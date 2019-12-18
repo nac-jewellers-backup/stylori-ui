@@ -9,6 +9,7 @@ import moment from "moment";
 
 var colSize = null
 var colSize_like_view = null
+const width = window.innerWidth;
 const screenWidth = () => {
     const width = window.innerWidth;
     if (width > 2555) {
@@ -32,7 +33,7 @@ const screenWidth = () => {
 }
 
 const screen_width_type_like_view = () => {
-    const width = window.innerWidth;
+    
     if (width > 2555) {
         colSize_like_view = 4;
     }
@@ -88,11 +89,11 @@ screenWidth()
 const injectUrl_url_construct = (url, baseUi, screen_res) => {
     var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
     var resolution = screen_width_type(screen_res)
-    var _resolutions = `${resolution}X${resolution}`
-    var url_split = url.imageUrl.split('/')
-    var extension_split = url_split[url_split.length - 1]
-    var browser_type_append = extension_split.split('\.')[0].concat(`${browser_type.browser_type}`)
-    url_split[url_split.length - 1] = browser_type_append
+    var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}`: `${resolution}X${resolution}`
+    var url_split = url && url.imageUrl.split('/')
+    var extension_split = url_split && url_split[url_split.length - 1]
+    var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type&&browser_type.browser_type}`)
+    url_split[url_split && url_split && url_split.length - 1] = browser_type_append 
     url_split.splice(2, 0, _resolutions);
     var url_construct = url_split.join().replace(/\,/g, '/')
     var img_url = `${baseUi}${url_construct}`
@@ -173,7 +174,6 @@ const generatedimondClarity = (val) => {
     }))
 }
 const generateShipsBy = (readytoship, vendorDeliveryTime) => {
-    debugger
     var isReadytoShip = readytoship
     var numberOfDays = vendorDeliveryTime
     var date = moment().format(' h a')

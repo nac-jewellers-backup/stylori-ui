@@ -28,7 +28,7 @@ const mobilecarousel = (props, val) => {
         <div>
             <Grid container spacing={12} xs={12} style={{ position: "absolute" }}>
                 <Grid container item xs={6}>
-                    <div className="css-ts7n45 e5toz5w4"><span style={{ color: "#000" }} className="e195g4sk5 css-5pjie5 ekntgft2">{val.offerDiscount}</span><br />
+                    <div className="css-ts7n45 e5toz5w4"><span style={{ color: "#fff" }} className="e195g4sk5 css-5pjie5 ekntgft2">{val.offerDiscount}</span><br />
                         {data[0].ProductContactNum[0].isReadyToShip === true ? <div className="css-ts7n45-redy_toship one-day-ship-mb"></div> : ""}
                     </div>
                 </Grid>

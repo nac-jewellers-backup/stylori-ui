@@ -53,7 +53,6 @@ class Component extends React.Component {
     };
 
     handleClick = (event, key) => {
-        debugger
         console.log('lklkkoik9', this.state.skuSize)
         var filters = { ...this.props.filters }
         if (key === 'purity') {
@@ -171,10 +170,10 @@ class Component extends React.Component {
                     return (
                         <>
                             {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "20px" }}>
-                                <Grid item lg={3} xs={3}><div className="rings_tabs">{val.tab1.header}&nbsp;<a
+                                <Grid item lg={3} xs={12}><div className="rings_tabs">{val.tab1.header}&nbsp;<a
                                     onClick={this.handleOpen}
                                     className="my-ringsize">Size Guide </a></div></Grid>
-                                <Grid item lg={9} xs={9}>
+                                <Grid item lg={9} xs={12}>
                                     {arr.length > 0 ?
                                         <>
                                             <div className={classes.pagination} style={{ overflow: "hidden" }}>
@@ -213,8 +212,8 @@ class Component extends React.Component {
                             </Grid> : ""}
                             {arr2.length > 0 ?
                                 <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
-                                    <Grid item lg={3} xs={3}><div className="rings_tabs">{val.tab2.header}</div></Grid>
-                                    <Grid item lg={9} xs={9}>
+                                    <Grid item lg={3} xs={12}><div className="rings_tabs">{val.tab2.header}</div></Grid>
+                                    <Grid item lg={9} xs={12}>
                                         <Grid container spacing={12} lg={12}>
                                             {arr2.map((val, i) => {
                                                 var kv = val
@@ -232,7 +231,7 @@ class Component extends React.Component {
                                                             {/* {this.imageRender(val)} */}
                                                             <span id={val} className={`tabs-contants ${classes.normalfonts}`}>{arrPurity}</span>
                                                         </button>
-                                                        <div className={this.state.purity === val ? "rings_tabsvls_active" : "rings_tabsvls"}>{arrColor}</div>
+                                                        <div className={this.state.purity === val ? `rings_tabsvls_active ${classes.tabs_values_font}` : `rings_tabsvls ${classes.tabs_values_font}`}>{arrColor}</div>
                                                     </Grid>
                                                 )
                                             }
@@ -241,9 +240,9 @@ class Component extends React.Component {
                                     </Grid>
                                 </Grid> : ""}
 
-                            {val.tab3.Children.length > 0 ? <Grid container spacing={12} lg={12}>
-                                <Grid item lg={3} xs={3}><div className="rings_tabs">{val.tab3.header}</div></Grid>
-                                <Grid item lg={9} xs={9}>
+                            {val.tab3.Children.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
+                                <Grid item lg={3} xs={12}><div className="rings_tabs">{val.tab3.header}</div></Grid>
+                                <Grid item lg={9} xs={12}>
                                     <Grid container spacing={12} lg={12}>
                                         {val.tab3.Children.map((val, i) => {
                                             return (
@@ -279,20 +278,25 @@ class Component extends React.Component {
     handleChangeIndex = index => {
         this.setState({ value: index });
     };
-    handle = panel => (event, expanded) => {
-        this.setState({
-            expanded: expanded ? panel : false,
-        });
-    };
+    // handle = panel => (event, expanded) => {
+    //     this.setState({
+    //         expanded: expanded ? panel : false,
+    //     });
+    // };
 
     render() {
+        const { expanded } = this.state;
         return (
             <div>
                 <Hidden smDown>
                     {this.TabsComponent()}
                 </Hidden>
                 <Hidden mdUp>
-                <Container>{this.TabsComponent()}</Container>
+                <Container>
+                <ExpansionPanel style={{boxShadow:"0 4px 30px rgba(0, 0, 0, 0.05) ! important"}} expanded={expanded === "1"} >
+                {this.TabsComponent()}
+                </ExpansionPanel>
+                </Container>
                 </Hidden>
             </div>
         );

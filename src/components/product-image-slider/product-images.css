@@ -855,7 +855,7 @@ body {
 
 .css-5pjie5 {
     background:
-        rgb(242, 222, 188) none repeat scroll 0% 0% !important;
+        #f699a3 !important;
     text-transform: uppercase;
     display: inline-block !important;
     position: relative !important;
@@ -873,7 +873,7 @@ body {
     border-style: solid !important;
     border-width: 10px !important;
     border-color:
-        rgb(242, 222, 188) transparent !important;
+        #f699a3 transparent !important;
     position: absolute !important;
     top: 0px;
     right: -10px !important;
@@ -884,6 +884,32 @@ body {
     pointer-events: none;
     line-height: 20px !important;
     font-size: 12px !important;
+}
+
+.css-ocmcwm {
+    font-size: 1.4rem !important;
+    flex: 1;
+    font-weight: 300 !important;
+    margin-top: 5px !important;
+    -webkit-box-align: center;
+    display: flex;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 0 10px;
+}
+
+.css-kqsna2 {
+    margin-right: 15px !important;
+    font-size: 1.4rem !important;
+    color: rgba(241, 72, 128, 1) !important;
+    font-weight: 500;
+}
+
+.css-tg000w {
+    padding: 0 4px !important;
+    color: #9d9fa4 !important;
+    text-decoration: line-through;
+    font-weight: 500;
 }
 
 .responseve-carousel {
@@ -899,13 +925,12 @@ body {
 
 /*product-page-fixed-footer*/
 .product-page-fixed-footer {
-    height: 100px !important;
-    text-align: center;
-    background-color: #EBEAEA !important;
+    height: 80px !important;
     position: fixed !important;
     bottom: 0 !important;
     top: auto !important;
     width: 100% !important;
+    box-shadow: -3px 0px 10px#e9e9e9 !important;
 }
 
 .fixed-grid {
@@ -913,11 +938,12 @@ body {
 }
 
 .fixed_grid_price {
-    font-size: 13px !important;
-    color: #231535;
+    font-size: 1.1rem !important;
+    color: #394578;
     font-weight: 300;
     line-height: normal;
-    float: left;
+    float: left !important;
+    padding: 0 10px;
 }
 
 .product-footer-buynow {
@@ -1044,7 +1070,7 @@ body {
 }
 
 .rings_tabsvls {
-    font-size: 15px !important;
+    /* font-size: 1px !important; */
     color: #ccc !important;
     width: 100% !important;
     font-weight: 600;
@@ -1052,7 +1078,7 @@ body {
 }
 
 .rings_tabsvls_active {
-    font-size: 13px !important;
+    /* font-size: 13px !important; */
     color: #394578 !important;
     width: 100% !important;
     font-weight: 600;

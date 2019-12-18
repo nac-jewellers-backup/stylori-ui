@@ -117,7 +117,9 @@ const Components = props => {
     }
     if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
     else content = <Cart {...props} data={mapped} />
-    localStorage.setItem("a__c_t", mapped && mapped.length)
+    if (mapped !== undefined || mapped !== null) {
+        localStorage.setItem("a__c_t", mapped && mapped.length)
+    }
     return content
 }
 

@@ -16,7 +16,6 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 const Theme = (props) => {
-    debugger
     const { Globalctx } = React.useContext(GlobalContext)
     const theme_func = (props) =>{
         

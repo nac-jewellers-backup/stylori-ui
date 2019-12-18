@@ -69,7 +69,6 @@ const imageOnError = (event, res) => {
     e.target.onerror = null;
 
     const testImage = (URL, e) => {
-      debugger
       var tester = new Image();
       tester.src = URL;
       tester.onload = imageFound;
