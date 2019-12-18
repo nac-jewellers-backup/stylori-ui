@@ -8,7 +8,7 @@ class Addressdetails extends React.Component {
         const { setValues, values } = props;
         const cl = <input onChange={(e) => {
             setValues({
-                values,  ...values,
+                values, ...values,
                 checkValue1: !values.checkValue1
             })
         }} type='checkbox' checked={values.checkValue1} />
@@ -31,6 +31,8 @@ class Addressdetails extends React.Component {
                     <h5 className='title'> Shipping Address</h5>
                     {values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes.map((val_addrs1, index) =>
                         <>
+                            {localStorage.setItem("namesOf_first", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].firstname))}
+                            {localStorage.setItem("namesOf_last", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].lastname))}
                             <Grid item xs={12} lg={6} style={{ paddingRight: "15px" }}>
                                 <div className='card-adrs wd'
                                     // className={values.Id === val_addrs1.id || values.Id2 === val_addrs1.id ? "address_card_disabled" : ""}

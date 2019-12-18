@@ -11,10 +11,11 @@ const Register = (props) => {
 
 const RegisterComponent = (props) => {
     let email = localStorage.getItem("email") ? localStorage.getItem("email") : '';
-    const { values, setValues, handlers, data } = useRegister(() => props.changePanel(2));
+    const { values, setValues, handlers, data ,valuesedit} = useRegister(() => props.changePanel(2));
     // var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
     // var ccc = data.message ? data.message : ""
     const paths = window.location.pathname === "/account"
+
     const clear = () => {
         setValues({
             email: "",
@@ -125,7 +126,8 @@ const RegisterComponent = (props) => {
                             <Grid item lg={4} xs={4}>
                                 <SimpleSelect val={'1'} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                             </Grid>
-                            <Grid item lg={4} xs={4}>
+                            {!paths&&<>
+                                <Grid item lg={4} xs={4}>
                                 <Input
                                     margin="normal"
                                     variant="outlined"
@@ -156,7 +158,32 @@ const RegisterComponent = (props) => {
                                 // helperText=""
                                 />
                                 <label className='errtext'> {values.errortext && values.errortext.lastname}</label>
+                            </Grid></>}
+                            {paths&&<>
+                                <Grid item lg={4} xs={4}>
+                                <Input
+                                    margin="normal"
+                                    variant="outlined"
+                                    type="text"
+                                    name="firstname"
+                                    value={valuesedit.firstname}
+                                    placeholder="Enter FirstName*"
+                                    onChange={e => handlers.handleChangeedit('firstname', e.target.value)}
+                                    className='text-f'
+                                />
                             </Grid>
+                            <Grid item lg={4} xs={4}>
+                                <Input
+                                    margin="normal"
+                                    variant="outlined"
+                                    type="text"
+                                    name="lastname"
+                                    value={valuesedit.lastname}
+                                    placeholder="Enter LastName*"
+                                    onChange={e => handlers.handleChangeedit('lastname', e.target.value)}
+                                    className='text-f'
+                                />
+                            </Grid></>}
                         </Grid>
                         <div className='login-butn'>
                             {paths ? "" : <Button className='back-b' onClick={() => clear()} >Back</Button>}

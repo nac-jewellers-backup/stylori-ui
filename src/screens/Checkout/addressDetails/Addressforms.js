@@ -4,24 +4,19 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CheckForCod } from 'queries/productdetail';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 // window.cache = {}
+var obj = {}
+var delet = {}
+var addObjall = {}
 
 const Addressforms = (changePanel) => {
     // var regid = localStorage.getItem('regid') ? localStorage.getItem('regid') : ""
-    var obj = {}
-    var delet = {}
-    var addObjall = {}
     let value11 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : {}
-    let value12 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : {}
     var cont = localStorage.getItem('true') ? localStorage.getItem('true') : ""
     let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
-    // let addres_id = localStorage.getItem("addres_id") ? localStorage.getItem("addres_id") : ""
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
     let check_dlt = localStorage.getItem("check_dlt") ? localStorage.getItem("check_dlt") : ""
-    let changeaddr = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
     const [address, setAddress] = React.useState({})
-    const [pincods, setpincod] = React.useState({
-        pincod: ""
-    })
+    const [pincods, setpincod] = React.useState({ pincod: "" })
     const { loading: userloading, error: usererror, data: userdata, makeFetch: makeFetch } = useNetworkRequest('/adduseraddress', {}, false);
     const { loading: addresloading, error: addreserror, data: addresData, makeRequestCod: addresmakeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     const [values, setValues] = React.useState({
@@ -38,8 +33,7 @@ const Addressforms = (changePanel) => {
             contactno: "",
             addresstype: 1,
             errortext: {
-                pinerr: "",
-                pinerr1: "",
+                pinerr: "", pinerr1: "",
             },
         },
         addressTwo: {
@@ -54,10 +48,7 @@ const Addressforms = (changePanel) => {
             country_code: "",
             contactno: "",
             addresstype: 2,
-            errortext: {
-                pinerr: "",
-                pinerr1: "",
-            },
+            errortext: { pinerr: "", pinerr1: "" },
         },
         addrs: true,
         // addrs: true,
@@ -79,6 +70,7 @@ const Addressforms = (changePanel) => {
     const pathnames = window.location.pathname === "/account"
     // var stst = values.ref ? values.ref : ""
     debugger
+    const addressva = values && values.addressvalues&&values.addressvalues.length > 0
     useEffect(() => {
         debugger
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
@@ -91,14 +83,14 @@ const Addressforms = (changePanel) => {
                 ...values
             })
         }
-    }, [addresData, userdata])
+    }, [addresData, userdata, addressva])
     React.useEffect(() => {
         debugger
         if (user_id.length > 0) {
             obj['userprofileId'] = user_id
             addresmakeRequestCod(obj);
         }
-    }, [userdata])
+    }, [userdata,addressva])
     React.useEffect(() => {
 
         if (user_id.length > 0) {
@@ -221,10 +213,10 @@ const Addressforms = (changePanel) => {
         // values["edit_ref"] = true
         // window.location.reload(); 
     }
-    const selectaddreses = (val_addrs, num) => { 
+    const selectaddreses = (val_addrs, num) => {
         // var addressOne = val_addrs
         // var addressTwo = values.addressTwo
- 
+
 
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
         if (values.checkValue1 === true) {
