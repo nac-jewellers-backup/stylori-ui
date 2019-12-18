@@ -86,9 +86,10 @@ class Header extends Component {
     scrolling = () => {
         if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
             document.getElementById("headerContainer").style.position = "fixed";
+            document.getElementById("headerContainerTop").style.height = "74px";
             document.getElementById("headerContainer").style.background = "#fff";
             document.getElementById("headerContainer").style.zIndex = "10000";
-            document.getElementById("headerContainer").style.boxShadow = "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)";
+            document.getElementById("headerContainer").style.boxShadow = "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)";
             document.getElementById("logoImage").style.width = "50%";
             document.getElementById("headerContainer").style.height = "55px";
             document.getElementById("logoDiv1").style.padding = "0px";
@@ -100,6 +101,7 @@ class Header extends Component {
             document.getElementById("headerContainer").style.position = "inherit";
             document.getElementById("headerContainer").style.background = "#fff";
             document.getElementById("headerContainer").style.zIndex = "10000";
+            document.getElementById("headerContainerTop").style.height = "0px";
             document.getElementById("headerContainer").style.boxShadow = "none";
             document.getElementById("logoImage").style.width = "100%";
             document.getElementById("headerContainer").style.height = "auto";
@@ -178,6 +180,9 @@ class Header extends Component {
                                         </Grid>
                                     </Grid>
                                 </Container>
+                            </Grid>
+                            <Grid container id="headerContainerTop" >
+
                             </Grid>
                         </AppBar>
                     </div>
