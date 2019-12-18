@@ -12,35 +12,35 @@ class FaqsTitle extends React.Component {
         return (
             <Grid style={{ marginTop: "4%" }}>
                 <Grid item xs={12} class="main">
-                    <NavLink to={"/faqs"} activeClassName={'active'} style={{ color: 'blue', textDecoration: "none" }} >
+                    <NavLink to={"/faqs"} activeClassName={'active'} style={{ color: '#394578', textDecoration: "none" }} >
                         <Grid className="router">
                             Frequently Asked Questions
                    </Grid>
                     </NavLink>
                 </Grid>
                 <Grid item xs={12} class="main">
-                    <NavLink to={"/deliveryreturns"} activeClassName={'active'} style={{ color: 'blue', textDecoration: "none" }} >
+                    <NavLink to={"/deliveryreturns"} activeClassName={'active'} style={{ color: '#394578', textDecoration: "none" }} >
                         <Grid className="router">
                             Shipping And Returns
                    </Grid>
                     </NavLink>
                 </Grid>
                 <Grid item xs={12} class="main">
-                    <NavLink to={"/productcare"} activeClassName={'active'} style={{ color: 'blue', textDecoration: "none" }} >
+                    <NavLink to={"/productcare"} activeClassName={'active'} style={{ color: '#394578', textDecoration: "none" }} >
                         <Grid className="router">
                             Product Care
                    </Grid>
                     </NavLink >
                 </Grid>
                 <Grid item xs={12} class="main">
-                    <NavLink to={"/privacypolicy"} activeClassName={'active'} style={{ color: 'blue', textDecoration: "none" }} >
+                    <NavLink to={"/privacypolicy"} activeClassName={'active'} style={{ color: '#394578', textDecoration: "none" }} >
                         <Grid className="router">
                             Privacy & Cookie Policy
                    </Grid>
                     </NavLink>
                 </Grid>
                 <Grid item xs={12} class="main">
-                    <NavLink to={"/termsconditions"} activeClassName={'active'} style={{ color: 'blue', textDecoration: "none" }} >
+                    <NavLink to={"/termsconditions"} activeClassName={'active'} style={{ color: '#394578', textDecoration: "none" }} >
                         <Grid className="router">
                             Terms & Conditions
                    </Grid>

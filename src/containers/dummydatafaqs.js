@@ -23,7 +23,7 @@ export const
             },
             "data": [
                 {
-                    img: FlowerDimon,
+                    img: "https://alpha-assets.stylori.com/images/static/stylori_faq.png",
                 },
 
             ]
@@ -69,6 +69,73 @@ export const
         ]
     }
 
+    export const
+    deliveryreturns = {
+        "carouselTop": {
+            "setting": {
+                dots: false,
+                infinite: false,
+                autoplay: false,
+                speed: 1000,
+                fade: false,
+                arrows: false,
+                arrowsImg: false,
+                dotsClass: "slickdev",
+                accessibility: false,
+                centerMode: false,
+                focusOnSelect: false,
+                pauseOnHover: false,
+                pauseOnDotsHover: false,
+                pauseOnFocus: false,
+                swipe: false
+            },
+            "data": [
+                {
+                    img: "https://alpha-assets.stylori.com/images/static/stylori_shippping.png",
+                },
+
+            ]
+        },
+        "faqs": [
+            {
+                "Title": "Frequently asked Questions",
+                "font": "h2",
+                "accordian": [
+                    {
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                    {
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                    {
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                ],
+            },
+            {
+                "Title": "Help",
+                "font": "h4",
+                "accordian": [
+                    {
+                        SubTitle: "arun",
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                    {
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                    {
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                ],
+            }
+        ]
+    }
 
 export const
     ProductCare = {
@@ -148,3 +215,141 @@ export const
             }
         ]
     }
+
+    export const
+    privacypolicy = {
+        "carouselTop": {
+            "setting": {
+                dots: false,
+                infinite: false,
+                autoplay: false,
+                speed: 1000,
+                fade: false,
+                arrows: false,
+                arrowsImg: false,
+                dotsClass: "slickdev",
+                accessibility: false,
+                centerMode: false,
+                focusOnSelect: false,
+                pauseOnHover: false,
+                pauseOnDotsHover: false,
+                pauseOnFocus: false,
+                swipe: false
+            },
+            "data": [
+                {
+                    img: "https://alpha-assets.stylori.com/images/static/stylori_faq.png",
+                },
+
+            ]
+        },
+        "faqs": [
+            {
+                "Title": "Frequently asked Questions",
+                "font": "h2",
+                "accordian": [
+                    {
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                    {
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                    {
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                ],
+            },
+            {
+                "Title": "Help",
+                "font": "h4",
+                "accordian": [
+                    {
+                        SubTitle: "arun",
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                    {
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                    {
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                ],
+            }
+        ]
+    }
+    
+
+    export const
+    termsconditions = {
+        "carouselTop": {
+            "setting": {
+                dots: false,
+                infinite: false,
+                autoplay: false,
+                speed: 1000,
+                fade: false,
+                arrows: false,
+                arrowsImg: false,
+                dotsClass: "slickdev",
+                accessibility: false,
+                centerMode: false,
+                focusOnSelect: false,
+                pauseOnHover: false,
+                pauseOnDotsHover: false,
+                pauseOnFocus: false,
+                swipe: false
+            },
+            "data": [
+                {
+                    img: "https://alpha-assets.stylori.com/images/static/stylori_faq.png",
+                },
+
+            ]
+        },
+        "faqs": [
+            {
+                "Title": "Frequently asked Questions",
+                "font": "h2",
+                "accordian": [
+                    {
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                    {
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                    {
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                ],
+            },
+            {
+                "Title": "Help",
+                "font": "h4",
+                "accordian": [
+                    {
+                        SubTitle: "arun",
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                    {
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                    {
+                        Questions: "What is Stylori ?",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                    },
+                ],
+            }
+        ]
+    }
+    

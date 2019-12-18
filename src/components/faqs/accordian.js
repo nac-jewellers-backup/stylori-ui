@@ -24,24 +24,25 @@ const useStyles = makeStyles(theme => ({
     },
     titleColor: {
         color: '#ed1165',
-        fontWeight: 600,
-        marginTop: "3%",
-        fontSize: "21px",
+        fontWeight: 500,
+        // marginTop: "3%",
+        fontSize: "22px",
         fontFamily: "Roboto",
-        marginBottom: "10px"
+        // paddingBottom: "10px"
+        
     },
     titleColorsmall: {
         color: '#ed1165',
-        fontWeight: 600,
-        marginTop: "3%",
-        fontSize: "14px",
+        fontWeight: 500,
+        // marginTop: "3%",
+        fontSize: "16px",
         fontFamily: "Roboto",
-        marginBottom: "10px"
+        paddingTop: "10px"
     },
     details: {
         padding: '10px 0px',
         borderTop: "0px",
-        fontWeight: 600,
+        fontWeight: 500,
         fontSize: "14px"
     },
 

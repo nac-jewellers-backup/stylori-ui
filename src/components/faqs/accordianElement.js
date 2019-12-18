@@ -28,24 +28,25 @@ const useStyles = makeStyles(theme => ({
     },
     titleColor: {
         color: '#ed1165',
-        fontWeight: 600,
+        fontWeight: 500,
         marginTop: "3%",
-        fontSize: "21px",
+        fontSize: "22px",
         fontFamily: "Roboto",
-        marginBottom: "10px"
+        paddingTop:"10px",
+        
     },
     titleColorsmall: {
         color: '#ed1165',
-        fontWeight: 600,
+        fontWeight: 500,
         marginTop: "3%",
-        fontSize: "14px",
+        fontSize: "16px" ,
         fontFamily: "Roboto",
-        marginBottom: "10px"
+        paddingTop:"10px",
     },
     details: {
         color:"#394578",
         borderTop: "0px",
-        fontWeight: 600,
+        fontWeight: 500,
         fontSize: "14px"
     },
     listeditems:{
@@ -66,20 +67,20 @@ export default function AccordianElement(props) {
     };
     return(
         
-        <Grid className={classes.root} style={{marginBottom:"10px"}}>
+        <Grid className={classes.root}>
                     <List>
                         <ListItem style={{padding:"0px"}} autoFocus={false} className={classes.listeditems} button onClick={handleClick}>
                             <Typography style={{width:"100%"}} className={classes.details} >{value.Questions}</Typography>
-                           <List style={{float:"end"}}> { open ? <ExpandLess /> : <ExpandMore />}</List>
+                           <List style={{float:"end",display:"flex"}}> { open ? <ExpandLess /> : <ExpandMore />}</List>
                         </ListItem>
                         <Collapse in={open} timeout="auto" unmountOnExit>
                             <List component="div" disablePadding>
-                                <ListItem style={{paddingLeft:"0px",paddingBottom:"0px"}} button className={classes.listeditems}>
+                                <ListItem style={{paddingLeft:"0px",paddingBottom:"0px",paddingTop:"0px"}} button >
                                     <List style={{ padding: "0px" }}>
                                         <Grid container style={{ display: "inline-block !important" }} className={classes.listeditems}>
                                             <Grid item>
                                                 {value.SubTitle &&
-                                                    <Typography style={{ fontWeight: 700, color: "#394578", fontSize: "13px", paddingBottom: "12px" }}>
+                                                    <Typography style={{ fontWeight: 500, color: "#394578", fontSize: "16px", paddingBottom: "8px",paddingTop:"8px" }}>
                                                         {value.SubTitle}
                                                     </Typography>
                                                 }
