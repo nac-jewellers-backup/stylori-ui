@@ -221,7 +221,7 @@ const Addressforms = (changePanel) => {
         // values["edit_ref"] = true
         // window.location.reload(); 
     }
-    const selectaddreses = (val_addrs, num) => {
+    const selectaddreses = (val_addrs, num) => { 
         // var addressOne = val_addrs
         // var addressTwo = values.addressTwo
 
