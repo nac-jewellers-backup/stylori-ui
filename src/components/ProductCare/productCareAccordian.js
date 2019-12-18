@@ -30,7 +30,8 @@ const useStyles = makeStyles(theme => ({
         marginTop: "3%",
         fontSize: "22px",
         fontFamily: "Roboto",
-        marginBottom: "10px"
+        paddingTop:"10px",
+
     },
     titleColorsmall: {
         color: '#ed1165',
@@ -38,13 +39,15 @@ const useStyles = makeStyles(theme => ({
         marginTop: "3%",
         fontSize: "16px",
         fontFamily: "Roboto",
-        marginBottom: "10px"
+        paddingTop:"10px",
+
     },
     details: {
         color:"#394578",
         borderTop: "0px",
         fontWeight: 500,
-        fontSize: "14px"
+        fontSize: "14px",
+        padding:"20px 0px"
     },
     icon:{
         height:"10px",
@@ -97,8 +100,8 @@ console.log(value)
     };
     return(
         
-        <Grid className={classes.root} style={{marginBottom:"10px"}} >
-                    <List style={{paddingBottom:"4px",paddingTop:"4px"}} >
+        <Grid className={classes.root}  >
+                    <List style={{padding:"0px"}} >
                         <ListItem style={{padding:"0px"}}  autoFocus={false} className={classes.listeditems} button onClick={handleClick}>
                             <Typography style={{width:"100%"}} className={classes.details} >{value.Questions}</Typography>
                            <List style={{float:"end"}}> { open ? checkerOpen():checkerClose()}</List>

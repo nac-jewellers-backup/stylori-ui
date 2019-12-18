@@ -62,7 +62,7 @@ export default function Accordian(props) {
                 <Typography className={val.font === "h2" ? classes.titleColor : classes.titleColorsmall} gutterBottom>{val.Title}</Typography>
             </Grid>
             {val.accordian.map((value, index) =>
-                <AccordianElement value={value} key={index} />
+                <AccordianElement value={value} accordian ={val.accordianIcon} key={index} />
             )}
         </Grid>)
         }</>
