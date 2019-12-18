@@ -32,6 +32,7 @@ export const
             {
                 "Title": "Frequently asked Questions",
                 "font": "h2",
+                "accordianIcon":"Arrows",
                 "accordian": [
                     {
                         Questions: "What is Stylori ?",
@@ -50,6 +51,8 @@ export const
             {
                 "Title": "Help",
                 "font": "h4",
+                "accordianIcon":"Arrows",
+
                 "accordian": [
                     {
                         SubTitle: "arun",

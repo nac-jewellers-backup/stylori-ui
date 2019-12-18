@@ -18,7 +18,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import { faqsStylori } from "../../containers/dummydatafaqs";
-
+import Plus from '../../../src/assets/plus';
+import Minus from '../../../src/assets/minus';
 
 
 const useStyles = makeStyles(theme => ({
@@ -47,7 +48,13 @@ const useStyles = makeStyles(theme => ({
         color:"#394578",
         borderTop: "0px",
         fontWeight: 500,
-        fontSize: "14px"
+        fontSize: "14px",
+        padding:"12px 0px"
+    },
+    icon:{
+        height:"10px",
+        width:"10px",
+        marginRight:"3px",
     },
     listeditems:{
         '&:hover':{
@@ -59,9 +66,35 @@ const useStyles = makeStyles(theme => ({
 
 export default function AccordianElement(props) {
     const value = props.value;
+    
+    const checkerOpen = ()=>{
+        
+        if(props.accordian==="Plus"){
+           return <Minus className={classes.icon} /> 
+            }
+        
+        else if (props.accordian==="Arrows"){
+            return <ExpandLess /> 
+        }
+        else{
+            return ""
+        }
+    }
+    const checkerClose = ()=>{
+        
+        if(props.accordian==="Plus"){
+           return <Plus className={classes.icon} /> 
+            }
+        
+        else if (props.accordian==="Arrows"){
+            return <ExpandMore /> 
+        }
+        else{
+            return ""
+        }
+    }
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-
     const handleClick = () => {
         setOpen(!open);
     };
@@ -69,9 +102,10 @@ export default function AccordianElement(props) {
         
         <Grid className={classes.root}>
                     <List>
-                        <ListItem style={{padding:"0px"}} autoFocus={false} className={classes.listeditems} button onClick={handleClick}>
+                        
+                        <ListItem style={{padding:"0px"}} autoFocus={false} className={classes.listeditems}  button onClick={handleClick}>
                             <Typography style={{width:"100%"}} className={classes.details} >{value.Questions}</Typography>
-                           <List style={{float:"end",display:"flex"}}> { open ? <ExpandLess /> : <ExpandMore />}</List>
+                           <List style={{float:"end",display:"flex"}}> { open ? checkerOpen():checkerClose()}</List>
                         </ListItem>
                         <Collapse in={open} timeout="auto" unmountOnExit>
                             <List component="div" disablePadding>
