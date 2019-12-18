@@ -12,34 +12,34 @@ class faqsHelp extends React.Component{
             <Grid>
                  <Grid>
                     <Grid item xs={12} class="submain">
-                    <Typography style={{fontWeight:"bold",fontSize:"18px"}} gutterBottom>We're Here To Help?</Typography>
+                    <Typography style={{fontSize:"18px"}} gutterBottom>We're Here To Help?</Typography>
                     </Grid>
                     <Grid item xs={12}>
                         <span item xs={3} class="phone" >
 
                         </span>
 
-                        <a href="#" style={{color:'#337ab7',fontSize:"0.8em"}}>1800 102 0330</a>
+                        <a href="#" style={{color:'#337ab7',fontSize:"13px",paddingLeft:"6px"}}>1800 102 0330</a>
 
                     </Grid>
                     <Grid item xs={12} >
                         <span item xs={3} class="whatsapp">
 
                         </span>
-                        <p style={{color:"#394578",fontSize:"0.8em"}}>+91 99526 25252</p>
+                        <p style={{color:"#394578",fontSize:"13px"}}><span style={{paddingLeft:"6px",paddingTop:"14px"}}>+91 99526 25252</span></p>
                     </Grid>
                     <Grid item xs={12} >
                         <span item xs={3} class="mail">
 
                         </span>
-                        <a href="#" style={{color:"red",fontSize:"0.8em"}}>hello@stylori.com</a>
+                        <a href="#" style={{color:"red",fontSize:"13px",paddingLeft:"6px"}}>hello@stylori.com</a>
                     </Grid>
                     <br></br>
                     <Grid item xs={12} >
                         <span item xs={3} class="chat">
 
                         </span>
-                        <a href="#" style={{color:"red",fontSize:"0.8em"}}>Start live chat </a>
+                        <a href="#" style={{color:"red",fontSize:"13px",paddingLeft:"6px"}}>Start live chat </a>
                     </Grid>
                     
                 </Grid>

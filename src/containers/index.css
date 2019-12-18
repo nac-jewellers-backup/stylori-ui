@@ -79,7 +79,7 @@
 }
 .mainContent{
   width: 82%;
-  padding: 15px;
+  padding: 15px 25px 15px 25px;
 }
 .sideContent{
   width: 15%;
@@ -112,7 +112,7 @@
 @media only screen and (max-width:2560px) and (min-width:1441px){
   .mainContent{
     width: 70%;
-    padding: 40px;
+    padding: 13px 50px 40px 50px;
 
   }
   .sideContent{
@@ -135,8 +135,8 @@
 width: 100%;
   }
   .mainContent{
-    width: 80%;
-    padding: 20px;
+    width: 75%;
+    padding: 18px 20px 20px 40px;
 
   }
   .sideContent{
@@ -206,7 +206,7 @@ width: 100%;
   }
   .mainContent{
     width: 75%;
-    padding: 10px;
+    padding: 14px 10px 10px 30px;
   }
   .fiftyImg{
     width: 50%;
@@ -236,7 +236,7 @@ width: 100%;
   }
   .mainContent{
     width:100%;
-    padding: 10px;
+    padding: 10px 15px 10px 15px;
 
     height: auto;
   }
