@@ -210,7 +210,7 @@ export const TabsProvider = (props) => {
         // filters['defaultVariants']['skuSize'] = data.data.allTransSkuLists.nodes[0].skuSize
         // setFilters(filters)
         var variants = filters['defaultVariants']
-        var metalColors = filters.defaultVariants.metalColor.length > 0 ? { productColor: filters.defaultVariants.metalColor } : null;
+        var metalColors = filters &&filters.defaultVariants &&filters.defaultVariants.metalColor &&filters.defaultVariants.metalColor.length &&filters.defaultVariants.metalColor.length > 0 ? { productColor: filters.defaultVariants.metalColor } : null;
         var ProductVariants = { conditionfilter: { 'productId': filters["productId"], ...variants } }
         var ConditionimagesMetalColor = { conditionImage: metalColors }
         variables = { ...ProductVariants, ...ConditionimagesMetalColor }

@@ -6,7 +6,7 @@ import Cart from 'screens/Stylori/Cart'
 import Account from 'screens/Stylori/accounts'
 import Checkout from 'screens/Stylori/Checkout'
 import HomePageStylori from 'screens/Stylori/HomePage'
-
+import { GlobalContext } from 'context'
 import Faqs from 'screens/Stylori/faqs'
 import Register from 'screens/Checkout/loginRegister/register';
 import UserLogin from '../components/LoginAndRegister/Login';
@@ -29,6 +29,11 @@ browserHistory.listen((location, action) => {
     window.scrollTo(0, 0);
 });
 export const RouterApp = (props) => {
+    const { Globalctx } = React.useContext(GlobalContext)
+    const func_location_silver = () =>{
+        var loc = window.location.pathname.split('/')[1].split('-').filter(val=>{if(val==='silver') return val})
+        return loc[0]
+    }
     console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
     return (
         <Switch history={browserHistory}>
@@ -38,12 +43,12 @@ export const RouterApp = (props) => {
             <Route key="Faqs" component={Faqs} exact path={routes.Faqs} />
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
 
-            {(props.location.pathname !== "/cart" && props.location.pathname !== "/account" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && props.location.pathname !== "/silverjewellery" && props.location.pathname !== "/silver-jewellery") && 
+            {(props.location.pathname !== "/cart" && props.location.pathname !== "/account" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && Globalctx.pathName === false) && 
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />
                 
                 }
              {
-                 (props.location.pathname === "/silverjewellery" || props.location.pathname === "/silver-jewellery") &&
+                 (Globalctx.pathName === true) &&
                  <Route key="silverListingpage" component = {SilverListingPage} exact path={routes.SilverListingPage} />
                  }
             <Route exact component={PricingPage} path={`/:productCategory/:productType/:material/:productName`} />

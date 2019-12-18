@@ -89,12 +89,12 @@ const injectUrl_url_construct =  (url, baseUi, screen_res) => {
     var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
     var resolution =     screen_width_type(screen_res)
     var _resolutions = `${resolution}X${resolution}`
-    var url_split = url.imageUrl.split('/')
-    var extension_split = url_split[url_split.length-1]
-    var browser_type_append = extension_split.split('\.')[0].concat(`${browser_type.browser_type}`)
-    url_split[url_split.length-1] = browser_type_append 
-     url_split.splice(2, 0, _resolutions);
-     var url_construct = url_split.join().replace(/\,/g,'/')
+    var url_split = url && url.imageUrl && url.imageUrl.split('/')
+    var extension_split = url_split && url_split.length && url_split[url_split.length-1]
+    var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type.browser_type}`)
+    if(url_split && url_split.length) url_split[url_split.length-1] = browser_type_append 
+    url_split && url_split.splice(2, 0, _resolutions);
+     var url_construct = url_split && url_split.join().replace(/\,/g,'/')
     var img_url = `${baseUi}${url_construct}`
     return img_url
 
@@ -173,7 +173,6 @@ const generatedimondClarity = (val) => {
     }))
 }
 const generateShipsBy = (readytoship, vendorDeliveryTime) => {
-    debugger
     var isReadytoShip = readytoship
     var numberOfDays = vendorDeliveryTime
     var date = moment().format(' h a')

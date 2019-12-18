@@ -63,7 +63,6 @@ const Provider = (props) => {
         }
     }, [allorder, allorderdata])
     useEffect(() => {
-        debugger
         const wishlistdatas = allorder ? wishlistDATA && wishlistDATA.data && wishlistDATA.data.allUserWhislists && wishlistDATA.data.allUserWhislists.nodes : ""
         if (wishlistdatas && wishlistdatas.length > 0) {
             objwishlist["wishlistdata"] = wishlistDATA.data.allUserWhislists

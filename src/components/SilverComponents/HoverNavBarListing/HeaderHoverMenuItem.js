@@ -10,8 +10,10 @@ function HeaderHoverMenuItem(props) {
   const [activetab, setActivetab] = React.useState("earings");
   const [opens, setOpens] = React.useState(props.opened);
   const [target, setTarget] = React.useState(props.targetopened);
-  const { onMouseLeave, onMouseOver } = props;
+  const { onMouseLeave, onMouseOver, onClick } = props;
   const classes = useStyles();
+  const mapper = props.filters ? props.listHoverItem : props.listHoverItem['menuOne']
+  const classHover = props.filters ? classes.mouseOverPopoverfilters : classes.mouseOverPopoverHeader
   // console.log(props.listHoverItem);
   // onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}
   // listHoverItem
@@ -19,25 +21,29 @@ function HeaderHoverMenuItem(props) {
     setOpens(props.opened);
     setTarget(props.targetopened)
   });
+  // top: '18px !important',
   return (
     <Grid container className={classes.root}>
       <Grid container item xs={12} className={classes.paperdiv} >
-        <Popper open={opens} anchorEl={target} transition className={classes.mouseOverPopover}>
+        <Popper open={opens} anchorEl={target} transition className={`${classes.mouseOverPopover} ${classHover}`}>
           <List component="nav" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
 
             {
               (props.listHoverItem !== undefined) &&
 
-              (props.listHoverItem['menuOne']).map(menuList =>
+              (mapper).map(menuList =>
+
                 (
 
-                  <ListItem component="li"
-                    onClick={() => { window.location.href = '/' + menuList.url }}
+                  <ListItem component="li" name={menuList}
+                    onClick={(e) => props.onchoosetype(menuList)}
                   >
 
                     <ListItemText variant >
 
-                      {menuList.title}
+                      {menuList.title ?
+                        menuList.title :
+                        menuList}
                     </ListItemText>
 
                   </ListItem>

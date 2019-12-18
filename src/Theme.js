@@ -16,12 +16,11 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 const Theme = (props) => {
-    debugger
     const { Globalctx } = React.useContext(GlobalContext)
     const theme_func = (props) =>{
         
       
-      if(Globalctx.pathName === "/silverjewellery" || Globalctx.pathName === "/silver-jewellery"){
+      if(Globalctx.pathName === true ){
         return silverThemes
       }
       else{

@@ -110,7 +110,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
       //              2560w
 
       //  "
-      onError={(e) => imageOnError(e, props.data.imageResolution)}
+      // onError={(e) => imageOnError(e, props.data.imageResolution)}
       title={props.data.title}
       onMouseOver={() => {
         callmouseover()

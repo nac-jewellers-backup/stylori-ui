@@ -78,7 +78,6 @@ const Addressforms = (changePanel) => {
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     const pathnames = window.location.pathname === "/account"
     // var stst = values.ref ? values.ref : ""
-    debugger
     useEffect(() => {
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
         var adrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes : null
@@ -165,7 +164,6 @@ const Addressforms = (changePanel) => {
     }
 
     const handleSubmit = (e) => {
-        debugger
         // if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length < 5) {
         var addressOne = values.addressOne
         var addressTwo = values.addressTwo
@@ -245,7 +243,6 @@ const Addressforms = (changePanel) => {
             return false
         }
         if (values.checkValue1 === false) {
-            debugger
             if (num === 2) {
                 values["Id"] = val_addrs && val_addrs.id
                 if (val_addrs && val_addrs.firstname.length > 0) {

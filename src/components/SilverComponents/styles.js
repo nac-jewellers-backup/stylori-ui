@@ -41,9 +41,15 @@ export const useStyles = makeStyles(theme => ({
   root: {
     width: '100%'
   },
+  mouseOverPopoverHeader:{
+    top: '18px !important',
+  },
+  mouseOverPopoverfilters:{
+    top: '0px !important',
+  },
   mouseOverPopover: {
     zIndex: 1000,
-    top: '18px !important',
+    
     backgroundColor: theme.palette.secondary.main,
     color: 'white',
     '& span': {
