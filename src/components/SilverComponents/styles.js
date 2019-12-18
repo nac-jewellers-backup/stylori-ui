@@ -80,7 +80,6 @@ export const styles = theme => ({
     fontFamily: 'Roboto',
     fontWeight: 600,
     color: "#6e6d72",
-    paddingBottom: "10px",
     '&:hover': {
       color: theme.palette.secondary.dark,
       paddingBottom: "2px",
@@ -140,7 +139,7 @@ export const useStyles = makeStyles(theme => ({
   },
   mouseOverPopover: {
     zIndex: 1000,
-    top: '25px !important',
+    top: '17px !important',
     backgroundColor: theme.palette.background.fade,
     color: 'white',
     '& span': {
