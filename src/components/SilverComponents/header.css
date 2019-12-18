@@ -321,7 +321,11 @@
 }
 
 .logoDiv1 {
-  padding: 3%;
+  padding-Top: 2%;
+}
+
+.titleTop {
+  /* padding-top: 10px; */
 }
 
 .searchmobile {

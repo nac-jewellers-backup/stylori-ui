@@ -48,6 +48,9 @@ class Header extends Component {
         }
         this.topZero = React.createRef();
     }
+    componentDidMount() {
+        window.addEventListener("scroll", this.scrolling);
+    }
     handleDrawerOpen = () => {
         this.setState({ open: true })
     }
@@ -80,6 +83,32 @@ class Header extends Component {
         }
 
     }
+    scrolling = () => {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+            document.getElementById("headerContainer").style.position = "fixed";
+            document.getElementById("headerContainer").style.background = "#fff";
+            document.getElementById("headerContainer").style.zIndex = "10000";
+            document.getElementById("headerContainer").style.boxShadow = "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)";
+            document.getElementById("logoImage").style.width = "50%";
+            document.getElementById("headerContainer").style.height = "55px";
+            document.getElementById("logoDiv1").style.padding = "0px";
+            document.getElementById("containerTitle").style.height = "55px";
+            document.getElementById("fullcontainer").style.height = "55px";
+            document.getElementById("titleTop").style.marginTop = "0px"
+            // margin-top: 69px;
+        } else {
+            document.getElementById("headerContainer").style.position = "inherit";
+            document.getElementById("headerContainer").style.background = "#fff";
+            document.getElementById("headerContainer").style.zIndex = "10000";
+            document.getElementById("headerContainer").style.boxShadow = "none";
+            document.getElementById("logoImage").style.width = "100%";
+            document.getElementById("headerContainer").style.height = "auto";
+            document.getElementById("titleTop").style.marginTop = "12px";
+            document.getElementById("containerTitle").style.height = "auto";
+            document.getElementById("logoDiv1").style.paddingTop = "2%";
+            document.getElementById("fullcontainer").style.height = "auto";
+        }
+    }
 
     render() {
 
@@ -90,7 +119,6 @@ class Header extends Component {
             <div>
                 <Hidden smDown >
                     {/* <HeaderNotification headerTransition={() => { this.headerTransitions() }} /> */}
-
                     <div className="header-appbar-sticky1" id='headerDiv'>
                         <AppBar className="header-appbarsilver1" id="topNav">
                             <Container maxWidth="lg">
@@ -112,44 +140,46 @@ class Header extends Component {
                                     </Grid>
                                 </Grid>
                             </Container>
-                            <Container maxWidth="lg" >
-                                <Grid container spacing={12}  >
-                                    <Grid item xs={3} className="logoImgHeader1">
-                                        <div className="logoDiv1">
-                                            <img className={`img`} src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
-                                        </div>
-                                    </Grid>
-                                    <Grid container item xs={9} justify="flex-end" alignItems="center" className={`header-navbar-list1 ${classes.headerNavbarList}`}
-                                        onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false, targetopen: null }) }}
-                                    >
-                                        <Grid item xs={12} style={{ marginTop: "10px" }}>
-                                            <nav
-                                            >
+                            <Grid container id="headerContainer" >
+                                <Container maxWidth="lg" >
+                                    <Grid container spacing={12} id="fullcontainer" >
+                                        <Grid item xs={3} className="logoImgHeader1">
+                                            <div id="logoDiv1" className="logoDiv1">
+                                                <img id="logoImage" className={`img`} src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                            </div>
+                                        </Grid>
+                                        <Grid container item xs={9} id={"containerTitle"} justify="flex-end" alignItems="center" className={`header-navbar-list1 ${classes.headerNavbarList}`}
+                                            onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false, targetopen: null }) }}
+                                        >
+                                            <Grid item xs={12} className="titleTop" id={"titleTop"} >
+                                                <nav
+                                                >
+                                                    {
+                                                        (menuListHeader.map(listName => {
+                                                            return (
+                                                                <a href={listName} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, targetopen: event.currentTarget, Checked: true, listHoverItem: listName.replace(/ +/g, "") }) }}>{listName}</a>
+                                                            )
+
+                                                        }))
+                                                    }
+                                                </nav>
                                                 {
-                                                    (menuListHeader.map(listName => {
-                                                        return (
-                                                            <a href={listName} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, targetopen: event.currentTarget, Checked: true, listHoverItem: listName.replace(/ +/g, "") }) }}>{listName}</a>
-                                                        )
 
-                                                    }))
+                                                    this.state.Menuopen && menuLists[this.state.listHoverItem] ?
+                                                        <HeaderHoverMenuItem Checked={this.state.Checked} tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
+                                                            onMouseOver={(event) => { this.setState({ Menuopen: true }) }}
+                                                            onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false, targetopen: null }) }}
+                                                            opened={this.state.Menuopen} targetopened={this.state.targetopen}
+
+                                                        />
+                                                        :
+                                                        ''
                                                 }
-                                            </nav>
-                                            {
-
-                                                this.state.Menuopen && menuLists[this.state.listHoverItem] ?
-                                                    <HeaderHoverMenuItem Checked={this.state.Checked} tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
-                                                        onMouseOver={(event) => { this.setState({ Menuopen: true }) }}
-                                                        onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false, targetopen: null }) }}
-                                                        opened={this.state.Menuopen} targetopened={this.state.targetopen}
-
-                                                    />
-                                                    :
-                                                    ''
-                                            }
+                                            </Grid>
                                         </Grid>
                                     </Grid>
-                                </Grid>
-                            </Container>
+                                </Container>
+                            </Grid>
                         </AppBar>
                     </div>
                 </Hidden>
