@@ -53,7 +53,7 @@ class StoryBlock extends React.Component {
            <Typography component="a" style={{color:"#394578",padding:"20px 0 20px 20px"}}>Stories</Typography>
            <Typography component="a" style={{color:"#394578",padding:"20px 0 20px 20px"}}>Education</Typography>
          </Grid>
-         <Grid item xs={12} sm={12} md={8} style={{display:"flex",flexFlow:"row wrap"}}>
+         <Grid item xs={12} sm={12} md={8}>
               <MediaCard />
               {/* <Grid container style={{background:"#ccc"}}>
                   {

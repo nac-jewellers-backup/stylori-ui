@@ -52,7 +52,7 @@ export default function MediaCard() {
   return (
     <Grid container>
         {listOfEducationCard.map((data, index) =>
-            <Grid item xs={12} sm={12} md={6}>
+            <Grid item xs={12} sm={12} md={6} >
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.media}
