@@ -100,6 +100,7 @@ const injectUrl_url_construct = (url, baseUi, screen_res) => {
         var img_url = `${baseUi}${url_construct}`
     }
     else{
+        debugger
         var img_not_found = "product/productnotfound.webp"
          url_split = img_not_found.split('/')
          extension_split = url_split[url_split.length-1]

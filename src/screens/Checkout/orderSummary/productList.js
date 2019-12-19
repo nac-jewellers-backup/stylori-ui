@@ -68,10 +68,10 @@ const ProductlistComponent = (props) => {
                                         </div>
 
                                             {value && value.city} <br />
-                                            { value.state + "-"}
+                                            {value.state + "-"}
                                             {value && value.pincode}<br />IN</p>
                                         <p className='dis-phn'>
-                                            {"Phone : +91" + "" + value.contactNumber} </p>
+                                            Phone : +91 {value.contactNumber ? value.contactNumber : value.contactno} </p>
                                     </div>
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>

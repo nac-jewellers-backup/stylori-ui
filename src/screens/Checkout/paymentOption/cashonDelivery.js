@@ -42,6 +42,7 @@ class CashonDelivey extends React.Component {
             localStorage.removeItem("gut_lg")
 
             localStorage.removeItem("select_addres")
+            localStorage.removeItem("gustaddres")
             localStorage.removeItem("email")
             localStorage.removeItem("a__c_t")
             // localStorage.removeItem("gut_lg")
@@ -59,11 +60,12 @@ class CashonDelivey extends React.Component {
         let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
         const data = this.props.data ? this.props.data : ""
+        var discounted_price = this.props.cartFilters.discounted_price ? this.props.cartFilters.discounted_price : ""
         // var { data:coddata, error, loading, makeFetch} = useNetworkRequest('/api/auth/signin', {}, false);
         var dataCard1;
         if (data.length > 0 && data !== undefined && data !== null) {
             dataCard1 = this.props.data && this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
-            function myFunc(total, num, discounted_price) {
+            function myFunc(total, num) {
                 discounted_price = this && this.props.cartFilters.discounted_price ? JSON.stringify(this.props.cartFilters.discounted_price) : ""
                 if (discounted_price.length > 0) {
                     var a = Math.round(total + num);
@@ -85,8 +87,8 @@ class CashonDelivey extends React.Component {
                         <div className="amout-pay"> Amount Payable </div>
                         <div className="credit-btn-div">
                             <span className="rups">
-                                {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(dataCard1))}
-                               </span>&nbsp;
+                                {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(dataCard1-discounted_price))}
+                            </span>&nbsp;
                             <Button className="credit-button" type="submit"
                                 onClick={() => this.makeFetch(this.props)}
                             >Place COD order</Button>

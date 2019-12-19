@@ -77,7 +77,7 @@ debugger
             addressetValues(val)
             localStorage.setItem("c_k_l", true)
             if (!pathnames) {
-                changePanel(2)
+                changePanel(3)
             } else {
                 if (localStorage.getItem('review_location') && localStorage.getItem('review_location').length > 0) {
                     window.location.href = localStorage.getItem('review_location')

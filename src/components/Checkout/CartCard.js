@@ -182,30 +182,33 @@ class Checkoutcard extends React.Component {
         )
     }
     subtotals = (props) => {
+        debugger
         // alert(JSON.stringify(props.cartFilters.discounted_price))
         // const { dataCard1 } = this.props.data;
+        var discounted_price = this.props.cartFilters.discounted_price ? this.props.cartFilters.discounted_price : ""
         const dataCard1 = this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
         // this.props.data.map(val=>{return val.dataCard1[0].offerPrice}).reduce(myFunc)
 
-        var yousave = this.props.data.map((_data) => {
-            return _data.dataCard1[0].price - _data.dataCard1[0].offerPrice
-        }).reduce(myFunc)
+
 
         // function myFunc(total, num) {
         //     return Math.round(total + num);
         // }
 
-        function myFunc(total, num, discounted_price) {
-            var discounted_price = props.cartFilters.discounted_price ? JSON.stringify(props.cartFilters.discounted_price) : ""
+        function myFunc(total, num) {
+            // alert(JSON.stringify(props.cartFilters.discounted_price))
+            var cart_price
             if (discounted_price.length > 0) {
                 var a = Math.round(total + num);
-                var cart_price = (a - discounted_price)
+                cart_price = (a - discounted_price)
             } else {
-                var cart_price = Math.round(total + num);
+                cart_price = Math.round(total + num);
             }
             return cart_price
         }
-
+        var yousave = this.props.data.map((_data) => {
+            return _data.dataCard1[0].price - _data.dataCard1[0].offerPrice
+        }).reduce(myFunc)
         // const yousave = Math.round(Number(dataCard1.price) - Number(dataCard1.offerPrice))
         let path = window.location.pathname.split('/').pop();
         const { classes } = this.props;
@@ -224,12 +227,12 @@ class Checkoutcard extends React.Component {
                                 <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>Grand Total</Typography>
                             </Grid>
                             <Grid xs={5} lg={5}>
-                                <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(dataCard1)}</Typography>
+                                <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(dataCard1-discounted_price)}</Typography>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(yousave)}</Typography>
                                 {props.cartFilters.tax_price ? <Typography class={`subhesder ${classes.normalfonts}`}>
                                     {props.cartFilters.tax_price}</Typography> : ""}
                                 <Typography class={`subhesder ${classes.normalfonts}`}>FREE </Typography>
-                                <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>{Math.round(dataCard1)}</Typography>
+                                <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>{Math.round(dataCard1-discounted_price)}</Typography>
                             </Grid>
                         </Grid>
                         {/* // )}  */}
@@ -237,16 +240,16 @@ class Checkoutcard extends React.Component {
                 </Grid>
                 <Grid container>
                     {path == "checkout" ? "" :
-                       <> 
-                       < Grid xs={12} lg={7}>
-                           <NavLink to="/jewellery">
-                       <div className='btn-plain'> CONTINUE SHOPPING</div>
-                   </NavLink>
+                        <>
+                            < Grid xs={12} lg={7}>
+                                <NavLink to="/jewellery">
+                                    <div className='btn-plain'> CONTINUE SHOPPING</div>
+                                </NavLink>
 
-               </Grid></>}
+                            </Grid></>}
                     <Grid xs={12} lg={4} >
-                    {this.checkoutbutton()}
-                </Grid>
+                        {this.checkoutbutton()}
+                    </Grid>
                 </Grid>
             </div >
         )
