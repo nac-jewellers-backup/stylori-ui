@@ -221,7 +221,7 @@ class Component extends React.Component {
                                                 var arrPurity = objVal[0]
                                                 var arrColor = objVal[1]
                                                 return (
-                                                    <Grid item lg={2} xs={2} style={{ marginLeft: "5px", textAlign: "center" }}>
+                                                    <Grid item lg={2} xs={2}  style={{ marginLeft: "5px", textAlign: "center" }}>
                                                         <button
                                                             style={{ background: this.imageRender(val) }}
                                                             className={this.state.purity === val ? 'darktabs tabs-valus' : 'pagetabs tabs-valus'}

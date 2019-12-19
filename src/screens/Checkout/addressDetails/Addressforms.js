@@ -65,12 +65,12 @@ const Addressforms = (changePanel) => {
     var adars2 = {}
     addObjall["isguestlogin"] = cont ? false : true
     const { data, error, loading, makeFetch: makeFetchall, mapped, status } = useNetworkRequest('/addaddress', {}, false);
-    const { makeFetch: deleteaddress, } = useNetworkRequest('/removeaddress', {}, false);
+    const { error: remee, loading: remlod, data: removedata, makeFetch: deleteaddress, } = useNetworkRequest('/removeaddress', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     const pathnames = window.location.pathname === "/account"
     // var stst = values.ref ? values.ref : ""
     debugger
-    const addressva = values && values.addressvalues&&values.addressvalues.length > 0
+    const addressva = values && values.addressvalues && values.addressvalues.length > 0
     useEffect(() => {
         debugger
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
@@ -82,15 +82,17 @@ const Addressforms = (changePanel) => {
                 values,
                 ...values
             })
+        } else {
+            localStorage.setItem("select_addres", JSON.stringify(""))
         }
-    }, [addresData, userdata, addressva])
+    }, [addresData, userdata, addressva, removedata])
     React.useEffect(() => {
         debugger
         if (user_id.length > 0) {
             obj['userprofileId'] = user_id
             addresmakeRequestCod(obj);
         }
-    }, [userdata,addressva])
+    }, [userdata, addressva])
     React.useEffect(() => {
 
         if (user_id.length > 0) {
@@ -297,7 +299,7 @@ const Addressforms = (changePanel) => {
             deleteaddress(delet)
             // window.location.reload();
         }
-
+        window.location.reload();
     }
     const handleKeyPress = (e, isNumber) => {
         if (isNumber) {

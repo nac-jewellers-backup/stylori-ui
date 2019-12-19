@@ -33,14 +33,16 @@ class ProductImageZoom extends React.Component {
     backgroundPosition: '0% 0%',
     showimage: this.props.data[0].fadeImages[0]
   }
-
+  
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     if (this.props.data[0].fadeImages[0] !== prevProps.data[0].fadeImages[0]) {
       this.setState({ showimage: this.props.data[0].fadeImages[0] })
     }
   }
+
   productImageZoom = () => {
+    debugger
     // console.log(this.props.data)
     const { classes, data } = this.props
     const limit = 3;
@@ -53,8 +55,8 @@ class ProductImageZoom extends React.Component {
       verticalSwiping: true,
       arrows: false,
     }
-    const props = { "width": 486, "height": 450, "zoomWidth": 500, "img": `${showimage}`, "zoomStyle": "z-index:2" }
-
+// alert(JSON.stringify(data.Image_resolution))
+    const props = { "width": data[0].image_resolution, "height": data[0].image_resolution, "zoomWidth":data[0].image_resolution, "img": `${showimage}`, "zoomStyle": "z-index:2" }
     return (
       <div>
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
@@ -84,7 +86,7 @@ class ProductImageZoom extends React.Component {
               <div className='overly-img' id="overlay"
                 style={{ backgroundImage: `url(${showimage})` }} onMouseOut={event => this.zoomOut(event)}>
                 </div> */}
-              <div style={{ border: "1px solid #ccc" ,width:"100%"}}><ReactImageZoom {...props} /></div>
+              <div style={{ border: "1px solid #ccc", width: "100%" }}><ReactImageZoom {...props} /></div>
               <div>
                 <Grid container spacing={12}>
                   {/* {data[0].productsubHeaderlist.map(val => (
@@ -95,7 +97,7 @@ class ProductImageZoom extends React.Component {
                       </div>
                     </Grid>
                   ))} */}
-                  <StaticView/>
+                  <StaticView />
                 </Grid>
               </div>
             </div>

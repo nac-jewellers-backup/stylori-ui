@@ -22,11 +22,11 @@ import { FilterOptionsContext } from 'context'
 import { NetworkContext } from 'context/NetworkContext';
 import { PRODUCTLIST, conditions, seoUrlResult } from 'queries/productListing';
 const PersistentDrawerLeft = (props) => {
-  const { setSort, setloadingfilters, setPriceMax,setPriceMin, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
+  const { setSort, setloadingfilters, setPriceMax, setPriceMin, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
   const loc = window.location.search
   const { NetworkCtx } = React.useContext(NetworkContext);
 
-  return <Component setSort={setSort}  setFilters={FilterOptionsCtx.setFilters} setloadingfilters={setloadingfilters} setPriceMax={setPriceMax} setPriceMin={setPriceMin} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort}
+  return <Component setSort={setSort} setFilters={FilterOptionsCtx.setFilters} setloadingfilters={setloadingfilters} setPriceMax={setPriceMax} setPriceMin={setPriceMin} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort}
     uri={NetworkCtx.graphqlUrl}
     {...props} />
 }
@@ -41,11 +41,11 @@ class Component extends React.Component {
       CardRadio: false,
       checked: {
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
-        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {},pricemax: 0, pricemin: 0
+        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {}, pricemax: 0, pricemin: 0
       },
       checkedArrayObj: {
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
-        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {},pricemax: 0, pricemin: 0
+        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {}, pricemax: 0, pricemin: 0
       },
       selected: [],
       filtercheck: '',
@@ -54,7 +54,7 @@ class Component extends React.Component {
       numOne: '',
       numTwo: '',
       showMore: 4,
-      Price_button_click:false,
+      Price_button_click: false,
       chipData: [
         { key: '', label: '' },
       ],
@@ -62,20 +62,20 @@ class Component extends React.Component {
 
   }
   componentDidMount() {
-    var {checked, numOne, numTwo} = this.state
+    var { checked, numOne, numTwo } = this.state
     console.log('price_props', typeof this.props.data[0].subFilter['Price Range'])
     var price_min = Number(this.props.data[0].subFilter['Price Range'].min);
     var price_max = Number(this.props.data[0].subFilter['Price Range'].max);
     var _price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_min));
     var _price_max = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_max));
-    
+
     checked['pricemax'] = _price_max
     checked['pricemin'] = _price_min
     this.setState(checked)
-    this.setState({ numOne: _price_min, numTwo: _price_max })  
-    
-      
-    
+    this.setState({ numOne: _price_min, numTwo: _price_max })
+
+
+
 
     // This is used for checking the check boxes if we copy and pasted the url to new tab or new window
     // if (window.location.search) {
@@ -107,7 +107,7 @@ class Component extends React.Component {
           } else {
             return Promise.reject(new Error(response.statusText))
           }
-        } 
+        }
 
         function json(response) {
           return response.json()
@@ -190,11 +190,10 @@ class Component extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     // Typical usage (don't forget to compare props):
     console.log(this.props, 'filters')
-    if(this.state.checked !== prevState.checked) 
-    {
+    if (this.state.checked !== prevState.checked) {
       // this.myRef.scrollTop()
       window.scrollTo(0, this.myRef.scrollTop)
-  }
+    }
     if (this.props.data[0].subFilter['Price Range'] !== prevProps.data[0].subFilter['Price Range']) {
 
       console.log('price_props', typeof this.props.data[0].subFilter['Price Range'], this.props.data[0].subFilter['Price Range'].length, this.props.data[0].subFilter['Price Range'][0] !== undefined, Number(this.props.data[0].subFilter['Price Range'].max))
@@ -226,7 +225,7 @@ class Component extends React.Component {
           valx2 = s1s
           mm = valx ? Object.keys(valx)[0] : ""
           if (value === mm) {
-            bz=mm
+            bz = mm
             checked[val[0]] = { [mm]: false }
             this.setState({ ...checked, checked })
           }
@@ -302,7 +301,7 @@ class Component extends React.Component {
   handleDelete = (value) => {
     let arr = [], arr1 = [];
     let { chipData, checked } = this.state
-    arr = chipData.filter(val => val.label !== value); 
+    arr = chipData.filter(val => val.label !== value);
 
     if (checked) {
       arr1 = this.valz(value).filter(val => {
@@ -345,9 +344,11 @@ class Component extends React.Component {
     this.setState({ open: false });
   };
   selectItem = (name) => {
+    debugger
     let { selected } = this.state;
-    let value = selected === name ? "" : name;
-    this.setState({ selected: value })
+    // let value = selected === name ? "" : name;
+    selected.push(name)
+    this.setState({ selected })
   }
   filterValue = (filtercheck) => {
     if (filtercheck === this.state.filtercheck) {
@@ -367,7 +368,7 @@ class Component extends React.Component {
 
   onCurrencyChange_click = (e) => {
     const { checked } = this.state
-    this.setState({Price_button_click:true})
+    this.setState({ Price_button_click: true })
     var _price_min;
     var _price_max;
     if (isNaN(Number((document.getElementById('num1').value).charAt(0)))) {
@@ -386,13 +387,13 @@ class Component extends React.Component {
     }
     var price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(_price_min));
     var price_max = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(_price_max));
-    
 
-    var pricemin = Number(price_min.substr(2).replace(/\,/g,''))
-    var pricemax =  Number(price_max.substr(2).replace(/\,/g,''))
+
+    var pricemin = Number(price_min.substr(2).replace(/\,/g, ''))
+    var pricemax = Number(price_max.substr(2).replace(/\,/g, ''))
     this.setState(checked)
-    this.setState({ numOne: price_min, numTwo: price_max },() =>{this.props.setPriceMax(pricemax);this.props.setPriceMin(pricemin)})
-    console.log('_checked_checked',checked)
+    this.setState({ numOne: price_min, numTwo: price_max }, () => { this.props.setPriceMax(pricemax); this.props.setPriceMin(pricemin) })
+    console.log('_checked_checked', checked)
   }
   txtFieldChange(e) {
     if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
@@ -417,7 +418,7 @@ class Component extends React.Component {
   // })
 
   render() {
-    
+
     const { classes, data } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];
 
@@ -428,6 +429,17 @@ class Component extends React.Component {
     //     data.label
     //   );
     // })
+    const selected_list_filter = () => {
+      debugger
+      var filter_open
+      let { selected } = this.state;
+      if (selected !== undefined || selected !== null) {
+        selected.map(val => (
+          filter_open = val
+        ))
+      }
+      return filter_open
+    }
     return (
       <>
         <Hidden smDown>
@@ -505,56 +517,56 @@ class Component extends React.Component {
                                         >{row}
                                         </Typography>
                                       </ListItemText>
-                                      {row === selected ? <ExpandLess className="fil-drawer-arrow" /> :
+                                      {selected_list_filter() ? <ExpandLess className="fil-drawer-arrow" /> :
                                         <ExpandMore className="fil-drawer-arrow" />}
                                     </ListItem>
                                     <>
                                       {/* {JSON.stringify()} */}
-                                      {(selected === row &&
-                                        subFilter[row] !== undefined) &&
+                                      {
+                                        (selected.indexOf(row) !== -1) &&
                                         <>
                                           {
                                             subFilter[row].filter((row12, i) =>
                                               (i < (this.state[`li_${row}`] ? this.state[`li_${row}`] : 4))).map(row12 => {
-                                                return (<div style={{padding:"0 20px"}}>
+                                                return (<div style={{ padding: "0 20px" }}>
 
                                                   <ListItem key={row12}  >   {/* button */}
                                                     <FormGroup row>
-                                             { 
-                                             row12.constructor === Object ?
-                                                     <FormControlLabel
-                                                        control={
-                                                          <Checkbox
-                                                            checked={this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] !== undefined ?
-                                                             this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] : false}
-                                                            onChange={(e) => this.handleChange(row12.value, this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12.value] : true, e, row)}
-                                                            className="fil-submenu-icons"
-                                                            value="checked"
-                                                            color="primary"
-                                                            name={row.replace(/\s/g, "")}
+                                                      {
+                                                        row12.constructor === Object ?
+                                                          <FormControlLabel
+                                                            control={
+                                                              <Checkbox
+                                                                checked={this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] !== undefined ?
+                                                                  this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] : false}
+                                                                onChange={(e) => this.handleChange(row12.value, this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12.value] : true, e, row)}
+                                                                className="fil-submenu-icons"
+                                                                value="checked"
+                                                                color="primary"
+                                                                name={row.replace(/\s/g, "")}
+                                                              />
+                                                            }
+                                                            label={<Typography variant=""
+                                                              className={`fil-submenu-list ${classes.colorMain}`}>{row12.title}
+                                                            </Typography>}
                                                           />
-                                                        }
-                                                        label={<Typography variant=""
-                                                          className={`fil-submenu-list ${classes.colorMain}`}>{row12.title}
-                                                        </Typography>}
-                                                      />
-                                                      :
-                                                      <FormControlLabel
-                                                      control={
-                                                        <Checkbox
-                                                          checked={this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ?
-                                                           this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] : false}
-                                                          onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e, row)}
-                                                          className="fil-submenu-icons"
-                                                          value="checked"
-                                                          color="primary"
-                                                          name={row.replace(/\s/g, "")}
-                                                        />
-                                                      }
-                                                      label={<Typography variant=""
-                                                        className={`fil-submenu-list ${classes.colorMain}`}>{row12}
-                                                      </Typography>}
-                                                    />
+                                                          :
+                                                          <FormControlLabel
+                                                            control={
+                                                              <Checkbox
+                                                                checked={this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ?
+                                                                  this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] : false}
+                                                                onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e, row)}
+                                                                className="fil-submenu-icons"
+                                                                value="checked"
+                                                                color="primary"
+                                                                name={row.replace(/\s/g, "")}
+                                                              />
+                                                            }
+                                                            label={<Typography variant=""
+                                                              className={`fil-submenu-list ${classes.colorMain}`}>{row12}
+                                                            </Typography>}
+                                                          />
                                                       }
                                                     </FormGroup>
                                                   </ListItem>
@@ -618,7 +630,7 @@ class Component extends React.Component {
               className={check ? classes.productCardscheck : classes.productCardsuncheck}
 
             >
-              <ProductLayout data={this.props.datas} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef}/>
+              <ProductLayout data={this.props.datas} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
 
             </div>}
         </div>
