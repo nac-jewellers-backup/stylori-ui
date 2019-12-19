@@ -133,7 +133,7 @@
   font-size: 17px;
   cursor: pointer;
   /* color: #394578; */
-  margin-left: 6px;
+  margin-left: 3px;
   text-align: center !important;
   width: 25px;
 }
@@ -250,6 +250,7 @@
 
 .toolbarsetting {
   padding-left: 4px !important;
+  padding-right: 8px !important;
 }
 
 .drawer-arrow {

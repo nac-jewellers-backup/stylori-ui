@@ -19,6 +19,7 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import { Hidden } from '@material-ui/core';
 import HeaderHoverMenuItem from './HoverNavBarListing/HeaderHoverMenuItem';
+import HeaderHoversubMenu from './HoverNavBarListing/HeaderHoversubMenu';
 // import HeaderNotification from './Notification/HeaderNotification'
 import { withStyles } from '@material-ui/core/styles';
 import { useDummyRequest } from '../../hooks';
@@ -36,6 +37,7 @@ class Header extends Component {
             panel: false,
             panel1: false,
             Menuopen: false,
+            submenuOpen: false,
             selected: '',
             selected1: '',
             Checked: false,
@@ -43,7 +45,10 @@ class Header extends Component {
             listHoverItem: 'Jewellery',
             headerHeightprops: 0,
             anchorOne: null,
-            targetopen: null
+            targetopen: null,
+            targetopenSubmenu: null,
+            subTitleData: "",
+            subMenuTarget: ""
 
         }
         this.topZero = React.createRef();
@@ -84,31 +89,44 @@ class Header extends Component {
 
     }
     scrolling = () => {
-        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-            document.getElementById("headerContainer").style.position = "fixed";
-            document.getElementById("headerContainer").style.background = "#fff";
-            document.getElementById("headerContainer").style.zIndex = "10000";
-            document.getElementById("headerContainer").style.boxShadow = "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)";
-            document.getElementById("logoImage").style.width = "50%";
-            document.getElementById("headerContainer").style.height = "55px";
-            document.getElementById("logoDiv1").style.padding = "0px";
-            document.getElementById("containerTitle").style.height = "55px";
-            document.getElementById("fullcontainer").style.height = "55px";
-            document.getElementById("titleTop").style.marginTop = "0px"
-            // margin-top: 69px;
-        } else {
-            document.getElementById("headerContainer").style.position = "inherit";
-            document.getElementById("headerContainer").style.background = "#fff";
-            document.getElementById("headerContainer").style.zIndex = "10000";
-            document.getElementById("headerContainer").style.boxShadow = "none";
-            document.getElementById("logoImage").style.width = "100%";
-            document.getElementById("headerContainer").style.height = "auto";
-            document.getElementById("titleTop").style.marginTop = "12px";
-            document.getElementById("containerTitle").style.height = "auto";
-            document.getElementById("logoDiv1").style.paddingTop = "2%";
-            document.getElementById("fullcontainer").style.height = "auto";
+        if(window.innerWidth > 959){
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("headerContainer").style.position = "fixed";
+                document.getElementById("headerContainerTop").style.height = "74px";
+                document.getElementById("headerContainer").style.background = "#fff";
+                document.getElementById("headerContainer").style.zIndex = "10000";
+                document.getElementById("headerContainer").style.boxShadow = "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)";
+                document.getElementById("logoImage").style.width = "50%";
+                document.getElementById("headerContainer").style.height = "55px";
+                document.getElementById("logoDiv1").style.padding = "0px";
+                document.getElementById("containerTitle").style.height = "55px";
+                document.getElementById("fullcontainer").style.height = "55px";
+                document.getElementById("titleTop").style.marginTop = "0px"
+            } else {
+                document.getElementById("headerContainer").style.position = "inherit";
+                document.getElementById("headerContainer").style.background = "#fff";
+                document.getElementById("headerContainer").style.zIndex = "10000";
+                document.getElementById("headerContainerTop").style.height = "0px";
+                document.getElementById("headerContainer").style.boxShadow = "none";
+                document.getElementById("logoImage").style.width = "100%";
+                document.getElementById("headerContainer").style.height = "auto";
+                document.getElementById("containerTitle").style.height = "auto";
+                document.getElementById("logoDiv1").style.paddingTop = "2%";
+                document.getElementById("fullcontainer").style.height = "auto";
+            }
         }
+        else{
+            return""
+        }
+       
     }
+
+    submenuDetails = (data, target) => {
+        this.setState({ subTitleData: data, subMenuTarget: target })
+    }
+    // submenuDetailsDelete = () => {
+    //     this.setState({ subTitleData: "", subMenuTarget: "" })
+    // }
 
     render() {
 
@@ -167,18 +185,35 @@ class Header extends Component {
 
                                                     this.state.Menuopen && menuLists[this.state.listHoverItem] ?
                                                         <HeaderHoverMenuItem Checked={this.state.Checked} tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
-                                                            onMouseOver={(event) => { this.setState({ Menuopen: true }) }}
-                                                            onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false, targetopen: null }) }}
-                                                            opened={this.state.Menuopen} targetopened={this.state.targetopen}
+                                                            onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: true, targetopenSubmenu: event.currentTarget, Checked: true }) }}
+                                                            onMouseLeave={() => { this.setState({ Checked: false, targetopen: null }) }}
+                                                            opened={this.state.Menuopen}
+                                                            submenuDetailsDelete={() => { this.setState({ subTitleData: "", subMenuTarget: "" }) }}
+                                                            targetopened={this.state.targetopen}
+                                                            submenuDetails={this.submenuDetails}
 
                                                         />
                                                         :
                                                         ''
                                                 }
+                                                {this.state.Menuopen && this.state.submenuOpen &&
+                                                    <HeaderHoversubMenu opened={this.state.submenuOpen}
+                                                        opened={this.state.submenuOpen}
+                                                        onMouseOver={(event) => { this.setState({ submenuOpen: true }) }}
+                                                        listHoverItem={menuLists[this.state.listHoverItem]}
+                                                        Checked={this.state.Checked}
+                                                        data={this.state.subTitleData}
+                                                        subMenuTarget={this.subMenuTarget}
+                                                        targetopened={this.state.targetopenSubmenu}
+                                                        onMouseLeave={() => { this.setState({ submenuOpen: false, Checked: false, targetopen: null }) }} />
+                                                }
                                             </Grid>
                                         </Grid>
                                     </Grid>
                                 </Container>
+                            </Grid>
+                            <Grid container id="headerContainerTop" >
+
                             </Grid>
                         </AppBar>
                     </div>

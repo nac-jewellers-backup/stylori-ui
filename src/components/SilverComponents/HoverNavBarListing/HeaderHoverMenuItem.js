@@ -10,7 +10,7 @@ function HeaderHoverMenuItem(props) {
   const [activetab, setActivetab] = React.useState("earings");
   const [opens, setOpens] = React.useState(props.opened);
   const [target, setTarget] = React.useState(props.targetopened);
-  const { onMouseLeave, onMouseOver } = props;
+  const { onMouseLeave, onMouseOver,submenuDetailsDelete,submenuDetails } = props;
   const classes = useStyles();
   // console.log(props.listHoverItem);
   // onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}
@@ -30,7 +30,7 @@ function HeaderHoverMenuItem(props) {
                 (props.listHoverItem['menuOne']).map(menuList =>
                   (
 
-                    <ListItem className={classes.listedItems} component="li"
+                    <ListItem onMouseOver={(event) => { submenuDetails(menuList.imgContainer,event.currentTarget) }}  className={classes.listedItems} component="li"
                       onClick={() => { window.location.href = '/' + menuList.url }}
                     >
                       <ListItemText variant >
@@ -47,7 +47,7 @@ function HeaderHoverMenuItem(props) {
                 (props.listHoverItem !== undefined) &&
                 (props.listHoverItem['menuTwo']).map(menuList =>
                   (
-                    <ListItem className={classes.listedItemsub} component="li"
+                    <ListItem onMouseOver={(event) => { props.submenuDetails(menuList.imgContainer,event.currentTarget) }}  className={classes.listedItemsub} component="li"
                       onClick={() => { window.location.href = '/' + menuList.url }}
                     >
                       <ListItemText variant >
@@ -73,6 +73,7 @@ export default HeaderHoverMenuItem;
 HeaderHoverMenuItem.propTypes = {
   onMouseOver: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
+  submenuDetails: PropTypes.func.isRequired,
   listHoverItem: PropTypes.object.isRequired,
   tabdata: PropTypes.object.isRequired,
 

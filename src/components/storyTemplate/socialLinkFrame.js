@@ -4,7 +4,6 @@ import StyloriNews from 'components/Feedes/StyloriNews';
 import {storyData } from './storyTemplateData';
 export default function SocialLinkFrame() {
     return (
-
         <Grid container >
             <Grid container>
                 <Grid item md={12} style={{marginTop: "10px"}}>
@@ -32,12 +31,14 @@ export default function SocialLinkFrame() {
                     ></iframe>
                 </Grid>
             </Grid>
-            <Grid item style={{ marginTop: "30px"}}>
-               <Typography style={{color:"#394578"}} component="h4">Stylori News</Typography>
-            </Grid>
-            <Grid item  style={{width: "343px",border:"1px solid #ccc",marginTop: "5px"}}>
-              <StyloriNews  fadeImages ={storyData.NewsFeeds.carousel.data} dataCarousel={storyData.NewsFeeds.carousel.setting} />
-            </Grid>           
+            <Grid container>
+                <Grid item  md={12}style={{ marginTop: "30px"}}>
+                <Typography style={{color:"#394578"}} component="h4">Stylori News</Typography>
+                </Grid>
+                <Grid item  style={{width: "343px",border:"1px solid #ccc",marginTop: "5px"}}>
+                <StyloriNews  fadeImages ={storyData.NewsFeeds.carousel.data} dataCarousel={storyData.NewsFeeds.carousel.setting} />
+                </Grid>  
+            </Grid>         
         </Grid>
     )
 }

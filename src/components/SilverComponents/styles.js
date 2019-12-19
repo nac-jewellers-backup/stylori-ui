@@ -154,6 +154,31 @@ export const useStyles = makeStyles(theme => ({
 
     }
   },
+  paperdivsub: {
+    position: 'absolute',
+    width: 'fit-content',
+
+  },
+  rootsub: {
+    width: '100%',
+  },
+  mouseOverPopoversub: {
+    zIndex: 1000,
+    top: '0px !important',
+    backgroundColor: "#fff",
+    color: theme.palette.background.fade,
+    '& span': {
+      fontFamily: 'Roboto',
+      letterSpacing: '1px'
+    },
+    '& nav': {
+      padding: '0px !important'
+    },
+    '& li:hover': {
+      backgroundColor: "#fff",
+
+    }
+  },
   listedItems: {
     padding: "0px",
     fontSize: "0.7rem !important"
