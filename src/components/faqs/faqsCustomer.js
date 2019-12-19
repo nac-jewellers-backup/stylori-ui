@@ -12,7 +12,7 @@ class FaqsCustomer extends React.Component {
             <Grid>
                 <Grid>
                     <Grid class="submain">
-                    <Typography style={{fontSize:"18px"}}  gutterBottom>Customer Care</Typography>
+                    <Typography style={{fontSize:"17px",fontWeight:"600"}}  gutterBottom>Customer Care</Typography>
                     </Grid>
                     <Grid class="main">
                 <p style={{lineHeight:"0.2em",color:"#394578"}}>Monday to Saturday</p>

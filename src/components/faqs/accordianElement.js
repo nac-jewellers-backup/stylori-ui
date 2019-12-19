@@ -27,27 +27,11 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         borderBottom: "1px solid #e8e8e8 "
     },
-    titleColor: {
-        color: '#ed1165',
-        fontWeight: 500,
-        marginTop: "3%",
-        fontSize: "22px",
-        fontFamily: "Roboto",
-        paddingTop:"10px",
-        
-    },
-    titleColorsmall: {
-        color: '#ed1165',
-        fontWeight: 500,
-        marginTop: "3%",
-        fontSize: "16px" ,
-        fontFamily: "Roboto",
-        paddingTop:"10px",
-    },
+   
     details: {
         color:"#394578",
         borderTop: "0px",
-        fontWeight: 500,
+        fontWeight: 600,
         fontSize: "14px",
         padding:"12px 0px"
     },
