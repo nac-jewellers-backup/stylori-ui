@@ -11,7 +11,8 @@ export const routes = {
     Account: '/account',
     Silver: '/silverjewellery',
     Faqs: '/faqs',
-    Stories:'/stories'
+    Stories:'/stories',
+    Collection:'/collection'
     
 
 }
