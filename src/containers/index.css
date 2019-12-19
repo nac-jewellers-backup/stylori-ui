@@ -107,13 +107,32 @@
 .fifty{
   width: 50%;
 }
+.aboutFifty{
+  
+  width:50%;
+  float: left;
+
+}
 .fiftyImg{
-  width:50%
+  width:50%;
+
+}
+/* .aboutwidth{
+  width: 100%;
+ 
+} */
+.aboutwidth{
+  max-width: 1170px;
+  margin:auto
+}
+.aboutMargin{
+  margin-right: auto;
+  margin-left: auto;
 }
 @media only screen and (max-width:2560px) and (min-width:1441px){
   .mainContent{
-    width: 73%;
-    padding: 13px 50px 40px 50px;
+    width: 77%;
+    padding: 13px 8px 40px 50px;
 
   }
   .sideContent{
@@ -130,6 +149,18 @@
     padding-left: 15px;
     padding-right: 15px;
   }
+  /* .aboutFifty{
+    
+    width:50%;
+  }
+  .aboutwidth{
+    width: 100%;
+   
+  }
+  /* .aboutMargin{
+    margin-right: auto;
+    margin-left: auto;
+  } */
 }
 @media only screen and (max-width:1440px) and (min-width:1025px){
   .mainWidth{
@@ -140,6 +171,10 @@ width: 100%;
     padding: 18px 20px 20px 40px;
 
   }
+  /* .aboutwidth{
+    
+    width:100%;
+  } */
   .sideContent{
     width: 15%;
     margin-top: 5px;
@@ -173,6 +208,15 @@ width: 100%;
   }
   .fifty{
     width: 50%;
+  }
+  .aboutFifty{
+    width:50%;
+    float: left;
+
+  }
+  .aboutMargin{
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 @media only screen and (max-width:1024px) and (min-width:960px){
@@ -221,7 +265,17 @@ width: 100%;
     
   
   }
-  
+  /* .aboutwidth{
+    width: 100%;
+  } */
+  .aboutFifty{
+    width:50%;
+    float: left;
+  }
+  .aboutMargin{
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 @media only screen and (max-width: 959x) and (min-width: 769px){
   .mainContent{
@@ -233,6 +287,9 @@ width: 100%;
   .mainWidth{
     width: 100%;
   }
+  /* .aboutwidth{
+    width: 100%;
+  } */
   .rightImg{
     width: 100%;
     height: auto;
@@ -255,6 +312,17 @@ width: 100%;
     padding-top: 10px;
     padding-bottom: 15px;
   }
+  /* .aboutwidth{
+    width: 100%;
+  } */
+  .aboutFifty{
+    padding:0px 15px;
+    width:100%;
+  }
+  .aboutMargin{
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 @media only screen and (max-width: 768px) and (min-width: 0px) {
   .GridListImg {
@@ -265,6 +333,9 @@ width: 100%;
     padding-top: 10px;
     padding-bottom: 15px;
   }
+  /* .aboutwidth{
+    width: 750px;
+  } */
   .menuqans{
     width: 100%;
     height: auto,
@@ -296,7 +367,51 @@ width: 100%;
     color: #666;
 
   }
+  .aboutFifty{
+    padding:0px 15px;
+    width:100%;
+  }
+  .aboutMargin{
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
+
+/* @media (min-width: 1200px){
+.aboutwidth {
+    width: 1170px !important;
+    margin-left: auto;
+    margin-right: auto;
+} 
+}*/
+/* .aboutMargin{
+  margin-left: auto;
+  margin-right: auto;
+} */
+
+/* @media (min-width: 992px){
+.aboutwidth {
+    width: 970px !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+} */
+/* .aboutMargin{
+  margin-left: auto;
+  margin-right: auto;
+} */
+
+/* @media (min-width: 768px){
+.aboutwidth {
+    width: 750px !important;
+    margin-left: auto;
+    margin-right: auto;
+} */
+/* .aboutMargin{
+  margin-left: auto;
+  margin-right: auto;
+} 
+}*/
 @media only screen and (max-width: 320px) {
 .fiftyImg{
   width: 50%;
