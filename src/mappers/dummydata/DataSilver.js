@@ -117,7 +117,14 @@ const featurecarodata = [{
     Image: topPicksThree
 }]
 
-export const TopPicksimages = [{ topPicksOne, topPicksTwo, topPicksThree, topPicksFour, topPicksFive }]
+// export const TopPicksimages = [{ topPicksOne, topPicksTwo, topPicksThree, topPicksFour, topPicksFive }]
+export const TopPicksimages = [
+    { img: topPicksOne, title: "Pretty Adonments Silver Pendant", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ", price: "5800" },
+    { img: topPicksTwo, title: "FOLKLORE", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ", price: "3200" },
+    { img: topPicksThree, title: "CONTEMPORARY", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ", price: "2000" },
+    { img: topPicksFour, title: "TRADITIONAL", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ", price: "800" },
+    { img: topPicksFive, title: "TRADITIONAL", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ", price: "900" }
+]
 
 export const FeaturedCarousel = [{ settings: dataCarouselFeature, images: Featured }]
 export const testimonyCarousel = [{ settings: datacaroTestimony, images: testimonycarodata }]

@@ -12,9 +12,11 @@ export const routes = {
     Silver: '/silverjewellery',
     Faqs: '/faqs',
     Stories:'/stories',
-    Collection:'/collection'
-    
-
+    Collection:'/collection',
+    ProductCare: '/productcare',
+    Shipping: '/deliveryreturns',
+    PrivacyPolicy: '/privacypolicy',
+    TermsConditions: '/termsconditions'
 }
 
 export default routes;

@@ -27,9 +27,21 @@ class Slideshow extends React.Component {
 
   imagehoverchildrens = (hoverlist) => {
 
-    let { hover, hovereffect } = this.props;
-    return hoverlist.map(val => (
-      <>{hovereffect ?
+    let { hover, hovereffect,TopPic } = this.props;
+    if (TopPic) {
+      return hoverlist.map(val => (
+        <div class={"subslider-carousel" + TopPic ? "hovereffectSilver" : ""}>
+          <img src={val.img} className='subslider-carousel-img img-responsive' style={{ width: '100%', height: 'auto' }} alt="" />
+          <div class="overlay1">
+            <div>
+              <h2 className='next-price'>{val.title}</h2><br />
+            </div>
+          </div>
+        </div>
+      ))
+    }
+    else if (hovereffect) {
+      return hoverlist.map(val => (
         <div class={"subslider-carousel" + hovereffect ? "hovereffectSilver" : ""}>
           <img src={val.img} className='subslider-carousel-img img-responsive' style={{ width: '100%', height: 'auto' }} alt="" />
           <div class="overlay1">
@@ -40,7 +52,11 @@ class Slideshow extends React.Component {
             </div>
           </div>
         </div>
-        : <a class='info' href={val.url}>
+      ))
+    }
+    else {
+      return hoverlist.map(val => (
+        <a class='info' href={val.url}>
           <div class={"subslider-carousel" + hover ? "hovereffect" : ""}>
             <img src={val.img} className='subslider-carousel-img img-responsive' alt="" />
             <div class="overlay1">
@@ -48,8 +64,10 @@ class Slideshow extends React.Component {
               <a class='info' href={val.url}><span className='sub-list-price'> <i class="fa fa-rupee"></i> &nbsp;{val.price}</span></a>
             </div>
           </div>
-        </a>}</>
-    ))
+        </a>
+      ))
+    }
+
   };
   imagewithouthoverchildrens = (hoverlist) => {
     return (
@@ -91,6 +109,7 @@ class Slideshow extends React.Component {
           {this.props.hover ? this.imagehoverchildrens(this.props.hoverlist) : ""}
           {this.props.hovereffect ? this.imagehoverchildrens(this.props.hoverlist) : ""}
           {this.props.WithoutHoverhover ? this.imagewithouthoverchildrens(this.props.hoverlist) : ""}
+          {this.props.TopPic ? this.imagehoverchildrens(this.props.hoverlist) : ""}
         </Slider>
       </div>
     );

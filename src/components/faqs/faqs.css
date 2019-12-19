@@ -1,0 +1,59 @@
+.main {
+    font-size: 13px;
+
+    color: none;
+    margin-bottom: 15px;
+
+}
+
+.submain {
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #ed1165;
+    margin-top: 35px;
+}
+
+.phone {
+    background-image: url(https://alpha-assets.stylori.com/images/static/footer_icons.png);
+    background-repeat: no-repeat;
+    background-position: -167px -7px;
+    width: 25px;
+    height: 26px;
+    float: left;
+}
+
+.whatsapp {
+    background-image: url(https://alpha-assets.stylori.com/images/static/footer_icons.png);
+    background-repeat: no-repeat;
+    background-position: -278px -7px;
+    width: 25px;
+    height: 26px;
+    float: left;
+
+}
+
+.mail {
+    background-image: url(https://alpha-assets.stylori.com/images/static/footer_icons.png);
+    background-repeat: no-repeat;
+    background-position: -13px -7px;
+    width: 25px;
+    height: 26px;
+    float: left;
+}
+
+.chat {
+    background-image: url(https://alpha-assets.stylori.com/images/static/footer_icons.png);
+    background-repeat: no-repeat;
+    background-position: -98px -7px;
+    width: 25px;
+    height: 26px;
+    float: left;
+}
+
+.details {
+    padding: 20px 0px;
+}
+
+.active .router {
+    text-decoration: underline;
+}
