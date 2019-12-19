@@ -19,11 +19,23 @@ export const storyData = {
         cardContent:"Lizards are a widespread group of squamate reptiles, with over 6,000 species, rangingacross all continents except Antarctica"
         },
         {
-        image:"https://alpha-assets.stylori.com/images/stories/stylori_blog_cover_01_bollywood_buck.png",
+        image:"https://assets-cdn.stylori.com/images/stories/stylori_blog_cover_yashoda_krishna_story.jpg",
         title:"Contemplative Reptile",
         cardHeader:"Lizard",
         cardContent:"Lizards are a widespread group of squamate reptiles, with over 6,000 species, rangingacross all continents except Antarctica"
-        }
+        },
+        {
+          image:"https://alpha-assets.stylori.com/images/stories/stylori_blog_cover_01_bollywood_buck.png",
+          title:"Contemplative Reptile",
+          cardHeader:"Lizard",
+          cardContent:"Lizards are a widespread group of squamate reptiles, with over 6,000 species, rangingacross all continents except Antarctica"
+          },
+          {
+          image:"https://assets-cdn.stylori.com/images/stories/stylori_blog_cover_yashoda_krishna_story.jpg",
+          title:"Contemplative Reptile",
+          cardHeader:"Lizard",
+          cardContent:"Lizards are a widespread group of squamate reptiles, with over 6,000 species, rangingacross all continents except Antarctica"
+          }
     ],
     "NewsFeeds": {
         "carousel": {

@@ -16,7 +16,8 @@ export const routes = {
     ProductCare: '/productcare',
     Shipping: '/deliveryreturns',
     PrivacyPolicy: '/privacypolicy',
-    TermsConditions: '/termsconditions'
+    TermsConditions: '/termsconditions',
+    AboutUs:'/aboutus'
 }
 
 export default routes;

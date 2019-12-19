@@ -12,7 +12,7 @@ class faqsHelp extends React.Component{
             <Grid>
                  <Grid>
                     <Grid item xs={12} class="submain">
-                    <Typography style={{fontSize:"18px"}} gutterBottom>We're Here To Help?</Typography>
+                    <Typography style={{fontSize:"17px",fontWeight:"600"}} gutterBottom>We're Here To Help?</Typography>
                     </Grid>
                     <Grid item xs={12}>
                         <span item xs={3} class="phone" >

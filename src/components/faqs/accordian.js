@@ -24,27 +24,22 @@ const useStyles = makeStyles(theme => ({
     },
     titleColor: {
         color: '#ed1165',
-        fontWeight: 500,
+        fontWeight: 600,
         // marginTop: "3%",
-        fontSize: "22px",
+        fontSize: "21px",
         fontFamily: "Roboto",
         // paddingBottom: "10px"
         
     },
     titleColorsmall: {
         color: '#ed1165',
-        fontWeight: 500,
+        fontWeight: 600,
         // marginTop: "3%",
-        fontSize: "16px",
+        fontSize: "15px",
         fontFamily: "Roboto",
         paddingTop: "10px"
     },
-    details: {
-        padding: '10px 0px',
-        borderTop: "0px",
-        fontWeight: 500,
-        fontSize: "14px"
-    },
+  
 
 }));
 
@@ -57,12 +52,12 @@ export default function Accordian(props) {
         setOpen(!open);
     };
     return (
-        <>{props.faqs.faqs.map((val, index) => <Grid key={index} container>
+        <>{props.faqs.faqs.map((val, i) => <Grid key={i} container>
             <Grid>
                 <Typography className={val.font === "h2" ? classes.titleColor : classes.titleColorsmall} gutterBottom>{val.Title}</Typography>
             </Grid>
             {val.accordian.map((value, index) =>
-                <AccordianElement value={value} accordian ={val.accordianIcon} key={index} />
+                <AccordianElement value={value} accordian ={val.accordianIcon} keyvalues={index} opened={false} key={index} />
             )}
         </Grid>)
         }</>
