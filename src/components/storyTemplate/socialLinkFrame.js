@@ -4,7 +4,6 @@ import StyloriNews from 'components/Feedes/StyloriNews';
 import {storyData } from './storyTemplateData';
 export default function SocialLinkFrame() {
     return (
-
         <Grid container >
             <Grid container>
                 <Grid item md={12} style={{marginTop: "10px"}}>

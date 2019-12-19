@@ -14,6 +14,7 @@ import UserRegister from '../components/LoginAndRegister/Register';
 import routes from "router/routes";
 import { withRouter } from "react-router";
 import { createBrowserHistory } from "history";
+import Collection from 'screens/Stylori/Collection';
 import stories from 'screens/Stylori/stories';
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
@@ -54,6 +55,7 @@ export const RouterApp = (props) => {
             <Route key="TermsConditions" component={Faqs} exact path={routes.TermsConditions} />
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
             <Route key="sto" component={stories} exact path={routes.Stories} />
+            <Route key="Collection" component={Collection} exact path={routes.Collection} />
             {(props.location.pathname !== "/cart" && props.location.pathname !== "/account" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout") &&
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />}
 
