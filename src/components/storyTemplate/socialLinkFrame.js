@@ -31,12 +31,14 @@ export default function SocialLinkFrame() {
                     ></iframe>
                 </Grid>
             </Grid>
-            <Grid item style={{ marginTop: "30px"}}>
-               <Typography style={{color:"#394578"}} component="h4">Stylori News</Typography>
-            </Grid>
-            <Grid item  style={{width: "343px",border:"1px solid #ccc",marginTop: "5px"}}>
-              <StyloriNews  fadeImages ={storyData.NewsFeeds.carousel.data} dataCarousel={storyData.NewsFeeds.carousel.setting} />
-            </Grid>           
+            <Grid container>
+                <Grid item style={{ marginTop: "30px"}}>
+                <Typography style={{color:"#394578"}} component="h4">Stylori News</Typography>
+                </Grid>
+                <Grid item  style={{width: "343px",border:"1px solid #ccc",marginTop: "5px"}}>
+                <StyloriNews  fadeImages ={storyData.NewsFeeds.carousel.data} dataCarousel={storyData.NewsFeeds.carousel.setting} />
+                </Grid>  
+            </Grid>         
         </Grid>
     )
 }
