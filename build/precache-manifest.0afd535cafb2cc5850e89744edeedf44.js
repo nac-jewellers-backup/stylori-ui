@@ -4,35 +4,35 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "a3e81745f683a1adcda9",
+    "revision": "06b698475f27755eb1b5",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "bf1cf5902130c742e9f9",
+    "revision": "53ab83d0848abede38a8",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "8680255632fb56e630bd",
+    "revision": "387cd898583419c5a103",
     "url": "/static/css/4.css"
   },
   {
-    "revision": "413b71c9a2280b068da2",
+    "revision": "5a2a203deb185b3864dd",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "a3e81745f683a1adcda9",
+    "revision": "06b698475f27755eb1b5",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "bf1cf5902130c742e9f9",
+    "revision": "53ab83d0848abede38a8",
     "url": "/static/js/3.js"
   },
   {
-    "revision": "8680255632fb56e630bd",
+    "revision": "387cd898583419c5a103",
     "url": "/static/js/4.js"
   },
   {
-    "revision": "413b71c9a2280b068da2",
+    "revision": "5a2a203deb185b3864dd",
     "url": "/static/js/main.js"
   },
   {
