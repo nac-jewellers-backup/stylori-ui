@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Popper, List, ListItem, ListItemText, Typography } from '@material-ui/core';
+import { Grid, List, Popper, ListItem, ListItemText, Typography } from '@material-ui/core';
 import { useStyles } from '../styles'
 import PropTypes from 'prop-types';
 
@@ -19,10 +19,12 @@ function HeaderHoverMenuItem(props) {
   return (
     <Grid container className={classes.rootsub}>
       <Grid container item xs={12} className={classes.paperdivsub} >
-        <Popper open={true} anchorEl={target} transition className={classes.mouseOverPopoversub}>
+        <Popper
+          placement={'left-start'}
+          open={opens} anchorEl={target} transition className={classes.mouseOverPopoversub}>
           <List component="nav" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
-            <Grid container style={{ width: "350px", background: "#fff", paddingBottom: "10px", zIndex: "10000" }}>
-              {props.data && props.data.map((val, index) =>
+            {props.data && <Grid container style={{ width: "350px", background: "#fff", padding: "10px", zIndex: "10000" }}>
+              {props.data && props.data.imageContainer && props.data.imageContainer.map((val, index) =>
                 <Grid item xs={4}>
                   <Grid container justify="center" alignContent="center" alignItems="center" style={{ cursor: "pointer" }}>
                     <Grid item style={{ justifyContent: "center", alignContent: "center", display: "flex" }}>
@@ -36,7 +38,19 @@ function HeaderHoverMenuItem(props) {
                   </Grid>
                 </Grid>
               )}
+              {props.data && props.data.onlyText && props.data.onlyText.map((val, index) =>
+                <ListItem className={classes.listedItemsub} component="li"
+                  onClick={() => { window.location.href = '/' + val.url }}
+                >
+                  <ListItemText variant >
+                    <Typography className={classes.listedItemsvalue} >
+                      {val.content.toUpperCase()}
+                    </Typography>
+                  </ListItemText>
+                </ListItem>
+              )}
             </Grid>
+            }
           </List>
         </Popper>
       </Grid>
