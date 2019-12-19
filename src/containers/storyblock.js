@@ -49,24 +49,26 @@ class StoryBlock extends React.Component {
             ))}
           </Slideshow>
          </Grid>
-         <Grid item md={12} style={{marginTop:"12px"}}>
-           <Typography component="a" style={{color:"#394578",padding:"20px 0 20px 20px"}}>Stories</Typography>
-           <Typography component="a" style={{color:"#394578",padding:"20px 0 20px 20px"}}>Education</Typography>
-         </Grid>
-         <Grid item xs={12} sm={12} md={8}>
-              <MediaCard />
-              {/* <Grid container style={{background:"#ccc"}}>
-                  {
-                    dummy.map(data=>{
-                    return<Grid item style={{  width: "40px",border: "1px solid red",display:"flex",justifyContent:"center",margin:"15px 0", height: "36px",alignItems:"center"}}>{data.a}</Grid>
-                    })
-                  }
-              </Grid> */}
-         </Grid>
-         <Grid item  style={{width:"100%"}} item xs={"hidden"} sm={"hidden"} md={4}>
-           <Hidden smDown>
-           <SocialLinkFrame />
-           </Hidden>
+         <Grid container style={{maxWidth: "1170px",margin: "auto"}}>
+            <Grid item md={12} style={{marginTop:"12px"}}>
+              <Typography component="a" style={{color:"#394578",padding:"20px 0 20px 20px"}}>Stories</Typography>
+              <Typography component="a" style={{color:"#394578",padding:"20px 0 20px 20px"}}>Education</Typography>
+            </Grid>
+            <Grid item xs={12} sm={12} md={8}>
+                  <MediaCard />
+                  {/* <Grid container style={{background:"#ccc"}}>
+                      {
+                        dummy.map(data=>{
+                        return<Grid item style={{  width: "40px",border: "1px solid red",display:"flex",justifyContent:"center",margin:"15px 0", height: "36px",alignItems:"center"}}>{data.a}</Grid>
+                        })
+                      }
+                  </Grid> */}
+            </Grid>
+            <Grid item  style={{width:"100%"}} item xs={"hidden"} sm={"hidden"} md={4}>
+              <Hidden smDown>
+              <SocialLinkFrame />
+              </Hidden>
+            </Grid>
          </Grid>
         <Grid item xs={12} style={{ marginTop: 20 }}>
           <Footer />

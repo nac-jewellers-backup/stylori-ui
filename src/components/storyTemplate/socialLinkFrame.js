@@ -32,7 +32,7 @@ export default function SocialLinkFrame() {
                 </Grid>
             </Grid>
             <Grid container>
-                <Grid item style={{ marginTop: "30px"}}>
+                <Grid item  md={12}style={{ marginTop: "30px"}}>
                 <Typography style={{color:"#394578"}} component="h4">Stylori News</Typography>
                 </Grid>
                 <Grid item  style={{width: "343px",border:"1px solid #ccc",marginTop: "5px"}}>
