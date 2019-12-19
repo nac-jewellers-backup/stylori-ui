@@ -1,11 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react';
+import ReactPaginate from  'react-paginate'; 
+import { Grid } from '@material-ui/core';
 
-export default class pagination extends Component {
-  render() {
-    return (
-      <div>
+export default function Pagination () {
+  const style = 
+    {
+      "container":{
+        display:"flex",
+        listStyle:"none"
 
-      </div>
-    )
-  }
+      }
+    }
+  
+  return(
+    <>
+      <Grid container>
+          <Grid item>
+             <ReactPaginate 
+          containerClassName={style.container}
+          />
+          </Grid>
+        </Grid>
+    </>
+  )
 }

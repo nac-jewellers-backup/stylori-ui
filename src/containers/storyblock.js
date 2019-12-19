@@ -9,7 +9,7 @@ import { homePageStylori } from "./dummydatahome";
 import MediaCard from '../components/storyTemplate/educationcard';
 import { withStyles } from '@material-ui/core/styles';
 import SocialLinkFrame from '../components/storyTemplate/socialLinkFrame';
-import PaginacionTabla from '../components/storyTemplate/pagination';
+import Pagination from '../components/storyTemplate/pagination';
 // const styles = (theme)=>({
 //   flexContainer:{
     // display:"flex",
@@ -56,13 +56,6 @@ class StoryBlock extends React.Component {
             </Grid>
             <Grid item xs={12} sm={12} md={8}>
                   <MediaCard />
-                  {/* <Grid container style={{background:"#ccc"}}>
-                      {
-                        dummy.map(data=>{
-                        return<Grid item style={{  width: "40px",border: "1px solid red",display:"flex",justifyContent:"center",margin:"15px 0", height: "36px",alignItems:"center"}}>{data.a}</Grid>
-                        })
-                      }
-                  </Grid> */}
             </Grid>
             <Grid item  style={{width:"100%"}} item xs={"hidden"} sm={"hidden"} md={4}>
               <Hidden smDown>
