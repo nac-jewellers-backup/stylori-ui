@@ -56,7 +56,8 @@ class ProductImageZoom extends React.Component {
       arrows: false,
     }
 // alert(JSON.stringify(data.Image_resolution))
-    const props = {"width":400,"height":250,"zoomWidth":500,"img":"1.jpg","offset":{"vertical":0,"horizontal":10},"zoomStyle":"opacity: 0.5;border: 1px solid black;"}
+    const props = { "width": data[0].image_resolution, "height": data[0].image_resolution, "zoomWidth":data[0].image_resolution, "img": `${showimage}`, "zoomStyle": "z-index:2" }
+    debugger
     return (
       <div>
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
@@ -86,7 +87,7 @@ class ProductImageZoom extends React.Component {
               <div className='overly-img' id="overlay"
                 style={{ backgroundImage: `url(${showimage})` }} onMouseOut={event => this.zoomOut(event)}>
                 </div> */}
-              <div ><ReactImageZoom {...props} /></div>
+              <div style={{ border: "1px solid #ccc", width: "100%" }}><ReactImageZoom {...props} /></div>
               <div>
                 <Grid container spacing={12}>
                   {/* {data[0].productsubHeaderlist.map(val => (
