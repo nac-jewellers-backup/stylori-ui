@@ -24,14 +24,16 @@ self.addEventListener('install', function(event) {
     e.respondWith(caches.match(e.request).then(async res => {
         if (res) {
             console.info('FOUND', e.request.url);
-            const cacheKeys = await caches.keys();
+            const cacheKeys = await caches.keys(); 
             const ca = await caches.open(cacheKeys[0]);
             const cb = await caches.open(cacheKeys[1]);
-            const inA = Boolean((await ca.keys()).find(r => r.url === e.request.url))
-            const inB = Boolean((await cb.keys()).find(r => r.url === e.request.url))
+            const inA = Boolean((await ca.keys()).find(r => r.url !== e.request.url))
+            const inB = Boolean((await cb.keys()).find(r => r.url !== e.request.url))
             
             console.info('LOADING CACHES FROM',inA ? cacheKeys[0] : cacheKeys[1]);
             return caches.open(inA ? cacheKeys[0] : cacheKeys[1]).then(c => {
+                console.info('LOADING CACHES FROM',inA ? cacheKeys[0] : cacheKeys[1]);
+                console.info(' console.info( e);',inA ? cacheKeys[0] : cacheKeys[1]);
                 window.location.reload(true)
                 c.put(e.request.url, res.clone());
                 return res;
@@ -45,3 +47,20 @@ self.addEventListener('install', function(event) {
         }
     }))
 })
+self.addEventListener('activate', event => {
+    console.log('Activating new service worker...');
+  
+    const cacheWhitelist = ['sw-precache-v3-sw-precache-webpack-plugin'];
+  
+    event.waitUntil(
+      caches.keys().then(cacheNames => {
+        return Promise.all(
+          cacheNames.map(cacheName => {
+            if (cacheWhitelist.indexOf(cacheName) === -1) {
+              return caches.delete(cacheName);
+            }
+          })
+        );
+      })
+    );
+  });

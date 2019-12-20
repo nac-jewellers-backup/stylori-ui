@@ -53,6 +53,7 @@ class Component extends React.Component {
     };
 
     handleClick = (event, key) => {
+        debugger
         console.log('lklkkoik9', this.state.skuSize)
         var filters = { ...this.props.filters }
         if (key === 'purity') {
@@ -67,15 +68,17 @@ class Component extends React.Component {
             filters['defaultVariants']['diamondType'] = diamondTypes
             this.setState({
                 purity: kv,
-                diamondTypes: diamondTypes
             })
             this.props.setFilters(filters);
         }
         else {
             filters['defaultVariants'][key] = event.target.id
             // this.setState({skuSize:filters})
-            this.setState({ skuSize: event.target.id })
+            this.setState({ skuSize: event.target.id ,
+                diamondType: filters.defaultVariants.diamondType
+            })
             this.props.setFilters(filters);
+            console.log("filters.defaultVariants.diamondType",filters.defaultVariants.diamondType)
         }
         // const ringSize = event.target.name;
     }
