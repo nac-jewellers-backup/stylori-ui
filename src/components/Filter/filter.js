@@ -429,17 +429,17 @@ class Component extends React.Component {
     //     data.label
     //   );
     // })
-    const selected_list_filter = () => {
-      debugger
-      var filter_open
-      let { selected } = this.state;
-      if (selected !== undefined || selected !== null) {
-        selected.map(val => (
-          filter_open = val
-        ))
-      }
-      return filter_open
-    }
+    // const selected_list_filter = () => {
+    //   debugger
+    //   var filter_open
+    //   let { selected } = this.state;
+    //   if (selected !== undefined || selected !== null) {
+    //     selected.map(val => (
+    //       filter_open = val
+    //     ))
+    //   }
+    //   return filter_open
+    // }
     return (
       <>
         <Hidden smDown>
@@ -517,7 +517,7 @@ class Component extends React.Component {
                                         >{row}
                                         </Typography>
                                       </ListItemText>
-                                      {selected_list_filter() ? <ExpandLess className="fil-drawer-arrow" /> :
+                                      {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
                                         <ExpandMore className="fil-drawer-arrow" />}
                                     </ListItem>
                                     <>

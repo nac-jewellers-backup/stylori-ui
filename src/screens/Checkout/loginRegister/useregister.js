@@ -5,8 +5,8 @@ import { ADDRESSDETAILS } from 'queries/productdetail';
 import { resetWarningCache } from 'prop-types';
 import { CartContext } from 'context'
 let user_ids = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
-let namesOf_first = localStorage.getItem("namesOf_first")&&localStorage.getItem("namesOf_first").length>0 ? JSON.parse(localStorage.getItem("namesOf_first")).length>0 : ""
-let namesOf_last = localStorage.getItem("namesOf_last")&&localStorage.getItem("namesOf_last").length>0 ? JSON.parse(localStorage.getItem("namesOf_last")).length>0 : ""
+let namesOf_first = localStorage.getItem("namesOf_first") && localStorage.getItem("namesOf_first").length > 0 ? JSON.parse(localStorage.getItem("namesOf_first")) : ""
+let namesOf_last = localStorage.getItem("namesOf_last") && localStorage.getItem("namesOf_last").length > 0 ? JSON.parse(localStorage.getItem("namesOf_last")) : ""
 const useRegister = (changePanel, props) => {
     const [values, setValues] = React.useState({
         email: "",

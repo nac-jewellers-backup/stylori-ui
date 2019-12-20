@@ -52,7 +52,7 @@ const Addressforms = (changePanel) => {
             addresstype: 2,
             errortext: { pinerr: "", pinerr1: "" },
         },
-        addrs: valuegust.length > 0 ? false : true,
+        addrs: valuegust && valuegust.length > 0 ? false : true,
         // addrs: true,
         checkValue: true,
         checkValue1: true,
@@ -86,7 +86,7 @@ const Addressforms = (changePanel) => {
                 ...values
             })
         } else {
-            if (con_gust !== true) { localStorage.setItem("select_addres", JSON.stringify("")) }
+            // if (con_gust !== true) { localStorage.setItem("select_addres", JSON.stringify("")) }
         }
     }, [addresData, userdata, addressva, removedata])
     React.useEffect(() => {
@@ -163,7 +163,7 @@ const Addressforms = (changePanel) => {
         setValues({ ...values, values })
     }
     const handleSubmit = (e) => {
-        var addObjgust = localStorage.getItem('gustaddres') ? JSON.parse(localStorage.getItem('gustaddres')) : "";
+        var addObjgust_local = localStorage.getItem('gustaddres') ? JSON.parse(localStorage.getItem('gustaddres')) : "";
         debugger
         if (con_gust !== true) {
             var addressOne = values.addressOne
@@ -211,16 +211,16 @@ const Addressforms = (changePanel) => {
         } else {
             if (values.checkValue == true) {
                 // addObjgust['address'] = [a1];
-                if (values.addressOne && addObjgust) {
-                    addObjgust.address.push(values.addressOne);
-                } else if (values.addressOne) {
+                if (values && values.addressOne && addObjgust_local.length > 0) {
+                    addObjgust && addObjgust.address.push(values.addressOne);
+                } else if (values && values.addressOne) {
                     addObjgust["address"] = [values.addressOne]
                 }
 
             } if (values.checkValue == false) {
                 // setAddress({ a1, a2 })
                 // addObjgust['address'] = [a1, a2];
-                if (values.addressTwo && addObjgust) {
+                if (values.addressTwo && addObjgust_local.length > 0) {
                     addObjgust.address.push(values.addressOne, values.addressTwo);
                 } else if (values.addressTwo) {
                     addObjgust["address"] = [values.addressOne, values.addressTwo]
@@ -246,6 +246,7 @@ const Addressforms = (changePanel) => {
     const selectaddreses = (val_addrs, num) => {
         debugger
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
+        addObjall['address_id'] = val_addrs && val_addrs.id ? val_addrs.id : ""
         if (values.checkValue1 === true) {
             values["Id2"] = val_addrs && val_addrs.id
             setValues({

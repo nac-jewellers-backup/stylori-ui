@@ -92,7 +92,7 @@ class Addressdetails extends React.Component {
                         </>
                     )}
                 </Grid>
-                {values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :
+                {value||values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :
                     <Button onClick={() => this.props.redirectForm1()} className={`add-new-address ${classes.normalfonts}`}>
                         <div></div>  Add New Address
                    </Button>}<br />
@@ -165,7 +165,7 @@ class Addressdetails extends React.Component {
                                     )}
                                 </>
                             </Grid>
-                            {values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :
+                            {value||values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :
                                 <Button onClick={() => this.props.redirectForm1()} className={`add-new-address ${classes.normalfonts}`}>
                                     <div></div>  Add New Address
                    </Button>}
