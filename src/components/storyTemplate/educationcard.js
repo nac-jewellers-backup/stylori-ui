@@ -94,7 +94,7 @@ export default function MediaCard() {
               </Card>
             </Grid>
         )}
-        <Grid container item>
+        <Grid container item justify="flex-end">
         <TablePagination
         rowsPerPageOptions={[1, 2, 4]}
         component="div"

@@ -47,15 +47,22 @@ class Header extends Component {
             anchorOne: null,
             targetopen: null,
             targetopenSubmenu: null,
-            subTitleData: "",
-            subMenuTarget: ""
+            subTitleData: null,
+            subMenuTarget: null
 
         }
         this.topZero = React.createRef();
     }
     componentDidMount() {
         window.addEventListener("scroll", this.scrolling);
+        if(!this.state.Menuopen && !this.state.submenuOpen){
+            return this.setState({subTitleData: "", subMenuTarget: ""})
+        }
+        else{
+            return true
+        }
     }
+    
     handleDrawerOpen = () => {
         this.setState({ open: true })
     }
@@ -89,7 +96,7 @@ class Header extends Component {
 
     }
     scrolling = () => {
-        if(window.innerWidth > 959){
+        if (window.innerWidth > 959) {
             if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                 document.getElementById("headerContainer").style.position = "fixed";
                 document.getElementById("headerContainerTop").style.height = "74px";
@@ -115,18 +122,20 @@ class Header extends Component {
                 document.getElementById("fullcontainer").style.height = "auto";
             }
         }
-        else{
-            return""
+        else {
+            return ""
         }
-       
+
     }
 
     submenuDetails = (data, target) => {
         this.setState({ subTitleData: data, subMenuTarget: target })
+        console.log(this.state.subTitleData,this.state.subMenuTarget)
+
     }
-    // submenuDetailsDelete = () => {
-    //     this.setState({ subTitleData: "", subMenuTarget: "" })
-    // }
+    submenuDetailsDelete = () => {
+        this.setState({ subTitleData: null, subMenuTarget: null })
+    }
 
     render() {
 
@@ -175,7 +184,7 @@ class Header extends Component {
                                                     {
                                                         (menuListHeader.map(listName => {
                                                             return (
-                                                                <a href={listName} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, targetopen: event.currentTarget, Checked: true, listHoverItem: listName.replace(/ +/g, "") }) }}>{listName}</a>
+                                                                <a href={listName} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, targetopen: event.currentTarget, listHoverItem: listName.replace(/ +/g, "") }) }}>{listName}</a>
                                                             )
 
                                                         }))
@@ -184,29 +193,28 @@ class Header extends Component {
                                                 {
 
                                                     this.state.Menuopen && menuLists[this.state.listHoverItem] ?
-                                                        <HeaderHoverMenuItem Checked={this.state.Checked} tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
-                                                            onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: true, targetopenSubmenu: event.currentTarget, Checked: true }) }}
-                                                            onMouseLeave={() => { this.setState({ Checked: false, targetopen: null }) }}
+                                                        <HeaderHoverMenuItem  tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
+                                                            onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: true, targetopenSubmenu: event.currentTarget }) }}
+                                                            onMouseLeave={() => { this.setState({ targetopen: null }) }}
                                                             opened={this.state.Menuopen}
-                                                            submenuDetailsDelete={() => { this.setState({ subTitleData: "", subMenuTarget: "" }) }}
                                                             targetopened={this.state.targetopen}
                                                             submenuDetails={this.submenuDetails}
-
                                                         />
                                                         :
                                                         ''
                                                 }
-                                                {this.state.Menuopen && this.state.submenuOpen &&
-                                                    <HeaderHoversubMenu opened={this.state.submenuOpen}
+                                                {this.state.Menuopen && this.state.submenuOpen ?
+                                                    <HeaderHoversubMenu 
                                                         opened={this.state.submenuOpen}
                                                         onMouseOver={(event) => { this.setState({ submenuOpen: true }) }}
                                                         listHoverItem={menuLists[this.state.listHoverItem]}
-                                                        Checked={this.state.Checked}
                                                         data={this.state.subTitleData}
                                                         subMenuTarget={this.subMenuTarget}
-                                                        targetopened={this.state.targetopenSubmenu}
-                                                        onMouseLeave={() => { this.setState({ submenuOpen: false, Checked: false, targetopen: null }) }} />
-                                                }
+                                                        targetopened={this.state.subMenuTarget}
+                                                        onMouseLeave={() => { this.setState({ submenuOpen: false, subTitleData: "", subMenuTarget: "" }) }}
+                                                    />
+                                                    :
+                                                    ""}
                                             </Grid>
                                         </Grid>
                                     </Grid>
