@@ -186,6 +186,9 @@ export const useStyles = makeStyles(theme => ({
   listedItemsub: {
     padding: "0px",
     fontSize: "0.7rem !important",
+    '&:hover': {
+      backgroundColor:"#000"
+    }
   },
   listedItemsvalue: {
     padding: "2px 16px 2px 16px",

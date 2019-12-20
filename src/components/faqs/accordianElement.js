@@ -104,8 +104,8 @@ export default function AccordianElement(props) {
                                                 }
                                             </Grid>
                                             <Grid item>
-                                                <Typography style={{ fontSize: "13px", color: "#666", paddingBottom: "10px" }}>
-                                                    {value.Answers}
+                                                <Typography  dangerouslySetInnerHTML={{ __html: value.Answers }} style={{ fontSize: "13px", color: "#666", paddingBottom: "10px" }}>
+                                                    {/* {value.Answers} */}
                                                 </Typography>
                                             </Grid>
                                         </Grid>

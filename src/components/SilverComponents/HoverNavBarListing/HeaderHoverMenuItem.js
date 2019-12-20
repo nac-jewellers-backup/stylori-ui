@@ -29,7 +29,7 @@ function HeaderHoverMenuItem(props) {
                 (props.listHoverItem !== undefined) &&
                 (props.listHoverItem['menuOne']).map(menuList =>
                   (
-                    <ListItem onMouseOver={(event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }} className={classes.listedItems}  component="li"
+                    <ListItem onMouseOver={(event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }}  className={classes.listedItems}  component="li"
                       onClick={() => { window.location.href = '/' + menuList.url }}
                     >
                       <ListItemText variant>
@@ -46,7 +46,7 @@ function HeaderHoverMenuItem(props) {
                 (props.listHoverItem !== undefined) &&
                 (props.listHoverItem['menuTwo']).map(menuList =>
                   (
-                    <ListItem onMouseOver={(event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }} className={classes.listedItemsub}  component="li"
+                    <ListItem onMouseOver={(event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }}   className={classes.listedItemsub}  component="li"
                       onClick={() => { window.location.href = '/' + menuList.url }}
                     >
                       <ListItemText variant >
