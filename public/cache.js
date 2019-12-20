@@ -27,11 +27,13 @@ self.addEventListener('install', function(event) {
             const cacheKeys = await caches.keys();
             const ca = await caches.open(cacheKeys[0]);
             const cb = await caches.open(cacheKeys[1]);
-            const inA = Boolean((await ca.keys()).find(r => r.url === e.request.url))
-            const inB = Boolean((await cb.keys()).find(r => r.url === e.request.url))
+            const inA = Boolean((await ca.keys()).find(r => r.url !== e.request.url))
+            const inB = Boolean((await cb.keys()).find(r => r.url !== e.request.url))
             
             console.info('LOADING CACHES FROM',inA ? cacheKeys[0] : cacheKeys[1]);
             return caches.open(inA ? cacheKeys[0] : cacheKeys[1]).then(c => {
+                console.info('LOADING CACHES FROM',inA ? cacheKeys[0] : cacheKeys[1]);
+                console.info(' console.info( e);',inA ? cacheKeys[0] : cacheKeys[1]);
                 window.location.reload(true)
                 c.put(e.request.url, res.clone());
                 return res;

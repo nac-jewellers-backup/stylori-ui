@@ -1135,6 +1135,12 @@ body {
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .06);
 }
 
+@media screen and (min-width:2631) {
+    .overall-box {
+        height: 1310px !important;
+    }
+}
+
 /* .page:hover,
     .page.gradient:hover {
         background: #394578 !important;
