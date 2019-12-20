@@ -32,11 +32,12 @@ export const
             {
                 "Title": "Frequently asked Questions",
                 "font": "h2",
-                "accordianIcon":"Arrows",
+                "accordianIcon": "Arrows",
+                //{"Arrows","Plus","none"}
                 "accordian": [
                     {
                         Questions: "What is Stylori ?",
-                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. \n\ We’re known for crafting \n modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
                     },
                     {
                         Questions: "What is Stylori ?",
@@ -51,7 +52,7 @@ export const
             {
                 "Title": "Help",
                 "font": "h4",
-                "accordianIcon":"Arrows",
+                "accordianIcon": "Arrows",
 
                 "accordian": [
                     {
@@ -72,7 +73,7 @@ export const
         ]
     }
 
-    export const
+export const
     deliveryreturns = {
         "carouselTop": {
             "setting": {
@@ -219,7 +220,7 @@ export const
         ]
     }
 
-    export const
+export const
     privacypolicy = {
         "carouselTop": {
             "setting": {
@@ -286,9 +287,9 @@ export const
             }
         ]
     }
-    
 
-    export const
+
+export const
     termsconditions = {
         "carouselTop": {
             "setting": {
@@ -336,13 +337,13 @@ export const
                     },
                 ],
             },
-            {   
+            {
                 // Title
                 "Title": "Help",
                 "font": "h4",
                 // Listing content
                 "accordian": [
-                    {   
+                    {
                         // Sub headings
                         SubTitle: "arun",
                         Questions: "What is Stylori ?",
@@ -360,10 +361,10 @@ export const
             }
         ]
     }
-    export const
+export const
     aboutus = {
-        "data":{
-            img:"https://alpha-assets.stylori.com/images/static/about-us.jpg",
-            content:" Stylori is one of the pioneers of everyday jewellery in India. Featuring jewellery that is contemporary and chic, Stylori is an exclusively online store for the modern Indian woman.Our jewellery is crafted from certified metals, gemstones and diamonds. With craftmanship honed over decades, Stylori's designs draw upon diverse influences from across India and the world. At our online store you can shop for jewellery from the comfort of your home worry-free with easy payment options and a reliable return policy."
+        "data": {
+            img: "https://alpha-assets.stylori.com/images/static/about-us.jpg",
+            content: " Stylori is one of the pioneers of everyday jewellery in India. Featuring jewellery that is contemporary and chic, Stylori is an exclusively online store for the modern Indian woman.Our jewellery is crafted from certified metals, gemstones and diamonds. With craftmanship honed over decades, Stylori's designs draw upon diverse influences from across India and the world. At our online store you can shop for jewellery from the comfort of your home worry-free with easy payment options and a reliable return policy."
         }
     }
