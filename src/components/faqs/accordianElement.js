@@ -98,7 +98,7 @@ export default function AccordianElement(props) {
                                         <Grid container style={{ display: "inline-block !important" }} className={classes.listeditems}>
                                             <Grid item>
                                                 {value.SubTitle &&
-                                                    <Typography style={{ fontWeight: 500, color: "#394578", fontSize: "16px", paddingBottom: "8px",paddingTop:"8px" }}>
+                                                    <Typography style={{ fontWeight: 600, color: "#394578", fontSize: "14px", paddingBottom: "8px",paddingTop:"8px" }}>
                                                         {value.SubTitle}
                                                     </Typography>
                                                 }

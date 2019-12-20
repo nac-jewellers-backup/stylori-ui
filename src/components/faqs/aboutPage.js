@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Header from "components/Header/header";
 import Footer from "components/Footer/Footer";
 import '../../containers/index.css'
+import {aboutus} from '../../containers/dummydatafaqs';
+
 const useStyles = makeStyles(theme => ({
    
 }));
@@ -21,7 +23,7 @@ export default function AboutPage(props) {
             <Grid container class="aboutMargin">
             <Grid container class="aboutFifty">
             <Grid item style={{padding:"0px 15px"}}>
-                <img style={{width:"100%"}} src="https://alpha-assets.stylori.com/images/static/about-us.jpg" />
+                <img style={{width:"100%"}} src={aboutus.data.img} />
             </Grid>
             </Grid>
             <Grid container class="aboutFifty">
@@ -29,9 +31,7 @@ export default function AboutPage(props) {
             <Grid item style={{padding:"0px 15px"}}>
                 <Typography variant="h5" style={{color:"#ed1165",marginBottom:"10px"}}>About Us</Typography>
                 <Typography style={{fontSize:"12px",}}>
-                Stylori is one of the pioneers of everyday jewellery in India. Featuring jewellery that is contemporary and chic, Stylori is an exclusively online store for the modern Indian woman.
-<br />
-Our jewellery is crafted from certified metals, gemstones and diamonds. With craftmanship honed over decades, Stylori's designs draw upon diverse influences from across India and the world. At our online store you can shop for jewellery from the comfort of your home worry-free with easy payment options and a reliable return policy.
+                    {aboutus.data.content}
                 </Typography>
             </Grid>
             

@@ -26,10 +26,10 @@ function FaqsBlock(props) {
             return ProductCare
         }
         else if (props.titleUrl === '/privacypolicy') {
-            return deliveryreturns
+            return privacypolicy
         }
         else if (props.titleUrl === '/termsconditions') {
-            return deliveryreturns
+            return termsconditions
         }
     }
 
