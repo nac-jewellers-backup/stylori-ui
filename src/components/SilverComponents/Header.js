@@ -51,7 +51,7 @@ class Header extends Component {
             subMenuTarget: null
 
         }
-        this.topZero = React.createRef();
+        this.topZero = React.createRef(); 
     }
     componentDidMount() {
         window.addEventListener("scroll", this.scrolling);
@@ -97,7 +97,7 @@ class Header extends Component {
     }
     scrolling = () => {
         if (window.innerWidth > 959) {
-            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
                 document.getElementById("headerContainer").style.position = "fixed";
                 document.getElementById("headerContainerTop").style.height = "74px";
                 document.getElementById("headerContainer").style.background = "#fff";
@@ -133,10 +133,8 @@ class Header extends Component {
         console.log(this.state.subTitleData,this.state.subMenuTarget)
 
     }
-    submenuDetailsDelete = () => {
-        this.setState({ subTitleData: null, subMenuTarget: null })
-    }
-
+    
+   
     render() {
 
         const { mainlist, Jewellery, subheader, menuListHeader, menuLists } = this.props.data;
@@ -184,7 +182,7 @@ class Header extends Component {
                                                     {
                                                         (menuListHeader.map(listName => {
                                                             return (
-                                                                <a href={listName} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, targetopen: event.currentTarget, listHoverItem: listName.replace(/ +/g, "") }) }}>{listName}</a>
+                                                                <a href={listName} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true,submenuOpen: false,subTitleData:null, targetopen: event.currentTarget, listHoverItem: listName.replace(/ +/g, "") }) }}>{listName}</a>
                                                             )
 
                                                         }))
@@ -195,10 +193,10 @@ class Header extends Component {
                                                     this.state.Menuopen && menuLists[this.state.listHoverItem] ?
                                                         <HeaderHoverMenuItem  tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
                                                             onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: true, targetopenSubmenu: event.currentTarget }) }}
-                                                            onMouseLeave={() => { this.setState({ targetopen: null }) }}
                                                             opened={this.state.Menuopen}
                                                             targetopened={this.state.targetopen}
                                                             submenuDetails={this.submenuDetails}
+                                                            onMouseLeave={() => { this.setState({ targetopen: null }) }}
                                                         />
                                                         :
                                                         ''
@@ -226,13 +224,14 @@ class Header extends Component {
                         </AppBar>
                     </div>
                 </Hidden>
+                <div style={{display:"none"}}><div class="headerContainer logoImage logoDiv1 containerTitle titleTop"></div> </div>
+                
                 <Hidden mdUp>
                     <div className="header-appbar-sticky1">
                         <AppBar
                             className="header-appbar-moblie1"
                             id="smallScreen"
                         >
-
                             <Toolbar className="toolbarsetting" >
                                 <Grid container item xs={2} sm={1} md={1} lg={1} xl={1} justify="center" alignItems="center">
                                     <IconButton

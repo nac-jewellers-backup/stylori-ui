@@ -40,13 +40,17 @@ export const
                         Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. \n\ We’re known for crafting \n modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
                     },
                     {
-                        Questions: "What is Stylori ?",
-                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                        Questions: "Where is Stylori located? Do you have a physical store where I can come and buy?",
+                        Answers: "Stylori is headquartered in Chennai, India. Stylori is exclusively available only on the internet. We do not have a physical store as of now.",
                     },
                     {
-                        Questions: "What is Stylori ?",
-                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                        Questions: "Where is the jewellery made?",
+                        Answers: "We make our jewellery through our network of craftsmen across India, while we source diamonds and gemstones from across the globe.",
                     },
+					{
+                        Questions: "Do you have a catalog yet?",
+                        Answers: "We do not have any catalog as of now. However, the filter options in our website can help you find your desired product more quickly. You can find the filter option on the top right of any product list page.",
+                    }
                 ],
             },
             {
@@ -56,20 +60,52 @@ export const
 
                 "accordian": [
                     {
-                        SubTitle: "arun",
-                        Questions: "What is Stylori ?",
-                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                        Questions: "Can I avail any additional discounts from Stylori besides what is mentioned?",
+                        Answers: "Stylori offers discounts on products and product categories on select occasions. If you have registered with us, we will notify you whenever we have an offer. However, we do not offer any additional discounts unless explicatively mentioned.",
                     },
                     {
-                        Questions: "What is Stylori ?",
-                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                        Questions: "Do you sell gift cards or gift certificates?",
+                        Answers: "Not as of now. If you are registered with us, we will keep you posted as soon as we introduce gift cards or gift certificates.",
                     },
                     {
-                        Questions: "What is Stylori ?",
-                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                        Questions: "I’m not able to find the piece I wish to purchase. Can I still order it?",
+                        Answers: "The particular piece you’re looking for might have been discontinued. However, we will try our best to make it available for you on request.",
                     },
+					
+                ],
+            },
+			,
+			{
+                "Title": "Exchange And Returns",
+                "font": "h4",
+                "accordianIcon": "Arrows",
+
+                "accordian": [
+                    {
+                        Questions: "You say guaranteed money back, what do you mean?",
+                        Answers: "At the core of our service offering is a “delight the customer” motto. So we have a unique hassle-free product return and refund policy.<br/> Return to Refund 25 days - Our product and service will seldom make you return our product, but in the unlikely event of you wanting to return, we will ensure that 100% of your monies are returned to you within 25 days. The only request to you to make this a seamless experience is to return the product without any custom engraving, in its original condition without damage and with the original certificates and packing.For all eligible refunds/returns, just hand it over to our courier. No shipping charges",
+                    },
+                    {
+                        Questions: "What’s the guarantee that my product will reach safely ?",
+                        Answers: "Your jewellery is packed and shipped in durable, tamper-proof packing that ensures the contents remain safe and intact. Your jewellery is fully insured till it reaches your doorstep. Please do not accept any package that has been tampered. In case you find any pilferage, please contact our customer care immediately.",
+                    },
+                    {
+                        Questions: "Is it possible to change my shipping address after placing the order?",
+                        Answers: "Until the time your order is ready to be shipped, the shipping address can be changed. Please contact our Customer care for help. For orders that are dispatched, we will be able to reship it to your new address as soon as the consignment is returned back to us.",
+                    },
+					
+					{
+                        Questions: "How long does it take to deliver customized products?",
+                        Answers: "Our customized products would take us 14 to 30 business days to safely deliver to you. This includes the time taken to individually handcraft each product and ship it to you. Please note that the business days mentioned do not include Sundays and festivals",
+                    },
+					{
+                        Questions: "How is the delivery usually done?",
+                        Answers: "Our deliveries are handled by reputed insured couriers like Bluedart. We aim to deliver to your pincode. If there is no courier service available in your area, we do apologize for the inconvenience caused.Call us to check how we can help you in this scenario.",
+                    },
+					
                 ],
             }
+			
         ]
     }
 
