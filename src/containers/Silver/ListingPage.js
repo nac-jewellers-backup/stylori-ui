@@ -18,7 +18,7 @@ class ListingPage extends React.Component {
     render() {
         return (
             <Grid container>
-                <Grid item style={{ width: "100%", position: 'sticky', top: 0, zIndex: 10000 }}>
+                <Grid item style={{ width: "100%" }}>
                     <Header />
                 </Grid>
                 <Container>
@@ -26,13 +26,13 @@ class ListingPage extends React.Component {
                         <Filter data={this.props.dataFilters} />
                     </Grid>
                     <Grid item xs={12}>
-                        <ProductLayout data={this.props.data}/>
+                        <ProductLayout data={this.props.data} />
                     </Grid>
                 </Container>
                 <Hidden smDown>
-                <Grid item>
-                    <Footer silver={true} />
-                </Grid>
+                    <Grid item>
+                        <Footer silver={true} />
+                    </Grid>
                 </Hidden>
             </Grid>
         );
@@ -42,20 +42,20 @@ class ListingPage extends React.Component {
 
 const Components = (props) => {
 
-    let { ListingPageCtx: { data,filters, loading, error, dataArr, mappedFilters, cartcount, loadingfilters }, setloadingfilters } = React.useContext(ListingPageContext);
-    
+    let { ListingPageCtx: { data, filters, loading, error, dataArr, mappedFilters, cartcount, loadingfilters }, setloadingfilters } = React.useContext(ListingPageContext);
+
     let content;
     var arrFilters = Array(mappedFilters)
     const mappedFiltersList = FilterData(arrFilters)
     var mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
-          mapped =async ()=>await productList(data, CDN_URL);
+            mapped = async () => await productList(data, CDN_URL);
         }
-      }
-      if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
+    }
+    if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
     // content = <div>Loading...</div>;
-    else content = <ListingPage data={dataArr} dataFilters={mappedFiltersList}/>;
+    else content = <ListingPage data={dataArr} dataFilters={mappedFiltersList} />;
     return content;
 };
 
