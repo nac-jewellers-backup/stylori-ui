@@ -104,11 +104,7 @@ export default function AccordianElement(props) {
                                         }
                                     </Grid>
                                     <Grid item>
-                                        <Typography style={{ fontSize: "13px", color: "#666", paddingBottom: "10px" }}>
-                                            {value.Answers.replace(/['"]+/g, '')}
-
-                                            {/* {alert(JSON.stringify(value.Answers))}
-                                            Stylori.com is the ultimate online <br />jewellery store for everyday */}
+                                        <Typography dangerouslySetInnerHTML={{ __html: value.Answers }} style={{ fontSize: "13px", color: "#666", paddingBottom: "10px" }}>
                                         </Typography>
                                     </Grid>
                                 </Grid>
