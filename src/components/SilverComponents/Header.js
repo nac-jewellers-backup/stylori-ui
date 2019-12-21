@@ -51,18 +51,18 @@ class Header extends Component {
             subMenuTarget: null
 
         }
-        this.topZero = React.createRef(); 
+        this.topZero = React.createRef();
     }
     componentDidMount() {
         window.addEventListener("scroll", this.scrolling);
-        if(!this.state.Menuopen && !this.state.submenuOpen){
-            return this.setState({subTitleData: "", subMenuTarget: ""})
+        if (!this.state.Menuopen && !this.state.submenuOpen) {
+            return this.setState({ subTitleData: "", subMenuTarget: "" })
         }
-        else{
+        else {
             return true
         }
     }
-    
+
     handleDrawerOpen = () => {
         this.setState({ open: true })
     }
@@ -131,8 +131,8 @@ class Header extends Component {
     submenuDetails = (data, target) => {
         this.setState({ subTitleData: data, subMenuTarget: target })
     }
-    
-   
+
+
     render() {
 
         const { mainlist, Jewellery, subheader, menuListHeader, menuLists } = this.props.data;
@@ -180,7 +180,7 @@ class Header extends Component {
                                                     {
                                                         (menuListHeader.map(listName => {
                                                             return (
-                                                                <a href={listName} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true,submenuOpen: false,subTitleData:null, targetopen: event.currentTarget, listHoverItem: listName.replace(/ +/g, "") }) }}>{listName}</a>
+                                                                <a href={listName} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: false, subTitleData: null, targetopen: event.currentTarget, listHoverItem: listName.replace(/ +/g, "") }) }}>{listName}</a>
                                                             )
 
                                                         }))
@@ -189,7 +189,7 @@ class Header extends Component {
                                                 {
 
                                                     this.state.Menuopen && menuLists[this.state.listHoverItem] ?
-                                                        <HeaderHoverMenuItem  tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
+                                                        <HeaderHoverMenuItem tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
                                                             onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: true, targetopenSubmenu: event.currentTarget }) }}
                                                             opened={this.state.Menuopen}
                                                             targetopened={this.state.targetopen}
@@ -200,7 +200,7 @@ class Header extends Component {
                                                         ''
                                                 }
                                                 {this.state.Menuopen && this.state.submenuOpen ?
-                                                    <HeaderHoversubMenu 
+                                                    <HeaderHoversubMenu
                                                         opened={this.state.submenuOpen}
                                                         onMouseOver={(event) => { this.setState({ submenuOpen: true }) }}
                                                         listHoverItem={menuLists[this.state.listHoverItem]}
@@ -222,8 +222,8 @@ class Header extends Component {
                         </AppBar>
                     </div>
                 </Hidden>
-                <div style={{display:"none"}}><div class="headerContainer logoImage logoDiv1 containerTitle titleTop"></div> </div>
-                
+                <div style={{ display: "none" }}><div class="headerContainer logoImage logoDiv1 containerTitle titleTop"></div> </div>
+
                 <Hidden mdUp>
                     <div className="header-appbar-sticky1">
                         <AppBar
@@ -248,12 +248,13 @@ class Header extends Component {
                                     <div className="mobli-icon1">
                                         <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center" }}>
                                             <div className={`head-icons1 ${classes.headIcons}`} >
-                                                <InputBase
+                                                {/* <InputBase
                                                     className={`searchmobile`}
                                                     placeholder=" SEARCH"
-                                                    endAdornment={<InputAdornment position="end"><div className={classes.searchcontainTop}><Seach className={"searchsvgmobile"} />
-                                                    </div></InputAdornment>}
-                                                />
+                                                    endAdornment={<InputAdornment position="end"></InputAdornment>}
+                                                /> */}
+                                                <div className={classes.searchcontainTop}><Seach className={"searchsvgmobile"} />
+                                                    </div>
                                                 <i class="fa fa-user"></i>
                                                 <i class="fa fa-heart"></i>
                                                 <i class="fa fa-shopping-cart"></i>

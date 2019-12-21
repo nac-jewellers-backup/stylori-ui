@@ -37,7 +37,7 @@ export const
                 "accordian": [
                     {
                         Questions: "What is Stylori ?",
-                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. \n\ We’re known for crafting \n modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
                     },
                     {
                         Questions: "Where is Stylori located? Do you have a physical store where I can come and buy?",
@@ -76,14 +76,14 @@ export const
             },
             ,
             {
-                "Title": "Exchange And Returns",
+                "Title": "Delivery Related Queries",
                 "font": "h4",
                 "accordianIcon": "Arrows",
 
                 "accordian": [
                     {
-                        Questions: "You say guaranteed money back, what do you mean?",
-                        Answers: "At the core of our service offering is a “delight the customer” motto. So we have a unique hassle-free product return and refund policy.<br/> Return to Refund 25 days - Our product and service will seldom make you return our product, but in the unlikely event of you wanting to return, we will ensure that 100% of your monies are returned to you within 25 days. The only request to you to make this a seamless experience is to return the product without any custom engraving, in its original condition without damage and with the original certificates and packing.For all eligible refunds/returns, just hand it over to our courier. No shipping charges",
+                        Questions: "What are the delivery charges?",
+                        Answers: "Stylori provides free shipping within India.",
                     },
                     {
                         Questions: "What’s the guarantee that my product will reach safely ?",
@@ -104,7 +104,114 @@ export const
                     },
 
                 ],
-            }
+            }, {
+                "Title": "Exchange and Returns",
+                "font": "h4",
+                "accordianIcon": "Arrows",
+
+                "accordian": [
+                    {
+                        Questions: "You say guaranteed money back, what do you mean?",
+                        Subtitle: "25 D R2R",
+                        Answers: "At the core of our service offering is a “delight the customer” motto. So we have a unique hassle-free product return and refund policy.Return to Refund 25 days - Our product and service will seldom make you return our product, but in the unlikely event of you wanting to return, we will ensure that 100% of your monies are returned to you within 25 days. The only request to you to make this a seamless experience is to return the product without any custom engraving, in its original condition without damage and with the original certificates and packing.For all eligible refunds/returns, just hand it over to our courier. No shipping charges",
+                    },
+                    {
+                        Questions: "What should I do to return the product back to Stylori within 25 days?",
+                        Answers: "Simple and unique Process - 'Simplicity is the ultimate sophistication' Just call Stylori’s Customer Delight Owner and they will guide you through a simple two-step process. Pack per instructions and await the courier to ring your bell to collect the return at your doorstep.",
+                    },
+                    {
+                        Questions: "How long will it take to get refunds, if any?",
+                        Answers: "UThe refunded amount will be directly credited to your bank account after we receive your jewellery. Please mail or call our customer care team with your bank account and IFSC code which can be found printed on your cheque book.",
+                    },
+
+                    {
+                        Questions: "Can I exchange any of my products after 25 days of purchase?",
+                        Subtitle: "YOUR LIFELONG-EVERGREEN-STYLE WARDROBE",
+                        Answers: "Stylori believes in latest fashion and style. Hence a unique style-update program.When you believe that you want to update your jewellery wardrobe, just exchange. Just send us the product. The transparent value card will give you an estimate based on purchase price of the components of your jewellery at actual weight after reducing wear and tear charge.The amount will be credited to your customer loyalty account and can be used for any future purchase",
+                    },
+                ],
+            },
+            {
+                "Title": "Jewellery",
+                "font": "h4",
+                "accordianIcon": "Arrows",
+
+                "accordian": [
+                    {
+                        Questions: "Am I restricted to the metals diamonds and gemstones suggestions offered by Stylori, or can it be made to order?",
+                        Answers: "Not as of now. We are working on it. We will be glad to inform you as soon as we initiate this service."
+                    },
+
+                    {
+                        Questions: "Do you provide chains when I purchase Pendants?",
+                        Answers: "While some pendants come with a chain, most don't. We would soon have a collection of chains to suit the Stylori pendants."
+                    },
+                    {
+                        Questions: "I can’t find my ring size, can you custom make it to my size ?",
+                        Answers: "We are sorry that this is not possible as of now. We will be glad to inform you as soon as we initiate this service."
+                    },
+                    {
+                        Questions: "How do I find out my ring size?",
+                        Answers: "You can call our customer service or chat with them; we have a complimentary ring sizer that we'd be happy to send across to you."
+                    },
+                    {
+                        Questions: "Can I re-size my Ring?",
+                        Answers: "If your ring doesn’t really fit, we would definitely replace the ring with the new size, with free to and fro shipping. If you require a bigger ring, we will only charge you the additional price of the new ring, as listed on our website. For a smaller ring, we will be happy to refund you the additional amount paid by you while placing the initial order. This is applicable on re-sizing requests received within 25 days of shipping date. However, if the ring size is not listed on our website, we will not be able to provide you with a replacement. In this scenario, contact our customer care and they will be happy to help you."
+                    },
+                    {
+                        Questions: "Will I end up buying any conflict/blood diamond when I buy from Stylori?",
+                        Answers: "Stylori.com uses only conflict-free diamonds which are obtained from legitimate diamond sources that have been certified through the worldwide recognized Kimberley Process Certification Scheme (KPCS).To know more about Conflict free diamonds visit www.kimberleyprocess.com"
+                    },
+                    {
+                        Questions: "How can I be sure that the package I receive is from Stylori?",
+                        Answers: "Stylori packages come in an exclusive tin box with original invoice, care instructions and certificate for each jewel purchased."
+                    },
+                    {
+                        Questions: "Who certifies the jewellery that is sold at Stylori ?",
+                        Answers: "Every piece of jewellery bought from Stylori.com is certified by SGL."
+                    },
+                    {
+                        Questions: "I lost my jewellery certificate, how can I get a duplicate?",
+                        Answers: "Yes we can arrange a duplicate for you for Rs 500. It will come with copy/duplicate written across the certificate as a watermark."
+                    }
+                ],
+            },
+            {
+                "Title": "Payments",
+                "font": "h4",
+                "accordianIcon": "Arrows",
+                "accordian": [
+                    {
+                        Questions: "How do I pay for what I buy at Stylori?",
+                        Answers: "We offer multiple methods of payment like: Credit Card & Debit Card, Net Banking and cash on delivery.We assure you that all Credit/Debit card details remain confidential and private. Stylori uses a payment gateway, which uses SSL encryption technology to protect your card information.We accept VISA, AMEX, Diners Club and Master Card (Indian cards only). All Credit/Debit card details remain confidential and private.",
+                    },
+                    {
+                        Questions: "Will the price I see today change for a particular jewellery all of sudden?",
+                        Answers: "Prices on Stylori.com are subject to change without notice. Jewellery prices are determined by market prices of the metals diamonds and gemstones that we use. The price of Stylori merchandise you buy will be subject to the price of the merchandise on the given day( as listed on the website).",
+                    },
+
+                ],
+            },
+            {
+                "Title": "After Purchase",
+                "font": "h4",
+                "accordianIcon": "Arrows",
+                "accordian": [
+                    {
+                        Questions: "If my item’s price goes down later, will you match the price?",
+                        Answers: "Stylori does not price match. All our pricing are calculated using current precious metal and gem prices, these prices do change from time to time and we correct our prices according to the market value.",
+                    },
+                    {
+                        Questions: "What if what I purchase turned out defective?",
+                        Answers: "We take great pride in our workmanship, however, in an unforeseen scenario, if there’s any problem with the quality of workmanship, we'll fix the defect for free and pay the shipping too. If you are still not satisfied with product, you can return the product to us within 25 days, we have a 25 day Money Back Guarantee.This is applicable for orders within India only.",
+                    },
+                    {
+                        Questions: "Should I send my ring to Stylori to resize? Can’t I get that done with my local jeweler?",
+                        Answers: "We wouldn’t advise you to do that. This would void your 25 day money back guarantee and your lifetime exchange.",
+                    },
+
+                ],
+            },
 
         ]
     }
