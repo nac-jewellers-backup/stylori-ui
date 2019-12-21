@@ -18,15 +18,14 @@ const RouterApp = React.lazy(() => import('router'));
 //   uri: ``,
 // });
 
-const theme_func = (props) =>{
-  console.log('props.match.path', props.match.path)
+const theme_func = () => {
 
-if(props.location.pathname === "/silverjewellery" || props.location.pathname === "/silver-jewellery"){
-  return silverThemes
-}
-else{
-  return jewelleryThemes
-}
+  if (window.location.pathname === "/silverjewellery") {
+    return silverThemes
+  }
+  else {
+    return jewelleryThemes
+  }
 
 }
 
