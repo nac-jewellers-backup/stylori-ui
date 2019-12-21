@@ -47,7 +47,7 @@ export const
                         Questions: "Where is the jewellery made?",
                         Answers: "We make our jewellery through our network of craftsmen across India, while we source diamonds and gemstones from across the globe.",
                     },
-					{
+                    {
                         Questions: "Do you have a catalog yet?",
                         Answers: "We do not have any catalog as of now. However, the filter options in our website can help you find your desired product more quickly. You can find the filter option on the top right of any product list page.",
                     }
@@ -71,11 +71,11 @@ export const
                         Questions: "I’m not able to find the piece I wish to purchase. Can I still order it?",
                         Answers: "The particular piece you’re looking for might have been discontinued. However, we will try our best to make it available for you on request.",
                     },
-					
+
                 ],
             },
-			,
-			{
+            ,
+            {
                 "Title": "Exchange And Returns",
                 "font": "h4",
                 "accordianIcon": "Arrows",
@@ -93,19 +93,19 @@ export const
                         Questions: "Is it possible to change my shipping address after placing the order?",
                         Answers: "Until the time your order is ready to be shipped, the shipping address can be changed. Please contact our Customer care for help. For orders that are dispatched, we will be able to reship it to your new address as soon as the consignment is returned back to us.",
                     },
-					
-					{
+
+                    {
                         Questions: "How long does it take to deliver customized products?",
                         Answers: "Our customized products would take us 14 to 30 business days to safely deliver to you. This includes the time taken to individually handcraft each product and ship it to you. Please note that the business days mentioned do not include Sundays and festivals",
                     },
-					{
+                    {
                         Questions: "How is the delivery usually done?",
                         Answers: "Our deliveries are handled by reputed insured couriers like Bluedart. We aim to deliver to your pincode. If there is no courier service available in your area, we do apologize for the inconvenience caused.Call us to check how we can help you in this scenario.",
                     },
-					
+
                 ],
             }
-			
+
         ]
     }
 
