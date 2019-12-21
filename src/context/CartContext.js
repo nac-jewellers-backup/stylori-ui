@@ -77,7 +77,7 @@ const Provider = (props) => {
         // if (window.location.pathname = "/account") {
             orderobj["userProfileId"] = userIds
             orderobj1["userprofileId"] = userIds
-            allordermakeRequest(orderobj);
+            allordermakeRequest(orderobj); 
             wishlistmakeRequest(orderobj1)
         // }
     }, [])

@@ -25,10 +25,9 @@ self.addEventListener('install', function(event) {
 
         if (res) {
             console.info('FOUND', e.request.url);
-            const cacheKeys = await caches.keys();
+            const cacheKeys = await caches.keys(); 
             const ca = await caches.open(cacheKeys[0]);
             const cb = await caches.open(cacheKeys[1]);
-
             const inA = Boolean((await ca.keys()).find(r => r.url !== e.request.url))
             const inB = Boolean((await cb.keys()).find(r => r.url !== e.request.url))
             

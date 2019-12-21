@@ -8,29 +8,33 @@ class Addressdetails extends React.Component {
         const { setValues, values } = props;
         const cl = <input onChange={(e) => {
             setValues({
-                values,  ...values,
+                values, ...values,
                 checkValue1: !values.checkValue1
             })
         }} type='checkbox' checked={values.checkValue1} />
         const { classes } = props;
+        var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
 
         const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
         const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
-        // const DeleteLocalStorage_address = (e, num, isAdressOne) => {
-        //     debugger
-        //     var local_storage = JSON.parse(localStorage.getItem('valuessetdata'))
-        //     local_storage[isAdressOne ? 'addressOne' : 'addressTwo'].pop(num);
-        //     window.localStorage.removeItem('valuessetdata');
-        //     window.localStorage.setItem('valuessetdata', JSON.stringify(local_storage));
-        // }
+        const _add_data_addres = () => {
+            debugger
+            if (con_gust === true) {
+                return value
+            } if(con_gust!== true) {
+                return values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes
+            }
+        }
         // const back_color = () => {
         // }
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>
                     <h5 className='title'> Shipping Address</h5>
-                    {values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes.map((val_addrs1, index) =>
+                    {_add_data_addres() && _add_data_addres().map((val_addrs1, index) =>
                         <>
+                            {/* {localStorage.setItem("namesOf_first", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].firstname))}
+                            {localStorage.setItem("namesOf_last", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].lastname))} */}
                             <Grid item xs={12} lg={6} style={{ paddingRight: "15px" }}>
                                 <div className='card-adrs wd'
                                     // className={values.Id === val_addrs1.id || values.Id2 === val_addrs1.id ? "address_card_disabled" : ""}
@@ -45,14 +49,14 @@ class Addressdetails extends React.Component {
                                         </span>
                                         <i onClick={() => {
                                             // localStorage.setItem("isedit", 1)
-                                            this.props.redirectForm(val_addrs1, index, true, true)
+                                            this.props.redirectForm(val_addrs1, index, true, true,index)
                                         }} style={{ fontSize: "20px", color: "#394578", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                             class="fa fa-pencil-square-o"></i>
                                         <i
                                             onClick={() => {
                                                 // localStorage.removeItem("valuessetdata")
                                                 // dlt_locl1()
-                                                this.props.Delete_address(val_addrs1)
+                                                this.props.Delete_address(val_addrs1, index)
                                                 // localStorage.removeItem('vals')
                                                 // window.location.reload();
                                             }} style={{ fontSize: "20px", color: "#394578", float: "right", marginRight: "10px", cursor: "pointer" }}
@@ -69,7 +73,7 @@ class Addressdetails extends React.Component {
                                                </p>
                                     <div className="card-foo">
                                         <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                            +91 {val_addrs1.contactNumber}
+                                            +91 {val_addrs1.contactNumber}{val_addrs1.contactno}
                                         </span>
                                         {window.location.pathname !== "/account" ?
                                             <>{values.Id2 === val_addrs1.id || values.Id === val_addrs1.id ? <>
@@ -88,7 +92,7 @@ class Addressdetails extends React.Component {
                         </>
                     )}
                 </Grid>
-                {values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :
+                {value||values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :
                     <Button onClick={() => this.props.redirectForm1()} className={`add-new-address ${classes.normalfonts}`}>
                         <div></div>  Add New Address
                    </Button>}<br />
@@ -104,7 +108,7 @@ class Addressdetails extends React.Component {
                             <h5 className='title'> Billing Address</h5><br />
                             <Grid container spacing={12}>
                                 <>
-                                    {values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes.map((val_addrs2, index) =>
+                                    {_add_data_addres() && _add_data_addres().map((val_addrs2, index) =>
                                         // return 
                                         <>
                                             <Grid item xs={12} lg={6} style={{ paddingRight: "15px" }}>
@@ -121,14 +125,14 @@ class Addressdetails extends React.Component {
                                                         </span>
                                                         <i onClick={() => {
                                                             // localStorage.setItem("isedit", 1)
-                                                            this.props.redirectForm(val_addrs2, index, true, false)
+                                                            this.props.redirectForm(val_addrs2, index, true, false,index)
                                                         }} style={{ fontSize: "20px", color: "#394578", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                                             class="fa fa-pencil-square-o"></i>
                                                         <i style={{ fontSize: "20px", color: "#394578", float: "right", marginRight: "10px", cursor: "pointer" }}
                                                             onClick={() => {
                                                                 // localStorage.removeItem("valuessetdata")
                                                                 // dlt_locl1()
-                                                                this.props.Delete_address(val_addrs2)
+                                                                this.props.Delete_address(val_addrs2, index)
                                                                 // localStorage.removeItem('vals')
                                                                 // window.location.reload();
                                                             }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
@@ -144,7 +148,7 @@ class Addressdetails extends React.Component {
                                                    </p>
                                                     <div className="card-foo">
                                                         <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                                            +91 {val_addrs2.contactNumber}
+                                                            +91 {val_addrs2.contactNumber}{val_addrs2.contactno}
                                                         </span>{values.Id === val_addrs2.id || values.Id2 === val_addrs2.id ? <>
                                                             <Button disabled style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
                                                                 // this.props.selectaddreses(val_addrs2, 2)
@@ -161,7 +165,7 @@ class Addressdetails extends React.Component {
                                     )}
                                 </>
                             </Grid>
-                            {values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :
+                            {value||values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :
                                 <Button onClick={() => this.props.redirectForm1()} className={`add-new-address ${classes.normalfonts}`}>
                                     <div></div>  Add New Address
                    </Button>}
@@ -171,7 +175,7 @@ class Addressdetails extends React.Component {
         )
     }
     render() {
-        let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : ""
+        let value = localStorage.getItem("gustaddres") ? JSON.parse(localStorage.getItem("gustaddres")).address : ""
         return (
             <Container>
                 {this.Addressdetails(this.props, value)}

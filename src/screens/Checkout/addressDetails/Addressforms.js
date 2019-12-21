@@ -4,24 +4,21 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CheckForCod } from 'queries/productdetail';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 // window.cache = {}
+var obj = {}
+var delet = {}
+var addObjall = {}
 
 const Addressforms = (changePanel) => {
     // var regid = localStorage.getItem('regid') ? localStorage.getItem('regid') : ""
-    var obj = {}
-    var delet = {}
-    var addObjall = {}
+    const valuegust = localStorage.getItem("gustaddres") ? JSON.parse(localStorage.getItem("gustaddres")).address : ""
     let value11 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : {}
-    let value12 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : {}
     var cont = localStorage.getItem('true') ? localStorage.getItem('true') : ""
+    var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
     let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
-    // let addres_id = localStorage.getItem("addres_id") ? localStorage.getItem("addres_id") : ""
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
     let check_dlt = localStorage.getItem("check_dlt") ? localStorage.getItem("check_dlt") : ""
-    let changeaddr = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
     const [address, setAddress] = React.useState({})
-    const [pincods, setpincod] = React.useState({
-        pincod: ""
-    })
+    const [pincods, setpincod] = React.useState({ pincod: "" })
     const { loading: userloading, error: usererror, data: userdata, makeFetch: makeFetch } = useNetworkRequest('/adduseraddress', {}, false);
     const { loading: addresloading, error: addreserror, data: addresData, makeRequestCod: addresmakeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     const [values, setValues] = React.useState({
@@ -38,8 +35,7 @@ const Addressforms = (changePanel) => {
             contactno: "",
             addresstype: 1,
             errortext: {
-                pinerr: "",
-                pinerr1: "",
+                pinerr: "", pinerr1: "",
             },
         },
         addressTwo: {
@@ -54,12 +50,9 @@ const Addressforms = (changePanel) => {
             country_code: "",
             contactno: "",
             addresstype: 2,
-            errortext: {
-                pinerr: "",
-                pinerr1: "",
-            },
+            errortext: { pinerr: "", pinerr1: "" },
         },
-        addrs: true,
+        addrs: valuegust && valuegust.length > 0 ? false : true,
         // addrs: true,
         checkValue: true,
         checkValue1: true,
@@ -72,12 +65,15 @@ const Addressforms = (changePanel) => {
     var addObj = {};
     var adars1 = {}
     var adars2 = {}
+    var addObjgust = {};
     addObjall["isguestlogin"] = cont ? false : true
     const { data, error, loading, makeFetch: makeFetchall, mapped, status } = useNetworkRequest('/addaddress', {}, false);
-    const { makeFetch: deleteaddress, } = useNetworkRequest('/removeaddress', {}, false);
+    const { error: remee, loading: remlod, data: removedata, makeFetch: deleteaddress, } = useNetworkRequest('/removeaddress', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     const pathnames = window.location.pathname === "/account"
     // var stst = values.ref ? values.ref : ""
+    debugger
+    const addressva = values && values.addressvalues && values.addressvalues.length > 0
     useEffect(() => {
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
         var adrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes : null
@@ -88,14 +84,16 @@ const Addressforms = (changePanel) => {
                 values,
                 ...values
             })
+        } else {
+            // if (con_gust !== true) { localStorage.setItem("select_addres", JSON.stringify("")) }
         }
-    }, [addresData, userdata])
+    }, [addresData, userdata, addressva, removedata])
     React.useEffect(() => {
         if (user_id.length > 0) {
             obj['userprofileId'] = user_id
             addresmakeRequestCod(obj);
         }
-    }, [userdata])
+    }, [userdata, addressva])
     React.useEffect(() => {
 
         if (user_id.length > 0) {
@@ -162,49 +160,75 @@ const Addressforms = (changePanel) => {
         setpincod({ ...pincods, pincods })
         setValues({ ...values, values })
     }
-
     const handleSubmit = (e) => {
-        // if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length < 5) {
-        var addressOne = values.addressOne
-        var addressTwo = values.addressTwo
-        if (addressOne.addressline1 === addressTwo.addressline1 && addressOne.firstname === addressTwo.firstname && addressOne.pincode === addressTwo.pincode) {
-            values["addressOne"]["addresstype"] = 3
-            setValues({
-                values,
-                ...values,
-            })
-            addObj['address'] = [addressOne];
-            // addresmakeRequestCod(obj);
-            return false
-        } else {
-            if (values.checkValue === true) {
+        var addObjgust_local = localStorage.getItem('gustaddres') ? JSON.parse(localStorage.getItem('gustaddres')) : "";
+        debugger
+        if (con_gust !== true) {
+            var addressOne = values.addressOne
+            var addressTwo = values.addressTwo
+            if (addressOne.addressline1 === addressTwo.addressline1 && addressOne.firstname === addressTwo.firstname && addressOne.pincode === addressTwo.pincode) {
+                values["addressOne"]["addresstype"] = 3
+                setValues({
+                    values,
+                    ...values,
+                })
                 addObj['address'] = [addressOne];
-            } if (values.checkValue === false) {
-                if (values.edit_addresId === true) {
+                // addresmakeRequestCod(obj);
+                return false
+            } else {
+                if (values.checkValue === true) {
                     addObj['address'] = [addressOne];
-                } if (values.edit_addresId === false) {
-                    addObj['address'] = [addressOne, addressTwo];
+                } if (values.checkValue === false) {
+                    if (values.edit_addresId === true) {
+                        addObj['address'] = [addressOne];
+                    } if (values.edit_addresId === false) {
+                        addObj['address'] = [addressOne, addressTwo];
+                    }
                 }
             }
-        }
-        if (values.edit_addresId === true) {
-            addObj["id"] = values && values.addres_id
-            delet["id"] = values && values.addres_id
+            if (values.edit_addresId === true) {
+                addObj["id"] = values && values.addres_id
+                delet["id"] = values && values.addres_id
+            } else {
+                addObj["id"] = ""
+            }
+            // addObj["cart_id"] = ""
+            addObj["user_id"] = user_id
+            obj['userprofileId'] = user_id
+            if (values.checkValue === true) {
+                if (values && values.addressOne && values.addressOne.firstname.length > 0) {
+                    makeFetch(addObj);
+                }
+            }
+            if (values.checkValue === false) {
+                if ((values && values.addressOne && values.addressOne.firstname.length > 0) && (values && values.addressTwo && values.addressTwo.firstname.length > 0)) {
+                    makeFetch(addObj);
+                }
+            }
+            return false
         } else {
-            addObj["id"] = ""
-        }
-        // addObj["cart_id"] = ""
-        addObj["user_id"] = user_id
-        obj['userprofileId'] = user_id
-        if (values.checkValue === true) {
-            if (values && values.addressOne && values.addressOne.firstname.length > 0) {
-                makeFetch(addObj);
+            if (values.checkValue == true) {
+                // addObjgust['address'] = [a1];
+                if (values && values.addressOne && addObjgust_local.length > 0) {
+                    addObjgust && addObjgust.address.push(values.addressOne);
+                } else if (values && values.addressOne) {
+                    addObjgust["address"] = [values.addressOne]
+                }
+
+            } if (values.checkValue == false) {
+                // setAddress({ a1, a2 })
+                // addObjgust['address'] = [a1, a2];
+                if (values.addressTwo && addObjgust_local.length > 0) {
+                    addObjgust.address.push(values.addressOne, values.addressTwo);
+                } else if (values.addressTwo) {
+                    addObjgust["address"] = [values.addressOne, values.addressTwo]
+                }
             }
-        }
-        if (values.checkValue === false) {
-            if ((values && values.addressOne && values.addressOne.firstname.length > 0) && (values && values.addressTwo && values.addressTwo.firstname.length > 0)) {
-                makeFetch(addObj);
-            }
+            // makeFetch(addObj);
+            // localStorage.getItem("gustaddres", JSON.stringify(addObjgust))
+
+            localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
+            window.location.reload()
         }
         // }
         // else {
@@ -217,12 +241,10 @@ const Addressforms = (changePanel) => {
         // values["edit_ref"] = true
         // window.location.reload(); 
     }
-    const selectaddreses = (val_addrs, num) => { 
-        // var addressOne = val_addrs
-        // var addressTwo = values.addressTwo
- 
-
+    const selectaddreses = (val_addrs, num) => {
+        debugger
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
+        addObjall['address_id'] = val_addrs && val_addrs.id ? val_addrs.id : ""
         if (values.checkValue1 === true) {
             values["Id2"] = val_addrs && val_addrs.id
             setValues({
@@ -285,22 +307,48 @@ const Addressforms = (changePanel) => {
 
         }
     }
-    const Delete_address = (val_addrs) => {
-        if (check_dlt === false) {
-            if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 1) {
+    const Delete_address = (val_addrs, index) => {
+        debugger
+        if (con_gust !== true) {
+            if (check_dlt === false) {
+                if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 1) {
+                    delet["address_id"] = val_addrs && val_addrs.id
+                    deleteaddress(delet)
+                    window.location.reload();
+                } else {
+                    alert('Address already in use')
+                }
+                return false
+            } else {
                 delet["address_id"] = val_addrs && val_addrs.id
                 deleteaddress(delet)
-                window.location.reload();
-            } else {
-                alert('Address already in use')
+                // window.location.reload();
             }
-            return false
         } else {
-            delet["address_id"] = val_addrs && val_addrs.id
-            deleteaddress(delet)
-            // window.location.reload();
+            var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
+            local_storage["address"].pop(index);
+            window.localStorage.removeItem('gustaddres');
+            window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
+            if (valuegust.length < 0) {
+                values["addrs"] = true
+                setValues({
+                    values,
+                    ...values,
+                })
+            }
+
         }
 
+        // const DeleteLocalStorage_address = (e, num, isAdressOne) => {
+        //     debugger
+        //     var local_storage = JSON.parse(localStorage.getItem('valuessetdata'))
+        //     local_storage[isAdressOne ? 'addressOne' : 'addressTwo'].pop(num);
+        //     window.localStorage.removeItem('valuessetdata');
+        //     window.localStorage.setItem('valuessetdata', JSON.stringify(local_storage));
+        // }
+
+
+        window.location.reload();
     }
     const handleKeyPress = (e, isNumber) => {
         if (isNumber) {
@@ -308,7 +356,6 @@ const Addressforms = (changePanel) => {
         }
     };
     const redirectForm1 = (event) => {
-
         values["addressOne"] = ""
         values["addressTwo"] = ""
         value11 = {
@@ -362,21 +409,33 @@ const Addressforms = (changePanel) => {
             ...values,
         })
     }
-    const redirectForm = (val_addrs, num, isAdressOne, isAdressTwo, ) => {
-        if (val_addrs && val_addrs.id.length > 0) {
-            values["addres_id"] = val_addrs && val_addrs.id
-            setValues({
-                values,
-                ...values,
-            })
-        }
-        values["addressOne"] = val_addrs
-        values["addressTwo"] = ""
-        values["checkValue"] = isAdressTwo
-        values["number"] = num
-        values["edit_addresId"] = isAdressOne
-        if (values && values["addressOne"]) {
-            values["addressOne"]["contactno"] = val_addrs && val_addrs.contactNumber && val_addrs.contactNumber
+    const redirectForm = (val_addrs, num, isAdressOne, isAdressTwo, index) => {
+        if (con_gust !== true) {
+            if (val_addrs && val_addrs.id && val_addrs.id.length > 0) {
+                values["addres_id"] = val_addrs && val_addrs.id
+                setValues({
+                    values,
+                    ...values,
+                })
+            }
+            values["addressOne"] = val_addrs
+            values["addressTwo"] = ""
+            values["checkValue"] = isAdressTwo
+            values["number"] = num
+            values["edit_addresId"] = isAdressOne
+            if (values && values["addressOne"]) {
+                values["addressOne"]["contactno"] = val_addrs && val_addrs.contactNumber && val_addrs.contactNumber
+            }
+            return false
+        } else {
+            values["edit_addresId"] = true
+            values["addressOne"] = val_addrs
+            values["addressTwo"] = ""
+            // valuegust
+            var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
+            local_storage["address"].pop(index);
+            window.localStorage.removeItem('gustaddres');
+            window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
         }
         setValues({
             values,

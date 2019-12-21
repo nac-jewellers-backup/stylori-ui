@@ -30,7 +30,7 @@ const useLogin = (changePanel) => {
     const pathnames = window.location.pathname === "/login"
     const { loading: codloading, error: coderror, data: addresData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     React.useEffect(() => {
-
+debugger
         var ms = data && data.message
         if (ms && values['error'] && values['errortext']) {
             values['error']['passerr'] = true
@@ -57,6 +57,7 @@ const useLogin = (changePanel) => {
                     obj1['user_id'] = bb
                     makeRequestCod(obj);
                     localStorage.setItem('user_id', bb)
+                    localStorage.setItem('accessToken', data.accessToken)
                     // setValues({user_id:data.userprofile.id})
                     // changePanel(3)
                 }
@@ -76,7 +77,7 @@ const useLogin = (changePanel) => {
             addressetValues(val)
             localStorage.setItem("c_k_l", true)
             if (!pathnames) {
-                changePanel(2)
+                changePanel(3)
             } else {
                 if (localStorage.getItem('review_location') && localStorage.getItem('review_location').length > 0) {
                     window.location.href = localStorage.getItem('review_location')
@@ -122,7 +123,8 @@ const useLogin = (changePanel) => {
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
-        if (values.email === "" && values['error'] && values['errortext']) {
+debugger
+if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'
 

@@ -43,11 +43,22 @@ class Component extends React.Component {
         mailId: null
     }
 
-    handleChange = panel => (event, expanded) => {
+    handleChange = panel => (event) => {
+        debugger
         // alert("va",JSON.stringify(panel))
-        this.setState({
-            expanded: 'panel' + panel,
-        });
+        const { expanded } = this.state
+        if (expanded === 'panel' + panel) {
+            this.setState({
+                expanded: 'panel' + 3,
+            });
+        } else {
+            if (expanded > 'panel' + panel ) {
+                this.setState({
+                    expanded: 'panel' + panel,
+                });
+            }
+        }
+
     };
 
     changePanel = (panel, mailId) => {

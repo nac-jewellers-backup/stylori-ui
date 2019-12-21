@@ -6,7 +6,8 @@ import Checkboxes from '../../../components/InputComponents/CheckBox/CheckBox';
 import SimpleSelect from '../../../components/InputComponents/Select/Select'
 import Addressdetails from './addressDetails';
 import Addressforms from './Addressforms'
-
+let namesOf_first = localStorage.getItem("name_Of_1") ? localStorage.getItem("name_Of_1") : ""
+let namesOf_last = localStorage.getItem("name_Of_2") ? localStorage.getItem("name_Of_2") : ""
 const Addressform = (props) => {
     return <AddressComponent   {...props} />
 }
@@ -37,7 +38,7 @@ const AddressComponent = (props) => {
                                 {/* {JSON.stringify(values.errortext && values.errortext.pinerr)} */}
                             </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={5}>
-                                    {window.location.pathname === "/account"||values.hidebilling === true ? "" : <>
+                                    {window.location.pathname === "/account" || values.hidebilling === true ? "" : <>
                                         <h5 className='title'>Shipping Address</h5>
                                         <>
                                             {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}

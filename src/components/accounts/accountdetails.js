@@ -72,6 +72,7 @@ class Accountdetails extends Component {
                                     <>
                                         {/* {c_k_l !== true ? */}
                                         <Register />
+                                        {/* <Addressform/> */}
                                         {/* : <Login /> */}
                                         {/* } */}
                                     </>
