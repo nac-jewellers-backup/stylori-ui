@@ -29,7 +29,9 @@ browserHistory.listen((location, action) => {
     window.scrollTo(0, 0);
 });
 export const RouterApp = (props) => {
+
     const { Globalctx } = React.useContext(GlobalContext)
+    debugger
     const func_location_silver = () =>{
         var loc = window.location.pathname.split('/')[1].split('-').filter(val=>{if(val==='silver') return val})
         return loc[0]
@@ -43,13 +45,13 @@ export const RouterApp = (props) => {
             <Route key="Faqs" component={Faqs} exact path={routes.Faqs} />
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
 
-            {(props.location.pathname !== "/cart" && props.location.pathname !== "/account" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && Globalctx.pathName === false) && 
+            {(props.location.pathname !== "/cart" && props.location.pathname !== "/account" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && Globalctx.pathName === false  ) && 
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />
                 
                 }
              {
-                 (Globalctx.pathName === true) &&
-                 <Route key="silverListingpage" component = {SilverListingPage} exact path={routes.SilverListingPage} />
+                 (Globalctx.pathName) &&
+                 <Route key="silverListingpage" component = {SilverListingPage}  path={props.location.pathname} />
                  }
             <Route exact component={PricingPage} path={`/:productCategory/:productType/:material/:productName`} />
             <Route key="cart" exact component={Cart} path={routes.Cart} />

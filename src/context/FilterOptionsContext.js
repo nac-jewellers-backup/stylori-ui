@@ -10,6 +10,7 @@ import { createApolloFetch } from 'apollo-fetch';
 import { NetworkContext } from 'context/NetworkContext';
 import { bool } from 'prop-types';
 import { filterParams } from 'mappers';
+import { GlobalContext } from 'context'
 
 const initialCtx = {
     FilterOptionsCtx: {
@@ -36,6 +37,7 @@ const initialCtx = {
 export const FilterOptionsContext = React.createContext(initialCtx);
 export const FilterOptionsConsumer = FilterOptionsContext.Consumer;
 
+
 const Provider = (props) => {
 
     const [filters, setFilters] = React.useState({
@@ -59,6 +61,7 @@ const Provider = (props) => {
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => t }) }, [filters, sort, pricemax, pricemin])
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => [...d, ...t] }) }, [offset])
     const { NetworkCtx: { graphqlUrl: uri } } = React.useContext(NetworkContext);
+    const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext)
     const client = createApolloFetch({ uri });
 
     // useEffect(() => {
@@ -650,7 +653,12 @@ function usePrevious(value) {
             seoUrlFetch()
 
             // }
+
         }
+        // const {Globalctx, setGlobalCtx} = this.props
+        var loc = window.location.pathname.split('/')[1].split('-').filter(val=>{if(val==='silver') return val})
+        if(loc.length=== 0) setGlobalCtx({...Globalctx, pathName:false})
+        else setGlobalCtx({...Globalctx, pathName:true})
     }, [mappedFilters, offset])
 
     useEffect(() => {
@@ -679,6 +687,7 @@ function usePrevious(value) {
         if (paramObjects(mappedFilters.seo_url).length > 0) {
             setParamsAo(paramObjects(mappedFilters.seo_url))
         }
+
     }, [ntxdata, filters, mappedFilters, seoData])
     useEffect(() => {
         if (window.location.pathname !== "jewellery") {
@@ -693,6 +702,8 @@ function usePrevious(value) {
 
             });
         }
+        // const {Globalctx, setGlobalCtx} = this.props
+        
 
     })
     const FilterOptionsCtx = {

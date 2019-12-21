@@ -21,12 +21,14 @@ import styles from './styles';
 import { FilterOptionsContext } from 'context'
 import { NetworkContext } from 'context/NetworkContext';
 import { PRODUCTLIST, conditions, seoUrlResult } from 'queries/productListing';
+
 const PersistentDrawerLeft = (props) => {
   const { setSort, setloadingfilters, setPriceMax,setPriceMin, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
+ 
   const loc = window.location.search
   const { NetworkCtx } = React.useContext(NetworkContext);
 
-  return <Component setSort={setSort}  setFilters={FilterOptionsCtx.setFilters} setloadingfilters={setloadingfilters} setPriceMax={setPriceMax} setPriceMin={setPriceMin} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort}
+  return <Component setSort={setSort} setFilters={FilterOptionsCtx.setFilters} setloadingfilters={setloadingfilters} setPriceMax={setPriceMax} setPriceMin={setPriceMin} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort}
     uri={NetworkCtx.graphqlUrl}
     {...props} />
 }
@@ -41,11 +43,11 @@ class Component extends React.Component {
       CardRadio: false,
       checked: {
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
-        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {},pricemax: 0, pricemin: 0
+        NoOfStones: {}, Gender: {}, StoneColor: {}, StoneShape: {},pricemax: 0, pricemin: 0
       },
       checkedArrayObj: {
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
-        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {},pricemax: 0, pricemin: 0
+        NoOfStones: {}, Gender: {}, StoneColor: {}, StoneShape: {},pricemax: 0, pricemin: 0
       },
       selected: [],
       filtercheck: '',
@@ -237,6 +239,7 @@ class Component extends React.Component {
     return bz
   })
   handleChange(value, BoolName, e, title, TargetName) {
+  
     this.props.setloadingfilters(true)
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
@@ -334,6 +337,7 @@ class Component extends React.Component {
     document.documentElement.scrollTop = 180;
   };
   handleDrawerOpenMobile = () => {
+    debugger
     this.setState({ openMobile: false, productDisplay: false });
     this.setState({ CardRadio: false });
 
@@ -350,6 +354,8 @@ class Component extends React.Component {
     this.setState({ selected: value })
   }
   filterValue = (filtercheck) => {
+
+    debugger
     if (filtercheck === this.state.filtercheck) {
       this.setState({ filtercheck: '' })
     } else {
@@ -632,13 +638,13 @@ class Component extends React.Component {
               <button onClick={this.handleDrawerCloseMobile} style={{ background: 'none', border: 'none', fontWeight: '600', color: 'rgba(58, 69, 120, 1)', padding: '6px 8px' }}>
                 <i className={`fa fa-times ${classes.colorMain}`} ></i>&nbsp;
                  Filter</button>
-              <Button style={{ float: "right", border: '1px solid #ececec', lineHeight: "15px" }} className={`${classes.colorMain}`}> <b >Clear All</b></Button>
+              <Button style={{ float: "right", border: '1px solid #ececec', lineHeight: "15px", fontSize: '0.775rem' }} className={`${classes.colorMain}`}>Clear All</Button>
 
             </div>
 
             <Grid container xs={12} className="p" style={{ overflow: 'scroll', height: '100%', display: openMobile ? 'none' : 'block' }}>
               <Grid container item xs={12} >
-                <Grid item xs={6} style={{ backgroundColor: "#F2F2F2", overflow: 'scroll', height: '73vh' }}>
+                <Grid item xs={6} className={classes.filterMain}>
                   {/* {chck_res ?
                     <ListItemText
                       className='filter-mbl-font filter-mbl-fonts'
@@ -648,11 +654,11 @@ class Component extends React.Component {
                     : ""} */}
                   <List className="mbl-filter-list">
                     {filter.map(row => (
-                      <ListItem key={row} className="mbl-filter-list"
-                        onClick={() => this.filterValue(row)}
+                      <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
+                        onClick={() => this.filterValue(row)} 
                       >
                         <ListItemText
-                          className='filter-mbl-font filter-mbl-fonts'
+                          className='filter-mbl-font filter-mbl-fonts' 
                         >
                           {row}
 
@@ -684,30 +690,65 @@ class Component extends React.Component {
                     </> */}
                     <>
                       {subFilter[this.state.filtercheck].map(row => {
+                        debugger
+                        
                         return (
                           <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
-                            <Checkbox
-                              value="checked"
-                              color="primary"
-                              checked={this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] !== undefined ? this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] : false}
+                           
+                         
 
-                              onChange={(e) => this.handleChange(row, this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] !== undefined ? !this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] : true, e)}
-                              // onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
-                              icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                              checkedIcon={<CheckBoxIcon fontSize="small" />}
-                              name={this.state.filtercheck.replace(/\s/g, "")}
-                              onClick={this.handleDrawerCloseMobile}
-                            />
+                       { this.state.filtercheck === 'Availability' && row.constructor === Object ? 
+                       <>
+                          <Checkbox
+                          value="checked"
+                          color="primary"
+                          className={`${classes.sublistMobile}`}
+                          checked={this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row.value] !== undefined ? this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row.value] : false}
+
+                          onChange={(e) => this.handleChange(row.value, this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row.value] !== undefined ? !this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row.value] : true, e)}
+                          // onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
+                          icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                          checkedIcon={<CheckBoxIcon fontSize="small" />}
+                          name={this.state.filtercheck.replace(/\s/g, "")}
+                          onClick={this.handleDrawerCloseMobile}
+                        />
+                           <ListItemText>
+                              <Typography variant=""
+                                className={`filter-mbl-font fnts ${classes.colorMainSecondary}`}>
+                                <div
+                                  onClick={this.handleDrawerCloseMobile}
+                                > {row.title}</div>
+                              </Typography>
+                            </ListItemText>
+                            </>
+                            :
+                            <>
+                            <Checkbox
+                            value="checked"
+                            color="primary"
+                            className={`${classes.sublistMobile}`}
+                            checked={this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] !== undefined ? this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] : false}
+
+                            onChange={(e) => this.handleChange(row, this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] !== undefined ? !this.state.checked[this.state.filtercheck.replace(/\s/g, "")][row] : true, e)}
+                            // onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
+                            icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                            checkedIcon={<CheckBoxIcon fontSize="small" />}
+                            name={this.state.filtercheck.replace(/\s/g, "")}
+                            onClick={this.handleDrawerCloseMobile}
+                          />
                             <ListItemText>
                               <Typography variant=""
-                                className={`filter-mbl-font fnts ${classes.colorMain}`}>
+                                className={`filter-mbl-font fnts ${classes.colorMainSecondary}`}>
                                 <div
                                   onClick={this.handleDrawerCloseMobile}
                                 > {row}</div>
                               </Typography>
                             </ListItemText>
+                            </>
+                            }
                           </ListItem>
                         )
+                        
                       })}
                     </>
                   </Grid>

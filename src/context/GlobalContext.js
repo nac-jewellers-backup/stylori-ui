@@ -21,9 +21,9 @@ export const GlobalProvider = (props) => {
 
     React.useEffect(()=>{
         var loc = window.location.pathname.split('/')[1].split('-').filter(val=>{if(val==='silver') return val})
-        if(loc[0].length>0)  setGlobalCtx({pathName:true})
-        else setGlobalCtx({pathName:false})
-    })
+        if(loc.length=== 0) setGlobalCtx({...Globalctx, pathName:false})
+        else setGlobalCtx({...Globalctx, pathName:true})
+    },[])
     return (
         <GlobalContext.Provider value={{ Globalctx, setGlobalCtx }} >
             {props.children}

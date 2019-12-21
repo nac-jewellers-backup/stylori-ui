@@ -522,6 +522,8 @@ function usePrevious(value) {
     }, [seoData])
     var newObj = {}
     const updateFilters = async (silverFilters) => {
+        
+
         setSilverFilters(silverFilters);
 
         // setloadingfilters(true)

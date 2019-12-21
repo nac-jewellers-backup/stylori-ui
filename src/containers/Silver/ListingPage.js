@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "components/SilverComponents/Header";
-import { Grid, Container } from '@material-ui/core';
+import { Grid, Container, Hidden } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import Footer from "components/Footer/Footer";
 import FilterData from "mappers/silverListingPage"
@@ -29,9 +29,11 @@ class ListingPage extends React.Component {
                         <ProductLayout data={this.props.data}/>
                     </Grid>
                 </Container>
+                <Hidden smDown>
                 <Grid item>
                     <Footer silver={true} />
                 </Grid>
+                </Hidden>
             </Grid>
         );
     }

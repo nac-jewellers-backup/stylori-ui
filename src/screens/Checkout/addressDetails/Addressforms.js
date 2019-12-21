@@ -79,7 +79,6 @@ const Addressforms = (changePanel) => {
     const pathnames = window.location.pathname === "/account"
     // var stst = values.ref ? values.ref : ""
     useEffect(() => {
-        debugger
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
         var adrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes : null
         if (adrs !== undefined && adrs.length > 0) {
@@ -92,7 +91,6 @@ const Addressforms = (changePanel) => {
         }
     }, [addresData, userdata])
     React.useEffect(() => {
-        debugger
         if (user_id.length > 0) {
             obj['userprofileId'] = user_id
             addresmakeRequestCod(obj);
@@ -358,7 +356,6 @@ const Addressforms = (changePanel) => {
         })
     }
     const redirectFormss = () => {
-        debugger
         values["addrs"] = false
         setValues({
             values,
