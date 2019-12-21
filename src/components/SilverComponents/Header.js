@@ -130,8 +130,6 @@ class Header extends Component {
 
     submenuDetails = (data, target) => {
         this.setState({ subTitleData: data, subMenuTarget: target })
-        console.log(this.state.subTitleData,this.state.subMenuTarget)
-
     }
     
    
