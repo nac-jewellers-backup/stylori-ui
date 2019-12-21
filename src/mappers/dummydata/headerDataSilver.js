@@ -1,8 +1,6 @@
+// mobile views menu
 export const mainlist = [
-    {
-        name: "Whats New",
-        url: "/#/",
-    },
+
     {
         name: "Jewellery",
         url: "/#/",
@@ -36,7 +34,7 @@ export const mainlist = [
 
 ];
 
-
+/// mobile views submenu
 export const subheader = {
     "Earrings": {
         header: 'Earrings',
@@ -96,6 +94,8 @@ export const subheader = {
 
     },
 };
+
+//layer 3 named jewellery
 export const Jewellery = {
     Jewellery: {
         Earrings: {
@@ -194,14 +194,296 @@ export const Jewellery = {
 
 
 
-
+//desktop views
 export const menuListHeader = ['HOME', 'JEWELLERY', 'THEME', 'COLLECTION', 'FEATURED', 'CONTACT'];
 
 
 // List header hover
-
 export const menuLists = {
     'HOME': {
+        //----SUBLAYER1 ------
+        'menuOne':
+            [
+                {
+                    value: 'earrings',
+                    title: 'Earrings',
+                    url: '#Earrings',
+                    imgContainer: {
+                            //-----------LAYER 3--------
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'pendants', title: 'Pendants', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'rings', title: 'Rings', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'nosepins', title: 'Nose pins', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+            ],
+        //----SUBLAYER2 ------
+            'menuTwo': [{
+            value: 'Price', title: 'By Price', url: '#Price',
+            imgContainer: {
+                //-----------LAYER 3--------
+                "onlyText": [{
+                    "content": "under 5000",
+                    "url": ""
+                },
+                {
+                    "content": "5000-10000",
+                    "url": ""
+                },
+                {
+                    "content": "10000-20000",
+                    "url": ""
+                },
+                {
+                    "content": "above 20000",
+                    "url": ""
+                }
+                ],
+
+            }
+        },
+        {
+            value: 'Collection', title: 'By Collection', url: '#',
+            imgContainer: {
+                "imageContainer": [
+                    {
+                        "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                        "content": "nosepin",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                ]
+            }
+        },
+        {
+            value: 'Material', title: 'By Material', url: '#',
+            imgContainer: {
+                "onlyText": [{
+                    "content": "under 5000",
+                    "url": ""
+                },
+                {
+                    "content": "5000-10000",
+                    "url": ""
+                },
+                {
+                    "content": "10000-20000",
+                    "url": ""
+                },
+                {
+                    "content": "above 20000",
+                    "url": ""
+                }
+                ],
+            }
+        },
+        ]
+    },
+    'JEWELLERY': {
         'menuOne':
             [
                 {
@@ -481,26 +763,229 @@ export const menuLists = {
         },
         ]
     },
-    'JEWELLERY': {
-        'menuOne':
-            [{ value: 'valayal', title: 'valayal', url: '#valayal' },
-            { value: 'pendants', title: 'Pendants', url: '#' },
-            { value: 'rings', title: 'Rings', url: '#' },
-            { value: 'nosepins', title: 'Nose pins', url: '#' },
-            { value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#' },
-            ],
-        'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
-        { value: 'Collection', title: 'By Collection', url: '#' },
-        { value: 'Material', title: 'By Material', url: '#' },
-        ]
-    },
     'THEME': {
         'menuOne':
-            [{
-                value: 'earrings',
-                title: 'Earrings',
-                url: '#Earrings',
-                imgContainer: [
+            [
+                {
+                    value: 'earrings',
+                    title: 'Earrings',
+                    url: '#Earrings',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'pendants', title: 'Pendants', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'rings', title: 'Rings', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'nosepins', title: 'Nose pins', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+            ],
+        'menuTwo': [{
+            value: 'Price', title: 'By Price', url: '#Price',
+            imgContainer: {
+                "onlyText": [{
+                    "content": "under 5000",
+                    "url": ""
+                },
+                {
+                    "content": "5000-10000",
+                    "url": ""
+                },
+                {
+                    "content": "10000-20000",
+                    "url": ""
+                },
+                {
+                    "content": "above 20000",
+                    "url": ""
+                }
+                ],
+
+            }
+        },
+        {
+            value: 'Collection', title: 'By Collection', url: '#',
+            imgContainer: {
+                "imageContainer": [
                     {
                         "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                         "content": "nosepin",
@@ -532,210 +1017,871 @@ export const menuLists = {
                         "url": "",
                     },
                 ]
-            },
-            {
-                value: 'pendants', title: 'Pendants', url: '#',
-                imgContainer: [
-                    {
-                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                        "content": "pendent",
-                        "url": "",
-                    },
-                    {
-                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                        "content": "sergjrenuds",
-                        "url": "",
-                    },
-                    {
-                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                        "content": "studs",
-                        "url": "",
-                    },
-                    {
-                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                        "content": "studs",
-                        "url": "",
-                    },
-                ]
-            },
-            {
-                value: 'rings', title: 'Rings', url: '#',
-                imgContainer: [
-                    {
-                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                        "content": "Rings",
-                        "url": "",
-                    },
-                    {
-                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                        "content": "studs",
-                        "url": "",
-                    },
-                    {
-                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                        "content": "studs",
-                        "url": "",
-                    },
-                    {
-                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                        "content": "studs",
-                        "url": "",
-                    },
-                ]
-            },
-            {
-                value: 'nosepins', title: 'Nose pins', url: '#',
-                imgContainer: [
-                    {
-                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                        "content": "nosepins",
-                        "url": "",
-                    },
-                    {
-                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                        "content": "studs",
-                        "url": "",
-                    },
-                    {
-                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                        "content": "studs",
-                        "url": "",
-                    },
-                    {
-                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                        "content": "studs",
-                        "url": "",
-                    },
-                ]
-            },
-            {
-                value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#',
-                imgContainer: [
-                    {
-                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                        "content": "banglesbracelets",
-                        "url": "",
-                    },
-                    {
-                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                        "content": "studs",
-                        "url": "",
-                    },
-                    {
-                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                        "content": "studs",
-                        "url": "",
-                    },
-                    {
-                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                        "content": "studs",
-                        "url": "",
-                    },
-                ]
-            },
-            ],
-        'menuTwo': [{
-            value: 'Price', title: 'By Price', url: '#Price',
-            imgContainer: [
-                {
-                    "content": "5000",
-                    "url": "",
-                    "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                },
-                {
-                    "content": "5000",
-                    "url": "",
-                    "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                },
-            ]
-        },
-        {
-            value: 'Collection', title: 'By Collection', url: '#',
-            imgContainer: [
-                {
-                    "content": "5000",
-                    "url": "",
-                    "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                },
-                {
-                    "content": "5000",
-                    "url": "",
-                    "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                },
-            ]
+            }
         },
         {
             value: 'Material', title: 'By Material', url: '#',
-            imgContainer: [
-                {
-                    "content": "5000",
-                    "url": "",
-                    "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+            imgContainer: {
+                "onlyText": [{
+                    "content": "under 5000",
+                    "url": ""
                 },
                 {
-                    "content": "5000",
-                    "url": "",
-                    "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                    "content": "5000-10000",
+                    "url": ""
                 },
-            ]
-        }],
-        'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
-        { value: 'Collection', title: 'By Collection', url: '#' },
-        { value: 'Material', title: 'By Material', url: '#' },
+                {
+                    "content": "10000-20000",
+                    "url": ""
+                },
+                {
+                    "content": "above 20000",
+                    "url": ""
+                }
+                ],
+            }
+        },
         ]
     },
     'COLLECTION': {
         'menuOne':
-            [{ value: 'koluse', title: 'koluse', url: '#koluse' },
-            { value: 'pendants', title: 'Pendants', url: '#' },
-            { value: 'rings', title: 'Rings', url: '#' },
-            { value: 'nosepins', title: 'Nose pins', url: '#' },
-            { value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#' },
+            [
+                {
+                    value: 'earrings',
+                    title: 'Earrings',
+                    url: '#Earrings',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'pendants', title: 'Pendants', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'rings', title: 'Rings', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'nosepins', title: 'Nose pins', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
             ],
-        'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
-        { value: 'Collection', title: 'By Collection', url: '#' },
-        { value: 'Material', title: 'By Material', url: '#' },
-        ]
-    },
-    'Collections': {
-        'menuOne':
-            [{ value: 'valayal', title: 'valayal', url: '#valayal' },
-            { value: 'pendants', title: 'Pendants', url: '#' },
-            { value: 'rings', title: 'Rings', url: '#' },
-            { value: 'nosepins', title: 'Nose pins', url: '#' },
-            { value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#' },
-            ],
-        'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
-        { value: 'Collection', title: 'By Collection', url: '#' },
-        { value: 'Material', title: 'By Material', url: '#' },
+        'menuTwo': [{
+            value: 'Price', title: 'By Price', url: '#Price',
+            imgContainer: {
+                "onlyText": [{
+                    "content": "under 5000",
+                    "url": ""
+                },
+                {
+                    "content": "5000-10000",
+                    "url": ""
+                },
+                {
+                    "content": "10000-20000",
+                    "url": ""
+                },
+                {
+                    "content": "above 20000",
+                    "url": ""
+                }
+                ],
+
+            }
+        },
+        {
+            value: 'Collection', title: 'By Collection', url: '#',
+            imgContainer: {
+                "imageContainer": [
+                    {
+                        "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                        "content": "nosepin",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                ]
+            }
+        },
+        {
+            value: 'Material', title: 'By Material', url: '#',
+            imgContainer: {
+                "onlyText": [{
+                    "content": "under 5000",
+                    "url": ""
+                },
+                {
+                    "content": "5000-10000",
+                    "url": ""
+                },
+                {
+                    "content": "10000-20000",
+                    "url": ""
+                },
+                {
+                    "content": "above 20000",
+                    "url": ""
+                }
+                ],
+            }
+        },
         ]
     },
     'FEATURED': {
         'menuOne':
-            [{ value: 'valayal', title: 'valayal', url: '#valayal' },
-            { value: 'pendants', title: 'Pendants', url: '#' },
-            { value: 'rings', title: 'Rings', url: '#' },
-            { value: 'nosepins', title: 'Nose pins', url: '#' },
-            { value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#' },
+            [
+                {
+                    value: 'earrings',
+                    title: 'Earrings',
+                    url: '#Earrings',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'pendants', title: 'Pendants', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'rings', title: 'Rings', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'nosepins', title: 'Nose pins', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
             ],
-        'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
-        { value: 'Collection', title: 'By Collection', url: '#' },
-        { value: 'Material', title: 'By Material', url: '#' },
+        'menuTwo': [{
+            value: 'Price', title: 'By Price', url: '#Price',
+            imgContainer: {
+                "onlyText": [{
+                    "content": "under 5000",
+                    "url": ""
+                },
+                {
+                    "content": "5000-10000",
+                    "url": ""
+                },
+                {
+                    "content": "10000-20000",
+                    "url": ""
+                },
+                {
+                    "content": "above 20000",
+                    "url": ""
+                }
+                ],
+
+            }
+        },
+        {
+            value: 'Collection', title: 'By Collection', url: '#',
+            imgContainer: {
+                "imageContainer": [
+                    {
+                        "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                        "content": "nosepin",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                ]
+            }
+        },
+        {
+            value: 'Material', title: 'By Material', url: '#',
+            imgContainer: {
+                "onlyText": [{
+                    "content": "under 5000",
+                    "url": ""
+                },
+                {
+                    "content": "5000-10000",
+                    "url": ""
+                },
+                {
+                    "content": "10000-20000",
+                    "url": ""
+                },
+                {
+                    "content": "above 20000",
+                    "url": ""
+                }
+                ],
+            }
+        },
         ]
     },
     'CONTACT': {
         'menuOne':
-            [{ value: 'valayal', title: 'valayal', url: '#valayal' },
-            { value: 'pendants', title: 'Pendants', url: '#' },
-            { value: 'rings', title: 'Rings', url: '#' },
-            { value: 'nosepins', title: 'Nose pins', url: '#' },
-            { value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#' },
+            [
+                {
+                    value: 'earrings',
+                    title: 'Earrings',
+                    url: '#Earrings',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'pendants', title: 'Pendants', url: '#',
+                    imgContainer: {
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'rings', title: 'Rings', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'nosepins', title: 'Nose pins', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '#',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "nosepin",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                            {
+                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                                "content": "studs",
+                                "url": "",
+                            },
+                        ]
+                    }
+                },
             ],
-        'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
-        { value: 'Collection', title: 'By Collection', url: '#' },
-        { value: 'Material', title: 'By Material', url: '#' },
+        'menuTwo': [{
+            value: 'Price', title: 'By Price', url: '#Price',
+            imgContainer: {
+                "onlyText": [{
+                    "content": "under 5000",
+                    "url": ""
+                },
+                {
+                    "content": "5000-10000",
+                    "url": ""
+                },
+                {
+                    "content": "10000-20000",
+                    "url": ""
+                },
+                {
+                    "content": "above 20000",
+                    "url": ""
+                }
+                ],
+
+            }
+        },
+        {
+            value: 'Collection', title: 'By Collection', url: '#',
+            imgContainer: {
+                "imageContainer": [
+                    {
+                        "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                        "content": "nosepin",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                    {
+                        "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                        "content": "studs",
+                        "url": "",
+                    },
+                ]
+            }
+        },
+        {
+            value: 'Material', title: 'By Material', url: '#',
+            imgContainer: {
+                "onlyText": [{
+                    "content": "under 5000",
+                    "url": ""
+                },
+                {
+                    "content": "5000-10000",
+                    "url": ""
+                },
+                {
+                    "content": "10000-20000",
+                    "url": ""
+                },
+                {
+                    "content": "above 20000",
+                    "url": ""
+                }
+                ],
+            }
+        },
         ]
-    }
+    },
 
 }
 
