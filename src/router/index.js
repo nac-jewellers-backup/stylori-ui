@@ -53,12 +53,12 @@ export const RouterApp = (props) => {
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
             <Route key="AboutUs" component={AboutPage} exact path={routes.AboutUs} />
 
-            {(props.location.pathname !== "/cart" && props.location.pathname !== "/account" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && (Globalctx && Globalctx.pathName === false)) &&
+            {(props.location.pathname !== "/cart" && props.location.pathname !== "/account" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && Globalctx && Globalctx.pathName === false) &&
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />
 
             }
             {
-                (Globalctx.pathName) &&
+                Globalctx && Globalctx.pathName &&
                 <Route key="silverListingpage" component={SilverListingPage} path={props.location.pathname} />
             }
             <Route key="sto" component={stories} exact path={routes.Stories} />
