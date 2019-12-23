@@ -8,7 +8,6 @@ import { FeaturedGridComponent } from '../FeaturedGridComponent'
 import Testimonialsmodel from '../TestimonialModel'
 import { useStyles } from './style.js'
 
-
 const MultipleSections = (props) => {
     const { titleContiner, TopPicksimages, FeaturedCarousel, testimonyCarousel } = props.data;
     const classes = useStyles();

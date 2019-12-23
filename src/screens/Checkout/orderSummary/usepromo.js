@@ -36,6 +36,7 @@ const usePromo = (props) => {
         })
     }
     const handleSubmit = (e) => {
+        debugger
         // e.preventDefault();
         makeFetch(values);
     }

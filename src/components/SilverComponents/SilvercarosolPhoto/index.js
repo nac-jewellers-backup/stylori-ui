@@ -4,7 +4,6 @@ import { useDummyRequest } from '../../../hooks';
 import { HomedataSilver } from '../../../mappers';
 import { Grid, Typography } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
-import { useStyles } from './style.js'
 
 const SilverCarousel = (props) => {
     const dataCarousel = {
@@ -14,7 +13,6 @@ const SilverCarousel = (props) => {
         speed: 500,
     }
     const { carouselTop } = props.data;
-    const classes = useStyles();
     return (
         <Grid container xs={12}>
             <Grid item xs={12} style={{ backgroundColor: "#e4d6bb" }}>
@@ -33,7 +31,7 @@ const SilverCarousel = (props) => {
 
             </Grid>
             <Grid item xs={12} style={{ backgroundColor: "#e4d6bb", justifyContent: "center", display: "flex" }}>
-                <Typography className={classes.TypoGraphy}>
+                <Typography variant="body1" style={{ maxWidth: "900px", padding: "20px 0px 22px 0px ", textAlign: "center" }}>
                     {carouselTop[0].content}
                 </Typography>
             </Grid>

@@ -1,12 +1,7 @@
 {
   "palette": {
     "common": { "black": "#000", "white": "#fff" },
-    "background": {
-      "paper": "#fff",
-      "default": "#FAFAFA",
-      "fade": "#6e6d72",
-      "darkFade": "#59595b"
-    },
+    "background": { "paper": "#fff", "default": "#FAFAFA" },
     "primary": {
       "light": "rgba(57, 69, 120, 1)",
       "main": "rgba(58, 69, 120, 1)",
@@ -16,10 +11,7 @@
     "secondary": {
       "light": "rgba(246, 153, 163, 1)",
       "main": "rgba(241, 72, 128, 1)",
-      "dark": "#d51f63",
-      "lightFirst": "rgba(246, 153, 163, 1)",
-      "mainFirst": "rgba(241, 72, 128, 1)",
-      "darkFirst": "rgba(234, 83, 129, 1)",
+      "dark": "rgba(234, 83, 129, 1)",
       "contrastText": "#fff"
     },
     "error": {

@@ -50,20 +50,20 @@ class Component extends React.Component {
 
     handleClose = () => {
         this.setState({ open: false });
-    };
+    }; 
 
     handleClick = (event, key) => {
-
+        debugger
         console.log('lklkkoik9', this.state.skuSize)
         var filters = { ...this.props.filters }
         if (key === 'purity') {
             var kv = event.target.id
             var objVal = kv.split(" ")
             var arrPurity = objVal[0]
-            var arrColor = objVal[1]
+            var arrColor = objVal[1] 
             var diamondTypes = filters['defaultVariants']['diamondType']
             filters['defaultVariants']['purity'] = arrPurity
-            filters['defaultVariants']['metalColor'] = arrColor
+            filters['defaultVariants']['metalColor'] = arrColor 
             // filters['defaultVariants']['skuSize']=diamondTypes
             filters['defaultVariants']['diamondType'] = diamondTypes
             this.setState({

@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
             fontSize: '9px !important',
             backgroundColor: '#394578',
             /* margin-top: 18px !important; */
-            marginTop: '3px !important',
+            marginTop: '8px !important',
             color: '#fff',
             borderFadius: '0px',
             padding: '7px 15px',
@@ -296,8 +296,7 @@ export default function ImageGridList(props) {
 
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
-                                                        <Typography style={{ color: "#394578" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
-                                                            {val.price}</Typography>
+                                                        <Typography variant="body2" style={{ color: "#394578" }}> {val.price}</Typography>
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
                                                         <a style={{ textDecoration: 'none' }} href={val.navigateUrl}><Button type="button" className={classes.Button}>Shop Now</Button></a>
@@ -353,8 +352,7 @@ export default function ImageGridList(props) {
                                                             </Grid>
                                                         </Grid>
                                                         <Grid item xs={6} sm={6} className={classes.buttonTypo}>
-                                                            <Grid><Typography style={{ color: "#394578", fontSize: "12px" }}><i class="fa fa-inr" aria-hidden="true" style={{ paddingRight: "2px" }}></i>
-                                                                {val.price}</Typography></Grid>
+                                                            <Grid><Typography> {val.price}</Typography></Grid>
                                                             <Grid> <a style={{ textDecoration: 'none' }} href={val.navigateUrl}><Button type="button" className={classes.Button}>Shop Now</Button></a></Grid>
                                                         </Grid>
                                                     </Grid>

@@ -42,6 +42,7 @@ class ProductImageZoom extends React.Component {
   }
 
   productImageZoom = () => {
+    
     // console.log(this.props.data)
     const { classes, data } = this.props
     const limit = 3;
@@ -56,6 +57,7 @@ class ProductImageZoom extends React.Component {
     }
 // alert(JSON.stringify(data.Image_resolution))
     const props = { "width": data[0].image_resolution, "height": data[0].image_resolution, "zoomWidth":data[0].image_resolution, "img": `${showimage}`, "zoomStyle": "z-index:2" }
+    
     return (
       <div>
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
@@ -95,7 +97,7 @@ class ProductImageZoom extends React.Component {
                         <span style={{ fontSize: "12px" }} className={`${classes.colorLight}`}>{val.name} </span>
                       </div>
                     </Grid>
-                  ))} */}
+                  ))} */}<br/>
                   <StaticView />
                 </Grid>
               </div>

@@ -318,7 +318,7 @@ body {
     outline: none !important;
     font-size: 16px !important;
     width: 100% !important;
-    
+    font-family: FontAwesome;
     height: 34px !important;
     border: 1px solid #ccc;
     border-radius: 0 !important;
@@ -350,7 +350,7 @@ body {
 }
 
 .ships-by {
-    font-size: 12px !important;
+    font-size: 11px !important;
 }
 
 .slick-dots {
@@ -452,7 +452,6 @@ body {
     color: #394578;
     font-size: 12px;
     background-image: url(https://assets-cdn.stylori.com/images/static/location.png);
-    /* font-family: FontAwesome; */
     background-position: 7px 8px;
     background-repeat: no-repeat;
     width: 100%;
@@ -900,10 +899,11 @@ body {
 }
 
 .css-kqsna2 {
-    margin-right: 15px !important;
+    /* margin-right: 15px !important; */
     font-size: 1.4rem !important;
     color: rgba(241, 72, 128, 1) !important;
     font-weight: 500;
+    width: 100% !important;
 }
 
 .css-tg000w {
@@ -911,6 +911,7 @@ body {
     color: #9d9fa4 !important;
     text-decoration: line-through;
     font-weight: 500;
+    font-size: 17px !important;;
 }
 
 .responseve-carousel {
@@ -926,7 +927,7 @@ body {
 
 /*product-page-fixed-footer*/
 .product-page-fixed-footer {
-    height: 80px !important;
+    height: 50px !important;
     position: fixed !important;
     bottom: 0 !important;
     top: auto !important;
@@ -946,7 +947,9 @@ body {
     float: left !important;
     padding: 0 10px;
 }
-
+.slick-dots {
+   margin-top: -28px !important;
+}
 .product-footer-buynow {
     padding: 14px 20px !important;
     font-size: 16px;
@@ -1022,7 +1025,7 @@ body {
 .pagetabs {
     text-align: center !important;
     height: 40px !important;
-    width: 75% !important;
+    width: 80% !important;
 
     /* border: 1px solid #9d9d9d  !important; */
     border-radius: 15%;
@@ -1032,7 +1035,7 @@ body {
 .pagetabslst {
     text-align: center !important;
     height: 40px;
-    width: 75% !important;
+    width: 80% !important;
     /* border: 1px solid #9d9d9d  !important; */
     border-radius: 15%;
     outline: none !important;
@@ -1191,7 +1194,7 @@ body {
     } */
 
 .wrappercustom {
-    /* font-family: "Roboto" !important; */
+    font-family: "Roboto" !important;
     width: 100% !important;
     height: 35px;
     color: #394578 !important;
@@ -1250,7 +1253,7 @@ body {
 }
 
 .resp {
-    box-shadow: 1px 2px 13px 7px #DEDADA !important;
+    box-shadow:0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12) !important;
     width: 100% !important;
     height: auto !important;
     /* padding: 10px; */

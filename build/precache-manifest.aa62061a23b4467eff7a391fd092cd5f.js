@@ -1,38 +1,42 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e3703d0452b0e8c0a2b95a89b94dd6fa",
+    "revision": "8847ab579f9a269e783b51c653b602c2",
     "url": "/index.html"
   },
   {
-    "revision": "04107c535658a1d09d6b",
+    "revision": "a7a838f3eb099d9dc195",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "c2e383643ad5f029da8e",
+    "revision": "28555432bc93759353ba",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "3b9b7872f03fb913b989",
+    "revision": "d4341441b0fcd7d164c3",
+    "url": "/static/css/4.css"
+  },
+  {
+    "revision": "a3657140d71cb3e8c9d9",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "04107c535658a1d09d6b",
+    "revision": "a7a838f3eb099d9dc195",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "c2e383643ad5f029da8e",
+    "revision": "28555432bc93759353ba",
     "url": "/static/js/3.js"
   },
   {
-    "revision": "ddcda2eb269294c3b9f3",
+    "revision": "d4341441b0fcd7d164c3",
     "url": "/static/js/4.js"
   },
   {
-    "revision": "3b9b7872f03fb913b989",
+    "revision": "a3657140d71cb3e8c9d9",
     "url": "/static/js/main.js"
   },
   {
-    "revision": "67501ddb9e15004a2ab4",
+    "revision": "265884b522a19a75c49d",
     "url": "/static/js/runtime~main.js"
   },
   {
@@ -44,15 +48,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/FlowerDimon.jpg"
   },
   {
-    "revision": "11eabca2251325cfc5589c9c6fb57b46",
-    "url": "/static/media/Roboto-Regular.ttf"
-  },
-  {
     "revision": "c3f7641ef11bd405cfe12138f25f089f",
     "url": "/static/media/cartoonFooter.png"
   },
   {
-    "revision": "7996bd6992d473ba217275885f52812f",
+    "revision": "2b3d63f761a61e5c65a4773359c4eb40",
     "url": "/static/media/close.svg"
   },
   {
@@ -60,7 +60,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/closeheart.jpg"
   },
   {
-    "revision": "6916c84be4a82b94cf15503ef25d48f2",
+    "revision": "731e5ecd2c7827cef3f847ec91080214",
     "url": "/static/media/delivery.svg"
   },
   {
@@ -80,11 +80,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/img4ProductModal.jpg"
   },
   {
-    "revision": "51fc5370cb4d7e537c06ea117f090ba2",
+    "revision": "6e25bad6f003be8fe1ddf1c68d2b4dd9",
     "url": "/static/media/logout.svg"
   },
   {
-    "revision": "37ef37619d53e7631c8ab218a5722c1e",
+    "revision": "162c55add6a47b0d4045ee2e69d2e824",
     "url": "/static/media/love.svg"
   },
   {
@@ -92,7 +92,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/nosepin.gif"
   },
   {
-    "revision": "b0c24c44cdbcd2228f0f6fef2740195f",
+    "revision": "57b56bb10faf3b9dbb17bc91e6be7baf",
     "url": "/static/media/shopping.svg"
   },
   {
@@ -116,11 +116,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/stylori-silver-logo-small-screen.png"
   },
   {
-    "revision": "681db1b372ef45af725df7762fcb49ee",
-    "url": "/static/media/styloriGagets.png"
+    "revision": "92c0fa80ff8c401b154438a2c4ba0b5a",
+    "url": "/static/media/stylori-silver-logo.png"
   },
   {
-    "revision": "5a712650392a83e01a75498ebc83837b",
+    "revision": "26f4adaec0fa060fe6ef92c4c4f7c485",
     "url": "/static/media/telephone.svg"
   },
   {
@@ -136,7 +136,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/topPicksTwo.jpg"
   },
   {
-    "revision": "c7359aa61314bf6d37f83ccc97dd0694",
+    "revision": "bcc776345852aa9836e64bcc3e000864",
     "url": "/static/media/user-shape.svg"
   },
   {

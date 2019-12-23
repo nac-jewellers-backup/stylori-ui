@@ -10,14 +10,9 @@ export const routes = {
     HomePageStylori: '/home',
     Account: '/account',
     Silver: '/silverjewellery',
-    Faqs: '/faqs',
-    Stories:'/stories',
-    Collection:'/collection',
-    ProductCare: '/productcare',
-    Shipping: '/deliveryreturns',
-    PrivacyPolicy: '/privacypolicy',
-    TermsConditions: '/termsconditions',
-    AboutUs:'/aboutus'
+    SilverListingPage:'/silver-jewellery',
+    Faqs: '/faqs'
+
 }
 
 export default routes;

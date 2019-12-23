@@ -67,30 +67,6 @@ const styles = theme => ({
     colorMain: {
       color: theme.palette.primary.main
     },
-    colorMainSecondary: {
-      color: theme.palette.secondary.main
-    },
-    borderBottomList:{
-      borderBottom:'1px solid #efeeee',
-      paddingTop:'2px !important',
-      paddingBottom:'2px !important'
-    },
-    sublistMobile:{
-      color: theme.palette.secondary.light,
-      paddingTop:'3px',
-      paddingBottom:'3px',
-      '& svg':{
-        fontSize: '0.95rem'
-      }
-    },
-
-    colorBackgroundList:{
-      backgroundColor:'white',
-  
-      '&:hover':{
-        backgroundImage: 'linear-gradient(to left, #f9e3e3, rgba(246, 153, 163, 1))',
-      }
-    },
     colorMainBackground: {
       backgroundColor: theme.palette.primary.main
     },
@@ -104,12 +80,6 @@ const styles = theme => ({
       [theme.breakpoints.up('xl')]: {
         width:  '90%'
       },
-    },
-    filterMain:{
-      backgroundColor: 'white',
-    overflow: 'scroll',
-    height: '73vh',
-    boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
     },
     productCardsuncheck: {
       width:  '100%',
