@@ -245,45 +245,35 @@ export const
         },
         "faqs": [
             {
-                "Title": "Frequently asked Questions",
+                "Title": "Shipping & Returns",
                 "font": "h2",
                 "accordian": [
                     {
-                        Questions: "What is Stylori ?",
-                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                        Questions: "25 D R2R",
+                        Answers: "At the core of our service offering is a “delight the customer” motto. So we have a unique hassle-free product return and refund policy.<br/>Return to Refund 25 days - Our product and service will seldom make you return our product, but in the unlikely event of you wanting to return, you could do so within 25 days of receipt of the product. We will ensure that 100% of your monies are returned to you within 25 days. The only request to you to make this a seamless experience is to return the product without any custom engraving, in its original condition without damage and with the original certificates and packing.For all eligible refunds/returns, just hand it over to our courier. No shipping charges.<br/>Simple and unique Process - Simplicity is the ultimate sophistication Just call Stylori’s Customer Delight Owner and they will guide you through a simple two-step process.<br/>Pack per instructions and await the courier to ring your bell to collect the return at your doorstep.",
                     },
                     {
-                        Questions: "What is Stylori ?",
-                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                        Questions: "Refund or Exchange",
+                        Answers: "We would love to hear from you on “What didn’t go well in your purchase” and that’s all is required to process your return. That’s all! If its an exchange, we will gladly ship your “Story of love - product” free of cost .<br/>If its money-back for some reason, the same will be credited to your account within 25 days of acceptance of return.",
                     },
                     {
-                        Questions: "What is Stylori ?",
-                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
+                        Questions: "YOUR LIFELONG-EVERGREEN-STYLE WARDROBE",
+                        Answers: `Stylori believes in “latest” fashion and style. Hence a unique 'style-update' program<br/>When you believe that you want to update your jewellery wardrobe, just exchange. Just send us the product. The transparent value card will give you an estimate based on purchase price of the components of your jewellery at actual weight after reducing “wear and tear” charge.<br/>
+						The amount will be credited to your customer loyalty account and can be used for any future purchase`,
+                    },
+                    {
+                        Questions: "Customer Care",
+                        Answers: `Call us if you need help for anything at all. Even if you find it hard to choose which product should you buy!We are listening and happy to do what we can to improve. <br/>Please let us know.We can be reached at hello@Stylori.com or at 18001020330 between 10am-7pm.<br/>
+						Our registered office address is:<br/><br/>
+                        <b style='color:#39457c'>NAP & Sons eRetailing Solutions Pvt. Limited,</b><br/>
+No 96, Dr. Radhakrishnan Salai,<br/>
+Mylapore ,Chennai - 600 004<br/>
+Tamil Nadu, India<br/>`
                     },
                 ],
             },
-            {
-                "Title": "Help",
-                "font": "h4",
-                "accordian": [
-                    {
-                        SubTitle: "arun",
-                        Questions: "What is Stylori ?",
-                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
-                    },
-                    {
-                        Questions: "What is Stylori ?",
-                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
-                    },
-                    {
-                        Questions: "What is Stylori ?",
-                        Answers: "Stylori.com is the ultimate online jewellery store for everyday fashion jewellery. We’re known for crafting modern jewellery with certified metals, diamonds and gemstones at reasonable prices, presented in a convenient online shopping experience.",
-                    },
-                ],
-            }
         ]
     }
-
 export const
     ProductCare = {
         "carouselTop": {
@@ -328,34 +318,34 @@ export const
                     },
                     {
                         rightImg: "https://assets-cdn.stylori.com/images/static/gold-wash-img.png",
-                        img:"https://assets-cdn.stylori.com/images/static/gold-part.png",
+                        img: "https://assets-cdn.stylori.com/images/static/gold-part.png",
                         Questions: "Gold",
-                        basicTitle:"Keep Your Gold Glittering Forever",
+                        basicTitle: "Keep Your Gold Glittering Forever",
                         Answers: "To clean gold jewellery, mix a few drops of mild dish detergent with warm water and scrub it with a soft cloth. Rinse with warm water and allow the jewellery to dry.<br><br/>Or keep your gold ornaments in warm water for two minutes, apply toothpaste and then gently clean them with a soft cloth. Rinse with warm water and allow them to dry.<br><br/>Ammonia can also be used to clean gold jewellery but because it is a strong cleaning agent, do not clean jewellery too often with it. Mix four parts warm water and one part household ammonia, submerge your jewellery for not more than ten minutes and then carefully clean with a soft cloth. Rinse it with warm water and allow it to dry.<br><br/>Gold jewellery with gemstones should not be submerged in warm water as this may loosen the gemstones. Clean it with a soft cloth dipped in a solution of mild dish detergent and warm water instead.<br><br/>Moisture speeds the tarnishing process so it's important to make sure that your jewellery is dry before putting it away.<br><br/>Always use warm water to clean gold jewellery.",
                     },
-                    {   
-                        basicTitle:"Bring Back The Shine In Your Silver Jewellery",
+                    {
+                        basicTitle: "Bring Back The Shine In Your Silver Jewellery",
                         Questions: "Silver",
-                        rightImg:"https://assets-cdn.stylori.com/images/static/sliver-make-img.png",
+                        rightImg: "https://assets-cdn.stylori.com/images/static/sliver-make-img.png",
                         Answers: "Clean silver ornaments that are starting to discolor with a soft cloth dipped in a mix of mild dish detergent and warm water. Rinse with cool water and buff with a cloth until dry.<br><br/>For heavier tarnish, mix a paste of three parts baking soda to one part water. Wet the silver and apply the paste with a soft cloth. Rinse with cool water and buff with a cloth until dry. Do not soak silver as this speeds up the tarnishing process.<br><br/>Prompt cleaning is important when your silver jewellery has been exposed to certain foods containing sulfur or those which are acidic or salty. Food such as salt, eggs, onions, mayonnaise, and vinegar are harmful to silver.",
                     },
-                    {   
-                        basicTitle:"How To Clean Platinum Jewellery",
+                    {
+                        basicTitle: "How To Clean Platinum Jewellery",
                         Questions: "Platinum",
-                        align:"center",
-                        rightImg:"https://assets-cdn.stylori.com/images/static/platinum-product-care.jpg",
+                        align: "center",
+                        rightImg: "https://assets-cdn.stylori.com/images/static/platinum-product-care.jpg",
                         Answers: "The best way to clean platinum is to use a mild solution of soap and warm water and gently rub your platinum jewellery with a soft cloth. Rinse with warm water and allow it to dry.",
                     },
-                    {   
-                        basicTitle:"Cleaning Diamonds and other precious stones",
+                    {
+                        basicTitle: "Cleaning Diamonds and other precious stones",
                         Questions: "Diamond",
-                        align:"center",
-                        rightImg:"https://assets-cdn.stylori.com/images/static/diamond-product-care.jpg",
+                        align: "center",
+                        rightImg: "https://assets-cdn.stylori.com/images/static/diamond-product-care.jpg",
                         Answers: "For cleaning diamonds and other precious stones, mix a solution of warm, soapy water. Use a soft cloth to gently clean the stone with the water. Rinse off using warm water and pat dry with a soft, clean cloth.",
                     },
                 ],
             },
-            
+
         ]
     }
 
@@ -404,7 +394,7 @@ export const
         ]
     }
 
-    export const
+export const
     termsconditions = {
         "carouselTop": {
             "setting": {
@@ -482,13 +472,13 @@ ANY FAILURE OF STYLORI TO EXERCISE OR ENFORCE ANY RIGHT OR PROVISION OF THIS TER
 I HAVE READ THE TERMS OF USE AND AGREE TO ALL OF THE PROVISIONS CONTAINED ABOVE.<br/><br/>
 `,
                     },
-                    
-        ],
-    },
-            
+
+                ],
+            },
+
         ]
     }
-    export const
+export const
     aboutus = {
         "data": {
             img: "https://alpha-assets.stylori.com/images/static/about-us.jpg",
