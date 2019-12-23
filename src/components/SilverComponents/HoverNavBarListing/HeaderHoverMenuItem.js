@@ -30,70 +30,70 @@ function HeaderHoverMenuItem(props) {
           <List component="nav" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
             <Grid className={classes.subtopic1}>
               {
-                !props.filters&&
+                !props.filters &&
                 (props.listHoverItem !== undefined) &&
                 (mapper).map(menuList =>
                   (
-                    <ListItem onMouseOver={(event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }}  className={classes.listedItems}  component="li"
+                    <ListItem onMouseOver={(event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }} className={classes.listedItems} component="li"
                       onClick={() => { window.location.href = '/' + menuList.url }}
                     >
                       <ListItemText variant>
                         <Typography className={classes.listedItemsvalue}>
                           {/* {menuList.title.toUpperCase()} */}
                           {menuList.title ?
-                        menuList.title.toUpperCase() :
-                        menuList}
+                            menuList.title.toUpperCase() :
+                            menuList}
                         </Typography>
                       </ListItemText>
 
                     </ListItem>
 
                   ))
-                  
-                  }
-                           {
-              props.filters &&
-              (mapper).map(menuList =>
 
-                (
+              }
+              {
+                props.filters &&
+                (mapper).map(menuList =>
 
-                  <ListItem component="li" name={menuList}
-                    onClick={(e) => props.onchoosetype(menuList)}
-                  >
+                  (
 
-                    <ListItemText variant >
+                    <ListItem component="li" name={menuList}
+                      onClick={(e) => props.onchoosetype(menuList)}
+                    >
 
-                      {menuList.title ?
-                        menuList.title :
-                        menuList}
-                    </ListItemText>
+                      <ListItemText variant >
 
-                  </ListItem>
-                ))}
+                        {menuList.title ?
+                          menuList.title :
+                          menuList}
+                      </ListItemText>
+
+                    </ListItem>
+                  ))}
             </Grid>
             <Grid className={classes.subtopic2}>
               {
-                !props.filters&&
+                !props.filters &&
                 (props.listHoverItem !== undefined) &&
                 (props.listHoverItem['menuTwo']).map(menuList =>
                   (
-                    <ListItem onMouseOver={(event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }}   className={classes.listedItemsub}  component="li"
+                    <ListItem onMouseOver={(event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }} className={classes.listedItemsub} component="li"
                       onClick={() => { window.location.href = '/' + menuList.url }}
                     >
                       <ListItemText variant >
                         <Typography className={classes.listedItemsvalue} >
                           {/* {menuList.title.toUpperCase()} */}
                           {menuList.title ?
-                        menuList.title.toUpperCase() :
-                        menuList}
+                            menuList.title.toUpperCase() :
+                            menuList}
                         </Typography>
                       </ListItemText>
 
-     
-                
-                </ListItem> ))}
-                </Grid>
-                
+
+
+                    </ListItem>))}
+            </Grid>
+
           </List>
         </Popper>
       </Grid>

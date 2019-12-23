@@ -55,6 +55,7 @@ export const styles = theme => ({
     alignItems: "center",
     display: "flex",
     fontSize: "17px",
+    fill: "#d51f63",
     [theme.breakpoints.only('xs')]: {
       marginLeft: "6px",
       letterSpacing: "2px"
@@ -124,6 +125,12 @@ export const styles = theme => ({
 });
 
 export const useStyles = makeStyles(theme => ({
+  imgcont: {
+    marginBottom: "15px",
+    '&:hover': {
+      boxShadow: " 0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important",
+    }
+  },
   paperdiv: {
     position: 'absolute',
     width: 'fit-content',
@@ -159,12 +166,15 @@ export const useStyles = makeStyles(theme => ({
     top: '0px !important',
     backgroundColor: "#fff",
     color: theme.palette.background.fade,
+    cursor: "pointer",
     '& span': {
       fontFamily: 'Roboto',
-      letterSpacing: '1px'
+      letterSpacing: '1px',
+      cursor: "pointer",
     },
     '& nav': {
-      padding: '0px !important'
+      padding: '0px !important',
+      cursor: "pointer",
     },
     '& li:hover': {
       backgroundColor: "#fff",
@@ -178,13 +188,23 @@ export const useStyles = makeStyles(theme => ({
     padding: "0px",
     fontSize: "0.7rem !important",
     '&:hover': {
-      backgroundColor:"#000"
+      backgroundColor: "#000"
     }
   },
   listedItemsvalue: {
     padding: "2px 16px 2px 16px",
     fontSize: "0.7rem !important",
     letterSpacing: 2
+  },
+  listedItemsvalue2: {
+    padding: "2px 16px 2px 16px",
+    fontSize: "0.7rem !important",
+    letterSpacing: 2,
+    cursor: "pointer",
+    '&:hover': {
+      backgroundColor: theme.palette.background.darkFade,
+      color: "#fff"
+    }
   },
   subtopic1: {
     padding: "10px 0px 10px 0px",
