@@ -37,7 +37,8 @@ var screen_width_type =  () =>{
         }
         var calc = _calc()
        
-        var sizes = [50,60,70,80,90,100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600,625,650,675,700,725,750,775,800,825,850,875,900,925,950,975,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,2100,2200,2300,2400]
+        var sizes = [275, 300, 350, 375, 400, 500, 600, 675, 700, 775, 800, 900, 975, 1000, 1100, 2400]
+        // [50,60,70,80,90,100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600,625,650,675,700,725,750,775,800,825,850,875,900,925,950,975,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,2100,2200,2300,2400]
         for(var i=0;i<=sizes.length;i++){
             if(calc===sizes[i] || calc<sizes[i]){
 
@@ -57,6 +58,7 @@ console.log('screen_width_type()',screen_width_type())
 // const baseUi = "https://assets-cdn.stylori.com/";
 // const injectUrl = (url, baseUi) => url ? resolutions.map(k => ({ ...k, img: `${baseUi}${url.imageUrl===undefined  ? url : url.imageUrl}` })) : [];
 const injectUrl =  (url, baseUi) => {
+    debugger
     var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
     var resolution =     screen_width_type()
     var _resolutions = `${resolution}X${resolution}`
@@ -87,7 +89,7 @@ const injectUrl =  (url, baseUi) => {
 
     }
     else{
-        var img_not_found = "product/250X250/productnotfound.webp"
+        var img_not_found = "product/productnotfound.webp"
          url_split = img_not_found.split('/')
          extension_split = url_split[url_split.length-1]
          browser_type_append = extension_split.split('\.')[0].concat(`${browser_type.browser_type}`)
@@ -108,7 +110,7 @@ const hoverImage = (placeImage) =>  placeImage.find(fd => fd.ishover);
 
 
     export default function (data, cdnUrl) {
-        
+        debugger
     let mapperdata = [];
     try {
         mapperdata = data.data.allProductLists.nodes;
@@ -116,7 +118,6 @@ const hoverImage = (placeImage) =>  placeImage.find(fd => fd.ishover);
         mapperdata = [];
     }
     const _format = mapperdata.map(k => {
-        console.log(injectUrl(placeImages(k.transSkuListsByProductId.nodes[0].productListByProductId.productImagesByProductId.nodes), cdnUrl),'injectUrl')
         let _d;
         try {
             _d = {
@@ -150,7 +151,6 @@ const hoverImage = (placeImage) =>  placeImage.find(fd => fd.ishover);
     })
     // console.info('_format', _format);
     return _format;
-    
 
 
 }

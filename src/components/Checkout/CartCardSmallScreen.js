@@ -18,7 +18,7 @@ function MediaControlCard(props) {
   const { dataCard1 } = props.data;
 
   return (
-    <div style={{ background: "whitesmoke", paddingTop: "10px" }}>
+    <div style={{ paddingTop: "10px" }}>
       {/* <Grid container>
         <Grid xs={6} > */}
       <span style={{ color: "#666", fontSize: "14px", margin: "0px 0px 10px" }}>   Shopping cart  </span> <br />
@@ -119,7 +119,7 @@ function MediaControlCard(props) {
                     className={`${classes.normalfonts} ${classes.controls}`}
                   >
                     &nbsp;
-                    <div id={val.namedetail[0].details} onClick={(event) => props.handleDeleteLocalStorage(event)}>
+                    <div id={val.namedetail[4].details} onClick={(event) => props.handleDeleteLocalStorage(event)}>
                       <i style={{ fontSize: "16px" }} class="fa"> &#xf014;</i>&nbsp;<span
                         style={{ borderBottom: "1px solid #394578" }}>Remove</span>
                     </div>

@@ -6,6 +6,7 @@ import { CartContext } from 'context'
 import cart from 'mappers/cart'
 import { useNetworkRequest } from 'hooks/index';
 var obj = {}
+let gut_lg = localStorage.getItem("gut_lg") ? JSON.parse(localStorage.getItem("gut_lg")) : {}
 
 class CashonDelivey extends React.Component {
     constructor(props) {
@@ -32,10 +33,22 @@ class CashonDelivey extends React.Component {
         }).then(function (data) {
             console.log('data', data)
         });
-        window.location.pathname = "/jewellery"
         localStorage.removeItem("cartDetails")
         localStorage.removeItem("panel")
+        if (gut_lg === true) {
+            localStorage.removeItem("user_id")
+            localStorage.removeItem("cart_id")
+            localStorage.removeItem("isedit")
+            localStorage.removeItem("gut_lg")
+
+            localStorage.removeItem("select_addres")
+            localStorage.removeItem("gustaddres")
+            localStorage.removeItem("email")
+            localStorage.removeItem("a__c_t")
+            // localStorage.removeItem("gut_lg")
+        }
         // }
+        window.location.pathname = "/jewellery"
     }
     componentDidUpdate(prevProps, prevState) {
         if (this.state.res_data !== prevState.res_data) {
@@ -47,11 +60,12 @@ class CashonDelivey extends React.Component {
         let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
         const data = this.props.data ? this.props.data : ""
+        var discounted_price = this.props.cartFilters.discounted_price ? this.props.cartFilters.discounted_price : ""
         // var { data:coddata, error, loading, makeFetch} = useNetworkRequest('/api/auth/signin', {}, false);
         var dataCard1;
         if (data.length > 0 && data !== undefined && data !== null) {
             dataCard1 = this.props.data && this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
-            function myFunc(total, num, discounted_price) {
+            function myFunc(total, num) {
                 discounted_price = this && this.props.cartFilters.discounted_price ? JSON.stringify(this.props.cartFilters.discounted_price) : ""
                 if (discounted_price.length > 0) {
                     var a = Math.round(total + num);
@@ -67,13 +81,14 @@ class CashonDelivey extends React.Component {
         obj['cart_id'] = cart_id
         // alert(JSON.stringify(dataCard1))
         return (
-            <Container>
+            <div>
                 <Grid spacing={12} container lg={12} xs={12} style={{ width: "100%" }}>
                     <Grid item lg={12} xs={12}>
                         <div className="amout-pay"> Amount Payable </div>
-                        <i class="fa fa-inr rups" aria-hidden="true">&nbsp;</i>
                         <div className="credit-btn-div">
-                            {Math.round(dataCard1)}
+                            <span className="rups">
+                                {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(dataCard1-discounted_price))}
+                            </span>&nbsp;
                             <Button className="credit-button" type="submit"
                                 onClick={() => this.makeFetch(this.props)}
                             >Place COD order</Button>
@@ -85,7 +100,7 @@ class CashonDelivey extends React.Component {
                         </div>
                 </Grid>
 
-            </Container>
+            </div>
         )
     }
 }

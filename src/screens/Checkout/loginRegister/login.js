@@ -12,7 +12,7 @@ const Login = (props) => {
 
 const LoginComponent = (props) => {
     const { classes } = props;
-    const { values, handlers, setValues, data } = useLogin(() => props.changePanel(3));
+    const { values, handlers, setValues, data } = useLogin(() => props.changePanel(2));
     // const vl = data && data.message
     // // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
     // var prof = data && data.message
@@ -31,7 +31,7 @@ const LoginComponent = (props) => {
                 emerr: false,
             }
         })
-        props.change() 
+        props.change()
     }
 
     return (
@@ -39,12 +39,14 @@ const LoginComponent = (props) => {
             <form action="javascript:void(0)" onSubmit={(e) => {
                 handlers.handelSubmit(e)
             }}>
-                <Grid container item xs={12} lg={6}>
-                    <h5 className={`title ${classes.normalfonts}`}>  I already have an account </h5>
+                <Grid container item xs={12} lg={window.location.pathname === "/login" ? 12 : 6}>
+                    <h5 className={`title ${classes.normalfonts}`}>
+                    {window.location.pathname === "/login" ? "Login" : "I already have an account"}
+                           </h5>
                     <Input
                         margin="normal"
                         variant="outlined"
-                        type="email"
+                        // type="email"
                         name="email"
                         value={values.email}
                         error={values.error && values.error.emerr ? true : false}
@@ -73,8 +75,8 @@ const LoginComponent = (props) => {
                         </div >
                     </div>
                     <div className='login-butn'>
-                        <Button className='back-b' onClick={() => clear()} >Back</Button>
-                        <Button className='apply-b' type="submit">Apply</Button>
+                        {window.location.pathname === "/login" ? "" : <Button className='back-b' onClick={() => clear()} >Back</Button>}
+                        <Button className='apply-b' type="submit"> {window.location.pathname === "/login" ? "Login" :"Apply"}</Button>
                     </div>
 
                 </Grid>

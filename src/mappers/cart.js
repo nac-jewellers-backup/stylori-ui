@@ -105,7 +105,6 @@
 
 
 export default function (data) {
-    debugger
     let mapperdata = [];
     try {
         mapperdata = data.data.allTransSkuLists.nodes;
@@ -125,6 +124,7 @@ export default function (data) {
                 productType: k.productListByProductId.productType,
                 prdheader: k.productListByProductId.productName,
                 // allorderdata: allorderdata,
+                productId: k.productListByProductId && k.productListByProductId.productId,
                 productsDetails: [
                     //                     Quality	
                     // Metal	

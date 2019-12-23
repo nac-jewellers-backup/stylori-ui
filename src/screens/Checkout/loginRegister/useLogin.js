@@ -4,8 +4,11 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { CartContext } from 'context'
+import Addressforms from '../addressDetails/Addressforms'
+
 var obj = {}
 var obj1 = {}
+var val = {};
 const useLogin = (changePanel) => {
     const [values, setValues] = React.useState({
         password: "",
@@ -23,9 +26,11 @@ const useLogin = (changePanel) => {
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/signin', {}, []);
     const { setCartFilters } = React.useContext(CartContext);
-    const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
+    const { setValues: addressetValues } = Addressforms();
+    const pathnames = window.location.pathname === "/login"
+    const { loading: codloading, error: coderror, data: addresData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     React.useEffect(() => {
-        debugger
+debugger
         var ms = data && data.message
         if (ms && values['error'] && values['errortext']) {
             values['error']['passerr'] = true
@@ -52,9 +57,8 @@ const useLogin = (changePanel) => {
                     obj1['user_id'] = bb
                     makeRequestCod(obj);
                     localStorage.setItem('user_id', bb)
+                    localStorage.setItem('accessToken', data.accessToken)
                     // setValues({user_id:data.userprofile.id})
-
-
                     // changePanel(3)
                 }
             }
@@ -62,14 +66,36 @@ const useLogin = (changePanel) => {
 
     }, [data])
     React.useEffect(() => {
-        var a = CodData ? CodData : ""
+        var a = addresData ? addresData : ""
         if (JSON.stringify(a).length > 10) {
             setCartFilters(obj1)
-            localStorage.setItem("vals", JSON.stringify(CodData))
-            changePanel(3)
+            // localStorage.setItem("vals", JSON.stringify(addresData))
             localStorage.setItem("true", false)
+            localStorage.setItem("check_dlt", false)
+            val["addressvalues"] = addresData
+            val["addrs"] = false
+            addressetValues(val)
+            localStorage.setItem("c_k_l", true)
+            if (!pathnames) {
+                changePanel(3)
+            } else {
+                if (localStorage.getItem('review_location') && localStorage.getItem('review_location').length > 0) {
+                    window.location.href = localStorage.getItem('review_location')
+                    return false
+                } else {
+                    window.location.href = "/home" 
+                    return false
+                }
+            }
+            window.location.reload();
         }
-    }, [CodData])
+    }, [addresData])
+    // React.useEffect(() => {
+    //     if (user_id.length > 0) {
+    //         obj['userprofileId'] = user_id
+    //         makeRequestCod(obj);
+    //     }
+    // }, [])
     const handleChange = (type, value) => {
         if (values.email !== "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = false
@@ -97,9 +123,8 @@ const useLogin = (changePanel) => {
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
-        debugger
-
-        if (values.email === "" && values['error'] && values['errortext']) {
+debugger
+if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'
 
@@ -117,10 +142,18 @@ const useLogin = (changePanel) => {
             })
             return false
         }
-        let lastAtPos = values.email.lastIndexOf('@');
-        let lastDotPos = values.email.lastIndexOf('.');
-        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && values.email.indexOf('@@') == -1 && lastDotPos > 2 && (values.email.length - lastDotPos) > 2)) {
-            debugger
+        if (values.email === "" && values['error'] && values['errortext']) {
+            values['error']['emerr'] = true
+            values['errortext']['emerr'] = 'Email is required'
+
+            setValues({
+                ...values,
+                values,
+            })
+            return false
+        }
+        var emailvld =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!emailvld.test(values.email)) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'An email address must contain a single @/.'
             setValues({

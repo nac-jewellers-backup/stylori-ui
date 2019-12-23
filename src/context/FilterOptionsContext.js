@@ -10,6 +10,7 @@ import { createApolloFetch } from 'apollo-fetch';
 import { NetworkContext } from 'context/NetworkContext';
 import { bool } from 'prop-types';
 import { filterParams } from 'mappers';
+import { GlobalContext } from 'context'
 
 const initialCtx = {
     FilterOptionsCtx: {
@@ -36,6 +37,7 @@ const initialCtx = {
 export const FilterOptionsContext = React.createContext(initialCtx);
 export const FilterOptionsConsumer = FilterOptionsContext.Consumer;
 
+
 const Provider = (props) => {
 
     const [filters, setFilters] = React.useState({
@@ -59,6 +61,7 @@ const Provider = (props) => {
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => t }) }, [filters, sort, pricemax, pricemin])
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => [...d, ...t] }) }, [offset])
     const { NetworkCtx: { graphqlUrl: uri } } = React.useContext(NetworkContext);
+    const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext)
     const client = createApolloFetch({ uri });
 
     // useEffect(() => {
@@ -106,13 +109,11 @@ const Provider = (props) => {
             
 
                // props.location.push(window.location.pathname)
-               matchPath(`${window.location.pathname}${window.location.search}`, {
+               matchPath(window.location.pathname, {
                    path: ":listingpage",
                    search:window.location.search
        
                })
-               let window_location_search = window.location.search;
-               let split_ampersand = window_location_search
                 let pathnameSplit = window.location.pathname.split('/')
                 const splitHiphen = () => {if(pathnameSplit[1].indexOf('-')){
                     return pathnameSplit[1].split('-')
@@ -502,12 +503,23 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                             var price = conditionFilters
                             var obj = {}
 
-
+                            if(price["filter"]){
+                                
                             price["filter"]['transSkuListsByProductId'] =  {'every':{"markupPrice":{
                                 "greaterThanOrEqualTo": _minValue,
                                 "lessThanOrEqualTo": _maxValue
                             }}
                               }
+                            }
+                            else{
+                                price["filter"] =  {"transSkuListsByProductId":{'every':{"markupPrice":{
+                                    "greaterThanOrEqualTo": _minValue,
+                                    "lessThanOrEqualTo": _maxValue
+                                }}}
+                                  }
+                            }
+
+                       
                                            
                             //   conditionFilters['filter'] = obj1.filter
                             //   conditionFilters['filter'] = obj2.filter
@@ -567,7 +579,7 @@ function usePrevious(value) {
     }, [seoData])
     var newObj = {}
     const updateFilters = async (filters) => {
-        debugger
+        
         setFilters(filters);
 
         // setloadingfilters(true)
@@ -641,7 +653,12 @@ function usePrevious(value) {
             seoUrlFetch()
 
             // }
+
         }
+        // const {Globalctx, setGlobalCtx} = this.props
+        var loc = window.location.pathname.split('/')[1].split('-').filter(val=>{if(val==='silver') return val})
+        if(loc.length=== 0) setGlobalCtx({...Globalctx, pathName:false})
+        else setGlobalCtx({...Globalctx, pathName:true})
     }, [mappedFilters, offset])
 
     useEffect(() => {
@@ -670,6 +687,7 @@ function usePrevious(value) {
         if (paramObjects(mappedFilters.seo_url).length > 0) {
             setParamsAo(paramObjects(mappedFilters.seo_url))
         }
+
     }, [ntxdata, filters, mappedFilters, seoData])
     useEffect(() => {
         if (window.location.pathname !== "jewellery") {
@@ -684,6 +702,8 @@ function usePrevious(value) {
 
             });
         }
+        // const {Globalctx, setGlobalCtx} = this.props
+        
 
     })
     const FilterOptionsCtx = {
@@ -696,4 +716,4 @@ function usePrevious(value) {
     )
 };
 
-export const FilterOptionsProvider = withRouter(Provider);
+export const FilterOptionsProvider = withRouter(Provider); 

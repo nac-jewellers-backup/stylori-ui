@@ -17,6 +17,7 @@ import { ProductDetailContext } from 'context'
 import { LazyLoadImage, trackWindowScroll }
   from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import Wishlist from "components/wishlist/wishlist";
 
 
 export const ImgMediaCard = (props) => {
@@ -53,29 +54,40 @@ export const ImgMediaCard = (props) => {
 //     />
 // );
 // }
-const imageOnError = (e, res) => {
+const imageOnError = (event, res) => {
+  var e = event
+  e.target.src.lastIndexOf('\.')
+  var src_img = (e.target.src).lastIndexOf('\.')
+  var _arr = e.target.src.split('/')
+  _arr.splice(_arr.length - 2, 1, '1000X1000')
+  const URL_1000x1000 = _arr.join('/')
+  var URL_JPG = (e.target.src).substr(0, src_img).concat('.jpg')
+
   try {
-    e.target.onError = null;
-    e.target.src.lastIndexOf('\.')
-    var src_img = (e.target.src).lastIndexOf('\.')
-    const testImage = (URL) => {
+
+    var _image = ''
+    e.target.onerror = null;
+
+    const testImage = (URL, e) => {
       var tester = new Image();
-      tester.onload = imageFound(e);
-      tester.onerror = imageNotFound(e);
       tester.src = URL;
+      tester.onload = imageFound;
+      tester.onerror = imageNotFound;
+      // tester.on("error" , imageNotFound)
+
+
+
     }
     const imageFound = (e) => {
-      if(e.target.src === res.url_1000x1000) e.target.src = res.url_1000x1000
-      else e.target.src = (e.target.src).substr(0, src_img).concat('.jpg')
+      e.target.src = URL_1000x1000
+
     }
-  
     const imageNotFound = (e) => {
       e.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
-      // e.target.src = "https://alpha-assets.stylori.com/276x276/images/static/Image_Not_Available.jpg"
-      return false
+
+
     }
-    var url= (e.target.src).substr(0, src_img).concat('.jpg')
-    testImage(url);
+    return testImage(URL_1000x1000, e);
     // e.target.src = (e.target.src).substr(0, src_img).concat('.jpg')
   } catch (error) {
     console.log(error)
@@ -106,13 +118,13 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
       onMouseOut={() => {
         callmouseout()
       }}
-      style={{ width: '100%', height: '100%' }}
+      style={{ width: '100%' }}
       scrollPosition={scrollPosition}
 
-      // If the image we are creating here has the same src than before,
-      // we can directly display it with no need to lazy-load.
-      // onerror={this.src=}
-      placeholderSrc={renderImages(props, cardstate) === '' ? 'https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg' : ''}
+    // If the image we are creating here has the same src than before,
+    // we can directly display it with no need to lazy-load.
+    // onerror={this.src=}
+    // placeholderSrc={renderImages(props, cardstate) === '' ? 'https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg' : ''}
     // placeholder	= { <div >loading.....</div> }
     />
 
@@ -323,13 +335,7 @@ function Component(props) {
     loaded: false,
     dataLoaded: true
   });
-  // let a=[];
-
-  // ['ProductType','Material'].map(val=>{
-  //   if(Object.values(props.filters[val]))
-  //   a.push(Object.keys(props.filters[val]))
-
-  //  })
+  const _height = props.data.imageResolution.img_res
   const callmouseover = () => {
     setCardState({ ...cardstate, hovered: !cardstate.hovered });
   }
@@ -337,8 +343,8 @@ function Component(props) {
     setCardState({ ...cardstate, hovered: !cardstate.hovered });
   }
   return (
-    <div className={classes.root}>
-      <Card className={classes.card}>
+    <div className={classes.root} >
+      <Card className={classes.card} >
         <CardActions>
           <Grid container xs={12}>
             <Grid container item xs={6} justify="flex-start">
@@ -350,20 +356,21 @@ function Component(props) {
             </Grid>
 
             <Grid container item xs={6} justify="flex-end">
-              <i
+              {/* <i
                 style={{ fontSize: "18px" }}
                 className={`fa ${classes.iconColor}`}
               >
                 &#xf08a;
-              </i>
-            </Grid>
+              </i> */}
+              <Wishlist sku={props.data.skuId} productId={props.data.productId} />
+          </Grid>
           </Grid>
         </CardActions>
         {/* /:productCategory/:productType/:material/:productName */}
         <Link to={{ pathname: `${'jewellery'}/${props.data.productType}/${props.data.material}/${(props.data.title).replace(/ /g, "-")}`, search: `skuId=${props.data.skuId}` }} style={{ textDecoration: 'none' }} onClick={handleProductDetatiContext(props)}>
-          <CardActionArea >
+          <CardActionArea style={{ height: `${_height ? `${_height}px` : '300px'}` }}>
 
-            {/* <img 
+          {/* <img 
 srcset={renderImages(props, cardstate)}
 sizes="(max-width: 320px) 320w,
             (max-width: 480px) 375w,
@@ -386,53 +393,53 @@ sizes="(max-width: 320px) 320w,
           className={`${props.data.image.placeImage.length === 0 || props.data.image.hoverImage.length === 0 ? 'shine' : '' }`}
           
           /> */}
-            {Gallery(props, callmouseover, callmouseout, cardstate)}
-          </CardActionArea>
-          <Card className={classes.priceClass}>
-            <CardContent className={classes.cardContent}>
-              <Grid
-                container
-                item
-                xs={12}
-                className={classes.textPriceCardGrid}
-                alignItems="center"
-              >
-                <Grid container item xs={12} sm={12} md={7} lg={7} xl={7} alignItems="center" className={`${classes.priceClassMain}`}>
-                  <Typography
-                    variant="h6"
-                    component="h6"
-                    className={classes.offerMainPrice}
-                  >
-                    {/* <i
+          {Gallery(props, callmouseover, callmouseout, cardstate)}
+        </CardActionArea>
+        <Card className={classes.priceClass}>
+          <CardContent className={classes.cardContent}>
+            <Grid
+              container
+              item
+              xs={12}
+              className={classes.textPriceCardGrid}
+              alignItems="center"
+            >
+              <Grid container item xs={12} sm={12} md={7} lg={7} xl={7} alignItems="center" className={`${classes.priceClassMain}`}>
+                <Typography
+                  variant="h6"
+                  component="h6"
+                  className={classes.offerMainPrice}
+                >
+                  {/* <i
                     
                     className="fa"
                   >
                     &#xf156;
                   </i> */}
-                    {/* {Math.round(props.data.offerPrice)} */}
-                    {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.offerPrice))}
-                  </Typography>
-                </Grid>
-                {/*  */}
-                <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={`${classes.priceOffGrid}`}>
-                  <Grid container item xs={12} alignItems="center" className={`${classes.priceOffGridsub}`}>
-                    <Typography
-                      gutterBottom
-                      variant="body1"
-                      component="span"
-                      className={classes.offerPrice}
-                    >
-                      <del>
-                        {/* <i style={{ fontSize: "12px" }} className="fa">
+                  {/* {Math.round(props.data.offerPrice)} */}
+                  {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.offerPrice))}
+                </Typography>
+              </Grid>
+              {/*  */}
+              <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={`${classes.priceOffGrid}`}>
+                <Grid container item xs={12} alignItems="center" className={`${classes.priceOffGridsub}`}>
+                  <Typography
+                    gutterBottom
+                    variant="body1"
+                    component="span"
+                    className={classes.offerPrice}
+                  >
+                    <del>
+                      {/* <i style={{ fontSize: "12px" }} className="fa">
                         &#xf156;
                       </i>
                       &nbsp;  */}
-                        {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
-                      </del>
-                    </Typography>
-                  </Grid>
-                  <Grid container item xs={12} className={`${classes.offerPricesMain}`}>
-                    {/* <Typography
+                      {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
+                    </del>
+                  </Typography>
+                </Grid>
+                <Grid container item xs={12} className={`${classes.offerPricesMain}`}>
+                  {/* <Typography
                     gutterBottom
                     variant="body1"
                     component="span"
@@ -440,35 +447,35 @@ sizes="(max-width: 320px) 320w,
                   >
                     you save &nbsp;
                   </Typography> */}
-                    <Typography
-                      gutterBottom
-                      variant="body1"
-                      component="span"
-                      className={`${classes.youSave} ${classes.youSavePrice}`}
-                    >
-                      {/* 20% Off */}
-                      {Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice)) / Math.round(props.data.price)) * 100) + '% off'}
+                  <Typography
+                    gutterBottom
+                    variant="body1"
+                    component="span"
+                    className={`${classes.youSave} ${classes.youSavePrice}`}
+                  >
+                    {/* 20% Off */}
+                    {Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice)) / Math.round(props.data.price)) * 100) + '% off'}
 
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Hidden smDown>
+                <Grid container xs={12}>
+                  <Grid item xs={12} className={`${classes.titles}`}>
+                    <Typography variant="body1"
+                      component="span" className={`${classes.titles}`}>
+                      {props.data.title}
                     </Typography>
+
                   </Grid>
                 </Grid>
-                <Hidden smDown>
-                  <Grid container xs={12}>
-                    <Grid item xs={12} className={`${classes.titles}`}>
-                      <Typography variant="body1"
-                        component="span" className={`${classes.titles}`}>
-                        {props.data.title}
-                      </Typography>
+              </Hidden>
 
-                    </Grid>
-                  </Grid>
-                </Hidden>
-
-              </Grid>
-            </CardContent>
-          </Card>
-        </Link>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Link>
       </Card>
-    </div>
+    </div >
   );
 }

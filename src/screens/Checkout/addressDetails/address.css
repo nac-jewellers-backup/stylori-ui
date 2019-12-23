@@ -15,7 +15,9 @@
     border: 1px solid #E6E6E6;
     margin-top: 20px;
 }
-
+.title{
+    color: #394578 !important;
+}
 .card-title {
     margin: 0 0 10px !important;
     border-bottom: 1px solid #E6E6E6;
@@ -26,6 +28,7 @@
 .address-name {
     padding-left: 5px !important;
     font-size: 18px !important;
+    color: #394578 !important;
 }
 
 .delete-icon {
@@ -79,7 +82,7 @@
 }
 
 .ckcut-main-body {
-    background: #dfdfdfbd !important;
+    background:#f5f4f4  !important;
     margin-bottom: 5px !important;
 }
 
@@ -89,4 +92,8 @@
 
 .MuiExpansionPanelSummary-content {
     margin: 7px 0 !important;
+}
+
+.address_card_disabled{
+    filter: grayscale(5) !important; 
 }

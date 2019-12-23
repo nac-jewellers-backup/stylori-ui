@@ -4,31 +4,31 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "11c882eb8e9650ca979a",
+    "revision": "4166eb03fec296d781ae",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "cb0a31502a9d0cdf6521",
+    "revision": "5196077039d9680c3cdd",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "eccff85a2c631da5c0f7",
+    "revision": "1f2177406c9726fe1398",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "11c882eb8e9650ca979a",
+    "revision": "4166eb03fec296d781ae",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "cb0a31502a9d0cdf6521",
+    "revision": "5196077039d9680c3cdd",
     "url": "/static/js/3.js"
   },
   {
-    "revision": "946d10205d59b7f1f3a6",
+    "revision": "07f0c8fabee54a69bd10",
     "url": "/static/js/4.js"
   },
   {
-    "revision": "eccff85a2c631da5c0f7",
+    "revision": "1f2177406c9726fe1398",
     "url": "/static/js/main.js"
   },
   {
@@ -58,6 +58,22 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "6916c84be4a82b94cf15503ef25d48f2",
     "url": "/static/media/delivery.svg"
+  },
+  {
+    "revision": "28cd30ea4ad92b4520d9a3fb2634a87d",
+    "url": "/static/media/img1ProductModal.jpg"
+  },
+  {
+    "revision": "b944ac0307e92dae56a16dc18b6318a1",
+    "url": "/static/media/img2ProductModal.jpg"
+  },
+  {
+    "revision": "2e0c3b28d442f07cf1fb810420137dc5",
+    "url": "/static/media/img3ProductModal.jpg"
+  },
+  {
+    "revision": "337eef9d867ffd752a548702f05cb8e6",
+    "url": "/static/media/img4ProductModal.jpg"
   },
   {
     "revision": "51fc5370cb4d7e537c06ea117f090ba2",
@@ -92,8 +108,28 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/slick.woff"
   },
   {
+    "revision": "4ab5e81bb7847802b7a01ffe64e69740",
+    "url": "/static/media/stylori-silver-logo-small-screen.png"
+  },
+  {
+    "revision": "681db1b372ef45af725df7762fcb49ee",
+    "url": "/static/media/styloriGagets.png"
+  },
+  {
     "revision": "5a712650392a83e01a75498ebc83837b",
     "url": "/static/media/telephone.svg"
+  },
+  {
+    "revision": "1737e5e0a88de55dc6cf1a773e4b0816",
+    "url": "/static/media/topPicksOne.jpg"
+  },
+  {
+    "revision": "35f5ee82b7e9b5e66f70a99aefcb3865",
+    "url": "/static/media/topPicksThree.jpg"
+  },
+  {
+    "revision": "37b89e280ecc047a56d66fdb6404bb23",
+    "url": "/static/media/topPicksTwo.jpg"
   },
   {
     "revision": "c7359aa61314bf6d37f83ccc97dd0694",

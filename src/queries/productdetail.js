@@ -114,11 +114,10 @@ export const CUSTOMERREVIEWS = `query MyQuery($productSku: String) {
 }
 `
 
-export const ADDRESSDETAILS = `
-query MyQuery($id: UUID) {
-  allUserAddresses(first: 1, condition: {id: $id}) {
+export const ADDRESSDETAILS = `query MyQuery($userprofileId: String) {
+  allUserAddresses(condition: {userprofileId: $userprofileId, isActive: true}) {
     nodes {
-      addressline1 
+      addressline1
       addressline2
       id
       city
@@ -131,6 +130,7 @@ query MyQuery($id: UUID) {
       lastname
       pincode
       state
+      isActive
     }
   }
 }`

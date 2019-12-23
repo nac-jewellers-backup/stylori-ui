@@ -57,10 +57,9 @@ export const styles = theme => ({
     fontSize: "17px",
     [theme.breakpoints.only('xs')]: {
       marginLeft: "6px",
-      letterSpacing: "2px",
+      letterSpacing: "2px"
     },
   },
-
   callerNum: {
     fontSize: "13px",
     color: theme.palette.secondary.dark,
@@ -104,7 +103,6 @@ export const styles = theme => ({
     position: "fixed",
     right: "58px",
     top: "-9px"
-
   },
   subtitles: {
     color: theme.palette.background.darkFade,
@@ -122,17 +120,13 @@ export const styles = theme => ({
   },
   subtitle2Container: {
     backgroundColor: theme.palette.background.darkFade,
-
   },
-
 });
-
 
 export const useStyles = makeStyles(theme => ({
   paperdiv: {
     position: 'absolute',
     width: 'fit-content',
-
   },
   root: {
     width: '100%',
@@ -151,13 +145,11 @@ export const useStyles = makeStyles(theme => ({
     },
     '& li:hover': {
       backgroundColor: theme.palette.secondary.dark,
-
     }
   },
   paperdivsub: {
     position: 'absolute',
     width: 'fit-content',
-
   },
   rootsub: {
     width: '100%',
@@ -176,7 +168,6 @@ export const useStyles = makeStyles(theme => ({
     },
     '& li:hover': {
       backgroundColor: "#fff",
-
     }
   },
   listedItems: {
@@ -186,6 +177,9 @@ export const useStyles = makeStyles(theme => ({
   listedItemsub: {
     padding: "0px",
     fontSize: "0.7rem !important",
+    '&:hover': {
+      backgroundColor:"#000"
+    }
   },
   listedItemsvalue: {
     padding: "2px 16px 2px 16px",
@@ -203,7 +197,4 @@ export const useStyles = makeStyles(theme => ({
   drawer: {
     backgroundColor: "#394578",
   },
-
 }));
-
-// export default {styles, useStyles};

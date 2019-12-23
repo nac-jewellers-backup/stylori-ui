@@ -65,7 +65,10 @@ export const useStyles = makeStyles(theme => ({
         fontFamily: 'Robot-Bold',
         color: theme.palette.secondary.dark,
         letterSpacing: '5px',
-        fontSize: '28px'
+        fontSize: '1.7rem',
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '1.0rem'
+        },
     },
     productCardDescription: {
         textAlign: 'center',

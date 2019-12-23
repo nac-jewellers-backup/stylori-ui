@@ -11,10 +11,11 @@ const Register = (props) => {
 
 const RegisterComponent = (props) => {
     let email = localStorage.getItem("email") ? localStorage.getItem("email") : '';
-    const { values, setValues, handlers, data } = useRegister(() => props.changePanel(2));
+    const { values, setValues, handlers, data ,valuesedit} = useRegister(() => props.changePanel(2));
     // var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
     // var ccc = data.message ? data.message : ""
     const paths = window.location.pathname === "/account"
+
     const clear = () => {
         setValues({
             email: "",
@@ -46,70 +47,87 @@ const RegisterComponent = (props) => {
             }}>
                 <Grid container spacing={12}>
                     <Grid item lg={1} />
-                    <Grid item xs={12} lg={6}>
-                        <h5 className='title'>  New user registration  </h5>
+                    <Grid item xs={12} lg={window.location.pathname === "/registers" ? 12 : 6}>
+                        <h5 className='title'>
+                            {window.location.pathname === "/account" ? "" : <>
+                                {window.location.pathname === "/registers" ? "Register" : "New user registration"}</>}
+                        </h5>
                         {paths ?
                             <Input
+                                style={{ background: "rgba(192, 192, 192, 0.41)" ,width:"100%"}}
                                 value={email}
                                 InputProps={{
                                     readOnly: true,
                                 }}
-                            /> : <Input
-                                margin="normal"
-                                variant="outlined"
-                                type="email"
-                                name="email"
-                                value={values.email}
-                                error={values.error && values.error.emerr ? true : false}
-                                // helperText={values.errortext && values.errortext.emerr}
-                                placeholder="Enter your email Id"
-                                onChange={e => handlers.handleChange('email', e.target.value)}
-                            />}
-                        <label className='errtext'> {values.errortext && values.errortext.emerr}</label>
+                            /> : <>
+                                <Input
+                                    margin="normal"
+                                    variant="outlined"
+                                    // type="email"
+                                    name="email"
+                                    value={values.email}
+                                    error={values.error && values.error.emerr ? true : false}
+                                    // helperText={values.errortext && values.errortext.emerr}
+                                    placeholder="Enter your email Id"
+                                    onChange={e => handlers.handleChange('email', e.target.value)}
+                                />
+                                <label className='errtext'> {values.errortext && values.errortext.emerr}</label></>
+                        }
                         {paths ?
-                            <Input
-                                margin="normal"
-                                variant="outlined"
-                                type="password"
-                                name="password"
-                                value={values.password}
-                                error={values.error && values.error.passerr ? true : false}
-                                // helperText={values.errortext && values.errortext.passerr}
-                                placeholder="Enter your password"
-                                onChange={e => handlers.handleChange('password', e.target.value)}
-                                InputProps={{
-                                    readOnly: true,
-                                }}
-                            /> : <Input
-                                margin="normal"
-                                variant="outlined"
-                                type="password"
-                                name="password"
-                                value={values.password}
-                                error={values.error && values.error.passerr ? true : false}
-                                // helperText={values.errortext && values.errortext.passerr}
-                                placeholder="Enter your password"
-                                onChange={e => handlers.handleChange('password', e.target.value)}
-                            />}
-                        <label className='errtext'> {values.errortext && values.errortext.passerr}</label>
+                            <Grid container spacing={12}>
+                                <Grid item lg={6} >
+                                    <Input
+                                        margin="normal"
+                                        variant="outlined"
+                                        type="password"
+                                        name="password"
+                                        value={"........"}
+                                        // helperText={values.errortext && values.errortext.passerr}
+                                        placeholder="Enter your password"
+                                        onChange={e => handlers.handleChange('password', e.target.value)}
+                                        style={{ background: "rgba(192, 192, 192, 0.41)" }}
+                                        InputProps={{
+                                            readOnly: true,
+                                        }}
+                                    /> </Grid>
+                                <Grid item lg={6} style={{ textAlign: "center", lineHeight: "66px", color: "#337ab7" }}>
+                                    <a> Change password </a> </Grid>
+                            </Grid> : <>
+                                <Input
+                                    margin="normal"
+                                    variant="outlined"
+                                    type="password"
+                                    name="password"
+                                    value={values.password}
+                                    error={values.error && values.error.passerr ? true : false}
+                                    // helperText={values.errortext && values.errortext.passerr}
+                                    placeholder="Enter your password"
+                                    onChange={e => handlers.handleChange('password', e.target.value)}
+                                />
+                                <label className='errtext'> {values.errortext && values.errortext.passerr}</label></>
+                        }
                         {paths ? "" :
-                            <Input
-                                margin="normal"
-                                variant="outlined"
-                                type="password"
-                                name="confirmpassword"
-                                value={values.confirmpassword}
-                                error={values.error && values.error.cnfpasserr ? true : false}
-                                // helperText={values.errortext && values.errortext.cnfpasserr}
-                                placeholder="Enter your Confirm password"
-                                onChange={e => handlers.handleChange('confirmpassword', e.target.value)}
-                            />}
-                        <label className='errtext'> {values.errortext && values.errortext.cnfpasserr}</label>
+                            <>
+                                <Input
+                                    margin="normal"
+                                    variant="outlined"
+                                    type="password"
+                                    name="confirmpassword"
+                                    value={values.confirmpassword}
+                                    error={values.error && values.error.cnfpasserr ? true : false}
+                                    // helperText={values.errortext && values.errortext.cnfpasserr}
+                                    placeholder="Enter your Confirm password"
+                                    onChange={e => handlers.handleChange('confirmpassword', e.target.value)}
+                                />
+                                <label className='errtext'> {values.errortext && values.errortext.cnfpasserr}</label>
+                            </>
+                        }
                         <Grid container spacing={12}>
                             <Grid item lg={4} xs={4}>
                                 <SimpleSelect val={'1'} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                             </Grid>
-                            <Grid item lg={4} xs={4}>
+                            {!paths&&<>
+                                <Grid item lg={4} xs={4}>
                                 <Input
                                     margin="normal"
                                     variant="outlined"
@@ -140,7 +158,32 @@ const RegisterComponent = (props) => {
                                 // helperText=""
                                 />
                                 <label className='errtext'> {values.errortext && values.errortext.lastname}</label>
+                            </Grid></>}
+                            {paths&&<>
+                                <Grid item lg={4} xs={4}>
+                                <Input
+                                    margin="normal"
+                                    variant="outlined"
+                                    type="text"
+                                    name="firstname"
+                                    value={valuesedit.firstname}
+                                    placeholder="Enter FirstName*"
+                                    onChange={e => handlers.handleChangeedit('firstname', e.target.value)}
+                                    className='text-f'
+                                />
                             </Grid>
+                            <Grid item lg={4} xs={4}>
+                                <Input
+                                    margin="normal"
+                                    variant="outlined"
+                                    type="text"
+                                    name="lastname"
+                                    value={valuesedit.lastname}
+                                    placeholder="Enter LastName*"
+                                    onChange={e => handlers.handleChangeedit('lastname', e.target.value)}
+                                    className='text-f'
+                                />
+                            </Grid></>}
                         </Grid>
                         <div className='login-butn'>
                             {paths ? "" : <Button className='back-b' onClick={() => clear()} >Back</Button>}

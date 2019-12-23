@@ -252,7 +252,7 @@ export default function Footer(props) {
                         </Grid>
                     </Hidden>
                     <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
-                        <Grid item xs={6} >
+                        <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
                             <img src={googlePlaystore} className={`${classes.colorMain}`} alt="" />
                         </Grid>
                     </Grid>
@@ -345,20 +345,6 @@ export default function Footer(props) {
                                         )
                                     })}
                                 </Grid>
-                                {/* {
-
-                                    footerData.map(data => {
-                                        return (
-
-                                            <Grid xs={4} className={classes.navTitle} onClick={() => { window.location.href = data.url }} href="#">
-                                                <Grid item style={{ paddingTop: '3%' }}>
-                                                 
-                                                </Grid>
-                                            </Grid>
-
-                                        )
-                                    })
-                                } */}
                             </Grid>
                         </Grid>
                     </Hidden>

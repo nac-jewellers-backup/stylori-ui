@@ -6,7 +6,7 @@ import Cart from 'screens/Stylori/Cart'
 import Account from 'screens/Stylori/accounts'
 import Checkout from 'screens/Stylori/Checkout'
 import HomePageStylori from 'screens/Stylori/HomePage'
-import Silver from 'screens/SilverStylori'
+import { GlobalContext } from 'context'
 import Faqs from 'screens/Stylori/faqs'
 import Register from 'screens/Checkout/loginRegister/register';
 import UserLogin from '../components/LoginAndRegister/Login';
@@ -20,29 +20,27 @@ import AboutPage from "components/faqs/aboutPage";
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
 
-//         return (
-//             <Route
-//                 path={`/stylori     ${window.location.search}`}
-//                 component={Stylori}
-//             />
-//         )
+// SILVER SCREENS
+            
+import Silver from 'screens/SilverStylori'
+import SilverListingPage from 'screens/SilverStylori/listingpage'
+            
+// SILVER SCREENS ENDS
 
-//     }
-//     else{
-//         return(
-//             <Route
-//             path={routes.stylori}
-//             component={Stylori}
-//         />
-//         )
-//     }
-// }
+
 const browserHistory = createBrowserHistory();
 
 browserHistory.listen((location, action) => {
     window.scrollTo(0, 0);
 });
 export const RouterApp = (props) => {
+
+    const { Globalctx } = React.useContext(GlobalContext)
+    debugger
+    const func_location_silver = () =>{
+        var loc = window.location.pathname.split('/')[1].split('-').filter(val=>{if(val==='silver') return val})
+        return loc[0]
+    }
     console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
     return (
         <Switch history={browserHistory}>
@@ -57,6 +55,14 @@ export const RouterApp = (props) => {
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
             <Route key="AboutUs" component={AboutPage} exact path={routes.AboutUs} />
 
+            {(props.location.pathname !== "/cart" && props.location.pathname !== "/account" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && Globalctx.pathName === false  ) && 
+                <Route exact={true} component={Stylori} path={"/:listingpage"} />
+                
+                }
+             {
+                 (Globalctx.pathName) &&
+                 <Route key="silverListingpage" component = {SilverListingPage}  path={props.location.pathname} />
+                 }
             <Route key="sto" component={stories} exact path={routes.Stories} />
             <Route key="Collection" component={Collection} exact path={routes.Collection} />
             {(props.location.pathname !== "/cart" && props.location.pathname !== "/account" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout") &&
@@ -68,7 +74,6 @@ export const RouterApp = (props) => {
             <Route key="login" component={UserLogin} exact path={routes.UserLogin} />
             <Route key="Account" component={Account} exact path={routes.Account} />
             <Route key="registers" component={UserRegister} exact path={routes.UserRegister} />
-
         </Switch>
     );
 };

@@ -60,9 +60,19 @@ const styles = theme => ({
             width: "100%"
         },
         [theme.breakpoints.up('lg')]: {
-            paddingLeft: "50px",
-            paddingRight: "50px",
-            textAlign: "center"
+            paddingLeft: "25px",
+            paddingRight: "25px",
+            // textAlign: "center"
+        },
+    },
+    tabs_values_font:{
+        [theme.breakpoints.down('xs')]: {
+            fontSize:"11px !important",
+            marginTop:"5px"
+        },
+        [theme.breakpoints.up('lg')]: {
+            fontSize:"12px !important",
+            marginTop:"5px"
         },
     },
     tabsheadcolor: {

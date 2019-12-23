@@ -6,6 +6,7 @@ export const CART = `query myquerycart($productList: [String!]) {
       metalColor
       discountPrice
       markupPrice
+      
       productListByProductId {
         productId
         productName
@@ -30,13 +31,69 @@ export const CART = `query myquerycart($productList: [String!]) {
 export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
   allOrders(filter: {userProfileId: {in: $userProfileId}}) {
     nodes {
-      orderStatus
-      paymentMode
-      paymentStatus
-      userProfileId
-      createdAt
-      updatedAt
+      shoppingCartByCartId {
+        shoppingCartItemsByShoppingCartId {
+          nodes {
+            transSkuListByProductSku {
+              discountPrice
+              generatedSku
+              sellingPrice
+              purity
+              metalColor
+              isReadyToShip
+              vendorDeliveryTime
+              productListByProductId {
+                productImagesByProductId(filter: {isdefault: {equalTo: true}, imagePosition: {equalTo: 1}}) {
+                  nodes {
+                    imageUrl
+                  }
+                }
+                productName
+              }
+              skuWeight
+            }
+          }
+        }
+        cartAddressesByCartId {
+          nodes {
+            addressline1
+            city
+            contactNumber
+            country
+            countryCode
+            firstname
+            lastname
+            pincode
+            state
+          }
+        }
+      }
     }
   }
 }
+`
+export const ALLUSERWISHLISTS = `query MyQuery($userprofileId: [UUID!]) {
+  allUserWhislists(filter: {userprofileId: {in: $userprofileId}, isActive: {equalTo: true}}) {
+    nodes {
+      userprofileId
+      productId
+      skuId
+      productListByProductId {
+        productName
+        productImagesByProductId(condition: {isdefault: true, imagePosition: 1}) {
+          nodes {
+            imageUrl
+          }
+        }
+        isactive
+      }
+      transSkuListBySkuId {
+        discountPrice
+        markupPrice
+        generatedSku
+      }
+    }
+  }
+}
+
 `

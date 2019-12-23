@@ -4,6 +4,9 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { resetWarningCache } from 'prop-types';
 import { CartContext } from 'context'
+let user_ids = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
+let namesOf_first = localStorage.getItem("namesOf_first") && localStorage.getItem("namesOf_first").length > 0 ? JSON.parse(localStorage.getItem("namesOf_first")) : ""
+let namesOf_last = localStorage.getItem("namesOf_last") && localStorage.getItem("namesOf_last").length > 0 ? JSON.parse(localStorage.getItem("namesOf_last")) : ""
 const useRegister = (changePanel, props) => {
     const [values, setValues] = React.useState({
         email: "",
@@ -27,11 +30,18 @@ const useRegister = (changePanel, props) => {
             lastname: false
         }
     });
-
+    const [valuesedit, setValuesedit] = React.useState({
+        user_id: user_ids,
+        firstname: namesOf_first,
+        lastname: namesOf_last,
+    });
+    const pathnames = window.location.pathname === "/account"
     const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
+    const { makeFetch: makeFetchedit } = useNetworkRequest('/api/auth/signup', {}, false);
     const { data, error, loading, makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
     const { setCartFilters } = React.useContext(CartContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
+    const pathnamelog = window.location.pathname === "/registers"
     useEffect(() => {
         var ms = data && data.message
         if (ms && values['error'] && values['errortext']) {
@@ -61,10 +71,22 @@ const useRegister = (changePanel, props) => {
                 // }
                 localStorage.setItem("email", data.user.email)
                 localStorage.setItem("user_id", data.user_profile_id)
+                // localStorage.setItem("addres_id", data.user.id)
                 setValues({ user_id: data.user_profile_id })
                 setCartFilters({ user_id })
                 makeRequestCod(obj);
-                changePanel(3)
+                if (!pathnamelog) {
+                    changePanel(2)
+                    // return false
+                } else {
+                    if (localStorage.getItem('review_location') && localStorage.getItem('review_location').length > 0) {
+                        window.location.href = localStorage.getItem('review_location')
+                        return false
+                    } else {
+                        window.location.href = "/home"
+                        return false
+                    }
+                }
             }
         }
 
@@ -103,80 +125,104 @@ const useRegister = (changePanel, props) => {
         })
         // makeFetch(values)
     }
-
+    const handleChangeedit = (type, value) => {
+        debugger
+        setValuesedit({
+            ...valuesedit,
+            [type]: value,
+        })
+        // makeFetch(values)
+    }
     const user = data.user_profile_id ? data.user_profile_id : ""
     const handleSubmit = (e) => {
-        if (values.email === "" && values['error'] && values['errortext']) {
-            values['error']['emerr'] = true
-            values['errortext']['emerr'] = 'Email is required'
-            setValues({
-                ...values,
-                values,
-            })
-        }
+        if (!pathnames) {
+            if (values.email === "" && values['error'] && values['errortext']) {
+                values['error']['emerr'] = true
+                values['errortext']['emerr'] = 'Email is required'
+                setValues({
+                    ...values,
+                    values,
+                })
+            }
 
-        if (values.password === "" && values['error'] && values['errortext']) {
-            values['error']['passerr'] = true
-            values['errortext']['passerr'] = 'Password is required'
-            setValues({
-                ...values,
-                values,
-            })
-        }
-        if (values.confirmpassword === "" && values['error'] && values['errortext']) {
-            values['error']['cnfpasserr'] = true
-            values['errortext']['cnfpasserr'] = 'Confirm password is required'
-            setValues({
-                ...values,
-                values,
-            })
-        }
-        if (values.firstname === "" && values['error'] && values['errortext']) {
-            values['error']['firstname'] = true
-            values['errortext']['firstname'] = 'First Name is required'
-            setValues({
-                ...values,
-                values,
-            })
-        }
-        if (values.lastname === "" && values['error'] && values['errortext']) {
-            values['error']['lastname'] = true
-            values['errortext']['lastname'] = 'Last Name is required'
-            setValues({
-                ...values,
-                values,
-            })
+            if (values.password === "" && values['error'] && values['errortext']) {
+                values['error']['passerr'] = true
+                values['errortext']['passerr'] = 'Password is required'
+                setValues({
+                    ...values,
+                    values,
+                })
+            }
+            if (values.confirmpassword === "" && values['error'] && values['errortext']) {
+                values['error']['cnfpasserr'] = true
+                values['errortext']['cnfpasserr'] = 'Confirm password is required'
+                setValues({
+                    ...values,
+                    values,
+                })
+            }
+            if (values.firstname === "" && values['error'] && values['errortext']) {
+                values['error']['firstname'] = true
+                values['errortext']['firstname'] = 'First Name is required'
+                setValues({
+                    ...values,
+                    values,
+                })
+            }
+            if (values.lastname === "" && values['error'] && values['errortext']) {
+                values['error']['lastname'] = true
+                values['errortext']['lastname'] = 'Last Name is required'
+                setValues({
+                    ...values,
+                    values,
+                })
+                return false
+            }
+            if (values.email === "" && values['error'] && values['errortext']) {
+                values['error']['emerr'] = true
+                values['errortext']['emerr'] = 'Email is required'
+                setValues({
+                    ...values,
+                    values,
+                })
+                return false
+            }
+            if (!pathnames) {
+                if (values.password !== values.confirmpassword && values['error'] && values['errortext']) {
+                    // values['error']['passerr'] = true
+                    values['error']['cnfpasserr'] = true
+                    // values['errortext']['passerr'] = "password doesn't match"
+                    values['errortext']['cnfpasserr'] = "Password doesn't match"
+                    setValues({
+                        ...values,
+                        values,
+                    })
+                    return false
+                }
+            }
+            var emailvld = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if (!emailvld.test(values.email)) {
+                values['error']['emerr'] = true
+                values['errortext']['emerr'] = 'An email address must contain a single @/.'
+                setValues({
+                    ...values,
+                    values,
+                })
+                return false
+            }
+            localStorage.setItem("namesOf_first", JSON.stringify(values.firstname))
+            localStorage.setItem("namesOf_last", JSON.stringify(values.lastname))
+            makeFetch(values);
             return false
+        } else {
+            localStorage.setItem("namesOf_first", JSON.stringify(valuesedit.firstname))
+            localStorage.setItem("namesOf_last", JSON.stringify(valuesedit.lastname))
+            makeFetchedit(valuesedit);
         }
-
-        if (values.password !== values.confirmpassword && values['error'] && values['errortext']) {
-            // values['error']['passerr'] = true
-            values['error']['cnfpasserr'] = true
-            // values['errortext']['passerr'] = "password doesn't match"
-            values['errortext']['cnfpasserr'] = "Password doesn't match"
-            setValues({
-                ...values,
-                values,
-            })
-            return false
-        }
-        let lastAtPos = values.email.lastIndexOf('@');
-        let lastDotPos = values.email.lastIndexOf('.');
-        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && values.email.indexOf('@@') == -1 && lastDotPos > 2 && (values.email.length - lastDotPos) > 2)) {
-            debugger
-            values['error']['emerr'] = true
-            values['errortext']['emerr'] = 'An email address must contain a single @/.'
-            setValues({
-                ...values,
-                values,
-            })
-            return false
-        }
-        makeFetch(values);
     }
-    const handlers = { handleSubmit, handleChange };
+    const handlers = { handleSubmit, handleChange, handleChangeedit };
 
-    return { values, setValues, handlers, data }
+    return { values, setValues, handlers, data, valuesedit }
 }
 
 export default useRegister;

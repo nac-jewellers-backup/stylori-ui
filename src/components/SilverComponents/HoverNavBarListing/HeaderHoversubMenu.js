@@ -23,8 +23,8 @@ function HeaderHoverMenuItem(props) {
           placement={'left-start'}
           open={opens} anchorEl={target} transition className={classes.mouseOverPopoversub}>
           <List component="nav" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
-            {props.data && <Grid container style={{ width: "350px", background: "#fff", padding: "10px", zIndex: "10000" }}>
-              {props.data && props.data.imageContainer && props.data.imageContainer.map((val, index) =>
+            {props.data && props.data.imageContainer && <Grid container style={{ width: "350px", background: "#fff", padding: "10px", zIndex: "10000" }}>
+              {props.data.imageContainer.map((val, index) =>
                 <Grid item xs={4}>
                   <Grid container justify="center" alignContent="center" alignItems="center" style={{ cursor: "pointer" }}>
                     <Grid item style={{ justifyContent: "center", alignContent: "center", display: "flex" }}>
@@ -37,8 +37,10 @@ function HeaderHoverMenuItem(props) {
                     </Grid>
                   </Grid>
                 </Grid>
-              )}
-              {props.data && props.data.onlyText && props.data.onlyText.map((val, index) =>
+              )} </Grid>
+            }
+              {props.data && props.data.onlyText && props.data.onlyText.map((val, index) =><>
+              
                 <ListItem className={classes.listedItemsub} component="li"
                   onClick={() => { window.location.href = '/' + val.url }}
                 >
@@ -48,9 +50,8 @@ function HeaderHoverMenuItem(props) {
                     </Typography>
                   </ListItemText>
                 </ListItem>
-              )}
-            </Grid>
-            }
+              </>)}
+           
           </List>
         </Popper>
       </Grid>

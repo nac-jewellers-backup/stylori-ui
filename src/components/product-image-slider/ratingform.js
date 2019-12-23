@@ -41,15 +41,15 @@ const RatingComponent = (props) => {
     }
 
     return (
+        <Container>
         <form id="Resetform" action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e, props)}>
             <Grid container spacing={12} style={{ marginTop: '20px' }} className="bg-clr2">
-                <Container>
                 <Grid item lg={1} />
                 <Grid item xs={12} lg={8}>
                     <div className="rating-form ">
                         <h5 className={`rating-form-head ${classes.normalfonts}`}>Rate This</h5>
                         <label className='errtext'> {values.errortext.rateerr ? values.errortext.rateerr : ""}</label>
-                        <Ratings />
+                        <Ratings ratings="starts-review"/>
                     </div>
                     <h6 className={`rating-form-head ${classes.normalfonts}`} style={{marginBottom: "-3px"}}>Write Your Review</h6>
                     <label className='errtext'> {values.errortext.ratetitle ? values.errortext.ratetitle : ""}</label>
@@ -98,9 +98,9 @@ const RatingComponent = (props) => {
                     </div>
                 </Grid>
                 </Grid>
-                </Container>
             </Grid>
         </form>
+        </Container>
     )
 }
 const Components = props => {
