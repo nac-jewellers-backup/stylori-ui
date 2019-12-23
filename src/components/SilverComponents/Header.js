@@ -97,7 +97,7 @@ class Header extends Component {
     }
     scrolling = () => {
         if (window.innerWidth > 959) {
-            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                 document.getElementById("headerContainer").style.position = "fixed";
                 document.getElementById("headerContainerTop").style.height = "74px";
                 document.getElementById("headerContainer").style.background = "#fff";
