@@ -1190,7 +1190,7 @@ body {
     } */
 
 .wrappercustom {
-    font-family: "Roboto" !important;
+    /* font-family: "Roboto" !important; */
     width: 100% !important;
     height: 35px;
     color: #394578 !important;
