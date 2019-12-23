@@ -4,31 +4,31 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "4166eb03fec296d781ae",
+    "revision": "04107c535658a1d09d6b",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "41f22e159c8c7d9a7552",
+    "revision": "90fca5bdefc6b0ea23df",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "fc19929ef2934184bac2",
+    "revision": "3b9b7872f03fb913b989",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "4166eb03fec296d781ae",
+    "revision": "04107c535658a1d09d6b",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "41f22e159c8c7d9a7552",
+    "revision": "90fca5bdefc6b0ea23df",
     "url": "/static/js/3.js"
   },
   {
-    "revision": "07f0c8fabee54a69bd10",
+    "revision": "ddcda2eb269294c3b9f3",
     "url": "/static/js/4.js"
   },
   {
-    "revision": "fc19929ef2934184bac2",
+    "revision": "3b9b7872f03fb913b989",
     "url": "/static/js/main.js"
   },
   {
@@ -42,6 +42,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "92e2d23a1a2929823738532362c05eea",
     "url": "/static/media/FlowerDimon.jpg"
+  },
+  {
+    "revision": "11eabca2251325cfc5589c9c6fb57b46",
+    "url": "/static/media/Roboto-Regular.ttf"
   },
   {
     "revision": "c3f7641ef11bd405cfe12138f25f089f",

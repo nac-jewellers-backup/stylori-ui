@@ -27,13 +27,15 @@ const  screenWidth = () => {
  
 var screen_width_type =  () =>{ 
     // const {window_width, browser_type} = await lambda_func_front_end()
-    var window_width = JSON.parse(localStorage.getItem('browserDetails'))
+    var window_width = localStorage.browserDetails ?  JSON.parse(localStorage.getItem('browserDetails')) : {}
 
     screenWidth()
     var _calc = () =>{
-         var width_of_filters_20_percentage = ((window_width.browser_width-(window_width.browser_width * 0.2))/colSize)
-         var subtracting_spacesaroundcard =  width_of_filters_20_percentage - (width_of_filters_20_percentage*0.1)
-         return subtracting_spacesaroundcard 
+            
+            var width_of_filters_20_percentage = ((window_width.browser_width-(window_width.browser_width * 0.2))/colSize)
+            var subtracting_spacesaroundcard =  width_of_filters_20_percentage - (width_of_filters_20_percentage*0.1)
+            return subtracting_spacesaroundcard 
+      
         }
         var calc = _calc()
        
