@@ -9,10 +9,12 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 const Filters = (props) => {
     const { setSort, setloadingfilters, setPriceMax,setPriceMin, ListingPageCtx } = React.useContext(ListingPageContext);
     const [state, setState] = React.useState({
-        Menuopen: false, targetopen: 0,listHoverItem:'', filtercheck: '', CardRadio: false, 
-        productDisplay: true,filters:{offers:{}, price:{}, ProductType:{}, Theme:{}, Collection:{}, Material:{Silver:true}}
+        Menuopen: false, targetopen: 0,listHoverItem:'', filtercheck: '',  
+        filters:{offers:{}, price:{}, ProductType:{}, Theme:{}, Collection:{}, Material:{Silver:true}}
     })
     const [openFilters, setOpenFilters] = React.useState(true)
+    const [productDisplay, setProductDisplay] = React.useState(true)
+    const [CardRadio, setCardRadio] = React.useState(false)
     const selectType = (came, a, b, d) =>{ 
         alert(came, a, b, d)
         if(Object.entries(came).length!== 0 && came.constructor !== Object){
@@ -47,16 +49,20 @@ const Filters = (props) => {
       debugger
       // var _openFilters = {openFilters:!openFilters}
 
-      setOpenFilters({openFilters: !openFilters})
-        setState({...state, openFilters: false, productDisplay: false });
-        setState({...state,CardRadio: false });
+      setOpenFilters(!openFilters)
+      setProductDisplay(!productDisplay)
+      setCardRadio(!CardRadio)
+        // setState({...state, productDisplay: false });
+        // setState({...state,CardRadio: false });
     
       };  
-      // React.useEffect(()=>{
-      //   alert(JSON.stringify(state))
-      // },[openFilters])
+      React.useEffect(()=>{
+        alert(JSON.stringify(openFilters))
+      },[openFilters])
     const   handleDrawerCloseMobile = () => {
-        setState({...state,openFilters: true, productDisplay: true });
+         setOpenFilters(!openFilters)
+      setProductDisplay(!productDisplay)
+      setCardRadio(!CardRadio)
       };  
       const filterValue = (filtercheck) => {
         if (filtercheck === state.filtercheck) {
@@ -67,7 +73,7 @@ const Filters = (props) => {
     
       }
     const classes = styles();
-    const {productDisplay, CardRadio,filters, filtercheck} = state
+    const {filters, filtercheck} = state
     // const {openFilters} = openFilters 
     const {sortOptions} = props
     return (
@@ -197,7 +203,7 @@ const Filters = (props) => {
 
 
 
-            <AppBar color="primary" className="filter-fixed header" style={{ display: !openFilters ? 'none' : 'block' }}>
+            <AppBar color="primary" className="filter-fixed header" style={{ display:!openFilters ? 'none' : 'block' }}>
               <Container>
                 <Container>
                   <Toolbar  >

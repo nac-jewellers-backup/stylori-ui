@@ -16,8 +16,8 @@ const RemoveWishlistComponent = (props) => {
                 values["product_sku"] = props.sku
                 values["product_id"] = props.productId
                 values["add"] = props.add
-                setValues({ values, ...values });
-                handlers.handelRemove(1)
+                setValues({ values, ...values },()=>{handlers.handelRemove(1)});
+                
             }}>click</div>
     )
 }
