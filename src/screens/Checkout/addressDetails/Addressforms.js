@@ -72,7 +72,6 @@ const Addressforms = (changePanel) => {
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     const pathnames = window.location.pathname === "/account"
     // var stst = values.ref ? values.ref : ""
-    debugger
     const addressva = values && values.addressvalues && values.addressvalues.length > 0
     useEffect(() => {
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
@@ -162,7 +161,6 @@ const Addressforms = (changePanel) => {
     }
     const handleSubmit = (e) => {
         var addObjgust_local = localStorage.getItem('gustaddres') ? JSON.parse(localStorage.getItem('gustaddres')) : "";
-        debugger
         if (con_gust !== true) {
             var addressOne = values.addressOne
             var addressTwo = values.addressTwo
@@ -242,7 +240,6 @@ const Addressforms = (changePanel) => {
         // window.location.reload(); 
     }
     const selectaddreses = (val_addrs, num) => {
-        debugger
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
         addObjall['address_id'] = val_addrs && val_addrs.id ? val_addrs.id : ""
         if (values.checkValue1 === true) {
@@ -308,7 +305,6 @@ const Addressforms = (changePanel) => {
         }
     }
     const Delete_address = (val_addrs, index) => {
-        debugger
         if (con_gust !== true) {
             if (check_dlt === false) {
                 if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 1) {

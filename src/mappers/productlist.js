@@ -58,7 +58,6 @@ console.log('screen_width_type()',screen_width_type())
 // const baseUi = "https://assets-cdn.stylori.com/";
 // const injectUrl = (url, baseUi) => url ? resolutions.map(k => ({ ...k, img: `${baseUi}${url.imageUrl===undefined  ? url : url.imageUrl}` })) : [];
 const injectUrl =  (url, baseUi) => {
-    debugger
     var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
     var resolution =     screen_width_type()
     var _resolutions = `${resolution}X${resolution}`
@@ -110,7 +109,6 @@ const hoverImage = (placeImage) =>  placeImage.find(fd => fd.ishover);
 
 
     export default function (data, cdnUrl) {
-        debugger
     let mapperdata = [];
     try {
         mapperdata = data.data.allProductLists.nodes;

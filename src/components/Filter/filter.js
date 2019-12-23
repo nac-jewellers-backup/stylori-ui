@@ -336,7 +336,7 @@ class Component extends React.Component {
     document.documentElement.scrollTop = 180;
   };
   handleDrawerOpenMobile = () => {
-    debugger
+   
     this.setState({ openMobile: false, productDisplay: false });
     this.setState({ CardRadio: false });
 
@@ -348,7 +348,7 @@ class Component extends React.Component {
     this.setState({ open: false });
   };
   selectItem = (name) => {
-    debugger
+   
     let { selected } = this.state;
     // let value = selected === name ? "" : name;
     selected.push(name)
@@ -356,7 +356,7 @@ class Component extends React.Component {
   }
   filterValue = (filtercheck) => {
 
-    debugger
+   
     if (filtercheck === this.state.filtercheck) {
       this.setState({ filtercheck: '' })
     } else {
@@ -436,7 +436,7 @@ class Component extends React.Component {
     //   );
     // })
     // const selected_list_filter = () => {
-    //   debugger
+    //  
     //   var filter_open
     //   let { selected } = this.state;
     //   if (selected !== undefined || selected !== null) {
@@ -702,7 +702,7 @@ class Component extends React.Component {
                     </> */}
                     <>
                       {subFilter[this.state.filtercheck].map(row => {
-                        debugger
+                       
                         
                         return (
                           <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>

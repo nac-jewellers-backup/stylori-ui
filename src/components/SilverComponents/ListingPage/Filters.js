@@ -31,7 +31,6 @@ const Filters = (props) => {
         }
         else{
             alert(a,b,d)
-            debugger
         }
 
 
@@ -46,7 +45,6 @@ const Filters = (props) => {
       }
     
     const handleDrawerOpenMobile = () => {
-      debugger
       // var _openFilters = {openFilters:!openFilters}
 
       setOpenFilters(!openFilters)

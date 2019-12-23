@@ -18,7 +18,6 @@ class Addressdetails extends React.Component {
         const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
         const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
         const _add_data_addres = () => {
-            debugger
             if (con_gust === true) {
                 return value
             } if(con_gust!== true) {

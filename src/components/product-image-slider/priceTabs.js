@@ -53,6 +53,7 @@ class Component extends React.Component {
     };
 
     handleClick = (event, key) => {
+
         debugger
         console.log('lklkkoik9', this.state.skuSize)
         var filters = { ...this.props.filters }
@@ -155,6 +156,7 @@ class Component extends React.Component {
     TabsComponent = () => {
         const { classes } = this.props;
         const data = this.props.data;
+        debugger
         const { value } = this.state;
         const limit = 8;
         const settings = {
@@ -168,6 +170,7 @@ class Component extends React.Component {
         return (
             <div>
                 {data[0].productTabs.map(val => {
+                    debugger
                     const arr = val.tab1.Children !== null && (val.tab1.Children).split(',')
                     const arr2 = val.tab2.Children !== null && (val.tab2.Children).split(',')
                     return (
@@ -219,6 +222,7 @@ class Component extends React.Component {
                                     <Grid item lg={9} xs={12}>
                                         <Grid container spacing={12} lg={12}>
                                             {arr2.map((val, i) => {
+                                                debugger
                                                 var kv = val
                                                 var objVal = kv.split(" ")
                                                 var arrPurity = objVal[0]

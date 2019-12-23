@@ -36,7 +36,6 @@ browserHistory.listen((location, action) => {
 export const RouterApp = (props) => {
 
     const { Globalctx } = React.useContext(GlobalContext)
-    debugger
     const func_location_silver = () =>{
         var loc = window.location.pathname.split('/')[1].split('-').filter(val=>{if(val==='silver') return val})
         return loc[0]
