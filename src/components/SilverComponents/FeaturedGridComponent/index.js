@@ -3,13 +3,13 @@ import { Grid } from '@material-ui/core'
 import { useStyles } from './style'
 import Slideshow from '../../Carousel/carosul'
 import './index.css'
+import NacGagets from '../../../components/NacGagets/NacGagets'
 
 export const FeaturedGridComponent = (props) => {
     const classes = useStyles();
     return (
-        <Grid container xs={12} style={{ margin: "20px 0px 50px 0px", padding: "24px 5px 10px 10px" }} justify="center">
-
-            <Grid item xs={12} style={{  boxShadow: '10px 10px 5px #ccc'}}>
+        <Grid container xs={12} className={classes.containerset} style={{}} justify="center">
+            <Grid item xs={12} style={{ boxShadow: '10px 10px 5px #ccc' }}>
                 <Slideshow dataCarousel={props.data[0].settings} >
                     {props.data[0].images.map((val, Index) =>
                         <img src={val} className={`${classes.img}`} />
@@ -17,6 +17,7 @@ export const FeaturedGridComponent = (props) => {
                 </Slideshow>
 
             </Grid>
+            < NacGagets />
 
         </Grid>
     );

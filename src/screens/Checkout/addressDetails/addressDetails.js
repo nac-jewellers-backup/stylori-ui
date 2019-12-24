@@ -18,10 +18,9 @@ class Addressdetails extends React.Component {
         const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
         const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
         const _add_data_addres = () => {
-            debugger
             if (con_gust === true) {
                 return value
-            } if (con_gust !== true) {
+            } if(con_gust!== true) {
                 return values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes
             }
         }
@@ -35,9 +34,6 @@ class Addressdetails extends React.Component {
                         <>
                             {/* {localStorage.setItem("namesOf_first", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].firstname))}
                             {localStorage.setItem("namesOf_last", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].lastname))} */}
-                            {localStorage.setItem("pin_cod", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].pincode))}
-                            {localStorage.setItem("co_num", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].contactNumber))}
-                            {localStorage.setItem("addres_Id", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].id))}
                             <Grid item xs={12} lg={6} style={{ paddingRight: "15px" }}>
                                 <div className='card-adrs wd'
                                     // className={values.Id === val_addrs1.id || values.Id2 === val_addrs1.id ? "address_card_disabled" : ""}
@@ -52,7 +48,7 @@ class Addressdetails extends React.Component {
                                         </span>
                                         <i onClick={() => {
                                             // localStorage.setItem("isedit", 1)
-                                            this.props.redirectForm(val_addrs1, index, true, true, index)
+                                            this.props.redirectForm(val_addrs1, index, true, true,index)
                                         }} style={{ fontSize: "20px", color: "#394578", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                             class="fa fa-pencil-square-o"></i>
                                         <i
@@ -95,7 +91,7 @@ class Addressdetails extends React.Component {
                         </>
                     )}
                 </Grid>
-                {value.length > 4 || values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :
+                {value||values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :
                     <Button onClick={() => this.props.redirectForm1()} className={`add-new-address ${classes.normalfonts}`}>
                         <div></div>  Add New Address
                    </Button>}<br />
@@ -128,7 +124,7 @@ class Addressdetails extends React.Component {
                                                         </span>
                                                         <i onClick={() => {
                                                             // localStorage.setItem("isedit", 1)
-                                                            this.props.redirectForm(val_addrs2, index, true, false, index)
+                                                            this.props.redirectForm(val_addrs2, index, true, false,index)
                                                         }} style={{ fontSize: "20px", color: "#394578", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                                             class="fa fa-pencil-square-o"></i>
                                                         <i style={{ fontSize: "20px", color: "#394578", float: "right", marginRight: "10px", cursor: "pointer" }}
@@ -168,7 +164,7 @@ class Addressdetails extends React.Component {
                                     )}
                                 </>
                             </Grid>
-                            {value.length > 4 || values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :
+                            {value||values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :
                                 <Button onClick={() => this.props.redirectForm1()} className={`add-new-address ${classes.normalfonts}`}>
                                     <div></div>  Add New Address
                    </Button>}

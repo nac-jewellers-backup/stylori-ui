@@ -1,7 +1,6 @@
 import {
     Grid,
     Hidden,
-    ExpansionPanel,
     Container,
     Popover,
 } from '@material-ui/core';
@@ -21,7 +20,6 @@ const dataCarousel = {
     speed: 1000,
     fade: true,
     arrows: false,
-    className: 'button__bar',
 }
 
 const mobilecarousel = (props, val) => {
@@ -108,51 +106,34 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                         <Grid item xs={12} lg={9}>
                             <div className="price-div">
                                 <Hidden mdUp>
-                                    <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important", padding: "0 5px", marginBottom: "3%", marginTop: "3%" }} >
-                                        <Grid container spacing={12} xs={12}>
-                                            <Grid container item xs={8} lg={7}>
-                                               <div style={{width:"90%"}}>
-                                               <h1 className={`pdp-title ${classes.title}`} >
-                                                    {val.title}
-                                                </h1>
-                                                <p className={`pdp-desc ${classes.dis}`}>
-                                                    {val.dis}
-                                                </p>
-                                               </div>
-                                            </Grid>
-                                            <Grid container item xs={4} lg={6}>
-                                                <div>
-                                                    {data[0].ProductContactNum.map(val =>
-                                                        <div style={{ marginTop: "8px" }}>
-                                                            <b className={`ships-by ${classes.normalfonts}`}>
-                                                                {/* <span class="ship-img"></span> */}
-                                                                <span > {val.shipby}</span>
-
-                                                                <Grid container spacing={12} >
-                                                                    <Grid item xs={12} style={{ textAlign: "center" }}>
-                                                                        <span class="css-kqsna2">
-                                                                            {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(data[0].offerPrice))}</span>
-                                                                        <br /> <span class="css-tg000w">
-                                                                            {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(data[0].price))}</span>
-                                                                    </Grid>
-                                                                </Grid>
-                                                            </b>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </Grid>
+                                    <Grid container spacing={12} xs={12}>
+                                        <Grid container item xs={8}>
+                                            <h1 className={`pdp-title ${classes.title}`} style={{width:"90%"}}>
+                                                {val.title}
+                                            </h1>
                                         </Grid>
-                                    </ExpansionPanel>
+                                        <Grid container item xs={4} >
+                                            <div>
+                                                {data[0].ProductContactNum.map(val =>
+                                                    <div style={{ marginTop: "8px" }}>
+                                                        <b className={`ships-by ${classes.normalfonts}`}>
+                                                            {/* <span class="ship-img"></span> */}
+                                                            <span > {val.shipby}</span>
+                                                        </b>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </Grid>
+                                    </Grid>
                                 </Hidden>
                                 <Hidden smDown>
                                     <h1 className={`pdp-title ${classes.title}`}>
                                         {val.title}
                                     </h1>
-                                    <p className={`pdp-desc ${classes.dis}`}>
-                                        {val.dis}
-                                    </p>
                                 </Hidden>
-
+                                <p className={`pdp-desc ${classes.dis}`}>
+                                    {val.dis}
+                                </p>
                             </div>
                         </Grid>
 

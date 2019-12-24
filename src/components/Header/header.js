@@ -15,7 +15,6 @@ import {
   ListItemText,
   Container
 } from '@material-ui/core';
-import { CartContext } from 'context'
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
@@ -99,7 +98,7 @@ class Header extends Component {
     });
   };
   render() {
-    // alert(JSON.stringify())
+
     const { mainlist, Jewellery, subheader, menuListHeader, menuLists, earings, rings, pendants, nosepins, banglesbracelets, valayal, kammal, koluse, Price,
       Collection, Material } = this.props.data;
     let { selected, selected1 } = this.state;
@@ -107,7 +106,6 @@ class Header extends Component {
     let path = window.location.pathname.split('/').pop();
     const { anchorEl } = this.state;
     const openPopover = anchorEl;
-    debugger
     return (
       <div>
         <Hidden smDown >
@@ -197,11 +195,7 @@ class Header extends Component {
                     </Popover>
                     {/* <i class="fa fa-user"></i> */}
 
-                    <Badge color="secondary"
-                      badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary"
-                      // wishlist_count
-                      // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
-                    >
+                    <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">
                       <i class="fa fa-heart icons-header-sizes" onClick={() => {
                         if (user_id.length > 0) {
                           window.location.href = "/account"
@@ -391,10 +385,9 @@ class Header extends Component {
 
 export default withStyles(styles)(props => {
   const { mapped } = useDummyRequest(headerData);
-  const { wishlist_count } = React.useContext(CartContext);
   if (Object.keys(mapped).length === 0) return ''
-  debugger
-  return <Header {...props} data={mapped} wishlist_count={wishlist_count} />
+
+  return <Header {...props} data={mapped} />
 });
 
 

@@ -10,7 +10,16 @@ import DinersClub from '../../assets/Diners-Club.jpg'
 import Netbanking from '../../assets/mouse.png'
 import cartoonFooter from '../../assets/cartoonFooter.png'
 import './Footer.css'
+import { pointer } from 'popmotion';
 const useStyles = makeStyles(theme => ({
+    navTitle: {
+        cursor: "pointer",
+        margin: "0 0 10px",
+        padding: "0px 15px",
+        "&:hover": {
+            textDecoration: "underline"
+        }
+    },
     colorMain: {
         backgroundColor: theme.palette.secondary.main,
 
@@ -68,9 +77,86 @@ export default function Footer(props) {
     const silver = props.silver
     const classes = useStyles();
     const footerData = [
+        {
+            url: "aboutus",
+            Title: "About Stylori"
+        },
+        {
+            url: "",
+            Title: "My Account"
+        },
+        {
+            url: "/productcare",
+            Title: "Product Care"
+        },
+        {
+            url: "",
+            Title: "Careers"
+        },
+        {
+            url: "/faqs",
+            Title: "Frequently Asked Questions"
+        },
+        {
+            url: "/privacypolicy",
+            Title: "Privacy & Cookie Policy"
+        },
+        {
+            url: "",
+            Title: "Contact Us"
+        },
+        {
+            url: "/deliveryreturns",
+            Title: "Shopping & Returns"
+        },
+        {
+            url: "/termsconditions",
+            Title: "Terms & Conditions"
+        },
+    ]
+    const footerData1 = [
+        {
+            url: "/aboutus",
+            Title: "About Stylori"
+        },
+        {
+            url: "",
+            Title: "Careers"
+        },
 
-        'About Stylori', 'My Account', 'Product Care', 'Careers', 'Frequently Asked Questions', 'Privacy & Cookie Policy', 'Contact Us', 'Shopping & Returns', 'Terms & Conditions'
+        {
+            url: "",
+            Title: "Contact Us"
+        },
 
+    ]
+    const footerData2 = [
+        {
+            url: "",
+            Title: "My Account"
+        },
+        {
+            url: "/faqs",
+            Title: "Frequently Asked Questions"
+        },
+        {
+            url: "/deliveryreturns",
+            Title: "Shopping & Returns"
+        },
+    ]
+    const footerData3 = [
+        {
+            url: "/productcare",
+            Title: "Product Care"
+        },
+        {
+            url: "/privacypolicy",
+            Title: "Privacy & Cookie Policy"
+        },
+        {
+            url: "/termsconditions",
+            Title: "Terms & Conditions"
+        },
     ]
 
     return (
@@ -143,8 +229,8 @@ export default function Footer(props) {
 
                                 footerData.map(data => {
                                     return (
-                                        <Grid item xs={6} sm={6} style={{ paddingTop: '1%' }}>
-                                            {data}
+                                        <Grid item xs={6} sm={6} style={{ padding: '1% 10px 0px 0px ' }} onClick={() => { window.location.href = data.url }} href="#">
+                                            {data.Title}
                                         </Grid>
                                     )
                                 })
@@ -166,7 +252,7 @@ export default function Footer(props) {
                         </Grid>
                     </Hidden>
                     <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
-                        <Grid item xs={6} >
+                        <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
                             <img src={googlePlaystore} className={`${classes.colorMain}`} alt="" />
                         </Grid>
                     </Grid>
@@ -228,20 +314,37 @@ export default function Footer(props) {
 
             {/* footer color menuItems starts  */}
             <Container>
-                <Grid container item className={`${classes.colorWhiteBackground}`} style={{ padding: '1%' }}>
+                <Grid container item className={`${classes.colorWhiteBackground}`} style={{ padding: '18px 1% 18px 1%' }}>
                     <Hidden only={['sm', 'xs']}>
                         <Grid container item xl={5} lg={5} md={5} xs={12} sm={6}>
                             <Grid container item xs={12} style={{ color: '#808080', fontSize: '13px' }}>
-                                {
-
-                                    footerData.map(data => {
+                                <Grid item xs={3}>
+                                    {footerData1.map(data => {
                                         return (
-                                            <Grid item xs={4} style={{ paddingTop: '3%' }}>
-                                                {data}
+                                            <Grid container className={classes.navTitle} onClick={() => { window.location.href = data.url }} href="#">
+                                                {data.Title}
                                             </Grid>
                                         )
-                                    })
-                                }
+                                    })}
+                                </Grid>
+                                <Grid item xs={5}>
+                                    {footerData2.map(data => {
+                                        return (
+                                            <Grid container className={classes.navTitle} onClick={() => { window.location.href = data.url }} href="#">
+                                                {data.Title}
+                                            </Grid>
+                                        )
+                                    })}
+                                </Grid>
+                                <Grid item xs={4}>
+                                    {footerData3.map(data => {
+                                        return (
+                                            <Grid container className={classes.navTitle} onClick={() => { window.location.href = data.url }} href="#">
+                                                {data.Title}
+                                            </Grid>
+                                        )
+                                    })}
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Hidden>
@@ -249,7 +352,7 @@ export default function Footer(props) {
                     <Hidden only={['sm', 'xs']}>
 
                         <Grid container item xl={4} lg={4} md={5} xs={12} sm={6}>
-                            <Grid item xs={12} style={{ paddingTop: '3%', fontWeight: '500', fontSize: '12px', color: '#808080' }}>
+                            <Grid item xs={12} style={{ padding: '3% 0px 0px 20px', fontWeight: '500', fontSize: '12px', color: '#808080' }}>
                                 Need Help?
                                 </Grid>
                             <Grid item xs={12} className="footer-icons">

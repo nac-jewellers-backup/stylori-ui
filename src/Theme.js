@@ -20,7 +20,7 @@ const Theme = (props) => {
     const theme_func = (props) =>{
         
       
-      if(Globalctx.pathName === "/silverjewellery" || Globalctx.pathName === "/silver-jewellery"){
+      if(Globalctx && Globalctx.pathName === true ){
         return silverThemes
       }
       else{

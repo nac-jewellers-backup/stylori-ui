@@ -188,33 +188,45 @@
   text-transform: uppercase;
   color: #fff;
   text-align: center;
-  position: relative;
-  font-size: 17px;
-  background: rgba(0, 0, 0, 0.6);
+  /* position: relative; */
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  /* background: rgba(0, 0, 0, 0.6); */
   -webkit-transform: translatey(-100px);
   -ms-transform: translatey(-100px);
   transform: translatey(-100px);
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
-  padding: 10px;
+  padding: 10px 10px 0px 10px;
+  margin: 0px;
+  padding-bottom: 0px
 }
 
-.hovereffectSilver a.info {
-  text-decoration: none;
-  display: inline-block;
-  text-transform: uppercase;
-  color: #fff;
-  border: 1px solid #fff;
-  background-color: transparent;
-  opacity: 0;
-  filter: alpha(opacity=0);
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
-  padding: 7px 14px;
+.hovereffectSilver h5 {
+  color: #dedede;
+  text-align: center;
+  margin: auto;
+  width: 300px;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 20px
 }
 
-.hovereffectSilver a.info:hover {
-  box-shadow: 0 0 5px #fff;
+.hovereffectSilver span {
+  padding: 5px 13px 5px 12px;
+  letter-spacing: 4px;
+  line-height: 10px;
+  font-weight: 600;
+  color: #9e9e9e;
+  text-align: center;
+  background-color: #fff;
+  cursor: pointer;
+
+}
+
+.hovereffectSilver span:hover {
+  box-shadow: 0 0 4px #fff;
 }
 
 .hovereffectSilver:hover img {
@@ -239,7 +251,7 @@
   transform: translatey(0);
 }
 
-.hovereffectSilver:hover a.info {
+.hovereffectSilver:hover a {
   -webkit-transition-delay: .2s;
   transition-delay: .2s;
 }

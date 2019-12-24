@@ -5,11 +5,8 @@ import { ADDRESSDETAILS } from 'queries/productdetail';
 import { resetWarningCache } from 'prop-types';
 import { CartContext } from 'context'
 let user_ids = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
-let addres_Ids = localStorage.getItem("addres_Id") && localStorage.getItem("addres_Id").length > 0 && localStorage.getItem("addres_Id") !== 'undefined' ? localStorage.getItem("addres_Id") : ""
 let namesOf_first = localStorage.getItem("namesOf_first") && localStorage.getItem("namesOf_first").length > 0 ? JSON.parse(localStorage.getItem("namesOf_first")) : ""
 let namesOf_last = localStorage.getItem("namesOf_last") && localStorage.getItem("namesOf_last").length > 0 ? JSON.parse(localStorage.getItem("namesOf_last")) : ""
-let pin_cod = localStorage.getItem("pin_cod") && localStorage.getItem("pin_cod").length > 0 && localStorage.getItem("pin_cod") !== 'undefined' && localStorage.getItem("pin_cod") !== 'null' ? JSON.parse(localStorage.getItem("pin_cod")) : ""
-let co_num = localStorage.getItem("co_num") && localStorage.getItem("co_num").length > 0 && localStorage.getItem("co_num") !== 'undefined' && localStorage.getItem("co_num") !== 'null' ? JSON.parse(localStorage.getItem("co_num")) : ""
 const useRegister = (changePanel, props) => {
     const [values, setValues] = React.useState({
         email: "",
@@ -38,15 +35,9 @@ const useRegister = (changePanel, props) => {
         firstname: namesOf_first,
         lastname: namesOf_last,
     });
-    const [valuesadrees, setvaluesadrees] = React.useState({
-        contactno: co_num,
-        pincode: pin_cod,
-        addres_Id: addres_Ids,
-    });
     const pathnames = window.location.pathname === "/account"
     const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     const { makeFetch: makeFetchedit } = useNetworkRequest('/api/auth/signup', {}, false);
-    const { makeFetch: makeFetcheditAddress } = useNetworkRequest('/adduseraddress', {}, false);
     const { data, error, loading, makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
     const { setCartFilters } = React.useContext(CartContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
@@ -135,16 +126,7 @@ const useRegister = (changePanel, props) => {
         // makeFetch(values)
     }
     const handleChangeedit = (type, value) => {
-        debugger
         setValuesedit({
-            ...valuesedit,
-            [type]: value,
-        })
-        // makeFetch(values)
-    }
-    const handlesetvaluesadrees = (type, value) => {
-        debugger
-        setvaluesadrees({
             ...valuesedit,
             [type]: value,
         })
@@ -234,15 +216,12 @@ const useRegister = (changePanel, props) => {
         } else {
             localStorage.setItem("namesOf_first", JSON.stringify(valuesedit.firstname))
             localStorage.setItem("namesOf_last", JSON.stringify(valuesedit.lastname))
-            localStorage.setItem("pin_cod", JSON.stringify(valuesadrees.pincode))
-            localStorage.setItem("co_num", JSON.stringify(valuesadrees.contactno))
             makeFetchedit(valuesedit);
-            makeFetcheditAddress(valuesadrees);
         }
     }
-    const handlers = { handleSubmit, handleChange, handleChangeedit, handlesetvaluesadrees };
+    const handlers = { handleSubmit, handleChange, handleChangeedit };
 
-    return { values, setValues, handlers, data, valuesedit, valuesadrees }
+    return { values, setValues, handlers, data, valuesedit }
 }
 
 export default useRegister;
