@@ -25,7 +25,7 @@ const useWishlists = (props) => {
             ...values,
             [type]: value
         })
-        // makeFetch(values)
+        makeFetch(values)
     }
 
     const handleInvalid = (type, status) => {
@@ -40,10 +40,10 @@ const useWishlists = (props) => {
             values["isactive"] = num
             values["user_id"] = user_id
             setValues({ values, ...values });
-            makeFetch(values);
+            // makeFetch(values);
         } else {
             alert("Please login your email Id")
-            window.location.href = "/login"
+            window.location.href = "/login" 
         }
         // changePanel(3)
     }
@@ -51,9 +51,9 @@ const useWishlists = (props) => {
         if (user_id.length > 0 && check_gustlog === "false") {
             values["isactive"] = num
             values["user_id"] = user_id
-            setValues({ values, ...values });
+            setValues({ values, ...values }); 
                 setCartFilters({
-                    skuId: values.product_sku,
+                    skuId: values.product_sku, 
                     qty: 1,
                     price: values.add
                 })

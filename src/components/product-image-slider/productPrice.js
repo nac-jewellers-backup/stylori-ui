@@ -1,6 +1,7 @@
 import {
     Grid,
     Hidden,
+    ExpansionPanel,
     Container,
     Popover,
     paper,
@@ -23,6 +24,7 @@ const dataCarousel = {
     fade: true,
     arrows: false,
     dotsClass: "slickdev",
+    className: 'button__bar',
 }
 
 const mobilecarousel = (props, val) => {

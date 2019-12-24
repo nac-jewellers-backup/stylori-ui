@@ -5,6 +5,7 @@ import { ALLORDERS } from 'queries/cart';
 import { ALLUSERWISHLISTS } from 'queries/cart';
 import { withRouter } from 'react-router-dom';
 import { useNetworkRequest } from 'hooks/NetworkHooks'
+import { FilterOptionsContext } from 'context/FilterOptionsContext';
 // import { productsPendants } from 'mappers/dummydata';
 // import { object } from 'prop-types';
 var orderobj = {}
@@ -22,10 +23,11 @@ const initialCtx = {
             discounted_price: "",
             tax_price: ''
         },
-        loading: false, error: false, data: [], allorderdata: [], wishlistdata: []
+        loading: false, error: false, data: [], allorderdata: [], wishlistdata: [],wishlist_count: []
     },
     setCartFilters: (filterData) => { },
     setallorderdata: () => { },
+    setwishlist_count: () => { },
 
 }
 
@@ -36,6 +38,7 @@ const Provider = (props) => {
     const [cartFilters, setCartFilters] = React.useState(initialCtx.CartCtx);
     const [allorderdata, setallorderdata] = React.useState([])
     const [wishlistdata, setwishlistdata] = React.useState([])
+    const [wishlist_count, setwishlist_count] = React.useState([])
     // console.log("hdjhjhkjfh", allorderdata)
     var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
     const user_id = cartFilters.user_id ? cartFilters.user_id : ""
@@ -48,12 +51,14 @@ const Provider = (props) => {
     const { loading: wishlistloading, error: wishlisterror, data: wishlistDATA, makeRequest: wishlistmakeRequest } = useGraphql(ALLUSERWISHLISTS, () => { }, {});
     // const prices = cartFilters.price ? cartFilters.price : ''
     const discounted_price = cartFilters.discounted_price ? cartFilters.discounted_price : ""
+    // const { setwishlist_count } = React.useContext(FilterOptionsContext);
+    // alert(JSON.stringify(wishlist_count,wishlistdata))
     useEffect(() => {
         if (JSON.stringify(crtdata).length > 10) {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))
         }
         // localStorage.setItem('cart_id', JSON.stringify(crtdata))
-    }, [crtdata])
+    }, [crtdata]) 
     useEffect(() => {
         const orderall = allorder ? allorder && allorder.data && allorder.data.allOrders && allorder.data.allOrders.nodes : ""
         if (orderall && orderall.length > 0) {
@@ -63,22 +68,28 @@ const Provider = (props) => {
         }
     }, [allorder, allorderdata])
     useEffect(() => {
+        debugger
+        var obj_aishlist_count = {}
         const wishlistdatas = allorder ? wishlistDATA && wishlistDATA.data && wishlistDATA.data.allUserWhislists && wishlistDATA.data.allUserWhislists.nodes : ""
         if (wishlistdatas && wishlistdatas.length > 0) {
             objwishlist["wishlistdata"] = wishlistDATA.data.allUserWhislists
             // localStorage.setItem("allorder", allorder.data.allOrders)
+            obj_aishlist_count["wishlist_count"] = wishlistdatas && wishlistdatas.length
             localStorage.setItem("a__w_l", wishlistdatas && wishlistdatas.length)
             setwishlistdata(objwishlist)
-        }else{
+            setwishlist_count(obj_aishlist_count)
+            // alert(JSON.stringify(obj_aishlist_count))
+        }
+        else {
             localStorage.setItem("a__w_l", 0)
         }
     }, [wishlistDATA])
     useEffect(() => {
-        // if (window.location.pathname = "/account") {
-            orderobj["userProfileId"] = userIds
-            orderobj1["userprofileId"] = userIds
-            allordermakeRequest(orderobj); 
-            wishlistmakeRequest(orderobj1)
+        // if (window.location.pathname === "/account") {
+        orderobj["userProfileId"] = userIds
+        orderobj1["userprofileId"] = userIds
+        allordermakeRequest(orderobj);
+        wishlistmakeRequest(orderobj1)
         // }
     }, [])
     useEffect(() => {
@@ -157,10 +168,10 @@ const Provider = (props) => {
     }, [])
 
     const CartCtx = {
-        cartFilters, loading, error, data, setCartFilters, allorderdata, wishlistdata
+        cartFilters, loading, error, wishlist_count,data, setCartFilters, allorderdata, wishlistdata
     }
     return (
-        <CartContext.Provider value={{ CartCtx, setCartFilters, setallorderdata, setwishlistdata }} >
+        <CartContext.Provider value={{ CartCtx,setwishlist_count, setCartFilters, setallorderdata, setwishlistdata }} >
             {props.children}
         </CartContext.Provider>
     )
