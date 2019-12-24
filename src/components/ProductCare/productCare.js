@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
         marginTop: "3%",
         fontSize: "22px",
         fontFamily: "Roboto",
-        paddingTop:"10px",
+        // paddingTop:"10px",
 
     },
     titleColorsmall: {
@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
         marginTop: "3%",
         fontSize: "16px",
         fontFamily: "Roboto",
-        paddingTop:"10px",
+        // paddingTop:"10px",
 
     },
     details: {
