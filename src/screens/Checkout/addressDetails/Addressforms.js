@@ -343,7 +343,7 @@ const Addressforms = (changePanel) => {
         } 
     } 
     const Delete_address = (val_addrs, index) => {
-        if (con_gust !== true) {
+        if (con_gust !== true) { 
             if (check_dlt === false) {
                 if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 1) {
                     delet["address_id"] = val_addrs && val_addrs.id
