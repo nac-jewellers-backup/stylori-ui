@@ -10,7 +10,6 @@ import { createApolloFetch } from 'apollo-fetch';
 import { NetworkContext } from 'context/NetworkContext';
 import { bool } from 'prop-types';
 import { filterParams } from 'mappers';
-import { GlobalContext } from 'context'
 
 const initialCtx = {
     FilterOptionsCtx: {
@@ -37,7 +36,6 @@ const initialCtx = {
 export const FilterOptionsContext = React.createContext(initialCtx);
 export const FilterOptionsConsumer = FilterOptionsContext.Consumer;
 
-
 const Provider = (props) => {
 
     const [filters, setFilters] = React.useState({
@@ -61,7 +59,6 @@ const Provider = (props) => {
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => t }) }, [filters, sort, pricemax, pricemin])
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => [...d, ...t] }) }, [offset])
     const { NetworkCtx: { graphqlUrl: uri } } = React.useContext(NetworkContext);
-    const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext)
     const client = createApolloFetch({ uri });
 
     // useEffect(() => {
@@ -407,7 +404,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     useEffect(() => { setMappedFilters(ntxdata) }, [ntxdata, ntxerr, ntx]);
 
     useEffect(() => {
-        
+        debugger
         pathQueries();
         updateProductList();
 
@@ -425,18 +422,29 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     useEffect(() => {
     }, [data, error, loading])
     const updatefiltersSort = async() => {
-        
-        if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object) ) {
-            var paramsfilter = (Object.entries(seoData).length !== 0 && seoData.constructor === Object ) && seoData.data.allSeoUrlPriorities.nodes.map(val => {
-                var a = {}
+        debugger
+        if ((Object.entries(filters).length !== 0 && filters.constructor === Object) ) {
+            var paramsfilter = () =>{ 
+                Object.keys(filters).map(fk => {
+                const filter = filters[fk];
+                const fv = Object.keys(filter);
+                if (fv.length > 0) {
+                    if (filter[fv[0]]) {
+                        const qt = `${fk}=${fv[0]}`;
+                        const qtf = {}
+                        qtf[`${fk}`] = `${fv[0]}`
+                        // queries.push(qt);
+                        qtfArr.push(qtf);
 
-                a[val.attributeName.replace(/\s/g, '')] = val.attributeValue
-                return a
+                    }
 
+                }
             })
+            return qtfArr
+        }
             if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object)) {
                 
-                const _paramsfilter = paramsfilter.splice(1)
+                const _paramsfilter = paramsfilter()
                
                 var conditionTransSkuFilters = {}
                 var filtersss = _paramsfilter.filter(val=>{
@@ -495,7 +503,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                         if((Object.entries(sort).length > 0 && sort.constructor === Object)&&(pricemin !==null && pricemax !== null)){
                            return sort && `sort=${sort.values}&startprice=${pricemin}&endprice=${pricemax}`
                         }
-                        else if(pricemin !==null && pricemin>null){
+                        else if(pricemin && pricemin !==0 && pricemax && pricemax !==0){
                             var _search_loc = window.location.search
                             var _minValue = Number(_search_loc.split('?')[1].split('&')[0].split('=')[1])
                             var _maxValue = Number(_search_loc.split('?')[1].split('&')[1].split('=')[1])
@@ -574,9 +582,9 @@ function usePrevious(value) {
     return ref.current;
   }
     useEffect(() => {
-       
+       debugger
        updatefiltersSort()
-    }, [seoData])
+    }, [filters, seoData])
     var newObj = {}
     const updateFilters = async (filters) => {
         
@@ -653,13 +661,8 @@ function usePrevious(value) {
             seoUrlFetch()
 
             // }
-
         }
-        // const {Globalctx, setGlobalCtx} = this.props
-        var loc = window.location.pathname.split('/')[1].split('-').filter(val=>{if(val==='silver') return val})
-        if(loc.length=== 0) setGlobalCtx({...Globalctx, pathName:false})
-        else setGlobalCtx({...Globalctx, pathName:true})
-    }, [mappedFilters, offset])
+    }, [mappedFilters])
 
     useEffect(() => {
         const filters_seo_condition = () =>{
@@ -687,7 +690,6 @@ function usePrevious(value) {
         if (paramObjects(mappedFilters.seo_url).length > 0) {
             setParamsAo(paramObjects(mappedFilters.seo_url))
         }
-
     }, [ntxdata, filters, mappedFilters, seoData])
     useEffect(() => {
         if (window.location.pathname !== "jewellery") {
@@ -702,8 +704,6 @@ function usePrevious(value) {
 
             });
         }
-        // const {Globalctx, setGlobalCtx} = this.props
-        
 
     })
     const FilterOptionsCtx = {
@@ -716,4 +716,4 @@ function usePrevious(value) {
     )
 };
 
-export const FilterOptionsProvider = withRouter(Provider); 
+export const FilterOptionsProvider = withRouter(Provider);
