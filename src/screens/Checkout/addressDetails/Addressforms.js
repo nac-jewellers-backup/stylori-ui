@@ -214,14 +214,14 @@ const Addressforms = (changePanel) => {
                 if ((values.addressOne) && (addObjgust_local && addObjgust_local.address.length > 0)) {
                     addObjgust_local && addObjgust_local.address.push(values.addressOne);
                     localStorage.setItem("gustaddres", JSON.stringify(addObjgust_local))
-                    if (values.index !== null || values.index.lenght >= 0) {
+                    if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
                         var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
                         local_storage.address.splice(values.index, 1);
                         window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
                     }
                 } else if (values && values.addressOne) {
                     addObjgust["address"] = [values.addressOne]
-                    if (values.index !== null || values.index.lenght >= 0) {
+                    if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
                         var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
                         local_storage.address.splice(values.index, 1);
                         window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
@@ -234,14 +234,14 @@ const Addressforms = (changePanel) => {
                 if ((values.addressTwo) && (addObjgust_local && addObjgust_local.address.length > 0)) {
                     addObjgust_local && addObjgust_local.address.push(values.addressOne, values.addressTwo);
                     localStorage.setItem("gustaddres", JSON.stringify(addObjgust_local))
-                    if (values.index !== null || values.index.lenght >= 0) {
+                    if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
                         var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
                         local_storage.address.splice(values.index, 1);
                         window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
                     }
-                } else if (values.addressTwo) { 
+                } else if (values.addressTwo) {
                     addObjgust["address"] = [values.addressOne, values.addressTwo]
-                    if (values.index !== null || values.index.lenght >= 0) {
+                    if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
                         var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
                         local_storage.address.splice(values.index, 1);
                         window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
@@ -249,7 +249,7 @@ const Addressforms = (changePanel) => {
                     localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
                 }
             }
-          
+
 
             // makeFetch(addObj);
             // localStorage.getItem("gustaddres", JSON.stringify(addObjgust))
@@ -272,7 +272,7 @@ const Addressforms = (changePanel) => {
         // values["edit_ref"] = true
         // window.location.reload(); 
     }
-    const selectaddreses = (val_addrs, num) => {
+    const selectaddreses = (val_addrs, num,index) => {
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
         addObjall['address_id'] = val_addrs && val_addrs.id ? val_addrs.id : ""
         if (values.checkValue1 === true) {
