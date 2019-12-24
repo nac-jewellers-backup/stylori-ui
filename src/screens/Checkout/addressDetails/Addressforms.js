@@ -339,7 +339,7 @@ const Addressforms = (changePanel) => {
             // if (values.checkValue1 === true) {
  
             // }
-
+ 
         }
     }
     const Delete_address = (val_addrs, index) => {
