@@ -239,7 +239,7 @@ const Addressforms = (changePanel) => {
                         local_storage.address.splice(values.index, 1);
                         window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
                     }
-                } else if (values.addressTwo) {
+                } else if (values.addressTwo) { 
                     addObjgust["address"] = [values.addressOne, values.addressTwo]
                     if (values.index !== null || values.index.lenght >= 0) {
                         var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
