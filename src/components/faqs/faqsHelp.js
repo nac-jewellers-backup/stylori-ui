@@ -19,7 +19,7 @@ class faqsHelp extends React.Component{
 
                         </span>
 
-                        <a href="#" style={{color:'#337ab7',fontSize:"13px",paddingLeft:"6px"}}>1800 102 0330</a>
+                        <a href="tel:18001020330" style={{color:'#337ab7',fontSize:"13px",paddingLeft:"6px"}}>1800 102 0330</a>
 
                     </Grid>
                     <Grid item xs={12} >
@@ -32,7 +32,7 @@ class faqsHelp extends React.Component{
                         <span item xs={3} class="mail">
 
                         </span>
-                        <a href="#" style={{color:"red",fontSize:"13px",paddingLeft:"6px"}}>hello@stylori.com</a>
+                        <a href="mailto:hello@stylori.com" style={{color:"red",fontSize:"13px",paddingLeft:"6px"}}>hello@stylori.com</a>
                     </Grid>
                     <br></br>
                     <Grid item xs={12} >
