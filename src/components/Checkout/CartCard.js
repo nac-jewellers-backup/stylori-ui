@@ -182,7 +182,6 @@ class Checkoutcard extends React.Component {
         )
     }
     subtotals = (props) => {
-        debugger
         // alert(JSON.stringify(props.cartFilters.discounted_price))
         // const { dataCard1 } = this.props.data;
         var discounted_price = this.props.cartFilters.discounted_price ? this.props.cartFilters.discounted_price : ""
