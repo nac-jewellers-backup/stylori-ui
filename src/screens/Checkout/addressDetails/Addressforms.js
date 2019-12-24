@@ -163,8 +163,7 @@ const Addressforms = (changePanel) => {
         setpincod({ ...pincods, pincods })
         setValues({ ...values, values })
     }
-    const handleSubmit = (e) => {
-        debugger
+    const handleSubmit = (e) => {       
         var addObjgust_local = localStorage.getItem('gustaddres') ? JSON.parse(localStorage.getItem('gustaddres')) : "";
         if (con_gust !== true) {
             var addressOne = values.addressOne
@@ -276,7 +275,7 @@ const Addressforms = (changePanel) => {
         // window.location.reload(); 
     }
     const selectaddreses = (val_addrs, num, index) => {
-        debugger
+        
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
         addObjall['address_id'] = val_addrs && val_addrs.id ? val_addrs.id : ""
         if (values.checkValue1 === true) {
@@ -295,7 +294,8 @@ const Addressforms = (changePanel) => {
             alert("your address send on succesfully")
             if (!pathnames) {
                 changePanel(3)
-            }
+        window.location.reload()
+    }
             // return false
         }
         if (values.checkValue1 === false) {
@@ -333,14 +333,14 @@ const Addressforms = (changePanel) => {
                 }
                 if (!pathnames) {
                     changePanel(3)
-                }
+        window.location.reload()
+    }
             }
             // if (values.checkValue1 === true) {
 
             // }
 
         }
-        window.location.reload()
     }
     const Delete_address = (val_addrs, index) => {
         if (con_gust !== true) {
@@ -375,7 +375,7 @@ const Addressforms = (changePanel) => {
         }
 
         // const DeleteLocalStorage_address = (e, num, isAdressOne) => {
-        //     debugger
+        //     
         //     var local_storage = JSON.parse(localStorage.getItem('valuessetdata'))
         //     local_storage[isAdressOne ? 'addressOne' : 'addressTwo'].pop(num);
         //     window.localStorage.removeItem('valuessetdata');
@@ -445,7 +445,7 @@ const Addressforms = (changePanel) => {
         })
     }
     const redirectForm = (val_addrs, num, isAdressOne, isAdressTwo, index) => {
-        debugger
+        
         if (con_gust !== true) {
             if (val_addrs && val_addrs.id && val_addrs.id.length > 0) {
                 values["addres_id"] = val_addrs && val_addrs.id

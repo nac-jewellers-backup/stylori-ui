@@ -43,7 +43,6 @@ const Provider = (props) => {
         Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, MetalColor: {},
         MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}
     });
-    debugger
     const [sort, setSort] = React.useState(initialCtx.FilterOptionsCtx.sort)
     const [offset, setOffset] = React.useState(0)
     const [first, setFirst] = React.useState(24)

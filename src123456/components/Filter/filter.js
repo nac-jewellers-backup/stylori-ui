@@ -343,27 +343,48 @@ class Component extends React.Component {
   handleDrawerClose = () => {
     this.setState({ open: false });
   };
-  selectItem = (name) => {
-    debugger
-    let { selected } = this.state;
-    // let value = selected === name ? "" : name;
-    selected.push(name)
-    this.setState({ selected })
-  }
-  filterValue = (filtercheck) => {
-    if (filtercheck === this.state.filtercheck) {
-      this.setState({ filtercheck: '' })
-    } else {
-      this.setState({ filtercheck })
-    }
 
+  delete_chip = (selected) => Object.entries(selected).map(val => {
+    if (val !== undefined && val !== null) {
+      val
+    }
   }
+  selectItem = (name) => {
+      debugger
+      let arr = [];
+      let { selected } = this.state;
+      // let value = selected === name ? "" : name;
+      if (delete_chip(selected) === name) {
+        if (selected) {
+          arr = this.delete_chip(selected).filter(val => {
+            var dlt;
+            if (val !== undefined && val !== null) {
+              dlt = Object.values(val) === -1
+            }
+            return dlt;
+          })
+          selected.push(arr)
+        }
+      } else {
+        selected.push(name)
+      }
+      this.setState({ selected })
+
+    }
+  filterValue = (filtercheck) => {
+      if (filtercheck === this.state.filtercheck) {
+        this.setState({ filtercheck: '' })
+      } else {
+        this.setState({ filtercheck })
+      }
+
+    }
 
   handleChangeDrawer = () => {
 
-    this.setState({ check: !this.state.check });
-    this.setState({ open: !this.state.open });
-  };
+      this.setState({ check: !this.state.check });
+      this.setState({ open: !this.state.open });
+    };
 
 
   onCurrencyChange_click = (e) => {
