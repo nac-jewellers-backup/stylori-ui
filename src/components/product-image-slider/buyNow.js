@@ -178,7 +178,7 @@ class Component extends React.Component {
         this.setState({ open: false });
     };
     handleChanges = (e) => {
-        this.setState({ values: e.target.value, CheckForCodtitle: 'Check for COD', pincodeNotFound: false, isRequired: false })
+        this.setState({ values: e.target.value, CheckForCodtitle: '', pincodeNotFound: false, isRequired: false })
     }
     handleCodChange = () => {
         if (this.state.values) {

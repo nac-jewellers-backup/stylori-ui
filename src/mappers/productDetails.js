@@ -65,7 +65,7 @@ var screen_width_type = (screen_res) => {
         return subtracting_spacesaroundcard
     }
     var calc = _calc()
-    var img_res;
+    // var img_res;
     var sizes = [275, 300, 350, 375, 400, 500, 600, 675, 700, 775, 800, 900, 975, 1000, 1100, 2400]
     // [50, 60, 70, 80, 90, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525, 550, 575, 600, 625, 650, 675, 700, 725, 750, 775, 800, 825, 850, 875, 900, 925, 950, 975, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400]
     for (var i = 0; i <= sizes.length; i++) {
@@ -90,7 +90,7 @@ screenWidth()
 // const injectUrl = (url, baseUi) => url ? resolutions.map(k => ({ ...k, img: `${baseUi}${url.imageUrl===undefined  ? url : url.imageUrl}` })) : [];
 const injectUrl_url_construct = (url, baseUi, screen_res) => {
     var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
-    if (browser_type !== undefined && url !== undefined && url && url.imageUrl.length>0 && screen_res !== undefined && baseUi !== undefined) {
+    if (browser_type !== undefined && url !== undefined && url && url.imageUrl.length > 0 && screen_res !== undefined && baseUi !== undefined) {
         var resolution = screen_width_type(screen_res)
         var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`
         var url_split = url && url.imageUrl.split('/')
@@ -101,14 +101,15 @@ const injectUrl_url_construct = (url, baseUi, screen_res) => {
         var url_construct = url_split.join().replace(/\,/g, '/')
         var img_url = `${baseUi}${url_construct}`
     }
-    else{
+    else {
+        debugger
         var img_not_found = "product/productnotfound.webp"
-         url_split = img_not_found.split('/')
-         extension_split = url_split[url_split.length-1]
-         browser_type_append = extension_split.split('\.')[0].concat(`${browser_type.browser_type}`)
-        url_split[url_split.length-1] = browser_type_append 
-         url_split.splice(1, 0, _resolutions);
-          url_construct = url_split.join().replace(/\,/g,'/')
+        url_split = img_not_found.split('/')
+        extension_split = url_split[url_split.length - 1]
+        browser_type_append = extension_split.split('\.')[0].concat(`${browser_type.browser_type}`)
+        url_split[url_split.length - 1] = browser_type_append
+        url_split.splice(1, 0, _resolutions);
+        url_construct = url_split.join().replace(/\,/g, '/')
     }
     return img_url
 
@@ -510,7 +511,7 @@ export default function (data, like_data, viewedddatas, rating) {
 
                                     title: val.productName,
                                     price: Math.round(val.transSkuListsByProductId.nodes[0].discountPrice),
-                                    url: `/jewellery/${val.productType}/${val&&val.transSkuListsByProductId&&val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val&&val.transSkuListsByProductId&&val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0].materialName : ''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
+                                    url: `/jewellery/${val.productType}/${val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0].materialName : ''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
                                 })
                             }
                         )
@@ -522,7 +523,7 @@ export default function (data, like_data, viewedddatas, rating) {
                                         injectUrl_url_construct(val.productImagesByProductId.nodes[0] && val.productImagesByProductId.nodes[0], CDN_URL, colSize_like_view),
                                     title: val && val.productName ? val.productName : '',
                                     price: val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? Math.round(val.transSkuListsByProductId.nodes[0].discountPrice) : 0,
-                                    url: `/jewellery/${val.productType}/${val&&val.transSkuListsByProductId&&val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val&&val.transSkuListsByProductId&&val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0].materialName : ''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
+                                    url: `/jewellery/${val.productType}/${val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0].materialName : ''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
                                 })
                             }
                         )
