@@ -31,21 +31,21 @@ class ProductDetail extends Component {
   constructor(props) {
     super(props)
   }
-  renderUrl = () =>{
+  renderUrl = () => {
     var loc = this.props.location.pathname;
     var path = loc.split('/');
-    if(path[2] === 'Bracelets') return "/bracelets-jewellery"
-    if(path[2] === 'Pendants') return   "/pendants-jewellery"
-    if(path[2] === 'Nosepins') return   "/nose+pin+online-jewellery"
-    if(path[2] === 'Earrings') return   "/earrings-jewellery"
-    if(path[2] === 'Bangles') return "/bangles-jewellery"
-    if(path[2] === 'Rings') return "/rings-jewellery"
+    if (path[2] === 'Bracelets') return "/bracelets-jewellery"
+    if (path[2] === 'Pendants') return "/pendants-jewellery"
+    if (path[2] === 'Nosepins') return "/nose+pin+online-jewellery"
+    if (path[2] === 'Earrings') return "/earrings-jewellery"
+    if (path[2] === 'Bangles') return "/bangles-jewellery"
+    if (path[2] === 'Rings') return "/rings-jewellery"
 
   }
   render() {
     var loc = this.props.location.pathname;
     var path = loc.split('/');
-    var data_json = [{title:'home' ,url:'/home'}, {title:path[2] ,url:this.renderUrl()}, {title:path[4]}]
+    var data_json = [{ title: 'home', url: '/home' }, { title: path[2], url: this.renderUrl() }, { title: path[4] }]
     return (
       <div>
 
@@ -57,9 +57,9 @@ class ProductDetail extends Component {
             </Grid>
           </Grid>
 
-          <Grid Container spacing={12}>
+          <Grid Container spacing={12} style={{ maxWidth: "1600px", margin: "auto" }}>
             <Grid item xs={12}>
-              <div className="pricing-breadcrums-media">
+              <div className="pricing-breadcrums-media" >
                 <CustomSeparator
                   list='pricing-loctn'
                   classsubhed='pricing-loctn-head'
@@ -68,7 +68,7 @@ class ProductDetail extends Component {
             </Grid>
           </Grid>
 
-          <div className="pricing-imgzom-media">
+          <div className="pricing-imgzom-media" style={{ maxWidth: "1600px", margin: "auto" }}>
             <Grid container spacing={12}>
               <Grid item xs={6}>
                 <ProductImageZoom data={this.props.data} />
@@ -87,7 +87,7 @@ class ProductDetail extends Component {
             </Grid>
           </div><br />
 
-          <div style={{ background: "whitesmoke" }} className="pricing-product-media">
+          <div style={{ background: "whitesmoke" }} className="pricing-product-media" style={{ maxWidth: "1600px", margin: "auto" }}>
             <Grid container spacing={12}>
               <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
                 <ProductDetails data={this.props.data} />
@@ -102,7 +102,7 @@ class ProductDetail extends Component {
 
           <Sublistcarousel data={this.props.data} />
           <RatingForm />
-          <CustomerReviews rating={this.props.rating}/>
+          <CustomerReviews rating={this.props.rating} />
 
           <Grid item xs={12}>
             <Footer />
@@ -161,12 +161,12 @@ const Components = props => {
   const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating } } = React.useContext(ProductDetailContext);
   const datas = data;
   let mapped = datas;
-  if (!loading && !error) { 
-  mapped = productDetails(datas, likedatas, viewedddatas, rating);
+  if (!loading && !error) {
+    mapped = productDetails(datas, likedatas, viewedddatas, rating);
   }
   if (Object.keys(mapped).length === 0) return <div className="overall-loader"><div id="loading"></div></div>
   else {
-    return <ProductDetail {...props} data={mapped} rating={rating}/>
+    return <ProductDetail {...props} data={mapped} rating={rating} />
 
   }
 }

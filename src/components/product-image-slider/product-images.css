@@ -170,7 +170,7 @@ body {
 }
 
 .tabs-contants {
-    font-size: 13px !important;
+    font-size: 12px !important;
     margin: auto !important;
     font-family: 'Roboto' !important;
     font-weight: bold !important;
@@ -327,12 +327,13 @@ body {
 
 .search-button {
     border: 0;
-    font-size: 10px !important;
+    font-size: 12px !important;
     border-radius: 0 !important;
     height: 36px !important;
     width: 100% !important;
     font-weight: 400 !important;
     line-height: 1.42857143;
+    padding: 0px !important;
     text-transform: none !important;
 }
 
@@ -351,6 +352,7 @@ body {
 
 .ships-by {
     font-size: 12px !important;
+    text-align: center
 }
 
 .slick-dots {
@@ -1008,7 +1010,8 @@ body {
 }
 
 .my-ringsize {
-    font-size: 15px;
+    font-size: 12px;
+    padding-left: 6px;
     color: #ed1165 !important;
     text-decoration: underline !important;
     cursor: pointer;
@@ -1021,8 +1024,7 @@ body {
 .pagetabs {
     text-align: center !important;
     height: 40px !important;
-    width: 75% !important;
-
+    width: 70% !important;
     /* border: 1px solid #9d9d9d  !important; */
     border-radius: 15%;
     outline: none !important;
@@ -1060,14 +1062,18 @@ body {
 }
 
 .rings_tabs {
-    font-size: 14px !important;
+    font-size: 15px !important;
     color: #394578 !important;
     width: 100% !important;
     padding: 10px;
     /* display: flex ;
     margin: auto; */
-    font-weight: 600;
-
+    font-weight: 600 !important;
+    line-height: 13px;
+    text-transform: capitalize;
+    text-align: justify;
+    padding: 0px 0px 0px 10px;
+    display: flex;
 }
 
 .rings_tabsvls {
@@ -1076,6 +1082,7 @@ body {
     width: 100% !important;
     font-weight: 600;
     text-align: center;
+    font-size: 13px
 }
 
 .rings_tabsvls_active {

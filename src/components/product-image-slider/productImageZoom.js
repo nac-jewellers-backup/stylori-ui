@@ -11,8 +11,9 @@ import PropTypes from 'prop-types';
 import './product-images.css'
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../Header/styles'
-import ReactImageZoom from 'react-image-zoom'; 
+import ReactImageZoom from 'react-image-zoom';
 import StaticView from 'components/CarouselLazyer/StaticView';
+import Gagetstylori from './Gagetstylori/Gagetstylori'
 // window.onload = function () {
 //   var flashlight = document.querySelector('#flashlight');
 //   document.getElementById('divs').addEventListener('mouseover', function (event) {
@@ -33,7 +34,7 @@ class ProductImageZoom extends React.Component {
     backgroundPosition: '0% 0%',
     showimage: this.props.data[0].fadeImages[0]
   }
-  
+
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     if (this.props.data[0].fadeImages[0] !== prevProps.data[0].fadeImages[0]) {
@@ -55,8 +56,8 @@ class ProductImageZoom extends React.Component {
       verticalSwiping: true,
       arrows: false,
     }
-// alert(JSON.stringify(data.Image_resolution))
-    const props = { "width": data[0].image_resolution, "height": data[0].image_resolution, "zoomWidth":data[0].image_resolution, "img": `${showimage}`, "zoomStyle": "z-index:2" }
+    // alert(JSON.stringify(data.Image_resolution))
+    const props = { "width": data[0].image_resolution, "height": data[0].image_resolution, "zoomWidth": data[0].image_resolution, "img": `${showimage}`, "zoomStyle": "z-index:2" }
     debugger
     return (
       <div>
@@ -87,7 +88,7 @@ class ProductImageZoom extends React.Component {
               <div className='overly-img' id="overlay"
                 style={{ backgroundImage: `url(${showimage})` }} onMouseOut={event => this.zoomOut(event)}>
                 </div> */}
-              <div style={{ border: "1px solid #ccc", width: "100%" }}><ReactImageZoom {...props} /></div>
+              <div class="zoomreact" style={{ border: "1px solid #ccc", width: "100%" }}><ReactImageZoom {...props} /></div>
               <div>
                 <Grid container spacing={12}>
                   {/* {data[0].productsubHeaderlist.map(val => (
@@ -98,10 +99,15 @@ class ProductImageZoom extends React.Component {
                       </div>
                     </Grid>
                   ))} */}
-                  <StaticView />
+                  {/* <StaticView /> */}
                 </Grid>
               </div>
             </div>
+          </Grid>
+          <Grid container >
+            <Grid item style={{ width: "100%", padding: "0px 15px", marginTop: "10px" }}>
+              <Gagetstylori />
+            </Grid>
           </Grid>
         </Grid>
       </div>

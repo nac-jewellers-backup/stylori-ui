@@ -90,7 +90,7 @@ screenWidth()
 // const injectUrl = (url, baseUi) => url ? resolutions.map(k => ({ ...k, img: `${baseUi}${url.imageUrl===undefined  ? url : url.imageUrl}` })) : [];
 const injectUrl_url_construct = (url, baseUi, screen_res) => {
     var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
-    if (browser_type !== undefined && url !== undefined && url && url.imageUrl.length>0 && screen_res !== undefined && baseUi !== undefined) {
+    if (browser_type !== undefined && url !== undefined && url && url.imageUrl.length > 0 && screen_res !== undefined && baseUi !== undefined) {
         var resolution = screen_width_type(screen_res)
         var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`
         var url_split = url && url.imageUrl.split('/')
@@ -101,15 +101,15 @@ const injectUrl_url_construct = (url, baseUi, screen_res) => {
         var url_construct = url_split.join().replace(/\,/g, '/')
         var img_url = `${baseUi}${url_construct}`
     }
-    else{
+    else {
         debugger
         var img_not_found = "product/productnotfound.webp"
-         url_split = img_not_found.split('/')
-         extension_split = url_split[url_split.length-1]
-         browser_type_append = extension_split.split('\.')[0].concat(`${browser_type.browser_type}`)
-        url_split[url_split.length-1] = browser_type_append 
-         url_split.splice(1, 0, _resolutions);
-          url_construct = url_split.join().replace(/\,/g,'/')
+        url_split = img_not_found.split('/')
+        extension_split = url_split[url_split.length - 1]
+        browser_type_append = extension_split.split('\.')[0].concat(`${browser_type.browser_type}`)
+        url_split[url_split.length - 1] = browser_type_append
+        url_split.splice(1, 0, _resolutions);
+        url_construct = url_split.join().replace(/\,/g, '/')
     }
     return img_url
 
@@ -511,7 +511,7 @@ export default function (data, like_data, viewedddatas, rating) {
 
                                     title: val.productName,
                                     price: Math.round(val.transSkuListsByProductId.nodes[0].discountPrice),
-                                    url: `/jewellery/${val.productType}/${val&&val.transSkuListsByProductId&&val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val&&val.transSkuListsByProductId&&val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0].materialName : ''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
+                                    url: `/jewellery/${val.productType}/${val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0].materialName : ''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
                                 })
                             }
                         )
@@ -523,7 +523,7 @@ export default function (data, like_data, viewedddatas, rating) {
                                         injectUrl_url_construct(val.productImagesByProductId.nodes[0] && val.productImagesByProductId.nodes[0], CDN_URL, colSize_like_view),
                                     title: val && val.productName ? val.productName : '',
                                     price: val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? Math.round(val.transSkuListsByProductId.nodes[0].discountPrice) : 0,
-                                    url: `/jewellery/${val.productType}/${val&&val.transSkuListsByProductId&&val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val&&val.transSkuListsByProductId&&val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0].materialName : ''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
+                                    url: `/jewellery/${val.productType}/${val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0].materialName : ''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
                                 })
                             }
                         )
