@@ -28,6 +28,7 @@ import { CartContext } from '../../context/CartContext';
 import cart from '../../mappers/cart';
 import { CheckForCod } from 'queries/productdetail';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
+let value = localStorage.getItem("select_addres") ? JSON.parse(localStorage.getItem("select_addres")) : {};
 var variab = {}
 const CartCardCheck = (props) => {
     const { loading, error, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
@@ -47,12 +48,14 @@ class Component extends React.Component {
         debugger
         // alert("va",JSON.stringify(panel))
         const { expanded } = this.state
-        if (expanded === 'panel' + panel) {
-            this.setState({
-                expanded: 'panel' + 3,
-            });
+        // if (value && value.contactNumber.length > 0) {
+            if (expanded === 'panel' + panel) {
+                this.setState({
+                    expanded: 'panel' + 3,
+                });
+            // }
         } else {
-            if (expanded > 'panel' + panel ) {
+            if (expanded > 'panel' + panel) {
                 this.setState({
                     expanded: 'panel' + panel,
                 });
@@ -78,7 +81,6 @@ class Component extends React.Component {
         const { classes, data } = this.props;
         const { breadcrumsdata, cartsubdata } = this.props.data;
         let email = localStorage.getItem("email") ? localStorage.getItem("email") : '';
-        let value = localStorage.getItem("select_addres") ? JSON.parse(localStorage.getItem("select_addres")) : {};
         variab["pincode"] = value && value.pincode
 
         return (
@@ -99,11 +101,11 @@ class Component extends React.Component {
                             onChange={this.handleChange(1)}
                             style={{ boxShadow: "none" }}
                         >
-                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
+                            <ExpansionPanelSummary style={{ boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }} expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>1</Avatar><Typography className='text-chck'> Login or Register
                             <div className="ch-d-vl">{email}</div></Typography>
                             </ExpansionPanelSummary >
-                            <ExpansionPanelDetails
+                            <ExpansionPanelDetails style={{ boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }}
                             >
                                 <LoginRegisterIndex changePanel={this.changePanel} />
                             </ExpansionPanelDetails>
@@ -114,7 +116,7 @@ class Component extends React.Component {
                             expanded={expanded === 'panel2'}
                             onChange={this.handleChange(2)}
                             style={{ boxShadow: "none" }}>
-                            <ExpansionPanelSummary style={{ width: "100%", overflow: "hidden" }} expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
+                            <ExpansionPanelSummary style={{ width: "100%", overflow: "hidden", boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }} expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>2</Avatar>
                                 <Typography className='text-chck'>Address Detail
 
@@ -131,7 +133,7 @@ class Component extends React.Component {
 
                                 </Typography>
                             </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
+                            <ExpansionPanelDetails style={{ boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }}>
                                 <Grid container >
                                     <Grid item xs={12} lg={12}>
                                         <Addressform changePanel={this.changePanel} />
@@ -143,11 +145,11 @@ class Component extends React.Component {
                             square
                             expanded={expanded === 'panel3'}
                             onChange={this.handleChange(3)}
-                            style={{ boxShadow: "none" }} >
+                            style={{ boxShadow: "none", boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }} >
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>3</Avatar><Typography className='text-chck'>Order Summary</Typography>
                             </ExpansionPanelSummary>
-                            <ExpansionPanelDetails >
+                            <ExpansionPanelDetails style={{ boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }}>
                                 <Grid container >
                                     <Grid item xs={12} lg={12}>
                                         {/* {JSON.stringify(this.datalist(cartContext))} */}
@@ -186,11 +188,11 @@ class Component extends React.Component {
                             square
                             expanded={expanded === 'panel4'}
                             onChange={this.handleChange(4)}
-                            style={{ boxShadow: "none" }}  >
+                            style={{ boxShadow: "none", boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }}  >
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>4</Avatar><Typography className='text-chck'>Payment Options</Typography>
                             </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
+                            <ExpansionPanelDetails style={{ boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }}>
                                 <PaymentIndex data={data} CodData={this.props.CodData} />
                             </ExpansionPanelDetails>
                         </ExpansionPanel>

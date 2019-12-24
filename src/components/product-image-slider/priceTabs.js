@@ -50,7 +50,7 @@ class Component extends React.Component {
 
     handleClose = () => {
         this.setState({ open: false });
-    };
+    }; 
 
     handleClick = (event, key) => {
         debugger
@@ -60,10 +60,10 @@ class Component extends React.Component {
             var kv = event.target.id
             var objVal = kv.split(" ")
             var arrPurity = objVal[0]
-            var arrColor = objVal[1]
+            var arrColor = objVal[1] 
             var diamondTypes = filters['defaultVariants']['diamondType']
             filters['defaultVariants']['purity'] = arrPurity
-            filters['defaultVariants']['metalColor'] = arrColor
+            filters['defaultVariants']['metalColor'] = arrColor 
             // filters['defaultVariants']['skuSize']=diamondTypes
             filters['defaultVariants']['diamondType'] = diamondTypes
             this.setState({

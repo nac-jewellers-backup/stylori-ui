@@ -11,10 +11,11 @@ const Register = (props) => {
 
 const RegisterComponent = (props) => {
     let email = localStorage.getItem("email") ? localStorage.getItem("email") : '';
-    const { values, setValues, handlers, data ,valuesedit} = useRegister(() => props.changePanel(2));
+    const { values, setValues, handlers, data, valuesedit, valuesadrees } = useRegister(() => props.changePanel(2));
     // var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
     // var ccc = data.message ? data.message : ""
     const paths = window.location.pathname === "/account"
+    const pathreg = window.location.pathname === "/registers"
 
     const clear = () => {
         setValues({
@@ -54,7 +55,7 @@ const RegisterComponent = (props) => {
                         </h5>
                         {paths ?
                             <Input
-                                style={{ background: "rgba(192, 192, 192, 0.41)" ,width:"100%"}}
+                                style={{ background: "rgba(192, 192, 192, 0.41)", width: "100%" }}
                                 value={email}
                                 InputProps={{
                                     readOnly: true,
@@ -126,67 +127,114 @@ const RegisterComponent = (props) => {
                             <Grid item lg={4} xs={4}>
                                 <SimpleSelect val={'1'} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                             </Grid>
-                            {!paths&&<>
+                            {!paths && <>
                                 <Grid item lg={4} xs={4}>
-                                <Input
-                                    margin="normal"
-                                    variant="outlined"
-                                    type="text"
-                                    name="firstname"
-                                    value={values.firstname}
-                                    error={values.error && values.error.firstname ? true : false}
-                                    // helperText={values.errortext && values.errortext.firstname}
-                                    placeholder="Enter FirstName*"
-                                    onChange={e => handlers.handleChange('firstname', e.target.value)}
-                                    className='text-f'
-                                // helperText=""
-                                />
-                                <label className='errtext'> {values.errortext && values.errortext.firstname}</label>
-                            </Grid>
-                            <Grid item lg={4} xs={4}>
-                                <Input
-                                    margin="normal"
-                                    variant="outlined"
-                                    type="text"
-                                    name="lastname"
-                                    value={values.lastname}
-                                    error={values.error && values.error.lastname ? true : false}
-                                    // helperText={values.errortext && values.errortext.lastname}
-                                    placeholder="Enter LastName*"
-                                    onChange={e => handlers.handleChange('lastname', e.target.value)}
-                                    className='text-f'
-                                // helperText=""
-                                />
-                                <label className='errtext'> {values.errortext && values.errortext.lastname}</label>
-                            </Grid></>}
-                            {paths&&<>
+                                    <Input
+                                        margin="normal"
+                                        variant="outlined"
+                                        type="text"
+                                        name="firstname"
+                                        value={values.firstname}
+                                        error={values.error && values.error.firstname ? true : false}
+                                        // helperText={values.errortext && values.errortext.firstname}
+                                        placeholder="Enter FirstName*"
+                                        onChange={e => handlers.handleChange('firstname', e.target.value)}
+                                        className='text-f'
+                                    // helperText=""
+                                    />
+                                    <label className='errtext'> {values.errortext && values.errortext.firstname}</label>
+                                </Grid>
                                 <Grid item lg={4} xs={4}>
-                                <Input
-                                    margin="normal"
-                                    variant="outlined"
-                                    type="text"
-                                    name="firstname"
-                                    value={valuesedit.firstname}
-                                    placeholder="Enter FirstName*"
-                                    onChange={e => handlers.handleChangeedit('firstname', e.target.value)}
-                                    className='text-f'
-                                />
-                            </Grid>
-                            <Grid item lg={4} xs={4}>
-                                <Input
-                                    margin="normal"
-                                    variant="outlined"
-                                    type="text"
-                                    name="lastname"
-                                    value={valuesedit.lastname}
-                                    placeholder="Enter LastName*"
-                                    onChange={e => handlers.handleChangeedit('lastname', e.target.value)}
-                                    className='text-f'
-                                />
-                            </Grid></>}
+                                    <Input
+                                        margin="normal"
+                                        variant="outlined"
+                                        type="text"
+                                        name="lastname"
+                                        value={values.lastname}
+                                        error={values.error && values.error.lastname ? true : false}
+                                        // helperText={values.errortext && values.errortext.lastname}
+                                        placeholder="Enter LastName*"
+                                        onChange={e => handlers.handleChange('lastname', e.target.value)}
+                                        className='text-f'
+                                    // helperText=""
+                                    />
+                                    <label className='errtext'> {values.errortext && values.errortext.lastname}</label>
+                                </Grid></>}
+                            {paths && <>
+                                <Grid item lg={4} xs={4}>
+                                    <Input
+                                        margin="normal"
+                                        variant="outlined"
+                                        type="text"
+                                        name="firstname"
+                                        value={valuesedit.firstname}
+                                        placeholder="Enter FirstName*"
+                                        onChange={e => handlers.handleChangeedit('firstname', e.target.value)}
+                                        className='text-f'
+                                        helperText="Firstname is required"
+                                        required  />
+                                </Grid>
+                                <Grid item lg={4} xs={4}>
+                                    <Input
+                                        margin="normal"
+                                        variant="outlined"
+                                        type="text"
+                                        name="lastname"
+                                        value={valuesedit.lastname}
+                                        placeholder="Enter LastName*"
+                                        onChange={e => handlers.handleChangeedit('lastname', e.target.value)}
+                                        className='text-f'
+                                        helperText="Lastname is required"
+                                        required/>
+                                </Grid></>}
                         </Grid>
+
+                        {paths &&
+                            <Grid item xs={12} lg={12}>
+                                <Grid container spacing={12}>
+                                    <Grid item xs={6} lg={6}>
+                                        <SimpleSelect name={"India"} selectData={['India']}
+                                            disabled={'disabled'} />
+                                    </Grid>
+                                    <Grid item xs={6} lg={6}>
+                                        <Input
+                                            className='text-f'
+                                            type="text"
+                                            name='pincode'
+                                            placeholder="Pin Code/Zip Code"
+                                            onChange={e => handlers.handlesetvaluesadrees('pincode', e.target.value)}
+                                            value={valuesadrees.pincode}
+                                            // onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
+                                            helperText="Pin Code is required"
+                                            required />
+                                    </Grid>
+                                </Grid>
+                                <Grid container spacing={12}>
+                                    <Grid item xs={3} lg={3}>
+                                        <SimpleSelect name={['+91']} selectData={['+91']}
+                                            disabled={'disabled'} />
+                                    </Grid>
+                                    <Grid item xs={9} lg={9}>
+                                        <Input
+                                            className='text-f'
+                                            type="text"
+                                            name='contactno'
+                                            onChange={(event) => handlers.handlesetvaluesadrees('contactno', event.target.value)}
+                                            // onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
+                                            placeholder="Phone *"
+                                            value={valuesadrees.contactno}
+                                            helperText="Please enter your 10 digit Phone no**"
+                                            isNumber
+                                            maxLength={10}
+                                            minLength={10}
+                                            required />
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        }
+
                         <div className='login-butn'>
-                            {paths ? "" : <Button className='back-b' onClick={() => clear()} >Back</Button>}
+                            {paths || pathreg ? "" : <Button className='back-b' onClick={() => clear()} >Back</Button>}
                             <Button className='apply-b' type="submit" >Register</Button>
                         </div>
                     </Grid>

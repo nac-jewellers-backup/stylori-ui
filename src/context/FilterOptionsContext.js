@@ -13,14 +13,14 @@ import { filterParams } from 'mappers';
 
 const initialCtx = {
     FilterOptionsCtx: {
-        filters: {
+        filters: { 
             Offers: null, Availability: null, ProductType: null, style: null, Material: null, Theme: null, Collection: null, MetalColor: null,
             MetalPurity: null, Occasion: null, NoOfStones: null, Gender: null, stoneColor: null, stoneShape: null
         },
         sort: '',
         pricemax: null, pricemin: null,
         loadingfilters: false,
-        loading: false, error: false, data: [], offset: 0, dataArr: [], first: 24, mappedFilters: [], cartcount: ['1']
+        loading: false, error: false, data: [], offset: 0, dataArr: [], first: 24, mappedFilters: [], cartcount: ['1'], 
     },
     setFilters: (filterData) => { },
     setOffset: () => { },
@@ -29,8 +29,9 @@ const initialCtx = {
     setSort: () => { },
     setloadingfilters: () => { },
     setcartcount: () => { },
-    setPriceMax:() =>{},
-    setPriceMin:() =>{}
+    setPriceMax: () => { },
+    setPriceMin: () => { },
+
 }
 
 export const FilterOptionsContext = React.createContext(initialCtx);
@@ -42,6 +43,7 @@ const Provider = (props) => {
         Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, MetalColor: {},
         MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}
     });
+    debugger
     const [sort, setSort] = React.useState(initialCtx.FilterOptionsCtx.sort)
     const [offset, setOffset] = React.useState(0)
     const [first, setFirst] = React.useState(24)
@@ -53,14 +55,16 @@ const Provider = (props) => {
     const [ErrorSeoQuery, setErrorSeoQuery] = React.useState(false)
     const [DataSeoQuery, setDataSeoQuery] = React.useState([])
     const [paramsAo, setParamsAo] = React.useState([])
-    const [pricemin,setPriceMin] = React.useState(null)
-    const [pricemax,setPriceMax] = React.useState(null)
+    const [pricemin, setPriceMin] = React.useState(null)
+    const [pricemax, setPriceMax] = React.useState(null)
     const [loadingfilters, setloadingfilters] = React.useState(false)
+    debugger
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => t }) }, [filters, sort, pricemax, pricemin])
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => [...d, ...t] }) }, [offset])
     const { NetworkCtx: { graphqlUrl: uri } } = React.useContext(NetworkContext);
     const client = createApolloFetch({ uri });
-
+    // console.log('wishlist_countwishlist_count', wishlist_count)
+// alert(JSON.stringify(wishlist_count))
     // useEffect(() => {
     //     console.log('sort', sort)
     //     if (sort) window.location.search = `sort=${sort.values}`
@@ -96,123 +100,125 @@ const Provider = (props) => {
 
     //     }
     // }, [])
-    useEffect(()=>{console.log('_filters_filters',filters)},[filters])
-    const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/filterlist', {},false, {})
-    useEffect( () => {
-        
-        const fetch_data = async () =>{
+    useEffect(() => { console.log('_filters_filters', filters) }, [filters])
+    const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/filterlist', {}, false, {})
+    useEffect(() => {
+
+        const fetch_data = async () => {
             var len;
-        //    if(window.location.pathname === "/jewellery"){
-            
+            //    if(window.location.pathname === "/jewellery"){
 
-               // props.location.push(window.location.pathname)
-               matchPath(window.location.pathname, {
-                   path: ":listingpage",
-                   search:window.location.search
-       
-               })
-                let pathnameSplit = window.location.pathname.split('/')
-                const splitHiphen = () => {if(pathnameSplit[1].indexOf('-')){
+
+            // props.location.push(window.location.pathname)
+            matchPath(window.location.pathname, {
+                path: ":listingpage",
+                search: window.location.search
+
+            })
+            let pathnameSplit = window.location.pathname.split('/')
+            const splitHiphen = () => {
+                if (pathnameSplit[1].indexOf('-')) {
                     return pathnameSplit[1].split('-')
-                    }}
-            
-                    
-                    const conditionfiltersSeo = { seofilter: { seoUrl: { in: splitHiphen() } } }
-                    // makeRequestSeo(conditionfiltersSeo)
-                    function status(response) {
-                        
-                        if (response.status >= 200 && response.status < 300) {
-                          return Promise.resolve(response)
-                        } else {
-                          return Promise.reject(new Error(response.statusText))
-                        }
-                      }
-                      
-                      function json(response) {
-                          
-                        return response.json()
-                      }
-                      
-        
-        
-                     await fetch(uri, {
-                         
-                        method: 'post',
-                        // body: {query:seoUrlResult,variables:splitHiphen()}
-                        // body: JSON.stringify({query:seoUrlResult}),
-        
-                        headers: {
-                            'Content-Type': 'application/json',
-                          },
-                          body: JSON.stringify({
-                            query:seoUrlResult,
-                            variables: {...conditionfiltersSeo},
-                          }),
-                    
-        
-                      })
-                      .then(status)
-                      .then(json)
-                      .then(async function(data) {
-                        
+                }
+            }
 
-                        //   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
-                        var a = {}
-                        var paramsfilter = (Object.entries(data).length !== 0 && data.constructor === Object && data.data.allSeoUrlPriorities) && data.data.allSeoUrlPriorities.nodes.map(val => {
-                           
-                            let attrName = val.attributeName.replace(/\s/g, '')
-                            let attrVal = val.attributeValue
-                            filters[attrName] = {[attrVal]:true}
-                          
-                            // setFilters(filters)
-                        
-                            a[val.attributeName.replace(/\s/g, '')] = val.attributeValue
-                            return a
-            
-                        })
-                        Object.keys(filters).map(fk => {
-                            const filter = filters[fk];
-                            const fv = Object.keys(filter);
-                            if (fv.length > 0) {
-                                if (filter[fv[0]]) {
-                                    const qt = `${fk}=${fv[0]}`;
-                                    const qtf = {}
-                                    qtf[`${fk}`] = `${fv[0]}`
-                                    // queries.push(qt);
-                                    qtfArr.push(qtf);
-            
-                                }
-            
+
+            const conditionfiltersSeo = { seofilter: { seoUrl: { in: splitHiphen() } } }
+            // makeRequestSeo(conditionfiltersSeo)
+            function status(response) {
+
+                if (response.status >= 200 && response.status < 300) {
+                    return Promise.resolve(response)
+                } else {
+                    return Promise.reject(new Error(response.statusText))
+                }
+            }
+
+            function json(response) {
+
+                return response.json()
+            }
+
+
+
+            await fetch(uri, {
+
+                method: 'post',
+                // body: {query:seoUrlResult,variables:splitHiphen()}
+                // body: JSON.stringify({query:seoUrlResult}),
+
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    query: seoUrlResult,
+                    variables: { ...conditionfiltersSeo },
+                }),
+
+
+            })
+                .then(status)
+                .then(json)
+                .then(async function (data) {
+
+
+                    //   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
+                    var a = {}
+                    var paramsfilter = (Object.entries(data).length !== 0 && data.constructor === Object && data.data.allSeoUrlPriorities) && data.data.allSeoUrlPriorities.nodes.map(val => {
+
+                        let attrName = val.attributeName.replace(/\s/g, '')
+                        let attrVal = val.attributeValue
+                        filters[attrName] = { [attrVal]: true }
+
+                        // setFilters(filters)
+
+                        a[val.attributeName.replace(/\s/g, '')] = val.attributeValue
+                        return a
+
+                    })
+                    Object.keys(filters).map(fk => {
+                        const filter = filters[fk];
+                        const fv = Object.keys(filter);
+                        if (fv.length > 0) {
+                            if (filter[fv[0]]) {
+                                const qt = `${fk}=${fv[0]}`;
+                                const qtf = {}
+                                qtf[`${fk}`] = `${fv[0]}`
+                                // queries.push(qt);
+                                qtfArr.push(qtf);
+
                             }
-                        })
-                        var k = qtfArr.map(val => Object.values(val));
-                        var keyy = qtfArr.map(val => Object.keys(val))
-                        len = keyy.length
-                        while (len--) {
-                            var key = keyy[len]
-                            var toLowerCase = key[0].toLowerCase()
-                            newObj[toLowerCase] = k[len][0]
+
                         }
-                        
-                        await makeFetch(newObj)
-                        //  seoUrlFetch()
-                       //  test =filters
-                        // setSeoComponentMount(data)
-                        var abcd = data
-                        
-                      }).catch(function(error) {
-                          
-                        console.log('Request failed', error, uri, status.code );
-                       //  setSeoComponentMount(data)
-                      });
-        
-       //  alert(JSON.stringify(test))
-                      
-        
+                    })
+                    var k = qtfArr.map(val => Object.values(val));
+                    var keyy = qtfArr.map(val => Object.keys(val))
+                    len = keyy.length
+                    while (len--) {
+                        var key = keyy[len]
+                        var toLowerCase = key[0].toLowerCase()
+                        newObj[toLowerCase] = k[len][0]
+                    }
+
+                    await makeFetch(newObj)
+                    //  seoUrlFetch()
+                    //  test =filters
+                    // setSeoComponentMount(data)
+                    var abcd = data
+
+                }).catch(function (error) {
+
+                    console.log('Request failed', error, uri, status.code);
+                    //  setSeoComponentMount(data)
+                });
+
+            //  alert(JSON.stringify(test))
+
+
             // }
         }
         fetch_data()
-            }, [])
+    }, [])
 
 
 
@@ -275,7 +281,7 @@ const Provider = (props) => {
 
 
 
-    
+
     // {transSkuListsByProductId: {some: {discountPrice: {greaterThan: 1.5}}}}
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTLIST, () => { }, {})
     // {filter:{transSkuListsByProductId:{every:{markupPrice:{  "greaterThanOrEqualTo":   20000,
@@ -284,17 +290,17 @@ const Provider = (props) => {
 
     const seoUrlFetch = () => {
 
-var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mappedFilters.seo_url : window.location.pathname.split('/')[1]  
+        var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length > 0 ? mappedFilters.seo_url : window.location.pathname.split('/')[1]
         const conditionfiltersSeo = { seofilter: { seoUrl: { in: paramObjects(path_name) } } }
-        
+
         makeRequestSeo(conditionfiltersSeo)
-    
+
 
     }
     // useEffect(()=>{
     //     setloadingfilters(true)
     // },[data])
-    const updateProductList = async() => {
+    const updateProductList = async () => {
 
         // console.info('objecobjecobject',mappedFilters.seo_url !== "jewellery")
         if (window.location.search) {
@@ -302,29 +308,29 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
             // const conditionTransSkuFilters = conditions.generateTransSkuFilters(paramObjects())
             const _paramsfilter = paramObjects()
             var conditionTransSkuFilters = {}
-            var filtersss = _paramsfilter.filter(val=>{
+            var filtersss = _paramsfilter.filter(val => {
                 var a = Object.keys(val)
-                if(a[0] ==='MetalPurity')return a
-                if(a[0] === 'MetalColor')return a
-                if(a[0] === 'Availability') return a
-                })
-            if(filtersss.length>0){
-            conditionTransSkuFilters =conditions.generateTransSkuFilters(_paramsfilter)
-        }
-        else{
-            conditionTransSkuFilters = {filterTransSku:{isdefault:{equalTo:true}}}
-        }
-        
+                if (a[0] === 'MetalPurity') return a
+                if (a[0] === 'MetalColor') return a
+                if (a[0] === 'Availability') return a
+            })
+            if (filtersss.length > 0) {
+                conditionTransSkuFilters = conditions.generateTransSkuFilters(_paramsfilter)
+            }
+            else {
+                conditionTransSkuFilters = { filterTransSku: { isdefault: { equalTo: true } } }
+            }
+
             const conditionFilters = conditions.generateFilters(_paramsfilter)
-         
+
             const conditionImageColor = {}
-            var metal_color_append_AND = filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length>0? Object.keys(filters.MetalColor)[0].replace(' ', ' and '):''
-            var a = filters && Object.entries(filters).length >  0 ? metal_color_append_AND : ''
+            var metal_color_append_AND = filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length > 0 ? Object.keys(filters.MetalColor)[0].replace(' ', ' and ') : ''
+            var a = filters && Object.entries(filters).length > 0 ? metal_color_append_AND : ''
             // var a = filters.metalColor ? filters.metalColor : null;
-            
-            if(filters && Object.entries(filters).length > 0 & Object.entries(filters.MetalColor).length >0  && Object.values(filters.MetalColor)) conditionImageColor["productColor"] = a 
-            
-          if((filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length >0 && Object.values(filters.MetalColor)[0])===false) conditionImageColor['isdefault'] = true
+
+            if (filters && Object.entries(filters).length > 0 & Object.entries(filters.MetalColor).length > 0 && Object.values(filters.MetalColor)) conditionImageColor["productColor"] = a
+
+            if ((filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length > 0 && Object.values(filters.MetalColor)[0]) === false) conditionImageColor['isdefault'] = true
             // conditionImageColor["isdefault"]=true
             const pricerange = {
                 transSkuListsByProductId: {
@@ -358,31 +364,31 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                     }
 
                 }
-                
+
                 if (Object.keys(conditionFilters.filter).length > 0) {
-                    if(Object.keys(conditionTransSkuFilters) > 0){
+                    if (Object.keys(conditionTransSkuFilters) > 0) {
                         variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor }, ...conditionTransSkuFilters }
-                    }else{
+                    } else {
                         variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                     }
-                 
+
                 }
                 else {
                     variables = { orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
             }
             else {
-                if(Object.keys(conditionTransSkuFilters).length > 0){
+                if (Object.keys(conditionTransSkuFilters).length > 0) {
                     variables = { ...conditionFilters, ...conditionTransSkuFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
-                else{
+                else {
                     variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                 }
-               
+
             }
-            
-          await makeRequest(variables)
-   
+
+            await makeRequest(variables)
+
 
         }
 
@@ -400,11 +406,11 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     //       "equalTo": "55K"
     //     }
     //   }
-    
+
     useEffect(() => { setMappedFilters(ntxdata) }, [ntxdata, ntxerr, ntx]);
 
     useEffect(() => {
-        
+
         pathQueries();
         updateProductList();
 
@@ -421,10 +427,10 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
 
     useEffect(() => {
     }, [data, error, loading])
-    const updatefiltersSort = async() => {
-        
-        if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object) ) {
-            var paramsfilter = (Object.entries(seoData).length !== 0 && seoData.constructor === Object ) && seoData.data.allSeoUrlPriorities.nodes.map(val => {
+    const updatefiltersSort = async () => {
+
+        if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object)) {
+            var paramsfilter = (Object.entries(seoData).length !== 0 && seoData.constructor === Object) && seoData.data.allSeoUrlPriorities.nodes.map(val => {
                 var a = {}
 
                 a[val.attributeName.replace(/\s/g, '')] = val.attributeValue
@@ -432,42 +438,42 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
 
             })
             if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object)) {
-                
+
                 const _paramsfilter = paramsfilter.splice(1)
-               
+
                 var conditionTransSkuFilters = {}
-                var filtersss = _paramsfilter.filter(val=>{
-                    
+                var filtersss = _paramsfilter.filter(val => {
+
                     var a = Object.keys(val)
-                    if(a[0] ==='MetalPurity')return a
-                    if(a[0] === 'MetalColor')return a
-                    if(a[0] === 'Availability') return a
-                    })
-                if(filtersss.length>0){
-                conditionTransSkuFilters =conditions.generateTransSkuFilters(filtersss)
-            }
-            else{
-                conditionTransSkuFilters = {filterTransSku:{isdefault:{equalTo:true}}}
-            }
-            
+                    if (a[0] === 'MetalPurity') return a
+                    if (a[0] === 'MetalColor') return a
+                    if (a[0] === 'Availability') return a
+                })
+                if (filtersss.length > 0) {
+                    conditionTransSkuFilters = conditions.generateTransSkuFilters(filtersss)
+                }
+                else {
+                    conditionTransSkuFilters = { filterTransSku: { isdefault: { equalTo: true } } }
+                }
+
                 const conditionFilters = conditions.generateFilters(_paramsfilter)
-                
+
 
                 const conditionImageColor = {}
-                var metal_color_append_AND =filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length>0? Object.keys(filters.MetalColor)[0].replace(' ', ' and '): ''
+                var metal_color_append_AND = filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length > 0 ? Object.keys(filters.MetalColor)[0].replace(' ', ' and ') : ''
                 var a = filters && Object.entries(filters).length > 0 ? metal_color_append_AND : ''
                 var variables = {}
                 // var a = filters.metalColor ? filters.metalColor : null;
-                
-                
-                if(filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length >0  && Object.values(filters.MetalColor)[0] )conditionImageColor["productColor"] = a 
-                
-              if((filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length >0 && Object.values(filters.MetalColor)[0])===false) conditionImageColor['isdefault'] = true
+
+
+                if (filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length > 0 && Object.values(filters.MetalColor)[0]) conditionImageColor["productColor"] = a
+
+                if ((filters && Object.entries(filters).length > 0 && Object.entries(filters.MetalColor).length > 0 && Object.values(filters.MetalColor)[0]) === false) conditionImageColor['isdefault'] = true
 
                 // conditionImageColor["isdefault"]=true
                 if (window.location.search) {
                     const orderbyvarCondition = () => {
-                 
+
                         switch (sort.values) {
                             case 'New To Stylori': {
                                 return "CREATED_AT_DESC"
@@ -487,96 +493,104 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                         }
 
                     }
-                   
-                    const filters_search_condition = () =>{
-                        if((Object.entries(sort).length > 0 && sort.constructor === Object)&&(pricemin !==null && pricemax !== null)){
-                           return sort && `sort=${sort.values}&startprice=${pricemin}&endprice=${pricemax}`
+
+                    const filters_search_condition = () => {
+                        if ((Object.entries(sort).length > 0 && sort.constructor === Object) && (pricemin !== null && pricemax !== null)) {
+                            return sort && `sort=${sort.values}&startprice=${pricemin}&endprice=${pricemax}`
                         }
-                        else if(pricemin !==null && pricemin>null){
+                        else if (pricemin !== null && pricemin > null) {
                             var _search_loc = window.location.search
                             var _minValue = Number(_search_loc.split('?')[1].split('&')[0].split('=')[1])
                             var _maxValue = Number(_search_loc.split('?')[1].split('&')[1].split('=')[1])
-                            
+
                             var price = conditionFilters
                             var obj = {}
 
-                            if(price["filter"]){
-                                
-                            price["filter"]['transSkuListsByProductId'] =  {'every':{"markupPrice":{
-                                "greaterThanOrEqualTo": _minValue,
-                                "lessThanOrEqualTo": _maxValue
-                            }}
-                              }
+                            if (price["filter"]) {
+
+                                price["filter"]['transSkuListsByProductId'] = {
+                                    'every': {
+                                        "markupPrice": {
+                                            "greaterThanOrEqualTo": _minValue,
+                                            "lessThanOrEqualTo": _maxValue
+                                        }
+                                    }
+                                }
                             }
-                            else{
-                                price["filter"] =  {"transSkuListsByProductId":{'every':{"markupPrice":{
-                                    "greaterThanOrEqualTo": _minValue,
-                                    "lessThanOrEqualTo": _maxValue
-                                }}}
-                                  }
+                            else {
+                                price["filter"] = {
+                                    "transSkuListsByProductId": {
+                                        'every': {
+                                            "markupPrice": {
+                                                "greaterThanOrEqualTo": _minValue,
+                                                "lessThanOrEqualTo": _maxValue
+                                            }
+                                        }
+                                    }
+                                }
                             }
 
-                       
-                                           
+
+
                             //   conditionFilters['filter'] = obj1.filter
                             //   conditionFilters['filter'] = obj2.filter
                             //   conditionFilters['filter']= {...obj1.filter,...obj2.filter}
                             //   console.log('func',filters_search_condition())
-                             
-                              console.log(price)
-                              if(Object.keys(conditionTransSkuFilters).length > 0){
+
+                            console.log(price)
+                            if (Object.keys(conditionTransSkuFilters).length > 0) {
                                 variables = { ...price, offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor }, ...conditionTransSkuFilters }
-                            }else{
+                            } else {
                                 variables = { ...price, offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                             }
                         }
-                        else if(Object.entries(sort).length > 0 && sort.constructor === Object){
-                            if(Object.keys(conditionTransSkuFilters).length > 0){
+                        else if (Object.entries(sort).length > 0 && sort.constructor === Object) {
+                            if (Object.keys(conditionTransSkuFilters).length > 0) {
                                 variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor }, ...conditionTransSkuFilters }
-                            }else{
+                            } else {
                                 variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                             }
                         }
                     }
                     // variables = { ...conditionFilters, orderbyvar: orderbyvarCondition(), offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                     filters_search_condition()
-                    console.log('func','filters_search_condition()')
+                    console.log('func', 'filters_search_condition()')
                 }
                 else {
-                    if(conditionTransSkuFilters && Object.keys(conditionTransSkuFilters).length > 0){
-                        variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor },...conditionTransSkuFilters }
-                    }else{
-                        variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor} }
+                    if (conditionTransSkuFilters && Object.keys(conditionTransSkuFilters).length > 0) {
+                        variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor }, ...conditionTransSkuFilters }
+                    } else {
+                        variables = { ...conditionFilters, orderbyvar: 'ID_DESC', offsetvar: offset, firstvar: first, 'conditionImage': { ...conditionImageColor } }
                     }
-                    
+
                 }
-            await makeRequest(variables)
-            
+                await makeRequest(variables)
+
             }
         }
     }
     const prevseoData = usePrevious(seoData);
     // Hook
-function usePrevious(value) {
-    // The ref object is a generic container whose current property is mutable ...
-    // ... and can hold any value, similar to an instance property on a class
-    const ref = React.useRef();
-    
-    // Store current value in ref
+    function usePrevious(value) {
+        // The ref object is a generic container whose current property is mutable ...
+        // ... and can hold any value, similar to an instance property on a class
+        const ref = React.useRef();
+
+        // Store current value in ref
+        useEffect(() => {
+            ref.current = value;
+        }, [value]); // Only re-run if value changes
+
+        // Return previous value (happens before update in useEffect above)
+        return ref.current;
+    }
     useEffect(() => {
-      ref.current = value;
-    }, [value]); // Only re-run if value changes
-    
-    // Return previous value (happens before update in useEffect above)
-    return ref.current;
-  }
-    useEffect(() => {
-       
-       updatefiltersSort()
+
+        updatefiltersSort()
     }, [seoData])
     var newObj = {}
     const updateFilters = async (filters) => {
-        
+
         setFilters(filters);
 
         // setloadingfilters(true)
@@ -615,7 +629,7 @@ function usePrevious(value) {
             var toLowerCase = key[0].toLowerCase()
             newObj[toLowerCase] = k[len][0]
         }
-        console.log('i came in as update filters function',"123123")
+        console.log('i came in as update filters function', "123123")
         await makeFetch(newObj);
         //    props.history.push({
         //     pathname: `/stylori${mappedFilters.seo_url   ?`/${mappedFilters.seo_url}` : '' }`,
@@ -654,28 +668,28 @@ function usePrevious(value) {
     }, [mappedFilters, offset])
 
     useEffect(() => {
-        const filters_seo_condition = () =>{
-            if((Object.entries(sort).length > 0 && sort.constructor === Object)&&(pricemin !==null && pricemax !== null)){
-               return sort && `sort=${sort.values}&startprice=${pricemin}&endprice=${pricemax}`
+        const filters_seo_condition = () => {
+            if ((Object.entries(sort).length > 0 && sort.constructor === Object) && (pricemin !== null && pricemax !== null)) {
+                return sort && `sort=${sort.values}&startprice=${pricemin}&endprice=${pricemax}`
             }
-            else if(pricemin !==null && pricemax !==null && pricemin !==0 && pricemax !==0 ){
+            else if (pricemin !== null && pricemax !== null && pricemin !== 0 && pricemax !== 0) {
                 return `startprice=${pricemin}&endprice=${pricemax}`
             }
-            else if(Object.entries(sort).length > 0 && sort.constructor === Object){
+            else if (Object.entries(sort).length > 0 && sort.constructor === Object) {
                 return sort && `sort=${sort.values}`
             }
         }
-        if ((Object.entries(sort).length > 0 && sort.constructor === Object) || (pricemin !==null && pricemax !== null)) {
+        if ((Object.entries(sort).length > 0 && sort.constructor === Object) || (pricemin !== null && pricemax !== null)) {
             props.history.push({
                 pathname: `${mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ''}`,
-                search:  filters_seo_condition()
+                search: filters_seo_condition()
             })
 
             updatefiltersSort()
         }
-    }, [sort,pricemin,pricemax])
+    }, [sort, pricemin, pricemax])
     useEffect(() => {
-        
+
         if (paramObjects(mappedFilters.seo_url).length > 0) {
             setParamsAo(paramObjects(mappedFilters.seo_url))
         }
@@ -696,10 +710,10 @@ function usePrevious(value) {
 
     })
     const FilterOptionsCtx = {
-        cartcount, filters, sort, loading, error, data, setFilters: updateFilters, offset, setOffset, dataArr, first, setFirst, mappedFilters, loadingfilters, pricemax, pricemin
+        cartcount, filters, sort,  loading, error, data, setFilters: updateFilters, offset, setOffset, dataArr, first, setFirst, mappedFilters, loadingfilters, pricemax, pricemin
     }
     return (
-        <FilterOptionsContext.Provider value={{setcartcount, FilterOptionsCtx, setOffset, setFirst, updateProductList, setSort, setloadingfilters, setPriceMax, setPriceMin }} >
+        <FilterOptionsContext.Provider value={{  setcartcount, FilterOptionsCtx, setOffset, setFirst, updateProductList, setSort, setloadingfilters, setPriceMax, setPriceMin }} >
             {props.children}
         </FilterOptionsContext.Provider>
     )

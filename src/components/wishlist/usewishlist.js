@@ -43,7 +43,7 @@ const useWishlists = (props) => {
             makeFetch(values);
         } else {
             alert("Please login your email Id")
-            window.location.href = "/login"
+            window.location.href = "/login" 
         }
         // changePanel(3)
     }

@@ -21,6 +21,7 @@ const Addressforms = (changePanel) => {
     const [pincods, setpincod] = React.useState({ pincod: "" })
     const { loading: userloading, error: usererror, data: userdata, makeFetch: makeFetch } = useNetworkRequest('/adduseraddress', {}, false);
     const { loading: addresloading, error: addreserror, data: addresData, makeRequestCod: addresmakeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
+    const [open, setOpen] = React.useState(false);
     const [values, setValues] = React.useState({
         addressOne: {
             firstname: "",
@@ -77,16 +78,18 @@ const Addressforms = (changePanel) => {
     useEffect(() => {
         debugger
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
-        var adrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes : null
-        if (adrs !== undefined && adrs.length > 0) {
-            values["addressvalues"] = addresData
-            values["addrs"] = false
-            setValues({
-                values,
-                ...values
-            })
-        } else {
-            // if (con_gust !== true) { localStorage.setItem("select_addres", JSON.stringify("")) }
+        if (con_gust !== true) {
+            var adrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes : null
+            if (adrs !== undefined && adrs.length > 0) {
+                values["addressvalues"] = addresData
+                values["addrs"] = false
+                setValues({
+                    values,
+                    ...values
+                })
+            } else {
+                // if (con_gust !== true) { localStorage.setItem("select_addres", JSON.stringify("")) }
+            }
         }
     }, [addresData, userdata, addressva, removedata])
     React.useEffect(() => {
@@ -163,8 +166,8 @@ const Addressforms = (changePanel) => {
         setValues({ ...values, values })
     }
     const handleSubmit = (e) => {
-        var addObjgust_local = localStorage.getItem('gustaddres') ? JSON.parse(localStorage.getItem('gustaddres')) : "";
         debugger
+        var addObjgust_local = localStorage.getItem('gustaddres') ? JSON.parse(localStorage.getItem('gustaddres')) : "";
         if (con_gust !== true) {
             var addressOne = values.addressOne
             var addressTwo = values.addressTwo
@@ -176,7 +179,6 @@ const Addressforms = (changePanel) => {
                 })
                 addObj['address'] = [addressOne];
                 // addresmakeRequestCod(obj);
-                return false
             } else {
                 if (values.checkValue === true) {
                     addObj['address'] = [addressOne];
@@ -207,32 +209,39 @@ const Addressforms = (changePanel) => {
                     makeFetch(addObj);
                 }
             }
-            return false
-        } else {
+            // return false
+        } if (con_gust === true) {
             if (values.checkValue == true) {
                 // addObjgust['address'] = [a1];
-                if (values && values.addressOne && addObjgust_local.length > 0) {
-                    addObjgust && addObjgust.address.push(values.addressOne);
+                if ((values.addressOne) && (addObjgust_local && addObjgust_local.address.length > 0)) {
+                    addObjgust_local && addObjgust_local.address.push(values.addressOne);
+                    localStorage.setItem("gustaddres", JSON.stringify(addObjgust_local))
                 } else if (values && values.addressOne) {
                     addObjgust["address"] = [values.addressOne]
+                    localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
                 }
-
             } if (values.checkValue == false) {
                 // setAddress({ a1, a2 })
                 // addObjgust['address'] = [a1, a2];
-                if (values.addressTwo && addObjgust_local.length > 0) {
-                    addObjgust.address.push(values.addressOne, values.addressTwo);
+                if ((values.addressTwo) && (addObjgust_local && addObjgust_local.address.length > 0)) {
+                    addObjgust_local && addObjgust_local.address.push(values.addressOne, values.addressTwo);
+                    localStorage.setItem("gustaddres", JSON.stringify(addObjgust_local))
                 } else if (values.addressTwo) {
                     addObjgust["address"] = [values.addressOne, values.addressTwo]
+                    localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
                 }
             }
             // makeFetch(addObj);
             // localStorage.getItem("gustaddres", JSON.stringify(addObjgust))
 
-            localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
+            // localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
             window.location.reload()
         }
-        // }
+        values['checkValue1'] = true
+        setValues({
+            values,
+            ...values,
+        })   // }
         // else {
         //     if (values.edit_addresId === false) {
         //         alert("allowed the five address only")
@@ -264,7 +273,7 @@ const Addressforms = (changePanel) => {
             if (!pathnames) {
                 changePanel(3)
             }
-            return false
+            // return false
         }
         if (values.checkValue1 === false) {
             debugger
@@ -329,9 +338,10 @@ const Addressforms = (changePanel) => {
             }
         } else {
             var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
-            local_storage["address"].pop(index);
-            window.localStorage.removeItem('gustaddres');
+            local_storage.address.splice(index, 1);
+            // window.localStorage.removeItem('gustaddres');
             window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
+
             if (valuegust.length < 0) {
                 values["addrs"] = true
                 setValues({
@@ -414,6 +424,7 @@ const Addressforms = (changePanel) => {
         })
     }
     const redirectForm = (val_addrs, num, isAdressOne, isAdressTwo, index) => {
+        debugger
         if (con_gust !== true) {
             if (val_addrs && val_addrs.id && val_addrs.id.length > 0) {
                 values["addres_id"] = val_addrs && val_addrs.id
@@ -430,16 +441,14 @@ const Addressforms = (changePanel) => {
             if (values && values["addressOne"]) {
                 values["addressOne"]["contactno"] = val_addrs && val_addrs.contactNumber && val_addrs.contactNumber
             }
-            return false
-        } else {
+        } if (con_gust === true) {
             values["edit_addresId"] = true
             values["addressOne"] = val_addrs
             values["addressTwo"] = ""
             // valuegust
-            var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
-            local_storage["address"].pop(index);
-            window.localStorage.removeItem('gustaddres');
-            window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
+            // var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
+            // local_storage.address.splice(index, 1);
+            // window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
         }
         setValues({
             values,
@@ -449,7 +458,15 @@ const Addressforms = (changePanel) => {
         localStorage.setItem("isedit", !values.addrs ? 1 : 0)
         // localStorage.setItem('vale', JSON.stringify(values))
     }
-    const handle = { redirectFormss, Delete_address, handleChange, handleSubmit, handleKeyPress, redirectForm1, redirectForm, selectaddreses };
-    return { values, setValues, handle }
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handle = { handleOpen, handleClose, redirectFormss, Delete_address, handleChange, handleSubmit, handleKeyPress, redirectForm1, redirectForm, selectaddreses };
+    return { values, setValues, handle, open, setOpen }
 }
 export default Addressforms;
