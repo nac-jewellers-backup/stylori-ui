@@ -334,7 +334,7 @@ const Addressforms = (changePanel) => {
                 if (!pathnames) {
                     changePanel(3)
                     window.location.reload()
-                }
+                } 
             }
             // if (values.checkValue1 === true) {
  
