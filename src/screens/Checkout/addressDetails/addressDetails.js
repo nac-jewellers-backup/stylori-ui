@@ -94,7 +94,7 @@ class Addressdetails extends React.Component {
                                     <p className={`detils-p ${classes.normalfonts}`} >
                                         {val_addrs1.addressline1}
                                         <br />
-                                        {val_addrs1.city}
+                                        {val_addrs1.city} 
                                         <br />
                                         {val_addrs1.state}
                                         {val_addrs1.pincode}
