@@ -43,6 +43,12 @@ class ProductDetail extends Component {
 
   }
   render() {
+    console.log('----------------------------------')
+    console.log('--this.props.data--', '--this.props.data--', this.props)
+    debugger
+    // alert(JSON.stringify(this.props.data))
+    console.log('----------------------------------')
+    debugger
     var loc = this.props.location.pathname;
     var path = loc.split('/');
     var data_json = [{ title: 'home', url: '/home' }, { title: path[2], url: this.renderUrl() }, { title: path[4] }]

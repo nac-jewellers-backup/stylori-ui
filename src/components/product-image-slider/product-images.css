@@ -385,20 +385,18 @@ body {
 
 .product-subhead {
     font-size: none !important;
-    margin-top: 10px !important;
+    margin-top: 3px !important;
 }
 
 .product-subhead-list {
     font-size: 13px !important;
     width: 100%;
     overflow: auto;
-    margin: auto !important;
-
 }
 
 /* //:nth-child(2n) */
 .product-subhead-list span {
-
+    margin-top: 3px !important;
     display: flex;
     flex: 1;
 }

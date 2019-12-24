@@ -46,6 +46,7 @@ class ProductImageZoom extends React.Component {
 
     // console.log(this.props.data)
     const { classes, data } = this.props
+    debugger
     const limit = 3;
     const { showimage } = this.state;
     const dataCarousel = {
@@ -56,8 +57,9 @@ class ProductImageZoom extends React.Component {
       verticalSwiping: true,
       arrows: false,
     }
-    // alert(JSON.stringify(data.Image_resolution))
+    // alert(JSON.stringify(data.image_resolution))
     const props = { "width": data[0].image_resolution, "height": data[0].image_resolution, "zoomWidth": data[0].image_resolution, "img": `${showimage}`, "zoomStyle": "z-index:2" }
+    debugger
     return (
       <div>
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
