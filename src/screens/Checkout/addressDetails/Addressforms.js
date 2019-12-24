@@ -273,10 +273,11 @@ const Addressforms = (changePanel) => {
         // window.location.reload(); 
     }
     const selectaddreses = (val_addrs, num,index) => {
+        debugger
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
         addObjall['address_id'] = val_addrs && val_addrs.id ? val_addrs.id : ""
         if (values.checkValue1 === true) {
-            values["Id2"] = val_addrs && val_addrs.id
+            values["Id2"] = index
             setValues({
                 values,
                 ...values,
@@ -296,7 +297,7 @@ const Addressforms = (changePanel) => {
         }
         if (values.checkValue1 === false) {
             if (num === 2) {
-                values["Id"] = val_addrs && val_addrs.id
+                values["Id"] = index
                 if (val_addrs && val_addrs.firstname.length > 0) {
                     adars2['addressTwo'] = val_addrs
                 }
@@ -308,7 +309,7 @@ const Addressforms = (changePanel) => {
             } else {
 
                 if (num === 1) {
-                    values["Id2"] = val_addrs && val_addrs.id
+                    values["Id2"] = index
                     if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                         adars1['addressOne'] = val_addrs
                     }
