@@ -258,7 +258,10 @@ const Addressforms = (changePanel) => {
             window.location.reload()
         }
         values['checkValue1'] = true
+        // setValues({
+        // })
         setValues({
+            addrs: !values.addrs,
             values,
             ...values,
         })   // }
@@ -272,7 +275,7 @@ const Addressforms = (changePanel) => {
         // values["edit_ref"] = true
         // window.location.reload(); 
     }
-    const selectaddreses = (val_addrs, num,index) => {
+    const selectaddreses = (val_addrs, num, index) => {
         debugger
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
         addObjall['address_id'] = val_addrs && val_addrs.id ? val_addrs.id : ""
@@ -337,6 +340,7 @@ const Addressforms = (changePanel) => {
             // }
 
         }
+        window.location.reload()
     }
     const Delete_address = (val_addrs, index) => {
         if (con_gust !== true) {

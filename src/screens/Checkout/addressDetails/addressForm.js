@@ -27,9 +27,7 @@ const AddressComponent = (props) => {
                     <div className='pt-sm'>
                         <form onSubmit={(e) => {
                             handle.handleSubmit(e)
-                            setValues({
-                                addrs: !values.addrs
-                            })
+                           
                         }} action="javascript:void(0)" autoComplete={true}>
                             {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? <h5 className='title'> Edit Address</h5> : ""}
                             <p class="form-group tp" style={{ width: "480px" }}>

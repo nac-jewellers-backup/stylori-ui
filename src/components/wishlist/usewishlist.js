@@ -51,9 +51,9 @@ const useWishlists = (props) => {
         if (user_id.length > 0 && check_gustlog === "false") {
             values["isactive"] = num
             values["user_id"] = user_id
-            setValues({ values, ...values });
+            setValues({ values, ...values }); 
                 setCartFilters({
-                    skuId: values.product_sku,
+                    skuId: values.product_sku, 
                     qty: 1,
                     price: values.add
                 })

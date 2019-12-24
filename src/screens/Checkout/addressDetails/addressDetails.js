@@ -89,12 +89,12 @@ class Addressdetails extends React.Component {
                                                 <Grid item lg={6}><Button className="addres_dlt_cancel" onClick={this.handleClose}>Cancel</Button></Grid>
                                                 <Grid item lg={6}><Button className="addres_dlt_ok" onClick={() => this.props.Delete_address(val_addrs1, index)}>Confirm delete</Button></Grid>
                                             </Grid>
-                                        </div> 
+                                        </div>
                                     </Modal>
                                     <p className={`detils-p ${classes.normalfonts}`} >
                                         {val_addrs1.addressline1}
                                         <br />
-                                        {val_addrs1.city} 
+                                        {val_addrs1.city}
                                         <br />
                                         {val_addrs1.state}
                                         {val_addrs1.pincode}
@@ -112,7 +112,7 @@ class Addressdetails extends React.Component {
                                                         // this.props.changevalue(3)
                                                     }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Your Shipping address</Button></> : <>
                                                     <Button style={{ float: "right" }} className='apply-b' onClick={() => {
-                                                        this.props.selectaddreses(val_addrs1, 1,index)
+                                                        this.props.selectaddreses(val_addrs1, 1, index)
                                                         // this.props.changevalue(3)
                                                     }}>Select and  Review </Button></>}</> : ""}
                                     </div>
@@ -198,7 +198,7 @@ class Addressdetails extends React.Component {
                                                                 // this.props.changevalue(3)
                                                             }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Your Billing address </Button></> : <>
                                                                 <Button style={{ float: "right" }} className='apply-b' onClick={() => {
-                                                                    this.props.selectaddreses(val_addrs2, 2,index)
+                                                                    this.props.selectaddreses(val_addrs2, 2, index)
                                                                     // this.props.changevalue(3)
                                                                 }}>Select and  Review </Button></>}
                                                     </div>

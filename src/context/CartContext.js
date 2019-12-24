@@ -85,7 +85,7 @@ const Provider = (props) => {
         }
     }, [wishlistDATA])
     useEffect(() => {
-        // if (window.location.pathname = "/account") {
+        // if (window.location.pathname === "/account") {
         orderobj["userProfileId"] = userIds
         orderobj1["userprofileId"] = userIds
         allordermakeRequest(orderobj);
