@@ -16,7 +16,7 @@ const Filters = (props) => {
     const [productDisplay, setProductDisplay] = React.useState(true)
     const [CardRadio, setCardRadio] = React.useState(false)
     const selectType = (came, a, b, d) =>{ 
-        alert(came, a, b, d)
+        // alert(came, a, b, d)
         if(Object.entries(came).length!== 0 && came.constructor !== Object){
             console.log('state.filters_______', state)
             var hoverFilter = state.listHoverItem.replace(/\s/g, '')
@@ -30,7 +30,8 @@ const Filters = (props) => {
             ListingPageCtx.setSilverFilters(state.filters)
         }
         else{
-            alert(a,b,d)
+            // alert(a,b,d)
+            console.log('error')
         }
 
 
@@ -54,9 +55,9 @@ const Filters = (props) => {
         // setState({...state,CardRadio: false });
     
       };  
-      React.useEffect(()=>{
-        alert(JSON.stringify(openFilters))
-      },[openFilters])
+      // React.useEffect(()=>{
+      //   alert(JSON.stringify(openFilters))
+      // },[openFilters])
     const   handleDrawerCloseMobile = () => {
          setOpenFilters(!openFilters)
       setProductDisplay(!productDisplay)

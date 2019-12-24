@@ -1,26 +1,26 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e3703d0452b0e8c0a2b95a89b94dd6fa",
+    "revision": "998b783201fea1f15ec1f2bc921cbb5d",
     "url": "/index.html"
   },
   {
-    "revision": "04107c535658a1d09d6b",
+    "revision": "e1e0a4744c0bae327e9b",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "c2e383643ad5f029da8e",
+    "revision": "aba1b62b5da52678ed08",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "3b9b7872f03fb913b989",
+    "revision": "eaad390efce1b89bbb34",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "04107c535658a1d09d6b",
+    "revision": "e1e0a4744c0bae327e9b",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "c2e383643ad5f029da8e",
+    "revision": "aba1b62b5da52678ed08",
     "url": "/static/js/3.js"
   },
   {
@@ -28,7 +28,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/4.js"
   },
   {
-    "revision": "3b9b7872f03fb913b989",
+    "revision": "eaad390efce1b89bbb34",
     "url": "/static/js/main.js"
   },
   {
@@ -46,6 +46,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "11eabca2251325cfc5589c9c6fb57b46",
     "url": "/static/media/Roboto-Regular.ttf"
+  },
+  {
+    "revision": "5c8caf8f7ea7126619cea19d463c5146",
+    "url": "/static/media/Stylori Silver logo.svg"
   },
   {
     "revision": "c3f7641ef11bd405cfe12138f25f089f",
