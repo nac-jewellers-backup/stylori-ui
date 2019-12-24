@@ -318,7 +318,7 @@ body {
     outline: none !important;
     font-size: 16px !important;
     width: 100% !important;
-    font-family: FontAwesome;
+    
     height: 34px !important;
     border: 1px solid #ccc;
     border-radius: 0 !important;
@@ -452,6 +452,7 @@ body {
     color: #394578;
     font-size: 12px;
     background-image: url(https://assets-cdn.stylori.com/images/static/location.png);
+    /* font-family: FontAwesome; */
     background-position: 7px 8px;
     background-repeat: no-repeat;
     width: 100%;
@@ -1194,7 +1195,7 @@ body {
     } */
 
 .wrappercustom {
-    font-family: "Roboto" !important;
+    /* font-family: "Roboto" !important; */
     width: 100% !important;
     height: 35px;
     color: #394578 !important;

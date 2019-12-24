@@ -62,6 +62,7 @@ const Addressforms = (changePanel) => {
         Id: "",
         Id2: "",
         addres_id: null,
+        index: null
     });
     var addObj = {};
     var adars1 = {}
@@ -73,10 +74,8 @@ const Addressforms = (changePanel) => {
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     const pathnames = window.location.pathname === "/account"
     // var stst = values.ref ? values.ref : ""
-    debugger
     const addressva = values && values.addressvalues && values.addressvalues.length > 0
     useEffect(() => {
-        debugger
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
         if (con_gust !== true) {
             var adrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes : null
@@ -93,7 +92,6 @@ const Addressforms = (changePanel) => {
         }
     }, [addresData, userdata, addressva, removedata])
     React.useEffect(() => {
-        debugger
         if (user_id.length > 0) {
             obj['userprofileId'] = user_id
             addresmakeRequestCod(obj);
@@ -216,8 +214,18 @@ const Addressforms = (changePanel) => {
                 if ((values.addressOne) && (addObjgust_local && addObjgust_local.address.length > 0)) {
                     addObjgust_local && addObjgust_local.address.push(values.addressOne);
                     localStorage.setItem("gustaddres", JSON.stringify(addObjgust_local))
+                    if (values.index !== null || values.index.lenght >= 0) {
+                        var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
+                        local_storage.address.splice(values.index, 1);
+                        window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
+                    }
                 } else if (values && values.addressOne) {
                     addObjgust["address"] = [values.addressOne]
+                    if (values.index !== null || values.index.lenght >= 0) {
+                        var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
+                        local_storage.address.splice(values.index, 1);
+                        window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
+                    }
                     localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
                 }
             } if (values.checkValue == false) {
@@ -226,11 +234,23 @@ const Addressforms = (changePanel) => {
                 if ((values.addressTwo) && (addObjgust_local && addObjgust_local.address.length > 0)) {
                     addObjgust_local && addObjgust_local.address.push(values.addressOne, values.addressTwo);
                     localStorage.setItem("gustaddres", JSON.stringify(addObjgust_local))
+                    if (values.index !== null || values.index.lenght >= 0) {
+                        var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
+                        local_storage.address.splice(values.index, 1);
+                        window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
+                    }
                 } else if (values.addressTwo) {
                     addObjgust["address"] = [values.addressOne, values.addressTwo]
+                    if (values.index !== null || values.index.lenght >= 0) {
+                        var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
+                        local_storage.address.splice(values.index, 1);
+                        window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
+                    }
                     localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
                 }
             }
+          
+
             // makeFetch(addObj);
             // localStorage.getItem("gustaddres", JSON.stringify(addObjgust))
 
@@ -253,7 +273,6 @@ const Addressforms = (changePanel) => {
         // window.location.reload(); 
     }
     const selectaddreses = (val_addrs, num) => {
-        debugger
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
         addObjall['address_id'] = val_addrs && val_addrs.id ? val_addrs.id : ""
         if (values.checkValue1 === true) {
@@ -276,7 +295,6 @@ const Addressforms = (changePanel) => {
             // return false
         }
         if (values.checkValue1 === false) {
-            debugger
             if (num === 2) {
                 values["Id"] = val_addrs && val_addrs.id
                 if (val_addrs && val_addrs.firstname.length > 0) {
@@ -320,7 +338,6 @@ const Addressforms = (changePanel) => {
         }
     }
     const Delete_address = (val_addrs, index) => {
-        debugger
         if (con_gust !== true) {
             if (check_dlt === false) {
                 if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 1) {
@@ -416,7 +433,6 @@ const Addressforms = (changePanel) => {
         })
     }
     const redirectFormss = () => {
-        debugger
         values["addrs"] = false
         setValues({
             values,
@@ -445,6 +461,7 @@ const Addressforms = (changePanel) => {
             values["edit_addresId"] = true
             values["addressOne"] = val_addrs
             values["addressTwo"] = ""
+            values["index"] = index
             // valuegust
             // var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
             // local_storage.address.splice(index, 1);
@@ -461,7 +478,7 @@ const Addressforms = (changePanel) => {
     const handleOpen = () => {
         setOpen(true);
     };
- 
+
     const handleClose = () => {
         setOpen(false);
     };

@@ -9,7 +9,7 @@ const cacheFiles = [
 // NOTE: Caching custom files
 // eslint-disable-next-line no-restricted-globals
 self.addEventListener('install', function(event) {
-   
+    console.info('FOUND-e', 'cache test')
     console.info('OFFLINE ENTRY TESTING','offline cache testing');
     event.waitUntil(
       caches.open(_cacheName_one).then(function(cache) {
@@ -22,6 +22,7 @@ self.addEventListener('install', function(event) {
   self.addEventListener("fetch", e => {
     console.info('FOUND-e', e);
     e.respondWith(caches.match(e.request).then(async res => {
+
         if (res) {
             console.info('FOUND', e.request.url);
             const cacheKeys = await caches.keys(); 
@@ -32,13 +33,14 @@ self.addEventListener('install', function(event) {
             
             console.info('LOADING CACHES FROM',inA ? cacheKeys[0] : cacheKeys[1]);
             return caches.open(inA ? cacheKeys[0] : cacheKeys[1]).then(c => {
-                console.info('LOADING CACHES FROM',inA ? cacheKeys[0] : cacheKeys[1]);
-                console.info(' console.info( e);',inA ? cacheKeys[0] : cacheKeys[1]);
+                console.info('LOADING CACHES FROM',inA ? cacheKeys[0] : cacheKeys[1], inA,inB);
+                console.info('CACHES I am reloading... ',inA ? cacheKeys[0] : cacheKeys[1]);
                 window.location.reload(true)
                 c.put(e.request.url, res.clone());
                 return res;
             })
         } else {
+             console.info('LOADING CACHES FROM','cache');
             return fetch(e.request);
         }
     }).catch(err => {
@@ -64,3 +66,4 @@ self.addEventListener('activate', event => {
       })
     );
   });
+//   var staticCacheName = 'pages-cache-v2';

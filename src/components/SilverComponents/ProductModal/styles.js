@@ -17,6 +17,30 @@ export const useStyles = makeStyles(theme => ({
             backgroundColor: "#fff",
         }
     },
+    [theme.breakpoints.down('sm')]: {
+        containerTop: {
+            display: 'flex',
+            backgroundColor: "#fff",
+            width: "100%",
+            margin: "2% 0% 0% 0% !important"
+        },
+        productCardDetail: {
+            paddingTop: '4% !important',
+            paddingBottom: '4% !important'
+        },
+    },
+    [theme.breakpoints.down('md')]: {
+        containerTop: {
+            display: 'flex',
+            backgroundColor: "#fff",
+            width: "100%",
+            margin: "2% 0% 2% 0% !important"
+        },
+        productCardDetail: {
+            paddingTop: '4% !important',
+            paddingBottom: '4% !important'
+        },
+    },
 
     ProductGrids: {
         padding: "2%"
@@ -41,7 +65,10 @@ export const useStyles = makeStyles(theme => ({
         fontFamily: 'Robot-Bold',
         color: theme.palette.secondary.dark,
         letterSpacing: '5px',
-        fontSize: '28px'
+        fontSize: '1.7rem',
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '1.0rem'
+        },
     },
     productCardDescription: {
         textAlign: 'center',

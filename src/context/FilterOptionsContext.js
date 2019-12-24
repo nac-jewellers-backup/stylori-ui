@@ -410,12 +410,12 @@ const Provider = (props) => {
     useEffect(() => { setMappedFilters(ntxdata) }, [ntxdata, ntxerr, ntx]);
 
     useEffect(() => {
-
+        debugger
         pathQueries();
         updateProductList();
 
     }, [offset, filters]);
-    useEffect(() => {
+    useEffect(() => { 
         setDataSeoQuery(seoData)
 
     }, [seoData, seoloading, seoError])
@@ -427,20 +427,31 @@ const Provider = (props) => {
 
     useEffect(() => {
     }, [data, error, loading])
-    const updatefiltersSort = async () => {
+    const updatefiltersSort = async() => {
+        debugger
+        if ((Object.entries(filters).length !== 0 && filters.constructor === Object) ) {
+            var paramsfilter = () =>{ 
+                Object.keys(filters).map(fk => {
+                const filter = filters[fk];
+                const fv = Object.keys(filter);
+                if (fv.length > 0) {
+                    if (filter[fv[0]]) {
+                        const qt = `${fk}=${fv[0]}`;
+                        const qtf = {}
+                        qtf[`${fk}`] = `${fv[0]}`
+                        // queries.push(qt);
+                        qtfArr.push(qtf);
 
-        if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object)) {
-            var paramsfilter = (Object.entries(seoData).length !== 0 && seoData.constructor === Object) && seoData.data.allSeoUrlPriorities.nodes.map(val => {
-                var a = {}
+                    }
 
-                a[val.attributeName.replace(/\s/g, '')] = val.attributeValue
-                return a
-
+                }
             })
+            return qtfArr
+        }
             if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object)) {
-
-                const _paramsfilter = paramsfilter.splice(1)
-
+                
+                const _paramsfilter = paramsfilter()
+               
                 var conditionTransSkuFilters = {}
                 var filtersss = _paramsfilter.filter(val => {
 
@@ -498,7 +509,7 @@ const Provider = (props) => {
                         if ((Object.entries(sort).length > 0 && sort.constructor === Object) && (pricemin !== null && pricemax !== null)) {
                             return sort && `sort=${sort.values}&startprice=${pricemin}&endprice=${pricemax}`
                         }
-                        else if (pricemin !== null && pricemin > null) {
+                        else if(pricemin && pricemin !==0 && pricemax && pricemax !==0){
                             var _search_loc = window.location.search
                             var _minValue = Number(_search_loc.split('?')[1].split('&')[0].split('=')[1])
                             var _maxValue = Number(_search_loc.split('?')[1].split('&')[1].split('=')[1])
@@ -585,9 +596,9 @@ const Provider = (props) => {
         return ref.current;
     }
     useEffect(() => {
-
-        updatefiltersSort()
-    }, [seoData])
+       debugger
+       updatefiltersSort()
+    }, [filters, seoData])
     var newObj = {}
     const updateFilters = async (filters) => {
 
@@ -665,7 +676,7 @@ const Provider = (props) => {
 
             // }
         }
-    }, [mappedFilters, offset])
+    }, [mappedFilters])
 
     useEffect(() => {
         const filters_seo_condition = () => {
@@ -719,4 +730,4 @@ const Provider = (props) => {
     )
 };
 
-export const FilterOptionsProvider = withRouter(Provider); 
+export const FilterOptionsProvider = withRouter(Provider);

@@ -7,6 +7,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
+import StyloriNews from './StyloriNews';
 
 const useStyles = makeStyles(theme => ({
   containItems: {
@@ -107,13 +108,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function StaticView(props) {
   const classes = useStyles();
-  const slider = React.createRef();
-  const next = () => {
-    slider.current.slickNext();
-  };
-  const previous = () => {
-    slider.current.slickPrev();
-  };
+
 
   return (
     <Grid container className={classes.containItems}>
@@ -169,88 +164,7 @@ export default function StaticView(props) {
             <Grid item container>
               <Typography className={classes.Title}>Stylori News</Typography>
             </Grid>
-            <Grid container className={classes.photonews}>
-              <Grid item xs={12}>
-                <Slideshow
-                  sliderRef={slider}
-                  class="vertical-carousel"
-                  imgClass="vertical-carousel-img"
-                  dataCarousel={props.dataCarousel}
-                >
-                  {props.fadeImages.map((val, index) => (
-                    <Grid container className={classes.newscontain}>
-                      <Grid item style={{ marginRight: 10 }}>
-                        <img
-                          src={val.img}
-                          style={{ width: "60px", height: "60px" }}
-                        />
-                      </Grid>
-                      <Grid item className={classes.newstop}>
-                        <Typography
-                          className={classes.newcontent}
-                          style={{ fontSize: "12px", fontWeight: 600, lineHeight: 1.1 }}
-                        >
-                          {val.content}
-                        </Typography>
-                        <Grid>
-                          <Typography
-                            style={{
-                              fontSize: "12px",
-                              color: "rgb(51, 122, 183)"
-                            }}
-
-                          >
-                            Read more
-                          </Typography>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                  ))}
-                </Slideshow>
-                {props.dataCarousel.arrowsImg ? (
-                  <Grid className={classes.footerNews}>
-                    <Grid style={{ float: "right" }}>
-                      <Grid
-                        onClick={() => previous()}
-                        className={classes.downArrow}
-                      >
-                        <span className={classes.glyphicon}>
-                          <img
-                            style={{
-                              width: "12x",
-                              height: "12px",
-                              fill: "rgb(58, 69, 120)"
-                            }}
-                            src={
-                              "https://image.flaticon.com/icons/svg/2089/2089720.svg"
-                            }
-                          />
-                        </span>
-                      </Grid>
-                      <Grid
-                        onClick={() => next()}
-                        className={classes.downArrow}
-                      >
-                        <span className={classes.glyphicon}>
-                          <img
-                            style={{
-                              width: "12x",
-                              height: "12px",
-                              fill: "rgb(58, 69, 120)"
-                            }}
-                            src={
-                              "https://image.flaticon.com/icons/svg/2089/2089724.svg"
-                            }
-                          />
-                        </span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                ) : (
-                    ""
-                  )}
-              </Grid>
-            </Grid>
+           <StyloriNews fadeImages ={props.fadeImages} dataCarousel={props.dataCarousel} />
           </Grid>
         </Grid>
       </Grid>

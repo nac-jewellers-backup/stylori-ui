@@ -25,7 +25,7 @@ const useWishlists = (props) => {
             ...values,
             [type]: value
         })
-        // makeFetch(values)
+        makeFetch(values)
     }
 
     const handleInvalid = (type, status) => {
@@ -40,7 +40,7 @@ const useWishlists = (props) => {
             values["isactive"] = num
             values["user_id"] = user_id
             setValues({ values, ...values });
-            makeFetch(values);
+            // makeFetch(values);
         } else {
             alert("Please login your email Id")
             window.location.href = "/login" 

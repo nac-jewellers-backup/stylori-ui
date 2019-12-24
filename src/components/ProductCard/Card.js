@@ -118,7 +118,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
       onMouseOut={() => {
         callmouseout()
       }}
-      style={{ width: '100%', height: '-webkit-fill-available' }}
+      style={{ width: '100%' }}
       scrollPosition={scrollPosition}
 
     // If the image we are creating here has the same src than before,

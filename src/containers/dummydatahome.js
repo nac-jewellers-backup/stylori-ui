@@ -4,6 +4,7 @@ import nosepin from "../assets/nosepin.gif";
 
 export const
   homePageStylori = {
+    //------------- banner image ---------------
     "carouselTop": {
       "setting": {
         dots: true,
@@ -37,7 +38,7 @@ export const
         }
       ]
     },
-
+    //-------------Grid 5 images ---------- 
     "collectionGrid": [
       {
         img:
@@ -64,7 +65,9 @@ export const
         navigateUrl: ""
       }
     ],
+    //------------testimony container ----------------
     "Testimony": {
+      //--------testimony carousel----------------
       "carousel": {
         "setting": {
           slidesToShow: 1,
@@ -138,6 +141,7 @@ export const
         ],
 
       },
+      //------testimony images section --------------
       "bangleGrid": [
         {
           img: "https://assets-cdn.stylori.com/images/homepage/PendantVertical.png",
@@ -162,7 +166,7 @@ export const
         }
       ]
     },
-
+    //-----------newsfeed container---------------
     "NewsFeeds": {
       "carousel": {
         "setting": {
@@ -224,6 +228,7 @@ export const
 
       }
     },
+    //---------------------stories container -------------------
     "Stories": {
       "carousel": {
         "setting": {

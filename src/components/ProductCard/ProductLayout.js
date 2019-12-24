@@ -108,6 +108,7 @@ class Component extends React.Component {
   render() {
     const { classes, data } = this.props;
     const { disabledstate } = this.state;
+    // const _height = (data && data.imageResolution) ? `${data.imageResolution.img_res + 120}px` : `350px`
     // const disabledstate = this.props.data.length < 24 ? 'disabled=true' : ''
     // console.log(dataCard)
     // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
@@ -123,8 +124,7 @@ class Component extends React.Component {
                     
                     return (
                       tile && Object.entries(tile).length>0?
-                      <GridListTile key={tile.title} cols={tile.cols || 1} style={{ height: 'auto', padding: '0 !important', marginBottom: '12px', marginTop: '12px' }} className={`${classes.liClass}`} >
-
+                      <GridListTile key={tile.title} cols={tile.cols || 1} style={{padding: '0 !important', marginBottom: '12px', marginTop: '12px' }} className={`${classes.liClass}`} >
                         {/* <ProductCard data={tile} /> */}
                         <ProductCards data={tile} />
                       </GridListTile>

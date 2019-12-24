@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import './product-images.css'
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../Header/styles'
-import ReactImageZoom from 'react-image-zoom';
+import ReactImageZoom from 'react-image-zoom'; 
 import StaticView from 'components/CarouselLazyer/StaticView';
 // window.onload = function () {
 //   var flashlight = document.querySelector('#flashlight');

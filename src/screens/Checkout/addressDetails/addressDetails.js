@@ -30,7 +30,6 @@ class Addressdetails extends React.Component {
         const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
         const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
         const _add_data_addres = () => {
-            debugger
             if (con_gust === true) {
                 return value
             } if (con_gust !== true) {
@@ -90,7 +89,7 @@ class Addressdetails extends React.Component {
                                                 <Grid item lg={6}><Button className="addres_dlt_cancel" onClick={this.handleClose}>Cancel</Button></Grid>
                                                 <Grid item lg={6}><Button className="addres_dlt_ok" onClick={() => this.props.Delete_address(val_addrs1, index)}>Confirm delete</Button></Grid>
                                             </Grid>
-                                        </div>
+                                        </div> 
                                     </Modal>
                                     <p className={`detils-p ${classes.normalfonts}`} >
                                         {val_addrs1.addressline1}

@@ -1,0 +1,26 @@
+@keyframes pulse_animation {
+    25% {
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+    }
+    75% {
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+ }
+  .footer-icons i:hover {
+    animation-name: pulse_animation;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    cursor: pointer;
+  }
+  .borderCircle{
+    width: 30px !important;
+    height: 40px;
+    border:1px solid #ffffff;
+    color: rgb(255, 255, 255);
+    background: transparent;
+    border-radius: 50%;
+    
+}
