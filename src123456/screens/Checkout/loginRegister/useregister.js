@@ -135,7 +135,6 @@ const useRegister = (changePanel, props) => {
         // makeFetch(values)
     }
     const handleChangeedit = (type, value) => {
-        debugger
         setValuesedit({
             ...valuesedit,
             [type]: value,
@@ -143,7 +142,6 @@ const useRegister = (changePanel, props) => {
         // makeFetch(values)
     }
     const handlesetvaluesadrees = (type, value) => {
-        debugger
         setvaluesadrees({
             ...valuesedit,
             [type]: value,

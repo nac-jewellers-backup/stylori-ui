@@ -44,8 +44,8 @@ const styles = theme => ({
 
 });
 const ProductLayout = (props) => {
-  const { setOffset, setFirst, FilterOptionsCtx: { offset } } = React.useContext(FilterOptionsContext);
-  return <Component offset={offset} setOffset={setOffset} setFirst={setFirst}  {...props} />
+  const { setOffset, setFirst, FilterOptionsCtx} = React.useContext(FilterOptionsContext);
+  return <Component offset={FilterOptionsCtx.offset} setOffset={setOffset} setFirst={setFirst} loadingFilterCtx={FilterOptionsCtx.loadingfilters} {...props} />
 }
 
 class Component extends React.Component {
@@ -90,7 +90,7 @@ class Component extends React.Component {
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
 
-    if (this.props.data !== prevProps.data) {
+    if (this.props.loading !== prevProps.loading) {
       this.setState({ loadingtext: false })
       // setTimeout(function(){ this.setState({loading:false}); }.bind(this), 2000);
     }
@@ -106,7 +106,8 @@ class Component extends React.Component {
 
   }
   render() {
-    const { classes, data } = this.props;
+    const { classes, data, loading } = this.props;
+    debugger
     const { disabledstate } = this.state;
     // const _height = (data && data.imageResolution) ? `${data.imageResolution.img_res + 120}px` : `350px`
     // const disabledstate = this.props.data.length < 24 ? 'disabled=true' : ''
@@ -116,8 +117,8 @@ class Component extends React.Component {
       <div className={`productLayoutRoot `} style={this.props.styles}>
         {
           <>
-            {this.state.loading && <div className="overall-loaders"><div id="loadings"><img src="https://alpha-assets.stylori.com/images/static/loadingimg.gif" alt="loading..." /></div></div>}
-            {this.state.loading === false && <>
+            {this.props.loadingFilterCtx && <div className="overall-loaders"><div id="loadings"><img src="https://alpha-assets.stylori.com/images/static/loadingimg.gif" alt="loading..." /></div></div>}
+            {this.props.loadingFilterCtx === false && <>
               <GridList cellHeight={"auto"} className={`productLayoutGridList ${classes.gridlistmain}`} cols={this.state.colSize} style={{ margin: '25px !important' }}>
                 {
                   data.map(tile => {

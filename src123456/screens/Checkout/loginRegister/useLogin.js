@@ -30,7 +30,6 @@ const useLogin = (changePanel) => {
     const pathnames = window.location.pathname === "/login"
     const { loading: codloading, error: coderror, data: addresData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     React.useEffect(() => {
-debugger
         var ms = data && data.message
         if (ms && values['error'] && values['errortext']) {
             values['error']['passerr'] = true
@@ -123,7 +122,6 @@ debugger
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e) => {
-debugger
 if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'
