@@ -4,7 +4,8 @@ const initialCtx = {
     GLobalCtx: {
         loggedIn: false,
         browserType: 'jpg',
-        productId:[]
+        productId:[],
+        pathName:false
     },
 
     setGlobaCtx: () => null

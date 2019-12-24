@@ -236,7 +236,7 @@ class Component extends React.Component {
     return bz
   })
   handleChange(value, BoolName, e, title, TargetName) {
-    this.props.setloadingfilters(true)
+    // this.props.setloadingfilters(true)
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]

@@ -72,10 +72,9 @@ const Addressforms = (changePanel) => {
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     const pathnames = window.location.pathname === "/account"
     // var stst = values.ref ? values.ref : ""
-    debugger
+    
     const addressva = values && values.addressvalues && values.addressvalues.length > 0
     useEffect(() => {
-        debugger
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
         var adrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes : null
         if (adrs !== undefined && adrs.length > 0) {
@@ -90,7 +89,6 @@ const Addressforms = (changePanel) => {
         }
     }, [addresData, userdata, addressva, removedata])
     React.useEffect(() => {
-        debugger
         if (user_id.length > 0) {
             obj['userprofileId'] = user_id
             addresmakeRequestCod(obj);
@@ -163,7 +161,6 @@ const Addressforms = (changePanel) => {
         setValues({ ...values, values })
     }
     const handleSubmit = (e) => {
-        debugger
         var addObjgust_local = localStorage.getItem('gustaddres') ? JSON.parse(localStorage.getItem('gustaddres')) : "";
         if (con_gust !== true) {
             var addressOne = values.addressOne
@@ -247,7 +244,6 @@ const Addressforms = (changePanel) => {
         // window.location.reload(); 
     }
     const selectaddreses = (val_addrs, num) => {
-        debugger
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
         addObjall['address_id'] = val_addrs && val_addrs.id ? val_addrs.id : ""
         if (values.checkValue1 === true) {
@@ -270,7 +266,6 @@ const Addressforms = (changePanel) => {
             return false
         }
         if (values.checkValue1 === false) {
-            debugger
             if (num === 2) {
                 values["Id"] = val_addrs && val_addrs.id
                 if (val_addrs && val_addrs.firstname.length > 0) {
@@ -314,7 +309,6 @@ const Addressforms = (changePanel) => {
         }
     }
     const Delete_address = (val_addrs, index) => {
-        debugger
         if (con_gust !== true) {
             if (check_dlt === false) {
                 if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 1) {
@@ -346,7 +340,7 @@ const Addressforms = (changePanel) => {
         }
 
         // const DeleteLocalStorage_address = (e, num, isAdressOne) => {
-        //     debugger
+        //     
         //     var local_storage = JSON.parse(localStorage.getItem('valuessetdata'))
         //     local_storage[isAdressOne ? 'addressOne' : 'addressTwo'].pop(num);
         //     window.localStorage.removeItem('valuessetdata');
@@ -409,7 +403,6 @@ const Addressforms = (changePanel) => {
         })
     }
     const redirectFormss = () => {
-        debugger
         values["addrs"] = false
         setValues({
             values,
@@ -417,7 +410,6 @@ const Addressforms = (changePanel) => {
         })
     }
     const redirectForm = (val_addrs, num, isAdressOne, isAdressTwo, index) => {
-        debugger
         if (con_gust !== true) {
             if (val_addrs && val_addrs.id && val_addrs.id.length > 0) {
                 values["addres_id"] = val_addrs && val_addrs.id

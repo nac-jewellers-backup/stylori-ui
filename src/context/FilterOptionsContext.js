@@ -8,6 +8,7 @@ import { CDN_URL } from 'config';
 import { matchPath } from "react-router";
 import { createApolloFetch } from 'apollo-fetch';
 import { NetworkContext } from 'context/NetworkContext';
+import { GlobalContext } from 'context/GlobalContext';
 import { bool } from 'prop-types';
 import { filterParams } from 'mappers';
 
@@ -59,8 +60,10 @@ const Provider = (props) => {
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => t }) }, [filters, sort, pricemax, pricemin])
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => [...d, ...t] }) }, [offset])
     const { NetworkCtx: { graphqlUrl: uri } } = React.useContext(NetworkContext);
+    const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
+    
     const client = createApolloFetch({ uri });
-
+   
     // useEffect(() => {
     //     console.log('sort', sort)
     //     if (sort) window.location.search = `sort=${sort.values}`
@@ -278,10 +281,17 @@ const Provider = (props) => {
     
     // {transSkuListsByProductId: {some: {discountPrice: {greaterThan: 1.5}}}}
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTLIST, () => { }, {})
+
+
+
     // {filter:{transSkuListsByProductId:{every:{markupPrice:{  "greaterThanOrEqualTo":   20000,
     // "lessThanOrEqualTo":70000}}}}}
     const { loading: seoloading, error: seoError, data: seoData, makeRequest: makeRequestSeo } = useGraphql(seoUrlResult, () => { }, {});
 
+    useEffect(()=>{
+        if(loading) setloadingfilters(true)
+        else setloadingfilters(false)
+    },[loading, error, data])
     const seoUrlFetch = () => {
 
 var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mappedFilters.seo_url : window.location.pathname.split('/')[1]  
@@ -404,7 +414,6 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     useEffect(() => { setMappedFilters(ntxdata) }, [ntxdata, ntxerr, ntx]);
 
     useEffect(() => {
-        debugger
         pathQueries();
         updateProductList();
 
@@ -422,7 +431,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     useEffect(() => {
     }, [data, error, loading])
     const updatefiltersSort = async() => {
-        debugger
+        
         if ((Object.entries(filters).length !== 0 && filters.constructor === Object) ) {
             var paramsfilter = () =>{ 
                 Object.keys(filters).map(fk => {
@@ -582,13 +591,14 @@ function usePrevious(value) {
     return ref.current;
   }
     useEffect(() => {
-       debugger
+       
        updatefiltersSort()
     }, [filters, seoData])
     var newObj = {}
     const updateFilters = async (filters) => {
         
         setFilters(filters);
+        setloadingfilters(true)
 
         // setloadingfilters(true)
         var len;
@@ -659,6 +669,9 @@ function usePrevious(value) {
 
 
             seoUrlFetch()
+            var loc = window.location.pathname.split('/')[1].split('-').filter(val=>{if(val==='silver') return val})
+        if(loc.length=== 0) setGlobalCtx({...Globalctx, pathName:false})
+        else setGlobalCtx({...Globalctx, pathName:true})
 
             // }
         }
@@ -704,7 +717,7 @@ function usePrevious(value) {
 
             });
         }
-
+        
     })
     const FilterOptionsCtx = {
         cartcount, filters, sort, loading, error, data, setFilters: updateFilters, offset, setOffset, dataArr, first, setFirst, mappedFilters, loadingfilters, pricemax, pricemin

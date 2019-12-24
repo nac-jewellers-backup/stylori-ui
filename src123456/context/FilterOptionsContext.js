@@ -58,7 +58,6 @@ const Provider = (props) => {
     const [pricemin, setPriceMin] = React.useState(null)
     const [pricemax, setPriceMax] = React.useState(null)
     const [loadingfilters, setloadingfilters] = React.useState(false)
-    debugger
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => t }) }, [filters, sort, pricemax, pricemin])
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => [...d, ...t] }) }, [offset])
     const { NetworkCtx: { graphqlUrl: uri } } = React.useContext(NetworkContext);

@@ -237,12 +237,14 @@ class Component extends React.Component {
     return bz
   })
   handleChange(value, BoolName, e, title, TargetName) {
-    this.props.setloadingfilters(true)
+    debugger
+    
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
 
     if (TargetName === undefined) {
+      this.props.setloadingfilters(true)
       let checkedvalue = {};
       checkedvalue[value] = BoolName
       checked[e.target.name] = checkedvalue
@@ -619,7 +621,7 @@ class Component extends React.Component {
               className={check ? classes.productCardscheck : classes.productCardsuncheck}
 
             >
-            <ProductLayout data={this.props.datas} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
+            <ProductLayout data={this.props.datas} loading = {this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
 
             </div>}
         </div>

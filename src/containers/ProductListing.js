@@ -23,7 +23,7 @@ class Stylori extends React.Component {
 
     //  if(this.props.dataFilter !== prevProps.dataFilter){
 
-    if (this.props.mappedFilters !== prevProps.mappedFilters) {
+    if (this.props.loading !== prevProps.loading) {
 
       this.props.setloadingfilters(false)
 
@@ -39,10 +39,7 @@ class Stylori extends React.Component {
       <>
 
         <Grid container >
-          {this.props.loadingfilters && <div className="overlayloadingfilter">
-            <div  id="loadingss"></div>
-            {/* className="text" Filters updating...*/}
-          </div>}
+
           <Grid item xs={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
             <Header data={data} cartcount={this.props.cartcount} />
           </Grid>
@@ -80,7 +77,7 @@ const Components = props => {
   }
   if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
 
-  else content = <Stylori {...props} cartcount={cartcount} data={dataArr} dataFilter={mappedFiltersList} loadingfilters={loadingfilters} mappedFilters={mappedFilters} setloadingfilters={setloadingfilters} />
+  else content = <Stylori {...props} cartcount={cartcount} data={dataArr} dataFilter={mappedFiltersList} loadingfilters={loadingfilters} loading={loading} mappedFilters={mappedFilters} setloadingfilters={setloadingfilters} />
   return content
 }
 
