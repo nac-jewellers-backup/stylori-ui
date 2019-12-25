@@ -6,7 +6,7 @@ import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 import useLogin from './useLogin';
 import FacebookLogin from 'react-facebook-login';
-import  { Redirect } from 'react-router-dom';
+import  { Redirect } from 'react-router-dom'; 
 import { withRouter } from "react-router";
 
 const Login = (props) => {

@@ -324,15 +324,25 @@ class Header extends Component {
                                         <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center" }}>
                                             <div className={`head-icons1 ${classes.headIcons}`} >
                                                 {/* <InputBase
-                                                    className={`searchmobile`}
+                                                    className={`searchmobile`} 
                                                     placeholder=" SEARCH"
                                                     endAdornment={<InputAdornment position="end"></InputAdornment>}
                                                 /> */}
                                                 <div className={classes.searchcontainTop}><Seach className={"searchsvgmobile"} />
                                                 </div>
                                                 <i class="fa fa-user"></i>
-                                                <i class="fa fa-heart"></i>
-                                                <i class="fa fa-shopping-cart"></i>
+                                                <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">
+                                                    <i class="fa fa-heart" onClick={() => {
+                                                        if (user_id.length > 0) {
+                                                            window.location.href = "/account"
+                                                        } else {
+                                                            window.location.href = "/login"
+                                                        }
+                                                    }}  ></i>
+                                                </Badge>
+                                                <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                    <NavLink to="/cart">  <i class="fa fa-shopping-cart"></i>
+                                                    </NavLink> </Badge>
                                             </div>
                                         </Grid>
                                     </div>
