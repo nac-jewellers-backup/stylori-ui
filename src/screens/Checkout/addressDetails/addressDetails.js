@@ -107,7 +107,7 @@ class Addressdetails extends React.Component {
                                         </span>
                                         {window.location.pathname !== "/account" ?
                                             <>{values.Id2 === index || values.Id === index || JSON.parse(localStorage.getItem("select_addres")) && JSON.parse(localStorage.getItem("select_addres")).id === val_addrs1.id ? <>
-                                                <Button disabled
+                                                <Button disabled 
                                                     style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
                                                         // this.props.selectaddreses(val_addrs1, 1)
                                                         // this.props.changevalue(3)

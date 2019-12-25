@@ -164,106 +164,103 @@ const Addressforms = (changePanel) => {
         setValues({ ...values, values })
     }
     const handleSubmit = (e) => {
-        var addObjgust_local = localStorage.getItem('gustaddres') ? JSON.parse(localStorage.getItem('gustaddres')) : "";
-        if (con_gust !== true) {
-            var addressOne = values.addressOne
-            var addressTwo = values.addressTwo
-            if (addressOne.addressline1 === addressTwo.addressline1 && addressOne.firstname === addressTwo.firstname && addressOne.pincode === addressTwo.pincode) {
-                values["addressOne"]["addresstype"] = 3
-                setValues({
-                    values,
-                    ...values,
-                })
-                addObj['address'] = [addressOne];
-                // addresmakeRequestCod(obj);
-            } else {
-                if (values.checkValue === true) {
-                    addObj['address'] = [addressOne];
-                } if (values.checkValue === false) {
-                    if (values.edit_addresId === true) {
-                        addObj['address'] = [addressOne];
-                    } if (values.edit_addresId === false) {
-                        addObj['address'] = [addressOne, addressTwo];
-                    }
-                }
-            }
-            if (values.edit_addresId === true) {
-                addObj["id"] = values && values.addres_id
-                delet["id"] = values && values.addres_id
-            } else {
-                addObj["id"] = ""
-            }
-            // addObj["cart_id"] = ""
-            addObj["user_id"] = user_id
-            obj['userprofileId'] = user_id
-            if (values.checkValue === true) {
-                if (values && values.addressOne && values.addressOne.firstname.length > 0) {
-                    makeFetch(addObj);
-                }
-            }
-            if (values.checkValue === false) {
-                if ((values && values.addressOne && values.addressOne.firstname.length > 0) && (values && values.addressTwo && values.addressTwo.firstname.length > 0)) {
-                    makeFetch(addObj);
-                }
-            }
-            // return false
-        } if (con_gust === true) {
-            if (values.checkValue == true) {
-                // addObjgust['address'] = [a1];
-                if ((values.addressOne) && (addObjgust_local && addObjgust_local.address.length > 0)) {
-                    addObjgust_local && addObjgust_local.address.push(values.addressOne);
-                    localStorage.setItem("gustaddres", JSON.stringify(addObjgust_local))
-                    if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
-                        var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
-                        local_storage.address.splice(values.index, 1);
-                        window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
-                    }
-                } else if (values && values.addressOne) {
-                    addObjgust["address"] = [values.addressOne]
-                    if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
-                        var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
-                        local_storage.address.splice(values.index, 1);
-                        window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
-                    }
-                    localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
-                }
-            } if (values.checkValue == false) {
-                // setAddress({ a1, a2 })
-                // addObjgust['address'] = [a1, a2];
-                if ((values.addressTwo) && (addObjgust_local && addObjgust_local.address.length > 0)) {
-                    addObjgust_local && addObjgust_local.address.push(values.addressOne, values.addressTwo);
-                    localStorage.setItem("gustaddres", JSON.stringify(addObjgust_local))
-                    if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
-                        var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
-                        local_storage.address.splice(values.index, 1);
-                        window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
-                    }
-                } else if (values.addressTwo) {
-                    addObjgust["address"] = [values.addressOne, values.addressTwo]
-                    if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
-                        var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
-                        local_storage.address.splice(values.index, 1);
-                        window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
-                    }
-                    localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
-                }
-            }
-
-
-            // makeFetch(addObj);
-            // localStorage.getItem("gustaddres", JSON.stringify(addObjgust))
-
-            // localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
-            window.location.reload()
+        debugger
+        if (values.addressOne.errortext.pinerr !== "") {
+            return false
         }
-        values['checkValue1'] = true
-        // setValues({
-        // })
-        setValues({
-            addrs: !values.addrs,
-            values,
-            ...values,
-        })   // }
+        if (values.addressTwo.errortext.pinerr1 !== "") {
+            return false
+        } else {
+            var addObjgust_local = localStorage.getItem('gustaddres') ? JSON.parse(localStorage.getItem('gustaddres')) : "";
+            if (con_gust !== true) {
+                var addressOne = values.addressOne
+                var addressTwo = values.addressTwo
+                if (addressOne.addressline1 === addressTwo.addressline1 && addressOne.firstname === addressTwo.firstname && addressOne.pincode === addressTwo.pincode) {
+                    values["addressOne"]["addresstype"] = 3
+                    setValues({
+                        values,
+                        ...values,
+                    })
+                    addObj['address'] = [addressOne];
+                } else {
+                    if (values.checkValue === true) {
+                        addObj['address'] = [addressOne];
+                    } if (values.checkValue === false) {
+                        if (values.edit_addresId === true) {
+                            addObj['address'] = [addressOne];
+                        } if (values.edit_addresId === false) {
+                            addObj['address'] = [addressOne, addressTwo];
+                        }
+                    }
+                }
+                if (values.edit_addresId === true) {
+                    addObj["id"] = values && values.addres_id
+                    delet["id"] = values && values.addres_id
+                } else {
+                    addObj["id"] = ""
+                }
+                addObj["user_id"] = user_id
+                obj['userprofileId'] = user_id
+                if (values.checkValue === true) {
+                    if (values && values.addressOne && values.addressOne.firstname.length > 0) {
+                        makeFetch(addObj);
+                    }
+                }
+                if (values.checkValue === false) {
+                    if ((values && values.addressOne && values.addressOne.firstname.length > 0) && (values && values.addressTwo && values.addressTwo.firstname.length > 0)) {
+                        makeFetch(addObj);
+                    }
+                }
+            } if (con_gust === true) {
+                if (values.checkValue == true) {
+                    if ((values.addressOne) && (addObjgust_local && addObjgust_local.address.length > 0)) {
+                        addObjgust_local && addObjgust_local.address.push(values.addressOne);
+                        localStorage.setItem("gustaddres", JSON.stringify(addObjgust_local))
+                        if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
+                            var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
+                            local_storage.address.splice(values.index, 1);
+                            window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
+                        }
+                    } else if (values && values.addressOne) {
+                        addObjgust["address"] = [values.addressOne]
+                        if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
+                            var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
+                            local_storage.address.splice(values.index, 1);
+                            window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
+                        }
+                        localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
+                    }
+                } if (values.checkValue == false) {
+                    if ((values.addressTwo) && (addObjgust_local && addObjgust_local.address.length > 0)) {
+                        addObjgust_local && addObjgust_local.address.push(values.addressOne, values.addressTwo);
+                        localStorage.setItem("gustaddres", JSON.stringify(addObjgust_local))
+                        if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
+                            var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
+                            local_storage.address.splice(values.index, 1);
+                            window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
+                        }
+                    } else if (values.addressTwo) {
+                        addObjgust["address"] = [values.addressOne, values.addressTwo]
+                        if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
+                            var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
+                            local_storage.address.splice(values.index, 1);
+                            window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
+                        }
+                        localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
+                    }
+                }
+                window.location.reload()
+            }
+            values['checkValue1'] = true
+            setValues({
+                addrs: !values.addrs,
+                values,
+                ...values,
+            })
+        }
+
+
+        // }
         // else {
         //     if (values.edit_addresId === false) {
         //         alert("allowed the five address only")
@@ -275,7 +272,6 @@ const Addressforms = (changePanel) => {
         // window.location.reload(); 
     }
     const selectaddreses = (val_addrs, num, index) => {
-
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
         addObjall['address_id'] = val_addrs && val_addrs.id ? val_addrs.id : ""
         if (values.checkValue1 === true) {
@@ -429,8 +425,8 @@ const Addressforms = (changePanel) => {
                 },
             },
         }
-            values["edit_addresId"] = false
-            values["addrs"] = true
+        values["edit_addresId"] = false
+        values["addrs"] = true
         setValues({
             values,
             ...values,
@@ -446,7 +442,6 @@ const Addressforms = (changePanel) => {
         })
     }
     const redirectForm = (val_addrs, num, isAdressOne, isAdressTwo, index) => {
-
         if (con_gust !== true) {
             if (val_addrs && val_addrs.id && val_addrs.id.length > 0) {
                 values["addres_id"] = val_addrs && val_addrs.id
