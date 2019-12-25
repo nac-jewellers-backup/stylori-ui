@@ -5,7 +5,7 @@ import { Input } from '../../components/InputComponents/TextField/Input'
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 import useLogin from '../../screens/Checkout/loginRegister/useLogin';
-import Header from 'components/Header/header'
+import Header from 'components/SilverComponents/Header'
 import Footer from "components/Footer/Footer"
 import { withRouter } from "react-router";
 import {
@@ -31,7 +31,7 @@ const LoginComponent = (props) => {
     }, [])
     return (
         <>
-            <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+            <Grid container spacing={12}>
                 <Grid item xs={12} >
                     <Header />
                 </Grid>

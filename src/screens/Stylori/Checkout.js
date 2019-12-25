@@ -1,6 +1,6 @@
 import { Container, Grid } from '@material-ui/core';
 import React, { Component } from 'react';
-import Header from '../../components/Header/header'
+import Header from 'components/SilverComponents/Header'
 import Chckoutindex from '../Checkout';
 import Creditform from '../Checkout/paymentOption/creditForm';
 import Debitform from '../Checkout/paymentOption/debitForm';

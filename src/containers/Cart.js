@@ -5,8 +5,7 @@ import CartCard from 'components/Checkout/CartCard';
 import Footer from 'components/Footer/Footer'
 import { Grid, Container, Hidden } from '@material-ui/core';
 // import CustomSeparator from '../../components/BreadCrumb/index'
-import Header from 'components/Header/header'
-// import Header from "components/SilverComponents/Header";
+import Header from 'components/SilverComponents/Header'
 import 'screens/Stylori/index.css'
 import { CartContext } from 'context'
 import cart from 'mappers/cart'
@@ -16,12 +15,12 @@ import styles from "../components/Checkout/style"
 import { withStyles } from '@material-ui/core/styles';
 import './index.css'
 import { NavLink } from 'react-router-dom';
-
+ 
 // data.map(data=>{
 // return(
 //     <Grid item xs={12}>
 //     <CartCard data={data}/>
-//     </Grid>
+//     </Grid> 
 //         )
 //     })
 const breadcrumsdata = [
@@ -53,7 +52,9 @@ class Cart extends React.Component {
         return (
             <div>
                 <Hidden smDown>
-                    <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+                    <Grid container spacing={12}
+                    //  style={{ position: 'sticky', top: '0', zIndex: '1000' }}
+                     >
                         <Grid item xs={12} >
                             <Header />
                         </Grid>

@@ -1,6 +1,5 @@
 import React from 'react';
-import Header from 'components/Header/header'
-// import Header from "components/SilverComponents/Header";
+import Header from 'components/SilverComponents/Header'
 import ProductDescription from 'components/productDescription';
 import { Grid, Hidden } from '@material-ui/core';
 import Filter from 'components/Filter/filter'
@@ -71,7 +70,7 @@ class Stylori extends React.Component {
             <div id="loadingss"></div>
             {/* className="text" Filters updating...*/}
           </div>}
-          <Grid item xs={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+          <Grid item xs={12} >
             <Header data={data} cartcount={this.props.cartcount} wishlist_count={this.props.wishlist_count} />
           </Grid>
 
