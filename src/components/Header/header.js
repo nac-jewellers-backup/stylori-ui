@@ -196,7 +196,7 @@ class Header extends Component {
                       </div>
                     </Popover>
                     {/* <i class="fa fa-user"></i> */}
-
+ 
                     <Badge color="secondary"
                       badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary"
                       // wishlist_count

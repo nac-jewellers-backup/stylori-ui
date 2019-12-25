@@ -3,7 +3,7 @@ import {
   Grid
 } from '@material-ui/core';
 import React, { Component } from 'react';
-import Header from 'components/Header/header'
+import Header from 'components/SilverComponents/Header'
 import CustomSeparator from 'components/BreadCrumb/index'
 import ProductImageZoom from 'components/product-image-slider/productImageZoom'
 import ProductPrice from 'components/product-image-slider/productPrice'
@@ -78,7 +78,7 @@ class ProductDetail extends Component {
 
         <Hidden smDown>
 
-          <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+          <Grid container spacing={12} >
             <Grid item xs={12} >
               <Header />
             </Grid>

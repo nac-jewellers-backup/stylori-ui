@@ -7,12 +7,12 @@ import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 import useLogin from './useLogin';
 import FacebookLogin from 'react-facebook-login';
-import { Redirect } from 'react-router-dom';
+import  { Redirect } from 'react-router-dom'; 
 
 const Login = (props) => {
     return <LoginComponent  {...props} />
 }
-
+ 
 const LoginComponent = (props) => {
     debugger
     const { classes } = props;
@@ -44,7 +44,7 @@ const LoginComponent = (props) => {
     }
     return (
         <div className='pt-sm'>
-            <form action="javascript:void(0)" onSubmit={(e) => { handlers.handelSubmit(e, props.history.push) }}>
+            <form action="javascript:void(0)" onSubmit={(e) => {handlers.handelSubmit(e, props.history.push)}}>
                 <Grid container item xs={12} lg={window.location.pathname === "/login" ? 12 : 6}>
                     <h5 className={`title ${classes.normalfonts}`}>
                         {window.location.pathname === "/login" ? "Login" : "I already have an account"}
@@ -76,15 +76,15 @@ const LoginComponent = (props) => {
                     <div className='log-pas'>
                         <span className={`pas-fr ${classes.normalfonts}`} style={{ cursor: "pointer" }}>Forgot Password ?</span>
                         <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>
-                            <FacebookLogin
-                                appId="2777718598973911"
-                                autoLoad={true}
-                                fields="name,email,picture"
-                                callback={responseFacebook}
-                                cssClass="my-facebook-button-class"
-                                icon="fa-facebook"
-                            />
-                            {/* <InstagramLogin
+                        <FacebookLogin
+                            appId="2777718598973911"
+                            autoLoad={true}
+                            fields="name,email,picture"
+                            callback={responseFacebook}
+                            cssClass="my-facebook-button-class"
+                            icon="fa-facebook"
+                        />
+                          {/* <InstagramLogin
                                 clientId="508169029820675"
                                 buttonText="Login"
                                 onSuccess={responseInstagram}

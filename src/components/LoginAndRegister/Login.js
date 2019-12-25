@@ -92,9 +92,9 @@ const LoginComponent = (props) => {
                         <Login />
                         <br />
                         <span className={` ${classes.normalfonts}`} style={{ cursor: "pointer", fontSize: "14px" }}>
-                                        <input type="checkbox" 
-                                        /> 
-                                        Remember Me </span>
+                            <input type="checkbox"
+                            />
+                            Remember Me </span>
 
                         <Grid spacing={12} container>
                             <Grid item xs={6} lg={6} style={{ float: "left" }}>

@@ -23,7 +23,7 @@ const initialCtx = {
             discounted_price: "",
             tax_price: ''
         },
-        loading: false, error: false, data: [], allorderdata: [], wishlistdata: [],wishlist_count: []
+        loading: false, error: false, data: [], allorderdata: [], wishlistdata: [], wishlist_count: []
     },
     setCartFilters: (filterData) => { },
     setallorderdata: () => { },
@@ -47,8 +47,8 @@ const Provider = (props) => {
     const userIds = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ''
     var cartdetails = JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : {}
     const guestlogId = cartFilters.user_id ? cartFilters.user_id : ''
-    const { loading: allorderloading, error: allordererror, data: allorder, makeRequest: allordermakeRequest } = useGraphql(ALLORDERS, () => { }, {});
-    const { loading: wishlistloading, error: wishlisterror, data: wishlistDATA, makeRequest: wishlistmakeRequest } = useGraphql(ALLUSERWISHLISTS, () => { }, {});
+    const { loading: allorderloading, error: allordererror, data: allorder, makeRequest: allordermakeRequest } = useGraphql(ALLORDERS, () => { }, {}, false);
+    const { loading: wishlistloading, error: wishlisterror, data: wishlistDATA, makeRequest: wishlistmakeRequest } = useGraphql(ALLUSERWISHLISTS, () => { }, {}, false);
     // const prices = cartFilters.price ? cartFilters.price : ''
     const discounted_price = cartFilters.discounted_price ? cartFilters.discounted_price : ""
     // const { setwishlist_count } = React.useContext(FilterOptionsContext);
@@ -58,7 +58,7 @@ const Provider = (props) => {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))
         }
         // localStorage.setItem('cart_id', JSON.stringify(crtdata))
-    }, [crtdata]) 
+    }, [crtdata])
     useEffect(() => {
         const orderall = allorder ? allorder && allorder.data && allorder.data.allOrders && allorder.data.allOrders.nodes : ""
         if (orderall && orderall.length > 0) {
@@ -68,16 +68,15 @@ const Provider = (props) => {
         }
     }, [allorder, allorderdata])
     useEffect(() => {
-        
         var obj_aishlist_count = {}
         const wishlistdatas = allorder ? wishlistDATA && wishlistDATA.data && wishlistDATA.data.allUserWhislists && wishlistDATA.data.allUserWhislists.nodes : ""
         if (wishlistdatas && wishlistdatas.length > 0) {
             objwishlist["wishlistdata"] = wishlistDATA.data.allUserWhislists
             // localStorage.setItem("allorder", allorder.data.allOrders)
-            obj_aishlist_count["wishlist_count"] = wishlistdatas && wishlistdatas.length
+            // obj_aishlist_count["wishlist_count"] = wishlistdatas && wishlistdatas.length
             localStorage.setItem("a__w_l", wishlistdatas && wishlistdatas.length)
             setwishlistdata(objwishlist)
-            setwishlist_count(obj_aishlist_count)
+            // setwishlist_count(obj_aishlist_count)
             // alert(JSON.stringify(obj_aishlist_count))
         }
         else {
@@ -168,10 +167,10 @@ const Provider = (props) => {
     }, [])
 
     const CartCtx = {
-        cartFilters, loading, error, wishlist_count,data, setCartFilters, allorderdata, wishlistdata
+        cartFilters, loading, error, wishlist_count, data, setCartFilters, allorderdata, wishlistdata
     }
     return (
-        <CartContext.Provider value={{ CartCtx,setwishlist_count, setCartFilters, setallorderdata, setwishlistdata }} >
+        <CartContext.Provider value={{ CartCtx, setwishlist_count, setCartFilters, setallorderdata, setwishlistdata }} >
             {props.children}
         </CartContext.Provider>
     )
