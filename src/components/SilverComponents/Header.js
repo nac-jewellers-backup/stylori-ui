@@ -174,12 +174,13 @@ class Header extends Component {
                     <div className="header-appbar-sticky1" id='headerDiv'>
                         <AppBar className="header-appbarsilver1" id="topNav">
                             <Container maxWidth="lg">
-                                <Grid container spacing={12} style={{ marginTop: "40px" }}>
+                                <Grid container spacing={12} style={{ marginTop: "20px" }}>
                                     <Grid container item xs={12} justify="flex-end" alignItems="center">
                                         <div className={`head-icons1 ${classes.headIcons}`} >
                                             <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
                                             <Typography className={classes.callerNum}>1800 102 0330</Typography>
                                             <InputBase
+                                            
                                                 className={`search`}
                                                 placeholder=" SEARCH"
                                                 endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
@@ -239,9 +240,9 @@ class Header extends Component {
                                                     }
                                                 }}  ></i>
                                             </Badge>
-                                            <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                            <Badge style={{fontSize:"11px"}} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
                                                 <NavLink to="/cart">
-                                                    <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                                    <i  class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
                                                 </NavLink> </Badge>
                                         </div>
@@ -333,7 +334,7 @@ class Header extends Component {
                                 </Grid>
                                 <Grid item xs={7}>
                                     <div className="mobli-icon1">
-                                        <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center" }}>
+                                        <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center",paddingRight:"10px" }}>
                                             <div className={`head-icons1 ${classes.headIcons}`} >
                                                 {/* <InputBase
                                                     className={`searchmobile`} 
@@ -344,7 +345,7 @@ class Header extends Component {
                                                 </div>
                                                 <i class="fa fa-user"></i>
                                                 <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">
-                                                    <i class="fa fa-heart" onClick={() => {
+                                                    <i class={`fa fa-heart ${classes.iconFafaheart}`} onClick={() => {
                                                         if (user_id.length > 0) {
                                                             window.location.href = "/account"
                                                         } else {
@@ -352,8 +353,8 @@ class Header extends Component {
                                                         }
                                                     }}  ></i>
                                                 </Badge>
-                                                <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                    <NavLink to="/cart">  <i class="fa fa-shopping-cart"></i>
+                                                <Badge style={{fontSize:"9px"}} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                    <NavLink to="/cart">   <i  class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
                                                     </NavLink> </Badge>
                                             </div>
                                         </Grid>
