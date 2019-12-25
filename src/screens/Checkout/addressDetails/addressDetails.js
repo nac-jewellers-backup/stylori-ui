@@ -38,6 +38,7 @@ class Addressdetails extends React.Component {
         }
         // const back_color = () => {
         // }
+        debugger
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>
@@ -105,8 +106,8 @@ class Addressdetails extends React.Component {
                                             +91 {val_addrs1.contactNumber}{val_addrs1.contactno}
                                         </span>
                                         {window.location.pathname !== "/account" ?
-                                            <>{values.Id2 === index || values.Id === index ? <>
-                                                <Button disabled
+                                            <>{values.Id2 === index || values.Id === index || JSON.parse(localStorage.getItem("select_addres")) && JSON.parse(localStorage.getItem("select_addres")).id === val_addrs1.id ? <>
+                                                <Button disabled 
                                                     style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
                                                         // this.props.selectaddreses(val_addrs1, 1)
                                                         // this.props.changevalue(3)
@@ -192,7 +193,7 @@ class Addressdetails extends React.Component {
                                                     <div className="card-foo">
                                                         <span className={`shipping-phonenumber ${classes.normalfonts}`}>
                                                             +91 {val_addrs2.contactNumber}{val_addrs2.contactno}
-                                                        </span>{values.Id === index || values.Id2 === index ? <>
+                                                        </span>{values.Id === index || values.Id2 === index || JSON.parse(localStorage.getItem("select_addres")) && JSON.parse(localStorage.getItem("select_addres")).id === val_addrs2.id ? <>
                                                             <Button disabled style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
                                                                 // this.props.selectaddreses(val_addrs2, 2)
                                                                 // this.props.changevalue(3)

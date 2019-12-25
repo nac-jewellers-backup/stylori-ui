@@ -43,9 +43,9 @@ const RegisterComponent = (props) => {
     }
     return (
         <div className='pt-sm'>
-            <form action="javascript:void(0)" id="restform" onSubmit={(e) => {
+            <form onSubmit={(e) => {
                 handlers.handleSubmit(e)
-            }}>
+            }} action="javascript:void(0)" >
                 <Grid container spacing={12}>
                     <Grid item lg={1} />
                     <Grid item xs={12} lg={window.location.pathname === "/registers" ? 12 : 6}>

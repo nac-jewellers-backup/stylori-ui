@@ -107,7 +107,7 @@ class Header extends Component {
     let path = window.location.pathname.split('/').pop();
     const { anchorEl } = this.state;
     const openPopover = anchorEl;
-    debugger
+    
     return (
       <div>
         <Hidden smDown >
@@ -196,7 +196,7 @@ class Header extends Component {
                       </div>
                     </Popover>
                     {/* <i class="fa fa-user"></i> */}
-
+ 
                     <Badge color="secondary"
                       badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary"
                       // wishlist_count
@@ -393,7 +393,7 @@ export default withStyles(styles)(props => {
   const { mapped } = useDummyRequest(headerData);
   const { wishlist_count } = React.useContext(CartContext);
   if (Object.keys(mapped).length === 0) return ''
-  debugger
+  
   return <Header {...props} data={mapped} wishlist_count={wishlist_count} />
 });
 

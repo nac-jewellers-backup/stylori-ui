@@ -43,7 +43,6 @@ const Provider = (props) => {
         Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, MetalColor: {},
         MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}
     });
-    debugger
     const [sort, setSort] = React.useState(initialCtx.FilterOptionsCtx.sort)
     const [offset, setOffset] = React.useState(0)
     const [first, setFirst] = React.useState(24)
@@ -58,7 +57,6 @@ const Provider = (props) => {
     const [pricemin, setPriceMin] = React.useState(null)
     const [pricemax, setPriceMax] = React.useState(null)
     const [loadingfilters, setloadingfilters] = React.useState(false)
-    debugger
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => t }) }, [filters, sort, pricemax, pricemin])
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => [...d, ...t] }) }, [offset])
     const { NetworkCtx: { graphqlUrl: uri } } = React.useContext(NetworkContext);

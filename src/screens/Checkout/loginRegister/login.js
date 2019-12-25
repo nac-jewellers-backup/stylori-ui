@@ -5,6 +5,9 @@ import { Input } from '../../../components/InputComponents/TextField/Input'
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 import useLogin from './useLogin';
+import FacebookLogin from 'react-facebook-login';
+import  { Redirect } from 'react-router-dom'; 
+import { withRouter } from "react-router";
 
 const Login = (props) => {
     return <LoginComponent  {...props} />
@@ -33,7 +36,11 @@ const LoginComponent = (props) => {
         })
         props.change()
     }
-
+    const responseFacebook = response => {
+        console.log(response)
+        // window.location.href='/home';
+        props.history.push('/home')
+    }
     return (
         <div className='pt-sm'>
             <form action="javascript:void(0)" onSubmit={(e) => {
@@ -70,7 +77,20 @@ const LoginComponent = (props) => {
                     <div className='log-pas'>
                         <span className={`pas-fr ${classes.normalfonts}`} style={{ cursor: "pointer" }}>Forgot Password ?</span>
                         <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>
-                            <span>Sign me in using</span>
+                        <FacebookLogin
+                            appId="2777718598973911"
+                            autoLoad={true}
+                            fields="name,email,picture"
+                            callback={responseFacebook}
+                            cssClass="my-facebook-button-class"
+                            icon="fa-facebook"
+                        />
+                          {/* <InstagramLogin
+                                clientId="508169029820675"
+                                buttonText="Login"
+                                onSuccess={responseInstagram}
+                                onFailure={responseInstagram}
+                        /> */}
                             <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img>
                         </div >
                     </div>
@@ -86,4 +106,4 @@ const LoginComponent = (props) => {
 }
 
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(withRouter(Login));

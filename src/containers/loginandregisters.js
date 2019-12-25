@@ -3,7 +3,7 @@ import {
     Grid
   } from '@material-ui/core';
   import React, { Component } from 'react';
-  import Header from 'components/Header/header'
+  import Header from 'components/SilverComponents/Header'
   import Footer from "components/Footer/Footer"
   import 'screens/screens.css';
 
@@ -12,7 +12,7 @@ import {
       return (
         <div>
           <Hidden smDown>
-            <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+            <Grid container spacing={12} >
               <Grid item xs={12} >
                 <Header />
               </Grid>

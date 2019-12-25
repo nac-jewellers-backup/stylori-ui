@@ -36,15 +36,7 @@ class CashonDelivey extends React.Component {
         localStorage.removeItem("cartDetails")
         localStorage.removeItem("panel")
         if (gut_lg === true) {
-            localStorage.removeItem("user_id")
-            localStorage.removeItem("cart_id")
-            localStorage.removeItem("isedit")
-            localStorage.removeItem("gut_lg")
-
-            localStorage.removeItem("select_addres")
-            localStorage.removeItem("gustaddres")
-            localStorage.removeItem("email")
-            localStorage.removeItem("a__c_t")
+            localStorage.clear();
             // localStorage.removeItem("gut_lg")
         }
         // }

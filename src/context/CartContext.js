@@ -68,16 +68,15 @@ const Provider = (props) => {
         }
     }, [allorder, allorderdata])
     useEffect(() => {
-        debugger
         var obj_aishlist_count = {}
         const wishlistdatas = allorder ? wishlistDATA && wishlistDATA.data && wishlistDATA.data.allUserWhislists && wishlistDATA.data.allUserWhislists.nodes : ""
         if (wishlistdatas && wishlistdatas.length > 0) {
             objwishlist["wishlistdata"] = wishlistDATA.data.allUserWhislists
             // localStorage.setItem("allorder", allorder.data.allOrders)
-            obj_aishlist_count["wishlist_count"] = wishlistdatas && wishlistdatas.length
+            // obj_aishlist_count["wishlist_count"] = wishlistdatas && wishlistdatas.length
             localStorage.setItem("a__w_l", wishlistdatas && wishlistdatas.length)
-            setwishlistdata(objwishlist)
-            setwishlist_count(obj_aishlist_count)
+            setwishlistdata(objwishlist) 
+            // setwishlist_count(obj_aishlist_count)
             // alert(JSON.stringify(obj_aishlist_count))
         }
         else {
