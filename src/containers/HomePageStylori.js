@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "components/Header/header";
+import Header from 'components/SilverComponents/Header'
 import { Grid, Hidden, Typography } from "@material-ui/core";
 import Footer from "components/Footer/Footer";
 import { withRouter } from "react-router";
@@ -96,7 +96,7 @@ class HomeStylori extends React.Component {
         <Grid
           item
           xs={12}
-          style={{ position: "sticky", top: "0", zIndex: "1000" }}
+         
         >
           <Header />
         </Grid>

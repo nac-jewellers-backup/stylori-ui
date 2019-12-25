@@ -7,8 +7,7 @@ import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 // import useRegister from './useregister';
 import useRegister from '../../screens/Checkout/loginRegister/useregister';
-
-import Header from 'components/Header/header'
+import Header from 'components/SilverComponents/Header'
 import Footer from "components/Footer/Footer"
 import Register from 'screens/Checkout/loginRegister/register';
 
@@ -21,7 +20,7 @@ const RegisterComponent = (props) => {
     const { values, handlers } = useRegister();
     return (
         <>
-            <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+            <Grid container spacing={12} >
                 <Grid item xs={12} >
                     <Header />
                 </Grid>
