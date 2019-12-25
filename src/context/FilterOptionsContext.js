@@ -675,7 +675,7 @@ function usePrevious(value) {
 
             // }
         }
-    }, [mappedFilters])
+    }, [mappedFilters, offset])
 
     useEffect(() => {
         const filters_seo_condition = () =>{

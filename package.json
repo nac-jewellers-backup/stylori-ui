@@ -61,7 +61,7 @@
     "react-next-paging": "^7.0.7",
     "react-paginate": "^6.3.2",
     "react-pose": "4.0.8",
-    "react-router-dom": "5.0.1",
+    "react-router-dom": "^5.1.2",
     "react-select": "^3.0.8",
     "react-slick": "0.24.0",
     "react-star-ratings": "2.3.0",

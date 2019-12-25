@@ -90,7 +90,7 @@ class Component extends React.Component {
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
 
-    if (this.props.loading !== prevProps.loading) {
+    if (this.props.data !== prevProps.data) {
       this.setState({ loadingtext: false })
       // setTimeout(function(){ this.setState({loading:false}); }.bind(this), 2000);
     }

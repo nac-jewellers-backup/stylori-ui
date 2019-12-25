@@ -4,6 +4,7 @@ import {
   } from '@material-ui/core';
   import React, { Component } from 'react';
   import Header from 'components/Header/header'
+  // import Header from "components/SilverComponents/Header";
   import Footer from "components/Footer/Footer"
   import 'screens/screens.css';
 

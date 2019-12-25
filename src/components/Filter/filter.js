@@ -422,7 +422,7 @@ class Component extends React.Component {
   render() {
     console.log('urlSplitparamsEqual', this.state.checked)
     
-    const { classes, data } = this.props;
+    const { classes, data, loading } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];
 
     let { selected, check } = this.state;

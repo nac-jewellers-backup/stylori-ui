@@ -6,6 +6,7 @@ import Footer from 'components/Footer/Footer'
 import { Grid, Container, Hidden } from '@material-ui/core';
 // import CustomSeparator from '../../components/BreadCrumb/index'
 import Header from 'components/Header/header'
+// import Header from "components/SilverComponents/Header";
 import 'screens/Stylori/index.css'
 import { CartContext } from 'context'
 import cart from 'mappers/cart'

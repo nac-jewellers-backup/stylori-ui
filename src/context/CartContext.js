@@ -44,8 +44,8 @@ const Provider = (props) => {
     const userIds = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ''
     var cartdetails = JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : {}
     const guestlogId = cartFilters.user_id ? cartFilters.user_id : ''
-    const { loading: allorderloading, error: allordererror, data: allorder, makeRequest: allordermakeRequest } = useGraphql(ALLORDERS, () => { }, {});
-    const { loading: wishlistloading, error: wishlisterror, data: wishlistDATA, makeRequest: wishlistmakeRequest } = useGraphql(ALLUSERWISHLISTS, () => { }, {});
+    const { loading: allorderloading, error: allordererror, data: allorder, makeRequest: allordermakeRequest } = useGraphql(ALLORDERS, () => { }, {}, false);
+    const { loading: wishlistloading, error: wishlisterror, data: wishlistDATA, makeRequest: wishlistmakeRequest } = useGraphql(ALLUSERWISHLISTS, () => { }, {}, false);
     // const prices = cartFilters.price ? cartFilters.price : ''
     const discounted_price = cartFilters.discounted_price ? cartFilters.discounted_price : ""
     useEffect(() => {
@@ -73,14 +73,14 @@ const Provider = (props) => {
             localStorage.setItem("a__w_l", 0)
         }
     }, [wishlistDATA])
-    useEffect(() => {
-        // if (window.location.pathname = "/account") {
-            orderobj["userProfileId"] = userIds
-            orderobj1["userprofileId"] = userIds
-            allordermakeRequest(orderobj); 
-            wishlistmakeRequest(orderobj1)
-        // }
-    }, [])
+    // useEffect(() => {
+    //     // if (window.location.pathname = "/account") {
+    //         orderobj["userProfileId"] = userIds
+    //         orderobj1["userprofileId"] = userIds
+    //         allordermakeRequest(orderobj); 
+    //         wishlistmakeRequest(orderobj1)
+    //     // }
+    // }, [])
     useEffect(() => {
         if (userIds.length > 0) {
             if (cartdetails && JSON.stringify(cartdetails).length > 0) {
