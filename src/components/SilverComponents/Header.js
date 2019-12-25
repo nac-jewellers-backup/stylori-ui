@@ -100,6 +100,15 @@ class Header extends Component {
         }
 
     }
+    handleClickSearch = () =>{
+        //   <InputBase
+        // className={`searchmobile`} 
+        // placeholder=" SEARCH"
+        // endAdornment={<InputAdornment position="end"></InputAdornment>}
+        //  /> 
+        alert("hi");
+        // document.getElementById('search')=<InputBase placeholder="Search" />
+    }
     handleClickPopover = (event) => {
         this.setState({
             anchorEl: event.currentTarget,
@@ -328,7 +337,7 @@ class Header extends Component {
                                                     placeholder=" SEARCH"
                                                     endAdornment={<InputAdornment position="end"></InputAdornment>}
                                                 /> */}
-                                                <div className={classes.searchcontainTop}><Seach className={"searchsvgmobile"} />
+                                                <div id="search" onClick={this.handleClickSearch} className={classes.searchcontainTop}><Seach  className={"searchsvgmobile"} />
                                                 </div>
                                                 <i class="fa fa-user"></i>
                                                 <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">

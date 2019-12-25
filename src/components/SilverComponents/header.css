@@ -121,6 +121,7 @@
   top: 0;
   padding: 0 !important;
   position: sticky;
+  
   width: 100%;
   line-height: 1.42857143;
   font-size: 12px;
@@ -306,6 +307,7 @@
 .header-appbar-sticky1 header {
   position: sticky;
   top: 0px;
+  
 }
 
 .logoImgHeader1 {
@@ -318,7 +320,7 @@
   .logoDiv1{
     display: flex;
   justify-content: center;
-  max-width: 100% !important;
+  max-width: 68% !important;
 }
 }
 .animations {
