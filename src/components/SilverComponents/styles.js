@@ -40,7 +40,7 @@ export const styles = theme => ({
     letterSpacing: "4px",
     cursor: 'pointer',
     alignItems: "center",
-    display: "flex",
+    // display: "flex",
     fontSize: "20px",
     [theme.breakpoints.only('xs')]: {
       marginLeft: "6px",
