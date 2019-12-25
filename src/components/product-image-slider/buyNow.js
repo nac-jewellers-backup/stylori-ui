@@ -179,10 +179,10 @@ class Component extends React.Component {
                 modelOpen: true,
             })
         }
-        // else {
-        //     this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
-        //     window.location.pathname = "/cart"
-        // }
+        else {
+            this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
+            window.location.pathname = "/cart"
+        }
 
     }
 

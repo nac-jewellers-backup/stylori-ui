@@ -94,8 +94,8 @@
   width: 100%;
 }
 
-.MuiBadge-colorSecondary {
-  background-color: #f699a3 !important;
+.MuiBadge-colorSecondary { 
+  background: #d51f63 !important;
   top: -6px !important;
 }
 
@@ -121,6 +121,7 @@
   top: 0;
   padding: 0 !important;
   position: sticky;
+  
   width: 100%;
   line-height: 1.42857143;
   font-size: 12px;
@@ -306,6 +307,7 @@
 .header-appbar-sticky1 header {
   position: sticky;
   top: 0px;
+  
 }
 
 .logoImgHeader1 {
@@ -313,6 +315,14 @@
   justify-content: center;
 }
 
+@media only screen and (max-width: 958px) and (min-width: 428px)
+{
+  .logoDiv1{
+    display: flex;
+  justify-content: center;
+  max-width: 68% !important;
+}
+}
 .animations {
   transition: width 0.35s ease-in-out !important;
 }
@@ -322,7 +332,7 @@
 }
 
 .logoDiv1 {
-  padding-Top: 2%;
+  padding-Top: 8%;
 }
 
 .titleTop {

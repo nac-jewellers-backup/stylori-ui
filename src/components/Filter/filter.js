@@ -237,12 +237,14 @@ class Component extends React.Component {
     return bz
   })
   handleChange(value, BoolName, e, title, TargetName) {
-    this.props.setloadingfilters(true)
+    debugger
+    
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
 
     if (TargetName === undefined) {
+      this.props.setloadingfilters(true)
       let checkedvalue = {};
       checkedvalue[value] = BoolName
       checked[e.target.name] = checkedvalue
@@ -420,7 +422,7 @@ class Component extends React.Component {
   render() {
     console.log('urlSplitparamsEqual', this.state.checked)
     
-    const { classes, data } = this.props;
+    const { classes, data, loading } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];
 
     let { selected, check } = this.state;
@@ -443,7 +445,7 @@ class Component extends React.Component {
 
             {/* <CssBaseline /> */}
             <div >
-              <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '210px', maxHeight: '68vh', overflowY: 'scroll' }} className="SliderFilter scrollBarFilter" id="SliderFilter" >
+              <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '210px', maxHeight: '80vh', overflowY: 'scroll' }} className="SliderFilter scrollBarFilter" id="SliderFilter" >
                 <div >
 
                   <Paper
@@ -499,8 +501,8 @@ class Component extends React.Component {
                               filter.map((row, i) => {
                                 return (
                                   <>
-                                    <ListItem key={row} className=""
-                                      onClick={() => this.selectItem(row)}>
+                                    <ListItem key={row}
+                                      onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
                                       <ListItemText
                                       >
                                         <Typography className="fil-list-items" variant='h4' component="h4"
@@ -619,7 +621,7 @@ class Component extends React.Component {
               className={check ? classes.productCardscheck : classes.productCardsuncheck}
 
             >
-            <ProductLayout data={this.props.datas} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
+            <ProductLayout data={this.props.datas} loading = {this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
 
             </div>}
         </div>

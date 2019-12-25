@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from 'components/Header/header'
+import Header from 'components/SilverComponents/Header'
 import ProductDescription from 'components/productDescription';
 import { Grid, Hidden } from '@material-ui/core';
 import Filter from 'components/Filter/filter'
@@ -24,7 +24,7 @@ class Stylori extends React.Component {
 
     //  if(this.props.dataFilter !== prevProps.dataFilter){
 
-    if (this.props.mappedFilters !== prevProps.mappedFilters) {
+    if (this.props.loading !== prevProps.loading) {
 
       this.props.setloadingfilters(false)
 
@@ -35,7 +35,7 @@ class Stylori extends React.Component {
 
   }
   render() {
-    const { data, dataFilter } = this.props
+    const { data, dataFilter, loading } = this.props
     return (
      
       <>
@@ -70,13 +70,13 @@ class Stylori extends React.Component {
             <div id="loadingss"></div>
             {/* className="text" Filters updating...*/}
           </div>}
-          <Grid item xs={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+          <Grid item xs={12} >
             <Header data={data} cartcount={this.props.cartcount} wishlist_count={this.props.wishlist_count} />
           </Grid>
 
           <Grid item xs={12}>
             <ProductDescription title="Jewellery" data={dataFilter} />
-            <Filter datas={data} data={dataFilter} />
+            <Filter datas={data} data={dataFilter} loading={loading}/>
           </Grid>
           <Grid item xs={12} >
             <Hidden smDown>
@@ -107,7 +107,7 @@ const Components = props => {
   }
   if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
 
-  else content = <Stylori {...props} wishlist_count={wishlist_count} cartcount={cartcount} data={dataArr} dataFilter={mappedFiltersList} loadingfilters={loadingfilters} mappedFilters={mappedFilters} setloadingfilters={setloadingfilters} />
+  else content = <Stylori {...props} cartcount={cartcount} data={dataArr} dataFilter={mappedFiltersList} loadingfilters={loadingfilters} loading={loading} mappedFilters={mappedFilters} setloadingfilters={setloadingfilters} />
   return content
 }
 

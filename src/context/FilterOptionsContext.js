@@ -63,7 +63,7 @@ const Provider = (props) => {
     const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
     
     const client = createApolloFetch({ uri });
-
+   
     // useEffect(() => {
     //     console.log('sort', sort)
     //     if (sort) window.location.search = `sort=${sort.values}`
@@ -675,7 +675,7 @@ function usePrevious(value) {
 
             // }
         }
-    }, [mappedFilters])
+    }, [mappedFilters, offset])
 
     useEffect(() => {
         const filters_seo_condition = () =>{

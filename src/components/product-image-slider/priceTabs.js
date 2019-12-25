@@ -166,7 +166,6 @@ class Component extends React.Component {
             slidesToShow: 7,
             arrow: true,
         };
-        debugger
         // data[0].productTabs[0].tab2.Children
         return (
             <div>

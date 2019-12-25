@@ -4,12 +4,13 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { CartContext } from 'context'
-import Addressforms from '../addressDetails/Addressforms'
+import Addressforms from 'screens/Checkout/addressDetails/addressForm'
 
 var obj = {}
 var obj1 = {}
 var val = {};
-const useLogin = (changePanel) => {
+var _history;
+const useLogin = (changePanel, props) => {
     const [values, setValues] = React.useState({
         password: "",
         email: "",
@@ -24,6 +25,7 @@ const useLogin = (changePanel) => {
         }
     });
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
+    const [history, setHistory] = React.useState({});
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/api/auth/signin', {}, []);
     const { setCartFilters } = React.useContext(CartContext);
     const { setValues: addressetValues } = Addressforms();
@@ -31,23 +33,41 @@ const useLogin = (changePanel) => {
     const { loading: codloading, error: coderror, data: addresData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     React.useEffect(() => {
         var ms = data && data.message
-        if (ms && values['error'] && values['errortext']) {
+
+        if (ms && data.auth === false ) {
             values['error']['passerr'] = true
-            values['errortext']['passerr'] = 'Invalid password!'
+            values['errortext']['passerr'] = ms
+            setValues({
+                ...values,
+                values,
+            })
+            
+            // return false
+        } 
+        else if (ms && data.auth === undefined ) {
+            values['error']['emerr'] = true
+            values['errortext']['emerr'] =ms
             setValues({
                 ...values,
                 values,
             })
             // return false
-        } else {
+        }
+        else {
             var a = data.userprofile ? data.userprofile : ""
-            if (JSON.stringify(a).length > 10 && values['error'] && values['errortext']) {
-                values['error']['passerr'] = false
-                values['errortext']['passerr'] = ""
+            if(values.error.emerr){
+                values['error']['emerr'] = false
+                values['errortext']['emerr'] = ""
                 setValues({
                     ...values,
                     values,
                 })
+            }
+            
+            if (JSON.stringify(a).length > 10 && values['error'] && values['errortext']) {
+                values['error']['passerr'] = false
+                values['errortext']['passerr'] = ""
+              
                 var bbn = data && data.userprofile && data.userprofile.id ? data.userprofile.id : ""
                 if (bbn.length > 0 || bbn !== undefined) {
                     localStorage.setItem("email", data.userprofile.email)
@@ -82,7 +102,14 @@ const useLogin = (changePanel) => {
                     window.location.href = localStorage.getItem('review_location')
                     return false
                 } else {
-                    window.location.href = "/home" 
+                    console.clear()
+                    // console.log('_history')
+                    // console.log(_history);
+                    console.clear()
+                    // console.log(history.push('/home'))
+                    // alert(JSON.stringify(_history.location.pathname = '/home'))
+                    // return _history
+                    window.location.href = "/home"
                     return false
                 }
             }
@@ -121,8 +148,10 @@ const useLogin = (changePanel) => {
     // const vl = data && data.message
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
-    const handelSubmit = (e) => {
-if (values.email === "" && values['error'] && values['errortext']) {
+    const handelSubmit = (e, history) => {
+       
+    
+        if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'
 
@@ -150,17 +179,26 @@ if (values.email === "" && values['error'] && values['errortext']) {
             })
             return false
         }
-        var emailvld =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var emailvld = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!emailvld.test(values.email)) {
             values['error']['emerr'] = true
-            values['errortext']['emerr'] = 'An email address must contain a single @/.'
+            // values['errortext']['emerr'] = 'An email address must contain a single @/.'
+            values['errortext']['emerr'] = `Please enter a valid email address.`
             setValues({
                 ...values,
                 values,
             })
+            
             return false
         }
-        makeFetch(values);
+        let obj_values = {}
+        let _password = values.password
+        let _email = values.email
+        let _roles = values.roles
+        obj_values = { password:_password, email:_email, roles:_roles }
+        debugger
+        makeFetch(obj_values);
+        // _history=history('/home')
         // changePanel(3)
 
     }

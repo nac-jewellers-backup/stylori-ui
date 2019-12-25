@@ -53,7 +53,10 @@ class Component extends React.Component {
     }; 
 
     handleClick = (event, key) => {
+<<<<<<< HEAD
         
+=======
+>>>>>>> aa98aea87561829da12dd3728ca9c5b8ce5ac1c8
         console.log('lklkkoik9', this.state.skuSize)
         var filters = { ...this.props.filters }
         if (key === 'purity') {

@@ -111,7 +111,7 @@ const useRating = (props) => {
     }
     const handelSubmit = (e, props) => {
         var rats = props.ratingcounts.ratingcounts ? props.ratingcounts.ratingcounts : ""
-        if (rats > 0 || rats !== "") {
+        if ((rats > 0 || rats !== "") && values.title.length > 0 && values.message.length > 0) {
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
             if (user_id.length > 0) {
                 // alert(JSON.stringify(data.message))
@@ -133,6 +133,7 @@ const useRating = (props) => {
                             // alert(JSON.stringify(variab))
                         }
                         if (rats > 0 || rats !== undefined || rats !== "") {
+                            values["errortext"]["rateerr"] = ""
                             values["errortext"]["ratetitle"] = ""
                             values["errortext"]["ratemsg"] = ""
                             values["error"]["ratetitle"] = false
@@ -165,7 +166,7 @@ const useRating = (props) => {
                 values
             })
         } else {
-            
+
             if (values.title === "" && values['error'] && values['errortext']) {
                 values["errortext"]["ratetitle"] = "Enter review title"
                 values["error"]["ratetitle"] = true

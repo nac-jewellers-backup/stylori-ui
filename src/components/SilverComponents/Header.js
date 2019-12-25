@@ -25,11 +25,14 @@ import { withStyles } from '@material-ui/core/styles';
 import { useDummyRequest } from '../../hooks';
 import { headerDataSilver } from '../../mappers';
 import { styles } from './styles';
-import LogoSmallScreen from '../../assets/stylori-silver-logo-small-screen.png';
+import LogoSmallScreen from '../../assets/Stylori Silver logo.svg';
 import Seach from '../../assets/search'
 import stylorisilverlogo from '../../assets/Stylori Silver logo.svg'
-
-
+import Popover from '@material-ui/core/Popover';
+import { NavLink } from 'react-router-dom';
+import logout from "../../assets/Icons/logout.svg"
+let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
+// var path = window.location.pathname.split('/').pop();
 class Header extends Component {
     constructor(props) {
         super(props)
@@ -49,13 +52,16 @@ class Header extends Component {
             targetopen: null,
             targetopenSubmenu: null,
             subTitleData: null,
-            subMenuTarget: null
+            subMenuTarget: null,
+            anchorEl: false
 
         }
         this.topZero = React.createRef();
     }
     componentDidMount() {
         window.addEventListener("scroll", this.scrolling);
+        
+        
         if (!this.state.Menuopen && !this.state.submenuOpen) {
             return this.setState({ subTitleData: "", subMenuTarget: "" })
         }
@@ -89,57 +95,78 @@ class Header extends Component {
         document.getElementById('topNav').style.transition = "0.5s";
         // var heightHeader = document.getElementById('headerDiv').clientHeight;
         if (document.getElementById("SliderFilter")) {
-            document.getElementById("SliderFilter").style.top = "185px";
+            document.getElementById("SliderFilter").style.top = "115px";
             document.getElementById('SliderFilter').style.transition = "0.5s";
-            document.getElementById("filterBy").style.top = "120px";
+            document.getElementById("filterBy").style.top = "50px";
             document.getElementById('filterBy').style.transition = "0.5s";
         }
 
     }
+    handleClickSearch = () =>{
+        //   <InputBase
+        // className={`searchmobile`} 
+        // placeholder=" SEARCH"
+        // endAdornment={<InputAdornment position="end"></InputAdornment>}
+        //  /> 
+        alert("hi");
+        // document.getElementById('search')=<InputBase placeholder="Search" />
+    }
+    handleClickPopover = (event) => {
+        this.setState({
+            anchorEl: event.currentTarget,
+        });
+    };
+
+    handleClosePopover = () => {
+        this.setState({
+            anchorEl: false,
+        });
+    };
     scrolling = () => {
-        if (window.innerWidth > 959) {
-            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                document.getElementById("headerContainer").style.position = "fixed";
-                document.getElementById("headerContainerTop").style.height = "74px";
-                document.getElementById("headerContainer").style.background = "#fff";
-                document.getElementById("headerContainer").style.zIndex = "10000";
-                document.getElementById("headerContainer").style.boxShadow = "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)";
-                document.getElementById("logoImage").style.width = "50%";
-                document.getElementById("logoImage").style.transitionDuration = "1s";
-                document.getElementById("headerContainer").style.height = "55px";
-                document.getElementById("logoDiv1").style.padding = "0px";
-                document.getElementById("containerTitle").style.height = "55px";
-                document.getElementById("fullcontainer").style.height = "55px";
-                document.getElementById("titleTop").style.marginTop = "0px"
-            } else {
-                document.getElementById("headerContainer").style.position = "inherit";
-                document.getElementById("headerContainer").style.background = "#fff";
-                document.getElementById("headerContainer").style.zIndex = "10000";
-                document.getElementById("headerContainerTop").style.height = "0px";
-                document.getElementById("headerContainer").style.boxShadow = "none";
-                document.getElementById("logoImage").style.width = "100%";
-                document.getElementById("headerContainer").style.height = "auto";
-                document.getElementById("containerTitle").style.height = "auto";
-                document.getElementById("logoDiv1").style.paddingTop = "2%";
-                document.getElementById("fullcontainer").style.height = "auto";
+        if (window.location.pathname !== "/cart" || window.location.pathname !== '/checkout') {
+            if (window.innerWidth > 959) {
+                this.headerTransitions()
+                if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                    document.getElementById("headerContainer").style.position = "fixed";
+                    document.getElementById("headerContainerTop").style.height = "74px";
+                    document.getElementById("headerContainer").style.background = "#fff";
+                    document.getElementById("headerContainer").style.zIndex = "10000";
+                    document.getElementById("headerContainer").style.boxShadow = "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)";
+                    document.getElementById("logoImage").style.width = "50%";
+                    document.getElementById("logoImage").style.transitionDuration = "1s";
+                    document.getElementById("headerContainer").style.height = "55px";
+                    document.getElementById("logoDiv1").style.padding = "0px";
+                    document.getElementById("containerTitle").style.height = "55px";
+                    document.getElementById("fullcontainer").style.height = "55px";
+                    document.getElementById("titleTop").style.marginTop = "0px"
+                } else {
+                    document.getElementById("headerContainer").style.position = "inherit";
+                    document.getElementById("headerContainer").style.background = "#fff";
+                    document.getElementById("headerContainer").style.zIndex = "10000";
+                    document.getElementById("headerContainerTop").style.height = "0px";
+                    document.getElementById("headerContainer").style.boxShadow = "none";
+                    document.getElementById("logoImage").style.width = "100%";
+                    document.getElementById("headerContainer").style.height = "auto";
+                    document.getElementById("containerTitle").style.height = "auto";
+                    document.getElementById("logoDiv1").style.paddingTop = "2%";
+                    document.getElementById("fullcontainer").style.height = "auto";
+                }
             }
-        }
-        else {
-            return ""
+            else {
+                return ""
+            }
         }
 
     }
-
     submenuDetails = (data, target) => {
         this.setState({ subTitleData: data, subMenuTarget: target })
     }
-
-
     render() {
-
         const { mainlist, Jewellery, subheader, menuListHeader, menuLists } = this.props.data;
         let { selected, selected1 } = this.state;
         const { classes } = this.props;
+        const { anchorEl } = this.state;
+        const openPopover = anchorEl;
         return (
             <div>
                 <Hidden smDown >
@@ -158,67 +185,124 @@ class Header extends Component {
                                                 endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
                                                 </div></InputAdornment>}
                                             />
-                                            <i class={`fa fa-user  ${classes.iconFafa}`}></i>
-                                            <i class={`fa fa-heart  ${classes.iconFafaheart}`}></i>
-                                            <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                            {localStorage.getItem("true") ?
+                                                <span
+                                                    aria-owns={openPopover ? 'simple-popper' : ""}
+                                                    onClick={this.handleClickPopover}
+                                                >
+                                                    <i class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                </span>
+                                                // <img className="icons-header-sizes" src={usershape}/>
+                                                : <span onClick={() => window.location.pathname = "/login"}>
+                                                    <i class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                </span>
+                                            }
+                                            <Popover
+                                                id="simple-popper"
+                                                open={openPopover}
+                                                anchorEl={anchorEl}
+                                                onClose={this.handleClosePopover}
+                                                anchorOrigin={{
+                                                    vertical: 'bottom',
+                                                    horizontal: 'center',
+                                                }}
+                                                transformOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'center',
+                                                }}
+                                            >
+                                                <div
+                                                    style={{ width: "220px", height: "45px", lineHeight: "45px", cursor: "pointer" }}
+                                                >
+                                                    <a
+                                                        onClick={() => {
+                                                            localStorage.clear();
+                                                            window.location.reload()
+                                                            window.location.pathname = "/login"
+                                                        }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
+                      </a>&nbsp;/&nbsp;
+                      <NavLink to="/account">
+                                                        My Account
+                        </NavLink>
+                                                </div>
+                                            </Popover>
+                                            <Badge color="secondary"
+                                                badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary"
+                                            // wishlist_count
+                                            // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
+                                            >
+                                                <i class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
+                                                    if (user_id.length > 0) {
+                                                        window.location.href = "/account"
+                                                    } else {
+                                                        window.location.href = "/login"
+                                                    }
+                                                }}  ></i>
+                                            </Badge>
+                                            <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                <NavLink to="/cart">
+                                                    <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+
+                                                </NavLink> </Badge>
                                         </div>
                                     </Grid>
                                 </Grid>
                             </Container>
-                            <Grid container id="headerContainer" >
-                                <Container maxWidth="lg" >
-                                    <Grid container spacing={12} id="fullcontainer" >
-                                        <Grid item xs={3} className="logoImgHeader1">
-                                            <div id="logoDiv1" className="logoDiv1">
-                                                <img id="logoImage" className={`img`} src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
-                                            </div>
-                                        </Grid>
-                                        <Grid container item xs={9} id={"containerTitle"} justify="flex-end" alignItems="center" className={`header-navbar-list1 ${classes.headerNavbarList}`}
-                                            onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false, targetopen: null }) }}
-                                        >
-                                            <Grid item xs={12} className="titleTop" id={"titleTop"} >
-                                                <nav
-                                                >
+                            {window.location.pathname === "/cart" || window.location.pathname === '/checkout' ? "" :
+                                <Grid container id="headerContainer" >
+                                    <Container maxWidth="lg" >
+                                        <Grid container spacing={12} id="fullcontainer" >
+                                            <Grid item xs={3} className="logoImgHeader1">
+                                                <div id="logoDiv1" className="logoDiv1">
+                                                    <img id="logoImage" className={`img`} src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                                </div>
+                                            </Grid>
+                                            <Grid container item xs={9} id={"containerTitle"} justify="flex-end" alignItems="center" className={`header-navbar-list1 ${classes.headerNavbarList}`}
+                                                onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false, targetopen: null }) }}
+                                            >
+                                                <Grid item xs={12} className="titleTop" id={"titleTop"} >
+                                                    <nav
+                                                    >
+                                                        {
+                                                            (menuListHeader.map(listName => {
+                                                                let urlsmall = listName.toLowerCase()
+                                                                return (
+                                                                    <a href={urlsmall} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: false, subTitleData: null, targetopen: event.currentTarget, listHoverItem: listName.replace(/ +/g, "") }) }}>{listName}</a>
+                                                                )
+
+                                                            }))
+                                                        }
+                                                    </nav>
                                                     {
-                                                        (menuListHeader.map(listName => {
-                                                            let urlsmall = listName.toLowerCase()
-                                                            return (
-                                                                <a href={urlsmall} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: false, subTitleData: null, targetopen: event.currentTarget, listHoverItem: listName.replace(/ +/g, "") }) }}>{listName}</a>
-                                                            )
 
-                                                        }))
+                                                        this.state.Menuopen && menuLists[this.state.listHoverItem] ?
+                                                            <HeaderHoverMenuItem tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
+                                                                onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: true, targetopenSubmenu: event.currentTarget }) }}
+                                                                opened={this.state.Menuopen}
+                                                                targetopened={this.state.targetopen}
+                                                                submenuDetails={this.submenuDetails}
+                                                                onMouseLeave={() => { this.setState({ targetopen: null }) }}
+                                                            />
+                                                            :
+                                                            ''
                                                     }
-                                                </nav>
-                                                {
-
-                                                    this.state.Menuopen && menuLists[this.state.listHoverItem] ?
-                                                        <HeaderHoverMenuItem tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
-                                                            onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: true, targetopenSubmenu: event.currentTarget }) }}
-                                                            opened={this.state.Menuopen}
-                                                            targetopened={this.state.targetopen}
-                                                            submenuDetails={this.submenuDetails}
-                                                            onMouseLeave={() => { this.setState({ targetopen: null }) }}
+                                                    {this.state.Menuopen && this.state.submenuOpen ?
+                                                        <HeaderHoversubMenu
+                                                            opened={this.state.submenuOpen}
+                                                            onMouseOver={(event) => { this.setState({ submenuOpen: true }) }}
+                                                            listHoverItem={menuLists[this.state.listHoverItem]}
+                                                            data={this.state.subTitleData}
+                                                            subMenuTarget={this.subMenuTarget}
+                                                            targetopened={this.state.subMenuTarget}
+                                                            onMouseLeave={() => { this.setState({ submenuOpen: false, subTitleData: "", subMenuTarget: "" }) }}
                                                         />
                                                         :
-                                                        ''
-                                                }
-                                                {this.state.Menuopen && this.state.submenuOpen ?
-                                                    <HeaderHoversubMenu
-                                                        opened={this.state.submenuOpen}
-                                                        onMouseOver={(event) => { this.setState({ submenuOpen: true }) }}
-                                                        listHoverItem={menuLists[this.state.listHoverItem]}
-                                                        data={this.state.subTitleData}
-                                                        subMenuTarget={this.subMenuTarget}
-                                                        targetopened={this.state.subMenuTarget}
-                                                        onMouseLeave={() => { this.setState({ submenuOpen: false, subTitleData: "", subMenuTarget: "" }) }}
-                                                    />
-                                                    :
-                                                    ""}
+                                                        ""}
+                                                </Grid>
                                             </Grid>
                                         </Grid>
-                                    </Grid>
-                                </Container>
-                            </Grid>
+                                    </Container>
+                                </Grid>}
                             <Grid container id="headerContainerTop" >
 
                             </Grid>
@@ -242,25 +326,35 @@ class Header extends Component {
                                     </IconButton>
                                 </Grid>
 
-                                <Grid item xs={3} className="logoImgHeader1">
+                                <Grid item xs={4} className="logoImgHeader1">
                                     <div className="logoDiv1">
                                         <img className={`imgsilver`} src={LogoSmallScreen} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                     </div>
                                 </Grid>
-                                <Grid item xs={8}>
+                                <Grid item xs={7}>
                                     <div className="mobli-icon1">
                                         <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center" }}>
                                             <div className={`head-icons1 ${classes.headIcons}`} >
                                                 {/* <InputBase
-                                                    className={`searchmobile`}
+                                                    className={`searchmobile`} 
                                                     placeholder=" SEARCH"
                                                     endAdornment={<InputAdornment position="end"></InputAdornment>}
                                                 /> */}
-                                                <div className={classes.searchcontainTop}><Seach className={"searchsvgmobile"} />
+                                                <div id="search" onClick={this.handleClickSearch} className={classes.searchcontainTop}><Seach  className={"searchsvgmobile"} />
                                                 </div>
                                                 <i class="fa fa-user"></i>
-                                                <i class="fa fa-heart"></i>
-                                                <i class="fa fa-shopping-cart"></i>
+                                                <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">
+                                                    <i class="fa fa-heart" onClick={() => {
+                                                        if (user_id.length > 0) {
+                                                            window.location.href = "/account"
+                                                        } else {
+                                                            window.location.href = "/login"
+                                                        }
+                                                    }}  ></i>
+                                                </Badge>
+                                                <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                    <NavLink to="/cart">  <i class="fa fa-shopping-cart"></i>
+                                                    </NavLink> </Badge>
                                             </div>
                                         </Grid>
                                     </div>

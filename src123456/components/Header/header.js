@@ -76,6 +76,7 @@ class Header extends Component {
     this.setState({ selected1: value })
   }
   headerTransitions = () => {
+    debugger
     document.getElementById('topNav').style.paddingTop = "0";
     document.getElementById('topNav').style.transition = "0.5s";
     // var heightHeader = document.getElementById('headerDiv').clientHeight;
