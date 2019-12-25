@@ -59,39 +59,45 @@
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
-.rightContent{
+
+.rightContent {
   width: 100%;
   height: auto;
-   font-size: 13px;
-    padding-bottom: 12px;
+  font-size: 13px;
+  padding-bottom: 12px;
   color: #666;
   padding-left: 15px;
   padding-right: 15px;
   margin: 0px !important;
 
 }
-.rightImg{
+
+.rightImg {
   /* width: 50% !important; */
   height: auto;
   padding-bottom: 12px;
   padding-left: 15px;
   padding-right: 15px;
 }
-.mainContent{
+
+.mainContent {
   width: 94%;
   padding: 15px 25px 15px 25px;
 }
-.sideContent{
+
+.sideContent {
   width: 15%;
-  margin-top:5px;
-  border-right: 1px solid #e8e8e8 ;
+  margin-top: 5px;
+  border-right: 1px solid #e8e8e8;
   padding-top: 10px;
-  
+
 }
-.mainWidth{
+
+.mainWidth {
   width: 100%;
 }
-.imgPadding{
+
+.imgPadding {
   padding-top: 10px;
   padding-bottom: 20px;
 }
@@ -100,55 +106,65 @@
   width: 100%;
   height: auto,
 }
-.menuqans{
+
+.menuqans {
   width: 100%;
   height: auto,
 }
-.fifty{
+
+.fifty {
   width: 50%;
 }
-.aboutFifty{
-  
-  width:50%;
+
+.aboutFifty {
+
+  width: 50%;
   float: left;
 
 }
-.fiftyImg{
-  width:50%;
+
+.fiftyImg {
+  width: 50%;
 
 }
+
 /* .aboutwidth{
   width: 100%;
  
 } */
-.aboutwidth{
+.aboutwidth {
   max-width: 1170px;
-  margin:auto
+  margin: auto
 }
-.aboutMargin{
+
+.aboutMargin {
   margin-right: auto;
   margin-left: auto;
 }
-@media only screen and (max-width:2560px) and (min-width:1441px){
-  .mainContent{
+
+@media only screen and (max-width:2560px) and (min-width:1441px) {
+  .mainContent {
     width: 77%;
     padding: 13px 8px 40px 50px;
 
   }
-  .sideContent{
+
+  .sideContent {
     width: 15%;
     margin-top: 5px;
     border-right: 1px solid #e8e8e8 !important;
     margin-left: 0px !important;
     padding-right: 30px;
-    
+
   }
-  .rightImg{
+
+  .rightImg {
     height: auto;
     padding-bottom: 12px;
     padding-left: 15px;
     padding-right: 15px;
   }
+
   /* .aboutFifty{
     
     width:50%;
@@ -162,216 +178,252 @@
     margin-left: auto;
   } */
 }
-@media only screen and (max-width:1440px) and (min-width:1025px){
-  .mainWidth{
-width: 100%;
+
+@media only screen and (max-width:1440px) and (min-width:1025px) {
+  .mainWidth {
+    width: 100%;
   }
-  .mainContent{
+
+  .mainContent {
     width: 76%;
     padding: 18px 20px 20px 40px;
 
   }
+
   /* .aboutwidth{
     
     width:100%;
   } */
-  .sideContent{
+  .sideContent {
     width: 15%;
     margin-top: 5px;
     border-right: 1px solid #e8e8e8 !important;
     margin-left: 0px !important;
     padding-right: 10px;
     padding-left: 15px;
-    
+
   }
-  .rightContent{
+
+  .rightContent {
     width: 100%;
     /* height: auto; */
-     font-size: 13px;
-      padding-bottom: 12px;
-      padding-left: 15px;
-      padding-right: 15px;
+    font-size: 13px;
+    padding-bottom: 12px;
+    padding-left: 15px;
+    padding-right: 15px;
     color: #666;
     margin: 0px !important;
-  
+
   }
-  .imgPadding{
+
+  .imgPadding {
     padding-top: 10px;
     padding-bottom: 20px;
   }
-  .rightImg{
+
+  .rightImg {
     /* width: 50% !important; */
     height: auto;
     padding-bottom: 12px;
     padding-left: 15px;
     padding-right: 15px;
   }
-  .fifty{
+
+  .fifty {
     width: 50%;
   }
-  .aboutFifty{
-    width:50%;
+
+  .aboutFifty {
+    width: 50%;
     float: left;
 
   }
-  .aboutMargin{
+
+  .aboutMargin {
     margin-right: auto;
     margin-left: auto;
   }
 }
-@media only screen and (max-width:1024px) and (min-width:960px){
-.mainWidth{
-  width: 100%;
-}
-  .rightImg{
+
+@media only screen and (max-width:1024px) and (min-width:960px) {
+  .mainWidth {
+    width: 100%;
+  }
+
+  .rightImg {
     /* width: 50% !important; */
     height: auto;
     padding-bottom: 12px;
     padding-left: 15px;
     padding-right: 15px;
   }
-  .imgPadding{
+
+  .imgPadding {
     padding-top: 10px;
     padding-bottom: 20px;
   }
-  .rightContent{
+
+  .rightContent {
     width: 100% !important;
     /* height: auto; */
     margin: 0px !important;
     padding-left: 15px;
     padding-right: 15px;
-     font-size: 13px;
-      padding-bottom: 12px;
-    color: #666 !important ;
+    font-size: 13px;
+    padding-bottom: 12px;
+    color: #666 !important;
   }
-  .fifty{
+
+  .fifty {
     width: 50%;
   }
-  .full{
+
+  .full {
     width: 100%;
   }
-  .mainContent{
+
+  .mainContent {
     width: 71%;
     padding: 14px 10px 10px 30px;
   }
-  .fiftyImg{
+
+  .fiftyImg {
     width: 50%;
   }
-  .sideContent{
+
+  .sideContent {
     width: 20%;
-    margin-top:5px;
+    margin-top: 5px;
     padding-left: 10px;
-    border-right: 1px solid #e8e8e8 ;
-    
-  
+    border-right: 1px solid #e8e8e8;
+
+
   }
+
   /* .aboutwidth{
     width: 100%;
   } */
-  .aboutFifty{
-    width:50%;
+  .aboutFifty {
+    width: 50%;
     float: left;
   }
-  .aboutMargin{
+
+  .aboutMargin {
     margin-right: auto;
     margin-left: auto;
   }
 }
-@media only screen and (max-width: 959x) and (min-width: 769px){
-  .mainContent{
-    width:100% !important;
+
+@media only screen and (max-width: 959x) and (min-width: 769px) {
+  .mainContent {
+    width: 100% !important;
     padding: 10px 15px 10px 15px;
 
     height: auto;
   }
-  .mainWidth{
+
+  .mainWidth {
     width: 100%;
   }
+
   /* .aboutwidth{
     width: 100%;
   } */
-  .rightImg{
+  .rightImg {
     width: 100%;
     height: auto;
     padding-bottom: 12px;
     padding-left: 10px;
     padding-right: 10px;
   }
-  .rightContent{
+
+  .rightContent {
     width: 100%;
     height: auto;
     padding-left: 10px;
     padding-right: 10px;
-    
-     font-size: 13px;
-      padding-bottom: 12px;
+
+    font-size: 13px;
+    padding-bottom: 12px;
     color: #666;
 
-  } 
-  .imgPadding{
+  }
+
+  .imgPadding {
     padding-top: 10px;
     padding-bottom: 15px;
   }
+
   /* .aboutwidth{
     width: 100%;
   } */
-  .aboutFifty{
-    padding:0px 15px;
-    width:100%;
+  .aboutFifty {
+    padding: 0px 15px;
+    width: 100%;
   }
-  .aboutMargin{
+
+  .aboutMargin {
     margin-right: auto;
     margin-left: auto;
   }
 }
+
 @media only screen and (max-width: 768px) and (min-width: 0px) {
   .GridListImg {
     width: 100%;
     height: auto,
   }
-  .imgPadding{
+
+  .imgPadding {
     padding-top: 10px;
     padding-bottom: 15px;
   }
+
   /* .aboutwidth{
     width: 750px;
   } */
-  .menuqans{
+  .menuqans {
     width: 100%;
     height: auto,
   }
-  .mainContent{
-    width:100%;
+
+  .mainContent {
+    width: 100%;
     padding: 10px 15px 10px 15px;
 
     height: auto;
   }
-  .mainWidth{
+
+  .mainWidth {
     width: 100%;
   }
-  .rightImg{
+
+  .rightImg {
     width: 100%;
     height: auto;
     padding-bottom: 12px;
     padding-left: 10px;
     padding-right: 10px;
   }
-  .rightContent{
+
+  .rightContent {
     width: 100%;
     height: auto;
     padding-left: 10px;
     padding-right: 10px;
-    
-     font-size: 13px;
-      padding-bottom: 12px;
+
+    font-size: 13px;
+    padding-bottom: 12px;
     color: #666;
 
   }
-  .aboutFifty{
-    padding:0px 15px;
-    width:100%;
+
+  .aboutFifty {
+    padding: 0px 15px;
+    width: 100%;
   }
-  .aboutMargin{
+
+  .aboutMargin {
     margin-right: auto;
     margin-left: auto;
   }
@@ -413,22 +465,24 @@ width: 100%;
 } 
 }*/
 @media only screen and (max-width: 320px) {
-.fiftyImg{
-  width: 50%;
-  align-items: center;
-  display: flex;
+  .fiftyImg {
+    width: 50%;
+    align-items: center;
+    display: flex;
+  }
 }
-}
+
 @media only screen and (min-width: 1200px) {
   .GridListImg {
     width: 1170px;
     height: auto,
   }
-  .menuqans{
+
+  .menuqans {
     width: 1170px;
     height: auto,
   }
-  
+
 }
 
 .GridConatiner {
@@ -462,7 +516,7 @@ width: 100%;
 
 .slickdev li button {
   border: 0px;
-  background-color: #FFF;
+  background-color: rgb(219, 213, 213);
   width: 11px;
   height: 11px;
   /* display: none; */
@@ -527,7 +581,7 @@ width: 100%;
 
   .slickdev li {
     border: 0px;
-    background-color: #FFF;
+    background-color: rgb(219, 213, 213);
     width: 8px;
     height: 8px;
     margin: 0px 7px;
@@ -536,7 +590,7 @@ width: 100%;
 
   .slickdev li button {
     border: 0px;
-    background-color: #FFF;
+    background-color: rgb(219, 213, 213);
     width: 8px;
     height: 8px;
     /* display: none; */
@@ -582,4 +636,3 @@ width: 100%;
     background: transparent;
   }
 }
-

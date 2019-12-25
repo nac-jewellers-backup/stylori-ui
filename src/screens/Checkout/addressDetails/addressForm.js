@@ -27,9 +27,7 @@ const AddressComponent = (props) => {
                     <div className='pt-sm'>
                         <form onSubmit={(e) => {
                             handle.handleSubmit(e)
-                            setValues({
-                                addrs: !values.addrs
-                            })
+                           
                         }} action="javascript:void(0)" autoComplete={true}>
                             {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? <h5 className='title'> Edit Address</h5> : ""}
                             <p class="form-group tp" style={{ width: "480px" }}>
@@ -316,7 +314,7 @@ const AddressComponent = (props) => {
                             </div>
                         </form>
                     </div>
-                    : <Addressdetails Delete_address={handle.Delete_address} selectaddreses={handle.selectaddreses} values={values} setValues={setValues} changevalue={props.changePanel} redirectForm1={handle.redirectForm1} redirectForm={handle.redirectForm} />}
+                    : <Addressdetails open={values.open} setOpen={values.setOpen} handleClose={handle.handleClose} handleOpen={handle.handleOpen} Delete_address={handle.Delete_address} selectaddreses={handle.selectaddreses} values={values} setValues={setValues} changevalue={props.changePanel} redirectForm1={handle.redirectForm1} redirectForm={handle.redirectForm} />}
             </div>
         </Container>
     )

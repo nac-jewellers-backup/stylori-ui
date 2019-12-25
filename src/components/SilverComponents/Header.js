@@ -27,6 +27,7 @@ import { headerDataSilver } from '../../mappers';
 import { styles } from './styles';
 import LogoSmallScreen from '../../assets/stylori-silver-logo-small-screen.png';
 import Seach from '../../assets/search'
+import stylorisilverlogo from '../../assets/Stylori Silver logo.svg'
 
 
 class Header extends Component {
@@ -97,13 +98,14 @@ class Header extends Component {
     }
     scrolling = () => {
         if (window.innerWidth > 959) {
-            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                 document.getElementById("headerContainer").style.position = "fixed";
                 document.getElementById("headerContainerTop").style.height = "74px";
                 document.getElementById("headerContainer").style.background = "#fff";
                 document.getElementById("headerContainer").style.zIndex = "10000";
                 document.getElementById("headerContainer").style.boxShadow = "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)";
                 document.getElementById("logoImage").style.width = "50%";
+                document.getElementById("logoImage").style.transitionDuration = "1s";
                 document.getElementById("headerContainer").style.height = "55px";
                 document.getElementById("logoDiv1").style.padding = "0px";
                 document.getElementById("containerTitle").style.height = "55px";
@@ -179,8 +181,9 @@ class Header extends Component {
                                                 >
                                                     {
                                                         (menuListHeader.map(listName => {
+                                                            let urlsmall = listName.toLowerCase()
                                                             return (
-                                                                <a href={listName} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: false, subTitleData: null, targetopen: event.currentTarget, listHoverItem: listName.replace(/ +/g, "") }) }}>{listName}</a>
+                                                                <a href={urlsmall} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: false, subTitleData: null, targetopen: event.currentTarget, listHoverItem: listName.replace(/ +/g, "") }) }}>{listName}</a>
                                                             )
 
                                                         }))
@@ -254,7 +257,7 @@ class Header extends Component {
                                                     endAdornment={<InputAdornment position="end"></InputAdornment>}
                                                 /> */}
                                                 <div className={classes.searchcontainTop}><Seach className={"searchsvgmobile"} />
-                                                    </div>
+                                                </div>
                                                 <i class="fa fa-user"></i>
                                                 <i class="fa fa-heart"></i>
                                                 <i class="fa fa-shopping-cart"></i>

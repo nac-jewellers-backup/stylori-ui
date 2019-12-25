@@ -42,8 +42,7 @@ class ListingPage extends React.Component {
 
 const Components = (props) => {
 
-    let { ListingPageCtx: { data, filters, loading, error, dataArr, mappedFilters, cartcount, loadingfilters }, setloadingfilters } = React.useContext(ListingPageContext);
-
+    let { ListingPageCtx: { data,filters, loading, error, dataArr, mappedFilters, cartcount, loadingfilters }, setloadingfilters } = React.useContext(ListingPageContext);
     let content;
     var arrFilters = Array(mappedFilters)
     const mappedFiltersList = FilterData(arrFilters)

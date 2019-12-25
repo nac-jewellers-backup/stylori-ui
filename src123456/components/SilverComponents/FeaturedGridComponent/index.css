@@ -1,0 +1,145 @@
+.featureCarousel {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    z-index: 15;
+    width: 60%;
+    padding-left: 0;
+    margin-left: -30%;
+    text-align: center;
+    list-style: none;
+    display: inline-flex !important;
+    justify-content: center;
+}
+
+.featureCarousel li {
+    border: 0px;
+    background-color: #ffffff9e;
+    width: 10px;
+    height: 10px;
+    margin: 0px 5px;
+    border-radius: 100%
+}
+
+.featureCarousel li button {
+    border: 0px;
+    background-color: #FFF;
+    width: 11px;
+    height: 11px;
+    /* display: none; */
+}
+
+.featureCarousel li.slick-active {
+    background-color: #fff !important;
+    box-shadow: 0px 4px 5px #888888 !important;
+    border: 0px solid #ed1564;
+    border-radius: 100%;
+    width: 11px;
+    height: 11px;
+}
+
+.featureCarousel li button:before {
+    font-family: 'slick';
+    font-size: 0px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: '•';
+    text-align: center;
+    opacity: .25;
+    color: black;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.featureCarousel li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 0px;
+    cursor: pointer;
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+
+@media only screen and (max-width: 768px) {
+    .featureCarousel {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        z-index: 15;
+        width: 60%;
+        padding-left: 0;
+        margin-left: -30%;
+        margin-top: 0;
+        margin-bottom: 0;
+        text-align: center;
+        list-style: none;
+        display: inline-flex !important;
+        justify-content: center;
+    }
+
+    .featureCarousel li {
+        border: 0px;
+        background-color: #FFF;
+        width: 8px;
+        height: 8px;
+        margin: 0px 7px;
+        border-radius: 100%
+    }
+
+    .featureCarousel li button {
+        border: 0px;
+        background-color: #FFF;
+        width: 8px;
+        height: 8px;
+        /* display: none; */
+    }
+
+    .featureCarousel li.slick-active {
+        background-color: #394578 !important;
+        border: 1px solid #e6efdd;
+        box-shadow: 0px 4px 5px #888888 !important;
+        border-radius: 100%;
+        width: 7px;
+        height: 7px;
+    }
+
+    .featureCarousel li button:before {
+        font-family: 'slick';
+        font-size: 0px;
+        line-height: 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        content: '•';
+        text-align: center;
+        opacity: .25;
+        color: black;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .featureCarousel li button {
+        font-size: 0;
+        line-height: 0;
+        display: block;
+        width: 20px;
+        height: 20px;
+        padding: 0px;
+        cursor: pointer;
+        color: transparent;
+        border: 0;
+        outline: none;
+        background: transparent;
+    }
+}

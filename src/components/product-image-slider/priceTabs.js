@@ -50,20 +50,20 @@ class Component extends React.Component {
 
     handleClose = () => {
         this.setState({ open: false });
-    };
+    }; 
 
     handleClick = (event, key) => {
-        debugger
+
         console.log('lklkkoik9', this.state.skuSize)
         var filters = { ...this.props.filters }
         if (key === 'purity') {
             var kv = event.target.id
             var objVal = kv.split(" ")
             var arrPurity = objVal[0]
-            var arrColor = objVal[1]
+            var arrColor = objVal[1] 
             var diamondTypes = filters['defaultVariants']['diamondType']
             filters['defaultVariants']['purity'] = arrPurity
-            filters['defaultVariants']['metalColor'] = arrColor
+            filters['defaultVariants']['metalColor'] = arrColor 
             // filters['defaultVariants']['skuSize']=diamondTypes
             filters['defaultVariants']['diamondType'] = diamondTypes
             this.setState({
@@ -74,11 +74,12 @@ class Component extends React.Component {
         else {
             filters['defaultVariants'][key] = event.target.id
             // this.setState({skuSize:filters})
-            this.setState({ skuSize: event.target.id ,
+            this.setState({
+                skuSize: event.target.id,
                 diamondType: filters.defaultVariants.diamondType
             })
             this.props.setFilters(filters);
-            console.log("filters.defaultVariants.diamondType",filters.defaultVariants.diamondType)
+            console.log("filters.defaultVariants.diamondType", filters.defaultVariants.diamondType)
         }
         // const ringSize = event.target.name;
     }
@@ -159,7 +160,7 @@ class Component extends React.Component {
         const limit = 8;
         const settings = {
             className: 'center',
-            infinite: true,
+            infinite: false,
             // slidesToShow: data[0].productTabs[0].tab1.Children.length > 8 ? limit :data[0].productTabs[0].tab1.Children.length,
             slidesToScroll: 5,
             slidesToShow: 7,
@@ -173,10 +174,10 @@ class Component extends React.Component {
                     return (
                         <>
                             {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "20px" }}>
-                                <Grid item lg={3} xs={12}><div className="rings_tabs">{val.tab1.header}&nbsp;<a
+                                <Grid item lg={3} xs={12}><h1 className="rings_tabs">{val.tab1.header}&nbsp;<a
                                     onClick={this.handleOpen}
-                                    className="my-ringsize">Size Guide </a></div></Grid>
-                                <Grid item lg={9} xs={12}>
+                                    className="my-ringsize">Size Guide </a></h1></Grid>
+                                <Grid item lg={9} xs={12} style={{ padding: "0px 5px 0px 5px" }}>
                                     {arr.length > 0 ?
                                         <>
                                             <div className={classes.pagination} style={{ overflow: "hidden" }}>
@@ -202,7 +203,7 @@ class Component extends React.Component {
                                                     style={{ overflowY: 'scroll' }}
                                                 >
                                                     <div className={`${classes.modals} "modalin-ring"`}>
-                                                        <img height='100%' width='100%' src='https://assets-cdn.stylori.com/images/static/Ring-size.jpg' />
+                                                        <img height='auto' width='100%' src='https://assets-cdn.stylori.com/images/static/Ring-size.jpg' />
                                                     </div>
                                                 </Modal>
                                                 {/* <div style={{ marginTop: "10px", textAlign: "center" }}>
@@ -215,7 +216,7 @@ class Component extends React.Component {
                             </Grid> : ""}
                             {arr2.length > 0 ?
                                 <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
-                                    <Grid item lg={3} xs={12}><div className="rings_tabs">{val.tab2.header}</div></Grid>
+                                    <Grid item lg={3} xs={12}><h1 className="rings_tabs">{val.tab2.header}</h1></Grid>
                                     <Grid item lg={9} xs={12}>
                                         <Grid container spacing={12} lg={12}>
                                             {arr2.map((val, i) => {
@@ -224,7 +225,7 @@ class Component extends React.Component {
                                                 var arrPurity = objVal[0]
                                                 var arrColor = objVal[1]
                                                 return (
-                                                    <Grid item lg={2} xs={2}  style={{ marginLeft: "5px", textAlign: "center" }}>
+                                                    <Grid item lg={2} xs={2} style={{ marginLeft: "5px", textAlign: "center" }}>
                                                         <button
                                                             style={{ background: this.imageRender(val) }}
                                                             className={this.state.purity === val ? 'darktabs tabs-valus' : 'pagetabs tabs-valus'}
@@ -244,7 +245,7 @@ class Component extends React.Component {
                                 </Grid> : ""}
 
                             {val.tab3.Children.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
-                                <Grid item lg={3} xs={12}><div className="rings_tabs">{val.tab3.header}</div></Grid>
+                                <Grid item lg={3} xs={12}><h1 className="rings_tabs">{val.tab3.header}</h1></Grid>
                                 <Grid item lg={9} xs={12}>
                                     <Grid container spacing={12} lg={12}>
                                         {val.tab3.Children.map((val, i) => {
@@ -295,11 +296,11 @@ class Component extends React.Component {
                     {this.TabsComponent()}
                 </Hidden>
                 <Hidden mdUp>
-                <Container>
-                <ExpansionPanel style={{boxShadow:"0 4px 30px rgba(0, 0, 0, 0.05) ! important"}} expanded={expanded === "1"} >
-                {this.TabsComponent()}
-                </ExpansionPanel>
-                </Container>
+                    <Container>
+                        <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important" }} expanded={expanded === "1"} >
+                            {this.TabsComponent()}
+                        </ExpansionPanel>
+                    </Container>
                 </Hidden>
             </div>
         );

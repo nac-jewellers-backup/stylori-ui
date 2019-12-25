@@ -21,10 +21,10 @@ import AboutPage from "components/faqs/aboutPage";
 //     if (window.location.search !== null) {
 
 // SILVER SCREENS
-            
+
 import Silver from 'screens/SilverStylori'
 import SilverListingPage from 'screens/SilverStylori/listingpage'
-            
+
 // SILVER SCREENS ENDS
 
 
@@ -34,11 +34,9 @@ browserHistory.listen((location, action) => {
     window.scrollTo(0, 0);
 });
 export const RouterApp = (props) => {
-
     const { Globalctx } = React.useContext(GlobalContext)
-    debugger
-    const func_location_silver = () =>{
-        var loc = window.location.pathname.split('/')[1].split('-').filter(val=>{if(val==='silver') return val})
+    const func_location_silver = () => {
+        var loc = window.location.pathname.split('/')[1].split('-').filter(val => { if (val === 'silver') return val })
         return loc[0]
     }
     console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
@@ -55,14 +53,14 @@ export const RouterApp = (props) => {
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
             <Route key="AboutUs" component={AboutPage} exact path={routes.AboutUs} />
 
-            {(props.location.pathname !== "/cart" && props.location.pathname !== "/account" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && Globalctx.pathName === false  ) && 
+            {(props.location.pathname !== "/cart" && props.location.pathname !== "/account" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && Globalctx && Globalctx.pathName === false) &&
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />
-                
-                }
-             {
-                 (Globalctx.pathName) &&
-                 <Route key="silverListingpage" component = {SilverListingPage}  path={props.location.pathname} />
-                 }
+
+            }
+            {
+                Globalctx && Globalctx.pathName &&
+                <Route key="silverListingpage" component={SilverListingPage} path={props.location.pathname} />
+            }
             <Route key="sto" component={stories} exact path={routes.Stories} />
             <Route key="Collection" component={Collection} exact path={routes.Collection} />
             {(props.location.pathname !== "/cart" && props.location.pathname !== "/account" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout") &&

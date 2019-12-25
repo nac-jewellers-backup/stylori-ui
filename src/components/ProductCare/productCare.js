@@ -24,20 +24,20 @@ const useStyles = makeStyles(theme => ({
     },
     titleColor: {
         color: '#ed1165',
-        fontWeight: 500,
+        fontWeight: 600,
         marginTop: "3%",
         fontSize: "22px",
         fontFamily: "Roboto",
-        paddingTop:"10px",
+        // paddingTop:"10px",
 
     },
     titleColorsmall: {
         color: '#ed1165',
-        fontWeight: 500,
+        fontWeight: 600,
         marginTop: "3%",
         fontSize: "16px",
         fontFamily: "Roboto",
-        paddingTop:"10px",
+        // paddingTop:"10px",
 
     },
     details: {

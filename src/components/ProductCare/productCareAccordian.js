@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     details: {
         color:"#394578",
         borderTop: "0px",
-        fontWeight: 500,
+        fontWeight: 600,
         fontSize: "14px",
         padding:"20px 0px"
     },
@@ -113,7 +113,7 @@ console.log(value)
                                         <Grid container style={{ display: "inline-block !important" }} className={classes.listeditems}>
                                             
                                                 {value.SubTitle &&
-                                                    <Typography style={{ fontWeight: 700, color: "#394578", fontSize: "13px", paddingBottom: "8px",width:"100%" }}>
+                                                    <Typography style={{ fontWeight: 700, color: "#394578", fontSize: "12px", paddingBottom: "8px",width:"100%" }}>
                                                         {value.SubTitle}
                                                     </Typography>
                                                 }
@@ -133,20 +133,20 @@ console.log(value)
                                             <Grid container>
                                                 <Grid item class="fifty">
                                                 {value.basicTitle &&
-                                                    <Typography style={{ fontSize: "13px", color: "#394578", paddingBottom: "8px",fontWeight: 700 }}>
+                                                    <Typography style={{ fontSize: "12px", color: "#394578", paddingBottom: "8px",fontWeight: 700 }}>
                                                     {value.basicTitle}
                                                 </Typography>
                                                 }
-                                                 <Typography style={{ fontSize: "13px", color: "#666", paddingBottom: "10px",}}>
-                                                    {value.Answers}
+                                                 <Typography dangerouslySetInnerHTML={{ __html: value.Answers }} style={{ fontSize: "13px", color: "#666", paddingBottom: "10px",}}>
+                                                    {/* {value.Answers} */}
                                                 </Typography>
                                                 </Grid>
                                                
                                                
                                                 <Grid item class="fiftyImg">
                                                 {value.rightContent &&
-                                                    <Typography class="rightContent" >
-                                                        {value.rightContent}
+                                                    <Typography dangerouslySetInnerHTML={{ __html: value.rightContent }} class="rightContent" >
+                                                        {/* {value.rightContent} */}
                                                     </Typography>
                                                 }
                                                 {value.rightImg &&

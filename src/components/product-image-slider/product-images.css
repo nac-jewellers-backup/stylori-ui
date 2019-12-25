@@ -170,7 +170,7 @@ body {
 }
 
 .tabs-contants {
-    font-size: 13px !important;
+    font-size: 12px !important;
     margin: auto !important;
     font-family: 'Roboto' !important;
     font-weight: bold !important;
@@ -318,7 +318,7 @@ body {
     outline: none !important;
     font-size: 16px !important;
     width: 100% !important;
-    font-family: FontAwesome;
+
     height: 34px !important;
     border: 1px solid #ccc;
     border-radius: 0 !important;
@@ -327,12 +327,13 @@ body {
 
 .search-button {
     border: 0;
-    font-size: 10px !important;
+    font-size: 12px !important;
     border-radius: 0 !important;
     height: 36px !important;
     width: 100% !important;
     font-weight: 400 !important;
     line-height: 1.42857143;
+    padding: 0px !important;
     text-transform: none !important;
 }
 
@@ -351,6 +352,7 @@ body {
 
 .ships-by {
     font-size: 12px !important;
+    text-align: center
 }
 
 .slick-dots {
@@ -383,20 +385,18 @@ body {
 
 .product-subhead {
     font-size: none !important;
-    margin-top: 10px !important;
+    margin-top: 3px !important;
 }
 
 .product-subhead-list {
     font-size: 13px !important;
     width: 100%;
     overflow: auto;
-    margin: auto !important;
-
 }
 
 /* //:nth-child(2n) */
 .product-subhead-list span {
-
+    margin-top: 3px !important;
     display: flex;
     flex: 1;
 }
@@ -452,6 +452,7 @@ body {
     color: #394578;
     font-size: 12px;
     background-image: url(https://assets-cdn.stylori.com/images/static/location.png);
+    /* font-family: FontAwesome; */
     background-position: 7px 8px;
     background-repeat: no-repeat;
     width: 100%;
@@ -899,10 +900,11 @@ body {
 }
 
 .css-kqsna2 {
-    margin-right: 15px !important;
+    /* margin-right: 15px !important; */
     font-size: 1.4rem !important;
     color: rgba(241, 72, 128, 1) !important;
     font-weight: 500;
+    width: 100% !important;
 }
 
 .css-tg000w {
@@ -910,6 +912,8 @@ body {
     color: #9d9fa4 !important;
     text-decoration: line-through;
     font-weight: 500;
+    font-size: 17px !important;
+    ;
 }
 
 .responseve-carousel {
@@ -925,7 +929,7 @@ body {
 
 /*product-page-fixed-footer*/
 .product-page-fixed-footer {
-    height: 80px !important;
+    height: 50px !important;
     position: fixed !important;
     bottom: 0 !important;
     top: auto !important;
@@ -944,6 +948,10 @@ body {
     line-height: normal;
     float: left !important;
     padding: 0 10px;
+}
+
+.slick-dots {
+    margin-top: -28px !important;
 }
 
 .product-footer-buynow {
@@ -1008,7 +1016,8 @@ body {
 }
 
 .my-ringsize {
-    font-size: 15px;
+    font-size: 12px;
+    padding-left: 6px;
     color: #ed1165 !important;
     text-decoration: underline !important;
     cursor: pointer;
@@ -1021,8 +1030,7 @@ body {
 .pagetabs {
     text-align: center !important;
     height: 40px !important;
-    width: 75% !important;
-
+    width: 70% !important;
     /* border: 1px solid #9d9d9d  !important; */
     border-radius: 15%;
     outline: none !important;
@@ -1031,7 +1039,7 @@ body {
 .pagetabslst {
     text-align: center !important;
     height: 40px;
-    width: 75% !important;
+    width: 80% !important;
     /* border: 1px solid #9d9d9d  !important; */
     border-radius: 15%;
     outline: none !important;
@@ -1060,14 +1068,18 @@ body {
 }
 
 .rings_tabs {
-    font-size: 14px !important;
+    font-size: 15px !important;
     color: #394578 !important;
     width: 100% !important;
     padding: 10px;
     /* display: flex ;
     margin: auto; */
-    font-weight: 600;
-
+    font-weight: 600 !important;
+    line-height: 13px;
+    text-transform: capitalize;
+    text-align: justify;
+    padding: 0px 0px 0px 10px;
+    display: flex;
 }
 
 .rings_tabsvls {
@@ -1076,6 +1088,7 @@ body {
     width: 100% !important;
     font-weight: 600;
     text-align: center;
+    font-size: 13px
 }
 
 .rings_tabsvls_active {
@@ -1190,7 +1203,7 @@ body {
     } */
 
 .wrappercustom {
-    font-family: "Roboto" !important;
+    /* font-family: "Roboto" !important; */
     width: 100% !important;
     height: 35px;
     color: #394578 !important;
@@ -1249,7 +1262,7 @@ body {
 }
 
 .resp {
-    box-shadow: 1px 2px 13px 7px #DEDADA !important;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12) !important;
     width: 100% !important;
     height: auto !important;
     /* padding: 10px; */

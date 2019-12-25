@@ -1,7 +1,22 @@
-html{
+/* html{
     font-family: "Roboto" !important;
+
+} */
+@font-face {
+    font-family: roboto-regular;
+    src: url(./fonts/roboto/Roboto-Regular.ttf) format('ttf');
+    /* url(/path/to/fonts/examplefont.eot) format('eot'); */
+    font-weight: 400;
+    font-style: normal;
+    font-display: fallback;
 }
-body{
+
+body {
     margin: 0;
-    font-family: "Roboto"!important;
+    font-family: "Roboto", roboto-regular, serif;
+
+}
+
+.zoomreact img {
+    width: 100% !important
 }
