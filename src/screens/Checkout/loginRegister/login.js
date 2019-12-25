@@ -8,12 +8,11 @@ import { withStyles } from '@material-ui/core/styles';
 import useLogin from './useLogin';
 import FacebookLogin from 'react-facebook-login';
 import  { Redirect } from 'react-router-dom'; 
-import { withRouter } from "react-router";
 
 const Login = (props) => {
     return <LoginComponent  {...props} />
 }
-
+ 
 const LoginComponent = (props) => {
     const { classes } = props;
     const { values, handlers, setValues, data } = useLogin(() => props.changePanel(2));

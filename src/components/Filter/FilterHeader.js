@@ -34,6 +34,7 @@ class Component extends React.Component {
     componentDidMount() {
         this.screenWidths()
         window.addEventListener("resize", this.screenWidths);
+        // window.addEventListener("scroll", this.screenWidths);
     }
 
     screenWidths = () => {
@@ -42,8 +43,8 @@ class Component extends React.Component {
         if (width > 960) {
             const filterHeight = document.getElementById('filterBy').clientHeight;
 
-            const heights = 88;
-            let add = heights + filterHeight;
+            // const heights = 30;
+            let add = filterHeight-5;
             this.setState({ topHeight: add });
         }
 

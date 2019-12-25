@@ -445,7 +445,7 @@ class Component extends React.Component {
 
             {/* <CssBaseline /> */}
             <div >
-              <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '210px', maxHeight: '68vh', overflowY: 'scroll' }} className="SliderFilter scrollBarFilter" id="SliderFilter" >
+              <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '210px', maxHeight: '80vh', overflowY: 'scroll' }} className="SliderFilter scrollBarFilter" id="SliderFilter" >
                 <div >
 
                   <Paper
@@ -501,8 +501,8 @@ class Component extends React.Component {
                               filter.map((row, i) => {
                                 return (
                                   <>
-                                    <ListItem key={row} className=""
-                                      onClick={() => this.selectItem(row)}>
+                                    <ListItem key={row}
+                                      onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
                                       <ListItemText
                                       >
                                         <Typography className="fil-list-items" variant='h4' component="h4"
