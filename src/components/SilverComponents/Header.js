@@ -125,7 +125,7 @@ class Header extends Component {
                     document.getElementById("logoImage").style.transitionDuration = "1s";
                     document.getElementById("headerContainer").style.height = "55px";
                     document.getElementById("logoDiv1").style.padding = "0px";
-                    document.getElementById("containerTitle").style.height = "55px"; 
+                    document.getElementById("containerTitle").style.height = "55px";  
                     document.getElementById("fullcontainer").style.height = "55px";
                     document.getElementById("titleTop").style.marginTop = "0px"
                 } else {
