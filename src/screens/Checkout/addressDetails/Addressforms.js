@@ -163,12 +163,22 @@ const Addressforms = (changePanel) => {
         setpincod({ ...pincods, pincods })
         setValues({ ...values, values })
     }
-    const handleSubmit = (e) => { 
+    const handleSubmit = (e) => {
         debugger
-        if (values.addressOne.errortext.pinerr !== "") {
+        if (values.addressOne.errortext.pinerr !== "" ) {
             return false
         }
         if (values.addressTwo.errortext.pinerr1 !== "") {
+            return false
+        }
+        if ( values.addressOne.pincode.length < 5) {
+            values["addressOne"]['errortext']['pinerr'] = "Your pincode is !Invalid"
+            setValues({ ...values, values })
+            return false
+        }
+        if (values.addressTwo.pincode.length < 5) {
+            values["addressOne"]['errortext']['pinerr1'] = "Your pincode is !Invalid"
+            setValues({ ...values, values })
             return false
         } else {
             var addObjgust_local = localStorage.getItem('gustaddres') ? JSON.parse(localStorage.getItem('gustaddres')) : "";
@@ -222,7 +232,7 @@ const Addressforms = (changePanel) => {
                             window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
                         }
                     } else if (values && values.addressOne) {
-                        addObjgust["address"] = [values.addressOne] 
+                        addObjgust["address"] = [values.addressOne]
                         if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
                             var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
                             local_storage.address.splice(values.index, 1);

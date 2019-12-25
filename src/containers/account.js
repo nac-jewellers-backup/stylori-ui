@@ -5,7 +5,7 @@ import {
 import React from 'react';
 import 'components/product-image-slider/product-images.css'
 import 'screens/screens.css';
-import Header from 'components/Header/header'
+import Header from 'components/SilverComponents/Header'
 // import Header from "components/SilverComponents/Header";
 import Accountdetails from "../components/accounts/accountdetails"
 import { CartContext } from 'context'
@@ -18,7 +18,7 @@ class Accounts extends React.Component {
         return (
             <div>
                 <Hidden smDown>
-                    <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+                    <Grid container spacing={12}>
                         <Grid item xs={12} >
                             <Header />
                         </Grid>

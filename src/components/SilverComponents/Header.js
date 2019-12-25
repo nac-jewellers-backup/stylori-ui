@@ -222,7 +222,7 @@ class Header extends Component {
                                             >
                                                 <i class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
                                                     if (user_id.length > 0) {
-                                                        window.location.href = "/account"
+                                                        window.location.href = `/account${'-wishlist'}`
                                                     } else {
                                                         window.location.href = "/login"
                                                     }
