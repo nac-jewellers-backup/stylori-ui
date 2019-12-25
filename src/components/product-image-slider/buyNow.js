@@ -19,6 +19,7 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CheckForCod } from 'queries/productdetail';
 import { CartContext } from 'context'
 import { withRouter } from "react-router";
+import CommenDialog from '../Common/Dialogmodel'
 
 
 
@@ -26,6 +27,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
 
     const { data } = props;
     const { classes } = props;
+
     // const [] = React.useState()
 
     console.info('object2', props.filters)
@@ -73,15 +75,9 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
     )
 }
 
-const Buydetails = (props, state, handleChanges, handleCodChange) => {
+const Buydetails = (props, state, handleChanges, handleCodChange, canceldeletechecklist, deletechecklists, handleLocalStorage) => {
     const { data } = props;
     const { classes } = props;
-    const handleLocalStorage = () => {
-        props.setCartFilters({ skuId: data[0].skuId, qty: 1, price: data[0].offerPrice })
-        // props.history.push('/cart')
-        window.location.pathname = "/cart"
-    }
-
 
     return (
         <div>
@@ -94,7 +90,7 @@ const Buydetails = (props, state, handleChanges, handleCodChange) => {
                                 <Buynowbutton sku={data[0].skuId} class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
                             </div>
                             {/* </NavLink> */}
-
+                            <CommenDialog isOpen={state.modelOpen} content={`Are you sure you `} handleClose={canceldeletechecklist} handleSuccess={deletechecklists} negativeBtn="No" positiveBtn="Yes" title="Confirmation" />
                         </Grid>
 
                         <Grid xs={12} lg={7} style={{ marginBottom: "7px" }}>
@@ -146,7 +142,9 @@ class Component extends React.Component {
             pincodeValues: {},
             CheckForCodtitle: 'Check for COD',
             isRequired: false,
-            pincodeNotFound: false
+            pincodeNotFound: false,
+            modelOpen: false,
+            ringSize: this.props && this.props.data && this.props.data[0] && this.props.data[0].productsDetails && this.props.data[0].productsDetails[0].namedetail && this.props.data[0].productsDetails[0].namedetail[3] && this.props.data[0].productsDetails[0].namedetail[3].details
         }
     }
 
@@ -170,7 +168,39 @@ class Component extends React.Component {
         }
     }
 
+    openModel = () => {
+        this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
+        window.location.pathname = "/cart"
+    }
 
+    handleLocalStorage = () => {
+        if (this.props.data && this.props.data[0].productType === "Rings") {
+            this.setState({
+                modelOpen: true,
+            })
+        }
+        // else {
+        //     this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
+        //     window.location.pathname = "/cart"
+        // }
+
+    }
+
+    canceldeletechecklist = () => {
+
+        this.setState({
+            modelOpen: false,
+        })
+    }
+
+    deletechecklists = () => {
+        this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
+        window.location.pathname = "/cart"
+
+        this.setState({
+            modelOpen: false,
+        })
+    }
     handleOpen = () => {
         this.setState({ open: true });
     };
@@ -208,7 +238,7 @@ class Component extends React.Component {
         return (
             <div>
                 <Hidden smDown>
-                    {Buydetails(this.props, this.state, this.handleChanges, this.handleCodChange)}
+                    {Buydetails(this.props, this.state, this.handleChanges, this.handleCodChange, this.canceldeletechecklist, this.deletechecklists, this.handleLocalStorage)}
                 </Hidden>
 
                 <Hidden mdUp>

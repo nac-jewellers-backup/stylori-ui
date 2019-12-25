@@ -344,7 +344,7 @@ class Component extends React.Component {
     this.setState({ open: false });
   };
   selectItem = (name) => {
-    debugger
+    
     let { selected } = this.state;
     // let value = selected === name ? "" : name;
     selected.push(name)
@@ -430,7 +430,7 @@ class Component extends React.Component {
     //   );
     // })
     // const selected_list_filter = () => {
-    //   debugger
+    //   
     //   var filter_open
     //   let { selected } = this.state;
     //   if (selected !== undefined || selected !== null) {

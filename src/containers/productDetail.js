@@ -45,10 +45,10 @@ class ProductDetail extends Component {
   render() {
     console.log('----------------------------------')
     console.log('--this.props.data--', '--this.props.data--', this.props)
-    debugger
+    
     // alert(JSON.stringify(this.props.data))
     console.log('----------------------------------')
-    debugger
+    
     var loc = this.props.location.pathname;
     console.log('this.props.data i am data',this.props.data)
     var path = loc.split('/');
@@ -91,7 +91,7 @@ class ProductDetail extends Component {
                   list='pricing-loctn'
                   classsubhed='pricing-loctn-head'
                   data={data_json} />
-              </div>
+              </div> 
             </Grid>
           </Grid>
 
