@@ -60,6 +60,8 @@ class Header extends Component {
     }
     componentDidMount() {
         window.addEventListener("scroll", this.scrolling);
+        
+        
         if (!this.state.Menuopen && !this.state.submenuOpen) {
             return this.setState({ subTitleData: "", subMenuTarget: "" })
         }
@@ -93,9 +95,9 @@ class Header extends Component {
         document.getElementById('topNav').style.transition = "0.5s";
         // var heightHeader = document.getElementById('headerDiv').clientHeight;
         if (document.getElementById("SliderFilter")) {
-            document.getElementById("SliderFilter").style.top = "185px";
+            document.getElementById("SliderFilter").style.top = "115px";
             document.getElementById('SliderFilter').style.transition = "0.5s";
-            document.getElementById("filterBy").style.top = "120px";
+            document.getElementById("filterBy").style.top = "50px";
             document.getElementById('filterBy').style.transition = "0.5s";
         }
 
@@ -123,6 +125,7 @@ class Header extends Component {
     scrolling = () => {
         if (window.location.pathname !== "/cart" || window.location.pathname !== '/checkout') {
             if (window.innerWidth > 959) {
+                this.headerTransitions()
                 if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                     document.getElementById("headerContainer").style.position = "fixed";
                     document.getElementById("headerContainerTop").style.height = "74px";

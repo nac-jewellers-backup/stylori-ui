@@ -70,6 +70,13 @@ const styles = theme => ({
     colorMainSecondary: {
       color: theme.palette.secondary.main
     },
+    li_item_filter:{
+      [theme.breakpoints.only('xl')]: {
+        paddingTop:'15px',
+      paddingBottom:'15px'
+      },
+     
+    },
     borderBottomList:{
       borderBottom:'1px solid #efeeee',
       paddingTop:'2px !important',
