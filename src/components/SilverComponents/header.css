@@ -313,6 +313,14 @@
   justify-content: center;
 }
 
+@media only screen and (max-width: 958px) and (min-width: 428px)
+{
+  .logoDiv1{
+    display: flex;
+  justify-content: center;
+  max-width: 100% !important;
+}
+}
 .animations {
   transition: width 0.35s ease-in-out !important;
 }
@@ -322,7 +330,7 @@
 }
 
 .logoDiv1 {
-  padding-Top: 2%;
+  padding-Top: 8%;
 }
 
 .titleTop {

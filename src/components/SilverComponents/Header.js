@@ -25,7 +25,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { useDummyRequest } from '../../hooks';
 import { headerDataSilver } from '../../mappers';
 import { styles } from './styles';
-import LogoSmallScreen from '../../assets/stylori-silver-logo-small-screen.png';
+import LogoSmallScreen from '../../assets/Stylori Silver logo.svg';
 import Seach from '../../assets/search'
 import stylorisilverlogo from '../../assets/Stylori Silver logo.svg'
 
@@ -242,12 +242,12 @@ class Header extends Component {
                                     </IconButton>
                                 </Grid>
 
-                                <Grid item xs={3} className="logoImgHeader1">
+                                <Grid item xs={4} className="logoImgHeader1">
                                     <div className="logoDiv1">
                                         <img className={`imgsilver`} src={LogoSmallScreen} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                     </div>
                                 </Grid>
-                                <Grid item xs={8}>
+                                <Grid item xs={7}>
                                     <div className="mobli-icon1">
                                         <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center" }}>
                                             <div className={`head-icons1 ${classes.headIcons}`} >
