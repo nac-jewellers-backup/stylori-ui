@@ -27,10 +27,10 @@ export const mainlist = [
         name: "Stories",
         url: "/#/",
     },
-    {
-        name: "My Account",
-        url: "/#/",
-    },
+    // {
+    //     name: "My Account",
+    //     url: "/#/",
+    // },
 
 ];
 
@@ -178,18 +178,18 @@ export const Jewellery = {
             icon: ""
         }
     },
-    "My Account": {
-        Login: {
-            name: 'Login',
-            url: "/#/",
-            icon: ""
-        },
-        Register: {
-            name: 'Register',
-            url: "/#/",
-            icon: ""
-        }
-    },
+    // "My Account": {
+    //     Login: {
+    //         name: 'Login',
+    //         url: "/#/",
+    //         icon: ""
+    //     },
+    //     Register: {
+    //         name: 'Register',
+    //         url: "/#/",
+    //         icon: ""
+    //     }
+    // },
 }
 
 

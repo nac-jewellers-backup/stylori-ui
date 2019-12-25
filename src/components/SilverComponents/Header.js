@@ -417,6 +417,63 @@ class Header extends Component {
                                     }
                                 </>
                             ))}
+                            {!localStorage.getItem("true") ? <>
+                                <ListItem button className="drawer-list12" >
+                                    <ListItemText onClick={() => window.location.pathname = "/login"}>
+                                        <Typography className="list-items1">
+                                            LOGIN
+                                            </Typography>
+                                    </ListItemText>
+                                </ListItem>
+                                <ListItem button className="drawer-list12" >
+                                    <ListItemText onClick={() => window.location.pathname = "/registers"}>
+                                        <Typography className="list-items1">
+                                            REGISTER
+                                            </Typography>
+                                    </ListItemText>
+                                </ListItem>
+                            </> :
+                                <>
+                                    <ListItem button className="drawer-list12" >
+                                        <ListItemText onClick={() => window.location.pathname = "/account"}>
+                                            <Typography className="list-items1" >
+                                                VIEW PROFILE
+                                            </Typography>
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem button className="drawer-list12" >
+                                        <ListItemText onClick={() => window.location.pathname = "/account"}>
+                                            <Typography className="list-items1">
+                                                MY WHISLIST
+                                            </Typography>
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem button className="drawer-list12" >
+                                        <ListItemText onClick={() => window.location.pathname = "/account"}>
+                                            <Typography className="list-items1">
+                                                ALL ORDERS
+                                            </Typography>
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem button className="drawer-list12" >
+                                        <ListItemText onClick={() => window.location.pathname = "/account"}>
+                                            <Typography className="list-items1">
+                                                CONTACT US
+                                            </Typography>
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem button className="drawer-list12" >
+                                        <ListItemText onClick={() => {
+                                            localStorage.clear();
+                                            window.location.reload()
+                                            window.location.pathname = "/login"
+                                        }}>
+                                            <Typography className="list-items1">
+                                                LOGOUT
+                                            </Typography>
+                                        </ListItemText>
+                                    </ListItem>
+                                </>}
                         </List>
                     </Drawer>
 
