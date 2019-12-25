@@ -59,7 +59,8 @@ class Header extends Component {
         this.topZero = React.createRef();
     }
     componentDidMount() {
-        window.addEventListener("scroll", this.scrolling);
+        if (window.location.pathname !== "/cart" || window.location.pathname !== '/checkout') {
+            window.addEventListener("scroll", this.scrolling);
         if (!this.state.Menuopen && !this.state.submenuOpen) {
             return this.setState({ subTitleData: "", subMenuTarget: "" })
         }
@@ -67,6 +68,7 @@ class Header extends Component {
             return true
         }
     }
+}
 
     handleDrawerOpen = () => {
         this.setState({ open: true })
@@ -112,7 +114,7 @@ class Header extends Component {
         });
     };
     scrolling = () => {
-        if (window.location.pathname !== "/cart" || window.location.pathname !== '/checkout') {
+        if (window.location.pathname !== "/cart" && window.location.pathname !== '/checkout') {
             if (window.innerWidth > 959) {
                 if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                     document.getElementById("headerContainer").style.position = "fixed";
