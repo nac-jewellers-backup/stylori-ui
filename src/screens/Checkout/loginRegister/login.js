@@ -1,5 +1,6 @@
 import React from 'react';
-import './loginRegisters.css'
+import './loginRegisters.css';
+import { withRouter } from 'react-router-dom';
 import { Grid, Button } from '@material-ui/core';
 import { Input } from '../../../components/InputComponents/TextField/Input'
 import styles from './style';
@@ -7,12 +8,11 @@ import { withStyles } from '@material-ui/core/styles';
 import useLogin from './useLogin';
 import FacebookLogin from 'react-facebook-login';
 import  { Redirect } from 'react-router-dom'; 
-import { withRouter } from "react-router";
 
 const Login = (props) => {
     return <LoginComponent  {...props} />
 }
-
+ 
 const LoginComponent = (props) => {
     const { classes } = props;
     const { values, handlers, setValues, data } = useLogin(() => props.changePanel(2));
@@ -43,9 +43,7 @@ const LoginComponent = (props) => {
     }
     return (
         <div className='pt-sm'>
-            <form action="javascript:void(0)" onSubmit={(e) => {
-                handlers.handelSubmit(e)
-            }}>
+            <form action="javascript:void(0)" onSubmit={(e) => {handlers.handelSubmit(e, props.history.push)}}>
                 <Grid container item xs={12} lg={window.location.pathname === "/login" ? 12 : 6}>
                     <h5 className={`title ${classes.normalfonts}`}>
                     {window.location.pathname === "/login" ? "Login" : "I already have an account"}
@@ -57,11 +55,11 @@ const LoginComponent = (props) => {
                         name="email"
                         value={values.email}
                         error={values.error && values.error.emerr ? true : false}
-                        // helperText={values.errortext && values.errortext.emerr}
+                        helperText={values.errortext && values.errortext.emerr}
                         onChange={e => handlers.handleChange('email', e.target.value)}
                         placeholder="Enter your email Id"
                     />
-                    <label className='errtext'> {values.errortext && values.errortext.emerr}</label>
+                    <label className='errtext'> {values.error.emerr && values.errortext.emerr}</label>
                     <Input
                         margin="normal"
                         variant="outlined"
@@ -69,11 +67,11 @@ const LoginComponent = (props) => {
                         name="password"
                         value={values.password}
                         error={values.error && values.error.passerr ? true : false}
-                        // helperText={values.errortext && values.errortext.passerr}
+                        helperText={values.errortext && values.errortext.passerr}
                         placeholder="Enter your password"
                         onChange={e => handlers.handleChange('password', e.target.value)}
                     />
-                    <label className='errtext'> {values.errortext && values.errortext.passerr}</label>
+                    <label className='errtext'> {values.error.passerr && values.errortext.passerr}</label>
                     <div className='log-pas'>
                         <span className={`pas-fr ${classes.normalfonts}`} style={{ cursor: "pointer" }}>Forgot Password ?</span>
                         <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>

@@ -35,7 +35,7 @@ class Stylori extends React.Component {
 
   }
   render() {
-    const { data, dataFilter } = this.props
+    const { data, dataFilter, loading } = this.props
     return (
      
       <>
@@ -76,7 +76,7 @@ class Stylori extends React.Component {
 
           <Grid item xs={12}>
             <ProductDescription title="Jewellery" data={dataFilter} />
-            <Filter datas={data} data={dataFilter} />
+            <Filter datas={data} data={dataFilter} loading={loading}/>
           </Grid>
           <Grid item xs={12} >
             <Hidden smDown>

@@ -6,6 +6,7 @@ import React from 'react';
 import 'components/product-image-slider/product-images.css'
 import 'screens/screens.css';
 import Header from 'components/Header/header'
+// import Header from "components/SilverComponents/Header";
 import Accountdetails from "../components/accounts/accountdetails"
 import { CartContext } from 'context'
 import cart from 'mappers/cart'

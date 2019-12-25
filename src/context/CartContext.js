@@ -47,8 +47,8 @@ const Provider = (props) => {
     const userIds = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ''
     var cartdetails = JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : {}
     const guestlogId = cartFilters.user_id ? cartFilters.user_id : ''
-    const { loading: allorderloading, error: allordererror, data: allorder, makeRequest: allordermakeRequest } = useGraphql(ALLORDERS, () => { }, {});
-    const { loading: wishlistloading, error: wishlisterror, data: wishlistDATA, makeRequest: wishlistmakeRequest } = useGraphql(ALLUSERWISHLISTS, () => { }, {});
+    const { loading: allorderloading, error: allordererror, data: allorder, makeRequest: allordermakeRequest } = useGraphql(ALLORDERS, () => { }, {}, false);
+    const { loading: wishlistloading, error: wishlisterror, data: wishlistDATA, makeRequest: wishlistmakeRequest } = useGraphql(ALLUSERWISHLISTS, () => { }, {}, false);
     // const prices = cartFilters.price ? cartFilters.price : ''
     const discounted_price = cartFilters.discounted_price ? cartFilters.discounted_price : ""
     // const { setwishlist_count } = React.useContext(FilterOptionsContext);

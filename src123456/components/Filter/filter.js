@@ -551,7 +551,7 @@ class Component extends React.Component {
                                               (i < (this.state[`li_${row}`] ? this.state[`li_${row}`] : 4))).map(row12 => {
                                                 return (<div style={{ padding: "0 20px" }}>
 
-                                                  <ListItem key={row12}  >   {/* button */}
+                                                  <ListItem key={row12} className={`li_item_filter`} >   {/* button */}
                                                     <FormGroup row>
                                                       {
                                                         row12.constructor === Object ?

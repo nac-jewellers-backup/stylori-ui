@@ -54,21 +54,20 @@ class Header extends Component {
             subTitleData: null,
             subMenuTarget: null,
             anchorEl: false
-
         }
         this.topZero = React.createRef();
     }
     componentDidMount() {
         if (window.location.pathname !== "/cart" || window.location.pathname !== '/checkout') {
             window.addEventListener("scroll", this.scrolling);
-        if (!this.state.Menuopen && !this.state.submenuOpen) {
-            return this.setState({ subTitleData: "", subMenuTarget: "" })
-        }
-        else {
-            return true
+            if (!this.state.Menuopen && !this.state.submenuOpen) {
+                return this.setState({ subTitleData: "", subMenuTarget: "" })
+            }
+            else {
+                return true
+            }
         }
     }
-}
 
     handleDrawerOpen = () => {
         this.setState({ open: true })
