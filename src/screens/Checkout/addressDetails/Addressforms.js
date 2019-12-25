@@ -334,16 +334,16 @@ const Addressforms = (changePanel) => {
                 if (!pathnames) {
                     changePanel(3)
                     window.location.reload()
-                } 
+                }
             }
             // if (values.checkValue1 === true) {
- 
+
             // }
- 
-        } 
-    } 
+
+        }
+    }
     const Delete_address = (val_addrs, index) => {
-        if (con_gust !== true) { 
+        if (con_gust !== true) {
             if (check_dlt === false) {
                 if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 1) {
                     delet["address_id"] = val_addrs && val_addrs.id
@@ -429,7 +429,8 @@ const Addressforms = (changePanel) => {
                 },
             },
         }
-        values["addrs"] = true
+            values["edit_addresId"] = false
+            values["addrs"] = true
         setValues({
             values,
             ...values,
