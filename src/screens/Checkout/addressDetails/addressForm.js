@@ -53,7 +53,7 @@ const AddressComponent = (props) => {
                                                 type="text"
                                                 value={values.addressOne.firstname}
                                                 placeholder="First name"
-                                                required
+                                                required 
                                                 onChange={(event) => handle.handleChange('addressOne', 'firstname', event.target.value)}
                                                 helperText="Firstname is required"
                                             />
