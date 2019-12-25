@@ -123,10 +123,10 @@ class Header extends Component {
                     document.getElementById("headerContainer").style.boxShadow = "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)";
                     document.getElementById("logoImage").style.width = "50%";
                     document.getElementById("logoImage").style.transitionDuration = "1s";
-                    document.getElementById("headerContainer").style.height = "55px";
+                    document.getElementById("headerContainer").style.height = "55px"; 
                     document.getElementById("logoDiv1").style.padding = "0px";
                     document.getElementById("containerTitle").style.height = "55px";  
-                    document.getElementById("fullcontainer").style.height = "55px";
+                    document.getElementById("fullcontainer").style.height = "55px"; 
                     document.getElementById("titleTop").style.marginTop = "0px"
                 } else {
                     document.getElementById("headerContainer").style.position = "inherit";
