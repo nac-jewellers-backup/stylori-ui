@@ -13,6 +13,7 @@ import { withRouter } from "react-router"
 import 'screens/screens.css';
 import filterData from 'mappers/filterData'
 import { async } from 'q';
+import MetaTags from 'react-meta-tags';
 
 class Stylori extends React.Component {
   constructor(props) {
@@ -37,12 +38,41 @@ class Stylori extends React.Component {
   render() {
     const { data, dataFilter, loading } = this.props
     return (
+     
       <>
+          
 
         <Grid container >
+        <div>
+        <MetaTags>
+        <title>{this.props.mappedFilters.seo_url}</title>
+        <meta name="description" content={this.props.mappedFilters.seo_text} />
+        <meta name="keywords" content={this.props.dataFilter[0].filter} />
 
+        <meta property="og:title" id="fb-title" content={this.props.mappedFilters.seo_url} />
+        <meta property="og:description" content={this.props.mappedFilters.seo_text} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" id="fb-product-url" content={window.location.href} />
+        <meta property="og:image" id="fb_imageUrl" content={this.props.data && this.props.data[0]&&this.props.data[0].image && this.props.data[0].image.placeImage.img} />
+        <meta property="og:image:width" content="200" />
+         <meta property="og:image:height" content="200" />
+
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@StyloriLove" />
+        <meta name="twitter:title" id="twitter-title" content={this.props.mappedFilters.seo_url} />
+        <meta name="twitter:description" content={this.props.mappedFilters.seo_text} />
+        <meta property="og:image" id="fb_imageUrl" content={this.props.data && this.props.data[0]&&this.props.data[0].image && this.props.data[0].image.placeImage.img} />
+
+        </MetaTags>
+
+        </div>
+          {this.props.loadingfilters && <div className="overlayloadingfilter">
+            <div id="loadingss"></div>
+            {/* className="text" Filters updating...*/}
+          </div>}
           <Grid item xs={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
-            <Header data={data} cartcount={this.props.cartcount} />
+            <Header data={data} cartcount={this.props.cartcount} wishlist_count={this.props.wishlist_count} />
           </Grid>
 
           <Grid item xs={12}>
@@ -65,7 +95,7 @@ class Stylori extends React.Component {
 // const history = (props, aa) => props.history.push(`/stylori?${aa}`);
 
 const Components = props => {
-  let { FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters }, setloadingfilters } = React.useContext(FilterOptionsContext);
+  let { FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters, wishlist_count }, setloadingfilters } = React.useContext(FilterOptionsContext);
   let content, mapped = [];
   // alert(JSON.stringify(cartcount))
   var arrFilters = Array(mappedFilters)
@@ -73,7 +103,7 @@ const Components = props => {
   // let mappedFilter = filterData(mappedFilters)
   if (!loading && !error) {
     if (Object.keys(data).length !== 0) {
-      mapped =async ()=>await productList(data, CDN_URL);
+      mapped = async () => await productList(data, CDN_URL);
     }
   }
   if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>

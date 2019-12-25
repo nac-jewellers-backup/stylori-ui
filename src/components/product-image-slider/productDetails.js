@@ -117,7 +117,7 @@ class ProductDetails extends React.Component {
                                             {/* <hr class="bottom-line border-line-"></hr> */}
                                         </div>
                                     </ExpansionPanelSummary>
-                                    <div style={{ padding: "10px" }}>
+                                    <div>
                                         {
                                             val.namedetail !== undefined && val.namedetail.map(res =>
                                                 <span>
@@ -145,7 +145,8 @@ class ProductDetails extends React.Component {
                                                                         </ListItemText>
                                                                 }
                                                             </Grid>
-                                                        </Grid>}
+                                                        </Grid>
+                                                    }
                                                 </span>
                                             )}
                                     </div>

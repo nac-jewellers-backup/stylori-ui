@@ -26,29 +26,56 @@ import { useGraphql } from 'hooks/GraphqlHook';
 import { ProductDetailContext } from 'context/ProductDetailContext';
 import { CDN_URL } from 'config';
 import 'screens/screens.css';
-
+import MetaTags from 'react-meta-tags';
 
 class ProductDetail extends Component {
   constructor(props) {
     super(props)
   }
-  renderUrl = () =>{
+  renderUrl = () => {
     var loc = this.props.location.pathname;
     var path = loc.split('/');
-    if(path[2] === 'Bracelets') return "/bracelets-jewellery"
-    if(path[2] === 'Pendants') return   "/pendants-jewellery"
-    if(path[2] === 'Nosepins') return   "/nose+pin+online-jewellery"
-    if(path[2] === 'Earrings') return   "/earrings-jewellery"
-    if(path[2] === 'Bangles') return "/bangles-jewellery"
-    if(path[2] === 'Rings') return "/rings-jewellery"
+    if (path[2] === 'Bracelets') return "/bracelets-jewellery"
+    if (path[2] === 'Pendants') return "/pendants-jewellery"
+    if (path[2] === 'Nosepins') return "/nose+pin+online-jewellery"
+    if (path[2] === 'Earrings') return "/earrings-jewellery"
+    if (path[2] === 'Bangles') return "/bangles-jewellery"
+    if (path[2] === 'Rings') return "/rings-jewellery"
 
   }
   render() {
+    console.log('----------------------------------')
+    console.log('--this.props.data--', '--this.props.data--', this.props)
+    debugger
+    // alert(JSON.stringify(this.props.data))
+    console.log('----------------------------------')
+    debugger
     var loc = this.props.location.pathname;
+    console.log('this.props.data i am data',this.props.data)
     var path = loc.split('/');
-    var data_json = [{title:'home' ,url:'/home'}, {title:path[2] ,url:this.renderUrl()}, {title:path[4]}]
+    var data_json = [{ title: 'home', url: '/home' }, { title: path[2], url: this.renderUrl() }, { title: path[4] }]
     return (
       <div>
+        <div>
+        <MetaTags>
+        <title>{this.props.data[0].title}</title>
+        <meta name="description" content={this.props.data[0].dis} />
+        <meta name="keywords" content={this.props.data[0].productsPendants[0].name} />
+
+        <meta property="og:title" id="fb-title" content={this.props.data[0].title} />
+        <meta property="og:description" content={this.props.data[0].dis} />
+        <meta property="og:type" content="product" />
+        <meta property="og:url" id="fb-product-url" content={window.location.href} />
+        <meta property="og:image" id="fb_imageUrl" content={this.props.data[0].fadeImages} />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@StyloriLove" />
+        <meta name="twitter:title" id="twitter-title" content={this.props.data[0].title} />
+        <meta name="twitter:description" content={this.props.data[0].dis} />
+        <meta name="twitter:image" id="twitter_imageUrl" content={this.props.data[0].fadeImages} />
+        </MetaTags>
+
+        </div>
 
         <Hidden smDown>
 
@@ -58,9 +85,9 @@ class ProductDetail extends Component {
             </Grid>
           </Grid>
 
-          <Grid Container spacing={12}>
+          <Grid Container spacing={12} style={{ maxWidth: "1600px", margin: "auto" }}>
             <Grid item xs={12}>
-              <div className="pricing-breadcrums-media">
+              <div className="pricing-breadcrums-media" >
                 <CustomSeparator
                   list='pricing-loctn'
                   classsubhed='pricing-loctn-head'
@@ -69,7 +96,7 @@ class ProductDetail extends Component {
             </Grid>
           </Grid>
 
-          <div className="pricing-imgzom-media">
+          <div className="pricing-imgzom-media" style={{ maxWidth: "1600px", margin: "auto" }}>
             <Grid container spacing={12}>
               <Grid item xs={6}>
                 <ProductImageZoom data={this.props.data} />
@@ -88,7 +115,7 @@ class ProductDetail extends Component {
             </Grid>
           </div><br />
 
-          <div style={{ background: "whitesmoke" }} className="pricing-product-media">
+          <div style={{ background: "whitesmoke" }} className="pricing-product-media" style={{ maxWidth: "1600px", margin: "auto" }}>
             <Grid container spacing={12}>
               <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
                 <ProductDetails data={this.props.data} />
@@ -103,7 +130,7 @@ class ProductDetail extends Component {
 
           <Sublistcarousel data={this.props.data} />
           <RatingForm />
-          <CustomerReviews rating={this.props.rating}/>
+          <CustomerReviews rating={this.props.rating} />
 
           <Grid item xs={12}>
             <Footer />
@@ -162,12 +189,12 @@ const Components = props => {
   const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating } } = React.useContext(ProductDetailContext);
   const datas = data;
   let mapped = datas;
-  if (!loading && !error) { 
-  mapped = productDetails(datas, likedatas, viewedddatas, rating);
+  if (!loading && !error) {
+    mapped = productDetails(datas, likedatas, viewedddatas, rating);
   }
   if (Object.keys(mapped).length === 0) return <div className="overall-loader"><div id="loading"></div></div>
   else {
-    return <ProductDetail {...props} data={mapped} rating={rating}/>
+    return <ProductDetail {...props} data={mapped} rating={rating} />
 
   }
 }

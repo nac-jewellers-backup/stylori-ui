@@ -1,8 +1,11 @@
 import {
     Grid,
     Hidden,
+    ExpansionPanel,
     Container,
     Popover,
+    paper,
+    Paper
 } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul'
 import React, { Component } from 'react';
@@ -20,6 +23,8 @@ const dataCarousel = {
     speed: 1000,
     fade: true,
     arrows: false,
+    dotsClass: "slickdev",
+    className: 'button__bar',
 }
 
 const mobilecarousel = (props, val) => {
@@ -103,89 +108,100 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
 
                             </div>
                         </Hidden>
-                        <Grid item xs={12} lg={9}>
-                            <div className="price-div">
-                                <Hidden mdUp>
-                                    <Grid container spacing={12} xs={12}>
-                                        <Grid container item xs={8}>
-                                            <h1 className={`pdp-title ${classes.title}`} style={{width:"90%"}}>
+                        <Paper elevation={0} style={{ width: "100%", margin: "10px 1px 4px 1px", padding: "10px 12px 0px 10px" }}>
+                            <Grid container>
+                                <Grid item xs={12} lg={9} md={9}>
+                                    <div className="price-div">
+                                        <Hidden mdUp>
+                                            <Grid container spacing={12} xs={12}>
+                                                <Grid container item xs={8}>
+                                                    <h1 className={`pdp-title ${classes.title}`} style={{ width: "90%" }}>
+                                                        {val.title}
+                                                    </h1>
+                                                </Grid>
+                                                <Grid container item xs={4} >
+                                                    <div>
+                                                        {data[0].ProductContactNum.map(val =>
+                                                            <div style={{ marginTop: "8px" }}>
+                                                                <b className={`ships-by ${classes.normalfonts}`}>
+                                                                    <span > {val.shipby}</span>
+                                                                </b>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </Grid>
+                                            </Grid>
+
+                                        </Hidden>
+                                        <Hidden smDown>
+                                            <h1 className={`pdp-title ${classes.title}`}>
                                                 {val.title}
                                             </h1>
-                                        </Grid>
-                                        <Grid container item xs={4} >
-                                            <div>
-                                                {data[0].ProductContactNum.map(val =>
-                                                    <div style={{ marginTop: "8px" }}>
-                                                        <b className={`ships-by ${classes.normalfonts}`}>
-                                                            {/* <span class="ship-img"></span> */}
-                                                            <span > {val.shipby}</span>
-                                                        </b>
+                                        </Hidden>
+                                        <p className={`pdp-desc ${classes.dis}`}>
+                                            {val.dis}
+                                        </p>
+                                    </div>
+                                </Grid>
+
+
+
+                                <Grid item xs={12} lg={3} md={3} style={{
+                                    display: "flex",
+                                    lineHeight: "20px"
+                                }}>
+                                    <Hidden smDown>
+                                        <div className="starts product-icons" style={{ fontFamily: "fontawesome" }} >
+                                            <div className="row social-shares"
+                                                className={classes.icon}>
+                                                <i class="fa fa-share-alt overall-icons"
+                                                    aria-owns={open ? 'simple-popper' : ""}
+                                                    onClick={handleClick}
+                                                ></i> &nbsp;
+                                        {/* {JSON.stringify(val.productId)} */}
+                                                <Wishlist sku={val.skuId} productId={val.productId} />
+
+                                                <Popover
+                                                    id="simple-popper"
+                                                    open={open}
+                                                    anchorEl={anchorEl}
+                                                    onClose={handleClose}
+                                                    anchorOrigin={{
+                                                        vertical: 'bottom',
+                                                        horizontal: 'center',
+                                                    }}
+                                                    transformOrigin={{
+                                                        vertical: 'top',
+                                                        horizontal: 'center',
+                                                    }}
+                                                >
+                                                    <div className="product-share">
+                                                        <h5>Share the Jewellery</h5>
+                                                        <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
+                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
+                                                        </a>&nbsp;
+                                            <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
+                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
+                                                        </a>&nbsp;
+                                            <a class="google" target="_blank">
+                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
+                                                        </a>
                                                     </div>
-                                                )}
+                                                </Popover>
+
+                                                <div><Ratings ratings="starts-review" /></div>
                                             </div>
-                                        </Grid>
-                                    </Grid>
-                                </Hidden>
-                                <Hidden smDown>
-                                    <h1 className={`pdp-title ${classes.title}`}>
-                                        {val.title}
-                                    </h1>
-                                </Hidden>
-                                <p className={`pdp-desc ${classes.dis}`}>
-                                    {val.dis}
-                                </p>
-                            </div>
-                        </Grid>
+                                        </div>
+                                    </Hidden>
+
+                                </Grid>
+                            </Grid>
+                        </Paper>
 
                         <Hidden smDown>
-                            <Grid item xs={12} lg={3} style={{
-                                display: "flex",
-                                lineHeight: "20px"
-                            }}>
-                                <div className="starts product-icons" style={{ fontFamily: "fontawesome" }} >
-                                    <div className="row social-shares"
-                                        className={classes.icon}>
-                                        <i class="fa fa-share-alt overall-icons"
-                                            aria-owns={open ? 'simple-popper' : ""}
-                                            onClick={handleClick}
-                                        ></i> &nbsp;
-                                        {/* {JSON.stringify(val.productId)} */}
-                                        <Wishlist sku={val.skuId} productId={val.productId} />
-
-                                        <Popover
-                                            id="simple-popper"
-                                            open={open}
-                                            anchorEl={anchorEl}
-                                            onClose={handleClose}
-                                            anchorOrigin={{
-                                                vertical: 'bottom',
-                                                horizontal: 'center',
-                                            }}
-                                            transformOrigin={{
-                                                vertical: 'top',
-                                                horizontal: 'center',
-                                            }}
-                                        >
-                                            <div className="product-share">
-                                                <h5>Share the Jewellery</h5>
-                                                <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
-                                                    <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
-                                                </a>&nbsp;
-                                            <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
-                                                    <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
-                                                </a>&nbsp;
-                                            <a class="google" target="_blank">
-                                                    <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
-                                                </a>
-                                            </div>
-                                        </Popover>
-
-                                        <div><Ratings ratings="starts-review" /></div>
-                                    </div>
-                                </div>
-                            </Grid>
                             <hr class="bottom-line product-inform-ation"></hr>
                         </Hidden>
+
                     </Grid>
 
 

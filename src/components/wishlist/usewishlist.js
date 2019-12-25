@@ -36,11 +36,12 @@ const useWishlists = (props) => {
     }
 
     const handelSubmit = (num) => {
+        
         if (user_id.length > 0 && check_gustlog === "false") {
             values["isactive"] = num
             values["user_id"] = user_id
             setValues({ values, ...values });
-            // makeFetch(values);
+            makeFetch(values);
         } else {
             alert("Please login your email Id")
             window.location.href = "/login"
@@ -48,17 +49,20 @@ const useWishlists = (props) => {
         // changePanel(3)
     }
     const handelRemove = (num) => {
+        
         if (user_id.length > 0 && check_gustlog === "false") {
             values["isactive"] = num
             values["user_id"] = user_id
             setValues({ values, ...values });
-                setCartFilters({
-                    skuId: values.product_sku,
-                    qty: 1,
-                    price: values.add
-                })
+            setCartFilters({
+                skuId: values.product_sku,
+                qty: 1,
+                price: values.add
+            })
+            if (window.location.pathname === "/account") {
                 window.location.pathname = "/cart"
-            // removemakeFetch(values);
+            }
+            removemakeFetch(values);
         }
 
         // changePanel(3)

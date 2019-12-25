@@ -60,12 +60,14 @@ class Allorders extends React.Component {
     render() {
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
+        debugger
         return (
             <>
                 {/* allorderdata.nodes */}
                 <div className='pt-sm checkout-ovralldiv-media' >
                     {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0 ?
                         <div style={{ marginTop: "20px", boxShadow: "none" }}>
+                          
                             {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
                             {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map(val => (
                                 <ExpansionPanel
@@ -102,7 +104,7 @@ class Allorders extends React.Component {
                                                 </Grid>
                                             </div>
                                             {/* ))} */}
-                                            <div style={{ float: "right", fontSize: "25px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "25px" }}>{this.calculatetotal(val)}</span></div>
+                                            <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}</span></div>
                                             {val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => (
                                                 <>
                                                     <br />
@@ -148,11 +150,11 @@ class Allorders extends React.Component {
                                                     </Grid></>
                                             ))}
 
-                                            <div style={{ float: "right", fontSize: "16px" }} >
+                                            <div style={{ float: "right", fontSize: "15px" }} >
                                                 Sub Total&nbsp;{this.calculatetotal(val)}<br />
                                                 Shipping&nbsp;FREE<br />
                                                 Shipping Insurance&nbsp;FREE<br />
-                                                <div style={{ float: "right", fontSize: "23px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "25px" }}>{this.calculatetotal(val)}</span></div>
+                                                <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}</span></div>
                                             </div>
                                         </div>
                                         {/* {val.paymentStatus} */}
