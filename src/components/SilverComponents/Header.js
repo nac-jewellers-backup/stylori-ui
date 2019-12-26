@@ -123,10 +123,10 @@ class Header extends Component {
                     document.getElementById("headerContainer").style.boxShadow = "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)";
                     document.getElementById("logoImage").style.width = "50%";
                     document.getElementById("logoImage").style.transitionDuration = "1s";
-                    document.getElementById("headerContainer").style.height = "55px"; 
+                    document.getElementById("headerContainer").style.height = "55px";
                     document.getElementById("logoDiv1").style.padding = "0px";
-                    document.getElementById("containerTitle").style.height = "55px";  
-                    document.getElementById("fullcontainer").style.height = "55px"; 
+                    document.getElementById("containerTitle").style.height = "55px";
+                    document.getElementById("fullcontainer").style.height = "55px";
                     document.getElementById("titleTop").style.marginTop = "0px"
                 } else {
                     document.getElementById("headerContainer").style.position = "inherit";
@@ -204,15 +204,15 @@ class Header extends Component {
                                                     style={{ width: "220px", height: "45px", lineHeight: "45px", cursor: "pointer" }}
                                                 >
                                                     <a
-                                                        onClick={() => {
+                                                        onClick={() => { 
                                                             localStorage.clear();
                                                             window.location.reload()
                                                             window.location.pathname = "/login"
                                                         }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
-                      </a>&nbsp;/&nbsp;
-                      <NavLink to="/account">
+                                             </a>&nbsp;/&nbsp;
+                                             <NavLink onClick={() => window.location.pathname = "/account-profile"}>
                                                         My Account
-                        </NavLink>
+                                               </NavLink>
                                                 </div>
                                             </Popover>
                                             <Badge color="secondary"
@@ -335,7 +335,7 @@ class Header extends Component {
                                                 <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">
                                                     <i class="fa fa-heart" onClick={() => {
                                                         if (user_id.length > 0) {
-                                                            window.location.href = "/account"
+                                                            window.location.href = `/account${'-wishlist'}`
                                                         } else {
                                                             window.location.href = "/login"
                                                         }
@@ -436,28 +436,28 @@ class Header extends Component {
                             </> :
                                 <>
                                     <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.pathname = "/account"}>
+                                        <ListItemText onClick={() => window.location.pathname.split("-")[0] === "/account"}>
                                             <Typography className="list-items1" >
                                                 VIEW PROFILE
                                             </Typography>
                                         </ListItemText>
                                     </ListItem>
                                     <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.pathname = "/account"}>
+                                        <ListItemText onClick={() => window.location.pathname.split("-")[0] === "/account"}>
                                             <Typography className="list-items1">
                                                 MY WHISLIST
                                             </Typography>
                                         </ListItemText>
                                     </ListItem>
                                     <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.pathname = "/account"}>
+                                        <ListItemText onClick={() => window.location.pathname.split("-")[0] === "/account"}>
                                             <Typography className="list-items1">
                                                 ALL ORDERS
                                             </Typography>
                                         </ListItemText>
                                     </ListItem>
                                     <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.pathname = "/account"}>
+                                        <ListItemText onClick={() => window.location.pathname.split("-")[0] === "/account"}>
                                             <Typography className="list-items1">
                                                 CONTACT US
                                             </Typography>

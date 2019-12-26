@@ -32,11 +32,11 @@ const AddressComponent = (props) => {
                             {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? <h5 className='title'> Edit Address</h5> : ""}
                             <p class="form-group tp" style={{ width: "480px" }}>
                                 {/* {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <>{cl}</>} */}
-                                {window.location.pathname === "/account" || values.edit_addresId === true ? "" : <>{cl}</>}
+                                {window.location.pathname.split("-")[0]==="/account" || values.edit_addresId === true ? "" : <>{cl}</>}
                                 {/* {JSON.stringify(values.errortext && values.errortext.pinerr)} */}
                             </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={5}>
-                                    {window.location.pathname === "/account" || values.hidebilling === true ? "" : <>
+                                    {window.location.pathname.split("-")[0]==="/account" || values.hidebilling === true ? "" : <>
                                         <h5 className='title'>Shipping Address</h5>
                                         <>
                                             {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
@@ -170,7 +170,7 @@ const AddressComponent = (props) => {
                                 {/*  */}
                                 {/*  */}
                                 {/* {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <> */}
-                                {window.location.pathname === "/account" || values.edit_addresId === true ? "" : <>
+                                {window.location.pathname.split("-")[0]==="/account" || values.edit_addresId === true ? "" : <>
                                     <Grid container item lg={1} />
                                     {!values.checkValue &&
                                         <Grid item xs={12} lg={5}>

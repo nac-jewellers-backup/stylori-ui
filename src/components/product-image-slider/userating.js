@@ -30,7 +30,26 @@ const useRating = (props) => {
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addproductreview', {}, false);
     var variab = {}
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CUSTOMERREVIEWS, () => { }, {});
-
+    const clear = () => {
+        setValues({
+            user_id: "",
+            rate: "",
+            product_id: "",
+            product_sku: "",
+            title: "",
+            message: "",
+            errortext: {
+                rateerr: "",
+                ratetitle: "",
+                ratemsg: "",
+            },
+            error: {
+                rateerr: false,
+                ratetitle: false,
+                ratemsg: false,
+            },
+        })
+    }
     const count = localStorage.getItem("count") ? localStorage.getItem("count") : ""
     // variab['productSku'] = values.product_sku
     useEffect(() => {
@@ -46,6 +65,7 @@ const useRating = (props) => {
             })
             if (data.message === "updated successfully") {
                 alert("Your review has been sent to our team. Will post it soon. Thanks!")
+                clear()
                 // return false
             } else {
                 alert("Your reviewed this product  already.")
@@ -78,7 +98,7 @@ const useRating = (props) => {
                 }
                 values['user_id'] = user_id
                 var a = window.location.search.split('=')
-                var b = a[1].split('-')[0]
+                var b = a[1].split('-')[0] 
                 values['product_id'] = b
                 // setFilters(values)
                 setValues({
@@ -191,8 +211,8 @@ const useRating = (props) => {
             return false
         }
     }
-
-    const handlers = { handleChange, handleInvalid, handelSubmit };
+  
+    const handlers = { handleChange, clear,handleInvalid, handelSubmit };
 
     return { values, setValues, handlers, data }
 }

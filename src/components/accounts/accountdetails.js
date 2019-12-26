@@ -17,14 +17,14 @@ class Accountdetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isActive: "profile",
+            isActive: window.location.pathname.split("-")[1],
             // window.location.pathname.split("-")[1]
         };
     }
 
     Activeaccounts = (name) => {
         this.setState({ isActive: [name] })
-
+        window.history.pushState(window.location.href, null, `/account${"-" + name}`);
     }
     // fun = () => {
     //     const allorder = this.props.allorderdata ? this.props.allorderdata : ""
