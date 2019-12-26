@@ -120,6 +120,7 @@
   height: 14px;
   fill: #ccc;
   padding: 3px;
+  background: #d51f63
 }
 
 
@@ -323,17 +324,25 @@
   /* justify-content: center; */
 }
 
+.setHeight {
+  height: 70px;
+}
+
 .widthClose {
   width: 93%;
 }
 
+@media only screen and (max-width: 428px) {
+  .logoDiv1 {
+    padding-top: 3px
+  }
+}
 
 @media only screen and (max-width: 958px) and (min-width: 428px) {
   .logoDiv1 {
     display: flex;
     justify-content: center;
     max-width: 68% !important;
-    padding-top: 5% !important;
   }
 
   .widthClose {
@@ -350,7 +359,7 @@
 }
 
 .logoDiv1 {
-  padding-Top: 8%;
+  /* padding-Top: 8%; */
 }
 
 .headdd {
