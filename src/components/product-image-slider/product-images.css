@@ -30,6 +30,7 @@ body {
     line-height: 13px;
     text-transform: capitalize;
     text-align: justify;
+    font-size: 14px !important
 }
 
 .bg-clr2 {
@@ -1068,13 +1069,11 @@ body {
 }
 
 .rings_tabs {
-    font-size: 15px !important;
+    font-size: 13px !important;
     color: #394578 !important;
     width: 100% !important;
     padding: 10px;
-    /* display: flex ;
-    margin: auto; */
-    font-weight: 600 !important;
+
     line-height: 13px;
     text-transform: capitalize;
     text-align: justify;
@@ -1253,7 +1252,10 @@ body {
 
 .pricing-loctn {
     color: #394578 !important;
-    font-size: 15px !important;
+    font-size: 14px !important;
+    text-transform: capitalize;
+    font-family: roboto;
+    font-weight: 500;
 }
 
 .pricing-loctn-head {

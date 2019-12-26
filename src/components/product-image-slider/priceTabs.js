@@ -174,7 +174,7 @@ class Component extends React.Component {
                     const arr2 = val.tab2.Children !== null && (val.tab2.Children).split(',')
                     return (
                         <>
-                            {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "20px" }}>
+                            {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "20px",borderBottom: "1px solid #cccccc",paddingBottom: "10px" }}>
                                 <Grid item lg={3} xs={12}><h1 className="rings_tabs">{val.tab1.header}&nbsp;<a
                                     onClick={this.handleOpen}
                                     className="my-ringsize">Size Guide </a></h1></Grid>
