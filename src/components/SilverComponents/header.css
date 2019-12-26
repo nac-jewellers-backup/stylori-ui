@@ -114,6 +114,13 @@
   fill: #fff;
   padding: 3px;
 }
+.searchPlain {
+  width: 14px;
+  height: 14px;
+  fill: #ccc;
+  padding: 3px;
+}
+
 
 .header-appbar-moblie1 {
   background-color: #fff !important;
@@ -314,6 +321,10 @@
   display: flex;
   /* justify-content: center; */
 }
+.widthClose{
+  width: 93%;
+}
+
 
 @media only screen and (max-width: 958px) and (min-width: 428px)
 {
@@ -322,6 +333,9 @@
   justify-content: center;
   max-width: 68% !important;
   padding-top: 5% !important;
+}
+.widthClose{
+  width: 96%;
 }
 }
 .animations {
