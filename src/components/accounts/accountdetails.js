@@ -40,8 +40,8 @@ class Accountdetails extends Component {
                 <Container>
                     <div class="inner-page-title"> My Account </div>
                     <div className="panel_body">
-                        <Grid container spacing={12} >
-                            <Grid item lg={2}>
+                        <Grid container spacing={12} xs={12} lg={12} >
+                            <Grid item lg={2} xs={12}>
                                 <div className="pay-index-subhed">
                                     <p className={this.state.isActive == 'profile' ? "backgrund" : ""}
                                         onClick={() => this.Activeaccounts('profile')}
@@ -67,7 +67,7 @@ class Accountdetails extends Component {
                                         All Orders</p>
                                 </div>
                             </Grid>
-                            <Grid item lg={10}>
+                            <Grid item lg={10} xs={12}>
                                 <div className="pay-index-subhed_datas">
                                     {
                                         this.state.isActive == 'profile' &&

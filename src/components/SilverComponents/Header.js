@@ -205,7 +205,7 @@ class Header extends Component {
                                                 >
                                                     <a
                                                         onClick={() => { 
-                                                            localStorage.clear();
+                                                            localStorage.clear(); 
                                                             window.location.reload()
                                                             window.location.pathname = "/login"
                                                         }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
@@ -436,28 +436,28 @@ class Header extends Component {
                             </> :
                                 <>
                                     <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.pathname.split("-")[0] === "/account"}>
+                                        <ListItemText onClick={() => window.location.href = `/account${'-profile'}`}>
                                             <Typography className="list-items1" >
                                                 VIEW PROFILE
                                             </Typography>
                                         </ListItemText>
                                     </ListItem>
                                     <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.pathname.split("-")[0] === "/account"}>
+                                        <ListItemText onClick={() => window.location.href = `/account${'-wishlist'}`}>
                                             <Typography className="list-items1">
                                                 MY WHISLIST
                                             </Typography>
                                         </ListItemText>
                                     </ListItem>
                                     <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.pathname.split("-")[0] === "/account"}>
+                                        <ListItemText onClick={() => window.location.href = `/account${'-allorders'}`}>
                                             <Typography className="list-items1">
                                                 ALL ORDERS
                                             </Typography>
                                         </ListItemText>
                                     </ListItem>
                                     <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.pathname.split("-")[0] === "/account"}>
+                                        <ListItemText >
                                             <Typography className="list-items1">
                                                 CONTACT US
                                             </Typography>

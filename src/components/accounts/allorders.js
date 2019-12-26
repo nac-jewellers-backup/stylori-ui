@@ -100,6 +100,14 @@ class Allorders extends React.Component {
                                                             {val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].lastname}</div><br />
                                                         <div> {val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].addressline1}</div><br />
                                                         <div>  {val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].city}{"-" + val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].pincode}</div>
+                                                        <br/>
+                                                        {val.shoppingCartByCartId&&val.shoppingCartByCartId.giftwrapsByCartId&&val.shoppingCartByCartId.giftwrapsByCartId.nodes&&val.shoppingCartByCartId.giftwrapsByCartId.nodes.length>0?<>
+                                                            <div> <b>gift To</b> : 
+                                                        {val.shoppingCartByCartId.giftwrapsByCartId.nodes[0].giftTo}</div>
+                                                        <br/><div> <b>gift message</b> : 
+                                                        {val.shoppingCartByCartId.giftwrapsByCartId.nodes[0].message}</div></>:""}
+                                             
+                                                        {/* <div></div> */}
                                                     </Grid>
                                                 </Grid>
                                             </div>
@@ -129,7 +137,9 @@ class Allorders extends React.Component {
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.skuWeight + "" + "GM"}
                                                                     </Typography>
-                                                                    <Typography className="subhesder">0.0 CT</Typography>
+                                                                    <Typography className="subhesder">0.0 CT
+                                                                    {/* {cart.transSkuListByProductSku&&cart.transSkuListByProductSku.productListByProductId&&cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku&&cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight+" "+"CT"} */}
+                                                                    </Typography>
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.generatedSku}
                                                                     </Typography>

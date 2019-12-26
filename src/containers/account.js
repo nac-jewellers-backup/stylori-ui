@@ -39,7 +39,15 @@ class Accounts extends React.Component {
   
               <Grid item xs={12}>
               </Grid> */}
+                    <Grid container spacing={12}>
+                        <Grid item xs={12} >
+                            <Header />
+                        </Grid>
+                    </Grid>
 
+                    <Grid item xs={12}>
+                        <Accountdetails data={this.props.data} wishlistdata={this.props.wishlistdata} allorderdata={this.props.allorderdata} />
+                    </Grid>
                 </Hidden>
 
             </div>

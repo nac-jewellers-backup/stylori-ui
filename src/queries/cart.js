@@ -67,10 +67,17 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
             state
           }
         }
+        giftwrapsByCartId {
+          nodes {
+            message
+            giftTo
+          }
+        }
       }
     }
   }
 }
+
 `
 export const ALLUSERWISHLISTS = `query MyQuery($userprofileId: [UUID!]) {
   allUserWhislists(filter: {userprofileId: {in: $userprofileId}, isActive: {equalTo: true}}) {
