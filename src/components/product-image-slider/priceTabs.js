@@ -174,7 +174,7 @@ class Component extends React.Component {
                     const arr2 = val.tab2.Children !== null && (val.tab2.Children).split(',')
                     return (
                         <>
-                            {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "20px",borderBottom: "1px solid #cccccc",paddingBottom: "10px" }}>
+                            {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px", borderBottom: "1px solid #cccccc", paddingBottom: "10px" }}>
                                 <Grid item lg={3} xs={12}><h1 className="rings_tabs">{val.tab1.header}&nbsp;<a
                                     onClick={this.handleOpen}
                                     className="my-ringsize">Size Guide </a></h1></Grid>
@@ -235,8 +235,8 @@ class Component extends React.Component {
                                                         >
                                                             {/* {this.imageRender(val)} */}
                                                             <span id={val} className={`tabs-contants ${classes.normalfonts}`}>{arrPurity}</span>
+                                                            <div className={this.state.purity === val ? `rings_tabsvls_active ${classes.tabs_values_font}` : `rings_tabsvls ${classes.tabs_values_font}`}>{arrColor}</div>
                                                         </button>
-                                                        <div className={this.state.purity === val ? `rings_tabsvls_active ${classes.tabs_values_font}` : `rings_tabsvls ${classes.tabs_values_font}`}>{arrColor}</div>
                                                     </Grid>
                                                 )
                                             }

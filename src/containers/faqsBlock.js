@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "components/Header/header";
+import Header from "components/SilverComponents/Header";
 // import Header from "components/SilverComponents/Header";
 import { Grid, Hidden, Typography } from "@material-ui/core";
 import Footer from "components/Footer/Footer";
@@ -68,7 +68,7 @@ function FaqsBlock(props) {
 
                                     {props.titleUrl === '/productcare' ? <ProductCareComp ProductCare={ProductCare} />
                                         :
-                                        <>{ <Accordian faqs={values()} />}</>
+                                        <>{<Accordian faqs={values()} />}</>
                                     }
 
                                 </Grid>
