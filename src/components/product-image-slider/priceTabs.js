@@ -18,6 +18,26 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
 import { ProductDetailContext } from 'context/ProductDetailContext';
 
+// imgleft: {
+//     backgroundImage: "url(https://alpha-assets.stylori.com/images/static/slider_icon.png) !important",
+//     backgroundPosition: "-27px -229px !important",
+//     width: "35px !important",
+//     height: "44px !important",
+//     backgroundRepeat: "no-repeat !important",
+//     float: "left",
+//     backgroundColor: "#fff",
+//     borderLeft: " 0px"
+// },
+// imgRight: {
+//     backgroundImage: "url(https://alpha-assets.stylori.com/images/static/slider_icon.png) !important",
+//     backgroundPosition: "-160px -229px !important",
+//     width: "35px !important",
+//     height: " 44px !important",
+//     backgroundRepeat: 'no-repeat !important',
+//     float: 'right',
+//     backgroundColor: '#fff',
+//     borderRight: '0px'
+// },
 function TabContainer({ children, dir }) {
     return (
         <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
@@ -52,6 +72,7 @@ class Component extends React.Component {
     handleClose = () => {
         this.setState({ open: false });
     };
+
 
     handleClick = (event, key) => {
         console.log('lklkkoik9', this.state.purity)
@@ -164,8 +185,15 @@ class Component extends React.Component {
             // slidesToShow: data[0].productTabs[0].tab1.Children.length > 8 ? limit :data[0].productTabs[0].tab1.Children.length,
             slidesToScroll: 5,
             slidesToShow: 7,
-            arrow: true,
+            arrows: false,
         };
+        const slider = React.createRef();
+        const next = () => {
+            slider.current.slickNext();
+        }
+        const previous = () => {
+            slider.current.slickPrev();
+        }
         // data[0].productTabs[0].tab2.Children
         return (
             <div>
@@ -181,21 +209,31 @@ class Component extends React.Component {
                                 <Grid item lg={9} xs={12} style={{ padding: "0px 5px 0px 5px" }}>
                                     {arr.length > 0 ?
                                         <>
-                                            <div className={classes.pagination} style={{ overflow: "hidden" }}>
-                                                <Slideshow dataCarousel={settings}>
-                                                    {arr.map((val, i) => {
-                                                        return (<>
-                                                            <button
-                                                                className={val === this.state.skuSize ? 'dark' : 'page'}
-                                                                id={val}
-                                                                onClick={event => this.handleClick(event, 'skuSize')}
-                                                            >
-                                                                {val}
-                                                            </button>
-                                                        </>)
-                                                    }
-                                                    )}
-                                                </Slideshow>
+                                            <Grid container style={{ width: "100%" }} className={classes.pagination} style={{ overflow: "hidden" }}>
+                                                <Grid item style={{ width: "8%",alignItems: "center",justifyContent:"center",display:"flex" }}>
+                                                    <img onClick={() => previous()} className={"icon-leftcaro"} />
+
+                                                </Grid>
+                                                <Grid item style={{ width: "84%" }}>
+                                                    <Slideshow dataCarousel={settings}>
+                                                        {arr.map((val, i) => {
+                                                            return (<>
+                                                                <button
+                                                                    className={val === this.state.skuSize ? 'dark' : 'page'}
+                                                                    id={val}
+                                                                    onClick={event => this.handleClick(event, 'skuSize')}
+                                                                >
+                                                                    {val}
+                                                                </button>
+                                                            </>)
+                                                        }
+                                                        )}
+                                                    </Slideshow>
+                                                </Grid>
+                                                <Grid item style={{ width: "8%",    alignItems: "center",justifyContent:"center",display:"flex" }}>
+                                                    <img onClick={() => next()} className={"icon-rightcaro"} />
+
+                                                </Grid>
                                                 <Modal
                                                     aria-labelledby="simple-modal-title"
                                                     aria-describedby="simple-modal-description"
@@ -210,7 +248,7 @@ class Component extends React.Component {
                                                 {/* <div style={{ marginTop: "10px", textAlign: "center" }}>
                                                     <span style={{ cursor: "pointer" }} className={`my-ringsize ${classes.normalfonts} `} >My Ring Size ?</span>
                                                  </div> */}
-                                            </div>
+                                            </Grid>
                                         </>
                                         : ""}
                                 </Grid>

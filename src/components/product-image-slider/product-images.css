@@ -1365,3 +1365,20 @@ body {
     box-shadow: none !important;
 
 }
+
+.icon-rightcaro {
+    background-position: -65px -21px !important;
+    width: 15px !important;
+    height: 20px !important;
+    background-image: url("https://alpha-assets.stylori.com/images/static/home/slider_button.png") !important;
+    /* border-right: 1px solid #ccc; */
+
+}
+
+.icon-leftcaro {
+    background-position: -16px -21px !important;
+    width: 15px !important;
+    height: 20px !important;
+    background-image: url("https://alpha-assets.stylori.com/images/static/home/slider_button.png") !important;
+    /* border-left: 1px solid #ccc; */
+}
