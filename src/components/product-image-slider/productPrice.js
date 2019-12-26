@@ -39,7 +39,7 @@ const mobilecarousel = (props, val) => {
                 </Grid>
                 <Grid container item xs={4} />
                 <Grid container item xs={2} className="css-ts7n45_wishlist">
-                    <Wishlist props={"1"} />
+                    {/* <Wishlist props={"1"} /> */}
                 </Grid>
             </Grid>
             {/* <div style={{background:"red"}}>Earrings in 18K Yellow Gold and Peridot for Kids</div> */}
@@ -159,7 +159,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                     onClick={handleClick}
                                                 ></i> &nbsp;
                                         {/* {JSON.stringify(val.productId)} */}
-                                                <Wishlist sku={val.skuId} productId={val.productId} />
+                                                {/* <Wishlist sku={val.skuId} productId={val.productId} /> */}
 
                                                 <Popover
                                                     id="simple-popper"

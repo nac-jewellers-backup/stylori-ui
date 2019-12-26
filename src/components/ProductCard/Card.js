@@ -178,6 +178,9 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '0 !important',
 
   },
+  cardAtionspadding:{
+    padding:0
+  },
   textDel: {
     color: "#828282"
   },
@@ -317,6 +320,11 @@ const useStyles = makeStyles(theme => ({
   },
   iconColor: {
     color: theme.palette.secondary.light
+  },
+  cardActionsImage:{
+    [theme.breakpoints.down('md')]: {
+      height:'200px !important'
+    }
   }
 }));
 const renderImages = (props, cardstate) => {
@@ -345,7 +353,7 @@ function Component(props) {
   return (
     <div className={classes.root} >
       <Card className={classes.card} >
-        <CardActions>
+        <CardActions className={classes.cardAtionspadding}>
           <Grid container xs={12}>
             <Grid container item xs={6} justify="flex-start">
               {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" >
@@ -368,7 +376,7 @@ function Component(props) {
         </CardActions>
         {/* /:productCategory/:productType/:material/:productName */}
         <Link to={{ pathname: `${'jewellery'}/${props.data.productType}/${props.data.material}/${(props.data.title).replace(/ /g, "-")}`, search: `skuId=${props.data.skuId}` }} style={{ textDecoration: 'none' }} onClick={handleProductDetatiContext(props)}>
-          <CardActionArea style={{ height: `${_height ? `${_height}px` : '300px'}` }}>
+          <CardActions style={{ maxHeight: `${_height ? `${_height}px` : '300px'}`, minHeight:'250px' }} className={`${classes.cardAtionspadding} ${classes.cardActionsImage}`}>
 
           {/* <img 
 srcset={renderImages(props, cardstate)}
@@ -394,7 +402,7 @@ sizes="(max-width: 320px) 320w,
           
           /> */}
           {Gallery(props, callmouseover, callmouseout, cardstate)}
-        </CardActionArea>
+        </CardActions>
         <Card className={classes.priceClass}>
           <CardContent className={classes.cardContent}>
             <Grid
