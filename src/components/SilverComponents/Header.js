@@ -122,6 +122,7 @@ class Header extends Component {
         });
     };
     scrolling = () => {
+        debugger
         if (window.location.pathname !== "/cart" && window.location.pathname !== '/checkout') {
             if (window.innerWidth > 959) {
                 if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
