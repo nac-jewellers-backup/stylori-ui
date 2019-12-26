@@ -16,12 +16,12 @@ const useGift = () => {
     });
     // const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     const { data, error, loading, makeFetch } = useNetworkRequest('/addgiftwrap', {}, false);
-    // useEffect(() => {
-    //     var v = data.email ? data.email : ""
-    //     if (v.length > 0) {
-    //         localStorage.setItem("email", data.email)
-    //     }
-    // }, [data])
+    useEffect(() => {
+        // var v = data.message ? data.message : ""
+        if (data && data.message === "Success") {
+            alert("Your Gift wrap is added Successfully")
+        }
+    }, [data])
     const handleChange = (type, value) => {
         setValues({
             ...values,
@@ -33,9 +33,9 @@ const useGift = () => {
         makeFetch(values);
     }
 
-    const handlers = { handleSubmit, handleChange };
+    const handlers = {handleSubmit, handleChange };
 
-    return { values, handlers, val }
+    return { values, handlers, val,data }
 }
 
 export default useGift;

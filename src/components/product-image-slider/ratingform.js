@@ -19,26 +19,6 @@ const RatingForm = (props) => {
 const RatingComponent = (props) => {
     const { classes } = props;
     const { values, handlers, setValues } = useRating(props.ratingcounts);
-    const clear = () => {
-        setValues({
-            user_id: "",
-            rate: "",
-            product_id: "",
-            product_sku: "",
-            title: "",
-            message: "",
-            errortext: {
-                rateerr: "",
-                ratetitle: "",
-                ratemsg: "",
-            },
-            error: {
-                rateerr: false,
-                ratetitle: false,
-                ratemsg: false,
-            },
-        })
-    }
 
     return (
         <Container className="bg-clr2">
@@ -94,7 +74,7 @@ const RatingComponent = (props) => {
                 <Grid item xs={12} lg={9}>
                     <div style={{ float: "right" }}>
                         <Button className={`form-reviews-mob ${classes.fontwhite} ${classes.normalcolorback}`} type="submit">Write a Reviews</Button>
-                        <Button onClick={() => clear()} className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite}`} >Cancel</Button>
+                        <Button onClick={() => handlers.clear()} className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite}`} >Cancel</Button>
                     </div>
                 </Grid>
                 </Grid>

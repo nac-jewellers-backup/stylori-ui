@@ -89,26 +89,26 @@ class CustomerReviews extends React.Component {
         return (
             <div>
                 <Hidden smDown>
-                <Container>
-                    <div className="pricing-product-media">
-                        <div className="reviews-header">
-                            <span className={`reviews-customer ${classes.normalfonts}`}>Customer Reviews</span>
+                    <Container>
+                        <div className="pricing-product-media" >
+                            <div className="reviews-header">
+                                <span className={`reviews-customer ${classes.normalfonts}`}>Customer Reviews</span>
+                            </div>
+                            <div className="reviews">
+                                <span className={`data-reviews ${classes.normalfonts}`}>
+                                    <Grid spacing={12} container style={{ float: "left", padding: "2%", lineHeight: "23px" }}>
+                                        <Grid item lg={12}>{this.rat_map_title() ? this.rat_map_title() : <div style={{ textAlign: "center", fontWeight: "bold" }}> No Reviews Found</div>}</Grid>
+                                    </Grid>
+                                </span>
+                            </div>
                         </div>
-                        <div className="reviews">
-                            <span className={`data-reviews ${classes.normalfonts}`}>
-                               <Grid spacing={12} container style={{ float: "left", padding: "2%", lineHeight: "23px" }}>
-                                    <Grid item lg={12}>{this.rat_map_title() ? this.rat_map_title() : <div style={{ textAlign: "center", fontWeight: "bold" }}> No Reviews Found</div>}</Grid>
-                                </Grid>
-                            </span>
-                        </div>
-                    </div>
                     </Container>
                 </Hidden>
 
                 <Hidden mdUp>
                     <Container>
                         <ExpansionPanel
-                            style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important",padding:"0 5px" }} square
+                            style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important", padding: "0 5px" }} square
                             expanded={expanded === 'panel1'}
                             onChange={this.handleChange('panel1')}
                         >

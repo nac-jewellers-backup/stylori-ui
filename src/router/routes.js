@@ -8,16 +8,16 @@ export const routes = {
     UserLogin: '/login',
     UserRegister: '/registers',
     HomePageStylori: '/home',
-    Account: '/account',
+    Account: `/account${"-" + window.location.pathname.split("-")[1]}`,
     Silver: '/silverjewellery',
     Faqs: '/faqs',
-    Stories:'/stories',
-    Collection:'/collection',
+    Stories: '/stories',
+    Collection: '/collection',
     ProductCare: '/productcare',
     Shipping: '/deliveryreturns',
     PrivacyPolicy: '/privacypolicy',
     TermsConditions: '/termsconditions',
-    AboutUs:'/aboutus'
+    AboutUs: '/aboutus'
 }
 
 export default routes;

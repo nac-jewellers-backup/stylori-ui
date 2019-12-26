@@ -53,7 +53,7 @@ export const RouterApp = (props) => {
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
             <Route key="AboutUs" component={AboutPage} exact path={routes.AboutUs} />
 
-            {(props.location.pathname !== "/cart" && props.location.pathname !== "/account" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && Globalctx && Globalctx.pathName === false) &&
+            {(props.location.pathname !== "/cart" && props.location.pathname !== `/account${"-" + window.location.pathname.split("-")[1]}` && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && Globalctx && Globalctx.pathName === false) &&
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />
 
             }
@@ -63,7 +63,7 @@ export const RouterApp = (props) => {
             }
             <Route key="sto" component={stories} exact path={routes.Stories} />
             <Route key="Collection" component={Collection} exact path={routes.Collection} />
-            {(props.location.pathname !== "/cart" && props.location.pathname !== "/account" && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout") &&
+            {(props.location.pathname !== "/cart" && props.location.pathname !== `/account${"-" + window.location.pathname.split("-")[1]}` && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout") &&
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />}
 
             <Route exact component={PricingPage} path={`/:productCategory/:productType/:material/:productName`} />
@@ -71,13 +71,13 @@ export const RouterApp = (props) => {
             <Route key="Register" component={Register} exact path={routes.Register} />
             {
                 localStorage.getItem('user_id') ?
-                <Redirect key="stylori-redirect" from="/login" exact to={"/home"} />
-                :
-            <Route key="login" component={UserLogin} exact path={routes.UserLogin} />
-            
-               
+                    <Redirect key="stylori-redirect" from="/login" exact to={"/home"} />
+                    :
+                    <Route key="login" component={UserLogin} exact path={routes.UserLogin} />
+
+
             }
-            
+
             <Route key="Account" component={Account} exact path={routes.Account} />
             <Route key="registers" component={UserRegister} exact path={routes.UserRegister} />
         </Switch>
