@@ -436,7 +436,7 @@ body {
     border-radius: 0px !important;
     text-align: center !important;
     min-width: 100px !important;
-    font-size: 16px !important;
+    font-size: 13px !important;
     border: none;
     cursor: pointer;
     float: right !important;
@@ -536,7 +536,7 @@ body {
     text-align: center;
     margin-right: 5px !important;
     min-width: 100px;
-    font-size: 17px;
+    font-size: 13px !important;
     padding: 10px 17px !important;
     font-family: "Roboto"
 }
@@ -607,13 +607,13 @@ body {
 }
 
 .reviews-customer {
-    font-size: 15px !important;
+    font-size: 13px !important;
     padding: 0 15px !important;
-    font-weight: 400 !important;
+    font-weight: 600 !important;
 }
 
 .data-reviews {
-    font-size: 12px !important;
+    font-size: 13px !important;
 }
 
 /*price-carousel smart-view*/
