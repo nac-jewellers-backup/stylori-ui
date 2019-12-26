@@ -29,7 +29,7 @@ const Productlist = (props) => {
     return <ProductlistComponent  {...props} />
 }
 const ProductlistComponent = (props) => {
-    const { handlers, values, val } = useGift();
+    const { handlers, values, val ,data} = useGift();
     const { classes } = props;
     let value = localStorage.getItem("select_addres") ? JSON.parse(localStorage.getItem("select_addres")) : {};
     const { expanded1, expanded2, expanded3 } = val;
@@ -123,7 +123,10 @@ const ProductlistComponent = (props) => {
                                                 onChange={e => handlers.handleChange('message', e.target.value)}
                                             />
                                             <div className='login-butn'>
-                                                <Button className='apply-b' type="submit">Apply</Button>
+                                                {data && data.message === "Success"?
+                                                <Button style={{filter:"grayscale(5)"}} disabled className='apply-b' type="submit">Apply</Button>:
+                                                <Button className='apply-b' type="submit">Apply</Button>}
+                                                
                                             </div>
                                         </form>
                                     </div>

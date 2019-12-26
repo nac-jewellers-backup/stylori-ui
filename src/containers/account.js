@@ -35,7 +35,7 @@ class Accounts extends React.Component {
                 <Grid item xs={12} >
                   <Header />
                 </Grid> 
-              </Grid>
+              </Grid> 
   
               <Grid item xs={12}>
               </Grid> */}

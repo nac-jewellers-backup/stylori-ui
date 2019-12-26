@@ -93,7 +93,7 @@ const useLogin = (changePanel, props) => {
             localStorage.setItem("check_dlt", false)
             val["addressvalues"] = addresData
             val["addrs"] = false
-            addressetValues(val)
+            addressetValues&&addressetValues(val)
             localStorage.setItem("c_k_l", true)
             if (!pathnames) {
                 changePanel(3)
