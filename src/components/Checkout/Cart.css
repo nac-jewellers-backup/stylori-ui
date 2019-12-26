@@ -86,14 +86,13 @@
         margin-top: 10px !important;
         text-align: center;
         width: 100% !important;
-        height: 90% !important;
         /* box-shadow: 10px 10px 16px 4px #dedada !important; */
         box-shadow: none !important;
-        border: 0.5px solid #ccc !important;
+
         border-radius: none !important;
         outline: none !important;
     }
-    
+
     .image {
         width: 100% !important;
         height: 100% !important;
