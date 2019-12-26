@@ -163,7 +163,7 @@ const Addressforms = (changePanel) => {
         setpincod({ ...pincods, pincods })
         setValues({ ...values, values })
     }
-    const handleSubmit = (e) => { 
+    const handleSubmit = (e) => {
         debugger
         if (values.addressOne.errortext.pinerr !== "") {
             return false
@@ -222,7 +222,7 @@ const Addressforms = (changePanel) => {
                             window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
                         }
                     } else if (values && values.addressOne) {
-                        addObjgust["address"] = [values.addressOne] 
+                        addObjgust["address"] = [values.addressOne]
                         if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
                             var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
                             local_storage.address.splice(values.index, 1);

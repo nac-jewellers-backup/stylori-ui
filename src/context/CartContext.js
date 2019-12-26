@@ -23,7 +23,7 @@ const initialCtx = {
             discounted_price: "",
             tax_price: ''
         },
-        loading: false, error: false, data: [], allorderdata: [], wishlistdata: [],wishlist_count: []
+        loading: false, error: false, data: [], allorderdata: [], wishlistdata: [], wishlist_count: []
     },
     setCartFilters: (filterData) => { },
     setallorderdata: () => { },
@@ -58,7 +58,7 @@ const Provider = (props) => {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))
         }
         // localStorage.setItem('cart_id', JSON.stringify(crtdata))
-    }, [crtdata]) 
+    }, [crtdata])
     useEffect(() => {
         const orderall = allorder ? allorder && allorder.data && allorder.data.allOrders && allorder.data.allOrders.nodes : ""
         if (orderall && orderall.length > 0) {
@@ -75,7 +75,7 @@ const Provider = (props) => {
             // localStorage.setItem("allorder", allorder.data.allOrders)
             // obj_aishlist_count["wishlist_count"] = wishlistdatas && wishlistdatas.length
             localStorage.setItem("a__w_l", wishlistdatas && wishlistdatas.length)
-            setwishlistdata(objwishlist) 
+            setwishlistdata(objwishlist)
             // setwishlist_count(obj_aishlist_count)
             // alert(JSON.stringify(obj_aishlist_count))
         }
@@ -167,10 +167,10 @@ const Provider = (props) => {
     }, [])
 
     const CartCtx = {
-        cartFilters, loading, error, wishlist_count,data, setCartFilters, allorderdata, wishlistdata
+        cartFilters, loading, error, wishlist_count, data, setCartFilters, allorderdata, wishlistdata
     }
     return (
-        <CartContext.Provider value={{ CartCtx,setwishlist_count, setCartFilters, setallorderdata, setwishlistdata }} >
+        <CartContext.Provider value={{ CartCtx, setwishlist_count, setCartFilters, setallorderdata, setwishlistdata }} >
             {props.children}
         </CartContext.Provider>
     )

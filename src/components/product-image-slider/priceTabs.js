@@ -34,14 +34,15 @@ const PriceTabs = (props) => {
 class Component extends React.Component {
     constructor(props) {
         super(props);
+
     }
     state = {
         value: 1,
         values: "",
         expanded: "1",
-        skuSize: '',
-        purity: '',
-        diamondType: "",
+        skuSize: this.props && this.props.filters && this.props.filters.defaultVariants && this.props.filters.defaultVariants.skuSize,
+        purity: this.props.data[0].productsDetails[0].namedetail[1].details,
+        diamondType: this.props && this.props.filters && this.props.filters.defaultVariants && this.props.filters.defaultVariants.diamondType,
         open: false
     };
     handleOpen = () => {
@@ -50,20 +51,19 @@ class Component extends React.Component {
 
     handleClose = () => {
         this.setState({ open: false });
-    }; 
+    };
 
     handleClick = (event, key) => {
-
-        console.log('lklkkoik9', this.state.skuSize)
+        console.log('lklkkoik9', this.state.purity)
         var filters = { ...this.props.filters }
         if (key === 'purity') {
             var kv = event.target.id
             var objVal = kv.split(" ")
             var arrPurity = objVal[0]
-            var arrColor = objVal[1] 
+            var arrColor = objVal[1]
             var diamondTypes = filters['defaultVariants']['diamondType']
             filters['defaultVariants']['purity'] = arrPurity
-            filters['defaultVariants']['metalColor'] = arrColor 
+            filters['defaultVariants']['metalColor'] = arrColor
             // filters['defaultVariants']['skuSize']=diamondTypes
             filters['defaultVariants']['diamondType'] = diamondTypes
             this.setState({
@@ -166,6 +166,7 @@ class Component extends React.Component {
             slidesToShow: 7,
             arrow: true,
         };
+        // data[0].productTabs[0].tab2.Children
         return (
             <div>
                 {data[0].productTabs.map(val => {
@@ -215,7 +216,7 @@ class Component extends React.Component {
                                 </Grid>
                             </Grid> : ""}
                             {arr2.length > 0 ?
-                                <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
+                                <Grid container spacing={12} lg={12} style={{ marginBottom: "10px", padding: "0px 10px" }}>
                                     <Grid item lg={3} xs={12}><h1 className="rings_tabs">{val.tab2.header}</h1></Grid>
                                     <Grid item lg={9} xs={12}>
                                         <Grid container spacing={12} lg={12}>
@@ -229,7 +230,7 @@ class Component extends React.Component {
                                                         <button
                                                             style={{ background: this.imageRender(val) }}
                                                             className={this.state.purity === val ? 'darktabs tabs-valus' : 'pagetabs tabs-valus'}
-                                                            id={val}
+                                                            id={val} color={arrColor}
                                                             onClick={event => this.handleClick(event, 'purity')}
                                                         >
                                                             {/* {this.imageRender(val)} */}
@@ -244,7 +245,7 @@ class Component extends React.Component {
                                     </Grid>
                                 </Grid> : ""}
 
-                            {val.tab3.Children.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
+                            {val.tab3.Children.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px", padding: "0px 10px" }}>
                                 <Grid item lg={3} xs={12}><h1 className="rings_tabs">{val.tab3.header}</h1></Grid>
                                 <Grid item lg={9} xs={12}>
                                     <Grid container spacing={12} lg={12}>

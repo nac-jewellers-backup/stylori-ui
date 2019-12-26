@@ -27,7 +27,7 @@ const AddressComponent = (props) => {
                     <div className='pt-sm'>
                         <form onSubmit={(e) => {
                             handle.handleSubmit(e)
-                           
+
                         }} action="javascript:void(0)">
                             {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? <h5 className='title'> Edit Address</h5> : ""}
                             <p class="form-group tp" style={{ width: "480px" }}>
@@ -53,7 +53,7 @@ const AddressComponent = (props) => {
                                                 type="text"
                                                 value={values.addressOne.firstname}
                                                 placeholder="First name"
-                                                required
+                                                required 
                                                 onChange={(event) => handle.handleChange('addressOne', 'firstname', event.target.value)}
                                                 helperText="Firstname is required"
                                             />

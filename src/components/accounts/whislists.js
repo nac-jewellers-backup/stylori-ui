@@ -19,7 +19,7 @@ const Wishlists = (props) => {
 }
 class Component extends React.Component {
     // handleLocalStorage = (props) => {
-    //     debugger
+    //     
     //     var datas;
     //     const { wishlistdata } = this.props.wishlistdata;
     //     // wishlistdata.nodes[0].productId

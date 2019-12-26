@@ -14,6 +14,7 @@ const Login = (props) => {
 }
  
 const LoginComponent = (props) => {
+    debugger
     const { classes } = props;
     const { values, handlers, setValues, data } = useLogin(() => props.changePanel(2));
     // const vl = data && data.message
@@ -46,8 +47,8 @@ const LoginComponent = (props) => {
             <form action="javascript:void(0)" onSubmit={(e) => {handlers.handelSubmit(e, props.history.push)}}>
                 <Grid container item xs={12} lg={window.location.pathname === "/login" ? 12 : 6}>
                     <h5 className={`title ${classes.normalfonts}`}>
-                    {window.location.pathname === "/login" ? "Login" : "I already have an account"}
-                           </h5>
+                        {window.location.pathname === "/login" ? "Login" : "I already have an account"}
+                    </h5>
                     <Input
                         margin="normal"
                         variant="outlined"
@@ -94,7 +95,7 @@ const LoginComponent = (props) => {
                     </div>
                     <div className='login-butn'>
                         {window.location.pathname === "/login" ? "" : <Button className='back-b' onClick={() => clear()} >Back</Button>}
-                        <Button className='apply-b' type="submit"> {window.location.pathname === "/login" ? "Login" :"Apply"}</Button>
+                        <Button className='apply-b' type="submit"> {window.location.pathname === "/login" ? "Login" : "Apply"}</Button>
                     </div>
 
                 </Grid>

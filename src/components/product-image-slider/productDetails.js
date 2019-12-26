@@ -18,7 +18,7 @@ class ProductDetails extends React.Component {
     state = {
         expanded: null
     };
-  
+
     productsDetails = (data) => {
         const { classes } = this.props;
         return (
@@ -26,8 +26,8 @@ class ProductDetails extends React.Component {
 
                 <Grid container spacing={12} style={{ paddingRight: "20px" }}>
                     {data[0].productsDetails.map(valueofproductdetail => {
-                        
-                        return (valueofproductdetail.namedetail.length===0) ? false :
+
+                        return (valueofproductdetail.namedetail.length === 0) ? false :
                             <>
                                 <div className='overall-boxz'>
                                     <div className='overall-bo'>
@@ -35,39 +35,41 @@ class ProductDetails extends React.Component {
                                         <hr class="bottom-line"></hr>
                                         <>{
                                             valueofproductdetail.namedetail !== undefined && valueofproductdetail.namedetail.map(res => {
-                                                return (
+                                                return (<>{res.name &&
                                                     <span>
-                                                        {res.details !== null && res.details.length === 0 ? false :
+                                                    {res.details !== null && res.details.length === 0 ? false :
 
-                                                            <Grid container item xs={12} >
-                                                                <Grid xs={4}>
-                                                                    <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
-                                                                        <span style={{ fontSize: "12px" }}> {res.name}</span>
-                                                                    </ListItemText>
-                                                                </Grid>
-                                                                <Grid container item xs={8}  >
-                                                                    {
-                                                                        isArray(res.details) ?
-                                                                        
-                                                                            <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
-                                                                               {res.details.map((Item , Index) => {
-                                                                                    return(<span style={{ fontSize: "12px", textAlign: 'left' }}> { 
-                                                                                    (valueofproductdetail.header === 'Price Breakup' && res.name !== 'GST') ? 
-                                                                                ( (Index === 0 && (res.details[Index] !== res.details[Index + 1] ) ? <del>{Item}</del> : Item  ) ) : Item } </span>)
-                                                                                })}
-                                                                            </ListItemText>
-                                                                            :
-
-                                                                            <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
-                                                                                {/* {data[0].productsDetails[3].namedetail[1].length > 0} */}
-                                                                               {  <span style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</span>}
-                                                                            </ListItemText>
-                                                                    }
-                                                                </Grid>
+                                                        <Grid container item xs={12} >
+                                                            <Grid xs={4}>
+                                                                <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
+                                                                    <span style={{ fontSize: "12px" }}> {res.name}</span>
+                                                                </ListItemText>
                                                             </Grid>
-                                                        }
-                                                    </span>
-                                                )
+                                                            <Grid container item xs={8}  >
+                                                                {
+                                                                    isArray(res.details) ?
+
+                                                                        <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
+                                                                            {res.details.map((Item, Index) => {
+                                                                                return (<span style={{ fontSize: "12px", textAlign: 'left' }}> {
+                                                                                    (valueofproductdetail.header === 'Price Breakup' && res.name !== 'GST') ?
+                                                                                        ((Index === 0 && (res.details[Index] !== res.details[Index + 1]) ? <del>{Item}</del> : Item)) : Item} </span>)
+                                                                            })}
+                                                                        </ListItemText>
+                                                                        :
+
+                                                                        <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
+                                                                            {/* {data[0].productsDetails[3].namedetail[1].length > 0} */}
+                                                                            {<span style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</span>}
+                                                                        </ListItemText>
+                                                                }
+                                                            </Grid>
+                                                        </Grid>
+                                                    }
+                                                </span>
+                                           
+                                                }</>
+                                                    )
                                             }
                                             )}</>
                                     </div>
@@ -108,7 +110,7 @@ class ProductDetails extends React.Component {
                             (data[0].productType !== "Earring" && val.header === 'Gemstone Details')
                             || (data[0].productType === "Earring" && val.header.trim() === 'Diamond Details')) ? false :
                             <>
-                                <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important",padding:"0 5px" }} expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
+                                <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important", padding: "0 5px" }} expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
                                     <ExpansionPanelSummary className="expansion-summary"
                                         expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" >
                                         </i></span>}>
@@ -156,7 +158,7 @@ class ProductDetails extends React.Component {
 
                     {data[0].productsPendants.map(val => (
                         <div>
-                            <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important",padding:"0 5px" }} expanded={expanded === 'panel'} onChange={this.handle('panel')}>
+                            <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important", padding: "0 5px" }} expanded={expanded === 'panel'} onChange={this.handle('panel')}>
                                 <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                                     <i class="fa fa-sort-up" ></i></span>}>
                                     <div style={{ width: "100%" }} >
