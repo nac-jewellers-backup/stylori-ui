@@ -40,7 +40,7 @@ class Accounts extends React.Component {
               <Grid item xs={12}>
               </Grid> */}
                     <Grid container spacing={12}>
-                        <Grid item xs={12} >
+                        <Grid item xs={12} > 
                             <Header />
                         </Grid>
                     </Grid>
