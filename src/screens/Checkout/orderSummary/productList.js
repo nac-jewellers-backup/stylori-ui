@@ -119,7 +119,7 @@ const ProductlistComponent = (props) => {
                                                 name="message"
                                                 type="text"
                                                 value={values.message}
-                                                required
+                                                required 
                                                 onChange={e => handlers.handleChange('message', e.target.value)}
                                             />
                                             <div className='login-butn'>
