@@ -43,7 +43,7 @@ const useRegister = (changePanel, props) => {
         pincode: pin_cod,
         addres_Id: addres_Ids,
     });
-    const pathnames = window.location.pathname === "/account"
+    const pathnames = window.location.pathname.split("-")[0]==="/account"
     const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     const { makeFetch: makeFetchedit } = useNetworkRequest('/api/auth/signup', {}, false);
     const { makeFetch: makeFetcheditAddress } = useNetworkRequest('/adduseraddress', {}, false);

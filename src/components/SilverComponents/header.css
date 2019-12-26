@@ -115,6 +115,14 @@
   padding: 3px;
 }
 
+.searchPlain {
+  width: 14px;
+  height: 14px;
+  fill: #ccc;
+  padding: 3px;
+}
+
+
 .header-appbar-moblie1 {
   background-color: #fff !important;
   text-align: center !important;
@@ -162,7 +170,7 @@
   text-align: left;
   white-space: nowrap;
   width: 100%;
-  font-size: 11px;
+  font-size: 11px !important;
   letter-spacing: 1px;
   color: #fff;
   text-transform: capitalize;
@@ -315,12 +323,21 @@
   /* justify-content: center; */
 }
 
+.widthClose {
+  width: 93%;
+}
+
+
 @media only screen and (max-width: 958px) and (min-width: 428px) {
   .logoDiv1 {
     display: flex;
     justify-content: center;
     max-width: 68% !important;
     padding-top: 5% !important;
+  }
+
+  .widthClose {
+    width: 96%;
   }
 }
 

@@ -59,7 +59,7 @@ const useWishlists = (props) => {
                 qty: 1,
                 price: values.add
             })
-            if (window.location.pathname === "/account") {
+            if (window.location.pathname.split("-")[0]==="/account") {
                 window.location.pathname = "/cart"
             }
             removemakeFetch(values);
