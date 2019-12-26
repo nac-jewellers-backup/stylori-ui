@@ -210,7 +210,7 @@ class Component extends React.Component {
                                     {arr.length > 0 ?
                                         <>
                                             <Grid container style={{ width: "100%" }} className={classes.pagination} style={{ overflow: "hidden" }}>
-                                                <Grid item style={{ width: "8%",alignItems: "center",justifyContent:"center",display:"flex" }}>
+                                                <Grid item style={{ width: "8%", alignItems: "center", justifyContent: "center", display: "flex" }}>
                                                     <img onClick={() => previous()} className={"icon-leftcaro"} />
 
                                                 </Grid>
@@ -230,7 +230,7 @@ class Component extends React.Component {
                                                         )}
                                                     </Slideshow>
                                                 </Grid>
-                                                <Grid item style={{ width: "8%",    alignItems: "center",justifyContent:"center",display:"flex" }}>
+                                                <Grid item style={{ width: "8%", alignItems: "center", justifyContent: "center", display: "flex" }}>
                                                     <img onClick={() => next()} className={"icon-rightcaro"} />
 
                                                 </Grid>
@@ -273,7 +273,7 @@ class Component extends React.Component {
                                                         >
                                                             {/* {this.imageRender(val)} */}
                                                             <span id={val} className={`tabs-contants ${classes.normalfonts}`}>{arrPurity}</span>
-                                                            <div className={this.state.purity === val ? `rings_tabsvls_active ${classes.tabs_values_font}` : `rings_tabsvls ${classes.tabs_values_font}`}>{arrColor}</div>
+                                                            <div className={this.state.purity === val ? `rings_tabsvls_active ${classes.tabs_values_font}` : `rings_tabsvls ${classes.tabs_values_font}`}>{arrColor.slice(0, 6)}</div>
                                                         </button>
                                                     </Grid>
                                                 )
