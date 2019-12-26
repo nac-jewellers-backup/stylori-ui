@@ -34,7 +34,7 @@ class Accounts extends React.Component {
                     {/* <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
                 <Grid item xs={12} >
                   <Header />
-                </Grid>
+                </Grid> 
               </Grid>
   
               <Grid item xs={12}>

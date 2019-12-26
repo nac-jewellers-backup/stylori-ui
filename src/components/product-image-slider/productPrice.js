@@ -108,7 +108,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
 
                             </div>
                         </Hidden>
-                        <Paper elevation={0} style={{ width: "100%", margin: "10px 1px 4px 1px", padding: "10px 12px 0px 10px" }}>
+                        <Paper elevation={0} style={{ width: "100%", padding: "5px 8px 0px 8px" }}>
                             <Grid container>
                                 <Grid item xs={12} lg={9} md={9}>
                                     <div className="price-div">
@@ -207,7 +207,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
 
 
                     <Hidden smDown>
-                        <div className={classes.width} style={{ padding: "0 10px" }}>
+                        <div className={classes.width} style={{ padding: "0 10px " }}>
                             <Pricing
                                 price={data[0].price}
                                 offerPrice={data[0].offerPrice}

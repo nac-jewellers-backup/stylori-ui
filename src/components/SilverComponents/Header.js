@@ -25,7 +25,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { useDummyRequest } from '../../hooks';
 import { headerDataSilver } from '../../mappers';
 import { styles } from './styles';
-import LogoSmallScreen from '../../assets/stylori-silver-logo-small-screen.png';
+import LogoSmallScreen from '../../assets/Stylori Silver logo.svg';
 import Seach from '../../assets/search'
 import stylorisilverlogo from '../../assets/Stylori Silver logo.svg'
 import Popover from '@material-ui/core/Popover';
@@ -101,6 +101,15 @@ class Header extends Component {
         }
 
     }
+    handleClickSearch = () =>{
+        //   <InputBase
+        // className={`searchmobile`} 
+        // placeholder=" SEARCH"
+        // endAdornment={<InputAdornment position="end"></InputAdornment>}
+        //  /> 
+        alert("hi");
+        // document.getElementById('search')=<InputBase placeholder="Search" />
+    }
     handleClickPopover = (event) => {
         this.setState({
             anchorEl: event.currentTarget,
@@ -163,12 +172,13 @@ class Header extends Component {
                     <div className="header-appbar-sticky1" id='headerDiv'>
                         <AppBar className="header-appbarsilver1" id="topNav">
                             <Container maxWidth="lg">
-                                <Grid container spacing={12} style={{ marginTop: "40px" }}>
+                                <Grid container spacing={12} style={{ marginTop: "20px" }}>
                                     <Grid container item xs={12} justify="flex-end" alignItems="center">
                                         <div className={`head-icons1 ${classes.headIcons}`} >
                                             <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
                                             <Typography className={classes.callerNum}>1800 102 0330</Typography>
                                             <InputBase
+                                            
                                                 className={`search`}
                                                 placeholder=" SEARCH"
                                                 endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
@@ -228,9 +238,9 @@ class Header extends Component {
                                                     }
                                                 }}  ></i>
                                             </Badge>
-                                            <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                            <Badge style={{fontSize:"11px"}} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
                                                 <NavLink to="/cart">
-                                                    <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                                    <i  class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
                                                 </NavLink> </Badge>
                                         </div>
@@ -315,25 +325,25 @@ class Header extends Component {
                                     </IconButton>
                                 </Grid>
 
-                                <Grid item xs={3} className="logoImgHeader1">
+                                <Grid item xs={4} className="logoImgHeader1">
                                     <div className="logoDiv1">
                                         <img className={`imgsilver`} src={LogoSmallScreen} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                     </div>
                                 </Grid>
-                                <Grid item xs={8}>
+                                <Grid item xs={7}>
                                     <div className="mobli-icon1">
-                                        <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center" }}>
+                                        <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center",paddingRight:"10px" }}>
                                             <div className={`head-icons1 ${classes.headIcons}`} >
                                                 {/* <InputBase
                                                     className={`searchmobile`} 
                                                     placeholder=" SEARCH"
                                                     endAdornment={<InputAdornment position="end"></InputAdornment>}
                                                 /> */}
-                                                <div className={classes.searchcontainTop}><Seach className={"searchsvgmobile"} />
+                                                <div id="search" onClick={this.handleClickSearch} className={classes.searchcontainTop}><Seach  className={"searchsvgmobile"} />
                                                 </div>
                                                 <i class="fa fa-user"></i>
                                                 <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">
-                                                    <i class="fa fa-heart" onClick={() => {
+                                                    <i class={`fa fa-heart ${classes.iconFafaheart}`} onClick={() => {
                                                         if (user_id.length > 0) {
                                                             window.location.href = `/account${'-wishlist'}`
                                                         } else {
@@ -341,8 +351,8 @@ class Header extends Component {
                                                         }
                                                     }}  ></i>
                                                 </Badge>
-                                                <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                    <NavLink to="/cart">  <i class="fa fa-shopping-cart"></i>
+                                                <Badge style={{fontSize:"9px"}} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                    <NavLink to="/cart">   <i  class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
                                                     </NavLink> </Badge>
                                             </div>
                                         </Grid>

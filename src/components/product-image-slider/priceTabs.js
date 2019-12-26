@@ -18,6 +18,26 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
 import { ProductDetailContext } from 'context/ProductDetailContext';
 
+// imgleft: {
+//     backgroundImage: "url(https://alpha-assets.stylori.com/images/static/slider_icon.png) !important",
+//     backgroundPosition: "-27px -229px !important",
+//     width: "35px !important",
+//     height: "44px !important",
+//     backgroundRepeat: "no-repeat !important",
+//     float: "left",
+//     backgroundColor: "#fff",
+//     borderLeft: " 0px"
+// },
+// imgRight: {
+//     backgroundImage: "url(https://alpha-assets.stylori.com/images/static/slider_icon.png) !important",
+//     backgroundPosition: "-160px -229px !important",
+//     width: "35px !important",
+//     height: " 44px !important",
+//     backgroundRepeat: 'no-repeat !important',
+//     float: 'right',
+//     backgroundColor: '#fff',
+//     borderRight: '0px'
+// },
 function TabContainer({ children, dir }) {
     return (
         <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
@@ -34,14 +54,15 @@ const PriceTabs = (props) => {
 class Component extends React.Component {
     constructor(props) {
         super(props);
+
     }
     state = {
         value: 1,
         values: "",
         expanded: "1",
-        skuSize: '',
-        purity: '',
-        diamondType: "",
+        skuSize: this.props && this.props.filters && this.props.filters.defaultVariants && this.props.filters.defaultVariants.skuSize,
+        purity: this.props.data[0].productsDetails[0].namedetail[1].details,
+        diamondType: this.props && this.props.filters && this.props.filters.defaultVariants && this.props.filters.defaultVariants.diamondType,
         open: false
     };
     handleOpen = () => {
@@ -50,20 +71,20 @@ class Component extends React.Component {
 
     handleClose = () => {
         this.setState({ open: false });
-    }; 
+    };
+
 
     handleClick = (event, key) => {
-
-        console.log('lklkkoik9', this.state.skuSize)
+        console.log('lklkkoik9', this.state.purity)
         var filters = { ...this.props.filters }
         if (key === 'purity') {
             var kv = event.target.id
             var objVal = kv.split(" ")
             var arrPurity = objVal[0]
-            var arrColor = objVal[1] 
+            var arrColor = objVal[1]
             var diamondTypes = filters['defaultVariants']['diamondType']
             filters['defaultVariants']['purity'] = arrPurity
-            filters['defaultVariants']['metalColor'] = arrColor 
+            filters['defaultVariants']['metalColor'] = arrColor
             // filters['defaultVariants']['skuSize']=diamondTypes
             filters['defaultVariants']['diamondType'] = diamondTypes
             this.setState({
@@ -164,8 +185,16 @@ class Component extends React.Component {
             // slidesToShow: data[0].productTabs[0].tab1.Children.length > 8 ? limit :data[0].productTabs[0].tab1.Children.length,
             slidesToScroll: 5,
             slidesToShow: 7,
-            arrow: true,
+            arrows: false,
         };
+        const slider = React.createRef();
+        const next = () => {
+            slider.current.slickNext();
+        }
+        const previous = () => {
+            slider.current.slickPrev();
+        }
+        // data[0].productTabs[0].tab2.Children
         return (
             <div>
                 {data[0].productTabs.map(val => {
@@ -173,28 +202,38 @@ class Component extends React.Component {
                     const arr2 = val.tab2.Children !== null && (val.tab2.Children).split(',')
                     return (
                         <>
-                            {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "20px" }}>
+                            {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px", borderBottom: "1px solid #cccccc", paddingBottom: "10px" }}>
                                 <Grid item lg={3} xs={12}><h1 className="rings_tabs">{val.tab1.header}&nbsp;<a
                                     onClick={this.handleOpen}
                                     className="my-ringsize">Size Guide </a></h1></Grid>
                                 <Grid item lg={9} xs={12} style={{ padding: "0px 5px 0px 5px" }}>
                                     {arr.length > 0 ?
                                         <>
-                                            <div className={classes.pagination} style={{ overflow: "hidden" }}>
-                                                <Slideshow dataCarousel={settings}>
-                                                    {arr.map((val, i) => {
-                                                        return (<>
-                                                            <button
-                                                                className={val === this.state.skuSize ? 'dark' : 'page'}
-                                                                id={val}
-                                                                onClick={event => this.handleClick(event, 'skuSize')}
-                                                            >
-                                                                {val}
-                                                            </button>
-                                                        </>)
-                                                    }
-                                                    )}
-                                                </Slideshow>
+                                            <Grid container style={{ width: "100%" }} className={classes.pagination} style={{ overflow: "hidden" }}>
+                                                <Grid item style={{ width: "8%",alignItems: "center",justifyContent:"center",display:"flex" }}>
+                                                    <img onClick={() => previous()} className={"icon-leftcaro"} />
+
+                                                </Grid>
+                                                <Grid item style={{ width: "84%" }}>
+                                                    <Slideshow dataCarousel={settings}>
+                                                        {arr.map((val, i) => {
+                                                            return (<>
+                                                                <button
+                                                                    className={val === this.state.skuSize ? 'dark' : 'page'}
+                                                                    id={val}
+                                                                    onClick={event => this.handleClick(event, 'skuSize')}
+                                                                >
+                                                                    {val}
+                                                                </button>
+                                                            </>)
+                                                        }
+                                                        )}
+                                                    </Slideshow>
+                                                </Grid>
+                                                <Grid item style={{ width: "8%",    alignItems: "center",justifyContent:"center",display:"flex" }}>
+                                                    <img onClick={() => next()} className={"icon-rightcaro"} />
+
+                                                </Grid>
                                                 <Modal
                                                     aria-labelledby="simple-modal-title"
                                                     aria-describedby="simple-modal-description"
@@ -209,13 +248,13 @@ class Component extends React.Component {
                                                 {/* <div style={{ marginTop: "10px", textAlign: "center" }}>
                                                     <span style={{ cursor: "pointer" }} className={`my-ringsize ${classes.normalfonts} `} >My Ring Size ?</span>
                                                  </div> */}
-                                            </div>
+                                            </Grid>
                                         </>
                                         : ""}
                                 </Grid>
                             </Grid> : ""}
                             {arr2.length > 0 ?
-                                <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
+                                <Grid container spacing={12} lg={12} style={{ marginBottom: "10px", padding: "0px 10px" }}>
                                     <Grid item lg={3} xs={12}><h1 className="rings_tabs">{val.tab2.header}</h1></Grid>
                                     <Grid item lg={9} xs={12}>
                                         <Grid container spacing={12} lg={12}>
@@ -229,13 +268,13 @@ class Component extends React.Component {
                                                         <button
                                                             style={{ background: this.imageRender(val) }}
                                                             className={this.state.purity === val ? 'darktabs tabs-valus' : 'pagetabs tabs-valus'}
-                                                            id={val}
+                                                            id={val} color={arrColor}
                                                             onClick={event => this.handleClick(event, 'purity')}
                                                         >
                                                             {/* {this.imageRender(val)} */}
                                                             <span id={val} className={`tabs-contants ${classes.normalfonts}`}>{arrPurity}</span>
+                                                            <div className={this.state.purity === val ? `rings_tabsvls_active ${classes.tabs_values_font}` : `rings_tabsvls ${classes.tabs_values_font}`}>{arrColor}</div>
                                                         </button>
-                                                        <div className={this.state.purity === val ? `rings_tabsvls_active ${classes.tabs_values_font}` : `rings_tabsvls ${classes.tabs_values_font}`}>{arrColor}</div>
                                                     </Grid>
                                                 )
                                             }
@@ -244,7 +283,7 @@ class Component extends React.Component {
                                     </Grid>
                                 </Grid> : ""}
 
-                            {val.tab3.Children.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
+                            {val.tab3.Children.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px", padding: "0px 10px" }}>
                                 <Grid item lg={3} xs={12}><h1 className="rings_tabs">{val.tab3.header}</h1></Grid>
                                 <Grid item lg={9} xs={12}>
                                     <Grid container spacing={12} lg={12}>

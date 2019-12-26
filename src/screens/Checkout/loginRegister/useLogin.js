@@ -4,7 +4,7 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { CartContext } from 'context'
-import Addressforms from '../addressDetails/Addressforms'
+import Addressforms from 'screens/Checkout/addressDetails/addressForm'
 
 var obj = {}
 var obj1 = {}

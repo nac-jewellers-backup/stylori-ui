@@ -49,7 +49,6 @@
 }
 
 .hovereffect img {
-  display: block;
   position: relative;
   -webkit-transition: all .4s linear;
   transition: all .4s linear;
@@ -210,7 +209,9 @@
   width: 300px;
   margin-top: 0px;
   padding-top: 0px;
-  padding-bottom: 20px
+  padding-bottom: 20px;
+  font-weight: 500 !important;
+
 }
 
 .hovereffectSilver span {

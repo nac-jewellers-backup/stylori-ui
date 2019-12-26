@@ -19,7 +19,6 @@ const RatingForm = (props) => {
 const RatingComponent = (props) => {
     const { classes } = props;
     const { values, handlers, setValues } = useRating(props.ratingcounts);
-   
 
     return (
         <Container className="bg-clr2">
