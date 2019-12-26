@@ -337,6 +337,7 @@ const renderImages = (props, cardstate) => {
 }
 
 function Component(props) {
+  debugger
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
     hovered: false,
@@ -356,7 +357,7 @@ function Component(props) {
         <CardActions className={classes.cardAtionspadding}>
           <Grid container xs={12}>
             <Grid container item xs={6} justify="flex-start">
-              {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" >
+              {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" style={{zIndex:10000}}>
                 <span class="one-day-ship-listing-page-label">1 day shipping</span>
 
               </div> : ''}

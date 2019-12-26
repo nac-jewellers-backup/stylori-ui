@@ -201,6 +201,24 @@ const generateShipsBy = (readytoship, vendorDeliveryTime) => {
         return 'Ships by' + ' ' + moment().add(numberOfDays, 'days').format('MMM Do YY');
     }
 }
+const sorting = (val) =>{
+
+    if(val.sizeVarient){
+        var a = val.sizeVarient.split(',')
+        var b = a.map(val=>{
+            return Number(val)
+            })
+            var c = function myFunction() {
+                b.sort(function(a, b){return a-b});
+              return b
+              }
+              return c()
+    }
+    else{
+        return null
+    }
+   
+}
 // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
 export default function (data, like_data, viewedddatas, rating) {
     let mapperdata = [];
@@ -257,7 +275,7 @@ export default function (data, like_data, viewedddatas, rating) {
             productTabs: [{
                 tab1: {
                     header: "Ring Size",
-                    Children: PD.productListByProductId && PD.productListByProductId.sizeVarient
+                    Children: PD.productListByProductId && sorting(PD.productListByProductId)
                 },
                 tab2: {
                     header: "Metal Purity",

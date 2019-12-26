@@ -170,7 +170,8 @@ class Component extends React.Component {
         return (
             <div>
                 {data[0].productTabs.map(val => {
-                    const arr = val.tab1.Children !== null && (val.tab1.Children).split(',')
+                    
+                    const arr = val.tab1.Children !== null && val.tab1.Children
                     const arr2 = val.tab2.Children !== null && (val.tab2.Children).split(',')
                     return (
                         <>
