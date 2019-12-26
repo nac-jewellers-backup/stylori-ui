@@ -183,9 +183,9 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                             <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
                                                             <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
                                                         </a>&nbsp;
-                                            <a class="google" target="_blank">
+                                            {/* <a class="google" target="_blank">
                                                             <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
-                                                        </a>
+                                                        </a> */}
                                                     </div>
                                                 </Popover>
 

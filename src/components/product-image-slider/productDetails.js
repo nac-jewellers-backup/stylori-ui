@@ -37,39 +37,39 @@ class ProductDetails extends React.Component {
                                             valueofproductdetail.namedetail !== undefined && valueofproductdetail.namedetail.map(res => {
                                                 return (<>{res.name &&
                                                     <span>
-                                                    {res.details !== null && res.details.length === 0 ? false :
+                                                        {res.details !== null && res.details.length === 0 ? false :
 
-                                                        <Grid container item xs={12} >
-                                                            <Grid xs={4}>
-                                                                <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
-                                                                    <span style={{ fontSize: "12px" }}> {res.name}</span>
-                                                                </ListItemText>
+                                                            <Grid container item xs={12} >
+                                                                <Grid xs={4}>
+                                                                    <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
+                                                                        <span style={{ fontSize: "12px" }}> {res.name}</span>
+                                                                    </ListItemText>
+                                                                </Grid>
+                                                                <Grid container item xs={8}  >
+                                                                    {
+                                                                        isArray(res.details) ?
+
+                                                                            <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
+                                                                                {res.details.map((Item, Index) => {
+                                                                                    return (<span style={{ fontSize: "12px", textAlign: 'left' }}> {
+                                                                                        (valueofproductdetail.header === 'Price Breakup' && res.name !== 'GST') ?
+                                                                                            ((Index === 0 && (res.details[Index] !== res.details[Index + 1]) ? <del>{Item}</del> : Item)) : Item} </span>)
+                                                                                })}
+                                                                            </ListItemText>
+                                                                            :
+
+                                                                            <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
+                                                                                {/* {data[0].productsDetails[3].namedetail[1].length > 0} */}
+                                                                                {<span style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</span>}
+                                                                            </ListItemText>
+                                                                    }
+                                                                </Grid>
                                                             </Grid>
-                                                            <Grid container item xs={8}  >
-                                                                {
-                                                                    isArray(res.details) ?
+                                                        }
+                                                    </span>
 
-                                                                        <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
-                                                                            {res.details.map((Item, Index) => {
-                                                                                return (<span style={{ fontSize: "12px", textAlign: 'left' }}> {
-                                                                                    (valueofproductdetail.header === 'Price Breakup' && res.name !== 'GST') ?
-                                                                                        ((Index === 0 && (res.details[Index] !== res.details[Index + 1]) ? <del>{Item}</del> : Item)) : Item} </span>)
-                                                                            })}
-                                                                        </ListItemText>
-                                                                        :
-
-                                                                        <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
-                                                                            {/* {data[0].productsDetails[3].namedetail[1].length > 0} */}
-                                                                            {<span style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</span>}
-                                                                        </ListItemText>
-                                                                }
-                                                            </Grid>
-                                                        </Grid>
-                                                    }
-                                                </span>
-                                           
                                                 }</>
-                                                    )
+                                                )
                                             }
                                             )}</>
                                     </div>
@@ -111,7 +111,9 @@ class ProductDetails extends React.Component {
                             || (data[0].productType === "Earring" && val.header.trim() === 'Diamond Details')) ? false :
                             <>
                                 <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important", padding: "0 5px" }} expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
-                                    <ExpansionPanelSummary className="expansion-summary"
+                                    <ExpansionPanelSummary
+
+                                        style={{ minHeight: "30px !important" }} className="expansion-summary"
                                         expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" >
                                         </i></span>}>
                                         <div style={{ width: "100%" }} >
@@ -125,7 +127,7 @@ class ProductDetails extends React.Component {
                                                 <span>
                                                     {((data[0].productType !== "Earring" && res.name === 'Gemstone')
                                                         || (data[0].productType === "Earring" && res.name === 'Diamond')) ? false :
-                                                        <Grid container item xs={12} >
+                                                        <> {res.name && <Grid container item xs={12} style={{ padding: "0px 10px 0px 10px " }}>
                                                             <Grid xs={4}>
                                                                 <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
                                                                     <span style={{ fontSize: "12px" }}> {res.name}</span>
@@ -148,7 +150,7 @@ class ProductDetails extends React.Component {
                                                                 }
                                                             </Grid>
                                                         </Grid>
-                                                    }
+                                                        }</>}
                                                 </span>
                                             )}
                                     </div>

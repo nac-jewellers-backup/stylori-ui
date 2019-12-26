@@ -60,8 +60,7 @@ const styles = theme => ({
             width: "100%"
         },
         [theme.breakpoints.up('lg')]: {
-            paddingLeft: "25px",
-            paddingRight: "25px",
+
             // textAlign: "center"
         },
     },

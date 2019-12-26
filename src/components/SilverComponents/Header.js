@@ -14,7 +14,8 @@ import {
     ListItem,
     ListItemText,
     Container,
-    InputAdornment
+    InputAdornment,
+    Collapse
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Hidden } from '@material-ui/core';
@@ -53,7 +54,9 @@ class Header extends Component {
             targetopenSubmenu: null,
             subTitleData: null,
             subMenuTarget: null,
-            anchorEl: false
+            anchorEl: false,
+            opened:false,
+            
         }
         this.topZero = React.createRef();
     }
@@ -101,15 +104,11 @@ class Header extends Component {
         }
 
     }
-    handleClickSearch = () =>{
-        //   <InputBase
-        // className={`searchmobile`} 
-        // placeholder=" SEARCH"
-        // endAdornment={<InputAdornment position="end"></InputAdornment>}
-        //  /> 
-        alert("hi");
-        // document.getElementById('search')=<InputBase placeholder="Search" />
-    }
+   
+    handleClose = () => {
+        this.setState({opened : !this.state.opened});
+    };
+  
     handleClickPopover = (event) => {
         this.setState({
             anchorEl: event.currentTarget,
@@ -160,12 +159,15 @@ class Header extends Component {
     submenuDetails = (data, target) => {
         this.setState({ subTitleData: data, subMenuTarget: target })
     }
+    
     render() {
         const { mainlist, Jewellery, subheader, menuListHeader, menuLists } = this.props.data;
         let { selected, selected1 } = this.state;
         const { classes } = this.props;
         const { anchorEl } = this.state;
         const openPopover = anchorEl;
+       const opened = this.state;
+        // const id = open ? true : undefined;
         return (
             <div>
                 <Hidden smDown >
@@ -179,7 +181,7 @@ class Header extends Component {
                                             <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
                                             <Typography className={classes.callerNum}>1800 102 0330</Typography>
                                             <InputBase
-                                            
+
                                                 className={`search`}
                                                 placeholder=" SEARCH"
                                                 endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
@@ -239,9 +241,9 @@ class Header extends Component {
                                                     }
                                                 }}  ></i>
                                             </Badge>
-                                            <Badge style={{fontSize:"11px"}} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                            <Badge style={{ fontSize: "11px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
                                                 <NavLink to="/cart">
-                                                    <i  class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                                    <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
                                                 </NavLink> </Badge>
                                         </div>
@@ -332,16 +334,16 @@ class Header extends Component {
                                     </div>
                                 </Grid>
                                 <Grid item xs={7}>
-                                    <div className="mobli-icon1">
-                                        <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center",paddingRight:"10px" }}>
+                                    <div onClick={this.handleSearch} className="mobli-icon1">
+                                        <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center", paddingRight: "10px" }}>
                                             <div className={`head-icons1 ${classes.headIcons}`} >
-                                                {/* <InputBase
-                                                    className={`searchmobile`} 
-                                                    placeholder=" SEARCH"
-                                                    endAdornment={<InputAdornment position="end"></InputAdornment>}
-                                                /> */}
-                                                <div id="search" onClick={this.handleClickSearch} className={classes.searchcontainTop}><Seach  className={"searchsvgmobile"} />
+                                                
+                                                <div id="search" onClick={this.handleClose}  className={classes.searchcontainTop}><Seach className={"searchsvgmobile"} 
+                                                
+                                                />
+                                              
                                                 </div>
+                                                
                                                 <i class="fa fa-user"></i>
                                                 <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">
                                                     <i class={`fa fa-heart ${classes.iconFafaheart}`} onClick={() => {
@@ -352,8 +354,8 @@ class Header extends Component {
                                                         }
                                                     }}  ></i>
                                                 </Badge>
-                                                <Badge style={{fontSize:"9px"}} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                    <NavLink to="/cart">   <i  class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                                <Badge style={{ fontSize: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                    <NavLink to="/cart">   <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
                                                     </NavLink> </Badge>
                                             </div>
                                         </Grid>
@@ -361,6 +363,55 @@ class Header extends Component {
                                 </Grid>
                             </Toolbar>
                         </AppBar>
+                        <Collapse in={this.state.opened}  unmountOnExit
+                                                
+                                                style={{width:"100%",zIndex:"10000"}}
+                                                class='searchClick'
+                                                onClose={this.handleClose}
+                                                
+                                                    // id={id}
+                                                    // open={open}
+                                                //     anchorReference="anchorPosition"
+                                                //  anchorPosition={{ top: 56, left: NaN }}
+                                                    
+                                                //     anchorOrigin={{
+                                                //         vertical: 'bottom',
+                                                //         horizontal: 'left',
+                                                //     }}
+                                                //     transformOrigin={{
+                                                //         vertical: 'top',
+                                                //         horizontal: 'left',
+                                                //     }}
+                                                >
+                                                    <List container style={{zIndex:"10000"}}>
+                                                        <Grid container style={{zIndex:"10000",display:"flex"}}>
+                                                        <Grid style={{float:"right",zIndex:"10000"}} class="widthClose">
+
+                                                        </Grid>
+                                                    <Grid style={{display:"flex",float:"right",zIndex:"10000"}} onClick={this.handleClose} >
+                                                 <i style={{fontSize:"16px",zIndex:"10000px"}} class="fa fa-times closebus"></i>
+                                                     </Grid>
+                                                  
+                                                     </Grid>
+                                                    <div xs={11} style={{width:"100%",height:"48px",display:"flex",alignContent:"center",justifyContent: "center",position:"absolute",background:"#fff",zIndex:"10000",paddingTop:"5px"}}>
+                                                    {/* <InputBase  style={{width:"100%"}}
+                                                    class="widthSearch"
+                                                    placeholder=" SEARCH"
+                                                    endAdornment={
+                                                    <InputAdornment position="end"><div className={classes.searchcontainTop}><Seach className={"searchMobile"} /></div></InputAdornment>
+                                                }
+                                                /> */}
+                                                <InputBase
+
+                                                className="widthSearch"
+                                                placeholder=" SEARCH"
+                                                endAdornment={<InputAdornment position="end"><div className={classes.searchcontainerplain}><Seach className={"searchPlain"} />
+                                                </div></InputAdornment>}/>
+                                                
+                                                </div>
+                                                
+                                                </List>
+                                                </Collapse>
                     </div>
                     <Drawer
                         anchor="left"
