@@ -9,6 +9,7 @@ import moment from "moment";
 
 var colSize = null
 var colSize_like_view = null
+var img_res_X_2 = null;
 const width = window.innerWidth;
 const screenWidth = () => {
     const width = window.innerWidth;
@@ -72,11 +73,28 @@ var screen_width_type = (screen_res) => {
         if (calc === sizes[i] || calc < sizes[i]) {
 
             img_res = sizes[i]
+            img_res_X_2 = sizes[i]
             break;
         }
+
+
         else {
             if (sizes.length - 1 === i) {
                 img_res = sizes[i]
+            }
+        }
+    }
+    for (var i = 0; i <= sizes.length; i++) {
+        if (calc * 2 === sizes[i] || calc * 2 < sizes[i]) {
+
+            img_res_X_2 = sizes[i]
+            break;
+        }
+
+
+        else {
+            if (sizes.length - 1 === i) {
+                img_res_X_2 = sizes[i]
             }
         }
     }
@@ -102,7 +120,7 @@ const injectUrl_url_construct = (url, baseUi, screen_res) => {
         var img_url = `${baseUi}${url_construct}`
     }
     else {
-        
+
         var img_not_found = "product/productnotfound.webp"
         url_split = img_not_found.split('/')
         extension_split = url_split[url_split.length - 1]
@@ -228,6 +246,7 @@ export default function (data, like_data, viewedddatas, rating) {
             fadeImages: PD.productListByProductId.productImagesByProductId.nodes &&
                 generateImgurls(PD, PD.productListByProductId.productImagesByProductId.nodes, colSize),
             image_resolution: img_res,
+            image_resolution_two: img_res_X_2,
 
             productsubHeaderlist: [{
                 name: "From the House of NAC",

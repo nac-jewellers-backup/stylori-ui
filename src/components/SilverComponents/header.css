@@ -94,7 +94,7 @@
   width: 100%;
 }
 
-.MuiBadge-colorSecondary { 
+.MuiBadge-colorSecondary {
   background: #d51f63 !important;
   top: -6px !important;
 }
@@ -121,7 +121,7 @@
   top: 0;
   padding: 0 !important;
   position: sticky;
-  
+
   width: 100%;
   line-height: 1.42857143;
   font-size: 12px;
@@ -133,7 +133,7 @@
 .mobli-icon1 i {
   font-size: 17px;
   cursor: pointer;
-   color: #d51f63 !important; 
+  color: #d51f63 !important;
   margin-left: 5px;
   text-align: center !important;
   width: 25px;
@@ -307,7 +307,7 @@
 .header-appbar-sticky1 header {
   position: sticky;
   top: 0px;
-  
+
 }
 
 .logoImgHeader1 {
@@ -315,15 +315,15 @@
   /* justify-content: center; */
 }
 
-@media only screen and (max-width: 958px) and (min-width: 428px)
-{
-  .logoDiv1{
+@media only screen and (max-width: 958px) and (min-width: 428px) {
+  .logoDiv1 {
     display: flex;
-  justify-content: center;
-  max-width: 68% !important;
-  padding-top: 5% !important;
+    justify-content: center;
+    max-width: 68% !important;
+    padding-top: 5% !important;
+  }
 }
-}
+
 .animations {
   transition: width 0.35s ease-in-out !important;
 }
@@ -336,8 +336,8 @@
   padding-Top: 8%;
 }
 
-.titleTop {
-  /* padding-top: 10px; */
+.headdd {
+  height: 72px;
 }
 
 .searchmobile {
