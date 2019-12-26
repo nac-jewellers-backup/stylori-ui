@@ -65,14 +65,14 @@ const styles = theme => ({
             // textAlign: "center"
         },
     },
-    tabs_values_font:{
+    tabs_values_font: {
         [theme.breakpoints.down('xs')]: {
-            fontSize:"11px !important",
-            marginTop:"5px"
+            fontSize: "8px !important",
+            marginTop: "5px"
         },
         [theme.breakpoints.up('lg')]: {
-            fontSize:"12px !important",
-            marginTop:"5px"
+            fontSize: "9px !important",
+            marginTop: "5px"
         },
     },
     tabsheadcolor: {

@@ -169,7 +169,7 @@
   text-align: left;
   white-space: nowrap;
   width: 100%;
-  font-size: 11px;
+  font-size: 11px !important;
   letter-spacing: 1px;
   color: #fff;
   text-transform: capitalize;

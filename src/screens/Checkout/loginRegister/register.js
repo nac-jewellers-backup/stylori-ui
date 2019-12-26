@@ -14,7 +14,7 @@ const RegisterComponent = (props) => {
     const { values, setValues, handlers, data, valuesedit, valuesadrees } = useRegister(() => props.changePanel(2));
     // var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
     // var ccc = data.message ? data.message : ""
-    const paths = window.location.pathname === "/account"
+    const paths = window.location.pathname.split("-")[0]==="/account"
     const pathreg = window.location.pathname === "/registers"
 
     const clear = () => {
@@ -50,7 +50,7 @@ const RegisterComponent = (props) => {
                     <Grid item lg={1} />
                     <Grid item xs={12} lg={window.location.pathname === "/registers" ? 12 : 6}>
                         <h5 className='title'>
-                            {window.location.pathname === "/account" ? "" : <>
+                            {window.location.pathname.split("-")[0]==="/account" ? "" : <>
                                 {window.location.pathname === "/registers" ? "Register" : "New user registration"}</>}
                         </h5>
                         {paths ?

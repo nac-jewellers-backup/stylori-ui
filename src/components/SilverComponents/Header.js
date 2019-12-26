@@ -61,14 +61,14 @@ class Header extends Component {
         this.topZero = React.createRef();
     }
     componentDidMount() {
-        window.addEventListener("scroll", this.scrolling);
-
-
-        if (!this.state.Menuopen && !this.state.submenuOpen) {
-            return this.setState({ subTitleData: "", subMenuTarget: "" })
-        }
-        else {
-            return true
+        if (window.location.pathname !== "/cart" || window.location.pathname !== '/checkout') {
+            window.addEventListener("scroll", this.scrolling);
+            if (!this.state.Menuopen && !this.state.submenuOpen) {
+                return this.setState({ subTitleData: "", subMenuTarget: "" })
+            }
+            else {
+                return true
+            }
         }
     }
 
@@ -97,9 +97,9 @@ class Header extends Component {
         document.getElementById('topNav').style.transition = "0.5s";
         // var heightHeader = document.getElementById('headerDiv').clientHeight;
         if (document.getElementById("SliderFilter")) {
-            document.getElementById("SliderFilter").style.top = "115px";
+            document.getElementById("SliderFilter").style.top = "185px";
             document.getElementById('SliderFilter').style.transition = "0.5s";
-            document.getElementById("filterBy").style.top = "50px";
+            document.getElementById("filterBy").style.top = "120px";
             document.getElementById('filterBy').style.transition = "0.5s";
         }
 
@@ -121,9 +121,8 @@ class Header extends Component {
         });
     };
     scrolling = () => {
-        if (window.location.pathname !== "/cart" || window.location.pathname !== '/checkout') {
+        if (window.location.pathname !== "/cart" && window.location.pathname !== '/checkout') {
             if (window.innerWidth > 959) {
-                this.headerTransitions()
                 if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                     document.getElementById("headerContainer").style.position = "fixed";
                     document.getElementById("headerContainerTop").style.height = "74px";
@@ -217,15 +216,15 @@ class Header extends Component {
                                                     style={{ width: "220px", height: "45px", lineHeight: "45px", cursor: "pointer" }}
                                                 >
                                                     <a
-                                                        onClick={() => {
-                                                            localStorage.clear();
+                                                        onClick={() => { 
+                                                            localStorage.clear(); 
                                                             window.location.reload()
                                                             window.location.pathname = "/login"
                                                         }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
-                      </a>&nbsp;/&nbsp;
-                      <NavLink to="/account">
+                                             </a>&nbsp;/&nbsp;
+                                             <NavLink onClick={() => window.location.pathname = "/account-profile"}>
                                                         My Account
-                        </NavLink>
+                                               </NavLink>
                                                 </div>
                                             </Popover>
                                             <Badge color="secondary"
@@ -235,7 +234,7 @@ class Header extends Component {
                                             >
                                                 <i class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
                                                     if (user_id.length > 0) {
-                                                        window.location.href = "/account"
+                                                        window.location.href = `/account${'-wishlist'}`
                                                     } else {
                                                         window.location.href = "/login"
                                                     }
@@ -348,7 +347,7 @@ class Header extends Component {
                                                 <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">
                                                     <i class={`fa fa-heart ${classes.iconFafaheart}`} onClick={() => {
                                                         if (user_id.length > 0) {
-                                                            window.location.href = "/account"
+                                                            window.location.href = `/account${'-wishlist'}`
                                                         } else {
                                                             window.location.href = "/login"
                                                         }
@@ -480,6 +479,63 @@ class Header extends Component {
                                     }
                                 </>
                             ))}
+                            {!localStorage.getItem("true") ? <>
+                                <ListItem button className="drawer-list12" >
+                                    <ListItemText onClick={() => window.location.pathname = "/login"}>
+                                        <Typography className="list-items1">
+                                            LOGIN
+                                            </Typography>
+                                    </ListItemText>
+                                </ListItem>
+                                <ListItem button className="drawer-list12" >
+                                    <ListItemText onClick={() => window.location.pathname = "/registers"}>
+                                        <Typography className="list-items1">
+                                            REGISTER
+                                            </Typography>
+                                    </ListItemText>
+                                </ListItem>
+                            </> :
+                                <>
+                                    <ListItem button className="drawer-list12" >
+                                        <ListItemText onClick={() => window.location.href = `/account${'-profile'}`}>
+                                            <Typography className="list-items1" >
+                                                VIEW PROFILE
+                                            </Typography>
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem button className="drawer-list12" >
+                                        <ListItemText onClick={() => window.location.href = `/account${'-wishlist'}`}>
+                                            <Typography className="list-items1">
+                                                MY WHISLIST
+                                            </Typography>
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem button className="drawer-list12" >
+                                        <ListItemText onClick={() => window.location.href = `/account${'-allorders'}`}>
+                                            <Typography className="list-items1">
+                                                ALL ORDERS
+                                            </Typography>
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem button className="drawer-list12" >
+                                        <ListItemText >
+                                            <Typography className="list-items1">
+                                                CONTACT US
+                                            </Typography>
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem button className="drawer-list12" >
+                                        <ListItemText onClick={() => {
+                                            localStorage.clear();
+                                            window.location.reload()
+                                            window.location.pathname = "/login"
+                                        }}>
+                                            <Typography className="list-items1">
+                                                LOGOUT
+                                            </Typography>
+                                        </ListItemText>
+                                    </ListItem>
+                                </>}
                         </List>
                     </Drawer>
 

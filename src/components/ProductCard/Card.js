@@ -362,7 +362,7 @@ function Component(props) {
               >
                 &#xf08a;
               </i> */}
-              {/* <Wishlist sku={props.data.skuId} productId={props.data.productId} /> */}
+              <Wishlist sku={props.data.skuId} productId={props.data.productId} />
           </Grid>
           </Grid>
         </CardActions>
