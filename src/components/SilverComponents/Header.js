@@ -270,7 +270,7 @@ class Header extends Component {
                                                 }}  ></i>
                                             </Badge>
                                             <Badge  badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                <NavLink to="/cart">
+                                                <NavLink to="/cart" style={{    fontSize: "0px"}}>
                                                     <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
                                                 </NavLink> </Badge>
@@ -349,7 +349,7 @@ class Header extends Component {
                                     id="smallScreen"
                                 >
                                     <Toolbar className="toolbarsetting" >
-                                        <Grid container item xs={2} sm={1} md={1} lg={1} xl={1} justify="center" alignItems="center">
+                                        <Grid container item xs={1} sm={1} md={1} lg={1} xl={1} justify="center" alignItems="center">
                                             <IconButton
                                                 onClick={this.handleDrawerOpen}
                                             >
@@ -364,7 +364,7 @@ class Header extends Component {
                                         </Grid>
                                         <Grid item xs={7}>
                                             <div onClick={this.handleSearch} className="mobli-icon1">
-                                                <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center", paddingRight: "10px" }}>
+                                                <Grid item xs={12} class="menuRight" style={{ display: "flex", justifyContent: "flex-end", alignContent: "center", paddingRight: "10px" }}>
                                                     <div className={`head-icons1 ${classes.headIcons}`} >
 
                                                         <div id="search" onClick={this.handleClose} className={classes.searchcontainTop}><Seach className={"searchsvgmobile"}
