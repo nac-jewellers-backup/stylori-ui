@@ -77,6 +77,7 @@ const Addressforms = (changePanel) => {
     // var stst = values.ref ? values.ref : ""
     const addressva = values && values.addressvalues && values.addressvalues.length > 0
     const update_clear = values && values.update_clear
+  
     useEffect(() => {
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
         if (con_gust !== true) {
@@ -177,7 +178,7 @@ const Addressforms = (changePanel) => {
         setValues({ ...values, values })
     }
     const handleSubmit = (e) => {
-        
+
         if (values && values.addressOne && values.addressOne.pincode === "") {
             values["addressOne"]['errortext']['pinerr'] = "Pin Code is required"
             setValues({ ...values, values })
@@ -307,7 +308,7 @@ const Addressforms = (changePanel) => {
         // window.location.reload(); 
     }
     const selectaddreses = (val_addrs, num, index) => {
-        
+
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
         addObjall['address_id'] = val_addrs && val_addrs.id ? val_addrs.id : ""
         if (values.checkValue1 === true) {
@@ -379,7 +380,7 @@ const Addressforms = (changePanel) => {
         }
     }
     const Delete_address = (val_addrs, index) => {
-        
+
         if (con_gust !== true) {
             if (check_dlt === false) {
                 if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 1) {
@@ -395,7 +396,7 @@ const Addressforms = (changePanel) => {
                 deleteaddress(delet)
                 // window.location.reload();
             }
-           
+
         } else {
             var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
             local_storage.address.splice(index, 1);
@@ -429,7 +430,7 @@ const Addressforms = (changePanel) => {
         }
     };
     const redirectForm1 = (event) => {
-        
+
         values["addressOne"] = ""
         values["addressTwo"] = ""
         value11 = {
@@ -487,7 +488,7 @@ const Addressforms = (changePanel) => {
         })
     }
     const redirectForm = (val_addrs, num, isAdressOne, isAdressTwo, index) => {
-        
+
         var add = {}
         if (con_gust !== true) {
             if (val_addrs && val_addrs.id && val_addrs.id.length > 0) {

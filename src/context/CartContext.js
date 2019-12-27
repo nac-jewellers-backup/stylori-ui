@@ -88,6 +88,14 @@ const Provider = (props) => {
         wishlistmakeRequest(orderobj1)
         // }
     }, [wishlistdata])
+    // useEffect(() => {
+    //     if (window.location.pathname.split("-")[0]==="/account") {
+    //     orderobj["userProfileId"] = userIds 
+    //     // orderobj1["userprofileId"] = userIds
+    //     allordermakeRequest(orderobj);
+    //     // wishlistmakeRequest(orderobj1)
+    //     }
+    // }, [])
     useEffect(() => {
         if (userIds.length > 0) {
             if (cartdetails && JSON.stringify(cartdetails).length > 0) {
@@ -105,6 +113,7 @@ const Provider = (props) => {
                 var addcart = ({ products, user_id })
                 addtocart(addcart)
                 orderobj["userProfileId"] = user_id
+                sessionStorage.setItem("user_id", user_id)
                 allordermakeRequest(orderobj);
                 // wishlistmakeRequest(orderobj1) 
             }

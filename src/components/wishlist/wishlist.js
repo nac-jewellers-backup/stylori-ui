@@ -30,7 +30,7 @@ const WishlistComponent = (props) => {
                         values["product_sku"] = props.sku
                         values["product_id"] = props.productId
                         setValues({ values, ...values });
-                        handlers.handelSubmit(2)
+                        handlers.handelSubmit(2) 
                     }}
                 ></i></> : <>
                     <i class="fa fa-heart overall-icons" style={{ color: "red" }}

@@ -76,6 +76,7 @@ const useLogin = (changePanel, props) => {
                     obj1['user_id'] = bb
                     makeRequestCod(obj);
                     localStorage.setItem('user_id', bb)
+                    sessionStorage.setItem("user_id", bb)
                     localStorage.setItem("isedit", 1)
                     localStorage.setItem('accessToken', data.accessToken)
                     // setValues({user_id:data.userprofile.id})
@@ -145,7 +146,21 @@ const useLogin = (changePanel, props) => {
             [type]: status
         })
     }
-
+    const clear = () => {
+        setValues({
+            password: "",
+            email: "",
+            errortext: {
+                emerr: "",
+                passerr: "",
+            },
+            error: {
+                passerr: false,
+                emerr: false,
+            }
+        })
+        // props.change()
+    }
     // const vl = data && data.message
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
@@ -198,12 +213,14 @@ const useLogin = (changePanel, props) => {
         let _roles = values.roles
         obj_values = { password: _password, email: _email, roles: _roles }
         makeFetch(obj_values);
+        clear()
+        // reset();
         // _history=history('/home')
         // changePanel(3)
 
     }
 
-    const handlers = { handleChange, handleInvalid, handelSubmit };
+    const handlers = { handleChange, handleInvalid, handelSubmit, clear };
 
     return { values, handlers, setValues, data }
 }

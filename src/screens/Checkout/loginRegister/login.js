@@ -21,21 +21,7 @@ const LoginComponent = (props) => {
     // var prof = data && data.message
     // // alert(JSON.stringify(data))
     // console.log('valuesvaluesvalues', values)
-    const clear = () => {
-        setValues({
-            password: "",
-            email: "",
-            errortext: {
-                emerr: "",
-                passerr: "",
-            },
-            error: {
-                passerr: false,
-                emerr: false,
-            }
-        })
-        props.change()
-    }
+   
     const responseFacebook = response => {
         console.log(response)
         // window.location.href='/home';
@@ -93,7 +79,7 @@ const LoginComponent = (props) => {
                         </div >
                     </div>
                     <div className='login-butn'>
-                        {window.location.pathname === "/login" ? "" : <Button className='back-b' onClick={() => clear()} >Back</Button>}
+                        {window.location.pathname === "/login" ? "" : <Button className='back-b' onClick={() => handlers.clear()} >Back</Button>}
                         <Button className='apply-b' type="submit"> {window.location.pathname === "/login" ? "Login" : "Apply"}</Button>
                     </div>
 

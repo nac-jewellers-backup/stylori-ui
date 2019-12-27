@@ -155,6 +155,30 @@ const useRegister = (changePanel, props) => {
         // makeFetch(values)
     }
     const user = data.user_profile_id ? data.user_profile_id : ""
+    const clear = () => {
+        setValues({
+            email: "",
+            password: "",
+            confirmpassword: "",
+            firstname: "",
+            lastname: "",
+            errortext: {
+                emerr: "",
+                passerr: "",
+                cnfpasserr: "",
+                firstname: "",
+                lastname: ""
+            },
+            error: {
+                passerr: false,
+                emerr: false,
+                cnfpasserr: false,
+                firstname: false,
+                lastname: false
+            }
+        })
+        // props.change()
+    }
     const handleSubmit = (e) => {
         
         if (!pathnames) {
@@ -235,7 +259,9 @@ const useRegister = (changePanel, props) => {
             localStorage.setItem("namesOf_first", JSON.stringify(values.firstname))
             localStorage.setItem("namesOf_last", JSON.stringify(values.lastname))
             makeFetch(values);
-            return false
+            // reset();
+            clear()
+              return false
         } else {
             localStorage.setItem("namesOf_first", JSON.stringify(valuesadrees.firstname))
             localStorage.setItem("namesOf_last", JSON.stringify(valuesadrees.lastname))
@@ -245,7 +271,7 @@ const useRegister = (changePanel, props) => {
             makeFetcheditAddress(valuesadrees);
         }
     }
-    const handlers = { handleSubmit, handleChange, handlesetvaluesadrees };
+    const handlers = { handleSubmit, handleChange, handlesetvaluesadrees ,clear};
 
     return { values, setValues, handlers, data, valuesadrees }
 }

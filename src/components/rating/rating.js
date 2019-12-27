@@ -17,8 +17,8 @@ const Star = ({ selected = false, onClick = f => f }) =>
 //   onClick: React.PropTypes.func
 // }
 const Ratings = (props) => {
-    const { setratingcounts } = React.useContext(ProductDetailContext);
-    return <Component setratingcounts={setratingcounts}  {...props} />
+    const { ProductDetailCtx: { ratingcounts ,setratingcountsclear}, setratingcounts } = React.useContext(ProductDetailContext);
+    return <Component setratingcounts={setratingcounts}  {...props} ratingcounts={ratingcounts} setratingcountsclear={setratingcountsclear} />
 }
 
 class Component extends React.Component {
@@ -29,15 +29,21 @@ class Component extends React.Component {
         }
         this.change = this.change.bind(this)
     }
-
     change(starsSelected) {
+
+        debugger
         this.setState({ starsSelected })
         this.props.setratingcounts({ ratingcounts: starsSelected })
+        if (this.props && this.props.setratingcountsclear && this.props.setratingcountsclear.length > 0) {
+        alert(JSON.stringify(this.props.setratingcFountsclear))
+        this.setState({ starsSelected: "" })
+        }
         // localStorage.setItem("count", starsSelected)
     }
 
     render() {
-        const { totalStars } = this.props;
+// alert(JSON.stringify(this.props.setratingcountsclear))
+const { totalStars } = this.props;
         const { starsSelected } = this.state;
 
         return (
