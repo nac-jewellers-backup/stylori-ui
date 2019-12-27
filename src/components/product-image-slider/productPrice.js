@@ -121,13 +121,22 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                         {val.title}
                                                         {/* <i style={{ padding: "2px", fontSize: "12px" }} class="fa fa-info-circle" aria-hidden="true"></i> */}
                                                     </h1>
-                                                    <p className={`pdp-desc ${classes.dis}`}>
+                                                    {/* <p className={`pdp-desc ${classes.dis}`}>
                                                         {val.dis}
-                                                    </p>
+                                                    </p> */}
+                                                    <div>
+                                                        {data[0].ProductContactNum.map(val =>
+                                                            <div style={{ padding: "" }}>
+                                                                <b className={`ships-by ${classes.normalfonts}`}>
+                                                                    <span style={{ textAlign: "center" }}> {val.shipby}</span>
+                                                                </b>
+                                                            </div>
+                                                        )}
+                                                    </div>
                                                 </Grid>
                                                 <Grid container item xs={4} >
                                                     <Hidden mdUp>
-                                                        <div className={classes.width} style={{ padding: "0px 10px  10px 10px " }}>
+                                                        <div className={classes.width} style={{ padding: "0px 10px  0px 10px " }}>
                                                             <Pricing
                                                                 price={data[0].price}
                                                                 offerPrice={data[0].offerPrice}
@@ -137,15 +146,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                             </Pricing>
                                                         </div>
                                                     </Hidden>
-                                                    {/* <div>
-                                                        {data[0].ProductContactNum.map(val =>
-                                                            <div style={{ marginTop: "8px" }}>
-                                                                <b className={`ships-by ${classes.normalfonts}`}>
-                                                                    <span > {val.shipby}</span>
-                                                                </b>
-                                                            </div>
-                                                        )}
-                                                    </div> */}
+
                                                 </Grid>
                                             </Grid>
 

@@ -42,7 +42,7 @@ const styles = makeStyles(theme => ({
             fontSize: '0.9rem',
         },
         [theme.breakpoints.down('sm')]: {
-            fontSize: '1rem',
+            fontSize: '0.9rem',
         },
     },
     youSave: {
