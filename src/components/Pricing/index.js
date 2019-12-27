@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid,Hidden } from '@material-ui/core'
 import '../product-image-slider/product-images.css'
 import styles from './style'
 import './pricing.css'
@@ -24,33 +24,34 @@ export default function Pricing(props) {
             }
             {/*  */}
             <Grid spacing={12} container lg={12} xs={12}>
-                <Grid item lg={3} xs={6}>
-                   {props.offerPrice?
-                    <Typography style={{ display: "flex", width: '100%' }}>
-                    <Typography
-                        variant="h6"
-                        component="h6"
-                        className={`${props.offerPrice != null & props.offerPrice !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
-                    >
-                        {/* ₹&nbsp;{props.offerPrice} */}
-                        {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.offerPrice))}
-                    </Typography>
-                </Typography>:""}
+                <Grid item lg={window.location.pathname !== "/cart"&&window.location.pathname !== "/account" && window.location.pathname !== "/checkout" ? 3 : 6} xs={6}>
+                    {props.offerPrice ?
+                        <Typography style={{ display: "flex", width: '100%' }}>
+                            <Typography
+                                variant="h6"
+                                component="h6" 
+                                className={`${props.offerPrice != null & props.offerPrice !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
+                            >
+                                {/* ₹&nbsp;{props.offerPrice} */}
+                                {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.offerPrice))}
+                            </Typography> 
+                        </Typography> : ""}
                 </Grid>
                 <Grid item lg={6} xs={12}>
                     <Grid spacing={12} container lg={12} xs={12}>
                         <Grid item lg={12} xs={12}>
-                            {props.price?
-                            <Typography style={{ display: "flex", width: '100%' }}>
-                            <Typography
-                                // variant="caption"
-                                className={`pricing-p${props.price != null & props.price !== '' ? '' : 'shine'} ${classes.deletePrice} ${classes.dis}`}
-                            // component="p"
-                            >
-                                <del>₹&nbsp;{Math.round(props.price)}</del>
-                            </Typography>
-                        </Typography>:""}
+                            {props.price ?
+                                <Typography style={{ display: "flex", width: '100%' }}>
+                                    <Typography
+                                        // variant="caption"
+                                        className={`pricing-p${props.price != null & props.price !== '' ? '' : 'shine'} ${classes.deletePrice} ${classes.dis}`}
+                                    // component="p"
+                                    >
+                                        <del>₹&nbsp;{Math.round(props.price)}</del>
+                                    </Typography>
+                                </Typography> : ""}
                         </Grid>
+                        <Hidden  mdDown>
                         <Grid item lg={12} xs={12}>
                             {
                                 props.offerDiscount ?
@@ -69,6 +70,8 @@ export default function Pricing(props) {
 
                             }
                         </Grid>
+                        </Hidden>
+                        
                     </Grid>
                 </Grid>
             </Grid>

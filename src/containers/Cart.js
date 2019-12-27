@@ -5,7 +5,7 @@ import CartCard from 'components/Checkout/CartCard';
 import Footer from 'components/Footer/Footer'
 import { Grid, Container, Hidden } from '@material-ui/core';
 // import CustomSeparator from '../../components/BreadCrumb/index'
-import Header from 'components/Header/header'
+import Header from 'components/SilverComponents/Header'
 import 'screens/Stylori/index.css'
 import { CartContext } from 'context'
 import cart from 'mappers/cart'
@@ -15,33 +15,33 @@ import styles from "../components/Checkout/style"
 import { withStyles } from '@material-ui/core/styles';
 import './index.css'
 import { NavLink } from 'react-router-dom';
-
+ 
 // data.map(data=>{
 // return(
 //     <Grid item xs={12}>
 //     <CartCard data={data}/>
-//     </Grid>
+//     </Grid> 
 //         )
 //     })
 const breadcrumsdata = [
-    "Shopping Bag",
-    "Login/ Register",
-    "Address Detail",
-    "Payment Options",
-    "Order Confirmation",
+    { title: "Shopping Bag" },
+    { title: "Login/ Register" },
+    { title: "Address Detail" },
+    { title: "Payment Options" },
+    { title: "Order Confirmation" },
 ]
 const cartsubdata = [
     {
-        name: "100% Certified   Jewellery  ",
+        name: "100% Certified Jewellery",
         icon: "https://assets-cdn.stylori.com/images/static/icon-star.png"
     }, {
-        name: " Secure  Payments   ",
+        name: "Secure Payments",
         icon: "https://assets-cdn.stylori.com/images/static/icon-lock.png"
     }, {
-        name: "  Free Insured    Shipping   ",
+        name: "Free Insured Shipping",
         icon: "https://assets-cdn.stylori.com/images/static/icon-van.png"
     }, {
-        name: "  25 - Day   Returns   ",
+        name: "25-Day Returns",
         icon: "https://assets-cdn.stylori.com/images/static/icon-return.png"
     }
 ]
@@ -52,9 +52,11 @@ class Cart extends React.Component {
         return (
             <div>
                 <Hidden smDown>
-                    <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+                    <Grid container spacing={12}
+                    //  style={{ position: 'sticky', top: '0', zIndex: '1000' }}
+                     >
                         <Grid item xs={12} >
-                            <Header />
+                            <Header wishlist={this.props.wishlistdata}/>
                         </Grid>
                     </Grid>
                     {path === "checkout" ? "" :
@@ -74,6 +76,7 @@ class Cart extends React.Component {
                             </Grid> : <><div className="noproductsfound">There are no items in this cart. </div>  <NavLink to="/jewellery" style={{ textDecoration: 'none' }} > <div className="continueshopping">CONTINUE SHOPPING</div></NavLink></>}
                         </Grid>
                     </div>
+
                     <Grid Container spacing={12}>
                         <Grid item xs={12}>
                             <Footer />
@@ -81,6 +84,12 @@ class Cart extends React.Component {
                     </Grid>
                 </Hidden>
                 <Hidden mdUp>
+                    {path === "checkout" ? "" :
+                        <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+                            <Grid item xs={12} >
+                                <Header wishlist={this.props.wishlistdata}/>
+                            </Grid>
+                        </Grid>}
                     <Container>
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>
@@ -101,7 +110,7 @@ class Cart extends React.Component {
 // export default Checkout;
 
 const Components = props => {
-    let { CartCtx: { cartFilters, data, loading, error } } = React.useContext(CartContext);
+    let { CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata  } } = React.useContext(CartContext);
     let content, mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
@@ -109,7 +118,10 @@ const Components = props => {
         }
     }
     if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
-    else content = <Cart {...props} data={mapped} />
+    else content = <Cart {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
+    if (mapped !== undefined || mapped !== null) {
+        localStorage.setItem("a__c_t", mapped && mapped.length)
+    }
     return content
 }
 

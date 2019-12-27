@@ -1,12 +1,9 @@
 @import "../../fonts/font.css";
-
-
-
 /* .arrow {
   fill: #394578 !important;
 } */
 .MuiTypography-h4,.MuiInputBase-input{
-  font-family: 'Robot-Black ' !important;
+  /* font-family: "Roboto" !important; */
 }
 .filter-drawer-list {
   border-bottom: 1px solid rgba(0, 0, 0, 0.13) !important;
@@ -135,11 +132,11 @@
 .filter-mbl-font,
 .filter-mbl-fonts {
   /* padding: 2px; */
-  color: #394578;
+  /* color: #394578; */
   cursor: pointer;
-  font-family: 'Robot-Black ' !important;
-  font-size: 15px;
-  font-weight: 600 !important;
+  /* font-family: "Roboto" !important; */
+  /* font-size: 15px; */
+  /* font-weight: 600 !important; */
 }
 .fnts{
   font-size: 12px !important;
@@ -151,11 +148,12 @@
 /*mobile filter*/
 .filter-mbl-font span {
   /* padding: 2px; */
-  color: #394578;
+  /* color: #394578; */
+  color:#666;
   cursor: pointer;
-  font-family: 'Robot-Black ' !important;
+  /* font-family: "Roboto" !important; */
   font-size: 12px !important;
-  font-weight: 600 !important;
+  /* font-weight: 600 !important; */
 }
 
 .p,
@@ -166,21 +164,26 @@
 /* .MuiGrid-spacing-xs-2 > .MuiGrid-item{
   padding-top: 0px !important;
 } */
+.mbl-filter-list{
+  border-bottom: '1px solid #efeeee';
+}
 
 .mbl-filter-list :hover {
-  background-color: #394578 !important;
+  /* background-image: linear-gradient(to left, #f9e3e3, rgba(246, 153, 163, 1)) !important; */
   color: #fff !important;
 }
 
 .mbl-filter-list :hover span {
-  background-color: #394578 !important;
+
+  /* background-color: #394578 !important; */
+  /* background-image: linear-gradient(to left, #f9e3e3, rgba(246, 153, 163, 1)); */
   color: #fff !important;
 }
 
-.mbl-filter-list :hover {
+/* .mbl-filter-list :hover {
   background-color: #394578 !important;
   color: #fff !important;
-}
+} */
 
 .filter-fixed {
   text-align: center;

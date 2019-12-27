@@ -3,174 +3,289 @@ import './address.css'
 import { Container, Grid, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import styles from "./style"
-
+import Typography from '@material-ui/core/Typography';
+import Modal from '@material-ui/core/Modal';
 class Addressdetails extends React.Component {
-    // constructor(props) {
-    //     super(props)
-    // }
-    // state = {
-    //     values: localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
-    // }
-    // componentWillReceiveProps(newprops) {
-    //     this.setState({
-    //         values: this.props.values
-    //     })
-    // }
-    Addressdetails = (props, value) => {
+    state = {
+        open: false,
+    };
+    handleOpen = () => {
+        this.setState({ open: true });
+    };
+
+    handleClose = () => {
+        this.setState({ open: false });
+    };
+    Addressdetails = (props, value, value2) => {
         const { setValues, values } = props;
         const cl = <input onChange={(e) => {
             setValues({
-                ...values,
+                values, ...values,
                 checkValue1: !values.checkValue1
             })
         }} type='checkbox' checked={values.checkValue1} />
         const { classes } = props;
+        var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
+
         const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
         const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
-        let lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
-        let lgn1 = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
-
-        //         const nmj = () => {
-        //             if (objj === objj1) {
-        //           objj['value'] = value
-        //       } else {
-        //           objj['addressOne'] = value.addressOne
-        //       }
+        const _add_data_addres = () => {
+            if (con_gust === true) {
+                return value
+            } if (con_gust !== true) {
+                return values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes
+            }
+        }
+        // const back_color = () => {
         // }
-
-        var objj = {};
-        objj['addressOne'] = value.addressOne
-        var objj1 = {};
-        objj1['addressTwo'] = value.addressTwo
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>
-                    <h5 className='title'> Shipping Address</h5>
-                    <Grid item xs={12} lg={6}>
-                        <div class="form-group tp ts">
-                            {cl}
-                            {!values.checkValue1 && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
-                            {values.checkValue1 && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
-                        </div><div className='card-adrs wd'
-                            style={{ marginTop: "5px" }}>
-                            <h4 class="card-title">
-                                <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
-                                <span class="address-name">
-                                    {aa ? aa + '.' : ""}
-                                    {value && value.addressOne && value.addressOne.firstname || lgn && lgn.firstname ? value && value.addressOne && value.addressOne.firstname || lgn.firstname : value && value.addressTwo && value.addressTwo.firstname || value && value.addressOne && value.addressOne.firstname}
-
-                                    &nbsp;
-                                    {value && value.addressOne && value.addressOne.lastname || lgn && lgn.lastname ? value && value.addressOne && value.addressOne.lastname || lgn.lastname : value && value.addressTwo && value.addressTwo.lastname || value && value.addressOne && value.addressOne.lastname}
-                                </span>
-                                {/* <i onClick={() => {
-                                    localStorage.setItem("isedit", 1)
-                                    this.props.redirectForm()
-                                }} style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
-                                    class="fa fa-pencil-square-o"></i> */}
-
-
-                                <i onClick={() => {
-                                    // localStorage.setItem("isedit", 1)
-                                    this.props.redirectForm()
-                                }} style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
-                                    class="fa fa-pencil-square-o"></i>
-
-
-                                {localStorage.getItem("valuessetdata") ? <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
-                                    onClick={() => {
-                                        localStorage.removeItem("valuessetdata")
-                                        localStorage.setItem("valuessetdata", JSON.stringify(objj1))
-                                        // localStorage.removeItem('vals')
-                                        window.location.reload();
-                                    }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> : ""}
-                                {localStorage.getItem("vals") ? <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
-                                    onClick={() => {
-                                        alert('Address already in use')
-                                    }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> : ""}
-
-                            </h4>
-                            <p className={`detils-p ${classes.normalfonts}`} >
-                                {value && value.addressOne && value.addressOne.addressline1 || lgn && lgn.addressline1 ? value && value.addressOne && value.addressOne.addressline1 || lgn.addressline1 : value && value.addressTwo && value.addressTwo.addressline1 || value && value.addressOne && value.addressOne.addressline1}
-                                <br />
-                                {value && value.addressOne && value.addressOne.city || lgn && lgn.city ? value && value.addressOne && value.addressOne.city || lgn.city : value && value.addressTwo && value.addressTwo.city || value && value.addressOne && value.addressOne.city}
-                                <br />
-                                {value && value.addressOne && value.addressOne.state || lgn && lgn.state ? value && value.addressOne && value.addressOne.state || lgn.state : value && value.addressTwo && value.addressTwo.state || value && value.addressOne && value.addressOne.state}-
-                                {value && value.addressOne && value.addressOne.pincode || lgn && lgn.pincode ? value && value.addressOne && value.addressOne.pincode || lgn.pincode : value && value.addressTwo && value.addressTwo.pincode || value && value.addressOne && value.addressOne.pincode}
-                                <br />IN
-                                </p>
-                            <div className="card-foo">
-                                <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                    +91 {value && value.addressOne && value.addressOne.contactNumber || lgn && lgn.contactNumber ? value && value.addressOne && value.addressOne.contactNumber || lgn && lgn.contactNumber : value && value.addressTwo && value.addressTwo.contactNumber || value && value.addressOne && value.addressOne.contactNumber}
-                                </span> <Button style={{ float: "right" }} className='apply-b' onClick={() => {
-                                    this.props.changevalue(3)
-                                }}>Select and  Review </Button>
-                            </div>
-                        </div>
-                    </Grid>
-
-                    {!values.checkValue1 &&
-                        <Grid item xs={12} lg={6}>
-                            <h5 className='title'> Billing address</h5>
-                            <br />
-                            <div className='card-adrs wd' >
-                                <h4 class="card-title">
-                                    <i style={{ fontSize: "25px" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
-                                    {/* {name1.adrs_firstname} */}
-                                    <span class="address-name">
-                                        {aa1 ? aa1 + '.' : aa + ' '}
-                                        {lgn1 && lgn1.firstname ? lgn1 && lgn1.firstname : lgn.firstname}
-                                        {value && value.addressTwo && value.addressTwo.firstname ? value && value.addressTwo && value.addressTwo.firstname : value && value.addressOne && value.addressOne.firstname}&nbsp;
-                                        {value && value.addressTwo && value.addressTwo.lastname ? value && value.addressTwo && value.addressTwo.lastname : value && value.addressOne && value.addressOne.lastname}
-                                        {/* &nbsp;        {lgn1 || (value.addressTwo.lastname ? value.addressTwo.lastname : value.addressOne.lastname)} */}
-                                    </span>
-                                    <i onClick={() => this.props.redirectForm()} style={{ fontSize: "20px", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
-                                        class="fa fa-pencil-square-o"></i>
-                                    {localStorage.getItem("valuessetdata") ?
-                                        <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
-                                            onClick={() => {
-                                                localStorage.removeItem("valuessetdata")
-                                                localStorage.setItem("valuessetdata", JSON.stringify(objj))
-                                                // localStorage.removeItem('vals')
-                                                window.location.reload();
-                                                // localStorage.getItem("valuessetdata")==={}?this.props.redirectForm():""
-                                            }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> : ""}
-                                    {localStorage.getItem("vals") ? <i style={{ fontSize: "20px", float: "right", marginRight: "10px", cursor: "pointer" }}
-                                        onClick={() => {
-                                            alert('Address already in use')
-                                        }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> : ""}
-
-                                </h4>
-                                <p className={`detils-p ${classes.normalfonts}`} >
-                                    {lgn1 && lgn1.addressline1 ? lgn1 && lgn1.addressline1 : lgn && lgn.addressline1}{value && value.addressTwo && value.addressTwo.addressline1 ? value && value.addressTwo && value.addressTwo.addressline1 : value && value.addressOne && value.addressOne.addressline1}
-                                    <br />
-                                    {lgn1 && lgn1.city ? lgn1 && lgn1.city : lgn && lgn.city}{value && value.addressTwo && value.addressTwo.city ? value && value.addressTwo && value.addressTwo.city : value && value.addressOne && value.addressOne.city}<br />
-                                    {lgn1 && lgn1.state ? lgn1 && lgn1.state : lgn && lgn.state}{value && value.addressTwo && value.addressTwo.state ? value && value.addressTwo && value.addressTwo.state : value && value.addressOne && value.addressOne.state}-
-                                    {lgn1 && lgn1.pincode ? lgn1 && lgn1.pincode : lgn && lgn.pincode}{value && value.addressTwo && value.addressTwo.pincode ? value && value.addressTwo && value.addressTwo.pincode : value && value.addressOne && value.addressOne.pincode}
-                                    <br />IN</p>
-                                <div className="card-foo">
-                                    <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                        +91 {lgn1 && lgn1.contactNumber ? lgn1 && lgn1.contactNumber : lgn && lgn.contactNumber}
-                                        {value && value.addressTwo && value.addressTwo.contactno ? value && value.addressTwo && value.addressTwo.contactno : value && value.addressOne && value.addressOne.contactNumber}
-                                    </span>
-                                    <Button style={{ float: "right" }} className='apply-b' onClick={() => {
-                                        this.props.changevalue(3)
-                                    }}>Select and  Review </Button>
-                                </div>
-                            </div>
-                            {/* <Button onClick={() => this.props.redirectForm()} className={`add-new-address ${classes.normalfonts}`}>
-                                <div></div>
-                                Add New Address
-                            </Button> */}
-                        </Grid>}
+                    {window.location.pathname.split("-")[0] === "/account" ? "" : <h5 className='title'> Shipping Address</h5>}
+                    {window.location.pathname.split("-")[0] === "/account" ? <>
+                    {_add_data_addres() && _add_data_addres().map((val_addrs1, index) => 
+                            <>
+                                {localStorage.setItem("pin_cod", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].pincode))}
+                                {localStorage.setItem("co_num", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].contactNumber))}
+                                {/* {localStorage.setItem("addres_Id", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].id))} */}
+                                {localStorage.setItem("namesOf_first", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].firstname))}
+                                {localStorage.setItem("namesOf_last", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].lastname))}
+                                <Grid item xs={12} lg={6} style={{ paddingRight: "15px" }}>
+                                    <div className='card-adrs wd'
+                                        style={{ marginTop: "5px" }}>
+                                        <h4 class="card-title">
+                                            <i style={{ fontSize: "25px", color: "#394578" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
+                                            <span class="address-name">
+                                                {/* {aa ? aa + ' ' : aa1 + ' '} */}
+                                                {val_addrs1.firstname}
+                                                &nbsp;
+                                                   {val_addrs1.lastname}
+                                            </span>
+                                            <i onClick={() => {
+                                                this.props.redirectForm(val_addrs1, index, true, true, index)
+                                            }} style={{ fontSize: "20px", color: "#394578", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
+                                                class="fa fa-pencil-square-o"></i>
+                                            <i
+                                                onClick={() => {
+                                                    this.handleOpen()
+                                                }} style={{ fontSize: "20px", color: "#394578", float: "right", marginRight: "10px", cursor: "pointer" }}
+                                                className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
+                                        </h4>
+                                        <Modal
+                                            open={this.state.open}
+                                        >
+                                            <div className="modal_addrs_dlt">
+                                                <Grid container lg={12} spacing={12} className="dlt_div">
+                                                    <div className="dlt_content">
+                                                        Are you sure you want to delete this Address?
+                                                                </div>
+                                                    <Grid item lg={6}><Button className="addres_dlt_cancel" onClick={this.handleClose}>Cancel</Button></Grid>
+                                                    <Grid item lg={6}><Button className="addres_dlt_ok" onClick={() => this.props.Delete_address(val_addrs1, index)}>Confirm delete</Button></Grid>
+                                                </Grid>
+                                            </div>
+                                        </Modal>
+                                        <p className={`detils-p ${classes.normalfonts}`} >
+                                            {val_addrs1.addressline1}
+                                            <br />
+                                            {val_addrs1.city}
+                                            <br />
+                                            {val_addrs1.state}
+                                            {val_addrs1.pincode}
+                                            <br />IN
+                                               </p>
+                                        <div className="card-foo">
+                                            <span className={`shipping-phonenumber ${classes.normalfonts}`}>
+                                                +91 {val_addrs1.contactNumber}{val_addrs1.contactno}
+                                            </span>
+                                            {window.location.pathname.split("-")[0] !== "/account" ?
+                                                <>{JSON.parse(localStorage.getItem("ship_isactive")) === index || JSON.parse(localStorage.getItem("bil_isactive")) === index ? <>
+                                                    <Button disabled
+                                                        style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
+                                                        }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Selected</Button></> : <>
+                                                        <Button style={{ float: "right" }} className='apply-b' onClick={() => {
+                                                            this.props.selectaddreses(val_addrs1, 1, index)
+                                                        }}>Select </Button></>}</>
+                                                : ""}
+                                        </div>
+                                    </div>
+                                </Grid><br />
+                            </>
+                    )}</> : <>
+                    {_add_data_addres() && _add_data_addres().map((val_addrs1, index) => {
+                        return (JSON.parse(localStorage.getItem("bil_isactive")) === index ? false :
+                            <>
+                                {localStorage.setItem("pin_cod", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].pincode))}
+                                {localStorage.setItem("co_num", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].contactNumber))}
+                                {/* {localStorage.setItem("addres_Id", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].id))} */}
+                                {localStorage.setItem("namesOf_first", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].firstname))}
+                                {localStorage.setItem("namesOf_last", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].lastname))}
+                                <Grid item xs={12} lg={6} style={{ paddingRight: "15px" }}>
+                                    <div className='card-adrs wd'
+                                        style={{ marginTop: "5px" }}>
+                                        <h4 class="card-title">
+                                            <i style={{ fontSize: "25px", color: "#394578" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
+                                            <span class="address-name">
+                                                {/* {aa ? aa + ' ' : aa1 + ' '} */}
+                                                {val_addrs1.firstname}
+                                                &nbsp;
+                                                   {val_addrs1.lastname}
+                                            </span>
+                                            <i onClick={() => {
+                                                this.props.redirectForm(val_addrs1, index, true, true, index)
+                                            }} style={{ fontSize: "20px", color: "#394578", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
+                                                class="fa fa-pencil-square-o"></i>
+                                            <i
+                                                onClick={() => {
+                                                    this.handleOpen()
+                                                }} style={{ fontSize: "20px", color: "#394578", float: "right", marginRight: "10px", cursor: "pointer" }}
+                                                className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
+                                        </h4>
+                                        <Modal
+                                            open={this.state.open}
+                                        >
+                                            <div className="modal_addrs_dlt">
+                                                <Grid container lg={12} spacing={12} className="dlt_div">
+                                                    <div className="dlt_content">
+                                                        Are you sure you want to delete this Address?
+                                                                </div>
+                                                    <Grid item lg={6}><Button className="addres_dlt_cancel" onClick={this.handleClose}>Cancel</Button></Grid>
+                                                    <Grid item lg={6}><Button className="addres_dlt_ok" onClick={() => this.props.Delete_address(val_addrs1, index)}>Confirm delete</Button></Grid>
+                                                </Grid>
+                                            </div>
+                                        </Modal>
+                                        <p className={`detils-p ${classes.normalfonts}`} >
+                                            {val_addrs1.addressline1}
+                                            <br />
+                                            {val_addrs1.city}
+                                            <br />
+                                            {val_addrs1.state}
+                                            {val_addrs1.pincode}
+                                            <br />IN
+                                               </p>
+                                        <div className="card-foo">
+                                            <span className={`shipping-phonenumber ${classes.normalfonts}`}>
+                                                +91 {val_addrs1.contactNumber}{val_addrs1.contactno}
+                                            </span>
+                                            {window.location.pathname.split("-")[0] !== "/account" ?
+                                                <>{JSON.parse(localStorage.getItem("ship_isactive")) === index || JSON.parse(localStorage.getItem("bil_isactive")) === index ? <>
+                                                    <Button disabled
+                                                        style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
+                                                        }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Selected</Button></> : <>
+                                                        <Button style={{ float: "right" }} className='apply-b' onClick={() => {
+                                                            this.props.selectaddreses(val_addrs1, 1, index)
+                                                        }}>Select </Button></>}</>
+                                                : ""}
+                                        </div>
+                                    </div>
+                                </Grid><br />
+                            </>)
+                    })}</>}
+                    
                 </Grid>
-                {/* <Button onClick={() => this.props.redirectForm()} className={`add-new-address ${classes.normalfonts}`}>
-                    <div></div>  Add New Address
-                            </Button> */}
+                {value.length > 4 || values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :
+                    <Button onClick={() => this.props.redirectForm1()} className={`add-new-address ${classes.normalfonts}`}>
+                        <div></div>  Add New Address
+                   </Button>}<br />
+
+                {window.location.pathname.split("-")[0] !== "/account" ? <>
+                    <div class="form-group tp ts">
+                        {cl}
+                        {!values.checkValue1 && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
+                        {values.checkValue1 && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
+                    </div>
+                    {!values.checkValue1 &&
+                        <>
+                            <h5 className='title'> Billing Address</h5><br />
+                            <Grid container spacing={12}>
+                                <>
+                                    {_add_data_addres() && _add_data_addres().map((val_addrs2, index) => {
+                                        return JSON.parse(localStorage.getItem("ship_isactive")) === index ? false :
+                                            <>
+                                                <Grid item xs={12} lg={6} style={{ paddingRight: "15px" }}>
+                                                    <div className='card-adrs wd'
+                                                        style={{ marginTop: "5px" }}
+                                                    >
+                                                        <h4 class="card-title">
+                                                            <i style={{ fontSize: "25px", color: "#394578" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
+                                                            <span class="address-name">
+                                                                {/* {aa ? aa + ' ' : aa1 + ' '} */}
+                                                                {val_addrs2.firstname}
+                                                                &nbsp;
+                                                  {val_addrs2.lastname}
+                                                            </span>
+                                                            <i onClick={() => {
+                                                                // localStorage.setItem("isedit", 1)
+                                                                this.props.redirectForm(val_addrs2, index, true, false, index)
+                                                            }} style={{ fontSize: "20px", color: "#394578", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
+                                                                class="fa fa-pencil-square-o"></i>
+                                                            <i style={{ fontSize: "20px", color: "#394578", float: "right", marginRight: "10px", cursor: "pointer" }}
+                                                                onClick={() => {
+                                                                    // localStorage.removeItem("valuessetdata")
+                                                                    // dlt_locl1()
+                                                                    this.handleOpen()
+                                                                    // this.props.Delete_address(val_addrs2, index)
+                                                                    // localStorage.removeItem('vals')
+                                                                    // window.location.reload();
+                                                                }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
+                                                        </h4>
+                                                        <Modal
+                                                            open={this.state.open}
+                                                        >
+                                                            <div className="modal_addrs_dlt">
+                                                                <Grid container lg={12} spacing={12} className="dlt_div">
+                                                                    <div className="dlt_content">
+                                                                        Are you sure you want to delete this Address?
+                                                            </div>
+                                                                    <Grid item lg={6}><Button className="addres_dlt_cancel" onClick={this.handleClose}>Cancel</Button></Grid>
+                                                                    <Grid item lg={6}><Button className="addres_dlt_ok" onClick={() => this.props.Delete_address(val_addrs2, index)}>Confirm delete</Button></Grid>
+                                                                </Grid>
+                                                            </div>
+                                                        </Modal>
+                                                        <p className={`detils-p ${classes.normalfonts}`} >
+                                                            {val_addrs2.addressline1}
+                                                            <br />
+                                                            {val_addrs2.city}
+                                                            <br />
+                                                            {val_addrs2.state}-
+                                               {val_addrs2.pincode}
+                                                            <br />IN
+                                               </p>
+                                                        <div className="card-foo">
+                                                            <span className={`shipping-phonenumber ${classes.normalfonts}`}>
+                                                                +91 {val_addrs2.contactNumber}{val_addrs2.contactno}
+                                                            </span>
+
+                                                            <>{JSON.parse(localStorage.getItem("ship_isactive")) === index || JSON.parse(localStorage.getItem("bil_isactive")) === index ? <>
+                                                                <Button disabled
+                                                                    style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
+                                                                        // this.props.selectaddreses(val_addrs1, 1)
+                                                                        // this.props.changevalue(3)
+                                                                    }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Selected</Button></> : <>
+                                                                    <Button style={{ float: "right" }} className='apply-b' onClick={() => {
+                                                                        this.props.selectaddreses(val_addrs2, 2, index)
+                                                                        // this.props.changevalue(3)
+                                                                    }}>Select </Button></>}</>
+
+                                                        </div>
+                                                    </div>
+                                                </Grid>
+                                            </>
+                                    }
+
+                                    )}
+                                </>
+                            </Grid>
+                            {value.length > 4 || values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :
+                                <Button onClick={() => this.props.redirectForm1()} className={`add-new-address ${classes.normalfonts}`}>
+                                    <div></div>  Add New Address
+                   </Button>}
+                        </>
+                    }</> : ""}
             </div>
         )
     }
     render() {
-        let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")) : {}
+        let value = localStorage.getItem("gustaddres") ? JSON.parse(localStorage.getItem("gustaddres")).address : ""
         return (
             <Container>
                 {this.Addressdetails(this.props, value)}

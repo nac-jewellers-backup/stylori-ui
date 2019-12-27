@@ -1,11 +1,17 @@
 import React, { useEffect } from 'react';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { CART } from 'queries/cart';
+import { ALLORDERS } from 'queries/cart';
+import { ALLUSERWISHLISTS } from 'queries/cart';
 import { withRouter } from 'react-router-dom';
 import { useNetworkRequest } from 'hooks/NetworkHooks'
+import { FilterOptionsContext } from 'context/FilterOptionsContext';
 // import { productsPendants } from 'mappers/dummydata';
 // import { object } from 'prop-types';
-
+var orderobj = {}
+var orderobj1 = {}
+var objallorder = {};
+var objwishlist = {};
 // let setFilter;
 const initialCtx = {
     CartCtx: {
@@ -17,15 +23,20 @@ const initialCtx = {
             discounted_price: "",
             tax_price: ''
         },
-        loading: false, error: false, data: []
+        loading: false, error: false, data: [], allorderdata: [], wishlistdata: [], wishlist_count: []
     },
-    setCartFilters: (filterData) => { }
+    setCartFilters: (filterData) => { },
+    setallorderdata: () => { },
+    setwishlist_count: () => { },
 }
-
 export const CartContext = React.createContext(initialCtx);
 export const CartConsumer = CartContext.Consumer;
 const Provider = (props) => {
     const [cartFilters, setCartFilters] = React.useState(initialCtx.CartCtx);
+    const [allorderdata, setallorderdata] = React.useState([])
+    const [wishlistdata, setwishlistdata] = React.useState([])
+    const [wishlist_count, setwishlist_count] = React.useState([])
+    // console.log("hdjhjhkjfh", allorderdata)
     var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
     const user_id = cartFilters.user_id ? cartFilters.user_id : ""
     const price = cartFilters.price ? cartFilters.price : ""
@@ -33,8 +44,12 @@ const Provider = (props) => {
     const userIds = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ''
     var cartdetails = JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : {}
     const guestlogId = cartFilters.user_id ? cartFilters.user_id : ''
+    const { loading: allorderloading, error: allordererror, data: allorder, makeRequest: allordermakeRequest } = useGraphql(ALLORDERS, () => { }, {}, false);
+    const { loading: wishlistloading, error: wishlisterror, data: wishlistDATA, makeRequest: wishlistmakeRequest } = useGraphql(ALLUSERWISHLISTS, () => { }, {}, false);
     // const prices = cartFilters.price ? cartFilters.price : ''
     const discounted_price = cartFilters.discounted_price ? cartFilters.discounted_price : ""
+    // const { setwishlist_count } = React.useContext(FilterOptionsContext);
+    // alert(JSON.stringify(wishlist_count,wishlistdata))
     useEffect(() => {
         if (JSON.stringify(crtdata).length > 10) {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))
@@ -42,21 +57,56 @@ const Provider = (props) => {
         // localStorage.setItem('cart_id', JSON.stringify(crtdata))
     }, [crtdata])
     useEffect(() => {
+        const orderall = allorder ? allorder && allorder.data && allorder.data.allOrders && allorder.data.allOrders.nodes : ""
+        if (orderall && orderall.length > 0) {
+            objallorder["allorderdata"] = allorder.data.allOrders
+            // localStorage.setItem("allorder", allorder.data.allOrders)
+            setallorderdata(objallorder)
+        }
+    }, [allorder, allorderdata])
+    useEffect(() => {
+        var obj_aishlist_count = {}
+        const wishlistdatas = allorder ? wishlistDATA && wishlistDATA.data && wishlistDATA.data.allUserWhislists && wishlistDATA.data.allUserWhislists.nodes : ""
+        if (wishlistdatas && wishlistdatas.length > 0) {
+            objwishlist["wishlistdata"] = wishlistDATA.data.allUserWhislists
+            // localStorage.setItem("allorder", allorder.data.allOrders)
+            // obj_aishlist_count["wishlist_count"] = wishlistdatas && wishlistdatas.length
+            // localStorage.setItem("a__w_l", wishlistdatas && wishlistdatas.length)
+            setwishlistdata(objwishlist)
+            // setwishlist_count(obj_aishlist_count)
+            // alert(JSON.stringify(obj_aishlist_count))
+        }
+        // else {
+        //     localStorage.setItem("a__w_l", 0)
+        // }
+    }, [wishlistDATA])
+    useEffect(() => {
+        // if (window.location.pathname.split("-")[0]==="/account") {
+        orderobj["userProfileId"] = userIds 
+        orderobj1["userprofileId"] = userIds
+        allordermakeRequest(orderobj);
+        wishlistmakeRequest(orderobj1)
+        // }
+    }, [wishlistdata])
+    useEffect(() => {
         if (userIds.length > 0) {
             if (cartdetails && JSON.stringify(cartdetails).length > 0) {
 
                 // const user_id = userIds
                 // makeFetch({--login---})
-            } 
+            }
         }
+
         if (guestlogId.length > 0) {
             localStorage.setItem("user_id", cartFilters.user_id)
             if (JSON.stringify(cartdetails).length > 0) {
                 var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
                 const user_id = cartFilters.user_id
                 var addcart = ({ products, user_id })
-                console.log('verifiedMaill', addcart)
                 addtocart(addcart)
+                orderobj["userProfileId"] = user_id
+                allordermakeRequest(orderobj);
+                // wishlistmakeRequest(orderobj1) 
             }
         }
         else {
@@ -64,8 +114,6 @@ const Provider = (props) => {
                 var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
                 var local_storage_products = []
                 if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
-                    console.log('hey i came inside the local_storage....', local_storage)
-                    
                     local_storage_products = JSON.parse(localStorage.getItem('cartDetails')).products.map(val => { return val })
                 }
 
@@ -83,7 +131,6 @@ const Provider = (props) => {
                 var products_sku_list = () => {
                     if (local_storage_products.length > 0) {
                         local_storage_products.push(obj);
-                        console.log(local_storage_products, local_storage_products)
                         return local_storage_products
 
                     }
@@ -93,7 +140,6 @@ const Provider = (props) => {
                     }
 
                 }
-                console.log('hey i came inside the local_storage....', local_storage, local_storage_products.length > 0, products_sku_list())
                 var skuObj = { "cart_id": cartId, "user_id": userId, "products": products_sku_list() }
                 localStorage.setItem('cartDetails', JSON.stringify(skuObj));
             }
@@ -118,11 +164,10 @@ const Provider = (props) => {
     }, [])
 
     const CartCtx = {
-        cartFilters, loading, error, data, setCartFilters,
+        cartFilters, loading, error, wishlist_count, data, setCartFilters, allorderdata, wishlistdata
     }
-
     return (
-        <CartContext.Provider value={{ CartCtx, setCartFilters }} >
+        <CartContext.Provider value={{ CartCtx, setwishlist_count, setCartFilters, setallorderdata, setwishlistdata }} >
             {props.children}
         </CartContext.Provider>
     )

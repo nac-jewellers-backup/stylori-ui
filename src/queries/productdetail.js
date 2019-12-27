@@ -13,6 +13,7 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
       isReadyToShip
       vendorDeliveryTime
       discountPriceTax
+      markupPriceTax
       transSkuDescriptionsBySkuId {
         nodes {
           skuDescription
@@ -23,6 +24,8 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
         productName
         productId
         defaultSize
+        width
+        height
         sizeVarient
         colourVarient
         defaultWeight
@@ -79,6 +82,9 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
 }
 
 
+
+
+
 `
 export const CheckForCod = `query CheckForCod($pincode:String) {
   allPincodeMasters(first: 1, condition: {pincode:$pincode}) {
@@ -97,21 +103,21 @@ export const CheckForCod = `query CheckForCod($pincode:String) {
 `
 
 export const CUSTOMERREVIEWS = `query MyQuery($productSku: String) {
-  allCustomerReviews(condition: {productSku: $productSku}, last: 5) {
+  allCustomerReviews(condition: {productSku: $productSku, isPublish: true}, last: 5) {
     nodes {
       message
       title
       rating
+      customerName
     }
   }
 }
 `
 
-export const ADDRESSDETAILS = `
-query MyQuery($id: UUID) {
-  allUserAddresses(first: 1, condition: {id: $id}) {
+export const ADDRESSDETAILS = `query MyQuery($userprofileId: String) {
+  allUserAddresses(condition: {userprofileId: $userprofileId, isActive: true}) {
     nodes {
-      addressline1 
+      addressline1
       addressline2
       id
       city
@@ -124,6 +130,7 @@ query MyQuery($id: UUID) {
       lastname
       pincode
       state
+      isActive
     }
   }
 }`

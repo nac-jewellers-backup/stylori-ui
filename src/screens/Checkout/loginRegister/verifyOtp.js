@@ -3,10 +3,10 @@ import { useNetworkRequest } from 'hooks/index';
 import { GlobalContext } from 'context';
 import { CartContext } from 'context'
 
-
+ 
 export const useVerifyOtp = (changePanel) => {
-    const [email, setMail] = React.useState({ email: null })
-    const [otp, setOtp] = React.useState({ otp: null });
+    const [email, setMail] = React.useState({ email: "" })
+    const [otp, setOtp] = React.useState({ otp: "" });
     const [invalids, setInvalids] = React.useState({ email: false, otp: false });
     const { loading: eload, error: mailerr, data: edata, makeFetch: mailFetch } = useNetworkRequest('/api/auth/guestlogin', { email: email.email }, false);
     const { loading: otpload, error: otperr, data: otpdata, makeFetch: otpFetch } = useNetworkRequest('/api/auth/verifyotp', { email: email.email, otp: otp.otp }, false);
@@ -18,7 +18,6 @@ export const useVerifyOtp = (changePanel) => {
     const loading = Boolean(eload || otpload);
     const data = { edata, otpdata }
     React.useEffect(() => {
-        console.info('MAILERR', Boolean(!mailerr && Object.keys(edata).length), mailerr, edata);
         if (!mailerr && Object.keys(edata).length) {
             // setGlobaCtx({
             //     ...GLobalCtx,
@@ -33,10 +32,11 @@ export const useVerifyOtp = (changePanel) => {
         const verifiedMail = Boolean(!otpload && Object.keys(edata).length > 0)
         if (verifiedMail) {
             var user_id = edata.user.id;
-            localStorage.setItem("true", false)
+            // localStorage.setItem("true", false)
             const mail = email ? email.email : ""
             setGlobalCtx(
                 localStorage.setItem("isedit", 1),
+                localStorage.setItem("gut_lg", true),
                 localStorage.setItem('email', mail), {
                     email,
                     user_id,
@@ -54,7 +54,6 @@ export const useVerifyOtp = (changePanel) => {
     }
 
     const handleChange = (type, value) => {
-        debugger
         if (type === "email") {
             setMail({
                 ...email,
@@ -70,7 +69,7 @@ export const useVerifyOtp = (changePanel) => {
 
     const handlers = { handleChange, mailFetch, otpFetch, handleInvalid, setEnterOtp }
 
-    return { handlers, otp, email, status: { err, loading, data }, enterotp }
+    return { handlers, otp, email, status: { err, loading, data }, enterotp ,setMail}
 }
 
 

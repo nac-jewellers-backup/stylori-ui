@@ -35,11 +35,21 @@ class ProductDescription extends Component {
     // let path = window.location.pathname.split('/').pop();
     var loc = this.props.location.pathname;
     var path = loc.split('/');
+    var data_json = [{title:'home' ,url:'/home'}, {title:'jewellery' ,url:"/jewellery"}]
     // const descriptionData = this.props.data;
-    const settings = this.props.data[0].dataCarousel;
-    const fadeImages = this.props.data[0].carouselImage;
+    const settings = this.props.data&&this.props.data[0]&&this.props.data[0].dataCarousel;
+    const fadeImages = this.props.data&&this.props.data[0]&&this.props.data[0].carouselImage;
     const title = this.props.title;
-    const datadescription = this.props.data[0].seoText;
+    const datadescription = this.props.data&&this.props.data[0]&&this.props.data[0].seoText;
+    const renderTitle = () =>{
+      var pathname_split_hyphen = path[1].split('-')
+      var a = window.location.pathname.split('/')
+      // var b = a[1].split(/\-/g).map(val=>{return val.split(/\+/g)})
+      var b =a[1].split(/\-/g).map(val=>{return val.replace(/\+/g, " ")})
+      var c = b.map(val=>{return b + ' '})
+      var d
+      return  d = c[0].replace(/\,/g, " ")
+    }
     return (
       <>
         <Container >
@@ -64,7 +74,7 @@ class ProductDescription extends Component {
                   <CustomSeparator
                     list='product-dis'
                     classsubhed='product-backg'
-                    data={[ path[1]]} />{/* window.location.pathname.split('/').pop()  */}
+                    data={data_json} />{/* window.location.pathname.split('/').pop()  */}
                 </Grid>
               </Hidden>
               <Hidden smDown >
@@ -75,7 +85,7 @@ class ProductDescription extends Component {
                   alignItems="center"            >
                   <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>
                     {/* {window.location.pathname.split('/').pop()} */}
-                    {title}
+                    {renderTitle()}
 
                   </Typography>
                 </Grid>
@@ -87,7 +97,7 @@ class ProductDescription extends Component {
                   className={` DescriptionTitleSmallScreen `}
                   alignItems="center"            >
                   <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>
-                    {title}
+                    {renderTitle()}
                   </Typography>
                 </Grid>
               </Hidden>

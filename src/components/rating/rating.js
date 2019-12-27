@@ -1,17 +1,27 @@
 import React from "react";
 import "./rating.css";
+import { ProductDetailContext } from 'context/ProductDetailContext';
 const Star = ({ selected = false, onClick = f => f }) =>
-    <div className={(selected) ? "star selected" : "star"}
-        onClick={onClick}>
+    <div onClick={onClick}>
+        {selected ? <div class="star-rating" >
+            <input type="radio" />
+            <label for="1-stars" class="star">&#9733;</label>
+        </div> : <div class="star-rating">
+                <input type="radio" />
+                <div for="1-stars" >&#9733;</div>
+            </div>}
     </div>
 
 // Star.propTypes = {
 //   selected: React.PropTypes.bool,
 //   onClick: React.PropTypes.func
 // }
+const Ratings = (props) => {
+    const { setratingcounts } = React.useContext(ProductDetailContext);
+    return <Component setratingcounts={setratingcounts}  {...props} />
+}
 
-class Ratings extends React.Component {
-
+class Component extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -22,7 +32,8 @@ class Ratings extends React.Component {
 
     change(starsSelected) {
         this.setState({ starsSelected })
-        localStorage.setItem("count", starsSelected)
+        this.props.setratingcounts({ ratingcounts: starsSelected })
+        // localStorage.setItem("count", starsSelected)
     }
 
     render() {
@@ -30,11 +41,11 @@ class Ratings extends React.Component {
         const { starsSelected } = this.state;
 
         return (
-            <div className="star-rating" class={this.props.ratings}>
+            <div class={this.props.ratings}>
                 {[1, 2, 3, 4, 5].map((n, i) =>
                     <Star key={i}
                         selected={i < starsSelected}
-                        onClick={() => this.change(i + 1)}
+                        onClick={() => this.change(this.props.disable === "disable" ? "" : i + 1)}
                     />
                 )}
                 {/* <p>{starsSelected} of {totalStars} stars</p> */}

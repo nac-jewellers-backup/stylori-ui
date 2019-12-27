@@ -19,6 +19,7 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CheckForCod } from 'queries/productdetail';
 import { CartContext } from 'context'
 import { withRouter } from "react-router";
+import CommenDialog from '../Common/Dialogmodel'
 
 
 
@@ -26,6 +27,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
 
     const { data } = props;
     const { classes } = props;
+
     // const [] = React.useState()
 
     console.info('object2', props.filters)
@@ -38,10 +40,17 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                 <Grid container spacing={12}>
 
                     <Grid item xs={8} lg={4} sm={8}>
-                        <input
+                        {/* <input
                             placeholder='&#xf041; &nbsp; Enter Pin Code'
                             className='buynow-search'
                             type="text"
+                            value={state.values}
+                            onChange={(event) => { handleChanges(event) }}
+                            onKeyPress={(e) => { if (!(e.which >= 48 && e.which <= 57)) e.preventDefault(); }}
+                        /> */}
+                        <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+                            placeholder="Enter Pincode"
+                            className="pincode-cust buynow-search"
                             value={state.values}
                             onChange={(event) => { handleChanges(event) }}
                             onKeyPress={(e) => { if (!(e.which >= 48 && e.which <= 57)) e.preventDefault(); }}
@@ -66,14 +75,10 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
     )
 }
 
-const Buydetails = (props, state, handleChanges, handleCodChange) => {
+const Buydetails = (props, state, handleChanges, handleCodChange, canceldeletechecklist, deletechecklists, handleLocalStorage) => {
     const { data } = props;
     const { classes } = props;
-    const handleLocalStorage = () => {
-        props.setCartFilters({ skuId: data[0].skuId, qty: 1, price: data[0].offerPrice })
-        // props.history.push('/cart')
-        window.location.pathname = "/cart"
-    }
+
     return (
         <div>
             {data[0].ProductContactNum.map(val =>
@@ -82,13 +87,13 @@ const Buydetails = (props, state, handleChanges, handleCodChange) => {
                         <Grid item xs={12} lg={4} style={{ marginRight: "15px" }}>
                             {/* <NavLink to="/cart" style={{ textDecoration: 'none' }} onClick={handleLocalStorage.bind(this)}> */}
                             <div onClick={handleLocalStorage.bind(this)}>
-                                <Buynowbutton class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
+                                <Buynowbutton sku={data[0].skuId} class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
                             </div>
                             {/* </NavLink> */}
-
+                            <CommenDialog isOpen={state.modelOpen} content={`Verify selected product details. `} handleClose={canceldeletechecklist} handleSuccess={deletechecklists} negativeBtn="No" positiveBtn="Yes" title="Confirmation" />
                         </Grid>
 
-                        <Grid xs={12} lg={7} style={{ marginTop: "7px" }}>
+                        <Grid xs={12} lg={7} style={{ marginBottom: "7px" }}>
                             <Grid container spacing={12}>
                                 <Grid item lg={12} xs={12} className={`buy-subheaders nd-hlp ${classes.normalfonts}`}>Need Help ?</Grid>
                             </Grid>
@@ -102,7 +107,7 @@ const Buydetails = (props, state, handleChanges, handleCodChange) => {
                                     <i class="fa fa-whatsapp overall-icons" aria-hidden="true"></i>&nbsp;{val.phonenum}
                                 </Grid>
 
-                                <Grid item lg={2} className={`buy-subheaders ${classes.normalfonts}`}>
+                                <Grid item lg={2} style={{ cursor: "pointer !important" }} className={`buy-subheaders ${classes.normalfonts}`}>
                                     <i class="fa fa-comments-o overall-icons" aria-hidden="true"></i>&nbsp;{val.chat}
                                 </Grid>
                             </Grid>
@@ -137,7 +142,9 @@ class Component extends React.Component {
             pincodeValues: {},
             CheckForCodtitle: 'Check for COD',
             isRequired: false,
-            pincodeNotFound: false
+            pincodeNotFound: false,
+            modelOpen: false,
+            ringSize: this.props && this.props.data && this.props.data[0] && this.props.data[0].productsDetails && this.props.data[0].productsDetails[0].namedetail && this.props.data[0].productsDetails[0].namedetail[3] && this.props.data[0].productsDetails[0].namedetail[3].details
         }
     }
 
@@ -161,7 +168,32 @@ class Component extends React.Component {
         }
     }
 
+    openModel = () => {
+        this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
+        window.location.pathname = "/cart"
+    }
 
+    handleLocalStorage = () => {
+        this.setState({
+            modelOpen: true,
+        })
+    }
+
+    canceldeletechecklist = () => {
+
+        this.setState({
+            modelOpen: false,
+        })
+    }
+
+    deletechecklists = () => {
+        this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
+        window.location.pathname = "/cart"
+
+        this.setState({
+            modelOpen: false,
+        })
+    }
     handleOpen = () => {
         this.setState({ open: true });
     };
@@ -169,7 +201,7 @@ class Component extends React.Component {
         this.setState({ open: false });
     };
     handleChanges = (e) => {
-        this.setState({ values: e.target.value, CheckForCodtitle: 'Check for COD', pincodeNotFound: false, isRequired: false })
+        this.setState({ values: e.target.value, CheckForCodtitle: '', pincodeNotFound: false, isRequired: false })
     }
     handleCodChange = () => {
         if (this.state.values) {
@@ -199,7 +231,7 @@ class Component extends React.Component {
         return (
             <div>
                 <Hidden smDown>
-                    {Buydetails(this.props, this.state, this.handleChanges, this.handleCodChange)}
+                    {Buydetails(this.props, this.state, this.handleChanges, this.handleCodChange, this.canceldeletechecklist, this.deletechecklists, this.handleLocalStorage)}
                 </Hidden>
 
                 <Hidden mdUp>

@@ -18,11 +18,19 @@ import { productpricingPages } from '../../mappers';
 import styles from './style'
 import { ProductDetailContext } from 'context/ProductDetailContext';
 import productDetails from 'mappers/productDetails';
+import "../rating/rating.css";
 
 
 const Star = ({ selected = false, onClick = f => f }) =>
-    <div className={(selected) ? "star selected" : "star"}
-        onClick={onClick}>
+    <div onClick={onClick}>
+        {selected ? <div class="star-rating">
+            <input type="radio" />
+            <div for="1-stars" >&#9733;</div>
+        </div> :
+            <div class="star-rating" >
+                <input type="radio" />
+                <label for="1-stars" class="star">&#9733;</label>
+            </div>}
     </div>
 
 class CustomerReviews extends React.Component {
@@ -54,7 +62,7 @@ class CustomerReviews extends React.Component {
             value = <>
                 <div style={{ width: "100%", fontSize: "16px", marginBottom: "5px" }}>{val.title}</div>
                 <div style={{ width: "100%", fontSize: "14px", marginBottom: "5px" }}>{val.message}</div>
-                <div>
+                <div className="star-rating width starts-review">
                     {[1, 2, 3, 4, 5].map((n, i) =>
                         <Star key={i}
                             selected={i < val.rating}
@@ -89,24 +97,26 @@ class CustomerReviews extends React.Component {
         return (
             <div>
                 <Hidden smDown>
-                    <div className="pricing-product-media">
-                        <div className="reviews-header">
-                            <span className={`reviews-customer ${classes.normalfonts}`}>Customer Reviews</span>
+                    <Container>
+                        <div className="pricing-product-media" >
+                            <div className="reviews-header">
+                                <span className={`reviews-customer ${classes.normalfonts}`}>Customer Reviews</span>
+                            </div>
+                            <div className="reviews">
+                                <span className={`data-reviews ${classes.normalfonts}`}>
+                                    <Grid spacing={12} container style={{ float: "left", padding: "2%", lineHeight: "23px" }}>
+                                        <Grid item lg={12}>{this.rat_map_title() ? this.rat_map_title() : <div style={{ textAlign: "center", fontWeight: "bold" }}> No Reviews Found</div>}</Grid>
+                                    </Grid>
+                                </span>
+                            </div>
                         </div>
-                        <div className="reviews">
-                            <span className={`data-reviews ${classes.normalfonts}`}>
-                                <Grid spacing={12} container style={{ float: "left", padding: "2%", lineHeight: "23px" }}>
-                                    <Grid item lg={12}>{this.rat_map_title() ? this.rat_map_title() : "No Reviews Found"}</Grid>
-                                </Grid>
-                            </span>
-                        </div>
-                    </div>
+                    </Container>
                 </Hidden>
 
                 <Hidden mdUp>
                     <Container>
                         <ExpansionPanel
-                            style={{ boxShadow: "none" }} square
+                            style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important", padding: "0 5px" }} square
                             expanded={expanded === 'panel1'}
                             onChange={this.handleChange('panel1')}
                         >

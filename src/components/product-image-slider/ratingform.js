@@ -12,24 +12,27 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './style';
 import useRating from "./userating"
 import { withRouter } from "react-router";
-
+import { ProductDetailContext } from 'context/ProductDetailContext';
 const RatingForm = (props) => {
     return <RatingComponent  {...props} />
 }
 const RatingComponent = (props) => {
     const { classes } = props;
-    const { values, handlers } = useRating();
+    const { values, handlers, setValues } = useRating(props.ratingcounts);
+
     return (
+        <Container className="bg-clr2">
         <form id="Resetform" action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e, props)}>
-            <Grid container spacing={12} style={{ marginTop: '20px' }}>
+            <Grid container spacing={12} style={{ marginTop: '20px' }} >
                 <Grid item lg={1} />
                 <Grid item xs={12} lg={8}>
-                    <h5 className={`rating-form-head ${classes.normalfonts}`}>Rate This</h5>
-                    <div className="rating-form">
-                        <Ratings />
-                        <label className='errtext'> {values.errortext.rate ? values.errortext.rate : ""}</label>
+                    <div className="rating-form ">
+                        <h5 className={`rating-form-head ${classes.normalfonts}`}>Rate This</h5>
+                        <label className='errtext'> {values.errortext.rateerr ? values.errortext.rateerr : ""}</label>
+                        <Ratings ratings="starts-review"/>
                     </div>
-                    <h3 className={`rating-form-head ${classes.normalfonts}`}>Write Your Review</h3>
+                    <h6 className={`rating-form-head ${classes.normalfonts}`} style={{marginBottom: "-3px"}}>Write Your Review</h6>
+                    <label className='errtext'> {values.errortext.ratetitle ? values.errortext.ratetitle : ""}</label>
                     <Input
                         margin="normal"
                         variant="outlined"
@@ -40,35 +43,50 @@ const RatingComponent = (props) => {
                         placeholder="Title"
                         className="rating-form-text"
                         onChange={e => handlers.handleChange('title', e.target.value)}
-                        helperText="please Enter review title"
-                        required
+                        // helperText="please Enter review title"
+                        error={values.error && values.error.ratetitle ? true : false}
+                    // required
                     />
-                    <span className={`tool-tips ${classes.normalfonts}`} >Max 60 Characters</span>
+                    <div style={{ width: "100%" }} className={`tool-tips ${classes.normalfonts}`} >Max 60 Characters</div>
+                    <label className='errtext'> {values.errortext.ratemsg ? values.errortext.ratemsg : ""}</label>
                     <Input
                         margin="normal"
-                        variant="outlined"
+                        variant="outlined" 
                         type="text"
                         name="message"
                         placeholder='Your Reviews'
                         className="rating-form-text"
                         maxLength={250}
                         value={values.message}
+                        multiline={true}
+                        rows={3}
+                        rowsMax={4}
                         onChange={e => handlers.handleChange('message', e.target.value)}
-                        helperText="please Enter review text"
-                        required />
-                    <span className={`tool-tips ${classes.normalfonts}`} >Max 250 Characters</span>
+                        error={values.error && values.error.ratemsg ? true : false}
+                    // helperText="please Enter review text"
+                    // required 
+                    />
+                    <div className={`tool-tips ${classes.normalfonts}`} >Max 250 Characters</div>
                     {/* <button type="submit" >rr</button> */}
                 </Grid>
-            </Grid>
+          
             <Grid container spacing={12} style={{ marginTop: '20px' }}>
                 <Grid item xs={12} lg={9}>
                     <div style={{ float: "right" }}>
                         <Button className={`form-reviews-mob ${classes.fontwhite} ${classes.normalcolorback}`} type="submit">Write a Reviews</Button>
-                        <Button onClick={()=>document.getElementById("Resetform").reset()} className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite}`} >Cancel</Button>
+                        <Button onClick={() => handlers.clear()} className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite}`} >Cancel</Button>
                     </div>
+                </Grid>
                 </Grid>
             </Grid>
         </form>
+        </Container>
     )
 }
-export default withRouter(withStyles(styles)(RatingForm));
+const Components = props => {
+    const { ProductDetailCtx: { ratingcounts } } = React.useContext(ProductDetailContext);
+    return <RatingForm {...props} ratingcounts={ratingcounts} />
+}
+
+
+export default withRouter(withStyles(styles)(Components));

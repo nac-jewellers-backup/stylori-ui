@@ -23,7 +23,7 @@ const styles = theme => ({
         color: theme.palette.text.primary,
     },
     backgsecondary: {
-        background: theme.palette.secondary.dark,
+        background: theme.palette.secondary.dark, 
     },
 });
 export default styles;

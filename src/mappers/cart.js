@@ -105,7 +105,6 @@
 
 
 export default function (data) {
-
     let mapperdata = [];
     try {
         mapperdata = data.data.allTransSkuLists.nodes;
@@ -117,68 +116,91 @@ export default function (data) {
 
         try {
             _d = {
-                productsDetails : [
+                generatedSku: k.generatedSku,
+                materialName: k.productListByProductId.productMaterialsByProductSku.nodes === undefined ? '' : k.productListByProductId.productMaterialsByProductSku.nodes.map(val => {
+                    return val.materialName
+                }),
+                // materialName: k.productMaterialsByProductSku.nodes[0].materialName,
+                productType: k.productListByProductId.productType,
+                prdheader: k.productListByProductId.productName,
+                // allorderdata: allorderdata,
+                productId: k.productListByProductId && k.productListByProductId.productId,
+                productsDetails: [
+                    //                     Quality	
+                    // Metal	
+                    // Gold 
+                    // Product Code
                     {
                         header: "Product Details",
-                        namedetail: [{
-                            name: "Product Code",
-                            details: k.generatedSku
-                        },
-                        {
-                            name: "Metal Type",
-                            details: k.purity +' '+k.metalColor
-                        }, {
-                            name: "Approximate",
-                            details: "1.463"
-                        }],
-                    // }, {
-                    //     header: "Diamond Details ",
-                
-                
-                    //     namedetail: [
-                    //         {
-                    //             name: "Total No of ",
-                    //         },
-                    //         {
-                    //             name: "Diamonds",
-                    //             details: "35"
-                    //         },
-                    //         {
-                    //             name: "Color",
-                    //             details: "IF"
-                    //         },
-                    //         {
-                    //             name: "Clarity",
-                    //             details: "SI"
-                    //         },
-                
-                    //     ],
-                    // },
-                    // {
-                    //     header: "Price Breakup",
-                    //     namedetail: [{
-                    //         name: "Metal",
-                    //         details: "SP0679-18110000"
-                    //     },
-                    //     {
-                    //         name: "Diamond",
-                    //         details: "18K Yellow Gold"
-                    //     }, {
-                    //         name: "Making Charges",
-                    //         details: "1.463"
-                    //     },
-                    //     {
-                    //         name: "GST",
-                    //         details: "1.463"
-                    //     },
-                    //     ],
+                        pro_header: k.productListByProductId.productName,
+                        namedetail: [
+                            {
+                                name: "Quality",
+                                details: k.diamondType
+                            },
+                            {
+                                name: "Metal",
+                                details: k.purity + ' ' + k.metalColor
+                            }, {
+                                name: "Gold",
+                                details: k.skuWeight + " " + "GM"
+                            },
+                            {
+                                name: k.skuSize && k.skuSize.length > 0 ? "Ring" : "",
+                                details: k.skuSize
+                            },
+                            {
+                                name: "Product Code",
+                                details: k.generatedSku
+                            }],
+                        // }, {
+                        //     header: "Diamond Details ",
+
+
+                        //     namedetail: [
+                        //         {
+                        //             name: "Total No of ",
+                        //         },
+                        //         {
+                        //             name: "Diamonds",
+                        //             details: "35"
+                        //         },
+                        //         {
+                        //             name: "Color",
+                        //             details: "IF"
+                        //         },
+                        //         {
+                        //             name: "Clarity",
+                        //             details: "SI"
+                        //         },
+
+                        //     ],
+                        // },
+                        // {
+                        //     header: "Price Breakup",
+                        //     namedetail: [{
+                        //         name: "Metal",
+                        //         details: "SP0679-18110000"
+                        //     },
+                        //     {
+                        //         name: "Diamond",
+                        //         details: "18K Yellow Gold"
+                        //     }, {
+                        //         name: "Making Charges",
+                        //         details: "1.463"
+                        //     },
+                        //     {
+                        //         name: "GST",
+                        //         details: "1.463"
+                        //     },
+                        //     ],
                     },
                 ],
                 // 
                 // 
-                dataCard1 : [
+                dataCard1: [
                     {
-                        offerPrice:k.markupPrice,
+                        offerPrice: k.markupPrice,
                         price: k.discountPrice,
                         title: "Diamond Pendant Ring",
                         dis: 'Pendants set in 18 Kt Yellow Gold 3.95 gm with Diamonds (0.52 ct, GH - SI )',
@@ -189,20 +211,20 @@ export default function (data) {
                             hoverImage:
                                 "https://assets-cdn.stylori.com/313x313/images/product/SE0176/HOVER-SE0176-2R.jpg"
                         },
-                
+
                     },
                 ],
                 fadeImages: (k.productListByProductId.productImagesByProductId.nodes.map(val => (
                     `https://assets.stylori.net/base_images/${val.imageUrl}`
                 ))),
-                breadcrumsdata : [
-                    "Shopping Bag",
-                    "Login/ Register",
-                    "Address Detail",
-                    "Payment Options",
-                    "Order Confirmation",
+                breadcrumsdata: [
+                    { title: "Shopping Bag" },
+                    { title: "Login/ Register" },
+                    { title: "Address Detail" },
+                    { title: "Payment Options" },
+                    { title: "Order Confirmation" },
                 ],
-                cartsubdata : [
+                cartsubdata: [
                     {
                         name: "100% Certified   Jewellery  ",
                         icon: "https://assets-cdn.stylori.com/images/static/icon-star.png"
@@ -232,7 +254,7 @@ export default function (data) {
 }
 
 
-/* 
+/*
 {
   "productList": ["SB0010-18220000","SB0011-18520000"]
 }

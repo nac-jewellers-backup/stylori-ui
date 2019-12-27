@@ -1,13 +1,15 @@
 import React from 'react';
 // import './product-image-slider/loginRegisters.css'
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button, Container } from '@material-ui/core';
 import { Input } from '../../components/InputComponents/TextField/Input'
 import SimpleSelect from '../../components/InputComponents/Select/Select'
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
-import useRegister from './useregister';
-import Header from 'components/Header/header'
+// import useRegister from './useregister';
+import useRegister from '../../screens/Checkout/loginRegister/useregister';
+import Header from 'components/SilverComponents/Header'
 import Footer from "components/Footer/Footer"
+import Register from 'screens/Checkout/loginRegister/register';
 
 const UserRegister = (props) => {
     return <RegisterComponent  {...props} />
@@ -18,19 +20,20 @@ const RegisterComponent = (props) => {
     const { values, handlers } = useRegister();
     return (
         <>
-            <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+            <Grid container spacing={12} >
                 <Grid item xs={12} >
                     <Header />
                 </Grid>
             </Grid>
-            <Grid spacing={12} container style={{ padding: "3%" }}>
-                <Grid item xs={6} lg={6} xs={12}>
-                    <div >
-                        <img width="100%" height="100%" src="https://assets-cdn.stylori.com/images/static/inner-page/banner.png" />
-                    </div>
-                </Grid>
-                <Grid item xs={6} lg={6} xs={12}>
-                    <div className='pt-sm' style={{ width: "90%", float: "right" }}>
+            <Grid spacing={12} container lg={12} style={{ padding: "3%" }}>
+                    <Grid item xs={6} lg={6} xs={12}>
+                        <div >
+                            <img width="100%" height="100%" src="https://assets-cdn.stylori.com/images/static/inner-page/banner.png" />
+                        </div>
+                    </Grid>
+                    <Grid item xs={6} lg={6} xs={12}>
+                <Container>
+                        {/* <div className='pt-sm' style={{ width: "90%", float: "right" }}>
                         <form action="javascript:void(0)" onSubmit={(e) => {
                             handlers.handleSubmit(e, props)
                         }}>
@@ -112,20 +115,20 @@ const RegisterComponent = (props) => {
                                     </Grid>
                                     <div className='login-butn'>
                                         <Button className='apply-b' type="submit" >Register</Button>
-                                    </div>
+                                    </div> */}
+                        <Register />
+                        <div className={`${classes.normalfonts}`} style={{
+                            cursor: "pointer", fontSize: "14px",
+                            marginRight: "50%"
+                        }} onClick={() => { window.location.pathname = "/login" }} >Back to login</div>
 
-                                    <div className={`${classes.normalfonts}`} style={{
-                                        cursor: "pointer", fontSize: "14px",
-                                        marginRight: "50%"
-                                    }} onClick={() => { window.location.pathname = "/login" }} >Back to login</div>
+</Container>   </Grid>
+                    {/* </Grid> */}
+                    {/* </form>
+                    </div> */}
+                    {/* </Grid> */}
 
-                                </Grid>
-                            </Grid>
-                        </form>
-                    </div>
-                </Grid>
-
-            </Grid>
+                 </Grid>
             <Grid item xs={12}>
                 <Footer />
             </Grid>

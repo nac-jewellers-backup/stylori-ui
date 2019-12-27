@@ -67,7 +67,6 @@ const Provider = (props) => {
             return { [splitval[0]]: splitval[1] }
         })
         paramsArrayOfObject = urlSplitparamsEqual;
-        console.log('val', paramsArrayOfObject)
 
     }
 
@@ -79,7 +78,6 @@ const Provider = (props) => {
     useEffect(() => {
         // console.info('FILTERSS', window.location.search);
         pathQueries();
-        console.info('VARIABLES', variables);
         makeRequest(variables);
     }, [filters])
 

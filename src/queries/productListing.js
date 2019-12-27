@@ -1,6 +1,6 @@
-import { filterGenerator } from "utils";
+import { filterGenerator, filterTransSkuGenerator } from "utils";
 
-export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter, $offsetvar: Int, $firstvar: Int, $orderbyvar: [ProductListsOrderBy!], $conditionImage: ProductImageCondition) {
+export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter, $offsetvar: Int, $firstvar: Int, $orderbyvar: [ProductListsOrderBy!], $conditionImage: ProductImageCondition, $filterTransSku: TransSkuListFilter) {
   allProductLists(filter: $filter, orderBy: $orderbyvar, offset: $offsetvar, first: $firstvar, condition: {isactive: true}) {
     totalCount
     nodes {
@@ -20,7 +20,7 @@ export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter
           stoneCount
         }
       }
-      transSkuListsByProductId(condition: {isdefault: true}) {
+      transSkuListsByProductId(filter: $filterTransSku) {
         nodes {
           skuSize
           purity
@@ -66,10 +66,25 @@ export const seoUrlResult = `query CheckForSeo($seofilter: SeoUrlPriorityFilter 
 `
 
 
-export const filterProductMatrix = (type, value) => {
+export const filterProductMatrix = (type, value, filter) => {
+
   let fc = { table: "", type: "" }
   switch (type) {
-    
+    case "Availability": {
+      if(value===true){
+        fc = {
+          table: "transSkuListsByProductId",
+          type: "isReadyToShip"
+        }
+      }
+    else{
+      fc = {
+        table: "transSkuListsByProductId",
+        type: "vendorDeliveryTime"
+      }
+    }
+      break;
+    }
     case "Category": {
       fc = {
         table: "",
@@ -149,8 +164,22 @@ export const filterProductMatrix = (type, value) => {
     }
     case "NoOfStones":{
       fc={
-        table:"productStonecolorsByProductId",
-        type:"stonecolor"
+        table:"productStonecountsByProductId",
+        type:"stonecount"
+      }
+      break;
+    }
+    case "StoneShape":{
+      fc={
+        table:"productGemstonesByProductSku",
+        type:"gemstoneShape"
+      }
+      break;
+    }
+    case "Price":{
+      fc={
+        table:"productStonecountsByProductId",
+        type:"stonecount"
       }
       break;
     }
@@ -161,11 +190,55 @@ export const filterProductMatrix = (type, value) => {
     }
   }
 
-  return filterGenerator(fc.type, value, fc.table);
+  return filterGenerator(fc.type, value, fc.table, filter);
 }
 
+export const filterTransSkuMatrix = (type, value) => {
+  let fc = { table: "", type: "" }
+  switch (type) {
+    
+   
+    case "MetalColor": {
+      fc = {
+        type: "metalColor"
+      }
+      break;
+    }
+    case "MetalPurity": {
+      fc = {
+        type: "purity"
+      }
+      break;
+    }
 
+    case "Availability": {
+      if(value===true){
+        fc = {
+          type: "isReadyToShip"
+        }
+      }
+    else{
+      fc = {
+        type: "vendorDeliveryTime"
+      }
+    }
+      break;
+    }
+    default: {
+      break;
+    }
+  }
 
+  return filterTransSkuGenerator(fc.type, value);
+}
+const AvailabilityVal = (fval) =>{
+  if(fval==='1 Day Shipping') return true
+  else if(fval==='5 Day Shipping') return 5
+  else if(fval==='7 Day Shipping') return 7
+  else if(fval==='10 Day Shipping') return 10
+  else if(fval === '15 & Above Days Shipping') return 15
+  else return fval
+}
 export const conditions = {
   productId: (id) => ({
     "condition": {
@@ -180,12 +253,30 @@ export const conditions = {
     filters.map(k => {
       const fkey = String(Object.keys(k));
       const fval = String(Object.values(k));
-      const fquery = filterProductMatrix(fkey, fval);
+      const fquery = filterProductMatrix(fkey, AvailabilityVal(fval), filter);
       filter = { ...filter, ...fquery };
     })
 
     if (Object.keys(filter).length > 0) {
       return { filter };
+    } else {
+      return {};
+    }
+  },
+  generateTransSkuFilters: (filters) => {
+    let filterTransSku = {};
+    // const filterKeys = filters.map(val => String(Object.keys(val)));
+
+    filters.map(k => {
+      const fkey = String(Object.keys(k));
+      const fval = String(Object.values(k));
+      
+      const fquery = filterTransSkuMatrix(fkey, AvailabilityVal(fval));
+      filterTransSku = { ...filterTransSku, ...fquery };
+    })
+
+    if (Object.keys(filterTransSku).length > 0) {
+      return { filterTransSku };
     } else {
       return {};
     }

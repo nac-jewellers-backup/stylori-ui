@@ -5,7 +5,7 @@ const styles = theme => ({
             // fontWeight: 'bold'
         },
         [theme.breakpoints.down('xs')]: {
-            fontSize: '11px',
+            fontSize: '11px !important',
         },
     },
     dis: {
@@ -60,9 +60,18 @@ const styles = theme => ({
             width: "100%"
         },
         [theme.breakpoints.up('lg')]: {
-            paddingLeft: "50px",
-            paddingRight: "50px",
-            textAlign: "center"
+
+            // textAlign: "center"
+        },
+    },
+    tabs_values_font: {
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "8px !important",
+            marginTop: "5px"
+        },
+        [theme.breakpoints.up('lg')]: {
+            fontSize: "9px !important",
+            marginTop: "5px"
         },
     },
     tabsheadcolor: {

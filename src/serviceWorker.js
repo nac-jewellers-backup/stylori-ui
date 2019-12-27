@@ -10,133 +10,135 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
-const cacheCheck = async() =>{
- debugger
- 
-    // read text from URL location
-    var request = new XMLHttpRequest();
+const cacheCheck = async () => {
+
+  // read text from URL location
+  var request = new XMLHttpRequest();
 
 
   // alert('i came in', myJson)
-  
+
   var local_storage = localStorage.getItem('version')
-  if(local_storage && local_storage.length>0){
-    debugger
-    const condition_async = async() =>{
+  if (local_storage && local_storage.length > 0) {
+    const condition_async = async () => {
       request.open('GET', '/meta.json', true);
       request.send(null);
       request.onreadystatechange = async function () {
-          // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
+        // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
+
+        var type = await request.getResponseHeader('Content-Type');
+
+        if (type.indexOf("json") !== 1) {
+          var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
+          if (obj && Number(local_storage) !== Number(obj.version)) {
             
-             var type = await request.getResponseHeader('Content-Type');
-             
-              debugger
-              if (type.indexOf("json") !== 1) {
-                var obj =await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
-                console.info('objectlocal_storage, obj.version', local_storage, obj.version)
-                console.log('jsonjsonjson', Number(local_storage) !== Number(obj.version) )
-                // alert(local_storage, obj.version)
-                 if(obj !== '' && Number(local_storage) !== Number(obj.version)){
-                localStorage.setItem('version', obj.version)
-              
-                window.location.reload()
-                 }
-    
-              }
-          // }
+            localStorage.setItem('version', obj.version)
+
+            window.location.reload(true)
+          }
+
+        }
+        // }
       }
     }
     condition_async()
   }
-  else{
-    debugger
-const condition_async = async() =>{
-  request.open('GET', '/meta.json', true);
-  request.send(null);
-  request.onreadystatechange = async function () {
-      // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
-        
-         var type = await request.getResponseHeader('Content-Type');
-          debugger
-          // alert(request.responseText)
+  else {
+    const condition_async = async () => {
+      request.open('GET', '/meta.json', true);
+      request.send(null);
+      request.onreadystatechange = async function () {
+        // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
 
-          if (type.indexOf("json") !== 1) {
-             var obj =await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
-             console.log('json',type.indexOf("json") !== 1,typeof request.responseText, request.responseText, obj )
-            if( obj !== '') localStorage.setItem('version', obj.version)
-            
+        var type = await request.getResponseHeader('Content-Type');
+       
 
-          }
-      // }
-  }
-}
-condition_async()
+        if (type.indexOf("json") !== 1) {
+          var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
+      
+          if (obj !== '') localStorage.setItem('version', obj.version)
+
+
+        }
+        // }
+      }
+    }
+    condition_async()
   }
 }
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
-    // [::1] is the IPv6 localhost address.
-    window.location.hostname === '[::1]' ||
-    // 127.0.0.1/8 is considered localhost for IPv4.
-    window.location.hostname.match(
-      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-    )
+  // [::1] is the IPv6 localhost address.
+  window.location.hostname === '[::1]' ||
+  // 127.0.0.1/8 is considered localhost for IPv4.
+  window.location.hostname.match(
+    /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+  )
 );
-cacheCheck()
+
 // setTimeout(function(){ cacheCheck(); }, 20000);
-setInterval(function(){ cacheCheck(); }, 30000);
+
 export async function register(config) {
+  // cacheCheck();
   await requestNotificationPermission();
 
-  if (process.env.NODE_ENV !== 'production' && 'serviceWorker' in navigator) {
+  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+    // cacheCheck();
     // The URL constructor is available in all browsers that support SW.
-    const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
+    const publicUrl = new URL(process.env.PUBLIC_URL, window.location);
     if (publicUrl.origin !== window.location.origin) {
       // Our service worker won't work if PUBLIC_URL is on a different origin
       // from what our page is served on. This might happen if a CDN is used to
       // serve assets; see https://github.com/facebook/create-react-app/issues/2374
       return;
     }
-
+    setInterval(function () { cacheCheck(); }, 5000);
     window.addEventListener('load', () => {
-      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
-      console.log('versionversion','123123123'); 
+      cacheCheck();
       
-    
+      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+      
+
       if (isLocalhost) {
+        // cacheCheck()
         // This is running on localhost. Let's check if a service worker still exists or not.
         checkValidServiceWorker(swUrl, config);
-
+       
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
         navigator.serviceWorker.ready.then(() => {
+        
           console.log(
             'This web app is being served cache-first by a service ' +
-              'worker. To learn more, visit https://bit.ly/CRA-PWA'
+            'worker. To learn more, visit https://bit.ly/CRA-PWA'
           );
         });
       } else {
+        // cacheCheck()
         // Is not localhost. Just register service worker
         registerValidSW(swUrl, config);
       }
-    });
+    }); 
   }
 }
 
 function registerValidSW(swUrl, config) {
+ 
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
       registration.onupdatefound = () => {
+   
         const installingWorker = registration.installing;
-        sendNotification('App is being cached localyy for offline purpose!')
+        sendNotification('App is being cached locally for offline purpose!')
         if (installingWorker == null) {
           return;
         }
         installingWorker.onstatechange = async () => {
+     
           if (installingWorker.state === 'installed') {
-            let updating = false, 
-              updateMessage='New version of app is installed',
+            let updating = false,
+              updateMessage = 'New version of app is installed',
               installedMessage = 'Your app is installed and works offline'
             if (navigator.serviceWorker.controller) {
               // At this point, the updated precached content has been fetched,
@@ -144,13 +146,13 @@ function registerValidSW(swUrl, config) {
               // content until all client tabs are closed.
               console.log(
                 'New content is available and will be used when all ' +
-                  'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
+                'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
               );
 
               // Execute callback
               if (config && config.onUpdate) {
                 config.onUpdate(registration);
-                updating=true
+                updating = true
               }
             } else {
               // At this point, everything has been precached.
@@ -160,6 +162,7 @@ function registerValidSW(swUrl, config) {
 
               // Execute callback
               if (config && config.onSuccess) {
+                
                 //Display Notification
                 await sendNotification(updating ? updateMessage : installedMessage);
                 config.onSuccess(registration);
@@ -174,20 +177,21 @@ function registerValidSW(swUrl, config) {
     });
 }
 
-async function requestNotificationPermission(){
-  if(!check()) return false;
+async function requestNotificationPermission() {
+  // cacheCheck();
+  if (!check()) return false;
   const permission = await window.Notification.requestPermission();
-  if(permission !== 'granted'){} //alert('Enable notifications to have great experience!');
+  if (permission !== 'granted') { } //alert('Enable notifications to have great experience!');
   else {
-    if(!localStorage.getItem('firstnotify')){
+    if (!localStorage.getItem('firstnotify')) {
       await sendNotification('Ohoo.. your first notification 🎉🙌');
-      localStorage.setItem('firstnotify',true);
+      localStorage.setItem('firstnotify', true);
     }
     return true;
   };
 }
 
-function check(){
+function check() {
 
   if (!('serviceWorker' in navigator)) {
     console.log('Sorry notifications are not yet supported');//alert
@@ -201,14 +205,16 @@ function check(){
   return true;
 }
 
-async function sendNotification(message){
+async function sendNotification(message) {
   check() ? await new Notification(message) : await requestNotificationPermission();
 }
 
 function checkValidServiceWorker(swUrl, config) {
+  
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl)
     .then(response => {
+      // cacheCheck();
       // Ensure service worker exists, and that we really are getting a JS file.
       const contentType = response.headers.get('content-type');
       if (
@@ -234,6 +240,7 @@ function checkValidServiceWorker(swUrl, config) {
 }
 
 export function unregister() {
+  // cacheCheck();
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(registration => {
       registration.unregister();
@@ -241,10 +248,11 @@ export function unregister() {
   }
 }
 
-window.addEventListener('online',e => {
-  sendNotification('Lost internet connection !')
+window.addEventListener('online', e => {
+   
+  sendNotification('Network connection restored !')
 })
 
-window.addEventListener('offline',e => {
-  sendNotification('Network connection restored !')
+window.addEventListener('offline', e => {
+  sendNotification('Lost internet connection ! ')
 })

@@ -1,6 +1,6 @@
 import { Container, Grid } from '@material-ui/core';
 import React, { Component } from 'react';
-import Header from '../../components/Header/header'
+import Header from 'components/SilverComponents/Header'
 import Chckoutindex from '../Checkout';
 import Creditform from '../Checkout/paymentOption/creditForm';
 import Debitform from '../Checkout/paymentOption/debitForm';
@@ -12,11 +12,7 @@ export default class Checkout extends Component {
 
         return (
             <div>
-                <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
-                    <Grid item xs={12} >
-                        <Header />
-                    </Grid>
-                </Grid>
+               
                 <Chckoutindex />
             </div>
         )

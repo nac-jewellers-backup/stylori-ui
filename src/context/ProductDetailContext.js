@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 const initialCtx = {
     ProductDetailCtx: {
         filters: { productId: '', defaultVariants: { diamondType: '', metalColor: '', purity: '', skuSize: '' }, skuId: '' },
-        loading: false, error: false, data: [], likedatas: [], viewedddatas: [], price: 0, rating: [], ratingcounts: [], registerurl: []
+        loading: false, error: false, data: [], likedatas: [], viewedddatas: [], price: 0, rating: [], ratingcounts: [], registerurl: ""
     },
     setFilters: () => { },
     setlikedata: () => { },
@@ -20,9 +20,9 @@ export const ProductDetailConsumer = ProductDetailContext.Consumer;
 export const TabsProvider = (props) => {
     const [filters, setFilters] = React.useState(initialCtx.ProductDetailCtx.filters);
     const [likedatas, setlikedata] = React.useState([])
-    const [viewedddatas, setvieweddata] = React.useState([])
+    const [viewedddatas, setvieweddata] = React.useState()
     const [rating, setrating] = React.useState([])
-    const [registerurl, setregisterurl] = React.useState([])
+    const [registerurl, setregisterurl] = React.useState("")
     const [ratingcounts, setratingcounts] = React.useState([])
     const [price, setPrice] = React.useState(0)
     let queries = [];
@@ -59,7 +59,6 @@ export const TabsProvider = (props) => {
                 variables = { conditionfilter: { 'generatedSku': filters["skuId"] } }
             }
             else {
-                console.log(window.location.href)
                 var urls = window.location.href
                 var urlssplit = urls.split('/');
                 var urlReplace = urlssplit[urlssplit.length - 1].replace(/-/g, ' ')
@@ -71,17 +70,16 @@ export const TabsProvider = (props) => {
         // variables = { conditionfilter: { 'generatedSku': filters["skuId"] }, conditionImage:{...metalColors} }
 
         if (window.location.search.length > 0) {
-            debugger
             setregisterurl({
                 registerurl: window.location.pathname + window.location.search
             })
 
         }
-        console.log('filtersDefaultvariantsss', registerurl)
+        
     }, [])
     
     useEffect(() => {
-        console.log('dataaaaaaaaa', data, Object.entries(data).length !== 0 && data.constructor === Object && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0)
+       
         if (Object.entries(data).length !== 0 && data.constructor === Object) {
             if (data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
                 handleProductDetatiContext()
@@ -171,7 +169,6 @@ export const TabsProvider = (props) => {
             }
 
             let vardata = { ...variableslike }
-            console.log('vardata', vardata)
 
             likemakeRequest(vardata)
             setlikedata(likedata)
@@ -182,14 +179,12 @@ export const TabsProvider = (props) => {
         }
     }, [price, filters])
     useEffect(() => {
-        console.log(price, 'datadatadata123')
-        if (Object.entries(data).length > 0 && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes) {
+        if (Object.entries(data).length > 0 && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]) {
             setPrice(data.data.allTransSkuLists.nodes[0].markupPrice)
 
         }
     }, [loading, error, data, price])
     const updateProductList = () => {
-        console.info('filtersssss', filters)
         if (Object.entries(variables).length !== 0 && variables.constructor === Object) {
             makeRequest(variables);
         }
@@ -199,7 +194,6 @@ export const TabsProvider = (props) => {
 
 
     }
-    console.log('datadata', data)
     const handleProductDetatiContext = () => {
         // filters['defaultVariants'] = {
         //     ...data.allTransSkuLists.nodes[0]
@@ -216,7 +210,7 @@ export const TabsProvider = (props) => {
         // filters['defaultVariants']['skuSize'] = data.data.allTransSkuLists.nodes[0].skuSize
         // setFilters(filters)
         var variants = filters['defaultVariants']
-        var metalColors = filters.defaultVariants.metalColor.length > 0 ? { productColor: filters.defaultVariants.metalColor } : null;
+        var metalColors = filters &&filters.defaultVariants &&filters.defaultVariants.metalColor &&filters.defaultVariants.metalColor.length &&filters.defaultVariants.metalColor.length > 0 ? { productColor: filters.defaultVariants.metalColor } : null;
         var ProductVariants = { conditionfilter: { 'productId': filters["productId"], ...variants } }
         var ConditionimagesMetalColor = { conditionImage: metalColors }
         variables = { ...ProductVariants, ...ConditionimagesMetalColor }
@@ -265,7 +259,6 @@ export const TabsProvider = (props) => {
 
     }, [data, loading, error])
     useEffect(() => {
-        console.info('likedata', likedata)
     }, [likedata, likeerror, likeloading, loading, error, data, price, filters])
 
     // useEffect(()=>{
@@ -276,10 +269,10 @@ export const TabsProvider = (props) => {
     //     }
     // },[data,filters,error,loading])
     const ProductDetailCtx = {
-        filters, loading, error, data, likedata, likeloading, likeerror, likedatas, vieweddata, viewederror, viewedloading, viewedddatas, rating, registerurl
+        ratingcounts, filters, loading, error, data, likedata, likeloading, likeerror, likedatas, vieweddata, viewederror, viewedloading, viewedddatas, rating, registerurl
     }
     return (
-        <ProductDetailContext.Provider value={{ ProductDetailCtx, setFilters, setlikedata, setvieweddata, setrating, setregisterurl }} >
+        <ProductDetailContext.Provider value={{ setratingcounts,ProductDetailCtx, setFilters, setlikedata, setvieweddata, setrating, setregisterurl }} >
             {props.children}
         </ProductDetailContext.Provider>
     )

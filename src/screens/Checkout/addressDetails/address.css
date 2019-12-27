@@ -15,7 +15,9 @@
     border: 1px solid #E6E6E6;
     margin-top: 20px;
 }
-
+.title{
+    color: #394578 !important;
+}
 .card-title {
     margin: 0 0 10px !important;
     border-bottom: 1px solid #E6E6E6;
@@ -26,6 +28,7 @@
 .address-name {
     padding-left: 5px !important;
     font-size: 18px !important;
+    color: #394578 !important;
 }
 
 .delete-icon {
@@ -79,7 +82,7 @@
 }
 
 .ckcut-main-body {
-    background: #dfdfdfbd !important;
+    background:#f5f4f4  !important;
     margin-bottom: 5px !important;
 }
 
@@ -89,4 +92,50 @@
 
 .MuiExpansionPanelSummary-content {
     margin: 7px 0 !important;
+}
+
+.address_card_disabled{
+    filter: grayscale(5) !important; 
+}
+.modal_addrs_dlt{
+    padding: 20px !important;
+    text-align: center !important;
+    /* margin-top: 20% !important; */
+    width: 300px !important;
+    height: auto !important;
+    background: #fff !important;
+    margin-top: 10% !important;
+    margin-left: 40% !important;
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 5px 8px 0px rgba(0,0,0,0.14), 0px 1px 14px 0px rgba(0,0,0,0.12);
+    /* position: absolute !important; */
+}
+.dlt_content{
+    font-size: 15px !important;
+    color: #394578 !important;
+    margin-bottom: 5px;
+}
+
+.addres_dlt_cancel{
+    border: 1px solid #394578 !important;
+    font-size: 10px !important;
+    font-weight: bold !important;
+    padding: 4px 1px !important;
+    border-radius: none !important;
+    outline: none !important;
+}.addres_dlt_cancel:hover{
+    padding: 4px 1px !important;
+    color: #FFF !important;
+    background: #394578 !important;
+    font-weight: 100 !important;
+    outline: none !important;
+    text-transform: none !important;
+}.addres_dlt_ok{
+    font-size: 10px !important;
+    padding: 4px 1px !important;
+    width: 100px !important;
+    color: #FFF !important;
+    background: #394578 !important;
+    font-weight: 100 !important;
+    outline: none !important;
+    text-transform: none !important;
 }

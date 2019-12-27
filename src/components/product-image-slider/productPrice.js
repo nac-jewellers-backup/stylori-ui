@@ -1,8 +1,11 @@
 import {
     Grid,
     Hidden,
+    ExpansionPanel,
     Container,
     Popover,
+    paper,
+    Paper
 } from '@material-ui/core';
 import Slideshow from '../Carousel/carosul'
 import React, { Component } from 'react';
@@ -12,26 +15,38 @@ import Ratings from '../rating/rating'
 import { withStyles } from '@material-ui/core/styles';
 import Pricing from '../Pricing/index'
 import styles from './style';
+import Wishlist from 'components/wishlist/wishlist';
+import { Button } from 'semantic-ui-react';
 
 const dataCarousel = {
-    dots: false,
-    infinite: true,
+    dots: true,
+    infinite: false,
     speed: 1000,
     fade: true,
-    arrows: true,
+    arrows: false,
+    dotsClass: "slickdev",
+    className: 'button__bar',
 }
 
-const mobilecarousel = (props) => {
-    const { data } = props;
+const mobilecarousel = (props, val) => {
+    const { data, classes } = props;
     return (
-        <Container>
-            <div style={{ height: '200px', width: "auto" }}>
-
-                <Slideshow class='responseve-carousel testingcur' imgClass='responseve-carousel-img'
-                    fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
-            </div>
-
-        </Container>
+        <div>
+            <Grid container spacing={12} xs={12} style={{ position: "absolute" }}>
+                <Grid container item xs={6}>
+                    <div className="css-ts7n45 e5toz5w4"><span style={{ color: "#fff" }} className="e195g4sk5 css-5pjie5 ekntgft2">{val.offerDiscount}</span><br />
+                        {data[0].ProductContactNum[0].isReadyToShip === true ? <div className="css-ts7n45-redy_toship one-day-ship-mb"></div> : ""}
+                    </div>
+                </Grid>
+                <Grid container item xs={4} />
+                <Grid container item xs={2} className="css-ts7n45_wishlist">
+                    {/* <Wishlist props={"1"} /> */}
+                </Grid>
+            </Grid>
+            {/* <div style={{background:"red"}}>Earrings in 18K Yellow Gold and Peridot for Kids</div> */}
+            <Slideshow class='responseve-carousel testingcur' imgClass='responseve-carousel-img'
+                fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
+        </div>
     );
 };
 
@@ -39,33 +54,34 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
     const { data } = props;
     const { classes } = props;
     const open = anchorEl;
+    var wishlist = props.wishlist
     return (
         <div>
             {data.map(val => (
                 <>
                     <Grid container spacing={12} sm={12} className={classes.pricedetails}>
                         <Hidden mdUp>
-                            <div className="resp" style={{ paddingTop: "5px" }}>
-                                <div className="respc">
-                                    <h1 className={`pdp-title ${classes.title}`}>
+                            <div className="resp" >
+                                {/* <div className="respc"> */}
+                                {/* <h1 className={`pdp-title ${classes.title}`}>
                                         {val.title}
-                                    </h1>
-                                    <Grid container spacing={12} xs={12}>
-                                        <Grid container item xs={6} justify={'flex-start'}>
+                                    </h1> */}
+                                {/* <Grid container spacing={12} xs={12}> */}
+                                {/* <Grid container item xs={6} justify={'flex-start'}>
                                             <Pricing
-                                                offerDiscount={val.offerDiscount}
+                                                offerDiscount={}
                                             />
-                                        </Grid>
-                                        <Grid container item xs={6} md={6} justify={'flex-end'}>
+                                        </Grid> */}
+                                {/* <Grid container item xs={6} md={6} justify={'flex-end'}>
                                             <Grid container item xs={8} xs={8} justify={'flex-end'}>
                                                 {data[0].ProductContactNum[0].isReadyToShip == true ? <div className="one-day-ship-mb"></div> : ""}
                                             </Grid>
                                         </Grid>
                                     </Grid>
-                                </div>
-                                {mobilecarousel(props)}
+                                </div> */}
+                                {mobilecarousel(props, val)}
 
-                                <div style={{ background: "rgb(238, 238, 238)", width: "100%" }}>
+                                {/* <div style={{ background: "rgb(238, 238, 238)", width: "100%" }}>
                                     <div className="respc">
                                         <Grid container spacing={12} xs={12}>
                                             <Grid container item xs={6} justify={'flex-start'}>
@@ -73,97 +89,147 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                     price={data[0].price}
                                                     offerPrice={data[0].offerPrice}
                                                 />
-                                            </Grid>
-                                            <Grid container item xs={6} justify={'flex-end'}>
+                                            </Grid> */}
+                                {/* <Grid container item xs={6} justify={'flex-end'}>
                                                 <div>
                                                     {data[0].ProductContactNum.map(val =>
                                                         <div style={{ marginTop: "10px" }}>
-                                                            <b className={`ships-by ${classes.normalfonts}`}>
-                                                                {/* <span class="ship-img"></span> */}
-                                                                <span > <i class="fa fa-star fa-grey"></i>&nbsp; {val.shipby}</span>
+                                                            <b className={`ships-by ${classes.normalfonts}`}> */}
+                                {/* <span class="ship-img"></span> */}
+                                {/* <span > {val.shipby}</span>
                                                             </b>
                                                         </div>
                                                     )}
                                                 </div>
-                                            </Grid>
-                                        </Grid>
+                                            </Grid> */}
+                                {/* </Grid>
                                     </div>
-                                </div>
+                                </div> */}
                                 {/* <hr class="bottom-line product-inform-ation"></hr> */}
+                                {/* <br /><br /> */}
+
                             </div>
                         </Hidden>
-                        <Grid item xs={12} lg={8}>
-                            <div className="price-div">
-                                <Hidden smDown>
-                                    <h1 className={`pdp-title ${classes.title}`}>
-                                        {val.title}
-                                    </h1>
-                                </Hidden>
-                                <p className={`pdp-desc ${classes.dis}`}>
-                                    {val.dis}
-                                </p>
-                            </div>
-                        </Grid>
+                        <Paper elevation={0} style={{ width: "100%", padding: "0px", margin: "0px " }}>
+                            <Grid container className="containbev" >
+                                <Grid item xs={12} lg={9} md={9}>
+                                    <div className="price-div">
+                                        <Hidden mdUp>
+                                            <Grid container spacing={12} xs={12}>
+                                                <Grid container item xs={8}>
+                                                    <h1 className={`pdp-title ${classes.title}`} style={{ width: "90%" }}>
+                                                        {val.title}
+                                                        {/* <i style={{ padding: "2px", fontSize: "12px" }} class="fa fa-info-circle" aria-hidden="true"></i> */}
+                                                    </h1>
 
-                        <Hidden smDown>
-                            <Grid item xs={12} lg={4}>
-                                <div className="starts product-icons" style={{ fontFamily: "fontawesome" }} >
-                                    <div className="row social-shares"
-                                        className={classes.icon}>
-                                        <i class="fa fa-share-alt overall-icons"
-                                            aria-owns={open ? 'simple-popper' : ""}
-                                            onClick={handleClick}
-                                        ></i> &nbsp;
-                                    <i class="fa fa-heart-o overall-icons"
-                                        //  onClick={() => }
-                                        ></i>
+                                                    <div>
+                                                        {data[0].ProductContactNum.map(val =>
+                                                            <div >
+                                                                <b className={`ships-by ${classes.normalfonts}`}>
+                                                                    <span style={{ textAlign: "center" }}> {val.shipby}</span>
+                                                                </b>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </Grid>
+                                                <Grid container item xs={4} >
+                                                    <Hidden mdUp>
+                                                        <div className={classes.width} style={{ padding: "0px 10px  0px 10px " }}>
+                                                            <Pricing
+                                                                price={data[0].price}
+                                                                offerPrice={data[0].offerPrice}
+                                                                offerDiscount={val.offerDiscount}
+                                                            >
 
-                                        <Popover
-                                            id="simple-popper"
-                                            open={open}
-                                            anchorEl={anchorEl}
-                                            onClose={handleClose}
-                                            anchorOrigin={{
-                                                vertical: 'bottom',
-                                                horizontal: 'center',
-                                            }}
-                                            transformOrigin={{
-                                                vertical: 'top',
-                                                horizontal: 'center',
-                                            }}
-                                        >
-                                            <div className="product-share">
-                                                <h5>Share the Jewellery</h5>
-                                                <a class="facebook" target="_blank">
-                                                    <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
-                                                </a>&nbsp;
-                                            <a class="twitter" target="_blank">
-                                                    <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
-                                                </a>&nbsp;
-                                            <a class="google" target="_blank">
-                                                    <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
-                                                </a>
-                                            </div>
-                                        </Popover>
+                                                            </Pricing>
+                                                        </div>
+                                                    </Hidden>
 
-                                        <Ratings ratings="starts-review" />
+                                                </Grid>
+                                            </Grid>
+
+                                        </Hidden>
+                                        <Hidden smDown>
+                                            <h1 className={`pdp-title ${classes.title}`}>
+                                                {val.title}
+                                            </h1>
+                                        </Hidden>
+                                        <Hidden smDown>
+                                            <p className={`pdp-desc ${classes.dis}`}>
+                                                {val.dis}
+                                            </p>
+                                        </Hidden>
                                     </div>
-                                </div>
+                                </Grid>
+
+
+
+                                <Grid item xs={12} lg={3} md={3} style={{
+                                    display: "flex",
+                                    lineHeight: "20px"
+                                }}>
+                                    <Hidden smDown>
+                                        <div className="starts product-icons" style={{ fontFamily: "fontawesome" }} >
+                                            <div className="row social-shares"
+                                                className={classes.icon}>
+                                                <i class="fa fa-share-alt overall-icons"
+                                                    aria-owns={open ? 'simple-popper' : ""}
+                                                    onClick={handleClick}
+                                                ></i> &nbsp;
+                                        {/* {JSON.stringify(val.productId)} */}
+                                                <Wishlist sku={val.skuId} productId={val.productId} wishlist={wishlist} />
+
+                                                <Popover
+                                                    id="simple-popper"
+                                                    open={open}
+                                                    anchorEl={anchorEl}
+                                                    onClose={handleClose}
+                                                    anchorOrigin={{
+                                                        vertical: 'bottom',
+                                                        horizontal: 'center',
+                                                    }}
+                                                    transformOrigin={{
+                                                        vertical: 'top',
+                                                        horizontal: 'center',
+                                                    }}
+                                                >
+                                                    <div className="product-share">
+                                                        <h5>Share the Jewellery</h5>
+                                                        <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
+                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
+                                                        </a>&nbsp;
+                                            <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
+                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
+                                                        </a>&nbsp;
+                                            {/* <a class="google" target="_blank">
+                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
+                                                        </a> */}
+                                                    </div>
+                                                </Popover>
+                                                <div onClick={() => window.scrollTo(0, 1800)}><Ratings ratings="starts-review" disable={"disable"} /></div>
+                                            </div>
+                                        </div>
+                                    </Hidden>
+
+                                </Grid>
                             </Grid>
+                        </Paper>
+                        <Hidden smDown>
                             <hr class="bottom-line product-inform-ation"></hr>
                         </Hidden>
+
                     </Grid>
 
 
 
                     <Hidden smDown>
-                        <div className={classes.width} style={{ padding: "0 10px" }}>
+                        <div className={classes.width} style={{ padding: "0px 10px  10px 10px " }}>
                             <Pricing
                                 price={data[0].price}
                                 offerPrice={data[0].offerPrice}
                                 offerDiscount={val.offerDiscount}
                             >
-                                <Grid container spacing={12}>
+                                {/* <Grid container spacing={12}>
                                     <div className={`price-info ${classes.dis}`}>
                                         <Grid item xs={4} lg={2} className={`discount-container ${classes.dis}`}>
                                             {val.price}
@@ -172,7 +238,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                               {val.offerPrice}
                                         </Grid>
                                     </div>
-                                </Grid>
+                                </Grid> */}
                             </Pricing>
                         </div>
                     </Hidden>

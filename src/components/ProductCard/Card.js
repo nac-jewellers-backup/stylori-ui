@@ -11,18 +11,19 @@ import Typography from "@material-ui/core/Typography";
 import { Link } from 'react-router-dom'
 import { Hidden } from "@material-ui/core";
 import './productCard.css'
-
+import { CDN_URL } from 'config';
 
 import { ProductDetailContext } from 'context'
 import { LazyLoadImage, trackWindowScroll }
   from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import Wishlist from "components/wishlist/wishlist";
 
 
 export const ImgMediaCard = (props) => {
-  const { ProductDetailCtx,setFilters } = React.useContext(ProductDetailContext);
+  const { ProductDetailCtx, setFilters } = React.useContext(ProductDetailContext);
   const loc = window.location.search
-  
+
   return <Component filters={ProductDetailCtx.filters} setFilters={setFilters} {...props} />
 }
 // const MyImage = ( props, callmouseover, callmouseout, cardstate ) => {  
@@ -39,7 +40,7 @@ export const ImgMediaCard = (props) => {
 //             (max-width: 1440px) 1440w,
 //             (max-width: 2560px) 2560w,
 //             2560w
-           
+
 // "
 // title={props.data.title}
 // onMouseOver={() => {
@@ -53,43 +54,84 @@ export const ImgMediaCard = (props) => {
 //     />
 // );
 // }
-const Gallery = ( props, callmouseover, callmouseout, cardstate, scrollPosition ) => (
+const imageOnError = (event, res) => {
+  var e = event
+  e.target.src.lastIndexOf('\.')
+  var src_img = (e.target.src).lastIndexOf('\.')
+  var _arr = e.target.src.split('/')
+  _arr.splice(_arr.length - 2, 1, '1000X1000')
+  const URL_1000x1000 = _arr.join('/')
+  var URL_JPG = (e.target.src).substr(0, src_img).concat('.jpg')
+
+  try {
+
+    var _image = ''
+    e.target.onerror = null;
+
+    const testImage = (URL, e) => {
+      var tester = new Image();
+      tester.src = URL;
+      tester.onload = imageFound;
+      tester.onerror = imageNotFound;
+      // tester.on("error" , imageNotFound)
+
+
+
+    }
+    const imageFound = (e) => {
+      e.target.src = URL_1000x1000
+
+    }
+    const imageNotFound = (e) => {
+      e.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
+
+
+    }
+    return testImage(URL_1000x1000, e);
+    // e.target.src = (e.target.src).substr(0, src_img).concat('.jpg')
+  } catch (error) {
+    console.log(error)
+  }
+}
+const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => (
   <div>
 
-      <LazyLoadImage
-           alt={'props.data.title'}
-           effect="blur"
-           src="https://alpha-assets.stylori.com/276x276/images/static/Image_Not_Available.jpg"
-           srcset={renderImages(props, cardstate)}
-           sizes="(max-width: 320px) 320w,
-                   (max-width: 480px) 375w,
-                   (max-width: 600px) 600w,
-                   (max-width: 992px) 768w,
-                   (max-width: 1440px) 1440w,
-                   (max-width: 2560px) 2560w,
-                   2560w
-                  
-       "
-       title={props.data.title}
-       onMouseOver={() => {
+    <LazyLoadImage
+      alt={'props.data.title'}
+      effect="blur"
+      src={renderImages(props, cardstate)}
+      //  srcset={renderImages(props, cardstate)}
+      //      sizes="(max-width: 320px) 320w,
+      //              (max-width: 480px) 375w,
+      //              (max-width: 600px) 600w,
+      //              (max-width: 992px) 768w,
+      //              (max-width: 1440px) 1440w,
+      //              (max-width: 2560px) 2560w,
+      //              2560w
+
+      //  "
+      onError={(e) => imageOnError(e, props.data.imageResolution)}
+      title={props.data.title}
+      onMouseOver={() => {
         callmouseover()
-       }}
-       onMouseOut={() => {
-         callmouseout()
-       }}
-       style={{width:'100%',height:'100%'}}
-        scrollPosition={scrollPosition}
-        
-        // If the image we are creating here has the same src than before,
-        // we can directly display it with no need to lazy-load.
-        placeholderSrc={renderImages(props, cardstate) === '' ? 'https://alpha-assets.stylori.com/276x276/images/static/Image_Not_Available.jpg' : ''}
-        // placeholder	= { <div >loading.....</div> }
-        />
-        
- 
+      }}
+      onMouseOut={() => {
+        callmouseout()
+      }}
+      style={{ width: '100%' }}
+      scrollPosition={scrollPosition}
+
+    // If the image we are creating here has the same src than before,
+    // we can directly display it with no need to lazy-load.
+    // onerror={this.src=}
+    // placeholderSrc={renderImages(props, cardstate) === '' ? 'https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg' : ''}
+    // placeholder	= { <div >loading.....</div> }
+    />
+
+
   </div>
 );
- 
+
 export default trackWindowScroll(Gallery);
 // <img 
 // srcset={renderImages(props, cardstate)}
@@ -100,7 +142,7 @@ export default trackWindowScroll(Gallery);
 //             (max-width: 1440px) 1440w,
 //             (max-width: 2560px) 2560w,
 //             2560w
-           
+
 // "
 //      alt=""
 //           title={props.data.title}
@@ -112,20 +154,19 @@ export default trackWindowScroll(Gallery);
 //           }}
 //           style={{width:'100%',height:'100%'}}
 //           className={`${props.data.image.placeImage.length === 0 || props.data.image.hoverImage.length === 0 ? 'shine' : '' }`}
-          
-//           />
-const handleProductDetatiContext = (props) =>{
-  props.filters['defaultVariants']['diamondType']  = props.data.diamondType
-  props.filters['defaultVariants']['metalColor']  = props.data.metalColor
-  props.filters['defaultVariants']['purity']  = props.data.purity
-  props.filters['defaultVariants']['skuSize']  = props.data.skuSize
-  props.filters['skuId'] = props.data.generatedSku
-props.setFilters(props.filters)
 
-console.log('props.filters',props.filters)
+//           />
+const handleProductDetatiContext = (props) => {
+  props.filters['defaultVariants']['diamondType'] = props.data.diamondType
+  props.filters['defaultVariants']['metalColor'] = props.data.metalColor
+  props.filters['defaultVariants']['purity'] = props.data.purity
+  props.filters['defaultVariants']['skuSize'] = props.data.skuSize
+  props.filters['skuId'] = props.data.generatedSku
+  props.setFilters(props.filters)
+
 }
 
-const useStyles = makeStyles(theme=>({
+const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     justifyContent: "center"
@@ -133,8 +174,12 @@ const useStyles = makeStyles(theme=>({
   card: {
     minWidth: "80%",
     maxWidth: "90%",
-    maxHeight: 'auto',
+
     borderRadius: '0 !important',
+
+  },
+  cardAtionspadding:{
+    padding:0
   },
   textDel: {
     color: "#828282"
@@ -144,7 +189,7 @@ const useStyles = makeStyles(theme=>({
     margin: 'auto',
 
     marginBottom: '1px',
-    paddingTop: '10px',paddingBottom: '10px',paddingLeft: '10px',
+    paddingTop: '10px', paddingBottom: '10px', paddingLeft: '10px',
     height: '50px',
     display: 'flex',
     boxShadow: " 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
@@ -175,12 +220,12 @@ const useStyles = makeStyles(theme=>({
   offerMainPrice: {
     color: "#ed1165",
     [theme.breakpoints.down('sm')]: {
-      fontSize:'0.9rem'
+      fontSize: '0.9rem'
     },
-    '& i':{
-      fontSize: "26px", paddingRight: "5px" ,
+    '& i': {
+      fontSize: "26px", paddingRight: "5px",
       [theme.breakpoints.down('sm')]: {
-        fontSize:'0.9rem'
+        fontSize: '0.9rem'
       },
     }
 
@@ -193,15 +238,15 @@ const useStyles = makeStyles(theme=>({
     width: 'fit-content',
     flex: 0.7,
     textAlign: 'center',
-    padding:5,
+    padding: 5,
     "&:span": {
       margin: 0
     },
     [theme.breakpoints.down('sm')]: {
       textAlign: 'left',
-      padding:'0 !important',
-      paddingTop:'4px !important',
-      paddingBottom:'4px !important'
+      padding: '0 !important',
+      paddingTop: '4px !important',
+      paddingBottom: '4px !important'
     },
   },
   youSave: {
@@ -245,7 +290,7 @@ const useStyles = makeStyles(theme=>({
       // flex: 0.3,
       borderRadius: "3px",
       fontWeight: "normal",
-      fontSize:'0.7rem'
+      fontSize: '0.7rem'
 
     },
 
@@ -254,86 +299,86 @@ const useStyles = makeStyles(theme=>({
     flex: 1,
     display: "flex",
   },
-  titles:{
-    fontSize:'0.7rem',
-    whiteSpace: 'nowrap', 
-  flex:0.6,
+  titles: {
+    fontSize: '0.7rem',
+    whiteSpace: 'nowrap',
+    flex: 0.6,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     [theme.breakpoints.down('sm')]: {
-      whiteSpace: 'nowrap', 
-      width: '80px', 
+      whiteSpace: 'nowrap',
+      width: '80px',
       overflow: 'hidden',
       textOverflow: 'ellipsis'
     },
     [theme.breakpoints.down('md')]: {
-      whiteSpace: 'nowrap', 
+      whiteSpace: 'nowrap',
       width: '130px',
       overflow: 'hidden',
       textOverflow: 'ellipsis'
     }
   },
-  iconColor:{
-    color:theme.palette.secondary.light
+  iconColor: {
+    color: theme.palette.secondary.light
+  },
+  cardActionsImage:{
+    [theme.breakpoints.down('md')]: {
+      height:'200px !important'
+    }
   }
 }));
 const renderImages = (props, cardstate) => {
-  
+
   const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
+
   // console.info('props.data.image[filterType]',props.data.image[filterType]);
-  return props.data.image['hoverImage'].length === 0 ?props.data.image['placeImage'].map(imgs => `${imgs.img} ${imgs.size}`).toString() : props.data.image[filterType].map(imgs => `${imgs.img} ${imgs.size}`).toString()
+  // return props.data.image['hoverImage'].length === 0 ?"https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg" : props.data.image[filterType].map(imgs => `${imgs.img} ${imgs.size}`).toString()
+  return props.data.image['hoverImage'].length === 0 ? "https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg" : props.data.image[filterType].img
 }
 
- function Component(props) {
-   
+function Component(props) {
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
     hovered: false,
     loaded: false,
     dataLoaded: true
   });
-// let a=[];
-
-// ['ProductType','Material'].map(val=>{
-//   if(Object.values(props.filters[val]))
-//   a.push(Object.keys(props.filters[val]))
- 
-//  })
-const callmouseover= () =>{
-  setCardState({ ...cardstate, hovered: !cardstate.hovered });
-}
-const callmouseout = () =>{
-  setCardState({ ...cardstate, hovered: !cardstate.hovered });
-}
-  console.log('productTypeMaterial')
+  const _height = props.data.imageResolution.img_res
+  const callmouseover = () => {
+    setCardState({ ...cardstate, hovered: !cardstate.hovered });
+  }
+  const callmouseout = () => {
+    setCardState({ ...cardstate, hovered: !cardstate.hovered });
+  }
   return (
-    <div className={classes.root}>
-      <Card className={classes.card}>
-        <CardActions>
+    <div className={classes.root} >
+      <Card className={classes.card} >
+        <CardActions className={classes.cardAtionspadding}>
           <Grid container xs={12}>
             <Grid container item xs={6} justify="flex-start">
-            {props.data.oneDayShipping ?<div class="one-day-ship-listing-page" >
-<span class="one-day-ship-listing-page-label">1 day shipping</span>
+              {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" style={{zIndex:10000}}>
+                <span class="one-day-ship-listing-page-label">1 day shipping</span>
 
-            </div> : ''}
-            
+              </div> : ''}
+
             </Grid>
 
             <Grid container item xs={6} justify="flex-end">
-              <i
+              {/* <i
                 style={{ fontSize: "18px" }}
                 className={`fa ${classes.iconColor}`}
               >
                 &#xf08a;
-              </i>
-            </Grid>
+              </i> */}
+              {/* <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist}/>   */}
+          </Grid>
           </Grid>
         </CardActions>
         {/* /:productCategory/:productType/:material/:productName */}
-        <Link to={{pathname:`${'jewellery'}/${props.data.productType}/${props.data.material}/${(props.data.title).replace(/ /g, "-")}`, search:`skuId=${props.data.skuId}` }} style={{textDecoration:'none'}} onClick={handleProductDetatiContext(props)}>
-        <CardActionArea >
-       
-        {/* <img 
+        <Link to={{ pathname: `${'jewellery'}/${props.data.productType}/${props.data.material}/${(props.data.title).replace(/ /g, "-")}`, search: `skuId=${props.data.skuId}` }} style={{ textDecoration: 'none' }} onClick={handleProductDetatiContext(props)}>
+          <CardActions style={{ maxHeight: `${_height ? `${_height}px` : '300px'}`, minHeight:'250px' }} className={`${classes.cardAtionspadding} ${classes.cardActionsImage}`}>
+
+          {/* <img 
 srcset={renderImages(props, cardstate)}
 sizes="(max-width: 320px) 320w,
             (max-width: 480px) 375w,
@@ -356,8 +401,8 @@ sizes="(max-width: 320px) 320w,
           className={`${props.data.image.placeImage.length === 0 || props.data.image.hoverImage.length === 0 ? 'shine' : '' }`}
           
           /> */}
-          {Gallery( props, callmouseover, callmouseout, cardstate )}
-        </CardActionArea>
+          {Gallery(props, callmouseover, callmouseout, cardstate)}
+        </CardActions>
         <Card className={classes.priceClass}>
           <CardContent className={classes.cardContent}>
             <Grid
@@ -397,7 +442,7 @@ sizes="(max-width: 320px) 320w,
                         &#xf156;
                       </i>
                       &nbsp;  */}
-                      {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0}).format(Math.round(props.data.price))}
+                      {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
                     </del>
                   </Typography>
                 </Grid>
@@ -417,28 +462,28 @@ sizes="(max-width: 320px) 320w,
                     className={`${classes.youSave} ${classes.youSavePrice}`}
                   >
                     {/* 20% Off */}
-                    {Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice))/Math.round(props.data.price))*100) + '% off' }
+                    {Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice)) / Math.round(props.data.price)) * 100) + '% off'}
 
-                  </Typography> 
+                  </Typography>
                 </Grid>
               </Grid>
               <Hidden smDown>
-              <Grid container xs={12}>
-                <Grid item xs={12} className={`${classes.titles}`}>
-                  <Typography  variant="body1"
-                    component="span" className={`${classes.titles}`}>
-                    {props.data.title}
+                <Grid container xs={12}>
+                  <Grid item xs={12} className={`${classes.titles}`}>
+                    <Typography variant="body1"
+                      component="span" className={`${classes.titles}`}>
+                      {props.data.title}
                     </Typography>
-                
+
+                  </Grid>
                 </Grid>
-              </Grid>
               </Hidden>
-             
+
             </Grid>
           </CardContent>
         </Card>
-        </Link>
+      </Link>
       </Card>
-    </div>
+    </div >
   );
 }

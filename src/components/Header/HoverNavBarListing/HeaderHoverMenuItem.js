@@ -21,10 +21,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function HeaderHoverMenuItem(props) {
-  const [activetab, setActivetab] = React.useState("earings");
+  const [activetab, setActivetab] = React.useState(props.listHoverItem.menuOne[0].value);
+ 
   const { onMouseLeave, onMouseOver } = props;
   const classes = useStyles();
-  // console.log(props.listHoverItem);
   return (
     <Paper  className={classes.paperdiv} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} >
       <Grid container>

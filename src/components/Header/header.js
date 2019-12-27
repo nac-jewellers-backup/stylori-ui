@@ -13,7 +13,9 @@ import {
   IconButton,
   ListItem,
   ListItemText,
+  Container
 } from '@material-ui/core';
+import { CartContext } from 'context'
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
@@ -25,28 +27,32 @@ import { useDummyRequest } from '../../hooks';
 import { headerData } from '../../mappers';
 import styles from './styles';
 import { NavLink } from 'react-router-dom';
-
+import usershape from "../../assets/Icons/user-shape.svg"
+import logout from "../../assets/Icons/logout.svg"
+import love from "../../assets/Icons/love.svg"
+import shopping from "../../assets/Icons/shopping.svg"
+import delivery from "../../assets/Icons/delivery.svg"
+import telephone from "../../assets/Icons/telephone.svg"
+import Button from '@material-ui/core/Button';
+import Popover from '@material-ui/core/Popover';
+let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
 class Header extends Component {
   constructor(props) {
     super(props)
     this.state = {
       open: false,
       panel: false,
-      panel1: false,
       Menuopen: false,
       selected: '',
       selected1: '',
       Checked: false,
       load: false,
       listHoverItem: 'Jewellery',
-      headerHeightprops: 0
-
+      headerHeightprops: 0,
+      anchorEl: false
     }
     this.topZero = React.createRef();
   }
-
-
-
 
 
   handleDrawerOpen = () => {
@@ -74,20 +80,34 @@ class Header extends Component {
     document.getElementById('topNav').style.transition = "0.5s";
     // var heightHeader = document.getElementById('headerDiv').clientHeight;
     if (document.getElementById("SliderFilter")) {
-      document.getElementById("SliderFilter").style.top = "185px";
+      document.getElementById("SliderFilter").style.top = "120px";
       document.getElementById('SliderFilter').style.transition = "0.5s";
-      document.getElementById("filterBy").style.top = "120px";
+      document.getElementById("filterBy").style.top = "80px";
       document.getElementById('filterBy').style.transition = "0.5s";
     }
 
   }
-  render() {
+  handleClickPopover = (event) => {
+    this.setState({
+      anchorEl: event.currentTarget,
+    });
+  };
 
+  handleClosePopover = () => {
+    this.setState({
+      anchorEl: false,
+    });
+  };
+  render() {
+    // alert(JSON.stringify())
     const { mainlist, Jewellery, subheader, menuListHeader, menuLists, earings, rings, pendants, nosepins, banglesbracelets, valayal, kammal, koluse, Price,
       Collection, Material } = this.props.data;
     let { selected, selected1 } = this.state;
     const { classes } = this.props;
     let path = window.location.pathname.split('/').pop();
+    const { anchorEl } = this.state;
+    const openPopover = anchorEl;
+    
     return (
       <div>
         <Hidden smDown >
@@ -97,8 +117,9 @@ class Header extends Component {
               <Grid container spacing={12}  >
                 <Grid item xs={3}>
                   <div className={`head-icons ${classes.colorMain}`} >
-                    <i class="fa fa-truck"></i>
-                    <i class="fa fa-phone"></i>
+                    {/* <span><img className="icons-header-sizes" src={delivery} /></span> */}
+                    <i class="track-icon icon-truck"></i>
+                    <span><img className="icons-header-sizes" src={telephone} /></span>
                   </div>
                 </Grid>
                 <Grid item xs={4} className="logoImgHeader">
@@ -113,16 +134,85 @@ class Header extends Component {
                       placeholder='&#xf002; Search here'
                     />
                     {/* <NavLink to="/login"> */}
-                    <i onClick={() => window.location.pathname = "/login"} class="fa fa-user"></i>
-                    {/* </NavLink> */}
+                    {/* <Button
+                     
+                      variant="contained"
+                      onClick={() => { this.handleClickp() }}
+                    >
+                     <img className="icons-header-sizes" src={usershape} />
+        </Button> */}
 
+                    {localStorage.getItem("true") ?
+                      <span
+                        aria-owns={openPopover ? 'simple-popper' : ""}
+                        onClick={this.handleClickPopover}
+                      >
+                        <img className="icons-header-sizes" src={usershape} /></span>
+                      // <img className="icons-header-sizes" src={usershape}/>
+                      : <span onClick={() => window.location.pathname = "/login"}>
+                        <img className="icons-header-sizes" src={usershape} /></span>
+                    }
+                    {/* </NavLink> */}
+                    <Popover
+                      id="simple-popper"
+                      open={openPopover}
+                      anchorEl={anchorEl}
+                      onClose={this.handleClosePopover}
+                      anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'center',
+                      }}
+                      transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'center',
+                      }}
+                    >
+                      <div
+                        style={{ width: "220px", height: "45px", lineHeight: "45px", cursor: "pointer" }}
+                      >
+                        <a
+                          onClick={() => {
+                            localStorage.removeItem("user_id")
+                            localStorage.removeItem("email")
+                            localStorage.removeItem("vals")
+                            localStorage.removeItem("valuessetdata")
+                            localStorage.removeItem("true")
+                            localStorage.removeItem("panel")
+                            localStorage.removeItem("cartDetails")
+                            localStorage.removeItem("cart_id")
+                            localStorage.removeItem("isedit")
+                            localStorage.removeItem("check_dlt")
+                            localStorage.removeItem("a__w_l")
+                            localStorage.removeItem("a__c_t")
+                            localStorage.removeItem("c_k_l")
+                            localStorage.removeItem("select_addres")
+                            window.location.reload()
+                            window.location.pathname = "/login"
+                          }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
+                      </a>&nbsp;/&nbsp;
+                      <NavLink to="/account">
+                          My Account
+                        </NavLink>
+                      </div>
+                    </Popover>
                     {/* <i class="fa fa-user"></i> */}
-                    <Badge badgeContent={4} color="secondary">
-                      <i class="fa fa-heart"></i>
+ 
+                    <Badge color="secondary"
+                      badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary"
+                      // wishlist_count
+                      // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
+                    >
+                      <i class="fa fa-heart icons-header-sizes" onClick={() => {
+                        if (user_id.length > 0) {
+                          window.location.href = "/account"
+                        } else {
+                          window.location.href = "/login"
+                        }
+                      }}  ></i>
                     </Badge>
-                    <Badge badgeContent={4} color="secondary">
-                      <i class="fa fa-shopping-bag"></i>
-                    </Badge>
+                    <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                      <NavLink to="/cart">   <img className="icons-header-sizes" src={shopping} />
+                      </NavLink> </Badge>
                   </div>
                 </Grid>
               </Grid>
@@ -130,14 +220,11 @@ class Header extends Component {
                 <Grid container spacing={12}>
                   <Grid item xs={12} className={`header-navbar-list ${classes.colorLight}`}
                     onMouseLeave={() => { this.setState({ Menuopen: false, Checked: false }) }}
-
                   >
-
-                    <nav
-                    >
-
-                      {/* <a href="" className={`${classes.colorLight}`} alt=""><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
-  
+                    <Container maxWidthLg>
+                      <nav
+                      >
+                        {/* <a href="" className={`${classes.colorLight}`} alt=""><i class="fa fa-plus-circle"></i>&nbsp;Whats New</a>
   
                       <a href=""
                         onMouseEnter={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: 'Jewellery' }) }}
@@ -156,14 +243,16 @@ class Header extends Component {
                       ><i class="fa fa-plus-circle"></i>&nbsp;Collections</a>
                       <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;One Day Sipping</a>
                       <a href="" className={` ${classes.colorLight}`}><i class="fa fa-plus-circle"></i>&nbsp;Stories</a> */}
-                      {
-                        (menuListHeader.map(listName => {
-                          return (
-                            <a href={`/jewellery`} className={` ${classes.menuListCursor} ${classes.colorLight} `} onMouseOver={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: listName.replace(/ +/g, "") }) }}><i class="fa fa-plus-circle"></i>&nbsp;{listName}</a>
-                          )
-                        }))
-                      }
-                    </nav>
+                        {
+                          (menuListHeader.map(listName => {
+                            return (
+                              <a href={listName.url} className={` ${classes.menuListCursor} ${classes.colorLight} `} onMouseOverCapture={() => { this.setState({ Menuopen: true, Checked: true, listHoverItem: listName.title.replace(/ +/g, "") }) }}><i class="fa fa-plus-circle"></i>&nbsp;{listName.title}</a>
+                            )
+                          }))
+                        }
+                      </nav>
+                    </Container>
+
                     {
 
                       this.state.Menuopen && menuLists[this.state.listHoverItem] ?
@@ -177,7 +266,6 @@ class Header extends Component {
                   </Grid>
                 </Grid>}
               <div className="header-bottom"></div>
-
             </AppBar>
           </div>
         </Hidden>
@@ -187,7 +275,6 @@ class Header extends Component {
               className="header-appbar-moblie"
               id="smallScreen"
             >
-
               <Toolbar>
                 <Grid item xs={2}>
                   <IconButton
@@ -209,12 +296,18 @@ class Header extends Component {
                     <Badge >
                       <i class="fa fa-search"></i>
                     </Badge>
-                    <Badge badgeContent={4} color="secondary">
-                      <i class="fa fa-heart"></i>
+                    <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">
+                      <i class="fa fa-heart" onClick={() => {
+                        if (user_id.length > 0) {
+                          window.location.href = "/account"
+                        } else {
+                          window.location.href = "/login"
+                        }
+                      }}  ></i>
                     </Badge>
-                    <Badge badgeContent={4} color="secondary">
-                      <i class="fa fa-shopping-bag"></i>
-                    </Badge>
+                    <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                      <NavLink to="/cart">  <i class="fa fa-shopping-bag"></i>
+                      </NavLink> </Badge>
                   </div>
                 </Grid>
               </Toolbar>
@@ -298,9 +391,10 @@ class Header extends Component {
 
 export default withStyles(styles)(props => {
   const { mapped } = useDummyRequest(headerData);
+  const { wishlist_count } = React.useContext(CartContext);
   if (Object.keys(mapped).length === 0) return ''
-
-  return <Header {...props} data={mapped} />
+  
+  return <Header {...props} data={mapped} wishlist_count={wishlist_count} />
 });
 
 

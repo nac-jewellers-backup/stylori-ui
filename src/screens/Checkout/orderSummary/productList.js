@@ -29,13 +29,9 @@ const Productlist = (props) => {
     return <ProductlistComponent  {...props} />
 }
 const ProductlistComponent = (props) => {
-    const { handlers, values, val } = useGift();
+    const { handlers, values, val ,data} = useGift();
     const { classes } = props;
-    let value = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressOne : {};
-    var value1 = localStorage.getItem("valuessetdata") ? JSON.parse(localStorage.getItem("valuessetdata")).addressTwo : {};
-    const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
-    let lgn = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[0] : ""
-    let lgn1 = JSON.parse(localStorage.getItem("vals")) ? JSON.parse(localStorage.getItem("vals")).data.allUserAddresses.nodes[1] : ""
+    let value = localStorage.getItem("select_addres") ? JSON.parse(localStorage.getItem("select_addres")) : {};
     const { expanded1, expanded2, expanded3 } = val;
     return (
         <Container>
@@ -61,21 +57,21 @@ const ProductlistComponent = (props) => {
                                 <ExpansionPanelDetails className='order-ship pdng'>
                                     <div style={{ width: "100%" }}>
                                         <p className='dis-phn btm'>
-                                            {aa ? aa + ' ' : ""}
-                                            {lgn && lgn.firstname ? lgn && lgn.firstname || lgn1 && lgn1.firstname : value && value.firstname || value1 && value1.firstname}
+                                            {/* {aa ? aa + ' ' : ""} */}
+                                            {value && value.firstname}
                                             &nbsp;
-                                        {lgn && lgn.lastname ? lgn && lgn.lastname || lgn1 && lgn1.lastname : value && value.lastname || value1 && value1.lastname}
+                                        {value && value.lastname}
                                         </p>
                                         <p className='dis-phn btm'><div
                                             style={{ width: "100%", overflow: "hidden", textOverflow: "ellipsis" }} >
-                                            {lgn && lgn.addressline1 ? lgn && lgn.addressline1 || lgn1 && lgn1.addressline1 : value && value.addressline1 || value1 && value1.addressline1}
+                                            {value && value.addressline1}
                                         </div>
 
-                                            {lgn && lgn.city ? lgn && lgn.city || lgn1 && lgn1.city : value && value.city || value1 && value1.city} <br />
-                                            {lgn && lgn.state ? lgn && lgn.state || lgn1 && lgn1.state : value && value.state || value1 && value1.state}-
-                                            {lgn && lgn.pincode ? lgn && lgn.pincode || lgn1 && lgn1.pincode : value && value.pincode || value1 && value1.pincode}<br />IN</p>
-                                        <p className='dis-phn'>Phone :
-                                        +91 {lgn && lgn.contactNumber ? lgn && lgn.contactNumber || lgn1 && lgn1.contactNumber : value && value.contactNumber || value1 &&  value1.contactNumber} </p>
+                                            {value && value.city} <br />
+                                            {value.state + "-"}
+                                            {value && value.pincode}<br />IN</p>
+                                        <p className='dis-phn'>
+                                            Phone : +91 {value.contactNumber ? value.contactNumber : value.contactno} </p>
                                     </div>
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
@@ -123,11 +119,14 @@ const ProductlistComponent = (props) => {
                                                 name="message"
                                                 type="text"
                                                 value={values.message}
-                                                required
+                                                required 
                                                 onChange={e => handlers.handleChange('message', e.target.value)}
                                             />
                                             <div className='login-butn'>
-                                                <Button className='apply-b' type="submit">Apply</Button>
+                                                {data && data.message === "Success"?
+                                                <Button style={{filter:"grayscale(5)"}} disabled className='apply-b' type="submit">Applied</Button>:
+                                                <Button className='apply-b' type="submit">Apply</Button>}
+                                                
                                             </div>
                                         </form>
                                     </div>
@@ -146,7 +145,7 @@ const ProductlistComponent = (props) => {
                                     id="panel1a-header"
                                     className='order-ship'
                                 >
-                                    <h5 className='title' style={{ textAlign: "center" }}> Gift Wrap</h5>
+                                    <h5 className='title' style={{ textAlign: "center" }}> Promo Code</h5>
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails className='order-ship pdng'>
                                     <Promo />
