@@ -34,18 +34,21 @@ const useRegister = (changePanel, props) => {
         }
     });
     const [valuesedit, setValuesedit] = React.useState({
+       
+    });
+    const [valuesadrees, setvaluesadrees] = React.useState({
         user_id: user_ids,
         firstname: namesOf_first,
         lastname: namesOf_last,
-    });
-    const [valuesadrees, setvaluesadrees] = React.useState({
         contactno: co_num,
         pincode: pin_cod,
-        addres_Id: addres_Ids,
+        country_code: "+91",
+        country: "India",
+        select: "mr",
     });
-    const pathnames = window.location.pathname.split("-")[0]==="/account"
+    const pathnames = window.location.pathname.split("-")[0] === "/account"
     const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
-    const { makeFetch: makeFetchedit } = useNetworkRequest('/api/auth/signup', {}, false);
+    // const { makeFetch: makeFetchedit } = useNetworkRequest('/api/auth/signup', {}, false);
     const { makeFetch: makeFetcheditAddress } = useNetworkRequest('/adduseraddress', {}, false);
     const { data, error, loading, makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
     const { setCartFilters } = React.useContext(CartContext);
@@ -134,17 +137,11 @@ const useRegister = (changePanel, props) => {
         })
         // makeFetch(values)
     }
-    const handleChangeedit = (type, value) => {
-        setValuesedit({
-            ...valuesedit,
-            [type]: value,
-        })
-        // makeFetch(values)
-    }
+
     const handlesetvaluesadrees = (type, value) => {
-        
+
         setvaluesadrees({
-            ...valuesedit,
+            ...valuesadrees,
             [type]: value,
         })
         // makeFetch(values)
@@ -231,17 +228,17 @@ const useRegister = (changePanel, props) => {
             makeFetch(values);
             return false
         } else {
-            localStorage.setItem("namesOf_first", JSON.stringify(valuesedit.firstname))
-            localStorage.setItem("namesOf_last", JSON.stringify(valuesedit.lastname))
+            localStorage.setItem("namesOf_first", JSON.stringify(valuesadrees.firstname))
+            localStorage.setItem("namesOf_last", JSON.stringify(valuesadrees.lastname))
             localStorage.setItem("pin_cod", JSON.stringify(valuesadrees.pincode))
             localStorage.setItem("co_num", JSON.stringify(valuesadrees.contactno))
-            makeFetchedit(valuesedit);
+            // makeFetchedit();
             makeFetcheditAddress(valuesadrees);
         }
     }
-    const handlers = { handleSubmit, handleChange, handleChangeedit, handlesetvaluesadrees };
+    const handlers = { handleSubmit, handleChange,  handlesetvaluesadrees };
 
-    return { values, setValues, handlers, data, valuesedit, valuesadrees }
+    return { values, setValues, handlers, data, valuesadrees }
 }
 
 export default useRegister;

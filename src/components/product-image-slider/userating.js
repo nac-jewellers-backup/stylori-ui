@@ -7,7 +7,7 @@ import { useGraphql } from 'hooks/GraphqlHook';
 import { ProductDetailContext } from 'context/ProductDetailContext';
 
 const useRating = (props) => {
-    const { setrating, setregisterurl } = React.useContext(ProductDetailContext);
+    const { setrating, setratingcounts } = React.useContext(ProductDetailContext);
     const [values, setValues] = React.useState({
         user_id: "",
         rate: "",
@@ -29,6 +29,7 @@ const useRating = (props) => {
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addproductreview', {}, false);
     var variab = {}
+    // const { setratingcounts } = React.useContext(ProductDetailContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CUSTOMERREVIEWS, () => { }, {});
     const clear = () => {
         setValues({
@@ -77,7 +78,7 @@ const useRating = (props) => {
         var rating = CodData.data ? CodData.data.allCustomerReviews.nodes : ""
         if (rating.length > 0) {
             setrating({ CodData })
-        }
+        } 
     }, [CodData])
     useEffect(() => {
         if (window.location.search) {

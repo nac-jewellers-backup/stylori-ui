@@ -99,9 +99,9 @@ class Header extends Component {
         document.getElementById('topNav').style.transition = "0.5s";
         // var heightHeader = document.getElementById('headerDiv').clientHeight;
         if (document.getElementById("SliderFilter")) {
-            document.getElementById("SliderFilter").style.top = "185px";
+            document.getElementById("SliderFilter").style.top = "120px";
             document.getElementById('SliderFilter').style.transition = "0.5s";
-            document.getElementById("filterBy").style.top = "120px";
+            document.getElementById("filterBy").style.top = "80px";
             document.getElementById('filterBy').style.transition = "0.5s";
         }
 
@@ -123,6 +123,7 @@ class Header extends Component {
         });
     };
     scrolling = () => {
+        debugger
         if (window.location.pathname !== "/cart" && window.location.pathname !== '/checkout') {
             if (window.innerWidth > 959) {
                 if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
@@ -268,7 +269,7 @@ class Header extends Component {
                                                     }
                                                 }}  ></i>
                                             </Badge>
-                                            <Badge style={{ fontSize: "11px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                            <Badge  badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
                                                 <NavLink to="/cart">
                                                     <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
@@ -402,12 +403,12 @@ class Header extends Component {
                                         <Grid container justify="flex-end" onClick={() => this.handleClose()}>
                                             <i style={{ fontSize: "16px", color: "#b2b1b1", paddingRight: "4px" }} class="fa fa-times closebus"></i>
                                         </Grid>
-                                        <Grid container style={{ padding: "0px 8px 0px 8px" }}>
+                                         <Grid container style={{ padding: "0px 8px 0px 8px" }}>
                                             <InputBase
                                                 style={{ fontSize: "13px", adding: "0px 0px 0px 3px" }}
                                                 className="widthSearch"
                                                 placeholder=" SEARCH"
-                                                endAdornment={<InputAdornment position="end"><div className={classes.searchcontainerplain}><Seach className={"searchPlain"} />
+                                                 endAdornment={<InputAdornment position="end"><div className={classes.searchcontainerplain}><Seach className={"searchPlain"} />
                                                 </div></InputAdornment>} />
                                         </Grid>
 
