@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid,Hidden } from '@material-ui/core'
 import '../product-image-slider/product-images.css'
 import styles from './style'
 import './pricing.css'
@@ -51,6 +51,7 @@ export default function Pricing(props) {
                                     </Typography>
                                 </Typography> : ""}
                         </Grid>
+                        <Hidden  mdDown>
                         <Grid item lg={12} xs={12}>
                             {
                                 props.offerDiscount ?
@@ -69,6 +70,8 @@ export default function Pricing(props) {
 
                             }
                         </Grid>
+                        </Hidden>
+                        
                     </Grid>
                 </Grid>
             </Grid>
