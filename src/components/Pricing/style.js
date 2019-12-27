@@ -5,7 +5,8 @@ const styles = makeStyles(theme => ({
         float: 'left'
     },
     colorMain: {
-        color: theme.palette.secondary.main
+        color: theme.palette.secondary.main,
+
     },
     h6FontSize: {
         [theme.breakpoints.down('lg')]: {
@@ -13,8 +14,9 @@ const styles = makeStyles(theme => ({
             // fontWeight: 'bold'
         },
         [theme.breakpoints.down('xs')]: {
-            fontSize: '1.2rem',
-            letterSpacing:"1px"
+            fontSize: '1rem',
+            letterSpacing: "1px",
+            fontWeight: 600
 
         },
     },
@@ -31,7 +33,7 @@ const styles = makeStyles(theme => ({
         [theme.breakpoints.down('lg')]: {
             paddingLeft: '15px',
             marginTop: '7px',
-        },[theme.breakpoints.down('xs')]: {
+        }, [theme.breakpoints.down('xs')]: {
             paddingLeft: '0px',
         },
     },
