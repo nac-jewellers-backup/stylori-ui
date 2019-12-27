@@ -26,6 +26,7 @@ import { ProductDetailContext } from 'context/ProductDetailContext';
 import { CDN_URL } from 'config';
 import 'screens/screens.css';
 import MetaTags from 'react-meta-tags';
+import { CartContext } from 'context'
 
 class ProductDetail extends Component {
   constructor(props) {
@@ -53,7 +54,8 @@ class ProductDetail extends Component {
     console.log('this.props.data i am data', this.props.data)
     var path = loc.split('/');
     var data_json = [{ title: 'home', url: '/home' }, { title: path[2], url: this.renderUrl() }, { title: path[4] }]
-    return (
+// alert(JSON.stringify(this.props.wishlistdata))
+return (
       <div>
         <div>
           <MetaTags>
@@ -102,7 +104,7 @@ class ProductDetail extends Component {
               </Grid>
               <Grid item xs={6}>
                 <div className='overall-box'>
-                  <ProductPrice data={this.props.data} />
+                  <ProductPrice data={this.props.data} wishlist={this.props.wishlistdata}/>
                 </div>
                 <div className='overall-box'>
                   <PriceTabs data={this.props.data} />
@@ -185,6 +187,7 @@ class ProductDetail extends Component {
   }
 }
 const Components = props => {
+  let { CartCtx: { allorderdata, wishlistdata } } = React.useContext(CartContext);
   const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating } } = React.useContext(ProductDetailContext);
   const datas = data;
   let mapped = datas;
@@ -193,7 +196,7 @@ const Components = props => {
   }
   if (Object.keys(mapped).length === 0) return <div className="overall-loader"><div id="loading"></div></div>
   else {
-    return <ProductDetail {...props} data={mapped} rating={rating} />
+    return <ProductDetail {...props} data={mapped} rating={rating} allorderdata={allorderdata} wishlistdata={wishlistdata}/>
 
   }
 }

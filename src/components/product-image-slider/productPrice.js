@@ -16,6 +16,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Pricing from '../Pricing/index'
 import styles from './style';
 import Wishlist from 'components/wishlist/wishlist';
+import { Button } from 'semantic-ui-react';
 
 const dataCarousel = {
     dots: true,
@@ -53,6 +54,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
     const { data } = props;
     const { classes } = props;
     const open = anchorEl;
+    var wishlist = props.wishlist
     return (
         <div>
             {data.map(val => (
@@ -159,7 +161,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                     onClick={handleClick}
                                                 ></i> &nbsp;
                                         {/* {JSON.stringify(val.productId)} */}
-                                                <Wishlist sku={val.skuId} productId={val.productId} />
+                                                <Wishlist sku={val.skuId} productId={val.productId} wishlist={wishlist} />
 
                                                 <Popover
                                                     id="simple-popper"
@@ -188,8 +190,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                         </a>
                                                     </div>
                                                 </Popover>
-
-                                                <div><Ratings ratings="starts-review" /></div>
+                                                <div onClick={() => window.scrollTo(0, 1800)}><Ratings ratings="starts-review" disable={"disable"}/></div>
                                             </div>
                                         </div>
                                     </Hidden>

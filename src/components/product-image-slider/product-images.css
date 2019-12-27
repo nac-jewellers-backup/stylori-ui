@@ -52,7 +52,9 @@ body {
     text-align: center !important;
 
 }
-
+.width{
+    width: 9% !important;
+}
 .starts-review {
     cursor: pointer;
     margin-top: 5px;

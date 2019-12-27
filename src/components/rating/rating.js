@@ -41,11 +41,11 @@ class Component extends React.Component {
         const { starsSelected } = this.state;
 
         return (
-            <div className="star-rating" class={this.props.ratings}>
+            <div class={this.props.ratings}>
                 {[1, 2, 3, 4, 5].map((n, i) =>
                     <Star key={i}
                         selected={i < starsSelected}
-                        onClick={() => this.change(i + 1)}
+                        onClick={() => this.change(this.props.disable === "disable" ? "" : i + 1)}
                     />
                 )}
                 {/* <p>{starsSelected} of {totalStars} stars</p> */}

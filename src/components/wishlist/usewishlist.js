@@ -8,7 +8,7 @@ const useWishlists = (props) => {
         product_id: "",
         add: "",
         product_sku: "",
-        // isactive: 1
+        isactive: null
     });
     const [invalids, setInvalids] = React.useState({ user_id: false, product_id: false, product_sku: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addwishlist', {}, [], false);
@@ -19,7 +19,7 @@ const useWishlists = (props) => {
     // useEffect(() => {
     //     // orderobj["product_sku"] = sku
     //     setValues(orderobj);
-    // }, [])
+    // }, []) 
     const handleChange = (type, value) => {
         setValues({
             ...values,
