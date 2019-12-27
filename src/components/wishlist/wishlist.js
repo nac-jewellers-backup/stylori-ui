@@ -13,7 +13,7 @@ const WishlistComponent = (props) => {
     React.useEffect(() => {
         debugger
         if (JSON.stringify(props.wishlist) && JSON.stringify(props.wishlist).length > 0) {
-            props.wishlist && props.wishlist.wishlistdata&&props.wishlist.wishlistdata.nodes.map(val => {
+            props.wishlist && props.wishlist.wishlistdata && props.wishlist.wishlistdata.nodes.map(val => {
                 if (val.skuId === props.sku) {
                     values["isactive"] = 2
                     setValues({ values, ...values });

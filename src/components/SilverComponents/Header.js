@@ -257,7 +257,7 @@ class Header extends Component {
                                                 </div>
                                             </Popover>
                                             <Badge color="secondary"
-                                                badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary"
+                                                badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
                                             // wishlist_count
                                             // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
                                             >
@@ -269,7 +269,7 @@ class Header extends Component {
                                                     }
                                                 }}  ></i>
                                             </Badge>
-                                            <Badge  badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                            <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
                                                 <NavLink to="/cart">
                                                     <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
@@ -374,7 +374,7 @@ class Header extends Component {
                                                         </div>
 
                                                         <i class="fa fa-user"></i>
-                                                        <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">
+                                                        <Badge badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary">
                                                             <i class={`fa fa-heart ${classes.iconFafaheart}`} onClick={() => {
                                                                 if (user_id.length > 0) {
                                                                     window.location.href = `/account${'-wishlist'}`
@@ -403,12 +403,12 @@ class Header extends Component {
                                         <Grid container justify="flex-end" onClick={() => this.handleClose()}>
                                             <i style={{ fontSize: "16px", color: "#b2b1b1", paddingRight: "4px" }} class="fa fa-times closebus"></i>
                                         </Grid>
-                                         <Grid container style={{ padding: "0px 8px 0px 8px" }}>
+                                        <Grid container style={{ padding: "0px 8px 0px 8px" }}>
                                             <InputBase
                                                 style={{ fontSize: "13px", adding: "0px 0px 0px 3px" }}
                                                 className="widthSearch"
                                                 placeholder=" SEARCH"
-                                                 endAdornment={<InputAdornment position="end"><div className={classes.searchcontainerplain}><Seach className={"searchPlain"} />
+                                                endAdornment={<InputAdornment position="end"><div className={classes.searchcontainerplain}><Seach className={"searchPlain"} />
                                                 </div></InputAdornment>} />
                                         </Grid>
 
