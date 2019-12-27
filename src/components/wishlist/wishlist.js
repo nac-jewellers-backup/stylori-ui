@@ -18,7 +18,7 @@ const WishlistComponent = (props) => {
                     values["isactive"] = 2
                     setValues({ values, ...values });
                     return false
-                }
+                } 
             })
         }
     }, [])
