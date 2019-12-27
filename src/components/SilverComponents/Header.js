@@ -216,13 +216,14 @@ class Header extends Component {
                                             />
                                             {localStorage.getItem("true") ?
                                                 <span
+                                                    class="MuiBadge-root"
                                                     aria-owns={openPopover ? 'simple-popper' : ""}
                                                     onClick={this.handleClickPopover}
                                                 >
                                                     <i class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                 </span>
                                                 // <img className="icons-header-sizes" src={usershape}/>
-                                                : <span onClick={() => window.location.pathname = "/login"}>
+                                                : <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
                                                     <i class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                 </span>
                                             }
@@ -268,10 +269,11 @@ class Header extends Component {
                                                     }
                                                 }}  ></i>
                                             </Badge>
-                                            <Badge  badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                <NavLink to="/cart" style={{    fontSize: "0px"}}>
-                                                    <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
-                                                </NavLink> </Badge>
+                                            <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                <a style={{ fontSize: "0px" }} href="/cart" >
+                                                    <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+
+                                                </a> </Badge>
                                         </div>
                                     </Grid>
                                 </Grid>
@@ -422,7 +424,7 @@ class Header extends Component {
                                                             }}  ></i>
                                                         </Badge>
                                                         <Badge style={{ fontSize: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                            <NavLink to="/cart">   <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                                            <NavLink to="/cart">   <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
                                                             </NavLink> </Badge>
                                                     </div>
                                                 </Grid>
@@ -457,7 +459,7 @@ class Header extends Component {
 
                         </Grid>
                     </Grid>
-                    <Drawer
+                    <Drawer style={{ zIndex: "10000" }}
                         anchor="left"
                         open={this.state.open}
                         classes={{

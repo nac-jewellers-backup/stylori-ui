@@ -51,6 +51,8 @@ class Sublistcarousel extends React.Component {
       autoplay: true,
       autoplaySpeed: 2000
     }
+    const fadeee = data[0].fadeImageSublistRecentlyViewed.length;
+
     const dataCarousel = {
       arrows: false,
       dots: false,
@@ -58,7 +60,7 @@ class Sublistcarousel extends React.Component {
       accessibility: true,
       speed: 500,
       slidesToShow: this.state.dataToShow === "YouMayLike" ? data[0].fadeImageSublist.length > 4 ? limit : data[0].fadeImageSublist.length :
-        data[0].fadeImageSublistRecentlyViewed.length > 4 ? limit : 4
+        data[0].fadeImageSublistRecentlyViewed.length > 4 ? limit : fadeee
       ,
       slidesToScroll: 4,
     }
