@@ -271,10 +271,10 @@ class Header extends Component {
                                                 }}  ></i>
                                             </Badge>
                                             <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                <NavLink to="/cart" >
+                                                <a style={{ fontSize: "0px" }} href="/cart" >
                                                     <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
-                                                </NavLink> </Badge>
+                                                </a> </Badge>
                                         </div>
                                     </Grid>
                                 </Grid>
