@@ -8,12 +8,12 @@ const useWishlists = (props) => {
         product_id: "",
         add: "",
         product_sku: "",
-        isactive: null
+        isactive: null 
     });
     const [invalids, setInvalids] = React.useState({ user_id: false, product_id: false, product_sku: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addwishlist', {}, [], false);
     const { data: removedata, makeFetch: removemakeFetch, } = useNetworkRequest('/removewishlist', {}, [], false);
-    const { setCartFilters } = React.useContext(CartContext);
+    const { setCartFilters,setwishlistdata } = React.useContext(CartContext);
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
     const check_gustlog = localStorage.getItem("true") ? localStorage.getItem("true") : {}
     // useEffect(() => {
@@ -47,6 +47,9 @@ const useWishlists = (props) => {
             window.location.href = "/login"
         }
         // changePanel(3)
+        setwishlistdata({
+            wishlistdata:values.isactive
+        })
     }
     const handelRemove = (num) => {
         
@@ -64,8 +67,10 @@ const useWishlists = (props) => {
             }
             removemakeFetch(values);
         }
-
         // changePanel(3)
+        setwishlistdata({
+            wishlistdata:values.isactive
+        })
     }
 
     const handlers = { handleChange, handleInvalid, handelRemove, handelSubmit };

@@ -352,14 +352,21 @@ class Component extends React.Component {
   // }
   selectItem = (name) => {
     debugger
-    var vval;
+    var arr1;
     let { selected } = this.state;
     var map = selected.map(val => { if (val !== undefined && val !== null) { return val } })
-    if (map === name) {
-      vval = selected.indexOf(name) === -1
-      selected.push(vval)
+    if (map.indexOf(name) > -1) {
+      arr1 = selected.filter(val => {
+        if (val !== undefined && val !== null) {
+          if (val !== name) {
+            return val;
+          }
+        }
+      })
+      selected = arr1;
       this.setState({ selected })
     } else {
+      // var same =map.indexOf(name)
       selected.push(name)
       this.setState({ selected })
     }
@@ -625,7 +632,7 @@ class Component extends React.Component {
               className={check ? classes.productCardscheck : classes.productCardsuncheck}
 
             >
-              <ProductLayout data={this.props.datas} loading={this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
+              <ProductLayout wishlist={this.props.wishlist} data={this.props.datas} loading={this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
 
             </div>}
         </div>

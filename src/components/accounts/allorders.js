@@ -41,7 +41,7 @@ class Allorders extends React.Component {
 
         var a
         a = arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
-            return cart.transSkuListByProductSku.discountPrice
+            return cart.price
         }).reduce(myFunc);
         return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a))
     }
@@ -132,16 +132,18 @@ class Allorders extends React.Component {
                                                                 <b> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
                                                                 <Grid item lg={6}>
                                                                     <Typography className="subhesder">Gold Weight</Typography>
-                                                                    <Typography className="subhesder">Diamond Weight</Typography>
+                                                                    {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes.length > 0 ?
+                                                                        <Typography className="subhesder">Diamond Weight</Typography> : ""}
                                                                     <Typography className="subhesder">Product Code</Typography>
                                                                 </Grid>
                                                                 <Grid item lg={6}>
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.skuWeight + "" + "GM"}
                                                                     </Typography>
-                                                                    <Typography className="subhesder">0.0 CT
-                                                                    {/* {cart.transSkuListByProductSku&&cart.transSkuListByProductSku.productListByProductId&&cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku&&cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight+" "+"CT"} */}
+                                                                    <Typography className="subhesder">
+                                                                        {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight + " " + "CT"}
                                                                     </Typography>
+
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.generatedSku}
                                                                     </Typography>
@@ -157,7 +159,7 @@ class Allorders extends React.Component {
                                                             </Grid>
                                                         </Grid>
                                                         <Grid style={{ padding: "30px" }} className="rups" item lg={2}>
-                                                            {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.discountPrice))}
+                                                            {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.price))}
                                                         </Grid>
                                                     </Grid></>
                                             ))}

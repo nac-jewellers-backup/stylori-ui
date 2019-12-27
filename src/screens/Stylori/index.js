@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {FilterOptionsProvider} from 'context'
+import { FilterOptionsProvider } from 'context'
 import ProductListing from 'containers/ProductListing'
+import { CartProvider } from 'context'
 export default class Stylori extends Component {
   constructor(props) {
     super(props)
@@ -25,8 +26,10 @@ export default class Stylori extends Component {
     // console.log(this.props)
     return (
       <FilterOptionsProvider >
-     <ProductListing /> 
-     </FilterOptionsProvider>
+        <CartProvider>
+          <ProductListing />
+        </CartProvider>
+      </FilterOptionsProvider>
 
 
     )

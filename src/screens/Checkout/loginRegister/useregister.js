@@ -5,7 +5,7 @@ import { ADDRESSDETAILS } from 'queries/productdetail';
 import { resetWarningCache } from 'prop-types';
 import { CartContext } from 'context'
 let user_ids = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
-let addres_Ids = localStorage.getItem("addres_Id") && localStorage.getItem("addres_Id").length > 0 && localStorage.getItem("addres_Id") !== 'undefined' ? localStorage.getItem("addres_Id") : ""
+// let addres_Ids = localStorage.getItem("addres_Id") && localStorage.getItem("addres_Id").length > 0 && localStorage.getItem("addres_Id") !== 'undefined' ? localStorage.getItem("addres_Id") : ""
 let namesOf_first = localStorage.getItem("namesOf_first") && localStorage.getItem("namesOf_first").length > 0 && localStorage.getItem("namesOf_first") !== 'undefined' && localStorage.getItem("namesOf_first") !== 'null' ? JSON.parse(localStorage.getItem("namesOf_first")) : ""
 let namesOf_last = localStorage.getItem("namesOf_last") && localStorage.getItem("namesOf_last").length > 0 && localStorage.getItem("namesOf_last") !== 'undefined' && localStorage.getItem("namesOf_last") !== 'null' ? JSON.parse(localStorage.getItem("namesOf_last")) : ""
 let pin_cod = localStorage.getItem("pin_cod") && localStorage.getItem("pin_cod").length > 0 && localStorage.getItem("pin_cod") !== 'undefined' && localStorage.getItem("pin_cod") !== 'null' ? JSON.parse(localStorage.getItem("pin_cod")) : ""
@@ -33,9 +33,9 @@ const useRegister = (changePanel, props) => {
             lastname: false
         }
     });
-    const [valuesedit, setValuesedit] = React.useState({
-       
-    });
+    // const [valuesedit, setValuesedit] = React.useState({
+
+    // });
     const [valuesadrees, setvaluesadrees] = React.useState({
         user_id: user_ids,
         firstname: namesOf_first,
@@ -49,11 +49,19 @@ const useRegister = (changePanel, props) => {
     const pathnames = window.location.pathname.split("-")[0] === "/account"
     const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     // const { makeFetch: makeFetchedit } = useNetworkRequest('/api/auth/signup', {}, false);
-    const { makeFetch: makeFetcheditAddress } = useNetworkRequest('/adduseraddress', {}, false);
+    const { data: reg_update_data, makeFetch: makeFetcheditAddress } = useNetworkRequest('/api/updateuserprofile', {}, false);
     const { data, error, loading, makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
     const { setCartFilters } = React.useContext(CartContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     const pathnamelog = window.location.pathname === "/registers"
+
+    useEffect(() => {
+        debugger
+        if (reg_update_data && reg_update_data === "Profile Updated Successfully") {
+            alert("Profile Updated Successfully")
+        }
+    }, [reg_update_data])
+
     useEffect(() => {
         var ms = data && data.message
         if (ms && values['error'] && values['errortext']) {
@@ -83,6 +91,7 @@ const useRegister = (changePanel, props) => {
                 // }
                 localStorage.setItem("email", data.user.email)
                 localStorage.setItem("user_id", data.user_profile_id)
+                localStorage.setItem('accessToken', data.accessToken)
                 // localStorage.setItem("addres_id", data.user.id)
                 setValues({ user_id: data.user_profile_id })
                 setCartFilters({ user_id })
@@ -139,7 +148,6 @@ const useRegister = (changePanel, props) => {
     }
 
     const handlesetvaluesadrees = (type, value) => {
-
         setvaluesadrees({
             ...valuesadrees,
             [type]: value,
@@ -148,6 +156,7 @@ const useRegister = (changePanel, props) => {
     }
     const user = data.user_profile_id ? data.user_profile_id : ""
     const handleSubmit = (e) => {
+        debugger
         if (!pathnames) {
             if (values.email === "" && values['error'] && values['errortext']) {
                 values['error']['emerr'] = true
@@ -236,7 +245,7 @@ const useRegister = (changePanel, props) => {
             makeFetcheditAddress(valuesadrees);
         }
     }
-    const handlers = { handleSubmit, handleChange,  handlesetvaluesadrees };
+    const handlers = { handleSubmit, handleChange, handlesetvaluesadrees };
 
     return { values, setValues, handlers, data, valuesadrees }
 }
