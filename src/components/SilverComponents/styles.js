@@ -6,11 +6,11 @@ export const styles = theme => ({
     color: theme.palette.secondary.dark,
     fontFamily: "fontawesome",
     textAlign: 'right',
-    fontSize: '20px !important',
+    // fontSize: '20px !important',
     marginTop: '18px !important',
     display: "flex",
-    alignContent: "end",
-    alignItems: "flex-end",
+    alignContent: "center",
+    alignItems: "center",
     justifyContent: "flex-end",
   },
   searchcontainer: {
@@ -109,7 +109,7 @@ export const styles = theme => ({
   },
   iconbuttons: {
     position: "fixed",
-    left: "225px",
+    right: "58px",
     top: "-9px"
   },
   subtitles: {

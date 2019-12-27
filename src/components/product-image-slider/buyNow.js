@@ -90,7 +90,7 @@ const Buydetails = (props, state, handleChanges, handleCodChange, canceldeletech
                                 <Buynowbutton sku={data[0].skuId} class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
                             </div>
                             {/* </NavLink> */}
-                            <CommenDialog isOpen={state.modelOpen} content={`Verify selected product details. `} handleClose={canceldeletechecklist} handleSuccess={deletechecklists} negativeBtn="No" positiveBtn="Yes" title="Confirmation" />
+                            <CommenDialog isOpen={state.modelOpen} content={`Are you sure you `} handleClose={canceldeletechecklist} handleSuccess={deletechecklists} negativeBtn="No" positiveBtn="Yes" title="Confirmation" />
                         </Grid>
 
                         <Grid xs={12} lg={7} style={{ marginBottom: "7px" }}>
@@ -174,9 +174,16 @@ class Component extends React.Component {
     }
 
     handleLocalStorage = () => {
-        this.setState({
-            modelOpen: true,
-        })
+        if (this.props.data && this.props.data[0].productType === "Rings") {
+            this.setState({
+                modelOpen: true,
+            })
+        }
+        else {
+            this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
+            window.location.pathname = "/cart"
+        }
+
     }
 
     canceldeletechecklist = () => {

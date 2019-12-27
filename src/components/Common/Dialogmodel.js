@@ -4,7 +4,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import Typography from '@material-ui/core/Typography';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
@@ -12,47 +12,18 @@ import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles(theme => ({
   buttons: {
-    backgroundColor: "#5a854f",
-    padding: "3px 14px !important",
-    color: "#fff",
-    fontSize: "0.85rem !important",
-    textTransform: "capitalize",
-    '&:hover': {
-      backgroundColor: "#436c38",
-    }
-  },
-  buttons1: {
-    backgroundColor: "#cf2d30",
-    padding: "3px 14px !important",
-    color: "#fff",
-    fontSize: "0.85rem !important",
-    textTransform: "capitalize",
-    '&:hover': {
-      backgroundColor: "#a62325",
-    }
+    color: theme.palette.text.active,
+    padding: "3px 14px !important"
   },
   title: {
     color: "rgba(58, 69, 120, 1)"
-  },
-  titleTypo: {
-    background: "#f84e88",
-    color: "#fff",
-    padding: "8px 20px",
-    fontSize: "1.0rem !important",
-    fontFamily: "Roboto"
-  },
-  valued: {
-    fontSize: "0.85rem !important",
-    fontFamily: "Roboto"
-  },
-  mapped: {
-
   }
 }));
 
 
 
 export default function PineDialog(props) {
+  // const [open, setOpen] = React.useState(props.isOpen);
   const classes = useStyles();
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -69,31 +40,25 @@ export default function PineDialog(props) {
 
   return (
     <Dialog
-      PaperProps={{
-        style: {
-          minWidth: "400px"
-        },
-      }}
-      className={classes.mapped}
       fullScreen={fullScreen}
       open={props.isOpen}
       onClose={handleClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <Typography id="responsive-dialog-title" className={classes.titleTypo}>{props.title}</Typography>
+      <DialogTitle id="responsive-dialog-title" style={{ padding: "8px 20px", fontSize: "1.1rem", fontFamily: "Roboto" }}>{props.title}</DialogTitle>
       <Divider />
       <DialogContent >
-        <Typography className={classes.valued} style={{ marginTop: "20px" }}>
+        <DialogContentText style={{ paddingLeft: theme.spacing(3), paddingRight: theme.spacing(3), marginTop: "20px" }}>
           {props.content}<br />
           {props.verifycontent}
-        </Typography>
+        </DialogContentText>
       </DialogContent>
 
       <DialogActions style={{ padding: "14px" }}>
-        {props.negativeBtn ? <Button onClick={() => handleClose()} className={classes.buttons1}>{props.negativeBtn}
+        {props.negativeBtn ? <Button onClick={() => handleClose()} className={classes.buttons}>{props.negativeBtn}
         </Button> : ''}
-        {props.positiveBtn ? <Button className={classes.buttons} style={{ backgroundColor: props.notesDialog ? "#c84f4b" : "" }} onClick={() => handleSuccess()} >{props.positiveBtn}
+        {props.positiveBtn ? <Button className={classes.buttons} style={{ backgroundColor: props.notesDialog ? "#c84f4b" : "" }} variant="contained" color="primary" onClick={() => handleSuccess()} >{props.positiveBtn}
         </Button> : ''}
       </DialogActions>
     </Dialog>

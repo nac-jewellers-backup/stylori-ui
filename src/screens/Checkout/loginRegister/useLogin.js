@@ -34,19 +34,19 @@ const useLogin = (changePanel, props) => {
     React.useEffect(() => {
         var ms = data && data.message
 
-        if (ms && data.auth === false) {
+        if (ms && data.auth === false ) {
             values['error']['passerr'] = true
             values['errortext']['passerr'] = ms
             setValues({
                 ...values,
                 values,
             })
-
+            
             // return false
-        }
-        else if (ms && data.auth === undefined) {
+        } 
+        else if (ms && data.auth === undefined ) {
             values['error']['emerr'] = true
-            values['errortext']['emerr'] = ms
+            values['errortext']['emerr'] =ms
             setValues({
                 ...values,
                 values,
@@ -55,7 +55,7 @@ const useLogin = (changePanel, props) => {
         }
         else {
             var a = data.userprofile ? data.userprofile : ""
-            if (values.error.emerr) {
+            if(values.error.emerr){
                 values['error']['emerr'] = false
                 values['errortext']['emerr'] = ""
                 setValues({
@@ -63,11 +63,11 @@ const useLogin = (changePanel, props) => {
                     values,
                 })
             }
-
+            
             if (JSON.stringify(a).length > 10 && values['error'] && values['errortext']) {
                 values['error']['passerr'] = false
                 values['errortext']['passerr'] = ""
-
+              
                 var bbn = data && data.userprofile && data.userprofile.id ? data.userprofile.id : ""
                 if (bbn.length > 0 || bbn !== undefined) {
                     localStorage.setItem("email", data.userprofile.email)
@@ -95,7 +95,7 @@ const useLogin = (changePanel, props) => {
             localStorage.setItem("check_dlt", false)
             val["addressvalues"] = addresData
             val["addrs"] = false
-            addressetValues && addressetValues(val)
+            addressetValues&&addressetValues(val)
             localStorage.setItem("c_k_l", true)
             if (!pathnames) {
                 changePanel(3)
@@ -165,8 +165,8 @@ const useLogin = (changePanel, props) => {
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e, history) => {
-
-
+       
+    
         if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'
@@ -204,14 +204,14 @@ const useLogin = (changePanel, props) => {
                 ...values,
                 values,
             })
-
+            
             return false
         }
         let obj_values = {}
         let _password = values.password
         let _email = values.email
         let _roles = values.roles
-        obj_values = { password: _password, email: _email, roles: _roles }
+        obj_values = { password:_password, email:_email, roles:_roles }
         makeFetch(obj_values);
         clear()
         // reset();

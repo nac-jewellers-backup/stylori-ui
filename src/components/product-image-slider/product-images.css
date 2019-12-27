@@ -25,25 +25,11 @@ body {
     /* padding: 0 10px !important; */
 }
 
-.containbev {
-    box-shadow: 6px 6px 7px #aaaaaa;
-    padding: 5px 8px 0px 8px;
-    margin: 4px 0px 10px 0px;
-}
-
-@media only screen and (min-width: 768px) {
-    .containbev {
-        box-shadow: none;
-        padding: 5px 8px 0px 8px;
-        margin: 4px 0px 4px 0px;
-    }
-}
-
 .pdp-title {
     margin-top: 10px;
     line-height: 13px;
     text-transform: capitalize;
-    text-align: left;
+    text-align: justify;
     font-size: 14px !important
 }
 
@@ -56,7 +42,7 @@ body {
 .pdp-desc {
     font-size: 11px !important;
     margin-top: -4px !important;
-    text-align: left;
+    text-align: justify;
     overflow: hidden;
 }
 
@@ -65,10 +51,6 @@ body {
     min-height: 1px;
     text-align: center !important;
 
-}
-
-.width {
-    width: 9% !important;
 }
 
 .starts-review {
@@ -103,11 +85,6 @@ body {
     font-size: 14px;
     line-height: 1.42857143;
     text-align: center !important;
-}
-
-.layOut {
-    /* border: 1px solid #c5c5c5; */
-    box-shadow: 10px 10px 7px #aaaaaa;
 }
 
 .price-info {
@@ -374,8 +351,8 @@ body {
 }
 
 .ships-by {
-    font-size: 11px !important;
-
+    font-size: 12px !important;
+    text-align: center
 }
 
 .slick-dots {
@@ -654,9 +631,8 @@ body {
 }
 
 .product-details-smrt {
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    padding-left: 4px
+    font-size: 15px !important;
+
 }
 
 /* .MuiExpansionPanelSummary-root.Mui-expanded {
@@ -685,9 +661,8 @@ body {
     border-radius: 4px 4px 0 0;
     text-transform: none !important;
     margin: 0px !important;
-    font-weight: 600 !important;
-    font-size: 13px !important;
-    padding: 0px 0px 0px 4px !important;
+    font-size: 15px !important;
+    padding: 0 !important;
     min-height: none !important;
 }
 
@@ -764,10 +739,6 @@ body {
 
 .imgzom-sidecraousel-media .slick-track {
     height: auto !important;
-}
-
-.slick-track {
-    /* width: auto !important; */
 }
 
 .vertical-carousel-list-arrow {
@@ -1078,7 +1049,6 @@ body {
     width: 70%;
     /* border: 1px solid #9d9d9d  !important; */
     border-radius: 15%;
-    margin-bottom: 6px;
     outline: none !important;
 }
 
@@ -1087,7 +1057,6 @@ body {
         text-align: center !important;
         height: 40px !important;
         width: 100% !important;
-        margin-bottom: 6px;
         /* border: 1px solid #9d9d9d  !important; */
         border-radius: 15%;
         outline: none !important;
@@ -1352,10 +1321,9 @@ body {
 }
 
 .resp {
-    box-shadow: 6px 6px 7px #aaaaaa;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12) !important;
     width: 100% !important;
     height: auto !important;
-    margin-bottom: 10px;
     /* padding: 10px; */
 }
 

@@ -53,7 +53,8 @@ class ProductDetails extends React.Component {
                                                                                 {res.details.map((Item, Index) => {
                                                                                     return (<span style={{ fontSize: "12px", textAlign: 'left' }}> {
                                                                                         (valueofproductdetail.header === 'Price Breakup' && res.name !== 'GST') ?
-                                                                                            ((Index === 0 && (res.details[Index] !== res.details[Index + 1]) ? <del>{Item}</del> : Item)) : Item} </span>)
+                                                                                            ((Index === 0 && (res.details[Index] !== res.details[Index + 1]) ? <del>{Item}</del> : 
+                                                                                            Index === 0 ? '':Item)) : Item} </span>)
                                                                                 })}
                                                                             </ListItemText>
                                                                             :
@@ -107,10 +108,9 @@ class ProductDetails extends React.Component {
 
                     {data[0].productsDetails.map(val => {
                         return (
-                            (data[0].productType !== "Earring" && val.header === 'Gemstone Details')
-                            || (data[0].productType === "Earring" && val.header.trim() === 'Diamond Details')) ? false :
+                            val.namedetail.length === 0) ? false :
                             <>
-                                <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) !important", padding: "0 5px", margin: "8px 0px" }} expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
+                                <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important", padding: "0 5px" }} expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
                                     <ExpansionPanelSummary
 
                                         style={{ minHeight: "30px !important" }} className="expansion-summary"
@@ -124,6 +124,7 @@ class ProductDetails extends React.Component {
                                     <div>
                                         {
                                             val.namedetail !== undefined && val.namedetail.map(res =>
+                                                res.details !== null && res.details.length === 0 ? false :
                                                 <span>
                                                     {((data[0].productType !== "Earring" && res.name === 'Gemstone')
                                                         || (data[0].productType === "Earring" && res.name === 'Diamond')) ? false :
@@ -137,11 +138,12 @@ class ProductDetails extends React.Component {
                                                                 {
                                                                     isArray(res.details) ?
                                                                         <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
-                                                                            {res.details.map(val => {
-                                                                                return (
-                                                                                    <span style={{ fontSize: "12px", textAlign: 'left' }}> {val}</span>
-                                                                                )
-                                                                            })}
+                                                                            {res.details.map((Item, Index) => {
+                                                                                    return (<span style={{ fontSize: "12px", textAlign: 'left' }}> {
+                                                                                        (val.header === 'Price Breakup' && res.name !== 'GST') ?
+                                                                                            ((Index === 0 && (res.details[Index] !== res.details[Index + 1]) ? <del>{Item}</del> : 
+                                                                                            Index === 0 ? '':Item)) : Item} </span>)
+                                                                                })}
                                                                         </ListItemText>
                                                                         :
                                                                         <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
