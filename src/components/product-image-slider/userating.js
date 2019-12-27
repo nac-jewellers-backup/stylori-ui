@@ -12,7 +12,7 @@ const useRating = (props) => {
         user_id: "",
         rate: "",
         product_id: "",
-        product_sku: "",
+        product_sku: "", 
         title: "",
         message: "",
         errortext: {
