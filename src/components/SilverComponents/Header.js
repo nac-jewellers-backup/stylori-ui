@@ -408,7 +408,7 @@ class Header extends Component {
                                                 style={{ fontSize: "13px", adding: "0px 0px 0px 3px" }}
                                                 className="widthSearch"
                                                 placeholder=" SEARCH"
-                                                endAdornment={<InputAdornment position="end"><div className={classes.searchcontainerplain}><Seach className={"searchPlain"} />
+                                                 endAdornment={<InputAdornment position="end"><div className={classes.searchcontainerplain}><Seach className={"searchPlain"} />
                                                 </div></InputAdornment>} />
                                         </Grid>
 
