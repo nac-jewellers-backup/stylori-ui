@@ -38,7 +38,6 @@ class Addressdetails extends React.Component {
         }
         // const back_color = () => {
         // }
-        debugger
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>

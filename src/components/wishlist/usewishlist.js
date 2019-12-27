@@ -8,7 +8,7 @@ const useWishlists = (props) => {
         product_id: "",
         add: "",
         product_sku: "",
-        isactive: null 
+        isactive: null ,
     });
     const [invalids, setInvalids] = React.useState({ user_id: false, product_id: false, product_sku: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addwishlist', {}, [], false);
@@ -47,12 +47,12 @@ const useWishlists = (props) => {
             window.location.href = "/login"
         }
         // changePanel(3)
-        setwishlistdata({
-            wishlistdata:values.isactive
-        })
+        // setwishlistdata({
+        //     wishlistdata:values.isactive
+        // })
     }
     const handelRemove = (num) => {
-        
+        debugger
         if (user_id.length > 0 && check_gustlog === "false") {
             values["isactive"] = num
             values["user_id"] = user_id
@@ -68,9 +68,9 @@ const useWishlists = (props) => {
             removemakeFetch(values);
         }
         // changePanel(3)
-        setwishlistdata({
-            wishlistdata:values.isactive
-        })
+        // setwishlistdata({
+        //     wishlistdata:values.isactive
+        // })
     }
 
     const handlers = { handleChange, handleInvalid, handelRemove, handelSubmit };

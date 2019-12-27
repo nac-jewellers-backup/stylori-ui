@@ -75,7 +75,7 @@ class Component extends React.Component {
 
 
     handleClick = (event, key) => {
-        debugger
+        
         console.log('lklkkoik9', this.state.purity)
         var filters = { ...this.props.filters }
         if (key === 'purity') {
@@ -261,7 +261,7 @@ class Component extends React.Component {
                                     <Grid item lg={9} xs={12}>
                                         <Grid container spacing={12} lg={12}>
                                             {arr2.map((val, i) => {
-                                                debugger
+                                                
                                                 var kv = val
                                                 var objVal = kv.split(" ")
                                                 var arrPurity = objVal[0]

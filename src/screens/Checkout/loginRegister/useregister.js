@@ -56,7 +56,7 @@ const useRegister = (changePanel, props) => {
     const pathnamelog = window.location.pathname === "/registers"
 
     useEffect(() => {
-        debugger
+        
         if (reg_update_data && reg_update_data === "Profile Updated Successfully") {
             alert("Profile Updated Successfully")
         }
@@ -156,7 +156,7 @@ const useRegister = (changePanel, props) => {
     }
     const user = data.user_profile_id ? data.user_profile_id : ""
     const handleSubmit = (e) => {
-        debugger
+        
         if (!pathnames) {
             if (values.email === "" && values['error'] && values['errortext']) {
                 values['error']['emerr'] = true

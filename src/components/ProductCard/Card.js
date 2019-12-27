@@ -337,7 +337,6 @@ const renderImages = (props, cardstate) => {
 }
 
 function Component(props) {
-  debugger
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
     hovered: false,

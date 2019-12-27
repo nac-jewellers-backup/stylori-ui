@@ -55,6 +55,7 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
                 }
               }
               skuWeight
+              markupPrice
             }
             price
           }
@@ -79,9 +80,12 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
           }
         }
       }
+      createdAt
+      id
     }
   }
 }
+
 `
 export const ALLUSERWISHLISTS = `query MyQuery($userprofileId: [UUID!]) {
   allUserWhislists(filter: {userprofileId: {in: $userprofileId}, isActive: {equalTo: true}}) {

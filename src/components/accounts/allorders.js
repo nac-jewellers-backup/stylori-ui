@@ -62,7 +62,6 @@ class Allorders extends React.Component {
     render() {
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
-        debugger
         return (
             <>
                 {/* allorderdata.nodes */}
@@ -82,8 +81,8 @@ class Allorders extends React.Component {
                                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
                                         <Typography className='text-chck'>
 
-                                            Order Number : #900002356 &nbsp;|&nbsp; Order Date : 27 February 2019
-                                    <div style={{ float: "right" }}><Button className="bton_submit">SUBMITTED</Button> </div></Typography>
+                                            Order Number : #{val.id} &nbsp;|&nbsp; Order Date : {moment(val.createdAt).format('MMM Do YYYY')}
+                                            <div style={{ float: "right" }}><Button className="bton_submit">SUBMITTED</Button> </div></Typography>
                                     </ExpansionPanelSummary >
                                     <ExpansionPanelDetails
                                     >
@@ -91,12 +90,12 @@ class Allorders extends React.Component {
                                             {/* {val.shoppingCartByCartId.cartAddressesByCartId.nodes.map(addreses => ( */}
                                             <div style={{ width: "100%", marginBottom: "10px" }}>
                                                 <Grid container spacing={12} lg={12} style={{ textAlign: "center" }}>
-                                                    <Grid item lg={4} className="order_addres">
-                                                        <div> <b>Order Number</b>:#900002356</div><br />
-                                                        <div><b>Order Date	</b> : February 27</div><br />
+                                                    <Grid item lg={6} className="order_addres">
+                                                        <div> <b>Order Number</b>:#{val.id}</div><br />
+                                                        <div><b>Order Date	</b> : {moment(val.createdAt).format('MMM Do YYYY')}</div><br />
                                                         <div> <b>Payment Method</b>: Cash On Delivery</div>
                                                     </Grid>
-                                                    <Grid item lg={8} className="order_addres_user">
+                                                    <Grid item lg={6} className="order_addres_user">
                                                         <div><b>Shipping Address :</b></div><br />
                                                         <div> {val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}&nbsp;
                                                             {val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].lastname}</div><br />
@@ -158,9 +157,13 @@ class Allorders extends React.Component {
                                                                         {this.generateShipsBy(cart.transSkuListByProductSku.readytoship, cart.transSkuListByProductSku.vendorDeliveryTime)}</a></Typography>
                                                             </Grid>
                                                         </Grid>
+                                                        {(Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.markupPrice))) > (Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.price))) ?
+                                                            <del>{(Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.price)))}</del> : ""}
+
                                                         <Grid style={{ padding: "30px" }} className="rups" item lg={2}>
                                                             {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.price))}
                                                         </Grid>
+
                                                     </Grid></>
                                             ))}
 

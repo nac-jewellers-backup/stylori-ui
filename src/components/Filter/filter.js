@@ -236,7 +236,7 @@ class Component extends React.Component {
     return bz
   })
   handleChange(value, BoolName, e, title, TargetName) {
-    debugger
+    
 
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
@@ -351,7 +351,7 @@ class Component extends React.Component {
   //   selected.map(val => { if (val !== undefined && val !== null) { return val } })
   // }
   selectItem = (name) => {
-    debugger
+    
     var arr1;
     let { selected } = this.state;
     var map = selected.map(val => { if (val !== undefined && val !== null) { return val } })

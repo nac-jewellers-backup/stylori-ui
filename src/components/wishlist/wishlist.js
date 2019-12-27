@@ -7,11 +7,11 @@ const Wishlist = (props) => {
 }
 
 const WishlistComponent = (props) => {
-    debugger
+    
     const { classes } = props;
     const { values, setValues, handlers } = useWishlists();
     React.useEffect(() => {
-        debugger
+        
         if (JSON.stringify(props.wishlist) && JSON.stringify(props.wishlist).length > 0) {
             props.wishlist && props.wishlist.wishlistdata && props.wishlist.wishlistdata.nodes.map(val => {
                 if (val.skuId === props.sku) {
