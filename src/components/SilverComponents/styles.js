@@ -109,7 +109,7 @@ export const styles = theme => ({
   },
   iconbuttons: {
     position: "fixed",
-    right: "58px",
+    left: "225px",
     top: "-9px"
   },
   subtitles: {

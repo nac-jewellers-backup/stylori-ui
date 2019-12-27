@@ -419,7 +419,7 @@ class Header extends Component {
 
                         </Grid>
                     </Grid>
-                    <Drawer
+                    <Drawer style={{zIndex:"10000"}}
                         anchor="left"
                         open={this.state.open}
                         classes={{
