@@ -217,13 +217,14 @@ class Header extends Component {
                                             />
                                             {localStorage.getItem("true") ?
                                                 <span
+                                                    class="MuiBadge-root"
                                                     aria-owns={openPopover ? 'simple-popper' : ""}
                                                     onClick={this.handleClickPopover}
                                                 >
                                                     <i class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                 </span>
                                                 // <img className="icons-header-sizes" src={usershape}/>
-                                                : <span onClick={() => window.location.pathname = "/login"}>
+                                                : <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
                                                     <i class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                 </span>
                                             }
@@ -269,9 +270,9 @@ class Header extends Component {
                                                     }
                                                 }}  ></i>
                                             </Badge>
-                                            <Badge  badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                <NavLink to="/cart" style={{    fontSize: "0px"}}>
-                                                    <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                            <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                <NavLink to="/cart" >
+                                                    <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
                                                 </NavLink> </Badge>
                                         </div>
@@ -373,7 +374,7 @@ class Header extends Component {
 
                                                         </div>
 
-                                                        <i class="fa fa-user"></i>
+                                                        <i class="MuiBadge-root" class="fa fa-user"></i>
                                                         <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">
                                                             <i class={`fa fa-heart ${classes.iconFafaheart}`} onClick={() => {
                                                                 if (user_id.length > 0) {
@@ -384,7 +385,7 @@ class Header extends Component {
                                                             }}  ></i>
                                                         </Badge>
                                                         <Badge style={{ fontSize: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                            <NavLink to="/cart">   <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                                            <NavLink to="/cart">   <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
                                                             </NavLink> </Badge>
                                                     </div>
                                                 </Grid>
@@ -403,12 +404,12 @@ class Header extends Component {
                                         <Grid container justify="flex-end" onClick={() => this.handleClose()}>
                                             <i style={{ fontSize: "16px", color: "#b2b1b1", paddingRight: "4px" }} class="fa fa-times closebus"></i>
                                         </Grid>
-                                         <Grid container style={{ padding: "0px 8px 0px 8px" }}>
+                                        <Grid container style={{ padding: "0px 8px 0px 8px" }}>
                                             <InputBase
                                                 style={{ fontSize: "13px", adding: "0px 0px 0px 3px" }}
                                                 className="widthSearch"
                                                 placeholder=" SEARCH"
-                                                 endAdornment={<InputAdornment position="end"><div className={classes.searchcontainerplain}><Seach className={"searchPlain"} />
+                                                endAdornment={<InputAdornment position="end"><div className={classes.searchcontainerplain}><Seach className={"searchPlain"} />
                                                 </div></InputAdornment>} />
                                         </Grid>
 
@@ -419,7 +420,7 @@ class Header extends Component {
 
                         </Grid>
                     </Grid>
-                    <Drawer style={{zIndex:"10000"}}
+                    <Drawer style={{ zIndex: "10000" }}
                         anchor="left"
                         open={this.state.open}
                         classes={{
