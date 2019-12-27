@@ -98,6 +98,31 @@
   background: #d51f63 !important;
   top: -6px !important;
 }
+@media screen and (max-width: 426px) {
+  .MuiBadge-colorSecondary{
+    background: #d51f63 !important;
+  top: -6px !important;
+  margin-top: 7px;
+  margin-right: 2px;
+  }
+  }
+  @media screen and (min-width:426px) and (max-width:959px){
+    .MuiBadge-colorSecondary{
+      background: #d51f63 !important;
+  top: -6px !important;
+  margin-top: 7px;
+  margin-right: 3px;
+    }
+  }
+  @media screen and (min-width:960px) and (max-width:2560px)
+  {
+    .MuiBadge-colorSecondary{
+      background: #d51f63 !important;
+  top: -6px !important;
+  margin-top: 1px;
+  margin-right: 2px;
+    }
+  }
 
 .search {
   border: 2px solid #ccc;
@@ -147,6 +172,28 @@
   text-align: center !important;
   width: 25px;
 }
+@media screen and (max-width: 426px) {
+  .mobli-icon1 i{
+    margin-top: 5px;
+    font-size: 17px;
+  cursor: pointer;
+  color: #d51f63 !important;
+  margin-left: 5px;
+  text-align: center !important;
+  width: 25px;
+  }
+  }
+  @media screen and (min-width:426px) and (max-width:959px){
+    .mobli-icon1 i{
+      margin-top: 5px;
+      font-size: 17px;
+  cursor: pointer;
+  color: #d51f63 !important;
+  margin-left: 5px;
+  text-align: center !important;
+  width: 25px;
+    }
+  }
 
 @keyframes pulse_animation {
   25% {
@@ -323,7 +370,16 @@
   display: flex;
   /* justify-content: center; */
 }
-
+@media screen and (max-width: 426px) {
+.menuRight{
+  padding-bottom: 17px;
+}
+}
+@media screen and (min-width:426px) and (max-width:959px){
+  .menuRight{
+    padding-bottom: 17px;
+  }
+}
 .setHeight {
   height: 70px;
 }

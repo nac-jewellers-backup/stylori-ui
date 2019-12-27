@@ -9,8 +9,8 @@ export const styles = theme => ({
     fontSize: '20px !important',
     marginTop: '18px !important',
     display: "flex",
-    alignContent: "center",
-    alignItems: "center",
+    alignContent: "end",
+    alignItems: "flex-end",
     justifyContent: "flex-end",
   },
   searchcontainer: {
