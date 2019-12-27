@@ -1049,6 +1049,7 @@ body {
     width: 70%;
     /* border: 1px solid #9d9d9d  !important; */
     border-radius: 15%;
+    margin-bottom: 6px;
     outline: none !important;
 }
 
@@ -1057,6 +1058,7 @@ body {
         text-align: center !important;
         height: 40px !important;
         width: 100% !important;
+        margin-bottom: 6px;
         /* border: 1px solid #9d9d9d  !important; */
         border-radius: 15%;
         outline: none !important;
