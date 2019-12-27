@@ -410,7 +410,7 @@ const Addressforms = (changePanel) => {
                 })
             }
 
-            // window.location.reload();
+            window.location.reload();
         }
 
         // const DeleteLocalStorage_address = (e, num, isAdressOne) => {
