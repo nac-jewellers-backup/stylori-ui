@@ -8,9 +8,9 @@ import { CDN_URL } from 'config';
 import { matchPath } from "react-router";
 import { createApolloFetch } from 'apollo-fetch';
 import { NetworkContext } from 'context/NetworkContext';
-import { GlobalContext } from 'context/GlobalContext';
 import { bool } from 'prop-types';
 import { filterParams } from 'mappers';
+import { GlobalContext } from 'context'
 
 const initialCtx = {
     FilterOptionsCtx: {
@@ -37,6 +37,7 @@ const initialCtx = {
 export const FilterOptionsContext = React.createContext(initialCtx);
 export const FilterOptionsConsumer = FilterOptionsContext.Consumer;
 
+
 const Provider = (props) => {
 
     const [filters, setFilters] = React.useState({
@@ -60,10 +61,9 @@ const Provider = (props) => {
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => t }) }, [filters, sort, pricemax, pricemin])
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => [...d, ...t] }) }, [offset])
     const { NetworkCtx: { graphqlUrl: uri } } = React.useContext(NetworkContext);
-    const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
-    
+    const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext)
     const client = createApolloFetch({ uri });
-   
+
     // useEffect(() => {
     //     console.log('sort', sort)
     //     if (sort) window.location.search = `sort=${sort.values}`
@@ -281,17 +281,10 @@ const Provider = (props) => {
     
     // {transSkuListsByProductId: {some: {discountPrice: {greaterThan: 1.5}}}}
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTLIST, () => { }, {})
-
-
-
     // {filter:{transSkuListsByProductId:{every:{markupPrice:{  "greaterThanOrEqualTo":   20000,
     // "lessThanOrEqualTo":70000}}}}}
     const { loading: seoloading, error: seoError, data: seoData, makeRequest: makeRequestSeo } = useGraphql(seoUrlResult, () => { }, {});
 
-    useEffect(()=>{
-        if(loading) setloadingfilters(true)
-        else setloadingfilters(false)
-    },[loading, error, data])
     const seoUrlFetch = () => {
 
 var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mappedFilters.seo_url : window.location.pathname.split('/')[1]  
@@ -414,6 +407,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     useEffect(() => { setMappedFilters(ntxdata) }, [ntxdata, ntxerr, ntx]);
 
     useEffect(() => {
+        
         pathQueries();
         updateProductList();
 
@@ -432,28 +426,17 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
     }, [data, error, loading])
     const updatefiltersSort = async() => {
         
-        if ((Object.entries(filters).length !== 0 && filters.constructor === Object) ) {
-            var paramsfilter = () =>{ 
-                Object.keys(filters).map(fk => {
-                const filter = filters[fk];
-                const fv = Object.keys(filter);
-                if (fv.length > 0) {
-                    if (filter[fv[0]]) {
-                        const qt = `${fk}=${fv[0]}`;
-                        const qtf = {}
-                        qtf[`${fk}`] = `${fv[0]}`
-                        // queries.push(qt);
-                        qtfArr.push(qtf);
+        if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object) ) {
+            var paramsfilter = (Object.entries(seoData).length !== 0 && seoData.constructor === Object ) && seoData.data.allSeoUrlPriorities.nodes.map(val => {
+                var a = {}
 
-                    }
+                a[val.attributeName.replace(/\s/g, '')] = val.attributeValue
+                return a
 
-                }
             })
-            return qtfArr
-        }
             if ((Object.entries(seoData).length !== 0 && seoData.constructor === Object)) {
                 
-                const _paramsfilter = paramsfilter()
+                const _paramsfilter = paramsfilter.splice(1)
                
                 var conditionTransSkuFilters = {}
                 var filtersss = _paramsfilter.filter(val=>{
@@ -512,7 +495,7 @@ var path_name = mappedFilters.seo_url && mappedFilters.seo_url.length>0 ? mapped
                         if((Object.entries(sort).length > 0 && sort.constructor === Object)&&(pricemin !==null && pricemax !== null)){
                            return sort && `sort=${sort.values}&startprice=${pricemin}&endprice=${pricemax}`
                         }
-                        else if(pricemin && pricemin !==0 && pricemax && pricemax !==0){
+                        else if(pricemin !==null && pricemin>null){
                             var _search_loc = window.location.search
                             var _minValue = Number(_search_loc.split('?')[1].split('&')[0].split('=')[1])
                             var _maxValue = Number(_search_loc.split('?')[1].split('&')[1].split('=')[1])
@@ -593,12 +576,11 @@ function usePrevious(value) {
     useEffect(() => {
        
        updatefiltersSort()
-    }, [filters, seoData])
+    }, [seoData])
     var newObj = {}
     const updateFilters = async (filters) => {
         
         setFilters(filters);
-        setloadingfilters(true)
 
         // setloadingfilters(true)
         var len;
@@ -669,12 +651,14 @@ function usePrevious(value) {
 
 
             seoUrlFetch()
-            var loc = window.location.pathname.split('/')[1].split('-').filter(val=>{if(val==='silver') return val})
-        if(loc.length=== 0) setGlobalCtx({...Globalctx, pathName:false})
-        else setGlobalCtx({...Globalctx, pathName:true})
 
             // }
+
         }
+        // const {Globalctx, setGlobalCtx} = this.props
+        var loc = window.location.pathname.split('/')[1].split('-').filter(val=>{if(val==='silver') return val})
+        if(loc.length=== 0) setGlobalCtx({...Globalctx, pathName:false})
+        else setGlobalCtx({...Globalctx, pathName:true})
     }, [mappedFilters, offset])
 
     useEffect(() => {
@@ -703,6 +687,7 @@ function usePrevious(value) {
         if (paramObjects(mappedFilters.seo_url).length > 0) {
             setParamsAo(paramObjects(mappedFilters.seo_url))
         }
+
     }, [ntxdata, filters, mappedFilters, seoData])
     useEffect(() => {
         if (window.location.pathname !== "jewellery") {
@@ -717,7 +702,9 @@ function usePrevious(value) {
 
             });
         }
+        // const {Globalctx, setGlobalCtx} = this.props
         
+
     })
     const FilterOptionsCtx = {
         cartcount, filters, sort, loading, error, data, setFilters: updateFilters, offset, setOffset, dataArr, first, setFirst, mappedFilters, loadingfilters, pricemax, pricemin
@@ -729,4 +716,4 @@ function usePrevious(value) {
     )
 };
 
-export const FilterOptionsProvider = withRouter(Provider);
+export const FilterOptionsProvider = withRouter(Provider); 

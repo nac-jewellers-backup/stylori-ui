@@ -97,7 +97,7 @@ class Checkoutcard extends React.Component {
                                     <Grid item xs={1}  >
                                         <a>Redirect</a>
                                     </Grid> : ""} */}
-                                <Grid item xs={3} >
+                                <Grid item xs={3} style={{ display: "flex", alignContent: "center",alignItems: "center",border:" 0.5px solid #0000001f",    borderRadius: "10px" }}>
                                     <Card className="product-image-thumb">
                                         {/* <CardHeader style={{ padding: "0px", paddingTop: "10px" }}
                                             id={dataval.generatedSku}
@@ -221,17 +221,17 @@ class Checkoutcard extends React.Component {
                             <Grid xs={7} lg={5}>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>Subtotal</Typography>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>You Saved</Typography>
-                                {props.cartFilters.tax_price ? <Typography class={`subhesder ${classes.normalfonts}`}>GST</Typography> : ""}
+                                {props.cartFilters.tax_price ? <Typography class={`subhesder ${classes.normalfonts}`}>Registration</Typography> : ""}
                                 <Typography class={`subhesder ${classes.normalfonts}`}>Shipping</Typography>
                                 <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>Grand Total</Typography>
                             </Grid>
                             <Grid xs={5} lg={5}>
-                                <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(dataCard1-discounted_price)}</Typography>
+                                <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(dataCard1 - discounted_price)}</Typography>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(yousave)}</Typography>
                                 {props.cartFilters.tax_price ? <Typography class={`subhesder ${classes.normalfonts}`}>
                                     {props.cartFilters.tax_price}</Typography> : ""}
                                 <Typography class={`subhesder ${classes.normalfonts}`}>FREE </Typography>
-                                <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>{Math.round(dataCard1-discounted_price)}</Typography>
+                                <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>{Math.round(dataCard1 - discounted_price)}</Typography>
                             </Grid>
                         </Grid>
                         {/* // )}  */}

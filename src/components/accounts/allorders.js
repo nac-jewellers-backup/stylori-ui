@@ -19,24 +19,26 @@ function myFunc(total, num) {
 }
 class Allorders extends React.Component {
     state = {
-        expanded: "",
+        expanded: null,
     }
 
-    handleChange = panel => (event, expanded) => {
+    handleChange = panel => (event) => {
+        const { expanded } = this.state;
+        var valus = expanded === panel ? null : panel
         this.setState({
-            expanded: panel,
+            expanded: valus,
         });
     };
 
-    changePanel = (panel, mailId) => {
-        this.setState({
-            expanded: panel,
-        })
-    }
+    // changePanel = (panel, mailId) => {
+    //     this.setState({
+    //         expanded: panel,
+    //     })
+    // }
     // const dataCard1 = this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
 
     calculatetotal = (arr) => {
-        
+
         var a
         a = arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
             return cart.transSkuListByProductSku.discountPrice
@@ -67,15 +69,15 @@ class Allorders extends React.Component {
                 <div className='pt-sm checkout-ovralldiv-media' >
                     {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0 ?
                         <div style={{ marginTop: "20px", boxShadow: "none" }}>
-                          
+
                             {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
-                            {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map(val => (
+                            {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map((val, index) => (
                                 <ExpansionPanel
                                     square
-                                    expanded={expanded === val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}
-                                    onChange={this.handleChange(val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname)}
+                                    expanded={expanded === index}
+                                    onChange={this.handleChange(index)}
                                     style={{ boxShadow: "none", boxShadow: "rgb(242, 242, 242) 4px 10px 20px 5px" }}
-                                    key={val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}
+                                    key={index}
                                 >
                                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
                                         <Typography className='text-chck'>
@@ -100,13 +102,13 @@ class Allorders extends React.Component {
                                                             {val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].lastname}</div><br />
                                                         <div> {val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].addressline1}</div><br />
                                                         <div>  {val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].city}{"-" + val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].pincode}</div>
-                                                        <br/>
-                                                        {val.shoppingCartByCartId&&val.shoppingCartByCartId.giftwrapsByCartId&&val.shoppingCartByCartId.giftwrapsByCartId.nodes&&val.shoppingCartByCartId.giftwrapsByCartId.nodes.length>0?<>
-                                                            <div> <b>gift To</b> : 
+                                                        <br />
+                                                        {val.shoppingCartByCartId && val.shoppingCartByCartId.giftwrapsByCartId && val.shoppingCartByCartId.giftwrapsByCartId.nodes && val.shoppingCartByCartId.giftwrapsByCartId.nodes.length > 0 ? <>
+                                                            <div> <b>gift To</b> :
                                                         {val.shoppingCartByCartId.giftwrapsByCartId.nodes[0].giftTo}</div>
-                                                        <br/><div> <b>gift message</b> : 
-                                                        {val.shoppingCartByCartId.giftwrapsByCartId.nodes[0].message}</div></>:""}
-                                             
+                                                            <br /><div> <b>gift message</b> :
+                                                        {val.shoppingCartByCartId.giftwrapsByCartId.nodes[0].message}</div></> : ""}
+
                                                         {/* <div></div> */}
                                                     </Grid>
                                                 </Grid>
