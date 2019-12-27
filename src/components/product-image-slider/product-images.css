@@ -176,7 +176,6 @@ body {
     font-size: 11px !important;
     margin: auto !important;
     font-family: 'Roboto' !important;
-    font-weight: bold !important;
     text-align: center !important;
 }
 
@@ -641,8 +640,10 @@ body {
 /* .MuiExpansionPanelSummary-root.Mui-expanded {
     border-bottom: 0.2px solid #f5cacc !important;
 } */
+.expansion-summary {
+    min-height: 30px !important;
+}
 
-.expansion-summary,
 .MuiExpansionPanelSummary-root.Mui-expanded,
 .MuiExpansionPanelSummary-root,
 .MuiExpansionPanel-root:before,
@@ -799,7 +800,7 @@ body {
 
 .like-page {
     color: #394578 !important;
-    font-size: 15px !important;
+    font-size: 13px !important;
     font-weight: 400 !important;
     padding-left: 35% !important;
     border-right: 1px solid #ccc;
@@ -813,7 +814,7 @@ body {
 
 .recenetly-like-page {
     color: #394578 !important;
-    font-size: 15px !important;
+    font-size: 13px !important;
     padding-left: 5% !important;
     cursor: pointer;
 }
@@ -1298,7 +1299,7 @@ body {
     width: 100% !important;
     background: #fff;
     border: 1px solid #ccc;
-    padding-bottom: 12px !important;
+    padding-bottom: 4px !important;
     margin-bottom: 10px !important;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .06);
     padding-top: 12px !important;

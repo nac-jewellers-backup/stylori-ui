@@ -40,11 +40,13 @@ class Component extends React.Component {
     screenWidths = () => {
         // const heights = 0;//this.props.headerHeight
         const width = window.innerWidth;
+        let filterHeight = null
         if (width > 960) {
-            const filterHeight = document.getElementById('filterBy').clientHeight;
+
+            if(document.getElementById('filterBy'))  filterHeight = document.getElementById('filterBy').clientHeight;
 
             // const heights = 30;
-            let add = filterHeight-5;
+            let add = filterHeight-10;
             this.setState({ topHeight: add });
         }
 

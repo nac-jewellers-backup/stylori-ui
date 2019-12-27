@@ -40,7 +40,7 @@ const mobilecarousel = (props, val) => {
                 </Grid>
                 <Grid container item xs={4} />
                 <Grid container item xs={2} className="css-ts7n45_wishlist">
-                    <Wishlist props={"1"} />
+                    {/* <Wishlist props={"1"} /> */}
                 </Grid>
             </Grid>
             {/* <div style={{background:"red"}}>Earrings in 18K Yellow Gold and Peridot for Kids</div> */}
@@ -185,9 +185,9 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                             <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
                                                             <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
                                                         </a>&nbsp;
-                                            <a class="google" target="_blank">
+                                            {/* <a class="google" target="_blank">
                                                             <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
-                                                        </a>
+                                                        </a> */}
                                                     </div>
                                                 </Popover>
                                                 <div onClick={() => window.scrollTo(0, 1800)}><Ratings ratings="starts-review" disable={"disable"}/></div>

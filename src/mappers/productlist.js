@@ -23,6 +23,7 @@ const  screenWidth = () => {
     }
   }
   var img_res;
+  var calc_card_resolution;
   var url_construct_1000x1000;
  
 var screen_width_type =  () =>{ 
@@ -37,14 +38,14 @@ var screen_width_type =  () =>{
             return subtracting_spacesaroundcard 
       
         }
-        var calc = _calc()
+        calc_card_resolution = _calc()
        
         var sizes = [275, 300, 350, 375, 400, 500, 600, 675, 700, 775, 800, 900, 975, 1000, 1100, 2400]
         // [50,60,70,80,90,100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600,625,650,675,700,725,750,775,800,825,850,875,900,925,950,975,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,2100,2200,2300,2400]
         for(var i=0;i<=sizes.length;i++){
-            if(calc===sizes[i] || calc<sizes[i]){
+            if((calc_card_resolution + calc_card_resolution ) ===sizes[i] || (calc_card_resolution + calc_card_resolution )<sizes[i]){
 
-                img_res = sizes[i]
+                img_res = sizes[i] * 2
                 break; 
             }
             else{
@@ -53,7 +54,7 @@ var screen_width_type =  () =>{
                 }
             }
         }
-    return img_res
+    return img_res 
 }
 console.log('screen_width_type()',screen_width_type())
 
@@ -141,7 +142,7 @@ const hoverImage = (placeImage) =>  placeImage.find(fd => fd.ishover);
                 productType:k.productType,
                 skuId:k.transSkuListsByProductId.nodes[0].generatedSku,
                 oneDayShipping:k.transSkuListsByProductId.nodes[0].isReadyToShip,
-                imageResolution:{img_res:img_res,url_1000x1000:url_construct_1000x1000}
+                imageResolution:{img_res:calc_card_resolution,url_1000x1000:url_construct_1000x1000}
 
             }
         } catch (error) {

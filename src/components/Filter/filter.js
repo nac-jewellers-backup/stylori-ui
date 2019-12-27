@@ -449,7 +449,7 @@ class Component extends React.Component {
 
             {/* <CssBaseline /> */}
             <div >
-              <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '210px', maxHeight: '80vh', overflowY: 'scroll' }} className="SliderFilter scrollBarFilter" id="SliderFilter" >
+              <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '119px', maxHeight: '80vh', overflowY: 'scroll' }} className="SliderFilter scrollBarFilter" id="SliderFilter" >
                 <div >
 
                   <Paper

@@ -80,9 +80,9 @@ class Header extends Component {
     document.getElementById('topNav').style.transition = "0.5s";
     // var heightHeader = document.getElementById('headerDiv').clientHeight;
     if (document.getElementById("SliderFilter")) {
-      document.getElementById("SliderFilter").style.top = "185px";
+      document.getElementById("SliderFilter").style.top = "120px";
       document.getElementById('SliderFilter').style.transition = "0.5s";
-      document.getElementById("filterBy").style.top = "120px";
+      document.getElementById("filterBy").style.top = "80px";
       document.getElementById('filterBy').style.transition = "0.5s";
     }
 

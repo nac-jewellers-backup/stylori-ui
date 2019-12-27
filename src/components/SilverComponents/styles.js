@@ -20,6 +20,13 @@ export const styles = theme => ({
     justifyContent: "center",
     alignContent: "center"
   },
+  searchcontainerplain: {
+    padding: "4px",
+    // backgroundColor: theme.palette.secondary.dark,
+    display: "flex",
+    justifyContent: "center",
+    alignContent: "center"
+  },
   searchcontainTop: {
     padding: "2px",
     backgroundColor: theme.palette.secondary.dark,

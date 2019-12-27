@@ -33,6 +33,30 @@ html {
   font-family: 'Roboto' !important;
 }
 
+.widthSearch {
+  width: 98% !important;
+  border: 1px solid #ccc;
+  /* width: 141px !important; */
+  border-radius: 6px;
+  padding: 1px 5px !important;
+
+  /* padding: 1px 0px 1px 5px !important; */
+
+
+  /* border: 1px solid #ccc; */
+
+  height: 30px !important;
+  /* padding: 1px 10px !important; */
+  font-family: 'Robot-Black' !important;
+}
+
+.searchMobile {
+  width: 13px !important;
+  height: 14px !important;
+  fill: #ccc;
+  padding: 2px;
+}
+
 /* .MuiPopover-paper {
   margin-left: -13% !important;
   margin-top: 4% !important;
@@ -89,13 +113,14 @@ html {
   font-size: 20px !important;
   margin-top: 18px !important;
 }
-.track-icon{
+
+.track-icon {
   font-family: "fontello";
-    font-style: normal;
-    font-size: 20px;
-    color: #394578;
-    margin-top: 4px;
-    float: left;
+  font-style: normal;
+  font-size: 20px;
+  color: #394578;
+  margin-top: 4px;
+  float: left;
 }
 
 /* .head-icons i {
@@ -269,6 +294,11 @@ html {
   font-size: 18px !important;
   font-weight: normal;
   color: #394578 !important;
+}
+
+.searchClick {
+  border-radius: 0px !important;
+  width: 100% !;
 }
 
 .drawer-list {

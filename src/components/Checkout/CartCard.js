@@ -97,7 +97,7 @@ class Checkoutcard extends React.Component {
                                     <Grid item xs={1}  >
                                         <a>Redirect</a>
                                     </Grid> : ""} */}
-                                <Grid item xs={3} >
+                                <Grid item xs={3} style={{ display: "flex", alignContent: "center",alignItems: "center",border:" 0.5px solid #0000001f",    borderRadius: "10px" }}>
                                     <Card className="product-image-thumb">
                                         {/* <CardHeader style={{ padding: "0px", paddingTop: "10px" }}
                                             id={dataval.generatedSku}
