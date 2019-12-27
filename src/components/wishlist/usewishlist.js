@@ -19,7 +19,7 @@ const useWishlists = (props) => {
     // useEffect(() => {
     //     // orderobj["product_sku"] = sku
     //     setValues(orderobj);
-    // }, [])
+    // }, []) 
     const handleChange = (type, value) => {
         setValues({
             ...values,
@@ -36,7 +36,7 @@ const useWishlists = (props) => {
     }
 
     const handelSubmit = (num) => {
-        
+        debugger
         if (user_id.length > 0 && check_gustlog === "false") {
             values["isactive"] = num
             values["user_id"] = user_id
@@ -53,7 +53,7 @@ const useWishlists = (props) => {
         })
     }
     const handelRemove = (num) => {
-        
+        debugger
         if (user_id.length > 0 && check_gustlog === "false") {
             values["isactive"] = num
             values["user_id"] = user_id

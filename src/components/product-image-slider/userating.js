@@ -30,6 +30,7 @@ const useRating = (props) => {
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addproductreview', {}, false);
     var variab = {}
+    // const { setratingcounts } = React.useContext(ProductDetailContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CUSTOMERREVIEWS, () => { }, {});
     const clear = () => {
         debugger
@@ -55,6 +56,7 @@ const useRating = (props) => {
     }
     const count = localStorage.getItem("count") ? localStorage.getItem("count") : ""
     // variab['productSku'] = values.product_sku
+    // var rat_sate = values.error&&values.error.rateerr
     useEffect(() => {
         var ratingdataerr = data.message ? data.message : ""
         if (ratingdataerr.length > 0) {
@@ -101,7 +103,7 @@ const useRating = (props) => {
                 }
                 values['user_id'] = user_id
                 var a = window.location.search.split('=')
-                var b = a[1].split('-')[0] 
+                var b = a[1].split('-')[0]
                 values['product_id'] = b
                 // setFilters(values)
                 setValues({
@@ -214,8 +216,8 @@ const useRating = (props) => {
             return false
         }
     }
-  
-    const handlers = { handleChange, clear,handleInvalid, handelSubmit };
+
+    const handlers = { handleChange, clear, handleInvalid, handelSubmit };
 
     return { values, setValues, handlers, data }
 }

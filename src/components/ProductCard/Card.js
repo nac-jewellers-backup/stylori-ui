@@ -55,44 +55,43 @@ export const ImgMediaCard = (props) => {
 // );
 // }
 const imageOnError = (event, res) => {
-  // var e = event
-  // e.target.src.lastIndexOf('\.')
-  // var src_img = (e.target.src).lastIndexOf('\.')
-  // var _arr = e.target.src.split('/')
-  // _arr.splice(_arr.length - 2, 1, '1000X1000')
-  // const URL_1000x1000 = _arr.join('/')
-  // var URL_JPG = (e.target.src).substr(0, src_img).concat('.jpg')
+  var e = event
+  e.target.src.lastIndexOf('\.')
+  var src_img = (e.target.src).lastIndexOf('\.')
+  var _arr = e.target.src.split('/')
+  _arr.splice(_arr.length - 2, 1, '1000X1000')
+  const URL_1000x1000 = _arr.join('/')
+  var URL_JPG = (e.target.src).substr(0, src_img).concat('.jpg')
 
-  // try {
+  try {
 
-  //   var _image = ''
-  //   e.target.onerror = null;
+    var _image = ''
+    e.target.onerror = null;
 
-  //   const testImage = (URL, e) => {
-  //     var tester = new Image();
-  //     tester.src = URL;
-  //     tester.onload = imageFound;
-  //     tester.onerror = imageNotFound;
-  //     // tester.on("error" , imageNotFound)
-
-
-
-  //   }
-  //   const imageFound = (e) => {
-  //     e.target.src = URL_1000x1000
-
-  //   }
-  //   const imageNotFound = (e) => {
-  //     e.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
+    const testImage = (URL, e) => {
+      var tester = new Image();
+      tester.src = URL;
+      tester.onload = imageFound;
+      tester.onerror = imageNotFound;
+      // tester.on("error" , imageNotFound)
 
 
-  //   }
-  //   return testImage(URL_1000x1000, e);
-  //   // e.target.src = (e.target.src).substr(0, src_img).concat('.jpg')
-  // } catch (error) {
-  //   console.log(error)
-  // }
-  event.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
+
+    }
+    const imageFound = (e) => {
+      e.target.src = URL_1000x1000
+
+    }
+    const imageNotFound = (e) => {
+      e.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
+
+
+    }
+    return testImage(URL_1000x1000, e);
+    // e.target.src = (e.target.src).substr(0, src_img).concat('.jpg')
+  } catch (error) {
+    console.log(error)
+  }
 }
 const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => (
   <div>
@@ -112,8 +111,6 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
 
       //  "
       onError={(e) => imageOnError(e, props.data.imageResolution)}
-      
-      
       title={props.data.title}
       onMouseOver={() => {
         callmouseover()
@@ -134,7 +131,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
 
   </div>
 );
-// onLoad={(e)=>e.target.src=e.target.style.background='url(https://alpha-assets.stylori.com/images/static/loadingimg.gif') center center / 25% 25% no-repeat rgb(255, 255, 255);'}
+
 export default trackWindowScroll(Gallery);
 // <img 
 // srcset={renderImages(props, cardstate)}
@@ -359,7 +356,7 @@ function Component(props) {
         <CardActions className={classes.cardAtionspadding}>
           <Grid container xs={12}>
             <Grid container item xs={6} justify="flex-start">
-              {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" style={{zIndex:2}}>
+              {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" style={{zIndex:10000}}>
                 <span class="one-day-ship-listing-page-label">1 day shipping</span>
 
               </div> : ''}
@@ -373,7 +370,7 @@ function Component(props) {
               >
                 &#xf08a;
               </i> */}
-              {/* <Wishlist sku={props.data.skuId} productId={props.data.productId} /> */}
+              {/* <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist}/>   */}
           </Grid>
           </Grid>
         </CardActions>
@@ -440,21 +437,16 @@ sizes="(max-width: 320px) 320w,
                     component="span"
                     className={classes.offerPrice}
                   >
-                    {
-                      Math.round(props.data.offerPrice) === Math.round(props.data.price) ? 
-                      new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))
-                      :
-                      <del>
-                      
+                    <del>
+                      {/* <i style={{ fontSize: "12px" }} className="fa">
+                        &#xf156;
+                      </i>
+                      &nbsp;  */}
                       {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
                     </del>
-                    }
-                    
                   </Typography>
                 </Grid>
-                {
-                  Math.round(props.data.offerPrice) === Math.round(props.data.price) ? '' :
-                  <Grid container item xs={12} className={`${classes.offerPricesMain}`}>
+                <Grid container item xs={12} className={`${classes.offerPricesMain}`}>
                   {/* <Typography
                     gutterBottom
                     variant="body1"
@@ -470,14 +462,10 @@ sizes="(max-width: 320px) 320w,
                     className={`${classes.youSave} ${classes.youSavePrice}`}
                   >
                     {/* 20% Off */}
-                    {
-                    
-                    Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice)) / Math.round(props.data.price)) * 100) + '% off'}
+                    {Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice)) / Math.round(props.data.price)) * 100) + '% off'}
 
                   </Typography>
                 </Grid>
-                }
-   
               </Grid>
               <Hidden smDown>
                 <Grid container xs={12}>

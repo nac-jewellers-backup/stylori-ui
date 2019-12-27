@@ -221,7 +221,7 @@ class Checkoutcard extends React.Component {
                             <Grid xs={7} lg={5}>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>Subtotal</Typography>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>You Saved</Typography>
-                                {props.cartFilters.tax_price ? <Typography class={`subhesder ${classes.normalfonts}`}>GST</Typography> : ""}
+                                {props.cartFilters.tax_price ? <Typography class={`subhesder ${classes.normalfonts}`}>Registration</Typography> : ""}
                                 <Typography class={`subhesder ${classes.normalfonts}`}>Shipping</Typography>
                                 <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>Grand Total</Typography>
                             </Grid>

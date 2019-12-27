@@ -28,10 +28,7 @@ const initialCtx = {
     setCartFilters: (filterData) => { },
     setallorderdata: () => { },
     setwishlist_count: () => { },
-
 }
-
-
 export const CartContext = React.createContext(initialCtx);
 export const CartConsumer = CartContext.Consumer;
 const Provider = (props) => {
@@ -74,18 +71,18 @@ const Provider = (props) => {
             objwishlist["wishlistdata"] = wishlistDATA.data.allUserWhislists
             // localStorage.setItem("allorder", allorder.data.allOrders)
             // obj_aishlist_count["wishlist_count"] = wishlistdatas && wishlistdatas.length
-            localStorage.setItem("a__w_l", wishlistdatas && wishlistdatas.length)
+            // localStorage.setItem("a__w_l", wishlistdatas && wishlistdatas.length)
             setwishlistdata(objwishlist)
             // setwishlist_count(obj_aishlist_count)
             // alert(JSON.stringify(obj_aishlist_count))
         }
-        else {
-            localStorage.setItem("a__w_l", 0)
-        }
+        // else {
+        //     localStorage.setItem("a__w_l", 0)
+        // }
     }, [wishlistDATA])
     useEffect(() => {
         // if (window.location.pathname.split("-")[0]==="/account") {
-        orderobj["userProfileId"] = userIds
+        orderobj["userProfileId"] = userIds 
         orderobj1["userprofileId"] = userIds
         allordermakeRequest(orderobj);
         wishlistmakeRequest(orderobj1)

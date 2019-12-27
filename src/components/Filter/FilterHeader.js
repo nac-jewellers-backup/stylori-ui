@@ -17,9 +17,9 @@ const styles = theme => ({
 });
 
 const FilterHeader = (props) => {
-    const { setSort, setOffset, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
+    const { setSort, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
     const loc = window.location.search
-    return <Component setSort={setSort} setOffset={setOffset} offset={FilterOptionsCtx.offset} sort={FilterOptionsCtx.sort}  {...props} />
+    return <Component setSort={setSort} sort={FilterOptionsCtx.sort}  {...props} />
   }
 
 class Component extends React.Component {
@@ -56,9 +56,7 @@ class Component extends React.Component {
         this.setState({ expanded: !this.state.expanded });
     }
     handleChange = (event) =>{
-        debugger
-    if (this.props.offset > 0) this.props.setOffset(0)
-    console.log(this.props.offset)
+       
         this.props.setSort({ values:event.target.value})
         
         this.setState({ expanded: false })

@@ -82,7 +82,7 @@ export default function Footer(props) {
             Title: "About Stylori"
         },
         {
-            url: "/account-profile",
+            url: "",
             Title: "My Account"
         },
         {
@@ -132,7 +132,7 @@ export default function Footer(props) {
     ]
     const footerData2 = [
         {
-            url: "/account-profile",
+            url: "",
             Title: "My Account"
         },
         {
