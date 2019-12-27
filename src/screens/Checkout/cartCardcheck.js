@@ -10,8 +10,8 @@ import {
     Grid,
     Button
 } from '@material-ui/core';
-import "../../components/Checkout/Cart.css";
-import "./chckout.css";
+import "../../components/Checkout/Cart.css"; 
+import "./chckout.css"; 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Addressform from './addressDetails/addressForm';
 import ProductList from './orderSummary/productList';
@@ -221,13 +221,13 @@ const Components = props => {
     let { CartCtx: { data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
     let content, mapped;
     if (!loading && !error) {
-        if (Object.keys(data).length !== 0) {
+        if (Object.keys(data).length !== 0) { 
             mapped = cart(data);
         }
     }
     if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
     else content = <CartCardCheck {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
-
+ 
     return content
 }
 export default withStyles(styles)(Components);

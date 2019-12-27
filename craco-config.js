@@ -2,7 +2,7 @@ const { whenDev } = require('@craco/craco');
 const CracoAlias = require('craco-alias');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+console.log('_dir',__dirname)
 module.exports = {
     reactScriptsVersion: "react-scripts",
     style: {

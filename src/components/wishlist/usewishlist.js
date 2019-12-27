@@ -60,7 +60,7 @@ const useWishlists = (props) => {
             setValues({ values, ...values });
             setCartFilters({
                 skuId: values.product_sku,
-                qty: 1,
+                qty: 1, 
                 price: values.add  
             })
             if (window.location.pathname.split("-")[0]==="/account") {

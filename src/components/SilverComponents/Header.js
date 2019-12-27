@@ -124,7 +124,7 @@ class Header extends Component {
     };
     scrolling = () => {
         if (window.location.pathname !== "/cart" && window.location.pathname !== '/checkout') {
-            if (window.innerWidth > 959) {
+            if (window.innerWidth > 959) { 
                 if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                     if (document.getElementById("headerContainer")) {
                         document.getElementById("headerContainer").style.position = "fixed";
@@ -135,7 +135,7 @@ class Header extends Component {
                         document.getElementById("headerContainer").style.height = "55px";
                     }
                     if (document.getElementById("logoImage")) {
-                        document.getElementById("logoImage").style.width = "50%";
+                        document.getElementById("logoImage").style.width = "50%"; 
                         document.getElementById("logoImage").style.transitionDuration = "0.8s";
                     }
                     if (document.getElementById("logoDiv1")) {
