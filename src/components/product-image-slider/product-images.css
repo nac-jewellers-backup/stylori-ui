@@ -25,6 +25,20 @@ body {
     /* padding: 0 10px !important; */
 }
 
+.containbev {
+    box-shadow: 6px 6px 7px #aaaaaa;
+    padding: 5px 8px 0px 8px;
+    margin: 4px 0px 10px 0px;
+}
+
+@media only screen and (min-width: 768px) {
+    .containbev {
+        box-shadow: none;
+        padding: 5px 8px 0px 8px;
+        margin: 4px 0px 4px 0px;
+    }
+}
+
 .pdp-title {
     margin-top: 10px;
     line-height: 13px;
@@ -750,6 +764,10 @@ body {
 
 .imgzom-sidecraousel-media .slick-track {
     height: auto !important;
+}
+
+.slick-track {
+    /* width: auto !important; */
 }
 
 .vertical-carousel-list-arrow {
