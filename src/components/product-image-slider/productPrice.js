@@ -110,7 +110,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
 
                             </div>
                         </Hidden>
-                        <Paper elevation={0} style={{ width: "100%", padding: "5px 8px 0px 8px" }}>
+                        <Paper elevation={0} style={{ width: "100%", padding: "5px 8px 0px 8px", margin: "4px 0px 4px 0px " }}>
                             <Grid container>
                                 <Grid item xs={12} lg={9} md={9}>
                                     <div className="price-div">
@@ -119,18 +119,34 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                 <Grid container item xs={8}>
                                                     <h1 className={`pdp-title ${classes.title}`} style={{ width: "90%" }}>
                                                         {val.title}
+                                                        {/* <i style={{ padding: "2px", fontSize: "12px" }} class="fa fa-info-circle" aria-hidden="true"></i> */}
                                                     </h1>
-                                                </Grid>
-                                                <Grid container item xs={4} >
+                                                    {/* <p className={`pdp-desc ${classes.dis}`}>
+                                                        {val.dis}
+                                                    </p> */}
                                                     <div>
                                                         {data[0].ProductContactNum.map(val =>
-                                                            <div style={{ marginTop: "8px" }}>
+                                                            <div style={{ padding: "" }}>
                                                                 <b className={`ships-by ${classes.normalfonts}`}>
-                                                                    <span > {val.shipby}</span>
+                                                                    <span style={{ textAlign: "center" }}> {val.shipby}</span>
                                                                 </b>
                                                             </div>
                                                         )}
                                                     </div>
+                                                </Grid>
+                                                <Grid container item xs={4} >
+                                                    <Hidden mdUp>
+                                                        <div className={classes.width} style={{ padding: "0px 10px  0px 10px " }}>
+                                                            <Pricing
+                                                                price={data[0].price}
+                                                                offerPrice={data[0].offerPrice}
+                                                                offerDiscount={val.offerDiscount}
+                                                            >
+
+                                                            </Pricing>
+                                                        </div>
+                                                    </Hidden>
+
                                                 </Grid>
                                             </Grid>
 
@@ -140,9 +156,11 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                 {val.title}
                                             </h1>
                                         </Hidden>
-                                        <p className={`pdp-desc ${classes.dis}`}>
-                                            {val.dis}
-                                        </p>
+                                        <Hidden smDown>
+                                            <p className={`pdp-desc ${classes.dis}`}>
+                                                {val.dis}
+                                            </p>
+                                        </Hidden>
                                     </div>
                                 </Grid>
 
@@ -190,7 +208,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                         </a> */}
                                                     </div>
                                                 </Popover>
-                                                <div onClick={() => window.scrollTo(0, 1800)}><Ratings ratings="starts-review" disable={"disable"}/></div>
+                                                <div onClick={() => window.scrollTo(0, 1800)}><Ratings ratings="starts-review" disable={"disable"} /></div>
                                             </div>
                                         </div>
                                     </Hidden>
@@ -198,7 +216,6 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                 </Grid>
                             </Grid>
                         </Paper>
-
                         <Hidden smDown>
                             <hr class="bottom-line product-inform-ation"></hr>
                         </Hidden>
@@ -208,7 +225,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
 
 
                     <Hidden smDown>
-                        <div className={classes.width} style={{ padding: "0 10px " }}>
+                        <div className={classes.width} style={{ padding: "0px 10px  10px 10px " }}>
                             <Pricing
                                 price={data[0].price}
                                 offerPrice={data[0].offerPrice}

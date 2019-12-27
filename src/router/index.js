@@ -17,6 +17,7 @@ import { createBrowserHistory } from "history";
 import Collection from 'screens/Stylori/Collection';
 import stories from 'screens/Stylori/stories';
 import AboutPage from "components/faqs/aboutPage";
+import DummyTest from '../components/product-image-slider/dummyTest';
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
 
@@ -52,7 +53,8 @@ export const RouterApp = (props) => {
             <Route key="TermsConditions" component={Faqs} exact path={routes.TermsConditions} />
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
             <Route key="AboutUs" component={AboutPage} exact path={routes.AboutUs} />
-
+            <Route key="DummyTest" component={DummyTest} exact path={routes.DummyTest} />
+            
             {(props.location.pathname !== "/cart" && props.location.pathname !== `/account${"-" + window.location.pathname.split("-")[1]}` && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && Globalctx && Globalctx.pathName === false) &&
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />
 
