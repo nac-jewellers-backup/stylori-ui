@@ -61,7 +61,7 @@ const useWishlists = (props) => {
             setCartFilters({
                 skuId: values.product_sku,
                 qty: 1,
-                price: values.add 
+                price: values.add  
             })
             if (window.location.pathname.split("-")[0]==="/account") {
                 window.location.pathname = "/cart"
