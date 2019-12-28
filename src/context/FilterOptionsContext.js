@@ -41,7 +41,7 @@ const Provider = (props) => {
 
     const [filters, setFilters] = React.useState({
         Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, MetalColor: {},
-        MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}
+        MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}, category:{}
     });
     const [sort, setSort] = React.useState(initialCtx.FilterOptionsCtx.sort)
     const [offset, setOffset] = React.useState(0)
@@ -88,7 +88,7 @@ const Provider = (props) => {
             }
 
             debugger
-            
+
             console.log('splitHiphen()', splitHiphen())
             const conditionfiltersSeo = { seofilter: { seoUrl: { in: splitHiphen() } } }
             // makeRequestSeo(conditionfiltersSeo)
@@ -352,7 +352,7 @@ const Provider = (props) => {
     }
 
     useEffect(() => {
-
+debugger
         //    alert("filters")
         if (filters && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
             updatefiltersSort()
