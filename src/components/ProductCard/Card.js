@@ -100,9 +100,9 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
       <span class="one-day-ship-listing-page-label">1 day shipping</span>
 
     </div> : ''}
-    {/* <div class="wishListStyle">
-              <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} />
-            </div> */}
+    <div class="wishListStyle">
+      <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} />
+    </div>
 
     <LazyLoadImage
       alt={'props.data.title'}
@@ -199,10 +199,7 @@ const useStyles = makeStyles(theme => ({
   },
   priceClass: {
     // boxShadow: "0px 0px 5px #F699A3 inset",
-    margin: 'auto',
-
-    marginBottom: '1px',
-    paddingTop: '10px', paddingBottom: '10px', paddingLeft: '10px',
+    padding: "10px",
     height: '50px',
     display: 'flex',
     boxShadow: " 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
@@ -271,7 +268,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   cardContent: {
-    margin: "auto"
+    // margin: "auto"
   },
   textPriceCardGrid: {
     display: 'flex',

@@ -999,7 +999,7 @@ body {
 }
 
 .overall-icons {
-    font-size: 18px !important;
+    font-size: 18px;
     cursor: pointer;
 }
 

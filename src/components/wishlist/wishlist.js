@@ -13,7 +13,7 @@ const WishlistComponent = (props) => {
     return (
         <>
             {values.isactive !== 2 ? <>
-                <i class="fa fa-heart overall-icons" style={{ color: "#d51f63", pointer: "cursor", fontSize: "1.2rem" }}
+                <i class="fa fa-heart overall-icons" style={{ color: "#d51f63", pointer: "cursor" }}
                     onClick={() => {
                         values["product_sku"] = props.sku
                         values["product_id"] = props.productId
@@ -21,7 +21,7 @@ const WishlistComponent = (props) => {
                         handlers.handelSubmit(2)
                     }}
                 ></i></> : <>
-                    <i class="fa fa-heart overall-icons" style={{ color: "#d51f63", pointer: "cursor", fontSize: "1.2rem" }}
+                    <i class="fa fa-heart overall-icons" style={{ color: "#d51f63", pointer: "cursor" }}
                         onClick={() => {
                             values["product_sku"] = props.sku
                             values["product_id"] = props.productId
