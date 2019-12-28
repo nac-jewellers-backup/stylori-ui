@@ -252,7 +252,7 @@ class Header extends Component {
                                                         }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
                                              </a>&nbsp;/&nbsp;
                                              <NavLink to='/account-profile'>
-                                                        My Account
+                                                        My Account 
                                                </NavLink>
                                                 </div>
                                             </Popover>
