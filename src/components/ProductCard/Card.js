@@ -101,7 +101,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
 
     </div> : ''}
     <div class="wishListStyle">
-      {/* <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist}/>   */}
+      <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist}/>  
     </div>
 
     <LazyLoadImage
