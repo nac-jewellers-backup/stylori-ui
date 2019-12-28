@@ -19,29 +19,27 @@ function myFunc(total, num) {
 }
 class Allorders extends React.Component {
     state = {
-        expanded: null,
+        expanded: "",
     }
 
-    handleChange = panel => (event) => {
-        const { expanded } = this.state;
-        var valus = expanded === panel ? null : panel
+    handleChange = panel => (event, expanded) => {
         this.setState({
-            expanded: valus,
+            expanded: panel,
         });
     };
 
-    // changePanel = (panel, mailId) => {
-    //     this.setState({
-    //         expanded: panel,
-    //     })
-    // }
+    changePanel = (panel, mailId) => {
+        this.setState({
+            expanded: panel,
+        })
+    }
     // const dataCard1 = this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
 
     calculatetotal = (arr) => {
-
+        
         var a
         a = arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
-            return cart.price
+            return cart.transSkuListByProductSku.discountPrice
         }).reduce(myFunc);
         return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a))
     }
@@ -68,21 +66,21 @@ class Allorders extends React.Component {
                 <div className='pt-sm checkout-ovralldiv-media' >
                     {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0 ?
                         <div style={{ marginTop: "20px", boxShadow: "none" }}>
-
+                          
                             {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
-                            {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map((val, index) => (
+                            {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map(val => (
                                 <ExpansionPanel
                                     square
-                                    expanded={expanded === index}
-                                    onChange={this.handleChange(index)}
+                                    expanded={expanded === val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}
+                                    onChange={this.handleChange(val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname)}
                                     style={{ boxShadow: "none", boxShadow: "rgb(242, 242, 242) 4px 10px 20px 5px" }}
-                                    key={index}
+                                    key={val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}
                                 >
                                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
                                         <Typography className='text-chck'>
 
-                                            Order Number : #{val.id} &nbsp;|&nbsp; Order Date : {moment(val.createdAt).format('MMM Do YYYY')}
-                                            <div style={{ float: "right" }}><Button className="bton_submit">SUBMITTED</Button> </div></Typography>
+                                            Order Number : #900002356 &nbsp;|&nbsp; Order Date : 27 February 2019
+                                    <div style={{ float: "right" }}><Button className="bton_submit">SUBMITTED</Button> </div></Typography>
                                     </ExpansionPanelSummary >
                                     <ExpansionPanelDetails
                                     >
@@ -90,24 +88,24 @@ class Allorders extends React.Component {
                                             {/* {val.shoppingCartByCartId.cartAddressesByCartId.nodes.map(addreses => ( */}
                                             <div style={{ width: "100%", marginBottom: "10px" }}>
                                                 <Grid container spacing={12} lg={12} style={{ textAlign: "center" }}>
-                                                    <Grid item lg={6} className="order_addres">
-                                                        <div> <b>Order Number</b>:#{val.id}</div><br />
-                                                        <div><b>Order Date	</b> : {moment(val.createdAt).format('MMM Do YYYY')}</div><br />
+                                                    <Grid item lg={4} className="order_addres">
+                                                        <div> <b>Order Number</b>:#900002356</div><br />
+                                                        <div><b>Order Date	</b> : February 27</div><br />
                                                         <div> <b>Payment Method</b>: Cash On Delivery</div>
                                                     </Grid>
-                                                    <Grid item lg={6} className="order_addres_user">
+                                                    <Grid item lg={8} className="order_addres_user">
                                                         <div><b>Shipping Address :</b></div><br />
                                                         <div> {val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}&nbsp;
                                                             {val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].lastname}</div><br />
                                                         <div> {val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].addressline1}</div><br />
                                                         <div>  {val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].city}{"-" + val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].pincode}</div>
-                                                        <br />
-                                                        {val.shoppingCartByCartId && val.shoppingCartByCartId.giftwrapsByCartId && val.shoppingCartByCartId.giftwrapsByCartId.nodes && val.shoppingCartByCartId.giftwrapsByCartId.nodes.length > 0 ? <>
-                                                            <div> <b>gift To</b> :
+                                                        <br/>
+                                                        {val.shoppingCartByCartId&&val.shoppingCartByCartId.giftwrapsByCartId&&val.shoppingCartByCartId.giftwrapsByCartId.nodes&&val.shoppingCartByCartId.giftwrapsByCartId.nodes.length>0?<>
+                                                            <div> <b>gift To</b> : 
                                                         {val.shoppingCartByCartId.giftwrapsByCartId.nodes[0].giftTo}</div>
-                                                            <br /><div> <b>gift message</b> :
-                                                        {val.shoppingCartByCartId.giftwrapsByCartId.nodes[0].message}</div></> : ""}
-
+                                                        <br/><div> <b>gift message</b> : 
+                                                        {val.shoppingCartByCartId.giftwrapsByCartId.nodes[0].message}</div></>:""}
+                                             
                                                         {/* <div></div> */}
                                                     </Grid>
                                                 </Grid>
@@ -131,18 +129,16 @@ class Allorders extends React.Component {
                                                                 <b> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
                                                                 <Grid item lg={6}>
                                                                     <Typography className="subhesder">Gold Weight</Typography>
-                                                                    {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes.length > 0 ?
-                                                                        <Typography className="subhesder">Diamond Weight</Typography> : ""}
+                                                                    <Typography className="subhesder">Diamond Weight</Typography>
                                                                     <Typography className="subhesder">Product Code</Typography>
                                                                 </Grid>
                                                                 <Grid item lg={6}>
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.skuWeight + "" + "GM"}
                                                                     </Typography>
-                                                                    <Typography className="subhesder">
-                                                                        {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight + " " + "CT"}
+                                                                    <Typography className="subhesder">0.0 CT
+                                                                    {/* {cart.transSkuListByProductSku&&cart.transSkuListByProductSku.productListByProductId&&cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku&&cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight+" "+"CT"} */}
                                                                     </Typography>
-
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.generatedSku}
                                                                     </Typography>
@@ -157,13 +153,9 @@ class Allorders extends React.Component {
                                                                         {this.generateShipsBy(cart.transSkuListByProductSku.readytoship, cart.transSkuListByProductSku.vendorDeliveryTime)}</a></Typography>
                                                             </Grid>
                                                         </Grid>
-                                                        {(Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.markupPrice))) > (Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.price))) ?
-                                                            <del>{(Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.price)))}</del> : ""}
-
                                                         <Grid style={{ padding: "30px" }} className="rups" item lg={2}>
-                                                            {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.price))}
+                                                            {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.discountPrice))}
                                                         </Grid>
-
                                                     </Grid></>
                                             ))}
 

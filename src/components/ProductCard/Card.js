@@ -55,46 +55,54 @@ export const ImgMediaCard = (props) => {
 // );
 // }
 const imageOnError = (event, res) => {
-  var e = event
-  e.target.src.lastIndexOf('\.')
-  var src_img = (e.target.src).lastIndexOf('\.')
-  var _arr = e.target.src.split('/')
-  _arr.splice(_arr.length - 2, 1, '1000X1000')
-  const URL_1000x1000 = _arr.join('/')
-  var URL_JPG = (e.target.src).substr(0, src_img).concat('.jpg')
+  // var e = event
+  // e.target.src.lastIndexOf('\.')
+  // var src_img = (e.target.src).lastIndexOf('\.')
+  // var _arr = e.target.src.split('/')
+  // _arr.splice(_arr.length - 2, 1, '1000X1000')
+  // const URL_1000x1000 = _arr.join('/')
+  // var URL_JPG = (e.target.src).substr(0, src_img).concat('.jpg')
 
-  try {
+  // try {
 
-    var _image = ''
-    e.target.onerror = null;
+  //   var _image = ''
+  //   e.target.onerror = null;
 
-    const testImage = (URL, e) => {
-      var tester = new Image();
-      tester.src = URL;
-      tester.onload = imageFound;
-      tester.onerror = imageNotFound;
-      // tester.on("error" , imageNotFound)
-
-
-
-    }
-    const imageFound = (e) => {
-      e.target.src = URL_1000x1000
-
-    }
-    const imageNotFound = (e) => {
-      e.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
+  //   const testImage = (URL, e) => {
+  //     var tester = new Image();
+  //     tester.src = URL;
+  //     tester.onload = imageFound;
+  //     tester.onerror = imageNotFound;
+  //     // tester.on("error" , imageNotFound)
 
 
-    }
-    return testImage(URL_1000x1000, e);
-    // e.target.src = (e.target.src).substr(0, src_img).concat('.jpg')
-  } catch (error) {
-    console.log(error)
-  }
+
+  //   }
+  //   const imageFound = (e) => {
+  //     e.target.src = URL_1000x1000
+
+  //   }
+  //   const imageNotFound = (e) => {
+  //     e.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
+
+
+  //   }
+  //   return testImage(URL_1000x1000, e);
+  //   // e.target.src = (e.target.src).substr(0, src_img).concat('.jpg')
+  // } catch (error) {
+  //   console.log(error)
+  // }
+  event.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
 }
 const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => (
   <div>
+    {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" style={{ zIndex: 2 }}>
+      <span class="one-day-ship-listing-page-label">1 day shipping</span>
+
+    </div> : ''}
+    {/* <div class="wishListStyle">
+              <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} />
+            </div> */}
 
     <LazyLoadImage
       alt={'props.data.title'}
@@ -111,6 +119,8 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
 
       //  "
       onError={(e) => imageOnError(e, props.data.imageResolution)}
+
+
       title={props.data.title}
       onMouseOver={() => {
         callmouseover()
@@ -131,7 +141,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
 
   </div>
 );
-
+// onLoad={(e)=>e.target.src=e.target.style.background='url(https://alpha-assets.stylori.com/images/static/loadingimg.gif') center center / 25% 25% no-repeat rgb(255, 255, 255);'}
 export default trackWindowScroll(Gallery);
 // <img 
 // srcset={renderImages(props, cardstate)}
@@ -169,7 +179,8 @@ const handleProductDetatiContext = (props) => {
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
+    margin: 0
   },
   card: {
     minWidth: "80%",
@@ -179,7 +190,9 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '0 !important',
   },
   cardAtionspadding: {
-    padding: 0
+    padding: 0,
+    margin: 0
+
   },
   textDel: {
     color: "#828282"
@@ -322,6 +335,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.secondary.light
   },
   cardActionsImage: {
+    margin: 0,
     [theme.breakpoints.down('md')]: {
       // height: '200px !important'
     }
@@ -351,33 +365,27 @@ function Component(props) {
     setCardState({ ...cardstate, hovered: !cardstate.hovered });
   }
   return (
-    <div className={classes.root} >
-      <Card className={classes.card} >
-        {/* <CardActions className={classes.cardAtionspadding}> */}
-        {/* <Grid container xs={12}> */}
-        <Grid container item xs={6} justify="flex-start">
-          {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" style={{
-            zIndex: 10000, position: "relative",
-            left: "10px",
-            top: "10px"
-          }}>
-            <span class="one-day-ship-listing-page-label">1 day shipping</span>
+    <div className={classes.root} style={{ marginLeft: "0px !important" }}>
+      <Card className={classes.card} style={{ marginLeft: "0px !important" }} >
+        {/* <CardActions className={classes.cardAtionspadding}>
+          <Grid container xs={12}>
+            <Grid container item xs={6} justify="flex-start">
+            
 
-          </div> : ''}
-          <Grid item style={{ position: "relative", padding: "6px 6px 0px 0px" }} justify="flex-end">
-            {/* <i
+            </Grid>
+
+            <Grid container item xs={6} justify="flex-end">
+              <i
                 style={{ fontSize: "18px" }}
                 className={`fa ${classes.iconColor}`}
               >
                 &#xf08a;
-              </i> */}
-            {/* <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} /> */}
+              </i>
+            </Grid>
           </Grid>
-        </Grid>
 
 
-        {/* </Grid> */}
-        {/* </CardActions> */}
+        </CardActions> */}
         {/* /:productCategory/:productType/:material/:productName */}
         <Link to={{ pathname: `${'jewellery'}/${props.data.productType}/${props.data.material}/${(props.data.title).replace(/ /g, "-")}`, search: `skuId=${props.data.skuId}` }} style={{ textDecoration: 'none' }} onClick={handleProductDetatiContext(props)}>
           <CardActions style={{
@@ -407,6 +415,10 @@ sizes="(max-width: 320px) 320w,
           className={`${props.data.image.placeImage.length === 0 || props.data.image.hoverImage.length === 0 ? 'shine' : '' }`}
           
           /> */}
+
+
+
+
             {Gallery(props, callmouseover, callmouseout, cardstate)}
           </CardActions>
           <Card className={classes.priceClass}>
@@ -443,17 +455,22 @@ sizes="(max-width: 320px) 320w,
                       component="span"
                       className={classes.offerPrice}
                     >
-                      <del>
-                        {/* <i style={{ fontSize: "12px" }} className="fa">
-                        &#xf156;
-                      </i>
-                      &nbsp;  */}
-                        {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
-                      </del>
+                      {
+                        Math.round(props.data.offerPrice) === Math.round(props.data.price) ?
+                          new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))
+                          :
+                          <del>
+
+                            {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
+                          </del>
+                      }
+
                     </Typography>
                   </Grid>
-                  <Grid container item xs={12} className={`${classes.offerPricesMain}`}>
-                    {/* <Typography
+                  {
+                    Math.round(props.data.offerPrice) === Math.round(props.data.price) ? '' :
+                      <Grid container item xs={12} className={`${classes.offerPricesMain}`}>
+                        {/* <Typography
                     gutterBottom
                     variant="body1"
                     component="span"
@@ -461,18 +478,23 @@ sizes="(max-width: 320px) 320w,
                   >
                     you save &nbsp;
                   </Typography> */}
-                    <Typography
-                      gutterBottom
-                      variant="body1"
-                      component="span"
-                      className={`${classes.youSave} ${classes.youSavePrice}`}
-                    >
-                      {/* 20% Off */}
-                      {Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice)) / Math.round(props.data.price)) * 100) + '% off'}
+                        <Typography
+                          gutterBottom
+                          variant="body1"
+                          component="span"
+                          className={`${classes.youSave} ${classes.youSavePrice}`}
+                        >
+                          {/* 20% Off */}
+                          {
 
-                    </Typography>
-                  </Grid>
+                            Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice)) / Math.round(props.data.price)) * 100) + '% off'}
+
+                        </Typography>
+                      </Grid>
+                  }
+
                 </Grid>
+
                 <Hidden smDown>
                   <Grid container xs={12}>
                     <Grid item xs={12} className={`${classes.titles}`}>

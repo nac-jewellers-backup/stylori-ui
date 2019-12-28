@@ -18,19 +18,11 @@ import { productpricingPages } from '../../mappers';
 import styles from './style'
 import { ProductDetailContext } from 'context/ProductDetailContext';
 import productDetails from 'mappers/productDetails';
-import "../rating/rating.css";
 
 
 const Star = ({ selected = false, onClick = f => f }) =>
-    <div onClick={onClick}>
-        {selected ? <div class="star-rating">
-            <input type="radio" />
-            <div for="1-stars" >&#9733;</div>
-        </div> :
-            <div class="star-rating" >
-                <input type="radio" />
-                <label for="1-stars" class="star">&#9733;</label>
-            </div>}
+    <div className={(selected) ? "star selected" : "star"}
+        onClick={onClick}>
     </div>
 
 class CustomerReviews extends React.Component {
@@ -60,9 +52,9 @@ class CustomerReviews extends React.Component {
             val.message !== "" && val.message !== undefined && val.message !== null ||
             val.rate !== "" && val.rate !== undefined && val.rate !== null) {
             value = <>
-                <div style={{ width: "100%", fontSize: "16px", marginBottom: "5px" }}>{val.title}</div>
+                <div style={{ width: "100%", fontSize: "16px", marginBottom: "5px" }}>{val.customerName}</div>
                 <div style={{ width: "100%", fontSize: "14px", marginBottom: "5px" }}>{val.message}</div>
-                <div className="star-rating width starts-review">
+                <div>
                     {[1, 2, 3, 4, 5].map((n, i) =>
                         <Star key={i}
                             selected={i < val.rating}

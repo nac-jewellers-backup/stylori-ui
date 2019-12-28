@@ -20,7 +20,7 @@ export const ProductDetailConsumer = ProductDetailContext.Consumer;
 export const TabsProvider = (props) => {
     const [filters, setFilters] = React.useState(initialCtx.ProductDetailCtx.filters);
     const [likedatas, setlikedata] = React.useState([])
-    const [viewedddatas, setvieweddata] = React.useState()
+    const [viewedddatas, setvieweddata] = React.useState([])
     const [rating, setrating] = React.useState([])
     const [registerurl, setregisterurl] = React.useState("")
     const [ratingcounts, setratingcounts] = React.useState([])

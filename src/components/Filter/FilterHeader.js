@@ -15,15 +15,18 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 const styles = theme => ({
     colorMain: {
         color: theme.palette.primary.main,
+        alignContent: "center",
+    display: "flex",
+    alignItems: "center"
     },
 });
 
 const FilterHeader = (props) => {
-    const { setSort, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
+    const { setSort, setOffset, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
     const loc = window.location.search
-    return <Component setSort={setSort} sort={FilterOptionsCtx.sort}  {...props} />
+    return <Component setSort={setSort} setOffset={setOffset} offset={FilterOptionsCtx.offset} sort={FilterOptionsCtx.sort}  {...props} />
 }
-
+const sortBy = "Sort By"
 class Component extends React.Component {
     constructor(props) {
         super(props)
@@ -58,7 +61,9 @@ class Component extends React.Component {
         this.setState({ expanded: !this.state.expanded });
     }
     handleChange = (event) => {
-
+        debugger
+        if (this.props.offset > 0) this.props.setOffset(0)
+        console.log(this.props.offset)
         this.props.setSort({ values: event.target.value })
 
         this.setState({ expanded: false })
@@ -124,12 +129,12 @@ class Component extends React.Component {
                                 className={`fil-drawer-sort_font ${classes.colorMain}`}
                                 onClick={this.handleExpandClick}
                             >
-                                {"Sort By"+ this.state.expanded ? <ExpandLess /> : <ExpandMore />} 
+                               Sort By { this.state.expanded ? <ExpandLess /> : <ExpandMore />}
                                         {/* <span className="fil-drawer-head-sort-expand">
                                     <ExpandMoreIcon />
                                 </span> */}
                             </Typography>
-                           
+
                         </div>
                         <div className={"testMenu"} style={{
                             position: "absolute", width: "200px",
