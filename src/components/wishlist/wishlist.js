@@ -18,13 +18,13 @@ const WishlistComponent = (props) => {
                     values["isactive"] = 2
                     setValues({ values, ...values });
                     return false
-                } 
+                }
             })
         }
     }, [])
     return (
         <>
-            {values.isactive !== 2 ? <> 
+            {values.isactive !== 2 ? <>
                 <i class="fa fa-heart-o overall-icons" style={{ color: props.props ? "#f699a3" : "" }}
                     onClick={() => {
                         values["product_sku"] = props.sku

@@ -98,8 +98,8 @@ const LoginComponent = (props) => {
 
                         <Grid spacing={12} container>
                             <Grid item xs={6} lg={6} style={{ float: "left" }}>
-                                {/* <div className={`${classes.normalfonts}`} style={{ cursor: "pointer", fontSize: "14px" }}>Forgot password?</div>
-                                <br /> */}
+                                <div className={`${classes.normalfonts}`} style={{ cursor: "pointer", fontSize: "14px" }}>Forgot password?</div>
+                                <br />
                                 <div className={classes.normalfonts} style={{
                                     cursor: "pointer", fontSize: "14px",
                                     marginRight: "50%"
