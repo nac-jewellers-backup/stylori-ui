@@ -35,7 +35,7 @@ export default function Pricing(props) {
                                 {/* ₹&nbsp;{props.offerPrice} */}
                                 {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.offerPrice))}
                             </Typography>
-                        </Typography> : ""}
+                        </Typography> : ""} 
                 </Grid> 
                 <Grid item lg={6} xs={12}>
                     <Grid spacing={12} container lg={12} xs={12}>
