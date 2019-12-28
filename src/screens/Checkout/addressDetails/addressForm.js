@@ -84,9 +84,8 @@ const AddressComponent = (props) => {
                                                 onChange={(event) => handle.handleChange('addressOne', 'pincode', event.target.value, "pincode1")}
                                                 value={values.addressOne.pincode}
                                                 onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
-                                                // helperText="Pin Code is required"
-                                                // required 
-                                                />
+                                                helperText="Pin Code is required"
+                                                required />
 
                                             <label className='errtext'> {values.addressOne && values.addressOne.errortext && values.addressOne.errortext.pinerr}</label>
                                         </Grid>
@@ -220,8 +219,7 @@ const AddressComponent = (props) => {
                                                         value={values.addressTwo.pincode}
                                                         onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
                                                         helperText="Pin Code is required"
-                                                        required 
-                                                        />
+                                                        required />
                                                     <label className='errtext'> {values.addressOne && values.addressTwo.errortext && values.addressTwo.errortext.pinerr1}</label>
                                                 </Grid>
                                             </Grid>

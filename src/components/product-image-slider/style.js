@@ -5,7 +5,7 @@ const styles = theme => ({
             // fontWeight: 'bold'
         },
         [theme.breakpoints.down('xs')]: {
-            fontSize: '11px !important',
+            fontSize: '11px',
         },
     },
     dis: {

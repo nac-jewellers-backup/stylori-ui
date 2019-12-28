@@ -1,4 +1,3 @@
-import dummyTest from "components/product-image-slider/dummyTest";
 
 export const routes = {
     stylori: '/stylori',
@@ -19,7 +18,7 @@ export const routes = {
     PrivacyPolicy: '/privacypolicy',
     TermsConditions: '/termsconditions',
     AboutUs: '/aboutus',
-    DummyTest:'/dummy'
+    ForgotPassword:'/forgotPassword'
 }
 
 export default routes;

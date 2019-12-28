@@ -56,7 +56,7 @@ class Cart extends React.Component {
                     //  style={{ position: 'sticky', top: '0', zIndex: '1000' }}
                      >
                         <Grid item xs={12} >
-                            <Header wishlist={this.props.wishlistdata}/>
+                            <Header />
                         </Grid>
                     </Grid>
                     {path === "checkout" ? "" :
@@ -87,7 +87,7 @@ class Cart extends React.Component {
                     {path === "checkout" ? "" :
                         <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
                             <Grid item xs={12} >
-                                <Header wishlist={this.props.wishlistdata}/>
+                                <Header />
                             </Grid>
                         </Grid>}
                     <Container>
@@ -110,7 +110,7 @@ class Cart extends React.Component {
 // export default Checkout;
 
 const Components = props => {
-    let { CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata  } } = React.useContext(CartContext);
+    let { CartCtx: { cartFilters, data, loading, error, allorderdata } } = React.useContext(CartContext);
     let content, mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
@@ -118,7 +118,7 @@ const Components = props => {
         }
     }
     if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
-    else content = <Cart {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
+    else content = <Cart {...props} data={mapped} />
     if (mapped !== undefined || mapped !== null) {
         localStorage.setItem("a__c_t", mapped && mapped.length)
     }
