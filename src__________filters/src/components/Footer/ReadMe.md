@@ -1,0 +1,1 @@
+#Hoping that the the footer is differs from every site we haven't made it as a reusable component

@@ -11,10 +11,10 @@ const Register = (props) => {
 
 const RegisterComponent = (props) => {
     let email = localStorage.getItem("email") ? localStorage.getItem("email") : '';
-    const { values, setValues, handlers, data, valuesadrees } = useRegister(() => props.changePanel(2));
+    const { values, setValues, handlers, data, valuesedit, valuesadrees } = useRegister(() => props.changePanel(2));
     // var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
     // var ccc = data.message ? data.message : ""
-    const paths = window.location.pathname.split("-")[0] === "/account"
+    const paths = window.location.pathname.split("-")[0]==="/account"
     const pathreg = window.location.pathname === "/registers"
 
     const clear = () => {
@@ -52,9 +52,8 @@ const RegisterComponent = (props) => {
                     {/* lg={window.location.pathname === "/registers" ? 12 : 6} */}
                        <Grid style={{paddingLeft:"20px"}}>
                         <h5 className='title'>
-                            {/* {window.location.pathname.split("-")[0] === "/account" ? "" : <>
-                                {window.location.pathname === "/registers" ? "Register" : "New user registration"}</>} */}
-                                Personal Information
+                            {window.location.pathname.split("-")[0]==="/account" ? "" : <>
+                                {window.location.pathname === "/registers" ? "Register" : "New user registration"}</>}
                         </h5>
                         {paths ?
                             <Input
@@ -170,12 +169,12 @@ const RegisterComponent = (props) => {
                                         variant="outlined"
                                         type="text"
                                         name="firstname"
-                                        value={valuesadrees.firstname}
+                                        value={valuesedit.firstname}
                                         placeholder="Enter FirstName*"
-                                        onChange={e => handlers.handlesetvaluesadrees('firstname', e.target.value)}
+                                        onChange={e => handlers.handleChangeedit('firstname', e.target.value)}
                                         className='text-f'
                                         helperText="Firstname is required"
-                                        required />
+                                        required  />
                                 </Grid>
                                 <Grid item  xs={4}>
                                     <Input
@@ -183,12 +182,12 @@ const RegisterComponent = (props) => {
                                         variant="outlined"
                                         type="text"
                                         name="lastname"
-                                        value={valuesadrees.lastname}
+                                        value={valuesedit.lastname}
                                         placeholder="Enter LastName*"
-                                        onChange={e => handlers.handlesetvaluesadrees('lastname', e.target.value)}
+                                        onChange={e => handlers.handleChangeedit('lastname', e.target.value)}
                                         className='text-f'
                                         helperText="Lastname is required"
-                                        required />
+                                        required/>
                                 </Grid></>}
                         </Grid>
 
@@ -238,9 +237,7 @@ const RegisterComponent = (props) => {
 
                         <div className='login-butn'>
                             {paths || pathreg ? "" : <Button className='back-b' onClick={() => clear()} >Back</Button>}
-                            <Button className='apply-b' type="submit" >
-                                {paths ? "Save" : "Register"}
-                            </Button>
+                            <Button className='apply-b' type="submit" >Register</Button>
                         </div>
                         </Grid>
                     </Grid>

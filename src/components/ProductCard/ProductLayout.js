@@ -44,7 +44,7 @@ const styles = theme => ({
 
 });
 const ProductLayout = (props) => {
-  const { setOffset, setFirst, FilterOptionsCtx} = React.useContext(FilterOptionsContext);
+  const { setOffset, setFirst, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
   return <Component offset={FilterOptionsCtx.offset} setOffset={setOffset} setFirst={setFirst} loadingFilterCtx={FilterOptionsCtx.loadingfilters} {...props} />
 }
 
@@ -121,15 +121,15 @@ class Component extends React.Component {
               <GridList cellHeight={"auto"} className={`productLayoutGridList ${classes.gridlistmain}`} cols={this.state.colSize} style={{ margin: '25px !important' }}>
                 {
                   data.map(tile => {
-                    
+
                     return (
-                      tile && Object.entries(tile).length>0?
-                      <GridListTile key={tile.title} cols={tile.cols || 1} style={{padding: '0 !important', marginBottom: '12px', marginTop: '12px' }} className={`${classes.liClass}`} >
-                        {/* <ProductCard data={tile} /> */}
-                        <ProductCards data={tile}  wishlist={this.props.wishlist}/>
-                      </GridListTile>
-                      :
-                      ''
+                      tile && Object.entries(tile).length > 0 ?
+                        <GridListTile key={tile.title} cols={tile.cols || 1} style={{ padding: '0 !important' }} className={`${classes.liClass}`} >
+                          {/* <ProductCard data={tile} /> */}
+                          <ProductCards data={tile} />
+                        </GridListTile>
+                        :
+                        ''
                     )
                   })
 
@@ -142,16 +142,16 @@ class Component extends React.Component {
                   ?
                   <div style={{ textAlign: 'center' }}>Loading...</div>
                   :
-                 <>
-                  <Button variant="contained" className={`${classes.button}  ${classes.viewmoreColor}`} onClick={() => { this.handleOffset() }} disabled={data.length < 24} >
-                    {data.length === 0 && `No products found`}
-                    {data.length >= 24 && ` View ${data.length > 0 ? data[0].totalCount - data.length : ''} More Products`}
-                    {(data.length > 0 && data.length < 24)
-                      && `Only ${data.length > 0 ? data[0].totalCount - data.length : ''} products avalilable`}
-                  </Button>
-                </>
+                  <>
+                    <Button variant="contained" className={`${classes.button}  ${classes.viewmoreColor}`} onClick={() => { this.handleOffset() }} disabled={data.length < 24} >
+                      {data.length === 0 && `No products found`}
+                      {data.length >= 24 && ` View ${data.length > 0 ? data[0].totalCount - data.length : ''} More Products`}
+                      {(data.length > 0 && data.length < 24)
+                        && `Only ${data.length > 0 ? data[0].totalCount - data.length : ''} products avalilable`}
+                    </Button>
+                  </>
                 }
-                  
+
               </div>
 
 
