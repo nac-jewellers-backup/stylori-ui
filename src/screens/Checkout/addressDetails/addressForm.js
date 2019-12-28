@@ -23,26 +23,19 @@ const AddressComponent = (props) => {
     return (
         <Container>
             <div>
-            
                 {(isedit === '1' ? true : false) && values.addrs === true ?
                     <div className='pt-sm'>
-                        <h5 className='title' >
-                            {/* {window.location.pathname.split("-")[0] === "/account" ? "" : <>
-                                {window.location.pathname === "/registers" ? "Register" : "New user registration"}</>} */}
-                                Address Book 
-                        </h5>
                         <form onSubmit={(e) => {
                             handle.handleSubmit(e)
 
                         }} action="javascript:void(0)">
                             {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? <h5 className='title'> Edit Address</h5> : ""}
-                            {/* <p class="form-group tp" style={{ width: "480px" }}>
+                            <p class="form-group tp" style={{ width: "480px" }}>
                                 {/* {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <>{cl}</>} */}
                                 {window.location.pathname.split("-")[0]==="/account" || values.edit_addresId === true ? "" : <>{cl}</>}
                                 {/* {JSON.stringify(values.errortext && values.errortext.pinerr)} */}
-                            {/* </p>  */}
-                             <Grid container item xs={12}  >
-                                <Grid item xs={12} >
+                            </p>  <Grid container item xs={12} lg={12} >
+                                <Grid item xs={12} lg={5}>
                                     {window.location.pathname.split("-")[0]==="/account" || values.hidebilling === true ? "" : <>
                                         <h5 className='title'>Shipping Address</h5>
                                         <>
@@ -50,10 +43,10 @@ const AddressComponent = (props) => {
                                             {values.checkValue && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
                                         </></>}
                                     <Grid container spacing={12}>
-                                        <Grid item xs={4} >
+                                        <Grid item xs={4} lg={4}>
                                             <SimpleSelect val={'1'} name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                         </Grid>
-                                        <Grid item xs={4} >
+                                        <Grid item xs={4} lg={4}>
                                             <Input
                                                 name="firstname"
                                                 className='text-f'
@@ -65,7 +58,7 @@ const AddressComponent = (props) => {
                                                 helperText="Firstname is required"
                                             />
                                         </Grid>
-                                        <Grid item xs={4} >
+                                        <Grid item xs={4} lg={4}>
                                             <Input
                                                 className='text-f'
                                                 type="text"
@@ -78,11 +71,11 @@ const AddressComponent = (props) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container spacing={12}>
-                                        <Grid item xs={6} >
+                                        <Grid item xs={6} lg={6}>
                                             <SimpleSelect name={values.addressOne.country ? values.addressOne.country : ""} selectData={['India']}
                                                 disabled={'disabled'} />
                                         </Grid>
-                                        <Grid item xs={6} >
+                                        <Grid item xs={6} lg={6}>
                                             <Input
                                                 className='text-f'
                                                 type="text"
@@ -99,7 +92,7 @@ const AddressComponent = (props) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container spacing={12}>
-                                        <Grid item xs={12} >
+                                        <Grid item xs={12} lg={12}>
                                             <Input
                                                 type="text"
                                                 placeholder="Address *"
@@ -111,7 +104,7 @@ const AddressComponent = (props) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container spacing={12}>
-                                        <Grid item xs={6} >
+                                        <Grid item xs={6} lg={6}>
                                             <Input
                                                 style={{ float: "left", width: "99%", background: "rgba(192, 192, 192, 0.41)" }}
                                                 type="text"
@@ -124,7 +117,7 @@ const AddressComponent = (props) => {
                                                     readOnly: true,
                                                 }} required />
                                         </Grid>
-                                        <Grid item xs={6} >
+                                        <Grid item xs={6} lg={6}>
                                             <Input
                                                 className='text-f'
                                                 type="text"
@@ -141,7 +134,7 @@ const AddressComponent = (props) => {
                                     </Grid>
 
                                     <Grid container spacing={12}>
-                                        <Grid item xs={3}>
+                                        <Grid item xs={3} lg={3}>
                                             <SimpleSelect name={['+91']} selectData={['+91']}
                                                 disabled={'disabled'}
                                                 value={values.addressOne.country_code} />
@@ -158,7 +151,7 @@ const AddressComponent = (props) => {
                                                 required
                                             /> */}
                                         </Grid>
-                                        <Grid item xs={9} >
+                                        <Grid item xs={9} lg={9}>
                                             <Input
                                                 className='text-f'
                                                 type="text"
@@ -179,16 +172,16 @@ const AddressComponent = (props) => {
                                 {/*  */}
                                 {/* {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <> */}
                                 {window.location.pathname.split("-")[0]==="/account" || values.edit_addresId === true ? "" : <>
-                                    <Grid container item  />
+                                    <Grid container item lg={1} />
                                     {!values.checkValue &&
-                                        <Grid item xs={12} >
+                                        <Grid item xs={12} lg={5}>
                                             <br /><br />
                                             <h5 className='title'> Billing Address</h5>
                                             <Grid container spacing={12}>
-                                                <Grid item xs={4} >
+                                                <Grid item xs={4} lg={4}>
                                                     <SimpleSelect val={"2"} name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                                 </Grid>
-                                                <Grid item xs={4} >
+                                                <Grid item xs={4} lg={4}>
                                                     <Input
                                                         name="firstnametwo"
                                                         className='text-f'
@@ -200,7 +193,7 @@ const AddressComponent = (props) => {
                                                         helperText="Firstname is required"
                                                     />
                                                 </Grid>
-                                                <Grid item xs={4} >
+                                                <Grid item xs={4} lg={4}>
                                                     <Input
                                                         className='text-f'
                                                         type="text"
@@ -213,11 +206,11 @@ const AddressComponent = (props) => {
                                                 </Grid>
                                             </Grid>
                                             <Grid container spacing={12}>
-                                                <Grid item xs={6}>
+                                                <Grid item xs={6} lg={6}>
                                                     <SimpleSelect name={values.addressTwo.country ? values.addressTwo.country : ""} selectData={['India']}
                                                         disabled={'disabled'} />
                                                 </Grid>
-                                                <Grid item xs={6}>
+                                                <Grid item xs={6} lg={6}>
                                                     <Input
                                                         className='text-f'
                                                         type="text"
@@ -233,7 +226,7 @@ const AddressComponent = (props) => {
                                                 </Grid>
                                             </Grid>
                                             <Grid container spacing={12}>
-                                                <Grid item xs={12} >
+                                                <Grid item xs={12} lg={12}>
                                                     <Input
                                                         type="text"
                                                         placeholder="Address *"
@@ -245,7 +238,7 @@ const AddressComponent = (props) => {
                                                 </Grid>
                                             </Grid>
                                             <Grid container spacing={12}>
-                                                <Grid item xs={6}>
+                                                <Grid item xs={6} lg={6}>
                                                     <Input
                                                         style={{ float: "left", width: "99%", background: "rgba(192, 192, 192, 0.41)" }}
                                                         type="text"
@@ -258,7 +251,7 @@ const AddressComponent = (props) => {
                                                             readOnly: true,
                                                         }} required />
                                                 </Grid>
-                                                <Grid item xs={6}>
+                                                <Grid item xs={6} lg={6}>
                                                     <Input
                                                         className='text-f'
                                                         type="text"
@@ -275,7 +268,7 @@ const AddressComponent = (props) => {
                                             </Grid>
 
                                             <Grid container spacing={12}>
-                                                <Grid item xs={3}>
+                                                <Grid item xs={3} lg={3}>
                                                     <SimpleSelect name={['+91']} selectData={['+91']}
                                                         disabled={'disabled'} />
                                                     {/* <Input
@@ -292,7 +285,7 @@ const AddressComponent = (props) => {
                                                     required
                                                 /> */}
                                                 </Grid>
-                                                <Grid item xs={9} >
+                                                <Grid item xs={9} lg={9}>
                                                     <Input
                                                         className='text-f'
                                                         type="text"

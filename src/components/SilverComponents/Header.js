@@ -196,7 +196,7 @@ class Header extends Component {
         const opened = this.state;
         // const id = open ? true : undefined;
         return (
-            <div>xd
+            <div>
                 <Hidden smDown >
                     {/* <HeaderNotification headerTransition={() => { this.headerTransitions() }} /> */}
                     <div className="header-appbar-sticky1" id='headerDiv'>

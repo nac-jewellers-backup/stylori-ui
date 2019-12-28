@@ -25,8 +25,7 @@ const FilterHeader = (props) => {
 class Component extends React.Component {
     constructor(props) {
         super(props)
-        
-        this.state = { 
+        this.state = {
             topHeight: 0,
             expanded: false,
         }
