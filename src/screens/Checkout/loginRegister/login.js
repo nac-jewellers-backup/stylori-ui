@@ -67,7 +67,7 @@ const LoginComponent = (props) => {
                             fields="name,email,picture"
                             callback={responseFacebook}
                             cssClass="my-facebook-button-class"
-                            icon="fa-facebook"
+                            icon="fab fa-facebook-square fb"
                         />
                           {/* <InstagramLogin
                                 clientId="508169029820675"
@@ -75,7 +75,7 @@ const LoginComponent = (props) => {
                                 onSuccess={responseInstagram}
                                 onFailure={responseInstagram}
                         /> */}
-                            <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img>
+                            {/* <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img> */}
                         </div >
                     </div>
                     <div className='login-butn'>
