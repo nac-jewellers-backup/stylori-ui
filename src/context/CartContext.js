@@ -28,6 +28,7 @@ const initialCtx = {
     setCartFilters: (filterData) => { },
     setallorderdata: () => { },
     setwishlist_count: () => { },
+    setwishlistdata: () => { },
 }
 export const CartContext = React.createContext(initialCtx);
 export const CartConsumer = CartContext.Consumer;
