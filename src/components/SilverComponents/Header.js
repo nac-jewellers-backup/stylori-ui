@@ -220,11 +220,11 @@ class Header extends Component {
                                                     aria-owns={openPopover ? 'simple-popper' : ""}
                                                     onClick={this.handleClickPopover}
                                                 >
-                                                    <i class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                    <i style={{ fontSize: "20px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                 </span>
                                                 // <img className="icons-header-sizes" src={usershape}/>
                                                 : <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
-                                                    <i class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                    <i style={{ fontSize: "20px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                 </span>
                                             }
                                             <Popover
@@ -261,7 +261,7 @@ class Header extends Component {
                                             // wishlist_count
                                             // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
                                             >
-                                                <i class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
+                                                <i style={{ fontSize: "20px" }} class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
                                                     if (user_id.length > 0) {
                                                         window.location.href = `/account${'-wishlist'}`
                                                     } else {
@@ -270,8 +270,8 @@ class Header extends Component {
                                                 }}  ></i>
                                             </Badge>
                                             <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                <a style={{ fontSize: "0px" }} href="/cart" >
-                                                    <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                                <a href="/cart" >
+                                                    <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
                                                 </a> </Badge>
                                         </div>
@@ -378,11 +378,11 @@ class Header extends Component {
                                                                 aria-owns={openPopover ? 'simple-popper' : ""}
                                                                 onClick={this.handleClickPopover}
                                                             >
-                                                                <i class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                                <i style={{ position: "relative", verticalAlign: "middle" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                             </span>
                                                             // <img className="icons-header-sizes" src={usershape}/>
                                                             : <span onClick={() => window.location.pathname = "/login"}>
-                                                                <i class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                                <i style={{ position: "relative", verticalAlign: "middle" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                             </span>
                                                         }
                                                         <Popover
@@ -409,7 +409,7 @@ class Header extends Component {
                                                                         window.location.pathname = "/login"
                                                                     }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
                                              </a>&nbsp;/&nbsp;
-                                             <NavLink onClick={() => window.location.pathname = "/account-profile"}>
+                                             <NavLink to="/account-profile">
                                                                     My Account
                                                </NavLink>
                                                             </div>

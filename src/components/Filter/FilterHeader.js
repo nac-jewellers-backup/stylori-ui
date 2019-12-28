@@ -10,18 +10,23 @@ import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { sortOptions } from '../../mappers/dummydata/filterdata';
 import { FilterOptionsContext } from 'context'
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 const styles = theme => ({
     colorMain: {
         color: theme.palette.primary.main,
+        alignContent: "center",
+    display: "flex",
+    alignItems: "center"
     },
 });
 
 const FilterHeader = (props) => {
-    const { setSort, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
+    const { setSort, FilterOptionsCtx,setOffset } = React.useContext(FilterOptionsContext);
     const loc = window.location.search
-    return <Component setSort={setSort} sort={FilterOptionsCtx.sort}  {...props} />
-  }
-
+    return <Component setSort={setSort} setOffset={setOffset} offset={FilterOptionsCtx.offset} sort={FilterOptionsCtx.sort}  {...props} />
+}
+const sortBy = "Sort By"
 class Component extends React.Component {
     constructor(props) {
         super(props)
@@ -43,22 +48,24 @@ class Component extends React.Component {
         let filterHeight = null
         if (width > 960) {
 
-            if(document.getElementById('filterBy'))  filterHeight = document.getElementById('filterBy').clientHeight;
+            if (document.getElementById('filterBy')) filterHeight = document.getElementById('filterBy').clientHeight;
 
             // const heights = 30;
-            let add = filterHeight-10;
+            let add = filterHeight - 10;
             this.setState({ topHeight: add });
         }
 
     }
-    
+
     handleExpandClick = () => {
         this.setState({ expanded: !this.state.expanded });
     }
-    handleChange = (event) =>{
-       
-        this.props.setSort({ values:event.target.value})
-        
+    handleChange = (event) => {
+        debugger
+        if (this.props.offset > 0) this.props.setOffset(0)
+        console.log(this.props.offset)
+        this.props.setSort({ values: event.target.value })
+
         this.setState({ expanded: false })
     }
     render() {
@@ -84,15 +91,15 @@ class Component extends React.Component {
 
                                 <Grid item onClick={this.props.handleChangeDrawer} style={{ display: 'flex', alignItems: 'center', position: 'absolute', top: '29%', left: '5%', cursor: 'pointer' }}>
                                     {
-                                        this.props.check ? <i style={{fontSize:'22px',paddingRight:'15px'}} className={`fa ${classes.colorMain}`}>&#xf0b0;</i>
+                                        this.props.check ? <i style={{ fontSize: '22px', paddingRight: '15px' }} className={`fa ${classes.colorMain}`}>&#xf0b0;</i>
                                             :
                                             // <ChevronLeftIcon className={`${classes.colorMain}`} />
-                                            <i style={{fontSize:'22px',paddingRight:'15px'}} className={`fa ${classes.colorMain}`}>&#xf0b0;</i>
-                                            
+                                            <i style={{ fontSize: '22px', paddingRight: '15px' }} className={`fa ${classes.colorMain}`}>&#xf0b0;</i>
+
 
                                     }
                                     <Typography color="inherit"
-                                        onClick={this.handleDrawerClose} 
+                                        onClick={this.handleDrawerClose}
                                         className={` fil-drawer-head ${classes.colorMain}`}
                                     >
                                         Filter By
@@ -108,7 +115,7 @@ class Component extends React.Component {
                                     className="header-chips-text"
                                     key={data.key}
                                     label={data.label}
-                                    onClick={ () =>this.props.click(data.label)}
+                                    onClick={() => this.props.click(data.label)}
                                     avatar={data.label ?
                                         <i className="search-choice-close" class="fa fa-times"></i>
                                         : ""}
@@ -122,23 +129,24 @@ class Component extends React.Component {
                                 className={`fil-drawer-sort_font ${classes.colorMain}`}
                                 onClick={this.handleExpandClick}
                             >
-                                Sort By
+                               Sort By { this.state.expanded ? <ExpandLess /> : <ExpandMore />}
                                         {/* <span className="fil-drawer-head-sort-expand">
                                     <ExpandMoreIcon />
                                 </span> */}
                             </Typography>
+
                         </div>
                         <div className={"testMenu"} style={{
                             position: "absolute", width: "200px",
                             right: "15px", top: "65px", boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 7px'
                         }}>
                             <Collapse in={this.state.expanded} timeout="auto">
-                                <CardRadioButton data={sortOptions} onChange={this.handleChange} values={this.props.sort}/>
+                                <CardRadioButton data={sortOptions} onChange={this.handleChange} values={this.props.sort} />
                             </Collapse>
                         </div>
                     </Grid>
                 </Grid>
-                {/* </div> */ }
+                {/* </div> */}
             </Paper>
         );
     }
