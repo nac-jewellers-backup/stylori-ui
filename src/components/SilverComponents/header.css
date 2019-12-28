@@ -64,6 +64,7 @@
   background-color: #fff !important;
   text-align: center !important;
   top: 0;
+  position: inherit !important;
   /* padding-top: 30px; */
   width: 100%;
   line-height: 1.42857143;
@@ -364,11 +365,7 @@
   float: right !important;
 }
 
-.header-appbar-sticky1 header {
-  position: sticky;
-  top: 0px;
-
-}
+.header-appbar-sticky1 header {}
 
 .logoImgHeader1 {
   display: flex;

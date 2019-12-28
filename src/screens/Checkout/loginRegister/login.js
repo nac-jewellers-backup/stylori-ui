@@ -14,7 +14,6 @@ const Login = (props) => {
 }
  
 const LoginComponent = (props) => {
-    debugger
     const { classes } = props;
     const { values, handlers, setValues, data } = useLogin(() => props.changePanel(2));
     // const vl = data && data.message

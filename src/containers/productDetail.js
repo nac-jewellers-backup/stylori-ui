@@ -82,7 +82,7 @@ return (
 
           <Grid container spacing={12} >
             <Grid item xs={12} >
-              <Header />
+              <Header wishlist={this.props.wishlistdata}/>
             </Grid>
           </Grid>
 
@@ -143,7 +143,7 @@ return (
           <div style={{ paddingBottom: "50px" }}>
             <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
               <Grid item xs={12} >
-                <Header />
+                <Header wishlist={this.props.wishlistdata}/>
               </Grid>
             </Grid>
 
@@ -151,7 +151,7 @@ return (
               <PriceBuynow data={this.props.data} />
             </Grid>
             <Grid item xs={12} >
-              <ProductDetails data={this.props.data} />
+              <ProductDetails data={this.props.data} wishlist={this.props.wishlistdata}/>
             </Grid>
 
             <Grid item xs={12} >

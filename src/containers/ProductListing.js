@@ -13,6 +13,7 @@ import 'screens/screens.css';
 import filterData from 'mappers/filterData'
 import { async } from 'q';
 import MetaTags from 'react-meta-tags';
+import { CartContext } from 'context'
 
 class Stylori extends React.Component {
   constructor(props) {
@@ -35,7 +36,8 @@ class Stylori extends React.Component {
 
   }
   render() {
-    const { data, dataFilter, loading } = this.props
+  // alert(JSON.stringify(this.props.wishlistdata))
+  const { data, dataFilter, loading } = this.props
     return (
      
       <>
@@ -71,12 +73,12 @@ class Stylori extends React.Component {
             {/* className="text" Filters updating...*/}
           </div>}
           <Grid item xs={12} >
-            <Header data={data} cartcount={this.props.cartcount} wishlist_count={this.props.wishlist_count} />
+            <Header data={data} cartcount={this.props.cartcount} wishlist={this.props.wishlistdata}/>
           </Grid>
 
           <Grid item xs={12}>
-            <ProductDescription title="Jewellery" data={dataFilter} />
-            <Filter datas={data} data={dataFilter} loading={loading}/>
+            <ProductDescription title="Jewellery" data={dataFilter}  wishlist={this.props.wishlistdata}/>
+            <Filter datas={data} data={dataFilter} loading={loading} wishlist={this.props.wishlistdata}/>
           </Grid>
           <Grid item xs={12} >
             <Hidden smDown>
@@ -94,7 +96,8 @@ class Stylori extends React.Component {
 // const history = (props, aa) => props.history.push(`/stylori?${aa}`);
 
 const Components = props => {
-  let { FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters, wishlist_count }, setloadingfilters } = React.useContext(FilterOptionsContext);
+  let { CartCtx: { allorderdata, wishlistdata } } = React.useContext(CartContext);
+  let { FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters }, setloadingfilters } = React.useContext(FilterOptionsContext);
   let content, mapped = [];
   // alert(JSON.stringify(cartcount))
   var arrFilters = Array(mappedFilters)
@@ -107,7 +110,7 @@ const Components = props => {
   }
   if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
 
-  else content = <Stylori {...props} cartcount={cartcount} data={dataArr} dataFilter={mappedFiltersList} loadingfilters={loadingfilters} loading={loading} mappedFilters={mappedFilters} setloadingfilters={setloadingfilters} />
+  else content = <Stylori {...props} cartcount={cartcount} allorderdata={allorderdata} wishlistdata={wishlistdata} data={dataArr} dataFilter={mappedFiltersList} loadingfilters={loadingfilters} loading={loading} mappedFilters={mappedFilters} setloadingfilters={setloadingfilters} />
   return content
 }
 

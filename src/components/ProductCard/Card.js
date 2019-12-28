@@ -337,7 +337,6 @@ const renderImages = (props, cardstate) => {
 }
 
 function Component(props) {
-  debugger
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
     hovered: false,
@@ -371,7 +370,7 @@ function Component(props) {
               >
                 &#xf08a;
               </i> */}
-              {/* <Wishlist sku={props.data.skuId} productId={props.data.productId} /> */}
+              {/* <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist}/>   */}
           </Grid>
           </Grid>
         </CardActions>

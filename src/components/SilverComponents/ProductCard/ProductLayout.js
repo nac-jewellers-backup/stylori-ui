@@ -83,9 +83,9 @@ class Component extends React.Component {
 
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
-debugger
+
     if (this.props.data !== prevProps.data) {
-      debugger
+      
       this.setState({ loadingtext: false })
       // setTimeout(function(){ this.setState({loading:false}); }.bind(this), 2000);
     }
@@ -94,7 +94,7 @@ debugger
 
   }
   handleOffset = () => {
-    debugger
+    
     const offsets = this.props.offset + 24
     // console.log('offsets', offsets)
     this.setState({ loadingtext: true })
