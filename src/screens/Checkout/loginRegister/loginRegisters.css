@@ -102,3 +102,11 @@
 .log-text{
     width: 100% !important;
 }
+.my-facebook-button-class {
+    background: #394579;
+    padding: 4px;
+    color: white;
+}
+.fb{
+    font-size: 26px !important;
+}
