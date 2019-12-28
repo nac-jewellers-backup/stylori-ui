@@ -28,7 +28,7 @@ return (
         <form action="javascript:void(0)" onSubmit={() => handlers.handleSubmit()}>
             <div style={{ width: "100%" }}>
                 <Grid container spacing={12}>
-                    <Grid item xs={8} lg={8}>
+                    <Grid item xs={8} lg={8}> 
                         <Input
                             helperText="Promocode is required"
                             placeholder='Enter Promocode'
