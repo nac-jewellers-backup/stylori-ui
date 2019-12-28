@@ -25,7 +25,7 @@ const useWishlists = (props) => {
             ...values,
             [type]: value
         })
-        // makeFetch(values) 
+        // makeFetch(values)
     }
 
     const handleInvalid = (type, status) => {
@@ -55,7 +55,6 @@ const useWishlists = (props) => {
     const handelRemove = (num) => {
         debugger
         if (user_id.length > 0 && check_gustlog === "false") {
-
             values["isactive"] = num
             values["user_id"] = user_id
             setValues({ values, ...values });
@@ -75,7 +74,7 @@ const useWishlists = (props) => {
                 }
             }
             removemakeFetch(values);
-          
+           
          }
         // changePanel(3)
         
