@@ -14,7 +14,7 @@ const RegisterComponent = (props) => {
     const { values, setValues, handlers, data, valuesadrees } = useRegister(() => props.changePanel(2));
     // var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
     // var ccc = data.message ? data.message : ""
-    const paths = window.location.pathname.split("-")[0] === "/account"
+    const paths = window.location.pathname.split("-")[0]==="/account"
     const pathreg = window.location.pathname === "/registers"
 
 
