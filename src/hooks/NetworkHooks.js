@@ -3,6 +3,7 @@ import { NetworkContext } from '../context/NetworkContext';
 import { FieldsOnCorrectType } from 'graphql/validation/rules/FieldsOnCorrectType';
 import { circIn } from '@popmotion/easing';
 let accessTokens = localStorage.getItem("accessToken") ? localStorage.getItem("accessToken") : ""
+
 export const useDummyRequest = (mapper) => {
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState(false);

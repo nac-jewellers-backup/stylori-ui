@@ -1,0 +1,20 @@
+.backgroundColor{
+    display: flex;
+    width: 60px !important;
+    height: 60px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 8px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+    color: rgb(255, 255, 255);
+    background: rgb(241, 72, 128);
+    border-radius: 50%;
+    
+}
+.ChatPosition{
+    position: fixed;
+    bottom: 15px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 5;
+}

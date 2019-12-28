@@ -77,7 +77,6 @@ const useLogin = (changePanel, props) => {
                     makeRequestCod(obj);
                     localStorage.setItem('user_id', bb)
                     sessionStorage.setItem("user_id", bb)
-                    localStorage.setItem("isedit", 1)
                     localStorage.setItem('accessToken', data.accessToken)
                     // setValues({user_id:data.userprofile.id})
                     // changePanel(3)
@@ -95,7 +94,13 @@ const useLogin = (changePanel, props) => {
             localStorage.setItem("check_dlt", false)
             val["addressvalues"] = addresData
             val["addrs"] = false
+            // alert(JSON.stringify(addresData))
+            // if (addresData && addresData.data && addresData.data.allUserAddress && addresData.data.allUserAddress.nodes && addresData.data.allUserAddress.nodes.length < 0) {
+                localStorage.setItem("isedit", 1)
+            // }
             addressetValues && addressetValues(val)
+            // localStorage.setItem("isedit", 1)
+
             localStorage.setItem("c_k_l", true)
             if (!pathnames) {
                 changePanel(3)
@@ -159,7 +164,7 @@ const useLogin = (changePanel, props) => {
                 emerr: false,
             }
         })
-        // props.change()
+
     }
     // const vl = data && data.message
     const errmsg = data.message ? data.message : ""

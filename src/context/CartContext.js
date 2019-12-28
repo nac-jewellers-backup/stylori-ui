@@ -35,7 +35,7 @@ export const CartConsumer = CartContext.Consumer;
 const Provider = (props) => {
     const [cartFilters, setCartFilters] = React.useState(initialCtx.CartCtx);
     const [allorderdata, setallorderdata] = React.useState([])
-    const [wishlistdata, setwishlistdata] = React.useState([]) 
+    const [wishlistdata, setwishlistdata] = React.useState([])
     const [wishlist_count, setwishlist_count] = React.useState([])
     // console.log("hdjhjhkjfh", allorderdata)
     var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';

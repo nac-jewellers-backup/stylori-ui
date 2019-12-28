@@ -17,7 +17,7 @@ const RegisterComponent = (props) => {
     const paths = window.location.pathname.split("-")[0] === "/account"
     const pathreg = window.location.pathname === "/registers"
 
-   
+
     return (
         <div className='pt-sm'>
             <form onSubmit={(e) => {
@@ -211,7 +211,10 @@ const RegisterComponent = (props) => {
                         }
 
                         <div className='login-butn'>
-                            {paths || pathreg ? "" : <Button className='back-b' onClick={() => handlers.clear()} >Back</Button>}
+                            {paths || pathreg ? "" : <Button className='back-b' onClick={() => {
+                                handlers.clear()
+                                props.change()
+                            }} >Back</Button>}
                             <Button className='apply-b' type="submit" >
                                 {paths ? "Save" : "Register"}
                             </Button>
