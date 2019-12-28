@@ -38,6 +38,7 @@
 .product-dis {
   color: #394578 !important;
   font-size: 15px !important;
+  text-transform: capitalize;
 }
 
 .product-backg {
