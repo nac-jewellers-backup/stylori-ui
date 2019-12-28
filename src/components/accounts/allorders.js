@@ -74,7 +74,7 @@ class Allorders extends React.Component {
                                 <ExpansionPanel
                                     square
                                     expanded={expanded === index}
-                                    onChange={this.handleChange(index)}
+                                    onChange={this.handleChange(index)} 
                                     style={{ boxShadow: "none", boxShadow: "rgb(242, 242, 242) 4px 10px 20px 5px" }}
                                     key={index}
                                 >

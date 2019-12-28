@@ -99,6 +99,7 @@ class Component extends React.Component {
                     list={`MuiBreadcrumbs-li ${classes.fontwhite}`}
                     data={this.props.data[0].breadcrumsdata}
                     subdata={this.props.data[0].cartsubdata}
+                    changePanel={this.changePanel}
                 />
                 <div className='pt-sm checkout-ovralldiv-media' >
                     <div style={{ marginTop: "20px" }}>

@@ -232,15 +232,14 @@ class Component extends React.Component {
             checked[val[0]] = { [mm]: false }
             this.setState({ ...checked, checked })
           }
-          return false
+          // return false
         }
       })
-    }
+    } 
     return bz
   })
   handleChange(value, BoolName, e, title, TargetName) {
     debugger
-    
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
@@ -262,8 +261,10 @@ class Component extends React.Component {
       let checkedvalue = {};
       checkedvalue[value] = BoolName
       checked[e.target.name] = checkedvalue
+      // arr.push({ key: chipData, label: value, title: checkedvalue });
+      // chipData = arr;
       this.setState({
-        checked
+        chipData, checked
       }, () => this.props.setFilters(checked))
     }
     else {
@@ -275,8 +276,9 @@ class Component extends React.Component {
         let checkedvalue = {};
         checkedvalue[keyNameFilter] = true
         checked[nameFilter] = checkedvalue
-        // arr.push({ key: chipData, label: nameFilter, title: title });
-        // chipData = arr;
+      //   arr.push({ key: chipData, label: keyNameFilter, title: nameFilter });
+      // chipData = arr;
+        alert(JSON.stringify(  checkedvalue))
         this.setState({
           chipData,
           checked
@@ -290,7 +292,6 @@ class Component extends React.Component {
     let arr = [];
     let checkTitle = true;
     chipData.map(val => {
-
       if (val.title === title) {
         checkTitle = false
       }
@@ -362,7 +363,6 @@ class Component extends React.Component {
     this.setState({ open: false });
   };
   selectItem = (name) => {
-    
     var arr1;
     let { selected } = this.state;
     var map = selected.map(val => { if (val !== undefined && val !== null) { return val } })
