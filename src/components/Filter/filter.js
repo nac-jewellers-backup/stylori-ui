@@ -236,8 +236,16 @@ class Component extends React.Component {
     return bz
   })
   handleChange(value, BoolName, e, title, TargetName) {
-    
-
+    debugger
+    let pathnameSplit = window.location.pathname.split('/')
+            if(this.state.category === null  || this.state.category === undefined){
+              const splitHiphen = () => {
+                if (pathnameSplit[1].indexOf('-')) {
+                    return pathnameSplit[1].split('-')
+                }
+            }
+            this.setState({category:splitHiphen()[0]})
+            }
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
