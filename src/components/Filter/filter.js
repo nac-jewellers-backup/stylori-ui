@@ -247,7 +247,7 @@ class Component extends React.Component {
                     return pathnameSplit[1].split('-')
                 }
             }
-            this.setState({category:splitHiphen()})
+            this.setState({category:splitHiphen()[0]})
             }
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
