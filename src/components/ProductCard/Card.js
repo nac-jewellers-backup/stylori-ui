@@ -116,7 +116,6 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
       //              (max-width: 1440px) 1440w,
       //              (max-width: 2560px) 2560w,
       //              2560w
-
       //  "
       onError={(e) => imageOnError(e, props.data.imageResolution)}
 

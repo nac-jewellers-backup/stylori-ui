@@ -40,7 +40,7 @@ class Component extends React.Component {
     render() {
         const { wishlistdata } = this.props.wishlistdata;
         return (
-            <>
+            <> 
                 {/* {JSON.stringify(this.props.wishlistdata)} */}
                 {wishlistdata && wishlistdata.nodes.length > 0 ?
                     <>
