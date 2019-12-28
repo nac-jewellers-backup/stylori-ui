@@ -80,7 +80,7 @@ const RatingComponent = (props) => {
                 </Grid>
                 </Grid>
             </Grid>
-        </form>
+        </form> 
         </div>
         </Container>
     )
