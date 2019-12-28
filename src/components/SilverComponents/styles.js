@@ -6,7 +6,7 @@ export const styles = theme => ({
     color: theme.palette.secondary.dark,
     fontFamily: "fontawesome",
     textAlign: 'right',
-    fontSize: '20px !important',
+    // fontSize: '20px !important',
     marginTop: '18px !important',
     display: "flex",
     alignContent: "center",

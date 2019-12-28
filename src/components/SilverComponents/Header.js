@@ -219,11 +219,11 @@ class Header extends Component {
                                                     aria-owns={openPopover ? 'simple-popper' : ""}
                                                     onClick={this.handleClickPopover}
                                                 >
-                                                    <i class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                    <i style={{fontSize:"20px"}} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                 </span>
                                                 // <img className="icons-header-sizes" src={usershape}/>
-                                                : <span onClick={() => window.location.pathname = "/login"}>
-                                                    <i class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                : <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
+                                                    <i style={{fontSize:"20px"}} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                 </span>
                                             }
                                             <Popover
@@ -260,7 +260,7 @@ class Header extends Component {
                                             // wishlist_count
                                             // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
                                             >
-                                                <i class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
+                                                <i style={{fontSize:"20px"}} class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
                                                     if (user_id.length > 0) {
                                                         window.location.href = `/account${'-wishlist'}`
                                                     } else {
@@ -268,9 +268,9 @@ class Header extends Component {
                                                     }
                                                 }}  ></i>
                                             </Badge>
-                                            <Badge style={{ fontSize: "11px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                <NavLink to="/cart">
-                                                    <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                            <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                <a  href="/cart" >
+                                                    <i style={{fontSize:"20px"}} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
                                                 </NavLink> </Badge>
                                         </div>
@@ -372,8 +372,48 @@ class Header extends Component {
 
                                                         </div>
 
-                                                        <i class="fa fa-user"></i>
-                                                        <Badge badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary">
+                                                        {localStorage.getItem("true") ?
+                                                <span
+                                                    aria-owns={openPopover ? 'simple-popper' : ""}
+                                                    onClick={this.handleClickPopover}
+                                                >
+                                                    <i style={{position:"relative",verticalAlign:"middle"}} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                </span>
+                                                // <img className="icons-header-sizes" src={usershape}/>
+                                                : <span onClick={() => window.location.pathname = "/login"}>
+                                                    <i style={{position:"relative",verticalAlign:"middle"}}class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                </span>
+                                            }
+                                            <Popover
+                                                id="simple-popper"
+                                                open={openPopover}
+                                                anchorEl={anchorEl}
+                                                onClose={this.handleClosePopover}
+                                                anchorOrigin={{
+                                                    vertical: 'bottom',
+                                                    horizontal: 'center',
+                                                }}
+                                                transformOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'center',
+                                                }}
+                                            >
+                                                <div
+                                                    style={{ width: "220px", height: "45px", lineHeight: "45px", cursor: "pointer" }}
+                                                >
+                                                    <a
+                                                        onClick={() => {
+                                                            localStorage.clear();
+                                                            window.location.reload()
+                                                            window.location.pathname = "/login"
+                                                        }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
+                                             </a>&nbsp;/&nbsp;
+                                             <NavLink onClick={() => window.location.pathname = "/account-profile"}>
+                                                        My Account
+                                               </NavLink>
+                                                </div>
+                                            </Popover>
+                                                        <Badge badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary">
                                                             <i class={`fa fa-heart ${classes.iconFafaheart}`} onClick={() => {
                                                                 if (user_id.length > 0) {
                                                                     window.location.href = `/account${'-wishlist'}`
