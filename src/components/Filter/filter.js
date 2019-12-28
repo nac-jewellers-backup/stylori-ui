@@ -41,11 +41,11 @@ class Component extends React.Component {
       CardRadio: false,
       checked: {
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
-        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {},  Category:null
+        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {},  category:{}
       },
       checkedArrayObj: {
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
-        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {},  Category:null
+        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {},  category:{}
       },
       selected: [],
       filtercheck: '',
@@ -240,19 +240,23 @@ class Component extends React.Component {
   })
   handleChange(value, BoolName, e, title, TargetName) {
     debugger
-    let pathnameSplit = window.location.pathname.split('/')
-            if(this.state.category === null  || this.state.category === undefined){
-              const splitHiphen = () => {
-                if (pathnameSplit[1].indexOf('-')) {
-                    return pathnameSplit[1].split('-')
-                }
-            }
-            this.setState({category:splitHiphen()[0]})
-            }
+    
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
-
+    let pathnameSplit = window.location.pathname.split('/')
+    if(Object.entries(this.state.category).length === 0 && this.state.category.constructor === Object){
+      const splitHiphen = () => {
+        if (pathnameSplit[1].indexOf('-')) {
+            return pathnameSplit[1].split('-')
+        }
+    }
+    var _category_capital_letter = splitHiphen()[0].charAt(0).toUpperCase() + splitHiphen()[0].slice(1)
+    var _category_obj = {}
+    _category_obj[_category_capital_letter] = true
+    checked['category']= _category_obj
+    this.setState(checked)
+    }
     if (TargetName === undefined) {
       this.props.setloadingfilters(true)
       let checkedvalue = {};
