@@ -23,9 +23,11 @@ const RegisterComponent = (props) => {
             <form onSubmit={(e) => {
                 handlers.handleSubmit(e)
             }} action="javascript:void(0)" >
-                <Grid container spacing={12}>
-                    <Grid item lg={1} />
-                    <Grid item xs={12} lg={window.location.pathname === "/registers" ? 12 : 6}>
+                <Grid container>
+                
+                    <Grid  item xs={12} >
+                    {/* lg={window.location.pathname === "/registers" ? 12 : 6} */}
+                       <Grid style={{paddingLeft:"20px"}}>
                         <h5 className='title'>
                             {window.location.pathname.split("-")[0] === "/account" ? "" : <>
                                 {window.location.pathname === "/registers" ? "Register" : "New user registration"}</>}
@@ -53,7 +55,7 @@ const RegisterComponent = (props) => {
                         }
                         {paths ?
                             <Grid container spacing={12}>
-                                <Grid item lg={6} >
+                                <Grid item  >
                                     <Input
                                         margin="normal"
                                         variant="outlined"
@@ -68,7 +70,7 @@ const RegisterComponent = (props) => {
                                             readOnly: true,
                                         }}
                                     /> </Grid>
-                                <Grid item lg={6} style={{ textAlign: "center", lineHeight: "66px", color: "#337ab7" }}>
+                                <Grid item  style={{ textAlign: "center", lineHeight: "66px", color: "#337ab7",paddingLeft:"8px" }}>
                                     <a> Change password </a> </Grid>
                             </Grid> : <>
                                 <Input
@@ -101,11 +103,11 @@ const RegisterComponent = (props) => {
                             </>
                         }
                         <Grid container spacing={12}>
-                            <Grid item lg={4} xs={4}>
+                            <Grid item  xs={4}>
                                 <SimpleSelect val={'1'} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                             </Grid>
                             {!paths && <>
-                                <Grid item lg={4} xs={4}>
+                                <Grid item  xs={4}>
                                     <Input
                                         margin="normal"
                                         variant="outlined"
@@ -121,7 +123,7 @@ const RegisterComponent = (props) => {
                                     />
                                     <label className='errtext'> {values.errortext && values.errortext.firstname}</label>
                                 </Grid>
-                                <Grid item lg={4} xs={4}>
+                                <Grid item  xs={4}>
                                     <Input
                                         margin="normal"
                                         variant="outlined"
@@ -138,7 +140,7 @@ const RegisterComponent = (props) => {
                                     <label className='errtext'> {values.errortext && values.errortext.lastname}</label>
                                 </Grid></>}
                             {paths && <>
-                                <Grid item lg={4} xs={4}>
+                                <Grid item  xs={4}>
                                     <Input
                                         margin="normal"
                                         variant="outlined"
@@ -151,7 +153,7 @@ const RegisterComponent = (props) => {
                                         helperText="Firstname is required"
                                         required />
                                 </Grid>
-                                <Grid item lg={4} xs={4}>
+                                <Grid item  xs={4}>
                                     <Input
                                         margin="normal"
                                         variant="outlined"
@@ -167,13 +169,13 @@ const RegisterComponent = (props) => {
                         </Grid>
 
                         {paths &&
-                            <Grid item xs={12} lg={12}>
+                            <Grid item xs={12} >
                                 <Grid container spacing={12}>
                                     <Grid item xs={6} lg={6}>
                                         <SimpleSelect name={"India"} selectData={['India']}
                                             disabled={'disabled'} />
                                     </Grid>
-                                    <Grid item xs={6} lg={6}>
+                                    <Grid item xs={6} >
                                         <Input
                                             className='text-f'
                                             type="text"
@@ -187,11 +189,11 @@ const RegisterComponent = (props) => {
                                     </Grid>
                                 </Grid>
                                 <Grid container spacing={12}>
-                                    <Grid item xs={3} lg={3}>
+                                    <Grid item xs={3} >
                                         <SimpleSelect name={['+91']} selectData={['+91']}
                                             disabled={'disabled'} />
                                     </Grid>
-                                    <Grid item xs={9} lg={9}>
+                                    <Grid item xs={9} >
                                         <Input
                                             className='text-f'
                                             type="text"
@@ -216,6 +218,7 @@ const RegisterComponent = (props) => {
                                 {paths ? "Save" : "Register"}
                             </Button>
                         </div>
+                        </Grid>
                     </Grid>
                 </Grid>
             </form>
