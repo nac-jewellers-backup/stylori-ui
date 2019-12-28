@@ -242,18 +242,25 @@ class Header extends Component {
                                                 }}
                                             >
                                                 <div
-                                                    style={{ width: "220px", height: "45px", lineHeight: "45px", cursor: "pointer" }}
                                                 >
-                                                    <a
-                                                        onClick={() => {
-                                                            localStorage.clear();
-                                                            window.location.reload()
-                                                            window.location.pathname = "/login"
-                                                        }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
-                                             </a>&nbsp;/&nbsp;
-                                             <NavLink to="/account-profile">
-                                                        My Account
-                                               </NavLink>
+                                                    <Grid
+                                                        style={{ padding: "10px", width: "220px", cursor: "pointer" }}
+                                                        container spacing={12} lg={12}>
+                                                        <Grid item lg={6}> <div
+                                                            onClick={() => {
+                                                                localStorage.clear();
+                                                                window.location.reload()
+                                                                window.location.pathname = "/login"
+                                                            }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
+                                             </div></Grid>
+                                                        <Grid item lg={6}> <div style={{ float: "right" }} onClick={() => { window.location.href = "/account-profile" }}>
+                                                            / My Account
+                                                 </div></Grid>
+                                                    </Grid>
+
+                                                    {/* <NavLink to="/account-profile"> */}
+
+                                                    {/* </NavLink> */}
                                                 </div>
                                             </Popover>
                                             <Badge color="secondary"
@@ -400,18 +407,25 @@ class Header extends Component {
                                                             }}
                                                         >
                                                             <div
-                                                                style={{ width: "220px", height: "45px", lineHeight: "45px", cursor: "pointer" }}
                                                             >
-                                                                <a
-                                                                    onClick={() => {
-                                                                        localStorage.clear();
-                                                                        window.location.reload()
-                                                                        window.location.pathname = "/login"
-                                                                    }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
-                                             </a>&nbsp;/&nbsp;
-                                             <NavLink to="/account-profile">
-                                                                    My Account
-                                               </NavLink>
+                                                                <Grid
+                                                                    style={{ padding: "10px", width: "220px", cursor: "pointer" }}
+                                                                    container spacing={12} lg={12}>
+                                                                    <Grid item lg={6}> <div
+                                                                        onClick={() => {
+                                                                            localStorage.clear();
+                                                                            window.location.reload()
+                                                                            window.location.pathname = "/login"
+                                                                        }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
+                                             </div></Grid>
+                                                                    <Grid item lg={6}> <div style={{ float: "right" }} onClick={() => { window.location.href = "/account-profile" }}>
+                                                                        / My Account
+                                                 </div></Grid>
+                                                                </Grid>
+
+                                                                {/* <NavLink to="/account-profile"> */}
+
+                                                                {/* </NavLink> */}
                                                             </div>
                                                         </Popover>
                                                         <Badge badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary">

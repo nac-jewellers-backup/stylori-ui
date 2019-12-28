@@ -191,8 +191,9 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                         </a> */}
                                                     </div>
                                                 </Popover>
+                                                <div onClick={() => window.scrollTo(0, 1800)}><Ratings ratings="starts-review" disable={"disable"} /></div>
 
-                                                <div><Ratings ratings="starts-review" /></div>
+                                                {/* <div><Ratings ratings="starts-review" /></div> */}
                                             </div>
                                         </div>
                                     </Hidden>
