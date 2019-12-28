@@ -12,23 +12,23 @@ const WishlistComponent = (props) => {
 
     return (
         <>
-            {values.isactive !== 2 ? <>
-                <i class="fa fa-heart overall-icons" style={{ color: "#d51f63", pointer: "cursor" }}
+        {values.isactive !== 2 ? <>
+            <i class="fa fa-heart-o overall-icons" style={{ color: "#d51f63", pointer: "cursor" }}
+                onClick={() => {
+                    values["product_sku"] = props.sku
+                    values["product_id"] = props.productId
+                    setValues({ values, ...values });
+                    handlers.handelSubmit(2)
+                }}
+            ></i></> : <>
+                <i class="fa fa-heart-o overall-icons" style={{ color: "#d51f63", pointer: "cursor" }}
                     onClick={() => {
                         values["product_sku"] = props.sku
                         values["product_id"] = props.productId
                         setValues({ values, ...values });
-                        handlers.handelSubmit(2)
+                        handlers.handelRemove(1)
                     }}
-                ></i></> : <>
-                    <i class="fa fa-heart overall-icons" style={{ color: "#d51f63", pointer: "cursor" }}
-                        onClick={() => {
-                            values["product_sku"] = props.sku
-                            values["product_id"] = props.productId
-                            setValues({ values, ...values });
-                            handlers.handelRemove(1)
-                        }}
-                    ></i></>}
+                ></i></>}
             {/* {JSON.stringify(props.sku)} */}
 
         </>

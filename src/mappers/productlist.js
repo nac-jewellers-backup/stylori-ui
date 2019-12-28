@@ -1,5 +1,4 @@
 import { resolutions } from "utils";
-
 var colSize = null
 const screenWidth = () => {
     const width = window.innerWidth;
@@ -76,7 +75,6 @@ var screen_width_type = () => {
     // [50,60,70,80,90,100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600,625,650,675,700,725,750,775,800,825,850,875,900,925,950,975,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,2100,2200,2300,2400]
     for (var i = 0; i <= sizes.length; i++) {
         if ((calc_card_resolution + calc_card_resolution) === sizes[i] || (calc_card_resolution + calc_card_resolution) < sizes[i]) {
-
             img_res = sizes[i]
             break;
         }
@@ -89,7 +87,6 @@ var screen_width_type = () => {
     return img_res
 }
 console.log('screen_width_type()', screen_width_type())
-
 // const baseUi = "https://assets-cdn.stylori.com/";
 // const injectUrl = (url, baseUi) => url ? resolutions.map(k => ({ ...k, img: `${baseUi}${url.imageUrl===undefined  ? url : url.imageUrl}` })) : [];
 const injectUrl = (url, baseUi) => {
@@ -120,7 +117,6 @@ const injectUrl = (url, baseUi) => {
         url_split_1000X1000.splice(2, 0, _resolutions_1000x1000);
         url_construct = url_split.join().replace(/\,/g, '/')
         url_construct_1000x1000 = url_split_1000X1000.join().replace(/\,/g, '/')
-
     }
     else {
         var img_not_found = "product/productnotfound.webp"
@@ -135,9 +131,7 @@ const injectUrl = (url, baseUi) => {
 
     var img_url = { img: `${baseUi}${url_construct}` }
     return img_url
-
 }
-
 // const valuesinjectUrl = (imageUrl, cdnUrl) => injectUrl(imageUrl, cdnUrl);in
 const placeImages = (placeImage) => placeImage.find(fd => !fd.ishover);
 const hoverImage = (placeImage) => placeImage.find(fd => fd.ishover);
@@ -175,17 +169,12 @@ export default function (data, cdnUrl) {
                 skuId: k.trans_sku_lists[0].generatedSku,
                 oneDayShipping: k.trans_sku_lists[0].isReadyToShip,
                 imageResolution: { img_res: img_res, url_1000x1000: url_construct_1000x1000 }
-
             }
         } catch (error) {
         }
-
         return _d;
     })
     // console.info('_format', _format);
     return _format;
-
-
 }
-
 // injectUrl("/images/product/SE0775/SE0775-1Y.jpg", cdnUrl)

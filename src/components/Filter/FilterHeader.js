@@ -25,8 +25,8 @@ const FilterHeader = (props) => {
     const { setSort, setOffset, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
     const loc = window.location.search
     return <Component setSort={setSort} setOffset={setOffset} offset={FilterOptionsCtx.offset} sort={FilterOptionsCtx.sort}  {...props} />
-}
-const sortBy = "Sort By"
+  }
+
 class Component extends React.Component {
     constructor(props) {
         super(props)
@@ -60,12 +60,12 @@ class Component extends React.Component {
     handleExpandClick = () => {
         this.setState({ expanded: !this.state.expanded });
     }
-    handleChange = (event) => {
+    handleChange = (event) =>{
         debugger
-        if (this.props.offset > 0) this.props.setOffset(0)
-        console.log(this.props.offset)
-        this.props.setSort({ values: event.target.value })
-
+    if (this.props.offset > 0) this.props.setOffset(0)
+    console.log(this.props.offset)
+        this.props.setSort({ values:event.target.value})
+        
         this.setState({ expanded: false })
     }
     render() {
