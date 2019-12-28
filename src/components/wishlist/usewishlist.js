@@ -25,7 +25,7 @@ const useWishlists = (props) => {
             ...values,
             [type]: value
         })
-        // makeFetch(values)
+        // makeFetch(values) 
     }
 
     const handleInvalid = (type, status) => {
