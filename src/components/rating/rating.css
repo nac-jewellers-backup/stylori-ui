@@ -1,12 +1,6 @@
 /* component */
-
-.starts-review {
-  display: flex !important;
-  cursor: pointer;
-  margin-top: 5px;
-  color: #ccc;
-  font-family: "Robot-Black" !important;
-  /* margin-left: 27% !important;  */
+.starts-review{
+    display: flex !important;
 }
 .star-rating {
     flex-direction: row-reverse;

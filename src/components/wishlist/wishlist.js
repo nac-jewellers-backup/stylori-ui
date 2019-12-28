@@ -7,40 +7,28 @@ const Wishlist = (props) => {
 }
 
 const WishlistComponent = (props) => {
-    
     const { classes } = props;
     const { values, setValues, handlers } = useWishlists();
-    React.useEffect(() => {
-        
-        if (JSON.stringify(props.wishlist) && JSON.stringify(props.wishlist).length > 0) {
-            props.wishlist && props.wishlist.wishlistdata && props.wishlist.wishlistdata.nodes.map(val => {
-                if (val.skuId === props.sku) {
-                    values["isactive"] = 2
-                    setValues({ values, ...values });
-                    return false
-                }
-            })
-        }
-    }, [])
+
     return (
         <>
-            {values.isactive !== 2 ? <>
-                <i class="fa fa-heart-o overall-icons" style={{ color: props.props ? "#f699a3" : "" }}
+        {values.isactive !== 2 ? <>
+            <i class="fa fa-heart-o overall-icons" style={{color:props.props?"#f699a3":""}}
+                onClick={() => {
+                    values["product_sku"] = props.sku
+                    values["product_id"] = props.productId
+                    setValues({ values, ...values });
+                    handlers.handelSubmit(2)
+                }}
+            ></i></> : <>
+                <i class="fa fa-heart-o overall-icons" style={{ color: "red" }}
                     onClick={() => {
                         values["product_sku"] = props.sku
                         values["product_id"] = props.productId
                         setValues({ values, ...values });
-                        handlers.handelSubmit(2)
+                        handlers.handelRemove(1)
                     }}
-                ></i></> : <>
-                    <i class="fa fa-heart overall-icons" style={{ color: "red" }}
-                        onClick={() => {
-                            values["product_sku"] = props.sku
-                            values["product_id"] = props.productId
-                            setValues({ values, ...values });
-                            handlers.handelRemove(1)
-                        }}
-                    ></i></>}
+                ></i></>}
             {/* {JSON.stringify(props.sku)} */}
 
         </>

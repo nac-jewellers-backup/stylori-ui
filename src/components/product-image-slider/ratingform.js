@@ -51,7 +51,7 @@ const RatingComponent = (props) => {
                     <label className='errtext'> {values.errortext.ratemsg ? values.errortext.ratemsg : ""}</label>
                     <Input
                         margin="normal"
-                        variant="outlined" 
+                        variant="outlined"
                         type="text"
                         name="message"
                         placeholder='Your Reviews'

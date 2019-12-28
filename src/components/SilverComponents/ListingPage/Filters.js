@@ -219,7 +219,7 @@ const Filters = (props) => {
 
                     <IconButton edge="end" color="inherit" onClick={() => setState({...state, CardRadio: !CardRadio, productDisplay: !productDisplay })} >
                       <Typography variant=""
-                        className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
+                        className={`filter-mbl-font ${classes.colorMain}`} style={{fontSize:'1rem'}}><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
                         Sort
                     </Typography>
                     </IconButton>

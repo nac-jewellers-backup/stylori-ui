@@ -19,12 +19,12 @@ const usePromo = (props) => {
             // return false
         }
         if (data.message === "Applied Successfully") {
-            setCartFilters({
-                discounted_price: data.price_response.discount,
-                tax_price: 1000
-            })
-            // localStorage.setItem('pro', data.discounted_price)
-            // localStorage.setItem('prop', data.tax_price)
+                setCartFilters({
+                    discounted_price: data.price_response.discount,
+                    tax_price: 1000
+                })
+                // localStorage.setItem('pro', data.discounted_price)
+                // localStorage.setItem('prop', data.tax_price)
             alert("Your Promo code applied Successfully")
         }
 
@@ -42,7 +42,7 @@ const usePromo = (props) => {
 
     const handlers = { handleSubmit, handleChange };
 
-    return {data, values, handlers }
+    return { values, handlers }
 }
 
 export default usePromo;
