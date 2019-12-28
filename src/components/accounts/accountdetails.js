@@ -26,8 +26,8 @@ class Accountdetails extends Component {
 
     }
     handleClick = (e) => {
-        debugger
-        this.setState({ currency: e.target.value,isActive:e.target.value });
+        this.setState({ currency: e.target.value, isActive: e.target.value });
+        window.history.pushState(window.location.href, null, `/account${"-" + e.target.value}`);
     };
 
     Activeaccounts = (name) => {
@@ -45,22 +45,22 @@ class Accountdetails extends Component {
         // const { wishlistdata } = this.props.wishlistdata;
         const currencies = [
             {
-              label: 'profile',
+                label: 'profile',
             },
             {
-              label: 'addresses',
+                label: 'addresses',
             },
             {
-              label: 'shopping-cart',
+                label: 'shopping-cart',
             },
             {
-              label: 'wishlist',
+                label: 'wishlist',
             },
             {
                 label: 'allorders',
-              },
-            
-          ];
+            },
+
+        ];
         return (
             <Container>
                 <Hidden smDown>
@@ -102,7 +102,7 @@ class Accountdetails extends Component {
                                             this.state.isActive == 'profile' &&
                                             <>
                                                 {/* {c_k_l !== true ? */}
-                                                <Register />
+                                                <Register account={true} />
                                                 {/* <Addressform/> */}
                                                 {/* : <Login /> */}
                                                 {/* } */}
@@ -110,7 +110,7 @@ class Accountdetails extends Component {
 
                                         }
                                         {
-                                            this.state.isActive == 'addresses' && <Addressform />
+                                            this.state.isActive == 'addresses' && <Addressform account={true} />
                                         }
                                         {
                                             this.state.isActive == 'shopping-cart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
@@ -141,68 +141,62 @@ class Accountdetails extends Component {
                     <Grid>
                         <div class="inner-page-title"> My Account </div>
                     </Grid>
-                    <Grid style={{display:"flex",justifyContent:"center",marginTop:"10px"}}>
-                  
-
-
-<form noValidate autoComplete="off">
-<div>
-        <TextField
-          select
-          label="Select the options"
-          value={this.state.isActive}
-          onChange={(e) => this.handleClick(e)}
-          SelectProps={{
-            native: true,
-          }}
-          variant="outlined"
-        >
-          {currencies.map(option => (
-            <option key={option.label} value={option.label}>
-              {option.label}
-            </option>
-          ))}
-        </TextField>
-      </div>
-      </form>
+                    <Grid style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
+                        <TextField
+                            select
+                            fullWidth
+                            label="Select the options"
+                            value={this.state.isActive}
+                            onChange={this.handleClick}
+                            SelectProps={{
+                                native: true,
+                            }}
+                            variant="outlined"
+                        >
+                            {currencies.map(option => (
+                                <option key={option.label} value={option.label}>
+                                    {option.label}
+                                </option>
+                            ))}
+                        </TextField>
                     </Grid>
 
-                    <Grid item xs={9}>
-                                    <div className="pay-index-subhed_datas">
-                                        {
-                                            this.state.isActive == 'profile' &&
-                                            <>
-                                                {/* {c_k_l !== true ? */}
-                                                <Register />
-                                                {/* <Addressform/> */}
-                                                {/* : <Login /> */}
-                                                {/* } */}
-                                            </>
+                    <Grid item xs={12}>
+                        <div className="pay-index-subhed_datas">
+                            {
+                                this.state.isActive == 'profile' &&
+                                <>
+                                    {/* {c_k_l !== true ? */}
+                                    <Register account={true} />
+                                    {/* <Addressform/> */}
+                                    {/* : <Login /> */}
+                                    {/* } */}
+                                </>
 
-                                        }
-                                        {
-                                            this.state.isActive == 'addresses' && <Addressform />
-                                        }
-                                        {
-                                            this.state.isActive == 'shopping-cart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
-                                                <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Shopping cart</div>}</>
-                                        }
-                                        {
-                                            this.state.isActive == 'wishlist' && <>
-                                                <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
-                                                {/* {JSON.stringify(this.props.wishlistdata)} */}
-                                            </>
-                                        }
-                                        {
-                                            this.state.isActive == 'allorders' && <>
-                                                <Allorders allorderdata={this.props.allorderdata} data={this.props.data} />
+                            }
+                            {
+                                this.state.isActive == 'addresses' && <Addressform />
+                            }
+                            {
+                                this.state.isActive == 'shopping-cart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
+                                    <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Shopping cart</div>}</>
+                            }
+                            {
+                                this.state.isActive == 'wishlist' && <>
+                                    <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
+                                    {/* {JSON.stringify(this.props.wishlistdata)} */}
+                                </>
+                            }
+                            {
+                                this.state.isActive == 'allorders' && <>
+                                    <Allorders allorderdata={this.props.allorderdata} data={this.props.data} />
 
-                                                {/* {JSON.stringify(this.props.allorderdata)} */}
-                                            </>
+                                    {/* {JSON.stringify(this.props.allorderdata)} */}
+                                </>
 
-                                        }
-                                    </div>
-                                </Grid>
+                            }
+                        </div>
+                    </Grid>
 
 
                 </Hidden>
