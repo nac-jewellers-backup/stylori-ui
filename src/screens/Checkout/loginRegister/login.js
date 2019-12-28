@@ -80,8 +80,8 @@ const LoginComponent = (props) => {
                     </div>
                     <div className='login-butn'>
                         {window.location.pathname === "/login" ? "" : <Button className='back-b' onClick={() => {
-                            handlers.clear()
                             props.change()
+                            handlers.clear()
                         }} >Back</Button>}
                         <Button className='apply-b' type="submit"> {window.location.pathname === "/login" ? "Login" : "Apply"}</Button>
                     </div>

@@ -63,7 +63,8 @@ const Addressforms = (changePanel) => {
         Id2: "",
         addres_id: null,
         index: null,
-        update_clear: false
+        update_clear: false,
+        log_addrs: false
     });
     var addObj = {};
     var adars1 = {}
@@ -77,7 +78,7 @@ const Addressforms = (changePanel) => {
     // var stst = values.ref ? values.ref : ""
     const addressva = values && values.addressvalues && values.addressvalues.length > 0
     const update_clear = values && values.update_clear
-  
+
     useEffect(() => {
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
         if (con_gust !== true) {
@@ -96,20 +97,34 @@ const Addressforms = (changePanel) => {
                         values,
                         ...values,
                     })
+                    localStorage.removeItem('bil_isactive')
+                    localStorage.removeItem('ship_isactive')
                 }
+
             }
         }
-    }, [addresData, userdata, addressva])
+    }, [addresData, userdata, addressva, values.log_addrs])
     React.useEffect(() => {
         if (user_id.length > 0) {
             obj['userprofileId'] = user_id
             addresmakeRequestCod(obj);
         }
-    }, [userdata, addressva, update_clear])
+    }, [userdata, addressva, update_clear, values.log_addrs])
     React.useEffect(() => {
         if (user_id.length > 0) {
             obj['userprofileId'] = user_id
             addresmakeRequestCod(obj);
+        }
+    }, [])
+    React.useEffect(() => {
+        // alert("0",JSON.stringify(values && values.addressvalues && values.addressvalues.data ))
+        // if (values && values.addressvalues && values.addressvalues.data === null) {
+        //     localStorage.removeItem('bil_isactive')
+        //     localStorage.removeItem('ship_isactive')
+        // }
+        if (JSON.parse(localStorage.getItem('gustaddres')) && JSON.parse(localStorage.getItem('gustaddres')).address < 0) {
+            localStorage.removeItem('bil_isactive')
+            localStorage.removeItem('ship_isactive')
         }
     }, [])
 
@@ -308,7 +323,6 @@ const Addressforms = (changePanel) => {
         // window.location.reload(); 
     }
     const selectaddreses = (val_addrs, num, index) => {
-
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
         addObjall['address_id'] = val_addrs && val_addrs.id ? val_addrs.id : ""
         if (values.checkValue1 === true) {

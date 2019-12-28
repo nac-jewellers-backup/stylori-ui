@@ -74,7 +74,7 @@ class Allorders extends React.Component {
                                 <ExpansionPanel
                                     square
                                     expanded={expanded === index}
-                                    onChange={this.handleChange(index)} 
+                                    onChange={this.handleChange(index)}
                                     style={{ boxShadow: "none", boxShadow: "rgb(242, 242, 242) 4px 10px 20px 5px" }}
                                     key={index}
                                 >
@@ -97,10 +97,11 @@ class Allorders extends React.Component {
                                                     </Grid>
                                                     <Grid item lg={6} className="order_addres_user">
                                                         <div><b>Shipping Address :</b></div><br />
-                                                        <div> {val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}&nbsp;
-                                                            {val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].lastname}</div><br />
-                                                        <div> {val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].addressline1}</div><br />
-                                                        <div>  {val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].city}{"-" + val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].pincode}</div>
+                                                        <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}&nbsp;
+                                                            {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].lastname}</div><br />
+                                                        <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].addressline1}</div><br />
+                                                        <div>  {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].city}
+                                                            {"-" + val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].pincode}</div>
                                                         <br />
                                                         {val.shoppingCartByCartId && val.shoppingCartByCartId.giftwrapsByCartId && val.shoppingCartByCartId.giftwrapsByCartId.nodes && val.shoppingCartByCartId.giftwrapsByCartId.nodes.length > 0 ? <>
                                                             <div> <b>gift To</b> :

@@ -74,6 +74,7 @@ const useLogin = (changePanel, props) => {
                     var bb = data.userprofile.id ? data.userprofile.id : ""
                     obj['userprofileId'] = bb
                     obj1['user_id'] = bb
+                    obj1['reload'] = "loading"
                     makeRequestCod(obj);
                     localStorage.setItem('user_id', bb)
                     sessionStorage.setItem("user_id", bb)
@@ -100,7 +101,6 @@ const useLogin = (changePanel, props) => {
             // }
             addressetValues && addressetValues(val)
             // localStorage.setItem("isedit", 1)
-
             localStorage.setItem("c_k_l", true)
             if (!pathnames) {
                 changePanel(3)
@@ -110,17 +110,10 @@ const useLogin = (changePanel, props) => {
                     return false
                 } else {
                     console.clear()
-                    // console.log('_history')
-                    // console.log(_history);
-                    console.clear()
-                    // console.log(history.push('/home'))
-                    // alert(JSON.stringify(_history.location.pathname = '/home'))
-                    // return _history
                     window.location.href = "/home"
                     return false
                 }
             }
-            window.location.reload();
         }
     }, [addresData])
     // React.useEffect(() => {

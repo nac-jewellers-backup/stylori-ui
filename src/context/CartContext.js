@@ -21,7 +21,8 @@ const initialCtx = {
             price: '',
             user_id: '',
             discounted_price: "",
-            tax_price: ''
+            tax_price: '',
+            reload: ""
         },
         loading: false, error: false, data: [], allorderdata: [], wishlistdata: [], wishlist_count: []
     },
@@ -49,11 +50,15 @@ const Provider = (props) => {
     const { loading: wishlistloading, error: wishlisterror, data: wishlistDATA, makeRequest: wishlistmakeRequest } = useGraphql(ALLUSERWISHLISTS, () => { }, {}, false);
     // const prices = cartFilters.price ? cartFilters.price : ''
     const discounted_price = cartFilters.discounted_price ? cartFilters.discounted_price : ""
+    const reload = cartFilters.reload ? cartFilters.reload : ""
     // const { setwishlist_count } = React.useContext(FilterOptionsContext);
     // alert(JSON.stringify(wishlist_count,wishlistdata))
     useEffect(() => {
         if (JSON.stringify(crtdata).length > 10) {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))
+        }
+        if (reload && reload.length > 0) {
+            window.location.reload();
         }
         // localStorage.setItem('cart_id', JSON.stringify(crtdata))
     }, [crtdata])
@@ -83,7 +88,7 @@ const Provider = (props) => {
     }, [wishlistDATA])
     useEffect(() => {
         // if (window.location.pathname.split("-")[0]==="/account") {
-        orderobj["userProfileId"] = userIds 
+        orderobj["userProfileId"] = userIds
         orderobj1["userprofileId"] = userIds
         allordermakeRequest(orderobj);
         wishlistmakeRequest(orderobj1)

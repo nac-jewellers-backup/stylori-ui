@@ -212,8 +212,8 @@ const RegisterComponent = (props) => {
 
                         <div className='login-butn'>
                             {paths || pathreg ? "" : <Button className='back-b' onClick={() => {
-                                handlers.clear()
                                 props.change()
+                                handlers.clear()
                             }} >Back</Button>}
                             <Button className='apply-b' type="submit" >
                                 {paths ? "Save" : "Register"}
