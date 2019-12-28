@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid,Hidden } from '@material-ui/core'
 import '../product-image-slider/product-images.css'
 import styles from './style'
 import './pricing.css'
@@ -23,10 +23,8 @@ export default function Pricing(props) {
                     ""
             }
             {/*  */}
-            <Grid spacing={12} container  xs={12}>
-                <Grid item
-                lg={window.location.pathname !== "/cart"&&window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/checkout" ? 3 : 6} 
-                xs={6}>
+            <Grid spacing={12} container lg={12} xs={12}>
+                <Grid item lg={window.location.pathname !== "/cart"&&window.location.pathname !== "/account" && window.location.pathname !== "/checkout" ? 3 : 6} xs={6}>
                     {props.offerPrice ?
                         <Typography style={{ display: "flex", width: '100%' }}>
                             <Typography
@@ -53,6 +51,7 @@ export default function Pricing(props) {
                                     </Typography>
                                 </Typography> : ""}
                         </Grid>
+                        <Hidden  mdDown>
                         <Grid item lg={12} xs={12}>
                             {
                                 props.offerDiscount ?
@@ -71,6 +70,8 @@ export default function Pricing(props) {
 
                             }
                         </Grid>
+                        </Hidden>
+                        
                     </Grid>
                 </Grid>
             </Grid>

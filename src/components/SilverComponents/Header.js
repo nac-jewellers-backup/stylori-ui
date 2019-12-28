@@ -124,18 +124,18 @@ class Header extends Component {
     };
     scrolling = () => {
         if (window.location.pathname !== "/cart" && window.location.pathname !== '/checkout') {
-            if (window.innerWidth > 959) {
+            if (window.innerWidth > 959) { 
                 if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                     if (document.getElementById("headerContainer")) {
                         document.getElementById("headerContainer").style.position = "fixed";
                         document.getElementById("headerContainerTop").style.height = "74px";
                         document.getElementById("headerContainer").style.background = "#fff";
-                        document.getElementById("headerContainer").style.zIndex = "10000";
+                        document.getElementById("headerContainer").style.zIndex = "1300";
                         document.getElementById("headerContainer").style.boxShadow = "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)";
                         document.getElementById("headerContainer").style.height = "55px";
                     }
                     if (document.getElementById("logoImage")) {
-                        document.getElementById("logoImage").style.width = "50%";
+                        document.getElementById("logoImage").style.width = "50%"; 
                         document.getElementById("logoImage").style.transitionDuration = "0.8s";
                     }
                     if (document.getElementById("logoDiv1")) {
@@ -155,7 +155,7 @@ class Header extends Component {
                     if (document.getElementById("headerContainer")) {
                         document.getElementById("headerContainer").style.position = "inherit";
                         document.getElementById("headerContainer").style.background = "#fff";
-                        document.getElementById("headerContainer").style.zIndex = "10000";
+                        document.getElementById("headerContainer").style.zIndex = "1300";
                         document.getElementById("headerContainer").style.boxShadow = "none";
                         document.getElementById("headerContainer").style.height = "auto";
                     }
@@ -216,14 +216,15 @@ class Header extends Component {
                                             />
                                             {localStorage.getItem("true") ?
                                                 <span
+                                                    class="MuiBadge-root"
                                                     aria-owns={openPopover ? 'simple-popper' : ""}
                                                     onClick={this.handleClickPopover}
                                                 >
-                                                    <i style={{ fontSize: "20px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                    <i class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                 </span>
                                                 // <img className="icons-header-sizes" src={usershape}/>
                                                 : <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
-                                                    <i style={{ fontSize: "20px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                    <i class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                 </span>
                                             }
                                             <Popover
@@ -250,17 +251,17 @@ class Header extends Component {
                                                             window.location.pathname = "/login"
                                                         }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
                                              </a>&nbsp;/&nbsp;
-                                             <NavLink to='/account-profile'>
+                                             <NavLink onClick={() => window.location.pathname = "/account-profile"}>
                                                         My Account
                                                </NavLink>
                                                 </div>
                                             </Popover>
                                             <Badge color="secondary"
-                                                badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary"
+                                                badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
                                             // wishlist_count
                                             // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
                                             >
-                                                <i style={{ fontSize: "20px" }} class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
+                                                <i class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
                                                     if (user_id.length > 0) {
                                                         window.location.href = `/account${'-wishlist'}`
                                                     } else {
@@ -269,8 +270,8 @@ class Header extends Component {
                                                 }}  ></i>
                                             </Badge>
                                             <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                <a href="/cart" >
-                                                    <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                                <a style={{ fontSize: "0px" }} href="/cart" >
+                                                    <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
                                                 </a> </Badge>
                                         </div>
@@ -341,14 +342,14 @@ class Header extends Component {
 
                 <Hidden mdUp>
                     <Grid style={{ height: "48px" }}>
-                        <Grid style={{ position: "fixed", zIndex: "10000" }}>
+                        <Grid style={{ position: "fixed", zIndex: "1300" }}>
                             <div className="header-appbar-sticky1">
                                 <AppBar
                                     className="header-appbar-moblie1"
                                     id="smallScreen"
                                 >
                                     <Toolbar className="toolbarsetting" >
-                                        <Grid container item xs={2} sm={1} md={1} lg={1} xl={1} justify="center" alignItems="center">
+                                        <Grid container item xs={1} sm={1} md={1} lg={1} xl={1} justify="center" alignItems="center">
                                             <IconButton
                                                 onClick={this.handleDrawerOpen}
                                             >
@@ -363,7 +364,7 @@ class Header extends Component {
                                         </Grid>
                                         <Grid item xs={7}>
                                             <div onClick={this.handleSearch} className="mobli-icon1">
-                                                <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center", paddingRight: "10px" }}>
+                                                <Grid item xs={12} class="menuRight" style={{ display: "flex", justifyContent: "flex-end", alignContent: "center", paddingRight: "10px" }}>
                                                     <div className={`head-icons1 ${classes.headIcons}`} >
 
                                                         <div id="search" onClick={this.handleClose} className={classes.searchcontainTop}><Seach className={"searchsvgmobile"}
@@ -373,43 +374,43 @@ class Header extends Component {
                                                         </div>
 
                                                         {localStorage.getItem("true") ?
-                                                            <span
-                                                                aria-owns={openPopover ? 'simple-popper' : ""}
-                                                                onClick={this.handleClickPopover}
-                                                            >
-                                                                <i style={{ position: "relative", verticalAlign: "middle" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
-                                                            </span>
-                                                            // <img className="icons-header-sizes" src={usershape}/>
-                                                            : <span onClick={() => window.location.pathname = "/login"}>
-                                                                <i style={{ position: "relative", verticalAlign: "middle" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
-                                                            </span>
-                                                        }
-                                                        <Popover
-                                                            id="simple-popper"
-                                                            open={openPopover}
-                                                            anchorEl={anchorEl}
-                                                            onClose={this.handleClosePopover}
-                                                            anchorOrigin={{
-                                                                vertical: 'bottom',
-                                                                horizontal: 'center',
-                                                            }}
-                                                            transformOrigin={{
-                                                                vertical: 'top',
-                                                                horizontal: 'center',
-                                                            }}
-                                                        >
-                                                            <div
-                                                                style={{ width: "220px", height: "45px", lineHeight: "45px", cursor: "pointer" }}
-                                                            >
-                                                                <a
-                                                                    onClick={() => {
-                                                                        localStorage.clear();
-                                                                        window.location.reload()
-                                                                        window.location.pathname = "/login"
-                                                                    }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
+                                                <span
+                                                    aria-owns={openPopover ? 'simple-popper' : ""}
+                                                    onClick={this.handleClickPopover}
+                                                >
+                                                    <i class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                </span>
+                                                // <img className="icons-header-sizes" src={usershape}/>
+                                                : <span onClick={() => window.location.pathname = "/login"}>
+                                                    <i class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                </span>
+                                            }
+                                            <Popover
+                                                id="simple-popper"
+                                                open={openPopover}
+                                                anchorEl={anchorEl}
+                                                onClose={this.handleClosePopover}
+                                                anchorOrigin={{
+                                                    vertical: 'bottom',
+                                                    horizontal: 'center',
+                                                }}
+                                                transformOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'center',
+                                                }}
+                                            >
+                                                <div
+                                                    style={{ width: "220px", height: "45px", lineHeight: "45px", cursor: "pointer" }}
+                                                >
+                                                    <a
+                                                        onClick={() => {
+                                                            localStorage.clear();
+                                                            window.location.reload()
+                                                            window.location.pathname = "/login"
+                                                        }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
                                              </a>&nbsp;/&nbsp;
-                                             <NavLink to="/account-profile">
-                                                                    My Account
+                                             <NavLink onClick={() => window.location.pathname = "/account-profile"}>
+                                                        My Account
                                                </NavLink>
                                                 </div>
                                             </Popover>
@@ -423,22 +424,22 @@ class Header extends Component {
                                                             }}  ></i>
                                                         </Badge>
                                                         <Badge style={{ fontSize: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                            <NavLink to="/cart">   <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                                            <NavLink to="/cart">   <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
                                                             </NavLink> </Badge>
                                                     </div>
                                                 </Grid>
-                                            </div> 
+                                            </div>
                                         </Grid>
                                     </Toolbar>
                                 </AppBar>
                                 <Collapse in={this.state.opened} unmountOnExit
 
-                                    style={{ width: "100%", zIndex: "10000" }}
+                                    style={{ width: "100%", zIndex: "1300" }}
                                     class='searchClick'
                                     onClose={this.handleClose}
                                 >
 
-                                    <Grid xs={12} style={{ width: "100%", height: "60px", alignContent: "center", justifyContent: "center", position: "absolute", background: "#fff", zIndex: "10000", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px" }}>
+                                    <Grid xs={12} style={{ width: "100%", height: "60px", alignContent: "center", justifyContent: "center", position: "absolute", background: "#fff", zIndex: "1300", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px" }}>
                                         <Grid container justify="flex-end" onClick={() => this.handleClose()}>
                                             <i style={{ fontSize: "16px", color: "#b2b1b1", paddingRight: "4px" }} class="fa fa-times closebus"></i>
                                         </Grid>
@@ -458,7 +459,7 @@ class Header extends Component {
 
                         </Grid>
                     </Grid>
-                    <Drawer
+                    <Drawer style={{ zIndex: "1300" }}
                         anchor="left"
                         open={this.state.open}
                         classes={{

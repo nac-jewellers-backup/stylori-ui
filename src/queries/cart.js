@@ -35,7 +35,6 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
         shoppingCartItemsByShoppingCartId {
           nodes {
             transSkuListByProductSku {
-              discountPrice
               generatedSku
               sellingPrice
               purity
@@ -49,9 +48,16 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
                   }
                 }
                 productName
+                productDiamondsByProductSku {
+                  nodes {
+                    stoneWeight
+                  }
+                }
               }
               skuWeight
+              markupPrice
             }
+            price
           }
         }
         cartAddressesByCartId {
@@ -74,6 +80,8 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
           }
         }
       }
+      createdAt
+      id
     }
   }
 }

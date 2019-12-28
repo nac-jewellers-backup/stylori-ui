@@ -10,8 +10,8 @@ import {
     Grid,
     Button
 } from '@material-ui/core';
-import "../../components/Checkout/Cart.css";
-import "./chckout.css";
+import "../../components/Checkout/Cart.css"; 
+import "./chckout.css"; 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Addressform from './addressDetails/addressForm';
 import ProductList from './orderSummary/productList';
@@ -28,6 +28,8 @@ import { CartContext } from '../../context/CartContext';
 import cart from '../../mappers/cart';
 import { CheckForCod } from 'queries/productdetail';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
+import Header from 'components/SilverComponents/Header'
+
 let value = localStorage.getItem("select_addres") ? JSON.parse(localStorage.getItem("select_addres")) : {};
 var variab = {}
 const CartCardCheck = (props) => {
@@ -45,10 +47,11 @@ class Component extends React.Component {
     }
 
     handleChange = panel => (event) => {
+        debugger
         // alert("va",JSON.stringify(panel))
         const { expanded } = this.state
-        // if (value && value.contactNumber.length > 0) {
-            if (expanded === 'panel' + panel) {
+        // if (value && value.pincode && value.pincode.length > 2) {
+            if ((value && value.pincode && value.pincode.length > 2)&&expanded === 'panel' + panel) {
                 this.setState({
                     expanded: 'panel' + 3,
                 });
@@ -84,6 +87,11 @@ class Component extends React.Component {
 
         return (
             <>
+                <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+                    <Grid item xs={12} >
+                        <Header wishlist={this.props.wishlistdata} />
+                    </Grid>
+                </Grid>
                 <CustomSeparator
                     arrowicon='cart-head-arrows'
                     className={`breadcrums-header ${classes.normalcolorback}`}
@@ -210,16 +218,16 @@ class Component extends React.Component {
 //     return <CartCardCheck {...props} data={mapped} />
 // });
 const Components = props => {
-    let { CartCtx: { data, loading, error } } = React.useContext(CartContext);
+    let { CartCtx: { data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
     let content, mapped;
     if (!loading && !error) {
-        if (Object.keys(data).length !== 0) {
+        if (Object.keys(data).length !== 0) { 
             mapped = cart(data);
         }
     }
     if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
-    else content = <CartCardCheck {...props} data={mapped} />
-
+    else content = <CartCardCheck {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
+ 
     return content
 }
 export default withStyles(styles)(Components);

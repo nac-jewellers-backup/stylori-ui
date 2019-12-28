@@ -21,21 +21,7 @@ const LoginComponent = (props) => {
     // var prof = data && data.message
     // // alert(JSON.stringify(data))
     // console.log('valuesvaluesvalues', values)
-    const clear = () => {
-        setValues({
-            password: "",
-            email: "",
-            errortext: {
-                emerr: "",
-                passerr: "",
-            },
-            error: {
-                passerr: false,
-                emerr: false,
-            }
-        })
-        props.change()
-    }
+   
     const responseFacebook = response => {
         console.log(response)
         // window.location.href='/home';
@@ -81,7 +67,7 @@ const LoginComponent = (props) => {
                             fields="name,email,picture"
                             callback={responseFacebook}
                             cssClass="my-facebook-button-class"
-                            icon="fab fa-facebook-square fb"
+                            icon="fa-facebook"
                         />
                           {/* <InstagramLogin
                                 clientId="508169029820675"
@@ -89,11 +75,11 @@ const LoginComponent = (props) => {
                                 onSuccess={responseInstagram}
                                 onFailure={responseInstagram}
                         /> */}
-                            {/* <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img> */}
+                            <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img>
                         </div >
                     </div>
                     <div className='login-butn'>
-                        {window.location.pathname === "/login" ? "" : <Button className='back-b' onClick={() => clear()} >Back</Button>}
+                        {window.location.pathname === "/login" ? "" : <Button className='back-b' onClick={() => handlers.clear()} >Back</Button>}
                         <Button className='apply-b' type="submit"> {window.location.pathname === "/login" ? "Login" : "Apply"}</Button>
                     </div>
 
