@@ -232,15 +232,14 @@ class Component extends React.Component {
             checked[val[0]] = { [mm]: false }
             this.setState({ ...checked, checked })
           }
-          return false
+          // return false
         }
       })
-    }
+    } 
     return bz
   })
   handleChange(value, BoolName, e, title, TargetName) {
     debugger
-    
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
@@ -262,8 +261,10 @@ class Component extends React.Component {
       let checkedvalue = {};
       checkedvalue[value] = BoolName
       checked[e.target.name] = checkedvalue
+      // arr.push({ key: chipData, label: value, title: checkedvalue });
+      // chipData = arr;
       this.setState({
-        checked
+        chipData, checked
       }, () => this.props.setFilters(checked))
     }
     else {
@@ -275,8 +276,9 @@ class Component extends React.Component {
         let checkedvalue = {};
         checkedvalue[keyNameFilter] = true
         checked[nameFilter] = checkedvalue
-        // arr.push({ key: chipData, label: nameFilter, title: title });
-        // chipData = arr;
+      //   arr.push({ key: chipData, label: keyNameFilter, title: nameFilter });
+      // chipData = arr;
+        alert(JSON.stringify(  checkedvalue))
         this.setState({
           chipData,
           checked
@@ -290,7 +292,6 @@ class Component extends React.Component {
     let arr = [];
     let checkTitle = true;
     chipData.map(val => {
-
       if (val.title === title) {
         checkTitle = false
       }
@@ -362,17 +363,24 @@ class Component extends React.Component {
     this.setState({ open: false });
   };
   selectItem = (name) => {
+    var arr1;
     let { selected } = this.state;
-    selected.push(name)
-    this.setState({ selected })
-  }
-  filterValue = (filtercheck) => {
-    if (filtercheck === this.state.filtercheck) {
-      this.setState({ filtercheck: '' })
+    var map = selected.map(val => { if (val !== undefined && val !== null) { return val } })
+    if (map.indexOf(name) > -1) {
+      arr1 = selected.filter(val => {
+        if (val !== undefined && val !== null) {
+          if (val !== name) {
+            return val;
+          }
+        }
+      })
+      selected = arr1;
+      this.setState({ selected })
     } else {
-      this.setState({ filtercheck })
+      // var same =map.indexOf(name)
+      selected.push(name)
+      this.setState({ selected })
     }
-
   }
 
   handleChangeDrawer = () => {
@@ -637,9 +645,9 @@ class Component extends React.Component {
               className={check ? classes.productCardscheck : classes.productCardsuncheck}
 
             >
-            <ProductLayout data={this.props.datas} loading = {this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
+            <ProductLayout wishlist={this.props.wishlist} data={this.props.datas} loading = {this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
 
-            </div>}
+            </div>} 
         </div>
 
 

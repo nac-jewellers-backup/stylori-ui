@@ -35,6 +35,8 @@ class CashonDelivey extends React.Component {
         });
         localStorage.removeItem("cartDetails")
         localStorage.removeItem("panel")
+        localStorage.removeItem("ship_isactive")
+        localStorage.removeItem("bil_isactive")
         if (gut_lg === true) {
             localStorage.clear();
             // localStorage.removeItem("gut_lg")
@@ -63,7 +65,7 @@ class CashonDelivey extends React.Component {
                     var a = Math.round(total + num);
                     var cart_price = (a - discounted_price)
                 } else {
-                    var cart_price = Math.round(total + num);
+                    var cart_price = Math.round(total + num); 
                 }
                 return cart_price
             }
@@ -79,7 +81,7 @@ class CashonDelivey extends React.Component {
                         <div className="amout-pay"> Amount Payable </div>
                         <div className="credit-btn-div">
                             <span className="rups">
-                                {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(dataCard1-discounted_price))}
+                                {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(dataCard1 - discounted_price))}
                             </span>&nbsp;
                             <Button className="credit-button" type="submit"
                                 onClick={() => this.makeFetch(this.props)}

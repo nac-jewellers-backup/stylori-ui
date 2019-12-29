@@ -63,7 +63,8 @@ const Addressforms = (changePanel) => {
         Id2: "",
         addres_id: null,
         index: null,
-        update_clear: false
+        update_clear: false,
+        log_addrs: false
     });
     var addObj = {};
     var adars1 = {}
@@ -73,10 +74,11 @@ const Addressforms = (changePanel) => {
     const { data, error, loading, makeFetch: makeFetchall, mapped, status } = useNetworkRequest('/addaddress', {}, false);
     const { error: remee, loading: remlod, data: removedata, makeFetch: deleteaddress, } = useNetworkRequest('/removeaddress', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
-    const pathnames = window.location.pathname.split("-")[0]==="/account"
+    const pathnames = window.location.pathname.split("-")[0] === "/account"
     // var stst = values.ref ? values.ref : ""
     const addressva = values && values.addressvalues && values.addressvalues.length > 0
     const update_clear = values && values.update_clear
+
     useEffect(() => {
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
         if (con_gust !== true) {
@@ -89,20 +91,40 @@ const Addressforms = (changePanel) => {
                     ...values
                 })
             } else {
-                // if (con_gust !== true) { localStorage.setItem("select_addres", JSON.stringify("")) }
+                if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length < 0) {
+                    values["addrs"] = true
+                    setValues({
+                        values,
+                        ...values,
+                    })
+                    localStorage.removeItem('bil_isactive')
+                    localStorage.removeItem('ship_isactive')
+                }
+
             }
         }
-    }, [addresData, userdata, addressva])
+    }, [addresData, userdata, addressva, values.log_addrs])
     React.useEffect(() => {
         if (user_id.length > 0) {
             obj['userprofileId'] = user_id
             addresmakeRequestCod(obj);
         }
-    }, [userdata, addressva, update_clear])
+    }, [userdata, addressva, update_clear, values.log_addrs])
     React.useEffect(() => {
         if (user_id.length > 0) {
             obj['userprofileId'] = user_id
             addresmakeRequestCod(obj);
+        }
+    }, [])
+    React.useEffect(() => {
+        // alert("0",JSON.stringify(values && values.addressvalues && values.addressvalues.data ))
+        // if (values && values.addressvalues && values.addressvalues.data === null) {
+        //     localStorage.removeItem('bil_isactive')
+        //     localStorage.removeItem('ship_isactive')
+        // }
+        if (JSON.parse(localStorage.getItem('gustaddres')) && JSON.parse(localStorage.getItem('gustaddres')).address < 0) {
+            localStorage.removeItem('bil_isactive')
+            localStorage.removeItem('ship_isactive')
         }
     }, [])
 
@@ -171,13 +193,21 @@ const Addressforms = (changePanel) => {
         setValues({ ...values, values })
     }
     const handleSubmit = (e) => {
-        if (values && values.addressOne && values.addressOne.errortext && values.addressOne.errortext.pinerr !== "") {
+
+        if (values && values.addressOne && values.addressOne.pincode === "") {
+            values["addressOne"]['errortext']['pinerr'] = "Pin Code is required"
+            setValues({ ...values, values })
             return false
         }
-        if (values && values.addressTwo && values.addressTwo.errortext && values.addressTwo.errortext.pinerr1 !== "") {
-            return false
-        }
-        if (values && values.addressOne && values.addressOne.pincode && values.addressOne.pincode.length < 5 || (values["addressOne"] && values["addressOne"]['errortext'] && values["addressOne"]['errortext']['pinerr'])) {
+        // if (values && values.addressOne && values.addressOne.errortext && values.addressOne.errortext.pinerr !== "") {
+        //     return false
+        // }
+        // if (values && values.addressTwo && values.addressTwo.errortext && values.addressTwo.errortext.pinerr1 !== "") {
+        //     return false
+        // }
+
+        if (values && values.addressOne && values.addressOne.pincode && values.addressOne.pincode.length < 5 ||
+            (values["addressOne"] && values["addressOne"]['errortext'] && values["addressOne"]['errortext']['pinerr'])) {
             // if (values["addressOne"] && values["addressOne"]['errortext'] && values["addressOne"]['errortext']['pinerr']) {
             values["addressOne"]['errortext']['pinerr'] = "Your pincode is Invalid!"
             setValues({ ...values, values })
@@ -297,7 +327,7 @@ const Addressforms = (changePanel) => {
         addObjall['address_id'] = val_addrs && val_addrs.id ? val_addrs.id : ""
         if (values.checkValue1 === true) {
             values["Id2"] = JSON.stringify(index)
-            localStorage.setItem("bil_isactive", index)
+            localStorage.setItem("ship_isactive", index)
             setValues({
                 values,
                 ...values,
@@ -309,7 +339,7 @@ const Addressforms = (changePanel) => {
                 addObjall['address'] = [adars1.addressOne];
                 makeFetchall(addObjall);
             }
-            alert("your address send on succesfully")
+            alert("your address send on successful")
             if (!pathnames) {
                 changePanel(3)
                 window.location.reload()
@@ -317,9 +347,10 @@ const Addressforms = (changePanel) => {
             // return false
         }
         if (values.checkValue1 === false) {
-            if (num === 2) {
+            if ((localStorage.getItem("bil_isactive") || !localStorage.getItem("bil_isactive")) && num === 2) { localStorage.setItem("bil_isactive", index) }
+            if ((!localStorage.getItem("ship_isactive") || !localStorage.getItem("bil_isactive")) && num === 2) {
                 values["Id"] = JSON.stringify(index)
-                localStorage.setItem("ship_isactive", index)
+                localStorage.setItem("bil_isactive", index)
                 if (val_addrs && val_addrs.firstname.length > 0) {
                     adars2['addressTwo'] = val_addrs
                 }
@@ -328,11 +359,12 @@ const Addressforms = (changePanel) => {
                     ...values,
                 })
                 alert("please select your shipping address")
+                return false
             } else {
-
-                if (num === 1) {
+                if ((localStorage.getItem("ship_isactive") || !localStorage.getItem("ship_isactive")) && num === 1) { localStorage.setItem("ship_isactive", index) }
+                if ((!localStorage.getItem("ship_isactive") || !localStorage.getItem("bil_isactive")) && num === 1) {
                     values["Id2"] = JSON.stringify(index)
-                    localStorage.setItem("bil_isactive", index)
+                    localStorage.setItem("ship_isactive", index)
                     if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                         adars1['addressOne'] = val_addrs
                     }
@@ -341,13 +373,14 @@ const Addressforms = (changePanel) => {
                         ...values,
                     })
                     alert("please select your billing address")
+                    return false
                 }
             }
-            if ((values && values.Id && values.Id.length > 0) && (values && values.Id2 && values.Id2.length > 0)) {
+            if (JSON.stringify(localStorage.getItem("bil_isactive")).length > 0 && JSON.stringify(localStorage.getItem("ship_isactive")).length > 0) {
                 addObjall["user_id"] = user_id
                 addObjall["cart_id"] = cart_id
                 addObjall['address'] = [adars1.addressOne, adars2.addressTwo];
-                alert("your address send on succesfully")
+                alert("your address send on successful")
                 if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                     makeFetchall(addObjall);
                 }
@@ -361,6 +394,7 @@ const Addressforms = (changePanel) => {
         }
     }
     const Delete_address = (val_addrs, index) => {
+
         if (con_gust !== true) {
             if (check_dlt === false) {
                 if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 1) {
@@ -376,6 +410,7 @@ const Addressforms = (changePanel) => {
                 deleteaddress(delet)
                 // window.location.reload();
             }
+
         } else {
             var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
             local_storage.address.splice(index, 1);
@@ -390,7 +425,7 @@ const Addressforms = (changePanel) => {
                 })
             }
 
-            // window.location.reload();
+            window.location.reload();
         }
 
         // const DeleteLocalStorage_address = (e, num, isAdressOne) => {
@@ -409,6 +444,7 @@ const Addressforms = (changePanel) => {
         }
     };
     const redirectForm1 = (event) => {
+
         values["addressOne"] = ""
         values["addressTwo"] = ""
         value11 = {
@@ -466,6 +502,8 @@ const Addressforms = (changePanel) => {
         })
     }
     const redirectForm = (val_addrs, num, isAdressOne, isAdressTwo, index) => {
+
+        var add = {}
         if (con_gust !== true) {
             if (val_addrs && val_addrs.id && val_addrs.id.length > 0) {
                 values["addres_id"] = val_addrs && val_addrs.id
@@ -474,6 +512,8 @@ const Addressforms = (changePanel) => {
                     ...values,
                 })
             }
+            // values["addressOne"]["errortext"]["pinerr"] = ""
+            add["pinerr"] = ""
             values["addressOne"] = val_addrs
             values["addressTwo"] = ""
             values["checkValue"] = isAdressTwo
@@ -481,6 +521,7 @@ const Addressforms = (changePanel) => {
             values["edit_addresId"] = isAdressOne
             if (values && values["addressOne"]) {
                 values["addressOne"]["contactno"] = val_addrs && val_addrs.contactNumber && val_addrs.contactNumber
+                values["addressOne"]["errortext"] = add
             }
         } if (con_gust === true) {
             values["edit_addresId"] = true

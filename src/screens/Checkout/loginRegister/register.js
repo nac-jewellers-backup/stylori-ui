@@ -11,36 +11,13 @@ const Register = (props) => {
 
 const RegisterComponent = (props) => {
     let email = localStorage.getItem("email") ? localStorage.getItem("email") : '';
-    const { values, setValues, handlers, data, valuesedit, valuesadrees } = useRegister(() => props.changePanel(2));
+    const { values, setValues, handlers, data, valuesadrees } = useRegister(() => props.changePanel(2));
     // var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
     // var ccc = data.message ? data.message : ""
     const paths = window.location.pathname.split("-")[0]==="/account"
     const pathreg = window.location.pathname === "/registers"
 
-    const clear = () => {
-        setValues({
-            email: "",
-            password: "",
-            confirmpassword: "",
-            firstname: "",
-            lastname: "",
-            errortext: {
-                emerr: "",
-                passerr: "",
-                cnfpasserr: "",
-                firstname: "",
-                lastname: ""
-            },
-            error: {
-                passerr: false,
-                emerr: false,
-                cnfpasserr: false,
-                firstname: false,
-                lastname: false
-            }
-        })
-        props.change()
-    }
+
     return (
         <div className='pt-sm'>
             <form onSubmit={(e) => {
@@ -50,7 +27,7 @@ const RegisterComponent = (props) => {
                     <Grid item lg={1} />
                     <Grid item xs={12} lg={window.location.pathname === "/registers" ? 12 : 6}>
                         <h5 className='title'>
-                            {window.location.pathname.split("-")[0]==="/account" ? "" : <>
+                            {window.location.pathname.split("-")[0] === "/account" ? "" : <>
                                 {window.location.pathname === "/registers" ? "Register" : "New user registration"}</>}
                         </h5>
                         {paths ?
@@ -167,12 +144,12 @@ const RegisterComponent = (props) => {
                                         variant="outlined"
                                         type="text"
                                         name="firstname"
-                                        value={valuesedit.firstname}
+                                        value={valuesadrees.firstname}
                                         placeholder="Enter FirstName*"
-                                        onChange={e => handlers.handleChangeedit('firstname', e.target.value)}
+                                        onChange={e => handlers.handlesetvaluesadrees('firstname', e.target.value)}
                                         className='text-f'
                                         helperText="Firstname is required"
-                                        required  />
+                                        required />
                                 </Grid>
                                 <Grid item lg={4} xs={4}>
                                     <Input
@@ -180,12 +157,12 @@ const RegisterComponent = (props) => {
                                         variant="outlined"
                                         type="text"
                                         name="lastname"
-                                        value={valuesedit.lastname}
+                                        value={valuesadrees.lastname}
                                         placeholder="Enter LastName*"
-                                        onChange={e => handlers.handleChangeedit('lastname', e.target.value)}
+                                        onChange={e => handlers.handlesetvaluesadrees('lastname', e.target.value)}
                                         className='text-f'
                                         helperText="Lastname is required"
-                                        required/>
+                                        required />
                                 </Grid></>}
                         </Grid>
 
@@ -234,8 +211,13 @@ const RegisterComponent = (props) => {
                         }
 
                         <div className='login-butn'>
-                            {paths || pathreg ? "" : <Button className='back-b' onClick={() => clear()} >Back</Button>}
-                            <Button className='apply-b' type="submit" >Register</Button>
+                            {paths || pathreg ? "" : <Button className='back-b' onClick={() => {
+                                props.change()
+                                handlers.clear()
+                            }} >Back</Button>}
+                            <Button className='apply-b' type="submit" >
+                                {paths ? "Save" : "Register"}
+                            </Button>
                         </div>
                     </Grid>
                 </Grid>
