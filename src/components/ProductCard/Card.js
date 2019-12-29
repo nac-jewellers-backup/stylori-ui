@@ -105,7 +105,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
     </div>
 
     <LazyLoadImage
-      alt={'props.data.title'} 
+      alt={'props.data.title'}
       effect="blur"
       src={renderImages(props, cardstate)}
       //  srcset={renderImages(props, cardstate)}
