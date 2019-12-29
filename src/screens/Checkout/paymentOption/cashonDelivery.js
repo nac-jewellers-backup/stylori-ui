@@ -42,6 +42,7 @@ class CashonDelivey extends React.Component {
             // localStorage.removeItem("gut_lg")
         }
         // }
+        // localStorage.removeItem("cart_id")
         window.location.pathname = "/jewellery"
     }
     componentDidUpdate(prevProps, prevState) {
@@ -65,7 +66,7 @@ class CashonDelivey extends React.Component {
                     var a = Math.round(total + num);
                     var cart_price = (a - discounted_price)
                 } else {
-                    var cart_price = Math.round(total + num); 
+                    var cart_price = Math.round(total + num);
                 }
                 return cart_price
             }

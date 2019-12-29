@@ -18,13 +18,16 @@ import { LazyLoadImage, trackWindowScroll }
   from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Wishlist from "components/wishlist/wishlist";
+import useWishlists from "components/wishlist/usewishlist";
 
 
 export const ImgMediaCard = (props) => {
   const { ProductDetailCtx, setFilters } = React.useContext(ProductDetailContext);
   const loc = window.location.search
-
-  return <Component filters={ProductDetailCtx.filters} setFilters={setFilters} {...props} />
+  // const { setValues: onClick_setValues } = useWishlists()
+  return <Component filters={ProductDetailCtx.filters} setFilters={setFilters} {...props}
+  // onClick_setValues={onClick_setValues}
+  />
 }
 // const MyImage = ( props, callmouseover, callmouseout, cardstate ) => {  
 //   return(
@@ -100,8 +103,14 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
       <span class="one-day-ship-listing-page-label">1 day shipping</span>
 
     </div> : ''}
-    <div class="wishListStyle">
-      <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist}/>  
+    <div class="wishListStyle"
+    // onClick={() => props.onClick_setValues({
+    //   product_sku: props.data.skuId,
+    //   product_id: props.data.productId
+    // })}
+    >
+      {/* <Wishlist wishlist={props.wishlist} /> */}
+      <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} />
     </div>
 
     <LazyLoadImage

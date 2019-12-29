@@ -35,6 +35,7 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
         shoppingCartItemsByShoppingCartId {
           nodes {
             transSkuListByProductSku {
+              discountPrice
               generatedSku
               sellingPrice
               purity

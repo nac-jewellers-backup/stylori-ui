@@ -39,9 +39,13 @@ class Allorders extends React.Component {
 
     calculatetotal = (arr) => {
 
-        var a
+        var a;
+        var dis_price;
         a = arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
-            return cart.price
+            if(cart!==null||cart!==undefined){
+              dis_price =cart.transSkuListByProductSku.discountPrice
+            }
+            return dis_price
         }).reduce(myFunc);
         return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a))
     }
@@ -62,6 +66,7 @@ class Allorders extends React.Component {
     render() {
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
+        debugger
         return (
             <>
                 {/* allorderdata.nodes */}
@@ -108,7 +113,6 @@ class Allorders extends React.Component {
                                                         {val.shoppingCartByCartId.giftwrapsByCartId.nodes[0].giftTo}</div>
                                                             <br /><div> <b>gift message</b> :
                                                         {val.shoppingCartByCartId.giftwrapsByCartId.nodes[0].message}</div></> : ""}
-
                                                         {/* <div></div> */}
                                                     </Grid>
                                                 </Grid>
@@ -143,7 +147,6 @@ class Allorders extends React.Component {
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight + " " + "CT"}
                                                                     </Typography>
-
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.generatedSku}
                                                                     </Typography>
@@ -158,13 +161,14 @@ class Allorders extends React.Component {
                                                                         {this.generateShipsBy(cart.transSkuListByProductSku.readytoship, cart.transSkuListByProductSku.vendorDeliveryTime)}</a></Typography>
                                                             </Grid>
                                                         </Grid>
-                                                        {(Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.markupPrice))) > (Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.price))) ?
-                                                            <del>{(Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.price)))}</del> : ""}
+
 
                                                         <Grid style={{ padding: "30px" }} className="rups" item lg={2}>
-                                                            {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.price))}
+                                                            {(Math.round(cart.transSkuListByProductSku.markupPrice)) < (Math.round(cart.price)) ?
+                                                                <del style={{ color: "rgba(0, 0, 0, 0.54)", fontSize: "18px" }}>{(Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.markupPrice)))}</del>
+                                                                : ""}<br />
+                                                            {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.discountPrice))}
                                                         </Grid>
-
                                                     </Grid></>
                                             ))}
 

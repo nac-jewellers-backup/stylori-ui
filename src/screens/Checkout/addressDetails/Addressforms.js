@@ -206,7 +206,7 @@ const Addressforms = (changePanel) => {
         //     return false
         // }
 
-        if (values && values.addressOne && values.addressOne.pincode && values.addressOne.pincode.length < 5 ||
+        if (values && values.addressOne && values.addressOne.pincode && values.addressOne.pincode.length < 6 ||
             (values["addressOne"] && values["addressOne"]['errortext'] && values["addressOne"]['errortext']['pinerr'])) {
             // if (values["addressOne"] && values["addressOne"]['errortext'] && values["addressOne"]['errortext']['pinerr']) {
             values["addressOne"]['errortext']['pinerr'] = "Your pincode is Invalid!"

@@ -232,14 +232,15 @@ class Component extends React.Component {
             checked[val[0]] = { [mm]: false }
             this.setState({ ...checked, checked })
           }
-          // return false
+          return false
         }
       })
-    } 
+    }
     return bz
   })
   handleChange(value, BoolName, e, title, TargetName) {
     debugger
+    
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
@@ -261,10 +262,8 @@ class Component extends React.Component {
       let checkedvalue = {};
       checkedvalue[value] = BoolName
       checked[e.target.name] = checkedvalue
-      // arr.push({ key: chipData, label: value, title: checkedvalue });
-      // chipData = arr;
       this.setState({
-        chipData, checked
+        checked
       }, () => this.props.setFilters(checked))
     }
     else {
@@ -276,9 +275,8 @@ class Component extends React.Component {
         let checkedvalue = {};
         checkedvalue[keyNameFilter] = true
         checked[nameFilter] = checkedvalue
-      //   arr.push({ key: chipData, label: keyNameFilter, title: nameFilter });
-      // chipData = arr;
-        alert(JSON.stringify(  checkedvalue))
+        // arr.push({ key: chipData, label: nameFilter, title: title });
+        // chipData = arr;
         this.setState({
           chipData,
           checked
@@ -292,6 +290,7 @@ class Component extends React.Component {
     let arr = [];
     let checkTitle = true;
     chipData.map(val => {
+
       if (val.title === title) {
         checkTitle = false
       }
@@ -381,6 +380,14 @@ class Component extends React.Component {
       selected.push(name)
       this.setState({ selected })
     }
+  }
+  filterValue = (filtercheck) => {
+    if (filtercheck === this.state.filtercheck) {
+      this.setState({ filtercheck: '' })
+    } else {
+      this.setState({ filtercheck })
+    }
+
   }
 
   handleChangeDrawer = () => {
@@ -645,9 +652,9 @@ class Component extends React.Component {
               className={check ? classes.productCardscheck : classes.productCardsuncheck}
 
             >
-            <ProductLayout wishlist={this.props.wishlist} data={this.props.datas} loading = {this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
+            <ProductLayout data={this.props.datas} loading = {this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
 
-            </div>} 
+            </div>}
         </div>
 
 

@@ -4,7 +4,6 @@
     padding-right: 10px !important;
     padding-left: 10px !important;
 }
-
 .title {
     font-size: 15px !important;
     margin-top: 0;
@@ -14,14 +13,13 @@
     line-height: 1.1;
 }
 .errtext{
-    color: #b94a48 !important;
+    color: #B94A48 !important;
     font-size: 15px !important;
 }
 .login-butn {
     float: right !important;
     margin-top: 10px !important;
 }
-
 .back-b {
     background: #FFF !important;
     color: #394578 !important;
@@ -32,7 +30,6 @@
     margin-right: 5px !important;
     text-transform: none !important;
 }
-
 .apply-b {
     border-radius: 0px !important;
     text-align: center !important;
@@ -43,7 +40,6 @@
     color: #fff !important;
     text-transform: none !important;
 }
-
 .back-b:hover {
     background: #394579 !important;
     border: 1px solid #394579 !important;
@@ -63,7 +59,7 @@
     float: left !important;
 }
 .pas-fb{
-    float: right !important; 
+    float: right !important;
     font-size: 14px;
     margin-bottom: 9px;
 }
@@ -82,17 +78,17 @@
 .form-card{
     padding-right: 15px;
     padding-left: 15px;
-    border: 1px solid #c3c3c3;
+    border: 1px solid #C3C3C3;
     padding: 15px;
     min-height: 150px;
     position: relative;
     margin-top: 10px;
     margin-bottom: 10px;
-    box-shadow: rgb(222, 218, 218) 1px 2px 6px 0px !important;
-    border-radius: 0 !important;    
+    box-shadow: none !important;
+    border-radius: 0 !important;
     width: 90%;
 }
-.card-reg{ 
+.card-reg{
     font-size: 14px !important;
     margin: 0 0 10px;
 }
@@ -101,4 +97,13 @@
 }
 .log-text{
     width: 100% !important;
+}
+.my-facebook-button-class {
+    background: #394579;
+    padding: 4px;
+    color: white;
+}
+.fb{
+    font-size: 26px !important;
+    margin: 0 7px 0 0px;
 }

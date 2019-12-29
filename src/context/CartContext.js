@@ -53,6 +53,18 @@ const Provider = (props) => {
     const reload = cartFilters.reload ? cartFilters.reload : ""
     // const { setwishlist_count } = React.useContext(FilterOptionsContext);
     // alert(JSON.stringify(wishlist_count,wishlistdata))
+    var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
+    const myStorage = sessionStorage.getItem("user_id");
+    const localvalues_check = JSON.parse(localStorage.getItem('gut_lg')) === true ? true : false
+    React.useEffect(() => {
+        if (localvalues_check === true) {
+            if (con_gust === true) {
+                if (!myStorage) {
+                    localStorage.clear();
+                }
+            }
+        }
+    }, [])
     useEffect(() => {
         if (JSON.stringify(crtdata).length > 10) {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))

@@ -8,6 +8,7 @@ import Modal from '@material-ui/core/Modal';
 class Addressdetails extends React.Component {
     state = {
         open: false,
+        index_of_isActive: null
     };
     handleOpen = () => {
         this.setState({ open: true });
@@ -18,17 +19,6 @@ class Addressdetails extends React.Component {
     };
     Addressdetails = (props, value, value2) => {
         const { setValues, values } = props;
-        const cl = <input onChange={(e) => {
-            setValues({
-                values, ...values,
-                checkValue1: !values.checkValue1
-            })
-        }} type='checkbox' checked={values.checkValue1} />
-        const { classes } = props;
-        var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
-
-        const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
-        const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
         const _add_data_addres = () => {
             if (con_gust === true) {
                 return value
@@ -36,12 +26,33 @@ class Addressdetails extends React.Component {
                 return values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes
             }
         }
+        const cl = () => <input onChange={(e) => {
+            debugger
+            if (_add_data_addres().length >= 0 && _add_data_addres().length <= 1) {
+                alert("You have saved Shipping Address only")
+                return false
+            } else {
+                setValues({
+                    values, ...values,
+                    checkValue1: !values.checkValue1
+                })
+            }
+
+        }} type='checkbox' checked={values.checkValue1} />
+
+        const { classes } = props;
+        var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
+
+        const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
+        const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
+
         const delete_all_addresses = (val_addrs1, index) => {
-            if ((JSON.parse(localStorage.getItem("bil_isactive")) || JSON.parse(localStorage.getItem("ship_isactive"))) === index) {
+            // alert(JSON.stringify(index))
+            if ((JSON.parse(localStorage.getItem("bil_isactive")) || JSON.parse(localStorage.getItem("ship_isactive"))) === this.state.index_of_isActive) {
                 alert("Sorry u con't delete this address")
                 return false
-            } if ((JSON.parse(localStorage.getItem("bil_isactive")) || JSON.parse(localStorage.getItem("ship_isactive"))) !== index) {
-                this.props.Delete_address(val_addrs1, index)
+            } if ((JSON.parse(localStorage.getItem("bil_isactive")) || JSON.parse(localStorage.getItem("ship_isactive"))) !== this.state.index_of_isActive) {
+                this.props.Delete_address(val_addrs1, this.state.index_of_isActive)
             }
         }
         // const back_color = () => {
@@ -75,6 +86,7 @@ class Addressdetails extends React.Component {
                                                 class="fa fa-pencil-square-o"></i>
                                             <i
                                                 onClick={() => {
+                                                    this.setState({ index_of_isActive: index })
                                                     this.handleOpen()
                                                 }} style={{ fontSize: "20px", color: "#394578", float: "right", marginRight: "10px", cursor: "pointer" }}
                                                 className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
@@ -144,10 +156,12 @@ class Addressdetails extends React.Component {
                                                         class="fa fa-pencil-square-o"></i>
                                                     <i
                                                         onClick={() => {
+                                                            this.setState({ index_of_isActive: index })
                                                             this.handleOpen()
                                                         }} style={{ fontSize: "20px", color: "#394578", float: "right", marginRight: "10px", cursor: "pointer" }}
                                                         className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
                                                 </h4>
+
                                                 <Modal
                                                     open={this.state.open}
                                                 >
@@ -198,7 +212,8 @@ class Addressdetails extends React.Component {
 
                 {window.location.pathname.split("-")[0] !== "/account" ? <>
                     <div class="form-group tp ts">
-                        {cl}
+                        {cl()}
+                        {/* {_add_data_addres().length > 0 && _add_data_addres().length < 1 ? "" : <>{cl}</>} */}
                         {!values.checkValue1 && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
                         {values.checkValue1 && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
                     </div>
@@ -231,6 +246,7 @@ class Addressdetails extends React.Component {
                                                                 onClick={() => {
                                                                     // localStorage.removeItem("valuessetdata")
                                                                     // dlt_locl1()
+                                                                    this.setState({ index_of_isActive: index })
                                                                     this.handleOpen()
                                                                     // this.props.Delete_address(val_addrs2, index)
                                                                     // localStorage.removeItem('vals')
