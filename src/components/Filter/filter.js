@@ -363,6 +363,7 @@ class Component extends React.Component {
     this.setState({ open: false });
   };
   selectItem = (name) => {
+    
     var arr1;
     let { selected } = this.state;
     var map = selected.map(val => { if (val !== undefined && val !== null) { return val } })
@@ -382,6 +383,33 @@ class Component extends React.Component {
       this.setState({ selected })
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   handleChangeDrawer = () => {
 

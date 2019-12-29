@@ -101,11 +101,11 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
 
     </div> : ''}
     <div class="wishListStyle">
-      <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist}/>  
+      {/* <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} /> */}
     </div>
 
     <LazyLoadImage
-      alt={'props.data.title'}
+      alt={'props.data.title'} 
       effect="blur"
       src={renderImages(props, cardstate)}
       //  srcset={renderImages(props, cardstate)}
@@ -116,6 +116,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
       //              (max-width: 1440px) 1440w,
       //              (max-width: 2560px) 2560w,
       //              2560w
+
       //  "
       onError={(e) => imageOnError(e, props.data.imageResolution)}
 

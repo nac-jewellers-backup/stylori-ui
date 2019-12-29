@@ -2,8 +2,6 @@ import React from 'react';
 import { NetworkContext } from '../context/NetworkContext';
 import { FieldsOnCorrectType } from 'graphql/validation/rules/FieldsOnCorrectType';
 import { circIn } from '@popmotion/easing';
-let accessTokens = localStorage.getItem("accessToken") ? localStorage.getItem("accessToken") : ""
-
 export const useDummyRequest = (mapper) => {
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState(false);
@@ -48,8 +46,7 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
         setLoading(true);
         fetch(url, {
             method, headers: {
-                'Content-Type': 'application/json',
-                "x-access-token": accessTokens
+                'Content-Type': 'application/json'
                 // 'Content-Type': 'application/x-www-form-urlencoded',
             }, body
         })

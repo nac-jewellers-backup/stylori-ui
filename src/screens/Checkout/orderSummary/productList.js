@@ -28,28 +28,11 @@ const styles = theme => ({
 const Productlist = (props) => {
     return <ProductlistComponent  {...props} />
 }
-
 const ProductlistComponent = (props) => {
-    const { handlers, values, val, data, setval } = useGift();
+    const { handlers, values, val ,data} = useGift();
     const { classes } = props;
     let value = localStorage.getItem("select_addres") ? JSON.parse(localStorage.getItem("select_addres")) : {};
     const { expanded1, expanded2, expanded3 } = val;
-
-    const handleChange1 = panel => (event) => {
-        var values = val.expanded1 === panel ? null : panel
-        val['expanded1'] = values
-        setval({ val, ...val,})
-    };
-    const handleChange2 = panel => (event) => {
-        var values = val.expanded2 === panel ? null : panel
-        val['expanded2'] = values
-        setval({ val, ...val,})
-    };
-    const handleChange3 = panel => (event) => {
-        var values = val.expanded3 === panel ? null : panel
-        val['expanded3'] = values
-        setval({ val, ...val,})
-    };
     return (
         <Container>
             <div className='pt-sm'>
@@ -61,8 +44,7 @@ const ProductlistComponent = (props) => {
                             <ExpansionPanel className={classes.cart}
                                 square
                                 className={classes.cart}
-                                expanded={expanded1 === 1}
-                                onChange={handleChange1(1)} >
+                                expanded={expanded1 === 'panel1'} >
                                 <ExpansionPanelSummary
                                     aria-controls="panel1d-content" id="panel1d-header"
                                     expandIcon={<span className='side-arrow-symbol '><i class="fa fa-sort-up sml"></i></span>}
@@ -99,8 +81,7 @@ const ProductlistComponent = (props) => {
                             <ExpansionPanel
                                 square
                                 className={classes.cart}
-                                expanded={expanded2 === 1}
-                                onChange={handleChange2(1)} >
+                                expanded={expanded2 === 'panel2'} >
                                 <ExpansionPanelSummary
                                     aria-controls="panel1d-content" id="panel1d-header"
                                     expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up sml" ></i></span>}
@@ -138,14 +119,14 @@ const ProductlistComponent = (props) => {
                                                 name="message"
                                                 type="text"
                                                 value={values.message}
-                                                required
+                                                required 
                                                 onChange={e => handlers.handleChange('message', e.target.value)}
                                             />
                                             <div className='login-butn'>
-                                                {data && data.message === "Success" ?
-                                                    <Button style={{ filter: "grayscale(5)" }} disabled className='apply-b' type="submit">Applied</Button> :
-                                                    <Button className='apply-b' type="submit">Apply</Button>}
-
+                                                {data && data.message === "Success"?
+                                                <Button style={{filter:"grayscale(5)"}} disabled className='apply-b' type="submit">Apply</Button>:
+                                                <Button className='apply-b' type="submit">Apply</Button>}
+                                                
                                             </div>
                                         </form>
                                     </div>
@@ -156,8 +137,7 @@ const ProductlistComponent = (props) => {
                         <Grid item xs={12} lg={4}>
                             <ExpansionPanel className={classes.cart}
                                 square
-                                expanded={expanded3 === 1}
-                                onChange={handleChange3(1)} >
+                                expanded={expanded3 === 'panel3'} >
                                 <ExpansionPanelSummary
                                     aria-controls="panel1d-content" id="panel1d-header"
                                     expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up sml" ></i></span>}

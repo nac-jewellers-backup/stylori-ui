@@ -17,8 +17,8 @@ const Star = ({ selected = false, onClick = f => f }) =>
 //   onClick: React.PropTypes.func
 // }
 const Ratings = (props) => {
-    const { ProductDetailCtx: { ratingcounts ,setratingcountsclear}, setratingcounts } = React.useContext(ProductDetailContext);
-    return <Component setratingcounts={setratingcounts}  {...props} ratingcounts={ratingcounts} setratingcountsclear={setratingcountsclear} />
+    const { setratingcounts } = React.useContext(ProductDetailContext);
+    return <Component setratingcounts={setratingcounts}  {...props} />
 }
 
 class Component extends React.Component {
@@ -29,29 +29,23 @@ class Component extends React.Component {
         }
         this.change = this.change.bind(this)
     }
-    change(starsSelected) {
 
-        debugger
+    change(starsSelected) {
         this.setState({ starsSelected })
         this.props.setratingcounts({ ratingcounts: starsSelected })
-        if (this.props && this.props.setratingcountsclear && this.props.setratingcountsclear.length > 0) {
-        alert(JSON.stringify(this.props.setratingcFountsclear))
-        this.setState({ starsSelected: "" })
-        }
         // localStorage.setItem("count", starsSelected)
     }
 
     render() {
-// alert(JSON.stringify(this.props.setratingcountsclear))
-const { totalStars } = this.props;
+        const { totalStars } = this.props;
         const { starsSelected } = this.state;
 
         return (
-            <div class={this.props.ratings}>
+            <div className="star-rating" class={this.props.ratings}>
                 {[1, 2, 3, 4, 5].map((n, i) =>
                     <Star key={i}
                         selected={i < starsSelected}
-                        onClick={() => this.change(this.props.disable === "disable" ? "" : i + 1)}
+                        onClick={() => this.change(i + 1)}
                     />
                 )}
                 {/* <p>{starsSelected} of {totalStars} stars</p> */}

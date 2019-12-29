@@ -126,7 +126,7 @@ class Component extends React.Component {
                       tile && Object.entries(tile).length > 0 ?
                         <GridListTile key={tile.title} cols={tile.cols || 1} style={{ padding: '0 !important' }} className={`${classes.liClass}`} >
                           {/* <ProductCard data={tile} /> */}
-                          <ProductCards data={tile} wishlist={this.props.wishlist}/>
+                          <ProductCards data={tile} />
                         </GridListTile>
                         :
                         ''
