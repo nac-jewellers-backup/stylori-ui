@@ -20,7 +20,7 @@ class Accounts extends React.Component {
                 <Hidden smDown>
                     <Grid container spacing={12}>
                         <Grid item xs={12} >
-                            <Header wishlist={this.props.wishlistdata}/>
+                            <Header />
                         </Grid>
                     </Grid>
 
@@ -41,7 +41,7 @@ class Accounts extends React.Component {
               </Grid> */}
                     <Grid container spacing={12}>
                         <Grid item xs={12} > 
-                            <Header wishlist={this.props.wishlistdata}/>
+                            <Header />
                         </Grid>
                     </Grid>
 

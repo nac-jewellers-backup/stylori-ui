@@ -34,19 +34,19 @@ const useLogin = (changePanel, props) => {
     React.useEffect(() => {
         var ms = data && data.message
 
-        if (ms && data.auth === false) {
+        if (ms && data.auth === false ) {
             values['error']['passerr'] = true
             values['errortext']['passerr'] = ms
             setValues({
                 ...values,
                 values,
             })
-
+            
             // return false
-        }
-        else if (ms && data.auth === undefined) {
+        } 
+        else if (ms && data.auth === undefined ) {
             values['error']['emerr'] = true
-            values['errortext']['emerr'] = ms
+            values['errortext']['emerr'] =ms
             setValues({
                 ...values,
                 values,
@@ -55,7 +55,7 @@ const useLogin = (changePanel, props) => {
         }
         else {
             var a = data.userprofile ? data.userprofile : ""
-            if (values.error.emerr) {
+            if(values.error.emerr){
                 values['error']['emerr'] = false
                 values['errortext']['emerr'] = ""
                 setValues({
@@ -63,21 +63,19 @@ const useLogin = (changePanel, props) => {
                     values,
                 })
             }
-
+            
             if (JSON.stringify(a).length > 10 && values['error'] && values['errortext']) {
                 values['error']['passerr'] = false
                 values['errortext']['passerr'] = ""
-
+              
                 var bbn = data && data.userprofile && data.userprofile.id ? data.userprofile.id : ""
                 if (bbn.length > 0 || bbn !== undefined) {
                     localStorage.setItem("email", data.userprofile.email)
                     var bb = data.userprofile.id ? data.userprofile.id : ""
                     obj['userprofileId'] = bb
                     obj1['user_id'] = bb
-                    obj1['reload'] = "loading"
                     makeRequestCod(obj);
                     localStorage.setItem('user_id', bb)
-                    sessionStorage.setItem("user_id", bb)
                     localStorage.setItem('accessToken', data.accessToken)
                     // setValues({user_id:data.userprofile.id})
                     // changePanel(3)
@@ -95,12 +93,7 @@ const useLogin = (changePanel, props) => {
             localStorage.setItem("check_dlt", false)
             val["addressvalues"] = addresData
             val["addrs"] = false
-            // alert(JSON.stringify(addresData))
-            // if (addresData && addresData.data && addresData.data.allUserAddress && addresData.data.allUserAddress.nodes && addresData.data.allUserAddress.nodes.length < 0) {
-                localStorage.setItem("isedit", 1)
-            // }
-            addressetValues && addressetValues(val)
-            // localStorage.setItem("isedit", 1)
+            addressetValues&&addressetValues(val)
             localStorage.setItem("c_k_l", true)
             if (!pathnames) {
                 changePanel(3)
@@ -110,10 +103,17 @@ const useLogin = (changePanel, props) => {
                     return false
                 } else {
                     console.clear()
+                    // console.log('_history')
+                    // console.log(_history);
+                    console.clear()
+                    // console.log(history.push('/home'))
+                    // alert(JSON.stringify(_history.location.pathname = '/home'))
+                    // return _history
                     window.location.href = "/home"
                     return false
                 }
             }
+            window.location.reload();
         }
     }, [addresData])
     // React.useEffect(() => {
@@ -144,27 +144,13 @@ const useLogin = (changePanel, props) => {
             [type]: status
         })
     }
-    const clear = () => {
-        setValues({
-            password: "",
-            email: "",
-            errortext: {
-                emerr: "",
-                passerr: "",
-            },
-            error: {
-                passerr: false,
-                emerr: false,
-            }
-        })
 
-    }
     // const vl = data && data.message
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
     const handelSubmit = (e, history) => {
-
-
+       
+    
         if (values.email === "" && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
             values['errortext']['emerr'] = 'Email is required'
@@ -202,23 +188,21 @@ const useLogin = (changePanel, props) => {
                 ...values,
                 values,
             })
-
+            
             return false
         }
         let obj_values = {}
         let _password = values.password
         let _email = values.email
         let _roles = values.roles
-        obj_values = { password: _password, email: _email, roles: _roles }
+        obj_values = { password:_password, email:_email, roles:_roles }
         makeFetch(obj_values);
-        clear()
-        // reset();
         // _history=history('/home')
         // changePanel(3)
 
     }
 
-    const handlers = { handleChange, handleInvalid, handelSubmit, clear };
+    const handlers = { handleChange, handleInvalid, handelSubmit };
 
     return { values, handlers, setValues, data }
 }

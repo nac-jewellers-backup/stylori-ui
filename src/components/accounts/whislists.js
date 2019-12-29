@@ -40,16 +40,16 @@ class Component extends React.Component {
     render() {
         const { wishlistdata } = this.props.wishlistdata;
         return (
-            <> 
+            <>
                 {/* {JSON.stringify(this.props.wishlistdata)} */}
                 {wishlistdata && wishlistdata.nodes.length > 0 ?
                     <>
                         {wishlistdata && wishlistdata.nodes.map(first_map =>
                             <>
-                                {/* {first_map && first_map.productListByProductId && first_map.productListByProductId.transSkuListsByProductId && first_map.productListByProductId.transSkuListsByProductId.nodes.map(thrd_map =>  */}
+                                 {/* {first_map && first_map.productListByProductId && first_map.productListByProductId.transSkuListsByProductId && first_map.productListByProductId.transSkuListsByProductId.nodes.map(thrd_map =>  */}
                                 <Grid container spacing={12}>
                                     <Grid item lg={1}>
-                                        <div className="remove-product">
+                                          <div className="remove-product">
                                             <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} />
                                         </div>
                                     </Grid>
@@ -57,7 +57,7 @@ class Component extends React.Component {
                                         <div className="wishlist_img">
                                             <img className="viewport-img" src={`https://assets.stylori.net/base_images/${first_map.productListByProductId.productImagesByProductId.nodes[0].imageUrl}`
                                             } />
-                                        </div></Grid>
+                                         </div></Grid>
                                     <Grid item lg={8}>
                                         <div>
                                             <div className="wislist_title">{first_map.productListByProductId.productName}</div><br />
@@ -65,21 +65,17 @@ class Component extends React.Component {
                                             <div className="wislist_price">{Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice))}</div><br />
                                             <div className="add-bag">
                                                 <>
-                                                    <RemoveWishlist
-                                                        sku={first_map.skuId}
-                                                        productId={first_map.productId}
-                                                        add={first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice}
-                                                    />
-                                                <i class="fa fa-shopping-bag"></i>&nbsp;Add to Bag
-                                                    </>
+                                                    <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} add={first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice}/></>
                                                 {/* <Button "> */}
-                                                {/* onClick={() => {
+                                                    {/* onClick={() => {
                                                         this.props.setCartFilters({
                                                             skuId: first_map.skuId,
                                                             qty: 1,
                                                             price: first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice
                                                         })
+                                                       
                                                     }} className="add-bag"> */}
+                                                    <i class="fa fa-shopping-bag"></i>&nbsp;Add to Bag
                                     {/* </Button> */}
                                             </div>
                                         </div>

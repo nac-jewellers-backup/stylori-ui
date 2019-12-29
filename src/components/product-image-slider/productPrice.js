@@ -53,8 +53,6 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
     const { data } = props;
     const { classes } = props;
     const open = anchorEl;
-    var wishlist = props.wishlist
-
     return (
         <div>
             {data.map(val => (
@@ -162,7 +160,6 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                 ></i> &nbsp;
                                         {/* {JSON.stringify(val.productId)} */}
                                                 {/* <Wishlist sku={val.skuId} productId={val.productId} /> */}
-                                                <Wishlist sku={val.skuId} productId={val.productId} wishlist={wishlist} />
 
                                                 <Popover
                                                     id="simple-popper"
@@ -191,9 +188,8 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                         </a> */}
                                                     </div>
                                                 </Popover>
-                                                <div onClick={() => window.scrollTo(0, 1800)}><Ratings ratings="starts-review" disable={"disable"} /></div>
 
-                                                {/* <div><Ratings ratings="starts-review" /></div> */}
+                                                <div><Ratings ratings="starts-review" /></div>
                                             </div>
                                         </div>
                                     </Hidden>

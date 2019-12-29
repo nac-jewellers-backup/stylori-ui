@@ -7,23 +7,21 @@ import { withRouter } from 'react-router-dom';
 const initialCtx = {
     ProductDetailCtx: {
         filters: { productId: '', defaultVariants: { diamondType: '', metalColor: '', purity: '', skuSize: '' }, skuId: '' },
-        loading: false, error: false, data: [], likedatas: [],ratingcountsclear: [], viewedddatas: [], price: 0, rating: [], ratingcounts: [], registerurl: ""
+        loading: false, error: false, data: [], likedatas: [], viewedddatas: [], price: 0, rating: [], ratingcounts: [], registerurl: ""
     },
     setFilters: () => { },
     setlikedata: () => { },
     setrating: () => { },
     setregisterurl: () => { },
     setratingcounts: () => { },
-    setratingcountsclear: () => { },
 }
 export const ProductDetailContext = React.createContext(initialCtx);
 export const ProductDetailConsumer = ProductDetailContext.Consumer;
 export const TabsProvider = (props) => {
     const [filters, setFilters] = React.useState(initialCtx.ProductDetailCtx.filters);
     const [likedatas, setlikedata] = React.useState([])
-    const [viewedddatas, setvieweddata] = React.useState()
+    const [viewedddatas, setvieweddata] = React.useState([])
     const [rating, setrating] = React.useState([])
-    const [ratingcountsclear, setratingcountsclear] = React.useState([])
     const [registerurl, setregisterurl] = React.useState("")
     const [ratingcounts, setratingcounts] = React.useState([])
     const [price, setPrice] = React.useState(0)
@@ -67,7 +65,7 @@ export const TabsProvider = (props) => {
                 variables = { productnamefilter: { productListByProductId: { 'productName': { equalTo: urlReplace } } }, number: 1 }
             }
         }
-
+       
         // var metalColors =filters.defaultVariants.metalColor.length>0 ? {productColor:filters.defaultVariants.metalColor  }: null;
         // variables = { conditionfilter: { 'generatedSku': filters["skuId"] }, conditionImage:{...metalColors} }
 
@@ -77,11 +75,11 @@ export const TabsProvider = (props) => {
             })
 
         }
-
+        
     }, [])
-
+    
     useEffect(() => {
-
+       
         if (Object.entries(data).length !== 0 && data.constructor === Object) {
             if (data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
                 handleProductDetatiContext()
@@ -212,7 +210,7 @@ export const TabsProvider = (props) => {
         // filters['defaultVariants']['skuSize'] = data.data.allTransSkuLists.nodes[0].skuSize
         // setFilters(filters)
         var variants = filters['defaultVariants']
-        var metalColors = filters && filters.defaultVariants && filters.defaultVariants.metalColor && filters.defaultVariants.metalColor.length && filters.defaultVariants.metalColor.length > 0 ? { productColor: filters.defaultVariants.metalColor } : null;
+        var metalColors = filters &&filters.defaultVariants &&filters.defaultVariants.metalColor &&filters.defaultVariants.metalColor.length &&filters.defaultVariants.metalColor.length > 0 ? { productColor: filters.defaultVariants.metalColor } : null;
         var ProductVariants = { conditionfilter: { 'productId': filters["productId"], ...variants } }
         var ConditionimagesMetalColor = { conditionImage: metalColors }
         variables = { ...ProductVariants, ...ConditionimagesMetalColor }
@@ -269,12 +267,12 @@ export const TabsProvider = (props) => {
     //     if(Object.entries(data).length>0 ) {
     //         console.info('priceprice_price123',data )
     //     }
-    // },[data,filters,error,loading])ratingcountsclear, setratingcountsclear
+    // },[data,filters,error,loading])
     const ProductDetailCtx = {
-        ratingcountsclear, ratingcounts, filters, loading, error, data, likedata, likeloading, likeerror, likedatas, vieweddata, viewederror, viewedloading, viewedddatas, rating, registerurl
+        ratingcounts, filters, loading, error, data, likedata, likeloading, likeerror, likedatas, vieweddata, viewederror, viewedloading, viewedddatas, rating, registerurl
     }
     return (
-        <ProductDetailContext.Provider value={{ setratingcountsclear, setratingcounts, ProductDetailCtx, setFilters, setlikedata, setvieweddata, setrating, setregisterurl }} >
+        <ProductDetailContext.Provider value={{ setratingcounts,ProductDetailCtx, setFilters, setlikedata, setvieweddata, setrating, setregisterurl }} >
             {props.children}
         </ProductDetailContext.Provider>
     )
