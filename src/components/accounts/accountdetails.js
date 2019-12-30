@@ -26,7 +26,7 @@ class Accountdetails extends Component {
 
     }
     handleClick = (e) => {
-        debugger
+       
         this.setState({ currency: e.target.value,isActive:e.target.value });
     };
 
@@ -141,21 +141,23 @@ class Accountdetails extends Component {
                     <Grid>
                         <div class="inner-page-title"> My Account </div>
                     </Grid>
-                    <Grid style={{display:"flex",justifyContent:"center",marginTop:"10px"}}>
+                    <Grid style={{display:"flex",alignContent:"left",marginTop:"10px"}}>
                   
 
 
-<form noValidate autoComplete="off">
-<div>
+<form noValidate autoComplete="off" style={{width: "100%"}}>
+<div >
         <TextField
+        style={{width: "70%"}}
           select
-          label="Select the options"
+        //   label="Select the options"
           value={this.state.isActive}
           onChange={(e) => this.handleClick(e)}
           SelectProps={{
             native: true,
           }}
           variant="outlined"
+          helperText=""
         >
           {currencies.map(option => (
             <option key={option.label} value={option.label}>
@@ -167,11 +169,12 @@ class Accountdetails extends Component {
       </form>
                     </Grid>
 
-                    <Grid item xs={9}>
+                    <Grid item xs={9} class="topPadding">
                                     <div className="pay-index-subhed_datas">
                                         {
                                             this.state.isActive == 'profile' &&
                                             <>
+                                                
                                                 {/* {c_k_l !== true ? */}
                                                 <Register />
                                                 {/* <Addressform/> */}
