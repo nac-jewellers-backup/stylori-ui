@@ -652,7 +652,7 @@ class Component extends React.Component {
               className={check ? classes.productCardscheck : classes.productCardsuncheck}
 
             >
-            <ProductLayout data={this.props.datas} loading = {this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
+            <ProductLayout wishlist={this.props.wishlist} data={this.props.datas} loading = {this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
 
             </div>}
         </div>

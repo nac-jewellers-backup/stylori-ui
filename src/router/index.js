@@ -40,7 +40,7 @@ export const RouterApp = (props) => {
         var loc = window.location.pathname.split('/')[1].split('-').filter(val => { if (val === 'silver') return val })
         return loc[0]
     }
-    console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
+    // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
     return (
         <Switch history={browserHistory}>
             <Redirect key="stylori-redirect" from="/" exact to={"/jewellery"} />
@@ -54,11 +54,8 @@ export const RouterApp = (props) => {
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
             <Route key="AboutUs" component={AboutPage} exact path={routes.AboutUs} />
             <Route key="ForgotPassword" component={ForgotPassword} exact path={routes.ForgotPassword} />
-            
-
             {(props.location.pathname !== "/cart" && props.location.pathname !== `/account${"-" + window.location.pathname.split("-")[1]}` && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && props.location.pathname !== "/forgotPassword" && Globalctx  && Globalctx.pathName === false) &&
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />
-
             }
             {
                 Globalctx && Globalctx.pathName &&

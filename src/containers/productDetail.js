@@ -69,7 +69,7 @@ return (
             <meta property="og:url" id="fb-product-url" content={window.location.href} />
             <meta property="og:image" id="fb_imageUrl" content={this.props.data[0].fadeImages} />
 
-            <meta name="twitter:card" content="summary" /> 
+            <meta name="twitter:card" content="summary" />
             <meta name="twitter:site" content="@StyloriLove" />
             <meta name="twitter:title" id="twitter-title" content={this.props.data[0].title} />
             <meta name="twitter:description" content={this.props.data[0].dis} />
@@ -106,10 +106,10 @@ return (
                 <div className='overall-box'>
                   <ProductPrice data={this.props.data} wishlist={this.props.wishlistdata}/>
                 </div>
-                <div className='overall-box priceecontainer'>
+                <div className='overall-box'>
                   <PriceTabs data={this.props.data} />
                 </div>
-                <div className='overall-box priceecontainer'>
+                <div className='overall-box'>
                   <PriceBuynow data={this.props.data} />
                 </div>
               </Grid>
