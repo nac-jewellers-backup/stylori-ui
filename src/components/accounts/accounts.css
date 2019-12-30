@@ -8,7 +8,6 @@
 
 .pay-index-subhed {
     float: left;
-    padding-top: 27px;
     /* background: #f0f0f0; */
     font-size: 12px !important;
     color: #333 !important;
@@ -16,7 +15,7 @@
     height: 80vh !important; */
     height: 70vh !important;
     /* overflow: scroll ! important; */
-    /* position: fixed !important; */
+    position: fixed !important;
 }
 
 .pay-index-subhed_datas {
@@ -35,52 +34,6 @@
     /* box-shadow: 1px 2px 35px 3px #DEDADA !important; */
     box-shadow: 1px 0px 10px 0px #DEDADA !important;
 }
-/* .topPadding{
-    padding-top: 5px;
-}
-@media screen and (max-width: 979px) {
-.topPadding{
-    padding-top: 20px;
-} */
-
-/* } */
-/* .containerTopPadding{
-    padding-top: 0px;
-}
-
-*/
-/* @media screen and (max-width: 425px) {
-    .add-bag {
-        color: #333 !important;
-        border: 1px solid #333 !important;
-        text-align: center !important;
-        float: left !important;
-        font-size: 12px !important;
-        border-radius: 5%;
-        line-height: 10px;
-        height: 30px;
-        padding: 2px;
-        width: 54%;
-        cursor: pointer;
-    }
-    
-} 
-@media screen and (min-width: 426px) {
-    .add-bag {
-        color: #333 !important;
-        border: 1px solid #333 !important;
-        text-align: center !important;
-        float: left !important;
-        font-size: 12px !important;
-        border-radius: 5%;
-        line-height: 10px;
-        height: 30px;
-        padding: 2px;
-        width: 15%;
-        cursor: pointer;
-    }
-    
-}  */
 
 .pay-index-subhed p:hover {
     background: #dfdfdf;
@@ -109,14 +62,6 @@
     color: #ed1165;
     margin-top: 0px;
     font-weight: bold !important;
-    position:sticky;
-    z-index: 1000;
-    width: 100%;
-    background: #fff;
-    top:55px;
-    display: flex;
-    margin-top: 8px;
-    padding-top: 25px;
 }
 .rups {
     color: rgba(241, 72, 128, 1);
@@ -183,56 +128,17 @@
     line-height: 10px;
     height: 30px;
     padding: 2px;
-    width: 54%;
+    width: 15%;
     cursor: pointer;
 }
 
 .wislist_title {
-    color: #394578;
-    padding-bottom: 10px;
+    color: #337ab7;
 }
 
 .wislist_price {
     color: rgba(241, 72, 128, 1);
-    padding-bottom: 10px;
 }
-@media screen and (max-width: 320px) {
-    .wislist_price{
-        color: rgba(241, 72, 128, 1);
-        padding-bottom: 5px;
-    }
-    .wislist_title{
-        color: #394578;
-    padding-bottom: 5px;
-    }
-
-}
-.topPadding{
-    padding-top: 0px;
-    width: 100%;
-}
-@media screen and (max-width: 987px) {
-    .topPadding{
-        padding-top:15px;
-        width: 100%;
-    }
-}
-.passwordRight{
-    width: 28%;
-}
-/* @media screen and (max-width: 987px) and (min-width:519px) {
-    .passwordRight{
-        width: 50%;
-    }
-} */
-@media screen and (max-width:519px) {
-    .passwordRight{
-        width: 42%;
-    }
-}
-
-
-
 
 /* .MuiExpansionPanelDetails-root{
     display: none !important;

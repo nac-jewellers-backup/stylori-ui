@@ -98,7 +98,7 @@ const imageOnError = (event, res) => {
   event.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
 }
 const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => (
-  <div className="imageHeight">
+  <div>
     {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" style={{ zIndex: 2 }}>
       <span class="one-day-ship-listing-page-label">1 day shipping</span>
 
@@ -424,7 +424,7 @@ sizes="(max-width: 320px) 320w,
 
 
 
-            {Gallery(props, callmouseover, callmouseout, cardstate, classes)}
+            {Gallery(props, callmouseover, callmouseout, cardstate)}
           </CardActions>
           <Card className={classes.priceClass}>
             <CardContent className={classes.cardContent}>

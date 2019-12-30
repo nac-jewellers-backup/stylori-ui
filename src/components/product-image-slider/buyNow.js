@@ -39,7 +39,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
             {data[0].ProductContactNum.map(val =>
                 <Grid container spacing={12}>
 
-                    <Grid item xs={8} lg={4} sm={8} className={classes.shadow}>
+                    <Grid item xs={8} lg={4} sm={8}>
                         {/* <input
                             placeholder='&#xf041; &nbsp; Enter Pin Code'
                             className='buynow-search'
@@ -56,7 +56,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                             onKeyPress={(e) => { if (!(e.which >= 48 && e.which <= 57)) e.preventDefault(); }}
                         />
                     </Grid>
-                    <Grid item xs={4} lg={3} sm={4} >
+                    <Grid item xs={4} lg={3} sm={4}>
                         <Button className={`search-button ${classes.normalcolorback} ${classes.fontwhite}`} onClick={() => { handleCodChange() }}>{state.CheckForCodtitle}</Button>
                     </Grid>
 

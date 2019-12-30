@@ -32,8 +32,7 @@ export const styles = theme => ({
     backgroundColor: theme.palette.secondary.dark,
     display: "flex",
     justifyContent: "center",
-    alignContent: "center",
-    marginTop:"3px",
+    alignContent: "center"
   },
   [theme.breakpoints.only('xs')]: {
     padding: "3px !important",
