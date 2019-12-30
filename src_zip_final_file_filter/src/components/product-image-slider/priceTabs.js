@@ -203,7 +203,7 @@ class Component extends React.Component {
                     const arr2 = val.tab2.Children !== null && (val.tab2.Children).split(',')
                     return (
                         <>
-                            {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px", paddingBottom: "10px", }}>
+                            {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px", borderBottom: "1px solid #cccccc", paddingBottom: "10px" }}>
                                 <Grid item lg={3} xs={12}><h1 className="rings_tabs">{val.tab1.header}&nbsp;<a
                                     onClick={this.handleOpen}
                                     className="my-ringsize">Size Guide </a></h1></Grid>
@@ -216,8 +216,7 @@ class Component extends React.Component {
 
                                                 </Grid>
                                                 <Grid item style={{ width: "84%" }}>
-                                                    <Slideshow dataCarousel={settings}
-                                                        sliderRef={slider}>
+                                                    <Slideshow dataCarousel={settings} sliderRef={this.slider}>
                                                         {arr.map((val, i) => {
                                                             return (<>
                                                                 <button
@@ -338,13 +337,12 @@ class Component extends React.Component {
                 </Hidden>
                 <Hidden mdUp>
                     <Container>
-                        <div style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" }}>
-                            <ExpansionPanel expanded={expanded === "1"} >
-                                {this.TabsComponent()}
-                            </ExpansionPanel></div>
+                        <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important" }} expanded={expanded === "1"} >
+                            {this.TabsComponent()}
+                        </ExpansionPanel>
                     </Container>
                 </Hidden>
-            </div >
+            </div>
         );
     }
 }

@@ -219,23 +219,23 @@ const generateShipsBy = (readytoship, vendorDeliveryTime) => {
         return 'Ships by' + ' ' + moment().add(numberOfDays, 'days').format('MMM Do YY');
     }
 }
-const sorting = (val) =>{
+const sorting = (val) => {
 
-    if(val.sizeVarient){
+    if (val.sizeVarient) {
         var a = val.sizeVarient.split(',')
-        var b = a.map(val=>{
+        var b = a.map(val => {
             return Number(val)
-            })
-            var c = function myFunction() {
-                b.sort(function(a, b){return a-b});
-              return b
-              }
-              return c()
+        })
+        var c = function myFunction() {
+            b.sort(function (a, b) { return a - b });
+            return b
+        }
+        return c()
     }
-    else{
+    else {
         return null
     }
-   
+
 }
 // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
 export default function (data, like_data, viewedddatas, rating) {

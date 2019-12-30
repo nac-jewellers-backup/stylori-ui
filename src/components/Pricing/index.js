@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid, Hidden } from '@material-ui/core'
 import '../product-image-slider/product-images.css'
 import styles from './style'
 import './pricing.css'
@@ -52,23 +52,25 @@ export default function Pricing(props) {
                                 </Typography> : ""}
                         </Grid>
                         <Grid item lg={12} xs={12}>
-                            {
-                                props.offerDiscount ?
-                                    <span className={`discount ${classes.backgsecondary} ${classes.off}`}>{props.offerDiscount}</span>
-                                    :
+                            <Hidden mdDown>
+                                {
+                                    props.offerDiscount ?
+                                        <span className={`discount ${classes.backgsecondary} ${classes.off}`}>{props.offerDiscount}</span>
+                                        :
 
-                                    <Typography style={{ display: "flex" }}>
-                                        <Typography
-                                            variant="caption"
-                                            component="p"
-                                            className={`${props.save != null & props.save !== '' ? '' : 'shine'} ${classes.colorMain}  `}
-                                        >
-                                            {path === 'stylori' && 'You save'} {props.save}
+                                        <Typography style={{ display: "flex" }}>
+                                            <Typography
+                                                variant="caption"
+                                                component="p"
+                                                className={`${props.save != null & props.save !== '' ? '' : 'shine'} ${classes.colorMain}  `}
+                                            >
+                                                {path === 'stylori' && 'You save'} {props.save}
+                                            </Typography>
                                         </Typography>
-                                    </Typography>
-
-                            }
+                                }
+                            </Hidden>
                         </Grid>
+
                     </Grid>
                 </Grid>
             </Grid>

@@ -106,10 +106,10 @@ return (
                 <div className='overall-box'>
                   <ProductPrice data={this.props.data} wishlist={this.props.wishlistdata}/>
                 </div>
-                <div className='overall-box'>
+                <div className='overall-box priceecontainer'>
                   <PriceTabs data={this.props.data} />
                 </div>
-                <div className='overall-box'>
+                <div className='overall-box priceecontainer'>
                   <PriceBuynow data={this.props.data} />
                 </div>
               </Grid>
