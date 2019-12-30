@@ -219,11 +219,11 @@ class Header extends Component {
                                                     aria-owns={openPopover ? 'simple-popper' : ""}
                                                     onClick={this.handleClickPopover}
                                                 >
-                                                    <i style={{ fontSize: "20px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                    <i style={{ fontSize: "20px",marginTop:"9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                 </span>
                                                 // <img className="icons-header-sizes" src={usershape}/>
                                                 : <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
-                                                    <i style={{ fontSize: "20px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                    <i style={{ fontSize: "20px",marginTop:"9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                 </span>
                                             }
                                             <Popover
@@ -255,12 +255,12 @@ class Header extends Component {
                                                </NavLink>
                                                 </div>
                                             </Popover>
-                                            <Badge color="secondary"
+                                            <Badge color="secondary" style={{marginTop:"9px"}}
                                                 badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary"
                                             // wishlist_count
                                             // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
                                             >
-                                                <i style={{ fontSize: "20px" }} class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
+                                                <i style={{ fontSize: "20px"}} class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
                                                     if (user_id.length > 0) {
                                                         window.location.href = `/account${'-wishlist'}`
                                                     } else {
@@ -268,9 +268,9 @@ class Header extends Component {
                                                     }
                                                 }}  ></i>
                                             </Badge>
-                                            <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                            <Badge  style={{marginTop:"9px"}} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
                                                 <a href="/cart" >
-                                                    <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                                    <i style={{ fontSize: "20px"}} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
                                                 </a> </Badge>
                                         </div>
@@ -363,10 +363,10 @@ class Header extends Component {
                                         </Grid>
                                         <Grid item xs={7}>
                                             <div onClick={this.handleSearch} className="mobli-icon1">
-                                                <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center", paddingRight: "10px" }}>
+                                                <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center", paddingRight: "10px",paddingBottom:"15px"}}>
                                                     <div className={`head-icons1 ${classes.headIcons}`} >
 
-                                                        <div id="search" onClick={this.handleClose} className={classes.searchcontainTop}><Seach className={"searchsvgmobile"}
+                                                        <div  id="search" onClick={this.handleClose} className={classes.searchcontainTop}><Seach className={"searchsvgmobile"}
 
                                                         />
 
@@ -422,7 +422,7 @@ class Header extends Component {
                                                                 }
                                                             }}  ></i>
                                                         </Badge>
-                                                        <Badge style={{ fontSize: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                        <Badge style={{ fontSize: "10px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
                                                             <NavLink to="/cart">   <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
                                                             </NavLink> </Badge>
                                                     </div>
