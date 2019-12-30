@@ -124,30 +124,30 @@ class Component extends React.Component {
 
         if (val == '18K Yellow') {
             return (
-                "#e3e36b"
+                "#eac97d"
             );
         } if (val == '22K Yellow') {
             return (
-                'Orange'
+                '#eac97d'
             );
         }
         if (val == '14K Yellow') {
             return (
-                "#f1f1a2"
+                "#eac97d"
             );
         } if (val == '24K Yellow') {
             return (
-                <img id={val} src='https://img.icons8.com/color/48/000000/gold-bars.png' style={{ width: '30px', margin: "auto" }} alt="" />
+                "#eac97d"
             );
         }
         if (val == "14K White") {
             return (
-                "#dbd5d5"
+                "#E6E6E6"
             );
         }
         if (val == '18K White') {
             return (
-                "#ccc"
+                "#E6E6E6"
             );
         }
         if (val == '14K Rose_White') {
@@ -162,14 +162,14 @@ class Component extends React.Component {
         }
         if (val == "14K Rose") {
             return (
-                <img id={val} src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAABe0lEQVQ4jcWSMU8UURSFv/tmJkx2HUOCzZpFsqtkChICic02GO3t6KjQrMaKlp9ga23NL6C3UzqoIAGUCZBoCXGX2TfMvLkWumF3WSIV3PJ75957Tu6D+y656UGPjj8RTDwDIM++S3Nm7dYDdCeZJPL28LwaAM79ItU5mZ85G9WasetD95a8qGEzsBnkRY1AV8dJxw/ALF1n5Yv/RtDD002iagstQ4q85Hf6GYCHlTZ+YBBj6Vxsyez0636Pf9V8OEGRx5ydT10Z8X6CU7q9CHoAVSDWJAml0bDDES7NMiLN67bl5Yjrp6S6PBRB95N1XLmCmGkQC2qBB+i/BUIJdEFC0BAtT/HMhsSNj6K7BwtE0VcCvwJAmn6jvHyFXz0gDJ4AYPMTyGKc+UK10vrrOLd0uy0f8dpc9CoDFmPU/0CR1bG2z+p48h7nZjnv9FmI8d8YxCyOZJwC1wYdPLHBle+ARyPa5z6QIPwY5t5jRLeHkJoxTG74R3dZfwD4SINLo+uBVgAAAABJRU5ErkJggg==' style={{ width: '30px', margin: "auto" }} alt="" />
-            );
+                "#E2A497"        
+                    );
         }
 
         if (val == '18K Rose') {
             return (
-                <img id={val} src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAABp0lEQVQ4jcVSu24TURScc3ftfTjgR9IYJRQ85CIKSqQUuIDI9HTpqAAZREXLJ9BSU/MFSJS4CiCECFIkCh6KFCSsRFHstXbXd6/XOzRJ8FpGoYJTzpkzZ+beA/zvkj814k87zyzXuwIAYz385q+uPP5rgV5nu+Kctz5Lwa4DAEdp18RYrty41pvmqlkCheLoPo2pZ1GMLIpBY+pF29ydxZ0pIMq6OY0RsnFmhGh752WxWmmSdKmTLDkKngOAUyu3xXWUiGjT678tra3cPpmxTze8+upEOmiY7v78adPCTxBM+8G5Y6hEoMFOx5VWS+ci6IXBphJcytmmbJBo5TPL5cgrbeYihO8+PAFxR0SWBKJBaoJzEwsygYQQcQm6JH9A8GLu+vpTCbferxaq1S04BR8AxoPBG6/r3dJLoy/K9y8CQBbHe+7hfmNYrr22yuUmADAxOg37TVuUaqdB4E+4bAxrySNEspiG8bFNWRx6lYdZMrrKg8MTnitQ95RQ1qZ+Zp6UNvn7fQgqcvxAgIUck7JuZ8JdJfJ9Es8yXlBKPp6JgTPv6N/WLx+/ra26yLQYAAAAAElFTkSuQmCC' style={{ width: '30px', margin: "auto" }} alt="" />
-            );
+                "#E2A497"        
+                );
         }
 
     }
