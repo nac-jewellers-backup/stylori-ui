@@ -44,14 +44,10 @@ class ProductDetail extends Component {
 
   }
   render() {
-    console.log('----------------------------------')
-    console.log('--this.props.data--', '--this.props.data--', this.props)
 
     // alert(JSON.stringify(this.props.data))
-    console.log('----------------------------------')
 
     var loc = this.props.location.pathname;
-    console.log('this.props.data i am data', this.props.data)
     var path = loc.split('/');
     var data_json = [{ title: 'home', url: '/home' }, { title: path[2], url: this.renderUrl() }, { title: path[4] }]
 // alert(JSON.stringify(this.props.wishlistdata))
@@ -80,7 +76,7 @@ return (
 
         <Hidden smDown>
 
-          <Grid container spacing={12} >
+          <Grid container >
             <Grid item xs={12} >
               <Header wishlist={this.props.wishlistdata}/>
             </Grid>
@@ -154,32 +150,39 @@ return (
               <ProductDetails data={this.props.data} wishlist={this.props.wishlistdata}/>
             </Grid>
 
-            <Grid item xs={12} >
-              <PriceCertification data={this.props.data} />
-            </Grid>
-            <Grid item xs={12} >
-              <Request />
-            </Grid>
+          <Grid item xs={12}>
+            <PriceBuynow data={this.props.data} />
+          </Grid>
+          <Grid item xs={12} >
+            <ProductDetails data={this.props.data} />
+          </Grid>
 
-            <Grid item xs={12} >
-              <Sublistcarousel data={this.props.data} />
-            </Grid>
+          <Grid item xs={12} >
+            <PriceCertification data={this.props.data} />
+          </Grid>
+          <Grid item xs={12} >
+            <Request />
+          </Grid>
 
-            <Grid item xs={12} >
-              <CustomerReviews data={this.props.data} />
-            </Grid>
+          <Grid item xs={12} >
+            <Sublistcarousel data={this.props.data} />
+          </Grid>
 
-            <Grid item xs={12} >
-              <RatingForm />
-            </Grid>
+          <Grid item xs={12} >
+            <CustomerReviews data={this.props.data} />
+          </Grid>
 
-            <Grid item>
-              <Footer />
-            </Grid>
+          <Grid item xs={12} >
+            <RatingForm />
+          </Grid>
 
-          </div>
+          <Grid item>
+            <Footer />
+          </Grid>
+
 
           <Buynowfixed data={this.props.data} />
+          </div>
         </Hidden>
 
       </div>

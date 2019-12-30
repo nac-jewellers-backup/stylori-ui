@@ -46,23 +46,24 @@ class Component extends React.Component {
                     <>
                         {wishlistdata && wishlistdata.nodes.map(first_map =>
                             <>
-                                {/* {first_map && first_map.productListByProductId && first_map.productListByProductId.transSkuListsByProductId && first_map.productListByProductId.transSkuListsByProductId.nodes.map(thrd_map =>  */}
-                                <Grid container spacing={12}>
-                                    <Grid item lg={1}>
-                                        <div className="remove-product">
+                                 {/* {first_map && first_map.productListByProductId && first_map.productListByProductId.transSkuListsByProductId && first_map.productListByProductId.transSkuListsByProductId.nodes.map(thrd_map =>  */}
+                                <Grid container spacing={12} xs={12} style={{paddingBottom:"10px"}}>
+                                    {/* <Grid  xs={12}> */}
+                                    <Grid item style={{width:"50%"}} >
+                                    <Grid item  style={{paddingRight:"4px",float:"left"}}>
+                                          <div className="remove-product">
                                             <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} />
                                         </div>
                                     </Grid>
-                                    <Grid item lg={3}>
-                                        <div className="wishlist_img">
+                                        <div className="wishlist_img" style={{float:"left"}}>
                                             <img className="viewport-img" src={`https://assets.stylori.net/base_images/${first_map.productListByProductId.productImagesByProductId.nodes[0].imageUrl}`
                                             } />
-                                        </div></Grid>
-                                    <Grid item lg={8}>
+                                         </div></Grid>
+                                    <Grid  style={{width:"50%"}}>
                                         <div>
-                                            <div className="wislist_title">{first_map.productListByProductId.productName}</div><br />
+                                            <div className="wislist_title">{first_map.productListByProductId.productName}</div>
 
-                                            <div className="wislist_price">{Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice))}</div><br />
+                                            <div className="wislist_price">{Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice))}</div>
                                             <div className="add-bag">
                                                 <>
                                                     <RemoveWishlist
@@ -84,6 +85,7 @@ class Component extends React.Component {
                                             </div>
                                         </div>
                                     </Grid>
+                                    {/* </Grid> */}
                                 </Grid>
                                 {/* )}  */}
                             </>

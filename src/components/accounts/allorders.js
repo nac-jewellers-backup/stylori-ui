@@ -133,7 +133,7 @@ class Allorders extends React.Component {
                                                         </Grid>
                                                         <Grid item lg={4}>
                                                             <Grid container spacing={12} lg={12} style={{ lineHeight: "20px" }}>
-                                                                <b> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
+                                                                <b style={{width:"100%"}}> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
                                                                 <Grid item lg={6}>
                                                                     <Typography className="subhesder">Gold Weight</Typography>
                                                                     {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes.length > 0 ?
