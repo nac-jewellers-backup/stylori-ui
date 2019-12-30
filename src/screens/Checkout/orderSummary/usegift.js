@@ -10,9 +10,9 @@ const useGift = () => {
         message: null,
     });
     const [val, setval] = React.useState({
-        expanded1: "panel1",
-        expanded2: "panel2",
-        expanded3: "panel3",
+        expanded1: 1,
+        expanded2: 1,
+        expanded3: 1,
     });
     // const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     const { data, error, loading, makeFetch } = useNetworkRequest('/addgiftwrap', {}, false);
@@ -33,9 +33,9 @@ const useGift = () => {
         makeFetch(values);
     }
 
-    const handlers = {handleSubmit, handleChange };
+    const handlers = { handleSubmit, handleChange };
 
-    return { values, handlers, val,data }
+    return { values, handlers, val, data, setval }
 }
 
 export default useGift;

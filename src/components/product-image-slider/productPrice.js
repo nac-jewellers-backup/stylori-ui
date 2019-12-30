@@ -177,6 +177,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                     onClick={handleClick}
                                                 ></i> &nbsp;
                                         {/* {JSON.stringify(val.productId)} */}
+                                                {/* <Wishlist sku={val.skuId} productId={val.productId} /> */}
                                                 <Wishlist sku={val.skuId} productId={val.productId} wishlist={wishlist} />
 
                                                 <Popover
@@ -207,6 +208,8 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                     </div>
                                                 </Popover>
                                                 <div onClick={() => window.scrollTo(0, 1800)}><Ratings ratings="starts-review" disable={"disable"} /></div>
+
+                                                {/* <div><Ratings ratings="starts-review" /></div> */}
                                             </div>
                                         </div>
                                     </Hidden>

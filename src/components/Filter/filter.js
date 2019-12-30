@@ -362,9 +362,24 @@ class Component extends React.Component {
     this.setState({ open: false });
   };
   selectItem = (name) => {
+    var arr1;
     let { selected } = this.state;
-    selected.push(name)
-    this.setState({ selected })
+    var map = selected.map(val => { if (val !== undefined && val !== null) { return val } })
+    if (map.indexOf(name) > -1) {
+      arr1 = selected.filter(val => {
+        if (val !== undefined && val !== null) {
+          if (val !== name) {
+            return val;
+          }
+        }
+      })
+      selected = arr1;
+      this.setState({ selected })
+    } else {
+      // var same =map.indexOf(name)
+      selected.push(name)
+      this.setState({ selected })
+    }
   }
   filterValue = (filtercheck) => {
     if (filtercheck === this.state.filtercheck) {

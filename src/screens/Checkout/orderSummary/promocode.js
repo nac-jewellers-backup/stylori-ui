@@ -9,31 +9,47 @@ const Promo = (props) => {
 }
 
 const PromoComponent = (props) => {
-    const { values, handlers } = usePromo();
-    return (
-        <div className='pt-sm'>
-            <form action="javascript:void(0)" onSubmit={() => handlers.handleSubmit()}>
-                <div style={{ width: "100%" }}>
-                    <Grid container spacing={12}>
-                        <Grid item xs={8} lg={8}>
-                            <Input
-                                helperText="Promocode is required"
-                                placeholder='Enter Promocode'
-                                name="vouchercode"
-                                type="text"
-                                value={values.vouchercode}
-                                required
-                                onChange={e => handlers.handleChange('vouchercode', e.target.value)}
-                            />
-                        </Grid>
-                        <Grid item xs={4} lg={4}>
-                            <Button type="sumbit" className='ship-promo-btn'>Apply</Button>
-                        </Grid>
+    var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
+    const myStorage = sessionStorage.getItem("user_id");
+    const localvalues_check = JSON.parse(localStorage.getItem('gut_lg')) === true ? true : false
+    React.useEffect(() => {
+        if (localvalues_check === true) {
+            if (con_gust === true) {
+                if (!myStorage) {
+                    localStorage.clear();
+                }
+            }
+        }
+    }, [])
+
+const { values, handlers, data } = usePromo();
+return (
+    <div className='pt-sm'>
+        <form action="javascript:void(0)" onSubmit={() => handlers.handleSubmit()}>
+            <div style={{ width: "100%" }}>
+                <Grid container spacing={12}>
+                    <Grid item xs={8} lg={8}> 
+                        <Input
+                            helperText="Promocode is required"
+                            placeholder='Enter Promocode'
+                            name="vouchercode"
+                            type="text"
+                            value={values.vouchercode}
+                            required
+                            onChange={e => handlers.handleChange('vouchercode', e.target.value)}
+                        />
                     </Grid>
-                </div>
-            </form>
-        </div>
-    )
+                    <Grid item xs={4} lg={4}>
+                        {data.message === "Applied Successfully" ?
+                            <Button style={{ filter: "grayscale(1)" }} disabled type="sumbit" className='ship-promo-btn'>Applied</Button> :
+                            <Button type="sumbit" className='ship-promo-btn'>Apply</Button>}
+
+                    </Grid>
+                </Grid>
+            </div>
+        </form>
+    </div>
+)
 }
 
 

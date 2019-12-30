@@ -40,7 +40,7 @@ class Component extends React.Component {
     render() {
         const { wishlistdata } = this.props.wishlistdata;
         return (
-            <>
+            <> 
                 {/* {JSON.stringify(this.props.wishlistdata)} */}
                 {wishlistdata && wishlistdata.nodes.length > 0 ?
                     <>
@@ -66,17 +66,21 @@ class Component extends React.Component {
                                             <div className="wislist_price">{Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice))}</div>
                                             <div className="add-bag">
                                                 <>
-                                                    <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} add={first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice}/></>
+                                                    <RemoveWishlist
+                                                        sku={first_map.skuId}
+                                                        productId={first_map.productId}
+                                                        add={first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice}
+                                                    />
+                                                <i class="fa fa-shopping-bag"></i>&nbsp;Add to Bag
+                                                    </>
                                                 {/* <Button "> */}
-                                                    {/* onClick={() => {
+                                                {/* onClick={() => {
                                                         this.props.setCartFilters({
                                                             skuId: first_map.skuId,
                                                             qty: 1,
                                                             price: first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice
                                                         })
-                                                       
                                                     }} className="add-bag"> */}
-                                                    <i class="fa fa-shopping-bag"></i>&nbsp;Add to Bag
                                     {/* </Button> */}
                                             </div>
                                         </div>

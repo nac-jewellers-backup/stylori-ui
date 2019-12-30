@@ -507,7 +507,7 @@ export default function (data, like_data, viewedddatas, rating) {
                 },
                 {
                     name: "Quality Assurance",
-                    icon: 'https://img.icons8.com/wired/64/000000/diamond.png',
+                    icon: 'https://img.icons8.com/wired/64/000000/diamond.png', 
                     url: "/#/",
                 },
                 {
@@ -547,7 +547,7 @@ export default function (data, like_data, viewedddatas, rating) {
                                         injectUrl_url_construct(val.productImagesByProductId.nodes[0] && val.productImagesByProductId.nodes[0], CDN_URL, colSize_like_view),
 
                                     title: val.productName,
-                                    price: Math.round(val.transSkuListsByProductId.nodes[0] && val.transSkuListsByProductId.nodes[0].discountPrice),
+                                    price: Math.round(val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0]&&val.transSkuListsByProductId.nodes[0].discountPrice),
                                     url: `/jewellery/${val.productType}/${val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0].materialName : ''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
                                 })
                             }
