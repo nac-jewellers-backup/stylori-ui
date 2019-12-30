@@ -126,7 +126,7 @@ class Allorders extends React.Component {
                                                         </Grid>
                                                         <Grid item lg={4}>
                                                             <Grid container spacing={12} lg={12} style={{ lineHeight: "20px" }}>
-                                                                <b> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
+                                                                <b style={{width:"100%"}}> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
                                                                 <Grid item lg={6}>
                                                                     <Typography className="subhesder">Gold Weight</Typography>
                                                                     <Typography className="subhesder">Diamond Weight</Typography>

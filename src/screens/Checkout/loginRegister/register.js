@@ -46,13 +46,18 @@ const RegisterComponent = (props) => {
             <form onSubmit={(e) => {
                 handlers.handleSubmit(e)
             }} action="javascript:void(0)" >
-                <Grid container spacing={12}>
-                    <Grid item lg={1} />
-                    <Grid item xs={12} lg={window.location.pathname === "/registers" ? 12 : 6}>
-                        <h5 className='title'>
-                            {window.location.pathname.split("-")[0]==="/account" ? "" : <>
-                                {window.location.pathname === "/registers" ? "Register" : "New user registration"}</>}
-                        </h5>
+                <Grid container>
+                
+                    <Grid  item xs={12} lg={window.location.pathname === "/registers" ? 12 : 6}  >
+                   
+                       <Grid style={{paddingLeft:"20px"}}>
+                           {window.location.pathname.split("-")[0]!=="/account" &&
+                           <h5 className='title'>
+                           {window.location.pathname.split("-")[0]==="/account" ? "" : <>
+                               {window.location.pathname === "/registers" ? "Register" : "New user registration"}</>}
+                       </h5> }
+                       
+                        {/* <h5>Personal Information</h5> */}
                         {paths ?
                             <Input
                                 style={{ background: "rgba(192, 192, 192, 0.41)", width: "100%" }}
@@ -75,8 +80,8 @@ const RegisterComponent = (props) => {
                                 <label className='errtext'> {values.errortext && values.errortext.emerr}</label></>
                         }
                         {paths ?
-                            <Grid container spacing={12}>
-                                <Grid item lg={6} >
+                            <Grid container spacing={12} >
+                                <Grid item class="passwordRight" >
                                     <Input
                                         margin="normal"
                                         variant="outlined"
@@ -91,8 +96,8 @@ const RegisterComponent = (props) => {
                                             readOnly: true,
                                         }}
                                     /> </Grid>
-                                <Grid item lg={6} style={{ textAlign: "center", lineHeight: "66px", color: "#337ab7" }}>
-                                    <a> Change password </a> </Grid>
+                                <Grid item  style={{ textAlign: "center", lineHeight: "66px", color: "#337ab7",paddingLeft:"8px" }}>
+                                    <a style={{width:"50%"}}> Change password </a> </Grid>
                             </Grid> : <>
                                 <Input
                                     margin="normal"
@@ -239,8 +244,10 @@ const RegisterComponent = (props) => {
                         </div>
                     </Grid>
                 </Grid>
+                </Grid>
             </form>
         </div>
+        
     )
 }
 export default (Register);

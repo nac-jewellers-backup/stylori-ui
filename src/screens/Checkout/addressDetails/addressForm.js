@@ -25,6 +25,11 @@ const AddressComponent = (props) => {
             <div>
                 {(isedit === '1' ? true : false) && values.addrs === true ?
                     <div className='pt-sm'>
+                        <h5 className='title' >
+                            {window.location.pathname.split("-")[0] === "/account" ? "" : <>
+                                {window.location.pathname === "/registers" ? "Register" : "New user registration"}</>}
+                                
+                        </h5>
                         <form onSubmit={(e) => {
                             handle.handleSubmit(e)
 
