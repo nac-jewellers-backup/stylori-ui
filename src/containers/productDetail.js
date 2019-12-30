@@ -101,13 +101,13 @@ class ProductDetail extends Component {
                 <ProductImageZoom data={this.props.data} />
               </Grid>
               <Grid item xs={6}>
-                <div className='overall-box'>
+                <div className='overall-box priceecontainer'>
                   <ProductPrice data={this.props.data} />
                 </div>
-                <div className='overall-box'>
+                <div className='overall-box priceecontainer'>
                   <PriceTabs data={this.props.data} />
                 </div>
-                <div className='overall-box'>
+                <div className='overall-box priceecontainer'>
                   <PriceBuynow data={this.props.data} />
                 </div>
               </Grid>

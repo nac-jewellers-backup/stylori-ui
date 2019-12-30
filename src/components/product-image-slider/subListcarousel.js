@@ -12,6 +12,10 @@ import React from 'react';
 import './product-images.css'
 import Slideshow from '../Carousel/carosul'
 class Sublistcarousel extends React.Component {
+  constructor(props) {
+    super(props);
+    this.slider = React.createRef();
+  }
   state = {
     value: 0,
     valuse: 0,
@@ -28,6 +32,12 @@ class Sublistcarousel extends React.Component {
   };
 
 
+  next = () => {
+    this.slider.current.slickNext();
+  };
+  previous = () => {
+    this.slider.current.slickPrev();
+  };
   render() {
     const limit = 4;
     const { expanded } = this.state;
@@ -41,14 +51,16 @@ class Sublistcarousel extends React.Component {
       autoplay: true,
       autoplaySpeed: 2000
     }
+    const fadeee = data[0].fadeImageSublistRecentlyViewed.length;
+
     const dataCarousel = {
-      arrows: true,
+      arrows: false,
       dots: false,
       infinite: true,
       accessibility: true,
       speed: 500,
       slidesToShow: this.state.dataToShow === "YouMayLike" ? data[0].fadeImageSublist.length > 4 ? limit : data[0].fadeImageSublist.length :
-        data[0].fadeImageSublistRecentlyViewed.length > 4 ? limit : 4
+        data[0].fadeImageSublistRecentlyViewed.length > 4 ? limit : fadeee
       ,
       slidesToScroll: 4,
     }
@@ -68,11 +80,24 @@ class Sublistcarousel extends React.Component {
 
                   <span className="NoProducts">{this.state.dataToShow === "YouMayLike" ? "No products found" : "No products viewed yet"}</span>
                   :
-                  <Slideshow class="subslider-carousel" hoverlist={
-                    this.state.dataToShow === "YouMayLike" ? data[0].fadeImageSublist : data[0].fadeImageSublistRecentlyViewed
-                  }
-                    dataCarousel={dataCarousel} hover={true} >
-                  </Slideshow>}
+                  <Grid container style={{ width: "100%" }} >
+                    <Grid item style={{ width: "6%", alignItems: "center", justifyContent: "center", display: "flex" }}>
+                      <img onClick={() => this.previous()} className={"icon-leftcaro"} />
+
+                    </Grid>
+                    <Grid item style={{ width: "88%" }}>
+                      <Slideshow sliderRef={this.slider} class="subslider-carousel" hoverlist={
+                        this.state.dataToShow === "YouMayLike" ? data[0].fadeImageSublist : data[0].fadeImageSublistRecentlyViewed
+                      }
+                        dataCarousel={dataCarousel} hover={true} imagecra={true}>
+                      </Slideshow>
+                    </Grid>
+                    <Grid item style={{ width: "6%", alignItems: "center", justifyContent: "center", display: "flex" }}>
+                      <img onClick={() => this.next()} className={"icon-rightcaro"} />
+
+                    </Grid>
+                  </Grid>
+                }
               </Container>
             </div>
           </div>
@@ -80,7 +105,7 @@ class Sublistcarousel extends React.Component {
         </Hidden>
         <Hidden mdUp>
           <Container>
-            <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important", padding: "0 5px" }} expanded={expanded === 'panel'} onChange={this.handle('panel')}>
+            <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 5px" }} expanded={expanded === 'panel'} onChange={this.handle('panel')}>
               <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                 <i class="fa fa-sort-up" ></i></span>}>
                 <div style={{ width: "100%" }} >
