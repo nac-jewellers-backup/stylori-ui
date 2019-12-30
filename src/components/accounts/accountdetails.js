@@ -12,18 +12,15 @@ import Register from 'screens/Checkout/loginRegister/register';
 import Addressform from 'screens/Checkout/addressDetails/addressForm';
 import Allorders from './allorders';
 import Wishlists from './whislists';
-
+import Login from 'screens/Checkout/loginRegister/login';
 import TextField from '@material-ui/core/TextField';
-
 class Accountdetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isActive: window.location.pathname.split("-")[1],
-            currency: 'EUR',
             // window.location.pathname.split("-")[1]
         };
-
     }
     handleClick = (e) => {
        
@@ -45,95 +42,57 @@ class Accountdetails extends Component {
         // const { wishlistdata } = this.props.wishlistdata;
         const currencies = [
             {
-              label: 'profile',
+              value: 'profile',
             },
             {
-              label: 'addresses',
+              value: 'addresses',
             },
             {
-              label: 'shopping-cart',
+              value: 'shopping-cart',
             },
             {
-              label: 'wishlist',
+              value: 'wishlist',
             },
             {
-                label: 'allorders',
+                value: 'allorders',
               },
-            
           ];
         return (
             <Container>
-                <Hidden smDown>
-
+            <Hidden smDown>
+                <Container>
                     <div class="inner-page-title"> My Account </div>
-
-                    <Container>
-                        <div className="panel_body">
-                            <Grid container spacing={12}  >
-                                <Grid item xs={3} >
-                                    <div className="pay-index-subhed">
-                                        <p className={this.state.isActive == 'profile' ? "backgrund" : ""}
-                                            onClick={() => this.Activeaccounts('profile')}
-                                        > Personal Information</p>
-                                        <p className={this.state.isActive == 'addresses' ? "backgrund" : ""}
-                                            onClick={() => this.Activeaccounts('addresses')}
-                                        >Address Book </p>
-                                        <p className={this.state.isActive == 'shopping-cart' ? "backgrund" : ""}
-                                            onClick={() => this.Activeaccounts('shopping-cart')}
-                                        >Shopping bag ({this.props.data.length ? this.props.data.length : "0"}) </p>
-                                        <p className={this.state.isActive == 'wishlist' ? "backgrund" : ""}
-                                            onClick={() => this.Activeaccounts('wishlist')}
-                                        >
-                                            Wishlist ({this.props.wishlistdata &&
-                                                this.props.wishlistdata.wishlistdata &&
-                                                this.props.wishlistdata.wishlistdata.nodes.length ? this.props.wishlistdata &&
-                                                this.props.wishlistdata.wishlistdata &&
-                                                this.props.wishlistdata.wishlistdata.nodes.length : "0"
-                                            })</p>
-                                        <p className={this.state.isActive == 'allorders' ? "backgrund" : ""}
-                                            onClick={() => this.Activeaccounts('allorders')}
-                                        >
-                                            All Orders</p>
-                                    </div>
-                                </Grid>
-                                <Grid item xs={9}>
-                                    <div className="pay-index-subhed_datas">
-                                        {
-                                            this.state.isActive == 'profile' &&
-                                            <>
-                                                {/* {c_k_l !== true ? */}
-                                                <Register />
-                                                {/* <Addressform/> */}
-                                                {/* : <Login /> */}
-                                                {/* } */}
-                                            </>
-
-                                        }
-                                        {
-                                            this.state.isActive == 'addresses' && <Addressform />
-                                        }
-                                        {
-                                            this.state.isActive == 'shopping-cart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
-                                                <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Shopping cart</div>}</>
-                                        }
-                                        {
-                                            this.state.isActive == 'wishlist' && <>
-                                                <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
-                                                {/* {JSON.stringify(this.props.wishlistdata)} */}
-                                            </>
-                                        }
-                                        {
-                                            this.state.isActive == 'allorders' && <>
-                                                <Allorders allorderdata={this.props.allorderdata} data={this.props.data} />
-
-                                                {/* {JSON.stringify(this.props.allorderdata)} */}
-                                            </>
-
-                                        }
-                                    </div>
-                                </Grid>
+                    <div className="panel_body">
+                        <Grid container spacing={12} xs={12} lg={12} >
+                            <Grid item lg={2} xs={12}>
+                                <div className="pay-index-subhed">
+                                    <p className={this.state.isActive == 'profile' ? "backgrund" : ""}
+                                        onClick={() => this.Activeaccounts('profile')}
+                                    > Personal Information</p>
+                                    <p className={this.state.isActive == 'addresses' ? "backgrund" : ""}
+                                        onClick={() => this.Activeaccounts('addresses')}
+                                    >Address Book </p>
+                                    <p className={this.state.isActive == 'shopping-cart' ? "backgrund" : ""}
+                                        onClick={() => this.Activeaccounts('shopping-cart')}
+                                    >Shopping bag ({this.props.data.length ? this.props.data.length : "0"}) </p>
+                                    <p className={this.state.isActive == 'wishlist' ? "backgrund" : ""}
+                                        onClick={() => this.Activeaccounts('wishlist')}
+                                    >
+                                        Wishlist ({this.props.wishlistdata &&
+                                            this.props.wishlistdata.wishlistdata &&
+                                            this.props.wishlistdata.wishlistdata.nodes.length ? this.props.wishlistdata &&
+                                            this.props.wishlistdata.wishlistdata &&
+                                            this.props.wishlistdata.wishlistdata.nodes.length : "0"
+                                        })</p>
+                                    <p className={this.state.isActive == 'allorders' ? "backgrund" : ""}
+                                        onClick={() => this.Activeaccounts('allorders')}
+                                    >
+                                        All Orders</p>
+                                </div>
+                            </Grid>
                             </Grid>
                         </div>
+                       
                     </Container>
                 </Hidden>
 
@@ -160,8 +119,8 @@ class Accountdetails extends Component {
           helperText=""
         >
           {currencies.map(option => (
-            <option key={option.label} value={option.label}>
-              {option.label}
+            <option key={option.value} value={option.value}>
+              {option.value}
             </option>
           ))}
         </TextField>

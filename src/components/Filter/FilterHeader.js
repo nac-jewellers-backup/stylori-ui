@@ -16,8 +16,8 @@ const styles = theme => ({
     colorMain: {
         color: theme.palette.primary.main,
         alignContent: "center",
-        display: "flex",
-        alignItems: "center"
+    display: "flex",
+    alignItems: "center"
     },
 });
 
@@ -25,7 +25,7 @@ const FilterHeader = (props) => {
     const { setSort, setOffset, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
     const loc = window.location.search
     return <Component setSort={setSort} setOffset={setOffset} offset={FilterOptionsCtx.offset} sort={FilterOptionsCtx.sort}  {...props} />
-}
+  }
 
 class Component extends React.Component {
     constructor(props) {
@@ -60,10 +60,12 @@ class Component extends React.Component {
     handleExpandClick = () => {
         this.setState({ expanded: !this.state.expanded });
     }
-    handleChange = (event) => {
-        if (this.props.offset > 0) this.props.setOffset(0)
-        this.props.setSort({ values: event.target.value })
-
+    handleChange = (event) =>{
+        debugger
+    if (this.props.offset > 0) this.props.setOffset(0)
+    console.log(this.props.offset)
+        this.props.setSort({ values:event.target.value})
+        
         this.setState({ expanded: false })
     }
     render() {
@@ -127,7 +129,10 @@ class Component extends React.Component {
                                 className={`fil-drawer-sort_font ${classes.colorMain}`}
                                 onClick={this.handleExpandClick}
                             >
-                                Sort By {this.state.expanded ? <ExpandLess /> : <ExpandMore />}
+                               Sort By { this.state.expanded ? <ExpandLess /> : <ExpandMore />}
+                                        {/* <span className="fil-drawer-head-sort-expand">
+                                    <ExpandMoreIcon />
+                                </span> */}
                             </Typography>
 
                         </div>
@@ -135,7 +140,7 @@ class Component extends React.Component {
                             position: "absolute", width: "200px",
                             right: "15px", top: "65px", boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 7px'
                         }}>
-                            <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+                            <Collapse in={this.state.expanded} timeout="auto">
                                 <CardRadioButton data={sortOptions} onChange={this.handleChange} values={this.props.sort} />
                             </Collapse>
                         </div>

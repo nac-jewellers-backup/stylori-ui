@@ -85,8 +85,8 @@ class Checkoutcard extends React.Component {
         return (
             <div style={{ marginTop: "10px" }}>
                 <Grid container>
-                    <Grid xs={12}/>
-                    <Grid xs={12}>
+                    <Grid xs={12} lg={7} />
+                    <Grid xs={12} lg={4} >
                         {this.checkoutbutton()}</Grid>
                 </Grid><br />
                 {this.props.data.map(dataval => (
@@ -214,18 +214,18 @@ class Checkoutcard extends React.Component {
         return (
             <div style={{ marginTop: "10px" }} >
                 <Grid container spacing={12}>
-                    <Grid item xs={3}  />
-                    <Grid item xs={9} >
+                    <Grid item xs={3} lg={9} />
+                    <Grid item xs={9} lg={3}>
                         {/* {dataCard1.map(val => */}
                         <Grid container>
-                            <Grid xs={7}>
+                            <Grid xs={7} lg={5}>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>Subtotal</Typography>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>You Saved</Typography>
                                 {props.cartFilters.tax_price ? <Typography class={`subhesder ${classes.normalfonts}`}>GST</Typography> : ""}
                                 <Typography class={`subhesder ${classes.normalfonts}`}>Shipping</Typography>
                                 <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>Grand Total</Typography>
                             </Grid>
-                            <Grid xs={5}>
+                            <Grid xs={5} lg={5}>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(dataCard1 - discounted_price)}</Typography>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(yousave)}</Typography>
                                 {props.cartFilters.tax_price ? <Typography class={`subhesder ${classes.normalfonts}`}>
@@ -240,13 +240,13 @@ class Checkoutcard extends React.Component {
                 <Grid container>
                     {path == "checkout" ? "" :
                         <>
-                            < Grid xs={12} >
+                            < Grid xs={12} lg={7}>
                                 <NavLink to="/jewellery">
                                     <div className='btn-plain'> CONTINUE SHOPPING</div>
                                 </NavLink>
 
                             </Grid></>}
-                    <Grid xs={12} >
+                    <Grid xs={12} lg={4} >
                         {this.checkoutbutton()}
                     </Grid>
                 </Grid>

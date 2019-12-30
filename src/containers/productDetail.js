@@ -56,7 +56,7 @@ class ProductDetail extends Component {
     return (
       <div>
         <div>
-          <MetaTags>
+          {/* <MetaTags>
             <title>{this.props.data[0].title}</title>
             <meta name="description" content={this.props.data[0].dis} />
             <meta name="keywords" content={this.props.data[0].productsPendants[0].name} />
@@ -72,7 +72,7 @@ class ProductDetail extends Component {
             <meta name="twitter:title" id="twitter-title" content={this.props.data[0].title} />
             <meta name="twitter:description" content={this.props.data[0].dis} />
             <meta name="twitter:image" id="twitter_imageUrl" content={this.props.data[0].fadeImages} />
-          </MetaTags>
+          </MetaTags> */}
 
         </div>
 
@@ -101,13 +101,13 @@ class ProductDetail extends Component {
                 <ProductImageZoom data={this.props.data} />
               </Grid>
               <Grid item xs={6}>
-                <div className='overall-box'>
+                <div className='overall-box priceecontainer'>
                   <ProductPrice data={this.props.data} />
                 </div>
-                <div className='overall-box'>
+                <div className='overall-box priceecontainer'>
                   <PriceTabs data={this.props.data} />
                 </div>
-                <div className='overall-box'>
+                <div className='overall-box priceecontainer'>
                   <PriceBuynow data={this.props.data} />
                 </div>
               </Grid>

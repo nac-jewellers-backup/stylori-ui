@@ -27,7 +27,7 @@ class Slideshow extends React.Component {
 
   imagehoverchildrens = (hoverlist) => {
 
-    let { hover, hovereffect,TopPic } = this.props;
+    let { hover, hovereffect, TopPic, imagecra } = this.props;
     if (TopPic) {
       return hoverlist.map(val => (
         <div class={"subslider-carousel" + TopPic ? "hovereffectSilver" : ""}>
@@ -56,7 +56,8 @@ class Slideshow extends React.Component {
     }
     else {
       return hoverlist.map(val => (
-        <a class='info' href={val.url}>
+
+        <a class='info' href={val.url} >
           <div class={"subslider-carousel" + hover ? "hovereffect" : ""}>
             <img src={val.img} className='subslider-carousel-img img-responsive' alt="" />
             <div class="overlay1">
@@ -106,6 +107,8 @@ class Slideshow extends React.Component {
       <div>
         <Slider ref={sliderRef}  {...settings}>
           {this.props.children ? this.props.children : this.renderFadeImages()}
+          {this.props.hover ? this.imagehoverchildrens(this.props.hoverlist) : ""}
+
           {this.props.hover ? this.imagehoverchildrens(this.props.hoverlist) : ""}
           {this.props.hovereffect ? this.imagehoverchildrens(this.props.hoverlist) : ""}
           {this.props.WithoutHoverhover ? this.imagewithouthoverchildrens(this.props.hoverlist) : ""}

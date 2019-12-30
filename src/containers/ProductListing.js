@@ -43,7 +43,7 @@ class Stylori extends React.Component {
 
         <Grid container >
         <div>
-        <MetaTags>
+        {/* <MetaTags>
         <title>{this.props.mappedFilters.seo_url}</title>
         <meta name="description" content={this.props.mappedFilters.seo_text} />
         <meta name="keywords" content={this.props.dataFilter[0].filter} />
@@ -63,7 +63,7 @@ class Stylori extends React.Component {
         <meta name="twitter:description" content={this.props.mappedFilters.seo_text} />
         <meta property="og:image" id="fb_imageUrl" content={this.props.data && this.props.data[0]&&this.props.data[0].image && this.props.data[0].image.placeImage.img} />
 
-        </MetaTags>
+        </MetaTags> */}
 
         </div>
           

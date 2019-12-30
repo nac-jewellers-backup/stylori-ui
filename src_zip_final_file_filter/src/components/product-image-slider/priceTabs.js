@@ -198,7 +198,7 @@ class Component extends React.Component {
         return (
             <div>
                 {data[0].productTabs.map(val => {
-                    
+
                     const arr = val.tab1.Children !== null && val.tab1.Children
                     const arr2 = val.tab2.Children !== null && (val.tab2.Children).split(',')
                     return (
@@ -216,7 +216,7 @@ class Component extends React.Component {
 
                                                 </Grid>
                                                 <Grid item style={{ width: "84%" }}>
-                                                    <Slideshow dataCarousel={settings}>
+                                                    <Slideshow dataCarousel={settings} sliderRef={this.slider}>
                                                         {arr.map((val, i) => {
                                                             return (<>
                                                                 <button

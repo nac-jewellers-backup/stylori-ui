@@ -51,7 +51,7 @@ self.addEventListener('install', function(event) {
 })
 self.addEventListener('activate', event => {
     console.log('Activating new service worker...');
-  
+    
     const cacheWhitelist = ['sw-precache-v3-sw-precache-webpack-plugin'];
   
     event.waitUntil(
@@ -59,6 +59,7 @@ self.addEventListener('activate', event => {
         return Promise.all(
           cacheNames.map(cacheName => {
             if (cacheWhitelist.indexOf(cacheName) === -1) {
+              window.location.reload(true)
               return caches.delete(cacheName);
             }
           })

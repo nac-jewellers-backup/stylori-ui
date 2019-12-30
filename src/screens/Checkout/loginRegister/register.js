@@ -129,11 +129,11 @@ const RegisterComponent = (props) => {
                             </>
                         }
                         <Grid container spacing={12}>
-                            <Grid item  xs={4}>
+                            <Grid item lg={4} xs={4}>
                                 <SimpleSelect val={'1'} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                             </Grid>
                             {!paths && <>
-                                <Grid item  xs={4}>
+                                <Grid item lg={4} xs={4}>
                                     <Input
                                         margin="normal"
                                         variant="outlined"
@@ -149,7 +149,7 @@ const RegisterComponent = (props) => {
                                     />
                                     <label className='errtext'> {values.errortext && values.errortext.firstname}</label>
                                 </Grid>
-                                <Grid item  xs={4}>
+                                <Grid item lg={4} xs={4}>
                                     <Input
                                         margin="normal"
                                         variant="outlined"
@@ -166,7 +166,7 @@ const RegisterComponent = (props) => {
                                     <label className='errtext'> {values.errortext && values.errortext.lastname}</label>
                                 </Grid></>}
                             {paths && <>
-                                <Grid item  xs={4}>
+                                <Grid item lg={4} xs={4}>
                                     <Input
                                         margin="normal"
                                         variant="outlined"
@@ -179,7 +179,7 @@ const RegisterComponent = (props) => {
                                         helperText="Firstname is required"
                                         required  />
                                 </Grid>
-                                <Grid item  xs={4}>
+                                <Grid item lg={4} xs={4}>
                                     <Input
                                         margin="normal"
                                         variant="outlined"
@@ -195,13 +195,13 @@ const RegisterComponent = (props) => {
                         </Grid>
 
                         {paths &&
-                            <Grid item xs={12} >
+                            <Grid item xs={12} lg={12}>
                                 <Grid container spacing={12}>
                                     <Grid item xs={6} lg={6}>
                                         <SimpleSelect name={"India"} selectData={['India']}
                                             disabled={'disabled'} />
                                     </Grid>
-                                    <Grid item xs={6} >
+                                    <Grid item xs={6} lg={6}>
                                         <Input
                                             className='text-f'
                                             type="text"
@@ -215,11 +215,11 @@ const RegisterComponent = (props) => {
                                     </Grid>
                                 </Grid>
                                 <Grid container spacing={12}>
-                                    <Grid item xs={3} >
+                                    <Grid item xs={3} lg={3}>
                                         <SimpleSelect name={['+91']} selectData={['+91']}
                                             disabled={'disabled'} />
                                     </Grid>
-                                    <Grid item xs={9} >
+                                    <Grid item xs={9} lg={9}>
                                         <Input
                                             className='text-f'
                                             type="text"
@@ -242,11 +242,12 @@ const RegisterComponent = (props) => {
                             {paths || pathreg ? "" : <Button className='back-b' onClick={() => clear()} >Back</Button>}
                             <Button className='apply-b' type="submit" >Register</Button>
                         </div>
-                        </Grid>
                     </Grid>
+                </Grid>
                 </Grid>
             </form>
         </div>
+        
     )
 }
 export default (Register);
