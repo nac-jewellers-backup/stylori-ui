@@ -7,7 +7,7 @@ const Wishlist = (props) => {
 }
 
 const WishlistComponent = (props) => {
-    
+
     const { classes } = props;
     const { values, setValues, handlers } = useWishlists(props);
     React.useEffect(() => {
@@ -24,15 +24,15 @@ const WishlistComponent = (props) => {
     return (
         <>
             {values.isactive !== 2 ? <>
-                <i class="fa fa-heart-o overall-icons" style={{ color: props.props ? "#f699a3" : "" }}
+                <i class="fa fa-heart-o overall-icons" style={{ color: props.props ? "#d51f63" : "#d51f63" }}
                     onClick={() => {
                         values["product_sku"] = props.sku
                         values["product_id"] = props.productId
                         setValues({ values, ...values });
-                        handlers.handelSubmit(2) 
+                        handlers.handelSubmit(2)
                     }}
                 ></i></> : <>
-                    <i class="fa fa-heart overall-icons" style={{ color: "red" }}
+                    <i class="fa fa-heart overall-icons" style={{ color: "#d51f63" }}
                         onClick={() => {
                             values["product_sku"] = props.sku
                             values["product_id"] = props.productId

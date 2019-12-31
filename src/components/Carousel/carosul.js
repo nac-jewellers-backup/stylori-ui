@@ -41,7 +41,7 @@ class Slideshow extends React.Component {
       ))
     }
     else if (hovereffect) {
-      return hoverlist.map(val => (
+      return hoverlist&&hoverlist.map(val => (
         <div class={"subslider-carousel" + hovereffect ? "hovereffectSilver" : ""}>
           <img src={val.img} className='subslider-carousel-img img-responsive' style={{ width: '100%', height: 'auto' }} alt="" />
           <div class="overlay1">
@@ -55,7 +55,7 @@ class Slideshow extends React.Component {
       ))
     }
     else {
-      return hoverlist.map(val => (
+      return hoverlist&&hoverlist.map(val => (
 
         <a class='info' href={val.url} >
           <div class={"subslider-carousel" + hover ? "hovereffect" : ""}>

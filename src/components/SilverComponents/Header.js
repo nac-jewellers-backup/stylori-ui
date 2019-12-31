@@ -220,11 +220,11 @@ class Header extends Component {
                                                     aria-owns={openPopover ? 'simple-popper' : ""}
                                                     onClick={this.handleClickPopover}
                                                 >
-                                                    <i style={{ fontSize: "20px",marginTop:"9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                    <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                 </span>
                                                 // <img className="icons-header-sizes" src={usershape}/>
                                                 : <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
-                                                    <i style={{ fontSize: "20px",marginTop:"9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                    <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                 </span>
                                             }
                                             <Popover
@@ -263,12 +263,12 @@ class Header extends Component {
                                                     {/* </NavLink> */}
                                                 </div>
                                             </Popover>
-                                            <Badge color="secondary" style={{marginTop:"9px"}}
+                                            <Badge color="secondary" style={{ marginTop: "9px" }}
                                                 badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary"
                                             // wishlist_count
                                             // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
                                             >
-                                                <i style={{ fontSize: "20px"}} class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
+                                                <i style={{ fontSize: "20px" }} class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
                                                     if (user_id.length > 0) {
                                                         window.location.href = `/account${'-wishlist'}`
                                                     } else {
@@ -276,9 +276,9 @@ class Header extends Component {
                                                     }
                                                 }}  ></i>
                                             </Badge>
-                                            <Badge  style={{marginTop:"9px"}} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                            <Badge style={{ marginTop: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
                                                 <a href="/cart" >
-                                                    <i style={{ fontSize: "20px"}} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                                    <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
                                                 </a> </Badge>
                                         </div>
@@ -355,7 +355,7 @@ class Header extends Component {
                                     className="header-appbar-moblie1"
                                     id="smallScreen"
                                 >
-                                    <Toolbar className="toolbarsetting" >
+                                    <Toolbar className={this.props.pdpage ? "toolbarForpd" : "toolbarsetting"} >
                                         <Grid container item xs={2} sm={1} md={1} lg={1} xl={1} justify="center" alignItems="center">
                                             <IconButton
                                                 onClick={this.handleDrawerOpen}
@@ -371,10 +371,10 @@ class Header extends Component {
                                         </Grid>
                                         <Grid item xs={7}>
                                             <div onClick={this.handleSearch} className="mobli-icon1">
-                                                <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center", paddingRight: "10px",paddingBottom:"15px"}}>
+                                                <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center", paddingRight: "10px", paddingBottom: "15px" }}>
                                                     <div className={`head-icons1 ${classes.headIcons}`} >
 
-                                                        <div  id="search" onClick={this.handleClose} className={classes.searchcontainTop}><Seach className={"searchsvgmobile"}
+                                                        <div id="search" onClick={this.handleClose} className={classes.searchcontainTop}><Seach className={"searchsvgmobile"}
 
                                                         />
 
@@ -501,7 +501,7 @@ class Header extends Component {
                                             >{row.name.toUpperCase()}
                                             </Typography>
                                         </ListItemText>
-                                        {Jewellery[row.name] !== undefined ? row.name === selected ? <i class="fa fa-caret-down drawer-arrow"></i> : <i class="fa fa-caret-up drawer-arrow"></i> : ""}
+                                        {Jewellery[row.name] !== undefined ? row.name === selected ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i> : ""}
                                     </ListItem>
                                     {selected === row.name &&
                                         Object.keys(Jewellery[selected]).map(row2 => (
@@ -511,7 +511,7 @@ class Header extends Component {
                                                         <Typography className={classes.subtitles} variant="">{Jewellery[selected][row2].name.toUpperCase()}
                                                         </Typography>
                                                     </ListItemText>
-                                                    {selected1 === Jewellery[selected][row2].name ? <i class="fa fa-caret-down drawer-arrow"></i> : <i class="fa fa-caret-up drawer-arrow"></i>}
+                                                    {selected1 === Jewellery[selected][row2].name ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i>}
                                                 </ListItem>
                                                 {selected1 === Jewellery[selected][row2].name &&
                                                     <List className="sideNavListing" >

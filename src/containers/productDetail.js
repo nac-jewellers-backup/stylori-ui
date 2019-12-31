@@ -44,14 +44,14 @@ class ProductDetail extends Component {
 
   }
   render() {
-
     // alert(JSON.stringify(this.props.data))
+    console.log("tgf");
 
     var loc = this.props.location.pathname;
     var path = loc.split('/');
     var data_json = [{ title: 'home', url: '/home' }, { title: path[2], url: this.renderUrl() }, { title: path[4] }]
-// alert(JSON.stringify(this.props.wishlistdata))
-return (
+    // alert(JSON.stringify(this.props.wishlistdata))
+    return (
       <div>
         <div>
           <MetaTags>
@@ -65,7 +65,7 @@ return (
             <meta property="og:url" id="fb-product-url" content={window.location.href} />
             <meta property="og:image" id="fb_imageUrl" content={this.props.data[0].fadeImages} />
 
-            <meta name="twitter:card" content="summary" /> 
+            <meta name="twitter:card" content="summary" />
             <meta name="twitter:site" content="@StyloriLove" />
             <meta name="twitter:title" id="twitter-title" content={this.props.data[0].title} />
             <meta name="twitter:description" content={this.props.data[0].dis} />
@@ -75,10 +75,9 @@ return (
         </div>
 
         <Hidden smDown>
-
           <Grid container >
             <Grid item xs={12} >
-              <Header wishlist={this.props.wishlistdata}/>
+              <Header wishlist={this.props.wishlistdata} />
             </Grid>
           </Grid>
 
@@ -99,8 +98,8 @@ return (
                 <ProductImageZoom data={this.props.data} />
               </Grid>
               <Grid item xs={6}>
-                <div className='overall-box'>
-                  <ProductPrice data={this.props.data} wishlist={this.props.wishlistdata}/>
+                <div className='overall-box priceecontainer'>
+                  <ProductPrice data={this.props.data} wishlist={this.props.wishlistdata} />
                 </div>
                 <div className='overall-box priceecontainer'>
                   <PriceTabs data={this.props.data} />
@@ -139,7 +138,7 @@ return (
           <div style={{ paddingBottom: "50px" }}>
             <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
               <Grid item xs={12} >
-                <Header wishlist={this.props.wishlistdata}/>
+                <Header wishlist={this.props.wishlistdata} pdpage={true} />
               </Grid>
             </Grid>
 
@@ -147,41 +146,32 @@ return (
               <PriceBuynow data={this.props.data} />
             </Grid>
             <Grid item xs={12} >
-              <ProductDetails data={this.props.data} wishlist={this.props.wishlistdata}/>
+              <ProductDetails data={this.props.data} wishlist={this.props.wishlistdata} />
             </Grid>
 
-          <Grid item xs={12}>
-            <PriceBuynow data={this.props.data} />
-          </Grid>
-          <Grid item xs={12} >
-            <ProductDetails data={this.props.data} />
-          </Grid>
+            <Grid item xs={12} >
+              <PriceCertification data={this.props.data} />
+            </Grid>
+            <Grid item xs={12} >
+              <Request />
+            </Grid>
 
-          <Grid item xs={12} >
-            <PriceCertification data={this.props.data} />
-          </Grid>
-          <Grid item xs={12} >
-            <Request />
-          </Grid>
+            <Grid item xs={12} >
+              <Sublistcarousel data={this.props.data} />
+            </Grid>
 
-          <Grid item xs={12} >
-            <Sublistcarousel data={this.props.data} />
-          </Grid>
+            <Grid item xs={12} >
+              <CustomerReviews data={this.props.data} />
+            </Grid>
 
-          <Grid item xs={12} >
-            <CustomerReviews data={this.props.data} />
-          </Grid>
+            <Grid item xs={12} >
+              <RatingForm />
+            </Grid>
 
-          <Grid item xs={12} >
-            <RatingForm />
-          </Grid>
-
-          <Grid item>
-            <Footer />
-          </Grid>
-
-
-          <Buynowfixed data={this.props.data} />
+            <Grid item>
+              <Footer />
+            </Grid>
+            <Buynowfixed data={this.props.data} />
           </div>
         </Hidden>
 
@@ -199,7 +189,7 @@ const Components = props => {
   }
   if (Object.keys(mapped).length === 0) return <div className="overall-loader"><div id="loading"></div></div>
   else {
-    return <ProductDetail {...props} data={mapped} rating={rating} allorderdata={allorderdata} wishlistdata={wishlistdata}/>
+    return <ProductDetail {...props} data={mapped} rating={rating} allorderdata={allorderdata} wishlistdata={wishlistdata} />
 
   }
 }

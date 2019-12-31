@@ -22,7 +22,7 @@ const RouterApp = React.lazy(() => import('router'));
 
 const theme_func = () => {
 
-  if (window.location.pathname === "/silverjewellery") {
+  if (window.location.pathname === "/StyloriSilver") {
     return silverThemes
   }
   else {
@@ -35,7 +35,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
   }
-  async componentDidMount(){
+  async componentDidMount() {
     lambda_func_front_end()
   }
   render() {
