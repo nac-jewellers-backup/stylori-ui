@@ -44,18 +44,15 @@ class ProductDetail extends Component {
 
   }
   render() {
-    console.log('----------------------------------')
-    console.log('--this.props.data--', '--this.props.data--', this.props)
-
     // alert(JSON.stringify(this.props.data))
-    console.log('----------------------------------')
+    console.log("tgf");
 
     var loc = this.props.location.pathname;
     console.log('this.props.data i am data', this.props.data)
     var path = loc.split('/');
     var data_json = [{ title: 'home', url: '/home' }, { title: path[2], url: this.renderUrl() }, { title: path[4] }]
-// alert(JSON.stringify(this.props.wishlistdata))
-return (
+    // alert(JSON.stringify(this.props.wishlistdata))
+    return (
       <div>
         <div>
           <MetaTags>
@@ -79,10 +76,9 @@ return (
         </div>
 
         <Hidden smDown>
-
-          <Grid container spacing={12} >
+          <Grid container >
             <Grid item xs={12} >
-              <Header wishlist={this.props.wishlistdata}/>
+              <Header wishlist={this.props.wishlistdata} />
             </Grid>
           </Grid>
 
@@ -103,8 +99,8 @@ return (
                 <ProductImageZoom data={this.props.data} />
               </Grid>
               <Grid item xs={6}>
-                <div className='overall-box'>
-                  <ProductPrice data={this.props.data} wishlist={this.props.wishlistdata}/>
+                <div className='overall-box priceecontainer'>
+                  <ProductPrice data={this.props.data} wishlist={this.props.wishlistdata} />
                 </div>
                 <div className='overall-box'>
                   <PriceTabs data={this.props.data} />
@@ -143,7 +139,7 @@ return (
           <div style={{ paddingBottom: "50px" }}>
             <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
               <Grid item xs={12} >
-                <Header wishlist={this.props.wishlistdata}/>
+                <Header wishlist={this.props.wishlistdata} pdpage={true} />
               </Grid>
             </Grid>
 
@@ -151,7 +147,7 @@ return (
               <PriceBuynow data={this.props.data} />
             </Grid>
             <Grid item xs={12} >
-              <ProductDetails data={this.props.data} wishlist={this.props.wishlistdata}/>
+              <ProductDetails data={this.props.data} wishlist={this.props.wishlistdata} />
             </Grid>
 
             <Grid item xs={12} >
@@ -176,10 +172,8 @@ return (
             <Grid item>
               <Footer />
             </Grid>
-
+            <Buynowfixed data={this.props.data} />
           </div>
-
-          <Buynowfixed data={this.props.data} />
         </Hidden>
 
       </div>
@@ -196,7 +190,7 @@ const Components = props => {
   }
   if (Object.keys(mapped).length === 0) return <div className="overall-loader"><div id="loading"></div></div>
   else {
-    return <ProductDetail {...props} data={mapped} rating={rating} allorderdata={allorderdata} wishlistdata={wishlistdata}/>
+    return <ProductDetail {...props} data={mapped} rating={rating} allorderdata={allorderdata} wishlistdata={wishlistdata} />
 
   }
 }

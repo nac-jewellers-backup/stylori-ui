@@ -32,7 +32,8 @@ export const styles = theme => ({
     backgroundColor: theme.palette.secondary.dark,
     display: "flex",
     justifyContent: "center",
-    alignContent: "center"
+    alignContent: "center",
+    marginTop: "3px",
   },
   [theme.breakpoints.only('xs')]: {
     padding: "3px !important",
@@ -109,7 +110,7 @@ export const styles = theme => ({
   },
   iconbuttons: {
     position: "fixed",
-    right: "58px",
+    left: "228px",
     top: "-9px"
   },
   subtitles: {
@@ -167,6 +168,7 @@ export const useStyles = makeStyles(theme => ({
   },
   rootsub: {
     width: '100%',
+
   },
   mouseOverPopoversub: {
     zIndex: 1000,

@@ -280,7 +280,8 @@ const useStyles = makeStyles(theme => ({
   },
   textPriceCardGrid: {
     display: 'flex',
-    width: "225px",
+    width: "100%",
+    justifyContent: "center",
     [theme.breakpoints.down('sm')]: {
       width: "auto",
     }
@@ -288,6 +289,24 @@ const useStyles = makeStyles(theme => ({
   priceOffGridsub: {
     flex: 1,
     display: 'flex',
+    justifyContent: "flex-end"
+  },
+  [theme.breakpoints.down('md')]: {
+    priceOffGridsub: {
+      flex: 1,
+      display: 'flex',
+      justifyContent: "flex-start"
+    },
+    offerPricesMain: {
+      flex: 1,
+      display: 'flex',
+      justifyContent: "flex-start"
+    },
+  },
+  offerPricesMain: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "flex-end"
   },
   priceOffGrid: {
     display: 'flex',
@@ -313,10 +332,7 @@ const useStyles = makeStyles(theme => ({
     },
 
   },
-  offerPricesMain: {
-    flex: 1,
-    display: "flex",
-  },
+
   titles: {
     fontSize: '0.7rem',
     whiteSpace: 'nowrap',
