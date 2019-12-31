@@ -7,12 +7,10 @@ import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 import useLogin from './useLogin';
 import FacebookLogin from 'react-facebook-login';
-import  { Redirect } from 'react-router-dom'; 
-
+import  { Redirect } from 'react-router-dom';
 const Login = (props) => {
     return <LoginComponent  {...props} />
 }
- 
 const LoginComponent = (props) => {
     const { classes } = props;
     const { values, handlers, setValues, data } = useLogin(() => props.changePanel(2));
@@ -37,9 +35,9 @@ const LoginComponent = (props) => {
         props.change()
     }
     const responseFacebook = response => {
-        console.log(response)
-        // window.location.href='/home';
-        props.history.push('/home')
+        if(response.status !== "unknown"){
+            props.history.push('/home')
+        }
     }
     return (
         <div className='pt-sm'>
@@ -77,7 +75,7 @@ const LoginComponent = (props) => {
                         <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>
                         <FacebookLogin
                             appId="2777718598973911"
-                            autoLoad={true}
+                            // autoLoad={true}
                             fields="name,email,picture"
                             callback={responseFacebook}
                             cssClass="my-facebook-button-class"
@@ -96,12 +94,9 @@ const LoginComponent = (props) => {
                         {window.location.pathname === "/login" ? "" : <Button className='back-b' onClick={() => clear()} >Back</Button>}
                         <Button className='apply-b' type="submit"> {window.location.pathname === "/login" ? "Login" : "Apply"}</Button>
                     </div>
-
                 </Grid>
             </form>
         </div>
     )
 }
-
-
 export default withStyles(styles)(withRouter(Login));

@@ -219,23 +219,23 @@ const generateShipsBy = (readytoship, vendorDeliveryTime) => {
         return 'Ships by' + ' ' + moment().add(numberOfDays, 'days').format('MMM Do YY');
     }
 }
-const sorting = (val) => {
+const sorting = (val) =>{
 
-    if (val.sizeVarient) {
+    if(val.sizeVarient){
         var a = val.sizeVarient.split(',')
-        var b = a.map(val => {
+        var b = a.map(val=>{
             return Number(val)
-        })
-        var c = function myFunction() {
-            b.sort(function (a, b) { return a - b });
-            return b
-        }
-        return c()
+            })
+            var c = function myFunction() {
+                b.sort(function(a, b){return a-b});
+              return b
+              }
+              return c()
     }
-    else {
+    else{
         return null
     }
-
+   
 }
 // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
 export default function (data, like_data, viewedddatas, rating) {
@@ -547,7 +547,7 @@ export default function (data, like_data, viewedddatas, rating) {
                                         injectUrl_url_construct(val.productImagesByProductId.nodes[0] && val.productImagesByProductId.nodes[0], CDN_URL, colSize_like_view),
 
                                     title: val.productName,
-                                    price: Math.round(val.transSkuListsByProductId.nodes[0] && val.transSkuListsByProductId.nodes[0].discountPrice),
+                                    price: Math.round(val.transSkuListsByProductId.nodes[0].discountPrice),
                                     url: `/jewellery/${val.productType}/${val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0].materialName : ''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
                                 })
                             }

@@ -9,7 +9,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import Container from '@material-ui/core/Container';
-import './home.css'
+import './home.css' 
 import { Grid } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 

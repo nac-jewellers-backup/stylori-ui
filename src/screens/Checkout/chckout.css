@@ -29,6 +29,7 @@
     font-size: 16px !important;
     min-width: 100px !important;
     text-transform: none !important;
+    box-shadow: #f55d07 1px 2px 6px 0px !important;
 }
 
 .text-chck {

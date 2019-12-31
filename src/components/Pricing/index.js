@@ -24,7 +24,7 @@ export default function Pricing(props) {
             }
             {/*  */}
             <Grid spacing={12} container lg={12} xs={12}>
-                <Grid item lg={window.location.pathname !== "/cart" && window.location.pathname !== "/account" && window.location.pathname !== "/checkout" ? 3 : 6} xs={6}>
+                <Grid item lg={window.location.pathname !== "/cart" && window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/checkout" ? 3 : 6} xs={6}>
                     {props.offerPrice ?
                         <Typography style={{ display: "flex", width: '100%' }}>
                             <Typography
@@ -35,8 +35,8 @@ export default function Pricing(props) {
                                 {/* ₹&nbsp;{props.offerPrice} */}
                                 {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.offerPrice))}
                             </Typography>
-                        </Typography> : ""}
-                </Grid>
+                        </Typography> : ""} 
+                </Grid>   
                 <Grid item lg={6} xs={12}>
                     <Grid spacing={12} container lg={12} xs={12}>
                         <Grid item lg={12} xs={12}>

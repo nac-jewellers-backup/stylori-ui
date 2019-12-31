@@ -18,6 +18,8 @@ import { productpricingPages } from '../../mappers';
 import styles from './style'
 import { ProductDetailContext } from 'context/ProductDetailContext';
 import productDetails from 'mappers/productDetails';
+import subcarousel from 'components/Home/subcarousel';
+import Sublistcarousel from './subListcarousel';
 
 
 const Star = ({ selected = false, onClick = f => f }) =>
@@ -75,15 +77,45 @@ class CustomerReviews extends React.Component {
     }
     render() {
         const { expanded } = this.state;
+
         const dataCarousel = {
             slidesToShow: 1,
             slidesToScroll: 1,
             autoplay: true,
-            fade: true,
-            autoplaySpeed: 5000,
+            infinite: true,
+            fade: false,
+            dots: false,
+            autoplaySpeed: 4000,
             arrows: false
-        }
-        const { productsubHead } = this.props.data
+        };
+        const productsubHead = [
+            {
+                name: "From the House of NAC",
+                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+                class: "image1"
+            },
+            {
+                name: "Certified Jewellery",
+                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+                class: "image2"
+            },
+            {
+                name: "Free Shipping",
+                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+                class: "image3"
+            },
+            {
+                name: "Diverse Styles",
+                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+                class: "image4"
+            },
+            {
+                name: "Easy Returns",
+                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+                class: "image5"
+            }
+        ];
+        // const { productsubHead } = this.props.data
         const { classes, data } = this.props;
         const { starsSelected } = this.state;
         return (
@@ -120,7 +152,58 @@ class CustomerReviews extends React.Component {
                                 </div>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
-                                <Typography style={{ height: "40px", width: "100%", textAlign: "center" }}>
+                                <Grid container>
+                                    <Grid
+                                        item
+                                        xs={12}
+                                        alignItems="center"
+                                        style={{ paddingTop: "6px" }}
+                                    >
+                                        <Typography
+                                            style={{ height: "40px", width: "100%", textAlign: "center" }}
+                                        >
+                                            <Slideshow dataCarousel={dataCarousel}>
+                                                {productsubHead.map((val, index) => (
+                                                    <>
+                                                        <Grid
+                                                            container
+                                                            style={{
+                                                                display: "flex !important",
+                                                                marginBottom: "6px"
+                                                            }}
+                                                            key={"From the House of NAC"}
+                                                            className="wrappercustomer"
+                                                        >
+                                                            <Grid
+                                                                item
+                                                                style={{ alignItems: "center", display: "flex" }}
+                                                                className={val.class}
+                                                                src={val.icon}
+                                                            ></Grid>
+                                                            <Grid
+                                                                item
+                                                                style={{
+                                                                    fontSize: "12px",
+                                                                    alignItems: "center",
+                                                                    display: "flex"
+                                                                }}
+                                                            >
+                                                                {val.name}{" "}
+                                                            </Grid>
+                                                        </Grid>
+                                                    </>
+                                                ))}
+                                            </Slideshow>
+                                            <Grid style={{ width: "100%" }}>
+                                                <div className="loaders"></div>
+                                            </Grid>
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+
+
+
+                                {/* <Typography style={{ height: "40px", width: "100%", textAlign: "center" }}>
                                     <Slideshow dataCarousel={dataCarousel}>
                                         {this.props.data[0].productsubHead.map(val => (
                                             <div key={val.name} className="wrappercustom">
@@ -130,7 +213,7 @@ class CustomerReviews extends React.Component {
                                         ))}
                                     </Slideshow>
                                     <div className="loader"></div>
-                                </Typography>
+                                </Typography> */}
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
                     </Container> </Hidden>

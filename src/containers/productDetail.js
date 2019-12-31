@@ -26,6 +26,7 @@ import { ProductDetailContext } from 'context/ProductDetailContext';
 import { CDN_URL } from 'config';
 import 'screens/screens.css';
 import MetaTags from 'react-meta-tags';
+import { CartContext } from 'context'
 
 class ProductDetail extends Component {
   constructor(props) {
@@ -43,20 +44,17 @@ class ProductDetail extends Component {
 
   }
   render() {
-    console.log('----------------------------------')
-    console.log('--this.props.data--', '--this.props.data--', this.props)
-
     // alert(JSON.stringify(this.props.data))
-    console.log('----------------------------------')
+    console.log("tgf");
 
     var loc = this.props.location.pathname;
-    console.log('this.props.data i am data', this.props.data)
     var path = loc.split('/');
     var data_json = [{ title: 'home', url: '/home' }, { title: path[2], url: this.renderUrl() }, { title: path[4] }]
+    // alert(JSON.stringify(this.props.wishlistdata))
     return (
       <div>
         <div>
-          {/* <MetaTags>
+          <MetaTags>
             <title>{this.props.data[0].title}</title>
             <meta name="description" content={this.props.data[0].dis} />
             <meta name="keywords" content={this.props.data[0].productsPendants[0].name} />
@@ -72,15 +70,14 @@ class ProductDetail extends Component {
             <meta name="twitter:title" id="twitter-title" content={this.props.data[0].title} />
             <meta name="twitter:description" content={this.props.data[0].dis} />
             <meta name="twitter:image" id="twitter_imageUrl" content={this.props.data[0].fadeImages} />
-          </MetaTags> */}
+          </MetaTags>
 
         </div>
 
         <Hidden smDown>
-
-          <Grid container spacing={12} >
+          <Grid container >
             <Grid item xs={12} >
-              <Header />
+              <Header wishlist={this.props.wishlistdata} />
             </Grid>
           </Grid>
 
@@ -102,7 +99,7 @@ class ProductDetail extends Component {
               </Grid>
               <Grid item xs={6}>
                 <div className='overall-box priceecontainer'>
-                  <ProductPrice data={this.props.data} />
+                  <ProductPrice data={this.props.data} wishlist={this.props.wishlistdata} />
                 </div>
                 <div className='overall-box priceecontainer'>
                   <PriceTabs data={this.props.data} />
@@ -141,7 +138,7 @@ class ProductDetail extends Component {
           <div style={{ paddingBottom: "50px" }}>
             <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
               <Grid item xs={12} >
-                <Header />
+                <Header wishlist={this.props.wishlistdata} pdpage={true} />
               </Grid>
             </Grid>
 
@@ -149,7 +146,7 @@ class ProductDetail extends Component {
               <PriceBuynow data={this.props.data} />
             </Grid>
             <Grid item xs={12} >
-              <ProductDetails data={this.props.data} />
+              <ProductDetails data={this.props.data} wishlist={this.props.wishlistdata} />
             </Grid>
 
             <Grid item xs={12} >
@@ -174,10 +171,8 @@ class ProductDetail extends Component {
             <Grid item>
               <Footer />
             </Grid>
-
+            <Buynowfixed data={this.props.data} />
           </div>
-
-          <Buynowfixed data={this.props.data} />
         </Hidden>
 
       </div>
@@ -185,6 +180,7 @@ class ProductDetail extends Component {
   }
 }
 const Components = props => {
+  let { CartCtx: { allorderdata, wishlistdata } } = React.useContext(CartContext);
   const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating } } = React.useContext(ProductDetailContext);
   const datas = data;
   let mapped = datas;
@@ -193,7 +189,7 @@ const Components = props => {
   }
   if (Object.keys(mapped).length === 0) return <div className="overall-loader"><div id="loading"></div></div>
   else {
-    return <ProductDetail {...props} data={mapped} rating={rating} />
+    return <ProductDetail {...props} data={mapped} rating={rating} allorderdata={allorderdata} wishlistdata={wishlistdata} />
 
   }
 }

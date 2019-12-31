@@ -126,7 +126,7 @@ class Component extends React.Component {
                       tile && Object.entries(tile).length > 0 ?
                         <GridListTile key={tile.title} cols={tile.cols || 1} style={{ padding: '0 !important' }} className={`${classes.liClass}`} >
                           {/* <ProductCard data={tile} /> */}
-                          <ProductCards data={tile} />
+                          <ProductCards data={tile} wishlist={this.props.wishlist}/>
                         </GridListTile>
                         :
                         ''
@@ -140,7 +140,7 @@ class Component extends React.Component {
               <div className={`${classes.gridlistmainviewmore}`}>
                 {this.state.loadingtext
                   ?
-                  <div style={{ textAlign: 'center' }}>Loading...</div>
+                  <div style={{ textAlign: 'center' }}>Loading...</div> 
                   :
                   <>
                     <Button variant="contained" className={`${classes.button}  ${classes.viewmoreColor}`} onClick={() => { this.handleOffset() }} disabled={data.length < 24} >

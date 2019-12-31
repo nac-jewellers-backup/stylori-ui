@@ -63,14 +63,15 @@ export default function CustomSeparator(props) {
       }
       if (tabs == "3") {
         return (
-          data && data.title === "Payment Options"
+          data && data.title === "Order Confirmation"
         )
       }
       if (tabs == "4") {
         return (
-          data && data.title === "Order Confirmation"
+          data && data.title === "Payment Options"
         )
       }
+     
     }
   }
   return (

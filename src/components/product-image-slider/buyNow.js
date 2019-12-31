@@ -37,9 +37,9 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
             paddingLeft: "15px"
         }}>
             {data[0].ProductContactNum.map(val =>
-                <Grid container spacing={12}>
+                <Grid container spacing={12} className={classes.shadow}>
 
-                    <Grid item xs={8} lg={4} sm={8}>
+                    <Grid item xs={8} lg={4} sm={8} >
                         {/* <input
                             placeholder='&#xf041; &nbsp; Enter Pin Code'
                             className='buynow-search'
@@ -56,7 +56,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                             onKeyPress={(e) => { if (!(e.which >= 48 && e.which <= 57)) e.preventDefault(); }}
                         />
                     </Grid>
-                    <Grid item xs={4} lg={3} sm={4}>
+                    <Grid item xs={4} lg={3} sm={4} >
                         <Button className={`search-button ${classes.normalcolorback} ${classes.fontwhite}`} onClick={() => { handleCodChange() }}>{state.CheckForCodtitle}</Button>
                     </Grid>
 
@@ -68,7 +68,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                             </b>
                         </Grid>
                     </Hidden>
-                    <label style={{ padding: '4px', fontWeight: 'bold', color: 'rgba(185, 74, 72, 1)' }}>{(state.isRequired && 'Please fill out this field') || (state.pincodeNotFound && 'Pincode not found')}</label>
+                    <label style={{  fontWeight: 'bold', color: 'rgba(185, 74, 72, 1)' }}>{(state.isRequired && 'Please fill out this field') || (state.pincodeNotFound && 'Pincode not found')}</label>
                 </Grid>
             )}
         </div>
