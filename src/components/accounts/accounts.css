@@ -8,7 +8,7 @@
 
 .pay-index-subhed {
     float: left;
-    padding-top: 27px;
+    padding-top: 14px !important;
     /* background: #f0f0f0; */
     font-size: 12px !important;
     color: #333 !important;
@@ -26,24 +26,21 @@
 
 .pay-index-subhed p {
     padding: 0 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    border: 1px solid #eeeeee ;
+    margin: 0px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     cursor: pointer;
     font-size: 14px !important;
-    font-weight: 600;
+    font-weight: 500;
     /* line-height: 20px; */
     /* box-shadow: 1px 2px 35px 3px #DEDADA !important; */
-    box-shadow: 1px 0px 10px 0px #DEDADA !important;
+    /* box-shadow: 1px 0px 10px 0px #DEDADA !important; */
 }
 /* .topPadding{
     padding-top: 5px;
 }
-@media screen and (max-width: 979px) {
-.topPadding{
-    padding-top: 20px;
-} */
 
-/* } */
 /* .containerTopPadding{
     padding-top: 0px;
 }
@@ -81,7 +78,21 @@
     }
     
 }  */
+/* .paddingUp{
+    padding-top: 15px;
+} */
+.topPaddingwish{
+    padding-left: 40px;
+} 
 
+@media screen and (max-width: 979px) {
+    .topPaddingwish{
+        padding-left: 0px;
+    } 
+    /* .paddingUp{
+        padding-top: 0px;    } */
+    
+    }
 .pay-index-subhed p:hover {
     background: #dfdfdf;
 }

@@ -47,10 +47,10 @@ class Component extends React.Component {
                         {wishlistdata && wishlistdata.nodes.map(first_map =>
                             <>
                                  {/* {first_map && first_map.productListByProductId && first_map.productListByProductId.transSkuListsByProductId && first_map.productListByProductId.transSkuListsByProductId.nodes.map(thrd_map =>  */}
-                                <Grid container spacing={12} xs={12} style={{paddingBottom:"10px"}}>
+                                <Grid container spacing={12} xs={12}  style={{paddingBottom:"10px",}}>
                                     {/* <Grid  xs={12}> */}
-                                    <Grid item style={{width:"50%"}} >
-                                    <Grid item  style={{paddingRight:"4px",float:"left"}}>
+                                    <Grid item  style={{width:"50%"}} >
+                                    <Grid item class="topPaddingwish" style={{paddingRight:"4px",float:"left"}}>
                                           <div className="remove-product">
                                             <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} />
                                         </div>

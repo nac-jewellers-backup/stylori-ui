@@ -1,7 +1,8 @@
 import {
     Hidden,
     Grid,
-    Container
+    Container,
+    ListItem
 } from '@material-ui/core';
 import React, { Component } from 'react'
 import 'screens/screens.css';
@@ -12,6 +13,7 @@ import Register from 'screens/Checkout/loginRegister/register';
 import Addressform from 'screens/Checkout/addressDetails/addressForm';
 import Allorders from './allorders';
 import Wishlists from './whislists';
+import List from '@material-ui/core/List';
 
 import TextField from '@material-ui/core/TextField';
 
@@ -70,8 +72,8 @@ class Accountdetails extends Component {
                     <Container>
                         <div className="panel_body">
                             <Grid container spacing={12}  >
-                                <Grid item xs={3} >
-                                    <div className="pay-index-subhed">
+                                <Grid item  >
+                                    <List xs={3} className="pay-index-subhed">
                                         <p className={this.state.isActive == 'profile' ? "backgrund" : ""}
                                             onClick={() => this.Activeaccounts('profile')}
                                         > Personal Information</p>
@@ -94,13 +96,14 @@ class Accountdetails extends Component {
                                             onClick={() => this.Activeaccounts('allorders')}
                                         >
                                             All Orders</p>
-                                    </div>
+                                    </List>
                                 </Grid>
                                 <Grid item xs={9}>
                                     <div className="pay-index-subhed_datas">
                                         {
                                             this.state.isActive == 'profile' &&
                                             <>
+                                                    <div style={{PaddingLeft:"30px"}}></div>
                                                 {/* {c_k_l !== true ? */}
                                                 <Register />
                                                 {/* <Addressform/> */}
@@ -113,7 +116,9 @@ class Accountdetails extends Component {
                                             this.state.isActive == 'addresses' && <Addressform />
                                         }
                                         {
-                                            this.state.isActive == 'shopping-cart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
+                                            this.state.isActive == 'shopping-cart' && <>
+                                            
+                                            {this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
                                                 <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Shopping cart</div>}</>
                                         }
                                         {

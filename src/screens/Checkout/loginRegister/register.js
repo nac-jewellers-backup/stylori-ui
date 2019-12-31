@@ -48,9 +48,9 @@ const RegisterComponent = (props) => {
             }} action="javascript:void(0)" >
                 <Grid container>
                 
-                    <Grid  item xs={12} lg={window.location.pathname === "/registers" ? 12 : 6}  >
+                    <Grid  item xs={12} lg={window.location.pathname === "/registers" ? 12 : 12}  >
                    
-                       <Grid style={{paddingLeft:"20px"}}>
+                       <Grid class="topPaddingwish">
                            {window.location.pathname.split("-")[0]!=="/account" &&
                            <h5 className='title'>
                            {window.location.pathname.split("-")[0]==="/account" ? "" : <>
