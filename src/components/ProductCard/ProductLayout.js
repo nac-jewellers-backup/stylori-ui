@@ -140,7 +140,7 @@ class Component extends React.Component {
               <div className={`${classes.gridlistmainviewmore}`}>
                 {this.state.loadingtext
                   ?
-                  <div style={{ textAlign: 'center' }}>Loading...</div>
+                  <div style={{ textAlign: 'center' }}>Loading...</div> 
                   :
                   <>
                     <Button variant="contained" className={`${classes.button}  ${classes.viewmoreColor}`} onClick={() => { this.handleOffset() }} disabled={data.length < 24} >

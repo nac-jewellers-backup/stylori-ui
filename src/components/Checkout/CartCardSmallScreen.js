@@ -16,7 +16,20 @@ import { NavLink } from 'react-router-dom';
 function MediaControlCard(props) {
   const { classes } = props;
   const { dataCard1 } = props.data;
-
+const handleDeleteLocalStorage = (e, val) => {
+  var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
+  var currentValue =val.namedetail[4].details
+  var a = local_storage.products.filter(val => {
+      if (currentValue !== val.sku_id) {
+          return val
+      }
+  })
+  var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
+  var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
+  var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
+  localStorage.setItem('cartDetails', localstorage)
+  window.location.reload();
+}
   return (
     <div style={{ paddingTop: "10px" }}>
       {/* <Grid container>
@@ -119,7 +132,7 @@ function MediaControlCard(props) {
                     className={`${classes.normalfonts} ${classes.controls}`}
                   >
                     &nbsp;
-                    <div id={val.namedetail[4].details} onClick={(event) => props.handleDeleteLocalStorage(event)}>
+                    <div id={val.namedetail[4].details} onClick={(e) => handleDeleteLocalStorage(e,val)}>
                       <i style={{ fontSize: "16px" }} class="fa"> &#xf014;</i>&nbsp;<span
                         style={{ borderBottom: "1px solid #394578" }}>Remove</span>
                     </div>
