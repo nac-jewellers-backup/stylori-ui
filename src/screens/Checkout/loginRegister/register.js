@@ -23,6 +23,7 @@ const RegisterComponent = (props) => {
             <form onSubmit={(e) => {
                 handlers.handleSubmit(e)
             }} action="javascript:void(0)" >
+<<<<<<< HEAD
                 <Grid container spacing={12}>
                     <Grid item lg={1} />
                     <Grid item xs={12} lg={window.location.pathname === "/registers" ? 12 : 6}>
@@ -30,6 +31,20 @@ const RegisterComponent = (props) => {
                             {window.location.pathname.split("-")[0] === "/account" ? "" : <>
                                 {window.location.pathname === "/registers" ? "Register" : "New user registration"}</>}
                         </h5>
+=======
+                <Grid container>
+                
+                    <Grid  item xs={12} lg={window.location.pathname === "/registers" ? 12 : 12}  >
+                   
+                       <Grid class="topPaddingwish">
+                           {window.location.pathname.split("-")[0]!=="/account" &&
+                           <h5 className='title'>
+                           {window.location.pathname.split("-")[0]==="/account" ? "" : <>
+                               {window.location.pathname === "/registers" ? "Register" : "New user registration"}</>}
+                       </h5> }
+                       
+                        {/* <h5>Personal Information</h5> */}
+>>>>>>> 37d2f4462ca9623dba9ecdf22869fefab04ca235
                         {paths ?
                             <Input
                                 style={{ background: "rgba(192, 192, 192, 0.41)", width: "100%" }}

@@ -83,7 +83,7 @@ class Checkoutcard extends React.Component {
         //     })
         // },[data])
         return (
-            <div style={{ marginTop: "10px" }}>
+            <div style={{ marginTop: "10px",paddingLeft:"15px" }}>
                 <Grid container>
                     <Grid xs={12} lg={7} />
                     <Grid xs={12} lg={4} >

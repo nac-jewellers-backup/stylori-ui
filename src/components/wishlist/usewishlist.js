@@ -88,9 +88,7 @@ const useWishlists = (props) => {
     }
     const handelRemove = (num) => {
         debugger
-        setwishlistdata({
-            wishlistdata: values.isactive
-        })
+
         if (user_id.length > 0 && check_gustlog === "false") {
             values["isactive"] = num
             values["user_id"] = user_id
@@ -101,7 +99,8 @@ const useWishlists = (props) => {
                 price: values.add
             })
             if ((JSON.stringify(values.add) && JSON.stringify(values.add).length > 0) && (window.location.pathname.split("-")[0] === "/account")) {
-                window.location.pathname = "/cart"
+                // window.history.pushState(window.location.href, null, '/cart')
+                   window.location.history.push("/cart")
             } else {
                 if (window.location.pathname.split("-")[0] === "/account") {
                     window.location.reload();
@@ -123,7 +122,9 @@ const useWishlists = (props) => {
 
         }
         // changePanel(3)
-      
+        setwishlistdata({
+            wishlistdata: values.isactive
+        })
     }
 
     const handlers = { handleChange, handleInvalid, handelRemove, handelSubmit };
