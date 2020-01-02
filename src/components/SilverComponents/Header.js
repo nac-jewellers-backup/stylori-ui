@@ -263,8 +263,8 @@ class Header extends Component {
                                                     {/* </NavLink> */}
                                                 </div>
                                             </Popover>
-                                            <Badge color="secondary" style={{ marginTop: "9px" }}
-                                                badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"} color="secondary"
+                                            <Badge color="secondary"
+                                                badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
                                             // wishlist_count
                                             // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
                                             >
@@ -437,8 +437,8 @@ class Header extends Component {
                                                                 }
                                                             }}  ></i>
                                                         </Badge>
-                                                        <Badge style={{ fontSize: "10px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                            <NavLink to="/cart">   <i class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                                        <Badge style={{ fontSize: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                            <NavLink to="/cart">   <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
                                                             </NavLink> </Badge>
                                                     </div>
                                                 </Grid>

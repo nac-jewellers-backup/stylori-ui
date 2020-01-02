@@ -97,7 +97,7 @@ const Provider = (props) => {
         // else {
         //     localStorage.setItem("a__w_l", 0)
         // }
-    }, [wishlistDATA])
+    }, [wishlistDATA,wishlistdata])
     useEffect(() => {
         // if (window.location.pathname.split("-")[0]==="/account") {
         orderobj["userProfileId"] = userIds

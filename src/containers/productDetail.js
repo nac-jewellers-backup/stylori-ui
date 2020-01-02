@@ -48,6 +48,7 @@ class ProductDetail extends Component {
     console.log("tgf");
 
     var loc = this.props.location.pathname;
+    console.log('this.props.data i am data', this.props.data)
     var path = loc.split('/');
     var data_json = [{ title: 'home', url: '/home' }, { title: path[2], url: this.renderUrl() }, { title: path[4] }]
     // alert(JSON.stringify(this.props.wishlistdata))
