@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from "./style"
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
+const panel_clear = JSON.parse(localStorage.getItem("panel")) ? JSON.parse(localStorage.getItem("panel")) : ""
 class Addressdetails extends React.Component {
     state = {
         open: false,
@@ -26,16 +27,44 @@ class Addressdetails extends React.Component {
                 return values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes
             }
         }
-        const cl = () => <input onChange={(e) => {
-            if (_add_data_addres().length >= 0 && _add_data_addres().length <= 1) {
-                alert("You have saved Shipping Address only")
-                return false
-            } else {
-                setValues({
-                    values, ...values,
-                    checkValue1: !values.checkValue1
-                })
-            }
+        // const cl = () => <input onChange={(e) => {
+        //     if (_add_data_addres().length >= 0 && _add_data_addres().length <= 1) {
+        //         alert("You have saved Shipping Address only")
+        //         return false
+        //     } else {
+        //         setValues({
+        //             values, ...values,
+        //             checkValue1: !values.checkValue1
+        //         })
+        //     }
+
+        // }} type='checkbox' checked={values.checkValue1} />
+
+        // React.useEffect(() => {
+        //     localStorage.removeItem("bil_isactive")
+        //     localStorage.removeItem("ship_isactive")
+        // }, [])
+
+        // React.useEffect(() => {
+        //     if (_add_data_addres().length >= 0 && _add_data_addres().length <= 1) {
+        //         localStorage.removeItem("bil_isactive")
+        //         localStorage.removeItem("ship_isactive")
+        //     }
+        // }, [panel_clear])
+
+        // const select = () => {
+        //     if (_add_data_addres().length >= 0 && _add_data_addres().length <= 1) {
+        //         alert("You have saved Shipping Address only")
+        //         return false
+        //     } else {
+        //         return ""
+        //     }
+        // }
+        const cl = <input onChange={(e) => {
+            setValues({
+                values, ...values,
+                checkValue1: !values.checkValue1
+            })
 
         }} type='checkbox' checked={values.checkValue1} />
 
@@ -47,15 +76,24 @@ class Addressdetails extends React.Component {
 
         const delete_all_addresses = (val_addrs1, index) => {
             // alert(JSON.stringify(index))
-            if ((JSON.parse(localStorage.getItem("bil_isactive")) || JSON.parse(localStorage.getItem("ship_isactive"))) === this.state.index_of_isActive) {
+            debugger
+            if (JSON.parse(localStorage.getItem("ship_isactive")) === this.state.index_of_isActive) {
                 alert("Sorry u con't delete this address")
+                // alert(JSON.stringify(this.state.index_of_isActive))
+                return false
+            }
+            if (JSON.parse(localStorage.getItem("bil_isactive")) === this.state.index_of_isActive) {
+                alert("Sorry u con't delete this address")
+                // alert(JSON.stringify(this.state.index_of_isActive))
                 return false
             } if ((JSON.parse(localStorage.getItem("bil_isactive")) || JSON.parse(localStorage.getItem("ship_isactive"))) !== this.state.index_of_isActive) {
+                // alert(JSON.stringify(this.state.index_of_isActive))
                 this.props.Delete_address(val_addrs1, this.state.index_of_isActive)
             }
         }
         // const back_color = () => {
         // }
+
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>
@@ -75,6 +113,7 @@ class Addressdetails extends React.Component {
                                             <i style={{ fontSize: "25px", color: "#394578" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                             <span class="address-name">
                                                 {/* {aa ? aa + ' ' : aa1 + ' '} */}
+                                                {val_addrs1 && val_addrs1.salutation}&nbsp;
                                                 {val_addrs1.firstname}
                                                 &nbsp;
                                                    {val_addrs1.lastname}
@@ -123,7 +162,7 @@ class Addressdetails extends React.Component {
                                                         }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Selected</Button></> : <>
                                                         <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                                             this.props.selectaddreses(val_addrs1, 1, index)
-                                                        }}>Select </Button></>}</>
+                                                        }}>Select to continue </Button></>}</>
                                                 : ""}
                                         </div>
                                     </div>
@@ -145,6 +184,7 @@ class Addressdetails extends React.Component {
                                                     <i style={{ fontSize: "25px", color: "#394578" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                                     <span class="address-name">
                                                         {/* {aa ? aa + ' ' : aa1 + ' '} */}
+                                                        {val_addrs1 && val_addrs1.salutation}&nbsp;
                                                         {val_addrs1.firstname}
                                                         &nbsp;
                                                    {val_addrs1.lastname}
@@ -171,7 +211,6 @@ class Addressdetails extends React.Component {
                                                                 </div>
                                                             <Grid item lg={6}><Button className="addres_dlt_cancel" onClick={this.handleClose}>Cancel</Button></Grid>
                                                             <Grid item lg={6}><Button className="addres_dlt_ok" onClick={() => delete_all_addresses(val_addrs1, index)}>Confirm delete</Button></Grid>
-                                                            {/* {JSON.parse(localStorage.getItem("bil_isactive")) === index && "Sorry u con't delete this address"} */}
                                                         </Grid>
                                                     </div>
                                                 </Modal>
@@ -195,7 +234,7 @@ class Addressdetails extends React.Component {
                                                                 }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Selected</Button></> : <>
                                                                 <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                                                     this.props.selectaddreses(val_addrs1, 1, index)
-                                                                }}>Select </Button></>}</>
+                                                                }}>Select to continue </Button></>}</>
                                                         : ""}
                                                 </div>
                                             </div>
@@ -211,10 +250,10 @@ class Addressdetails extends React.Component {
 
                 {window.location.pathname.split("-")[0] !== "/account" ? <>
                     <div class="form-group tp ts">
-                        {cl()}
+                        {/* {cl()} */}{cl}
                         {/* {_add_data_addres().length > 0 && _add_data_addres().length < 1 ? "" : <>{cl}</>} */}
-                        {!values.checkValue1 && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
-                        {values.checkValue1 && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
+                        {!values.checkValue1 && 'Please check the box if your Billing address is same as your shipping address.'}
+                        {values.checkValue1 && 'Please uncheck the box if your Billing address is different from your shipping address.'}
                     </div>
                     {!values.checkValue1 &&
                         <>
@@ -232,6 +271,7 @@ class Addressdetails extends React.Component {
                                                             <i style={{ fontSize: "25px", color: "#394578" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                                             <span class="address-name">
                                                                 {/* {aa ? aa + ' ' : aa1 + ' '} */}
+                                                                {val_addrs2 && val_addrs2.salutation}&nbsp;
                                                                 {val_addrs2.firstname}
                                                                 &nbsp;
                                                   {val_addrs2.lastname}
@@ -288,7 +328,7 @@ class Addressdetails extends React.Component {
                                                                     <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                                                         this.props.selectaddreses(val_addrs2, 2, index)
                                                                         // this.props.changevalue(3)
-                                                                    }}>Select </Button></>}</>
+                                                                    }}>Select to continue </Button></>}</>
 
                                                         </div>
                                                     </div>
@@ -297,6 +337,7 @@ class Addressdetails extends React.Component {
                                     }
 
                                     )}
+                                    
                                 </>
                             </Grid>
                             {value.length > 4 || values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :

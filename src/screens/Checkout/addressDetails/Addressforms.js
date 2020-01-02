@@ -24,6 +24,7 @@ const Addressforms = (changePanel) => {
     const [open, setOpen] = React.useState(false);
     const [values, setValues] = React.useState({
         addressOne: {
+            salutation: "",
             firstname: "",
             lastname: "",
             addressline1: "",
@@ -31,8 +32,8 @@ const Addressforms = (changePanel) => {
             pincode: "",
             city: "",
             state: "",
-            country: "",
-            country_code: "",
+            country: "India",
+            country_code: "+91",
             contactno: "",
             addresstype: 1,
             errortext: {
@@ -40,6 +41,7 @@ const Addressforms = (changePanel) => {
             },
         },
         addressTwo: {
+            salutation: "",
             firstname: "",
             lastname: "",
             addressline1: "",
@@ -47,8 +49,8 @@ const Addressforms = (changePanel) => {
             pincode: "",
             city: "",
             state: "",
-            country: "",
-            country_code: "",
+            country: "India",
+            country_code: "+91",
             contactno: "",
             addresstype: 2,
             errortext: { pinerr: "", pinerr1: "" },
@@ -64,8 +66,11 @@ const Addressforms = (changePanel) => {
         addres_id: null,
         index: null,
         update_clear: false,
-        log_addrs: false
+        log_addrs: false,
+        continue: false
     });
+    // alert(JSON.stringify(values&&values.addressOne&&values.addressOne.salutation))
+
     var addObj = {};
     var adars1 = {}
     var adars2 = {}
@@ -192,8 +197,13 @@ const Addressforms = (changePanel) => {
         setpincod({ ...pincods, pincods })
         setValues({ ...values, values })
     }
+    // const handleChange_selsect = (e) => {
+    //     values['addressOne']['salutation'] =
+    //         setValues({ ...values, values })
+    // };
+    console.log("jjj****", values.addressOne.salutation)
     const handleSubmit = (e) => {
-
+        debugger
         if (values && values.addressOne && values.addressOne.pincode === "") {
             values["addressOne"]['errortext']['pinerr'] = "Pin Code is required"
             setValues({ ...values, values })
@@ -269,14 +279,16 @@ const Addressforms = (changePanel) => {
                         localStorage.setItem("gustaddres", JSON.stringify(addObjgust_local))
                         if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
                             var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
-                            local_storage.address.splice(values.index, 1);
+                            // local_storage.address.splice(values.index, 1);
+                            local_storage.address[values.index] = values.addressOne
                             window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
                         }
                     } else if (values && values.addressOne) {
                         addObjgust["address"] = [values.addressOne]
                         if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
                             var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
-                            local_storage.address.splice(values.index, 1);
+                            local_storage.address[values.index] = values.addressOne
+                            // local_storage.address.splice(values.index, 1);
                             window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
                         }
                         localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
@@ -287,14 +299,16 @@ const Addressforms = (changePanel) => {
                         localStorage.setItem("gustaddres", JSON.stringify(addObjgust_local))
                         if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
                             var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
-                            local_storage.address.splice(values.index, 1);
+                            local_storage.address[values.index] = values.addressOne
+                            // local_storage.address.splice(values.index, 1);
                             window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
                         }
                     } else if (values.addressTwo) {
                         addObjgust["address"] = [values.addressOne, values.addressTwo]
                         if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
                             var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
-                            local_storage.address.splice(values.index, 1);
+                            local_storage.address[values.index] = values.addressOne
+                            // local_storage.address.splice(values.index, 1);
                             window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
                         }
                         localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
@@ -302,8 +316,9 @@ const Addressforms = (changePanel) => {
                 }
                 window.location.reload()
             }
-            values['checkValue1'] = true
+            // values['checkValue1'] = true
             setValues({
+                // checkValue1:!values.checkValue1,
                 addrs: !values.addrs,
                 values,
                 ...values,
@@ -339,7 +354,7 @@ const Addressforms = (changePanel) => {
                 addObjall['address'] = [adars1.addressOne];
                 makeFetchall(addObjall);
             }
-            alert("your address send on successful")
+            // alert("your address send on successful")
             if (!pathnames) {
                 changePanel(3)
                 window.location.reload()
@@ -380,7 +395,7 @@ const Addressforms = (changePanel) => {
                 addObjall["user_id"] = user_id
                 addObjall["cart_id"] = cart_id
                 addObjall['address'] = [adars1.addressOne, adars2.addressTwo];
-                alert("your address send on successful")
+                // alert("your address send on successful")
                 if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                     makeFetchall(addObjall);
                 }
@@ -449,6 +464,7 @@ const Addressforms = (changePanel) => {
         values["addressTwo"] = ""
         value11 = {
             addressOne: {
+                salutation: "",
                 firstname: "",
                 lastname: "",
                 addressline1: "",
@@ -466,6 +482,7 @@ const Addressforms = (changePanel) => {
                 },
             },
             addressTwo: {
+                salutation: "",
                 firstname: "",
                 lastname: "",
                 addressline1: "",
@@ -485,6 +502,7 @@ const Addressforms = (changePanel) => {
         }
         values["edit_addresId"] = false
         values["addrs"] = true
+        values["continue"] = true
         setValues({
             values,
             ...values,
