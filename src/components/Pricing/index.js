@@ -24,7 +24,8 @@ export default function Pricing(props) {
             }
             {/*  */}
             <Grid spacing={12} container lg={12} xs={12}>
-                <Grid item lg={window.location.pathname !== "/cart" && window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/checkout" ? 3 : 6} xs={6}>
+                <Grid item lg={window.location.pathname !== "/cart" && window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/checkout" ? 6 : 6} 
+                xs={window.innerWidth < 330 ? 12 : 6}>
                     {props.offerPrice ?
                         <Typography style={{ display: "flex", width: '100%' }}>
                             <Typography
@@ -37,9 +38,9 @@ export default function Pricing(props) {
                             </Typography>
                         </Typography> : ""} 
                 </Grid>   
-                <Grid item lg={6} xs={12}>
-                    <Grid spacing={12} container lg={12} xs={12}>
-                        <Grid item lg={12} xs={12}>
+                <Grid item  xs={6} >
+                    <Grid spacing={12} container  xs={12} class="leftPadding">
+                        <Grid item  xs={12}>
                             {props.price ?
                                 <Typography style={{ display: "flex", width: '100%' }}>
                                     <Typography
@@ -51,8 +52,8 @@ export default function Pricing(props) {
                                     </Typography>
                                 </Typography> : ""}
                         </Grid>
-                        <Grid item lg={12} xs={12}>
-                            <Hidden mdDown>
+                        <Grid item  xs={12}>
+                            <Hidden smDown>
                                 {
                                     props.offerDiscount ?
                                         <span className={`discount ${classes.backgsecondary} ${classes.off}`}>{props.offerDiscount}</span>
