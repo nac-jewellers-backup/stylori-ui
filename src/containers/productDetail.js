@@ -102,10 +102,10 @@ class ProductDetail extends Component {
                 <div className='overall-box priceecontainer'>
                   <ProductPrice data={this.props.data} wishlist={this.props.wishlistdata} />
                 </div>
-                <div className='overall-box priceecontainer'>
+                <div className='overall-box'>
                   <PriceTabs data={this.props.data} />
                 </div>
-                <div className='overall-box priceecontainer'>
+                <div className='overall-box'>
                   <PriceBuynow data={this.props.data} />
                 </div>
               </Grid>

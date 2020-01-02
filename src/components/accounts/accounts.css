@@ -8,10 +8,6 @@
 
 .pay-index-subhed {
     float: left;
-<<<<<<< HEAD
-=======
-    padding-top: 14px !important;
->>>>>>> 37d2f4462ca9623dba9ecdf22869fefab04ca235
     /* background: #f0f0f0; */
     font-size: 12px !important;
     color: #333 !important;
@@ -29,76 +25,16 @@
 
 .pay-index-subhed p {
     padding: 0 15px;
-    border: 1px solid #eeeeee ;
-    margin: 0px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     cursor: pointer;
     font-size: 14px !important;
-    font-weight: 500;
+    font-weight: 600;
     /* line-height: 20px; */
     /* box-shadow: 1px 2px 35px 3px #DEDADA !important; */
-    /* box-shadow: 1px 0px 10px 0px #DEDADA !important; */
-}
-<<<<<<< HEAD
-=======
-/* .topPadding{
-    padding-top: 5px;
+    box-shadow: 1px 0px 10px 0px #DEDADA !important;
 }
 
-/* .containerTopPadding{
-    padding-top: 0px;
-}
-
-*/
-/* @media screen and (max-width: 425px) {
-    .add-bag {
-        color: #333 !important;
-        border: 1px solid #333 !important;
-        text-align: center !important;
-        float: left !important;
-        font-size: 12px !important;
-        border-radius: 5%;
-        line-height: 10px;
-        height: 30px;
-        padding: 2px;
-        width: 54%;
-        cursor: pointer;
-    }
-    
-} 
-@media screen and (min-width: 426px) {
-    .add-bag {
-        color: #333 !important;
-        border: 1px solid #333 !important;
-        text-align: center !important;
-        float: left !important;
-        font-size: 12px !important;
-        border-radius: 5%;
-        line-height: 10px;
-        height: 30px;
-        padding: 2px;
-        width: 15%;
-        cursor: pointer;
-    }
-    
-}  */
-/* .paddingUp{
-    padding-top: 15px;
-} */
-.topPaddingwish{
-    padding-left: 40px;
-} 
->>>>>>> 37d2f4462ca9623dba9ecdf22869fefab04ca235
-
-@media screen and (max-width: 979px) {
-    .topPaddingwish{
-        padding-left: 0px;
-    } 
-    /* .paddingUp{
-        padding-top: 0px;    } */
-    
-    }
 .pay-index-subhed p:hover {
     background: #dfdfdf;
 }
