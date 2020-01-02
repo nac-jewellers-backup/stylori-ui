@@ -31,21 +31,6 @@ const useLogin = (changePanel, props) => {
     const { setValues: addressetValues } = Addressforms();
     const pathnames = window.location.pathname === "/login"
     const { loading: codloading, error: coderror, data: addresData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
-    const clear = () => {
-        setValues({
-            password: "",
-            email: "",
-            errortext: {
-                emerr: "",
-                passerr: "",
-            },
-            error: {
-                passerr: false,
-                emerr: false,
-            }
-        })
-
-    }
     React.useEffect(() => {
         var ms = data && data.message
 
@@ -129,7 +114,6 @@ const useLogin = (changePanel, props) => {
                     return false
                 }
             }
-            clear()
         }
     }, [addresData])
     // React.useEffect(() => {
@@ -160,7 +144,21 @@ const useLogin = (changePanel, props) => {
             [type]: status
         })
     }
-    
+    const clear = () => {
+        setValues({
+            password: "",
+            email: "",
+            errortext: {
+                emerr: "",
+                passerr: "",
+            },
+            error: {
+                passerr: false,
+                emerr: false,
+            }
+        })
+
+    }
     // const vl = data && data.message
     const errmsg = data.message ? data.message : ""
     const auth = data.userprofile ? data.userprofile.id : ""
@@ -213,6 +211,7 @@ const useLogin = (changePanel, props) => {
         let _roles = values.roles
         obj_values = { password: _password, email: _email, roles: _roles }
         makeFetch(obj_values);
+        clear()
         // reset();
         // _history=history('/home')
         // changePanel(3)

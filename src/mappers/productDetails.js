@@ -144,7 +144,7 @@ const generateImgurls = (PD, val, screen_res) => {
     var arrOfurls = []
     val.map(imgurl => {
         var imgurlsplit = imgurl.imageUrl.split('.')[0].charAt(imgurl.imageUrl.split('.')[0].length - 1)
-        var metalcolor = PD.metalColor.charAt(0)
+        var metalcolor = PD && PD.metalColor ? PD.metalColor.charAt(0) : ''
         if (imgurlsplit === metalcolor) {
 
             arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
@@ -239,6 +239,7 @@ const sorting = (val) =>{
 }
 // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
 export default function (data, like_data, viewedddatas, rating) {
+    debugger
     let mapperdata = [];
     try {
         // mapperda = ;
@@ -263,7 +264,7 @@ export default function (data, like_data, viewedddatas, rating) {
             productType: PD.productListByProductId.productType && PD.productListByProductId.productType,
             fadeImages: PD.productListByProductId.productImagesByProductId.nodes &&
                 generateImgurls(PD, PD.productListByProductId.productImagesByProductId.nodes, colSize),
-            image_resolution: img_res, 
+            image_resolution: img_res,
             image_resolution_two: img_res_X_2,
 
             productsubHeaderlist: [{

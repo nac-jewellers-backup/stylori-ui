@@ -55,32 +55,9 @@ const useRegister = (changePanel, props) => {
     const { setCartFilters } = React.useContext(CartContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     const pathnamelog = window.location.pathname === "/registers"
-    const clear = () => {
-        setValues({
-            email: "",
-            password: "",
-            confirmpassword: "",
-            firstname: "",
-            lastname: "",
-            errortext: {
-                emerr: "",
-                passerr: "",
-                cnfpasserr: "",
-                firstname: "",
-                lastname: ""
-            },
-            error: {
-                passerr: false,
-                emerr: false,
-                cnfpasserr: false,
-                firstname: false,
-                lastname: false
-            }
-        })
-        // props.change()
-    }
+   
     useEffect(() => {
-
+        
         if (reg_update_data && reg_update_data === "Profile Updated Successfully") {
             alert("Profile Updated Successfully")
         }
@@ -113,7 +90,6 @@ const useRegister = (changePanel, props) => {
                 // if(bb.length > 0){
                 localStorage.setItem("isedit", 1)
                 // }
-                clear()
                 localStorage.setItem("email", data.user.email)
                 localStorage.setItem("user_id", data.user_profile_id)
                 localStorage.setItem('accessToken', data.accessToken)
@@ -180,9 +156,32 @@ const useRegister = (changePanel, props) => {
         // makeFetch(values)
     }
     const user = data.user_profile_id ? data.user_profile_id : ""
-
+    const clear = () => {
+        setValues({
+            email: "",
+            password: "",
+            confirmpassword: "",
+            firstname: "",
+            lastname: "",
+            errortext: {
+                emerr: "",
+                passerr: "",
+                cnfpasserr: "",
+                firstname: "",
+                lastname: ""
+            },
+            error: {
+                passerr: false,
+                emerr: false,
+                cnfpasserr: false,
+                firstname: false,
+                lastname: false
+            }
+        })
+        // props.change()
+    }
     const handleSubmit = (e) => {
-
+        
         if (!pathnames) {
             if (values.email === "" && values['error'] && values['errortext']) {
                 values['error']['emerr'] = true
@@ -262,8 +261,8 @@ const useRegister = (changePanel, props) => {
             localStorage.setItem("namesOf_last", JSON.stringify(values.lastname))
             makeFetch(values);
             // reset();
-            // clear()
-            return false
+            clear()
+              return false
         } else {
             localStorage.setItem("namesOf_first", JSON.stringify(valuesadrees.firstname))
             localStorage.setItem("namesOf_last", JSON.stringify(valuesadrees.lastname))
@@ -273,7 +272,7 @@ const useRegister = (changePanel, props) => {
             makeFetcheditAddress(valuesadrees);
         }
     }
-    const handlers = { handleSubmit, handleChange, handlesetvaluesadrees, clear };
+    const handlers = { handleSubmit, handleChange, handlesetvaluesadrees ,clear};
 
     return { values, setValues, handlers, data, valuesadrees }
 }
