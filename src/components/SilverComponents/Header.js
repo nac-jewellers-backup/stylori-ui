@@ -139,7 +139,7 @@ class Header extends Component {
                     //     document.getElementById("headerContainer").style.height = "55px";
                     // }
                     if (document.getElementById("logoImage")) {
-                        document.getElementById("logoImage").style.width = "50%";
+                        document.getElementById("logoImage").style.width = "80%";
                     }
                     // if (document.getElementById("logoDiv1")) {
                     //     document.getElementById("logoDiv1").style.padding = "0px";
@@ -206,7 +206,7 @@ class Header extends Component {
                 <Hidden smDown >
                     {/* <HeaderNotification headerTransition={() => { this.headerTransitions() }} /> */}
                     <div className="header-appbar-sticky1" id='headerDiv'>
-                        <AppBar className="header-appbarsilver1 " id="topNav" style={{ transition: "all 0.5s" }} >
+                        <AppBar className="header-appbarsilver1 " id="topNav" style={{ transition: "all 0.2s" }} >
                             <Container maxWidth="lg" id="searchcontainer">
                                 <Grid container spacing={12} style={{ marginTop: "20px" }}>
                                     <Grid container item xs={12} justify="flex-end" alignItems="center">
@@ -297,7 +297,7 @@ class Header extends Component {
                                         <Grid container spacing={12} id="fullcontainer" className="setHeight">
                                             <Grid item xs={3} className="logoImgHeader1">
                                                 <div id="logoDiv1" className="logoDiv1">
-                                                    <img id="logoImage" style={{ transition: "all 0.5s" }} className={`img`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                                    <img id="logoImage" style={{ transition: "all 0.2s" }} className={`img`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                                 </div>
                                             </Grid>
                                             <Grid container item xs={9} id={"containerTitle"} justify="flex-end" alignItems="center" className={`header-navbar-list1 ${classes.headerNavbarList}`}
