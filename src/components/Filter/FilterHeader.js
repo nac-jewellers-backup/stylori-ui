@@ -16,8 +16,8 @@ const styles = theme => ({
     colorMain: {
         color: theme.palette.primary.main,
         alignContent: "center",
-    display: "flex",
-    alignItems: "center"
+        display: "flex",
+        alignItems: "center"
     },
 });
 
@@ -25,7 +25,7 @@ const FilterHeader = (props) => {
     const { setSort, setOffset, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
     const loc = window.location.search
     return <Component setSort={setSort} setOffset={setOffset} offset={FilterOptionsCtx.offset} sort={FilterOptionsCtx.sort}  {...props} />
-  }
+}
 
 class Component extends React.Component {
     constructor(props) {
@@ -51,7 +51,7 @@ class Component extends React.Component {
             if (document.getElementById('filterBy')) filterHeight = document.getElementById('filterBy').clientHeight;
 
             // const heights = 30;
-            let add = filterHeight - 10;
+            let add = filterHeight;
             this.setState({ topHeight: add });
         }
 
@@ -60,12 +60,12 @@ class Component extends React.Component {
     handleExpandClick = () => {
         this.setState({ expanded: !this.state.expanded });
     }
-    handleChange = (event) =>{
+    handleChange = (event) => {
         debugger
-    if (this.props.offset > 0) this.props.setOffset(0)
-    console.log(this.props.offset)
-        this.props.setSort({ values:event.target.value})
-        
+        if (this.props.offset > 0) this.props.setOffset(0)
+        console.log(this.props.offset)
+        this.props.setSort({ values: event.target.value })
+
         this.setState({ expanded: false })
     }
     render() {
@@ -73,7 +73,7 @@ class Component extends React.Component {
         const { classes, chips } = this.props;
         const { sortOptions } = this.props.data;
         return (
-            <Paper style={{ position: 'sticky', top: this.state.topHeight, width: '100%', zIndex: '3', boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">
+            <Paper style={{ position: 'sticky', top: "69px", width: '100%', zIndex: '3', boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">
                 {/* <div style={{position:'sticky',top:'165px'}}> */}
                 <Grid container>
                     <Grid item lg={3}>
@@ -129,8 +129,8 @@ class Component extends React.Component {
                                 className={`fil-drawer-sort_font ${classes.colorMain}`}
                                 onClick={this.handleExpandClick}
                             >
-                               Sort By { this.state.expanded ? <ExpandLess /> : <ExpandMore />}
-                                        {/* <span className="fil-drawer-head-sort-expand">
+                                Sort By {this.state.expanded ? <ExpandLess /> : <ExpandMore />}
+                                {/* <span className="fil-drawer-head-sort-expand">
                                     <ExpandMoreIcon />
                                 </span> */}
                             </Typography>

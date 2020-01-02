@@ -31,7 +31,7 @@ class StoryBlock extends React.Component {
         <Grid
           item
           xs={12}
-          style={{ position: "sticky", top: "0", zIndex: "1000" }}
+          style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}
         >
           <Header />
         </Grid>

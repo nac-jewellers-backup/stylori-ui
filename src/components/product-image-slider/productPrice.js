@@ -55,6 +55,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
     const { classes } = props;
     const open = anchorEl;
     var wishlist = props.wishlist
+    // alert(JSON.stringify(props.wishlist.wishlistdata.nodes.skuId))
     return (
         <div>
             {data.map(val => (
