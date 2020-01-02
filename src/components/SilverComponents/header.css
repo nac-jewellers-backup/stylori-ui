@@ -383,6 +383,11 @@
 
 .header-appbar-sticky1 header {}
 
+.appbarsilver1 {
+  position: sticky;
+  top: 0px
+}
+
 .logoImgHeader1 {
   display: flex;
   /* justify-content: center; */

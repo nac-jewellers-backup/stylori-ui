@@ -38,13 +38,13 @@ class Stylori extends React.Component {
   render() {
     const { data, dataFilter, loading } = this.props
     return (
-     
+
       <>
-          
+
 
         <Grid container >
-        <div>
-        {/* <MetaTags>
+          <div>
+            {/* <MetaTags>
         <title>{this.props.mappedFilters.seo_url}</title>
         <meta name="description" content={this.props.mappedFilters.seo_text} />
         <meta name="keywords" content={this.props.dataFilter[0].filter} />
@@ -66,19 +66,19 @@ class Stylori extends React.Component {
 
         </MetaTags> */}
 
-        </div>
-          
-          <Grid item xs={12} >
+          </div>
+
+          <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
             <Header data={data} cartcount={this.props.cartcount} wishlist={this.props.wishlistdata} wishlist_count={this.props.wishlist_count} />
           </Grid>
 
           <Grid item xs={12}>
-            <ProductDescription title="Jewellery" data={dataFilter} wishlist={this.props.wishlistdata}/>
-            <Filter datas={data} data={dataFilter} loading={loading} wishlist={this.props.wishlistdata}/>
+            <ProductDescription title="Jewellery" data={dataFilter} wishlist={this.props.wishlistdata} />
+            <Filter datas={data} data={dataFilter} loading={loading} wishlist={this.props.wishlistdata} />
           </Grid>
           <Grid item xs={12} >
             <Hidden smDown>
-              <ChatHelp data={data} wishlist={this.props.wishlistdata}/>
+              <ChatHelp data={data} wishlist={this.props.wishlistdata} />
 
               <Footer />
             </Hidden>
