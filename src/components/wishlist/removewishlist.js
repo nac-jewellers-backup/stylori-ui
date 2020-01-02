@@ -8,7 +8,7 @@ const RemoveWishlist = (props) => {
 
 const RemoveWishlistComponent = (props) => {
     const { classes } = props;
-    const { values, setValues, handlers } = useWishlists();
+    const { values, setValues, handlers } = useWishlists(props);
 
     return (
         <div style={{color:"#fff"}} 
