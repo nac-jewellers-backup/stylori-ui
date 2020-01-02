@@ -61,7 +61,6 @@ class Component extends React.Component {
         this.setState({ expanded: !this.state.expanded });
     }
     handleChange = (event) => {
-        debugger
         if (this.props.offset > 0) this.props.setOffset(0)
         console.log(this.props.offset)
         this.props.setSort({ values: event.target.value })

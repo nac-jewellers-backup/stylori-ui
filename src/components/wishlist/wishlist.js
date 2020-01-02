@@ -11,7 +11,6 @@ const WishlistComponent = (props) => {
     const { classes } = props;
     const { values, setValues, handlers } = useWishlists(props);
     React.useEffect(() => {
-        debugger
     // alert(JSON.stringify(props.wishlist))
     if(props&&props.wishlist!==undefined||props&&props.wishlist!==null)
     if (JSON.stringify(props.wishlist) && JSON.stringify(props.wishlist).length > 0) {
@@ -32,7 +31,7 @@ const WishlistComponent = (props) => {
                     onClick={() => {
                         values["product_sku"] = props.sku
                         values["product_id"] = props.productId
-                        setValues({ values, ...values });
+                        setValues({ values, ...values }); 
                         handlers.handelSubmit(2)
                     }}
                 ></i></> : <>

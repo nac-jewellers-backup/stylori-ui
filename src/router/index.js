@@ -40,6 +40,10 @@ export const RouterApp = (props) => {
         var loc = window.location.pathname.split('/')[1].split('-').filter(val => { if (val === 'silver') return val })
         return loc[0]
     }
+    const paths = [
+        '/:params1/:params2',
+        '/:params1/:params2/:params3/:params4',
+    ]
     // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
     return (
         <Switch history={browserHistory}>
@@ -65,8 +69,8 @@ export const RouterApp = (props) => {
             <Route key="Collection" component={Collection} exact path={routes.Collection} />
             {(props.location.pathname !== "/cart" && props.location.pathname !== `/account${"-" + window.location.pathname.split("-")[1]}` && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && props.location.pathname !== "/forgotPassword") &&
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />}
-
-            <Route exact component={PricingPage} path={`/:productCategory/:productType/:material/:productName`} />
+            
+            <Route exact component={PricingPage} path={paths} />
             <Route key="cart" exact component={Cart} path={routes.Cart} />
             <Route key="Register" component={Register} exact path={routes.Register} />
             {

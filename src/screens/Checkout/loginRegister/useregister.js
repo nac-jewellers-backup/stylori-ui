@@ -35,7 +35,7 @@ const useRegister = (changePanel, props) => {
         }
     });
     // const [valuesedit, setValuesedit] = React.useState({
-
+    
     // });
     const [valuesadrees, setvaluesadrees] = React.useState({
         user_id: user_ids,
@@ -262,6 +262,7 @@ const useRegister = (changePanel, props) => {
             localStorage.setItem("namesOf_last", JSON.stringify(values.lastname))
             makeFetch(values);
             // reset();
+            // clear()
             return false
         } else {
             localStorage.setItem("namesOf_first", JSON.stringify(valuesadrees.firstname))
