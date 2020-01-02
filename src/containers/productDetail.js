@@ -77,7 +77,7 @@ class ProductDetail extends Component {
 
         <Hidden smDown>
           <Grid container >
-            <Grid item xs={12} >
+            <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
               <Header wishlist={this.props.wishlistdata} />
             </Grid>
           </Grid>
@@ -138,7 +138,7 @@ class ProductDetail extends Component {
         <Hidden mdUp>
           <div style={{ paddingBottom: "50px" }}>
             <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
-              <Grid item xs={12} >
+              <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
                 <Header wishlist={this.props.wishlistdata} pdpage={true} />
               </Grid>
             </Grid>

@@ -125,57 +125,63 @@ class Header extends Component {
     scrolling = () => {
         if (window.location.pathname !== "/cart" && window.location.pathname !== '/checkout') {
             if (window.innerWidth > 959) {
-                if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                    if (document.getElementById("headerContainer")) {
-                        document.getElementById("headerContainer").style.position = "fixed";
-                        document.getElementById("headerContainerTop").style.height = "74px";
-                        document.getElementById("headerContainer").style.background = "#fff";
-                        document.getElementById("headerContainer").style.zIndex = "1300";
-                        document.getElementById("headerContainer").style.boxShadow = "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)";
-                        document.getElementById("headerContainer").style.height = "55px";
+                if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+
+                    if (document.getElementById("topNav")) {
+                        document.getElementById("topNav").style.marginTop = "-69px";
                     }
+                    // if (document.getElementById("headerContainer")) {
+                    //     document.getElementById("headerContainer").style.position = "fixed";
+                    //     document.getElementById("headerContainerTop").style.height = "74px";
+                    //     document.getElementById("headerContainer").style.background = "#fff";
+                    //     document.getElementById("headerContainer").style.zIndex = "1300";
+                    //     document.getElementById("headerContainer").style.boxShadow = "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)";
+                    //     document.getElementById("headerContainer").style.height = "55px";
+                    // }
                     if (document.getElementById("logoImage")) {
                         document.getElementById("logoImage").style.width = "50%";
-                        document.getElementById("logoImage").style.transitionDuration = "0.8s";
                     }
-                    if (document.getElementById("logoDiv1")) {
-                        document.getElementById("logoDiv1").style.padding = "0px";
-                    }
-                    if (document.getElementById("titleTop")) {
-                        document.getElementById("titleTop").style.marginTop = "0px"
-                    }
-                    if (document.getElementById("containerTitle")) {
-                        document.getElementById("containerTitle").style.height = "55px";
-                    }
-                    if (document.getElementById("fullcontainer")) {
-                        document.getElementById("fullcontainer").style.height = "55px";
-                    }
+                    // if (document.getElementById("logoDiv1")) {
+                    //     document.getElementById("logoDiv1").style.padding = "0px";
+                    // }
+                    // if (document.getElementById("titleTop")) {
+                    //     document.getElementById("titleTop").style.marginTop = "0px"
+                    // }
+                    // if (document.getElementById("containerTitle")) {
+                    //     document.getElementById("containerTitle").style.height = "55px";
+                    // }
+                    // if (document.getElementById("fullcontainer")) {
+                    //     document.getElementById("fullcontainer").style.height = "55px";
+                    // }
                 }
                 else {
+                    if (document.getElementById("topNav")) {
+                        document.getElementById("topNav").style.marginTop = "0px";
+                    }
                     if (document.getElementById("headerContainer")) {
-                        document.getElementById("headerContainer").style.position = "inherit";
-                        document.getElementById("headerContainer").style.background = "#fff";
-                        document.getElementById("headerContainer").style.zIndex = "1300";
-                        document.getElementById("headerContainer").style.boxShadow = "none";
-                        document.getElementById("headerContainer").style.height = "auto";
+                        // document.getElementById("headerContainer").style.position = "inherit";
+                        // document.getElementById("headerContainer").style.background = "#fff";
+                        // document.getElementById("headerContainer").style.zIndex = "1300";
+                        // document.getElementById("headerContainer").style.boxShadow = "none";
+                        // document.getElementById("headerContainer").style.height = "auto";
                     }
-                    if (document.getElementById("headerContainerTop")) {
-                        document.getElementById("headerContainerTop").style.height = "0px";
-                    }
+                    // if (document.getElementById("headerContainerTop")) {
+                    //     document.getElementById("headerContainerTop").style.height = "0px";
+                    // }
                     if (document.getElementById("logoImage")) {
                         document.getElementById("logoImage").style.width = "100%";
-                        document.getElementById("logoImage").style.transitionDuration = "0.8s";
                     }
-                    if (document.getElementById("containerTitle")) {
-                        document.getElementById("containerTitle").style.height = "auto";
-                    }
-                    if (document.getElementById("fullcontainer")) {
-                        document.getElementById("fullcontainer").style.height = "auto";
-                    }
-                    if (document.getElementById("logoDiv1")) {
-                        document.getElementById("logoDiv1").style.paddingTop = "2%";
-                    }
+                    // if (document.getElementById("containerTitle")) {
+                    //     document.getElementById("containerTitle").style.height = "auto";
+                    // }
+                    // if (document.getElementById("fullcontainer")) {
+                    //     document.getElementById("fullcontainer").style.height = "auto";
+                    // }
+                    // if (document.getElementById("logoDiv1")) {
+                    //     document.getElementById("logoDiv1").style.paddingTop = "2%";
+                    // }
                 }
+
             }
             else {
                 return ""
@@ -200,8 +206,8 @@ class Header extends Component {
                 <Hidden smDown >
                     {/* <HeaderNotification headerTransition={() => { this.headerTransitions() }} /> */}
                     <div className="header-appbar-sticky1" id='headerDiv'>
-                        <AppBar className="header-appbarsilver1" id="topNav">
-                            <Container maxWidth="lg">
+                        <AppBar className="header-appbarsilver1 " id="topNav" style={{ transition: "all 0.5s" }} >
+                            <Container maxWidth="lg" id="searchcontainer">
                                 <Grid container spacing={12} style={{ marginTop: "20px" }}>
                                     <Grid container item xs={12} justify="flex-end" alignItems="center">
                                         <div className={`head-icons1 ${classes.headIcons}`} >
@@ -291,7 +297,7 @@ class Header extends Component {
                                         <Grid container spacing={12} id="fullcontainer" className="setHeight">
                                             <Grid item xs={3} className="logoImgHeader1">
                                                 <div id="logoDiv1" className="logoDiv1">
-                                                    <img id="logoImage" className={`img`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                                    <img id="logoImage" style={{ transition: "all 0.5s" }} className={`img`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                                 </div>
                                             </Grid>
                                             <Grid container item xs={9} id={"containerTitle"} justify="flex-end" alignItems="center" className={`header-navbar-list1 ${classes.headerNavbarList}`}
