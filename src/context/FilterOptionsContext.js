@@ -87,7 +87,6 @@ const Provider = (props) => {
                 }
             }
 
-            debugger
 
             console.log('splitHiphen()', splitHiphen())
             const conditionfiltersSeo = { seofilter: { seoUrl: { in: splitHiphen() } } }
@@ -140,7 +139,7 @@ const Provider = (props) => {
 
                         // setFilters(filters)
                         var obj = {}
-                        debugger
+                        
                         obj[val.attributeValue] = true
                         
                         a[val.attributeName.replace(/\s/g, '')] = obj
@@ -294,7 +293,7 @@ const Provider = (props) => {
 
     }, [seoData, seoloading, seoError])
     useEffect(() => {
-        debugger
+        
         if (!loading) {
             const mapped = productlist(data, CDN_URL);
             const newUpdatedList = filterLogic(dataArr, mapped);
@@ -310,14 +309,14 @@ const Provider = (props) => {
     useEffect(() => {
     }, [data, error, loading])
     const updatefiltersSort = async () => {
-debugger
+
         if (filters && filters.constructor === Object && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
             var newObj = {}
             var len;
             if (filters.constructor !== Object) {
                 Object.assign(filters, {})
             }
-            debugger
+            
             Object.keys(filters).map(fk => {
                 const filter = filters[fk];
                 const fv = filter && Object.keys(filter);

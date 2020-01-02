@@ -27,7 +27,6 @@ class Addressdetails extends React.Component {
             }
         }
         const cl = () => <input onChange={(e) => {
-            debugger
             if (_add_data_addres().length >= 0 && _add_data_addres().length <= 1) {
                 alert("You have saved Shipping Address only")
                 return false
