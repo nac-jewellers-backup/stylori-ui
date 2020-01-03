@@ -86,7 +86,7 @@ class ProductImageZoom extends React.Component {
           <Grid item xs={10} >
             {/* <div className='imagecard' id="divs" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
                 {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship" ></div> : ""} */}
-            {/* <div id='flashlight'></div> */}
+            <div id='flashlight'></div>
             {/* <img className='img-zooming-' id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
               </div>
               <div className='overly-img' id="overlay"
