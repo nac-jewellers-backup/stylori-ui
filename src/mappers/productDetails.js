@@ -264,7 +264,7 @@ export default function (data, like_data, viewedddatas, rating) {
             productType: PD.productListByProductId.productType && PD.productListByProductId.productType,
             fadeImages: PD.productListByProductId.productImagesByProductId.nodes &&
                 generateImgurls(PD, PD.productListByProductId.productImagesByProductId.nodes, colSize),
-            image_resolution: img_res, 
+            image_resolution: img_res,
             image_resolution_two: img_res_X_2,
 
             productsubHeaderlist: [{

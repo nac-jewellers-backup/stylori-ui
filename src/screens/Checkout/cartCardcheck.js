@@ -47,7 +47,6 @@ class Component extends React.Component {
     }
 
     handleChange = panel => (event) => {
-        debugger
         // alert("va",JSON.stringify(panel))
         const { expanded } = this.state
         // if (value && value.pincode && value.pincode.length > 2) {
@@ -56,20 +55,11 @@ class Component extends React.Component {
                 expanded: 'panel' + 3,
             });
             // }
-
-            // window.location.reload()
         } else {
-
             if (expanded > 'panel' + panel) {
                 this.setState({
                     expanded: 'panel' + panel,
                 });
-            }
-            if ((expanded === 'panel3' || expanded === 'panel4') && ('panel' + panel === 'panel2')) {
-                localStorage.removeItem("bil_isactive")
-                localStorage.removeItem("ship_isactive")
-                localStorage.removeItem("select_addres")
-                return false
             }
         }
 
@@ -97,7 +87,7 @@ class Component extends React.Component {
         return (
             <>
                 <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
-                    <Grid item xs={12} >
+                    <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
                         <Header wishlist={this.props.wishlistdata} />
                     </Grid>
                 </Grid>
