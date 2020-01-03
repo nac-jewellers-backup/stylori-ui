@@ -31,6 +31,7 @@ class Component extends React.Component {
     }
     change(starsSelected) {
 
+        debugger
         this.setState({ starsSelected })
         this.props.setratingcounts({ ratingcounts: starsSelected })
         if (this.props && this.props.setratingcountsclear && this.props.setratingcountsclear.length > 0) {

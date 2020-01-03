@@ -6,7 +6,6 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import { Select, OutlinedInput } from "@material-ui/core";
 import PropTypes from 'prop-types';
-import Addressforms from '../../../screens/Checkout/addressDetails/Addressforms'
 const useStyles = makeStyles(theme => ({
     root: {
         display: "flex",
@@ -21,7 +20,6 @@ const useStyles = makeStyles(theme => ({
 }));
 export default function SimpleSelect(props) {
     const classes = useStyles();
-    const { setValues: salutationValues } = Addressforms();
     const [values, setValues] = React.useState({
         age: null,
         helperText: false
@@ -30,29 +28,10 @@ export default function SimpleSelect(props) {
         // console.info('EVENT', values.age, Boolean((values.age != null && values.age !== "")));
     }, [values.age])
     function handleChange(event) {
-        debugger
-        var a = {}
-        var a1 = {}
         if (props.val == "1") {
-            a["addressOne"] = a1
-            a1["salutation"] = event.target.value
-            // var a1 = addressOne.salutation.push(event.target.value)
-            if (a !== undefined && a !== null) {
-                salutationValues(a)
-            }
-            // alert(JSON.sty)
             localStorage.setItem('m', event.target.value)
         }
         if (props.val == "2") {
-            var b = {}
-            var b1 = {}
-            b["addressTwo"] = b1
-            b1["salutation"] = event.target.value
-            // var a2 = addressTwo.salutation.push(event.target.value)
-            if (b !== undefined && b !== null) {
-                salutationValues(b)
-            }
-            // alert("2")
             localStorage.setItem('m1', event.target.value)
         }
         setValues({ [event.target.name]: event.target.value, helperText: !Boolean((event.target.value != null && event.target.value !== "")) })

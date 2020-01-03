@@ -10,7 +10,6 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
       metalColor
       discountPrice
       generatedSku
-      skuId
       isReadyToShip
       vendorDeliveryTime
       discountPriceTax
@@ -132,11 +131,9 @@ export const ADDRESSDETAILS = `query MyQuery($userprofileId: String) {
       pincode
       state
       isActive
-      salutation
     }
   }
-}
-`
+}`
 export const YouMayAlsoLike = `query MyQuery($filterdata: ProductListFilter,$filterdatatranssku:  TransSkuListFilter,$filterdatatranssku2:  TransSkuListFilter,$filterdata2:ProductListFilter,, $imgcondition:ProductImageCondition,$Conditiondatatranssku:TransSkuListCondition,$Conditiondatatranssku2:TransSkuListCondition ) {
   youMayalsolike1:  allProductLists(filter: $filterdata, orderBy: CREATED_AT_DESC, first:16) {
       nodes {

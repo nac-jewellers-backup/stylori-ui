@@ -59,7 +59,11 @@ class ProductImageZoom extends React.Component {
     }
     // alert(JSON.stringify(data.image_resolution))
     const props = { "width": data[0].image_resolution, "height": data[0].image_resolution, "zoomWidth": data[0].image_resolution, "img": `${showimage}`, "zoomStyle": "z-index:2" }
-
+    var a = showimage
+    var b = a.split("/")
+    // var c = a.replace(b[5], data[0].image_resolution_two + 'X' + data[0].image_resolution_two)
+    var c = a.replace(b[5], "1000X1000")
+    debugger
     return (
       <div>
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
@@ -75,21 +79,36 @@ class ProductImageZoom extends React.Component {
                 <i class="fa fa-angle-down" style={{ fontSize: "35px", color: "#F699A3" }}
                 // className={`${classes.colorMain}`}
                 ></i>
-              </Button>
+              </Button> 
             </div>
           </Grid>
 
           <Grid item xs={10} >
-            <div>
-              {/* <div className='imagecard' id="divs" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
+            {/* <div className='imagecard' id="divs" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
                 {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship" ></div> : ""} */}
-              {/* <div id='flashlight'></div> */}
-              {/* <img className='img-zooming-' id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
+            {/* <div id='flashlight'></div> */}
+            {/* <img className='img-zooming-' id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
               </div>
               <div className='overly-img' id="overlay"
                 style={{ backgroundImage: `url(${showimage})` }} onMouseOut={event => this.zoomOut(event)}>
                 </div> */}
-              <div class="zoomreact" style={{  boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" , width: "100%" }}><ReactImageZoom {...props} /></div>
+
+
+            {/* <div class="zoomreact" style={{  boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" , width: "100%" }}><ReactImageZoom {...props} /></div> */}
+
+
+            <div>
+
+              <div className='imagecard' id="divs" style={{ height: data[0].image_resolution }} onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
+                {/* <span class="one-day-ship" ></span> */}
+                {/* <div id='flashlight'></div> */}
+
+                <img id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
+              </div>
+
+              <div className='overly-img' id="overlay"
+                style={{ backgroundImage: `url(${c})`, height: data[0].image_resolution }} onMouseOut={event => this.zoomOut(event)}></div>
+
               <div>
                 <Grid container spacing={12}>
                   {/* {data[0].productsubHeaderlist.map(val => (
@@ -134,7 +153,7 @@ class ProductImageZoom extends React.Component {
     var img = document.getElementById("imgZoom");
     var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
     var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
-    element.style.backgroundPosition = (-posX - 40) + "px " + (-posY - 40) + "px";
+    element.style.backgroundPosition = (-posX +50) + "px " + (-posY +50) + "px";
   }
 
   zoomOut = () => {

@@ -19,7 +19,6 @@ const initialCtx = {
 export const ProductDetailContext = React.createContext(initialCtx);
 export const ProductDetailConsumer = ProductDetailContext.Consumer;
 export const TabsProvider = (props) => {
-    debugger
     const [filters, setFilters] = React.useState(initialCtx.ProductDetailCtx.filters);
     const [likedatas, setlikedata] = React.useState([])
     const [viewedddatas, setvieweddata] = React.useState()
@@ -40,7 +39,7 @@ export const TabsProvider = (props) => {
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTDETAILS, () => { }, {});
     const { loading: likeloading, error: likeerror, data: likedata, makeRequest: likemakeRequest } = useGraphql(YouMayAlsoLike, () => { }, {}, false);
     // youRecentlyViewed
-    // "filtersku": {"skuId": {"in": ["SB0013-18110000","SB0013-18210000"]}}
+    // "filtersku": {"generatedSku": {"in": ["SB0013-18110000","SB0013-18210000"]}}
     const { loading: viewedloading, error: viewederror, data: vieweddata, makeRequest: viewmakeRequest } = useGraphql(youRecentlyViewed, () => { }, {}, false);
     // useEffect(()=>{
     //     likemakeRequest(vardata)
@@ -59,7 +58,7 @@ export const TabsProvider = (props) => {
                 let productDetailProps = loc[1];
                 filters["skuId"] = productDetailProps
                 setFilters(filters)
-                variables = { conditionfilter: { 'skuId': filters["skuId"] } }
+                variables = { conditionfilter: { 'generatedSku': filters["skuId"] } }
             }
             else {
                 var urls = window.location.href
@@ -70,7 +69,7 @@ export const TabsProvider = (props) => {
         }
 
         // var metalColors =filters.defaultVariants.metalColor.length>0 ? {productColor:filters.defaultVariants.metalColor  }: null;
-        // variables = { conditionfilter: { 'skuId': filters["skuId"] }, conditionImage:{...metalColors} }
+        // variables = { conditionfilter: { 'generatedSku': filters["skuId"] }, conditionImage:{...metalColors} }
 
         if (window.location.search.length > 0) {
             setregisterurl({
@@ -114,12 +113,12 @@ export const TabsProvider = (props) => {
                 "imagePosition": 1,
                 "isdefault": true
             }
-            // let locviewdata = data.data.allTransSkuLists.nodes[0].skuId
+            // let locviewdata = data.data.allTransSkuLists.nodes[0].generatedSku
             if (_sessionStorage && _sessionStorage.indexOf(',') > -1) {
-                variablesviewed["filtersku"] = { skuId: { in: sessionStorage.getItem('skuId').split(','), notEqualTo: filters.skuId } }
+                variablesviewed["filtersku"] = { generatedSku: { in: sessionStorage.getItem('skuId').split(','), notEqualTo: filters.skuId } }
             }
             else {
-                variablesviewed["filtersku"] = { skuId: { in: [sessionStorage.getItem('skuId')], notEqualTo: filters.skuId } }
+                variablesviewed["filtersku"] = { generatedSku: { in: [sessionStorage.getItem('skuId')], notEqualTo: filters.skuId } }
             }
             let variableslike = {}
             let recommended_products = window.location.pathname.split('/')
@@ -128,22 +127,7 @@ export const TabsProvider = (props) => {
                 "imagePosition": 1,
                 "isdefault": true
             }
-   
-if(data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]){
-    if(filters['productType'] && filters['productType'].length>0)
-
-    {
-        debugger
-
-        variableslike['filterdata'] = { "productType": { equalTo: filters['productType'] } }
-    }
-    else{
-        var productType = data.data.allTransSkuLists.nodes[0].productListByProductId.productType
-        variableslike['filterdata'] = { "productType": { equalTo: productType } }
-    }
-}
-    
-if(data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]){
+            variableslike['filterdata'] = { "productType": { equalTo: recommended_products[2] } }
             var greaterthanprice = (price - 5000) > 0 ? price - 5000 : 0
             variableslike['filterdata']['transSkuListsByProductId'] = {
                 every: {
@@ -158,73 +142,53 @@ if(data && Object.entries(data).length > 0 && data.constructor === Object && dat
             variableslike["Conditiondatatranssku"] = {
                 "isdefault": true
             }
-        }
 
             // let loc = window.location.search.split('=')[1]
             //     variablesviewed["filterdatatranssku"] = {
-            //     "skuId": {
+            //     "generatedSku": {
             //         "notEqualTo": loc
             //     }
             // }
             // variableslike["filterdatatranssku"] = {
-            //     "skuId": {
-            //         "notEqualTo": data && data.allTransSkuLists && data.allTransSkuLists.nodes ? data.allTransSkuLists.nodes[0].skuId:''
+            //     "generatedSku": {
+            //         "notEqualTo": data && data.allTransSkuLists && data.allTransSkuLists.nodes ? data.allTransSkuLists.nodes[0].generatedSku:''
             //     }
             // }
-            if(data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]){
-                if(filters['productType'] && filters['productType'].length>0)
-                {
-                    debugger
-                    variableslike['filterdata2'] = { "productType": { equalTo: filters['productType'] } }
-                }
-                
-                else{
-                    var productType2 = data.data.allTransSkuLists.nodes[0].productListByProductId.productType
-                    variableslike['filterdata2'] = { "productType": { equalTo: productType2 } }
-                }
-            }
 
-    
-           
+
+
+            variableslike['filterdata2'] = { "productType": { equalTo: recommended_products[2] } }
             // variableslike['filterdata2']['transSkuListsByProductId'] = { some: { isdefault: { equalTo: true }} }
-            if(data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]){
             variableslike['filterdata2']["isactive"] = { "equalTo": true }
             variableslike["Conditiondatatranssku2"] = {
                 "isdefault": true
             }
             let loc = window.location.search.split('=')[1]
             variableslike["filterdatatranssku2"] = {
-                "skuId": {
+                "generatedSku": {
                     "notEqualTo": loc
                 }
             }
-        }
 
             let vardata = { ...variableslike }
 
-            if(data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]){
-                debugger
-                likemakeRequest(vardata)
-            }
+            likemakeRequest(vardata)
             setlikedata(likedata)
-            if(data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]){
-                debugger
-                viewmakeRequest(variablesviewed)
-            }
+            viewmakeRequest(variablesviewed)
 
 
 
         }
-    }, [price, filters, data])
+    }, [price, filters])
     useEffect(() => {
         if (Object.entries(data).length > 0 && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]) {
             setPrice(data.data.allTransSkuLists.nodes[0].markupPrice)
 
         }
     }, [loading, error, data, price])
-    const updateProductList = async() => {
+    const updateProductList = () => {
         if (Object.entries(variables).length !== 0 && variables.constructor === Object) {
-          await  makeRequest(variables);
+            makeRequest(variables);
         }
         else {
             return {}
@@ -263,8 +227,7 @@ if(data && Object.entries(data).length > 0 && data.constructor === Object && dat
                 filters['defaultVariants']['metalColor'] = data.data.allTransSkuLists.nodes[0].metalColor
                 filters['defaultVariants']['purity'] = data.data.allTransSkuLists.nodes[0].purity
                 filters['defaultVariants']['skuSize'] = data.data.allTransSkuLists.nodes[0].skuSize
-                // filters['skuId'] = data.data.allTransSkuLists.nodes[0].skuId
-                filters['skuId'] = data.data.allTransSkuLists.nodes[0].skuId
+                filters['skuId'] = data.data.allTransSkuLists.nodes[0].generatedSku
                 // window.location.search=`${`skuId=${filters['skuId']}`}`
                 if (window.location.search.length === 0) {
                     filters['productId'] = data.data.allTransSkuLists.nodes[0].productListByProductId.productId

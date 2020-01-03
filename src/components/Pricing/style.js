@@ -9,7 +9,7 @@ const styles = makeStyles(theme => ({
     },
     h6FontSize: {
         [theme.breakpoints.down('lg')]: {
-            fontSize: '20px',
+            fontSize: '22px',
             // fontWeight: 'bold'
         },
         [theme.breakpoints.down('xs')]: {
@@ -29,7 +29,7 @@ const styles = makeStyles(theme => ({
     },
     offerPricePadding: {
         [theme.breakpoints.down('lg')]: {
-            // paddingLeft: '15px',
+            paddingLeft: '15px',
             marginTop: '7px',
         },[theme.breakpoints.down('xs')]: {
             paddingLeft: '0px',

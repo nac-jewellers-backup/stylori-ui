@@ -168,10 +168,7 @@ export default function (data, cdnUrl) {
                 productType: k.productType,
                 skuId: k.trans_sku_lists[0].generatedSku,
                 oneDayShipping: k.trans_sku_lists[0].isReadyToShip,
-                imageResolution: { img_res: img_res, url_1000x1000: url_construct_1000x1000 },
-                skuUrl: k.trans_sku_lists[0].skuUrl,
-                skuID:  k.trans_sku_lists[0].skuID
-
+                imageResolution: { img_res: img_res, url_1000x1000: url_construct_1000x1000 }
             }
         } catch (error) {
         }

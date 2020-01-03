@@ -68,6 +68,7 @@ const useWishlists = (props) => {
     // }
 
     const handelSubmit = (num) => {
+        debugger
         setwishlistdata({
             wishlistdata: values.isactive
         })
@@ -86,6 +87,7 @@ const useWishlists = (props) => {
 
     }
     const handelRemove = (num) => {
+        debugger
         setwishlistdata({
             wishlistdata: values.isactive
         })

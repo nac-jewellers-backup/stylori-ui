@@ -66,8 +66,7 @@ const Addressforms = (changePanel) => {
         addres_id: null,
         index: null,
         update_clear: false,
-        log_addrs: false,
-        continue: false
+        log_addrs: false
     });
     // alert(JSON.stringify(values&&values.addressOne&&values.addressOne.salutation))
 
@@ -502,7 +501,6 @@ const Addressforms = (changePanel) => {
         }
         values["edit_addresId"] = false
         values["addrs"] = true
-        values["continue"] = true
         setValues({
             values,
             ...values,

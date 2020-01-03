@@ -143,8 +143,8 @@ const ProductlistComponent = (props) => {
                                             />
                                             <div className='login-butn'>
                                                 {data && data.message === "Success" ?
-                                                    <Button style={{ filter: "grayscale(5)" }} disabled className='apply-b' type="submit">Saved</Button> :
-                                                    <Button className='apply-b' type="submit">Save</Button>}
+                                                    <Button style={{ filter: "grayscale(5)" }} disabled className='apply-b' type="submit">Applied</Button> :
+                                                    <Button className='apply-b' type="submit">Apply</Button>}
 
                                             </div>
                                         </form>

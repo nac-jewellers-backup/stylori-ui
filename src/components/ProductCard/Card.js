@@ -18,13 +18,16 @@ import { LazyLoadImage, trackWindowScroll }
   from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Wishlist from "components/wishlist/wishlist";
+import useWishlists from "components/wishlist/usewishlist";
 
 
 export const ImgMediaCard = (props) => {
   const { ProductDetailCtx, setFilters } = React.useContext(ProductDetailContext);
   const loc = window.location.search
-
-  return <Component filters={ProductDetailCtx.filters} setFilters={setFilters} {...props} />
+  // const { setValues: onClick_setValues } = useWishlists()
+  return <Component filters={ProductDetailCtx.filters} setFilters={setFilters} {...props}
+  // onClick_setValues={onClick_setValues}
+  />
 }
 // const MyImage = ( props, callmouseover, callmouseout, cardstate ) => {  
 //   return(
@@ -95,12 +98,18 @@ const imageOnError = (event, res) => {
   event.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
 }
 const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => (
-  <div>
+  <div className="imageHeight">
     {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" style={{ zIndex: 2 }}>
       <span class="one-day-ship-listing-page-label">1 day shipping</span>
 
     </div> : ''}
-    <div class="wishListStyle">
+    <div class="wishListStyle"
+    // onClick={() => props.onClick_setValues({
+    //   product_sku: props.data.skuId,
+    //   product_id: props.data.productId
+    // })}
+    >
+      {/* <Wishlist wishlist={props.wishlist} /> */}
       <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} />
     </div>
 
@@ -116,7 +125,6 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
       //              (max-width: 1440px) 1440w,
       //              (max-width: 2560px) 2560w,
       //              2560w
-
       //  "
       onError={(e) => imageOnError(e, props.data.imageResolution)}
 
@@ -167,15 +175,11 @@ export default trackWindowScroll(Gallery);
 
 //           />
 const handleProductDetatiContext = (props) => {
-  debugger
   props.filters['defaultVariants']['diamondType'] = props.data.diamondType
   props.filters['defaultVariants']['metalColor'] = props.data.metalColor
   props.filters['defaultVariants']['purity'] = props.data.purity
   props.filters['defaultVariants']['skuSize'] = props.data.skuSize
-  props.filters['defaultVariants']['productType'] = props.data.productType
-  // props.filters['skuId'] = props.data.generatedSku
-  props.filters['skuId'] = props.data.skuID
-  
+  props.filters['skuId'] = props.data.generatedSku
   props.setFilters(props.filters)
 
 }
@@ -276,7 +280,8 @@ const useStyles = makeStyles(theme => ({
   },
   textPriceCardGrid: {
     display: 'flex',
-    width: "225px",
+    width: "100%",
+    justifyContent: "center",
     [theme.breakpoints.down('sm')]: {
       width: "auto",
     }
@@ -284,6 +289,24 @@ const useStyles = makeStyles(theme => ({
   priceOffGridsub: {
     flex: 1,
     display: 'flex',
+    justifyContent: "flex-end"
+  },
+  [theme.breakpoints.down('md')]: {
+    priceOffGridsub: {
+      flex: 1,
+      display: 'flex',
+      justifyContent: "flex-start"
+    },
+    offerPricesMain: {
+      flex: 1,
+      display: 'flex',
+      justifyContent: "flex-start"
+    },
+  },
+  offerPricesMain: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "flex-end"
   },
   priceOffGrid: {
     display: 'flex',
@@ -309,10 +332,7 @@ const useStyles = makeStyles(theme => ({
     },
 
   },
-  offerPricesMain: {
-    flex: 1,
-    display: "flex",
-  },
+
   titles: {
     fontSize: '0.7rem',
     whiteSpace: 'nowrap',
@@ -352,7 +372,6 @@ const renderImages = (props, cardstate) => {
 }
 
 function Component(props) {
-  debugger
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
     hovered: false,
@@ -389,7 +408,7 @@ function Component(props) {
 
         </CardActions> */}
         {/* /:productCategory/:productType/:material/:productName */}
-        <Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }} onClick={handleProductDetatiContext(props)}>
+        <Link to={{ pathname: `${'jewellery'}/${props.data.productType}/${props.data.material}/${(props.data.title).replace(/ /g, "-")}`, search: `skuId=${props.data.skuId}` }} style={{ textDecoration: 'none' }} onClick={handleProductDetatiContext(props)}>
           <CardActions style={{
             //  maxHeight: `${_height ? `${_height}px` : '300px'}`, minHeight: '250px'
           }} className={`${classes.cardAtionspadding} ${classes.cardActionsImage}`}>
@@ -421,7 +440,7 @@ sizes="(max-width: 320px) 320w,
 
 
 
-            {Gallery(props, callmouseover, callmouseout, cardstate)}
+            {Gallery(props, callmouseover, callmouseout, cardstate, classes)}
           </CardActions>
           <Card className={classes.priceClass}>
             <CardContent className={classes.cardContent}>

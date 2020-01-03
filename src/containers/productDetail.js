@@ -5,19 +5,19 @@ import {
 import React, { Component } from 'react';
 import Header from 'components/SilverComponents/Header'
 import CustomSeparator from 'components/BreadCrumb/index'
-import ProductImageZoom from 'components/SilverComponents/ProductDetail/productImageZoom'
-import ProductPrice from 'components/SilverComponents/ProductDetail/productPrice'
-import PriceTabs from 'components/SilverComponents/ProductDetail/priceTabs'
-import PriceBuynow from 'components/SilverComponents/ProductDetail/buyNow'
-import ProductDetails from 'components/SilverComponents/ProductDetail/productDetails'
-import PriceCertification from 'components/SilverComponents/ProductDetail/priceCertification'
-import Request from 'components/SilverComponents/ProductDetail/request'
-import RatingForm from 'components/SilverComponents/ProductDetail/ratingform'
-import Sublistcarousel from 'components/SilverComponents/ProductDetail/subListcarousel'
-import CustomerReviews from 'components/SilverComponents/ProductDetail/customer-reviews'
+import ProductImageZoom from 'components/product-image-slider/productImageZoom'
+import ProductPrice from 'components/product-image-slider/productPrice'
+import PriceTabs from 'components/product-image-slider/priceTabs'
+import PriceBuynow from 'components/product-image-slider/buyNow'
+import ProductDetails from 'components/product-image-slider/productDetails'
+import PriceCertification from 'components/product-image-slider/priceCertification'
+import Request from 'components/product-image-slider/request'
+import RatingForm from 'components/product-image-slider/ratingform'
+import Sublistcarousel from 'components/product-image-slider/subListcarousel'
+import CustomerReviews from 'components/product-image-slider/customer-reviews'
 import Footer from "components/Footer/Footer"
-import Buynowfixed from 'components/SilverComponents/ProductDetail/buynowfixed'
-import 'components/SilverComponents/ProductDetail/product-images.css'
+import Buynowfixed from 'components/product-image-slider/buynowfixed'
+import 'components/product-image-slider/product-images.css'
 import { withRouter } from 'react-router-dom';
 import productDetails from 'mappers/productDetails';
 import { PRODUCTDETAILS, conditions } from 'queries/productdetail';
@@ -102,10 +102,10 @@ class ProductDetail extends Component {
                 <div className='overall-box priceecontainer'>
                   <ProductPrice data={this.props.data} wishlist={this.props.wishlistdata} />
                 </div>
-                <div className='overall-box'>
+                <div className='overall-box priceecontainer'>
                   <PriceTabs data={this.props.data} />
                 </div>
-                <div className='overall-box'>
+                <div className='overall-box priceecontainer'>
                   <PriceBuynow data={this.props.data} />
                 </div>
               </Grid>
@@ -181,7 +181,6 @@ class ProductDetail extends Component {
   }
 }
 const Components = props => {
-  
   let { CartCtx: { allorderdata, wishlistdata } } = React.useContext(CartContext);
   const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating } } = React.useContext(ProductDetailContext);
   const datas = data;

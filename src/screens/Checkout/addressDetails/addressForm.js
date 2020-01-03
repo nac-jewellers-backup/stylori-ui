@@ -326,7 +326,7 @@ const AddressComponent = (props) => {
                                 
                             </div> */}
                             <div className='login-butn'>
-                                {values.edit_addresId === true || values.continue === true ? <Button onClick={() => handle.redirectFormss()} style={{ borderRadius: "0px", padding: "6px 8px", lineHeight: "1.75", border: "1px solid #394578" }}
+                                {values.edit_addresId === true ? <Button onClick={() => handle.redirectFormss()} style={{ borderRadius: "0px", padding: "6px 8px", lineHeight: "1.75", border: "1px solid #394578" }}
                                     className=''>Cancel</Button> : ""} &nbsp;
                                 <Button type="submit" className='apply-b'>Save and Review</Button>
                             </div>

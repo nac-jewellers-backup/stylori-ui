@@ -211,6 +211,7 @@ class Addressdetails extends React.Component {
                                                                 </div>
                                                             <Grid item lg={6}><Button className="addres_dlt_cancel" onClick={this.handleClose}>Cancel</Button></Grid>
                                                             <Grid item lg={6}><Button className="addres_dlt_ok" onClick={() => delete_all_addresses(val_addrs1, index)}>Confirm delete</Button></Grid>
+                                                            {/* {JSON.parse(localStorage.getItem("bil_isactive")) === index && "Sorry u con't delete this address"} */}
                                                         </Grid>
                                                     </div>
                                                 </Modal>
@@ -337,7 +338,6 @@ class Addressdetails extends React.Component {
                                     }
 
                                     )}
-                                    
                                 </>
                             </Grid>
                             {value.length > 4 || values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :

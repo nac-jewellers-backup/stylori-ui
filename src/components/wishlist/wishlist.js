@@ -11,6 +11,7 @@ const WishlistComponent = (props) => {
     const { classes } = props;
     const { values, setValues, handlers } = useWishlists(props);
     React.useEffect(() => {
+        debugger
     // alert(JSON.stringify(props.wishlist))
     if(props&&props.wishlist!==undefined||props&&props.wishlist!==null)
     if (JSON.stringify(props.wishlist) && JSON.stringify(props.wishlist).length > 0) {

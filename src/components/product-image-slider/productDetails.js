@@ -107,7 +107,6 @@ class ProductDetails extends React.Component {
                 <Container >
 
                     {data[0].productsDetails.map(val => {
-                        debugger
                         return (
                             val.namedetail.length === 0) ? false :
                             <>
@@ -127,7 +126,8 @@ class ProductDetails extends React.Component {
                                             val.namedetail !== undefined && val.namedetail.map(res =>
                                                 res.details !== null && res.details.length === 0 ? false :
                                                     <span>
-                                                        {
+                                                        {((data[0].productType !== "Earring" && res.name === 'Gemstone')
+                                                            || (data[0].productType === "Earring" && res.name === 'Diamond')) ? false :
                                                             <> {res.name && <Grid container item xs={12} style={{ padding: "0px 10px 0px 10px " }}>
                                                                 <Grid xs={4}>
                                                                     <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
@@ -136,7 +136,6 @@ class ProductDetails extends React.Component {
                                                                 </Grid>
                                                                 <Grid container item xs={8}  >
                                                                     {
-                                                                        
                                                                         isArray(res.details) ?
                                                                             <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
                                                                                 {res.details.map((Item, Index) => {
