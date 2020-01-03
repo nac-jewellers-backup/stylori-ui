@@ -584,7 +584,7 @@ export default function (data, like_data, viewedddatas, rating) {
     return _format;
 }
 
-
+ 
 const calculatetotal = (arr, name) => {
     var a = 0;
     arr.map(val => {
