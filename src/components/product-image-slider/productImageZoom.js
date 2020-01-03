@@ -59,8 +59,8 @@ class ProductImageZoom extends React.Component {
     }
     // alert(JSON.stringify(data.image_resolution))
     const props = { "width": data[0].image_resolution, "height": data[0].image_resolution, "zoomWidth": data[0].image_resolution, "img": `${showimage}`, "zoomStyle": "z-index:2" }
-    var a = showimage
-    var b = a.split("/")
+    var a = showimage && showimage
+    var b = a && a.split("/")
     // var c = a.replace(b[5], data[0].image_resolution_two + 'X' + data[0].image_resolution_two)
     var c = a.replace(b[5], "1000X1000")
     debugger
@@ -79,7 +79,7 @@ class ProductImageZoom extends React.Component {
                 <i class="fa fa-angle-down" style={{ fontSize: "35px", color: "#F699A3" }}
                 // className={`${classes.colorMain}`}
                 ></i>
-              </Button> 
+              </Button>
             </div>
           </Grid>
 
@@ -153,7 +153,7 @@ class ProductImageZoom extends React.Component {
     var img = document.getElementById("imgZoom");
     var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
     var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
-    element.style.backgroundPosition = (-posX +50) + "px " + (-posY +50) + "px";
+    element.style.backgroundPosition = (-posX + 50) + "px " + (-posY + 50) + "px";
   }
 
   zoomOut = () => {
