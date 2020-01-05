@@ -698,6 +698,7 @@ body {
 
 .imagecard {
     width: 100% !important;
+    height: 600px !important;
     border: 1px solid #ccc;
     counter-increment: inherit;
     /* height: 450px !important; */
@@ -742,7 +743,7 @@ body {
 }
 
 .overly-img {
-    left: 48.5%;
+    left: 48.8%;
     display: none;
     border: 1px solid rgb(204, 204, 204);
     /* height: 450px !important; */
@@ -751,6 +752,7 @@ body {
     position: absolute;
     z-index: 3;
     background-repeat: no-repeat;
+    height: 600px !important;
     background-color: #fff !important;
 }
 
