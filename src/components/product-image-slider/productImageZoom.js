@@ -62,7 +62,7 @@ class ProductImageZoom extends React.Component {
     var a = showimage && showimage
     var b = a && a.split("/")
     // var c = a.replace(b[5], data[0].image_resolution_two + 'X' + data[0].image_resolution_two)
-    var c = a.replace(b[5], "1000X1000")
+    var c = a && a.replace(b[5], "1000X1000")
     debugger
     return (
       <div>

@@ -119,7 +119,7 @@ class CustomerReviews extends React.Component {
         const { classes, data } = this.props;
         const { starsSelected } = this.state;
         return (
-            <div>
+            <div style={{width:"100%"}}>
                 <Hidden smDown>
                     <Container>
                         <div className="pricing-product-media" >

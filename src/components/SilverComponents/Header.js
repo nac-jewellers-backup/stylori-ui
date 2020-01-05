@@ -206,7 +206,7 @@ class Header extends Component {
                 <Hidden smDown >
                     {/* <HeaderNotification headerTransition={() => { this.headerTransitions() }} /> */}
                     <div className="header-appbar-sticky1" id='headerDiv'>
-                        <AppBar className="header-appbarsilver1 " id="topNav" style={{ transition: "all 0.2s" }} >
+                        <AppBar className="header-appbarsilver1 " id="topNav"  >
                             <Container maxWidth="lg" id="searchcontainer">
                                 <Grid container spacing={12} style={{ marginTop: "20px" }}>
                                     <Grid container item xs={12} justify="flex-end" alignItems="center">
@@ -269,7 +269,7 @@ class Header extends Component {
                                                     {/* </NavLink> */}
                                                 </div>
                                             </Popover>
-                                            <Badge color="secondary"
+                                            <Badge style={{ marginTop: "9px" }} color="secondary"
                                                 badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
                                             // wishlist_count
                                             // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
@@ -297,7 +297,7 @@ class Header extends Component {
                                         <Grid container spacing={12} id="fullcontainer" className="setHeight">
                                             <Grid item xs={3} className="logoImgHeader1">
                                                 <div id="logoDiv1" className="logoDiv1">
-                                                    <img id="logoImage" style={{ transition: "all 0.2s" }} className={`img`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                                    <img id="logoImage" className={`img`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                                 </div>
                                             </Grid>
                                             <Grid container item xs={9} id={"containerTitle"} justify="flex-end" alignItems="center" className={`header-navbar-list1 ${classes.headerNavbarList}`}
@@ -361,7 +361,7 @@ class Header extends Component {
                                     className="header-appbar-moblie1"
                                     id="smallScreen"
                                 >
-                                    <Toolbar className={this.props.pdpage ? "toolbarForpd" : "toolbarsetting"} >
+                                    <Toolbar className={"toolbarsetting"} >
                                         <Grid container item xs={2} sm={1} md={1} lg={1} xl={1} justify="center" alignItems="center">
                                             <IconButton
                                                 onClick={this.handleDrawerOpen}
