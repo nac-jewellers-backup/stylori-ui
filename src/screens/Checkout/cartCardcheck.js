@@ -56,11 +56,20 @@ class Component extends React.Component {
                 expanded: 'panel' + 3,
             });
             // }
+
+            // window.location.reload()
         } else {
+
             if (expanded > 'panel' + panel) {
                 this.setState({
                     expanded: 'panel' + panel,
                 });
+            }
+            if ((expanded === 'panel3' || expanded === 'panel4') && ('panel' + panel === 'panel2')) {
+                localStorage.removeItem("bil_isactive")
+                localStorage.removeItem("ship_isactive")
+                localStorage.removeItem("select_addres")
+                return false
             }
         }
 

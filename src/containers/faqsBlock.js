@@ -36,7 +36,7 @@ function FaqsBlock(props) {
 
     return (
         <Grid container>
-            <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000" }}>
+            <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
                 <Header />
             </Grid>
             <Grid item xs={12}>

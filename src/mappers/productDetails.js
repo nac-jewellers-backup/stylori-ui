@@ -574,7 +574,7 @@ export default function (data, like_data, viewedddatas, rating) {
                             injectUrl_url_construct(val.productListByProductId.productImagesByProductId.nodes[0] && val.productListByProductId.productImagesByProductId.nodes[0], CDN_URL, colSize_like_view),
                         title: val.productListByProductId.productName,
                         price: Math.round(val.discountPrice),
-                        url: `/jewellery/${val.productListByProductId.productType}/${val.productListByProductId.productMaterialsByProductSku.nodes[0].materialName}/${val.productListByProductId.productName}?skuId=${val.generatedSku}`
+                        url: `/jewellery/${val.productListByProductId.productType}/${val.productListByProductId.productMaterialsByProductSku.nodes[0]&&val.productListByProductId.productMaterialsByProductSku.nodes[0].materialName}/${val.productListByProductId.productName}?skuId=${val.generatedSku}`
                     })
                 })
                 :
@@ -584,7 +584,7 @@ export default function (data, like_data, viewedddatas, rating) {
     return _format;
 }
 
-
+ 
 const calculatetotal = (arr, name) => {
     var a = 0;
     arr.map(val => {
