@@ -38,11 +38,12 @@ class Allorders extends React.Component {
     // const dataCard1 = this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
 
     calculatetotal = (arr) => {
+
         var a;
         var dis_price;
         a = arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
-            if (cart !== null || cart !== undefined) {
-                dis_price = cart.transSkuListByProductSku.discountPrice
+            if(cart!==null||cart!==undefined){
+              dis_price =cart.transSkuListByProductSku.discountPrice
             }
             return dis_price
         }).reduce(myFunc);
@@ -65,7 +66,7 @@ class Allorders extends React.Component {
     render() {
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
-        debugger
+        
         // namedetail: [
         //     {
         //         name: "Quality",
@@ -156,28 +157,13 @@ class Allorders extends React.Component {
                                                                 <b style={{width:"100%"}}> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
                                                                 <Grid item lg={5} xs={6} >
                                                                     <Typography className="subhesder">Gold Weight</Typography>
-                                                                    {/* : ""} */}
-
-                                                                    {/* {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0]&& cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight&&cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight.length > 0 ? */}
-                                                                    <Typography className="subhesder">Diamond Weight</Typography>
-                                                                    {/* : ""} */}
-                                                                    {/* {cart.transSkuListByProductSku.generatedSku.length > 0 ? */}
+                                                                    {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes.length > 0 ?
+                                                                        <Typography className="subhesder">Diamond Weight</Typography> : ""}
                                                                     <Typography className="subhesder">Product Code</Typography>
-                                                                    {/* : ""} */}
-
-                                                                    {/* {cart.transSkuListByProductSku&&cart.transSkuListByProductSku.purity&&cart.transSkuListByProductSku.purity.length > 0 ? */}
-                                                                    <Typography className="subhesder">
-                                                            {cart.transSkuListByProductSku&&cart.transSkuListByProductSku.purity&&cart.transSkuListByProductSku.purity.length > 0 ?"Metal":""} </Typography>
-                                                                    {/* : ""} */}
-                                                                    <Typography className="subhesder">
-                                                                          {cart.transSkuListByProductSku.productListByProductId&&cart.transSkuListByProductSku.productListByProductId.sizeVarient&&cart.transSkuListByProductSku.productListByProductId.sizeVarient.length > 0 ?
-                                                                     "Ring"
-                                                                     : ""}
-                                                                    </Typography>
                                                                 </Grid>
                                                                 <Grid item lg={4} sm={4} xs={6}>
                                                                     <Typography className="subhesder">
-                                                                        {cart.transSkuListByProductSku.skuWeight + " " + "GM"}
+                                                                        {cart.transSkuListByProductSku.skuWeight + "" + "GM"}
                                                                     </Typography>
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight + " " + "CT"}
@@ -185,16 +171,8 @@ class Allorders extends React.Component {
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.generatedSku}
                                                                     </Typography>
-
-                                                                    <Typography className="subhesder">
-                                                                        {cart.transSkuListByProductSku.purity + ""}{cart.transSkuListByProductSku.metalColor}
-                                                                    </Typography>
-                                                                    <Typography className="subhesder">
-                                                                        {cart.transSkuListByProductSku.productListByProductId.sizeVarient}
-
-                                                                    </Typography>
                                                                 </Grid>
-                                                                <Grid item lg={3} sm={6} xs={12}>
+                                                                <Grid item lg={3} sm={12} xs={12}>
                                                             <Grid container spacing={12} >
                                                                 <Typography className="subhesder">Quantity 1</Typography>
                                                                 <Typography className="subhesder">
@@ -209,8 +187,8 @@ class Allorders extends React.Component {
                                                         
 
 
-                                                        <Grid style={{ padding: "30px" }} className="rups" item lg={2}>
-                                                            {cart.price > cart.transSkuListByProductSku.markupPrice ?
+                                                        <Grid style={{ padding: "30px" }} className="rups" item sm={3} lg={3} xs={12}>
+                                                            {(Math.round(cart.transSkuListByProductSku.markupPrice)) < (Math.round(cart.price)) ?
                                                                 <del style={{ color: "rgba(0, 0, 0, 0.54)", fontSize: "18px" }}>{(Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.markupPrice)))}</del>
                                                                 : ""}<br />
                                                             {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.discountPrice))}

@@ -19,7 +19,7 @@ const initialCtx = {
 export const ProductDetailContext = React.createContext(initialCtx);
 export const ProductDetailConsumer = ProductDetailContext.Consumer;
 export const TabsProvider = (props) => {
-    debugger
+    
     const [filters, setFilters] = React.useState(initialCtx.ProductDetailCtx.filters);
     const [likedatas, setlikedata] = React.useState([])
     const [viewedddatas, setvieweddata] = React.useState()
@@ -133,7 +133,7 @@ if(data && Object.entries(data).length > 0 && data.constructor === Object && dat
     if(filters['productType'] && filters['productType'].length>0)
 
     {
-        debugger
+        
 
         variableslike['filterdata'] = { "productType": { equalTo: filters['productType'] } }
     }
@@ -174,7 +174,7 @@ if(data && Object.entries(data).length > 0 && data.constructor === Object && dat
             if(data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]){
                 if(filters['productType'] && filters['productType'].length>0)
                 {
-                    debugger
+                    
                     variableslike['filterdata2'] = { "productType": { equalTo: filters['productType'] } }
                 }
                 
@@ -203,12 +203,12 @@ if(data && Object.entries(data).length > 0 && data.constructor === Object && dat
             let vardata = { ...variableslike }
 
             if(data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]){
-                debugger
+                
                 likemakeRequest(vardata)
             }
             setlikedata(likedata)
             if(data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]){
-                debugger
+                
                 viewmakeRequest(variablesviewed)
             }
 

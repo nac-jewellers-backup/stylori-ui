@@ -133,8 +133,7 @@ const handleDeleteLocalStorage = (e, val) => {
                   >
                     &nbsp;
                     <div id={val.namedetail[4].details} onClick={(e) => handleDeleteLocalStorage(e,val)}>
-                      <i style={{ fontSize: "16px" }} class="fa"> &#xf014;</i>&nbsp;<span
-                        style={{ borderBottom: "1px solid #394578" }}>Remove</span>
+                      <i style={{ fontSize: "16px" }} class="fa"> &#xf014;</i>&nbsp;<span>Remove</span>
                     </div>
 
                   </div>

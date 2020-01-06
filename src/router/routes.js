@@ -18,7 +18,8 @@ export const routes = {
     PrivacyPolicy: '/privacypolicy',
     TermsConditions: '/termsconditions',
     AboutUs: '/aboutus',
-    ForgotPassword: '/forgotPassword'
+    ForgotPassword: '/forgotpassword',
+    ResetPassword: '/resetpassword'
 }
 
 export default routes;

@@ -76,7 +76,7 @@ class Addressdetails extends React.Component {
 
         const delete_all_addresses = (val_addrs1, index) => {
             // alert(JSON.stringify(index))
-            debugger
+            
             if (JSON.parse(localStorage.getItem("ship_isactive")) === this.state.index_of_isActive) {
                 alert("Sorry u con't delete this address")
                 // alert(JSON.stringify(this.state.index_of_isActive))
