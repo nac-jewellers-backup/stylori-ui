@@ -269,7 +269,7 @@ class Header extends Component {
                                                     {/* </NavLink> */}
                                                 </div>
                                             </Popover>
-                                            <Badge color="secondary"
+                                            <Badge style={{ marginTop: "9px" }} color="secondary"
                                                 badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
                                             // wishlist_count
                                             // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
