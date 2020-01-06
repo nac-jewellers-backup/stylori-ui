@@ -7,13 +7,13 @@ import {
     paper,
     Paper
 } from '@material-ui/core';
-import Slideshow from '../Carousel/carosul'
+import Slideshow from '../../Carousel/carosul'
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './product-images.css'
-import Ratings from '../rating/rating'
+import Ratings from '../../rating/rating'
 import { withStyles } from '@material-ui/core/styles';
-import Pricing from '../Pricing/index'
+import Pricing from '../../Pricing/index'
 import styles from './style';
 import Wishlist from 'components/wishlist/wishlist';
 import { Button } from 'semantic-ui-react';
@@ -228,12 +228,12 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
 
                     <Hidden smDown>
                         <div className={classes.width} style={{ padding: "0px 10px  10px 10px " }}>
-                            {data[0].price === data[0].offerPrice ?
-
-                                <Pricing
-                                    offerPrice={data[0].offerPrice}
-                                >
-                                    {/* <Grid container spacing={12}>
+                            <Pricing
+                                price={data[0].price}
+                                offerPrice={data[0].offerPrice}
+                                offerDiscount={val.offerDiscount}
+                            >
+                                {/* <Grid container spacing={12}>
                                     <div className={`price-info ${classes.dis}`}>
                                         <Grid item xs={4} lg={2} className={`discount-container ${classes.dis}`}>
                                             {val.price}
@@ -243,12 +243,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                         </Grid>
                                     </div>
                                 </Grid> */}
-                                </Pricing> : <Pricing
-                                    price={data[0].price}
-                                    offerPrice={data[0].offerPrice}
-                                    offerDiscount={val.offerDiscount}
-                                >
-                                </Pricing>}
+                            </Pricing>
                         </div>
                     </Hidden>
                 </>
