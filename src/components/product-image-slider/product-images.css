@@ -1078,31 +1078,32 @@ body {
 
 .pagetabs {
     text-align: center !important;
-    height: 40px !important;
-    width: 70%;
+    height: 50px !important;
+    width:60%;
     /* border: 1px solid #9d9d9d  !important; */
-    border-radius: 15%;
-    margin-bottom: 6px;
+    border-radius: 100%;
+    /* margin-bottom: 6px; */
     outline: none !important;
 }
 
 @media only screen and (max-width: 480px) {
     .pagetabs {
         text-align: center !important;
-        height: 40px !important;
+        height: 50px !important;
         width: 100% !important;
         margin-bottom: 6px;
         /* border: 1px solid #9d9d9d  !important; */
-        border-radius: 15%;
+       border-radius: 100%;
+
         outline: none !important;
     }
 
     .pagetabslst {
         text-align: center !important;
-        height: 40px;
+        height: 50px;
         width: 100% !important;
         /* border: 1px solid #9d9d9d  !important; */
-        border-radius: 15%;
+        border-radius: 100%;
         outline: none !important;
 
     }
@@ -1110,10 +1111,10 @@ body {
 
 .pagetabslst {
     text-align: center !important;
-    height: 40px;
-    width: 70%;
+    height: 50px;
+    width: 60%;
     /* border: 1px solid #9d9d9d  !important; */
-    border-radius: 15%;
+    border-radius: 100%;
     outline: none !important;
 
 }
@@ -1125,9 +1126,9 @@ body {
 .page {
     display: inline-block !important;
     text-align: center !important;
-    height: 40px;
-    width: 90%;
-    border-radius: 15%;
+    height: 50px;
+    width: 80%;
+    border-radius: 100%;
     background: #fff;
     box-shadow: inset 0px 1px 0px rgba(255, 255, 255, .8), 0px 1px 3px rgba(0, 0, 0, .1);
     font-size: 13px;
@@ -1153,7 +1154,7 @@ body {
 }
 
 .rings_tabsvls {
-    /* font-size: 1px !important; */
+    font-size: 10px !important;
     color: #394578 !important;
     width: 100% !important;
     font-weight: 600;
@@ -1172,10 +1173,10 @@ body {
 
 .darktabs {
     border: 2px solid #ed1165cf !important;
-    border-radius: 15% !important;
+    border-radius: 100% !important;
     text-align: center !important;
-    height: 40px !important;
-    width: 70%;
+    height: 50px !important;
+    width: 60%;
     outline: none !important;
 }
 
@@ -1191,9 +1192,9 @@ body {
 
     .darktabslst {
         border: 2px solid #ed1165cf !important;
-        border-radius: 15% !important;
+        border-radius: 100% !important;
         text-align: center !important;
-        height: 40px !important;
+        height: 50px !important;
         width: 100% !important;
         outline: none !important;
 
@@ -1202,10 +1203,10 @@ body {
 
 .darktabslst {
     border: 2px solid #ed1165cf !important;
-    border-radius: 15% !important;
+    border-radius: 100% !important;
     text-align: center !important;
-    height: 40px !important;
-    width: 70%;
+    height: 50px !important;
+    width: 60%;
     outline: none !important;
 
 }
