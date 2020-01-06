@@ -24,8 +24,8 @@ export default function Pricing(props) {
             }
             {/*  */}
             <Grid spacing={12} container lg={12} xs={12}>
-                <Grid item lg={window.location.pathname !== "/cart" && window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/checkout" ? 6 : 6} 
-                xs={window.innerWidth < 330 ? 12 : 6}>
+                <Grid item lg={window.location.pathname !== "/cart" && window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/checkout" ? 2 : 6} 
+                xs={window.innerWidth < 360 ? 12 : 6}>
                     {props.offerPrice ?
                         <Typography style={{ display: "flex", width: '100%' }}>
                             <Typography
@@ -39,7 +39,7 @@ export default function Pricing(props) {
                         </Typography> : ""} 
                 </Grid>   
                 <Grid item  xs={6} >
-                    <Grid spacing={12} container  xs={12} class="leftPadding">
+                    <Grid spacing={12} container  xs={12} class="leftPadding"> 
                         <Grid item  xs={12}>
                             {props.price ?
                                 <Typography style={{ display: "flex", width: '100%' }}>

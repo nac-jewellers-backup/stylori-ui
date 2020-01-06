@@ -54,6 +54,7 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
                     stoneWeight
                   }
                 }
+                sizeVarient
               }
               skuWeight
               markupPrice
