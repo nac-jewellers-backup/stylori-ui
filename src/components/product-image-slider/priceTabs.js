@@ -75,9 +75,7 @@ class Component extends React.Component {
 
 
     handleClick = (event, key) => {
-        debugger
         console.log('lklkkoik9', this.props)
-        debugger
         var filters = { ...this.props.filters }
         if (key === 'purity') {
             var kv = event.target.id
@@ -102,7 +100,6 @@ class Component extends React.Component {
                 skuSize: event.target.id,
                 diamondType: filters.defaultVariants.diamondType
             })
-            debugger
             this.props.setFilters(filters);
             console.log("filters.defaultVariants.diamondType", filters.defaultVariants.diamondType)
         }
@@ -187,10 +184,19 @@ class Component extends React.Component {
             className: 'center',
             infinite: false,
             // slidesToShow: data[0].productTabs[0].tab1.Children.length > 8 ? limit :data[0].productTabs[0].tab1.Children.length,
-            slidesToScroll: 5,
+            slidesToScroll: 6,
             slidesToShow: 6,
             arrows: false,
         };
+        const settings_mob = {
+            className: 'center',
+            infinite: false,
+            // slidesToShow: data[0].productTabs[0].tab1.Children.length > 8 ? limit :data[0].productTabs[0].tab1.Children.length,
+            slidesToScroll:4,
+            slidesToShow: 4,
+            arrows: false,
+        };
+        
         const slider = React.createRef();
         const next = () => {
             slider.current.slickNext();
@@ -199,6 +205,7 @@ class Component extends React.Component {
             slider.current.slickPrev();
         }
         // data[0].productTabs[0].tab2.Children
+        debugger
         return (
             <div>
                 {data[0].productTabs.map(val => {
@@ -220,7 +227,25 @@ class Component extends React.Component {
 
                                                 </Grid>
                                                 <Grid item style={{ width: "84%" }}>
+                                                    <Hidden smDown>
                                                     <Slideshow dataCarousel={settings}
+                                                        sliderRef={slider}>
+                                                        {arr.map((val, i) => {
+                                                            return (<>
+                                                                <button
+                                                                    className={JSON.stringify(val) === this.state.skuSize? 'dark' : 'page'}
+                                                                    id={val}
+                                                                    onClick={event => this.handleClick(event, 'skuSize')}
+                                                                >
+                                                                    {val}
+                                                                </button>
+                                                            </>)
+                                                        }
+                                                        )}
+                                                    </Slideshow>
+                                                    </Hidden>
+                                                    <Hidden mdUp>
+                                                    <Slideshow dataCarousel={settings_mob}
                                                         sliderRef={slider}>
                                                         {arr.map((val, i) => {
                                                             return (<>
@@ -235,6 +260,7 @@ class Component extends React.Component {
                                                         }
                                                         )}
                                                     </Slideshow>
+                                                    </Hidden>
                                                 </Grid>
                                                 <Grid item style={{ width: "8%", alignItems: "center", justifyContent: "center", display: "flex" }}>
                                                     <img onClick={() => next()} className={"icon-rightcaro"} />
@@ -270,7 +296,7 @@ class Component extends React.Component {
                                                 var arrPurity = objVal[0]
                                                 var arrColor = objVal[1]
                                                 return (
-                                                    <Grid item lg={2} xs={2} style={{ marginLeft: "5px", textAlign: "center" }}>
+                                                    <Grid item lg={2} xs={2} style={{ marginLeft: "8px", textAlign: "center" }}>
                                                         <button
                                                             style={{ background: this.imageRender(val) }}
                                                             className={this.state.purity === val ? 'darktabs tabs-valus' : 'pagetabs tabs-valus'}
@@ -295,7 +321,7 @@ class Component extends React.Component {
                                     <Grid container spacing={12} lg={12}>
                                         {val.tab3.Children.map((val, i) => {
                                             return (
-                                                <Grid item lg={2} xs={2} style={{ marginLeft: "5px", textAlign: "center" }}>
+                                                <Grid item lg={2} xs={2} style={{ marginLeft: "8px", textAlign: "center" }}>
                                                     <button
                                                         style={{ background: this.imageRender(val) }}
                                                         className={this.state.diamondType === val.name ? 'darktabslst tabs-valus' : 'pagetabslst tabs-valus'}
