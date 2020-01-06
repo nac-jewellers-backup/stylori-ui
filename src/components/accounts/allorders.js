@@ -66,7 +66,27 @@ class Allorders extends React.Component {
     render() {
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
-        debugger
+        
+        // namedetail: [
+        //     {
+        //         name: "Quality",
+        //         details: k.diamondType
+        //     },
+        //     {
+        //         name: "Metal",
+        //         details: k.purity + ' ' + k.metalColor
+        //     }, {
+        //         name: "Gold",
+        //         details: k.skuWeight + " " + "GM"
+        //     },
+        //     {
+        //         name: k.skuSize && k.skuSize.length > 0 ? "Ring" : "",
+        //         details: k.skuSize
+        //     },
+        //     {
+        //         name: "Product Code",
+        //         details: k.generatedSku
+        //     }],
         return (
             <>
                 {/* allorderdata.nodes */}

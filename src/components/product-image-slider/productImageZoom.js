@@ -63,7 +63,7 @@ class ProductImageZoom extends React.Component {
     var b = a && a.split("/")
     // var c = a.replace(b[5], data[0].image_resolution_two + 'X' + data[0].image_resolution_two)
     var c = a && a.replace(b[5], "1000X1000")
-    debugger
+    
     return (
       <div>
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
