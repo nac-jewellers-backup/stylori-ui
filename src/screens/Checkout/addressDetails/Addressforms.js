@@ -202,7 +202,7 @@ const Addressforms = (changePanel) => {
     // };
     console.log("jjj****", values.addressOne.salutation)
     const handleSubmit = (e) => {
-        debugger
+        
         if (values && values.addressOne && values.addressOne.pincode === "") {
             values["addressOne"]['errortext']['pinerr'] = "Pin Code is required"
             setValues({ ...values, values })

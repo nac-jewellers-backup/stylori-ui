@@ -53,6 +53,7 @@ export const TabsProvider = (props) => {
         setvieweddata(vieweddata)
     }, [vieweddata, price, data])
     useEffect(() => {
+        debugger
         if (filters.productId === "") {
             if (window.location.search.length > 0) {
                 let loc = window.location.search.split('=')
@@ -63,6 +64,7 @@ export const TabsProvider = (props) => {
             }
             else {
                 var urls = window.location.href
+                debugger
                 var urlssplit = urls.split('/');
                 var urlReplace = urlssplit[urlssplit.length - 1].replace(/-/g, ' ')
                 variables = { productnamefilter: { productListByProductId: { 'productName': { equalTo: urlReplace } } }, number: 1 }
@@ -133,7 +135,7 @@ if(data && Object.entries(data).length > 0 && data.constructor === Object && dat
     if(filters['productType'] && filters['productType'].length>0)
 
     {
-        debugger
+        
 
         variableslike['filterdata'] = { "productType": { equalTo: filters['productType'] } }
     }
@@ -174,7 +176,7 @@ if(data && Object.entries(data).length > 0 && data.constructor === Object && dat
             if(data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]){
                 if(filters['productType'] && filters['productType'].length>0)
                 {
-                    debugger
+                    
                     variableslike['filterdata2'] = { "productType": { equalTo: filters['productType'] } }
                 }
                 
@@ -203,12 +205,12 @@ if(data && Object.entries(data).length > 0 && data.constructor === Object && dat
             let vardata = { ...variableslike }
 
             if(data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]){
-                debugger
+                
                 likemakeRequest(vardata)
             }
             setlikedata(likedata)
             if(data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]){
-                debugger
+                
                 viewmakeRequest(variablesviewed)
             }
 
@@ -223,6 +225,7 @@ if(data && Object.entries(data).length > 0 && data.constructor === Object && dat
         }
     }, [loading, error, data, price])
     const updateProductList = async() => {
+        debugger
         if (Object.entries(variables).length !== 0 && variables.constructor === Object) {
           await  makeRequest(variables);
         }
@@ -233,13 +236,14 @@ if(data && Object.entries(data).length > 0 && data.constructor === Object && dat
 
     }
     const handleProductDetatiContext = () => {
+        debugger
         // filters['defaultVariants'] = {
         //     ...data.allTransSkuLists.nodes[0]
         // }
         if (window.location.search.length > 0) {
             let loc = window.location.search.split('=')
             let productDetailProps = loc[1].split('-')
-            filters['productId'] = productDetailProps[0]
+            filters['productId'] = data.data.allTransSkuLists.nodes[0].productListByProductId.productId
         }
 
         // filters['defaultVariants']['diamondType'] = data.data.allTransSkuLists.nodes[0].diamondType
@@ -257,6 +261,7 @@ if(data && Object.entries(data).length > 0 && data.constructor === Object && dat
 
     }
     useEffect(() => {
+        debugger
         if (Object.entries(data).length !== 0 && data.constructor === Object) {
             if (data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
                 filters['defaultVariants']['diamondType'] = data.data.allTransSkuLists.nodes[0].diamondType

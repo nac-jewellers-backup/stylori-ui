@@ -49,7 +49,7 @@ export const RouterApp = (props) => {
         '/:params1/:params2/:params3/:params4',
     ]
     var loc_PD = window.location.pathname.split('/').filter(val=>{if(val==='silverjewellery') return val})
-    debugger
+    
     // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
     return (
         <Switch history={browserHistory}>

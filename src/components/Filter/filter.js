@@ -154,7 +154,7 @@ class Component extends React.Component {
             //     // this.handleChange(()=>{}, true, ()=>{}, {}, paramsfilter)
 
             // })
-            debugger
+            
             paramsfilter = data && data.data && data.data.allSeoUrlPriorities && data.data.allSeoUrlPriorities.nodes && data.data.allSeoUrlPriorities.nodes.map(val => {
               var attrName = val.attributeName.replace(/\s/g, '')
               var attrVal = val.attributeValue
@@ -167,7 +167,7 @@ class Component extends React.Component {
 
               // return val
             })
-            debugger
+            
             // this.setState(checked)
             Object.entries(paramsfilter[0]).map(val => {
               var keys = val[0]
@@ -239,7 +239,7 @@ class Component extends React.Component {
     return bz
   })
   handleChange(value, BoolName, e, title, TargetName) {
-    debugger
+    
     
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
@@ -432,7 +432,7 @@ class Component extends React.Component {
     // this.setState({[e.target.name]:e.target.value})
   }
   handleChangesort = (event) => {
-    debugger
+    
     if (this.props.offset > 0) this.props.setOffset(0)
     console.log(this.props.offset)
     this.props.setSort({ values: event.target.value })

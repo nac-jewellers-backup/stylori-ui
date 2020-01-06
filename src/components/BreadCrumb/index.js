@@ -38,7 +38,7 @@ export default function CustomSeparator(props) {
   // }
 
   const activetabsclik = (data) => {
-    debugger
+    
     if (data && data.title === "Shopping Bag") {
       return window.location.href = "/cart"
     } if (data && data.title === "Login/ Register") {
