@@ -309,7 +309,7 @@ class Component extends React.Component {
                                                         <div id={val} className={this.state.purity === val ? `rings_tabsvls_active ${classes.tabs_values_font}` : `rings_tabsvls ${classes.tabs_values_font}`}>{arrColor.slice(0, 6)}</div>
                                                     </Grid>
                                                 )
-                                            }
+                                            } 
                                             )}
                                         </Grid>
                                     </Grid>
