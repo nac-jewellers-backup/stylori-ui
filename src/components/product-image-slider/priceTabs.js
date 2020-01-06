@@ -184,8 +184,8 @@ class Component extends React.Component {
             className: 'center',
             infinite: false,
             // slidesToShow: data[0].productTabs[0].tab1.Children.length > 8 ? limit :data[0].productTabs[0].tab1.Children.length,
-            slidesToScroll: 6,
-            slidesToShow: 6,
+            slidesToScroll: 5,
+            slidesToShow: 5,
             arrows: false,
         };
         const settings_mob = {
@@ -218,17 +218,17 @@ class Component extends React.Component {
                                 <Grid item lg={3} xs={12}><h1 className="rings_tabs">{val.tab1.header}&nbsp;<a
                                     onClick={this.handleOpen}
                                     className="my-ringsize">Size Guide </a></h1></Grid>
-                                <Grid item lg={9} xs={12} style={{ padding: "0px 5px 0px 5px" }}>
+                                <Grid item lg={9} xs={12} >
                                     {arr.length > 0 ?
                                         <>
                                             <Grid container style={{ width: "100%" }} className={classes.pagination} style={{ overflow: "hidden" }}>
-                                                <Grid item style={{ width: "8%", alignItems: "center", justifyContent: "center", display: "flex" }}>
+                                                <Grid item style={{ width: "5%", alignItems: "center", justifyContent: "center", display: "flex" }}>
                                                     <img onClick={() => previous()} className={"icon-leftcaro"} />
 
                                                 </Grid>
-                                                <Grid item style={{ width: "84%" }}>
+                                                <Grid item style={{ width: "89%",textAlign:"center" }}>
                                                     <Hidden smDown>
-                                                    <Slideshow dataCarousel={settings}
+                                                    <Slideshow dataCarousel={settings} 
                                                         sliderRef={slider}>
                                                         {arr.map((val, i) => {
                                                             return (<>
@@ -262,7 +262,7 @@ class Component extends React.Component {
                                                     </Slideshow>
                                                     </Hidden>
                                                 </Grid>
-                                                <Grid item style={{ width: "8%", alignItems: "center", justifyContent: "center", display: "flex" }}>
+                                                <Grid item style={{ width: "5%", alignItems: "center", justifyContent: "center", display: "flex" }}>
                                                     <img onClick={() => next()} className={"icon-rightcaro"} />
 
                                                 </Grid>
@@ -286,10 +286,10 @@ class Component extends React.Component {
                                 </Grid>
                             </Grid> : ""}
                             {arr2.length > 0 ?
-                                <Grid container spacing={12} lg={12} style={{ marginBottom: "10px", padding: "0px 10px" }}>
+                                <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
                                     <Grid item lg={3} xs={12}><h1 className="rings_tabs">{val.tab2.header}</h1></Grid>
                                     <Grid item lg={9} xs={12}>
-                                        <Grid container spacing={12} lg={12}>
+                                        <Grid container spacing={12} lg={12} style={{marginLeft:"4%"}}>
                                             {arr2.map((val, i) => {
                                                 var kv = val
                                                 var objVal = kv.split(" ")
@@ -315,10 +315,10 @@ class Component extends React.Component {
                                     </Grid>
                                 </Grid> : ""}
 
-                            {val.tab3.Children.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px", padding: "0px 10px" }}>
+                            {val.tab3.Children.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
                                 <Grid item lg={3} xs={12}><h1 className="rings_tabs">{val.tab3.header}</h1></Grid>
                                 <Grid item lg={9} xs={12}>
-                                    <Grid container spacing={12} lg={12}>
+                                    <Grid container spacing={12} lg={12} style={{marginLeft:"4%"}}>
                                         {val.tab3.Children.map((val, i) => {
                                             return (
                                                 <Grid item lg={2} xs={2} style={{ marginLeft: "8px", textAlign: "center" }}>
