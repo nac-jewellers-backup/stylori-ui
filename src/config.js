@@ -1,4 +1,4 @@
-export const API_URL = "https://api.stylori.net" 
+export const API_URL = "https://api-alpha.stylori.net" 
 
 
 

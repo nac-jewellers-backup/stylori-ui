@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { Stylori } from 'screens'
 import PricingPage from 'screens/Stylori/PricingPage'
+
 import Cart from 'screens/Stylori/Cart'
 import Account from 'screens/Stylori/accounts'
 import Checkout from 'screens/Stylori/Checkout'
@@ -25,6 +26,7 @@ import ForgotPassword from "components/ForgotPassword/ForgetPassword"
 
 import Silver from 'screens/SilverStylori'
 import SilverListingPage from 'screens/SilverStylori/listingpage'
+import SilverProductDetail from 'screens/SilverStylori/productDetail'
 
 // SILVER SCREENS ENDS
 
@@ -40,6 +42,14 @@ export const RouterApp = (props) => {
         var loc = window.location.pathname.split('/')[1].split('-').filter(val => { if (val === 'silver') return val })
         return loc[0]
     }
+   
+    const paths = [
+        '/:params1/:params2',
+        '/:params1/:params2/:params3',
+        '/:params1/:params2/:params3/:params4',
+    ]
+    var loc_PD = window.location.pathname.split('/').filter(val=>{if(val==='silverjewellery') return val})
+    debugger
     // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
     return (
         <Switch history={browserHistory}>
@@ -58,15 +68,23 @@ export const RouterApp = (props) => {
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />
             }
             {
-                Globalctx && Globalctx.pathName &&
-                <Route key="silverListingpage" component={SilverListingPage} path={props.location.pathname} />
+                Globalctx && Globalctx.pathName &&  loc_PD.length !== "silverjewellery" &&
+                <Route key="silverListingpage" component={SilverListingPage} path={window.location.pathname} />
             }
             <Route key="sto" component={stories} exact path={routes.Stories} />
             <Route key="Collection" component={Collection} exact path={routes.Collection} />
             {(props.location.pathname !== "/cart" && props.location.pathname !== `/account${"-" + window.location.pathname.split("-")[1]}` && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && props.location.pathname !== "/forgotPassword") &&
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />}
+            
+            
 
-            <Route exact component={PricingPage} path={`/:productCategory/:productType/:material/:productName`} />
+
+            {
+                Globalctx && Globalctx.pathName && loc_PD.length >0  ?
+                <Route exact component={SilverProductDetail} path={paths} />
+                :
+                <Route exact component={PricingPage} path={paths} />
+            }
             <Route key="cart" exact component={Cart} path={routes.Cart} />
             <Route key="Register" component={Register} exact path={routes.Register} />
             {
