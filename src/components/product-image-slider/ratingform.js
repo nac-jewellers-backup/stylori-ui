@@ -18,9 +18,9 @@ const RatingForm = (props) => {
 }
 const RatingComponent = (props) => {
     const { classes } = props;
-    const { values, handlers, setValues } = useRating(props.ratingcounts);
+    const { values, handlers, setValues } = useRating(props);
 
-    return (
+    return ( 
         <Container className="bg-clr2">
             <div className="bg-clr2 priceecontainer" style={{ padding: "10px" }}>
                 <form id="Resetform" action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e, props)}>
@@ -30,7 +30,7 @@ const RatingComponent = (props) => {
                             <div className="rating-form ">
                                 <h5 className={`rating-form-head ${classes.normalfonts}`}>Rate This</h5>
                                 <label className='errtext'> {values.errortext.rateerr ? values.errortext.rateerr : ""}</label>
-                                <Ratings ratings="starts-review" />
+                                <Ratings ratings="starts-review" clear_rating={props.clear_rating} clear_rating_onchange={props.clear_rating_onchange}/>
                             </div>
                             <h6 className={`rating-form-head ${classes.normalfonts}`} style={{ marginBottom: "-3px" }}>Write Your Review</h6>
                             <label className='errtext'> {values.errortext.ratetitle ? values.errortext.ratetitle : ""}</label>
