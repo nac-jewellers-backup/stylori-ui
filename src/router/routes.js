@@ -19,7 +19,7 @@ export const routes = {
     TermsConditions: '/termsconditions',
     AboutUs: '/aboutus',
     ForgotPassword: '/forgotpassword',
-    ConfirmPassword: '/confirmpassword'
+    ResetPassword: '/resetpassword'
 }
 
 export default routes;
