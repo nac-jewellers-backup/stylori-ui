@@ -58,14 +58,14 @@ class Sublistcarousel extends React.Component {
       infinite: true,
       accessibility: true,
       speed: 500,
-      slidesToShow: this.state.dataToShow === "YouMayLike" ? data&&data[0]&&data[0].fadeImageSublist.length > 4 ? limit :  data&&data[0]&&data[0].fadeImageSublist.length :
-      data&&data[0]&&data[0].fadeImageSublistRecentlyViewed.length > 4 ? limit : data&&data[0]&&data[0].fadeImageSublistRecentlyViewed.length
+      slidesToShow: this.state.dataToShow === "YouMayLike" ? data && data[0] && data[0].fadeImageSublist.length > 4 ? limit : data && data[0] && data[0].fadeImageSublist.length :
+        data && data[0] && data[0].fadeImageSublistRecentlyViewed.length > 4 ? limit : data && data[0] && data[0].fadeImageSublistRecentlyViewed.length
       ,
       slidesToScroll: 4,
     }
     // this.state.dataToShow==="YouMayLike" ? data[0].fadeImageSublist : data[0].fadeImageSublistRecentlyViewed
     return (
-      <div>
+      <div style={{ width: "100%" }}>
         <Hidden smDown>
           <div className="back_img">
             <div className='like-and-recently'>
@@ -75,7 +75,7 @@ class Sublistcarousel extends React.Component {
               </Grid>
             </div> <div className='sub-carousel-head'>
               <Container maxWidth='md'>
-                {this.state.dataToShow === "YouMayLike" && data&&data[0]&&data[0].fadeImageSublist.length < 0 || this.state.dataToShow === "YouRecentlyViewed" && data&&data[0]&&data[0].fadeImageSublistRecentlyViewed.length === 0 ?
+                {this.state.dataToShow === "YouMayLike" && data && data[0] && data[0].fadeImageSublist.length < 0 || this.state.dataToShow === "YouRecentlyViewed" && data && data[0] && data[0].fadeImageSublistRecentlyViewed.length === 0 ?
 
                   <span className="NoProducts">{this.state.dataToShow === "YouMayLike" ? "No products found" : "No products viewed yet"}</span>
                   :
@@ -86,7 +86,7 @@ class Sublistcarousel extends React.Component {
                     </Grid>
                     <Grid item style={{ width: "88%" }}>
                       <Slideshow sliderRef={this.slider} class="subslider-carousel" hoverlist={
-                        this.state.dataToShow === "YouMayLike" ? data&&data[0]&&data[0].fadeImageSublist : data&&data[0]&&data[0].fadeImageSublistRecentlyViewed
+                        this.state.dataToShow === "YouMayLike" ? data && data[0] && data[0].fadeImageSublist : data && data[0] && data[0].fadeImageSublistRecentlyViewed
                       }
                         dataCarousel={dataCarousel} hover={true} imagecra={true}>
                       </Slideshow>
@@ -115,8 +115,8 @@ class Sublistcarousel extends React.Component {
 
               <ExpansionPanelDetails >
                 <div style={{ width: "100%" }}>
-                  <Slideshow class={` ${data&&data[0]&&data[0].fadeImageSublist ? 'subslider-carousel ' : "shine"}`}
-                    hoverlist={data&&data[0]&&data[0].fadeImageSublist}
+                  <Slideshow class={` ${data && data[0] && data[0].fadeImageSublist ? 'subslider-carousel ' : "shine"}`}
+                    hoverlist={data && data[0] && data[0].fadeImageSublist}
                     dataCarousel={mobiledataCarousel} hover={true}>
                   </Slideshow>
                 </div>
