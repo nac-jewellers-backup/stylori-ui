@@ -59,48 +59,49 @@ class PaymentIndex extends React.Component {
         // }
         return (
             <div className="payment-div">
-                    <Hidden smDown>
-                        <Grid container spacing={12} lg={12} className="panel-body">
-                            <Grid item lg={5}>
-                                <div className="pay-index-subhed">
-                                    <p style={{ background: "#dfdfdf" }}
-                                    // onClick={() => this.toggleCollapsed('Creditform')}
-                                    >
-                                        <div className="cc-icon"></div> &nbsp; Credit card </p>
-                                    <p style={{ background: "#dfdfdf" }}
-                                    // onClick={() => this.toggleCollapsed('Debitform')}
-                                    >
-                                        <div className="dc-icon"></div> &nbsp; Debit card </p>
-                                    <p style={{ background: "#dfdfdf" }}
-                                    // onClick={() => this.toggleCollapsed('Netbanking')}
-                                    >
-                                        <div className="net-bnk-icon"></div> &nbsp; Net Banking </p>
-                                    <p
-                                    // onClick={() => this.toggleCollapsed('CashonDelivey')}
-                                    >
-                                        <div className="code-icon"></div>&nbsp;   Cash On Delivery (COD)</p>
-                                </div>
-                            </Grid>
-                            <Grid item lg={7}>
-                                <div style={{ marginTop: "20px" }} className="pay-index-subhed_datas dz">
-                                    {
-                                        this.state.isActive == 'Creditform' && <Creditform />
-                                    }
-                                    {
-                                        this.state.isActive == 'Debitform' && <Debitform />
-                                    }
-                                    {
-                                        this.state.isActive == 'Netbanking' && <Netbanking />
-                                    }
-                                    {
-                                        // !dataCard1.length > 0 ?
-                                            this.state.isActive == 'CashonDelivey' && <CashonDelivey />
-                                            // :"cash on delivery is not available"
-                                    }
-                                </div>
-                            </Grid>
+                <Hidden smDown>
+                    <Grid container spacing={12} lg={12} className="panel-body">
+                        <Grid item lg={5}>
+                            <div className="pay-index-subhed">
+                                <p style={{ background: this.state.isActive == "Creditform" ? "#dfdfdf" : "" }}
+                                    // style={{ background: "#dfdfdf" }}
+                                    onClick={() => this.toggleCollapsed('Creditform')}
+                                >
+                                    <div className="cc-icon"></div> &nbsp; Credit card </p>
+                                <p style={{ background: this.state.isActive == "Debitform" ? "#dfdfdf" : "" }}
+                                    onClick={() => this.toggleCollapsed('Debitform')}
+                                >
+                                    <div className="dc-icon"></div> &nbsp; Debit card </p>
+                                <p style={{ background: this.state.isActive == "Netbanking" ? "#dfdfdf" : "" }}
+                                    onClick={() => this.toggleCollapsed('Netbanking')}
+                                >
+                                    <div className="net-bnk-icon"></div> &nbsp; Net Banking </p>
+                                <p style={{ background: this.state.isActive == "CashonDelivey" ? "#dfdfdf" : "" }}
+                                    onClick={() => this.toggleCollapsed('CashonDelivey')}
+                                >
+                                    <div className="code-icon"></div>&nbsp;   Cash On Delivery (COD)</p>
+                            </div>
                         </Grid>
-                    </Hidden>
+                        <Grid item lg={7}>
+                            <div style={{ marginTop: "20px" }} className="pay-index-subhed_datas dz">
+                                {
+                                    this.state.isActive == 'Creditform' && <Creditform />
+                                }
+                                {
+                                    this.state.isActive == 'Debitform' && <Debitform />
+                                }
+                                {
+                                    this.state.isActive == 'Netbanking' && <Netbanking />
+                                }
+                                {
+                                    // !dataCard1.length > 0 ?
+                                    this.state.isActive == 'CashonDelivey' && <CashonDelivey />
+                                    // :"cash on delivery is not available"
+                                }
+                            </div>
+                        </Grid>
+                    </Grid>
+                </Hidden>
 
                 <Hidden mdUp>
                     <ExpansionPanel className="respone-div">
