@@ -66,7 +66,7 @@ const useWishlists = (props) => {
     //             console.log(myJson);
     //         });
     // }
-
+ 
     const handelSubmit = (num) => {
         debugger
         setwishlistdata({
