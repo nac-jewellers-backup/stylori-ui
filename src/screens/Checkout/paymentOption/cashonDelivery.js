@@ -5,6 +5,8 @@ import SimpleSelect from '../../../components/InputComponents/Select/Select';
 import { CartContext } from 'context'
 import cart from 'mappers/cart'
 import { useNetworkRequest } from 'hooks/index';
+import { API_URL, HOME_PAGE_URL, CDN_URL } from '../../../config';
+
 var obj = {}
 let gut_lg = localStorage.getItem("gut_lg") ? JSON.parse(localStorage.getItem("gut_lg")) : {}
 
@@ -21,7 +23,7 @@ class CashonDelivey extends React.Component {
         // if (bb.length <0) {
         //    return
         // } else {
-        await fetch('https://api.stylori.net/createorder', {
+        await fetch(`${API_URL}/createorder`, {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
