@@ -131,3 +131,21 @@
     width: 45vw !important;
     line-height: 25px;;
 }
+.paymentsuccessfont{
+    color: #05409a
+}
+.paymentcontent{
+    padding: 20px
+}
+.horizontal {
+    width: 100%;
+    padding: 1px;
+    margin-top: 10px !important;
+}
+.paymentdivider {
+    margin-top: 20px;
+    margin-left: 30px;
+}
+h6{
+    font-size: .8rem !important;
+}

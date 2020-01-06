@@ -5,6 +5,7 @@ import SimpleSelect from '../../../components/InputComponents/Select/Select';
 import { CartContext } from 'context'
 import cart from 'mappers/cart'
 import { useNetworkRequest } from 'hooks/index';
+import PaymentHiddenForm from './paymentHiddenForm'
 var obj = {}
 let gut_lg = localStorage.getItem("gut_lg") ? JSON.parse(localStorage.getItem("gut_lg")) : {}
 
@@ -12,7 +13,11 @@ class CashonDelivey extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            res_data: null
+            res_data: null,
+            hiddenform:false,
+            currency: 'INR',
+            paymentMod:"COD",
+            totalAmount:''
         }
 
     }
@@ -21,6 +26,9 @@ class CashonDelivey extends React.Component {
         // if (bb.length <0) {
         //    return
         // } else {
+        this.setState({
+            hiddenform:true
+        });
         await fetch('https://api.stylori.net/createorder', {
             method: 'post',
             headers: {
@@ -41,6 +49,9 @@ class CashonDelivey extends React.Component {
         }
         // }
         window.location.pathname = "/jewellery"
+    }
+    componentDidMount(){
+      
     }
     componentDidUpdate(prevProps, prevState) {
         if (this.state.res_data !== prevState.res_data) {
@@ -68,6 +79,9 @@ class CashonDelivey extends React.Component {
                 return cart_price
             }
         }
+        this.setState({
+            totalAmount:Math.round(dataCard1-discounted_price)
+        })
         obj['payment_mode'] = "COD"
         obj['user_id'] = user_id
         obj['cart_id'] = cart_id
@@ -91,7 +105,7 @@ class CashonDelivey extends React.Component {
                         COD orders are subject to telephonic verification.
                         </div>
                 </Grid>
-
+                <PaymentHiddenForm hiddenFormProps={this.state} />
             </div>
         )
     }

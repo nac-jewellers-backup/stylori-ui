@@ -17,7 +17,10 @@ import { createBrowserHistory } from "history";
 import Collection from 'screens/Stylori/Collection';
 import stories from 'screens/Stylori/stories';
 import AboutPage from "components/faqs/aboutPage";
-import ForgotPassword from "components/ForgotPassword/ForgetPassword"
+import ForgotPassword from "components/ForgotPassword/ForgetPassword";
+import PaymentResponseSuccess from '../screens/Checkout/paymentOption/paymendResposeSuccess';
+import PaymentResponseFail from '../screens/Checkout/paymentOption/paymendResposeSuccess';
+
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
 
@@ -54,6 +57,8 @@ export const RouterApp = (props) => {
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
             <Route key="AboutUs" component={AboutPage} exact path={routes.AboutUs} />
             <Route key="ForgotPassword" component={ForgotPassword} exact path={routes.ForgotPassword} />
+            <Route key="paymentsuccess" component={PaymentResponseSuccess} exact path={routes.paymentsuccess} />
+            <Route key="paymentfail" component={PaymentResponseFail} exact path={routes.paymentfail} />
             
 
             {(props.location.pathname !== "/cart" && props.location.pathname !== `/account${"-" + window.location.pathname.split("-")[1]}` && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && props.location.pathname !== "/forgotPassword" && Globalctx  && Globalctx.pathName === false) &&

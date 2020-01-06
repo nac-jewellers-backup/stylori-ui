@@ -38,8 +38,9 @@ const LoginComponent = (props) => {
     }
     const responseFacebook = response => {
         console.log(response)
-        // window.location.href='/home';
-        props.history.push('/home')
+        if(response.status !== "unknown"){
+            props.history.push('/home')
+        }
     }
     return (
         <div className='pt-sm'>
@@ -77,7 +78,6 @@ const LoginComponent = (props) => {
                         <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>
                         <FacebookLogin
                             appId="2777718598973911"
-                            autoLoad={true}
                             fields="name,email,picture"
                             callback={responseFacebook}
                             cssClass="my-facebook-button-class"
