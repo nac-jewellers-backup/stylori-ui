@@ -16,13 +16,13 @@ import cart from 'mappers/cart'
 class Accounts extends React.Component {
     render() {
         return (
-            <div>
+            <Grid container>
                 <Hidden smDown>
-                    <Grid container spacing={12}>
-                        <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
-                            <Header wishlist={this.props.wishlistdata} />
-                        </Grid>
+                    {/* <Grid container spacing={12}> */}
+                    <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
+                        <Header wishlist={this.props.wishlistdata} />
                     </Grid>
+                    {/* </Grid> */}
 
                     <Grid item xs={12}>
                         <Accountdetails data={this.props.data} wishlistdata={this.props.wishlistdata} allorderdata={this.props.allorderdata} />
@@ -50,7 +50,7 @@ class Accounts extends React.Component {
                     </Grid>
                 </Hidden>
 
-            </div>
+            </Grid>
         )
     }
 }
