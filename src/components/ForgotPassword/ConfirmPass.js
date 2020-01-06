@@ -1,6 +1,6 @@
 import React from 'react';
 // import './product-image-slider/loginRegisters.css'
-import { Grid, Button, Container } from '@material-ui/core';
+import { Grid, Button, Container, TextField } from '@material-ui/core';
 import { Input } from '../../components/InputComponents/TextField/Input'
 import Header from 'components/SilverComponents/Header'
 import Footer from "components/Footer/Footer"
@@ -17,13 +17,10 @@ import {
 
 const LoginComponent = (props) => {
     const [values, setValues] = React.useState({
-        email: "",
-        password: "",
-        confirmpassword: "",
-        roles: ["user"],
-        firstname: "",
-        lastname: "",
-        errortext: {
+        newpassword: "",
+        confirmPassword: "",
+
+        newpassword: {
             emerr: "",
             passerr: "",
             cnfpasserr: "",
@@ -40,11 +37,10 @@ const LoginComponent = (props) => {
     });
     const { classes } = props;
     const handelSubmit = () => {
-
+        alert("cfbyu")
     }
 
     const handleChange = (name, value) => {
-        debugger
         setValues({ ...values, [name]: value })
     }
 
@@ -56,8 +52,8 @@ const LoginComponent = (props) => {
         <Grid container>
             {/* <Grid container > */}
             <Grid></Grid>
-                <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
-                    <Header />
+            <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
+                <Header />
                 {/* </Grid> */}
             </Grid>
             <Grid spacing={12} container style={{ padding: "3%" }}>
@@ -73,19 +69,32 @@ const LoginComponent = (props) => {
                             <form action="javascript:void(0)" onSubmit={(e) => {
                                 handelSubmit(e)
                             }}>
-                                <div className={`${classes.normalfonts}`} style={{ fontSize: "18px" }}>  Forgot Password </div>
+                                <div className={`${classes.normalfonts}`} style={{ fontSize: "18px" }}>Change Password </div>
                                 <Input
                                     margin="normal"
                                     variant="outlined"
-                                    type="email"
+                                    type="text"
                                     name="email"
-                                    value={values.email}
-                                    error={values.error && values.error.emerr ? true : false}
-                                    helperText={values.errortext && values.errortext.emerr}
-                                    onChange={e => handleChange('email', e.target.value)}
-                                    placeholder="Enter your email Id"
+                                    value={values.newpassword}
+                                    error={values.newpassword && values.newpassword.emerr ? true : false}
+                                    helperText={values.newpasswordText && values.newpasswordText.emerr}
+                                    onChange={e => handleChange('newpassword', e.target.value)}
+                                    placeholder="Enter new password"
                                 />
                                 <label className='errtext'> {values.errortext && values.errortext.emerr}</label>
+                                {/* <br></br> */}
+                                <Input
+                                    margin="normal"
+                                    variant="outlined"
+                                    type="text"
+                                    // label="Confirm Password"
+                                    name="confirmPassword"
+                                    value={values.email}
+                                    error={values.confirmPassword && values.confirmPassword.emerr ? true : false}
+                                    helperText={values.confirmPassword && values.confirmPassword.emerr}
+                                    onChange={e => handleChange('confirmPassword', e.target.value)}
+                                    placeholder="Enter confirm password"
+                                />
                                 <br></br>
                                 <div style={{ float: "right" }}>
                                     <Button className='apply-b' type="submit">Apply</Button>
