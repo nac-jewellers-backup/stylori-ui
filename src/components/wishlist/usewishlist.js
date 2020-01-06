@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
 import { CartContext } from 'context'
+import { API_URL, HOME_PAGE_URL , CDN_URL} from '../../config';
+
 var orderobj = {};
 const useWishlists = (props) => {
     const [values, setValues] = React.useState({
@@ -36,7 +38,7 @@ const useWishlists = (props) => {
     }
 
     const makeFetch = () => {
-        fetch('https://api.stylori.net/addwishlist', {
+        fetch(`${API_URL}/addwishlist`, { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -107,7 +109,7 @@ const useWishlists = (props) => {
                     window.location.reload();
                 }
             }
-            fetch('https://api.stylori.net/removewishlist', {
+            fetch(`${API_URL}/removewishlist`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

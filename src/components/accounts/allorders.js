@@ -194,7 +194,7 @@ class Allorders extends React.Component {
 
                                                                     </Typography>
                                                                 </Grid>
-                                                                <Grid item lg={3} sm={6} xs={12}>
+                                                                <Grid item lg={3} sm={12} xs={12}>
                                                             <Grid container spacing={12} >
                                                                 <Typography className="subhesder">Quantity 1</Typography>
                                                                 <Typography className="subhesder">
@@ -209,7 +209,7 @@ class Allorders extends React.Component {
                                                         
 
 
-                                                        <Grid style={{ padding: "30px" }} className="rups" item lg={2}>
+                                                        <Grid style={{ padding: "30px" }} className="rups" item sm={4} lg={2}>
                                                             {cart.price > cart.transSkuListByProductSku.markupPrice ?
                                                                 <del style={{ color: "rgba(0, 0, 0, 0.54)", fontSize: "18px" }}>{(Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.markupPrice)))}</del>
                                                                 : ""}<br />

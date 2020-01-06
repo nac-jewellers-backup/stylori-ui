@@ -25,7 +25,7 @@ const RegisterComponent = (props) => {
             }} action="javascript:void(0)" >
                 <Grid container>
 
-                    <Grid item xs={12} lg={window.location.pathname === "/registers" ? 12 : 12}  >
+                    <Grid item xs={12} lg={window.location.pathname === "/registers" ||paths ? 12 : 6}  >
 
                         <Grid class="topPaddingwish">
                             {window.location.pathname.split("-")[0] !== "/account" &&
