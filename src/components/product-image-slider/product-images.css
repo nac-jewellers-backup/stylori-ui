@@ -1183,9 +1183,9 @@ body {
 @media only screen and (max-width: 480px) {
     .darktabs {
         border: 2px solid #ed1165cf !important;
-        border-radius: 15% !important;
+        border-radius: 100% !important;
         text-align: center !important;
-        height: 40px !important;
+        height: 50px !important;
         width: 100% !important;
         outline: none !important;
     }

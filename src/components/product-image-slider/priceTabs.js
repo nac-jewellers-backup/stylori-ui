@@ -184,7 +184,7 @@ class Component extends React.Component {
             infinite: false,
             // slidesToShow: data[0].productTabs[0].tab1.Children.length > 8 ? limit :data[0].productTabs[0].tab1.Children.length,
             slidesToScroll: 5,
-            slidesToShow: 7,
+            slidesToShow: 6,
             arrows: false,
         };
         const slider = React.createRef();
