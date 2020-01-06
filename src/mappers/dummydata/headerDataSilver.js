@@ -209,7 +209,7 @@ export const menuLists = {
                     title: 'Earrings',
                     url: '#Earrings',
                     imgContainer: {
-                            //-----------LAYER 3--------
+                        //-----------LAYER 3--------
                         "imageContainer": [
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
@@ -398,7 +398,7 @@ export const menuLists = {
                 },
             ],
         //----SUBLAYER2 ------
-            'menuTwo': [{
+        'menuTwo': [{
             value: 'Price', title: 'By Price', url: '#Price',
             imgContainer: {
                 //-----------LAYER 3--------
