@@ -152,7 +152,7 @@ class Allorders extends React.Component {
                                                                         {cart.transSkuListByProductSku.generatedSku}
                                                                     </Typography>
                                                                 </Grid>
-                                                                <Grid item lg={3} sm={6} xs={12}>
+                                                                <Grid item lg={3} sm={12} xs={12}>
                                                             <Grid container spacing={12} >
                                                                 <Typography className="subhesder">Quantity 1</Typography>
                                                                 <Typography className="subhesder">
