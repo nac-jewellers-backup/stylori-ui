@@ -68,7 +68,7 @@ class ProductDetail extends Component {
     }
     debugger
     return (
-      <Grid container>
+      <div>
         <div>
           <MetaTags>
             <title>{this.props.data[0].title}</title>
@@ -88,14 +88,14 @@ class ProductDetail extends Component {
         </div>
 
         <Hidden smDown>
-          {/* <Grid container > */}
-          <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
-            <Header wishlist={this.props.wishlistdata} />
+          <Grid container >
+            <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
+              <Header wishlist={this.props.wishlistdata} />
+            </Grid>
           </Grid>
-          {/* </Grid> */}
 
-          <Grid Container spacing={12} style={{ width: "100%", margin: "auto" }}>
-            <Grid item xs={12} style={{ width: "100%" }}>
+          <Grid Container spacing={12} style={{ maxWidth: "1600px", margin: "auto" }}>
+            <Grid item xs={12}>
               <div className="pricing-breadcrums-media" >
                 <CustomSeparator
                   list='pricing-loctn'
@@ -147,47 +147,47 @@ class ProductDetail extends Component {
 
 
         <Hidden mdUp>
-          {/* <div style={{ paddingBottom: "50px" }}> */}
-          {/* <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}> */}
-          <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
-            <Header wishlist={this.props.wishlistdata} pdpage={true} />
-          </Grid>
-          {/* </Grid> */}
+          <div style={{ paddingBottom: "50px" }}>
+            <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+              <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
+                <Header wishlist={this.props.wishlistdata} pdpage={true} />
+              </Grid>
+            </Grid>
 
-          <Grid item xs={12}>
-            <PriceBuynow data={this.props.data} />
-          </Grid>
-          <Grid item xs={12} >
-            <ProductDetails data={this.props.data} wishlist={this.props.wishlistdata} />
-          </Grid>
+            <Grid item xs={12}>
+              <PriceBuynow data={this.props.data} />
+            </Grid>
+            <Grid item xs={12} >
+              <ProductDetails data={this.props.data} wishlist={this.props.wishlistdata} />
+            </Grid>
 
-          <Grid item xs={12} >
-            <PriceCertification data={this.props.data} />
-          </Grid>
-          <Grid item xs={12} >
-            <Request />
-          </Grid>
+            <Grid item xs={12} >
+              <PriceCertification data={this.props.data} />
+            </Grid>
+            <Grid item xs={12} >
+              <Request />
+            </Grid>
 
-          <Grid item xs={12} >
-            <Sublistcarousel data={this.props.data} />
-          </Grid>
+            <Grid item xs={12} >
+              <Sublistcarousel data={this.props.data} />
+            </Grid>
 
-          <Grid item xs={12} >
-            <CustomerReviews data={this.props.data} />
-          </Grid>
+            <Grid item xs={12} >
+              <CustomerReviews data={this.props.data} />
+            </Grid>
 
-          <Grid item xs={12} >
-            <RatingForm />
-          </Grid>
+            <Grid item xs={12} >
+              <RatingForm />
+            </Grid>
 
-          <Grid item>
-            <Footer />
-          </Grid>
-          <Buynowfixed data={this.props.data} />
-          {/* </div> */}
+            <Grid item>
+              <Footer />
+            </Grid>
+            <Buynowfixed data={this.props.data} />
+          </div>
         </Hidden>
 
-      </Grid>
+      </div>
     )
   }
 }
