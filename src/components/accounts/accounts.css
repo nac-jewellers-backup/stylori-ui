@@ -135,6 +135,22 @@
     margin-top: 8px;
     padding-top: 25px;
 }
+.inner-page-title1 {
+    font-size: 22px;
+    /* position: fixed !important; */
+    padding-bottom: 10px;
+    color: #ed1165;
+    margin-top: 0px;
+    font-weight: bold !important;
+    position:sticky;
+    z-index: 1000;
+    width: 100%;
+    background: #fff;
+    /* top:55px; */
+    display: flex;
+    margin-top: 16px;
+    padding-top: 12px;
+}
 .rups {
     color: rgba(241, 72, 128, 1);
     font-weight: 500;

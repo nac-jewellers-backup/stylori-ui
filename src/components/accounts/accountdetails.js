@@ -67,7 +67,7 @@ class Accountdetails extends Component {
             <Container>
                 <Hidden smDown>
 
-                    <div class="inner-page-title"> My Account </div>
+                    <div class="inner-page-title1"> My Account </div>
 
                     <Container>
                         <div className="panel_body">
@@ -144,7 +144,7 @@ class Accountdetails extends Component {
 
                 <Hidden mdUp>
                     <Grid>
-                        <div class="inner-page-title"> My Account </div>
+                        <div class="inner-page-title1"> My Account </div>
                     </Grid>
                     <Grid style={{display:"flex",alignContent:"left",marginTop:"10px"}}>
                   
