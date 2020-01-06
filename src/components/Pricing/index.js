@@ -39,7 +39,7 @@ export default function Pricing(props) {
                         </Typography> : ""} 
                 </Grid>   
                 <Grid item  xs={6} >
-                    <Grid spacing={12} container  xs={12} class="leftPadding">
+                    <Grid spacing={12} container  xs={12} class="leftPadding"> 
                         <Grid item  xs={12}>
                             {props.price ?
                                 <Typography style={{ display: "flex", width: '100%' }}>
