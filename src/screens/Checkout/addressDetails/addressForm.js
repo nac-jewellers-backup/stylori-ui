@@ -19,7 +19,7 @@ const AddressComponent = (props) => {
         checkValue: !values.checkValue
     })} type='checkbox' checked={values.checkValue} />
     var isedit = (localStorage.getItem("isedit"));
-    const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
+    const aa = localStorage.getItem("m") ? localStorage.getItem("m") : values.addressOne.salutation
     return (
         <Container>
             <div>
@@ -32,11 +32,11 @@ const AddressComponent = (props) => {
                             {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? <h5 className='title'> Edit Address</h5> : ""}
                             <p class="form-group tp" style={{ width: "480px" }}>
                                 {/* {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <>{cl}</>} */}
-                                {window.location.pathname.split("-")[0]==="/account" || values.edit_addresId === true ? "" : <>{cl}</>}
+                                {window.location.pathname.split("-")[0] === "/account" || values.edit_addresId === true ? "" : <>{cl}</>}
                                 {/* {JSON.stringify(values.errortext && values.errortext.pinerr)} */}
                             </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={5}>
-                                    {window.location.pathname.split("-")[0]==="/account" || values.hidebilling === true ? "" : <>
+                                    {window.location.pathname.split("-")[0] === "/account" || values.hidebilling === true ? "" : <>
                                         <h5 className='title'>Shipping Address</h5>
                                         <>
                                             {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
@@ -44,6 +44,22 @@ const AddressComponent = (props) => {
                                         </></>}
                                     <Grid container spacing={12}>
                                         <Grid item xs={4} lg={4}>
+                                            {/* <FormControl variant="outlined" className={classes.formControl}>
+        <Select
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select-outlined"
+          value={values.addressOne.salutation}
+          onChange={(e)=>handle.handleChange_selsect(e)}
+        //   labelWidth={labelWidth}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select> */}
+                                            {/* </FormControl> */}
                                             <SimpleSelect val={'1'} name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                         </Grid>
                                         <Grid item xs={4} lg={4}>
@@ -53,7 +69,7 @@ const AddressComponent = (props) => {
                                                 type="text"
                                                 value={values.addressOne.firstname}
                                                 placeholder="First name"
-                                                required 
+                                                required
                                                 onChange={(event) => handle.handleChange('addressOne', 'firstname', event.target.value)}
                                                 helperText="Firstname is required"
                                             />
@@ -84,9 +100,9 @@ const AddressComponent = (props) => {
                                                 onChange={(event) => handle.handleChange('addressOne', 'pincode', event.target.value, "pincode1")}
                                                 value={values.addressOne.pincode}
                                                 onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
-                                                // helperText="Pin Code is required"
-                                                // required 
-                                                />
+                                            // helperText="Pin Code is required"
+                                            // required 
+                                            />
 
                                             <label className='errtext'> {values.addressOne && values.addressOne.errortext && values.addressOne.errortext.pinerr}</label>
                                         </Grid>
@@ -171,7 +187,7 @@ const AddressComponent = (props) => {
                                 {/*  */}
                                 {/*  */}
                                 {/* {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <> */}
-                                {window.location.pathname.split("-")[0]==="/account" || values.edit_addresId === true ? "" : <>
+                                {window.location.pathname.split("-")[0] === "/account" || values.edit_addresId === true ? "" : <>
                                     <Grid container item lg={1} />
                                     {!values.checkValue &&
                                         <Grid item xs={12} lg={5}>
@@ -179,7 +195,7 @@ const AddressComponent = (props) => {
                                             <h5 className='title'> Billing Address</h5>
                                             <Grid container spacing={12}>
                                                 <Grid item xs={4} lg={4}>
-                                                    <SimpleSelect val={"2"} name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
+                                                    <SimpleSelect val={"2"} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                                 </Grid>
                                                 <Grid item xs={4} lg={4}>
                                                     <Input
@@ -220,8 +236,8 @@ const AddressComponent = (props) => {
                                                         value={values.addressTwo.pincode}
                                                         onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
                                                         helperText="Pin Code is required"
-                                                        required 
-                                                        />
+                                                        required
+                                                    />
                                                     <label className='errtext'> {values.addressOne && values.addressTwo.errortext && values.addressTwo.errortext.pinerr1}</label>
                                                 </Grid>
                                             </Grid>

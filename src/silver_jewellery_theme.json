@@ -30,6 +30,10 @@
       "secondary": "rgba(0, 0, 0, 0.54)",
       "disabled": "rgba(0, 0, 0, 0.38)",
       "hint": "rgba(0, 0, 0, 0.38)"
+    },
+    "overallButoon": {
+      "primary": "#F36E23",
+      "contrastText": "#fff"
     }
   }
 }

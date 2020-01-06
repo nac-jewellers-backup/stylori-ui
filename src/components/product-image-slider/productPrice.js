@@ -228,12 +228,12 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
 
                     <Hidden smDown>
                         <div className={classes.width} style={{ padding: "0px 10px  10px 10px " }}>
-                            <Pricing
-                                price={data[0].price}
-                                offerPrice={data[0].offerPrice}
-                                offerDiscount={val.offerDiscount}
-                            >
-                                {/* <Grid container spacing={12}>
+                            {data[0].price === data[0].offerPrice ?
+
+                                <Pricing
+                                    offerPrice={data[0].offerPrice}
+                                >
+                                    {/* <Grid container spacing={12}>
                                     <div className={`price-info ${classes.dis}`}>
                                         <Grid item xs={4} lg={2} className={`discount-container ${classes.dis}`}>
                                             {val.price}
@@ -243,7 +243,12 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                         </Grid>
                                     </div>
                                 </Grid> */}
-                            </Pricing>
+                                </Pricing> : <Pricing
+                                    price={data[0].price}
+                                    offerPrice={data[0].offerPrice}
+                                    offerDiscount={val.offerDiscount}
+                                >
+                                </Pricing>}
                         </div>
                     </Hidden>
                 </>

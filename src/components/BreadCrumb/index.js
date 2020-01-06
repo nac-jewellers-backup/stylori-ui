@@ -11,31 +11,50 @@ export default function CustomSeparator(props) {
     : <NavigateNextIcon />;
   const tabs = localStorage.getItem("panel")
 
-  const activetabsclik = (data) => {
-    // if (path === '/checkout' || path === '/cart') {
-    //   if (data && data.title === "Login/ Register" || data && data.title === "Shopping Bag") {
-    //     return (
-    //       localStorage.removeItem("panel")
-    //     )
-    //   }
-    // }
-    // if (data && data.title === "Address Detail") {
-    //   return (
-    //     localStorage.setItem("panel", 2)
-    //   )
-    // }
-    // if (data && data.title === "Payment Options") { 
-    //   return (
-    //     localStorage.setItem("panel", 3)
-    //   )
-    // }
-    // if (data && data.title === "Order Confirmation") {
-    //   return (
-    //     localStorage.setItem("panel", 4) 
-    //   )
-    // }
+  // const activetabsclik = (data) => {
+  // if (path === '/checkout' || path === '/cart') {
+  //   if (data && data.title === "Login/ Register" || data && data.title === "Shopping Bag") {
+  //     return (
+  //       localStorage.removeItem("panel")
+  //     )
+  //   }
+  // }
+  // if (data && data.title === "Address Detail") {
+  //   return (
+  //     localStorage.setItem("panel", 2)
+  //   )
+  // }
+  // if (data && data.title === "Payment Options") { 
+  //   return (
+  //     localStorage.setItem("panel", 3)
+  //   )
+  // }
+  // if (data && data.title === "Order Confirmation") {
+  //   return (
+  //     localStorage.setItem("panel", 4) 
+  //   )
+  // }
 
+  // }
+
+  const activetabsclik = (data) => {
+    debugger
+    if (data && data.title === "Shopping Bag") {
+      return window.location.href = "/cart"
+    } if (data && data.title === "Login/ Register") {
+      return
+    }
+    if (data && data.title === "Address Detail") {
+      return
+    } 
+    if (data && data.title === "Order Confirmation") {
+      return
+    }
+    if (data && data.title === "Payment Options") {
+      return
+    }
   }
+
   const activetabs = (data) => {
     if (path === '/checkout' || path === '/cart') {
       if (path === '/checkout') {
@@ -71,7 +90,7 @@ export default function CustomSeparator(props) {
           data && data.title === "Payment Options"
         )
       }
-     
+
     }
   }
   return (

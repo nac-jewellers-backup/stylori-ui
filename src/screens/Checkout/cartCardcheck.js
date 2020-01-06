@@ -43,7 +43,7 @@ class Component extends React.Component {
         // expanded: 'panel2',
         // expandedlimit: localStorage.getItem("panel") ? localStorage.getItem("panel") : 1,
         // expandedlimit: 1,
-        mailId: null
+        mailId: null 
     }
 
     handleChange = panel => (event) => {
@@ -56,11 +56,20 @@ class Component extends React.Component {
                 expanded: 'panel' + 3,
             });
             // }
+
+            // window.location.reload()
         } else {
+
             if (expanded > 'panel' + panel) {
                 this.setState({
                     expanded: 'panel' + panel,
                 });
+            }
+            if ((expanded === 'panel3' || expanded === 'panel4') && ('panel' + panel === 'panel2')) {
+                localStorage.removeItem("bil_isactive")
+                localStorage.removeItem("ship_isactive")
+                localStorage.removeItem("select_addres")
+                return false
             }
         }
 
@@ -88,7 +97,7 @@ class Component extends React.Component {
         return (
             <>
                 <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
-                    <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
+                    <Grid item xs={12} >
                         <Header wishlist={this.props.wishlistdata} />
                     </Grid>
                 </Grid>
