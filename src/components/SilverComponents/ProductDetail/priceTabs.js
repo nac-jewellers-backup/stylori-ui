@@ -75,6 +75,7 @@ class Component extends React.Component {
 
 
     handleClick = (event, key) => {
+
         console.log('lklkkoik9', this.state.purity)
         var filters = { ...this.props.filters }
         if (key === 'purity') {

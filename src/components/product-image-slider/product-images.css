@@ -698,7 +698,7 @@ body {
 
 .imagecard {
     width: 100% !important;
-    height: 600px !important;
+    /* height: 600px !important; */
     border: 1px solid #ccc;
     counter-increment: inherit;
     /* height: 450px !important; */

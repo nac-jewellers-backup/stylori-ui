@@ -65,7 +65,7 @@ class Allorders extends React.Component {
     render() {
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
-        debugger
+        
         // namedetail: [
         //     {
         //         name: "Quality",
@@ -101,6 +101,7 @@ class Allorders extends React.Component {
                                     onChange={this.handleChange(index)}
                                     style={{ boxShadow: "none", boxShadow: "rgb(242, 242, 242) 4px 10px 20px 5px" }}
                                     key={index}
+                                    style={{marginBottom:"10px"}}
                                 >
                                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
                                         <Typography className='text-chck'>
@@ -141,7 +142,7 @@ class Allorders extends React.Component {
                                                 <>
                                                     <br />
                                                     <Grid container spacing={12} lg={12}>
-                                                        <Grid item lg={2}>
+                                                        <Grid item lg={2} sm={2}>
                                                             {cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs => (
                                                                 <div className="wishlist_img">
                                                                     <img className="viewport-img" src={`https://assets.stylori.net/base_images/${imgs.imageUrl}`}
@@ -149,10 +150,10 @@ class Allorders extends React.Component {
                                                                 </div>
                                                             ))}
                                                         </Grid>
-                                                        <Grid item lg={4}>
+                                                        <Grid item lg={4} sm={4}>
                                                             <Grid container spacing={12} lg={12} style={{ lineHeight: "20px" }}>
                                                                 <b style={{ width: "100%" }}> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
-                                                                <Grid item lg={6}>
+                                                                <Grid item lg={6} sm={6}>
                                                                     {/* {cart.transSkuListByProductSku.skuWeight.length > 0 ? */}
                                                                     <Typography className="subhesder">Gold Weight</Typography>
                                                                     {/* : ""} */}
@@ -174,7 +175,7 @@ class Allorders extends React.Component {
                                                                     </Typography>
                                                                     <Typography className="subhesder">Product Code</Typography>
                                                                 </Grid>
-                                                                <Grid item lg={6}>
+                                                                <Grid item lg={6} sm={6}>
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.skuWeight + " " + "GM"}
                                                                     </Typography>
@@ -194,7 +195,7 @@ class Allorders extends React.Component {
                                                                     </Typography>  </Grid>
                                                             </Grid>
                                                         </Grid>
-                                                        <Grid item lg={4} style={{ padding: "30px" }}>
+                                                        <Grid item lg={3} sm={3} style={{ padding: "20px" }}>
                                                             <Grid container spacing={12} lg={12}>
                                                                 <Typography className="subhesder">Quantity 1</Typography>
                                                                 <Typography className="subhesder">
@@ -204,7 +205,7 @@ class Allorders extends React.Component {
                                                         </Grid>
 
 
-                                                        <Grid style={{ padding: "30px" }} className="rups" item lg={2}>
+                                                        <Grid style={{ padding: "30px" }} className="rups" item lg={3} sm={3}>
                                                             {cart.price > cart.transSkuListByProductSku.markupPrice ?
                                                                 <del style={{ color: "rgba(0, 0, 0, 0.54)", fontSize: "18px" }}>{(Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.markupPrice)))}</del>
                                                                 : ""}<br />

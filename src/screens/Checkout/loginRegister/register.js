@@ -58,7 +58,7 @@ const RegisterComponent = (props) => {
                             }
                             {paths ?
                                 <Grid container spacing={12}>
-                                    <Grid item lg={6} >
+                                    <Grid item xs={6} sm={4} lg={3} >
                                         <Input
                                             margin="normal"
                                             variant="outlined"
@@ -73,8 +73,8 @@ const RegisterComponent = (props) => {
                                                 readOnly: true,
                                             }}
                                         /> </Grid>
-                                    <Grid item lg={6} style={{ textAlign: "center", lineHeight: "66px", color: "#337ab7" }}>
-                                        <a> Change password </a> </Grid>
+                                    <Grid item xs={6} sm={3} lg={4} style={{ textAlign: "center", lineHeight: "66px", color: "#337ab7",paddingLeft:"8px" }}>
+                                        <a style={{display:"flex",justifyContent:"left"}}> Change password </a> </Grid>
                                 </Grid> : <>
                                     <Input
                                         margin="normal"
