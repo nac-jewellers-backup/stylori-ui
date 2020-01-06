@@ -70,8 +70,9 @@ class Component extends React.Component {
     }
     render() {
 
-        const { classes, chips } = this.props;
+        const { classes, chips,checked } = this.props;
         const { sortOptions } = this.props.data;
+        debugger
         return (
             <Paper style={{ position: 'sticky', top: "69px", width: '100%', zIndex: '3', boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">
                 {/* <div style={{position:'sticky',top:'165px'}}> */}

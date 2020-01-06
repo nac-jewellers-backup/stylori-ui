@@ -31,6 +31,9 @@ import { CartContext } from 'context'
 class ProductDetail extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      clear: ""
+    }
   }
   renderUrl = () => {
     var loc = this.props.location.pathname;
@@ -43,15 +46,27 @@ class ProductDetail extends Component {
     if (path[2] === 'Rings') return "/rings-jewellery"
 
   }
-  render() {
+  render() { 
     // alert(JSON.stringify(this.props.data))
     console.log("tgf");
-
+    // alert(JSON.stringify(this.props.data))
     var loc = this.props.location.pathname;
     console.log('this.props.data i am data', this.props.data)
     var path = loc.split('/');
     var data_json = [{ title: 'home', url: '/home' }, { title: path[2], url: this.renderUrl() }, { title: path[4] }]
     // alert(JSON.stringify(this.props.wishlistdata))
+    const clear_rating = (bool) => {
+      if (bool === false) {
+        this.setState({
+          clear: ""
+        })
+      } else {
+        this.setState({
+          clear: "clear_"
+        })
+      }
+    }
+    debugger
     return (
       <Grid container>
         <div>
@@ -59,20 +74,17 @@ class ProductDetail extends Component {
             <title>{this.props.data[0].title}</title>
             <meta name="description" content={this.props.data[0].dis} />
             <meta name="keywords" content={this.props.data[0].productsPendants[0].name} />
-
             <meta property="og:title" id="fb-title" content={this.props.data[0].title} />
             <meta property="og:description" content={this.props.data[0].dis} />
             <meta property="og:type" content="product" />
             <meta property="og:url" id="fb-product-url" content={window.location.href} />
             <meta property="og:image" id="fb_imageUrl" content={this.props.data[0].fadeImages} />
-
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:site" content="@StyloriLove" />
             <meta name="twitter:title" id="twitter-title" content={this.props.data[0].title} />
             <meta name="twitter:description" content={this.props.data[0].dis} />
             <meta name="twitter:image" id="twitter_imageUrl" content={this.props.data[0].fadeImages} />
           </MetaTags>
-
         </div>
 
         <Hidden smDown>
@@ -124,9 +136,8 @@ class ProductDetail extends Component {
               <br />
             </Grid>
           </div>
-
           <Sublistcarousel data={this.props.data} />
-          <RatingForm />
+          <RatingForm clear_rating={this.state.clear} clear_rating_onchange={clear_rating} />
           <CustomerReviews rating={this.props.rating} />
 
           <Grid item xs={12}>

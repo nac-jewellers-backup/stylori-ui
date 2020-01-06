@@ -290,7 +290,6 @@ class Component extends React.Component {
     let arr = [];
     let checkTitle = true;
     chipData.map(val => {
-
       if (val.title === title) {
         checkTitle = false
       }
@@ -469,6 +468,7 @@ class Component extends React.Component {
           <FilterHeader click={this.handleDelete}
             handleChangeDrawer={this.handleChangeDrawer}
             chips={this.state.chipData} check={this.state.check}
+            checked={this.state.checked}
           />{/*  handleDrawerOpen={this.handleDrawerOpen.bind(this)} */}
         </Hidden>
         <div className={classes.root} >
