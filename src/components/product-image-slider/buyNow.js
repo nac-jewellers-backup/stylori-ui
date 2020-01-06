@@ -37,7 +37,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
             paddingLeft: "15px"
         }}>
             {data[0].ProductContactNum.map(val =>
-                <Grid container spacing={12}>
+                <Grid container spacing={12} className={classes.shadow}>
 
                     <Grid item xs={8} lg={4} sm={8}>
                         {/* <input
@@ -68,7 +68,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                             </b>
                         </Grid>
                     </Hidden>
-                    <label style={{ padding: '4px', fontWeight: 'bold', color: 'rgba(185, 74, 72, 1)' }}>{(state.isRequired && 'Please fill out this field') || (state.pincodeNotFound && 'Pincode not found')}</label>
+                    <label style={{  fontWeight: 'bold', color: 'rgba(185, 74, 72, 1)' }}>{(state.isRequired && 'Please fill out this field') || (state.pincodeNotFound && 'Pincode not found')}</label>
                 </Grid>
             )}
         </div>
@@ -244,12 +244,13 @@ class Component extends React.Component {
                 <Hidden mdUp>
                     <div style={{ marginTop: "10px" }}>
                         <ProductPrice data={this.props.data} />
+
                         <PriceTabs data={this.props.data} />
                         {inputsearch(this.props, this.state, this.handleChanges, this.handleCodChange)}
                     </div>
 
                 </Hidden>
-            </div>
+            </div >
         );
     }
 }

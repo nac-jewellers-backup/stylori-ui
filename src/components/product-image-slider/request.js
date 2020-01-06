@@ -92,7 +92,7 @@ class Request extends React.Component {
         const { classes } = this.props;
         return (
             <div>
-                <div className='overall-boxz'>
+                <div className='overall-boxz' style={{}}>
                     <form onSubmit={(e) => this.handleSubmit(e)}>
                         <div className='overall-bo'>
                             <Hidden smDown>
@@ -185,14 +185,17 @@ class Request extends React.Component {
 
                 <Hidden smDown>
                     {/* <Form children={this.Requestform} inputvalues={this.state.values} /> */}
+                    <Grid style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", widt: "100%" }}>
+                        {this.Requestform(errors, this.handleError, errorMessage, this.handleChange)}
 
-                    {this.Requestform(errors, this.handleError, errorMessage, this.handleChange)}
+                    </Grid>
+
                 </Hidden>
 
 
                 <Hidden mdUp>
                     <Container>
-                        <ExpansionPanel style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05) ! important", padding: "0 5px" }} expanded={expanded === 'panel3'} onChange={this.handle('panel3')}>
+                        <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 5px" }} expanded={expanded === 'panel3'} onChange={this.handle('panel3')}>
                             <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                                 <i class="fa fa-sort-up" ></i></span>}
                             >

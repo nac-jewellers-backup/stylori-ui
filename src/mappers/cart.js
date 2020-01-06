@@ -221,8 +221,8 @@ export default function (data) {
                     { title: "Shopping Bag" },
                     { title: "Login/ Register" },
                     { title: "Address Detail" },
-                    { title: "Payment Options" },
                     { title: "Order Confirmation" },
+                    { title: "Payment Options" },
                 ],
                 cartsubdata: [
                     {

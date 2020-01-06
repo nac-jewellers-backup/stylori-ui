@@ -41,7 +41,7 @@ const Provider = (props) => {
 
     const [filters, setFilters] = React.useState({
         Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, MetalColor: {},
-        MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}
+        MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}, category:{}
     });
     const [sort, setSort] = React.useState(initialCtx.FilterOptionsCtx.sort)
     const [offset, setOffset] = React.useState(0)
@@ -88,7 +88,7 @@ const Provider = (props) => {
             }
 
             debugger
-            
+
             console.log('splitHiphen()', splitHiphen())
             const conditionfiltersSeo = { seofilter: { seoUrl: { in: splitHiphen() } } }
             // makeRequestSeo(conditionfiltersSeo)
@@ -310,7 +310,7 @@ const Provider = (props) => {
     useEffect(() => {
     }, [data, error, loading])
     const updatefiltersSort = async () => {
-
+debugger
         if (filters && filters.constructor === Object && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
             var newObj = {}
             var len;
@@ -344,8 +344,9 @@ const Provider = (props) => {
 
             // alert(JSON.stringify('filters',filters))
             // alert(JSON.stringify(newObj))
+            console.log('newObj',newObj)
             // newObj['price'] = {'min_price':pricemin,'max_price':pricemax}
-            console.log('newObj', Object.keys(newObj).filter(val => { if (val === 'category') return val }).length > 1)
+            // console.log('newObj', Object.keys(newObj).filter(val => { if (val === 'category') return val }).length > 1)
             if (Object.keys(newObj).filter(val => { if (val === 'category') return val }).length !== 0) await fetchproducts(newObj)
 
         }
@@ -355,7 +356,10 @@ const Provider = (props) => {
 
         //    alert("filters")
         if (filters && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
-            updatefiltersSort()
+            if(Object.values(filters).filter(val=>{ if(Object.entries(val).length>0 && val.constructor === Object) {return val}}).length>0)
+            {
+                if(Object.keys(filters).filter(val=>{if(val === "a") return val}).length === 0) updatefiltersSort()
+            }
         }
 
     }, [filters])
@@ -386,7 +390,7 @@ const Provider = (props) => {
 
     useEffect(() => {
 
-        // alert("sort")
+        // alert("offset")
         if (offset &&offset !== 0 ) {
             updatefiltersSort()
         }

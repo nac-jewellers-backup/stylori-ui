@@ -28,6 +28,8 @@ import { CartContext } from '../../context/CartContext';
 import cart from '../../mappers/cart';
 import { CheckForCod } from 'queries/productdetail';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
+import Header from 'components/SilverComponents/Header'
+
 let value = localStorage.getItem("select_addres") ? JSON.parse(localStorage.getItem("select_addres")) : {};
 var variab = {}
 const CartCardCheck = (props) => {
@@ -45,19 +47,29 @@ class Component extends React.Component {
     }
 
     handleChange = panel => (event) => {
+        debugger
         // alert("va",JSON.stringify(panel))
         const { expanded } = this.state
-        // if (value && value.contactNumber.length > 0) {
-            if (expanded === 'panel' + panel) {
-                this.setState({
-                    expanded: 'panel' + 3,
-                });
+        // if (value && value.pincode && value.pincode.length > 2) {
+        if ((localStorage.getItem("bil_isactive") || localStorage.getItem("ship_isactive")) && (value && value.pincode && value.pincode.length > 2) && expanded === 'panel' + panel) {
+            this.setState({
+                expanded: 'panel' + 3,
+            });
             // }
+
+            // window.location.reload()
         } else {
+
             if (expanded > 'panel' + panel) {
                 this.setState({
                     expanded: 'panel' + panel,
                 });
+            }
+            if ((expanded === 'panel3' || expanded === 'panel4') && ('panel' + panel === 'panel2')) {
+                localStorage.removeItem("bil_isactive")
+                localStorage.removeItem("ship_isactive")
+                localStorage.removeItem("select_addres")
+                return false
             }
         }
 
@@ -84,6 +96,11 @@ class Component extends React.Component {
 
         return (
             <>
+                <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
+                    <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
+                        <Header wishlist={this.props.wishlistdata} />
+                    </Grid>
+                </Grid>
                 <CustomSeparator
                     arrowicon='cart-head-arrows'
                     className={`breadcrums-header ${classes.normalcolorback}`}
@@ -91,6 +108,7 @@ class Component extends React.Component {
                     list={`MuiBreadcrumbs-li ${classes.fontwhite}`}
                     data={this.props.data[0].breadcrumsdata}
                     subdata={this.props.data[0].cartsubdata}
+                    changePanel={this.changePanel}
                 />
                 <div className='pt-sm checkout-ovralldiv-media' >
                     <div style={{ marginTop: "20px" }}>
@@ -210,7 +228,7 @@ class Component extends React.Component {
 //     return <CartCardCheck {...props} data={mapped} />
 // });
 const Components = props => {
-    let { CartCtx: { data, loading, error } } = React.useContext(CartContext);
+    let { CartCtx: { data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
     let content, mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
@@ -218,7 +236,7 @@ const Components = props => {
         }
     }
     if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
-    else content = <CartCardCheck {...props} data={mapped} />
+    else content = <CartCardCheck {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
 
     return content
 }

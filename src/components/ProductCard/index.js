@@ -39,7 +39,7 @@ function Card(props) {
   return (
 
     // <ProductCard  ard  data={props.data} {...CardControls}/>
-    <ImgMediaCard data={props.data} />
+    <ImgMediaCard data={props.data} wishlist={props.wishlist}/>
 
   );
 }

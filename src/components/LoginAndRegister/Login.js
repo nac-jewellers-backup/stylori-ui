@@ -32,7 +32,7 @@ const LoginComponent = (props) => {
     return (
         <>
             <Grid container spacing={12}>
-                <Grid item xs={12} >
+                <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
                     <Header />
                 </Grid>
             </Grid>
@@ -44,7 +44,7 @@ const LoginComponent = (props) => {
                 </Grid>
 
                 <Grid item xs={6} lg={6} xs={12}>
-                    <Container>
+                    <Container> 
                         {/* <div className='pt-sm' style={{ width: "90%", float: "right" }}>
                             <form action="javascript:void(0)" onSubmit={(e) => {
                                 handlers.handelSubmit(e)

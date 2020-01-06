@@ -13,6 +13,7 @@ import 'screens/screens.css';
 import filterData from 'mappers/filterData'
 import { async } from 'q';
 import MetaTags from 'react-meta-tags';
+import { CartContext } from 'context'
 
 class Stylori extends React.Component {
   constructor(props) {
@@ -37,13 +38,13 @@ class Stylori extends React.Component {
   render() {
     const { data, dataFilter, loading } = this.props
     return (
-     
+
       <>
-          
+
 
         <Grid container >
-        <div>
-        <MetaTags>
+          <div>
+            {/* <MetaTags>
         <title>{this.props.mappedFilters.seo_url}</title>
         <meta name="description" content={this.props.mappedFilters.seo_text} />
         <meta name="keywords" content={this.props.dataFilter[0].filter} />
@@ -63,21 +64,21 @@ class Stylori extends React.Component {
         <meta name="twitter:description" content={this.props.mappedFilters.seo_text} />
         <meta property="og:image" id="fb_imageUrl" content={this.props.data && this.props.data[0]&&this.props.data[0].image && this.props.data[0].image.placeImage.img} />
 
-        </MetaTags>
+        </MetaTags> */}
 
-        </div>
-          
-          <Grid item xs={12} >
-            <Header data={data} cartcount={this.props.cartcount} wishlist_count={this.props.wishlist_count} />
+          </div>
+
+          <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
+            <Header data={data} cartcount={this.props.cartcount} wishlist={this.props.wishlistdata} wishlist_count={this.props.wishlist_count} />
           </Grid>
 
           <Grid item xs={12}>
-            <ProductDescription title="Jewellery" data={dataFilter} />
-            <Filter datas={data} data={dataFilter} loading={loading}/>
+            <ProductDescription title="Jewellery" data={dataFilter} wishlist={this.props.wishlistdata} />
+            <Filter datas={data} data={dataFilter} loading={loading} wishlist={this.props.wishlistdata} />
           </Grid>
           <Grid item xs={12} >
             <Hidden smDown>
-              <ChatHelp data={data} />
+              <ChatHelp data={data} wishlist={this.props.wishlistdata} />
 
               <Footer />
             </Hidden>
@@ -91,6 +92,7 @@ class Stylori extends React.Component {
 // const history = (props, aa) => props.history.push(`/stylori?${aa}`);
 
 const Components = props => {
+  let { CartCtx: { allorderdata, wishlistdata } } = React.useContext(CartContext);
   let { FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters, wishlist_count }, setloadingfilters } = React.useContext(FilterOptionsContext);
   let content, mapped = [];
   // alert(JSON.stringify(cartcount))
@@ -104,7 +106,7 @@ const Components = props => {
   }
   if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
 
-  else content = <Stylori {...props} cartcount={cartcount} data={dataArr} dataFilter={mappedFiltersList} loadingfilters={loadingfilters} loading={loading} mappedFilters={mappedFilters} setloadingfilters={setloadingfilters} />
+  else content = <Stylori {...props} allorderdata={allorderdata} wishlistdata={wishlistdata} cartcount={cartcount} data={dataArr} dataFilter={mappedFiltersList} loadingfilters={loadingfilters} loading={loading} mappedFilters={mappedFilters} setloadingfilters={setloadingfilters} />
   return content
 }
 

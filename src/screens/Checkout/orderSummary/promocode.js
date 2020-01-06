@@ -9,7 +9,20 @@ const Promo = (props) => {
 }
 
 const PromoComponent = (props) => {
-    const { values, handlers } = usePromo();
+    var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
+    const myStorage = sessionStorage.getItem("user_id");
+    const localvalues_check = JSON.parse(localStorage.getItem('gut_lg')) === true ? true : false
+    React.useEffect(() => {
+        if (localvalues_check === true) {
+            if (con_gust === true) {
+                if (!myStorage) {
+                    localStorage.clear();
+                }
+            }
+        }
+    }, [])
+
+    const { values, handlers, data } = usePromo();
     return (
         <div className='pt-sm'>
             <form action="javascript:void(0)" onSubmit={() => handlers.handleSubmit()}>
@@ -27,7 +40,10 @@ const PromoComponent = (props) => {
                             />
                         </Grid>
                         <Grid item xs={4} lg={4}>
-                            <Button type="sumbit" className='ship-promo-btn'>Apply</Button>
+                            {data.message === "Applied Successfully" ?
+                                <Button style={{ filter: "grayscale(1)" }} disabled type="sumbit" className='ship-promo-btn'>Saved</Button> :
+                                <Button type="sumbit" className='ship-promo-btn'>Save</Button>}
+
                         </Grid>
                     </Grid>
                 </div>

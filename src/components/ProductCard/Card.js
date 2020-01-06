@@ -18,13 +18,16 @@ import { LazyLoadImage, trackWindowScroll }
   from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Wishlist from "components/wishlist/wishlist";
+import useWishlists from "components/wishlist/usewishlist";
 
 
 export const ImgMediaCard = (props) => {
   const { ProductDetailCtx, setFilters } = React.useContext(ProductDetailContext);
   const loc = window.location.search
-
-  return <Component filters={ProductDetailCtx.filters} setFilters={setFilters} {...props} />
+  // const { setValues: onClick_setValues } = useWishlists()
+  return <Component filters={ProductDetailCtx.filters} setFilters={setFilters} {...props}
+  // onClick_setValues={onClick_setValues}
+  />
 }
 // const MyImage = ( props, callmouseover, callmouseout, cardstate ) => {  
 //   return(
@@ -95,7 +98,20 @@ const imageOnError = (event, res) => {
   event.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
 }
 const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => (
-  <div>
+  <div className="imageHeight">
+    {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" style={{ zIndex: 2 }}>
+      <span class="one-day-ship-listing-page-label">1 day shipping</span>
+
+    </div> : ''}
+    <div class="wishListStyle"
+    // onClick={() => props.onClick_setValues({
+    //   product_sku: props.data.skuId,
+    //   product_id: props.data.productId
+    // })}
+    >
+      {/* <Wishlist wishlist={props.wishlist} /> */}
+      <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} />
+    </div>
 
     <LazyLoadImage
       alt={'props.data.title'}
@@ -109,11 +125,10 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
       //              (max-width: 1440px) 1440w,
       //              (max-width: 2560px) 2560w,
       //              2560w
-
       //  "
       onError={(e) => imageOnError(e, props.data.imageResolution)}
-      
-      
+
+
       title={props.data.title}
       onMouseOver={() => {
         callmouseover()
@@ -172,27 +187,27 @@ const handleProductDetatiContext = (props) => {
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
+    margin: 0
   },
   card: {
     minWidth: "80%",
     maxWidth: "90%",
-
+    boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important",
+    margin: "10px 0px ",
     borderRadius: '0 !important',
-
   },
-  cardAtionspadding:{
-    padding:0
+  cardAtionspadding: {
+    padding: 0,
+    margin: 0
+
   },
   textDel: {
     color: "#828282"
   },
   priceClass: {
     // boxShadow: "0px 0px 5px #F699A3 inset",
-    margin: 'auto',
-
-    marginBottom: '1px',
-    paddingTop: '10px', paddingBottom: '10px', paddingLeft: '10px',
+    padding: "10px",
     height: '50px',
     display: 'flex',
     boxShadow: " 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
@@ -261,11 +276,12 @@ const useStyles = makeStyles(theme => ({
     }
   },
   cardContent: {
-    margin: "auto"
+    // margin: "auto"
   },
   textPriceCardGrid: {
     display: 'flex',
-    width: "225px",
+    width: "100%",
+    justifyContent: "center",
     [theme.breakpoints.down('sm')]: {
       width: "auto",
     }
@@ -273,6 +289,24 @@ const useStyles = makeStyles(theme => ({
   priceOffGridsub: {
     flex: 1,
     display: 'flex',
+    justifyContent: "flex-end"
+  },
+  [theme.breakpoints.down('md')]: {
+    priceOffGridsub: {
+      flex: 1,
+      display: 'flex',
+      justifyContent: "flex-start"
+    },
+    offerPricesMain: {
+      flex: 1,
+      display: 'flex',
+      justifyContent: "flex-start"
+    },
+  },
+  offerPricesMain: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "flex-end"
   },
   priceOffGrid: {
     display: 'flex',
@@ -298,10 +332,7 @@ const useStyles = makeStyles(theme => ({
     },
 
   },
-  offerPricesMain: {
-    flex: 1,
-    display: "flex",
-  },
+
   titles: {
     fontSize: '0.7rem',
     whiteSpace: 'nowrap',
@@ -324,9 +355,10 @@ const useStyles = makeStyles(theme => ({
   iconColor: {
     color: theme.palette.secondary.light
   },
-  cardActionsImage:{
+  cardActionsImage: {
+    margin: 0,
     [theme.breakpoints.down('md')]: {
-      height:'200px !important'
+      // height: '200px !important'
     }
   }
 }));
@@ -354,34 +386,34 @@ function Component(props) {
     setCardState({ ...cardstate, hovered: !cardstate.hovered });
   }
   return (
-    <div className={classes.root} >
-      <Card className={classes.card} >
-        <CardActions className={classes.cardAtionspadding}>
+    <div className={classes.root} style={{ marginLeft: "0px !important" }}>
+      <Card className={classes.card} style={{ marginLeft: "0px !important" }} >
+        {/* <CardActions className={classes.cardAtionspadding}>
           <Grid container xs={12}>
             <Grid container item xs={6} justify="flex-start">
-              {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" style={{zIndex:2}}>
-                <span class="one-day-ship-listing-page-label">1 day shipping</span>
-
-              </div> : ''}
+            
 
             </Grid>
 
             <Grid container item xs={6} justify="flex-end">
-              {/* <i
+              <i
                 style={{ fontSize: "18px" }}
                 className={`fa ${classes.iconColor}`}
               >
                 &#xf08a;
-              </i> */}
-              {/* <Wishlist sku={props.data.skuId} productId={props.data.productId} /> */}
+              </i>
+            </Grid>
           </Grid>
-          </Grid>
-        </CardActions>
+
+
+        </CardActions> */}
         {/* /:productCategory/:productType/:material/:productName */}
         <Link to={{ pathname: `${'jewellery'}/${props.data.productType}/${props.data.material}/${(props.data.title).replace(/ /g, "-")}`, search: `skuId=${props.data.skuId}` }} style={{ textDecoration: 'none' }} onClick={handleProductDetatiContext(props)}>
-          <CardActions style={{ maxHeight: `${_height ? `${_height}px` : '300px'}`, minHeight:'250px' }} className={`${classes.cardAtionspadding} ${classes.cardActionsImage}`}>
+          <CardActions style={{
+            //  maxHeight: `${_height ? `${_height}px` : '300px'}`, minHeight: '250px'
+          }} className={`${classes.cardAtionspadding} ${classes.cardActionsImage}`}>
 
-          {/* <img 
+            {/* <img 
 srcset={renderImages(props, cardstate)}
 sizes="(max-width: 320px) 320w,
             (max-width: 480px) 375w,
@@ -404,58 +436,62 @@ sizes="(max-width: 320px) 320w,
           className={`${props.data.image.placeImage.length === 0 || props.data.image.hoverImage.length === 0 ? 'shine' : '' }`}
           
           /> */}
-          {Gallery(props, callmouseover, callmouseout, cardstate)}
-        </CardActions>
-        <Card className={classes.priceClass}>
-          <CardContent className={classes.cardContent}>
-            <Grid
-              container
-              item
-              xs={12}
-              className={classes.textPriceCardGrid}
-              alignItems="center"
-            >
-              <Grid container item xs={12} sm={12} md={7} lg={7} xl={7} alignItems="center" className={`${classes.priceClassMain}`}>
-                <Typography
-                  variant="h6"
-                  component="h6"
-                  className={classes.offerMainPrice}
-                >
-                  {/* <i
+
+
+
+
+            {Gallery(props, callmouseover, callmouseout, cardstate, classes)}
+          </CardActions>
+          <Card className={classes.priceClass}>
+            <CardContent className={classes.cardContent}>
+              <Grid
+                container
+                item
+                xs={12}
+                className={classes.textPriceCardGrid}
+                alignItems="center"
+              >
+                <Grid container item xs={12} sm={12} md={7} lg={7} xl={7} alignItems="center" className={`${classes.priceClassMain}`}>
+                  <Typography
+                    variant="h6"
+                    component="h6"
+                    className={classes.offerMainPrice}
+                  >
+                    {/* <i
                     
                     className="fa"
                   >
                     &#xf156;
                   </i> */}
-                  {/* {Math.round(props.data.offerPrice)} */}
-                  {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.offerPrice))}
-                </Typography>
-              </Grid>
-              {/*  */}
-              <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={`${classes.priceOffGrid}`}>
-                <Grid container item xs={12} alignItems="center" className={`${classes.priceOffGridsub}`}>
-                  <Typography
-                    gutterBottom
-                    variant="body1"
-                    component="span"
-                    className={classes.offerPrice}
-                  >
-                    {
-                      Math.round(props.data.offerPrice) === Math.round(props.data.price) ? 
-                      new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))
-                      :
-                      <del>
-                      
-                      {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
-                    </del>
-                    }
-                    
+                    {/* {Math.round(props.data.offerPrice)} */}
+                    {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.offerPrice))}
                   </Typography>
                 </Grid>
-                {
-                  Math.round(props.data.offerPrice) === Math.round(props.data.price) ? '' :
-                  <Grid container item xs={12} className={`${classes.offerPricesMain}`}>
-                  {/* <Typography
+                {/*  */}
+                <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={`${classes.priceOffGrid}`}>
+                  <Grid container item xs={12} alignItems="center" className={`${classes.priceOffGridsub}`}>
+                    <Typography
+                      gutterBottom
+                      variant="body1"
+                      component="span"
+                      className={classes.offerPrice}
+                    >
+                      {
+                        Math.round(props.data.offerPrice) === Math.round(props.data.price) ?
+                          new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))
+                          :
+                          <del>
+
+                            {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
+                          </del>
+                      }
+
+                    </Typography>
+                  </Grid>
+                  {
+                    Math.round(props.data.offerPrice) === Math.round(props.data.price) ? '' :
+                      <Grid container item xs={12} className={`${classes.offerPricesMain}`}>
+                        {/* <Typography
                     gutterBottom
                     variant="body1"
                     component="span"
@@ -463,38 +499,39 @@ sizes="(max-width: 320px) 320w,
                   >
                     you save &nbsp;
                   </Typography> */}
-                  <Typography
-                    gutterBottom
-                    variant="body1"
-                    component="span"
-                    className={`${classes.youSave} ${classes.youSavePrice}`}
-                  >
-                    {/* 20% Off */}
-                    {
-                    
-                    Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice)) / Math.round(props.data.price)) * 100) + '% off'}
+                        <Typography
+                          gutterBottom
+                          variant="body1"
+                          component="span"
+                          className={`${classes.youSave} ${classes.youSavePrice}`}
+                        >
+                          {/* 20% Off */}
+                          {
 
-                  </Typography>
+                            Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice)) / Math.round(props.data.price)) * 100) + '% off'}
+
+                        </Typography>
+                      </Grid>
+                  }
+
                 </Grid>
-                }
-   
-              </Grid>
-              <Hidden smDown>
-                <Grid container xs={12}>
-                  <Grid item xs={12} className={`${classes.titles}`}>
-                    <Typography variant="body1"
-                      component="span" className={`${classes.titles}`}>
-                      {props.data.title}
-                    </Typography>
 
+                <Hidden smDown>
+                  <Grid container xs={12}>
+                    <Grid item xs={12} className={`${classes.titles}`}>
+                      <Typography variant="body1"
+                        component="span" className={`${classes.titles}`}>
+                        {props.data.title}
+                      </Typography>
+
+                    </Grid>
                   </Grid>
-                </Grid>
-              </Hidden>
+                </Hidden>
 
-            </Grid>
-          </CardContent>
-        </Card>
-      </Link>
+              </Grid>
+            </CardContent>
+          </Card>
+        </Link>
       </Card>
     </div >
   );

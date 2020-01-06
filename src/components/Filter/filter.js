@@ -41,11 +41,11 @@ class Component extends React.Component {
       CardRadio: false,
       checked: {
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
-        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {},  Category:null
+        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {},  category:{}
       },
       checkedArrayObj: {
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
-        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {},  Category:null
+        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {},  category:{}
       },
       selected: [],
       filtercheck: '',
@@ -240,19 +240,23 @@ class Component extends React.Component {
   })
   handleChange(value, BoolName, e, title, TargetName) {
     debugger
-    let pathnameSplit = window.location.pathname.split('/')
-            if(this.state.category === null  || this.state.category === undefined){
-              const splitHiphen = () => {
-                if (pathnameSplit[1].indexOf('-')) {
-                    return pathnameSplit[1].split('-')
-                }
-            }
-            this.setState({category:splitHiphen()[0]})
-            }
+    
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
-
+    let pathnameSplit = window.location.pathname.split('/')
+    if(Object.entries(this.state.category).length === 0 && this.state.category.constructor === Object){
+      const splitHiphen = () => {
+        if (pathnameSplit[1].indexOf('-')) {
+            return pathnameSplit[1].split('-')
+        }
+    }
+    var _category_capital_letter = splitHiphen()[0].charAt(0).toUpperCase() + splitHiphen()[0].slice(1)
+    var _category_obj = {}
+    _category_obj[_category_capital_letter] = true
+    checked['category']= _category_obj
+    this.setState(checked)
+    }
     if (TargetName === undefined) {
       this.props.setloadingfilters(true)
       let checkedvalue = {};
@@ -358,9 +362,24 @@ class Component extends React.Component {
     this.setState({ open: false });
   };
   selectItem = (name) => {
+    var arr1;
     let { selected } = this.state;
-    selected.push(name)
-    this.setState({ selected })
+    var map = selected.map(val => { if (val !== undefined && val !== null) { return val } })
+    if (map.indexOf(name) > -1) {
+      arr1 = selected.filter(val => {
+        if (val !== undefined && val !== null) {
+          if (val !== name) {
+            return val;
+          }
+        }
+      })
+      selected = arr1;
+      this.setState({ selected })
+    } else {
+      // var same =map.indexOf(name)
+      selected.push(name)
+      this.setState({ selected })
+    }
   }
   filterValue = (filtercheck) => {
     if (filtercheck === this.state.filtercheck) {
@@ -633,7 +652,7 @@ class Component extends React.Component {
               className={check ? classes.productCardscheck : classes.productCardsuncheck}
 
             >
-            <ProductLayout data={this.props.datas} loading = {this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
+            <ProductLayout wishlist={this.props.wishlist} data={this.props.datas} loading = {this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
 
             </div>}
         </div>

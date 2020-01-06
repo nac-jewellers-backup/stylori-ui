@@ -28,6 +28,10 @@
   position: relative;
 }
 
+.Component-iconFafa-121 {
+  font-size: 20px !important;
+}
+
 .menuListHoverDiv {
   width: 120px;
   height: 120px;
@@ -64,6 +68,7 @@
   background-color: #fff !important;
   text-align: center !important;
   top: 0;
+  position: inherit !important;
   /* padding-top: 30px; */
   width: 100%;
   line-height: 1.42857143;
@@ -97,6 +102,33 @@
 .MuiBadge-colorSecondary {
   background: #d51f63 !important;
   top: -6px !important;
+}
+
+@media screen and (max-width: 426px) {
+  .MuiBadge-colorSecondary {
+    background: #d51f63 !important;
+    top: -6px !important;
+    margin-top: 7px;
+    margin-right: 2px;
+  }
+}
+
+@media screen and (min-width:426px) and (max-width:959px) {
+  .MuiBadge-colorSecondary {
+    background: #d51f63 !important;
+    top: -6px !important;
+    margin-top: 7px;
+    margin-right: 3px;
+  }
+}
+
+@media screen and (min-width:960px) and (max-width:2560px) {
+  .MuiBadge-colorSecondary {
+    background: #d51f63 !important;
+    top: -6px !important;
+    margin-top: 1px;
+    margin-right: 2px;
+  }
 }
 
 .search {
@@ -146,6 +178,30 @@
   margin-left: 5px;
   text-align: center !important;
   width: 25px;
+}
+
+@media screen and (max-width: 426px) {
+  .mobli-icon1 i {
+    margin-top: 5px;
+    font-size: 17px;
+    cursor: pointer;
+    color: #d51f63 !important;
+    margin-left: 5px;
+    text-align: center !important;
+    width: 25px;
+  }
+}
+
+@media screen and (min-width:426px) and (max-width:959px) {
+  .mobli-icon1 i {
+    margin-top: 5px;
+    font-size: 17px;
+    cursor: pointer;
+    color: #d51f63 !important;
+    margin-left: 5px;
+    text-align: center !important;
+    width: 25px;
+  }
 }
 
 @keyframes pulse_animation {
@@ -259,8 +315,20 @@
 }
 
 .toolbarsetting {
-  padding-left: 4px !important;
-  padding-right: 8px !important;
+  padding-left: 8px !important;
+  padding-right: 4px !important;
+}
+
+.toolbarForpd {
+  padding-left: 8px !important;
+  padding-right: 20px !important;
+}
+
+@media only screen and (max-width: 958px) and (min-width: 428px) {
+  .toolbarForpd {
+    padding-left: 8px !important;
+    padding-right: 35px !important;
+  }
 }
 
 .drawer-arrow {
@@ -313,15 +381,55 @@
   float: right !important;
 }
 
-.header-appbar-sticky1 header {
-  position: sticky;
-  top: 0px;
+.header-appbar-sticky1 header {}
 
+.appbarsilver1 {
+  position: sticky;
+  top: 0px
 }
 
 .logoImgHeader1 {
   display: flex;
   /* justify-content: center; */
+}
+
+.badgesvalue {
+  right: 0;
+  height: 20px;
+  display: flex;
+  padding: 0 4px;
+  z-index: 1;
+  position: absolute;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  min-width: 20px;
+  transform: scale(1) translate(50%, -50%);
+  box-sizing: border-box;
+  transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  align-items: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  align-content: center;
+  border-radius: 10px;
+  flex-direction: row;
+  justify-content: center;
+  transform-origin: 100% 0%;
+  background: #d51f63 !important;
+  top: -6px !important;
+  margin-top: 7px;
+  margin-right: 2px;
+}
+
+@media screen and (max-width: 426px) {
+  .menuRight {
+    padding-bottom: 17px;
+  }
+}
+
+@media screen and (min-width:426px) and (max-width:959px) {
+  .menuRight {
+    padding-bottom: 17px;
+  }
 }
 
 .setHeight {
