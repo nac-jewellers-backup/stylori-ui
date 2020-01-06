@@ -36,6 +36,7 @@ class Stylori extends React.Component {
 
   }
   render() {
+    // alert(JSON.stringify(this.props.wishlist))
     const { data, dataFilter, loading } = this.props
     return (
 

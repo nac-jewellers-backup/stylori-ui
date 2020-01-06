@@ -106,7 +106,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
 
     <LazyLoadImage
       alt={'props.data.title'}
-      effect="blur"
+      effect="blur" 
       src={renderImages(props, cardstate)}
       //  srcset={renderImages(props, cardstate)}
       //      sizes="(max-width: 320px) 320w,
@@ -172,10 +172,8 @@ const handleProductDetatiContext = (props) => {
   props.filters['defaultVariants']['skuSize'] = props.data.skuSize
   props.filters['defaultVariants']['productType'] = props.data.productType
   // props.filters['skuId'] = props.data.generatedSku
-  // props.filters['skuId'] = props.data.skuID
-  
+  props.filters['skuId'] = props.data.skuID
   props.setFilters(props.filters)
-
 }
 
 const useStyles = makeStyles(theme => ({
