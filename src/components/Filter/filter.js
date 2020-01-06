@@ -175,7 +175,7 @@ class Component extends React.Component {
               checked[keys] = values
 
             })
-            this.setState(checked)
+            // this.setState(checked)
           }).catch(function (error) {
             console.log('Request failed', error);
           });
