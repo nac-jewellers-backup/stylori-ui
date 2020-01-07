@@ -65,7 +65,7 @@ class Allorders extends React.Component {
     render() {
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
-        debugger
+        
         // namedetail: [
         //     {
         //         name: "Quality",

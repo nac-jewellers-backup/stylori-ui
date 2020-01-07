@@ -181,7 +181,7 @@ class ProductDetail extends Component {
   }
 }
 const Components = props => {
-  debugger
+  
   let { CartCtx: { allorderdata, wishlistdata } } = React.useContext(CartContext);
   const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating } } = React.useContext(ProductDetailContext);
   const datas = data;

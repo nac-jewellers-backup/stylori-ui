@@ -145,6 +145,7 @@ export default function (data, cdnUrl) {
         mapperdata = [];
     }
     const _format = mapperdata.map(k => {
+        
         let _d;
         try {
             _d = {

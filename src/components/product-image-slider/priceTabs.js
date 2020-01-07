@@ -77,7 +77,7 @@ class Component extends React.Component {
     handleClick = (event, key) => {
         debugger
         console.log('lklkkoik9', this.props)
-        debugger
+        
         var filters = { ...this.props.filters }
         if (key === 'purity') {
             var kv = event.target.id
@@ -102,7 +102,7 @@ class Component extends React.Component {
                 skuSize: event.target.id,
                 diamondType: filters.defaultVariants.diamondType
             })
-            debugger
+            
             this.props.setFilters(filters);
             console.log("filters.defaultVariants.diamondType", filters.defaultVariants.diamondType)
         }
