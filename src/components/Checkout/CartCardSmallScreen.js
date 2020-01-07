@@ -90,7 +90,7 @@ const handleDeleteLocalStorage = (e, val) => {
 
 
                 {dataval.dataCard1.map(val =>
-                  <Pricing price={val.price} offerPrice={val.offerPrice}  >
+                  <Pricing price={val.price} offerPrice={val.offerPrice} offerDiscount={"25% - OFF"}   >
                     <label className={classes.labelPrice}>
                       <Typography
                         variant="subtitle1"
@@ -106,6 +106,13 @@ const handleDeleteLocalStorage = (e, val) => {
                         className={classes.labelPriceOff}
                       >
                         {val.price}
+                      </Typography>
+                      <Typography
+                        variant="subtitle1"
+                        color="textSecondary"
+                        className={classes.labelPriceDel}
+                      >
+                        <del>{val.offerPrice}</del>
                       </Typography>
                     </label>
                   </Pricing>
