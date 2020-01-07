@@ -18,9 +18,7 @@ class ListingPage extends React.Component {
     render() {
         return (
             <Grid container>
-                <Grid item style={{ width: "100%" }}>
                     <Header />
-                </Grid>
                 <Container>
                     <Grid item xs={12}>
                         <Filter data={this.props.dataFilters} />

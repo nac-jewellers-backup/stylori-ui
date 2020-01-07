@@ -19,20 +19,16 @@ const RegisterComponent = (props) => {
     const { classes } = props;
     const { values, handlers } = useRegister();
     return (
-        <>
-            <Grid container spacing={12} >
-                <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
-                    <Header />
-                </Grid>
-            </Grid>
+        <Grid container  >
+            <Header />
             <Grid spacing={12} container lg={12} style={{ padding: "3%" }}>
-                    <Grid item xs={6} lg={6} xs={12}>
-                        <div >
-                            <img width="100%" height="100%" src="https://assets-cdn.stylori.com/images/static/inner-page/banner.png" />
-                        </div>
-                    </Grid>
-                    <Grid item xs={6} lg={6} xs={12}>
-                <Container>
+                <Grid item xs={6} lg={6} xs={12}>
+                    <div >
+                        <img width="100%" height="100%" src="https://assets-cdn.stylori.com/images/static/inner-page/banner.png" />
+                    </div>
+                </Grid>
+                <Grid item xs={6} lg={6} xs={12}>
+                    <Container>
                         {/* <div className='pt-sm' style={{ width: "90%", float: "right" }}>
                         <form action="javascript:void(0)" onSubmit={(e) => {
                             handlers.handleSubmit(e, props)
@@ -122,17 +118,17 @@ const RegisterComponent = (props) => {
                             marginRight: "50%"
                         }} onClick={() => { window.location.pathname = "/login" }} >Back to login</div>
 
-</Container>   </Grid>
-                    {/* </Grid> */}
-                    {/* </form>
+                    </Container>   </Grid>
+                {/* </Grid> */}
+                {/* </form>
                     </div> */}
-                    {/* </Grid> */}
+                {/* </Grid> */}
 
-                 </Grid>
+            </Grid>
             <Grid item xs={12}>
                 <Footer />
             </Grid>
-        </>
+        </Grid>
     )
 }
 

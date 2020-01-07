@@ -4,6 +4,7 @@ import './loginRegisters.css'
 import { Input } from '../../../components/InputComponents/TextField/Input'
 import SimpleSelect from '../../../components/InputComponents/Select/Select';
 import useRegister from './useregister';
+import { NavLink } from 'react-router-dom';
 
 const Register = (props) => {
     return <RegisterComponent  {...props} />
@@ -25,7 +26,7 @@ const RegisterComponent = (props) => {
             }} action="javascript:void(0)" >
                 <Grid container>
 
-                    <Grid item xs={12} lg={window.location.pathname === "/registers" ||paths ? 12 : 6}  >
+                    <Grid item xs={12} lg={window.location.pathname === "/registers" || paths ? 12 : 6}  >
 
                         <Grid class="topPaddingwish">
                             {window.location.pathname.split("-")[0] !== "/account" &&
@@ -73,8 +74,8 @@ const RegisterComponent = (props) => {
                                                 readOnly: true,
                                             }}
                                         /> </Grid>
-                                    <Grid item xs={6} sm={3} lg={4} style={{ textAlign: "center", lineHeight: "66px", color: "#337ab7",paddingLeft:"8px" }}>
-                                        <a style={{display:"flex",justifyContent:"left"}}> Change password </a> </Grid>
+                                    <Grid item lg={6} style={{ textAlign: "center", lineHeight: "66px", color: "#337ab7" }}>
+                                        <NavLink to="/changepassword">  Change password </NavLink> </Grid>
                                 </Grid> : <>
                                     <Input
                                         margin="normal"

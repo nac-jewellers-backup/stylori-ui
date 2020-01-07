@@ -76,11 +76,7 @@ class ProductDetail extends Component {
         </div>
 
         <Hidden smDown>
-          <Grid container >
-            <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
               <Header wishlist={this.props.wishlistdata} />
-            </Grid>
-          </Grid>
 
           <Grid Container spacing={12} style={{ maxWidth: "1600px", margin: "auto" }}>
             <Grid item xs={12}>

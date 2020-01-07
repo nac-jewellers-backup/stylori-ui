@@ -50,15 +50,10 @@ class Cart extends React.Component {
         const { data, classes } = this.props
         let path = window.location.pathname.split('/').pop();
         return (
-            <div>
+            <Grid container>
                 <Hidden smDown>
-                    <Grid container spacing={12}
-                    //  style={{ position: 'sticky', top: '0', zIndex: '1000' }}
-                    >
-                        <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
+                   
                             <Header wishlist={this.props.wishlistdata} />
-                        </Grid>
-                    </Grid>
                     {path === "checkout" ? "" :
                         <CustomSeparator
                             arrowicon='cart-head-arrows'
@@ -103,7 +98,7 @@ class Cart extends React.Component {
                         </Grid>
                     </Grid>
                 </Hidden>
-            </div>
+            </Grid>
         )
     }
 }
