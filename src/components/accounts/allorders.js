@@ -154,7 +154,7 @@ class Allorders extends React.Component {
                                                                 <div className="wishlist_img">
                                                                     <img className="viewport-img" src={`https://assets.stylori.net/base_images/${imgs.imageUrl}`}
                                                                     />
-                                                                </div>
+                                                                </div> 
                                                             ))}
                                                         </Grid>
                                                         <Grid item lg={4} sm={4}>
