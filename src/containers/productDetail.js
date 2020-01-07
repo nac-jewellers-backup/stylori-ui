@@ -178,7 +178,6 @@ class ProductDetail extends Component {
               <Footer />
             </Grid>
             <Buynowfixed data={this.props.data} />
-          </div>
         </Hidden>
 
       </div>
