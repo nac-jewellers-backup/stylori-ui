@@ -22,9 +22,7 @@ class ListingPage extends React.Component {
         const {dataFilters } = this.props
         return (
             <Grid container>
-                <Grid item style={{ width: "100%" }}>
                     <Header />
-                </Grid>
                 <Container>
                     <Grid item xs={12}>
                     <ProductDescription title="Jewellery" data={dataFilters} wishlist={this.props.wishlistdata} />

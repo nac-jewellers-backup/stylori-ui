@@ -36,11 +36,11 @@ function HeaderHoverMenuItem(props) {
             <Grid className={classes.subtopic1} style={{width:`${props._width}`}}>
               {
                 !props.filters &&
-                (props.listHoverItem !== undefined) && mapper &&
+                (props.listHoverItem) && mapper &&
                 (mapper).map(menuList =>
                   (
                     <ListItem onMouseOver={(event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }} className={classes.listedItems} component="li"
-                      onClick={() => { window.location.href = '/' + menuList.url }}
+                      onClick={() => { window.location.href = menuList.url }}
                     >
                       <ListItemText variant>
                         <Typography className={classes.listedItemsvalue}>
@@ -50,11 +50,8 @@ function HeaderHoverMenuItem(props) {
                             menuList}
                         </Typography>
                       </ListItemText>
-
                     </ListItem>
-
                   ))
-
               }
               {
                 props.filters && mapper &&
@@ -85,7 +82,7 @@ function HeaderHoverMenuItem(props) {
                 (props.listHoverItem['menuTwo']).map(menuList =>
                   (
                     <ListItem onMouseOver={(event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }} className={classes.listedItemsub} component="li"
-                      onClick={() => { window.location.href = '/' + menuList.url }}
+                      onClick={() => { window.location.href = menuList.url }}
                     >
                       <ListItemText variant >
                         <Typography className={classes.listedItemsvalue} >

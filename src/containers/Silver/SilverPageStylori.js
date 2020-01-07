@@ -16,9 +16,7 @@ class HomeStylori extends React.Component {
     render() {
         return (
             <Grid container>
-                <Grid item style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
                     <Header />
-                </Grid>
                 <CarosolTop />
                 <ProductModal />
                 <MultipleSections />

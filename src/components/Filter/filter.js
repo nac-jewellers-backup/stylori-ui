@@ -177,7 +177,7 @@ class Component extends React.Component {
 
             })
             this.setState(checked)
-            this.setState({chipData})
+            this.setState({chipData},() => this.props.setFilters(checked))
           }).catch(function (error) {
             console.log('Request failed', error);
           });

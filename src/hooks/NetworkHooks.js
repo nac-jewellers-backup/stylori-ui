@@ -2,7 +2,7 @@ import React from 'react';
 import { NetworkContext } from '../context/NetworkContext';
 import { FieldsOnCorrectType } from 'graphql/validation/rules/FieldsOnCorrectType';
 import { circIn } from '@popmotion/easing';
-let accessTokens = localStorage.getItem("accessToken") ? localStorage.getItem("accessToken") : ""
+let accessTokens;
 
 export const useDummyRequest = (mapper) => {
     const [loading, setLoading] = React.useState(false);
@@ -40,7 +40,13 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
     // PARSE FOR NETWORK REQUEST
     const method = data ? 'POST' : 'GET';
     let url = `${apiUrl}${urlSignin}`
-    const makeFetch = (bodyvar) => {
+    const makeFetch = (bodyvar, header) => {
+        if (header) {
+            accessTokens = header
+        }
+        else {
+            accessTokens = localStorage.getItem("accessToken") ? localStorage.getItem("accessToken") : ""
+        }
         // console.log('bodyvar',typeof bodyvar)
         // body = typeof body === "string" ? body : JSON.stringify(body)
         const bodyvariable = typeof body === "string" ? body : JSON.stringify(body)
