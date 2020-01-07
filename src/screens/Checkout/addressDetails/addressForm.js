@@ -103,7 +103,6 @@ const AddressComponent = (props) => {
                                             // helperText="Pin Code is required"
                                             // required 
                                             />
-
                                             <label className='errtext'> {values.addressOne && values.addressOne.errortext && values.addressOne.errortext.pinerr}</label>
                                         </Grid>
                                     </Grid>
