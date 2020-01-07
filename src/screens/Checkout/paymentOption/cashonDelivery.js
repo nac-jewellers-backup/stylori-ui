@@ -51,7 +51,7 @@ class CashonDelivey extends React.Component {
         localStorage.removeItem("cartDetails")
         localStorage.removeItem("panel")
         localStorage.removeItem("ship_isactive")
-        localStorage.removeItem("bil_isactive")
+        localStorage.removeItem("bil_isactive") 
     }
     componentDidUpdate(prevProps, prevState) {
         if (this.state.res_data !== prevState.res_data) {
