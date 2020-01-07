@@ -34,7 +34,7 @@ class LoginRegisterIndex extends React.Component {
         return (
             <Grid container>
                 {local_mail ?
-                    <div> <span style={{
+                    <div style={{paddingLeft:"30px"}}> <span style={{
                         color: "#394578",
                         fontSize: "15px",
                         fontWeight: "700"

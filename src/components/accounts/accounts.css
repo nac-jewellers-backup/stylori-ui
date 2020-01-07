@@ -109,12 +109,13 @@
     font-size: 13px;
     justify-content: left;
     float: left !important;
+    line-height: 1.8;
+
 }
 
 .order_addres_user div {
     font-size: 13px;
     float: left !important;
-    
 }
 
 
