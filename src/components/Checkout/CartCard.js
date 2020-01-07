@@ -83,7 +83,7 @@ class Checkoutcard extends React.Component {
         //     })
         // },[data])
         return (
-            <div style={{ marginTop: "10px",paddingLeft:"10px" }}>
+            <div style={{ marginTop: "10px"}}>
                 <Grid container>
                     <Grid xs={12} />
                     <Grid xs={12}>
@@ -91,13 +91,13 @@ class Checkoutcard extends React.Component {
                 </Grid><br />
                 {this.props.data.map(dataval => (
                     dataval.productsDetails.map(val => (
-                        <div style={{padding:"10px",outline:"none",marginBottom:"10px",boxShadow: "1px 2px 13px 7px #DEDADA"}} className={classes.cart}>
+                        <div style={{ outline: "none", marginBottom: "10px", boxShadow: "1px 2px 13px 7px #DEDADA" }} className={classes.cart}>
                             <Grid container spacing={12} xs={12}  >
                                 {/* {window.location.pathname !== "/checkout" ?
                                     <Grid item xs={1}  >
                                         <a>Redirect</a>
                                     </Grid> : ""} */}
-                                <Grid item xs={3} sm={3} style={{ display: "flex", alignContent: "center",alignItems: "center",border:" 0.5px solid #0000001f",padding:"1px"}}>
+                                <Grid item xs={3} sm={3} style={{ display: "flex", alignContent: "center", alignItems: "center", border: " 0.5px solid #0000001f", padding: "1px" }}>
                                     <Card className="product-image-thumb">
                                         {/* <CardHeader style={{ padding: "0px", paddingTop: "10px" }}
                                             id={dataval.generatedSku}
@@ -214,7 +214,7 @@ class Checkoutcard extends React.Component {
         return (
             <div style={{ marginTop: "10px" }} >
                 <Grid container spacing={12}>
-                    <Grid item xs={6}  />
+                    <Grid item xs={6} />
                     <Grid item xs={6} >
                         {/* {dataCard1.map(val => */}
                         <Grid container>
@@ -268,11 +268,11 @@ class Checkoutcard extends React.Component {
         let path = window.location.pathname.split('/').pop();
 
         return (
-            <div>
+            <Grid >
                 <Hidden smDown>
-                    {window.location.pathname==="/cart"?<Container>
+                    {window.location.pathname === "/cart" ? <Container>
                         {this.row(this.props)}
-                    </Container>:
+                    </Container> :
                         <>{this.row(this.props)}</>}
                 </Hidden>
                 <Hidden smUp>
@@ -283,7 +283,7 @@ class Checkoutcard extends React.Component {
                     />
                     {this.subtotals(this.props)}
                 </Hidden>
-            </div>
+            </Grid>
         )
     }
 

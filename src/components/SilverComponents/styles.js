@@ -148,7 +148,7 @@ export const useStyles = makeStyles(theme => ({
   },
   mouseOverPopover: {
     zIndex: 1000,
-    top: '17px !important',
+    // top: '17px !important',
     backgroundColor: theme.palette.background.fade,
     color: 'white',
     '& span': {
