@@ -91,13 +91,13 @@ class Checkoutcard extends React.Component {
                 </Grid><br />
                 {this.props.data.map(dataval => (
                     dataval.productsDetails.map(val => (
-                        <div className={classes.cart}>
+                        <div style={{paddingBottom:"10px"}} className={classes.cart}>
                             <Grid container spacing={12} xs={12}  >
                                 {/* {window.location.pathname !== "/checkout" ?
                                     <Grid item xs={1}  >
                                         <a>Redirect</a>
                                     </Grid> : ""} */}
-                                <Grid item xs={3} style={{ display: "flex", alignContent: "center",alignItems: "center",border:" 0.5px solid #0000001f",padding:"1px",    borderRadius: "10px" }}>
+                                <Grid item xs={3} sm={3} style={{ display: "flex", alignContent: "center",alignItems: "center",border:" 0.5px solid #0000001f",padding:"1px",    borderRadius: "10px" }}>
                                     <Card className="product-image-thumb">
                                         {/* <CardHeader style={{ padding: "0px", paddingTop: "10px" }}
                                             id={dataval.generatedSku}
@@ -115,7 +115,7 @@ class Checkoutcard extends React.Component {
                                     </Card>
                                 </Grid>
 
-                                <Grid item xs={5} style={{ padding: "13px" }}>
+                                <Grid item xs={5} sm={6} lg={5} style={{ padding: "13px" }}>
                                     {window.location.pathname !== "/checkout" ? <NavLink to={`jewellery/${dataval.productType}/${dataval.materialName[0]}/${val.pro_header}?skuId=${dataval.generatedSku}`} style={{ textDecoration: 'none' }}>
                                         <h3 class={`title ${classes.normalfonts}`}>{val.pro_header}</h3>
                                     </NavLink> : <h3 class={`title ${classes.normalfonts}`}>{val.pro_header}</h3>}
@@ -146,7 +146,7 @@ class Checkoutcard extends React.Component {
                                     </Grid>
                                 </Grid>
 
-                                <Grid item xs={4} >
+                                <Grid item xs={4} sm={3} lg={4} >
                                     <div style={{ marginTop: "15%" }}>
                                         {dataval.dataCard1.map(val =>
                                             <Pricing
@@ -270,9 +270,10 @@ class Checkoutcard extends React.Component {
         return (
             <div>
                 <Hidden smDown>
-                    <Container>
+                    {window.location.pathname==="/cart"?<Container>
                         {this.row(this.props)}
-                    </Container>
+                    </Container>:
+                        <>{this.row(this.props)}</>}
                 </Hidden>
                 <Hidden smUp>
                     <CardSmallScreen data={this.props.data}

@@ -45,7 +45,6 @@ class Component extends React.Component {
     componentWillReceiveProps() {
         if (this.props && this.props.clear_rating && this.props.clear_rating.length > 0) {
             this.setState({ starsSelected: "" })
-
         }
 
     }

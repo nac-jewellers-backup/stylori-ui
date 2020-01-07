@@ -21,7 +21,7 @@ const AddressComponent = (props) => {
     var isedit = (localStorage.getItem("isedit"));
     const aa = localStorage.getItem("m") ? localStorage.getItem("m") : values.addressOne.salutation
     return (
-        <Container>
+        <Grid>
             <div>
                 {(isedit === '1' ? true : false) && values.addrs === true ?
                     <div className='pt-sm'>
@@ -334,7 +334,7 @@ const AddressComponent = (props) => {
                     </div>
                     : <Addressdetails open={values.open} setOpen={values.setOpen} handleClose={handle.handleClose} handleOpen={handle.handleOpen} Delete_address={handle.Delete_address} selectaddreses={handle.selectaddreses} values={values} setValues={setValues} changevalue={props.changePanel} redirectForm1={handle.redirectForm1} redirectForm={handle.redirectForm} />}
             </div>
-        </Container>
+        </Grid>
     )
 }
 export default Addressform;

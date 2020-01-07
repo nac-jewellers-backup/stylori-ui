@@ -33,8 +33,8 @@ const useRating = (props) => {
     // const { setratingcounts } = React.useContext(ProductDetailContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CUSTOMERREVIEWS, () => { }, {});
     const clear = () => {
-        
-        props.clear_rating_onchange()
+        debugger
+        props && props.clear_rating_onchange && props.clear_rating_onchange()
         setValues({
             user_id: "",
             rate: "",
@@ -44,7 +44,7 @@ const useRating = (props) => {
             message: "",
             errortext: {
                 rateerr: "",
-                ratetitle: "",
+                ratetitle: "", 
                 ratemsg: "",
             },
             error: {
@@ -54,7 +54,7 @@ const useRating = (props) => {
             },
         })
         setratingcountsclear({ ratingcountsclear: '123' })
-     }
+    }
     const count = localStorage.getItem("count") ? localStorage.getItem("count") : ""
     // variab['productSku'] = values.product_sku
     // var rat_sate = values.error&&values.error.rateerr

@@ -154,7 +154,6 @@ class Component extends React.Component {
             //     // this.handleChange(()=>{}, true, ()=>{}, {}, paramsfilter)
 
             // })
-            
             paramsfilter = data && data.data && data.data.allSeoUrlPriorities && data.data.allSeoUrlPriorities.nodes && data.data.allSeoUrlPriorities.nodes.map(val => {
               var attrName = val.attributeName.replace(/\s/g, '')
               var attrVal = val.attributeValue
@@ -167,13 +166,14 @@ class Component extends React.Component {
 
               // return val
             })
-            
             // this.setState(checked)
             Object.entries(paramsfilter[0]).map(val => {
               var keys = val[0]
               var values = val[1]
               checked[keys] = values
-              chipData.push({ key: chipData, label: Object.keys(values), title: keys });
+              if(keys!=="Category"){
+                chipData.push({ key: chipData, label: Object.keys(values), title: keys });
+              }
 
             })
             this.setState(checked)
@@ -312,8 +312,8 @@ class Component extends React.Component {
     };
     this.setState({
       chipData
-    }, () => this.props.setFilters(checked))
-    
+    },() => this.props.setFilters(checked))
+    // , () => this.props.setFilters(checked)
     // alert(JSON.stringify(this.state.checked))
   }
 
@@ -337,7 +337,7 @@ class Component extends React.Component {
     this.setState({
       chipData,
       checked
-    })
+    },() => this.props.setFilters(checked))
     // console.log("valssss",chipData,checked)
     // alert(JSON.stringify(data))
     // this.setState(state => {

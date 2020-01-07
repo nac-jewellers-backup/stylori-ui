@@ -698,7 +698,7 @@ body {
 
 .imagecard {
     width: 100% !important;
-    height: 600px !important;
+    /* height: 600px !important; */
     border: 1px solid #ccc;
     counter-increment: inherit;
     /* height: 450px !important; */
@@ -1078,8 +1078,8 @@ body {
 
 .pagetabs {
     text-align: center !important;
-    height: 50px !important;
-    width:60%;
+    width: 50px;
+    height: 50px;
     /* border: 1px solid #9d9d9d  !important; */
     border-radius: 100%;
     /* margin-bottom: 6px; */
@@ -1089,20 +1089,20 @@ body {
 @media only screen and (max-width: 480px) {
     .pagetabs {
         text-align: center !important;
-        height: 50px !important;
-        width: 100% !important;
-        margin-bottom: 6px;
+        height:50px !important;
+        width: 50px !important;
+        /* margin-bottom: 6px; */
         /* border: 1px solid #9d9d9d  !important; */
-       border-radius: 100%;
+       border-radius: 50%;
 
         outline: none !important;
     }
 
     .pagetabslst {
         text-align: center !important;
-        height: 50px;
-        width: 100% !important;
-        /* border: 1px solid #9d9d9d  !important; */
+        height:50px !important;
+        width: 50px !important;
+        /* border: 1px solid #9d9d9d  !important; */ 
         border-radius: 100%;
         outline: none !important;
 
@@ -1111,8 +1111,8 @@ body {
 
 .pagetabslst {
     text-align: center !important;
+    width: 50px;
     height: 50px;
-    width: 60%;
     /* border: 1px solid #9d9d9d  !important; */
     border-radius: 100%;
     outline: none !important;
@@ -1126,8 +1126,8 @@ body {
 .page {
     display: inline-block !important;
     text-align: center !important;
+    width: 50px;
     height: 50px;
-    width: 80%;
     border-radius: 100%;
     background: #fff;
     box-shadow: inset 0px 1px 0px rgba(255, 255, 255, .8), 0px 1px 3px rgba(0, 0, 0, .1);
@@ -1145,7 +1145,6 @@ body {
     color: #394578 !important;
     width: 100% !important;
     padding: 10px;
-
     line-height: 13px;
     text-transform: capitalize;
     text-align: justify;
@@ -1175,8 +1174,8 @@ body {
     border: 2px solid #ed1165cf !important;
     border-radius: 100% !important;
     text-align: center !important;
-    height: 50px !important;
-    width: 60%;
+    width: 50px;
+    height: 50px;
     outline: none !important;
 }
 
@@ -1185,8 +1184,8 @@ body {
         border: 2px solid #ed1165cf !important;
         border-radius: 100% !important;
         text-align: center !important;
-        height: 50px !important;
-        width: 100% !important;
+        width: 50px;
+        height: 50px;
         outline: none !important;
     }
 
@@ -1194,8 +1193,8 @@ body {
         border: 2px solid #ed1165cf !important;
         border-radius: 100% !important;
         text-align: center !important;
-        height: 50px !important;
-        width: 100% !important;
+        width: 50px;
+        height: 50px;
         outline: none !important;
 
     }
@@ -1205,17 +1204,17 @@ body {
     border: 2px solid #ed1165cf !important;
     border-radius: 100% !important;
     text-align: center !important;
-    height: 50px !important;
-    width: 60%;
+    width: 50px;
+    height: 50px;
     outline: none !important;
 
 }
 
 .dark {
     text-align: center !important;
-    height: 40px !important;
-    width: 90% !important;
-    border-radius: 15% !important;
+    width: 50px;
+    height: 50px;
+    border-radius: 100% !important;
     color: #fff !important;
     outline: none !important;
     cursor: pointer;
