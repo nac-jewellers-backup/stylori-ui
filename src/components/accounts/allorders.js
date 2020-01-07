@@ -14,19 +14,22 @@ import "./accounts.css";
 import '../Checkout/Cart.css'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import moment from "moment";
+import Pricing from "../Pricing/index";
 function myFunc(total, num) {
     return Math.round(total + num);
 }
 class Allorders extends React.Component {
     state = {
-        expanded: null,
+        expanded: [],
     }
 
     handleChange = panel => (event) => {
+       
         const { expanded } = this.state;
-        var valus = expanded === panel ? null : panel
+        var valus = expanded === panel ? "" : panel
+        expanded.push(JSON.stringify(valus))
         this.setState({
-            expanded: valus,
+            expanded,
         });
     };
 
@@ -65,7 +68,7 @@ class Allorders extends React.Component {
     render() {
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
-        debugger
+        
         // namedetail: [
         //     {
         //         name: "Quality",
@@ -86,6 +89,7 @@ class Allorders extends React.Component {
         //         name: "Product Code",
         //         details: k.generatedSku
         //     }],
+        const expanded_ = expanded.map(val => { return val })
         return (
             <>
                 {/* allorderdata.nodes */}
@@ -97,15 +101,16 @@ class Allorders extends React.Component {
                             {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map((val, index) => (
                                 <ExpansionPanel
                                     square
-                                    expanded={expanded === index}
-                                    onChange={this.handleChange(index)}
-                                    style={{ boxShadow: "none", boxShadow: "rgb(242, 242, 242) 4px 10px 20px 5px" }}
+                                    // expanded={expanded.map(val=>val===index)}
+                                    // onChange={this.handleChange(index)}
+                                    style={{ boxShadow: "none", boxShadow: "rgb(242, 242, 242) 4px 10px 20px 5px"}}
                                     key={index}
+                                    style={{ marginBottom: "10px" }}
                                 >
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
+                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{paddingRight:"15px"}} className='arrow-chek' />} className='ckcut-main-body'>
                                         <Typography className='text-chck'>
 
-                                            Order Number : #{val.id} &nbsp;|&nbsp; Order Date : {moment(val.createdAt).format('MMM Do YYYY')}
+                                            Order Number : #{val.id} &nbsp;|&nbsp; Order Date : {moment(val.createdAt).format('Do MMMM YYYY')}
                                             <div style={{ float: "right" }}><Button className="bton_submit">SUBMITTED</Button> </div></Typography>
                                     </ExpansionPanelSummary >
                                     <ExpansionPanelDetails
@@ -113,13 +118,13 @@ class Allorders extends React.Component {
                                         <div className="address_details">
                                             {/* {val.shoppingCartByCartId.cartAddressesByCartId.nodes.map(addreses => ( */}
                                             <div style={{ width: "100%", marginBottom: "10px" }}>
-                                                <Grid container spacing={12} lg={12} style={{ textAlign: "center" }}>
-                                                    <Grid item lg={6} className="order_addres">
+                                                <Grid container spacing={12} lg={12} xs={12} >
+                                                    <Grid item sm={6} lg={6} xs={12} className="order_addres">
                                                         <div> <b>Order Number</b>:#{val.id}</div><br />
-                                                        <div><b>Order Date	</b> : {moment(val.createdAt).format('MMM Do YYYY')}</div><br />
+                                                        <div><b>Order Date	</b> : {moment(val.createdAt).format('Do MMMM YYYY')}</div><br />
                                                         <div> <b>Payment Method</b>: Cash On Delivery</div>
                                                     </Grid>
-                                                    <Grid item lg={6} className="order_addres_user">
+                                                    <Grid item sm={6} lg={6} xs={12} className="order_addres_user">
                                                         <div><b>Shipping Address :</b></div><br />
                                                         <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}&nbsp;
                                                             {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].lastname}</div><br />
@@ -127,10 +132,11 @@ class Allorders extends React.Component {
                                                         <div>  {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].city}
                                                             {"-" + val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].pincode}</div>
                                                         <br />
+                                                        <br />
                                                         {val.shoppingCartByCartId && val.shoppingCartByCartId.giftwrapsByCartId && val.shoppingCartByCartId.giftwrapsByCartId.nodes && val.shoppingCartByCartId.giftwrapsByCartId.nodes.length > 0 ? <>
-                                                            <div> <b>gift To</b> :
+                                                            <div> <b>Gift to</b> :
                                                         {val.shoppingCartByCartId.giftwrapsByCartId.nodes[0].giftTo}</div>
-                                                            <br /><div> <b>gift message</b> :
+                                                            <br /><div> <b>Gift message</b> :
                                                         {val.shoppingCartByCartId.giftwrapsByCartId.nodes[0].message}</div></> : ""}
                                                         {/* <div></div> */}
                                                     </Grid>
@@ -141,8 +147,8 @@ class Allorders extends React.Component {
                                             {val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => (
                                                 <>
                                                     <br />
-                                                    <Grid container spacing={12} lg={12}>
-                                                        <Grid item lg={2}>
+                                                    <Grid container spacing={12} lg={12} style={{ outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "8px" }}>
+                                                        <Grid item lg={2} sm={2}  >
                                                             {cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs => (
                                                                 <div className="wishlist_img">
                                                                     <img className="viewport-img" src={`https://assets.stylori.net/base_images/${imgs.imageUrl}`}
@@ -150,10 +156,11 @@ class Allorders extends React.Component {
                                                                 </div>
                                                             ))}
                                                         </Grid>
-                                                        <Grid item lg={4}>
+                                                        <Grid item lg={4} sm={4}>
                                                             <Grid container spacing={12} lg={12} style={{ lineHeight: "20px" }}>
+
                                                                 <b style={{ width: "100%" }}> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
-                                                                <Grid item lg={6}>
+                                                                <Grid item lg={6} sm={6}>
                                                                     {/* {cart.transSkuListByProductSku.skuWeight.length > 0 ? */}
                                                                     <Typography className="subhesder">Gold Weight</Typography>
                                                                     {/* : ""} */}
@@ -162,41 +169,40 @@ class Allorders extends React.Component {
                                                                     <Typography className="subhesder">Diamond Weight</Typography>
                                                                     {/* : ""} */}
                                                                     {/* {cart.transSkuListByProductSku.generatedSku.length > 0 ? */}
-                                                                    <Typography className="subhesder">Product Code</Typography>
                                                                     {/* : ""} */}
 
                                                                     {/* {cart.transSkuListByProductSku&&cart.transSkuListByProductSku.purity&&cart.transSkuListByProductSku.purity.length > 0 ? */}
                                                                     <Typography className="subhesder">
-                                                            {cart.transSkuListByProductSku&&cart.transSkuListByProductSku.purity&&cart.transSkuListByProductSku.purity.length > 0 ?"Metal":""} </Typography>
+                                                                        {cart.transSkuListByProductSku && cart.transSkuListByProductSku.purity && cart.transSkuListByProductSku.purity.length > 0 ? "Metal" : ""} </Typography>
                                                                     {/* : ""} */}
                                                                     <Typography className="subhesder">
-                                                                          {cart.transSkuListByProductSku.productListByProductId&&cart.transSkuListByProductSku.productListByProductId.sizeVarient&&cart.transSkuListByProductSku.productListByProductId.sizeVarient.length > 0 ?
-                                                                     "Ring"
-                                                                     : ""}
+                                                                        {cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.sizeVarient && cart.transSkuListByProductSku.productListByProductId.sizeVarient.length > 0 ?
+                                                                            "Ring"
+                                                                            : ""}
                                                                     </Typography>
+                                                                    <Typography className="subhesder">Product Code</Typography>
                                                                 </Grid>
-                                                                <Grid item lg={6}>
+                                                                <Grid item lg={6} sm={6}>
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.skuWeight + " " + "GM"}
                                                                     </Typography>
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight + " " + "CT"}
                                                                     </Typography>
-                                                                    <Typography className="subhesder">
-                                                                        {cart.transSkuListByProductSku.generatedSku}
-                                                                    </Typography>
+                                                                    
 
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.purity + ""}{cart.transSkuListByProductSku.metalColor}
                                                                     </Typography>
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.productListByProductId.sizeVarient}
-
                                                                     </Typography>
-                                                                </Grid>
+                                                                    <Typography className="subhesder">
+                                                                        {cart.transSkuListByProductSku.generatedSku}
+                                                                    </Typography>  </Grid>
                                                             </Grid>
                                                         </Grid>
-                                                        <Grid item lg={4} style={{ padding: "30px" }}>
+                                                        <Grid item lg={3} sm={3} style={{ padding: "24px" }}>
                                                             <Grid container spacing={12} lg={12}>
                                                                 <Typography className="subhesder">Quantity 1</Typography>
                                                                 <Typography className="subhesder">
@@ -206,16 +212,21 @@ class Allorders extends React.Component {
                                                         </Grid>
 
 
-                                                        <Grid style={{ padding: "30px" }} className="rups" item lg={2}>
-                                                            {cart.price > cart.transSkuListByProductSku.markupPrice ?
+                                                        <Grid style={{ padding: "10px", justifyContent: "center", display: "flex", alignItems: "center" }} className="rups" item lg={3} sm={3}>
+                                                            {/* {cart.price > cart.transSkuListByProductSku.markupPrice ?
                                                                 <del style={{ color: "rgba(0, 0, 0, 0.54)", fontSize: "18px" }}>{(Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.markupPrice)))}</del>
                                                                 : ""}<br />
-                                                            {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.discountPrice))}
+                                                            {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.discountPrice))} */}
+                                                            <Pricing
+                                                                price={cart.transSkuListByProductSku.markupPrice}
+                                                                offerPrice={cart.transSkuListByProductSku.discountPrice}
+                                                                offerDiscount={"25% - OFF"}
+                                                            ></Pricing>
                                                         </Grid>
                                                     </Grid></>
                                             ))}
 
-                                            <div style={{ float: "right", fontSize: "15px" }} >
+                                            <div style={{ float: "right", fontSize: "15px", lineHeight: "1.5" }} >
                                                 Sub Total&nbsp;{this.calculatetotal(val)}<br />
                                                 Shipping&nbsp;FREE<br />
                                                 Shipping Insurance&nbsp;FREE<br />

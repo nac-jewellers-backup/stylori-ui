@@ -53,7 +53,7 @@ export const TabsProvider = (props) => {
         setvieweddata(vieweddata)
     }, [vieweddata, price, data])
     useEffect(() => {
-        debugger
+        
         if (filters.productId === "") {
             if (window.location.search.length > 0) {
                 let loc = window.location.search.split('=')
@@ -64,7 +64,7 @@ export const TabsProvider = (props) => {
             }
             else {
                 var urls = window.location.href
-                debugger
+                
                 var urlssplit = urls.split('/');
                 var urlReplace = urlssplit[urlssplit.length - 1].replace(/-/g, ' ')
                 variables = { productnamefilter: { productListByProductId: { 'productName': { equalTo: urlReplace } } }, number: 1 }
@@ -225,7 +225,7 @@ if(data && Object.entries(data).length > 0 && data.constructor === Object && dat
         }
     }, [loading, error, data, price])
     const updateProductList = async() => {
-        debugger
+        
         if (Object.entries(variables).length !== 0 && variables.constructor === Object) {
           await  makeRequest(variables);
         }
@@ -236,7 +236,7 @@ if(data && Object.entries(data).length > 0 && data.constructor === Object && dat
 
     }
     const handleProductDetatiContext = () => {
-        debugger
+   
         // filters['defaultVariants'] = {
         //     ...data.allTransSkuLists.nodes[0]
         // }
@@ -261,7 +261,7 @@ if(data && Object.entries(data).length > 0 && data.constructor === Object && dat
 
     }
     useEffect(() => {
-        debugger
+        
         if (Object.entries(data).length !== 0 && data.constructor === Object) {
             if (data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
                 filters['defaultVariants']['diamondType'] = data.data.allTransSkuLists.nodes[0].diamondType

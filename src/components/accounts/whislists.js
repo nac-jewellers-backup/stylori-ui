@@ -54,9 +54,9 @@ class Component extends React.Component {
                                             <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} />
                                         </div>
                                     </Grid>
-                                    <Grid item  xs={12} sm={5}  lg={5}>
+                                    <Grid item  xs={5} sm={3}  lg={3}>
                                    
-                                        <div className="wishlist_img" style={{float:"left"}}>
+                                        <div className="wishlist_img" >
                                             <img className="viewport-img" src={`https://assets.stylori.net/base_images/${first_map.productListByProductId.productImagesByProductId.nodes[0].imageUrl}`
                                             } />
                                          </div></Grid>

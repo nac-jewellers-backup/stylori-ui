@@ -30,7 +30,7 @@ class Component extends React.Component {
         this.change = this.change.bind(this)
     }
     change(starsSelected) {
-        debugger
+        
         this.props && this.props.clear_rating_onchange && this.props.clear_rating_onchange(false)
         this.setState({ starsSelected })
         this.props.setratingcounts({ ratingcounts: starsSelected })
@@ -45,7 +45,6 @@ class Component extends React.Component {
     componentWillReceiveProps() {
         if (this.props && this.props.clear_rating && this.props.clear_rating.length > 0) {
             this.setState({ starsSelected: "" })
-
         }
 
     }
@@ -54,7 +53,7 @@ class Component extends React.Component {
         // alert(JSON.stringify(this.props.setratingcountsclear))
         const { totalStars } = this.props;
         const { starsSelected } = this.state;
-        debugger
+        
         return (
             <div class={this.props.ratings}>
                 {[1, 2, 3, 4, 5].map((n, i) =>

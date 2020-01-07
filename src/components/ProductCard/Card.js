@@ -165,12 +165,13 @@ export default trackWindowScroll(Gallery);
 
 //           />
 const handleProductDetatiContext = (props) => {
+  debugger
   
   props.filters['defaultVariants']['diamondType'] = props.data.diamondType
   props.filters['defaultVariants']['metalColor'] = props.data.metalColor
   props.filters['defaultVariants']['purity'] = props.data.purity
   props.filters['defaultVariants']['skuSize'] = props.data.skuSize
-  props.filters['defaultVariants']['productType'] = props.data.productType
+  // props.filters['defaultVariants']['productType'] = props.data.productType
   // props.filters['skuId'] = props.data.generatedSku
   props.filters['skuId'] = props.data.skuID
   props.setFilters(props.filters)

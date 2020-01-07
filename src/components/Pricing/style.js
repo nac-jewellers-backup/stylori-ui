@@ -20,7 +20,7 @@ const styles = makeStyles(theme => ({
     },
     off: {
         [theme.breakpoints.down('lg')]: {
-            fontSize: '12px',
+            fontSize: '11px',
             // fontWeight: 'bold'
         },
         [theme.breakpoints.down('xs')]: {

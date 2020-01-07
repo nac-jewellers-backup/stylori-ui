@@ -59,7 +59,7 @@ const RegisterComponent = (props) => {
                             }
                             {paths ?
                                 <Grid container spacing={12}>
-                                    <Grid item lg={6} >
+                                    <Grid item xs={6} sm={4} lg={3} >
                                         <Input
                                             margin="normal"
                                             variant="outlined"
