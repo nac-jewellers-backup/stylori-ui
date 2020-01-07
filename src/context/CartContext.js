@@ -22,7 +22,8 @@ const initialCtx = {
             user_id: '',
             discounted_price: "",
             tax_price: '',
-            reload: ""
+            reload: "",
+            jewellery: ""
         },
         loading: false, error: false, data: [], allorderdata: [], wishlistdata: [], wishlist_count: []
     },
@@ -51,6 +52,7 @@ const Provider = (props) => {
     // const prices = cartFilters.price ? cartFilters.price : ''
     const discounted_price = cartFilters.discounted_price ? cartFilters.discounted_price : ""
     const reload = cartFilters.reload ? cartFilters.reload : ""
+    const jewellery = cartFilters.jewellery ? cartFilters.jewellery : ""
     // const { setwishlist_count } = React.useContext(FilterOptionsContext);
     // alert(JSON.stringify(wishlist_count,wishlistdata))
     var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
@@ -66,11 +68,16 @@ const Provider = (props) => {
         }
     }, [])
     useEffect(() => {
+        // alert("cart")
         if (JSON.stringify(crtdata).length > 10) {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))
         }
         if (reload && reload.length > 0) {
             window.location.reload();
+        }
+        if (jewellery && jewellery==="jewellery") {
+            window.location.pathname = "/jewellery"
+
         }
         // localStorage.setItem('cart_id', JSON.stringify(crtdata))
     }, [crtdata])
@@ -97,7 +104,7 @@ const Provider = (props) => {
         // else {
         //     localStorage.setItem("a__w_l", 0)
         // }
-    }, [wishlistDATA,wishlistdata])
+    }, [wishlistDATA, wishlistdata])
     useEffect(() => {
         // if (window.location.pathname.split("-")[0]==="/account") {
         orderobj["userProfileId"] = userIds
@@ -117,13 +124,14 @@ const Provider = (props) => {
     useEffect(() => {
         if (userIds.length > 0) {
             if (cartdetails && JSON.stringify(cartdetails).length > 0) {
-
                 // const user_id = userIds
                 // makeFetch({--login---})
             }
         }
 
         if (guestlogId.length > 0) {
+            debugger
+            // alert(JSON.stringify(guestlogId))
             localStorage.setItem("user_id", cartFilters.user_id)
             if (JSON.stringify(cartdetails).length > 0) {
                 var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';

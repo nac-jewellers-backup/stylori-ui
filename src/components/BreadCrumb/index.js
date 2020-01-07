@@ -101,8 +101,7 @@ export default function CustomSeparator(props) {
           <Grid container>
             <Grid item lg={7}>
               <Breadcrumbs separator={seperators} >
-                {
-                  props.data.map(data => (
+                {props.data.map(data => (
                     //  <Link color="inherit" to={{pathname:data.url}} style={{ fontSize: "14px" }} className={props.list}>
                     <div onClick={() => activetabsclik(data)}>
                       <li className={activetabs(data) ? ` isactives ${props.list}` : props.list}>
