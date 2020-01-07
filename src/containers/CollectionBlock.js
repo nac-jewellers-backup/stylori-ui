@@ -21,9 +21,7 @@ class CollectionBlock extends React.Component {
     const { classes } = this.props;
     return (
       <Grid container>
-        <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000" }}  >
           <Header />
-        </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <CollectionItem />
         </Grid>

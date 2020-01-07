@@ -30,12 +30,8 @@ const LoginComponent = (props) => {
 
     }, [])
     return (
-        <>
-            <Grid container spacing={12}>
-                <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
+        <Grid container>
                     <Header />
-                </Grid>
-            </Grid>
             <Grid spacing={12} container style={{ padding: "3%" }}>
                 <Grid item xs={6} lg={6} xs={12}>
                     <div >
@@ -123,7 +119,7 @@ const LoginComponent = (props) => {
             <Grid item xs={12}>
                 <Footer />
             </Grid>
-        </>
+            </Grid>
     )
 }
 

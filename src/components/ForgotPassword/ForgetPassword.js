@@ -11,41 +11,53 @@ import { Link } from 'react-router-dom'
 import {
     Checkbox
 } from '@material-ui/core';
-
+import { API_URL } from '../../config'
+import { useNetworkRequest } from '../../hooks/NetworkHooks'
+import { async } from 'q';
 
 
 
 const LoginComponent = (props) => {
     const [values, setValues] = React.useState({
         email: "",
-        password: "",
-        confirmpassword: "",
         roles: ["user"],
         firstname: "",
         lastname: "",
-        errortext: {
-            emerr: "",
-            passerr: "",
-            cnfpasserr: "",
-            firstname: "",
-            lastname: ""
-        },
-        error: {
-            passerr: false,
-            emerr: false,
-            cnfpasserr: false,
-            firstname: false,
-            lastname: false
-        }
+        error: false,
+        errorText: ""
+
     });
     const { classes } = props;
-    const handelSubmit = () => {
+    const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/forgotpassword', {}, false, {})
 
+    const handelSubmit = async () => {
+        let regex = /^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-zA-Z]{2,9})$/;
+        let email = values.email;
+        if (values.email === "") {
+            setValues({ ...values, error: true, errorText: "Please enter email!" })
+        }
+        else {
+            let emails = { "email": values.email }
+            await makeFetch(emails);
+        }
     }
+    React.useEffect(() => {
+        if (ntxdata && Object.entries(ntxdata).length > 0 && ntxdata.constructor === Object) {
+            try {
+                if (ntxdata.status === "failure") {
+                    setValues({ ...values, error: true, errorText: ntxdata.message })
+                }
+                else if (ntxdata.status === "success") {
+                    alert("success")
+                }
+            } catch (error) {
+                alert("ee" + error)
+            }
+        }
 
+    }, [ntxdata])
     const handleChange = (name, value) => {
-        debugger
-        setValues({ ...values, [name]: value })
+        setValues({ ...values, [name]: value, error: false, errorText: "" })
     }
 
     React.useEffect(() => {
@@ -54,12 +66,7 @@ const LoginComponent = (props) => {
     }, [])
     return (
         <Grid container>
-            {/* <Grid container > */}
-            <Grid></Grid>
-                <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
-                    <Header />
-                {/* </Grid> */}
-            </Grid>
+                <Header />
             <Grid spacing={12} container style={{ padding: "3%" }}>
                 <Grid item xs={6} lg={6} xs={12}>
                     <div >
@@ -80,12 +87,11 @@ const LoginComponent = (props) => {
                                     type="email"
                                     name="email"
                                     value={values.email}
-                                    error={values.error && values.error.emerr ? true : false}
-                                    helperText={values.errortext && values.errortext.emerr}
+                                    error={values.error ? true : false}
                                     onChange={e => handleChange('email', e.target.value)}
                                     placeholder="Enter your email Id"
                                 />
-                                <label className='errtext'> {values.errortext && values.errortext.emerr}</label>
+                                <label className='errtext'> {values.errorText && values.errorText}</label>
                                 <br></br>
                                 <div style={{ float: "right" }}>
                                     <Button className='apply-b' type="submit">Apply</Button>

@@ -31,11 +31,11 @@ function HeaderHoverMenuItem(props) {
             <Grid className={classes.subtopic1}>
               {
                 !props.filters &&
-                (props.listHoverItem !== undefined) &&
+                (props.listHoverItem) && mapper &&
                 (mapper).map(menuList =>
                   (
                     <ListItem onMouseOver={(event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }} className={classes.listedItems} component="li"
-                      onClick={() => { window.location.href = '/' + menuList.url }}
+                      onClick={() => { window.location.href = menuList.url }}
                     >
                       <ListItemText variant>
                         <Typography className={classes.listedItemsvalue}>
@@ -45,14 +45,11 @@ function HeaderHoverMenuItem(props) {
                             menuList}
                         </Typography>
                       </ListItemText>
-
                     </ListItem>
-
                   ))
-
               }
               {
-                props.filters &&
+                props.filters && mapper &&
                 (mapper).map(menuList =>
 
                   (
@@ -74,11 +71,11 @@ function HeaderHoverMenuItem(props) {
             <Grid className={classes.subtopic2}>
               {
                 !props.filters &&
-                (props.listHoverItem !== undefined) &&
-                (props.listHoverItem['menuTwo']).map(menuList =>
+                (props.listHoverItem) &&
+                (props.listHoverItem['menuTwo']) && (props.listHoverItem['menuTwo']).map(menuList =>
                   (
                     <ListItem onMouseOver={(event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }} className={classes.listedItemsub} component="li"
-                      onClick={() => { window.location.href = '/' + menuList.url }}
+                      onClick={() => { window.location.href = menuList.url }}
                     >
                       <ListItemText variant >
                         <Typography className={classes.listedItemsvalue} >

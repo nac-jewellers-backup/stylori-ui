@@ -27,7 +27,7 @@ function HeaderHoverMenuItem(props) {
             {props.data && props.data.imageContainer && <Grid container style={{ width: "350px", background: "#fff", padding: "10px", zIndex: "10000" }}>
               {props.data.imageContainer.map((val, index) =>
                 <Grid item xs={4}>
-                  <Grid container className={classes.imgcont} onClick={() => { window.location.href = '/' + val.url }} justify="center" alignContent="center" alignItems="center" style={{ cursor: "pointer" }}>
+                  <Grid container className={classes.imgcont} onClick={() => { window.location.href =  val.url }} justify="center" alignContent="center" alignItems="center" style={{ cursor: "pointer" }}>
                     <Grid item style={{ justifyContent: "center", alignContent: "center", display: "flex" }}>
                       {val.img && <img style={{ width: "65%", margin: "auto" }} src={val.img} />}
                     </Grid>
@@ -43,7 +43,7 @@ function HeaderHoverMenuItem(props) {
             {props.data && props.data.onlyText && props.data.onlyText.map((val, index) => <>
 
               <ListItem className={classes.listedItemsub} component="li"
-                onClick={() => { window.location.href = '/' + val.url }}
+                onClick={() => { window.location.href = val.url }}
               >
                 <ListItemText variant >
                   <Typography className={classes.listedItemsvalue2} >

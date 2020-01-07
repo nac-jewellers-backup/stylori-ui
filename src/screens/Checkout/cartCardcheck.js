@@ -95,12 +95,8 @@ class Component extends React.Component {
         variab["pincode"] = value && value.pincode
 
         return (
-            <>
-                <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
-                    <Grid item xs={12} >
+            <Grid container>
                         <Header wishlist={this.props.wishlistdata} />
-                    </Grid>
-                </Grid>
                 <CustomSeparator
                     arrowicon='cart-head-arrows'
                     className={`breadcrums-header ${classes.normalcolorback}`}
@@ -218,7 +214,8 @@ class Component extends React.Component {
 
                     </div>
                 </div>
-            </>
+                </Grid>
+        
         )
     }
 }

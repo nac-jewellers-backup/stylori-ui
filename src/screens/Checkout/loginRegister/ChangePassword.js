@@ -1,7 +1,7 @@
 import React from 'react';
 // import './product-image-slider/loginRegisters.css'
 import { Grid, Button, Container, TextField } from '@material-ui/core';
-import { Input } from '../../components/InputComponents/TextField/Input'
+import { Input } from 'components/InputComponents/TextField/Input'
 import Header from 'components/SilverComponents/Header'
 import Footer from "components/Footer/Footer"
 import styles from './style';
@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 import {
     Checkbox
 } from '@material-ui/core';
-import { useNetworkRequest } from '../../hooks/NetworkHooks'
+import { useNetworkRequest } from 'hooks/NetworkHooks'
 import { async } from 'q';
 
 
@@ -24,14 +24,20 @@ const LoginComponent = (props) => {
         newPasswordHelperText: "",
         confirmPassword: "",
         confirmPasswordError: false,
-        confirmPasswordHelper: ""
+        confirmPasswordHelper: "",
+        oldpassword: "",
+        oldpassworderror: false,
+        oldpasswordText: ""
 
     });
-    const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/resetpassword', {}, false, {})
+    const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/changepassword', {}, false, {})
 
     const { classes } = props;
     const handelSubmit = async () => {
-        if (values.newpassword === "") {
+        if (values.oldpassword === "") {
+            setValues({ ...values, oldpassworderror: true, oldpasswordText: "please enter some text!" })
+        }
+        else if (values.newpassword === "") {
             setValues({ ...values, newPasswordError: true, newPasswordHelperText: "please enter some text!" })
         }
         else if (values.confirmPassword === "") {
@@ -44,19 +50,19 @@ const LoginComponent = (props) => {
             setValues({ ...values, confirmPasswordError: true, confirmPasswordHelper: "Newpassword and confirm password or not same!" })
         }
         else {
-            var body = { "password": values.newpassword }
-            await makeFetch(body, params);
+            var body = { "oldpassword": values.oldpassword, "newpassword": values.newpassword }
+            await makeFetch(body);
             try {
                 alert(JSON.stringify(ntxdata))
-                setValues({ ...values, newpassword: "", confirmPassword: "" })
+                // setValues({ ...values, newpassword: "", confirmPassword: "" })
             } catch (error) {
-                alert(error)
+                alert(JSON.stringify(error))
             }
         }
     }
 
     const handleChange = (name, value) => {
-        setValues({ ...values, [name]: value, newPasswordError: false, confirmPasswordError: false, newPasswordHelperText: "", confirmPasswordHelper: "" })
+        setValues({ ...values, [name]: value, oldpassworderror: false, oldpasswordText: "", newPasswordError: false, confirmPasswordError: false, newPasswordHelperText: "", confirmPasswordHelper: "" })
     }
 
     React.useEffect(() => {
@@ -86,13 +92,24 @@ const LoginComponent = (props) => {
                                     type="password"
                                     fullWidth
                                     name="email"
+                                    value={values.oldpassword}
+                                    error={values.oldpassworderror ? true : false}
+                                    onChange={e => handleChange('oldpassword', e.target.value)}
+                                    placeholder="Enter old password"
+                                />
+                                <label className='errtext'> {values.oldpasswordText && values.oldpasswordText}</label>
+                                <TextField
+                                    margin="normal"
+                                    variant="outlined"
+                                    type="password"
+                                    fullWidth
+                                    name="email"
                                     value={values.newpassword}
                                     error={values.newPasswordError ? true : false}
                                     onChange={e => handleChange('newpassword', e.target.value)}
                                     placeholder="Enter new password"
                                 />
                                 <label className='errtext'> {values.newPasswordHelperText && values.newPasswordHelperText}</label>
-                                {/* <br></br> */}
                                 <TextField
                                     margin="normal"
                                     variant="outlined"
@@ -101,7 +118,6 @@ const LoginComponent = (props) => {
                                     name="confirmPassword"
                                     value={values.confirmPassword}
                                     error={values.confirmPasswordError ? true : false}
-                                    // helperText={values.confirmPassword && values.confirmPassword.emerr}
                                     onChange={e => handleChange('confirmPassword', e.target.value)}
                                     placeholder="Enter confirm password"
                                 />
