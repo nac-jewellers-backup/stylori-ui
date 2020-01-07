@@ -44,7 +44,7 @@ class CashonDelivey extends React.Component {
         }
         // } 
         localStorage.removeItem("cart_id")
-        obj_user["user_id"] = user_id
+        obj_user["user_id"] = user_id 
         obj_user["jewellery"] = "jewellery"
         this.props.setCartFilters(obj_user)
         // window.location.pathname = "/jewellery"
