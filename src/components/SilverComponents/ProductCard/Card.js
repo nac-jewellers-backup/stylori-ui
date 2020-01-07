@@ -189,7 +189,9 @@ const useStyles = makeStyles(theme => ({
   card: {
     minWidth: "80%",
     maxWidth: "90%",
-    boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important",
+    webkitBoxShadow: '6px 8px 4px 0px rgb(213, 214, 216) !important',
+    mozBoxShadow: '6px 8px 4px 0px rgb(213, 214, 216) !important',
+    boxShadow: '6px 8px 4px 0px rgb(213, 214, 216) !important',
     margin: "10px 0px ",
     borderRadius: '0 !important',
   },
