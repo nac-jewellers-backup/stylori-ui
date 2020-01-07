@@ -239,7 +239,7 @@ const sorting = (val) =>{
 }
 // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
 export default function (data, like_data, viewedddatas, rating) {
-    debugger
+    
     let mapperdata = [];
     try {
         // mapperda = ;

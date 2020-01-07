@@ -62,7 +62,7 @@ class Component extends React.Component {
 
   }
   componentDidMount() {
-    var {checked, numOne, numTwo} = this.state
+    var {checked,chipData, numOne, numTwo} = this.state
     console.log('price_props', typeof this.props.data[0].subFilter['Price Range'])
     var price_min = Number(this.props.data[0].subFilter['Price Range'].min);
     var price_max = Number(this.props.data[0].subFilter['Price Range'].max);
@@ -173,9 +173,11 @@ class Component extends React.Component {
               var keys = val[0]
               var values = val[1]
               checked[keys] = values
+              chipData.push({ key: chipData, label: Object.keys(values), title: keys });
 
             })
             this.setState(checked)
+            this.setState({chipData})
           }).catch(function (error) {
             console.log('Request failed', error);
           });
@@ -212,6 +214,7 @@ class Component extends React.Component {
   }
 
   valz = (value) => Object.entries(this.state.checked).map(val => {
+    debugger
     const { checked } = this.state;
     var obj = {};
     var mm;
@@ -232,6 +235,7 @@ class Component extends React.Component {
             checked[val[0]] = { [mm]: false }
             this.setState({ ...checked, checked })
           }
+          // alert(JSON.stringify(checked))
           return false
         }
       })
@@ -239,8 +243,6 @@ class Component extends React.Component {
     return bz
   })
   handleChange(value, BoolName, e, title, TargetName) {
-    debugger
-    
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
@@ -316,6 +318,7 @@ class Component extends React.Component {
   }
 
   handleDelete = (value) => {
+    debugger
     let arr = [], arr1 = [];
     let { chipData, checked } = this.state
     arr = chipData.filter(val => val.label !== value); 

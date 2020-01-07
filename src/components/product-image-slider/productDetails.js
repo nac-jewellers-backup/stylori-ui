@@ -126,8 +126,7 @@ class ProductDetails extends React.Component {
                                             val.namedetail !== undefined && val.namedetail.map(res =>
                                                 res.details !== null && res.details.length === 0 ? false :
                                                     <span>
-                                                        {((data[0].productType !== "Earring" && res.name === 'Gemstone')
-                                                            || (data[0].productType === "Earring" && res.name === 'Diamond')) ? false :
+                                                        {
                                                             <> {res.name && <Grid container item xs={12} style={{ padding: "0px 10px 0px 10px " }}>
                                                                 <Grid xs={4}>
                                                                     <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>

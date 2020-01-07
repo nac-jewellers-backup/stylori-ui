@@ -75,7 +75,9 @@ class Component extends React.Component {
 
 
     handleClick = (event, key) => {
-        console.log('lklkkoik9', this.state.purity)
+        debugger
+        console.log('lklkkoik9', this.props)
+        debugger
         var filters = { ...this.props.filters }
         if (key === 'purity') {
             var kv = event.target.id
@@ -87,6 +89,7 @@ class Component extends React.Component {
             filters['defaultVariants']['metalColor'] = arrColor
             // filters['defaultVariants']['skuSize']=diamondTypes
             filters['defaultVariants']['diamondType'] = diamondTypes
+            filters['productId'] = this.props.data[0].productId
             this.setState({
                 purity: kv,
             })
@@ -99,6 +102,7 @@ class Component extends React.Component {
                 skuSize: event.target.id,
                 diamondType: filters.defaultVariants.diamondType
             })
+            debugger
             this.props.setFilters(filters);
             console.log("filters.defaultVariants.diamondType", filters.defaultVariants.diamondType)
         }
@@ -184,7 +188,7 @@ class Component extends React.Component {
             infinite: false,
             // slidesToShow: data[0].productTabs[0].tab1.Children.length > 8 ? limit :data[0].productTabs[0].tab1.Children.length,
             slidesToScroll: 5,
-            slidesToShow: 7,
+            slidesToShow: 6,
             arrows: false,
         };
         const slider = React.createRef();

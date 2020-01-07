@@ -165,7 +165,7 @@ export default trackWindowScroll(Gallery);
 
 //           />
 const handleProductDetatiContext = (props) => {
-  debugger
+  
   props.filters['defaultVariants']['diamondType'] = props.data.diamondType
   props.filters['defaultVariants']['metalColor'] = props.data.metalColor
   props.filters['defaultVariants']['purity'] = props.data.purity
@@ -348,7 +348,7 @@ const renderImages = (props, cardstate) => {
 }
 
 function Component(props) {
-  debugger
+  
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
     hovered: false,

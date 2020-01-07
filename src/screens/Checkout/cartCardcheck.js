@@ -47,7 +47,7 @@ class Component extends React.Component {
     }
 
     handleChange = panel => (event) => {
-        debugger
+        
         // alert("va",JSON.stringify(panel))
         const { expanded } = this.state
         // if (value && value.pincode && value.pincode.length > 2) {
