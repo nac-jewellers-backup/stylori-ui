@@ -312,7 +312,7 @@ class Component extends React.Component {
     };
     this.setState({
       chipData
-    })
+    },() => this.props.setFilters(checked))
     // , () => this.props.setFilters(checked)
     // alert(JSON.stringify(this.state.checked))
   }
@@ -337,7 +337,7 @@ class Component extends React.Component {
     this.setState({
       chipData,
       checked
-    })
+    },() => this.props.setFilters(checked))
     // console.log("valssss",chipData,checked)
     // alert(JSON.stringify(data))
     // this.setState(state => {
