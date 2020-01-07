@@ -68,7 +68,7 @@ class Allorders extends React.Component {
     render() {
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
-        debugger
+        
         // namedetail: [
         //     {
         //         name: "Quality",
@@ -169,7 +169,6 @@ class Allorders extends React.Component {
                                                                     <Typography className="subhesder">Diamond Weight</Typography>
                                                                     {/* : ""} */}
                                                                     {/* {cart.transSkuListByProductSku.generatedSku.length > 0 ? */}
-                                                                    <Typography className="subhesder">Product Code</Typography>
                                                                     {/* : ""} */}
 
                                                                     {/* {cart.transSkuListByProductSku&&cart.transSkuListByProductSku.purity&&cart.transSkuListByProductSku.purity.length > 0 ? */}
@@ -181,7 +180,7 @@ class Allorders extends React.Component {
                                                                             "Ring"
                                                                             : ""}
                                                                     </Typography>
-
+                                                                    <Typography className="subhesder">Product Code</Typography>
                                                                 </Grid>
                                                                 <Grid item lg={6} sm={6}>
                                                                     <Typography className="subhesder">
@@ -190,18 +189,17 @@ class Allorders extends React.Component {
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight + " " + "CT"}
                                                                     </Typography>
-                                                                    <Typography className="subhesder">
-                                                                        {cart.transSkuListByProductSku.generatedSku}
-                                                                    </Typography>
+                                                                    
 
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.purity + ""}{cart.transSkuListByProductSku.metalColor}
                                                                     </Typography>
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.productListByProductId.sizeVarient}
-
                                                                     </Typography>
-                                                                </Grid>
+                                                                    <Typography className="subhesder">
+                                                                        {cart.transSkuListByProductSku.generatedSku}
+                                                                    </Typography>  </Grid>
                                                             </Grid>
                                                         </Grid>
                                                         <Grid item lg={3} sm={3} style={{ padding: "24px" }}>

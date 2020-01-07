@@ -44,7 +44,7 @@ const LoginComponent = (props) => {
     }
 
     const handleChange = (name, value) => {
-        debugger
+        
         setValues({ ...values, [name]: value })
     }
 

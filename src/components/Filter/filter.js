@@ -177,7 +177,7 @@ class Component extends React.Component {
 
             })
             this.setState(checked)
-            this.setState({chipData})
+            this.setState({chipData},() => this.props.setFilters(checked))
           }).catch(function (error) {
             console.log('Request failed', error);
           });
@@ -214,7 +214,7 @@ class Component extends React.Component {
   }
 
   valz = (value) => Object.entries(this.state.checked).map(val => {
-    debugger
+    
     const { checked } = this.state;
     var obj = {};
     var mm;
@@ -318,7 +318,7 @@ class Component extends React.Component {
   }
 
   handleDelete = (value) => {
-    debugger
+    
     let arr = [], arr1 = [];
     let { chipData, checked } = this.state
     arr = chipData.filter(val => val.label !== value); 
@@ -434,7 +434,7 @@ class Component extends React.Component {
     // this.setState({[e.target.name]:e.target.value})
   }
   handleChangesort = (event) => {
-    debugger
+    
     if (this.props.offset > 0) this.props.setOffset(0)
     console.log(this.props.offset)
     this.props.setSort({ values: event.target.value })

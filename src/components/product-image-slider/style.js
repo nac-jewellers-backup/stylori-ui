@@ -70,7 +70,7 @@ const styles = theme => ({
             marginTop: "5px"
         },
         [theme.breakpoints.up('lg')]: {
-            fontSize: "9px !important",
+            fontSize: "10px !important",
             marginTop: "5px"
         },
     },
