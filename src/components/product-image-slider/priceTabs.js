@@ -296,7 +296,7 @@ class Component extends React.Component {
                                                 var arrPurity = objVal[0]
                                                 var arrColor = objVal[1]
                                                 return (
-                                                    <Grid item lg={2} xs={2} style={{ marginLeft: "8px", textAlign: "center" }}>
+                                                    <Grid item lg={1} xs={2} style={{ marginLeft: "8px", textAlign: "center" }}>
                                                         <button
                                                             style={{ background: this.imageRender(val) }}
                                                             className={this.state.purity === val ? 'darktabs tabs-valus' : 'pagetabs tabs-valus'}
@@ -321,7 +321,7 @@ class Component extends React.Component {
                                     <Grid container spacing={12} lg={12} style={{marginLeft:"4%"}}>
                                         {val.tab3.Children.map((val, i) => {
                                             return (
-                                                <Grid item lg={2} xs={2} style={{ marginLeft: "8px", textAlign: "center" }}>
+                                                <Grid item lg={1} xs={2} style={{ marginLeft: "8px", textAlign: "center" }}>
                                                     <button
                                                         style={{ background: this.imageRender(val) }}
                                                         className={this.state.diamondType === val.name ? 'darktabslst tabs-valus' : 'pagetabslst tabs-valus'}

@@ -9,7 +9,7 @@ const styles = makeStyles(theme => ({
     },
     h6FontSize: {
         [theme.breakpoints.down('lg')]: {
-            fontSize: '20px',
+            fontSize: '20px !important',
             // fontWeight: 'bold'
         },
         [theme.breakpoints.down('xs')]: {
