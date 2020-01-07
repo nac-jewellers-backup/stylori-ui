@@ -90,6 +90,7 @@ class Allorders extends React.Component {
         //         details: k.generatedSku
         //     }],
         const expanded_ = expanded.map(val => { return val })
+        debugger
         return (
             <>
                 {/* allorderdata.nodes */}
@@ -190,12 +191,11 @@ class Allorders extends React.Component {
                                                                         {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight + " " + "CT"}
                                                                     </Typography>
                                                                     
-
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.purity + ""}{cart.transSkuListByProductSku.metalColor}
                                                                     </Typography>
                                                                     <Typography className="subhesder">
-                                                                        {cart.transSkuListByProductSku.productListByProductId.sizeVarient}
+                                                                        {cart.transSkuListByProductSku.productListByProductId.skuSize}
                                                                     </Typography>
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.generatedSku}
