@@ -24,7 +24,7 @@ class Allorders extends React.Component {
     }
 
     handleChange = panel => (event) => {
-       
+
         const { expanded } = this.state;
         var valus = expanded === panel ? "" : panel
         expanded.push(JSON.stringify(valus))
@@ -68,7 +68,7 @@ class Allorders extends React.Component {
     render() {
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
-        
+
         // namedetail: [
         //     {
         //         name: "Quality",
@@ -104,11 +104,11 @@ class Allorders extends React.Component {
                                     square
                                     // expanded={expanded.map(val=>val===index)}
                                     // onChange={this.handleChange(index)}
-                                    style={{ boxShadow: "none", boxShadow: "rgb(242, 242, 242) 4px 10px 20px 5px"}}
+                                    style={{ boxShadow: "none", boxShadow: "rgb(242, 242, 242) 4px 10px 20px 5px" }}
                                     key={index}
                                     style={{ marginBottom: "10px" }}
                                 >
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon  className='arrow-chek' />} className='ckcut-main-body'>
+                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
                                         <Typography className='text-chck'>
 
                                             Order Number : #{val.id} &nbsp;|&nbsp; Order Date : {moment(val.createdAt).format('Do MMMM YYYY')}
@@ -130,8 +130,8 @@ class Allorders extends React.Component {
                                                         <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}&nbsp;
                                                             {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].lastname}</div><br />
                                                         <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].addressline1}</div><br />
-                                                        <div>  {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].city+"-" }
-                                                            { val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].pincode}</div>
+                                                        <div>  {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].city + "-"}
+                                                            {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].pincode}</div>
                                                         <br />
                                                         <br />
                                                         {val.shoppingCartByCartId && val.shoppingCartByCartId.giftwrapsByCartId && val.shoppingCartByCartId.giftwrapsByCartId.nodes && val.shoppingCartByCartId.giftwrapsByCartId.nodes.length > 0 ? <>
@@ -162,40 +162,46 @@ class Allorders extends React.Component {
 
                                                                 <b style={{ width: "100%" }}> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
                                                                 <Grid item lg={6} sm={6}>
-                                                                    {/* {cart.transSkuListByProductSku.skuWeight.length > 0 ? */}
-                                                                    <Typography className="subhesder">Gold Weight</Typography>
+
+                                                                    <Typography className="subhesder">
+                                                                        {cart.transSkuListByProductSku.skuWeight !== undefined && cart.transSkuListByProductSku.skuWeight !== null ? "Gold Weight" : ""}
+                                                                    </Typography>
                                                                     {/* : ""} */}
 
-                                                                    {/* {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0]&& cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight&&cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight.length > 0 ? */}
-                                                                    <Typography className="subhesder">Diamond Weight</Typography>
+                                                                    <Typography className="subhesder">
+                                                                        {(cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight !== undefined) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight !== null) ? "Diamond Weight" : ""} </Typography>
                                                                     {/* : ""} */}
                                                                     {/* {cart.transSkuListByProductSku.generatedSku.length > 0 ? */}
                                                                     {/* : ""} */}
 
                                                                     {/* {cart.transSkuListByProductSku&&cart.transSkuListByProductSku.purity&&cart.transSkuListByProductSku.purity.length > 0 ? */}
                                                                     <Typography className="subhesder">
-                                                                        {cart.transSkuListByProductSku && cart.transSkuListByProductSku.purity && cart.transSkuListByProductSku.purity.length > 0 ? "Metal" : ""} </Typography>
+                                                                        {(cart.transSkuListByProductSku && cart.transSkuListByProductSku.purity && cart.transSkuListByProductSku.purity !== undefined) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.purity && cart.transSkuListByProductSku.purity !== null) > 0 ? "Metal" : ""}
+                                                                    </Typography>
                                                                     {/* : ""} */}
                                                                     <Typography className="subhesder">
-                                                                        {cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.sizeVarient && cart.transSkuListByProductSku.productListByProductId.sizeVarient.length > 0 ?
+                                                                        {(cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize !== undefined) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize !== null) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize.length > 0)
+                                                                            ?
                                                                             "Ring"
                                                                             : ""}
                                                                     </Typography>
-                                                                    <Typography className="subhesder">Product Code</Typography>
+                                                                    <Typography className="subhesder">
+                                                                        {(cart.transSkuListByProductSku.generatedSku !== undefined) && (cart.transSkuListByProductSku.generatedSku !== null ? "Product Code" : "")}
+                                                                    </Typography>
                                                                 </Grid>
                                                                 <Grid item lg={6} sm={6}>
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.skuWeight + " " + "GM"}
                                                                     </Typography>
                                                                     <Typography className="subhesder">
-                                                                        {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight + " " + "CT"}
+                                                                        {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight + " " + "CT"}
                                                                     </Typography>
-                                                                    
+
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.purity + ""}{cart.transSkuListByProductSku.metalColor}
                                                                     </Typography>
                                                                     <Typography className="subhesder">
-                                                                        {cart.transSkuListByProductSku.productListByProductId.skuSize}
+                                                                        {cart.transSkuListByProductSku.skuSize}
                                                                     </Typography>
                                                                     <Typography className="subhesder">
                                                                         {cart.transSkuListByProductSku.generatedSku}
@@ -213,15 +219,15 @@ class Allorders extends React.Component {
 
 
                                                         <Grid style={{ padding: "10px", justifyContent: "center", display: "flex", alignItems: "center" }} className="rups" item lg={3} sm={2}>
-                                                            {/* {cart.price > cart.transSkuListByProductSku.markupPrice ?
-                                                                <del style={{ color: "rgba(0, 0, 0, 0.54)", fontSize: "18px" }}>{(Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.markupPrice)))}</del>
-                                                                : ""}<br />
-                                                            {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.discountPrice))} */}
-                                                            <Pricing
-                                                                price={cart.transSkuListByProductSku.markupPrice}
-                                                                offerPrice={cart.transSkuListByProductSku.discountPrice}
-                                                                offerDiscount={"25% - OFF"}
-                                                            ></Pricing>
+                                                            {cart.price > cart.transSkuListByProductSku.markupPrice ?
+                                                                <Pricing
+                                                                    price={cart.transSkuListByProductSku.markupPrice}
+                                                                    offerPrice={cart.transSkuListByProductSku.discountPrice}
+                                                                    offerDiscount={"25% - OFF"}
+                                                                ></Pricing>
+                                                                : <Pricing
+                                                                    offerPrice={cart.transSkuListByProductSku.discountPrice}
+                                                                ></Pricing>}<br />
                                                         </Grid>
                                                     </Grid></>
                                             ))}
