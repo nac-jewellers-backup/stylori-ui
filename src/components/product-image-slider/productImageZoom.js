@@ -84,6 +84,7 @@ class ProductImageZoom extends React.Component {
           </Grid>
 
           <Grid item xs={10} >
+                   
             {/* <div className='imagecard' id="divs" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
                 {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship" ></div> : ""} */}
             {/* <div id='flashlight'></div> */}
@@ -102,7 +103,11 @@ class ProductImageZoom extends React.Component {
               <div className='imagecard' id="divs" style={{ height: data[0].image_resolution }} onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
                 {/* <span class="one-day-ship" ></span> */}
                 {/* <div id='flashlight'></div> */}
-
+                {data.map(val=>
+                  <span style={{ color: "#fff" }} className="overlayCss">
+                  {val.offerDiscount}
+                   </span>)}
+                
                 <img id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
               </div>
 
