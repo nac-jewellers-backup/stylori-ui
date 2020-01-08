@@ -766,6 +766,7 @@ body {
     background-repeat: no-repeat !important;
     margin-left: 0px;
     cursor: pointer !important;
+    margin-left: -2% !important;
 }
 
 .overly-img {
@@ -775,7 +776,7 @@ body {
     /* height: 450px !important; */
     width: 35%;
     float: right !important;
-    position: absolute;
+    position: absolute; 
     z-index: 3;
     background-repeat: no-repeat;
     height: 600px !important;

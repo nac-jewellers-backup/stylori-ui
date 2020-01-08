@@ -107,7 +107,7 @@ class ProductImageZoom extends React.Component {
                   <span style={{ color: "#fff" }} className="overlayCss">
                   {val.offerDiscount}
                    </span>)}
-                
+                   {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship" ></div> : ""}
                 <img id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
               </div>
 
