@@ -548,3 +548,19 @@
   font-size: 19px;
   font-weight: 300;
 }
+
+.headerTop {
+  height: 58px
+}
+
+@media only screen and (max-width: 958px) and (min-width: 599px) {
+  .headerTop {
+    height: 64px
+  }
+}
+
+@media only screen and (min-width: 959px) {
+  .headerTop {
+    height: 140px
+  }
+}
