@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import './product-images.css'
 import Slideshow from '../Carousel/carosul'
+import styles from './style'
 class Sublistcarousel extends React.Component {
   constructor(props) {
     super(props);
@@ -21,6 +22,7 @@ class Sublistcarousel extends React.Component {
     valuse: 0,
     values: 0,
     expanded: null,
+    expanded1: true,
     dataToShow: "YouMayLike"
   }
 
@@ -28,6 +30,11 @@ class Sublistcarousel extends React.Component {
   handle = panel => (event, expanded) => {
     this.setState({
       expanded: expanded ? panel : false,
+    });
+  };
+  handle_recent_view = panel1 => (event, expanded1) => {
+    this.setState({
+      expanded1: !this.state.expanded1,
     });
   };
 
@@ -40,7 +47,7 @@ class Sublistcarousel extends React.Component {
   };
   render() {
     const limit = 4;
-    const { expanded } = this.state;
+    const { expanded, expanded1 } = this.state;
     const { data } = this.props;
     const mobiledataCarousel = {
       dots: false,
@@ -51,7 +58,16 @@ class Sublistcarousel extends React.Component {
       autoplay: true,
       autoplaySpeed: 2000
     }
-
+    const dataCarousel_ = {
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      infinite: true,
+      fade: false,
+      dots: false,
+      autoplaySpeed: 4000,
+      arrows: false
+  };
     const dataCarousel = {
       arrows: false,
       dots: false,
@@ -64,6 +80,33 @@ class Sublistcarousel extends React.Component {
       slidesToScroll: 4,
     }
     // this.state.dataToShow==="YouMayLike" ? data[0].fadeImageSublist : data[0].fadeImageSublistRecentlyViewed
+    const productsubHead = [
+      {
+        name: "From the House of NAC",
+        icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+        class: "image1"
+      },
+      {
+        name: "Certified Jewellery",
+        icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+        class: "image2"
+      },
+      {
+        name: "Free Shipping",
+        icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+        class: "image3"
+      },
+      {
+        name: "Diverse Styles",
+        icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+        class: "image4"
+      },
+      {
+        name: "Easy Returns",
+        icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+        class: "image5"
+      }
+    ];
     return (
       <div style={{ width: "100%" }}>
         <Hidden smDown>
@@ -119,6 +162,75 @@ class Sublistcarousel extends React.Component {
                     hoverlist={data && data[0] && data[0].fadeImageSublist}
                     dataCarousel={mobiledataCarousel} hover={true}>
                   </Slideshow>
+                </div>
+              </ExpansionPanelDetails>
+            </ExpansionPanel><br />
+
+            <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 5px" }} expanded={expanded1 === true} onChange={this.handle_recent_view(false)}>
+              <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
+                <i class="fa fa-sort-up" ></i></span>}>
+                <div style={{ width: "100%" }} >
+                  <Typography className="subtabs-smrt">You recently viewed</Typography>
+                  {/* <hr class="bottom-line border-line-"></hr> */}
+                </div>
+              </ExpansionPanelSummary>
+
+              <ExpansionPanelDetails >
+                <div style={{ width: "100%" }}>
+                  {data && data[0] && data[0].fadeImageSublistRecentlyViewed.length > 0 ?
+                    <Slideshow class={` ${data && data[0] && data[0].fadeImageSublistRecentlyViewed ? 'subslider-carousel ' : "shine"}`}
+                      hoverlist={data && data[0] && data[0].fadeImageSublistRecentlyViewed}
+                      dataCarousel={mobiledataCarousel} hover={true}>
+                    </Slideshow> :
+                    <Grid container xs={12}>
+                      <Grid
+                        item
+                        xs={12}
+                        alignItems="center"
+                        style={{ paddingTop: "6px" }}
+                      >
+                        <Typography
+                          style={{ height: "40px", width: "100%", textAlign: "center" }}
+                        >
+                          <Slideshow dataCarousel={dataCarousel_}>
+                            {productsubHead.map((val, index) => (
+                              <>
+                                <Grid
+                                  container
+                                  style={{
+                                    display: "flex !important",
+                                    marginBottom: "6px"
+                                  }}
+                                  key={"From the House of NAC"}
+                                  className="wrappercustomer"
+                                >
+                                  <Grid
+                                    item
+                                    style={{ alignItems: "center", display: "flex" }}
+                                    className={val.class}
+                                    src={val.icon}
+                                  ></Grid>
+                                  <Grid
+                                    item
+                                    style={{
+                                      fontSize: "12px",
+                                      alignItems: "center",
+                                      display: "flex"
+                                    }}
+                                  >
+                                    {val.name}{" "}
+                                  </Grid>
+                                </Grid>
+                              </>
+                            ))}
+                          </Slideshow>
+                          <Grid style={{ width: "100%" }}>
+                            <div className="loaders"></div>
+                          </Grid>
+                        </Typography> 
+                      </Grid>
+                    </Grid>
+                  }
                 </div>
               </ExpansionPanelDetails>
             </ExpansionPanel><br />
