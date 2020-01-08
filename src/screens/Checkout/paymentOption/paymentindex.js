@@ -55,7 +55,7 @@ class PaymentIndex extends React.Component {
         //             va["true"] = false
         //         }
         //     }
-        //     return va
+        //     return va 
         // }
         return (
             <div className="payment-div">
