@@ -9,20 +9,23 @@ import Filter from 'components/SilverComponents/ListingPage/Filters'
 import ProductLayout from 'components/SilverComponents/ProductCard/ProductLayout'
 import { ListingPageContext } from 'context'
 import { CDN_URL } from 'config';
+import ProductDescription from 'components/SilverComponents/productDescription';
 class ListingPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
         };
     }
+    
+    // https://img-static.tradesy.com/item/13076758/clear-crystal-and-silver-rhodium-elegant-rhinestone-sunflower-droplet-earrings-0-1-960-960.jpg
     render() {
+        const {dataFilters } = this.props
         return (
             <Grid container>
-                <Grid item style={{ width: "100%" }}>
                     <Header />
-                </Grid>
                 <Container>
                     <Grid item xs={12}>
+                    <ProductDescription title="Jewellery" data={dataFilters} wishlist={this.props.wishlistdata} />
                         <Filter data={this.props.dataFilters} />
                     </Grid>
                     <Grid item xs={12}>

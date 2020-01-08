@@ -93,14 +93,7 @@ class HomeStylori extends React.Component {
         </MetaTags>
 
         </div>
-        <Grid
-          item
-          xs={12}
-          style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}
-        >
           <Header />
-        </Grid>
-
         <Grid item xs={12}>
           <Hidden smDown>
             {homePageStylori.carouselTop.setting.arrowsImg && (

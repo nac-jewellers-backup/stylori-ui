@@ -97,7 +97,6 @@ class Header extends Component {
     headerTransitions = () => {
         document.getElementById('topNav').style.paddingTop = "0";
         document.getElementById('topNav').style.transition = "0.5s";
-        // var heightHeader = document.getElementById('headerDiv').clientHeight;
         if (document.getElementById("SliderFilter")) {
             document.getElementById("SliderFilter").style.top = "120px";
             document.getElementById('SliderFilter').style.transition = "0.5s";
@@ -125,63 +124,27 @@ class Header extends Component {
     scrolling = () => {
         if (window.location.pathname !== "/cart" && window.location.pathname !== '/checkout') {
             if (window.innerWidth > 959) {
-                if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+                if (document.body.scrollTop > 4 || document.documentElement.scrollTop > 4) {
 
                     if (document.getElementById("topNav")) {
                         document.getElementById("topNav").style.marginTop = "-69px";
                     }
-                    // if (document.getElementById("headerContainer")) {
-                    //     document.getElementById("headerContainer").style.position = "fixed";
-                    //     document.getElementById("headerContainerTop").style.height = "74px";
-                    //     document.getElementById("headerContainer").style.background = "#fff";
-                    //     document.getElementById("headerContainer").style.zIndex = "1300";
-                    //     document.getElementById("headerContainer").style.boxShadow = "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)";
-                    //     document.getElementById("headerContainer").style.height = "55px";
-                    // }
                     if (document.getElementById("logoImage")) {
                         document.getElementById("logoImage").style.width = "80%";
                     }
-                    // if (document.getElementById("logoDiv1")) {
-                    //     document.getElementById("logoDiv1").style.padding = "0px";
-                    // }
-                    // if (document.getElementById("titleTop")) {
-                    //     document.getElementById("titleTop").style.marginTop = "0px"
-                    // }
-                    // if (document.getElementById("containerTitle")) {
-                    //     document.getElementById("containerTitle").style.height = "55px";
-                    // }
-                    // if (document.getElementById("fullcontainer")) {
-                    //     document.getElementById("fullcontainer").style.height = "55px";
-                    // }
                 }
                 else {
                     if (document.getElementById("topNav")) {
                         document.getElementById("topNav").style.marginTop = "0px";
                     }
                     if (document.getElementById("headerContainer")) {
-                        // document.getElementById("headerContainer").style.position = "inherit";
-                        // document.getElementById("headerContainer").style.background = "#fff";
-                        // document.getElementById("headerContainer").style.zIndex = "1300";
-                        // document.getElementById("headerContainer").style.boxShadow = "none";
-                        // document.getElementById("headerContainer").style.height = "auto";
+                     document.getElementById("headerContainer").style.height = "auto";
                     }
-                    // if (document.getElementById("headerContainerTop")) {
-                    //     document.getElementById("headerContainerTop").style.height = "0px";
-                    // }
+                   
                     if (document.getElementById("logoImage")) {
                         document.getElementById("logoImage").style.width = "100%";
                     }
-                    // if (document.getElementById("containerTitle")) {
-                    //     document.getElementById("containerTitle").style.height = "auto";
-                    // }
-                    // if (document.getElementById("fullcontainer")) {
-                    //     document.getElementById("fullcontainer").style.height = "auto";
-                    // }
-                    // if (document.getElementById("logoDiv1")) {
-                    //     document.getElementById("logoDiv1").style.paddingTop = "2%";
-                    // }
                 }
-
             }
             else {
                 return ""
@@ -202,12 +165,12 @@ class Header extends Component {
         const opened = this.state;
         // const id = open ? true : undefined;
         return (
-            <div>
+            <div style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
                 <Hidden smDown >
                     {/* <HeaderNotification headerTransition={() => { this.headerTransitions() }} /> */}
                     <div className="header-appbar-sticky1" id='headerDiv'>
-                        <AppBar className="header-appbarsilver1 " id="topNav"  >
-                            <Container maxWidth="lg" id="searchcontainer">
+                        <AppBar className="header-appbarsilver1 " id="topNav" style={{ transition: " 0.6s" }}>
+                            <Container maxWidth="lg" id="searchcontainer" >
                                 <Grid container spacing={12} style={{ marginTop: "20px" }}>
                                     <Grid container item xs={12} justify="flex-end" alignItems="center">
                                         <div className={`head-icons1 ${classes.headIcons}`} >
@@ -308,9 +271,9 @@ class Header extends Component {
                                                     >
                                                         {
                                                             (menuListHeader.map(listName => {
-                                                                let urlsmall = listName.toLowerCase()
+                                                                let urlsmall = listName.title.toLowerCase()
                                                                 return (
-                                                                    <a href={urlsmall} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: false, subTitleData: null, targetopen: event.currentTarget, listHoverItem: listName.replace(/ +/g, "") }) }}>{listName}</a>
+                                                                    <a href={listName.url} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: false, subTitleData: null, targetopen: event.currentTarget, listHoverItem: listName.title.replace(/ +/g, "") }) }}>{listName.title}</a>
                                                                 )
 
                                                             }))

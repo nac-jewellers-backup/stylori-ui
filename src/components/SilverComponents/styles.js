@@ -148,7 +148,7 @@ export const useStyles = makeStyles(theme => ({
   },
   mouseOverPopover: {
     zIndex: 1000,
-    top: '17px !important',
+    // top: '17px !important',
     backgroundColor: theme.palette.background.fade,
     color: 'white',
     '& span': {
@@ -191,7 +191,8 @@ export const useStyles = makeStyles(theme => ({
   },
   listedItems: {
     padding: "0px",
-    fontSize: "0.7rem !important"
+    fontSize: "0.7rem !important",
+    cursor:"pointer"
   },
   listedItemsub: {
     padding: "0px",
@@ -203,7 +204,8 @@ export const useStyles = makeStyles(theme => ({
   listedItemsvalue: {
     padding: "2px 16px 2px 16px",
     fontSize: "0.7rem !important",
-    letterSpacing: 2
+    letterSpacing: 2,
+    cursor:"pointer"
   },
   listedItemsvalue2: {
     padding: "2px 16px 2px 16px",

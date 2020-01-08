@@ -48,10 +48,8 @@ class ProductDetail extends Component {
   }
   render() { 
     // alert(JSON.stringify(this.props.data))
-    console.log("tgf");
     // alert(JSON.stringify(this.props.data))
     var loc = this.props.location.pathname;
-    console.log('this.props.data i am data', this.props.data)
     var path = loc.split('/');
     var data_json = [{ title: 'home', url: '/home' }, { title: path[2], url: this.renderUrl() }, { title: path[4] }]
     // alert(JSON.stringify(this.props.wishlistdata))
@@ -88,11 +86,7 @@ class ProductDetail extends Component {
         </div>
 
         <Hidden smDown>
-          <Grid container >
-            <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
-              <Header wishlist={this.props.wishlistdata} />
-            </Grid>
-          </Grid>
+            <Header wishlist={this.props.wishlistdata} />
 
           <Grid Container spacing={12} style={{ maxWidth: "1600px", margin: "auto" }}>
             <Grid item xs={12}>
@@ -147,12 +141,10 @@ class ProductDetail extends Component {
 
 
         <Hidden mdUp>
-          <div style={{ paddingBottom: "50px" }}>
-            <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
-              <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
-                <Header wishlist={this.props.wishlistdata} pdpage={true} />
-              </Grid>
-            </Grid>
+          {/* <div style={{ paddingBottom: "50px" }}> */}
+          {/* <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}> */}
+            <Header wishlist={this.props.wishlistdata} pdpage={true} />
+          {/* </Grid> */}
 
             <Grid item xs={12}>
               <PriceBuynow data={this.props.data} />
@@ -184,7 +176,6 @@ class ProductDetail extends Component {
               <Footer />
             </Grid>
             <Buynowfixed data={this.props.data} />
-          </div>
         </Hidden>
 
       </div>

@@ -8,17 +8,19 @@ import { useNetworkRequest } from 'hooks/index';
 import { API_URL, HOME_PAGE_URL, CDN_URL } from '../../../config';
 
 var obj = {}
+var obj_user = {}
 let gut_lg = localStorage.getItem("gut_lg") ? JSON.parse(localStorage.getItem("gut_lg")) : {}
-
+let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
+ 
 class CashonDelivey extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             res_data: null
         }
-
     }
     makeFetch = async (props) => {
+        debugger
         const bb = this.props && this.props.dataCard1
         // if (bb.length <0) {
         //    return
@@ -35,17 +37,21 @@ class CashonDelivey extends React.Component {
         }).then(function (data) {
             console.log('data', data)
         });
-        localStorage.removeItem("cartDetails")
-        localStorage.removeItem("panel")
-        localStorage.removeItem("ship_isactive")
-        localStorage.removeItem("bil_isactive")
+      
         if (gut_lg === true) {
             localStorage.clear();
             // localStorage.removeItem("gut_lg")
         }
-        // }
-        // localStorage.removeItem("cart_id")
-        window.location.pathname = "/jewellery"
+        // } 
+        localStorage.removeItem("cart_id")
+        obj_user["user_id"] = user_id 
+        obj_user["jewellery"] = "jewellery"
+        this.props.setCartFilters(obj_user)
+        // window.location.pathname = "/jewellery"
+        localStorage.removeItem("cartDetails")
+        localStorage.removeItem("panel")
+        localStorage.removeItem("ship_isactive")
+        localStorage.removeItem("bil_isactive") 
     }
     componentDidUpdate(prevProps, prevState) {
         if (this.state.res_data !== prevState.res_data) {
@@ -102,7 +108,7 @@ class CashonDelivey extends React.Component {
     }
 }
 const Components = props => {
-    let { CartCtx: { cartFilters, data, loading, error } } = React.useContext(CartContext);
+    let { CartCtx: { setCartFilters, cartFilters, data, loading, error } } = React.useContext(CartContext);
     let content, mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
@@ -110,7 +116,7 @@ const Components = props => {
         }
     }
     if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
-    else content = <CashonDelivey {...props} data={mapped} cartFilters={cartFilters} />
+    else content = <CashonDelivey {...props} data={mapped} cartFilters={cartFilters} setCartFilters={setCartFilters} />
     return content
 }
 export default (Components)

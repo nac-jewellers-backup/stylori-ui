@@ -28,13 +28,8 @@ class StoryBlock extends React.Component {
     const { classes }  = this.props;
     return (
       <Grid container>
-        <Grid
-          item
-          xs={12}
-          style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}
-        >
+        
           <Header />
-        </Grid>
         <Grid item xs={12}>
           <Slideshow
             sliderRef={this.slider}

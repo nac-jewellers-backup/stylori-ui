@@ -18,11 +18,7 @@ class Accounts extends React.Component {
         return (
             <Grid container>
                 <Hidden smDown>
-                    {/* <Grid container spacing={12}> */}
-                    <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
-                        <Header wishlist={this.props.wishlistdata} />
-                    </Grid>
-                    {/* </Grid> */}
+                    <Header wishlist={this.props.wishlistdata} />
 
                     <Grid item xs={12}>
                         <Accountdetails data={this.props.data} wishlistdata={this.props.wishlistdata} allorderdata={this.props.allorderdata} />
