@@ -691,6 +691,32 @@ body {
     padding: 0px 0px 0px 4px !important;
     min-height: none !important;
 }
+.overlayCss{
+    line-height: 20px !important;
+    font-size: 12px !important;
+    text-transform: uppercase;
+    padding: 0px 8px !important;
+    background: #ed1165 !important;
+    text-transform: uppercase;
+    display: inline-block !important;
+    position: absolute;
+    pointer-events: none !important;
+    height: 20px !important;
+    margin-top: 8px;
+
+}
+.overlayCss::after {
+    
+    content: "" !important;
+    height: 0px;
+    width: 0px;
+    border-style: solid !important;
+    border-width: 10px !important;
+    border-color: #ed1165 transparent !important;
+    position: absolute !important;
+    top: 0px;
+    right: -10px !important;
+}
 
 .imagezoom-cursor {
     border: 1px solid #ccc !important;

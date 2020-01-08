@@ -211,12 +211,12 @@ const generateShipsBy = (readytoship, vendorDeliveryTime) => {
     var date = moment().format(' h a')
     if (isReadytoShip) {
         if (JSON.stringify(date) > " 1 pm") {
-            return 'Ships by' + ' ' + moment().add(1, 'days').format('MMM Do YY');
+            return 'Ships by' + ' ' + moment().add(1, 'days').format('Do MMMM YYYY');
         }
     }
 
     else {
-        return 'Ships by' + ' ' + moment().add(numberOfDays, 'days').format('MMM Do YY');
+        return 'Ships by' + ' ' + moment().add(numberOfDays, 'days').format('Do MMMM YYYY');
     }
 }
 const sorting = (val) =>{
