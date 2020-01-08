@@ -74,15 +74,20 @@ export default function PaymentHiddenForm(props){
         </div>
         <div>
             {/* <label>successpage</label> */}
-            <input size="50" type="hidden" name="responseSuccessURL" value="http://192.168.0.130:8000/paymentsuccess"/>
+            <input size="50" type="hidden" name="responseSuccessURL" value="https://alpha.stylori.net/paymentsuccess/:6565656"/>
         </div>
         <div>
             {/* <label>fail</label> */}
-            <input size="50" type="hidden" name="responseFailURL" value="http://192.168.0.130:8000/paymentfailure"/>
+            <input size="50" type="hidden" name="responseFailURL" value="https://alpha.stylori.net/paymentfail/:6565656"/>
         </div>
         <div>
             {/* <label>Language</label> */}
             <input size="50" type="hidden" name="language" value="en_EN"/>
+        </div>
+        <div>
+        <input size="50" type="hidden" name="sharedsecret" value="" />
+        <input type="hidden" name="timezone" value="IST" />
+        <input type="hidden" name="authenticateTransaction" value="true" />
         </div>
        <input type="submit" style={{background: "#ec7ea8",color: "white",padding: "6px"}} name ="submitBtn" value="Place Order" />
     </form>
