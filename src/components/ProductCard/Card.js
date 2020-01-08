@@ -97,9 +97,20 @@ const imageOnError = (event, res) => {
 const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => (
   <div className="imageHeight">
     {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" style={{ zIndex: 2 }}>
+    <i class="fa fa-truck" style={{ fontSize: "20px" }}></i>
       <span class="one-day-ship-listing-page-label">1 day shipping</span>
 
     </div> : ''}
+
+    <span  className="overlayCss" style={{ zIndex: 10, color: "#fff",backgroundColor:"#f699a3" }}>
+      {
+        Math.round(props.data.offerPrice) === Math.round(props.data.price) ? '' :
+          <>
+            {Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice)) / Math.round(props.data.price)) * 100) + '% off'}
+          </>
+      }
+    </span>
+
     <div class="wishListStyle">
       <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} />
     </div>
@@ -184,7 +195,7 @@ const useStyles = makeStyles(theme => ({
     margin: 0
   },
   card: {
-    minWidth: "80%",
+    minWidth: "90%",
     maxWidth: "90%",
     boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important",
     margin: "10px 0px ",
@@ -201,7 +212,7 @@ const useStyles = makeStyles(theme => ({
   priceClass: {
     // boxShadow: "0px 0px 5px #F699A3 inset",
     padding: "10px",
-    height: '50px',
+    height: '56px',
     display: 'flex',
     boxShadow: " 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
     borderRadius: '0 !important',
@@ -214,7 +225,7 @@ const useStyles = makeStyles(theme => ({
       // opacity: "2"
     },
     [theme.breakpoints.down('sm')]: {
-      height: '60px',
+      height: '46px',
       padding: '0 !important',
       paddingLeft: '10px !important'
     },
@@ -257,7 +268,8 @@ const useStyles = makeStyles(theme => ({
       textAlign: 'left',
       padding: '0 !important',
       paddingTop: '4px !important',
-      paddingBottom: '4px !important'
+      paddingBottom: '4px !important',
+      padding: 5,
     },
   },
   youSave: {
@@ -430,12 +442,17 @@ sizes="(max-width: 320px) 320w,
                 className={classes.textPriceCardGrid}
                 alignItems="center"
               >
-                <Grid container item xs={12} sm={12} md={7} lg={7} xl={7} alignItems="center" className={`${classes.priceClassMain}`}>
+                <Grid container item xs={12} sm={12} className={`${classes.priceClassMain}`}>
                   <Typography
                     variant="h6"
                     component="h6"
                     className={classes.offerMainPrice}
-                  >
+                    style={{
+                      width: "100%",
+                      justifyContent: "flex-start",
+                      display: "flex",
+                      paddingLeft: "5px"
+                    }}>
                     {/* <i
                     
                     className="fa"
@@ -445,61 +462,44 @@ sizes="(max-width: 320px) 320w,
                     {/* {Math.round(props.data.offerPrice)} */}
                     {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.offerPrice))}
                   </Typography>
-                </Grid>
-                {/*  */}
-                <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={`${classes.priceOffGrid}`}>
-                  <Grid container item xs={12} alignItems="center" className={`${classes.priceOffGridsub}`}>
-                    <Typography
-                      gutterBottom
-                      variant="body1"
-                      component="span"
-                      className={classes.offerPrice}
-                    >
-                      {
-                        Math.round(props.data.offerPrice) === Math.round(props.data.price) ?
-                          new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))
-                          :
-                          <del>
-
-                            {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
-                          </del>
-                      }
-
-                    </Typography>
-                  </Grid>
-                  {
-                    Math.round(props.data.offerPrice) === Math.round(props.data.price) ? '' :
-                      <Grid container item xs={12} className={`${classes.offerPricesMain}`}>
-                        {/* <Typography
+                  <Typography
+                    style={{
+                      width: "100%",
+                      justifyContent: "flex-start",
+                      display: "flex",
+                      marginTop: "4px"
+                    }}
                     gutterBottom
                     variant="body1"
                     component="span"
-                    className={classes.youSave}
+                    className={classes.offerPrice}
                   >
-                    you save &nbsp;
-                  </Typography> */}
-                        <Typography
-                          gutterBottom
-                          variant="body1"
-                          component="span"
-                          className={`${classes.youSave} ${classes.youSavePrice}`}
-                        >
-                          {/* 20% Off */}
-                          {
+                    {
+                      Math.round(props.data.offerPrice) === Math.round(props.data.price) ?
+                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))
+                        :
+                        <del>
 
-                            Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice)) / Math.round(props.data.price)) * 100) + '% off'}
+                          {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
+                        </del>
+                    }
 
-                        </Typography>
-                      </Grid>
-                  }
-
+                  </Typography>
                 </Grid>
+                {/*  */}
+                {/* <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={`${classes.priceOffGrid}`}>
+                  <Grid container item xs={12} alignItems="center" className={`${classes.priceOffGridsub}`}>
+
+                  </Grid>
+
+
+                </Grid> */}
 
                 <Hidden smDown>
                   <Grid container xs={12}>
                     <Grid item xs={12} className={`${classes.titles}`}>
                       <Typography variant="body1"
-                        component="span" className={`${classes.titles}`}>
+                        component="span" style={{ paddingLeft: "5px" }} className={`${classes.titles}`}>
                         {props.data.title}
                       </Typography>
 

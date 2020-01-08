@@ -75,7 +75,7 @@ class Component extends React.Component {
         const { classes, chips, checked } = this.props;
         const { sortOptions } = this.props.data;
         return (
-            <Paper style={{ position: 'sticky', top: "69px", width: '100%', zIndex: '3', boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">
+            <Paper style={{ position: 'sticky', top: "69px", width: '100%', zIndex: 11, boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">
                 {/* <div style={{position:'sticky',top:'165px'}}> */}
                 <Grid container>
                     <Grid item lg={3}>

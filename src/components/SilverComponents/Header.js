@@ -450,24 +450,26 @@ class Header extends Component {
                                 <>
                                     <ListItem button key={row.name} className="drawer-list1" >
                                         <ListItemText
-                                            onClick={() => Jewellery[row.name] !== undefined ? this.selectItem(row.name) : ''}
+                                            onClick={() => { window.location.href = row.url }}
                                         >
                                             <Typography className="list-items1"
                                                 variant=""
                                             >{row.name.toUpperCase()}
                                             </Typography>
                                         </ListItemText>
-                                        {Jewellery[row.name] !== undefined ? row.name === selected ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i> : ""}
-                                    </ListItem>
+                                        <div onClick={() => Jewellery[row.name] !== undefined ? this.selectItem(row.name) : ''}>{Jewellery[row.name] !== undefined ? row.name === selected ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i> : ""}
+                                        </div> 
+                                        </ListItem>
                                     {selected === row.name &&
                                         Object.keys(Jewellery[selected]).map(row2 => (
                                             <>
                                                 <ListItem button key={Jewellery[selected][row2].name} className={classes.subtitleContainer}>
-                                                    <ListItemText onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>
+                                                    <ListItemText  onClick={() => { window.location.href = Jewellery[selected][row2].url }}>
                                                         <Typography className={classes.subtitles} variant="">{Jewellery[selected][row2].name.toUpperCase()}
                                                         </Typography>
                                                     </ListItemText>
-                                                    {selected1 === Jewellery[selected][row2].name ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i>}
+                                                    <div onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>{selected1 === Jewellery[selected][row2].name ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i>}
+                                               </div>
                                                 </ListItem>
                                                 {selected1 === Jewellery[selected][row2].name &&
                                                     <List className="sideNavListing" >
@@ -481,9 +483,9 @@ class Header extends Component {
                                                         </ListItem>
                                                         {subheader[selected1].name.map(row => (
                                                             <>
-                                                                <ListItem className={classes.subtitle2Container}>
+                                                                <ListItem onClick={() => { window.location.href = row.url }} className={classes.subtitle2Container}>
                                                                     <ListItemText>
-                                                                        <Typography className="list-items1" variant="">{row.toUpperCase()}</Typography>
+                                                                        <Typography className="list-items1" variant="">{row.name.toUpperCase()}</Typography>
                                                                     </ListItemText>
                                                                 </ListItem>
                                                             </>
