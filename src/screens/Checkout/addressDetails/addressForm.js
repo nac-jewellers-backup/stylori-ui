@@ -330,7 +330,7 @@ const AddressComponent = (props) => {
                                     className=''>Cancel</Button> : ""} &nbsp;
                                 <Button type="submit" className='apply-b'>Save and Review</Button>
                             </div>
-                        </form>
+                        </form> 
                     </div>
                     : <Addressdetails open={values.open} setOpen={values.setOpen} handleClose={handle.handleClose} handleOpen={handle.handleOpen} Delete_address={handle.Delete_address} selectaddreses={handle.selectaddreses} values={values} setValues={setValues} changevalue={props.changePanel} redirectForm1={handle.redirectForm1} redirectForm={handle.redirectForm} />}
             </div>
