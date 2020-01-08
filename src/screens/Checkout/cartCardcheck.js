@@ -93,6 +93,7 @@ class Component extends React.Component {
         const { breadcrumsdata, cartsubdata } = this.props.data;
         let email = localStorage.getItem("email") ? localStorage.getItem("email") : '';
         variab["pincode"] = value && value.pincode
+   // alert(JSON.stringify(this.props.data))
 
         return (
             <>

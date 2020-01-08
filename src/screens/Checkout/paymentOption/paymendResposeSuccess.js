@@ -3,106 +3,72 @@ import { Grid, Button } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import './payment.css';
 import Divider from '@material-ui/core/Divider';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import CartCard from "components/Checkout/CartCard";
+import { CartContext } from 'context'
 
-export default function PaymentResponseSuccess(props){
-    useEffect(() => {
-       
-      }, []);
-      return (
-        <Grid container style={{    padding: "60px"}}>
-            <Grid item container  xs={8} sm={8} md={8} >
-                <Grid item xs={3}>
-                    <Typography component="h6" className="paymentsuccessfont">Amount</Typography>
-                </Grid>
-                <Grid item xs={3}>
-                    <Typography component="h6" className="paymentsuccessfont">100</Typography>
-                </Grid>
-                <Grid item xs={3}>
-                    <Typography component="h6" className="paymentsuccessfont">IND</Typography>
-                </Grid>
+class PaymentResponseSuccess extends React.Component{
+render(){ 
+   // alert(JSON.stringify(this.props.data))
+return (
+         <Grid container justify="center">
+            <Grid container justify="center">
+               <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>
+               <Grid item xs={10} sm={10} md={4} className="contant-center" >
+                  <Grid item className="container-font-size">Thank you,your order has been placed.</Grid>
+               </Grid>
             </Grid>
-            <Grid container item xs={4} sm={4} md={4}>
-
+            <Grid container justify="center">
+               <Grid item xs={12} sm={12} md={4} className="contant-center" style={{ justifyContent: "center"}}>We've send you an email confirmation.Resend Email</Grid>
             </Grid>
-            <Grid container item xs={8} sm={8} md={6} style={{marginTop:"40px",background: "whitesmoke"}}>
-                <Grid container justify="center">
-                    <Typography component="h6" style={{color: "#05409a"}}>Order Confirmation</Typography>
-                </Grid>
-                <Grid item xs={5} sm={5} md={5} className="paymentcontent">
-                    <Grid>
-                       <Typography component="h6">Transaction State</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6">Order Id</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6">Time</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6">Ref No</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6">Approval Code</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6">Total</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6">Currency</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6">Card No</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6">Valid to (month)</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6">Valid to (year)</Typography>
-                    </Grid>
-                </Grid>
-                <Grid item xs={7} sm={7} md={7} className="paymentcontent">
-                    <Grid>
-                       <Typography component="h6" className="paymentsuccessfont">Transaction State</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6" className="paymentsuccessfont">Order Id</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6" className="paymentsuccessfont">Time</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6" className="paymentsuccessfont">Ref No</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6" className="paymentsuccessfont">Approval Code</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6" className="paymentsuccessfont">Total</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6" className="paymentsuccessfont">Currency</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6" className="paymentsuccessfont">Card No</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6" className="paymentsuccessfont">Valid to (month)</Typography>
-                    </Grid>
-                    <Grid>
-                       <Typography component="h6" className="paymentsuccessfont">Valid to (year)</Typography>
-                    </Grid>
-                </Grid>
-                <Grid container style={{marginTop:"20px"}}>
-                   <Typography component="span">Please retain the copy for statement verification</Typography>
+            <Grid container style={{marginTop:"15px"}}>
+               <Grid container justify="center">
+                  <Grid item xs={12} sm={12} md={6} className="paymentsuccess-content">
+                        <Grid container>
+                           <Grid item xs={6} sm={6} md={4}>
+                              <Typography component="h4">Order Number</Typography>
+                           </Grid>
+                           <Grid item xs={6} sm={6} md={4}> <Typography component="h4">:9875897</Typography></Grid>
+                        </Grid>
+                        <Grid container>
+                           <Grid xs={6} sm={6} md={4}>
+                              <Typography component="h4">Order Date</Typography>
+                           </Grid>
+                           <Grid item xs={6} sm={6} md={4}> <Typography component="h4">:10-05-1997</Typography></Grid>
+                        </Grid>
+                        <Grid container>
+                           <Grid xs={6} sm={6} md={4}>
+                              <Typography component="h4">Payment Method</Typography>
+                           </Grid>
+                           <Grid item xs={6} sm={6} md={4}> <Typography component="h4">:Cash On Delivery</Typography></Grid>
+                        </Grid>
+                        <Grid container>
+                           <Grid xs={6} sm={6} md={4}>
+                              <Typography component="h4">Shipping Address</Typography>
+                           </Grid>
+                           <Grid item xs={6} sm={6} md={4}> <Typography component="h4">:3/23,north street,chennai</Typography></Grid>
+                        </Grid>
+                  </Grid>
                </Grid>
                <Grid container justify="center">
-                  <Button variant="contained" color="primary">Return To Stylori</Button>
-               </Grid> 
-               <Divider className="horizontal"/>
-               <Grid className="paymentdivider">
-                       <Typography component="h6" className="paymentsuccessfont">we recommented that you print the page as  confirmation of your order.</Typography>
+                  <Grid item className="grand-item">
+                     <Typography component="h4">Grand Total:20000</Typography>
+                     
+                  </Grid>
                </Grid>
             </Grid>
-        </Grid>
+            <Grid container> 
+               {/* <CartCard data={this.props.data}/> */}
+            </Grid>
+         </Grid>
       )
-}
+}}
+// export default PaymentResponseSuccess 
+const Components = props => {
+   let { CartCtx: { data, loading, error} } = React.useContext(CartContext);
+   let content;
+   content=  <PaymentResponseSuccess {...props} data={data} />
+   return content
+
+} 
+export default Components;

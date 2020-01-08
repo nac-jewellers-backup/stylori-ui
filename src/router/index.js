@@ -19,8 +19,10 @@ import stories from 'screens/Stylori/stories';
 import AboutPage from "components/faqs/aboutPage";
 import ForgotPassword from "components/ForgotPassword/ForgetPassword";
 import PaymentResponseSuccess from '../screens/Checkout/paymentOption/paymendResposeSuccess';
-import PaymentResponseFail from '../screens/Checkout/paymentOption/paymendResposeSuccess';
-
+import PaymentResponseFail from '../screens/Checkout/paymentOption/paymentResponseFail';
+import PaymentHiddenForm from '../screens/Checkout/paymentOption/paymentHiddenForm';
+import Success from '../screens/Stylori/success';
+import Fail from '../screens/Stylori/fail';
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
 
@@ -46,7 +48,7 @@ export const RouterApp = (props) => {
     // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
     return (
         <Switch history={browserHistory}>
-            <Redirect key="stylori-redirect" from="/" exact to={"/jewellery"} />
+            <Redirect key="stylori-redirect" from="/" exact to={"/paymenthidden"} />
             <Route key="HomePageStylori" component={HomePageStylori} exact path={routes.HomePageStylori} />
             <Route key="Silver" component={Silver} exact path={routes.Silver} />
             <Route key="Faqs" component={Faqs} exact path={routes.Faqs} />
@@ -57,8 +59,11 @@ export const RouterApp = (props) => {
             <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
             <Route key="AboutUs" component={AboutPage} exact path={routes.AboutUs} />
             <Route key="ForgotPassword" component={ForgotPassword} exact path={routes.ForgotPassword} />
-            <Route key="paymentsuccess" component={PaymentResponseSuccess} exact path={routes.paymentsuccess} />
-            <Route key="paymentfail" component={PaymentResponseFail} exact path={routes.paymentfail} />
+            {/* <Route key="paymentsuccess" component={PaymentResponseSuccess} exact path={routes.paymentsuccess} /> */}
+            {/* <Route key="paymentfail" component={PaymentResponseFail} exact path={routes.paymentfail} /> */}
+            <Route key="paymenthidden" component={PaymentHiddenForm} exact path={routes.paymenthidden} />
+            <Route key="success" component={Success} exact path={routes.success} />
+            <Route key="fail" component={Fail} exact path='/fail' />
             
 
             {(props.location.pathname !== "/cart" && props.location.pathname !== `/account${"-" + window.location.pathname.split("-")[1]}` && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && props.location.pathname !== "/forgotPassword" && Globalctx  && Globalctx.pathName === false) &&
