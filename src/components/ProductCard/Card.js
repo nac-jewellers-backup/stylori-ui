@@ -106,7 +106,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
 
     <LazyLoadImage
       alt={'props.data.title'}
-      effect="blur" 
+      effect="blur"
       src={renderImages(props, cardstate)}
       //  srcset={renderImages(props, cardstate)}
       //      sizes="(max-width: 320px) 320w,
@@ -166,7 +166,7 @@ export default trackWindowScroll(Gallery);
 //           />
 const handleProductDetatiContext = (props) => {
   debugger
-  
+
   props.filters['defaultVariants']['diamondType'] = props.data.diamondType
   props.filters['defaultVariants']['metalColor'] = props.data.metalColor
   props.filters['defaultVariants']['purity'] = props.data.purity
@@ -349,7 +349,7 @@ const renderImages = (props, cardstate) => {
 }
 
 function Component(props) {
-  
+
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
     hovered: false,
@@ -386,6 +386,7 @@ function Component(props) {
 
         </CardActions> */}
         {/* /:productCategory/:productType/:material/:productName */}
+
         <Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }} target="_blank" onClick={handleProductDetatiContext(props)}>
           <CardActions style={{
             //  maxHeight: `${_height ? `${_height}px` : '300px'}`, minHeight: '250px'
