@@ -64,19 +64,21 @@ class PaymentIndex extends React.Component {
                         <Grid item lg={5}>
                             <div className="pay-index-subhed">
                                 <p style={{ background: this.state.isActive == "Creditform" ? "#dfdfdf" : "" }}
-                                    // style={{ background: "#dfdfdf" }}
-                                    onClick={() => this.toggleCollapsed('Creditform')}
+                                    style={{ background: "#dfdfdf" }}
+                                // onClick={() => this.toggleCollapsed('Creditform')}
                                 >
                                     <div className="cc-icon"></div> &nbsp; Credit card </p>
                                 <p style={{ background: this.state.isActive == "Debitform" ? "#dfdfdf" : "" }}
-                                    onClick={() => this.toggleCollapsed('Debitform')}
+                                    // onClick={() => this.toggleCollapsed('Debitform')}
+                                    style={{ background: "#dfdfdf" }}
+
                                 >
                                     <div className="dc-icon"></div> &nbsp; Debit card </p>
                                 <p style={{ background: this.state.isActive == "Netbanking" ? "#dfdfdf" : "" }}
-                                    // onClick={() => this.toggleCollapsed('Netbanking')}
-                                    style={{ background: "#dfdfdf" }}
+                                    onClick={() => this.toggleCollapsed('Netbanking')}
+                                    // style={{ background: "#dfdfdf" }}
                                 >
-                                    <div className="net-bnk-icon"></div> &nbsp; Net Banking </p>
+                                    <div className="net-bnk-icon"></div> &nbsp; Pay Online </p>
                                 <p style={{ background: this.state.isActive == "CashonDelivey" ? "#dfdfdf" : "" }}
                                     onClick={() => this.toggleCollapsed('CashonDelivey')}
                                 >
@@ -105,33 +107,36 @@ class PaymentIndex extends React.Component {
                 </Hidden>
 
                 <Hidden mdUp>
-                    <ExpansionPanel className="respone-div">
+                    <ExpansionPanel className="respone-div"
+                        style={{ background: "#dfdfdf" }}
+                    >
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography className="py-head"><div className="cc-icon">&nbsp;</div>Credit card  </Typography>
                         </ExpansionPanelSummary>
-                        <ExpansionPanelDetails style={{ padding: "0px" }}>
+                        {/* <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Creditform data={this.props.data} dataCard1={dataCard1}/>
-                        </ExpansionPanelDetails>
-                    </ExpansionPanel>
-
-                    <ExpansionPanel className="respone-div">
-                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                            <Typography className="py-head">  <div className="dc-icon"></div> &nbsp; Debit card </Typography>
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails style={{ padding: "0px" }}>
-                            <Debitform data={this.props.data} dataCard1={dataCard1}/>
-                        </ExpansionPanelDetails>
+                        </ExpansionPanelDetails> */}
                     </ExpansionPanel>
 
                     <ExpansionPanel className="respone-div"
-                                    style={{ background: "#dfdfdf" }}
-                                    >
+                        style={{ background: "#dfdfdf" }}
+                    >
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                            <Typography className="py-head">  <div className="net-bnk-icon"></div> &nbsp; Net Banking  </Typography>
+                            <Typography className="py-head">  <div className="dc-icon"></div> &nbsp; Debit card </Typography>
                         </ExpansionPanelSummary>
                         {/* <ExpansionPanelDetails style={{ padding: "0px" }}>
-                            <Netbanking />
+                            <Debitform data={this.props.data} dataCard1={dataCard1}/>
                         </ExpansionPanelDetails> */}
+                    </ExpansionPanel>
+
+                    <ExpansionPanel className="respone-div"
+                    >
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                            <Typography className="py-head">  <div className="net-bnk-icon"></div> &nbsp; Online Pay  </Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails style={{ padding: "0px" }}>
+                            <Netbanking />
+                        </ExpansionPanelDetails>
                     </ExpansionPanel>
 
                     <ExpansionPanel className="respone-div">

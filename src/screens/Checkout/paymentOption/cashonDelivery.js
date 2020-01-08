@@ -37,14 +37,14 @@ class CashonDelivey extends React.Component {
         }).then(function (data) {
             console.log('data', data)
         });
+        localStorage.removeItem("cart_id")
 
         if (gut_lg === true) {
             localStorage.clear();
             // localStorage.removeItem("gut_lg")
         }
         // } 
-        localStorage.removeItem("cartDetails")
-        localStorage.removeItem("cart_id")
+       
         obj_user["user_id"] = user_id
         obj_user["jewellery"] = "jewellery"
         this.props.setCartFilters(obj_user)
