@@ -198,7 +198,7 @@ class Component extends React.Component {
                                         <ProductList />
                                     </Grid>
                                     <Hidden mdUp>
-                                       <Grid container>
+                                       <Grid container style={{marginTop:"10px"}}>
                                             <Grid xs={12} lg={7} />
                                             <Grid xs={12} lg={4} >
                                                 <div style={{ float: "right", marginBottom: "5px" }}>
