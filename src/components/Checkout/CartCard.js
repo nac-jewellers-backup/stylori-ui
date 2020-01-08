@@ -270,7 +270,7 @@ class Checkoutcard extends React.Component {
         return (
             <Grid >
                 <Hidden smDown>
-                    {window.location.pathname === "/cart" ? <Container>
+                    {window.location.pathname === "/cart"||window.location.pathname === "/checkout" ? <Container>
                         {this.row(this.props)}
                     </Container> :
                         <>{this.row(this.props)}</>}
