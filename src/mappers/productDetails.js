@@ -5,6 +5,7 @@ import moment from "moment";
 
 
 
+
 // 
 
 var colSize = null
@@ -140,15 +141,47 @@ const injectUrl_url_construct = (url, baseUi, screen_res) => {
 
 
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
-const generateImgurls = (PD, val, screen_res) => {
+const generateImgurls = (PD, val, screen_res, tabsChange) => {
+   debugger
     var arrOfurls = []
+    var imgurlsplit  = null
+    var metalcolor = null
+    var metalcolor2 =  null
     val.map(imgurl => {
-        var imgurlsplit = imgurl.imageUrl.split('.')[0].charAt(imgurl.imageUrl.split('.')[0].length - 1)
-        var metalcolor = PD && PD.metalColor ? PD.metalColor.charAt(0) : ''
-        if (imgurlsplit === metalcolor) {
+        if(imgurl.imageUrl.split('.')[0].split('-')[1].length>2){
 
+            imgurlsplit =  imgurl.imageUrl.split('.')[0].split('-')[1].substr(1)
+        }
+        else{
+            imgurlsplit = imgurl.imageUrl.split('.')[0].charAt(imgurl.imageUrl.split('.')[0].length - 1)
+        }
+        // var imgurlsplit 
+        if(PD.metalColor.split(' ').length>1){
+            var colorOne = PD.metalColor.split(' ')[0].charAt(0)
+            var colorTwo = PD.metalColor.split(' ')[1].charAt(0)
+            metalcolor = colorOne.concat(colorTwo)
+            metalcolor2 = colorTwo.concat(colorOne)
+        }
+        else{
+            if(PD && PD.metalColor) metalcolor = PD.metalColor.charAt(0) 
+            else metalcolor = ''
+        }
+        
+        // if (imgurlsplit === metalcolor) {
+
+            // arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
+
+        // }
+        if(!tabsChange){
+
+            if (imgurlsplit === metalcolor || imgurlsplit === metalcolor2 ) {
+
+                arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
+    
+            }
+        }
+        else{
             arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
-
         }
         return arrOfurls
     })
@@ -238,7 +271,7 @@ const sorting = (val) =>{
    
 }
 // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
-export default function (data, like_data, viewedddatas, rating) {
+export default function (data, like_data, viewedddatas, rating, tabsChange) {
     
     let mapperdata = [];
     try {
@@ -267,7 +300,7 @@ export default function (data, like_data, viewedddatas, rating) {
                     dis: PD && PD !== undefined && PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription !== '' ? PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription : '',
                     productType: PD.productListByProductId.productType && PD.productListByProductId.productType,
                     fadeImages: PD.productListByProductId.productImagesByProductId.nodes &&
-                        generateImgurls(PD, PD.productListByProductId.productImagesByProductId.nodes, colSize),
+                        generateImgurls(PD, PD.productListByProductId.productImagesByProductId.nodes, colSize, tabsChange),
                     image_resolution: img_res,
                     image_resolution_two: img_res_X_2,
         

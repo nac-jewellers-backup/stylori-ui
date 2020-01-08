@@ -27,6 +27,7 @@ import { CDN_URL } from 'config';
 import 'screens/screens.css';
 import MetaTags from 'react-meta-tags';
 import { CartContext } from 'context'
+import { GlobalContext } from 'context'
 
 class ProductDetail extends Component {
   constructor(props) {
@@ -184,11 +185,12 @@ class ProductDetail extends Component {
 }
 const Components = props => {
   let { CartCtx: { allorderdata, wishlistdata } } = React.useContext(CartContext);
+  const { Globalctx } = React.useContext(GlobalContext)
   const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating } } = React.useContext(ProductDetailContext);
   const datas = data;
   let mapped = datas;
   if (!loading && !error) {
-    mapped = productDetails(datas, likedatas, viewedddatas, rating);
+    mapped = productDetails(datas, likedatas, viewedddatas, rating, Globalctx.tabsChange);
   }
   if (Object.keys(mapped).length === 0) return <div className="overall-loader"><div id="loading"></div></div>
   else {
