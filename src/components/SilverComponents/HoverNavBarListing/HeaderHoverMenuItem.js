@@ -26,9 +26,14 @@ function HeaderHoverMenuItem(props) {
   return (
     <Grid container className={classes.root}>
       <Grid container item xs={12} className={classes.paperdiv} >
-        <Popper open={opens} anchorEl={target} transition className={`${classes.mouseOverPopover} ${classHover}`}>
+        <Popper open={opens} id={props.id} anchorEl={target} transition className={`${classes.mouseOverPopover} ${classHover}`}
+         modifiers={{
+          flip: {
+            enabled: false,
+          },}}
+        >
           <List component="nav" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
-            <Grid className={classes.subtopic1}>
+            <Grid className={classes.subtopic1} style={{width:`${props._width}`}}>
               {
                 !props.filters &&
                 (props.listHoverItem) && mapper &&
@@ -68,11 +73,13 @@ function HeaderHoverMenuItem(props) {
                     </ListItem>
                   ))}
             </Grid>
-            <Grid className={classes.subtopic2}>
+     {
+       props.listHoverItem && props.listHoverItem['menuTwo'] && 
+              <Grid className={classes.subtopic2}>
               {
                 !props.filters &&
-                (props.listHoverItem) &&
-                (props.listHoverItem['menuTwo']) && (props.listHoverItem['menuTwo']).map(menuList =>
+                (props.listHoverItem ) &&
+                (props.listHoverItem['menuTwo']).map(menuList =>
                   (
                     <ListItem onMouseOver={(event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }} className={classes.listedItemsub} component="li"
                       onClick={() => { window.location.href = menuList.url }}
@@ -90,6 +97,7 @@ function HeaderHoverMenuItem(props) {
 
                     </ListItem>))}
             </Grid>
+     }
 
           </List>
         </Popper>
