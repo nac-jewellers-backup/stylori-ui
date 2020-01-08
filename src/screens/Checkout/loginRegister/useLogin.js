@@ -57,12 +57,12 @@ const useLogin = (changePanel, props) => {
             var a = data.userprofile ? data.userprofile : ""
             if (values.error.emerr) {
                 values['error']['emerr'] = false
-                values['errortext']['emerr'] = ""
+                values['errortext']['emerr'] = "" 
                 setValues({
                     ...values,
                     values,
                 })
-            }
+            } 
 
             if (JSON.stringify(a).length > 10 && values['error'] && values['errortext']) {
                 values['error']['passerr'] = false

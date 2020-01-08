@@ -77,7 +77,6 @@ const Provider = (props) => {
         }
         if (jewellery && jewellery==="jewellery") {
             window.location.pathname = "/jewellery"
-
         }
         // localStorage.setItem('cart_id', JSON.stringify(crtdata))
     }, [crtdata])
@@ -130,7 +129,6 @@ const Provider = (props) => {
         }
 
         if (guestlogId.length > 0) {
-            debugger
             // alert(JSON.stringify(guestlogId))
             localStorage.setItem("user_id", cartFilters.user_id)
             if (JSON.stringify(cartdetails).length > 0) {
@@ -151,7 +149,6 @@ const Provider = (props) => {
                 if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
                     local_storage_products = JSON.parse(localStorage.getItem('cartDetails')).products.map(val => { return val })
                 }
-
                 var skuId = cartFilters.skuId;
                 var products = [];
                 var obj = {};
@@ -161,19 +158,15 @@ const Provider = (props) => {
                 obj['sku_id'] = skuId;
                 obj['qty'] = cartFilters.qty
                 obj['price'] = cartFilters.price
-
-
                 var products_sku_list = () => {
                     if (local_storage_products.length > 0) {
                         local_storage_products.push(obj);
                         return local_storage_products
-
                     }
                     else {
                         products.push(obj)
                         return products
                     }
-
                 }
                 var skuObj = { "cart_id": cartId, "user_id": userId, "products": products_sku_list() }
                 localStorage.setItem('cartDetails', JSON.stringify(skuObj));

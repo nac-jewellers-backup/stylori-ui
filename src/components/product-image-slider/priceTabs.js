@@ -86,7 +86,7 @@ class Component extends React.Component {
             filters['productId'] = this.props.data[0].productId
             this.setState({
                 purity: kv,
-            })
+            }) 
             this.props.setFilters(filters);
         }
         else {

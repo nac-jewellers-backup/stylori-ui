@@ -185,7 +185,7 @@ class Request extends React.Component {
 
                 <Hidden smDown>
                     {/* <Form children={this.Requestform} inputvalues={this.state.values} /> */}
-                    <Grid style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", widt: "100%" }}>
+                    <Grid style={{borderRadius:"5px", boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", widt: "100%" }}>
                         {this.Requestform(errors, this.handleError, errorMessage, this.handleChange)}
 
                     </Grid>

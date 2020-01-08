@@ -170,8 +170,9 @@ class Component extends React.Component {
 
     openModel = () => {
         this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
+        // metalColor purity
         window.location.pathname = "/cart"
-    }
+    } 
 
     handleLocalStorage = () => {
         if (this.props.data && this.props.data[0].productType === "Rings") {
@@ -235,6 +236,7 @@ class Component extends React.Component {
     render() {
         let { showimage } = this.state;
         const { classes, data } = this.props;
+        debugger
         return (
             <div>
                 <Hidden smDown>
