@@ -19,10 +19,9 @@ export const routes = {
     TermsConditions: '/termsconditions',
     AboutUs: '/aboutus',
     ForgotPassword:'/forgotPassword',
-    paymentsuccess:'/paymentsuccess',
-    paymentfail:'/fail',
-    paymenthidden:'/paymenthidden',
-    success:'/success'
+    paymentsuccess:'/paymentsuccess:id',
+    paymentfail:'/paymentfail:id',
+    paymenthidden:'/paymenthidden'
 }
 
 export default routes;

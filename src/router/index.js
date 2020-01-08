@@ -48,7 +48,7 @@ export const RouterApp = (props) => {
     // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
     return (
         <Switch history={browserHistory}>
-            <Redirect key="stylori-redirect" from="/" exact to={"/paymenthidden"} />
+            <Redirect key="stylori-redirect" from="/" exact to={"/jewellery"} />
             <Route key="HomePageStylori" component={HomePageStylori} exact path={routes.HomePageStylori} />
             <Route key="Silver" component={Silver} exact path={routes.Silver} />
             <Route key="Faqs" component={Faqs} exact path={routes.Faqs} />
@@ -62,8 +62,8 @@ export const RouterApp = (props) => {
             {/* <Route key="paymentsuccess" component={PaymentResponseSuccess} exact path={routes.paymentsuccess} /> */}
             {/* <Route key="paymentfail" component={PaymentResponseFail} exact path={routes.paymentfail} /> */}
             <Route key="paymenthidden" component={PaymentHiddenForm} exact path={routes.paymenthidden} />
-            <Route key="success" component={Success} exact path={routes.success} />
-            <Route key="fail" component={Fail} exact path='/fail' />
+            <Route key="paymentsuccess" component={Success} exact path={routes.paymentsuccess} />
+            <Route key="paymentfail" component={Fail} exact path={routes.paymentfail} />
             
 
             {(props.location.pathname !== "/cart" && props.location.pathname !== `/account${"-" + window.location.pathname.split("-")[1]}` && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && props.location.pathname !== "/forgotPassword" && Globalctx  && Globalctx.pathName === false) &&
