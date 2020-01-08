@@ -107,7 +107,7 @@ class Allorders extends React.Component {
                                     key={index}
                                     style={{ marginBottom: "10px" }}
                                 >
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{paddingRight:"15px"}} className='arrow-chek' />} className='ckcut-main-body'>
+                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon  className='arrow-chek' />} className='ckcut-main-body'>
                                         <Typography className='text-chck'>
 
                                             Order Number : #{val.id} &nbsp;|&nbsp; Order Date : {moment(val.createdAt).format('Do MMMM YYYY')}
@@ -129,8 +129,8 @@ class Allorders extends React.Component {
                                                         <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}&nbsp;
                                                             {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].lastname}</div><br />
                                                         <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].addressline1}</div><br />
-                                                        <div>  {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].city}
-                                                            {"-" + val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].pincode}</div>
+                                                        <div>  {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].city+"-" }
+                                                            { val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].pincode}</div>
                                                         <br />
                                                         <br />
                                                         {val.shoppingCartByCartId && val.shoppingCartByCartId.giftwrapsByCartId && val.shoppingCartByCartId.giftwrapsByCartId.nodes && val.shoppingCartByCartId.giftwrapsByCartId.nodes.length > 0 ? <>
@@ -226,7 +226,7 @@ class Allorders extends React.Component {
                                                     </Grid></>
                                             ))}
 
-                                            <div style={{ float: "right", fontSize: "15px", lineHeight: "1.5" }} >
+                                            <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
                                                 Sub Total&nbsp;{this.calculatetotal(val)}<br />
                                                 Shipping&nbsp;FREE<br />
                                                 Shipping Insurance&nbsp;FREE<br />
