@@ -51,14 +51,17 @@ const ProductlistComponent = (props) => {
         setval({ val, ...val,})
     };
     return (
-        <Container>
+        <Grid>
             <div className='pt-sm'>
                 {/* <Checkoutcard /> */}
                 <div>
                     <Grid container spacing={12}>
-                        <Grid item xs={12} lg={4}>
+                        <Grid item xs={12} lg={4} sm={6}>
 
-                            <ExpansionPanel className={classes.cart}
+                            <ExpansionPanel 
+                            style={{marginTop:"12px"}}
+                            class="extra-box"
+                            className={classes.cart}
                                 square
                                 className={classes.cart}
                                 expanded={expanded1 === 1}
@@ -95,9 +98,11 @@ const ProductlistComponent = (props) => {
                             </ExpansionPanel>
                         </Grid>
 
-                        <Grid item xs={12} lg={4}>
+                        <Grid item xs={12} lg={4} sm={6} >
                             <ExpansionPanel
                                 square
+                                class="extra-box"
+                                style={{marginTop:"12px"}}
                                 className={classes.cart}
                                 expanded={expanded2 === 1}
                                 onChange={handleChange2(1)} >
@@ -153,12 +158,14 @@ const ProductlistComponent = (props) => {
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
                         </Grid>
-                        <Grid item xs={12} lg={4}>
-                            <ExpansionPanel className={classes.cart}
+                        <Grid item xs={12} lg={4} sm={6}>
+                            <ExpansionPanel style={{marginTop:"12px"}} className={classes.cart} 
                                 square
+                                class="extra-box"
                                 expanded={expanded3 === 1}
                                 onChange={handleChange3(1)} >
                                 <ExpansionPanelSummary
+                                
                                     aria-controls="panel1d-content" id="panel1d-header"
                                     expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up sml" ></i></span>}
                                     aria-controls="panel1a-content"
@@ -167,7 +174,9 @@ const ProductlistComponent = (props) => {
                                 >
                                     <h5 className='title' style={{ textAlign: "center" }}> Promo Code</h5>
                                 </ExpansionPanelSummary>
-                                <ExpansionPanelDetails className='order-ship pdng'>
+                                <ExpansionPanelDetails 
+                                style={{boxShadow:"rgb(222, 218, 218) 1px 2px 6px 0px"}}
+                                className='order-ship pdng'>
                                     <Promo />
 
                                 </ExpansionPanelDetails>
@@ -176,7 +185,7 @@ const ProductlistComponent = (props) => {
                     </Grid>
                 </div>
             </div>
-        </Container>
+        </Grid>
     )
 }
 export default withStyles(styles)(Productlist);
