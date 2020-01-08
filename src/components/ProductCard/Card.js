@@ -386,7 +386,7 @@ function Component(props) {
 
         </CardActions> */}
         {/* /:productCategory/:productType/:material/:productName */}
-        <Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }} onClick={handleProductDetatiContext(props)}>
+        <Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }}  target="_blank" onClick={handleProductDetatiContext(props)}>
           <CardActions style={{
             //  maxHeight: `${_height ? `${_height}px` : '300px'}`, minHeight: '250px'
           }} className={`${classes.cardAtionspadding} ${classes.cardActionsImage}`}>

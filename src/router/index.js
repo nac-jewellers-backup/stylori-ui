@@ -72,8 +72,8 @@ export const RouterApp = (props) => {
             <Route key="resetPassword" component={ResetPassword} exact path={`${routes.ResetPassword}/:id`} />
             <Route key="ChangePassword" component={ChangePassword} exact path={routes.ChangePassword} />
             <Route key="paymenthidden" component={PaymentHiddenForm} exact path={routes.paymenthidden} />
-            <Route key="paymentsuccess" component={Success} exact path={routes.paymentsuccess} />
-            <Route key="paymentfail" component={Fail} exact path={routes.paymentfail} />
+            <Route key="paymentsuccess" component={Success} exact path={`${routes.paymentsuccess}/:id`} />
+            <Route key="paymentfail" component={Fail} exact path={`${routes.paymentfail}/:id`} />
             {(props.location.pathname !== "/cart" && props.location.pathname !== `/account${"-" + window.location.pathname.split("-")[1]}` && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && props.location.pathname !== "/forgotpassword" && props.location.pathname !== "/resetpassword/" && props.location.pathname !== "/changepassword" && Globalctx && Globalctx.pathName === false) &&
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />
             }
