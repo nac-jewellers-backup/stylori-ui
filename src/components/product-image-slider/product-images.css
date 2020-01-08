@@ -766,6 +766,7 @@ body {
     background-repeat: no-repeat !important;
     margin-left: 0px;
     cursor: pointer !important;
+    margin-left: -2% !important;
 }
 
 .overly-img {
@@ -775,7 +776,7 @@ body {
     /* height: 450px !important; */
     width: 35%;
     float: right !important;
-    position: absolute;
+    position: absolute; 
     z-index: 3;
     background-repeat: no-repeat;
     height: 600px !important;
@@ -1055,6 +1056,7 @@ body {
     font-size: 15px !important;
     line-height: 1;
     color: #394578 !important;
+    margin-right: 0px !important;
 }
 
 .overall-icons {
@@ -1104,8 +1106,8 @@ body {
 
 .pagetabs {
     text-align: center !important;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     /* border: 1px solid #9d9d9d  !important; */
     border-radius: 100%;
     /* margin-bottom: 6px; */
@@ -1115,8 +1117,8 @@ body {
 @media only screen and (max-width: 480px) {
     .pagetabs {
         text-align: center !important;
-        height:50px !important;
-        width: 50px !important;
+        height:45px !important;
+        width: 45px !important;
         /* margin-bottom: 6px; */
         /* border: 1px solid #9d9d9d  !important; */
        border-radius: 50%;
@@ -1126,8 +1128,8 @@ body {
 
     .pagetabslst {
         text-align: center !important;
-        height:50px !important;
-        width: 50px !important;
+        height:45px !important;
+        width: 45px !important;
         /* border: 1px solid #9d9d9d  !important; */ 
         border-radius: 100%;
         outline: none !important;
@@ -1137,8 +1139,8 @@ body {
 
 .pagetabslst {
     text-align: center !important;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     /* border: 1px solid #9d9d9d  !important; */
     border-radius: 100%;
     outline: none !important;
@@ -1152,8 +1154,8 @@ body {
 .page {
     display: inline-block !important;
     text-align: center !important;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 100%;
     background: #fff;
     box-shadow: inset 0px 1px 0px rgba(255, 255, 255, .8), 0px 1px 3px rgba(0, 0, 0, .1);
@@ -1200,8 +1202,8 @@ body {
     border: 2px solid #ed1165cf !important;
     border-radius: 100% !important;
     text-align: center !important;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     outline: none !important;
 }
 
@@ -1210,8 +1212,8 @@ body {
         border: 2px solid #ed1165cf !important;
         border-radius: 100% !important;
         text-align: center !important;
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         outline: none !important;
     }
 
@@ -1219,8 +1221,8 @@ body {
         border: 2px solid #ed1165cf !important;
         border-radius: 100% !important;
         text-align: center !important;
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         outline: none !important;
 
     }
@@ -1230,16 +1232,16 @@ body {
     border: 2px solid #ed1165cf !important;
     border-radius: 100% !important;
     text-align: center !important;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     outline: none !important;
 
 }
 
 .dark {
     text-align: center !important;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 100% !important;
     /* color: #fff !important; */
     outline: none !important;

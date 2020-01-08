@@ -68,7 +68,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                             </b>
                         </Grid>
                     </Hidden>
-                    <label style={{  fontWeight: 'bold', color: 'rgba(185, 74, 72, 1)' }}>{(state.isRequired && 'Please fill out this field') || (state.pincodeNotFound && 'Pincode not found')}</label>
+                    <label style={{ fontWeight: 'bold', color: 'rgba(185, 74, 72, 1)' }}>{(state.isRequired && 'Please fill out this field') || (state.pincodeNotFound && 'Pincode not found')}</label>
                 </Grid>
             )}
         </div>
@@ -90,7 +90,7 @@ const Buydetails = (props, state, handleChanges, handleCodChange, canceldeletech
                                 <Buynowbutton sku={data[0].skuId} class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
                             </div>
                             {/* </NavLink> */}
-                            <CommenDialog isOpen={state.modelOpen} content={`Are you sure you `} handleClose={canceldeletechecklist} handleSuccess={deletechecklists} negativeBtn="No" positiveBtn="Yes" title="Confirmation" />
+                            <CommenDialog isOpen={state.modelOpen} content={`Verify selected product details before proceeding`} handleClose={canceldeletechecklist} handleSuccess={deletechecklists} negativeBtn="No" positiveBtn="Yes" title="Confirmation" />
                         </Grid>
 
                         <Grid xs={12} lg={7} style={{ marginBottom: "7px" }}>
