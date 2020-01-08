@@ -53,6 +53,9 @@ class CashonDelivey extends React.Component {
         localStorage.removeItem("ship_isactive")
         localStorage.removeItem("bil_isactive") 
     }
+    componentDidMount(){
+      
+    }
     componentDidUpdate(prevProps, prevState) {
         if (this.state.res_data !== prevState.res_data) {
             // in 1.6.2 there will not execute
@@ -79,6 +82,7 @@ class CashonDelivey extends React.Component {
                 return cart_price
             }
         }
+    
         obj['payment_mode'] = "COD"
         obj['user_id'] = user_id
         obj['cart_id'] = cart_id
@@ -102,7 +106,6 @@ class CashonDelivey extends React.Component {
                         COD orders are subject to telephonic verification.
                         </div>
                 </Grid>
-
             </div>
         )
     }

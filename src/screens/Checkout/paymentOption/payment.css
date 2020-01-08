@@ -132,3 +132,61 @@
     width: 45vw !important;
     line-height: 25px;;
 }
+.paymentsuccessfont{
+    color: #05409a
+}
+.paymentcontent{
+    padding: 20px
+}
+.horizontal {
+    width: 100%;
+    padding: 1px;
+    margin-top: 10px !important;
+}
+.paymentdivider {
+    margin-top: 20px;
+    margin-left: 30px;
+}
+h6{
+    font-size: .8rem !important;
+}
+.svgiconsuccess{
+    font-size: 3rem !important;
+    fill: #8cbb58 !important;
+}
+.contant-center{
+    display: flex;
+    align-items: center;
+}
+.container-font-size{
+    font-size: 1.2rem;
+}
+.grand-item{
+    padding-left: 200px;
+    margin-top: 15px !important
+}
+.paymentsuccess-content{
+    background: #f4f5f4;
+    padding-left: 85px
+}
+.svgiconfail{
+    font-size: 2rem !important;
+    fill: #f76950 !important;
+}
+.retrypaymentbtn{
+    background: #f26e1d !important;
+    color: white !important;
+    font-size: .6rem !important;
+    padding: 5px 10px !important;
+    text-transform: capitalize !important;
+}
+@media only screen and (max-width: 600px) {
+    .grand-item{
+        padding-left: 0;
+        margin-top: 15px !important;
+    }
+    .paymentsuccess-content{
+        background: #f4f5f4;
+        padding-left: 0
+    }
+}
