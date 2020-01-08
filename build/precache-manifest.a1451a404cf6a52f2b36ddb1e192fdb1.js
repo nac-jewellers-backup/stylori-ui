@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/2.css"
   },
   {
-    "revision": "1c8104f56416b6b8d2ad",
+    "revision": "08943936d673522af240",
     "url": "/static/css/3.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.js"
   },
   {
-    "revision": "1c8104f56416b6b8d2ad",
+    "revision": "08943936d673522af240",
     "url": "/static/js/3.js"
   },
   {
