@@ -12,11 +12,16 @@
   }
 }
 
-@media screen and (max-width: 1220px), (min-width: 1220px) {
+.cart-ovralldiv-media {
+  width: 100%
+}
+
+@media screen and (max-width: 1220px),
+(min-width: 1220px) {
   .cart-ovralldiv-media {
-    padding-left: 5% !important;
-    padding-right: 5% !important;
-    width: 100%;
+    /* padding-left: 5% !important;
+    padding-right: 5% !important; */
+    /* width: 100%; */
   }
 }
 

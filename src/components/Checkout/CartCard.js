@@ -75,6 +75,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         const { classes, data } = this.props;
+        debugger
         const { productsDetails, fadeImages, dataCard1 } = this.props.data;
         // const { FilterOptionsCtx: { setcartcount } } = React.useContext(FilterOptionsContext);
         // React.useEffect(()=>{
@@ -82,8 +83,9 @@ class Checkoutcard extends React.Component {
         //         cartcount: this.props.data.length
         //     })
         // },[data])
+        debugger
         return (
-            <div style={{ marginTop: "10px"}}>
+            <div style={{ marginTop: "10px" }}>
                 <Grid container>
                     <Grid xs={12} />
                     <Grid xs={12}>
@@ -270,12 +272,12 @@ class Checkoutcard extends React.Component {
         return (
             <Grid >
                 <Hidden smDown>
-                    {window.location.pathname === "/cart"||window.location.pathname === "/checkout" ? <Container>
+                    {window.location.pathname === "/cart" || window.location.pathname === "/checkout" ? <Container>
                         {this.row(this.props)}
                     </Container> :
                         <>{this.row(this.props)}</>}
                 </Hidden>
-                <Hidden smUp>
+                <Hidden mdUp>
                     <CardSmallScreen data={this.props.data}
                         handleDeleteLocalStorage={(event) => this.handleDeleteLocalStorage(event)}
                         //  subtotals={Math.round(dataCard1)}

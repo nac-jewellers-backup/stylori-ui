@@ -95,7 +95,7 @@ const imageOnError = (event, res) => {
   event.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
 }
 const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => (
-  <div>
+  <div className="imageHeight">
     {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" style={{ zIndex: 2 }}>
       <span class="one-day-ship-listing-page-label">1 day shipping</span>
 
@@ -167,7 +167,7 @@ export default trackWindowScroll(Gallery);
 
 //           />
 const handleProductDetatiContext = (props) => {
-  
+
   props.filters['defaultVariants']['diamondType'] = props.data.diamondType
   props.filters['defaultVariants']['metalColor'] = props.data.metalColor
   props.filters['defaultVariants']['purity'] = props.data.purity
@@ -175,7 +175,7 @@ const handleProductDetatiContext = (props) => {
   props.filters['defaultVariants']['productType'] = props.data.productType
   // props.filters['skuId'] = props.data.generatedSku
   props.filters['skuId'] = props.data.skuID
-  
+
   props.setFilters(props.filters)
 
 }
@@ -354,7 +354,7 @@ const renderImages = (props, cardstate) => {
 }
 
 function Component(props) {
-  
+
   const classes = useStyles();
   const [cardstate, setCardState] = React.useState({
     hovered: false,
@@ -370,7 +370,7 @@ function Component(props) {
   }
   return (
     <div className={classes.root} style={{ marginLeft: "0px !important" }}>
-      <Card className={classes.card} style={{ marginLeft: "0px !important" }} >
+      <Card className={`${classes.card} ${"imageHeight"}`} style={{ marginLeft: "0px !important" }} >
         {/* <CardActions className={classes.cardAtionspadding}>
           <Grid container xs={12}>
             <Grid container item xs={6} justify="flex-start">
@@ -391,10 +391,10 @@ function Component(props) {
 
         </CardActions> */}
         {/* /:productCategory/:productType/:material/:productName */}
-        <Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }} onClick={handleProductDetatiContext(props)}>
+        <Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }} target="_blank"  onClick={handleProductDetatiContext(props)}>
           <CardActions style={{
             //  maxHeight: `${_height ? `${_height}px` : '300px'}`, minHeight: '250px'
-          }} className={`${classes.cardAtionspadding} ${classes.cardActionsImage}`}>
+          }} className="imageHeight">
 
             {/* <img 
 srcset={renderImages(props, cardstate)}

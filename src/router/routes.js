@@ -20,7 +20,10 @@ export const routes = {
     AboutUs: '/aboutus',
     ForgotPassword: '/forgotpassword',
     ResetPassword: '/resetpassword',
-    ChangePassword:'/changepassword'
+    ChangePassword:'/changepassword',
+    paymentsuccess:'/paymentsuccess',
+    paymentfail:'/paymentfail',
+    paymenthidden:'/paymenthidden'
 }
 
 export default routes;
