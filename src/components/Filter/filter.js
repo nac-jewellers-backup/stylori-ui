@@ -287,7 +287,6 @@ class Component extends React.Component {
       console.log('val', TargetName)
       paramsMapUrlSetState()
     }
-
     let arr = [];
     let checkTitle = true;
     chipData.map(val => {
@@ -317,7 +316,6 @@ class Component extends React.Component {
   }
 
   handleDelete = (value) => {
-
     let arr = [], arr1 = [];
     let { chipData, checked } = this.state
     arr = chipData.filter(val => val.label !== value);
