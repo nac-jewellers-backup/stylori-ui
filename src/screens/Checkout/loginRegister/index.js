@@ -32,7 +32,7 @@ class LoginRegisterIndex extends React.Component {
         const { classes } = this.props;
         const local_mail = localStorage.getItem("email") ? localStorage.getItem("email") : ""
         return (
-            <Container>
+            <Grid container>
                 {local_mail ?
                     <div> <span style={{
                         color: "#394578",
@@ -97,7 +97,7 @@ class LoginRegisterIndex extends React.Component {
                         </div>
                     </div>
                 }
-            </Container >
+            </Grid >
         )
     }
 }

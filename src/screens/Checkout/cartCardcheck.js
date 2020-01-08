@@ -43,11 +43,11 @@ class Component extends React.Component {
         // expanded: 'panel2',
         // expandedlimit: localStorage.getItem("panel") ? localStorage.getItem("panel") : 1,
         // expandedlimit: 1,
-        mailId: null 
+        mailId: null
     }
 
     handleChange = panel => (event) => {
-        
+
         // alert("va",JSON.stringify(panel))
         const { expanded } = this.state
         // if (value && value.pincode && value.pincode.length > 2) {
@@ -96,7 +96,7 @@ class Component extends React.Component {
 
         return (
             <Grid container>
-                        <Header wishlist={this.props.wishlistdata} />
+                <Header wishlist={this.props.wishlistdata} />
                 <CustomSeparator
                     arrowicon='cart-head-arrows'
                     className={`breadcrums-header ${classes.normalcolorback}`}
@@ -214,8 +214,8 @@ class Component extends React.Component {
 
                     </div>
                 </div>
-                </Grid>
-        
+            </Grid>
+
         )
     }
 }
