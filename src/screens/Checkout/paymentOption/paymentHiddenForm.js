@@ -1,5 +1,5 @@
 import React, { useEffect, useRef,useState } from "react";
-
+import { API_URL } from '../../../../src/config'
 
 export default function PaymentHiddenForm(props){
     const [hash,sethash] = useState({
@@ -74,11 +74,11 @@ export default function PaymentHiddenForm(props){
         </div>
         <div>
             {/* <label>successpage</label> */}
-            <input size="50" type="hidden" name="responseSuccessURL" value="https://alpha.stylori.net/paymentsuccess/:6565656"/>
+            <input size="50" type="hidden" name="responseSuccessURL" value={`${API_URL}/paymentsuccess/:id`}/>
         </div>
         <div>
             {/* <label>fail</label> */}
-            <input size="50" type="hidden" name="responseFailURL" value="https://alpha.stylori.net/paymentfail/:6565656"/>
+            <input size="50" type="hidden" name="responseFailURL" value={`${API_URL}/paymentfail/:id`}/>
         </div>
         <div>
             {/* <label>Language</label> */}
