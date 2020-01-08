@@ -21,8 +21,8 @@ export const routes = {
     ForgotPassword: '/forgotpassword',
     ResetPassword: '/resetpassword',
     ChangePassword:'/changepassword',
-    paymentsuccess:'/paymentsuccess/:id',
-    paymentfail:'/paymentfail/:id',
+    paymentsuccess:'/paymentsuccess',
+    paymentfail:'/paymentfail',
     paymenthidden:'/paymenthidden'
 }
 

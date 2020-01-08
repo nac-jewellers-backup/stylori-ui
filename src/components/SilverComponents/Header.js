@@ -122,32 +122,19 @@ class Header extends Component {
         });
     };
     scrolling = () => {
-        if (window.location.pathname !== "/cart" && window.location.pathname !== '/checkout') {
-            if (window.innerWidth > 959) {
-                if (document.body.scrollTop > 4 || document.documentElement.scrollTop > 4) {
-
-                    if (document.getElementById("topNav")) {
-                        document.getElementById("topNav").style.marginTop = "-69px";
-                    }
-                    if (document.getElementById("logoImage")) {
-                        document.getElementById("logoImage").style.width = "80%";
-                    }
-                }
-                else {
-                    if (document.getElementById("topNav")) {
-                        document.getElementById("topNav").style.marginTop = "0px";
-                    }
-                    if (document.getElementById("headerContainer")) {
-                     document.getElementById("headerContainer").style.height = "auto";
-                    }
-                   
-                    if (document.getElementById("logoImage")) {
-                        document.getElementById("logoImage").style.width = "100%";
-                    }
-                }
+        if ((document.getElementsByTagName("body")[0].scrollHeight > window.innerHeight) && (window.scrollY > 0)) {
+            if (document.getElementById("topNav")) {
+                document.getElementById("topNav").style.marginTop = "-69px";
             }
-            else {
-                return ""
+            if (document.getElementById("logoImage")) {
+                document.getElementById("logoImage").style.width = "80%";
+            }
+        } else {
+            if (document.getElementById("topNav")) {
+                document.getElementById("topNav").style.marginTop = "0px";
+            }
+            if (document.getElementById("logoImage")) {
+                document.getElementById("logoImage").style.width = "100%";
             }
         }
 
@@ -165,11 +152,11 @@ class Header extends Component {
         const opened = this.state;
         // const id = open ? true : undefined;
         return (
-            <div style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
+            <div style={{ top: "0", zIndex: "1000", width: "100%" }} className="headerTop">
                 <Hidden smDown >
                     {/* <HeaderNotification headerTransition={() => { this.headerTransitions() }} /> */}
-                    <div className="header-appbar-sticky1" id='headerDiv'>
-                        <AppBar className="header-appbarsilver1 " id="topNav" style={{ transition: " 0.6s" }}>
+                    <div className="header-appbar-sticky1" id='headerDiv' style={{ position: "fixed", zIndex: "1000" }}>
+                        <AppBar className="header-appbarsilver1 " id="topNav" style={{ transition: " 0.2s" }}>
                             <Container maxWidth="lg" id="searchcontainer" >
                                 <Grid container spacing={12} style={{ marginTop: "20px" }}>
                                     <Grid container item xs={12} justify="flex-end" alignItems="center">
@@ -260,7 +247,7 @@ class Header extends Component {
                                         <Grid container spacing={12} id="fullcontainer" className="setHeight">
                                             <Grid item xs={3} className="logoImgHeader1">
                                                 <div id="logoDiv1" className="logoDiv1">
-                                                    <img id="logoImage" className={`img`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                                    <img id="logoImage" style={{ transition: " 0.2s" }} className={`img`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                                 </div>
                                             </Grid>
                                             <Grid container item xs={9} id={"containerTitle"} justify="flex-end" alignItems="center" className={`header-navbar-list1 ${classes.headerNavbarList}`}
@@ -317,7 +304,7 @@ class Header extends Component {
                 </Hidden>
 
                 <Hidden mdUp>
-                    <Grid style={{ height: "48px" }}>
+                    <Grid>
                         <Grid style={{ position: "fixed", zIndex: "1300" }}>
                             <div className="header-appbar-sticky1">
                                 <AppBar
@@ -570,7 +557,7 @@ class Header extends Component {
                     </Drawer>
 
                 </Hidden>
-            </div>
+            </div >
         )
     }
 }

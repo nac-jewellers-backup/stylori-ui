@@ -218,9 +218,9 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                 </Grid>
                             </Grid>
                         </Paper>
-                        <Hidden smDown>
+                        {/* <Hidden smDown>
                             <hr class="bottom-line product-inform-ation"></hr>
-                        </Hidden>
+                        </Hidden> */}
 
                     </Grid>
 
@@ -244,9 +244,10 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                     </div>
                                 </Grid> */}
                                 </Pricing> : <Pricing
-                                    price={data[0].price}
                                     offerPrice={data[0].offerPrice}
-                                    offerDiscount={val.offerDiscount}
+                                    price={data[0].price}
+
+                                    // offerDiscount={val.offerDiscount}
                                 >
                                 </Pricing>}
                         </div>

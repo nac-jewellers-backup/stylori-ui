@@ -7,6 +7,16 @@
     color: #394578;
     /* margin-bottom: 10px !important; */
 }
+.extra-box{
+box-shadow: none !important;
+
+}
+@media screen and (min-width: 600px) {
+    .extra-box{
+        box-shadow: none !important;
+        padding: 10px;
+        }
+}
 
 .pdng {
     padding: 10px !important;
@@ -50,7 +60,7 @@
     font-family: "FontAwesome" !important;
     font-size: 18px !important;
     color: #394578 !important;
-    margin-right: 30px !important;
+    /* margin-right: 30px !important; */
 }
 
 .PrivateNotchedOutline-root-207 {
