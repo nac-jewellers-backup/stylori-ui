@@ -95,7 +95,7 @@ const imageOnError = (event, res) => {
   event.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
 }
 const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => (
-  <div>
+  <div className="imageHeight">
     {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" style={{ zIndex: 2 }}>
       <span class="one-day-ship-listing-page-label">1 day shipping</span>
 
@@ -386,7 +386,7 @@ function Component(props) {
 
         </CardActions> */}
         {/* /:productCategory/:productType/:material/:productName */}
-        <Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }} onClick={handleProductDetatiContext(props)}>
+        <Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }} target="_blank" onClick={handleProductDetatiContext(props)}>
           <CardActions style={{
             //  maxHeight: `${_height ? `${_height}px` : '300px'}`, minHeight: '250px'
           }} className={`${classes.cardAtionspadding} ${classes.cardActionsImage}`}>

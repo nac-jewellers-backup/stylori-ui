@@ -83,7 +83,7 @@ class Checkoutcard extends React.Component {
         //     })
         // },[data])
         return (
-            <div style={{ marginTop: "10px"}}>
+            <div style={{ marginTop: "10px" }}>
                 <Grid container>
                     <Grid xs={12} />
                     <Grid xs={12}>
@@ -270,12 +270,12 @@ class Checkoutcard extends React.Component {
         return (
             <Grid >
                 <Hidden smDown>
-                    {window.location.pathname === "/cart"||window.location.pathname === "/checkout" ? <Container>
+                    {window.location.pathname === "/cart" || window.location.pathname === "/checkout" ? <Container>
                         {this.row(this.props)}
                     </Container> :
                         <>{this.row(this.props)}</>}
                 </Hidden>
-                <Hidden smUp>
+                <Hidden mdUp>
                     <CardSmallScreen data={this.props.data}
                         handleDeleteLocalStorage={(event) => this.handleDeleteLocalStorage(event)}
                         //  subtotals={Math.round(dataCard1)}

@@ -53,6 +53,7 @@ class Component extends React.Component {
             // const heights = 30;
             let add = filterHeight;
             this.setState({ topHeight: add });
+
         }
 
     }
@@ -61,16 +62,17 @@ class Component extends React.Component {
         this.setState({ expanded: !this.state.expanded });
     }
     handleChange = (event) => {
-        
+
         if (this.props.offset > 0) this.props.setOffset(0)
         console.log(this.props.offset)
         this.props.setSort({ values: event.target.value })
-
         this.setState({ expanded: false })
+        window.scrollTo(0, 0);
+
     }
     render() {
 
-        const { classes, chips,checked } = this.props;
+        const { classes, chips, checked } = this.props;
         const { sortOptions } = this.props.data;
         return (
             <Paper style={{ position: 'sticky', top: "69px", width: '100%', zIndex: '3', boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">

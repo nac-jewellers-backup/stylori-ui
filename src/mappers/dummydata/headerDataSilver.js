@@ -3,7 +3,7 @@ export const mainlist = [
 
     {
         name: "Jewellery",
-        url: "https://www.stylori.net/jewellery",
+        url: "/jewellery",
     },
     {
         name: "Silver",
@@ -194,12 +194,12 @@ export const Jewellery = {
 //desktop views
 export const menuListHeader =
     [
-        { title: 'JEWELLERY', url: "https://www.stylori.net/jewellery" },
-        { title: 'SILVER', url: "https://www.stylori.net/stylorisilver" },
-        { title: 'GOLD COINS', url: "https://www.stylori.net/goldcoins" },
-        { title: 'COLLECTIONS', url: "https://www.stylori.net/collections" },
-        { title: 'READY TO SHIP', url: "https://www.stylori.net/jewellery-shipping+in+1+day" },
-        { title: 'STORIES', url: "https://www.stylori.net/stories" }
+        { title: 'JEWELLERY', url: "/jewellery" },
+        { title: 'SILVER', url: "/stylorisilver" },
+        { title: 'GOLD COINS', url: "/goldcoins" },
+        { title: 'COLLECTIONS', url: "/collections" },
+        { title: 'READY TO SHIP', url: "/jewellery-shipping+in+1+day" },
+        { title: 'STORIES', url: "/stories" }
     ];
 
 
@@ -210,7 +210,7 @@ export const menuLists = {
         'menuOne':
             [
                 {
-                    value: 'earrings', title: 'Earrings', url: 'https://www.stylori.net/earrings-jewellery',
+                    value: 'earrings', title: 'Earrings', url: '/earrings-jewellery',
                     imgContainer: {
 
                         //-----------LAYER 3--------
@@ -218,149 +218,149 @@ export const menuLists = {
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "Studs",
-                                "url": "https://www.stylori.net/studs-earrings-jewellery",
+                                "url": "/studs-earrings-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Drops",
-                                "url": "https://www.stylori.net/drops-earrings-jewellery",
+                                "url": "/drops-earrings-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
                                 "content": "Earcuffs",
-                                "url": "https://www.stylori.net/ear+cuffs-earrings-jewellery",
+                                "url": "/ear+cuffs-earrings-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Huggies",
-                                "url": "https://www.stylori.net/huggies-earrings-jewellery",
+                                "url": "/huggies-earrings-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "Jhumkas",
-                                "url": "https://www.stylori.net/jhumkas+online-earrings-jewellery",
+                                "url": "/jhumkas+online-earrings-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Ear Jacket",
-                                "url": "https://www.stylori.net/ear+jacket-earrings-jewellery",
+                                "url": "/ear+jacket-earrings-jewellery",
                             },
                         ]
                     }
                 },
                 {
-                    value: 'pendants', title: 'Pendants', url: 'https://www.stylori.net/pendants-jewellery',
+                    value: 'pendants', title: 'Pendants', url: '/pendants-jewellery',
                     imgContainer: {
 
                         "imageContainer": [
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "Classic",
-                                "url": "https://www.stylori.net/classic-pendants-jewellery",
+                                "url": "/classic-pendants-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Casual",
-                                "url": "https://www.stylori.net/casual-pendants-jewellery",
+                                "url": "/casual-pendants-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
                                 "content": "Fashion",
-                                "url": "https://www.stylori.net/fashion-pendants-jewellery",
+                                "url": "/fashion-pendants-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Religious",
-                                "url": "https://www.stylori.net/religious-pendants-jewellery",
+                                "url": "/religious-pendants-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "Tanmaniya",
-                                "url": "https://www.stylori.net/tanmaniya-pendants-jewellery",
+                                "url": "/tanmaniya-pendants-jewellery",
                             },
                         ]
                     }
                 },
                 {
-                    value: 'rings', title: 'Rings', url: 'https://www.stylori.net/rings-jewellery',
+                    value: 'rings', title: 'Rings', url: '/rings-jewellery',
                     imgContainer: {
 
                         "imageContainer": [
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "Classic",
-                                "url": "https://www.stylori.net/classic-rings-jewellery",
+                                "url": "/classic-rings-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Casual",
-                                "url": "https://www.stylori.net/casual-rings-jewellery",
+                                "url": "/casual-rings-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
                                 "content": "Cocktail",
-                                "url": "https://www.stylori.net/cocktail-rings-jewellery",
+                                "url": "/cocktail-rings-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Engagement",
-                                "url": "https://www.stylori.net/rings-jewellery-for+engagement",
+                                "url": "/rings-jewellery-for+engagement",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "Fashion",
-                                "url": "https://www.stylori.net/fashion-rings-jewellery",
+                                "url": "/fashion-rings-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Men's Ring",
-                                "url": "https://www.stylori.net/rings-jewellery-for+men",
+                                "url": "/rings-jewellery-for+men",
                             },
                         ]
                     }
                 },
                 {
-                    value: 'nosepins', title: 'Nose pins', url: 'https://www.stylori.net/nose+pin+online-jewellery',
+                    value: 'nosepins', title: 'Nose pins', url: '/nose+pin+online-jewellery',
                     imgContainer: {
 
                         "imageContainer": [
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "Classic",
-                                "url": "https://www.stylori.net/classic-nose+pin+online-jewellery",
+                                "url": "/classic-nose+pin+online-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Fashion",
-                                "url": "https://www.stylori.net/fashion-nose+pin+online-jewellery",
+                                "url": "/fashion-nose+pin+online-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
                                 "content": "Stud Nose Pin",
-                                "url": "https://www.stylori.net/nose+studs+online-jewellery",
+                                "url": "/nose+studs+online-jewellery",
                             },
                         ]
                     }
                 },
                 {
-                    value: 'banglesbracelets', title: 'Bangles & Bracelets', url: 'https://www.stylori.net/bangles-jewellery',
+                    value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '/bangles-jewellery',
                     imgContainer: {
 
                         "imageContainer": [
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "Bangles",
-                                "url": "https://www.stylori.net/bangles-jewellery",
+                                "url": "/bangles-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Bracelets",
-                                "url": "https://www.stylori.net/bracelets-jewellery",
+                                "url": "/bracelets-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
                                 "content": "Oval Bracelets",
-                                "url": "https://www.stylori.net/oval+bracelets-jewellery",
+                                "url": "/oval+bracelets-jewellery",
                             },
                         ]
                     }
@@ -374,67 +374,67 @@ export const menuLists = {
                 "onlyText": [
                     {
                         "content": "under 5000",
-                        "url": "https://www.stylori.net/jewellery?startprice=1000&endprice=5000"
+                        "url": "/jewellery?startprice=1000&endprice=5000"
                     },
                     {
                         "content": "5000-10000",
-                        "url": "https://www.stylori.net/jewellery?startprice=5000&endprice=10000"
+                        "url": "/jewellery?startprice=5000&endprice=10000"
                     },
                     {
                         "content": "10000-20000",
-                        "url": "https://www.stylori.net/jewellery?startprice=10000&endprice=20000"
+                        "url": "/jewellery?startprice=10000&endprice=20000"
                     },
                     {
                         "content": "above 20000",
-                        "url": "https://www.stylori.net/jewellery?startprice=20000&endprice=500000"
+                        "url": "/jewellery?startprice=20000&endprice=500000"
                     },
                 ],
 
             }
         },
         {
-            value: 'Collection', title: 'By Collection', url: 'https://www.stylori.net/collections',
+            value: 'Collection', title: 'By Collection', url: '/collections',
             imgContainer: {
                 "imageContainer": [
                     {
                         "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                         "content": "Carve",
-                        "url": "https://www.stylori.net/jewellery-from+the+carve+collection?sort=latest",
+                        "url": "/jewellery-from+the+carve+collection?sort=latest",
                     },
                     {
                         "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                         "content": "Blush",
-                        "url": "https://www.stylori.net/jewellery-blush",
+                        "url": "/jewellery-blush",
                     },
                     {
                         "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
                         "content": "Molecute",
-                        "url": "https://www.stylori.net/jewellery-molecute+collection",
+                        "url": "/jewellery-molecute+collection",
                     },
                     {
                         "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                         "content": "Gemstone",
-                        "url": "https://www.stylori.net/gemstone-jewellery?sort=latest",
+                        "url": "/gemstone-jewellery?sort=latest",
                     },
                     {
                         "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                         "content": "Mistletoe",
-                        "url": "https://www.stylori.net/jewellery-from+mistletoe+collection",
+                        "url": "/jewellery-from+mistletoe+collection",
                     },
                     {
                         "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                         "content": "The Renaissance",
-                        "url": "https://www.stylori.net/jewellery-from+the+renaissance+collection",
+                        "url": "/jewellery-from+the+renaissance+collection",
                     },
                     {
                         "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                         "content": "Monsoon",
-                        "url": "https://www.stylori.net/jewellery-from+monsoon+collection",
+                        "url": "/jewellery-from+monsoon+collection",
                     },
                     {
                         "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                         "content": "Summer",
-                        "url": "https://www.stylori.net/jewellery-from+the+summer+collection",
+                        "url": "/jewellery-from+the+summer+collection",
                     },
                 ]
             }
@@ -444,15 +444,15 @@ export const menuLists = {
             imgContainer: {
                 "onlyText": [{
                     "content": "Diamond",
-                    "url": "https://www.stylori.net/diamond-jewellery"
+                    "url": "/diamond-jewellery"
                 },
                 {
                     "content": "Gemstone",
-                    "url": "https://www.stylori.net/gemstone-jewellery"
+                    "url": "/gemstone-jewellery"
                 },
                 {
                     "content": "Solitaire",
-                    "url": "https://www.stylori.net/solitaire-jewellery"
+                    "url": "/solitaire-jewellery"
                 },
                 ],
             }
@@ -465,30 +465,30 @@ export const menuLists = {
                 {
                     value: 'silverjewellery',
                     title: 'Silver Jewellery',
-                    url: 'stylori.net/silver-jewellery',
+                    url: '/silver-jewellery',
                     imgContainer: {
 
                         "imageContainer": [
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "Earrings",
-                                "url": "stylori.net/silver-earrings-jewellery",
+                                "url": "/silver-earrings-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Rings",
-                                "url": "stylori.net/silver-rings-jewellery",
+                                "url": "/silver-rings-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
                                 "content": "Pendants",
-                                "url": "stylori.net/silver-pendants-jewellery",
+                                "url": "/silver-pendants-jewellery",
                             },
                         ]
                     }
                 }]
     },
-    'GOLD COINS': {
+    'GOLDCOINS': {
         'menuOne':
             [
                 {
@@ -501,27 +501,27 @@ export const menuLists = {
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "Plain",
-                                "url": "https://www.stylori.com/plain-goldcoins",
+                                "url": "/plain-goldcoins",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Lakshmi",
-                                "url": "https://www.stylori.com/lakshmi-goldcoins",
+                                "url": "/lakshmi-goldcoins",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
                                 "content": "Jesus",
-                                "url": "https://www.stylori.com/jesus-goldcoins",
+                                "url": "/jesus-goldcoins",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Ganesh ",
-                                "url": "https://www.stylori.com/ganesha-goldcoins",
+                                "url": "/ganesha-goldcoins",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "Balaji",
-                                "url": "https://www.stylori.com/balaji-goldcoins",
+                                "url": "/balaji-goldcoins",
                             },
                         ]
                     }
@@ -534,32 +534,32 @@ export const menuLists = {
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "1 Gram",
-                                "url": "https://www.stylori.com/1gm-goldcoins",
+                                "url": "/1gm-goldcoins",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "4 Grams",
-                                "url": "https://www.stylori.com/4gms-goldcoins",
+                                "url": "/4gms-goldcoins",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
                                 "content": "8 Grams",
-                                "url": "https://www.stylori.com/8gms-goldcoins",
+                                "url": "/8gms-goldcoins",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "10 Grams",
-                                "url": "https://www.stylori.com/10gms-goldcoins",
+                                "url": "/10gms-goldcoins",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "20 Grams",
-                                "url": "https://www.stylori.com/20gms-goldcoins",
+                                "url": "/20gms-goldcoins",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "50 Grams",
-                                "url": "https://www.stylori.com/50gms-goldcoins",
+                                "url": "/50gms-goldcoins",
                             },
                         ]
                     }
@@ -572,12 +572,12 @@ export const menuLists = {
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "24 KT",
-                                "url": "https://www.stylori.com/24kt-goldcoins",
+                                "url": "/24kt-goldcoins",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "22 KT",
-                                "url": "https://www.stylori.com/22kt-goldcoins",
+                                "url": "/22kt-goldcoins",
                             },
                         ]
                     }
@@ -597,42 +597,42 @@ export const menuLists = {
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "Halo",
-                                "url": "https://www.stylori.net/jewellery-from+halo+collection",
+                                "url": "/jewellery-from+halo+collection",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Daisy Days",
-                                "url": "https://www.stylori.net/jewellery-from+daisy+days+collection",
+                                "url": "/jewellery-from+daisy+days+collection",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
                                 "content": "Monsoon",
-                                "url": "https://www.stylori.net/jewellery-from+monsoon+collection",
+                                "url": "/jewellery-from+monsoon+collection",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Mango",
-                                "url": "https://www.stylori.net/jewellery-from+the+summer+collection",
+                                "url": "/jewellery-from+the+summer+collection",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "Blush",
-                                "url": "https://www.stylori.net/jewellery-blush",
+                                "url": "/jewellery-blush",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Molecute",
-                                "url": "https://www.stylori.net/jewellery-molecute+collection",
+                                "url": "/jewellery-molecute+collection",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Gemstone",
-                                "url": "https://www.stylori.net/gemstone-jewellery?sort=latest",
+                                "url": "/gemstone-jewellery?sort=latest",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Butterfly",
-                                "url": "https://www.stylori.net/jewellery-butterfly?sort=latest",
+                                "url": "/jewellery-butterfly?sort=latest",
                             },
                         ]
                     }
@@ -645,42 +645,42 @@ export const menuLists = {
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "Carve",
-                                "url": "https://www.stylori.net/jewellery-from+the+carve+collection?sort=latest",
+                                "url": "/jewellery-from+the+carve+collection?sort=latest",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Cluster",
-                                "url": "https://www.stylori.net/cluster-jewellery",
+                                "url": "/cluster-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
                                 "content": "Droplets",
-                                "url": "https://www.stylori.net/droplets-jewellery",
+                                "url": "/droplets-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Waves",
-                                "url": "https://www.stylori.net/waves-jewellery",
+                                "url": "/waves-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
                                 "content": "Floral",
-                                "url": "https://www.stylori.net/waves-jewellery",
+                                "url": "/waves-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Hearts",
-                                "url": "https://www.stylori.net/floral-jewellery",
+                                "url": "/floral-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Tiara",
-                                "url": "https://www.stylori.net/tiara-jewellery",
+                                "url": "/tiara-jewellery",
                             },
                             {
                                 "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
                                 "content": "Hoops",
-                                "url": "https://www.stylori.net/hoops-jewellery",
+                                "url": "/hoops-jewellery",
                             },
                         ]
                     }
