@@ -53,7 +53,7 @@ class PaymentIndex extends React.Component {
         //             va["true"] = true
         //         } else {
         //             va["true"] = false
-        //         }
+        //         } 
         //     } 
         //     return va  
         // } 
