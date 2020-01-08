@@ -8,7 +8,8 @@ import {
     Typography,
     Avatar,
     Grid,
-    Button
+    Button,
+    Hidden
 } from '@material-ui/core';
 import "../../components/Checkout/Cart.css";
 import "./chckout.css";
@@ -180,7 +181,8 @@ class Component extends React.Component {
 
                                         <CartCard data={data} />
 
-                                        <Grid container>
+                                       <Hidden smDown>
+                                       <Grid container>
                                             <Grid xs={12} lg={7} />
                                             <Grid xs={12} lg={4} >
                                                 <div style={{ float: "right", marginBottom: "5px" }}>
@@ -190,11 +192,23 @@ class Component extends React.Component {
                                                 </div>
                                             </Grid>
                                         </Grid><br />
+                                       </Hidden>
                                     </Grid>
                                     <Grid item xs={12} lg={12} className={classes.cart}>
                                         <ProductList />
                                     </Grid>
-
+                                    <Hidden mdUp>
+                                       <Grid container>
+                                            <Grid xs={12} lg={7} />
+                                            <Grid xs={12} lg={4} >
+                                                <div style={{ float: "right", marginBottom: "5px" }}>
+                                                    <Button
+                                                        onClick={() => this.pincodeapi()}
+                                                        className="summaryOrder-pay-btn">Continue to Pay</Button>
+                                                </div>
+                                            </Grid>
+                                        </Grid><br />
+                                       </Hidden>
                                 </Grid>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
