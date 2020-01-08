@@ -69,7 +69,7 @@ class Allorders extends React.Component {
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
         const expanded_ = expanded.map(val => { return val })
-        debugger
+        
         return (
             <>
                 {/* allorderdata.nodes */}

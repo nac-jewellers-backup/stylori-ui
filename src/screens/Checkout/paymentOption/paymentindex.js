@@ -56,7 +56,7 @@ class PaymentIndex extends React.Component {
         //         }
         //     }
         //     return va 
-        // }
+        // } 
         return (
             <div className="payment-div">
                 <Hidden smDown>

@@ -142,7 +142,7 @@ const injectUrl_url_construct = (url, baseUi, screen_res) => {
 
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 const generateImgurls = (PD, val, screen_res, tabsChange) => {
-   debugger
+   
     var arrOfurls = []
     var imgurlsplit  = null
     var metalcolor = null

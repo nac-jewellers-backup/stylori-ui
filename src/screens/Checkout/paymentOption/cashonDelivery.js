@@ -20,7 +20,7 @@ class CashonDelivey extends React.Component {
         }
     }
     makeFetch = async (props) => {
-        debugger
+        
         const bb = this.props && this.props.dataCard1
         // if (bb.length <0) {
         //    return

@@ -264,6 +264,8 @@ class Header extends Component {
                                                                 let urlsmall = listName.title.toLowerCase()
                                                                 return (
                                                                     <a href={listName.url} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: false, subTitleData: null, targetopen: event.currentTarget, listHoverItem: listName.title.replace(/ +/g, "") }) }}>{listName.title}</a>
+
+
                                                                 )
 
                                                             }))
@@ -478,16 +480,16 @@ class Header extends Component {
                                                     </div>
                                                 </ListItem>
                                                 {selected1 === Jewellery[selected][row2].name &&
-                                                    <List className="sideNavListing" >
-                                                        <ListItem className="drawer-list1">
+                                                    <>
+                                                        {/* <ListItem className="drawer-list1">
                                                             <ListItemText
                                                             >
-                                                                <Typography className="list-items1" variant="">{subheader[selected1].header.toUpperCase()}
+                                                                <Typography className="list-items1" variant="">{subheader[selected1]&&subheader[selected1].header&&subheader[selected1].header.toUpperCase()}
                                                                 </Typography>
                                                                 <span style={{ paddingTop: "5px" }} className="header-viewal1">View All</span>
                                                             </ListItemText>
-                                                        </ListItem>
-                                                        {subheader[selected1].name.map(row => (
+                                                        </ListItem> */}
+                                                        {subheader[selected1]&&subheader[selected1].name&&subheader[selected1].name.map(row => (
                                                             <>
                                                                 <ListItem onClick={() => { window.location.href = row.url }} className={classes.subtitle2Container}>
                                                                     <ListItemText>
@@ -497,7 +499,7 @@ class Header extends Component {
                                                             </>
                                                         ))}
 
-                                                    </List>
+                                                    </>
                                                 }
                                             </>
                                         ))

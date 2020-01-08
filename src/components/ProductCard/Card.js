@@ -96,20 +96,21 @@ const imageOnError = (event, res) => {
 }
 const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => (
   <div className="imageHeight">
-    {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" style={{ zIndex: 2 }}>
-    <i class="fa fa-truck" style={{ fontSize: "20px" }}></i>
+    {props.data.oneDayShipping ? <div class={Math.round(props.data.offerPrice) === Math.round(props.data.price) ? "one-day-ship-listing-page-withoutTop" : "one-day-ship-listing-page"} style={{ zIndex: 2 }}>
+      <i class="fa fa-truck" style={{ fontSize: "20px" }}></i>
       <span class="one-day-ship-listing-page-label">1 day shipping</span>
 
     </div> : ''}
+    {
+      Math.round(props.data.offerPrice) === Math.round(props.data.price) ? '' :
+        <>
+          <span className="overlayCss" style={{ zIndex: 10, color: "#fff", backgroundColor: "#f699a3" }}>
 
-    <span  className="overlayCss" style={{ zIndex: 10, color: "#fff",backgroundColor:"#f699a3" }}>
-      {
-        Math.round(props.data.offerPrice) === Math.round(props.data.price) ? '' :
-          <>
             {Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice)) / Math.round(props.data.price)) * 100) + '% off'}
-          </>
-      }
-    </span>
+
+          </span>
+        </>
+    }
 
     <div class="wishListStyle">
       <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} />
@@ -176,7 +177,7 @@ export default trackWindowScroll(Gallery);
 
 //           />
 const handleProductDetatiContext = (props) => {
-  debugger
+  
 
   props.filters['defaultVariants']['diamondType'] = props.data.diamondType
   props.filters['defaultVariants']['metalColor'] = props.data.metalColor
@@ -434,81 +435,149 @@ sizes="(max-width: 320px) 320w,
             {Gallery(props, callmouseover, callmouseout, cardstate)}
           </CardActions>
           <Card className={classes.priceClass}>
-            <CardContent className={classes.cardContent}>
-              <Grid
-                container
-                item
-                xs={12}
-                className={classes.textPriceCardGrid}
-                alignItems="center"
-              >
-                <Grid container item xs={12} sm={12} className={`${classes.priceClassMain}`}>
-                  <Typography
-                    variant="h6"
-                    component="h6"
-                    className={classes.offerMainPrice}
-                    style={{
-                      width: "100%",
-                      justifyContent: "flex-start",
-                      display: "flex",
-                      paddingLeft: "5px"
-                    }}>
-                    {/* <i
+            
+
+            {
+                                 Math.round(props.data.offerPrice) === Math.round(props.data.price) ?
+               <CardContent className={classes.cardContent} style={{display:'flex'}}>
+               <Grid
+                 container
+                 item
+                 xs={12}
+                 className={classes.textPriceCardGrid}
+                 alignItems="center"
+               >
+                 
+                 
+ 
+                   <Grid container item xs={12} sm={12} className={`${classes.priceClassMain}`} style={{ alignItems: "center"}}>
+                   
+                      
+                       <Typography
+                       variant="h6"
+                       component="h6"
+                       className={classes.offerMainPrice}
+                       style={{
+                         width: "100%",
+                         justifyContent: "flex-start",
+                         display: "flex",
+                         paddingLeft: "5px",
+                        
+                       }}>
+                       {/* <i
+                       
+                       className="fa"
+                     >
+                       &#xf156;
+                     </i> */}
+                       {/* {Math.round(props.data.offerPrice)} */}
+                       {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.offerPrice))}
+                     </Typography>
+ 
                     
-                    className="fa"
-                  >
-                    &#xf156;
-                  </i> */}
-                    {/* {Math.round(props.data.offerPrice)} */}
-                    {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.offerPrice))}
-                  </Typography>
-                  <Typography
-                    style={{
-                      width: "100%",
-                      justifyContent: "flex-start",
-                      display: "flex",
-                      marginTop: "4px"
-                    }}
-                    gutterBottom
-                    variant="body1"
-                    component="span"
-                    className={classes.offerPrice}
-                  >
-                    {
-                      Math.round(props.data.offerPrice) === Math.round(props.data.price) ?
-                        new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))
-                        :
-                        <del>
+                  
+           
+                 </Grid>
+ 
+                 <Hidden smDown>
+                   <Grid container xs={12}>
+                     <Grid item xs={12} className={`${classes.titles}`}>
+                       <Typography variant="body1"
+                         component="span" style={{ paddingLeft: "5px" }} className={`${classes.titles}`}>
+                         {props.data.title}
+                       </Typography>
+ 
+                     </Grid>
+                   </Grid>
+                 </Hidden>
+ 
+               </Grid>
+             </CardContent>
+:
+<CardContent className={classes.cardContent}>
+<Grid
+  container
+  item
+  xs={12}
+  className={classes.textPriceCardGrid}
+  alignItems="center"
+>
 
-                          {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
-                        </del>
-                    }
+<Grid container item xs={12} sm={12} className={`${classes.priceClassMain}`}>
+   
+    
+<Typography
+        variant="h6"
+        component="h6"
+        className={classes.offerMainPrice}
+        style={{
+          width: "100%",
+          justifyContent: "flex-start",
+          display: "flex",
+          paddingLeft: "5px"
+        }}>
+        {/* <i
+        
+        className="fa"
+      >
+        &#xf156;
+      </i> */}
+        {/* {Math.round(props.data.offerPrice)} */}
+        {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.offerPrice))}
+      </Typography>
+      <Typography
+      style={{
+        width: "100%",
+        justifyContent: "flex-start",
+        display: "flex",
+        marginTop: "4px"
+      }}
+      gutterBottom
+      variant="body1"
+      component="span"
+      className={classes.offerPrice}
+    >
+      
+      
+       
+          <del>
 
-                  </Typography>
-                </Grid>
-                {/*  */}
-                {/* <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={`${classes.priceOffGrid}`}>
-                  <Grid container item xs={12} alignItems="center" className={`${classes.priceOffGridsub}`}>
+            {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
+          </del>
+      
 
-                  </Grid>
+    </Typography>
+    
+    
+   
+
+  </Grid>
+
+  
+  {/*  */}
+  {/* <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={`${classes.priceOffGrid}`}>
+    <Grid container item xs={12} alignItems="center" className={`${classes.priceOffGridsub}`}>
+
+    </Grid>
 
 
-                </Grid> */}
+  </Grid> */}
 
-                <Hidden smDown>
-                  <Grid container xs={12}>
-                    <Grid item xs={12} className={`${classes.titles}`}>
-                      <Typography variant="body1"
-                        component="span" style={{ paddingLeft: "5px" }} className={`${classes.titles}`}>
-                        {props.data.title}
-                      </Typography>
+  <Hidden smDown>
+    <Grid container xs={12}>
+      <Grid item xs={12} className={`${classes.titles}`}>
+        <Typography variant="body1"
+          component="span" style={{ paddingLeft: "5px" }} className={`${classes.titles}`}>
+          {props.data.title}
+        </Typography>
 
-                    </Grid>
-                  </Grid>
-                </Hidden>
+      </Grid>
+    </Grid>
+  </Hidden>
 
-              </Grid>
-            </CardContent>
+</Grid>
+</CardContent>      
+            }
           </Card>
         </Link>
       </Card>

@@ -30,7 +30,7 @@ const LoginComponent = (props) => {
         oldpasswordText: ""
 
     });
-    const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/changepassword', {}, false, {})
+    const { loading, error, data, makeFetch } = useNetworkRequest('/changepassword', {}, false, {})
 
     const { classes } = props;
     const handelSubmit = async () => {
@@ -52,12 +52,6 @@ const LoginComponent = (props) => {
         else {
             var body = { "oldpassword": values.oldpassword, "newpassword": values.newpassword }
             await makeFetch(body);
-            try {
-                alert(JSON.stringify(ntxdata))
-                // setValues({ ...values, newpassword: "", confirmPassword: "" })
-            } catch (error) {
-                alert(JSON.stringify(error))
-            }
         }
     }
 
@@ -66,12 +60,23 @@ const LoginComponent = (props) => {
     }
 
     React.useEffect(() => {
-        window.scrollTo(0, 0)
+        if (data && Object.entries(data).length > 0 && data.constructor === Object) {
+            try {
+                if (data.message === "Invalid Password!") {
+                    setValues({ ...values, newpassword: "", confirmPassword: "", oldpassword: "", oldpassworderror: true, oldpasswordText: "Old password is incorrect" })
+                }
+                else {
+                    setValues({ ...values, newpassword: "", confirmPassword: "", oldpassword: "" })
+                }
+            } catch (error) {
+                alert(JSON.stringify(error))
+            }
+        }
 
-    }, [])
+    }, [data])
     return (
         <Grid container>
-                <Header />
+            <Header />
             <Grid spacing={12} container style={{ padding: "3%" }}>
                 <Grid item xs={6} lg={6} xs={12}>
                     <div >
@@ -89,7 +94,7 @@ const LoginComponent = (props) => {
                                 <TextField
                                     margin="normal"
                                     variant="outlined"
-                                    type="password"
+                                    type="text"
                                     fullWidth
                                     name="email"
                                     value={values.oldpassword}
@@ -101,7 +106,7 @@ const LoginComponent = (props) => {
                                 <TextField
                                     margin="normal"
                                     variant="outlined"
-                                    type="password"
+                                    type="text"
                                     fullWidth
                                     name="email"
                                     value={values.newpassword}
@@ -113,7 +118,7 @@ const LoginComponent = (props) => {
                                 <TextField
                                     margin="normal"
                                     variant="outlined"
-                                    type="password"
+                                    type="text"
                                     fullWidth
                                     name="confirmPassword"
                                     value={values.confirmPassword}
