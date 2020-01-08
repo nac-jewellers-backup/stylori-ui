@@ -73,7 +73,8 @@ class PaymentIndex extends React.Component {
                                 >
                                     <div className="dc-icon"></div> &nbsp; Debit card </p>
                                 <p style={{ background: this.state.isActive == "Netbanking" ? "#dfdfdf" : "" }}
-                                    onClick={() => this.toggleCollapsed('Netbanking')}
+                                    // onClick={() => this.toggleCollapsed('Netbanking')}
+                                    style={{ background: "#dfdfdf" }}
                                 >
                                     <div className="net-bnk-icon"></div> &nbsp; Net Banking </p>
                                 <p style={{ background: this.state.isActive == "CashonDelivey" ? "#dfdfdf" : "" }}
@@ -109,7 +110,7 @@ class PaymentIndex extends React.Component {
                             <Typography className="py-head"><div className="cc-icon">&nbsp;</div>Credit card  </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails style={{ padding: "0px" }}>
-                            <Creditform />
+                            <Creditform data={this.props.data} dataCard1={dataCard1}/>
                         </ExpansionPanelDetails>
                     </ExpansionPanel>
 
@@ -118,17 +119,19 @@ class PaymentIndex extends React.Component {
                             <Typography className="py-head">  <div className="dc-icon"></div> &nbsp; Debit card </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails style={{ padding: "0px" }}>
-                            <Debitform />
+                            <Debitform data={this.props.data} dataCard1={dataCard1}/>
                         </ExpansionPanelDetails>
                     </ExpansionPanel>
 
-                    <ExpansionPanel className="respone-div">
+                    <ExpansionPanel className="respone-div"
+                                    style={{ background: "#dfdfdf" }}
+                                    >
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography className="py-head">  <div className="net-bnk-icon"></div> &nbsp; Net Banking  </Typography>
                         </ExpansionPanelSummary>
-                        <ExpansionPanelDetails style={{ padding: "0px" }}>
+                        {/* <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Netbanking />
-                        </ExpansionPanelDetails>
+                        </ExpansionPanelDetails> */}
                     </ExpansionPanel>
 
                     <ExpansionPanel className="respone-div">

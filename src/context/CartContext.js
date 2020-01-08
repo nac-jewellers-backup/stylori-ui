@@ -76,7 +76,6 @@ const Provider = (props) => {
             window.location.reload();
         }
         if (jewellery && jewellery === "jewellery") {
-            localStorage.removeItem("cartDetails")
             localStorage.removeItem("panel")
             localStorage.removeItem("ship_isactive")
             localStorage.removeItem("bil_isactive")

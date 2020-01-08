@@ -12,6 +12,8 @@ import {
 import './payment.css'
 import { Input } from '../../../components/InputComponents/TextField/Input'
 import Buynowbutton from "../../../components/Buynow/buynowbutton";
+import { CartContext } from 'context'
+import cart from 'mappers/cart'
 class Debitform extends React.Component {
     constructor(props) {
         super(props)
@@ -38,10 +40,11 @@ class Debitform extends React.Component {
         }
     };
     render() {
+ 
         return (
             <div>
                 <Container>
-                    <form onSubmit={(e) => this.handleSubmit()}>
+                     <form onSubmit={(e) => this.handleSubmit()}>
                         <Grid spacing={12} container>
                             <Grid item lg={12} xs={12}>
                                 <Input
@@ -103,9 +106,11 @@ class Debitform extends React.Component {
                             </Grid>
                         </Grid>
                     </form>
+               
                 </Container>
             </div>
         )
     }
 }
-export default Debitform;
+
+export default (Debitform)
