@@ -30,7 +30,7 @@ const styles = makeStyles(theme => ({
     offerPricePadding: {
         [theme.breakpoints.down('lg')]: {
             // paddingLeft: '15px',
-            marginTop: '7px',
+            // marginTop: '7px',
         },[theme.breakpoints.down('xs')]: {
             paddingLeft: '0px',
         },

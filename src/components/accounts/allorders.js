@@ -147,8 +147,8 @@ class Allorders extends React.Component {
                                             {val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => (
                                                 <>
                                                     <br />
-                                                    <Grid container spacing={12} lg={12} style={{ outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "8px" }}>
-                                                        <Grid item lg={2} sm={2}  >
+                                                    <Grid container spacing={12} lg={12} style={{ outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px" }}>
+                                                        <Grid item lg={3} sm={4}  >
                                                             {cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs => (
                                                                 <div className="wishlist_img">
                                                                     <img className="viewport-img" src={`https://assets.stylori.net/base_images/${imgs.imageUrl}`}
@@ -202,7 +202,7 @@ class Allorders extends React.Component {
                                                                     </Typography>  </Grid>
                                                             </Grid>
                                                         </Grid>
-                                                        <Grid item lg={3} sm={3} style={{ padding: "24px" }}>
+                                                        <Grid item lg={2} sm={2} style={{ padding: "16px" }}>
                                                             <Grid container spacing={12} lg={12}>
                                                                 <Typography className="subhesder">Quantity 1</Typography>
                                                                 <Typography className="subhesder">
@@ -212,7 +212,7 @@ class Allorders extends React.Component {
                                                         </Grid>
 
 
-                                                        <Grid style={{ padding: "10px", justifyContent: "center", display: "flex", alignItems: "center" }} className="rups" item lg={3} sm={3}>
+                                                        <Grid style={{ padding: "10px", justifyContent: "center", display: "flex", alignItems: "center" }} className="rups" item lg={3} sm={2}>
                                                             {/* {cart.price > cart.transSkuListByProductSku.markupPrice ?
                                                                 <del style={{ color: "rgba(0, 0, 0, 0.54)", fontSize: "18px" }}>{(Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.markupPrice)))}</del>
                                                                 : ""}<br />

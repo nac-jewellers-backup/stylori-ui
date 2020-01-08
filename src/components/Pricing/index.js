@@ -53,7 +53,7 @@ export default function Pricing(props) {
                             </Typography>
                         </Typography> : ""} 
                 </Grid>
-                        <Grid item  xs={12}>
+                        <Grid item  xs={12} style={{display:"flex",alignItems:"normal"}}>
                             <Hidden smDown>
                                 {
                                     props.offerDiscount ?
