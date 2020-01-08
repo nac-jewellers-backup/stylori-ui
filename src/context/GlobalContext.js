@@ -5,7 +5,8 @@ const initialCtx = {
         loggedIn: false,
         browserType: 'jpg',
         productId:[],
-        pathName:false
+        pathName:false, 
+        tabsChange:false
     },
 
     setGlobaCtx: () => null

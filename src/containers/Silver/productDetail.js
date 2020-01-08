@@ -76,7 +76,7 @@ class ProductDetail extends Component {
         </div>
 
         <Hidden smDown>
-              <Header wishlist={this.props.wishlistdata} />
+          <Header wishlist={this.props.wishlistdata} />
 
           <Grid Container spacing={12} style={{ maxWidth: "1600px", margin: "auto" }}>
             <Grid item xs={12}>
@@ -177,7 +177,7 @@ class ProductDetail extends Component {
   }
 }
 const Components = props => {
-  
+
   let { CartCtx: { allorderdata, wishlistdata } } = React.useContext(CartContext);
   const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating } } = React.useContext(ProductDetailContext);
   const datas = data;
