@@ -24,10 +24,10 @@ export default function Pricing(props) {
             }
             {/*  */}
             <Grid spacing={12} container lg={12} xs={12}>
-                   
-                <Grid item  xs={12} >
-                    <Grid spacing={12} container  xs={12} class="leftPadding"> 
-                        <Grid item  xs={12}>
+
+                <Grid item xs={12} >
+                    <Grid spacing={12} container xs={12} class="leftPadding">
+                        <Grid item xs={12}>
                             {props.price ?
                                 <Typography style={{ display: "flex", width: '100%' }}>
                                     <Typography
@@ -39,21 +39,21 @@ export default function Pricing(props) {
                                     </Typography>
                                 </Typography> : ""}
                         </Grid>
-                        <Grid item lg={window.location.pathname !== "/cart" && window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/checkout" ? 2 : 12} 
-                xs={window.innerWidth < 360 ? 12 : 12}>
-                    {props.offerPrice ?
-                        <Typography style={{ display: "flex", width: '100%' }}>
-                            <Typography
-                                variant="h6"
-                                component="h6"
-                                className={`${props.offerPrice != null & props.offerPrice !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
-                            >
-                                {/* ₹&nbsp;{props.offerPrice} */}
-                                {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.offerPrice))}
-                            </Typography>
-                        </Typography> : ""} 
-                </Grid>
-                        <Grid item  xs={12}>
+                        <Grid item lg={window.location.pathname !== "/cart" && window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/checkout" ? 2 : 12}
+                            xs={window.innerWidth < 360 ? 12 : 12}>
+                            {props.offerPrice ?
+                                <Typography style={{ display: "flex", width: '100%' }}>
+                                    <Typography
+                                        variant="h6"
+                                        component="h6"
+                                        className={`${props.offerPrice != null & props.offerPrice !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
+                                    >
+                                        {/* ₹&nbsp;{props.offerPrice} */}
+                                        {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.offerPrice))}
+                                    </Typography>
+                                </Typography> : ""}
+                        </Grid>
+                        <Grid item xs={window.location.pathname.split("-")[1] !== "allorders" ? 6 : 12} style={{ display: "flex", alignItems: "normal" }}>
                             <Hidden smDown>
                                 {
                                     props.offerDiscount ?

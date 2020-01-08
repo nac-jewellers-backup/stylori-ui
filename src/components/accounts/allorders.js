@@ -107,7 +107,7 @@ class Allorders extends React.Component {
                                     key={index}
                                     style={{ marginBottom: "10px" }}
                                 >
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{paddingRight:"15px"}} className='arrow-chek' />} className='ckcut-main-body'>
+                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon  className='arrow-chek' />} className='ckcut-main-body'>
                                         <Typography className='text-chck'>
 
                                             Order Number : #{val.id} &nbsp;|&nbsp; Order Date : {moment(val.createdAt).format('Do MMMM YYYY')}
@@ -129,8 +129,8 @@ class Allorders extends React.Component {
                                                         <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}&nbsp;
                                                             {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].lastname}</div><br />
                                                         <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].addressline1}</div><br />
-                                                        <div>  {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].city}
-                                                            {"-" + val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].pincode}</div>
+                                                        <div>  {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].city+"-" }
+                                                            { val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].pincode}</div>
                                                         <br />
                                                         <br />
                                                         {val.shoppingCartByCartId && val.shoppingCartByCartId.giftwrapsByCartId && val.shoppingCartByCartId.giftwrapsByCartId.nodes && val.shoppingCartByCartId.giftwrapsByCartId.nodes.length > 0 ? <>
@@ -147,8 +147,8 @@ class Allorders extends React.Component {
                                             {val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => (
                                                 <>
                                                     <br />
-                                                    <Grid container spacing={12} lg={12} style={{ outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "8px" }}>
-                                                        <Grid item lg={2} sm={2}  >
+                                                    <Grid container spacing={12} lg={12} style={{ outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px" }}>
+                                                        <Grid item lg={3} sm={4}  >
                                                             {cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs => (
                                                                 <div className="wishlist_img">
                                                                     <img className="viewport-img" src={`https://assets.stylori.net/base_images/${imgs.imageUrl}`}
@@ -202,7 +202,7 @@ class Allorders extends React.Component {
                                                                     </Typography>  </Grid>
                                                             </Grid>
                                                         </Grid>
-                                                        <Grid item lg={3} sm={3} style={{ padding: "24px" }}>
+                                                        <Grid item lg={2} sm={2} style={{ padding: "16px" }}>
                                                             <Grid container spacing={12} lg={12}>
                                                                 <Typography className="subhesder">Quantity 1</Typography>
                                                                 <Typography className="subhesder">
@@ -212,7 +212,7 @@ class Allorders extends React.Component {
                                                         </Grid>
 
 
-                                                        <Grid style={{ padding: "10px", justifyContent: "center", display: "flex", alignItems: "center" }} className="rups" item lg={3} sm={3}>
+                                                        <Grid style={{ padding: "10px", justifyContent: "center", display: "flex", alignItems: "center" }} className="rups" item lg={3} sm={2}>
                                                             {/* {cart.price > cart.transSkuListByProductSku.markupPrice ?
                                                                 <del style={{ color: "rgba(0, 0, 0, 0.54)", fontSize: "18px" }}>{(Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.markupPrice)))}</del>
                                                                 : ""}<br />
@@ -226,7 +226,7 @@ class Allorders extends React.Component {
                                                     </Grid></>
                                             ))}
 
-                                            <div style={{ float: "right", fontSize: "15px", lineHeight: "1.5" }} >
+                                            <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
                                                 Sub Total&nbsp;{this.calculatetotal(val)}<br />
                                                 Shipping&nbsp;FREE<br />
                                                 Shipping Insurance&nbsp;FREE<br />
