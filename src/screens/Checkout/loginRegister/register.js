@@ -20,7 +20,7 @@ const RegisterComponent = (props) => {
 
 
     return (
-        <div className='pt-sm'>
+        <div className='pt-sm'> 
             <form onSubmit={(e) => {
                 handlers.handleSubmit(e)
             }} action="javascript:void(0)" >
