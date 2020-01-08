@@ -54,7 +54,6 @@ const PriceTabs = (props) => {
 class Component extends React.Component {
     constructor(props) {
         super(props);
-
     }
     state = {
         value: 1,
@@ -72,7 +71,6 @@ class Component extends React.Component {
     handleClose = () => {
         this.setState({ open: false });
     };
-
 
     handleClick = (event, key) => {
         console.log('lklkkoik9', this.props)
