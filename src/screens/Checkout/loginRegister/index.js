@@ -47,7 +47,7 @@ class LoginRegisterIndex extends React.Component {
                             border: "0px !important",
                             borderRadius: "0px",
                             fontSize: "12px"
-                        }}> Continue</Button></div> : <div>
+                        }}> Continue</Button></div> : <div style={{ width: "100%" }}>
                         <div className='pt-sm' style={{ display: this.state.show == true ? "block" : "none" }}>
                             <>
                                 <h5 className={`title ${classes.normalfonts}`}>  Please click to choose an action</h5>

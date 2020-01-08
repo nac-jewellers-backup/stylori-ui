@@ -95,7 +95,7 @@ class Component extends React.Component {
         variab["pincode"] = value && value.pincode
 
         return (
-            <Grid container>
+            <Grid >
                 <Header wishlist={this.props.wishlistdata} />
                 <CustomSeparator
                     arrowicon='cart-head-arrows'
