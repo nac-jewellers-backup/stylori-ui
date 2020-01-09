@@ -44,7 +44,7 @@ const Provider = (props) => {
     const user_id = cartFilters.user_id ? cartFilters.user_id : ""
     const price = cartFilters.price ? cartFilters.price : ""
     const { loading: crtloading, error: crterror, data: crtdata, makeFetch: addtocart } = useNetworkRequest('/addtocart', { user_id, products }, false)
-    const userIds = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ''
+    const userIds = window.location.pathname.split("-")[0] === "/account" ? localStorage.getItem('user_id') : localStorage.getItem('order_id')
     var cartdetails = JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : {}
     const guestlogId = cartFilters.user_id ? cartFilters.user_id : ''
     const { loading: allorderloading, error: allordererror, data: allorder, makeRequest: allordermakeRequest } = useGraphql(ALLORDERS, () => { }, {}, false);
@@ -76,13 +76,13 @@ const Provider = (props) => {
             localStorage.removeItem("bil_isactive")
             window.location.pathname = "/jewellery"
         }
-        if (JSON.stringify(crtdata).length > 10&&jewellery === "jewellery") {
+        if (JSON.stringify(crtdata).length > 10 && jewellery === "jewellery") {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))
         }
         if (reload && reload.length > 0) {
             window.location.reload();
         }
-        
+
         // localStorage.setItem('cart_id', JSON.stringify(crtdata))
     }, [crtdata])
     useEffect(() => {
@@ -126,12 +126,12 @@ const Provider = (props) => {
     //     }
     // }, [])
     useEffect(() => {
-        if (userIds.length > 0) {
-            if (cartdetails && JSON.stringify(cartdetails).length > 0) {
-                // const user_id = userIds
-                // makeFetch({--login---})
-            }
-        }
+        // if (userIds.length > 0) {
+        //     if (cartdetails !== null && cartdetails !== undefined && JSON.stringify(cartdetails).length > 0) {
+        // const user_id = userIds
+        // makeFetch({--login---})
+        //     }
+        // }
 
         if (guestlogId.length > 0) {
             // alert(JSON.stringify(guestlogId))
