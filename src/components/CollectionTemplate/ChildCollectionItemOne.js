@@ -235,7 +235,7 @@ export default function ChildCollectionItemOne() {
                                                                     {data.primaryCarouselDetails.map((val, index) => <>
                                                                         <Grid container className={classes.cardMargin}>
                                                                             <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconLeft}>
-                                                                                <i class="fa fa-angle-left" onClick={previous}></i>
+                                                                                <i class="fa fa-angle-left" onClick={()=>previous()}></i>
                                                                             </Grid>
                                                                             <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
                                                                                 <Typography className={classes.typograpyTop}>
@@ -254,7 +254,7 @@ export default function ChildCollectionItemOne() {
 
                                                                             </Grid>
                                                                             <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconRight}>
-                                                                                <i class="fa fa-angle-right" onClick={next}></i>
+                                                                                <i class="fa fa-angle-right" onClick={() =>next()}></i>
                                                                             </Grid>
                                                                         </Grid>
 
@@ -287,7 +287,7 @@ export default function ChildCollectionItemOne() {
                                                                     {data.primaryCarouselDetails.map((val, index) => <>
                                                                         <Grid container className={classes.cardMargin}>
                                                                             <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconLeft}>
-                                                                                <i class="fa fa-angle-left" onClick={previous}></i>
+                                                                                <i class="fa fa-angle-left" onClick={()=>previous()}></i>
                                                                             </Grid>
                                                                             <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
                                                                                 <Typography className={classes.typograpyTop}>
@@ -306,7 +306,7 @@ export default function ChildCollectionItemOne() {
 
                                                                             </Grid>
                                                                             <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconRight}>
-                                                                                <i class="fa fa-angle-right" onClick={next}></i>
+                                                                                <i class="fa fa-angle-right" onClick={()=>next()}></i>
                                                                             </Grid>
                                                                         </Grid>
 
@@ -340,7 +340,7 @@ export default function ChildCollectionItemOne() {
                                                                 {data.secondaryCarouselDetails.map((val, index) => <>
                                                                     <Grid container style={{ display: "flex", justifyContent: "center" }}>
                                                                         <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconLeft}>
-                                                                            <i class="fa fa-angle-left" onClick={previous}></i>
+                                                                            <i class="fa fa-angle-left" onClick={()=>previous()}></i>
                                                                         </Grid>
                                                                         <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
                                                                             <Typography className={classes.typograpyTop}>
@@ -361,7 +361,7 @@ export default function ChildCollectionItemOne() {
 
                                                                         </Grid>
                                                                         <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconRight}>
-                                                                            <i class="fa fa-angle-right" onClick={next}></i>
+                                                                            <i class="fa fa-angle-right" onClick={()=>next()}></i>
                                                                         </Grid>
                                                                     </Grid>
 
@@ -412,7 +412,7 @@ export default function ChildCollectionItemOne() {
                                                                     {data.primaryCarouselDetails.map((val, index) => <>
                                                                         <Grid container style={{ display: "flex", justifyContent: "center", marginTop: "54px" }}>
                                                                             <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconLeft}>
-                                                                                <i class="fa fa-angle-left" onClick={previous}></i>
+                                                                                <i class="fa fa-angle-left" onClick={()=>previous()}></i>
                                                                             </Grid>
                                                                             <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
                                                                                 <Typography className={classes.typograpyTop}>
@@ -433,7 +433,7 @@ export default function ChildCollectionItemOne() {
 
                                                                             </Grid>
                                                                             <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconRight}>
-                                                                                <i class="fa fa-angle-right" onClick={next}></i>
+                                                                                <i class="fa fa-angle-right" onClick={()=>next()}></i>
                                                                             </Grid>
                                                                         </Grid>
 
@@ -466,7 +466,7 @@ export default function ChildCollectionItemOne() {
                                                                     {data.secondaryCarouselDetails.map((val, index) => <>
                                                                         <Grid container style={{ display: "flex", justifyContent: "center" }}>
                                                                             <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconLeft}>
-                                                                                <i class="fa fa-angle-left" onClick={previous}></i>
+                                                                                <i class="fa fa-angle-left" onClick={()=>previous()}></i>
                                                                             </Grid>
                                                                             <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
                                                                                 <Typography className={classes.typograpyTop}>
@@ -487,7 +487,7 @@ export default function ChildCollectionItemOne() {
 
                                                                             </Grid>
                                                                             <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconRight}>
-                                                                                <i class="fa fa-angle-right" onClick={next}></i>
+                                                                                <i class="fa fa-angle-right" onClick={()=>next()}></i>
                                                                             </Grid>
                                                                         </Grid>
 
