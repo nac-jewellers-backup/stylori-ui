@@ -99,9 +99,18 @@ export default function CustomSeparator(props) {
         <Paper elevation={0} className={props.classsubhed}  >
           <Container>
             <Grid container>
-
               <Grid item lg={7}>
-                <Breadcrumbs separator={seperators} >
+                {window.location.pathname === "/cart" || window.location.pathname === "/checkout" ?  <ol class="breadCrumbs">
+                  {props.data.map(data => (
+                    //  <Link color="inherit" to={{pathname:data.url}} style={{ fontSize: "14px" }} className={props.list}>
+                    <li onClick={() => activetabsclik(data)}>
+                      <a className={activetabs(data) ? ` isactives ${props.list}` : props.list}>
+                        {data.title}</a>
+                    </li>
+                    //  </Link>
+                  ))
+                  }
+                </ol>:<Breadcrumbs separator={seperators} >
                   {props.data.map(data => (
                     //  <Link color="inherit" to={{pathname:data.url}} style={{ fontSize: "14px" }} className={props.list}>
                     <div onClick={() => activetabsclik(data)}>
@@ -111,7 +120,9 @@ export default function CustomSeparator(props) {
                     //  </Link>
                   ))
                   }
-                </Breadcrumbs>
+                </Breadcrumbs>}
+               
+                
               </Grid>
               <Grid item lg={5}>
                 {props.subdata ?
