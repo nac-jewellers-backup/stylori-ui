@@ -80,7 +80,7 @@ class Allorders extends React.Component {
             if (allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0) {
                 allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map(val => {
                     if (order_id === val.id) {
-                        // alert(JSON.stringify(val))
+                        alert(JSON.stringify(val))
                         return val
                     }
                 })
@@ -261,19 +261,19 @@ class Allorders extends React.Component {
                                             </Grid>
                                             <Grid item sm={6} lg={6} xs={12} className="order_addres_user">
                                                 <div><b>Shipping Address :</b></div><br />
-                                                {/* <div> {allDatas_filter().shoppingCartByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes[0] && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}&nbsp;
-                                                         {allDatas_filter().shoppingCartByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes[0] && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes[0].lastname}</div><br />
-                                                    <div> {allDatas_filter().shoppingCartByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes[0] && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes[0].addressline1}</div><br />
-                                                    <div>  {allDatas_filter().shoppingCartByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes[0] && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes[0].city + "-"}
-                                                        {allDatas_filter().shoppingCartByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes[0] && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes[0].pincode}</div>
-                                                    <br />
-                                                    <br />
-                                                    {allDatas_filter().shoppingCartByCartId && allDatas_filter().shoppingCartByCartId.giftwrapsByCartId && allDatas_filter().shoppingCartByCartId.giftwrapsByCartId.nodes && allDatas_filter().shoppingCartByCartId.giftwrapsByCartId.nodes.length > 0 ? <>
-                                                        <div> <b>Gift to</b> :
-                                                     {allDatas_filter().shoppingCartByCartId.giftwrapsByCartId.nodes[0].giftTo}</div>
-                                                        <br /><div> <b>Gift message</b> :
-                                                     {allDatas_filter().shoppingCartByCartId.giftwrapsByCartId.nodes[0].message}</div></> : ""} */}
-                                                {/* <div></div> */}
+                                                {/* <div> {allDatas_filter() && allDatas_filter().shoppingCartByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes.firstname}&nbsp;
+                                                         {allDatas_filter() && allDatas_filter().shoppingCartByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes.lastname}</div><br />
+                                                <div> {allDatas_filter() && allDatas_filter().shoppingCartByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes.addressline1}</div><br />
+                                                <div>  {allDatas_filter() && allDatas_filter().shoppingCartByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes.city + "-"}
+                                                    {allDatas_filter() && allDatas_filter().shoppingCartByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes.pincode}</div> */}
+                                                <br />
+                                                <br />
+                                                {allDatas_filter() && allDatas_filter().shoppingCartByCartId && allDatas_filter().shoppingCartByCartId.giftwrapsByCartId && allDatas_filter().shoppingCartByCartId.giftwrapsByCartId.nodes && allDatas_filter().shoppingCartByCartId.giftwrapsByCartId.nodes.length > 0 ? <>
+                                                    <div> <b>Gift to</b> :
+                                                     {allDatas_filter() && allDatas_filter().shoppingCartByCartId.giftwrapsByCartId.nodes[0].giftTo}</div>
+                                                    <br /><div> <b>Gift message</b> :
+                                                     {allDatas_filter() && allDatas_filter().shoppingCartByCartId.giftwrapsByCartId.nodes[0].message}</div></> : ""} 
+                                                <div></div>
                                             </Grid>
                                         </Grid>
                                     </div>
