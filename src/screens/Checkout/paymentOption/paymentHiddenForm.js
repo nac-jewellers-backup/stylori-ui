@@ -1,6 +1,6 @@
 import React, { useEffect, useRef,useState } from "react";
 import { API_URL } from '../../../../src/config'
-
+import './payment.css'
 export default function PaymentHiddenForm(props){
     const [hash,sethash] = useState({
         hashvalue:"",
@@ -90,10 +90,11 @@ export default function PaymentHiddenForm(props){
                 <input type="hidden" name="timezone" value="IST" />
                 <input type="hidden" name="authenticateTransaction" value="true" />
                 <input type='hidden' name='checkoutoption' value = "combinedform" />
-                <input size="50" type="hidden" name="paymentMethod" value=""/>
-                <input type="hidden" name="cardFunction" value = "credit" />
+                {/* <input size="50" type="hidden" name="paymentMethod" value=""/>
+                <input type="hidden" name="cardFunction" value = "credit" /> */}
                 </div>
-            <input type="submit" style={{background: "#ec7ea8",color: "white",padding: "6px"}}   name ="submitBtn" value="Place Order" />
+                {/* style={{background: "#ec7ea8",color: "white",padding: "6px"}}  */}
+            <input type="submit" className="credit-button"   name ="submitBtn" value="Pay Now" />
             </form>
           
          
