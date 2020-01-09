@@ -279,7 +279,9 @@ const Components = props => {
         alert('Please let select atleast one item in the cart')
         props.history.push('/jewellery')
     }
-if (Object.keys(data).length === 0 || data.data.allTransSkuLists.nodes.length === 0 ) content = <div className="overall-loader">{cartValueEmpty()}</div>
+if (Object.keys(data).length === 0 || data.data.allTransSkuLists.nodes.length === 0 ) content = <div className="overall-loader">
+    {/* {cartValueEmpty()} */}
+</div>
     else content = <CartCardCheck {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
 
     return content
