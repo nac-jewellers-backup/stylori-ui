@@ -1,0 +1,168 @@
+src/components/accounts/accounts.css:    background: url(https://assets-cdn.stylori.com/images/static/icon-close.png) no-repeat !important;
+src/components/accounts/allorders.js:                                                                        <img alt="" src="https://assets-cdn.stylori.com/images/static/icon-ship.png" /> <a>
+src/components/accounts/allorders.js:                                                            <img alt="" src="https://assets-cdn.stylori.com/images/static/icon-ship.png" /> <a>
+src/components/Carousel/carosul.js:    //   'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+src/components/Carousel/carosul.js:    //   'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
+src/components/Carousel/carosul.js:    //   'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg'
+src/components/Carousel/ReadMe.txt:    >            'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
+src/components/Carousel/ReadMe.txt:    >            'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
+src/components/Carousel/ReadMe.txt:    >            'https://assets-cdn.stylori.com/images/megamenu/ear-jacket.jpg'
+src/components/CarouselLazyer/accounts/accounts.css:    background: url(https://assets-cdn.stylori.com/images/static/icon-close.png) no-repeat !important;
+src/components/CarouselLazyer/accounts/allorders.js:                                                                    <img alt="" src="https://assets-cdn.stylori.com/images/static/icon-ship.png" /> <a>
+src/components/CarouselLazyer/StaticView.js:        backgroundImage: 'url(' + 'https://assets-cdn.stylori.com/images/static/sprite-images.png' + ')',
+src/components/CarouselLazyer/StaticView.js:        backgroundImage: 'url(' + 'https://assets-cdn.stylori.com/images/static/sprite-images.png' + ')',
+src/components/CarouselLazyer/StaticView.js:        backgroundImage: 'url(' + 'https://assets-cdn.stylori.com/images/static/sprite-images.png' + ')',
+src/components/CarouselLazyer/StaticView.js:        backgroundImage: 'url(' + 'https://assets-cdn.stylori.com/images/static/sprite-images.png' + ')',
+src/components/CarouselLazyer/StaticView.js:        backgroundImage: 'url(' + 'https://assets-cdn.stylori.com/images/static/sprite-images.png' + ')',
+src/components/CarouselLazyer/StaticView.js:                        <Grid className={classes.image1} data-src={"https://assets-cdn.stylori.com/images/static/sprite-images.png"} >
+src/components/CarouselLazyer/StaticView.js:                        <Grid className={classes.image2} data-src={"https://assets-cdn.stylori.com/images/static/sprite-images.png"} >
+src/components/CarouselLazyer/StaticView.js:                        <Grid className={classes.image3} data-src={"https://assets-cdn.stylori.com/images/static/sprite-images.png"} >
+src/components/CarouselLazyer/StaticView.js:                        <Grid className={classes.image4} data-src={"https://assets-cdn.stylori.com/images/static/sprite-images.png"} >
+src/components/CarouselLazyer/StaticView.js:                        <Grid className={classes.image5} data-src={"https://assets-cdn.stylori.com/images/static/sprite-images.png"} >
+src/components/Checkout/Cart.css:        background: url(https://assets-cdn.stylori.com/images/static/icon-close.png) no-repeat;
+src/components/CollectionTemplate/CollectionData.js:                  img: "https://assets-cdn.stylori.com/images/collection/Blush-collection.png",
+src/components/CollectionTemplate/CollectionData.js:              primaryImage:"https://assets-cdn.stylori.com/images/collection/Alpha-Page-tile-01.jpg",
+src/components/CollectionTemplate/CollectionData.js:                  img: "https://assets-cdn.stylori.com/images/product/SP1127/SP1127-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:                    "https://assets-cdn.stylori.com/images/product/SE0685/SE0685-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:                    "https://assets-cdn.stylori.com/images/product/SR0861/SR0861-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:                    "https://assets-cdn.stylori.com/images/product/SP1097/SP1097-1W.jpg",
+src/components/CollectionTemplate/CollectionData.js:                    "https://assets-cdn.stylori.com/images/product/SR0491/SR0491-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:            secondaryImage:"https://assets-cdn.stylori.com/images/collection/Alpha-Page-tile-05.jpg",
+src/components/CollectionTemplate/CollectionData.js:                img: "https://assets-cdn.stylori.com/images/product/SP1127/SP1127-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:                  "https://assets-cdn.stylori.com/images/product/SE0685/SE0685-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:                  "https://assets-cdn.stylori.com/images/product/SR0861/SR0861-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:                  "https://assets-cdn.stylori.com/images/product/SP1097/SP1097-1W.jpg",
+src/components/CollectionTemplate/CollectionData.js:                  "https://assets-cdn.stylori.com/images/product/SR0491/SR0491-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:                img: "https://assets-cdn.stylori.com/images/collection/Molecute-colletion.png",
+src/components/CollectionTemplate/CollectionData.js:            primaryImage:"https://assets-cdn.stylori.com/images/collection/Alpha-Page-tile-02.jpg",
+src/components/CollectionTemplate/CollectionData.js:                img: "https://assets-cdn.stylori.com/images/product/SP1127/SP1127-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:                  "https://assets-cdn.stylori.com/images/product/SE0685/SE0685-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:                  "https://assets-cdn.stylori.com/images/product/SR0861/SR0861-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:                  "https://assets-cdn.stylori.com/images/product/SP1097/SP1097-1W.jpg",
+src/components/CollectionTemplate/CollectionData.js:                  "https://assets-cdn.stylori.com/images/product/SR0491/SR0491-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:          secondaryImage:"https://assets-cdn.stylori.com/images/collection/Alpha-Page-tile-04.jpg",
+src/components/CollectionTemplate/CollectionData.js:              img: "https://assets-cdn.stylori.com/images/product/SP1127/SP1127-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:                "https://assets-cdn.stylori.com/images/product/SE0685/SE0685-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:                "https://assets-cdn.stylori.com/images/product/SR0861/SR0861-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:                "https://assets-cdn.stylori.com/images/product/SP1097/SP1097-1W.jpg",
+src/components/CollectionTemplate/CollectionData.js:                "https://assets-cdn.stylori.com/images/product/SR0491/SR0491-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:              img: "https://assets-cdn.stylori.com/images/collection/Molecute-colletion.png",
+src/components/CollectionTemplate/CollectionData.js:          primaryImage:"https://assets-cdn.stylori.com/images/collection/Alpha-Page-tile-02.jpg",
+src/components/CollectionTemplate/CollectionData.js:              img: "https://assets-cdn.stylori.com/images/product/SP1127/SP1127-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:                "https://assets-cdn.stylori.com/images/product/SE0685/SE0685-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:                "https://assets-cdn.stylori.com/images/product/SR0861/SR0861-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:                "https://assets-cdn.stylori.com/images/product/SP1097/SP1097-1W.jpg",
+src/components/CollectionTemplate/CollectionData.js:                "https://assets-cdn.stylori.com/images/product/SR0491/SR0491-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:        secondaryImage:"https://assets-cdn.stylori.com/images/collection/Alpha-Page-tile-04.jpg",
+src/components/CollectionTemplate/CollectionData.js:            img: "https://assets-cdn.stylori.com/images/product/SP1127/SP1127-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:              "https://assets-cdn.stylori.com/images/product/SE0685/SE0685-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:              "https://assets-cdn.stylori.com/images/product/SR0861/SR0861-1Y.jpg",
+src/components/CollectionTemplate/CollectionData.js:              "https://assets-cdn.stylori.com/images/product/SP1097/SP1097-1W.jpg",
+src/components/CollectionTemplate/CollectionData.js:              "https://assets-cdn.stylori.com/images/product/SR0491/SR0491-1Y.jpg",
+src/components/Feedes/Index.js:                src="https://assets-cdn.stylori.com/assets/7b4c4135f67d8ee467c80ebc286cd3c3bad477ad.html"
+src/components/Footer/Footer.js:                                <img src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" alt="" />
+src/components/Header/header.js:                    <img className={`img`} src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+src/components/Header/header.js:                    <img className="mobile-img" src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" alt="" />
+src/components/Header/ReadMe.txt:                            img: 'https://assets-cdn.stylori.com/images/megamenu/studs.jpg',
+src/components/Header/ReadMe.txt:                            img: 'https://assets-cdn.stylori.com/images/megamenu/drops.jpg',
+src/components/Header/ReadMe.txt:                            img: 'https://assets-cdn.stylori.com/images/megamenu/ear-cuffs.jpg',
+src/components/Header/ReadMe.txt:                            img: 'https://assets-cdn.stylori.com/images/megamenu/huggies.jpg',
+src/components/Header/ReadMe.txt:                            img: 'https://assets-cdn.stylori.com/images/megamenu/jhumkas.jpg',
+src/components/Header/ReadMe.txt:                            img: 'https://assets-cdn.stylori.com/images/megamenu/ear-jacket.jpg',
+src/components/Header/ReadMe.txt:                            img: 'https://assets-cdn.stylori.com/images/megamenu/stylori_menu_banner01.jpg',
+src/components/Home/carouselData.js:    'https://assets-cdn.stylori.com/images/banners/mobile/Stylori_hue_banner.jpg',
+src/components/Home/carouselData.js:    'https://assets-cdn.stylori.com/images/banners/mobile/Stylori-mobile-gif.gif',
+src/components/Home/carouselData.js:    'https://assets-cdn.stylori.com/images/banners/mobile/Stylori_Ring_mob.png'
+src/components/Home/footer.js:          <img src="https://assets-cdn.stylori.com/images/static/cartoon.png" alt=""/>
+src/components/Home/socialmediaCard.js:                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' alt=""/>
+src/components/Home/socialmediaCard.js:                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' alt=""/>
+src/components/Home/socialmediaCard.js:                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' alt=""/>
+src/components/Home/socialmediaCard.js:                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' alt=""/>
+src/components/Home/socialmediaCard.js:                                            image="https://assets-cdn.stylori.com/images/stories/Travel-stylori-blog-cover.jpg"
+src/components/Home/subcarousel.js:            'https://assets-cdn.stylori.com/200x200/images/product/SR0818/SR0818-1Y.jpg',
+src/components/Home/subcarousel.js:            'https://assets-cdn.stylori.com/200x200/images/product/SE0109/SE0109-1Y.jpg',
+src/components/Home/subcarousel.js:            'https://assets-cdn.stylori.com/200x200/images/product/SR0204/SR0204-1Y.jpg',
+src/components/Home/subcarousel.js:                                <img height="100%" width="100%" src='https://assets-cdn.stylori.com/276x567/images/homepage/PendantVertical.png' 
+src/components/Home/subcarousel.js:                                        <img height="100%" width="100%" src='https://assets-cdn.stylori.com/276x276/images/homepage/BangleSquare.png' alt=""/>
+src/components/Home/subcarousel.js:                                        <img height="100%" width="100%" src='https://assets-cdn.stylori.com/1150x575/images/homepage/EarringRectangle.png' alt=""/>
+src/components/Home/subcarousel.js:                                        <img height="100%" width="100%" src='https://assets-cdn.stylori.com/552x276/images/homepage/RingRectangle.png' alt=""/>
+src/components/Home/subcarousel.js:                                        <img height="100%" width="100%" src='https://assets-cdn.stylori.com/276x276/images/homepage/nosepinSquare.png' alt=""/>
+src/components/Home/subheader.js://         img1: 'https://assets-cdn.stylori.com/276x276/images/homepage/276X276 PIXELS MANGO COLLECTIONS TILE-01 (1).jpg',
+src/components/Home/subheader.js://         img: 'https://assets-cdn.stylori.com/552x276/images/homepage/Stylori-ring-tile.jpg',
+src/components/Home/subheader.js://         img: 'https://assets-cdn.stylori.com/276x276/images/homepage/276X276 PIXELS MANGO COLLECTIONS TILE-01 (1).jpg',
+src/components/Home/subheader.js://         img: 'https://assets-cdn.stylori.com/552x276/images/homepage/Stylori-ring-tile.jpg',
+src/components/Home/subheader.js://         img: 'https://assets-cdn.stylori.com/276x276/images/homepage/276X276 PIXELS MANGO COLLECTIONS TILE-01 (1).jpg',
+src/components/Home/subheader.js://         src: 'https://assets-cdn.stylori.com/552x276/images/homepage/Stylori-ring-tile.jpg',
+src/components/Home/subheader.js://         src: 'https://assets-cdn.stylori.com/276x276/images/homepage/276X276 PIXELS MANGO COLLECTIONS TILE-01 (1).jpg',
+src/components/Home/subheader.js://         src: 'https://assets-cdn.stylori.com/276x567/images/homepage/blush 3.jpg',
+src/components/Home/subheader.js://         src: 'https://assets-cdn.stylori.com/276x276/images/homepage/-11.jpg',
+src/components/Home/subheader.js://         src: 'https://assets-cdn.stylori.com/276x276/images/homepage/276X276 PIXELS MANGO COLLECTIONS TILE-01 (1).jpg',
+src/components/Home/subheader.js:                                        <img height="100%" width="100%" src='https://assets-cdn.stylori.com/552x276/images/homepage/Stylori-ring-tile.jpg' alt="" />
+src/components/Home/subheader.js:                                        <img height="100%" width="100%" src='https://assets-cdn.stylori.com/276x276/images/homepage/276X276 PIXELS MANGO COLLECTIONS TILE-01 (1).jpg' alt="" />
+src/components/Home/subheader.js:                                        <img height="100%" width="100%" src='https://assets-cdn.stylori.com/276x276/images/homepage/-11.jpg' alt="" />
+src/components/Home/subheader.js:                                        <img height="100%" width="100%" src='https://assets-cdn.stylori.com/552x276/images/homepage/Stylori_ Daisy Days.jpg' alt="" />
+src/components/Home/subheader.js:                                <img height="100%" width="100%" src='https://assets-cdn.stylori.com/276x567/images/homepage/blush 3.jpg' alt="" /></Grid>
+src/components/LoginAndRegister/Login.js:                                        <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img>
+src/components/LoginAndRegister/Register.js:                        <img width="100%" height="100%" src="https://assets-cdn.stylori.com/images/static/inner-page/banner.png" />
+src/components/product-image-slider/dummyTest.js:            <meta property="og:image" id="fb_imageUrl" content="https://assets-cdn.stylori.com/474x474/images/product/SE0735/SE0735-1Y.jpg" />
+src/components/product-image-slider/dummyTest.js:    <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
+src/components/product-image-slider/dummyTest.js:    <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
+src/components/product-image-slider/dummyTest.js:    <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
+src/components/product-image-slider/Gagetstylori/index.css:    background-image: url("https://assets-cdn.stylori.com/images/static/details.svg");
+src/components/product-image-slider/Gagetstylori/index.css:    background-image: url("https://assets-cdn.stylori.com/images/static/details.svg");
+src/components/product-image-slider/Gagetstylori/index.css:    background-image: url("https://assets-cdn.stylori.com/images/static/details.svg");
+src/components/product-image-slider/Gagetstylori/index.css:    background-image: url("https://assets-cdn.stylori.com/images/static/details.svg");
+src/components/product-image-slider/Gagetstylori/index.css:    background-image: url("https://assets-cdn.stylori.com/images/static/details.svg");
+src/components/product-image-slider/Gagetstylori/index.css:    background-image: url("https://assets-cdn.stylori.com/images/static/details.svg");
+src/components/product-image-slider/priceTabs.js:                                                        <img height='auto' width='100%' src='https://assets-cdn.stylori.com/images/static/Ring-size.jpg' />
+src/components/product-image-slider/product-images.css:    background-image: url(https://assets-cdn.stylori.com/images/static/product-details-icons.png);
+src/components/product-image-slider/product-images.css:    background-image: url(https://assets-cdn.stylori.com/images/static/location.png);
+src/components/product-image-slider/product-images.css:    background-image: url(https://assets-cdn.stylori.com/images/static/icons.png) !important;
+src/components/product-image-slider/product-images.css:    background-image: url(https://assets-cdn.stylori.com/images/static/bg.png);
+src/components/product-image-slider/product-images.css:    background-image: url(https://assets-cdn.stylori.com/images/static/product-details-icons.png);
+src/components/product-image-slider/productPrice.js:                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
+src/components/product-image-slider/productPrice.js:                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
+src/components/product-image-slider/productPrice.js:                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
+src/components/product-image-slider/subListcarousel.js:        icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+src/components/product-image-slider/subListcarousel.js:        icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+src/components/product-image-slider/subListcarousel.js:        icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+src/components/product-image-slider/subListcarousel.js:        icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+src/components/product-image-slider/subListcarousel.js:        icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+src/components/product-image-slider/Untitled-4.txt:// const baseUi = "https://assets-cdn.stylori.com/";
+src/components/product-image-slider/Untitled-5.txt:// const baseUi = "https://assets-cdn.stylori.com/";
+src/components/SilverComponents/ProductDetail/customer-reviews.js:                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+src/components/SilverComponents/ProductDetail/customer-reviews.js:                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+src/components/SilverComponents/ProductDetail/customer-reviews.js:                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+src/components/SilverComponents/ProductDetail/customer-reviews.js:                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+src/components/SilverComponents/ProductDetail/customer-reviews.js:                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+src/components/SilverComponents/ProductDetail/dummyTest.js:            <meta property="og:image" id="fb_imageUrl" content="https://assets-cdn.stylori.com/474x474/images/product/SE0735/SE0735-1Y.jpg" />
+src/components/SilverComponents/ProductDetail/dummyTest.js:    <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
+src/components/SilverComponents/ProductDetail/dummyTest.js:    <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
+src/components/SilverComponents/ProductDetail/dummyTest.js:    <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
+src/components/SilverComponents/ProductDetail/Gagetstylori/index.css:    background-image: url("https://assets-cdn.stylori.com/images/static/details.svg");
+src/components/SilverComponents/ProductDetail/Gagetstylori/index.css:    background-image: url("https://assets-cdn.stylori.com/images/static/details.svg");
+src/components/SilverComponents/ProductDetail/Gagetstylori/index.css:    background-image: url("https://assets-cdn.stylori.com/images/static/details.svg");
+src/components/SilverComponents/ProductDetail/Gagetstylori/index.css:    background-image: url("https://assets-cdn.stylori.com/images/static/details.svg");
+src/components/SilverComponents/ProductDetail/Gagetstylori/index.css:    background-image: url("https://assets-cdn.stylori.com/images/static/details.svg");
+src/components/SilverComponents/ProductDetail/Gagetstylori/index.css:    background-image: url("https://assets-cdn.stylori.com/images/static/details.svg");
+src/components/SilverComponents/ProductDetail/priceTabs.js:                                                        <img height='auto' width='100%' src='https://assets-cdn.stylori.com/images/static/Ring-size.jpg' />
+src/components/SilverComponents/ProductDetail/product-images.css:    background-image: url(https://assets-cdn.stylori.com/images/static/product-details-icons.png);
+src/components/SilverComponents/ProductDetail/product-images.css:    background-image: url(https://assets-cdn.stylori.com/images/static/location.png);
+src/components/SilverComponents/ProductDetail/product-images.css:    background-image: url(https://assets-cdn.stylori.com/images/static/icons.png) !important;
+src/components/SilverComponents/ProductDetail/product-images.css:    background-image: url(https://assets-cdn.stylori.com/images/static/bg.png);
+src/components/SilverComponents/ProductDetail/product-images.css:    background-image: url(https://assets-cdn.stylori.com/images/static/product-details-icons.png);
+src/components/SilverComponents/ProductDetail/productPrice.js:                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
+src/components/SilverComponents/ProductDetail/productPrice.js:                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
+src/components/SilverComponents/ProductDetail/productPrice.js:                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
+src/components/SilverComponents/ProductDetail/Untitled-4.txt:// const baseUi = "https://assets-cdn.stylori.com/";
+src/components/SilverComponents/ProductDetail/Untitled-5.txt:// const baseUi = "https://assets-cdn.stylori.com/";
+src/components/storyTemplate/socialLinkFrame.js:                        src="https://assets-cdn.stylori.com/assets/7b4c4135f67d8ee467c80ebc286cd3c3bad477ad.html"
+src/components/storyTemplate/storyTemplateData.js:        image:"https://assets-cdn.stylori.com/images/stories/stylori_blog_cover_yashoda_krishna_story.jpg",
+src/components/storyTemplate/storyTemplateData.js:          image:"https://assets-cdn.stylori.com/images/stories/stylori_blog_cover_yashoda_krishna_story.jpg",
+src/components/storyTemplate/storyTemplateData.js:                "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
+src/components/storyTemplate/storyTemplateData.js:                "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
+src/components/storyTemplate/storyTemplateData.js:                "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
+src/components/storyTemplate/storyTemplateData.js:                "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
+src/components/storyTemplate/storyTemplateData.js:                "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
+src/components/storyTemplate/storyTemplateData.js:                "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
+src/components/storyTemplate/storyTemplateData.js:                "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
