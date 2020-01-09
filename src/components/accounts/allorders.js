@@ -253,13 +253,13 @@ class Allorders extends React.Component {
                                 <div className="address_details">
                                     {/* {val.shoppingCartByCartId.cartAddressesByCartId.nodes.map(addreses => ( */}
                                     <div style={{ width: "100%", marginBottom: "10px" }}>
-                                        <Grid container spacing={12} lg={12} xs={12} >
+                                        <Grid container spacing={12} lg={12} xs={11} sm={11} style={{marginRight:"auto",marginLeft:"auto"}} >
                                             <Grid item sm={6} lg={6} xs={12} className="order_addres">
                                                 <div> <b>Order Number</b>:#{allDatas_filter() && allDatas_filter().id}</div><br />
                                                 <div><b>Order Date	</b> : {moment(allDatas_filter() && allDatas_filter().createdAt).format('Do MMMM YYYY')}</div><br />
                                                 <div> <b>Payment Method</b>: Cash On Delivery</div>
                                             </Grid>
-                                            <Grid item sm={6} lg={6} xs={12} className="order_addres_user">
+                                            <Grid item sm={3} lg={3} xs={12} className="order_addres_user">
                                                 <div><b>Shipping Address :</b></div><br />
                                                 {/* <div> {allDatas_filter() && allDatas_filter().shoppingCartByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes.firstname}&nbsp;
                                                          {allDatas_filter() && allDatas_filter().shoppingCartByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes && allDatas_filter().shoppingCartByCartId.cartAddressesByCartId.nodes.lastname}</div><br />
@@ -283,7 +283,7 @@ class Allorders extends React.Component {
                                         <>
                                             <br />
                                             <Grid container spacing={12} lg={12} style={{ height: "270px", overflow: "hidden", outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px" }}>
-                                                <Grid item lg={3} sm={4}  >
+                                                <Grid item lg={2} sm={3}  >
                                                     {cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs => (
                                                         <div className="wishlist_img">
                                                             <img className="viewport-img" src={`https://assets.stylori.net/base_images/${imgs.imageUrl}`}
