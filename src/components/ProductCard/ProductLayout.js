@@ -144,7 +144,7 @@ class Component extends React.Component {
                   :
                   <>
                   {
-                    data[0].totalCount - data.length === 0 ?
+                    data[0].totalCount - data.length === 0 ||  data[0].totalCount - data.length < 0 ?
                     ''
                     :
                     <Button variant="contained" className={`${classes.button}  ${classes.viewmoreColor}`} onClick={() => { this.handleOffset() }} disabled={data.length < 24} >
