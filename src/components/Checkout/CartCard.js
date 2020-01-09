@@ -93,7 +93,7 @@ class Checkoutcard extends React.Component {
                 </Grid><br />
                 {this.props.data.map(dataval => (
                     dataval.productsDetails.map(val => (
-                        <div style={{ outline: "none", marginBottom: "10px", boxShadow: "1px 2px 13px 7px #DEDADA" }} className={classes.cart}>
+                        <div style={{ outline: "none", marginBottom: "25px", boxShadow: "1px 2px 13px 7px #DEDADA",padding:"10px" }} className={classes.cart}>
                             <Grid container spacing={12} xs={12}  >
                                 {/* {window.location.pathname !== "/checkout" ?
                                     <Grid item xs={1}  >
