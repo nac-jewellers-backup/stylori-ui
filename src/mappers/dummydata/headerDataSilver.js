@@ -205,7 +205,7 @@ export const subheader = {
             },
         ]
     },
-    "By Design": {
+    "By design": {
         header: 'By design',
         name: [
             {
