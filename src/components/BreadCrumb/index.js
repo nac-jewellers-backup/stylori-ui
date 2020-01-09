@@ -38,7 +38,7 @@ export default function CustomSeparator(props) {
   // }
 
   const activetabsclik = (data) => {
-    
+
     if (data && data.title === "Shopping Bag") {
       return window.location.href = "/cart"
     } if (data && data.title === "Login/ Register") {
@@ -46,7 +46,7 @@ export default function CustomSeparator(props) {
     }
     if (data && data.title === "Address Detail") {
       return
-    } 
+    }
     if (data && data.title === "Order Confirmation") {
       return
     }
@@ -94,14 +94,15 @@ export default function CustomSeparator(props) {
     }
   }
   return (
-    <div className={props.className}>
-      <Paper elevation={0} className={props.classsubhed} style={{position:"fixed",zIndex:"1000",top:"89px",width:"100%"}} >
-        <Container>
-          <Grid container> 
+    <div className={window.location.pathname === "/cart" || window.location.pathname === "/checkout" ? "bread_stic" : ""}>
+      <div className={props.className} >
+        <Paper elevation={0} className={props.classsubhed}  >
+          <Container>
+            <Grid container>
 
-            <Grid item lg={7}>
-              <Breadcrumbs separator={seperators} >
-                {props.data.map(data => (
+              <Grid item lg={7}>
+                <Breadcrumbs separator={seperators} >
+                  {props.data.map(data => (
                     //  <Link color="inherit" to={{pathname:data.url}} style={{ fontSize: "14px" }} className={props.list}>
                     <div onClick={() => activetabsclik(data)}>
                       <li className={activetabs(data) ? ` isactives ${props.list}` : props.list}>
@@ -109,44 +110,44 @@ export default function CustomSeparator(props) {
                     </div>
                     //  </Link>
                   ))
-                }
-              </Breadcrumbs>
-            </Grid>
-            <Grid item lg={5}>
-              {props.subdata ?
-                <div>
-                  <Grid container >
-                    {
-                      props.subdata.map(subdata => (
-                        <>
-                          {/* <div style={{marginTop:"0.5%",marginRight:"5px"}}>
+                  }
+                </Breadcrumbs>
+              </Grid>
+              <Grid item lg={5}>
+                {props.subdata ?
+                  <div>
+                    <Grid container >
+                      {
+                        props.subdata.map(subdata => (
+                          <>
+                            {/* <div style={{marginTop:"0.5%",marginRight:"5px"}}>
                        <img src={subdata.icon} style={{ width: "25px", height: "25px" }} />
                        </div>
                        <Grid item xs={2} style={{ float: "left", lineHeight: "14px" }}>
                          <span style={{ fontSize: "13px" }}> {subdata.name}</span>
                        </Grid> */}
-                          <Grid item xs={1} >
-                            <img src={subdata.icon} style={{
-                              width: "25px", height: "25px", marginLeft: "20px",
-                              marginTop: "7px"
-                            }} />
-                          </Grid>
+                            <Grid item xs={1} >
+                              <img src={subdata.icon} style={{
+                                width: "25px", height: "25px", marginLeft: "20px",
+                                marginTop: "7px"
+                              }} />
+                            </Grid>
 
-                          <Grid item xs={2} >
-                            <div style={{ marginTop: "7px", fontSize: "12px", lineHeight: "15px", textAlign: "center" }}>{subdata.name}</div>
-                            {/* <div src={subdata.icon} style={{ fontSize: "13px", lineHeight: "15px", textAlign: "center" }}> */}
-                            {/* <img src={subdata.icon} style={{ width: "25px", height: "25px" }} /> */}
-                            {/* {subdata.name}</div> */}
-                          </Grid>
-                        </>
-                      ))
-                    }
-                  </Grid>
-                </div>
-                : ""}
+                            <Grid item xs={2} >
+                              <div style={{ marginTop: "7px", fontSize: "12px", lineHeight: "15px", textAlign: "center" }}>{subdata.name}</div>
+                              {/* <div src={subdata.icon} style={{ fontSize: "13px", lineHeight: "15px", textAlign: "center" }}> */}
+                              {/* <img src={subdata.icon} style={{ width: "25px", height: "25px" }} /> */}
+                              {/* {subdata.name}</div> */}
+                            </Grid>
+                          </>
+                        ))
+                      }
+                    </Grid>
+                  </div>
+                  : ""}
+              </Grid>
             </Grid>
-          </Grid>
-        </Container>  </Paper>
-    </div>
-  );
+          </Container>  </Paper>
+      </div>
+    </div>);
 }
