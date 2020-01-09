@@ -122,12 +122,21 @@ class Addressdetails extends React.Component {
                                                 this.props.redirectForm(val_addrs1, index, true, true, index)
                                             }} style={{ fontSize: "20px", color: "#394578", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                                 class="fa fa-pencil-square-o"></i>
-                                            <i
-                                                onClick={() => {
-                                                    this.setState({ index_of_isActive: index })
-                                                    this.handleOpen()
-                                                }} style={{ fontSize: "20px", color: "#394578", float: "right", marginRight: "10px", cursor: "pointer" }}
-                                                className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
+                                          {_add_data_addres().length >= 0 && _add_data_addres().length <= 1?
+                                       <i
+                                       onClick={() => {
+                                           alert("Address could not be removed as it is in use")
+                                       }} style={{ fontSize: "20px", color: "#394578", float: "right", marginRight: "10px", cursor: "pointer" }}
+                                       className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>   
+                                        :
+                                        <i
+                                        onClick={() => {
+                                            this.setState({ index_of_isActive: index })
+                                            this.handleOpen()
+                                        }} style={{ fontSize: "20px", color: "#394578", float: "right", marginRight: "10px", cursor: "pointer" }}
+                                        className={`${classes.normalfonts}`} class="fa fa-trash-o"></i> 
+                                        }
+                                            
                                         </h4>
                                         <Modal
                                             open={this.state.open}
