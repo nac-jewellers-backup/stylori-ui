@@ -55,7 +55,7 @@ class Cart extends React.Component {
                    
                             <Header wishlist={this.props.wishlistdata} />
                     {path === "checkout" ? "" :
-                        <CustomSeparator
+                        <CustomSeparator 
                             arrowicon='cart-head-arrows'
                             className={`breadcrums-header ${classes.normalcolorback}`}
                             classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
@@ -64,7 +64,7 @@ class Cart extends React.Component {
                             subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata}
                         />
                     }
-                    <div className="cart-ovralldiv-media">
+                    <div className="cart-ovralldiv-media" style={{marginTop:"3%"}}>
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>
                                 <CartCard data={data} />

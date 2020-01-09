@@ -95,10 +95,10 @@ export default function CustomSeparator(props) {
   }
   return (
     <div className={props.className}>
-      <Paper elevation={0} className={props.classsubhed} >
+      <Paper elevation={0} className={props.classsubhed} style={{position:"fixed",zIndex:"1000",top:"89px",width:"100%"}} >
         <Container>
-          {/* style={{height:'44px'}} */}
-          <Grid container>
+          <Grid container> 
+
             <Grid item lg={7}>
               <Breadcrumbs separator={seperators} >
                 {props.data.map(data => (

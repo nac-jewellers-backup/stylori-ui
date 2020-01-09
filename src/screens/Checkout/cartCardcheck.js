@@ -108,7 +108,7 @@ class Component extends React.Component {
                     subdata={this.props.data[0].cartsubdata}
                     changePanel={this.changePanel}
                 />
-                <div className='pt-sm checkout-ovralldiv-media' >
+                <div className='pt-sm checkout-ovralldiv-media marginTop' >
                     <div style={{ marginTop: "20px" }}>
                         <ExpansionPanel
                             square
