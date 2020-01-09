@@ -42,27 +42,27 @@ export const
     "collectionGrid": [
       {
         img:
-          "https://assets-cdn.stylori.com/images/homepage/Stylori-ring-tile.jpg",
-        navigateUrl: "https://www.stylori.com/rings-jewellery?sort=latest"
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/Stylori-ring-tile.png",
+        navigateUrl: "/rings-jewellery?sort=latest"
       },
       {
         img:
-          "https://assets-cdn.stylori.com/images/homepage/276X276 PIXELS MANGO COLLECTIONS TILE-01 (1).jpg",
-        navigateUrl: ""
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/mangocollection.png",
+        navigateUrl: "/jewellery-from+the+summer+collection?sort=latest"
       },
       {
         img:
-          "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTpZO7VW7iqYr7r5WurRxOq_sUh-BN5ziaOTQYFWz0BgHbyviMc5A6vsCoN3LH7vn-qu-LY1gxrFFQeLjDH6sinONcmQbYVyROgiCL3wjnHXcCniBLon9dM&usqp=CAc",
-        navigateUrl: ""
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/Hallo+Collection_Website-01.png",
+        navigateUrl: "/jewellery-from+halo+collection"
       },
       {
         img:
-          "https://assets-cdn.stylori.com/images/homepage/Stylori_ Daisy Days.jpg",
-        navigateUrl: ""
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/Stylori_+Daisy+Days.png",
+        navigateUrl: "/jewellery-from+daisy+days+collection?sort=latest&page=4"
       },
       {
-        img: "https://assets-cdn.stylori.com/images/homepage/blush 3.jpg",
-        navigateUrl: ""
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/blush+3.png",
+        navigateUrl: "/jewellery-blush"
       }
     ],
     //------------testimony container ----------------
