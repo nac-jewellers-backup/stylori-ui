@@ -75,7 +75,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         const { classes, data } = this.props;
-        debugger
+        
         const { productsDetails, fadeImages, dataCard1 } = this.props.data;
         // const { FilterOptionsCtx: { setcartcount } } = React.useContext(FilterOptionsContext);
         // React.useEffect(()=>{
@@ -83,7 +83,7 @@ class Checkoutcard extends React.Component {
         //         cartcount: this.props.data.length
         //     })
         // },[data])
-        debugger
+        
         return (
             <div style={{ marginTop: "10px" }}>
                 <Grid container>
@@ -93,7 +93,7 @@ class Checkoutcard extends React.Component {
                 </Grid><br />
                 {this.props.data.map(dataval => (
                     dataval.productsDetails.map(val => (
-                        <div style={{ outline: "none", marginBottom: "10px", boxShadow: "1px 2px 13px 7px #DEDADA" }} className={classes.cart}>
+                        <div style={{ outline: "none", marginBottom: "25px", boxShadow: "1px 2px 13px 7px #DEDADA",padding:"10px" }} className={classes.cart}>
                             <Grid container spacing={12} xs={12}  >
                                 {/* {window.location.pathname !== "/checkout" ?
                                     <Grid item xs={1}  >
