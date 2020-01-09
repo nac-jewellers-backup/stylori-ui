@@ -95,7 +95,7 @@ const LoginComponent = (props) => {
                                 <TextField
                                     margin="normal"
                                     variant="outlined"
-                                    type="text"
+                                    type="password"
                                     fullWidth
                                     name="email"
                                     value={values.oldpassword}
@@ -107,7 +107,7 @@ const LoginComponent = (props) => {
                                 <TextField
                                     margin="normal"
                                     variant="outlined"
-                                    type="text"
+                                    type="password"
                                     fullWidth
                                     name="email"
                                     value={values.newpassword}
@@ -119,7 +119,7 @@ const LoginComponent = (props) => {
                                 <TextField
                                     margin="normal"
                                     variant="outlined"
-                                    type="text"
+                                    type="password"
                                     fullWidth
                                     name="confirmPassword"
                                     value={values.confirmPassword}
