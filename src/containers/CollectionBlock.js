@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "components/Header/header";
+import Header from "components/SilverComponents/Header";
 // import Header from "components/SilverComponents/Header";
 import { Grid, Hidden, Typography } from "@material-ui/core";
 import Footer from "components/Footer/Footer";
@@ -21,7 +21,7 @@ class CollectionBlock extends React.Component {
     const { classes } = this.props;
     return (
       <Grid container>
-          <Header />
+        <Header />
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <CollectionItem />
         </Grid>

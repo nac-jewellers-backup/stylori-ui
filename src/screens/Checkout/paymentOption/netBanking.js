@@ -3,7 +3,8 @@ import { Container, Grid, Button } from '@material-ui/core';
 import './payment.css';
 import SimpleSelect from '../../../components/InputComponents/Select/Select';
 import { CartContext } from 'context'
-import cart from 'mappers/cart'
+import cart from 'mappers/cart';
+import PaymentHiddenForm from './paymentHiddenForm';
 class Netbanking extends React.Component {
     render() {
         let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
@@ -62,11 +63,18 @@ class Netbanking extends React.Component {
                     <Grid item lg={12} xs={12}>
                         <div className="amout-pay"> Amount Payable </div>
                         <div className="credit-btn-div">
-                            <span className="rups">
-                                {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(dataCard1 - discounted_price))}
-                            </span>&nbsp;
-                            <Button className="credit-button" type="submit"
-                            >Pay Now</Button>
+                            <Grid container>
+                                <Grid item>
+                                    <span className="rups">
+                                    {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(dataCard1 - discounted_price))}
+                                    </span> &nbsp;&nbsp;&nbsp;
+                                </Grid>
+                                <Grid item>
+                                    <PaymentHiddenForm />
+                                </Grid>
+                            {/* <Button className="credit-button" type="submit"
+                            >Pay Now</Button> */}
+                            </Grid>
                         </div>
 
                     </Grid>

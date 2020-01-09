@@ -35,19 +35,19 @@ const LoginComponent = (props) => {
     const { classes } = props;
     const handelSubmit = async () => {
         if (values.oldpassword === "") {
-            setValues({ ...values, oldpassworderror: true, oldpasswordText: "please enter some text!" })
+            setValues({ ...values, oldpassworderror: true, oldpasswordText: "Field can't be empty!" })
         }
         else if (values.newpassword === "") {
-            setValues({ ...values, newPasswordError: true, newPasswordHelperText: "please enter some text!" })
+            setValues({ ...values, newPasswordError: true, newPasswordHelperText: "Field can't be empty!" })
         }
         else if (values.confirmPassword === "") {
-            setValues({ ...values, confirmPasswordError: true, confirmPasswordHelper: "please enter some text!" })
+            setValues({ ...values, confirmPasswordError: true, confirmPasswordHelper: "Field can't be empty!" })
         }
         else if (values.newpassword.length < 8) {
-            setValues({ ...values, newPasswordError: true, newPasswordHelperText: "please enter minimum 8 character" })
+            setValues({ ...values, newPasswordError: true, newPasswordHelperText: "Password must be at least 8 characters!" })
         }
         else if (values.newpassword !== values.confirmPassword) {
-            setValues({ ...values, confirmPasswordError: true, confirmPasswordHelper: "Newpassword and confirm password or not same!" })
+            setValues({ ...values, confirmPasswordError: true, confirmPasswordHelper: "New password and Confirm password does not match!" })
         }
         else {
             var body = { "oldpassword": values.oldpassword, "newpassword": values.newpassword }
@@ -63,10 +63,11 @@ const LoginComponent = (props) => {
         if (data && Object.entries(data).length > 0 && data.constructor === Object) {
             try {
                 if (data.message === "Invalid Password!") {
-                    setValues({ ...values, newpassword: "", confirmPassword: "", oldpassword: "", oldpassworderror: true, oldpasswordText: "Old password is incorrect" })
+                    setValues({ ...values, newpassword: "", confirmPassword: "", oldpassword: "", oldpassworderror: true, oldpasswordText: data.message })
                 }
                 else {
-                    setValues({ ...values, newpassword: "", confirmPassword: "", oldpassword: "" })
+                    setValues({ ...values, newpassword: "", confirmPassword: "", oldpassword: "", confirmPasswordHelper: data.message })
+                    props.history.push('/account-profile')
                 }
             } catch (error) {
                 alert(JSON.stringify(error))
@@ -94,7 +95,7 @@ const LoginComponent = (props) => {
                                 <TextField
                                     margin="normal"
                                     variant="outlined"
-                                    type="text"
+                                    type="password"
                                     fullWidth
                                     name="email"
                                     value={values.oldpassword}
@@ -106,7 +107,7 @@ const LoginComponent = (props) => {
                                 <TextField
                                     margin="normal"
                                     variant="outlined"
-                                    type="text"
+                                    type="password"
                                     fullWidth
                                     name="email"
                                     value={values.newpassword}
@@ -118,7 +119,7 @@ const LoginComponent = (props) => {
                                 <TextField
                                     margin="normal"
                                     variant="outlined"
-                                    type="text"
+                                    type="password"
                                     fullWidth
                                     name="confirmPassword"
                                     value={values.confirmPassword}
@@ -129,7 +130,7 @@ const LoginComponent = (props) => {
                                 <label className='errtext'> {values.confirmPasswordHelper && values.confirmPasswordHelper}</label>
                                 <br></br>
                                 <div style={{ float: "right" }}>
-                                    <Button className='apply-b' type="submit">Apply</Button>
+                                    <Button className='apply-b' type="submit">Change</Button>
                                 </div>
 
                                 <Grid spacing={12} container>
@@ -138,17 +139,7 @@ const LoginComponent = (props) => {
                                         <Link className={classes.normalfonts} style={{
                                             cursor: "pointer", fontSize: "14px",
                                             marginRight: "50%"
-                                        }} to="/login">Click here to Login</Link>
-
-
-                                    </Grid>
-
-                                    <Grid item xs={6} lg={12} style={{ float: "left" }}>
-
-                                        <Link className={classes.normalfonts} style={{
-                                            cursor: "pointer", fontSize: "14px",
-                                            marginRight: "50%", textDecoration: 'none'
-                                        }} to="/registers">Register</Link>
+                                        }} to="/account-profile">Click here to My Acoount</Link>
                                     </Grid>
                                 </Grid>
                             </form>
