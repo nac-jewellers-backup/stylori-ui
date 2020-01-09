@@ -27,7 +27,7 @@ const LoginComponent = (props) => {
         confirmPasswordHelper: ""
 
     });
-    const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/resetpassword', {}, false, {})
+    const { loading, error, data, makeFetch } = useNetworkRequest('/resetpassword', {}, false, {})
 
     const { classes } = props;
     const handelSubmit = async () => {
@@ -46,12 +46,12 @@ const LoginComponent = (props) => {
         else {
             var body = { "password": values.newpassword }
             await makeFetch(body, params);
-            try {
-                alert(JSON.stringify(ntxdata))
-                setValues({ ...values, newpassword: "", confirmPassword: "" })
-            } catch (error) {
-                alert(error)
-            }
+            // try {
+            //     alert(JSON.stringify(data))
+            //     setValues({ ...values, newpassword: "", confirmPassword: "" })
+            // } catch (error) {
+            //     alert(error)
+            // }
         }
     }
 
@@ -60,12 +60,19 @@ const LoginComponent = (props) => {
     }
 
     React.useEffect(() => {
-        window.scrollTo(0, 0)
+        if (data && data.constructor !== Object) {
+            try {
+                alert(JSON.stringify(data))
+                setValues({ ...values, newpassword: "", confirmPassword: "" })
+            } catch (error) {
+                alert(error)
+            }
+        }
 
-    }, [])
+    }, [data])
     return (
         <Grid container>
-                <Header />
+            <Header />
             <Grid spacing={12} container style={{ padding: "3%" }}>
                 <Grid item xs={6} lg={6} xs={12}>
                     <div >

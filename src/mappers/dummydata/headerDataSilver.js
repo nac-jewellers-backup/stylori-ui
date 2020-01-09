@@ -10,7 +10,7 @@ export const mainlist = [
         url: "/stylorisilver",
     },
     {
-        name: "Gold Coins",
+        name: "GoldCoins",
         url: "/goldcoins",
     },
     {

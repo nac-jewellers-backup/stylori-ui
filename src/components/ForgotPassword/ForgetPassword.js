@@ -59,14 +59,9 @@ const LoginComponent = (props) => {
     const handleChange = (name, value) => {
         setValues({ ...values, [name]: value, error: false, errorText: "" })
     }
-
-    React.useEffect(() => {
-        window.scrollTo(0, 0)
-
-    }, [])
     return (
         <Grid container>
-                <Header />
+            <Header />
             <Grid spacing={12} container style={{ padding: "3%" }}>
                 <Grid item xs={6} lg={6} xs={12}>
                     <div >
