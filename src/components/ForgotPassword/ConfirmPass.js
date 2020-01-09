@@ -32,20 +32,21 @@ const LoginComponent = (props) => {
     const { classes } = props;
     const handelSubmit = async () => {
         if (values.newpassword === "") {
-            setValues({ ...values, newPasswordError: true, newPasswordHelperText: "please enter some text!" })
+            setValues({ ...values, newPasswordError: true, newPasswordHelperText: "Field can't be empty!" })
         }
         else if (values.confirmPassword === "") {
-            setValues({ ...values, confirmPasswordError: true, confirmPasswordHelper: "please enter some text!" })
+            setValues({ ...values, confirmPasswordError: true, confirmPasswordHelper: "Field can't be empty!" })
         }
         else if (values.newpassword.length < 8) {
-            setValues({ ...values, newPasswordError: true, newPasswordHelperText: "please enter minimum 8 character" })
+            setValues({ ...values, newPasswordError: true, newPasswordHelperText: "Password must be at least 8 characters!" })
         }
         else if (values.newpassword !== values.confirmPassword) {
-            setValues({ ...values, confirmPasswordError: true, confirmPasswordHelper: "Newpassword and confirm password or not same!" })
+            setValues({ ...values, confirmPasswordError: true, confirmPasswordHelper: "New password and Confirm password does not match!" })
         }
         else {
             var body = { "password": values.newpassword }
             await makeFetch(body, params);
+            // setValues({ ...values, newpassword: "", confirmPassword: "", confirmPasswordHelper: data.message })
         }
     }
 
@@ -56,7 +57,15 @@ const LoginComponent = (props) => {
     React.useEffect(() => {
         if (data && data.constructor !== Object) {
             try {
-                setValues({ ...values, newpassword: "", confirmPassword: "" })
+                setValues({ ...values, newpassword: "", confirmPassword: "", confirmPasswordHelper: data.message })
+                props.history.push('/login')
+            } catch (error) {
+                alert(error)
+            }
+        }
+        if (data && data.constructor === Object) {
+            try {
+                setValues({ ...values, newpassword: "", confirmPassword: "", confirmPasswordHelper: data.message })
                 props.history.push('/login')
             } catch (error) {
                 alert(error)
@@ -109,28 +118,10 @@ const LoginComponent = (props) => {
                                 <label className='errtext'> {values.confirmPasswordHelper && values.confirmPasswordHelper}</label>
                                 <br></br>
                                 <div style={{ float: "right" }}>
-                                    <Button className='apply-b' type="submit">Apply</Button>
+                                    <Button className='apply-b' type="submit">Reset</Button>
                                 </div>
 
-                                <Grid spacing={12} container>
-                                    <Grid item xs={6} lg={12} style={{ float: "left", marginBottom: "9px" }}>
 
-                                        <Link className={classes.normalfonts} style={{
-                                            cursor: "pointer", fontSize: "14px",
-                                            marginRight: "50%"
-                                        }} to="/login">Click here to Login</Link>
-
-
-                                    </Grid>
-
-                                    <Grid item xs={6} lg={12} style={{ float: "left" }}>
-
-                                        <Link className={classes.normalfonts} style={{
-                                            cursor: "pointer", fontSize: "14px",
-                                            marginRight: "50%", textDecoration: 'none'
-                                        }} to="/registers">Register</Link>
-                                    </Grid>
-                                </Grid>
                             </form>
                         </div>
                     </Container>  </Grid>

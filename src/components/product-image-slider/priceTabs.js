@@ -301,7 +301,7 @@ class Component extends React.Component {
                                                 }
                                                 return (
                                                     <Grid item lg={1} xs={2} className={classes.normalfonts_tabs}>
-                                                        <button
+                                                        <button 
                                                             style={{ background: this.imageRender(val) }}
                                                             className={this.state.purity === val ? 'darktabs tabs-valus' : 'pagetabs tabs-valus'}
                                                             id={val} color={arrColor}

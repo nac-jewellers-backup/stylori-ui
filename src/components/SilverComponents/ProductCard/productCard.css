@@ -145,6 +145,10 @@
   .one-day-ship-listing-page {
     left: 60px;
   }
+
+  .wishListStyle {
+    right: 30px
+  }
 }
 
 @media only screen and (max-width:2560px) and (min-width:2501px) {
