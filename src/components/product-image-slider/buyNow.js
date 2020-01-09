@@ -20,6 +20,7 @@ import { CheckForCod } from 'queries/productdetail';
 import { CartContext } from 'context'
 import { withRouter } from "react-router";
 import CommenDialog from '../Common/Dialogmodel'
+import Buynowfixed from 'components/SilverComponents/ProductDetail/buynowfixed';
 
 
 
@@ -172,9 +173,10 @@ class Component extends React.Component {
         this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
         // metalColor purity
         window.location.pathname = "/cart"
-    } 
+    }
 
     handleLocalStorage = () => {
+        debugger
         if (this.props.data && this.props.data[0].productType === "Rings") {
             this.setState({
                 modelOpen: true,
@@ -236,7 +238,7 @@ class Component extends React.Component {
     render() {
         let { showimage } = this.state;
         const { classes, data } = this.props;
-        
+
         return (
             <div>
                 <Hidden smDown>
@@ -249,6 +251,7 @@ class Component extends React.Component {
 
                         <PriceTabs data={this.props.data} />
                         {inputsearch(this.props, this.state, this.handleChanges, this.handleCodChange)}
+                        <Buynowfixed data={this.props.data} onClick={this.handleLocalStorage.bind(this)}/>
                     </div>
 
                 </Hidden>
