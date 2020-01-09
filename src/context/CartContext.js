@@ -75,7 +75,11 @@ const Provider = (props) => {
         if (reload && reload.length > 0) {
             window.location.reload();
         }
-        if (jewellery && jewellery==="jewellery") {
+        if (jewellery && jewellery === "jewellery") {
+            localStorage.removeItem("cartDetails")
+            localStorage.removeItem("panel")
+            localStorage.removeItem("ship_isactive")
+            localStorage.removeItem("bil_isactive")
             window.location.pathname = "/jewellery"
         }
         // localStorage.setItem('cart_id', JSON.stringify(crtdata))
