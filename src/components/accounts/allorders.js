@@ -79,7 +79,7 @@ class Allorders extends React.Component {
         //     if (allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0) {
         //         allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map(val => {
         //             if (order_id === val.id) {
-        //                 alert(JSON.stringify(val)) 
+        //                 alert(JSON.stringify(val))
         //                 return val 
         //             }
         //         })
@@ -92,7 +92,6 @@ class Allorders extends React.Component {
                     <div className='pt-sm checkout-ovralldiv-media' >
                         {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0 ?
                             <div style={{ marginTop: "20px", boxShadow: "none" }}>
-
                                 {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
                                 {allDatas().map((val, index) => (
                                     <ExpansionPanel
