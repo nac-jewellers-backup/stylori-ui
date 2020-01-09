@@ -220,7 +220,7 @@ class Component extends React.Component {
                                                     <img onClick={() => previous()} className={"icon-leftcaro"} />
 
                                                 </Grid>
-                                                <Grid item style={{ width: "89%", textAlign: "center" }}>
+                                                <Grid item class="widthFix" style={{ textAlign: "center" }}>
                                                     <Hidden smDown>
                                                         <Slideshow dataCarousel={settings}
                                                             sliderRef={slider}>

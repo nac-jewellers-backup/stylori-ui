@@ -4,8 +4,9 @@ import Typography from '@material-ui/core/Typography';
 import './payment.css';
 import Divider from '@material-ui/core/Divider';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-import CartCard from "components/Checkout/CartCard";
 import { CartContext } from 'context'
+import cart from 'mappers/cart'
+import Allorders from "components/accounts/allorders";
 
 class PaymentResponseSuccess extends React.Component{
 render(){ 
@@ -21,7 +22,7 @@ return (
             <Grid container justify="center">
                <Grid item xs={12} sm={12} md={4} className="contant-center" style={{ justifyContent: "center"}}>We've send you an email confirmation.Resend Email</Grid>
             </Grid>
-            <Grid container style={{marginTop:"15px"}}>
+            {/* <Grid container style={{marginTop:"15px"}}>
                <Grid container justify="center">
                   <Grid item xs={12} sm={12} md={6} className="paymentsuccess-content">
                         <Grid container>
@@ -49,26 +50,34 @@ return (
                            <Grid item xs={6} sm={6} md={4}> <Typography component="h4">:3/23,north street,chennai</Typography></Grid>
                         </Grid>
                   </Grid>
-               </Grid>
+               </Grid> */}
                <Grid container justify="center">
                   <Grid item className="grand-item">
                      <Typography component="h4">Grand Total:20000</Typography>
                      
                   </Grid>
                </Grid>
-            </Grid>
             <Grid container> 
                {/* <CartCard data={this.props.data}/> */}
+               <Allorders allorderdata={this.props.allorderdata}/>
             </Grid>
          </Grid>
       )
 }}
-// export default PaymentResponseSuccess 
-const Components = props => {
-   let { CartCtx: { data, loading, error} } = React.useContext(CartContext);
-   let content;
-   content=  <PaymentResponseSuccess {...props} data={data} />
-   return content
 
-} 
-export default Components;
+// export default PaymentResponseSuccess;
+const Components = props => {
+   let { CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
+   let content, mapped;
+   if (!loading && !error) {
+       if (Object.keys(data).length !== 0) {
+           mapped = cart(data);
+       }
+   }
+   if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
+   else content = <PaymentResponseSuccess {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
+   // localStorage.setItem("a__w_l", wishlistdata && wishlistdata.length)
+   return content
+}
+
+export default (Components);

@@ -176,7 +176,6 @@ class ProductDetail extends Component {
             <Grid item>
               <Footer />
             </Grid>
-            <Buynowfixed data={this.props.data} />
         </Hidden>
 
       </div>
