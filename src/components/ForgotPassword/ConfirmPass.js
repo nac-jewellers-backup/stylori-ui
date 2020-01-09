@@ -46,12 +46,6 @@ const LoginComponent = (props) => {
         else {
             var body = { "password": values.newpassword }
             await makeFetch(body, params);
-            // try {
-            //     alert(JSON.stringify(data))
-            //     setValues({ ...values, newpassword: "", confirmPassword: "" })
-            // } catch (error) {
-            //     alert(error)
-            // }
         }
     }
 
@@ -62,8 +56,8 @@ const LoginComponent = (props) => {
     React.useEffect(() => {
         if (data && data.constructor !== Object) {
             try {
-                alert(JSON.stringify(data))
                 setValues({ ...values, newpassword: "", confirmPassword: "" })
+                props.history.push('/login')
             } catch (error) {
                 alert(error)
             }
