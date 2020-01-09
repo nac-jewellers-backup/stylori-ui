@@ -37,13 +37,13 @@ class CashonDelivey extends React.Component {
         })
             .then(resdata => {
                 console.log('datasssss', resdata)
+               
+                if (resdata !== null && resdata !== undefined) {
+                    localStorage.setItem("order_id", JSON.stringify(resdata.order.id))
+                }
                 alert(
                     'Order Placed Successfully'
-                )
-                if (resdata !== null && resdata !== undefined) {
-                    localStorage.setItem("order_id", resdata.order.id)
-                }
-            })
+                )  })
             .catch(err => {
                 // console.log(err)
             });

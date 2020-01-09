@@ -15,7 +15,7 @@ import '../Checkout/Cart.css'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import moment from "moment";
 import Pricing from "../Pricing/index";
-const order_id = localStorage.getItem('order_id') ? localStorage.getItem('order_id') : ""
+const order_id = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : ""
 
 function myFunc(total, num) {
     return Math.round(total + num);
@@ -26,7 +26,6 @@ class Allorders extends React.Component {
     }
 
     handleChange = panel => (event) => {
-
         const { expanded } = this.state;
         var valus = expanded === panel ? "" : panel
         expanded.push(JSON.stringify(valus))
@@ -215,7 +214,7 @@ class Allorders extends React.Component {
 
 
                                                             <Grid style={{ padding: "10px", justifyContent: "center", display: "flex", alignItems: "center" }} className="rups" item lg={3} sm={2}>
-                                                                {cart.price > cart.transSkuListByProductSku.markupPrice ?
+                                                                {Math.round(cart.price) > Math.round(cart.transSkuListByProductSku.markupPrice) ?
                                                                     <Pricing
                                                                         price={cart.transSkuListByProductSku.markupPrice}
                                                                         offerPrice={cart.transSkuListByProductSku.discountPrice}
@@ -234,7 +233,7 @@ class Allorders extends React.Component {
                                                     Shipping Insurance&nbsp;FREE<br />
                                                     <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}</span></div>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             {/* {val.paymentStatus} */}
                                             {/* {JSON.stringify(this.props.allorderdata)} */}
                                             {/* changePanel */}
@@ -362,7 +361,7 @@ class Allorders extends React.Component {
 
 
                                                                 <Grid style={{ padding: "10px", justifyContent: "center", display: "flex", alignItems: "center" }} className="rups" item lg={3} sm={2}>
-                                                                    {cart.price > cart.transSkuListByProductSku.markupPrice ?
+                                                                    {Math.round(cart.price) > Math.round(cart.transSkuListByProductSku.markupPrice) ?
                                                                         <Pricing
                                                                             price={cart.transSkuListByProductSku.markupPrice}
                                                                             offerPrice={cart.transSkuListByProductSku.discountPrice}
@@ -380,7 +379,7 @@ class Allorders extends React.Component {
                                                         Shipping&nbsp;FREE<br />
                                                         Shipping Insurance&nbsp;FREE<br />
                                                         <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}
-                                                </span></div> 
+                                                        </span></div>
                                                     </div>
                                                 </div>
 

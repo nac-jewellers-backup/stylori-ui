@@ -5,22 +5,23 @@ import './payment.css';
 import Divider from '@material-ui/core/Divider';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import { CartContext } from 'context'
+import { withRouter } from 'react-router-dom';
 import cart from 'mappers/cart'
 import Allorders from "components/accounts/allorders";
 
-class PaymentResponseSuccess extends React.Component{
-render(){ 
-   // alert(JSON.stringify(this.props.data))
-return (
+class PaymentResponseSuccess extends React.Component {
+   render() {
+      // alert(JSON.stringify(this.props.data))
+      return (
          <Grid container justify="center">
             <Grid container justify="center">
                <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>
                <Grid item xs={10} sm={10} md={4} className="contant-center" >
-                  <Grid item className="container-font-size">Thank you,your order has been placed.</Grid>
+                  <Grid item className="container-font-size">Thank you!Your order has been placed.</Grid>
                </Grid>
             </Grid>
             <Grid container justify="center">
-               <Grid item xs={12} sm={12} md={4} className="contant-center" style={{ justifyContent: "center"}}>We've send you an email confirmation.Resend Email</Grid>
+               <Grid item xs={12} sm={12} md={4} className="contant-center" style={{ justifyContent: "center" }}>We've send you an email confirmation.Resend Email</Grid>
             </Grid>
             {/* <Grid container style={{marginTop:"15px"}}>
                <Grid container justify="center">
@@ -51,28 +52,35 @@ return (
                         </Grid>
                   </Grid>
                </Grid> */}
-               {/* <Grid container justify="center">
-                  <Grid item className="grand-item">
-                     <Typography component="h4">Grand Total:20000</Typography>
-                     
-                  </Grid>
-               </Grid> */}
-            <Grid container> 
+            <Grid container justify="center">
+               <Grid item className="grand-item">
+                  {/* <Typography component="h4">Grand Total:20000</Typography> */}
+                  <Button onClick={() => {
+                     localStorage.removeItem("panel")
+                     localStorage.removeItem("cartDetails")
+                     localStorage.removeItem("ship_isactive")
+                     localStorage.removeItem("bil_isactive")
+                     this.props.history.push("/jewellery")
+                  }}>Home</Button>
+               </Grid>
+            </Grid>
+            <Grid container>
                {/* <CartCard data={this.props.data}/> */}
-               <Allorders allorderdata={this.props.allorderdata}/>
+               <Allorders allorderdata={this.props.allorderdata} />
             </Grid>
          </Grid>
       )
-}}
+   }
+}
 
 // export default PaymentResponseSuccess;
 const Components = props => {
    let { CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
    let content, mapped;
    if (!loading && !error) {
-       if (Object.keys(data).length !== 0) {
-           mapped = cart(data);
-       }
+      if (Object.keys(data).length !== 0) {
+         mapped = cart(data);
+      }
    }
    if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
    else content = <PaymentResponseSuccess {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
@@ -80,4 +88,4 @@ const Components = props => {
    return content
 }
 
-export default (Components); 
+export default withRouter(Components);
