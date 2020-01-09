@@ -25,17 +25,29 @@ export const
       },
       "data": [
         {
-          img: FlowerDimon,
-          navigateUrl: "https://www.stylori.com/rings-jewellery?sort=latest"
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/banner1.jpg",
+          navigateUrl: "/gemstone-jewellery?sort=latest"
         },
         {
-          img: closeheart,
-          navigateUrl: "https://www.stylori.com/rings-jewellery?sort=latest"
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/banner2.png",
+          navigateUrl: "/jewellery-shipping+in+1+day?sort=featured"
         },
         {
-          img: nosepin,
-          navigateUrl: "https://www.stylori.com/rings-jewellery?sort=latest"
-        }
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/banner3.jpg",
+          navigateUrl: "/rings-jewellery"
+        },
+        {
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/banner4.jpg",
+          navigateUrl: "/floral-jewellery?sort=latest"
+        },
+        {
+          img: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/banner5.jpg",
+          navigateUrl: "/jewellery-from+halo+collection"
+        },
+        {
+          img: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/banner6.gif",
+          navigateUrl: "/nose+pin+online-jewellery?sort=latest"
+        },
       ]
     },
     //-------------Grid 5 images ---------- 
@@ -89,7 +101,7 @@ export const
             imageTitle: "1 Gm Lakshmi Gold Coin - 24 K",
             img:
               "https://assets-cdn.stylori.com/200x200/images/product/SGC020/SGC020-1Y.jpg",
-            navigateUrl: "https://www.stylori.com/pendants-jewellery?sort=latest",
+            navigateUrl: "/goldcoins",
             content:
               "Wowwww it's a great experience with stylori. Specially thanks to Bushra from customer service who help me to find a best product with detail explanation on each and every point of product. ",
             name: "Rajesh Tiwari",
@@ -100,7 +112,7 @@ export const
             imageTitle: "1 Gm Lakshmi Gold Coin - 24 K",
             img:
               "https://assets-cdn.stylori.com/200x200/images/product/SGC020/SGC020-1Y.jpg",
-            navigateUrl: "https://www.stylori.com/pendants-jewellery?sort=latest",
+            navigateUrl: "/goldcoins",
             content:
               "Wowwww it's a great experience with stylori. Specially thanks to Bushra from customer service who help me to find a best product with detail explanation on each and every point of product. ",
             name: "Rajesh Tiwari",
@@ -111,7 +123,7 @@ export const
             imageTitle: "1 Gm Lakshmi Gold Coin - 24 K",
             img:
               "https://assets-cdn.stylori.com/200x200/images/product/SGC020/SGC020-1Y.jpg",
-            navigateUrl: "https://www.stylori.com/pendants-jewellery?sort=latest",
+            navigateUrl: "/goldcoins",
             content:
               "Wowwww it's a great experience with stylori. Specially thanks to Bushra from customer service who help me to find a best product with detail explanation on each and every point of product. ",
             name: "Rajesh Tiwari",
@@ -122,7 +134,7 @@ export const
             imageTitle: "1 Gm Lakshmi Gold Coin - 24 K",
             img:
               "https://assets-cdn.stylori.com/200x200/images/product/SGC020/SGC020-1Y.jpg",
-            navigateUrl: "https://www.stylori.com/pendants-jewellery?sort=latest",
+            navigateUrl: "/goldcoins",
             content:
               "Wowwww it's a great experience with stylori. Specially thanks to Bushra from customer service who help me to find a best product with detail explanation on each and every point of product. ",
             name: "Rajesh Tiwari",
@@ -132,7 +144,7 @@ export const
             imageTitle: "1 Gm Lakshmi Gold Coin - 24 K",
             img:
               "https://assets-cdn.stylori.com/200x200/images/product/SGC020/SGC020-1Y.jpg",
-            navigateUrl: "https://www.stylori.com/pendants-jewellery?sort=latest",
+            navigateUrl: "/goldcoins",
             content:
               "Wowwww it's a great experience with stylori. Specially thanks to Bushra from customer service who help me to find a best product with detail explanation on each and every point of product. ",
             name: "Rajesh Tiwari",
@@ -144,25 +156,25 @@ export const
       //------testimony images section --------------
       "bangleGrid": [
         {
-          img: "https://assets-cdn.stylori.com/images/homepage/PendantVertical.png",
-          navigateUrl: "https://www.stylori.com/pendants-jewellery?sort=latest"
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/PendantVertical.png",
+          navigateUrl: "/pendants-jewellery?sort=latest"
         },
         {
-          img: "https://assets-cdn.stylori.com/images/homepage/BangleSquare.png",
-          navigateUrl: ""
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/BangleSquare.png",
+          navigateUrl: "/bangles-jewellery?sort=latest"
         },
         {
           img:
-            "https://assets-cdn.stylori.com/images/homepage/EarringRectangle.png",
-          navigateUrl: ""
+            "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/EarringRectangle.png",
+          navigateUrl: "/earrings-jewellery?sort=latest"
         },
         {
-          img: "https://assets-cdn.stylori.com/images/homepage/RingRectangle.png",
-          navigateUrl: ""
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/RingRectangle.png",
+          navigateUrl: "/rings-jewellery?sort=latest"
         },
         {
-          img: "https://assets-cdn.stylori.com/images/homepage/nosepinSquare.png",
-          navigateUrl: ""
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/nosepinSquare.png",
+          navigateUrl: "/nose+pin+online-jewellery?sort=featured"
         }
       ]
     },
