@@ -91,7 +91,7 @@ class Allorders extends React.Component {
                 {window.location.pathname.split("-")[0] === "/account" ?
                     <div className='pt-sm checkout-ovralldiv-media' >
                         {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0 ?
-                            <div style={{ marginTop: "20px", boxShadow: "none" }}>
+                            <div style={{ marginTop: "20px", boxShadow: "none" }}> 
                                 {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
                                 {allDatas().map((val, index) => (
                                     <ExpansionPanel
