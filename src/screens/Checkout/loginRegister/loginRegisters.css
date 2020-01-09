@@ -107,3 +107,9 @@
     font-size: 26px !important;
     margin: 0 7px 0 0px;
 }
+
+@media screen and (max-width: 429px) {
+    .leftPad{
+        padding-left: 4px;
+    }
+}

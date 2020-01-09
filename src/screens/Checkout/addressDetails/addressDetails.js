@@ -132,13 +132,13 @@ class Addressdetails extends React.Component {
                                         <Modal
                                             open={this.state.open}
                                         >
-                                            <div className="modal_addrs_dlt">
-                                                <Grid container lg={12} spacing={12} className="dlt_div">
+                                            <div className="modal_addrs_dlt" style={{marginLeft:"auto",marginRight:"auto"}}>
+                                                <Grid container xs={12} lg={9} sm={9} spacing={12} style={{marginLeft:"auto",marginRight:"auto"}}>
                                                     <div className="dlt_content">
                                                         Are you sure you want to delete this Address?
                                                                 </div>
-                                                    <Grid item lg={6}><Button className="addres_dlt_cancel" onClick={this.handleClose}>Cancel</Button></Grid>
-                                                    <Grid item lg={6}><Button className="addres_dlt_ok" onClick={() => delete_all_addresses(val_addrs1, index)}>Confirm delete</Button></Grid>
+                                                    <Grid item xs={6} lg={6} sm={6} style={{display:"flex",justifyContent:"flex-end",paddingRight:"8px"}}><Button className="addres_dlt_cancel" onClick={this.handleClose}>Cancel</Button></Grid>
+                                                    <Grid item xs={6} lg={6} sm={6} style={{display:"flex",justifyContent:"end"}}><Button className="addres_dlt_ok" onClick={() => delete_all_addresses(val_addrs1, index)}>Confirm delete</Button></Grid>
                                                 </Grid>
                                             </div>
                                         </Modal>
@@ -204,13 +204,13 @@ class Addressdetails extends React.Component {
                                                 <Modal
                                                     open={this.state.open}
                                                 >
-                                                    <div className="modal_addrs_dlt">
-                                                        <Grid container lg={12} spacing={12} className="dlt_div">
+                                                    <div className="modal_addrs_dlt" style={{marginLeft:"auto",marginRight:"auto"}}>
+                                                        <Grid container xs={12} lg={9} sm={9} spacing={12} style={{marginLeft:"auto",marginRight:"auto"}} >
                                                             <div className="dlt_content">
                                                                 Are you sure you want to delete this Address?
                                                                 </div>
-                                                            <Grid item lg={6}><Button className="addres_dlt_cancel" onClick={this.handleClose}>Cancel</Button></Grid>
-                                                            <Grid item lg={6}><Button className="addres_dlt_ok" onClick={() => delete_all_addresses(val_addrs1, index)}>Confirm delete</Button></Grid>
+                                                            <Grid item xs={6} lg={6} sm={6} style={{display:"flex",justifyContent:"flex-end",paddingRight:"8px"}}><Button className="addres_dlt_cancel" onClick={this.handleClose}>Cancel</Button></Grid>
+                                                            <Grid item xs={6} lg={6} sm={6} style={{display:"flex",justifyContent:"end"}}><Button className="addres_dlt_ok" onClick={() => delete_all_addresses(val_addrs1, index)}>Confirm delete</Button></Grid>
                                                             {/* {JSON.parse(localStorage.getItem("bil_isactive")) === index && "Sorry u con't delete this address"} */}
                                                         </Grid>
                                                     </div>
@@ -296,13 +296,13 @@ class Addressdetails extends React.Component {
                                                         <Modal
                                                             open={this.state.open}
                                                         >
-                                                            <div className="modal_addrs_dlt">
-                                                                <Grid container lg={12} spacing={12} className="dlt_div">
+                                                            <div className="modal_addrs_dlt" style={{marginLeft:"auto",marginRight:"auto"}}>
+                                                                <Grid container xs={12} lg={9} sm={9} spacing={12} style={{marginLeft:"auto",marginRight:"auto"}}>
                                                                     <div className="dlt_content">
                                                                         Are you sure you want to delete this Address?
                                                             </div>
-                                                                    <Grid item lg={6}><Button className="addres_dlt_cancel" onClick={this.handleClose}>Cancel</Button></Grid>
-                                                                    <Grid item lg={6}><Button className="addres_dlt_ok" onClick={() => delete_all_addresses(val_addrs2, index)}>Confirm delete</Button></Grid>
+                                                                    <Grid item xs={6} lg={6} sm={6} style={{display:"flex",justifyContent:"flex-end",paddingRight:"8px"}}><Button className="addres_dlt_cancel" onClick={this.handleClose}>Cancel</Button></Grid>
+                                                                    <Grid item xs={6} lg={6} sm={6} style={{display:"flex",justifyContent:"end"}}><Button className="addres_dlt_ok" onClick={() => delete_all_addresses(val_addrs2, index)}>Confirm delete</Button></Grid>
                                                                 </Grid>
                                                             </div>
                                                         </Modal>
