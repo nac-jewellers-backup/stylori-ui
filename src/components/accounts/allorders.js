@@ -79,7 +79,7 @@ class Allorders extends React.Component {
         //     if (allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0) {
         //         allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map(val => {
         //             if (order_id === val.id) {
-        //                 alert(JSON.stringify(val))
+        //                 alert(JSON.stringify(val)) 
         //                 return val 
         //             }
         //         })
