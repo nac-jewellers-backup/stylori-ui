@@ -220,7 +220,7 @@ class Component extends React.Component {
                                                     <img onClick={() => previous()} className={"icon-leftcaro"} />
 
                                                 </Grid>
-                                                <Grid item style={{ width: "89%", textAlign: "center" }}>
+                                                <Grid item class="widthFix" style={{ textAlign: "center" }}>
                                                     <Hidden smDown>
                                                         <Slideshow dataCarousel={settings}
                                                             sliderRef={slider}>
@@ -301,7 +301,7 @@ class Component extends React.Component {
                                                 }
                                                 return (
                                                     <Grid item lg={1} xs={2} className={classes.normalfonts_tabs}>
-                                                        <button
+                                                        <button 
                                                             style={{ background: this.imageRender(val) }}
                                                             className={this.state.purity === val ? 'darktabs tabs-valus' : 'pagetabs tabs-valus'}
                                                             id={val} color={arrColor}

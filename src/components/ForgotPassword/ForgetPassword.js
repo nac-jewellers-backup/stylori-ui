@@ -89,11 +89,11 @@ const LoginComponent = (props) => {
                                 <label className='errtext'> {values.errorText && values.errorText}</label>
                                 <br></br>
                                 <div style={{ float: "right" }}>
-                                    <Button className='apply-b' type="submit">Apply</Button>
+                                    <Button className='apply-b' type="submit">send</Button>
                                 </div>
 
                                 <Grid spacing={12} container>
-                                    <Grid item xs={6} lg={12} style={{ float: "left", marginBottom: "9px" }}>
+                                    <Grid item xs={12} lg={12} style={{ float: "left", marginBottom: "9px" }}>
 
                                         <Link className={classes.normalfonts} style={{
                                             cursor: "pointer", fontSize: "14px",
@@ -101,14 +101,6 @@ const LoginComponent = (props) => {
                                         }} to="/login">Click here to Login</Link>
 
 
-                                    </Grid>
-
-                                    <Grid item xs={6} lg={12} style={{ float: "left" }}>
-
-                                        <Link className={classes.normalfonts} style={{
-                                            cursor: "pointer", fontSize: "14px",
-                                            marginRight: "50%", textDecoration: 'none'
-                                        }} to="/registers">Register</Link>
                                     </Grid>
                                 </Grid>
                             </form>
