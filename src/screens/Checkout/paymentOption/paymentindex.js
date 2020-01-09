@@ -53,12 +53,12 @@ class PaymentIndex extends React.Component {
         //             va["true"] = true
         //         } else {
         //             va["true"] = false
-        //         }
+        //         } 
         //     } 
-        //     return va 
+        //     return va  
         // } 
         return (
-            <div className="payment-div">
+            <div className="payment-div"> 
                 <Hidden smDown>
                     <Grid container spacing={12} lg={12} className="panel-body">
                         <Grid item lg={5}>
