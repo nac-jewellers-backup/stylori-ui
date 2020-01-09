@@ -15,7 +15,8 @@ import { filterParams } from 'mappers';
 const initialCtx = {
     FilterOptionsCtx: {
         filters: {
-            Offers: null, Availability: null, ProductType: null, style: null, Material: null, Theme: null, Collection: null, MetalColor: null,
+            
+            Offers: null, Availability: {}, ProductType: null, style: null, Material: null, Theme: null, Collection: null, MetalColor: null,
             MetalPurity: null, Occasion: null, NoOfStones: null, Gender: null, stoneColor: null, stoneShape: null, category:null
         },
         sort: '',
@@ -38,7 +39,6 @@ export const FilterOptionsContext = React.createContext(initialCtx);
 export const FilterOptionsConsumer = FilterOptionsContext.Consumer;
 
 const Provider = (props) => {
-
     const [filters, setFilters] = React.useState({
         Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, MetalColor: {},
         MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}, category:{}

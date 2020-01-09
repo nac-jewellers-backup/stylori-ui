@@ -61,7 +61,7 @@ class Component extends React.Component {
         this.props.setGlobalCtx({ tabsChange: true })
         console.log('lklkkoik9', this.props)
         var filters = { ...this.props.filters }
-        debugger
+        
         if (key === 'purity') {
             var kv = event.target.id
             var objVal = kv.split(" ")
@@ -199,7 +199,7 @@ class Component extends React.Component {
             slider.current.slickPrev();
         }
         // data[0].productTabs[0].tab2.Children
-        debugger
+        
         return (
             <div>
                 {data[0].productTabs.map(val => {
