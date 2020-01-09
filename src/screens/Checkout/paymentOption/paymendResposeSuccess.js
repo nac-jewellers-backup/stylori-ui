@@ -51,12 +51,12 @@ return (
                         </Grid>
                   </Grid>
                </Grid> */}
-               <Grid container justify="center">
+               {/* <Grid container justify="center">
                   <Grid item className="grand-item">
                      <Typography component="h4">Grand Total:20000</Typography>
                      
                   </Grid>
-               </Grid>
+               </Grid> */}
             <Grid container> 
                {/* <CartCard data={this.props.data}/> */}
                <Allorders allorderdata={this.props.allorderdata}/>
@@ -80,4 +80,4 @@ const Components = props => {
    return content
 }
 
-export default (Components);
+export default (Components); 
