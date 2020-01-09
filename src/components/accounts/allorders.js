@@ -74,7 +74,7 @@ class Allorders extends React.Component {
             if (allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0) {
                 return allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes
             }
-        }
+        } 
         // const allDatas_filter = () => {
         //     if (allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0) {
         //         allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map(val => {
