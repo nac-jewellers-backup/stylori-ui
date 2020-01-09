@@ -33,7 +33,7 @@ const useRating = (props) => {
     // const { setratingcounts } = React.useContext(ProductDetailContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CUSTOMERREVIEWS, () => { }, {});
     const clear = () => {
-        debugger
+        
         props && props.clear_rating_onchange && props.clear_rating_onchange()
         setValues({
             user_id: "",

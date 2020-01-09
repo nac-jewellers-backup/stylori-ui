@@ -55,7 +55,7 @@ class Cart extends React.Component {
                    
                             <Header wishlist={this.props.wishlistdata} />
                     {path === "checkout" ? "" :
-                        <CustomSeparator
+                        <CustomSeparator 
                             arrowicon='cart-head-arrows'
                             className={`breadcrums-header ${classes.normalcolorback}`}
                             classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
@@ -64,7 +64,7 @@ class Cart extends React.Component {
                             subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata}
                         />
                     }
-                    <div className="cart-ovralldiv-media">
+                    <div className="cart-ovralldiv-media" style={{marginTop:"3%"}}>
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>
                                 <CartCard data={data} />
@@ -114,7 +114,7 @@ const Components = props => {
     }
     if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
     else content = <Cart {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
-    if (mapped !== undefined || mapped !== null) {
+    if (mapped !== undefined && mapped !== null) {
         localStorage.setItem("a__c_t", mapped && mapped.length)
     }
     return content

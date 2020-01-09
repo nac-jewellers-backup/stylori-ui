@@ -84,7 +84,7 @@
     position: relative;
     margin-top: 10px;
     margin-bottom: 10px;
-    box-shadow: none !important;
+    box-shadow: rgb(222, 218, 218) 1px 2px 6px 0px !important;
     border-radius: 0 !important;
     width: 90%;
 }
@@ -107,3 +107,9 @@
     font-size: 26px !important;
     margin: 0 7px 0 0px;
 }
+
+@media screen and (max-width: 429px) {
+    .leftPad{
+        padding-left: 4px;
+    }
+} 

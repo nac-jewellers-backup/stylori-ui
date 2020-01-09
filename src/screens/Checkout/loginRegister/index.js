@@ -71,7 +71,7 @@ class LoginRegisterIndex extends React.Component {
                                 </Grid>
                             </>
                         </div>
-                        <div style={{ display: this.state.Login == true ? "block" : "none" }}>
+                        <div style={{display: this.state.Login == true ? "block" : "none" }}>
                             <Login changePanel={this.props.changePanel} change={() => {
                                 this.setState({
                                     show: true,

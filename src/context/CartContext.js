@@ -69,15 +69,20 @@ const Provider = (props) => {
     }, [])
     useEffect(() => {
         // alert("cart")
-        if (JSON.stringify(crtdata).length > 10) {
+        if (jewellery && jewellery === "jewellery") {
+            localStorage.removeItem("panel")
+            localStorage.removeItem("cartDetails")
+            localStorage.removeItem("ship_isactive")
+            localStorage.removeItem("bil_isactive")
+            window.location.pathname = "/jewellery"
+        }
+        if (JSON.stringify(crtdata).length > 10&&jewellery === "jewellery") {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))
         }
         if (reload && reload.length > 0) {
             window.location.reload();
         }
-        if (jewellery && jewellery==="jewellery") {
-            window.location.pathname = "/jewellery"
-        }
+        
         // localStorage.setItem('cart_id', JSON.stringify(crtdata))
     }, [crtdata])
     useEffect(() => {

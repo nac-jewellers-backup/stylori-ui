@@ -40,12 +40,13 @@ class Component extends React.Component {
       openMobile: true,
       CardRadio: false,
       checked: {
+        
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
-        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {}, category: {}
+        NoOfStones: {}, Gender: {}, StoneColor: {}, StoneShape: {}, category: {}
       },
       checkedArrayObj: {
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
-        NoOfStone: {}, Gender: {}, StoneColor: {}, StoneShape: {}, category: {}
+        NoOfStones: {}, Gender: {}, StoneColor: {}, StoneShape: {}, category: {}
       },
       selected: [],
       filtercheck: '',
@@ -246,6 +247,7 @@ class Component extends React.Component {
     let checked = { ...this.state.checked }
     var queries = [{}]
     let pathnameSplit = window.location.pathname.split('/')
+    
     if (Object.entries(this.state.category).length === 0 && this.state.category.constructor === Object) {
       const splitHiphen = () => {
         if (pathnameSplit[1].indexOf('-')) {
@@ -729,7 +731,7 @@ class Component extends React.Component {
                                   value="checked"
                                   color="primary"
                                   className={`${classes.sublistMobile}`}
-                                  checked={this.state.checked && this.state.filtercheck[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row.value] !== undefined ? this.state.checked[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row.value] : false}
+                                  checked={this.state.checked && this.state.filtercheck && this.state.filtercheck[this.state.filtercheck] && this.state.filtercheck[this.state.filtercheck.replace(/\s/g, "")][row.value] ? this.state.checked[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row.value] : false}
 
                                   onChange={(e) => this.handleChange(row.value, this.state.checked[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row.value] !== undefined ? !this.state.checked[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row.value] : true, e)}
                                   // onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
@@ -742,7 +744,8 @@ class Component extends React.Component {
                                   <Typography variant=""
                                     className={`filter-mbl-font fnts ${classes.colorMainSecondary}`}>
                                     <div
-                                      onClick={this.handleDrawerCloseMobile}
+                                      // onClick={this.handleDrawerCloseMobile}
+                                      onClick={(e) => this.handleChange(row.value, this.state.checked[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row.value] !== undefined ? !this.state.checked[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row.value] : true, e)}
                                     > {row.title}</div>
                                   </Typography>
                                 </ListItemText>
@@ -766,7 +769,8 @@ class Component extends React.Component {
                                   <Typography variant=""
                                     className={`filter-mbl-font fnts ${classes.colorMainSecondary}`}>
                                     <div
-                                      onClick={this.handleDrawerCloseMobile}
+                                      // onClick={this.handleDrawerCloseMobile}
+                                      onClick={(e) => this.handleChange(row, this.state.checked[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row] !== undefined ? !this.state.checked[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row] : true, e)}
                                     > {row}</div>
                                   </Typography>
                                 </ListItemText>

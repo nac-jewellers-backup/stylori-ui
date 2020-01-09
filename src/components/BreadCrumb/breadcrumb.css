@@ -1,3 +1,10 @@
 .isactives{
     background: rgb(88, 96, 135) !important;
 }
+.bread_stic{
+    position: fixed !important;
+    z-index: 1000!important;
+    top: 89px!important;
+    width: 100%!important;
+
+}

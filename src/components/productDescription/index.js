@@ -37,7 +37,7 @@ class ProductDescription extends Component {
     const { classes } = this.props;
     // let path = window.location.pathname.split('/').pop();
     var loc = this.props.location.pathname;
-    debugger
+    
     var path = loc.split('/');
     var data_json = [{ title: 'home', url: '/home' }, { title: 'jewellery', url: "/jewellery" }]
     // const descriptionData = this.props.data;

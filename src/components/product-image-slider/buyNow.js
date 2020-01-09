@@ -236,7 +236,7 @@ class Component extends React.Component {
     render() {
         let { showimage } = this.state;
         const { classes, data } = this.props;
-        debugger
+        
         return (
             <div>
                 <Hidden smDown>

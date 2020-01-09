@@ -33,13 +33,12 @@ function TabContainer({ children, dir }) {
 const PriceTabs = (props) => {
     const { ProductDetailCtx: { filters }, setFilters } = React.useContext(ProductDetailContext);
     const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext)
-    return <Component setFilters={setFilters} filters={filters} {...props} tabsChange={Globalctx.tabsChange} setGlobalCtx={setGlobalCtx}/>
+    return <Component setFilters={setFilters} filters={filters} {...props} tabsChange={Globalctx.tabsChange} setGlobalCtx={setGlobalCtx} />
 }
 
 class Component extends React.Component {
     constructor(props) {
         super(props);
-
     }
     state = {
         value: 1,
@@ -58,12 +57,11 @@ class Component extends React.Component {
         this.setState({ open: false });
     };
 
-
     handleClick = (event, key) => {
-        this.props.setGlobalCtx({tabsChange:true})
+        this.props.setGlobalCtx({ tabsChange: true })
         console.log('lklkkoik9', this.props)
         var filters = { ...this.props.filters }
-        debugger
+        
         if (key === 'purity') {
             var kv = event.target.id
             var objVal = kv.split(" ")
@@ -86,7 +84,7 @@ class Component extends React.Component {
             filters['productId'] = this.props.data[0].productId
             this.setState({
                 purity: kv,
-            }) 
+            })
             this.props.setFilters(filters);
         }
         else {
@@ -188,8 +186,8 @@ class Component extends React.Component {
             className: 'center',
             infinite: false,
             // slidesToShow: data[0].productTabs[0].tab1.Children.length > 8 ? limit :data[0].productTabs[0].tab1.Children.length,
-            slidesToScroll: 4,
-            slidesToShow: 4,
+            slidesToScroll: 5,
+            slidesToShow: 5,
             arrows: false,
         };
 
@@ -201,7 +199,7 @@ class Component extends React.Component {
             slider.current.slickPrev();
         }
         // data[0].productTabs[0].tab2.Children
-        debugger
+        
         return (
             <div>
                 {data[0].productTabs.map(val => {
@@ -246,7 +244,7 @@ class Component extends React.Component {
                                                             {arr.map((val, i) => {
                                                                 return (<>
                                                                     <button
-                                                                        className={val === this.state.skuSize ? 'dark' : 'page'}
+                                                                        className={JSON.stringify(val) === this.state.skuSize ? 'dark' : 'page'}
                                                                         id={val}
                                                                         onClick={event => this.handleClick(event, 'skuSize')}
                                                                     >
@@ -302,7 +300,7 @@ class Component extends React.Component {
                                                     arrColor = objVal[1]
                                                 }
                                                 return (
-                                                    <Grid item lg={1} xs={2} style={{ marginLeft: "8px", marginRight: "8px", textAlign: "center" }}>
+                                                    <Grid item lg={1} xs={2} className={classes.normalfonts_tabs}>
                                                         <button
                                                             style={{ background: this.imageRender(val) }}
                                                             className={this.state.purity === val ? 'darktabs tabs-valus' : 'pagetabs tabs-valus'}
@@ -327,7 +325,7 @@ class Component extends React.Component {
                                     <Grid container spacing={12} lg={12} style={{ marginLeft: "4%" }}>
                                         {val.tab3.Children.map((val, i) => {
                                             return (
-                                                <Grid item lg={1} xs={2} style={{ marginLeft: "8px", marginRight: "8px", textAlign: "center" }}>
+                                                <Grid item lg={1} xs={2} className={classes.normalfonts_tabs}>
                                                     <button
                                                         style={{ background: this.imageRender(val) }}
                                                         className={this.state.diamondType === val.name ? 'darktabslst tabs-valus' : 'pagetabslst tabs-valus'}

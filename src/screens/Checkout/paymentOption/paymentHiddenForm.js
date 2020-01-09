@@ -7,7 +7,7 @@ export default function PaymentHiddenForm(props){
         timedate:""
     })
     useEffect(() => {
-        fetch('https://api-alpha.stylori.net/generatepaymenturl', {
+        fetch(`${API_URL}/generatepaymenturl`, {
         method: 'POST'
         })
         .then((response) => response.json())

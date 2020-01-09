@@ -64,6 +64,19 @@ const styles = theme => ({
             // textAlign: "center"
         },
     },
+
+    normalfonts_tabs: {
+        [theme.breakpoints.down('xs')]: {
+            textAlign: "center",
+            marginLeft: "4px",
+            // marginRight: "8px"
+        },
+        [theme.breakpoints.up('lg')]: {
+            textAlign: "center",
+            marginLeft: "8px",
+            marginRight: "8px"
+        },
+    },
     tabs_values_font: {
         [theme.breakpoints.down('xs')]: {
             fontSize: "8px !important",
@@ -111,7 +124,7 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
         shadow: {
             boxShadow: "none"
-        }, 
+        },
     }
 
 });
