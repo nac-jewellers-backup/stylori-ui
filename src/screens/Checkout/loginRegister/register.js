@@ -74,7 +74,7 @@ const RegisterComponent = (props) => {
                                                 readOnly: true,
                                             }}
                                         /> </Grid>
-                                    <Grid item lg={6} style={{ textAlign: "center", lineHeight: "66px", color: "#337ab7" }}>
+                                    <Grid item lg={2} class="leftPad" style={{ textAlign: "center", lineHeight: "66px", color: "#337ab7" }}>
                                         <NavLink to="/changepassword">  Change password </NavLink> </Grid>
                                 </Grid> : <>
                                     <Input

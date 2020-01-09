@@ -127,6 +127,7 @@ class Component extends React.Component {
                         </ExpansionPanel>
 
                         <ExpansionPanel
+                            xs={6}
                             square
                             expanded={expanded === 'panel2'}
                             onChange={this.handleChange(2)}
@@ -135,7 +136,7 @@ class Component extends React.Component {
                                 <Avatar className={`avart-ckc ${classes.normalcolorback}`}>2</Avatar>
                                 <Typography className='text-chck'>Address Detail
 
-                                 <div className="ch-d-vl">
+                                 <div className="ch-d-vl" >
                                         {value && value.firstname}
                                         &nbsp;
                                         {value && value.lastname}

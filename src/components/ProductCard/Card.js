@@ -96,20 +96,21 @@ const imageOnError = (event, res) => {
 }
 const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => (
   <div className="imageHeight">
-    {props.data.oneDayShipping ? <div class="one-day-ship-listing-page" style={{ zIndex: 2 }}>
-    <i class="fa fa-truck" style={{ fontSize: "20px" }}></i>
+    {props.data.oneDayShipping ? <div class={Math.round(props.data.offerPrice) === Math.round(props.data.price) ? "one-day-ship-listing-page-withoutTop" : "one-day-ship-listing-page"} style={{ zIndex: 2 }}>
+      <i class="fa fa-truck" style={{ fontSize: "20px" }}></i>
       <span class="one-day-ship-listing-page-label">1 day shipping</span>
 
     </div> : ''}
+    {
+      Math.round(props.data.offerPrice) === Math.round(props.data.price) ? '' :
+        <>
+          <span className="overlayCss" style={{ zIndex: 10, color: "#fff", backgroundColor: "#f699a3" }}>
 
-    <span  className="overlayCss" style={{ zIndex: 10, color: "#fff",backgroundColor:"#f699a3" }}>
-      {
-        Math.round(props.data.offerPrice) === Math.round(props.data.price) ? '' :
-          <>
             {Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice)) / Math.round(props.data.price)) * 100) + '% off'}
-          </>
-      }
-    </span>
+
+          </span>
+        </>
+    }
 
     <div class="wishListStyle">
       <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} />

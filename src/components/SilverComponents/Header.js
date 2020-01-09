@@ -399,8 +399,11 @@ class Header extends Component {
                                                             }}  ></i>
                                                         </Badge>
                                                         <Badge style={{ fontSize: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                            <NavLink to="/cart">   <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
-                                                            </NavLink> </Badge>
+                                                            <a href="/cart" >
+                                                                <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+
+                                                            </a>
+                                                        </Badge>
                                                     </div>
                                                 </Grid>
                                             </div>
@@ -477,16 +480,16 @@ class Header extends Component {
                                                     </div>
                                                 </ListItem>
                                                 {selected1 === Jewellery[selected][row2].name &&
-                                                    <List className="sideNavListing" >
-                                                        <ListItem className="drawer-list1">
+                                                    <>
+                                                        {/* <ListItem className="drawer-list1">
                                                             <ListItemText
                                                             >
-                                                                <Typography className="list-items1" variant="">{subheader[selected1].header.toUpperCase()}
+                                                                <Typography className="list-items1" variant="">{subheader[selected1]&&subheader[selected1].header&&subheader[selected1].header.toUpperCase()}
                                                                 </Typography>
                                                                 <span style={{ paddingTop: "5px" }} className="header-viewal1">View All</span>
                                                             </ListItemText>
-                                                        </ListItem>
-                                                        {subheader[selected1].name.map(row => (
+                                                        </ListItem> */}
+                                                        {subheader[selected1]&&subheader[selected1].name&&subheader[selected1].name.map(row => (
                                                             <>
                                                                 <ListItem onClick={() => { window.location.href = row.url }} className={classes.subtitle2Container}>
                                                                     <ListItemText>
@@ -496,7 +499,7 @@ class Header extends Component {
                                                             </>
                                                         ))}
 
-                                                    </List>
+                                                    </>
                                                 }
                                             </>
                                         ))

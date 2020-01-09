@@ -40,6 +40,17 @@
     float: left !important;
 }
 
+
+@media screen and (max-width: 347px) {
+    .text-chck {
+        padding: 8px 0px;
+        color: #394578;
+        font-weight: 700 !important;
+        width: 100% !important;
+        float: left !important;
+    }
+}
+
 .arrow-chek,
 .MuiSvgIcon-root,
 .MuiExpansionPanelDetails-root,
