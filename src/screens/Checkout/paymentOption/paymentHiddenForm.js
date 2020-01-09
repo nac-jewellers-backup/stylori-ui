@@ -92,10 +92,6 @@ export default function PaymentHiddenForm(props){
                 <input type='hidden' name='checkoutoption' value = "combinedform" />
                 <input size="50" type="hidden" name="paymentMethod" value=""/>
                 <input type="hidden" name="cardFunction" value = "credit" />
-                {/* <input type='hidden' name='cardnumber'  value='4854980604114027' full_bypass="true"/>
-                <input type='hidden' name='expmonth' value='01' full_bypass="true"/>
-                <input type='hidden' name="expyear" value='2022' full_bypass="true"/>
-                <input type='hidden' name="cvm" value="662" full_bypass="true"/> */}
                 </div>
             <input type="submit" style={{background: "#ec7ea8",color: "white",padding: "6px"}}   name ="submitBtn" value="Place Order" />
             </form>
