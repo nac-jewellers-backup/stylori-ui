@@ -247,7 +247,7 @@ class Component extends React.Component {
     let checked = { ...this.state.checked }
     var queries = [{}]
     let pathnameSplit = window.location.pathname.split('/')
-    debugger
+    
     if (Object.entries(this.state.category).length === 0 && this.state.category.constructor === Object) {
       const splitHiphen = () => {
         if (pathnameSplit[1].indexOf('-')) {
@@ -719,7 +719,7 @@ class Component extends React.Component {
                     <>
                       {subFilter[this.state.filtercheck && this.state.filtercheck].map(row => {
 
-debugger
+
                         return (
                           <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
 

@@ -65,7 +65,7 @@ class ProductDetail extends Component {
         })
       }
     }
-    debugger
+    
     return (
       <div>
         <div>
