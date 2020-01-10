@@ -95,7 +95,7 @@ React.useEffect(() => {
         }
         if (reload && reload.length > 0) {
             window.location.reload();
-        }
+        } 
 
         // localStorage.setItem('cart_id', JSON.stringify(crtdata))
     }, [crtdata])
