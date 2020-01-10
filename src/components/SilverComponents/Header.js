@@ -489,7 +489,7 @@ class Header extends Component {
                                                                 <span style={{ paddingTop: "5px" }} className="header-viewal1">View All</span>
                                                             </ListItemText>
                                                         </ListItem> */}
-                                                        {subheader[selected1]&&subheader[selected1].name&&subheader[selected1].name.map(row => (
+                                                        {subheader[selected1] && subheader[selected1].name && subheader[selected1].name.map(row => (
                                                             <>
                                                                 <ListItem onClick={() => { window.location.href = row.url }} className={classes.subtitle2Container}>
                                                                     <ListItemText>
