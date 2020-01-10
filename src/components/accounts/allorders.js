@@ -28,7 +28,7 @@ class Allorders extends React.Component {
     handleChange = panel => (event) => {
         const { expanded } = this.state;
         var valus = expanded === panel ? "" : panel
-        expanded.push(JSON.stringify(valus))
+        expanded.push(JSON.stringify(valus)) 
         this.setState({
             expanded,
         });
