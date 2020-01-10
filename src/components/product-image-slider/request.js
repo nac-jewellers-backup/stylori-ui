@@ -15,6 +15,7 @@ import { Input } from '../InputComponents/TextField/Input'
 import { Form } from '../Form/Form'
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 class Request extends React.Component {
     constructor(props) {
         super(props);
@@ -196,8 +197,9 @@ class Request extends React.Component {
                 <Hidden mdUp>
                     <Container>
                         <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 5px" }} expanded={expanded === 'panel3'} onChange={this.handle('panel3')}>
-                            <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
-                                <i class="fa fa-sort-up" ></i></span>}
+                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header" 
                             >
                                 <div style={{ width: "100%" }} >
                                     <Typography className={`product-details-smrt ${classes.normalfonts}`}>Ask Our Expert</Typography>

@@ -242,6 +242,7 @@ export default function Footer(props) {
 
                 </Hidden>
                 {/*  */}
+                <Hidden only={['sm', 'xs']}>
                 <Grid container direction="row" item xl={4} lg={4} md={4} xs={12} sm={6} style={{ padding: '3%' }}>
                     <Hidden only={['sm', 'xs']}>
                         <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
@@ -253,11 +254,11 @@ export default function Footer(props) {
                     </Hidden>
                     <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
                         <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
-                            <img src={googlePlaystore} className={`${classes.colorMain}`} alt="" />
+                            {/* <img src={googlePlaystore} className={`${classes.colorMain}`} alt="" /> */}
                         </Grid>
                     </Grid>
                 </Grid>
-
+                </Hidden>
                 <Hidden only={['sm', 'xs']}>
                     <Grid container direction="row" item xl={4} lg={4} md={4} xs={12} sm={6} style={{ padding: '3%' }}>
 
@@ -395,7 +396,7 @@ export default function Footer(props) {
 
                                 <img src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" alt="" />
 
-                                <div style={{ color: '#808080', fontSize: '11px' }}>Copyright © 2017 Stylori.com</div>
+                                <div style={{ color: '#808080', fontSize: '11px' }}>Copyright © 2020 stylori.com</div>
 
 
                             </Grid>
@@ -407,7 +408,7 @@ export default function Footer(props) {
             </Container>
             <Hidden only={['md', 'lg', 'xl']}>
                 <Grid container item xs={12} sm={12} style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', color: '#808080', fontSize: '11px' }}>
-                    Copyright © 2017 Stylori.com
+                    Copyright © 2020 stylori.com
                             </Grid>
             </Hidden>
             {/* footer color menuItems ends  */}

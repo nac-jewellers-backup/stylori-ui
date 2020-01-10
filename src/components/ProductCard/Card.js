@@ -112,10 +112,10 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
         </>
     }
 
-    <div class="wishListStyle">
+    <div class="wishListStyle" >
       <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} />
     </div>
-
+    <Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }} target="_blank" onClick={handleProductDetatiContext(props)}>
     <LazyLoadImage
       alt={'props.data.title'}
       effect="blur"
@@ -146,7 +146,10 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
     // onerror={this.src=}
     // placeholderSrc={renderImages(props, cardstate) === '' ? 'https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg' : ''}
     // placeholder	= { <div >loading.....</div> }
-    />
+    >
+      </LazyLoadImage>
+
+      </Link>
 
 
   </div>
@@ -400,7 +403,7 @@ function Component(props) {
         </CardActions> */}
         {/* /:productCategory/:productType/:material/:productName */}
 
-        <Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }} target="_blank" onClick={handleProductDetatiContext(props)}>
+        
           <CardActions style={{
             //  maxHeight: `${_height ? `${_height}px` : '300px'}`, minHeight: '250px'
           }} className={`${classes.cardAtionspadding} ${classes.cardActionsImage}`}>
@@ -579,7 +582,7 @@ sizes="(max-width: 320px) 320w,
 </CardContent>      
             }
           </Card>
-        </Link>
+       
       </Card>
     </div >
   );
