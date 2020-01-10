@@ -581,7 +581,7 @@ module.exports = function(webpackEnv) {
         },
         importScripts:['cache.js'],
         minify: true,
-        // maximumFileSizeToCacheInBytes: 40* 1024* 1024,
+        maximumFileSizeToCacheInBytes: 40* 1024* 1024,
         // For unknown URLs, fallback to the index page
         navigateFallback: publicUrl + '/index.html',
         // Ignores URLs starting from /__ (useful for Firebase):
