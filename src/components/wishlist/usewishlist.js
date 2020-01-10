@@ -85,7 +85,7 @@ const useWishlists = (props) => {
             localStorage.setItem('review_location', `${window.location.href}`)
             // localStorage.setItem('wishlist', 0)
             window.location.href = "/login"
-        }
+        } 
         // changePanel(3)
 
     }
