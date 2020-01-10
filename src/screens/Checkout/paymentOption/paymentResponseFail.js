@@ -38,4 +38,5 @@ const Components = props => {
   content=  <PaymentResponseFail {...props} data={data} />
   return content
 }
+
 export default withRouter(Components);

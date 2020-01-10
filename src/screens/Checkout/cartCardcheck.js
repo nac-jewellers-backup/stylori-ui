@@ -30,6 +30,7 @@ import cart from '../../mappers/cart';
 import { CheckForCod } from 'queries/productdetail';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import Header from 'components/SilverComponents/Header'
+import { withRouter } from 'react-router-dom';
 
 let value = localStorage.getItem("select_addres") ? JSON.parse(localStorage.getItem("select_addres")) : {};
 var variab = {}
@@ -37,6 +38,7 @@ const CartCardCheck = (props) => {
     const { loading, error, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     return <Component  {...props} CodData={CodData} makeRequestCod={makeRequestCod} />
 }
+
 
 class Component extends React.Component {
     state = {
@@ -47,6 +49,7 @@ class Component extends React.Component {
         mailId: null
     }
 
+ 
     handleChange = panel => (event) => {
 
         // alert("va",JSON.stringify(panel))
@@ -88,6 +91,7 @@ class Component extends React.Component {
         this.props.makeRequestCod(variab)
         this.changePanel(4)
     }
+    
     render() {
         const { expanded, mailId, expandedlimit } = this.state;
         const { classes, data } = this.props;
@@ -95,6 +99,28 @@ class Component extends React.Component {
         let email = localStorage.getItem("email") ? localStorage.getItem("email") : '';
         variab["pincode"] = value && value.pincode
    // alert(JSON.stringify(this.props.data))
+   const breadcrumsdata_static = [
+    { title: "Shopping Bag" },
+    { title: "Login/ Register" },
+    { title: "Address Detail" },
+    { title: "Payment Options" },
+    { title: "Order Confirmation" },
+]
+const cartsubdata_static = [
+    {
+        name: "100% Certified Jewellery",
+        icon: "https://assets-cdn.stylori.com/images/static/icon-star.png"
+    }, {
+        name: "Secure Payments",
+        icon: "https://assets-cdn.stylori.com/images/static/icon-lock.png"
+    }, {
+        name: "Free Insured Shipping",
+        icon: "https://assets-cdn.stylori.com/images/static/icon-van.png"
+    }, {
+        name: "25-Day Returns",
+        icon: "https://assets-cdn.stylori.com/images/static/icon-return.png"
+    }
+]
 
         return (
             <Grid >
@@ -104,8 +130,8 @@ class Component extends React.Component {
                     className={`breadcrums-header ${classes.normalcolorback}`}
                     classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
                     list={`MuiBreadcrumbs-li ${classes.fontwhite}`}
-                    data={this.props.data[0].breadcrumsdata}
-                    subdata={this.props.data[0].cartsubdata}
+                    data={this.props.data.length > 0 ? this.props.data[0].breadcrumsdata : breadcrumsdata_static}
+                    subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata_static}
                     changePanel={this.changePanel}
                 />
                 <div className='pt-sm checkout-ovralldiv-media marginTop' >
@@ -242,15 +268,22 @@ class Component extends React.Component {
 // });
 const Components = props => {
     let { CartCtx: { data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
+    debugger
     let content, mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
             mapped = cart(data);
         }
     }
-    if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
+    const cartValueEmpty = () =>{
+        alert('Please let select atleast one item in the cart')
+        props.history.push('/jewellery')
+    }
+if (Object.keys(data).length === 0 || data.data.allTransSkuLists.nodes.length === 0 ) content = <div className="overall-loader">
+    {/* {cartValueEmpty() */}
+    </div>
     else content = <CartCardCheck {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
 
     return content
 }
-export default withStyles(styles)(Components);
+export default withRouter(withStyles(styles)(Components));

@@ -35,15 +35,17 @@ class CashonDelivey extends React.Component {
             alert('Order Placed Successfully')
         }).then(function (data) {
             console.log('data', data)
+            if (data !== null && data !== undefined) {
+                localStorage.setItem("order_id", data.order.id)
+            }
         });
         localStorage.removeItem("cart_id")
-
         if (gut_lg === true) {
             localStorage.clear();
             // localStorage.removeItem("gut_lg")
         }
         // } 
-       
+
         obj_user["user_id"] = user_id
         obj_user["jewellery"] = "jewellery"
         this.props.setCartFilters(obj_user)

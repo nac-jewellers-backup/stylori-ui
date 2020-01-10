@@ -107,7 +107,7 @@ export default function PaymentHiddenForm(props){
                 <input type="hidden" name="timezone" value="IST" />
                 <input type="hidden" name="authenticateTransaction" value="true" />
                 <input type='hidden' name='checkoutoption' value = "combinedform" />
-				<input size="50" type="text" name="oid" value="zxcvmnbv1234" />
+				<input size="50" type="hidden" name="oid" value="zxcvmnbv1234" />
                 {/* <input size="50" type="hidden" name="paymentMethod" value=""/>
                 <input type="hidden" name="cardFunction" value = "credit" /> */}
                 </div>

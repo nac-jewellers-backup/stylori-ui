@@ -69,8 +69,12 @@ class ProductDetail extends Component {
     return (
       <div>
         <div>
+         
           <MetaTags>
-            <title>{this.props.data[0].title}</title>
+        {
+          this.props.data && this.props.data[0] && this.props.data[0].length > 0 ?
+<>
+<title>{this.props.data[0].title}</title>
             <meta name="description" content={this.props.data[0].dis} />
             <meta name="keywords" content={this.props.data[0].productsPendants[0].name} />
             <meta property="og:title" id="fb-title" content={this.props.data[0].title} />
@@ -83,6 +87,11 @@ class ProductDetail extends Component {
             <meta name="twitter:title" id="twitter-title" content={this.props.data[0].title} />
             <meta name="twitter:description" content={this.props.data[0].dis} />
             <meta name="twitter:image" id="twitter_imageUrl" content={this.props.data[0].fadeImages} />
+            </>
+          :
+''
+        }
+            
           </MetaTags>
         </div>
 
@@ -176,7 +185,6 @@ class ProductDetail extends Component {
             <Grid item>
               <Footer />
             </Grid>
-            <Buynowfixed data={this.props.data} />
         </Hidden>
 
       </div>
