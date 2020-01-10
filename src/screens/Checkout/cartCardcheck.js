@@ -49,7 +49,7 @@ class Component extends React.Component {
         mailId: null
     }
 
- 
+
     handleChange = panel => (event) => {
 
         // alert("va",JSON.stringify(panel))
@@ -91,36 +91,36 @@ class Component extends React.Component {
         this.props.makeRequestCod(variab)
         this.changePanel(4)
     }
-    
+
     render() {
         const { expanded, mailId, expandedlimit } = this.state;
         const { classes, data } = this.props;
         const { breadcrumsdata, cartsubdata } = this.props.data;
         let email = localStorage.getItem("email") ? localStorage.getItem("email") : '';
         variab["pincode"] = value && value.pincode
-   // alert(JSON.stringify(this.props.data))
-   const breadcrumsdata_static = [
-    { title: "Shopping Bag" },
-    { title: "Login/ Register" },
-    { title: "Address Detail" },
-    { title: "Payment Options" },
-    { title: "Order Confirmation" },
-]
-const cartsubdata_static = [
-    {
-        name: "100% Certified Jewellery",
-        icon: "https://assets-cdn.stylori.com/images/static/icon-star.png"
-    }, {
-        name: "Secure Payments",
-        icon: "https://assets-cdn.stylori.com/images/static/icon-lock.png"
-    }, {
-        name: "Free Insured Shipping",
-        icon: "https://assets-cdn.stylori.com/images/static/icon-van.png"
-    }, {
-        name: "25-Day Returns",
-        icon: "https://assets-cdn.stylori.com/images/static/icon-return.png"
-    }
-]
+        // alert(JSON.stringify(this.props.data))
+        const breadcrumsdata_static = [
+            { title: "Shopping Bag" },
+            { title: "Login/ Register" },
+            { title: "Address Detail" },
+            { title: "Payment Options" },
+            { title: "Order Confirmation" },
+        ]
+        const cartsubdata_static = [
+            {
+                name: "100% Certified Jewellery",
+                icon: "https://assets-cdn.stylori.com/images/static/icon-star.png"
+            }, {
+                name: "Secure Payments",
+                icon: "https://assets-cdn.stylori.com/images/static/icon-lock.png"
+            }, {
+                name: "Free Insured Shipping",
+                icon: "https://assets-cdn.stylori.com/images/static/icon-van.png"
+            }, {
+                name: "25-Day Returns",
+                icon: "https://assets-cdn.stylori.com/images/static/icon-return.png"
+            }
+        ]
 
         return (
             <Grid >
@@ -208,24 +208,24 @@ const cartsubdata_static = [
 
                                         <CartCard data={data} />
 
-                                       <Hidden smDown>
-                                       <Grid container>
-                                            <Grid xs={12} lg={7} />
-                                            <Grid xs={12} lg={4} >
-                                                <div style={{ float: "right", marginBottom: "5px" }}>
-                                                    <Button
-                                                        onClick={() => this.pincodeapi()}
-                                                        className="summaryOrder-pay-btn">Continue to Pay</Button>
-                                                </div>
-                                            </Grid>
-                                        </Grid><br />
-                                       </Hidden>
+                                        <Hidden smDown>
+                                            <Grid container>
+                                                <Grid xs={12} lg={7} />
+                                                <Grid xs={12} lg={4} >
+                                                    <div style={{ float: "right", marginBottom: "5px" }}>
+                                                        <Button
+                                                            onClick={() => this.pincodeapi()}
+                                                            className="summaryOrder-pay-btn">Continue to Pay</Button>
+                                                    </div>
+                                                </Grid>
+                                            </Grid><br />
+                                        </Hidden>
                                     </Grid>
                                     <Grid item xs={12} lg={12} className={classes.cart}>
                                         <ProductList />
                                     </Grid>
                                     <Hidden mdUp>
-                                       <Grid container style={{marginTop:"10px"}}>
+                                        <Grid container style={{ marginTop: "10px" }}>
                                             <Grid xs={12} lg={7} />
                                             <Grid xs={12} lg={4} >
                                                 <div style={{ float: "right", marginBottom: "5px" }}>
@@ -235,7 +235,7 @@ const cartsubdata_static = [
                                                 </div>
                                             </Grid>
                                         </Grid><br />
-                                       </Hidden>
+                                    </Hidden>
                                 </Grid>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
@@ -275,8 +275,8 @@ const Components = props => {
             mapped = cart(data);
         }
     }
-    const cartValueEmpty = () =>{
-        alert('Please let select atleast one item in the cart')
+    const cartValueEmpty = () => {
+        alert('Your cart is empty')
         props.history.push('/jewellery')
     }
 if (Object.keys(data).length === 0 || data.data.allTransSkuLists.nodes.length === 0 ) content = <div className="overall-loader">
@@ -284,6 +284,17 @@ if (Object.keys(data).length === 0 || data.data.allTransSkuLists.nodes.length ==
     </div>
     else content = <CartCardCheck {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
 
+    debugger
+    if (Object.keys(data).length === 0 && data.constructor === Object) content = <div className="overall-loader"> {/* {cartValueEmpty()} */}</div>
+    else if (Object.keys(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes.length === 0) {
+
+        content = <div className="overall-loader"> {cartValueEmpty()} </div>
+    }
+    else {
+
+        content = <CartCardCheck {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
+    }
     return content
 }
+
 export default withRouter(withStyles(styles)(Components));
