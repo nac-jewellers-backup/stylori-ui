@@ -53,9 +53,10 @@ return (
                   </Grid>
                </Grid> */}
                <Grid container justify="center">
-                  <Grid item className="grand-item">
-                     <Typography component="h4">Grand Total:20000</Typography>
-                     <Button onClick={()=>this.props.history.push("/jewellery")}>Home</Button>
+                  <Grid container style={{width:"100%"}}  >
+                     <Grid item style={{display:"flex",marginLeft:"auto",paddingRight:"6%"}}>
+                     <Button style={{background:"#ed1165",color:"#fff"}}  onClick={()=>this.props.history.push("/jewellery")}>Home</Button>
+                     </Grid>
                   </Grid>
                </Grid>
             <Grid container> 

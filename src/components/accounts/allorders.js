@@ -263,12 +263,12 @@ class Allorders extends React.Component {
                                                     {/* {val.shoppingCartByCartId.cartAddressesByCartId.nodes.map(addreses => ( */}
                                                     <div style={{ width: "100%", marginBottom: "10px" }}>
                                                         <Grid container spacing={12} lg={12} xs={11} sm={11} style={{ marginRight: "auto", marginLeft: "auto" }} >
-                                                            <Grid item sm={6} lg={6} xs={12} className="order_addres">
+                                                            <Grid item sm={6} lg={6} xs={12} className="order_addres" style={{color:"#394578"}}>
                                                                 <div> <b>Order Number</b>:#{val && val.id}</div><br />
                                                                 <div><b>Order Date	</b> : {moment(val && val.createdAt).format('Do MMMM YYYY')}</div><br />
                                                                 <div> <b>Payment Method</b>: Cash On Delivery</div>
                                                             </Grid>
-                                                            <Grid item sm={3} lg={3} xs={12} className="order_addres_user">
+                                                            <Grid item sm={3} lg={3} xs={12} style={{color:"#394578"}} className="order_addres_user">
                                                                 <div><b>Shipping Address :</b></div><br />
                                                                 {/* <div> {val && val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes.firstname}&nbsp;
                                                              {val && val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes.lastname}</div><br />
@@ -291,7 +291,7 @@ class Allorders extends React.Component {
                                                     {val && val.shoppingCartByCartId && val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId && val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => (
                                                         <>
                                                             <br />
-                                                            <Grid container spacing={12} lg={12} style={{ height: "270px", overflow: "hidden", outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px" }}>
+                                                            <Grid container spacing={12} lg={12} style={{  overflow: "hidden", outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px",color:"#394578" }}>
                                                                 <Grid item lg={2} sm={3}  >
                                                                     {cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs => (
                                                                         <div className="wishlist_img">

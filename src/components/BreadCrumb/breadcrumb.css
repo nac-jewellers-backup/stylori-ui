@@ -18,7 +18,7 @@
 .breadCrumbs li{
     float: left
 }
-.breadCrumbs>li:first-child{
+.breadCrumbs>li{
     margin-right: 14px;
 }
 
