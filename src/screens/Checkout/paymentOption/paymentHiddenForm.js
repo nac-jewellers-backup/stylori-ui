@@ -35,7 +35,9 @@ export default function PaymentHiddenForm(props){
             },
             body: JSON.stringify(obj)
         }).then((response) => response.json()).then( (data)=> {
-            localStorage.setItem("order_id",data)
+            if (data !== null && data !== undefined) {
+                localStorage.setItem("order_id", JSON.stringify(data.order.id))
+            }
         }).catch((error) => {
             console.error('Error:', error);
         });
