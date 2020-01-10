@@ -9,6 +9,8 @@ import { PRODUCTLIST } from 'queries';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { CDN_URL } from 'config';
 import { FilterOptionsContext } from 'context'
+import { withRouter } from "react-router";
+
 
 const styles = theme => ({
   gridlistmain: {
@@ -144,7 +146,8 @@ class Component extends React.Component {
                   :
                   <>
                   {
-                    data[0].totalCount - data.length === 0 ||  data[0].totalCount - data.length < 0 ?
+                    data && data.length>0 ?
+                   data[0].totalCount && data[0].totalCount - data.length === 0 ||  data[0].totalCount - data.length < 0 ?
                     ''
                     :
                     <Button variant="contained" className={`${classes.button}  ${classes.viewmoreColor}`} onClick={() => { this.handleOffset() }} disabled={data.length < 24} >
@@ -153,6 +156,13 @@ class Component extends React.Component {
                       {(data.length > 0 && data.length < 24)
                         && `Only ${data.length > 0 ? data[0].totalCount - data.length : ''} products avalilable`}
                     </Button>
+                    :
+                        <>
+                    <div>No Products Found.</div>
+                    {/* <div onClick={()=>{this.props.history.push('/jewellery')}}>Try Again.</div> */}
+                    <a href="/jewellery">Try Again.</a>
+                    {/* <Redirect to="/jewellery" >Try Again.</Redirect> */}
+                    </>
                   }
                     
                   </>
@@ -172,4 +182,4 @@ class Component extends React.Component {
 }
 
 
-export default withStyles(styles, { withTheme: true })(ProductLayout);
+export default withRouter(withStyles(styles, { withTheme: true })(ProductLayout));
