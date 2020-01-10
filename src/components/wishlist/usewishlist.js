@@ -88,7 +88,7 @@ const useWishlists = (props) => {
         } 
         // changePanel(3)
 
-    }
+    } 
     const handelRemove = (num) => {
         debugger 
         setwishlistdata({
