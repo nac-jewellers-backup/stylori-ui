@@ -99,8 +99,8 @@ class ProductImageZoom extends React.Component {
 
 
             <div>
-
-              <div className='imagecard' id="divs" style={{ height: data[0].image_resolution }} onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
+            
+              <div className='imagecard' id="divs" style={{height: window.innerWidth>2250?"800px":data[0].image_resolution }} onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
                 {/* <span class="one-day-ship" ></span> */}
                 {/* <div id='flashlight'></div> */}
                 {data.map(val=>
