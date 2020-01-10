@@ -23,7 +23,7 @@ import './payment.css';
                       </Grid>
                     </Grid>
                     <Grid item style={{    marginLeft: "20px"}}>
-                      <Button className="retrypaymentbtn">Retry Payment</Button>
+                      <Button className="retrypaymentbtn" onClick={()=>props.history.push('/Checkout')}>Retry Payment</Button>
                     <Typography style={{marginTop:"10px"}} component="h6">Grand Total:20000</Typography>
                     </Grid>
                 </Grid>
@@ -38,4 +38,5 @@ const Components = props => {
   content=  <PaymentResponseFail {...props} data={data} />
   return content
 }
-export default Components;
+
+export default withRouter(Components);

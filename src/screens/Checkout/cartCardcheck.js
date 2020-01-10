@@ -279,6 +279,10 @@ const Components = props => {
         alert('Your cart is empty')
         props.history.push('/jewellery')
     }
+if (Object.keys(data).length === 0 || data.data.allTransSkuLists.nodes.length === 0 ) content = <div className="overall-loader">
+    {/* {cartValueEmpty() */}
+    </div>
+    else content = <CartCardCheck {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
 
     debugger
     if (Object.keys(data).length === 0 && data.constructor === Object) content = <div className="overall-loader"> {/* {cartValueEmpty()} */}</div>
