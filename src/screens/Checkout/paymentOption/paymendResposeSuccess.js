@@ -52,18 +52,19 @@ class PaymentResponseSuccess extends React.Component {
                         </Grid>
                   </Grid>
                </Grid> */}
-            <Grid container justify="center">
-               <Grid item className="grand-item">
-                  {/* <Typography component="h4">Grand Total:20000</Typography> */}
-                  <Button onClick={() => {
-                     localStorage.removeItem("panel")
-                     localStorage.removeItem("cartDetails")
-                     localStorage.removeItem("ship_isactive")
-                     localStorage.removeItem("bil_isactive")
-                     this.props.history.push("/jewellery")
-                  }}>Home</Button>
+               <Grid container justify="center">
+                  <Grid container style={{width:"100%"}}  >
+                     <Grid item style={{display:"flex",marginLeft:"auto",paddingRight:"6%"}}>
+                     <Button style={{background:"#ed1165",color:"#fff"}}  onClick={()=>{
+                        localStorage.removeItem("panel")
+                        localStorage.removeItem("cartDetails")
+                        localStorage.removeItem("ship_isactive")
+                        localStorage.removeItem("bil_isactive")
+                        this.props.history.push("/jewellery")}}>Home</Button>
+                     </Grid>
+                  </Grid>
                </Grid>
-            </Grid>
+            
             <Grid container>
                {/* <CartCard data={this.props.data}/> */}
                <Allorders allorderdata={this.props.allorderdata} />

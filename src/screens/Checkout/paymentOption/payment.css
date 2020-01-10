@@ -162,8 +162,8 @@ h6{
     font-size: 1.2rem;
 }
 .grand-item{
-    padding-left: 200px;
-    margin-top: 15px !important
+    margin-left: auto;
+    display: flex;
 }
 .paymentsuccess-content{
     background: #f4f5f4;
