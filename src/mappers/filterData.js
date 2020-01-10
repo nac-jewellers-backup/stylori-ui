@@ -1,6 +1,7 @@
 
 
 import { resolutions } from "utils";
+// { title: '1 Day Shipping', value: "1 Day Shipping" }, { title: '5 Day Shipping', value: '5 Day Shipping ' }, { title: '7 Day Shipping', value: '7 Day Shipping' }, { title: '10 Day Shipping', value: '10 Day Shipping' }, { title: '10 & Above Days Shipping', value: '10 & Above Days Shipping' }
 export default function (data) {
     let mapperdata = [];
     try {
@@ -27,7 +28,7 @@ export default function (data) {
                         'Up to  50%',
                     ],
                     'Availability': [
-                        { title: '1 Day Shipping', value: "1 Day Shipping" }, { title: '5 Day Shipping', value: '5 Day Shipping ' }, { title: '7 Day Shipping', value: '7 Day Shipping' }, { title: '10 Day Shipping', value: '10 Day Shipping' }, { title: '10 & Above Days Shipping', value: '10 & Above Days Shipping' }
+                         "1 Day Shipping" ,'10 & Above Days Shipping' 
 
                     ],
                     'Product Type': get(data[0].master_product_type).map(val => {
