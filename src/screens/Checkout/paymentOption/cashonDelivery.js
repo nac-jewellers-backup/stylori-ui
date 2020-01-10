@@ -31,14 +31,22 @@ class CashonDelivey extends React.Component {
                 // 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: JSON.stringify(obj)
-        }).then(function async(response) {
-            alert('Order Placed Successfully')
-        }).then(function (data) {
-            console.log('data', data)
-            if (data !== null && data !== undefined) {
-                localStorage.setItem("order_id", data.order.id)
-            }
-        });
+        }).then(res => {
+            return res.json();
+        })
+            .then(resdata => {
+                console.log('datasssss', resdata)
+                alert(
+                    'Order Placed Successfully'
+                )
+                if (resdata !== null && resdata !== undefined) {
+                    localStorage.setItem("order_id", resdata.order.id)
+                }
+            })
+            .catch(err => {
+                // console.log(err)
+            });
+
         localStorage.removeItem("cart_id")
         if (gut_lg === true) {
             localStorage.clear();

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { CART } from 'queries/cart';
+import { ORDERSUCCESSFUL } from 'queries/cart';
 import { ALLORDERS } from 'queries/cart';
 import { ALLUSERWISHLISTS } from 'queries/cart';
 import { withRouter } from 'react-router-dom';
@@ -44,10 +45,11 @@ const Provider = (props) => {
     const user_id = cartFilters.user_id ? cartFilters.user_id : ""
     const price = cartFilters.price ? cartFilters.price : ""
     const { loading: crtloading, error: crterror, data: crtdata, makeFetch: addtocart } = useNetworkRequest('/addtocart', { user_id, products }, false)
-    const userIds = window.location.pathname.split("-")[0] === "/account" ? localStorage.getItem('user_id') : localStorage.getItem('order_id')
+    const userIds =localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
     var cartdetails = JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : {}
     const guestlogId = cartFilters.user_id ? cartFilters.user_id : ''
     const { loading: allorderloading, error: allordererror, data: allorder, makeRequest: allordermakeRequest } = useGraphql(ALLORDERS, () => { }, {}, false);
+    const { loading: allorderloadingsuccesful, error: allordererrorsuccesful, data: allordersuccesful, makeRequest: allordermakeRequestSuccessful } = useGraphql(ORDERSUCCESSFUL, () => { }, {}, false);
     const { loading: wishlistloading, error: wishlisterror, data: wishlistDATA, makeRequest: wishlistmakeRequest } = useGraphql(ALLUSERWISHLISTS, () => { }, {}, false);
     // const prices = cartFilters.price ? cartFilters.price : ''
     const discounted_price = cartFilters.discounted_price ? cartFilters.discounted_price : ""
@@ -93,6 +95,18 @@ const Provider = (props) => {
             setallorderdata(objallorder)
         }
     }, [allorder, allorderdata])
+
+    // useEffect(() => {
+
+    //     const allordersucces = allordersuccesful ? allordersuccesful && allordersuccesful.data && allordersuccesful.data.allOrders && allordersuccesful.data.allOrders.nodes : ""
+    //  alert(JSON.stringify(allordersucces))
+    //  if (allordersucces !== undefined && allordersucces !== null && allordersucces.length > 0) {
+    //             objallorder["allorderdata"] = allordersucces&&allordersucces.data&&allordersucces.data.allOrders.nodes
+    //         setallorderdata(objallorder)
+    //     }
+    // }, [ allordersuccesful])
+
+
     useEffect(() => {
         var obj_aishlist_count = {}
         const wishlistdatas = allorder ? wishlistDATA && wishlistDATA.data && wishlistDATA.data.allUserWhislists && wishlistDATA.data.allUserWhislists.nodes : ""
@@ -110,21 +124,16 @@ const Provider = (props) => {
         // }
     }, [wishlistDATA, wishlistdata])
     useEffect(() => {
-        // if (window.location.pathname.split("-")[0]==="/account") {
         orderobj["userProfileId"] = userIds
         orderobj1["userprofileId"] = userIds
-        allordermakeRequest(orderobj);
         wishlistmakeRequest(orderobj1)
-        // }
+        allordermakeRequest(orderobj);
+
     }, [wishlistdata])
-    // useEffect(() => {
-    //     if (window.location.pathname.split("-")[0]==="/account") {
-    //     orderobj["userProfileId"] = userIds 
-    //     // orderobj1["userprofileId"] = userIds
-    //     allordermakeRequest(orderobj);
-    //     // wishlistmakeRequest(orderobj1)
-    //     }
-    // }, [])
+    useEffect(() => {
+        orderobj["userProfileId"] = userIds
+        allordermakeRequestSuccessful(orderobj);
+    }, [wishlistdata])
     useEffect(() => {
         // if (userIds.length > 0) {
         //     if (cartdetails !== null && cartdetails !== undefined && JSON.stringify(cartdetails).length > 0) {

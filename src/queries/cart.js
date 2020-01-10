@@ -87,6 +87,66 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
   }
 }
 `
+
+export const ORDERSUCCESSFUL = `query MyQuery($userProfileId: [UUID!]) {
+  allOrders(filter: {id: {in: $userProfileId}}) {
+    nodes {
+      shoppingCartByCartId {
+        shoppingCartItemsByShoppingCartId {
+          nodes {
+            transSkuListByProductSku {
+              discountPrice
+              generatedSku
+              sellingPrice
+              purity
+              metalColor
+              isReadyToShip
+              vendorDeliveryTime
+              productListByProductId {
+                productImagesByProductId(filter: {isdefault: {equalTo: true}, imagePosition: {equalTo: 1}}) {
+                  nodes {
+                    imageUrl
+                  }
+                }
+                productName
+                productDiamondsByProductSku {
+                  nodes {
+                    stoneWeight
+                  }
+                }
+              }
+              skuWeight
+              markupPrice
+              skuSize
+            }
+          }
+        }
+        cartAddressesByCartId {
+          nodes {
+            addressline1
+            city
+            contactNumber
+            country
+            countryCode
+            firstname
+            lastname
+            pincode
+            state
+          }
+        }
+        giftwrapsByCartId {
+          nodes {
+            message
+            giftTo
+          }
+        }
+      }
+      createdAt
+      id
+    }
+  }
+}
+`
 export const ALLUSERWISHLISTS = `query MyQuery($userprofileId: [UUID!]) {
   allUserWhislists(filter: {userprofileId: {in: $userprofileId}, isActive: {equalTo: true}}) {
     nodes {
