@@ -5,37 +5,44 @@ import { withRouter } from 'react-router-dom';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { CartContext } from 'context'
 import './payment.css';
- function PaymentResponseFail(props){
-    useEffect(() => {
-       
-      }, []);
-      function BackToPayment(){
-        props.history.push('/home')
-      }
-      return (
-        <Grid container style={{marginTop:"15px"}}>
-            <Grid item  xs={12} sm={12} md={12} >
-                <Grid container justify="center">
-                    <Grid item>
-                      <Grid container>
-                      <CancelIcon  className="svgiconfail"/>
-                      <Typography style={{display: "flex",alignItems: "center"}} component="h4">Sorry,Your transaction has been failed.</Typography>
-                      </Grid>
-                    </Grid>
-                    <Grid item style={{    marginLeft: "20px"}}>
-                      <Button className="retrypaymentbtn" onClick={()=>props.history.push('/Checkout')}>Retry Payment</Button>
-                    <Typography style={{marginTop:"10px"}} component="h6">Grand Total:20000</Typography>
-                    </Grid>
-                </Grid>
+import cart from 'mappers/cart'
+import Allorders from "components/accounts/allorders";
+function PaymentResponseFail(props) {
+  function BackToPayment() {
+    props.history.push('/home')
+  }
+  return (
+    <Grid container style={{ marginTop: "15px" }}>
+      <Grid item xs={12} sm={12} md={12} >
+        <Grid container justify="center">
+          <Grid item>
+            <Grid container>
+              <CancelIcon className="svgiconfail" />
+              <Typography style={{ display: "flex", alignItems: "center" }} component="h4">Sorry,Your transaction has been failed.</Typography>
             </Grid>
+          </Grid>
+          <Grid item style={{ marginLeft: "20px" }}>
+            <Button className="retrypaymentbtn" onClick={() => props.history.push('/checkout')}>Retry Payment</Button>
+          </Grid>
         </Grid>
-      )
+      </Grid>
+      <Allorders allorderdata={props.allorderdata} />
+    </Grid>
+  )
 }
 
+
 const Components = props => {
-  let { CartCtx: { data, loading, error} } = React.useContext(CartContext);
-  let content;
-  content=  <PaymentResponseFail {...props} data={data} />
+  let { CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
+  let content, mapped;
+  if (!loading && !error) {
+    if (Object.keys(data).length !== 0) {
+      mapped = cart(data);
+    }
+  }
+  if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
+  else content = <PaymentResponseFail {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
+  // localStorage.setItem("a__w_l", wishlistdata && wishlistdata.length)
   return content
 }
 

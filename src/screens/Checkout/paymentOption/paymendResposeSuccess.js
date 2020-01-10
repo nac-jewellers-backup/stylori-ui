@@ -60,7 +60,7 @@ class PaymentResponseSuccess extends React.Component {
                         localStorage.removeItem("cartDetails")
                         localStorage.removeItem("ship_isactive")
                         localStorage.removeItem("bil_isactive")
-                        this.props.history.push("/jewellery")}}>Home</Button>
+                        this.props.history.push("/jewellery")}}>Back to home</Button>
                      </Grid>
                   </Grid>
                </Grid>
