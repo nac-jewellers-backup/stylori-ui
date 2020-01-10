@@ -101,10 +101,13 @@
     height: 24px;
     float: left;
 }
- .respone-div{ 
+.respone-div{ 
     box-shadow: none !important;   
     border: 1px solid #d3d3d3!important;
-    background: #f0f0f0 !important;
+    background: #a8a1a1;
+}
+.div_DARK{ 
+    background: #a8a1a1 !important;
 }
 .py-head{
     font-size: 12px!important;
