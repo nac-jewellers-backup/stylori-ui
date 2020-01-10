@@ -33,6 +33,9 @@ class CashonDelivey extends React.Component {
             },
             body: JSON.stringify(obj)
         }).then(res => {
+            alert(
+                'Order Placed Successfully'
+            ) 
             return res.json();
         })
             .then(resdata => {
@@ -41,9 +44,7 @@ class CashonDelivey extends React.Component {
                 if (resdata !== null && resdata !== undefined) {
                     localStorage.setItem("order_id", JSON.stringify(resdata.order.id))
                 }
-                alert(
-                    'Order Placed Successfully'
-                )  })
+           })
             .catch(err => {
                 // console.log(err)
             });
