@@ -5,6 +5,7 @@ import './payment.css';
 import Divider from '@material-ui/core/Divider';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import { CartContext } from 'context'
+import { withRouter } from 'react-router-dom';
 import cart from 'mappers/cart'
 import Allorders from "components/accounts/allorders";
 
@@ -16,7 +17,7 @@ return (
             <Grid container justify="center">
                <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>
                <Grid item xs={10} sm={10} md={4} className="contant-center" >
-                  <Grid item className="container-font-size">Thank you,your order has been placed.</Grid>
+                  <Grid item className="container-font-size">Thank you!Your order has been placed.</Grid>
                </Grid>
             </Grid>
             <Grid container justify="center">
@@ -54,7 +55,7 @@ return (
                <Grid container justify="center">
                   <Grid item className="grand-item">
                      <Typography component="h4">Grand Total:20000</Typography>
-                     
+                     <Button onClick={()=>this.props.history.push("/jewellery")}>Home</Button>
                   </Grid>
                </Grid>
             <Grid container> 
@@ -80,4 +81,4 @@ const Components = props => {
    return content
 }
 
-export default (Components);
+export default  withRouter(Components);

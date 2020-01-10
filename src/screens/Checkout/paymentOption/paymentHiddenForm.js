@@ -6,6 +6,7 @@ export default function PaymentHiddenForm(props){
         hashvalue:"",
         timedate:""
     })
+    const obj = {}
     useEffect(() => {
         fetch(`${API_URL}/generatepaymenturl`, {
         method: 'POST'
@@ -17,10 +18,26 @@ export default function PaymentHiddenForm(props){
                 hashvalue:data.hash,
                 timedate:data.day
             })
-        console.log('Success:', data.hash,data.day);
         })
         .catch((error) => {
         console.error('Error:', error);
+        });
+        let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : "";
+        let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : "";
+        obj['payment_mode'] = "COD"
+        obj['user_id'] = user_id
+        obj['cart_id'] = cart_id
+        fetch(`${API_URL}/createorder`, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify(obj)
+        }).then((response) => response.json()).then( (data)=> {
+            localStorage.setItem("order_id",data)
+        }).catch((error) => {
+            console.error('Error:', error);
         });
         // document.getElementById("payment_hidden_form").style.display="block";
         // if( hash.hashvalue !== '' ){
@@ -90,11 +107,12 @@ export default function PaymentHiddenForm(props){
                 <input type="hidden" name="timezone" value="IST" />
                 <input type="hidden" name="authenticateTransaction" value="true" />
                 <input type='hidden' name='checkoutoption' value = "combinedform" />
+				<input size="50" type="hidden" name="oid" value="zxcvmnbv1234" />
                 {/* <input size="50" type="hidden" name="paymentMethod" value=""/>
                 <input type="hidden" name="cardFunction" value = "credit" /> */}
                 </div>
                 {/* style={{background: "#ec7ea8",color: "white",padding: "6px"}}  */}
-            <input type="submit" className="credit-button"   name ="submitBtn" value="Pay Now" />
+                <input type="submit" className="credit-button"   name ="submitBtn" value="Pay Now" />
             </form>
           
          
