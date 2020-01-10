@@ -127,7 +127,7 @@ class PaymentIndex extends React.Component {
                         {/* <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Debitform data={this.props.data} dataCard1={dataCard1}/>
                         </ExpansionPanelDetails> */}
-                    </ExpansionPanel>
+                    </ExpansionPanel> 
 
                     <ExpansionPanel className="respone-div"
                     >
