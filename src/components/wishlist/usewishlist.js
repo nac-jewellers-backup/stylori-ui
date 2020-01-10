@@ -90,7 +90,7 @@ const useWishlists = (props) => {
 
     }
     const handelRemove = (num) => {
-        debugger
+        debugger 
         setwishlistdata({
             wishlistdata: values.isactive
         })
