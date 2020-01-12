@@ -158,7 +158,7 @@ export default function (data) {
                                 name: k.metalColor.length > 0 ? "Metal" : "",
                                 details: k.purity + ' ' + k.metalColor
                             }, {
-                                name: k.skuWeight.length > 0 ? "Gold Weight" : "",
+                                name: "Gold Weight" ,
                                 details: k.skuWeight + " " + "GM"
                             },
                             {
@@ -168,7 +168,7 @@ export default function (data) {
                             {
                                 name: "Product Code",
                                 details: k.generatedSku
-                            }],
+                            }], 
                         // }, {
                         //     header: "Diamond Details ",
 

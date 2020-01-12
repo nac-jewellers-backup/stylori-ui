@@ -56,10 +56,6 @@ export const RouterApp = (props) => {
         '/:params1/:params2/:params3/:params4',
     ]
     var loc_PD = window.location.pathname.split('/').filter(val => { if (val === 'silverjewellery') return val })
-    // var loc_acc = window.location.pathname.split('/').filter(val => { if (val === 'silverjewellery') return val })
-    var loc_acc = () => {
-
-    }
 
     // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
     return (
@@ -80,7 +76,7 @@ export const RouterApp = (props) => {
             <Route key="paymenthidden" component={PaymentHiddenForm} exact path={routes.paymenthidden} />
             <Route key="paymentsuccess" component={Success} exact path={`${routes.paymentsuccess}/:id`} />
             <Route key="paymentfail" component={Fail} exact path={`${routes.paymentfail}/:id`} />
-            {(props.location.pathname !== "/cart" && props.location.pathname !== `/account${"-" + window.location.pathname.split("-")[1]}` && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && props.location.pathname !== "/forgotpassword" && props.location.pathname !== "/resetpassword/" && props.location.pathname !== "/changepassword" && props.location.pathname !== "/collection" && props.location.pathname !== "/stories" && props.location.pathname !== "/paymentfail" && props.location.pathname !== "/paymentsuccess/:id" && Globalctx && Globalctx.pathName === false) &&
+            {(props.location.pathname !== "/cart" && props.location.pathname !== `/account${"-" + window.location.pathname.split("-")[1]}` && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && props.location.pathname !== "/forgotpassword" && props.location.pathname !== "/resetpassword/" && props.location.pathname !== "/changepassword" && props.location.pathname !== "/collections" && props.location.pathname !== "/stories" && props.location.pathname !== "/paymentfail" && props.location.pathname !== "/paymentsuccess/:id" && Globalctx && Globalctx.pathName === false) &&
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />
             }
             {

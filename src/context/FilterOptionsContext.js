@@ -16,8 +16,8 @@ const initialCtx = {
     FilterOptionsCtx: {
         filters: {
             
-            Offers: null, Availability: {}, ProductType: null, style: null, Material: null, Theme: null, Collection: null, MetalColor: null,
-            MetalPurity: null, Occasion: null, NoOfStones: null, Gender: null, stoneColor: null, stoneShape: null, category:null
+            Offers: {}, Availability: {}, ProductType: {}, style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {},
+            MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}, category:{}
         },
         sort: '',
         pricemax: 5000, pricemin: 15000,
@@ -339,14 +339,36 @@ const Provider = (props) => {
                 var toLowerCase = key[0].toLowerCase()
                 newObj[toLowerCase] = k[len][0]
             }
-            newObj['sortBy'] = sort.values
-            newObj['offset'] = offset
+            
 
+           
+                newObj['sortBy'] = sort.values
+                newObj['offset'] = offset
+          
             // alert(JSON.stringify('filters',filters))
             // alert(JSON.stringify(newObj))
-            console.log('newObj',newObj)
+            console.log('newObjfilters',newObj)
+            console.log('newObjsort',newObj)
+            console.log('newObjfilterssort',newObj)
+            console.log('newObjsortfilters',newObj)
             // newObj['price'] = {'min_price':pricemin,'max_price':pricemax}
             // console.log('newObj', Object.keys(newObj).filter(val => { if (val === 'category') return val }).length > 1)
+            // if()
+               if(Object.keys(filters.category).length=== 0 && filters.category.constructor === Object){
+                if(filters.Category && Object.keys(filters.Category).length > 0 && filters.Category.constructor === Object)
+                {
+                    debugger
+                    var _replaceCategory = filters.Category
+                    filters["category"] = _replaceCategory
+                    sessionStorage.setItem('category', JSON.stringify(filters.category))
+                    
+              setFilters({...filters,filters})
+                }
+      
+    }
+            if(filters && filters.category && Object.keys(filters.category).length>0 && filters.category.constructor === Object ){
+                sessionStorage.setItem("category", JSON.stringify(filters.category));
+            }
             if (Object.keys(newObj).filter(val => { if (val === 'category') return val }).length !== 0) await fetchproducts(newObj)
 
         }
@@ -361,7 +383,9 @@ const Provider = (props) => {
                 if(Object.keys(filters).filter(val=>{if(val === "a") return val}).length === 0) updatefiltersSort()
             }
         }
-
+        setSort('')
+   
+        
     }, [filters])
     useEffect(() => {
 
@@ -369,7 +393,7 @@ const Provider = (props) => {
         if (pricemin) {
             updatefiltersSort()
         }
-
+    
     }, [pricemin])
     useEffect(() => {
 
@@ -377,7 +401,7 @@ const Provider = (props) => {
         if (pricemax) {
             updatefiltersSort()
         }
-
+    
     }, [pricemax])
     useEffect(() => {
 
@@ -385,6 +409,7 @@ const Provider = (props) => {
         if (sort) {
             updatefiltersSort()
         }
+     
 
     }, [sort])
 
@@ -394,7 +419,7 @@ const Provider = (props) => {
         if (offset &&offset !== 0 ) {
             updatefiltersSort()
         }
-
+      
     }, [offset])
     // useEffect(() => {
 

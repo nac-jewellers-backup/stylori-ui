@@ -10,7 +10,7 @@ export const mainlist = [
         url: "/stylorisilver",
     },
     {
-        name: "GoldCoins",
+        name: "Gold Coins",
         url: "/goldcoins",
     },
     {
@@ -376,7 +376,7 @@ export const Jewellery = {
             icon: ""
         }
     },
-    GoldCoins: {
+    "Gold Coins": {
         Bydesign: {
             name: 'By design',
             url: "/#/",
