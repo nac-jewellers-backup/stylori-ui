@@ -1,3 +1,4 @@
+import moment from "moment";
 // export const productsDetails = [
 //     {
 //         header: "Product Details",
@@ -103,7 +104,20 @@
 //     }
 // ]
 
+const generateShipsBy = (readytoship, vendorDeliveryTime) => {
+    var isReadytoShip = readytoship
+    var numberOfDays = vendorDeliveryTime
+    var date = moment().format(' h a')
+    if (isReadytoShip) {
+        if (JSON.stringify(date) > " 1 pm") {
+            return 'Ships by' + ' ' + moment().add(1, 'days').format('Do MMMM YYYY');
+        }
+    }
 
+    else {
+        return 'Ships by' + ' ' + moment().add(numberOfDays, 'days').format('Do MMMM YYYY');
+    }
+}
 export default function (data) {
     let mapperdata = [];
     try {
@@ -125,6 +139,8 @@ export default function (data) {
                 prdheader: k.productListByProductId.productName,
                 // allorderdata: allorderdata,
                 productId: k.productListByProductId && k.productListByProductId.productId,
+                shipby: generateShipsBy(k.isReadyToShip, k.vendorDeliveryTime),
+                isReadyToShip: k.isReadyToShip,
                 productsDetails: [
                     //                     Quality	
                     // Metal	
@@ -135,18 +151,18 @@ export default function (data) {
                         pro_header: k.productListByProductId.productName,
                         namedetail: [
                             {
-                                name: "Quality",
+                                name: k.diamondType&&k.diamondType.length > 0 ? "Diamond Quality" : "",
                                 details: k.diamondType
                             },
                             {
-                                name: "Metal",
+                                name: k.metalColor.length > 0 ? "Metal" : "",
                                 details: k.purity + ' ' + k.metalColor
                             }, {
-                                name: "Gold",
+                                name: k.skuWeight.length > 0 ? "Gold Weight" : "",
                                 details: k.skuWeight + " " + "GM"
                             },
                             {
-                                name: k.skuSize && k.skuSize.length > 0 ? "Ring" : "",
+                                name: k.skuSize && k.skuSize.length > 0 ? "Size (For rings/bangles)" : "",
                                 details: k.skuSize
                             },
                             {

@@ -23,6 +23,7 @@ import ForgotPassword from "components/ForgotPassword/ForgetPassword";
 import PaymentHiddenForm from '../screens/Checkout/paymentOption/paymentHiddenForm';
 import Success from '../screens/Stylori/success';
 import Fail from '../screens/Stylori/fail';
+
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
 
@@ -37,6 +38,7 @@ import ChangePassword from 'screens/Checkout/loginRegister/ChangePassword'
 
 
 const browserHistory = createBrowserHistory();
+let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
 
 browserHistory.listen((location, action) => {
     window.scrollTo(0, 0);
@@ -54,7 +56,11 @@ export const RouterApp = (props) => {
         '/:params1/:params2/:params3/:params4',
     ]
     var loc_PD = window.location.pathname.split('/').filter(val => { if (val === 'silverjewellery') return val })
-    
+    // var loc_acc = window.location.pathname.split('/').filter(val => { if (val === 'silverjewellery') return val })
+    var loc_acc = () => {
+
+    }
+
     // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
     return (
         <Switch history={browserHistory}>
@@ -74,7 +80,7 @@ export const RouterApp = (props) => {
             <Route key="paymenthidden" component={PaymentHiddenForm} exact path={routes.paymenthidden} />
             <Route key="paymentsuccess" component={Success} exact path={`${routes.paymentsuccess}/:id`} />
             <Route key="paymentfail" component={Fail} exact path={`${routes.paymentfail}/:id`} />
-            {(props.location.pathname !== "/cart" && props.location.pathname !== `/account${"-" + window.location.pathname.split("-")[1]}` && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && props.location.pathname !== "/forgotpassword" && props.location.pathname !== "/resetpassword/" && props.location.pathname !== "/changepassword"&& props.location.pathname !== "/collection" && props.location.pathname !== "/stories"&&props.location.pathname !== "/paymentfail"&&props.location.pathname !== "/paymentsuccess/:id" && Globalctx && Globalctx.pathName === false) &&
+            {(props.location.pathname !== "/cart" && props.location.pathname !== `/account${"-" + window.location.pathname.split("-")[1]}` && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && props.location.pathname !== "/forgotpassword" && props.location.pathname !== "/resetpassword/" && props.location.pathname !== "/changepassword" && props.location.pathname !== "/collection" && props.location.pathname !== "/stories" && props.location.pathname !== "/paymentfail" && props.location.pathname !== "/paymentsuccess/:id" && Globalctx && Globalctx.pathName === false) &&
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />
             }
             {
@@ -83,7 +89,7 @@ export const RouterApp = (props) => {
             }
             <Route key="sto" component={stories} exact path={routes.Stories} />
             <Route key="Collection" component={Collection} exact path={routes.Collection} />
-            {(props.location.pathname !== "/cart" && props.location.pathname !== `/account${"-" + window.location.pathname.split("-")[1]}` && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && props.location.pathname !== "/forgotpassword" && props.location.pathname !== "/resetpassword/" && props.location.pathname !== "/changepassword") &&props.location.pathname !== "/paymentfail"&&props.location.pathname !== "/paymentsuccess/:id"&&
+            {(props.location.pathname !== "/cart" && props.location.pathname !== `/account${"-" + window.location.pathname.split("-")[1]}` && props.location.pathname !== "/registers" && props.location.pathname !== "/login" && props.location.pathname !== "/checkout" && props.location.pathname !== "/forgotpassword" && props.location.pathname !== "/resetpassword/" && props.location.pathname !== "/changepassword") && props.location.pathname !== "/paymentfail" && props.location.pathname !== "/paymentsuccess/:id" &&
                 <Route exact={true} component={Stylori} path={"/:listingpage"} />}
 
             {
@@ -99,11 +105,13 @@ export const RouterApp = (props) => {
                     <Redirect key="stylori-redirect" from="/login" exact to={"/home"} />
                     :
                     <Route key="login" component={UserLogin} exact path={routes.UserLogin} />
-
-
             }
 
-            <Route key="Account" component={Account} exact path={routes.Account} />
+            {localStorage.getItem('user_id') ?
+                <Route key="Account" component={Account} exact path={routes.Account} />
+                :
+                <Route key="stylori-redirect" from="/login" exact to={"/account-allorders"} />
+            }
             <Route key="registers" component={UserRegister} exact path={routes.UserRegister} />
         </Switch>
     );

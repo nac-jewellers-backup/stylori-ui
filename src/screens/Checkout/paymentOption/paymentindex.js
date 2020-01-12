@@ -63,17 +63,17 @@ class PaymentIndex extends React.Component {
                     <Grid container spacing={12} lg={12} className="panel-body">
                         <Grid item lg={5}>
                             <div className="pay-index-subhed">
-                                <p style={{ background: this.state.isActive == "Creditform" ? "#dfdfdf" : "" }}
+                                {/* <p style={{ background: this.state.isActive == "Creditform" ? "#dfdfdf" : "" }}
                                     style={{ background: "#a8a1a1" }}
-                                // onClick={() => this.toggleCollapsed('Creditform')}
+                                onClick={() => this.toggleCollapsed('Creditform')}
                                 >
                                     <div className="cc-icon"></div> &nbsp; Credit card </p>
                                 <p style={{ background: this.state.isActive == "Debitform" ? "#dfdfdf" : "" }}
-                                    // onClick={() => this.toggleCollapsed('Debitform')}
+                                    onClick={() => this.toggleCollapsed('Debitform')}
                                     style={{ background: "#a8a1a1" }}
 
                                 >
-                                    <div className="dc-icon"></div> &nbsp; Debit card </p>
+                                    <div className="dc-icon"></div> &nbsp; Debit card </p> */}
                                 <p style={{ background: this.state.isActive == "Netbanking" ? "#dfdfdf" : "" }}
                                     onClick={() => this.toggleCollapsed('Netbanking')}
                                     // style={{ background: "#dfdfdf" }}
@@ -107,27 +107,25 @@ class PaymentIndex extends React.Component {
                 </Hidden>
 
                 <Hidden mdUp>
-                    <ExpansionPanel className="respone-div div_DARK"
-                        // style={{ background: "#a8a1a1" }}
+                    {/* <ExpansionPanel className="respone-div div_DARK"
                     >
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography className="py-head"><div className="cc-icon">&nbsp;</div>Credit card  </Typography>
                         </ExpansionPanelSummary>
-                        {/* <ExpansionPanelDetails style={{ padding: "0px" }}>
+                        <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Creditform data={this.props.data} dataCard1={dataCard1}/>
-                        </ExpansionPanelDetails> */} 
-                    </ExpansionPanel>
+                        </ExpansionPanelDetails> 
+                    </ExpansionPanel> */}
 
-                    <ExpansionPanel className="respone-div div_DARK"
-                        // style={{ background: "#a8a1a1" }}
+                    {/* <ExpansionPanel className="respone-div div_DARK"
                     >
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography className="py-head">  <div className="dc-icon"></div> &nbsp; Debit card </Typography>
                         </ExpansionPanelSummary>
-                        {/* <ExpansionPanelDetails style={{ padding: "0px" }}>
+                        <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Debitform data={this.props.data} dataCard1={dataCard1}/>
-                        </ExpansionPanelDetails> */}
-                    </ExpansionPanel> 
+                        </ExpansionPanelDetails>
+                    </ExpansionPanel>  */}
  
                     <ExpansionPanel className="respone-div"
                     >
