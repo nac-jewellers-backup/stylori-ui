@@ -40,7 +40,7 @@ class Component extends React.Component {
       openMobile: true,
       CardRadio: false,
       checked: {
-        
+
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
         NoOfStones: {}, Gender: {}, StoneColor: {}, StoneShape: {}, category: {}
       },
@@ -63,7 +63,7 @@ class Component extends React.Component {
 
   }
   componentDidMount() {
-    var { checked, chipData, numOne, numTwo } = this.state
+    var { checked, chipData, numOne, numTwo, selected } = this.state
     console.log('price_props', typeof this.props.data[0].subFilter['Price Range'])
     var price_min = Number(this.props.data[0].subFilter['Price Range'].min);
     var price_max = Number(this.props.data[0].subFilter['Price Range'].max);
@@ -177,6 +177,14 @@ class Component extends React.Component {
               }
 
             })
+            
+      //prakash inga paaru
+        // data && data.data && data.data.allSeoUrlPriorities && data.data.allSeoUrlPriorities.nodes && data.data.allSeoUrlPriorities.nodes.map(val => {
+        //       var attrName = val.attributeName
+        //       selected.push(attrName)
+        
+        //     })
+            this.setState(selected)
             this.setState(checked)
             this.setState({ chipData }, () => this.props.setFilters(checked))
           }).catch(function (error) {
@@ -186,8 +194,11 @@ class Component extends React.Component {
 
     }
     filters_checked()
+    debugger
     if (paramsfilter && paramsfilter.length > 0) {
+      
       this.handleChange(() => { }, true, () => { }, {}, paramsfilter)
+      
     }
 
   }
@@ -247,7 +258,7 @@ class Component extends React.Component {
     let checked = { ...this.state.checked }
     var queries = [{}]
     let pathnameSplit = window.location.pathname.split('/')
-    
+
     // if (Object.entries(this.state.category).length === 0 && this.state.category.constructor === Object) {
     //   const splitHiphen = () => {
     //     if (pathnameSplit[1].indexOf('-')) {
@@ -264,8 +275,8 @@ class Component extends React.Component {
     debugger
 
     if (TargetName === undefined) {
-      if(Object.keys(this.state.checked.category).length=== 0 && this.state.checked.category.constructor === Object){
-      
+      if (Object.keys(this.state.checked.category).length === 0 && this.state.checked.category.constructor === Object) {
+
         var _replaceCategory = JSON.parse(sessionStorage.getItem('category'))
         checked["category"] = _replaceCategory
         this.setState(checked)
@@ -460,7 +471,7 @@ class Component extends React.Component {
   // })
 
   render() {
-    console.log('urlSplitparamsEqual', this.state.checked)
+    console.log('urlSplitparamsEqual', this.state)
 
     const { classes, data, loading } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];
@@ -540,24 +551,33 @@ class Component extends React.Component {
                             {
 
                               filter.map((row, i) => {
+                                
                                 return (
                                   <>
-                                    <ListItem key={row}
-                                      onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
-                                      <ListItemText
-                                      >
-                                        <Typography className="fil-list-items" variant='h4' component="h4"
-                                        >{row}
-                                        </Typography>
-                                      </ListItemText>
-                                      {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
-                                        <ExpandMore className="fil-drawer-arrow" />}
-                                    </ListItem>
+                                    {
+                                      subFilter[row].length > 0 ?
+                                        <ListItem key={row}
+                                          onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
+                                          <ListItemText
+                                          >
+                                            <Typography className="fil-list-items" variant='h4' component="h4"
+                                            >{row}
+                                            </Typography>
+                                          </ListItemText>
+                                          {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
+                                            <ExpandMore className="fil-drawer-arrow" />}
+                                        </ListItem>
+                                        :
+                                        <span></span>
+                                    }
+
                                     <>
                                       {/* {JSON.stringify()} */}
                                       {(selected.indexOf(row) !== -1) &&
+                                      
                                         <>
                                           {
+                                            
                                             subFilter[row].filter((row12, i) =>
                                               (i < (this.state[`li_${row}`] ? this.state[`li_${row}`] : 4))).map(row12 => {
                                                 return (<div style={{ padding: "0 20px" }}>
@@ -691,18 +711,21 @@ class Component extends React.Component {
                         </ListItemText>
                     : ""} */}
                   <List className="mbl-filter-list">
-                    {filter && filter.map(row => (
-                      <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
-                        onClick={() => this.filterValue(row)}
-                      >
-                        <ListItemText
-                          className='filter-mbl-font filter-mbl-fonts'
+                    {filter && filter.map(row => {
+                      return (subFilter[row].length > 0 ?
+                        <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
+                          onClick={() => this.filterValue(row)}
                         >
-                          {row && row}
+                          <ListItemText
+                            className='filter-mbl-font filter-mbl-fonts'
+                          >
+                            {row && row}
 
-                        </ListItemText>
-                      </ListItem>
-                    ))}
+                          </ListItemText>
+                        </ListItem>
+                        : '')
+                    }
+                    )}
                   </List>
                   {/* {console.info('data-filter', subFilter, this.state.filtercheck)} */}
                 </Grid>
