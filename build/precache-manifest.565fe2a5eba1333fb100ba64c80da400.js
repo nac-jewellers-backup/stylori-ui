@@ -4,31 +4,31 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "c41e21a179c118488e8c",
+    "revision": "5fed4bb3c1ee6701b2cd",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "e886575c33d482867db1",
+    "revision": "761cf45db5b39a4775aa",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "1966a4e2024710073f0b",
+    "revision": "d6e9d92f8001243a2852",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "c41e21a179c118488e8c",
+    "revision": "5fed4bb3c1ee6701b2cd",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "e886575c33d482867db1",
+    "revision": "761cf45db5b39a4775aa",
     "url": "/static/js/3.js"
   },
   {
-    "revision": "9fe9ade42f48f7736dda",
+    "revision": "3f13c0f18c91e8d7e779",
     "url": "/static/js/4.js"
   },
   {
-    "revision": "1966a4e2024710073f0b",
+    "revision": "d6e9d92f8001243a2852",
     "url": "/static/js/main.js"
   },
   {
@@ -60,16 +60,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/cartoonFooter.png"
   },
   {
-    "revision": "7996bd6992d473ba217275885f52812f",
-    "url": "/static/media/close.svg"
-  },
-  {
     "revision": "1d4ab251e668bd11b62b30615bd88e78",
     "url": "/static/media/closeheart.jpg"
-  },
-  {
-    "revision": "6916c84be4a82b94cf15503ef25d48f2",
-    "url": "/static/media/delivery.svg"
   },
   {
     "revision": "28cd30ea4ad92b4520d9a3fb2634a87d",
@@ -92,16 +84,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/logout.svg"
   },
   {
-    "revision": "37ef37619d53e7631c8ab218a5722c1e",
-    "url": "/static/media/love.svg"
-  },
-  {
     "revision": "965dabcd31d04c27b319f732b7aae019",
     "url": "/static/media/nosepin.gif"
-  },
-  {
-    "revision": "b0c24c44cdbcd2228f0f6fef2740195f",
-    "url": "/static/media/shopping.svg"
   },
   {
     "revision": "ced611daf7709cc778da928fec876475",
@@ -124,10 +108,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/styloriGagets.png"
   },
   {
-    "revision": "5a712650392a83e01a75498ebc83837b",
-    "url": "/static/media/telephone.svg"
-  },
-  {
     "revision": "1737e5e0a88de55dc6cf1a773e4b0816",
     "url": "/static/media/topPicksOne.jpg"
   },
@@ -138,10 +118,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "37b89e280ecc047a56d66fdb6404bb23",
     "url": "/static/media/topPicksTwo.jpg"
-  },
-  {
-    "revision": "c7359aa61314bf6d37f83ccc97dd0694",
-    "url": "/static/media/user-shape.svg"
   },
   {
     "revision": "0a848483a9d0cc238c3b584e1260e3ec",
