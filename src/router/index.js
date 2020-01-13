@@ -23,6 +23,7 @@ import ForgotPassword from "components/ForgotPassword/ForgetPassword";
 import PaymentHiddenForm from '../screens/Checkout/paymentOption/paymentHiddenForm';
 import Success from '../screens/Stylori/success';
 import Fail from '../screens/Stylori/fail';
+
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
 
@@ -37,6 +38,7 @@ import ChangePassword from 'screens/Checkout/loginRegister/ChangePassword'
 
 
 const browserHistory = createBrowserHistory();
+let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
 
 browserHistory.listen((location, action) => {
     window.scrollTo(0, 0);
@@ -99,11 +101,13 @@ export const RouterApp = (props) => {
                     <Redirect key="stylori-redirect" from="/login" exact to={"/home"} />
                     :
                     <Route key="login" component={UserLogin} exact path={routes.UserLogin} />
-
-
             }
 
-            <Route key="Account" component={Account} exact path={routes.Account} />
+            {localStorage.getItem('user_id') ?
+                <Route key="Account" component={Account} exact path={routes.Account} />
+                :
+                <Route key="stylori-redirect" from="/login" exact to={"/account-allorders"} />
+            }
             <Route key="registers" component={UserRegister} exact path={routes.UserRegister} />
         </Switch>
     );

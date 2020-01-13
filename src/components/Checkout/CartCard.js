@@ -75,7 +75,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         const { classes, data } = this.props;
-        
+
         const { productsDetails, fadeImages, dataCard1 } = this.props.data;
         // const { FilterOptionsCtx: { setcartcount } } = React.useContext(FilterOptionsContext);
         // React.useEffect(()=>{
@@ -83,7 +83,7 @@ class Checkoutcard extends React.Component {
         //         cartcount: this.props.data.length
         //     })
         // },[data])
-        
+        debugger
         return (
             <div style={{ marginTop: "10px" }}>
                 <Grid container>
@@ -93,7 +93,7 @@ class Checkoutcard extends React.Component {
                 </Grid><br />
                 {this.props.data.map(dataval => (
                     dataval.productsDetails.map(val => (
-                        <div style={{ outline: "none", marginBottom: "25px", boxShadow: "1px 2px 13px 7px #DEDADA",padding:"10px" }} className={classes.cart}>
+                        <div style={{ outline: "none", marginBottom: "25px", boxShadow: "1px 2px 13px 7px #DEDADA", padding: "10px" }} className={classes.cart}>
                             <Grid container spacing={12} xs={12}  >
                                 {/* {window.location.pathname !== "/checkout" ?
                                     <Grid item xs={1}  >
@@ -138,6 +138,10 @@ class Checkoutcard extends React.Component {
 
                                         <Grid item xs={3} >
                                             <Typography className={`subhesder ${classes.normalfonts}`}>Quantity 1</Typography>
+                                            <br />
+                                            {/* {data[0].isReadyToShip === true ? */}
+                                                <Typography className={`subhesder ${classes.normalfonts}`}>{data[0].shipby}</Typography>
+                                                {/* : ""} */}
                                             <br />
                                             {window.location.pathname !== "/checkout" ? <div className={`subhesder hov ${classes.normalfonts}`}
                                                 id={val.namedetail[4].details} onClick={(event) => this.handleDeleteLocalStorage(event)}>

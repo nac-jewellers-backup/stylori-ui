@@ -28,7 +28,7 @@ class Allorders extends React.Component {
     handleChange = panel => (event) => {
         const { expanded } = this.state;
         var valus = expanded === panel ? "" : panel
-        expanded.push(JSON.stringify(valus)) 
+        expanded.push(JSON.stringify(valus))
         this.setState({
             expanded,
         });
@@ -66,6 +66,32 @@ class Allorders extends React.Component {
             return 'Ships by' + ' ' + moment().add(numberOfDays, 'days').format('MMM Do YYYY');
         }
     }
+    ImageUrl = (imgs) => {
+        debugger
+        if (this.props && this.props.allorderdata && this.props.allorderdata.allorderdata && this.props.allorderdata.allorderdata.nodes.length > 0 && this.props.allorderdata && this.props.allorderdata.allorderdata) {
+            let vera = this.props.allorderdata.allorderdata.nodes.map(val => {
+                if (val !== undefined && val !== null) {
+                    let inside = val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
+                        if (cart !== undefined && cart !== null) {
+                            var metalColor_ = cart.transSkuListByProductSku.metalColor
+                            var cnt = imgs.imageUrl.split("/")
+                            var cnt_b = cnt[2].split("-")
+                            var cnt_c = cnt_b[1]
+                            if (metalColor_[0] === cnt_c[1]) {
+                                return imgs.imageUrl
+                            }
+                        }
+                    }
+                    )
+                    return inside[0]
+                }
+
+            })
+            let outside = vera.filter(val => (val !== undefined && val !== null))
+            return outside[0];
+        }
+    }
+
     render() {
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
@@ -146,7 +172,7 @@ class Allorders extends React.Component {
                                                             <Grid item lg={3} sm={4}  >
                                                                 {cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs => (
                                                                     <div className="wishlist_img">
-                                                                        <img className="viewport-img" src={`https://assets.stylori.net/base_images/${imgs.imageUrl}`}
+                                                                        <img className="viewport-img" src={`https://assets.stylori.net/base_images/${this.ImageUrl(imgs)}`}
                                                                         />
                                                                     </div>
                                                                 ))}
@@ -246,12 +272,8 @@ class Allorders extends React.Component {
                         {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0 ?
                             <div>
                                 {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map(val => {
-                                    return (order_id !== val.id ? false :
-
-
-
+                                    return (order_id === val.id ? 
                                         <div>
-
 
                                             <div style={{ marginTop: "20px", boxShadow: "none" }}>
 
@@ -389,7 +411,7 @@ class Allorders extends React.Component {
 
 
 
-                                    )
+                                    :"")
                                 })}
                             </div>
                             : <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Orders</div>}
