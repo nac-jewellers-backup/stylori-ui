@@ -320,7 +320,7 @@ class Allorders extends React.Component {
                                                             <Grid container spacing={12} lg={12} style={{ overflow: "hidden", outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px", color: "#394578" }}>
                                                                 <Grid item lg={2} sm={3}  >
                                                                     {cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs =>
-                                                                        this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku).length > 0 ?
+                                                                        this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku) .length > 0 ?
                                                                             <div className="wishlist_img">
                                                                                 <img className="viewport-img" src={`https://assets.stylori.net/base_images/${this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku)}`}
                                                                                 />
