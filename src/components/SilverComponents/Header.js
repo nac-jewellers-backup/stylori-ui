@@ -377,7 +377,7 @@ class Header extends Component {
                                                                             localStorage.clear();
                                                                             window.location.reload()
                                                                             window.location.pathname = "/login"
-                                                                        }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
+                                                                        }}><img style={{ height: " 18px!important", cursor: "pointer ", width: "18px !important" }} className="icons-header-sizes" src={logout} />&nbsp;Logout
                                              </div></Grid>
                                                                     <Grid item lg={6}> <div style={{ float: "right" }} onClick={() => { window.location.href = "/account-profile" }}>
                                                                         / My Account
@@ -417,13 +417,17 @@ class Header extends Component {
                                     onClose={this.handleClose}
                                 >
 
-                                    <Grid xs={12} style={{ width: "100%", height: "60px", alignContent: "center", justifyContent: "center", position: "absolute", background: "#fff", zIndex: "1300", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px" }}>
+                                    <Grid xs={12} style={{ width: "100%", height: "60px", alignContent: "center", justifyContent: "center", position: "fixed", top: "56px", boxShadow: "0px 3px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 325px 1px 10px 0px rgba(0,0,0,0.12)", background: "#fff", zIndex: "1300", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px" }}>
                                         <Grid container justify="flex-end" onClick={() => this.handleClose()}>
                                             <i style={{ fontSize: "16px", color: "#b2b1b1", paddingRight: "4px" }} class="fa fa-times closebus"></i>
                                         </Grid>
                                         <Grid container style={{ padding: "0px 8px 0px 8px" }}>
                                             <InputBase
-                                                style={{ fontSize: "13px", adding: "0px 0px 0px 3px" }}
+                                                style={{
+                                                    fontSize: "13px", padding: "0px 0px 0px 3px",
+                                                    width: "98%", border: "1px solid #ccc", borderRadius: " 6px", padding: "1px 5px!important", height: "30px!important", fontFamily: "Robot-Black!important"
+                                                }}
+
                                                 className="widthSearch"
                                                 placeholder=" SEARCH"
                                                 endAdornment={<InputAdornment position="end"><div className={classes.searchcontainerplain}><Seach className={"searchPlain"} />
