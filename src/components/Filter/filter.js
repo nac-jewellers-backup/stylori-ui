@@ -248,16 +248,23 @@ class Component extends React.Component {
     var queries = [{}]
     let pathnameSplit = window.location.pathname.split('/')
     
-    if (Object.entries(this.state.category).length === 0 && this.state.category.constructor === Object) {
-      const splitHiphen = () => {
-        if (pathnameSplit[1].indexOf('-')) {
-          return pathnameSplit[1].split('-')
-        }
-      }
-      var _category_capital_letter = splitHiphen()[0].charAt(0).toUpperCase() + splitHiphen()[0].slice(1)
-      var _category_obj = {}
-      _category_obj[_category_capital_letter] = true
-      checked['category'] = _category_obj
+    // if (Object.entries(this.state.category).length === 0 && this.state.category.constructor === Object) {
+    //   const splitHiphen = () => {
+    //     if (pathnameSplit[1].indexOf('-')) {
+    //       return pathnameSplit[1].split('-')
+    //     }
+    //   }
+    //   var _category_capital_letter = splitHiphen()[0].charAt(0).toUpperCase() + splitHiphen()[0].slice(1)
+    //   debugger
+    //   var _category_obj = {}
+    //   _category_obj[_category_capital_letter] = true
+    //   checked['category'] = _category_obj
+    //   this.setState(checked)
+    // }
+    debugger
+    if(Object.keys(this.state.checked.category).length=== 0 && this.state.checked.category.constructor === Object){
+      var _replaceCategory = JSON.parse(sessionStorage.getItem('category'))
+      this.state.checked["category"] = _replaceCategory
       this.setState(checked)
     }
     if (TargetName === undefined) {
