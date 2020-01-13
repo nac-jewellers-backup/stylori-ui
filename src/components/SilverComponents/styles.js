@@ -14,7 +14,7 @@ export const styles = theme => ({
     justifyContent: "flex-end",
   },
   searchcontainer: {
-    padding: "4px",
+    padding: "1px",
     backgroundColor: theme.palette.secondary.dark,
     display: "flex",
     justifyContent: "center",
@@ -192,7 +192,7 @@ export const useStyles = makeStyles(theme => ({
   listedItems: {
     padding: "0px",
     fontSize: "0.7rem !important",
-    cursor:"pointer"
+    cursor: "pointer"
   },
   listedItemsub: {
     padding: "0px",
@@ -205,7 +205,7 @@ export const useStyles = makeStyles(theme => ({
     padding: "2px 16px 2px 16px",
     fontSize: "0.7rem !important",
     letterSpacing: 2,
-    cursor:"pointer"
+    cursor: "pointer"
   },
   listedItemsvalue2: {
     padding: "2px 16px 2px 16px",

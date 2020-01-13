@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-import Header from "components/Header/header";
+import Header from "components/SilverComponents/Header";
 import Footer from "components/Footer/Footer";
 import '../../containers/index.css'
 import { aboutus } from '../../containers/dummydatafaqs';
@@ -15,9 +15,7 @@ export default function AboutPage(props) {
 
     return (
         <Grid container>
-            <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
-                <Header />
-            </Grid>
+            <Header />
 
             <Grid container class="aboutwidth" style={{ paddingTop: "15px" }} >
                 <Grid container class="aboutMargin">
@@ -30,7 +28,7 @@ export default function AboutPage(props) {
 
                         <Grid item style={{ padding: "0px 15px" }}>
                             <Typography variant="h5" style={{ color: "#ed1165", marginBottom: "10px" }}>About Us</Typography>
-                            <Typography style={{ color: "rgb(102, 102, 102)",fontSize: "12px"}} dangerouslySetInnerHTML={{ __html: aboutus.data.content }}>
+                            <Typography style={{ color: "rgb(102, 102, 102)", fontSize: "12px" }} dangerouslySetInnerHTML={{ __html: aboutus.data.content }}>
 
                             </Typography>
                         </Grid>
