@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.primary.main
     },
     paddingSpace: {
-        padding: '3%',
+        padding: '1% 2%',
         [theme.breakpoints.down('sm')]: {
             padding: '0'
         },
@@ -226,7 +226,7 @@ export default function Footer(props) {
 
 
                     <Grid container item xl={5} lg={5} md={5} xs={12} sm={12}>
-                        <Grid container item xs={12} style={{ backgroundColor: 'colorMain', fontSize: '13px', padding: '2%' }} className={`${classes.colorWhiteBorder} ${classes.colorWhite}`}>
+                        <Grid container item xs={12} style={{ backgroundColor: 'colorMain', fontSize: '13px', padding: '2%' }} alignItems="center" className={`${classes.colorWhiteBorder} ${classes.colorWhite}`}>
                             {
 
                                 footerData.map(data => {
@@ -332,7 +332,7 @@ export default function Footer(props) {
             <Container>
                 <Grid container item className={`${classes.colorWhiteBackground}`} style={{ padding: '18px 1% 18px 1%' }}>
                     <Hidden only={['sm', 'xs']}>
-                        <Grid container item xl={5} lg={5} md={5} xs={12} sm={6}>
+                        <Grid container item xl={5} lg={5} md={5} xs={12} sm={6} alignItems="center">
                             <Grid container item xs={12} style={{ color: '#808080', fontSize: '13px' }}>
                                 <Grid item xs={3}>
                                     {footerData1.map(data => {
@@ -367,8 +367,8 @@ export default function Footer(props) {
 
                     <Hidden only={['sm', 'xs']}>
 
-                        <Grid container item xl={4} lg={4} md={5} xs={12} sm={6}>
-                            <Grid item xs={12} style={{ padding: '3% 0px 0px 20px', fontWeight: '500', fontSize: '12px', color: '#808080' }}>
+                        <Grid container item xl={4} lg={4} md={5} xs={12} sm={6} alignItems="center" >
+                            <Grid item xs={12} style={{ padding: '0px 0px 0px 20px', fontWeight: '500', fontSize: '12px', color: '#808080' }}>
                                 Need Help?
                                 </Grid>
                             <Grid item xs={12} className="footer-icons">

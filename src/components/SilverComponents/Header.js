@@ -250,7 +250,7 @@ class Header extends Component {
                                         <Grid container spacing={12} id="fullcontainer" className="setHeight">
                                             <Grid item xs={3} className="logoImgHeader1">
                                                 <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/home" }} style={{ cursor: "pointer" }}>
-                                                    <img id="logoImage" style={{ transition: " 0.2s" }} className={`img`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                                    <img id="logoImage" style={{ transition: " 0.2s" }} className={`imges`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                                 </div>
                                             </Grid>
                                             <Grid container item xs={9} id={"containerTitle"} justify="flex-end" alignItems="center" className={`header-navbar-list1 ${classes.headerNavbarList}`}
@@ -327,7 +327,7 @@ class Header extends Component {
 
                                         <Grid item xs={5} className="logoImgHeader1">
                                             <div className="logoDiv1" onClick={() => { window.location.href = "/home" }} style={{ cursor: "pointer" }}>
-                                                <img className={`imgsilver`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                                <img className={`imgsilver`} src={styloriLogo} style={{ width: "100%", height: "auto" }} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                             </div>
                                         </Grid>
                                         <Grid item xs={6}>

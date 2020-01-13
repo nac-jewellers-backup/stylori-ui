@@ -99,6 +99,11 @@
   width: 100%;
 }
 
+.imges {
+  height: 60px;
+  width: 100%;
+}
+
 .MuiBadge-colorSecondary {
   background: #d51f63 !important;
   top: -6px !important;
