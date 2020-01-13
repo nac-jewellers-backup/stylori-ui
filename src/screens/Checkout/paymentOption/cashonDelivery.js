@@ -21,10 +21,6 @@ class CashonDelivey extends React.Component {
     }
     makeFetch = async (props) => {
         debugger
-        const bb = this.props && this.props.dataCard1
-        // if (bb.length <0) {
-        //    return
-        // } else {
         await fetch(`${API_URL}/createorder`, {
             method: 'post',
             headers: {
@@ -40,7 +36,7 @@ class CashonDelivey extends React.Component {
         })
             .then(resdata => {
                 console.log('datasssss', resdata)
-                localStorage.removeItem("order_id")
+                // localStorage.removeItem("order_id")
                 if (resdata !== null && resdata !== undefined) {
                     localStorage.setItem("order_id", JSON.stringify(resdata.order.id))
                 }

@@ -83,9 +83,12 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
       }
       createdAt
       id
+      orderStatus
+      paymentMode
     }
   }
 }
+
 `
 
 export const ORDERSUCCESSFUL = `query MyQuery($userProfileId: [UUID!]) {
