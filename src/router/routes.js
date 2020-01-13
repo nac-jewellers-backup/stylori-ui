@@ -12,7 +12,7 @@ export const routes = {
     Silver: '/stylorisilver',
     Faqs: '/faqs',
     Stories: '/stories',
-    Collection: '/collection',
+    Collection: '/collections',
     ProductCare: '/productcare',
     Shipping: '/deliveryreturns',
     PrivacyPolicy: '/privacypolicy',

@@ -249,7 +249,7 @@ class Header extends Component {
                                     <Container maxWidth="lg" >
                                         <Grid container spacing={12} id="fullcontainer" className="setHeight">
                                             <Grid item xs={3} className="logoImgHeader1">
-                                                <div id="logoDiv1" className="logoDiv1">
+                                                <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/home" }} style={{cursor:"pointer"}}>
                                                     <img id="logoImage" style={{ transition: " 0.2s" }} className={`img`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                                 </div>
                                             </Grid>
@@ -326,7 +326,7 @@ class Header extends Component {
                                         </Grid>
 
                                         <Grid item xs={4} className="logoImgHeader1">
-                                            <div className="logoDiv1">
+                                            <div className="logoDiv1"  onClick={() => { window.location.href = "/home" }} style={{cursor:"pointer"}}>
                                                 <img className={`imgsilver`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                             </div>
                                         </Grid>
