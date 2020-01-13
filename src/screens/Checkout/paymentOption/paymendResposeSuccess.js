@@ -8,8 +8,37 @@ import { CartContext } from 'context'
 import { withRouter } from 'react-router-dom';
 import cart from 'mappers/cart'
 import Allorders from "components/accounts/allorders";
+import { API_URL, HOME_PAGE_URL, CDN_URL } from '../../../config';
+const order_id = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : ""
 
+var obj = {}
+obj["order_id"] = order_id
 class PaymentResponseSuccess extends React.Component {
+   makeFetch_resend_mail = async (props) => {
+      debugger
+      await fetch(`${API_URL}/resendorderemail`, {
+         method: 'post',
+         headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+         },
+         body: JSON.stringify(obj)
+      }).then(res => {
+         // alert(
+         //    'Order Placed Successfully'
+         // )
+         return res.json();
+      })
+         .then(resdata => {
+            console.log('datasssss', resdata)
+            alert(
+               resdata && resdata.message
+            )
+         })
+         .catch(err => {
+            // console.log(err)
+         });
+   }
    render() {
       // alert(JSON.stringify(this.props.data))
       return (
@@ -23,13 +52,15 @@ class PaymentResponseSuccess extends React.Component {
             <Grid container justify="center">
                <Grid item xs={12} sm={12} md={4} className="contant-center">
                   We've send you an email confirmation.
-                  <a style={{
+                  <a onClick={() => {
+                     this.makeFetch_resend_mail()
+                  }} style={{
                      fontSize: "12px",
                      color: "blue",
                      textDecoration: "underline",
                      cursor: "pointer",
                   }}>Resend Email</a>
-                  </Grid>
+               </Grid>
             </Grid>
             {/* <Grid container style={{marginTop:"15px"}}>
                <Grid container justify="center">
@@ -60,20 +91,21 @@ class PaymentResponseSuccess extends React.Component {
                         </Grid>
                   </Grid>
                </Grid> */}
-               <Grid container justify="center">
-                  <Grid container style={{width:"100%"}}  >
-                     <Grid item style={{display:"flex",marginLeft:"auto",paddingRight:"6%"}}>
-                     <Button style={{background:"#ed1165",color:"#fff"}}  onClick={()=>{
+            <Grid container justify="center">
+               <Grid container style={{ width: "100%" }}  >
+                  <Grid item style={{ display: "flex", marginLeft: "auto", paddingRight: "6%" }}>
+                     <Button style={{ background: "#ed1165", color: "#fff" }} onClick={() => {
                         localStorage.removeItem("panel")
                         // localStorage.removeItem("order_id")
                         localStorage.removeItem("cartDetails")
                         localStorage.removeItem("ship_isactive")
                         localStorage.removeItem("bil_isactive")
-                        this.props.history.push("/jewellery")}}>Back to home</Button>
-                     </Grid>
+                        this.props.history.push("/jewellery")
+                     }}>Back to home</Button>
                   </Grid>
                </Grid>
-            
+            </Grid>
+
             <Grid container>
                {/* <CartCard data={this.props.data}/> */}
                <Allorders allorderdata={this.props.allorderdata} />
