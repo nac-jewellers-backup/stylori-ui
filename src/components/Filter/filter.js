@@ -262,12 +262,15 @@ class Component extends React.Component {
     //   this.setState(checked)
     // }
     debugger
-    if(Object.keys(this.state.checked.category).length=== 0 && this.state.checked.category.constructor === Object){
-      var _replaceCategory = JSON.parse(sessionStorage.getItem('category'))
-      this.state.checked["category"] = _replaceCategory
-      this.setState(checked)
-    }
+
     if (TargetName === undefined) {
+      if(Object.keys(this.state.checked.category).length=== 0 && this.state.checked.category.constructor === Object){
+      
+        var _replaceCategory = JSON.parse(sessionStorage.getItem('category'))
+        checked["category"] = _replaceCategory
+        this.setState(checked)
+        this.forceUpdate()
+      }
       this.props.setloadingfilters(true)
       let checkedvalue = {};
       checkedvalue[value] = BoolName
