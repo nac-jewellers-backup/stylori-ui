@@ -116,6 +116,7 @@ const useRegister = (changePanel, props) => {
                 localStorage.setItem("email", data.user.email)
                 localStorage.setItem("user_id", data.user_profile_id)
                 localStorage.setItem('accessToken', data.accessToken)
+                localStorage.setItem("set_check", "123")
                 // localStorage.setItem("addres_id", data.user.id)
                 setValues({ user_id: data.user_profile_id })
                 setCartFilters({ user_id })

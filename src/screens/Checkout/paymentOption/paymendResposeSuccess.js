@@ -32,10 +32,12 @@ class PaymentResponseSuccess extends React.Component {
          .then(resdata => {
             console.log('datasssss', resdata)
             if (resdata.message !== undefined && resdata.message !== null) {
-               alert(
-                  resdata && resdata.message
-               )
+               // alert(
+               //    resdata && resdata.message
+               // )
+               // alert('success',"We sent activation mail. Please check your mail.")
             }
+            alert("Your mail has been Resending on successfully")
 
          })
          .catch(err => {
@@ -44,6 +46,7 @@ class PaymentResponseSuccess extends React.Component {
    }
    render() {
       // alert(JSON.stringify(this.props.data))
+      let gut_lg = localStorage.getItem("gut_lg") ? JSON.parse(localStorage.getItem("gut_lg")) : {}
       return (
          <Grid container justify="center">
             <Grid container justify="center">
@@ -96,13 +99,16 @@ class PaymentResponseSuccess extends React.Component {
                </Grid> */}
             <Grid container justify="center">
                <Grid container style={{ width: "100%" }}  >
-                  <Grid item style={{ display: "flex", marginLeft: "auto", paddingRight: "6%" }}>
-                     <Button style={{ background: "#ed1165", color: "#fff" }} onClick={() => {
-                        localStorage.removeItem("panel")
+                  <Grid item style={{ display: "flex", marginLeft: "auto", paddingRight: "2px" }}>
+                     <Button style={{ background: "#ed1165", color: "#fff", padding:"5px 20px" }} onClick={() => {
+                         localStorage.removeItem("panel")
                         localStorage.removeItem("order_id")
                         localStorage.removeItem("cartDetails")
                         localStorage.removeItem("ship_isactive")
                         localStorage.removeItem("bil_isactive")
+                        if (gut_lg === true) {
+                           localStorage.clear();
+                        }
                         this.props.history.push("/jewellery")
                      }}>Back to home</Button>
                   </Grid>

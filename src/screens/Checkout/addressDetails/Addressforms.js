@@ -3,6 +3,8 @@ import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CheckForCod } from 'queries/productdetail';
 import { ADDRESSDETAILS } from 'queries/productdetail';
+import { CartContext } from '../../../context/CartContext';
+
 // window.cache = {}
 var obj = {}
 var delet = {}
@@ -83,6 +85,7 @@ const Addressforms = (changePanel) => {
     const addressva = values && values.addressvalues && values.addressvalues.length > 0
     const update_clear = values && values.update_clear
 
+    let { CartCtx: { setCartFilters } } = React.useContext(CartContext);
     useEffect(() => {
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
         if (con_gust !== true) {
@@ -139,7 +142,7 @@ const Addressforms = (changePanel) => {
     }, [removedata])
     useEffect((event) => {
         const a = CodData.data ? CodData.data.allPincodeMasters : "";
-        // alert(JSON.stringify(CodData))
+        // alert(JSON.stringify(CodData)) 
         if (a) {
             var res = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].state : ''
             var res1 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].country : ''
@@ -202,7 +205,7 @@ const Addressforms = (changePanel) => {
     // };
     console.log("jjj****", values.addressOne.salutation)
     const handleSubmit = (e) => {
-        
+
         if (values && values.addressOne && values.addressOne.pincode === "") {
             values["addressOne"]['errortext']['pinerr'] = "Pin Code is required"
             setValues({ ...values, values })
@@ -337,6 +340,11 @@ const Addressforms = (changePanel) => {
         // window.location.reload(); 
     }
     const selectaddreses = (val_addrs, num, index) => {
+        var obj_user = {}
+        let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
+        let set_check = localStorage.getItem("set_check") ? localStorage.getItem("set_check") : ""
+        obj_user["user_id"] = user_id
+
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
         addObjall['address_id'] = val_addrs && val_addrs.id ? val_addrs.id : ""
         if (values.checkValue1 === true) {
@@ -356,7 +364,7 @@ const Addressforms = (changePanel) => {
             // alert("your address send on successful")
             if (!pathnames) {
                 changePanel(3)
-                window.location.reload()
+                // window.location.reload()
             }
             // return false
         }
@@ -406,6 +414,11 @@ const Addressforms = (changePanel) => {
             // if (values.checkValue1 === true) {
             // }
         }
+
+        // if (!set_check.length > 0) {
+        //     localStorage.removeItem("cart_id")
+        //     setCartFilters(obj_user)
+        // }
     }
     const Delete_address = (val_addrs, index) => {
 

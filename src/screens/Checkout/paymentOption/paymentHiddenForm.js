@@ -12,7 +12,7 @@ export default function PaymentHiddenForm(props) {
     const obj = {}
     useEffect(() => {
         fetch(`${API_URL}/generatepaymenturl`, {
-            method: 'POST'
+            method: 'POST' 
         })
             .then((response) => response.json())
             .then((data) => {
@@ -34,7 +34,6 @@ export default function PaymentHiddenForm(props) {
         obj['payment_mode'] = "prepaide"
         obj['user_id'] = user_id
         obj['cart_id'] = cart_ids
-
         fetch(`${API_URL}/createorder`, {
             method: 'post',
             headers: {
@@ -46,12 +45,12 @@ export default function PaymentHiddenForm(props) {
             localStorage.removeItem("order_id")
             if (data !== null && data !== undefined) {
                 localStorage.setItem("order_id", JSON.stringify(data.order.id))
-            } 
-            localStorage.removeItem("panel")
-            localStorage.removeItem("cartDetails")
-            localStorage.removeItem("ship_isactive")
-            localStorage.removeItem("bil_isactive")
-            window.location.pathname = `/paymentsuccess/${data && data.order && data.order.id.length > 0 ? order_idx : ""}`
+            }
+            // localStorage.removeItem("panel")
+            // localStorage.removeItem("cartDetails")
+            // localStorage.removeItem("ship_isactive") 
+            // localStorage.removeItem("bil_isactive")
+            // window.location.pathname = `/paymentsuccess/${data && data.order && data.order.id.length > 0 ? order_idx : ""}`
         }).catch((error) => {
             console.error('Error:', error);
         });
