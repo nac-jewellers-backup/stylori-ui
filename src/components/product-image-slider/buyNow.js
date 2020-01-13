@@ -176,7 +176,7 @@ class Component extends React.Component {
     }
 
     handleLocalStorage = () => {
-        debugger
+        
         if (this.props.data && this.props.data[0].productType === "Rings") {
             this.setState({
                 modelOpen: true,

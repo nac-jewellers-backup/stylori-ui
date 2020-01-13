@@ -36,7 +36,8 @@ let value = localStorage.getItem("select_addres") ? JSON.parse(localStorage.getI
 var variab = {}
 const CartCardCheck = (props) => {
     const { loading, error, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
-    return <Component  {...props} CodData={CodData} makeRequestCod={makeRequestCod} />
+    let { CartCtx: { setCartFilters } } = React.useContext(CartContext);
+    return <Component  {...props} CodData={CodData} makeRequestCod={makeRequestCod} setCartFilters={setCartFilters} />
 }
 
 
@@ -88,7 +89,16 @@ class Component extends React.Component {
         })
     }
     pincodeapi = () => {
+        var obj_user = {}
+        let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
+        let order_id = localStorage.getItem("order_id") ? localStorage.getItem("order_id") : ""
         this.props.makeRequestCod(variab)
+        localStorage.removeItem("cart_id")
+        obj_user["user_id"] = user_id
+        // obj_user["jewellery"] = "jewellery"
+        // if (order_id && order_id.length > 0) {
+            this.props.setCartFilters(obj_user)
+        // }
         this.changePanel(4)
     }
 
@@ -268,7 +278,7 @@ class Component extends React.Component {
 // });
 const Components = props => {
     let { CartCtx: { data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
-    debugger
+
     let content, mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
@@ -279,12 +289,12 @@ const Components = props => {
         alert('Your cart is empty')
         props.history.push('/jewellery')
     }
-if (Object.keys(data).length === 0 || data.data.allTransSkuLists.nodes.length === 0 ) content = <div className="overall-loader">
-    {/* {cartValueEmpty() */}
+    if (Object.keys(data).length === 0 || data.data.allTransSkuLists.nodes.length === 0) content = <div className="overall-loader">
+        {/* {cartValueEmpty() */}
     </div>
     else content = <CartCardCheck {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
 
-    debugger
+
     if (Object.keys(data).length === 0 && data.constructor === Object) content = <div className="overall-loader"> {/* {cartValueEmpty()} */}</div>
     else if (Object.keys(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes.length === 0) {
 

@@ -255,13 +255,13 @@ class Component extends React.Component {
     //     }
     //   }
     //   var _category_capital_letter = splitHiphen()[0].charAt(0).toUpperCase() + splitHiphen()[0].slice(1)
-    //   debugger
+    //   
     //   var _category_obj = {}
     //   _category_obj[_category_capital_letter] = true
     //   checked['category'] = _category_obj
     //   this.setState(checked)
     // }
-    debugger
+    
 
     if (TargetName === undefined) {
       if(Object.keys(this.state.checked.category).length=== 0 && this.state.checked.category.constructor === Object){

@@ -357,7 +357,7 @@ const Provider = (props) => {
                if(Object.keys(filters.category).length=== 0 && filters.category.constructor === Object){
                 if(filters.Category && Object.keys(filters.Category).length > 0 && filters.Category.constructor === Object)
                 {
-                    debugger
+                    
                     var _replaceCategory = filters.Category
                     filters["category"] = _replaceCategory
                     sessionStorage.setItem('category', JSON.stringify(filters.category))

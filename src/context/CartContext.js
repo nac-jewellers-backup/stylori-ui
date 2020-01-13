@@ -24,7 +24,9 @@ const initialCtx = {
             discounted_price: "",
             tax_price: '',
             reload: "",
-            jewellery: ""
+            jewellery: "",
+            _cart_id: {}
+
         },
         loading: false, error: false, data: [], allorderdata: [], wishlistdata: [], wishlist_count: []
     },
@@ -32,6 +34,7 @@ const initialCtx = {
     setallorderdata: () => { },
     setwishlist_count: () => { },
     setwishlistdata: () => { },
+    // setCartId:() =>{}
 }
 export const CartContext = React.createContext(initialCtx);
 export const CartConsumer = CartContext.Consumer;
@@ -40,6 +43,7 @@ const Provider = (props) => {
     const [allorderdata, setallorderdata] = React.useState([])
     const [wishlistdata, setwishlistdata] = React.useState([])
     const [wishlist_count, setwishlist_count] = React.useState([])
+    // const [_cart_id, setCartId] = React.useState([])
     // console.log("hdjhjhkjfh", allorderdata)
     var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
     const user_id = cartFilters.user_id ? cartFilters.user_id : ""
@@ -60,8 +64,8 @@ const Provider = (props) => {
     var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
     const myStorage = sessionStorage.getItem("user_id");
     const localvalues_check = JSON.parse(localStorage.getItem('gut_lg')) === true ? true : false
-const order_idx = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : "yourorder"
-React.useEffect(() => {
+    const order_idx = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : "yourorder"
+    React.useEffect(() => {
         if (localvalues_check === true) {
             if (con_gust === true) {
                 if (!myStorage) {
@@ -90,12 +94,16 @@ React.useEffect(() => {
             localStorage.removeItem("bil_isactive")
             window.location.pathname = `/paymentsuccess/${order_idx}`
         }
-        if (JSON.stringify(crtdata).length > 10) {
+        if (crtdata && Object.keys(crtdata).length>0 && crtdata.constructor === Object) {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))
+            cartFilters['_cart_id'] = crtdata
+            // _cart_id:crtdata
+            setCartFilters({cartFilters })
+
         }
         if (reload && reload.length > 0) {
             window.location.reload();
-        } 
+        }
 
         // localStorage.setItem('cart_id', JSON.stringify(crtdata))
     }, [crtdata])
@@ -155,12 +163,14 @@ React.useEffect(() => {
         // }
 
         if (guestlogId.length > 0) {
+
             // alert(JSON.stringify(guestlogId))
             localStorage.setItem("user_id", cartFilters.user_id)
             if (JSON.stringify(cartdetails).length > 0) {
                 var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
                 const user_id = cartFilters.user_id
                 var addcart = ({ products, user_id })
+                // alert("hgdhfdhg")
                 addtocart(addcart)
                 orderobj["userProfileId"] = user_id
                 sessionStorage.setItem("user_id", user_id)

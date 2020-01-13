@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { API_URL } from '../../../../src/config'
 import './payment.css'
+import { CartContext } from 'context'
+
 export default function PaymentHiddenForm(props) {
+    let { CartCtx: { setCartFilters, cartFilters, data, loading, error } } = React.useContext(CartContext);
     const [hash, sethash] = useState({
         hashvalue: "",
         timedate: ""
@@ -22,11 +25,16 @@ export default function PaymentHiddenForm(props) {
             .catch((error) => {
                 console.error('Error:', error);
             });
-        let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : "";
+        let cart_id_lo = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
+        let cart_id = cartFilters && cartFilters._cart_id && Object.keys(cartFilters._cart_id).length > 0 ? cartFilters._cart_id.cart_id : ''
+        var cart_ids = cart_id.length > 0 ? cart_id : cart_id_lo
+        const order_idx = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : "yourorder"
+        // let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : "";
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : "";
-        obj['payment_mode'] = "COD"
+        obj['payment_mode'] = "prepaide"
         obj['user_id'] = user_id
-        obj['cart_id'] = cart_id
+        obj['cart_id'] = cart_ids
+
         fetch(`${API_URL}/createorder`, {
             method: 'post',
             headers: {
@@ -39,6 +47,11 @@ export default function PaymentHiddenForm(props) {
             if (data !== null && data !== undefined) {
                 localStorage.setItem("order_id", JSON.stringify(data.order.id))
             }
+            localStorage.removeItem("panel")
+            localStorage.removeItem("cartDetails")
+            localStorage.removeItem("ship_isactive")
+            localStorage.removeItem("bil_isactive")
+            window.location.pathname = `/paymentsuccess/${data && data.order && data.order.id.length > 0 ? order_idx : ""}`
         }).catch((error) => {
             console.error('Error:', error);
         });

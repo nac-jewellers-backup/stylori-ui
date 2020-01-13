@@ -10,7 +10,8 @@ import { API_URL, HOME_PAGE_URL, CDN_URL } from '../../../config';
 var obj = {}
 var obj_user = {}
 let gut_lg = localStorage.getItem("gut_lg") ? JSON.parse(localStorage.getItem("gut_lg")) : {}
-let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
+// let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
+const order_idx = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : "yourorder"
 
 class CashonDelivey extends React.Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class CashonDelivey extends React.Component {
         }
     }
     makeFetch = async (props) => {
-        debugger
+
         await fetch(`${API_URL}/createorder`, {
             method: 'post',
             headers: {
@@ -29,9 +30,8 @@ class CashonDelivey extends React.Component {
             },
             body: JSON.stringify(obj)
         }).then(res => {
-            alert(
-                'Order Placed Successfully'
-            ) 
+            // alert(JSON.stringify(obj))
+            alert( 'Order Placed Successfully')
             return res.json();
         })
             .then(resdata => {
@@ -40,21 +40,25 @@ class CashonDelivey extends React.Component {
                 if (resdata !== null && resdata !== undefined) {
                     localStorage.setItem("order_id", JSON.stringify(resdata.order.id))
                 }
-           })
+                localStorage.removeItem("panel")
+                localStorage.removeItem("cartDetails")
+                localStorage.removeItem("ship_isactive")
+                localStorage.removeItem("bil_isactive")
+                window.location.pathname = `/paymentsuccess/${order_idx}`
+            })
             .catch(err => {
                 // console.log(err)
             });
-
-        localStorage.removeItem("cart_id")
+        // localStorage.removeItem("cart_id")
         if (gut_lg === true) {
             localStorage.clear();
             // localStorage.removeItem("gut_lg")
         }
         // } 
 
-        obj_user["user_id"] = user_id
-        obj_user["jewellery"] = "jewellery"
-        this.props.setCartFilters(obj_user)
+        // obj_user["user_id"] = user_id
+        // obj_user["jewellery"] = "jewellery"
+        // this.props.setCartFilters(obj_user)
         // window.location.pathname = "/jewellery"
 
     }
@@ -68,7 +72,9 @@ class CashonDelivey extends React.Component {
         }
     }
     render() {
-        let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
+        let cart_id_lo = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
+        let cart_id = this.props.cartFilters._cart_id && Object.keys(this.props.cartFilters._cart_id).length > 0 ? this.props.cartFilters._cart_id.cart_id : ''
+        var cart_ids = cart_id.length > 0 ? cart_id : cart_id_lo
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
         const data = this.props.data ? this.props.data : ""
         var discounted_price = this.props.cartFilters.discounted_price ? this.props.cartFilters.discounted_price : ""
@@ -88,9 +94,9 @@ class CashonDelivey extends React.Component {
             }
         }
 
-        obj['payment_mode'] = "COD"
+        obj['payment_mode'] = "cod"
         obj['user_id'] = user_id
-        obj['cart_id'] = cart_id
+        obj['cart_id'] = cart_ids
         // alert(JSON.stringify(dataCard1))
         return (
             <div>

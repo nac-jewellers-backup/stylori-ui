@@ -14,7 +14,7 @@ const usePromo = (props) => {
     // const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     const { data, error, loading, makeFetch } = useNetworkRequest('/applyvoucher', {}, false);
     useEffect(() => {
-        debugger
+        
         if (data.message === "Enter valid coupon") {
             alert("Enter valid coupon")
             // return false

@@ -46,7 +46,7 @@ class Allorders extends React.Component {
         var dis_price;
         a = arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
             if (cart !== null || cart !== undefined) {
-                dis_price = cart.transSkuListByProductSku.discountPrice
+                dis_price = cart.transSkuListByProductSku.markupPrice
             }
             return dis_price
         }).reduce(myFunc);
@@ -67,7 +67,7 @@ class Allorders extends React.Component {
         }
     }
     ImageUrl = (imgs, sku) => {
-        debugger
+        
         if (this.props && this.props.allorderdata && this.props.allorderdata.allorderdata && this.props.allorderdata.allorderdata.nodes.length > 0 && this.props.allorderdata && this.props.allorderdata.allorderdata) {
             var vera = this.props.allorderdata.allorderdata.nodes.map(val => {
                 if (val !== undefined && val !== null) {
@@ -248,11 +248,11 @@ class Allorders extends React.Component {
                                                                 {Math.round(cart.price) > Math.round(cart.transSkuListByProductSku.markupPrice) ?
                                                                     <Pricing
                                                                         price={cart.transSkuListByProductSku.markupPrice}
-                                                                        offerPrice={cart.transSkuListByProductSku.discountPrice}
+                                                                        offerPrice={cart.transSkuListByProductSku.markupPrice}
                                                                         offerDiscount={"25% - OFF"}
                                                                     ></Pricing>
                                                                     : <Pricing
-                                                                        offerPrice={cart.transSkuListByProductSku.discountPrice}
+                                                                        offerPrice={cart.transSkuListByProductSku.markupPrice}
                                                                     ></Pricing>}<br />
                                                             </Grid>
                                                         </Grid></>
@@ -394,11 +394,11 @@ class Allorders extends React.Component {
                                                                     {Math.round(cart.price) > Math.round(cart.transSkuListByProductSku.markupPrice) ?
                                                                         <Pricing
                                                                             price={cart.transSkuListByProductSku.markupPrice}
-                                                                            offerPrice={cart.transSkuListByProductSku.discountPrice}
+                                                                            offerPrice={cart.transSkuListByProductSku.markupPrice}
                                                                             offerDiscount={"25% - OFF"}
                                                                         ></Pricing>
                                                                         : <Pricing
-                                                                            offerPrice={cart.transSkuListByProductSku.discountPrice}
+                                                                            offerPrice={cart.transSkuListByProductSku.markupPrice}
                                                                         ></Pricing>}<br />
                                                                 </Grid>
                                                             </Grid></>

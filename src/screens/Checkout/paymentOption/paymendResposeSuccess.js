@@ -15,7 +15,7 @@ var obj = {}
 obj["order_id"] = order_id
 class PaymentResponseSuccess extends React.Component {
    makeFetch_resend_mail = async (props) => {
-      debugger
+
       await fetch(`${API_URL}/resendorderemail`, {
          method: 'post',
          headers: {
@@ -31,9 +31,12 @@ class PaymentResponseSuccess extends React.Component {
       })
          .then(resdata => {
             console.log('datasssss', resdata)
-            alert(
-               resdata && resdata.message
-            )
+            if (resdata.message !== undefined && resdata.message !== null) {
+               alert(
+                  resdata && resdata.message
+               )
+            }
+
          })
          .catch(err => {
             // console.log(err)
@@ -96,7 +99,7 @@ class PaymentResponseSuccess extends React.Component {
                   <Grid item style={{ display: "flex", marginLeft: "auto", paddingRight: "6%" }}>
                      <Button style={{ background: "#ed1165", color: "#fff" }} onClick={() => {
                         localStorage.removeItem("panel")
-                        // localStorage.removeItem("order_id")
+                        localStorage.removeItem("order_id")
                         localStorage.removeItem("cartDetails")
                         localStorage.removeItem("ship_isactive")
                         localStorage.removeItem("bil_isactive")
