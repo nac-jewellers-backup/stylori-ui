@@ -21,7 +21,15 @@ class PaymentResponseSuccess extends React.Component {
                </Grid>
             </Grid>
             <Grid container justify="center">
-               <Grid item xs={12} sm={12} md={4} className="contant-center" style={{ justifyContent: "center" }}>We've send you an email confirmation.Resend Email</Grid>
+               <Grid item xs={12} sm={12} md={4} className="contant-center">
+                  We've send you an email confirmation.
+                  <a style={{
+                     fontSize: "12px",
+                     color: "blue",
+                     textDecoration: "underline",
+                     cursor: "pointer",
+                  }}>Resend Email</a>
+                  </Grid>
             </Grid>
             {/* <Grid container style={{marginTop:"15px"}}>
                <Grid container justify="center">
@@ -57,6 +65,7 @@ class PaymentResponseSuccess extends React.Component {
                      <Grid item style={{display:"flex",marginLeft:"auto",paddingRight:"6%"}}>
                      <Button style={{background:"#ed1165",color:"#fff"}}  onClick={()=>{
                         localStorage.removeItem("panel")
+                        // localStorage.removeItem("order_id")
                         localStorage.removeItem("cartDetails")
                         localStorage.removeItem("ship_isactive")
                         localStorage.removeItem("bil_isactive")

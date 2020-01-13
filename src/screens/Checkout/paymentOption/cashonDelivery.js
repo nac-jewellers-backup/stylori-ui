@@ -40,7 +40,7 @@ class CashonDelivey extends React.Component {
         })
             .then(resdata => {
                 console.log('datasssss', resdata)
-               
+                localStorage.removeItem("order_id")
                 if (resdata !== null && resdata !== undefined) {
                     localStorage.setItem("order_id", JSON.stringify(resdata.order.id))
                 }
