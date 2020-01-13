@@ -292,7 +292,7 @@ class Allorders extends React.Component {
                                                             <Grid item sm={6} lg={6} xs={12} className="order_addres" style={{ color: "#394578" }}>
                                                                 <div> <b>Order Number</b>:#{val && val.id}</div><br />
                                                                 <div><b>Order Date	</b> : {moment(val && val.createdAt).format('Do MMMM YYYY')}</div><br />
-                                                                <div> <b>Payment Method</b>: Cash On Delivery</div>
+                                                                <div> <b>Payment Method</b>:{val.paymentMode}</div>
                                                             </Grid>
                                                             <Grid item sm={3} lg={3} xs={12} style={{ color: "#394578" }} className="order_addres_user">
                                                                 <div><b>Shipping Address :</b></div><br />
