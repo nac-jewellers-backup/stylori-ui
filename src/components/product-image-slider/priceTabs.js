@@ -63,19 +63,22 @@ class Component extends React.Component {
         var filters = { ...this.props.filters }
         
         if (key === 'purity') {
+            debugger
             var kv = event.target.id
             var objVal = kv.split(" ")
             var _multipleColor = objVal.filter(val => { if (val === "And") return val }) // example : 18k Yellow And White
             var arrPurity
             var arrColor
-            if (_multipleColor.length > 0) {
-                arrPurity = objVal[0]
-                arrColor = objVal[1].concat(' ').concat(objVal[3])
-            }
-            else {
-                arrPurity = objVal[0]
-                arrColor = objVal[1]
-            }
+            // if (_multipleColor.length > 0) {
+            //     arrPurity = objVal[0]
+            //     arrColor = objVal[1].concat(' ').concat(objVal[3])
+            // }
+            // else {
+            //     arrPurity = objVal[0]
+            //     arrColor = objVal[1]
+            // }
+            arrPurity = kv.substr(0,kv.indexOf(' '))
+            arrColor = kv.substr(kv.indexOf(' ')+1)
             var diamondTypes = filters['defaultVariants']['diamondType']
             filters['defaultVariants']['purity'] = arrPurity
             filters['defaultVariants']['metalColor'] = arrColor
@@ -291,14 +294,16 @@ class Component extends React.Component {
                                                 var _multipleColor = objVal.filter(val => { if (val === "And") return val }) // example : 18k Yellow And White
                                                 var arrPurity
                                                 var arrColor
-                                                if (_multipleColor.length > 0) {
-                                                    arrPurity = objVal[0]
-                                                    arrColor = objVal[1].concat(' ').concat(objVal[3])
-                                                }
-                                                else {
-                                                    arrPurity = objVal[0]
-                                                    arrColor = objVal[1]
-                                                }
+                                                // if (_multipleColor.length > 0) {
+                                                //     arrPurity = objVal[0]
+                                                //     arrColor = objVal[1].concat(' ').concat(objVal[3])
+                                                // }
+                                                // else {
+                                                //     arrPurity = objVal[0]
+                                                //     arrColor = objVal[1]
+                                                // }
+                                                arrPurity = kv.substr(0,kv.indexOf(' '))
+            arrColor = kv.substr(kv.indexOf(' ')+1)
                                                 return (
                                                     <Grid item lg={1} xs={2} className={classes.normalfonts_tabs}>
                                                         <button 
