@@ -430,29 +430,29 @@ export default function Footer(props) {
             {/* visa Cards banking details starts */}
             <Grid container style={{ backgroundColor: '#a7a7aa', display: 'flex', justifyContent: 'center' }} >
                 <Grid item container xs={12} sm={6} md={6} lg={6} xl={6} style={{ display: 'flex', justifyContent: 'center', padding: "10px 0px" }}>
-                    <i style={{ fontSize: '33px', textAlign: 'center', paddingLeft: '5%', color: '#fff' }} className="fa">&#xf023;</i>
+                    <i style={{ fontSize: '33px', textAlign: 'center', paddingLeft: '3%', color: '#fff' }} className="fa">&#xf023;</i>
                     <img src={visa}
-                        style={{ paddingLeft: "14px", width: '54px', height: "32px" }}
+                        style={{ paddingLeft: "3%", width: '54px', height: "32px" }}
                         alt=""
                     />
                     <img src={mastercard}
-                        style={{ paddingLeft: "14px", width: '50px', height: "32px" }}
+                        style={{ paddingLeft: "3%", width: '50px', height: "32px" }}
                         alt=""
                     />
                     <img src={AmericanExpress}
-                        style={{ paddingLeft: "14px", width: '30px', height: "32px" }}
+                        style={{ paddingLeft: "3%", width: '30px', height: "32px" }}
                         alt=""
                     />
                     <img src={DinersClub}
-                        style={{ paddingLeft: "14px", width: '30px', height: "32px" }}
+                        style={{ paddingLeft: "3%", width: '30px', height: "32px" }}
                         alt=""
                     />
                     <img src={Netbanking}
-                        style={{ paddingLeft: "14px", width: '30px', height: "32px" }}
+                        style={{ paddingLeft: "3%", width: '30px', height: "32px" }}
                         alt=""
                     />
                     <div style={{ color: "#fff", fontSize: "0.8rem", paddingLeft: "4px" }}>NET<br /> BANKING</div>
-                    <i class="fa fa-inr" style={{ fontSize: '30px', paddingLeft: "14px", color: "#fff", fontWeight: "normal" }} aria-hidden="true"></i>
+                    <i class="fa fa-inr" style={{ fontSize: '30px', paddingLeft: "3%", color: "#fff", fontWeight: "normal" }} aria-hidden="true"></i>
                     <div style={{ color: "#fff", fontSize: "0.8rem", paddingLeft: "4px" }}>CASH ON<br /> DELIVERY</div>
                 </Grid>
             </Grid>
