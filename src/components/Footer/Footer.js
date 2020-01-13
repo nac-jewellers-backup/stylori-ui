@@ -11,6 +11,8 @@ import Netbanking from '../../assets/mouse.png'
 import cartoonFooter from '../../assets/cartoonFooter.png'
 import './Footer.css'
 import { pointer } from 'popmotion';
+import styloriLogo from "../../assets/Stylorilogo.svg"
+
 const useStyles = makeStyles(theme => ({
     navTitle: {
         cursor: "pointer",
@@ -243,21 +245,21 @@ export default function Footer(props) {
                 </Hidden>
                 {/*  */}
                 <Hidden only={['sm', 'xs']}>
-                <Grid container direction="row" item xl={4} lg={4} md={4} xs={12} sm={6} style={{ padding: '3%' }}>
-                    <Hidden only={['sm', 'xs']}>
+                    <Grid container direction="row" item xl={4} lg={4} md={4} xs={12} sm={6} style={{ padding: '3%' }}>
+                        {/* <Hidden only={['sm', 'xs']}>
+                            <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
+                                <Grid item xs={6}  >
+                                    Get the Stylori app and stay mobile.
+                                    Available on Android.
+                    </Grid>
+                            </Grid>
+                        </Hidden> */}
                         <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
-                            <Grid item xs={6}  >
-                                Get the Stylori app and stay mobile.
-                                Available on Android.
-                    </Grid>
-                        </Grid>
-                    </Hidden>
-                    <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
-                        <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
-                            {/* <img src={googlePlaystore} className={`${classes.colorMain}`} alt="" /> */}
+                            <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
+                                {/* <img src={googlePlaystore} className={`${classes.colorMain}`} alt="" /> */}
+                            </Grid>
                         </Grid>
                     </Grid>
-                </Grid>
                 </Hidden>
                 <Hidden only={['sm', 'xs']}>
                     <Grid container direction="row" item xl={4} lg={4} md={4} xs={12} sm={6} style={{ padding: '3%' }}>
@@ -269,14 +271,20 @@ export default function Footer(props) {
                     </Grid>
                         </Grid>
 
-                        <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'flex-end' }} className="footer-icons">
+                        <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: "10px" }} className="footer-icons">
                             <Grid item xs={9}>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%', }} className="fa">&#xf09a;</i>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%', }} className="fa">&#xf0d5;</i>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%', }} className="fa">&#xf231;</i>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%', }} className="fa">&#xf16d;</i>
-                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%', }} className="fa">&#xf167;</i>
+                                <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
+                                    <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i> </a>
+                                <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
+                                    <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf09a;</i></a>
+                                <a class="facebook" target="_blank" href="https://plus.google.com/+Stylori">
+                                    <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf0d5;</i></a>
+                                <a class="facebook" target="_blank" href="https://in.pinterest.com/stylori2015/">
+                                    <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf231;</i></a>
+                                <a class="facebook" target="_blank" href="https://instagram.com/stylorilove">
+                                    <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf16d;</i></a>
+                                <a class="facebook" target="_blank" href="https://www.youtube.com/c/stylori">
+                                    <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf167;</i></a>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -299,12 +307,19 @@ export default function Footer(props) {
                         We promise we won’t bore you.
 </Grid>
                     <Grid item xs={12} sm={6} className="footer-icons">
-                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px' }} className="fa ">&#xf099;</i>
-                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf09a;</i>
-                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf0d5;</i>
-                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf231;</i>
-                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf16d;</i>
-                        <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf167;</i>
+
+                        <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
+                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i> </a>
+                        <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
+                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf09a;</i></a>
+                        <a class="facebook" target="_blank" href="https://plus.google.com/+Stylori">
+                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf0d5;</i></a>
+                        <a class="facebook" target="_blank" href="https://in.pinterest.com/stylori2015/">
+                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf231;</i></a>
+                        <a class="facebook" target="_blank" href="https://instagram.com/stylorilove">
+                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf16d;</i></a>
+                        <a class="facebook" target="_blank" href="https://www.youtube.com/c/stylori">
+                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf167;</i></a>
                     </Grid>
                 </Grid>
 
@@ -357,13 +372,15 @@ export default function Footer(props) {
                                 Need Help?
                                 </Grid>
                             <Grid item xs={12} className="footer-icons">
-                                <i style={{ fontSize: '24px', textAlign: 'center', paddingLeft: '5%' }} className="fa">
-                                    &#xf003;
+                                <a onClick={() => { window.location.href = "mailto: hello@stylori.com" }} >
+                                    <i style={{ fontSize: '24px', textAlign: 'center', paddingLeft: '5%' }} className="fa">
+                                        &#xf003;
                                     <br />
-                                    <span className={classes.spanSizeColor}>
-                                        hello@stylori.com
+                                        <span className={classes.spanSizeColor}>
+                                            hello@stylori.com
                                     </span>
-                                </i>
+                                    </i>
+                                </a>
                                 <i style={{ fontSize: '24px', textAlign: 'center', paddingLeft: '5%' }} className="fa">
                                     &#xf0e6;
                                     <br />
@@ -393,18 +410,14 @@ export default function Footer(props) {
                     <Hidden only={['sm', 'xs']}>
                         <Grid container item xl={3} lg={3} md={2} xs={12} sm={6} style={{ paddingTop: '2%', display: 'flex', justifyContent: 'flex-end' }}>
                             <Grid item xs={6} >
-
-                                <img src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" alt="" />
-
+                                <div onClick={() => { window.location.href = "/home" }}>
+                                    <img src={styloriLogo} alt="" style={{ width: "100%", cursor: "pointer" }} />
+                                </div>
                                 <div style={{ color: '#808080', fontSize: '11px' }}>Copyright © 2020 stylori.com</div>
-
-
                             </Grid>
-
                         </Grid>
                     </Hidden>
                 </Grid>
-
             </Container>
             <Hidden only={['md', 'lg', 'xl']}>
                 <Grid container item xs={12} sm={12} style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', color: '#808080', fontSize: '11px' }}>
@@ -416,30 +429,31 @@ export default function Footer(props) {
 
             {/* visa Cards banking details starts */}
             <Grid container style={{ backgroundColor: '#a7a7aa', display: 'flex', justifyContent: 'center' }} >
-                <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
-                    <i style={{ fontSize: '33px', textAlign: 'center', paddingLeft: '5%', color: '#fff' }} className="fa">&#xf023;</i>
+                <Grid item container xs={12} sm={6} md={6} lg={6} xl={6} style={{ display: 'flex', justifyContent: 'center', padding: "10px 0px" }}>
+                    <i style={{ fontSize: '33px', textAlign: 'center', paddingLeft: '3%', color: '#fff' }} className="fa">&#xf023;</i>
                     <img src={visa}
-                        style={{ paddingLeft: '5%', paddingTop: '1%', width: '50px' }}
-
+                        style={{ paddingLeft: "3%", width: '54px', height: "32px" }}
                         alt=""
                     />
                     <img src={mastercard}
-                        style={{ paddingLeft: '5%', paddingTop: '1%', width: '30px' }}
+                        style={{ paddingLeft: "3%", width: '50px', height: "32px" }}
                         alt=""
                     />
                     <img src={AmericanExpress}
-                        style={{ paddingLeft: '5%', paddingTop: '1%', width: '30px' }}
+                        style={{ paddingLeft: "3%", width: '30px', height: "32px" }}
                         alt=""
                     />
                     <img src={DinersClub}
-                        style={{ paddingLeft: '5%', paddingTop: '1%', width: '30px' }}
+                        style={{ paddingLeft: "3%", width: '30px', height: "32px" }}
                         alt=""
                     />
                     <img src={Netbanking}
-                        style={{ paddingLeft: '5%', paddingTop: '1%', width: '30px' }}
+                        style={{ paddingLeft: "3%", width: '30px', height: "32px" }}
                         alt=""
                     />
-                    <i class="fa fa-inr" style={{ fontSize: '30px' }} aria-hidden="true"></i>
+                    <div style={{ color: "#fff", fontSize: "0.8rem", paddingLeft: "4px" }}>NET<br /> BANKING</div>
+                    <i class="fa fa-inr" style={{ fontSize: '30px', paddingLeft: "3%", color: "#fff", fontWeight: "normal" }} aria-hidden="true"></i>
+                    <div style={{ color: "#fff", fontSize: "0.8rem", paddingLeft: "4px" }}>CASH ON<br /> DELIVERY</div>
                 </Grid>
             </Grid>
 
