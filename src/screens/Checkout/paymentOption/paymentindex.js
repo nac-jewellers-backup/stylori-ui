@@ -115,7 +115,7 @@ class PaymentIndex extends React.Component {
                         </ExpansionPanelSummary>
                         {/* <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Creditform data={this.props.data} dataCard1={dataCard1}/>
-                        </ExpansionPanelDetails> */}
+                        </ExpansionPanelDetails> */} 
                     </ExpansionPanel>
 
                     <ExpansionPanel className="respone-div div_DARK"
@@ -127,8 +127,8 @@ class PaymentIndex extends React.Component {
                         {/* <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Debitform data={this.props.data} dataCard1={dataCard1}/>
                         </ExpansionPanelDetails> */}
-                    </ExpansionPanel>
-
+                    </ExpansionPanel> 
+ 
                     <ExpansionPanel className="respone-div"
                     >
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
