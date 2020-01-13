@@ -52,7 +52,7 @@ self.addEventListener('install', function(event) {
 self.addEventListener('activate', event => {
     console.log('Activating new service worker...');
     
-    const cacheWhitelist = ['sw-precache-v3-alpha-stylori-net'];
+    const cacheWhitelist = ['sw-precache-v3-sw-precache-webpack-plugin'];
   
     event.waitUntil(
       caches.keys().then(cacheNames => {

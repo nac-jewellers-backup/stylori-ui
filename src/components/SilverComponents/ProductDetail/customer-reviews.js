@@ -20,6 +20,7 @@ import { ProductDetailContext } from 'context/ProductDetailContext';
 import productDetails from 'mappers/productDetails';
 import subcarousel from 'components/Home/subcarousel';
 import Sublistcarousel from './subListcarousel';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
 const Star = ({ selected = false, onClick = f => f }) =>
@@ -144,8 +145,12 @@ class CustomerReviews extends React.Component {
                             expanded={expanded === 'panel1'}
                             onChange={this.handleChange('panel1')}
                         >
-                            <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
-                                <i class="fa fa-sort-up" ></i></span>}>
+                            {/* expandIcon={<span className='side-arrow-symbol'>
+                                <i class="fa fa-sort-up" ></i></span>} */}
+                            <ExpansionPanelSummary 
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header" >
                                 <div style={{ width: "100%" }} >
                                     <Typography className={`subtabs-smrt ${classes.normalfonts}`}>You recently viewed</Typography>
                                     {/* <hr class="bottom-line border-line-"></hr> */}

@@ -45,7 +45,7 @@ const Provider = (props) => {
     const user_id = cartFilters.user_id ? cartFilters.user_id : ""
     const price = cartFilters.price ? cartFilters.price : ""
     const { loading: crtloading, error: crterror, data: crtdata, makeFetch: addtocart } = useNetworkRequest('/addtocart', { user_id, products }, false)
-    const userIds =localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
+    const userIds = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
     var cartdetails = JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : {}
     const guestlogId = cartFilters.user_id ? cartFilters.user_id : ''
     const { loading: allorderloading, error: allordererror, data: allorder, makeRequest: allordermakeRequest } = useGraphql(ALLORDERS, () => { }, {}, false);
@@ -60,13 +60,25 @@ const Provider = (props) => {
     var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
     const myStorage = sessionStorage.getItem("user_id");
     const localvalues_check = JSON.parse(localStorage.getItem('gut_lg')) === true ? true : false
-    React.useEffect(() => {
+const order_idx = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : "yourorder"
+React.useEffect(() => {
         if (localvalues_check === true) {
             if (con_gust === true) {
                 if (!myStorage) {
                     localStorage.clear();
                 }
             }
+        }
+    }, [])
+
+    React.useEffect(() => {
+        var a = window.location.pathname
+        var b = a.split("/")
+        if (b[1] === "paymentsuccess") {
+            localStorage.removeItem("panel")
+            localStorage.removeItem("cartDetails")
+            localStorage.removeItem("ship_isactive")
+            localStorage.removeItem("bil_isactive")
         }
     }, [])
     useEffect(() => {
@@ -76,14 +88,14 @@ const Provider = (props) => {
             localStorage.removeItem("cartDetails")
             localStorage.removeItem("ship_isactive")
             localStorage.removeItem("bil_isactive")
-            window.location.pathname = "/jewellery"
+            window.location.pathname = `/paymentsuccess/${order_idx}`
         }
-        if (JSON.stringify(crtdata).length > 10 && jewellery === "jewellery") {
+        if (JSON.stringify(crtdata).length > 10) {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))
         }
         if (reload && reload.length > 0) {
             window.location.reload();
-        }
+        } 
 
         // localStorage.setItem('cart_id', JSON.stringify(crtdata))
     }, [crtdata])

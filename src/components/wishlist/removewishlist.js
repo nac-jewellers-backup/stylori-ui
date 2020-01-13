@@ -11,14 +11,16 @@ const RemoveWishlistComponent = (props) => {
     const { values, setValues, handlers } = useWishlists(props);
 
     return (
-        <div style={{color:"#fff"}} 
+        <div 
             onClick={() => {
                 values["product_sku"] = props.sku
                 values["product_id"] = props.productId
                 values["add"] = props.add
                 setValues({ values, ...values });
                 handlers.handelRemove(1)
-            }}>&nbsp;</div>
+            }}>
+            {props.data} 
+        </div>
     )
 }
 

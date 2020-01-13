@@ -53,7 +53,7 @@ class Accountdetails extends Component {
                 label: 'addresses',
             },
             {
-                label: 'shopping-cart',
+                label: 'shoppingcart',
             },
             {
                 label: 'wishlist',
@@ -80,8 +80,8 @@ class Accountdetails extends Component {
                                         <p className={this.state.isActive == 'addresses' ? "backgrund" : ""}
                                             onClick={() => this.Activeaccounts('addresses')}
                                         >Address Book </p>
-                                        <p className={this.state.isActive == 'shopping-cart' ? "backgrund" : ""}
-                                            onClick={() => this.Activeaccounts('shopping-cart')}
+                                        <p className={this.state.isActive == 'shoppingcart' ? "backgrund" : ""}
+                                            onClick={() => this.Activeaccounts('shoppingcart')}
                                         >Shopping bag ({this.props.data.length ? this.props.data.length : "0"}) </p>
                                         <p className={this.state.isActive == 'wishlist' ? "backgrund" : ""}
                                             onClick={() => this.Activeaccounts('wishlist')}
@@ -116,7 +116,7 @@ class Accountdetails extends Component {
                                             this.state.isActive == 'addresses' && <Addressform />
                                         }
                                         {
-                                            this.state.isActive == 'shopping-cart' && <>
+                                            this.state.isActive == 'shoppingcart' && <>
 
                                                 {this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
                                                     <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Shopping cart</div>}</>
@@ -192,7 +192,7 @@ class Accountdetails extends Component {
                                 this.state.isActive == 'addresses' && <Addressform />
                             }
                             {
-                                this.state.isActive == 'shopping-cart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
+                                this.state.isActive == 'shoppingcart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
                                     <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Shopping cart</div>}</>
                             }
                             {

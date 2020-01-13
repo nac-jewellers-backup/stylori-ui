@@ -249,7 +249,7 @@ class Header extends Component {
                                     <Container maxWidth="lg" >
                                         <Grid container spacing={12} id="fullcontainer" className="setHeight">
                                             <Grid item xs={3} className="logoImgHeader1">
-                                                <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/home" }} style={{cursor:"pointer"}}>
+                                                <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/home" }} style={{ cursor: "pointer" }}>
                                                     <img id="logoImage" style={{ transition: " 0.2s" }} className={`img`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                                 </div>
                                             </Grid>
@@ -317,7 +317,7 @@ class Header extends Component {
                                     id="smallScreen"
                                 >
                                     <Toolbar className={"toolbarsetting"} >
-                                        <Grid container item xs={2} sm={1} md={1} lg={1} xl={1} justify="center" alignItems="center">
+                                        <Grid container item xs={1} sm={1} md={1} lg={1} xl={1} justify="center" alignItems="center">
                                             <IconButton
                                                 onClick={this.handleDrawerOpen}
                                             >
@@ -325,12 +325,12 @@ class Header extends Component {
                                             </IconButton>
                                         </Grid>
 
-                                        <Grid item xs={4} className="logoImgHeader1">
-                                            <div className="logoDiv1"  onClick={() => { window.location.href = "/home" }} style={{cursor:"pointer"}}>
+                                        <Grid item xs={5} className="logoImgHeader1">
+                                            <div className="logoDiv1" onClick={() => { window.location.href = "/home" }} style={{ cursor: "pointer" }}>
                                                 <img className={`imgsilver`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                             </div>
                                         </Grid>
-                                        <Grid item xs={7}>
+                                        <Grid item xs={6}>
                                             <div onClick={this.handleSearch} className="mobli-icon1">
                                                 <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center", paddingRight: "10px", paddingBottom: "15px" }}>
                                                     <div className={`head-icons1 ${classes.headIcons}`} >

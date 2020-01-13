@@ -20,6 +20,7 @@ class CashonDelivey extends React.Component {
         }
     }
     makeFetch = async (props) => {
+        debugger
         const bb = this.props && this.props.dataCard1
         // if (bb.length <0) {
         //    return
@@ -32,17 +33,18 @@ class CashonDelivey extends React.Component {
             },
             body: JSON.stringify(obj)
         }).then(res => {
+            alert(
+                'Order Placed Successfully'
+            ) 
             return res.json();
         })
             .then(resdata => {
                 console.log('datasssss', resdata)
-                alert(
-                    'Order Placed Successfully'
-                )
+               
                 if (resdata !== null && resdata !== undefined) {
-                    localStorage.setItem("order_id", resdata.order.id)
+                    localStorage.setItem("order_id", JSON.stringify(resdata.order.id))
                 }
-            })
+           })
             .catch(err => {
                 // console.log(err)
             });

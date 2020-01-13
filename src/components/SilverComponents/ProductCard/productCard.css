@@ -49,10 +49,11 @@
 .wishListStyle {
   margin-left: 4px;
   margin-top: 2px;
-  z-index: 2;
+  z-index: 15;
   position: absolute;
   top: 15px;
   right: 17px
+
 }
 
 @media only screen and (max-width:580px) and (min-width:540px) {

@@ -166,6 +166,9 @@ class Component extends React.Component {
                 this.setState({ pincodeNotFound: true })
             }
         }
+        else{
+            this.setState({ CheckForCodtitle: 'Check for COD' })
+        }
     }
 
     openModel = () => {

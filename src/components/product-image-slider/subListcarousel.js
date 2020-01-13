@@ -12,6 +12,7 @@ import React from 'react';
 import './product-images.css'
 import Slideshow from '../Carousel/carosul'
 import styles from './style'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 class Sublistcarousel extends React.Component {
   constructor(props) {
     super(props);
@@ -148,8 +149,9 @@ class Sublistcarousel extends React.Component {
         <Hidden mdUp>
           <Container>
             <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 5px" }} expanded={expanded === 'panel'} onChange={this.handle('panel')}>
-              <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
-                <i class="fa fa-sort-up" ></i></span>}>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header" >
                 <div style={{ width: "100%" }} >
                   <Typography className="subtabs-smrt">You may also like</Typography>
                   {/* <hr class="bottom-line border-line-"></hr> */}
@@ -167,8 +169,9 @@ class Sublistcarousel extends React.Component {
             </ExpansionPanel><br />
 
             <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 5px" }} expanded={expanded1 === true} onChange={this.handle_recent_view(false)}>
-              <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
-                <i class="fa fa-sort-up" ></i></span>}>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header" >
                 <div style={{ width: "100%" }} >
                   <Typography className="subtabs-smrt">You recently viewed</Typography>
                   {/* <hr class="bottom-line border-line-"></hr> */}

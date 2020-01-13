@@ -15,7 +15,7 @@ import '../Checkout/Cart.css'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import moment from "moment";
 import Pricing from "../Pricing/index";
-const order_id = localStorage.getItem('order_id') ? localStorage.getItem('order_id') : ""
+const order_id = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : ""
 
 function myFunc(total, num) {
     return Math.round(total + num);
@@ -26,10 +26,9 @@ class Allorders extends React.Component {
     }
 
     handleChange = panel => (event) => {
-
         const { expanded } = this.state;
         var valus = expanded === panel ? "" : panel
-        expanded.push(JSON.stringify(valus))
+        expanded.push(JSON.stringify(valus)) 
         this.setState({
             expanded,
         });
@@ -81,7 +80,7 @@ class Allorders extends React.Component {
         //         allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map(val => {
         //             if (order_id === val.id) {
         //                 alert(JSON.stringify(val))
-        //                 return val
+        //                 return val 
         //             }
         //         })
         //     }
@@ -93,7 +92,6 @@ class Allorders extends React.Component {
                     <div className='pt-sm checkout-ovralldiv-media' >
                         {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0 ?
                             <div style={{ marginTop: "20px", boxShadow: "none" }}>
-
                                 {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
                                 {allDatas().map((val, index) => (
                                     <ExpansionPanel
@@ -215,7 +213,7 @@ class Allorders extends React.Component {
 
 
                                                             <Grid style={{ padding: "10px", justifyContent: "center", display: "flex", alignItems: "center" }} className="rups" item lg={3} sm={2}>
-                                                                {cart.price > cart.transSkuListByProductSku.markupPrice ?
+                                                                {Math.round(cart.price) > Math.round(cart.transSkuListByProductSku.markupPrice) ?
                                                                     <Pricing
                                                                         price={cart.transSkuListByProductSku.markupPrice}
                                                                         offerPrice={cart.transSkuListByProductSku.discountPrice}
@@ -263,18 +261,19 @@ class Allorders extends React.Component {
                                                     {/* {val.shoppingCartByCartId.cartAddressesByCartId.nodes.map(addreses => ( */}
                                                     <div style={{ width: "100%", marginBottom: "10px" }}>
                                                         <Grid container spacing={12} lg={12} xs={11} sm={11} style={{ marginRight: "auto", marginLeft: "auto" }} >
-                                                            <Grid item sm={6} lg={6} xs={12} className="order_addres">
+                                                            <Grid item sm={6} lg={6} xs={12} className="order_addres" style={{ color: "#394578" }}>
                                                                 <div> <b>Order Number</b>:#{val && val.id}</div><br />
                                                                 <div><b>Order Date	</b> : {moment(val && val.createdAt).format('Do MMMM YYYY')}</div><br />
                                                                 <div> <b>Payment Method</b>: Cash On Delivery</div>
                                                             </Grid>
-                                                            <Grid item sm={3} lg={3} xs={12} className="order_addres_user">
+                                                            <Grid item sm={3} lg={3} xs={12} style={{ color: "#394578" }} className="order_addres_user">
                                                                 <div><b>Shipping Address :</b></div><br />
-                                                                {/* <div> {val && val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes.firstname}&nbsp;
-                                                             {val && val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes.lastname}</div><br />
-                                                    <div> {val && val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes.addressline1}</div><br />
-                                                    <div>  {val && val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes.city + "-"}
-                                                        {val && val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes.pincode}</div> */}
+                                                                {/* {alert(JSON.stringify(val.shoppingCartByCartId))} */}
+                                                                <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}&nbsp;
+                                                            {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].lastname}</div><br />
+                                                                <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].addressline1}</div><br />
+                                                                <div>  {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].city + "-"}
+                                                                    {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].pincode}</div>
                                                                 <br />
                                                                 <br />
                                                                 {val && val.shoppingCartByCartId && val.shoppingCartByCartId.giftwrapsByCartId && val.shoppingCartByCartId.giftwrapsByCartId.nodes && val.shoppingCartByCartId.giftwrapsByCartId.nodes.length > 0 ? <>
@@ -286,12 +285,11 @@ class Allorders extends React.Component {
                                                             </Grid>
                                                         </Grid>
                                                     </div>
-                                                    {/* ))} */}
-                                                    {/* <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}</span></div> */}
+                                                    <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}</span></div>
                                                     {val && val.shoppingCartByCartId && val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId && val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => (
                                                         <>
                                                             <br />
-                                                            <Grid container spacing={12} lg={12} style={{ height: "270px", overflow: "hidden", outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px" }}>
+                                                            <Grid container spacing={12} lg={12} style={{ overflow: "hidden", outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px", color: "#394578" }}>
                                                                 <Grid item lg={2} sm={3}  >
                                                                     {cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs => (
                                                                         <div className="wishlist_img">
@@ -362,7 +360,7 @@ class Allorders extends React.Component {
 
 
                                                                 <Grid style={{ padding: "10px", justifyContent: "center", display: "flex", alignItems: "center" }} className="rups" item lg={3} sm={2}>
-                                                                    {cart.price > cart.transSkuListByProductSku.markupPrice ?
+                                                                    {Math.round(cart.price) > Math.round(cart.transSkuListByProductSku.markupPrice) ?
                                                                         <Pricing
                                                                             price={cart.transSkuListByProductSku.markupPrice}
                                                                             offerPrice={cart.transSkuListByProductSku.discountPrice}
@@ -376,11 +374,11 @@ class Allorders extends React.Component {
                                                     ))}
 
                                                     <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
-                                                        {/* Sub Total&nbsp;{this.calculatetotal(val)}<br /> */}
+                                                        Sub Total&nbsp;{this.calculatetotal(val)}<br />
                                                         Shipping&nbsp;FREE<br />
                                                         Shipping Insurance&nbsp;FREE<br />
-                                                        {/* <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}
-                                                </span></div> */}
+                                                        <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}
+                                                        </span></div>
                                                     </div>
                                                 </div>
 
