@@ -283,6 +283,7 @@ class Allorders extends React.Component {
                     <div className='pt-sm checkout-ovralldiv-media' >
                         {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0 ?
                             <Container>
+                            <Container>
 
                                 {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map(val => {
                                     return (order_id === val.id ?
@@ -341,7 +342,7 @@ class Allorders extends React.Component {
                                                                     )}
                                                                 </Grid>
                                                                 <Grid item lg={4} sm={4}>
-                                                                    <Grid container spacing={12} lg={12} style={{ lineHeight: "20px" }}>
+                                                                    <Grid container spacing={12} lg={12} style={{ lineHeight: "50px" }}>
 
                                                                         <b style={{ width: "100%" }}> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
                                                                         <Grid item lg={6} sm={6}>
@@ -402,9 +403,9 @@ class Allorders extends React.Component {
 
 
                                                                 <Grid style={{ padding: "10px", justifyContent: "center", display: "flex", alignItems: "center" }} className="rups" item lg={3} sm={2}>
-                                                                    {Math.round(cart.price) > Math.round(cart.transSkuListByProductSku.markupPrice) ?
+                                                                    {Math.round(cart.discountPrice) > Math.round(cart.transSkuListByProductSku.markupPrice) ?
                                                                         <Pricing
-                                                                            price={cart.transSkuListByProductSku.markupPrice}
+                                                                            price={cart.transSkuListByProductSku.discountPrice}
                                                                             offerPrice={cart.transSkuListByProductSku.markupPrice}
                                                                             offerDiscount={"25% - OFF"}
                                                                         ></Pricing>
@@ -433,6 +434,7 @@ class Allorders extends React.Component {
 
                                         : "")
                                 })}
+                            </Container>
                             </Container>
                             : <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Orders</div>}
 
