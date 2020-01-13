@@ -364,7 +364,7 @@ const Addressforms = (changePanel) => {
             // alert("your address send on successful")
             if (!pathnames) {
                 changePanel(3)
-                // window.location.reload()
+                window.location.reload()
             }
             // return false
         }

@@ -11,7 +11,7 @@ import {
     Button,
     Hidden
 } from '@material-ui/core';
-import "../../components/Checkout/Cart.css";
+import "../../components/Checkout/Cart.css"; 
 import "./chckout.css";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Addressform from './addressDetails/addressForm';

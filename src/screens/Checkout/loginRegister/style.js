@@ -11,7 +11,7 @@ export const styles = theme => ({
     backgwhite: {
         background: theme.palette.overallButoon.contrastText
     },
-    fontgray: {
+    fontgray: { 
         color: theme.palette.text.disabled
     },
     // buynow 

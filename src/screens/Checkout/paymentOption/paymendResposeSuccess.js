@@ -9,8 +9,37 @@ import { withRouter } from 'react-router-dom';
 import cart from 'mappers/cart'
 import Allorders from "components/accounts/allorders";
 import { API_URL, HOME_PAGE_URL, CDN_URL } from '../../../config';
-const order_id = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : ""
+import Header from "components/SilverComponents/Header";
+import styles from "../../../components/Checkout/style"
+import CustomSeparator from '../../../components/BreadCrumb/index'
+import { withStyles } from '@material-ui/core/styles';
+import "../../../components/Checkout/Cart.css";
+import "../chckout.css";
+import Footer from "components/Footer/Footer";
 
+const order_id = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : ""
+const breadcrumsdata = [
+   { title: "Shopping Bag" },
+   { title: "Login/ Register" },
+   { title: "Address Detail" },
+   { title: "Payment Options" },
+   { title: "Order Confirmation" },
+]
+const cartsubdata = [
+   {
+      name: "100% Certified Jewellery",
+      icon: "https://assets-cdn.stylori.com/images/static/icon-star.png"
+   }, {
+      name: "Secure Payments",
+      icon: "https://assets-cdn.stylori.com/images/static/icon-lock.png"
+   }, {
+      name: "Free Insured Shipping",
+      icon: "https://assets-cdn.stylori.com/images/static/icon-van.png"
+   }, {
+      name: "25-Day Returns",
+      icon: "https://assets-cdn.stylori.com/images/static/icon-return.png"
+   }
+]
 var obj = {}
 obj["order_id"] = order_id
 class PaymentResponseSuccess extends React.Component {
@@ -47,8 +76,20 @@ class PaymentResponseSuccess extends React.Component {
    render() {
       // alert(JSON.stringify(this.props.data))
       let gut_lg = localStorage.getItem("gut_lg") ? JSON.parse(localStorage.getItem("gut_lg")) : {}
+      const { data, classes } = this.props
       return (
+         <>
+         <Header wishlist={this.props.wishlistdata} />   
+         {/* <CustomSeparator
+             arrowicon='cart-head-arrows'  
+             className={"breadcrums-header bcjk "}
+             classsubhed={"breadcrums-sub bcjk"}
+             list={"MuiBreadcrumbs-li whi"}
+             data={this.props.data.length > 0 ? this.props.data[0].breadcrumsdata : breadcrumsdata}
+             subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata}
+          /> */}
          <Grid container justify="center">
+          
             <Grid container justify="center">
                <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>
                <Grid item xs={10} sm={10} md={4} className="contant-center" >
@@ -100,8 +141,9 @@ class PaymentResponseSuccess extends React.Component {
             <Grid container justify="center">
                <Grid container style={{ width: "100%" }}  >
                   <Grid item style={{ display: "flex", marginLeft: "auto", paddingRight: "2px" }}>
-                     <Button style={{ background: "#ed1165", color: "#fff", padding:"5px 20px" }} onClick={() => {
-                         localStorage.removeItem("panel")
+                     <Button style={{ background: "#ed1165", color: "#fff", padding: "5px 20px" }} onClick={() => {
+                        localStorage.removeItem("a__c_t")
+                        localStorage.removeItem("panel")
                         localStorage.removeItem("order_id")
                         localStorage.removeItem("cartDetails")
                         localStorage.removeItem("ship_isactive")
@@ -110,6 +152,7 @@ class PaymentResponseSuccess extends React.Component {
                            localStorage.clear();
                         }
                         this.props.history.push("/jewellery")
+                        // window.location.pathname="/jewellery"
                      }}>Back to home</Button>
                   </Grid>
                </Grid>
@@ -119,7 +162,8 @@ class PaymentResponseSuccess extends React.Component {
                {/* <CartCard data={this.props.data}/> */}
                <Allorders allorderdata={this.props.allorderdata} />
             </Grid>
-         </Grid>
+            <Footer/>
+         </Grid></>
       )
    }
 }
