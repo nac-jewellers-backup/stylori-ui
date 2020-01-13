@@ -17,7 +17,7 @@ export default function (data) {
             _d = {
                 filter: [
                     'Offers', 'Availability', 'Product Type', 'Style', 'Material', 'Theme', 'Collection',
-                    'Metal Color', 'Metal Purity', 'Occasion', 'No Of Stones', 'Gender', 'Stone Color', 'Stone Shape'
+                    'Metal Color', 'Metal Purity', 'Occasion', 'No Of Stones', 'Gender', 'Stone Color', 'Stone Shape','By Design','By Weight'
                 ],
 
                 subFilter: {
@@ -69,6 +69,14 @@ export default function (data) {
                     }),
                     'Price Range': get(data[0].price_range).map(val => {
                         return val
+                    }),
+                    // goldcoins
+
+                    'By Design': get(data && data[0] && data[0].master_bydesign && data[0].master_bydesign).map(val => {
+                        return val&&val.design_name
+                    }),
+                    'By Weight': get(data && data[0] && data[0].master_byweight && data[0].master_byweight).map(val => {
+                        return val&&val.weight
                     }),
 
                 },
