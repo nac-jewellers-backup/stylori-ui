@@ -171,7 +171,7 @@ class PaymentResponseSuccess extends React.Component {
 // export default PaymentResponseSuccess;
 const Components = props => {
    debugger
-   let { CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
+   let { CartCtx: { cartFilters, data, loading, error, allorderdata,allordersuccesful, wishlistdata } } = React.useContext(CartContext);
    let content, mapped;
    if (!loading && !error) {
       if (Object.keys(data).length !== 0) {
@@ -179,7 +179,7 @@ const Components = props => {
       }
    }
    if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
-   else content = <PaymentResponseSuccess {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
+   else content = <PaymentResponseSuccess {...props} data={mapped} allorderdata={allordersuccesful} wishlistdata={wishlistdata} />
    // localStorage.setItem("a__w_l", wishlistdata && wishlistdata.length)
    return content
 }

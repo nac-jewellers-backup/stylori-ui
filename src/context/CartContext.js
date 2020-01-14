@@ -7,6 +7,7 @@ import { ALLUSERWISHLISTS } from 'queries/cart';
 import { withRouter } from 'react-router-dom';
 import { useNetworkRequest } from 'hooks/NetworkHooks'
 import { FilterOptionsContext } from 'context/FilterOptionsContext';
+import { matchPath } from "react-router";
 // import { productsPendants } from 'mappers/dummydata';
 // import { object } from 'prop-types';
 var orderobj = {}
@@ -152,8 +153,14 @@ const Provider = (props) => {
 
     }, [wishlistdata])
     useEffect(() => {
-        orderobj["userProfileId"] = userIds
-        allordermakeRequestSuccessful(orderobj);
+        // orderobj["userProfileId"] = userIds
+        // {
+        //     "orderId":{"id":"69ec1b00-36d0-11ea-b9b0-a977a389bd8d"}
+        //   }
+        var _obj = {}
+          _obj["orderId"] = {id:props.match.params.id}
+        // var props.computedMatch.params.id
+        allordermakeRequestSuccessful(_obj);
     }, [wishlistdata])
     useEffect(() => {
         // if (userIds.length > 0) {
@@ -241,7 +248,7 @@ const Provider = (props) => {
     }, [])
 
     const CartCtx = {
-        cartFilters, loading, error, wishlist_count, data, setCartFilters, allorderdata, wishlistdata
+        cartFilters, loading, error, wishlist_count, data, setCartFilters, allorderdata, wishlistdata, allordersuccesful
     }
     return (
         <CartContext.Provider value={{ CartCtx, setwishlist_count, setCartFilters, setallorderdata, setwishlistdata }} >
