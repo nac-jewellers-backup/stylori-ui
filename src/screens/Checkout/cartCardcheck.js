@@ -277,6 +277,9 @@ class Component extends React.Component {
 //     return <CartCardCheck {...props} data={mapped} />
 // });
 const Components = props => {
+    React.useEffect(()=>{
+        localStorage.setItem('panel', 1)
+    },[])
     let { CartCtx: { data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
 
     let content, mapped;
