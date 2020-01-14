@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core';
 import { useNetworkRequest } from 'hooks/NetworkHooks'
 import { async } from 'q';
-
+import CommenDialog from 'components/Common/Dialogmodel'
 
 
 const LoginComponent = (props) => {
@@ -27,11 +27,17 @@ const LoginComponent = (props) => {
         confirmPasswordHelper: "",
         oldpassword: "",
         oldpassworderror: false,
-        oldpasswordText: ""
+        oldpasswordText: "",
+        modelOpen: false
 
     });
     const { loading, error, data, makeFetch } = useNetworkRequest('/changepassword', {}, false, {})
-
+    const canceldeletechecklist = () => {
+        setValues({
+            ...values, modelOpen: false,
+        })
+        props.history.push('/account-profile')
+    }
     const { classes } = props;
     const handelSubmit = async () => {
         if (values.oldpassword === "") {
@@ -66,11 +72,11 @@ const LoginComponent = (props) => {
                     setValues({ ...values, newpassword: "", confirmPassword: "", oldpassword: "", oldpassworderror: true, oldpasswordText: data.message })
                 }
                 else {
-                    setValues({ ...values, newpassword: "", confirmPassword: "", oldpassword: "", confirmPasswordHelper: data.message })
-                    props.history.push('/account-profile')
+                    setValues({ ...values, newpassword: "", confirmPassword: "", oldpassword: "", confirmPasswordHelper: data.message, modelOpen: true })
+                    // props.history.push('/account-profile')
                 }
             } catch (error) {
-                alert(JSON.stringify(error))
+                console.log(error)
             }
         }
 
@@ -145,6 +151,7 @@ const LoginComponent = (props) => {
                             </form>
                         </div>
                     </Container>  </Grid>
+                <CommenDialog isOpen={values.modelOpen} content={data.message} handleSuccess={canceldeletechecklist} positiveBtn="ok" title="Message" />
             </Grid>
             <Grid item xs={12}>
                 <Footer />
