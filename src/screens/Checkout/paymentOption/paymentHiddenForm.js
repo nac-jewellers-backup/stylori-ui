@@ -10,6 +10,7 @@ export default function PaymentHiddenForm(props) {
         timedate: ""
     })
     const obj = {}
+    const order_idx = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : "yourorder"
     useEffect(() => {
         fetch(`${API_URL}/generatepaymenturl`, {
             method: 'POST' 
@@ -28,7 +29,7 @@ export default function PaymentHiddenForm(props) {
         let cart_id_lo = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
         let cart_id = cartFilters && cartFilters._cart_id && Object.keys(cartFilters._cart_id).length > 0 ? cartFilters._cart_id.cart_id : ''
         var cart_ids = cart_id.length > 0 ? cart_id : cart_id_lo
-        const order_idx = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : "yourorder"
+        
         // let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : "";
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : "";
         obj['payment_mode'] = "prepaide"
@@ -121,8 +122,8 @@ export default function PaymentHiddenForm(props) {
                 <input size="50" type="hidden" name="sharedsecret" value="" />
                 <input type="hidden" name="timezone" value="IST" />
                 <input type="hidden" name="authenticateTransaction" value="true" />
-                <input type='hidden' name='checkoutoption' value="combinedform" />
-                <input size="50" type="hidden" name="oid" value="zxcvmnbv1234" />
+                <input type="hidden" name='checkoutoption' value="combinedform" />
+                <input size="50" type="hidden" name="oid" value={order_idx}/>
                 {/* <input size="50" type="hidden" name="paymentMethod" value=""/>
                 <input type="hidden" name="cardFunction" value = "credit" /> */}
             </div>
