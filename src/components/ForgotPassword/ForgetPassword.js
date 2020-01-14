@@ -14,7 +14,7 @@ import {
 import { API_URL } from '../../config'
 import { useNetworkRequest } from '../../hooks/NetworkHooks'
 import { async } from 'q';
-
+import CommenDialog from '.././Common/Dialogmodel'
 
 
 const LoginComponent = (props) => {
@@ -24,12 +24,17 @@ const LoginComponent = (props) => {
         firstname: "",
         lastname: "",
         error: false,
-        errorText: ""
+        errorText: "",
+        modelOpen: false
 
     });
     const { classes } = props;
     const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/forgotpassword', {}, false, {})
-
+    const canceldeletechecklist = () => {
+        setValues({
+            ...values, modelOpen: false,
+        })
+    }
     const handelSubmit = async () => {
         let regex = /^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-zA-Z]{2,9})$/;
         let email = values.email;
@@ -48,10 +53,10 @@ const LoginComponent = (props) => {
                     setValues({ ...values, error: true, errorText: ntxdata.message })
                 }
                 else if (ntxdata.status === "success") {
-                    alert("success")
+                    setValues({ ...values, email: "", modelOpen: true })
                 }
             } catch (error) {
-                alert("ee" + error)
+                console.log(error)
             }
         }
 
@@ -106,6 +111,7 @@ const LoginComponent = (props) => {
                             </form>
                         </div>
                     </Container>  </Grid>
+                <CommenDialog isOpen={values.modelOpen} content={ntxdata.message} handleSuccess={canceldeletechecklist} positiveBtn="ok" title="Message" />
             </Grid>
             <Grid item xs={12}>
                 <Footer />

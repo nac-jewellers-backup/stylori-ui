@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core';
 import { useNetworkRequest } from '../../hooks/NetworkHooks'
 import { async } from 'q';
-
+import CommenDialog from '.././Common/Dialogmodel'
 
 
 const LoginComponent = (props) => {
@@ -24,10 +24,17 @@ const LoginComponent = (props) => {
         newPasswordHelperText: "",
         confirmPassword: "",
         confirmPasswordError: false,
-        confirmPasswordHelper: ""
+        confirmPasswordHelper: "",
+        modelOpen: false
 
     });
     const { loading, error, data, makeFetch } = useNetworkRequest('/resetpassword', {}, false, {})
+    const canceldeletechecklist = () => {
+        setValues({
+            ...values, modelOpen: false,
+        })
+        props.history.push('/login')
+    }
 
     const { classes } = props;
     const handelSubmit = async () => {
@@ -57,18 +64,16 @@ const LoginComponent = (props) => {
     React.useEffect(() => {
         if (data && data.constructor !== Object) {
             try {
-                setValues({ ...values, newpassword: "", confirmPassword: "", confirmPasswordHelper: data.message })
-                props.history.push('/login')
+                setValues({ ...values, newpassword: "", confirmPassword: "", confirmPasswordHelper: data.message, modelOpen: true })
             } catch (error) {
-                alert(error)
+                console.log(error)
             }
         }
         if (data && data.constructor === Object) {
             try {
                 setValues({ ...values, newpassword: "", confirmPassword: "", confirmPasswordHelper: data.message })
-                props.history.push('/login')
             } catch (error) {
-                alert(error)
+                console.log(error)
             }
         }
 
@@ -102,7 +107,6 @@ const LoginComponent = (props) => {
                                     placeholder="Enter new password"
                                 />
                                 <label className='errtext'> {values.newPasswordHelperText && values.newPasswordHelperText}</label>
-                                {/* <br></br> */}
                                 <TextField
                                     margin="normal"
                                     variant="outlined"
@@ -111,7 +115,6 @@ const LoginComponent = (props) => {
                                     name="confirmPassword"
                                     value={values.confirmPassword}
                                     error={values.confirmPasswordError ? true : false}
-                                    // helperText={values.confirmPassword && values.confirmPassword.emerr}
                                     onChange={e => handleChange('confirmPassword', e.target.value)}
                                     placeholder="Enter confirm password"
                                 />
@@ -125,6 +128,7 @@ const LoginComponent = (props) => {
                             </form>
                         </div>
                     </Container>  </Grid>
+                <CommenDialog isOpen={values.modelOpen} content={data} handleSuccess={canceldeletechecklist} positiveBtn="ok" title="Message" />
             </Grid>
             <Grid item xs={12}>
                 <Footer />

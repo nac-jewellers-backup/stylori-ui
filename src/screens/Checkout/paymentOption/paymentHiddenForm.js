@@ -108,11 +108,11 @@ export default function PaymentHiddenForm(props) {
             </div>
             <div>
                 {/* <label>successpage</label> */}
-                <input size="50" type="hidden" name="responseSuccessURL" value={`http://192.168.0.102:8000/paymentsuccess`} />
+                <input size="50" type="hidden" name="responseSuccessURL" value={`${API_URL}/paymentsuccess`} />
             </div>
             <div>
                 {/* <label>fail</label> */}
-                <input size="50" type="hidden" name="responseFailURL" value={`http://192.168.0.102:8000/paymentfailure`} />
+                <input size="50" type="hidden" name="responseFailURL" value={`${API_URL}/paymentfailure`} />
             </div>
             <div>
                 {/* <label>Language</label> */}
