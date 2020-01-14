@@ -65,6 +65,7 @@ const Provider = (props) => {
     const myStorage = sessionStorage.getItem("user_id");
     const localvalues_check = JSON.parse(localStorage.getItem('gut_lg')) === true ? true : false
     const order_idx = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : "yourorder"
+    let gut_lg = localStorage.getItem("gut_lg") ? JSON.parse(localStorage.getItem("gut_lg")) : {}
     React.useEffect(() => {
         if (localvalues_check === true) {
             if (con_gust === true) {
@@ -75,16 +76,16 @@ const Provider = (props) => {
         }
     }, [])
 
-    React.useEffect(() => {
-        var a = window.location.pathname
-        var b = a.split("/")
-        if (b[1] === "paymentsuccess") {
-            localStorage.removeItem("panel")
-            localStorage.removeItem("cartDetails")
-            localStorage.removeItem("ship_isactive")
-            localStorage.removeItem("bil_isactive")
-        }
-    }, [])
+    // React.useEffect(() => {
+    //     var a = window.location.pathname
+    //     var b = a.split("/")
+    //     if (b[1] === "paymentsuccess") {
+    //         localStorage.removeItem("panel")
+    //         localStorage.removeItem("cartDetails")
+    //         localStorage.removeItem("ship_isactive")
+    //         localStorage.removeItem("bil_isactive")
+    //     }
+    // }, [])
     useEffect(() => {
         // alert("cart")
         if (jewellery && jewellery === "jewellery") {
@@ -94,11 +95,11 @@ const Provider = (props) => {
             localStorage.removeItem("bil_isactive")
             window.location.pathname = `/paymentsuccess/${order_idx}`
         }
-        if (crtdata && Object.keys(crtdata).length>0 && crtdata.constructor === Object) {
+        if (crtdata && Object.keys(crtdata).length > 0 && crtdata.constructor === Object) {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))
             cartFilters['_cart_id'] = crtdata
             // _cart_id:crtdata
-            setCartFilters({cartFilters })
+            setCartFilters({ cartFilters })
 
         }
         if (reload && reload.length > 0) {
@@ -180,6 +181,7 @@ const Provider = (props) => {
         }
         else {
             if (cartFilters.price > 0) {
+                debugger
                 var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
                 var local_storage_products = []
                 if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
@@ -187,6 +189,7 @@ const Provider = (props) => {
                 }
                 var skuId = cartFilters.skuId;
                 var products = [];
+                var productszz = [];
                 var obj = {};
                 var cartId = "";
                 var userId = '';
@@ -194,6 +197,8 @@ const Provider = (props) => {
                 obj['sku_id'] = skuId;
                 obj['qty'] = cartFilters.qty
                 obj['price'] = cartFilters.price
+                productszz.push(obj)
+                debugger
                 var products_sku_list = () => {
                     if (local_storage_products.length > 0) {
                         local_storage_products.push(obj);
@@ -205,6 +210,13 @@ const Provider = (props) => {
                     }
                 }
                 var skuObj = { "cart_id": cartId, "user_id": userId, "products": products_sku_list() }
+                // if (userIds.length > 0 && gut_lg !== true) {
+                //     var products = productszz;
+                //     const user_id = cartFilters.user_id
+                //     var addcart = ({ products, user_id })
+                //     addtocart(addcart)
+                // }
+
                 localStorage.setItem('cartDetails', JSON.stringify(skuObj));
             }
         }

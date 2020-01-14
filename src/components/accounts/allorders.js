@@ -66,32 +66,35 @@ class Allorders extends React.Component {
             return 'Ships by' + ' ' + moment().add(numberOfDays, 'days').format('MMM Do YYYY');
         }
     }
-    ImageUrl = (imgs, sku) => {
-        
+    ImageUrl = (imgs, sku, metal) => {
+        debugger
+        var ppp
         if (this.props && this.props.allorderdata && this.props.allorderdata.allorderdata && this.props.allorderdata.allorderdata.nodes.length > 0 && this.props.allorderdata && this.props.allorderdata.allorderdata) {
             var vera = this.props.allorderdata.allorderdata.nodes.map(val => {
                 if (val !== undefined && val !== null) {
                     var inside = val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
                         if (cart !== undefined && cart !== null) {
-                            var metalColor_ = cart.transSkuListByProductSku.metalColor
-                            var cnt = imgs.imageUrl.split("/")
-                            var cnt_b = cnt[2].split("-")
-                            var cnt_c = cnt_b[1]
+                            if (cart !== undefined && cart !== null) {
+                                var metalColor_ = metal
+                                var cnt = imgs.imageUrl.split("/")
+                                var cnt_b = cnt[2].split("-")
+                                var cnt_c = cnt_b[1]
 
-                            if (sku === cart.transSkuListByProductSku.generatedSku) {
-                                if (metalColor_[0] === cnt_c[1]) {
-                                    return imgs.imageUrl
+                                // if (sku === cart.transSkuListByProductSku.generatedSku) {
+                                if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
+                                    ppp = "https://assets.stylori.net/base_images/" + imgs.imageUrl
                                 }
+                                // }
                             }
                         }
                     }
                     )
-                    return inside[0]
+                    // return inside[0]
                 }
 
             })
-            var outside = vera.filter(val => (val !== undefined && val !== null))
-            return outside && outside[0] && outside[0].length > 0 ? outside[0] : "";
+            // var outside = ppp.filter(val => (val !== undefined && val !== null))
+            return ppp;
         }
     }
 
@@ -150,7 +153,7 @@ class Allorders extends React.Component {
                                                         </Grid>
                                                         <Grid item sm={6} lg={6} xs={12} className="order_addres_user">
                                                             <div><b>Shipping Address :</b></div><br />
-                                                             <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}&nbsp;
+                                                            <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}&nbsp;
                                                             {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].lastname}</div><br />
                                                             <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].addressline1}</div><br />
                                                             <div>  {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].city + "-"}
@@ -174,12 +177,15 @@ class Allorders extends React.Component {
                                                         <Grid container spacing={12} lg={12} style={{ outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px" }}>
                                                             <Grid item lg={3} sm={4}  >
                                                                 {cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs =>
-                                                                    this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku).length > 0 ?
-                                                                        <div className="wishlist_img">
-                                                                            <img className="viewport-img" src={`https://assets.stylori.net/base_images/${this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku)}`}
-                                                                            />
-                                                                        </div>
-                                                                        : ""
+                                                                    <>
+                                                                        {this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
+                                                                            cart.transSkuListByProductSku.metalColor) && this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
+                                                                                cart.transSkuListByProductSku.metalColor).length > 0 ?
+                                                                            <div className="wishlist_img">
+                                                                                <img className="viewport-img" src={this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
+                                                                                    cart.transSkuListByProductSku.metalColor)}
+                                                                                />
+                                                                            </div> : ""}</>
 
                                                                 )}
                                                             </Grid>
@@ -276,7 +282,9 @@ class Allorders extends React.Component {
                     </div> :
                     <div className='pt-sm checkout-ovralldiv-media' >
                         {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0 ?
-                            <div>
+                            <Container>
+                            <Container>
+
                                 {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map(val => {
                                     return (order_id === val.id ?
                                         <div>
@@ -320,17 +328,21 @@ class Allorders extends React.Component {
                                                             <Grid container spacing={12} lg={12} style={{ overflow: "hidden", outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px", color: "#394578" }}>
                                                                 <Grid item lg={2} sm={3}  >
                                                                     {cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs =>
-                                                                        this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku) .length > 0 ?
-                                                                            <div className="wishlist_img">
-                                                                                <img className="viewport-img" src={`https://assets.stylori.net/base_images/${this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku)}`}
-                                                                                />
-                                                                            </div>
-                                                                            : ""
+                                                                        <>
+                                                                            {this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
+                                                                                cart.transSkuListByProductSku.metalColor) && this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
+                                                                                    cart.transSkuListByProductSku.metalColor).length > 0 ?
+                                                                                <div className="wishlist_img">
+                                                                                    <img className="viewport-img" src={this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
+                                                                                        cart.transSkuListByProductSku.metalColor)}
+                                                                                    />
+                                                                                </div> : ""}</>
+
 
                                                                     )}
                                                                 </Grid>
                                                                 <Grid item lg={4} sm={4}>
-                                                                    <Grid container spacing={12} lg={12} style={{ lineHeight: "20px" }}>
+                                                                    <Grid container spacing={12} lg={12} style={{ lineHeight: "50px" }}>
 
                                                                         <b style={{ width: "100%" }}> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
                                                                         <Grid item lg={6} sm={6}>
@@ -391,9 +403,9 @@ class Allorders extends React.Component {
 
 
                                                                 <Grid style={{ padding: "10px", justifyContent: "center", display: "flex", alignItems: "center" }} className="rups" item lg={3} sm={2}>
-                                                                    {Math.round(cart.price) > Math.round(cart.transSkuListByProductSku.markupPrice) ?
+                                                                    {Math.round(cart.discountPrice) > Math.round(cart.transSkuListByProductSku.markupPrice) ?
                                                                         <Pricing
-                                                                            price={cart.transSkuListByProductSku.markupPrice}
+                                                                            price={cart.transSkuListByProductSku.discountPrice}
                                                                             offerPrice={cart.transSkuListByProductSku.markupPrice}
                                                                             offerDiscount={"25% - OFF"}
                                                                         ></Pricing>
@@ -422,7 +434,8 @@ class Allorders extends React.Component {
 
                                         : "")
                                 })}
-                            </div>
+                            </Container>
+                            </Container>
                             : <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Orders</div>}
 
 

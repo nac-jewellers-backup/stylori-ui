@@ -9,6 +9,8 @@ import { checkoutloginRegs } from '../../../mappers';
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 import { fontWeight } from '@material-ui/system';
+import { CartContext } from '../../../context/CartContext';
+
 class LoginRegisterIndex extends React.Component {
     constructor(props) {
         super(props)
@@ -30,16 +32,27 @@ class LoginRegisterIndex extends React.Component {
     render() {
         const { LogRegData } = this.props.data
         const { classes } = this.props;
+        var obj_user = {}
+        let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
+        let set_check = localStorage.getItem("set_check") ? localStorage.getItem("set_check") : ""
         const local_mail = localStorage.getItem("email") ? localStorage.getItem("email") : ""
         return (
             <Grid container>
                 {local_mail ?
-                    <div style={{paddingLeft:"30px"}}> <span style={{
+                    <div style={{ paddingLeft: "30px" }}> <span style={{
                         color: "#394578",
                         fontSize: "15px",
                         fontWeight: "700"
                     }}>{local_mail}</span><br />
-                        < Button onClick={() => this.props.changePanel(2)} style={{
+                        < Button onClick={() => {
+                            obj_user["user_id"] = user_id
+                            // obj_user["jewellery"] = "jewellery"
+                            if (!set_check.length > 0) {
+                                localStorage.removeItem("cart_id")
+                                this.props.setCartFilters(obj_user)
+                            }
+                            this.props.changePanel(2)
+                        }} style={{
                             height: "42px",
                             color: "#fff",
                             background: "#394578",
@@ -71,7 +84,7 @@ class LoginRegisterIndex extends React.Component {
                                 </Grid>
                             </>
                         </div>
-                        <div style={{display: this.state.Login == true ? "block" : "none" }}>
+                        <div style={{ display: this.state.Login == true ? "block" : "none" }}>
                             <Login changePanel={this.props.changePanel} change={() => {
                                 this.setState({
                                     show: true,
@@ -102,8 +115,9 @@ class LoginRegisterIndex extends React.Component {
     }
 }
 export default withStyles(styles)(props => {
+    let { CartCtx: { setCartFilters } } = React.useContext(CartContext);
     const { mapped } = useDummyRequest(checkoutloginRegs);
     if (Object.keys(mapped).length === 0) return ''
 
-    return <LoginRegisterIndex {...props} data={mapped} />
+    return <LoginRegisterIndex {...props} data={mapped} setCartFilters={setCartFilters} />
 });

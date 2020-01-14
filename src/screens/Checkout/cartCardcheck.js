@@ -11,7 +11,7 @@ import {
     Button,
     Hidden
 } from '@material-ui/core';
-import "../../components/Checkout/Cart.css";
+import "../../components/Checkout/Cart.css"; 
 import "./chckout.css";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Addressform from './addressDetails/addressForm';
@@ -89,15 +89,15 @@ class Component extends React.Component {
         })
     }
     pincodeapi = () => {
-        var obj_user = {}
-        let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
-        let order_id = localStorage.getItem("order_id") ? localStorage.getItem("order_id") : ""
+        // var obj_user = {}
+        // let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
+        // let set_check = localStorage.getItem("set_check") ? localStorage.getItem("set_check") : ""
         this.props.makeRequestCod(variab)
-        localStorage.removeItem("cart_id")
-        obj_user["user_id"] = user_id
+        // obj_user["user_id"] = user_id
         // obj_user["jewellery"] = "jewellery"
-        // if (order_id && order_id.length > 0) {
-            this.props.setCartFilters(obj_user)
+        // if (!set_check.length > 0) {
+        // localStorage.removeItem("cart_id")
+        // this.props.setCartFilters(obj_user)
         // }
         this.changePanel(4)
     }
@@ -277,6 +277,9 @@ class Component extends React.Component {
 //     return <CartCardCheck {...props} data={mapped} />
 // });
 const Components = props => {
+    React.useEffect(()=>{
+        localStorage.setItem('panel', 1)
+    },[])
     let { CartCtx: { data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
 
     let content, mapped;

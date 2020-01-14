@@ -9,7 +9,6 @@ import { API_URL, HOME_PAGE_URL, CDN_URL } from '../../../config';
 
 var obj = {}
 var obj_user = {}
-let gut_lg = localStorage.getItem("gut_lg") ? JSON.parse(localStorage.getItem("gut_lg")) : {}
 // let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
 const order_idx = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : "yourorder"
 
@@ -31,7 +30,7 @@ class CashonDelivey extends React.Component {
             body: JSON.stringify(obj)
         }).then(res => {
             // alert(JSON.stringify(obj))
-            alert( 'Order Placed Successfully')
+            alert('Order Placed Successfully')
             return res.json();
         })
             .then(resdata => {
@@ -44,16 +43,14 @@ class CashonDelivey extends React.Component {
                 localStorage.removeItem("cartDetails")
                 localStorage.removeItem("ship_isactive")
                 localStorage.removeItem("bil_isactive")
+                localStorage.removeItem("set_check")
                 window.location.pathname = `/paymentsuccess/${order_idx}`
             })
             .catch(err => {
                 // console.log(err)
             });
         // localStorage.removeItem("cart_id")
-        if (gut_lg === true) {
-            localStorage.clear();
-            // localStorage.removeItem("gut_lg")
-        }
+      
         // } 
 
         // obj_user["user_id"] = user_id

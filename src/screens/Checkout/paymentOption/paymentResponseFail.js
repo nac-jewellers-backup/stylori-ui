@@ -6,12 +6,16 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import { CartContext } from 'context'
 import './payment.css';
 import cart from 'mappers/cart'
+import Footer from "components/Footer/Footer";
+import Header from "components/SilverComponents/Header";
 import Allorders from "components/accounts/allorders";
 function PaymentResponseFail(props) {
   function BackToPayment() {
     props.history.push('/home')
-  }
+  } 
   return (
+    <>
+    <Header wishlist={props.wishlistdata} />   
     <Grid container style={{ marginTop: "15px" }}>
       <Grid item xs={12} sm={12} md={12} >
         <Grid container justify="center">
@@ -28,6 +32,8 @@ function PaymentResponseFail(props) {
       </Grid>
       <Allorders allorderdata={props.allorderdata} />
     </Grid>
+    <Footer/>
+    </>
   )
 }
 

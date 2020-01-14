@@ -3,9 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Breadcrumbs, Link, Container, Grid, Typography } from '@material-ui/core/';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import "./breadcrumb.css"
+var a = window.location.pathname
+var b = a.split("/")
 export default function CustomSeparator(props) {
   let path = window.location.pathname;
-  let seperators = path === '/cart' || path === "/checkout" ?
+  let seperators = path === '/cart' || path === "/checkout" || b[1] === "paymentsuccess"?
     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAQAAAC0NkA6AAAAAmJLR0QA/4ePzL8AAABTSURBVFjD7dfBDYAgFARRqkBCi1ouEa1mbMJPIMw08JK9bUpm9lOclGjiAnowQ6YBL1VGRkZGZjKm0IGbvDbCQQOewLkkJCQkNicGXYchJ8hs8z7oGPzdOrNn/QAAAABJRU5ErkJggg=="
       className={props.arrowicon} />
     : <NavigateNextIcon />;
@@ -93,14 +95,16 @@ export default function CustomSeparator(props) {
 
     }
   }
+
+
   return (
-    <div className={window.location.pathname === "/cart" || window.location.pathname === "/checkout" ? "bread_stic" : ""}>
+    <div className={window.location.pathname === "/cart" || b[1] === "paymentsuccess" || window.location.pathname === "/checkout" ? "bread_stic" : ""}>
       <div className={props.className} >
         <Paper elevation={0} className={props.classsubhed}  >
           <Container>
             <Grid container>
               <Grid item lg={7}>
-                {window.location.pathname === "/cart" || window.location.pathname === "/checkout" ?  <ol class="breadCrumbs">
+                {window.location.pathname === "/cart" || b[1] === "paymentsuccess" || window.location.pathname === "/checkout" ? <ol class="breadCrumbs">
                   {props.data.map(data => (
                     //  <Link color="inherit" to={{pathname:data.url}} style={{ fontSize: "14px" }} className={props.list}>
                     <li onClick={() => activetabsclik(data)}>
@@ -110,19 +114,19 @@ export default function CustomSeparator(props) {
                     //  </Link>
                   ))
                   }
-                </ol>:<Breadcrumbs separator={seperators} >
-                  {props.data.map(data => (
-                    //  <Link color="inherit" to={{pathname:data.url}} style={{ fontSize: "14px" }} className={props.list}>
-                    <div onClick={() => activetabsclik(data)}>
-                      <li className={activetabs(data) ? ` isactives ${props.list}` : props.list}>
-                        {data.title}</li>
-                    </div>
-                    //  </Link>
-                  ))
-                  }
-                </Breadcrumbs>}
-               
-                
+                </ol> : <Breadcrumbs separator={seperators} >
+                    {props.data.map(data => (
+                      //  <Link color="inherit" to={{pathname:data.url}} style={{ fontSize: "14px" }} className={props.list}>
+                      <div onClick={() => activetabsclik(data)}>
+                        <li className={activetabs(data) ? ` isactives ${props.list}` : props.list}>
+                          {data.title}</li>
+                      </div>
+                      //  </Link>
+                    ))
+                    }
+                  </Breadcrumbs>}
+
+
               </Grid>
               <Grid item lg={5}>
                 {props.subdata ?
