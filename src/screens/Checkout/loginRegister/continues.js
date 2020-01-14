@@ -22,6 +22,7 @@ const ContinuesComponent = (props) => {
         props.change()
     }
     const handleSubmit = (e) => {
+        debugger
         if (enterotp) {
             handlers.otpFetch(values);
             // props.submit(e)

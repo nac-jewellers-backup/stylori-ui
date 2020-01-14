@@ -47,10 +47,11 @@ class LoginRegisterIndex extends React.Component {
                         < Button onClick={() => {
                             obj_user["user_id"] = user_id
                             // obj_user["jewellery"] = "jewellery"
-                            if (!set_check.length > 0) {
-                                localStorage.removeItem("cart_id")
-                                this.props.setCartFilters(obj_user)
-                            }
+                            // if (!set_check.length > 0) {
+                            //     debugger
+                            //     localStorage.removeItem("cart_id")
+                            //     this.props.setCartFilters(obj_user)
+                            // }
                             this.props.changePanel(2)
                         }} style={{
                             height: "42px",

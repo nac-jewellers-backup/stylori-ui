@@ -89,15 +89,15 @@ class Component extends React.Component {
         })
     }
     pincodeapi = () => {
-        // var obj_user = {}
-        // let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
+        var obj_user = {}
+        let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
         // let set_check = localStorage.getItem("set_check") ? localStorage.getItem("set_check") : ""
         this.props.makeRequestCod(variab)
-        // obj_user["user_id"] = user_id
+        obj_user["user_id"] = user_id
         // obj_user["jewellery"] = "jewellery"
         // if (!set_check.length > 0) {
-        // localStorage.removeItem("cart_id")
-        // this.props.setCartFilters(obj_user)
+        localStorage.removeItem("cart_id")
+        this.props.setCartFilters(obj_user)
         // }
         this.changePanel(4)
     }
@@ -277,9 +277,9 @@ class Component extends React.Component {
 //     return <CartCardCheck {...props} data={mapped} />
 // });
 const Components = props => {
-    React.useEffect(()=>{
-        localStorage.setItem('panel', 1)
-    },[])
+    // React.useEffect(()=>{
+    //     localStorage.setItem('panel', 1)
+    // },[])
     let { CartCtx: { data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
 
     let content, mapped;
