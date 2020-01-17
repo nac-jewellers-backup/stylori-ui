@@ -9,6 +9,7 @@ export default function PaymentHiddenForm(props) {
         hashvalue: "",
         timedate: ""
     })
+    const [orderId, setOrderId] = React.useState(null)
     const obj = {}
     const order_idx = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : "yourorder"
     let cart_id_lo = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
@@ -46,20 +47,33 @@ export default function PaymentHiddenForm(props) {
             });
 
 debugger
+ const status = (response) => {
+
+    if (response.status >= 200 && response.status < 300) {
+      return Promise.resolve(response)
+    } else {
+      return Promise.reject(new Error(response.statusText))
+    }
+  }
+
+  const json = (response)=> {
+    return response.json()
+  }
        await fetch(`${API_URL}/createorder`, {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
                 // 'Content-Type': 'application/x-www-form-urlencoded',
             },
+            // then(async(response) =>await response.json()).
             body: JSON.stringify(obj)
-        }).then(async(response) =>await response.json()).then((data) => {
+        }).then(status).then(json).then((data) => {
             localStorage.removeItem("order_id")
             if (data !== null && data !== undefined) {
                 localStorage.setItem("order_id", JSON.stringify(data.order.id))
             }
 
-           
+           setOrderId(data.order.id)
      
         }).catch((error) => {
             console.error('Error:', error);
@@ -73,51 +87,51 @@ debugger
             <form id="payment_hidden_form" method="POST" action="https://www4.ipg-online.com/connect/gateway/processing">
             <div>
                 {/* <label>Transaction Type</label> */}
-                <input size="50" type="" name="txntype" value="sale" />
+                <input size="50" type="hidden" name="txntype" value="sale" />
             </div>
             <div>
             
                 {/* <label>Transaction Date Time</label> */}
-                <input size="50" type="" name="txndatetime" value={hash.timedate} />
+                <input size="50" type="hidden" name="txndatetime" value={hash.timedate} />
             </div>
             <div>
                 {/* <label>Calculated Hash</label> */}
-                <input size="50" type="" name="hash" value={hash.hashvalue} />
+                <input size="50" type="hidden" name="hash" value={hash.hashvalue} />
             </div>
             <div>
                 {/* <label>Currency</label> */}
-                <input size="50" type="" name="currency" value="356" />
+                <input size="50" type="hidden" name="currency" value="356" />
             </div>
             <div>
                 {/* <label>Payment Mode</label> */}
-                <input size="50" type="" name="mode" value="payonly" />
+                <input size="50" type="hidden" name="mode" value="payonly" />
             </div>
             <div>
                 {/* <label>Store Id</label> */}
-                <input size="50" type="" name="storename" value="3396023678" />
+                <input size="50" type="hidden" name="storename" value="3396023678" />
             </div>
             <div>
                 {/* <label>Chargetotal</label> */}
-                <input size="50" type="" name="chargetotal" value="1" />
+                <input size="50" type="hidden" name="chargetotal" value="1" />
             </div>
             <div>
                 {/* <label>successpage</label> */}
-                <input size="50" type="" name="responseSuccessURL" value={`${API_URL}/paymentsuccess`} />
+                <input size="50" type="hidden" name="responseSuccessURL" value={`${API_URL}/paymentsuccess`} />
             </div>
             <div>
                 {/* <label>fail</label> */}
-                <input size="50" type="" name="responseFailURL" value={`${API_URL}/paymentfailure`} />
+                <input size="50" type="hidden" name="responseFailURL" value={`${API_URL}/paymentfailure`} />
             </div>
             <div>
                 {/* <label>Language</label> */}
-                <input size="50" type="" name="language" value="en_EN" />
+                <input size="50" type="hidden" name="language" value="en_EN" />
             </div>
             <div>
-                <input size="50" type="" name="sharedsecret" value="" />
-                <input type="" name="timezone" value="IST" />
-                <input type="" name="authenticateTransaction" value="true" />
-                <input type="" name='checkoutoption' value="combinedform" />
-                <input size="50" type="" name="oid" value={order_idx}/>
+                <input size="50" type="hidden" name="sharedsecret" value="" />
+                <input type="hidden" name="timezone" value="IST" />
+                <input type="hidden" name="authenticateTransaction" value="true" />
+                <input type="hidden" name='checkoutoption' value="combinedform" />
+                <input size="50" type="hidden" name="oid" value={orderId}/>
                 {/* <input size="50" type="hidden" name="paymentMethod" value=""/>
                 <input type="hidden" name="cardFunction" value = "credit" /> */}
             </div>
