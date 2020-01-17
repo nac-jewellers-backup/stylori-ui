@@ -296,7 +296,7 @@ class Allorders extends React.Component {
 
                                 {allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes.map(val => {
                                     debugger
-                                    return (order_id === val.id ?
+                                    return (
                                         <div>
 
                                             <div style={{ marginTop: "20px", boxShadow: "none" }}>
@@ -438,11 +438,7 @@ class Allorders extends React.Component {
                                             </div>
                                         </div>
 
-
-
-
-
-                                        : "")
+)
                                 })}
                             </Container>
                             </Container>

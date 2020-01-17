@@ -19,22 +19,49 @@ class CashonDelivey extends React.Component {
             res_data: null
         }
     }
-    makeFetch = async (props) => {
+     status = (response) => {
 
-        await fetch(`${API_URL}/createorder`, {
+        if (response.status >= 200 && response.status < 300) {
+          return Promise.resolve(response)
+        } else {
+          return Promise.reject(new Error(response.statusText))
+        }
+      }
+      json = (response) => {
+        return response.json()
+      }
+      
+    makeFetch = async (props) => {
+debugger
+        // await fetch(`${API_URL}/createorder`, {
+        //     method: 'post',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //         // 'Content-Type': 'application/x-www-form-urlencoded',
+        //     },
+        //     body: JSON.stringify(obj)
+        // }).then(async res => {
+        //     // alert(JSON.stringify(obj))
+        //     return await  res.json();
+        //     alert('Order Placed Successfully')
+            
+        // })
+        fetch(`${API_URL}/createorder`, {
+
             method: 'post',
+            // body: {query:seoUrlResult,variables:splitHiphen()}
+            // body: JSON.stringify({query:seoUrlResult}),
+    
             headers: {
-                'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
+              'Content-Type': 'application/json',
             },
             body: JSON.stringify(obj)
-        }).then(res => {
-            // alert(JSON.stringify(obj))
-            alert('Order Placed Successfully')
-            return res.json();
-        })
+          })
+            .then(this.status)
+            .then(this.json)
             .then(resdata => {
                 console.log('datasssss', resdata)
+                debugger
                 // localStorage.removeItem("order_id")
                 if (resdata !== null && resdata !== undefined) {
                     localStorage.setItem("order_id", JSON.stringify(resdata.order.id))
@@ -44,7 +71,8 @@ class CashonDelivey extends React.Component {
                 localStorage.removeItem("ship_isactive")
                 localStorage.removeItem("bil_isactive")
                 localStorage.removeItem("set_check")
-                window.location.pathname = `/paymentsuccess/${order_idx}`
+                alert(resdata.message)
+                window.location.pathname = `/paymentsuccess/${resdata.order.id}`
             })
             .catch(err => {
                 // console.log(err)

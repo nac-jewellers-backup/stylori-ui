@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Redirect } from "react-router-dom"
 import { Grid, Button } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import './payment.css';
@@ -141,6 +142,7 @@ class PaymentResponseSuccess extends React.Component {
             <Grid container justify="center">
                <Grid container style={{ width: "100%" }}  >
                   <Grid item style={{ display: "flex", marginLeft: "auto", paddingRight: "2px" }}>
+
                      <Button style={{ background: "#ed1165", color: "#fff", padding: "5px 20px" }} onClick={() => {
                         localStorage.removeItem("a__c_t")
                         localStorage.removeItem("panel")

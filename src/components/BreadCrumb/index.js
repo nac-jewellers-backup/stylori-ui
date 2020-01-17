@@ -5,6 +5,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import "./breadcrumb.css"
 var a = window.location.pathname
 var b = a.split("/")
+debugger
 export default function CustomSeparator(props) {
   let path = window.location.pathname;
   let seperators = path === '/cart' || path === "/checkout" || b[1] === "paymentsuccess"?

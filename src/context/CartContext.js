@@ -152,15 +152,20 @@ const Provider = (props) => {
         allordermakeRequest(orderobj);
 
     }, [wishlistdata])
+    const ordersuccessful = async() =>{
+        var _obj = {}
+        _obj["orderId"] = {id:props.match.params.id}
+       await allordermakeRequestSuccessful(_obj);
+    }
     useEffect(() => {
         // orderobj["userProfileId"] = userIds
         // {
         //     "orderId":{"id":"69ec1b00-36d0-11ea-b9b0-a977a389bd8d"}
         //   }
-        var _obj = {}
-          _obj["orderId"] = {id:props.match.params.id}
+  
         // var props.computedMatch.params.id
-        allordermakeRequestSuccessful(_obj);
+        ordersuccessful()
+       
     }, [wishlistdata])
     useEffect(() => {
         // if (userIds.length > 0) {

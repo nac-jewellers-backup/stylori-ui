@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from "react-router-dom"
 // import Checkoutbreadcrum from '../../components/Checkout/checkoutbreadcrum';
 // import BreadCrumb from '../../components/BreadCrumb/index'
 import CartCard from 'components/Checkout/CartCard';
@@ -68,7 +69,11 @@ class Cart extends React.Component {
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>
                                 <CartCard data={data} />
-                            </Grid> : <><div className="noproductsfound">There are no items in this cart. </div>  <NavLink to="/jewellery" style={{ textDecoration: 'none' }} > <div className="continueshopping">CONTINUE SHOPPING</div></NavLink></>}
+                            </Grid> : <><div className="noproductsfound">There are no items in this cart. </div>  
+                            <Redirect to="/jewellery" ><div className="continueshopping">CONTINUE SHOPPING</div></Redirect></>
+                            
+                            
+                            }
                         </Grid>
                     </div>
 
