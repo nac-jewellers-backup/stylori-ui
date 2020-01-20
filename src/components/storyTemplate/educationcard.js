@@ -43,7 +43,11 @@ const useStyles = makeStyles({
     fontSize: "10px"
   },
   cardHeader: {
-    fontSize: "15px"
+    fontSize: "15px",
+    whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis"
+
   }
 });
 
@@ -76,7 +80,10 @@ export default function MediaCard(props) {
               <Typography gutterBottom component="h3" className={classes.cardHeader}>
                 {data.cardHeader}
               </Typography>
-              <Typography variant="body2" color="textSecondary" component="p" style={{ fontSize: "13px" }}>
+              <Typography variant="body2" color="textSecondary" component="p" style={{
+                fontSize: "13px", overflow: "hidden",
+                height: "68px"
+              }}>
                 {data.cardContent}
               </Typography>
               <Grid container>
