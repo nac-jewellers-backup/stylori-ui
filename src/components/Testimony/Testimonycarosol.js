@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Hidden, Typography, Button } from '@material-ui/core';
 import Slideshow from '../../components/Carousel/carosul'
+import { CDN_URL } from '../../config'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -20,8 +21,8 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.only('xs')]: {
         imgcoinsm: {
             verticalAlign: 'middle',
-            width: "157px !important",
-            height: "157px !important"
+            // width: "157px !important",
+            // height: "157px !important"
         },
     },
     [theme.breakpoints.only('sm')]: {
@@ -144,7 +145,7 @@ const useStyles = makeStyles(theme => ({
         minHeight: "45px",
         color: "#394578",
         fontWeight: '500',
-        fontSize: "13px",
+        fontSize: "15px",
         marginBottom: '0px',
         lineHeight: '20px !important',
         marginTop: '10px'
@@ -225,7 +226,7 @@ const useStyles = makeStyles(theme => ({
         padding: "0px 5px"
     },
     buttonTypo: {
-        textAlign: 'center', alignItems: "center", padding: "15% 15px 0px 15px"
+        textAlign: 'center', alignItems: "center", display: "flex"
     },
     spanimage: {
         backgroundPosition: '-24px -12px',
@@ -262,6 +263,7 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function ImageGridList(props) {
+    let carosolData = props && props.carosolData && props.carosolData.data && props.carosolData.data.allCustomerReviews && props.carosolData.data.allCustomerReviews.nodes;
     const classes = useStyles();
     const slider = React.createRef();
     const next = () => {
@@ -270,6 +272,13 @@ export default function ImageGridList(props) {
     const previous = () => {
         slider.current.slickPrev();
     }
+    const imageslice = (image) => {
+        let val = image.split('/')
+        return (`${CDN_URL}${val[0]}/${val[1]}/800X800/${val[2]}`)
+
+
+    }
+
     return (
         <Grid container className={classes.root}>
             <Hidden smDown>
@@ -282,22 +291,22 @@ export default function ImageGridList(props) {
                             <Grid container>
                                 <Grid item item xs={12} alignItems="center">
                                     <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
-                                        {props.carosolData.map((val, index) => <>
+                                        {carosolData && carosolData.map((val, index) => <>
                                             <Grid container>
                                                 <Grid item md={3} lg={3} sm={6} xs={12} classNmae={classes.testimonialRight}>
                                                     <Typography className={classes.testimonyTitle}>
-                                                        {val.imageTitle}
+                                                        {val.title}
                                                     </Typography>
+
 
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
                                                         <Slideshow>
-                                                            <img className={classes.imgcoin} src={val.img} />
+                                                            <img className={classes.imgcoin} src={imageslice(val.productListByProductId.productImagesByProductId.nodes[0].imageUrl)} />
                                                         </Slideshow>
-
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
-                                                        <Typography style={{ color: "#394578" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
-                                                            {val.price}</Typography>
+                                                        <Typography style={{ color: "#394578",fontSize:"0.9rem" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
+                                                            {val.transSkuListByProductSku && val.transSkuListByProductSku.markupPrice && val.transSkuListByProductSku.markupPrice}</Typography>
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
                                                         <a style={{ textDecoration: 'none' }} href={val.navigateUrl}><Button type="button" className={classes.Button}>Shop Now</Button></a>
@@ -306,11 +315,11 @@ export default function ImageGridList(props) {
                                                 </Grid>
                                                 <span className={classes.exclIcon} ></span>
                                                 <Grid item md={7} lg={7} sm={12} xs={12} className={classes.testimonialInner}>
-                                                    <Typography className={classes.textInner}>{val.content}
+                                                    <Typography className={classes.textInner}>{val.message}
                                                     </Typography>
                                                     <Grid className={classes.textInner}>
                                                         <Typography className={classes.name}>
-                                                            {val.name}
+                                                            {val.customerName}
                                                         </Typography>
                                                         <Typography className={classes.namecountry}>
                                                             {val.country}
@@ -340,33 +349,37 @@ export default function ImageGridList(props) {
                             <Grid container >
                                 <Grid item xs={12} >
                                     <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
-                                        {props.carosolData.map((val, index) => <>
+                                        {carosolData && carosolData.map((val, index) => <>
                                             <Grid container >
                                                 <Grid item xs={12} md={3} lg={3} sm={6} xs={12} className={classes.middlecontainersm} >
                                                     <Typography className={classes.testimonyTitle}>
-                                                        {val.imageTitle}
+                                                        {val.title}
                                                     </Typography>
                                                     <Grid container>
                                                         <Grid item xs={6} sm={6} style={{ textAlign: 'center' }}>
                                                             <Grid>
-                                                                <img className={classes.imgcoinsm} src={val.img} />
+                                                                <img className={classes.imgcoinsm} src={imageslice(val.productListByProductId.productImagesByProductId.nodes[0].imageUrl)} />
                                                             </Grid>
                                                         </Grid>
-                                                        <Grid item xs={6} sm={6} className={classes.buttonTypo}>
-                                                            <Grid><Typography style={{ color: "#394578", fontSize: "12px" }}><i class="fa fa-inr" aria-hidden="true" style={{ paddingRight: "2px" }}></i>
-                                                                {val.price}</Typography></Grid>
-                                                            <Grid> <a style={{ textDecoration: 'none' }} href={val.navigateUrl}><Button type="button" className={classes.Button}>Shop Now</Button></a></Grid>
+                                                        <Grid container item xs={6} sm={6} className={classes.buttonTypo}>
+                                                            <Grid>
+
+                                                            </Grid>
+                                                            <Grid>
+                                                                <Typography style={{ color: "#394578", fontSize: "12px" }}><i class="fa fa-inr" aria-hidden="true" style={{ paddingRight: "2px" }}></i>
+                                                                    {val.transSkuListByProductSku && val.transSkuListByProductSku.markupPrice && val.transSkuListByProductSku.markupPrice}</Typography>
+                                                                <a style={{ textDecoration: 'none' }} href={val.navigateUrl}><Button type="button" className={classes.Button}>Shop Now</Button></a></Grid>
                                                         </Grid>
                                                     </Grid>
                                                 </Grid>
                                                 <span className={classes.spanimage}>
                                                 </span>
                                                 <Grid item md={7} lg={7} sm={12} xs={12} >
-                                                    <Typography className={classes.textInnersm}>{val.content}
+                                                    <Typography className={classes.textInnersm}>{val.message}
                                                     </Typography>
                                                     <Grid >
                                                         <Typography className={classes.name}>
-                                                            {val.name}
+                                                            {val.customerName}
                                                         </Typography>
                                                         <Typography className={classes.namecountry}>
                                                             {val.country}

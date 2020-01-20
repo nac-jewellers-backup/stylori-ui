@@ -54,6 +54,7 @@ export const Input = props => {
   return (
     <Grid item xs={12}>
       <TextField
+        autoComplete={props && props.autoComplete && props.autoComplete}
         inputProps={{ pattern, maxLength, minLength }}
         style={{ width: "100%" }}
         onInvalid={handleInvalid}
