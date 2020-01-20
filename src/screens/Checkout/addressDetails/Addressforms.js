@@ -340,6 +340,7 @@ debugger
         // window.location.reload(); 
     }
     const selectaddreses = (val_addrs, num, index) => {
+        debugger
         var obj_user = {}
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
         let set_check = localStorage.getItem("set_check") ? localStorage.getItem("set_check") : ""
@@ -359,12 +360,13 @@ debugger
             if (val_addrs && val_addrs.firstname.length > 0) {
                 adars1['addressOne'] = val_addrs
                 addObjall['address'] = [adars1.addressOne];
+                val_addrs["addresstype"] = num
                 makeFetchall(addObjall);
             }
             // alert("your address send on successful")
             if (!pathnames) {
                 changePanel(3)
-                window.location.reload()
+                // window.location.reload()
             }
             // return false
         }
@@ -375,6 +377,7 @@ debugger
                 localStorage.setItem("bil_isactive", index)
                 if (val_addrs && val_addrs.firstname.length > 0) {
                     adars2['addressTwo'] = val_addrs
+                    val_addrs["addresstype"] = num
                 }
                 setValues({
                     values,
@@ -389,6 +392,7 @@ debugger
                     localStorage.setItem("ship_isactive", index)
                     if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                         adars1['addressOne'] = val_addrs
+                        val_addrs["addresstype"] = num
                     }
                     setValues({
                         values,
@@ -402,13 +406,14 @@ debugger
                 addObjall["user_id"] = user_id
                 addObjall["cart_id"] = cart_id
                 addObjall['address'] = [adars1.addressOne, adars2.addressTwo];
+                val_addrs["addresstype"] = num
                 // alert("your address send on successful")
                 if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                     makeFetchall(addObjall);
                 }
                 if (!pathnames) {
                     changePanel(3)
-                    window.location.reload()
+                    // window.location.reload()
                 }
             }
             // if (values.checkValue1 === true) {
