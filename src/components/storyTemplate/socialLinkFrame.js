@@ -39,7 +39,7 @@ export default function SocialLinkFrame() {
                     <StyloriNews fadeImages={storyData.NewsFeeds.carousel.data} dataCarousel={storyData.NewsFeeds.carousel.setting} />
                 </Grid>
             </Grid>
-            <Grid container>
+            {/* <Grid container>
                 <Grid item md={12} style={{ marginTop: "30px" }}>
                     <Typography style={{ color: "#394578" }} component="h4">Tweet</Typography>
                 </Grid>
@@ -51,7 +51,7 @@ export default function SocialLinkFrame() {
                         Tweets by @TwitterDev
 </a>
                 </Grid>
-            </Grid>
+            </Grid> */}
         </Grid>
     )
 }
