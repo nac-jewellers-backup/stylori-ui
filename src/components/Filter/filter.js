@@ -22,12 +22,12 @@ import { FilterOptionsContext } from 'context'
 import { NetworkContext } from 'context/NetworkContext';
 import { PRODUCTLIST, conditions, seoUrlResult } from 'queries/productListing';
 const PersistentDrawerLeft = (props) => {
-  const { setSort, setloadingfilters, setOffset, setPriceMax, setPriceMin, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
+  const { setSort, setloadingfilters, setOffset, setPriceMax, setPriceMin, FilterOptionsCtx, setdelete_fil } = React.useContext(FilterOptionsContext);
   const loc = window.location.search
   const { NetworkCtx } = React.useContext(NetworkContext);
 
   return <Component setSort={setSort} setOffset={setOffset} offset={FilterOptionsCtx.offset} setFilters={FilterOptionsCtx.setFilters} setloadingfilters={setloadingfilters} setPriceMax={setPriceMax} setPriceMin={setPriceMin} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort}
-    uri={NetworkCtx.graphqlUrl}
+    uri={NetworkCtx.graphqlUrl} setdelete_fil={setdelete_fil}
     {...props} />
 }
 
@@ -56,9 +56,7 @@ class Component extends React.Component {
       numTwo: '',
       showMore: 4,
       Price_button_click: false,
-      chipData: [
-        { key: '', label: '' },
-      ],
+      chipData: [],
     };
 
   }
@@ -161,32 +159,37 @@ class Component extends React.Component {
 
               a[attrName] = { [attrVal]: true }
               // checked[attrName] = a
-
               // alert(JSON.stringify(attrName))
               return a
-
               // return val
             })
             // this.setState(checked)
+            debugger
             Object.entries(paramsfilter[0]).map(val => {
               var keys = val[0]
               var values = val[1]
               checked[keys] = values
               if (keys !== "Category") {
-                chipData.push({ key: chipData, label: Object.keys(values), title: keys });
+                debugger
+                var a = values && Object.keys(values)
+                if (keys === "ProductType") {
+                  selected.push("Product Type", keys)
+                }
+                if (keys !== "ProductType") {
+                  selected.push(keys)
+                }
+                chipData.push({ label: a[0], title: keys });
               }
-
             })
-            
-      //prakash inga paaru
-        // data && data.data && data.data.allSeoUrlPriorities && data.data.allSeoUrlPriorities.nodes && data.data.allSeoUrlPriorities.nodes.map(val => {
-        //       var attrName = val.attributeName
-        //       selected.push(attrName)
-        
-        //     })
-            this.setState(selected)
-            this.setState(checked)
-            this.setState({ chipData }, () => this.props.setFilters(checked))
+
+            //prakash inga paaru
+            // data && data.data && data.data.allSeoUrlPriorities && data.data.allSeoUrlPriorities.nodes && data.data.allSeoUrlPriorities.nodes.map(val => {
+            //       var attrName = val.attributeName
+            //       selected.push(attrName)
+            //     })
+            // this.setState(selected)
+            // this.setState(checked)
+            this.setState(chipData, selected, checked)
           }).catch(function (error) {
             console.log('Request failed', error);
           });
@@ -194,11 +197,10 @@ class Component extends React.Component {
 
     }
     filters_checked()
-    debugger
     if (paramsfilter && paramsfilter.length > 0) {
-      
+
       this.handleChange(() => { }, true, () => { }, {}, paramsfilter)
-      
+
     }
 
   }
@@ -224,14 +226,13 @@ class Component extends React.Component {
 
   }
 
-  valz = (value) => Object.entries(this.state.checked).map(val => {
-
+  delete_val_chips = (value) => Object.entries(this.state.checked).map(val => {
     const { checked } = this.state;
+    debugger
     var obj = {};
     var mm;
     var bz;
     var valx; var valx2;
-
     if (val !== undefined && val !== null) {
       const ss = val ? val[1] : ""
       valx = ss
@@ -244,7 +245,7 @@ class Component extends React.Component {
           if (value === mm) {
             bz = mm
             checked[val[0]] = { [mm]: false }
-            this.setState({ ...checked, checked })
+            this.setState(checked)
           }
           // alert(JSON.stringify(checked))
           return false
@@ -272,7 +273,7 @@ class Component extends React.Component {
     //   checked['category'] = _category_obj
     //   this.setState(checked)
     // }
-    
+
 
     if (TargetName === undefined) {
       if (Object.keys(this.state.checked.category).length === 0 && this.state.checked.category.constructor === Object) {
@@ -299,10 +300,10 @@ class Component extends React.Component {
         let checkedvalue = {};
         checkedvalue[keyNameFilter] = true
         checked[nameFilter] = checkedvalue
-        // arr.push({ key: chipData, label: nameFilter, title: title });
+        // arr.push({  label: nameFilter, title: title });
         // chipData = arr;
         this.setState({
-          chipData,
+          // chipData,
           checked
         }, () => this.props.setFilters(checked))
       }
@@ -317,14 +318,18 @@ class Component extends React.Component {
         checkTitle = false
       }
     })
+    chipData.map(val => {
+      if (val.label === value) {
+        checkTitle = false
+      }
+    })
     if (BoolName === true) {
-
       // chipData.push({ key: chipData[chipData.length - 1].key, label: value });
       if (checkTitle) {
-        chipData.push({ key: chipData, label: value, title: title });
+        chipData.push({ label: value, title: title });
       } else {
         arr = chipData.filter(val => val.title !== title)
-        arr.push({ key: chipData, label: value, title: title });
+        arr.push({ label: value, title: title });
         chipData = arr;
       }
     } else {
@@ -333,18 +338,18 @@ class Component extends React.Component {
     };
     this.setState({
       chipData
-    }, () => this.props.setFilters(checked))
+    })
     // , () => this.props.setFilters(checked)
     // alert(JSON.stringify(this.state.checked))
   }
 
   handleDelete = (value) => {
+    debugger
     let arr = [], arr1 = [];
     let { chipData, checked } = this.state
     arr = chipData.filter(val => val.label !== value);
-
     if (checked) {
-      arr1 = this.valz(value).filter(val => {
+      arr1 = this.delete_val_chips(value).filter(val => {
         var dlt;
         if (val !== undefined && val !== null) {
           dlt = Object.values(val) === -1
@@ -357,7 +362,14 @@ class Component extends React.Component {
     this.setState({
       chipData,
       checked
-    }, () => this.props.setFilters(checked))
+    })
+    
+    this.forceUpdate()
+    this.props.setFilters(checked)
+    // var bb = {}
+    // bb["delete_fil"] = "12345"
+    // this.props && this.props.setdelete_fil && this.props.setdelete_fil(bb)
+
     // console.log("valssss",chipData,checked)
     // alert(JSON.stringify(data))
     // this.setState(state => {
@@ -366,6 +378,7 @@ class Component extends React.Component {
     //   chipData.splice(chipToDelete, 1);
     //   return { chipData };
     // });
+
   };
 
   handleDrawerOpen = () => {
@@ -483,6 +496,8 @@ class Component extends React.Component {
     //     data.label
     //   );
     // })
+    // alert(JSON.stringify(this.state.selected))
+
     return (
       <>
         <Hidden smDown>
@@ -551,7 +566,7 @@ class Component extends React.Component {
                             {
 
                               filter.map((row, i) => {
-                                
+
                                 return (
                                   <>
                                     {
@@ -574,10 +589,10 @@ class Component extends React.Component {
                                     <>
                                       {/* {JSON.stringify()} */}
                                       {(selected.indexOf(row) !== -1) &&
-                                      
+
                                         <>
                                           {
-                                            
+
                                             subFilter[row].filter((row12, i) =>
                                               (i < (this.state[`li_${row}`] ? this.state[`li_${row}`] : 4))).map(row12 => {
                                                 return (<div style={{ padding: "0 20px" }}>

@@ -49,7 +49,6 @@ class Component extends React.Component {
         if (width > 960) {
 
             if (document.getElementById('filterBy')) filterHeight = document.getElementById('filterBy').clientHeight;
-
             // const heights = 30;
             let add = filterHeight;
             this.setState({ topHeight: add });
@@ -115,7 +114,6 @@ class Component extends React.Component {
                             return (
                                 <Chip
                                     className="header-chips-text"
-                                    key={data.key}
                                     label={data.label}
                                     onClick={() => this.props.click(data.label)}
                                     avatar={data.label ?
