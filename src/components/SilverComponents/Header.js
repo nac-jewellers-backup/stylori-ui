@@ -99,12 +99,12 @@ class Header extends Component {
     }
     headerTransitions = () => {
         document.getElementById('topNav').style.paddingTop = "0";
-        document.getElementById('topNav').style.transition = "0.5s";
+        document.getElementById('topNav').style.transition = "height 0.5s";
         if (document.getElementById("SliderFilter")) {
             document.getElementById("SliderFilter").style.top = "120px";
-            document.getElementById('SliderFilter').style.transition = "0.5s";
+            document.getElementById('SliderFilter').style.transition = "height 0.5s";
             document.getElementById("filterBy").style.top = "80px";
-            document.getElementById('filterBy').style.transition = "0.5s";
+            document.getElementById('filterBy').style.transition = "height 0.5s";
         }
 
     }
@@ -161,7 +161,7 @@ class Header extends Component {
                 <Hidden smDown >
                     {/* <HeaderNotification headerTransition={() => { this.headerTransitions() }} /> */}
                     <div className="header-appbar-sticky1" id='headerDiv' style={{ position: "fixed", zIndex: "1000" }}>
-                        <AppBar className="header-appbarsilver1 " id="topNav" style={{ transition: " 0.2s" }}>
+                        <AppBar className="header-appbarsilver1 " id="topNav" style={{ transition: "height 0.2s" }}>
                             <Container maxWidth="lg" id="searchcontainer" >
                                 <Grid container spacing={12} style={{ marginTop: "20px" }} className={window.location.pathname === "/cart" || window.location.pathname === '/checkout' ? "cartheader" : ""}>
                                     <Grid container item xs={12} justify="flex-end" alignItems="center">
@@ -252,7 +252,7 @@ class Header extends Component {
                                         <Grid container spacing={12} id="fullcontainer" className="setHeight">
                                             <Grid item xs={3} className="logoImgHeader1">
                                                 <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/home" }} style={{ cursor: "pointer" }}>
-                                                    <img id="logoImage" style={{ transition: " 0.2s" }} className={`imges`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                                    <img id="logoImage" style={{ transition: "height 0.2s" }} className={`imges`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                                 </div>
                                             </Grid>
                                             <Grid container item xs={9} id={"containerTitle"} justify="flex-end" alignItems="center" className={`header-navbar-list1 ${classes.headerNavbarList}`}

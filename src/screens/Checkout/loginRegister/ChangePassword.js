@@ -99,6 +99,7 @@ const LoginComponent = (props) => {
                             }}>
                                 <div className={`${classes.normalfonts}`} style={{ fontSize: "18px" }}>Reset Password </div>
                                 <TextField
+                                    autoComplete='off'
                                     margin="normal"
                                     variant="outlined"
                                     type="password"
@@ -111,6 +112,7 @@ const LoginComponent = (props) => {
                                 />
                                 <label className='errtext'> {values.oldpasswordText && values.oldpasswordText}</label>
                                 <TextField
+                                    autoComplete='off'
                                     margin="normal"
                                     variant="outlined"
                                     type="password"
@@ -123,6 +125,7 @@ const LoginComponent = (props) => {
                                 />
                                 <label className='errtext'> {values.newPasswordHelperText && values.newPasswordHelperText}</label>
                                 <TextField
+                                    autoComplete='off'
                                     margin="normal"
                                     variant="outlined"
                                     type="password"

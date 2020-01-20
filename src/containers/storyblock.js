@@ -13,8 +13,8 @@ import SocialLinkFrame from '../components/storyTemplate/socialLinkFrame';
 import Pagination from '../components/storyTemplate/pagination';
 // const styles = (theme)=>({
 //   flexContainer:{
-    // display:"flex",
-    // flexFlow:"row wrap"
+// display:"flex",
+// flexFlow:"row wrap"
 //   }
 // })
 
@@ -25,11 +25,11 @@ class StoryBlock extends React.Component {
   }
 
   render() {
-    const { classes }  = this.props;
+    const { classes } = this.props;
     return (
       <Grid container>
-        
-          <Header />
+
+        <Header />
         <Grid item xs={12}>
           <Slideshow
             sliderRef={this.slider}
@@ -37,28 +37,28 @@ class StoryBlock extends React.Component {
           >
             {homePageStylori.carouselTop.data.map((val, index) => (
               <Grid container key={index}>
-                  <img
-                    src={val.img}
-                    style={{ width: "100%", height: "100%" }}
-                  />
+                <img
+                  src={val.img}
+                  style={{ width: "100%", height: "100%" }}
+                />
               </Grid>
             ))}
           </Slideshow>
-         </Grid>
-         <Grid container style={{maxWidth: "1170px",margin: "auto"}}>
-            <Grid item md={12} style={{marginTop:"12px"}}>
-              <Typography component="a" style={{color:"#394578",padding:"20px 0 20px 20px"}}>Stories</Typography>
-              <Typography component="a" style={{color:"#394578",padding:"20px 0 20px 20px"}}>Education</Typography>
-            </Grid>
-            <Grid item xs={12} sm={12} md={8}>
-                  <MediaCard />
-            </Grid>
-            <Grid item  style={{width:"100%"}} item xs={"hidden"} sm={"hidden"} md={4}>
-              <Hidden smDown>
+        </Grid>
+        <Grid container style={{ maxWidth: "1170px", margin: "auto" }}>
+          <Grid item md={12} style={{ marginTop: "12px", padding: "10px 0 10px 10px" }}>
+            <Typography component="a" onClick={() => { window.location.href = "/stories" }} className={ window.location.pathname === "/stories"?"selectedTab":"storiesData"}>Stories</Typography>
+            <Typography onClick={() => { window.location.href = "/education" }} component="a" className={ window.location.pathname === "/education"?"selectedTab":"storiesData"}>Education</Typography>
+          </Grid>
+          <Grid item xs={12} sm={12} md={8}>
+            <MediaCard />
+          </Grid>
+          <Grid item style={{ width: "100%" }} item xs={"hidden"} sm={"hidden"} md={4}>
+            <Hidden smDown>
               <SocialLinkFrame />
-              </Hidden>
-            </Grid>
-         </Grid>
+            </Hidden>
+          </Grid>
+        </Grid>
         <Grid item xs={12} style={{ marginTop: 20 }}>
           <Footer />
         </Grid>
@@ -68,7 +68,7 @@ class StoryBlock extends React.Component {
 }
 
 const Components = () => {
-  let content = <StoryBlock/>;
+  let content = <StoryBlock />;
   return content;
 };
 

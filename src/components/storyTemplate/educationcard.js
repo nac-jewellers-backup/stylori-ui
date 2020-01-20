@@ -43,13 +43,17 @@ const useStyles = makeStyles({
     fontSize: "10px"
   },
   cardHeader: {
-    fontSize: "15px"
+    fontSize: "15px",
+    whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis"
+
   }
 });
 
-export default function MediaCard() {
+export default function MediaCard(props) {
   const classes = useStyles();
-  const listOfEducationCard = storyData.educationCard;
+  const listOfEducationCard = window.location.pathname === "/stories" ? storyData.storiesData : storyData.educationCard;
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(4);
 
@@ -63,48 +67,51 @@ export default function MediaCard() {
   };
   return (
     <Grid container>
-        {listOfEducationCard.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) =>
-            <Grid item xs={12} sm={12} md={6} >
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  image={data.image}
-                  title={data.title}
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography gutterBottom component="h3" className={classes.cardHeader}>
-                    {data.cardHeader}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p" style={{ fontSize: "13px" }}>
-                    {data.cardContent}
-                  </Typography>
-                  <Grid container>
-                    <Grid item xs={3} className={classes.storiesTag}>
-                      <span className="spanstories"></span>
-                    </Grid>
-                    <Grid item xs={9} className={classes.socialMediaTag}>
-                      <a className="fa fa-facebook iconic" ></a>
-                      <a className="fa fa-twitter twitter iconic"></a>
-                      <a className="fa fa-google-plus google iconic"></a>
-                      <a className={classes.cardReadLink}>read more</a>
-                    </Grid>
-                  </Grid>
-                </CardContent>
-              </Card>
-            </Grid>
-        )}
-        <Grid container item justify="flex-end">
-        <TablePagination
-        rowsPerPageOptions={[1, 2, 4]}
-        component="div"
-        count={listOfEducationCard.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
-      />
+      {listOfEducationCard.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) =>
+        <Grid item xs={12} sm={12} md={6} >
+          <Card className={classes.card}>
+            <CardMedia
+              className={classes.media}
+              component="img"
+              image={data.image}
+              title={data.title}
+            />
+            <CardContent className={classes.cardContent}>
+              <Typography gutterBottom component="h3" className={classes.cardHeader}>
+                {data.cardHeader}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p" style={{
+                fontSize: "13px", overflow: "hidden",
+                height: "68px"
+              }}>
+                {data.cardContent}
+              </Typography>
+              <Grid container>
+                <Grid item xs={3} className={classes.storiesTag}>
+                  <span className="spanstories"></span>
+                </Grid>
+                <Grid item xs={9} className={classes.socialMediaTag}>
+                  <a className="fa fa-facebook iconic" ></a>
+                  <a className="fa fa-twitter twitter iconic"></a>
+                  <a className="fa fa-google-plus google iconic"></a>
+                  <a className={classes.cardReadLink}>read more</a>
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
         </Grid>
+      )}
+      <Grid container item justify="flex-end">
+        <TablePagination
+          rowsPerPageOptions={[1, 2, 4]}
+          component="div"
+          count={listOfEducationCard.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onChangePage={handleChangePage}
+          onChangeRowsPerPage={handleChangeRowsPerPage}
+        />
+      </Grid>
     </Grid>
 
   )

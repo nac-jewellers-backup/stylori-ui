@@ -85,6 +85,7 @@ const LoginComponent = (props) => {
                                     margin="normal"
                                     variant="outlined"
                                     type="email"
+                                    autoComplete='off'
                                     name="email"
                                     value={values.email}
                                     error={values.error ? true : false}

@@ -101,6 +101,7 @@ const LoginComponent = (props) => {
                                     type="password"
                                     fullWidth
                                     name="email"
+                                    autoComplete='off'
                                     value={values.newpassword}
                                     error={values.newPasswordError ? true : false}
                                     onChange={e => handleChange('newpassword', e.target.value)}
@@ -112,6 +113,7 @@ const LoginComponent = (props) => {
                                     variant="outlined"
                                     type="password"
                                     fullWidth
+                                    autoComplete='off'
                                     name="confirmPassword"
                                     value={values.confirmPassword}
                                     error={values.confirmPasswordError ? true : false}
