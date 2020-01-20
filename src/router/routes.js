@@ -23,7 +23,8 @@ export const routes = {
     ChangePassword:'/changepassword',
     paymentsuccess:'/paymentsuccess',
     paymentfail:'/paymentfail', 
-    paymenthidden:'/paymenthidden'
+    paymenthidden:'/paymenthidden',
+    Education:'/education'
 }
 
 export default routes;

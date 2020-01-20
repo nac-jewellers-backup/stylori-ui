@@ -636,3 +636,16 @@
     background: transparent;
   }
 }
+
+.storiesData {
+  color: #394578;
+  cursor: pointer;
+  padding: 10px
+}
+
+.selectedTab {
+  color: #394578;
+  cursor: pointer;
+  padding: 10px;
+  background: #f3f3f3 !important;
+}
