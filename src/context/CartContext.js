@@ -56,6 +56,7 @@ const Provider = (props) => {
     const { loading: allorderloading, error: allordererror, data: allorder, makeRequest: allordermakeRequest } = useGraphql(ALLORDERS, () => { }, {}, false);
     const { loading: allorderloadingsuccesful, error: allordererrorsuccesful, data: allordersuccesful, makeRequest: allordermakeRequestSuccessful } = useGraphql(ORDERSUCCESSFUL, () => { }, {}, false);
     const { loading: wishlistloading, error: wishlisterror, data: wishlistDATA, makeRequest: wishlistmakeRequest } = useGraphql(ALLUSERWISHLISTS, () => { }, {}, false);
+    const { loading, error, data, makeRequest } = useGraphql(CART, () => { }, {});
     // const prices = cartFilters.price ? cartFilters.price : ''
     const discounted_price = cartFilters.discounted_price ? cartFilters.discounted_price : ""
     const reload = cartFilters.reload ? cartFilters.reload : ""
@@ -167,6 +168,66 @@ const Provider = (props) => {
         ordersuccessful()
        
     }, [wishlistdata])
+    const handleAddToCart = () =>{
+        if (guestlogId.length > 0) {
+            // debugger
+                        // alert(JSON.stringify(guestlogId))
+                        localStorage.setItem("user_id", cartFilters.user_id)
+                        if (JSON.stringify(cartdetails).length > 0) {
+                            debugger
+                            var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
+                            const user_id = cartFilters.user_id
+                            var addcart = ({ products, user_id })
+                            // alert("hgdhfdhg")
+                            addtocart(addcart)
+                            orderobj["userProfileId"] = user_id
+                            sessionStorage.setItem("user_id", user_id)
+                            allordermakeRequest(orderobj);
+                            // wishlistmakeRequest(orderobj1) 
+                        }
+                    }
+                    else {
+                        if (cartFilters.price > 0) {
+                            debugger
+                            var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
+                            var local_storage_products = []
+                            if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
+                                local_storage_products = JSON.parse(localStorage.getItem('cartDetails')).products.map(val => { return val })
+                            }
+                            var skuId = cartFilters.skuId;
+                            var products = [];
+                            var productszz = [];
+                            var obj = {};
+                            var cartId = "";
+                            var userId = '';
+                            var obj = { sku_id: '', qty: '', price: '' }
+                            obj['sku_id'] = skuId;
+                            obj['qty'] = cartFilters.qty
+                            obj['price'] = cartFilters.price
+                            productszz.push(obj)
+                            debugger
+                            var products_sku_list = () => {
+                                if (local_storage_products.length > 0) {
+                                    local_storage_products.push(obj);
+                                    return local_storage_products
+                                }
+                                else {
+                                    products.push(obj)
+                                    return products
+                                }
+                            }
+                            var skuObj = { "cart_id": cartId, "user_id": userId, "products": products_sku_list() }
+                            // if (userIds.length > 0 && gut_lg !== true) {
+                            //     var products = productszz;
+                            //     const user_id = cartFilters.user_id
+                            //     var addcart = ({ products, user_id })
+                            //     addtocart(addcart)
+                            // }
+            
+                            localStorage.setItem('cartDetails', JSON.stringify(skuObj));
+                        }
+                    }
+    }
     useEffect(() => {
         // if (userIds.length > 0) {
         //     if (cartdetails !== null && cartdetails !== undefined && JSON.stringify(cartdetails).length > 0) {
@@ -174,65 +235,7 @@ const Provider = (props) => {
         // makeFetch({--login---})
         //     }
         // }
-
-        if (guestlogId.length > 0) {
-// debugger
-            // alert(JSON.stringify(guestlogId))
-            localStorage.setItem("user_id", cartFilters.user_id)
-            if (JSON.stringify(cartdetails).length > 0) {
-                debugger
-                var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
-                const user_id = cartFilters.user_id
-                var addcart = ({ products, user_id })
-                // alert("hgdhfdhg")
-                addtocart(addcart)
-                orderobj["userProfileId"] = user_id
-                sessionStorage.setItem("user_id", user_id)
-                allordermakeRequest(orderobj);
-                // wishlistmakeRequest(orderobj1) 
-            }
-        }
-        else {
-            if (cartFilters.price > 0) {
-                debugger
-                var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
-                var local_storage_products = []
-                if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
-                    local_storage_products = JSON.parse(localStorage.getItem('cartDetails')).products.map(val => { return val })
-                }
-                var skuId = cartFilters.skuId;
-                var products = [];
-                var productszz = [];
-                var obj = {};
-                var cartId = "";
-                var userId = '';
-                var obj = { sku_id: '', qty: '', price: '' }
-                obj['sku_id'] = skuId;
-                obj['qty'] = cartFilters.qty
-                obj['price'] = cartFilters.price
-                productszz.push(obj)
-                debugger
-                var products_sku_list = () => {
-                    if (local_storage_products.length > 0) {
-                        local_storage_products.push(obj);
-                        return local_storage_products
-                    }
-                    else {
-                        products.push(obj)
-                        return products
-                    }
-                }
-                var skuObj = { "cart_id": cartId, "user_id": userId, "products": products_sku_list() }
-                // if (userIds.length > 0 && gut_lg !== true) {
-                //     var products = productszz;
-                //     const user_id = cartFilters.user_id
-                //     var addcart = ({ products, user_id })
-                //     addtocart(addcart)
-                // }
-
-                localStorage.setItem('cartDetails', JSON.stringify(skuObj));
-            }
-        }
+        handleAddToCart()
     }, [user_id, price, cartFilters])
 
     var skus;
@@ -240,7 +243,7 @@ const Provider = (props) => {
     //     skus = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : ''
     // }
     skus = localStorage.getItem("cartDetails") && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")).products.map(val => val.sku_id) : ''
-    const { loading, error, data, makeRequest } = useGraphql(CART, () => { }, {});
+ 
 
     const updateProductList = () => {
         const variables = { "productList": skus };
@@ -251,6 +254,82 @@ const Provider = (props) => {
         setCartFilters(skus)
         updateProductList();
     }, [])
+
+    const handleAddToCartDidMount = () =>{
+        if (localStorage.getItem('user_id') && localStorage.getItem('user_id').length>0) {
+            // debugger
+                        // alert(JSON.stringify(guestlogId))
+                        // localStorage.setItem("user_id", cartFilters.user_id)
+                        if (JSON.stringify(cartdetails).length > 0) {
+                            debugger
+                            var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
+                            const user_id = cartFilters.user_id
+                            var addcart = ({ products, user_id })
+                            // alert("hgdhfdhg")
+                            addtocart(addcart)
+                            orderobj["userProfileId"] = user_id
+                            sessionStorage.setItem("user_id", user_id)
+                            allordermakeRequest(orderobj);
+                            // wishlistmakeRequest(orderobj1) 
+                        }
+                    }
+                    else {
+                        if (cartFilters.price > 0) {
+                            debugger
+                            var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
+                            var local_storage_products = []
+                            if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
+                                local_storage_products = JSON.parse(localStorage.getItem('cartDetails')).products.map(val => { return val })
+                            }
+                            var skuId = cartFilters.skuId;
+                            var products = [];
+                            var productszz = [];
+                            var obj = {};
+                            var cartId = "";
+                            var userId = '';
+                            var obj = { sku_id: '', qty: '', price: '' }
+                            obj['sku_id'] = skuId;
+                            obj['qty'] = cartFilters.qty
+                            obj['price'] = cartFilters.price
+                            productszz.push(obj)
+                            debugger
+                            var products_sku_list = () => {
+                                if (local_storage_products.length > 0) {
+                                    local_storage_products.push(obj);
+                                    return local_storage_products
+                                }
+                                else {
+                                    products.push(obj)
+                                    return products
+                                }
+                            }
+                            var skuObj = { "cart_id": cartId, "user_id": userId, "products": products_sku_list() }
+                            // if (userIds.length > 0 && gut_lg !== true) {
+                            //     var products = productszz;
+                            //     const user_id = cartFilters.user_id
+                            //     var addcart = ({ products, user_id })
+                            //     addtocart(addcart)
+                            // }
+            
+                            localStorage.setItem('cartDetails', JSON.stringify(skuObj));
+                        }
+                    }
+    }
+    useEffect(()=>{
+        if(window.location.pathname === "/cart"){
+            if(Boolean(localStorage.getItem("user_id"))){
+                if(localStorage.getItem("cart_id") === null){
+                    if(Boolean(localStorage.getItem("cartDetails"))){
+                        // alert("ya came inn.")
+                        handleAddToCartDidMount()
+                    }
+                    
+                } 
+            }
+        }
+        
+      
+    },[data])
 
     const CartCtx = {
         cartFilters, loading, error, wishlist_count, data, setCartFilters, allorderdata, wishlistdata, allordersuccesful

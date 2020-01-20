@@ -71,6 +71,7 @@ debugger
                 localStorage.removeItem("ship_isactive")
                 localStorage.removeItem("bil_isactive")
                 localStorage.removeItem("set_check")
+                localStorage.removeItem("cart_id")
                 alert(resdata.message)
                 window.location.pathname = `/paymentsuccess/${resdata.order.id}`
             })

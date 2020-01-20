@@ -51,7 +51,7 @@ class ProductImageZoom extends React.Component {
     const { showimage } = this.state;
     const dataCarousel = {
       infinite: false,
-      slidesToShow: data[0] && data[0].fadeImages.length > 3 ? limit : data[0].fadeImages.length,
+      slidesToShow: data && data.length>0 && data[0] && data[0].fadeImages.length > 3 ? limit : data[0].fadeImages.length,
       slidesToScroll: 1,
       vertical: true,
       verticalSwiping: true,
