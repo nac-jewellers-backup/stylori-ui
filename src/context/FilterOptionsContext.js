@@ -475,7 +475,6 @@ const Provider = (props) => {
         await makeFetch(newObj);
         //    props.history.push({
         //     pathname: `/stylori${mappedFilters.seo_url   ?`/${mappedFilters.seo_url}` : '' }`,
-
         // })
         if (filters && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
             if (Object.values(filters).filter(val => { if (Object.entries(val).length > 0 && val.constructor === Object) { return val } }).length > 0) {
