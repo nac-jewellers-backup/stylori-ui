@@ -15,9 +15,9 @@ import { filterParams } from 'mappers';
 const initialCtx = {
     FilterOptionsCtx: {
         filters: {
-            
+
             Offers: {}, Availability: {}, ProductType: {}, style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {},
-            MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}, category:{}
+            MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}, category: {}
         },
         sort: '',
         pricemax: 5000, pricemin: 15000,
@@ -39,9 +39,10 @@ export const FilterOptionsContext = React.createContext(initialCtx);
 export const FilterOptionsConsumer = FilterOptionsContext.Consumer;
 
 const Provider = (props) => {
+    // alert("filters")
     const [filters, setFilters] = React.useState({
         Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, MetalColor: {},
-        MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}, category:{}
+        MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}, category: {}
     });
     const [sort, setSort] = React.useState(initialCtx.FilterOptionsCtx.sort)
     const [offset, setOffset] = React.useState(0)
@@ -87,7 +88,7 @@ const Provider = (props) => {
                 }
             }
 
-            
+
 
             console.log('splitHiphen()', splitHiphen())
             const conditionfiltersSeo = { seofilter: { seoUrl: { in: splitHiphen() } } }
@@ -140,9 +141,9 @@ const Provider = (props) => {
 
                         // setFilters(filters)
                         var obj = {}
-                        
+
                         obj[val.attributeValue] = true
-                        
+
                         a[val.attributeName.replace(/\s/g, '')] = obj
                         return a
 
@@ -294,7 +295,7 @@ const Provider = (props) => {
 
     }, [seoData, seoloading, seoError])
     useEffect(() => {
-        
+
         if (!loading) {
             const mapped = productlist(data, CDN_URL);
             const newUpdatedList = filterLogic(dataArr, mapped);
@@ -317,7 +318,7 @@ const Provider = (props) => {
             if (filters.constructor !== Object) {
                 Object.assign(filters, {})
             }
-            
+
             Object.keys(filters).map(fk => {
                 const filter = filters[fk];
                 const fv = filter && Object.keys(filter);
@@ -339,34 +340,33 @@ const Provider = (props) => {
                 var toLowerCase = key[0].toLowerCase()
                 newObj[toLowerCase] = k[len][0]
             }
-            
 
-           
-                newObj['sortBy'] = sort.values
-                newObj['offset'] = offset
-          
+
+
+            newObj['sortBy'] = sort.values
+            newObj['offset'] = offset
+
             // alert(JSON.stringify('filters',filters))
             // alert(JSON.stringify(newObj))
-            console.log('newObjfilters',newObj)
-            console.log('newObjsort',newObj)
-            console.log('newObjfilterssort',newObj)
-            console.log('newObjsortfilters',newObj)
+            console.log('newObjfilters', newObj)
+            console.log('newObjsort', newObj)
+            console.log('newObjfilterssort', newObj)
+            console.log('newObjsortfilters', newObj)
             // newObj['price'] = {'min_price':pricemin,'max_price':pricemax}
             // console.log('newObj', Object.keys(newObj).filter(val => { if (val === 'category') return val }).length > 1)
             // if()
-               if(Object.keys(filters.category).length=== 0 && filters.category.constructor === Object){
-                if(filters.Category && Object.keys(filters.Category).length > 0 && filters.Category.constructor === Object)
-                {
-                    
+            if (Object.keys(filters.category).length === 0 && filters.category.constructor === Object) {
+                if (filters.Category && Object.keys(filters.Category).length > 0 && filters.Category.constructor === Object) {
+
                     var _replaceCategory = filters.Category
                     filters["category"] = _replaceCategory
                     sessionStorage.setItem('category', JSON.stringify(filters.category))
-                    
-              setFilters({...filters,filters})
+
+                    setFilters({ ...filters, filters })
                 }
-      
-    }
-            if(filters && filters.category && Object.keys(filters.category).length>0 && filters.category.constructor === Object ){
+
+            }
+            if (filters && filters.category && Object.keys(filters.category).length > 0 && filters.category.constructor === Object) {
                 sessionStorage.setItem("category", JSON.stringify(filters.category));
             }
             if (Object.keys(newObj).filter(val => { if (val === 'category') return val }).length !== 0) await fetchproducts(newObj)
@@ -376,16 +376,13 @@ const Provider = (props) => {
 
     useEffect(() => {
 
-        //    alert("filters")
         if (filters && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
-            if(Object.values(filters).filter(val=>{ if(Object.entries(val).length>0 && val.constructor === Object) {return val}}).length>0)
-            {
-                if(Object.keys(filters).filter(val=>{if(val === "a") return val}).length === 0) updatefiltersSort()
+            if (Object.values(filters).filter(val => { if (Object.entries(val).length > 0 && val.constructor === Object) { return val } }).length > 0) {
+                if (Object.keys(filters).filter(val => { if (val === "a") return val }).length === 0) updatefiltersSort()
             }
         }
         setSort('')
-   
-        
+
     }, [filters])
     useEffect(() => {
 
@@ -393,7 +390,7 @@ const Provider = (props) => {
         if (pricemin) {
             updatefiltersSort()
         }
-    
+
     }, [pricemin])
     useEffect(() => {
 
@@ -401,7 +398,7 @@ const Provider = (props) => {
         if (pricemax) {
             updatefiltersSort()
         }
-    
+
     }, [pricemax])
     useEffect(() => {
 
@@ -409,17 +406,17 @@ const Provider = (props) => {
         if (sort) {
             updatefiltersSort()
         }
-     
+
 
     }, [sort])
 
     useEffect(() => {
 
         // alert("offset")
-        if (offset &&offset !== 0 ) {
+        if (offset && offset !== 0) {
             updatefiltersSort()
         }
-      
+
     }, [offset])
     // useEffect(() => {
 
@@ -432,6 +429,12 @@ const Provider = (props) => {
     var newObj = {}
     const updateFilters = async (filters) => {
         // alert('update filters')
+        if (filters && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
+            if (Object.values(filters).filter(val => { if (Object.entries(val).length > 0 && val.constructor === Object) { return val } }).length > 0) {
+                if (Object.keys(filters).filter(val => { if (val === "a") return val }).length === 0) updatefiltersSort()
+            }
+        }
+        setSort('')
         setOffset(0)
         setFilters(filters);
 
