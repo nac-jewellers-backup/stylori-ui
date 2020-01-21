@@ -68,7 +68,7 @@ class Sublistcarousel extends React.Component {
       dots: false,
       autoplaySpeed: 4000,
       arrows: false
-  };
+    };
     const dataCarousel = {
       arrows: false,
       dots: false,
@@ -84,30 +84,31 @@ class Sublistcarousel extends React.Component {
     const productsubHead = [
       {
         name: "From the House of NAC",
-        icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg",
         class: "image1"
       },
       {
         name: "Certified Jewellery",
-        icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static%20Pages/Other%20Pages/certifiedjewellery-pink.svg",
         class: "image2"
       },
       {
         name: "Free Shipping",
-        icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/securepayments-pink.svg",
         class: "image3"
       },
       {
         name: "Diverse Styles",
-        icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/diversestyles-pink.svg",
         class: "image4"
       },
       {
         name: "Easy Returns",
-        icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/easyreturns-pink.svg",
         class: "image5"
       }
     ];
+
     return (
       <div style={{ width: "100%" }}>
         <Hidden smDown>
@@ -150,8 +151,8 @@ class Sublistcarousel extends React.Component {
           <Container>
             <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 5px" }} expanded={expanded === 'panel'} onChange={this.handle('panel')}>
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header" >
+                aria-controls="panel1a-content"
+                id="panel1a-header" >
                 <div style={{ width: "100%" }} >
                   <Typography className="subtabs-smrt">You may also like</Typography>
                   {/* <hr class="bottom-line border-line-"></hr> */}
@@ -170,8 +171,8 @@ class Sublistcarousel extends React.Component {
 
             <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 5px" }} expanded={expanded1 === true} onChange={this.handle_recent_view(false)}>
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header" >
+                aria-controls="panel1a-content"
+                id="panel1a-header" >
                 <div style={{ width: "100%" }} >
                   <Typography className="subtabs-smrt">You recently viewed</Typography>
                   {/* <hr class="bottom-line border-line-"></hr> */}
@@ -209,19 +210,10 @@ class Sublistcarousel extends React.Component {
                                 >
                                   <Grid
                                     item
-                                    style={{ alignItems: "center", display: "flex" }}
-                                    className={val.class}
-                                    src={val.icon}
-                                  ></Grid>
-                                  <Grid
-                                    item
-                                    style={{
-                                      fontSize: "12px",
-                                      alignItems: "center",
-                                      display: "flex"
-                                    }}
+                                    container
+                                    style={{ justifyContent: "center", alignItems: "center", display: "flex" }}
                                   >
-                                    {val.name}{" "}
+                                    <img style={{ width: "18%" }} src={val.icon} />
                                   </Grid>
                                 </Grid>
                               </>
@@ -230,7 +222,7 @@ class Sublistcarousel extends React.Component {
                           <Grid style={{ width: "100%" }}>
                             <div className="loaders"></div>
                           </Grid>
-                        </Typography> 
+                        </Typography>
                       </Grid>
                     </Grid>
                   }

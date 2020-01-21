@@ -6,12 +6,13 @@ import CardRadioButton from "../InputComponents/RadioButton/index"
 import './filter.css';
 import { useDummyRequest } from '../../hooks';
 import { filterParams } from '../../mappers';
-import { Grid } from '@material-ui/core';
+import { Grid, Popper, ClickAwayListener, Grow } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { sortOptions } from '../../mappers/dummydata/filterdata';
 import { FilterOptionsContext } from 'context'
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+
 const styles = theme => ({
     colorMain: {
         color: theme.palette.primary.main,
@@ -60,6 +61,9 @@ class Component extends React.Component {
     handleExpandClick = () => {
         this.setState({ expanded: !this.state.expanded });
     }
+    handleExpandClickClose = () => {
+        this.setState({ expanded: false });
+    }
     handleChange = (event) => {
 
         if (this.props.offset > 0) this.props.setOffset(0)
@@ -96,8 +100,6 @@ class Component extends React.Component {
                                             :
                                             // <ChevronLeftIcon className={`${classes.colorMain}`} />
                                             <i style={{ fontSize: '22px', paddingRight: '15px' }} className={`fa ${classes.colorMain}`}>&#xf0b0;</i>
-
-
                                     }
                                     <Typography color="inherit"
                                         onClick={this.handleDrawerClose}
@@ -130,23 +132,27 @@ class Component extends React.Component {
                                 onClick={this.handleExpandClick}
                             >
                                 Sort By {this.state.expanded ? <ExpandLess /> : <ExpandMore />}
-                                {/* <span className="fil-drawer-head-sort-expand">
-                                    <ExpandMoreIcon />
-                                </span> */}
                             </Typography>
 
                         </div>
                         <div className={"testMenu"} style={{
-                            position: "absolute", width: "200px",
+                            position: "absolute", width: "215px",
                             right: "15px", top: "65px", boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 7px'
                         }}>
-                            <Collapse in={this.state.expanded} timeout="auto">
-                                <CardRadioButton data={sortOptions} onChange={this.handleChange} values={this.props.sort} />
-                            </Collapse>
+                            <Popper open={this.state.expanded} transition disablePortal style={{ position: 'absolute', right: '21px', height: "1px" }}>
+                                {({ TransitionProps }) => (
+                                    <Grow {...TransitionProps} >
+                                        <ClickAwayListener onClickAway={(e) => this.handleExpandClickClose(e)}>
+                                            <Grid>
+                                                <CardRadioButton data={sortOptions} onChange={this.handleChange} values={this.props.sort} />
+                                            </Grid>
+                                        </ClickAwayListener>
+                                    </Grow>
+                                )}
+                            </Popper>
                         </div>
                     </Grid>
                 </Grid>
-                {/* </div> */}
             </Paper>
         );
     }

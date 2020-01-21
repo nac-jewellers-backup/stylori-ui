@@ -37,7 +37,8 @@ const styles = theme => ({
     modals: {
         [theme.breakpoints.down('xs')]: {
             background: '#fff !important',
-            height: 'auto',
+            height: '100%',
+            overflow: "scroll",
             width: '60%',
             marginTop: '3%',
             marginBottom: '3%',
@@ -46,7 +47,8 @@ const styles = theme => ({
         },
         [theme.breakpoints.up('lg')]: {
             background: '#fff !important',
-            height: 'auto',
+            height: '100%',
+            overflow: "scroll",
             width: '60%',
             marginTop: '3%',
             marginBottom: '3%',

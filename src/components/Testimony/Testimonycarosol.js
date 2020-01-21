@@ -274,7 +274,7 @@ export default function ImageGridList(props) {
     }
     const imageslice = (image) => {
         let val = image.split('/')
-        return (`${CDN_URL}${val[0]}/${val[1]}/800X800/${val[2]}`)
+        return (`${CDN_URL}${val[0]}/${val[1]}/275X275/${val[2]}`)
 
 
     }
@@ -297,19 +297,17 @@ export default function ImageGridList(props) {
                                                     <Typography className={classes.testimonyTitle}>
                                                         {val.title}
                                                     </Typography>
-
-
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
                                                         <Slideshow>
-                                                            <img className={classes.imgcoin} src={imageslice(val.productListByProductId.productImagesByProductId.nodes[0].imageUrl)} />
+                                                            {val.productListByProductId.productImagesByProductId.nodes[0].imageUrl ? <img className={classes.imgcoin} src={imageslice(val.productListByProductId.productImagesByProductId.nodes[0].imageUrl)} /> : <img className={classes.imgcoin} src={`${CDN_URL}product/1000X1000/productnotfound.webp`} />}
                                                         </Slideshow>
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
-                                                        <Typography style={{ color: "#394578",fontSize:"0.9rem" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
+                                                        <Typography style={{ color: "#394578", fontSize: "0.9rem" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
                                                             {val.transSkuListByProductSku && val.transSkuListByProductSku.markupPrice && val.transSkuListByProductSku.markupPrice}</Typography>
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
-                                                        <a style={{ textDecoration: 'none' }} href={val.navigateUrl}><Button type="button" className={classes.Button}>Shop Now</Button></a>
+                                                        <a style={{ textDecoration: 'none' }} href={val.transSkuListByProductSku && val.transSkuListByProductSku.skuUrl && val.transSkuListByProductSku.skuUrl}><Button type="button" className={classes.Button}>Shop Now</Button></a>
                                                     </Grid>
 
                                                 </Grid>
@@ -345,7 +343,7 @@ export default function ImageGridList(props) {
                         <Grid item md={1} lg={1} sm={1} xs={1} className={classes.smleftGrid}>
                             <img onClick={() => previous()} className={classes.leftIc} />
                         </Grid>
-                        <Grid item md={10} lg={10} sm={10} xs={10} style={{ marginBottom: "15px", height: "350px" }}>
+                        <Grid item md={10} lg={10} sm={10} xs={10} style={{ marginBottom: "15px", minHeight: "250px" }}>
                             <Grid container >
                                 <Grid item xs={12} >
                                     <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
