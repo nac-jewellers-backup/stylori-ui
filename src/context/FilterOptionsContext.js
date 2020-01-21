@@ -109,7 +109,7 @@ const Provider = (props) => {
 
 
 
-            await fetch(uri, {
+await fetch(uri, {
 
                 method: 'post',
                 // body: {query:seoUrlResult,variables:splitHiphen()}
@@ -129,8 +129,7 @@ const Provider = (props) => {
                 .then(json)
                 .then(async function (data) {
 
-
-                    //   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
+//   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
                     var a = {};
 
                     var paramsfilter = (Object.entries(data).length !== 0 && data.constructor === Object && data.data.allSeoUrlPriorities) && data.data.allSeoUrlPriorities.nodes.map(val => {

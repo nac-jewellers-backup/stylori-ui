@@ -92,7 +92,7 @@ export const
             secondaryContantName:"Gemstone Collection",
             secondaryButtonName:"Explore",
             secondaryCarouselDetails:[
-                {
+                { 
                 imageTitle: "1 Gm Lakshmi Gol- 24 K",
                 img: "https://assets-cdn.stylori.com/images/product/SP1127/SP1127-1Y.jpg",
                 navigateUrl: "https://www.stylori.com/pendants-jewellery?sort=latest",
@@ -137,7 +137,7 @@ export const
             containerImage:[
               {
                 img: "https://assets-cdn.stylori.com/images/collection/Molecute-colletion.png",
-                navigateUrl: "https://www.stylori.com/rings-jewellery?sort=latest"
+                navigateUrl: "https://www.stylori.com/gemstone-jewellery?sort=latest"
               }
             ],
             primaryImage:"https://assets-cdn.stylori.com/images/collection/Alpha-Page-tile-02.jpg",
@@ -233,7 +233,7 @@ export const
           containerImage:[
             {
               img: "https://assets-cdn.stylori.com/images/collection/Molecute-colletion.png",
-              navigateUrl: "https://www.stylori.com/rings-jewellery?sort=latest"
+              navigateUrl: "https://www.stylori.com/plain+gold-jewellery?sort=latest"
             }
           ],
           primaryImage:"https://assets-cdn.stylori.com/images/collection/Alpha-Page-tile-02.jpg",
