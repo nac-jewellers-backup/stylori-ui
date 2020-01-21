@@ -12,6 +12,7 @@ import Testimony from "../components/Testimony/Testimony";
 import Feedes from "../components/Feedes/Index";
 import Stories from "../components/Stories/Index";
 import MetaTags from 'react-meta-tags';
+import { storyData } from '../components/storyTemplate/storyTemplateData'
 
 class HomeStylori extends React.Component {
   constructor(props) {
@@ -216,7 +217,7 @@ class HomeStylori extends React.Component {
         </Grid>
         <Stories
           dataCarousel={homePageStylori.Stories.carousel.setting}
-          carosolData={homePageStylori.Stories.carousel.data}
+          carosolData={storyData.storiesData}
         />
         <Grid item xs={12} style={{ marginTop: 20 }}>
           <Footer />

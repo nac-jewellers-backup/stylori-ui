@@ -126,7 +126,7 @@ export default function StaticView(props) {
             <Grid item container>
               <Typography className={classes.Title}>Instagram</Typography>
             </Grid>
-            <Grid item container className={classes.photo} style={{height:"390px"}}>
+            <Grid item container className={classes.photo} style={{ height: "390px" }}>
               <iframe
                 src="https://assets-cdn.stylori.com/assets/7b4c4135f67d8ee467c80ebc286cd3c3bad477ad.html"
                 width="100%"
@@ -146,9 +146,9 @@ export default function StaticView(props) {
               <Typography className={classes.Title}>Facebook</Typography>
             </Grid>
             <Grid item container className={classes.photo}>
-            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fstylori&amp;tabs=timeline&amp;width=340&amp;height=500&amp;small_header=true&amp;hide_cta=false&amp;adapt_container_width=false&amp;hide_cover=true&amp;show_facepile=false&amp;appId" style={{border: "none", overflow: "hidden", paddingTop: "-200px", paddingTop: "60px", marginTop: "-131px",height:"512px",width:"345px"}} >
-				</iframe>
-      
+              <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fstylori&amp;tabs=timeline&amp;width=340&amp;height=500&amp;small_header=true&amp;hide_cta=false&amp;adapt_container_width=false&amp;hide_cover=true&amp;show_facepile=false&amp;appId" style={{ border: "none", overflow: "hidden", paddingTop: "-200px", paddingTop: "60px", marginTop: "-131px", height: "512px", width: "345px" }} >
+              </iframe>
+
             </Grid>
           </Grid>
           <Grid
@@ -160,10 +160,9 @@ export default function StaticView(props) {
             className={classes.threeContain}
           >
             <Grid item container>
-              <Typography className={classes.Title}>Stylori News</Typography>
+              <Typography className={classes.Title}>Twitter</Typography>
             </Grid>
-            <Tweeterfeed/>
-           {/* <StyloriNews fadeImages ={props.fadeImages} dataCarousel={props.dataCarousel} /> */}
+            <Tweeterfeed />
           </Grid>
         </Grid>
       </Grid>

@@ -305,7 +305,7 @@ export default function ImageGridList(props) {
                                                         </Slideshow>
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
-                                                        <Typography style={{ color: "#394578",fontSize:"0.9rem" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
+                                                        <Typography style={{ color: "#394578", fontSize: "0.9rem" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
                                                             {val.transSkuListByProductSku && val.transSkuListByProductSku.markupPrice && val.transSkuListByProductSku.markupPrice}</Typography>
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
@@ -345,7 +345,7 @@ export default function ImageGridList(props) {
                         <Grid item md={1} lg={1} sm={1} xs={1} className={classes.smleftGrid}>
                             <img onClick={() => previous()} className={classes.leftIc} />
                         </Grid>
-                        <Grid item md={10} lg={10} sm={10} xs={10} style={{ marginBottom: "15px", height: "350px" }}>
+                        <Grid item md={10} lg={10} sm={10} xs={10} style={{ marginBottom: "15px", minHeight: "250px" }}>
                             <Grid container >
                                 <Grid item xs={12} >
                                     <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
