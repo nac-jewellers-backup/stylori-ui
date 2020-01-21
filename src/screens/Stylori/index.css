@@ -165,7 +165,7 @@
 .wrappercustomer {
   font-family: sans-serif;
   width: 100% !important;
-  height: 35px;
+  /* height: 35px; */
   color: #394578 !important;
   display: flex !important;
   justify-content: center;

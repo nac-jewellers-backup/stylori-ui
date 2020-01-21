@@ -75,7 +75,9 @@ const useStyles = makeStyles(theme => ({
         fontSize: "11px"
     },
     fullWidth: {
-        width: "100% !important"
+        width: "100% !important",
+        display: "flex",
+        justifyContent: "center"
     },
     fullWidth_PD_page: {
         width: "50% !important"
@@ -92,70 +94,35 @@ export default function StaticView() {
             <Grid item className={path ? classes.styloritags : classes.styloritags_PD_page}>
                 <Grid container >
                     <Grid item className={path ? classes.fullWidth : classes.fullWidth_PD_page}>
-                        <Grid className={classes.image1} data-src={"https://assets-cdn.stylori.com/images/static/sprite-images.png"} >
-                        </Grid>
-                    </Grid>
-
-                    <Grid item className={path ? classes.fullWidth : classes.fullWidth_PD_page}>
-                        <Typography className={classes.typo}>
-                            From the House of NAC
-                        </Typography>
+                        <img style={{ width: "30%" }} src={"https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg"} />
                     </Grid>
                 </Grid>
             </Grid>
             <Grid item className={path ? classes.styloritags : classes.styloritags_PD_page}>
                 <Grid container >
                     <Grid item className={path ? classes.fullWidth : classes.fullWidth_PD_page}>
-                        <Grid className={classes.image2} data-src={"https://assets-cdn.stylori.com/images/static/sprite-images.png"} >
-                        </Grid>
-                    </Grid>
-
-                    <Grid item className={path ? classes.fullWidth : classes.fullWidth_PD_page}>
-                        <Typography className={classes.typo}>
-                            Certified Jewellery
-                        </Typography>
+                        <img style={{ width: "30%" }} src={"https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static%20Pages/Other%20Pages/certifiedjewellery-pink.svg"} />
                     </Grid>
                 </Grid>
             </Grid>
             <Grid item className={path ? classes.styloritags : classes.styloritags_PD_page}>
                 <Grid container >
                     <Grid item className={path ? classes.fullWidth : classes.fullWidth_PD_page}>
-                        <Grid className={classes.image3} data-src={"https://assets-cdn.stylori.com/images/static/sprite-images.png"} >
-                        </Grid>
-                    </Grid>
-
-                    <Grid item className={path ? classes.fullWidth : classes.fullWidth_PD_page}>
-                        <Typography className={classes.typo}>
-                            Free Shipping
-                        </Typography>
+                        <img style={{ width: "30%" }} src={"https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/securepayments-pink.svg"} />
                     </Grid>
                 </Grid>
             </Grid>
             <Grid item className={path ? classes.styloritags : classes.styloritags_PD_page}>
                 <Grid container >
                     <Grid item className={path ? classes.fullWidth : classes.fullWidth_PD_page}>
-                        <Grid className={classes.image4} data-src={"https://assets-cdn.stylori.com/images/static/sprite-images.png"} >
-                        </Grid>
-                    </Grid>
-
-                    <Grid item className={path ? classes.fullWidth : classes.fullWidth_PD_page}>
-                        <Typography className={classes.typo}>
-                            Diverse Styles
-                        </Typography>
+                        <img style={{ width: "30%" }} src={"https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/diversestyles-pink.svg"} />
                     </Grid>
                 </Grid>
             </Grid>
             <Grid item className={path ? classes.styloritags : classes.styloritags_PD_page}>
                 <Grid container >
                     <Grid item className={path ? classes.fullWidth : classes.fullWidth_PD_page}>
-                        <Grid className={classes.image5} data-src={"https://assets-cdn.stylori.com/images/static/sprite-images.png"} >
-                        </Grid>
-                    </Grid>
-
-                    <Grid item className={path ? classes.fullWidth : classes.fullWidth_PD_page}>
-                        <Typography className={classes.typo}>
-                            Easy Returns
-                        </Typography>
+                        <img style={{ width: "30%" }} src={"https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/easyreturns-pink.svg"} />
                     </Grid>
                 </Grid>
             </Grid>

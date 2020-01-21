@@ -8,6 +8,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import StyloriNews from './StyloriNews';
+import Tweeterfeed from '../../components/storyTemplate/tweeterEmbedded'
 
 const useStyles = makeStyles(theme => ({
   containItems: {
@@ -41,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   photo: {
     padding: "5px",
     overflow: "auto",
-    height: "390px",
+    // height: "390px",
     width: "100% !important",
     border: "1px solid #eee !important",
     borderRadius: "5px"
@@ -125,7 +126,7 @@ export default function StaticView(props) {
             <Grid item container>
               <Typography className={classes.Title}>Instagram</Typography>
             </Grid>
-            <Grid item container className={classes.photo}>
+            <Grid item container className={classes.photo} style={{height:"390px"}}>
               <iframe
                 src="https://assets-cdn.stylori.com/assets/7b4c4135f67d8ee467c80ebc286cd3c3bad477ad.html"
                 width="100%"
@@ -145,12 +146,9 @@ export default function StaticView(props) {
               <Typography className={classes.Title}>Facebook</Typography>
             </Grid>
             <Grid item container className={classes.photo}>
-              <iframe
-                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fstylori&tabs=timeline&width=340&height=500&small_header=true&hide_cta=false&adapt_container_width=false&hide_cover=true&show_facepile=false&appId/embed"
-                width="100%"
-                height="100%"
-                frameBorder={0}
-              ></iframe>
+            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fstylori&amp;tabs=timeline&amp;width=340&amp;height=500&amp;small_header=true&amp;hide_cta=false&amp;adapt_container_width=false&amp;hide_cover=true&amp;show_facepile=false&amp;appId" style={{border: "none", overflow: "hidden", paddingTop: "-200px", paddingTop: "60px", marginTop: "-131px",height:"512px",width:"345px"}} >
+				</iframe>
+      
             </Grid>
           </Grid>
           <Grid
@@ -164,7 +162,8 @@ export default function StaticView(props) {
             <Grid item container>
               <Typography className={classes.Title}>Stylori News</Typography>
             </Grid>
-           <StyloriNews fadeImages ={props.fadeImages} dataCarousel={props.dataCarousel} />
+            <Tweeterfeed/>
+           {/* <StyloriNews fadeImages ={props.fadeImages} dataCarousel={props.dataCarousel} /> */}
           </Grid>
         </Grid>
       </Grid>

@@ -9,7 +9,7 @@ export const
       "setting": {
         dots: true,
         infinite: true,
-        autoplay: true,
+        autoplay: false,
         speed: 1000,
         fade: false,
         arrows: false,
@@ -26,27 +26,33 @@ export const
       "data": [
         {
           img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/banner1.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/gemstone-mob",
           navigateUrl: "/gemstone-jewellery?sort=latest"
         },
         {
-          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/banner2.png",
-          navigateUrl: "/jewellery-shipping+in+1+day?sort=featured"
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/Stylori-Valentine-banner-web.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/Stylori-Valentine-banner-mob.jpg",
+          navigateUrl: "/hearts-jewellery?sort=bestseller"
         },
         {
           img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/banner3.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/rings-collection-mob.jpg",
           navigateUrl: "/rings-jewellery"
         },
         {
           img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/banner4.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/Floral-collection-Mob.jpg",
           navigateUrl: "/floral-jewellery?sort=latest"
         },
         {
           img: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/banner5.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/halo-collection-mob.jpg",
           navigateUrl: "/jewellery-from+halo+collection"
         },
         {
-          img: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/banner6.gif",
-          navigateUrl: "/nose+pin+online-jewellery?sort=latest"
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/harvest-campaign-web.png",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Home+Page/harvest-campaign-mob.png",
+          navigateUrl: "jewellery?sort=bestseller"
         },
       ]
     },

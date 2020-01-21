@@ -128,12 +128,13 @@ class ProductImageZoom extends React.Component {
                 </Grid>
               </div>
             </div>
-          </Grid>
-          <Grid container >
+            <Grid container >
             <Grid item style={{ width: "100%", padding: "0px 15px", marginTop: "10px" }}>
               <Gagetstylori />
             </Grid>
           </Grid>
+          </Grid>
+         
         </Grid>
       </div>
     )
