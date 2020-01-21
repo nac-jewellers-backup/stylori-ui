@@ -1,11 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
+import { Card, Hidden } from '@material-ui/core';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import TablePagination from '@material-ui/core/TablePagination';
 import Typography from '@material-ui/core/Typography';
 import './style.css';
@@ -45,8 +42,8 @@ const useStyles = makeStyles({
   cardHeader: {
     fontSize: "15px",
     whiteSpace: "nowrap",
-  overflow: "hidden",
-  textOverflow: "ellipsis"
+    overflow: "hidden",
+    textOverflow: "ellipsis"
 
   }
 });
@@ -55,7 +52,7 @@ export default function MediaCard(props) {
   const classes = useStyles();
   const listOfEducationCard = window.location.pathname === "/stories" ? storyData.storiesData : storyData.educationCard;
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(4);
+  const [rowsPerPage, setRowsPerPage] = React.useState(6);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -91,9 +88,10 @@ export default function MediaCard(props) {
                   <span className="spanstories"></span>
                 </Grid>
                 <Grid item xs={9} className={classes.socialMediaTag}>
-                  <a className="fa fa-facebook iconic" ></a>
-                  <a className="fa fa-twitter twitter iconic"></a>
-                  <a className="fa fa-google-plus google iconic"></a>
+                  <a target="_blank" style={{ color: "inherit", textDecoration: "none" }} href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} className="fa fa-facebook iconic" ></a>
+
+                  <a target="_blank" style={{ color: "inherit", textDecoration: "none" }} href={`http://www.twitter.com/share?url=${window.location.href}`} className="fa fa-twitter twitter iconic"></a>
+                  {/* <a className="fa fa-google-plus google iconic"></a> */}
                   <a className={classes.cardReadLink}>read more</a>
                 </Grid>
               </Grid>
@@ -101,17 +99,20 @@ export default function MediaCard(props) {
           </Card>
         </Grid>
       )}
-      <Grid container item justify="flex-end">
-        <TablePagination
-          rowsPerPageOptions={[1, 2, 4]}
-          component="div"
-          count={listOfEducationCard.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onChangePage={handleChangePage}
-          onChangeRowsPerPage={handleChangeRowsPerPage}
-        />
-      </Grid>
+      <Hidden smDown>
+        <Grid container item justify="flex-end">
+          <TablePagination
+            rowsPerPageOptions={[2, 4, 6]}
+            component="div"
+            count={listOfEducationCard.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onChangePage={handleChangePage}
+            onChangeRowsPerPage={handleChangeRowsPerPage}
+          />
+        </Grid>
+      </Hidden>
+
     </Grid>
 
   )

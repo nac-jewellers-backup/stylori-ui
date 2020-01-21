@@ -274,7 +274,7 @@ export default function ImageGridList(props) {
     }
     const imageslice = (image) => {
         let val = image.split('/')
-        return (`${CDN_URL}${val[0]}/${val[1]}/800X800/${val[2]}`)
+        return (`${CDN_URL}${val[0]}/${val[1]}/275X275/${val[2]}`)
 
 
     }
@@ -297,11 +297,9 @@ export default function ImageGridList(props) {
                                                     <Typography className={classes.testimonyTitle}>
                                                         {val.title}
                                                     </Typography>
-
-
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
                                                         <Slideshow>
-                                                            <img className={classes.imgcoin} src={imageslice(val.productListByProductId.productImagesByProductId.nodes[0].imageUrl)} />
+                                                            {val.productListByProductId.productImagesByProductId.nodes[0].imageUrl ? <img className={classes.imgcoin} src={imageslice(val.productListByProductId.productImagesByProductId.nodes[0].imageUrl)} /> : <img className={classes.imgcoin} src={`${CDN_URL}product/1000X1000/productnotfound.webp`} />}
                                                         </Slideshow>
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
@@ -309,7 +307,7 @@ export default function ImageGridList(props) {
                                                             {val.transSkuListByProductSku && val.transSkuListByProductSku.markupPrice && val.transSkuListByProductSku.markupPrice}</Typography>
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
-                                                        <a style={{ textDecoration: 'none' }} href={val.navigateUrl}><Button type="button" className={classes.Button}>Shop Now</Button></a>
+                                                        <a style={{ textDecoration: 'none' }} href={val.transSkuListByProductSku && val.transSkuListByProductSku.skuUrl && val.transSkuListByProductSku.skuUrl}><Button type="button" className={classes.Button}>Shop Now</Button></a>
                                                     </Grid>
 
                                                 </Grid>

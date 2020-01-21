@@ -36,19 +36,33 @@ class StoryBlock extends React.Component {
             dataCarousel={homePageStylori.carouselTop.setting}
           >
             {homePageStylori.carouselTop.data.map((val, index) => (
-              <Grid container key={index}>
-                <img
-                  src={val.img}
-                  style={{ width: "100%", height: "100%" }}
-                />
-              </Grid>
+              <><Hidden smDown>
+                <Grid container key={index}>
+                  <a href={val.navigateUrl}>
+                    <img
+                      src={val.img}
+                      style={{ width: "100%", height: "100%" }}
+                    />
+                  </a>
+                </Grid>
+              </Hidden>
+                <Hidden mdUp>
+                  <Grid container key={index}>
+                    <a href={val.navigateUrl}>
+                      <img
+                        src={val.mobileImg}
+                        style={{ width: "100%", height: "100%" }}
+                      />
+                    </a>
+                  </Grid>
+                </Hidden></>
             ))}
           </Slideshow>
         </Grid>
         <Grid container style={{ maxWidth: "1170px", margin: "auto" }}>
           <Grid item md={12} style={{ marginTop: "12px", padding: "10px 0 10px 10px" }}>
-            <Typography component="a" onClick={() => { window.location.href = "/stories" }} className={ window.location.pathname === "/stories"?"selectedTab":"storiesData"}>Stories</Typography>
-            <Typography onClick={() => { window.location.href = "/education" }} component="a" className={ window.location.pathname === "/education"?"selectedTab":"storiesData"}>Education</Typography>
+            <Typography component="a" onClick={() => { window.location.href = "/stories" }} className={window.location.pathname === "/stories" ? "selectedTab" : "storiesData"}>Stories</Typography>
+            <Typography onClick={() => { window.location.href = "/education" }} component="a" className={window.location.pathname === "/education" ? "selectedTab" : "storiesData"}>Education</Typography>
           </Grid>
           <Grid item xs={12} sm={12} md={8}>
             <MediaCard />

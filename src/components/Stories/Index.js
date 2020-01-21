@@ -114,6 +114,7 @@ const useStyles = makeStyles(theme => ({
     },
     imgcoin: {
         width: "100%",
+        cursor: "pointer"
     },
     imgcoinsm: {
         width: "100%"
@@ -225,8 +226,11 @@ export default function ImageGridList(props) {
                                                     </Grid>
                                                 </Grid>
                                                 <Grid item style={{ width: "75%" }} className={classes.testimonialInner}>
-                                                    <Typography className={classes.textInner}>{val.cardContent}
-                                                    </Typography>
+                                                    <Grid item >
+                                                        <Typography className={classes.textInner}>{val.cardContent}
+                                                        </Typography>
+                                                        <a href={val.navigateUrl} style={{ fontSize: "12px", color: '#a77e6c' }} href="">Read more</a>
+                                                    </Grid>
                                                 </Grid>
                                             </Grid>
                                         </Grid>
@@ -263,11 +267,11 @@ export default function ImageGridList(props) {
                                                     </Grid>
                                                     <Grid item >
                                                         <Grid>
-                                                            <Typography style={{ fontSize: "12px", color: "rgb(102, 102, 102)", marginTop: "10px",height:"70px",overflow:"hidden" }}>
+                                                            <Typography style={{ fontSize: "12px", color: "rgb(102, 102, 102)", marginTop: "10px", height: "70px", overflow: "hidden" }}>
                                                                 {val.cardContent}
                                                             </Typography>
                                                         </Grid>
-                                                        <a style={{ fontSize: "12px", color: '#a77e6c' }} href="">Read more</a>
+                                                        <a href={val.navigateUrl} style={{ fontSize: "12px", color: '#a77e6c' }} href="">Read more</a>
                                                     </Grid>
                                                 </Grid>
                                             </Grid>
