@@ -235,3 +235,23 @@ export const ALLUSERWISHLISTS = `query MyQuery($userprofileId: [UUID!]) {
 }
 
 `
+export const FetchSku= `query MyQuery($CartId:ShoppingCartItemCondition) {
+  allShoppingCartItems(condition: $CartId) {
+    nodes {
+      transSkuListByProductSku {
+        generatedSku
+      }
+    }
+  }
+}
+
+`
+export const FetchCartId = `query FetchCartId($UserId: ShoppingCartCondition) {
+  allShoppingCarts(condition: $UserId, orderBy: UPDATED_AT_DESC, first: 1) {
+    nodes {
+      userprofileId
+      id
+    }
+  }
+}
+`

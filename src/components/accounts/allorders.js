@@ -15,14 +15,18 @@ import '../Checkout/Cart.css'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import moment from "moment";
 import Pricing from "../Pricing/index";
+import {CDN_URL} from "config"
 const order_id = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : ""
-
+var img_res;
+var img_res_X_2 = null;
+const width = window.innerWidth;
 function myFunc(total, num) {
     return Math.round(total + num);
 }
 class Allorders extends React.Component {
     state = {
         expanded: [],
+        check_img:null
     }
 
     handleChange = panel => (event) => {
@@ -30,7 +34,8 @@ class Allorders extends React.Component {
         var valus = expanded === panel ? "" : panel
         expanded.push(JSON.stringify(valus))
         this.setState({
-            expanded,
+            expanded
+            
         });
     };
 
@@ -45,7 +50,8 @@ class Allorders extends React.Component {
         var a;
         var dis_price;
         a = arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
-            if (cart !== null || cart !== undefined) {
+            debugger
+            if ((cart !== null || cart !== undefined) && cart.transSkuListByProductSku) {
                 dis_price = cart.transSkuListByProductSku.markupPrice
             }
             return dis_price
@@ -66,9 +72,12 @@ class Allorders extends React.Component {
             return 'Ships by' + ' ' + moment().add(numberOfDays, 'days').format('MMM Do YYYY');
         }
     }
+    
+     
     ImageUrl = (imgs, sku, metal) => {
-        // allorderdata.data.allOrders
         debugger
+        // allorderdata.data.allOrders
+        var check_img
         var ppp
         if (this.props && this.props.allorderdata && this.props.allorderdata.data.allOrders && this.props.allorderdata.data.allOrders.nodes.length > 0 && this.props.allorderdata && this.props.allorderdata.data.allOrders) {
 
@@ -83,9 +92,26 @@ class Allorders extends React.Component {
                                 var cnt_c = cnt_b[1]
 
                                 // if (sku === cart.transSkuListByProductSku.generatedSku) {
-                                if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
-                                    ppp = "https://assets.stylori.net/base_images/" + imgs.imageUrl
-                                }
+                                    var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
+                                if(this.state.check_img === null)    
+                          {
+                            if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
+                                check_img = true
+
+                                var resolution = 500
+                                var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`
+                                var url_split = imgs && imgs.imageUrl.split('/')
+    var extension_split = url_split && url_split[url_split.length - 1]
+    var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type && browser_type.browser_type}`)
+    url_split[url_split && url_split.length - 1] = browser_type_append
+    url_split.splice(2, 0, _resolutions);
+    var url_construct = url_split.join().replace(/\,/g, '/')
+    // var img_url = `${baseUi}${url_construct}`
+                                ppp = `${CDN_URL}${url_construct}`
+                                // alert(this.state.check_img)
+                                
+                            }
+                          }
                                 // }
                             }
                         }
@@ -96,22 +122,25 @@ class Allorders extends React.Component {
 
             })
             // var outside = ppp.filter(val => (val !== undefined && val !== null))
-            return ppp;
+            return {ppp, check_img};
         }
     }
 
     render() {
+        
         debugger
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
         debugger
         const expanded_ = expanded.map(val => { return val })
+        // var check_img = null
         const allDatas = () => {
             
             if (allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes.length > 0) {
                 return allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes
             }
         }
+        debugger
         // const allDatas_filter = () => {
         //     if (allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0) {
         //         allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map(val => {
@@ -132,6 +161,7 @@ class Allorders extends React.Component {
                             <div style={{ marginTop: "20px", boxShadow: "none" }}>
                                 {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
                                 {allDatas().map((val, index) => {
+                                    this.setState({check_img:null})
                                     debugger
                                     return(
                                         <ExpansionPanel
@@ -332,18 +362,21 @@ class Allorders extends React.Component {
                                                         </Grid>
                                                     </div>
                                                     <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}</span></div>
-                                                    {val && val.shoppingCartByCartId && val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId && val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => (
+                                                    {val && val.shoppingCartByCartId && val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId && val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => 
+                                                    
+                                                        {if(cart && cart.transSkuListByProductSku)
+                                                            return(
                                                         <>
                                                             <br />
                                                             <Grid container spacing={12} lg={12} style={{ overflow: "hidden", outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px", color: "#394578" }}>
                                                                 <Grid item lg={2} sm={3}  >
-                                                                    {cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs =>
+                                                                    {cart && cart.transSkuListByProductSku &&cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs =>
                                                                         <>
                                                                             {this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
                                                                                 cart.transSkuListByProductSku.metalColor) && this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
                                                                                     cart.transSkuListByProductSku.metalColor).length > 0 ?
                                                                                 <div className="wishlist_img">
-                                                                                    <img className="viewport-img" src={this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
+                                                                                    <img className="viewport-img" src={this.ImageUrl(imgs, cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.generatedSku,
                                                                                         cart.transSkuListByProductSku.metalColor)}
                                                                                     />
                                                                                 </div> : ""}</>
@@ -424,7 +457,10 @@ class Allorders extends React.Component {
                                                                         ></Pricing>}<br />
                                                                 </Grid>
                                                             </Grid></>
-                                                    ))}
+                                                    )
+                                                    }
+                                                    )
+                                                    }
 
                                                     <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
                                                         Sub Total&nbsp;{this.calculatetotal(val)}<br />

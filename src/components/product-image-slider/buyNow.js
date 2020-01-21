@@ -172,6 +172,8 @@ class Component extends React.Component {
     openModel = () => {
         this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
         // metalColor purity
+        sessionStorage.setItem('updatedProduct', JSON.stringify({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
+        // alert('haii')
         window.location.pathname = "/cart"
     }
 
@@ -184,6 +186,8 @@ class Component extends React.Component {
         }
         else {
             this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
+            // alert('haii')
+            sessionStorage.setItem('updatedProduct', JSON.stringify({ skuId: this.props.data[0].sku_id, qty: 1, price: this.props.data[0].offerPrice }));
             window.location.pathname = "/cart"
         }
 
@@ -198,6 +202,8 @@ class Component extends React.Component {
 
     deletechecklists = () => {
         this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
+        debugger
+        sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
         window.location.pathname = "/cart"
 
         this.setState({

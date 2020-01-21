@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
 
-let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : {}
+// let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : {}
 const useGift = () => {
     const [values, setValues] = React.useState({
-        cart_id,
+        // cart_id,
         gift_to: null,
         gift_from: null,
         message: null,

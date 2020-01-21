@@ -29,7 +29,7 @@ class Buynowbutton extends React.Component {
                 <Button className={this.props.class} style={{ borderRadius: "5px" }}>
                     {path !== "cart" && path !== "checkout" && this.valus(this.props) === 1 ? <>
                         <i class="fa fa-shopping-bag buynow-icon"></i>
-                        <span> In bag!</span>
+                        <span> In ba!</span>
                     </> : <>
                             <i class="fa fa-shopping-bag buynow-icon"></i>
                             <span className={this.props.button}>Buy Now</span>

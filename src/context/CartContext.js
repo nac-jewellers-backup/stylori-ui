@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useGraphql } from 'hooks/GraphqlHook';
-import { CART } from 'queries/cart';
+import { CART, FetchSku, FetchCartId } from 'queries/cart';
 import { ORDERSUCCESSFUL } from 'queries/cart';
 import { ALLORDERS } from 'queries/cart';
 import { ALLUSERWISHLISTS } from 'queries/cart';
@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import { useNetworkRequest } from 'hooks/NetworkHooks'
 import { FilterOptionsContext } from 'context/FilterOptionsContext';
 import { matchPath } from "react-router";
+import {API_URL} from "config"
 // import { productsPendants } from 'mappers/dummydata';
 // import { object } from 'prop-types';
 var orderobj = {}
@@ -246,17 +247,95 @@ const Provider = (props) => {
  
 
     const updateProductList = () => {
-        const variables = { "productList": skus };
-        makeRequest(variables);
+        let variables;
+        if(localStorage.getItem('user_id')){
+            function status(response) {
+
+                if (response.status >= 200 && response.status < 300) {
+                  return Promise.resolve(response)
+                } else {
+                  return Promise.reject(new Error(response.statusText))
+                }
+              }
+      
+              function json(response) {
+                return response.json()
+              }
+              var a = {}
+              let pathnameSplit = window.location.pathname.split('/')
+              const splitHiphen = () => {
+                if (pathnameSplit[1].indexOf('-')) {
+                  return pathnameSplit[1].split('-')
+                }
+              }
+      
+          
+              var _conditionfetchCartId = {"UserId":{"userprofileId": localStorage.getItem("user_id") }
+            }
+            debugger
+              //  alert(JSON.stringify(this.state.checked))
+              fetch(`${API_URL}/graphql`, {
+      
+                method: 'post',
+                // body: {query:seoUrlResult,variables:splitHiphen()}
+                // body: JSON.stringify({query:seoUrlResult}),
+      
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  query: FetchCartId,
+                  variables: {..._conditionfetchCartId},
+                })
+              })
+                .then(status)
+                .then(json).then(val=>{
+                    debugger
+                    // alert(JSON.stringify(val))
+                    localStorage.setItem("cart_id", JSON.stringify({cart_id:val.data.allShoppingCarts.nodes[0].id}))
+                    var _conditionfetch = {
+                        "CartId":{"shoppingCartId": val.data.allShoppingCarts.nodes[0].id}
+                      }
+                    fetch(`${API_URL}/graphql`, {
+                        method: 'post',
+                        // body: {query:seoUrlResult,variables:splitHiphen()}
+                        // body: JSON.stringify({query:seoUrlResult}),
+              
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                          query: FetchSku,
+                          variables: {..._conditionfetch},
+                        })
+                      })   .then(status)
+                      .then(json)
+                      .then(async function (data) {
+                          console.log(data,"parse_result_data")
+                          var _data = data.data.allShoppingCartItems.nodes.filter(val=>{if(val.transSkuListByProductSku) return val}).map(val=>{return val.transSkuListByProductSku.generatedSku})
+                          variables = {"productList":_data}
+                          debugger
+                          makeRequest(variables);
+                      })
+                })
+             
+               
+        }
+        else{
+            variables = { "productList": skus };
+            makeRequest(variables);
+        }
+        
     }
-    useEffect(() => {
-        // pathQueries();
-        setCartFilters(skus)
-        updateProductList();
-    }, [])
+    // useEffect(() => {
+    //     // pathQueries();
+    //     setCartFilters(skus)
+
+    //     updateProductList();
+    // }, [])
 
     const handleAddToCartDidMount = () =>{
-        if (localStorage.getItem('user_id') && localStorage.getItem('user_id').length>0) {
+        if (localStorage.getItem('cart_id') === null) {
             // debugger
                         // alert(JSON.stringify(guestlogId))
                         // localStorage.setItem("user_id", cartFilters.user_id)
@@ -274,13 +353,17 @@ const Provider = (props) => {
                         }
                     }
                     else {
-                        if (cartFilters.price > 0) {
+                        if (JSON.parse(localStorage.getItem('cartDetails')).products.length>0) {
                             debugger
                             var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
+                            var _get_cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
+                            var _cart_id = {cart_id:_get_cart_id}
+                            var _user_id = {user_id:localStorage.getItem('user_id')}
                             var local_storage_products = []
                             if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
                                 local_storage_products = JSON.parse(localStorage.getItem('cartDetails')).products.map(val => { return val })
                             }
+                            var _products_array = local_storage.products
                             var skuId = cartFilters.skuId;
                             var products = [];
                             var productszz = [];
@@ -303,12 +386,17 @@ const Provider = (props) => {
                                     return products
                                 }
                             }
-                            var skuObj = { "cart_id": cartId, "user_id": userId, "products": products_sku_list() }
+                            debugger
+                            var skuObj = { "cart_id": cartId, "user_id": userId, "products": _products_array }
                             // if (userIds.length > 0 && gut_lg !== true) {
                             //     var products = productszz;
                             //     const user_id = cartFilters.user_id
                             //     var addcart = ({ products, user_id })
-                            //     addtocart(addcart)
+                            var session_storage = JSON.parse(sessionStorage.getItem("updatedProduct"))
+                            var _products = {products:[session_storage]}
+                            var _obj = {..._user_id, ..._products, ..._cart_id}
+                            debugger
+                                addtocart(_obj)
                             // }
             
                             localStorage.setItem('cartDetails', JSON.stringify(skuObj));
@@ -316,20 +404,24 @@ const Provider = (props) => {
                     }
     }
     useEffect(()=>{
+        debugger
         if(window.location.pathname === "/cart"){
             if(Boolean(localStorage.getItem("user_id"))){
-                if(localStorage.getItem("cart_id") === null){
+                // if(localStorage.getItem("cart_id") === null){
                     if(Boolean(localStorage.getItem("cartDetails"))){
                         // alert("ya came inn.")
                         handleAddToCartDidMount()
                     }
                     
-                } 
+                // } 
             }
         }
+        setCartFilters(skus)
+
+        updateProductList();
         
       
-    },[data])
+    },[])
 
     const CartCtx = {
         cartFilters, loading, error, wishlist_count, data, setCartFilters, allorderdata, wishlistdata, allordersuccesful

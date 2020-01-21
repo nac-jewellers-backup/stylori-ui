@@ -70,7 +70,7 @@ class Cart extends React.Component {
                             {this.props.data.length > 0 ? <Grid item xs={12}>
                                 <CartCard data={data} />
                             </Grid> : <><div className="noproductsfound">There are no items in this cart. </div>  
-                            <Redirect to="/jewellery" ><div className="continueshopping">CONTINUE SHOPPING</div></Redirect></>
+                            <a href="/jewellery" ><div className="continueshopping">CONTINUE SHOPPING</div></a></>
                             
                             
                             }
