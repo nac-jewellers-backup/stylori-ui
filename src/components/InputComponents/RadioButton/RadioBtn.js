@@ -9,18 +9,19 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
-
+    padding: "6px 6px 6px 6px",
+    boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important"
   },
   formControl: {
     margin: theme.spacing(0.8),
     fontFamily: "Roboto",
-  
+
   },
-  fromControlTwo:{
-    '& span':{
-      fontSize:'0.9rem !important',
-      '& svg':{
-        width:'0.99rem'
+  fromControlTwo: {
+    '& span': {
+      fontSize: '0.9rem !important',
+      '& svg': {
+        width: '0.99rem'
       }
     },
   },
@@ -28,12 +29,16 @@ const useStyles = makeStyles(theme => ({
     color: "#394578",
   },
   radio: {
-          color: "#394578",
-    
-   
-      
-    
+    color: "#394578",
 
+  },
+  hoverClass: {
+    paddingRight: "10px",
+    marginLeft: "0px !important",
+    marginRight: "0px !important",
+    '&:hover': {
+      backgroundColor: "#9e9e9e40"
+    }
   }
 }));
 
@@ -42,10 +47,10 @@ const useStyles = makeStyles(theme => ({
 export default function RadioBtn(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState({
-    sortTitle:"Sort By",
-    values:'',
-    helperText:false
-    }
+    sortTitle: "Sort By",
+    values: '',
+    helperText: false
+  }
   );
 
   const handleChange = e => {
@@ -67,8 +72,8 @@ export default function RadioBtn(props) {
           onChange={handleChange}
         >
           {props.radioValues.map(data => (
-            <FormControlLabel value={data} control={<Radio color="primary" 
-            className={classes.radio} />} label={data} />
+            <FormControlLabel className={classes.hoverClass} value={data} control={<Radio color="primary"
+              className={classes.radio} />} label={data} />
           ))}
         </RadioGroup>
         {value.helperText && <FormHelperText><b style={{ color: 'red' }}>Required</b></FormHelperText>}
