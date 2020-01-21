@@ -93,8 +93,7 @@ class Allorders extends React.Component {
 
                                 // if (sku === cart.transSkuListByProductSku.generatedSku) {
                                     var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
-                                if(this.state.check_img === null)    
-                          {
+                        
                             if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
                                 check_img = true
 
@@ -111,7 +110,7 @@ class Allorders extends React.Component {
                                 // alert(this.state.check_img)
                                 
                             }
-                          }
+                          
                                 // }
                             }
                         }
@@ -122,7 +121,7 @@ class Allorders extends React.Component {
 
             })
             // var outside = ppp.filter(val => (val !== undefined && val !== null))
-            return {ppp, check_img};
+            return ppp;
         }
     }
 
@@ -161,7 +160,7 @@ class Allorders extends React.Component {
                             <div style={{ marginTop: "20px", boxShadow: "none" }}>
                                 {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
                                 {allDatas().map((val, index) => {
-                                    this.setState({check_img:null})
+                                   
                                     debugger
                                     return(
                                         <ExpansionPanel
