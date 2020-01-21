@@ -2,6 +2,8 @@ import React from 'react';
 import { Grid, Typography } from "@material-ui/core";
 import StyloriNews from 'components/Feedes/StyloriNews';
 import { storyData } from './storyTemplateData';
+import TweeterEmbedded from './tweeterEmbedded'
+
 export default function SocialLinkFrame() {
     return (
         <Grid container >
@@ -39,19 +41,15 @@ export default function SocialLinkFrame() {
                     <StyloriNews fadeImages={storyData.NewsFeeds.carousel.data} dataCarousel={storyData.NewsFeeds.carousel.setting} />
                 </Grid>
             </Grid>
-            {/* <Grid container>
+            <Grid container>
                 <Grid item md={12} style={{ marginTop: "30px" }}>
                     <Typography style={{ color: "#394578" }} component="h4">Tweet</Typography>
                 </Grid>
                 <Grid item style={{ width: "343px", border: "1px solid #ccc", marginTop: "5px" }}>
-                    <a class="twitter-timeline"
-                        href="https://twitter.com/StyloriLove"
-                        data-width="300"
-                        data-height="300">
-                        Tweets by @TwitterDev
-</a>
+                    <TweeterEmbedded />
+                
                 </Grid>
-            </Grid> */}
+            </Grid>
         </Grid>
     )
 }

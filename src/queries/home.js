@@ -17,6 +17,7 @@ export const testimonials = `query testimonials {
         title
         transSkuListByProductSku {
           markupPrice
+          skuUrl
         }
       }
     }

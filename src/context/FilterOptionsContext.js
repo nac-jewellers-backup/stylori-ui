@@ -109,7 +109,7 @@ const Provider = (props) => {
 
 
 
-            await fetch(uri, {
+await fetch(uri, {
 
                 method: 'post',
                 // body: {query:seoUrlResult,variables:splitHiphen()}
@@ -129,8 +129,7 @@ const Provider = (props) => {
                 .then(json)
                 .then(async function (data) {
 
-
-                    //   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
+//   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
                     var a = {};
 
                     var paramsfilter = (Object.entries(data).length !== 0 && data.constructor === Object && data.data.allSeoUrlPriorities) && data.data.allSeoUrlPriorities.nodes.map(val => {
@@ -375,7 +374,6 @@ const Provider = (props) => {
     }
 
     useEffect(() => {
-
         if (filters && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
             if (Object.values(filters).filter(val => { if (Object.entries(val).length > 0 && val.constructor === Object) { return val } }).length > 0) {
                 if (Object.keys(filters).filter(val => { if (val === "a") return val }).length === 0) updatefiltersSort()
@@ -429,11 +427,7 @@ const Provider = (props) => {
     var newObj = {}
     const updateFilters = async (filters) => {
         // alert('update filters')
-        if (filters && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
-            if (Object.values(filters).filter(val => { if (Object.entries(val).length > 0 && val.constructor === Object) { return val } }).length > 0) {
-                if (Object.keys(filters).filter(val => { if (val === "a") return val }).length === 0) updatefiltersSort()
-            }
-        }
+
         setSort('')
         setOffset(0)
         setFilters(filters);
@@ -480,11 +474,14 @@ const Provider = (props) => {
         await makeFetch(newObj);
         //    props.history.push({
         //     pathname: `/stylori${mappedFilters.seo_url   ?`/${mappedFilters.seo_url}` : '' }`,
-
         // })
+        if (filters && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
+            if (Object.values(filters).filter(val => { if (Object.entries(val).length > 0 && val.constructor === Object) { return val } }).length > 0) {
+                if (Object.keys(filters).filter(val => { if (val === "a") return val }).length === 0) updatefiltersSort()
+                //    makeFetch(newObj)
+            }
+        }
         try {
-
-
             if (ntxdata.seo_url === "jewellery") {
                 setMappedFilters(ntxdata)
             }

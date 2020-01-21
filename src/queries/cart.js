@@ -2,7 +2,7 @@ export const CART = `query myquerycart($productList: [String!]) {
   allTransSkuLists(filter: {generatedSku: {in: $productList}}) {
     nodes {
       generatedSku 
-      purity
+      purity 
       metalColor
       discountPrice
       markupPrice

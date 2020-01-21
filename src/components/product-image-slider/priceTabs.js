@@ -61,7 +61,7 @@ class Component extends React.Component {
         this.props.setGlobalCtx({ tabsChange: true })
         console.log('lklkkoik9', this.props)
         var filters = { ...this.props.filters }
-        
+
         if (key === 'purity') {
             debugger
             var kv = event.target.id
@@ -77,8 +77,8 @@ class Component extends React.Component {
             //     arrPurity = objVal[0]
             //     arrColor = objVal[1]
             // }
-            arrPurity = kv.substr(0,kv.indexOf(' '))
-            arrColor = kv.substr(kv.indexOf(' ')+1)
+            arrPurity = kv.substr(0, kv.indexOf(' '))
+            arrColor = kv.substr(kv.indexOf(' ') + 1)
             var diamondTypes = filters['defaultVariants']['diamondType']
             filters['defaultVariants']['purity'] = arrPurity
             filters['defaultVariants']['metalColor'] = arrColor
@@ -202,7 +202,7 @@ class Component extends React.Component {
             slider.current.slickPrev();
         }
         // data[0].productTabs[0].tab2.Children
-        
+
         return (
             <div>
                 {data[0].productTabs.map(val => {
@@ -268,7 +268,7 @@ class Component extends React.Component {
                                                     aria-describedby="simple-modal-description"
                                                     open={this.state.open}
                                                     onClose={this.handleClose}
-                                                    style={{ overflowY: 'scroll' }}
+                                                    style={{ overflow: 'scroll' }}
                                                 >
                                                     <div className={`${classes.modals} "modalin-ring"`}>
                                                         <img height='auto' width='100%' src='https://assets-cdn.stylori.com/images/static/Ring-size.jpg' />
@@ -302,11 +302,11 @@ class Component extends React.Component {
                                                 //     arrPurity = objVal[0]
                                                 //     arrColor = objVal[1]
                                                 // }
-                                                arrPurity = kv.substr(0,kv.indexOf(' '))
-            arrColor = kv.substr(kv.indexOf(' ')+1)
+                                                arrPurity = kv.substr(0, kv.indexOf(' '))
+                                                arrColor = kv.substr(kv.indexOf(' ') + 1)
                                                 return (
                                                     <Grid item lg={1} xs={2} className={classes.normalfonts_tabs}>
-                                                        <button 
+                                                        <button
                                                             style={{ background: this.imageRender(val) }}
                                                             className={this.state.purity === val ? 'darktabs tabs-valus' : 'pagetabs tabs-valus'}
                                                             id={val} color={arrColor}
