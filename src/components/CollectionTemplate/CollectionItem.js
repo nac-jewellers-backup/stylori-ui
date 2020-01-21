@@ -83,7 +83,7 @@ export default function CollectionItem() {
                 let attrName = val.attributeName.replace(/\s/g, '')
                 let attrVal = val.attributeValue.replace(/\s/g, '')
                 Collectionz[attrName] = attrVal
-            })
+            }) 
             // fetchproducts(Collectionz)
             // CollectionPageStylori(CollectionData)
         }).catch(function (error) {
