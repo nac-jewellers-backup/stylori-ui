@@ -188,7 +188,7 @@ const Provider = (props) => {
                         }
                     }
                     else {
-                        if (cartFilters.price > 0) {
+                       
                             debugger
                             var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
                             var local_storage_products = []
@@ -226,7 +226,7 @@ const Provider = (props) => {
                             // }
             
                             localStorage.setItem('cartDetails', JSON.stringify(skuObj));
-                        }
+                        
                     }
     }
     useEffect(() => {
@@ -289,7 +289,7 @@ const Provider = (props) => {
                 })
               })
                 .then(status)
-                .then(json).then(val=>{
+                .then(json).then(async val=>{
                     debugger
                     // alert(JSON.stringify(val))
                     localStorage.setItem("cart_id", JSON.stringify({cart_id:val.data.allShoppingCarts.nodes[0].id}))
@@ -353,7 +353,7 @@ const Provider = (props) => {
                         }
                     }
                     else {
-                        if (JSON.parse(localStorage.getItem('cartDetails')).products.length>0) {
+                       
                             debugger
                             var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
                             var _get_cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
@@ -400,7 +400,7 @@ const Provider = (props) => {
                             // }
             
                             localStorage.setItem('cartDetails', JSON.stringify(skuObj));
-                        }
+                        
                     }
     }
     useEffect(()=>{

@@ -120,7 +120,7 @@ debugger
             }
         }
 
-        obj['payment_mode'] = "cod"
+        obj['payment_mode'] = "COD"
         obj['user_id'] = user_id
         obj['cart_id'] = cart_ids
         // alert(JSON.stringify(dataCard1))

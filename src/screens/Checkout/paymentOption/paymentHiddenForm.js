@@ -20,7 +20,7 @@ export default function PaymentHiddenForm(props) {
     // var currentutc = null 
     // let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : "";
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : "";
-    obj['payment_mode'] = "prepaide"
+    obj['payment_mode'] = "Prepaid"
     obj['user_id'] = user_id
     obj['cart_id'] = cart_ids
     

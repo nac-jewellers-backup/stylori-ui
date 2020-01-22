@@ -10,6 +10,7 @@ let path = window.location.pathname.split('/').pop();
 class Buynowbutton extends React.Component {
     valus = (props) => {
         var valus_locl = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : ""
+        
         var vals;
         valus_locl && valus_locl.map(val => {
             const vlx = this.props && this.props.sku
@@ -29,7 +30,7 @@ class Buynowbutton extends React.Component {
                 <Button className={this.props.class} style={{ borderRadius: "5px" }}>
                     {path !== "cart" && path !== "checkout" && this.valus(this.props) === 1 ? <>
                         <i class="fa fa-shopping-bag buynow-icon"></i>
-                        <span> In ba!</span>
+                        <span> In bag!</span>
                     </> : <>
                             <i class="fa fa-shopping-bag buynow-icon"></i>
                             <span className={this.props.button}>Buy Now</span>
