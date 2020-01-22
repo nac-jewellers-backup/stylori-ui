@@ -1104,9 +1104,10 @@ body {
 .my-ringsize {
     font-size: 12px;
     padding-left: 6px;
-    color: #ed1165 !important;
+    color: #a0a1bb !important;
     text-decoration: underline !important;
     cursor: pointer;
+    letter-spacing: 1px;
 }
 
 .pagination {

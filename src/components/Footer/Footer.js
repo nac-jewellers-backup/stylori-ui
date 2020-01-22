@@ -91,10 +91,10 @@ export default function Footer(props) {
             url: "/productcare",
             Title: "Product Care"
         },
-        {
-            url: "",
-            Title: "Careers"
-        },
+        // {
+        //     url: "",
+        //     Title: "Careers"
+        // },
         {
             url: "/faqs",
             Title: "Frequently Asked Questions"
@@ -103,10 +103,10 @@ export default function Footer(props) {
             url: "/privacypolicy",
             Title: "Privacy & Cookie Policy"
         },
-        {
-            url: "",
-            Title: "Contact Us"
-        },
+        // {
+        //     url: "",
+        //     Title: "Contact Us"
+        // },
         {
             url: "/deliveryreturns",
             Title: "Shopping & Returns"
@@ -121,22 +121,39 @@ export default function Footer(props) {
             url: "/aboutus",
             Title: "About Stylori"
         },
-        {
-            url: "",
-            Title: "Careers"
-        },
+        // {
+        //     url: "",
+        //     Title: "Careers"
+        // },
 
-        {
-            url: "",
-            Title: "Contact Us"
-        },
-
-    ]
-    const footerData2 = [
+        // {
+        //     url: "",
+        //     Title: "Contact Us"
+        // },
         {
             url: "/account-profile",
             Title: "My Account"
         },
+        {
+            url: "/productcare",
+            Title: "Product Care"
+        },
+        // {
+        //     url: "/deliveryreturns",
+        //     Title: "Shopping & Returns"
+        // },
+
+
+    ]
+    const footerData2 = [
+        // {
+        //     url: "/account-profile",
+        //     Title: "My Account"
+        // },
+        // {
+        //     url: "/faqs",
+        //     Title: "Frequently Asked Questions"
+        // },
         {
             url: "/faqs",
             Title: "Frequently Asked Questions"
@@ -145,16 +162,20 @@ export default function Footer(props) {
             url: "/deliveryreturns",
             Title: "Shopping & Returns"
         },
-    ]
-    const footerData3 = [
-        {
-            url: "/productcare",
-            Title: "Product Care"
-        },
         {
             url: "/privacypolicy",
             Title: "Privacy & Cookie Policy"
         },
+    ]
+    const footerData3 = [
+        // {
+        //     url: "/productcare",
+        //     Title: "Product Care"
+        // },
+        // {
+        //     url: "/privacypolicy",
+        //     Title: "Privacy & Cookie Policy"
+        // },
         {
             url: "/termsconditions",
             Title: "Terms & Conditions"

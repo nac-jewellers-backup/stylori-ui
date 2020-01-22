@@ -59,7 +59,7 @@ class Component extends React.Component {
 
     handleClick = (event, key) => {
         this.props.setGlobalCtx({ tabsChange: true })
-      
+
         var filters = { ...this.props.filters }
 
         if (key === 'purity') {
@@ -230,8 +230,8 @@ class Component extends React.Component {
                                         <>
                                             <Grid container style={{ width: "100%" }} className={classes.pagination} style={{ overflow: "hidden" }}>
                                                 <Grid item style={{ width: "5%", alignItems: "center", justifyContent: "center", display: "flex" }}>
-                                                    <img onClick={() => previous()} className={"icon-leftcaro"} />
-
+                                                    <Hidden smDown> {arr.length > 8 && <img onClick={() => previous()} className={"icon-leftcaro"} />}</Hidden>
+                                                    <Hidden mdUp> {arr.length > 5 && <img onClick={() => previous()} className={"icon-leftcaro"} />}</Hidden>
                                                 </Grid>
                                                 <Grid item class="widthFix" style={{ textAlign: "center" }}>
                                                     <Hidden smDown>
@@ -262,7 +262,7 @@ class Component extends React.Component {
                                                             {arr.map((val, i) => {
                                                                 return (<>
                                                                     <div style={{ justifyContent: "center", display: "flex" }}>
-                                                                        <div className={JSON.stringify(val) === this.state.skuSize && 'darkouter'}>
+                                                                        <div className={JSON.stringify(val) === this.state.skuSize ? 'darkouter' : "darkouterWhite"}>
                                                                             <button
                                                                                 className={'page'}
                                                                                 id={val}
@@ -279,8 +279,8 @@ class Component extends React.Component {
                                                     </Hidden>
                                                 </Grid>
                                                 <Grid item style={{ width: "5%", alignItems: "center", justifyContent: "center", display: "flex" }}>
-                                                    <img onClick={() => next()} className={"icon-rightcaro"} />
-
+                                                    <Hidden smDown>   {arr.length > 8 && <img onClick={() => next()} className={"icon-rightcaro"} />}</Hidden>
+                                                    <Hidden mdUp>   {arr.length > 5 && <img onClick={() => next()} className={"icon-rightcaro"} />}</Hidden>
                                                 </Grid>
                                                 <Modal
                                                     aria-labelledby="simple-modal-title"

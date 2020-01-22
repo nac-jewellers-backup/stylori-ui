@@ -292,9 +292,9 @@ const Provider = (props) => {
                 .then(json).then(async val=>{
                     debugger
                     // alert(JSON.stringify(val))
-                    localStorage.setItem("cart_id", JSON.stringify({cart_id:val.data.allShoppingCarts.nodes[0].id}))
+                    localStorage.setItem("cart_id", JSON.stringify({cart_id:val.data.allShoppingCarts.nodes[0]&&val.data.allShoppingCarts.nodes[0].id}))
                     var _conditionfetch = {
-                        "CartId":{"shoppingCartId": val.data.allShoppingCarts.nodes[0].id}
+                        "CartId":{"shoppingCartId": val.data.allShoppingCarts.nodes[0]&&val.data.allShoppingCarts.nodes[0].id}
                       }
                     fetch(`${API_URL}/graphql`, {
                         method: 'post',
