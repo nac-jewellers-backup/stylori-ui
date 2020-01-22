@@ -23,6 +23,7 @@ import { NavLink } from 'react-router-dom';
 import { CartContext } from 'context'
 import cart from 'mappers/cart'
 import Wishlist from 'components/wishlist/wishlist';
+import {API_URL} from "config"
 // import { FilterOptionsContext } from 'context/FilterOptionsContext';
 // 
 // 
@@ -46,19 +47,57 @@ class Checkoutcard extends React.Component {
     //     return alert(JSON.stringify(redirect_url))
 
     // }
-    handleDeleteLocalStorage = (e, dlt) => {
+    handleDeleteLocalStorage = (e) => {
         var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
-        var currentValue = e.target.id || dlt
+        var currentValue = e.target.id 
+        // console.clear()
+        // console.log("e-clear",e.target.id)
+        
         var a = local_storage.products.filter(val => {
             if (currentValue !== val.sku_id) {
                 return val
             }
         })
-        var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
-        var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
-        var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
-        localStorage.setItem('cartDetails', localstorage)
-        window.location.reload();
+        function status(response) {
+
+            if (response.status >= 200 && response.status < 300) {
+              return Promise.resolve(response)
+            } else {
+              return Promise.reject(new Error(response.statusText))
+            }
+          }
+  
+          function json(response) {
+            return response.json()
+          }
+  
+
+        let cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
+        let bodyVariableRemoveCartItem = {cart_id:cart_id,product_id:currentValue}
+        fetch(`${API_URL}/removecartitem`, {
+      
+            method: 'post',
+            // body: {query:seoUrlResult,variables:splitHiphen()}
+            // body: JSON.stringify({query:seoUrlResult}),
+  
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              ...bodyVariableRemoveCartItem
+            })
+          })
+            .then(status)
+            .then(json).then(val=>{
+                sessionStorage.removeItem('updatedProduct');
+                alert(JSON.stringify(val.message))
+                var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
+                var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
+                var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
+                localStorage.setItem('cartDetails', localstorage)
+                window.location.reload();
+            })
+     
     }
     handlereloadcart = (val) => {
         const data = this.props.data
@@ -144,7 +183,7 @@ class Checkoutcard extends React.Component {
                                                 {/* : ""} */}
                                             <br />
                                             {window.location.pathname !== "/checkout" ? <div className={`subhesder hov ${classes.normalfonts}`}
-                                                id={val.namedetail[4].details} onClick={(event) => this.handleDeleteLocalStorage(event)}>
+                                                id={val.namedetail[4].details} productid= {dataval} onClick={(event) => this.handleDeleteLocalStorage(event)}>
                                                 <i class="fa fa-trash"></i>
                                                 &nbsp;Remove</div> : ""}
                                         </Grid>

@@ -12,23 +12,61 @@ import { productcarddatas } from '../../mappers';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
 import { NavLink } from 'react-router-dom';
-
+import {API_URL} from "config"
 function MediaControlCard(props) {
   const { classes } = props;
   const { dataCard1 } = props.data;
-const handleDeleteLocalStorage = (e, val) => {
-  var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
-  var currentValue =val.namedetail[4].details
-  var a = local_storage.products.filter(val => {
-      if (currentValue !== val.sku_id) {
-          return val
+  const handleDeleteLocalStorage = (e) => {
+    var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
+    var currentValue = e.target.id 
+    // console.clear()
+    // console.log("e-clear",e.target.id)
+    
+    var a = local_storage.products.filter(val => {
+        if (currentValue !== val.sku_id) {
+            return val
+        }
+    })
+    function status(response) {
+
+        if (response.status >= 200 && response.status < 300) {
+          return Promise.resolve(response)
+        } else {
+          return Promise.reject(new Error(response.statusText))
+        }
       }
-  })
-  var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
-  var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
-  var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
-  localStorage.setItem('cartDetails', localstorage)
-  window.location.reload();
+
+      function json(response) {
+        return response.json()
+      }
+
+
+    let cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
+    let bodyVariableRemoveCartItem = {cart_id:cart_id,product_id:currentValue}
+    fetch(`${API_URL}/removecartitem`, {
+  
+        method: 'post',
+        // body: {query:seoUrlResult,variables:splitHiphen()}
+        // body: JSON.stringify({query:seoUrlResult}),
+
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...bodyVariableRemoveCartItem
+        })
+      })
+        .then(status)
+        .then(json).then(val=>{
+            sessionStorage.removeItem('updatedProduct');
+            alert(JSON.stringify(val.message))
+            var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
+            var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
+            var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
+            localStorage.setItem('cartDetails', localstorage)
+            window.location.reload();
+        })
+ 
 }
   return (
     <div style={{ paddingTop: "10px" }}>
@@ -139,7 +177,7 @@ const handleDeleteLocalStorage = (e, val) => {
                     className={`${classes.normalfonts} ${classes.controls}`}
                   >
                     &nbsp;
-                    <div id={val.namedetail[4].details} onClick={(e) => handleDeleteLocalStorage(e,val)}>
+                    <div id={val.namedetail[4].details} productid= {dataval} onClick={(e) => handleDeleteLocalStorage(e,val)}>
                       <i style={{ fontSize: "16px" }} class="fa"> &#xf014;</i>&nbsp;<span>Remove</span>
                     </div>
 
