@@ -15,7 +15,8 @@ import {
     ListItemText,
     Container,
     InputAdornment,
-    Collapse
+    Collapse,
+    ClickAwayListener
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Hidden } from '@material-ui/core';
@@ -145,7 +146,9 @@ class Header extends Component {
     submenuDetails = (data, target) => {
         this.setState({ subTitleData: data, subMenuTarget: target })
     }
-
+    handleExpandClickClose = () => {
+        this.setState({ open: false });
+    }
     render() {
         const { mainlist, Jewellery, subheader, menuListHeader, menuLists } = this.props.data;
         let { selected, selected1 } = this.state;
@@ -155,9 +158,9 @@ class Header extends Component {
         const opened = this.state;
         var a = window.location.pathname
         var b = a.split("/")
-               // const id = open ? true : undefined;
+        // const id = open ? true : undefined;
         return (
-            <div style={{ top: "0", zIndex: "1000", width: "100%" }} className={window.location.pathname === "/cart"||b[1] === "paymentsuccess" || window.location.pathname === '/checkout' ? "headerTopcard" : "headerTop"}>
+            <div style={{ top: "0", zIndex: "1000", width: "100%" }} className={window.location.pathname === "/cart" || b[1] === "paymentsuccess" || window.location.pathname === '/checkout' ? "headerTopcard" : "headerTop"}>
                 <Hidden smDown >
                     {/* <HeaderNotification headerTransition={() => { this.headerTransitions() }} /> */}
                     <div className="header-appbar-sticky1" id='headerDiv' style={{ position: "fixed", zIndex: "1000" }}>
@@ -246,7 +249,7 @@ class Header extends Component {
                                     </Grid>
                                 </Grid>
                             </Container>
-                            {window.location.pathname === "/cart" || window.location.pathname === '/checkout' ||b[1] === "paymentsuccess"? "" : 
+                            {window.location.pathname === "/cart" || window.location.pathname === '/checkout' || b[1] === "paymentsuccess" ? "" :
                                 <Grid container id="headerContainer" >
                                     <Container maxWidth="lg" >
                                         <Grid container spacing={12} id="fullcontainer" className="setHeight">
@@ -451,43 +454,44 @@ class Header extends Component {
                                 classes.drawerPaper,
                             )
                         }}
-
                     >
-                        <div className={classes.menuheader} >
-                            <IconButton onClick={this.handleDrawerClose}
-                                style={{ float: 'right' }} className={classes.iconbuttons}>
-                                <i class="fa fa-times closebus" ></i>
-                            </IconButton>
-                        </div>
-                        <List className="sideNavListing"  >
-                            {mainlist.map(row => (
-                                <>
-                                    <ListItem button key={row.name} className="drawer-list1" >
-                                        <ListItemText
-                                            onClick={() => { window.location.href = row.url }}
-                                        >
-                                            <Typography className="list-items1"
-                                                variant=""
-                                            >{row.name.toUpperCase()}
-                                            </Typography>
-                                        </ListItemText>
-                                        <div onClick={() => Jewellery[row.name] !== undefined ? this.selectItem(row.name) : ''}>{Jewellery[row.name] !== undefined ? row.name === selected ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i> : ""}
-                                        </div>
-                                    </ListItem>
-                                    {selected === row.name &&
-                                        Object.keys(Jewellery[selected]).map(row2 => (
-                                            <>
-                                                <ListItem button key={Jewellery[selected][row2].name} className={classes.subtitleContainer}>
-                                                    <ListItemText onClick={() => { window.location.href = Jewellery[selected][row2].url }}>
-                                                        <Typography className={classes.subtitles} variant="">{Jewellery[selected][row2].name.toUpperCase()}
-                                                        </Typography>
-                                                    </ListItemText>
-                                                    <div onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>{selected1 === Jewellery[selected][row2].name ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i>}
-                                                    </div>
-                                                </ListItem>
-                                                {selected1 === Jewellery[selected][row2].name &&
+                        <ClickAwayListener onClickAway={(e) => this.handleExpandClickClose(e)}>
+                            <div>
+                                <div className={classes.menuheader} >
+                                    <IconButton onClick={this.handleDrawerClose}
+                                        style={{ float: 'right' }} className={classes.iconbuttons}>
+                                        <i class="fa fa-times closebus" ></i>
+                                    </IconButton>
+                                </div>
+                                <List className="sideNavListing"  >
+                                    {mainlist.map(row => (
+                                        <>
+                                            <ListItem button key={row.name} className="drawer-list1" >
+                                                <ListItemText
+                                                    onClick={() => { window.location.href = row.url }}
+                                                >
+                                                    <Typography className="list-items1"
+                                                        variant=""
+                                                    >{row.name.toUpperCase()}
+                                                    </Typography>
+                                                </ListItemText>
+                                                <div onClick={() => Jewellery[row.name] !== undefined ? this.selectItem(row.name) : ''}>{Jewellery[row.name] !== undefined ? row.name === selected ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i> : ""}
+                                                </div>
+                                            </ListItem>
+                                            {selected === row.name &&
+                                                Object.keys(Jewellery[selected]).map(row2 => (
                                                     <>
-                                                        {/* <ListItem className="drawer-list1">
+                                                        <ListItem button key={Jewellery[selected][row2].name} className={classes.subtitleContainer}>
+                                                            <ListItemText onClick={() => { window.location.href = Jewellery[selected][row2].url }}>
+                                                                <Typography className={classes.subtitles} variant="">{Jewellery[selected][row2].name.toUpperCase()}
+                                                                </Typography>
+                                                            </ListItemText>
+                                                            <div onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>{selected1 === Jewellery[selected][row2].name ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i>}
+                                                            </div>
+                                                        </ListItem>
+                                                        {selected1 === Jewellery[selected][row2].name &&
+                                                            <>
+                                                                {/* <ListItem className="drawer-list1">
                                                             <ListItemText
                                                             >
                                                                 <Typography className="list-items1" variant="">{subheader[selected1]&&subheader[selected1].header&&subheader[selected1].header.toUpperCase()}
@@ -495,83 +499,84 @@ class Header extends Component {
                                                                 <span style={{ paddingTop: "5px" }} className="header-viewal1">View All</span>
                                                             </ListItemText>
                                                         </ListItem> */}
-                                                        {subheader[selected1] && subheader[selected1].name && subheader[selected1].name.map(row => (
-                                                            <>
-                                                                <ListItem onClick={() => { window.location.href = row.url }} className={classes.subtitle2Container}>
-                                                                    <ListItemText>
-                                                                        <Typography className="list-items1" variant="">{row.name.toUpperCase()}</Typography>
-                                                                    </ListItemText>
-                                                                </ListItem>
+                                                                {subheader[selected1] && subheader[selected1].name && subheader[selected1].name.map(row => (
+                                                                    <>
+                                                                        <ListItem onClick={() => { window.location.href = row.url }} className={classes.subtitle2Container}>
+                                                                            <ListItemText>
+                                                                                <Typography className="list-items1" variant="">{row.name.toUpperCase()}</Typography>
+                                                                            </ListItemText>
+                                                                        </ListItem>
+                                                                    </>
+                                                                ))}
+
                                                             </>
-                                                        ))}
-
+                                                        }
                                                     </>
-                                                }
-                                            </>
-                                        ))
-                                    }
-                                </>
-                            ))}
-                            {!localStorage.getItem("true") ? <>
-                                <ListItem button className="drawer-list12" >
-                                    <ListItemText onClick={() => window.location.pathname = "/login"}>
-                                        <Typography className="list-items1">
-                                            LOGIN
+                                                ))
+                                            }
+                                        </>
+                                    ))}
+                                    {!localStorage.getItem("true") ? <>
+                                        <ListItem button className="drawer-list12" >
+                                            <ListItemText onClick={() => window.location.pathname = "/login"}>
+                                                <Typography className="list-items1">
+                                                    LOGIN
                                             </Typography>
-                                    </ListItemText>
-                                </ListItem>
-                                <ListItem button className="drawer-list12" >
-                                    <ListItemText onClick={() => window.location.pathname = "/registers"}>
-                                        <Typography className="list-items1">
-                                            REGISTER
+                                            </ListItemText>
+                                        </ListItem>
+                                        <ListItem button className="drawer-list12" >
+                                            <ListItemText onClick={() => window.location.pathname = "/registers"}>
+                                                <Typography className="list-items1">
+                                                    REGISTER
                                             </Typography>
-                                    </ListItemText>
-                                </ListItem>
-                            </> :
-                                <>
-                                    <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.href = `/account${'-profile'}`}>
-                                            <Typography className="list-items1" >
-                                                VIEW PROFILE
+                                            </ListItemText>
+                                        </ListItem>
+                                    </> :
+                                        <>
+                                            <ListItem button className="drawer-list12" >
+                                                <ListItemText onClick={() => window.location.href = `/account${'-profile'}`}>
+                                                    <Typography className="list-items1" >
+                                                        VIEW PROFILE
                                             </Typography>
-                                        </ListItemText>
-                                    </ListItem>
-                                    <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.href = `/account${'-wishlist'}`}>
-                                            <Typography className="list-items1">
-                                                MY WHISLIST
+                                                </ListItemText>
+                                            </ListItem>
+                                            <ListItem button className="drawer-list12" >
+                                                <ListItemText onClick={() => window.location.href = `/account${'-wishlist'}`}>
+                                                    <Typography className="list-items1">
+                                                        MY WHISLIST
                                             </Typography>
-                                        </ListItemText>
-                                    </ListItem>
-                                    <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.href = `/account${'-allorders'}`}>
-                                            <Typography className="list-items1">
-                                                ALL ORDERS
+                                                </ListItemText>
+                                            </ListItem>
+                                            <ListItem button className="drawer-list12" >
+                                                <ListItemText onClick={() => window.location.href = `/account${'-allorders'}`}>
+                                                    <Typography className="list-items1">
+                                                        ALL ORDERS
                                             </Typography>
-                                        </ListItemText>
-                                    </ListItem>
-                                    <ListItem button className="drawer-list12" >
-                                        <ListItemText >
-                                            <Typography className="list-items1">
-                                                CONTACT US
+                                                </ListItemText>
+                                            </ListItem>
+                                            <ListItem button className="drawer-list12" >
+                                                <ListItemText >
+                                                    <Typography className="list-items1">
+                                                        CONTACT US
                                             </Typography>
-                                        </ListItemText>
-                                    </ListItem>
-                                    <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => {
-                                            localStorage.clear();
-                                            window.location.reload()
-                                            window.location.pathname = "/login"
-                                        }}>
-                                            <Typography className="list-items1">
-                                                LOGOUT
+                                                </ListItemText>
+                                            </ListItem>
+                                            <ListItem button className="drawer-list12" >
+                                                <ListItemText onClick={() => {
+                                                    localStorage.clear();
+                                                    window.location.reload()
+                                                    window.location.pathname = "/login"
+                                                }}>
+                                                    <Typography className="list-items1">
+                                                        LOGOUT
                                             </Typography>
-                                        </ListItemText>
-                                    </ListItem>
-                                </>}
-                        </List>
+                                                </ListItemText>
+                                            </ListItem>
+                                        </>}
+                                </List>
+                            </div>
+                        </ClickAwayListener>
                     </Drawer>
-
                 </Hidden>
             </div >
         )

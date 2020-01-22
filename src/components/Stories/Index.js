@@ -114,7 +114,7 @@ const useStyles = makeStyles(theme => ({
     },
     imgcoin: {
         width: "100%",
-        cursor: "pointer"
+        // cursor: "pointer"
     },
     imgcoinsm: {
         width: "100%"
@@ -220,16 +220,16 @@ export default function ImageGridList(props) {
                                             <Grid container>
                                                 <Grid item className={classes.testimonialRight}>
                                                     <Grid item >
-                                                        <a href={val.navigateUrl}>
-                                                            <img className={classes.imgcoin} src={val.image} />
-                                                        </a>
+                                                        {/* <a href={val.navigateUrl}> */}
+                                                        <img className={classes.imgcoin} src={val.image} />
+                                                        {/* </a> */}
                                                     </Grid>
                                                 </Grid>
                                                 <Grid item style={{ width: "75%" }} className={classes.testimonialInner}>
                                                     <Grid item >
                                                         <Typography className={classes.textInner}>{val.cardContent}
                                                         </Typography>
-                                                        <a href={val.navigateUrl} style={{ fontSize: "12px", color: '#a77e6c' }} href="">Read more</a>
+                                                        {/* <a href={val.navigateUrl} style={{ fontSize: "12px", color: '#a77e6c' }} href="">Read more</a> */}
                                                     </Grid>
                                                 </Grid>
                                             </Grid>
@@ -261,9 +261,9 @@ export default function ImageGridList(props) {
                                                 </Typography>
                                                 <Grid container>
                                                     <Grid item style={{ textAlign: 'center' }}>
-                                                        <a href={val.navigateUrl}>
-                                                            <img className={classes.imgcoinsm} src={val.image} />
-                                                        </a>
+                                                        {/* <a href={val.navigateUrl}> */}
+                                                        <img className={classes.imgcoinsm} src={val.image} />
+                                                        {/* </a> */}
                                                     </Grid>
                                                     <Grid item >
                                                         <Grid>
@@ -271,7 +271,7 @@ export default function ImageGridList(props) {
                                                                 {val.cardContent}
                                                             </Typography>
                                                         </Grid>
-                                                        <a href={val.navigateUrl} style={{ fontSize: "12px", color: '#a77e6c' }} href="">Read more</a>
+                                                        {/* <a href={val.navigateUrl} style={{ fontSize: "12px", color: '#a77e6c' }} href="">Read more</a> */}
                                                     </Grid>
                                                 </Grid>
                                             </Grid>

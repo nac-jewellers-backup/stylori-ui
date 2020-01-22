@@ -28,8 +28,8 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.only('sm')]: {
         imgcoinsm: {
             verticalAlign: 'middle',
-            width: "144px !important",
-            height: "144px !important"
+            width: "100% !important",
+            // height: "144px !important"
         },
     },
 
@@ -45,7 +45,8 @@ const useStyles = makeStyles(theme => ({
             boxShadow: "0 0 5px #888 !important"
         },
         smleftGrid: {
-            marginTop: "50% !important"
+            display: "flex",
+            alignItems: "center"
         },
         Button: {
             fontSize: '9px !important',
@@ -67,9 +68,7 @@ const useStyles = makeStyles(theme => ({
             marginRight: "25% !important",
             padding: "0px 5px"
         },
-        smleftGrid: {
-            marginTop: "21% !important"
-        },
+
     },
 
 
@@ -103,9 +102,7 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         marginTop: "162px"
     },
-    smleftGrid: {
-        marginTop: "21% "
-    },
+
     leftIc: {
         backgroundPosition: '-16px -21px !important',
         width: '15px!important',
@@ -142,7 +139,9 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         justifyContent: " center",
         alignContent: 'center',
-        minHeight: "45px",
+        minHeight: "20px",
+        maxHeight: "40px",
+        overflow: "hidden",
         color: "#394578",
         fontWeight: '500',
         fontSize: "15px",
@@ -162,8 +161,8 @@ const useStyles = makeStyles(theme => ({
     },
     imgcoinsm: {
         verticalAlign: 'middle',
-        width: "110px",
-        height: "110px"
+        width: "100% !important",
+        // height: "110px"
     },
     Button: {
         fontSize: '12px',
@@ -226,7 +225,8 @@ const useStyles = makeStyles(theme => ({
         padding: "0px 5px"
     },
     buttonTypo: {
-        textAlign: 'center', alignItems: "center", display: "flex"
+        textAlign: 'center', alignItems: "center", display: "flex",
+        justifyContent: "center"
     },
     spanimage: {
         backgroundPosition: '-24px -12px',
@@ -252,15 +252,10 @@ const useStyles = makeStyles(theme => ({
     textInnersm: {
         color: '#666666',
         fontSize: '13px',
-        lineHeight: '30px',
-        maxHeight: "20px ",
+        maxHeight: "40px ",
         overflow: "hidden"
     },
-
-
 }));
-
-
 
 export default function ImageGridList(props) {
     let carosolData = props && props.carosolData && props.carosolData.data && props.carosolData.data.allCustomerReviews && props.carosolData.data.allCustomerReviews.nodes;
@@ -343,7 +338,7 @@ export default function ImageGridList(props) {
                         <Grid item md={1} lg={1} sm={1} xs={1} className={classes.smleftGrid}>
                             <img onClick={() => previous()} className={classes.leftIc} />
                         </Grid>
-                        <Grid item md={10} lg={10} sm={10} xs={10} style={{ marginBottom: "15px", minHeight: "250px" }}>
+                        <Grid item md={10} lg={10} sm={10} xs={10} style={{ marginBottom: "8px", minHeight: "250px" }}>
                             <Grid container >
                                 <Grid item xs={12} >
                                     <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
@@ -392,7 +387,7 @@ export default function ImageGridList(props) {
 
                             </Grid>
                         </Grid>
-                        <Grid item md={1} lg={1} sm={1} xs={1} className={classes.smleftGrid}>
+                        <Grid item md={1} lg={1} sm={1} xs={1} style={{ justifyContent: "flex-end" }} className={classes.smleftGrid}>
                             <img onClick={() => next()} className={classes.rightIc} />
                         </Grid>
                     </Grid>
