@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
 import { CartContext } from 'context'
 import { API_URL, HOME_PAGE_URL, CDN_URL } from '../../config';
+import { CART, FetchSku, FetchCartId } from 'queries/cart';
 
 var orderobj = {};
 var orderobj_cart = {};
@@ -89,6 +90,18 @@ const useWishlists = (props) => {
         // changePanel(3)
 
     } 
+    const status =(response)=> {
+
+        if (response.status >= 200 && response.status < 300) {
+            return Promise.resolve(response)
+        } else {
+            return Promise.reject(new Error(response.statusText))
+        }
+    }
+
+    const json = (response) => {
+        return response.json()
+    }
     const handelRemove = (num) => {
          
         setwishlistdata({
@@ -101,14 +114,14 @@ const useWishlists = (props) => {
             orderobj_cart['skuId'] = values.product_sku
             orderobj_cart['qty'] = 1
             orderobj_cart['price'] = values.add
+            var _products_obj = {}
+            var _products = []
+            var _obj={}
             setCartFilters(orderobj_cart)
-            if ((JSON.stringify(values.add) && JSON.stringify(values.add).length > 0) && (window.location.pathname.split("-")[0] === "/account")) {
-                window.location.pathname = `/account${'-shoppingcart'}`
-            } else {
-                if (window.location.pathname.split("-")[0] === "/account") {
-                    window.location.reload();
-                }
+            var _conditionfetchCartId = {
+                "UserId": { "userprofileId": localStorage.getItem("user_id") }
             }
+         
             fetch(`${API_URL}/removewishlist`, {
                 method: 'POST',
                 headers: {
@@ -116,12 +129,91 @@ const useWishlists = (props) => {
                     // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: JSON.stringify(values)
-            }).then((response) => {
-                return response.json();
-            })
-                .then((myJson) => {
-                    console.log(myJson);
+            }).then((myJson) => {
+                   fetch(`${API_URL}/graphql`, {
+
+                method: 'post',
+                // body: {query:seoUrlResult,variables:splitHiphen()}
+                // body: JSON.stringify({query:seoUrlResult}),
+
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    query: FetchCartId,
+                    variables: { ..._conditionfetchCartId },
+                })
+            }).then(status)
+            .then(json)
+                .then(val=>{
+                    if (val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length > 0 &&
+                        val.data.allShoppingCarts.nodes[0].status === "paid") {
+                            // alert(val.data.allShoppingCarts.nodes[0].status)
+                        // var _get_cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
+                        // var _cart_id = { cart_id: _get_cart_id }
+                        var _user_id = { user_id: localStorage.getItem('user_id') }
+                       
+                        _products_obj['sku_id'] = values.product_sku
+                        _products_obj['price'] = values.add
+                        _products_obj['qty'] = 1 
+
+
+                        _products = { products: [_products_obj] }
+                       _obj = { ..._user_id, ..._products}
+                       fetch(`${API_URL}/addtocart`, {
+                        method: 'post',
+                        // body: {query:seoUrlResult,variables:splitHiphen()}
+                        // body: JSON.stringify({query:seoUrlResult}),
+
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            ..._obj,
+                        })
+                    })
+                      
+                  
+                    }
+                    else {
+                        // alert("not paid")
+                        localStorage.setItem("cart_id", JSON.stringify({ cart_id: val.data.allShoppingCarts.nodes[0].id }))
+                        var _conditionfetch = {
+                            "CartId": { "shoppingCartId": val.data.allShoppingCarts.nodes[0].id }
+                        }
+                        // var _products_obj = {}
+                        _products_obj['sku_id'] = values.product_sku
+                        _products_obj['price'] = values.add
+                        _products_obj['qty'] = 1 
+                        var _cart_id = {cart_id:val.data.allShoppingCarts.nodes[0].id}
+
+
+                        _products = { products: [_products_obj] }
+                       _obj = { ..._user_id, ..._products, ..._cart_id}
+
+                        fetch(`${API_URL}/addtocart`, {
+                            method: 'post',
+                            // body: {query:seoUrlResult,variables:splitHiphen()}
+                            // body: JSON.stringify({query:seoUrlResult}),
+
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                ..._obj,
+                            })
+                        }).then(val=>{
+                            if ((JSON.stringify(values.add) && JSON.stringify(values.add).length > 0) && (window.location.pathname.split("-")[0] === "/account")) {
+                                window.location.pathname = `/account${'-shoppingcart'}`
+                            } else {
+                                if (window.location.pathname.split("-")[0] === "/account") {
+                                    window.location.reload();
+                                }
+                            }
+                        })
+                    }
                 });
+            })
 
         }
         // changePanel(3)

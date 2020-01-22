@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 import { useNetworkRequest } from 'hooks/NetworkHooks'
 import { FilterOptionsContext } from 'context/FilterOptionsContext';
 import { matchPath } from "react-router";
-import {API_URL} from "config"
+import { API_URL } from "config"
 // import { productsPendants } from 'mappers/dummydata';
 // import { object } from 'prop-types';
 var orderobj = {}
@@ -52,7 +52,13 @@ const Provider = (props) => {
     const price = cartFilters.price ? cartFilters.price : ""
     const { loading: crtloading, error: crterror, data: crtdata, makeFetch: addtocart } = useNetworkRequest('/addtocart', { user_id, products }, false)
     const userIds = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
-    var cartdetails = JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : {}
+    var cartdetails = JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 &&
+    Object.keys(JSON.parse(localStorage.getItem("cartDetails")).products.filter(val=>{if(Object.keys(val).length>0)return val})).length>0
+    ?
+    JSON.parse(localStorage.getItem("cartDetails")).products.filter(val=>{if(Object.keys(val).length>0)return val})[0].sku_id
+    :
+    {}
+    // JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : []
     const guestlogId = cartFilters.user_id ? cartFilters.user_id : ''
     const { loading: allorderloading, error: allordererror, data: allorder, makeRequest: allordermakeRequest } = useGraphql(ALLORDERS, () => { }, {}, false);
     const { loading: allorderloadingsuccesful, error: allordererrorsuccesful, data: allordersuccesful, makeRequest: allordermakeRequestSuccessful } = useGraphql(ORDERSUCCESSFUL, () => { }, {}, false);
@@ -154,80 +160,81 @@ const Provider = (props) => {
         allordermakeRequest(orderobj);
 
     }, [wishlistdata])
-    const ordersuccessful = async() =>{
+    const ordersuccessful = async () => {
         var _obj = {}
-        _obj["orderId"] = {id:props.match.params.id}
-       await allordermakeRequestSuccessful(_obj);
+        _obj["orderId"] = { id: props.match.params.id }
+        await allordermakeRequestSuccessful(_obj);
     }
     useEffect(() => {
         // orderobj["userProfileId"] = userIds
         // {
         //     "orderId":{"id":"69ec1b00-36d0-11ea-b9b0-a977a389bd8d"}
         //   }
-  
+
         // var props.computedMatch.params.id
         ordersuccessful()
-       
+
     }, [wishlistdata])
-    const handleAddToCart = () =>{
+    const handleAddToCart = () => {
         if (guestlogId.length > 0) {
             // debugger
-                        // alert(JSON.stringify(guestlogId))
-                        localStorage.setItem("user_id", cartFilters.user_id)
-                        if (JSON.stringify(cartdetails).length > 0) {
-                            debugger
-                            var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
-                            const user_id = cartFilters.user_id
-                            var addcart = ({ products, user_id })
-                            // alert("hgdhfdhg")
-                            addtocart(addcart)
-                            orderobj["userProfileId"] = user_id
-                            sessionStorage.setItem("user_id", user_id)
-                            allordermakeRequest(orderobj);
-                            // wishlistmakeRequest(orderobj1) 
-                        }
-                    }
-                    else {
-                       
-                            debugger
-                            var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
-                            var local_storage_products = []
-                            if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
-                                local_storage_products = JSON.parse(localStorage.getItem('cartDetails')).products.map(val => { return val })
-                            }
-                            var skuId = cartFilters.skuId;
-                            var products = [];
-                            var productszz = [];
-                            var obj = {};
-                            var cartId = "";
-                            var userId = '';
-                            var obj = { sku_id: '', qty: '', price: '' }
-                            obj['sku_id'] = skuId;
-                            obj['qty'] = cartFilters.qty
-                            obj['price'] = cartFilters.price
-                            productszz.push(obj)
-                            debugger
-                            var products_sku_list = () => {
-                                if (local_storage_products.length > 0) {
-                                    local_storage_products.push(obj);
-                                    return local_storage_products
-                                }
-                                else {
-                                    products.push(obj)
-                                    return products
-                                }
-                            }
-                            var skuObj = { "cart_id": cartId, "user_id": userId, "products": products_sku_list() }
-                            // if (userIds.length > 0 && gut_lg !== true) {
-                            //     var products = productszz;
-                            //     const user_id = cartFilters.user_id
-                            //     var addcart = ({ products, user_id })
-                            //     addtocart(addcart)
-                            // }
-            
-                            localStorage.setItem('cartDetails', JSON.stringify(skuObj));
-                        
-                    }
+            // alert(JSON.stringify(guestlogId))
+            localStorage.setItem("user_id", cartFilters.user_id)
+
+            if (JSON.stringify(cartdetails).length > 0) {
+                debugger
+                var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
+                const user_id = cartFilters.user_id
+                var addcart = ({ products, user_id })
+                // alert("hgdhfdhg")
+                addtocart(addcart)
+                orderobj["userProfileId"] = user_id
+                sessionStorage.setItem("user_id", user_id)
+                allordermakeRequest(orderobj);
+                // wishlistmakeRequest(orderobj1) 
+            }
+        }
+        else {
+
+            debugger
+            var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
+            var local_storage_products = []
+            if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
+                local_storage_products = JSON.parse(localStorage.getItem('cartDetails')).products.map(val => { return val })
+            }
+            var skuId = cartFilters.skuId;
+            var products = [];
+            var productszz = [];
+            var obj = {};
+            var cartId = "";
+            var userId = '';
+            var obj = { sku_id: '', qty: '', price: '' }
+            obj['sku_id'] = skuId;
+            obj['qty'] = cartFilters.qty
+            obj['price'] = cartFilters.price
+            productszz.push(obj)
+            debugger
+            var products_sku_list = () => {
+                if (local_storage_products.length > 0) {
+                    local_storage_products.push(obj);
+                    return local_storage_products
+                }
+                else {
+                    products.push(obj)
+                    return products
+                }
+            }
+            var skuObj = { "cart_id": cartId, "user_id": userId, "products": products_sku_list() }
+            // if (userIds.length > 0 && gut_lg !== true) {
+            //     var products = productszz;
+            //     const user_id = cartFilters.user_id
+            //     var addcart = ({ products, user_id })
+            //     addtocart(addcart)
+            // }
+
+            localStorage.setItem('cartDetails', JSON.stringify(skuObj));
+
+        }
     }
     useEffect(() => {
         // if (userIds.length > 0) {
@@ -243,89 +250,135 @@ const Provider = (props) => {
     // const pathQueries = () => {
     //     skus = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : ''
     // }
-    skus = localStorage.getItem("cartDetails") && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")).products.map(val => val.sku_id) : ''
- 
+    skus = localStorage.getItem("cartDetails") && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? 
+    JSON.parse(localStorage.getItem("cartDetails")).products.filter(val=>{if(Object.keys(val).length>0)return val}).map(val => val.sku_id) : ''
+    // JSON.parse(localStorage.getItem("cartDetails")).products.map(val => val.sku_id) : ''
 
+    
     const updateProductList = () => {
         let variables;
-        if(localStorage.getItem('user_id')){
+        if (localStorage.getItem('user_id')) {
             function status(response) {
 
                 if (response.status >= 200 && response.status < 300) {
-                  return Promise.resolve(response)
+                    return Promise.resolve(response)
                 } else {
-                  return Promise.reject(new Error(response.statusText))
+                    return Promise.reject(new Error(response.statusText))
                 }
-              }
-      
-              function json(response) {
+            }
+
+            function json(response) {
                 return response.json()
-              }
-              var a = {}
-              let pathnameSplit = window.location.pathname.split('/')
-              const splitHiphen = () => {
+            }
+            var a = {}
+            let pathnameSplit = window.location.pathname.split('/')
+            const splitHiphen = () => {
                 if (pathnameSplit[1].indexOf('-')) {
-                  return pathnameSplit[1].split('-')
+                    return pathnameSplit[1].split('-')
                 }
-              }
-      
-          
-              var _conditionfetchCartId = {"UserId":{"userprofileId": localStorage.getItem("user_id") }
+            }
+
+
+            var _conditionfetchCartId = {
+                "UserId": { "userprofileId": localStorage.getItem("user_id") }
             }
             debugger
-              //  alert(JSON.stringify(this.state.checked))
-              fetch(`${API_URL}/graphql`, {
-      
+            //  alert(JSON.stringify(this.state.checked))
+            fetch(`${API_URL}/graphql`, {
+
                 method: 'post',
                 // body: {query:seoUrlResult,variables:splitHiphen()}
                 // body: JSON.stringify({query:seoUrlResult}),
-      
+
                 headers: {
-                  'Content-Type': 'application/json',
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                  query: FetchCartId,
-                  variables: {..._conditionfetchCartId},
+                    query: FetchCartId,
+                    variables: { ..._conditionfetchCartId },
                 })
-              })
+            })
                 .then(status)
-                .then(json).then(async val=>{
+                .then(json).then(async val => {
                     debugger
-                    // alert(JSON.stringify(val))
-                    localStorage.setItem("cart_id", JSON.stringify({cart_id:val.data.allShoppingCarts.nodes[0].id}))
-                    var _conditionfetch = {
-                        "CartId":{"shoppingCartId": val.data.allShoppingCarts.nodes[0].id}
-                      }
-                    fetch(`${API_URL}/graphql`, {
-                        method: 'post',
-                        // body: {query:seoUrlResult,variables:splitHiphen()}
-                        // body: JSON.stringify({query:seoUrlResult}),
-              
-                        headers: {
-                          'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                          query: FetchSku,
-                          variables: {..._conditionfetch},
-                        })
-                      })   .then(status)
-                      .then(json)
-                      .then(async function (data) {
-                          console.log(data,"parse_result_data")
-                          var _data = data.data.allShoppingCartItems.nodes.filter(val=>{if(val.transSkuListByProductSku) return val}).map(val=>{return val.transSkuListByProductSku.generatedSku})
-                          variables = {"productList":_data}
-                          debugger
-                          makeRequest(variables);
-                      })
+                    if (val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length > 0 &&
+                        val.data.allShoppingCarts.nodes[0].status === "paid") {
+                            // alert(val.data.allShoppingCarts.nodes[0].status)
+                        // var _get_cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
+                        // var _cart_id = { cart_id: _get_cart_id }
+                        var _user_id = { user_id: localStorage.getItem('user_id') }
+                        var session_storage = JSON.parse(sessionStorage.getItem("updatedProduct"))
+                        var _products = { products: [session_storage] }
+                        var _obj = { ..._user_id, ..._products}
+                        fetch(`${API_URL}/addtocart`, {
+                            method: 'post',
+                            // body: {query:seoUrlResult,variables:splitHiphen()}
+                            // body: JSON.stringify({query:seoUrlResult}),
+
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                ..._obj,
+                            })
+                        }).then(status)
+                            .then(json)
+                            .then(async function (data) {
+                                console.log(data, "parse_result_data_______parse_result_data")
+                               if(data && data.data && data.data.allShoppingCartItems && data.data.allShoppingCartItems.nodes &&data.data.allShoppingCartItems.nodes.length > 0){
+                                var _data = data.data.allShoppingCartItems.nodes.filter(val => { if (val.transSkuListByProductSku) return val }).map(val => { return val.transSkuListByProductSku.generatedSku })
+                                variables = { "productList": _data }
+                                debugger
+                                makeRequest(variables);
+                               }
+                               else{
+                                   return []
+                               }
+                              
+                            })
+                    }
+
+                    else {
+                        // alert("not paid")
+                        localStorage.setItem("cart_id", JSON.stringify({ cart_id: val.data.allShoppingCarts.nodes[0].id }))
+                        var _conditionfetch = {
+                            "CartId": { "shoppingCartId": val.data.allShoppingCarts.nodes[0].id }
+                        }
+                        fetch(`${API_URL}/graphql`, {
+                            method: 'post',
+                            // body: {query:seoUrlResult,variables:splitHiphen()}
+                            // body: JSON.stringify({query:seoUrlResult}),
+
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                query: FetchSku,
+                                variables: { ..._conditionfetch },
+                            })
+                        }).then(status)
+                            .then(json)
+                            .then(async function (data) {
+                                console.log(data, "parse_result_data")
+                                var _data = data.data.allShoppingCartItems.nodes.filter(val => { if (val.transSkuListByProductSku) return val }).map(val => { return val.transSkuListByProductSku.generatedSku })
+                                variables = { "productList": _data }
+                                debugger
+                                makeRequest(variables);
+                            })
+                    }
+
                 })
-             
-               
+
+
         }
-        else{
+        else {
+            // alert("Came as guest user")
+            debugger
             variables = { "productList": skus };
+
             makeRequest(variables);
         }
-        
+
     }
     // useEffect(() => {
     //     // pathQueries();
@@ -334,94 +387,95 @@ const Provider = (props) => {
     //     updateProductList();
     // }, [])
 
-    const handleAddToCartDidMount = () =>{
+    const handleAddToCartDidMount = () => {
         if (localStorage.getItem('cart_id') === null) {
             // debugger
-                        // alert(JSON.stringify(guestlogId))
-                        // localStorage.setItem("user_id", cartFilters.user_id)
-                        if (JSON.stringify(cartdetails).length > 0) {
-                            debugger
-                            var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
-                            const user_id = cartFilters.user_id
-                            var addcart = ({ products, user_id })
-                            // alert("hgdhfdhg")
-                            addtocart(addcart)
-                            orderobj["userProfileId"] = user_id
-                            sessionStorage.setItem("user_id", user_id)
-                            allordermakeRequest(orderobj);
-                            // wishlistmakeRequest(orderobj1) 
-                        }
-                    }
-                    else {
-                       
-                            debugger
-                            var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
-                            var _get_cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
-                            var _cart_id = {cart_id:_get_cart_id}
-                            var _user_id = {user_id:localStorage.getItem('user_id')}
-                            var local_storage_products = []
-                            if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
-                                local_storage_products = JSON.parse(localStorage.getItem('cartDetails')).products.map(val => { return val })
-                            }
-                            var _products_array = local_storage.products
-                            var skuId = cartFilters.skuId;
-                            var products = [];
-                            var productszz = [];
-                            var obj = {};
-                            var cartId = "";
-                            var userId = '';
-                            var obj = { sku_id: '', qty: '', price: '' }
-                            obj['sku_id'] = skuId;
-                            obj['qty'] = cartFilters.qty
-                            obj['price'] = cartFilters.price
-                            productszz.push(obj)
-                            debugger
-                            var products_sku_list = () => {
-                                if (local_storage_products.length > 0) {
-                                    local_storage_products.push(obj);
-                                    return local_storage_products
-                                }
-                                else {
-                                    products.push(obj)
-                                    return products
-                                }
-                            }
-                            debugger
-                            var skuObj = { "cart_id": cartId, "user_id": userId, "products": _products_array }
-                            // if (userIds.length > 0 && gut_lg !== true) {
-                            //     var products = productszz;
-                            //     const user_id = cartFilters.user_id
-                            //     var addcart = ({ products, user_id })
-                            var session_storage = JSON.parse(sessionStorage.getItem("updatedProduct"))
-                            var _products = {products:[session_storage]}
-                            var _obj = {..._user_id, ..._products, ..._cart_id}
-                            debugger
-                                addtocart(_obj)
-                            // }
-            
-                            localStorage.setItem('cartDetails', JSON.stringify(skuObj));
-                        
-                    }
-    }
-    useEffect(()=>{
-        debugger
-        if(window.location.pathname === "/cart"){
-            if(Boolean(localStorage.getItem("user_id"))){
-                // if(localStorage.getItem("cart_id") === null){
-                    if(Boolean(localStorage.getItem("cartDetails"))){
-                        // alert("ya came inn.")
-                        handleAddToCartDidMount()
-                    }
-                    
-                // } 
+            // alert(JSON.stringify(guestlogId))
+            // localStorage.setItem("user_id", cartFilters.user_id)
+            if (JSON.stringify(cartdetails).length > 0) {
+                debugger
+                var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
+                const user_id = cartFilters.user_id
+                var addcart = ({ products, user_id })
+                // alert("hgdhfdhg")
+                addtocart(addcart)
+                orderobj["userProfileId"] = user_id
+                sessionStorage.setItem("user_id", user_id)
+                allordermakeRequest(orderobj);
+                // wishlistmakeRequest(orderobj1) 
             }
         }
+        else {
+
+            debugger
+            var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
+            var _get_cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
+            var _cart_id = { cart_id: _get_cart_id }
+            var _user_id = { user_id: localStorage.getItem('user_id') }
+            var local_storage_products = []
+            if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
+                local_storage_products = JSON.parse(localStorage.getItem('cartDetails')).products.map(val => { return val })
+            }
+            var _products_array = local_storage.products
+            var skuId = cartFilters.skuId;
+            var products = [];
+            var productszz = [];
+            var obj = {};
+            var cartId = "";
+            var userId = '';
+            var obj = { sku_id: '', qty: '', price: '' }
+            obj['sku_id'] = skuId;
+            obj['qty'] = cartFilters.qty
+            obj['price'] = cartFilters.price
+            productszz.push(obj)
+            debugger
+            var products_sku_list = () => {
+                if (local_storage_products.length > 0) {
+                    local_storage_products.push(obj);
+                    return local_storage_products
+                }
+                else {
+                    products.push(obj)
+                    return products
+                }
+            }
+            debugger
+            var skuObj = { "cart_id": cartId, "user_id": userId, "products": _products_array }
+            // if (userIds.length > 0 && gut_lg !== true) {
+            //     var products = productszz;
+            //     const user_id = cartFilters.user_id
+            //     var addcart = ({ products, user_id })
+            var session_storage = JSON.parse(sessionStorage.getItem("updatedProduct"))
+            var _products = { products: [session_storage] }
+            var _obj = { ..._user_id, ..._products, ..._cart_id }
+            debugger
+            addtocart(_obj)
+            // }
+
+            localStorage.setItem('cartDetails', JSON.stringify(skuObj));
+
+        }
+    }
+    useEffect(() => {
         setCartFilters(skus)
 
         updateProductList();
-        
-      
-    },[])
+        debugger
+        if (window.location.pathname === "/cart") {
+            if (Boolean(localStorage.getItem("user_id"))) {
+                // if(localStorage.getItem("cart_id") === null){
+                if (Boolean(localStorage.getItem("cartDetails"))) {
+                    // alert("ya came inn.")
+                    handleAddToCartDidMount()
+                }
+
+                // } 
+            }
+        }
+
+
+
+    }, [])
 
     const CartCtx = {
         cartFilters, loading, error, wishlist_count, data, setCartFilters, allorderdata, wishlistdata, allordersuccesful
