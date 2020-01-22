@@ -19,14 +19,10 @@ class Buynowfixed extends React.Component {
             obj['sku_id'] = skuId;
             obj['qty'] = 1
             obj['price'] = data[0].offerPrice[0]
-
             products.push(obj)
             var skuObj = { "cart_id": cartId, "user_id": userId, "products": products }
             // var skuIdLocalStorage = `products: ${JSON.parse(products)}`
             localStorage.setItem('cartDetails', JSON.stringify(skuObj));
-            
-            
-            alert('haii')
             //    var arr = localStorage.getItem('skuId', skuId);
             //     localStorage.setItem('skuId', skuId);
             window.location.href = "/cart"
