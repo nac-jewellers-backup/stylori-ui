@@ -32,7 +32,7 @@ function HeaderHoverMenuItem(props) {
                       {val.img && <img style={{ width: "65%", margin: "auto" }} src={val.img} />}
                     </Grid>
                     <Grid item style={{ margin: "auto" }}>
-                      <Typography style={{ margin: "auto" }} className={classes.listedItemsvalue} >
+                      <Typography style={{ margin: "auto",   textAlign:"center" }} className={classes.listedItemsvalue} >
                         {val.content.toUpperCase()}
                       </Typography>
                     </Grid>
