@@ -46,7 +46,7 @@ export default function Pricing(props) {
                     </Grid>
                     <Grid item
                         xs={12}
-                        lg={window.location.pathname !== "/cart" && window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/checkout" ? 2 : 12}>
+                        lg={ 12}>
                         {props.price ?
                             <Typography style={{ display: "flex", width: '100%',marginTop:"5px" }}>
                                 <Typography

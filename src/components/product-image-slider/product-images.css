@@ -184,8 +184,8 @@ body {
     /* display: flex; */
     /* flex-direction: column;
     padding: 5px; */
-    background: #fdbac15c;
-    border: none !important;
+    background: #fff !important;
+    border: 1px solid #DBDBDB !important;
     /* align-items: center !important;
     outline: none !important;
     margin-bottom: 5px; */
@@ -196,6 +196,13 @@ body {
 
 .tabs-contants {
     font-size: 11px !important;
+    margin: auto !important;
+    font-family: 'Roboto' !important;
+    text-align: center !important;
+}
+
+.tabs-cont {
+    font-size: 9px !important;
     margin: auto !important;
     font-family: 'Roboto' !important;
     text-align: center !important;
@@ -691,7 +698,8 @@ body {
     padding: 0px 0px 0px 4px !important;
     min-height: none !important;
 }
-.overlayCss{
+
+.overlayCss {
     line-height: 20px !important;
     font-size: 12px !important;
     text-transform: uppercase;
@@ -705,8 +713,9 @@ body {
     margin-top: 8px;
 
 }
+
 .overlayCss::after {
-    
+
     content: "" !important;
     height: 0px;
     width: 0px;
@@ -776,7 +785,7 @@ body {
     /* height: 450px !important; */
     width: 35%;
     float: right !important;
-    position: absolute; 
+    position: absolute;
     z-index: 3;
     background-repeat: no-repeat;
     height: 600px !important;
@@ -932,7 +941,7 @@ body {
 
 .css-5pjie5 {
     background:
-    #ed1165cf !important;
+        #ed1165cf !important;
     text-transform: uppercase;
     display: inline-block !important;
     position: relative !important;
@@ -950,7 +959,7 @@ body {
     border-style: solid !important;
     border-width: 10px !important;
     border-color:
-    #ed1165cf transparent !important;
+        #ed1165cf transparent !important;
     position: absolute !important;
     top: 0px;
     right: -10px !important;
@@ -1095,9 +1104,10 @@ body {
 .my-ringsize {
     font-size: 12px;
     padding-left: 6px;
-    color: #ed1165 !important;
+    color: #a0a1bb !important;
     text-decoration: underline !important;
     cursor: pointer;
+    letter-spacing: 1px;
 }
 
 .pagination {
@@ -1117,20 +1127,20 @@ body {
 @media only screen and (max-width: 480px) {
     .pagetabs {
         text-align: center !important;
-        height:45px !important;
+        height: 45px !important;
         width: 45px !important;
         /* margin-bottom: 6px; */
         /* border: 1px solid #9d9d9d  !important; */
-       border-radius: 50%;
+        border-radius: 50%;
 
         outline: none !important;
     }
 
     .pagetabslst {
         text-align: center !important;
-        height:45px !important;
+        height: 45px !important;
         width: 45px !important;
-        /* border: 1px solid #9d9d9d  !important; */ 
+        /* border: 1px solid #9d9d9d  !important; */
         border-radius: 100%;
         outline: none !important;
 
@@ -1197,17 +1207,21 @@ body {
     text-align: center;
 
 }
-.widthFix{
+
+.widthFix {
     width: 89%;
 }
-.sizeChange{
+
+.sizeChange {
     max-width: default !important;
 }
+
 @media screen and (min-width:600px) and (max-width: 959px) {
-    .widthFix{
+    .widthFix {
         width: 41%;
     }
-    .sizeChange{
+
+    .sizeChange {
         max-width: 10.66667% !important;
     }
 }
@@ -1220,17 +1234,17 @@ body {
         font-weight: 600;
         text-align: left !important;
         font-size: 11px !important;
-        padding:5px 0px 0px 10px;
+        padding: 5px 0px 0px 10px;
     }
-    
+
     .rings_tabsvls_active {
         font-size: 11px !important;
         color: #394578 !important;
         width: 100% !important;
         font-weight: 600 !important;
         text-align: left !important;
-        padding:5px 0px 0px 10px;
-    
+        padding: 5px 0px 0px 10px;
+
     }
 }
 
@@ -1282,7 +1296,7 @@ body {
     /* color: #fff !important; */
     outline: none !important;
     cursor: pointer;
-    border: 2px solid #ed1165cf  !important;
+    border: 2px solid #ed1165cf !important;
     /* background: #f699a3 !important; */
 }
 
@@ -1488,4 +1502,17 @@ body {
     height: 20px !important;
     background-image: url("https://alpha-assets.stylori.com/images/static/home/slider_button.png") !important;
     /* border-left: 1px solid #ccc; */
+}
+
+.darkouterWhite {
+    border-radius: 100%;
+    border: 2px solid #fff;
+    padding: 1px
+}
+
+.darkouter {
+    border-radius: 100%;
+    border: 2px solid #CDD0DD !important;
+    padding: 1px
+        /* width: 45px; */
 }

@@ -5,10 +5,10 @@ export const mainlist = [
         name: "Jewellery",
         url: "/jewellery",
     },
-    {
-        name: "Silver",
-        url: "/stylorisilver",
-    },
+    // {
+    //     name: "Silver",
+    //     url: "/stylorisilver",
+    // },
     {
         name: "Gold Coins",
         url: "/goldcoins",
@@ -436,7 +436,7 @@ export const Jewellery = {
 export const menuListHeader =
     [
         { title: 'JEWELLERY', url: "/jewellery" },
-        { title: 'SILVER', url: "/stylorisilver" },
+        // { title: 'SILVER', url: "/stylorisilver" },
         { title: 'GOLD COINS', url: "/goldcoins" },
         { title: 'COLLECTIONS', url: "/collections" },
         { title: 'READY TO SHIP', url: "/jewellery-shipping+in+1+day" },
