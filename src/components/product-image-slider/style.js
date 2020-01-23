@@ -96,7 +96,10 @@ const styles = theme => ({
         background: theme.palette.primary.main,
     },
 
-
+    TypoListed: {
+        fontSize: "0.8rem",
+        paddingTop: "2px"
+    },
     normalfonts: {
         color: theme.palette.text.primary,
     },

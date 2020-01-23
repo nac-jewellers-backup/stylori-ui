@@ -57,9 +57,8 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                         />
                     </Grid>
                     <Grid item xs={4} lg={3} sm={4}>
-                        <Button className={`search-button ${classes.normalcolorback} ${classes.fontwhite}`} onClick={() => { handleCodChange() }}>{state.CheckForCodtitle}</Button>
+                        <Button style={{backgroundColor:"#fa4a4a"}} className={`search-button ${classes.normalcolorback} ${classes.fontwhite}`} onClick={() => { handleCodChange() }}>{state.CheckForCodtitle}</Button>
                     </Grid>
-
 
                     <Hidden smDown>
                         <Grid container item justify="center" xs={12} sm={12} lg={5} className="content" style={{ margin: 'auto' }}>

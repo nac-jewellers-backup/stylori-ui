@@ -3,7 +3,8 @@ import {
     Hidden,
     Container,
     Grid,
-    Modal
+    Modal,
+    Typography
 } from '@material-ui/core';
 import React from "react";
 import './product-images.css';
@@ -51,6 +52,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                         /> */}
                         <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"
                             placeholder="Enter Pincode"
+                            maxLength={6}
                             className="pincode-cust buynow-search"
                             value={state.values}
                             onChange={(event) => { handleChanges(event) }}
@@ -58,18 +60,18 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                         />
                     </Grid>
                     <Grid item xs={4} lg={3} sm={4}>
-                        <Button className={`search-button ${classes.normalcolorback} ${classes.fontwhite}`} onClick={() => { handleCodChange() }}>{state.CheckForCodtitle}</Button>
+                        <Button style={{ color: "#fff" }} className={state.pincodeNotFound || state.CheckForCodtitle === "COD Not Available" ? "pincodeNotFound" : state.CheckForCodtitle === 'COD is Available' ? "selectedGreen" : "search-button"} onClick={() => { handleCodChange() }}>{state.pincodeNotFound ? <><i class="fa fa-close" style={{ paddingRight: "3px" }} aria-hidden="true"></i> Pincode not found</> : state.CheckForCodtitle === "COD Not Available" ? <><i class="fa fa-close" style={{ paddingRight: "3px" }} aria-hidden="true"></i> COD Not Available</> : state.CheckForCodtitle === 'COD is Available' ? <><i class="fa fa-check" style={{ paddingRight: "3px" }} aria-hidden="true"></i>{state.CheckForCodtitle}</> : state.CheckForCodtitle}</Button>
                     </Grid>
 
 
                     <Hidden smDown>
                         <Grid container item justify="center" xs={12} sm={12} lg={5} className="content" style={{ margin: 'auto' }}>
                             <b className={`ships-by ${classes.normalfonts}`}>
-                                <span ><i style={{ fontSize: "20px" }} class="fa fa-truck"></i>&nbsp;&nbsp;{val.shipby}</span>
+                                <span style={{ textAlign: "center", alignItems: "center", display: "flex", alignContent: "center" }}><i style={{ fontSize: "20px" }} class="fa fa-truck"></i>&nbsp;&nbsp;{val.shipby}</span>
                             </b>
                         </Grid>
                     </Hidden>
-                    <label style={{ fontWeight: 'bold', color: 'rgba(185, 74, 72, 1)' }}>{(state.isRequired && 'Please fill out this field') || (state.pincodeNotFound && 'Pincode not found')}</label>
+                    {/* <label style={{ fontWeight: 'bold', color: 'rgba(185, 74, 72, 1)' }}>{(state.isRequired && 'Please fill out this field') || (state.pincodeNotFound && 'Pincode not found')}</label> */}
                 </Grid>
             )}
         </div>
@@ -94,22 +96,37 @@ const Buydetails = (props, state, handleChanges, handleCodChange, canceldeletech
                             <CommenDialog isOpen={state.modelOpen} content={`Verify selected product details before proceeding`} handleClose={canceldeletechecklist} handleSuccess={deletechecklists} negativeBtn="No" positiveBtn="Yes" title="Confirmation" />
                         </Grid>
 
-                        <Grid xs={12} lg={7} style={{ marginBottom: "7px" }}>
-                            <Grid container spacing={12}>
+                        <Grid item container alignContent="center" alignItems="center" xs={12} lg={7} >
+                            <Grid>
                                 <Grid item lg={12} xs={12} className={`buy-subheaders nd-hlp ${classes.normalfonts}`}>Need Help ?</Grid>
                             </Grid>
-                            <Grid container spacing={12} >
+                            <Grid container >
 
-                                <Grid item lg={5} xs={4} className={`buy-subheaders ${classes.normalfonts}`}>
-                                    <i class="fa fa-phone overall-icons" aria-hidden="true"></i>&nbsp;{val.telephone}
+                                <Grid item className={`buy-subheaders ${classes.normalfonts}`}>
+                                    <Typography>
+                                        <i class="fa fa-phone overall-icons" aria-hidden="true"></i>&nbsp;
+                                    </Typography>
+                                    <Typography className={classes.TypoListed}>
+                                        {val.telephone}
+                                    </Typography>
                                 </Grid>
 
-                                <Grid item lg={5} xs={4} className={`buy-subheaders ${classes.normalfonts}`}>
-                                    <i class="fa fa-whatsapp overall-icons" aria-hidden="true"></i>&nbsp;{val.phonenum}
+                                <Grid item className={`buy-subheaders ${classes.normalfonts}`}>
+                                    <Typography>
+                                        <i class="fa fa-whatsapp overall-icons" aria-hidden="true"></i>&nbsp;
+                                </Typography>
+                                    <Typography className={classes.TypoListed}>
+                                        {val.phonenum}
+                                    </Typography>
                                 </Grid>
 
-                                <Grid item lg={2} style={{ cursor: "pointer !important" }} className={`buy-subheaders ${classes.normalfonts}`}>
-                                    <i class="fa fa-comments-o overall-icons" aria-hidden="true"></i>&nbsp;{val.chat}
+                                <Grid item style={{ cursor: "pointer !important" }} className={`buy-subheaders ${classes.normalfonts}`}>
+                                    <Typography>
+                                        <i class="fa fa-comments-o overall-icons" aria-hidden="true"></i>&nbsp;
+                                    </Typography>
+                                    <Typography className={classes.TypoListed}>
+                                        {val.chat}
+                                    </Typography>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -178,7 +195,7 @@ class Component extends React.Component {
     }
 
     handleLocalStorage = () => {
-        
+
         if (this.props.data && this.props.data[0].productType === "Rings") {
             this.setState({
                 modelOpen: true,
@@ -187,7 +204,7 @@ class Component extends React.Component {
         else {
             this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
             // alert('haii')
-            
+
             sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
             window.location.pathname = "/cart"
         }
@@ -203,7 +220,7 @@ class Component extends React.Component {
 
     deletechecklists = () => {
         this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
-        
+
         sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
         window.location.pathname = "/cart"
 

@@ -126,8 +126,8 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                     <div>
                                                         {data[0].ProductContactNum.map(val =>
                                                             <div >
-                                                                <b className={`ships-by ${classes.normalfonts}`}>
-                                                                    <span style={{ textAlign: "center" }}> {val.shipby}</span>
+                                                                <b style={{ alignItems: "center", display: "flex" }} className={`ships-by ${classes.normalfonts}`}>
+                                                                    <span style={{ textAlign: "center", alignItems: "center", display: "flex" }}> {val.shipby}</span>
                                                                 </b>
                                                             </div>
                                                         )}
@@ -247,7 +247,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                     offerPrice={data[0].offerPrice}
                                     price={data[0].price}
 
-                                    // offerDiscount={val.offerDiscount}
+                                // offerDiscount={val.offerDiscount}
                                 >
                                 </Pricing>}
                         </div>
