@@ -178,19 +178,19 @@ class Component extends React.Component {
     }
 
     handleLocalStorage = () => {
-        
-        if (this.props.data && this.props.data[0].productType === "Rings") {
-            this.setState({
-                modelOpen: true,
-            })
-        }
-        else {
-            this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
-            // alert('haii')
-            debugger
-            sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
-            window.location.pathname = "/cart"
-        }
+
+        // if (this.props.data && this.props.data[0].productType === "Rings") {
+        this.setState({
+            modelOpen: true,
+        })
+        // }
+        // else {
+        //     this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
+        //     // alert('haii')
+        //     debugger
+        //     sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
+        //     window.location.pathname = "/cart"
+        // }
 
     }
 
@@ -258,7 +258,7 @@ class Component extends React.Component {
 
                         <PriceTabs data={this.props.data} />
                         {inputsearch(this.props, this.state, this.handleChanges, this.handleCodChange)}
-                        <Buynowfixed data={this.props.data} onClick={this.handleLocalStorage.bind(this)}/>
+                        <Buynowfixed data={this.props.data} onClick={this.handleLocalStorage.bind(this)} />
                     </div>
 
                 </Hidden>

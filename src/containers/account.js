@@ -10,6 +10,7 @@ import Header from 'components/SilverComponents/Header'
 import Accountdetails from "../components/accounts/accountdetails"
 import { CartContext } from 'context'
 import cart from 'mappers/cart'
+import Footer from "../components/Footer/Footer";
 // const Accounts = (props) => {
 //     return <Componentz {...props} />
 // }
@@ -36,16 +37,16 @@ class Accounts extends React.Component {
               <Grid item xs={12}>
               </Grid> */}
                     <Grid container spacing={12}>
-                        <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
-                            <Header wishlist={this.props.wishlistdata} />
-                        </Grid>
+                        <Header wishlist={this.props.wishlistdata} />
                     </Grid>
 
                     <Grid item xs={12}>
                         <Accountdetails data={this.props.data} wishlistdata={this.props.wishlistdata} allorderdata={this.props.allorderdata} />
                     </Grid>
                 </Hidden>
-
+                <Grid item xs={12} style={{ marginTop: 20 }}>
+                    <Footer />
+                </Grid>
             </Grid>
         )
     }

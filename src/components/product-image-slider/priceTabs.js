@@ -52,6 +52,9 @@ class Component extends React.Component {
     handleOpen = () => {
         this.setState({ open: true });
     };
+    componentDidMount() {
+        // this.setState({ skuSize: this.props && this.props.filters && this.props.filters.defaultVariants && this.props.filters.defaultVariants.skuSize });
+    }
 
     handleClose = () => {
         this.setState({ open: false });
@@ -94,11 +97,11 @@ class Component extends React.Component {
             filters['defaultVariants'][key] = event.target.id
             // this.setState({skuSize:filters})
             this.setState({
-                skuSize: event.target.id,
+                // skuSize: event.target.id,
                 diamondType: filters.defaultVariants.diamondType
             })
             this.props.setFilters(filters);
-            console.log("filters.defaultVariants.diamondType", filters.defaultVariants.diamondType)
+            // console.log("filters.defaultVariants.diamondType", filters.defaultVariants.diamondType)
         }
         // const ringSize = event.target.name;
     }
@@ -397,7 +400,7 @@ class Component extends React.Component {
     // };
 
     render() {
-        console.log('lklkkoik9', this.props.filters.defaultVariants.skuSize)
+        // console.log('lklkkoik9', this.props.filters.defaultVariants.skuSize)
         const { expanded } = this.state;
         return (
             <div>
