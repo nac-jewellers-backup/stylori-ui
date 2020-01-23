@@ -129,13 +129,8 @@ class Allorders extends React.Component {
     }
 
     render() {
-<<<<<<< HEAD
         
         
-=======
-
-        debugger
->>>>>>> 21aa45c7e412e02684a0da73191e7ec638ad55a5
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
         
@@ -168,15 +163,9 @@ class Allorders extends React.Component {
                             <div style={{ marginTop: "20px", boxShadow: "none" }}>
                                 {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
                                 {allDatas().map((val, index) => {
-<<<<<<< HEAD
                                    
                                     
                                     return(
-=======
-
-                                    debugger
-                                    return (
->>>>>>> 21aa45c7e412e02684a0da73191e7ec638ad55a5
                                         <ExpansionPanel
                                             square
                                             // expanded={expanded.map(val=>val===index)}
@@ -337,17 +326,10 @@ class Allorders extends React.Component {
                             <Container>
                                 <Container>
 
-<<<<<<< HEAD
                                 {allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes.map(val => {
                                     
                                     return (
                                         <div>
-=======
-                                    {allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes.map(val => {
-                                        debugger
-                                        return (
-                                            <div>
->>>>>>> 21aa45c7e412e02684a0da73191e7ec638ad55a5
 
                                                 <div style={{ marginTop: "20px", boxShadow: "none" }}>
 
