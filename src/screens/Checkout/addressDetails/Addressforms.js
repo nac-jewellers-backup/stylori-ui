@@ -205,7 +205,7 @@ const Addressforms = (changePanel) => {
     // };
     console.log("jjj****", values.addressOne.salutation)
     const handleSubmit = (e) => {
-debugger
+
         if (values && values.addressOne && values.addressOne.pincode === "") {
             values["addressOne"]['errortext']['pinerr'] = "Pin Code is required"
             setValues({ ...values, values })
@@ -340,7 +340,7 @@ debugger
         // window.location.reload(); 
     }
     const selectaddreses = (val_addrs, num, index) => {
-        debugger
+        
         var obj_user = {}
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
         let set_check = localStorage.getItem("set_check") ? localStorage.getItem("set_check") : ""

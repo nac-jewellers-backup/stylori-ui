@@ -177,12 +177,12 @@ const Provider = (props) => {
     }, [wishlistdata])
     const handleAddToCart = () => {
         if (guestlogId.length > 0) {
-            // debugger
+            // 
             // alert(JSON.stringify(guestlogId))
             localStorage.setItem("user_id", cartFilters.user_id)
 
             if (JSON.stringify(cartdetails).length > 0) {
-                debugger
+                
                 var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
                 const user_id = cartFilters.user_id
                 var addcart = ({ products, user_id })
@@ -196,7 +196,7 @@ const Provider = (props) => {
         }
         else {
 
-            debugger
+            
             var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
             var local_storage_products = []
             if (local_storage && Object.entries(local_storage).length > 0 && local_storage.constructor === Object) {
@@ -213,7 +213,7 @@ const Provider = (props) => {
             obj['qty'] = cartFilters.qty
             obj['price'] = cartFilters.price
             productszz.push(obj)
-            debugger
+            
             var products_sku_list = () => {
                 if (local_storage_products.length > 0) {
                     local_storage_products.push(obj);
@@ -282,7 +282,7 @@ const Provider = (props) => {
             var _conditionfetchCartId = {
                 "UserId": { "userprofileId": localStorage.getItem("user_id") }
             }
-            debugger
+            
             //  alert(JSON.stringify(this.state.checked))
             fetch(`${API_URL}/graphql`, {
 
@@ -300,9 +300,9 @@ const Provider = (props) => {
             })
                 .then(status)
                 .then(json).then(async val => {
-                    debugger
+                    
                     if (val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length > 0 &&
-                        val.data.allShoppingCarts.nodes[0].status === "paid") {
+                        val.data.allShoppingCarts.nodes[0].status !== "pending") {
                             // alert(val.data.allShoppingCarts.nodes[0].status)
                         // var _get_cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
                         // var _cart_id = { cart_id: _get_cart_id }
@@ -328,7 +328,7 @@ const Provider = (props) => {
                                if(data && data.data && data.data.allShoppingCartItems && data.data.allShoppingCartItems.nodes &&data.data.allShoppingCartItems.nodes.length > 0){
                                 var _data = data.data.allShoppingCartItems.nodes.filter(val => { if (val.transSkuListByProductSku) return val }).map(val => { return val.transSkuListByProductSku.generatedSku })
                                 variables = { "productList": _data }
-                                debugger
+                                
                                 makeRequest(variables);
                                }
                                else{
@@ -362,7 +362,7 @@ const Provider = (props) => {
                                 console.log(data, "parse_result_data")
                                 var _data = data.data.allShoppingCartItems.nodes.filter(val => { if (val.transSkuListByProductSku) return val }).map(val => { return val.transSkuListByProductSku.generatedSku })
                                 variables = { "productList": _data }
-                                debugger
+                                
                                 makeRequest(variables);
                             })
                     }
@@ -373,7 +373,7 @@ const Provider = (props) => {
         }
         else {
             // alert("Came as guest user")
-            debugger
+            
             variables = { "productList": skus };
 
             makeRequest(variables);
@@ -389,11 +389,11 @@ const Provider = (props) => {
 
     const handleAddToCartDidMount = () => {
         if (localStorage.getItem('cart_id') === null) {
-            // debugger
+            // 
             // alert(JSON.stringify(guestlogId))
             // localStorage.setItem("user_id", cartFilters.user_id)
             if (JSON.stringify(cartdetails).length > 0) {
-                debugger
+                
                 var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
                 const user_id = cartFilters.user_id
                 var addcart = ({ products, user_id })
@@ -407,7 +407,7 @@ const Provider = (props) => {
         }
         else {
 
-            debugger
+            
             var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
             var _get_cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
             var _cart_id = { cart_id: _get_cart_id }
@@ -428,7 +428,7 @@ const Provider = (props) => {
             obj['qty'] = cartFilters.qty
             obj['price'] = cartFilters.price
             productszz.push(obj)
-            debugger
+            
             var products_sku_list = () => {
                 if (local_storage_products.length > 0) {
                     local_storage_products.push(obj);
@@ -439,7 +439,7 @@ const Provider = (props) => {
                     return products
                 }
             }
-            debugger
+            
             var skuObj = { "cart_id": cartId, "user_id": userId, "products": _products_array }
             // if (userIds.length > 0 && gut_lg !== true) {
             //     var products = productszz;
@@ -448,7 +448,7 @@ const Provider = (props) => {
             var session_storage = JSON.parse(sessionStorage.getItem("updatedProduct"))
             var _products = { products: [session_storage] }
             var _obj = { ..._user_id, ..._products, ..._cart_id }
-            debugger
+            
             addtocart(_obj)
             // }
 
@@ -460,7 +460,7 @@ const Provider = (props) => {
         setCartFilters(skus)
 
         updateProductList();
-        debugger
+        
         if (window.location.pathname === "/cart") {
             if (Boolean(localStorage.getItem("user_id"))) {
                 // if(localStorage.getItem("cart_id") === null){

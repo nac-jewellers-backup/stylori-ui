@@ -11,6 +11,10 @@ import { NetworkContext } from 'context/NetworkContext';
 import { GlobalContext } from 'context/GlobalContext';
 import { bool } from 'prop-types';
 import { filterParams } from 'mappers';
+import {
+    Redirect,
+
+  } from "react-router-dom";
 
 const initialCtx = {
     FilterOptionsCtx: {
@@ -109,7 +113,7 @@ const Provider = (props) => {
 
 
 
-await fetch(uri, {
+            await fetch(uri, {
 
                 method: 'post',
                 // body: {query:seoUrlResult,variables:splitHiphen()}
@@ -129,11 +133,19 @@ await fetch(uri, {
                 .then(json)
                 .then(async function (data) {
 
-//   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
+
+                    // ------------ REDIRECTION ----------
+
+                    
+                    // if(data.data.allSeoUrlPriorities.nodes.length===0){
+                    //     // alert
+                    //    window.location.pathname = "/"
+                    // }
+                    //   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
                     var a = {};
 
                     var paramsfilter = (Object.entries(data).length !== 0 && data.constructor === Object && data.data.allSeoUrlPriorities) && data.data.allSeoUrlPriorities.nodes.map(val => {
-
+                  
                         let attrName = val.attributeName.replace(/\s/g, '')
                         let attrVal = val.attributeValue
                         filters[attrName] = { [attrVal]: true }
@@ -336,7 +348,33 @@ await fetch(uri, {
             len = keyy.length
             while (len--) {
                 var key = keyy[len]
+
                 var toLowerCase = key[0].toLowerCase()
+                if (toLowerCase === "offers") {
+                    switch (k[len][0]) {
+                        case "Up to  20%": {
+                            newObj['offer_min'] = 0
+                            newObj['offer_max'] = 20
+                            break;
+                        }
+                        case "Up to  30%": {
+                            newObj['offer_min'] = 0
+                            newObj['offer_max'] = 30
+                            break;
+                        }
+                        case "Up to  40%": {
+                            newObj['offer_min'] = 0
+                            newObj['offer_max'] = 40
+                            break;
+                        }
+                        case "Up to  50%": {
+                            newObj['offer_min'] = 0
+                            newObj['offer_max'] = 50
+                            break;
+                        }
+                        default:
+                    }
+                }
                 newObj[toLowerCase] = k[len][0]
             }
 
@@ -365,6 +403,7 @@ await fetch(uri, {
                 }
 
             }
+
             if (filters && filters.category && Object.keys(filters.category).length > 0 && filters.category.constructor === Object) {
                 sessionStorage.setItem("category", JSON.stringify(filters.category));
             }
@@ -374,6 +413,7 @@ await fetch(uri, {
     }
 
     useEffect(() => {
+        // alert(JSON.stringify(filters.Offers))
         if (filters && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
             if (Object.values(filters).filter(val => { if (Object.entries(val).length > 0 && val.constructor === Object) { return val } }).length > 0) {
                 if (Object.keys(filters).filter(val => { if (val === "a") return val }).length === 0) updatefiltersSort()
@@ -468,7 +508,35 @@ await fetch(uri, {
         while (len--) {
             var key = keyy[len]
             var toLowerCase = key[0].toLowerCase()
-            newObj[toLowerCase] = k[len][0]
+            
+            if (toLowerCase === "offers") {
+                // alert( k[len][0])
+                switch (k[len][0]) {
+                    case "Up to  20%": {
+                        newObj[toLowerCase] = "Upto 20%"
+                        break;
+                    }
+                    case "Up to  30%": {
+                        newObj[toLowerCase] = "Upto 30%"
+                        break;
+                    }
+                    case "Up to  40%": {
+                        newObj[toLowerCase] = "Upto 40%"
+                        break;
+                    }
+                    case "Up to  50%": {
+                        newObj[toLowerCase] = "Upto 50%"
+                        break;
+                    }
+                    default:
+                }
+                // alert(JSON.stringify(newObj))
+            }
+            else{
+                // alert(toLowerCase)
+                newObj[toLowerCase] = k[len][0]
+            }
+           
         }
         console.log('i came in as update filters function', "123123")
         await makeFetch(newObj);

@@ -66,7 +66,7 @@ class Component extends React.Component {
         var filters = { ...this.props.filters }
 
         if (key === 'purity') {
-            debugger
+            
             var kv = event.target.id
             var objVal = kv.split(" ")
             var _multipleColor = objVal.filter(val => { if (val === "And") return val }) // example : 18k Yellow And White
