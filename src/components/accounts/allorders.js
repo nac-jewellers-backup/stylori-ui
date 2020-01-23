@@ -47,9 +47,12 @@ class Allorders extends React.Component {
     // const dataCard1 = this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
 
     calculatetotal = (arr) => {
+        debugger
         var a;
         var dis_price;
-        a = arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
+        a = 
+        // arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes
+        arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.filter(val=>{if((val.transSkuListByProductSku)) return val}).map(cart => {
             debugger
             if ((cart !== null || cart !== undefined) && cart.transSkuListByProductSku) {
                 dis_price = cart.transSkuListByProductSku.markupPrice

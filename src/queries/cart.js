@@ -241,6 +241,7 @@ export const FetchSku= `query MyQuery($CartId:ShoppingCartItemCondition) {
     nodes {
       transSkuListByProductSku {
         generatedSku
+
       }
     }
   }
@@ -252,6 +253,7 @@ export const FetchCartId = `query FetchCartId($UserId: ShoppingCartCondition) {
     nodes {
       userprofileId
       id
+      status
     }
   }
 }
