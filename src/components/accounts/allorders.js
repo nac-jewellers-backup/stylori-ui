@@ -50,15 +50,18 @@ class Allorders extends React.Component {
         
         var a;
         var dis_price;
-        a = 
-        // arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes
-        arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.filter(val=>{if((val.transSkuListByProductSku)) return val}).map(cart => {
-            
-            if ((cart !== null || cart !== undefined) && cart.transSkuListByProductSku) {
-                dis_price = cart.transSkuListByProductSku.markupPrice
-            }
-            return dis_price
-        }).reduce(myFunc);
+        if(arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.transSkuListByProductSku){
+            a = 
+            // arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes
+            arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.filter(val=>{if((val.transSkuListByProductSku)) return val}).map(cart => {
+                
+                if ((cart !== null || cart !== undefined) && cart.transSkuListByProductSku) {
+                    dis_price = cart.transSkuListByProductSku.markupPrice
+                }
+                return dis_price
+            }).reduce(myFunc);
+        }
+       
         return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a))
     }
     generateShipsBy = (readytoship, vendorDeliveryTime) => {
