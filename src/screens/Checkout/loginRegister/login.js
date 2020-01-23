@@ -87,7 +87,7 @@ const LoginComponent = (props) => {
                                 onSuccess={responseInstagram}
                                 onFailure={responseInstagram}
                         /> */}
-                            {/* <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img> */}
+                            {/* <img class="pull-left1" alt="" src="https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-fb.png"></img> */}
                         </div >
                     </div>
                     <div className='login-butn'>

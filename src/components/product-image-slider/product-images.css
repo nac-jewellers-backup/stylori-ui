@@ -149,7 +149,7 @@ body {
 .one-day-ship-mb {
     height: 20px !important;
     position: relative !important;
-    background-image: url(https://assets-cdn.stylori.com/images/static/product-details-icons.png);
+    background-image: url(https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/product-details-icons.png);
     background-repeat: no-repeat !important;
     background-position: -38px -37px !important;
     /* margin-left: 20px !important; */
@@ -483,7 +483,7 @@ body {
 .pincode-cust {
     color: #394578;
     font-size: 12px !important;
-    background-image: url(https://assets-cdn.stylori.com/images/static/location.png);
+    background-image: url(https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/location.png);
     /* font-family: FontAwesome; */
     background-position: 7px 8px;
     background-repeat: no-repeat;
@@ -497,7 +497,7 @@ body {
 .buy-now-iconz {
     background-repeat: no-repeat !important;
     padding-left: 31px !important;
-    background-image: url(https://assets-cdn.stylori.com/images/static/icons.png) !important;
+    background-image: url(https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icons.png) !important;
     background-position: -22px -22px !important;
     background-size: 100px !important;
 }
@@ -518,7 +518,7 @@ body {
 }
 
 .back_img {
-    background-image: url(https://assets-cdn.stylori.com/images/static/bg.png);
+    background-image: url(https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/bg.png);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -769,7 +769,7 @@ body {
 .one-day-ship {
     width: 152px !important;
     height: 9% !important;
-    background-image: url(https://assets-cdn.stylori.com/images/static/product-details-icons.png);
+    background-image: url(https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/product-details-icons.png);
     /* margin-top: -30px !important; */
     position: absolute;
     background-repeat: no-repeat !important;

@@ -258,7 +258,7 @@ class Component extends React.Component {
 
                         <PriceTabs data={this.props.data} />
                         {inputsearch(this.props, this.state, this.handleChanges, this.handleCodChange)}
-                        <Buynowfixed data={this.props.data} onClick={this.handleLocalStorage.bind(this)}/>
+                        <Buynowfixed data={this.props.data} onClick={this.handleLocalStorage.bind(this)} />
                     </div>
 
                 </Hidden>

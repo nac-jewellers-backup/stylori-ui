@@ -552,36 +552,36 @@ export const menuLists = {
                                 "content": "Fashion",
                                 "url": "/fashion-rings-jewellery",
                             },
-                            {
-                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                                "content": "Men's Ring",
-                                "url": "/rings-jewellery-for+men",
-                            },
+                            // {
+                            //     "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                            //     "content": "Men's Ring",
+                            //     "url": "/rings-jewellery-for+men",
+                            // },
                         ]
                     }
                 },
                 {
                     value: 'nosepins', title: 'Nose pins', url: '/nose+pin+online-jewellery',
-                    imgContainer: {
+                    // imgContainer: {
 
-                        "imageContainer": [
-                            {
-                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
-                                "content": "Classic",
-                                "url": "/classic-nose+pin+online-jewellery",
-                            },
-                            {
-                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                                "content": "Fashion",
-                                "url": "/fashion-nose+pin+online-jewellery",
-                            },
-                            {
-                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
-                                "content": "Stud Nose Pin",
-                                "url": "/nose+studs+online-jewellery",
-                            },
-                        ]
-                    }
+                    //     "imageContainer": [
+                    //         {
+                    //             "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                    //             "content": "Classic",
+                    //             "url": "/classic-nose+pin+online-jewellery",
+                    //         },
+                    //         {
+                    //             "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                    //             "content": "Fashion",
+                    //             "url": "/fashion-nose+pin+online-jewellery",
+                    //         },
+                    //         {
+                    //             "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                    //             "content": "Stud Nose Pin",
+                    //             "url": "/nose+studs+online-jewellery",
+                    //         },
+                    //     ]
+                    // }
                 },
                 {
                     value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '/bangles-jewellery',
