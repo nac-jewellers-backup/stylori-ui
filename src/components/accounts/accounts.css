@@ -193,7 +193,7 @@
 .panel_body {
     margin-top: 6% !important;
     /* overflow-y: scroll ! important; */
-    height: 70vh !important;
+    /* height: 70vh !important; */
     width: 100% !important;
     border: none !important;
     /* box-shadow: 1px 0px 90px 18px #DEDADA !important; */
