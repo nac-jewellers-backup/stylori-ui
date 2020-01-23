@@ -49,7 +49,7 @@ const cartsubdata = [
 class Cart extends React.Component {
     render() {
         const { data, classes } = this.props
-        debugger
+        
         let path = window.location.pathname.split('/').pop();
         return (
             <Grid container>

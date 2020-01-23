@@ -47,13 +47,13 @@ class Allorders extends React.Component {
     // const dataCard1 = this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
 
     calculatetotal = (arr) => {
-        debugger
+        
         var a;
         var dis_price;
         a = 
         // arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes
         arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.filter(val=>{if((val.transSkuListByProductSku)) return val}).map(cart => {
-            debugger
+            
             if ((cart !== null || cart !== undefined) && cart.transSkuListByProductSku) {
                 dis_price = cart.transSkuListByProductSku.markupPrice
             }
@@ -78,7 +78,7 @@ class Allorders extends React.Component {
     
      
     ImageUrl = (imgs, sku, metal) => {
-        debugger
+        
         // allorderdata.data.allOrders
         var check_img
         var ppp
@@ -130,10 +130,10 @@ class Allorders extends React.Component {
 
     render() {
         
-        debugger
+        
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
-        debugger
+        
         const expanded_ = expanded.map(val => { return val })
         // var check_img = null
         const allDatas = () => {
@@ -142,7 +142,7 @@ class Allorders extends React.Component {
                 return allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes
             }
         }
-        debugger
+        
         // const allDatas_filter = () => {
         //     if (allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0) {
         //         allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map(val => {
@@ -164,7 +164,7 @@ class Allorders extends React.Component {
                                 {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
                                 {allDatas().map((val, index) => {
                                    
-                                    debugger
+                                    
                                     return(
                                         <ExpansionPanel
                                             square
@@ -327,7 +327,7 @@ class Allorders extends React.Component {
                             <Container>
 
                                 {allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes.map(val => {
-                                    debugger
+                                    
                                     return (
                                         <div>
 

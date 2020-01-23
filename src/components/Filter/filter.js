@@ -164,13 +164,13 @@ class Component extends React.Component {
               // return val
             })
             // this.setState(checked)
-            debugger
+            
             Object.entries(paramsfilter[0]).map(val => {
               var keys = val[0]
               var values = val[1]
               checked[keys] = values
               if (keys !== "Category") {
-                debugger
+                
                 var a = values && Object.keys(values)
                 if (keys === "ProductType") {
                   selected.push("Product Type", keys)
@@ -228,7 +228,7 @@ class Component extends React.Component {
 
   delete_val_chips = (value) => Object.entries(this.state.checked).map(val => {
     const { checked } = this.state;
-    debugger
+    
     var obj = {};
     var mm;
     var bz;
@@ -344,7 +344,7 @@ class Component extends React.Component {
   }
 
   handleDelete = (value) => {
-    debugger
+    
     let arr = [], arr1 = [];
     let { chipData, checked } = this.state
     arr = chipData.filter(val => val.label !== value);

@@ -4,7 +4,7 @@ import { Paper, Breadcrumbs, Link, Container, Grid, Typography } from '@material
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import "./breadcrumb.css"
 
-debugger
+
 export default function CustomSeparator(props) {
   var a = window.location.pathname
 var b = a.split("/")

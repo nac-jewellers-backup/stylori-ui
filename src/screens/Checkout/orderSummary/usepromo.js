@@ -3,7 +3,7 @@ import { useNetworkRequest } from 'hooks/index';
 import { CartContext } from 'context'
 
 const usePromo = (props) => {
-    debugger
+    
     let { CartCtx: { setCartFilters, cartFilters } } = React.useContext(CartContext);
     // const { setCartFilters } = React.useContext(CartContext);
     let user_profile_id = cartFilters && cartFilters.user_id && cartFilters.user_id.length > 0 ? cartFilters.user_id : localStorage.getItem("user_id")

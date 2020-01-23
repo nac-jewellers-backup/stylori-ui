@@ -48,7 +48,7 @@ class LoginRegisterIndex extends React.Component {
                             obj_user["user_id"] = user_id
                             // obj_user["jewellery"] = "jewellery"
                             // if (!set_check.length > 0) {
-                            //     debugger
+                            //     
                             //     localStorage.removeItem("cart_id")
                             //     this.props.setCartFilters(obj_user)
                             // }
