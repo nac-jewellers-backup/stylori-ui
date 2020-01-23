@@ -152,7 +152,7 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
 // }
 
 export const ORDERSUCCESSFUL = `query MyQuery($orderId:  OrderCondition) {
-  allOrders(condition: $orderId) {
+  allOrders(condition: $orderId,orderBy: CREATED_AT_DESC) {
     nodes {
       paymentMode
       shoppingCartByCartId {
