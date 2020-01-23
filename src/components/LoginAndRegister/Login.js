@@ -81,7 +81,7 @@ const LoginComponent = (props) => {
                                         Remember Me </span>
                                     <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>
                                         <span>Sign me in using</span>
-                                        <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img>
+                                        <img class="pull-left1" alt="" src="https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-fb.png"></img>
                                     </div >
                                 </div>
                                 <br /> */}

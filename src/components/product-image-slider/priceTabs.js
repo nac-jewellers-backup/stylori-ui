@@ -290,7 +290,7 @@ class Component extends React.Component {
                                                     style={{ overflow: 'scroll' }}
                                                 >
                                                     <div className={`${classes.modals} "modalin-ring"`}>
-                                                        <img height='auto' width='100%' src='https://assets-cdn.stylori.com/images/static/Ring-size.jpg' />
+                                                        <img height='auto' width='100%' src='https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/Ring-size.jpg' />
                                                     </div>
                                                 </Modal>
                                                 {/* <div style={{ marginTop: "10px", textAlign: "center" }}>

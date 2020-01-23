@@ -34,16 +34,16 @@ const breadcrumsdata = [
 const cartsubdata = [
     {
         name: "100% Certified Jewellery",
-        icon: "https://assets-cdn.stylori.com/images/static/icon-star.png"
+        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-star.png"
     }, {
         name: "Secure Payments",
-        icon: "https://assets-cdn.stylori.com/images/static/icon-lock.png"
+        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-lock.png"
     }, {
         name: "Free Insured Shipping",
-        icon: "https://assets-cdn.stylori.com/images/static/icon-van.png"
+        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-van.png"
     }, {
         name: "25-Day Returns",
-        icon: "https://assets-cdn.stylori.com/images/static/icon-return.png"
+        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-return.png"
     }
 ]
 class Cart extends React.Component {

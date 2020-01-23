@@ -22,12 +22,12 @@
 .pay-index-subhed_datas {
     /* margin-top: 20px !important; */
     /* width: 70vw !important; */
-    
+
 }
 
 .pay-index-subhed p {
     padding: 0 15px;
-    border: 1px solid #eeeeee ;
+    border: 1px solid #eeeeee;
     margin: 0px;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -38,6 +38,7 @@
     /* box-shadow: 1px 2px 35px 3px #DEDADA !important; */
     /* box-shadow: 1px 0px 10px 0px #DEDADA !important; */
 }
+
 /* .topPadding{
     padding-top: 5px;
 }
@@ -82,18 +83,20 @@
 /* .paddingUp{
     padding-top: 15px;
 } */
-.topPaddingwish{
+.topPaddingwish {
     padding-left: 40px;
-} 
+}
 
 @media screen and (max-width: 979px) {
-    .topPaddingwish{
+    .topPaddingwish {
         padding-left: 0px;
-    } 
+    }
+
     /* .paddingUp{
         padding-top: 0px;    } */
-    
-    }
+
+}
+
 .pay-index-subhed p:hover {
     background: #dfdfdf;
 }
@@ -114,6 +117,7 @@
     /* box-shadow: 1px 2px 13px 7px #DEDADA!important; */
     padding: 15px;
 }
+
 .inner-page-title {
     font-size: 22px;
     /* position: fixed !important; */
@@ -121,15 +125,16 @@
     color: #ed1165;
     margin-top: 0px;
     font-weight: bold !important;
-    position:sticky;
+    position: sticky;
     z-index: 1000;
     width: 100%;
     background: #fff;
-    top:55px;
+    top: 55px;
     display: flex;
     margin-top: 8px;
     padding-top: 25px;
 }
+
 .rups {
     color: rgba(241, 72, 128, 1);
     font-weight: 500;
@@ -174,7 +179,7 @@
 }
 
 .remove-product {
-    background: url(https://assets-cdn.stylori.com/images/static/icon-close.png) no-repeat !important;
+    background: url(https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-close.png) no-repeat !important;
     width: 15px !important;
     height: 15px !important;
     cursor: pointer;
@@ -208,37 +213,43 @@
     color: rgba(241, 72, 128, 1);
     padding-bottom: 10px;
 }
+
 @media screen and (max-width: 320px) {
-    .wislist_price{
+    .wislist_price {
         color: rgba(241, 72, 128, 1);
         padding-bottom: 5px;
     }
-    .wislist_title{
+
+    .wislist_title {
         color: #394578;
-    padding-bottom: 5px;
+        padding-bottom: 5px;
     }
 
 }
-.topPadding{
+
+.topPadding {
     padding-top: 0px;
     width: 100%;
 }
+
 @media screen and (max-width: 987px) {
-    .topPadding{
-        padding-top:15px;
+    .topPadding {
+        padding-top: 15px;
         width: 100%;
     }
 }
-.passwordRight{
+
+.passwordRight {
     width: 28%;
 }
+
 /* @media screen and (max-width: 987px) and (min-width:519px) {
     .passwordRight{
         width: 50%;
     }
 } */
 @media screen and (max-width:519px) {
-    .passwordRight{
+    .passwordRight {
         width: 42%;
     }
 }

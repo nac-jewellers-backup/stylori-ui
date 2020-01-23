@@ -124,7 +124,7 @@ class Header extends Component {
                 </Grid>
                 <Grid item xs={4} className="logoImgHeader">
                   <div >
-                    <img className={`img`} src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                    <img className={`img`} src="https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/stylori-logo.svg" onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                   </div>
                 </Grid>
                 <Grid item xs={5}>
@@ -285,7 +285,7 @@ class Header extends Component {
                 </Grid>
                 <Grid item xs={4}>
                   <div >
-                    <img className="mobile-img" src="https://assets-cdn.stylori.com/images/static/stylori-logo.svg" alt="" />
+                    <img className="mobile-img" src="https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/stylori-logo.svg" alt="" />
                   </div>
                 </Grid>
                 <Grid item xs={6}>

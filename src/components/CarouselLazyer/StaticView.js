@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
         borderRight: "1px solid #eeeeee"
     },
     image1: {
-        backgroundImage: 'url(' + 'https://assets-cdn.stylori.com/images/static/sprite-images.png' + ')',
+        backgroundImage: 'url(' + 'https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/sprite-images.png' + ')',
         backgroundPosition: "-520px 52px",
         width: "28px",
         height: "20px",
@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
         minHeight: '30px'
     },
     image2: {
-        backgroundImage: 'url(' + 'https://assets-cdn.stylori.com/images/static/sprite-images.png' + ')',
+        backgroundImage: 'url(' + 'https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/sprite-images.png' + ')',
         backgroundPosition: "-602px 52px",
         width: "28px",
         height: "20px",
@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
         minHeight: '30px'
     },
     image3: {
-        backgroundImage: 'url(' + 'https://assets-cdn.stylori.com/images/static/sprite-images.png' + ')',
+        backgroundImage: 'url(' + 'https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/sprite-images.png' + ')',
         backgroundPosition: "-107px 52px",
         width: "28px",
         height: "20px",
@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
         minHeight: '30px'
     },
     image4: {
-        backgroundImage: 'url(' + 'https://assets-cdn.stylori.com/images/static/sprite-images.png' + ')',
+        backgroundImage: 'url(' + 'https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/sprite-images.png' + ')',
         backgroundPosition: "-273px 52px",
         width: "28px",
         height: "20px",
@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
         minHeight: '30px'
     },
     image5: {
-        backgroundImage: 'url(' + 'https://assets-cdn.stylori.com/images/static/sprite-images.png' + ')',
+        backgroundImage: 'url(' + 'https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/sprite-images.png' + ')',
         backgroundPosition: "-190px 52px",
         width: "28px",
         height: "20px",
