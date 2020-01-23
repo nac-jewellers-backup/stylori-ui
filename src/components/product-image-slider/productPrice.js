@@ -45,7 +45,7 @@ const mobilecarousel = (props, val) => {
             </Grid>
             {/* <div style={{background:"red"}}>Earrings in 18K Yellow Gold and Peridot for Kids</div> */}
             <Slideshow class='responseve-carousel testingcur' imgClass='responseve-carousel-img'
-                fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
+                fadeImages={data[0].fadeImages.arrOfurls} dataCarousel={dataCarousel} />
         </div>
     );
 };
