@@ -126,8 +126,8 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                     <div>
                                                         {data[0].ProductContactNum.map(val =>
                                                             <div >
-                                                                <b className={`ships-by ${classes.normalfonts}`}>
-                                                                    <span style={{ textAlign: "center" }}> {val.shipby}</span>
+                                                                <b style={{ alignItems: "center", display: "flex",alignContent: "center" }} className={`ships-by ${classes.normalfonts}`}>
+                                                                    <span style={{ textAlign: "center",alignItems: "center", display: "flex",alignContent: "center" }}> {val.shipby}</span>
                                                                 </b>
                                                             </div>
                                                         )}

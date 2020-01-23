@@ -105,7 +105,7 @@ class Component extends React.Component {
                                         onClick={this.handleDrawerClose}
                                         className={` fil-drawer-head ${classes.colorMain}`}
                                     >
-                                        Filter By
+                                        Filter by
             </Typography>
                                 </Grid>
                             </div>
@@ -131,7 +131,7 @@ class Component extends React.Component {
                                 className={`fil-drawer-sort_font ${classes.colorMain}`}
                                 onClick={this.handleExpandClick}
                             >
-                                Sort By {this.state.expanded ? <ExpandLess /> : <ExpandMore />}
+                                Sort by {this.state.expanded ? <ExpandLess /> : <ExpandMore />}
                             </Typography>
 
                         </div>
