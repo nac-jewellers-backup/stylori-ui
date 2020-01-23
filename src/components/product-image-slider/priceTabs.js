@@ -66,7 +66,7 @@ class Component extends React.Component {
         var filters = { ...this.props.filters }
 
         if (key === 'purity') {
-            
+
             var kv = event.target.id
             var objVal = kv.split(" ")
             var _multipleColor = objVal.filter(val => { if (val === "And") return val }) // example : 18k Yellow And White
@@ -95,9 +95,11 @@ class Component extends React.Component {
         }
         else {
             filters['defaultVariants'][key] = event.target.id
+            // filters['defaultVariants'][key] 
+            // debugger
             // this.setState({skuSize:filters})
             this.setState({
-                // skuSize: event.target.id,
+                skuSize: filters['defaultVariants']["skuSize"] ,
                 diamondType: filters.defaultVariants.diamondType
             })
             this.props.setFilters(filters);
