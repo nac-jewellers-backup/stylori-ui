@@ -7,7 +7,7 @@ export const routes = {
     Register: '/register',
     UserLogin: '/login',
     UserRegister: '/registers',
-    HomePageStylori: '/home',
+    HomePageStylori: '/',
     Account: `/account${"-" + window.location.pathname.split("-")[1]}`,
     Silver: '/stylorisilver',
     Faqs: '/faqs',

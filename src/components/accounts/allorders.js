@@ -210,7 +210,7 @@ class Allorders extends React.Component {
                                                         </Grid>
                                                     </div>
                                                     {/* ))} */}
-                                                    <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}</span></div>
+                                                    <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{Math.round(val.shoppingCartByCartId.discountedPrice)}</span></div>
                                                     {val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => (
                                                         <>
                                                             <br />
@@ -306,9 +306,11 @@ class Allorders extends React.Component {
 
                                                     <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
                                                         Sub Total&nbsp;{this.calculatetotal(val)}<br />
+                                                        {val.shoppingCartByCartId.discount ? <Typography class={`subhesder`}>REGISTRATION&nbsp;{val.shoppingCartByCartId.discount}</Typography>
+                                                             : ""}
                                                         Shipping&nbsp;FREE<br />
                                                         Shipping Insurance&nbsp;FREE<br />
-                                                        <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}</span></div>
+                                                        <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{Math.round(val.shoppingCartByCartId.discountedPrice)}</span></div>
                                                     </div>
                                                 </div>
                                                 {/* {val.paymentStatus} */}
@@ -363,7 +365,7 @@ class Allorders extends React.Component {
                                                                 </Grid>
                                                             </Grid>
                                                         </div>
-                                                        <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}</span></div>
+                                                        <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{Math.round(val.shoppingCartByCartId.discountedPrice)}</span></div>
                                                         {val && val.shoppingCartByCartId && val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId && val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
                                                             if (cart && cart.transSkuListByProductSku)
                                                                 return (
@@ -465,9 +467,11 @@ class Allorders extends React.Component {
 
                                                         <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
                                                             Sub Total&nbsp;{this.calculatetotal(val)}<br />
+                                                            {val.shoppingCartByCartId.discount !== null? <div class={`subhesder`}>REGISTRATION : &nbsp;{val.shoppingCartByCartId.discount}</div>
+                                                             : ""}
                                                             Shipping&nbsp;FREE<br />
                                                             Shipping Insurance&nbsp;FREE<br />
-                                                            <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}
+                                                            <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{Math.round(val.shoppingCartByCartId.discountedPrice)}
                                                             </span></div>
                                                         </div>
                                                     </div>

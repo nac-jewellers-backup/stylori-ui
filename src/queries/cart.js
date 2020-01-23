@@ -6,6 +6,7 @@ export const CART = `query myquerycart($productList: [String!]) {
       metalColor
       discountPrice
       markupPrice
+      skuUrl
       
       productListByProductId {
         productId
@@ -155,10 +156,14 @@ export const ORDERSUCCESSFUL = `query MyQuery($orderId:  OrderCondition) {
     nodes {
       paymentMode
       shoppingCartByCartId {
+        discountedPrice
+        discount
         shoppingCartItemsByShoppingCartId {
+          
           nodes {
             transSkuListByProductSku {
               discountPrice
+              discount
               generatedSku
               sellingPrice
               purity
