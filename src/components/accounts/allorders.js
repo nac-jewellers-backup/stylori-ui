@@ -82,9 +82,9 @@ class Allorders extends React.Component {
         // allorderdata.data.allOrders
         var check_img
         var ppp
-        if (this.props && this.props.allorderdata && this.props.allorderdata.data.allOrders && this.props.allorderdata.data.allOrders.nodes.length > 0 && this.props.allorderdata && this.props.allorderdata.data.allOrders) {
-
-            var vera = this.props.allorderdata.data.allOrders.nodes.map(val => {
+        if (this.props && this.props.allorderdata && this.props.allorderdata.allorderdata && this.props.allorderdata.allorderdata.nodes  && this.props.allorderdata.allorderdata.nodes.length>0) {
+            // allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes && allorderdata.allorderdata.nodes.length > 0
+            var vera = this.props.allorderdata.allorderdata.nodes.map(val => {
                 if (val !== undefined && val !== null) {
                     var inside = val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
                         if (cart !== undefined && cart !== null) {
@@ -137,9 +137,9 @@ class Allorders extends React.Component {
         const expanded_ = expanded.map(val => { return val })
         // var check_img = null
         const allDatas = () => {
-
-            if (allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes.length > 0) {
-                return allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes
+         
+            if (allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes && allorderdata.allorderdata.nodes.length > 0) {
+                return allorderdata.allorderdata.nodes
             }
         }
         
@@ -159,7 +159,8 @@ class Allorders extends React.Component {
                 {/* allorderdata.nodes */}
                 {window.location.pathname.split("-")[0] === "/account" ?
                     <div className='pt-sm checkout-ovralldiv-media' >
-                        {allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes.length > 0 ?
+                           
+                        {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes &&  allorderdata.allorderdata.nodes.length > 0 ?
                             <div style={{ marginTop: "20px", boxShadow: "none" }}>
                                 {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
                                 {allDatas().map((val, index) => {
@@ -211,12 +212,21 @@ class Allorders extends React.Component {
                                                     </div>
                                                     {/* ))} */}
                                                     <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{Math.round(val.shoppingCartByCartId.discountedPrice)}</span></div>
-                                                    {val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => (
-                                                        <>
+                                                    {val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
+debugger
+                                                        return( <>
                                                             <br />
                                                             <Grid container spacing={12} lg={12} style={{ outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px" }}>
                                                                 <Grid item lg={3} sm={4}  >
-                                                                    {cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs =>
+                                                                    {
+                                                                    Object.values(val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes[0])[0]
+                                                                    &&
+                                                                    
+                                                                    cart && cart.transSkuListByProductSku && 
+                                                                    
+                                                                    // cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes
+                                                                    allorderdata.allorderdata.nodes.map(val=>{return val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes}).filter(val=>{if(val.transSkuListByProductSku) {return val}}).map(val=>{return val.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes})
+                                                                    .map(imgs =>
                                                                         <>
                                                                             {this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
                                                                                 cart.transSkuListByProductSku.metalColor) && this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
@@ -232,11 +242,11 @@ class Allorders extends React.Component {
                                                                 <Grid item lg={4} sm={4}>
                                                                     <Grid container spacing={12} lg={12} style={{ lineHeight: "20px" }}>
 
-                                                                        <b style={{ width: "100%" }}> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
+                                                                        <b style={{ width: "100%" }}> {cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId.productName}</b>
                                                                         <Grid item lg={6} sm={6}>
 
                                                                             <Typography className="subhesder">
-                                                                                {cart.transSkuListByProductSku.skuWeight !== undefined && cart.transSkuListByProductSku.skuWeight !== null ? "Gold Weight" : ""}
+                                                                                {cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuWeight !== undefined && cart.transSkuListByProductSku.skuWeight !== null ? "Gold Weight" : ""}
                                                                             </Typography>
                                                                             {/* : ""} */}
 
@@ -258,38 +268,39 @@ class Allorders extends React.Component {
                                                                                     : ""}
                                                                             </Typography>
                                                                             <Typography className="subhesder">
-                                                                                {(cart.transSkuListByProductSku.generatedSku !== undefined) && (cart.transSkuListByProductSku.generatedSku !== null ? "Product Code" : "")}
+                                                                                {(cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.generatedSku !== undefined) && (cart.transSkuListByProductSku.generatedSku !== null ? "Product Code" : "")}
                                                                             </Typography>
                                                                         </Grid>
                                                                         <Grid item lg={6} sm={6}>
                                                                             <Typography className="subhesder">
-                                                                                {cart.transSkuListByProductSku.skuWeight + " " + "GM"}
+                                                                                {cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuWeight + " " + "GM"}
                                                                             </Typography>
                                                                             <Typography className="subhesder">
                                                                                 {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight + " " + "CT"}
                                                                             </Typography>
 
                                                                             <Typography className="subhesder">
-                                                                                {cart.transSkuListByProductSku.purity + ""}{cart.transSkuListByProductSku.metalColor}
+                                                                                {cart && cart.transSkuListByProductSku &&cart.transSkuListByProductSku.purity + ""}{cart && cart.transSkuListByProductSku &&cart.transSkuListByProductSku.metalColor}
                                                                             </Typography>
                                                                             <Typography className="subhesder">
-                                                                                {cart.transSkuListByProductSku.skuSize}
+                                                                                {cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize}
                                                                             </Typography>
                                                                             <Typography className="subhesder">
-                                                                                {cart.transSkuListByProductSku.generatedSku}
+                                                                                {cart && cart.transSkuListByProductSku &&cart.transSkuListByProductSku.generatedSku}
                                                                             </Typography>  </Grid>
                                                                     </Grid>
                                                                 </Grid>
-                                                                <Grid item lg={2} sm={2} style={{ padding: "16px" }}>
+                                                             {cart && cart.transSkuListByProductSku && 
+                                                               <Grid item lg={2} sm={2} style={{ padding: "16px" }}>
                                                                     <Grid container spacing={12} lg={12}>
                                                                         <Typography className="subhesder">Quantity 1</Typography>
                                                                         <Typography className="subhesder">
                                                                             <img alt="" src="https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-ship.png" /> <a>
                                                                                 {this.generateShipsBy(cart.transSkuListByProductSku.readytoship, cart.transSkuListByProductSku.vendorDeliveryTime)}</a></Typography>
                                                                     </Grid>
-                                                                </Grid>
+                                                                </Grid>}
 
-
+{   cart && cart.transSkuListByProductSku && 
                                                                 <Grid style={{ padding: "10px", justifyContent: "center", display: "flex", alignItems: "center" }} className="rups" item lg={3} sm={2}>
                                                                     {Math.round(cart.price) > Math.round(cart.transSkuListByProductSku.markupPrice) ?
                                                                         <Pricing
@@ -300,9 +311,11 @@ class Allorders extends React.Component {
                                                                         : <Pricing
                                                                             offerPrice={cart.transSkuListByProductSku.markupPrice}
                                                                         ></Pricing>}<br />
-                                                                </Grid>
-                                                            </Grid></>
-                                                    ))}
+                                                                </Grid>}
+                                                            </Grid></>)
+
+                                                       
+    })}
 
                                                     <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
                                                         Sub Total&nbsp;{this.calculatetotal(val)}<br />

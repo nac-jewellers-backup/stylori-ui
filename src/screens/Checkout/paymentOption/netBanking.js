@@ -70,7 +70,7 @@ class Netbanking extends React.Component {
                                     </span> &nbsp;&nbsp;&nbsp;
                                 </Grid>
                                 <Grid item>
-                                    <PaymentHiddenForm />
+                                    <PaymentHiddenForm data={Math.round(dataCard1 - discounted_price)}/>
                                 </Grid>
                             {/* <Button className="credit-button" type="submit"
                             >Pay Now</Button> */}
