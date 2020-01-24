@@ -180,7 +180,7 @@ const Components = props => {
          mapped = cart(data);
       }
    }
-   if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
+   if (Object.keys(allordersuccesful).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
    else content = <PaymentResponseSuccess {...props} data={mapped} allorderdata={allordersuccesful} wishlistdata={wishlistdata} />
    // localStorage.setItem("a__w_l", wishlistdata && wishlistdata.length)
    return content

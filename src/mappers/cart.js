@@ -131,6 +131,7 @@ export default function (data) {
         try {
             _d = {
                 generatedSku: k.generatedSku,
+                skuUrl:k.skuUrl,
                 materialName: k.productListByProductId.productMaterialsByProductSku.nodes === undefined ? '' : k.productListByProductId.productMaterialsByProductSku.nodes.map(val => {
                     return val.materialName
                 }),

@@ -60,7 +60,7 @@ export const RouterApp = (props) => {
     // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
     return (
         <Switch history={browserHistory}>
-            <Redirect key="stylori-redirect" from="/" exact to={"/jewellery"} />
+            {/* <Redirect key="stylori-redirect" from="/" exact to={"/"} /> */}
             <Route key="HomePageStylori" component={HomePageStylori} exact path={routes.HomePageStylori} />
             <Route key="Silver" component={Silver} exact path={routes.Silver} />
             <Route key="Faqs" component={Faqs} exact path={routes.Faqs} />

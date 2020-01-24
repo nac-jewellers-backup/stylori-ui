@@ -136,11 +136,11 @@ const Provider = (props) => {
 
                     // ------------ REDIRECTION ----------
 
-                    
-                    // if(data.data.allSeoUrlPriorities.nodes.length===0){
-                    //     // alert
-                    //    window.location.pathname = "/"
-                    // }
+
+                    if(data.data.allSeoUrlPriorities.nodes.length===0){
+                        // alert
+                       window.location.pathname = "/"
+                    }
                     //   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
                     var a = {};
 
@@ -375,7 +375,10 @@ const Provider = (props) => {
                         default:
                     }
                 }
-                newObj[toLowerCase] = k[len][0]
+                else{
+                    newObj[toLowerCase] = k[len][0]
+                }
+               
             }
 
 
@@ -510,30 +513,31 @@ const Provider = (props) => {
             var toLowerCase = key[0].toLowerCase()
             
             if (toLowerCase === "offers") {
-                // alert( k[len][0])
                 switch (k[len][0]) {
                     case "Up to  20%": {
-                        newObj[toLowerCase] = "Upto 20%"
+                        newObj['offer_min'] = 0
+                        newObj['offer_max'] = 20
                         break;
                     }
                     case "Up to  30%": {
-                        newObj[toLowerCase] = "Upto 30%"
+                        newObj['offer_min'] = 0
+                        newObj['offer_max'] = 30
                         break;
                     }
                     case "Up to  40%": {
-                        newObj[toLowerCase] = "Upto 40%"
+                        newObj['offer_min'] = 0
+                        newObj['offer_max'] = 40
                         break;
                     }
                     case "Up to  50%": {
-                        newObj[toLowerCase] = "Upto 50%"
+                        newObj['offer_min'] = 0
+                        newObj['offer_max'] = 50
                         break;
                     }
                     default:
                 }
-                // alert(JSON.stringify(newObj))
             }
             else{
-                // alert(toLowerCase)
                 newObj[toLowerCase] = k[len][0]
             }
            

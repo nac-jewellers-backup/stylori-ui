@@ -114,7 +114,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         const { classes, data } = this.props;
-
+debugger
         const { productsDetails, fadeImages, dataCard1 } = this.props.data;
         // const { FilterOptionsCtx: { setcartcount } } = React.useContext(FilterOptionsContext);
         // React.useEffect(()=>{
@@ -148,7 +148,7 @@ class Checkoutcard extends React.Component {
                                                 </Button>
                                             }
                                         /> */}
-                                        {window.location.pathname !== "/checkout" ? <NavLink to={`jewellery/${dataval.productType}/${dataval.materialName[0]}/${val.pro_header}?skuId=${dataval.generatedSku}`} style={{ textDecoration: 'none' }}>
+                                        {window.location.pathname !== "/checkout" ? <NavLink to={dataval.skuUrl} style={{ textDecoration: 'none' }}>
                                             <Slideshow class="image"
                                                 fadeImages={dataval.fadeImages} dataCarousel={dataCarousel} />
                                         </NavLink> : <Slideshow class="image"
@@ -157,7 +157,7 @@ class Checkoutcard extends React.Component {
                                 </Grid>
 
                                 <Grid item xs={5} sm={7} lg={6} style={{ padding: "13px" }}>
-                                    {window.location.pathname !== "/checkout" ? <NavLink to={`jewellery/${dataval.productType}/${dataval.materialName[0]}/${val.pro_header}?skuId=${dataval.generatedSku}`} style={{ textDecoration: 'none' }}>
+                                    {window.location.pathname !== "/checkout" ? <NavLink to={dataval.skuUrl} style={{ textDecoration: 'none' }}>
                                         <h3 class={`title ${classes.normalfonts}`}>{val.pro_header}</h3>
                                     </NavLink> : <h3 class={`title ${classes.normalfonts}`}>{val.pro_header}</h3>}
                                     <Grid container spacing={12} >
@@ -266,7 +266,7 @@ class Checkoutcard extends React.Component {
                             <Grid xs={7} >
                                 <Typography class={`subhesder ${classes.normalfonts}`}>Subtotal</Typography>
                                 <Typography class={`subhesder ${classes.normalfonts}`}>You Saved</Typography>
-                                {props.cartFilters.tax_price ? <Typography class={`subhesder ${classes.normalfonts}`}>GST</Typography> : ""}
+                                {props.cartFilters.tax_price ? <Typography class={`subhesder ${classes.normalfonts}`}>REGISTRATION</Typography> : ""}
                                 <Typography class={`subhesder ${classes.normalfonts}`}>Shipping</Typography>
                                 <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>Grand Total</Typography>
                             </Grid>
