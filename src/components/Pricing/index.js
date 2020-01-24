@@ -23,7 +23,7 @@ export default function Pricing(props) {
                     ""
             }
             {/*  */}
-            <Grid spacing={12} container lg={12}>
+            <Grid spacing={12} style={{ padding: "0px 8px " }} container lg={12}>
 
                 {/* <Grid item xs={12}lg={12} >
                     <Grid spacing={12} container xs={12} lg={12} class="leftPadding"> */}
@@ -54,7 +54,7 @@ export default function Pricing(props) {
                                         className={`pricing-p${props.price != null & props.price !== '' ? '' : 'shine'} ${classes.deletePrice} ${classes.dis}`}
                                     // component="p"
                                     >
-                                     {props.offerPrice === props.price ? "" : <del>₹&nbsp;{Math.round(props.price)}</del>}
+                                        {props.offerPrice === props.price ? "" : <del>₹&nbsp;{Math.round(props.price)}</del>}
                                     </Typography>
                                 </Typography> : ""}
                         </Grid></> :

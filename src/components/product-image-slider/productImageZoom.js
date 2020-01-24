@@ -184,7 +184,7 @@ class ProductImageZoom extends React.Component {
   getimage = e => {
     this.setState({
       showimage: e.target.src,
-      largeImage:e.target.src
+      largeImage: e.target.src
     })
   }
   render() {

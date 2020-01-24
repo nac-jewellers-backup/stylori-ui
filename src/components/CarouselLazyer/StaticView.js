@@ -80,7 +80,9 @@ const useStyles = makeStyles(theme => ({
         justifyContent: "center"
     },
     fullWidth_PD_page: {
-        width: "50% !important"
+        // width: "50% !important",
+        display: "flex",
+        justifyContent: "center"
     }
 
 }));
@@ -94,35 +96,35 @@ export default function StaticView() {
             <Grid item className={path ? classes.styloritags : classes.styloritags_PD_page}>
                 <Grid container >
                     <Grid item className={path ? classes.fullWidth : classes.fullWidth_PD_page}>
-                        <img style={{ width: "30%" }} src={"https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg"} />
+                        <img style={{ width: "40%" }} src={"https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg"} />
                     </Grid>
                 </Grid>
             </Grid>
             <Grid item className={path ? classes.styloritags : classes.styloritags_PD_page}>
                 <Grid container >
                     <Grid item className={path ? classes.fullWidth : classes.fullWidth_PD_page}>
-                        <img style={{ width: "30%" }} src={"https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static%20Pages/Other%20Pages/certifiedjewellery-pink.svg"} />
+                        <img style={{ width: "40%" }} src={"https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static%20Pages/Other%20Pages/certifiedjewellery-pink.svg"} />
                     </Grid>
                 </Grid>
             </Grid>
             <Grid item className={path ? classes.styloritags : classes.styloritags_PD_page}>
                 <Grid container >
                     <Grid item className={path ? classes.fullWidth : classes.fullWidth_PD_page}>
-                        <img style={{ width: "30%" }} src={"https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/securepayments-pink.svg"} />
+                        <img style={{ width: "40%" }} src={"https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/securepayments-pink.svg"} />
                     </Grid>
                 </Grid>
             </Grid>
             <Grid item className={path ? classes.styloritags : classes.styloritags_PD_page}>
                 <Grid container >
                     <Grid item className={path ? classes.fullWidth : classes.fullWidth_PD_page}>
-                        <img style={{ width: "30%" }} src={"https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/diversestyles-pink.svg"} />
+                        <img style={{ width: "40%" }} src={"https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/diversestyles-pink.svg"} />
                     </Grid>
                 </Grid>
             </Grid>
             <Grid item className={path ? classes.styloritags : classes.styloritags_PD_page}>
                 <Grid container >
                     <Grid item className={path ? classes.fullWidth : classes.fullWidth_PD_page}>
-                        <img style={{ width: "30%" }} src={"https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/easyreturns-pink.svg"} />
+                        <img style={{ width: "40%" }} src={"https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/easyreturns-pink.svg"} />
                     </Grid>
                 </Grid>
             </Grid>

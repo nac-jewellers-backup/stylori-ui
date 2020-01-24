@@ -11,28 +11,28 @@ import Header from "components/SilverComponents/Header";
 import Allorders from "components/accounts/allorders";
 function PaymentResponseFail(props) {
   function BackToPayment() {
-    props.history.push('/home')
-  } 
+    props.history.push('/')
+  }
   return (
     <>
-    <Header wishlist={props.wishlistdata} />   
-    <Grid container style={{ marginTop: "15px" }}>
-      <Grid item xs={12} sm={12} md={12} >
-        <Grid container justify="center">
-          <Grid item>
-            <Grid container>
-              <CancelIcon className="svgiconfail" />
-              <Typography style={{ display: "flex", alignItems: "center" }} component="h4">Sorry,Your transaction has been failed.</Typography>
+      <Header wishlist={props.wishlistdata} />
+      <Grid container style={{ marginTop: "15px" }}>
+        <Grid item xs={12} sm={12} md={12} >
+          <Grid container justify="center">
+            <Grid item>
+              <Grid container>
+                <CancelIcon className="svgiconfail" />
+                <Typography style={{ display: "flex", alignItems: "center" }} component="h4">Sorry,Your transaction has been failed.</Typography>
+              </Grid>
+            </Grid>
+            <Grid item style={{ marginLeft: "20px" }}>
+              <Button className="retrypaymentbtn" onClick={() => props.history.push('/checkout')}>Retry Payment</Button>
             </Grid>
           </Grid>
-          <Grid item style={{ marginLeft: "20px" }}>
-            <Button className="retrypaymentbtn" onClick={() => props.history.push('/checkout')}>Retry Payment</Button>
-          </Grid>
         </Grid>
+        <Allorders allorderdata={props.allorderdata} />
       </Grid>
-      <Allorders allorderdata={props.allorderdata} />
-    </Grid>
-    <Footer/>
+      <Footer />
     </>
   )
 }
