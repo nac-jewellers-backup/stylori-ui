@@ -84,7 +84,7 @@ const LoginComponent = (props) => {
             <Grid spacing={12} container style={{ padding: "3%" }}>
                 <Grid item xs={6} lg={6} xs={12}>
                     <div >
-                        <img width="100%" height="100%" src="https://styloriimages.s3.ap-south-1.amazonaws.com/login_image.png" />
+                        <img width="100%" height="100%" src="https://assets.stylori.com/login_image.png" />
                     </div>
                 </Grid>
 

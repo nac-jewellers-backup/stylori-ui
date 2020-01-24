@@ -299,7 +299,7 @@ debugger
                                                                     <Grid container spacing={12} lg={12}>
                                                                         <Typography className="subhesder">Quantity 1</Typography>
                                                                         <Typography className="subhesder">
-                                                                            <img alt="" src="https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-ship.png" /> <a>
+                                                                            <img alt="" src="https://assets.stylori.com/images/static/icon-ship.png" /> <a>
                                                                                 {this.generateShipsBy(cart.transSkuListByProductSku.readytoship, cart.transSkuListByProductSku.vendorDeliveryTime)}</a></Typography>
                                                                     </Grid>
                                                                 </Grid>}
@@ -459,7 +459,7 @@ debugger
                                                                                 <Grid container spacing={12} lg={12}>
                                                                                     <Typography className="subhesder">Quantity 1</Typography>
                                                                                     <Typography className="subhesder">
-                                                                                        <img alt="" src="https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-ship.png" /> <a>
+                                                                                        <img alt="" src="https://assets.stylori.com/images/static/icon-ship.png" /> <a>
                                                                                             {this.generateShipsBy(cart.transSkuListByProductSku.readytoship, cart.transSkuListByProductSku.vendorDeliveryTime)}</a></Typography>
                                                                                 </Grid>
                                                                             </Grid>
