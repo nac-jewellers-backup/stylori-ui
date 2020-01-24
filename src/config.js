@@ -1,4 +1,4 @@
-export const API_URL = "https://api-alpha-env.ap-south-1.elasticbeanstalk.com" 
+export const API_URL = "https://api-beta.stylori.com" 
 // https://api-alpha.stylori.net
 
 
