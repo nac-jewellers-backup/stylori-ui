@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 export default function RadioBtn(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState({
-    sortTitle: "Sort By",
+    sortTitle: "Sort by",
     values: '',
     helperText: false
   }

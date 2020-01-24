@@ -84,27 +84,27 @@ class Sublistcarousel extends React.Component {
     const productsubHead = [
       {
         name: "From the House of NAC",
-        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg",
+        icon: "https://assets.stylori.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg",
         class: "image1"
       },
       {
         name: "Certified Jewellery",
-        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static%20Pages/Other%20Pages/certifiedjewellery-pink.svg",
+        icon: "https://assets.stylori.com/images/Static%20Pages/Other%20Pages/certifiedjewellery-pink.svg",
         class: "image2"
       },
       {
         name: "Free Shipping",
-        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/securepayments-pink.svg",
+        icon: "https://assets.stylori.com/images/Static+Pages/Other+Pages/securepayments-pink.svg",
         class: "image3"
       },
       {
         name: "Diverse Styles",
-        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/diversestyles-pink.svg",
+        icon: "https://assets.stylori.com/images/Static+Pages/Other+Pages/diversestyles-pink.svg",
         class: "image4"
       },
       {
         name: "Easy Returns",
-        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/easyreturns-pink.svg",
+        icon: "https://assets.stylori.com/images/Static+Pages/Other+Pages/easyreturns-pink.svg",
         class: "image5"
       }
     ];

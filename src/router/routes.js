@@ -7,7 +7,7 @@ export const routes = {
     Register: '/register',
     UserLogin: '/login',
     UserRegister: '/registers',
-    HomePageStylori: '/home',
+    HomePageStylori: '/',
     Account: `/account${"-" + window.location.pathname.split("-")[1]}`,
     Silver: '/stylorisilver',
     Faqs: '/faqs',
@@ -20,11 +20,11 @@ export const routes = {
     AboutUs: '/aboutus',
     ForgotPassword: '/forgotpassword',
     ResetPassword: '/resetpassword',
-    ChangePassword:'/changepassword',
-    paymentsuccess:'/paymentsuccess',
-    paymentfail:'/paymentfail', 
-    paymenthidden:'/paymenthidden',
-    Education:'/education'
+    ChangePassword: '/changepassword',
+    paymentsuccess: '/paymentsuccess',
+    paymentfail: '/paymentfail',
+    paymenthidden: '/paymenthidden',
+    Education: '/education'
 }
 
 export default routes;

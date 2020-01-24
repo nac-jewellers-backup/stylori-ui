@@ -92,27 +92,27 @@ class CustomerReviews extends React.Component {
         const productsubHead = [
             {
                 name: "From the House of NAC",
-                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+                icon: "https://assets.stylori.com/images/static/sprite-images.png",
                 class: "image1"
             },
             {
                 name: "Certified Jewellery",
-                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+                icon: "https://assets.stylori.com/images/static/sprite-images.png",
                 class: "image2"
             },
             {
                 name: "Free Shipping",
-                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+                icon: "https://assets.stylori.com/images/static/sprite-images.png",
                 class: "image3"
             },
             {
                 name: "Diverse Styles",
-                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+                icon: "https://assets.stylori.com/images/static/sprite-images.png",
                 class: "image4"
             },
             {
                 name: "Easy Returns",
-                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
+                icon: "https://assets.stylori.com/images/static/sprite-images.png",
                 class: "image5"
             }
         ];

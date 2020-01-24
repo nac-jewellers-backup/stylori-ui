@@ -34,30 +34,30 @@ const breadcrumsdata = [
 const cartsubdata = [
     {
         name: "100% Certified Jewellery",
-        icon: "https://assets-cdn.stylori.com/images/static/icon-star.png"
+        icon: "https://assets.stylori.com/images/static/icon-star.png"
     }, {
         name: "Secure Payments",
-        icon: "https://assets-cdn.stylori.com/images/static/icon-lock.png"
+        icon: "https://assets.stylori.com/images/static/icon-lock.png"
     }, {
         name: "Free Insured Shipping",
-        icon: "https://assets-cdn.stylori.com/images/static/icon-van.png"
+        icon: "https://assets.stylori.com/images/static/icon-van.png"
     }, {
         name: "25-Day Returns",
-        icon: "https://assets-cdn.stylori.com/images/static/icon-return.png"
+        icon: "https://assets.stylori.com/images/static/icon-return.png"
     }
 ]
 class Cart extends React.Component {
     render() {
         const { data, classes } = this.props
-        debugger
+        
         let path = window.location.pathname.split('/').pop();
         return (
             <Grid container>
                 <Hidden smDown>
-                   
-                            <Header wishlist={this.props.wishlistdata} />
+
+                    <Header wishlist={this.props.wishlistdata} />
                     {path === "checkout" ? "" :
-                        <CustomSeparator 
+                        <CustomSeparator
                             arrowicon='cart-head-arrows'
                             className={`breadcrums-header ${classes.normalcolorback}`}
                             classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
@@ -66,14 +66,14 @@ class Cart extends React.Component {
                             subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata}
                         />
                     }
-                    <div className="cart-ovralldiv-media" style={{marginTop:"3%"}}>
+                    <div className="cart-ovralldiv-media" style={{ marginTop: "3%" }}>
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>
                                 <CartCard data={data} />
-                            </Grid> : <><div className="noproductsfound">There are no items in this cart. </div>  
-                            <a href="/jewellery" ><div className="continueshopping">CONTINUE SHOPPING</div></a></>
-                            
-                            
+                            </Grid> : <><div className="noproductsfound">There are no items in this cart. </div>
+                                    <a href="/jewellery" ><div className="continueshopping">CONTINUE SHOPPING</div></a></>
+
+
                             }
                         </Grid>
                     </div>
@@ -86,10 +86,10 @@ class Cart extends React.Component {
                 </Hidden>
                 <Hidden mdUp>
                     {path === "checkout" ? "" :
-                        <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
-                            <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
-                                <Header wishlist={this.props.wishlistdata} />
-                            </Grid>
+                        <Grid container spacing={12} >
+                            {/* <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}> */}
+                            <Header wishlist={this.props.wishlistdata} />
+                            {/* </Grid> */}
                         </Grid>}
                     <Container>
                         <Grid Container spacing={12}>

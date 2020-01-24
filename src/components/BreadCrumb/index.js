@@ -4,12 +4,12 @@ import { Paper, Breadcrumbs, Link, Container, Grid, Typography } from '@material
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import "./breadcrumb.css"
 
-debugger
+
 export default function CustomSeparator(props) {
   var a = window.location.pathname
-var b = a.split("/")
+  var b = a.split("/")
   let path = window.location.pathname;
-  let seperators = path === '/cart' || path === "/checkout" || b[1] === "paymentsuccess"?
+  let seperators = path === '/cart' || path === "/checkout" || b[1] === "paymentsuccess" ?
     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAQAAAC0NkA6AAAAAmJLR0QA/4ePzL8AAABTSURBVFjD7dfBDYAgFARRqkBCi1ouEa1mbMJPIMw08JK9bUpm9lOclGjiAnowQ6YBL1VGRkZGZjKm0IGbvDbCQQOewLkkJCQkNicGXYchJ8hs8z7oGPzdOrNn/QAAAABJRU5ErkJggg=="
       className={props.arrowicon} />
     : <NavigateNextIcon />;
@@ -41,12 +41,40 @@ var b = a.split("/")
 
   // }
 
+  const handleUrl = (data) => {
+    let  dataurl = data.toLowerCase()
+    if (dataurl === "home") {
+      return window.location.href = "/"
+    }
+    else if (dataurl === "jewellery") {
+      return window.location.href = "/jewellery"
+    }
+    else if (dataurl === "bangles") {
+      return window.location.href = "/bangles-jewellery"
+    }
+    else if (dataurl === "earrings") {
+      return window.location.href = "/earrings-jewellery"
+    }
+    else if (dataurl === "pendants") {
+      return window.location.href = "/pendants-jewellery"
+    }
+    else if (dataurl === "bracelets") {
+      return window.location.href = "/bracelets-jewellery"
+    }
+    else if (dataurl === "rings") {
+      return window.location.href = "/rings-jewellery"
+    }
+    else if (dataurl === "nosepins") {
+      return window.location.href = "/nose+pin+online-jewellery"
+    }
+
+  }
   const activetabsclik = (data) => {
 
     if (data && data.title === "Shopping Bag") {
       return window.location.href = "/cart"
     } if (data && data.title === "Login/ Register") {
-      return
+      return window.location.href = "/Login"
     }
     if (data && data.title === "Address Detail") {
       return
@@ -116,17 +144,20 @@ var b = a.split("/")
                     //  </Link>
                   ))
                   }
-                </ol> : <Breadcrumbs separator={seperators} >
+                </ol> :
+                  <Breadcrumbs separator={seperators} >
                     {props.data.map(data => (
                       //  <Link color="inherit" to={{pathname:data.url}} style={{ fontSize: "14px" }} className={props.list}>
-                      <div onClick={() => activetabsclik(data)}>
+
+                      <div style={{ cursor: "pointer" }} onClick={() => handleUrl(data.title)}  >
                         <li className={activetabs(data) ? ` isactives ${props.list}` : props.list}>
                           {data.title}</li>
                       </div>
                       //  </Link>
                     ))
                     }
-                  </Breadcrumbs>}
+                  </Breadcrumbs>
+                }
 
 
               </Grid>

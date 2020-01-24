@@ -124,7 +124,7 @@ const ProductlistComponent = (props) => {
                                                 value={values.from}
                                                 placeholder="From"
                                                 required
-                                                onChange={e => handlers.handleChange('from', e.target.value)}
+                                                onChange={e => handlers.handleChange('gift_from', e.target.value)}
                                                 helperText="From is required"
 
                                             />
@@ -135,7 +135,7 @@ const ProductlistComponent = (props) => {
                                                 type="text"
                                                 value={values.to}
                                                 required
-                                                onChange={e => handlers.handleChange('to', e.target.value)}
+                                                onChange={e => handlers.handleChange('gift_to', e.target.value)}
                                             />
                                             <Input
                                                 helperText="Message is required"

@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
         overflow: 'hidden',
         backgroundColor: theme.palette.background.paper,
         width: "100%",
-        margin: "15px 0px 20px 0px "
+        margin: "0px 0px 20px 0px "
     },
     [theme.breakpoints.down("md")]: {
         imagefull: {
@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
             overflow: 'hidden',
             backgroundColor: theme.palette.background.paper,
             width: "100%",
-            margin: "25px 0px 20px 0px ",
+            margin: "0px 0px 20px 0px ",
         },
     },
 

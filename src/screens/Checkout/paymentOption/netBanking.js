@@ -30,13 +30,13 @@ class Netbanking extends React.Component {
             <Container>
                 {/* <Grid spacing={12} container lg={12} xs={12} style={{ textAlign: "center" }}>
                     <Grid item lg={4} xs={4}>
-                        <img src=" https://assets-cdn.stylori.com/images/static/icons/bank_logo_02.png" />
+                        <img src=" https://assets.stylori.com/images/static/icons/bank_logo_02.png" />
                     </Grid>
                     <Grid item lg={4} xs={4}>
-                        <img src="https://assets-cdn.stylori.com/images/static/icons/bank_logo_03.png" />
+                        <img src="https://assets.stylori.com/images/static/icons/bank_logo_03.png" />
                     </Grid>
                     <Grid item lg={4} xs={4}>
-                        <img src="https://assets-cdn.stylori.com/images/static/icons/bank_logo_04.png" />
+                        <img src="https://assets.stylori.com/images/static/icons/bank_logo_04.png" />
                     </Grid>
                     <Grid item lg={2} />
                     <Grid item lg={8} xs={12}> 
@@ -70,7 +70,7 @@ class Netbanking extends React.Component {
                                     </span> &nbsp;&nbsp;&nbsp;
                                 </Grid>
                                 <Grid item>
-                                    <PaymentHiddenForm />
+                                    <PaymentHiddenForm data={Math.round(dataCard1 - discounted_price)}/>
                                 </Grid>
                             {/* <Button className="credit-button" type="submit"
                             >Pay Now</Button> */}

@@ -25,9 +25,15 @@ export default function PaymentHiddenForm(props) {
     obj['cart_id'] = cart_ids
     
     const generateOrderdId =async () =>{
-        debugger
+        
        await fetch(`${API_URL}/generatepaymenturl`, {
-            method: 'POST' 
+            method: 'POST' ,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chargetotal:props.data
+            })
         })
             .then(async(response) =>await response.json())
             .then((data) => {
@@ -45,8 +51,8 @@ export default function PaymentHiddenForm(props) {
             .catch((error) => {
                 console.error('Error:', error);
             });
-
 debugger
+
  const status = (response) => {
 
     if (response.status >= 200 && response.status < 300) {
@@ -69,6 +75,8 @@ debugger
             body: JSON.stringify(obj)
         }).then(status).then(json).then((data) => {
             localStorage.removeItem("order_id")
+            if(localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
+            sessionStorage.removeItem('updatedProduct')
             if (data !== null && data !== undefined) {
                 localStorage.setItem("order_id", JSON.stringify(data.order.id))
             }
@@ -79,7 +87,7 @@ debugger
             console.error('Error:', error);
         });  
         // document.getElementsByName("form_payment").submit();
-        debugger
+        
         document.getElementById("payment_hidden_form").submit();
     }
     return (
@@ -112,7 +120,7 @@ debugger
             </div>
             <div>
                 {/* <label>Chargetotal</label> */}
-                <input size="50" type="hidden" name="chargetotal" value="1" />
+                <input size="50" type="" name="chargetotal" value={`${props.data}`} />
             </div>
             <div>
                 {/* <label>successpage</label> */}

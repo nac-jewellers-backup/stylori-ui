@@ -164,13 +164,13 @@ class Component extends React.Component {
               // return val
             })
             // this.setState(checked)
-            debugger
+
             Object.entries(paramsfilter[0]).map(val => {
               var keys = val[0]
               var values = val[1]
               checked[keys] = values
               if (keys !== "Category") {
-                debugger
+
                 var a = values && Object.keys(values)
                 if (keys === "ProductType") {
                   selected.push("Product Type", keys)
@@ -228,7 +228,7 @@ class Component extends React.Component {
 
   delete_val_chips = (value) => Object.entries(this.state.checked).map(val => {
     const { checked } = this.state;
-    debugger
+
     var obj = {};
     var mm;
     var bz;
@@ -344,7 +344,7 @@ class Component extends React.Component {
   }
 
   handleDelete = (value) => {
-    debugger
+
     let arr = [], arr1 = [];
     let { chipData, checked } = this.state
     arr = chipData.filter(val => val.label !== value);
@@ -363,7 +363,7 @@ class Component extends React.Component {
       chipData,
       checked
     })
-    
+
     this.forceUpdate()
     this.props.setFilters(checked)
     // var bb = {}
@@ -393,6 +393,10 @@ class Component extends React.Component {
   handleDrawerCloseMobile = () => {
     this.setState({ openMobile: true, productDisplay: true });
   };
+  handleClearAllData = () => {
+    this.setState({ filtercheck: "" });
+    return window.location.href = "/jewellery"
+  }
   handleDrawerClose = () => {
     this.setState({ open: false });
   };
@@ -417,11 +421,11 @@ class Component extends React.Component {
     }
   }
   filterValue = (filtercheck) => {
-    if (filtercheck === this.state.filtercheck) {
-      this.setState({ filtercheck: '' })
-    } else {
-      this.setState({ filtercheck })
-    }
+    // if (filtercheck === this.state.filtercheck) {
+    //   this.setState({ filtercheck: '' })
+    // } else {
+    this.setState({ filtercheck })
+    // }
 
   }
 
@@ -711,7 +715,7 @@ class Component extends React.Component {
               <button onClick={this.handleDrawerCloseMobile} style={{ background: 'none', border: 'none', fontWeight: '600', color: 'rgba(58, 69, 120, 1)', padding: '6px 8px' }}>
                 <i className={`fa fa-times ${classes.colorMain}`} ></i>&nbsp;
                  Filter</button>
-              <Button style={{ float: "right", border: '1px solid #ececec', lineHeight: "15px", fontSize: '0.775rem' }} className={`${classes.colorMain}`}>Clear All</Button>
+              <Button onClick={this.handleClearAllData} style={{ float: "right", border: '1px solid #ececec', lineHeight: "15px", fontSize: '0.775rem' }} className={`${classes.colorMain}`}>Clear All</Button>
 
             </div>
 

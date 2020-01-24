@@ -52,6 +52,9 @@ class Component extends React.Component {
     handleOpen = () => {
         this.setState({ open: true });
     };
+    componentDidMount() {
+        // this.setState({ skuSize: this.props && this.props.filters && this.props.filters.defaultVariants && this.props.filters.defaultVariants.skuSize });
+    }
 
     handleClose = () => {
         this.setState({ open: false });
@@ -63,7 +66,7 @@ class Component extends React.Component {
         var filters = { ...this.props.filters }
 
         if (key === 'purity') {
-            debugger
+
             var kv = event.target.id
             var objVal = kv.split(" ")
             var _multipleColor = objVal.filter(val => { if (val === "And") return val }) // example : 18k Yellow And White
@@ -92,13 +95,15 @@ class Component extends React.Component {
         }
         else {
             filters['defaultVariants'][key] = event.target.id
+            // filters['defaultVariants'][key] 
+            // debugger
             // this.setState({skuSize:filters})
             this.setState({
-                skuSize: event.target.id,
+                skuSize: filters['defaultVariants']["skuSize"] ,
                 diamondType: filters.defaultVariants.diamondType
             })
             this.props.setFilters(filters);
-            console.log("filters.defaultVariants.diamondType", filters.defaultVariants.diamondType)
+            // console.log("filters.defaultVariants.diamondType", filters.defaultVariants.diamondType)
         }
         // const ringSize = event.target.name;
     }
@@ -290,7 +295,7 @@ class Component extends React.Component {
                                                     style={{ overflow: 'scroll' }}
                                                 >
                                                     <div className={`${classes.modals} "modalin-ring"`}>
-                                                        <img height='auto' width='100%' src='https://assets-cdn.stylori.com/images/static/Ring-size.jpg' />
+                                                        <img height='auto' width='100%' src='https://assets.stylori.com/images/static/Ring-size.jpg' />
                                                     </div>
                                                 </Modal>
                                                 {/* <div style={{ marginTop: "10px", textAlign: "center" }}>
@@ -397,7 +402,7 @@ class Component extends React.Component {
     // };
 
     render() {
-        console.log('lklkkoik9', this.props.filters.defaultVariants.skuSize)
+        // console.log('lklkkoik9', this.props.filters.defaultVariants.skuSize)
         const { expanded } = this.state;
         return (
             <div>

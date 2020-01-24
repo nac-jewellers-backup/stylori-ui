@@ -78,7 +78,7 @@ export default function CollectionItem() {
     }).then(status)
         .then(json)
         .then(async function (data) {
-            debugger
+            
             var paramsfilter = (Object.entries(data).length !== 0 && data.constructor === Object && data.data.allSeoUrlPriorities) && data.data.allSeoUrlPriorities.nodes.map(val => {
                 let attrName = val.attributeName.replace(/\s/g, '')
                 let attrVal = val.attributeValue.replace(/\s/g, '')

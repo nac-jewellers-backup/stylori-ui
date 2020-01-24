@@ -36,7 +36,7 @@ const LoginComponent = (props) => {
     }
     const responseFacebook = response => {
         if (response.status !== "unknown") {
-            props.history.push('/home')
+            props.history.push('/')
         }
     }
     return (
@@ -87,7 +87,7 @@ const LoginComponent = (props) => {
                                 onSuccess={responseInstagram}
                                 onFailure={responseInstagram}
                         /> */}
-                            {/* <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img> */}
+                            {/* <img class="pull-left1" alt="" src="https://assets.stylori.com/images/static/icon-fb.png"></img> */}
                         </div >
                     </div>
                     <div className='login-butn'>

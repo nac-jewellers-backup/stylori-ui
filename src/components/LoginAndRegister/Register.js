@@ -24,7 +24,7 @@ const RegisterComponent = (props) => {
             <Grid spacing={12} container lg={12} style={{ padding: "3%" }}>
                 <Grid item xs={6} lg={6} xs={12}>
                     <div >
-                        <img width="100%" height="100%" src="https://assets-cdn.stylori.com/images/static/inner-page/banner.png" />
+                        <img width="100%" height="100%" src="https://assets.stylori.com/images/static/inner-page/banner.png" />
                     </div>
                 </Grid>
                 <Grid item xs={6} lg={6} xs={12}>

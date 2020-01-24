@@ -157,11 +157,11 @@ export const productsbuy = [
 export const imagecertificat = [
     {
         header: "Certification",
-        img1: 'https://assets-cdn.stylori.com/images/static/Logo1.png',
-        img2: "https://assets-cdn.stylori.com/images/static/Logo3.png",
-        img3: "https://assets-cdn.stylori.com/images/static/Logo2.png",
-        img4: "https://assets-cdn.stylori.com/images/static/Logo4.png",
-        img5: "https://assets-cdn.stylori.com/images/static/certificate4.jpg"
+        img1: 'https://assets.stylori.com/images/static/Logo1.png',
+        img2: "https://assets.stylori.com/images/static/Logo3.png",
+        img3: "https://assets.stylori.com/images/static/Logo2.png",
+        img4: "https://assets.stylori.com/images/static/Logo4.png",
+        img5: "https://assets.stylori.com/images/static/certificate4.jpg"
     }
 ];
 export const fadeImages = [

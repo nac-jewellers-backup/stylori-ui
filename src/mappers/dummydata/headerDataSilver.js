@@ -457,32 +457,32 @@ export const menuLists = {
                         //-----------LAYER 3--------
                         "imageContainer": [
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Earrings/Studs+Earrings+Stylori-01.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Earrings/Studs+Earrings+Stylori-01.png",
                                 "content": "Studs",
                                 "url": "/studs-earrings-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Earrings/Drops+Earrings+Stylori-02.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Earrings/Drops+Earrings+Stylori-02.png",
                                 "content": "Drops",
                                 "url": "/drops-earrings-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Earrings/Earcuffs+Earrings+Stylori-03.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Earrings/Earcuffs+Earrings+Stylori-03.png",
                                 "content": "Earcuffs",
                                 "url": "/ear+cuffs-earrings-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Earrings/Huggies+Earrings+Stylori-04.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Earrings/Huggies+Earrings+Stylori-04.png",
                                 "content": "Huggies",
                                 "url": "/huggies-earrings-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Earrings/Jhumkas+Earrings+Stylori-05.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Earrings/Jhumkas+Earrings+Stylori-05.png",
                                 "content": "Jhumkas",
                                 "url": "/jhumkas+online-earrings-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Earrings/Ear+Jackets+Earrings+Stylori-06.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Earrings/Ear+Jackets+Earrings+Stylori-06.png",
                                 "content": "Ear Jacket",
                                 "url": "/ear+jacket-earrings-jewellery",
                             },
@@ -495,27 +495,27 @@ export const menuLists = {
 
                         "imageContainer": [
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Pendants/Classic+Pendants+Stylori-02.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Pendants/Classic+Pendants+Stylori-02.png",
                                 "content": "Classic",
                                 "url": "/classic-pendants-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Pendants/Casual+Pendants+Stylori-01.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Pendants/Casual+Pendants+Stylori-01.png",
                                 "content": "Casual",
                                 "url": "/casual-pendants-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Pendants/Fashion+Pendants+Stylori-03.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Pendants/Fashion+Pendants+Stylori-03.png",
                                 "content": "Fashion",
                                 "url": "/fashion-pendants-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Pendants/Religious+Pendants+Stylori-04.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Pendants/Religious+Pendants+Stylori-04.png",
                                 "content": "Religious",
                                 "url": "/religious-pendants-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Pendants/Tanmaniya+Pendants+Stylori-05.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Pendants/Tanmaniya+Pendants+Stylori-05.png",
                                 "content": "Tanmaniya",
                                 "url": "/tanmaniya-pendants-jewellery",
                             },
@@ -528,60 +528,60 @@ export const menuLists = {
 
                         "imageContainer": [
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Rings/Classic+stylori+Rings-01.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Rings/Classic+stylori+Rings-01.png",
                                 "content": "Classic",
                                 "url": "/classic-rings-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Rings/Casual+stylori+Rings-02.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Rings/Casual+stylori+Rings-02.png",
                                 "content": "Casual",
                                 "url": "/casual-rings-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Rings/Cocktail+stylori+Rings-03.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Rings/Cocktail+stylori+Rings-03.png",
                                 "content": "Cocktail",
                                 "url": "/cocktail-rings-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Rings/Engagement+stylori+Rings-04.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Rings/Engagement+stylori+Rings-04.png",
                                 "content": "Engagement",
                                 "url": "/rings-jewellery-for+engagement",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Rings/Fashion+stylori+Rings-05.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Rings/Fashion+stylori+Rings-05.png",
                                 "content": "Fashion",
                                 "url": "/fashion-rings-jewellery",
                             },
-                            {
-                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                                "content": "Men's Ring",
-                                "url": "/rings-jewellery-for+men",
-                            },
+                            // {
+                            //     "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                            //     "content": "Men's Ring",
+                            //     "url": "/rings-jewellery-for+men",
+                            // },
                         ]
                     }
                 },
                 {
                     value: 'nosepins', title: 'Nose pins', url: '/nose+pin+online-jewellery',
-                    imgContainer: {
+                    // imgContainer: {
 
-                        "imageContainer": [
-                            {
-                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
-                                "content": "Classic",
-                                "url": "/classic-nose+pin+online-jewellery",
-                            },
-                            {
-                                "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
-                                "content": "Fashion",
-                                "url": "/fashion-nose+pin+online-jewellery",
-                            },
-                            {
-                                "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
-                                "content": "Stud Nose Pin",
-                                "url": "/nose+studs+online-jewellery",
-                            },
-                        ]
-                    }
+                    //     "imageContainer": [
+                    //         {
+                    //             "img": "https://assets-cdn.stylori.com/276x276/images/product/SE0889/SE0889-1Y.jpg",
+                    //             "content": "Classic",
+                    //             "url": "/classic-nose+pin+online-jewellery",
+                    //         },
+                    //         {
+                    //             "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
+                    //             "content": "Fashion",
+                    //             "url": "/fashion-nose+pin+online-jewellery",
+                    //         },
+                    //         {
+                    //             "img": "https://assets-cdn.stylori.com/276x276/images/product/SE1025/SE1025-1Y.jpg",
+                    //             "content": "Stud Nose Pin",
+                    //             "url": "/nose+studs+online-jewellery",
+                    //         },
+                    //     ]
+                    // }
                 },
                 {
                     value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '/bangles-jewellery',
@@ -589,17 +589,17 @@ export const menuLists = {
 
                         "imageContainer": [
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bangle+stylori+-02.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bangle+stylori+-02.png",
                                 "content": "Bangles",
                                 "url": "/bangles-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bracelet+stylori+Bracelets-01.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bracelet+stylori+Bracelets-01.png",
                                 "content": "Bracelets",
                                 "url": "/bracelets-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Bangles+and+Bracelets/Oval+Bracelet+stylori+-03.png",
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Oval+Bracelet+stylori+-03.png",
                                 "content": "Oval Bracelets",
                                 "url": "/oval+bracelets-jewellery",
                             },
@@ -638,42 +638,42 @@ export const menuLists = {
             imgContainer: {
                 "imageContainer": [
                     {
-                        "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Jewellery+by+Collections/Carve+Collection+Stylori-08.png",
+                        "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Carve+Collection+Stylori-08.png",
                         "content": "Carve",
                         "url": "/jewellery-from+the+carve+collection?sort=latest",
                     },
                     {
-                        "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Jewellery+by+Collections/Blush+Collection+Stylori+-.png",
+                        "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Blush+Collection+Stylori+-.png",
                         "content": "Blush",
                         "url": "/jewellery-blush",
                     },
                     {
-                        "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Jewellery+by+Collections/Molecute+Collection+Stylori+-01.png",
+                        "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Molecute+Collection+Stylori+-01.png",
                         "content": "Molecute",
                         "url": "/jewellery-molecute+collection",
                     },
                     {
-                        "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Jewellery+by+Collections/Gemstone+Collection+Stylori+-02.png",
+                        "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Gemstone+Collection+Stylori+-02.png",
                         "content": "Gemstone",
                         "url": "/gemstone-jewellery?sort=latest",
                     },
                     {
-                        "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Jewellery+by+Collections/Mistletoe+Collection+Stylori-01.png",
+                        "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Mistletoe+Collection+Stylori-01.png",
                         "content": "Mistletoe",
                         "url": "/jewellery-from+mistletoe+collection",
                     },
                     {
-                        "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Jewellery+by+Collections/Renaissance+Collection+Stylori+-04.png",
+                        "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Renaissance+Collection+Stylori+-04.png",
                         "content": "The Renaissance",
                         "url": "/jewellery-from+the+renaissance+collection",
                     },
                     {
-                        "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Jewellery+by+Collections/Monsoon+Collection+Stylori-02.png",
+                        "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Monsoon+Collection+Stylori-02.png",
                         "content": "Monsoon",
                         "url": "/jewellery-from+monsoon+collection",
                     },
                     {
-                        "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Jewellery/Jewellery+by+Collections/Summer+Collection+Stylori-06.png",
+                        "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Summer+Collection+Stylori-06.png",
                         "content": "Summer",
                         "url": "/jewellery-from+the+summer+collection",
                     },
@@ -740,27 +740,27 @@ export const menuLists = {
 
                         "imageContainer": [
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Gold+Coins/By+Design/Plain+Gold+Coins-01.png",
+                                "img": "https://assets.stylori.com/images/Menu/Gold+Coins/By+Design/Plain+Gold+Coins-01.png",
                                 "content": "Plain",
                                 "url": "/plain-goldcoins",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Gold+Coins/By+Design/Lakshmi+Gold+Coins-03.png",
+                                "img": "https://assets.stylori.com/images/Menu/Gold+Coins/By+Design/Lakshmi+Gold+Coins-03.png",
                                 "content": "Lakshmi",
                                 "url": "/lakshmi-goldcoins",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Gold+Coins/By+Design/Jesus+Gold+Coins-07.png",
+                                "img": "https://assets.stylori.com/images/Menu/Gold+Coins/By+Design/Jesus+Gold+Coins-07.png",
                                 "content": "Jesus",
                                 "url": "/jesus-goldcoins",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Gold+Coins/By+Design/Ganesha+Gold+Coins-04.png",
+                                "img": "https://assets.stylori.com/images/Menu/Gold+Coins/By+Design/Ganesha+Gold+Coins-04.png",
                                 "content": "Ganesh",
                                 "url": "/ganesha-goldcoins",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Gold+Coins/By+Design/Balaji+Gold+Coins-08.png",
+                                "img": "https://assets.stylori.com/images/Menu/Gold+Coins/By+Design/Balaji+Gold+Coins-08.png",
                                 "content": "Balaji",
                                 "url": "/balaji-goldcoins",
                             },
@@ -773,32 +773,32 @@ export const menuLists = {
 
                         "imageContainer": [
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Gold+Coins/By+Weight/1+gm+Gold+Coins-07.png",
+                                "img": "https://assets.stylori.com/images/Menu/Gold+Coins/By+Weight/1+gm+Gold+Coins-07.png",
                                 "content": "1 Gram",
                                 "url": "/1gm-goldcoins",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Gold+Coins/By+Weight/4gm+Gold+Coins-04.png",
+                                "img": "https://assets.stylori.com/images/Menu/Gold+Coins/By+Weight/4gm+Gold+Coins-04.png",
                                 "content": "4 Grams",
                                 "url": "/4gms-goldcoins",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Gold+Coins/By+Weight/8+gm+Gold+Coins-01.png",
+                                "img": "https://assets.stylori.com/images/Menu/Gold+Coins/By+Weight/8+gm+Gold+Coins-01.png",
                                 "content": "8 Grams",
                                 "url": "/8gms-goldcoins",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Gold+Coins/By+Weight/10+gm+Gold+Coins-03.png",
+                                "img": "https://assets.stylori.com/images/Menu/Gold+Coins/By+Weight/10+gm+Gold+Coins-03.png",
                                 "content": "10 Grams",
                                 "url": "/10gms-goldcoins",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Gold+Coins/By+Weight/20+gm+Gold+Coins-08.png",
+                                "img": "https://assets.stylori.com/images/Menu/Gold+Coins/By+Weight/20+gm+Gold+Coins-08.png",
                                 "content": "20 Grams",
                                 "url": "/20gms-goldcoins",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Gold+Coins/By+Weight/50gm+Gold+Coins-01.png",
+                                "img": "https://assets.stylori.com/images/Menu/Gold+Coins/By+Weight/50gm+Gold+Coins-01.png",
                                 "content": "50 Grams",
                                 "url": "/50gms-goldcoins",
                             },
@@ -811,12 +811,12 @@ export const menuLists = {
 
                         "imageContainer": [
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Gold+Coins/By+Purity/24kt+Gold+Coins-03.png",
+                                "img": "https://assets.stylori.com/images/Menu/Gold+Coins/By+Purity/24kt+Gold+Coins-03.png",
                                 "content": "24 KT",
                                 "url": "/24kt-goldcoins",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Gold+Coins/By+Purity/22kt+Gold+Coins-04.png",
+                                "img": "https://assets.stylori.com/images/Menu/Gold+Coins/By+Purity/22kt+Gold+Coins-04.png",
                                 "content": "22 KT",
                                 "url": "/22kt-goldcoins",
                             },
@@ -836,42 +836,42 @@ export const menuLists = {
 
                         "imageContainer": [
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Collections/By+Collections/Halo+Collection+Stylori+-06.png",
+                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Collections/Halo+Collection+Stylori+-06.png",
                                 "content": "Halo",
                                 "url": "/jewellery-from+halo+collection",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Collections/By+Collections/Daisy+Days++Collection+Stylori+-05.png",
+                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Collections/Daisy+Days++Collection+Stylori+-05.png",
                                 "content": "Daisy Days",
                                 "url": "/jewellery-from+daisy+days+collection",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Collections/By+Collections/Monsoon+Collection+Stylori-02.png",
+                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Collections/Monsoon+Collection+Stylori-02.png",
                                 "content": "Monsoon",
                                 "url": "/jewellery-from+monsoon+collection",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Collections/By+Collections/Mango+Collection+Stylori-01.png",
+                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Collections/Mango+Collection+Stylori-01.png",
                                 "content": "Mango",
                                 "url": "/jewellery-from+the+summer+collection",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Collections/By+Collections/Blush+Collection+Stylori+-03.png",
+                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Collections/Blush+Collection+Stylori+-03.png",
                                 "content": "Blush",
                                 "url": "/jewellery-blush",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Collections/By+Collections/Molecute+Collection+Stylori+-01.png",
+                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Collections/Molecute+Collection+Stylori+-01.png",
                                 "content": "Molecute",
                                 "url": "/jewellery-molecute+collection",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Collections/By+Collections/Gemstone+Collection+Stylori+-02.png",
+                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Collections/Gemstone+Collection+Stylori+-02.png",
                                 "content": "Gemstone",
                                 "url": "/gemstone-jewellery?sort=latest",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Collections/By+Collections/Butterfly+Collection+Stylori.png",
+                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Collections/Butterfly+Collection+Stylori.png",
                                 "content": "Butterfly",
                                 "url": "/jewellery-butterfly?sort=latest",
                             },
@@ -884,42 +884,42 @@ export const menuLists = {
 
                         "imageContainer": [
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Collections/By+Themes/Carve+Theme+Stylori-08.png",
+                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Themes/Carve+Theme+Stylori-08.png",
                                 "content": "Carve",
                                 "url": "/jewellery-from+the+carve+collection?sort=latest",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Collections/By+Themes/Cluster+Theme+Stylori-06.png",
+                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Themes/Cluster+Theme+Stylori-06.png",
                                 "content": "Cluster",
                                 "url": "/cluster-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Collections/By+Themes/Droplets+Theme+Stylori-02.png",
+                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Themes/Droplets+Theme+Stylori-02.png",
                                 "content": "Droplets",
                                 "url": "/droplets-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Collections/By+Themes/Waves+Theme+Stylori-05.png",
+                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Themes/Waves+Theme+Stylori-05.png",
                                 "content": "Waves",
                                 "url": "/waves-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Collections/By+Themes/Floral+Theme+Stylori-07.png",
+                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Themes/Floral+Theme+Stylori-07.png",
                                 "content": "Floral",
                                 "url": "/waves-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Collections/By+Themes/Hearts+Theme+Stylori-03.png",
+                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Themes/Hearts+Theme+Stylori-03.png",
                                 "content": "Hearts",
                                 "url": "/floral-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Collections/By+Themes/Tiara+Theme+Stylori-04.png",
+                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Themes/Tiara+Theme+Stylori-04.png",
                                 "content": "Tiara",
                                 "url": "/tiara-jewellery",
                             },
                             {
-                                "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Collections/By+Themes/Hoops+Theme+Stylori-01.png",
+                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Themes/Hoops+Theme+Stylori-01.png",
                                 "content": "Hoops",
                                 "url": "/hoops-jewellery",
                             },

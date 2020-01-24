@@ -8,6 +8,7 @@ const useGift = () => {
         gift_to: null,
         gift_from: null,
         message: null,
+        cart_id:null
     });
     const [val, setval] = React.useState({
         expanded1: 1,
@@ -30,7 +31,11 @@ const useGift = () => {
     }
     const handleSubmit = (e) => {
         // e.preventDefault();
-        makeFetch(values);
+        const cart_id = {cart_id:JSON.parse(localStorage.getItem('cart_id')).cart_id}
+        const Obj = {...values, ...cart_id}
+        // setValues({...values,cart_id:JSON.parse(localStorage.getItem('cart_id')).cart_id})
+        
+        makeFetch({...Obj});
     }
 
     const handlers = { handleSubmit, handleChange };

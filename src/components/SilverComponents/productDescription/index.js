@@ -36,9 +36,9 @@ class ProductDescription extends Component {
     const { classes } = this.props;
     // let path = window.location.pathname.split('/').pop();
     var loc = this.props.location.pathname;
-    
+
     var path = loc.split('/');
-    var data_json = [{ title: 'home', url: '/home' }, { title: 'jewellery', url: "/jewellery" }]
+    var data_json = [{ title: 'home', url: '/' }, { title: 'jewellery', url: "/jewellery" }]
     // const descriptionData = this.props.data;
     const settings = this.props.data && this.props.data[0] && this.props.data[0].dataCarousel;
     const fadeImages = this.props.data && this.props.data[0] && this.props.data[0].carouselImage;
@@ -55,65 +55,65 @@ class ProductDescription extends Component {
     }
     return (
       <>
-   
-          <Grid
-            style={{ margin: "9px" }}
-            container
-            direction="row"
-            justify="space-around"
-            alignItems="center"
-          >
-            <Grid
-              item
-              container
-              alignItems="center">
-            </Grid>
-            <Grid
-              item
-              container
-              alignItems="center">
-              <Hidden smDown>
-                <Grid
-                  item
-                  xs={6}
-                
-                  alignItems="center">
 
-                  {/* < Slideshow fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel} styles={'productDescriptionCarousel'} /> */}
-                  < Slideshow fadeImages={fadeImages} dataCarousel={settings} styles={'productDescriptionCarousel'} />
-                </Grid>
-              </Hidden>
+        <Grid
+          style={{ margin: "9px" }}
+          container
+          direction="row"
+          justify="space-around"
+          alignItems="center"
+        >
+          <Grid
+            item
+            container
+            alignItems="center">
+          </Grid>
+          <Grid
+            item
+            container
+            alignItems="center">
+            <Hidden smDown>
               <Grid
                 item
-                xs={12} sm={12} md={12} lg={12} xl={12}
+                xs={6}
+
                 alignItems="center">
-                <p>
-                  <div className="DescriptionContent">
-                    {
-                      this.state.showLess === true ?
-                        <>
-                          {(datadescription).slice(0, 350)}
-                          <span id="moreDots" style={{ display: 'inline' }}>...</span>
-                          <p onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readMore" >
-                            <span ><i className="fa faMore">&#xf0da;</i></span> READ MORE
-                   </p>
-                        </>
-                        :
-                        <>
-                          {datadescription}
-                          <p onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readLess" >
-                            <span ><i className="fa faMore">&#xf0d8;</i></span> CLOSE
-               </p>
-                          <br />
-                        </>
-                    }
 
-                  </div>
-                </p>
+                {/* < Slideshow fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel} styles={'productDescriptionCarousel'} /> */}
+                < Slideshow fadeImages={fadeImages} dataCarousel={settings} styles={'productDescriptionCarousel'} />
               </Grid>
+            </Hidden>
+            <Grid
+              item
+              xs={12} sm={12} md={12} lg={12} xl={12}
+              alignItems="center">
+              <p>
+                <div className="DescriptionContent">
+                  {
+                    this.state.showLess === true ?
+                      <>
+                        {(datadescription).slice(0, 350)}
+                        <span id="moreDots" style={{ display: 'inline' }}>...</span>
+                        <p onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readMore" >
+                          <span ><i className="fa faMore">&#xf0da;</i></span> READ MORE
+                   </p>
+                      </>
+                      :
+                      <>
+                        {datadescription}
+                        <p onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readLess" >
+                          <span ><i className="fa faMore">&#xf0d8;</i></span> CLOSE
+               </p>
+                        <br />
+                      </>
+                  }
 
+                </div>
+              </p>
             </Grid>
+
           </Grid>
+        </Grid>
 
 
       </>

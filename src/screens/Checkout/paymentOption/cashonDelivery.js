@@ -32,7 +32,7 @@ class CashonDelivey extends React.Component {
       }
       
     makeFetch = async (props) => {
-debugger
+
         // await fetch(`${API_URL}/createorder`, {
         //     method: 'post',
         //     headers: {
@@ -61,7 +61,7 @@ debugger
             .then(this.json)
             .then(resdata => {
                 console.log('datasssss', resdata)
-                debugger
+                
                 // localStorage.removeItem("order_id")
                 if (resdata !== null && resdata !== undefined) {
                     localStorage.setItem("order_id", JSON.stringify(resdata.order.id))
@@ -72,6 +72,8 @@ debugger
                 localStorage.removeItem("bil_isactive")
                 localStorage.removeItem("set_check")
                 localStorage.removeItem("cart_id")
+                if(localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
+                sessionStorage.removeItem('updatedProduct')
                 alert(resdata.message)
                 window.location.pathname = `/paymentsuccess/${resdata.order.id}`
             })

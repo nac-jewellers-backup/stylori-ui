@@ -45,7 +45,7 @@ const mobilecarousel = (props, val) => {
             </Grid>
             {/* <div style={{background:"red"}}>Earrings in 18K Yellow Gold and Peridot for Kids</div> */}
             <Slideshow class='responseve-carousel testingcur' imgClass='responseve-carousel-img'
-                fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
+                fadeImages={data[0].fadeImages.arrOfurls} dataCarousel={dataCarousel} />
         </div>
     );
 };
@@ -126,8 +126,8 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                     <div>
                                                         {data[0].ProductContactNum.map(val =>
                                                             <div >
-                                                                <b className={`ships-by ${classes.normalfonts}`}>
-                                                                    <span style={{ textAlign: "center" }}> {val.shipby}</span>
+                                                                <b style={{ alignItems: "center", display: "flex" }} className={`ships-by ${classes.normalfonts}`}>
+                                                                    <span style={{ textAlign: "center", alignItems: "center", display: "flex" }}> {val.shipby}</span>
                                                                 </b>
                                                             </div>
                                                         )}
@@ -198,13 +198,13 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                     <div className="product-share">
                                                         <h5>Share the Jewellery</h5>
                                                         <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
-                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
+                                                            <img class="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
                                                         </a>&nbsp;
                                             <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
-                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
+                                                            <img class="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
                                                         </a>&nbsp;
                                             {/* <a class="google" target="_blank">
-                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
+                                                            <img class="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
                                                         </a> */}
                                                     </div>
                                                 </Popover>
@@ -247,7 +247,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                     offerPrice={data[0].offerPrice}
                                     price={data[0].price}
 
-                                    // offerDiscount={val.offerDiscount}
+                                // offerDiscount={val.offerDiscount}
                                 >
                                 </Pricing>}
                         </div>

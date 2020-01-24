@@ -77,125 +77,154 @@
 .pay-index-subhed p:hover{
     background: #dfdfdf;
 } */
-.code-icon{
-    background: url(https://assets-cdn.stylori.com/images/static/icons/icon04.png) no-repeat;
+.code-icon {
+    background: url(https://assets.stylori.com/images/static/icons/icon04.png) no-repeat;
     width: 24px;
     height: 24px;
     float: left;
 }
-.net-bnk-icon{
-    background: url(https://assets-cdn.stylori.com/images/static/icons/icon03.png) no-repeat;
+
+.net-bnk-icon {
+    background: url(https://assets.stylori.com/images/static/icons/icon03.png) no-repeat;
     width: 24px;
     height: 24px;
     float: left;
 }
+
 .dc-icon {
-    background: url(https://assets-cdn.stylori.com/images/static/icons/icon01.png) no-repeat;
+    background: url(https://assets.stylori.com/images/static/icons/icon01.png) no-repeat;
     width: 24px;
     height: 24px;
     float: left;
 }
+
 .cc-icon {
-    background: url(https://assets-cdn.stylori.com/images/static/icons/icon01.png) no-repeat;
+    background: url(https://assets.stylori.com/images/static/icons/icon01.png) no-repeat;
     width: 24px;
     height: 24px;
     float: left;
 }
-.respone-div{ 
-    box-shadow: none !important;   
-    border: 1px solid #d3d3d3!important;
+
+.respone-div {
+    box-shadow: none !important;
+    border: 1px solid #d3d3d3 !important;
     background: #a8a1a1;
 }
-.div_DARK{ 
+
+.div_DARK {
     background: #a8a1a1 !important;
 }
-.py-head{
-    font-size: 12px!important;
+
+.py-head {
+    font-size: 12px !important;
     font-weight: 400;
     margin-right: 0;
     text-align: left !important;
     padding: 5px;
-    color: #333!important;
+    color: #333 !important;
     cursor: pointer;
     line-height: 21px;
-} .code-btn-top{
+}
+
+.code-btn-top {
     font-size: 13px;
     color: #828282;
     border-top: 1px solid #828282;
     width: 100% !important;
     margin-top: 10px;
     line-height: 20px;
-} .rups{
-    color: #ed1165 !important;
-    width: 100%!important;
-    margin: 0px!important;
-    text-align: left!important;
-    font-size: 25px !important;
-}.dz{
-    width: 45vw !important;
-    line-height: 25px;;
 }
-.paymentsuccessfont{
+
+.rups {
+    color: #ed1165 !important;
+    width: 100% !important;
+    margin: 0px !important;
+    text-align: left !important;
+    font-size: 25px !important;
+}
+
+.dz {
+    width: 45vw !important;
+    line-height: 25px;
+    ;
+}
+
+.paymentsuccessfont {
     color: #05409a
 }
-.paymentcontent{
+
+.paymentcontent {
     padding: 20px
 }
+
 .horizontal {
     width: 100%;
     padding: 1px;
     margin-top: 10px !important;
 }
+
 .paymentdivider {
     margin-top: 20px;
     margin-left: 30px;
 }
-h6{
+
+h6 {
     font-size: .8rem !important;
 }
-.svgiconsuccess{
+
+.svgiconsuccess {
     font-size: 3rem !important;
     fill: #8cbb58 !important;
 }
-.contant-center{
+
+.contant-center {
     display: flex;
     align-items: center;
 }
-.container-font-size{
+
+.container-font-size {
     font-size: 1.2rem;
 }
-.grand-item{
+
+.grand-item {
     margin-left: auto;
     display: flex;
 }
-.paymentsuccess-content{
+
+.paymentsuccess-content {
     background: #f4f5f4;
     padding-left: 85px
 }
-.svgiconfail{
+
+.svgiconfail {
     font-size: 2rem !important;
     fill: #f76950 !important;
 }
-.retrypaymentbtn{
+
+.retrypaymentbtn {
     background: #f26e1d !important;
     color: white !important;
     font-size: .6rem !important;
     padding: 5px 10px !important;
     text-transform: capitalize !important;
 }
+
 @media only screen and (max-width: 600px) {
-    .grand-item{
+    .grand-item {
         padding-left: 0;
         margin-top: 15px !important;
     }
-    .paymentsuccess-content{
+
+    .paymentsuccess-content {
         background: #f4f5f4;
         padding-left: 0
     }
 }
-.bcjk{
-    background:  #394578 !important;
+
+.bcjk {
+    background: #394578 !important;
 }
-.whi{
+
+.whi {
     color: #fff !important;
 }

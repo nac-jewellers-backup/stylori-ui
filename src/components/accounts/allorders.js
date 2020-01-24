@@ -15,7 +15,8 @@ import '../Checkout/Cart.css'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import moment from "moment";
 import Pricing from "../Pricing/index";
-import {CDN_URL} from "config"
+import { CDN_URL } from "config"
+import { withRouter } from 'react-router-dom';
 const order_id = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : ""
 var img_res;
 var img_res_X_2 = null;
@@ -26,7 +27,7 @@ function myFunc(total, num) {
 class Allorders extends React.Component {
     state = {
         expanded: [],
-        check_img:null
+        check_img: null
     }
 
     handleChange = panel => (event) => {
@@ -35,7 +36,7 @@ class Allorders extends React.Component {
         expanded.push(JSON.stringify(valus))
         this.setState({
             expanded
-            
+
         });
     };
 
@@ -47,18 +48,21 @@ class Allorders extends React.Component {
     // const dataCard1 = this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
 
     calculatetotal = (arr) => {
-        debugger
+        
         var a;
         var dis_price;
-        a = 
-        // arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes
-        arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.filter(val=>{if((val.transSkuListByProductSku)) return val}).map(cart => {
-            debugger
-            if ((cart !== null || cart !== undefined) && cart.transSkuListByProductSku) {
-                dis_price = cart.transSkuListByProductSku.markupPrice
-            }
-            return dis_price
-        }).reduce(myFunc);
+        if(arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.transSkuListByProductSku){
+            a = 
+            // arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes
+            arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.filter(val=>{if((val.transSkuListByProductSku)) return val}).map(cart => {
+                
+                if ((cart !== null || cart !== undefined) && cart.transSkuListByProductSku) {
+                    dis_price = cart.transSkuListByProductSku.markupPrice
+                }
+                return dis_price
+            }).reduce(myFunc);
+        }
+       
         return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a))
     }
     generateShipsBy = (readytoship, vendorDeliveryTime) => {
@@ -75,16 +79,16 @@ class Allorders extends React.Component {
             return 'Ships by' + ' ' + moment().add(numberOfDays, 'days').format('MMM Do YYYY');
         }
     }
-    
-     
+
+
     ImageUrl = (imgs, sku, metal) => {
-        debugger
+        
         // allorderdata.data.allOrders
         var check_img
         var ppp
-        if (this.props && this.props.allorderdata && this.props.allorderdata.data.allOrders && this.props.allorderdata.data.allOrders.nodes.length > 0 && this.props.allorderdata && this.props.allorderdata.data.allOrders) {
-
-            var vera = this.props.allorderdata.data.allOrders.nodes.map(val => {
+        if (this.props && this.props.allorderdata && this.props.allorderdata.allorderdata && this.props.allorderdata.allorderdata.nodes  && this.props.allorderdata.allorderdata.nodes.length>0) {
+            // allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes && allorderdata.allorderdata.nodes.length > 0
+            var vera = this.props.allorderdata.allorderdata.nodes.map(val => {
                 if (val !== undefined && val !== null) {
                     var inside = val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
                         if (cart !== undefined && cart !== null) {
@@ -95,25 +99,25 @@ class Allorders extends React.Component {
                                 var cnt_c = cnt_b[1]
 
                                 // if (sku === cart.transSkuListByProductSku.generatedSku) {
-                                    var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
-                        
-                            if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
-                                check_img = true
+                                var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
 
-                                var resolution = 500
-                                var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`
-                                var url_split = imgs && imgs.imageUrl.split('/')
-    var extension_split = url_split && url_split[url_split.length - 1]
-    var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type && browser_type.browser_type}`)
-    url_split[url_split && url_split.length - 1] = browser_type_append
-    url_split.splice(2, 0, _resolutions);
-    var url_construct = url_split.join().replace(/\,/g, '/')
-    // var img_url = `${baseUi}${url_construct}`
-                                ppp = `${CDN_URL}${url_construct}`
-                                // alert(this.state.check_img)
-                                
-                            }
-                          
+                                if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
+                                    check_img = true
+
+                                    var resolution = 500
+                                    var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`
+                                    var url_split = imgs && imgs.imageUrl.split('/')
+                                    var extension_split = url_split && url_split[url_split.length - 1]
+                                    var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type && browser_type.browser_type}`)
+                                    url_split[url_split && url_split.length - 1] = browser_type_append
+                                    url_split.splice(2, 0, _resolutions);
+                                    var url_construct = url_split.join().replace(/\,/g, '/')
+                                    // var img_url = `${baseUi}${url_construct}`
+                                    ppp = `${CDN_URL}${url_construct}`
+                                    // alert(this.state.check_img)
+
+                                }
+
                                 // }
                             }
                         }
@@ -130,19 +134,19 @@ class Allorders extends React.Component {
 
     render() {
         
-        debugger
+        
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
         debugger
         const expanded_ = expanded.map(val => { return val })
         // var check_img = null
         const allDatas = () => {
-            
-            if (allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes.length > 0) {
-                return allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes
+         
+            if (allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes && allorderdata.allorderdata.nodes.length > 0) {
+                return allorderdata.allorderdata.nodes
             }
         }
-        debugger
+        
         // const allDatas_filter = () => {
         //     if (allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0) {
         //         allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map(val => {
@@ -153,18 +157,19 @@ class Allorders extends React.Component {
         //         })
         //     }
         // }
-        
+
         return (
             <>
                 {/* allorderdata.nodes */}
-                {window.location.pathname.split("-")[0] === "/account" ?
+                {this.props.location.pathname.split("-")[0] === "/account" ?
                     <div className='pt-sm checkout-ovralldiv-media' >
-                        {allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes.length > 0 ?
+                           
+                        {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes &&  allorderdata.allorderdata.nodes.length > 0 ?
                             <div style={{ marginTop: "20px", boxShadow: "none" }}>
                                 {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
                                 {allDatas().map((val, index) => {
                                    
-                                    debugger
+                                    
                                     return(
                                         <ExpansionPanel
                                             square
@@ -176,9 +181,9 @@ class Allorders extends React.Component {
                                         >
                                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>
                                                 <Typography className='text-chck'>
-    
+
                                                     Order Number : <span >#{val.id}</span> &nbsp;|&nbsp; Order Date : {moment(val.createdAt).format('Do MMMM YYYY')}
-                                                    <div style={{ float: "right" }}><Button className="bton_submit">SUBMITTED</Button> </div></Typography>
+                                    <div style={{ float: "right" }}><Button className="bton_submit">{val.paymentStatus}</Button> </div></Typography>
                                             </ExpansionPanelSummary >
                                             <ExpansionPanelDetails
                                             >
@@ -210,13 +215,22 @@ class Allorders extends React.Component {
                                                         </Grid>
                                                     </div>
                                                     {/* ))} */}
-                                                    <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}</span></div>
-                                                    {val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => (
-                                                        <>
+                                                    <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{Math.round(val.shoppingCartByCartId.discountedPrice)}</span></div>
+                                                    {val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
+debugger
+                                                        return( <>
                                                             <br />
                                                             <Grid container spacing={12} lg={12} style={{ outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px" }}>
                                                                 <Grid item lg={3} sm={4}  >
-                                                                    {cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs =>
+                                                                    {
+                                                                    Object.values(val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes[0])[0]
+                                                                    &&
+                                                                    
+                                                                    cart && cart.transSkuListByProductSku && 
+                                                                    
+                                                                    // cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes
+                                                                    allorderdata.allorderdata.nodes.map(val=>{return val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes}).filter(val=>{if(val.transSkuListByProductSku) {return val}}).map(val=>{return val.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes})
+                                                                    .map(imgs =>
                                                                         <>
                                                                             {this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
                                                                                 cart.transSkuListByProductSku.metalColor) && this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
@@ -226,26 +240,26 @@ class Allorders extends React.Component {
                                                                                         cart.transSkuListByProductSku.metalColor)}
                                                                                     />
                                                                                 </div> : ""}</>
-    
+
                                                                     )}
                                                                 </Grid>
                                                                 <Grid item lg={4} sm={4}>
                                                                     <Grid container spacing={12} lg={12} style={{ lineHeight: "20px" }}>
-    
-                                                                        <b style={{ width: "100%" }}> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
+
+                                                                        <b style={{ width: "100%" }}> {cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId.productName}</b>
                                                                         <Grid item lg={6} sm={6}>
-    
+
                                                                             <Typography className="subhesder">
-                                                                                {cart.transSkuListByProductSku.skuWeight !== undefined && cart.transSkuListByProductSku.skuWeight !== null ? "Gold Weight" : ""}
+                                                                                {cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuWeight !== undefined && cart.transSkuListByProductSku.skuWeight !== null ? "Gold Weight" : ""}
                                                                             </Typography>
                                                                             {/* : ""} */}
-    
+
                                                                             <Typography className="subhesder">
                                                                                 {(cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight !== undefined) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight !== null) ? "Diamond Weight" : ""} </Typography>
                                                                             {/* : ""} */}
                                                                             {/* {cart.transSkuListByProductSku.generatedSku.length > 0 ? */}
                                                                             {/* : ""} */}
-    
+
                                                                             {/* {cart.transSkuListByProductSku&&cart.transSkuListByProductSku.purity&&cart.transSkuListByProductSku.purity.length > 0 ? */}
                                                                             <Typography className="subhesder">
                                                                                 {(cart.transSkuListByProductSku && cart.transSkuListByProductSku.purity && cart.transSkuListByProductSku.purity !== undefined) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.purity && cart.transSkuListByProductSku.purity !== null) > 0 ? "Metal" : ""}
@@ -258,38 +272,39 @@ class Allorders extends React.Component {
                                                                                     : ""}
                                                                             </Typography>
                                                                             <Typography className="subhesder">
-                                                                                {(cart.transSkuListByProductSku.generatedSku !== undefined) && (cart.transSkuListByProductSku.generatedSku !== null ? "Product Code" : "")}
+                                                                                {(cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.generatedSku !== undefined) && (cart.transSkuListByProductSku.generatedSku !== null ? "Product Code" : "")}
                                                                             </Typography>
                                                                         </Grid>
                                                                         <Grid item lg={6} sm={6}>
                                                                             <Typography className="subhesder">
-                                                                                {cart.transSkuListByProductSku.skuWeight + " " + "GM"}
+                                                                                {cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuWeight + " " + "GM"}
                                                                             </Typography>
                                                                             <Typography className="subhesder">
                                                                                 {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight + " " + "CT"}
                                                                             </Typography>
-    
+
                                                                             <Typography className="subhesder">
-                                                                                {cart.transSkuListByProductSku.purity + ""}{cart.transSkuListByProductSku.metalColor}
+                                                                                {cart && cart.transSkuListByProductSku &&cart.transSkuListByProductSku.purity + ""}{cart && cart.transSkuListByProductSku &&cart.transSkuListByProductSku.metalColor}
                                                                             </Typography>
                                                                             <Typography className="subhesder">
-                                                                                {cart.transSkuListByProductSku.skuSize}
+                                                                                {cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize}
                                                                             </Typography>
                                                                             <Typography className="subhesder">
-                                                                                {cart.transSkuListByProductSku.generatedSku}
+                                                                                {cart && cart.transSkuListByProductSku &&cart.transSkuListByProductSku.generatedSku}
                                                                             </Typography>  </Grid>
                                                                     </Grid>
                                                                 </Grid>
-                                                                <Grid item lg={2} sm={2} style={{ padding: "16px" }}>
+                                                             {cart && cart.transSkuListByProductSku && 
+                                                               <Grid item lg={2} sm={2} style={{ padding: "16px" }}>
                                                                     <Grid container spacing={12} lg={12}>
                                                                         <Typography className="subhesder">Quantity 1</Typography>
                                                                         <Typography className="subhesder">
-                                                                            <img alt="" src="https://assets-cdn.stylori.com/images/static/icon-ship.png" /> <a>
+                                                                            <img alt="" src="https://assets.stylori.com/images/static/icon-ship.png" /> <a>
                                                                                 {this.generateShipsBy(cart.transSkuListByProductSku.readytoship, cart.transSkuListByProductSku.vendorDeliveryTime)}</a></Typography>
                                                                     </Grid>
-                                                                </Grid>
-    
-    
+                                                                </Grid>}
+
+{   cart && cart.transSkuListByProductSku && 
                                                                 <Grid style={{ padding: "10px", justifyContent: "center", display: "flex", alignItems: "center" }} className="rups" item lg={3} sm={2}>
                                                                     {Math.round(cart.price) > Math.round(cart.transSkuListByProductSku.markupPrice) ?
                                                                         <Pricing
@@ -300,15 +315,19 @@ class Allorders extends React.Component {
                                                                         : <Pricing
                                                                             offerPrice={cart.transSkuListByProductSku.markupPrice}
                                                                         ></Pricing>}<br />
-                                                                </Grid>
-                                                            </Grid></>
-                                                    ))}
-    
+                                                                </Grid>}
+                                                            </Grid></>)
+
+                                                       
+    })}
+
                                                     <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
                                                         Sub Total&nbsp;{this.calculatetotal(val)}<br />
+                                                        {val.shoppingCartByCartId.discount ? <div class={`subhesder`}>REGISTRATION&nbsp;{val.shoppingCartByCartId.discount}</div>
+                                                             : ""}
                                                         Shipping&nbsp;FREE<br />
                                                         Shipping Insurance&nbsp;FREE<br />
-                                                        <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}</span></div>
+                                                        <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{Math.round(val.shoppingCartByCartId.discountedPrice)}</span></div>
                                                     </div>
                                                 </div>
                                                 {/* {val.paymentStatus} */}
@@ -324,161 +343,162 @@ class Allorders extends React.Component {
                     <div className='pt-sm checkout-ovralldiv-media' >
                         {allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes.length > 0 ?
                             <Container>
-                            <Container>
+                                <Container>
 
                                 {allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes.map(val => {
-                                    debugger
+                                    
                                     return (
                                         <div>
 
-                                            <div style={{ marginTop: "20px", boxShadow: "none" }}>
+                                                <div style={{ marginTop: "20px", boxShadow: "none" }}>
 
-                                                {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
-                                                {/* {val.map((val, index) => ( */}
-                                                <div className="address_details">
-                                                    {/* {val.shoppingCartByCartId.cartAddressesByCartId.nodes.map(addreses => ( */}
-                                                    <div style={{ width: "100%", marginBottom: "10px" }}>
-                                                        <Grid container spacing={12} lg={12} xs={11} sm={11} style={{ marginRight: "auto", marginLeft: "auto" }} >
-                                                            <Grid item sm={6} lg={6} xs={12} className="order_addres" style={{ color: "#394578" }}>
-                                                                <div> <b>Order Number</b>:#{val && val.id}</div><br />
-                                                                <div><b>Order Date	</b> : {moment(val && val.createdAt).format('Do MMMM YYYY')}</div><br />
-                                                                <div> <b>Payment Method</b>:{val.paymentMode}</div>
-                                                            </Grid>
-                                                            <Grid item sm={3} lg={3} xs={12} style={{ color: "#394578" }} className="order_addres_user">
-                                                                <div><b>Shipping Address :</b></div><br />
-                                                                {/* {alert(JSON.stringify(val.shoppingCartByCartId))} */}
-                                                                <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}&nbsp;
+                                                    {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
+                                                    {/* {val.map((val, index) => ( */}
+                                                    <div className="address_details">
+                                                        {/* {val.shoppingCartByCartId.cartAddressesByCartId.nodes.map(addreses => ( */}
+                                                        <div style={{ width: "100%", marginBottom: "10px" }}>
+                                                            <Grid container spacing={12} lg={12} xs={11} sm={11} style={{ marginRight: "auto", marginLeft: "auto" }} >
+                                                                <Grid item sm={6} lg={6} xs={12} className="order_addres" style={{ color: "#394578" }}>
+                                                                    <div> <b>Order Number</b>:#{val && val.id}</div><br />
+                                                                    <div><b>Order Date	</b> : {moment(val && val.createdAt).format('Do MMMM YYYY')}</div><br />
+                                                                    <div> <b>Payment Method</b>:{val.paymentMode}</div>
+                                                                </Grid>
+                                                                <Grid item sm={3} lg={3} xs={12} style={{ color: "#394578" }} className="order_addres_user">
+                                                                    <div><b>Shipping Address :</b></div><br />
+                                                                    {/* {alert(JSON.stringify(val.shoppingCartByCartId))} */}
+                                                                    <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].firstname}&nbsp;
                                                             {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].lastname}</div><br />
-                                                                <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].addressline1}</div><br />
-                                                                <div>  {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].city + "-"}
-                                                                    {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].pincode}</div>
-                                                                <br />
-                                                                <br />
-                                                                {val && val.shoppingCartByCartId && val.shoppingCartByCartId.giftwrapsByCartId && val.shoppingCartByCartId.giftwrapsByCartId.nodes && val.shoppingCartByCartId.giftwrapsByCartId.nodes.length > 0 ? <>
-                                                                    <div> <b>Gift to</b> :
+                                                                    <div> {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].addressline1}</div><br />
+                                                                    <div>  {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].city + "-"}
+                                                                        {val.shoppingCartByCartId && val.shoppingCartByCartId.cartAddressesByCartId && val.shoppingCartByCartId.cartAddressesByCartId.nodes && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0] && val.shoppingCartByCartId.cartAddressesByCartId.nodes[0].pincode}</div>
+                                                                    <br />
+                                                                    <br />
+                                                                    {val && val.shoppingCartByCartId && val.shoppingCartByCartId.giftwrapsByCartId && val.shoppingCartByCartId.giftwrapsByCartId.nodes && val.shoppingCartByCartId.giftwrapsByCartId.nodes.length > 0 ? <>
+                                                                        <div> <b>Gift to</b> :
                                                          {val && val.shoppingCartByCartId.giftwrapsByCartId.nodes[0].giftTo}</div>
-                                                                    <br /><div> <b>Gift message</b> :
+                                                                        <br /><div> <b>Gift message</b> :
                                                          {val && val.shoppingCartByCartId.giftwrapsByCartId.nodes[0].message}</div></> : ""}
-                                                                <div></div>
+                                                                    <div></div>
+                                                                </Grid>
                                                             </Grid>
-                                                        </Grid>
+                                                        </div>
+                                                        <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{Math.round(val.shoppingCartByCartId.discountedPrice)}</span></div>
+                                                        {val && val.shoppingCartByCartId && val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId && val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
+                                                            if (cart && cart.transSkuListByProductSku)
+                                                                return (
+                                                                    <>
+                                                                        <br />
+                                                                        <Grid container spacing={12} lg={12} style={{ overflow: "hidden", outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px", color: "#394578" }}>
+                                                                            <Grid item lg={2} sm={3}  >
+                                                                                {cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs =>
+                                                                                    <>
+                                                                                        {this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
+                                                                                            cart.transSkuListByProductSku.metalColor) && this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
+                                                                                                cart.transSkuListByProductSku.metalColor).length > 0 ?
+                                                                                            <div className="wishlist_img">
+                                                                                                <img className="viewport-img" src={this.ImageUrl(imgs, cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.generatedSku,
+                                                                                                    cart.transSkuListByProductSku.metalColor)}
+                                                                                                />
+                                                                                            </div> : ""}</>
+
+
+                                                                                )}
+                                                                            </Grid>
+                                                                            <Grid item lg={4} sm={4}>
+                                                                                <Grid container spacing={12} lg={12} style={{ lineHeight: "50px" }}>
+
+                                                                                    <b style={{ width: "100%" }}> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
+                                                                                    <Grid item lg={6} sm={6}>
+
+                                                                                        <Typography className="subhesder">
+                                                                                            {cart.transSkuListByProductSku.skuWeight !== undefined && cart.transSkuListByProductSku.skuWeight !== null ? "Gold Weight" : ""}
+                                                                                        </Typography>
+                                                                                        {/* : ""} */}
+
+                                                                                        <Typography className="subhesder">
+                                                                                            {(cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight !== undefined) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight !== null) ? "Diamond Weight" : ""} </Typography>
+                                                                                        {/* : ""} */}
+                                                                                        {/* {cart.transSkuListByProductSku.generatedSku.length > 0 ? */}
+                                                                                        {/* : ""} */}
+
+                                                                                        {/* {cart.transSkuListByProductSku&&cart.transSkuListByProductSku.purity&&cart.transSkuListByProductSku.purity.length > 0 ? */}
+                                                                                        <Typography className="subhesder">
+                                                                                            {(cart.transSkuListByProductSku && cart.transSkuListByProductSku.purity && cart.transSkuListByProductSku.purity !== undefined) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.purity && cart.transSkuListByProductSku.purity !== null) > 0 ? "Metal" : ""}
+                                                                                        </Typography>
+                                                                                        {/* : ""} */}
+                                                                                        <Typography className="subhesder">
+                                                                                            {(cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize !== undefined) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize !== null) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize.length > 0)
+                                                                                                ?
+                                                                                                "Ring"
+                                                                                                : ""}
+                                                                                        </Typography>
+                                                                                        <Typography className="subhesder">
+                                                                                            {(cart.transSkuListByProductSku.generatedSku !== undefined) && (cart.transSkuListByProductSku.generatedSku !== null ? "Product Code" : "")}
+                                                                                        </Typography>
+                                                                                    </Grid>
+                                                                                    <Grid item lg={6} sm={6}>
+                                                                                        <Typography className="subhesder">
+                                                                                            {cart.transSkuListByProductSku.skuWeight + " " + "GM"}
+                                                                                        </Typography>
+                                                                                        <Typography className="subhesder">
+                                                                                            {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight + " " + "CT"}
+                                                                                        </Typography>
+
+                                                                                        <Typography className="subhesder">
+                                                                                            {cart.transSkuListByProductSku.purity + ""}{cart.transSkuListByProductSku.metalColor}
+                                                                                        </Typography>
+                                                                                        <Typography className="subhesder">
+                                                                                            {cart.transSkuListByProductSku.skuSize}
+                                                                                        </Typography>
+                                                                                        <Typography className="subhesder">
+                                                                                            {cart.transSkuListByProductSku.generatedSku}
+                                                                                        </Typography>  </Grid>
+                                                                                </Grid>
+                                                                            </Grid>
+                                                                            <Grid item lg={2} sm={2} style={{ padding: "16px" }}>
+                                                                                <Grid container spacing={12} lg={12}>
+                                                                                    <Typography className="subhesder">Quantity 1</Typography>
+                                                                                    <Typography className="subhesder">
+                                                                                        <img alt="" src="https://assets.stylori.com/images/static/icon-ship.png" /> <a>
+                                                                                            {this.generateShipsBy(cart.transSkuListByProductSku.readytoship, cart.transSkuListByProductSku.vendorDeliveryTime)}</a></Typography>
+                                                                                </Grid>
+                                                                            </Grid>
+
+
+                                                                            <Grid style={{ padding: "10px", justifyContent: "center", display: "flex", alignItems: "center" }} className="rups" item lg={3} sm={2}>
+                                                                                {Math.round(cart.discountPrice) > Math.round(cart.transSkuListByProductSku.markupPrice) ?
+                                                                                    <Pricing
+                                                                                        price={cart.transSkuListByProductSku.discountPrice}
+                                                                                        offerPrice={cart.transSkuListByProductSku.markupPrice}
+                                                                                        offerDiscount={"25% - OFF"}
+                                                                                    ></Pricing>
+                                                                                    : <Pricing
+                                                                                        offerPrice={cart.transSkuListByProductSku.markupPrice}
+                                                                                    ></Pricing>}<br />
+                                                                            </Grid>
+                                                                        </Grid></>
+                                                                )
+                                                        }
+                                                        )
+                                                        }
+
+                                                        <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
+                                                            Sub Total&nbsp;{this.calculatetotal(val)}<br />
+                                                            {val.shoppingCartByCartId.discount !== null? <div class={`subhesder`}>REGISTRATION : &nbsp;{val.shoppingCartByCartId.discount}</div>
+                                                             : ""}
+                                                            Shipping&nbsp;FREE<br />
+                                                            Shipping Insurance&nbsp;FREE<br />
+                                                            <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{Math.round(val.shoppingCartByCartId.discountedPrice)}
+                                                            </span></div>
+                                                        </div>
                                                     </div>
-                                                    <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}</span></div>
-                                                    {val && val.shoppingCartByCartId && val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId && val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => 
-                                                    
-                                                        {if(cart && cart.transSkuListByProductSku)
-                                                            return(
-                                                        <>
-                                                            <br />
-                                                            <Grid container spacing={12} lg={12} style={{ overflow: "hidden", outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px", color: "#394578" }}>
-                                                                <Grid item lg={2} sm={3}  >
-                                                                    {cart && cart.transSkuListByProductSku &&cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs =>
-                                                                        <>
-                                                                            {this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
-                                                                                cart.transSkuListByProductSku.metalColor) && this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
-                                                                                    cart.transSkuListByProductSku.metalColor).length > 0 ?
-                                                                                <div className="wishlist_img">
-                                                                                    <img className="viewport-img" src={this.ImageUrl(imgs, cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.generatedSku,
-                                                                                        cart.transSkuListByProductSku.metalColor)}
-                                                                                    />
-                                                                                </div> : ""}</>
 
-
-                                                                    )}
-                                                                </Grid>
-                                                                <Grid item lg={4} sm={4}>
-                                                                    <Grid container spacing={12} lg={12} style={{ lineHeight: "50px" }}>
-
-                                                                        <b style={{ width: "100%" }}> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
-                                                                        <Grid item lg={6} sm={6}>
-
-                                                                            <Typography className="subhesder">
-                                                                                {cart.transSkuListByProductSku.skuWeight !== undefined && cart.transSkuListByProductSku.skuWeight !== null ? "Gold Weight" : ""}
-                                                                            </Typography>
-                                                                            {/* : ""} */}
-
-                                                                            <Typography className="subhesder">
-                                                                                {(cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight !== undefined) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight !== null) ? "Diamond Weight" : ""} </Typography>
-                                                                            {/* : ""} */}
-                                                                            {/* {cart.transSkuListByProductSku.generatedSku.length > 0 ? */}
-                                                                            {/* : ""} */}
-
-                                                                            {/* {cart.transSkuListByProductSku&&cart.transSkuListByProductSku.purity&&cart.transSkuListByProductSku.purity.length > 0 ? */}
-                                                                            <Typography className="subhesder">
-                                                                                {(cart.transSkuListByProductSku && cart.transSkuListByProductSku.purity && cart.transSkuListByProductSku.purity !== undefined) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.purity && cart.transSkuListByProductSku.purity !== null) > 0 ? "Metal" : ""}
-                                                                            </Typography>
-                                                                            {/* : ""} */}
-                                                                            <Typography className="subhesder">
-                                                                                {(cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize !== undefined) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize !== null) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize.length > 0)
-                                                                                    ?
-                                                                                    "Ring"
-                                                                                    : ""}
-                                                                            </Typography>
-                                                                            <Typography className="subhesder">
-                                                                                {(cart.transSkuListByProductSku.generatedSku !== undefined) && (cart.transSkuListByProductSku.generatedSku !== null ? "Product Code" : "")}
-                                                                            </Typography>
-                                                                        </Grid>
-                                                                        <Grid item lg={6} sm={6}>
-                                                                            <Typography className="subhesder">
-                                                                                {cart.transSkuListByProductSku.skuWeight + " " + "GM"}
-                                                                            </Typography>
-                                                                            <Typography className="subhesder">
-                                                                                {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight + " " + "CT"}
-                                                                            </Typography>
-
-                                                                            <Typography className="subhesder">
-                                                                                {cart.transSkuListByProductSku.purity + ""}{cart.transSkuListByProductSku.metalColor}
-                                                                            </Typography>
-                                                                            <Typography className="subhesder">
-                                                                                {cart.transSkuListByProductSku.skuSize}
-                                                                            </Typography>
-                                                                            <Typography className="subhesder">
-                                                                                {cart.transSkuListByProductSku.generatedSku}
-                                                                            </Typography>  </Grid>
-                                                                    </Grid>
-                                                                </Grid>
-                                                                <Grid item lg={2} sm={2} style={{ padding: "16px" }}>
-                                                                    <Grid container spacing={12} lg={12}>
-                                                                        <Typography className="subhesder">Quantity 1</Typography>
-                                                                        <Typography className="subhesder">
-                                                                            <img alt="" src="https://assets-cdn.stylori.com/images/static/icon-ship.png" /> <a>
-                                                                                {this.generateShipsBy(cart.transSkuListByProductSku.readytoship, cart.transSkuListByProductSku.vendorDeliveryTime)}</a></Typography>
-                                                                    </Grid>
-                                                                </Grid>
-
-
-                                                                <Grid style={{ padding: "10px", justifyContent: "center", display: "flex", alignItems: "center" }} className="rups" item lg={3} sm={2}>
-                                                                    {Math.round(cart.discountPrice) > Math.round(cart.transSkuListByProductSku.markupPrice) ?
-                                                                        <Pricing
-                                                                            price={cart.transSkuListByProductSku.discountPrice}
-                                                                            offerPrice={cart.transSkuListByProductSku.markupPrice}
-                                                                            offerDiscount={"25% - OFF"}
-                                                                        ></Pricing>
-                                                                        : <Pricing
-                                                                            offerPrice={cart.transSkuListByProductSku.markupPrice}
-                                                                        ></Pricing>}<br />
-                                                                </Grid>
-                                                            </Grid></>
-                                                    )
-                                                    }
-                                                    )
-                                                    }
-
-                                                    <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
-                                                        Sub Total&nbsp;{this.calculatetotal(val)}<br />
-                                                        Shipping&nbsp;FREE<br />
-                                                        Shipping Insurance&nbsp;FREE<br />
-                                                        <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{this.calculatetotal(val)}
-                                                        </span></div>
-                                                    </div>
                                                 </div>
-
                                             </div>
-                                        </div>
 
-)
-                                })}
-                            </Container>
+                                        )
+                                    })}
+                                </Container>
                             </Container>
                             : <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Orders</div>}
 
@@ -491,4 +511,4 @@ class Allorders extends React.Component {
 }
 
 
-export default Allorders;
+export default withRouter(Allorders);

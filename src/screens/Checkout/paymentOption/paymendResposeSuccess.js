@@ -29,16 +29,16 @@ const breadcrumsdata = [
 const cartsubdata = [
    {
       name: "100% Certified Jewellery",
-      icon: "https://assets-cdn.stylori.com/images/static/icon-star.png"
+      icon: "https://assets.stylori.com/images/static/icon-star.png"
    }, {
       name: "Secure Payments",
-      icon: "https://assets-cdn.stylori.com/images/static/icon-lock.png"
+      icon: "https://assets.stylori.com/images/static/icon-lock.png"
    }, {
       name: "Free Insured Shipping",
-      icon: "https://assets-cdn.stylori.com/images/static/icon-van.png"
+      icon: "https://assets.stylori.com/images/static/icon-van.png"
    }, {
       name: "25-Day Returns",
-      icon: "https://assets-cdn.stylori.com/images/static/icon-return.png"
+      icon: "https://assets.stylori.com/images/static/icon-return.png"
    }
 ]
 var obj = {}
@@ -172,7 +172,7 @@ class PaymentResponseSuccess extends React.Component {
 
 // export default PaymentResponseSuccess;
 const Components = props => {
-   debugger
+   
    let { CartCtx: { cartFilters, data, loading, error, allorderdata,allordersuccesful, wishlistdata } } = React.useContext(CartContext);
    let content, mapped;
    if (!loading && !error) {
@@ -180,7 +180,7 @@ const Components = props => {
          mapped = cart(data);
       }
    }
-   if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
+   if (Object.keys(allordersuccesful).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
    else content = <PaymentResponseSuccess {...props} data={mapped} allorderdata={allordersuccesful} wishlistdata={wishlistdata} />
    // localStorage.setItem("a__w_l", wishlistdata && wishlistdata.length)
    return content
