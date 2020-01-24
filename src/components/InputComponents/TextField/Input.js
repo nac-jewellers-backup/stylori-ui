@@ -22,7 +22,10 @@ export const Input = props => {
     minLength,
     helperText,
     onChange,
+    rowsMax,
+    multiline,
     onInvalid,
+
     ...rest
   } = props;
 
@@ -59,6 +62,8 @@ export const Input = props => {
         style={{ width: "100%" }}
         onInvalid={handleInvalid}
         error={invalid}
+        multiline={multiline}
+        rowsMax={rowsMax}
         helperText={invalid && <b>{helperText}</b>}
         onKeyPress={handleKeyPress}
         onChange={handleChange}

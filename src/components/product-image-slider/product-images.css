@@ -31,7 +31,7 @@ body {
     margin: 4px 0px 10px 0px;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 959px) {
     .containbev {
         box-shadow: none !important;
         padding: 5px 8px 0px 8px;
@@ -137,7 +137,7 @@ body {
 }
 
 .discount {
-    flex: 0.7;
+    /* flex: 0.7; */
     color: white;
     text-align: center;
     font-weight: bold;
@@ -185,7 +185,7 @@ body {
     /* flex-direction: column;
     padding: 5px; */
     background: #fff !important;
-    border: 1px solid #DBDBDB !important;
+    border: 2px solid #DBDBDB;
     /* align-items: center !important;
     outline: none !important;
     margin-bottom: 5px; */
@@ -490,7 +490,7 @@ body {
     display: block;
     width: 98% !important;
     height: 42px !important;
-    line-height: 42px !important;
+    line-height: 26px !important;
     padding: 0 5px !important;
     font-size: 13px;
     line-height: 1.42857143;
@@ -548,7 +548,7 @@ body {
 }
 
 .rating-form-head {
-    font-size: 13px;
+    font-size: 16px !important;
     margin-top: 10px;
     margin-bottom: 10px;
     font-weight: 600;
@@ -682,7 +682,7 @@ body {
 }
 
 .reviews-customer {
-    font-size: 13px !important;
+    font-size: 16px !important;
     padding: 0 15px !important;
     font-weight: 600 !important;
 }
@@ -912,7 +912,7 @@ body {
 
 .like-page {
     color: #394578 !important;
-    font-size: 13px !important;
+    font-size: 16px !important;
     font-weight: 400 !important;
     padding-left: 35% !important;
     border-right: 1px solid #ccc;
@@ -926,7 +926,7 @@ body {
 
 .recenetly-like-page {
     color: #394578 !important;
-    font-size: 13px !important;
+    font-size: 16px !important;
     padding-left: 5% !important;
     cursor: pointer;
 }
@@ -1219,7 +1219,7 @@ body {
     color: #394578 !important;
     cursor: pointer;
     outline: none !important;
-    border: 1px solid #ccc !important;
+    border: 2px solid #DBDBDB !important;
     font-weight: bold !important;
 }
 
@@ -1277,9 +1277,10 @@ body {
         color: #394578 !important;
         width: 100% !important;
         font-weight: 600;
-        text-align: left !important;
+        text-align: center !important;
         font-size: 11px !important;
-        padding: 5px 0px 0px 10px;
+        /* dis */
+        padding: 5px 0px 0px 0px;
     }
 
     .rings_tabsvls_active {
@@ -1287,8 +1288,8 @@ body {
         color: #394578 !important;
         width: 100% !important;
         font-weight: 600 !important;
-        text-align: left !important;
-        padding: 5px 0px 0px 10px;
+        text-align: center !important;
+        padding: 5px 0px 0px 0px;
 
     }
 }
@@ -1507,6 +1508,7 @@ body {
     .pricing-product-media {
         padding-left: 5% !important;
         padding-right: 5% !important;
+        /* padding: 15px 0px 0px 0px !important */
     }
 
     .pricing-breadcrums-media {
@@ -1557,7 +1559,11 @@ body {
 
 .darkouter {
     border-radius: 100%;
-    border: 2px solid #CDD0DD !important;
+    border: 2px solid #d91965 !important;
     padding: 1px
         /* width: 45px; */
+}
+
+.bigText textarea {
+    height: 80px !important
 }

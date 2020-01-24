@@ -1,4 +1,14 @@
 const styles = theme => ({
+    searchCheck: {
+        paddingRight: "12px",
+        paddingLeft: "12px",
+        marginTop: "12px",
+        [theme.breakpoints.down('sm')]: {
+            marginTop: "12px",
+            paddingRight: "16px",
+            paddingLeft: "16px",
+        }
+    },
     title: {
         [theme.breakpoints.down('lg')]: {
             fontSize: '15px',
