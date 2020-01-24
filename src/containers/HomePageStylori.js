@@ -145,7 +145,7 @@ class HomeStylori extends React.Component {
               style={{ paddingTop: "6px" }}
             >
               <Typography
-                style={{ height: "55px", width: "100%", textAlign: "center" }}
+                style={{ width: "100%", textAlign: "center" }}
               >
                 <Slideshow dataCarousel={dataCarousel}>
                   {productsubHead.map((val, index) => (
@@ -169,9 +169,9 @@ class HomeStylori extends React.Component {
                     </>
                   ))}
                 </Slideshow>
-                <Grid style={{ width: "100%" }}>
+                {/* <Grid style={{ width: "100%" }}>
                   <div className="loaders"></div>
-                </Grid>
+                </Grid> */}
               </Typography>
             </Grid>
           </Grid>
@@ -183,7 +183,7 @@ class HomeStylori extends React.Component {
             style={{
               padding: "10px 15px",
               width: "100%",
-              borderBottom: "1px solid #eeeeee"
+              // borderBottom: "1px solid #eeeeee"
             }}
           >
             <StaticView />
