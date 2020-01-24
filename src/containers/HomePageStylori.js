@@ -47,27 +47,27 @@ class HomeStylori extends React.Component {
     const productsubHead = [
       {
         name: "From the House of NAC",
-        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg",
+        icon: "https://assets.stylori.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg",
         class: "image1"
       },
       {
         name: "Certified Jewellery",
-        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static%20Pages/Other%20Pages/certifiedjewellery-pink.svg",
+        icon: "https://assets.stylori.com/images/Static%20Pages/Other%20Pages/certifiedjewellery-pink.svg",
         class: "image2"
       },
       {
         name: "Free Shipping",
-        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/securepayments-pink.svg",
+        icon: "https://assets.stylori.com/images/Static+Pages/Other+Pages/securepayments-pink.svg",
         class: "image3"
       },
       {
         name: "Diverse Styles",
-        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/diversestyles-pink.svg",
+        icon: "https://assets.stylori.com/images/Static+Pages/Other+Pages/diversestyles-pink.svg",
         class: "image4"
       },
       {
         name: "Easy Returns",
-        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Other+Pages/easyreturns-pink.svg",
+        icon: "https://assets.stylori.com/images/Static+Pages/Other+Pages/easyreturns-pink.svg",
         class: "image5"
       }
     ];
@@ -83,13 +83,13 @@ class HomeStylori extends React.Component {
             <meta property="og:title" id="fb-title" content="Online Jewellery Shopping in India - Gold and Diamond Jewellery Online" />
             <meta property="og:description" content="Buy Gold and Diamond Jewellery Shopping Online from Stylori.com with variety of products like Pendants, Gold Rings, Bangles, Earrings" />
             <meta property="og:url" id="fb-product-url" content={window.location.href} />
-            <meta property="og:image" id="fb_imageUrl" content="https://styloriimages.s3.ap-south-1.amazonaws.com/stylori-logo.svg" />
+            <meta property="og:image" id="fb_imageUrl" content="https://assets.stylori.com/stylori-logo.svg" />
 
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:site" content="@StyloriLove" />
             <meta name="twitter:title" id="twitter-title" content="Online Jewellery Shopping" />
             <meta name="twitter:description" content="Buy Gold and Diamond Jewellery Shopping Online from Stylori.com with variety of products like Pendants, Gold Rings, Bangles, Earrings" />
-            <meta name="twitter:image" id="twitter_imageUrl" content="https://styloriimages.s3.ap-south-1.amazonaws.com/stylori-logo.svg" />
+            <meta name="twitter:image" id="twitter_imageUrl" content="https://assets.stylori.com/stylori-logo.svg" />
             {/* <meta name="google-site-verification" content="6I1mw4ayVxUxw1AZYP_BK73mXUaajhhhYyYl3Qv0E60" /> */}
           </MetaTags>
 

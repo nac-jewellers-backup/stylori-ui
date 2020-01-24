@@ -91,16 +91,16 @@ import moment from "moment";
 // export const cartsubdata = [
 //     {
 //         name: "100% Certified   Jewellery  ",
-//         icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-star.png"
+//         icon: "https://assets.stylori.com/images/static/icon-star.png"
 //     }, {
 //         name: " Secure  Payments   ",
-//         icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-lock.png"
+//         icon: "https://assets.stylori.com/images/static/icon-lock.png"
 //     }, {
 //         name: "  Free Insured    Shipping   ",
-//         icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-van.png"
+//         icon: "https://assets.stylori.com/images/static/icon-van.png"
 //     }, {
 //         name: "  25 - Day   Returns   ",
-//         icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-return.png"
+//         icon: "https://assets.stylori.com/images/static/icon-return.png"
 //     }
 // ]
 
@@ -244,16 +244,16 @@ export default function (data) {
                 cartsubdata: [
                     {
                         name: "100% Certified   Jewellery  ",
-                        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-star.png"
+                        icon: "https://assets.stylori.com/images/static/icon-star.png"
                     }, {
                         name: " Secure  Payments   ",
-                        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-lock.png"
+                        icon: "https://assets.stylori.com/images/static/icon-lock.png"
                     }, {
                         name: "  Free Insured    Shipping   ",
-                        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-van.png"
+                        icon: "https://assets.stylori.com/images/static/icon-van.png"
                     }, {
                         name: "  25 - Day   Returns   ",
-                        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-return.png"
+                        icon: "https://assets.stylori.com/images/static/icon-return.png"
                     }
                 ]
             }

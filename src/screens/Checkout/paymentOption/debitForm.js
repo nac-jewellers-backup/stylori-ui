@@ -89,7 +89,7 @@ class Debitform extends React.Component {
                                         <Grid spacing={12} container>
                                             <Grid item lg={6} xs={4}>
                                                 <div className="credit-img">
-                                                    <img className="imd-credit" src="https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icons/cvv.png" />
+                                                    <img className="imd-credit" src="https://assets.stylori.com/images/static/icons/cvv.png" />
                                                 </div>
                                             </Grid>
                                             <Grid item lg={6} xs={8}>
