@@ -109,5 +109,6 @@ const Components = props => {
   return content
 }
 
+console.log('asjhdjka')
 
 export default withRouter(Components);
