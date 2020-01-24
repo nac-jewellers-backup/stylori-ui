@@ -110,4 +110,6 @@ const Components = props => {
 }
 
 
+console.log('gasdhgahdga')
+
 export default withRouter(Components);
