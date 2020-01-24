@@ -120,7 +120,7 @@ debugger
             </div>
             <div>
                 {/* <label>Chargetotal</label> */}
-                <input size="50" type="" name="chargetotal" value={`${props.data}`} />
+                <input size="50" type="hidden" name="chargetotal" value={`${props.data}`} />
             </div>
             <div>
                 {/* <label>successpage</label> */}
