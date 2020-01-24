@@ -16,6 +16,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import moment from "moment";
 import Pricing from "../Pricing/index";
 import { CDN_URL } from "config"
+import { withRouter } from 'react-router-dom';
 const order_id = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : ""
 var img_res;
 var img_res_X_2 = null;
@@ -160,7 +161,7 @@ class Allorders extends React.Component {
         return (
             <>
                 {/* allorderdata.nodes */}
-                {window.location.pathname.split("-")[0] === "/account" ?
+                {this.props.location.pathname.split("-")[0] === "/account" ?
                     <div className='pt-sm checkout-ovralldiv-media' >
                            
                         {allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes &&  allorderdata.allorderdata.nodes.length > 0 ?
@@ -510,4 +511,4 @@ debugger
 }
 
 
-export default Allorders;
+export default withRouter(Allorders);
