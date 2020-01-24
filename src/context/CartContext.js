@@ -27,15 +27,17 @@ const initialCtx = {
             tax_price: '',
             reload: "",
             jewellery: "",
-            _cart_id: {}
+            _cart_id: {},
+            
 
         },
-        loading: false, error: false, data: [], allorderdata: [], wishlistdata: [], wishlist_count: []
+        loading: false, error: false, data: [], allorderdata: [], wishlistdata: [], wishlist_count: [], noproducts:false
     },
     setCartFilters: (filterData) => { },
     setallorderdata: () => { },
     setwishlist_count: () => { },
     setwishlistdata: () => { },
+    setNoproducts:()=>{}
     // setCartId:() =>{}
 }
 export const CartContext = React.createContext(initialCtx);
@@ -45,6 +47,7 @@ const Provider = (props) => {
     const [allorderdata, setallorderdata] = React.useState([])
     const [wishlistdata, setwishlistdata] = React.useState([])
     const [wishlist_count, setwishlist_count] = React.useState([])
+    const[noproducts,setNoproducts]=React.useState(false)
     // const [_cart_id, setCartId] = React.useState([])
     // console.log("hdjhjhkjfh", allorderdata)
     var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
@@ -306,7 +309,7 @@ const Provider = (props) => {
             })
                 .then(status)
                 .then(json).then(async val => {
-
+                    debugger
                     if (val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length > 0 &&
                         val.data.allShoppingCarts.nodes[0].status !== "pending") {
                         // alert(val.data.allShoppingCarts.nodes[0].status)
@@ -347,31 +350,81 @@ const Provider = (props) => {
                     else {
                         // alert(JSON.stringify(val.data.allShoppingCarts.nodes.length>0))
                         // if(val.data.allShoppingCarts.nodes.length>0){
-                        localStorage.setItem("cart_id", JSON.stringify({ cart_id: val.data.allShoppingCarts.nodes[0].id }))
-                        var _conditionfetch = {
-                            "CartId": { "shoppingCartId": val.data.allShoppingCarts.nodes[0].id }
-                        }
-                        fetch(`${API_URL}/graphql`, {
-                            method: 'post',
-                            // body: {query:seoUrlResult,variables:splitHiphen()}
-                            // body: JSON.stringify({query:seoUrlResult}),
-
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({
-                                query: FetchSku,
-                                variables: { ..._conditionfetch },
-                            })
-                        }).then(status)
-                            .then(json)
-                            .then(async function (data) {
-                                console.log(data, "parse_result_data")
-                                var _data = data.data.allShoppingCartItems.nodes.filter(val => { if (val.transSkuListByProductSku) return val }).map(val => { return val.transSkuListByProductSku.generatedSku })
-                                variables = { "productList": _data }
-
-                                makeRequest(variables);
-                            })
+                            if(val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length>0 && val.data.allShoppingCarts.nodes[0] && val.data.allShoppingCarts.nodes[0].id){
+                                localStorage.setItem("cart_id", JSON.stringify({ cart_id: val.data.allShoppingCarts.nodes[0].id }))
+                                var _conditionfetch = {
+                                    "CartId": { "shoppingCartId": val.data.allShoppingCarts.nodes[0].id }
+                                }
+                                fetch(`${API_URL}/graphql`, {
+                                    method: 'post',
+                                    // body: {query:seoUrlResult,variables:splitHiphen()}
+                                    // body: JSON.stringify({query:seoUrlResult}),
+        
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        query: FetchSku,
+                                        variables: { ..._conditionfetch },
+                                    })
+                                }).then(status)
+                                    .then(json)
+                                    .then(async function (data) {
+                                        console.log(data, "parse_result_data")
+                                        var _data = data.data.allShoppingCartItems.nodes.filter(val => { if (val.transSkuListByProductSku) return val }).map(val => { return val.transSkuListByProductSku.generatedSku })
+                                        variables = { "productList": _data }
+        
+                                        makeRequest(variables);
+                                    })
+                            }
+                            else{
+                                // JSON.parse(sessionStorage.getItem("updatedProduct"))
+                                if(sessionStorage.getItem("updatedProduct")){
+                                    _user_id = { user_id: localStorage.getItem('user_id') }
+                                    
+                                    _products = { products: [JSON.parse(sessionStorage.getItem("updatedProduct"))] }
+                                     _obj = { ..._user_id, ..._products }
+                                    fetch(`${API_URL}/addtocart`, {
+                                        method: 'post',
+                                        // body: {query:seoUrlResult,variables:splitHiphen()}
+                                        // body: JSON.stringify({query:seoUrlResult}),
+            
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({
+                                            ..._obj,
+                                        })
+                                    }).then(status)
+                                        .then(json)
+                                        .then(async function (data) {
+                                            console.log(data, "parse_result_data_______parse_result_data")
+                                            debugger
+                                            if (data && data.data && data.data.allShoppingCartItems && data.data.allShoppingCartItems.nodes && data.data.allShoppingCartItems.nodes.length > 0) {
+                                                var _data = data.data.allShoppingCartItems.nodes.filter(val => { if (val.transSkuListByProductSku) return val }).map(val => { return val.transSkuListByProductSku.generatedSku })
+                                                variables = { "productList": _data }
+            
+                                                makeRequest(variables);
+                                            }
+                                            else {
+                                                return []
+                                            }
+            
+                                        })
+                                }
+                                else{
+                                    return {
+                                        "data": {
+                                          "allShoppingCarts": {
+                                            "nodes": []
+                                          }
+                                        }
+                                      } 
+                                }
+                               
+                                // cartFilters, setCartFilters
+                            }
+                       
                         // }
 
                     }
@@ -495,10 +548,10 @@ const Provider = (props) => {
     }, [])
 
     const CartCtx = {
-        cartFilters, loading, error, wishlist_count, data, setCartFilters, allorderdata, wishlistdata, allordersuccesful
+        cartFilters, loading, error, wishlist_count, data, setCartFilters, allorderdata, wishlistdata, allordersuccesful, noproducts
     }
     return (
-        <CartContext.Provider value={{ CartCtx, setwishlist_count, setCartFilters, setallorderdata, setwishlistdata }} >
+        <CartContext.Provider value={{ CartCtx, setwishlist_count, setCartFilters, setallorderdata, setwishlistdata, setNoproducts }} >
             {props.children}
         </CartContext.Provider>
     )
