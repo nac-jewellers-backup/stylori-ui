@@ -113,7 +113,7 @@ const useLogin = (changePanel, props) => {
                     return false
                 } else {
                     console.clear()
-                    window.location.href = "/home"
+                    window.location.href = "/"
                     return false
                 }
             }

@@ -36,7 +36,7 @@ const LoginComponent = (props) => {
     }
     const responseFacebook = response => {
         if (response.status !== "unknown") {
-            props.history.push('/home')
+            props.history.push('/')
         }
     }
     return (

@@ -44,7 +44,7 @@ class ProductDescription extends Component {
     var loc = this.props.location.pathname;
 
     var path = loc.split('/');
-    var data_json = [{ title: 'home', url: '/home' }, { title: 'jewellery', url: "/jewellery" }]
+    var data_json = [{ title: 'home', url: '/' }, { title: 'jewellery', url: "/jewellery" }]
     // const descriptionData = this.props.data;
     const settings = this.props.data && this.props.data[0] && this.props.data[0].dataCarousel;
     const fadeImages = this.props.data && this.props.data[0] && this.props.data[0].carouselImage;

@@ -44,7 +44,7 @@ export default function CustomSeparator(props) {
   const handleUrl = (data) => {
     let  dataurl = data.toLowerCase()
     if (dataurl === "home") {
-      return window.location.href = "/home"
+      return window.location.href = "/"
     }
     else if (dataurl === "jewellery") {
       return window.location.href = "/jewellery"
