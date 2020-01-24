@@ -53,7 +53,7 @@ const ContinuesComponent = (props) => {
                                         minLength={6}
                                         // error={edata ? true : false}
                                         helperText="Please enter your otp"
-                                        placeholder="Please enetr your otp"
+                                        placeholder="Please enter your otp"
                                         onChange={e => handlers.handleChange("otp", e.target.value)}
                                         onKeyPress={e => {
                                             if (!(e.which >= 48 && e.which <= 57)) e.preventDefault()
@@ -73,8 +73,8 @@ const ContinuesComponent = (props) => {
                                         value={email.email}
                                         onChange={e => handlers.handleChange("email", e.target.value)}
                                         // error={edata ? true : false}
-                                        placeholder="Please enetr your email Id"
-                                        helperText="Please enter your Email Id"
+                                        placeholder="Please enter your email id"
+                                        helperText="Please enter your email id"
                                         required
                                     />
                                     <p className={`form-group ${classes.normalfonts}`}> We don't share these with anybody. Your contact details are secure with us. </p>

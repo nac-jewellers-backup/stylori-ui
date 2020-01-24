@@ -74,7 +74,8 @@ class Sublistcarousel extends React.Component {
       dots: false,
       infinite: true,
       accessibility: true,
-      speed: 500,
+      speed: 2500,
+      // fade: true,
       slidesToShow: this.state.dataToShow === "YouMayLike" ? data && data[0] && data[0].fadeImageSublist.length > 4 ? limit : data && data[0] && data[0].fadeImageSublist.length :
         data && data[0] && data[0].fadeImageSublistRecentlyViewed.length > 4 ? limit : data && data[0] && data[0].fadeImageSublistRecentlyViewed.length
       ,

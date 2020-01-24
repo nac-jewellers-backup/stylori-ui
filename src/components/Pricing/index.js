@@ -28,15 +28,11 @@ export default function Pricing(props) {
                 {/* <Grid item xs={12}lg={12} >
                     <Grid spacing={12} container xs={12} lg={12} class="leftPadding"> */}
                 {window.location.pathname !== "/cart" && window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/checkout" ?
-                    <>
-                        <Grid item xs={12}
-                            xs={window.location.pathname !== "/cart" && window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/checkout" ? 2 : 12}
-                        >
+                    <Grid container>
+                        <Grid item >
                             {props.offerPrice ?
                                 <Typography style={{ display: "flex", width: '100%' }}>
                                     <Typography
-                                        variant="h6"
-                                        component="h6"
                                         className={`${props.offerPrice != null & props.offerPrice !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
                                     >
                                         {/* ₹&nbsp;{props.offerPrice} */}
@@ -44,20 +40,17 @@ export default function Pricing(props) {
                                     </Typography>
                                 </Typography> : ""}
                         </Grid>
-                        <Grid item
-                            xs={12}
-                            lg={12}>
+                        <Grid item style={{ display: "flex", alignItems: "flex-end" }}>
                             {props.price ?
-                                <Typography style={{ display: "flex", width: '100%', marginTop: "5px" }}>
-                                    <Typography
-                                        // variant="caption"
+                                <Typography style={{ display: "flex", width: '100%', paddingLeft: "8px" }}>
+                                    <Typography style={{ fontSize: "0.9rem" }}
                                         className={`pricing-p${props.price != null & props.price !== '' ? '' : 'shine'} ${classes.deletePrice} ${classes.dis}`}
-                                    // component="p"
                                     >
                                         {props.offerPrice === props.price ? "" : <del>₹&nbsp;{Math.round(props.price)}</del>}
                                     </Typography>
                                 </Typography> : ""}
-                        </Grid></> :
+                        </Grid></Grid>
+                    :
                     <>
                         <Grid item
                             xs={12}

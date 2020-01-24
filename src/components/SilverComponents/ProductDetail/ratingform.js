@@ -22,11 +22,11 @@ const RatingComponent = (props) => {
 
     return (
         <Container className="bg-clr2">
-            <div className="bg-clr2 priceecontainer" style={{ padding: "10px" }}>
+            <div className="bg-clr2 priceecontainer" style={{ padding: "20px" }}>
                 <form id="Resetform" action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e, props)}>
                     <Grid container spacing={12} style={{ marginTop: '20px' }}>
-                        <Grid item lg={1} />
-                        <Grid item xs={12} lg={8}>
+                        {/* <Grid item lg={1}  */}
+                        <Grid item xs={12} lg={12}>
                             <div className="rating-form ">
                                 <h5 className={`rating-form-head ${classes.normalfonts}`}>Rate This</h5>
                                 <label className='errtext'> {values.errortext.rateerr ? values.errortext.rateerr : ""}</label>

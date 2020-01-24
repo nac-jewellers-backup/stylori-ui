@@ -20,7 +20,7 @@ const RegisterComponent = (props) => {
 
 
     return (
-        <div className='pt-sm'> 
+        <div className='pt-sm'>
             <form onSubmit={(e) => {
                 handlers.handleSubmit(e)
             }} action="javascript:void(0)" >
@@ -100,7 +100,7 @@ const RegisterComponent = (props) => {
                                         value={values.confirmpassword}
                                         error={values.error && values.error.cnfpasserr ? true : false}
                                         // helperText={values.errortext && values.errortext.cnfpasserr}
-                                        placeholder="Enter your Confirm password"
+                                        placeholder="Enter your confirm password"
                                         onChange={e => handlers.handleChange('confirmpassword', e.target.value)}
                                     />
                                     <label className='errtext'> {values.errortext && values.errortext.cnfpasserr}</label>
@@ -120,7 +120,7 @@ const RegisterComponent = (props) => {
                                             value={values.firstname}
                                             error={values.error && values.error.firstname ? true : false}
                                             // helperText={values.errortext && values.errortext.firstname}
-                                            placeholder="Enter FirstName*"
+                                            placeholder="First name*"
                                             onChange={e => handlers.handleChange('firstname', e.target.value)}
                                             className='text-f'
                                         // helperText=""
@@ -151,7 +151,7 @@ const RegisterComponent = (props) => {
                                             type="text"
                                             name="firstname"
                                             value={valuesadrees.firstname}
-                                            placeholder="Enter FirstName*"
+                                            placeholder="First name*"
                                             onChange={e => handlers.handlesetvaluesadrees('firstname', e.target.value)}
                                             className='text-f'
                                             helperText="Firstname is required"
@@ -164,7 +164,7 @@ const RegisterComponent = (props) => {
                                             type="text"
                                             name="lastname"
                                             value={valuesadrees.lastname}
-                                            placeholder="Enter LastName*"
+                                            placeholder="Last name*"
                                             onChange={e => handlers.handlesetvaluesadrees('lastname', e.target.value)}
                                             className='text-f'
                                             helperText="Lastname is required"

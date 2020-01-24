@@ -167,7 +167,8 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
 
                                 <Grid item xs={12} lg={3} md={3} style={{
                                     display: "flex",
-                                    lineHeight: "20px"
+                                    lineHeight: "20px",
+                                    justifyContent:"flex-end"
                                 }}>
                                     <Hidden smDown>
                                         <div className="starts product-icons" style={{ fontFamily: "fontawesome" }} >
@@ -227,7 +228,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
 
 
                     <Hidden smDown>
-                        <div className={classes.width} style={{ padding: "0px 10px  10px 10px " }}>
+                        <div className={classes.width} style={{ padding: "0px 10px  0px 10px " }}>
                             {data[0].price === data[0].offerPrice ?
 
                                 <Pricing

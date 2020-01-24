@@ -167,7 +167,8 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
 
                                 <Grid item xs={12} lg={3} md={3} style={{
                                     display: "flex",
-                                    lineHeight: "20px"
+                                    lineHeight: "20px",
+                                    justifyContent:"flex-end"
                                 }}>
                                     <Hidden smDown>
                                         <div className="starts product-icons" style={{ fontFamily: "fontawesome" }} >

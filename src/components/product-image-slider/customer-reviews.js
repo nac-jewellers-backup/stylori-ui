@@ -88,15 +88,15 @@ class CustomerReviews extends React.Component {
             autoplaySpeed: 4000,
             arrows: false
         };
- 
+
         // const { productsubHead } = this.props.data
         const { classes, data } = this.props;
         const { starsSelected } = this.state;
         return (
-            <div style={{width:"100%"}}>
+            <div style={{ width: "100%" }}>
                 <Hidden smDown>
-                    <Container>
-                        <div className="pricing-product-media" >
+                    <Container style={{ paddingLeft: "0px", paddingRight: "0px" }}>
+                        <div className="pricing-product-media" style={{ padding: " 15px 0px 0px 0px!important" }}>
                             <div className="reviews-header">
                                 <span className={`reviews-customer ${classes.normalfonts}`}>Customer Reviews</span>
                             </div>
@@ -122,13 +122,13 @@ class CustomerReviews extends React.Component {
                                 <i class="fa fa-sort-up" ></i></span>}>
                                 <div style={{ width: "100%" }} >
                                     <Typography className={`subtabs-smrt ${classes.normalfonts}`}>You recently viewed</Typography> */}
-                                    {/* <hr class="bottom-line border-line-"></hr> */}
-                                {/* </div>
+                {/* <hr class="bottom-line border-line-"></hr> */}
+                {/* </div>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails> */}
-                                {/* <Sublistcarousel/> */}
+                {/* <Sublistcarousel/> */}
 
-                                {/* <Typography style={{ height: "40px", width: "100%", textAlign: "center" }}>
+                {/* <Typography style={{ height: "40px", width: "100%", textAlign: "center" }}>
                                     <Slideshow dataCarousel={dataCarousel}>
                                         {this.props.data[0].productsubHead.map(val => (
                                             <div key={val.name} className="wrappercustom">
@@ -139,7 +139,7 @@ class CustomerReviews extends React.Component {
                                     </Slideshow>
                                     <div className="loader"></div>
                                 </Typography> */}
-                            {/* </ExpansionPanelDetails>
+                {/* </ExpansionPanelDetails>
                         </ExpansionPanel>
                     </Container> </Hidden> */}
             </div>

@@ -195,6 +195,7 @@ debugger
                                     <div style={{ marginTop: "15%" }}>
                                         {dataval.dataCard1.map(val =>
                                             <Pricing
+                                            detail= {dataval}
                                                 offerDiscount={"25% - OFF"}
                                                 price={val.price}
                                                 offerPrice={val.offerPrice} >

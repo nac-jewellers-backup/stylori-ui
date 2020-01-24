@@ -99,7 +99,7 @@ class Component extends React.Component {
             // debugger
             // this.setState({skuSize:filters})
             this.setState({
-                skuSize: filters['defaultVariants']["skuSize"] ,
+                skuSize: filters['defaultVariants']["skuSize"],
                 diamondType: filters.defaultVariants.diamondType
             })
             this.props.setFilters(filters);
@@ -332,9 +332,10 @@ class Component extends React.Component {
                                                     <Grid item lg={1} xs={2} className={classes.normalfonts_tabs}>
                                                         <div style={{ display: "flex", justifyContent: "center" }}>
                                                             <div
-                                                                style={this.state.purity === val ? { border: "2px solid" + this.imageRender(val), borderRadius: "100%", padding: "1px" } : { border: "2px solid #fff", borderRadius: "100%", padding: "1px" }}
+                                                                style={this.state.purity === val ? { border: "2px solid #d91965", borderRadius: "100%", padding: "1px" } : { border: "2px solid #fff", borderRadius: "100%", padding: "1px" }}
                                                             >
                                                                 <button
+                                                                    style={{ border: "2px solid" + this.imageRender(val) }}
                                                                     className={'pagetabs tabs-valus'}
                                                                     id={val} color={arrColor}
                                                                     onClick={event => this.handleClick(event, 'purity')}

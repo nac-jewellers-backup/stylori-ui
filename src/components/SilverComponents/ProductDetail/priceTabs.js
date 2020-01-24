@@ -269,7 +269,7 @@ class Component extends React.Component {
                                                 return (
                                                     <Grid item lg={2} xs={2} style={{ marginLeft: "5px", textAlign: "center" }}>
                                                         <button
-                                                            style={{ border: "1px solid" + this.imageRender(val) }}
+                                                            style={{ border: "2px solid" + this.imageRender(val) }}
                                                             className={this.state.purity === val ? 'darktabs tabs-valus' : 'pagetabs tabs-valus'}
                                                             id={val} color={arrColor}
                                                             onClick={event => this.handleClick(event, 'purity')}

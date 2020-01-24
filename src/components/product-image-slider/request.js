@@ -143,7 +143,7 @@ class Request extends React.Component {
                                         onInvalid={e => handleError(e)}
                                         error={errors.mobileNo ? true : false}
                                         helperText={errors.mobileNo ? errorMessage.mobileNo : ''}
-                                        placeholder="909419****"
+                                        placeholder="Enter your mobile number"
                                         className="request-text"
                                         onChange={event => handleChange(event, 'mobileNo')}
                                         onKeyPress={event => { this.handleKeyPress(event, 'isNumber') }}
@@ -186,7 +186,7 @@ class Request extends React.Component {
 
                 <Hidden smDown>
                     {/* <Form children={this.Requestform} inputvalues={this.state.values} /> */}
-                    <Grid style={{borderRadius:"5px", boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", widt: "100%" }}>
+                    <Grid style={{ borderRadius: "5px", boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", widt: "100%" }}>
                         {this.Requestform(errors, this.handleError, errorMessage, this.handleChange)}
 
                     </Grid>
@@ -199,7 +199,7 @@ class Request extends React.Component {
                         <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 5px" }} expanded={expanded === 'panel3'} onChange={this.handle('panel3')}>
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
-                                id="panel1a-header" 
+                                id="panel1a-header"
                             >
                                 <div style={{ width: "100%" }} >
                                     <Typography className={`product-details-smrt ${classes.normalfonts}`}>Ask Our Expert</Typography>

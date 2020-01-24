@@ -34,9 +34,8 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
 
     console.info('object2', props.filters)
     return (
-        <div style={{
-            marginTop: "12px", paddingRight: "20px",
-            paddingLeft: "15px"
+        <div className={classes.searchCheck} style={{
+
         }}>
             {data[0].ProductContactNum.map(val =>
                 <Grid container spacing={12} className={classes.shadow}>
@@ -87,7 +86,7 @@ const Buydetails = (props, state, handleChanges, handleCodChange, canceldeletech
             {data[0].ProductContactNum.map(val =>
                 <>
                     <Grid container spacing={12} style={{ padding: "0 10px" }}>
-                        <Grid item xs={12} lg={4} style={{ marginRight: "15px" }}>
+                        <Grid item xs={12} lg={4} style={{}}>
                             {/* <NavLink to="/cart" style={{ textDecoration: 'none' }} onClick={handleLocalStorage.bind(this)}> */}
                             <div onClick={handleLocalStorage.bind(this)}>
                                 <Buynowbutton sku={data[0].skuId} class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
@@ -96,7 +95,7 @@ const Buydetails = (props, state, handleChanges, handleCodChange, canceldeletech
                             <CommenDialog isOpen={state.modelOpen} content={`Verify selected product details before proceeding`} handleClose={canceldeletechecklist} handleSuccess={deletechecklists} negativeBtn="No" positiveBtn="Yes" title="Confirmation" />
                         </Grid>
 
-                        <Grid item container alignContent="center" alignItems="center" xs={12} lg={7} >
+                        <Grid item container alignContent="center" alignItems="center" xs={12} lg={8} style={{ padding: "0px 0px 0px 25px" }}>
                             <Grid>
                                 <Grid item lg={12} xs={12} className={`buy-subheaders nd-hlp ${classes.normalfonts}`}>Need Help ?</Grid>
                             </Grid>
@@ -196,18 +195,17 @@ class Component extends React.Component {
 
     handleLocalStorage = () => {
 
-        if (this.props.data && this.props.data[0].productType === "Rings") {
-            this.setState({
-                modelOpen: true,
-            })
-        }
-        else {
-            this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
-            // alert('haii')
+        // if (this.props.data && this.props.data[0].productType === "Rings") {
+        this.setState({
+            modelOpen: true,
+        })
+        // }
+        // else {
+        // this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
 
-            sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
-            window.location.pathname = "/cart"
-        }
+        // sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
+        // window.location.pathname = "/cart"
+        // }
 
     }
 

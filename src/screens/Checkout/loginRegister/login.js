@@ -92,7 +92,7 @@ const LoginComponent = (props) => {
                     </div>
                     <div className='login-butn'>
                         {window.location.pathname === "/login" ? "" : <Button className='back-b' onClick={() => clear()} >Back</Button>}
-                        <Button className='apply-b' type="submit"> {window.location.pathname === "/login" ? "Login" : "Apply"}</Button>
+                        <Button className='apply-b' type="submit"> {window.location.pathname === "/login" ? "Login" : "Login"}</Button>
                     </div>
                 </Grid>
             </form>
