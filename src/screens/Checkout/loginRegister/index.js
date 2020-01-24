@@ -36,9 +36,11 @@ class LoginRegisterIndex extends React.Component {
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
         let set_check = localStorage.getItem("set_check") ? localStorage.getItem("set_check") : ""
         const local_mail = localStorage.getItem("email") ? localStorage.getItem("email") : ""
+        const local_mail_id = localStorage.getItem("_mail_") ? localStorage.getItem("_mail_") : null
         return (
             <Grid container>
-                {local_mail ?
+
+                {localStorage.getItem("_mail_")===null && local_mail ?
                     <div style={{ paddingLeft: "30px" }}> <span style={{
                         color: "#394578",
                         fontSize: "15px",
@@ -102,7 +104,8 @@ class LoginRegisterIndex extends React.Component {
                             }} />
                         </div>
                         <div style={{ display: this.state.Continue == true ? "block" : "none" }}>
-                            <Continues changePanel={this.props.changePanel} change={() => {
+                            <Continues changePanel={this.props.changePanel}
+                            local_mail_id={local_mail_id} change={() => {
                                 this.setState({
                                     show: true,
                                     Continue: false

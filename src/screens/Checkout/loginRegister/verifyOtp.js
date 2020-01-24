@@ -69,7 +69,7 @@ export const useVerifyOtp = (changePanel) => {
 
     const handlers = { handleChange, mailFetch, otpFetch, handleInvalid, setEnterOtp }
 
-    return { handlers, otp, email, status: { err, loading, data }, enterotp ,setMail}
+    return { handlers, otp, email, status: { err, loading, data },otpdata, enterotp ,setMail}
 }
 
 

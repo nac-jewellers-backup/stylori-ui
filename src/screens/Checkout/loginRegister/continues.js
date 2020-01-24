@@ -7,9 +7,10 @@ import styles from './style';
 import { useVerifyOtp } from './verifyOtp';
 
 const ContinuesComponent = (props) => {
-    const { handlers, email, otp, status, enterotp, setMail } = useVerifyOtp();
+    const { handlers, email, otp, status,otpdata, enterotp, setMail } = useVerifyOtp();
     const { classes } = props;
     const values = { email: email.email, otp: otp.otp }
+    const [state, setState] = React.useState(null)
     const edata = status.data.edata.message ? status.data.edata.message : ""
     // const MailForm = () => (
     // )
@@ -21,12 +22,23 @@ const ContinuesComponent = (props) => {
         })
         props.change()
     }
+    React.useEffect(()=>{
+        if(otpdata.cart_id){
+            if(localStorage.getItem("_mail_")) localStorage.removeItem("_mail_")
+            props.changePanel(2)
+        } 
+        else{
+            setState(otpdata.message)
+            localStorage.setItem("_mail_", "wrong")
+            
+        }
+        
+
+    },[otpdata])
     const handleSubmit = (e) => {
         
         if (enterotp) {
             handlers.otpFetch(values);
-            // props.submit(e)
-            props.changePanel(2)
         } else {
             handlers.mailFetch({ email: values.email });
         }
@@ -60,6 +72,7 @@ const ContinuesComponent = (props) => {
                                         }}
                                         required
                                     />
+<label style={{color:"red"}}>{state}</label>
                                 </>}
                             {!enterotp &&
                                 <>
