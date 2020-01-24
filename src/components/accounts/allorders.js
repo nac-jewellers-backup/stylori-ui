@@ -136,7 +136,7 @@ class Allorders extends React.Component {
         
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
-        
+        debugger
         const expanded_ = expanded.map(val => { return val })
         // var check_img = null
         const allDatas = () => {
@@ -182,7 +182,7 @@ class Allorders extends React.Component {
                                                 <Typography className='text-chck'>
 
                                                     Order Number : <span >#{val.id}</span> &nbsp;|&nbsp; Order Date : {moment(val.createdAt).format('Do MMMM YYYY')}
-                                                    <div style={{ float: "right" }}><Button className="bton_submit">SUBMITTED</Button> </div></Typography>
+                                    <div style={{ float: "right" }}><Button className="bton_submit">{val.paymentStatus}</Button> </div></Typography>
                                             </ExpansionPanelSummary >
                                             <ExpansionPanelDetails
                                             >
@@ -322,7 +322,7 @@ debugger
 
                                                     <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
                                                         Sub Total&nbsp;{this.calculatetotal(val)}<br />
-                                                        {val.shoppingCartByCartId.discount ? <Typography class={`subhesder`}>REGISTRATION&nbsp;{val.shoppingCartByCartId.discount}</Typography>
+                                                        {val.shoppingCartByCartId.discount ? <div class={`subhesder`}>REGISTRATION&nbsp;{val.shoppingCartByCartId.discount}</div>
                                                              : ""}
                                                         Shipping&nbsp;FREE<br />
                                                         Shipping Insurance&nbsp;FREE<br />
