@@ -51,10 +51,11 @@ class Allorders extends React.Component {
 debugger
         var a;
         var dis_price;
-        if (arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes[0].transSkuListByProductSku) {
+        var _val = arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.filter(val=>{if((val.transSkuListByProductSku)) return val})
+        if (_val.length>0) {
             a =
                 // arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes
-                arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.filter(val => { if ((val.transSkuListByProductSku)) return val }).map(cart => {
+                _val.filter(val => { if ((val.transSkuListByProductSku)) return val }).map(cart => {
 
                     if ((cart !== null || cart !== undefined) && cart.transSkuListByProductSku) {
                         dis_price = cart.transSkuListByProductSku.markupPrice
