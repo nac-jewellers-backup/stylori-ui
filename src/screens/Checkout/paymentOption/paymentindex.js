@@ -58,7 +58,7 @@ class PaymentIndex extends React.Component {
         //     return va  
         // } 
         return (
-            <div className="payment-div"> 
+            <div className="payment-div">
                 <Hidden smDown>
                     <Grid container spacing={12} lg={12} className="panel-body">
                         <Grid item lg={5}>
@@ -76,13 +76,13 @@ class PaymentIndex extends React.Component {
                                     <div className="dc-icon"></div> &nbsp; Debit card </p> */}
                                 <p style={{ background: this.state.isActive == "Netbanking" ? "#dfdfdf" : "" }}
                                     onClick={() => this.toggleCollapsed('Netbanking')}
-                                    // style={{ background: "#dfdfdf" }}
+                                // style={{ background: "#dfdfdf" }}
                                 >
                                     <div className="net-bnk-icon"></div> &nbsp; Pay Online </p>
                                 <p style={{ background: this.state.isActive == "CashonDelivey" ? "#dfdfdf" : "" }}
                                     onClick={() => this.toggleCollapsed('CashonDelivey')}
                                 >
-                                    <div className="code-icon"></div>&nbsp;   Cash On Delivery (COD)</p>
+                                    <div className="code-icon"></div>&nbsp;   Cash on Delivery (COD)</p>
                             </div>
                         </Grid>
                         <Grid item lg={7}>
@@ -126,7 +126,7 @@ class PaymentIndex extends React.Component {
                             <Debitform data={this.props.data} dataCard1={dataCard1}/>
                         </ExpansionPanelDetails>
                     </ExpansionPanel>  */}
- 
+
                     <ExpansionPanel className="respone-div"
                     >
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>

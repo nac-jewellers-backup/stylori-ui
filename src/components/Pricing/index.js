@@ -40,7 +40,7 @@ export default function Pricing(props) {
                                     </Typography>
                                 </Typography> : ""}
                         </Grid>
-                        <Grid item style={{ display: "flex", alignItems: "flex-end" }}>
+                        <Grid item style={{ display: "flex", alignItems: "center" }}>
                             {props.price ?
                                 <Typography style={{ display: "flex", width: '100%', paddingLeft: "8px" }}>
                                     <Typography style={{ fontSize: "0.9rem" }}
@@ -72,8 +72,8 @@ export default function Pricing(props) {
                             {props.offerPrice ?
                                 <Typography style={{ display: "flex", width: '100%' }}>
                                     <Typography
-                                        variant="h6"
-                                        component="h6"
+                                        // variant="h6"
+                                        // component="h6"
                                         className={`${props.offerPrice != null & props.offerPrice !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
                                     >
                                         {/* ₹&nbsp;{props.offerPrice} */}

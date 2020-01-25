@@ -139,11 +139,12 @@ body {
 .discount {
     /* flex: 0.7; */
     color: white;
+    font-size: 0.8rem;
     text-align: center;
     font-weight: bold;
     border-radius: 3px;
     background-color: #ed1165 !important;
-    padding: 3px !important;
+    padding: 3px 6px !important;
 }
 
 .one-day-ship-mb {

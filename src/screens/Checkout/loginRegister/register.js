@@ -52,7 +52,7 @@ const RegisterComponent = (props) => {
                                         value={values.email}
                                         error={values.error && values.error.emerr ? true : false}
                                         // helperText={values.errortext && values.errortext.emerr}
-                                        placeholder="Enter your email Id"
+                                        placeholder="Enter your email id"
                                         onChange={e => handlers.handleChange('email', e.target.value)}
                                     />
                                     <label className='errtext'> {values.errortext && values.errortext.emerr}</label></>
@@ -136,7 +136,7 @@ const RegisterComponent = (props) => {
                                             value={values.lastname}
                                             error={values.error && values.error.lastname ? true : false}
                                             // helperText={values.errortext && values.errortext.lastname}
-                                            placeholder="Enter LastName*"
+                                            placeholder="Last name*"
                                             onChange={e => handlers.handleChange('lastname', e.target.value)}
                                             className='text-f'
                                         // helperText=""
@@ -154,7 +154,7 @@ const RegisterComponent = (props) => {
                                             placeholder="First name*"
                                             onChange={e => handlers.handlesetvaluesadrees('firstname', e.target.value)}
                                             className='text-f'
-                                            helperText="Firstname is required"
+                                            helperText="First name is required"
                                             required />
                                     </Grid>
                                     <Grid item lg={4} xs={4}>
@@ -167,7 +167,7 @@ const RegisterComponent = (props) => {
                                             placeholder="Last name*"
                                             onChange={e => handlers.handlesetvaluesadrees('lastname', e.target.value)}
                                             className='text-f'
-                                            helperText="Lastname is required"
+                                            helperText="Last name is required"
                                             required />
                                     </Grid></>}
                             </Grid>
@@ -188,7 +188,7 @@ const RegisterComponent = (props) => {
                                                 onChange={e => handlers.handlesetvaluesadrees('pincode', e.target.value)}
                                                 value={valuesadrees.pincode}
                                                 // onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
-                                                helperText="Pin Code is required"
+                                                helperText="Pin code is required"
                                                 required />
                                         </Grid>
                                     </Grid>
@@ -206,7 +206,7 @@ const RegisterComponent = (props) => {
                                                 // onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
                                                 placeholder="Phone *"
                                                 value={valuesadrees.contactno}
-                                                helperText="Please enter your 10 digit Phone no**"
+                                                helperText="Enter your 10 digit mobile number"
                                                 isNumber
                                                 maxLength={10}
                                                 minLength={10}

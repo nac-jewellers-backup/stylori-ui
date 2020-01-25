@@ -232,7 +232,7 @@ export default function Footer(props) {
                         <Grid container style={{ display: 'flex', justifyContent: 'flex-start' }}>
                             <Grid item xs={6} xl={8} lg={8} md={8} sm={8}>
                                 <input
-                                    placeholder='Email address...'
+                                    placeholder='Enter your email address'
                                     className={`${classes.buynowSearch}`}
                                 />
                             </Grid>

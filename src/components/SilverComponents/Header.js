@@ -168,84 +168,92 @@ class Header extends Component {
                             <Container maxWidth="lg" id="searchcontainer" >
                                 <Grid container spacing={12} style={{ marginTop: "20px" }} className={window.location.pathname === "/cart" || window.location.pathname === '/checkout' ? "cartheader" : ""}>
                                     <Grid container item xs={12} justify="flex-end" alignItems="center">
-                                        <div className={`head-icons1 ${classes.headIcons}`} >
-                                            <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
-                                            <Typography className={classes.callerNum}>1800 102 0330</Typography>
-                                            <InputBase
+                                        {window.location.pathname === "/cart" || window.location.pathname === '/checkout' ? <Grid item xs={3} className="logoImgHeader1">
+                                            <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/" }} style={{ cursor: "pointer" }}>
+                                                <img id="logoImage" style={{ transition: "height 0.2s", marginTop: "9px" }} className={`imges`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                            </div>
+                                        </Grid>
+                                            : ""}
+                                        <Grid container item xs={9} justify="flex-end" alignItems="center">
+                                            <div className={`head-icons1 ${classes.headIcons}`} >
+                                                <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
+                                                <Typography className={classes.callerNum}>1800 102 0330</Typography>
+                                                <InputBase
 
-                                                className={`search`}
-                                                placeholder=" SEARCH"
-                                                endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
-                                                </div></InputAdornment>}
-                                            />
-                                            {localStorage.getItem("true") ?
-                                                <span
-                                                    class="MuiBadge-root"
-                                                    aria-owns={openPopover ? 'simple-popper' : ""}
-                                                    onClick={this.handleClickPopover}
+                                                    className={`search`}
+                                                    placeholder=" SEARCH"
+                                                    endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
+                                                    </div></InputAdornment>}
+                                                />
+                                                {localStorage.getItem("true") ?
+                                                    <span
+                                                        class="MuiBadge-root"
+                                                        aria-owns={openPopover ? 'simple-popper' : ""}
+                                                        onClick={this.handleClickPopover}
+                                                    >
+                                                        <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                    </span>
+                                                    // <img className="icons-header-sizes" src={usershape}/>
+                                                    : <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
+                                                        <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                    </span>
+                                                }
+                                                <Popover
+                                                    id="simple-popper"
+                                                    open={openPopover}
+                                                    anchorEl={anchorEl}
+                                                    onClose={this.handleClosePopover}
+                                                    anchorOrigin={{
+                                                        vertical: 'bottom',
+                                                        horizontal: 'center',
+                                                    }}
+                                                    transformOrigin={{
+                                                        vertical: 'top',
+                                                        horizontal: 'center',
+                                                    }}
                                                 >
-                                                    <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
-                                                </span>
-                                                // <img className="icons-header-sizes" src={usershape}/>
-                                                : <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
-                                                    <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
-                                                </span>
-                                            }
-                                            <Popover
-                                                id="simple-popper"
-                                                open={openPopover}
-                                                anchorEl={anchorEl}
-                                                onClose={this.handleClosePopover}
-                                                anchorOrigin={{
-                                                    vertical: 'bottom',
-                                                    horizontal: 'center',
-                                                }}
-                                                transformOrigin={{
-                                                    vertical: 'top',
-                                                    horizontal: 'center',
-                                                }}
-                                            >
-                                                <div
-                                                >
-                                                    <Grid
-                                                        style={{ padding: "10px", width: "194px", cursor: "pointer" }}
-                                                        container spacing={12} lg={12}>
-                                                        <Grid item > <div style={{ padding: "0px 6px 0px 0px" }}
-                                                            onClick={() => {
-                                                                localStorage.clear();
-                                                                window.location.reload()
-                                                                window.location.pathname = "/login"
-                                                            }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
+                                                    <div
+                                                    >
+                                                        <Grid
+                                                            style={{ padding: "10px", width: "194px", cursor: "pointer" }}
+                                                            container spacing={12} lg={12}>
+                                                            <Grid item > <div style={{ padding: "0px 6px 0px 0px" }}
+                                                                onClick={() => {
+                                                                    localStorage.clear();
+                                                                    window.location.reload()
+                                                                    window.location.pathname = "/login"
+                                                                }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
                                              </div></Grid>
-                                                        <Grid item > <div style={{ float: "right" }} onClick={() => { window.location.href = "/account-profile" }}>
-                                                            / My Account
+                                                            <Grid item > <div style={{ float: "right" }} onClick={() => { window.location.href = "/account-profile" }}>
+                                                                / My Account
                                                  </div></Grid>
-                                                    </Grid>
+                                                        </Grid>
 
-                                                    {/* <NavLink to="/account-profile"> */}
+                                                        {/* <NavLink to="/account-profile"> */}
 
-                                                    {/* </NavLink> */}
-                                                </div>
-                                            </Popover>
-                                            <Badge style={{ marginTop: "9px" }} color="secondary"
-                                                badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
-                                            // wishlist_count
-                                            // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
-                                            >
-                                                <i style={{ fontSize: "20px" }} class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
-                                                    if (user_id.length > 0) {
-                                                        window.location.href = `/account${'-wishlist'}`
-                                                    } else {
-                                                        window.location.href = "/login"
-                                                    }
-                                                }}  ></i>
-                                            </Badge>
-                                            <Badge style={{ marginTop: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                <a href="/cart" >
-                                                    <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                                        {/* </NavLink> */}
+                                                    </div>
+                                                </Popover>
+                                                <Badge style={{ marginTop: "9px" }} color="secondary"
+                                                    badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
+                                                // wishlist_count
+                                                // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
+                                                >
+                                                    <i style={{ fontSize: "20px" }} class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
+                                                        if (user_id.length > 0) {
+                                                            window.location.href = `/account${'-wishlist'}`
+                                                        } else {
+                                                            window.location.href = "/login"
+                                                        }
+                                                    }}  ></i>
+                                                </Badge>
+                                                <Badge style={{ marginTop: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                    <a href="/cart" >
+                                                        <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
-                                                </a> </Badge>
-                                        </div>
+                                                    </a> </Badge>
+                                            </div>
+                                        </Grid>
                                     </Grid>
                                 </Grid>
                             </Container>

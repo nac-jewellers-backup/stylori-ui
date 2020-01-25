@@ -23,7 +23,7 @@ import { NavLink } from 'react-router-dom';
 import { CartContext } from 'context'
 import cart from 'mappers/cart'
 import Wishlist from 'components/wishlist/wishlist';
-import {API_URL} from "config"
+import { API_URL } from "config"
 // import { FilterOptionsContext } from 'context/FilterOptionsContext';
 // 
 // 
@@ -49,10 +49,10 @@ class Checkoutcard extends React.Component {
     // }
     handleDeleteLocalStorage = (e) => {
         var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
-        var currentValue = e.target.id 
+        var currentValue = e.target.id
         // console.clear()
         // console.log("e-clear",e.target.id)
-        
+
         var a = local_storage.products.filter(val => {
             if (currentValue !== val.sku_id) {
                 return val
@@ -61,34 +61,34 @@ class Checkoutcard extends React.Component {
         function status(response) {
 
             if (response.status >= 200 && response.status < 300) {
-              return Promise.resolve(response)
+                return Promise.resolve(response)
             } else {
-              return Promise.reject(new Error(response.statusText))
+                return Promise.reject(new Error(response.statusText))
             }
-          }
-  
-          function json(response) {
+        }
+
+        function json(response) {
             return response.json()
-          }
-  
+        }
+
 
         let cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
-        let bodyVariableRemoveCartItem = {cart_id:cart_id,product_id:currentValue}
+        let bodyVariableRemoveCartItem = { cart_id: cart_id, product_id: currentValue }
         fetch(`${API_URL}/removecartitem`, {
-      
+
             method: 'post',
             // body: {query:seoUrlResult,variables:splitHiphen()}
             // body: JSON.stringify({query:seoUrlResult}),
-  
+
             headers: {
-              'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              ...bodyVariableRemoveCartItem
+                ...bodyVariableRemoveCartItem
             })
-          })
+        })
             .then(status)
-            .then(json).then(val=>{
+            .then(json).then(val => {
                 sessionStorage.removeItem('updatedProduct');
                 alert(JSON.stringify(val.message))
                 var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
@@ -97,7 +97,7 @@ class Checkoutcard extends React.Component {
                 localStorage.setItem('cartDetails', localstorage)
                 window.location.reload();
             })
-     
+
     }
     handlereloadcart = (val) => {
         const data = this.props.data
@@ -114,7 +114,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         const { classes, data } = this.props;
-debugger
+        debugger
         const { productsDetails, fadeImages, dataCard1 } = this.props.data;
         // const { FilterOptionsCtx: { setcartcount } } = React.useContext(FilterOptionsContext);
         // React.useEffect(()=>{
@@ -122,7 +122,7 @@ debugger
         //         cartcount: this.props.data.length
         //     })
         // },[data])
-        
+
         return (
             <div style={{ marginTop: "10px" }}>
                 <Grid container>
@@ -179,11 +179,11 @@ debugger
                                             <Typography className={`subhesder ${classes.normalfonts}`}>Quantity 1</Typography>
                                             <br />
                                             {/* {data[0].isReadyToShip === true ? */}
-                                                <Typography className={`subhesder ${classes.normalfonts}`}>{data[0].shipby}</Typography>
-                                                {/* : ""} */}
+                                            <Typography className={`subhesder ${classes.normalfonts}`}>{data[0].shipby}</Typography>
+                                            {/* : ""} */}
                                             <br />
                                             {window.location.pathname !== "/checkout" ? <div className={`subhesder hov ${classes.normalfonts}`}
-                                                id={val.namedetail[4].details} productid= {dataval} onClick={(event) => this.handleDeleteLocalStorage(event)}>
+                                                id={val.namedetail[4].details} productid={dataval} onClick={(event) => this.handleDeleteLocalStorage(event)}>
                                                 <i class="fa fa-trash"></i>
                                                 &nbsp;Remove</div> : ""}
                                         </Grid>
@@ -192,11 +192,13 @@ debugger
                                 </Grid>
 
                                 <Grid item xs={4} sm={2} lg={3} >
+                                    {console.log("-----------")}
+                                    {console.log(dataval)}
                                     <div style={{ marginTop: "15%" }}>
                                         {dataval.dataCard1.map(val =>
                                             <Pricing
-                                            detail= {dataval}
-                                                offerDiscount={"25% - OFF"}
+                                                detail={dataval}
+                                                offerDiscount={dataval.productType === "Gold Coins" ? "" : "25% - OFF"}
                                                 price={val.price}
                                                 offerPrice={val.offerPrice} >
                                             </Pricing>
@@ -288,7 +290,7 @@ debugger
                         <>
                             < Grid xs={12} >
                                 <NavLink to="/jewellery">
-                                    <div className='btn-plain'> CONTINUE SHOPPING</div>
+                                    <div className='btn-plain'> Continue shopping</div>
                                 </NavLink>
 
                             </Grid></>}

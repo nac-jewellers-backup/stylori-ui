@@ -17,7 +17,7 @@ export const subFilter = {
         'Bracelets', 'Bangles', 'Earrings', 'GoldCoins', 'Nosepins', 'Pendants', 'Rings'
     ],
     'Style': [
-        'Oval Bracelets', 'Bracelets', 'Classic', 'Casual', 'Studs', 'Drops', 'Huggies',  'Jhumkas',
+        'Oval Bracelets', 'Bracelets', 'Classic', 'Casual', 'Studs', 'Drops', 'Huggies', 'Jhumkas',
         'Palm Cuffs', 'Fashion', 'Cocktail'
     ],
     'Material': [
@@ -38,7 +38,7 @@ export const subFilter = {
     ],
     'No Of Stones': ['Fashion', 'Chic', 'Cluster', 'Cut Out',
     ],
-    'Gender': ['Female', 'Male', 'Kids, Female', 'Unisex, Kids, Female', 'Unisex, Female', 'Male, Female',  'Male, Kids, Female', 'Unisex'
+    'Gender': ['Female', 'Male', 'Kids, Female', 'Unisex, Kids, Female', 'Unisex, Female', 'Male, Female', 'Male, Kids, Female', 'Unisex'
     ],
     'Stone Color': ['Fashion', 'Chic', 'Cluster', 'Cut Out',
     ],
@@ -47,10 +47,10 @@ export const subFilter = {
 };
 
 export const sortOptions = [
-    "New To Stylori",
+    "New to Stylori",
     "Featured",
     "Price Low to High",
     "Price High to Low",
-    "Ready To Ship",
+    "Ready to Ship",
     "Best Seller"
 ];

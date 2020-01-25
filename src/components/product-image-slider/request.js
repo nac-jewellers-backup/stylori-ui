@@ -111,7 +111,7 @@ class Request extends React.Component {
                                         onInvalid={e => handleError(e)}
                                         error={errors.names ? true : false}
                                         helperText={errors.names ? errorMessage.names : ''}
-                                        placeholder="Name"
+                                        placeholder="Enter your name"
                                         className="request-text"
                                         onChange={event => handleChange(event, 'names')}
                                         required />
@@ -126,7 +126,7 @@ class Request extends React.Component {
                                         onInvalid={e => handleError(e)}
                                         error={errors.mailId ? true : false}
                                         helperText={errors.mailId ? errorMessage.mailId : ''}
-                                        placeholder="Enter your mail"
+                                        placeholder="Enter your email address"
                                         className="request-text"
                                         onChange={event => handleChange(event, 'mailId')}
                                         required />
@@ -156,7 +156,7 @@ class Request extends React.Component {
                                         type="text"
                                         name="request"
                                         value={this.state.request}
-                                        placeholder="Enter Request"
+                                        placeholder="Enter your request"
                                         className="request-text"
                                         onChange={event => handleChange(event, 'request')}
                                     />
@@ -166,7 +166,7 @@ class Request extends React.Component {
                             <Grid container>
                                 <Grid xs={12} >
                                     <Button type="submit" className={`requset-button ${classes.fontwhite} ${classes.normalcolorback}`}>
-                                        Send
+                                        Submit
                             </Button>
                                 </Grid>
                             </Grid>
@@ -202,7 +202,7 @@ class Request extends React.Component {
                                 id="panel1a-header"
                             >
                                 <div style={{ width: "100%" }} >
-                                    <Typography className={`product-details-smrt ${classes.normalfonts}`}>Ask Our Expert</Typography>
+                                    <Typography className={`product-details-smrt ${classes.normalfonts}`}>Ask our Expert</Typography>
                                     {/* <hr class="bottom-line border-line-"></hr> */}
                                 </div>
                             </ExpansionPanelSummary>

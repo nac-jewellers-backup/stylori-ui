@@ -40,11 +40,11 @@ class Debitform extends React.Component {
         }
     };
     render() {
- 
+
         return (
             <div>
                 <Container>
-                     <form onSubmit={(e) => this.handleSubmit()}>
+                    <form onSubmit={(e) => this.handleSubmit()}>
                         <Grid spacing={12} container>
                             <Grid item lg={12} xs={12}>
                                 <Input
@@ -106,7 +106,7 @@ class Debitform extends React.Component {
                             </Grid>
                         </Grid>
                     </form>
-               
+
                 </Container>
             </div>
         )
