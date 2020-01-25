@@ -168,7 +168,7 @@ class Header extends Component {
                             <Container maxWidth="lg" id="searchcontainer" >
                                 <Grid container spacing={12} style={{ marginTop: "20px" }} className={window.location.pathname === "/cart" || window.location.pathname === '/checkout' ? "cartheader" : ""}>
                                     <Grid container item xs={12} justify="flex-end" alignItems="center">
-                                        {window.location.pathname === "/cart" || window.location.pathname === '/checkout' ? <Grid item xs={3} className="logoImgHeader1">
+                                        {this.props.paymentSucces || window.location.pathname === "/cart" || window.location.pathname === '/checkout' ? <Grid item xs={3} className="logoImgHeader1">
                                             <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/" }} style={{ cursor: "pointer" }}>
                                                 <img id="logoImage" style={{ transition: "height 0.2s", marginTop: "9px" }} className={`imges`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                             </div>

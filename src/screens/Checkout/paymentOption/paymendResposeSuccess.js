@@ -80,8 +80,8 @@ class PaymentResponseSuccess extends React.Component {
       const { data, classes } = this.props
       return (
          <>
-         <Header wishlist={this.props.wishlistdata} />   
-         {/* <CustomSeparator
+            <Header wishlist={this.props.wishlistdata} paymentSucces={true} />
+            {/* <CustomSeparator
              arrowicon='cart-head-arrows'  
              className={"breadcrums-header bcjk "}
              classsubhed={"breadcrums-sub bcjk"}
@@ -89,28 +89,28 @@ class PaymentResponseSuccess extends React.Component {
              data={this.props.data.length > 0 ? this.props.data[0].breadcrumsdata : breadcrumsdata}
              subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata}
           /> */}
-         <Grid container justify="center">
-          
             <Grid container justify="center">
-               <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>
-               <Grid item xs={10} sm={10} md={4} className="contant-center" >
-                  <Grid item className="container-font-size">Thank you!Your order has been placed.</Grid>
+
+               <Grid container justify="center">
+                  <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>
+                  <Grid item xs={10} sm={10} md={4} className="contant-center" >
+                     <Grid item className="container-font-size">Thank you!Your order has been placed.</Grid>
+                  </Grid>
                </Grid>
-            </Grid>
-            <Grid container justify="center">
-               <Grid item xs={12} sm={12} md={4} className="contant-center">
-                  We've send you an email confirmation.
+               <Grid container justify="center">
+                  <Grid item xs={12} sm={12} md={4} className="contant-center">
+                     We've send you an email confirmation.
                   <a onClick={() => {
-                     this.makeFetch_resend_mail()
-                  }} style={{
-                     fontSize: "12px",
-                     color: "blue",
-                     textDecoration: "underline",
-                     cursor: "pointer",
-                  }}>Resend Email</a>
+                        this.makeFetch_resend_mail()
+                     }} style={{
+                        fontSize: "12px",
+                        color: "blue",
+                        textDecoration: "underline",
+                        cursor: "pointer",
+                     }}>Resend Email</a>
+                  </Grid>
                </Grid>
-            </Grid>
-            {/* <Grid container style={{marginTop:"15px"}}>
+               {/* <Grid container style={{marginTop:"15px"}}>
                <Grid container justify="center">
                   <Grid item xs={12} sm={12} md={6} className="paymentsuccess-content">
                         <Grid container>
@@ -139,41 +139,41 @@ class PaymentResponseSuccess extends React.Component {
                         </Grid>
                   </Grid>
                </Grid> */}
-            <Grid container justify="center">
-               <Grid container style={{ width: "100%" }}  >
-                  <Grid item style={{ display: "flex", marginLeft: "auto", paddingRight: "2px" }}>
+               <Grid container justify="center">
+                  <Grid container style={{ width: "100%" }}  >
+                     <Grid item style={{ display: "flex", marginLeft: "auto", paddingRight: "2px" }}>
 
-                     <Button style={{ background: "#ed1165", color: "#fff", padding: "5px 20px" }} onClick={() => {
-                        localStorage.removeItem("a__c_t")
-                        localStorage.removeItem("panel")
-                        localStorage.removeItem("order_id")
-                        localStorage.removeItem("cartDetails")
-                        localStorage.removeItem("ship_isactive")
-                        localStorage.removeItem("bil_isactive")
-                        if (gut_lg === true) {
-                           localStorage.clear();
-                        }
-                        this.props.history.push("/jewellery")
-                        // window.location.pathname="/jewellery"
-                     }}>Back to home</Button>
+                        <Button style={{ background: "#ed1165", color: "#fff", padding: "5px 20px" }} onClick={() => {
+                           localStorage.removeItem("a__c_t")
+                           localStorage.removeItem("panel")
+                           localStorage.removeItem("order_id")
+                           localStorage.removeItem("cartDetails")
+                           localStorage.removeItem("ship_isactive")
+                           localStorage.removeItem("bil_isactive")
+                           if (gut_lg === true) {
+                              localStorage.clear();
+                           }
+                           this.props.history.push("/jewellery")
+                           // window.location.pathname="/jewellery"
+                        }}>Back to home</Button>
+                     </Grid>
                   </Grid>
                </Grid>
-            </Grid>
 
-            <Grid container>
-               {/* <CartCard data={this.props.data}/> */}
-               <Allorders allorderdata={this.props.allorderdata} />
-            </Grid>
-            <Footer/>
-         </Grid></>
+               <Grid container>
+                  {/* <CartCard data={this.props.data}/> */}
+                  <Allorders allorderdata={this.props.allorderdata} />
+               </Grid>
+               <Footer />
+            </Grid></>
       )
    }
 }
 
 // export default PaymentResponseSuccess;
 const Components = props => {
-   
-   let { CartCtx: { cartFilters, data, loading, error, allorderdata,allordersuccesful, wishlistdata } } = React.useContext(CartContext);
+
+   let { CartCtx: { cartFilters, data, loading, error, allorderdata, allordersuccesful, wishlistdata } } = React.useContext(CartContext);
    let content, mapped;
    if (!loading && !error) {
       if (Object.keys(data).length !== 0) {
