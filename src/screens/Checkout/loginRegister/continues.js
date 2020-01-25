@@ -23,13 +23,14 @@ const ContinuesComponent = (props) => {
         props.change()
     }
     React.useEffect(()=>{
-        if(otpdata.cart_id){
-            if(localStorage.getItem("_mail_")) localStorage.removeItem("_mail_")
-            props.changePanel(2)
-        } 
-        else{
+        if(otpdata.message){
             setState(otpdata.message)
             localStorage.setItem("_mail_", "wrong")
+           
+        } 
+        else{
+            if(localStorage.getItem("_mail_")) localStorage.removeItem("_mail_")
+            props.changePanel(2)
             
         }
         
