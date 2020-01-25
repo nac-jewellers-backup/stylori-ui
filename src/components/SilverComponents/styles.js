@@ -88,13 +88,27 @@ export const styles = theme => ({
     fontFamily: 'Roboto',
     fontWeight: 600,
     color: "#6e6d72",
+    borderBottom: "1px solid #fff",
     '&:hover': {
       color: theme.palette.secondary.dark,
-      paddingBottom: "2px",
+      // paddingBottom: "2px",
+      borderBottom: "1px solid " + theme.palette.secondary.dark,
+    }
+  },
+  seletectedMenu: {
+    color: theme.palette.secondary.dark,
+    // paddingBottom: "2px",
+    cursor: 'pointer',
+    fontFamily: 'Roboto',
+    fontWeight: 600,
+    borderBottom: "1px solid #fff",
+    // borderBottom: "1px solid " + theme.palette.secondary.dark,
+    '&:hover': {
       borderBottom: "1px solid " + theme.palette.secondary.dark,
     }
   },
   mobileNavIcon: {
+    color: theme.palette.secondary.dark,
     fill: theme.palette.secondary.dark + "!important",
   },
   menuheader: {
@@ -148,7 +162,7 @@ export const useStyles = makeStyles(theme => ({
   },
   mouseOverPopover: {
     zIndex: 1000,
-    // top: '17px !important',
+    top: '4px !important',
     backgroundColor: theme.palette.background.fade,
     color: 'white',
     '& span': {

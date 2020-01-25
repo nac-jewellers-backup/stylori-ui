@@ -31,7 +31,7 @@ const LoginComponent = (props) => {
     }, [])
     return (
         <Grid container>
-                    <Header />
+            <Header />
             <Grid spacing={12} container style={{ padding: "3%" }}>
                 <Grid item xs={6} lg={6} xs={12}>
                     <div >
@@ -40,7 +40,7 @@ const LoginComponent = (props) => {
                 </Grid>
 
                 <Grid item xs={6} lg={6} xs={12}>
-                    <Container> 
+                    <Container>
                         {/* <div className='pt-sm' style={{ width: "90%", float: "right" }}>
                             <form action="javascript:void(0)" onSubmit={(e) => {
                                 handlers.handelSubmit(e)
@@ -92,7 +92,7 @@ const LoginComponent = (props) => {
                             />
                             Remember Me </span>
 
-                        <Grid spacing={12} container>
+                        <Grid spacing={12} container style={{ padding: "6px 0px 0px 4px" }}>
                             <Grid item xs={6} lg={6} style={{ float: "left" }}>
                                 {/* <div className={`${classes.normalfonts}`} style={{ cursor: "pointer", fontSize: "14px" }}>Forgot password?</div>
                                 <br /> */}
@@ -119,7 +119,7 @@ const LoginComponent = (props) => {
             <Grid item xs={12}>
                 <Footer />
             </Grid>
-            </Grid>
+        </Grid>
     )
 }
 

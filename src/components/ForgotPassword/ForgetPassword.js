@@ -95,7 +95,7 @@ const LoginComponent = (props) => {
                                 <label className='errtext'> {values.errorText && values.errorText}</label>
                                 <br></br>
                                 <div style={{ float: "right" }}>
-                                    <Button className='apply-b' type="submit">send</Button>
+                                    <Button className='apply-b' type="submit">Reset</Button>
                                 </div>
 
                                 <Grid spacing={12} container>
@@ -112,7 +112,7 @@ const LoginComponent = (props) => {
                             </form>
                         </div>
                     </Container>  </Grid>
-                <CommenDialog isOpen={values.modelOpen} content={ntxdata.message} handleSuccess={canceldeletechecklist} positiveBtn="ok" title="Message" />
+                <CommenDialog isOpen={values.modelOpen} content={ntxdata.message} handleSuccess={canceldeletechecklist} positiveBtn="ok" title="Forgot password" />
             </Grid>
             <Grid item xs={12}>
                 <Footer />

@@ -208,16 +208,16 @@ class Header extends Component {
                                                 <div
                                                 >
                                                     <Grid
-                                                        style={{ padding: "10px", width: "220px", cursor: "pointer" }}
+                                                        style={{ padding: "10px", width: "194px", cursor: "pointer" }}
                                                         container spacing={12} lg={12}>
-                                                        <Grid item lg={6}> <div
+                                                        <Grid item > <div style={{ padding: "0px 6px 0px 0px" }}
                                                             onClick={() => {
                                                                 localStorage.clear();
                                                                 window.location.reload()
                                                                 window.location.pathname = "/login"
                                                             }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
                                              </div></Grid>
-                                                        <Grid item lg={6}> <div style={{ float: "right" }} onClick={() => { window.location.href = "/account-profile" }}>
+                                                        <Grid item > <div style={{ float: "right" }} onClick={() => { window.location.href = "/account-profile" }}>
                                                             / My Account
                                                  </div></Grid>
                                                     </Grid>
@@ -268,7 +268,7 @@ class Header extends Component {
                                                             (menuListHeader.map(listName => {
                                                                 let urlsmall = listName.title.toLowerCase()
                                                                 return (
-                                                                    <a href={listName.url} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: false, subTitleData: null, targetopen: event.currentTarget, listHoverItem: listName.title.replace(/ +/g, "") }) }}>{listName.title}</a>
+                                                                    <a href={listName.url} className={window.location.pathname === listName.url ? classes.seletectedMenu : classes.menuListCursor} onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: false, subTitleData: null, targetopen: event.currentTarget, listHoverItem: listName.title.replace(/ +/g, "") }) }}>{listName.title}</a>
 
 
                                                                 )
@@ -375,16 +375,16 @@ class Header extends Component {
                                                             <div
                                                             >
                                                                 <Grid
-                                                                    style={{ padding: "10px", width: "220px", cursor: "pointer" }}
+                                                                    style={{ padding: "10px", width: "194px", cursor: "pointer" }}
                                                                     container spacing={12} lg={12}>
-                                                                    <Grid item lg={6}> <div
+                                                                    <Grid item > <div style={{ textAlign: "center", padding: "0px 6px 0px 0px" }}
                                                                         onClick={() => {
                                                                             localStorage.clear();
                                                                             window.location.reload()
                                                                             window.location.pathname = "/login"
                                                                         }}><img style={{ height: " 18px!important", cursor: "pointer ", width: "18px !important" }} className="icons-header-sizes" src={logout} />&nbsp;Logout
                                              </div></Grid>
-                                                                    <Grid item lg={6}> <div style={{ float: "right" }} onClick={() => { window.location.href = "/account-profile" }}>
+                                                                    <Grid item> <div style={{ float: "right" }} onClick={() => { window.location.href = "/account-profile" }}>
                                                                         / My Account
                                                  </div></Grid>
                                                                 </Grid>
