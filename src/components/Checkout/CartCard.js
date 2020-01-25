@@ -114,7 +114,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         const { classes, data } = this.props;
-debugger
+
         const { productsDetails, fadeImages, dataCard1 } = this.props.data;
         // const { FilterOptionsCtx: { setcartcount } } = React.useContext(FilterOptionsContext);
         // React.useEffect(()=>{

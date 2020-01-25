@@ -96,7 +96,7 @@ class Component extends React.Component {
         else {
             filters['defaultVariants'][key] = event.target.id
             // filters['defaultVariants'][key] 
-            // debugger
+            // 
             // this.setState({skuSize:filters})
             this.setState({
                 skuSize: filters['defaultVariants']["skuSize"],

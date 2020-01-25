@@ -98,7 +98,7 @@ class Accountdetails extends Component {
                                             All Orders</p>
                                     </List>
                                 </Grid>
-                                <Grid item xs={9}>
+                                <Grid item xs={12} sm={12} md={9} lg={10} xl={10}>
                                     <div className="pay-index-subhed_datas">
                                         {
                                             this.state.isActive == 'profile' &&
@@ -174,7 +174,7 @@ class Accountdetails extends Component {
                         </form>
                     </Grid>
 
-                    <Grid item xs={9} class="topPadding">
+                    <Grid item xs={10} class="topPadding">
                         <div className="pay-index-subhed_datas">
                             {
                                 this.state.isActive == 'profile' &&

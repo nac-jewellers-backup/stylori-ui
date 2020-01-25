@@ -309,7 +309,7 @@ const Provider = (props) => {
             })
                 .then(status)
                 .then(json).then(async val => {
-                    debugger
+                    
                     if (val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length > 0 &&
                         val.data.allShoppingCarts.nodes[0].status !== "pending") {
                         // alert(val.data.allShoppingCarts.nodes[0].status)
@@ -399,7 +399,7 @@ const Provider = (props) => {
                                         .then(json)
                                         .then(async function (data) {
                                             console.log(data, "parse_result_data_______parse_result_data")
-                                            debugger
+                                            
                                             if (data && data.data && data.data.allShoppingCartItems && data.data.allShoppingCartItems.nodes && data.data.allShoppingCartItems.nodes.length > 0) {
                                                 var _data = data.data.allShoppingCartItems.nodes.filter(val => { if (val.transSkuListByProductSku) return val }).map(val => { return val.transSkuListByProductSku.generatedSku })
                                                 variables = { "productList": _data }

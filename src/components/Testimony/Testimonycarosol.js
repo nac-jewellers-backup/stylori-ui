@@ -299,7 +299,7 @@ export default function ImageGridList(props) {
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
                                                         <Typography style={{ color: "#394578", fontSize: "0.9rem" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
-                                                            {val.transSkuListByProductSku && val.transSkuListByProductSku.markupPrice && val.transSkuListByProductSku.markupPrice}</Typography>
+                                                            {Math.round(val.transSkuListByProductSku && val.transSkuListByProductSku.markupPrice && val.transSkuListByProductSku.markupPrice)}</Typography>
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
                                                         <a style={{ textDecoration: 'none' }} href={val.transSkuListByProductSku && val.transSkuListByProductSku.skuUrl && val.transSkuListByProductSku.skuUrl}><Button type="button" className={classes.Button}>Shop Now</Button></a>

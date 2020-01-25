@@ -51,7 +51,7 @@ export default function PaymentHiddenForm(props) {
             .catch((error) => {
                 console.error('Error:', error);
             });
-debugger
+
 
  const status = (response) => {
 

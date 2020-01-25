@@ -268,32 +268,32 @@ export const
           {
             Title: "Celebrity Wedding Season:  best",
             img:
-              "https://alpha-assets.stylori.com/images/stories/stylori_blog_cover_01_bollywood_buck.png",
-            navigateUrl: "https://www.stylori.com/pendants-jewellery?sort=latest",
+              "https://alpha-assets.sdfsdfstylori.com/images/ssdftories/stylori_blog_cover_01_bollywood_buck.png",
+            navigateUrl: "/pendants-jewellery?sort=latest",
             content:
               "Thanks for your very good product. A real value for a beautiful workmanship.Thanks for your very good product. A real value for a beautiful workmanship."
           },
           {
             Title: "Celebrity Wedding Season: Style lessons from the best",
             img:
-              "https://alpha-assets.stylori.com/images/stories/stylori_blog_cover_01_bollywood_buck.png",
-            navigateUrl: "https://www.stylori.com/pendants-jewellery?sort=latest",
+              "https://alsdfpha-assetssdfsdf.stylori.com/images/stories/stylori_blog_cover_01_bollywood_buck.png",
+            navigateUrl: "/pendants-jewellery?sort=latest",
             content:
               "Thanks for your very good product. A real value for a beautiful workmanship.Thanks for your very good product. A real value for a beautiful workmanship."
           },
           {
             Title: "Celebrity Wedding Season: Style lessons from the best",
             img:
-              "https://alpha-assets.stylori.com/images/stories/stylori_blog_cover_01_bollywood_buck.png",
-            navigateUrl: "https://www.stylori.com/pendants-jewellery?sort=latest",
+              "htxcftps://alpha-assets.stylsdfsdori.com/images/stories/stylori_blog_cover_01_bollywood_buck.png",
+            navigateUrl: "/pendants-jewellery?sort=latest",
             content:
               "Thanks for your very good product. A real value for a beautiful workmanship.Thanks for your very good product. A real value for a beautiful workmanship."
           },
           {
             Title: "Celebrity Wedding Season: Style lessons from the best",
             img:
-              "https://alpha-assets.stylori.com/images/stories/stylori_blog_cover_01_bollywood_buck.png",
-            navigateUrl: "https://www.stylori.com/pendants-jewellery?sort=latest",
+              "hgfdcom/images/stories/stylori_blog_cover_01_bollywood_buck.png",
+            navigateUrl: "/pendants-jewellery?sort=latest",
             content:
               "Thanks for your very good product. A real value for a beautiful workmanship.Thanks for your very good product. A real value for a beautiful workmanship."
           }

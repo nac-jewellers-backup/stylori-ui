@@ -587,7 +587,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                         like_data.data.youMayalsolike1 && like_data.data.youMayalsolike1.nodes.length > 0 ?
                             like_data.data.youMayalsolike1.nodes.map(
                                 val => {
-                                    debugger
+                                    
                                     return ({
                                         img: `${CDN_URL}${val && val.productImagesByProductId && val.productImagesByProductId.nodes}` &&
                                             injectUrl_url_construct(val.productImagesByProductId.nodes[0] && val.productImagesByProductId.nodes[0], CDN_URL, colSize_like_view),
@@ -604,7 +604,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                             like_data.data.youMayalsolike2.nodes.map(
                                
                                 val => {
-                                    debugger
+                                    
                                     return ({
                                         img: `${CDN_URL}${val && val.productImagesByProductId && val.productImagesByProductId.nodes}` ?
                                             injectUrl_url_construct(val.productImagesByProductId.nodes[0] && val.productImagesByProductId.nodes[0], CDN_URL, colSize_like_view):[],

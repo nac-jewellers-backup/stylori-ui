@@ -60,7 +60,7 @@ const Components = props => {
             mapped = cart(data);
         }
     }
-    debugger
+    
     if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
     else content = <Accounts {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
     // localStorage.setItem("a__w_l", wishlistdata && wishlistdata.length)
