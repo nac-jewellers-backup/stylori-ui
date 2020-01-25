@@ -11,7 +11,7 @@ import {
     Button,
     Hidden
 } from '@material-ui/core';
-import "../../components/Checkout/Cart.css"; 
+import "../../components/Checkout/Cart.css";
 import "./chckout.css";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Addressform from './addressDetails/addressForm';
@@ -144,7 +144,7 @@ class Component extends React.Component {
                     subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata_static}
                     changePanel={this.changePanel}
                 />
-                <div className='pt-sm checkout-ovralldiv-media marginTop' >
+                <div className='pt-sm checkout-ovralldiv-media marginTop'  >
                     <div style={{ marginTop: "20px" }}>
                         <ExpansionPanel
                             square

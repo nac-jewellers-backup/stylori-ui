@@ -19,18 +19,18 @@ class CashonDelivey extends React.Component {
             res_data: null
         }
     }
-     status = (response) => {
+    status = (response) => {
 
         if (response.status >= 200 && response.status < 300) {
-          return Promise.resolve(response)
+            return Promise.resolve(response)
         } else {
-          return Promise.reject(new Error(response.statusText))
+            return Promise.reject(new Error(response.statusText))
         }
-      }
-      json = (response) => {
+    }
+    json = (response) => {
         return response.json()
-      }
-      
+    }
+
     makeFetch = async (props) => {
 
         // await fetch(`${API_URL}/createorder`, {
@@ -44,24 +44,24 @@ class CashonDelivey extends React.Component {
         //     // alert(JSON.stringify(obj))
         //     return await  res.json();
         //     alert('Order Placed Successfully')
-            
+
         // })
         fetch(`${API_URL}/createorder`, {
 
             method: 'post',
             // body: {query:seoUrlResult,variables:splitHiphen()}
             // body: JSON.stringify({query:seoUrlResult}),
-    
+
             headers: {
-              'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(obj)
-          })
+        })
             .then(this.status)
             .then(this.json)
             .then(resdata => {
                 console.log('datasssss', resdata)
-                
+
                 // localStorage.removeItem("order_id")
                 if (resdata !== null && resdata !== undefined) {
                     localStorage.setItem("order_id", JSON.stringify(resdata.order.id))
@@ -72,7 +72,7 @@ class CashonDelivey extends React.Component {
                 localStorage.removeItem("bil_isactive")
                 localStorage.removeItem("set_check")
                 localStorage.removeItem("cart_id")
-                if(localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
+                if (localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
                 sessionStorage.removeItem('updatedProduct')
                 alert(resdata.message)
                 window.location.pathname = `/paymentsuccess/${resdata.order.id}`
@@ -81,7 +81,7 @@ class CashonDelivey extends React.Component {
                 // console.log(err)
             });
         // localStorage.removeItem("cart_id")
-      
+
         // } 
 
         // obj_user["user_id"] = user_id
@@ -135,9 +135,9 @@ class CashonDelivey extends React.Component {
                             <span className="rups">
                                 {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(dataCard1 - discounted_price))}
                             </span>&nbsp;
-                            <Button className="credit-button" type="submit"
+                            <Button style={{display:"flex"}} className="credit-button" type="submit"
                                 onClick={() => this.makeFetch(this.props)}
-                            >Place COD order</Button>
+                            >Place order</Button>
                         </div>
 
                     </Grid>

@@ -17,7 +17,7 @@ export default function (data) {
             _d = {
                 filter: [
                     'Offers', 'Availability', 'Product Type', 'Style', 'Material', 'Theme', 'Collection',
-                    'Metal Color', 'Metal Purity', 'Occasion', 'No Of Stones', 'Gender', 'Stone Color', 'Stone Shape','By Design','By Weight'
+                    'Metal Color', 'Metal Purity', 'Occasion', 'No Of Stones', 'Gender', 'Stone Color', 'Stone Shape', 'By Design', 'By Weight'
                 ],
 
                 subFilter: {
@@ -28,7 +28,7 @@ export default function (data) {
                         'Up to  50%',
                     ],
                     'Availability': [
-                         "1 Day Shipping" ,'10 & Above Days Shipping' 
+                        "1 Day Shipping", '10 & Above Days Shipping'
 
                     ],
                     'Product Type': get(data[0].master_product_type).map(val => {
@@ -56,7 +56,7 @@ export default function (data) {
                         return val.occassion_name
                     }),
                     'No Of Stones': get(data && data[0] && data[0].master_stonecount && data[0].master_stonecount).map(val => {
-                        return val&&val.stonecount
+                        return val && val.stonecount
                     }),
                     'Gender': get(data[0].master_gender).map(val => {
                         return val.gender_name
@@ -73,10 +73,10 @@ export default function (data) {
                     // goldcoins
 
                     'By Design': get(data && data[0] && data[0].master_bydesign && data[0].master_bydesign).map(val => {
-                        return val&&val.design_name
+                        return val && val.design_name
                     }),
                     'By Weight': get(data && data[0] && data[0].master_byweight && data[0].master_byweight).map(val => {
-                        return val&&val.weight
+                        return val && val.weight
                     }),
 
                 },
@@ -87,11 +87,11 @@ export default function (data) {
                 //      }
                 //   ],
                 sortOptions: [
-                    "New To Stylori",
+                    "New to Stylori",
                     "Featured",
                     "Price Low to High",
                     "Price High to Low",
-                    "Ready To Ship",
+                    "Ready to Ship",
                     "Best Seller"
                 ],
                 seoText: getstring(data[0].seo_text),

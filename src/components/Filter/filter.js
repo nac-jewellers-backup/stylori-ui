@@ -531,8 +531,8 @@ class Component extends React.Component {
                     <Divider />
                     <List className="fil-main-list">
                       <div style={{ margin: "5px" }}>
-                        <Typography className="fil-list-items">Price</Typography>
-                        <Grid container spacing={12} style={{ paddingLeft: "5px" }}   >
+                        <Typography style={{ fontSize: "1.0rem !important", paddingTop: "10px !important", fontWeight: 600 }} className="fil-list-items">Price</Typography>
+                        <Grid container spacing={12} style={{ paddingLeft: "14px" }}  >
                           <Grid item xs={4} >
                             <TextField
                               onChange={(e) => { this.setState({ numOne: e.target.value }) }}

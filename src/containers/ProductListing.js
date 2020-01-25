@@ -69,7 +69,7 @@ class Stylori extends React.Component {
 
           </div>
 
-            <Header data={data} cartcount={this.props.cartcount} wishlist={this.props.wishlistdata} wishlist_count={this.props.wishlist_count} />
+          <Header data={data} cartcount={this.props.cartcount} wishlist={this.props.wishlistdata} wishlist_count={this.props.wishlist_count} />
 
           <Grid item xs={12}>
             <ProductDescription title="Jewellery" data={dataFilter} wishlist={this.props.wishlistdata} />
@@ -91,6 +91,7 @@ class Stylori extends React.Component {
 // const history = (props, aa) => props.history.push(`/stylori?${aa}`);
 
 const Components = props => {
+
   let { CartCtx: { allorderdata, wishlistdata } } = React.useContext(CartContext);
   let { FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters, wishlist_count }, setloadingfilters } = React.useContext(FilterOptionsContext);
   let content, mapped = [];
@@ -103,6 +104,8 @@ const Components = props => {
       mapped = async () => await productList(data, CDN_URL);
     }
   }
+  // console.log(mapped)
+  // debugger
   if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
 
   else content = <Stylori {...props} allorderdata={allorderdata} wishlistdata={wishlistdata} cartcount={cartcount} data={dataArr} dataFilter={mappedFiltersList} loadingfilters={loadingfilters} loading={loading} mappedFilters={mappedFilters} setloadingfilters={setloadingfilters} />

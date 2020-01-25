@@ -22,34 +22,34 @@ const PromoComponent = (props) => {
         }
     }, [])
 
-const { values, handlers, data } = usePromo();
-return (
-    <div className='pt-sm'>
-        <form action="javascript:void(0)" onSubmit={() => handlers.handleSubmit()}>
-            <div style={{ width: "100%" }}>
-                <Grid container spacing={12}>
-                    <Grid item xs={8} lg={8}> 
-                        <Input
-                            helperText="Promocode is required"
-                            placeholder='Enter Promocode'
-                            name="vouchercode"
-                            type="text"
-                            value={values.vouchercode}
-                            required
-                            onChange={e => handlers.handleChange('vouchercode', e.target.value)}
-                        />
-                    </Grid>
-                    <Grid item xs={4} lg={4}>
-                        {data.message === "Applied Successfully" ?
-                            <Button style={{ filter: "grayscale(1)" }} disabled type="sumbit" className='ship-promo-btn'>Applied</Button> :
-                            <Button type="sumbit" className='ship-promo-btn'>Apply</Button>}
+    const { values, handlers, data } = usePromo();
+    return (
+        <div className='pt-sm'>
+            <form action="javascript:void(0)" onSubmit={() => handlers.handleSubmit()}>
+                <div style={{ width: "100%" }}>
+                    <Grid container spacing={12}>
+                        <Grid item xs={8} lg={8}>
+                            <Input
+                                helperText="Promocode is required"
+                                placeholder='Enter Promo code'
+                                name="vouchercode"
+                                type="text"
+                                value={values.vouchercode}
+                                required
+                                onChange={e => handlers.handleChange('vouchercode', e.target.value)}
+                            />
+                        </Grid>
+                        <Grid item xs={4} lg={4}>
+                            {data.message === "Applied Successfully" ?
+                                <Button style={{ filter: "grayscale(1)" }} disabled type="sumbit" className='ship-promo-btn'>Applied</Button> :
+                                <Button type="sumbit" className='ship-promo-btn'>Apply</Button>}
 
+                        </Grid>
                     </Grid>
-                </Grid>
-            </div>
-        </form>
-    </div>
-)
+                </div>
+            </form>
+        </div>
+    )
 }
 
 

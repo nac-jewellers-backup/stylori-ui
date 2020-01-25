@@ -15,7 +15,7 @@ function PaymentResponseFail(props) {
   }
   return (
     <>
-      <Header wishlist={props.wishlistdata} />
+      <Header wishlist={props.wishlistdata}  paymentSucces={true} />
       <Grid container style={{ marginTop: "15px" }}>
         <Grid item xs={12} sm={12} md={12} >
           <Grid container justify="center">

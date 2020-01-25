@@ -66,13 +66,13 @@ class Netbanking extends React.Component {
                             <Grid container>
                                 <Grid item>
                                     <span className="rups">
-                                    {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(dataCard1 - discounted_price))}
+                                        {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(dataCard1 - discounted_price))}
                                     </span> &nbsp;&nbsp;&nbsp;
                                 </Grid>
-                                <Grid item>
-                                    <PaymentHiddenForm data={Math.round(dataCard1 - discounted_price)}/>
+                                <Grid item container>
+                                    <PaymentHiddenForm data={Math.round(dataCard1 - discounted_price)} />
                                 </Grid>
-                            {/* <Button className="credit-button" type="submit"
+                                {/* <Button className="credit-button" type="submit"
                             >Pay Now</Button> */}
                             </Grid>
                         </div>

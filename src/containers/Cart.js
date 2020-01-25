@@ -49,7 +49,7 @@ const cartsubdata = [
 class Cart extends React.Component {
     render() {
         const { data, classes } = this.props
-        
+
         let path = window.location.pathname.split('/').pop();
         return (
             <Grid container>
@@ -95,7 +95,7 @@ class Cart extends React.Component {
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>
                                 <CartCard data={data} />
-                            </Grid> : <><div className="noproductsfound">There are no items in this cart.</div><a href="/jewellery"> <div className="continueshopping">CONTINUE SHOPPING</div></a></>}
+                            </Grid> : <><div className="noproductsfound">There are no items in this cart.</div><a href="/jewellery"> <div className="continueshopping">Continue Shopping</div></a></>}
                         </Grid>
                     </Container>
                     <Grid Container spacing={12}>

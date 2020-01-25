@@ -33,7 +33,7 @@ const useRating = (props) => {
     // const { setratingcounts } = React.useContext(ProductDetailContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CUSTOMERREVIEWS, () => { }, {});
     const clear = () => {
-        
+
         props && props.clear_rating_onchange && props.clear_rating_onchange()
         setValues({
             user_id: "",
@@ -44,7 +44,7 @@ const useRating = (props) => {
             message: "",
             errortext: {
                 rateerr: "",
-                ratetitle: "", 
+                ratetitle: "",
                 ratemsg: "",
             },
             error: {
@@ -194,7 +194,7 @@ const useRating = (props) => {
         } else {
 
             if (values.title === "" && values['error'] && values['errortext']) {
-                values["errortext"]["ratetitle"] = "Enter review title"
+                values["errortext"]["ratetitle"] = "Enter title"
                 values["error"]["ratetitle"] = true
                 setValues({
                     ...values,
@@ -202,14 +202,14 @@ const useRating = (props) => {
                 })
             }
             if (values.message === "" && values['error'] && values['errortext']) {
-                values["errortext"]["ratemsg"] = "Enter review text"
+                values["errortext"]["ratemsg"] = "Enter review"
                 values["error"]["ratemsg"] = true
                 setValues({
                     ...values,
                     values,
                 })
             }
-            values["errortext"]["rateerr"] = "Rate this"
+            values["errortext"]["rateerr"] = "Select star rating"
             setValues({
                 ...values,
                 values
