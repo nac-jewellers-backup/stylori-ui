@@ -23,16 +23,18 @@ const ContinuesComponent = (props) => {
         props.change()
     }
     React.useEffect(()=>{
-        if(otpdata.message){
+        if(Object.entries(otpdata).length>0 && otpdata.constructor === Object){
+            if(otpdata.message){
             setState(otpdata.message)
             localStorage.setItem("_mail_", "wrong")
            
         } 
         else{
-            if(localStorage.getItem("_mail_")) localStorage.removeItem("_mail_")
-            props.changePanel(2)
+             if(localStorage.getItem("_mail_")) localStorage.removeItem("_mail_")
+            // props.changePanel(2)
             
         }
+    }
         
 
     },[otpdata])
