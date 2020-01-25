@@ -147,6 +147,7 @@ export const YouMayAlsoLike = `query MyQuery($filterdata: ProductListFilter,$fil
           nodes {
             discountPrice
             generatedSku
+            skuUrl
         
             productListByProductId{
            
@@ -176,6 +177,7 @@ export const YouMayAlsoLike = `query MyQuery($filterdata: ProductListFilter,$fil
           nodes {
             discountPrice
             generatedSku
+            skuUrl
          
             productListByProductId{
               
@@ -199,6 +201,7 @@ export const youRecentlyViewed = `query youRecentlyViewed($filtersku:  TransSkuL
       nodes {
         discountPrice
         generatedSku
+        skuUrl
         productListByProductId {
           productName
           productType

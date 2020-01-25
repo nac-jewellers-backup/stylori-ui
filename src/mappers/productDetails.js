@@ -113,6 +113,7 @@ screenWidth()
 // const baseUi = "https://assets-cdn.stylori.com/";
 // const injectUrl = (url, baseUi) => url ? resolutions.map(k => ({ ...k, img: `${baseUi}${url.imageUrl===undefined  ? url : url.imageUrl}` })) : [];
 const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
+    
     var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
     if (browser_type !== undefined && url !== undefined && url && url.imageUrl.length > 0 && screen_res !== undefined && baseUi !== undefined) {
         var resolution = screen_width_type(screen_res, largeImageZoom)
@@ -586,28 +587,35 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                         like_data.data.youMayalsolike1 && like_data.data.youMayalsolike1.nodes.length > 0 ?
                             like_data.data.youMayalsolike1.nodes.map(
                                 val => {
+                                    debugger
                                     return ({
                                         img: `${CDN_URL}${val && val.productImagesByProductId && val.productImagesByProductId.nodes}` &&
                                             injectUrl_url_construct(val.productImagesByProductId.nodes[0] && val.productImagesByProductId.nodes[0], CDN_URL, colSize_like_view),
 
-                                        title: val.productName,
-                                        price: Math.round(val.transSkuListsByProductId.nodes[0].discountPrice),
-                                        url: `/jewellery/${val.productType}/${val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0].materialName : ''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
+                                        title: val&& val.productName && val.productName,
+                                        price: val&& val.transSkuListsByProductId &&val.transSkuListsByProductId.nodes&&val.transSkuListsByProductId.nodes.length>0&&val.transSkuListsByProductId.nodes[0] && val.transSkuListsByProductId.nodes[0].discountPrice && val.transSkuListsByProductId.nodes[0].discountPrice ? Math.round(val.transSkuListsByProductId.nodes[0].discountPrice): 0,
+                                        url:val&& val.transSkuListsByProductId &&val.transSkuListsByProductId.nodes&&val.transSkuListsByProductId.nodes.length>0&&val.transSkuListsByProductId.nodes[0] && val.transSkuListsByProductId.nodes[0].skuUrl ? val.transSkuListsByProductId.nodes[0].skuUrl: ''
                                     })
                                 }
                             )
                             :
+                            like_data && like_data.data && like_data.data.youMayalsolike2 && like_data.data.youMayalsolike2.nodes ?
+                            
                             like_data.data.youMayalsolike2.nodes.map(
+                               
                                 val => {
+                                    debugger
                                     return ({
-                                        img: `${CDN_URL}${val && val.productImagesByProductId && val.productImagesByProductId.nodes}` &&
-                                            injectUrl_url_construct(val.productImagesByProductId.nodes[0] && val.productImagesByProductId.nodes[0], CDN_URL, colSize_like_view),
+                                        img: `${CDN_URL}${val && val.productImagesByProductId && val.productImagesByProductId.nodes}` ?
+                                            injectUrl_url_construct(val.productImagesByProductId.nodes[0] && val.productImagesByProductId.nodes[0], CDN_URL, colSize_like_view):[],
                                         title: val && val.productName ? val.productName : '',
-                                        price: val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? Math.round(val.transSkuListsByProductId.nodes[0].discountPrice) : 0,
-                                        url: `/jewellery/${val.productType}/${val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0].materialName : ''}/${val.productName}?skuId=${val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes[0] ? val.transSkuListsByProductId.nodes[0].generatedSku : ''}`
+                                        price: val && val.transSkuListsByProductId && val.transSkuListsByProductId.nodes && val.transSkuListsByProductId.nodes.length > 0 && val.transSkuListsByProductId.nodes[0].discountPrice && val.transSkuListsByProductId.nodes[0].discountPrice ? Math.round(val.transSkuListsByProductId.nodes[0].discountPrice) : 0,
+                                        url: val&& val.transSkuListsByProductId &&val.transSkuListsByProductId.nodes&&val.transSkuListsByProductId.nodes.length>0&&val.transSkuListsByProductId.nodes[0] && val.transSkuListsByProductId.nodes[0].skuUrl ? val.transSkuListsByProductId.nodes[0].skuUrl: ''
                                     })
                                 }
                             )
+                            :
+                            []
                         :
                         [],
                 fadeImageSublistRecentlyViewed: viewedddatas && viewedddatas.data && Object.entries(viewedddatas.data).length > 0 && viewedddatas.constructor === Object && viewedddatas.data.allTransSkuLists.nodes.length > 0 ?
@@ -618,7 +626,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                                 injectUrl_url_construct(val.productListByProductId.productImagesByProductId.nodes[0] && val.productListByProductId.productImagesByProductId.nodes[0], CDN_URL, colSize_like_view),
                             title: val.productListByProductId.productName,
                             price: Math.round(val.discountPrice),
-                            url: `/jewellery/${val.productListByProductId.productType}/${val.productListByProductId.productMaterialsByProductSku.nodes[0].materialName}/${val.productListByProductId.productName}?skuId=${val.generatedSku}`
+                            url: val && val.skuUrl ? val.skuUrl: ''
                         })
                     })
                     :

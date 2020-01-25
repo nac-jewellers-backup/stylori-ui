@@ -192,11 +192,14 @@ class ProductDetail extends Component {
   }
 }
 const Components = props => {
+  
   let { CartCtx: { allorderdata, wishlistdata } } = React.useContext(CartContext);
+  
   const { Globalctx } = React.useContext(GlobalContext)
   const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating } } = React.useContext(ProductDetailContext);
   const datas = data;
   let mapped = datas;
+  
   if (!loading && !error) {
     mapped = productDetails(datas, likedatas, viewedddatas, rating, Globalctx.tabsChange);
   }

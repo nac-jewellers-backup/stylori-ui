@@ -159,7 +159,7 @@ const Provider = (props) => {
     useEffect(() => {
         orderobj["userProfileId"] = userIds
         orderobj1["userprofileId"] = userIds
-        wishlistmakeRequest(orderobj1)
+        if(userIds) wishlistmakeRequest(orderobj1)
         orderobj["userProfileId"] = localStorage.getItem('user_id')
         if (window.location.pathname === '/account-allorders' && Object.values(orderobj).length > 0) allordermakeRequest(orderobj);
 
