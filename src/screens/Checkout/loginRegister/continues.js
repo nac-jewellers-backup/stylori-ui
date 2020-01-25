@@ -7,7 +7,7 @@ import styles from './style';
 import { useVerifyOtp } from './verifyOtp';
 
 const ContinuesComponent = (props) => {
-    const { handlers, email, otp, status,otpdata, enterotp, setMail } = useVerifyOtp();
+    const { handlers, email, otp, status, otpdata, enterotp, setMail } = useVerifyOtp();
     const { classes } = props;
     const values = { email: email.email, otp: otp.otp }
     const [state, setState] = React.useState(null)
@@ -22,21 +22,21 @@ const ContinuesComponent = (props) => {
         })
         props.change()
     }
-    React.useEffect(()=>{
-        if(otpdata.cart_id){
-            if(localStorage.getItem("_mail_")) localStorage.removeItem("_mail_")
+    React.useEffect(() => {
+        if (otpdata.cart_id) {
+            if (localStorage.getItem("_mail_")) localStorage.removeItem("_mail_")
             props.changePanel(2)
-        } 
-        else{
+        }
+        else {
             setState(otpdata.message)
             localStorage.setItem("_mail_", "wrong")
-            
-        }
-        
 
-    },[otpdata])
+        }
+
+
+    }, [otpdata])
     const handleSubmit = (e) => {
-        
+
         if (enterotp) {
             handlers.otpFetch(values);
         } else {
@@ -72,7 +72,7 @@ const ContinuesComponent = (props) => {
                                         }}
                                         required
                                     />
-<label style={{color:"red"}}>{state}</label>
+                                    <label style={{ color: "red" }}>{state}</label>
                                 </>}
                             {!enterotp &&
                                 <>
@@ -95,7 +95,7 @@ const ContinuesComponent = (props) => {
                             {/* <MailForm/> */}
                             <div className='login-butn'>
                                 <Button className='back-b' onClick={() => clear()} >Back</Button>
-                                {enterotp ? <Button className='apply-b' type='submit'>Apply</Button>
+                                {enterotp ? <Button className='apply-b' type='submit'>Verify</Button>
                                     : <Button className='apply-b' type='submit' >Apply</Button>}
                             </div>
                         </Grid>

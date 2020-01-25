@@ -89,7 +89,7 @@ class PaymentResponseSuccess extends React.Component {
              data={this.props.data.length > 0 ? this.props.data[0].breadcrumsdata : breadcrumsdata}
              subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata}
           /> */}
-            <Grid container justify="center">
+            <Grid container justify="center" style={{ paddingTop: "10px" }}>
 
                <Grid container justify="center">
                   <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>
@@ -98,7 +98,7 @@ class PaymentResponseSuccess extends React.Component {
                   </Grid>
                </Grid>
                <Grid container justify="center">
-                  <Grid item xs={12} sm={12} md={4} className="contant-center">
+                  <Grid item xs={12} sm={12} md={4} className="contant-center" style={{paddingLeft:"10px"}}>
                      We've send you an email confirmation.
                   <a onClick={() => {
                         this.makeFetch_resend_mail()
@@ -140,7 +140,8 @@ class PaymentResponseSuccess extends React.Component {
                   </Grid>
                </Grid> */}
                <Grid container justify="center">
-                  <Grid container style={{ width: "100%" }}  >
+                  <Grid container style={{ maxWidth: "835px" }}  >
+
                      <Grid item style={{ display: "flex", marginLeft: "auto", paddingRight: "2px" }}>
 
                         <Button style={{ background: "#ed1165", color: "#fff", padding: "5px 20px" }} onClick={() => {
@@ -153,7 +154,7 @@ class PaymentResponseSuccess extends React.Component {
                            if (gut_lg === true) {
                               localStorage.clear();
                            }
-                           this.props.history.push("/jewellery")
+                           this.props.history.push("/home")
                            // window.location.pathname="/jewellery"
                         }}>Back to home</Button>
                      </Grid>

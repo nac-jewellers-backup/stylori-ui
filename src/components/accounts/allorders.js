@@ -340,7 +340,7 @@ debugger
                             </div> : <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Orders</div>}
 
                     </div> :
-                    <div className='pt-sm checkout-ovralldiv-media' >
+                    <div className='pt-sm checkout-ovralldiv-media' style={{margin:"auto"}}>
                         {allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes.length > 0 ?
                             <Container>
                                 <Container>
