@@ -177,40 +177,76 @@ const useWishlists = (props) => {
                     }
                     else {
                         // alert("not paid")
-                        localStorage.setItem("cart_id", JSON.stringify({ cart_id: val.data.allShoppingCarts.nodes[0].id }))
-                        var _conditionfetch = {
-                            "CartId": { "shoppingCartId": val.data.allShoppingCarts.nodes[0].id }
-                        }
-                        // var _products_obj = {}
-                        _products_obj['sku_id'] = values.product_sku
-                        _products_obj['price'] = values.add
-                        _products_obj['qty'] = 1 
-                        var _cart_id = {cart_id:val.data.allShoppingCarts.nodes[0].id}
-
-
-                        _products = { products: [_products_obj] }
-                       _obj = { ..._user_id, ..._products, ..._cart_id}
-
-                        fetch(`${API_URL}/addtocart`, {
-                            method: 'post',
-                            // body: {query:seoUrlResult,variables:splitHiphen()}
-                            // body: JSON.stringify({query:seoUrlResult}),
-
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({
-                                ..._obj,
-                            })
-                        }).then(val=>{
-                            if ((JSON.stringify(values.add) && JSON.stringify(values.add).length > 0) && (window.location.pathname.split("-")[0] === "/account")) {
-                                window.location.pathname = `/account${'-shoppingcart'}`
-                            } else {
-                                if (window.location.pathname.split("-")[0] === "/account") {
-                                    window.location.reload();
+                        if(val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length>0 && val.data.allShoppingCarts.nodes[0] && val.data.allShoppingCarts.nodes[0].id){
+                            
+                            localStorage.setItem("cart_id", JSON.stringify({ cart_id: val.data.allShoppingCarts.nodes[0].id }))
+                            var _conditionfetch = {
+                                "CartId": { "shoppingCartId": val.data.allShoppingCarts.nodes[0].id }
+                            }
+                            // var _products_obj = {}
+                            _products_obj['sku_id'] = values.product_sku
+                            _products_obj['price'] = values.add
+                            _products_obj['qty'] = 1 
+                            var _cart_id = {cart_id:val.data.allShoppingCarts.nodes[0].id}
+    
+    
+                            _products = { products: [_products_obj] }
+                           _obj = { ..._user_id, ..._products, ..._cart_id}
+    
+                            fetch(`${API_URL}/addtocart`, {
+                                method: 'post',
+                                // body: {query:seoUrlResult,variables:splitHiphen()}
+                                // body: JSON.stringify({query:seoUrlResult}),
+    
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    ..._obj,
+                                })
+                            }).then(val=>{
+                                if ((JSON.stringify(values.add) && JSON.stringify(values.add).length > 0) && (window.location.pathname.split("-")[0] === "/account")) {
+                                    window.location.pathname = `/account${'-shoppingcart'}`
+                                } else {
+                                    if (window.location.pathname.split("-")[0] === "/account") {
+                                        window.location.reload();
+                                    }
+                                }
+                            })  
+                                
+                            }
+                            else{
+                                if(values && values.product_sku && Object.values(values.product_sku).length>0 && values.add && Object.values(values.add).length>0){
+                                    _user_id = { user_id: localStorage.getItem('user_id') }
+                                    _products_obj['sku_id'] = values.product_sku
+                                    _products_obj['price'] = values.add
+                                    _products_obj['qty'] = 1 
+                                    _products = { products: [_products_obj] }
+                                     _obj = { ..._user_id, ..._products }
+                                    fetch(`${API_URL}/addtocart`, {
+                                        method: 'post',
+                                        // body: {query:seoUrlResult,variables:splitHiphen()}
+                                        // body: JSON.stringify({query:seoUrlResult}),
+            
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({
+                                            ..._obj,
+                                        })
+                                    })
+                                }
+                                else{
+                                    return {
+                                        "data": {
+                                          "allShoppingCarts": {
+                                            "nodes": []
+                                          }
+                                        }
+                                      } 
                                 }
                             }
-                        })
+                
                     }
                 });
             })
