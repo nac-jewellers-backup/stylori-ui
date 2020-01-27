@@ -57,7 +57,7 @@ export default function CollectionItem(props) {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    ...Collectionz
+                    ...Collectionz 
                 }),
             })
                 .then(status)
