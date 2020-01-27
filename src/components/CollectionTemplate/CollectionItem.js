@@ -31,7 +31,7 @@ export default function CollectionItem(props) {
     const slider = React.createRef();
     const [values, setValues] = React.useState({
         onViewMoreCollection: false,
-        arr_data: []
+        arr_data: [] 
     })
     const viewMoreCollections = () => {
         setValues({ onViewMoreCollection: true })
