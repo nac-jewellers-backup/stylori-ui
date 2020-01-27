@@ -60,7 +60,7 @@ export default function CollectionItem(props) {
                     ...Collectionz 
                 }),
             })
-                .then(status)
+                .then(status) 
                 .then(json)
                 .then(async (data) => {
                     if (data !== undefined && data !== null) {
