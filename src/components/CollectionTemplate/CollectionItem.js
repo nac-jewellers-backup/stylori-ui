@@ -30,7 +30,7 @@ export default function CollectionItem(props) {
     const { loading, error, data: CollectionData, makeFetch: fetchproducts } = useNetworkRequest('/fetchproducts', {}, false, {})
     const slider = React.createRef();
     const [values, setValues] = React.useState({
-        onViewMoreCollection: false,
+        onViewMoreCollection: false, 
         arr_data: [] 
     })
     const viewMoreCollections = () => {
