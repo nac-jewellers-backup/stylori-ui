@@ -50,7 +50,7 @@ const Provider = (props) => {
     const[noproducts,setNoproducts]=React.useState(false)
     // const [_cart_id, setCartId] = React.useState([])
     // console.log("hdjhjhkjfh", allorderdata)
-    var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : '';
+    var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : [];
     const user_id = cartFilters.user_id ? cartFilters.user_id : ""
     const price = cartFilters.price ? cartFilters.price : ""
     const { loading: crtloading, error: crterror, data: crtdata, makeFetch: addtocart } = useNetworkRequest('/addtocart', { user_id, products }, false)
@@ -233,6 +233,7 @@ const Provider = (props) => {
                     return products
                 }
             }
+
             var skuObj = { "cart_id": cartId, "user_id": userId, "products": products_sku_list() }
             // if (userIds.length > 0 && gut_lg !== true) {
             //     var products = productszz;
@@ -240,8 +241,8 @@ const Provider = (props) => {
             //     var addcart = ({ products, user_id })
             //     addtocart(addcart)
             // }
-
-            localStorage.setItem('cartDetails', JSON.stringify(skuObj));
+            debugger
+            if(skuId) localStorage.setItem('cartDetails', JSON.stringify(skuObj));
 
         }
     }
@@ -267,7 +268,7 @@ const Provider = (props) => {
     const updateProductList = () => {
         let variables;
         if (localStorage.getItem('user_id')) {
-            function status(response) {
+            const status = (response) => {
 
                 if (response.status >= 200 && response.status < 300) {
                     return Promise.resolve(response)
@@ -276,7 +277,7 @@ const Provider = (props) => {
                 }
             }
 
-            function json(response) {
+            const json = (response) => {
                 return response.json()
             }
             var a = {}
@@ -291,7 +292,7 @@ const Provider = (props) => {
             var _conditionfetchCartId = {
                 "UserId": { "userprofileId": localStorage.getItem("user_id") }
             }
-
+debugger
             //  alert(JSON.stringify(this.state.checked))
             fetch(`${API_URL}/graphql`, {
 

@@ -12,7 +12,13 @@ import cartoonFooter from '../../assets/cartoonFooter.png'
 import './Footer.css'
 import { pointer } from 'popmotion';
 import styloriLogo from "../../assets/Stylorilogo.svg"
-
+import Snackbar from '@material-ui/core/Snackbar';
+import Slide from '@material-ui/core/Slide';
+import {API_URL} from 'config'
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+// import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 const useStyles = makeStyles(theme => ({
     navTitle: {
         cursor: "pointer",
@@ -64,6 +70,9 @@ const useStyles = makeStyles(theme => ({
         fontWeight: '400',
         lineHeight: '1.42857143',
         textTransform: 'none',
+       '&:hover':{
+        backgroundColor: theme.palette.primary.main,
+       } 
     },
     spanSizeColor: {
         color: '#808080',
@@ -77,6 +86,10 @@ const useStyles = makeStyles(theme => ({
 
 export default function Footer(props) {
     const silver = props.silver
+    const [state, setState] = React.useState('')
+    const [open, setOpen] = React.useState(false)
+    const [message, setMessage] = React.useState('')
+    
     const classes = useStyles();
     const footerData = [
         {
@@ -186,6 +199,55 @@ export default function Footer(props) {
         },
     ]
 
+    const status = (response) => {
+
+        if (response.status >= 200 && response.status < 300) {
+            return Promise.resolve(response)
+        } else {
+            return Promise.reject(new Error(response.statusText))
+        }
+    }
+    function Alert(props) {
+        return <MuiAlert elevation={6} variant="filled" {...props} />;
+      }
+    const json = (response) => {
+        return response.json()
+    }
+const handleClose = () =>{
+    setOpen(false)
+}
+const handleEmail =(e) =>{
+    debugger
+    if(state.length > 0){
+        fetch(`${API_URL}/addemailsubscription`, {
+
+            method: 'post',
+            // body: {query:seoUrlResult,variables:splitHiphen()}
+            // body: JSON.stringify({query:seoUrlResult}),
+
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email:state
+            })
+        })
+            .then(status)
+            .then(json).then(async val => {
+                console.log(val)
+                
+                setMessage('Thanks for subscribing')
+                setOpen(true)
+            })
+
+    }
+    else{
+        
+        setMessage('Email field cannot be empty')
+        setOpen(true)
+    }
+  
+}
     return (
         <Grid
             container
@@ -217,12 +279,15 @@ export default function Footer(props) {
                         <Grid container style={{ display: 'flex', justifyContent: 'center' }}>
                             <Grid item xs={6} xl={8} lg={8} md={8} >
                                 <input
+                                value={state}
+                                onChange={(e)=>setState(e.target.value)}
                                     placeholder='Email address...'
                                     className={`${classes.buynowSearch}`}
                                 />
+
                             </Grid>
                             <Grid item xl={4} lg={4} md={4} xs={4}>
-                                <Button className={`${classes.searchButtonFooter}`}>Stay Informed</Button>
+                                <Button onClick={handleEmail} className={`${classes.searchButtonFooter}`}>Stay Informed</Button>
                             </Grid>
                         </Grid>
 
@@ -235,15 +300,20 @@ export default function Footer(props) {
                     <Grid container item xl={4} lg={4} md={4} xs={12} sm={4} style={{ padding: '3%' }}>
                         <Grid container style={{ display: 'flex', justifyContent: 'flex-start' }}>
                             <Grid item xs={6} xl={8} lg={8} md={8} sm={8}>
-                                <input
-                                    placeholder='Enter your email address'
+                            <input
+                                value={state}
+                                id="input"
+                                onChange={(e)=>setState(e.target.value)}
+                                    placeholder='Email address...'
                                     className={`${classes.buynowSearch}`}
                                 />
                             </Grid>
                             <Grid item sm={4} xs={3} xl={4} lg={4} md={4}>
-                                <Button className={`${classes.searchButtonFooter}`}>Stay Informed</Button>
+                                <Button onClick={handleEmail} className={`${classes.searchButtonFooter}`}>Stay Informed</Button>
                             </Grid>
                         </Grid>
+                      
+
 
                     </Grid>
 
@@ -499,6 +569,25 @@ export default function Footer(props) {
                 </Grid>
 
             </Hidden>
+            <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        className="snackBar"
+        open={open}
+        autoHideDuration={5000}
+        onClose={handleClose}
+        TransitionComponent={(props)=>{return <Slide {...props} direction="up" />}}
+        message={message}
+        action={
+          <React.Fragment>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
         </Grid>
     );
 

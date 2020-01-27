@@ -70,33 +70,57 @@ class Checkoutcard extends React.Component {
         function json(response) {
             return response.json()
         }
+if(JSON.parse(localStorage.getItem('cart_id'))){
+    let cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
+    let bodyVariableRemoveCartItem = { cart_id: cart_id, product_id: currentValue }
+    fetch(`${API_URL}/removecartitem`, {
 
+        method: 'post',
+        // body: {query:seoUrlResult,variables:splitHiphen()}
+        // body: JSON.stringify({query:seoUrlResult}),
 
-        let cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
-        let bodyVariableRemoveCartItem = { cart_id: cart_id, product_id: currentValue }
-        fetch(`${API_URL}/removecartitem`, {
-
-            method: 'post',
-            // body: {query:seoUrlResult,variables:splitHiphen()}
-            // body: JSON.stringify({query:seoUrlResult}),
-
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                ...bodyVariableRemoveCartItem
-            })
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            ...bodyVariableRemoveCartItem
         })
-            .then(status)
-            .then(json).then(val => {
-                sessionStorage.removeItem('updatedProduct');
-                alert(JSON.stringify(val.message))
-                var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
-                var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
-                var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
-                localStorage.setItem('cartDetails', localstorage)
-                window.location.reload();
-            })
+    })
+        .then(status)
+        .then(json).then(val => {
+            sessionStorage.removeItem('updatedProduct');
+            alert(JSON.stringify(val.message))
+            var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
+            var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
+            var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
+            localStorage.setItem('cartDetails', localstorage)
+            window.location.reload();
+        })
+}
+else{
+    debugger
+    var _products =JSON.parse(localStorage.getItem('cartDetails')).products.filter(val=>{
+        if(val.sku_id !== currentValue) return val  
+        })
+        var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
+        var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
+        var _obj = {cart_id:cartId, user_id:userId, products:_products}
+        if(_products.length>0){
+            localStorage.setItem('cartDetails', JSON.stringify(_obj))
+            window.location.reload()
+
+        }
+        else{
+            localStorage.removeItem('cartDetails', _products)
+            window.location.reload()
+        }
+
+  console.log(currentValue)
+
+
+}
+
+        
 
     }
     handlereloadcart = (val) => {

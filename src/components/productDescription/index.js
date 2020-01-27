@@ -47,7 +47,11 @@ class ProductDescription extends Component {
     var data_json = [{ title: 'home', url: '/' }, { title: 'jewellery', url: "/jewellery" }]
     // const descriptionData = this.props.data;
     const settings = this.props.data && this.props.data[0] && this.props.data[0].dataCarousel;
-    const fadeImages = this.props.data && this.props.data[0] && this.props.data[0].carouselImage;
+    // const fadeImages = this.props.data && this.props.data[0] && this.props.data[0].carouselImage;
+    const fadeImages = this.props.datalisting && this.props.datalisting  && this.props.datalisting.length>0  ? this.props.datalisting.map(val=>{return (val.image.placeImage.img)}) : ['https://assets.stylori.com/product/SP0384/500X500/SP0384-1W.webp', 'https://assets.stylori.com/product/SR0783/500X500/SR0783-1Y.webp','https://assets.stylori.com/product/SR0367/500X500/SR0367-1Y.webp','https://assets.stylori.com/product/SE0891/500X500/SE0891-1Y.webp'];
+    debugger
+  
+    fadeImages.sort((a, b) => 0.5 - Math.random());
     const title = this.props.title;
     const datadescription = this.props.data && this.props.data[0] && this.props.data[0].seoText;
     const renderTitle = () => {
