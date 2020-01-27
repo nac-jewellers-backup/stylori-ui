@@ -193,6 +193,10 @@ export default function Footer(props) {
             url: "/termsconditions",
             Title: "Terms & Conditions"
         },
+        {
+            url: "/contactus",
+            Title: "Contact Us"
+        },
     ]
 
     const status = (response) => {
