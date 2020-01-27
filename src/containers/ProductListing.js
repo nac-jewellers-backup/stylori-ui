@@ -72,7 +72,7 @@ class Stylori extends React.Component {
           <Header data={data} cartcount={this.props.cartcount} wishlist={this.props.wishlistdata} wishlist_count={this.props.wishlist_count} />
 
           <Grid item xs={12}>
-            <ProductDescription title="Jewellery" data={dataFilter} wishlist={this.props.wishlistdata} />
+            <ProductDescription title="Jewellery" data={dataFilter} datalisting = {data} wishlist={this.props.wishlistdata} />
             <Filter datas={data} data={dataFilter} loading={loading} wishlist={this.props.wishlistdata} />
           </Grid>
           <Grid item xs={12} >

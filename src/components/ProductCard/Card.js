@@ -94,8 +94,10 @@ const imageOnError = (event, res) => {
   // }
   event.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
 }
-const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => (
-  <div className="imageHeight">
+const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => {
+  debugger
+  return (
+    <div className="imageHeight">
     {props.data.oneDayShipping ? <div class={Math.round(props.data.offerPrice) === Math.round(props.data.price) ? "one-day-ship-listing-page-withoutTop" : "one-day-ship-listing-page"} style={{ zIndex: 2 }}>
       <i class="fa fa-truck" style={{ fontSize: "20px" }}></i>
       <span class="one-day-ship-listing-page-label">1 day shipping</span>
@@ -106,7 +108,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
         <>
           <span className="overlayCss" style={{ zIndex: 10, color: "#fff", backgroundColor: "#f699a3" }}>
 
-            {Math.round(((Math.round(props.data.price) - Math.round(props.data.offerPrice)) / Math.round(props.data.price)) * 100) + '% off'}
+            {`${props.data.discount} % off`}
 
           </span>
         </>
@@ -153,7 +155,8 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
 
 
   </div>
-);
+  )
+};
 // onLoad={(e)=>e.target.src=e.target.style.background='url(https://alpha-assets.stylori.com/images/static/loadingimg.gif') center center / 25% 25% no-repeat rgb(255, 255, 255);'}
 export default trackWindowScroll(Gallery);
 // <img 
