@@ -36,7 +36,7 @@ const styles = theme => ({
     controls: {
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-around",
+        justifyContent: "flex-end",
         "& button": {
             padding: "2.1px 13.8px"
         },
