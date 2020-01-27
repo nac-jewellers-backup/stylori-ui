@@ -12,68 +12,68 @@ import { productcarddatas } from '../../mappers';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
 import { NavLink } from 'react-router-dom';
-import {API_URL} from "config"
+import { API_URL } from "config"
 function MediaControlCard(props) {
   const { classes } = props;
   const { dataCard1 } = props.data;
   const handleDeleteLocalStorage = (e) => {
     var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
-    var currentValue = e.target.id 
+    var currentValue = e.target.id
     // console.clear()
     // console.log("e-clear",e.target.id)
-    
+
     var a = local_storage.products.filter(val => {
-        if (currentValue !== val.sku_id) {
-            return val
-        }
+      if (currentValue !== val.sku_id) {
+        return val
+      }
     })
     function status(response) {
 
-        if (response.status >= 200 && response.status < 300) {
-          return Promise.resolve(response)
-        } else {
-          return Promise.reject(new Error(response.statusText))
-        }
+      if (response.status >= 200 && response.status < 300) {
+        return Promise.resolve(response)
+      } else {
+        return Promise.reject(new Error(response.statusText))
       }
+    }
 
-      function json(response) {
-        return response.json()
-      }
+    function json(response) {
+      return response.json()
+    }
 
 
     let cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
-    let bodyVariableRemoveCartItem = {cart_id:cart_id,product_id:currentValue}
+    let bodyVariableRemoveCartItem = { cart_id: cart_id, product_id: currentValue }
     fetch(`${API_URL}/removecartitem`, {
-  
-        method: 'post',
-        // body: {query:seoUrlResult,variables:splitHiphen()}
-        // body: JSON.stringify({query:seoUrlResult}),
 
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...bodyVariableRemoveCartItem
-        })
+      method: 'post',
+      // body: {query:seoUrlResult,variables:splitHiphen()}
+      // body: JSON.stringify({query:seoUrlResult}),
+
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...bodyVariableRemoveCartItem
       })
-        .then(status)
-        .then(json).then(val=>{
-            sessionStorage.removeItem('updatedProduct');
-            alert(JSON.stringify(val.message))
-            var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
-            var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
-            var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
-            localStorage.setItem('cartDetails', localstorage)
-            window.location.reload();
-        })
- 
-}
+    })
+      .then(status)
+      .then(json).then(val => {
+        sessionStorage.removeItem('updatedProduct');
+        alert(JSON.stringify(val.message))
+        var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
+        var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
+        var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
+        localStorage.setItem('cartDetails', localstorage)
+        window.location.reload();
+      })
+
+  }
   return (
     <div style={{ paddingTop: "10px" }}>
       {/* <Grid container>
         <Grid xs={6} > */}
       <span style={{ color: "#666", fontSize: "14px", margin: "0px 0px 10px" }}>   Shopping cart  </span> <br />
-      <div> <span style={{ color: "#394578", fontSize: "14px", fontWeight: "bold" }}>Item:</span> ({props.data.length})</div><br />
+      {/* <div> <span style={{ color: "#394578", fontSize: "14px", fontWeight: "bold" }}>Item:</span> ({props.data.length})</div><br /> */}
       {/* </Grid>
         <Grid xs={6}  >
           jh</Grid>
@@ -157,7 +157,7 @@ function MediaControlCard(props) {
                 )}
               </CardContent>
               <div className={classes.controls}>
-                <NavLink to="/checkout" style={{ textDecoration: 'none' }}>
+                {/* <NavLink to="/checkout" style={{ textDecoration: 'none' }}>
                   <Button
                     className={`btn-cart-resp ${classes.buttons}`}
                     variant="contained"
@@ -168,7 +168,7 @@ function MediaControlCard(props) {
                   >
                     Buy Now
           </Button>
-                </NavLink>
+                </NavLink> */}
 
                 {window.location.pathname !== "/checkout" ?
                   <div
@@ -177,7 +177,7 @@ function MediaControlCard(props) {
                     className={`${classes.normalfonts} ${classes.controls}`}
                   >
                     &nbsp;
-                    <div id={val.namedetail[4].details} productid= {dataval} onClick={(e) => handleDeleteLocalStorage(e,val)}>
+                    <div id={val.namedetail[4].details} productid={dataval} onClick={(e) => handleDeleteLocalStorage(e, val)}>
                       <i style={{ fontSize: "16px" }} class="fa"> &#xf014;</i>&nbsp;<span>Remove</span>
                     </div>
 

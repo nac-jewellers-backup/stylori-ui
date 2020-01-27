@@ -649,3 +649,37 @@
   padding: 10px;
   background: #f3f3f3 !important;
 }
+
+.contactUsCompo {
+  max-width: 100%;
+  margin: auto !important;
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .contactUsCompo {
+    width: 750px !important;
+    margin: auto !important;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .contactUsCompo {
+    width: 970px !important;
+    margin: auto !important;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .contactUsCompo {
+    width: 1170px !important;
+    margin: auto !important;
+    display: flex;
+    justify-content: center;
+  }
+}
