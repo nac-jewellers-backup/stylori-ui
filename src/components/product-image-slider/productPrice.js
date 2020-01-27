@@ -32,7 +32,7 @@ const mobilecarousel = (props, val) => {
     const { data, classes } = props;
     return (
         <div>
-            <Grid container spacing={12} xs={12} style={{ position: "absolute" }}>
+            <Grid container spacing={12} xs={12}>
                 <Grid container item xs={6}>
                     <div className="css-ts7n45 e5toz5w4"><span style={{ color: "#fff" }} className="e195g4sk5 css-5pjie5 ekntgft2">{val.offerDiscount}</span><br />
                         {data[0].ProductContactNum[0].isReadyToShip === true ? <div className="css-ts7n45-redy_toship one-day-ship-mb"></div> : ""}
@@ -45,7 +45,7 @@ const mobilecarousel = (props, val) => {
             </Grid>
             {/* <div style={{background:"red"}}>Earrings in 18K Yellow Gold and Peridot for Kids</div> */}
             <Slideshow class='responseve-carousel testingcur' imgClass='responseve-carousel-img'
-                fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
+                fadeImages={data[0].fadeImages.arrOfurls} dataCarousel={dataCarousel} />
         </div>
     );
 };
@@ -126,8 +126,8 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                     <div>
                                                         {data[0].ProductContactNum.map(val =>
                                                             <div >
-                                                                <b className={`ships-by ${classes.normalfonts}`}>
-                                                                    <span style={{ textAlign: "center" }}> {val.shipby}</span>
+                                                                <b style={{ alignItems: "center", display: "flex" }} className={`ships-by ${classes.normalfonts}`}>
+                                                                    <span style={{ textAlign: "center", alignItems: "center", display: "flex" }}> {val.shipby}</span>
                                                                 </b>
                                                             </div>
                                                         )}
@@ -167,7 +167,8 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
 
                                 <Grid item xs={12} lg={3} md={3} style={{
                                     display: "flex",
-                                    lineHeight: "20px"
+                                    lineHeight: "20px",
+                                    justifyContent:"flex-end"
                                 }}>
                                     <Hidden smDown>
                                         <div className="starts product-icons" style={{ fontFamily: "fontawesome" }} >
@@ -198,13 +199,13 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                     <div className="product-share">
                                                         <h5>Share the Jewellery</h5>
                                                         <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
-                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
+                                                            <img class="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
                                                         </a>&nbsp;
                                             <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
-                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
+                                                            <img class="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
                                                         </a>&nbsp;
                                             {/* <a class="google" target="_blank">
-                                                            <img class="lazyload" src="https://assets-cdn.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
+                                                            <img class="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
                                                         </a> */}
                                                     </div>
                                                 </Popover>
@@ -218,22 +219,22 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                 </Grid>
                             </Grid>
                         </Paper>
-                        <Hidden smDown>
+                        {/* <Hidden smDown>
                             <hr class="bottom-line product-inform-ation"></hr>
-                        </Hidden>
+                        </Hidden> */}
 
                     </Grid>
 
 
 
                     <Hidden smDown>
-                        <div className={classes.width} style={{ padding: "0px 10px  10px 10px " }}>
-                            <Pricing
-                                price={data[0].price}
-                                offerPrice={data[0].offerPrice}
-                                offerDiscount={val.offerDiscount}
-                            >
-                                {/* <Grid container spacing={12}>
+                        <div className={classes.width} style={{ padding: "0px 10px  0px 10px " }}>
+                            {data[0].price === data[0].offerPrice ?
+
+                                <Pricing
+                                    offerPrice={data[0].offerPrice}
+                                >
+                                    {/* <Grid container spacing={12}>
                                     <div className={`price-info ${classes.dis}`}>
                                         <Grid item xs={4} lg={2} className={`discount-container ${classes.dis}`}>
                                             {val.price}
@@ -243,7 +244,13 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                         </Grid>
                                     </div>
                                 </Grid> */}
-                            </Pricing>
+                                </Pricing> : <Pricing
+                                    offerPrice={data[0].offerPrice}
+                                    price={data[0].price}
+
+                                // offerDiscount={val.offerDiscount}
+                                >
+                                </Pricing>}
                         </div>
                     </Hidden>
                 </>

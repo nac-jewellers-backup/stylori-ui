@@ -13,7 +13,15 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from '../Header/styles'
 import ReactImageZoom from 'react-image-zoom';
 import StaticView from 'components/CarouselLazyer/StaticView';
-import Gagetstylori from './Gagetstylori/Gagetstylori'
+import Gagetstylori from './Gagetstylori/Gagetstylori';
+import {
+  Magnifier,
+  GlassMagnifier,
+  SideBySideMagnifier,
+  PictureInPictureMagnifier,
+  MOUSE_ACTIVATION,
+  TOUCH_ACTIVATION
+} from "react-image-magnifiers";
 // window.onload = function () {
 //   var flashlight = document.querySelector('#flashlight');
 //   document.getElementById('divs').addEventListener('mouseover', function (event) {
@@ -32,13 +40,14 @@ class ProductImageZoom extends React.Component {
   state = {
     // backgroundImage: `url(${src})`,
     backgroundPosition: '0% 0%',
-    showimage: this.props.data[0].fadeImages[0]
+    showimage: this.props.data[0].fadeImages.arrOfurls[0],
+    largeImage: this.props.data[0].fadeImages.arrOfurls_2X[0]
   }
 
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
-    if (this.props.data[0].fadeImages[0] !== prevProps.data[0].fadeImages[0]) {
-      this.setState({ showimage: this.props.data[0].fadeImages[0] })
+    if (this.props.data[0].fadeImages.arrOfurls[0] !== prevProps.data[0].fadeImages.arrOfurls[0]) {
+      this.setState({ showimage: this.props.data[0].fadeImages.arrOfurls[0], largeImage: this.props.data[0].fadeImages.arrOfurls_2X[0] })
     }
   }
 
@@ -47,11 +56,11 @@ class ProductImageZoom extends React.Component {
     // console.log(this.props.data)
     const { classes, data } = this.props
 
-    const limit = 3;
-    const { showimage } = this.state;
+    const limit = 4;
+    const { showimage, largeImage } = this.state;
     const dataCarousel = {
       infinite: false,
-      slidesToShow: data[0] && data[0].fadeImages.length > 3 ? limit : data[0].fadeImages.length,
+      slidesToShow: data && data.length > 0 && data[0] && data[0].fadeImages.arrOfurls.length > 3 ? limit : data[0].fadeImages.arrOfurls.length,
       slidesToScroll: 1,
       vertical: true,
       verticalSwiping: true,
@@ -59,6 +68,10 @@ class ProductImageZoom extends React.Component {
     }
     // alert(JSON.stringify(data.image_resolution))
     const props = { "width": data[0].image_resolution, "height": data[0].image_resolution, "zoomWidth": data[0].image_resolution, "img": `${showimage}`, "zoomStyle": "z-index:2" }
+    var a = showimage && showimage
+    var b = a && a.split("/")
+    // var c = a.replace(b[5], data[0].image_resolution_two + 'X' + data[0].image_resolution_two)
+    var c = a && a.replace(b[5], "1000X1000")
 
     return (
       <div>
@@ -70,7 +83,7 @@ class ProductImageZoom extends React.Component {
               </Button>
               <Slideshow sliderRef={this.slider}
                 getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img'
-                fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
+                fadeImages={data[0].fadeImages.arrOfurls_2X} dataCarousel={dataCarousel} />
               <Button onClick={this.next}>
                 <i class="fa fa-angle-down" style={{ fontSize: "35px", color: "#F699A3" }}
                 // className={`${classes.colorMain}`}
@@ -80,36 +93,62 @@ class ProductImageZoom extends React.Component {
           </Grid>
 
           <Grid item xs={10} >
-            <div>
-              {/* <div className='imagecard' id="divs" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
+
+            {/* <div className='imagecard' id="divs" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
                 {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship" ></div> : ""} */}
-              {/* <div id='flashlight'></div> */}
-              {/* <img className='img-zooming-' id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
+            {/* <div id='flashlight'></div> */}
+            {/* <img className='img-zooming-' id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
               </div>
               <div className='overly-img' id="overlay"
                 style={{ backgroundImage: `url(${showimage})` }} onMouseOut={event => this.zoomOut(event)}>
                 </div> */}
-              <div class="zoomreact" style={{  boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" , width: "100%" }}><ReactImageZoom {...props} /></div>
+
+
+            {/* <div class="zoomreact" style={{  boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" , width: "100%" }}><ReactImageZoom {...props} /></div> */}
+
+
+            <div>
+              <div className='imagecard' id="divs"
+              // style={{ height: window.innerWidth > 2250 ? "800px" : data[0].image_resolution }}
+              >
+                {/* {alert(JSON.stringify(this.props.data[0].fadeImages.arrOfurls_2X[0]))} */}
+                <GlassMagnifier
+                  imageSrc={showimage}
+                  // imageSrc={largeImage}
+                  imageAlt="Example"
+                  magnifierSize="50%"
+                  largeImageSrc={largeImage}
+                  magnifierBoxShadow="0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)"
+                  magnifierBorderColor="#f5003240"
+                  magnifierBackgroundColor="#f5003240"
+                />
+              </div>
+
+              {/*              
+              <div className='imagecard' id="divs" style={{height: window.innerWidth>2250?"800px":data[0].image_resolution }} onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
+               
+                {data.map(val=>
+                  <span style={{ color: "#fff" }} className="overlayCss">
+                  {val.offerDiscount}
+                   </span>)}
+                   {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship" ></div> : ""}
+                <img id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
+              </div>
+
+              <div className='overly-img' id="overlay"
+                style={{ backgroundImage: `url(${c})`, height: data[0].image_resolution }} onMouseOut={event => this.zoomOut(event)}></div> */}
+
               <div>
-                <Grid container spacing={12}>
-                  {/* {data[0].productsubHeaderlist.map(val => (
-                    <Grid item xs={2} >
-                      <div key={val.name}>
-                        <img className='features-tags-images' src={val.icon} alt="" />
-                        <span style={{ fontSize: "12px" }} className={`${classes.colorLight}`}>{val.name} </span>
-                      </div>
-                    </Grid>
-                  ))} */}
-                  {/* <StaticView /> */}
-                </Grid>
+
               </div>
             </div>
-          </Grid>
-          <Grid container >
-            <Grid item style={{ width: "100%", padding: "0px 15px", marginTop: "10px" }}>
-              <Gagetstylori />
+            <Grid container >
+              <Grid item style={{ width: "100%", padding: "0px 15px", marginTop: "10px" }}>
+                <Gagetstylori />
+              </Grid>
             </Grid>
           </Grid>
+
         </Grid>
       </div>
     )
@@ -134,7 +173,7 @@ class ProductImageZoom extends React.Component {
     var img = document.getElementById("imgZoom");
     var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
     var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
-    element.style.backgroundPosition = (-posX - 40) + "px " + (-posY - 40) + "px";
+    element.style.backgroundPosition = (-posX + 50) + "px " + (-posY + 50) + "px";
   }
 
   zoomOut = () => {
@@ -144,7 +183,8 @@ class ProductImageZoom extends React.Component {
 
   getimage = e => {
     this.setState({
-      showimage: e.target.src
+      showimage: e.target.src,
+      largeImage: e.target.src
     })
   }
   render() {

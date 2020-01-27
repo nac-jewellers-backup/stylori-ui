@@ -14,7 +14,7 @@ export const styles = theme => ({
     justifyContent: "flex-end",
   },
   searchcontainer: {
-    padding: "4px",
+    padding: "1px",
     backgroundColor: theme.palette.secondary.dark,
     display: "flex",
     justifyContent: "center",
@@ -88,13 +88,27 @@ export const styles = theme => ({
     fontFamily: 'Roboto',
     fontWeight: 600,
     color: "#6e6d72",
+    borderBottom: "1px solid #fff",
     '&:hover': {
       color: theme.palette.secondary.dark,
-      paddingBottom: "2px",
+      // paddingBottom: "2px",
+      borderBottom: "1px solid " + theme.palette.secondary.dark,
+    }
+  },
+  seletectedMenu: {
+    color: theme.palette.secondary.dark,
+    // paddingBottom: "2px",
+    cursor: 'pointer',
+    fontFamily: 'Roboto',
+    fontWeight: 600,
+    borderBottom: "1px solid #fff",
+    // borderBottom: "1px solid " + theme.palette.secondary.dark,
+    '&:hover': {
       borderBottom: "1px solid " + theme.palette.secondary.dark,
     }
   },
   mobileNavIcon: {
+    color: theme.palette.secondary.dark,
     fill: theme.palette.secondary.dark + "!important",
   },
   menuheader: {
@@ -148,7 +162,7 @@ export const useStyles = makeStyles(theme => ({
   },
   mouseOverPopover: {
     zIndex: 1000,
-    top: '17px !important',
+    top: '4px !important',
     backgroundColor: theme.palette.background.fade,
     color: 'white',
     '& span': {
@@ -191,7 +205,8 @@ export const useStyles = makeStyles(theme => ({
   },
   listedItems: {
     padding: "0px",
-    fontSize: "0.7rem !important"
+    fontSize: "0.7rem !important",
+    cursor: "pointer"
   },
   listedItemsub: {
     padding: "0px",
@@ -203,7 +218,9 @@ export const useStyles = makeStyles(theme => ({
   listedItemsvalue: {
     padding: "2px 16px 2px 16px",
     fontSize: "0.7rem !important",
-    letterSpacing: 2
+    letterSpacing: 2,
+    cursor: "pointer",
+
   },
   listedItemsvalue2: {
     padding: "2px 16px 2px 16px",

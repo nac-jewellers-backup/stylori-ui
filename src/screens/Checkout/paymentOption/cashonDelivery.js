@@ -5,8 +5,12 @@ import SimpleSelect from '../../../components/InputComponents/Select/Select';
 import { CartContext } from 'context'
 import cart from 'mappers/cart'
 import { useNetworkRequest } from 'hooks/index';
+import { API_URL, HOME_PAGE_URL, CDN_URL } from '../../../config';
+
 var obj = {}
-let gut_lg = localStorage.getItem("gut_lg") ? JSON.parse(localStorage.getItem("gut_lg")) : {}
+var obj_user = {}
+// let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
+const order_idx = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : "yourorder"
 
 class CashonDelivey extends React.Component {
     constructor(props) {
@@ -14,36 +18,80 @@ class CashonDelivey extends React.Component {
         this.state = {
             res_data: null
         }
-
     }
+    status = (response) => {
+
+        if (response.status >= 200 && response.status < 300) {
+            return Promise.resolve(response)
+        } else {
+            return Promise.reject(new Error(response.statusText))
+        }
+    }
+    json = (response) => {
+        return response.json()
+    }
+
     makeFetch = async (props) => {
-        const bb = this.props && this.props.dataCard1
-        // if (bb.length <0) {
-        //    return
-        // } else {
-        await fetch('https://api.stylori.net/createorder', {
+
+        // await fetch(`${API_URL}/createorder`, {
+        //     method: 'post',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //         // 'Content-Type': 'application/x-www-form-urlencoded',
+        //     },
+        //     body: JSON.stringify(obj)
+        // }).then(async res => {
+        //     // alert(JSON.stringify(obj))
+        //     return await  res.json();
+        //     alert('Order Placed Successfully')
+
+        // })
+        fetch(`${API_URL}/createorder`, {
+
             method: 'post',
+            // body: {query:seoUrlResult,variables:splitHiphen()}
+            // body: JSON.stringify({query:seoUrlResult}),
+
             headers: {
-                'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(obj)
-        }).then(function async(response) {
-            alert('Order Placed Successfully')
-        }).then(function (data) {
-            console.log('data', data)
-        });
-        localStorage.removeItem("cartDetails")
-        localStorage.removeItem("panel")
-        localStorage.removeItem("ship_isactive")
-        localStorage.removeItem("bil_isactive")
-        if (gut_lg === true) {
-            localStorage.clear();
-            // localStorage.removeItem("gut_lg")
-        }
-        // }
+        })
+            .then(this.status)
+            .then(this.json)
+            .then(resdata => {
+                console.log('datasssss', resdata)
+
+                // localStorage.removeItem("order_id")
+                if (resdata !== null && resdata !== undefined) {
+                    localStorage.setItem("order_id", JSON.stringify(resdata.order.id))
+                }
+                localStorage.removeItem("panel")
+                localStorage.removeItem("cartDetails")
+                localStorage.removeItem("ship_isactive")
+                localStorage.removeItem("bil_isactive")
+                localStorage.removeItem("set_check")
+                localStorage.removeItem("cart_id")
+                if (localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
+                sessionStorage.removeItem('updatedProduct')
+                alert(resdata.message)
+                window.location.pathname = `/paymentsuccess/${resdata.order.id}`
+            })
+            .catch(err => {
+                // console.log(err)
+            });
         // localStorage.removeItem("cart_id")
-        window.location.pathname = "/jewellery"
+
+        // } 
+
+        // obj_user["user_id"] = user_id
+        // obj_user["jewellery"] = "jewellery"
+        // this.props.setCartFilters(obj_user)
+        // window.location.pathname = "/jewellery"
+
+    }
+    componentDidMount() {
+
     }
     componentDidUpdate(prevProps, prevState) {
         if (this.state.res_data !== prevState.res_data) {
@@ -52,7 +100,9 @@ class CashonDelivey extends React.Component {
         }
     }
     render() {
-        let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
+        let cart_id_lo = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : ""
+        let cart_id = this.props.cartFilters._cart_id && Object.keys(this.props.cartFilters._cart_id).length > 0 ? this.props.cartFilters._cart_id.cart_id : ''
+        var cart_ids = cart_id.length > 0 ? cart_id : cart_id_lo
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
         const data = this.props.data ? this.props.data : ""
         var discounted_price = this.props.cartFilters.discounted_price ? this.props.cartFilters.discounted_price : ""
@@ -71,9 +121,10 @@ class CashonDelivey extends React.Component {
                 return cart_price
             }
         }
+
         obj['payment_mode'] = "COD"
         obj['user_id'] = user_id
-        obj['cart_id'] = cart_id
+        obj['cart_id'] = cart_ids
         // alert(JSON.stringify(dataCard1))
         return (
             <div>
@@ -84,9 +135,9 @@ class CashonDelivey extends React.Component {
                             <span className="rups">
                                 {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(dataCard1 - discounted_price))}
                             </span>&nbsp;
-                            <Button className="credit-button" type="submit"
+                            <Button style={{display:"flex"}} className="credit-button" type="submit"
                                 onClick={() => this.makeFetch(this.props)}
-                            >Place COD order</Button>
+                            >Place order</Button>
                         </div>
 
                     </Grid>
@@ -94,13 +145,12 @@ class CashonDelivey extends React.Component {
                         COD orders are subject to telephonic verification.
                         </div>
                 </Grid>
-
             </div>
         )
     }
 }
 const Components = props => {
-    let { CartCtx: { cartFilters, data, loading, error } } = React.useContext(CartContext);
+    let { CartCtx: { setCartFilters, cartFilters, data, loading, error } } = React.useContext(CartContext);
     let content, mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
@@ -108,7 +158,7 @@ const Components = props => {
         }
     }
     if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
-    else content = <CashonDelivey {...props} data={mapped} cartFilters={cartFilters} />
+    else content = <CashonDelivey {...props} data={mapped} cartFilters={cartFilters} setCartFilters={setCartFilters} />
     return content
 }
 export default (Components)

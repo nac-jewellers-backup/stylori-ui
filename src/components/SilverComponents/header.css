@@ -99,6 +99,25 @@
   width: 100%;
 }
 
+.imges {
+  height: 60px;
+  width: 100%;
+}
+
+.icons-header-sizes {
+  height: 15px !important;
+  cursor: pointer !important;
+  width: 18px !important;
+  /* margin-left: 24px; */
+}
+
+.icons-header-sizes:hover {
+  animation-name: pulse_animation;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
 .MuiBadge-colorSecondary {
   background: #d51f63 !important;
   top: -6px !important;
@@ -334,6 +353,9 @@
 .drawer-arrow {
   color: #ed1165;
   font-size: 20px;
+  width: 22px;
+  justify-content: center;
+  display: flex;
 }
 
 .ListColor li:hover {
@@ -548,3 +570,41 @@
   font-size: 19px;
   font-weight: 300;
 }
+
+.headerTop {
+  height: 58px
+}
+
+@media only screen and (max-width: 958px) and (min-width: 599px) {
+  .headerTop {
+    height: 64px
+  }
+}
+
+@media only screen and (max-width: 2560px) and (min-width: 959px) {
+  .headerTop {
+    height: 140px
+  }
+}
+
+.cartheader {
+  margin-bottom: 20px
+}
+
+.headerTopcard {
+  height: 58px
+}
+
+@media only screen and (max-width: 958px) and (min-width: 599px) {
+  .headerTopcard {
+    height: 64px
+  }
+}
+
+@media only screen and (min-width: 959px) {
+  .headerTopcard {
+    height: 89px
+  }
+}
+
+/* @media only screen and (max-width: 600px)  */

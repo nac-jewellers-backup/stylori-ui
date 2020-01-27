@@ -1,3 +1,4 @@
+import moment from "moment";
 // export const productsDetails = [
 //     {
 //         header: "Product Details",
@@ -90,20 +91,33 @@
 // export const cartsubdata = [
 //     {
 //         name: "100% Certified   Jewellery  ",
-//         icon: "https://assets-cdn.stylori.com/images/static/icon-star.png"
+//         icon: "https://assets.stylori.com/images/static/icon-star.png"
 //     }, {
 //         name: " Secure  Payments   ",
-//         icon: "https://assets-cdn.stylori.com/images/static/icon-lock.png"
+//         icon: "https://assets.stylori.com/images/static/icon-lock.png"
 //     }, {
 //         name: "  Free Insured    Shipping   ",
-//         icon: "https://assets-cdn.stylori.com/images/static/icon-van.png"
+//         icon: "https://assets.stylori.com/images/static/icon-van.png"
 //     }, {
 //         name: "  25 - Day   Returns   ",
-//         icon: "https://assets-cdn.stylori.com/images/static/icon-return.png"
+//         icon: "https://assets.stylori.com/images/static/icon-return.png"
 //     }
 // ]
 
+const generateShipsBy = (readytoship, vendorDeliveryTime) => {
+    var isReadytoShip = readytoship
+    var numberOfDays = vendorDeliveryTime
+    var date = moment().format(' h a')
+    if (isReadytoShip) {
+        if (JSON.stringify(date) > " 1 pm") {
+            return 'Ships by' + ' ' + moment().add(1, 'days').format('Do MMMM YYYY');
+        }
+    }
 
+    else {
+        return 'Ships by' + ' ' + moment().add(numberOfDays, 'days').format('Do MMMM YYYY');
+    }
+}
 export default function (data) {
     let mapperdata = [];
     try {
@@ -117,6 +131,7 @@ export default function (data) {
         try {
             _d = {
                 generatedSku: k.generatedSku,
+                skuUrl:k.skuUrl,
                 materialName: k.productListByProductId.productMaterialsByProductSku.nodes === undefined ? '' : k.productListByProductId.productMaterialsByProductSku.nodes.map(val => {
                     return val.materialName
                 }),
@@ -125,6 +140,8 @@ export default function (data) {
                 prdheader: k.productListByProductId.productName,
                 // allorderdata: allorderdata,
                 productId: k.productListByProductId && k.productListByProductId.productId,
+                shipby: generateShipsBy(k.isReadyToShip, k.vendorDeliveryTime),
+                isReadyToShip: k.isReadyToShip,
                 productsDetails: [
                     //                     Quality	
                     // Metal	
@@ -135,24 +152,24 @@ export default function (data) {
                         pro_header: k.productListByProductId.productName,
                         namedetail: [
                             {
-                                name: "Quality",
+                                name: k.diamondType&&k.diamondType.length > 0 ? "Diamond Quality" : "",
                                 details: k.diamondType
                             },
                             {
-                                name: "Metal",
+                                name: k.metalColor.length > 0 ? "Metal" : "",
                                 details: k.purity + ' ' + k.metalColor
                             }, {
-                                name: "Gold",
+                                name: "Gold Weight" ,
                                 details: k.skuWeight + " " + "GM"
                             },
                             {
-                                name: k.skuSize && k.skuSize.length > 0 ? "Ring" : "",
+                                name: k.skuSize && k.skuSize.length > 0 ? "Size (For rings/bangles)" : "",
                                 details: k.skuSize
                             },
                             {
                                 name: "Product Code",
                                 details: k.generatedSku
-                            }],
+                            }], 
                         // }, {
                         //     header: "Diamond Details ",
 
@@ -227,16 +244,16 @@ export default function (data) {
                 cartsubdata: [
                     {
                         name: "100% Certified   Jewellery  ",
-                        icon: "https://assets-cdn.stylori.com/images/static/icon-star.png"
+                        icon: "https://assets.stylori.com/images/static/icon-star.png"
                     }, {
                         name: " Secure  Payments   ",
-                        icon: "https://assets-cdn.stylori.com/images/static/icon-lock.png"
+                        icon: "https://assets.stylori.com/images/static/icon-lock.png"
                     }, {
                         name: "  Free Insured    Shipping   ",
-                        icon: "https://assets-cdn.stylori.com/images/static/icon-van.png"
+                        icon: "https://assets.stylori.com/images/static/icon-van.png"
                     }, {
                         name: "  25 - Day   Returns   ",
-                        icon: "https://assets-cdn.stylori.com/images/static/icon-return.png"
+                        icon: "https://assets.stylori.com/images/static/icon-return.png"
                     }
                 ]
             }

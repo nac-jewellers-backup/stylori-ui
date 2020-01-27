@@ -24,11 +24,11 @@ const RatingComponent = (props) => {
         <Container className="bg-clr2">
             <div className="bg-clr2 priceecontainer" style={{ padding: "20px" }}>
                 <form id="Resetform" action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e, props)}>
-                    <Grid container spacing={12} style={{ marginTop: '20px' }}>
+                    <Grid container spacing={12} >
                         {/* <Grid item lg={1}  */}
                         <Grid item xs={12} lg={12}>
                             <div className="rating-form ">
-                                <h5 className={`rating-form-head ${classes.normalfonts}`}>Rate This</h5>
+                                <h5 className={`rating-form-head ${classes.normalfonts}`}>Rating</h5>
                                 <label className='errtext'> {values.errortext.rateerr ? values.errortext.rateerr : ""}</label>
                                 <Ratings ratings="starts-review" />
                             </div>
@@ -55,7 +55,7 @@ const RatingComponent = (props) => {
                                 variant="outlined"
                                 type="text"
                                 name="message"
-                                placeholder='Your Reviews'
+                                placeholder='Write your review here'
                                 className="rating-form-text"
                                 maxLength={250}
                                 value={values.message}
@@ -74,7 +74,7 @@ const RatingComponent = (props) => {
                         <Grid container spacing={12} style={{ marginTop: '20px' }}>
                             <Grid item xs={12} lg={9}>
                                 <div style={{ float: "right" }}>
-                                    <Button className={`form-reviews-mob ${classes.fontwhite} ${classes.normalcolorback}`} type="submit">Write a Review</Button>
+                                    <Button className={`form-reviews-mob ${classes.fontwhite} ${classes.normalcolorback}`} type="submit">Submit</Button>
                                     <Button onClick={() => handlers.clear()} className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite}`} >Cancel</Button>
                                 </div>
                             </Grid>

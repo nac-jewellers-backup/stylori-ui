@@ -38,3 +38,18 @@
         text-overflow: ellipsis;
     }
 }
+
+@media screen and (min-width: 960px) {
+
+.leftPadding{
+    padding-left: 17px ;
+}
+
+}
+@media screen and (min-width: 1280px)  {
+
+    .leftPadding{
+        padding-left: 1px;
+    }
+    
+    }

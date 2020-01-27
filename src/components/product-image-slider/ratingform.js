@@ -4,7 +4,8 @@ import {
     Grid,
     Button,
     Container,
-    Hidden
+    Hidden,
+    TextField
 } from '@material-ui/core';
 import Ratings from "../rating/rating";
 import { Input } from '../InputComponents/TextField/Input'
@@ -18,22 +19,23 @@ const RatingForm = (props) => {
 }
 const RatingComponent = (props) => {
     const { classes } = props;
-    const { values, handlers, setValues } = useRating(props.ratingcounts);
+    const { values, handlers, setValues } = useRating(props);
 
+    const newLocal = 250;
     return (
-        <Container className="bg-clr2">
-            <div className="bg-clr2 priceecontainer" style={{ padding: "10px" }}>
+        <Container style={{ paddingLeft: "15px", paddingRight: "15px" }} className="bg-clr2">
+            <div className="bg-clr2 priceecontainer" style={{ padding: "20px" }}>
                 <form id="Resetform" action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e, props)}>
-                    <Grid container spacing={12} style={{ marginTop: '20px' }}>
-                        <Grid item lg={1} />
-                        <Grid item xs={12} lg={8}>
+                    <Grid container spacing={12} >
+                        {/* <Grid item lg={1} /> */}
+                        <Grid item xs={12} lg={12}>
                             <div className="rating-form ">
-                                <h5 className={`rating-form-head ${classes.normalfonts}`}>Rate This</h5>
+                                <h5 className={`rating-form-head ${classes.normalfonts}`}>Rating</h5>
+
+                                <Ratings ratings="starts-review" clear_rating={props.clear_rating} clear_rating_onchange={props.clear_rating_onchange} />
                                 <label className='errtext'> {values.errortext.rateerr ? values.errortext.rateerr : ""}</label>
-                                <Ratings ratings="starts-review" />
                             </div>
-                            <h6 className={`rating-form-head ${classes.normalfonts}`} style={{ marginBottom: "-3px" }}>Write Your Review</h6>
-                            <label className='errtext'> {values.errortext.ratetitle ? values.errortext.ratetitle : ""}</label>
+                            <h6 className={`rating-form-head ${classes.normalfonts}`} style={{ marginBottom: "-3px" }}>Write your review</h6>
                             <Input
                                 margin="normal"
                                 variant="outlined"
@@ -48,9 +50,30 @@ const RatingComponent = (props) => {
                                 error={values.error && values.error.ratetitle ? true : false}
                             // required
                             />
-                            <div style={{ width: "100%" }} className={`tool-tips ${classes.normalfonts}`} >Max 60 Characters</div>
-                            <label className='errtext'> {values.errortext.ratemsg ? values.errortext.ratemsg : ""}</label>
-                            <Input
+
+                            <div style={{ width: "100%" }} className={`tool-tips ${classes.normalfonts}`} >Max 60 characters</div>
+                            <label className='errtext'> {values.errortext.ratetitle ? values.errortext.ratetitle : ""}</label>
+
+
+                            <div style={{ padding: "10px 0px" }} class={"bigText"}>
+                                <TextField
+                                    variant="outlined"
+                                    type="text"
+                                    name="message"
+                                    fullWidth
+                                    placeholder='Write your review here'
+                                    className="rating-form-text"
+                                    maxLength={250}
+                                    value={values.message}
+                                    multiline={true}
+                                    rowsMax={4}
+                                    onChange={e => handlers.handleChange('message', e.target.value)}
+                                    error={values.error && values.error.ratemsg ? true : false}
+                                />
+                            </div>
+
+
+                            {/* <Input
                                 margin="normal"
                                 variant="outlined"
                                 type="text"
@@ -60,21 +83,21 @@ const RatingComponent = (props) => {
                                 maxLength={250}
                                 value={values.message}
                                 multiline={true}
-                                rows={3}
+                                rows={6}
                                 rowsMax={4}
                                 onChange={e => handlers.handleChange('message', e.target.value)}
                                 error={values.error && values.error.ratemsg ? true : false}
-                            // helperText="please Enter review text"
-                            // required 
-                            />
-                            <div className={`tool-tips ${classes.normalfonts}`} >Max 250 Characters</div>
+                            /> */}
+                            <div className={`tool-tips ${classes.normalfonts}`} >Max 250 characters</div>
+                            <label className='errtext'> {values.errortext.ratemsg ? values.errortext.ratemsg : ""}</label>
+
                             {/* <button type="submit" >rr</button> */}
                         </Grid>
 
                         <Grid container spacing={12} style={{ marginTop: '20px' }}>
-                            <Grid item xs={12} lg={9}>
+                            <Grid item xs={12} lg={12}>
                                 <div style={{ float: "right" }}>
-                                    <Button className={`form-reviews-mob ${classes.fontwhite} ${classes.normalcolorback}`} type="submit">Write a Review</Button>
+                                    <Button className={`form-reviews-mob ${classes.fontwhite} ${classes.normalcolorback}`} type="submit">Submit</Button>
                                     <Button onClick={() => handlers.clear()} className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite}`} >Cancel</Button>
                                 </div>
                             </Grid>

@@ -3,6 +3,8 @@ import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CheckForCod } from 'queries/productdetail';
 import { ADDRESSDETAILS } from 'queries/productdetail';
+import { CartContext } from '../../../context/CartContext';
+
 // window.cache = {}
 var obj = {}
 var delet = {}
@@ -24,6 +26,7 @@ const Addressforms = (changePanel) => {
     const [open, setOpen] = React.useState(false);
     const [values, setValues] = React.useState({
         addressOne: {
+            salutation: "",
             firstname: "",
             lastname: "",
             addressline1: "",
@@ -31,8 +34,8 @@ const Addressforms = (changePanel) => {
             pincode: "",
             city: "",
             state: "",
-            country: "",
-            country_code: "",
+            country: "India",
+            country_code: "+91",
             contactno: "",
             addresstype: 1,
             errortext: {
@@ -40,6 +43,7 @@ const Addressforms = (changePanel) => {
             },
         },
         addressTwo: {
+            salutation: "",
             firstname: "",
             lastname: "",
             addressline1: "",
@@ -47,8 +51,8 @@ const Addressforms = (changePanel) => {
             pincode: "",
             city: "",
             state: "",
-            country: "",
-            country_code: "",
+            country: "India",
+            country_code: "+91",
             contactno: "",
             addresstype: 2,
             errortext: { pinerr: "", pinerr1: "" },
@@ -66,6 +70,8 @@ const Addressforms = (changePanel) => {
         update_clear: false,
         log_addrs: false
     });
+    // alert(JSON.stringify(values&&values.addressOne&&values.addressOne.salutation))
+
     var addObj = {};
     var adars1 = {}
     var adars2 = {}
@@ -79,6 +85,7 @@ const Addressforms = (changePanel) => {
     const addressva = values && values.addressvalues && values.addressvalues.length > 0
     const update_clear = values && values.update_clear
 
+    let { CartCtx: { setCartFilters } } = React.useContext(CartContext);
     useEffect(() => {
         // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
         if (con_gust !== true) {
@@ -135,7 +142,7 @@ const Addressforms = (changePanel) => {
     }, [removedata])
     useEffect((event) => {
         const a = CodData.data ? CodData.data.allPincodeMasters : "";
-        // alert(JSON.stringify(CodData))
+        // alert(JSON.stringify(CodData)) 
         if (a) {
             var res = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].state : ''
             var res1 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].country : ''
@@ -192,6 +199,11 @@ const Addressforms = (changePanel) => {
         setpincod({ ...pincods, pincods })
         setValues({ ...values, values })
     }
+    // const handleChange_selsect = (e) => {
+    //     values['addressOne']['salutation'] =
+    //         setValues({ ...values, values })
+    // };
+    console.log("jjj****", values.addressOne.salutation)
     const handleSubmit = (e) => {
 
         if (values && values.addressOne && values.addressOne.pincode === "") {
@@ -269,14 +281,16 @@ const Addressforms = (changePanel) => {
                         localStorage.setItem("gustaddres", JSON.stringify(addObjgust_local))
                         if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
                             var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
-                            local_storage.address.splice(values.index, 1);
+                            // local_storage.address.splice(values.index, 1);
+                            local_storage.address[values.index] = values.addressOne
                             window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
                         }
                     } else if (values && values.addressOne) {
                         addObjgust["address"] = [values.addressOne]
                         if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
                             var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
-                            local_storage.address.splice(values.index, 1);
+                            local_storage.address[values.index] = values.addressOne
+                            // local_storage.address.splice(values.index, 1);
                             window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
                         }
                         localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
@@ -287,14 +301,16 @@ const Addressforms = (changePanel) => {
                         localStorage.setItem("gustaddres", JSON.stringify(addObjgust_local))
                         if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
                             var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
-                            local_storage.address.splice(values.index, 1);
+                            local_storage.address[values.index] = values.addressOne
+                            // local_storage.address.splice(values.index, 1);
                             window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
                         }
                     } else if (values.addressTwo) {
                         addObjgust["address"] = [values.addressOne, values.addressTwo]
                         if (values && values.index !== null || values && values.index && values.index.lenght >= 0) {
                             var local_storage = JSON.parse(localStorage.getItem('gustaddres'))
-                            local_storage.address.splice(values.index, 1);
+                            local_storage.address[values.index] = values.addressOne
+                            // local_storage.address.splice(values.index, 1);
                             window.localStorage.setItem('gustaddres', JSON.stringify(local_storage));
                         }
                         localStorage.setItem("gustaddres", JSON.stringify(addObjgust))
@@ -302,8 +318,9 @@ const Addressforms = (changePanel) => {
                 }
                 window.location.reload()
             }
-            values['checkValue1'] = true
+            // values['checkValue1'] = true
             setValues({
+                // checkValue1:!values.checkValue1,
                 addrs: !values.addrs,
                 values,
                 ...values,
@@ -323,6 +340,12 @@ const Addressforms = (changePanel) => {
         // window.location.reload(); 
     }
     const selectaddreses = (val_addrs, num, index) => {
+        
+        var obj_user = {}
+        let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
+        let set_check = localStorage.getItem("set_check") ? localStorage.getItem("set_check") : ""
+        obj_user["user_id"] = user_id
+
         localStorage.setItem("select_addres", JSON.stringify(val_addrs))
         addObjall['address_id'] = val_addrs && val_addrs.id ? val_addrs.id : ""
         if (values.checkValue1 === true) {
@@ -337,12 +360,13 @@ const Addressforms = (changePanel) => {
             if (val_addrs && val_addrs.firstname.length > 0) {
                 adars1['addressOne'] = val_addrs
                 addObjall['address'] = [adars1.addressOne];
+                val_addrs["addresstype"] = num
                 makeFetchall(addObjall);
             }
-            alert("your address send on successful")
+            // alert("your address send on successful")
             if (!pathnames) {
                 changePanel(3)
-                window.location.reload()
+                // window.location.reload()
             }
             // return false
         }
@@ -353,6 +377,7 @@ const Addressforms = (changePanel) => {
                 localStorage.setItem("bil_isactive", index)
                 if (val_addrs && val_addrs.firstname.length > 0) {
                     adars2['addressTwo'] = val_addrs
+                    val_addrs["addresstype"] = num
                 }
                 setValues({
                     values,
@@ -367,6 +392,7 @@ const Addressforms = (changePanel) => {
                     localStorage.setItem("ship_isactive", index)
                     if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                         adars1['addressOne'] = val_addrs
+                        val_addrs["addresstype"] = num
                     }
                     setValues({
                         values,
@@ -380,18 +406,24 @@ const Addressforms = (changePanel) => {
                 addObjall["user_id"] = user_id
                 addObjall["cart_id"] = cart_id
                 addObjall['address'] = [adars1.addressOne, adars2.addressTwo];
-                alert("your address send on successful")
+                val_addrs["addresstype"] = num
+                // alert("your address send on successful")
                 if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                     makeFetchall(addObjall);
                 }
                 if (!pathnames) {
                     changePanel(3)
-                    window.location.reload()
+                    // window.location.reload()
                 }
             }
             // if (values.checkValue1 === true) {
             // }
         }
+
+        // if (!set_check.length > 0) {
+        //     localStorage.removeItem("cart_id")
+        //     setCartFilters(obj_user)
+        // }
     }
     const Delete_address = (val_addrs, index) => {
 
@@ -449,6 +481,7 @@ const Addressforms = (changePanel) => {
         values["addressTwo"] = ""
         value11 = {
             addressOne: {
+                salutation: "",
                 firstname: "",
                 lastname: "",
                 addressline1: "",
@@ -466,6 +499,7 @@ const Addressforms = (changePanel) => {
                 },
             },
             addressTwo: {
+                salutation: "",
                 firstname: "",
                 lastname: "",
                 addressline1: "",
@@ -483,7 +517,7 @@ const Addressforms = (changePanel) => {
                 },
             },
         }
-        values["edit_addresId"] = false
+        values["edit_addresId"] = true
         values["addrs"] = true
         setValues({
             values,

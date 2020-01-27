@@ -11,12 +11,17 @@ import { NetworkContext } from 'context/NetworkContext';
 import { GlobalContext } from 'context/GlobalContext';
 import { bool } from 'prop-types';
 import { filterParams } from 'mappers';
+import {
+    Redirect,
+
+  } from "react-router-dom";
 
 const initialCtx = {
     FilterOptionsCtx: {
         filters: {
-            Offers: null, Availability: null, ProductType: null, style: null, Material: null, Theme: null, Collection: null, MetalColor: null,
-            MetalPurity: null, Occasion: null, NoOfStones: null, Gender: null, stoneColor: null, stoneShape: null, category:null
+
+            Offers: {}, Availability: {}, ProductType: {}, style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {},
+            MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}, category: {}
         },
         sort: '',
         pricemax: 5000, pricemin: 15000,
@@ -38,10 +43,10 @@ export const FilterOptionsContext = React.createContext(initialCtx);
 export const FilterOptionsConsumer = FilterOptionsContext.Consumer;
 
 const Provider = (props) => {
-
+    // alert("filters")
     const [filters, setFilters] = React.useState({
         Offers: {}, Availability: {}, ProductType: {}, style: {}, material: {}, Theme: {}, Collection: {}, MetalColor: {},
-        MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}, category:{}
+        MetalPurity: {}, Occasion: {}, NoOfStones: {}, Gender: {}, stoneColor: {}, stoneShape: {}, category: {}
     });
     const [sort, setSort] = React.useState(initialCtx.FilterOptionsCtx.sort)
     const [offset, setOffset] = React.useState(0)
@@ -87,7 +92,7 @@ const Provider = (props) => {
                 }
             }
 
-            debugger
+
 
             console.log('splitHiphen()', splitHiphen())
             const conditionfiltersSeo = { seofilter: { seoUrl: { in: splitHiphen() } } }
@@ -129,20 +134,27 @@ const Provider = (props) => {
                 .then(async function (data) {
 
 
+                    // ------------ REDIRECTION ----------
+
+
+                    if(data.data.allSeoUrlPriorities.nodes.length===0){
+                        // alert
+                       window.location.pathname = "/"
+                    }
                     //   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
                     var a = {};
 
                     var paramsfilter = (Object.entries(data).length !== 0 && data.constructor === Object && data.data.allSeoUrlPriorities) && data.data.allSeoUrlPriorities.nodes.map(val => {
-
+                  
                         let attrName = val.attributeName.replace(/\s/g, '')
                         let attrVal = val.attributeValue
                         filters[attrName] = { [attrVal]: true }
 
                         // setFilters(filters)
                         var obj = {}
-                        debugger
+
                         obj[val.attributeValue] = true
-                        
+
                         a[val.attributeName.replace(/\s/g, '')] = obj
                         return a
 
@@ -294,7 +306,7 @@ const Provider = (props) => {
 
     }, [seoData, seoloading, seoError])
     useEffect(() => {
-        debugger
+
         if (!loading) {
             const mapped = productlist(data, CDN_URL);
             const newUpdatedList = filterLogic(dataArr, mapped);
@@ -310,14 +322,14 @@ const Provider = (props) => {
     useEffect(() => {
     }, [data, error, loading])
     const updatefiltersSort = async () => {
-debugger
+
         if (filters && filters.constructor === Object && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
             var newObj = {}
             var len;
             if (filters.constructor !== Object) {
                 Object.assign(filters, {})
             }
-            debugger
+
             Object.keys(filters).map(fk => {
                 const filter = filters[fk];
                 const fv = filter && Object.keys(filter);
@@ -336,31 +348,81 @@ debugger
             len = keyy.length
             while (len--) {
                 var key = keyy[len]
+
                 var toLowerCase = key[0].toLowerCase()
-                newObj[toLowerCase] = k[len][0]
+                if (toLowerCase === "offers") {
+                    switch (k[len][0]) {
+                        case "Up to  20%": {
+                            newObj['offer_min'] = 0
+                            newObj['offer_max'] = 20
+                            break;
+                        }
+                        case "Up to  30%": {
+                            newObj['offer_min'] = 0
+                            newObj['offer_max'] = 30
+                            break;
+                        }
+                        case "Up to  40%": {
+                            newObj['offer_min'] = 0
+                            newObj['offer_max'] = 40
+                            break;
+                        }
+                        case "Up to  50%": {
+                            newObj['offer_min'] = 0
+                            newObj['offer_max'] = 50
+                            break;
+                        }
+                        default:
+                    }
+                }
+                else{
+                    newObj[toLowerCase] = k[len][0]
+                }
+               
             }
+
+
+
             newObj['sortBy'] = sort.values
             newObj['offset'] = offset
 
             // alert(JSON.stringify('filters',filters))
             // alert(JSON.stringify(newObj))
-            console.log('newObj',newObj)
+            console.log('newObjfilters', newObj)
+            console.log('newObjsort', newObj)
+            console.log('newObjfilterssort', newObj)
+            console.log('newObjsortfilters', newObj)
             // newObj['price'] = {'min_price':pricemin,'max_price':pricemax}
             // console.log('newObj', Object.keys(newObj).filter(val => { if (val === 'category') return val }).length > 1)
+            // if()
+            if (Object.keys(filters.category).length === 0 && filters.category.constructor === Object) {
+                if (filters.Category && Object.keys(filters.Category).length > 0 && filters.Category.constructor === Object) {
+
+                    var _replaceCategory = filters.Category
+                    filters["category"] = _replaceCategory
+                    sessionStorage.setItem('category', JSON.stringify(filters.category))
+
+                    setFilters({ ...filters, filters })
+                }
+
+            }
+
+            if (filters && filters.category && Object.keys(filters.category).length > 0 && filters.category.constructor === Object) {
+                sessionStorage.setItem("category", JSON.stringify(filters.category));
+            }
             if (Object.keys(newObj).filter(val => { if (val === 'category') return val }).length !== 0) await fetchproducts(newObj)
 
         }
     }
 
     useEffect(() => {
-
-        //    alert("filters")
+        // alert(JSON.stringify(filters.Offers))
         if (filters && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
-            if(Object.values(filters).filter(val=>{ if(Object.entries(val).length>0 && val.constructor === Object) {return val}}).length>0)
-            {
-                if(Object.keys(filters).filter(val=>{if(val === "a") return val}).length === 0) updatefiltersSort()
+            if (Object.values(filters).filter(val => { if (Object.entries(val).length > 0 && val.constructor === Object) { return val } }).length > 0) {
+                if (Object.keys(filters).filter(val => { if (val === "a") return val }).length === 0) updatefiltersSort()
             }
         }
+        setSort('')
 
     }, [filters])
     useEffect(() => {
@@ -386,12 +448,13 @@ debugger
             updatefiltersSort()
         }
 
+
     }, [sort])
 
     useEffect(() => {
 
         // alert("offset")
-        if (offset &&offset !== 0 ) {
+        if (offset && offset !== 0) {
             updatefiltersSort()
         }
 
@@ -407,6 +470,8 @@ debugger
     var newObj = {}
     const updateFilters = async (filters) => {
         // alert('update filters')
+
+        setSort('')
         setOffset(0)
         setFilters(filters);
 
@@ -446,17 +511,49 @@ debugger
         while (len--) {
             var key = keyy[len]
             var toLowerCase = key[0].toLowerCase()
-            newObj[toLowerCase] = k[len][0]
+            
+            if (toLowerCase === "offers") {
+                switch (k[len][0]) {
+                    case "Up to  20%": {
+                        newObj['offer_min'] = 0
+                        newObj['offer_max'] = 20
+                        break;
+                    }
+                    case "Up to  30%": {
+                        newObj['offer_min'] = 0
+                        newObj['offer_max'] = 30
+                        break;
+                    }
+                    case "Up to  40%": {
+                        newObj['offer_min'] = 0
+                        newObj['offer_max'] = 40
+                        break;
+                    }
+                    case "Up to  50%": {
+                        newObj['offer_min'] = 0
+                        newObj['offer_max'] = 50
+                        break;
+                    }
+                    default:
+                }
+            }
+            else{
+                newObj[toLowerCase] = k[len][0]
+            }
+           
         }
         console.log('i came in as update filters function', "123123")
         await makeFetch(newObj);
         //    props.history.push({
         //     pathname: `/stylori${mappedFilters.seo_url   ?`/${mappedFilters.seo_url}` : '' }`,
-
         // })
+        if (filters && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
+            if (Object.values(filters).filter(val => { if (Object.entries(val).length > 0 && val.constructor === Object) { return val } }).length > 0) {
+                if (Object.keys(filters).filter(val => { if (val === "a") return val }).length === 0) updatefiltersSort()
+                //    makeFetch(newObj)
+            }
+        }
         try {
-
-
             if (ntxdata.seo_url === "jewellery") {
                 setMappedFilters(ntxdata)
             }

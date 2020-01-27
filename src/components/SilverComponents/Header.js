@@ -15,7 +15,8 @@ import {
     ListItemText,
     Container,
     InputAdornment,
-    Collapse
+    Collapse,
+    ClickAwayListener
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Hidden } from '@material-ui/core';
@@ -63,7 +64,10 @@ class Header extends Component {
         this.topZero = React.createRef();
     }
     componentDidMount() {
-        if (window.location.pathname !== "/cart" || window.location.pathname !== '/checkout') {
+        if (window.location.pathname === "/cart" || window.location.pathname === '/checkout') {
+            return true
+        }
+        else {
             window.addEventListener("scroll", this.scrolling);
             if (!this.state.Menuopen && !this.state.submenuOpen) {
                 return this.setState({ subTitleData: "", subMenuTarget: "" })
@@ -96,13 +100,12 @@ class Header extends Component {
     }
     headerTransitions = () => {
         document.getElementById('topNav').style.paddingTop = "0";
-        document.getElementById('topNav').style.transition = "0.5s";
-        // var heightHeader = document.getElementById('headerDiv').clientHeight;
+        document.getElementById('topNav').style.transition = "height 0.5s";
         if (document.getElementById("SliderFilter")) {
             document.getElementById("SliderFilter").style.top = "120px";
-            document.getElementById('SliderFilter').style.transition = "0.5s";
+            document.getElementById('SliderFilter').style.transition = "height 0.5s";
             document.getElementById("filterBy").style.top = "80px";
-            document.getElementById('filterBy').style.transition = "0.5s";
+            document.getElementById('filterBy').style.transition = "height 0.5s";
         }
 
     }
@@ -123,68 +126,19 @@ class Header extends Component {
         });
     };
     scrolling = () => {
-        if (window.location.pathname !== "/cart" && window.location.pathname !== '/checkout') {
-            if (window.innerWidth > 959) {
-                if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-
-                    if (document.getElementById("topNav")) {
-                        document.getElementById("topNav").style.marginTop = "-69px";
-                    }
-                    // if (document.getElementById("headerContainer")) {
-                    //     document.getElementById("headerContainer").style.position = "fixed";
-                    //     document.getElementById("headerContainerTop").style.height = "74px";
-                    //     document.getElementById("headerContainer").style.background = "#fff";
-                    //     document.getElementById("headerContainer").style.zIndex = "1300";
-                    //     document.getElementById("headerContainer").style.boxShadow = "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)";
-                    //     document.getElementById("headerContainer").style.height = "55px";
-                    // }
-                    if (document.getElementById("logoImage")) {
-                        document.getElementById("logoImage").style.width = "80%";
-                    }
-                    // if (document.getElementById("logoDiv1")) {
-                    //     document.getElementById("logoDiv1").style.padding = "0px";
-                    // }
-                    // if (document.getElementById("titleTop")) {
-                    //     document.getElementById("titleTop").style.marginTop = "0px"
-                    // }
-                    // if (document.getElementById("containerTitle")) {
-                    //     document.getElementById("containerTitle").style.height = "55px";
-                    // }
-                    // if (document.getElementById("fullcontainer")) {
-                    //     document.getElementById("fullcontainer").style.height = "55px";
-                    // }
-                }
-                else {
-                    if (document.getElementById("topNav")) {
-                        document.getElementById("topNav").style.marginTop = "0px";
-                    }
-                    if (document.getElementById("headerContainer")) {
-                        // document.getElementById("headerContainer").style.position = "inherit";
-                        // document.getElementById("headerContainer").style.background = "#fff";
-                        // document.getElementById("headerContainer").style.zIndex = "1300";
-                        // document.getElementById("headerContainer").style.boxShadow = "none";
-                        // document.getElementById("headerContainer").style.height = "auto";
-                    }
-                    // if (document.getElementById("headerContainerTop")) {
-                    //     document.getElementById("headerContainerTop").style.height = "0px";
-                    // }
-                    if (document.getElementById("logoImage")) {
-                        document.getElementById("logoImage").style.width = "100%";
-                    }
-                    // if (document.getElementById("containerTitle")) {
-                    //     document.getElementById("containerTitle").style.height = "auto";
-                    // }
-                    // if (document.getElementById("fullcontainer")) {
-                    //     document.getElementById("fullcontainer").style.height = "auto";
-                    // }
-                    // if (document.getElementById("logoDiv1")) {
-                    //     document.getElementById("logoDiv1").style.paddingTop = "2%";
-                    // }
-                }
-
+        if ((document.getElementsByTagName("body")[0].scrollHeight > window.innerHeight) && (window.scrollY > 0)) {
+            if (document.getElementById("topNav")) {
+                document.getElementById("topNav").style.marginTop = "-69px";
             }
-            else {
-                return ""
+            if (document.getElementById("logoImage")) {
+                document.getElementById("logoImage").style.width = "80%";
+            }
+        } else {
+            if (document.getElementById("topNav")) {
+                document.getElementById("topNav").style.marginTop = "0px";
+            }
+            if (document.getElementById("logoImage")) {
+                document.getElementById("logoImage").style.width = "100%";
             }
         }
 
@@ -192,7 +146,9 @@ class Header extends Component {
     submenuDetails = (data, target) => {
         this.setState({ subTitleData: data, subMenuTarget: target })
     }
-
+    handleExpandClickClose = () => {
+        this.setState({ open: false });
+    }
     render() {
         const { mainlist, Jewellery, subheader, menuListHeader, menuLists } = this.props.data;
         let { selected, selected1 } = this.state;
@@ -200,104 +156,114 @@ class Header extends Component {
         const { anchorEl } = this.state;
         const openPopover = anchorEl;
         const opened = this.state;
+        var a = window.location.pathname
+        var b = a.split("/")
         // const id = open ? true : undefined;
         return (
-            <div>
+            <div style={{ top: "0", zIndex: "1000", width: "100%" }} className={window.location.pathname === "/cart" || b[1] === "paymentsuccess" || window.location.pathname === '/checkout' ? "headerTopcard" : "headerTop"}>
                 <Hidden smDown >
                     {/* <HeaderNotification headerTransition={() => { this.headerTransitions() }} /> */}
-                    <div className="header-appbar-sticky1" id='headerDiv'>
-                        <AppBar className="header-appbarsilver1 " id="topNav" style={{ transition: "all 0.2s" }} >
-                            <Container maxWidth="lg" id="searchcontainer">
-                                <Grid container spacing={12} style={{ marginTop: "20px" }}>
+                    <div className="header-appbar-sticky1" id='headerDiv' style={{ position: "fixed", zIndex: "1000" }}>
+                        <AppBar className="header-appbarsilver1 " id="topNav" style={{ transition: "height 0.2s" }}>
+                            <Container maxWidth="lg" id="searchcontainer" >
+                                <Grid container spacing={12} style={{ marginTop: "20px" }} className={window.location.pathname === "/cart" || window.location.pathname === '/checkout' ? "cartheader" : ""}>
                                     <Grid container item xs={12} justify="flex-end" alignItems="center">
-                                        <div className={`head-icons1 ${classes.headIcons}`} >
-                                            <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
-                                            <Typography className={classes.callerNum}>1800 102 0330</Typography>
-                                            <InputBase
+                                        {this.props.paymentSucces || window.location.pathname === "/cart" || window.location.pathname === '/checkout' ? <Grid item xs={3} className="logoImgHeader1">
+                                            <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/" }} style={{ cursor: "pointer" }}>
+                                                <img id="logoImage" style={{ transition: "height 0.2s", marginTop: "9px" }} className={`imges`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                            </div>
+                                        </Grid>
+                                            : ""}
+                                        <Grid container item xs={9} justify="flex-end" alignItems="center">
+                                            <div className={`head-icons1 ${classes.headIcons}`} >
+                                                <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
+                                                <Typography className={classes.callerNum}>1800 102 0330</Typography>
+                                                <InputBase
 
-                                                className={`search`}
-                                                placeholder=" SEARCH"
-                                                endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
-                                                </div></InputAdornment>}
-                                            />
-                                            {localStorage.getItem("true") ?
-                                                <span
-                                                    class="MuiBadge-root"
-                                                    aria-owns={openPopover ? 'simple-popper' : ""}
-                                                    onClick={this.handleClickPopover}
+                                                    className={`search`}
+                                                    placeholder=" SEARCH"
+                                                    endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
+                                                    </div></InputAdornment>}
+                                                />
+                                                {localStorage.getItem("true") ?
+                                                    <span
+                                                        class="MuiBadge-root"
+                                                        aria-owns={openPopover ? 'simple-popper' : ""}
+                                                        onClick={this.handleClickPopover}
+                                                    >
+                                                        <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                    </span>
+                                                    // <img className="icons-header-sizes" src={usershape}/>
+                                                    : <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
+                                                        <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                    </span>
+                                                }
+                                                <Popover
+                                                    id="simple-popper"
+                                                    open={openPopover}
+                                                    anchorEl={anchorEl}
+                                                    onClose={this.handleClosePopover}
+                                                    anchorOrigin={{
+                                                        vertical: 'bottom',
+                                                        horizontal: 'center',
+                                                    }}
+                                                    transformOrigin={{
+                                                        vertical: 'top',
+                                                        horizontal: 'center',
+                                                    }}
                                                 >
-                                                    <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
-                                                </span>
-                                                // <img className="icons-header-sizes" src={usershape}/>
-                                                : <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
-                                                    <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
-                                                </span>
-                                            }
-                                            <Popover
-                                                id="simple-popper"
-                                                open={openPopover}
-                                                anchorEl={anchorEl}
-                                                onClose={this.handleClosePopover}
-                                                anchorOrigin={{
-                                                    vertical: 'bottom',
-                                                    horizontal: 'center',
-                                                }}
-                                                transformOrigin={{
-                                                    vertical: 'top',
-                                                    horizontal: 'center',
-                                                }}
-                                            >
-                                                <div
-                                                >
-                                                    <Grid
-                                                        style={{ padding: "10px", width: "220px", cursor: "pointer" }}
-                                                        container spacing={12} lg={12}>
-                                                        <Grid item lg={6}> <div
-                                                            onClick={() => {
-                                                                localStorage.clear();
-                                                                window.location.reload()
-                                                                window.location.pathname = "/login"
-                                                            }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
+                                                    <div
+                                                    >
+                                                        <Grid
+                                                            style={{ padding: "10px", width: "194px", cursor: "pointer" }}
+                                                            container spacing={12} lg={12}>
+                                                            <Grid item > <div style={{ padding: "0px 6px 0px 0px" }}
+                                                                onClick={() => {
+                                                                    localStorage.clear();
+                                                                    window.location.reload()
+                                                                    window.location.pathname = "/login"
+                                                                }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
                                              </div></Grid>
-                                                        <Grid item lg={6}> <div style={{ float: "right" }} onClick={() => { window.location.href = "/account-profile" }}>
-                                                            / My Account
+                                                            <Grid item > <div style={{ float: "right" }} onClick={() => { window.location.href = "/account-profile" }}>
+                                                                / My Account
                                                  </div></Grid>
-                                                    </Grid>
+                                                        </Grid>
 
-                                                    {/* <NavLink to="/account-profile"> */}
+                                                        {/* <NavLink to="/account-profile"> */}
 
-                                                    {/* </NavLink> */}
-                                                </div>
-                                            </Popover>
-                                            <Badge color="secondary"
-                                                badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
-                                            // wishlist_count
-                                            // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
-                                            >
-                                                <i style={{ fontSize: "20px" }} class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
-                                                    if (user_id.length > 0) {
-                                                        window.location.href = `/account${'-wishlist'}`
-                                                    } else {
-                                                        window.location.href = "/login"
-                                                    }
-                                                }}  ></i>
-                                            </Badge>
-                                            <Badge style={{ marginTop: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                <a href="/cart" >
-                                                    <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                                        {/* </NavLink> */}
+                                                    </div>
+                                                </Popover>
+                                                <Badge style={{ marginTop: "9px" }} color="secondary"
+                                                    badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
+                                                // wishlist_count
+                                                // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
+                                                >
+                                                    <i style={{ fontSize: "20px" }} class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
+                                                        if (user_id.length > 0) {
+                                                            window.location.href = `/account${'-wishlist'}`
+                                                        } else {
+                                                            window.location.href = "/login"
+                                                        }
+                                                    }}  ></i>
+                                                </Badge>
+                                                <Badge style={{ marginTop: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                    <a href="/cart" >
+                                                        <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
-                                                </a> </Badge>
-                                        </div>
+                                                    </a> </Badge>
+                                            </div>
+                                        </Grid>
                                     </Grid>
                                 </Grid>
                             </Container>
-                            {window.location.pathname === "/cart" || window.location.pathname === '/checkout' ? "" :
+                            {window.location.pathname === "/cart" || window.location.pathname === '/checkout' || b[1] === "paymentsuccess" ? "" :
                                 <Grid container id="headerContainer" >
                                     <Container maxWidth="lg" >
                                         <Grid container spacing={12} id="fullcontainer" className="setHeight">
                                             <Grid item xs={3} className="logoImgHeader1">
-                                                <div id="logoDiv1" className="logoDiv1">
-                                                    <img id="logoImage" style={{ transition: "all 0.2s" }} className={`img`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                                <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/" }} style={{ cursor: "pointer" }}>
+                                                    <img id="logoImage" style={{ transition: "height 0.2s" }} className={`imges`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                                 </div>
                                             </Grid>
                                             <Grid container item xs={9} id={"containerTitle"} justify="flex-end" alignItems="center" className={`header-navbar-list1 ${classes.headerNavbarList}`}
@@ -308,9 +274,11 @@ class Header extends Component {
                                                     >
                                                         {
                                                             (menuListHeader.map(listName => {
-                                                                let urlsmall = listName.toLowerCase()
+                                                                let urlsmall = listName.title.toLowerCase()
                                                                 return (
-                                                                    <a href={urlsmall} className={` ${classes.menuListCursor}`} onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: false, subTitleData: null, targetopen: event.currentTarget, listHoverItem: listName.replace(/ +/g, "") }) }}>{listName}</a>
+                                                                    <a href={listName.url} className={window.location.pathname === listName.url ? classes.seletectedMenu : classes.menuListCursor} onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: false, subTitleData: null, targetopen: event.currentTarget, listHoverItem: listName.title.replace(/ +/g, "") }) }}>{listName.title}</a>
+
+
                                                                 )
 
                                                             }))
@@ -354,15 +322,15 @@ class Header extends Component {
                 </Hidden>
 
                 <Hidden mdUp>
-                    <Grid style={{ height: "48px" }}>
+                    <Grid>
                         <Grid style={{ position: "fixed", zIndex: "1300" }}>
                             <div className="header-appbar-sticky1">
                                 <AppBar
                                     className="header-appbar-moblie1"
                                     id="smallScreen"
                                 >
-                                    <Toolbar className={this.props.pdpage ? "toolbarForpd" : "toolbarsetting"} >
-                                        <Grid container item xs={2} sm={1} md={1} lg={1} xl={1} justify="center" alignItems="center">
+                                    <Toolbar className={"toolbarsetting"} >
+                                        <Grid container item xs={1} sm={1} md={1} lg={1} xl={1} justify="center" alignItems="center">
                                             <IconButton
                                                 onClick={this.handleDrawerOpen}
                                             >
@@ -370,12 +338,12 @@ class Header extends Component {
                                             </IconButton>
                                         </Grid>
 
-                                        <Grid item xs={4} className="logoImgHeader1">
-                                            <div className="logoDiv1">
-                                                <img className={`imgsilver`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                        <Grid item xs={5} className="logoImgHeader1">
+                                            <div className="logoDiv1" onClick={() => { window.location.href = "/" }} style={{ cursor: "pointer" }}>
+                                                <img className={`imgsilver`} src={styloriLogo} style={{ width: "100%", height: "auto" }} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                             </div>
                                         </Grid>
-                                        <Grid item xs={7}>
+                                        <Grid item xs={6}>
                                             <div onClick={this.handleSearch} className="mobli-icon1">
                                                 <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center", paddingRight: "10px", paddingBottom: "15px" }}>
                                                     <div className={`head-icons1 ${classes.headIcons}`} >
@@ -415,16 +383,16 @@ class Header extends Component {
                                                             <div
                                                             >
                                                                 <Grid
-                                                                    style={{ padding: "10px", width: "220px", cursor: "pointer" }}
+                                                                    style={{ padding: "10px", width: "194px", cursor: "pointer" }}
                                                                     container spacing={12} lg={12}>
-                                                                    <Grid item lg={6}> <div
+                                                                    <Grid item > <div style={{ textAlign: "center", padding: "0px 6px 0px 0px" }}
                                                                         onClick={() => {
                                                                             localStorage.clear();
                                                                             window.location.reload()
                                                                             window.location.pathname = "/login"
-                                                                        }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
+                                                                        }}><img style={{ height: " 18px!important", cursor: "pointer ", width: "18px !important" }} className="icons-header-sizes" src={logout} />&nbsp;Logout
                                              </div></Grid>
-                                                                    <Grid item lg={6}> <div style={{ float: "right" }} onClick={() => { window.location.href = "/account-profile" }}>
+                                                                    <Grid item> <div style={{ float: "right" }} onClick={() => { window.location.href = "/account-profile" }}>
                                                                         / My Account
                                                  </div></Grid>
                                                                 </Grid>
@@ -444,8 +412,11 @@ class Header extends Component {
                                                             }}  ></i>
                                                         </Badge>
                                                         <Badge style={{ fontSize: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
-                                                            <NavLink to="/cart">   <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
-                                                            </NavLink> </Badge>
+                                                            <a href="/cart" >
+                                                                <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+
+                                                            </a>
+                                                        </Badge>
                                                     </div>
                                                 </Grid>
                                             </div>
@@ -459,13 +430,17 @@ class Header extends Component {
                                     onClose={this.handleClose}
                                 >
 
-                                    <Grid xs={12} style={{ width: "100%", height: "60px", alignContent: "center", justifyContent: "center", position: "absolute", background: "#fff", zIndex: "1300", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px" }}>
+                                    <Grid xs={12} style={{ width: "100%", height: "60px", alignContent: "center", justifyContent: "center", position: "fixed", top: "56px", boxShadow: "0px 3px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 325px 1px 10px 0px rgba(0,0,0,0.12)", background: "#fff", zIndex: "1300", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px" }}>
                                         <Grid container justify="flex-end" onClick={() => this.handleClose()}>
                                             <i style={{ fontSize: "16px", color: "#b2b1b1", paddingRight: "4px" }} class="fa fa-times closebus"></i>
                                         </Grid>
                                         <Grid container style={{ padding: "0px 8px 0px 8px" }}>
                                             <InputBase
-                                                style={{ fontSize: "13px", adding: "0px 0px 0px 3px" }}
+                                                style={{
+                                                    fontSize: "13px", padding: "0px 0px 0px 3px",
+                                                    width: "98%", border: "1px solid #ccc", borderRadius: " 6px", padding: "1px 5px!important", height: "30px!important", fontFamily: "Robot-Black!important"
+                                                }}
+
                                                 className="widthSearch"
                                                 placeholder=" SEARCH"
                                                 endAdornment={<InputAdornment position="end"><div className={classes.searchcontainerplain}><Seach className={"searchPlain"} />
@@ -487,127 +462,131 @@ class Header extends Component {
                                 classes.drawerPaper,
                             )
                         }}
-
                     >
-                        <div className={classes.menuheader} >
-                            <IconButton onClick={this.handleDrawerClose}
-                                style={{ float: 'right' }} className={classes.iconbuttons}>
-                                <i class="fa fa-times closebus" ></i>
-                            </IconButton>
-                        </div>
-                        <List className="sideNavListing"  >
-                            {mainlist.map(row => (
-                                <>
-                                    <ListItem button key={row.name} className="drawer-list1" >
-                                        <ListItemText
-                                            onClick={() => Jewellery[row.name] !== undefined ? this.selectItem(row.name) : ''}
-                                        >
-                                            <Typography className="list-items1"
-                                                variant=""
-                                            >{row.name.toUpperCase()}
-                                            </Typography>
-                                        </ListItemText>
-                                        {Jewellery[row.name] !== undefined ? row.name === selected ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i> : ""}
-                                    </ListItem>
-                                    {selected === row.name &&
-                                        Object.keys(Jewellery[selected]).map(row2 => (
-                                            <>
-                                                <ListItem button key={Jewellery[selected][row2].name} className={classes.subtitleContainer}>
-                                                    <ListItemText onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>
-                                                        <Typography className={classes.subtitles} variant="">{Jewellery[selected][row2].name.toUpperCase()}
-                                                        </Typography>
-                                                    </ListItemText>
-                                                    {selected1 === Jewellery[selected][row2].name ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i>}
-                                                </ListItem>
-                                                {selected1 === Jewellery[selected][row2].name &&
-                                                    <List className="sideNavListing" >
-                                                        <ListItem className="drawer-list1">
+                        <ClickAwayListener onClickAway={(e) => this.handleExpandClickClose(e)}>
+                            <div>
+                                <div className={classes.menuheader} >
+                                    <IconButton onClick={this.handleDrawerClose}
+                                        style={{ float: 'right' }} className={classes.iconbuttons}>
+                                        <i class="fa fa-times closebus" ></i>
+                                    </IconButton>
+                                </div>
+                                <List className="sideNavListing"  >
+                                    {mainlist.map(row => (
+                                        <>
+                                            <ListItem button key={row.name} className="drawer-list1" >
+                                                <ListItemText
+                                                    onClick={() => { window.location.href = row.url }}
+                                                >
+                                                    <Typography className="list-items1"
+                                                        variant=""
+                                                    >{row.name.toUpperCase()}
+                                                    </Typography>
+                                                </ListItemText>
+                                                <div onClick={() => Jewellery[row.name] !== undefined ? this.selectItem(row.name) : ''}>{Jewellery[row.name] !== undefined ? row.name === selected ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i> : ""}
+                                                </div>
+                                            </ListItem>
+                                            {selected === row.name &&
+                                                Object.keys(Jewellery[selected]).map(row2 => (
+                                                    <>
+                                                        <ListItem button key={Jewellery[selected][row2].name} className={classes.subtitleContainer}>
+                                                            <ListItemText onClick={() => { window.location.href = Jewellery[selected][row2].url }}>
+                                                                <Typography className={classes.subtitles} variant="">{Jewellery[selected][row2].name.toUpperCase()}
+                                                                </Typography>
+                                                            </ListItemText>
+                                                            <div onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>{selected1 === Jewellery[selected][row2].name ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i>}
+                                                            </div>
+                                                        </ListItem>
+                                                        {selected1 === Jewellery[selected][row2].name &&
+                                                            <>
+                                                                {/* <ListItem className="drawer-list1">
                                                             <ListItemText
                                                             >
-                                                                <Typography className="list-items1" variant="">{subheader[selected1].header.toUpperCase()}
+                                                                <Typography className="list-items1" variant="">{subheader[selected1]&&subheader[selected1].header&&subheader[selected1].header.toUpperCase()}
                                                                 </Typography>
                                                                 <span style={{ paddingTop: "5px" }} className="header-viewal1">View All</span>
                                                             </ListItemText>
-                                                        </ListItem>
-                                                        {subheader[selected1].name.map(row => (
-                                                            <>
-                                                                <ListItem className={classes.subtitle2Container}>
-                                                                    <ListItemText>
-                                                                        <Typography className="list-items1" variant="">{row.toUpperCase()}</Typography>
-                                                                    </ListItemText>
-                                                                </ListItem>
+                                                        </ListItem> */}
+                                                                {subheader[selected1] && subheader[selected1].name && subheader[selected1].name.map(row => (
+                                                                    <>
+                                                                        <ListItem onClick={() => { window.location.href = row.url }} className={classes.subtitle2Container}>
+                                                                            <ListItemText>
+                                                                                <Typography className="list-items1" variant="">{row.name.toUpperCase()}</Typography>
+                                                                            </ListItemText>
+                                                                        </ListItem>
+                                                                    </>
+                                                                ))}
+
                                                             </>
-                                                        ))}
-
-                                                    </List>
-                                                }
-                                            </>
-                                        ))
-                                    }
-                                </>
-                            ))}
-                            {!localStorage.getItem("true") ? <>
-                                <ListItem button className="drawer-list12" >
-                                    <ListItemText onClick={() => window.location.pathname = "/login"}>
-                                        <Typography className="list-items1">
-                                            LOGIN
+                                                        }
+                                                    </>
+                                                ))
+                                            }
+                                        </>
+                                    ))}
+                                    {!localStorage.getItem("true") ? <>
+                                        <ListItem button className="drawer-list12" >
+                                            <ListItemText onClick={() => window.location.pathname = "/login"}>
+                                                <Typography className="list-items1">
+                                                    LOGIN
                                             </Typography>
-                                    </ListItemText>
-                                </ListItem>
-                                <ListItem button className="drawer-list12" >
-                                    <ListItemText onClick={() => window.location.pathname = "/registers"}>
-                                        <Typography className="list-items1">
-                                            REGISTER
+                                            </ListItemText>
+                                        </ListItem>
+                                        <ListItem button className="drawer-list12" >
+                                            <ListItemText onClick={() => window.location.pathname = "/registers"}>
+                                                <Typography className="list-items1">
+                                                    REGISTER
                                             </Typography>
-                                    </ListItemText>
-                                </ListItem>
-                            </> :
-                                <>
-                                    <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.href = `/account${'-profile'}`}>
-                                            <Typography className="list-items1" >
-                                                VIEW PROFILE
+                                            </ListItemText>
+                                        </ListItem>
+                                    </> :
+                                        <>
+                                            <ListItem button className="drawer-list12" >
+                                                <ListItemText onClick={() => window.location.href = `/account${'-profile'}`}>
+                                                    <Typography className="list-items1" >
+                                                        VIEW PROFILE
                                             </Typography>
-                                        </ListItemText>
-                                    </ListItem>
-                                    <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.href = `/account${'-wishlist'}`}>
-                                            <Typography className="list-items1">
-                                                MY WHISLIST
+                                                </ListItemText>
+                                            </ListItem>
+                                            <ListItem button className="drawer-list12" >
+                                                <ListItemText onClick={() => window.location.href = `/account${'-wishlist'}`}>
+                                                    <Typography className="list-items1">
+                                                        MY WHISLIST
                                             </Typography>
-                                        </ListItemText>
-                                    </ListItem>
-                                    <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.href = `/account${'-allorders'}`}>
-                                            <Typography className="list-items1">
-                                                ALL ORDERS
+                                                </ListItemText>
+                                            </ListItem>
+                                            <ListItem button className="drawer-list12" >
+                                                <ListItemText onClick={() => window.location.href = `/account${'-allorders'}`}>
+                                                    <Typography className="list-items1">
+                                                        ALL ORDERS
                                             </Typography>
-                                        </ListItemText>
-                                    </ListItem>
-                                    <ListItem button className="drawer-list12" >
-                                        <ListItemText >
-                                            <Typography className="list-items1">
-                                                CONTACT US
+                                                </ListItemText>
+                                            </ListItem>
+                                            <ListItem button className="drawer-list12" >
+                                                <ListItemText >
+                                                    <Typography className="list-items1">
+                                                        CONTACT US
                                             </Typography>
-                                        </ListItemText>
-                                    </ListItem>
-                                    <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => {
-                                            localStorage.clear();
-                                            window.location.reload()
-                                            window.location.pathname = "/login"
-                                        }}>
-                                            <Typography className="list-items1">
-                                                LOGOUT
+                                                </ListItemText>
+                                            </ListItem>
+                                            <ListItem button className="drawer-list12" >
+                                                <ListItemText onClick={() => {
+                                                    localStorage.clear();
+                                                    window.location.reload()
+                                                    window.location.pathname = "/login"
+                                                }}>
+                                                    <Typography className="list-items1">
+                                                        LOGOUT
                                             </Typography>
-                                        </ListItemText>
-                                    </ListItem>
-                                </>}
-                        </List>
+                                                </ListItemText>
+                                            </ListItem>
+                                        </>}
+                                </List>
+                            </div>
+                        </ClickAwayListener>
                     </Drawer>
-
                 </Hidden>
-            </div>
+            </div >
         )
     }
 }

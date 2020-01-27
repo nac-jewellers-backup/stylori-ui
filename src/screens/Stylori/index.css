@@ -12,10 +12,16 @@
   }
 }
 
-@media screen and (max-width: 1220px), (min-width: 1220px) {
+.cart-ovralldiv-media {
+  width: 100%
+}
+
+@media screen and (max-width: 1220px),
+(min-width: 1220px) {
   .cart-ovralldiv-media {
-    padding-left: 5% !important;
-    padding-right: 5% !important;
+    /* padding-left: 5% !important;
+    padding-right: 5% !important; */
+    /* width: 100%; */
   }
 }
 
@@ -117,7 +123,7 @@
 }
 
 .image1 {
-  background-image: url("https://assets-cdn.stylori.com/images/static/sprite-images.png");
+  background-image: url("https://assets.stylori.com/images/static/sprite-images.png");
   background-position: -521px 50px;
   width: 28px;
   min-height: 30px;
@@ -125,7 +131,7 @@
 }
 
 .image2 {
-  background-image: url("https://assets-cdn.stylori.com/images/static/sprite-images.png");
+  background-image: url("https://assets.stylori.com/images/static/sprite-images.png");
   background-position: -603px 50px;
   width: 28px;
   min-height: 30px;
@@ -133,7 +139,7 @@
 }
 
 .image3 {
-  background-image: url("https://assets-cdn.stylori.com/images/static/sprite-images.png");
+  background-image: url("https://assets.stylori.com/images/static/sprite-images.png");
   background-position: -108px 50px;
   width: 28px;
   min-height: 30px;
@@ -141,7 +147,7 @@
 }
 
 .image4 {
-  background-image: url("https://assets-cdn.stylori.com/images/static/sprite-images.png");
+  background-image: url("https://assets.stylori.com/images/static/sprite-images.png");
   background-position: -273px 50px;
   width: 28px;
   min-height: 30px;
@@ -149,7 +155,7 @@
 }
 
 .image5 {
-  background-image: url("https://assets-cdn.stylori.com/images/static/sprite-images.png");
+  background-image: url("https://assets.stylori.com/images/static/sprite-images.png");
   background-position: -191px 50px;
   width: 28px;
   min-height: 30px;
@@ -159,7 +165,7 @@
 .wrappercustomer {
   font-family: sans-serif;
   width: 100% !important;
-  height: 35px;
+  /* height: 35px; */
   color: #394578 !important;
   display: flex !important;
   justify-content: center;

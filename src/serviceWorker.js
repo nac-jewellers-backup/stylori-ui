@@ -206,7 +206,8 @@ function check() {
 }
 
 async function sendNotification(message) {
-  check() ? await new Notification(message) : await requestNotificationPermission();
+  // check() ? await new Notification(message) : await requestNotificationPermission();
+  return false;
 }
 
 function checkValidServiceWorker(swUrl, config) {

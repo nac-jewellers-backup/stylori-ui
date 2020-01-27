@@ -5,7 +5,8 @@ const initialCtx = {
         loggedIn: false,
         browserType: 'jpg',
         productId:[],
-        pathName:false
+        pathName:false, 
+        tabsChange:false
     },
 
     setGlobaCtx: () => null
@@ -21,9 +22,14 @@ export const GlobalProvider = (props) => {
     const [Globalctx, setGlobalCtx] = React.useState(initialCtx.GLobalCtx);
 
     React.useEffect(()=>{
+        
         var loc = window.location.pathname.split('/')[1].split('-').filter(val=>{if(val==='silver') return val})
-        if(loc.length=== 0) setGlobalCtx({...Globalctx, pathName:false})
-        else setGlobalCtx({...Globalctx, pathName:true})
+        var loc_PD = window.location.pathname.split('/').filter(val=>{if(val==='silverjewellery') return val})
+        if(window.location.pathname==='/stylorisilver') setGlobalCtx({...Globalctx, pathName:true})
+        else if(loc_PD.length > 0 ) setGlobalCtx({...Globalctx, pathName:true})
+        else if(loc.length > 0) setGlobalCtx({...Globalctx, pathName:true})
+        
+        else setGlobalCtx({...Globalctx, pathName:false})
     },[])
     return (
         <GlobalContext.Provider value={{ Globalctx, setGlobalCtx }} >

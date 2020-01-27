@@ -114,6 +114,7 @@ const useStyles = makeStyles(theme => ({
     },
     imgcoin: {
         width: "100%",
+        // cursor: "pointer"
     },
     imgcoinsm: {
         width: "100%"
@@ -211,7 +212,7 @@ export default function ImageGridList(props) {
                             <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
                                 {props.carosolData.map((val, index) => <>
                                     <Grid item className={classes.Titlehead}>
-                                        <Typography variant="h3" className={classes.titleTypo}>{val.Title}
+                                        <Typography variant="h3" className={classes.titleTypo}>{val.title}
                                         </Typography>
                                     </Grid>
                                     <Grid container>
@@ -219,14 +220,17 @@ export default function ImageGridList(props) {
                                             <Grid container>
                                                 <Grid item className={classes.testimonialRight}>
                                                     <Grid item >
-                                                        <a href={val.navigateUrl}>
-                                                            <img className={classes.imgcoin} src={val.img} />
-                                                        </a>
+                                                        {/* <a href={val.navigateUrl}> */}
+                                                        <img className={classes.imgcoin} src={val.image} />
+                                                        {/* </a> */}
                                                     </Grid>
                                                 </Grid>
                                                 <Grid item style={{ width: "75%" }} className={classes.testimonialInner}>
-                                                    <Typography className={classes.textInner}>{val.content}
-                                                    </Typography>
+                                                    <Grid item >
+                                                        <Typography className={classes.textInner}>{val.cardContent}
+                                                        </Typography>
+                                                        {/* <a href={val.navigateUrl} style={{ fontSize: "12px", color: '#a77e6c' }} href="">Read more</a> */}
+                                                    </Grid>
                                                 </Grid>
                                             </Grid>
                                         </Grid>
@@ -253,21 +257,21 @@ export default function ImageGridList(props) {
                                         {props.carosolData.map((val, index) => <>
                                             <Grid container justify="center">
                                                 <Typography style={{ textAlign: "center" }} className={classes.testimonyTitle}>
-                                                    {val.Title}
+                                                    {val.title}
                                                 </Typography>
                                                 <Grid container>
                                                     <Grid item style={{ textAlign: 'center' }}>
-                                                        <a href={val.navigateUrl}>
-                                                            <img className={classes.imgcoinsm} src={val.img} />
-                                                        </a>
+                                                        {/* <a href={val.navigateUrl}> */}
+                                                        <img className={classes.imgcoinsm} src={val.image} />
+                                                        {/* </a> */}
                                                     </Grid>
                                                     <Grid item >
                                                         <Grid>
-                                                            <Typography style={{ fontSize: "12px", color: "rgb(102, 102, 102)", marginTop: "10px" }}>
-                                                                {val.content}
+                                                            <Typography style={{ fontSize: "12px", color: "rgb(102, 102, 102)", marginTop: "10px", height: "70px", overflow: "hidden" }}>
+                                                                {val.cardContent}
                                                             </Typography>
                                                         </Grid>
-                                                        <a style={{ fontSize: "12px", color: '#a77e6c' }} href="">Read more</a>
+                                                        {/* <a href={val.navigateUrl} style={{ fontSize: "12px", color: '#a77e6c' }} href="">Read more</a> */}
                                                     </Grid>
                                                 </Grid>
                                             </Grid>

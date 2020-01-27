@@ -565,6 +565,7 @@ module.exports = function(webpackEnv) {
         // If a URL is already hashed by Webpack, then there is no concern
         // about it being stale, and the cache-busting can be skipped.
         dontCacheBustUrlsMatching: /\.\w{8}\./,
+        // cacheId:"alpha-stylori-net",
         filename: `service-worker.js`,
         logger(message) {
             if (message.indexOf('Total precache size is') === 0) {

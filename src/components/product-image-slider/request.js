@@ -15,6 +15,7 @@ import { Input } from '../InputComponents/TextField/Input'
 import { Form } from '../Form/Form'
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 class Request extends React.Component {
     constructor(props) {
         super(props);
@@ -110,7 +111,7 @@ class Request extends React.Component {
                                         onInvalid={e => handleError(e)}
                                         error={errors.names ? true : false}
                                         helperText={errors.names ? errorMessage.names : ''}
-                                        placeholder="Name"
+                                        placeholder="Enter your name"
                                         className="request-text"
                                         onChange={event => handleChange(event, 'names')}
                                         required />
@@ -125,7 +126,7 @@ class Request extends React.Component {
                                         onInvalid={e => handleError(e)}
                                         error={errors.mailId ? true : false}
                                         helperText={errors.mailId ? errorMessage.mailId : ''}
-                                        placeholder="Enter your mail"
+                                        placeholder="Enter your email address"
                                         className="request-text"
                                         onChange={event => handleChange(event, 'mailId')}
                                         required />
@@ -142,7 +143,7 @@ class Request extends React.Component {
                                         onInvalid={e => handleError(e)}
                                         error={errors.mobileNo ? true : false}
                                         helperText={errors.mobileNo ? errorMessage.mobileNo : ''}
-                                        placeholder="909419****"
+                                        placeholder="Enter your mobile number"
                                         className="request-text"
                                         onChange={event => handleChange(event, 'mobileNo')}
                                         onKeyPress={event => { this.handleKeyPress(event, 'isNumber') }}
@@ -155,7 +156,7 @@ class Request extends React.Component {
                                         type="text"
                                         name="request"
                                         value={this.state.request}
-                                        placeholder="Enter Request"
+                                        placeholder="Enter your request"
                                         className="request-text"
                                         onChange={event => handleChange(event, 'request')}
                                     />
@@ -165,7 +166,7 @@ class Request extends React.Component {
                             <Grid container>
                                 <Grid xs={12} >
                                     <Button type="submit" className={`requset-button ${classes.fontwhite} ${classes.normalcolorback}`}>
-                                        Send
+                                        Submit
                             </Button>
                                 </Grid>
                             </Grid>
@@ -185,7 +186,7 @@ class Request extends React.Component {
 
                 <Hidden smDown>
                     {/* <Form children={this.Requestform} inputvalues={this.state.values} /> */}
-                    <Grid style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", widt: "100%" }}>
+                    <Grid style={{ borderRadius: "5px", boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", widt: "100%" }}>
                         {this.Requestform(errors, this.handleError, errorMessage, this.handleChange)}
 
                     </Grid>
@@ -196,11 +197,12 @@ class Request extends React.Component {
                 <Hidden mdUp>
                     <Container>
                         <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 5px" }} expanded={expanded === 'panel3'} onChange={this.handle('panel3')}>
-                            <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
-                                <i class="fa fa-sort-up" ></i></span>}
+                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
                             >
                                 <div style={{ width: "100%" }} >
-                                    <Typography className={`product-details-smrt ${classes.normalfonts}`}>Ask Our Expert</Typography>
+                                    <Typography className={`product-details-smrt ${classes.normalfonts}`}>Ask our Expert</Typography>
                                     {/* <hr class="bottom-line border-line-"></hr> */}
                                 </div>
                             </ExpansionPanelSummary>

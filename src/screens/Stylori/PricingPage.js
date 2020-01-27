@@ -16,7 +16,7 @@ class Stylori extends Component {
   render() {
     let productId = window.location.search.replace('?', '')
     return (
-      <div>
+      <>
         {/* {this.props.location.state && this.props.location.state.data !== undefined ? */}
         <ProductDetailProvider productId={productId}
         // ringSize={
@@ -31,7 +31,7 @@ class Stylori extends Component {
           window.location.href = "/stylori"
         } */}
 
-      </div>
+      </>
     )
   }
 }

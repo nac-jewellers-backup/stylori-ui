@@ -23,23 +23,38 @@ export default function Pricing(props) {
                     ""
             }
             {/*  */}
-            <Grid spacing={12} container lg={12} xs={12}>
-                <Grid item lg={window.location.pathname !== "/cart" && window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/checkout" ? 3 : 6} xs={6}>
-                    {props.offerPrice ?
-                        <Typography style={{ display: "flex", width: '100%' }}>
-                            <Typography
-                                variant="h6"
-                                component="h6"
-                                className={`${props.offerPrice != null & props.offerPrice !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
-                            >
-                                {/* ₹&nbsp;{props.offerPrice} */}
-                                {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.offerPrice))}
-                            </Typography>
-                        </Typography> : ""} 
-                </Grid>   
-                <Grid item lg={6} xs={12}>
-                    <Grid spacing={12} container lg={12} xs={12}>
-                        <Grid item lg={12} xs={12}>
+            <Grid spacing={12} style={{ padding: "0px 8px " }} container lg={12}>
+
+                {/* <Grid item xs={12}lg={12} >
+                    <Grid spacing={12} container xs={12} lg={12} class="leftPadding"> */}
+                {window.location.pathname !== "/cart" && window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/checkout" ?
+                    <Grid container>
+                        <Grid item >
+                            {props.offerPrice ?
+                                <Typography style={{ display: "flex", width: '100%' }}>
+                                    <Typography
+                                        className={`${props.offerPrice != null & props.offerPrice !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
+                                    >
+                                        {/* ₹&nbsp;{props.offerPrice} */}
+                                        {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.offerPrice))}
+                                    </Typography>
+                                </Typography> : ""}
+                        </Grid>
+                        <Grid item style={{ display: "flex", alignItems: "center" }}>
+                            {props.price ?
+                                <Typography style={{ display: "flex", width: '100%', paddingLeft: "8px" }}>
+                                    <Typography style={{ fontSize: "0.9rem" }}
+                                        className={`pricing-p${props.price != null & props.price !== '' ? '' : 'shine'} ${classes.deletePrice} ${classes.dis}`}
+                                    >
+                                        {props.offerPrice === props.price ? "" : <del>₹&nbsp;{Math.round(props.price)}</del>}
+                                    </Typography>
+                                </Typography> : ""}
+                        </Grid></Grid>
+                    :
+                    <>
+                        <Grid item
+                            xs={12}
+                            lg={window.location.pathname !== "/cart" && window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/checkout" ? 2 : 12}>
                             {props.price ?
                                 <Typography style={{ display: "flex", width: '100%' }}>
                                     <Typography
@@ -47,31 +62,49 @@ export default function Pricing(props) {
                                         className={`pricing-p${props.price != null & props.price !== '' ? '' : 'shine'} ${classes.deletePrice} ${classes.dis}`}
                                     // component="p"
                                     >
-                                        <del>₹&nbsp;{Math.round(props.price)}</del>
+                                        {props.offerPrice === props.price ? "" : <del>₹&nbsp;{Math.round(props.price)}</del>}
                                     </Typography>
                                 </Typography> : ""}
                         </Grid>
-                        <Grid item lg={12} xs={12}>
-                            <Hidden mdDown>
-                                {
-                                    props.offerDiscount ?
-                                        <span className={`discount ${classes.backgsecondary} ${classes.off}`}>{props.offerDiscount}</span>
-                                        :
+                        <Grid item xs={12}
+                            xs={window.location.pathname !== "/cart" && window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/checkout" ? 6 : 12}
+                        >
+                            {props.offerPrice ?
+                                <Typography style={{ display: "flex", width: '100%' }}>
+                                    <Typography
+                                        // variant="h6"
+                                        // component="h6"
+                                        className={`${props.offerPrice != null & props.offerPrice !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
+                                    >
+                                        {/* ₹&nbsp;{props.offerPrice} */}
+                                        {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.offerPrice))}
+                                    </Typography>
+                                </Typography> : ""}
+                        </Grid></>
+                }
 
-                                        <Typography style={{ display: "flex" }}>
-                                            <Typography
-                                                variant="caption"
-                                                component="p"
-                                                className={`${props.save != null & props.save !== '' ? '' : 'shine'} ${classes.colorMain}  `}
-                                            >
-                                                {path === 'stylori' && 'You save'} {props.save}
-                                            </Typography>
-                                        </Typography>
-                                }
-                            </Hidden>
-                        </Grid>
+                <Grid item xs={12}
+                    lg={window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/cart" && window.location.pathname.split("-")[1] !== "allorders" ? 6 : 6} style={{ display: "flex", alignItems: "normal" }}>
+                    <Hidden smDown>
+                        {
+                            props.offerDiscount ?
+                                <span className={`discount ${classes.backgsecondary} ${classes.off}`}>{props.offerDiscount}</span>
+                                :
 
-                    </Grid>
+                                <Typography style={{ display: "flex" }}>
+                                    <Typography
+                                        variant="caption"
+                                        component="p"
+                                        className={`${props.save != null & props.save !== '' ? '' : 'shine'} ${classes.colorMain}  `}
+                                    >
+                                        {path === 'stylori' && 'You save'} {props.save}
+                                    </Typography>
+                                </Typography>
+                        }
+                    </Hidden>
+                    {/* </Grid>
+
+                    </Grid> */}
                 </Grid>
             </Grid>
 

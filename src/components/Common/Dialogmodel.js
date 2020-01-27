@@ -46,7 +46,12 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Roboto"
   },
   mapped: {
-
+    minWidth: "400px"
+  },
+  [theme.breakpoints.down('sm')]: {
+    mapped: {
+      minWidth: "auto"
+    },
   }
 }));
 
@@ -70,8 +75,10 @@ export default function PineDialog(props) {
   return (
     <Dialog
       PaperProps={{
+        classes: { root: classes.mapped },
         style: {
-          minWidth: "400px"
+          height: "auto",
+          width:"auto"
         },
       }}
       className={classes.mapped}

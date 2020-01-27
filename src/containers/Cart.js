@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from "react-router-dom"
 // import Checkoutbreadcrum from '../../components/Checkout/checkoutbreadcrum';
 // import BreadCrumb from '../../components/BreadCrumb/index'
 import CartCard from 'components/Checkout/CartCard';
@@ -33,32 +34,28 @@ const breadcrumsdata = [
 const cartsubdata = [
     {
         name: "100% Certified Jewellery",
-        icon: "https://assets-cdn.stylori.com/images/static/icon-star.png"
+        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-star.png"
     }, {
         name: "Secure Payments",
-        icon: "https://assets-cdn.stylori.com/images/static/icon-lock.png"
+        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-lock.png"
     }, {
         name: "Free Insured Shipping",
-        icon: "https://assets-cdn.stylori.com/images/static/icon-van.png"
+        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-van.png"
     }, {
         name: "25-Day Returns",
-        icon: "https://assets-cdn.stylori.com/images/static/icon-return.png"
+        icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-return.png"
     }
 ]
 class Cart extends React.Component {
     render() {
         const { data, classes } = this.props
+
         let path = window.location.pathname.split('/').pop();
         return (
-            <div>
+            <Grid container>
                 <Hidden smDown>
-                    <Grid container spacing={12}
-                    //  style={{ position: 'sticky', top: '0', zIndex: '1000' }}
-                    >
-                        <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
-                            <Header wishlist={this.props.wishlistdata} />
-                        </Grid>
-                    </Grid>
+
+                    <Header wishlist={this.props.wishlistdata} />
                     {path === "checkout" ? "" :
                         <CustomSeparator
                             arrowicon='cart-head-arrows'
@@ -69,11 +66,15 @@ class Cart extends React.Component {
                             subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata}
                         />
                     }
-                    <div className="cart-ovralldiv-media">
+                    <div className="cart-ovralldiv-media" style={{ marginTop: "3%" }}>
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>
                                 <CartCard data={data} />
-                            </Grid> : <><div className="noproductsfound">There are no items in this cart. </div>  <NavLink to="/jewellery" style={{ textDecoration: 'none' }} > <div className="continueshopping">CONTINUE SHOPPING</div></NavLink></>}
+                            </Grid> : <><div className="noproductsfound">There are no items in this cart. </div>
+                                    <a href="/jewellery" ><div className="continueshopping">CONTINUE SHOPPING</div></a></>
+
+
+                            }
                         </Grid>
                     </div>
 
@@ -85,16 +86,16 @@ class Cart extends React.Component {
                 </Hidden>
                 <Hidden mdUp>
                     {path === "checkout" ? "" :
-                        <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}>
-                            <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
-                                <Header wishlist={this.props.wishlistdata} />
-                            </Grid>
+                        <Grid container spacing={12} >
+                            {/* <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}> */}
+                            <Header wishlist={this.props.wishlistdata} />
+                            {/* </Grid> */}
                         </Grid>}
                     <Container>
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>
                                 <CartCard data={data} />
-                            </Grid> : <><div className="noproductsfound">There are no items in this cart.</div><a href="/jewellery"> <div className="continueshopping">CONTINUE SHOPPING</div></a></>}
+                            </Grid> : <><div className="noproductsfound">There are no items in this cart.</div><a href="/jewellery"> <div className="continueshopping">Continue Shopping</div></a></>}
                         </Grid>
                     </Container>
                     <Grid Container spacing={12}>
@@ -103,7 +104,7 @@ class Cart extends React.Component {
                         </Grid>
                     </Grid>
                 </Hidden>
-            </div>
+            </Grid>
         )
     }
 }
@@ -119,7 +120,7 @@ const Components = props => {
     }
     if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
     else content = <Cart {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
-    if (mapped !== undefined || mapped !== null) {
+    if (mapped !== undefined && mapped !== null) {
         localStorage.setItem("a__c_t", mapped && mapped.length)
     }
     return content

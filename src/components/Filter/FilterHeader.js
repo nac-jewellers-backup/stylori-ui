@@ -6,12 +6,13 @@ import CardRadioButton from "../InputComponents/RadioButton/index"
 import './filter.css';
 import { useDummyRequest } from '../../hooks';
 import { filterParams } from '../../mappers';
-import { Grid } from '@material-ui/core';
+import { Grid, Popper, ClickAwayListener, Grow } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { sortOptions } from '../../mappers/dummydata/filterdata';
 import { FilterOptionsContext } from 'context'
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+
 const styles = theme => ({
     colorMain: {
         color: theme.palette.primary.main,
@@ -49,10 +50,10 @@ class Component extends React.Component {
         if (width > 960) {
 
             if (document.getElementById('filterBy')) filterHeight = document.getElementById('filterBy').clientHeight;
-
             // const heights = 30;
             let add = filterHeight;
             this.setState({ topHeight: add });
+
         }
 
     }
@@ -60,20 +61,24 @@ class Component extends React.Component {
     handleExpandClick = () => {
         this.setState({ expanded: !this.state.expanded });
     }
+    handleExpandClickClose = () => {
+        this.setState({ expanded: false });
+    }
     handleChange = (event) => {
-        debugger
+
         if (this.props.offset > 0) this.props.setOffset(0)
         console.log(this.props.offset)
         this.props.setSort({ values: event.target.value })
-
         this.setState({ expanded: false })
+        window.scrollTo(0, 0);
+
     }
     render() {
 
-        const { classes, chips } = this.props;
+        const { classes, chips, checked } = this.props;
         const { sortOptions } = this.props.data;
         return (
-            <Paper style={{ position: 'sticky', top: "69px", width: '100%', zIndex: '3', boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">
+            <Paper style={{ position: 'sticky', top: "69px", width: '100%', zIndex: 11, boxShadow: 'none', borderBottom: '1px solid #e3e3e3', borderTop: '1px solid #e3e3e3', display: 'flex' }} id="filterBy">
                 {/* <div style={{position:'sticky',top:'165px'}}> */}
                 <Grid container>
                     <Grid item lg={3}>
@@ -95,14 +100,12 @@ class Component extends React.Component {
                                             :
                                             // <ChevronLeftIcon className={`${classes.colorMain}`} />
                                             <i style={{ fontSize: '22px', paddingRight: '15px' }} className={`fa ${classes.colorMain}`}>&#xf0b0;</i>
-
-
                                     }
                                     <Typography color="inherit"
                                         onClick={this.handleDrawerClose}
                                         className={` fil-drawer-head ${classes.colorMain}`}
                                     >
-                                        Filter By
+                                        Filter by
             </Typography>
                                 </Grid>
                             </div>
@@ -113,7 +116,6 @@ class Component extends React.Component {
                             return (
                                 <Chip
                                     className="header-chips-text"
-                                    key={data.key}
                                     label={data.label}
                                     onClick={() => this.props.click(data.label)}
                                     avatar={data.label ?
@@ -129,24 +131,28 @@ class Component extends React.Component {
                                 className={`fil-drawer-sort_font ${classes.colorMain}`}
                                 onClick={this.handleExpandClick}
                             >
-                                Sort By {this.state.expanded ? <ExpandLess /> : <ExpandMore />}
-                                {/* <span className="fil-drawer-head-sort-expand">
-                                    <ExpandMoreIcon />
-                                </span> */}
+                                Sort by {this.state.expanded ? <ExpandLess /> : <ExpandMore />}
                             </Typography>
 
                         </div>
                         <div className={"testMenu"} style={{
-                            position: "absolute", width: "200px",
+                            position: "absolute", width: "215px",
                             right: "15px", top: "65px", boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 7px'
                         }}>
-                            <Collapse in={this.state.expanded} timeout="auto">
-                                <CardRadioButton data={sortOptions} onChange={this.handleChange} values={this.props.sort} />
-                            </Collapse>
+                            <Popper open={this.state.expanded} transition disablePortal style={{ position: 'absolute', right: '21px', height: "1px" }}>
+                                {({ TransitionProps }) => (
+                                    <Grow {...TransitionProps} >
+                                        <ClickAwayListener onClickAway={(e) => this.handleExpandClickClose(e)}>
+                                            <Grid>
+                                                <CardRadioButton data={sortOptions} onChange={this.handleChange} values={this.props.sort} />
+                                            </Grid>
+                                        </ClickAwayListener>
+                                    </Grow>
+                                )}
+                            </Popper>
                         </div>
                     </Grid>
                 </Grid>
-                {/* </div> */}
             </Paper>
         );
     }

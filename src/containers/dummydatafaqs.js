@@ -23,7 +23,7 @@ export const
             },
             "data": [
                 {
-                    img: "https://alpha-assets.stylori.com/images/static/stylori_faq.png",
+                    img: "https://assets.stylori.com/images/static/stylori_faq.png",
                 },
 
             ]
@@ -238,7 +238,7 @@ export const
             },
             "data": [
                 {
-                    img: "https://alpha-assets.stylori.com/images/static/stylori_shippping.png",
+                    img: "https://assets.stylori.com/images/static/stylori_shippping.png",
                 },
 
             ]
@@ -296,7 +296,7 @@ export const
             },
             "data": [
                 {
-                    img: "https://alpha-assets.stylori.com/images/static/stylori_care_guide.png",
+                    img: "https://assets.stylori.com/images/static/stylori_care_guide.png",
                 },
 
             ]
@@ -311,14 +311,14 @@ export const
                         para: "With a little bit of care, your jewellery will retain its shine for a lifetime.",
                         SubTitle: "Basic Jewellery Care Guide",
                         rightContent: "Polish your ornaments only with a jewellery polishing cloth or a very soft cotton cloth. Do not use tissues or paper towels because the fibers in these products may result in scratches.<br></br>If you stain your jewellery with make-up, perfume, food or drinks, rinse immediately with water and soap.<br></br>Clean the jewellery that you regularly wear at least once a month. Don not use a toothbrush, even a soft bristled one, to clean as it may result in scratches.<br></br>Avoid bleach as it can permanently damage or discolor your jewellery.",
-                        img: "https://assets-cdn.stylori.com/images/static/product-care-img.png",
+                        img: "https://assets.stylori.com/images/static/product-care-img.png",
                         Questions: "Basic care",
                         basicTitle: "General Instructions For Wearing Jewellery",
                         Answers: "Remove your jewellery before showering or while doing household chores to prevent physical damage or exposure to chemicals or cleaning fluids. Soaps and lotions create a film over the jewellery dulling it over time.<br></br>Wear your jewellery only after applying makeup because cosmetics, hairspray and perfumes contain chemicals that can damage it.<br></br>Don't wear jewellery in swimming pools and spas as chlorinated water can react with metals found in jewellery causing color changes and even structural damage.<br></br>Remove jewellery while playing sports as this may damage it.<br></br>Keep your jewellery out of direct sunlight as the heat can cause it to fade.",
                     },
                     {
-                        rightImg: "https://assets-cdn.stylori.com/images/static/gold-wash-img.png",
-                        img: "https://assets-cdn.stylori.com/images/static/gold-part.png",
+                        rightImg: "https://assets.stylori.com/images/static/gold-wash-img.png",
+                        img: "https://assets.stylori.com/images/static/gold-part.png",
                         Questions: "Gold",
                         basicTitle: "Keep Your Gold Glittering Forever",
                         Answers: "To clean gold jewellery, mix a few drops of mild dish detergent with warm water and scrub it with a soft cloth. Rinse with warm water and allow the jewellery to dry.<br><br/>Or keep your gold ornaments in warm water for two minutes, apply toothpaste and then gently clean them with a soft cloth. Rinse with warm water and allow them to dry.<br><br/>Ammonia can also be used to clean gold jewellery but because it is a strong cleaning agent, do not clean jewellery too often with it. Mix four parts warm water and one part household ammonia, submerge your jewellery for not more than ten minutes and then carefully clean with a soft cloth. Rinse it with warm water and allow it to dry.<br><br/>Gold jewellery with gemstones should not be submerged in warm water as this may loosen the gemstones. Clean it with a soft cloth dipped in a solution of mild dish detergent and warm water instead.<br><br/>Moisture speeds the tarnishing process so it's important to make sure that your jewellery is dry before putting it away.<br><br/>Always use warm water to clean gold jewellery.",
@@ -326,21 +326,21 @@ export const
                     {
                         basicTitle: "Bring Back The Shine In Your Silver Jewellery",
                         Questions: "Silver",
-                        rightImg: "https://assets-cdn.stylori.com/images/static/sliver-make-img.png",
+                        rightImg: "https://assets.stylori.com/images/static/sliver-make-img.png",
                         Answers: "Clean silver ornaments that are starting to discolor with a soft cloth dipped in a mix of mild dish detergent and warm water. Rinse with cool water and buff with a cloth until dry.<br><br/>For heavier tarnish, mix a paste of three parts baking soda to one part water. Wet the silver and apply the paste with a soft cloth. Rinse with cool water and buff with a cloth until dry. Do not soak silver as this speeds up the tarnishing process.<br><br/>Prompt cleaning is important when your silver jewellery has been exposed to certain foods containing sulfur or those which are acidic or salty. Food such as salt, eggs, onions, mayonnaise, and vinegar are harmful to silver.",
                     },
                     {
                         basicTitle: "How To Clean Platinum Jewellery",
                         Questions: "Platinum",
                         align: "center",
-                        rightImg: "https://assets-cdn.stylori.com/images/static/platinum-product-care.jpg",
+                        rightImg: "https://assets.stylori.com/images/static/platinum-product-care.jpg",
                         Answers: "The best way to clean platinum is to use a mild solution of soap and warm water and gently rub your platinum jewellery with a soft cloth. Rinse with warm water and allow it to dry.",
                     },
                     {
                         basicTitle: "Cleaning Diamonds and other precious stones",
                         Questions: "Diamond",
                         align: "center",
-                        rightImg: "https://assets-cdn.stylori.com/images/static/diamond-product-care.jpg",
+                        rightImg: "https://assets.stylori.com/images/static/diamond-product-care.jpg",
                         Answers: "For cleaning diamonds and other precious stones, mix a solution of warm, soapy water. Use a soft cloth to gently clean the stone with the water. Rinse off using warm water and pat dry with a soft, clean cloth.",
                     },
                 ],
@@ -371,7 +371,7 @@ export const
             },
             "data": [
                 {
-                    img: "https://alpha-assets.stylori.com/images/static/stylori_faq.png",
+                    img: "https://assets.stylori.com/images/static/stylori_faq.png",
                 },
 
             ]
@@ -416,7 +416,7 @@ export const
             },
             "data": [
                 {
-                    img: "https://alpha-assets.stylori.com/images/static/stylori_faq.png",
+                    img: "https://assets.stylori.com/images/static/stylori_faq.png",
                 },
 
             ]
@@ -481,7 +481,7 @@ I HAVE READ THE TERMS OF USE AND AGREE TO ALL OF THE PROVISIONS CONTAINED ABOVE.
 export const
     aboutus = {
         "data": {
-            img: "https://alpha-assets.stylori.com/images/static/about-us.jpg",
+            img: "https://assets.stylori.com/images/static/about-us.jpg",
             content: "About Us Stylori is one of the pioneers of everyday jewellery in India. Featuring jewellery that is contemporary and chic, Stylori is an exclusively online store for the modern Indian woman.<br/><br/>Our jewellery is crafted from certified metals, gemstones and diamonds. With craftmanship honed over decades, Stylori's designs draw upon diverse influences from across India and the world. At our online store you can shop for jewellery from the comfort of your home worry-free with easy payment options and a reliable return policy.<br/><br/><b style='color:#39457c'>It's your story</b><br/><br/>Going beyond jewellery, Stylori celebrates the art of the story. Jewellery and the people who wear them always have stories to tell. From the young woman remembering her grandmother's jewellery to the kings and queens and their exquisite and priceless jewellery, we love to hear and tell these stories.<br/><br/><b style='color:#39457c'>Our story</b><br/><br/>A lineage of jewellery designers and craftsmen since 1917, the NAC family is renowned for their innovations and path breaking designs. In 1973, Shri. Nathella Anjaneyulu Chetty ventured into retail and founded NAC Jewellers.<br/><br/>In the 21st century, N. Anandha Ramanujam, the current generation of the NAC family, founded the exclusively online store Stylori. A qualified gemologist from the Gemological Institute of America (GIA), N. Anandha Ramanujam conceptualised and launched Stylori along with co-founder and entrepreneur S. Mahadevan."
         }
     }

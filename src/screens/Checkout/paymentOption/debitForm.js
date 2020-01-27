@@ -12,6 +12,8 @@ import {
 import './payment.css'
 import { Input } from '../../../components/InputComponents/TextField/Input'
 import Buynowbutton from "../../../components/Buynow/buynowbutton";
+import { CartContext } from 'context'
+import cart from 'mappers/cart'
 class Debitform extends React.Component {
     constructor(props) {
         super(props)
@@ -38,6 +40,7 @@ class Debitform extends React.Component {
         }
     };
     render() {
+
         return (
             <div>
                 <Container>
@@ -86,7 +89,7 @@ class Debitform extends React.Component {
                                         <Grid spacing={12} container>
                                             <Grid item lg={6} xs={4}>
                                                 <div className="credit-img">
-                                                    <img className="imd-credit" src="https://assets-cdn.stylori.com/images/static/icons/cvv.png" />
+                                                    <img className="imd-credit" src="https://assets.stylori.com/images/static/icons/cvv.png" />
                                                 </div>
                                             </Grid>
                                             <Grid item lg={6} xs={8}>
@@ -103,9 +106,11 @@ class Debitform extends React.Component {
                             </Grid>
                         </Grid>
                     </form>
+
                 </Container>
             </div>
         )
     }
 }
-export default Debitform;
+
+export default (Debitform)

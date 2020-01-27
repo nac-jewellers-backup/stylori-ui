@@ -249,7 +249,7 @@ export const menuLists = {
     'Collections': {
         'menuOne':
             [{ value: 'collections', title: 'By Collections', url: '#' },
-            { value: 'themes', title: 'By Themes', url: '/jewellery' },
+            { value: 'themes', title: 'By Themes', url: '' },
 
             ],
        

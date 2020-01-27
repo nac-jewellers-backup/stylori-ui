@@ -42,8 +42,8 @@ class Allorders extends React.Component {
         var a;
         var dis_price;
         a = arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
-            if(cart!==null||cart!==undefined){
-              dis_price =cart.transSkuListByProductSku.discountPrice
+            if (cart !== null || cart !== undefined) {
+                dis_price = cart.transSkuListByProductSku.discountPrice
             }
             return dis_price
         }).reduce(myFunc);
@@ -66,7 +66,7 @@ class Allorders extends React.Component {
     render() {
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
-        debugger
+
         return (
             <>
                 {/* allorderdata.nodes */}
@@ -133,7 +133,7 @@ class Allorders extends React.Component {
                                                         </Grid>
                                                         <Grid item lg={4}>
                                                             <Grid container spacing={12} lg={12} style={{ lineHeight: "20px" }}>
-                                                                <b style={{width:"100%"}}> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
+                                                                <b style={{ width: "100%" }}> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
                                                                 <Grid item lg={6}>
                                                                     <Typography className="subhesder">Gold Weight</Typography>
                                                                     {cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes.length > 0 ?
@@ -157,7 +157,7 @@ class Allorders extends React.Component {
                                                             <Grid container spacing={12} lg={12}>
                                                                 <Typography className="subhesder">Quantity 1</Typography>
                                                                 <Typography className="subhesder">
-                                                                    <img alt="" src="https://assets-cdn.stylori.com/images/static/icon-ship.png" /> <a>
+                                                                    <img alt="" src="https://assets.stylori.com/images/static/icon-ship.png" /> <a>
                                                                         {this.generateShipsBy(cart.transSkuListByProductSku.readytoship, cart.transSkuListByProductSku.vendorDeliveryTime)}</a></Typography>
                                                             </Grid>
                                                         </Grid>
@@ -185,7 +185,7 @@ class Allorders extends React.Component {
                                     </ExpansionPanelDetails>
                                 </ExpansionPanel>
                             ))}
-                        </div> : <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Orders</div>}
+                        </div> : <div style={{ textAlign: "center", color: "#394578" }}>No orders yet</div>}
 
                 </div>
             </>

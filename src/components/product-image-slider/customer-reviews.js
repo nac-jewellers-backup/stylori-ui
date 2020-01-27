@@ -88,48 +88,22 @@ class CustomerReviews extends React.Component {
             autoplaySpeed: 4000,
             arrows: false
         };
-        const productsubHead = [
-            {
-                name: "From the House of NAC",
-                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
-                class: "image1"
-            },
-            {
-                name: "Certified Jewellery",
-                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
-                class: "image2"
-            },
-            {
-                name: "Free Shipping",
-                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
-                class: "image3"
-            },
-            {
-                name: "Diverse Styles",
-                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
-                class: "image4"
-            },
-            {
-                name: "Easy Returns",
-                icon: "https://assets-cdn.stylori.com/images/static/sprite-images.png",
-                class: "image5"
-            }
-        ];
+
         // const { productsubHead } = this.props.data
         const { classes, data } = this.props;
         const { starsSelected } = this.state;
         return (
-            <div>
+            <div style={{ width: "100%" }}>
                 <Hidden smDown>
-                    <Container>
-                        <div className="pricing-product-media" >
+                    <Container style={{ paddingLeft: "15px", paddingRight: "15px", paddingTop: "5px" }}>
+                        <div style={{ padding: " 20px 0px 0px 0px !important" }}>
                             <div className="reviews-header">
                                 <span className={`reviews-customer ${classes.normalfonts}`}>Customer Reviews</span>
                             </div>
                             <div className="reviews">
                                 <span className={`data-reviews ${classes.normalfonts}`}>
                                     <Grid spacing={12} container style={{ float: "left", padding: "2%", lineHeight: "23px" }}>
-                                        <Grid item lg={12}>{this.rat_map_title() ? this.rat_map_title() : <div style={{ textAlign: "center", fontWeight: "bold" }}> No Reviews Found</div>}</Grid>
+                                        <Grid item lg={12}>{this.rat_map_title() ? this.rat_map_title() : <div style={{ textAlign: "center", fontWeight: "bold" }}> No reviews found</div>}</Grid>
                                     </Grid>
                                 </span>
                             </div>
@@ -137,9 +111,9 @@ class CustomerReviews extends React.Component {
                     </Container>
                 </Hidden>
 
-                <Hidden mdUp>
+                {/* <Hidden mdUp>
                     <Container>
-                        <ExpansionPanel
+                    <ExpansionPanel
                             style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 5px" }} square
                             expanded={expanded === 'panel1'}
                             onChange={this.handleChange('panel1')}
@@ -147,76 +121,27 @@ class CustomerReviews extends React.Component {
                             <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                                 <i class="fa fa-sort-up" ></i></span>}>
                                 <div style={{ width: "100%" }} >
-                                    <Typography className={`subtabs-smrt ${classes.normalfonts}`}>You recently viewed</Typography>
-                                    {/* <hr class="bottom-line border-line-"></hr> */}
-                                </div>
+                                    <Typography className={`subtabs-smrt ${classes.normalfonts}`}>You recently viewed</Typography> */}
+                {/* <hr class="bottom-line border-line-"></hr> */}
+                {/* </div>
                             </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
-                                <Grid container>
-                                    <Grid
-                                        item
-                                        xs={12}
-                                        alignItems="center"
-                                        style={{ paddingTop: "6px" }}
-                                    >
-                                        <Typography
-                                            style={{ height: "40px", width: "100%", textAlign: "center" }}
-                                        >
-                                            <Slideshow dataCarousel={dataCarousel}>
-                                                {productsubHead.map((val, index) => (
-                                                    <>
-                                                        <Grid
-                                                            container
-                                                            style={{
-                                                                display: "flex !important",
-                                                                marginBottom: "6px"
-                                                            }}
-                                                            key={"From the House of NAC"}
-                                                            className="wrappercustomer"
-                                                        >
-                                                            <Grid
-                                                                item
-                                                                style={{ alignItems: "center", display: "flex" }}
-                                                                className={val.class}
-                                                                src={val.icon}
-                                                            ></Grid>
-                                                            <Grid
-                                                                item
-                                                                style={{
-                                                                    fontSize: "12px",
-                                                                    alignItems: "center",
-                                                                    display: "flex"
-                                                                }}
-                                                            >
-                                                                {val.name}{" "}
-                                                            </Grid>
-                                                        </Grid>
-                                                    </>
-                                                ))}
-                                            </Slideshow>
-                                            <Grid style={{ width: "100%" }}>
-                                                <div className="loaders"></div>
-                                            </Grid>
-                                        </Typography>
-                                    </Grid>
-                                </Grid>
+                            <ExpansionPanelDetails> */}
+                {/* <Sublistcarousel/> */}
 
-
-
-                                {/* <Typography style={{ height: "40px", width: "100%", textAlign: "center" }}>
+                {/* <Typography style={{ height: "40px", width: "100%", textAlign: "center" }}>
                                     <Slideshow dataCarousel={dataCarousel}>
                                         {this.props.data[0].productsubHead.map(val => (
                                             <div key={val.name} className="wrappercustom">
                                                 <img className='features-tags-images' src={val.icon} alt="" />
                                                 <span style={{ fontSize: "12px" }}>{val.name} </span>
                                             </div>
-                                        ))}
+                                        ))} 
                                     </Slideshow>
                                     <div className="loader"></div>
                                 </Typography> */}
-                            </ExpansionPanelDetails>
+                {/* </ExpansionPanelDetails>
                         </ExpansionPanel>
-                    </Container> </Hidden>
+                    </Container> </Hidden> */}
             </div>
         );
     }

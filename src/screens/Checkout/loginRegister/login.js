@@ -7,7 +7,7 @@ import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 import useLogin from './useLogin';
 import FacebookLogin from 'react-facebook-login';
-import  { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 const Login = (props) => {
     return <LoginComponent  {...props} />
 }
@@ -35,13 +35,13 @@ const LoginComponent = (props) => {
         props.change()
     }
     const responseFacebook = response => {
-        if(response.status !== "unknown"){
-            props.history.push('/home')
+        if (response.status !== "unknown") {
+            props.history.push('/')
         }
     }
     return (
         <div className='pt-sm'>
-            <form action="javascript:void(0)" onSubmit={(e) => {handlers.handelSubmit(e, props.history.push)}}>
+            <form action="javascript:void(0)" onSubmit={(e) => { handlers.handelSubmit(e, props.history.push) }}>
                 <Grid container item xs={12} lg={window.location.pathname === "/login" ? 12 : 6}>
                     <h5 className={`title ${classes.normalfonts}`}>
                         {window.location.pathname === "/login" ? "Login" : "I already have an account"}
@@ -71,28 +71,28 @@ const LoginComponent = (props) => {
                     />
                     <label className='errtext'> {values.error.passerr && values.errortext.passerr}</label>
                     <div className='log-pas'>
-                        <span className={`pas-fr ${classes.normalfonts}`} style={{ cursor: "pointer" }}>Forgot Password ?</span>
+                        <span onClick={() => { window.location.href = '/forgotPassword' }} className={`pas-fr ${classes.normalfonts}`} style={{ cursor: "pointer" }}>Forgot Password ?</span>
                         <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>
-                        <FacebookLogin
-                            appId="2777718598973911"
-                            // autoLoad={true}
-                            fields="name,email,picture"
-                            callback={responseFacebook}
-                            cssClass="my-facebook-button-class"
-                            icon="fab fa-facebook-square fb"
-                        />
-                          {/* <InstagramLogin
+                            <FacebookLogin
+                                appId="2777718598973911"
+                                // autoLoad={true}
+                                fields="name,email,picture"
+                                callback={responseFacebook}
+                                cssClass="my-facebook-button-class"
+                                icon="fab fa-facebook-square fb"
+                            />
+                            {/* <InstagramLogin
                                 clientId="508169029820675"
                                 buttonText="Login"
                                 onSuccess={responseInstagram}
                                 onFailure={responseInstagram}
                         /> */}
-                            {/* <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img> */}
+                            {/* <img class="pull-left1" alt="" src="https://assets.stylori.com/images/static/icon-fb.png"></img> */}
                         </div >
                     </div>
                     <div className='login-butn'>
                         {window.location.pathname === "/login" ? "" : <Button className='back-b' onClick={() => clear()} >Back</Button>}
-                        <Button className='apply-b' type="submit"> {window.location.pathname === "/login" ? "Login" : "Apply"}</Button>
+                        <Button className='apply-b' type="submit"> {window.location.pathname === "/login" ? "Login" : "Login"}</Button>
                     </div>
                 </Grid>
             </form>

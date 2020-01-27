@@ -13,7 +13,7 @@
   position: relative;
   left: 10px;
   top: 10px;
-  background-image: url('https://alpha-assets.stylori.com/images/static/product-details-icons.png');
+  /* background-image: url('https://alpha-assets.stylori.com/images/static/product-details-icons.png'); */
   /* top: 5px; */
   background-position: -102px -37px;
   background-repeat: no-repeat;
@@ -118,7 +118,7 @@
 .productLayoutGridList {
   width: 100%;
   height: auto;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .imageHeight {

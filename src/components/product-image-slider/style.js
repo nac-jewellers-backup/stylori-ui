@@ -1,4 +1,14 @@
 const styles = theme => ({
+    searchCheck: {
+        paddingRight: "12px",
+        paddingLeft: "12px",
+        marginTop: "12px",
+        [theme.breakpoints.down('sm')]: {
+            marginTop: "12px",
+            paddingRight: "16px",
+            paddingLeft: "16px",
+        }
+    },
     title: {
         [theme.breakpoints.down('lg')]: {
             fontSize: '15px',
@@ -37,7 +47,8 @@ const styles = theme => ({
     modals: {
         [theme.breakpoints.down('xs')]: {
             background: '#fff !important',
-            height: 'auto',
+            height: '100%',
+            overflow: "scroll",
             width: '60%',
             marginTop: '3%',
             marginBottom: '3%',
@@ -46,7 +57,8 @@ const styles = theme => ({
         },
         [theme.breakpoints.up('lg')]: {
             background: '#fff !important',
-            height: 'auto',
+            height: '100%',
+            overflow: "scroll",
             width: '60%',
             marginTop: '3%',
             marginBottom: '3%',
@@ -64,13 +76,26 @@ const styles = theme => ({
             // textAlign: "center"
         },
     },
+
+    normalfonts_tabs: {
+        [theme.breakpoints.down('xs')]: {
+            textAlign: "center",
+            marginLeft: "4px",
+            // marginRight: "8px"
+        },
+        [theme.breakpoints.up('lg')]: {
+            textAlign: "center",
+            marginLeft: "8px",
+            marginRight: "8px"
+        },
+    },
     tabs_values_font: {
         [theme.breakpoints.down('xs')]: {
             fontSize: "8px !important",
             marginTop: "5px"
         },
         [theme.breakpoints.up('lg')]: {
-            fontSize: "9px !important",
+            fontSize: "10px !important",
             marginTop: "5px"
         },
     },
@@ -81,7 +106,10 @@ const styles = theme => ({
         background: theme.palette.primary.main,
     },
 
-
+    TypoListed: {
+        fontSize: "0.8rem",
+        paddingTop: "2px"
+    },
     normalfonts: {
         color: theme.palette.text.primary,
     },
@@ -111,7 +139,7 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
         shadow: {
             boxShadow: "none"
-        }, 
+        },
     }
 
 });

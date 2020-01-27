@@ -30,21 +30,17 @@ const LoginComponent = (props) => {
 
     }, [])
     return (
-        <>
-            <Grid container spacing={12}>
-                <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
-                    <Header />
-                </Grid>
-            </Grid>
+        <Grid container>
+            <Header />
             <Grid spacing={12} container style={{ padding: "3%" }}>
                 <Grid item xs={6} lg={6} xs={12}>
                     <div >
-                        <img width="100%" height="100%" src="https://styloriimages.s3.ap-south-1.amazonaws.com/login_image.png" />
+                        <img width="100%" height="100%" src="https://assets.stylori.com/login_image.png" />
                     </div>
                 </Grid>
 
                 <Grid item xs={6} lg={6} xs={12}>
-                    <Container> 
+                    <Container>
                         {/* <div className='pt-sm' style={{ width: "90%", float: "right" }}>
                             <form action="javascript:void(0)" onSubmit={(e) => {
                                 handlers.handelSubmit(e)
@@ -85,7 +81,7 @@ const LoginComponent = (props) => {
                                         Remember Me </span>
                                     <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>
                                         <span>Sign me in using</span>
-                                        <img class="pull-left1" alt="" src="https://assets-cdn.stylori.com/images/static/icon-fb.png"></img>
+                                        <img class="pull-left1" alt="" src="https://assets.stylori.com/images/static/icon-fb.png"></img>
                                     </div >
                                 </div>
                                 <br /> */}
@@ -96,7 +92,7 @@ const LoginComponent = (props) => {
                             />
                             Remember Me </span>
 
-                        <Grid spacing={12} container>
+                        <Grid spacing={12} container style={{ padding: "6px 0px 0px 4px" }}>
                             <Grid item xs={6} lg={6} style={{ float: "left" }}>
                                 {/* <div className={`${classes.normalfonts}`} style={{ cursor: "pointer", fontSize: "14px" }}>Forgot password?</div>
                                 <br /> */}
@@ -123,7 +119,7 @@ const LoginComponent = (props) => {
             <Grid item xs={12}>
                 <Footer />
             </Grid>
-        </>
+        </Grid>
     )
 }
 

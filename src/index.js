@@ -5,11 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import TagManager from 'react-gtm-module'
 
-const tagManagerArgs = {
-    gtmId: 'GTM-5W65BJT'
-}
+// const tagManagerArgs = {
+//     gtmId: 'GTM-5W65BJT'
+// }
 
-TagManager.initialize(tagManagerArgs)
+// TagManager.initialize(tagManagerArgs)
 
 // lambda_func_front_end()
 
@@ -19,5 +19,5 @@ ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 
-serviceWorker.register();
+// serviceWorker.register();
  

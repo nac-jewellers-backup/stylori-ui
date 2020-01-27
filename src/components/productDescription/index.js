@@ -16,9 +16,14 @@ const styles = theme => ({
     color: theme.palette.primary.dark,
     textTransform: "capitalize",
     fontSize: "1.1rem",
-    // marginTop: "14px"
-
   },
+  TypoDark: {
+    color: theme.palette.primary.dark,
+    textTransform: "capitalize",
+    fontSize: "1.1rem !important",
+    fontWeight: 600,
+    letterSpacing: "1px"
+  }
 });
 
 class ProductDescription extends Component {
@@ -37,8 +42,9 @@ class ProductDescription extends Component {
     const { classes } = this.props;
     // let path = window.location.pathname.split('/').pop();
     var loc = this.props.location.pathname;
+
     var path = loc.split('/');
-    var data_json = [{ title: 'home', url: '/home' }, { title: 'jewellery', url: "/jewellery" }]
+    var data_json = [{ title: 'home', url: '/' }, { title: 'jewellery', url: "/jewellery" }]
     // const descriptionData = this.props.data;
     const settings = this.props.data && this.props.data[0] && this.props.data[0].dataCarousel;
     const fadeImages = this.props.data && this.props.data[0] && this.props.data[0].carouselImage;
@@ -87,7 +93,7 @@ class ProductDescription extends Component {
                   xs={6}
                   className={`DescriptionTitle`}
                   alignItems="center"            >
-                  <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>
+                  <Typography className={`${classes.TypoDark}`} variant='h1' component='h1'>
                     {/* {window.location.pathname.split('/').pop()} */}
                     {renderTitle()}
 

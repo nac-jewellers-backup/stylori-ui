@@ -97,11 +97,14 @@ const useLogin = (changePanel, props) => {
             val["addrs"] = false
             // alert(JSON.stringify(addresData))
             // if (addresData && addresData.data && addresData.data.allUserAddress && addresData.data.allUserAddress.nodes && addresData.data.allUserAddress.nodes.length < 0) {
-                localStorage.setItem("isedit", 1)
+            localStorage.setItem("isedit", 1)
             // }
             addressetValues && addressetValues(val)
             // localStorage.setItem("isedit", 1)
             localStorage.setItem("c_k_l", true)
+            localStorage.setItem("set_check", "123")
+            
+
             if (!pathnames) {
                 changePanel(3)
             } else {
@@ -110,7 +113,7 @@ const useLogin = (changePanel, props) => {
                     return false
                 } else {
                     console.clear()
-                    window.location.href = "/home"
+                    window.location.href = "/"
                     return false
                 }
             }

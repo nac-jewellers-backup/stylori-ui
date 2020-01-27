@@ -1,3 +1,7 @@
+
+@import url("");
+
+
 .main_align {
     text-align: center !important;
 }
@@ -22,6 +26,13 @@
 .pay-index-subhed_datas {
     /* margin-top: 20px !important; */
     /* width: 70vw !important; */
+    padding-left: 40px;
+}
+
+@media screen and (max-width: 979px) {
+    .pay-index-subhed_datas {
+        padding-left: 0px;
+    }
 }
 
 .pay-index-subhed p {
@@ -101,9 +112,12 @@
 }
 
 .order_addres div {
-    /* width: 100%; */
+    width: 100%;
     font-size: 13px;
+    justify-content: left;
     float: left !important;
+    line-height: 1.8;
+
 }
 
 .order_addres_user div {
@@ -111,10 +125,29 @@
     float: left !important;
 }
 
+
+@media screen and (max-width: 599px) {
+    .order_addres_user {
+
+        padding-top: 15px;
+
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .wishlist_img {
+        margin-bottom: 6px;
+        /* padding: 10px !important; */
+        /* width: 77% !important; */
+        border: 1px solid #eee !important;
+        margin-right: 5px;
+    }
+}
+
 .address_details {
     /* box-shadow: 5px 0px 58px 2px #DEDADA!important; */
     /* box-shadow: 1px 2px 13px 7px #DEDADA!important; */
-    padding: 15px;
+    /* padding: 15px; */
 }
 
 .inner-page-title {
@@ -134,6 +167,23 @@
     padding-top: 25px;
 }
 
+.inner-page-title1 {
+    font-size: 22px;
+    /* position: fixed !important; */
+    padding-bottom: 10px;
+    color: #ed1165;
+    margin-top: 0px;
+    font-weight: bold !important;
+    position: sticky;
+    z-index: 200;
+    width: 100%;
+    background: #fff;
+    /* top:55px; */
+    display: flex;
+    margin-top: 16px;
+    padding-top: 12px;
+}
+
 .rups {
     color: rgba(241, 72, 128, 1);
     font-weight: 500;
@@ -147,7 +197,7 @@
 .panel_body {
     margin-top: 6% !important;
     /* overflow-y: scroll ! important; */
-    height: 70vh !important;
+    /* height: 70vh !important; */
     width: 100% !important;
     border: none !important;
     /* box-shadow: 1px 0px 90px 18px #DEDADA !important; */
@@ -168,8 +218,8 @@
 .wishlist_img {
     margin-bottom: 6px;
     /* padding: 10px !important; */
-    width: 70% !important;
-    border: 1px solid #ccc !important;
+    /* width: 77% !important; */
+    border: 1px solid #eee !important;
 }
 
 .viewport-img {
@@ -178,7 +228,7 @@
 }
 
 .remove-product {
-    background: url(https://assets-cdn.stylori.com/images/static/icon-close.png) no-repeat !important;
+    background: url(https://assets.stylori.com/images/static/icon-close.png) no-repeat !important;
     width: 15px !important;
     height: 15px !important;
     cursor: pointer;
@@ -196,7 +246,7 @@
     float: left !important;
     font-size: 12px !important;
     border-radius: 5%;
-    line-height: 10px;
+    line-height: 30px;
     height: 30px;
     padding: 2px;
     width: 54%;
@@ -259,3 +309,25 @@
 /* .MuiExpansionPanelDetails-root{
     display: none !important;
 } */
+.MuiExpansionPanel-root:before {
+    margin-top: 0px !important;
+}
+
+.textWidth {
+    width: 250px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #394578;
+    font-weight: 700;
+    padding-left: 8px;
+}
+
+.textWidth_ {
+    width: 240px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #394578;
+    font-weight: 700;
+}

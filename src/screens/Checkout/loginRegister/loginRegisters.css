@@ -1,9 +1,10 @@
-.pt-sm .MuiExpansionPanelDetails-root{
+.pt-sm .MuiExpansionPanelDetails-root {
     padding-top: 10px !important;
     padding-bottom: 15px !important;
     padding-right: 10px !important;
     padding-left: 10px !important;
 }
+
 .title {
     font-size: 15px !important;
     margin-top: 0;
@@ -12,14 +13,17 @@
     font-weight: 600 !important;
     line-height: 1.1;
 }
-.errtext{
+
+.errtext {
     color: #B94A48 !important;
-    font-size: 15px !important;
+    font-size: 13px !important;
 }
+
 .login-butn {
     float: right !important;
     margin-top: 10px !important;
 }
+
 .back-b {
     background: #FFF !important;
     color: #394578 !important;
@@ -30,6 +34,7 @@
     margin-right: 5px !important;
     text-transform: none !important;
 }
+
 .apply-b {
     border-radius: 0px !important;
     text-align: center !important;
@@ -40,42 +45,51 @@
     color: #fff !important;
     text-transform: none !important;
 }
+
 .back-b:hover {
     background: #394579 !important;
     border: 1px solid #394579 !important;
     color: #fff !important;
 }
-.sub-feld{
+
+.sub-feld {
     width: 98% !important;
     float: right;
 }
-.log-pas{
+
+.log-pas {
     width: 100% !important;
 }
-.pas-fr{
+
+.pas-fr {
     font-size: 14px;
     text-decoration: underline;
     margin-bottom: 9px;
     float: left !important;
 }
-.pas-fb{
+
+.pas-fb {
     float: right !important;
     font-size: 14px;
     margin-bottom: 9px;
 }
-.pull-left1{
+
+.pull-left1 {
     margin-bottom: -4px;
     padding-left: 5px;
 }
-.form-group{
+
+.form-group {
     margin-bottom: 10px;
     margin: 0 0 10px;
     font-size: 14px;
 }
-.tp{
+
+.tp {
     margin-top: 18px !important;
 }
-.form-card{
+
+.form-card {
     padding-right: 15px;
     padding-left: 15px;
     border: 1px solid #C3C3C3;
@@ -84,26 +98,37 @@
     position: relative;
     margin-top: 10px;
     margin-bottom: 10px;
-    box-shadow: none !important;
+    box-shadow: rgb(222, 218, 218) 1px 2px 6px 0px !important;
     border-radius: 0 !important;
     width: 90%;
 }
-.card-reg{
+
+.card-reg {
     font-size: 14px !important;
     margin: 0 0 10px;
 }
-.blt{
+
+.blt {
     font-weight: 700;
 }
-.log-text{
+
+.log-text {
     width: 100% !important;
 }
+
 .my-facebook-button-class {
     background: #394579;
     padding: 4px;
     color: white;
 }
-.fb{
+
+.fb {
     font-size: 26px !important;
     margin: 0 7px 0 0px;
+}
+
+@media screen and (max-width: 429px) {
+    .leftPad {
+        padding-left: 4px;
+    }
 }

@@ -22,12 +22,12 @@ export const styles = theme => ({
     backgsecondary: {
         background: theme.palette.secondary.main,
     },
-    _container:{
+    _container: {
         // disableGutters:false,
-        maxWidth:'lg',
+        maxWidth: 'lg',
         [theme.breakpoints.up('lg')]: {
-            disableGutters:true,
-            
+            disableGutters: true,
+
         }
     },
     cart: {
@@ -39,5 +39,8 @@ export const styles = theme => ({
             boxShadow: "none",
         },
     },
+    // TextPassword: {
+    //     padding: "10px 0px 10px 0px"
+    // }
 });
 export default styles;

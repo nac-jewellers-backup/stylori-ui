@@ -1,10 +1,13 @@
 @import "../../fonts/font.css";
+
 /* .arrow {
   fill: #394578 !important;
 } */
-.MuiTypography-h4,.MuiInputBase-input{
+.MuiTypography-h4,
+.MuiInputBase-input {
   /* font-family: "Roboto" !important; */
 }
+
 .filter-drawer-list {
   border-bottom: 1px solid rgba(0, 0, 0, 0.13) !important;
 }
@@ -19,7 +22,7 @@
 }
 
 .fil-list-items {
-  padding: 0px 0 0px 20px !important;
+  padding: 0px 0 0px 6px !important;
   letter-spacing: 0.01071em;
   color: #666;
   font-size: 1rem !important;
@@ -138,9 +141,11 @@
   /* font-size: 15px; */
   /* font-weight: 600 !important; */
 }
-.fnts{
+
+.fnts {
   font-size: 12px !important;
 }
+
 .filter-mbl-fonted :hover {
   color: white !important
 }
@@ -149,7 +154,7 @@
 .filter-mbl-font span {
   /* padding: 2px; */
   /* color: #394578; */
-  color:#666;
+  color: #666;
   cursor: pointer;
   /* font-family: "Roboto" !important; */
   font-size: 12px !important;
@@ -164,7 +169,7 @@
 /* .MuiGrid-spacing-xs-2 > .MuiGrid-item{
   padding-top: 0px !important;
 } */
-.mbl-filter-list{
+.mbl-filter-list {
   border-bottom: '1px solid #efeeee';
 }
 

@@ -38,27 +38,30 @@ const ProductlistComponent = (props) => {
     const handleChange1 = panel => (event) => {
         var values = val.expanded1 === panel ? null : panel
         val['expanded1'] = values
-        setval({ val, ...val,})
+        setval({ val, ...val, })
     };
     const handleChange2 = panel => (event) => {
         var values = val.expanded2 === panel ? null : panel
         val['expanded2'] = values
-        setval({ val, ...val,})
+        setval({ val, ...val, })
     };
     const handleChange3 = panel => (event) => {
         var values = val.expanded3 === panel ? null : panel
         val['expanded3'] = values
-        setval({ val, ...val,})
+        setval({ val, ...val, })
     };
     return (
-        <Container>
+        <Grid>
             <div className='pt-sm'>
                 {/* <Checkoutcard /> */}
                 <div>
                     <Grid container spacing={12}>
-                        <Grid item xs={12} lg={4}>
+                        <Grid item xs={12} lg={4} sm={6}>
 
-                            <ExpansionPanel className={classes.cart}
+                            <ExpansionPanel
+                                style={{ marginTop: "12px" }}
+                                class="extra-box"
+                                className={classes.cart}
                                 square
                                 className={classes.cart}
                                 expanded={expanded1 === 1}
@@ -95,9 +98,11 @@ const ProductlistComponent = (props) => {
                             </ExpansionPanel>
                         </Grid>
 
-                        <Grid item xs={12} lg={4}>
+                        <Grid item xs={12} lg={4} sm={6} >
                             <ExpansionPanel
                                 square
+                                class="extra-box"
+                                style={{ marginTop: "12px" }}
                                 className={classes.cart}
                                 expanded={expanded2 === 1}
                                 onChange={handleChange2(1)} >
@@ -119,7 +124,7 @@ const ProductlistComponent = (props) => {
                                                 value={values.from}
                                                 placeholder="From"
                                                 required
-                                                onChange={e => handlers.handleChange('from', e.target.value)}
+                                                onChange={e => handlers.handleChange('gift_from', e.target.value)}
                                                 helperText="From is required"
 
                                             />
@@ -130,7 +135,7 @@ const ProductlistComponent = (props) => {
                                                 type="text"
                                                 value={values.to}
                                                 required
-                                                onChange={e => handlers.handleChange('to', e.target.value)}
+                                                onChange={e => handlers.handleChange('gift_to', e.target.value)}
                                             />
                                             <Input
                                                 helperText="Message is required"
@@ -143,8 +148,8 @@ const ProductlistComponent = (props) => {
                                             />
                                             <div className='login-butn'>
                                                 {data && data.message === "Success" ?
-                                                    <Button style={{ filter: "grayscale(5)" }} disabled className='apply-b' type="submit">Applied</Button> :
-                                                    <Button className='apply-b' type="submit">Apply</Button>}
+                                                    <Button style={{ filter: "grayscale(5)" }} disabled className='apply-b' type="submit">Saved</Button> :
+                                                    <Button className='apply-b' type="submit">Save</Button>}
 
                                             </div>
                                         </form>
@@ -153,12 +158,14 @@ const ProductlistComponent = (props) => {
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
                         </Grid>
-                        <Grid item xs={12} lg={4}>
-                            <ExpansionPanel className={classes.cart}
+                        <Grid item xs={12} lg={4} sm={6}>
+                            <ExpansionPanel style={{ marginTop: "12px" }} className={classes.cart}
                                 square
+                                class="extra-box"
                                 expanded={expanded3 === 1}
                                 onChange={handleChange3(1)} >
                                 <ExpansionPanelSummary
+
                                     aria-controls="panel1d-content" id="panel1d-header"
                                     expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up sml" ></i></span>}
                                     aria-controls="panel1a-content"
@@ -167,7 +174,9 @@ const ProductlistComponent = (props) => {
                                 >
                                     <h5 className='title' style={{ textAlign: "center" }}> Promo Code</h5>
                                 </ExpansionPanelSummary>
-                                <ExpansionPanelDetails className='order-ship pdng'>
+                                <ExpansionPanelDetails
+                                    style={{ boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }}
+                                    className='order-ship pdng'>
                                     <Promo />
 
                                 </ExpansionPanelDetails>
@@ -176,7 +185,7 @@ const ProductlistComponent = (props) => {
                     </Grid>
                 </div>
             </div>
-        </Container>
+        </Grid>
     )
 }
 export default withStyles(styles)(Productlist);

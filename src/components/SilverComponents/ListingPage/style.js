@@ -12,6 +12,9 @@ const styles = makeStyles(theme => ({
         padding: '9px',
         margin: '9px',
         color: 'white',
+        webkitBoxShadow: '6px 8px 4px 0px rgb(213, 214, 216)',
+mozBoxShadow: '6px 8px 4px 0px rgb(213, 214, 216)',
+boxShadow: '6px 8px 4px 0px rgb(213, 214, 216)',
     },
     filterName: {
         margin: 'auto',

@@ -13,6 +13,7 @@ import './product-images.css';
 import { withStyles } from '@material-ui/core/styles';
 import styles from "./style";
 import { isArray } from 'util';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 class ProductDetails extends React.Component {
     state = {
@@ -45,7 +46,7 @@ class ProductDetails extends React.Component {
                                                                         <span style={{ fontSize: "12px" }}> {res.name}</span>
                                                                     </ListItemText>
                                                                 </Grid>
-                                                                <Grid container item xs={8}  >
+                                                                <Grid container item xs={8}  style={{alignItems:"center"}}>
                                                                     {
                                                                         isArray(res.details) ?
 
@@ -113,9 +114,10 @@ class ProductDetails extends React.Component {
                                 <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", margin: "12px 0px", padding: "0 5px 5px 5px" }} expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
                                     <ExpansionPanelSummary
 
-                                        style={{ minHeight: "30px !important" }} className="expansion-summary"
-                                        expandIcon={<span className='side-arrow-symbol'><i class="fa fa-sort-up" >
-                                        </i></span>}>
+                                        
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header">
                                         <div style={{ width: "100%" }} >
                                             <Typography className={`subtabs-smrt ${classes.normalfonts}`}>{val.header}</Typography>
                                             {/* <hr class="bottom-line border-line-"></hr> */}
@@ -126,15 +128,14 @@ class ProductDetails extends React.Component {
                                             val.namedetail !== undefined && val.namedetail.map(res =>
                                                 res.details !== null && res.details.length === 0 ? false :
                                                     <span>
-                                                        {((data[0].productType !== "Earring" && res.name === 'Gemstone')
-                                                            || (data[0].productType === "Earring" && res.name === 'Diamond')) ? false :
+                                                        {
                                                             <> {res.name && <Grid container item xs={12} style={{ padding: "0px 10px 0px 10px " }}>
                                                                 <Grid xs={4}>
                                                                     <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
                                                                         <span style={{ fontSize: "12px" }}> {res.name}</span>
                                                                     </ListItemText>
                                                                 </Grid>
-                                                                <Grid container item xs={8}  >
+                                                                <Grid container item xs={8}  style={{alignItems:"center"}}>
                                                                     {
                                                                         isArray(res.details) ?
                                                                             <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
@@ -163,8 +164,9 @@ class ProductDetails extends React.Component {
                     {data[0].productsPendants.map(val => (
                         <div>
                             <ExpansionPanel style={{ boxShadow: " 0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", margin: "12px 0px", padding: "0 5px 5px 5px" }} expanded={expanded === 'panel'} onChange={this.handle('panel')}>
-                                <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
-                                    <i class="fa fa-sort-up" ></i></span>}>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header">
                                     <div style={{ width: "100%" }} >
                                         <Typography className={`product-details-smrt ${classes.normalfonts}`}>{val.header}</Typography>
                                         {/* <hr class="bottom-line border-line-"></hr> */}

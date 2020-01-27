@@ -12,6 +12,13 @@ const useStyles = makeStyles(theme => ({
         // textAlign: "center",
         fontFamily: 'Roboto'
     },
+    mainsource: {
+        width: "20%",
+        display: "flex",
+        justifyContent: "center",
+        alignContent: "center"
+
+    },
 }));
 
 export default function PaperSheet() {
@@ -19,41 +26,20 @@ export default function PaperSheet() {
 
     return (
         <Grid container>
-            <Grid item xs={2} style={{ display: "inline" }}>
-                <span class="imagegaget1"></span>
-                <Typography className={classes.typo}>
-                    From the House of NAC
-                    </Typography>
+            <Grid item className={classes.mainsource}>
+                <img style={{ width: "70%" }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg"} />
             </Grid>
-            <Grid item xs={2} style={{ display: "inline" }}>
-                <span class="imagegaget2"></span>
-                <Typography className={classes.typo}>
-                    Quality Assurance
-                    </Typography>
+            <Grid item className={classes.mainsource}>
+                <img style={{ width: "70%" }} src={"https://assets.stylori.com/images/Static%20Pages/Other%20Pages/certifiedjewellery-pink.svg"} />
             </Grid>
-            <Grid item xs={2} style={{ display: "inline" }}>
-                <span class="imagegaget3"></span>
-                <Typography className={classes.typo}>
-                    Easy Returns
-                    </Typography>
+            <Grid item className={classes.mainsource}>
+                <img style={{ width: "70%" }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/securepayments-pink.svg"} />
             </Grid>
-            <Grid item xs={2} style={{ display: "inline" }}>
-                <span class="imagegaget4"></span>
-                <Typography className={classes.typo}>
-                    Diverse Styles
-                    </Typography>
+            <Grid item className={classes.mainsource}>
+                <img style={{ width: "70%" }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/diversestyles-pink.svg"} />
             </Grid>
-            <Grid item xs={2} style={{ display: "inline" }}>
-                <span class="imagegaget5"></span>
-                <Typography className={classes.typo}>
-                    Secure Payments
-                    </Typography>
-            </Grid>
-            <Grid item xs={2} style={{ display: "inline" }}>
-                <span class="imagegaget6"></span>
-                <Typography className={classes.typo}>
-                    Certified Jewellery
-                    </Typography>
+            <Grid item className={classes.mainsource}>
+                <img style={{ width: "70%" }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/easyreturns-pink.svg"} />
             </Grid>
         </Grid>
     );

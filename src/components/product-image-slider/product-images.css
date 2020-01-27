@@ -31,7 +31,7 @@ body {
     margin: 4px 0px 10px 0px;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 959px) {
     .containbev {
         box-shadow: none !important;
         padding: 5px 8px 0px 8px;
@@ -137,19 +137,20 @@ body {
 }
 
 .discount {
-    flex: 0.7;
+    /* flex: 0.7; */
     color: white;
+    font-size: 0.8rem;
     text-align: center;
     font-weight: bold;
     border-radius: 3px;
     background-color: #ed1165 !important;
-    padding: 3px !important;
+    padding: 3px 6px !important;
 }
 
 .one-day-ship-mb {
     height: 20px !important;
     position: relative !important;
-    background-image: url(https://assets-cdn.stylori.com/images/static/product-details-icons.png);
+    background-image: url(https://assets.stylori.com/images/static/product-details-icons.png);
     background-repeat: no-repeat !important;
     background-position: -38px -37px !important;
     /* margin-left: 20px !important; */
@@ -184,8 +185,8 @@ body {
     /* display: flex; */
     /* flex-direction: column;
     padding: 5px; */
-    background: #fdbac15c;
-    border: none !important;
+    background: #fff !important;
+    border: 2px solid #DBDBDB;
     /* align-items: center !important;
     outline: none !important;
     margin-bottom: 5px; */
@@ -196,6 +197,13 @@ body {
 
 .tabs-contants {
     font-size: 11px !important;
+    margin: auto !important;
+    font-family: 'Roboto' !important;
+    text-align: center !important;
+}
+
+.tabs-cont {
+    font-size: 9px !important;
     margin: auto !important;
     font-family: 'Roboto' !important;
     text-align: center !important;
@@ -324,14 +332,16 @@ body {
 .buy-subheaders {
     margin-top: 15px;
     margin-bottom: 8px;
-    font-size: 12px;
+    font-size: 0.8rem;
     color: #394578;
-    font-weight: 600;
+    /* font-weight: 600; */
     line-height: 1.42857143;
+    display: flex;
+    padding: 0px 8px 0px 4px
 }
 
 .nd-hlp {
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 10px;
 }
 
@@ -349,15 +359,55 @@ body {
     padding: 0px 6px !important;
 }
 
+.pincodeNotFound {
+    background-color: #fa4a4a !important;
+    border: 0;
+    font-size: 12px !important;
+    border-radius: 0 !important;
+    height: 36px !important;
+    width: 100% !important;
+    color: #fff;
+    font-weight: 400 !important;
+    line-height: 1.42857143;
+    padding: 0px !important;
+    text-transform: none !important;
+}
+
+.pincodeNotFound:hover {
+    background-color: #fa4a4a !important;
+}
+
+.selectedGreen {
+    background-color: #6b9549 !important;
+    border: 1px solid #6b9549;
+    border: 0;
+    font-size: 12px !important;
+    border-radius: 0 !important;
+    height: 36px !important;
+    width: 100% !important;
+    color: #fff;
+    font-weight: 400 !important;
+    line-height: 1.42857143;
+    padding: 0px !important;
+    text-transform: none !important;
+}
+
+.selectedGreen:hover {
+    background-color: #6b9549 !important;
+}
+
 .search-button {
     border: 0;
     font-size: 12px !important;
     border-radius: 0 !important;
     height: 36px !important;
     width: 100% !important;
+    color: #fff;
+    background-color: #3b4579 !important;
     font-weight: 400 !important;
     line-height: 1.42857143;
     padding: 0px !important;
+    background-color: #3b4579 !important;
     text-transform: none !important;
 }
 
@@ -375,8 +425,11 @@ body {
 }
 
 .ships-by {
-    font-size: 11px !important;
-
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    display: flex;
+    align-items: center;
+    align-content: center;
 }
 
 .slick-dots {
@@ -438,7 +491,7 @@ body {
     display: block;
     width: 98% !important;
     height: 42px !important;
-    line-height: 42px !important;
+    line-height: 26px !important;
     padding: 0 5px !important;
     font-size: 13px;
     line-height: 1.42857143;
@@ -476,7 +529,7 @@ body {
 .pincode-cust {
     color: #394578;
     font-size: 12px !important;
-    background-image: url(https://assets-cdn.stylori.com/images/static/location.png);
+    background-image: url(https://assets.stylori.com/images/static/location.png);
     /* font-family: FontAwesome; */
     background-position: 7px 8px;
     background-repeat: no-repeat;
@@ -490,13 +543,13 @@ body {
 .buy-now-iconz {
     background-repeat: no-repeat !important;
     padding-left: 31px !important;
-    background-image: url(https://assets-cdn.stylori.com/images/static/icons.png) !important;
+    background-image: url(https://assets.stylori.com/images/static/icons.png) !important;
     background-position: -22px -22px !important;
     background-size: 100px !important;
 }
 
 .rating-form-head {
-    font-size: 13px;
+    font-size: 16px !important;
     margin-top: 10px;
     margin-bottom: 10px;
     font-weight: 600;
@@ -511,7 +564,7 @@ body {
 }
 
 .back_img {
-    background-image: url(https://assets-cdn.stylori.com/images/static/bg.png);
+    background-image: url(https://assets.stylori.com/images/static/bg.png);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -630,8 +683,8 @@ body {
 }
 
 .reviews-customer {
-    font-size: 13px !important;
-    padding: 0 15px !important;
+    font-size: 16px !important;
+    padding: 0px 0px 0px 0px !important;
     font-weight: 600 !important;
 }
 
@@ -692,17 +745,47 @@ body {
     min-height: none !important;
 }
 
+.overlayCss {
+    line-height: 20px !important;
+    font-size: 12px !important;
+    text-transform: uppercase;
+    padding: 0px 8px !important;
+    background: #ed1165 !important;
+    text-transform: uppercase;
+    display: inline-block !important;
+    position: absolute;
+    pointer-events: none !important;
+    height: 20px !important;
+    margin-top: 8px;
+
+}
+
+.overlayCss::after {
+
+    content: "" !important;
+    height: 0px;
+    width: 0px;
+    border-style: solid !important;
+    border-width: 10px !important;
+    border-color: #ed1165 transparent !important;
+    position: absolute !important;
+    top: 0px;
+    right: -10px !important;
+}
+
 .imagezoom-cursor {
     border: 1px solid #ccc !important;
 }
 
 .imagecard {
     width: 100% !important;
+    /* height: 600px !important; */
     border: 1px solid #ccc;
     counter-increment: inherit;
-    height: 450px !important;
+    /* height: 450px !important; */
     float: left !important;
     cursor: pointer !important;
+    box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important;
 }
 
 
@@ -732,24 +815,26 @@ body {
 .one-day-ship {
     width: 152px !important;
     height: 9% !important;
-    background-image: url(https://assets-cdn.stylori.com/images/static/product-details-icons.png);
+    background-image: url(https://assets.stylori.com/images/static/product-details-icons.png);
     /* margin-top: -30px !important; */
     position: absolute;
     background-repeat: no-repeat !important;
     margin-left: 0px;
     cursor: pointer !important;
+    margin-left: -2% !important;
 }
 
 .overly-img {
-    left: 48.5%;
+    left: 48.8%;
     display: none;
     border: 1px solid rgb(204, 204, 204);
-    height: 450px !important;
+    /* height: 450px !important; */
     width: 35%;
     float: right !important;
     position: absolute;
     z-index: 3;
     background-repeat: no-repeat;
+    height: 600px !important;
     background-color: #fff !important;
 }
 
@@ -828,7 +913,7 @@ body {
 
 .like-page {
     color: #394578 !important;
-    font-size: 13px !important;
+    font-size: 16px !important;
     font-weight: 400 !important;
     padding-left: 35% !important;
     border-right: 1px solid #ccc;
@@ -842,7 +927,7 @@ body {
 
 .recenetly-like-page {
     color: #394578 !important;
-    font-size: 13px !important;
+    font-size: 16px !important;
     padding-left: 5% !important;
     cursor: pointer;
 }
@@ -902,7 +987,7 @@ body {
 
 .css-5pjie5 {
     background:
-        #f699a3 !important;
+        #ed1165cf !important;
     text-transform: uppercase;
     display: inline-block !important;
     position: relative !important;
@@ -920,7 +1005,7 @@ body {
     border-style: solid !important;
     border-width: 10px !important;
     border-color:
-        #f699a3 transparent !important;
+        #ed1165cf transparent !important;
     position: absolute !important;
     top: 0px;
     right: -10px !important;
@@ -1026,6 +1111,7 @@ body {
     font-size: 15px !important;
     line-height: 1;
     color: #394578 !important;
+    margin-right: 0px !important;
 }
 
 .overall-icons {
@@ -1064,9 +1150,10 @@ body {
 .my-ringsize {
     font-size: 12px;
     padding-left: 6px;
-    color: #ed1165 !important;
+    color: #a0a1bb !important;
     text-decoration: underline !important;
     cursor: pointer;
+    letter-spacing: 1px;
 }
 
 .pagination {
@@ -1075,31 +1162,32 @@ body {
 
 .pagetabs {
     text-align: center !important;
-    height: 40px !important;
-    width: 70%;
+    width: 45px;
+    height: 45px;
     /* border: 1px solid #9d9d9d  !important; */
-    border-radius: 15%;
-    margin-bottom: 6px;
+    border-radius: 100%;
+    /* margin-bottom: 6px; */
     outline: none !important;
 }
 
 @media only screen and (max-width: 480px) {
     .pagetabs {
         text-align: center !important;
-        height: 40px !important;
-        width: 100% !important;
-        margin-bottom: 6px;
+        height: 45px !important;
+        width: 45px !important;
+        /* margin-bottom: 6px; */
         /* border: 1px solid #9d9d9d  !important; */
-        border-radius: 15%;
+        border-radius: 50%;
+
         outline: none !important;
     }
 
     .pagetabslst {
         text-align: center !important;
-        height: 40px;
-        width: 100% !important;
+        height: 46px !important;
+        width: 46px !important;
         /* border: 1px solid #9d9d9d  !important; */
-        border-radius: 15%;
+        border-radius: 100%;
         outline: none !important;
 
     }
@@ -1107,10 +1195,10 @@ body {
 
 .pagetabslst {
     text-align: center !important;
-    height: 40px;
-    width: 70%;
+    width: 46px;
+    height: 46px;
     /* border: 1px solid #9d9d9d  !important; */
-    border-radius: 15%;
+    border-radius: 100%;
     outline: none !important;
 
 }
@@ -1122,9 +1210,9 @@ body {
 .page {
     display: inline-block !important;
     text-align: center !important;
-    height: 40px;
-    width: 90%;
-    border-radius: 15%;
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
     background: #fff;
     box-shadow: inset 0px 1px 0px rgba(255, 255, 255, .8), 0px 1px 3px rgba(0, 0, 0, .1);
     font-size: 13px;
@@ -1132,7 +1220,7 @@ body {
     color: #394578 !important;
     cursor: pointer;
     outline: none !important;
-    border: 1px solid #ccc !important;
+    border: 2px solid #DBDBDB !important;
     font-weight: bold !important;
 }
 
@@ -1141,7 +1229,6 @@ body {
     color: #394578 !important;
     width: 100% !important;
     padding: 10px;
-
     line-height: 13px;
     text-transform: capitalize;
     text-align: justify;
@@ -1150,7 +1237,7 @@ body {
 }
 
 .rings_tabsvls {
-    /* font-size: 1px !important; */
+    font-size: 10px !important;
     color: #394578 !important;
     width: 100% !important;
     font-weight: 600;
@@ -1167,31 +1254,72 @@ body {
 
 }
 
+.widthFix {
+    width: 89%;
+}
+
+.sizeChange {
+    max-width: default !important;
+}
+
+@media screen and (min-width:600px) and (max-width: 959px) {
+    .widthFix {
+        width: 41%;
+    }
+
+    .sizeChange {
+        max-width: 10.66667% !important;
+    }
+}
+
+@media screen and (min-width:600px) and (max-width: 1279px) {
+    .rings_tabsvls {
+        font-size: 10px !important;
+        color: #394578 !important;
+        width: 100% !important;
+        font-weight: 600;
+        text-align: center !important;
+        font-size: 11px !important;
+        /* dis */
+        padding: 5px 0px 0px 0px;
+    }
+
+    .rings_tabsvls_active {
+        font-size: 11px !important;
+        color: #394578 !important;
+        width: 100% !important;
+        font-weight: 600 !important;
+        text-align: center !important;
+        padding: 5px 0px 0px 0px;
+
+    }
+}
+
 .darktabs {
     border: 2px solid #ed1165cf !important;
-    border-radius: 15% !important;
+    border-radius: 100% !important;
     text-align: center !important;
-    height: 40px !important;
-    width: 70%;
+    width: 45px;
+    height: 45px;
     outline: none !important;
 }
 
 @media only screen and (max-width: 480px) {
     .darktabs {
         border: 2px solid #ed1165cf !important;
-        border-radius: 15% !important;
+        border-radius: 100% !important;
         text-align: center !important;
-        height: 40px !important;
-        width: 100% !important;
+        width: 45px;
+        height: 45px;
         outline: none !important;
     }
 
     .darktabslst {
         border: 2px solid #ed1165cf !important;
-        border-radius: 15% !important;
+        border-radius: 100% !important;
         text-align: center !important;
-        height: 40px !important;
-        width: 100% !important;
+        width: 45px;
+        height: 45px;
         outline: none !important;
 
     }
@@ -1199,24 +1327,24 @@ body {
 
 .darktabslst {
     border: 2px solid #ed1165cf !important;
-    border-radius: 15% !important;
+    border-radius: 100% !important;
     text-align: center !important;
-    height: 40px !important;
-    width: 70%;
+    width: 45px;
+    height: 45px;
     outline: none !important;
 
 }
 
 .dark {
     text-align: center !important;
-    height: 40px !important;
-    width: 90% !important;
-    border-radius: 15% !important;
-    color: #fff !important;
+    width: 45px;
+    height: 45px;
+    border-radius: 100% !important;
+    /* color: #fff !important; */
     outline: none !important;
     cursor: pointer;
-    border: 2px solid #ed116566 !important;
-    background: #f699a3 !important;
+    border: 2px solid #ed1165cf !important;
+    /* background: #f699a3 !important; */
 }
 
 .header-APP,
@@ -1381,6 +1509,7 @@ body {
     .pricing-product-media {
         padding-left: 5% !important;
         padding-right: 5% !important;
+        /* padding: 15px 0px 0px 0px !important */
     }
 
     .pricing-breadcrums-media {
@@ -1421,4 +1550,21 @@ body {
     height: 20px !important;
     background-image: url("https://alpha-assets.stylori.com/images/static/home/slider_button.png") !important;
     /* border-left: 1px solid #ccc; */
+}
+
+.darkouterWhite {
+    border-radius: 100%;
+    border: 2px solid #fff;
+    padding: 1px
+}
+
+.darkouter {
+    border-radius: 100%;
+    border: 2px solid #d91965 !important;
+    padding: 1px
+        /* width: 45px; */
+}
+
+.bigText textarea {
+    height: 80px !important
 }

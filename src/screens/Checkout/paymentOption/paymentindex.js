@@ -53,77 +53,84 @@ class PaymentIndex extends React.Component {
         //             va["true"] = true
         //         } else {
         //             va["true"] = false
-        //         }
-        //     }
-        //     return va
-        // }
+        //         } 
+        //     } 
+        //     return va  
+        // } 
         return (
             <div className="payment-div">
-                    <Hidden smDown>
-                        <Grid container spacing={12} lg={12} className="panel-body">
-                            <Grid item lg={5}>
-                                <div className="pay-index-subhed">
-                                    <p style={{ background: "#dfdfdf" }}
-                                    // onClick={() => this.toggleCollapsed('Creditform')}
-                                    >
-                                        <div className="cc-icon"></div> &nbsp; Credit card </p>
-                                    <p style={{ background: "#dfdfdf" }}
-                                    // onClick={() => this.toggleCollapsed('Debitform')}
-                                    >
-                                        <div className="dc-icon"></div> &nbsp; Debit card </p>
-                                    <p style={{ background: "#dfdfdf" }}
-                                    // onClick={() => this.toggleCollapsed('Netbanking')}
-                                    >
-                                        <div className="net-bnk-icon"></div> &nbsp; Net Banking </p>
-                                    <p
-                                    // onClick={() => this.toggleCollapsed('CashonDelivey')}
-                                    >
-                                        <div className="code-icon"></div>&nbsp;   Cash On Delivery (COD)</p>
-                                </div>
-                            </Grid>
-                            <Grid item lg={7}>
-                                <div style={{ marginTop: "20px" }} className="pay-index-subhed_datas dz">
-                                    {
-                                        this.state.isActive == 'Creditform' && <Creditform />
-                                    }
-                                    {
-                                        this.state.isActive == 'Debitform' && <Debitform />
-                                    }
-                                    {
-                                        this.state.isActive == 'Netbanking' && <Netbanking />
-                                    }
-                                    {
-                                        // !dataCard1.length > 0 ?
-                                            this.state.isActive == 'CashonDelivey' && <CashonDelivey />
-                                            // :"cash on delivery is not available"
-                                    }
-                                </div>
-                            </Grid>
+                <Hidden smDown>
+                    <Grid container spacing={12} lg={12} className="panel-body">
+                        <Grid item lg={5}>
+                            <div className="pay-index-subhed">
+                                {/* <p style={{ background: this.state.isActive == "Creditform" ? "#dfdfdf" : "" }}
+                                    style={{ background: "#a8a1a1" }}
+                                onClick={() => this.toggleCollapsed('Creditform')}
+                                >
+                                    <div className="cc-icon"></div> &nbsp; Credit card </p>
+                                <p style={{ background: this.state.isActive == "Debitform" ? "#dfdfdf" : "" }}
+                                    onClick={() => this.toggleCollapsed('Debitform')}
+                                    style={{ background: "#a8a1a1" }}
+
+                                >
+                                    <div className="dc-icon"></div> &nbsp; Debit card </p> */}
+                                <p style={{ background: this.state.isActive == "Netbanking" ? "#dfdfdf" : "" }}
+                                    onClick={() => this.toggleCollapsed('Netbanking')}
+                                // style={{ background: "#dfdfdf" }}
+                                >
+                                    <div className="net-bnk-icon"></div> &nbsp; Pay Online </p>
+                                <p style={{ background: this.state.isActive == "CashonDelivey" ? "#dfdfdf" : "" }}
+                                    onClick={() => this.toggleCollapsed('CashonDelivey')}
+                                >
+                                    <div className="code-icon"></div>&nbsp;   Cash on Delivery (COD)</p>
+                            </div>
                         </Grid>
-                    </Hidden>
+                        <Grid item lg={7}>
+                            <div style={{ marginTop: "20px" }} className="pay-index-subhed_datas dz">
+                                {
+                                    this.state.isActive == 'Creditform' && <Creditform />
+                                }
+                                {
+                                    this.state.isActive == 'Debitform' && <Debitform />
+                                }
+                                {
+                                    this.state.isActive == 'Netbanking' && <Netbanking />
+                                }
+                                {
+                                    // !dataCard1.length > 0 ?
+                                    this.state.isActive == 'CashonDelivey' && <CashonDelivey />
+                                    // :"cash on delivery is not available"
+                                }
+                            </div>
+                        </Grid>
+                    </Grid>
+                </Hidden>
 
                 <Hidden mdUp>
-                    <ExpansionPanel className="respone-div">
+                    {/* <ExpansionPanel className="respone-div div_DARK"
+                    >
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography className="py-head"><div className="cc-icon">&nbsp;</div>Credit card  </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails style={{ padding: "0px" }}>
-                            <Creditform />
-                        </ExpansionPanelDetails>
-                    </ExpansionPanel>
+                            <Creditform data={this.props.data} dataCard1={dataCard1}/>
+                        </ExpansionPanelDetails> 
+                    </ExpansionPanel> */}
 
-                    <ExpansionPanel className="respone-div">
+                    {/* <ExpansionPanel className="respone-div div_DARK"
+                    >
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography className="py-head">  <div className="dc-icon"></div> &nbsp; Debit card </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails style={{ padding: "0px" }}>
-                            <Debitform />
+                            <Debitform data={this.props.data} dataCard1={dataCard1}/>
                         </ExpansionPanelDetails>
-                    </ExpansionPanel>
+                    </ExpansionPanel>  */}
 
-                    <ExpansionPanel className="respone-div">
+                    <ExpansionPanel className="respone-div"
+                    >
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                            <Typography className="py-head">  <div className="net-bnk-icon"></div> &nbsp; Net Banking  </Typography>
+                            <Typography className="py-head">  <div className="net-bnk-icon"></div> &nbsp; Online Pay  </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Netbanking />

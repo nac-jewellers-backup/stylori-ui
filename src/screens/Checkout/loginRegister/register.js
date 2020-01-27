@@ -4,6 +4,7 @@ import './loginRegisters.css'
 import { Input } from '../../../components/InputComponents/TextField/Input'
 import SimpleSelect from '../../../components/InputComponents/Select/Select';
 import useRegister from './useregister';
+import { NavLink } from 'react-router-dom';
 
 const Register = (props) => {
     return <RegisterComponent  {...props} />
@@ -25,7 +26,7 @@ const RegisterComponent = (props) => {
             }} action="javascript:void(0)" >
                 <Grid container>
 
-                    <Grid item xs={12} lg={window.location.pathname === "/registers" ? 12 : 12}  >
+                    <Grid item xs={12} lg={window.location.pathname === "/registers" || paths ? 12 : 6}  >
 
                         <Grid class="topPaddingwish">
                             {window.location.pathname.split("-")[0] !== "/account" &&
@@ -51,14 +52,14 @@ const RegisterComponent = (props) => {
                                         value={values.email}
                                         error={values.error && values.error.emerr ? true : false}
                                         // helperText={values.errortext && values.errortext.emerr}
-                                        placeholder="Enter your email Id"
+                                        placeholder="Enter your email id"
                                         onChange={e => handlers.handleChange('email', e.target.value)}
                                     />
                                     <label className='errtext'> {values.errortext && values.errortext.emerr}</label></>
                             }
                             {paths ?
                                 <Grid container spacing={12}>
-                                    <Grid item lg={6} >
+                                    <Grid item xs={6} sm={4} lg={3} >
                                         <Input
                                             margin="normal"
                                             variant="outlined"
@@ -73,8 +74,8 @@ const RegisterComponent = (props) => {
                                                 readOnly: true,
                                             }}
                                         /> </Grid>
-                                    <Grid item lg={6} style={{ textAlign: "center", lineHeight: "66px", color: "#337ab7" }}>
-                                        <a> Change password </a> </Grid>
+                                    <Grid item lg={2} class="leftPad" style={{ textAlign: "center", lineHeight: "66px", color: "#337ab7" }}>
+                                        <NavLink to="/changepassword">  Change password </NavLink> </Grid>
                                 </Grid> : <>
                                     <Input
                                         margin="normal"
@@ -99,7 +100,7 @@ const RegisterComponent = (props) => {
                                         value={values.confirmpassword}
                                         error={values.error && values.error.cnfpasserr ? true : false}
                                         // helperText={values.errortext && values.errortext.cnfpasserr}
-                                        placeholder="Enter your Confirm password"
+                                        placeholder="Enter your confirm password"
                                         onChange={e => handlers.handleChange('confirmpassword', e.target.value)}
                                     />
                                     <label className='errtext'> {values.errortext && values.errortext.cnfpasserr}</label>
@@ -119,7 +120,7 @@ const RegisterComponent = (props) => {
                                             value={values.firstname}
                                             error={values.error && values.error.firstname ? true : false}
                                             // helperText={values.errortext && values.errortext.firstname}
-                                            placeholder="Enter FirstName*"
+                                            placeholder="First name*"
                                             onChange={e => handlers.handleChange('firstname', e.target.value)}
                                             className='text-f'
                                         // helperText=""
@@ -135,7 +136,7 @@ const RegisterComponent = (props) => {
                                             value={values.lastname}
                                             error={values.error && values.error.lastname ? true : false}
                                             // helperText={values.errortext && values.errortext.lastname}
-                                            placeholder="Enter LastName*"
+                                            placeholder="Last name*"
                                             onChange={e => handlers.handleChange('lastname', e.target.value)}
                                             className='text-f'
                                         // helperText=""
@@ -150,10 +151,10 @@ const RegisterComponent = (props) => {
                                             type="text"
                                             name="firstname"
                                             value={valuesadrees.firstname}
-                                            placeholder="Enter FirstName*"
+                                            placeholder="First name*"
                                             onChange={e => handlers.handlesetvaluesadrees('firstname', e.target.value)}
                                             className='text-f'
-                                            helperText="Firstname is required"
+                                            helperText="First name is required"
                                             required />
                                     </Grid>
                                     <Grid item lg={4} xs={4}>
@@ -163,10 +164,10 @@ const RegisterComponent = (props) => {
                                             type="text"
                                             name="lastname"
                                             value={valuesadrees.lastname}
-                                            placeholder="Enter LastName*"
+                                            placeholder="Last name*"
                                             onChange={e => handlers.handlesetvaluesadrees('lastname', e.target.value)}
                                             className='text-f'
-                                            helperText="Lastname is required"
+                                            helperText="Last name is required"
                                             required />
                                     </Grid></>}
                             </Grid>
@@ -187,7 +188,7 @@ const RegisterComponent = (props) => {
                                                 onChange={e => handlers.handlesetvaluesadrees('pincode', e.target.value)}
                                                 value={valuesadrees.pincode}
                                                 // onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
-                                                helperText="Pin Code is required"
+                                                helperText="Pin code is required"
                                                 required />
                                         </Grid>
                                     </Grid>
@@ -205,7 +206,7 @@ const RegisterComponent = (props) => {
                                                 // onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
                                                 placeholder="Phone *"
                                                 value={valuesadrees.contactno}
-                                                helperText="Please enter your 10 digit Phone no**"
+                                                helperText="Enter your 10 digit mobile number"
                                                 isNumber
                                                 maxLength={10}
                                                 minLength={10}
