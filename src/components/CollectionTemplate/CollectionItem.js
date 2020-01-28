@@ -102,9 +102,9 @@ export default function CollectionItem(props) {
                     })
                     resolve(await promiseDta(Collectionz, img_url))
                 }).catch(function (error) {
-                    reject(false) 
+                    reject(false)
                     // alert("error")
-                }); 
+                });
         });
     }
     const getAlldata = async (img_url) => {
