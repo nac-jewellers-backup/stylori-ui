@@ -65,7 +65,7 @@ class ProductDetail extends Component {
         })
       }
     }
-
+ 
     return (
       <div>
         <div>
