@@ -91,7 +91,7 @@ class Request extends React.Component {
     Requestform = (errors, handleError, errorMessage, handleChange) => {
         const { classes } = this.props;
         return (
-            <div>
+            <div style={{display:'flex',justifyContent:"center"}}>
                 <div className='overall-boxz' style={{}}>
                     <form onSubmit={(e) => this.handleSubmit(e)}>
                         <div className='overall-bo'>

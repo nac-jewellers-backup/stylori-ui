@@ -488,7 +488,7 @@ class Component extends React.Component {
   // })
 
   render() {
-    console.log('urlSplitparamsEqual', this.state)
+    console.log('urlSplitparl', this.props.data)
 
     const { classes, data, loading } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];
@@ -575,7 +575,7 @@ class Component extends React.Component {
                                   <>
                                     {
                                       subFilter[row].length > 0 ?
-                                        <ListItem key={row}
+                                        <>{window.location.pathname === "/goldcoins" ? row === "Offers" ? "" : <ListItem key={row}
                                           onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
                                           <ListItemText
                                           >
@@ -585,7 +585,17 @@ class Component extends React.Component {
                                           </ListItemText>
                                           {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
                                             <ExpandMore className="fil-drawer-arrow" />}
-                                        </ListItem>
+                                        </ListItem> : <ListItem key={row}
+                                          onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
+                                            <ListItemText
+                                            >
+                                              <Typography className="fil-list-items" variant='h4' component="h4"
+                                              >{row}
+                                              </Typography>
+                                            </ListItemText>
+                                            {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
+                                              <ExpandMore className="fil-drawer-arrow" />}
+                                          </ListItem>}</>
                                         :
                                         <span></span>
                                     }

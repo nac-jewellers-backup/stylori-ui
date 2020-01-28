@@ -168,7 +168,7 @@ class Sublistcarousel extends React.Component {
                   </Slideshow>
                 </div>
               </ExpansionPanelDetails>
-            </ExpansionPanel><br />
+            </ExpansionPanel>
 
             <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 5px" }} expanded={expanded1 === true} onChange={this.handle_recent_view(false)}>
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}
@@ -220,16 +220,16 @@ class Sublistcarousel extends React.Component {
                               </>
                             ))}
                           </Slideshow>
-                          <Grid style={{ width: "100%" }}>
+                          {/* <Grid style={{ width: "100%" }}>
                             <div className="loaders"></div>
-                          </Grid>
+                          </Grid> */}
                         </Typography>
                       </Grid>
                     </Grid>
                   }
                 </div>
               </ExpansionPanelDetails>
-            </ExpansionPanel><br />
+            </ExpansionPanel>
           </Container>
 
         </Hidden >

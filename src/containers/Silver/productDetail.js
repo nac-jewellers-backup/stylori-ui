@@ -115,7 +115,7 @@ class ProductDetail extends Component {
               </Grid>
               <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
                 <PriceCertification />
-                <Request />
+                <Request data={this.props.data} />
               </Grid>
               <br />
             </Grid>
@@ -150,7 +150,7 @@ class ProductDetail extends Component {
               <PriceCertification data={this.props.data} />
             </Grid>
             <Grid item xs={12} >
-              <Request />
+              <Request data={this.props.data} />
             </Grid>
 
             <Grid item xs={12} >
