@@ -24,19 +24,17 @@
     border-radius: 50%;
     
 }
-.snackBar div{
-  color: #fff;
-  font-weight: 500;
-  background-color: #4caf50;
-  font-weight: 500;
-}
+
 .error {
   position: relative;
   animation: shake .1s linear;
   animation-iteration-count: 3;
+  border:1px solid red;
 }
 
 @keyframes shake {
-  0% { left: -5px; }
-  100% { right: -5px; }
+  0% { margin-left: 0rem; }
+  25% { margin-left: 0.5rem; }
+  75% { margin-left: -0.5rem; }
+  100% { margin-left: 0rem; }
 }

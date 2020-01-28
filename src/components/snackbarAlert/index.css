@@ -1,0 +1,13 @@
+.snackBar div{
+    color: #fff;
+    font-weight: 500;
+    background-color: #4caf50;
+  }
+  .snackBarError div{
+    color: #fff;
+    font-weight: 500;
+    background-color: #f44336;
+  }
+  .closeIcon span svg{
+    fill:white !important
+  }

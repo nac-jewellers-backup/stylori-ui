@@ -8,11 +8,11 @@ export const primaryImage = [
   "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Collection+Page/Alpha-Page-tile-03+(1).jpg",
 ]
 const primaryNavigateUrl = [
-  "stylori.com/gemstone-jewellery?sort=latest",
-  "stylori.com/jewellery-from+the+renaissance+collection",
-  "stylori.com/jewellery-from+monsoon+collection",
-  "stylori.com/jewellery-butterfly?sort=latest",
-  "stylori.com/jewellery-from+the+summer+collection"
+  "/gemstone-jewellery?sort=latest",
+  "/jewellery-from+the+renaissance+collection",
+  "/jewellery-from+monsoon+collection",
+  "/jewellery-butterfly?sort=latest",
+  "/jewellery-from+the+summer+collection"
 ]
 const Product_name = [
   "Gemstone Collection",
@@ -24,15 +24,15 @@ const Product_name = [
 let containerImage = [
   {
     img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Collection+Page/Blush-collection+(1).png",
-    navigateUrl: "stylori.com/jewellery-blush",
+    navigateUrl: "/jewellery-blush",
   },
   {
     img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Collection+Page/Molecute-colletion+(1).png",
-    navigateUrl: "stylori.com/jewellery-molecute+collection"
+    navigateUrl: "/jewellery-molecute+collection"
   },
   {
     img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Collection+Page/oneday-shipping+(1).png",
-    navigateUrl: "stylori.com/jewellery-shipping+in+1+day?sort=latest"
+    navigateUrl: "/jewellery-shipping+in+1+day?sort=latest"
   }
 ]
 const ImageUrl = (image) => {
@@ -284,7 +284,7 @@ export default function (data) {
       //   CollectionPage.push({
       secondaryImage: _collo_.secondaryImage,
       secondaryNavigateUrl: _collo_.primaryNavigateUrl_sec,
-      secondaryContantName: _collo_.Product_name1, 
+      secondaryContantName: _collo_.Product_name1,
       secondaryButtonName: "Explore",
       // secondaryCarouselDetails: allCarouselData_secondary(_collo_.allProductLists__secondary),
       secondaryCarouselDetails: _collo_.allProductLists__secondary,
@@ -293,5 +293,5 @@ export default function (data) {
   })
   // alert(JSON.stringify(CollectionPage))
   CollectionPageStylori.Testimony.carousel.data = CollectionPage;
-  return CollectionPageStylori;
+  return { CollectionPageStylori, primaryNavigateUrl };
 }
