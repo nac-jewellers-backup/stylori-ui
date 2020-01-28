@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Redirect } from "react-router-dom"
-import { Grid, Button } from "@material-ui/core";
+import { Grid, Button, Hidden  } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import './payment.css';
 import Divider from '@material-ui/core/Divider';
@@ -60,7 +60,7 @@ class PaymentResponseSuccess extends React.Component {
          return res.json();
       })
          .then(resdata => {
-            console.log('datasssss', resdata)
+            // console.log('datasssss', resdata)
             if (resdata.message !== undefined && resdata.message !== null) {
                // alert(
                //    resdata && resdata.message
@@ -90,59 +90,11 @@ class PaymentResponseSuccess extends React.Component {
              subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata}
           /> */}
             <Grid container justify="center" style={{ paddingTop: "10px" }}>
+            <Hidden smDown>
+            <Grid container justify="center" style={{padding: "15px 5px 5px 15px"}}>
+                  <Grid container>
 
-               <Grid container justify="center">
-                  <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>
-                  <Grid item xs={10} sm={10} md={4} className="contant-center" >
-                     <Grid item className="container-font-size">Thank you!Your order has been placed.</Grid>
-                  </Grid>
-               </Grid>
-               <Grid container justify="center">
-                  <Grid item xs={12} sm={12} md={4} className="contant-center" style={{paddingLeft:"10px"}}>
-                     We've send you an email confirmation.
-                  <a onClick={() => {
-                        this.makeFetch_resend_mail()
-                     }} style={{
-                        fontSize: "12px",
-                        color: "blue",
-                        textDecoration: "underline",
-                        cursor: "pointer",
-                     }}>Resend Email</a>
-                  </Grid>
-               </Grid>
-               {/* <Grid container style={{marginTop:"15px"}}>
-               <Grid container justify="center">
-                  <Grid item xs={12} sm={12} md={6} className="paymentsuccess-content">
-                        <Grid container>
-                           <Grid item xs={6} sm={6} md={4}>
-                              <Typography component="h4">Order Number</Typography>
-                           </Grid>
-                           <Grid item xs={6} sm={6} md={4}> <Typography component="h4">:9875897</Typography></Grid>
-                        </Grid>
-                        <Grid container>
-                           <Grid xs={6} sm={6} md={4}>
-                              <Typography component="h4">Order Date</Typography>
-                           </Grid>
-                           <Grid item xs={6} sm={6} md={4}> <Typography component="h4">:10-05-1997</Typography></Grid>
-                        </Grid>
-                        <Grid container>
-                           <Grid xs={6} sm={6} md={4}>
-                              <Typography component="h4">Payment Method</Typography>
-                           </Grid>
-                           <Grid item xs={6} sm={6} md={4}> <Typography component="h4">:Cash On Delivery</Typography></Grid>
-                        </Grid>
-                        <Grid container>
-                           <Grid xs={6} sm={6} md={4}>
-                              <Typography component="h4">Shipping Address</Typography>
-                           </Grid>
-                           <Grid item xs={6} sm={6} md={4}> <Typography component="h4">:3/23,north street,chennai</Typography></Grid>
-                        </Grid>
-                  </Grid>
-               </Grid> */}
-               <Grid container justify="center">
-                  <Grid container style={{ maxWidth: "835px" }}  >
-
-                     <Grid item style={{ display: "flex", marginLeft: "auto", paddingRight: "2px" }}>
+                     <Grid item style={{ display: "flex", marginRight: "auto", paddingRight: "2px" }}>
 
                         <Button style={{ background: "#ed1165", color: "#fff", padding: "5px 20px" }} onClick={() => {
                            localStorage.removeItem("a__c_t")
@@ -155,14 +107,36 @@ class PaymentResponseSuccess extends React.Component {
                               localStorage.clear();
                            }
                            this.props.history.push("/home")
-                           // window.location.pathname="/jewellery"
+                         
                         }}>Back to home</Button>
                      </Grid>
                   </Grid>
                </Grid>
+               </Hidden>
+               <Grid container justify="center" className="smallScreenClass">
+                  <Grid item xs={10} sm={10} md={6} className="contant-center" >
+
+                     <Grid item className="container-font-size" > <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>&nbsp;&nbsp;Thank you!&nbsp;&nbsp;Your order has been placed.</Grid>
+                  </Grid>
+               </Grid>
+               <Grid container justify="center">
+                  <Grid item xs={12} sm={12} md={6} className="contant-center" style={{paddingLeft:"10px"}}>
+                     We've send you an email confirmation.&nbsp;
+                  <a  onClick={() => {
+                        this.makeFetch_resend_mail()
+                     }} style={{
+                        fontSize: "12px",
+                        color: "blue",
+                        textDecoration: "underline",
+                        cursor: "pointer",
+                     }}>Resend Email</a>
+                  </Grid>
+               </Grid>
+   
+               
 
                <Grid container>
-                  {/* <CartCard data={this.props.data}/> */}
+                  
                   <Allorders allorderdata={this.props.allorderdata} />
                </Grid>
                <Footer />
@@ -170,8 +144,6 @@ class PaymentResponseSuccess extends React.Component {
       )
    }
 }
-
-// export default PaymentResponseSuccess;
 const Components = props => {
 
    let { CartCtx: { cartFilters, data, loading, error, allorderdata, allordersuccesful, wishlistdata } } = React.useContext(CartContext);
@@ -183,7 +155,6 @@ const Components = props => {
    }
    if (Object.keys(allordersuccesful).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
    else content = <PaymentResponseSuccess {...props} data={mapped} allorderdata={allordersuccesful} wishlistdata={wishlistdata} />
-   // localStorage.setItem("a__w_l", wishlistdata && wishlistdata.length)
    return content
 }
 

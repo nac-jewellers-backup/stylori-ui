@@ -25,7 +25,6 @@ export const ProductCard = props => {
     Object.keys(props.controls).map(pos => (
       <CardControl position={pos} {...props.controls[pos]} />
     ));
-console.log(props);
   return (
     <Card style={styles.card} >
       {props.controls ? renderControls() : ""}

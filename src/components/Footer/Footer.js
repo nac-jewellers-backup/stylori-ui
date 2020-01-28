@@ -253,7 +253,6 @@ export default function Footer(props) {
             })
                 .then(status)
                 .then(json).then(async val => {
-                    console.log(val)
 
                     setMessage(val.message)
                     setOpen(true)

@@ -76,7 +76,6 @@ class Component extends React.Component {
 
     handleClick = (event, key) => {
 
-        console.log('lklkkoik9', this.state.purity)
         var filters = { ...this.props.filters }
         if (key === 'purity') {
             var kv = event.target.id
@@ -101,7 +100,6 @@ class Component extends React.Component {
                 diamondType: filters.defaultVariants.diamondType
             })
             this.props.setFilters(filters);
-            console.log("filters.defaultVariants.diamondType", filters.defaultVariants.diamondType)
         }
         // const ringSize = event.target.name;
     }

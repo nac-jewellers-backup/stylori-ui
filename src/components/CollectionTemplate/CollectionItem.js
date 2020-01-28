@@ -126,7 +126,6 @@ export default function CollectionItem(props) {
             })
             await Promise.all(cells).then(data => {
                 arr_data1 = CollectionPageStylori(data)
-                console.log("arr_data1", arr_data1)
                 if (Object.keys(arr_data1).length > 0) {
                     values["arr_data"] = arr_data1.CollectionPageStylori
                     // values["primaryNavigateUrl"] = arr_data1.primaryNavigateUrl

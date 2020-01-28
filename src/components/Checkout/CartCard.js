@@ -115,7 +115,6 @@ else{
             window.location.reload()
         }
 
-  console.log(currentValue)
 
 
 }
@@ -215,8 +214,6 @@ else{
                                 </Grid>
 
                                 <Grid item xs={4} sm={2} lg={3} >
-                                    {console.log("-----------")}
-                                    {console.log(dataval)}
                                     <div style={{ marginTop: "15%" }}>
                                         {dataval.dataCard1.map(val =>
                                             <Pricing
@@ -333,7 +330,6 @@ else{
             arrows: false,
         }
         var data = this.props.data
-        console.log(data, 'data_data-data')
         const { classes } = this.props;
         // alert(discounted_price)
         let path = window.location.pathname.split('/').pop();

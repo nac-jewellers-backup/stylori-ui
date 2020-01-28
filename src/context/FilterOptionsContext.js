@@ -70,7 +70,6 @@ const Provider = (props) => {
     const client = createApolloFetch({ uri });
 
 
-    useEffect(() => { console.log('_filters_filters', filters) }, [filters])
     const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/filterlist', {}, false, {})
     useEffect(() => {
 
@@ -94,7 +93,7 @@ const Provider = (props) => {
 
 
 
-            console.log('splitHiphen()', splitHiphen())
+            // console.log('splitHiphen()', splitHiphen())
             const conditionfiltersSeo = { seofilter: { seoUrl: { in: splitHiphen() } } }
             // makeRequestSeo(conditionfiltersSeo)
             function status(response) {
@@ -388,10 +387,10 @@ const Provider = (props) => {
 
             // alert(JSON.stringify('filters',filters))
             // alert(JSON.stringify(newObj))
-            console.log('newObjfilters', newObj)
-            console.log('newObjsort', newObj)
-            console.log('newObjfilterssort', newObj)
-            console.log('newObjsortfilters', newObj)
+            // console.log('newObjfilters', newObj)
+            // console.log('newObjsort', newObj)
+            // console.log('newObjfilterssort', newObj)
+            // console.log('newObjsortfilters', newObj)
             // newObj['price'] = {'min_price':pricemin,'max_price':pricemax}
             // console.log('newObj', Object.keys(newObj).filter(val => { if (val === 'category') return val }).length > 1)
             // if()
@@ -542,7 +541,7 @@ const Provider = (props) => {
             }
            
         }
-        console.log('i came in as update filters function', "123123")
+        // console.log('i came in as update filters function', "123123")
         await makeFetch(newObj);
         //    props.history.push({
         //     pathname: `/stylori${mappedFilters.seo_url   ?`/${mappedFilters.seo_url}` : '' }`,
