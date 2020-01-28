@@ -17,7 +17,7 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { API_URL } from '../../config'
-
+import { SnackBar } from "components/snackbarAlert/SnackBar"
 
 class Request extends React.Component {
     constructor(props) {
@@ -31,6 +31,8 @@ class Request extends React.Component {
             isNumber: false,
             fetch: false,
             product_sku: "",
+            open: false,
+            messageData: "",
             errors: {
                 mailId: false,
                 names: false,
@@ -115,7 +117,7 @@ class Request extends React.Component {
                 .then(this.json)
                 .then((data) => {
                     console.log('Success:', data.message);
-                    this.setState((state) => ({ names: "", mailId: "", mobileNo: "", request: "" }))
+                    this.setState((state) => ({ names: "", mailId: "", mobileNo: "", request: "", messageData: data.message, open: true }))
                 })
                 .catch((error) => {
                     console.log('Error:', error);
@@ -127,6 +129,9 @@ class Request extends React.Component {
             expanded: expanded ? panel : false,
         });
     };
+    handleClose = () => {
+        this.setState({ open: false })
+    }
     handleKeyPress = (event, isNumber) => {
         if (isNumber) {
             if (!(event.which >= 48 && event.which <= 57)) event.preventDefault();
@@ -211,6 +216,12 @@ class Request extends React.Component {
                                 </Grid>
 
                             </Grid>
+                            <SnackBar handleClose={this.handleClose} anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                                classNameCloseIcon={'closeIcon'}
+                                classNames={"snackBar"} message={this.state.messageData} open={this.state.open} />
                             <Grid container>
                                 <Grid xs={12} >
                                     <Button onClick={(e) => this.handleSubmit(e)} className={`requset-button ${classes.fontwhite} ${classes.normalcolorback}`}>
