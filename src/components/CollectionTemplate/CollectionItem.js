@@ -30,8 +30,9 @@ export default function CollectionItem(props) {
     const { loading, error, data: CollectionData, makeFetch: fetchproducts } = useNetworkRequest('/fetchproducts', {}, false, {})
     const slider = React.createRef();
     const [values, setValues] = React.useState({
-        onViewMoreCollection: false, 
-        arr_data: [] 
+        onViewMoreCollection: false,
+        arr_data: [],
+        primaryNavigateUrl: null
     })
     const viewMoreCollections = () => {
         setValues({ onViewMoreCollection: true })
@@ -57,15 +58,18 @@ export default function CollectionItem(props) {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    ...Collectionz 
+                    ...Collectionz
                 }),
             })
-                .then(status) 
+                .then(status)
                 .then(json)
                 .then(async (data) => {
-                    if (data !== undefined && data !== null) {
+                    if (data !== undefined && data !== null && data.length > 0) {
                         data_.push(data.data)
                     }
+                    // else {
+                    //     window.location.href = window.location.pathname + window.location.search + window.location.hash;
+                    // }
                     resolve(data.data)
                 }).catch((error) => {
                     reject(false)
@@ -122,8 +126,11 @@ export default function CollectionItem(props) {
             })
             await Promise.all(cells).then(data => {
                 arr_data1 = CollectionPageStylori(data)
+                console.log("arr_data1", arr_data1)
+                debugger
                 if (Object.keys(arr_data1).length > 0) {
-                    values["arr_data"] = arr_data1
+                    values["arr_data"] = arr_data1.CollectionPageStylori
+                    // values["primaryNavigateUrl"] = arr_data1.primaryNavigateUrl
                     setValues({
                         ...values,
                         values
@@ -135,11 +142,11 @@ export default function CollectionItem(props) {
     }
     React.useEffect(() => {
         const img_url = [
-            "stylori.com/gemstone-jewellery?sort=latest",
-            "stylori.com/jewellery-from+the+renaissance+collection",
-            "stylori.com/jewellery-from+monsoon+collection",
-            "stylori.com/jewellery-butterfly?sort=latest",
-            "stylori.com/jewellery-from+the+summer+collection"
+            "/gemstone-jewellery?sort=latest",
+            "/jewellery-from+the+renaissance+collection",
+            "/jewellery-from+monsoon+collection",
+            "/jewellery-butterfly?sort=latest",
+            "/jewellery-from+the+summer+collection"
         ]
         getAlldata(img_url);
     }, [])
@@ -148,11 +155,11 @@ export default function CollectionItem(props) {
     React.useEffect(() => {
         if (values.onViewMoreCollection === true) {
             const img_url = [
-                "stylori.com/gemstone-jewellery?sort=latest",
-                "stylori.com/jewellery-from+the+renaissance+collection",
-                "stylori.com/jewellery-from+monsoon+collection",
-                "stylori.com/jewellery-butterfly?sort=latest",
-                "stylori.com/jewellery-from+the+summer+collection"
+                "/gemstone-jewellery?sort=latest",
+                "/jewellery-from+the+renaissance+collection",
+                "/jewellery-from+monsoon+collection",
+                "/jewellery-butterfly?sort=latest",
+                "/jewellery-from+the+summer+collection"
             ]
             getAlldata(img_url);
         }
