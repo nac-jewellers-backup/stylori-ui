@@ -95,7 +95,7 @@ const imageOnError = (event, res) => {
   event.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
 }
 const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => {
-  debugger
+  
   return (
     <div className="imageHeight">
     {props.data.oneDayShipping ? <div class={Math.round(props.data.offerPrice) === Math.round(props.data.price) ? "one-day-ship-listing-page-withoutTop" : "one-day-ship-listing-page"} style={{ zIndex: 2 }}>

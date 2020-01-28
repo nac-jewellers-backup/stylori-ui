@@ -98,7 +98,7 @@ if(JSON.parse(localStorage.getItem('cart_id'))){
         })
 }
 else{
-    debugger
+    
     var _products =JSON.parse(localStorage.getItem('cartDetails')).products.filter(val=>{
         if(val.sku_id !== currentValue) return val  
         })

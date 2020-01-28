@@ -241,7 +241,7 @@ const Provider = (props) => {
             //     var addcart = ({ products, user_id })
             //     addtocart(addcart)
             // }
-            debugger
+            
             if(skuId) localStorage.setItem('cartDetails', JSON.stringify(skuObj));
 
         }
@@ -292,7 +292,7 @@ const Provider = (props) => {
             var _conditionfetchCartId = {
                 "UserId": { "userprofileId": localStorage.getItem("user_id") }
             }
-debugger
+
             //  alert(JSON.stringify(this.state.checked))
             fetch(`${API_URL}/graphql`, {
 
