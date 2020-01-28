@@ -52,7 +52,7 @@ class ProductDetail extends Component {
     // alert(JSON.stringify(this.props.data))
     var loc = this.props.location.pathname;
     var path = loc.split('/');
-    var data_json = [{ title: 'home', url: '/' }, { title: path[2], url: this.renderUrl() }, { title: path[4] }]
+    var data_json = [{ title: 'home', url: '/' }, { title: path[2], url: this.renderUrl() }, { title: this.props.data&&this.props.data[0]&&this.props.data[0].title }]
     // alert(JSON.stringify(this.props.wishlistdata))
     const clear_rating = (bool) => {
       if (bool === false) {
@@ -65,7 +65,7 @@ class ProductDetail extends Component {
         })
       }
     }
-
+ 
     return (
       <div>
         <div>
@@ -135,7 +135,7 @@ class ProductDetail extends Component {
               </Grid>
               <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
                 <PriceCertification />
-                <Request />
+                <Request data={this.props.data} />
               </Grid>
               <br />
             </Grid>
@@ -167,7 +167,7 @@ class ProductDetail extends Component {
             <PriceCertification data={this.props.data} />
           </Grid>
           <Grid item xs={12} >
-            <Request />
+            <Request data={this.props.data} />
           </Grid>
 
           <Grid item xs={12} >
@@ -192,14 +192,14 @@ class ProductDetail extends Component {
   }
 }
 const Components = props => {
-  
+
   let { CartCtx: { allorderdata, wishlistdata } } = React.useContext(CartContext);
-  
+
   const { Globalctx } = React.useContext(GlobalContext)
   const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating } } = React.useContext(ProductDetailContext);
   const datas = data;
   let mapped = datas;
-  
+
   if (!loading && !error) {
     mapped = productDetails(datas, likedatas, viewedddatas, rating, Globalctx.tabsChange);
   }

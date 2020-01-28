@@ -5,6 +5,7 @@ import {
 import { TextField, Grid, Typography, Button } from '@material-ui/core';
 import { Input } from '../../components/InputComponents/TextField/Input'
 import HelpContact from "../../components/faqs/faqsHelp"
+import { SnackBar } from "components/snackbarAlert/SnackBar"
 import { useNetworkRequest } from '../../hooks/NetworkHooks'
 
 const useStyles = makeStyles(theme => ({
@@ -78,11 +79,15 @@ export default function CustomizedInputs() {
         emailError: "",
         errorMessage: "",
         phoneError: "",
+        open: false
     });
     const classes = useStyles();
     const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/addquestion', {}, false, {})
     const handleChange = (name, value) => {
         setValues({ ...values, [name]: value, errorName: "", emailError: "", errorMessage: "", phoneError: "" })
+    }
+    const handleClose = () => {
+        setValues({ ...values, open: false })
     }
     const handleSubmit = async () => {
         if (!values.name) {
@@ -111,7 +116,7 @@ export default function CustomizedInputs() {
     React.useEffect(() => {
         if (ntxdata && Object.entries(ntxdata).length > 0 && ntxdata.constructor === Object) {
             try {
-                alert(ntxdata.message)
+                setValues({ ...values, open: true })
             } catch (error) {
                 alert(error)
             }
@@ -189,6 +194,12 @@ export default function CustomizedInputs() {
                             <label className='errtext'> {values.errorMessage && values.errorMessage}</label>
                             <Button onClick={() => handleSubmit()} className={classes.Button}>Send Message to Support</Button>
                         </Grid>
+                        <SnackBar handleClose={handleClose} anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                            classNameCloseIcon={'closeIcon'}
+                            classNames={"snackBar"} message={ntxdata.message} open={values.open} />
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
                         <Typography variant="h4" className={classes.Subtitle2}>
@@ -221,6 +232,7 @@ export default function CustomizedInputs() {
                         Chat and Email support is available Monday through Saturday 10am to 7pm IST and we make a serious effort to respond in less than an hour. We do offer phone support, but if you really want to get us on the phone on different time zones, just submit the form and we'll schedule a call.
 			            </p>
                 </Grid>
+
             </Grid>
         </Grid>
     );

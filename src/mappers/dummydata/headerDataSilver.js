@@ -309,10 +309,10 @@ export const subheader = {
                 url: "/waves-jewellery"
             }, {
                 name: 'Floral',
-                url: "/waves-jewellery"
+                url: "/floral-jewellery"
             }, {
                 name: 'Hearts',
-                url: "/floral-jewellery"
+                url: "/hearts-jewellery"
             }, {
                 name: 'Tiara',
                 url: "/tiara-jewellery"
@@ -906,12 +906,12 @@ export const menuLists = {
                             {
                                 "img": "https://assets.stylori.com/images/Menu/Collections/By+Themes/Floral+Theme+Stylori-07.png",
                                 "content": "Floral",
-                                "url": "/waves-jewellery",
+                                "url": "/floral-jewellery",
                             },
                             {
                                 "img": "https://assets.stylori.com/images/Menu/Collections/By+Themes/Hearts+Theme+Stylori-03.png",
                                 "content": "Hearts",
-                                "url": "/floral-jewellery",
+                                "url": "/hearts-jewellery",
                             },
                             {
                                 "img": "https://assets.stylori.com/images/Menu/Collections/By+Themes/Tiara+Theme+Stylori-04.png",

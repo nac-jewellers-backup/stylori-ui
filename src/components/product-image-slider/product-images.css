@@ -50,7 +50,7 @@ body {
 .bg-clr2 {
     background: linear-gradient(to bottom, #f6f7f8 0%, #fff 100%);
     top: 0px !important;
-    margin: 20px 0 10px;
+    margin: 18px 0 10px;
 
 }
 
@@ -1468,6 +1468,20 @@ body {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px 4px, rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
 }
 
+@media screen and (max-width: 959px) {
+    .overall-boxz {
+        border-radius: 5px;
+        width: 100% !important;
+        background: #fff;
+        border: 1px solid #ccc;
+        padding-bottom: 4px !important;
+        margin-bottom: 10px !important;
+        box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .06);
+        padding-top: 12px !important;
+        box-shadow: none !important;
+    }
+}
+
 .overall-bo {
     padding: 0 10px;
 }
@@ -1567,4 +1581,10 @@ body {
 
 .bigText textarea {
     height: 80px !important
+}
+
+.errtextFeild {
+    color: #B94A48 !important;
+    font-size: 13px !important;
+    padding-left: 8px;
 }

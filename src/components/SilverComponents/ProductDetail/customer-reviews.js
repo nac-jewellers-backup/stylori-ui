@@ -147,7 +147,7 @@ class CustomerReviews extends React.Component {
                         >
                             {/* expandIcon={<span className='side-arrow-symbol'>
                                 <i class="fa fa-sort-up" ></i></span>} */}
-                            <ExpansionPanelSummary 
+                            <ExpansionPanelSummary
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
                                 id="panel1a-header" >
@@ -199,9 +199,9 @@ class CustomerReviews extends React.Component {
                                                     </>
                                                 ))}
                                             </Slideshow>
-                                            <Grid style={{ width: "100%" }}>
+                                            {/* <Grid style={{ width: "100%" }}>
                                                 <div className="loaders"></div>
-                                            </Grid>
+                                            </Grid> */}
                                         </Typography>
                                     </Grid>
                                 </Grid>
