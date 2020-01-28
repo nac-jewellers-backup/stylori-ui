@@ -109,7 +109,8 @@ class Request extends React.Component {
                         "email": this.state.mailId,
                         "phone": this.state.mobileNo,
                         "message": this.state.request,
-                        "product_sku": this.props && this.props.data && this.props.data[0] && this.props.data[0].skuId
+                        "product_sku": this.props && this.props.data && this.props.data[0] && this.props.data[0].skuId,
+                        "sku_url":window.location.href
                     })
 
             })

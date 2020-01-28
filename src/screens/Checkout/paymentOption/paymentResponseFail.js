@@ -39,15 +39,17 @@ function PaymentResponseFail(props) {
 
 
 const Components = props => {
-  let { CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
+  let { CartCtx: { cartFilters, data, loading, error, allorderdata,allordersuccesful, wishlistdata } } = React.useContext(CartContext);
+  
   let content, mapped;
   if (!loading && !error) {
     if (Object.keys(data).length !== 0) {
       mapped = cart(data);
     }
   }
+  
   if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
-  else content = <PaymentResponseFail {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
+  else content = <PaymentResponseFail {...props} data={mapped} allorderdata={allordersuccesful} wishlistdata={wishlistdata} />
   // localStorage.setItem("a__w_l", wishlistdata && wishlistdata.length)
   return content
 }

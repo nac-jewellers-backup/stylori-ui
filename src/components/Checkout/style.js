@@ -18,7 +18,8 @@ const styles = theme => ({
         width: "100%",
         margin: "auto",
         display: "flex",
-        marginBottom: "15px"
+        marginBottom: "15px",
+        boxShadow: "rgb(222, 218, 218) 1px 2px 13px 7px"
     },
     details: {
         display: "flex",

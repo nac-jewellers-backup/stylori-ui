@@ -64,7 +64,8 @@ class Header extends Component {
         this.topZero = React.createRef();
     }
     componentDidMount() {
-        if (window.location.pathname === "/cart" || window.location.pathname === '/checkout') {
+        var _pathname = window.location.pathname.split("/")
+        if (window.location.pathname === "/cart" || window.location.pathname === '/checkout' || _pathname[1] === "paymentsuccess" || _pathname[1] === "paymentfail" ) {
             return true
         }
         else {
@@ -160,7 +161,7 @@ class Header extends Component {
         var b = a.split("/")
         // const id = open ? true : undefined;
         return (
-            <div style={{ top: "0", zIndex: "1000", width: "100%" }} className={window.location.pathname === "/cart" || b[1] === "paymentsuccess" || window.location.pathname === '/checkout' ? "headerTopcard" : "headerTop"}>
+            <div style={{ top: "0", zIndex: "1000", width: "100%" }} className={window.location.pathname === "/cart" || b[1] === "paymentsuccess" || b[1] === "paymentfail" || window.location.pathname === '/checkout' ? "headerTopcard" : "headerTop"}>
                 <Hidden smDown >
                     {/* <HeaderNotification headerTransition={() => { this.headerTransitions() }} /> */}
                     <div className="header-appbar-sticky1" id='headerDiv' style={{ position: "fixed", zIndex: "1000" }}>
@@ -257,7 +258,7 @@ class Header extends Component {
                                     </Grid>
                                 </Grid>
                             </Container>
-                            {window.location.pathname === "/cart" || window.location.pathname === '/checkout' || b[1] === "paymentsuccess" ? "" :
+                            {window.location.pathname === "/cart" || window.location.pathname === '/checkout' || b[1] === "paymentsuccess" || b[1] === "paymentfail" ? "" :
                                 <Grid container id="headerContainer" >
                                     <Container maxWidth="lg" >
                                         <Grid container spacing={12} id="fullcontainer" className="setHeight">
