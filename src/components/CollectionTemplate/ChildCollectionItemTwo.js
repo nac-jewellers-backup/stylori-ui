@@ -233,7 +233,7 @@ export default function ChildCollectionItemTwo(props) {
                                     <>
                                         {
                                             index % 2 === 0 ? <>
-                                                <Grid container>
+                                                <Grid container >
                                                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                                                         <Slideshow
                                                             sliderRef={slider}
@@ -274,13 +274,14 @@ export default function ChildCollectionItemTwo(props) {
                                                             </Grid>
                                                             <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding} >
                                                                 <Grid container >
-                                                                    <Grid item item xs={12} sm={12} md={12} alignItems="center">
+                                                                    <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
+                                                                        <i class="fa fa-angle-left" onClick={() => previous1()}></i>
+                                                                    </Grid>
+                                                                    <Grid item item xs={10} sm={10} md={10} alignItems="center">
                                                                         <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider1}>
                                                                             {data.primaryCarouselDetails.map((val, index) => <>
                                                                                 <Grid container className={classes.cardMargin}>
-                                                                                    <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconLeft}>
-                                                                                        <i class="fa fa-angle-left" onClick={() => previous1()}></i>
-                                                                                    </Grid>
+
                                                                                     <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
                                                                                         <Typography className={classes.typograpyTop}>
                                                                                             {val.imageTitle}
@@ -291,7 +292,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                                             </a>
                                                                                         </Grid>
                                                                                         <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
-                                                                                            <Typography style={{ color: "#394578" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
+                                                                                            <Typography style={{ color: "#394578" }}>
                                                                                                 {val.price}</Typography>
                                                                                         </Grid>
                                                                                         <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
@@ -299,13 +300,14 @@ export default function ChildCollectionItemTwo(props) {
                                                                                         </Grid>
 
                                                                                     </Grid>
-                                                                                    <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconRight}>
-                                                                                        <i class="fa fa-angle-right" onClick={() => next1()}></i>
-                                                                                    </Grid>
+
                                                                                 </Grid>
 
                                                                             </>)}
                                                                         </Slideshow>
+                                                                    </Grid>
+                                                                    <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconRight}>
+                                                                        <i class="fa fa-angle-right" onClick={() => next1()}></i>
                                                                     </Grid>
                                                                 </Grid>
                                                             </Grid>
@@ -331,13 +333,14 @@ export default function ChildCollectionItemTwo(props) {
                                                             </Grid>
                                                             <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding} >
                                                                 <Grid container >
-                                                                    <Grid item item xs={12} sm={12} md={12} alignItems="center">
+                                                                    <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
+                                                                        <i class="fa fa-angle-left" onClick={() => previous2()}></i>
+                                                                    </Grid>
+                                                                    <Grid item item xs={10} sm={10} md={10} alignItems="center">
                                                                         <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider2}>
                                                                             {data && data.primaryCarouselDetails && data.primaryCarouselDetails.map((val, index) => <>
                                                                                 <Grid container className={classes.cardMargin}>
-                                                                                    <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconLeft}>
-                                                                                        <i class="fa fa-angle-left" onClick={() => previous2()}></i>
-                                                                                    </Grid>
+
                                                                                     <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
                                                                                         <Typography className={classes.typograpyTop}>
                                                                                             {val.imageTitle}
@@ -349,7 +352,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                                             </a>
                                                                                         </Grid>
                                                                                         <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
-                                                                                            <Typography style={{ color: "#394578" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
+                                                                                            <Typography style={{ color: "#394578" }}>
                                                                                                 {val.price}</Typography>
                                                                                         </Grid>
                                                                                         <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
@@ -357,13 +360,14 @@ export default function ChildCollectionItemTwo(props) {
                                                                                         </Grid>
 
                                                                                     </Grid>
-                                                                                    <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconRight}>
-                                                                                        <i class="fa fa-angle-right" onClick={() => next2()}></i>
-                                                                                    </Grid>
+
                                                                                 </Grid>
 
                                                                             </>)}
                                                                         </Slideshow>
+                                                                    </Grid>
+                                                                    <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconRight}>
+                                                                        <i class="fa fa-angle-right" onClick={() => next2()}></i>
                                                                     </Grid>
                                                                 </Grid>
                                                             </Grid>
@@ -389,14 +393,15 @@ export default function ChildCollectionItemTwo(props) {
                                                             </Grid>
                                                         </Grid>
                                                         <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding}  >
-                                                            <Grid container >
-                                                                <Grid item item xs={12} sm={12} md={12} lg={12} xl={12} alignItems="center">
+                                                            {/* <Grid container >
+                                                                <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
+                                                                    <i class="fa fa-angle-left" onClick={() => previous3()}></i>
+                                                                </Grid>
+                                                                <Grid item item xs={10} sm={10} md={10} lg={10} xl={10} alignItems="center">
                                                                     <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider3}>
                                                                         {data && data.secondaryCarouselDetails && data.secondaryCarouselDetails.map((val, index) => <>
                                                                             <Grid container style={{ display: "flex", justifyContent: "center" }}>
-                                                                                <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconLeft}>
-                                                                                    <i class="fa fa-angle-left" onClick={() => previous3()}></i>
-                                                                                </Grid>
+
                                                                                 <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
                                                                                     <Typography className={classes.typograpyTop}>
                                                                                         {val.imageTitle}
@@ -408,7 +413,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                                     </Grid>
 
                                                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
-                                                                                        <Typography style={{ color: "#394578" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
+                                                                                        <Typography style={{ color: "#394578" }}>
                                                                                             {val.price}</Typography>
                                                                                     </Grid>
                                                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
@@ -416,15 +421,16 @@ export default function ChildCollectionItemTwo(props) {
                                                                                     </Grid>
 
                                                                                 </Grid>
-                                                                                <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconRight}>
-                                                                                    <i class="fa fa-angle-right" onClick={() => next3()}></i>
-                                                                                </Grid>
+
                                                                             </Grid>
 
                                                                         </>)}
                                                                     </Slideshow>
                                                                 </Grid>
-                                                            </Grid>
+                                                                <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconRight}>
+                                                                    <i class="fa fa-angle-right" onClick={() => next3()}></i>
+                                                                </Grid>
+                                                            </Grid> */}
                                                         </Grid>
                                                     </Grid>
                                                 </Grid>
@@ -469,13 +475,14 @@ export default function ChildCollectionItemTwo(props) {
                                                             </Grid>
                                                             <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding}  >
                                                                 <Grid container >
-                                                                    <Grid item item xs={12} sm={12} md={12} lg={12} xl={12} alignItems="center">
+                                                                    <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
+                                                                        <i class="fa fa-angle-left" onClick={() => previous4()}></i>
+                                                                    </Grid>
+                                                                    <Grid item item xs={10} sm={10} md={10} lg={10} xl={10} alignItems="center">
                                                                         <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider4}>
                                                                             {data && data.primaryCarouselDetails && data.primaryCarouselDetails.map((val, index) => <>
                                                                                 <Grid container style={{ display: "flex", justifyContent: "center", marginTop: "54px" }}>
-                                                                                    <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconLeft}>
-                                                                                        <i class="fa fa-angle-left" onClick={() => previous4()}></i>
-                                                                                    </Grid>
+
                                                                                     <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
                                                                                         <Typography className={classes.typograpyTop}>
                                                                                             {val.imageTitle}
@@ -489,7 +496,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                                         </Grid>
 
                                                                                         <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
-                                                                                            <Typography style={{ color: "#394578" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
+                                                                                            <Typography style={{ color: "#394578" }}>
                                                                                                 {val.price}</Typography>
                                                                                         </Grid>
                                                                                         <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
@@ -497,13 +504,14 @@ export default function ChildCollectionItemTwo(props) {
                                                                                         </Grid>
 
                                                                                     </Grid>
-                                                                                    <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconRight}>
-                                                                                        <i class="fa fa-angle-right" onClick={() => next4()}></i>
-                                                                                    </Grid>
+
                                                                                 </Grid>
 
                                                                             </>)}
                                                                         </Slideshow>
+                                                                    </Grid>
+                                                                    <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconRight}>
+                                                                        <i class="fa fa-angle-right" onClick={() => next4()}></i>
                                                                     </Grid>
                                                                 </Grid>
                                                             </Grid>
@@ -529,13 +537,14 @@ export default function ChildCollectionItemTwo(props) {
                                                             </Grid>
                                                             <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding} >
                                                                 <Grid container >
-                                                                    <Grid item item xs={12} sm={12} md={12} alignItems="center">
+                                                                    <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
+                                                                        <i class="fa fa-angle-left" onClick={() => previous5()}></i>
+                                                                    </Grid>
+                                                                    <Grid item item xs={10} sm={10} md={10} alignItems="center">
                                                                         <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider5}>
                                                                             {data && data.secondaryCarouselDetails && data.secondaryCarouselDetails.map((val, index) => <>
                                                                                 <Grid container style={{ display: "flex", justifyContent: "center" }}>
-                                                                                    <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconLeft}>
-                                                                                        <i class="fa fa-angle-left" onClick={() => previous5()}></i>
-                                                                                    </Grid>
+
                                                                                     <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
                                                                                         <Typography className={classes.typograpyTop}>
                                                                                             {val.imageTitle}
@@ -549,7 +558,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                                         </Grid>
 
                                                                                         <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
-                                                                                            <Typography style={{ color: "#394578" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
+                                                                                            <Typography style={{ color: "#394578" }}>
                                                                                                 {val.price}</Typography>
                                                                                         </Grid>
                                                                                         <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
@@ -557,13 +566,14 @@ export default function ChildCollectionItemTwo(props) {
                                                                                         </Grid>
 
                                                                                     </Grid>
-                                                                                    <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconRight}>
-                                                                                        <i class="fa fa-angle-right" onClick={() => next5()}></i>
-                                                                                    </Grid>
+
                                                                                 </Grid>
 
                                                                             </>)}
                                                                         </Slideshow>
+                                                                    </Grid>
+                                                                    <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconRight}>
+                                                                        <i class="fa fa-angle-right" onClick={() => next5()}></i>
                                                                     </Grid>
                                                                 </Grid>
                                                             </Grid>
@@ -571,9 +581,11 @@ export default function ChildCollectionItemTwo(props) {
                                                     </Grid>
                                                 </>
                                         }
+                                        
                                     </>
                                     : ''
                             }
+                            
 
                         </>)
                     }
