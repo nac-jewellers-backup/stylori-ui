@@ -9,5 +9,5 @@
     background-color: #f44336;
   }
   .closeIcon span svg{
-    fill:white
+    fill:white !important
   }
