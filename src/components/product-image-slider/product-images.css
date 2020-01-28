@@ -502,6 +502,12 @@ body {
     /* background-color: #f1f3f6; */
 }
 
+.MuiOutlinedInput-input::-webkit-inner-spin-button,
+.MuiOutlinedInput-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .MuiOutlinedInput-inputMultiline {
     margin-top: -20px !important;
     margin-left: -14px !important;

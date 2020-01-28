@@ -12,8 +12,8 @@ import cartoonFooter from '../../assets/cartoonFooter.png'
 import './Footer.css'
 import { pointer } from 'popmotion';
 import styloriLogo from "../../assets/Stylorilogo.svg"
-import {API_URL} from 'config'
-import {SnackBar} from 'components/snackbarAlert/SnackBar'
+import { API_URL } from 'config'
+import { SnackBar } from 'components/snackbarAlert/SnackBar'
 const useStyles = makeStyles(theme => ({
     navTitle: {
         cursor: "pointer",
@@ -65,9 +65,9 @@ const useStyles = makeStyles(theme => ({
         fontWeight: '400',
         lineHeight: '1.42857143',
         textTransform: 'none',
-       '&:hover':{
-        backgroundColor: theme.palette.primary.main,
-       } 
+        '&:hover': {
+            backgroundColor: theme.palette.primary.main,
+        }
     },
     spanSizeColor: {
         color: '#808080',
@@ -85,7 +85,7 @@ export default function Footer(props) {
     const [open, setOpen] = React.useState(false)
     const [message, setMessage] = React.useState('')
     const [stateClassname, setStateClassname] = React.useState('snackBar')
-    
+
     const classes = useStyles();
     const footerData = [
         {
@@ -191,14 +191,14 @@ export default function Footer(props) {
         },
         {
             url: "/contactus",
-            Title: "Contact Us"
+            Title: "Contact us"
         },
     ]
 
     const status = (response) => {
 
         if ((response.status >= 200 && response.status < 300) || response.status === 409) {
-            if(response.status ===  409 ) setStateClassname('snackBarError')
+            if (response.status === 409) setStateClassname('snackBarError')
             else setStateClassname('snackBar')
             return Promise.resolve(response)
         } else {
@@ -209,60 +209,60 @@ export default function Footer(props) {
     const json = (response) => {
         return response.json()
     }
-const handleClose = () =>{
-    setOpen(false)
-}
-const handleChage = (e) =>{
-    setState(e.target.value)
-    var element = document.getElementById('_button');
-    var element_input = document.getElementById('_input');
-     element_input.classList.remove('error');
-    element.classList.remove('error'); 
-}
-const handleEmail =(e) =>{
-
-    var element = document.getElementById('_button');
-    var element_input = document.getElementById('_input');
-    element_input.classList.remove('error');
-    element.classList.remove('error'); 
-    var emailvld = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(!document.getElementById("_input").value.length > 0){
-        element_input.classList.add('error');
-        element.classList.add('error'); 
-        return 
+    const handleClose = () => {
+        setOpen(false)
     }
-    else if(!Boolean(document.getElementById("_input").value.match(emailvld))){
-        element_input.classList.add('error');
-        element.classList.add('error'); 
-        return 
+    const handleChage = (e) => {
+        setState(e.target.value)
+        var element = document.getElementById('_button');
+        var element_input = document.getElementById('_input');
+        element_input.classList.remove('error');
+        element.classList.remove('error');
     }
+    const handleEmail = (e) => {
 
-   else if(document.getElementById("_input").value.length > 0 && document.getElementById("_input").value.match(emailvld)){
-        fetch(`${API_URL}/addemailsubscription`, {
+        var element = document.getElementById('_button');
+        var element_input = document.getElementById('_input');
+        element_input.classList.remove('error');
+        element.classList.remove('error');
+        var emailvld = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!document.getElementById("_input").value.length > 0) {
+            element_input.classList.add('error');
+            element.classList.add('error');
+            return
+        }
+        else if (!Boolean(document.getElementById("_input").value.match(emailvld))) {
+            element_input.classList.add('error');
+            element.classList.add('error');
+            return
+        }
 
-            method: 'post',
-            // body: {query:seoUrlResult,variables:splitHiphen()}
-            // body: JSON.stringify({query:seoUrlResult}),
+        else if (document.getElementById("_input").value.length > 0 && document.getElementById("_input").value.match(emailvld)) {
+            fetch(`${API_URL}/addemailsubscription`, {
 
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email:state
+                method: 'post',
+                // body: {query:seoUrlResult,variables:splitHiphen()}
+                // body: JSON.stringify({query:seoUrlResult}),
+
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: state
+                })
             })
-        })
-            .then(status)
-            .then(json).then(async val => {
-                console.log(val)
-                
-                setMessage(val.message)
-                setOpen(true)
-            })
+                .then(status)
+                .then(json).then(async val => {
+                    console.log(val)
+
+                    setMessage(val.message)
+                    setOpen(true)
+                })
+
+        }
+
 
     }
-
-   
-}
     return (
         <Grid
             container
@@ -295,22 +295,22 @@ const handleEmail =(e) =>{
                         <Grid container style={{ display: 'flex', justifyContent: 'center' }}>
                             <Grid item xs={6} xl={8} lg={8} md={8} >
                                 <input
-                                value={state}
-                                id="_input"
-                                type="email"
-                                onInvalid={(e)=>{e.preventDefault()}}
-                                onChange={(e)=>handleChage(e)}
+                                    value={state}
+                                    id="_input"
+                                    type="email"
+                                    onInvalid={(e) => { e.preventDefault() }}
+                                    onChange={(e) => handleChage(e)}
                                     placeholder='Email address...'
                                     className={`${classes.buynowSearch}`}
                                 />
 
                             </Grid>
                             <Grid item xl={4} lg={4} md={4} xs={4}>
-                                <Button type="submit"  id="_button" className={`${classes.searchButtonFooter}`} onClick={(e)=>{return handleEmail(e)}}>Stay Informed</Button>
+                                <Button type="submit" id="_button" className={`${classes.searchButtonFooter}`} onClick={(e) => { return handleEmail(e) }}>Stay Informed</Button>
                             </Grid>
                         </Grid>
-                            {/* </form> */}
-                      
+                        {/* </form> */}
+
 
                     </Hidden>
                     {/* Hidden */}
@@ -318,28 +318,28 @@ const handleEmail =(e) =>{
 
                 {/* mobile */}
                 <Hidden only={['lg', 'xl', 'md']} >
-               
+
                     <Grid container item xl={4} lg={4} md={4} xs={12} sm={4} style={{ padding: '3%' }}>
-                    {/* <form id="_form" action="javascript:void(0)" > */}
+                        {/* <form id="_form" action="javascript:void(0)" > */}
                         <Grid container style={{ display: 'flex', justifyContent: 'flex-start' }}>
                             <Grid item xs={6} xl={8} lg={8} md={8} sm={8}>
-                            <input
-                                value={state}
-                                id="_input"
-                                type="email"
-                                onInvalid={(e)=>{e.preventDefault()}}
-                                // ref={this._inputRef}
-                                onChange={(e)=>handleChage(e)}
+                                <input
+                                    value={state}
+                                    id="_input"
+                                    type="email"
+                                    onInvalid={(e) => { e.preventDefault() }}
+                                    // ref={this._inputRef}
+                                    onChange={(e) => handleChage(e)}
                                     placeholder='Email address'
                                     className={`${classes.buynowSearch}`}
                                 />
                             </Grid>
                             <Grid item sm={4} xs={3} xl={4} lg={4} md={4}>
-                                <Button type="submit" id="_button" className={`${classes.searchButtonFooter}`} onClick={(e)=>handleEmail(e)}>Stay Informed</Button>
+                                <Button type="submit" id="_button" className={`${classes.searchButtonFooter}`} onClick={(e) => handleEmail(e)}>Stay Informed</Button>
                             </Grid>
                         </Grid>
-                      
-{/* </form> */}
+
+                        {/* </form> */}
 
                     </Grid>
 
@@ -614,12 +614,12 @@ const handleEmail =(e) =>{
           </React.Fragment>
         }
       /> */}
-      <SnackBar handleClose={handleClose} anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        classNameCloseIcon={'closeIcon'}
-         classNames={stateClassname}message={message} open={open}/>
+            <SnackBar handleClose={handleClose} anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+            }}
+                classNameCloseIcon={'closeIcon'}
+                classNames={stateClassname} message={message} open={open} />
         </Grid>
     );
 
