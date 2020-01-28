@@ -174,23 +174,17 @@ class Component extends React.Component {
                 var a = values && Object.keys(values)
                 if (keys === "ProductType") {
                   selected.push("Product Type", keys)
-                }
-                if (keys === "MetalPurity") {
+                }if (keys === "MetalPurity") {
                   selected.push("Metal Purity", keys)
-                }
-                if (keys === "MetalColor") {
+                }if (keys === "MetalColor") {
                   selected.push("Metal Color", keys)
-                }
-                if (keys === "NoOfStones") {
+                }if (keys === "NoOfStones") {
                   selected.push("No Of Stones", keys)
-                }
-                if (keys === "StoneColor") {
+                } if (keys === "StoneColor") {
                   selected.push("Stone Color", keys)
-                }
-                if (keys === "StoneShape") {
+                } if (keys === "StoneShape") {
                   selected.push("Stone Shape", keys)
-                }
-                if (keys !== "ProductType" && keys !== "MetalPurity" && keys !== "MetalColor" && keys !== "NoOfStones" && keys !== "StoneColor" && keys !== "StoneShape") {
+                } if (keys !== "ProductType" && keys !== "MetalPurity" && keys !== "MetalColor" && keys !== "NoOfStones" && keys !== "StoneColor" && keys !== "StoneShape") {
                   selected.push(keys)
                 }
                 chipData.push({ label: a[0], title: keys });

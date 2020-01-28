@@ -52,10 +52,12 @@ class ProductDetail extends Component {
     // alert(JSON.stringify(this.props.data))
     var loc = this.props.location.pathname;
     var path = loc.split('/');
-    var data_json = [{ title: 'home', url: '/' }, { title: path[2], url: this.renderUrl() }, { title: path[4] }]
+    var product_name = path[4].split("-")
+    var product_name_spait = product_name.join(" ")
+    var data_json = [{ title: 'home', url: '/' }, { title: path[2], url: this.renderUrl() }, { title:product_name_spait }]
     // alert(JSON.stringify(this.props.wishlistdata))
     const clear_rating = (bool) => {
-      if (bool === false) {
+      if (bool === false) { 
         this.setState({
           clear: ""
         })
