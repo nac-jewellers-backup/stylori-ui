@@ -129,7 +129,7 @@ export default function CustomizedInputs() {
         <Grid container className={classes.root}>
             <Grid item className={classes.widthFull}>
                 <Typography variant="h2" className={classes.contact_us}>
-                    Contact Us
+                    Contact us
              </Typography>
                 <Grid container>
                     <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
