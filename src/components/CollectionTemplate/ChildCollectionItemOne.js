@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Typography, Button, Hidden } from "@material-ui/core";
-import { CollectionPageStylori } from './CollectionData';
+import CollectionPageStylori from './CollectionData';
 import Slideshow from '../../components/Carousel/carosul';
 import { makeStyles } from '@material-ui/styles';
 import './Collection.css';
@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
         // width: "calc(100% - 450px) !important",
         // marginLeft: "4px",
     },
-   
+
     Button: {
         fontSize: '12px',
         backgroundColor: '#394578',
@@ -177,36 +177,76 @@ const useStyles = makeStyles(theme => ({
 
 
 }));
-export default function ChildCollectionItemOne() {
+export default function ChildCollectionItemOne(props) {
+    // alert(JSON.stringify(props.CollectionPageStylori))
     const classes = useStyles();
     const slider = React.createRef();
-    const next = () => {
-        slider.current.slickNext();
+    const slider1 = React.createRef();
+    const slider2 = React.createRef();
+    const slider3 = React.createRef();
+    const slider4 = React.createRef();
+    const slider5 = React.createRef();
+    const next1 = () => {
+        slider1.current.slickNext();
     }
-    const previous = () => {
-        slider.current.slickPrev();
+    const previous1 = () => {
+        slider1.current.slickPrev();
     }
+
+    const next2 = () => {
+        slider2.current.slickNext();
+    }
+    const previous2 = () => {
+        slider2.current.slickPrev();
+    }
+
+    const next3 = () => {
+        slider3.current.slickNext();
+    }
+    const previous3 = () => {
+        slider3.current.slickPrev();
+    }
+
+    const next4 = () => {
+        slider4.current.slickNext();
+    }
+    const previous4 = () => {
+        slider4.current.slickPrev();
+    }
+
+    const next5 = () => {
+        slider5.current.slickNext();
+    }
+    const previous5 = () => {
+        slider5.current.slickPrev();
+    }
+
     return (
         <>
             {
-                CollectionPageStylori.Testimony.carousel.data.map((data, index) => <>
+                props.CollectionPageStylori && props.CollectionPageStylori.Testimony && props.CollectionPageStylori.Testimony.carousel && props.CollectionPageStylori.Testimony.carousel.data && props.CollectionPageStylori.Testimony.carousel.data.map((data, index) => <>
                     {
                         index < 2 ?
                             <>
                                 {
                                     index % 2 === 0 ? <>
-                                        <Grid container>
+                                        <Grid container key={index}>
                                             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                                                 <Slideshow
                                                     sliderRef={slider}
-                                                    dataCarousel={CollectionPageStylori.carouselTop.setting}
+                                                    dataCarousel={props.CollectionPageStylori.carouselTop.setting}
                                                 >
-                                                    {data.containerImage.map((val, index) => (
-                                                        <Grid container key={index}>
+                                                    {data && data.containerImage && data.containerImage.map((val, index) => (
+                                                        <Grid container key={index}
+                                                        >
+                                                            <a href={val.navigateUrl}>
                                                             <img
                                                                 src={val.img}
-                                                                style={{ width: "100%", height: "auto" }}
+                                                                style={{ width: "100%", height: "auto", cursor: "pointer" }}
                                                             />
+                                                            </a>
+
+                                                            
                                                         </Grid>
                                                     ))}
                                                 </Slideshow>
@@ -217,7 +257,11 @@ export default function ChildCollectionItemOne() {
                                                 <Grid container direction="row-reverse" className={classes.containerMargin} >
                                                     <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding} >
                                                         <Grid >
-                                                            <img src={data.primaryImage} className={classes.imageResolution}></img>
+                                                            <a href={data.primaryNavigateUrl}>
+                                                                <img style={{ cursor: "pointer" }} src={data.primaryImage}
+                                                                    className={classes.imageResolution}></img>
+                                                            </a>
+
                                                         </Grid>
                                                         <Grid style={{ margin: "0px 0px 10px 0px " }}>
                                                             <div style={{ margin: "20px 0px 10px 0px " }}>
@@ -225,24 +269,25 @@ export default function ChildCollectionItemOne() {
                                                                     {data.primaryContantName}
                                                                 </Typography>
                                                             </div>
-                                                            <Button type="button" className={classes.ButtonExplore} style={{ font: "13px Roboto" }}>{data.primaryButtonName}</Button>
+                                                            {/* <Button type="button" className={classes.ButtonExplore} style={{ font: "13px Roboto" }}>{data.primaryButtonName}</Button> */}
                                                         </Grid>
                                                     </Grid>
                                                     <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding} >
                                                         <Grid container >
                                                             <Grid item item xs={12} sm={12} md={12} alignItems="center">
-                                                                <Slideshow dataCarousel={CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider}>
-                                                                    {data.primaryCarouselDetails.map((val, index) => <>
+                                                                <Slideshow dataCarousel={props.CollectionPageStylori.carouselTop.setting} sliderRef={slider1}>
+                                                                    {data && data.primaryCarouselDetails && data.primaryCarouselDetails.map((val, index) => <>
                                                                         <Grid container className={classes.cardMargin}>
                                                                             <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconLeft}>
-                                                                                <i class="fa fa-angle-left" onClick={()=>previous()}></i>
+                                                                                <i class="fa fa-angle-left" onClick={() => previous1()}></i>
                                                                             </Grid>
                                                                             <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
                                                                                 <Typography className={classes.typograpyTop}>
                                                                                     {val.imageTitle}
                                                                                 </Typography>
-                                                                                <Grid item style={{ display: "flex", justifyContent: 'center' }}>
-                                                                                    <img className={classes.imgcoin} src={val.img} />
+                                                                                <Grid item style={{ display: "flex", justifyContent: 'center' }}
+                                                                                >
+                                                                                    <a href={val.navigateUrl}><img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} /></a>
                                                                                 </Grid>
                                                                                 <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
                                                                                     <Typography style={{ color: "#394578" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
@@ -254,7 +299,7 @@ export default function ChildCollectionItemOne() {
 
                                                                             </Grid>
                                                                             <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconRight}>
-                                                                                <i class="fa fa-angle-right" onClick={() =>next()}></i>
+                                                                                <i class="fa fa-angle-right" onClick={() => next1()}></i>
                                                                             </Grid>
                                                                         </Grid>
 
@@ -269,7 +314,10 @@ export default function ChildCollectionItemOne() {
                                                 <Grid container className={classes.containerMargin} >
                                                     <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding} >
                                                         <Grid >
-                                                            <img src={data.primaryImage} className={classes.imageResolution}></img>
+                                                            <a href={data.primaryNavigateUrl}>
+                                                                <img style={{ cursor: "pointer" }} src={data.primaryImage}
+                                                                    className={classes.imageResolution}></img>
+                                                            </a>
                                                         </Grid>
                                                         <Grid style={{ margin: "0px 0px 10px 0px " }}>
                                                             <div style={{ margin: "20px 0px 10px 0px " }}>
@@ -277,24 +325,31 @@ export default function ChildCollectionItemOne() {
                                                                     {data.primaryContantName}
                                                                 </Typography>
                                                             </div>
-                                                            <Button type="button" className={classes.ButtonExplore} style={{ font: "13px Roboto" }}>{data.primaryButtonName}</Button>
+                                                            {/* <Button type="button" className={classes.ButtonExplore} style={{ font: "13px Roboto" }}>{data.primaryButtonName}</Button> */}
                                                         </Grid>
                                                     </Grid>
                                                     <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding} >
                                                         <Grid container >
                                                             <Grid item item xs={12} sm={12} md={12} alignItems="center">
-                                                                <Slideshow dataCarousel={CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider}>
-                                                                    {data.primaryCarouselDetails.map((val, index) => <>
+                                                                <Slideshow dataCarousel={props.CollectionPageStylori.carouselTop.setting} sliderRef={slider2}>
+                                                                    {data && data.primaryCarouselDetails && data.primaryCarouselDetails.map((val, index) => <>
                                                                         <Grid container className={classes.cardMargin}>
                                                                             <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconLeft}>
-                                                                                <i class="fa fa-angle-left" onClick={()=>previous()}></i>
+                                                                                <i class="fa fa-angle-left" onClick={() => previous2()}></i>
                                                                             </Grid>
                                                                             <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
                                                                                 <Typography className={classes.typograpyTop}>
                                                                                     {val.imageTitle}
                                                                                 </Typography>
-                                                                                <Grid item style={{ display: "flex", justifyContent: 'center' }}>
-                                                                                    <img className={classes.imgcoin} src={val.img} />
+                                                                                <Grid item style={{ display: "flex", justifyContent: 'center' }}
+
+                                                                                >
+                                                                                    <a href={val.navigateUrl}>
+                                                                                        <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} />
+                                                                                    </a>
+
+
+
                                                                                 </Grid>
                                                                                 <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
                                                                                     <Typography style={{ color: "#394578" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
@@ -306,7 +361,7 @@ export default function ChildCollectionItemOne() {
 
                                                                             </Grid>
                                                                             <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconRight}>
-                                                                                <i class="fa fa-angle-right" onClick={()=>next()}></i>
+                                                                                <i class="fa fa-angle-right" onClick={() => next2()}></i>
                                                                             </Grid>
                                                                         </Grid>
 
@@ -322,7 +377,11 @@ export default function ChildCollectionItemOne() {
                                             <Grid container className={classes.containerMargin} >
                                                 <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding} >
                                                     <Grid >
-                                                        <img src={data.secondaryImage} className={classes.imageResolution}></img>
+                                                        <a href={data.secondaryNavigateUrl}>
+                                                            <img style={{ cursor: "pointer" }} src={data.secondaryImage}
+                                                                className={classes.imageResolution}></img>
+                                                        </a>
+
                                                     </Grid>
                                                     <Grid style={{ margin: "0px 0px 10px 0px " }}>
                                                         <div style={{ margin: "20px 0px 10px 0px " }}>
@@ -330,25 +389,32 @@ export default function ChildCollectionItemOne() {
                                                                 {data.secondaryContantName}
                                                             </Typography>
                                                         </div>
-                                                        <Button type="button" className={classes.ButtonExplore} style={{ font: "13px Roboto" }}>{data.secondaryButtonName}</Button>
+                                                        {/* <Button type="button" className={classes.ButtonExplore} style={{ font: "13px Roboto" }}>{data.secondaryButtonName}</Button> */}
                                                     </Grid>
                                                 </Grid>
                                                 <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding}  >
                                                     <Grid container >
                                                         <Grid item item xs={12} sm={12} md={12} lg={12} xl={12} alignItems="center">
-                                                            <Slideshow dataCarousel={CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider}>
-                                                                {data.secondaryCarouselDetails.map((val, index) => <>
+                                                            <Slideshow dataCarousel={props && props.CollectionPageStylori && props.CollectionPageStylori.Testimony && props.CollectionPageStylori.Testimony.carousel && props.CollectionPageStylori.carouselTop.setting && props.CollectionPageStylori.carouselTop.setting} sliderRef={slider3}>
+                                                                {/* {alert(JSON.stringify(data.secondaryCarouselDetails))} */}
+                                                                {data && data.secondaryCarouselDetails && data.secondaryCarouselDetails && data.secondaryCarouselDetails.map((val, index) => <>
                                                                     <Grid container style={{ display: "flex", justifyContent: "center" }}>
                                                                         <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconLeft}>
-                                                                            <i class="fa fa-angle-left" onClick={()=>previous()}></i>
+                                                                            <i class="fa fa-angle-left" onClick={() => previous3()}></i>
                                                                         </Grid>
                                                                         <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
                                                                             <Typography className={classes.typograpyTop}>
                                                                                 {val.imageTitle}
                                                                             </Typography>
 
-                                                                            <Grid item style={{ display: "flex", justifyContent: 'center', width: "100%", height: "auto" }}>
-                                                                                <img className={classes.imgcoin} src={val.img} />
+                                                                            <Grid item style={{ display: "flex", justifyContent: 'center', width: "100%", height: "auto" }}
+
+                                                                            >
+                                                                                <a href={val.navigateUrl}>
+                                                                                    <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} />
+                                                                                </a>
+
+
                                                                             </Grid>
 
                                                                             <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
@@ -361,7 +427,7 @@ export default function ChildCollectionItemOne() {
 
                                                                         </Grid>
                                                                         <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconRight}>
-                                                                            <i class="fa fa-angle-right" onClick={()=>next()}></i>
+                                                                            <i class="fa fa-angle-right" onClick={() => next3()}></i>
                                                                         </Grid>
                                                                     </Grid>
 
@@ -377,14 +443,17 @@ export default function ChildCollectionItemOne() {
                                                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                                                     <Slideshow
                                                         sliderRef={slider}
-                                                        dataCarousel={CollectionPageStylori.carouselTop.setting}
+                                                        dataCarousel={props.CollectionPageStylori.carouselTop.setting}
                                                     >
-                                                        {data.containerImage.map((val, index) => (
-                                                            <Grid container key={index}>
-                                                                <img
+                                                        {data && data.containerImage && data.containerImage.map((val, index) => (
+                                                            <Grid container key={index}
+                                                            >
+                                                                <a href={val.navigateUrl}><img
                                                                     src={val.img}
-                                                                    style={{ width: "100%", height: "auto" }}
-                                                                />
+                                                                    style={{ width: "100%", height: "auto", cursor: "pointer" }}
+                                                                /></a>
+
+
                                                             </Grid>
                                                         ))}
                                                     </Slideshow>
@@ -394,7 +463,10 @@ export default function ChildCollectionItemOne() {
                                                 <Grid container className={classes.containerMargin} >
                                                     <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding} >
                                                         <Grid item >
-                                                            <img src={data.primaryImage} className={classes.imageResolution}></img>
+                                                            <a href={data.primaryNavigateUrl}>
+                                                                <img style={{ cursor: "pointer" }} src={data.primaryImage}
+                                                                    className={classes.imageResolution}></img>
+                                                            </a>
                                                         </Grid>
                                                         <Grid style={{ margin: "0px 0px 10px 0px " }}>
                                                             <div style={{ margin: "20px 0px 10px 0px " }}>
@@ -402,25 +474,29 @@ export default function ChildCollectionItemOne() {
                                                                     {data.primaryContantName}
                                                                 </Typography>
                                                             </div>
-                                                            <Button type="button" className={classes.ButtonExplore} style={{ font: "13px Roboto" }}>{data.primaryButtonName}</Button>
+                                                            {/* <Button type="button" className={classes.ButtonExplore} style={{ font: "13px Roboto" }}>{data.primaryButtonName}</Button> */}
                                                         </Grid>
                                                     </Grid>
                                                     <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding}  >
                                                         <Grid container >
                                                             <Grid item item xs={12} sm={12} md={12} lg={12} xl={12} alignItems="center">
-                                                                <Slideshow dataCarousel={CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider}>
-                                                                    {data.primaryCarouselDetails.map((val, index) => <>
+                                                                <Slideshow dataCarousel={props.CollectionPageStylori.carouselTop.setting} sliderRef={slider4}>
+                                                                    {data && data.primaryCarouselDetails && data.primaryCarouselDetails.map((val, index) => <>
                                                                         <Grid container style={{ display: "flex", justifyContent: "center", marginTop: "54px" }}>
                                                                             <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconLeft}>
-                                                                                <i class="fa fa-angle-left" onClick={()=>previous()}></i>
+                                                                                <i class="fa fa-angle-left" onClick={() => previous4()}></i>
                                                                             </Grid>
                                                                             <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
                                                                                 <Typography className={classes.typograpyTop}>
                                                                                     {val.imageTitle}
                                                                                 </Typography>
 
-                                                                                <Grid item style={{ display: "flex", justifyContent: 'center', width: "100%", height: "auto" }}>
-                                                                                    <img className={classes.imgcoin} src={val.img} />
+                                                                                <Grid item style={{ display: "flex", justifyContent: 'center', width: "100%", height: "auto" }}
+
+                                                                                >
+                                                                                    <a href={val.navigateUrl}><img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} /></a>
+
+
                                                                                 </Grid>
 
                                                                                 <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
@@ -433,7 +509,7 @@ export default function ChildCollectionItemOne() {
 
                                                                             </Grid>
                                                                             <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconRight}>
-                                                                                <i class="fa fa-angle-right" onClick={()=>next()}></i>
+                                                                                <i class="fa fa-angle-right" onClick={() => next4()}></i>
                                                                             </Grid>
                                                                         </Grid>
 
@@ -448,7 +524,10 @@ export default function ChildCollectionItemOne() {
                                                 <Grid container className={classes.containerMargin} >
                                                     <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding}>
                                                         <Grid >
-                                                            <img src={data.secondaryImage} className={classes.imageResolution} ></img>
+                                                            <a href={data.secondaryNavigateUrl}>
+                                                                <img style={{ cursor: "pointer" }} src={data.secondaryImage}
+                                                                    className={classes.imageResolution}></img>
+                                                            </a>
                                                         </Grid>
                                                         <Grid style={{ margin: "0px 0px 10px 0px " }}>
                                                             <div style={{ margin: "20px 0px 10px 0px " }}>
@@ -456,27 +535,27 @@ export default function ChildCollectionItemOne() {
                                                                     {data.secondaryContantName}
                                                                 </Typography>
                                                             </div>
-                                                            <Button type="button" className={classes.ButtonExplore} style={{ font: "13px Roboto" }}>{data.secondaryButtonName}</Button>
+                                                            {/* <Button type="button" className={classes.ButtonExplore} style={{ font: "13px Roboto" }}>{data.secondaryButtonName}</Button> */}
                                                         </Grid>
                                                     </Grid>
                                                     <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding} >
                                                         <Grid container >
                                                             <Grid item item xs={12} sm={12} md={12} alignItems="center">
-                                                                <Slideshow dataCarousel={CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider}>
-                                                                    {data.secondaryCarouselDetails.map((val, index) => <>
+                                                                <Slideshow dataCarousel={props.CollectionPageStylori.carouselTop.setting} sliderRef={slider5}>
+                                                                    {data && data.secondaryCarouselDetails && data.secondaryCarouselDetails.map((val, index) => <>
                                                                         <Grid container style={{ display: "flex", justifyContent: "center" }}>
                                                                             <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconLeft}>
-                                                                                <i class="fa fa-angle-left" onClick={()=>previous()}></i>
+                                                                                <i class="fa fa-angle-left" onClick={() => previous5()}></i>
                                                                             </Grid>
                                                                             <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
                                                                                 <Typography className={classes.typograpyTop}>
                                                                                     {val.imageTitle}
                                                                                 </Typography>
 
-                                                                                <Grid item style={{ display: "flex", justifyContent: 'center', width: "100%", height: "auto" }}>
-                                                                                    <img className={classes.imgcoin} src={val.img} />
+                                                                                <Grid item style={{ cursor: "pointer", display: "flex", justifyContent: 'center', width: "100%", height: "auto" }}
+                                                                                >
+                                                                                    <a href={val.navigateUrl}><img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} /></a>
                                                                                 </Grid>
-
                                                                                 <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
                                                                                     <Typography style={{ color: "#394578" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
                                                                                         {val.price}</Typography>
@@ -484,10 +563,9 @@ export default function ChildCollectionItemOne() {
                                                                                 <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
                                                                                     <a style={{ textDecoration: 'none' }} href={val.navigateUrl}><Button type="button" className={classes.Button} style={{ fontSize: "13px" }}>{val.buttonName}</Button></a>
                                                                                 </Grid>
-
                                                                             </Grid>
                                                                             <Grid xs={3} sm={3} md={3} lg={3} xl={3} className={classes.arrowIconRight}>
-                                                                                <i class="fa fa-angle-right" onClick={()=>next()}></i>
+                                                                                <i class="fa fa-angle-right" onClick={() => next5()}></i>
                                                                             </Grid>
                                                                         </Grid>
 
