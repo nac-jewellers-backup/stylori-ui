@@ -40,8 +40,9 @@ class ProductImageZoom extends React.Component {
   state = {
     // backgroundImage: `url(${src})`,
     backgroundPosition: '0% 0%',
-    showimage: this.props.data[0].fadeImages.arrOfurls[0],
-    largeImage: this.props.data[0].fadeImages.arrOfurls_2X[0]
+    showimage: this.props && this.props.data &&this.props.data.length > 0 && this.props.data[0] &&this.props.data[0].fadeImages && this.props.data[0].fadeImages.arrOfurls && this.props.data[0].fadeImages.arrOfurls.length>0 &&  this.props.data[0].fadeImages.arrOfurls[0] ? this.props.data[0].fadeImages.arrOfurls[0] : [],
+    largeImage: this.props && this.props.data &&this.props.data.length > 0 && this.props.data[0] &&this.props.data[0].fadeImages && this.props.data[0].fadeImages.arrOfurls_2X && this.props.data[0].fadeImages.arrOfurls_2X.length>0 &&  this.props.data[0].fadeImages.arrOfurls_2X[0] ? this.props.data[0].fadeImages.arrOfurls_2X[0] : []
+ 
   }
 
   componentDidUpdate(prevProps) {
