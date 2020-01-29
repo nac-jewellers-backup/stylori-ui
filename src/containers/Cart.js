@@ -111,7 +111,6 @@ class Cart extends React.Component {
 // export default Checkout;
 
 const Components = props => {
-    debugger
     let { CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
     let content, mapped;
     if (!loading && !error) {

@@ -260,6 +260,7 @@ class Component extends React.Component {
     return bz
   })
   handleChange(value, BoolName, e, title, TargetName) {
+    debugger
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
