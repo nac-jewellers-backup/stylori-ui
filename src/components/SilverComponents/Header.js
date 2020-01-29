@@ -221,6 +221,7 @@ class Header extends Component {
                                                             <Grid item > <div style={{ padding: "0px 6px 0px 0px" }}
                                                                 onClick={() => {
                                                                     localStorage.clear();
+                                                                    sessionStorage.clear()
                                                                     window.location.reload()
                                                                     window.location.pathname = "/login"
                                                                 }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
@@ -389,6 +390,7 @@ class Header extends Component {
                                                                     <Grid item > <div style={{ textAlign: "center", padding: "0px 6px 0px 0px" }}
                                                                         onClick={() => {
                                                                             localStorage.clear();
+                                                                            sessionStorage.clear()
                                                                             window.location.reload()
                                                                             window.location.pathname = "/login"
                                                                         }}><img style={{ height: " 18px!important", cursor: "pointer ", width: "18px !important" }} className="icons-header-sizes" src={logout} />&nbsp;Logout
@@ -573,6 +575,7 @@ class Header extends Component {
                                             <ListItem button className="drawer-list12" >
                                                 <ListItemText onClick={() => {
                                                     localStorage.clear();
+                                                    sessionStorage.clear();
                                                     window.location.reload()
                                                     window.location.pathname = "/login"
                                                 }}>

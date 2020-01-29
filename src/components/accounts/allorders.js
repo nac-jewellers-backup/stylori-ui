@@ -99,10 +99,13 @@ class Allorders extends React.Component {
                                     var cnt = imgs.imageUrl.split("/")
                                     var cnt_b = cnt[2].split("-")
                                     var cnt_c = cnt_b[1]
+
                                     // if (sku === cart.transSkuListByProductSku.generatedSku) {
                                     var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
+
                                     if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
                                         check_img = true
+
                                         var resolution = 500
                                         var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`
                                         var url_split = imgs && imgs.imageUrl.split('/')
@@ -410,8 +413,8 @@ class Allorders extends React.Component {
                                                     {/* {val.map((val, index) => ( */}
                                                     <div className="address_details">
                                                         {/* {val.shoppingCartByCartId.cartAddressesByCartId.nodes.map(addreses => ( */}
-                                                        <div style={{ width: "100%", marginBottom: "10px", display:'flex' }}>
-                                                            <Grid container spacing={12} lg={12} xs={11} sm={11} style={{ justifyContent:'center'}} >
+                                                        <div style={{ width: "100%", marginBottom: "10px", display: 'flex' }}>
+                                                            <Grid container spacing={12} lg={12} xs={11} sm={11} style={{ justifyContent: 'center' }} >
                                                                 <Grid item sm={6} lg={6} xs={12} className="order_addres" style={{ color: "#394578" }}>
                                                                     <div> <b>Order Number</b>:#{val && val.id}</div><br />
                                                                     <div><b>Order Date	</b> : {moment(val && val.createdAt).format('Do MMMM YYYY')}</div><br />
@@ -516,7 +519,7 @@ class Allorders extends React.Component {
                                                                                         </Typography>  </Grid>
                                                                                 </Grid>
                                                                             </Grid>
-                                                                            <Grid item lg={2} sm={2} style={{alignItems: 'center',display: 'flex', padding: "16px"}}>
+                                                                            <Grid item lg={2} sm={2} style={{ alignItems: 'center', display: 'flex', padding: "16px" }}>
                                                                                 <Grid container spacing={12} lg={12}>
                                                                                     <Typography className="subhesder">Quantity 1</Typography>
                                                                                     <Typography className="subhesder">

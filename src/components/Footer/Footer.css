@@ -1,40 +1,125 @@
 @keyframes pulse_animation {
-    25% {
-        -webkit-transform: scale(1.3);
-        transform: scale(1.3);
-    }
-    75% {
-        -webkit-transform: scale(0.8);
-        transform: scale(0.8);
-    }
- }
-  .footer-icons i:hover {
-    animation-name: pulse_animation;
-    animation-duration: 1000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    cursor: pointer;
+  25% {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
   }
-  .borderCircle{
-    width: 30px !important;
-    height: 40px;
-    border:1px solid #ffffff;
-    color: rgb(255, 255, 255);
-    background: transparent;
-    border-radius: 50%;
-    
+
+  75% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+
+.footer-icons i:hover {
+  animation-name: pulse_animation;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  cursor: pointer;
+}
+
+.borderCircle {
+  width: 30px !important;
+  height: 40px;
+  border: 1px solid #ffffff;
+  color: rgb(255, 255, 255);
+  background: transparent;
+  border-radius: 50%;
+
 }
 
 .error {
   position: relative;
   animation: shake .1s linear;
   animation-iteration-count: 3;
-  border:1px solid red;
+  border: 1px solid red;
 }
 
 @keyframes shake {
-  0% { margin-left: 0rem; }
-  25% { margin-left: 0.5rem; }
-  75% { margin-left: -0.5rem; }
-  100% { margin-left: 0rem; }
+  0% {
+    margin-left: 0rem;
+  }
+
+  25% {
+    margin-left: 0.5rem;
+  }
+
+  75% {
+    margin-left: -0.5rem;
+  }
+
+  100% {
+    margin-left: 0rem;
+  }
+}
+
+.lockSymbol {
+  background-image: url("https://alpha-assets.stylori.com/images/static/footer.png");
+  float: left;
+  width: 61px;
+  height: 30px;
+  background-position: -44px -8px;
+  background-repeat: no-repeat;
+}
+
+.netbank {
+  background-image: url("https://alpha-assets.stylori.com/images/static/footer.png");
+  float: left;
+  width: 72px;
+  height: 34px;
+  background-position: -362px -9px;
+  background-repeat: no-repeat;
+}
+
+.cashBack {
+  background-image: url("https://alpha-assets.stylori.com/images/static/footer.png");
+  float: left;
+  width: 85px;
+  height: 32px;
+  background-position: -451px -8px;
+  background-repeat: no-repeat;
+}
+
+.visacard {
+  background-image: url("https://alpha-assets.stylori.com/images/static/footer.png");
+  float: left;
+  width: 54px;
+  height: 32px;
+  background-position: -133px -8px;
+  background-repeat: no-repeat;
+}
+
+.mastercard {
+  background-image: url("https://alpha-assets.stylori.com/images/static/footer.png");
+  float: left;
+  width: 54px;
+  height: 32px;
+  background-position: -187px -8px;
+  background-repeat: no-repeat;
+}
+
+.americanexp {
+  background-image: url("https://alpha-assets.stylori.com/images/static/footer.png");
+  float: left;
+  width: 54px;
+  height: 32px;
+  background-position: -241px -8px;
+  background-repeat: no-repeat;
+}
+
+.dinerClubs {
+  background-image: url("https://alpha-assets.stylori.com/images/static/footer.png");
+  float: left;
+  width: 54px;
+  height: 32px;
+  background-position: -293px -8px;
+  background-repeat: no-repeat;
+}
+
+.classSame {
+  padding-left: 15px
+}
+
+.breathspace {
+  margin: 0px 6px
 }

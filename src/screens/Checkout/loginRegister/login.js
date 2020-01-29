@@ -35,7 +35,8 @@ const LoginComponent = (props) => {
         props.change()
     }
     const responseFacebook = response => {
-        if (response.status !== "unknown") {
+        if (response.status !== "unknown" && response.status !== undefined) {
+            console.log(response, "facebook")
             props.history.push('/')
         }
     }

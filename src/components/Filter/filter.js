@@ -172,11 +172,11 @@ class Component extends React.Component {
                 var a = values && Object.keys(values)
                 if (keys === "ProductType") {
                   selected.push("Product Type", keys)
-                }if (keys === "MetalPurity") {
+                } if (keys === "MetalPurity") {
                   selected.push("Metal Purity", keys)
-                }if (keys === "MetalColor") {
+                } if (keys === "MetalColor") {
                   selected.push("Metal Color", keys)
-                }if (keys === "NoOfStones") {
+                } if (keys === "NoOfStones") {
                   selected.push("No Of Stones", keys)
                 } if (keys === "StoneColor") {
                   selected.push("Stone Color", keys)
@@ -226,7 +226,7 @@ class Component extends React.Component {
       this.state.Price_button_click === false && this.setState({ numOne: numOne, numTwo: numTwo })
       // if( this.props.data[0].subFilter['Price Range'].length > 0 && this.props.data[0].subFilter['Price Range'][0] !== undefined){ 
       //   this.props.setFilters({pricemax:numberTwo, pricemin:numberOne})}  
-    } 
+    }
 
   }
 
@@ -489,7 +489,9 @@ class Component extends React.Component {
   // })
 
   render() {
-
+    console.log('urlSplitparl', this.props.data)
+    const found = window.location.pathname.split(/-/g).find(element => element === "/goldcoins" || element === "goldcoins");
+    console.log(found + "ssssssss")
     const { classes, data, loading } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];
 
@@ -575,7 +577,7 @@ class Component extends React.Component {
                                   <>
                                     {
                                       subFilter[row].length > 0 ?
-                                        <>{window.location.pathname === "/goldcoins" ? row === "Offers" ? "" : <ListItem key={row}
+                                        <>{window.location.pathname === "/goldcoins" || row === "Offers" || found === "/goldcoins" ? row === "Offers" ? "" : <ListItem key={row}
                                           onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
                                           <ListItemText
                                           >
@@ -585,17 +587,19 @@ class Component extends React.Component {
                                           </ListItemText>
                                           {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
                                             <ExpandMore className="fil-drawer-arrow" />}
-                                        </ListItem> : <ListItem key={row}
+                                        </ListItem>:<ListItem key={row}
                                           onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
-                                            <ListItemText
-                                            >
-                                              <Typography className="fil-list-items" variant='h4' component="h4"
-                                              >{row}
-                                              </Typography>
-                                            </ListItemText>
-                                            {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
-                                              <ExpandMore className="fil-drawer-arrow" />}
-                                          </ListItem>}</>
+                                          <ListItemText
+                                          >
+                                            <Typography className="fil-list-items" variant='h4' component="h4"
+                                            >{row}
+                                            </Typography>
+                                          </ListItemText>
+                                          {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
+                                            <ExpandMore className="fil-drawer-arrow" />}
+                                        </ListItem>
+                                        }
+                                        </>
                                         :
                                         <span></span>
                                     }
@@ -707,11 +711,11 @@ class Component extends React.Component {
           {
             this.state.productDisplay &&
             <div
-            // className="filter_page_layout"
+              // className="filter_page_layout"
               className={`${check ? `filter_page_layout ${classes.productCardscheck}` : `filter_page_layout ${classes.productCardsuncheck}`}`}
             >
 
-              <ProductLayout  wishlist={this.props.wishlist} data={this.props.datas} loading={this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
+              <ProductLayout wishlist={this.props.wishlist} data={this.props.datas} loading={this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
 
             </div>}
         </div>
@@ -742,7 +746,7 @@ class Component extends React.Component {
                   <List className="mbl-filter-list">
                     {filter && filter.map(row => {
                       return (subFilter[row].length > 0 ?
-                        <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
+                        <>{window.location.pathname === "/goldcoins" || found === "/goldcoins" || found === "goldcoins" ? row === "Offers" ? "" : <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
                           onClick={() => this.filterValue(row)}
                         >
                           <ListItemText
@@ -752,6 +756,16 @@ class Component extends React.Component {
 
                           </ListItemText>
                         </ListItem>
+                          : <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
+                            onClick={() => this.filterValue(row)}
+                          >
+                            <ListItemText
+                              className='filter-mbl-font filter-mbl-fonts'
+                            >
+                              {row && row}
+
+                            </ListItemText>
+                          </ListItem>}</>
                         : '')
                     }
                     )}

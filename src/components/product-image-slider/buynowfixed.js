@@ -42,10 +42,10 @@ class Buynowfixed extends React.Component {
                     <Grid container spacing={12} >
                         <Grid item xs={6} className='fixed-grid' style={{ textAlign: "center", background: "#EBEAEA" }}>
                             <div onClick={handleLocalStorage.bind(this)}>
-                                <Buynowbutton sku={data[0].skuId} class='product-footer-buynow' onClick={() =>{this.props.onClick()}} />
+                                <Buynowbutton sku={data[0].skuId} class='product-footer-buynow' onClick={() => { this.props.onClick() }} />
                             </div>
-                        </Grid> 
-                        <Grid className='talk-to-us' item xs={6}><i class="fa fa-comments">
+                        </Grid>
+                        <Grid className='talk-to-us' item xs={6} style={{ justifyContent: "center", display: "flex" }}><i class="fa fa-comments" >
                         </i> &nbsp;Talk To Us</Grid>
                     </Grid>
                 </AppBar>
