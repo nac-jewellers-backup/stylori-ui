@@ -5,11 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import TagManager from 'react-gtm-module'
 
-const tagManagerArgs = {
-    gtmId: 'GTM-PW3ZXSF'
-}
+// const tagManagerArgs = {
+//     gtmId: 'GTM-PW3ZXSF'
+// }
 
-TagManager.initialize(tagManagerArgs)
+// TagManager.initialize(tagManagerArgs)
 
 // lambda_func_front_end()
 

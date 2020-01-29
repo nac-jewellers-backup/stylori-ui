@@ -172,20 +172,8 @@ class Header extends Component {
                       >
                         <a
                           onClick={() => {
-                            localStorage.removeItem("user_id")
-                            localStorage.removeItem("email")
-                            localStorage.removeItem("vals")
-                            localStorage.removeItem("valuessetdata")
-                            localStorage.removeItem("true")
-                            localStorage.removeItem("panel")
-                            localStorage.removeItem("cartDetails")
-                            localStorage.removeItem("cart_id")
-                            localStorage.removeItem("isedit")
-                            localStorage.removeItem("check_dlt")
-                            localStorage.removeItem("a__w_l")
-                            localStorage.removeItem("a__c_t")
-                            localStorage.removeItem("c_k_l")
-                            localStorage.removeItem("select_addres")
+                            localStorage.clear();
+                            sessionStorage.clear();
                             window.location.reload()
                             window.location.pathname = "/login"
                           }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout

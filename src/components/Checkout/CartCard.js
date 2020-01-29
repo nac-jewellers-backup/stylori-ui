@@ -48,8 +48,11 @@ class Checkoutcard extends React.Component {
 
     // }
     handleDeleteLocalStorage = (e) => {
+        debugger
         var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
         var currentValue = e.target.id
+
+
         // console.clear()
         // console.log("e-clear",e.target.id)
 
@@ -137,6 +140,7 @@ else{
             arrows: false,
         }
         const { classes, data } = this.props;
+        debugger
         const { productsDetails, fadeImages, dataCard1 } = this.props.data;
         // const { FilterOptionsCtx: { setcartcount } } = React.useContext(FilterOptionsContext);
         // React.useEffect(()=>{
@@ -205,7 +209,7 @@ else{
                                             {/* : ""} */}
                                             <br />
                                             {window.location.pathname !== "/checkout" ? <div className={`subhesder hov ${classes.normalfonts}`}
-                                                id={val.namedetail[4].details} productid={dataval} onClick={(event) => this.handleDeleteLocalStorage(event)}>
+                                                id={val.namedetail[4].details}  onClick={(event) => this.handleDeleteLocalStorage(event)}>
                                                 <i class="fa fa-trash"></i>
                                                 &nbsp;Remove</div> : ""}
                                         </Grid>

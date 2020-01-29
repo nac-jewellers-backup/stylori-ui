@@ -32,7 +32,6 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
 
     // const [] = React.useState()
 
-    console.info('object2', props.filters)
     return (
         <div className={classes.searchCheck} style={{
 
