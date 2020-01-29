@@ -62,7 +62,6 @@ class Component extends React.Component {
   }
   componentDidMount() {
     var { checked, chipData, numOne, numTwo, selected } = this.state
-    console.log('price_props', typeof this.props.data[0].subFilter['Price Range'])
     var price_min = Number(this.props.data[0].subFilter['Price Range'].min);
     var price_max = Number(this.props.data[0].subFilter['Price Range'].max);
     var _price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_min));
@@ -138,7 +137,6 @@ class Component extends React.Component {
           .then(status)
           .then(json)
           .then(async function (data) {
-            console.log('Request succeeded with JSON response', data);
             // alert(data)
             // var {checked} = this.state
             //    data.data.allSeoUrlPriorities.nodes.map(val => {
@@ -216,14 +214,11 @@ class Component extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     // Typical usage (don't forget to compare props):
-    console.log(this.props, 'filters')
     if (this.state.checked !== prevState.checked) {
       // this.myRef.scrollTop()
       window.scrollTo(0, this.myRef.scrollTop)
     }
     if (this.props.data[0].subFilter['Price Range'] !== prevProps.data[0].subFilter['Price Range']) {
-
-      console.log('price_props', typeof this.props.data[0].subFilter['Price Range'], this.props.data[0].subFilter['Price Range'].length, this.props.data[0].subFilter['Price Range'][0] !== undefined, Number(this.props.data[0].subFilter['Price Range'].max))
       var numberOne = this.props.data[0].subFilter['Price Range'][0] ? this.props.data[0].subFilter['Price Range'][0].min : 0;
       var numberTwo = this.props.data[0].subFilter['Price Range'][0] ? this.props.data[0].subFilter['Price Range'][0].max : 0;
       var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(numberOne));
@@ -264,6 +259,7 @@ class Component extends React.Component {
     return bz
   })
   handleChange(value, BoolName, e, title, TargetName) {
+    debugger
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
@@ -305,7 +301,6 @@ class Component extends React.Component {
       let paramsMapUrlSetState = () => TargetName.map(val => {
         var nameFilter = val[0]
         var keyNameFilter = val[1]
-        console.log('val', TargetName)
         let checkedvalue = {};
         checkedvalue[keyNameFilter] = true
         checked[nameFilter] = checkedvalue
@@ -317,7 +312,6 @@ class Component extends React.Component {
         }, () => this.props.setFilters(checked))
       }
       )
-      console.log('val', TargetName)
       paramsMapUrlSetState()
     }
     let arr = [];
@@ -470,7 +464,6 @@ class Component extends React.Component {
     var pricemax = Number(price_max.substr(2).replace(/\,/g, ''))
     this.setState(checked)
     this.setState({ numOne: price_min, numTwo: price_max }, () => { this.props.setPriceMax(pricemax); this.props.setPriceMin(pricemin) })
-    console.log('_checked_checked', checked)
   }
   txtFieldChange(e) {
     if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
@@ -480,7 +473,6 @@ class Component extends React.Component {
   handleChangesort = (event) => {
 
     if (this.props.offset > 0) this.props.setOffset(0)
-    console.log(this.props.offset)
     this.props.setSort({ values: event.target.value })
 
     this.setState({ CardRadio: false })
@@ -585,7 +577,17 @@ class Component extends React.Component {
                                   <>
                                     {
                                       subFilter[row].length > 0 ?
-                                        <>{window.location.pathname === "/goldcoins" && row === "Offers" ||  found === "/goldcoins" || found === "goldcoins"  && row === "Offers" ? "" : <ListItem key={row}
+                                        <>{window.location.pathname === "/goldcoins" || row === "Offers" || found === "/goldcoins" ? row === "Offers" ? "" : <ListItem key={row}
+                                          onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
+                                          <ListItemText
+                                          >
+                                            <Typography className="fil-list-items" variant='h4' component="h4"
+                                            >{row}
+                                            </Typography>
+                                          </ListItemText>
+                                          {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
+                                            <ExpandMore className="fil-drawer-arrow" />}
+                                        </ListItem>:<ListItem key={row}
                                           onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
                                           <ListItemText
                                           >
@@ -709,10 +711,10 @@ class Component extends React.Component {
           {
             this.state.productDisplay &&
             <div
-
-              className={check ? classes.productCardscheck : classes.productCardsuncheck}
-
+              // className="filter_page_layout"
+              className={`${check ? `filter_page_layout ${classes.productCardscheck}` : `filter_page_layout ${classes.productCardsuncheck}`}`}
             >
+
               <ProductLayout wishlist={this.props.wishlist} data={this.props.datas} loading={this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
 
             </div>}
@@ -744,7 +746,7 @@ class Component extends React.Component {
                   <List className="mbl-filter-list">
                     {filter && filter.map(row => {
                       return (subFilter[row].length > 0 ?
-                        <>{window.location.pathname === "/goldcoins" && row === "Offers" || found === "/goldcoins" || found === "goldcoins" && row === "Offers" ? "" : <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
+                        <>{window.location.pathname === "/goldcoins" || found === "/goldcoins" || found === "goldcoins" ? row === "Offers" ? "" : <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
                           onClick={() => this.filterValue(row)}
                         >
                           <ListItemText
@@ -754,7 +756,16 @@ class Component extends React.Component {
 
                           </ListItemText>
                         </ListItem>
-                        }</>
+                          : <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
+                            onClick={() => this.filterValue(row)}
+                          >
+                            <ListItemText
+                              className='filter-mbl-font filter-mbl-fonts'
+                            >
+                              {row && row}
+
+                            </ListItemText>
+                          </ListItem>}</>
                         : '')
                     }
                     )}

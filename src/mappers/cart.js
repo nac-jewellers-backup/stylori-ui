@@ -231,9 +231,11 @@ export default function (data) {
 
                     },
                 ],
-                fadeImages: (k.productListByProductId.productImagesByProductId.nodes.map(val => (
-                    `https://assets.stylori.net/base_images/${val.imageUrl}`
-                ))),
+                // fadeImages: (k.productListByProductId.productImagesByProductId.nodes.map(val => (
+                //     // `https://assets.stylori.net/base_images/${val.imageUrl}`
+                //     val.imageUrl
+                // ))),
+                fadeImages: k.productListByProductId.productImagesByProductId.nodes,
                 breadcrumsdata: [
                     { title: "Shopping Bag" },
                     { title: "Login/ Register" },

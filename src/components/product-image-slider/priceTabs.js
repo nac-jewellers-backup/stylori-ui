@@ -45,7 +45,7 @@ class Component extends React.Component {
         values: "",
         expanded: "1",
         skuSize: this.props && this.props.filters && this.props.filters.defaultVariants && this.props.filters.defaultVariants.skuSize,
-        purity: this.props.data[0].productsDetails[0].namedetail[1].details,
+        purity: this.props && this.props.data && this.props.data.length > 0 && this.props.data[0] && this.props.data[0].productsDetails && this.props.data[0].productsDetails.length > 0 && this.props.data[0].productsDetails[0] && this.props.data[0].productsDetails[0].namedetail && this.props.data[0].productsDetails[0].namedetail.length > 0 && this.props.data[0].productsDetails[0].namedetail[1] && this.props.data[0].productsDetails[0].namedetail[1].details ? this.props.data[0].productsDetails[0].namedetail[1].details : '',
         diamondType: this.props && this.props.filters && this.props.filters.defaultVariants && this.props.filters.defaultVariants.diamondType,
         open: false
     };
@@ -178,6 +178,7 @@ class Component extends React.Component {
     }
 
     TabsComponent = () => {
+        console.log("ss")
         const { classes } = this.props;
         const data = this.props.data;
         const { value } = this.state;

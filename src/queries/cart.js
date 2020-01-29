@@ -11,7 +11,7 @@ export const CART = `query myquerycart($productList: [String!]) {
       productListByProductId {
         productId
         productName
-        productImagesByProductId(filter: {isdefault: {equalTo: true}, imagePosition: {equalTo: 1}}) {
+        productImagesByProductId (filter: { imagePosition: {equalTo: 1}}){
           nodes {
             imageUrl
           }

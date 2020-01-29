@@ -203,7 +203,7 @@ const Addressforms = (changePanel) => {
     //     values['addressOne']['salutation'] =
     //         setValues({ ...values, values })
     // };
-    console.log("jjj****", values.addressOne.salutation)
+    // console.log("jjj****", values.addressOne.salutation)
     const handleSubmit = (e) => {
 
         if (values && values.addressOne && values.addressOne.pincode === "") {

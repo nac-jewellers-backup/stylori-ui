@@ -64,7 +64,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function ProductCareAccordian(props) {
     const value = props.value;
-console.log(value)
     
     const checkerOpen = ()=>{
         

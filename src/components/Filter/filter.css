@@ -20,7 +20,19 @@
 .fil-drawer-arrow {
   fill: rgba(0, 0, 0, 0.25) !important;
 }
-
+.filter_page_layout{
+  /* display: flex; */
+  /* justify-content: center; */
+  width: 100%;
+  /* min-height: 100vh !important;
+  overflow: auto; */
+  /* overflow-y: auto !important; */
+  /* background-size: 150% 150%; */
+  /* position: fixed;  */
+  top: 0;
+  background-color: #ffffff !important;
+  /* z-index: 99999999; */
+}
 .fil-list-items {
   padding: 0px 0 0px 6px !important;
   letter-spacing: 0.01071em;

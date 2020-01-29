@@ -48,7 +48,6 @@ class ProductDescription extends Component {
     // const descriptionData = this.props.data;
     const settings = this.props.data && this.props.data[0] && this.props.data[0].dataCarousel;
     // const fadeImages = this.props.data && this.props.data[0] && this.props.data[0].carouselImage;
-    debugger
     const fadeImages = this.props.datalisting && this.props.datalisting  && this.props.datalisting.length>0  ? this.props.datalisting.map(val=>{
     
       if(val && val.image && val.image.placeImage && val.image.placeImage.img) return (val.image.placeImage.img)

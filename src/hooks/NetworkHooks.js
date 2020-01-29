@@ -17,7 +17,6 @@ export const useDummyRequest = (mapper) => {
         mapper()
             .then(data => {
                 setMapped(data);
-                console.info('MAPPER', data);
             })
             .catch(err => setError(true));
         setLoading(false);

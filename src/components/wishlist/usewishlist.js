@@ -50,9 +50,7 @@ const useWishlists = (props) => {
         }).then((response) => {
             return response.json();
         })
-            .then((myData) => {
-                console.log(myData);
-            });
+         
     }
     // const removemakeFetch = () => {
     //     

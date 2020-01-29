@@ -14,6 +14,7 @@ import filterData from 'mappers/filterData'
 import { async } from 'q';
 import MetaTags from 'react-meta-tags';
 import { CartContext } from 'context'
+import LiveChat from 'react-livechat'
 
 class Stylori extends React.Component {
   constructor(props) {
@@ -42,30 +43,36 @@ class Stylori extends React.Component {
 
       <>
 
-
+<LiveChat license={5807571}/>
         <Grid container >
           <div>
-            {/* <MetaTags>
-        <title>{this.props.mappedFilters.seo_url}</title>
-        <meta name="description" content={this.props.mappedFilters.seo_text} />
-        <meta name="keywords" content={this.props.dataFilter[0].filter} />
-
-        <meta property="og:title" id="fb-title" content={this.props.mappedFilters.seo_url} />
-        <meta property="og:description" content={this.props.mappedFilters.seo_text} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" id="fb-product-url" content={window.location.href} />
-        <meta property="og:image" id="fb_imageUrl" content={this.props.data && this.props.data[0]&&this.props.data[0].image && this.props.data[0].image.placeImage.img} />
-        <meta property="og:image:width" content="200" />
-         <meta property="og:image:height" content="200" />
-
-
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@StyloriLove" />
-        <meta name="twitter:title" id="twitter-title" content={this.props.mappedFilters.seo_url} />
-        <meta name="twitter:description" content={this.props.mappedFilters.seo_text} />
-        <meta property="og:image" id="fb_imageUrl" content={this.props.data && this.props.data[0]&&this.props.data[0].image && this.props.data[0].image.placeImage.img} />
-
-        </MetaTags> */}
+            {
+              this.props && this.props.mappedFilters && this.props.mappedFilters.seo_url ?
+              <MetaTags>
+              <title>{this.props.mappedFilters.seo_url}</title>
+              <meta name="description" content={this.props.mappedFilters.seo_text} />
+              <meta name="keywords" content={this.props.dataFilter[0].filter} />
+      
+              <meta property="og:title" id="fb-title" content={this.props.mappedFilters.seo_url} />
+              <meta property="og:description" content={this.props.mappedFilters.seo_text} />
+              <meta property="og:type" content="website" />
+              <meta property="og:url" id="fb-product-url" content={window.location.href} />
+              <meta property="og:image" id="fb_imageUrl" content={this.props.data && this.props.data[0]&&this.props.data[0].image && this.props.data[0].image.placeImage.img} />
+              <meta property="og:image:width" content="200" />
+               <meta property="og:image:height" content="200" />
+      
+      
+              <meta name="twitter:card" content="summary" />
+              <meta name="twitter:site" content="@StyloriLove" />
+              <meta name="twitter:title" id="twitter-title" content={this.props.mappedFilters.seo_url} />
+              <meta name="twitter:description" content={this.props.mappedFilters.seo_text} />
+              <meta property="og:image" id="fb_imageUrl" content={this.props.data && this.props.data[0]&&this.props.data[0].image && this.props.data[0].image.placeImage.img} />
+      
+              </MetaTags>
+              :
+              ''
+            }
+          
 
           </div>
 
@@ -77,7 +84,7 @@ class Stylori extends React.Component {
           </Grid>
           <Grid item xs={12} >
             <Hidden smDown>
-              <ChatHelp data={data} wishlist={this.props.wishlistdata} />
+              {/* <ChatHelp data={data} wishlist={this.props.wishlistdata} /> */}
 
               <Footer />
             </Hidden>
