@@ -31,7 +31,7 @@ class Component extends React.Component {
     //                         datas = thrd_map
     //                     }
     //                 })
-    //             }
+    //             } 
     //         })
     //     }
     //     this.props.setCartFilters({ skuId: wishlistdata.nodes[0].skuId, qty: 1, price: datas.markupPrice })

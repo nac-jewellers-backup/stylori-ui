@@ -125,7 +125,7 @@ class Accountdetails extends Component {
                                             this.state.isActive == 'wishlist' && <>
                                                 <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
                                                 {/* {JSON.stringify(this.props.wishlistdata)} */}
-                                            </>
+                                            </> 
                                         }
                                         {
                                             this.state.isActive == 'allorders' && <>
