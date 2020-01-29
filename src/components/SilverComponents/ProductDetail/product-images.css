@@ -1259,6 +1259,11 @@ body {
     width: 89%;
 }
 
+.widthFix div div div div {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
 .sizeChange {
     max-width: default !important;
 }

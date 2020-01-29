@@ -9,6 +9,7 @@ import './Collection.css';
 import { seoUrlResult } from 'queries/productListing';
 import { NetworkContext } from 'context/NetworkContext';
 import { useNetworkRequest } from 'hooks/NetworkHooks'
+import 'screens/screens.css';
 
 const useStyles = makeStyles(theme => ({
     ButtonViewMoreCollections: {
@@ -25,15 +26,17 @@ export default function CollectionItem(props) {
     // var arr_data;
     var data_ = [];
     var data_con = {}
+    var img_url;
     const { NetworkCtx: { graphqlUrl: uri, apiUrl: ApiUrl } } = React.useContext(NetworkContext);
     const classes = useStyles();
-    const { loading, error, data: CollectionData, makeFetch: fetchproducts } = useNetworkRequest('/fetchproducts', {}, false, {})
+    // const { loading, error, data: CollectionData, makeFetch: fetchproducts } = useNetworkRequest('/fetchproducts', {}, false, {})
     const slider = React.createRef();
     const [values, setValues] = React.useState({
         onViewMoreCollection: false,
         arr_data: [],
         primaryNavigateUrl: null
     })
+    const [loading, setLoading] = React.useState(false);
     const viewMoreCollections = () => {
         setValues({ onViewMoreCollection: true })
     }
@@ -133,13 +136,15 @@ export default function CollectionItem(props) {
                         ...values,
                         values
                     })
+                    // window.scrollTo(0,1)
+                    resolve(true)
                 }
-                resolve(true)
+
             }).catch(() => { reject([]) })
         })
     }
     React.useEffect(() => {
-        const img_url = [
+        img_url = [
             "/gemstone-jewellery?sort=latest",
             "/jewellery-from+the+renaissance+collection",
             "/jewellery-from+monsoon+collection",
@@ -147,12 +152,13 @@ export default function CollectionItem(props) {
             "/jewellery-from+the+summer+collection"
         ]
         getAlldata(img_url);
+
     }, [])
 
     let onViewMoreCollect = values && values.onViewMoreCollection
     React.useEffect(() => {
         if (values.onViewMoreCollection === true) {
-            const img_url = [
+            img_url = [
                 "/gemstone-jewellery?sort=latest",
                 "/jewellery-from+the+renaissance+collection",
                 "/jewellery-from+monsoon+collection",
@@ -162,27 +168,30 @@ export default function CollectionItem(props) {
             getAlldata(img_url);
         }
     }, [onViewMoreCollect])
-
     return (
         <>
-            <ChildCollectionItemOne CollectionPageStylori={values.arr_data} />
-            {
-                values.arr_data && values.arr_data.Testimony && values.arr_data.Testimony.carousel.data.length >= 2 ?
-                    <>
-                        {
-                            values.onViewMoreCollection === true ? <ChildCollectionItemTwo CollectionPageStylori={values.arr_data} /> : <>
-                                <Grid container>
-                                    <Grid item style={{ margin: "auto" }}>
-                                        <Button type="button" className={classes.ButtonViewMoreCollections} onClick={() => {
-                                            viewMoreCollections()
-                                        }} >view More Collections</Button>
+            {(values.arr_data && values.arr_data.Testimony && values.arr_data.Testimony.carousel && values.arr_data.Testimony.carousel.data.length) === 5 ? <>
+                <ChildCollectionItemOne CollectionPageStylori={values.arr_data} />
+                {
+                    values.arr_data && values.arr_data.Testimony && values.arr_data.Testimony.carousel.data.length >= 2 ?
+                        <>
+                            {
+                                values.onViewMoreCollection === true ? <ChildCollectionItemTwo CollectionPageStylori={values.arr_data} /> : <>
+                                    <Grid container>
+                                        <Grid item style={{ margin: "auto" }}>
+                                            <Button type="button" className={classes.ButtonViewMoreCollections} onClick={() => {
+                                                viewMoreCollections()
+                                            }} >view More Collections</Button>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            </>
-                        }
-                    </>
-                    : ''
-            }
+                                </>
+                            }
+                        </>
+                        : ''
+                }
+            </>
+                : <>
+                    {<div  className="overall-loader"><div id="loading"></div></div>}</>}
         </>
     )
 }
