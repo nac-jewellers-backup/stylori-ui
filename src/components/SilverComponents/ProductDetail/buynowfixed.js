@@ -62,7 +62,7 @@ class Buynowfixed extends React.Component {
                             </div>
                         </Grid>
                         <CommenDialog isOpen={this.state.modelOpen} content={`Verify selected product details before proceeding`} handleClose={canceldeletechecklist.bind(this)} handleSuccess={deletechecklists.bind(this)} negativeBtn="No" positiveBtn="Yes" title="Confirmation" />
-                        <Grid className='talk-to-us' item xs={6}><i class="fa fa-comments">
+                        <Grid className='talk-to-us' item xs={6} style={{ justifyContent: "center", display: "flex" }}><i class="fa fa-comments" >
                         </i> &nbsp;Talk To Us</Grid>
                     </Grid>
                 </AppBar>

@@ -226,7 +226,7 @@ class Component extends React.Component {
                     const arr2 = val.tab2.Children !== null && (val.tab2.Children).split(',')
                     return (
                         <>
-                            {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px", paddingBottom: "10px", }}>
+                            {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
                                 <Grid item lg={3} xs={12} style={{ display: "flex", alignItems: "center" }}><h1 className="rings_tabs">{val.tab1.header}&nbsp;<a
                                     onClick={this.handleOpen}
                                     className="my-ringsize">Size Guide </a></h1></Grid>
@@ -310,7 +310,7 @@ class Component extends React.Component {
                                 <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
                                     <Grid item lg={3} xs={12} style={{ display: "flex", alignItems: "center" }}><h1 className="rings_tabs">{val.tab2.header}</h1></Grid>
                                     <Grid item lg={9} xs={12}>
-                                        <Grid container spacing={12} lg={12} style={{ marginLeft: "4%" }}>
+                                        <Grid container spacing={12} lg={12} >
                                             {arr2.map((val, i) => {
                                                 var kv = val
                                                 var objVal = kv.split(" ")
@@ -357,7 +357,7 @@ class Component extends React.Component {
                             {val.tab3.Children.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
                                 <Grid item lg={3} xs={12} style={{ display: "flex", alignItems: "center" }}><h1 className="rings_tabs">{val.tab3.header}</h1></Grid>
                                 <Grid item lg={9} xs={12}>
-                                    <Grid container spacing={12} lg={12} style={{ marginLeft: "4%" }}>
+                                    <Grid container spacing={12} lg={12} >
                                         {val.tab3.Children.map((val, i) => {
                                             return (
                                                 <Grid item lg={1} xs={2} className={classes.normalfonts_tabs}>

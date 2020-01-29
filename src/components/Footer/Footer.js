@@ -74,7 +74,7 @@ const useStyles = makeStyles(theme => ({
         fontSize: '12px'
     },
     colorWhiteBorder: {
-        border: `1px solid ${theme.palette.common.white}`
+        borderTop: `1px solid ${theme.palette.common.white}`
     }
 }));
 
@@ -422,12 +422,12 @@ export default function Footer(props) {
                 {/*  */}
                 {/*  */}
                 {/*  */}
-                <Grid container item xs={12} className={`${classes.colorWhite} ${classes.colorMain} ${classes.colorWhiteBorder}`} style={{ display: 'flex', justifyContent: 'left', padding: '5%' }}>
+                <Grid container item xs={12} className={`${classes.colorWhite} ${classes.colorMain} ${classes.colorWhiteBorder}`} style={{ display: 'flex', justifyContent: 'left', padding: '10px' }}>
                     <Grid item xs={12}  >
                         Stay social with Stylori.
                         We promise we won’t bore you.
 </Grid>
-                    <Grid item xs={12} sm={6} className="footer-icons">
+                    <Grid item xs={12} sm={6} className="footer-icons" style={{ paddingTop: "6px" }}>
 
                         <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
                             <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i> </a>
@@ -458,9 +458,14 @@ export default function Footer(props) {
                                 <Grid item xs={3}>
                                     {footerData1.map(data => {
                                         return (
-                                            <Grid container className={classes.navTitle} onClick={() => { window.location.href = data.url }} href="#">
+                                            <>{localStorage.getItem("true") ? <Grid container className={classes.navTitle} onClick={() => { window.location.href = data.url }} href="#">
                                                 {data.Title}
-                                            </Grid>
+                                            </Grid> :
+                                                <Grid container className={classes.navTitle} onClick={data.url == "/account-profile" ? "" : () => { window.location.href = data.url }} href="#">
+                                                    {data.Title}
+                                                </Grid>
+                                            }</ >
+
                                         )
                                     })}
                                 </Grid>
@@ -541,7 +546,7 @@ export default function Footer(props) {
                 </Grid>
             </Container>
             <Hidden only={['md', 'lg', 'xl']}>
-                <Grid container item xs={12} sm={12} style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', color: '#808080', fontSize: '11px' }}>
+                <Grid container item xs={12} sm={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#808080', fontSize: '11px' }}>
                     Copyright © 2020 stylori.com
                             </Grid>
             </Hidden>
@@ -549,8 +554,8 @@ export default function Footer(props) {
 
 
             {/* visa Cards banking details starts */}
-            <Grid container style={{ backgroundColor: '#a7a7aa', display: 'flex', justifyContent: 'center' }} >
-                <Grid item container xs={12} sm={6} md={6} lg={6} xl={6} style={{ display: 'flex', justifyContent: 'center', padding: "10px 0px" }}>
+            <Grid container style={{ backgroundColor: '#a7a7aa', display: 'flex', justifyContent: 'center', padding: "10px 15px" }} >
+                {/* <Grid item container xs={12} sm={6} md={6} lg={6} xl={6} style={{ display: 'flex', justifyContent: 'center', padding: "10px 0px" }}>
                     <i style={{ fontSize: '33px', textAlign: 'center', paddingLeft: '3%', color: '#fff' }} className="fa">&#xf023;</i>
                     <img src={visa}
                         style={{ paddingLeft: "3%", width: '54px', height: "32px" }}
@@ -575,7 +580,49 @@ export default function Footer(props) {
                     <div style={{ color: "#fff", fontSize: "0.8rem", paddingLeft: "4px" }}>NET<br /> BANKING</div>
                     <i class="fa fa-inr" style={{ fontSize: '30px', paddingLeft: "3%", color: "#fff", fontWeight: "normal" }} aria-hidden="true"></i>
                     <div style={{ color: "#fff", fontSize: "0.8rem", paddingLeft: "4px" }}>CASH ON<br /> DELIVERY</div>
-                </Grid>
+                </Grid> */}
+                <Hidden mdUp>
+                    <Grid container style={{ marginBottom: "10px" }}>
+                        <Grid container item xs={4} justify="flex-start">
+                            <span class="lockSymbol"></span>
+                        </Grid>
+                        <Grid container item xs={4} justify="center">
+                            <span class="netbank"></span>
+                        </Grid>
+                        <Grid container item xs={4} justify="flex-end">
+                            <span class="cashBack"></span>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container item xs={3} justify="flex-start">
+                        <span class="visacard"></span>
+                    </Grid>
+                    <Grid container item xs={3} justify="center">
+                        <span class="mastercard"></span>
+                    </Grid>
+                    <Grid container item xs={3} justify="center">
+                        <span class="americanexp"></span>
+                    </Grid>
+                    <Grid container item xs={3} justify="flex-end">
+                        <span class="dinerClubs"></span>
+                    </Grid>
+                </Hidden>
+                <Hidden smDown>
+                    <Grid container justify="center">
+                        <Grid item md={6} lg={6} xl={6} >
+                            <Grid container justify="center">
+                                <span class="breathspace lockSymbol"></span>
+                                <span class="breathspace visacard"></span>
+                                <span class="breathspace mastercard"></span>
+                                <span class="breathspace americanexp"></span>
+                                <span class="breathspace dinerClubs"></span>
+                                <span class="breathspace netbank"></span>
+                                <span class="breathspace cashBack"></span>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                </Hidden>
             </Grid>
 
             {/* visa Cards banking details ends */}
@@ -595,25 +642,7 @@ export default function Footer(props) {
                 </Grid>
 
             </Hidden>
-            {/* <Snackbar
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        className="snackBar"
-        open={open}
-        autoHideDuration={5000}
-        onClose={handleClose}
-        TransitionComponent={(props)=>{return <Slide {...props} direction="up" />}}
-        message={message}
-        action={
-          <React.Fragment>
-            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
-              <CloseIcon fontSize="small" />
-            </IconButton>
-          </React.Fragment>
-        }
-      /> */}
+
             <SnackBar handleClose={handleClose} anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'right',

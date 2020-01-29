@@ -182,7 +182,7 @@ class ProductDetail extends Component {
             <RatingForm />
           </Grid>
 
-          <Grid item>
+          <Grid item style={{paddingBottom:"50px"}}>
             <Footer />
           </Grid>
         </Hidden>
