@@ -393,44 +393,46 @@ export default function ChildCollectionItemTwo(props) {
                                                             </Grid>
                                                         </Grid>
                                                         <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding}  >
-                                                            {/* <Grid container >
-                                                                <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
-                                                                    <i class="fa fa-angle-left" onClick={() => previous3()}></i>
-                                                                </Grid>
-                                                                <Grid item item xs={10} sm={10} md={10} lg={10} xl={10} alignItems="center">
-                                                                    <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider3}>
-                                                                        {data && data.secondaryCarouselDetails && data.secondaryCarouselDetails.map((val, index) => <>
-                                                                            <Grid container style={{ display: "flex", justifyContent: "center" }}>
+                                                            {data&&data.secondaryCarouselDetails&&data.secondaryCarouselDetails.length > 0 ?
+                                                                <Grid container >
+                                                                    <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
+                                                                        <i class="fa fa-angle-left" onClick={() => previous3()}></i>
+                                                                    </Grid>
+                                                                    <Grid item item xs={10} sm={10} md={10} lg={10} xl={10} alignItems="center">
+                                                                        <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider3}>
+                                                                            {data && data.secondaryCarouselDetails && data.secondaryCarouselDetails.map((val, index) => <>
+                                                                                <Grid container style={{ display: "flex", justifyContent: "center" }}>
 
-                                                                                <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
-                                                                                    <Typography className={classes.typograpyTop}>
-                                                                                        {val.imageTitle}
-                                                                                    </Typography>
+                                                                                    <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className={classes.testimonialRight}>
+                                                                                        <Typography className={classes.typograpyTop}>
+                                                                                            {val.imageTitle}
+                                                                                        </Typography>
 
-                                                                                    <Grid item style={{ display: "flex", justifyContent: 'center', width: "100%", height: "auto" }}
-                                                                                        onClick={() => { window.location.pathname = `${val.navigateUrl}` }}>
-                                                                                        <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} />
-                                                                                    </Grid>
+                                                                                        <Grid item style={{ display: "flex", justifyContent: 'center', width: "100%", height: "auto" }}
+                                                                                            onClick={() => { window.location.pathname = `${val.navigateUrl}` }}>
+                                                                                            <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} />
+                                                                                        </Grid>
 
-                                                                                    <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
-                                                                                        <Typography style={{ color: "#394578" }}>
-                                                                                            {val.price}</Typography>
-                                                                                    </Grid>
-                                                                                    <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
-                                                                                        <a style={{ textDecoration: 'none' }} href={val.navigateUrl}><Button type="button" className={classes.Button} style={{ font: "13px Roboto" }}>{val.buttonName}</Button></a>
+                                                                                        <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
+                                                                                            <Typography style={{ color: "#394578" }}>
+                                                                                                {val.price}</Typography>
+                                                                                        </Grid>
+                                                                                        <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
+                                                                                            <a style={{ textDecoration: 'none' }} href={val.navigateUrl}><Button type="button" className={classes.Button} style={{ font: "13px Roboto" }}>{val.buttonName}</Button></a>
+                                                                                        </Grid>
+
                                                                                     </Grid>
 
                                                                                 </Grid>
 
-                                                                            </Grid>
-
-                                                                        </>)}
-                                                                    </Slideshow>
+                                                                            </>)}
+                                                                        </Slideshow>
+                                                                    </Grid>
+                                                                    <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconRight}>
+                                                                        <i class="fa fa-angle-right" onClick={() => next3()}></i>
+                                                                    </Grid>
                                                                 </Grid>
-                                                                <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconRight}>
-                                                                    <i class="fa fa-angle-right" onClick={() => next3()}></i>
-                                                                </Grid>
-                                                            </Grid> */}
+                                                                : ""}
                                                         </Grid>
                                                     </Grid>
                                                 </Grid>
@@ -581,11 +583,11 @@ export default function ChildCollectionItemTwo(props) {
                                                     </Grid>
                                                 </>
                                         }
-                                        
+
                                     </>
                                     : ''
                             }
-                            
+
 
                         </>)
                     }

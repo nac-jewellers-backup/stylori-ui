@@ -117,9 +117,7 @@ class Allorders extends React.Component {
                                         // var img_url = `${baseUi}${url_construct}`
                                         ppp = `${CDN_URL}${url_construct}`
                                         // alert(this.state.check_img)
-
                                     }
-
                                     // }
                                 }
                             }
@@ -164,9 +162,7 @@ class Allorders extends React.Component {
                                         // var img_url = `${baseUi}${url_construct}`
                                         ppp = `${CDN_URL}${url_construct}`
                                         // alert(this.state.check_img)
-
                                     }
-
                                     // }
                                 }
                             }
@@ -174,7 +170,6 @@ class Allorders extends React.Component {
                         )
                         // return inside[0]
                     }
-
                 })
                 // var outside = ppp.filter(val => (val !== undefined && val !== null))
                 // alert(ppp)
@@ -559,7 +554,7 @@ class Allorders extends React.Component {
                                                             Shipping&nbsp;FREE<br />
                                                             Shipping Insurance&nbsp;FREE<br />
                                                             <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>
-                                                            
+
                                                                 {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.shoppingCartByCartId.discountedPrice))}
                                                             </span>
                                                             </div>

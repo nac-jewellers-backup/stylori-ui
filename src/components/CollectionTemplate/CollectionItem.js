@@ -26,7 +26,13 @@ export default function CollectionItem(props) {
     // var arr_data;
     var data_ = [];
     var data_con = {}
-    var img_url;
+    let img_url = [
+        "/gemstone-jewellery?sort=latest",
+        "/jewellery-from+the+renaissance+collection",
+        "/jewellery-from+monsoon+collection",
+        "/jewellery-butterfly?sort=latest",
+        "/jewellery-from+the+summer+collection"
+    ]
     const { NetworkCtx: { graphqlUrl: uri, apiUrl: ApiUrl } } = React.useContext(NetworkContext);
     const classes = useStyles();
     // const { loading, error, data: CollectionData, makeFetch: fetchproducts } = useNetworkRequest('/fetchproducts', {}, false, {})
@@ -144,13 +150,7 @@ export default function CollectionItem(props) {
         })
     }
     React.useEffect(() => {
-        img_url = [
-            "/gemstone-jewellery?sort=latest",
-            "/jewellery-from+the+renaissance+collection",
-            "/jewellery-from+monsoon+collection",
-            "/jewellery-butterfly?sort=latest",
-            "/jewellery-from+the+summer+collection"
-        ]
+
         getAlldata(img_url);
 
     }, [])
@@ -158,19 +158,13 @@ export default function CollectionItem(props) {
     let onViewMoreCollect = values && values.onViewMoreCollection
     React.useEffect(() => {
         if (values.onViewMoreCollection === true) {
-            img_url = [
-                "/gemstone-jewellery?sort=latest",
-                "/jewellery-from+the+renaissance+collection",
-                "/jewellery-from+monsoon+collection",
-                "/jewellery-butterfly?sort=latest",
-                "/jewellery-from+the+summer+collection"
-            ]
+
             getAlldata(img_url);
         }
     }, [onViewMoreCollect])
     return (
         <>
-            {(values.arr_data && values.arr_data.Testimony && values.arr_data.Testimony.carousel && values.arr_data.Testimony.carousel.data.length) === 5 ? <>
+            {(values.arr_data && values.arr_data.Testimony && values.arr_data.Testimony.carousel && values.arr_data.Testimony.carousel.data.length) === (img_url && img_url.length) ? <>
                 <ChildCollectionItemOne CollectionPageStylori={values.arr_data} />
                 {
                     values.arr_data && values.arr_data.Testimony && values.arr_data.Testimony.carousel.data.length >= 2 ?
@@ -191,7 +185,7 @@ export default function CollectionItem(props) {
                 }
             </>
                 : <>
-                    {<div  className="overall-loader"><div id="loading"></div></div>}</>}
+                    {<div className="overall-loader"><div id="loading"></div></div>}</>}
         </>
     )
 }

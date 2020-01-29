@@ -273,7 +273,9 @@ export default function ChildCollectionItemOne(props) {
                                                         </Grid>
                                                     </Grid>
                                                     <Grid item xs={12} sm={6} md={6} lg={6} xl={6} className={classes.cardPadding} >
-                                                        <Grid container >
+                                                        <Grid container
+                                                        // style={{ boxShadow: "0px 0px 56px -1px rgba(148,138,148,0.71)", zIndex: "999", background: "#fff" }}
+                                                        >
                                                             <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
                                                                 <i class="fa fa-angle-left" onClick={() => previous1()}></i>
                                                             </Grid>

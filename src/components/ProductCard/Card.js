@@ -95,66 +95,86 @@ const imageOnError = (event, res) => {
   event.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
 }
 const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => {
-  
+
   return (
     <div className="imageHeight">
-    {props.data.oneDayShipping ? <div class={Math.round(props.data.offerPrice) === Math.round(props.data.price) ? "one-day-ship-listing-page-withoutTop" : "one-day-ship-listing-page"} style={{ zIndex: 2 }}>
-      <i class="fa fa-truck" style={{ fontSize: "20px" }}></i>
-      <span class="one-day-ship-listing-page-label">1 day shipping</span>
+      {props.data.oneDayShipping ? <div class={Math.round(props.data.offerPrice) === Math.round(props.data.price) ? "one-day-ship-listing-page-withoutTop" : "one-day-ship-listing-page"} style={{ zIndex: 2 }}>
+        <i class="fa fa-truck" style={{ fontSize: "20px" }}></i>
+        <span class="one-day-ship-listing-page-label">1 day shipping</span>
 
-    </div> : ''}
-    {
-      Math.round(props.data.offerPrice) === Math.round(props.data.price) ? '' :
-        <>
-          <span className="overlayCss" style={{ zIndex: 10, color: "#fff", backgroundColor: "#f699a3" }}>
+      </div> : ''}
+      {
+        Math.round(props.data.offerPrice) === Math.round(props.data.price) ? '' :
+          <>
+            <span className="overlayCss" style={{ zIndex: 10, color: "#fff", backgroundColor: "#f699a3" }}>
 
-            {`${props.data.discount} % off`}
+              {`${props.data.discount} % off`}
 
-          </span>
-        </>
-    }
+            </span>
+          </>
+      }
 
-    <div class="wishListStyle" >
-      <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} />
+      {/* <Grid container >
+        <Grid item lg={1}>
+        {
+            Math.round(props.data.offerPrice) === Math.round(props.data.price) ? '' :
+              <>
+                <span style={{ zIndex: 10, color: "#fff", backgroundColor: "#f699a3" }}>
+                  < div class="one-day-ship-listing-page__" > {`${props.data.discount}%`} < br /> {"OFF"}</div>
+                </span>
+              </>
+          } 
+        </Grid>
+        <Grid item lg={4}>
+        {props.data.oneDayShipping ? <div class={Math.round(props.data.offerPrice) === Math.round(props.data.price) ? "one-day-ship-listing-page-withoutTop" : "one-day-ship-listing-page"} style={{ zIndex: 2 }}>
+            <i class="fa fa-truck" style={{ fontSize: "20px" }}></i>
+            <span class="one-day-ship-listing-page-label">1 day shipping</span>
+          </div> : ''}
+        </Grid>
+      </Grid> */}
+
+
+      <div class="wishListStyle" >
+        <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} />
+      </div>
+      <Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }} target="_blank" onClick={handleProductDetatiContext(props)}>
+        <LazyLoadImage
+          alt={'props.data.title'}
+          effect="blur"
+          src={renderImages(props, cardstate)}
+          //  srcset={renderImages(props, cardstate)}
+          //      sizes="(max-width: 320px) 320w,
+          //              (max-width: 480px) 375w,
+          //              (max-width: 600px) 600w,
+          //              (max-width: 992px) 768w,
+          //              (max-width: 1440px) 1440w,
+          //              (max-width: 2560px) 2560w,
+          //              2560w
+
+          //  "
+          onError={(e) => imageOnError(e, props.data.imageResolution)}
+          title={props.data.title}
+          onMouseOver={() => {
+            callmouseover()
+          }}
+          onMouseOut={() => {
+            callmouseout()
+          }}
+          style={{ width: '100%' }}
+          scrollPosition={scrollPosition}
+
+        // If the image we are creating here has the same src than before,
+        // we can directly display it with no need to lazy-load.
+        // onerror={this.src=}
+        // placeholderSrc={renderImages(props, cardstate) === '' ? 'https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg' : ''}
+        // placeholder	= { <div >loading.....</div> }
+        >
+        </LazyLoadImage>
+
+      </Link>
+
+
     </div>
-    <Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }} target="_blank" onClick={handleProductDetatiContext(props)}>
-      <LazyLoadImage
-        alt={'props.data.title'}
-        effect="blur"
-        src={renderImages(props, cardstate)}
-        //  srcset={renderImages(props, cardstate)}
-        //      sizes="(max-width: 320px) 320w,
-        //              (max-width: 480px) 375w,
-        //              (max-width: 600px) 600w,
-        //              (max-width: 992px) 768w,
-        //              (max-width: 1440px) 1440w,
-        //              (max-width: 2560px) 2560w,
-        //              2560w
-
-        //  "
-        onError={(e) => imageOnError(e, props.data.imageResolution)}
-        title={props.data.title}
-        onMouseOver={() => {
-          callmouseover()
-        }}
-        onMouseOut={() => {
-          callmouseout()
-        }}
-        style={{ width: '100%' }}
-        scrollPosition={scrollPosition}
-
-      // If the image we are creating here has the same src than before,
-      // we can directly display it with no need to lazy-load.
-      // onerror={this.src=}
-      // placeholderSrc={renderImages(props, cardstate) === '' ? 'https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg' : ''}
-      // placeholder	= { <div >loading.....</div> }
-      >
-      </LazyLoadImage>
-
-    </Link>
-
-
-  </div>
   )
 };
 // onLoad={(e)=>e.target.src=e.target.style.background='url(https://alpha-assets.stylori.com/images/static/loadingimg.gif') center center / 25% 25% no-repeat rgb(255, 255, 255);'}

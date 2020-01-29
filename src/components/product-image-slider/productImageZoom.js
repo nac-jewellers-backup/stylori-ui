@@ -113,6 +113,26 @@ class ProductImageZoom extends React.Component {
               // style={{ height: window.innerWidth > 2250 ? "800px" : data[0].image_resolution }}
               >
                 {/* {alert(JSON.stringify(this.props.data[0].fadeImages.arrOfurls_2X[0]))} */}
+                {/* <Grid container >
+                <Grid item lg={1}>
+                {data.map(val => {
+                debugger
+                var split = val.offerDiscount.split(" ")
+                  return < span style={{ color: "#fff" }}>
+                < div class="ribbon_dic" > {split[0]} < br /> {split[1]}</div>
+                  </span>
+                })}
+                </Grid>
+                <Grid item lg={3}>
+                {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship" ></div> : ""}
+                
+              </Grid>
+            </Grid> */}
+                {data.map(val=>
+                  <span style={{ color: "#fff" }} className="overlayCss11">
+                  {val.offerDiscount}
+                   </span>)}
+                {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship_" ></div> : ""}
                 <GlassMagnifier
                   imageSrc={showimage}
                   // imageSrc={largeImage}
