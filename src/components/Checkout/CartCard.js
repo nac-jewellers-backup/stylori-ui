@@ -372,7 +372,7 @@ class Checkoutcard extends React.Component {
                         <>
                             < Grid xs={12} >
                                 <NavLink to="/jewellery">
-                                    <div className='btn-plain'> Continue shopping</div>
+                                    <div className='btn-plain'>  Continue shopping</div>
                                 </NavLink>
 
                             </Grid></>}
