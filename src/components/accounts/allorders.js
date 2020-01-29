@@ -391,7 +391,7 @@ class Allorders extends React.Component {
                                         </ExpansionPanel>
                                     )
                                 })}
-                            </div> : <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Orders</div>}
+                            </div> : <div style={{ textAlign: "center", color: "#394578" }}>No orders yet</div>}
 
                     </div> :
                     <div className='pt-sm checkout-ovralldiv-media' style={{ margin: "auto" }}>
@@ -565,7 +565,7 @@ class Allorders extends React.Component {
                                     })}
                                 </Container>
                             </Container>
-                            : <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Orders</div>}
+                            : <div style={{ textAlign: "center", color: "#394578" }}>No orders yet</div>}
 
 
                     </div>

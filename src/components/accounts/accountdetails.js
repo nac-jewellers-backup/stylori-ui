@@ -119,7 +119,7 @@ class Accountdetails extends Component {
                                             this.state.isActive == 'shoppingcart' && <>
 
                                                 {this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
-                                                    <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Shopping cart</div>}</>
+                                                    <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
                                         }
                                         {
                                             this.state.isActive == 'wishlist' && <>
@@ -193,7 +193,7 @@ class Accountdetails extends Component {
                             }
                             {
                                 this.state.isActive == 'shoppingcart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
-                                    <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Shopping cart</div>}</>
+                                    <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
                             }
                             {
                                 this.state.isActive == 'wishlist' && <>
