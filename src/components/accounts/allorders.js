@@ -51,8 +51,8 @@ class Allorders extends React.Component {
 
         var a;
         var dis_price;
-        var _val = arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.filter(val=>{if((val.transSkuListByProductSku)) return val})
-        if (_val.length>0) {
+        var _val = arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.filter(val => { if ((val.transSkuListByProductSku)) return val })
+        if (_val.length > 0) {
             a =
                 // arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes
                 _val.filter(val => { if ((val.transSkuListByProductSku)) return val }).map(cart => {
@@ -83,61 +83,54 @@ class Allorders extends React.Component {
 
 
     ImageUrl = (imgs, sku, metal, paymentsuccess) => {
-        
+
         // allorderdata.data.allOrders
         var check_img
         var ppp
-if(paymentsuccess)
-       {
-        if (this.props && this.props.allorderdata.data && this.props.allorderdata.data.allOrders  && this.props.allorderdata.data.allOrders.nodes.length > 0) {
-            // allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes && allorderdata.allorderdata.nodes.length > 0
-            var vera = this.props.allorderdata.data.allOrders.nodes.map(val => {
-                if (val !== undefined && val !== null) {
-                    var inside = val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
-                        if (cart !== undefined && cart !== null) {
+        if (paymentsuccess) {
+            if (this.props && this.props.allorderdata.data && this.props.allorderdata.data.allOrders && this.props.allorderdata.data.allOrders.nodes.length > 0) {
+                // allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes && allorderdata.allorderdata.nodes.length > 0
+                var vera = this.props.allorderdata.data.allOrders.nodes.map(val => {
+                    if (val !== undefined && val !== null) {
+                        var inside = val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
                             if (cart !== undefined && cart !== null) {
-                                var metalColor_ = metal
-                                var cnt = imgs.imageUrl.split("/")
-                                var cnt_b = cnt[2].split("-")
-                                var cnt_c = cnt_b[1]
-
-                                // if (sku === cart.transSkuListByProductSku.generatedSku) {
-                                var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
-
-                                if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
-                                    check_img = true
-
-                                    var resolution = 500
-                                    var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`
-                                    var url_split = imgs && imgs.imageUrl.split('/')
-                                    var extension_split = url_split && url_split[url_split.length - 1]
-                                    var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type && browser_type.browser_type}`)
-                                    url_split[url_split && url_split.length - 1] = browser_type_append
-                                    url_split.splice(2, 0, _resolutions);
-                                    var url_construct = url_split.join().replace(/\,/g, '/')
-                                    // var img_url = `${baseUi}${url_construct}`
-                                    ppp = `${CDN_URL}${url_construct}`
-                                    // alert(this.state.check_img)
-
+                                if (cart !== undefined && cart !== null) {
+                                    var metalColor_ = metal
+                                    var cnt = imgs.imageUrl.split("/")
+                                    var cnt_b = cnt[2].split("-")
+                                    var cnt_c = cnt_b[1]
+                                    // if (sku === cart.transSkuListByProductSku.generatedSku) {
+                                    var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
+                                    if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
+                                        check_img = true
+                                        var resolution = 500
+                                        var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`
+                                        var url_split = imgs && imgs.imageUrl.split('/')
+                                        var extension_split = url_split && url_split[url_split.length - 1]
+                                        var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type && browser_type.browser_type}`)
+                                        url_split[url_split && url_split.length - 1] = browser_type_append
+                                        url_split.splice(2, 0, _resolutions);
+                                        var url_construct = url_split.join().replace(/\,/g, '/')
+                                        // var img_url = `${baseUi}${url_construct}`
+                                        ppp = `${CDN_URL}${url_construct}`
+                                        // alert(this.state.check_img)
+                                    }
+                                    // }
                                 }
-
-                                // }
                             }
                         }
+                        )
+                        // return inside[0]
                     }
-                    )
-                    // return inside[0]
-                }
 
-            })
-            // var outside = ppp.filter(val => (val !== undefined && val !== null))
-            // alert(ppp)
-            return ppp;
+                })
+                // var outside = ppp.filter(val => (val !== undefined && val !== null))
+                // alert(ppp)
+                return ppp;
+            }
         }
-       }
-else
-        {
-            if (this.props && this.props.allorderdata && this.props.allorderdata.allorderdata  && this.props.allorderdata.allorderdata.nodes.length > 0) {
+        else {
+            if (this.props && this.props.allorderdata && this.props.allorderdata.allorderdata && this.props.allorderdata.allorderdata.nodes.length > 0) {
                 // allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes && allorderdata.allorderdata.nodes.length > 0
                 var vera = this.props.allorderdata.allorderdata.nodes.map(val => {
                     if (val !== undefined && val !== null) {
@@ -148,13 +141,13 @@ else
                                     var cnt = imgs[0].transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes[0].imageUrl.split("/")
                                     var cnt_b = cnt[2].split("-")
                                     var cnt_c = cnt_b[1]
-    
+
                                     // if (sku === cart.transSkuListByProductSku.generatedSku) {
                                     var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
-    
+
                                     if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
                                         check_img = true
-    
+
                                         var resolution = 500
                                         var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`
                                         var url_split = imgs && imgs[0].transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes[0].imageUrl.split('/')
@@ -166,9 +159,7 @@ else
                                         // var img_url = `${baseUi}${url_construct}`
                                         ppp = `${CDN_URL}${url_construct}`
                                         // alert(this.state.check_img)
-    
                                     }
-    
                                     // }
                                 }
                             }
@@ -176,13 +167,12 @@ else
                         )
                         // return inside[0]
                     }
-    
                 })
                 // var outside = ppp.filter(val => (val !== undefined && val !== null))
                 // alert(ppp)
                 return ppp;
             }
-        }       
+        }
     }
 
     render() {
@@ -191,7 +181,7 @@ else
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
         // 
-        
+
         const expanded_ = expanded.map(val => { return val })
         // var check_img = null
         const allDatas = () => {
@@ -272,7 +262,7 @@ else
                                                     {/* ))} */}
                                                     <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.shoppingCartByCartId.discountedPrice))}</span></div>
                                                     {val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
-                                                        
+
                                                         return (<>
                                                             <br />
                                                             <Grid container spacing={12} lg={12} style={{ outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px" }}>
@@ -285,7 +275,7 @@ else
 
                                                                         // cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes
                                                                         allorderdata.allorderdata.nodes.filter(val => {
-                                                                            if(val.shoppingCartByCartId){
+                                                                            if (val.shoppingCartByCartId) {
                                                                                 return val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes
                                                                             }
                                                                         }).filter(val => {
@@ -404,7 +394,7 @@ else
                             </div> : <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Orders</div>}
 
                     </div> :
-                    <div className='pt-sm checkout-ovralldiv-media' style={{margin:"auto"}}>
+                    <div className='pt-sm checkout-ovralldiv-media' style={{ margin: "auto" }}>
                         {allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes.length > 0 ?
                             <Container>
                                 <Container>
@@ -448,7 +438,7 @@ else
                                                         </div>
                                                         <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.shoppingCartByCartId.discountedPrice))}</span></div>
                                                         {val && val.shoppingCartByCartId && val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId && val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
-                                                            
+
                                                             if (cart && cart.transSkuListByProductSku)
                                                                 return (
                                                                     <>
@@ -560,7 +550,7 @@ else
                                                             Shipping&nbsp;FREE<br />
                                                             Shipping Insurance&nbsp;FREE<br />
                                                             <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>
-                                                            
+
                                                                 {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.shoppingCartByCartId.discountedPrice))}
                                                             </span></div>
                                                         </div>
