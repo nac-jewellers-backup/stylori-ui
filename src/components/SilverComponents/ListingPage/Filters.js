@@ -18,7 +18,6 @@ const Filters = (props) => {
   const selectType = (came, a, b, d) => {
     // alert(came, a, b, d)
     if (Object.entries(came).length !== 0 && came.constructor !== Object) {
-      console.log('state.filters_______', state)
       var hoverFilter = state.listHoverItem.replace(/\s/g, '')
       var filters_uncheck = () => {
         if (Object.values(state.filters[hoverFilter]).length === 0) return true

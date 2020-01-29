@@ -153,7 +153,7 @@ class Component extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            showimage: this.props.data[0].fadeImages.arrOfurls[0],
+            showimage: this.props && this.props.data &&this.props.data.length > 0 && this.props.data[0] &&this.props.data[0].fadeImages && this.props.data[0].fadeImages.arrOfurls && this.props.data[0].fadeImages.arrOfurls.length>0 &&  this.props.data[0].fadeImages.arrOfurls[0] ? this.props.data[0].fadeImages.arrOfurls[0] : [],
             open: false,
             values: '',
             pincodeValues: {},

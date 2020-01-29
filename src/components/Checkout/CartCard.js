@@ -116,7 +116,6 @@ class Checkoutcard extends React.Component {
                 window.location.reload()
             }
 
-            console.log(currentValue)
 
 
         }
@@ -273,8 +272,6 @@ class Checkoutcard extends React.Component {
                                 </Grid>
 
                                 <Grid item xs={4} sm={2} lg={3} >
-                                    {console.log("-----------")}
-                                    {console.log(dataval)}
                                     <div style={{ marginTop: "15%" }}>
                                         {dataval.dataCard1.map(val =>
                                             <Pricing
@@ -391,7 +388,6 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         var data = this.props.data
-        console.log(data, 'data_data-data')
         const { classes } = this.props;
         // alert(discounted_price)
         let path = window.location.pathname.split('/').pop();

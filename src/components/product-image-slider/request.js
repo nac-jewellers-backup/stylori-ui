@@ -117,7 +117,6 @@ class Request extends React.Component {
                 .then(this.status)
                 .then(this.json)
                 .then((data) => {
-                    console.log('Success:', data.message);
                     this.setState((state) => ({ names: "", mailId: "", mobileNo: "", request: "", messageData: data.message, open: true }))
                 })
                 .catch((error) => {

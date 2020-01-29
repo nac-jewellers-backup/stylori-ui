@@ -26,7 +26,7 @@ class ProductDetails extends React.Component {
             <div>
 
                 <Grid container spacing={12} style={{ paddingRight: "20px" }}>
-                    {data[0].productsDetails.map(valueofproductdetail => {
+                    {data && data.length> 0 && data[0] && data[0].productsDetails && data[0].productsDetails.map(valueofproductdetail => {
 
                         return (valueofproductdetail.namedetail.length === 0) ? false :
                             <>

@@ -70,7 +70,6 @@ const Provider = (props) => {
     const client = createApolloFetch({ uri });
 
 
-    useEffect(() => { console.log('_filters_filters', filters) }, [filters])
     const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/filterlist', {}, false, {})
     useEffect(() => {
 
@@ -94,7 +93,7 @@ const Provider = (props) => {
 
 
 
-            console.log('splitHiphen()', splitHiphen())
+            // console.log('splitHiphen()', splitHiphen())
             const conditionfiltersSeo = { seofilter: { seoUrl: { in: splitHiphen() } } }
             // makeRequestSeo(conditionfiltersSeo)
             function status(response) {
@@ -322,7 +321,7 @@ const Provider = (props) => {
     useEffect(() => {
     }, [data, error, loading])
     const updatefiltersSort = async () => {
-
+debugger
         if (filters && filters.constructor === Object && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
             var newObj = {}
             var len;
@@ -388,10 +387,10 @@ const Provider = (props) => {
 
             // alert(JSON.stringify('filters',filters))
             // alert(JSON.stringify(newObj))
-            console.log('newObjfilters', newObj)
-            console.log('newObjsort', newObj)
-            console.log('newObjfilterssort', newObj)
-            console.log('newObjsortfilters', newObj)
+            // console.log('newObjfilters', newObj)
+            // console.log('newObjsort', newObj)
+            // console.log('newObjfilterssort', newObj)
+            // console.log('newObjsortfilters', newObj)
             // newObj['price'] = {'min_price':pricemin,'max_price':pricemax}
             // console.log('newObj', Object.keys(newObj).filter(val => { if (val === 'category') return val }).length > 1)
             // if()
@@ -468,12 +467,20 @@ const Provider = (props) => {
 
     // }, [offset])
     var newObj = {}
+    //create your forceUpdate hook
+function useForceUpdate(){
+    const [value, setValue] = React.useState(0); // integer state
+    return () => setValue(value => ++value); // update the state to force render
+}
+const forceUpdate = useForceUpdate();
     const updateFilters = async (filters) => {
         // alert('update filters')
-
+debugger
+setFilters(filters);
+forceUpdate()
         setSort('')
         setOffset(0)
-        setFilters(filters);
+       
 
         setloadingfilters(true)
 
@@ -542,17 +549,18 @@ const Provider = (props) => {
             }
            
         }
-        console.log('i came in as update filters function', "123123")
-        await makeFetch(newObj);
-        //    props.history.push({
-        //     pathname: `/stylori${mappedFilters.seo_url   ?`/${mappedFilters.seo_url}` : '' }`,
-        // })
         if (filters && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
             if (Object.values(filters).filter(val => { if (Object.entries(val).length > 0 && val.constructor === Object) { return val } }).length > 0) {
                 if (Object.keys(filters).filter(val => { if (val === "a") return val }).length === 0) updatefiltersSort()
                 //    makeFetch(newObj)
             }
         }
+        // console.log('i came in as update filters function', "123123")
+        await makeFetch(newObj);
+        //    props.history.push({
+        //     pathname: `/stylori${mappedFilters.seo_url   ?`/${mappedFilters.seo_url}` : '' }`,
+        // })
+    
         try {
             if (ntxdata.seo_url === "jewellery") {
                 setMappedFilters(ntxdata)

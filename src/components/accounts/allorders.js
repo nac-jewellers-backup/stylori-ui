@@ -410,8 +410,8 @@ class Allorders extends React.Component {
                                                     {/* {val.map((val, index) => ( */}
                                                     <div className="address_details">
                                                         {/* {val.shoppingCartByCartId.cartAddressesByCartId.nodes.map(addreses => ( */}
-                                                        <div style={{ width: "100%", marginBottom: "10px" }}>
-                                                            <Grid container spacing={12} lg={12} xs={11} sm={11} style={{ marginRight: "auto", marginLeft: "auto" }} >
+                                                        <div style={{ width: "100%", marginBottom: "10px", display:'flex' }}>
+                                                            <Grid container spacing={12} lg={12} xs={11} sm={11} style={{ justifyContent:'center'}} >
                                                                 <Grid item sm={6} lg={6} xs={12} className="order_addres" style={{ color: "#394578" }}>
                                                                     <div> <b>Order Number</b>:#{val && val.id}</div><br />
                                                                     <div><b>Order Date	</b> : {moment(val && val.createdAt).format('Do MMMM YYYY')}</div><br />
@@ -466,7 +466,7 @@ class Allorders extends React.Component {
                                                                                 )}
                                                                             </Grid>
                                                                             <Grid item lg={4} sm={4}>
-                                                                                <Grid container spacing={12} lg={12} style={{ lineHeight: "50px" }}>
+                                                                                <Grid container spacing={12} lg={12} className="classGrid">
 
                                                                                     <b style={{ width: "100%" }}> {cart.transSkuListByProductSku.productListByProductId.productName}</b>
                                                                                     <Grid item lg={6} sm={6}>
@@ -516,7 +516,7 @@ class Allorders extends React.Component {
                                                                                         </Typography>  </Grid>
                                                                                 </Grid>
                                                                             </Grid>
-                                                                            <Grid item lg={2} sm={2} style={{ padding: "16px" }}>
+                                                                            <Grid item lg={2} sm={2} style={{alignItems: 'center',display: 'flex', padding: "16px"}}>
                                                                                 <Grid container spacing={12} lg={12}>
                                                                                     <Typography className="subhesder">Quantity 1</Typography>
                                                                                     <Typography className="subhesder">
@@ -543,17 +543,19 @@ class Allorders extends React.Component {
                                                         )
                                                         }
 
-                                                        <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
+                                                        {/* <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
                                                             Sub Total&nbsp;{this.calculatetotal(val)}<br />
-                                                            {val.shoppingCartByCartId.discount !== null ? <div class={`subhesder`}>REGISTRATION : &nbsp;{val.shoppingCartByCartId.discount}</div>
+                                                            {val.shoppingCartByCartId.discount !== null ? 
+                                                            <div class={`subhesder`}>REGISTRATION : &nbsp;{val.shoppingCartByCartId.discount}</div>
                                                                 : ""}
                                                             Shipping&nbsp;FREE<br />
                                                             Shipping Insurance&nbsp;FREE<br />
                                                             <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>
 
                                                                 {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.shoppingCartByCartId.discountedPrice))}
-                                                            </span></div>
-                                                        </div>
+                                                            </span>
+                                                            </div>
+                                                        </div> */}
                                                     </div>
 
                                                 </div>
