@@ -4,31 +4,31 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "2093d946b72eba3d1024",
+    "revision": "bfb7f3c78afd852ef0b3",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "a41b9ed31ce28469fff4",
+    "revision": "c9686394fd154400a080",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "7e69738ea160ff1f1dcc",
+    "revision": "fff3a8d425d14632118e",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "2093d946b72eba3d1024",
+    "revision": "bfb7f3c78afd852ef0b3",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "a41b9ed31ce28469fff4",
+    "revision": "c9686394fd154400a080",
     "url": "/static/js/3.js"
   },
   {
-    "revision": "d28760b726075e3094b7",
+    "revision": "a3f72a973c57c03aacc3",
     "url": "/static/js/4.js"
   },
   {
-    "revision": "7e69738ea160ff1f1dcc",
+    "revision": "fff3a8d425d14632118e",
     "url": "/static/js/main.js"
   },
   {
@@ -48,11 +48,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/Roboto-Regular.ttf"
   },
   {
-    "revision": "fadbed18b9fafe0e25c8c0fb8894189f",
+    "revision": "5c8caf8f7ea7126619cea19d463c5146",
     "url": "/static/media/Stylori Silver logo.svg"
   },
   {
-    "revision": "271780ce712885f13b93200ae25f1288",
+    "revision": "04639ae8969c77110a53303b92b57712",
     "url": "/static/media/Stylorilogo.svg"
   },
   {
@@ -80,7 +80,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/img4ProductModal.jpg"
   },
   {
-    "revision": "6e25bad6f003be8fe1ddf1c68d2b4dd9",
+    "revision": "51fc5370cb4d7e537c06ea117f090ba2",
     "url": "/static/media/logout.svg"
   },
   {
