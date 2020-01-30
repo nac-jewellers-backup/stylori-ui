@@ -29,7 +29,7 @@ function FaqsBlock(props) {
         },
         "data": [
             {
-                img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/stylori_contact_us.png",
+                img: "https://assets.stylori.com/images/static/stylori_contact_us.png",
             },
         ]
     }

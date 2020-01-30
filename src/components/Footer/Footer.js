@@ -124,6 +124,10 @@ export default function Footer(props) {
             url: "/termsconditions",
             Title: "Terms & Conditions"
         },
+        {
+            url: "/contactus",
+            Title: "Contact us"
+        },
     ]
     const footerData1 = [
         {
@@ -442,7 +446,7 @@ export default function Footer(props) {
 
             {/* footer color menuItems starts  */}
             <Container>
-                <Grid container item className={`${classes.colorWhiteBackground}`} style={{ padding: '18px 1% 18px 1%' }}>
+                <Grid container item className={`${classes.colorWhiteBackground}`} style={{ padding: '4px' }}>
                     <Hidden only={['sm', 'xs']}>
                         <Grid container item xl={5} lg={5} md={5} xs={12} sm={6} alignItems="center">
                             <Grid container item xs={12} style={{ color: '#808080', fontSize: '13px' }}>
@@ -620,7 +624,7 @@ export default function Footer(props) {
 
                 <Grid container className={`${classes.colorWhiteBackground}`}>
                     <Container>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} style={{ padding: "10px" }}>
                             <Typography variant="caption" className={`${classes.colorBlue}`}>
                                 POPULAR SEARCH TERMS:
                             </Typography>
