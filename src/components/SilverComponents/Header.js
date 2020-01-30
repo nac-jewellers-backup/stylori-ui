@@ -15,7 +15,7 @@ import {
     ListItemText,
     Container,
     InputAdornment,
-    Collapse,
+    Modal,
     ClickAwayListener
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -34,6 +34,7 @@ import Popover from '@material-ui/core/Popover';
 import { NavLink } from 'react-router-dom';
 import logout from "../../assets/Icons/logout.svg"
 import styloriLogo from "../../assets/Stylorilogo.svg"
+import ElasticSearch from "components/ElasticSearch/ElasticSearch"
 
 let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
 // var path = window.location.pathname.split('/').pop();
@@ -65,7 +66,7 @@ class Header extends Component {
     }
     componentDidMount() {
         var _pathname = window.location.pathname.split("/")
-        if (window.location.pathname === "/cart" || window.location.pathname === '/checkout' || _pathname[1] === "paymentsuccess" || _pathname[1] === "paymentfail" ) {
+        if (window.location.pathname === "/cart" || window.location.pathname === '/checkout' || _pathname[1] === "paymentsuccess" || _pathname[1] === "paymentfail") {
             return true
         }
         else {
@@ -179,13 +180,15 @@ class Header extends Component {
                                             <div className={`head-icons1 ${classes.headIcons}`} >
                                                 <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
                                                 <Typography className={classes.callerNum}>1800 102 0330</Typography>
-                                                <InputBase
+                                                <Grid onClick={this.handleClose}>
+                                                    <InputBase
+                                                        className={`search`}
+                                                        placeholder=" Search"
+                                                        endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
+                                                        </div></InputAdornment>}
+                                                    />
+                                                </Grid>
 
-                                                    className={`search`}
-                                                    placeholder=" SEARCH"
-                                                    endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
-                                                    </div></InputAdornment>}
-                                                />
                                                 {localStorage.getItem("true") ?
                                                     <span
                                                         class="MuiBadge-root"
@@ -323,6 +326,13 @@ class Header extends Component {
                     </div>
                 </Hidden>
 
+                <Modal
+                    open={this.state.opened}
+                    onClose={this.handleClose}
+                    className='docc-modal'
+                >
+                    <ElasticSearch handleClose={this.handleClose} />
+                </Modal>
                 <Hidden mdUp>
                     <Grid>
                         <Grid style={{ position: "fixed", zIndex: "1300" }}>
@@ -426,33 +436,8 @@ class Header extends Component {
                                         </Grid>
                                     </Toolbar>
                                 </AppBar>
-                                <Collapse in={this.state.opened} unmountOnExit
 
-                                    style={{ width: "100%", zIndex: "1300" }}
-                                    class='searchClick'
-                                    onClose={this.handleClose}
-                                >
 
-                                    <Grid xs={12} style={{ width: "100%", height: "60px", alignContent: "center", justifyContent: "center", position: "fixed", top: "56px", boxShadow: "0px 3px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 325px 1px 10px 0px rgba(0,0,0,0.12)", background: "#fff", zIndex: "1300", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px" }}>
-                                        <Grid container justify="flex-end" onClick={() => this.handleClose()}>
-                                            <i style={{ fontSize: "16px", color: "#b2b1b1", paddingRight: "4px" }} class="fa fa-times closebus"></i>
-                                        </Grid>
-                                        <Grid container style={{ padding: "0px 8px 0px 8px" }}>
-                                            <InputBase
-                                                style={{
-                                                    fontSize: "13px", padding: "0px 0px 0px 3px",
-                                                    width: "98%", border: "1px solid #ccc", borderRadius: " 6px", padding: "1px 5px!important", height: "30px!important", fontFamily: "Robot-Black!important"
-                                                }}
-
-                                                className="widthSearch"
-                                                placeholder=" SEARCH"
-                                                endAdornment={<InputAdornment position="end"><div className={classes.searchcontainerplain}><Seach className={"searchPlain"} />
-                                                </div></InputAdornment>} />
-                                        </Grid>
-
-                                    </Grid>
-
-                                </Collapse>
                             </div>
 
                         </Grid>
