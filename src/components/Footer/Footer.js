@@ -299,7 +299,7 @@ export default function Footer(props) {
                                     type="email"
                                     onInvalid={(e) => { e.preventDefault() }}
                                     onChange={(e) => handleChage(e)}
-                                    placeholder='Email address...'
+                                    placeholder='Email address'
                                     className={`${classes.buynowSearch}`}
                                 />
 

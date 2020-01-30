@@ -118,12 +118,7 @@ class Component extends React.Component {
       <div className={`productLayoutRoot `} style={this.props.styles}>
         {
           <>
-            {this.props.loadingFilterCtx && <div 
-            style={{
-              minHeight:"auto",
-              maxHeight:"100vh",
-              height:"100%"
-            }} className="overall-loaders"><div id="loadings"><img src="https://alpha-assets.stylori.com/images/static/loadingimg.gif" alt="loading..." /></div></div>}
+            {this.props.loadingFilterCtx && <div className="overall-loaders"><div id="loadings"><img src="https://alpha-assets.stylori.com/images/static/loadingimg.gif" alt="loading..." /></div></div>}
             {this.props.loadingFilterCtx === false && <>
               <GridList cellHeight={"auto"} className={`productLayoutGridList ${classes.gridlistmain}`} cols={this.state.colSize} style={{ margin: '25px !important' }}>
                 {
