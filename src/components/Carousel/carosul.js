@@ -48,25 +48,28 @@ class Slideshow extends React.Component {
             <div style={{ paddingTop: '40%' }}>
               <h2 className='next-price'>{val.title}</h2><br />
               <h5 className="contenttext">{val.description}</h5>
-              <a class='info' href={val.url}><span class='shop'>SHOP</span></a>
+              <a class='info' href={`/${val.url}`}><span class='shop'>SHOP</span></a>
             </div>
           </div>
         </div>
       ))
     }
     else {
-      return hoverlist&&hoverlist.map(val => (
+      return hoverlist&&hoverlist.map(val => {
+        
+        return(
 
-        <a class='info' href={val.url} >
+        <a class='info' href={`/${val.url}`} >
           <div class={"subslider-carousel" + hover ? "hovereffect" : ""}>
             <img src={val.img} className='subslider-carousel-img img-responsive' alt="" />
             <div class="overlay1">
               <h2 className='next-price'>{val.title}</h2><br />
-              <a class='info' href={val.url}><span className='sub-list-price'> <i class="fa fa-rupee"></i> &nbsp;{val.price}</span></a>
+              <a class='info' href={`/${val.url}`}><span className='sub-list-price'> <i class="fa fa-rupee"></i> &nbsp;{val.price}</span></a>
             </div>
           </div>
         </a>
-      ))
+      )}
+      )
     }
 
   };
