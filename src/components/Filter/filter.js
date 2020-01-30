@@ -577,7 +577,7 @@ class Component extends React.Component {
                                   <>
                                     {
                                       subFilter[row].length > 0 ?
-                                        <>{window.location.pathname === "/goldcoins" || row === "Offers" || found === "/goldcoins" ? row === "Offers" ? "" : <ListItem key={row}
+                                        <>{window.location.pathname === "/goldcoins" || found === "/goldcoins" ? row === "Offers" ? "" : <ListItem key={row}
                                           onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
                                           <ListItemText
                                           >

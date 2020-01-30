@@ -105,10 +105,10 @@ const Provider = (props) => {
         var products = []
         var _cartDetails = {}
         if (!loading && !error) {
-            debugger
+            
             if (data && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes.length > 0) {
                 data.data.allTransSkuLists.nodes.map(val => {
-                    debugger
+                    
                     obj['sku_id'] = val.generatedSku;
                     obj['qty'] = 1
                     obj['price'] = val.markupPrice
@@ -364,7 +364,7 @@ const Provider = (props) => {
                                 if (data && data.data && data.data.allShoppingCartItems && data.data.allShoppingCartItems.nodes && data.data.allShoppingCartItems.nodes.length > 0) {
                                     var _data = data.data.allShoppingCartItems.nodes.filter(val => { if (val.transSkuListByProductSku) return val }).map(val => { return val.transSkuListByProductSku.generatedSku })
                                     variables = { "productList": _data }
-                                    debugger
+                                    
                                     makeRequest(variables);
 
                                 }
@@ -376,7 +376,7 @@ const Provider = (props) => {
                     }
 
                     else {
-                        debugger
+                        
                         // alert(JSON.stringify(val.data.allShoppingCarts.nodes.length>0))
                         // if(val.data.allShoppingCarts.nodes.length>0){
                         if (val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length > 0 && val.data.allShoppingCarts.nodes[0] && val.data.allShoppingCarts.nodes[0].id) {
@@ -407,7 +407,7 @@ const Provider = (props) => {
                                 })
                         }
                         else {
-                            debugger
+                            
                             // JSON.parse(sessionStorage.getItem("updatedProduct"))
                             if (sessionStorage.getItem("updatedProduct")) {
                                 _user_id = { user_id: localStorage.getItem('user_id') }
@@ -437,7 +437,7 @@ const Provider = (props) => {
                                             makeRequest(variables);
                                         }
                                         else {
-                                            debugger
+                                            
                                             return val
                                         }
 
@@ -462,7 +462,7 @@ const Provider = (props) => {
         }
         else {
             // alert("Came as guest user")
-debugger
+
             variables = { "productList": skus };
 
             makeRequest(variables);

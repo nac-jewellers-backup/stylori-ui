@@ -116,7 +116,7 @@ class ProductImageZoom extends React.Component {
                 {/* <Grid container >
                 <Grid item lg={1}>
                 {data.map(val => {
-                debugger
+                
                 var split = val.offerDiscount.split(" ")
                   return < span style={{ color: "#fff" }}>
                 < div class="ribbon_dic" > {split[0]} < br /> {split[1]}</div>

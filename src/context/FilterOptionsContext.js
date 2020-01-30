@@ -321,7 +321,7 @@ const Provider = (props) => {
     useEffect(() => {
     }, [data, error, loading])
     const updatefiltersSort = async () => {
-debugger
+
         if (filters && filters.constructor === Object && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
             var newObj = {}
             var len;
@@ -475,7 +475,7 @@ function useForceUpdate(){
 const forceUpdate = useForceUpdate();
     const updateFilters = async (filters) => {
         // alert('update filters')
-debugger
+
 setFilters(filters);
 forceUpdate()
         setSort('')
