@@ -17,8 +17,7 @@ import { SnackBar } from 'components/snackbarAlert/SnackBar'
 const useStyles = makeStyles(theme => ({
     navTitle: {
         cursor: "pointer",
-        margin: "0 0 10px",
-        padding: "0px 15px",
+        padding: " 0px 15px 8px 15px",
         "&:hover": {
             textDecoration: "underline"
         }
@@ -446,7 +445,7 @@ export default function Footer(props) {
 
             {/* footer color menuItems starts  */}
             <Container>
-                <Grid container item className={`${classes.colorWhiteBackground}`} style={{ padding: '4px' }}>
+                <Grid container item className={`${classes.colorWhiteBackground}`} style={{ padding: '10px 0px 10px 0px' }}>
                     <Hidden only={['sm', 'xs']}>
                         <Grid container item xl={5} lg={5} md={5} xs={12} sm={6} alignItems="center">
                             <Grid container item xs={12} style={{ color: '#808080', fontSize: '13px' }}>
@@ -528,7 +527,7 @@ export default function Footer(props) {
                         </Grid>
                     </Hidden>
                     <Hidden only={['sm', 'xs']}>
-                        <Grid container item xl={3} lg={3} md={2} xs={12} sm={6} style={{ paddingTop: '2%', display: 'flex', justifyContent: 'flex-end' }}>
+                        <Grid container item xl={3} lg={3} md={2} xs={12} sm={6} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: "flex-end" }}>
                             <Grid item xs={6} >
                                 <div onClick={() => { window.location.href = window.location.origin }}>
                                     <img src={styloriLogo} alt="" style={{ width: "100%", cursor: "pointer" }} />
