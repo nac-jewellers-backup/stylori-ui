@@ -69,6 +69,7 @@ class Sublistcarousel extends React.Component {
       autoplaySpeed: 4000,
       arrows: false
     };
+    
     const dataCarousel = {
       arrows: false,
       dots: false,

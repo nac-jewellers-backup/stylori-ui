@@ -112,7 +112,7 @@ class Cart extends React.Component {
 
 const Components = props => {
     let { CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata, NewUser } } = React.useContext(CartContext);
-    debugger
+    
     let content, mapped;
     let _data = {}
   
@@ -131,7 +131,7 @@ const Components = props => {
         }
     }
 
-    debugger
+    
 
     if (Object.keys(_data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
     else content = <Cart {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
