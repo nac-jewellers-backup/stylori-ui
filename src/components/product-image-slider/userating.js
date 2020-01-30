@@ -16,6 +16,7 @@ const useRating = (props) => {
         product_sku: "",
         title: "",
         message: "",
+        count: null,
         errortext: {
             rateerr: "",
             ratetitle: "",
@@ -41,6 +42,7 @@ const useRating = (props) => {
             product_sku: "",
             title: "",
             message: "",
+            count: null,
             errortext: {
                 rateerr: "",
                 ratetitle: "",
@@ -58,9 +60,10 @@ const useRating = (props) => {
     // variab['productSku'] = values.product_sku
     // var rat_sate = values.error&&values.error.rateerr
     useEffect(() => {
-        debugger
         var ratingdataerr = data.message ? data.message : ""
         if (ratingdataerr.length > 0) {
+            values["errortext"]["rateerr"] = ""
+            values["error"]["rateerr"] = false
             values["errortext"]["ratetitle"] = ""
             values["errortext"]["ratemsg"] = ""
             values["error"]["ratetitle"] = false
@@ -115,7 +118,18 @@ const useRating = (props) => {
         // })
         // }
     }, [])
-
+    var check = props.ratingcounts.ratingcounts
+    useEffect(() => {
+        debugger
+        if (check !== "" && values['error'] && values['errortext']) {
+            values["errortext"]["rateerr"] = ""
+            values["error"]["rateerr"] = false
+            setValues({
+                ...values,
+                values
+            })
+        }
+    }, [check])
     const handleInvalid = (type, status) => {
         setInvalids({
             ...invalids,
@@ -127,6 +141,10 @@ const useRating = (props) => {
             ...values,
             [type]: value
         })
+        if (values.rate !== "" && values['error'] && values['errortext']) {
+            values["errortext"]["rateerr"] = ""
+            values["error"]["rateerr"] = false
+        }
         if (values.title !== "" && values['error'] && values['errortext']) {
             values["errortext"]["ratetitle"] = ""
             values["error"]["ratetitle"] = false
@@ -137,7 +155,6 @@ const useRating = (props) => {
         }
     }
     const handelSubmit = (e, props) => {
-        debugger
         var rats = props.ratingcounts.ratingcounts ? props.ratingcounts.ratingcounts : ""
         if ((rats > 0 || rats !== "") && values.title.length > 0 && values.message.length > 0) {
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
@@ -159,6 +176,7 @@ const useRating = (props) => {
                         values["errortext"]["ratemsg"] = ""
                         values["error"]["ratetitle"] = false
                         values["error"]["ratemsg"] = false
+                        values["error"]["rateerr"] = false
                         // alert(JSON.stringify(rats))
                         values['rate'] = props.ratingcounts.ratingcounts ? JSON.stringify(props.ratingcounts.ratingcounts) : ""
                         setValues({
@@ -182,14 +200,20 @@ const useRating = (props) => {
                 localStorage.setItem('review_location', `${window.location.href}`)
                 props.history.push({ pathname: "/login" })
             }
+            debugger
+            values["errortext"]["rateerr"] = ""
+            values["error"]["rateerr"] = false
+            values["count"] = rats
             setValues({
                 ...values,
                 values
             })
+
+
         } else {
 
             if (values.title === "" && values['error'] && values['errortext']) {
-                values["errortext"]["ratetitle"] = "Enter title"
+                values["errortext"]["ratetitle"] = "Enter your title"
                 values["error"]["ratetitle"] = true
                 setValues({
                     ...values,
@@ -197,14 +221,22 @@ const useRating = (props) => {
                 })
             }
             if (values.message === "" && values['error'] && values['errortext']) {
-                values["errortext"]["ratemsg"] = "Enter review"
+                values["errortext"]["ratemsg"] = "Enter your review"
                 values["error"]["ratemsg"] = true
                 setValues({
                     ...values,
                     values,
                 })
             }
-            values["errortext"]["rateerr"] = "Select star rating"
+            if (rats === "" && values['error'] && values['errortext']) {
+                values["errortext"]["rateerr"] = "Select star rating"
+                values["error"]["rateerr"] = true
+                setValues({
+                    ...values,
+                    values,
+                })
+            }
+
             setValues({
                 ...values,
                 values
