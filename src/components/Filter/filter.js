@@ -151,10 +151,17 @@ class Component extends React.Component {
             //     // this.handleChange(()=>{}, true, ()=>{}, {}, paramsfilter)
 
             // })
+
             paramsfilter = data && data.data && data.data.allSeoUrlPriorities && data.data.allSeoUrlPriorities.nodes && data.data.allSeoUrlPriorities.nodes.map(val => {
               var attrName = val.attributeName.replace(/\s/g, '')
               var attrVal = val.attributeValue
-
+              if (attrName === "Category") {
+                if (attrVal === "goldcoins") {
+                  a['ProductType'] = { 'Gold Coins': true }
+                  a['Material'] = { 'Gold': true }
+                  a['MetalColor'] = { 'Yellow': true }
+                }
+              }
               a[attrName] = { [attrVal]: true }
               // checked[attrName] = a
               // alert(JSON.stringify(attrName))
@@ -577,7 +584,7 @@ class Component extends React.Component {
                                   <>
                                     {
                                       subFilter[row].length > 0 ?
-                                        <>{window.location.pathname === "/goldcoins" ||found === "goldcoins"|| found === "/goldcoins" ? row === "Offers" ? "" : <ListItem key={row}
+                                        <>{window.location.pathname === "/goldcoins" || found === "goldcoins" || found === "/goldcoins" ? row === "Offers" ? "" : <ListItem key={row}
                                           onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
                                           <ListItemText
                                           >
@@ -587,17 +594,17 @@ class Component extends React.Component {
                                           </ListItemText>
                                           {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
                                             <ExpandMore className="fil-drawer-arrow" />}
-                                        </ListItem>:<ListItem key={row}
+                                        </ListItem> : <ListItem key={row}
                                           onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
-                                          <ListItemText
-                                          >
-                                            <Typography className="fil-list-items" variant='h4' component="h4"
-                                            >{row}
-                                            </Typography>
-                                          </ListItemText>
-                                          {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
-                                            <ExpandMore className="fil-drawer-arrow" />}
-                                        </ListItem>
+                                            <ListItemText
+                                            >
+                                              <Typography className="fil-list-items" variant='h4' component="h4"
+                                              >{row}
+                                              </Typography>
+                                            </ListItemText>
+                                            {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
+                                              <ExpandMore className="fil-drawer-arrow" />}
+                                          </ListItem>
                                         }
                                         </>
                                         :
