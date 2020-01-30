@@ -7,6 +7,7 @@ import { useGraphql } from 'hooks/GraphqlHook';
 import { ProductDetailContext } from 'context/ProductDetailContext';
 
 const useRating = (props) => {
+    console.log(props.data)
     const { setrating, setratingcounts, setratingcountsclear } = React.useContext(ProductDetailContext);
     const [values, setValues] = React.useState({
         user_id: "",
@@ -25,7 +26,6 @@ const useRating = (props) => {
             ratetitle: false,
             ratemsg: false,
         },
-
     });
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
     const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addproductreview', {}, false);
@@ -33,8 +33,7 @@ const useRating = (props) => {
     // const { setratingcounts } = React.useContext(ProductDetailContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CUSTOMERREVIEWS, () => { }, {});
     const clear = () => {
-
-        props && props.clear_rating_onchange && props.clear_rating_onchange()
+        props && props.clear_rating_onchange && props.clear_rating_onchange(true)
         setValues({
             user_id: "",
             rate: "",
@@ -59,6 +58,7 @@ const useRating = (props) => {
     // variab['productSku'] = values.product_sku
     // var rat_sate = values.error&&values.error.rateerr
     useEffect(() => {
+        debugger
         var ratingdataerr = data.message ? data.message : ""
         if (ratingdataerr.length > 0) {
             values["errortext"]["ratetitle"] = ""
@@ -69,12 +69,14 @@ const useRating = (props) => {
                 ...values,
                 values
             })
-            if (data.message === "updated successfully") {
-                alert("Your review has been sent to our team. Will post it soon. Thanks!")
+            if (data.message !== "Already added review for this product") {
+                alert(data && data.message)
+                // alert("Your review has been sent to our team. Will post it soon. Thanks!")
                 clear()
+                // props && props.clear_rating_onchange && props.clear_rating_onchange(true)
                 // return false
             } else {
-                alert("Your reviewed this product  already.")
+                alert(data && data.message)
             }
         }
     }, [data])
@@ -86,33 +88,32 @@ const useRating = (props) => {
         }
     }, [CodData])
     useEffect(() => {
-        if (window.location.search) {
-            let urlSearchparams = window.location.search;
-            let urlSearchparamsDecode = decodeURI(urlSearchparams)
-            let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
-            let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
-            let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
-            let mapUrlParamsSplitEqual = urlSplitparamsEqual();
-            let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
-            // console.log('starsSelectedstarsSelected',props.starsSelected)
-            mapUrlParamsSplitEqual.map(val => {
-                values['product_sku'] = val[1]
-                if (val[1].length > 0) {
-                    variab['productSku'] = val[1]
-                    makeRequestCod(variab)
-                    // alert(JSON.stringify(variab))
-                }
-                values['user_id'] = user_id
-                var a = window.location.search.split('=')
-                var b = a[1].split('-')[0]
-                values['product_id'] = b
-                // setFilters(values)
-                setValues({
-                    ...values,
-                    values
-                })
-            })
+        let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
+        // if (window.location.search) {
+        //     let urlSearchparams = window.location.search;
+        //     let urlSearchparamsDecode = decodeURI(urlSearchparams)
+        //     let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
+        //     let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
+        //     let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
+        //     let mapUrlParamsSplitEqual = urlSplitparamsEqual();
+        //     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
+        //     // console.log('starsSelectedstarsSelected',props.starsSelected)
+        //     mapUrlParamsSplitEqual.map(val => {
+        values['product_sku'] = props.data && props.data[0] && props.data[0].skuId
+        if (props.data && props.data[0] && props.data[0].skuId.length > 0) {
+            variab['productSku'] = props.data && props.data[0] && props.data[0].productId
+            makeRequestCod(variab)
+            // alert(JSON.stringify(variab))
         }
+        values['user_id'] = user_id
+        values['product_id'] = props.data && props.data[0] && props.data[0].productId
+        // setFilters(values)
+        setValues({
+            ...values,
+            values
+        })
+        // })
+        // }
     }, [])
 
     const handleInvalid = (type, status) => {
@@ -136,6 +137,7 @@ const useRating = (props) => {
         }
     }
     const handelSubmit = (e, props) => {
+        debugger
         var rats = props.ratingcounts.ratingcounts ? props.ratingcounts.ratingcounts : ""
         if ((rats > 0 || rats !== "") && values.title.length > 0 && values.message.length > 0) {
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
@@ -143,41 +145,34 @@ const useRating = (props) => {
                 // alert(JSON.stringify(data.message))
                 var rats = props.ratingcounts.ratingcounts ? props.ratingcounts.ratingcounts : ""
                 if (window.location.search) {
-                    let urlSearchparams = window.location.search;
-                    let urlSearchparamsDecode = decodeURI(urlSearchparams)
-                    let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
-                    let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
-                    let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
-                    let mapUrlParamsSplitEqual = urlSplitparamsEqual();
-                    let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
-                    // console.log('starsSelectedstarsSelected',props.starsSelected)
-                    mapUrlParamsSplitEqual.map(val => {
-                        values['product_sku'] = val[1]
-                        if (val[1].length > 0) {
-                            variab['productSku'] = val[1]
-                            makeRequestCod(variab)
-                            // alert(JSON.stringify(variab))
-                        }
-                        if (rats > 0 || rats !== undefined || rats !== "") {
-                            values["errortext"]["rateerr"] = ""
-                            values["errortext"]["ratetitle"] = ""
-                            values["errortext"]["ratemsg"] = ""
-                            values["error"]["ratetitle"] = false
-                            values["error"]["ratemsg"] = false
-                            // alert(JSON.stringify(rats))
-                            values['rate'] = props.ratingcounts.ratingcounts ? JSON.stringify(props.ratingcounts.ratingcounts) : ""
-                            setValues({
-                                ...values,
-                                values
-                            })
-                            makeFetch(values);
-                        }
-                        // setFilters(values)
+                    values['product_sku'] = props.data && props.data[0] && props.data[0].skuId
+                    values['user_id'] = user_id
+                    values['product_id'] = props.data && props.data[0] && props.data[0].productId
+                    if (props.data && props.data[0] && props.data[0].skuId.length > 0) {
+                        variab['productSku'] = props.data && props.data[0] && props.data[0].skuId
+                        makeRequestCod(variab)
+                        // alert(JSON.stringify(variab))
+                    }
+                    if (rats > 0 || rats !== undefined || rats !== "") {
+                        values["errortext"]["rateerr"] = ""
+                        values["errortext"]["ratetitle"] = ""
+                        values["errortext"]["ratemsg"] = ""
+                        values["error"]["ratetitle"] = false
+                        values["error"]["ratemsg"] = false
+                        // alert(JSON.stringify(rats))
+                        values['rate'] = props.ratingcounts.ratingcounts ? JSON.stringify(props.ratingcounts.ratingcounts) : ""
                         setValues({
                             ...values,
                             values
                         })
+                        makeFetch(values);
+                    }
+                    // setFilters(values)
+                    setValues({
+                        ...values,
+                        values
                     })
+
                 }
                 // window.location.href = "/login"
 
