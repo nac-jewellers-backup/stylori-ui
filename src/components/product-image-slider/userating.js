@@ -129,7 +129,7 @@ const useRating = (props) => {
                 values
             })
         }
-    }, [check])
+    }, [check]) 
     const handleInvalid = (type, status) => {
         setInvalids({
             ...invalids,
