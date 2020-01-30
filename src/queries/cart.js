@@ -30,7 +30,7 @@ export const CART = `query myquerycart($productList: [String!]) {
   }
 }`
 export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
-  allOrders(filter: {userProfileId: {in: $userProfileId}}, orderBy: CREATED_AT_DESC) {
+  allOrders(filter: {userProfileId: {in: $userProfileId}}, orderBy: CREATED_AT_DESC,condition: {paymentStatus: "Submited"}) {
     nodes {
       paymentStatus
       shoppingCartByCartId {
@@ -245,7 +245,7 @@ export const ALLUSERWISHLISTS = `query MyQuery($userprofileId: [UUID!]) {
 }
 
 `
-export const FetchSku= `query MyQuery($CartId:ShoppingCartItemCondition) {
+export const FetchSku = `query MyQuery($CartId:ShoppingCartItemCondition) {
   allShoppingCartItems(condition: $CartId) {
     nodes {
       transSkuListByProductSku {
