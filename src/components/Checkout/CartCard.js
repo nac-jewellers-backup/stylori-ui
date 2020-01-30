@@ -297,7 +297,7 @@ class Checkoutcard extends React.Component {
         )
 
     }
-    checkoutbutton = () => {
+    checkoutbutton = () => { 
         const { classes } = this.props;
         let path = window.location.pathname.split('/').pop();
         return (
