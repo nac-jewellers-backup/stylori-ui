@@ -9,7 +9,7 @@ export const
       "setting": {
         dots: true,
         infinite: true,
-        autoplay: false,
+        autoplay: true,
         speed: 1000,
         fade: false,
         arrows: false,
