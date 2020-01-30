@@ -302,10 +302,10 @@ class Checkoutcard extends React.Component {
         let path = window.location.pathname.split('/').pop();
         return (
             <div>
-                {path == "checkout" ? "" :
+                {path == "checkout" ? "" : 
                     <div className='ckeckout-top'>
                         <NavLink to="/checkout" style={{ textDecoration: 'none' }}>
-                            <Buynowbutton className={`chckout-page-buynow ${classes.buttons}`} />
+                            <Buynowbutton class={`chckout-page-buynow ${classes.buttons}`} />
                         </NavLink>
                     </div>}
             </div>
