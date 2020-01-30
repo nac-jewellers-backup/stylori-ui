@@ -273,7 +273,7 @@ export default function Footer(props) {
 
             {/* footer pink color starts */}
             {silver ? "" : <>
-                <Grid container item style={{ marginBottom: '-5.5%', zIndex: '4' }}>
+                <Grid container item style={{ marginBottom: '-5.5%', zIndex: 12 }}>
                     <Grid item xs="12" >
                         <img src={cartoonFooter} width="100%" height="auto" alt="noImage" />
                     </Grid>
@@ -397,8 +397,8 @@ export default function Footer(props) {
                                     <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i> </a>
                                 <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
                                     <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf09a;</i></a>
-                                <a class="facebook" target="_blank" href="https://plus.google.com/+Stylori">
-                                    <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf0d5;</i></a>
+                                {/* <a class="facebook" target="_blank" href="https://plus.google.com/+Stylori">
+                                    <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf0d5;</i></a> */}
                                 <a class="facebook" target="_blank" href="https://in.pinterest.com/stylori2015/">
                                     <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf231;</i></a>
                                 <a class="facebook" target="_blank" href="https://instagram.com/stylorilove">
@@ -408,19 +408,11 @@ export default function Footer(props) {
                             </Grid>
                         </Grid>
                     </Grid>
-
                 </Hidden>
-
-
-
             </Grid>
-
 
             <Hidden only={['lg', 'xl', 'md']}>
 
-                {/*  */}
-                {/*  */}
-                {/*  */}
                 <Grid container item xs={12} className={`${classes.colorWhite} ${classes.colorMain} ${classes.colorWhiteBorder}`} style={{ display: 'flex', justifyContent: 'left', padding: '10px' }}>
                     <Grid item xs={12}  >
                         Stay social with Stylori.
@@ -432,8 +424,8 @@ export default function Footer(props) {
                             <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i> </a>
                         <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
                             <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf09a;</i></a>
-                        <a class="facebook" target="_blank" href="https://plus.google.com/+Stylori">
-                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf0d5;</i></a>
+                        {/* <a class="facebook" target="_blank" href="https://plus.google.com/+Stylori">
+                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf0d5;</i></a> */}
                         <a class="facebook" target="_blank" href="https://in.pinterest.com/stylori2015/">
                             <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf231;</i></a>
                         <a class="facebook" target="_blank" href="https://instagram.com/stylorilove">
@@ -496,38 +488,37 @@ export default function Footer(props) {
                             <Grid item xs={12} style={{ padding: '0px 0px 0px 20px', fontWeight: '500', fontSize: '12px', color: '#808080' }}>
                                 Need Help?
                                 </Grid>
-                            <Grid item xs={12} className="footer-icons">
-                                <a onClick={() => { window.location.href = "mailto: hello@stylori.com" }} >
-                                    <i style={{ fontSize: '24px', textAlign: 'center', paddingLeft: '5%' }} className="fa">
+                            <Grid container item xs={12} className="footer-icons">
+                                <Grid class="contantf" onClick={() => { window.location.href = "mailto: hello@stylori.com" }} >
+                                    <i class="iTags fa" >
                                         &#xf003;
-                                    <br />
-                                        <span className={classes.spanSizeColor}>
-                                            hello@stylori.com
+                                   </i>
+                                    <span className={classes.spanSizeColor}>
+                                        hello@stylori.com
                                     </span>
-                                    </i>
-                                </a>
-                                <i style={{ fontSize: '24px', textAlign: 'center', paddingLeft: '5%' }} className="fa">
-                                    &#xf0e6;
-                                    <br />
+                                </Grid>
+                                <Grid class="contantf" >
+                                    <i class="iTags fa" >
+                                        &#xf0e6;
+                                </i>
                                     <span className={classes.spanSizeColor}>
                                         chat
                                     </span>
-                                </i>
-                                <i style={{ fontSize: '24px', textAlign: 'center', paddingLeft: '5%' }} className="fa">
+                                </Grid>
+                                <Grid class="contantf" > <i class="iTags fa" >
                                     &#xf095;
-                                    <br />
+                                </i>
                                     <span className={classes.spanSizeColor}>
                                         1800 102 0330
                                     </span>
-                                </i>
-                                <i style={{ fontSize: '24px', textAlign: 'center', paddingLeft: '5%' }} className="fa">
+                                </Grid>
+                                <Grid class="contantf" ><i class="iTags fa" >
                                     &#xf232;
-                                    <br />
+                                </i>
                                     <span className={classes.spanSizeColor}>
-
                                         +91 99526 25252
                                     </span>
-                                </i>
+                                </Grid>
 
                             </Grid>
                         </Grid>
