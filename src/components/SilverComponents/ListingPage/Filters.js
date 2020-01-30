@@ -7,7 +7,9 @@ import HeaderHoverMenuItem from './../HoverNavBarListing/HeaderHoverMenuItem';
 import { ListingPageContext } from 'context'
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 const Filters = (props) => {
-  const { setSort, setloadingfilters, setPriceMax, setPriceMin, ListingPageCtx } = React.useContext(ListingPageContext);
+  const { 
+    // setSort, setloadingfilters, setPriceMax, setPriceMin,
+     ListingPageCtx } = React.useContext(ListingPageContext);
   const [state, setState] = React.useState({
     Menuopen: false, targetopen: 0, listHoverItem: '', filtercheck: '',_width:null,
     filters: { offers: {}, price: {}, ProductType: {}, Theme: {}, Collection: {}, Material: { Silver: true } }
@@ -30,7 +32,7 @@ const Filters = (props) => {
     }
     else {
       // alert(a,b,d)
-      console.log('error')
+      // console.log('error')
     }
 
 
@@ -78,8 +80,8 @@ const Filters = (props) => {
   return (
     <>
       <Hidden smDown>
-        <Grid xs={12} container className={classes.MainGrid}>
-          <Grid xs={9} item container className={classes.FilterGrid} onMouseLeave={() => { setState({ ...state,  Menuopen: false, Checked: false, targetopen: null, listHoverItem: '' }) }}>
+        <Grid xs={12} lg={12} container className={classes.MainGrid}>
+          <Grid xs={9} lg={9} item container className={classes.FilterGrid} onMouseLeave={() => { setState({ ...state,  Menuopen: false, Checked: false, targetopen: null, listHoverItem: '' }) }}>
 
 
             {
@@ -122,7 +124,7 @@ const Filters = (props) => {
 
 
           </Grid>
-          <Grid xs={3} item container>
+          <Grid xs={3} lg={3} item container>
             sortBy
             </Grid>
         </Grid>

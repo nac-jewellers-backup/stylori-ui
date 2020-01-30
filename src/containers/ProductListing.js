@@ -111,8 +111,6 @@ const Components = props => {
       mapped = async () => await productList(data, CDN_URL);
     }
   }
-  // console.log(mapped)
-  // 
   if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
 
   else content = <Stylori {...props} allorderdata={allorderdata} wishlistdata={wishlistdata} cartcount={cartcount} data={dataArr} dataFilter={mappedFiltersList} loadingfilters={loadingfilters} loading={loading} mappedFilters={mappedFilters} setloadingfilters={setloadingfilters} />

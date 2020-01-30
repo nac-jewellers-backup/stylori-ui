@@ -7,8 +7,8 @@ import { useGraphql } from 'hooks/GraphqlHook';
 import { ProductDetailContext } from 'context/ProductDetailContext';
 
 const useRating = (props) => {
-    console.log(props.data)
-    const { setrating, setratingcounts, setratingcountsclear } = React.useContext(ProductDetailContext);
+    // console.log(props.data)
+    const { setrating, ratingcounts, setratingcounts, setratingcountsclear } = React.useContext(ProductDetailContext);
     const [values, setValues] = React.useState({
         user_id: "",
         rate: "",
@@ -35,6 +35,7 @@ const useRating = (props) => {
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CUSTOMERREVIEWS, () => { }, {});
     const clear = () => {
         props && props.clear_rating_onchange && props.clear_rating_onchange(true)
+        setratingcounts({ ratingcounts: [] })
         setValues({
             user_id: "",
             rate: "",
@@ -54,7 +55,6 @@ const useRating = (props) => {
                 ratemsg: false,
             },
         })
-        setratingcountsclear({ ratingcountsclear: '123' })
     }
     const count = localStorage.getItem("count") ? localStorage.getItem("count") : ""
     // variab['productSku'] = values.product_sku
@@ -120,7 +120,6 @@ const useRating = (props) => {
     }, [])
     var check = props.ratingcounts.ratingcounts
     useEffect(() => {
-        debugger
         if (check !== "" && values['error'] && values['errortext']) {
             values["errortext"]["rateerr"] = ""
             values["error"]["rateerr"] = false
@@ -129,7 +128,7 @@ const useRating = (props) => {
                 values
             })
         }
-    }, [check]) 
+    }, [check])
     const handleInvalid = (type, status) => {
         setInvalids({
             ...invalids,
@@ -155,8 +154,9 @@ const useRating = (props) => {
         }
     }
     const handelSubmit = (e, props) => {
+        debugger
         var rats = props.ratingcounts.ratingcounts ? props.ratingcounts.ratingcounts : ""
-        if ((rats > 0 || rats !== "") && values.title.length > 0 && values.message.length > 0) {
+        if ((rats > 0) && values.title.length > 0 && values.message.length > 0) {
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
             if (user_id.length > 0) {
                 // alert(JSON.stringify(data.message))
@@ -211,7 +211,6 @@ const useRating = (props) => {
 
 
         } else {
-
             if (values.title === "" && values['error'] && values['errortext']) {
                 values["errortext"]["ratetitle"] = "Enter your title"
                 values["error"]["ratetitle"] = true
@@ -228,13 +227,15 @@ const useRating = (props) => {
                     values,
                 })
             }
-            if (rats === "" && values['error'] && values['errortext']) {
-                values["errortext"]["rateerr"] = "Select star rating"
-                values["error"]["rateerr"] = true
-                setValues({
-                    ...values,
-                    values,
-                })
+            if (rats === "" || rats.length === 0) {
+                if (values['error'] && values['errortext']) {
+                    values["errortext"]["rateerr"] = "Select star rating"
+                    values["error"]["rateerr"] = true
+                    setValues({
+                        ...values,
+                        values,
+                    })
+                }
             }
 
             setValues({
@@ -244,9 +245,7 @@ const useRating = (props) => {
             return false
         }
     }
-
     const handlers = { handleChange, clear, handleInvalid, handelSubmit };
-
     return { values, setValues, handlers, data }
 }
 

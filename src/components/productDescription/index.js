@@ -48,16 +48,16 @@ class ProductDescription extends Component {
     // const descriptionData = this.props.data;
     const settings = this.props.data && this.props.data[0] && this.props.data[0].dataCarousel;
     // const fadeImages = this.props.data && this.props.data[0] && this.props.data[0].carouselImage;
-    const fadeImages = this.props.datalisting && this.props.datalisting  && this.props.datalisting.length>0  ? this.props.datalisting.map(val=>{
-    
-      if(val && val.image && val.image.placeImage && val.image.placeImage.img) return (val.image.placeImage.img)
+    const fadeImages = this.props.datalisting && this.props.datalisting && this.props.datalisting.length > 0 ? this.props.datalisting.map(val => {
+
+      if (val && val.image && val.image.placeImage && val.image.placeImage.img) return (val.image.placeImage.img)
       else return "https://assets.stylori.com/product/SP0384/1000X1000/SP0384-1W.webp"
-    
+
     })
-     :
-     ['https://assets.stylori.com/product/SP0384/500X500/SP0384-1W.webp', 'https://assets.stylori.com/product/SR0783/500X500/SR0783-1Y.webp','https://assets.stylori.com/product/SR0367/500X500/SR0367-1Y.webp','https://assets.stylori.com/product/SE0891/500X500/SE0891-1Y.webp'];
-    
-  
+      :
+      ['https://assets.stylori.com/product/SP0384/500X500/SP0384-1W.webp', 'https://assets.stylori.com/product/SR0783/500X500/SR0783-1Y.webp', 'https://assets.stylori.com/product/SR0367/500X500/SR0367-1Y.webp', 'https://assets.stylori.com/product/SE0891/500X500/SE0891-1Y.webp'];
+
+
     fadeImages.sort((a, b) => 0.5 - Math.random());
     const title = this.props.title;
     const datadescription = this.props.data && this.props.data[0] && this.props.data[0].seoText;
@@ -74,24 +74,23 @@ class ProductDescription extends Component {
       <>
         <Container >
           <Grid
-            style={{ marginTop: "15px" }}
+            style={{ marginTop: "15px", textAlign: "center" }}
             container
             direction="row"
             justify="space-around"
-            alignItems="center"
+
           >
             <Grid
               item
               container
-              alignItems="center">
+            >
               <Hidden smDown>
                 <Grid
                   item
                   xs={3}
 
                   style={{ textAlign: 'center' }}
-
-                  alignItems="center">
+                >
                   <CustomSeparator
                     list='product-dis'
                     classsubhed='product-backg'
@@ -103,7 +102,8 @@ class ProductDescription extends Component {
                   item
                   xs={6}
                   className={`DescriptionTitle`}
-                  alignItems="center"            >
+                  style={{ textAlign: 'center' }}
+                >
                   <Typography className={`${classes.TypoDark}`} variant='h1' component='h1'>
                     {/* {window.location.pathname.split('/').pop()} */}
                     {renderTitle()}
@@ -115,8 +115,9 @@ class ProductDescription extends Component {
                 <Grid
                   item
                   xs={6}
+                  style={{ textAlign: 'center' }}
                   className={` DescriptionTitleSmallScreen `}
-                  alignItems="center"            >
+                >
                   <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>
                     {renderTitle()}
                   </Typography>
@@ -126,13 +127,14 @@ class ProductDescription extends Component {
             <Grid
               item
               container
-              alignItems="center">
+              alignItems="center"
+            >
               <Hidden smDown>
                 <Grid
                   item
                   xs={3}
-                  style={{ paddingLeft: '4%' }}
-                  alignItems="center">
+                  style={{ paddingLeft: '4%', textAlign: 'center' }}
+                >
 
                   {/* < Slideshow fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel} styles={'productDescriptionCarousel'} /> */}
                   < Slideshow fadeImages={fadeImages} dataCarousel={settings} styles={'productDescriptionCarousel'} />
@@ -141,7 +143,8 @@ class ProductDescription extends Component {
               <Grid
                 item
                 xs={12} sm={12} md={9} lg={9} xl={9}
-                alignItems="center">
+                style={{ textAlign: 'center' }}
+              >
                 <p>
                   <div className="DescriptionContent">
                     {

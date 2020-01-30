@@ -7,14 +7,14 @@ let jewellery_theme = createMuiTheme(require('./jewellery_theme.json'));
 let silver_jewellery_theme = createMuiTheme(require('./silver_jewellery_theme.json'));
 let jewelleryThemes = responsiveFontSizes(jewellery_theme);
 let silverThemes = responsiveFontSizes(silver_jewellery_theme);
-const useStyles = makeStyles(theme => ({
-    root: {
-        backgroundColor: theme.palette.background.paper,
-        // [theme.breakpoints.up('xl')]: {
-        //     zoom: 1.7
-        //   },
-    }
-}));
+// const useStyles = makeStyles(theme => ({
+//     root: {
+//         backgroundColor: theme.palette.background.paper,
+//         // [theme.breakpoints.up('xl')]: {
+//         //     zoom: 1.7
+//         //   },
+//     }
+// }));
 const Theme = (props) => {
     const { Globalctx } = React.useContext(GlobalContext)
     const theme_func = (props) =>{

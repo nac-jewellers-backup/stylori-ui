@@ -635,7 +635,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
             }
         }
         catch (e) {
-            console.log("product detail page error", "-----", e)
+            // console.log("product detail page error", "-----", e)
         }
 
         return _d

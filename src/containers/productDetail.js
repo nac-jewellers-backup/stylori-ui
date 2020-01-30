@@ -55,7 +55,6 @@ class ProductDetail extends Component {
     var data_json = [{ title: 'home', url: '/' }, { title: path[2], url: this.renderUrl() }, { title: this.props.data&&this.props.data[0]&&this.props.data[0].title }]
     // alert(JSON.stringify(this.props.wishlistdata))
     const clear_rating = (bool) => {
-      debugger
       if (bool === false) {
         this.setState({
           clear: ""

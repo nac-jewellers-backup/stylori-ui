@@ -30,9 +30,9 @@ class Slideshow extends React.Component {
     let { hover, hovereffect, TopPic, imagecra } = this.props;
     if (TopPic) {
       return hoverlist.map(val => (
-        <div class={"subslider-carousel" + TopPic ? "hovereffectSilver" : ""}>
+        <div className={"subslider-carousel" + TopPic ? "hovereffectSilver" : ""}>
           <img src={val.img} className='subslider-carousel-img img-responsive' style={{ width: '100%', height: 'auto' }} alt="" />
-          <div class="overlay1">
+          <div className="overlay1">
             <div>
               <h2 className='next-price'>{val.title}</h2><br />
             </div>
@@ -42,13 +42,13 @@ class Slideshow extends React.Component {
     }
     else if (hovereffect) {
       return hoverlist&&hoverlist.map(val => (
-        <div class={"subslider-carousel" + hovereffect ? "hovereffectSilver" : ""}>
+        <div className={"subslider-carousel" + hovereffect ? "hovereffectSilver" : ""}>
           <img src={val.img} className='subslider-carousel-img img-responsive' style={{ width: '100%', height: 'auto' }} alt="" />
-          <div class="overlay1">
+          <div className="overlay1">
             <div style={{ paddingTop: '40%' }}>
               <h2 className='next-price'>{val.title}</h2><br />
               <h5 className="contenttext">{val.description}</h5>
-              <a class='info' href={`/${val.url}`}><span class='shop'>SHOP</span></a>
+              <a className='info' href={`/${val.url}`}><span className='shop'>SHOP</span></a>
             </div>
           </div>
         </div>
@@ -59,12 +59,12 @@ class Slideshow extends React.Component {
         
         return(
 
-        <a class='info' href={`/${val.url}`} >
-          <div class={"subslider-carousel" + hover ? "hovereffect" : ""}>
+        <a className='info' href={`/${val.url}`} >
+          <div className={"subslider-carousel" + hover ? "hovereffect" : ""}>
             <img src={val.img} className='subslider-carousel-img img-responsive' alt="" />
-            <div class="overlay1">
+            <div className="overlay1">
               <h2 className='next-price'>{val.title}</h2><br />
-              <a class='info' href={`/${val.url}`}><span className='sub-list-price'> <i class="fa fa-rupee"></i> &nbsp;{val.price}</span></a>
+              <a className='info' href={`/${val.url}`}><span className='sub-list-price'> <i className="fa fa-rupee"></i> &nbsp;{val.price}</span></a>
             </div>
           </div>
         </a>
@@ -75,7 +75,7 @@ class Slideshow extends React.Component {
   };
   imagewithouthoverchildrens = (hoverlist) => {
     return (
-      <div class={"subslider-carousel-silver "} style={{ display: "block !important " }}>
+      <div className={"subslider-carousel-silver "} style={{ display: "block !important " }}>
         <img src={hoverlist.img} className='subslider-carousel-img-Silver img-responsive' style={{ width: "auto !important", height: 'auto', display: "block !important  " }} alt="" />
         {/* <div class="overlay1">
           <div style={{paddingTop:'40%'}}>

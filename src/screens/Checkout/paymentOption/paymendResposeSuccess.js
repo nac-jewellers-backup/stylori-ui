@@ -60,7 +60,6 @@ class PaymentResponseSuccess extends React.Component {
          return res.json();
       })
          .then(resdata => {
-            // console.log('datasssss', resdata)
             if (resdata.message !== undefined && resdata.message !== null) {
                // alert(
                //    resdata && resdata.message

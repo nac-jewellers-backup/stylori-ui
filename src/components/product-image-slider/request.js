@@ -120,7 +120,7 @@ class Request extends React.Component {
                     this.setState((state) => ({ names: "", mailId: "", mobileNo: "", request: "", messageData: data.message, open: true }))
                 })
                 .catch((error) => {
-                    console.log('Error:', error);
+                    // console.log('Error:', error);
                 });
         }
     }
@@ -223,7 +223,7 @@ class Request extends React.Component {
                                 classNameCloseIcon={'closeIcon'}
                                 classNames={"snackBar"} message={this.state.messageData} open={this.state.open} />
                             <Grid container>
-                                <Grid xs={12} >
+                                <Grid xs={12} lg={12} >
                                     <Button onClick={(e) => this.handleSubmit(e)} className={`requset-button ${classes.fontwhite} ${classes.normalcolorback}`}>
                                         Submit
                             </Button>

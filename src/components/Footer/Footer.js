@@ -577,40 +577,40 @@ export default function Footer(props) {
                 <Hidden mdUp>
                     <Grid container style={{ marginBottom: "10px" }}>
                         <Grid container item xs={4} justify="flex-start">
-                            <span class="lockSymbol"></span>
+                            <span className="lockSymbol"></span>
                         </Grid>
                         <Grid container item xs={4} justify="center">
-                            <span class="netbank"></span>
+                            <span className="netbank"></span>
                         </Grid>
                         <Grid container item xs={4} justify="flex-end">
-                            <span class="cashBack"></span>
+                            <span className="cashBack"></span>
                         </Grid>
                     </Grid>
 
                     <Grid container item xs={3} justify="flex-start">
-                        <span class="visacard"></span>
+                        <span className="visacard"></span>
                     </Grid>
                     <Grid container item xs={3} justify="center">
-                        <span class="mastercard"></span>
+                        <span className="mastercard"></span>
                     </Grid>
                     <Grid container item xs={3} justify="center">
-                        <span class="americanexp"></span>
+                        <span className="americanexp"></span>
                     </Grid>
                     <Grid container item xs={3} justify="flex-end">
-                        <span class="dinerClubs"></span>
+                        <span className="dinerClubs"></span>
                     </Grid>
                 </Hidden>
                 <Hidden smDown>
                     <Grid container justify="center">
                         <Grid item md={6} lg={6} xl={6} >
                             <Grid container justify="center">
-                                <span class="breathspace lockSymbol"></span>
-                                <span class="breathspace visacard"></span>
-                                <span class="breathspace mastercard"></span>
-                                <span class="breathspace americanexp"></span>
-                                <span class="breathspace dinerClubs"></span>
-                                <span class="breathspace netbank"></span>
-                                <span class="breathspace cashBack"></span>
+                                <span className="breathspace lockSymbol"></span>
+                                <span className="breathspace visacard"></span>
+                                <span className="breathspace mastercard"></span>
+                                <span className="breathspace americanexp"></span>
+                                <span className="breathspace dinerClubs"></span>
+                                <span className="breathspace netbank"></span>
+                                <span className="breathspace cashBack"></span>
                             </Grid>
                         </Grid>
                     </Grid>

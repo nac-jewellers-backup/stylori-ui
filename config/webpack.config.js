@@ -577,7 +577,7 @@ module.exports = function(webpackEnv) {
             //     // https://github.com/facebookincubator/create-react-app/issues/2612
             //     return;
             // }
-            console.log('message',message);
+            // console.log('message',message);
         },
         importScripts:['cache.js'],
         minify: true,

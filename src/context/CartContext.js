@@ -51,7 +51,6 @@ const Provider = (props) => {
     const [noproducts, setNoproducts] = React.useState(false)
     const [NewUser ,setNewUser] = React.useState({})
     // const [_cart_id, setCartId] = React.useState([])
-    // console.log("hdjhjhkjfh", allorderdata)
     var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : [];
     const user_id = cartFilters.user_id ? cartFilters.user_id : ""
     const price = cartFilters.price ? cartFilters.price : ""
@@ -119,7 +118,6 @@ const Provider = (props) => {
                     _cartDetails['userId'] =''
                     _cartDetails['products'] =products
                     localStorage.setItem('cartDetails', JSON.stringify(_cartDetails))
-                    console.log(data)
             }
 
 
@@ -360,7 +358,6 @@ const Provider = (props) => {
                         }).then(status)
                             .then(json)
                             .then(async function (data) {
-                                // console.log(data, "parse_result_data_______parse_result_data")
                                 if (data && data.data && data.data.allShoppingCartItems && data.data.allShoppingCartItems.nodes && data.data.allShoppingCartItems.nodes.length > 0) {
                                     var _data = data.data.allShoppingCartItems.nodes.filter(val => { if (val.transSkuListByProductSku) return val }).map(val => { return val.transSkuListByProductSku.generatedSku })
                                     variables = { "productList": _data }
@@ -399,7 +396,6 @@ const Provider = (props) => {
                             }).then(status)
                                 .then(json)
                                 .then(async function (data) {
-                                    // console.log(data, "parse_result_data")
                                     var _data = data.data.allShoppingCartItems.nodes.filter(val => { if (val.transSkuListByProductSku) return val }).map(val => { return val.transSkuListByProductSku.generatedSku })
                                     variables = { "productList": _data }
                                     makeRequest(variables)
@@ -428,8 +424,6 @@ const Provider = (props) => {
                                 }).then(status)
                                     .then(json)
                                     .then(async function (data) {
-                                        // console.log(data, "parse_result_data_______parse_result_data")
-
                                         if (data && data.data && data.data.allShoppingCartItems && data.data.allShoppingCartItems.nodes && data.data.allShoppingCartItems.nodes.length > 0) {
                                             var _data = data.data.allShoppingCartItems.nodes.filter(val => { if (val.transSkuListByProductSku) return val }).map(val => { return val.transSkuListByProductSku.generatedSku })
                                             variables = { "productList": _data }

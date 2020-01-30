@@ -178,7 +178,6 @@ class Component extends React.Component {
     }
 
     TabsComponent = () => {
-        console.log("ss")
         const { classes } = this.props;
         const data = this.props.data;
         const { value } = this.state;

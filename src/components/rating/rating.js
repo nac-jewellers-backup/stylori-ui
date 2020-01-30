@@ -34,7 +34,7 @@ class Component extends React.Component {
         this.setState({ starsSelected })
         this.props.setratingcounts({ ratingcounts: starsSelected })
         if (this.props && this.props.setratingcountsclear && this.props.setratingcountsclear.length > 0) {
-            alert(JSON.stringify(this.props.setratingcFountsclear))
+            // alert(JSON.stringify(this.props.setratingcFountsclear))
             this.setState({ starsSelected: "" })
         }
         // localStorage.setItem("count", starsSelected)

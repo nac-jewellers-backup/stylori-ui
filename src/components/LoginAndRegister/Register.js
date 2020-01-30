@@ -2,7 +2,7 @@ import React from 'react';
 // import './product-image-slider/loginRegisters.css'
 import { Grid, Button, Container } from '@material-ui/core';
 import { Input } from '../../components/InputComponents/TextField/Input'
-import SimpleSelect from '../../components/InputComponents/Select/Select'
+// import SimpleSelect from '../../components/InputComponents/Select/Select'
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 // import useRegister from './useregister';

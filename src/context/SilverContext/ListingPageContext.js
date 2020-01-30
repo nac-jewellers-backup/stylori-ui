@@ -64,7 +64,7 @@ const Provider = (props) => {
     const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
     const client = createApolloFetch({ uri });
 
-    useEffect(()=>{console.log('_filters_filters',silverFilters)},[silverFilters])
+   
     const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/filterlist', {},false, {})
     
     useEffect(() => {
@@ -88,7 +88,6 @@ const Provider = (props) => {
             }
 
 
-            // console.log('splitHiphen()', splitHiphen())
             const conditionfiltersSeo = { seofilter: { seoUrl: { in: splitHiphen() } } }
             // makeRequestSeo(conditionfiltersSeo)
             function status(response) {
@@ -154,8 +153,6 @@ const Provider = (props) => {
                     updateFilters(silverFilters)
                     // alert(JSON.stringify(filters))
                 }).catch(function (error) {
-
-                    console.log('Request failed', error, uri, status.code);
                     //  setSeoComponentMount(data)
                 });
 
@@ -343,9 +340,7 @@ const Provider = (props) => {
 
             // alert(JSON.stringify('filters',filters))
             // alert(JSON.stringify(newObj))
-            // console.log('newObj',newObj)
             // newObj['price'] = {'min_price':pricemin,'max_price':pricemax}
-            // console.log('newObj', Object.keys(newObj).filter(val => { if (val === 'category') return val }).length > 1)
             if (Object.keys(newObj).filter(val => { if (val === 'category') return val }).length !== 0) await fetchproducts(newObj)
 
         }
@@ -434,7 +429,7 @@ const Provider = (props) => {
 
             // bodyvar = paramObjects();
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
         var k = qtfArr.map(val => Object.values(val));
         var keyy = qtfArr.map(val => Object.keys(val))
@@ -444,7 +439,6 @@ const Provider = (props) => {
             var toLowerCase = key[0].toLowerCase()
             newObj[toLowerCase] = k[len][0]
         }
-        // console.log('i came in as update silverFilters function',"123123")
         await makeFetch(newObj);
         //    props.history.push({
         //     pathname: `/stylori${mappedFilters.seo_url   ?`/${mappedFilters.seo_url}` : '' }`,
@@ -458,7 +452,7 @@ const Provider = (props) => {
             }
 
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
         // }
 

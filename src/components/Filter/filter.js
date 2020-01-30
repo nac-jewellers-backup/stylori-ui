@@ -198,7 +198,6 @@ class Component extends React.Component {
             // this.setState(checked)
             this.setState(chipData, selected, checked)
           }).catch(function (error) {
-            console.log('Request failed', error);
           });
       }
 
@@ -373,7 +372,6 @@ class Component extends React.Component {
     // bb["delete_fil"] = "12345"
     // this.props && this.props.setdelete_fil && this.props.setdelete_fil(bb)
 
-    // console.log("valssss",chipData,checked)
     // alert(JSON.stringify(data))
     // this.setState(state => {
     //   const chipData = [...state.chipData];
@@ -489,9 +487,7 @@ class Component extends React.Component {
   // })
 
   render() {
-    console.log('urlSplitparl', this.props.data)
     const found = window.location.pathname.split(/-/g).find(element => element === "/goldcoins" || element === "goldcoins");
-    console.log(found + "ssssssss")
     const { classes, data, loading } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];
 
@@ -522,13 +518,13 @@ class Component extends React.Component {
                 <div >
 
                   <Paper
-                    className={classes.drawer}
+                    className={`${classes.drawer} ${classes.drawerPaper}`}
                     variant="persistent"
                     anchor="left"
                     open={open}
-                    classes={{
-                      paper: classes.drawerPaper,
-                    }}
+                    // classes={{
+                    //   paper: classes.drawerPaper,
+                    // }}
                   >
                     <Divider />
                     <List className="fil-main-list">
@@ -565,7 +561,6 @@ class Component extends React.Component {
                         </Grid>
                       </div>
                       {/* filter */}
-                      {/* {console.log(filter)} */}
                       <div>
                         {
                           <>
@@ -770,7 +765,6 @@ class Component extends React.Component {
                     }
                     )}
                   </List>
-                  {/* {console.info('data-filter', subFilter, this.state.filtercheck)} */}
                 </Grid>
                 {
                   this.state.filtercheck !== '' &&

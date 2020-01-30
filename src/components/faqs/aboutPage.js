@@ -17,14 +17,14 @@ export default function AboutPage(props) {
         <Grid container>
             <Header />
 
-            <Grid container class="aboutwidth" style={{ paddingTop: "15px" }} >
-                <Grid container class="aboutMargin">
-                    <Grid container class="aboutFifty">
+            <Grid container className="aboutwidth" style={{ paddingTop: "15px" }} >
+                <Grid container className="aboutMargin">
+                    <Grid container className="aboutFifty">
                         <Grid item style={{ padding: "10px" }}>
                             <img style={{ width: "100%" }} src={aboutus.data.img} />
                         </Grid>
                     </Grid>
-                    <Grid container class="aboutFifty">
+                    <Grid container className="aboutFifty">
 
                         <Grid item style={{ padding: "10px" }}>
                             <Typography variant="h5" style={{ color: "#ed1165", marginBottom: "10px" }}>About Us</Typography>

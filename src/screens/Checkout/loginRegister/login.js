@@ -7,18 +7,17 @@ import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 import useLogin from './useLogin';
 import FacebookLogin from 'react-facebook-login';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 const Login = (props) => {
     return <LoginComponent  {...props} />
 }
 const LoginComponent = (props) => {
     const { classes } = props;
-    const { values, handlers, setValues, data } = useLogin(() => props.changePanel(2));
+    const { values, handlers, setValues } = useLogin(() => props.changePanel(2));
     // const vl = data && data.message
     // // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
     // var prof = data && data.message
     // // alert(JSON.stringify(data))
-    // console.log('valuesvaluesvalues', values)
     const clear = () => {
         setValues({
             password: "",
@@ -36,7 +35,6 @@ const LoginComponent = (props) => {
     }
     const responseFacebook = response => {
         if (response.status !== "unknown" && response.status !== undefined) {
-            console.log(response, "facebook")
             props.history.push('/')
         }
     }
@@ -49,7 +47,7 @@ const LoginComponent = (props) => {
                     </h5>
                     <Input
                         margin="normal"
-                        variant="outlined"
+                        // variant="outlined"
                         // type="email"
                         name="email"
                         value={values.email}
@@ -61,7 +59,7 @@ const LoginComponent = (props) => {
                     <label className='errtext'> {values.error.emerr && values.errortext.emerr}</label>
                     <Input
                         margin="normal"
-                        variant="outlined"
+                        // variant="outlined"
                         type="password"
                         name="password"
                         value={values.password}

@@ -28,7 +28,7 @@ import { useDummyRequest } from '../../hooks';
 import { headerDataSilver } from '../../mappers';
 import { styles } from './styles';
 import LogoSmallScreen from '../../assets/Stylori Silver logo.svg';
-import Seach from '../../assets/search'
+import Seach from '../../assets/search' 
 import stylorisilverlogo from '../../assets/Stylori Silver logo.svg'
 import Popover from '@material-ui/core/Popover';
 import { NavLink } from 'react-router-dom';
@@ -181,7 +181,6 @@ class Header extends Component {
                                                 <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
                                                 <Typography className={classes.callerNum}>1800 102 0330</Typography>
                                                 <InputBase
-
                                                     className={`search`}
                                                     placeholder=" SEARCH"
                                                     endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
@@ -191,7 +190,8 @@ class Header extends Component {
                                                     <span
                                                         class="MuiBadge-root"
                                                         aria-owns={openPopover ? 'simple-popper' : ""}
-                                                        onClick={this.handleClickPopover}
+                                                        // onClick={this.handleClickPopover}
+                                                        onClick={() => { window.location.href = "/account-profile" }}
                                                     >
                                                         <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                     </span>
@@ -200,7 +200,7 @@ class Header extends Component {
                                                         <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                     </span>
                                                 }
-                                                <Popover
+                                                {/* <Popover
                                                     id="simple-popper"
                                                     open={openPopover}
                                                     anchorEl={anchorEl}
@@ -232,11 +232,8 @@ class Header extends Component {
                                                  </div></Grid>
                                                         </Grid>
 
-                                                        {/* <NavLink to="/account-profile"> */}
-
-                                                        {/* </NavLink> */}
                                                     </div>
-                                                </Popover>
+                                                </Popover> */}
                                                 <Badge style={{ marginTop: "9px" }} color="secondary"
                                                     badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length > 0 ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
                                                 // wishlist_count
@@ -443,7 +440,7 @@ class Header extends Component {
                                     onClose={this.handleClose}
                                 >
 
-                                    <Grid xs={12} style={{ width: "100%", height: "60px", alignContent: "center", justifyContent: "center", position: "fixed", top: "56px", boxShadow: "0px 3px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 325px 1px 10px 0px rgba(0,0,0,0.12)", background: "#fff", zIndex: "1300", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px" }}>
+                                    <Grid xs={12} lg={12} style={{ width: "100%", height: "60px", alignContent: "center", justifyContent: "center", position: "fixed", top: "56px", boxShadow: "0px 3px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 325px 1px 10px 0px rgba(0,0,0,0.12)", background: "#fff", zIndex: "1300", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px" }}>
                                         <Grid container justify="flex-end" onClick={() => this.handleClose()}>
                                             <i style={{ fontSize: "16px", color: "#b2b1b1", paddingRight: "4px" }} class="fa fa-times closebus"></i>
                                         </Grid>

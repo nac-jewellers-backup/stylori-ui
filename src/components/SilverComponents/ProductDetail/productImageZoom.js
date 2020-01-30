@@ -43,8 +43,6 @@ class ProductImageZoom extends React.Component {
   }
 
   productImageZoom = () => {
-
-    // console.log(this.props.data)
     const { classes, data } = this.props
 
     const limit = 3;

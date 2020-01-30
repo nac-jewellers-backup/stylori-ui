@@ -67,7 +67,7 @@ class Accountdetails extends Component {
             <Container>
                 <Hidden smDown>
 
-                    <div class="inner-page-title1"> My Account </div>
+                    <div className="inner-page-title1"> My Account </div>
 
                     <Container>
                         <div className="panel_body">
@@ -96,6 +96,17 @@ class Accountdetails extends Component {
                                             onClick={() => this.Activeaccounts('allorders')}
                                         >
                                             All Orders</p>
+
+                                        <p
+                                            // onClick={() => this.Activeaccounts('allorders')}
+                                            onClick={() => {
+                                                localStorage.clear();
+                                                sessionStorage.clear()
+                                                window.location.reload()
+                                                window.location.pathname = "/login"
+                                            }}
+                                        >
+                                            Logout</p>
                                     </List>
                                 </Grid>
                                 <Grid item xs={12} sm={12} md={9} lg={10} xl={10}>
@@ -144,12 +155,9 @@ class Accountdetails extends Component {
 
                 <Hidden mdUp>
                     <Grid>
-                        <div class="inner-page-title1"> My Account </div>
+                        <div className="inner-page-title1"> My Account </div>
                     </Grid>
                     <Grid style={{ display: "flex", alignContent: "left", marginTop: "10px" }}>
-
-
-
                         <form noValidate autoComplete="off" style={{ width: "100%" }}>
                             <div >
                                 <TextField
@@ -173,8 +181,13 @@ class Accountdetails extends Component {
                             </div>
                         </form>
                     </Grid>
+                    {/* <Grid style={{ display: "flex", alignContent: "left", marginTop: "10px" }}>
+                            <div >
+                                kjkljkljkljl
+                            </div>
+                    </Grid> */}
 
-                    <Grid item xs={10} class="topPadding">
+                    <Grid item xs={10} className="topPadding">
                         <div className="pay-index-subhed_datas">
                             {
                                 this.state.isActive == 'profile' &&

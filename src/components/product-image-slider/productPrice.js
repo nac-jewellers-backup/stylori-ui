@@ -44,7 +44,7 @@ const mobilecarousel = (props, val) => {
                 </Grid>
             </Grid>
             {/* <div style={{background:"red"}}>Earrings in 18K Yellow Gold and Peridot for Kids</div> */}
-            <Slideshow class='responseve-carousel testingcur' imgClass='responseve-carousel-img'
+            <Slideshow className='responseve-carousel testingcur' imgClass='responseve-carousel-img'
                 fadeImages={data[0].fadeImages.arrOfurls} dataCarousel={dataCarousel} />
         </div>
     );
@@ -201,7 +201,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                         <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
                                                             <img class="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
                                                         </a>&nbsp;
-                                            <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
+                                            <a className="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
                                                             <img class="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
                                                         </a>&nbsp;
                                             {/* <a class="google" target="_blank">

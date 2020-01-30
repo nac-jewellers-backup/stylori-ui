@@ -28,7 +28,6 @@ export const resolutions = [
 //   // Object.keys(kv).map(k => {
 //     values[type] = { [clause]: value } 
 //   // });
-// console.log(values)
 //   return values;
 //   }
 // }
@@ -124,11 +123,9 @@ function json(response) {
   // (async () => {
     let a = await supportsWebp()
     if(a) {
-      console.log('does support');
        browser_type = '.webp'
     }
     else {
-      console.log('does not support');
       browser_type = '.jpg'
     }
   // })();

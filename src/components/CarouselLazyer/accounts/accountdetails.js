@@ -67,7 +67,7 @@ class Accountdetails extends Component {
             <Container>
                 <Hidden smDown>
 
-                    <div class="inner-page-title"> My Account </div>
+                    <div className="inner-page-title"> My Account </div>
 
                     <Container>
                         <div className="panel_body">
@@ -144,7 +144,7 @@ class Accountdetails extends Component {
 
                 <Hidden mdUp>
                     <Grid>
-                        <div class="inner-page-title"> My Account </div>
+                        <div className="inner-page-title"> My Account </div>
                     </Grid>
                     <Grid style={{display:"flex",alignContent:"left",marginTop:"10px"}}>
                   
@@ -174,7 +174,7 @@ class Accountdetails extends Component {
       </form>
                     </Grid>
 
-                    <Grid item xs={9} class="topPadding">
+                    <Grid item xs={9} className="topPadding">
                                     <div className="pay-index-subhed_datas">
                                         {
                                             this.state.isActive == 'profile' &&

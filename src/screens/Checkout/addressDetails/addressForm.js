@@ -2,7 +2,7 @@ import React from 'react';
 import './address.css'
 import { Container, Grid, Button, OutlinedInput, Select, MenuItem, FormControl, InputLabel } from '@material-ui/core';
 import { Input } from '../../../components/InputComponents/TextField/Input'
-import Checkboxes from '../../../components/InputComponents/CheckBox/CheckBox';
+// import Checkboxes from '../../../components/InputComponents/CheckBox/CheckBox';
 import SimpleSelect from '../../../components/InputComponents/Select/Select'
 import Addressdetails from './addressDetails';
 import Addressforms from './Addressforms'
