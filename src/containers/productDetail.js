@@ -182,7 +182,7 @@ class ProductDetail extends Component {
 
           <Grid item xs={12} >
             <RatingForm data={this.props.data} clear_rating={this.state.clear} clear_rating_onchange={clear_rating}/>
-          </Grid>
+          </Grid> 
 
           <Grid item style={{paddingBottom:"50px"}}>
             <Footer />
