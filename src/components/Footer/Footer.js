@@ -396,7 +396,7 @@ export default function Footer(props) {
 
                         <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: "10px" }} className="footer-icons">
                             <Grid item xs={9}>
-                                <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
+                                <a class="twitter" style={{ textDecoration: "none" }} target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
                                     <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i> </a>
                                 <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
                                     <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf09a;</i></a>
@@ -423,7 +423,7 @@ export default function Footer(props) {
 </Grid>
                     <Grid item xs={12} sm={6} className="footer-icons" style={{ paddingTop: "6px" }}>
 
-                        <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
+                        <a class="twitter" style={{ textDecoration: "none" }} target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
                             <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i> </a>
                         <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
                             <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf09a;</i></a>
@@ -528,11 +528,11 @@ export default function Footer(props) {
                     </Hidden>
                     <Hidden only={['sm', 'xs']}>
                         <Grid container item xl={3} lg={3} md={2} xs={12} sm={6} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: "flex-end" }}>
-                            <Grid item xs={6} >
+                            <Grid item xs={12} sm={12} md={12} lg={6}>
                                 <div onClick={() => { window.location.href = window.location.origin }}>
                                     <img src={styloriLogo} alt="" style={{ width: "100%", cursor: "pointer" }} />
                                 </div>
-                                <div style={{ color: '#808080', fontSize: '11px' }}>Copyright © 2020 stylori.com</div>
+                                <div style={{ color: '#808080', fontSize: '11px', justifyContent: "center", display: "flex" }}>Copyright © 2020 stylori.com</div>
                             </Grid>
                         </Grid>
                     </Hidden>

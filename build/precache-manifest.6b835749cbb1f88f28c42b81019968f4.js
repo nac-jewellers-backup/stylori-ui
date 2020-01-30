@@ -8,11 +8,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/2.css"
   },
   {
+<<<<<<< HEAD:build/precache-manifest.1447a2223a5eed3396db8d9bf7fd4718.js
 <<<<<<< HEAD:build/precache-manifest.484e63c97a7978419eeccdfb7a8c0a2d.js
     "revision": "5bc72e929016b1221d89",
 =======
     "revision": "4d838153c391d46b1129",
 >>>>>>> ecae6b638f6d9c8a0719c984a63c5d2c100c7b2b:build/precache-manifest.1447a2223a5eed3396db8d9bf7fd4718.js
+=======
+    "revision": "55789c707dc2c431185b",
+>>>>>>> 3a1cc5513ae39391f2443d2ee1e6ccbe250e8d28:build/precache-manifest.6b835749cbb1f88f28c42b81019968f4.js
     "url": "/static/css/3.css"
   },
   {
@@ -24,11 +28,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.js"
   },
   {
+<<<<<<< HEAD:build/precache-manifest.1447a2223a5eed3396db8d9bf7fd4718.js
 <<<<<<< HEAD:build/precache-manifest.484e63c97a7978419eeccdfb7a8c0a2d.js
     "revision": "5bc72e929016b1221d89",
 =======
     "revision": "4d838153c391d46b1129",
 >>>>>>> ecae6b638f6d9c8a0719c984a63c5d2c100c7b2b:build/precache-manifest.1447a2223a5eed3396db8d9bf7fd4718.js
+=======
+    "revision": "55789c707dc2c431185b",
+>>>>>>> 3a1cc5513ae39391f2443d2ee1e6ccbe250e8d28:build/precache-manifest.6b835749cbb1f88f28c42b81019968f4.js
     "url": "/static/js/3.js"
   },
   {
