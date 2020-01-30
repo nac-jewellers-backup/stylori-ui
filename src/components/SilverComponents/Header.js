@@ -35,6 +35,7 @@ import { NavLink } from 'react-router-dom';
 import logout from "../../assets/Icons/logout.svg"
 import styloriLogo from "../../assets/Stylorilogo.svg"
 import ElasticSearch from "components/ElasticSearch/ElasticSearch"
+import { CartContext } from 'context'
 
 let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
 // var path = window.location.pathname.split('/').pop();
@@ -240,7 +241,7 @@ class Header extends Component {
                                                     </div>
                                                 </Popover>
                                                 <Badge style={{ marginTop: "9px" }} color="secondary"
-                                                    badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
+                                                    badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length > 0 ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
                                                 // wishlist_count
                                                 // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
                                                 >
@@ -252,7 +253,11 @@ class Header extends Component {
                                                         }
                                                     }}  ></i>
                                                 </Badge>
-                                                <Badge style={{ marginTop: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                {/* {alert(JSON.stringify(this.props.cart_count.length))} */}
+                                                <Badge style={{ marginTop: "9px" }} badgeContent={
+                                                    (this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length : "0"
+                                                    // this.props && this.props.cart_count && this.props.cart_count.length
+                                                } color="secondary">
                                                     <a href="/cart" >
                                                         <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
@@ -415,7 +420,7 @@ class Header extends Component {
                                                                 {/* </NavLink> */}
                                                             </div>
                                                         </Popover>
-                                                        <Badge badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary">
+                                                        <Badge badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length > 0 ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary">
                                                             <i class={`fa fa-heart ${classes.iconFafaheart}`} onClick={() => {
                                                                 if (user_id.length > 0) {
                                                                     window.location.href = `/account${'-wishlist'}`
@@ -424,7 +429,12 @@ class Header extends Component {
                                                                 }
                                                             }}  ></i>
                                                         </Badge>
-                                                        <Badge style={{ fontSize: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                        <Badge style={{ fontSize: "9px" }} badgeContent={
+                                                            (this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length : "0"
+                                                            // localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"
+                                                            // this.props.cart_count? this.props.cart_count.length:"0"
+
+                                                        } color="secondary">
                                                             <a href="/cart" >
                                                                 <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
@@ -581,10 +591,11 @@ class Header extends Component {
 }
 
 export default withStyles(styles)(props => {
+    let { CartCtx: { cartFilters, data: cart_count, loading, error, allorderdata, wishlistdata, NewUser } } = React.useContext(CartContext);
     const { mapped } = useDummyRequest(headerDataSilver);
     if (Object.keys(mapped).length === 0) return ''
 
-    return <Header {...props} data={mapped} />
+    return <Header {...props} data={mapped} cart_count={cart_count} />
 });
 
 

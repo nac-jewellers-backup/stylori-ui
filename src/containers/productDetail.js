@@ -55,17 +55,19 @@ class ProductDetail extends Component {
     var data_json = [{ title: 'home', url: '/' }, { title: path[2], url: this.renderUrl() }, { title: this.props.data&&this.props.data[0]&&this.props.data[0].title }]
     // alert(JSON.stringify(this.props.wishlistdata))
     const clear_rating = (bool) => {
+      debugger
       if (bool === false) {
         this.setState({
           clear: ""
         })
-      } else {
+      } if(bool===true) {
         this.setState({
           clear: "clear_"
         })
       }
     }
  
+    // alert(JSON.stringify(this.props.setratingcountsclear))
     return (
       <div>
         <div>
@@ -141,7 +143,7 @@ class ProductDetail extends Component {
             </Grid>
           </div>
           <Sublistcarousel data={this.props.data} />
-          <RatingForm clear_rating={this.state.clear} clear_rating_onchange={clear_rating} />
+          <RatingForm data={this.props.data} clear_rating={this.state.clear} clear_rating_onchange={clear_rating} />
           <CustomerReviews rating={this.props.rating} />
 
           <Grid item xs={12}>
@@ -179,8 +181,8 @@ class ProductDetail extends Component {
           </Grid>
 
           <Grid item xs={12} >
-            <RatingForm />
-          </Grid>
+            <RatingForm data={this.props.data} clear_rating={this.state.clear} clear_rating_onchange={clear_rating}/>
+          </Grid> 
 
           <Grid item style={{paddingBottom:"50px"}}>
             <Footer />
@@ -193,7 +195,7 @@ class ProductDetail extends Component {
 }
 const Components = props => {
 
-  let { CartCtx: { allorderdata, wishlistdata } } = React.useContext(CartContext);
+  let { CartCtx: { allorderdata, wishlistdata,setratingcountsclear } } = React.useContext(CartContext);
 
   const { Globalctx } = React.useContext(GlobalContext)
   const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating } } = React.useContext(ProductDetailContext);
@@ -205,7 +207,7 @@ const Components = props => {
   }
   if (Object.keys(mapped).length === 0) return <div className="overall-loader"><div id="loading"></div></div>
   else {
-    return <ProductDetail {...props} data={mapped} rating={rating} allorderdata={allorderdata} wishlistdata={wishlistdata} />
+    return <ProductDetail {...props} setratingcountsclear={setratingcountsclear} data={mapped} rating={rating} allorderdata={allorderdata} wishlistdata={wishlistdata} />
 
   }
 }

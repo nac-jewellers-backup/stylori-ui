@@ -19,9 +19,12 @@ const RatingForm = (props) => {
 }
 const RatingComponent = (props) => {
     const { classes } = props;
+    // const clear1 = () => {
+    //     props && props.clear_rating_onchange && props.clear_rating_onchange(true)
+    // }
     const { values, handlers, setValues } = useRating(props);
-
     const newLocal = 250;
+
     return (
         <Container style={{ paddingLeft: "17px", paddingRight: "17px" }} className="bg-clr2">
             <div className="bg-clr2 priceecontainer" style={{ padding: "20px" }}>
@@ -98,7 +101,10 @@ const RatingComponent = (props) => {
                             <Grid item xs={12} lg={12}>
                                 <div style={{ float: "right" }}>
                                     <Button className={`form-reviews-mob ${classes.fontwhite} ${classes.normalcolorback}`} type="submit">Submit</Button>
-                                    <Button onClick={() => handlers.clear()} className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite}`} >Cancel</Button>
+                                    <Button onClick={() => {
+                                        handlers.clear()
+                                        props.clear_rating_onchange(true)
+                                    }} className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite}`} >Cancel</Button>
                                 </div>
                             </Grid>
                         </Grid>
