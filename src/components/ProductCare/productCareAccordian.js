@@ -100,15 +100,15 @@ export default function ProductCareAccordian(props) {
     return(
         
         <Grid className={classes.root}  >
-                    <List style={{padding:"0px"}} >
+                    <List style={{padding:"0px"}} key="Accordian1">
                         <ListItem style={{padding:"0px"}}  autoFocus={false} className={classes.listeditems} button onClick={handleClick}>
                             <Typography style={{width:"100%"}} className={classes.details} >{value.Questions}</Typography>
-                           <List style={{float:"end"}}> { open ? checkerOpen():checkerClose()}</List>
+                           <List style={{float:"end"}} key="2"> { open ? checkerOpen():checkerClose()}</List>
                         </ListItem>
                         <Collapse in={open} timeout="auto" unmountOnExit>
-                            <List component="div" disablePadding>
+                            <List component="div" disablePadding key="Accordian2">
                                 <ListItem style={{paddingLeft:"0px",paddingBottom:"0px"}} button className={classes.listeditems}>
-                                    <List style={{ padding: "0px" }}>
+                                    <List style={{ padding: "0px" }} key="Accordian3">
                                         <Grid container style={{ display: "inline-block !important" }} className={classes.listeditems}>
                                             
                                                 {value.SubTitle &&

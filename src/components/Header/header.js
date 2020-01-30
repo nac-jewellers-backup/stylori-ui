@@ -326,8 +326,8 @@ class Header extends Component {
               <Typography className="drawer-menu">Menu</Typography>
             </div>
             <Divider />
-            <List className="sideNavListing"  >
-              {mainlist.map(row => (
+            <List className="sideNavListing"  key="index12">
+              {mainlist.map(row =>index=> (
                 <>
                   <ListItem button key={row.name} className="drawer-list" >
                     <img className="submenu-icons" src={row.icon} alt={row.icon}></img>
@@ -335,29 +335,29 @@ class Header extends Component {
                       onClick={() => Jewellery[row.name] !== undefined ? this.selectItem(row.name) : ''}
                     >
                       <Typography className="list-items"
-                        variant=""
+                        variant="subtitle1"
                       >{row.name}
                       </Typography>
                     </ListItemText>
                     {Jewellery[row.name] !== undefined ? row.name === selected ? <ExpandMore className="drawer-arrow" /> : <ExpandLess className="drawer-arrow" /> : ""}
                   </ListItem>
                   {selected === row.name &&
-                    Object.keys(Jewellery[selected]).map(row2 => (
+                    Object.keys(Jewellery[selected]).map(row2 =>index=> (
                       <>
                         <ListItem button key={Jewellery[selected][row2].name} className="drawer-list">
                           <img className="submenu-icons" src={row2.icon} alt=""></img>
                           <ListItemText onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>
-                            <Typography className="Jew-mbl-head-list" variant="">{Jewellery[selected][row2].name}
+                            <Typography className="Jew-mbl-head-list" >{Jewellery[selected][row2].name}
                             </Typography>
                           </ListItemText>
                           {selected1 === Jewellery[selected][row2].name ? <ExpandMore className="drawer-arrow" /> : <ExpandLess className="drawer-arrow" />}
                         </ListItem>
                         {selected1 === Jewellery[selected][row2].name &&
-                          <List className="sideNavListing" >
+                          <List className="sideNavListing" key={index}>
                             <ListItem className="drawer-list">
                               <ListItemText
                               >
-                                <Typography className="Jew-mbl-head-list" variant="">{subheader[selected1].header}
+                                <Typography className="Jew-mbl-head-list" >{subheader[selected1].header}
                                   <span className="header-viewal">View All</span>
                                 </Typography>
                               </ListItemText>
@@ -366,7 +366,7 @@ class Header extends Component {
                               <>
                                 <ListItem>
                                   <ListItemText>
-                                    <Typography className="Jew-mbl-head-list" variant="">{row}</Typography>
+                                    <Typography className="Jew-mbl-head-list" >{row}</Typography>
                                   </ListItemText>
                                 </ListItem>
                               </>

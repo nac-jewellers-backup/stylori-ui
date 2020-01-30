@@ -150,7 +150,7 @@ const Filters = (props) => {
                       llllccc
                         </ListItemText>
                     : ""} */}
-                <List className="mbl-filter-list">
+                <List className="mbl-filter-list" key="filter">
                   {props.data[0].filter.map(row => (
                     <ListItem key={row} className="mbl-filter-list"
                       onClick={() => filterValue(row)}
@@ -187,7 +187,7 @@ const Filters = (props) => {
                             onClick={handleDrawerCloseMobile}
                           />
                           <ListItemText>
-                            <Typography variant=""
+                            <Typography variant="subtitle1"
                               className={`filter-mbl-font fnts ${classes.colorMain}`}>
                               <div
                                 onClick={handleDrawerCloseMobile}
@@ -210,7 +210,7 @@ const Filters = (props) => {
               <Container>
                 <Toolbar  >
                   <div onClick={handleDrawerOpenMobile}>
-                    <Typography variant=""
+                    <Typography variant="subtitle1"
                       className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-filter"
 
                       ></i> &nbsp;
@@ -221,7 +221,7 @@ const Filters = (props) => {
                   <div style={{ flexGrow: "2" }} />
 
                   <IconButton edge="end" color="inherit" onClick={() => setState({ ...state, CardRadio: !CardRadio, productDisplay: !productDisplay })} >
-                    <Typography variant=""
+                    <Typography variant="subtitle1"
                       className={`filter-mbl-font ${classes.colorMain}`} style={{ fontSize: '1rem' }}><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
                       Sort
                     </Typography>

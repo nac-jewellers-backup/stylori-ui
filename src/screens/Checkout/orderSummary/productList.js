@@ -53,9 +53,9 @@ const ProductlistComponent = (props) => {
     return (
         <Grid>
             <div className='pt-sm'>
-                {/* <Checkoutcard /> */}
+                {/* <Checkoutcard />          ---------------  spacing={12}--*/}
                 <div>
-                    <Grid container spacing={12}>
+                    <Grid container >
                         <Grid item xs={12} lg={4} sm={6}>
 
                             <ExpansionPanel

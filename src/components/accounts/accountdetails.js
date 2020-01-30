@@ -73,7 +73,7 @@ class Accountdetails extends Component {
                         <div className="panel_body">
                             <Grid container spacing={12}  >
                                 <Grid item  >
-                                    <List xs={3} className="pay-index-subhed">
+                                    <List xs={3} className="pay-index-subhed" key="accountkey">
                                         <p className={this.state.isActive == 'profile' ? "backgrund" : ""}
                                             onClick={() => this.Activeaccounts('profile')}
                                         > Personal Information</p>

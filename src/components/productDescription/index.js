@@ -91,7 +91,7 @@ class ProductDescription extends Component {
 
                   style={{ textAlign: 'center' }}
 
-                  alignItems="center">
+                  >
                   <CustomSeparator
                     list='product-dis'
                     classsubhed='product-backg'
@@ -103,7 +103,7 @@ class ProductDescription extends Component {
                   item
                   xs={6}
                   className={`DescriptionTitle`}
-                  alignItems="center"            >
+                             >
                   <Typography className={`${classes.TypoDark}`} variant='h1' component='h1'>
                     {/* {window.location.pathname.split('/').pop()} */}
                     {renderTitle()}
@@ -116,7 +116,7 @@ class ProductDescription extends Component {
                   item
                   xs={6}
                   className={` DescriptionTitleSmallScreen `}
-                  alignItems="center"            >
+                  >
                   <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>
                     {renderTitle()}
                   </Typography>
@@ -132,7 +132,7 @@ class ProductDescription extends Component {
                   item
                   xs={3}
                   style={{ paddingLeft: '4%' }}
-                  alignItems="center">
+                  >
 
                   {/* < Slideshow fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel} styles={'productDescriptionCarousel'} /> */}
                   < Slideshow fadeImages={fadeImages} dataCarousel={settings} styles={'productDescriptionCarousel'} />
@@ -141,8 +141,8 @@ class ProductDescription extends Component {
               <Grid
                 item
                 xs={12} sm={12} md={9} lg={9} xl={9}
-                alignItems="center">
-                <p>
+                >
+                {/* <p> */}
                   <div className="DescriptionContent">
                     {
                       this.state.showLess === true ?
@@ -164,7 +164,7 @@ class ProductDescription extends Component {
                     }
 
                   </div>
-                </p>
+                {/* </p> */}
               </Grid>
 
             </Grid>

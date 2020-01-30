@@ -57,7 +57,7 @@ class Header extends Component {
             targetopenSubmenu: null,
             subTitleData: null,
             subMenuTarget: null,
-            anchorEl: false,
+            anchorEll: false,
             opened: false,
 
         }
@@ -117,13 +117,13 @@ class Header extends Component {
 
     handleClickPopover = (event) => {
         this.setState({
-            anchorEl: event.currentTarget,
+            anchorEll: event.currentTarget,
         });
     };
 
     handleClosePopover = () => {
         this.setState({
-            anchorEl: false,
+            anchorEll: false,
         });
     };
     scrolling = () => {
@@ -154,8 +154,8 @@ class Header extends Component {
         const { mainlist, Jewellery, subheader, menuListHeader, menuLists } = this.props.data;
         let { selected, selected1 } = this.state;
         const { classes } = this.props;
-        const { anchorEl } = this.state;
-        const openPopover = anchorEl;
+        const { anchorEll } = this.state;
+        const openPopover = anchorEll;
         const opened = this.state;
         var a = window.location.pathname
         var b = a.split("/")
@@ -202,7 +202,7 @@ class Header extends Component {
                                                 <Popover
                                                     id="simple-popper"
                                                     open={openPopover}
-                                                    anchorEl={anchorEl}
+                                                    anchorEl={anchorEll}
                                                     onClose={this.handleClosePopover}
                                                     anchorOrigin={{
                                                         vertical: 'bottom',
@@ -371,7 +371,7 @@ class Header extends Component {
                                                         <Popover
                                                             id="simple-popper"
                                                             open={openPopover}
-                                                            anchorEl={anchorEl}
+                                                            anchorEl={anchorEll}
                                                             onClose={this.handleClosePopover}
                                                             anchorOrigin={{
                                                                 vertical: 'bottom',
@@ -474,7 +474,7 @@ class Header extends Component {
                                         <i class="fa fa-times closebus" ></i>
                                     </IconButton>
                                 </div>
-                                <List className="sideNavListing"  >
+                                <List className="sideNavListing"  key="sideNav">
                                     {mainlist.map(row => (
                                         <>
                                             <ListItem button key={row.name} className="drawer-list1" >
@@ -482,7 +482,7 @@ class Header extends Component {
                                                     onClick={() => { window.location.href = row.url }}
                                                 >
                                                     <Typography className="list-items1"
-                                                        variant=""
+                                                        variant="subtitle1"
                                                     >{row.name.toUpperCase()}
                                                     </Typography>
                                                 </ListItemText>
@@ -494,7 +494,7 @@ class Header extends Component {
                                                     <>
                                                         <ListItem button key={Jewellery[selected][row2].name} className={classes.subtitleContainer}>
                                                             <ListItemText onClick={() => { window.location.href = Jewellery[selected][row2].url }}>
-                                                                <Typography className={classes.subtitles} variant="">{Jewellery[selected][row2].name.toUpperCase()}
+                                                                <Typography className={classes.subtitles} >{Jewellery[selected][row2].name.toUpperCase()}
                                                                 </Typography>
                                                             </ListItemText>
                                                             <div onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>{selected1 === Jewellery[selected][row2].name ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i>}
@@ -505,7 +505,7 @@ class Header extends Component {
                                                                 {/* <ListItem className="drawer-list1">
                                                             <ListItemText
                                                             >
-                                                                <Typography className="list-items1" variant="">{subheader[selected1]&&subheader[selected1].header&&subheader[selected1].header.toUpperCase()}
+                                                                <Typography className="list-items1" >{subheader[selected1]&&subheader[selected1].header&&subheader[selected1].header.toUpperCase()}
                                                                 </Typography>
                                                                 <span style={{ paddingTop: "5px" }} className="header-viewal1">View All</span>
                                                             </ListItemText>
@@ -514,7 +514,7 @@ class Header extends Component {
                                                                     <>
                                                                         <ListItem onClick={() => { window.location.href = row.url }} className={classes.subtitle2Container}>
                                                                             <ListItemText>
-                                                                                <Typography className="list-items1" variant="">{row.name.toUpperCase()}</Typography>
+                                                                                <Typography className="list-items1" >{row.name.toUpperCase()}</Typography>
                                                                             </ListItemText>
                                                                         </ListItem>
                                                                     </>

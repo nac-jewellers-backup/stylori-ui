@@ -23,7 +23,7 @@ function HeaderHoverMenuItem(props) {
           style={{border:"1px solid #ccc"}}
           placement={'left-start'}
           open={opens} anchorEl={target} transition className={classes.mouseOverPopoversub}>
-          <List component="nav" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
+          <List component="nav" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} key="nav">
             {props.data && props.data.imageContainer && <Grid container style={{ width: "350px", background: "#fff", padding: "10px", zIndex: "10000" }}>
               {props.data.imageContainer.map((val, index) =>
                 <Grid item xs={4}>

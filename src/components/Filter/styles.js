@@ -1,3 +1,4 @@
+{/*theme.spacing.unit * 3 */}
 const drawerWidth = 280;
 
 const styles = theme => ({
@@ -34,12 +35,12 @@ const styles = theme => ({
 
 
   },
-  drawerPaper: {
-    width: drawerWidth,
-    position: 'sticky !important',
-    top: '153px'
+  // drawerPaper: {
+  //   width: drawerWidth,
+  //   position: 'sticky !important',
+  //   top: '153px'
 
-  },
+  // },
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
@@ -50,7 +51,7 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing(3), 
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,

@@ -50,7 +50,7 @@ class MenuListItem extends Component {
         const { classes } = this.props;
         return (
             <div>
-                <List component="nav" className={`ListColor ${classes.colorMain}`}>
+                <List component="nav" className={`ListColor ${classes.colorMain}`} key="menu">
 
                     {
                         (this.props.listHoverItem !== undefined) &&
@@ -71,7 +71,7 @@ class MenuListItem extends Component {
                             ))}
                 </List>
                 <hr className={`${classes.colorMainBorder}`} />
-                <List component="nav" className={`ListColor ${classes.colorMain}`} >
+                <List component="nav" className={`ListColor ${classes.colorMain}`} key="menu">
                     {
                         (this.props.listHoverItem !== undefined) &&
                         this.props.listHoverItem['menuTwo'] && this.props.listHoverItem['menuTwo'].map(menuListFilter => (
