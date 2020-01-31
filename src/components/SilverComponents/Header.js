@@ -379,7 +379,7 @@ class Header extends Component {
                                                     // <img className="icons-header-sizes" src={usershape}/>
                                                     : <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
                                                         <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
-                                                    </span>
+                                                    </span> 
                                                 } */}
 
                                                         {localStorage.getItem("true") ?
