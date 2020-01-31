@@ -386,6 +386,27 @@ class Component extends React.Component {
           })
           this.forceUpdate()
           this.props.setFilters(checked)
+          return false
+        }else{
+          let arr = [], arr1 = [];
+          arr = chipData.filter(val => val.label !== value);
+          if (checked) {
+            arr1 = this.delete_val_chips(value).filter(val => {
+              var dlt; 
+              if (val !== undefined && val !== null) {
+                dlt = Object.values(val) === -1
+              }
+              return dlt;
+            })
+            chipData = arr1;
+          }
+          chipData = arr;
+          this.setState({
+            chipData,
+            checked
+          })
+          this.forceUpdate()
+          this.props.setFilters(checked)
         }
       }
     })
