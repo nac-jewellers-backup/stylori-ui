@@ -374,7 +374,7 @@ class Component extends React.Component {
               var dlt; 
               if (val !== undefined && val !== null) {
                 dlt = Object.values(val) === -1
-              }
+              } 
               return dlt;
             })
             chipData = arr1;
