@@ -46,6 +46,20 @@ export const TabsProvider = (props) => {
     // useEffect(()=>{
     //     likemakeRequest(vardata)
     // },[])
+    var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
+    const myStorage = sessionStorage.getItem("user_id");
+    const localvalues_check = JSON.parse(localStorage.getItem('gut_lg')) === true ? true : false
+    React.useEffect(() => {
+        if (localvalues_check === true) {
+            if (con_gust === true) {
+                if (!myStorage) {
+                    localStorage.clear();
+                    sessionStorage.clear();
+
+                }
+            }
+        }
+    }, [])
     useEffect(() => {
         setlikedata(likedata)
     }, [likedata, likeloading, likeerror, filters, price, data])
