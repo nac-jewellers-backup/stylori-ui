@@ -52,8 +52,6 @@ self.addEventListener("fetch", e => {
   }))
 })
 self.addEventListener('activate', event => {
-  console.log('Activating new service worker...');
-  
   const cacheWhitelist = ['sw-precache-v3-sw-precache-webpack-plugin'];
 
   event.waitUntil(
