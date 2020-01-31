@@ -371,7 +371,7 @@ class Component extends React.Component {
           arr = chipData.filter(val => val.label !== value);
           if (checked) {
             arr1 = this.delete_val_chips(value).filter(val => {
-              var dlt;
+              var dlt; 
               if (val !== undefined && val !== null) {
                 dlt = Object.values(val) === -1
               }
