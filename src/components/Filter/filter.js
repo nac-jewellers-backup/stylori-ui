@@ -570,9 +570,9 @@ class Component extends React.Component {
                     variant="persistent"
                     anchor="left"
                     open={open}
-                    classes={{
-                      paper: classes.drawerPaper,
-                    }}
+                    // classes={{
+                    //   paper: classes.drawerPaper,
+                    // }}
                   >
                     <Divider />
                     <List className="fil-main-list">

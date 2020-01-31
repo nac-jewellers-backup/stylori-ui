@@ -28,7 +28,7 @@ import { useDummyRequest } from '../../hooks';
 import { headerDataSilver } from '../../mappers';
 import { styles } from './styles';
 import LogoSmallScreen from '../../assets/Stylori Silver logo.svg';
-import Seach from '../../assets/search'
+import Seach from '../../assets/search' 
 import stylorisilverlogo from '../../assets/Stylori Silver logo.svg'
 import Popover from '@material-ui/core/Popover';
 import { NavLink } from 'react-router-dom';
