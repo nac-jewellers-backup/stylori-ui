@@ -25,8 +25,8 @@ const Filters = (props) => {
     const classes = styles();
     return (
 
-        <Grid xs={12} container className={classes.MainGrid}>
-            <Grid xs={9} item container className={classes.FilterGrid} >
+        <Grid xs={12} lg={12} container className={classes.MainGrid}>
+            <Grid xs={9} lg={9} item container className={classes.FilterGrid} >
             
 
         {
@@ -64,7 +64,7 @@ const Filters = (props) => {
 
           
             </Grid>
-            <Grid xs={3} item container>
+            <Grid xs={3} lg={3} item container>
 
             </Grid>
         </Grid>

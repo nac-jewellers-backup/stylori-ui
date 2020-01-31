@@ -85,16 +85,16 @@ export default function AccordianElement(props) {
     return (
 
         <Grid className={classes.root}>
-            <List key="accordian1_">
+            <List>
 
                 <ListItem style={{ padding: "0px" }} autoFocus={false} className={classes.listeditems} button onClick={handleClick}>
                     <Typography style={{ width: "100%" }} className={classes.details} >{value.Questions}</Typography>
                     <List style={{ float: "end", display: "flex" }}> {open ? checkerOpen() : checkerClose()}</List>
                 </ListItem>
                 <Collapse in={open} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding key="accordian3">
+                    <List component="div" disablePadding>
                         <ListItem style={{ paddingLeft: "0px", paddingBottom: "0px", paddingTop: "0px" }} button >
-                            <List style={{ padding: "0px" }} key="accordian4">
+                            <List style={{ padding: "0px" }}>
                                 <Grid container style={{ display: "inline-block !important" }} className={classes.listeditems}>
                                     <Grid item>
                                         {value.SubTitle &&

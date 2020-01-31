@@ -93,7 +93,6 @@ const Provider = (props) => {
 
 
 
-            // console.log('splitHiphen()', splitHiphen())
             const conditionfiltersSeo = { seofilter: { seoUrl: { in: splitHiphen() } } }
             // makeRequestSeo(conditionfiltersSeo)
             function status(response) {
@@ -166,8 +165,6 @@ const Provider = (props) => {
                     updateFilters(filters)
                     // alert(JSON.stringify(filters))
                 }).catch(function (error) {
-
-                    console.log('Request failed', error, uri, status.code);
                     //  setSeoComponentMount(data)
                 });
 
@@ -387,12 +384,6 @@ const Provider = (props) => {
 
             // alert(JSON.stringify('filters',filters))
             // alert(JSON.stringify(newObj))
-            // console.log('newObjfilters', newObj)
-            // console.log('newObjsort', newObj)
-            // console.log('newObjfilterssort', newObj)
-            // console.log('newObjsortfilters', newObj)
-            // newObj['price'] = {'min_price':pricemin,'max_price':pricemax}
-            // console.log('newObj', Object.keys(newObj).filter(val => { if (val === 'category') return val }).length > 1)
             // if()
             if (Object.keys(filters.category).length === 0 && filters.category.constructor === Object) {
                 if (filters.Category && Object.keys(filters.Category).length > 0 && filters.Category.constructor === Object) {
@@ -510,7 +501,7 @@ forceUpdate()
 
             // bodyvar = paramObjects();
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
         var k = qtfArr.map(val => Object.values(val));
         var keyy = qtfArr.map(val => Object.keys(val))
@@ -555,7 +546,6 @@ forceUpdate()
                 //    makeFetch(newObj)
             }
         }
-        // console.log('i came in as update filters function', "123123")
         await makeFetch(newObj);
         //    props.history.push({
         //     pathname: `/stylori${mappedFilters.seo_url   ?`/${mappedFilters.seo_url}` : '' }`,
@@ -567,7 +557,7 @@ forceUpdate()
             }
 
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
         // }
 

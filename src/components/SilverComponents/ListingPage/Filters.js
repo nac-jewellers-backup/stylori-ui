@@ -7,7 +7,9 @@ import HeaderHoverMenuItem from './../HoverNavBarListing/HeaderHoverMenuItem';
 import { ListingPageContext } from 'context'
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 const Filters = (props) => {
-  const { setSort, setloadingfilters, setPriceMax, setPriceMin, ListingPageCtx } = React.useContext(ListingPageContext);
+  const { 
+    // setSort, setloadingfilters, setPriceMax, setPriceMin,
+     ListingPageCtx } = React.useContext(ListingPageContext);
   const [state, setState] = React.useState({
     Menuopen: false, targetopen: 0, listHoverItem: '', filtercheck: '',_width:null,
     filters: { offers: {}, price: {}, ProductType: {}, Theme: {}, Collection: {}, Material: { Silver: true } }
@@ -30,7 +32,7 @@ const Filters = (props) => {
     }
     else {
       // alert(a,b,d)
-      console.log('error')
+      // console.log('error')
     }
 
 
@@ -78,8 +80,8 @@ const Filters = (props) => {
   return (
     <>
       <Hidden smDown>
-        <Grid xs={12} container className={classes.MainGrid}>
-          <Grid xs={9} item container className={classes.FilterGrid} onMouseLeave={() => { setState({ ...state,  Menuopen: false, Checked: false, targetopen: null, listHoverItem: '' }) }}>
+        <Grid xs={12} lg={12} container className={classes.MainGrid}>
+          <Grid xs={9} lg={9} item container className={classes.FilterGrid} onMouseLeave={() => { setState({ ...state,  Menuopen: false, Checked: false, targetopen: null, listHoverItem: '' }) }}>
 
 
             {
@@ -122,7 +124,7 @@ const Filters = (props) => {
 
 
           </Grid>
-          <Grid xs={3} item container>
+          <Grid xs={3} lg={3} item container>
             sortBy
             </Grid>
         </Grid>
@@ -150,7 +152,7 @@ const Filters = (props) => {
                       llllccc
                         </ListItemText>
                     : ""} */}
-                <List className="mbl-filter-list" key="filter">
+                <List className="mbl-filter-list">
                   {props.data[0].filter.map(row => (
                     <ListItem key={row} className="mbl-filter-list"
                       onClick={() => filterValue(row)}
@@ -187,7 +189,7 @@ const Filters = (props) => {
                             onClick={handleDrawerCloseMobile}
                           />
                           <ListItemText>
-                            <Typography variant="subtitle1"
+                            <Typography variant=""
                               className={`filter-mbl-font fnts ${classes.colorMain}`}>
                               <div
                                 onClick={handleDrawerCloseMobile}
@@ -210,7 +212,7 @@ const Filters = (props) => {
               <Container>
                 <Toolbar  >
                   <div onClick={handleDrawerOpenMobile}>
-                    <Typography variant="subtitle1"
+                    <Typography variant=""
                       className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-filter"
 
                       ></i> &nbsp;
@@ -221,7 +223,7 @@ const Filters = (props) => {
                   <div style={{ flexGrow: "2" }} />
 
                   <IconButton edge="end" color="inherit" onClick={() => setState({ ...state, CardRadio: !CardRadio, productDisplay: !productDisplay })} >
-                    <Typography variant="subtitle1"
+                    <Typography variant=""
                       className={`filter-mbl-font ${classes.colorMain}`} style={{ fontSize: '1rem' }}><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
                       Sort
                     </Typography>

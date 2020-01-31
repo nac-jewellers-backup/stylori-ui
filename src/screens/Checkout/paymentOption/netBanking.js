@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Grid, Button } from '@material-ui/core';
 import './payment.css';
-import SimpleSelect from '../../../components/InputComponents/Select/Select';
+// import SimpleSelect from '../../../components/InputComponents/Select/Select';
 import { CartContext } from 'context'
 import cart from 'mappers/cart';
 import PaymentHiddenForm from './paymentHiddenForm';

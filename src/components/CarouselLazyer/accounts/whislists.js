@@ -50,7 +50,7 @@ class Component extends React.Component {
                                 <Grid container spacing={12} xs={12}  style={{paddingBottom:"10px",}}>
                                     {/* <Grid  xs={12}> */}
                                     <Grid item  style={{width:"50%"}} >
-                                    <Grid item class="topPaddingwish" style={{paddingRight:"4px",float:"left"}}>
+                                    <Grid item className="topPaddingwish" style={{paddingRight:"4px",float:"left"}}>
                                           <div className="remove-product">
                                             <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} />
                                         </div>
@@ -71,7 +71,7 @@ class Component extends React.Component {
                                                         productId={first_map.productId}
                                                         add={first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice}
                                                     />
-                                                <i class="fa fa-shopping-bag"></i>&nbsp;Add to Bag
+                                                <i className="fa fa-shopping-bag"></i>&nbsp;Add to Bag
                                                     </>
                                                 {/* <Button "> */}
                                                 {/* onClick={() => {

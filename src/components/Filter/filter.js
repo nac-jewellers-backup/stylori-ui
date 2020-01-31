@@ -137,18 +137,30 @@ class Component extends React.Component {
           .then(status)
           .then(json)
           .then(async function (data) {
-            
-            console.log('data-checked', data)
-            
+            // alert(data)
+            // var {checked} = this.state
+            //    data.data.allSeoUrlPriorities.nodes.map(val => {
+            //     alert(JSON.stringify(data))
+            //     let attrName = val.attributeName.replace(/\s/g, '')
+            //     let attrVal = val.attributeValue
+            //     checked[attrName] = {[attrVal]:true}
+            //     data.allSeoUrlPriorities.nodes.map(val =>{return val})
+            //     this.setState({checked},()=>{alert(JSON.stringify(checked))})
+            //     return abcd = a
+
+            //     // this.handleChange(()=>{}, true, ()=>{}, {}, paramsfilter)
+
+            // })
+
             paramsfilter = data && data.data && data.data.allSeoUrlPriorities && data.data.allSeoUrlPriorities.nodes && data.data.allSeoUrlPriorities.nodes.map(val => {
               var attrName = val.attributeName.replace(/\s/g, '')
               var attrVal = val.attributeValue
-              if(attrName === "Category"){
-                  if(attrVal === "goldcoins"){
-                    a['ProductType'] = { 'Gold Coins': true } 
-                    a['Material']  = { 'Gold': true } 
-                    a['MetalColor'] = { 'Yellow': true } 
-                  }
+              if (attrName === "Category") {
+                if (attrVal === "goldcoins") {
+                  a['ProductType'] = { 'Gold Coins': true }
+                  a['Material'] = { 'Gold': true }
+                  a['MetalColor'] = { 'Yellow': true }
+                }
               }
               a[attrName] = { [attrVal]: true }
               // checked[attrName] = a
@@ -193,7 +205,6 @@ class Component extends React.Component {
             // this.setState(checked)
             this.setState(chipData, selected, checked)
           }).catch(function (error) {
-            console.log('Request failed', error);
           });
       }
 
@@ -254,7 +265,6 @@ class Component extends React.Component {
     return bz
   })
   handleChange(value, BoolName, e, title, TargetName) {
-    debugger
     // window.scrollTo(0,2)
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
@@ -295,7 +305,6 @@ class Component extends React.Component {
     else {
       let arr1 = [];
       let paramsMapUrlSetState = () => TargetName.map(val => {
-        debugger
         var nameFilter = val[0]
         var keyNameFilter = val[1]
         let checkedvalue = {};
@@ -370,7 +379,6 @@ class Component extends React.Component {
     // bb["delete_fil"] = "12345"
     // this.props && this.props.setdelete_fil && this.props.setdelete_fil(bb)
 
-    // console.log("valssss",chipData,checked)
     // alert(JSON.stringify(data))
     // this.setState(state => {
     //   const chipData = [...state.chipData];
@@ -517,14 +525,16 @@ class Component extends React.Component {
                 <div >
 
                   <Paper
-                    className={classes.drawer}
+                    className={`${classes.drawer} ${classes.drawerPaper}`}
                     variant="persistent"
                     anchor="left"
                     open={open}
-                
+                    // classes={{
+                    //   paper: classes.drawerPaper,
+                    // }}
                   >
                     <Divider />
-                    <List className="fil-main-list" key="filters_">
+                    <List className="fil-main-list">
                       <div style={{ margin: "5px" }}>
                         <Typography style={{ fontSize: "1.0rem !important", paddingTop: "10px !important", fontWeight: 600 }} className="fil-list-items">Price</Typography>
                         <Grid container spacing={12} style={{ paddingLeft: "14px" }}  >
@@ -558,7 +568,6 @@ class Component extends React.Component {
                         </Grid>
                       </div>
                       {/* filter */}
-                      {/* {console.log(filter)} */}
                       <div>
                         {
                           <>
@@ -570,7 +579,7 @@ class Component extends React.Component {
                                   <>
                                     {
                                       subFilter[row].length > 0 ?
-                                        <>{window.location.pathname === "/goldcoins" || row === "Offers" || found === "/goldcoins" ? row === "Offers" ? "" : <ListItem key={row}
+                                        <>{window.location.pathname === "/goldcoins" || found === "goldcoins" || found === "/goldcoins" ? row === "Offers" ? "" : <ListItem key={row}
                                           onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
                                           <ListItemText
                                           >
@@ -580,17 +589,17 @@ class Component extends React.Component {
                                           </ListItemText>
                                           {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
                                             <ExpandMore className="fil-drawer-arrow" />}
-                                        </ListItem>:<ListItem key={row}
+                                        </ListItem> : <ListItem key={row}
                                           onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
-                                          <ListItemText
-                                          >
-                                            <Typography className="fil-list-items" variant='h4' component="h4"
-                                            >{row}
-                                            </Typography>
-                                          </ListItemText>
-                                          {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
-                                            <ExpandMore className="fil-drawer-arrow" />}
-                                        </ListItem>
+                                            <ListItemText
+                                            >
+                                              <Typography className="fil-list-items" variant='h4' component="h4"
+                                              >{row}
+                                              </Typography>
+                                            </ListItemText>
+                                            {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
+                                              <ExpandMore className="fil-drawer-arrow" />}
+                                          </ListItem>
                                         }
                                         </>
                                         :
@@ -624,7 +633,7 @@ class Component extends React.Component {
                                                                 name={row.replace(/\s/g, "")}
                                                               />
                                                             }
-                                                            label={<Typography
+                                                            label={<Typography variant=""
                                                               className={`fil-submenu-list ${classes.colorMain}`}>{row12.title}
                                                             </Typography>}
                                                           />
@@ -641,7 +650,7 @@ class Component extends React.Component {
                                                                 name={row.replace(/\s/g, "")}
                                                               />
                                                             }
-                                                            label={<Typography
+                                                            label={<Typography variant=""
                                                               className={`fil-submenu-list ${classes.colorMain}`}>{row12}
                                                             </Typography>}
                                                           />
@@ -726,7 +735,7 @@ class Component extends React.Component {
 
             </div>
 
-            <Grid container item xs={12} className="p" style={{ overflow: 'scroll', height: '100%', display: openMobile ? 'none' : 'block' }}>
+            <Grid container xs={12} className="p" style={{ overflow: 'scroll', height: '100%', display: openMobile ? 'none' : 'block' }}>
               <Grid container item xs={12} >
                 <Grid item xs={6} className={classes.filterMain}>
                   {/* {chck_res ?
@@ -736,11 +745,10 @@ class Component extends React.Component {
                       llllccc
                         </ListItemText>
                     : ""} */}
-                  <List className="mbl-filter-list" key="filter_1">
-                    {filter && filter.map(row=>index => {
+                  <List className="mbl-filter-list">
+                    {filter && filter.map(row => {
                       return (subFilter[row].length > 0 ?
-                        <>{window.location.pathname === "/goldcoins" || found === "/goldcoins" || found === "goldcoins" ? row === "Offers" ? "" :
-                         <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
+                        <>{window.location.pathname === "/goldcoins" || found === "/goldcoins" || found === "goldcoins" ? row === "Offers" ? "" : <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
                           onClick={() => this.filterValue(row)}
                         >
                           <ListItemText
@@ -764,7 +772,6 @@ class Component extends React.Component {
                     }
                     )}
                   </List>
-                  {/* {console.info('data-filter', subFilter, this.state.filtercheck)} */}
                 </Grid>
                 {
                   this.state.filtercheck !== '' &&
@@ -811,7 +818,7 @@ class Component extends React.Component {
                                   onClick={this.handleDrawerCloseMobile}
                                 />
                                 <ListItemText>
-                                  <Typography
+                                  <Typography variant=""
                                     className={`filter-mbl-font fnts ${classes.colorMainSecondary}`}>
                                     <div
                                       // onClick={this.handleDrawerCloseMobile}
@@ -836,7 +843,7 @@ class Component extends React.Component {
                                   onClick={this.handleDrawerCloseMobile}
                                 />
                                 <ListItemText>
-                                  <Typography variant="subtitle1"
+                                  <Typography variant=""
                                     className={`filter-mbl-font fnts ${classes.colorMainSecondary}`}>
                                     <div
                                       // onClick={this.handleDrawerCloseMobile}
@@ -881,7 +888,7 @@ class Component extends React.Component {
                 <Container>
                   <Toolbar  >
                     <div onClick={this.handleDrawerOpenMobile}>
-                      <Typography variant="div"
+                      <Typography variant=""
                         className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-filter"
 
                         ></i> &nbsp;
@@ -892,7 +899,7 @@ class Component extends React.Component {
                     <div style={{ flexGrow: "2" }} />
 
                     <IconButton edge="end" color="inherit" onClick={() => this.setState({ CardRadio: !this.state.CardRadio, productDisplay: !this.state.productDisplay })} >
-                      <Typography variant="subtitle1"
+                      <Typography variant=""
                         className={`filter-mbl-font ${classes.colorMain}`} style={{ fontSize: '1rem' }}><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
                         Sort
                     </Typography>
@@ -927,7 +934,7 @@ class Component extends React.Component {
 Component.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
-  
+  filterdatas: PropTypes.object.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(PersistentDrawerLeft)

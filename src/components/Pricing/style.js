@@ -9,12 +9,12 @@ const styles = makeStyles(theme => ({
     },
     h6FontSize: {
         [theme.breakpoints.down('lg')]: {
-            fontSize: '20px !important',
+            fontSize: '20px ',
             // fontWeight: 'bold'
         },
         [theme.breakpoints.down('xs')]: {
-            fontSize: '1.2rem',
-            letterSpacing:"1px"
+            fontSize: '0.98rem',
+            // letterSpacing:"1px"
 
         },
     },
@@ -31,7 +31,7 @@ const styles = makeStyles(theme => ({
         [theme.breakpoints.down('lg')]: {
             // paddingLeft: '15px',
             // marginTop: '7px',
-        },[theme.breakpoints.down('xs')]: {
+        }, [theme.breakpoints.down('xs')]: {
             paddingLeft: '0px',
         },
     },
@@ -40,7 +40,7 @@ const styles = makeStyles(theme => ({
             fontSize: '0.9rem',
         },
         [theme.breakpoints.down('sm')]: {
-            fontSize: '1rem',
+            fontSize: '0.8rem',
         },
     },
     youSave: {
@@ -57,5 +57,16 @@ const styles = makeStyles(theme => ({
     backgsecondary: {
         background: theme.palette.secondary.light,
     },
+    resetpadd: {
+        paddingLeft: "8px",
+        [theme.breakpoints.down('sm')]: {
+            paddingLeft: "0px"
+        },
+    },
+    alignval:{
+        [theme.breakpoints.only('sm')]: {
+           width:"100%"
+        },
+    }
 }));
 export default styles;

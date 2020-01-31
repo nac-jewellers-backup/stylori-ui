@@ -219,9 +219,6 @@ class Component extends React.Component {
             if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
                 this.props.makeRequestCod(variab);
 
-                // this.setState({pincodeValues:this.props.CodData})
-                // console.log('variables',variables,queryvariables,data)
-                // console.info('objectdataobject', data, data[0].price> state.pincodeValues.data.allPincodeMasters.nodes[0].maxCartvalue, props.CodData)
             }
             else {
                 return {}

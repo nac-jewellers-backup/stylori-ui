@@ -83,18 +83,11 @@ class Allorders extends React.Component {
 
 
     ImageUrl = (imgs, sku, metal, paymentsuccess) => {
-
+        debugger
         // allorderdata.data.allOrders
         var check_img
         var ppp
         if (paymentsuccess) {
-            if (this.props && this.props.allorderdata.data && this.props.allorderdata.data.allOrders && this.props.allorderdata.data.allOrders.nodes.length > 0) {
-                // allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes && allorderdata.allorderdata.nodes.length > 0
-                var vera = this.props.allorderdata.data.allOrders.nodes.map(val => {
-                    if (val !== undefined && val !== null) {
-                        var inside = val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
-                            if (cart !== undefined && cart !== null) {
-                                if (cart !== undefined && cart !== null) {
                                     var metalColor_ = metal
                                     var cnt = imgs.imageUrl.split("/")
                                     var cnt_b = cnt[2].split("-")
@@ -119,18 +112,16 @@ class Allorders extends React.Component {
                                         // alert(this.state.check_img)
                                     }
                                     // }
-                                }
-                            }
-                        }
-                        )
+                           
+                       
                         // return inside[0]
-                    }
+                    
 
-                })
+           
                 // var outside = ppp.filter(val => (val !== undefined && val !== null))
                 // alert(ppp)
                 return ppp;
-            }
+            
         }
         else {
             if (this.props && this.props.allorderdata && this.props.allorderdata.allorderdata && this.props.allorderdata.allorderdata.nodes.length > 0) {
@@ -217,7 +208,6 @@ class Allorders extends React.Component {
                                 {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
                                 {allDatas().map((val, index) => {
 
-
                                     return (
                                         <ExpansionPanel
                                             square
@@ -265,40 +255,30 @@ class Allorders extends React.Component {
                                                     {/* ))} */}
                                                     <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.shoppingCartByCartId.discountedPrice))}</span></div>
                                                     {val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
-
+debugger
                                                         return (<>
                                                             <br />
                                                             <Grid container spacing={12} lg={12} style={{ outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px" }}>
                                                                 <Grid item lg={3} sm={4}  >
-                                                                    {
-                                                                        Object.values(val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes[0])[0]
-                                                                        &&
+                                                                {cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs =>
+                                                                                    (
 
-                                                                        cart && cart.transSkuListByProductSku &&
+                                                                                        this.ImageUrl(imgs, cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.generatedSku,
+                                                                                            cart.transSkuListByProductSku.metalColor, paymentsuccess) ?
 
-                                                                        // cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes
-                                                                        allorderdata.allorderdata.nodes.filter(val => {
-                                                                            if (val.shoppingCartByCartId) {
-                                                                                return val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes
-                                                                            }
-                                                                        }).filter(val => {
-                                                                            if (val) {
-                                                                                return val
-                                                                            }
-                                                                        }).map(val => { return val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes }).map(val => { return val })
-                                                                            .map(imgs =>
-                                                                                <>
-                                                                                    {
-                                                                                        this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
-                                                                                            cart.transSkuListByProductSku.metalColor) && this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
-                                                                                                cart.transSkuListByProductSku.metalColor).length > 0 ?
                                                                                             <div className="wishlist_img">
-                                                                                                <img className="viewport-img" src={this.ImageUrl(imgs, cart.transSkuListByProductSku.generatedSku,
-                                                                                                    cart.transSkuListByProductSku.metalColor)}
+                                                                                                <img className="viewport-img" src={this.ImageUrl(imgs, cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.generatedSku,
+                                                                                                    cart.transSkuListByProductSku.metalColor, paymentsuccess)}
+                                                                                                    alt=""
                                                                                                 />
-                                                                                            </div> : ""}</>
+                                                                                            </div>
+                                                                                            :
+                                                                                            null
 
-                                                                            )}
+                                                                                    )
+
+
+                                                                                )}
                                                                 </Grid>
                                                                 <Grid item lg={4} sm={4}>
                                                                     <Grid container spacing={12} lg={12} style={{ lineHeight: "20px" }}>
@@ -549,7 +529,7 @@ class Allorders extends React.Component {
                                                         {/* <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
                                                             Sub Total&nbsp;{this.calculatetotal(val)}<br />
                                                             {val.shoppingCartByCartId.discount !== null ? 
-                                                            <div class={`subhesder`}>REGISTRATION : &nbsp;{val.shoppingCartByCartId.discount}</div>
+                                                            <div className={`subhesder`}>REGISTRATION : &nbsp;{val.shoppingCartByCartId.discount}</div>
                                                                 : ""}
                                                             Shipping&nbsp;FREE<br />
                                                             Shipping Insurance&nbsp;FREE<br />

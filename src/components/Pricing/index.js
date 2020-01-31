@@ -40,9 +40,9 @@ export default function Pricing(props) {
                                     </Typography>
                                 </Typography> : ""}
                         </Grid>
-                        <Grid item style={{ display: "flex", alignItems: "center" }}>
+                        <Grid item style={{ display: "flex", alignItems: "center" }} className={classes.alignval}>
                             {props.price ?
-                                <Typography style={{ display: "flex", width: '100%', paddingLeft: "8px" }}>
+                                <Typography style={{ display: "flex", width: '100%' }} className={classes.resetpadd}>
                                     <Typography style={{ fontSize: "0.9rem" }}
                                         className={`pricing-p${props.price != null & props.price !== '' ? '' : 'shine'} ${classes.deletePrice} ${classes.dis}`}
                                     >

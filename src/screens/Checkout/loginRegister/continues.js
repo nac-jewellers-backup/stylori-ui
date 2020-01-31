@@ -60,7 +60,7 @@ const ContinuesComponent = (props) => {
                                     <h5 className={`title ${classes.normalfonts}`}>  Please enter your OTP Number </h5>
                                     <Input
                                         margin="normal"
-                                        variant="outlined"
+                                        // variant="outlined"
                                         type="text"
                                         name="otp"
                                         value={otp.otp}
@@ -84,7 +84,7 @@ const ContinuesComponent = (props) => {
                                     <p className={`form-group tp ${classes.normalfonts}`} > (please note, you will need to login in to use a gift voucher) </p>
                                     <Input
                                         margin="normal"
-                                        variant="outlined"
+                                        // variant="outlined"
                                         type="email"
                                         name="email"
                                         value={email.email}

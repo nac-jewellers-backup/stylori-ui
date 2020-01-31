@@ -103,8 +103,8 @@ class Socialmediacard extends React.Component {
 
 
                         <Grid container item xs={4} style={{ height: "440px", overflow: 'scroll' }}>
-                            {HomeSlider.map(row=>index =>
-                                <List style={{ borderBottom: "1px solid #ddd" }} key={index}>
+                            {HomeSlider.map(row =>
+                                <List style={{ borderBottom: "1px solid #ddd" }}>
                                     <ListItem alignItems="flex-start">
                                         <ListItemAvatar>
                                             <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlb0Y0AUZb90zCir4fNNnJ3X2v9mOKZIA-O2U03SXitjtE1wY6KQ" />

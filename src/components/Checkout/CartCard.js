@@ -49,7 +49,7 @@ class Checkoutcard extends React.Component {
 
     // }
     handleDeleteLocalStorage = (e) => {
-        debugger
+        
         var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
         var currentValue = e.target.id
 
@@ -141,7 +141,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         const { classes, data } = this.props;
-        debugger
+        
         const { productsDetails, fadeImages, dataCard1 } = this.props.data;
         // const { FilterOptionsCtx: { setcartcount } } = React.useContext(FilterOptionsContext);
         // React.useEffect(()=>{
@@ -226,9 +226,9 @@ class Checkoutcard extends React.Component {
                                             dataval.fadeImages.map(im_ => <>
                                                 {filter_image(im_, val.name, val.details) && filter_image(im_, val.name, val.details).length > 0 ?
                                                     <>{window.location.pathname !== "/checkout" ? <NavLink to={dataval.skuUrl} style={{ textDecoration: 'none' }}>
-                                                        <Slideshow class="image"
+                                                        <Slideshow className="image"
                                                             fadeImages={filter_image(im_, val.name, val.details)} dataCarousel={dataCarousel} />
-                                                    </NavLink> : <Slideshow class="image"
+                                                    </NavLink> : <Slideshow className="image"
                                                         fadeImages={filter_image(im_, val.name, val.details)} dataCarousel={dataCarousel} />}</> : ""
 
                                                 }</>)
@@ -242,8 +242,8 @@ class Checkoutcard extends React.Component {
 
                                 <Grid item xs={5} sm={7} lg={6} style={{ padding: "13px" }}>
                                     {window.location.pathname !== "/checkout" ? <NavLink to={dataval.skuUrl} style={{ textDecoration: 'none' }}>
-                                        <h3 class={`title ${classes.normalfonts}`}>{val.pro_header}</h3>
-                                    </NavLink> : <h3 class={`title ${classes.normalfonts}`}>{val.pro_header}</h3>}
+                                        <h3 className={`title ${classes.normalfonts}`}>{val.pro_header}</h3>
+                                    </NavLink> : <h3 className={`title ${classes.normalfonts}`}>{val.pro_header}</h3>}
                                     <Grid container spacing={12} >
                                         <Grid item xs={9} >
                                             {val.namedetail !== undefined && val.namedetail.map(val => (
@@ -297,12 +297,12 @@ class Checkoutcard extends React.Component {
         )
 
     }
-    checkoutbutton = () => {
+    checkoutbutton = () => { 
         const { classes } = this.props;
         let path = window.location.pathname.split('/').pop();
         return (
             <div>
-                {path == "checkout" ? "" :
+                {path == "checkout" ? "" : 
                     <div className='ckeckout-top'>
                         <NavLink to="/checkout" style={{ textDecoration: 'none' }}>
                             <Buynowbutton class={`chckout-page-buynow ${classes.buttons}`} />
@@ -349,19 +349,19 @@ class Checkoutcard extends React.Component {
                         {/* {dataCard1.map(val => */}
                         <Grid container>
                             <Grid xs={7} >
-                                <Typography class={`subhesder ${classes.normalfonts}`}>Subtotal</Typography>
-                                <Typography class={`subhesder ${classes.normalfonts}`}>You Saved</Typography>
-                                {props.cartFilters.tax_price ? <Typography class={`subhesder ${classes.normalfonts}`}>REGISTRATION</Typography> : ""}
-                                <Typography class={`subhesder ${classes.normalfonts}`}>Shipping</Typography>
-                                <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>Grand Total</Typography>
+                                <Typography className={`subhesder ${classes.normalfonts}`}>Subtotal</Typography>
+                                <Typography className={`subhesder ${classes.normalfonts}`}>You Saved</Typography>
+                                {props.cartFilters.tax_price ? <Typography className={`subhesder ${classes.normalfonts}`}>REGISTRATION</Typography> : ""}
+                                <Typography className={`subhesder ${classes.normalfonts}`}>Shipping</Typography>
+                                <Typography className={`subhesder-totsl-size ${classes.normalfonts}`}>Grand Total</Typography>
                             </Grid>
                             <Grid xs={5} >
-                                <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(dataCard1)}</Typography>
-                                <Typography class={`subhesder ${classes.normalfonts}`}>{Math.round(yousave)}</Typography>
-                                {props.cartFilters.tax_price ? <Typography class={`subhesder ${classes.normalfonts}`}>
+                                <Typography className={`subhesder ${classes.normalfonts}`}>{Math.round(dataCard1)}</Typography>
+                                <Typography className={`subhesder ${classes.normalfonts}`}>{Math.round(yousave)}</Typography>
+                                {props.cartFilters.tax_price ? <Typography className={`subhesder ${classes.normalfonts}`}>
                                     {props.cartFilters.tax_price}</Typography> : ""}
-                                <Typography class={`subhesder ${classes.normalfonts}`}>FREE </Typography>
-                                <Typography class={`subhesder-totsl-size ${classes.normalfonts}`}>{Math.round(dataCard1 - discounted_price)}</Typography>
+                                <Typography className={`subhesder ${classes.normalfonts}`}>FREE </Typography>
+                                <Typography className={`subhesder-totsl-size ${classes.normalfonts}`}>{Math.round(dataCard1 - discounted_price)}</Typography>
                             </Grid>
                         </Grid>
                         {/* // )}  */}

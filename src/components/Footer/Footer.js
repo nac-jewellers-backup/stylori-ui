@@ -17,8 +17,7 @@ import { SnackBar } from 'components/snackbarAlert/SnackBar'
 const useStyles = makeStyles(theme => ({
     navTitle: {
         cursor: "pointer",
-        margin: "0 0 10px",
-        padding: "0px 15px",
+        padding: " 0px 15px 8px 15px",
         "&:hover": {
             textDecoration: "underline"
         }
@@ -123,6 +122,10 @@ export default function Footer(props) {
         {
             url: "/termsconditions",
             Title: "Terms & Conditions"
+        },
+        {
+            url: "/contactus",
+            Title: "Contact us"
         },
     ]
     const footerData1 = [
@@ -299,7 +302,7 @@ export default function Footer(props) {
                                     type="email"
                                     onInvalid={(e) => { e.preventDefault() }}
                                     onChange={(e) => handleChage(e)}
-                                    placeholder='Email address...'
+                                    placeholder='Email address'
                                     className={`${classes.buynowSearch}`}
                                 />
 
@@ -393,7 +396,7 @@ export default function Footer(props) {
 
                         <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: "10px" }} className="footer-icons">
                             <Grid item xs={9}>
-                                <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
+                                <a class="twitter" style={{ textDecoration: "none" }} target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
                                     <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i> </a>
                                 <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
                                     <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf09a;</i></a>
@@ -420,7 +423,7 @@ export default function Footer(props) {
 </Grid>
                     <Grid item xs={12} sm={6} className="footer-icons" style={{ paddingTop: "6px" }}>
 
-                        <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
+                        <a class="twitter" style={{ textDecoration: "none" }} target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
                             <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i> </a>
                         <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
                             <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf09a;</i></a>
@@ -442,7 +445,7 @@ export default function Footer(props) {
 
             {/* footer color menuItems starts  */}
             <Container>
-                <Grid container item className={`${classes.colorWhiteBackground}`} style={{ padding: '18px 1% 18px 1%' }}>
+                <Grid container item className={`${classes.colorWhiteBackground}`} style={{ padding: '10px 0px 10px 0px' }}>
                     <Hidden only={['sm', 'xs']}>
                         <Grid container item xl={5} lg={5} md={5} xs={12} sm={6} alignItems="center">
                             <Grid container item xs={12} style={{ color: '#808080', fontSize: '13px' }}>
@@ -524,12 +527,12 @@ export default function Footer(props) {
                         </Grid>
                     </Hidden>
                     <Hidden only={['sm', 'xs']}>
-                        <Grid container item xl={3} lg={3} md={2} xs={12} sm={6} style={{ paddingTop: '2%', display: 'flex', justifyContent: 'flex-end' }}>
-                            <Grid item xs={6} >
+                        <Grid container item xl={3} lg={3} md={2} xs={12} sm={6} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: "flex-end" }}>
+                            <Grid item xs={12} sm={12} md={12} lg={6}>
                                 <div onClick={() => { window.location.href = window.location.origin }}>
                                     <img src={styloriLogo} alt="" style={{ width: "100%", cursor: "pointer" }} />
                                 </div>
-                                <div style={{ color: '#808080', fontSize: '11px' }}>Copyright © 2020 stylori.com</div>
+                                <div style={{ color: '#808080', fontSize: '11px', justifyContent: "center", display: "flex" }}>Copyright © 2020 stylori.com</div>
                             </Grid>
                         </Grid>
                     </Hidden>
@@ -574,40 +577,40 @@ export default function Footer(props) {
                 <Hidden mdUp>
                     <Grid container style={{ marginBottom: "10px" }}>
                         <Grid container item xs={4} justify="flex-start">
-                            <span class="lockSymbol"></span>
+                            <span className="lockSymbol"></span>
                         </Grid>
                         <Grid container item xs={4} justify="center">
-                            <span class="netbank"></span>
+                            <span className="netbank"></span>
                         </Grid>
                         <Grid container item xs={4} justify="flex-end">
-                            <span class="cashBack"></span>
+                            <span className="cashBack"></span>
                         </Grid>
                     </Grid>
 
                     <Grid container item xs={3} justify="flex-start">
-                        <span class="visacard"></span>
+                        <span className="visacard"></span>
                     </Grid>
                     <Grid container item xs={3} justify="center">
-                        <span class="mastercard"></span>
+                        <span className="mastercard"></span>
                     </Grid>
                     <Grid container item xs={3} justify="center">
-                        <span class="americanexp"></span>
+                        <span className="americanexp"></span>
                     </Grid>
                     <Grid container item xs={3} justify="flex-end">
-                        <span class="dinerClubs"></span>
+                        <span className="dinerClubs"></span>
                     </Grid>
                 </Hidden>
                 <Hidden smDown>
                     <Grid container justify="center">
                         <Grid item md={6} lg={6} xl={6} >
                             <Grid container justify="center">
-                                <span class="breathspace lockSymbol"></span>
-                                <span class="breathspace visacard"></span>
-                                <span class="breathspace mastercard"></span>
-                                <span class="breathspace americanexp"></span>
-                                <span class="breathspace dinerClubs"></span>
-                                <span class="breathspace netbank"></span>
-                                <span class="breathspace cashBack"></span>
+                                <span className="breathspace lockSymbol"></span>
+                                <span className="breathspace visacard"></span>
+                                <span className="breathspace mastercard"></span>
+                                <span className="breathspace americanexp"></span>
+                                <span className="breathspace dinerClubs"></span>
+                                <span className="breathspace netbank"></span>
+                                <span className="breathspace cashBack"></span>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -620,7 +623,7 @@ export default function Footer(props) {
 
                 <Grid container className={`${classes.colorWhiteBackground}`}>
                     <Container>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} style={{ padding: "10px" }}>
                             <Typography variant="caption" className={`${classes.colorBlue}`}>
                                 POPULAR SEARCH TERMS:
                             </Typography>

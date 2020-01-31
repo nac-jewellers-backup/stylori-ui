@@ -76,7 +76,7 @@ const LoginComponent = (props) => {
                     // props.history.push('/account-profile')
                 }
             } catch (error) {
-                console.log(error)
+                // console.log(error)
             }
         }
 
@@ -101,7 +101,7 @@ const LoginComponent = (props) => {
                                 <TextField
                                     autoComplete='off'
                                     margin="normal"
-                                    variant="outlined"
+                                    // variant="outlined"
                                     type="password"
                                     fullWidth
                                     name="email"
@@ -114,7 +114,7 @@ const LoginComponent = (props) => {
                                 <TextField
                                     autoComplete='off'
                                     margin="normal"
-                                    variant="outlined"
+                                    // variant="outlined"
                                     type="password"
                                     fullWidth
                                     name="email"
@@ -127,7 +127,7 @@ const LoginComponent = (props) => {
                                 <TextField
                                     autoComplete='off'
                                     margin="normal"
-                                    variant="outlined"
+                                    // variant="outlined"
                                     type="password"
                                     fullWidth
                                     name="confirmPassword"

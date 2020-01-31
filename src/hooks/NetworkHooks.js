@@ -46,7 +46,6 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
         else {
             accessTokens = localStorage.getItem("accessToken") ? localStorage.getItem("accessToken") : ""
         }
-        // console.log('bodyvar',typeof bodyvar)
         // body = typeof body === "string" ? body : JSON.stringify(body)
         const bodyvariable = typeof body === "string" ? body : JSON.stringify(body)
         body = JSON.parse(bodyvariable).length === 0 ? bodyvariable : JSON.stringify(bodyvar);
@@ -69,7 +68,6 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
             .catch(err => {
                 setError(true);
                 setLoading(false);
-                console.log(Response.status)
             });
     }
     React.useEffect(() => {

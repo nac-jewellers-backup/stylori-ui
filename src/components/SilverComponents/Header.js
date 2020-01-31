@@ -15,7 +15,7 @@ import {
     ListItemText,
     Container,
     InputAdornment,
-    Collapse,
+    Modal,
     ClickAwayListener
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -28,12 +28,14 @@ import { useDummyRequest } from '../../hooks';
 import { headerDataSilver } from '../../mappers';
 import { styles } from './styles';
 import LogoSmallScreen from '../../assets/Stylori Silver logo.svg';
-import Seach from '../../assets/search'
+import Seach from '../../assets/search' 
 import stylorisilverlogo from '../../assets/Stylori Silver logo.svg'
 import Popover from '@material-ui/core/Popover';
 import { NavLink } from 'react-router-dom';
 import logout from "../../assets/Icons/logout.svg"
 import styloriLogo from "../../assets/Stylorilogo.svg"
+import ElasticSearch from "components/ElasticSearch/ElasticSearch"
+import { CartContext } from 'context'
 
 let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
 // var path = window.location.pathname.split('/').pop();
@@ -57,7 +59,7 @@ class Header extends Component {
             targetopenSubmenu: null,
             subTitleData: null,
             subMenuTarget: null,
-            anchorEll: false,
+            anchorEl: false,
             opened: false,
 
         }
@@ -65,7 +67,7 @@ class Header extends Component {
     }
     componentDidMount() {
         var _pathname = window.location.pathname.split("/")
-        if (window.location.pathname === "/cart" || window.location.pathname === '/checkout' || _pathname[1] === "paymentsuccess" || _pathname[1] === "paymentfail" ) {
+        if (window.location.pathname === "/cart" || window.location.pathname === '/checkout' || _pathname[1] === "paymentsuccess" || _pathname[1] === "paymentfail") {
             return true
         }
         else {
@@ -117,13 +119,13 @@ class Header extends Component {
 
     handleClickPopover = (event) => {
         this.setState({
-            anchorEll: event.currentTarget,
+            anchorEl: event.currentTarget,
         });
     };
 
     handleClosePopover = () => {
         this.setState({
-            anchorEll: false,
+            anchorEl: false,
         });
     };
     scrolling = () => {
@@ -154,8 +156,8 @@ class Header extends Component {
         const { mainlist, Jewellery, subheader, menuListHeader, menuLists } = this.props.data;
         let { selected, selected1 } = this.state;
         const { classes } = this.props;
-        const { anchorEll } = this.state;
-        const openPopover = anchorEll;
+        const { anchorEl } = this.state;
+        const openPopover = anchorEl;
         const opened = this.state;
         var a = window.location.pathname
         var b = a.split("/")
@@ -179,18 +181,21 @@ class Header extends Component {
                                             <div className={`head-icons1 ${classes.headIcons}`} >
                                                 <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
                                                 <Typography className={classes.callerNum}>1800 102 0330</Typography>
-                                                <InputBase
+                                                <Grid onClick={this.handleClose}>
+                                                    <InputBase
+                                                        className={`search`}
+                                                        placeholder=" Search"
+                                                        endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
+                                                        </div></InputAdornment>}
+                                                    />
+                                                </Grid>
 
-                                                    className={`search`}
-                                                    placeholder=" SEARCH"
-                                                    endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
-                                                    </div></InputAdornment>}
-                                                />
                                                 {localStorage.getItem("true") ?
                                                     <span
                                                         class="MuiBadge-root"
                                                         aria-owns={openPopover ? 'simple-popper' : ""}
-                                                        onClick={this.handleClickPopover}
+                                                        // onClick={this.handleClickPopover}
+                                                        onClick={() => { window.location.href = "/account-profile" }}
                                                     >
                                                         <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                     </span>
@@ -199,10 +204,10 @@ class Header extends Component {
                                                         <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                     </span>
                                                 }
-                                                <Popover
+                                                {/* <Popover
                                                     id="simple-popper"
                                                     open={openPopover}
-                                                    anchorEl={anchorEll}
+                                                    anchorEl={anchorEl}
                                                     onClose={this.handleClosePopover}
                                                     anchorOrigin={{
                                                         vertical: 'bottom',
@@ -231,13 +236,10 @@ class Header extends Component {
                                                  </div></Grid>
                                                         </Grid>
 
-                                                        {/* <NavLink to="/account-profile"> */}
-
-                                                        {/* </NavLink> */}
                                                     </div>
-                                                </Popover>
+                                                </Popover> */}
                                                 <Badge style={{ marginTop: "9px" }} color="secondary"
-                                                    badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
+                                                    badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length > 0 ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
                                                 // wishlist_count
                                                 // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
                                                 >
@@ -249,7 +251,11 @@ class Header extends Component {
                                                         }
                                                     }}  ></i>
                                                 </Badge>
-                                                <Badge style={{ marginTop: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                {/* {alert(JSON.stringify(this.props.cart_count.length))} */}
+                                                <Badge style={{ marginTop: "9px" }} badgeContent={
+                                                    (this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length : "0"
+                                                    // this.props && this.props.cart_count && this.props.cart_count.length
+                                                } color="secondary">
                                                     <a href="/cart" >
                                                         <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
@@ -323,6 +329,13 @@ class Header extends Component {
                     </div>
                 </Hidden>
 
+                <Modal
+                    open={this.state.opened}
+                    onClose={this.handleClose}
+                    className='docc-modal'
+                >
+                    <ElasticSearch handleClose={this.handleClose} />
+                </Modal>
                 <Hidden mdUp>
                     <Grid>
                         <Grid style={{ position: "fixed", zIndex: "1300" }}>
@@ -371,7 +384,7 @@ class Header extends Component {
                                                         <Popover
                                                             id="simple-popper"
                                                             open={openPopover}
-                                                            anchorEl={anchorEll}
+                                                            anchorEl={anchorEl}
                                                             onClose={this.handleClosePopover}
                                                             anchorOrigin={{
                                                                 vertical: 'bottom',
@@ -405,7 +418,7 @@ class Header extends Component {
                                                                 {/* </NavLink> */}
                                                             </div>
                                                         </Popover>
-                                                        <Badge badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary">
+                                                        <Badge badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length > 0 ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary">
                                                             <i class={`fa fa-heart ${classes.iconFafaheart}`} onClick={() => {
                                                                 if (user_id.length > 0) {
                                                                     window.location.href = `/account${'-wishlist'}`
@@ -414,7 +427,12 @@ class Header extends Component {
                                                                 }
                                                             }}  ></i>
                                                         </Badge>
-                                                        <Badge style={{ fontSize: "9px" }} badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
+                                                        <Badge style={{ fontSize: "9px" }} badgeContent={
+                                                            (this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length : "0"
+                                                            // localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"
+                                                            // this.props.cart_count? this.props.cart_count.length:"0"
+
+                                                        } color="secondary">
                                                             <a href="/cart" >
                                                                 <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
@@ -426,33 +444,8 @@ class Header extends Component {
                                         </Grid>
                                     </Toolbar>
                                 </AppBar>
-                                <Collapse in={this.state.opened} unmountOnExit
 
-                                    style={{ width: "100%", zIndex: "1300" }}
-                                    class='searchClick'
-                                    onClose={this.handleClose}
-                                >
 
-                                    <Grid xs={12} style={{ width: "100%", height: "60px", alignContent: "center", justifyContent: "center", position: "fixed", top: "56px", boxShadow: "0px 3px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 325px 1px 10px 0px rgba(0,0,0,0.12)", background: "#fff", zIndex: "1300", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px" }}>
-                                        <Grid container justify="flex-end" onClick={() => this.handleClose()}>
-                                            <i style={{ fontSize: "16px", color: "#b2b1b1", paddingRight: "4px" }} class="fa fa-times closebus"></i>
-                                        </Grid>
-                                        <Grid container style={{ padding: "0px 8px 0px 8px" }}>
-                                            <InputBase
-                                                style={{
-                                                    fontSize: "13px", padding: "0px 0px 0px 3px",
-                                                    width: "98%", border: "1px solid #ccc", borderRadius: " 6px", padding: "1px 5px!important", height: "30px!important", fontFamily: "Robot-Black!important"
-                                                }}
-
-                                                className="widthSearch"
-                                                placeholder=" SEARCH"
-                                                endAdornment={<InputAdornment position="end"><div className={classes.searchcontainerplain}><Seach className={"searchPlain"} />
-                                                </div></InputAdornment>} />
-                                        </Grid>
-
-                                    </Grid>
-
-                                </Collapse>
                             </div>
 
                         </Grid>
@@ -474,7 +467,7 @@ class Header extends Component {
                                         <i class="fa fa-times closebus" ></i>
                                     </IconButton>
                                 </div>
-                                <List className="sideNavListing"  key="sideNav">
+                                <List className="sideNavListing"  >
                                     {mainlist.map(row => (
                                         <>
                                             <ListItem button key={row.name} className="drawer-list1" >
@@ -482,7 +475,7 @@ class Header extends Component {
                                                     onClick={() => { window.location.href = row.url }}
                                                 >
                                                     <Typography className="list-items1"
-                                                        variant="subtitle1"
+                                                        variant=""
                                                     >{row.name.toUpperCase()}
                                                     </Typography>
                                                 </ListItemText>
@@ -494,7 +487,7 @@ class Header extends Component {
                                                     <>
                                                         <ListItem button key={Jewellery[selected][row2].name} className={classes.subtitleContainer}>
                                                             <ListItemText onClick={() => { window.location.href = Jewellery[selected][row2].url }}>
-                                                                <Typography className={classes.subtitles} >{Jewellery[selected][row2].name.toUpperCase()}
+                                                                <Typography className={classes.subtitles} variant="">{Jewellery[selected][row2].name.toUpperCase()}
                                                                 </Typography>
                                                             </ListItemText>
                                                             <div onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>{selected1 === Jewellery[selected][row2].name ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i>}
@@ -505,7 +498,7 @@ class Header extends Component {
                                                                 {/* <ListItem className="drawer-list1">
                                                             <ListItemText
                                                             >
-                                                                <Typography className="list-items1" >{subheader[selected1]&&subheader[selected1].header&&subheader[selected1].header.toUpperCase()}
+                                                                <Typography className="list-items1" variant="">{subheader[selected1]&&subheader[selected1].header&&subheader[selected1].header.toUpperCase()}
                                                                 </Typography>
                                                                 <span style={{ paddingTop: "5px" }} className="header-viewal1">View All</span>
                                                             </ListItemText>
@@ -514,7 +507,7 @@ class Header extends Component {
                                                                     <>
                                                                         <ListItem onClick={() => { window.location.href = row.url }} className={classes.subtitle2Container}>
                                                                             <ListItemText>
-                                                                                <Typography className="list-items1" >{row.name.toUpperCase()}</Typography>
+                                                                                <Typography className="list-items1" variant="">{row.name.toUpperCase()}</Typography>
                                                                             </ListItemText>
                                                                         </ListItem>
                                                                     </>
@@ -596,10 +589,11 @@ class Header extends Component {
 }
 
 export default withStyles(styles)(props => {
+    let { CartCtx: { cartFilters, data: cart_count, loading, error, allorderdata, wishlistdata, NewUser } } = React.useContext(CartContext);
     const { mapped } = useDummyRequest(headerDataSilver);
     if (Object.keys(mapped).length === 0) return ''
 
-    return <Header {...props} data={mapped} />
+    return <Header {...props} data={mapped} cart_count={cart_count} />
 });
 
 

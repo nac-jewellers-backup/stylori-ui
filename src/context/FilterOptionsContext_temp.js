@@ -54,8 +54,6 @@ const Provider = (props) => {
     }
 
 
-    // console.log('queries', props.location.search)
-
     // Destructuring the query parameters from the URL
     let paramsArrayOfObject = [];
     if (window.location.search) {
@@ -72,7 +70,6 @@ const Provider = (props) => {
 
     const variables = conditions.generateFilters(paramsArrayOfObject);
 
-    // console.log('variables', variables);
     const FilterOptionsCtx = { filters, loading, error, data }
 
     useEffect(() => {

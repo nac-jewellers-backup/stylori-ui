@@ -62,7 +62,6 @@ class Request extends React.Component {
 
         }
         this.setState({ errors, [name]: value }, () => {
-            // console.log(errors)
         })
     }
     handleError = (e) => {
@@ -163,7 +162,7 @@ class Request extends React.Component {
 
                             </Grid>
                             <Grid container>
-                                <Grid xs={12} >
+                                <Grid xs={12} lg={12} >
                                     <Button type="submit" className={`requset-button ${classes.fontwhite} ${classes.normalcolorback}`}>
                                         Send
                             </Button>

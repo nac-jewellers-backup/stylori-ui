@@ -62,7 +62,7 @@ const styles = theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    top: '153px'
+    // top: '153px'
 
   },
   drawerHeader: {
@@ -75,7 +75,7 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing.unit * 3,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -227,7 +227,7 @@ class PersistentDrawerLeft extends React.Component {
                       </IconButton>
                     </div>
                     <Divider />
-                    <List className="fil-main-list" key="filter_temp">
+                    <List className="fil-main-list">
                       <div style={{ margin: "5px" }}>
                         <Typography className="fil-list-items">Price</Typography>
                         <Grid container spacing={12} style={{ paddingLeft: "15px" }}>
@@ -254,14 +254,14 @@ class PersistentDrawerLeft extends React.Component {
                           </Grid>
                         </Grid>
                       </div>
-                      {filterdatas.filter.map(row => (
+                      {filterdatas&&filterdatas.filter.map(row => (
                         <>
                           {/* button */}  <ListItem key={row} className=""
                             onClick={() => this.selectItem(row)}>
                             <ListItemText
                             >
                               <Typography className="fil-list-items"
-                                
+                                variant=""
                               >{row}
                               </Typography>
                             </ListItemText>
@@ -280,7 +280,7 @@ class PersistentDrawerLeft extends React.Component {
                                     color="primary"
                                   />
                                   <ListItemText>
-                                    
+                                    <Typography variant=""
                                       className={`fil-submenu-list ${classes.colorMain}`}>{row12}
                                     </Typography>
                                   </ListItemText>
@@ -322,15 +322,15 @@ class PersistentDrawerLeft extends React.Component {
 
             <Grid container spacing={2} xs={12} className="p" style={{ overflow: 'auto' }}>
               <Grid item xs={6} style={{ display: openMobile ? 'none' : 'block', backgroundColor: "#F2F2F2" }}>
-                <List className="mbl-filter-list" key="filterKey1">
-                  {filterdatas.filter.map(row => (
+                <List className="mbl-filter-list">
+                  {filterdatas&&filterdatas.filter.map(row => (
                     <ListItem key={row} className=""
                       onClick={() => this.filterValue(row)}>
                       <ListItemText
                       >
                         <Typography className={`filter-mbl-font ${classes.colorMain}`}
 
-                          
+                          variant=""
                         >{row}
                         </Typography>
                       </ListItemText>
@@ -341,7 +341,7 @@ class PersistentDrawerLeft extends React.Component {
               {
                 this.state.filtercheck !== '' &&
                 <Grid item xs={6} style={{ display: openMobile ? 'none' : 'block', height: "575px", overflow: 'auto' }}>
-                  {filterdatas.filter1[this.state.filtercheck].map(row => (
+                  {filterdatas&&filterdatas.filter1[this.state.filtercheck].map(row => (
                     <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
                       <Checkbox
                         value="checked"
@@ -352,7 +352,7 @@ class PersistentDrawerLeft extends React.Component {
                         checkedIcon={<CheckBoxIcon fontSize="small" />}
                       />
                       <ListItemText>
-                        
+                        <Typography variant=""
                           className={`filter-mbl-font ${classes.colorMain}`}>{row}
                         </Typography>
                       </ListItemText>
@@ -367,8 +367,8 @@ class PersistentDrawerLeft extends React.Component {
             <AppBar color="primary" className="filter-fixed header" style={{ display: !openMobile ? 'none' : 'block' }}>
               <Toolbar >
                 <IconButton onClick={this.handleDrawerOpenMobile}>
-                  <Typography
-                    className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-filter"
+                  <Typography variant=""
+                    className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' className="fa fa-filter"
 
                     ></i> &nbsp;
                     Filter
@@ -378,8 +378,8 @@ class PersistentDrawerLeft extends React.Component {
                 <div style={{ flexGrow: "2" }} />
 
                 <IconButton edge="end" color="inherit" onClick={() => this.setState({ CardRadio: !this.state.CardRadio })} >
-                  <Typography
-                    className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
+                  <Typography variant=""
+                    className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' className="fa fa-sort"></i>&nbsp;
                     Sort
                     </Typography>
                 </IconButton>

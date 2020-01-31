@@ -32,8 +32,8 @@ function HeaderHoverMenuItem(props) {
             enabled: false,
           },}}
         >
-          <List component="nav" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} key="silverHeader">
-            <Grid className={classes.subtopic1} style={{width:`${props._width}`}} key="hoverMenu">
+          <List component="nav" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
+            <Grid className={classes.subtopic1} style={{width:`${props._width}`}}>
               {
                 !props.filters &&
                 (props.listHoverItem) && mapper &&

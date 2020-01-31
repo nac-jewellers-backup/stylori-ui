@@ -21,25 +21,20 @@ function MediaControlCard(props) {
     debugger
     var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
     var currentValue = e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id
-
-
     // console.clear()
     // console.log("e-clear",e.target.id)
-
     var a = local_storage.products.filter(val => {
       if (currentValue !== val.sku_id) {
         return val
       }
     })
     function status(response) {
-
       if (response.status >= 200 && response.status < 300) {
         return Promise.resolve(response)
       } else {
         return Promise.reject(new Error(response.statusText))
       }
     }
-
     function json(response) {
       return response.json()
     }
@@ -47,11 +42,9 @@ function MediaControlCard(props) {
       let cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
       let bodyVariableRemoveCartItem = { cart_id: cart_id, product_id: currentValue }
       fetch(`${API_URL}/removecartitem`, {
-
         method: 'post',
         // body: {query:seoUrlResult,variables:splitHiphen()}
         // body: JSON.stringify({query:seoUrlResult}),
-
         headers: {
           'Content-Type': 'application/json',
         },
@@ -71,7 +64,6 @@ function MediaControlCard(props) {
         })
     }
     else {
-
       var _products = JSON.parse(localStorage.getItem('cartDetails')).products.filter(val => {
         if (val.sku_id !== currentValue) return val
       })
@@ -81,19 +73,12 @@ function MediaControlCard(props) {
       if (_products.length > 0) {
         localStorage.setItem('cartDetails', JSON.stringify(_obj))
         window.location.reload()
-
       }
       else {
         localStorage.removeItem('cartDetails', _products)
         window.location.reload()
       }
-
-
-
     }
-
-
-
   }
   const filter_image = (imges__val, name, details) => {
     debugger
@@ -150,7 +135,6 @@ function MediaControlCard(props) {
         <Grid xs={6}  >
           jh</Grid>
       </Grid><br /> */}
-
       {props.checkoutbutton}<br /><br /><br />
       {props.data.map(dataval => (
         dataval.productsDetails.map(val => {
@@ -189,18 +173,13 @@ function MediaControlCard(props) {
                   :
                   null
                 )
-
                 }))
                 
       
               
               
               )
-
-
-
               }
-
               <div className={classes.details}>
                 <CardContent className={classes.content}>
                   {window.location.pathname !== "/checkout" ?
@@ -221,9 +200,6 @@ function MediaControlCard(props) {
                       {val.pro_header}
                     </Typography>
                   }
-
-
-
                   {dataval.dataCard1.map(val =>
                     <Pricing price={val.price} offerPrice={val.offerPrice} offerDiscount={"25% - OFF"}   >
                       <label className={classes.labelPrice}>
@@ -237,7 +213,7 @@ function MediaControlCard(props) {
                         &nbsp;
     <Typography
                           variant="subtitle1"
-                          style={{ color: "#ed1165" }}
+                          style={{ color: "#ED1165" }}
                           className={classes.labelPriceOff}
                         >
                           {val.price}
@@ -266,7 +242,6 @@ function MediaControlCard(props) {
             Buy Now
   </Button>
         </NavLink> */}
-
                   {window.location.pathname !== "/checkout" ?
                     <div
                       variant="contained"
@@ -277,16 +252,12 @@ function MediaControlCard(props) {
             <div id={dataval.generatedSku} productid={dataval} onClick={(e) => handleDeleteLocalStorage(e, val)}>
                         <i style={{ fontSize: "16px" }} class="fa"> &#xf014;</i>&nbsp;<span>Remove</span>
                       </div>
-
                     </div>
                     : ""}  </div>
               </div>
             </Card>
           )
         }
-
-
-
         )
       ))}
     </div>

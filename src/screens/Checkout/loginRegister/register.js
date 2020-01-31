@@ -46,7 +46,7 @@ const RegisterComponent = (props) => {
                                 /> : <>
                                     <Input
                                         margin="normal"
-                                        variant="outlined"
+                                        // variant="outlined"
                                         // type="email"
                                         name="email"
                                         value={values.email}
@@ -62,7 +62,7 @@ const RegisterComponent = (props) => {
                                     <Grid item xs={6} sm={4} lg={3} >
                                         <Input
                                             margin="normal"
-                                            variant="outlined"
+                                            // variant="outlined"
                                             type="password"
                                             name="password"
                                             value={"........"}
@@ -79,7 +79,7 @@ const RegisterComponent = (props) => {
                                 </Grid> : <>
                                     <Input
                                         margin="normal"
-                                        variant="outlined"
+                                        // variant="outlined"
                                         type="password"
                                         name="password"
                                         value={values.password}
@@ -94,7 +94,7 @@ const RegisterComponent = (props) => {
                                 <>
                                     <Input
                                         margin="normal"
-                                        variant="outlined"
+                                        // variant="outlined"
                                         type="password"
                                         name="confirmpassword"
                                         value={values.confirmpassword}
@@ -114,7 +114,7 @@ const RegisterComponent = (props) => {
                                     <Grid item lg={4} xs={4}>
                                         <Input
                                             margin="normal"
-                                            variant="outlined"
+                                            // variant="outlined"
                                             type="text"
                                             name="firstname"
                                             value={values.firstname}
@@ -130,7 +130,7 @@ const RegisterComponent = (props) => {
                                     <Grid item lg={4} xs={4}>
                                         <Input
                                             margin="normal"
-                                            variant="outlined"
+                                            // variant="outlined"
                                             type="text"
                                             name="lastname"
                                             value={values.lastname}
@@ -147,7 +147,7 @@ const RegisterComponent = (props) => {
                                     <Grid item lg={4} xs={4}>
                                         <Input
                                             margin="normal"
-                                            variant="outlined"
+                                            // variant="outlined"
                                             type="text"
                                             name="firstname"
                                             value={valuesadrees.firstname}
@@ -160,7 +160,7 @@ const RegisterComponent = (props) => {
                                     <Grid item lg={4} xs={4}>
                                         <Input
                                             margin="normal"
-                                            variant="outlined"
+                                            // variant="outlined"
                                             type="text"
                                             name="lastname"
                                             value={valuesadrees.lastname}

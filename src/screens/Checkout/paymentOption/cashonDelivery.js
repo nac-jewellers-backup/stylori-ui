@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Grid, Button } from '@material-ui/core';
 import './payment.css';
-import SimpleSelect from '../../../components/InputComponents/Select/Select';
+// import SimpleSelect from '../../../components/InputComponents/Select/Select';
 import { CartContext } from 'context'
 import cart from 'mappers/cart'
 import { useNetworkRequest } from 'hooks/index';
@@ -60,8 +60,6 @@ class CashonDelivey extends React.Component {
             .then(this.status)
             .then(this.json)
             .then(resdata => {
-                // console.log('datasssss', resdata)
-
                 // localStorage.removeItem("order_id")
                 if (resdata !== null && resdata !== undefined) {
                     localStorage.setItem("order_id", JSON.stringify(resdata.order.id))
