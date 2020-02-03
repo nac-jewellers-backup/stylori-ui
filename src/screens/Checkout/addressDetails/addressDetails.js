@@ -106,9 +106,9 @@ class Addressdetails extends React.Component {
                                 {/* {localStorage.setItem("addres_Id", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].id))} */}
                                 {localStorage.setItem("namesOf_first", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].firstname))}
                                 {localStorage.setItem("namesOf_last", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].lastname))}
-                                <Grid item xs={12} lg={6} style={{ paddingRight: "15px" }}>
-                                    <div className='card-adrs wd'
-                                        style={{ marginTop: "5px" }}>
+                                <Grid item xs={12} lg={12} style={{ paddingRight: "15px" }}>
+                                    <div className='card-adrs wd' 
+                                        style={{ marginTop: "15px" }}>
                                         <h4 class="card-title">
                                             <i style={{ fontSize: "25px", color: "#394578" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
                                             <span class="address-name">

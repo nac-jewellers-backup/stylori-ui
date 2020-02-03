@@ -69,7 +69,7 @@ class Accountdetails extends Component {
 
                     <div className="inner-page-title"> My Account </div>
 
-                    <Container>
+                    <Container style={{margin:"auto"}}>
                         <div className="panel_body">
                             <Grid container spacing={12}  >
                                 <Grid item  >
@@ -98,7 +98,7 @@ class Accountdetails extends Component {
                                             All Orders</p>
                                     </List>
                                 </Grid>
-                                <Grid item xs={9}>
+                                <Grid item xs={12} sm={12} md={9} lg={9} xl={9}>
                                     <div className="pay-index-subhed_datas">
                                         {
                                             this.state.isActive == 'profile' &&

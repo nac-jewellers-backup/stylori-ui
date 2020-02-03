@@ -71,11 +71,11 @@ class Accountdetails extends Component {
 
                     <div className="inner-page-title1"> My Account </div>
 
-                    <Container>
+                    <Container className="main_container" style={{width:"60%",margin:"auto"}}>
                         <div className="panel_body">
-                            <Grid container spacing={12}  >
-                                <Grid item  >
-                                    <List xs={3} className="pay-index-subhed">
+                            <Grid container spacing={12} style={{width:"100%",margin:"auto"}}  >
+                                <Grid item xs={3} >
+                                    <List  className="pay-index-subhed">
                                         <p className={this.state.isActive == 'profile' ? "backgrund" : ""}
                                             onClick={() => this.Activeaccounts('profile')}
                                         > Personal Information</p>
@@ -111,7 +111,7 @@ class Accountdetails extends Component {
                                             Logout</p>
                                     </List>
                                 </Grid>
-                                <Grid item xs={12} sm={12} md={9} lg={10} xl={10}>
+                                <Grid item xs={12} sm={12} md={9} lg={9} xl={9} >
                                     <div className="pay-index-subhed_datas">
                                         {
                                             this.state.isActive == 'profile' &&
@@ -136,7 +136,7 @@ class Accountdetails extends Component {
                                         }
                                         {
                                             this.state.isActive == 'wishlist' && <>
-                                                <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
+                                                <Wishlists style={{marginTop:"25px"}} wishlistdata={this.props.wishlistdata} data={this.props.data} />
                                                 {/* {JSON.stringify(this.props.wishlistdata)} */}
                                             </>
                                         }
@@ -163,7 +163,7 @@ class Accountdetails extends Component {
                         <form noValidate autoComplete="off" style={{ width: "100%" }}>
                             <div >
                                 <TextField
-                                    style={{ width: "70%" }}
+                                    style={{ width: "100%" }}
                                     select
                                     //   label="Select the options"
                                     value={this.state.isActive}
@@ -189,7 +189,7 @@ class Accountdetails extends Component {
                             </div>
                     </Grid> */}
 
-                    <Grid item xs={10} className="topPadding">
+                    <Grid item xs={12} className="topPadding">
                         <div className="pay-index-subhed_datas">
                             {
                                 this.state.isActive == 'profile' &&
