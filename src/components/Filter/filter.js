@@ -40,7 +40,6 @@ class Component extends React.Component {
       openMobile: true,
       CardRadio: false,
       checked: {
-
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
         NoOfStones: {}, Gender: {}, StoneColor: {}, StoneShape: {}, category: {}
       },
@@ -264,6 +263,7 @@ class Component extends React.Component {
     }
     return bz
   })
+
   handleChange(value, BoolName, e, title, TargetName) {
     // window.scrollTo(0,2)
     let { chipData } = this.state;
@@ -353,28 +353,67 @@ class Component extends React.Component {
   }
 
   handleDelete = (value) => {
-
-    let arr = [], arr1 = [];
+    debugger
     let { chipData, checked } = this.state
-    arr = chipData.filter(val => val.label !== value);
-    if (checked) {
-      arr1 = this.delete_val_chips(value).filter(val => {
-        var dlt;
-        if (val !== undefined && val !== null) {
-          dlt = Object.values(val) === -1
+    Object.entries(checked).map(val => {
+      if (val && val[0] === "Category") {
+        if (val && val[1] && val[1].goldcoins === true) {
+          if (value === "Gold Coins") {
+            return false
+          }
+          if (value === "Gold") {
+            return false
+          }
+          if (value === "Yellow") {
+            return false
+          }
+          let arr = [], arr1 = [];
+          arr = chipData.filter(val => val.label !== value);
+          if (checked) {
+            arr1 = this.delete_val_chips(value).filter(val => {
+              var dlt; 
+              if (val !== undefined && val !== null) {
+                dlt = Object.values(val) === -1
+              } 
+              return dlt;
+            })
+            chipData = arr1;
+          }
+          chipData = arr;
+          this.setState({
+            chipData,
+            checked
+          })
+          this.forceUpdate()
+          this.props.setFilters(checked)
+          return false
+        }else{
+          let arr = [], arr1 = [];
+          arr = chipData.filter(val => val.label !== value);
+          if (checked) {
+            arr1 = this.delete_val_chips(value).filter(val => {
+              var dlt; 
+              if (val !== undefined && val !== null) {
+                dlt = Object.values(val) === -1
+              }
+              return dlt;
+            })
+            chipData = arr1;
+          }
+          chipData = arr;
+          this.setState({
+            chipData,
+            checked
+          })
+          this.forceUpdate()
+          this.props.setFilters(checked)
         }
-        return dlt;
-      })
-      chipData = arr1;
-    }
-    chipData = arr;
-    this.setState({
-      chipData,
-      checked
+      }
     })
 
-    this.forceUpdate()
-    this.props.setFilters(checked)
+
+ 
+
     // var bb = {}
     // bb["delete_fil"] = "12345"
     // this.props && this.props.setdelete_fil && this.props.setdelete_fil(bb)
@@ -389,6 +428,28 @@ class Component extends React.Component {
 
   };
 
+  check_goldCoins = (values_) => {
+    debugger
+    const Category = this.state.checked
+    var valus;
+    Object.entries(Category).map(val => {
+      if (val && val[0] === "Category") {
+        if (val && val[1] && val[1].goldcoins === true) {
+          if (values_ === "Gold Coins") {
+            return valus = true
+          }
+          if (values_ === "Gold") {
+            return valus = true
+          }
+          if (values_ === "Yellow") {
+            return valus = true
+          }
+
+        }
+      }
+    })
+    return valus
+  }
   handleDrawerOpen = () => {
     this.setState({ open: true });
     document.documentElement.scrollTop = 180;
@@ -507,6 +568,7 @@ class Component extends React.Component {
     // })
     // alert(JSON.stringify(this.state.selected))
 
+
     return (
       <>
         <Hidden smDown>
@@ -616,20 +678,23 @@ class Component extends React.Component {
                                             subFilter[row].filter((row12, i) =>
                                               (i < (this.state[`li_${row}`] ? this.state[`li_${row}`] : 4))).map(row12 => {
                                                 return (<div style={{ padding: "0 20px" }}>
-
                                                   <ListItem key={row12}  >   {/* button */}
                                                     <FormGroup row>
                                                       {
                                                         row12.constructor === Object ?
+
                                                           <FormControlLabel
                                                             control={
                                                               <Checkbox
+                                                                disabled={
+                                                                  this.check_goldCoins(row12) === true ? true : false}
                                                                 checked={this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] !== undefined ?
                                                                   this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] : false}
                                                                 onChange={(e) => this.handleChange(row12.value, this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12.value] : true, e, row)}
                                                                 className="fil-submenu-icons"
                                                                 value="checked"
-                                                                color="primary"
+                                                                color={"secondary"}
+
                                                                 name={row.replace(/\s/g, "")}
                                                               />
                                                             }
@@ -641,12 +706,15 @@ class Component extends React.Component {
                                                           <FormControlLabel
                                                             control={
                                                               <Checkbox
+                                                                disabled={
+                                                                  this.check_goldCoins(row12) === true ? true : false}
+                                                                // disabled = {handledisabled}
                                                                 checked={this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ?
                                                                   this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] : false}
                                                                 onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e, row)}
                                                                 className="fil-submenu-icons"
                                                                 value="checked"
-                                                                color="primary"
+                                                                color={"secondary"}
                                                                 name={row.replace(/\s/g, "")}
                                                               />
                                                             }

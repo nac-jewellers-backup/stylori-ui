@@ -31,7 +31,7 @@ const initialCtx = {
 
 
         },
-        loading: false, error: false, data: [], allorderdata: [], wishlistdata: [], wishlist_count: [], noproducts: false, NewUser:{}
+        loading: false, error: false, data: [], allorderdata: [], wishlistdata: [], wishlist_count: [], noproducts: false, NewUser: {}
     },
     setCartFilters: (filterData) => { },
     setallorderdata: () => { },
@@ -49,7 +49,7 @@ const Provider = (props) => {
     const [wishlistdata, setwishlistdata] = React.useState([])
     const [wishlist_count, setwishlist_count] = React.useState([])
     const [noproducts, setNoproducts] = React.useState(false)
-    const [NewUser ,setNewUser] = React.useState({})
+    const [NewUser, setNewUser] = React.useState({})
     // const [_cart_id, setCartId] = React.useState([])
     var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : [];
     const user_id = cartFilters.user_id ? cartFilters.user_id : ""
@@ -84,6 +84,7 @@ const Provider = (props) => {
             if (con_gust === true) {
                 if (!myStorage) {
                     localStorage.clear();
+                    sessionStorage.clear();
                 }
             }
         }
@@ -104,10 +105,9 @@ const Provider = (props) => {
         var products = []
         var _cartDetails = {}
         if (!loading && !error) {
-            
+
             if (data && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes.length > 0) {
                 data.data.allTransSkuLists.nodes.map(val => {
-                    
                     obj['sku_id'] = val.generatedSku;
                     obj['qty'] = 1
                     obj['price'] = val.markupPrice
@@ -115,9 +115,11 @@ const Provider = (props) => {
                 })
                 // { "cart_id": '', "user_id": userId, "products": products_sku_list() }
                 _cartDetails['cart_id'] = ''
-                    _cartDetails['userId'] =''
-                    _cartDetails['products'] =products
+                _cartDetails['userId'] = ''
+                _cartDetails['products'] = products
+                if (localvalues_check && localvalues_check === false) {
                     localStorage.setItem('cartDetails', JSON.stringify(_cartDetails))
+                }
             }
 
 
@@ -182,11 +184,12 @@ const Provider = (props) => {
         // }
     }, [wishlistDATA, wishlistdata])
     useEffect(() => {
+        debugger
         orderobj["userProfileId"] = userIds
         orderobj1["userprofileId"] = userIds
         if (userIds) wishlistmakeRequest(orderobj1)
         orderobj["userProfileId"] = localStorage.getItem('user_id')
-        if (window.location.pathname === '/account-allorders' && Object.values(orderobj).length > 0) allordermakeRequest(orderobj);
+        if ((window.location.pathname === '/account-allorders' || window.location.pathname === '/account-addresses' || window.location.pathname === '/account-shoppingcart' || window.location.pathname === '/account-wishlist' || window.location.pathname === "/account-profile" ) && Object.values(orderobj).length > 0) allordermakeRequest(orderobj);
 
     }, [wishlistdata])
     const ordersuccessful = async () => {
@@ -222,7 +225,7 @@ const Provider = (props) => {
                 orderobj["userProfileId"] = user_id
                 sessionStorage.setItem("user_id", user_id)
                 orderobj["userProfileId"] = localStorage.getItem('user_id')
-                if (window.location.pathname === '/account-allorders' && Object.values(orderobj).length > 0) allordermakeRequest(orderobj);
+                if ((window.location.pathname === '/account-allorders' || window.location.pathname === '/account-addresses' || window.location.pathname === '/account-shoppingcart' || window.location.pathname === '/account-wishlist' || window.location.pathname === "/account-profile" ) && Object.values(orderobj).length > 0) allordermakeRequest(orderobj);
                 // allordermakeRequest(orderobj); // CHANGED
                 // wishlistmakeRequest(orderobj1) 
             }
@@ -265,7 +268,8 @@ const Provider = (props) => {
             //     var addcart = ({ products, user_id })
             //     addtocart(addcart)
             // }
-
+            // alert("1")
+            console.log(")")
             if (skuId) localStorage.setItem('cartDetails', JSON.stringify(skuObj));
 
         }
@@ -361,7 +365,7 @@ const Provider = (props) => {
                                 if (data && data.data && data.data.allShoppingCartItems && data.data.allShoppingCartItems.nodes && data.data.allShoppingCartItems.nodes.length > 0) {
                                     var _data = data.data.allShoppingCartItems.nodes.filter(val => { if (val.transSkuListByProductSku) return val }).map(val => { return val.transSkuListByProductSku.generatedSku })
                                     variables = { "productList": _data }
-                                    
+
                                     makeRequest(variables);
 
                                 }
@@ -373,7 +377,7 @@ const Provider = (props) => {
                     }
 
                     else {
-                        
+
                         // alert(JSON.stringify(val.data.allShoppingCarts.nodes.length>0))
                         // if(val.data.allShoppingCarts.nodes.length>0){
                         if (val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length > 0 && val.data.allShoppingCarts.nodes[0] && val.data.allShoppingCarts.nodes[0].id) {
@@ -403,7 +407,7 @@ const Provider = (props) => {
                                 })
                         }
                         else {
-                            
+
                             // JSON.parse(sessionStorage.getItem("updatedProduct"))
                             if (sessionStorage.getItem("updatedProduct")) {
                                 _user_id = { user_id: localStorage.getItem('user_id') }
@@ -431,7 +435,7 @@ const Provider = (props) => {
                                             makeRequest(variables);
                                         }
                                         else {
-                                            
+
                                             return val
                                         }
 
@@ -441,7 +445,7 @@ const Provider = (props) => {
                                 setNewUser(val)
                                 return NewUser
                             }
-                      
+
 
                             // cartFilters, setCartFilters
                         }
@@ -487,7 +491,7 @@ const Provider = (props) => {
                 orderobj["userProfileId"] = user_id
                 sessionStorage.setItem("user_id", user_id)
                 orderobj["userProfileId"] = localStorage.getItem('user_id')
-                if (window.location.pathname === '/account-allorders' && Object.values(orderobj).length > 0) allordermakeRequest(orderobj);
+                if ((window.location.pathname === '/account-allorders' || window.location.pathname === '/account-addresses' || window.location.pathname === '/account-shoppingcart' || window.location.pathname === '/account-wishlist' || window.location.pathname === "/account-profile" ) && Object.values(orderobj).length > 0) allordermakeRequest(orderobj);
                 // allordermakeRequest(orderobj); // CHANGED
                 // wishlistmakeRequest(orderobj1) 
             }
@@ -541,6 +545,7 @@ const Provider = (props) => {
             }
 
             // }
+            // alert("2")
 
             localStorage.setItem('cartDetails', JSON.stringify(skuObj));
 

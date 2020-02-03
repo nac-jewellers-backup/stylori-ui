@@ -17,6 +17,8 @@ const PromoComponent = (props) => {
             if (con_gust === true) {
                 if (!myStorage) {
                     localStorage.clear();
+                    sessionStorage.clear();
+
                 }
             }
         }
