@@ -274,7 +274,6 @@ export default function Footer(props) {
             style={{ padding: '0' }}
         >
 
-            {/* footer pink color starts */}
             {silver ? "" : <>
                 <Grid container item style={{ marginBottom: '-5.5%', zIndex: 12 }}>
                     <Grid item xs="12" >
@@ -291,9 +290,7 @@ export default function Footer(props) {
                         Join the Stylori mailing list to stay up to date on the
                         most exciting offers on your favourite jewellery collections
                     </Grid>
-                    {/* Hidden */}
                     <Hidden only={['sm', 'xs']}>
-                        {/* <form action="javascript:void(0)" > */}
                         <Grid container style={{ display: 'flex', justifyContent: 'center' }}>
                             <Grid item xs={6} xl={8} lg={8} md={8} >
                                 <input
@@ -311,18 +308,12 @@ export default function Footer(props) {
                                 <Button type="submit" id="_button" className={`${classes.searchButtonFooter}`} onClick={(e) => { return handleEmail(e) }}>Stay Informed</Button>
                             </Grid>
                         </Grid>
-                        {/* </form> */}
-
-
                     </Hidden>
-                    {/* Hidden */}
                 </Grid>
 
-                {/* mobile */}
                 <Hidden only={['lg', 'xl', 'md']} >
 
                     <Grid container item xl={4} lg={4} md={4} xs={12} sm={4} style={{ padding: '3%' }}>
-                        {/* <form id="_form" action="javascript:void(0)" > */}
                         <Grid container style={{ display: 'flex', justifyContent: 'flex-start' }}>
                             <Grid item xs={6} xl={8} lg={8} md={8} sm={8}>
                                 <input
@@ -340,14 +331,7 @@ export default function Footer(props) {
                                 <Button type="submit" id="_button" className={`${classes.searchButtonFooter}`} onClick={(e) => handleEmail(e)}>Stay Informed</Button>
                             </Grid>
                         </Grid>
-
-                        {/* </form> */}
-
                     </Grid>
-
-                    {/* listing starts */}
-
-
                     <Grid container item xl={5} lg={5} md={5} xs={12} sm={12}>
                         <Grid container item xs={12} style={{ backgroundColor: 'colorMain', fontSize: '13px', padding: '2%' }} alignItems="center" className={`${classes.colorWhiteBorder} ${classes.colorWhite}`}>
                             {
@@ -362,24 +346,11 @@ export default function Footer(props) {
                             }
                         </Grid>
                     </Grid>
-
-                    {/* listing ends */}
-
                 </Hidden>
-                {/*  */}
                 <Hidden only={['sm', 'xs']}>
                     <Grid container direction="row" item xl={4} lg={4} md={4} xs={12} sm={6} style={{ padding: '3%' }}>
-                        {/* <Hidden only={['sm', 'xs']}>
-                            <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
-                                <Grid item xs={6}  >
-                                    Get the Stylori app and stay mobile.
-                                    Available on Android.
-                    </Grid>
-                            </Grid>
-                        </Hidden> */}
                         <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
                             <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
-                                {/* <img src={googlePlaystore} className={`${classes.colorMain}`} alt="" /> */}
                             </Grid>
                         </Grid>
                     </Grid>
@@ -400,8 +371,6 @@ export default function Footer(props) {
                                     <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i> </a>
                                 <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
                                     <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf09a;</i></a>
-                                {/* <a class="facebook" target="_blank" href="https://plus.google.com/+Stylori">
-                                    <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf0d5;</i></a> */}
                                 <a class="facebook" target="_blank" href="https://in.pinterest.com/stylori2015/">
                                     <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf231;</i></a>
                                 <a class="facebook" target="_blank" href="https://instagram.com/stylorilove">
@@ -427,8 +396,6 @@ export default function Footer(props) {
                             <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i> </a>
                         <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
                             <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf09a;</i></a>
-                        {/* <a class="facebook" target="_blank" href="https://plus.google.com/+Stylori">
-                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf0d5;</i></a> */}
                         <a class="facebook" target="_blank" href="https://in.pinterest.com/stylori2015/">
                             <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf231;</i></a>
                         <a class="facebook" target="_blank" href="https://instagram.com/stylorilove">
@@ -438,12 +405,8 @@ export default function Footer(props) {
                     </Grid>
                 </Grid>
 
-
             </Hidden>
-            {/* footer pink color ends */}
 
-
-            {/* footer color menuItems starts  */}
             <Container>
                 <Grid container item className={`${classes.colorWhiteBackground}`} style={{ padding: '10px 0px 10px 0px' }}>
                     <Hidden only={['sm', 'xs']}>
@@ -543,37 +506,7 @@ export default function Footer(props) {
                     Copyright © 2020 stylori.com
                             </Grid>
             </Hidden>
-            {/* footer color menuItems ends  */}
-
-
-            {/* visa Cards banking details starts */}
             <Grid container style={{ backgroundColor: '#a7a7aa', display: 'flex', justifyContent: 'center', padding: "10px 15px" }} >
-                {/* <Grid item container xs={12} sm={6} md={6} lg={6} xl={6} style={{ display: 'flex', justifyContent: 'center', padding: "10px 0px" }}>
-                    <i style={{ fontSize: '33px', textAlign: 'center', paddingLeft: '3%', color: '#fff' }} className="fa">&#xf023;</i>
-                    <img src={visa}
-                        style={{ paddingLeft: "3%", width: '54px', height: "32px" }}
-                        alt=""
-                    />
-                    <img src={mastercard}
-                        style={{ paddingLeft: "3%", width: '50px', height: "32px" }}
-                        alt=""
-                    />
-                    <img src={AmericanExpress}
-                        style={{ paddingLeft: "3%", width: '30px', height: "32px" }}
-                        alt=""
-                    />
-                    <img src={DinersClub}
-                        style={{ paddingLeft: "3%", width: '30px', height: "32px" }}
-                        alt=""
-                    />
-                    <img src={Netbanking}
-                        style={{ paddingLeft: "3%", width: '30px', height: "32px" }}
-                        alt=""
-                    />
-                    <div style={{ color: "#fff", fontSize: "0.8rem", paddingLeft: "4px" }}>NET<br /> BANKING</div>
-                    <i class="fa fa-inr" style={{ fontSize: '30px', paddingLeft: "3%", color: "#fff", fontWeight: "normal" }} aria-hidden="true"></i>
-                    <div style={{ color: "#fff", fontSize: "0.8rem", paddingLeft: "4px" }}>CASH ON<br /> DELIVERY</div>
-                </Grid> */}
                 <Hidden mdUp>
                     <Grid container style={{ marginBottom: "10px" }}>
                         <Grid container item xs={4} justify="flex-start">
@@ -618,7 +551,6 @@ export default function Footer(props) {
                 </Hidden>
             </Grid>
 
-            {/* visa Cards banking details ends */}
             <Hidden only={['sm', 'xs']}>
 
                 <Grid container className={`${classes.colorWhiteBackground}`}>
