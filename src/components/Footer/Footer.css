@@ -18,6 +18,10 @@
   cursor: pointer;
 }
 
+.footer-icons {
+  padding-top: 4px
+}
+
 .borderCircle {
   width: 30px !important;
   height: 40px;
