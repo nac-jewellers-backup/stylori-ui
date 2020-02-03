@@ -17,7 +17,7 @@ import { SnackBar } from 'components/snackbarAlert/SnackBar'
 const useStyles = makeStyles(theme => ({
     navTitle: {
         cursor: "pointer",
-        padding: " 0px 15px 8px 15px",
+        padding: "7px 0px 6px 0px",
         "&:hover": {
             textDecoration: "underline"
         }
@@ -35,7 +35,9 @@ const useStyles = makeStyles(theme => ({
         fontSize: '12px',
     },
     colorBlue: {
-        color: theme.palette.primary.main
+        color: theme.palette.primary.main,
+        fontSize: "11px",
+        padding: "0px 0px 10px 0px"
     },
     paddingSpace: {
         padding: '1% 2%',
@@ -46,7 +48,7 @@ const useStyles = makeStyles(theme => ({
     buynowSearch: {
         color: theme.palette.primary.main,
         fontSize: '13px',
-        width: '100%',
+        // width: '100%',
         height: '34px',
         border: '1px solid #ccc',
         borderRadius: '0',
@@ -66,7 +68,10 @@ const useStyles = makeStyles(theme => ({
         textTransform: 'none',
         '&:hover': {
             backgroundColor: theme.palette.primary.main,
-        }
+        },
+        [theme.breakpoints.up('md')]: {
+            fontSize: '12px',
+        },
     },
     spanSizeColor: {
         color: '#808080',
@@ -74,7 +79,45 @@ const useStyles = makeStyles(theme => ({
     },
     colorWhiteBorder: {
         borderTop: `1px solid ${theme.palette.common.white}`
+    },
+    topConatinerfooter: {
+        color: theme.palette.common.white,
+        fontSize: '12px',
+        lineHeight: "16px",
+        backgroundColor: theme.palette.secondary.main,
+        padding: '3% 0px 2% 0px',
+        margin: "auto",
+        [theme.breakpoints.down('sm')]: {
+            padding: '0px',
+        },
+        [theme.breakpoints.up('sm')]: {
+            width: "750px",
+            fontSize: '12px',
+        },
+        [theme.breakpoints.up('md')]: {
+            width: "970px",
+            fontSize: '13px',
+            lineHeight: "19px",
+        },
+        [theme.breakpoints.up('lg')]: {
+            width: "1170px",
+            fontSize: '13px',
+            lineHeight: "19px",
+        }
+    },
+    buttonConatiner: {
+        // display: 'flex',
+        // justifyContent: 'center',
+        width: "350px",
+        flexGrow: 1
+    },
+    messageconatainer: {
+        padding: "15px 15px 15px 15px",
+        [theme.breakpoints.up('sm')]: {
+            padding: "30px 15px 15px 15px"
+        }
     }
+
 }));
 
 
@@ -99,34 +142,28 @@ export default function Footer(props) {
             url: "/productcare",
             Title: "Product Care"
         },
-        // {
-        //     url: "",
-        //     Title: "Careers"
-        // },
-        {
-            url: "/faqs",
-            Title: "Frequently Asked Questions"
-        },
         {
             url: "/privacypolicy",
             Title: "Privacy & Cookie Policy"
         },
-        // {
-        //     url: "",
-        //     Title: "Contact Us"
-        // },
+        {
+            url: "/faqs",
+            Title: "FAQ"
+        },
+
         {
             url: "/deliveryreturns",
             Title: "Shopping & Returns"
         },
         {
-            url: "/termsconditions",
-            Title: "Terms & Conditions"
-        },
-        {
             url: "/contactus",
             Title: "Contact us"
         },
+        {
+            url: "/termsconditions",
+            Title: "Terms & Conditions"
+        },
+
     ]
     const footerData1 = [
         {
@@ -281,41 +318,73 @@ export default function Footer(props) {
                     </Grid>
                 </Grid></>}
 
-            <Grid container item className={`${classes.colorMain} ${classes.paddingSpace} ${classes.colorWhite}`} xs={12}
+            <Hidden only={['sm', 'xs']}>
+                <Grid container item className={classes.topConatinerfooter} xs={12} >
+                    <Container>
+                        <Grid container>
+                            <Grid container item className={classes.buttonConatiner}>
+                                <Grid item style={{ textAlign: 'left' }}>
+                                    Join the Stylori mailing list to stay up to date on the <br />
+                                    most exciting offers on your favourite jewellery collections
+                            <Grid container style={{ padding: "10px 0px 0px 0px " }}>
+                                        <Grid item style={{ width: "300px" }}>
+                                            <input
+                                                value={state}
+                                                id="_input"
+                                                style={{ width: "300px" }}
+                                                type="email"
+                                                onInvalid={(e) => { e.preventDefault() }}
+                                                onChange={(e) => handleChage(e)}
+                                                placeholder='Email address'
+                                                className={`${classes.buynowSearch}`}
+                                            />
 
-            >
-
-                <Grid container item xl={4} lg={4} md={4} xs={12} sm={5}>
-                    <Grid item style={{ textAlign: 'left', paddingTop: '9%', paddingLeft: '2%' }}>
-                        Join the Stylori mailing list to stay up to date on the
-                        most exciting offers on your favourite jewellery collections
-                    </Grid>
-                    <Hidden only={['sm', 'xs']}>
-                        <Grid container style={{ display: 'flex', justifyContent: 'center' }}>
-                            <Grid item xs={6} xl={8} lg={8} md={8} >
-                                <input
-                                    value={state}
-                                    id="_input"
-                                    type="email"
-                                    onInvalid={(e) => { e.preventDefault() }}
-                                    onChange={(e) => handleChage(e)}
-                                    placeholder='Email address'
-                                    className={`${classes.buynowSearch}`}
-                                />
+                                        </Grid>
+                                        <Grid item>
+                                            <Button type="submit" id="_button" className={`${classes.searchButtonFooter}`} onClick={(e) => { return handleEmail(e) }}>Stay Informed</Button>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
 
                             </Grid>
-                            <Grid item xl={4} lg={4} md={4} xs={4}>
-                                <Button type="submit" id="_button" className={`${classes.searchButtonFooter}`} onClick={(e) => { return handleEmail(e) }}>Stay Informed</Button>
+                            <Grid item>
+                                <Grid container>
+                                    <Grid item container justify="flex-end" style={{ textAlign: "end",  }}>
+                                        Stay social with Stylori.<br />
+                                        We promise we won’t bore you.
+                            </Grid>
+                                    <Grid item container style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: "10px" }} className="footer-icons">
+                                        <Grid item style={{ width: "100%", textAlign: "end" }}>
+                                            <a class="twitter" style={{ textDecoration: "none" }} target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
+                                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i> </a>
+                                            <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
+                                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf09a;</i></a>
+                                            <a class="facebook" target="_blank" href="https://in.pinterest.com/stylori2015/">
+                                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf231;</i></a>
+                                            <a class="facebook" target="_blank" href="https://instagram.com/stylorilove">
+                                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf16d;</i></a>
+                                            <a class="facebook" target="_blank" href="https://www.youtube.com/c/stylori">
+                                                <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf167;</i></a>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+
                             </Grid>
                         </Grid>
-                    </Hidden>
+                    </Container>
                 </Grid>
+            </Hidden>
 
-                <Hidden only={['lg', 'xl', 'md']} >
 
-                    <Grid container item xl={4} lg={4} md={4} xs={12} sm={4} style={{ padding: '3%' }}>
-                        <Grid container style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                            <Grid item xs={6} xl={8} lg={8} md={8} sm={8}>
+            <Hidden only={['lg', 'xl', 'md']} >
+                <Grid container item className={classes.topConatinerfooter} xs={12} >
+                    <Grid container className={classes.messageconatainer}>
+                        <Grid item style={{ textAlign: 'left' }}>
+                            Join the Stylori mailing list to stay up to date on the <br />
+                            most exciting offers on your favourite jewellery collections
+                            </Grid>
+                        <Grid container style={{ display: 'flex', justifyContent: 'flex-start', padding: "6px 0px 0px 0px" }}>
+                            <Grid item >
                                 <input
                                     value={state}
                                     id="_input"
@@ -327,18 +396,19 @@ export default function Footer(props) {
                                     className={`${classes.buynowSearch}`}
                                 />
                             </Grid>
-                            <Grid item sm={4} xs={3} xl={4} lg={4} md={4}>
+                            <Grid item >
                                 <Button type="submit" id="_button" className={`${classes.searchButtonFooter}`} onClick={(e) => handleEmail(e)}>Stay Informed</Button>
                             </Grid>
                         </Grid>
                     </Grid>
+
                     <Grid container item xl={5} lg={5} md={5} xs={12} sm={12}>
-                        <Grid container item xs={12} style={{ backgroundColor: 'colorMain', fontSize: '13px', padding: '2%' }} alignItems="center" className={`${classes.colorWhiteBorder} ${classes.colorWhite}`}>
+                        <Grid container item xs={12} style={{ backgroundColor: 'colorMain', fontSize: '12px', padding: '15px' }} alignItems="center" className={`${classes.colorWhiteBorder} ${classes.colorWhite}`}>
                             {
 
                                 footerData.map(data => {
                                     return (
-                                        <Grid item xs={6} sm={6} style={{ padding: '1% 10px 0px 0px ' }} onClick={() => { window.location.href = data.url }} href="#">
+                                        <Grid item xs={6} sm={6} style={{ padding: '2px 0px' }} onClick={() => { window.location.href = data.url }} href="#">
                                             {data.Title}
                                         </Grid>
                                     )
@@ -346,69 +416,33 @@ export default function Footer(props) {
                             }
                         </Grid>
                     </Grid>
-                </Hidden>
-                <Hidden only={['sm', 'xs']}>
-                    <Grid container direction="row" item xl={4} lg={4} md={4} xs={12} sm={6} style={{ padding: '3%' }}>
-                        <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
-                            <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </Hidden>
-                <Hidden only={['sm', 'xs']}>
-                    <Grid container direction="row" item xl={4} lg={4} md={4} xs={12} sm={6} style={{ padding: '3%' }}>
-
-                        <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                            <Grid item xs={9}  >
-                                Stay social with Stylori.
-                                We promise we won’t bore you.
-                    </Grid>
-                        </Grid>
-
-                        <Grid container item xs={12} style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: "10px" }} className="footer-icons">
-                            <Grid item xs={9}>
-                                <a class="twitter" style={{ textDecoration: "none" }} target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
-                                    <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i> </a>
-                                <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
-                                    <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf09a;</i></a>
-                                <a class="facebook" target="_blank" href="https://in.pinterest.com/stylori2015/">
-                                    <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf231;</i></a>
-                                <a class="facebook" target="_blank" href="https://instagram.com/stylorilove">
-                                    <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf16d;</i></a>
-                                <a class="facebook" target="_blank" href="https://www.youtube.com/c/stylori">
-                                    <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf167;</i></a>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </Hidden>
-            </Grid>
-
+                </Grid>
+            </Hidden>
             <Hidden only={['lg', 'xl', 'md']}>
 
-                <Grid container item xs={12} className={`${classes.colorWhite} ${classes.colorMain} ${classes.colorWhiteBorder}`} style={{ display: 'flex', justifyContent: 'left', padding: '10px' }}>
+                <Grid container item xs={12} className={`${classes.colorWhite} ${classes.colorMain} ${classes.colorWhiteBorder}`} style={{ display: 'flex', justifyContent: 'left', padding: '15px', lineHeight: "16px" }}>
                     <Grid item xs={12}  >
-                        Stay social with Stylori.
+                        Stay social with Stylori.<br />
                         We promise we won’t bore you.
-</Grid>
+                    </Grid>
                     <Grid item xs={12} sm={6} className="footer-icons" style={{ paddingTop: "6px" }}>
 
                         <a class="twitter" style={{ textDecoration: "none" }} target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
                             <i style={{ fontSize: '24px', color: 'white', paddingLeft: '3px', }} className="fa">&#xf099;</i> </a>
                         <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
-                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf09a;</i></a>
+                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '7%' }} className="fa ">&#xf09a;</i></a>
                         <a class="facebook" target="_blank" href="https://in.pinterest.com/stylori2015/">
-                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf231;</i></a>
+                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '7%' }} className="fa ">&#xf231;</i></a>
                         <a class="facebook" target="_blank" href="https://instagram.com/stylorilove">
-                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf16d;</i></a>
+                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '7%' }} className="fa ">&#xf16d;</i></a>
                         <a class="facebook" target="_blank" href="https://www.youtube.com/c/stylori">
-                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '5%' }} className="fa ">&#xf167;</i></a>
+                            <i style={{ fontSize: '24px', color: 'white', paddingLeft: '7%' }} className="fa ">&#xf167;</i></a>
                     </Grid>
                 </Grid>
-
             </Hidden>
 
             <Container>
-                <Grid container item className={`${classes.colorWhiteBackground}`} style={{ padding: '10px 0px 10px 0px' }}>
+                <Grid container item className={`${classes.colorWhiteBackground}`} style={{ padding: '15px 0px 15px 0px' }}>
                     <Hidden only={['sm', 'xs']}>
                         <Grid container item xl={5} lg={5} md={5} xs={12} sm={6} alignItems="center">
                             <Grid container item xs={12} style={{ color: '#808080', fontSize: '13px' }}>
@@ -451,7 +485,7 @@ export default function Footer(props) {
                     <Hidden only={['sm', 'xs']}>
 
                         <Grid container item xl={4} lg={4} md={5} xs={12} sm={6} alignItems="center" >
-                            <Grid item xs={12} style={{ padding: '0px 0px 0px 20px', fontWeight: '500', fontSize: '12px', color: '#808080' }}>
+                            <Grid item xs={12} style={{ padding: '0px 0px 0px 14px', fontWeight: '600', fontSize: '12px', color: '#808080', letterSpacing: "0.8px" }}>
                                 Need Help?
                                 </Grid>
                             <Grid container item xs={12} className="footer-icons">
@@ -490,7 +524,7 @@ export default function Footer(props) {
                         </Grid>
                     </Hidden>
                     <Hidden only={['sm', 'xs']}>
-                        <Grid container item xl={3} lg={3} md={2} xs={12} sm={6} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: "flex-end" }}>
+                        <Grid container item xl={3} lg={3} md={2} xs={12} sm={6} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: "flex-start" }}>
                             <Grid item xs={12} sm={12} md={12} lg={6}>
                                 <div onClick={() => { window.location.href = window.location.origin }}>
                                     <img src={styloriLogo} alt="" style={{ width: "100%", cursor: "pointer" }} />
@@ -555,11 +589,11 @@ export default function Footer(props) {
 
                 <Grid container className={`${classes.colorWhiteBackground}`}>
                     <Container>
-                        <Grid item xs={12} style={{ padding: "10px" }}>
-                            <Typography variant="caption" className={`${classes.colorBlue}`}>
+                        <Grid item xs={12} style={{ padding: "15px 0px 15px 0px" }}>
+                            <Typography className={`${classes.colorBlue}`}>
                                 POPULAR SEARCH TERMS:
                             </Typography>
-                            <Typography style={{ fontSize: '10px', color: '#808080' }}>
+                            <Typography style={{ fontSize: '11px', color: '#808080' }}>
                                 Gold Jewellery , Gold Ring, Diamond Ring, Platinum Jewellery, Diamond Jewellery, Women’s Rings, Gold Earrings, Diamond Earrings, Platinum Earrings, Jhumkas Earrings, Studs Earrings, Drops Earrings, Huggies Earring, Diamond Pendants, Gold Pendants, Casual Pendants, Fashion Pendants, Traditional Pendants, Modern Pendants, Office Pendants, Diamond Nose Pins, Gold Nose Pins, Ear Cuff Earrings, Engagement Rings, Couple Bands, Gold Bangles, Diamond Bangles, Classic Bangles, Oval Bangles, Bracelets, Diamond Bracelets, Gold Bracelets
                             </Typography>
                         </Grid>

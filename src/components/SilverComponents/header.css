@@ -157,6 +157,7 @@
   font-size: 0.8rem !important;
   padding: 0px 0px 0px 6px !important;
   font-family: inherit !important;
+  cursor: pointer;
 }
 
 .searchsvg {
@@ -164,6 +165,7 @@
   height: 15px;
   fill: #fff;
   padding: 3px;
+  cursor: pointer;
 }
 
 .searchPlain {
