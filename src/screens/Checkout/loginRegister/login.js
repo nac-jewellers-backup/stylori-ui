@@ -67,7 +67,7 @@ const LoginComponent = (props) => {
         props.change()
     }
     const responseFacebook = response => {
-      
+      console.log(response,'facebook');
 
         if (response.accessToken) {
             let body = {
@@ -82,7 +82,11 @@ const LoginComponent = (props) => {
             .then(res=>res.json())
             .then(fetchValue=>{
                 if(fetchValue.accessToken){
-                    localStorage.setItem('fbAccessToken',fetchValue.accessToken);
+                    localStorage.setItem('accessToken',fetchValue.accessToken);
+                    localStorage.setItem('user_id', fetchValue.user.id)
+
+                    localStorage.setItem('true',false)
+                    localStorage.setItem('panel',2);
                     props.history.push('/')
                 }else{
                     if (typeof response.email === "undefined"){
@@ -109,7 +113,11 @@ const LoginComponent = (props) => {
                         .then(res=>res.json())
                         .then(fetchValue1=>{
                             if(fetchValue1.accessToken){
-                                localStorage.setItem('fbAccessToken',fetchValue1.accessToken);
+                                localStorage.setItem('accessToken',fetchValue1.accessToken);
+                                localStorage.setItem('user_id', fetchValue.user.id)
+                                localStorage.setItem('panel',2);
+                                localStorage.setItem('isedit',1);
+                                localStorage.setItem('true',false)
                                 props.history.push('/')
                             }
                         })
@@ -215,7 +223,12 @@ const LoginComponent = (props) => {
                         .then(res=>res.json())
                         .then(fetchValue=>{
                             if(fetchValue.accessToken){
-                                localStorage.setItem('fbAccessToken',fetchValue.accessToken);
+                                localStorage.setItem('accessToken',fetchValue.accessToken);
+                                localStorage.setItem('user_id', fetchValue.user.id)
+                                localStorage.setItem('panel',2);
+                                localStorage.setItem('isedit',1);
+
+                                localStorage.setItem('true',false)
                                 props.history.push('/')
                             }
                         })
