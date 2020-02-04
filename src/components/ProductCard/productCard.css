@@ -6,6 +6,40 @@
   background-position: center;
 }
 
+.one-day-ship-listing-page__ {
+  font-weight: 900;
+  z-index: 999 !important;
+  background: #ed1165 !important;
+  height: 47px !important;
+  width: 30px !important;
+  position: absolute !important;
+  text-align: center !important;
+    line-height: 20px !important;
+  font-size: 12px !important;
+/*     font: 600 16px sans-serif; */
+  color: white !important;
+  border: 0 !important;
+}
+.one-day-ship-listing-page__:after {
+  z-index: 999 !important;
+  content: "" !important;
+  position: absolute !important;
+  bottom: -18px !important;
+  left: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  border: solid 15px #ed1165 !important;
+  border-bottom-color: transparent !important;
+}
+.one-day-ship-listing-page__:hover {
+  z-index: 999 !important;
+  background: #ed1165 !important;
+}
+.one-day-ship-listing-page__:hover:after {
+  z-index: 999 !important;
+  border-color: #ed1165 !important;
+  border-bottom-color: transparent !important;
+}
 .one-day-ship-listing-page {
   width: 24px;
   height: 22px;

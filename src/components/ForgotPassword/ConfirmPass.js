@@ -66,14 +66,14 @@ const LoginComponent = (props) => {
             try {
                 setValues({ ...values, newpassword: "", confirmPassword: "", confirmPasswordHelper: data.message, modelOpen: true })
             } catch (error) {
-                console.log(error)
+                // console.log(error)
             }
         }
         if (data && data.constructor === Object) {
             try {
                 setValues({ ...values, newpassword: "", confirmPassword: "", confirmPasswordHelper: data.message })
             } catch (error) {
-                console.log(error)
+                // console.log(error)
             }
         }
 

@@ -21,14 +21,16 @@ const RegisterComponent = (props) => {
 
     return (
         <div className='pt-sm'>
-            <form onSubmit={(e) => {
+            <form 
+            
+            onSubmit={(e) => {
                 handlers.handleSubmit(e)
             }} action="javascript:void(0)" >
                 <Grid container>
 
-                    <Grid item xs={12} lg={window.location.pathname === "/registers" || paths ? 12 : 6}  >
+                    <Grid item xs={12} lg={window.location.pathname === "/registers" || paths ? 12 : 6}   >
 
-                        <Grid class="topPaddingwish">
+                        <Grid class="topPaddingwish" >
                             {window.location.pathname.split("-")[0] !== "/account" &&
                                 <h5 className='title'>
                                     {window.location.pathname.split("-")[0] === "/account" ? "" : <>
@@ -38,15 +40,17 @@ const RegisterComponent = (props) => {
                             {/* <h5>Personal Information</h5> */}
                             {paths ?
                                 <Input
-                                    style={{ background: "rgba(192, 192, 192, 0.41)", width: "100%" }}
+                                    
+                                    style={{ background: "rgba(192, 192, 192, 0.41)" , width: "100%" }}
                                     value={email}
                                     InputProps={{
                                         readOnly: true,
                                     }}
                                 /> : <>
                                     <Input
+                                    
                                         margin="normal"
-                                        variant="outlined"
+                                        // variant="outlined"
                                         // type="email"
                                         name="email"
                                         value={values.email}
@@ -59,27 +63,27 @@ const RegisterComponent = (props) => {
                             }
                             {paths ?
                                 <Grid container spacing={12}>
-                                    <Grid item xs={6} sm={4} lg={3} >
+                                    <Grid item xs={6} sm={4} lg={4} >
                                         <Input
                                             margin="normal"
-                                            variant="outlined"
+                                            // variant="outlined"
                                             type="password"
                                             name="password"
                                             value={"........"}
                                             // helperText={values.errortext && values.errortext.passerr}
                                             placeholder="Enter your password"
                                             onChange={e => handlers.handleChange('password', e.target.value)}
-                                            style={{ background: "rgba(192, 192, 192, 0.41)" }}
+                                            style={{ background: "rgba(192, 192, 192, 0.41)" ,marginRight:"10px" }}
                                             InputProps={{
                                                 readOnly: true,
                                             }}
                                         /> </Grid>
-                                    <Grid item lg={2} class="leftPad" style={{ textAlign: "center", lineHeight: "66px", color: "#337ab7" }}>
+                                    <Grid item lg={3} class="leftPad" style={{ textAlign: "center", lineHeight: "66px", color: "#337ab7" }}>
                                         <NavLink to="/changepassword">  Change password </NavLink> </Grid>
                                 </Grid> : <>
                                     <Input
                                         margin="normal"
-                                        variant="outlined"
+                                        // variant="outlined"
                                         type="password"
                                         name="password"
                                         value={values.password}
@@ -94,7 +98,7 @@ const RegisterComponent = (props) => {
                                 <>
                                     <Input
                                         margin="normal"
-                                        variant="outlined"
+                                        // variant="outlined"
                                         type="password"
                                         name="confirmpassword"
                                         value={values.confirmpassword}
@@ -106,7 +110,7 @@ const RegisterComponent = (props) => {
                                     <label className='errtext'> {values.errortext && values.errortext.cnfpasserr}</label>
                                 </>
                             }
-                            <Grid container spacing={12}>
+                            <Grid container spacing={12} >
                                 <Grid item lg={4} xs={4}>
                                     <SimpleSelect val={'1'} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                 </Grid>
@@ -114,7 +118,7 @@ const RegisterComponent = (props) => {
                                     <Grid item lg={4} xs={4}>
                                         <Input
                                             margin="normal"
-                                            variant="outlined"
+                                            // variant="outlined"
                                             type="text"
                                             name="firstname"
                                             value={values.firstname}
@@ -130,7 +134,7 @@ const RegisterComponent = (props) => {
                                     <Grid item lg={4} xs={4}>
                                         <Input
                                             margin="normal"
-                                            variant="outlined"
+                                            // variant="outlined"
                                             type="text"
                                             name="lastname"
                                             value={values.lastname}
@@ -147,7 +151,7 @@ const RegisterComponent = (props) => {
                                     <Grid item lg={4} xs={4}>
                                         <Input
                                             margin="normal"
-                                            variant="outlined"
+                                            // variant="outlined"
                                             type="text"
                                             name="firstname"
                                             value={valuesadrees.firstname}
@@ -160,7 +164,7 @@ const RegisterComponent = (props) => {
                                     <Grid item lg={4} xs={4}>
                                         <Input
                                             margin="normal"
-                                            variant="outlined"
+                                            // variant="outlined"
                                             type="text"
                                             name="lastname"
                                             value={valuesadrees.lastname}

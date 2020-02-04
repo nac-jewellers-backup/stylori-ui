@@ -14,7 +14,7 @@ import { filterParams } from 'mappers';
 import {
     Redirect,
 
-  } from "react-router-dom";
+} from "react-router-dom";
 
 const initialCtx = {
     FilterOptionsCtx: {
@@ -70,8 +70,21 @@ const Provider = (props) => {
     const client = createApolloFetch({ uri });
 
 
-    useEffect(() => { console.log('_filters_filters', filters) }, [filters])
     const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/filterlist', {}, false, {})
+    var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
+    const myStorage = sessionStorage.getItem("user_id");
+    const localvalues_check = JSON.parse(localStorage.getItem('gut_lg')) === true ? true : false
+    React.useEffect(() => {
+        if (localvalues_check === true) {
+            if (con_gust === true) {
+                if (!myStorage) {
+                    localStorage.clear();
+                    sessionStorage.clear();
+
+                }
+            }
+        }
+    }, [])
     useEffect(() => {
 
         const fetch_data = async () => {
@@ -94,7 +107,6 @@ const Provider = (props) => {
 
 
 
-            console.log('splitHiphen()', splitHiphen())
             const conditionfiltersSeo = { seofilter: { seoUrl: { in: splitHiphen() } } }
             // makeRequestSeo(conditionfiltersSeo)
             function status(response) {
@@ -137,15 +149,15 @@ const Provider = (props) => {
                     // ------------ REDIRECTION ----------
 
 
-                    if(data.data.allSeoUrlPriorities.nodes.length===0){
+                    if (data.data.allSeoUrlPriorities.nodes.length === 0) {
                         // alert
-                       window.location.pathname = "/"
+                        window.location.pathname = "/"
                     }
                     //   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
                     var a = {};
 
                     var paramsfilter = (Object.entries(data).length !== 0 && data.constructor === Object && data.data.allSeoUrlPriorities) && data.data.allSeoUrlPriorities.nodes.map(val => {
-                  
+
                         let attrName = val.attributeName.replace(/\s/g, '')
                         let attrVal = val.attributeValue
                         filters[attrName] = { [attrVal]: true }
@@ -167,8 +179,6 @@ const Provider = (props) => {
                     updateFilters(filters)
                     // alert(JSON.stringify(filters))
                 }).catch(function (error) {
-
-                    console.log('Request failed', error, uri, status.code);
                     //  setSeoComponentMount(data)
                 });
 
@@ -375,10 +385,10 @@ const Provider = (props) => {
                         default:
                     }
                 }
-                else{
+                else {
                     newObj[toLowerCase] = k[len][0]
                 }
-               
+
             }
 
 
@@ -388,12 +398,6 @@ const Provider = (props) => {
 
             // alert(JSON.stringify('filters',filters))
             // alert(JSON.stringify(newObj))
-            console.log('newObjfilters', newObj)
-            console.log('newObjsort', newObj)
-            console.log('newObjfilterssort', newObj)
-            console.log('newObjsortfilters', newObj)
-            // newObj['price'] = {'min_price':pricemin,'max_price':pricemax}
-            // console.log('newObj', Object.keys(newObj).filter(val => { if (val === 'category') return val }).length > 1)
             // if()
             if (Object.keys(filters.category).length === 0 && filters.category.constructor === Object) {
                 if (filters.Category && Object.keys(filters.Category).length > 0 && filters.Category.constructor === Object) {
@@ -468,12 +472,20 @@ const Provider = (props) => {
 
     // }, [offset])
     var newObj = {}
+    //create your forceUpdate hook
+    function useForceUpdate() {
+        const [value, setValue] = React.useState(0); // integer state
+        return () => setValue(value => ++value); // update the state to force render
+    }
+    const forceUpdate = useForceUpdate();
     const updateFilters = async (filters) => {
         // alert('update filters')
 
+        setFilters(filters);
+        forceUpdate()
         setSort('')
         setOffset(0)
-        setFilters(filters);
+
 
         setloadingfilters(true)
 
@@ -503,7 +515,7 @@ const Provider = (props) => {
 
             // bodyvar = paramObjects();
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
         var k = qtfArr.map(val => Object.values(val));
         var keyy = qtfArr.map(val => Object.keys(val))
@@ -511,7 +523,7 @@ const Provider = (props) => {
         while (len--) {
             var key = keyy[len]
             var toLowerCase = key[0].toLowerCase()
-            
+
             if (toLowerCase === "offers") {
                 switch (k[len][0]) {
                     case "Up to  20%": {
@@ -537,29 +549,29 @@ const Provider = (props) => {
                     default:
                 }
             }
-            else{
+            else {
                 newObj[toLowerCase] = k[len][0]
             }
-           
+
         }
-        console.log('i came in as update filters function', "123123")
-        await makeFetch(newObj);
-        //    props.history.push({
-        //     pathname: `/stylori${mappedFilters.seo_url   ?`/${mappedFilters.seo_url}` : '' }`,
-        // })
         if (filters && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
             if (Object.values(filters).filter(val => { if (Object.entries(val).length > 0 && val.constructor === Object) { return val } }).length > 0) {
                 if (Object.keys(filters).filter(val => { if (val === "a") return val }).length === 0) updatefiltersSort()
                 //    makeFetch(newObj)
             }
         }
+        await makeFetch(newObj);
+        //    props.history.push({
+        //     pathname: `/stylori${mappedFilters.seo_url   ?`/${mappedFilters.seo_url}` : '' }`,
+        // })
+
         try {
             if (ntxdata.seo_url === "jewellery") {
                 setMappedFilters(ntxdata)
             }
 
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
         // }
 

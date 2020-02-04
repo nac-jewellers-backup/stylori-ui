@@ -71,7 +71,7 @@ class Cart extends React.Component {
                             {this.props.data.length > 0 ? <Grid item xs={12}>
                                 <CartCard data={data} />
                             </Grid> : <><div className="noproductsfound">There are no items in this cart. </div>
-                                    <a href="/jewellery" ><div className="continueshopping">CONTINUE SHOPPING</div></a></>
+                                    <a href="/jewellery" ><div className="continueshopping"> Continue shopping</div></a></>
 
 
                             }
@@ -95,7 +95,7 @@ class Cart extends React.Component {
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>
                                 <CartCard data={data} />
-                            </Grid> : <><div className="noproductsfound">There are no items in this cart.</div><a href="/jewellery"> <div className="continueshopping">Continue Shopping</div></a></>}
+                            </Grid> : <><div className="noproductsfound">There are no items in this cart.</div><a href="/jewellery"> <div className="continueshopping"> Continue shopping</div></a></>}
                         </Grid>
                     </Container>
                     <Grid Container spacing={12}>
@@ -111,18 +111,33 @@ class Cart extends React.Component {
 // export default Checkout;
 
 const Components = props => {
-    let { CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
+    let { CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata, NewUser } } = React.useContext(CartContext);
+
     let content, mapped;
+    let _data = {}
+
+    if (Object.keys(NewUser).length === 0) {
+        _data = data
+    }
+    else {
+        _data = NewUser
+        mapped = cart(_data);
+    }
     if (!loading && !error) {
-        if (Object.keys(data).length !== 0) {
-            mapped = cart(data);
+
+        if (Object.keys(_data).length !== 0) {
+
+            mapped = cart(_data);
         }
     }
-    if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
+
+
+
+    if (Object.keys(_data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
     else content = <Cart {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
-    if (mapped !== undefined && mapped !== null) {
-        localStorage.setItem("a__c_t", mapped && mapped.length)
-    }
+    // if (mapped !== undefined && mapped !== null) {
+    //     localStorage.setItem("a__c_t", mapped && mapped.length)
+    // }
     return content
 }
 

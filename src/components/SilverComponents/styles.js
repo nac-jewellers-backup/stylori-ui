@@ -14,7 +14,7 @@ export const styles = theme => ({
     justifyContent: "flex-end",
   },
   searchcontainer: {
-    padding: "1px",
+    padding: "2px",
     backgroundColor: theme.palette.secondary.dark,
     display: "flex",
     justifyContent: "center",

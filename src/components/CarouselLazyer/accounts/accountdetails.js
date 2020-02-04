@@ -67,9 +67,9 @@ class Accountdetails extends Component {
             <Container>
                 <Hidden smDown>
 
-                    <div class="inner-page-title"> My Account </div>
+                    <div className="inner-page-title"> My Account </div>
 
-                    <Container>
+                    <Container style={{margin:"auto"}}>
                         <div className="panel_body">
                             <Grid container spacing={12}  >
                                 <Grid item  >
@@ -98,7 +98,7 @@ class Accountdetails extends Component {
                                             All Orders</p>
                                     </List>
                                 </Grid>
-                                <Grid item xs={9}>
+                                <Grid item xs={12} sm={12} md={9} lg={9} xl={9}>
                                     <div className="pay-index-subhed_datas">
                                         {
                                             this.state.isActive == 'profile' &&
@@ -119,13 +119,13 @@ class Accountdetails extends Component {
                                             this.state.isActive == 'shopping-cart' && <>
                                             
                                             {this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
-                                                <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Shopping cart</div>}</>
+                                                <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
                                         }
                                         {
                                             this.state.isActive == 'wishlist' && <>
                                                 <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
                                                 {/* {JSON.stringify(this.props.wishlistdata)} */}
-                                            </>
+                                            </> 
                                         }
                                         {
                                             this.state.isActive == 'allorders' && <>
@@ -144,7 +144,7 @@ class Accountdetails extends Component {
 
                 <Hidden mdUp>
                     <Grid>
-                        <div class="inner-page-title"> My Account </div>
+                        <div className="inner-page-title"> My Account </div>
                     </Grid>
                     <Grid style={{display:"flex",alignContent:"left",marginTop:"10px"}}>
                   
@@ -174,7 +174,7 @@ class Accountdetails extends Component {
       </form>
                     </Grid>
 
-                    <Grid item xs={9} class="topPadding">
+                    <Grid item xs={9} className="topPadding">
                                     <div className="pay-index-subhed_datas">
                                         {
                                             this.state.isActive == 'profile' &&
@@ -193,7 +193,7 @@ class Accountdetails extends Component {
                                         }
                                         {
                                             this.state.isActive == 'shopping-cart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
-                                                <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Shopping cart</div>}</>
+                                                <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
                                         }
                                         {
                                             this.state.isActive == 'wishlist' && <>

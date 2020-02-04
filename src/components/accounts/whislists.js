@@ -12,6 +12,8 @@ import {
 import "./accounts.css";
 import { CartContext } from 'context'
 import RemoveWishlist from 'components/wishlist/removewishlist';
+import { API_URL, CDN_URL } from "config"
+
 // props.setCartFilters({ skuId: data[0].skuId, qty: 1, price: data[0].offerPrice })
 const Wishlists = (props) => {
     const { setCartFilters } = React.useContext(CartContext);
@@ -37,6 +39,24 @@ class Component extends React.Component {
     //     this.props.setCartFilters({ skuId: wishlistdata.nodes[0].skuId, qty: 1, price: datas.markupPrice })
     //     // return datas
     // }
+    check_img = (imges) => {
+        var image_urls;
+        const width = window.innerWidth;
+        var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
+        var resolution = 500
+        if(imges&&imges.length>0){
+            var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`
+            var url_split = imges && imges.split('/')
+            var extension_split = url_split && url_split[url_split.length - 1]
+            var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type && browser_type.browser_type}`)
+            url_split[url_split && url_split.length - 1] = browser_type_append
+            url_split.splice(2, 0, _resolutions);
+            var url_construct = url_split.join().replace(/\,/g, '/')
+            image_urls = `${CDN_URL}${url_construct}`
+            return image_urls
+        }
+     
+    }
     render() {
         const { wishlistdata } = this.props.wishlistdata;
         return (
@@ -61,7 +81,7 @@ class Component extends React.Component {
                                     </Grid>
                                     <Grid item xs={5} sm={3} lg={3}>
                                         <div className="wishlist_img" >
-                                            <img className="viewport-img" src={`https://assets.stylori.net/base_images/${first_map.productListByProductId.productImagesByProductId.nodes[0].imageUrl}`
+                                            <img className="viewport-img" src={this.check_img(first_map.productListByProductId.productImagesByProductId.nodes[0].imageUrl)
                                             } />
                                         </div></Grid>
                                     <Grid item xs={12} sm={5} lg={5}
@@ -99,7 +119,7 @@ class Component extends React.Component {
                                 </Grid>
                                 {/* )}  */}
                             </>
-                        )}</> : <div style={{ textAlign: "center", color: "#394578" }}>Nothing added your Wishlists</div>}
+                        )}</> : <div style={{ textAlign: "center", color: "#394578" }}>No wishlist yet</div>}
 
 
 

@@ -67,7 +67,7 @@ class Component extends React.Component {
     handleChange = (event) => {
 
         if (this.props.offset > 0) this.props.setOffset(0)
-        console.log(this.props.offset)
+        // console.log(this.props.offset)
         this.props.setSort({ values: event.target.value })
         this.setState({ expanded: false })
         window.scrollTo(0, 0);

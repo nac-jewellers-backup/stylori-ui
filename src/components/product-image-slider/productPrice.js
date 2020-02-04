@@ -34,7 +34,7 @@ const mobilecarousel = (props, val) => {
         <div>
             <Grid container spacing={12} xs={12}>
                 <Grid container item xs={6}>
-                    <div className="css-ts7n45 e5toz5w4"><span style={{ color: "#fff" }} className="e195g4sk5 css-5pjie5 ekntgft2">{val.offerDiscount}</span><br />
+                    <div className="css-ts7n45 e5toz5w4"><span style={{ color: "#fff" }} className="e195g4sk5 css-5pjie5 ekntgft2">{val ? val.offerDiscount : null}</span><br />
                         {data[0].ProductContactNum[0].isReadyToShip === true ? <div className="css-ts7n45-redy_toship one-day-ship-mb"></div> : ""}
                     </div>
                 </Grid>
@@ -44,7 +44,7 @@ const mobilecarousel = (props, val) => {
                 </Grid>
             </Grid>
             {/* <div style={{background:"red"}}>Earrings in 18K Yellow Gold and Peridot for Kids</div> */}
-            <Slideshow class='responseve-carousel testingcur' imgClass='responseve-carousel-img'
+            <Slideshow className='responseve-carousel testingcur' imgClass='responseve-carousel-img'
                 fadeImages={data[0].fadeImages.arrOfurls} dataCarousel={dataCarousel} />
         </div>
     );
@@ -133,7 +133,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                         )}
                                                     </div>
                                                 </Grid>
-                                                <Grid container item xs={4} >
+                                                <Grid container item xs={4} alignContent="center" alignItems="center">
                                                     <Hidden mdUp>
                                                         <div className={classes.width} style={{ padding: "0px 10px  0px 10px " }}>
                                                             <Pricing
@@ -168,7 +168,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                 <Grid item xs={12} lg={3} md={3} style={{
                                     display: "flex",
                                     lineHeight: "20px",
-                                    justifyContent:"flex-end"
+                                    justifyContent: "flex-end"
                                 }}>
                                     <Hidden smDown>
                                         <div className="starts product-icons" style={{ fontFamily: "fontawesome" }} >
@@ -201,7 +201,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                                         <a class="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
                                                             <img class="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
                                                         </a>&nbsp;
-                                            <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
+                                            <a className="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
                                                             <img class="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
                                                         </a>&nbsp;
                                             {/* <a class="google" target="_blank">

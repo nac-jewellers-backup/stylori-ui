@@ -62,7 +62,7 @@ const styles = theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    top: '153px'
+    // top: '153px'
 
   },
   drawerHeader: {
@@ -254,7 +254,7 @@ class PersistentDrawerLeft extends React.Component {
                           </Grid>
                         </Grid>
                       </div>
-                      {filterdatas.filter.map(row => (
+                      {filterdatas&&filterdatas.filter.map(row => (
                         <>
                           {/* button */}  <ListItem key={row} className=""
                             onClick={() => this.selectItem(row)}>
@@ -323,7 +323,7 @@ class PersistentDrawerLeft extends React.Component {
             <Grid container spacing={2} xs={12} className="p" style={{ overflow: 'auto' }}>
               <Grid item xs={6} style={{ display: openMobile ? 'none' : 'block', backgroundColor: "#F2F2F2" }}>
                 <List className="mbl-filter-list">
-                  {filterdatas.filter.map(row => (
+                  {filterdatas&&filterdatas.filter.map(row => (
                     <ListItem key={row} className=""
                       onClick={() => this.filterValue(row)}>
                       <ListItemText
@@ -341,7 +341,7 @@ class PersistentDrawerLeft extends React.Component {
               {
                 this.state.filtercheck !== '' &&
                 <Grid item xs={6} style={{ display: openMobile ? 'none' : 'block', height: "575px", overflow: 'auto' }}>
-                  {filterdatas.filter1[this.state.filtercheck].map(row => (
+                  {filterdatas&&filterdatas.filter1[this.state.filtercheck].map(row => (
                     <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
                       <Checkbox
                         value="checked"
@@ -368,7 +368,7 @@ class PersistentDrawerLeft extends React.Component {
               <Toolbar >
                 <IconButton onClick={this.handleDrawerOpenMobile}>
                   <Typography variant=""
-                    className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-filter"
+                    className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' className="fa fa-filter"
 
                     ></i> &nbsp;
                     Filter
@@ -379,7 +379,7 @@ class PersistentDrawerLeft extends React.Component {
 
                 <IconButton edge="end" color="inherit" onClick={() => this.setState({ CardRadio: !this.state.CardRadio })} >
                   <Typography variant=""
-                    className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' class="fa fa-sort"></i>&nbsp;
+                    className={`filter-mbl-font ${classes.colorMain}`}><i className='filter-icon' className="fa fa-sort"></i>&nbsp;
                     Sort
                     </Typography>
                 </IconButton>

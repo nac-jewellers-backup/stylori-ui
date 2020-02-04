@@ -303,7 +303,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                 price: PD.discountPrice,
                 offerPrice: PD.markupPrice,
                 save: '5999.9',
-                offerDiscount: '25% FLAT OFF',
+                offerDiscount: '25% OFF',
                 dis: PD && PD !== undefined && PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription !== '' ? PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription : '',
                 productType: PD.productListByProductId.productType && PD.productListByProductId.productType,
                 fadeImages: PD.productListByProductId.productImagesByProductId.nodes &&
@@ -635,7 +635,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
             }
         }
         catch (e) {
-            console.log("product detail page error", "-----", e)
+            // console.log("product detail page error", "-----", e)
         }
 
         return _d

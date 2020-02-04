@@ -27,14 +27,14 @@ body {
 
 .containbev {
     box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-    padding: 5px 8px 0px 8px;
+    padding: 5px 8px 5px 8px;
     margin: 4px 0px 10px 0px;
 }
 
 @media only screen and (min-width: 959px) {
     .containbev {
         box-shadow: none !important;
-        padding: 5px 8px 0px 8px;
+        padding: 5px 8px 5px 8px;
         margin: 4px 0px 4px 0px;
     }
 }
@@ -752,6 +752,7 @@ body {
 }
 
 .overlayCss {
+    /* z-index: 999 !important; */
     line-height: 20px !important;
     font-size: 12px !important;
     text-transform: uppercase;
@@ -779,6 +780,35 @@ body {
     right: -10px !important;
 }
 
+.overlayCss11 {
+    z-index: 999 !important;
+    line-height: 20px !important;
+    font-size: 12px !important;
+    text-transform: uppercase;
+    padding: 0px 8px !important;
+    background: #ed1165 !important;
+    text-transform: uppercase;
+    display: inline-block !important;
+    position: absolute;
+    pointer-events: none !important;
+    height: 20px !important;
+    margin-top: 8px;
+
+}
+
+.overlayCss11::after {
+
+    content: "" !important;
+    height: 0px;
+    width: 0px;
+    border-style: solid !important;
+    border-width: 10px !important;
+    border-color: #ed1165 transparent !important;
+    position: absolute !important;
+    top: 0px;
+    right: -10px !important;
+}
+
 .imagezoom-cursor {
     border: 1px solid #ccc !important;
 }
@@ -794,6 +824,39 @@ body {
     box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important;
 }
 
+.ribbon_dic {
+    z-index: 999 !important;
+    background: #ed1165 !important;
+    height: 50px !important;
+    width: 30px !important;
+    position: absolute !important;
+    text-align: center !important;
+      line-height: 20px !important;
+    font-size: 12px !important;
+/*     font: 600 16px sans-serif; */
+    color: white !important;
+    border: 0 !important;
+}
+.ribbon_dic:after {
+    z-index: 999 !important;
+    content: "" !important;
+    position: absolute !important;
+    bottom: -18px !important;
+    left: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    border: solid 15px #ed1165 !important;
+    border-bottom-color: transparent !important;
+}
+.ribbon_dic:hover {
+    z-index: 999 !important;
+    background: #ed1165 !important;
+}
+.ribbon_dic:hover:after {
+    z-index: 999 !important;
+    border-color: #ed1165 !important;
+    border-bottom-color: transparent !important;
+}
 
 #flashlight {
     position: absolute;
@@ -818,8 +881,9 @@ body {
 
 .modalin-ring {}
 
-.one-day-ship {
-    width: 152px !important;
+.one-day-ship_ {
+    z-index: 999 !important;
+    width: 152px !important; 
     height: 9% !important;
     background-image: url(https://assets.stylori.com/images/static/product-details-icons.png);
     /* margin-top: -30px !important; */
@@ -827,7 +891,7 @@ body {
     background-repeat: no-repeat !important;
     margin-left: 0px;
     cursor: pointer !important;
-    margin-left: -2% !important;
+    margin-left: -36.1px !important;
 }
 
 .overly-img {
@@ -1071,7 +1135,7 @@ body {
     bottom: 0 !important;
     top: auto !important;
     width: 100% !important;
-    box-shadow: -3px 0px 10px#e9e9e9 !important;
+    /* box-shadow: -3px 0px 10px#e9e9e9 !important; */
 }
 
 .fixed-grid {
@@ -1262,6 +1326,11 @@ body {
 
 .widthFix {
     width: 89%;
+}
+
+.widthFix div div div div {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
 }
 
 .sizeChange {

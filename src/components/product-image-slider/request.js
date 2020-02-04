@@ -117,11 +117,10 @@ class Request extends React.Component {
                 .then(this.status)
                 .then(this.json)
                 .then((data) => {
-                    console.log('Success:', data.message);
                     this.setState((state) => ({ names: "", mailId: "", mobileNo: "", request: "", messageData: data.message, open: true }))
                 })
                 .catch((error) => {
-                    console.log('Error:', error);
+                    // console.log('Error:', error);
                 });
         }
     }
@@ -224,7 +223,7 @@ class Request extends React.Component {
                                 classNameCloseIcon={'closeIcon'}
                                 classNames={"snackBar"} message={this.state.messageData} open={this.state.open} />
                             <Grid container>
-                                <Grid xs={12} >
+                                <Grid xs={12} lg={12} >
                                     <Button onClick={(e) => this.handleSubmit(e)} className={`requset-button ${classes.fontwhite} ${classes.normalcolorback}`}>
                                         Submit
                             </Button>
@@ -253,7 +252,7 @@ class Request extends React.Component {
 
                 <Hidden mdUp>
                     <Container>
-                        <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 5px" }} expanded={expanded === 'panel3'} onChange={this.handle('panel3')}>
+                        <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 10px", marginBottom: "0px" }} expanded={expanded === 'panel3'} onChange={this.handle('panel3')}>
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
                                 id="panel1a-header"

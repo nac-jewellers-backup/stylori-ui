@@ -524,7 +524,7 @@
 
 .slickdev li.slick-active {
   background-color: #ed1564 !important;
-  box-shadow: 0px 4px 5px #888888 !important;
+  /* box-shadow: 0px 4px 5px #888888 !important; */
   border: 0px solid #ed1564;
   border-radius: 100%;
   width: 11px;
@@ -599,7 +599,7 @@
   .slickdev li.slick-active {
     background-color: #394578 !important;
     border: 1px solid #e6efdd;
-    box-shadow: 0px 4px 5px #888888 !important;
+    /* box-shadow: 0px 4px 5px #888888 !important; */
     border-radius: 100%;
     width: 7px;
     height: 7px;

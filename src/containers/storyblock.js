@@ -8,9 +8,9 @@ import "index.css";
 import Slideshow from "../components/Carousel/carosul";
 import { homePageStylori } from "./dummydatahome";
 import MediaCard from '../components/storyTemplate/educationcard';
-import { withStyles } from '@material-ui/core/styles';
+// import { withStyles } from '@material-ui/core/styles';
 import SocialLinkFrame from '../components/storyTemplate/socialLinkFrame';
-import Pagination from '../components/storyTemplate/pagination';
+// import Pagination from '../components/storyTemplate/pagination';
 // const styles = (theme)=>({
 //   flexContainer:{
 // display:"flex",
@@ -19,13 +19,13 @@ import Pagination from '../components/storyTemplate/pagination';
 // })
 
 class StoryBlock extends React.Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-  }
+  // }
 
   render() {
-    const { classes } = this.props;
+    // const { classes } = this.props;
     return (
       <Grid container>
 
@@ -67,7 +67,7 @@ class StoryBlock extends React.Component {
           <Grid item xs={12} sm={12} md={8}>
             <MediaCard />
           </Grid>
-          <Grid item style={{ width: "100%" }} item xs={"hidden"} sm={"hidden"} md={4}>
+          <Grid item style={{ width: "100%" }}  xs={"hidden"} sm={"hidden"} md={4}>
             <Hidden smDown>
               <SocialLinkFrame />
             </Hidden>

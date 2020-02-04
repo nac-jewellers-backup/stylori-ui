@@ -15,12 +15,22 @@
 .fil-submenu-icons {
   fill: blue !important;
   padding: 0 9px;
-}
+} 
 
 .fil-drawer-arrow {
   fill: rgba(0, 0, 0, 0.25) !important;
 }
-
+.filter_page_layout{
+  /* justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: auto;
+  max-height: 100vh;
+  overflow-y: auto !important;
+  background-size: 150% 150%;
+  top: 0;
+  background-color: #fff; */
+}
 .fil-list-items {
   padding: 0px 0 0px 6px !important;
   letter-spacing: 0.01071em;

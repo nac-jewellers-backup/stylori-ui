@@ -29,7 +29,10 @@ const useStyles = makeStyles(theme => ({
         color: "#394578",
         fontSize: "17px",
         margin: "10px 0px 20px 0px",
-        fontWeight: 600
+        fontWeight: 600,
+        [theme.breakpoints.down('md')]: {
+            margin: "24px 0px 20px 0px",
+        }
     },
     Subtitle3: {
         color: "#394578",
@@ -45,7 +48,8 @@ const useStyles = makeStyles(theme => ({
     },
     smallSizeTypo: {
         color: "#666",
-        fontSize: "12px",
+        fontSize: "13px",
+        lineHeight: "19px"
     },
     maginBottomOnly: {
         marginBottom: "15px"
@@ -64,8 +68,15 @@ const useStyles = makeStyles(theme => ({
         width: "100%",
     },
     smallSizeTypoblue: {
-        fontSize: "13px",
+        fontSize: "14px",
         color: "#394578",
+        lineHeight: "19px"
+    },
+    midconatiner:{
+        justifyContent:"center",
+        [theme.breakpoints.down('md')]: {
+            justifyContent:"flex-start"
+        }
     }
 }));
 
@@ -134,11 +145,10 @@ export default function CustomizedInputs() {
                 <Grid container>
                     <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
                         <Typography variant="h4" className={classes.Subtitle}>
-                            Email Us
+                            Email us
                         </Typography>
                         <Grid item xs={12} sm={12} md={10} lg={10} xl={10}>
                             <Input
-                                // className={classes.textFeild}
                                 margin="normal"
                                 variant="outlined"
                                 autoComplete='off'
@@ -150,7 +160,6 @@ export default function CustomizedInputs() {
                             />
                             <label className='errtext'> {values.errorName && values.errorName}</label>
                             <Input
-                                // className={classes.textFeild}
                                 margin="normal"
                                 variant="outlined"
                                 type="email"
@@ -163,7 +172,6 @@ export default function CustomizedInputs() {
                             />
                             <label className='errtext'> {values.emailError && values.emailError}</label>
                             <Input
-                                // className={classes.textFeild}
                                 margin="normal"
                                 variant="outlined"
                                 type="number"
@@ -201,16 +209,19 @@ export default function CustomizedInputs() {
                             classNameCloseIcon={'closeIcon'}
                             classNames={"snackBar"} message={ntxdata.message} open={values.open} />
                     </Grid>
-                    <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
-                        <Typography variant="h4" className={classes.Subtitle2}>
-                            Office Address
+                    <Grid container item xs={12} sm={12} md={12} lg={4} xl={4} className={classes.midconatiner}>
+                        <Grid item>
+                            <Typography variant="h4" className={classes.Subtitle2}>
+                                Office Address
                         </Typography>
-                        <p class={classes.smallSizeTypo}>
-                            Old No.26/New No.45,
-				<br />KB Dasan Road,Teynampet,  <br />Chennai-600018.
-			      </p>
+                            <p class={classes.smallSizeTypo}>
+                                Old No.26/New No.45,
+				        <br />KB Dasan Road,Teynampet,  <br />Chennai-600018.
+			            </p>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
+                    <Grid container item xs={12} sm={12} md={12} lg={4} xl={4} className={classes.midconatiner}>
+                    <Grid item>
                         <Typography variant="h4" className={classes.Subtitle}>
                             We're Here To Help?
                         </Typography>
@@ -223,6 +234,7 @@ export default function CustomizedInputs() {
                         <p class={classes.smallSizeTypo}>
                             Monday to Saturday 10 A.M to 7 P.M IST
 			      </p>
+                    </Grid>
                     </Grid>
                 </Grid>
                 <Grid container>

@@ -53,15 +53,28 @@ class Accounts extends React.Component {
 }
 const Components = props => {
 
-    let { CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
+    let { CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata, NewUser } } = React.useContext(CartContext);
+    
+    
     let content, mapped;
+    let _data = {}
+  
+    if(Object.keys(NewUser).length === 0){
+        _data = data
+
+    }
+    else{
+        _data = NewUser
+        mapped = cart(_data);
+    }
     if (!loading && !error) {
-        if (Object.keys(data).length !== 0) {
-            mapped = cart(data);
+        if (Object.keys(_data).length !== 0) {
+            mapped = cart(_data);
         }
     }
     
-    if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
+    
+    if (Object.keys(_data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
     else content = <Accounts {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
     // localStorage.setItem("a__w_l", wishlistdata && wishlistdata.length)
     return content

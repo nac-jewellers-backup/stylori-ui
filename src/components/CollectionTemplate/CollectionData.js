@@ -57,7 +57,8 @@ const ImageUrl = (image) => {
 const Product_price = (price) => {
   // price && price.map(val => {
   //   if (val !== undefined && val !== null) {
-  return Math.round(price.markupPrice)
+  return  new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price.markupPrice))
+  // Math.round(price.markupPrice)
   //   }
   // })
 }
@@ -184,8 +185,8 @@ export default function (data) {
   }
   // "jewellery-butterfly" === Product_url_chk() ? true :
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
-    var CarouselData_primary = []
-    mapperdata && mapperdata.map((second_data, index__) => {
+  var CarouselData_primary = []
+  mapperdata && mapperdata.map((second_data, index__) => {
       if ((index_ * 2) === index__) {
         second_data.allProductLists.map(val => {
           CarouselData_primary.push({
@@ -196,7 +197,7 @@ export default function (data) {
             buttonName: "Shop Now"
           })
         })
-        data.allProductLists__primary = [...CarouselData_primary, CarouselData_primary];
+        data.allProductLists__primary = CarouselData_primary;
         // alert(JSON.stringify(CarouselData_primary))
       }
       return second_data;
@@ -231,8 +232,8 @@ export default function (data) {
   //   return data;
   // })
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
-    var CarouselData_secondary_ = []
-    mapperdata && mapperdata.map((second_data, index__) => {
+  var CarouselData_secondary_ = []
+  mapperdata && mapperdata.map((second_data, index__) => {
       if ((index_ * 2) + 1 === index__) {
 
         // alert(JSON.stringify((index_ * 2) + 1 === index__))
@@ -246,7 +247,7 @@ export default function (data) {
           })
           return val;
         })
-        data.allProductLists__secondary = [...CarouselData_secondary_, CarouselData_secondary_];
+        data.allProductLists__secondary = CarouselData_secondary_;
 
       }
       return second_data;

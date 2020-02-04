@@ -24,7 +24,6 @@ export default class Stylori extends Component {
     //   fade: true,
     //   arrows: false
     // }
-    // console.log(this.props)
     return (
       <FilterOptionsProvider >
           <CartProvider>

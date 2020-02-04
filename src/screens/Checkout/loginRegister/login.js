@@ -51,7 +51,6 @@ const LoginComponent = (props) => {
     // // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
     // var prof = data && data.message
     // // alert(JSON.stringify(data))
-    // console.log('valuesvaluesvalues', values)
     const clear = () => {
         setValues({
             password: "",
@@ -244,7 +243,7 @@ const LoginComponent = (props) => {
                     </h5>
                     <Input
                         margin="normal"
-                        variant="outlined"
+                        // variant="outlined"
                         // type="email"
                         name="email"
                         value={values.email}
@@ -256,7 +255,7 @@ const LoginComponent = (props) => {
                     <label className='errtext'> {values.error.emerr && values.errortext.emerr}</label>
                     <Input
                         margin="normal"
-                        variant="outlined"
+                        // variant="outlined"
                         type="password"
                         name="password"
                         value={values.password}

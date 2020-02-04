@@ -92,7 +92,6 @@ const useRating = (props) => {
             let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
             let mapUrlParamsSplitEqual = urlSplitparamsEqual();
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
-            // console.log('starsSelectedstarsSelected',props.starsSelected)
             mapUrlParamsSplitEqual.map(val => {
                 values['product_sku'] = val[1]
                 if (val[1].length > 0) {
@@ -148,7 +147,6 @@ const useRating = (props) => {
                     let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
                     let mapUrlParamsSplitEqual = urlSplitparamsEqual();
                     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
-                    // console.log('starsSelectedstarsSelected',props.starsSelected)
                     mapUrlParamsSplitEqual.map(val => {
                         values['product_sku'] = val[1]
                         if (val[1].length > 0) {

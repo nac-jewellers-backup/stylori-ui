@@ -29,9 +29,8 @@ function FaqsBlock(props) {
         },
         "data": [
             {
-                img: "https://alpha-assets.stylori.com/images/static/stylori_contact_us.png",
+                img: "https://assets.stylori.com/images/static/stylori_contact_us.png",
             },
-
         ]
     }
 

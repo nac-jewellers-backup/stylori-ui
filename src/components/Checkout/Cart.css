@@ -230,6 +230,7 @@
     }
 
     .chckout-page-buynow {
+        background: #f36e23 !important;
         border: 1px solid #f36e23 !important;
         color: #FFF !important;
         font-size: 17px;

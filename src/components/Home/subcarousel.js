@@ -105,7 +105,7 @@ class SubCarousel extends React.Component {
                                             </Paper>
 
                                             <Grid container spacing={12} >
-                                                <Grid xs={4}>
+                                                <Grid xs={4} lg={4}>
                                                     <Card className="sub-scrl-card">
                                                         <img src={step.imgPath} alt=""/>
                                                     </Card>
@@ -113,7 +113,7 @@ class SubCarousel extends React.Component {
                                                     <Typography className="contents">$ 8989.8978</Typography>
                                                     <Button className="sub-button">Shop Now</Button>
                                                 </Grid>
-                                                <Grid xs={8} style={{ color: "#666666", fontSize: "14px", lineHeight: "2.428571" }}>
+                                                <Grid xs={8}  lg={8} style={{ color: "#666666", fontSize: "14px", lineHeight: "2.428571" }}>
                                                     <b>
                                                         <img style={{ height: "57px" }} src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMTYiIGhlaWdodD0iMTYiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGc+PHBhdGggZD0iTTUuMzc1LDE0NS4xMjV2LTY3LjcyNWMwLC0yOC45MTc1IDIwLjczMDMsLTUwLjAwMjU1IDQ5LjQ1LC01MC41MTQyNXYxNS4yOTcyNWMtMTkuMDM2MSw1LjQ5NTQgLTIxLjUsMjEuNjcyIC0yMS41LDM1LjIxN3YxLjA3NWgzOC43djY2LjY1eiIgZmlsbD0iI2NjY2NjYyI+PC9wYXRoPjxwYXRoIGQ9Ik01My43NSwyNy45ODg3djEzLjM5MjM1Yy0xOS4wMTI0NSw1Ljg5NzQ1IC0yMS41LDIyLjI3ODMgLTIxLjUsMzYuMDE4OTV2Mi4xNWgyLjE1aDM2LjU1djY0LjVoLTY0LjV2LTY2LjY1YzAsLTEzLjk3NSA0LjkzMjEsLTI2LjYwNDEgMTMuODg5LC0zNS41NjFjOC40OTY4LC04LjQ5NDY1IDIwLjI5NiwtMTMuMzY4NyAzMy40MTEsLTEzLjg1MDNNNTUuOSwyNS44Yy0zMC4wODA2NSwwIC01MS42LDIxLjUxOTM1IC01MS42LDUxLjZ2NjguOGg2OC44di02OC44aC0zOC43YzAsLTE1LjA0MTQgMy4yNjM3LC0yOS41MzY3IDIxLjUsLTM0LjR2LTE3LjJ6IiBmaWxsPSIjZmZmZmZmIj48L3BhdGg+PGc+PHBhdGggZD0iTTk5Ljk3NSwxNDUuMTI1di02Ny43MjVjMCwtMjguOTE3NSAyMC43MzAzLC01MC4wMDI1NSA0OS40NSwtNTAuNTE0MjV2MTUuMjk3MjVjLTE5LjAzNjEsNS40OTU0IC0yMS41LDIxLjY3MiAtMjEuNSwzNS4yMTd2MS4wNzVoMzguN3Y2Ni42NXoiIGZpbGw9IiNjY2NjY2MiPjwvcGF0aD48cGF0aCBkPSJNMTQ4LjM1LDI3Ljk4ODd2MTMuMzkyMzVjLTE5LjAxMjQ1LDUuODk3NDUgLTIxLjUsMjIuMjc4MyAtMjEuNSwzNi4wMTg5NXYyLjE1aDIuMTVoMzYuNTV2NjQuNWgtNjQuNXYtNjYuNjVjMCwtMTMuOTc1IDQuOTMyMSwtMjYuNjA0MSAxMy44ODksLTM1LjU2MWM4LjQ5NjgsLTguNDk0NjUgMjAuMjk2LC0xMy4zNjg3IDMzLjQxMSwtMTMuODUwM00xNTAuNSwyNS44Yy0zMC4wODA2NSwwIC01MS42LDIxLjUxOTM1IC01MS42LDUxLjZ2NjguOGg2OC44di02OC44aC0zOC43YzAsLTE1LjA0MTQgMy4yNjM3LC0yOS41MzY3IDIxLjUsLTM0LjR2LTE3LjJ6IiBmaWxsPSIjZmZmZmZmIj48L3BhdGg+PC9nPjwvZz48L2c+PC9zdmc+"
                                                          alt=""

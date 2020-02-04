@@ -62,7 +62,6 @@ class Request extends React.Component {
 
         }
         this.setState({ errors, [name]: value }, () => {
-            // console.log(errors)
         })
     }
     handleError = (e) => {
@@ -91,7 +90,7 @@ class Request extends React.Component {
     Requestform = (errors, handleError, errorMessage, handleChange) => {
         const { classes } = this.props;
         return (
-            <div style={{display:'flex',justifyContent:"center"}}>
+            <div style={{ display: 'flex', justifyContent: "center" }}>
                 <div className='overall-boxz' style={{}}>
                     <form onSubmit={(e) => this.handleSubmit(e)}>
                         <div className='overall-bo'>
@@ -163,7 +162,7 @@ class Request extends React.Component {
 
                             </Grid>
                             <Grid container>
-                                <Grid xs={12} >
+                                <Grid xs={12} lg={12} >
                                     <Button type="submit" className={`requset-button ${classes.fontwhite} ${classes.normalcolorback}`}>
                                         Send
                             </Button>
@@ -195,7 +194,7 @@ class Request extends React.Component {
 
                 <Hidden mdUp>
                     <Container>
-                        <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 5px" }} expanded={expanded === 'panel3'} onChange={this.handle('panel3')}>
+                        <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 10px", marginBottom: "0px" }} expanded={expanded === 'panel3'} onChange={this.handle('panel3')}>
                             <ExpansionPanelSummary expandIcon={<span className='side-arrow-symbol'>
                                 <i class="fa fa-sort-up" ></i></span>}
                             >

@@ -40,7 +40,6 @@ class Component extends React.Component {
       openMobile: true,
       CardRadio: false,
       checked: {
-
         Offers: {}, Availability: {}, ProductType: {}, Style: {}, Material: {}, Theme: {}, Collection: {}, MetalColor: {}, MetalPurity: {}, Occasion: {},
         NoOfStones: {}, Gender: {}, StoneColor: {}, StoneShape: {}, category: {}
       },
@@ -62,7 +61,6 @@ class Component extends React.Component {
   }
   componentDidMount() {
     var { checked, chipData, numOne, numTwo, selected } = this.state
-    console.log('price_props', typeof this.props.data[0].subFilter['Price Range'])
     var price_min = Number(this.props.data[0].subFilter['Price Range'].min);
     var price_max = Number(this.props.data[0].subFilter['Price Range'].max);
     var _price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_min));
@@ -138,7 +136,6 @@ class Component extends React.Component {
           .then(status)
           .then(json)
           .then(async function (data) {
-            console.log('Request succeeded with JSON response', data);
             // alert(data)
             // var {checked} = this.state
             //    data.data.allSeoUrlPriorities.nodes.map(val => {
@@ -153,10 +150,17 @@ class Component extends React.Component {
             //     // this.handleChange(()=>{}, true, ()=>{}, {}, paramsfilter)
 
             // })
+
             paramsfilter = data && data.data && data.data.allSeoUrlPriorities && data.data.allSeoUrlPriorities.nodes && data.data.allSeoUrlPriorities.nodes.map(val => {
               var attrName = val.attributeName.replace(/\s/g, '')
               var attrVal = val.attributeValue
-
+              if (attrName === "Category") {
+                if (attrVal === "goldcoins") {
+                  a['ProductType'] = { 'Gold Coins': true }
+                  a['Material'] = { 'Gold': true }
+                  a['MetalColor'] = { 'Yellow': true }
+                }
+              }
               a[attrName] = { [attrVal]: true }
               // checked[attrName] = a
               // alert(JSON.stringify(attrName))
@@ -174,11 +178,11 @@ class Component extends React.Component {
                 var a = values && Object.keys(values)
                 if (keys === "ProductType") {
                   selected.push("Product Type", keys)
-                }if (keys === "MetalPurity") {
+                } if (keys === "MetalPurity") {
                   selected.push("Metal Purity", keys)
-                }if (keys === "MetalColor") {
+                } if (keys === "MetalColor") {
                   selected.push("Metal Color", keys)
-                }if (keys === "NoOfStones") {
+                } if (keys === "NoOfStones") {
                   selected.push("No Of Stones", keys)
                 } if (keys === "StoneColor") {
                   selected.push("Stone Color", keys)
@@ -200,7 +204,6 @@ class Component extends React.Component {
             // this.setState(checked)
             this.setState(chipData, selected, checked)
           }).catch(function (error) {
-            console.log('Request failed', error);
           });
       }
 
@@ -216,14 +219,11 @@ class Component extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     // Typical usage (don't forget to compare props):
-    console.log(this.props, 'filters')
     if (this.state.checked !== prevState.checked) {
       // this.myRef.scrollTop()
       window.scrollTo(0, this.myRef.scrollTop)
     }
     if (this.props.data[0].subFilter['Price Range'] !== prevProps.data[0].subFilter['Price Range']) {
-
-      console.log('price_props', typeof this.props.data[0].subFilter['Price Range'], this.props.data[0].subFilter['Price Range'].length, this.props.data[0].subFilter['Price Range'][0] !== undefined, Number(this.props.data[0].subFilter['Price Range'].max))
       var numberOne = this.props.data[0].subFilter['Price Range'][0] ? this.props.data[0].subFilter['Price Range'][0].min : 0;
       var numberTwo = this.props.data[0].subFilter['Price Range'][0] ? this.props.data[0].subFilter['Price Range'][0].max : 0;
       var numOne = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(numberOne));
@@ -263,7 +263,9 @@ class Component extends React.Component {
     }
     return bz
   })
+
   handleChange(value, BoolName, e, title, TargetName) {
+    // window.scrollTo(0,2)
     let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
@@ -305,7 +307,6 @@ class Component extends React.Component {
       let paramsMapUrlSetState = () => TargetName.map(val => {
         var nameFilter = val[0]
         var keyNameFilter = val[1]
-        console.log('val', TargetName)
         let checkedvalue = {};
         checkedvalue[keyNameFilter] = true
         checked[nameFilter] = checkedvalue
@@ -317,7 +318,6 @@ class Component extends React.Component {
         }, () => this.props.setFilters(checked))
       }
       )
-      console.log('val', TargetName)
       paramsMapUrlSetState()
     }
     let arr = [];
@@ -353,33 +353,71 @@ class Component extends React.Component {
   }
 
   handleDelete = (value) => {
-
-    let arr = [], arr1 = [];
+    debugger
     let { chipData, checked } = this.state
-    arr = chipData.filter(val => val.label !== value);
-    if (checked) {
-      arr1 = this.delete_val_chips(value).filter(val => {
-        var dlt;
-        if (val !== undefined && val !== null) {
-          dlt = Object.values(val) === -1
+    Object.entries(checked).map(val => {
+      if (val && val[0] === "Category") {
+        if (val && val[1] && val[1].goldcoins === true) {
+          if (value === "Gold Coins") {
+            return false
+          }
+          if (value === "Gold") {
+            return false
+          }
+          if (value === "Yellow") {
+            return false
+          }
+          let arr = [], arr1 = [];
+          arr = chipData.filter(val => val.label !== value);
+          if (checked) {
+            arr1 = this.delete_val_chips(value).filter(val => {
+              var dlt; 
+              if (val !== undefined && val !== null) {
+                dlt = Object.values(val) === -1
+              } 
+              return dlt;
+            })
+            chipData = arr1;
+          }
+          chipData = arr;
+          this.setState({
+            chipData,
+            checked
+          })
+          this.forceUpdate()
+          this.props.setFilters(checked)
+          return false
+        }else{
+          let arr = [], arr1 = [];
+          arr = chipData.filter(val => val.label !== value);
+          if (checked) {
+            arr1 = this.delete_val_chips(value).filter(val => {
+              var dlt; 
+              if (val !== undefined && val !== null) {
+                dlt = Object.values(val) === -1
+              }
+              return dlt;
+            })
+            chipData = arr1;
+          }
+          chipData = arr;
+          this.setState({
+            chipData,
+            checked
+          })
+          this.forceUpdate()
+          this.props.setFilters(checked)
         }
-        return dlt;
-      })
-      chipData = arr1;
-    }
-    chipData = arr;
-    this.setState({
-      chipData,
-      checked
+      }
     })
 
-    this.forceUpdate()
-    this.props.setFilters(checked)
+
+ 
+
     // var bb = {}
     // bb["delete_fil"] = "12345"
     // this.props && this.props.setdelete_fil && this.props.setdelete_fil(bb)
 
-    // console.log("valssss",chipData,checked)
     // alert(JSON.stringify(data))
     // this.setState(state => {
     //   const chipData = [...state.chipData];
@@ -390,6 +428,28 @@ class Component extends React.Component {
 
   };
 
+  check_goldCoins = (values_) => {
+    debugger
+    const Category = this.state.checked
+    var valus;
+    Object.entries(Category).map(val => {
+      if (val && val[0] === "Category") {
+        if (val && val[1] && val[1].goldcoins === true) {
+          if (values_ === "Gold Coins") {
+            return valus = true
+          }
+          if (values_ === "Gold") {
+            return valus = true
+          }
+          if (values_ === "Yellow") {
+            return valus = true
+          }
+
+        }
+      }
+    })
+    return valus
+  }
   handleDrawerOpen = () => {
     this.setState({ open: true });
     document.documentElement.scrollTop = 180;
@@ -470,7 +530,6 @@ class Component extends React.Component {
     var pricemax = Number(price_max.substr(2).replace(/\,/g, ''))
     this.setState(checked)
     this.setState({ numOne: price_min, numTwo: price_max }, () => { this.props.setPriceMax(pricemax); this.props.setPriceMin(pricemin) })
-    console.log('_checked_checked', checked)
   }
   txtFieldChange(e) {
     if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
@@ -480,7 +539,6 @@ class Component extends React.Component {
   handleChangesort = (event) => {
 
     if (this.props.offset > 0) this.props.setOffset(0)
-    console.log(this.props.offset)
     this.props.setSort({ values: event.target.value })
 
     this.setState({ CardRadio: false })
@@ -497,8 +555,7 @@ class Component extends React.Component {
   // })
 
   render() {
-    console.log('urlSplitparl', this.props.data)
-
+    const found = window.location.pathname.split(/-/g).find(element => element === "/goldcoins" || element === "goldcoins");
     const { classes, data, loading } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];
 
@@ -510,6 +567,7 @@ class Component extends React.Component {
     //   );
     // })
     // alert(JSON.stringify(this.state.selected))
+
 
     return (
       <>
@@ -529,13 +587,13 @@ class Component extends React.Component {
                 <div >
 
                   <Paper
-                    className={classes.drawer}
+                    className={`${classes.drawer} ${classes.drawerPaper}`}
                     variant="persistent"
                     anchor="left"
                     open={open}
-                    classes={{
-                      paper: classes.drawerPaper,
-                    }}
+                    // classes={{
+                    //   paper: classes.drawerPaper,
+                    // }}
                   >
                     <Divider />
                     <List className="fil-main-list">
@@ -572,7 +630,6 @@ class Component extends React.Component {
                         </Grid>
                       </div>
                       {/* filter */}
-                      {/* {console.log(filter)} */}
                       <div>
                         {
                           <>
@@ -584,7 +641,7 @@ class Component extends React.Component {
                                   <>
                                     {
                                       subFilter[row].length > 0 ?
-                                        <>{window.location.pathname === "/goldcoins" ? row === "Offers" ? "" : <ListItem key={row}
+                                        <>{window.location.pathname === "/goldcoins" || found === "goldcoins" || found === "/goldcoins" ? row === "Offers" ? "" : <ListItem key={row}
                                           onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
                                           <ListItemText
                                           >
@@ -604,7 +661,9 @@ class Component extends React.Component {
                                             </ListItemText>
                                             {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
                                               <ExpandMore className="fil-drawer-arrow" />}
-                                          </ListItem>}</>
+                                          </ListItem>
+                                        }
+                                        </>
                                         :
                                         <span></span>
                                     }
@@ -619,20 +678,23 @@ class Component extends React.Component {
                                             subFilter[row].filter((row12, i) =>
                                               (i < (this.state[`li_${row}`] ? this.state[`li_${row}`] : 4))).map(row12 => {
                                                 return (<div style={{ padding: "0 20px" }}>
-
                                                   <ListItem key={row12}  >   {/* button */}
                                                     <FormGroup row>
                                                       {
                                                         row12.constructor === Object ?
+
                                                           <FormControlLabel
                                                             control={
                                                               <Checkbox
+                                                                disabled={
+                                                                  this.check_goldCoins(row12) === true ? true : false}
                                                                 checked={this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] !== undefined ?
                                                                   this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] : false}
                                                                 onChange={(e) => this.handleChange(row12.value, this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12.value] : true, e, row)}
                                                                 className="fil-submenu-icons"
                                                                 value="checked"
-                                                                color="primary"
+                                                                color={"secondary"}
+
                                                                 name={row.replace(/\s/g, "")}
                                                               />
                                                             }
@@ -644,12 +706,15 @@ class Component extends React.Component {
                                                           <FormControlLabel
                                                             control={
                                                               <Checkbox
+                                                                disabled={
+                                                                  this.check_goldCoins(row12) === true ? true : false}
+                                                                // disabled = {handledisabled}
                                                                 checked={this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ?
                                                                   this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] : false}
                                                                 onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e, row)}
                                                                 className="fil-submenu-icons"
                                                                 value="checked"
-                                                                color="primary"
+                                                                color={"secondary"}
                                                                 name={row.replace(/\s/g, "")}
                                                               />
                                                             }
@@ -716,10 +781,10 @@ class Component extends React.Component {
           {
             this.state.productDisplay &&
             <div
-
-              className={check ? classes.productCardscheck : classes.productCardsuncheck}
-
+              // className="filter_page_layout"
+              className={`${check ? `filter_page_layout ${classes.productCardscheck}` : `filter_page_layout ${classes.productCardsuncheck}`}`}
             >
+
               <ProductLayout wishlist={this.props.wishlist} data={this.props.datas} loading={this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
 
             </div>}
@@ -751,7 +816,7 @@ class Component extends React.Component {
                   <List className="mbl-filter-list">
                     {filter && filter.map(row => {
                       return (subFilter[row].length > 0 ?
-                        <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
+                        <>{window.location.pathname === "/goldcoins" || found === "/goldcoins" || found === "goldcoins" ? row === "Offers" ? "" : <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
                           onClick={() => this.filterValue(row)}
                         >
                           <ListItemText
@@ -761,11 +826,20 @@ class Component extends React.Component {
 
                           </ListItemText>
                         </ListItem>
+                          : <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
+                            onClick={() => this.filterValue(row)}
+                          >
+                            <ListItemText
+                              className='filter-mbl-font filter-mbl-fonts'
+                            >
+                              {row && row}
+
+                            </ListItemText>
+                          </ListItem>}</>
                         : '')
                     }
                     )}
                   </List>
-                  {/* {console.info('data-filter', subFilter, this.state.filtercheck)} */}
                 </Grid>
                 {
                   this.state.filtercheck !== '' &&

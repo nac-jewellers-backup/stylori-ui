@@ -26,7 +26,7 @@ class ProductDetails extends React.Component {
             <div>
 
                 <Grid container spacing={12} style={{ paddingRight: "20px" }}>
-                    {data[0].productsDetails.map(valueofproductdetail => {
+                    {data && data.length> 0 && data[0] && data[0].productsDetails && data[0].productsDetails.map(valueofproductdetail => {
 
                         return (valueofproductdetail.namedetail.length === 0) ? false :
                             <>
@@ -41,7 +41,7 @@ class ProductDetails extends React.Component {
                                                         {res.details !== null && res.details.length === 0 ? false :
 
                                                             <Grid container item xs={12} >
-                                                                <Grid xs={4}>
+                                                                <Grid xs={4}  lg={4}>
                                                                     <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
                                                                         <span style={{ fontSize: "12px" }}> {res.name}</span>
                                                                     </ListItemText>
@@ -130,7 +130,7 @@ class ProductDetails extends React.Component {
                                                     <span>
                                                         {
                                                             <> {res.name && <Grid container item xs={12} style={{ padding: "0px 10px 0px 10px " }}>
-                                                                <Grid xs={4}>
+                                                                <Grid xs={4} lg={4}>
                                                                     <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
                                                                         <span style={{ fontSize: "12px" }}> {res.name}</span>
                                                                     </ListItemText>

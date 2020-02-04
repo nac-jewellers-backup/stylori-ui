@@ -8,12 +8,12 @@ import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from "react-router";
 import { Link } from 'react-router-dom'
-import {
-    Checkbox
-} from '@material-ui/core';
-import { API_URL } from '../../config'
+// import {
+//     Checkbox
+// } from '@material-ui/core';
+// import { API_URL } from '../../config'
 import { useNetworkRequest } from '../../hooks/NetworkHooks'
-import { async } from 'q';
+// import { async } from 'q';
 import CommenDialog from '.././Common/Dialogmodel'
 
 
@@ -29,15 +29,18 @@ const LoginComponent = (props) => {
 
     });
     const { classes } = props;
-    const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/forgotpassword', {}, false, {})
+    const {
+        // loading: ntx, 
+        // error: ntxerr,
+        data: ntxdata, makeFetch } = useNetworkRequest('/forgotpassword', {}, false, {})
     const canceldeletechecklist = () => {
         setValues({
             ...values, modelOpen: false,
         })
     }
     const handelSubmit = async () => {
-        let regex = /^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-zA-Z]{2,9})$/;
-        let email = values.email;
+        // let regex = /^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-zA-Z]{2,9})$/;
+        // let email = values.email;
         if (values.email === "") {
             setValues({ ...values, error: true, errorText: "Please enter email!" })
         }
@@ -56,7 +59,7 @@ const LoginComponent = (props) => {
                     setValues({ ...values, email: "", modelOpen: true })
                 }
             } catch (error) {
-                console.log(error)
+                // console.log(error)
             }
         }
 
