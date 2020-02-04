@@ -45,7 +45,6 @@ class Accountdetails extends Component {
     render() {
         let c_k_l = localStorage.getItem("c_k_l") ? localStorage.getItem("c_k_l") : {}
         console.log(this.props)
-        debugger
         // const { wishlistdata } = this.props.wishlistdata;
         const currencies = [
             {
@@ -68,9 +67,7 @@ class Accountdetails extends Component {
         return (
             <Container>
                 <Hidden smDown>
-
                     <div className="inner-page-title1"> My Account </div>
-
                     <Container>
                         <div className="panel_body">
                             <Grid container spacing={12}  >
@@ -98,7 +95,6 @@ class Accountdetails extends Component {
                                             onClick={() => this.Activeaccounts('allorders')}
                                         >
                                             All Orders</p>
-
                                         <p
                                             // onClick={() => this.Activeaccounts('allorders')}
                                             onClick={() => {
@@ -118,12 +114,13 @@ class Accountdetails extends Component {
                                             <>
                                                 <div style={{ PaddingLeft: "30px" }}></div>
                                                 {/* {c_k_l !== true ? */}
-                                                <Register />
+                                               <Container>
+                                               <Register />
+                                               </Container>
                                                 {/* <Addressform/> */}
                                                 {/* : <Login /> */}
                                                 {/* } */}
                                             </>
-
                                         }
                                         {
                                             this.state.isActive == 'addresses' && <Addressform />

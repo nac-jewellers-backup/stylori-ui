@@ -267,3 +267,19 @@ export const FetchCartId = `query FetchCartId($UserId: ShoppingCartCondition) {
   }
 }
 `
+export const USERPROFILE = `query MyQuery($id: UUID!) {
+  userProfileById(id: $id) {
+    firstName
+    lastName
+    email
+    country
+    countryCode
+    salutation
+    city
+    mobile
+    id
+    pincode
+  }
+}
+
+`

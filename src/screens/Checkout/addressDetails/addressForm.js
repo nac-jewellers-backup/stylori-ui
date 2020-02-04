@@ -60,7 +60,9 @@ const AddressComponent = (props) => {
           <MenuItem value={30}>Thirty</MenuItem>
         </Select> */}
                                             {/* </FormControl> */}
-                                            <SimpleSelect val={'1'} name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
+                                            <SimpleSelect 
+                                            // val={'1'}
+                                             name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                         </Grid>
                                         <Grid item xs={4} lg={4}>
                                             <Input

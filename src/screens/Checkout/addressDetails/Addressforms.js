@@ -235,6 +235,7 @@ const Addressforms = (changePanel) => {
         } else {
             var addObjgust_local = localStorage.getItem('gustaddres') ? JSON.parse(localStorage.getItem('gustaddres')) : "";
             if (con_gust !== true) {
+                debugger
                 var addressOne = values.addressOne
                 var addressTwo = values.addressTwo
                 if (addressOne.addressline1 === addressTwo.addressline1 && addressOne.firstname === addressTwo.firstname && addressOne.pincode === addressTwo.pincode) {
@@ -318,11 +319,13 @@ const Addressforms = (changePanel) => {
                 window.location.reload()
             }
             // values['checkValue1'] = true
+            values["edit_addresId"] = false
             setValues({
                 // checkValue1:!values.checkValue1,
                 addrs: !values.addrs,
                 values,
                 ...values,
+                update_clear: !values.update_clear,
             })
         }
 
@@ -339,7 +342,6 @@ const Addressforms = (changePanel) => {
         // window.location.reload(); 
     }
     const selectaddreses = (val_addrs, num, index) => {
-        
         var obj_user = {}
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
         let set_check = localStorage.getItem("set_check") ? localStorage.getItem("set_check") : ""
@@ -424,21 +426,21 @@ const Addressforms = (changePanel) => {
         //     setCartFilters(obj_user)
         // }
     }
+    var deletss = {}
     const Delete_address = (val_addrs, index) => {
-
         if (con_gust !== true) {
             if (check_dlt === false) {
                 if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 1) {
-                    delet["address_id"] = val_addrs && val_addrs.id
-                    deleteaddress(delet)
+                    deletss["address_id"] = val_addrs && val_addrs
+                    deleteaddress(deletss)
                     // window.location.reload();
                 } else {
                     alert('Address already in use')
                 }
                 return false
             } else {
-                delet["address_id"] = val_addrs && val_addrs.id
-                deleteaddress(delet)
+                deletss["address_id"] = val_addrs && val_addrs
+                deleteaddress(deletss)
                 // window.location.reload();
             }
 
@@ -516,7 +518,7 @@ const Addressforms = (changePanel) => {
                 },
             },
         }
-        values["edit_addresId"] = true
+        values["edit_addresId"] = false
         values["addrs"] = true
         setValues({
             values,
@@ -527,6 +529,7 @@ const Addressforms = (changePanel) => {
     }
     const redirectFormss = () => {
         values["addrs"] = false
+        values["edit_addresId"] = false
         // values["update_clear"] = false
         setValues({
             values,
