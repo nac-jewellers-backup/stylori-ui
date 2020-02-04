@@ -28,7 +28,7 @@ import { useDummyRequest } from '../../hooks';
 import { headerDataSilver } from '../../mappers';
 import { styles } from './styles';
 import LogoSmallScreen from '../../assets/Stylori Silver logo.svg';
-import Seach from '../../assets/search' 
+import Seach from '../../assets/search'
 import stylorisilverlogo from '../../assets/Stylori Silver logo.svg'
 import Popover from '@material-ui/core/Popover';
 import { NavLink } from 'react-router-dom';
@@ -181,9 +181,10 @@ class Header extends Component {
                                             <div className={`head-icons1 ${classes.headIcons}`} >
                                                 <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
                                                 <Typography className={classes.callerNum}>1800 102 0330</Typography>
-                                                <Grid onClick={this.handleClose}>
+                                                <Grid onClick={this.handleClose} style={{cursor:"pointer"}}>
                                                     <InputBase
                                                         className={`search`}
+                                                        style={{cursor:"pointer"}}
                                                         placeholder=" Search"
                                                         endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
                                                         </div></InputAdornment>}
@@ -238,12 +239,12 @@ class Header extends Component {
 
                                                     </div>
                                                 </Popover> */}
-                                                <Badge style={{ marginTop: "9px" }} color="secondary"
+                                                <Badge style={{ marginTop: "10px" }} color="secondary"
                                                     badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length > 0 ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
                                                 // wishlist_count
                                                 // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
                                                 >
-                                                    <i style={{ fontSize: "20px" }} class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
+                                                    <i style={{ fontSize: "18px" }} class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
                                                         if (user_id.length > 0) {
                                                             window.location.href = `/account${'-wishlist'}`
                                                         } else {
@@ -251,8 +252,7 @@ class Header extends Component {
                                                         }
                                                     }}  ></i>
                                                 </Badge>
-                                                {/* {alert(JSON.stringify(this.props.cart_count.length))} */}
-                                                <Badge style={{ marginTop: "9px" }} badgeContent={
+                                                <Badge style={{ marginTop: "10px" }} badgeContent={
                                                     (this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length : "0"
                                                     // this.props && this.props.cart_count && this.props.cart_count.length
                                                 } color="secondary">
@@ -361,7 +361,7 @@ class Header extends Component {
                                         <Grid item xs={6}>
                                             <div onClick={this.handleSearch} className="mobli-icon1">
                                                 <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center", paddingRight: "10px", paddingBottom: "15px" }}>
-                                                    <div className={`head-icons1 ${classes.headIcons}`} >
+                                                    <div className={`head-icons1 ${classes.headIcons}`}  >
 
                                                         <div id="search" onClick={this.handleClose} className={classes.searchcontainTop}><Seach className={"searchsvgmobile"}
 
@@ -388,11 +388,11 @@ class Header extends Component {
                                                                 // onClick={this.handleClickPopover}
                                                                 onClick={() => { window.location.href = "/account-profile" }}
                                                             >
-                                                                <i class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                                <i class={`fa fa-user  ${classes.iconFafa}`} style={{ display: "flex", alignItems: "flex-end", justifyContent: "center" }}></i>
                                                             </span>
                                                             // <img className="icons-header-sizes" src={usershape}/>
                                                             : <span onClick={() => window.location.pathname = "/login"}>
-                                                                <i class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                                <i class={`fa fa-user  ${classes.iconFafa}`} style={{ display: "flex", alignItems: "flex-end", justifyContent: "center" }}></i>
                                                             </span>
                                                         }
                                                         {/* <Popover
@@ -430,30 +430,30 @@ class Header extends Component {
                                                                 {/* <NavLink to="/account-profile"> */}
 
                                                         {/* </NavLink> */}
-                                                    {/* </div>
-                                                        </Popover> */} 
+                                                        {/* </div>
+                                                        </Popover> */}
                                                         <Badge badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length > 0 ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary">
-                                                    <i class={`fa fa-heart ${classes.iconFafaheart}`} onClick={() => {
-                                                        if (user_id.length > 0) {
-                                                            window.location.href = `/account${'-wishlist'}`
-                                                        } else {
-                                                            window.location.href = "/login"
-                                                        }
-                                                    }}  ></i>
-                                                </Badge>
-                                                <Badge style={{ fontSize: "9px" }} badgeContent={
-                                                    (this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length : "0"
-                                                    // localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"
-                                                    // this.props.cart_count? this.props.cart_count.length:"0"
+                                                            <i class={`fa fa-heart ${classes.iconFafaheart}`} onClick={() => {
+                                                                if (user_id.length > 0) {
+                                                                    window.location.href = `/account${'-wishlist'}`
+                                                                } else {
+                                                                    window.location.href = "/login"
+                                                                }
+                                                            }}  ></i>
+                                                        </Badge>
+                                                        <Badge style={{ fontSize: "9px" }} badgeContent={
+                                                            (this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length : "0"
+                                                            // localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"
+                                                            // this.props.cart_count? this.props.cart_count.length:"0"
 
-                                                } color="secondary">
-                                                    <a href="/cart" >
-                                                        <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                                        } color="secondary">
+                                                            <a href="/cart" >
+                                                                <i style={{ fontSize: "15px !important" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
 
-                                                    </a>
-                                                </Badge>
-                                            </div>
-                                        </Grid>
+                                                            </a>
+                                                        </Badge>
+                                                    </div>
+                                                </Grid>
                                             </div>
                                         </Grid>
                                     </Toolbar>
@@ -464,52 +464,52 @@ class Header extends Component {
 
                         </Grid>
                     </Grid>
-            <Drawer
-                anchor="left"
-                open={this.state.open}
-                classes={{
-                    paper: classNames(
-                        classes.drawerPaper,
-                    )
-                }}
-            >
-                <ClickAwayListener onClickAway={(e) => this.handleExpandClickClose(e)}>
-                    <div>
-                        <div className={classes.menuheader} >
-                            <IconButton onClick={this.handleDrawerClose}
-                                style={{ float: 'right' }} className={classes.iconbuttons}>
-                                <i class="fa fa-times closebus" ></i>
-                            </IconButton>
-                        </div>
-                        <List className="sideNavListing"  >
-                            {mainlist.map(row => (
-                                <>
-                                    <ListItem button key={row.name} className="drawer-list1" >
-                                        <ListItemText
-                                            onClick={() => { window.location.href = row.url }}
-                                        >
-                                            <Typography className="list-items1"
-                                                variant=""
-                                            >{row.name.toUpperCase()}
-                                            </Typography>
-                                        </ListItemText>
-                                        <div onClick={() => Jewellery[row.name] !== undefined ? this.selectItem(row.name) : ''}>{Jewellery[row.name] !== undefined ? row.name === selected ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i> : ""}
-                                        </div>
-                                    </ListItem>
-                                    {selected === row.name &&
-                                        Object.keys(Jewellery[selected]).map(row2 => (
-                                            <>
-                                                <ListItem button key={Jewellery[selected][row2].name} className={classes.subtitleContainer}>
-                                                    <ListItemText onClick={() => { window.location.href = Jewellery[selected][row2].url }}>
-                                                        <Typography className={classes.subtitles} variant="">{Jewellery[selected][row2].name.toUpperCase()}
-                                                        </Typography>
-                                                    </ListItemText>
-                                                    <div onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>{selected1 === Jewellery[selected][row2].name ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i>}
-                                                    </div>
-                                                </ListItem>
-                                                {selected1 === Jewellery[selected][row2].name &&
+                    <Drawer
+                        anchor="left"
+                        open={this.state.open}
+                        classes={{
+                            paper: classNames(
+                                classes.drawerPaper,
+                            )
+                        }}
+                    >
+                        <ClickAwayListener onClickAway={(e) => this.handleExpandClickClose(e)}>
+                            <div>
+                                <div className={classes.menuheader} >
+                                    <IconButton onClick={this.handleDrawerClose}
+                                        style={{ float: 'right' }} className={classes.iconbuttons}>
+                                        <i class="fa fa-times closebus" ></i>
+                                    </IconButton>
+                                </div>
+                                <List className="sideNavListing"  >
+                                    {mainlist.map(row => (
+                                        <>
+                                            <ListItem button key={row.name} className="drawer-list1" >
+                                                <ListItemText
+                                                    onClick={() => { window.location.href = row.url }}
+                                                >
+                                                    <Typography className="list-items1"
+                                                        variant=""
+                                                    >{row.name.toUpperCase()}
+                                                    </Typography>
+                                                </ListItemText>
+                                                <div onClick={() => Jewellery[row.name] !== undefined ? this.selectItem(row.name) : ''}>{Jewellery[row.name] !== undefined ? row.name === selected ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i> : ""}
+                                                </div>
+                                            </ListItem>
+                                            {selected === row.name &&
+                                                Object.keys(Jewellery[selected]).map(row2 => (
                                                     <>
-                                                        {/* <ListItem className="drawer-list1">
+                                                        <ListItem button key={Jewellery[selected][row2].name} className={classes.subtitleContainer}>
+                                                            <ListItemText onClick={() => { window.location.href = Jewellery[selected][row2].url }}>
+                                                                <Typography className={classes.subtitles} variant="">{Jewellery[selected][row2].name.toUpperCase()}
+                                                                </Typography>
+                                                            </ListItemText>
+                                                            <div onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>{selected1 === Jewellery[selected][row2].name ? <i class="fa fa-caret-up drawer-arrow"></i> : <i class="fa fa-caret-down drawer-arrow"></i>}
+                                                            </div>
+                                                        </ListItem>
+                                                        {selected1 === Jewellery[selected][row2].name &&
+                                                            <>
+                                                                {/* <ListItem className="drawer-list1">
                                                             <ListItemText
                                                             >
                                                                 <Typography className="list-items1" variant="">{subheader[selected1]&&subheader[selected1].header&&subheader[selected1].header.toUpperCase()}
@@ -517,85 +517,85 @@ class Header extends Component {
                                                                 <span style={{ paddingTop: "5px" }} className="header-viewal1">View All</span>
                                                             </ListItemText>
                                                         </ListItem> */}
-                                                        {subheader[selected1] && subheader[selected1].name && subheader[selected1].name.map(row => (
-                                                            <>
-                                                                <ListItem onClick={() => { window.location.href = row.url }} className={classes.subtitle2Container}>
-                                                                    <ListItemText>
-                                                                        <Typography className="list-items1" variant="">{row.name.toUpperCase()}</Typography>
-                                                                    </ListItemText>
-                                                                </ListItem>
-                                                            </>
-                                                        ))}
+                                                                {subheader[selected1] && subheader[selected1].name && subheader[selected1].name.map(row => (
+                                                                    <>
+                                                                        <ListItem onClick={() => { window.location.href = row.url }} className={classes.subtitle2Container}>
+                                                                            <ListItemText>
+                                                                                <Typography className="list-items1" variant="">{row.name.toUpperCase()}</Typography>
+                                                                            </ListItemText>
+                                                                        </ListItem>
+                                                                    </>
+                                                                ))}
 
+                                                            </>
+                                                        }
                                                     </>
-                                                }
-                                            </>
-                                        ))
-                                    }
-                                </>
-                            ))}
-                            {!localStorage.getItem("true") ? <>
-                                <ListItem button className="drawer-list12" >
-                                    <ListItemText onClick={() => window.location.pathname = "/login"}>
-                                        <Typography className="list-items1">
-                                            LOGIN
+                                                ))
+                                            }
+                                        </>
+                                    ))}
+                                    {!localStorage.getItem("true") ? <>
+                                        <ListItem button className="drawer-list12" >
+                                            <ListItemText onClick={() => window.location.pathname = "/login"}>
+                                                <Typography className="list-items1">
+                                                    LOGIN
                                             </Typography>
-                                    </ListItemText>
-                                </ListItem>
-                                <ListItem button className="drawer-list12" >
-                                    <ListItemText onClick={() => window.location.pathname = "/registers"}>
-                                        <Typography className="list-items1">
-                                            REGISTER
+                                            </ListItemText>
+                                        </ListItem>
+                                        <ListItem button className="drawer-list12" >
+                                            <ListItemText onClick={() => window.location.pathname = "/registers"}>
+                                                <Typography className="list-items1">
+                                                    REGISTER
                                             </Typography>
-                                    </ListItemText>
-                                </ListItem>
-                            </> :
-                                <>
-                                    <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.href = `/account${'-profile'}`}>
-                                            <Typography className="list-items1" >
-                                                VIEW PROFILE
+                                            </ListItemText>
+                                        </ListItem>
+                                    </> :
+                                        <>
+                                            <ListItem button className="drawer-list12" >
+                                                <ListItemText onClick={() => window.location.href = `/account${'-profile'}`}>
+                                                    <Typography className="list-items1" >
+                                                        VIEW PROFILE
                                             </Typography>
-                                        </ListItemText>
-                                    </ListItem>
-                                    <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.href = `/account${'-wishlist'}`}>
-                                            <Typography className="list-items1">
-                                                MY WHISLIST
+                                                </ListItemText>
+                                            </ListItem>
+                                            <ListItem button className="drawer-list12" >
+                                                <ListItemText onClick={() => window.location.href = `/account${'-wishlist'}`}>
+                                                    <Typography className="list-items1">
+                                                        MY WHISLIST
                                             </Typography>
-                                        </ListItemText>
-                                    </ListItem>
-                                    <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => window.location.href = `/account${'-allorders'}`}>
-                                            <Typography className="list-items1">
-                                                ALL ORDERS
+                                                </ListItemText>
+                                            </ListItem>
+                                            <ListItem button className="drawer-list12" >
+                                                <ListItemText onClick={() => window.location.href = `/account${'-allorders'}`}>
+                                                    <Typography className="list-items1">
+                                                        ALL ORDERS
                                             </Typography>
-                                        </ListItemText>
-                                    </ListItem>
-                                    <ListItem button className="drawer-list12" >
-                                        <ListItemText >
-                                            <Typography className="list-items1">
-                                                CONTACT US
+                                                </ListItemText>
+                                            </ListItem>
+                                            <ListItem button className="drawer-list12" >
+                                                <ListItemText >
+                                                    <Typography className="list-items1">
+                                                        CONTACT US
                                             </Typography>
-                                        </ListItemText>
-                                    </ListItem>
-                                    <ListItem button className="drawer-list12" >
-                                        <ListItemText onClick={() => {
-                                            localStorage.clear();
-                                            sessionStorage.clear();
-                                            window.location.reload()
-                                            window.location.pathname = "/login"
-                                        }}>
-                                            <Typography className="list-items1">
-                                                LOGOUT
+                                                </ListItemText>
+                                            </ListItem>
+                                            <ListItem button className="drawer-list12" >
+                                                <ListItemText onClick={() => {
+                                                    localStorage.clear();
+                                                    sessionStorage.clear();
+                                                    window.location.reload()
+                                                    window.location.pathname = "/login"
+                                                }}>
+                                                    <Typography className="list-items1">
+                                                        LOGOUT
                                             </Typography>
-                                        </ListItemText>
-                                    </ListItem>
-                                </>}
-                        </List>
-                    </div>
-                </ClickAwayListener>
-            </Drawer>
+                                                </ListItemText>
+                                            </ListItem>
+                                        </>}
+                                </List>
+                            </div>
+                        </ClickAwayListener>
+                    </Drawer>
                 </Hidden >
             </div >
         )

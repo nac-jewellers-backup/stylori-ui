@@ -89,7 +89,7 @@ class Component extends React.Component {
                                 </Grid>
                                 {/* )}  */}
                             </>
-                        )}</> : <div style={{ textAlign: "center", color: "#394578" }}>No wishlist yet</div>}
+                        )}</> : <div style={{textAlign: "center", color: "#394578" }}>No wishlist yet</div>}
 
 
 
