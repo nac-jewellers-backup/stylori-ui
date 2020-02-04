@@ -92,9 +92,6 @@ function HeaderHoverMenuItem(props) {
                             menuList}
                         </Typography>
                       </ListItemText>
-
-
-
                     </ListItem>))}
             </Grid>
      }

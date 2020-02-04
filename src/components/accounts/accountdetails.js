@@ -14,7 +14,7 @@ import Addressform from 'screens/Checkout/addressDetails/addressForm';
 import Allorders from './allorders';
 import Wishlists from './whislists';
 import List from '@material-ui/core/List';
-
+import CommenDialog from "components/Common/Dialogmodel"
 import TextField from '@material-ui/core/TextField';
 
 class Accountdetails extends Component {
@@ -23,6 +23,7 @@ class Accountdetails extends Component {
         this.state = {
             isActive: window.location.pathname.split("-")[1],
             currency: 'EUR',
+            modelOpen:false
             // window.location.pathname.split("-")[1]
         };
 
@@ -42,10 +43,30 @@ class Accountdetails extends Component {
     //         localStorage.setItem("order", this.props.allorderdata)
     //     }
     // }
+    canceldeletechecklist = () => {
+
+        this.setState({
+            modelOpen: false,
+        })
+    }
+    deletechecklists = () => {
+        
+        localStorage.clear();
+        sessionStorage.clear()
+        window.location.reload()
+        window.location.pathname = "/login"
+        this.setState({
+            modelOpen: false,
+        })
+    }
+    openmodel=()=>{
+        this.setState({
+            modelOpen: true,
+        }) 
+    }
     render() {
         let c_k_l = localStorage.getItem("c_k_l") ? localStorage.getItem("c_k_l") : {}
         console.log(this.props)
-        debugger
         // const { wishlistdata } = this.props.wishlistdata;
         const currencies = [
             {
@@ -68,14 +89,13 @@ class Accountdetails extends Component {
         return (
             <Container>
                 <Hidden smDown>
-
                     <div className="inner-page-title1"> My Account </div>
 
                     {/* <Container className="main_container" style={{ width: "60%", margin: "auto" }}> */}
                     <div className="panel_body">
                         <Grid container spacing={12} style={{ width: "100%", margin: "auto" }}  >
-                            <Grid item xs={3} >
-                                <List className="pay-index-subhed">
+                            <Grid item xs={3}  >
+                                <List className="pay-index-subhed" style={{ width: "100%" }}>
                                     <p className={this.state.isActive == 'profile' ? "backgrund" : ""}
                                         onClick={() => this.Activeaccounts('profile')}
                                     > Personal Information</p>
@@ -102,13 +122,11 @@ class Accountdetails extends Component {
                                     <p
                                         // onClick={() => this.Activeaccounts('allorders')}
                                         onClick={() => {
-                                            localStorage.clear();
-                                            sessionStorage.clear()
-                                            window.location.reload()
-                                            window.location.pathname = "/login"
+                                            this.openmodel()
                                         }}
                                     >
                                         Logout</p>
+                                        <CommenDialog isOpen={this.state.modelOpen} content={`Are you sure. you want to exit? `} handleClose={this.canceldeletechecklist} handleSuccess={this.deletechecklists} negativeBtn="No" positiveBtn="Yes" title="Confirm Exit.!!" />
                                 </List>
                             </Grid>
                             <Grid item xs={12} sm={12} md={9} lg={9} xl={9} >
@@ -118,7 +136,10 @@ class Accountdetails extends Component {
                                         <>
                                             <div style={{ PaddingLeft: "30px" }}></div>
                                             {/* {c_k_l !== true ? */}
-                                            <Register />
+
+                                            <Container>
+                                                <Register />
+                                            </Container>
                                             {/* <Addressform/> */}
                                             {/* : <Login /> */}
                                             {/* } */}
@@ -135,7 +156,7 @@ class Accountdetails extends Component {
                                                 <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
                                     }
                                     {
-                                        this.state.isActive == 'wishlist' && < Grid style={{ marginTop: "25px" }} >
+                                        this.state.isActive == 'wishlist' && < Grid >
                                             <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
                                             {/* {JSON.stringify(this.props.wishlistdata)} */}
                                         </Grid>

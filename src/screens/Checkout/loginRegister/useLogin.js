@@ -214,7 +214,7 @@ const useLogin = (changePanel, props) => {
         let _roles = values.roles
         obj_values = { password: _password, email: _email, roles: _roles }
         makeFetch(obj_values);
-        clear()
+        // clear()
         // reset();
         // _history=history('/home')
         // changePanel(3)

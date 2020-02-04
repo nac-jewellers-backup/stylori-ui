@@ -3,13 +3,18 @@ import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { resetWarningCache } from 'prop-types';
-import { CartContext } from 'context'
+import { CartContext } from 'context';
+import { USERPROFILE } from 'queries/cart';
+
 let user_ids = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
+const salutation = localStorage.getItem("m") ? localStorage.getItem("m") : '';
 // let addres_Ids = localStorage.getItem("addres_Id") && localStorage.getItem("addres_Id").length > 0 && localStorage.getItem("addres_Id") !== 'undefined' ? localStorage.getItem("addres_Id") : ""
-let namesOf_first = localStorage.getItem("namesOf_first") && localStorage.getItem("namesOf_first").length > 0 && localStorage.getItem("namesOf_first") !== 'undefined' && localStorage.getItem("namesOf_first") !== 'null' ? JSON.parse(localStorage.getItem("namesOf_first")) : ""
-let namesOf_last = localStorage.getItem("namesOf_last") && localStorage.getItem("namesOf_last").length > 0 && localStorage.getItem("namesOf_last") !== 'undefined' && localStorage.getItem("namesOf_last") !== 'null' ? JSON.parse(localStorage.getItem("namesOf_last")) : ""
-let pin_cod = localStorage.getItem("pin_cod") && localStorage.getItem("pin_cod").length > 0 && localStorage.getItem("pin_cod") !== 'undefined' && localStorage.getItem("pin_cod") !== 'null' ? JSON.parse(localStorage.getItem("pin_cod")) : ""
-let co_num = localStorage.getItem("co_num") && localStorage.getItem("co_num").length > 0 && localStorage.getItem("co_num") !== 'undefined' && localStorage.getItem("co_num") !== 'null' ? JSON.parse(localStorage.getItem("co_num")) : ""
+// let namesOf_first = localStorage.getItem("namesOf_first") && localStorage.getItem("namesOf_first").length > 0 && localStorage.getItem("namesOf_first") !== 'undefined' && localStorage.getItem("namesOf_first") !== 'null' ? JSON.parse(localStorage.getItem("namesOf_first")) : ""
+// let namesOf_last = localStorage.getItem("namesOf_last") && localStorage.getItem("namesOf_last").length > 0 && localStorage.getItem("namesOf_last") !== 'undefined' && localStorage.getItem("namesOf_last") !== 'null' ? JSON.parse(localStorage.getItem("namesOf_last")) : ""
+// let pin_cod = localStorage.getItem("pin_cod") && localStorage.getItem("pin_cod").length > 0 && localStorage.getItem("pin_cod") !== 'undefined' && localStorage.getItem("pin_cod") !== 'null' ? JSON.parse(localStorage.getItem("pin_cod")) : ""
+// let co_num = localStorage.getItem("co_num") && localStorage.getItem("co_num").length > 0 && localStorage.getItem("co_num") !== 'undefined' && localStorage.getItem("co_num") !== 'null' ? JSON.parse(localStorage.getItem("co_num")) : ""
+var Profile_DATAS = {};
+var obj_profile = {};
 const useRegister = (changePanel, props) => {
     const [values, setValues] = React.useState({
         email: "",
@@ -18,6 +23,7 @@ const useRegister = (changePanel, props) => {
         roles: ["user"],
         firstname: "",
         lastname: "",
+        salutation:salutation,
         errortext: {
             emerr: "",
             passerr: "",
@@ -36,16 +42,20 @@ const useRegister = (changePanel, props) => {
     // const [valuesedit, setValuesedit] = React.useState({
 
     // });
+    const name = Profile_DATAS && Profile_DATAS.User_Profile && Profile_DATAS.User_Profile.firstName.length > 0 ? Profile_DATAS.User_Profile.firstName : ""
+    // alert(JSON.stringify(name))
     const [valuesadrees, setvaluesadrees] = React.useState({
         user_id: user_ids,
-        firstname: namesOf_first,
-        lastname: namesOf_last,
-        contactno: co_num,
-        pincode: pin_cod,
+        firstname: "",
+        lastname: "",
+        contactno: "",
+        pincode: "",
         country_code: "+91",
         country: "India",
-        select: "mr",
+        salutation: "",
     });
+
+
     const pathnames = window.location.pathname.split("-")[0] === "/account"
     const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     // const { makeFetch: makeFetchedit } = useNetworkRequest('/api/auth/signup', {}, false);
@@ -54,6 +64,27 @@ const useRegister = (changePanel, props) => {
     const { setCartFilters } = React.useContext(CartContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     const pathnamelog = window.location.pathname === "/registers"
+
+    const { loading: Profile_loading, error: Profile_error, data: Profile_Data, makeRequestCod: propfile_fetch } = useCheckForCod(USERPROFILE, () => { }, {});
+    React.useEffect(() => {
+        if (user_ids && user_ids.length > 0) {
+            obj_profile["id"] = user_ids
+            propfile_fetch(obj_profile)
+        }
+    }, [])
+    React.useEffect(() => {
+        if (Profile_Data && Profile_Data.data && Profile_Data.data.userProfileById && Profile_Data.data.userProfileById.firstName && Profile_Data.data.userProfileById.firstName.length > 0) {
+            valuesadrees["firstname"] = Profile_Data.data.userProfileById.firstName && Profile_Data.data.userProfileById.firstName
+            valuesadrees["lastname"] = Profile_Data.data.userProfileById.lastName && Profile_Data.data.userProfileById.lastName
+            valuesadrees["contactno"] = Profile_Data.data.userProfileById.mobile && Profile_Data.data.userProfileById.mobile
+            valuesadrees["pincode"] = Profile_Data.data.userProfileById.pincode && Profile_Data.data.userProfileById.pincode
+            valuesadrees["salutation"] = Profile_Data.data.userProfileById.salutation && Profile_Data.data.userProfileById.salutation
+            setvaluesadrees({
+                ...valuesadrees,
+                valuesadrees
+            })
+        }
+    }, [Profile_Data])
     const clear = () => {
         setValues({
             email: "",
@@ -61,6 +92,7 @@ const useRegister = (changePanel, props) => {
             confirmpassword: "",
             firstname: "",
             lastname: "",
+            salutation:salutation,
             errortext: {
                 emerr: "",
                 passerr: "",
@@ -118,7 +150,7 @@ const useRegister = (changePanel, props) => {
                 localStorage.setItem('accessToken', data.accessToken)
                 localStorage.setItem("set_check", "123")
                 // localStorage.setItem("addres_id", data.user.id)
-                setValues({ user_id: data.user_profile_id })
+                setValues({ user_id: data.user_profile_id }) 
                 setCartFilters({ user_id })
                 makeRequestCod(obj);
                 if (!pathnamelog) {
@@ -128,7 +160,7 @@ const useRegister = (changePanel, props) => {
                     if (localStorage.getItem('review_location') && localStorage.getItem('review_location').length > 0) {
                         window.location.href = localStorage.getItem('review_location')
                         return false
-                    } else {
+                    } else { 
                         window.location.href = "/"
                         return false
                     }
@@ -258,16 +290,16 @@ const useRegister = (changePanel, props) => {
                 })
                 return false
             }
-            localStorage.setItem("namesOf_first", JSON.stringify(values.firstname))
-            localStorage.setItem("namesOf_last", JSON.stringify(values.lastname))
+            // localStorage.setItem("namesOf_first", JSON.stringify(values.firstname))
+            // localStorage.setItem("namesOf_last", JSON.stringify(values.lastname))
             makeFetch(values);
             // reset();
             return false
         } else {
-            localStorage.setItem("namesOf_first", JSON.stringify(valuesadrees.firstname))
-            localStorage.setItem("namesOf_last", JSON.stringify(valuesadrees.lastname))
-            localStorage.setItem("pin_cod", JSON.stringify(valuesadrees.pincode))
-            localStorage.setItem("co_num", JSON.stringify(valuesadrees.contactno))
+            // localStorage.setItem("namesOf_first", JSON.stringify(valuesadrees.firstname))
+            // localStorage.setItem("namesOf_last", JSON.stringify(valuesadrees.lastname))
+            // localStorage.setItem("pin_cod", JSON.stringify(valuesadrees.pincode))
+            // localStorage.setItem("co_num", JSON.stringify(valuesadrees.contactno))
             // makeFetchedit();
             makeFetcheditAddress(valuesadrees);
         }
