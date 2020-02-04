@@ -89,7 +89,6 @@ class Accountdetails extends Component {
         return (
             <Container>
                 <Hidden smDown>
-
                     <div className="inner-page-title1"> My Account </div>
 
                     {/* <Container className="main_container" style={{ width: "60%", margin: "auto" }}> */}
@@ -137,7 +136,10 @@ class Accountdetails extends Component {
                                         <>
                                             <div style={{ PaddingLeft: "30px" }}></div>
                                             {/* {c_k_l !== true ? */}
-                                            <Register />
+
+                                            <Container>
+                                                <Register />
+                                            </Container>
                                             {/* <Addressform/> */}
                                             {/* : <Login /> */}
                                             {/* } */}

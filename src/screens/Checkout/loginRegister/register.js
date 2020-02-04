@@ -5,20 +5,25 @@ import { Input } from '../../../components/InputComponents/TextField/Input'
 import SimpleSelect from '../../../components/InputComponents/Select/Select';
 import useRegister from './useregister';
 import { NavLink } from 'react-router-dom';
+import { useCheckForCod } from 'hooks/CheckForCodHook';
+import { USERPROFILE } from 'queries/cart';
 
 const Register = (props) => {
     return <RegisterComponent  {...props} />
 }
 
 const RegisterComponent = (props) => {
+   
     let email = localStorage.getItem("email") ? localStorage.getItem("email") : '';
     const { values, setValues, handlers, data, valuesadrees } = useRegister(() => props.changePanel(2));
     // var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
     // var ccc = data.message ? data.message : ""
     const paths = window.location.pathname.split("-")[0] === "/account"
     const pathreg = window.location.pathname === "/registers"
+    const salutation = localStorage.getItem("m") ? localStorage.getItem("m") : '';
+    let user_ids = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
 
-
+    // console.log("Profile_DATAS",JSON.stringify())
     return (
         <div className='pt-sm'>
             <form 
@@ -36,7 +41,38 @@ const RegisterComponent = (props) => {
                                     {window.location.pathname.split("-")[0] === "/account" ? "" : <>
                                         {window.location.pathname === "/registers" ? "Register" : "New user registration"}</>}
                                 </h5>}
-
+                            <Grid container spacing={12}>
+                                {paths && <Grid item lg={4} xs={4}>
+                                    <SimpleSelect val={'1'} name={salutation && salutation.length > 0 ? salutation : valuesadrees.salutation} selectData={['Mr', 'Mrs', 'Ms']} />
+                                </Grid>}
+                                {paths && <>
+                                    <Grid item lg={4} xs={4}>
+                                        <Input
+                                            margin="normal"
+                                            // variant="outlined"
+                                            type="text"
+                                            name="firstname"
+                                            value={valuesadrees.firstname}
+                                            placeholder="First name*"
+                                            onChange={e => handlers.handlesetvaluesadrees('firstname', e.target.value)}
+                                            className='text-f'
+                                            helperText="First name is required"
+                                            required />
+                                    </Grid>
+                                    <Grid item lg={4} xs={4}>
+                                        <Input
+                                            margin="normal"
+                                            // variant="outlined"
+                                            type="text"
+                                            name="lastname"
+                                            value={valuesadrees.lastname}
+                                            placeholder="Last name*"
+                                            onChange={e => handlers.handlesetvaluesadrees('lastname', e.target.value)}
+                                            className='text-f'
+                                            helperText="Last name is required"
+                                            required />
+                                    </Grid></>}
+                            </Grid>
                             {/* <h5>Personal Information</h5> */}
                             {paths ?
                                 <Input
@@ -110,10 +146,10 @@ const RegisterComponent = (props) => {
                                     <label className='errtext'> {values.errortext && values.errortext.cnfpasserr}</label>
                                 </>
                             }
-                            <Grid container spacing={12} >
-                                <Grid item lg={4} xs={4}>
+                            <Grid container spacing={12}>
+                                {!paths && <Grid item lg={4} xs={4}>
                                     <SimpleSelect val={'1'} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
-                                </Grid>
+                                </Grid>}
                                 {!paths && <>
                                     <Grid item lg={4} xs={4}>
                                         <Input
@@ -146,33 +182,6 @@ const RegisterComponent = (props) => {
                                         // helperText=""
                                         />
                                         <label className='errtext'> {values.errortext && values.errortext.lastname}</label>
-                                    </Grid></>}
-                                {paths && <>
-                                    <Grid item lg={4} xs={4}>
-                                        <Input
-                                            margin="normal"
-                                            // variant="outlined"
-                                            type="text"
-                                            name="firstname"
-                                            value={valuesadrees.firstname}
-                                            placeholder="First name*"
-                                            onChange={e => handlers.handlesetvaluesadrees('firstname', e.target.value)}
-                                            className='text-f'
-                                            helperText="First name is required"
-                                            required />
-                                    </Grid>
-                                    <Grid item lg={4} xs={4}>
-                                        <Input
-                                            margin="normal"
-                                            // variant="outlined"
-                                            type="text"
-                                            name="lastname"
-                                            value={valuesadrees.lastname}
-                                            placeholder="Last name*"
-                                            onChange={e => handlers.handlesetvaluesadrees('lastname', e.target.value)}
-                                            className='text-f'
-                                            helperText="Last name is required"
-                                            required />
                                     </Grid></>}
                             </Grid>
 
