@@ -14,7 +14,7 @@ import Addressform from 'screens/Checkout/addressDetails/addressForm';
 import Allorders from './allorders';
 import Wishlists from './whislists';
 import List from '@material-ui/core/List';
-
+import CommenDialog from "components/Common/Dialogmodel"
 import TextField from '@material-ui/core/TextField';
 
 class Accountdetails extends Component {
@@ -23,6 +23,7 @@ class Accountdetails extends Component {
         this.state = {
             isActive: window.location.pathname.split("-")[1],
             currency: 'EUR',
+            modelOpen:false
             // window.location.pathname.split("-")[1]
         };
 
@@ -42,6 +43,27 @@ class Accountdetails extends Component {
     //         localStorage.setItem("order", this.props.allorderdata)
     //     }
     // }
+    canceldeletechecklist = () => {
+
+        this.setState({
+            modelOpen: false,
+        })
+    }
+    deletechecklists = () => {
+        
+        localStorage.clear();
+        sessionStorage.clear()
+        window.location.reload()
+        window.location.pathname = "/login"
+        this.setState({
+            modelOpen: false,
+        })
+    }
+    openmodel=()=>{
+        this.setState({
+            modelOpen: true,
+        }) 
+    }
     render() {
         let c_k_l = localStorage.getItem("c_k_l") ? localStorage.getItem("c_k_l") : {}
         console.log(this.props)
@@ -101,13 +123,11 @@ class Accountdetails extends Component {
                                     <p
                                         // onClick={() => this.Activeaccounts('allorders')}
                                         onClick={() => {
-                                            localStorage.clear();
-                                            sessionStorage.clear()
-                                            window.location.reload()
-                                            window.location.pathname = "/login"
+                                            this.openmodel()
                                         }}
                                     >
                                         Logout</p>
+                                        <CommenDialog isOpen={this.state.modelOpen} content={`Are you sure. you want to exit? `} handleClose={this.canceldeletechecklist} handleSuccess={this.deletechecklists} negativeBtn="No" positiveBtn="Yes" title="Confirm Exit.!!" />
                                 </List>
                             </Grid>
                             <Grid item xs={12} sm={12} md={9} lg={9} xl={9} >
