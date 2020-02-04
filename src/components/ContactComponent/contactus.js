@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
     },
     smallSizeTypo: {
         color: "#666",
-        fontSize: "13px",
+        fontSize: "14px",
         lineHeight: "19px"
     },
     maginBottomOnly: {
@@ -68,9 +68,9 @@ const useStyles = makeStyles(theme => ({
         width: "100%",
     },
     smallSizeTypoblue: {
-        fontSize: "14px",
+        fontSize: "15px",
         color: "#394578",
-        lineHeight: "19px"
+        lineHeight: "20px"
     },
     midconatiner:{
         justifyContent:"center",
@@ -153,7 +153,7 @@ export default function CustomizedInputs() {
                                 variant="outlined"
                                 autoComplete='off'
                                 name="Name"
-                                placeholder="Name"
+                                placeholder="Enter your name"
                                 value={values.name}
                                 error={values.errorName ? true : false}
                                 onChange={e => handleChange('name', e.target.value)}
@@ -168,7 +168,7 @@ export default function CustomizedInputs() {
                                 value={values.email}
                                 error={values.emailError ? true : false}
                                 onChange={e => handleChange('email', e.target.value)}
-                                placeholder="E-mail"
+                                placeholder="Enter your email address"
                             />
                             <label className='errtext'> {values.emailError && values.emailError}</label>
                             <Input
@@ -180,8 +180,8 @@ export default function CustomizedInputs() {
                                 maxLength={13}
                                 value={values.phone}
                                 error={values.phoneError ? true : false}
-                                onChange={e => handleChange('phone', e.target.value)}
-                                placeholder="phone"
+                                onChange={e => handleChange('Phone', e.target.value)}
+                                placeholder="Enter your mobile number"
                             />
                             <label className='errtext'> {values.phoneError && values.phoneError}</label>
                             <Input
@@ -189,7 +189,7 @@ export default function CustomizedInputs() {
                                 type="text"
                                 name="message"
                                 fullWidth
-                                placeholder='Message'
+                                placeholder='Enter your message'
                                 className={classes.textFeild}
                                 maxLength={250}
                                 value={values.message}

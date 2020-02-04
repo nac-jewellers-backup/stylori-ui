@@ -35,7 +35,7 @@ const AddressComponent = (props) => {
                                 {window.location.pathname.split("-")[0] === "/account" || values.edit_addresId === true ? "" : <>{cl}</>}
                                 {/* {JSON.stringify(values.errortext && values.errortext.pinerr)} */}
                             </p>  <Grid container item xs={12} lg={12} >
-                                <Grid item xs={12} lg={5}>
+                                <Grid item xs={12} lg={window.location.pathname.split("-")[0] === "/account" ? 12 : 5}>
                                     {window.location.pathname.split("-")[0] === "/account" || values.hidebilling === true ? "" : <>
                                         <h5 className='title'>Shipping Address</h5>
                                         <>
@@ -324,7 +324,7 @@ const AddressComponent = (props) => {
                             {/* <div style={{float:"right"}}>
                                 
                             </div> */}
-                            <div className='login-butn'>
+                            <div style={{ display: "flex", justifyContent: "flex-end" }}>
                                 {values.edit_addresId === true ? <Button onClick={() => handle.redirectFormss()} style={{ borderRadius: "0px", padding: "6px 8px", lineHeight: "1.75", border: "1px solid #394578" }}
                                     className=''>Cancel</Button> : ""} &nbsp;
                                 <Button type="submit" className='apply-b'>Save and Review</Button>

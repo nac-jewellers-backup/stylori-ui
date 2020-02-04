@@ -45,7 +45,6 @@ class Accountdetails extends Component {
     render() {
         let c_k_l = localStorage.getItem("c_k_l") ? localStorage.getItem("c_k_l") : {}
         console.log(this.props)
-        debugger
         // const { wishlistdata } = this.props.wishlistdata;
         const currencies = [
             {
@@ -74,8 +73,8 @@ class Accountdetails extends Component {
                     {/* <Container className="main_container" style={{ width: "60%", margin: "auto" }}> */}
                     <div className="panel_body">
                         <Grid container spacing={12} style={{ width: "100%", margin: "auto" }}  >
-                            <Grid item xs={3} >
-                                <List className="pay-index-subhed">
+                            <Grid item xs={3}  >
+                                <List className="pay-index-subhed" style={{ width: "100%" }}>
                                     <p className={this.state.isActive == 'profile' ? "backgrund" : ""}
                                         onClick={() => this.Activeaccounts('profile')}
                                     > Personal Information</p>
@@ -135,7 +134,7 @@ class Accountdetails extends Component {
                                                 <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
                                     }
                                     {
-                                        this.state.isActive == 'wishlist' && < Grid style={{ marginTop: "25px" }} >
+                                        this.state.isActive == 'wishlist' && < Grid >
                                             <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
                                             {/* {JSON.stringify(this.props.wishlistdata)} */}
                                         </Grid>

@@ -147,7 +147,7 @@ class Header extends Component {
 
     }
     submenuDetails = (data, target) => {
-        this.setState({ subTitleData: data, subMenuTarget: target })
+        this.setState({ subMenuTarget: target, subTitleData: data,submenuOpen: true })
     }
     handleExpandClickClose = () => {
         this.setState({ open: false });
@@ -181,10 +181,10 @@ class Header extends Component {
                                             <div className={`head-icons1 ${classes.headIcons}`} >
                                                 <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
                                                 <Typography className={classes.callerNum}>1800 102 0330</Typography>
-                                                <Grid onClick={this.handleClose} style={{cursor:"pointer"}}>
+                                                <Grid onClick={this.handleClose} style={{ cursor: "pointer" }}>
                                                     <InputBase
                                                         className={`search`}
-                                                        style={{cursor:"pointer"}}
+                                                        style={{ cursor: "pointer" }}
                                                         placeholder=" Search"
                                                         endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
                                                         </div></InputAdornment>}
@@ -296,7 +296,7 @@ class Header extends Component {
 
                                                         this.state.Menuopen && menuLists[this.state.listHoverItem] ?
                                                             <HeaderHoverMenuItem tabdata={this.props.data} listHoverItem={menuLists[this.state.listHoverItem]}
-                                                                onMouseOver={(event) => { this.setState({ Menuopen: true, submenuOpen: true, targetopenSubmenu: event.currentTarget }) }}
+                                                                onMouseOver={(event) => { this.setState({ Menuopen: true, targetopenSubmenu: event.currentTarget }) }}
                                                                 opened={this.state.Menuopen}
                                                                 targetopened={this.state.targetopen}
                                                                 submenuDetails={this.submenuDetails}

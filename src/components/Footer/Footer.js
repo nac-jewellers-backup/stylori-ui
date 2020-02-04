@@ -349,7 +349,7 @@ export default function Footer(props) {
                             </Grid>
                             <Grid item>
                                 <Grid container>
-                                    <Grid item container justify="flex-end" style={{ textAlign: "end",  }}>
+                                    <Grid item container justify="flex-end" style={{ textAlign: "end", }}>
                                         Stay social with Stylori.<br />
                                         We promise we won’t bore you.
                             </Grid>
@@ -442,8 +442,9 @@ export default function Footer(props) {
             </Hidden>
 
             <Container>
-                <Grid container item className={`${classes.colorWhiteBackground}`} style={{ padding: '15px 0px 15px 0px' }}>
-                    <Hidden only={['sm', 'xs']}>
+                <Hidden only={['sm', 'xs']}>
+
+                    <Grid container item className={`${classes.colorWhiteBackground}`} style={{ padding: '15px 0px 15px 0px' }}>
                         <Grid container item xl={5} lg={5} md={5} xs={12} sm={6} alignItems="center">
                             <Grid container item xs={12} style={{ color: '#808080', fontSize: '13px' }}>
                                 <Grid item xs={3}>
@@ -480,9 +481,9 @@ export default function Footer(props) {
                                 </Grid>
                             </Grid>
                         </Grid>
-                    </Hidden>
+                        {/* </Hidden>
 
-                    <Hidden only={['sm', 'xs']}>
+                    <Hidden only={['sm', 'xs']}> */}
 
                         <Grid container item xl={4} lg={4} md={5} xs={12} sm={6} alignItems="center" >
                             <Grid item xs={12} style={{ padding: '0px 0px 0px 14px', fontWeight: '600', fontSize: '12px', color: '#808080', letterSpacing: "0.8px" }}>
@@ -522,8 +523,8 @@ export default function Footer(props) {
 
                             </Grid>
                         </Grid>
-                    </Hidden>
-                    <Hidden only={['sm', 'xs']}>
+                        {/* </Hidden>
+                    <Hidden only={['sm', 'xs']}> */}
                         <Grid container item xl={3} lg={3} md={2} xs={12} sm={6} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: "flex-start" }}>
                             <Grid item xs={12} sm={12} md={12} lg={6}>
                                 <div onClick={() => { window.location.href = window.location.origin }}>
@@ -532,11 +533,12 @@ export default function Footer(props) {
                                 <div style={{ color: '#808080', fontSize: '11px', justifyContent: "center", display: "flex" }}>Copyright © 2020 stylori.com</div>
                             </Grid>
                         </Grid>
-                    </Hidden>
-                </Grid>
+                    </Grid>
+                </Hidden>
+
             </Container>
             <Hidden only={['md', 'lg', 'xl']}>
-                <Grid container item xs={12} sm={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#808080', fontSize: '11px' }}>
+                <Grid container item xs={12} sm={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#808080', fontSize: '11px', padding: "8px 0px" }}>
                     Copyright © 2020 stylori.com
                             </Grid>
             </Hidden>
