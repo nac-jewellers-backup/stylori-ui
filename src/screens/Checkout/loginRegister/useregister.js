@@ -7,6 +7,7 @@ import { CartContext } from 'context';
 import { USERPROFILE } from 'queries/cart';
 
 let user_ids = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
+const salutation = localStorage.getItem("m") ? localStorage.getItem("m") : '';
 // let addres_Ids = localStorage.getItem("addres_Id") && localStorage.getItem("addres_Id").length > 0 && localStorage.getItem("addres_Id") !== 'undefined' ? localStorage.getItem("addres_Id") : ""
 // let namesOf_first = localStorage.getItem("namesOf_first") && localStorage.getItem("namesOf_first").length > 0 && localStorage.getItem("namesOf_first") !== 'undefined' && localStorage.getItem("namesOf_first") !== 'null' ? JSON.parse(localStorage.getItem("namesOf_first")) : ""
 // let namesOf_last = localStorage.getItem("namesOf_last") && localStorage.getItem("namesOf_last").length > 0 && localStorage.getItem("namesOf_last") !== 'undefined' && localStorage.getItem("namesOf_last") !== 'null' ? JSON.parse(localStorage.getItem("namesOf_last")) : ""
@@ -22,6 +23,7 @@ const useRegister = (changePanel, props) => {
         roles: ["user"],
         firstname: "",
         lastname: "",
+        salutation:salutation,
         errortext: {
             emerr: "",
             passerr: "",
@@ -90,6 +92,7 @@ const useRegister = (changePanel, props) => {
             confirmpassword: "",
             firstname: "",
             lastname: "",
+            salutation:salutation,
             errortext: {
                 emerr: "",
                 passerr: "",
@@ -147,7 +150,7 @@ const useRegister = (changePanel, props) => {
                 localStorage.setItem('accessToken', data.accessToken)
                 localStorage.setItem("set_check", "123")
                 // localStorage.setItem("addres_id", data.user.id)
-                setValues({ user_id: data.user_profile_id })
+                setValues({ user_id: data.user_profile_id }) 
                 setCartFilters({ user_id })
                 makeRequestCod(obj);
                 if (!pathnamelog) {
