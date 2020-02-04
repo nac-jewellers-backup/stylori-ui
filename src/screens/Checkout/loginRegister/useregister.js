@@ -160,7 +160,7 @@ const useRegister = (changePanel, props) => {
                     if (localStorage.getItem('review_location') && localStorage.getItem('review_location').length > 0) {
                         window.location.href = localStorage.getItem('review_location')
                         return false
-                    } else {
+                    } else { 
                         window.location.href = "/"
                         return false
                     }
