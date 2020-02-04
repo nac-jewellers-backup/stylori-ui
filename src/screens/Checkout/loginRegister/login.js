@@ -114,7 +114,7 @@ const LoginComponent = (props) => {
                         .then(fetchValue1=>{
                             if(fetchValue1.accessToken){
                                 localStorage.setItem('accessToken',fetchValue1.accessToken);
-                                localStorage.setItem('user_id', fetchValue.user.id)
+                                localStorage.setItem('user_id', fetchValue.user_profile.id)
                                 localStorage.setItem('panel',2);
                                 localStorage.setItem('isedit',1);
                                 localStorage.setItem('true',false)
@@ -224,7 +224,7 @@ const LoginComponent = (props) => {
                         .then(fetchValue=>{
                             if(fetchValue.accessToken){
                                 localStorage.setItem('accessToken',fetchValue.accessToken);
-                                localStorage.setItem('user_id', fetchValue.user.id)
+                                localStorage.setItem('user_id', fetchValue.user_profile.id)
                                 localStorage.setItem('panel',2);
                                 localStorage.setItem('isedit',1);
 
