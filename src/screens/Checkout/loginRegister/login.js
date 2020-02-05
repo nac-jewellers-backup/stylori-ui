@@ -84,7 +84,7 @@ const LoginComponent = (props) => {
                     if (fetchValue.accessToken) {
                         localStorage.setItem('accessToken', fetchValue.accessToken);
                         localStorage.setItem('user_id', fetchValue.user.id)
-                        localStorage.setItem('email', fetchValue.user_profile.email);
+                        localStorage.setItem('email', fetchValue.user.email);
                         localStorage.setItem('true', false)
                         localStorage.setItem('panel', 2);
                         props.history.push('/')
