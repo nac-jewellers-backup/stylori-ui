@@ -4,35 +4,43 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "cabb7f3d411dc64b025b",
+    "revision": "b28a37e835271cbda1dd",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "1e2fc0ad83f060434a10",
+    "revision": "8644845b3cfc433b2d2f",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "f197875a65da9219457d",
+    "revision": "42dd121189dcfb1cc809",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "cabb7f3d411dc64b025b",
+    "revision": "b28a37e835271cbda1dd",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "1e2fc0ad83f060434a10",
+    "revision": "8f1522a688eb9847f2f57aabdf6a51af",
+    "url": "/static/js/2.js.LICENSE.txt"
+  },
+  {
+    "revision": "8644845b3cfc433b2d2f",
     "url": "/static/js/3.js"
   },
   {
-    "revision": "144afd57566cde4402ef",
+    "revision": "3d2f28f9db86280a71e8",
     "url": "/static/js/4.js"
   },
   {
-    "revision": "f197875a65da9219457d",
+    "revision": "9344b041c6327eba3902e648155f9e27",
+    "url": "/static/js/4.js.LICENSE.txt"
+  },
+  {
+    "revision": "42dd121189dcfb1cc809",
     "url": "/static/js/main.js"
   },
   {
-    "revision": "67501ddb9e15004a2ab4",
+    "revision": "16c31c6fcc9781439f9b",
     "url": "/static/js/runtime~main.js"
   },
   {
