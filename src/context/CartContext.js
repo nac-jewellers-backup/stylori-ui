@@ -189,7 +189,7 @@ const Provider = (props) => {
         orderobj1["userprofileId"] = userIds
         if (userIds) wishlistmakeRequest(orderobj1)
         orderobj["userProfileId"] = localStorage.getItem('user_id')
-        if ((window.location.pathname === '/account-allorders' || window.location.pathname === '/account-addresses' || window.location.pathname === '/account-shoppingcart' || window.location.pathname === '/account-wishlist' || window.location.pathname === "/account-profile" ) && Object.values(orderobj).length > 0) allordermakeRequest(orderobj);
+        if ((window.location.pathname === '/account-allorders' || window.location.pathname === '/account-addresses' || window.location.pathname === '/account-shoppingcart' || window.location.pathname === '/account-wishlist' || window.location.pathname === "/account-profile") && Object.values(orderobj).length > 0) allordermakeRequest(orderobj);
 
     }, [wishlistdata])
     const ordersuccessful = async () => {
@@ -225,7 +225,7 @@ const Provider = (props) => {
                 orderobj["userProfileId"] = user_id
                 sessionStorage.setItem("user_id", user_id)
                 orderobj["userProfileId"] = localStorage.getItem('user_id')
-                if ((window.location.pathname === '/account-allorders' || window.location.pathname === '/account-addresses' || window.location.pathname === '/account-shoppingcart' || window.location.pathname === '/account-wishlist' || window.location.pathname === "/account-profile" ) && Object.values(orderobj).length > 0) allordermakeRequest(orderobj);
+                if ((window.location.pathname === '/account-allorders' || window.location.pathname === '/account-addresses' || window.location.pathname === '/account-shoppingcart' || window.location.pathname === '/account-wishlist' || window.location.pathname === "/account-profile") && Object.values(orderobj).length > 0) allordermakeRequest(orderobj);
                 // allordermakeRequest(orderobj); // CHANGED
                 // wishlistmakeRequest(orderobj1) 
             }
@@ -491,7 +491,7 @@ const Provider = (props) => {
                 orderobj["userProfileId"] = user_id
                 sessionStorage.setItem("user_id", user_id)
                 orderobj["userProfileId"] = localStorage.getItem('user_id')
-                if ((window.location.pathname === '/account-allorders' || window.location.pathname === '/account-addresses' || window.location.pathname === '/account-shoppingcart' || window.location.pathname === '/account-wishlist' || window.location.pathname === "/account-profile" ) && Object.values(orderobj).length > 0) allordermakeRequest(orderobj);
+                if ((window.location.pathname === '/account-allorders' || window.location.pathname === '/account-addresses' || window.location.pathname === '/account-shoppingcart' || window.location.pathname === '/account-wishlist' || window.location.pathname === "/account-profile") && Object.values(orderobj).length > 0) allordermakeRequest(orderobj);
                 // allordermakeRequest(orderobj); // CHANGED
                 // wishlistmakeRequest(orderobj1) 
             }

@@ -126,7 +126,7 @@ class Accountdetails extends Component {
                                         }}
                                     >
                                         Logout</p>
-                                        <CommenDialog isOpen={this.state.modelOpen} content={`Are you sure. you want to exit? `} handleClose={this.canceldeletechecklist} handleSuccess={this.deletechecklists} negativeBtn="No" positiveBtn="Yes" title="Confirm Exit.!!" />
+                                        <CommenDialog isOpen={this.state.modelOpen} content={`Are you sure you want to exit? `} handleClose={this.canceldeletechecklist} handleSuccess={this.deletechecklists} negativeBtn="No" positiveBtn="Logout" title="Logout" />
                                 </List>
                             </Grid>
                             <Grid item xs={12} sm={12} md={9} lg={9} xl={9} >

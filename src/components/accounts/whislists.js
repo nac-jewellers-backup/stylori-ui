@@ -44,7 +44,7 @@ class Component extends React.Component {
         const width = window.innerWidth;
         var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
         var resolution = 500
-        if(imges&&imges.length>0){
+        if (imges && imges.length > 0) {
             var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`
             var url_split = imges && imges.split('/')
             var extension_split = url_split && url_split[url_split.length - 1]
@@ -55,7 +55,7 @@ class Component extends React.Component {
             image_urls = `${CDN_URL}${url_construct}`
             return image_urls
         }
-     
+
     }
     render() {
         const { wishlistdata } = this.props.wishlistdata;

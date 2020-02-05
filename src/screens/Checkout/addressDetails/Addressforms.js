@@ -477,7 +477,6 @@ const Addressforms = (changePanel) => {
         }
     };
     const redirectForm1 = (event) => {
-
         values["addressOne"] = ""
         values["addressTwo"] = ""
         value11 = {
@@ -518,7 +517,7 @@ const Addressforms = (changePanel) => {
                 },
             },
         }
-        values["edit_addresId"] = false
+        values["edit_addresId"] = true
         values["addrs"] = true
         setValues({
             values,
