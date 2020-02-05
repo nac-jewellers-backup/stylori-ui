@@ -72,7 +72,7 @@ export default function RadioBtn(props) {
           onChange={handleChange}
         >
           {props.radioValues.map(data => (
-            <FormControlLabel className={classes.hoverClass} value={data} control={<Radio color="primary"
+            <FormControlLabel  className={classes.hoverClass} value={data} control={<Radio color="primary"
               className={classes.radio} />} label={data} />
           ))}
         </RadioGroup>

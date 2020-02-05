@@ -239,13 +239,19 @@
         font-weight: 400 !important;
     }
 
-    .checkout-page-total {}
-
+    .checkout-page-total {
+       
+    }
+    .highlighter{
+        -webkit-tap-highlight-color: transparent;
+      }
     .breadcrums-header {
         width: 100% !important;
         cursor: pointer;
     }
-
+a,i,.highliter{
+    -webkit-tap-highlight-color: transparent !important;
+}
     .hov {
         cursor: pointer;
         text-decoration: underline;
