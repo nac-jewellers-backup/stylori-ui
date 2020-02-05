@@ -251,7 +251,7 @@ class Header extends Component {
                                                     </div>
                                                 </Popover> */}
                                                  <div className="tooltip">
-                                                <Badge  color="secondary" 
+                                                <Badge  style={{ marginTop: "9px" }} color="secondary" 
                                                     badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length > 0 ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
                                                 // wishlist_count
                                                 // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
@@ -271,7 +271,7 @@ class Header extends Component {
                                                 </div>
                                                 
                                                 <div className="tooltip">
-                                                <Badge  badgeContent={
+                                                <Badge style={{ marginTop: "9px" }} badgeContent={
                                                     (this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length : "0"
                                                     // this.props && this.props.cart_count && this.props.cart_count.length
                                                 } color="secondary">

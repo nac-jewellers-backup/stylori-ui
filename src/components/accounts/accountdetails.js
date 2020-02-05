@@ -70,19 +70,24 @@ class Accountdetails extends Component {
         // const { wishlistdata } = this.props.wishlistdata;
         const currencies = [
             {
-                label: 'profile',
+                label: 'Profile',
+                values:'profile'
             },
             {
-                label: 'addresses',
+                label: 'Address Book',
+                values:'addresses'
             },
             {
-                label: 'shoppingcart',
+                label: 'Shopping bag',
+                values:'shoppingcart'
             },
             {
-                label: 'wishlist',
+                label: 'Wishlist',
+                values:'wishlist'
             },
             {
-                label: 'allorders',
+                label: 'All Orders',
+                values:'allorders'
             },
 
         ];
@@ -126,7 +131,7 @@ class Accountdetails extends Component {
                                         }}
                                     >
                                         Logout</p>
-                                        <CommenDialog isOpen={this.state.modelOpen} content={`Are you sure you want to exit? `} handleClose={this.canceldeletechecklist} handleSuccess={this.deletechecklists} negativeBtn="No" positiveBtn="Logout" title="Logout" />
+                                        <CommenDialog isOpen={this.state.modelOpen} content={`Are you sure you want to leave? `} handleClose={this.canceldeletechecklist} handleSuccess={this.deletechecklists} negativeBtn="No" positiveBtn="Logout" title="Logout" logout={true}/>
                                 </List>
                             </Grid>
                             <Grid item xs={12} sm={12} md={9} lg={9} xl={9} >
@@ -196,7 +201,7 @@ class Accountdetails extends Component {
                                     helperText=""
                                 >
                                     {currencies.map(option => (
-                                        <option key={option.label} value={option.label}>
+                                        <option key={option.values} value={option.values}>
                                             {option.label}
                                         </option>
                                     ))}
