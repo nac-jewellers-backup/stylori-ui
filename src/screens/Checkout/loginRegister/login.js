@@ -84,7 +84,7 @@ const LoginComponent = (props) => {
                     if (fetchValue.accessToken) {
                         localStorage.setItem('accessToken', fetchValue.accessToken);
                         localStorage.setItem('user_id', fetchValue.user.id)
-
+                        localStorage.setItem('email', fetchValue.user_profile.email);
                         localStorage.setItem('true', false)
                         localStorage.setItem('panel', 2);
                         props.history.push('/')
@@ -116,6 +116,7 @@ const LoginComponent = (props) => {
                                         localStorage.setItem('accessToken', fetchValue1.accessToken);
                                         localStorage.setItem('user_id', fetchValue1.user_profile.id)
                                         localStorage.setItem('panel', 2);
+                                        localStorage.setItem('email', fetchValue1.user_profile.email);
                                         localStorage.setItem('isedit', 1);
                                         localStorage.setItem('true', false)
                                         props.history.push('/')
@@ -226,8 +227,8 @@ const LoginComponent = (props) => {
                             localStorage.setItem('accessToken', fetchValue.accessToken);
                             localStorage.setItem('user_id', fetchValue.user_profile.id)
                             localStorage.setItem('panel', 2);
+                            localStorage.setItem('email', fetchValue.user_profile.email);
                             localStorage.setItem('isedit', 1);
-
                             localStorage.setItem('true', false)
                             props.history.push('/')
                         }
