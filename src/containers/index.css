@@ -118,7 +118,7 @@
 
 .aboutFifty {
 
-  width: 50%;
+  width: 50% !important;
   float: left;
 
 }
@@ -234,7 +234,7 @@
   }
 
   .aboutFifty {
-    width: 50%;
+    width: 50% !important;
     float: left;
 
   }
@@ -304,7 +304,7 @@
     width: 100%;
   } */
   .aboutFifty {
-    width: 50%;
+    width: 50% !important;
     float: left;
   }
 
@@ -359,7 +359,7 @@
   } */
   .aboutFifty {
     /* padding: 0px 15px; */
-    width: 100%;
+    width: 100% !important;
   }
 
   .aboutMargin {
@@ -420,7 +420,7 @@
 
   .aboutFifty {
     /* padding: 0px 15px; */
-    width: 100%;
+    width: 100% !important;
   }
 
   .aboutMargin {
