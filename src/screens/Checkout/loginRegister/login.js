@@ -84,6 +84,7 @@ const LoginComponent = (props) => {
                 if(fetchValue.accessToken){
                     localStorage.setItem('accessToken',fetchValue.accessToken);
                     localStorage.setItem('user_id', fetchValue.user.id)
+                    localStorage.setItem('email',fetchValue.user.email)
                     localStorage.setItem('true',false)
                     localStorage.setItem('panel',2);
                     let navlogin = localStorage.getItem('navfblogin');
@@ -120,6 +121,8 @@ const LoginComponent = (props) => {
                             if(fetchValue1.accessToken){
                                 localStorage.setItem('accessToken',fetchValue1.accessToken);
                                 localStorage.setItem('user_id', fetchValue1.user_profile.id)
+                                localStorage.setItem('email',fetchValue1.user_profile.email)
+
                                 localStorage.setItem('panel',2);
                                 localStorage.setItem('isedit',1);
                                 localStorage.setItem('true',false)
@@ -236,6 +239,7 @@ const LoginComponent = (props) => {
                             if(fetchValue.accessToken){
                                 localStorage.setItem('accessToken',fetchValue.accessToken);
                                 localStorage.setItem('user_id', fetchValue.user_profile.id)
+                                localStorage.setItem('email',fetchValue.user_profile.email)
                                 localStorage.setItem('panel',2);
                                 localStorage.setItem('isedit',1);
 
@@ -330,7 +334,7 @@ const LoginComponent = (props) => {
            aria-labelledby="alert-dialog-title"
            aria-describedby="alert-dialog-description"
          >
-           <DialogTitle id="alert-dialog-title">User Info</DialogTitle>
+           <DialogTitle id="alert-dialog-title">We Need Some More of Your Details to Log you in</DialogTitle>
            <DialogContent>
                  <Grid container>
                      <Grid item xs={12} sm={12} md={12} lg={12}>

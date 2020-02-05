@@ -10,6 +10,7 @@
   }
 }
 
+
 .shine {
   animation-duration: 1s;
   animation-fill-mode: forwards;
@@ -291,9 +292,25 @@
   font-weight: normal;
   color: #394578 !important;
 }
+.logoImgHeader1{
+ 
+  -webkit-tap-highlight-color: transparent;
+  
+}
+i{
+ 
+  -webkit-tap-highlight-color: transparent;
+}
+.tooltip-s{
+  display: none;
+  position: absolute;
+  top: 17px;
+  left: 18px;
+  font-size: 14px;
 
-.drawer-list1 {
-  /* border-bottom: 1px solid rgba(0, 0, 0, 0.13) !important; */
+}
+.tooltip:hover .tooltip-s{
+  display: block;
 }
 
 .drawer-list1:hover {

@@ -23,7 +23,7 @@ const useRegister = (changePanel, props) => {
         roles: ["user"],
         firstname: "",
         lastname: "",
-        salutation:salutation,
+        salutation: salutation,
         errortext: {
             emerr: "",
             passerr: "",
@@ -92,7 +92,7 @@ const useRegister = (changePanel, props) => {
             confirmpassword: "",
             firstname: "",
             lastname: "",
-            salutation:salutation,
+            salutation: salutation,
             errortext: {
                 emerr: "",
                 passerr: "",
@@ -150,7 +150,7 @@ const useRegister = (changePanel, props) => {
                 localStorage.setItem('accessToken', data.accessToken)
                 localStorage.setItem("set_check", "123")
                 // localStorage.setItem("addres_id", data.user.id)
-                setValues({ user_id: data.user_profile_id }) 
+                setValues({ user_id: data.user_profile_id })
                 setCartFilters({ user_id })
                 makeRequestCod(obj);
                 if (!pathnamelog) {
@@ -160,7 +160,7 @@ const useRegister = (changePanel, props) => {
                     if (localStorage.getItem('review_location') && localStorage.getItem('review_location').length > 0) {
                         window.location.href = localStorage.getItem('review_location')
                         return false
-                    } else { 
+                    } else {
                         window.location.href = "/"
                         return false
                     }
