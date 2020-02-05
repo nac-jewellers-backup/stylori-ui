@@ -8,6 +8,10 @@ import Netbanking from '../Checkout/paymentOption/netBanking';
 import CashonDelivey from '../Checkout/paymentOption/cashonDelivery';
 import PaymentIndex from '../Checkout/paymentOption/paymentindex';
 export default class Checkout extends Component {
+    componentDidMount(){
+        localStorage.setItem('navfblogin',false)
+    }
+    
     render() {
 
         return (
