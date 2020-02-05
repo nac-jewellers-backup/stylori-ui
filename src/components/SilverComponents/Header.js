@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import classNames from 'classnames';
 import './header.css';
+import Tooltip from '@material-ui/core/Tooltip';
 import {
     AppBar,
     Grid,
@@ -16,6 +17,7 @@ import {
     Container,
     InputAdornment,
     Modal,
+    Fab,
     ClickAwayListener
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -40,6 +42,7 @@ import { CartContext } from 'context'
 let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
 // var path = window.location.pathname.split('/').pop();
 class Header extends Component {
+    
     constructor(props) {
         super(props)
         this.state = {
@@ -152,6 +155,7 @@ class Header extends Component {
     handleExpandClickClose = () => {
         this.setState({ open: false });
     }
+    
     render() {
         const { mainlist, Jewellery, subheader, menuListHeader, menuLists } = this.props.data;
         let { selected, selected1 } = this.state;
@@ -198,12 +202,19 @@ class Header extends Component {
                                                         // onClick={this.handleClickPopover}
                                                         onClick={() => { window.location.href = "/account-profile" }}
                                                     >
-                                                        <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                    <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                     </span>
                                                     // <img className="icons-header-sizes" src={usershape}/>
-                                                    : <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
-                                                        <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
-                                                    </span>
+                                                    
+                                                    :  
+                                                    <div className="tooltip ">
+                                                   
+                                                    <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
+                                                       <i style={{ fontSize: "20px" }}  class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                       <span className="tooltip-s">login</span>
+                                                    </span> 
+                                                   
+                                                  </div>
                                                 }
                                                 {/* <Popover
                                                     id="simple-popper"
@@ -239,27 +250,36 @@ class Header extends Component {
 
                                                     </div>
                                                 </Popover> */}
-                                                <Badge style={{ marginTop: "10px" }} color="secondary"
+                                                 <div className="tooltip">
+                                                <Badge  color="secondary" 
                                                     badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length > 0 ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
                                                 // wishlist_count
                                                 // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
                                                 >
-                                                    <i style={{ fontSize: "18px" }} class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
+                                                   
+                                                    <i style={{ fontSize: "18px" }}  class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
                                                         if (user_id.length > 0) {
                                                             window.location.href = `/account${'-wishlist'}`
                                                         } else {
                                                             window.location.href = "/login"
                                                         }
                                                     }}  ></i>
+                                                     <span className="tooltip-s">Wishlist</span>
+                                                     
+                                                    
                                                 </Badge>
-                                                <Badge style={{ marginTop: "10px" }} badgeContent={
+                                                </div>
+                                                
+                                                <div className="tooltip">
+                                                <Badge  badgeContent={
                                                     (this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length : "0"
                                                     // this.props && this.props.cart_count && this.props.cart_count.length
                                                 } color="secondary">
-                                                    <a href="/cart" >
+                                                    <a href="/cart"  >
                                                         <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
-
+                                                        <span className="tooltip-s" style={{color:"#d51f63"}}>Cart</span>
                                                     </a> </Badge>
+                                                    </div>
                                             </div>
                                         </Grid>
                                     </Grid>
@@ -598,6 +618,7 @@ class Header extends Component {
                     </Drawer>
                 </Hidden >
             </div >
+            
         )
     }
 }
