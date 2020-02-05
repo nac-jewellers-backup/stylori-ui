@@ -9,6 +9,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
+import CheckIcon from '@material-ui/icons/Check';
+
 
 const useStyles = makeStyles(theme => ({
   buttons: {
@@ -98,9 +100,9 @@ export default function PineDialog(props) {
       </DialogContent>
 
       <DialogActions style={{ padding: "14px" }}>
-        {props.negativeBtn ? <Button onClick={() => handleClose()} className={classes.buttons1}>{props.negativeBtn}
+        {props.negativeBtn ? <Button onClick={() => handleClose()} className={classes.buttons1} style={{ backgroundColor:"gray"}}><i class="fa fa-close" aria-hidden="true" style={{marginRight:"7px"}}></i> {props.negativeBtn}
         </Button> : ''}
-        {props.positiveBtn ? <Button className={classes.buttons} style={{ backgroundColor: props.notesDialog ? "#c84f4b" : "" }} onClick={() => handleSuccess()} >{props.positiveBtn}
+        {props.positiveBtn ? <Button className={classes.buttons} style={{ backgroundColor:"#f84e88"}} onClick={() => handleSuccess()} ><i class="fa fa-check" aria-hidden="true" style={{marginRight:"7px"}}></i> {props.positiveBtn}
         </Button> : ''}
       </DialogActions>
     </Dialog>
