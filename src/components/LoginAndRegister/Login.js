@@ -19,6 +19,7 @@ const UserLogin = (props) => {
 }
 
 const LoginComponent = (props) => {
+    localStorage.setItem('navfblogin',true)
     const { classes } = props;
     const { values, handlers, data } = useLogin(() => props.changePanel(3));
     // const vl = data && data.message
