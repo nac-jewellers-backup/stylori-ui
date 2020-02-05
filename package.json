@@ -88,7 +88,7 @@
   },
   "scripts": {
     "generate-build-version": "node generate-build-version",
-    "start": "node scripts/start",
+    "start": "HTTPS=true node scripts/start",
     "build": "npm run generate-build-version &&  node scripts/build",
     "test": "node scripts/test",
     "serve": "npm run build && serve -S build",

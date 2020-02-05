@@ -84,10 +84,15 @@ const LoginComponent = (props) => {
                 if(fetchValue.accessToken){
                     localStorage.setItem('accessToken',fetchValue.accessToken);
                     localStorage.setItem('user_id', fetchValue.user.id)
-
                     localStorage.setItem('true',false)
                     localStorage.setItem('panel',2);
-                    props.history.push('/')
+                    let navlogin = localStorage.getItem('navfblogin');
+                    if(navlogin==="true"){
+                        props.history.push('/')
+                    }else{
+                        props.history.push('/Checkout')
+
+                    }
                 }else{
                     if (typeof response.email === "undefined"){
                         setLoginInfo({
@@ -114,11 +119,17 @@ const LoginComponent = (props) => {
                         .then(fetchValue1=>{
                             if(fetchValue1.accessToken){
                                 localStorage.setItem('accessToken',fetchValue1.accessToken);
-                                localStorage.setItem('user_id', fetchValue.user_profile.id)
+                                localStorage.setItem('user_id', fetchValue1.user_profile.id)
                                 localStorage.setItem('panel',2);
                                 localStorage.setItem('isedit',1);
                                 localStorage.setItem('true',false)
-                                props.history.push('/')
+                                let navlogin = localStorage.getItem('navfblogin');
+                                if(navlogin==="true"){
+                                    props.history.push('/')
+                                }else{
+                                    props.history.push('/Checkout')
+            
+                                }
                             }
                         })
                         .catch(console.error)
@@ -229,7 +240,13 @@ const LoginComponent = (props) => {
                                 localStorage.setItem('isedit',1);
 
                                 localStorage.setItem('true',false)
-                                props.history.push('/')
+                                let navlogin = localStorage.getItem('navfblogin');
+                                if(navlogin==="true"){
+                                    props.history.push('/')
+                                }else{
+                                    props.history.push('/Checkout')
+            
+                                }
                             }
                         })
                         .catch(console.error)
