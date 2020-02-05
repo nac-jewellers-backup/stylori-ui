@@ -275,7 +275,7 @@ class Header extends Component {
                                                     (this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length : "0"
                                                     // this.props && this.props.cart_count && this.props.cart_count.length
                                                 } color="secondary">
-                                                    <a href="/cart"  >
+                                                    <a href="/cart" className="highlighter">
                                                         <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
                                                         <span className="tooltip-s" style={{color:"#d51f63"}}>Cart</span>
                                                     </a> </Badge>

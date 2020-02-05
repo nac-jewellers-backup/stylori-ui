@@ -298,7 +298,9 @@
   
 }
 i{
- 
+  -webkit-tap-highlight-color: transparent;
+}
+.highlighter{
   -webkit-tap-highlight-color: transparent;
 }
 .tooltip-s{

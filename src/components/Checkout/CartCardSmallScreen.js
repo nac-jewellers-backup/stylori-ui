@@ -12,6 +12,7 @@ import { productcarddatas } from '../../mappers';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
 import { NavLink } from 'react-router-dom';
+import Cart from './Cart.css'
 import { API_URL, CDN_URL } from "config"
 function MediaControlCard(props) {
   const { classes } = props;
@@ -247,10 +248,11 @@ function MediaControlCard(props) {
                       variant="contained"
                       style={{ cursor: "pointer", fontSize: "0.9rem" }}
                       className={`${classes.normalfonts} ${classes.controls}`}
+                      className="highliter"
                     >
                       &nbsp;
-            <div id={dataval.generatedSku} productid={dataval} onClick={(e) => handleDeleteLocalStorage(e, val)}>
-                        <i style={{ fontSize: "16px" }} class="fa"> &#xf014;</i>&nbsp;<span>Remove</span>
+            <div id={dataval.generatedSku} className="highliter" productid={dataval} onClick={(e) => handleDeleteLocalStorage(e, val)}>
+                        <i style={{ fontSize: "16px" }} class="fa"> &#xf014;</i>&nbsp;<span className="highliter">Remove</span>
                       </div>
                     </div>
                     : ""}  </div>

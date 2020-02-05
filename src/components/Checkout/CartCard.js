@@ -266,7 +266,7 @@ class Checkoutcard extends React.Component {
                                             <Typography className={`subhesder ${classes.normalfonts}`}>{data[0].shipby}</Typography>
                                             {/* : ""} */}
                                             <br />
-                                            {window.location.pathname !== "/checkout" ? <div className={`subhesder hov ${classes.normalfonts}`}
+                                            {window.location.pathname !== "/checkout" ? <div className="highlighter" className={`subhesder hov ${classes.normalfonts}`}
                                                 id={val.namedetail[4].details}  onClick={(event) => this.handleDeleteLocalStorage(event)}>
                                                 <i class="fa fa-trash"></i>
                                                 &nbsp;Remove</div> : ""}
