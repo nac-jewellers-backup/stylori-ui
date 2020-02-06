@@ -49,6 +49,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                             onKeyPress={(e) => { if (!(e.which >= 48 && e.which <= 57)) e.preventDefault(); }}
                         /> */}
                         <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+                            type="number"
                             placeholder="Enter Pincode"
                             maxLength={6}
                             className="pincode-cust buynow-search"
@@ -113,7 +114,7 @@ const Buydetails = (props, state, handleChanges, handleCodChange, canceldeletech
                                     <Typography>
                                         <i class="fa fa-whatsapp overall-icons" aria-hidden="true"></i>&nbsp;
                                 </Typography>
-                                    <Typography className={classes.TypoListed}>
+                                    <Typography  className={classes.TypoListed}>
                                         {val.phonenum}
                                     </Typography>
                                 </Grid>
