@@ -163,6 +163,10 @@ export default function Footer(props) {
             url: "/termsconditions",
             Title: "Terms & Conditions"
         },
+        {
+            url: "/careers",
+            Title: "Careers"
+        },
 
     ]
     const footerData1 = [
