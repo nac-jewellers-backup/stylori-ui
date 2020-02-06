@@ -5,13 +5,13 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
+import "./index.css"
 
 const useStyles = makeStyles(theme => ({
   root: {
     padding: "6px 6px 6px 6px",
-    
-    height:"100vh",
-    display:"flex"
+    height: "100vh",
+    display: "flex"
   },
   formControl: {
     margin: theme.spacing(0.8),
@@ -63,8 +63,8 @@ export default function RadioBtn(props) {
   // console.log(value);
   // console.info('objectvaluesobjectvalues', props.values.values)
   return (
-    <div className={classes.root} style={{alignItems: "flex-end"}}>
-      <FormControl  component="fieldset" className={`${classes.fromControlTwo} ${classes.formControl}`}>
+    <div style={{ alignItems: "flex-end", padding: "6px" }} className="classSort">
+      <FormControl component="fieldset" className={`${classes.fromControlTwo} ${classes.formControl}`}>
         <RadioGroup
           aria-label="Gender"
           name="gender1"
@@ -73,7 +73,7 @@ export default function RadioBtn(props) {
           onChange={handleChange}
         >
           {props.radioValues.map(data => (
-            <FormControlLabel  className={classes.hoverClass} value={data} control={<Radio color="primary"
+            <FormControlLabel className={classes.hoverClass} value={data} control={<Radio color="primary"
               className={classes.radio} />} label={data} />
           ))}
         </RadioGroup>

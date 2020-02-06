@@ -837,6 +837,7 @@ body {
     color: white !important;
     border: 0 !important;
 }
+
 .ribbon_dic:after {
     z-index: 999 !important;
     content: "" !important;
@@ -853,6 +854,7 @@ body {
     z-index: 999 !important;
     background: #ed1165 !important;
 }
+
 .ribbon_dic:hover:after {
     z-index: 999 !important;
     border-color: #ed1165 !important;
@@ -884,7 +886,7 @@ body {
 
 .one-day-ship_ {
     z-index: 999 !important;
-    width: 152px !important; 
+    width: 152px !important;
     height: 9% !important;
     background-image: url(https://assets.stylori.com/images/static/product-details-icons.png);
     /* margin-top: -30px !important; */
@@ -1346,6 +1348,8 @@ body {
     .sizeChange {
         max-width: 10.66667% !important;
     }
+
+
 }
 
 @media screen and (min-width:600px) and (max-width: 1279px) {
@@ -1555,6 +1559,10 @@ body {
         box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .06);
         padding-top: 12px !important;
         box-shadow: none !important;
+    }
+
+    .mannual {
+        padding: 0px 17px
     }
 }
 
