@@ -194,8 +194,9 @@ const RegisterComponent = (props) => {
                                         </Grid>
                                         <Grid item xs={6} lg={6}>
                                             <Input
+                                                 
                                                 className='text-f'
-                                                type="text"
+                                                type="number"
                                                 name='pincode'
                                                 placeholder="Pin Code/Zip Code"
                                                 onChange={e => handlers.handlesetvaluesadrees('pincode', e.target.value)}
@@ -213,7 +214,7 @@ const RegisterComponent = (props) => {
                                         <Grid item xs={9} lg={9}>
                                             <Input
                                                 className='text-f'
-                                                type="text"
+                                                type="number"
                                                 name='contactno'
                                                 onChange={(event) => handlers.handlesetvaluesadrees('contactno', event.target.value)}
                                                 // onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}

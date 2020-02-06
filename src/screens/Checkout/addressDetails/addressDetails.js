@@ -65,20 +65,33 @@ class Addressdetails extends React.Component {
         //         return ""
         //     }
         // }
- 
+
         const cl = <input onChange={(e) => {
+            debugger
             setValues({
                 values, ...values,
                 checkValue1: !values.checkValue1
             })
-            // if (values.checkValue1 === false) {
+            if (values.checkValue1 === false && !localStorage.getItem("bil_isactive")) {
+                debugger
+                localStorage.removeItem("bil_isactive")
+                localStorage.removeItem("ship_isactive")
+                localStorage.removeItem("select_addres")
+            }
+            // if (values.checkValue1 === true) {
             //     sessionStorage.setItem("Ifcheck", false)
-            // } if (values.checkValue1 === true) {
+            //     setValues({
+            //         values, ...values,
+            //         checkValue1: false
+            //     })
+            // } if (values.checkValue1 === false) {
             //     sessionStorage.removeItem("Ifcheck")
             // }
-        }} type='checkbox' checked={values.checkValue1} />
-      
- 
+        }} type='checkbox' checked={
+            // sessionStorage.getItem("Ifcheck") ? false : 
+            values.checkValue1} />
+
+
         const { classes } = props;
         var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
         const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
