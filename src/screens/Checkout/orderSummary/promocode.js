@@ -42,7 +42,7 @@ const PromoComponent = (props) => {
                             />
                         </Grid>
                         <Grid item xs={4} lg={4}>
-                            {data.message === "Applied Successfully" ?
+                            {data.status === "200" ?
                                 <Button style={{ filter: "grayscale(1)" }} disabled type="sumbit" className='ship-promo-btn'>Applied</Button> :
                                 <Button type="sumbit" className='ship-promo-btn'>Apply</Button>}
 

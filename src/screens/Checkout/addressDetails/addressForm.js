@@ -60,9 +60,9 @@ const AddressComponent = (props) => {
           <MenuItem value={30}>Thirty</MenuItem>
         </Select> */}
                                             {/* </FormControl> */}
-                                            <SimpleSelect 
-                                            // val={'1'}
-                                             name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
+                                            <SimpleSelect
+                                                // val={'1'}
+                                                name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                         </Grid>
                                         <Grid item xs={4} lg={4}>
                                             <Input
@@ -329,7 +329,7 @@ const AddressComponent = (props) => {
                             <div style={{ display: "flex", justifyContent: "flex-end" }}>
                                 {values.edit_addresId === true ? <Button onClick={() => handle.redirectFormss()} style={{ borderRadius: "0px", padding: "6px 8px", lineHeight: "1.75", border: "1px solid #394578" }}
                                     className=''>Cancel</Button> : ""} &nbsp;
-                                <Button type="submit" className='apply-b'>Save and Review</Button>
+                                <Button type="submit" className='apply-b'>Add</Button>
                             </div>
                         </form>
                     </div>

@@ -5,12 +5,14 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from "./style"
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
+import CommenDialog from "components/Common/Dialogmodel"
+
 const panel_clear = JSON.parse(localStorage.getItem("panel")) ? JSON.parse(localStorage.getItem("panel")) : ""
 class Addressdetails extends React.Component {
     state = {
         open: false,
         index_of_isActive: null,
-        id_delete:null
+        id_delete: null
     };
     handleOpen = () => {
         this.setState({ open: true });
@@ -77,20 +79,24 @@ class Addressdetails extends React.Component {
 
         const delete_all_addresses = (val_addrs1, index) => {
             // alert(JSON.stringify(index))
-
+           if(document.location.pathname === "/checkout"){
+            // alert() 
             if (JSON.parse(localStorage.getItem("ship_isactive")) === this.state.index_of_isActive) {
                 alert("Sorry u con't delete this address")
-                // alert(JSON.stringify(this.state.index_of_isActive))
                 return false
             }
             if (JSON.parse(localStorage.getItem("bil_isactive")) === this.state.index_of_isActive) {
                 alert("Sorry u con't delete this address")
-                // alert(JSON.stringify(this.state.index_of_isActive))
                 return false
-            } if ((JSON.parse(localStorage.getItem("bil_isactive")) || JSON.parse(localStorage.getItem("ship_isactive"))) !== this.state.index_of_isActive) {
-                // alert(JSON.stringify(this.state.index_of_isActive))
-                this.props.Delete_address(this.state.id_delete, this.state.index_of_isActive)
+            } 
+            if ((JSON.parse(localStorage.getItem("bil_isactive")) || JSON.parse(localStorage.getItem("ship_isactive"))) !== this.state.index_of_isActive) {
+            // alert(JSON.stringify(this.state.index_of_isActive))
+            this.props.Delete_address(this.state.id_delete, this.state.index_of_isActive)
             }
+           }
+           else{
+            this.props.Delete_address(this.state.id_delete, this.state.index_of_isActive) 
+           }
         }
         // const back_color = () => {
         // }
@@ -108,7 +114,7 @@ class Addressdetails extends React.Component {
                                 {localStorage.setItem("namesOf_first", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].firstname))}
                                 {localStorage.setItem("namesOf_last", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].lastname))}
                                 <Grid item xs={12} lg={12} style={{ paddingRight: "15px" }}>
-                                    <div className='card-adrs wd' 
+                                    <div className='card-adrs wd'
                                         style={{ marginTop: "15px" }}>
                                         <h4 class="card-title">
                                             <i style={{ fontSize: "25px", color: "#394578" }} className={`${classes.normalfonts}`} class="fa fa-check-circle-o"></i>
@@ -123,27 +129,29 @@ class Addressdetails extends React.Component {
                                                 this.props.redirectForm(val_addrs1, index, true, true, index)
                                             }} style={{ fontSize: "20px", color: "#394578", float: "right", cursor: "pointer" }} className={`${classes.normalfonts}`}
                                                 class="fa fa-pencil-square-o"></i>
-                                            {_add_data_addres().length >= 0 && _add_data_addres().length <= 1 ?
+                                            {/* {_add_data_addres().length >= 0 && _add_data_addres().length <= 1 ?
                                                 <i
                                                     onClick={() => {
                                                         alert("Address could not be removed as it is in use")
                                                     }} style={{ fontSize: "20px", color: "#394578", float: "right", marginRight: "10px", cursor: "pointer" }}
                                                     className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
-                                                :
-                                                <i
-                                                    onClick={() => {
-                                                        this.setState({
-                                                            index_of_isActive: index,
-                                                            id_delete: val_addrs1.id
-                                                        })
-                                                        // alert(JSON.stringify(val_addrs1))
-                                                        this.handleOpen()
-                                                    }} style={{ fontSize: "20px", color: "#394578", float: "right", marginRight: "10px", cursor: "pointer" }}
-                                                    className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
-                                            }
+                                                : */}
+                                            <i
+                                                onClick={() => {
+                                                    this.setState({
+                                                        index_of_isActive: index,
+                                                        id_delete: val_addrs1.id
+                                                    })
+                                                    // alert(JSON.stringify(val_addrs1))
+                                                    this.handleOpen()
+                                                }} style={{ fontSize: "20px", color: "#394578", float: "right", marginRight: "10px", cursor: "pointer" }}
+                                                className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
+                                            {/* } */}
 
                                         </h4>
-                                        <Modal
+
+                                        <CommenDialog isOpen={this.state.open} content={`Are you sure you want to delete this Address? `} handleClose={this.handleClose} handleSuccess={delete_all_addresses} negativeBtn="Cancel" positiveBtn="Confirm delete" title="Confirmation" />
+                                        {/* <Modal
                                             open={this.state.open}
                                         >
                                             <div className="modal_addrs_dlt" style={{ marginLeft: "auto", marginRight: "auto" }}>
@@ -155,7 +163,7 @@ class Addressdetails extends React.Component {
                                                     <Grid item xs={6} lg={6} sm={6} style={{ display: "flex", justifyContent: "end" }}><Button className="addres_dlt_ok" onClick={() => delete_all_addresses(val_addrs1, index)}>Confirm delete</Button></Grid>
                                                 </Grid>
                                             </div>
-                                        </Modal>
+                                        </Modal> */}
 
                                         <p className={`detils-p ${classes.normalfonts}`} >
                                             {val_addrs1.addressline1}
@@ -219,21 +227,20 @@ class Addressdetails extends React.Component {
                                                         }} style={{ fontSize: "20px", color: "#394578", float: "right", marginRight: "10px", cursor: "pointer" }}
                                                         className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
                                                 </h4>
-
-                                                <Modal
+                                                <CommenDialog isOpen={this.state.open} content={`Are you sure you want to delete this Address? `} handleClose={this.handleClose} handleSuccess={delete_all_addresses} negativeBtn="Cancel" positiveBtn="Confirm delete" title="Confirmation" />
+                                                {/* <Modal
                                                     open={this.state.open}
                                                 >
                                                     <div className="modal_addrs_dlt" style={{ marginLeft: "auto", marginRight: "auto" }}>
                                                         <Grid container xs={12} lg={9} sm={9} spacing={12} style={{ marginLeft: "auto", marginRight: "auto" }} >
                                                             <div className="dlt_content">
-                                                                Are you sure you want to delete this Address?
+                                                                Are you sure you want to delete this 
                                                                 </div>
                                                             <Grid item xs={6} lg={6} sm={6} style={{ display: "flex", justifyContent: "flex-end", paddingRight: "8px" }}><Button className="addres_dlt_cancel" onClick={this.handleClose}>Cancel</Button></Grid>
                                                             <Grid item xs={6} lg={6} sm={6} style={{ display: "flex", justifyContent: "end" }}><Button className="addres_dlt_ok" onClick={() => delete_all_addresses(val_addrs1, index)}>Confirm delete</Button></Grid>
-                                                            {/* {JSON.parse(localStorage.getItem("bil_isactive")) === index && "Sorry u con't delete this address"} */}
                                                         </Grid>
                                                     </div>
-                                                </Modal>
+                                                </Modal> */}
                                                 <p className={`detils-p ${classes.normalfonts}`} >
                                                     {val_addrs1.addressline1}
                                                     <br />
@@ -315,19 +322,20 @@ class Addressdetails extends React.Component {
                                                                     // window.location.reload();
                                                                 }} className={`${classes.normalfonts}`} class="fa fa-trash-o"></i>
                                                         </h4>
-                                                        <Modal
+                                                        <CommenDialog isOpen={this.state.open} content={`Are you sure you want to delete this Address? `} handleClose={this.handleClose} handleSuccess={delete_all_addresses} negativeBtn="Cancel" positiveBtn="Confirm delete" title="Confirmation" />
+                                                        {/* <Modal
                                                             open={this.state.open}
                                                         >
                                                             <div className="modal_addrs_dlt" style={{ marginLeft: "auto", marginRight: "auto" }}>
                                                                 <Grid container xs={12} lg={9} sm={9} spacing={12} style={{ marginLeft: "auto", marginRight: "auto" }}>
                                                                     <div className="dlt_content">
-                                                                        Are you sure you want to delete this Address?
+                                                                        Are you sure you want to delete this
                                                             </div>
                                                                     <Grid item xs={6} lg={6} sm={6} style={{ display: "flex", justifyContent: "flex-end", paddingRight: "8px" }}><Button className="addres_dlt_cancel" onClick={this.handleClose}>Cancel</Button></Grid>
                                                                     <Grid item xs={6} lg={6} sm={6} style={{ display: "flex", justifyContent: "end" }}><Button className="addres_dlt_ok" onClick={() => delete_all_addresses(val_addrs2, index)}>Confirm delete</Button></Grid>
                                                                 </Grid>
                                                             </div>
-                                                        </Modal>
+                                                        </Modal> */}
                                                         <p className={`detils-p ${classes.normalfonts}`} >
                                                             {val_addrs2.addressline1}
                                                             <br />

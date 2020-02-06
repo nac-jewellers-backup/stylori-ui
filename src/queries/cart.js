@@ -30,7 +30,7 @@ export const CART = `query myquerycart($productList: [String!]) {
   }
 }`
 export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
-  allOrders(filter: {userProfileId: {in: $userProfileId}}, orderBy: CREATED_AT_DESC,condition: {paymentStatus: "Submited"}) {
+  allOrders(filter: {userProfileId: {in: $userProfileId}}, orderBy: CREATED_AT_DESC,condition: {paymentStatus: "Submitted"}) {
     nodes {
       paymentStatus
       shoppingCartByCartId {
