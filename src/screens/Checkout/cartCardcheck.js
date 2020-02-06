@@ -51,7 +51,7 @@ class Component extends React.Component {
     }
 
     handleChange = panel => (event) => {
-        
+
         // alert("va",JSON.stringify(panel))
         if (panel === 2) {
             adres["value"] = {}
@@ -92,7 +92,9 @@ class Component extends React.Component {
     };
 
     changePanel = (panel, adres_detail) => {
-        
+        if (Object.keys(adres.value).length <= 0) {
+            localStorage.setItem("panel", 1);
+        }
         if (panel === 2) {
             adres["value"] = {}
             localStorage.removeItem("bil_isactive")
@@ -163,6 +165,10 @@ class Component extends React.Component {
             }
         ]
         adres["value"] = localStorage.getItem("select_addres") ? JSON.parse(localStorage.getItem("select_addres")) : {};
+        debugger
+        if (Object.keys(adres.value).length <= 0) {
+            localStorage.setItem("panel", 1);
+        }
         return (
             <Grid >
                 <Header wishlist={this.props.wishlistdata} />

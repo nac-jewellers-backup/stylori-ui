@@ -67,31 +67,24 @@ class Addressdetails extends React.Component {
         // }
 
         const cl = <input onChange={(e) => {
-            debugger
             setValues({
                 values, ...values,
                 checkValue1: !values.checkValue1
             })
-            if (values.checkValue1 === false && !localStorage.getItem("bil_isactive")) {
-                debugger
-                localStorage.removeItem("bil_isactive")
-                localStorage.removeItem("ship_isactive")
-                localStorage.removeItem("select_addres")
-            }
-            // if (values.checkValue1 === true) {
-            //     sessionStorage.setItem("Ifcheck", false)
-            //     setValues({
-            //         values, ...values,
-            //         checkValue1: false
-            //     })
-            // } if (values.checkValue1 === false) {
+            // if (values.checkValue1 === false && !localStorage.getItem("bil_isactive")) {
+            //     localStorage.removeItem("bil_isactive")
+            //     localStorage.removeItem("ship_isactive")
+            //     localStorage.removeItem("select_addres")
+            // }
+            // if (values.checkValue1 === false) {
             //     sessionStorage.removeItem("Ifcheck")
             // }
         }} type='checkbox' checked={
-            // sessionStorage.getItem("Ifcheck") ? false : 
-            values.checkValue1} />
+            // sessionStorage.getItem("Ifcheck") ? false :
+                values.checkValue1} />
 
 
+        sessionStorage.setItem("Ifcheck", false)
         const { classes } = props;
         var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
         const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
@@ -297,12 +290,13 @@ class Addressdetails extends React.Component {
 
                 {window.location.pathname.split("-")[0] !== "/account" ? <>
                     <div class="form-group tp ts">
+                        {/* {JSON.stringify(values.checkValue1)} */}
                         {/* {cl()} */}{cl}
                         {/* {_add_data_addres().length > 0 && _add_data_addres().length < 1 ? "" : <>{cl}</>} */}
                         {!values.checkValue1 && 'Please check the box if your Billing address is same as your shipping address.'}
                         {values.checkValue1 && 'Please uncheck the box if your Billing address is different from your shipping address.'}
                     </div>
-                    {!values.checkValue1 &&
+                    {values.checkValue1 === false ?
                         <>
                             <h5 className='title'> Billing Address</h5><br />
                             <Grid container spacing={12}>
@@ -395,7 +389,7 @@ class Addressdetails extends React.Component {
                                     <div></div>  Add New Address
                    </Button>}
                         </>
-                    }</> : ""}
+                   :"" }</> : ""}
             </div>
         )
     }
