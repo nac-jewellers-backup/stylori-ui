@@ -233,6 +233,10 @@ export default function Footer(props) {
             url: "/contactus",
             Title: "Contact us"
         },
+        {
+            url: "/careers",
+            Title: "Careers"
+        },
     ]
 
     const status = (response) => {
