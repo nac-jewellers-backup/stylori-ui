@@ -268,9 +268,9 @@ class Component extends React.Component {
 
                 <Hidden mdUp>
                     <div style={{ marginTop: "10px" }}>
-                        <ProductPrice data={this.props.data} wishlist={this.props.wishlistdata}  />
+                        <ProductPrice data={this.props.data} wishlist={this.props.wishlist}  />
 
-                        <PriceTabs data={this.props.data} wishlist={this.props.wishlistdata} />
+                        <PriceTabs data={this.props.data} wishlist={this.props.wishlist} />
                         {inputsearch(this.props, this.state, this.handleChanges, this.handleCodChange)}
                         <Buynowfixed data={this.props.data} onClick={this.handleLocalStorage.bind(this)}  />
                     </div>
