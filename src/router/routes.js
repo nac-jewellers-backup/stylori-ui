@@ -25,7 +25,9 @@ export const routes = {
     paymentfail: '/paymentfail',
     paymenthidden: '/paymenthidden',
     Education: '/education',
-    ContactUs:'/contactus'
+    ContactUs: '/contactus',
+    Careers: "/careers"
+
 }
 
 export default routes;

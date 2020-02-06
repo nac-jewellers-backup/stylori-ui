@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import CommenDialog from "components/Common/Dialogmodel"
 
-const panel_clear = JSON.parse(localStorage.getItem("panel")) ? JSON.parse(localStorage.getItem("panel")) : ""
+// const panel_clear = JSON.parse(localStorage.getItem("panel")) ? JSON.parse(localStorage.getItem("panel")) : ""
 class Addressdetails extends React.Component {
     state = {
         open: false,
@@ -23,7 +23,9 @@ class Addressdetails extends React.Component {
     };
     Addressdetails = (props, value, value2) => {
         const { setValues, values } = props;
+
         const _add_data_addres = () => {
+
             if (con_gust === true) {
                 return value
             } if (con_gust !== true) {
@@ -63,43 +65,48 @@ class Addressdetails extends React.Component {
         //         return ""
         //     }
         // }
+ 
         const cl = <input onChange={(e) => {
             setValues({
                 values, ...values,
                 checkValue1: !values.checkValue1
             })
-
+            // if (values.checkValue1 === false) {
+            //     sessionStorage.setItem("Ifcheck", false)
+            // } if (values.checkValue1 === true) {
+            //     sessionStorage.removeItem("Ifcheck")
+            // }
         }} type='checkbox' checked={values.checkValue1} />
-
+      
+ 
         const { classes } = props;
         var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
-
         const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
         const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
-
         const delete_all_addresses = (val_addrs1, index) => {
             // alert(JSON.stringify(index))
-           if(document.location.pathname === "/checkout"){
-            // alert() 
-            if (JSON.parse(localStorage.getItem("ship_isactive")) === this.state.index_of_isActive) {
-                alert("Sorry u con't delete this address")
-                return false
+            if (document.location.pathname === "/checkout") {
+                // alert() 
+                if (JSON.parse(localStorage.getItem("ship_isactive")) === this.state.index_of_isActive) {
+                    alert("Sorry u con't delete this address")
+                    return false
+                }
+                if (JSON.parse(localStorage.getItem("bil_isactive")) === this.state.index_of_isActive) {
+                    alert("Sorry u con't delete this address")
+                    return false
+                }
+                if ((JSON.parse(localStorage.getItem("bil_isactive")) || JSON.parse(localStorage.getItem("ship_isactive"))) !== this.state.index_of_isActive) {
+                    // alert(JSON.stringify(this.state.index_of_isActive))
+                    this.props.Delete_address(this.state.id_delete, this.state.index_of_isActive)
+                }
             }
-            if (JSON.parse(localStorage.getItem("bil_isactive")) === this.state.index_of_isActive) {
-                alert("Sorry u con't delete this address")
-                return false
-            } 
-            if ((JSON.parse(localStorage.getItem("bil_isactive")) || JSON.parse(localStorage.getItem("ship_isactive"))) !== this.state.index_of_isActive) {
-            // alert(JSON.stringify(this.state.index_of_isActive))
-            this.props.Delete_address(this.state.id_delete, this.state.index_of_isActive)
+            else {
+                this.props.Delete_address(this.state.id_delete, this.state.index_of_isActive)
             }
-           }
-           else{
-            this.props.Delete_address(this.state.id_delete, this.state.index_of_isActive) 
-           }
         }
         // const back_color = () => {
         // }
+        // alert(JSON.stringify(values.selest_my_address))
 
         return (
             <div className='pt-sm'>
@@ -108,11 +115,11 @@ class Addressdetails extends React.Component {
                     {window.location.pathname.split("-")[0] === "/account" ? <>
                         {_add_data_addres() && _add_data_addres().map((val_addrs1, index) =>
                             <>
-                                {localStorage.setItem("pin_cod", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].pincode))}
+                                {/* {localStorage.setItem("pin_cod", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].pincode))}
                                 {localStorage.setItem("co_num", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].contactNumber))}
                                 {/* {localStorage.setItem("addres_Id", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].id))} */}
-                                {localStorage.setItem("namesOf_first", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].firstname))}
-                                {localStorage.setItem("namesOf_last", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].lastname))}
+                                {/* {localStorage.setItem("namesOf_first", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].firstname))}
+                                {localStorage.setItem("namesOf_last", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].lastname))} */}
                                 <Grid item xs={12} lg={12} style={{ paddingRight: "15px" }}>
                                     <div className='card-adrs wd'
                                         style={{ marginTop: "15px" }}>
@@ -184,7 +191,7 @@ class Addressdetails extends React.Component {
                                                         style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
                                                         }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Selected</Button></> : <>
                                                         <Button style={{ float: "right" }} className='apply-b' onClick={() => {
-                                                            this.props.selectaddreses(val_addrs1, 1, index)
+                                                            this.props.selectaddreses(val_addrs1, 1, index, "yes")
                                                         }}>Select to continue </Button></>}</>
                                                 : ""}
                                         </div>
@@ -195,11 +202,11 @@ class Addressdetails extends React.Component {
                             {_add_data_addres() && _add_data_addres().map((val_addrs1, index) => {
                                 return (JSON.parse(localStorage.getItem("bil_isactive")) === index ? false :
                                     <>
-                                        {localStorage.setItem("pin_cod", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].pincode))}
+                                        {/* {localStorage.setItem("pin_cod", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].pincode))}
                                         {localStorage.setItem("co_num", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].contactNumber))}
                                         {/* {localStorage.setItem("addres_Id", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].id))} */}
-                                        {localStorage.setItem("namesOf_first", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].firstname))}
-                                        {localStorage.setItem("namesOf_last", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].lastname))}
+                                        {/* {localStorage.setItem("namesOf_first", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].firstname))}
+                                        {localStorage.setItem("namesOf_last", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].lastname))}  */}
                                         <Grid item xs={12} lg={6} style={{ paddingRight: "15px" }}>
                                             <div className='card-adrs wd'
                                                 style={{ marginTop: "5px" }}>
@@ -260,7 +267,7 @@ class Addressdetails extends React.Component {
                                                                 style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
                                                                 }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Selected</Button></> : <>
                                                                 <Button style={{ float: "right" }} className='apply-b' onClick={() => {
-                                                                    this.props.selectaddreses(val_addrs1, 1, index)
+                                                                    this.props.selectaddreses(val_addrs1, 1, index, "yes")
                                                                 }}>Select to continue </Button></>}</>
                                                         : ""}
                                                 </div>
@@ -357,7 +364,7 @@ class Addressdetails extends React.Component {
                                                                         // this.props.changevalue(3)
                                                                     }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Selected</Button></> : <>
                                                                     <Button style={{ float: "right" }} className='apply-b' onClick={() => {
-                                                                        this.props.selectaddreses(val_addrs2, 2, index)
+                                                                        this.props.selectaddreses(val_addrs2, 2, index, "no")
                                                                         // this.props.changevalue(3)
                                                                     }}>Select to continue </Button></>}</>
 

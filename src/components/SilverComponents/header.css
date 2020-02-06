@@ -292,18 +292,22 @@
   font-weight: normal;
   color: #394578 !important;
 }
-.logoImgHeader1{
- 
+
+.logoImgHeader1 {
+
   -webkit-tap-highlight-color: transparent;
-  
+
 }
-i{
+
+i {
   -webkit-tap-highlight-color: transparent;
 }
-.highlighter{
+
+.highlighter {
   -webkit-tap-highlight-color: transparent;
 }
-.tooltip-s{
+
+.tooltip-s {
   display: none;
   position: absolute;
   top: 17px;
@@ -311,7 +315,21 @@ i{
   font-size: 14px;
 
 }
-.tooltip:hover .tooltip-s{
+
+.tooltip-slog {
+  display: none;
+  position: absolute;
+  top: 27px;
+  left: 18px;
+  font-size: 14px;
+
+}
+
+.tooltip:hover .tooltip-s {
+  display: block;
+}
+
+.tooltip:hover .tooltip-slog {
   display: block;
 }
 
@@ -609,7 +627,13 @@ i{
 }
 
 .cartheader {
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  margin-top: 0px
+}
+
+.cartcardrelese {
+  /* margin-bottom: 20px; */
+  margin-top: 20px
 }
 
 .headerTopcard {

@@ -158,7 +158,8 @@ class ProductDetail extends Component {
           {/* </Grid> */}
 
           <Grid item xs={12}>
-            <PriceBuynow data={this.props.data} />
+        
+            <PriceBuynow data={this.props.data} wishlist={this.props.wishlistdata} />
           </Grid>
           <Grid item xs={12} >
             <ProductDetails data={this.props.data} wishlist={this.props.wishlistdata} />
