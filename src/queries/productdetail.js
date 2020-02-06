@@ -116,7 +116,7 @@ export const CUSTOMERREVIEWS = `query MyQuery($productSku: String) {
 `
 
 export const ADDRESSDETAILS = `query MyQuery($userprofileId: String) {
-  allUserAddresses(condition: {userprofileId: $userprofileId, isActive: true}) {
+  allUserAddresses(condition: {userprofileId: $userprofileId, isActive: true}, orderBy: UPDATED_AT_ASC) {
     nodes {
       addressline1
       addressline2
@@ -132,9 +132,13 @@ export const ADDRESSDETAILS = `query MyQuery($userprofileId: String) {
       pincode
       state
       isActive
+      updatedAt
+      createdAt
+      salutation
     }
   }
-}`
+}
+`
 export const YouMayAlsoLike = `query MyQuery($filterdata: ProductListFilter,$filterdatatranssku:  TransSkuListFilter,$filterdatatranssku2:  TransSkuListFilter,$filterdata2:ProductListFilter,, $imgcondition:ProductImageCondition,$Conditiondatatranssku:TransSkuListCondition,$Conditiondatatranssku2:TransSkuListCondition ) {
   youMayalsolike1:  allProductLists(filter: $filterdata, orderBy: CREATED_AT_DESC, first:16) {
       nodes {

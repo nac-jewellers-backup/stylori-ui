@@ -13,7 +13,7 @@ const Addressform = (props) => {
 }
 
 const AddressComponent = (props) => {
-    const { values, handle, setValues } = Addressforms(() => props.changePanel(3));
+    const { values, handle, setValues } = Addressforms(() => props.changePanel(3, values.selest_my_address));
     const cl = <input onChange={() => setValues({
         values, ...values,
         checkValue: !values.checkValue
@@ -36,7 +36,7 @@ const AddressComponent = (props) => {
                                 {/* {JSON.stringify(values.errortext && values.errortext.pinerr)} */}
                             </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={window.location.pathname.split("-")[0] === "/account" ? 12 : 5}>
-                                    {window.location.pathname.split("-")[0] === "/account" || values.hidebilling === true ? "" : <>
+                                    {window.location.pathname.split("-")[0] === "/account" || values.hidebilling === true || values.addrs === true ? "" : <>
                                         <h5 className='title'>Shipping Address</h5>
                                         <>
                                             {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}

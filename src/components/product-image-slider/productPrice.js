@@ -28,21 +28,26 @@ const dataCarousel = {
     className: 'button__bar',
 }
 
-const mobilecarousel = (props, val) => {
+
+const mobilecarousel = (props, val,wishlist) => {
+    debugger
     const { data, classes } = props;
     return (
         <div>
-            <Grid container spacing={12} xs={12}>
-                <Grid container item xs={6}>
-                    <div className="css-ts7n45 e5toz5w4"><span style={{ color: "#fff" }} className="e195g4sk5 css-5pjie5 ekntgft2">{val ? val.offerDiscount : null}</span><br />
-                        {data[0].ProductContactNum[0].isReadyToShip === true ? <div className="css-ts7n45-redy_toship one-day-ship-mb"></div> : ""}
-                    </div>
+            {data.map(data_map =>
+                <Grid container spacing={12} xs={12}>
+                    <Grid container item xs={6}>
+                        <div className="css-ts7n45 e5toz5w4"><span style={{ color: "#fff" }} className="e195g4sk5 css-5pjie5 ekntgft2">{val ? val.offerDiscount : null}</span><br />
+                            {data[0].ProductContactNum[0].isReadyToShip === true ? <div className="css-ts7n45-redy_toship one-day-ship-mb"></div> : ""}
+                        </div>
+                    </Grid>
+                    <Grid container item xs={4} />
+                    <Grid container item xs={2} className="css-ts7n45_wishlist">
+                        <Wishlist sku={data_map.skuId} productId={data_map.productId} wishlist={wishlist} />
+                    </Grid>
                 </Grid>
-                <Grid container item xs={4} />
-                <Grid container item xs={2} className="css-ts7n45_wishlist">
-                    {/* <Wishlist props={"1"} /> */}
-                </Grid>
-            </Grid>
+            )}
+
             {/* <div style={{background:"red"}}>Earrings in 18K Yellow Gold and Peridot for Kids</div> */}
             <Slideshow className='responseve-carousel testingcur' imgClass='responseve-carousel-img'
                 fadeImages={data[0].fadeImages.arrOfurls} dataCarousel={dataCarousel} />
@@ -56,6 +61,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
     const open = anchorEl;
     var wishlist = props.wishlist
     // alert(JSON.stringify(props.wishlist.wishlistdata.nodes.skuId))
+    // var wishlist = this.props && this.props.wishlist && 
     return (
         <div>
             {data.map(val => (
@@ -80,7 +86,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                         </Grid>
                                     </Grid>
                                 </div> */}
-                                {mobilecarousel(props, val)}
+                                {mobilecarousel(props, val,wishlist)}
 
                                 {/* <div style={{ background: "rgb(238, 238, 238)", width: "100%" }}>
                                     <div className="respc">
@@ -282,6 +288,7 @@ class ProductPrice extends Component {
 
     render() {
         const { anchorEl } = this.state
+        // alert(JSON.stringify(this.props.wishlist))
         return (
             <div>
                 <Hidden smDown>
