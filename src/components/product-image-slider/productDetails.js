@@ -141,7 +141,7 @@ class ProductDetails extends React.Component {
                                                                             <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
                                                                                 {res.details.map((Item, Index) => {
                                                                                     return (<span style={{ fontSize: "12px", textAlign: 'left' }}> {
-                                                                                        (val.header === 'Price Breakup' && res.name !== 'GST') ?
+                                                                                        (val.header === 'Price Breakup') ?
                                                                                             ((Index === 0 && (res.details[Index] !== res.details[Index + 1]) ? <del>{Item}</del> :
                                                                                                 Index === 0 ? '' : Item)) : Item} </span>)
                                                                                 })}
