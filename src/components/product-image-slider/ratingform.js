@@ -26,8 +26,8 @@ const RatingComponent = (props) => {
     const newLocal = 250;
 
     return (
-        <Grid container style={{ paddingLeft: "17px", paddingRight: "17px" }}>
-            <Container style={{ paddingLeft: "0px", paddingRight: "0px" }} className="bg-clr2">
+        <Grid container style={{ marginTop: "10px" }}>
+            <Container style={{ paddingLeft: "17px", paddingRight: "17px" }} >
                 <div className="bg-clr2 priceecontainer" style={{ padding: "20px" }}>
                     <form id="Resetform" action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e, props)}>
                         <Grid container spacing={12} >
