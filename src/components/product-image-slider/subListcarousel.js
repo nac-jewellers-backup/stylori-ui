@@ -69,7 +69,7 @@ class Sublistcarousel extends React.Component {
       autoplaySpeed: 4000,
       arrows: false
     };
-    
+
     const dataCarousel = {
       arrows: false,
       dots: false,
@@ -114,40 +114,41 @@ class Sublistcarousel extends React.Component {
     return (
       <div style={{ width: "100%" }}>
         <Hidden smDown>
-          <div className="back_img">
-            <div className='like-and-recently'>
-              <Grid container spacing={12}>
-                <Grid item xs={6} className={`${'like-page'} ${this.state.dataToShow === 'YouMayLike' ? 'recenetly-like-page-active' : ''}`} ><span onClick={() => this.setState({ dataToShow: 'YouMayLike' })}>You may also like</span></Grid>
-                <Grid item xs={6} className={`${'recenetly-like-page'} ${this.state.dataToShow === 'YouRecentlyViewed' ? 'recenetly-like-page-active' : ''}`} ><span onClick={() => this.setState({ dataToShow: 'YouRecentlyViewed' })}>You recently viewed</span></Grid>
-              </Grid>
-            </div> <div className='sub-carousel-head'>
-              <Container maxWidth='md'>
-                {this.state.dataToShow === "YouMayLike" && data && data[0] && data[0].fadeImageSublist.length < 0 || this.state.dataToShow === "YouRecentlyViewed" && data && data[0] && data[0].fadeImageSublistRecentlyViewed.length === 0 ?
+          <Container style={{ padding: "0px 17px" }}>
+            <div className="back_img" style={{ padding: "2px 0px",margin:"auto", boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" }}>
+              <div className='like-and-recently'>
+                <Grid container spacing={12}>
+                  <Grid item xs={6} className={`${'like-page'} ${this.state.dataToShow === 'YouMayLike' ? 'recenetly-like-page-active' : ''}`} ><span onClick={() => this.setState({ dataToShow: 'YouMayLike' })}>You may also like</span></Grid>
+                  <Grid item xs={6} className={`${'recenetly-like-page'} ${this.state.dataToShow === 'YouRecentlyViewed' ? 'recenetly-like-page-active' : ''}`} ><span onClick={() => this.setState({ dataToShow: 'YouRecentlyViewed' })}>You recently viewed</span></Grid>
+                </Grid>
+              </div> <div className='sub-carousel-head'>
+                <Container>
+                  {this.state.dataToShow === "YouMayLike" && data && data[0] && data[0].fadeImageSublist.length < 0 || this.state.dataToShow === "YouRecentlyViewed" && data && data[0] && data[0].fadeImageSublistRecentlyViewed.length === 0 ?
 
-                  <span className="NoProducts">{this.state.dataToShow === "YouMayLike" ? "No products found" : "No products viewed yet"}</span>
-                  :
-                  <Grid container style={{ width: "100%" }} >
-                    <Grid item style={{ width: "6%", alignItems: "center", justifyContent: "center", display: "flex" }}>
-                      <img onClick={() => this.previous()} className={"icon-leftcaro"} />
+                    <span className="NoProducts">{this.state.dataToShow === "YouMayLike" ? "No products found" : "No products viewed yet"}</span>
+                    :
+                    <Grid container style={{ width: "100%" }} >
+                      <Grid item style={{ width: "6%", alignItems: "center", justifyContent: "center", display: "flex" }}>
+                        <img onClick={() => this.previous()} className={"icon-leftcaro"} />
 
-                    </Grid>
-                    <Grid item style={{ width: "88%" }}>
-                      <Slideshow sliderRef={this.slider} class="subslider-carousel" hoverlist={
-                        this.state.dataToShow === "YouMayLike" ? data && data[0] && data[0].fadeImageSublist : data && data[0] && data[0].fadeImageSublistRecentlyViewed
-                      }
-                        dataCarousel={dataCarousel} hover={true} imagecra={true}>
-                      </Slideshow>
-                    </Grid>
-                    <Grid item style={{ width: "6%", alignItems: "center", justifyContent: "center", display: "flex" }}>
-                      <img onClick={() => this.next()} className={"icon-rightcaro"} />
+                      </Grid>
+                      <Grid item style={{ width: "88%" }}>
+                        <Slideshow sliderRef={this.slider} class="subslider-carousel" hoverlist={
+                          this.state.dataToShow === "YouMayLike" ? data && data[0] && data[0].fadeImageSublist : data && data[0] && data[0].fadeImageSublistRecentlyViewed
+                        }
+                          dataCarousel={dataCarousel} hover={true} imagecra={true}>
+                        </Slideshow>
+                      </Grid>
+                      <Grid item style={{ width: "6%", alignItems: "center", justifyContent: "center", display: "flex" }}>
+                        <img onClick={() => this.next()} className={"icon-rightcaro"} />
 
+                      </Grid>
                     </Grid>
-                  </Grid>
-                }
-              </Container>
+                  }
+                </Container>
+              </div>
             </div>
-          </div>
-
+          </Container>
         </Hidden>
         <Hidden mdUp>
           <Container>
