@@ -237,7 +237,7 @@ const Addressforms = (changePanel) => {
         } else {
             var addObjgust_local = localStorage.getItem('gustaddres') ? JSON.parse(localStorage.getItem('gustaddres')) : "";
             if (con_gust !== true) {
-                debugger
+                
                 var addressOne = values.addressOne
                 var addressTwo = values.addressTwo
                 if (addressOne.addressline1 === addressTwo.addressline1 && addressOne.firstname === addressTwo.firstname && addressOne.pincode === addressTwo.pincode) {
@@ -344,7 +344,7 @@ const Addressforms = (changePanel) => {
         // window.location.reload(); 
     }
     const selectaddreses = (val_addrs, num, index, ship) => {
-        debugger
+        
 
         var obj_user = {}
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
@@ -370,7 +370,7 @@ const Addressforms = (changePanel) => {
             addObjall["user_id"] = user_id
             addObjall["cart_id"] = cart_id
             if (val_addrs && val_addrs.firstname.length > 0) {
-                debugger
+                
                 adars1 = []
                 adars1.push(val_addrs)
                 addObjall['address'] = [adars1 && adars1[0]];
@@ -382,11 +382,11 @@ const Addressforms = (changePanel) => {
                 changePanel(3, values.selest_my_address)
                 // window.location.reload()
             }
-            // return false
+            return false
         }
         if (values.checkValue1 === false) {
             if ((localStorage.getItem("bil_isactive") || !localStorage.getItem("bil_isactive")) && num === 2) { localStorage.setItem("bil_isactive", index) }
-            debugger
+            
             if ((!localStorage.getItem("ship_isactive") || !localStorage.getItem("bil_isactive")) && num === 2) {
                 values["Id"] = JSON.stringify(index)
                 localStorage.setItem("bil_isactive", index)
@@ -417,7 +417,7 @@ const Addressforms = (changePanel) => {
                 }
 
             } if (((!localStorage.getItem("ship_isactive") || !localStorage.getItem("bil_isactive")) && num === 2) !== true) {
-                debugger
+                
                 if ((localStorage.getItem("ship_isactive") || !localStorage.getItem("ship_isactive")) && num === 1) { localStorage.setItem("ship_isactive", index) }
                 if ((!localStorage.getItem("ship_isactive") || !localStorage.getItem("bil_isactive")) && num === 1) {
                     values["Id2"] = JSON.stringify(index)
@@ -452,7 +452,7 @@ const Addressforms = (changePanel) => {
                 }
 
             }
-            debugger
+            
             if (JSON.stringify(localStorage.getItem("bil_isactive")).length > 0 && JSON.stringify(localStorage.getItem("ship_isactive")).length > 0) {
                 addObjall["user_id"] = user_id
                 addObjall["cart_id"] = cart_id
