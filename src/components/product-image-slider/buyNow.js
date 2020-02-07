@@ -114,7 +114,7 @@ const Buydetails = (props, state, handleChanges, handleCodChange, canceldeletech
                                     <Typography>
                                         <i class="fa fa-whatsapp overall-icons" aria-hidden="true"></i>&nbsp;
                                 </Typography>
-                                    <Typography  className={classes.TypoListed}>
+                                    <Typography className={classes.TypoListed}>
                                         {val.phonenum}
                                     </Typography>
                                 </Grid>
@@ -153,7 +153,7 @@ class Component extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            showimage: this.props && this.props.data &&this.props.data.length > 0 && this.props.data[0] &&this.props.data[0].fadeImages && this.props.data[0].fadeImages.arrOfurls && this.props.data[0].fadeImages.arrOfurls.length>0 &&  this.props.data[0].fadeImages.arrOfurls[0] ? this.props.data[0].fadeImages.arrOfurls[0] : [],
+            showimage: this.props && this.props.data && this.props.data.length > 0 && this.props.data[0] && this.props.data[0].fadeImages && this.props.data[0].fadeImages.arrOfurls && this.props.data[0].fadeImages.arrOfurls.length > 0 && this.props.data[0].fadeImages.arrOfurls[0] ? this.props.data[0].fadeImages.arrOfurls[0] : [],
             open: false,
             values: '',
             pincodeValues: {},
@@ -269,11 +269,11 @@ class Component extends React.Component {
 
                 <Hidden mdUp>
                     <div style={{ marginTop: "10px" }}>
-                        <ProductPrice data={this.props.data} wishlist={this.props.wishlist}  />
+                        <ProductPrice data={this.props.data} wishlist={this.props.wishlist} />
 
                         <PriceTabs data={this.props.data} wishlist={this.props.wishlist} />
                         {inputsearch(this.props, this.state, this.handleChanges, this.handleCodChange)}
-                        <Buynowfixed data={this.props.data} onClick={this.handleLocalStorage.bind(this)}  />
+                        <Buynowfixed deleteComment={this.deletechecklists} data={this.props.data} onClick={this.handleLocalStorage.bind(this)} />
                     </div>
 
                 </Hidden>
