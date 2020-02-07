@@ -13,7 +13,7 @@ const Register = (props) => {
 }
 
 const RegisterComponent = (props) => {
-   
+
     let email = localStorage.getItem("email") ? localStorage.getItem("email") : '';
     const { values, setValues, handlers, data, valuesadrees } = useRegister(() => props.changePanel(2));
     // var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
@@ -26,11 +26,11 @@ const RegisterComponent = (props) => {
     // console.log("Profile_DATAS",JSON.stringify())
     return (
         <div className='pt-sm'>
-            <form 
-            
-            onSubmit={(e) => {
-                handlers.handleSubmit(e)
-            }} action="javascript:void(0)" >
+            <form
+
+                onSubmit={(e) => {
+                    handlers.handleSubmit(e)
+                }} action="javascript:void(0)" >
                 <Grid container>
 
                     <Grid item xs={12} lg={window.location.pathname === "/registers" || paths ? 12 : 6}   >
@@ -76,15 +76,15 @@ const RegisterComponent = (props) => {
                             {/* <h5>Personal Information</h5> */}
                             {paths ?
                                 <Input
-                                    
-                                    style={{ background: "rgba(192, 192, 192, 0.41)" , width: "100%" }}
+
+                                    style={{ background: "rgba(192, 192, 192, 0.41)", width: "100%" }}
                                     value={email}
                                     InputProps={{
                                         readOnly: true,
                                     }}
                                 /> : <>
                                     <Input
-                                    
+
                                         margin="normal"
                                         // variant="outlined"
                                         // type="email"
@@ -109,7 +109,7 @@ const RegisterComponent = (props) => {
                                             // helperText={values.errortext && values.errortext.passerr}
                                             placeholder="Enter your password"
                                             onChange={e => handlers.handleChange('password', e.target.value)}
-                                            style={{ background: "rgba(192, 192, 192, 0.41)" ,marginRight:"10px" }}
+                                            style={{ background: "rgba(192, 192, 192, 0.41)", marginRight: "10px" }}
                                             InputProps={{
                                                 readOnly: true,
                                             }}
@@ -194,15 +194,16 @@ const RegisterComponent = (props) => {
                                         </Grid>
                                         <Grid item xs={6} lg={6}>
                                             <Input
-                                                 
+
                                                 className='text-f'
-                                                type="number"
+                                                type="tel"
                                                 name='pincode'
                                                 placeholder="Pin Code/Zip Code"
                                                 onChange={e => handlers.handlesetvaluesadrees('pincode', e.target.value)}
                                                 value={valuesadrees.pincode}
                                                 // onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
                                                 helperText="Pin code is required"
+                                                maxLength={6}
                                                 required />
                                         </Grid>
                                     </Grid>
@@ -214,16 +215,16 @@ const RegisterComponent = (props) => {
                                         <Grid item xs={9} lg={9}>
                                             <Input
                                                 className='text-f'
-                                                type="number"
+                                                type="tel"
                                                 name='contactno'
                                                 onChange={(event) => handlers.handlesetvaluesadrees('contactno', event.target.value)}
                                                 // onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
-                                                placeholder="Phone *"
+                                                placeholder="Phone a*"
                                                 value={valuesadrees.contactno}
                                                 helperText="Enter your 10 digit mobile number"
                                                 isNumber
                                                 maxLength={10}
-                                                minLength={10}
+                                                // minLength={10}
                                                 required />
                                         </Grid>
                                     </Grid>

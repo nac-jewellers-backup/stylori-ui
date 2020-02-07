@@ -96,8 +96,9 @@ const AddressComponent = (props) => {
                                         <Grid item xs={6} lg={6}>
                                             <Input
                                                 className='text-f'
-                                                type="number"
+                                                type="tel"
                                                 name='pincode'
+                                                maxLength="6"
                                                 placeholder="Pin code/Zip code"
                                                 onChange={(event) => handle.handleChange('addressOne', 'pincode', event.target.value, "pincode1")}
                                                 value={values.addressOne.pincode}
@@ -171,7 +172,7 @@ const AddressComponent = (props) => {
                                         <Grid item xs={9} lg={9}>
                                             <Input
                                                 className='text-f'
-                                                type="number"
+                                                type="tel"
                                                 name='contactno'
                                                 onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
                                                 onChange={(event) => handle.handleChange('addressOne', 'contactno', event.target.value)}
@@ -230,7 +231,7 @@ const AddressComponent = (props) => {
                                                 <Grid item xs={6} lg={6}>
                                                     <Input
                                                         className='text-f'
-                                                        type="number"
+                                                        type="tel"
                                                         name='pincodetwo'
                                                         placeholder="Pin code/Zip code"
                                                         onChange={(event) => handle.handleChange('addressTwo', 'pincode', event.target.value, 'pincode2')}
@@ -305,7 +306,7 @@ const AddressComponent = (props) => {
                                                 <Grid item xs={9} lg={9}>
                                                     <Input
                                                         className='text-f'
-                                                        type="number"
+                                                        type="tel"
                                                         name='contactnotwo'
                                                         onChange={(event) => handle.handleChange('addressTwo', 'contactno', event.target.value)}
                                                         onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}

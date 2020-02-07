@@ -49,7 +49,8 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                         /> */}
                         <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"
                             placeholder="Enter Pincode"
-                            type="number"
+                            type="tel"
+                            maxLength="6"
                             className="pincode-cust buynow-search"
                             value={state.values}
                             onChange={(event) => { handleChanges(event) }}

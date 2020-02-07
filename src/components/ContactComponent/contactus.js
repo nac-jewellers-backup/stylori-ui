@@ -174,10 +174,10 @@ export default function CustomizedInputs() {
                             <Input
                                 margin="normal"
                                 variant="outlined"
-                                type="number"
+                                type="tel"
                                 autoComplete='off'
                                 name="Phone"
-                                maxLength={13}
+                                maxLength={10}
                                 value={values.phone}
                                 error={values.phoneError ? true : false}
                                 onChange={e => handleChange('Phone', e.target.value)}

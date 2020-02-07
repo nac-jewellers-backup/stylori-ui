@@ -66,7 +66,7 @@ class Accountdetails extends Component {
     }
     render() {
         let c_k_l = localStorage.getItem("c_k_l") ? localStorage.getItem("c_k_l") : {}
-        console.log(this.props)
+        // console.log(this.props)
         // const { wishlistdata } = this.props.wishlistdata;
         const currencies = [
             {
@@ -124,7 +124,7 @@ class Accountdetails extends Component {
                                     >
                                         All Orders</p>
 
-                                    <p  class="logedout"
+                                    <p class="logedout"
                                         // onClick={() => this.Activeaccounts('allorders')}
                                         onClick={() => {
                                             this.openmodel()

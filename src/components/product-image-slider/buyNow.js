@@ -49,7 +49,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                             onKeyPress={(e) => { if (!(e.which >= 48 && e.which <= 57)) e.preventDefault(); }}
                         /> */}
                         <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"
-                            type="number"
+                            type="tel"
                             placeholder="Enter Pincode"
                             maxLength={6}
                             className="pincode-cust buynow-search"
