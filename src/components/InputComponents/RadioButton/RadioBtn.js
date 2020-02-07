@@ -5,12 +5,13 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
+import "./index.css"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex",
     padding: "6px 6px 6px 6px",
-    boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important"
+    height: "100vh",
+    display: "flex"
   },
   formControl: {
     margin: theme.spacing(0.8),
@@ -62,7 +63,7 @@ export default function RadioBtn(props) {
   // console.log(value);
   // console.info('objectvaluesobjectvalues', props.values.values)
   return (
-    <div className={classes.root}>
+    <div style={{ alignItems: "flex-end", padding: "6px" }} className="classSort">
       <FormControl component="fieldset" className={`${classes.fromControlTwo} ${classes.formControl}`}>
         <RadioGroup
           aria-label="Gender"

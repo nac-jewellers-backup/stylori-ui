@@ -101,8 +101,8 @@ const useLogin = (changePanel, props) => {
             // }
             addressetValues && addressetValues(val)
             // localStorage.setItem("isedit", 1)
-            localStorage.setItem("c_k_l", true)
-            localStorage.setItem("set_check", "123")
+            // localStorage.setItem("c_k_l", true)
+            // localStorage.setItem("set_check", "123")
             
 
             if (!pathnames) {

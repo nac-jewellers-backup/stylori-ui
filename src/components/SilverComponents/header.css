@@ -155,10 +155,12 @@
   border: 1px solid #ccc;
   width: 190px !important;
   height: 25px !important;
-  font-size: 0.8rem !important;
+  font-size: 0.96rem !important;
   padding: 0px 0px 0px 6px !important;
   font-family: inherit !important;
   cursor: pointer;
+  text-align: left !important;
+  color: #90868a
 }
 
 .searchsvg {
@@ -292,16 +294,22 @@
   font-weight: normal;
   color: #394578 !important;
 }
-.logoImgHeader1{
- 
+
+.logoImgHeader1 {
+
   -webkit-tap-highlight-color: transparent;
-  
+
 }
-i{
- 
+
+i {
   -webkit-tap-highlight-color: transparent;
 }
-.tooltip-s{
+
+.highlighter {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tooltip-s {
   display: none;
   position: absolute;
   top: 17px;
@@ -309,7 +317,21 @@ i{
   font-size: 14px;
 
 }
-.tooltip:hover .tooltip-s{
+
+.tooltip-slog {
+  display: none;
+  position: absolute;
+  top: 27px;
+  left: 18px;
+  font-size: 14px;
+
+}
+
+.tooltip:hover .tooltip-s {
+  display: block;
+}
+
+.tooltip:hover .tooltip-slog {
   display: block;
 }
 
@@ -607,7 +629,13 @@ i{
 }
 
 .cartheader {
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  margin-top: 0px
+}
+
+.cartcardrelese {
+  /* margin-bottom: 20px; */
+  margin-top: 20px
 }
 
 .headerTopcard {

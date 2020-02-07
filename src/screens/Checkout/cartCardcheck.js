@@ -31,8 +31,7 @@ import { CheckForCod } from 'queries/productdetail';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import Header from 'components/SilverComponents/Header'
 import { withRouter } from 'react-router-dom';
-
-let value = localStorage.getItem("select_addres") ? JSON.parse(localStorage.getItem("select_addres")) : {};
+var adres = {};
 var variab = {}
 const CartCardCheck = (props) => {
     const { loading, error, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
@@ -40,31 +39,43 @@ const CartCardCheck = (props) => {
     return <Component  {...props} CodData={CodData} makeRequestCod={makeRequestCod} setCartFilters={setCartFilters} />
 }
 
-
+var obj_values = {};
 class Component extends React.Component {
     state = {
         expanded: 'panel' + (localStorage.getItem("panel") ? localStorage.getItem("panel") : 1),
         // expanded: 'panel2',
         // expandedlimit: localStorage.getItem("panel") ? localStorage.getItem("panel") : 1,
         // expandedlimit: 1,
-        mailId: null
+        mailId: null,
+        adres_details: null
     }
-
 
     handleChange = panel => (event) => {
 
         // alert("va",JSON.stringify(panel))
+        if (panel === 2) {
+            adres["value"] = {}
+            localStorage.removeItem("bil_isactive")
+            localStorage.removeItem("ship_isactive")
+            localStorage.removeItem("select_addres")
+            obj_values["adres_details"] = {}
+        }
+        if (panel === 1) {
+            adres["value"] = {}
+            localStorage.removeItem("bil_isactive")
+            localStorage.removeItem("ship_isactive")
+            localStorage.removeItem("select_addres")
+            obj_values["adres_details"] = {}
+        }
         const { expanded } = this.state
         // if (value && value.pincode && value.pincode.length > 2) {
-        if ((localStorage.getItem("bil_isactive") || localStorage.getItem("ship_isactive")) && (value && value.pincode && value.pincode.length > 2) && expanded === 'panel' + panel) {
+        if ((localStorage.getItem("bil_isactive") || localStorage.getItem("ship_isactive")) && (adres.value && adres.value.pincode && adres.value.pincode.length > 2) && expanded === 'panel' + panel) {
             this.setState({
                 expanded: 'panel' + 3,
             });
             // }
-
             // window.location.reload()
         } else {
-
             if (expanded > 'panel' + panel) {
                 this.setState({
                     expanded: 'panel' + panel,
@@ -80,13 +91,38 @@ class Component extends React.Component {
 
     };
 
-    changePanel = (panel, mailId) => {
+    changePanel = (panel, adres_detail) => {
+        if (Object.keys(adres.value).length <= 0) {
+            localStorage.setItem("panel", 1);
+        }
+        // if (!localStorage.getItem("cartDetails")&&Object.keys(adres.value).length <= 0) {
+        //     localStorage.setItem("panel", 1);
+        // }
+        if (panel === 2) {
+            adres["value"] = {}
+            localStorage.removeItem("bil_isactive")
+            localStorage.removeItem("ship_isactive")
+            obj_values["adres_details"] = {}
+            localStorage.removeItem("select_addres")
+        }
+        if (panel === 1) {
+            adres["value"] = {}
+            localStorage.removeItem("bil_isactive")
+            localStorage.removeItem("ship_isactive")
+            localStorage.removeItem("select_addres")
+            obj_values["adres_details"] = {}
+        }
+        // if(!panel===null){
         localStorage.setItem("panel", panel);
+        obj_values["adres_details"] = adres_detail
         this.setState({
             expanded: 'panel' + panel,
             expandedlimit: panel,
-            mailId: mailId ? mailId : this.state.mailId
+            // mailId: mailId ? mailId : this.state.mailId
         })
+        // }
+
+        // alert(JSON.stringify(obj_values))
     }
     pincodeapi = () => {
         var obj_user = {}
@@ -107,7 +143,7 @@ class Component extends React.Component {
         const { classes, data } = this.props;
         const { breadcrumsdata, cartsubdata } = this.props.data;
         let email = localStorage.getItem("email") ? localStorage.getItem("email") : '';
-        variab["pincode"] = value && value.pincode
+        variab["pincode"] = adres.value && adres.value.pincode
         // alert(JSON.stringify(this.props.data))
         const breadcrumsdata_static = [
             { title: "Shopping Bag" },
@@ -131,7 +167,14 @@ class Component extends React.Component {
                 icon: "https://assets.stylori.com/images/static/icon-return.png"
             }
         ]
-
+        adres["value"] = localStorage.getItem("select_addres") ? JSON.parse(localStorage.getItem("select_addres")) : {};
+        debugger
+        if (Object.keys(adres.value).length <= 0) {
+            localStorage.setItem("panel", 1);
+        }
+        // if (!localStorage.getItem("cartDetails")&&Object.keys(adres.value).length <= 0) {
+        //     localStorage.setItem("panel", 1);
+        // }
         return (
             <Grid >
                 <Header wishlist={this.props.wishlistdata} />
@@ -173,14 +216,20 @@ class Component extends React.Component {
                                 <Typography className='text-chck'>Address Detail
 
                                  <div className="ch-d-vl" >
-                                        {value && value.firstname}
+                                        {obj_values && obj_values.adres_details && obj_values.adres_details.firstname && obj_values.adres_details.firstname.length > 0 ? obj_values.adres_details && obj_values.adres_details.firstname : adres.value && adres.value.firstname}
                                         &nbsp;
-                                        {value && value.lastname}
+                                        {obj_values && obj_values.adres_details && obj_values.adres_details.firstname && obj_values.adres_details.firstname.length > 0 ? obj_values.adres_details && obj_values.adres_details.lastname : adres.value && adres.value.lastname}
+
                                         &nbsp;
-                                        {value && value.addressline1}
-                                        &nbsp;{value && value.city}
-                                        {value && value.state}&nbsp;
-                                        {value && value.pincode}
+                                        {obj_values && obj_values.adres_details && obj_values.adres_details.firstname && obj_values.adres_details.firstname.length > 0 ? obj_values.adres_details && obj_values.adres_details.addressline1 : adres.value && adres.value.addressline1}
+
+                                        &nbsp;
+                                        {obj_values && obj_values.adres_details && obj_values.adres_details.firstname && obj_values.adres_details.firstname.length > 0 ? obj_values.adres_details && obj_values.adres_details.city : adres.value && adres.value.city}
+
+                                        {obj_values && obj_values.adres_details && obj_values.adres_details.firstname && obj_values.adres_details.firstname.length > 0 ? obj_values.adres_details && obj_values.adres_details.state : adres.value && adres.value.state}
+                                        &nbsp;
+{obj_values && obj_values.adres_details && obj_values.adres_details.firstname && obj_values.adres_details.firstname.length > 0 ? obj_values.adres_details && obj_values.adres_details.pincode : adres.value && adres.value.pincode}
+
                                     </div>
 
                                 </Typography>

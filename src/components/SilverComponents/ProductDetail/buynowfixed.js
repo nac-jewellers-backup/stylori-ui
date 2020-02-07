@@ -27,6 +27,7 @@ class Buynowfixed extends React.Component {
             })
         }
         const deletechecklists = () => {
+            alert("ss")
             var skuId = this.props.data[0].skuId;
             var products = [];
             var cartId = "";
@@ -61,9 +62,9 @@ class Buynowfixed extends React.Component {
                                 <Buynowbutton sku={data[0].skuId} class='product-footer-buynow' />
                             </div>
                         </Grid>
-                        <CommenDialog isOpen={this.state.modelOpen} content={`Verify selected product details before proceeding`} handleClose={canceldeletechecklist.bind(this)} handleSuccess={deletechecklists.bind(this)} negativeBtn="No" positiveBtn="Yes" title="Confirmation" />
-                        <Grid className='talk-to-us' item xs={6} style={{ justifyContent: "center", display: "flex" }}><i class="fa fa-comments" >
-                        </i> &nbsp;Talk To Us</Grid>
+                        <CommenDialog isOpen={this.state.modelOpen} content={`Verify selected product details before proceeding`} handleClose={canceldeletechecklist.bind(this)} handleSuccess={() => this.props.deleteComment()} negativeBtn="No" positiveBtn="Yes" title="Confirmation" />
+                        <Grid className='talk-to-us' item xs={6} style={{ justifyContent: "center", display: "flex" }}><a href="tel:18001020330" style={{ textDecoration: "none", color: "#394578", fontWeight: "600", fontSize: "14px", letterSpacing: "1.5px" }}><i class="fa fa-comments" >
+                        </i> &nbsp;Talk To Us</a></Grid>
                     </Grid>
                 </AppBar>
 

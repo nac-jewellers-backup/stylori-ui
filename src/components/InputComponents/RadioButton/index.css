@@ -14,6 +14,7 @@
   background-color: whitesmoke !important;
   text-align: center;
 }
+
 .cardSortSmallScreen label {
   width: 100vw;
   padding-left: 20%;
@@ -22,4 +23,18 @@
   font-family: Roboto;
 
   border-bottom: 1px solid #cccccc5c;
+}
+
+.vh {
+  display: flex;
+  align-items: flex-end;
+  height: 100vh;
+}
+
+@media screen and (max-width: 959px) {
+  .classSort {
+    display: flex;
+    align-items: flex-end;
+    height: 100vh;
+  }
 }

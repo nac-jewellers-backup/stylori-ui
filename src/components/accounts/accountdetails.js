@@ -23,7 +23,7 @@ class Accountdetails extends Component {
         this.state = {
             isActive: window.location.pathname.split("-")[1],
             currency: 'EUR',
-            modelOpen:false
+            modelOpen: false
             // window.location.pathname.split("-")[1]
         };
 
@@ -50,7 +50,7 @@ class Accountdetails extends Component {
         })
     }
     deletechecklists = () => {
-        
+
         localStorage.clear();
         sessionStorage.clear()
         window.location.reload()
@@ -59,10 +59,10 @@ class Accountdetails extends Component {
             modelOpen: false,
         })
     }
-    openmodel=()=>{
+    openmodel = () => {
         this.setState({
             modelOpen: true,
-        }) 
+        })
     }
     render() {
         let c_k_l = localStorage.getItem("c_k_l") ? localStorage.getItem("c_k_l") : {}
@@ -70,19 +70,24 @@ class Accountdetails extends Component {
         // const { wishlistdata } = this.props.wishlistdata;
         const currencies = [
             {
-                label: 'profile',
+                label: 'Profile',
+                values: 'profile'
             },
             {
-                label: 'addresses',
+                label: 'Address Book',
+                values: 'addresses'
             },
             {
-                label: 'shoppingcart',
+                label: 'Shopping Bag',
+                values: 'shoppingcart'
             },
             {
-                label: 'wishlist',
+                label: 'Wishlist',
+                values: 'wishlist'
             },
             {
-                label: 'allorders',
+                label: 'All Orders',
+                values: 'allorders'
             },
 
         ];
@@ -104,7 +109,7 @@ class Accountdetails extends Component {
                                     >Address Book </p>
                                     <p className={this.state.isActive == 'shoppingcart' ? "backgrund" : ""}
                                         onClick={() => this.Activeaccounts('shoppingcart')}
-                                    >Shopping bag ({this.props.data.length ? this.props.data.length : "0"}) </p>
+                                    >Shopping Bag ({this.props.data.length ? this.props.data.length : "0"}) </p>
                                     <p className={this.state.isActive == 'wishlist' ? "backgrund" : ""}
                                         onClick={() => this.Activeaccounts('wishlist')}
                                     >
@@ -119,14 +124,14 @@ class Accountdetails extends Component {
                                     >
                                         All Orders</p>
 
-                                    <p
+                                    <p  class="logedout"
                                         // onClick={() => this.Activeaccounts('allorders')}
                                         onClick={() => {
                                             this.openmodel()
                                         }}
                                     >
                                         Logout</p>
-                                        <CommenDialog isOpen={this.state.modelOpen} content={`Are you sure. you want to exit? `} handleClose={this.canceldeletechecklist} handleSuccess={this.deletechecklists} negativeBtn="No" positiveBtn="Yes" title="Confirm Exit.!!" />
+                                    <CommenDialog isOpen={this.state.modelOpen} content={`Are you sure you want to leave? `} handleClose={this.canceldeletechecklist} handleSuccess={this.deletechecklists} negativeBtn="No" positiveBtn="Logout" title="Logout" logout={true} />
                                 </List>
                             </Grid>
                             <Grid item xs={12} sm={12} md={9} lg={9} xl={9} >
@@ -196,7 +201,7 @@ class Accountdetails extends Component {
                                     helperText=""
                                 >
                                     {currencies.map(option => (
-                                        <option key={option.label} value={option.label}>
+                                        <option key={option.values} value={option.values}>
                                             {option.label}
                                         </option>
                                     ))}

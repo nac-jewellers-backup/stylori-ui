@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import './header.css';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -42,7 +42,7 @@ import { CartContext } from 'context'
 let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
 // var path = window.location.pathname.split('/').pop();
 class Header extends Component {
-    
+
     constructor(props) {
         super(props)
         this.state = {
@@ -150,12 +150,12 @@ class Header extends Component {
 
     }
     submenuDetails = (data, target) => {
-        this.setState({ subMenuTarget: target, subTitleData: data,submenuOpen: true })
+        this.setState({ subMenuTarget: target, subTitleData: data, submenuOpen: true })
     }
     handleExpandClickClose = () => {
         this.setState({ open: false });
     }
-    
+
     render() {
         const { mainlist, Jewellery, subheader, menuListHeader, menuLists } = this.props.data;
         let { selected, selected1 } = this.state;
@@ -173,7 +173,7 @@ class Header extends Component {
                     <div className="header-appbar-sticky1" id='headerDiv' style={{ position: "fixed", zIndex: "1000" }}>
                         <AppBar className="header-appbarsilver1 " id="topNav" style={{ transition: "height 0.2s" }}>
                             <Container maxWidth="lg" id="searchcontainer" >
-                                <Grid container spacing={12} style={{ marginTop: "20px" }} className={window.location.pathname === "/cart" || window.location.pathname === '/checkout' ? "cartheader" : ""}>
+                                <Grid container spacing={12} className={window.location.pathname === "/cart" || b[1] === "paymentsuccess" || b[1] === "paymentfail" || window.location.pathname === '/checkout' ? "cartheader" : "cartcardrelese"}>
                                     <Grid container item xs={12} justify="flex-end" alignItems="center">
                                         {this.props.paymentSucces || window.location.pathname === "/cart" || window.location.pathname === '/checkout' ? <Grid item xs={3} className="logoImgHeader1">
                                             <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/" }} style={{ cursor: "pointer" }}>
@@ -185,36 +185,37 @@ class Header extends Component {
                                             <div className={`head-icons1 ${classes.headIcons}`} >
                                                 <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
                                                 <Typography className={classes.callerNum}>1800 102 0330</Typography>
-                                                <Grid onClick={this.handleClose} style={{ cursor: "pointer" }}>
-                                                    <InputBase
-                                                        className={`search`}
-                                                        style={{ cursor: "pointer" }}
-                                                        placeholder=" Search"
-                                                        endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
-                                                        </div></InputAdornment>}
-                                                    />
+                                                <Grid onClick={this.handleClose} style={{ cursor: "pointer" }} className={`search`}>
+                                                    <Grid container>
+                                                        <Typography style={{ flexGrow: 1,fontSize:"0.96rem" }}>Search</Typography>
+                                                        <div className={classes.searchcontainer} style={{ width: "25px" }}><Seach className={"searchsvg"} />
+                                                        </div>
+
+                                                    </Grid>
                                                 </Grid>
 
                                                 {localStorage.getItem("true") ?
-                                                    <span
-                                                        class="MuiBadge-root"
-                                                        aria-owns={openPopover ? 'simple-popper' : ""}
-                                                        // onClick={this.handleClickPopover}
-                                                        onClick={() => { window.location.href = "/account-profile" }}
-                                                    >
-                                                    <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
-                                                    </span>
-                                                    // <img className="icons-header-sizes" src={usershape}/>
-                                                    
-                                                    :  
                                                     <div className="tooltip ">
-                                                   
-                                                    <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
-                                                       <i style={{ fontSize: "20px" }}  class={`fa fa-user  ${classes.iconFafa}`}></i>
-                                                       <span className="tooltip-s">login</span>
-                                                    </span> 
-                                                   
-                                                  </div>
+                                                        <span
+                                                            class="MuiBadge-root"
+                                                            aria-owns={openPopover ? 'simple-popper' : ""}
+                                                            // onClick={this.handleClickPopover}
+                                                            onClick={() => { window.location.href = "/account-profile" }}
+                                                        >
+                                                            <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                            <span className="tooltip-slog">{"Login"}</span>
+                                                        </span></div>
+                                                    // <img className="icons-header-sizes" src={usershape}/>
+
+                                                    :
+                                                    <div className="tooltip ">
+
+                                                        <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
+                                                            <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                            <span className="tooltip-slog">{"Login"}</span>
+                                                        </span>
+
+                                                    </div>
                                                 }
                                                 {/* <Popover
                                                     id="simple-popper"
@@ -250,36 +251,36 @@ class Header extends Component {
 
                                                     </div>
                                                 </Popover> */}
-                                                 <div className="tooltip">
-                                                <Badge  color="secondary" 
-                                                    badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length > 0 ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
-                                                // wishlist_count
-                                                // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
-                                                >
-                                                   
-                                                    <i style={{ fontSize: "18px" }}  class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
-                                                        if (user_id.length > 0) {
-                                                            window.location.href = `/account${'-wishlist'}`
-                                                        } else {
-                                                            window.location.href = "/login"
-                                                        }
-                                                    }}  ></i>
-                                                     <span className="tooltip-s">Wishlist</span>
-                                                     
-                                                    
-                                                </Badge>
-                                                </div>
-                                                
                                                 <div className="tooltip">
-                                                <Badge  badgeContent={
-                                                    (this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length : "0"
-                                                    // this.props && this.props.cart_count && this.props.cart_count.length
-                                                } color="secondary">
-                                                    <a href="/cart"  >
-                                                        <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
-                                                        <span className="tooltip-s" style={{color:"#d51f63"}}>Cart</span>
-                                                    </a> </Badge>
-                                                    </div>
+                                                    <Badge style={{ marginTop: "9px" }} color="secondary"
+                                                        badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length > 0 ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
+                                                    // wishlist_count
+                                                    // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
+                                                    >
+
+                                                        <i style={{ fontSize: "18px" }} class={`fa fa-heart  ${classes.iconFafaheart}`} onClick={() => {
+                                                            if (user_id.length > 0) {
+                                                                window.location.href = `/account${'-wishlist'}`
+                                                            } else {
+                                                                window.location.href = "/login"
+                                                            }
+                                                        }}  ></i>
+                                                        <span className="tooltip-s">Wishlist</span>
+
+
+                                                    </Badge>
+                                                </div>
+
+                                                <div className="tooltip">
+                                                    <Badge style={{ marginTop: "9px" }} badgeContent={
+                                                        (this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length : "0"
+                                                        // this.props && this.props.cart_count && this.props.cart_count.length
+                                                    } color="secondary">
+                                                        <a href="/cart" className="highlighter">
+                                                            <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                                                            <span className="tooltip-s" style={{ color: "#d51f63" }}>Cart</span>
+                                                        </a> </Badge>
+                                                </div>
                                             </div>
                                         </Grid>
                                     </Grid>
@@ -405,12 +406,10 @@ class Header extends Component {
                                                         {localStorage.getItem("true") ?
                                                             <span
                                                                 aria-owns={openPopover ? 'simple-popper' : ""}
-                                                                // onClick={this.handleClickPopover}
                                                                 onClick={() => { window.location.href = "/account-profile" }}
                                                             >
                                                                 <i class={`fa fa-user  ${classes.iconFafa}`} style={{ display: "flex", alignItems: "flex-end", justifyContent: "center" }}></i>
                                                             </span>
-                                                            // <img className="icons-header-sizes" src={usershape}/>
                                                             : <span onClick={() => window.location.pathname = "/login"}>
                                                                 <i class={`fa fa-user  ${classes.iconFafa}`} style={{ display: "flex", alignItems: "flex-end", justifyContent: "center" }}></i>
                                                             </span>
@@ -618,7 +617,7 @@ class Header extends Component {
                     </Drawer>
                 </Hidden >
             </div >
-            
+
         )
     }
 }

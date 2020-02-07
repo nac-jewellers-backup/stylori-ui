@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Redirect } from "react-router-dom"
-import { Grid, Button, Hidden  } from "@material-ui/core";
+import { Grid, Button, Hidden } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import './payment.css';
 import Divider from '@material-ui/core/Divider';
@@ -89,28 +89,29 @@ class PaymentResponseSuccess extends React.Component {
              subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata}
           /> */}
             <Grid container justify="center" style={{ paddingTop: "10px" }}>
-            <Hidden smDown>
-            <Grid container justify="center" style={{padding: "15px 5px 5px 15px"}}>
-                  <Grid container>
+               <Hidden smDown>
+                  <Grid container justify="center" style={{ padding: "15px 5px 5px 15px" }}>
+                     <Grid container>
 
-                     <Grid item style={{ display: "flex", marginRight: "auto", paddingRight: "2px" }}>
+                        <Grid item style={{ display: "flex", marginRight: "auto", paddingRight: "2px" }}>
 
-                        <Button style={{ background: "#ed1165", color: "#fff", padding: "5px 20px" }} onClick={() => {
-                           localStorage.removeItem("a__c_t")
-                           localStorage.removeItem("panel")
-                           localStorage.removeItem("order_id")
-                           localStorage.removeItem("cartDetails")
-                           localStorage.removeItem("ship_isactive")
-                           localStorage.removeItem("bil_isactive")
-                           if (gut_lg === true) {
-                              localStorage.clear();
-                           }
-                           this.props.history.push("/home")
-                         
-                        }}>Back to home</Button>
+                           <Button style={{ background: "#ed1165", color: "#fff", padding: "5px 20px" }} onClick={() => {
+                              localStorage.removeItem("a__c_t")
+                              localStorage.removeItem("panel")
+                              localStorage.removeItem("order_id")
+                              localStorage.removeItem("cartDetails")
+                              localStorage.removeItem("ship_isactive")
+                              localStorage.removeItem("select_addres")
+                              localStorage.removeItem("bil_isactive")
+                              if (gut_lg === true) {
+                                 localStorage.clear();
+                              }
+                              this.props.history.push("/home")
+
+                           }}>Back to home</Button>
+                        </Grid>
                      </Grid>
                   </Grid>
-               </Grid>
                </Hidden>
                <Grid container justify="center" className="smallScreenClass">
                   <Grid item xs={10} sm={10} md={6} className="contant-center" >
@@ -119,9 +120,9 @@ class PaymentResponseSuccess extends React.Component {
                   </Grid>
                </Grid>
                <Grid container justify="center">
-                  <Grid item xs={12} sm={12} md={6} className="contant-center" style={{paddingLeft:"10px"}}>
+                  <Grid item xs={12} sm={12} md={6} className="contant-center" style={{ paddingLeft: "10px" }}>
                      We've send you an email confirmation.&nbsp;
-                  <a  onClick={() => {
+                  <a onClick={() => {
                         this.makeFetch_resend_mail()
                      }} style={{
                         fontSize: "12px",
@@ -131,11 +132,11 @@ class PaymentResponseSuccess extends React.Component {
                      }}>Resend Email</a>
                   </Grid>
                </Grid>
-   
-               
+
+
 
                <Grid container>
-                  
+
                   <Allorders allorderdata={this.props.allorderdata} />
                </Grid>
                <Footer />

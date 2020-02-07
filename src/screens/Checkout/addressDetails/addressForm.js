@@ -13,7 +13,7 @@ const Addressform = (props) => {
 }
 
 const AddressComponent = (props) => {
-    const { values, handle, setValues } = Addressforms(() => props.changePanel(3));
+    const { values, handle, setValues } = Addressforms(() => props.changePanel(3, values.selest_my_address));
     const cl = <input onChange={() => setValues({
         values, ...values,
         checkValue: !values.checkValue
@@ -36,7 +36,7 @@ const AddressComponent = (props) => {
                                 {/* {JSON.stringify(values.errortext && values.errortext.pinerr)} */}
                             </p>  <Grid container item xs={12} lg={12} >
                                 <Grid item xs={12} lg={window.location.pathname.split("-")[0] === "/account" ? 12 : 5}>
-                                    {window.location.pathname.split("-")[0] === "/account" || values.hidebilling === true ? "" : <>
+                                    {window.location.pathname.split("-")[0] === "/account" || values.hidebilling === true || values.addrs === true ? "" : <>
                                         <h5 className='title'>Shipping Address</h5>
                                         <>
                                             {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
@@ -60,9 +60,9 @@ const AddressComponent = (props) => {
           <MenuItem value={30}>Thirty</MenuItem>
         </Select> */}
                                             {/* </FormControl> */}
-                                            <SimpleSelect 
-                                            // val={'1'}
-                                             name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
+                                            <SimpleSelect
+                                                // val={'1'}
+                                                name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                         </Grid>
                                         <Grid item xs={4} lg={4}>
                                             <Input
@@ -96,7 +96,7 @@ const AddressComponent = (props) => {
                                         <Grid item xs={6} lg={6}>
                                             <Input
                                                 className='text-f'
-                                                type="text"
+                                                type="number"
                                                 name='pincode'
                                                 placeholder="Pin code/Zip code"
                                                 onChange={(event) => handle.handleChange('addressOne', 'pincode', event.target.value, "pincode1")}
@@ -171,7 +171,7 @@ const AddressComponent = (props) => {
                                         <Grid item xs={9} lg={9}>
                                             <Input
                                                 className='text-f'
-                                                type="text"
+                                                type="number"
                                                 name='contactno'
                                                 onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
                                                 onChange={(event) => handle.handleChange('addressOne', 'contactno', event.target.value)}
@@ -230,7 +230,7 @@ const AddressComponent = (props) => {
                                                 <Grid item xs={6} lg={6}>
                                                     <Input
                                                         className='text-f'
-                                                        type="text"
+                                                        type="number"
                                                         name='pincodetwo'
                                                         placeholder="Pin code/Zip code"
                                                         onChange={(event) => handle.handleChange('addressTwo', 'pincode', event.target.value, 'pincode2')}
@@ -305,7 +305,7 @@ const AddressComponent = (props) => {
                                                 <Grid item xs={9} lg={9}>
                                                     <Input
                                                         className='text-f'
-                                                        type="text"
+                                                        type="number"
                                                         name='contactnotwo'
                                                         onChange={(event) => handle.handleChange('addressTwo', 'contactno', event.target.value)}
                                                         onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
@@ -329,7 +329,7 @@ const AddressComponent = (props) => {
                             <div style={{ display: "flex", justifyContent: "flex-end" }}>
                                 {values.edit_addresId === true ? <Button onClick={() => handle.redirectFormss()} style={{ borderRadius: "0px", padding: "6px 8px", lineHeight: "1.75", border: "1px solid #394578" }}
                                     className=''>Cancel</Button> : ""} &nbsp;
-                                <Button type="submit" className='apply-b'>Save and Review</Button>
+                                <Button type="submit" className='apply-b'>Add</Button>
                             </div>
                         </form>
                     </div>

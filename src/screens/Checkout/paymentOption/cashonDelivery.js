@@ -64,6 +64,7 @@ class CashonDelivey extends React.Component {
                 if (resdata !== null && resdata !== undefined) {
                     localStorage.setItem("order_id", JSON.stringify(resdata.order.id))
                 }
+                localStorage.removeItem("select_addres")
                 localStorage.removeItem("panel")
                 localStorage.removeItem("cartDetails")
                 localStorage.removeItem("ship_isactive")
@@ -133,7 +134,7 @@ class CashonDelivey extends React.Component {
                             <span className="rups">
                                 {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(dataCard1 - discounted_price))}
                             </span>&nbsp;
-                            <Button style={{display:"flex"}} className="credit-button" type="submit"
+                            <Button style={{ display: "flex" }} className="credit-button" type="submit"
                                 onClick={() => this.makeFetch(this.props)}
                             >Place order</Button>
                         </div>

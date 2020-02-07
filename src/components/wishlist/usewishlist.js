@@ -50,7 +50,7 @@ const useWishlists = (props) => {
         }).then((response) => {
             return response.json();
         })
-         
+
     }
     // const removemakeFetch = () => {
     //     
@@ -84,11 +84,11 @@ const useWishlists = (props) => {
             localStorage.setItem('review_location', `${window.location.href}`)
             // localStorage.setItem('wishlist', 0)
             window.location.href = "/login"
-        } 
+        }
         // changePanel(3)
 
-    } 
-    const status =(response)=> {
+    }
+    const status = (response) => {
 
         if (response.status >= 200 && response.status < 300) {
             return Promise.resolve(response)
@@ -101,7 +101,6 @@ const useWishlists = (props) => {
         return response.json()
     }
     const handelRemove = (num) => {
-         
         setwishlistdata({
             wishlistdata: values.isactive
         })
@@ -114,12 +113,12 @@ const useWishlists = (props) => {
             orderobj_cart['price'] = values.add
             var _products_obj = {}
             var _products = []
-            var _obj={}
+            var _obj = {}
             setCartFilters(orderobj_cart)
             var _conditionfetchCartId = {
                 "UserId": { "userprofileId": localStorage.getItem("user_id") }
             }
-         
+
             fetch(`${API_URL}/removewishlist`, {
                 method: 'POST',
                 headers: {
@@ -128,104 +127,43 @@ const useWishlists = (props) => {
                 },
                 body: JSON.stringify(values)
             }).then((myJson) => {
-                   fetch(`${API_URL}/graphql`, {
+                {
+                    values.add &&
+                        fetch(`${API_URL}/graphql`, {
 
-                method: 'post',
-                // body: {query:seoUrlResult,variables:splitHiphen()}
-                // body: JSON.stringify({query:seoUrlResult}),
+                            method: 'post',
+                            // body: {query:seoUrlResult,variables:splitHiphen()}
+                            // body: JSON.stringify({query:seoUrlResult}),
 
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    query: FetchCartId,
-                    variables: { ..._conditionfetchCartId },
-                })
-            }).then(status)
-            .then(json)
-                .then(val=>{
-                    if (val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length > 0 &&
-                        val.data.allShoppingCarts.nodes[0].status === "paid") {
-                            // alert(val.data.allShoppingCarts.nodes[0].status)
-                        // var _get_cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
-                        // var _cart_id = { cart_id: _get_cart_id }
-                        var _user_id = { user_id: localStorage.getItem('user_id') }
-                       
-                        _products_obj['sku_id'] = values.product_sku
-                        _products_obj['price'] = values.add
-                        _products_obj['qty'] = 1 
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                query: FetchCartId,
+                                variables: { ..._conditionfetchCartId },
+                            })
+                        }).then(status)
+                            .then(json)
+                            .then(val => {
+                                if (val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length > 0 &&
+                                    val.data.allShoppingCarts.nodes[0].status === "paid") {
+                                    // alert(val.data.allShoppingCarts.nodes[0].status)
+                                    // var _get_cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
+                                    // var _cart_id = { cart_id: _get_cart_id }
+                                    var _user_id = { user_id: localStorage.getItem('user_id') }
 
-
-                        _products = { products: [_products_obj] }
-                       _obj = { ..._user_id, ..._products}
-                       fetch(`${API_URL}/addtocart`, {
-                        method: 'post',
-                        // body: {query:seoUrlResult,variables:splitHiphen()}
-                        // body: JSON.stringify({query:seoUrlResult}),
-
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            ..._obj,
-                        })
-                    })
-                      
-                  
-                    }
-                    else {
-                        // alert("not paid")
-                        if(val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length>0 && val.data.allShoppingCarts.nodes[0] && val.data.allShoppingCarts.nodes[0].id){
-                            
-                            localStorage.setItem("cart_id", JSON.stringify({ cart_id: val.data.allShoppingCarts.nodes[0].id }))
-                            var _conditionfetch = {
-                                "CartId": { "shoppingCartId": val.data.allShoppingCarts.nodes[0].id }
-                            }
-                            // var _products_obj = {}
-                            _products_obj['sku_id'] = values.product_sku
-                            _products_obj['price'] = values.add
-                            _products_obj['qty'] = 1 
-                            var _cart_id = {cart_id:val.data.allShoppingCarts.nodes[0].id}
-    
-    
-                            _products = { products: [_products_obj] }
-                           _obj = { ..._user_id, ..._products, ..._cart_id}
-    
-                            fetch(`${API_URL}/addtocart`, {
-                                method: 'post',
-                                // body: {query:seoUrlResult,variables:splitHiphen()}
-                                // body: JSON.stringify({query:seoUrlResult}),
-    
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify({
-                                    ..._obj,
-                                })
-                            }).then(val=>{
-                                if ((JSON.stringify(values.add) && JSON.stringify(values.add).length > 0) && (window.location.pathname.split("-")[0] === "/account")) {
-                                    window.location.pathname = `/account${'-shoppingcart'}`
-                                } else {
-                                    if (window.location.pathname.split("-")[0] === "/account") {
-                                        window.location.reload();
-                                    }
-                                }
-                            })  
-                                
-                            }
-                            else{
-                                if(values && values.product_sku && Object.values(values.product_sku).length>0 && values.add && Object.values(values.add).length>0){
-                                    _user_id = { user_id: localStorage.getItem('user_id') }
                                     _products_obj['sku_id'] = values.product_sku
                                     _products_obj['price'] = values.add
-                                    _products_obj['qty'] = 1 
+                                    _products_obj['qty'] = 1
+
+
                                     _products = { products: [_products_obj] }
-                                     _obj = { ..._user_id, ..._products }
+                                    _obj = { ..._user_id, ..._products }
                                     fetch(`${API_URL}/addtocart`, {
                                         method: 'post',
                                         // body: {query:seoUrlResult,variables:splitHiphen()}
                                         // body: JSON.stringify({query:seoUrlResult}),
-            
+
                                         headers: {
                                             'Content-Type': 'application/json',
                                         },
@@ -233,20 +171,84 @@ const useWishlists = (props) => {
                                             ..._obj,
                                         })
                                     })
+
+
                                 }
-                                else{
-                                    return {
-                                        "data": {
-                                          "allShoppingCarts": {
-                                            "nodes": []
-                                          }
+                                else {
+                                    // alert("not paid")
+                                    if (val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length > 0 && val.data.allShoppingCarts.nodes[0] && val.data.allShoppingCarts.nodes[0].id) {
+
+                                        localStorage.setItem("cart_id", JSON.stringify({ cart_id: val.data.allShoppingCarts.nodes[0].id }))
+                                        var _conditionfetch = {
+                                            "CartId": { "shoppingCartId": val.data.allShoppingCarts.nodes[0].id }
                                         }
-                                      } 
+                                        // var _products_obj = {}
+                                        _products_obj['sku_id'] = values.product_sku
+                                        _products_obj['price'] = values.add
+                                        _products_obj['qty'] = 1
+                                        var _cart_id = { cart_id: val.data.allShoppingCarts.nodes[0].id }
+
+
+                                        _products = { products: [_products_obj] }
+                                        _obj = { ..._user_id, ..._products, ..._cart_id }
+
+                                        fetch(`${API_URL}/addtocart`, {
+                                            method: 'post',
+                                            // body: {query:seoUrlResult,variables:splitHiphen()}
+                                            // body: JSON.stringify({query:seoUrlResult}),
+
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                            },
+                                            body: JSON.stringify({
+                                                ..._obj,
+                                            })
+                                        }).then(val => {
+                                            if ((JSON.stringify(values.add) && JSON.stringify(values.add).length > 0) && (window.location.pathname.split("-")[0] === "/account")) {
+                                                window.location.pathname = `/account${'-shoppingcart'}`
+                                            } else {
+                                                if (window.location.pathname.split("-")[0] === "/account") {
+                                                    window.location.reload();
+                                                }
+                                            }
+                                        })
+
+                                    }
+                                    else {
+                                        if (values && values.product_sku && Object.values(values.product_sku).length > 0 && values.add && Object.values(values.add).length > 0) {
+                                            _user_id = { user_id: localStorage.getItem('user_id') }
+                                            _products_obj['sku_id'] = values.product_sku
+                                            _products_obj['price'] = values.add
+                                            _products_obj['qty'] = 1
+                                            _products = { products: [_products_obj] }
+                                            _obj = { ..._user_id, ..._products }
+                                            fetch(`${API_URL}/addtocart`, {
+                                                method: 'post',
+                                                // body: {query:seoUrlResult,variables:splitHiphen()}
+                                                // body: JSON.stringify({query:seoUrlResult}),
+
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                },
+                                                body: JSON.stringify({
+                                                    ..._obj,
+                                                })
+                                            })
+                                        }
+                                        else {
+                                            return {
+                                                "data": {
+                                                    "allShoppingCarts": {
+                                                        "nodes": []
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
                                 }
-                            }
-                
-                    }
-                });
+                            });
+                }
             })
 
         }

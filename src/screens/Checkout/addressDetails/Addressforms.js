@@ -9,7 +9,8 @@ import { CartContext } from '../../../context/CartContext';
 var obj = {}
 var delet = {}
 var addObjall = {}
-
+let adars1 = []
+let adars2 = []
 const Addressforms = (changePanel) => {
     // var regid = localStorage.getItem('regid') ? localStorage.getItem('regid') : ""
     const valuegust = localStorage.getItem("gustaddres") ? JSON.parse(localStorage.getItem("gustaddres")).address : ""
@@ -68,13 +69,13 @@ const Addressforms = (changePanel) => {
         addres_id: null,
         index: null,
         update_clear: false,
-        log_addrs: false
+        log_addrs: false,
+        selest_my_address: null
     });
     // alert(JSON.stringify(values&&values.addressOne&&values.addressOne.salutation))
 
     var addObj = {};
-    var adars1 = {}
-    var adars2 = {}
+
     var addObjgust = {};
     addObjall["isguestlogin"] = cont ? false : true
     const { data, error, loading, makeFetch: makeFetchall, mapped, status } = useNetworkRequest('/addaddress', {}, false);
@@ -203,6 +204,7 @@ const Addressforms = (changePanel) => {
     //     values['addressOne']['salutation'] =
     //         setValues({ ...values, values })
     // };
+
     const handleSubmit = (e) => {
 
         if (values && values.addressOne && values.addressOne.pincode === "") {
@@ -341,13 +343,22 @@ const Addressforms = (changePanel) => {
         // values["edit_ref"] = true
         // window.location.reload(); 
     }
-    const selectaddreses = (val_addrs, num, index) => {
+    const selectaddreses = (val_addrs, num, index, ship) => {
+        debugger
+
         var obj_user = {}
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
         let set_check = localStorage.getItem("set_check") ? localStorage.getItem("set_check") : ""
         obj_user["user_id"] = user_id
-
-        localStorage.setItem("select_addres", JSON.stringify(val_addrs))
+        // changePanel(3,values.selest_my_address)
+        if (ship === "yes") {
+            localStorage.setItem("select_addres", JSON.stringify(val_addrs))
+            values["selest_my_address"] = val_addrs
+            setValues({
+                values,
+                ...values,
+            })
+        }
         addObjall['address_id'] = val_addrs && val_addrs.id ? val_addrs.id : ""
         if (values.checkValue1 === true) {
             values["Id2"] = JSON.stringify(index)
@@ -359,25 +370,27 @@ const Addressforms = (changePanel) => {
             addObjall["user_id"] = user_id
             addObjall["cart_id"] = cart_id
             if (val_addrs && val_addrs.firstname.length > 0) {
-                adars1['addressOne'] = val_addrs
-                addObjall['address'] = [adars1.addressOne];
+                debugger
+                adars1.push(val_addrs)
+                addObjall['address'] = [adars1 && adars1[0]];
                 val_addrs["addresstype"] = num
                 makeFetchall(addObjall);
             }
             // alert("your address send on successful")
             if (!pathnames) {
-                changePanel(3)
+                changePanel(3, values.selest_my_address)
                 // window.location.reload()
             }
             // return false
         }
         if (values.checkValue1 === false) {
             if ((localStorage.getItem("bil_isactive") || !localStorage.getItem("bil_isactive")) && num === 2) { localStorage.setItem("bil_isactive", index) }
+            debugger
             if ((!localStorage.getItem("ship_isactive") || !localStorage.getItem("bil_isactive")) && num === 2) {
                 values["Id"] = JSON.stringify(index)
                 localStorage.setItem("bil_isactive", index)
                 if (val_addrs && val_addrs.firstname.length > 0) {
-                    adars2['addressTwo'] = val_addrs
+                    adars2.push(val_addrs)
                     val_addrs["addresstype"] = num
                 }
                 setValues({
@@ -387,12 +400,28 @@ const Addressforms = (changePanel) => {
                 alert("please select your shipping address")
                 return false
             } else {
+                if (num === 2) {
+                    values["Id"] = JSON.stringify(index)
+                    localStorage.setItem("bil_isactive", index)
+                    if (val_addrs && val_addrs.firstname.length > 0) {
+                        adars2.push(val_addrs)
+                        val_addrs["addresstype"] = num
+                    }
+                    setValues({
+                        values,
+                        ...values,
+                    })
+                }
+
+            } if (((!localStorage.getItem("ship_isactive") || !localStorage.getItem("bil_isactive")) && num === 2) !== true) {
+                debugger
                 if ((localStorage.getItem("ship_isactive") || !localStorage.getItem("ship_isactive")) && num === 1) { localStorage.setItem("ship_isactive", index) }
                 if ((!localStorage.getItem("ship_isactive") || !localStorage.getItem("bil_isactive")) && num === 1) {
                     values["Id2"] = JSON.stringify(index)
                     localStorage.setItem("ship_isactive", index)
                     if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
-                        adars1['addressOne'] = val_addrs
+                        // alert("vada1")
+                        adars1.push(val_addrs)
                         val_addrs["addresstype"] = num
                     }
                     setValues({
@@ -401,19 +430,35 @@ const Addressforms = (changePanel) => {
                     })
                     alert("please select your billing address")
                     return false
+                } else {
+                    if (num === 1) {
+                        values["Id2"] = JSON.stringify(index)
+                        localStorage.setItem("ship_isactive", index)
+                        if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
+                            // alert("vada1")
+                            adars1.push(val_addrs)
+                            val_addrs["addresstype"] = num
+                        }
+                        setValues({
+                            values,
+                            ...values,
+                        })
+                    }
                 }
+
             }
+            debugger
             if (JSON.stringify(localStorage.getItem("bil_isactive")).length > 0 && JSON.stringify(localStorage.getItem("ship_isactive")).length > 0) {
                 addObjall["user_id"] = user_id
                 addObjall["cart_id"] = cart_id
-                addObjall['address'] = [adars1.addressOne, adars2.addressTwo];
+                addObjall['address'] = [adars1 && adars1[0], adars2 && adars2[0]];
                 val_addrs["addresstype"] = num
                 // alert("your address send on successful")
                 if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                     makeFetchall(addObjall);
                 }
                 if (!pathnames) {
-                    changePanel(3)
+                    changePanel(3, values.selest_my_address)
                     // window.location.reload()
                 }
             }
@@ -477,7 +522,6 @@ const Addressforms = (changePanel) => {
         }
     };
     const redirectForm1 = (event) => {
-
         values["addressOne"] = ""
         values["addressTwo"] = ""
         value11 = {
@@ -518,7 +562,7 @@ const Addressforms = (changePanel) => {
                 },
             },
         }
-        values["edit_addresId"] = false
+        values["edit_addresId"] = true
         values["addrs"] = true
         setValues({
             values,

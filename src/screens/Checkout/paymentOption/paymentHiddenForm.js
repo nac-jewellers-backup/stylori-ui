@@ -120,7 +120,10 @@ export default function PaymentHiddenForm(props) {
                 </div>
                 <div>
                     {/* <label>Chargetotal</label> */}
-                    <input size="50" type="hidden" name="chargetotal" value={`${props.data}`} />
+                    <input size="50" type="hidden" name="chargetotal"
+                        value="1"
+                    // value={`${props.data}`}
+                    />
                 </div>
                 <div>
                     {/* <label>successpage</label> */}
@@ -147,7 +150,7 @@ export default function PaymentHiddenForm(props) {
 
             </form>
             <Grid item container>
-                <input style={{  }} type="button" onClick={generateOrderdId} className="credit-button" name="submitBtn" value="Pay now" />
+                <input style={{cursor:"pointer"}}  type="button" onClick={generateOrderdId} className="credit-button" name="submitBtn" value="Pay now" />
 
             </Grid>
         </div>

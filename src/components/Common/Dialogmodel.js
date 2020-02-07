@@ -80,7 +80,7 @@ export default function PineDialog(props) {
         classes: { root: classes.mapped },
         style: {
           height: "auto",
-          width:"auto"
+          width: "auto"
         },
       }}
       className={classes.mapped}
@@ -100,9 +100,9 @@ export default function PineDialog(props) {
       </DialogContent>
 
       <DialogActions style={{ padding: "14px" }}>
-        {props.negativeBtn ? <Button onClick={() => handleClose()} className={classes.buttons1} style={{ backgroundColor:"gray"}}><i class="fa fa-close" aria-hidden="true" style={{marginRight:"7px"}}></i> {props.negativeBtn}
+    {props.negativeBtn ? <Button onClick={() => handleClose()} className={classes.buttons1} style={{ backgroundColor: "gray" }}>{props.logout?"":<i class="fa fa-close" aria-hidden="true" style={{ marginRight: "7px", color: "#ffa0a0" }}></i>}{props.negativeBtn}
         </Button> : ''}
-        {props.positiveBtn ? <Button className={classes.buttons} style={{ backgroundColor:"#f84e88"}} onClick={() => handleSuccess()} ><i class="fa fa-check" aria-hidden="true" style={{marginRight:"7px"}}></i> {props.positiveBtn}
+        {props.positiveBtn ? <Button className={classes.buttons} style={{ backgroundColor: "#f84e88" }} onClick={() => handleSuccess()} >{props.logout?"":<i class="fa fa-check " aria-hidden="true" style={{ marginRight: "7px", color: "#92d049" }}></i>} {props.positiveBtn}
         </Button> : ''}
       </DialogActions>
     </Dialog>

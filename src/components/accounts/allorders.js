@@ -88,40 +88,40 @@ class Allorders extends React.Component {
         var check_img
         var ppp
         if (paymentsuccess) {
-                                    var metalColor_ = metal
-                                    var cnt = imgs.imageUrl.split("/")
-                                    var cnt_b = cnt[2].split("-")
-                                    var cnt_c = cnt_b[1]
+            var metalColor_ = metal
+            var cnt = imgs.imageUrl.split("/")
+            var cnt_b = cnt[2].split("-")
+            var cnt_c = cnt_b[1]
 
-                                    // if (sku === cart.transSkuListByProductSku.generatedSku) {
-                                    var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
+            // if (sku === cart.transSkuListByProductSku.generatedSku) {
+            var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
 
-                                    if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
-                                        check_img = true
+            if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
+                check_img = true
 
-                                        var resolution = 500
-                                        var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`
-                                        var url_split = imgs && imgs.imageUrl.split('/')
-                                        var extension_split = url_split && url_split[url_split.length - 1]
-                                        var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type && browser_type.browser_type}`)
-                                        url_split[url_split && url_split.length - 1] = browser_type_append
-                                        url_split.splice(2, 0, _resolutions);
-                                        var url_construct = url_split.join().replace(/\,/g, '/')
-                                        // var img_url = `${baseUi}${url_construct}`
-                                        ppp = `${CDN_URL}${url_construct}`
-                                        // alert(this.state.check_img)
-                                    }
-                                    // }
-                           
-                       
-                        // return inside[0]
-                    
+                var resolution = 500
+                var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`
+                var url_split = imgs && imgs.imageUrl.split('/')
+                var extension_split = url_split && url_split[url_split.length - 1]
+                var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type && browser_type.browser_type}`)
+                url_split[url_split && url_split.length - 1] = browser_type_append
+                url_split.splice(2, 0, _resolutions);
+                var url_construct = url_split.join().replace(/\,/g, '/')
+                // var img_url = `${baseUi}${url_construct}`
+                ppp = `${CDN_URL}${url_construct}`
+                // alert(this.state.check_img)
+            }
+            // }
 
-           
-                // var outside = ppp.filter(val => (val !== undefined && val !== null))
-                // alert(ppp)
-                return ppp;
-            
+
+            // return inside[0]
+
+
+
+            // var outside = ppp.filter(val => (val !== undefined && val !== null))
+            // alert(ppp)
+            return ppp;
+
         }
         else {
             if (this.props && this.props.allorderdata && this.props.allorderdata.allorderdata && this.props.allorderdata.allorderdata.nodes.length > 0) {
@@ -174,8 +174,7 @@ class Allorders extends React.Component {
 
         const { expanded, mailId, expandedlimit } = this.state;
         const { allorderdata } = this.props;
-        // 
-
+        debugger
         const expanded_ = expanded.map(val => { return val })
         // var check_img = null
         const allDatas = () => {
@@ -255,30 +254,30 @@ class Allorders extends React.Component {
                                                     {/* ))} */}
                                                     <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.shoppingCartByCartId.discountedPrice))}</span></div>
                                                     {val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
-debugger
+                                                        debugger
                                                         return (<>
                                                             <br />
                                                             <Grid container spacing={12} lg={12} style={{ outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px" }}>
                                                                 <Grid item lg={3} sm={4}  >
-                                                                {cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs =>
-                                                                                    (
+                                                                    {cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs =>
+                                                                        (
 
-                                                                                        this.ImageUrl(imgs, cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.generatedSku,
-                                                                                            cart.transSkuListByProductSku.metalColor, paymentsuccess) ?
+                                                                            this.ImageUrl(imgs, cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.generatedSku,
+                                                                                cart.transSkuListByProductSku.metalColor, paymentsuccess) ?
 
-                                                                                            <div className="wishlist_img">
-                                                                                                <img className="viewport-img" src={this.ImageUrl(imgs, cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.generatedSku,
-                                                                                                    cart.transSkuListByProductSku.metalColor, paymentsuccess)}
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            :
-                                                                                            null
+                                                                                <div className="wishlist_img">
+                                                                                    <img className="viewport-img" src={this.ImageUrl(imgs, cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.generatedSku,
+                                                                                        cart.transSkuListByProductSku.metalColor, paymentsuccess)}
+                                                                                        alt=""
+                                                                                    />
+                                                                                </div>
+                                                                                :
+                                                                                null
 
-                                                                                    )
+                                                                        )
 
 
-                                                                                )}
+                                                                    )}
                                                                 </Grid>
                                                                 <Grid item lg={4} sm={4}>
                                                                     <Grid container spacing={12} lg={12} style={{ lineHeight: "20px" }}>
@@ -386,7 +385,7 @@ debugger
 
                                         return (
                                             <div>
-
+                                                {/* {JSON.stringify(val)} */}
                                                 <div style={{ marginTop: "20px", boxShadow: "none" }}>
 
                                                     {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}

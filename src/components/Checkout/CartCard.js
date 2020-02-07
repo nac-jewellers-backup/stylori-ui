@@ -49,7 +49,7 @@ class Checkoutcard extends React.Component {
 
     // }
     handleDeleteLocalStorage = (e) => {
-        
+
         var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
         var currentValue = e.target.id
 
@@ -141,7 +141,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         const { classes, data } = this.props;
-        
+
         const { productsDetails, fadeImages, dataCard1 } = this.props.data;
         // const { FilterOptionsCtx: { setcartcount } } = React.useContext(FilterOptionsContext);
         // React.useEffect(()=>{
@@ -208,7 +208,7 @@ class Checkoutcard extends React.Component {
                                     <Grid item xs={1}  >
                                         <a>Redirect</a>
                                     </Grid> : ""} */}
-                                <Grid item xs={3} sm={3} style={{ display: "flex", alignContent: "center", alignItems: "center", border: " 0.5px solid #0000001f", padding: "1px" }}>
+                                <Grid item xs={3} sm={3} style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "1px" }}>
                                     {/* {val.namedetail !== undefined && val.namedetail.map(val => (
                                         dataval.fadeImages.map(im_ => <>
                                             {filter_image(im_, val.name, val.details).length > 0 ? */}
@@ -245,7 +245,7 @@ class Checkoutcard extends React.Component {
                                         <h3 className={`title ${classes.normalfonts}`}>{val.pro_header}</h3>
                                     </NavLink> : <h3 className={`title ${classes.normalfonts}`}>{val.pro_header}</h3>}
                                     <Grid container spacing={12} >
-                                        <Grid item xs={9} >
+                                        <Grid item xs={8} >
                                             {val.namedetail !== undefined && val.namedetail.map(val => (
                                                 <Grid container spacing={12}>
                                                     <Grid item xs={6} >
@@ -259,15 +259,15 @@ class Checkoutcard extends React.Component {
                                             ))}
                                         </Grid>
 
-                                        <Grid item xs={3} >
-                                            <Typography className={`subhesder ${classes.normalfonts}`}>Quantity 1</Typography>
-                                            <br />
+                                        <Grid item xs={4} >
+                                            <Typography style={{ marginTop: "8px" }} className={`subhesder ${classes.normalfonts}`}>Quantity 1</Typography>
+
                                             {/* {data[0].isReadyToShip === true ? */}
                                             <Typography className={`subhesder ${classes.normalfonts}`}>{data[0].shipby}</Typography>
                                             {/* : ""} */}
-                                            <br />
-                                            {window.location.pathname !== "/checkout" ? <div className={`subhesder hov ${classes.normalfonts}`}
-                                                id={val.namedetail[4].details}  onClick={(event) => this.handleDeleteLocalStorage(event)}>
+
+                                            {window.location.pathname !== "/checkout" ? <div className="highlighter" className={`subhesder hov ${classes.normalfonts}`}
+                                                id={val.namedetail[4].details} onClick={(event) => this.handleDeleteLocalStorage(event)}>
                                                 <i class="fa fa-trash"></i>
                                                 &nbsp;Remove</div> : ""}
                                         </Grid>
@@ -275,7 +275,7 @@ class Checkoutcard extends React.Component {
                                     </Grid>
                                 </Grid>
 
-                                <Grid item xs={4} sm={2} lg={3} >
+                                <Grid item xs={4} sm={2} lg={3}>
                                     <div style={{ marginTop: "15%" }}>
                                         {dataval.dataCard1.map(val =>
                                             <Pricing
@@ -297,16 +297,25 @@ class Checkoutcard extends React.Component {
         )
 
     }
-    checkoutbutton = () => { 
+    checkoutbutton = () => {
         const { classes } = this.props;
         let path = window.location.pathname.split('/').pop();
         return (
             <div>
-                {path == "checkout" ? "" : 
+                {path == "checkout" ? "" :
                     <div className='ckeckout-top'>
-                        <NavLink to="/checkout" style={{ textDecoration: 'none' }}>
+
+                        <div style={{ textDecoration: 'none' }} onClick={() => {
+                            // window.location.reload()
+                            localStorage.removeItem("bil_isactive")
+                            localStorage.removeItem("ship_isactive")
+                            localStorage.setItem("panel", 1);
+                            localStorage.removeItem("select_addres")
+                            window.location.href = '/checkout'
+                        }}>
+                            {/* {window.location.reload()} */}
                             <Buynowbutton class={`chckout-page-buynow ${classes.buttons}`} />
-                        </NavLink>
+                        </div>
                     </div>}
             </div>
         )
@@ -342,7 +351,7 @@ class Checkoutcard extends React.Component {
         let path = window.location.pathname.split('/').pop();
         const { classes } = this.props;
         return (
-            <div style={{ marginTop: "10px" }} >
+            <div style={{ marginTop: "10px" }} > 
                 <Grid container spacing={12}>
                     <Grid item xs={6} />
                     <Grid item xs={6} >
@@ -377,7 +386,7 @@ class Checkoutcard extends React.Component {
 
                             </Grid></>}
                     <Grid xs={12}  >
-                        {this.checkoutbutton()} 
+                        {this.checkoutbutton()}
                     </Grid>
                 </Grid>
             </div >

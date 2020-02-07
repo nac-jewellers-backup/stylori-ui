@@ -16,7 +16,7 @@
     margin-top: 14px !important;
     padding-top: 0px !important;
     padding-bottom: 0px !important;
-    box-shadow: rgb(222, 218, 218) 1px 2px 13px 7px;
+    box-shadow: 1px 2px 7px 4px #DEDADA;
     /* background: #f0f0f0; */
     font-size: 12px !important;
     color: #333 !important;
@@ -27,9 +27,13 @@
     /* position: fixed !important; */
 }
 
+.logedout {
+    color: #d51f63 !important
+}
+
 @media screen and (min-width: 959px) {
     .pay-index-subhed_datas {
-        box-shadow: rgb(222, 218, 218) 1px 2px 13px 7px;
+        box-shadow: 1px 2px 7px 4px #DEDADA;
         margin-top: 16px;
         margin-left: 40px;
         padding: 16px

@@ -57,7 +57,7 @@ const ContinuesComponent = (props) => {
                         <Grid item xs={12} lg={6}>
                             {enterotp &&
                                 <>
-                                    <h5 className={`title ${classes.normalfonts}`}>  Please enter your OTP Number </h5>
+                                    <h5 className={`title ${classes.normalfonts}`}>   Number </h5>
                                     <Input
                                         margin="normal"
                                         // variant="outlined"
@@ -68,8 +68,8 @@ const ContinuesComponent = (props) => {
                                         maxLength={6}
                                         minLength={6}
                                         // error={edata ? true : false}
-                                        helperText="Please enter your otp"
-                                        placeholder="Please enter your otp"
+                                        helperText="Please enter your OTP"
+                                        placeholder="Please enter your OTP"
                                         onChange={e => handlers.handleChange("otp", e.target.value)}
                                         onKeyPress={e => {
                                             if (!(e.which >= 48 && e.which <= 57)) e.preventDefault()
