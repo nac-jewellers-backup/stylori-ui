@@ -42,8 +42,8 @@ const CartCardCheck = (props) => {
 var obj_values = {};
 class Component extends React.Component {
     state = {
-        // expanded: 'panel' + (localStorage.getItem("panel") ? localStorage.getItem("panel") : 1),
-        expanded: 'panel2',
+        expanded: 'panel' + (localStorage.getItem("panel") ? localStorage.getItem("panel") : 1),
+        // expanded: 'panel2',
         // expandedlimit: localStorage.getItem("panel") ? localStorage.getItem("panel") : 1,
         // expandedlimit: 1,
         mailId: null,
