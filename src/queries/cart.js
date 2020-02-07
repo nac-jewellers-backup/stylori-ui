@@ -30,13 +30,12 @@ export const CART = `query myquerycart($productList: [String!]) {
   }
 }`
 export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
-  allOrders(filter: {userProfileId: {in: $userProfileId}}, orderBy: CREATED_AT_DESC,condition: {paymentStatus: "Submitted"}) {
+  allOrders(filter: {userProfileId: {in: $userProfileId}}, orderBy: CREATED_AT_DESC, condition: {paymentStatus: "Submitted"}) {
     nodes {
       paymentStatus
       shoppingCartByCartId {
         discountedPrice
         discount
-       
         shoppingCartItemsByShoppingCartId {
           nodes {
             transSkuListByProductSku {
@@ -66,7 +65,7 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
             }
           }
         }
-        cartAddressesByCartId {
+        cartAddressesByCartId(condition: {addressType: 1}) {
           nodes {
             addressline1
             city
@@ -77,6 +76,7 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
             lastname
             pincode
             state
+            addressType
           }
         }
         giftwrapsByCartId {
@@ -93,6 +93,7 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
     }
   }
 }
+
 
 `
 
@@ -193,7 +194,7 @@ export const ORDERSUCCESSFUL = `query MyQuery($orderId:  OrderCondition) {
             }
           }
         }
-        cartAddressesByCartId {
+        cartAddressesByCartId(condition: {addressType: 1}) {
           nodes {
             addressline1
             city
@@ -204,6 +205,7 @@ export const ORDERSUCCESSFUL = `query MyQuery($orderId:  OrderCondition) {
             lastname
             pincode
             state
+            addressType
           }
         }
         giftwrapsByCartId {
