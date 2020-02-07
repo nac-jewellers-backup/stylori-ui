@@ -118,6 +118,10 @@ const Provider = (props) => {
                 _cartDetails['userId'] = ''
                 _cartDetails['products'] = products
                 if (localvalues_check && localvalues_check === false) {
+                    localStorage.removeItem("bil_isactive")
+                    localStorage.removeItem("ship_isactive")
+                    localStorage.removeItem("select_addres")
+                    // window.location.reload()
                     localStorage.setItem('cartDetails', JSON.stringify(_cartDetails))
                 }
             }
@@ -271,6 +275,8 @@ const Provider = (props) => {
             // alert("1")
             console.log(")")
             if (skuId) localStorage.setItem('cartDetails', JSON.stringify(skuObj));
+           
+            // window.location.reload()
 
         }
     }
@@ -548,6 +554,9 @@ const Provider = (props) => {
             // alert("2")
 
             localStorage.setItem('cartDetails', JSON.stringify(skuObj));
+           
+            // window.location.reload()
+
 
         }
     }
