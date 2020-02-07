@@ -185,14 +185,13 @@ class Header extends Component {
                                             <div className={`head-icons1 ${classes.headIcons}`} >
                                                 <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
                                                 <Typography className={classes.callerNum}>1800 102 0330</Typography>
-                                                <Grid onClick={this.handleClose} style={{ cursor: "pointer" }}>
-                                                    <InputBase
-                                                        className={`search`}
-                                                        style={{ cursor: "pointer" }}
-                                                        placeholder=" Search"
-                                                        endAdornment={<InputAdornment position="end"><div className={classes.searchcontainer}><Seach className={"searchsvg"} />
-                                                        </div></InputAdornment>}
-                                                    />
+                                                <Grid onClick={this.handleClose} style={{ cursor: "pointer" }} className={`search`}>
+                                                    <Grid container>
+                                                        <Typography style={{ flexGrow: 1,fontSize:"0.96rem" }}>Search</Typography>
+                                                        <div className={classes.searchcontainer} style={{ width: "25px" }}><Seach className={"searchsvg"} />
+                                                        </div>
+
+                                                    </Grid>
                                                 </Grid>
 
                                                 {localStorage.getItem("true") ?
