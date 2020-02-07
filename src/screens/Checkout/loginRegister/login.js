@@ -68,7 +68,6 @@ const LoginComponent = (props) => {
     }
     const responseFacebook = response => {
       console.log(response,'facebook');
-
         if (response.accessToken) {
             let body = {
                 fbid:response.id
@@ -309,6 +308,7 @@ const LoginComponent = (props) => {
                                 callback={responseFacebook}
                                 cssClass="my-facebook-button-class"
                                 icon="fab fa-facebook-square fb"
+                                disableMobileRedirect={true}
                             />
                             {/* <InstagramLogin
                                 clientId="508169029820675"
