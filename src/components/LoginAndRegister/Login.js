@@ -13,6 +13,8 @@ import {
 } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Login from 'screens/Checkout/loginRegister/login';
+import { CartContext } from 'context'
+import { FilterOptionsContext } from 'context'
 
 const UserLogin = (props) => {
     return <LoginComponent  {...props} />
@@ -20,7 +22,9 @@ const UserLogin = (props) => {
 
 const LoginComponent = (props) => {
     localStorage.setItem('navfblogin',true)
-    const { classes } = props;
+    let { CartCtx: { allorderdata, wishlistdata,setratingcountsclear } } = React.useContext(CartContext);
+  let { FilterOptionsCtx: {  loading, error, dataArr, mappedFilters, cartcount, loadingfilters, wishlist_count }, setloadingfilters } = React.useContext(FilterOptionsContext);
+  const { classes } = props;
     const { values, handlers, data } = useLogin(() => props.changePanel(3));
     // const vl = data && data.message
     // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
@@ -30,9 +34,9 @@ const LoginComponent = (props) => {
         window.scrollTo(0, 0)
 
     }, [])
-    return (
+    return ( 
         <Grid container>
-            <Header />
+            <Header wishlist={wishlistdata} cartcount={cartcount}/>
             <Grid spacing={12} container style={{ padding: "3%" }}>
                 <Grid item xs={6} lg={6} xs={12}>
                     <div >

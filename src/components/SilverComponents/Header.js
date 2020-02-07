@@ -187,7 +187,7 @@ class Header extends Component {
                                                 <Typography className={classes.callerNum}>1800 102 0330</Typography>
                                                 <Grid onClick={this.handleClose} style={{ cursor: "pointer" }} className={`search`}>
                                                     <Grid container>
-                                                        <Typography style={{ flexGrow: 1,fontSize:"0.96rem" }}>Search</Typography>
+                                                        <Typography style={{ flexGrow: 1, fontSize: "0.96rem" }}>Search</Typography>
                                                         <div className={classes.searchcontainer} style={{ width: "25px" }}><Seach className={"searchsvg"} />
                                                         </div>
 
@@ -273,7 +273,7 @@ class Header extends Component {
 
                                                 <div className="tooltip">
                                                     <Badge style={{ marginTop: "9px" }} badgeContent={
-                                                        (this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length : "0"
+                                                        (this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length : JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products && JSON.parse(localStorage.getItem("cartDetails")).products.length : "0"
                                                         // this.props && this.props.cart_count && this.props.cart_count.length
                                                     } color="secondary">
                                                         <a href="/cart" className="highlighter">
@@ -461,7 +461,7 @@ class Header extends Component {
                                                             }}  ></i>
                                                         </Badge>
                                                         <Badge style={{ fontSize: "9px" }} badgeContent={
-                                                            (this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length : "0"
+                                                            (this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length : JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ? JSON.parse(localStorage.getItem("cartDetails")) && JSON.parse(localStorage.getItem("cartDetails")).products && JSON.parse(localStorage.getItem("cartDetails")).products.length : "0"
                                                             // localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"
                                                             // this.props.cart_count? this.props.cart_count.length:"0"
 
