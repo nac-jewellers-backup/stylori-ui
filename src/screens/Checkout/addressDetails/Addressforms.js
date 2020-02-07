@@ -371,6 +371,7 @@ const Addressforms = (changePanel) => {
             addObjall["cart_id"] = cart_id
             if (val_addrs && val_addrs.firstname.length > 0) {
                 debugger
+                adars1 = []
                 adars1.push(val_addrs)
                 addObjall['address'] = [adars1 && adars1[0]];
                 val_addrs["addresstype"] = num
@@ -390,6 +391,7 @@ const Addressforms = (changePanel) => {
                 values["Id"] = JSON.stringify(index)
                 localStorage.setItem("bil_isactive", index)
                 if (val_addrs && val_addrs.firstname.length > 0) {
+                    adars2 = []
                     adars2.push(val_addrs)
                     val_addrs["addresstype"] = num
                 }
@@ -404,6 +406,7 @@ const Addressforms = (changePanel) => {
                     values["Id"] = JSON.stringify(index)
                     localStorage.setItem("bil_isactive", index)
                     if (val_addrs && val_addrs.firstname.length > 0) {
+                        adars2 = []
                         adars2.push(val_addrs)
                         val_addrs["addresstype"] = num
                     }
@@ -421,6 +424,7 @@ const Addressforms = (changePanel) => {
                     localStorage.setItem("ship_isactive", index)
                     if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                         // alert("vada1")
+                        adars1 = []
                         adars1.push(val_addrs)
                         val_addrs["addresstype"] = num
                     }
@@ -436,6 +440,7 @@ const Addressforms = (changePanel) => {
                         localStorage.setItem("ship_isactive", index)
                         if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                             // alert("vada1")
+                            adars1 = []
                             adars1.push(val_addrs)
                             val_addrs["addresstype"] = num
                         }
