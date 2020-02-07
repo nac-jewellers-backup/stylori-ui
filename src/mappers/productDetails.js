@@ -113,7 +113,6 @@ screenWidth()
 // const baseUi = "https://assets-cdn.stylori.com/";
 // const injectUrl = (url, baseUi) => url ? resolutions.map(k => ({ ...k, img: `${baseUi}${url.imageUrl===undefined  ? url : url.imageUrl}` })) : [];
 const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
-
     var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
     if (browser_type !== undefined && url !== undefined && url && url.imageUrl.length > 0 && screen_res !== undefined && baseUi !== undefined) {
         var resolution = screen_width_type(screen_res, largeImageZoom)
@@ -121,6 +120,7 @@ const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
         var url_split = url && url.imageUrl.split('/')
         var extension_split = url_split && url_split[url_split.length - 1]
         var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type && browser_type.browser_type}`)
+        debugger
         url_split[url_split && url_split.length - 1] = browser_type_append
         url_split.splice(2, 0, _resolutions);
         var url_construct = url_split.join().replace(/\,/g, '/')
@@ -136,6 +136,8 @@ const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
         url_split.splice(1, 0, _resolutions);
         url_construct = url_split.join().replace(/\,/g, '/')
     }
+
+
     return img_url
 
 }
@@ -149,6 +151,7 @@ const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 const generateImgurls = (PD, val, screen_res, tabsChange) => {
 
+   
     var arrOfurls = []
     var arrOfurls_2X = []
     var imgurlsplit = null
@@ -156,6 +159,8 @@ const generateImgurls = (PD, val, screen_res, tabsChange) => {
     var metalcolor2 = null
     var largeImageZoom = true
     val.map(imgurl => {
+            debugger
+        if(imgurl.imageUrl !== "base_images/SK3293_4O.mp4"){
         if (imgurl.imageUrl.split('.')[0].split('-')[1].length > 2) {
 
             imgurlsplit = imgurl.imageUrl.split('.')[0].split('-')[1].substr(1)
@@ -194,9 +199,18 @@ const generateImgurls = (PD, val, screen_res, tabsChange) => {
             arrOfurls_2X.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res, largeImageZoom))
         }
         return { arrOfurls, arrOfurls_2X }
-    })
+        }
+        else {
+            arrOfurls.push(`${CDN_URL}base_images/SK3293_4O.mp4`)
+            arrOfurls_2X.push(`${CDN_URL}base_images/SK3293_4O.mp4`)
+            return { arrOfurls, arrOfurls_2X }
+        }
+    }
+    
+    )
 
     return { arrOfurls, arrOfurls_2X }
+
 }
 
 

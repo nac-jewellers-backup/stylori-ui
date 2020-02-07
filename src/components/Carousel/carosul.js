@@ -10,14 +10,35 @@ class Slideshow extends React.Component {
     super(props);
     this.slider = React.createRef();
   }
+  handleVideoCheck = (url) => {
+debugger
+    var extensionVideoLists = ['m4v', 'avi','mpg','mp4', 'webm', 'mp2', 'mpeg', 'mpe', 'mpv', 'ogg', 'm4p', 'wmv', 'mov', 'qt', 'flv', 'swf', 'avchd'];
+    
+    if(url.length>0){
+      var array_split = url.split(/\.(?=[^\.]+$)/);
+      const found = extensionVideoLists.find(element => element.toLowerCase() === array_split[1]);
+      if(found){
+        return true
+      }
+      else return false
+    }
+    else{
+      return false
+    }
 
+
+  }
   renderFadeImages = () => {
 
     let { video } = this.props;
     return this.props.fadeImages ? this.props.fadeImages.map(imgs => (
       <div className={` ${this.props.class ? this.props.class : ''}`} onClick={e => this.props.getmsg ? this.props.getmsg(e) : ''}>
-        {video ?
-          <video className={`${imgs ? 'shine imgDiv2' : ''} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs} />
+        {video || this.handleVideoCheck(imgs) ?
+          <video  preload="auto" className={`${imgs ? 'shine imgDiv2' : ''} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs} 
+          poster="https://assets.stylori.com/product/SP0195/500X500/HOVER-SP0195-2Y.webp"
+          >
+ {/* <source src={showimage} type="video/mp4"/> */}
+            </video>
           : <img className={`${imgs ? 'shine imgDiv2' : ''} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs} alt="" />}
       </div>
     )) : ''

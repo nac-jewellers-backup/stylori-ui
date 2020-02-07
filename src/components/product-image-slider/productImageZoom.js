@@ -40,9 +40,9 @@ class ProductImageZoom extends React.Component {
   state = {
     // backgroundImage: `url(${src})`,
     backgroundPosition: '0% 0%',
-    showimage: this.props && this.props.data &&this.props.data.length > 0 && this.props.data[0] &&this.props.data[0].fadeImages && this.props.data[0].fadeImages.arrOfurls && this.props.data[0].fadeImages.arrOfurls.length>0 &&  this.props.data[0].fadeImages.arrOfurls[0] ? this.props.data[0].fadeImages.arrOfurls[0] : [],
-    largeImage: this.props && this.props.data &&this.props.data.length > 0 && this.props.data[0] &&this.props.data[0].fadeImages && this.props.data[0].fadeImages.arrOfurls_2X && this.props.data[0].fadeImages.arrOfurls_2X.length>0 &&  this.props.data[0].fadeImages.arrOfurls_2X[0] ? this.props.data[0].fadeImages.arrOfurls_2X[0] : []
- 
+    showimage: this.props && this.props.data && this.props.data.length > 0 && this.props.data[0] && this.props.data[0].fadeImages && this.props.data[0].fadeImages.arrOfurls && this.props.data[0].fadeImages.arrOfurls.length > 0 && this.props.data[0].fadeImages.arrOfurls[0] ? this.props.data[0].fadeImages.arrOfurls[0] : [],
+    largeImage: this.props && this.props.data && this.props.data.length > 0 && this.props.data[0] && this.props.data[0].fadeImages && this.props.data[0].fadeImages.arrOfurls_2X && this.props.data[0].fadeImages.arrOfurls_2X.length > 0 && this.props.data[0].fadeImages.arrOfurls_2X[0] ? this.props.data[0].fadeImages.arrOfurls_2X[0] : []
+
   }
 
   componentDidUpdate(prevProps) {
@@ -51,7 +51,24 @@ class ProductImageZoom extends React.Component {
       this.setState({ showimage: this.props.data[0].fadeImages.arrOfurls[0], largeImage: this.props.data[0].fadeImages.arrOfurls_2X[0] })
     }
   }
+  handleVideoCheck = (url) => {
+    debugger
+    var extensionVideoLists = ['m4v', 'avi', 'mpg', 'mp4', 'webm', 'mp2', 'mpeg', 'mpe', 'mpv', 'ogg', 'm4p', 'wmv', 'mov', 'qt', 'flv', 'swf', 'avchd'];
 
+    if (url.length > 0) {
+      var array_split = url.split(/\.(?=[^\.]+$)/);
+      const found = extensionVideoLists.find(element => element.toLowerCase() === array_split[1]);
+      if (found) {
+        return true
+      }
+      else return false
+    }
+    else {
+      return false
+    }
+
+
+  }
   productImageZoom = () => {
 
     // console.log(this.props.data)
@@ -128,21 +145,29 @@ class ProductImageZoom extends React.Component {
                 
               </Grid>
             </Grid> */}
-                {data.map(val=>
+                {data.map(val =>
                   <span style={{ color: "#fff" }} className="overlayCss11">
-                  {val.offerDiscount}
-                   </span>)}
+                    {val.offerDiscount}
+                  </span>)}
                 {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship_" ></div> : ""}
-                <GlassMagnifier
-                  imageSrc={showimage}
-                  // imageSrc={largeImage}
-                  imageAlt="Example"
-                  magnifierSize="50%"
-                  largeImageSrc={largeImage}
-                  magnifierBoxShadow="0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)"
-                  magnifierBorderColor="#f5003240"
-                  magnifierBackgroundColor="#f5003240"
-                />
+                {
+                  this.handleVideoCheck(showimage) ?
+                    <video preload="auto"  autoplay width="500" height="500" controls>
+                       <source src={showimage} type="video/mp4"/>
+                         </video>
+                    :
+                    <GlassMagnifier
+                      imageSrc={showimage}
+                      // imageSrc={largeImage}
+                      imageAlt="Example"
+                      magnifierSize="50%"
+                      largeImageSrc={largeImage}
+                      magnifierBoxShadow="0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)"
+                      magnifierBorderColor="#f5003240"
+                      magnifierBackgroundColor="#f5003240"
+                    />
+                }
+
               </div>
 
               {/*              
