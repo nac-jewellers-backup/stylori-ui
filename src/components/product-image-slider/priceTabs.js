@@ -180,6 +180,8 @@ class Component extends React.Component {
     TabsComponent = () => {
         const { classes } = this.props;
         const data = this.props.data;
+        console.log("------")
+        console.log(data)
         const { value } = this.state;
         const limit = 8;
         const settings = {
@@ -227,17 +229,20 @@ class Component extends React.Component {
                     return (
                         <>
                             {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
-                                <Grid item lg={3} xs={12} style={{ display: "flex", alignItems: "center" }}><h1 className="rings_tabs">{val.tab1.header}&nbsp;<a
-                                    onClick={this.handleOpen}
-                                    className="my-ringsize">Size Guide </a></h1></Grid>
+                                <Grid item lg={3} xs={12} style={{ display: "flex", alignItems: "center" }}><h1 className="rings_tabs">{data[0].productType === "Rings"?val.tab1.header:val.tab1.headerBangle}&nbsp;
+                               {data[0].productType === "Rings" && <a
+                                        onClick={this.handleOpen}
+                                        className="my-ringsize">Size Guide </a>}</h1></Grid>
                                 <Grid item lg={9} xs={12} >
                                     {arr.length > 0 ?
                                         <>
                                             <Grid container style={{ width: "100%" }} className={classes.pagination} style={{ overflow: "hidden" }}>
-                                                <Grid item style={{ width: "5%", alignItems: "center", justifyContent: "center", display: "flex" }}>
-                                                    <Hidden smDown> {arr.length > 8 && <img onClick={() => previous()} className={"icon-leftcaro"} />}</Hidden>
-                                                    <Hidden mdUp> {arr.length > 5 && <img onClick={() => previous()} className={"icon-leftcaro"} />}</Hidden>
-                                                </Grid>
+                                                {arr.length > 8 && <Hidden smDown> <Grid item style={{ width: "5%", alignItems: "center", justifyContent: "center", display: "flex" }}>
+                                                    <img onClick={() => previous()} className={"icon-leftcaro"} />
+                                                </Grid></Hidden>}
+                                                {arr.length > 5 && <Hidden mdUp> <Grid item style={{ width: "5%", alignItems: "center", justifyContent: "center", display: "flex" }}>
+                                                    <img onClick={() => previous()} className={"icon-leftcaro"} />
+                                                </Grid></Hidden>}
                                                 <Grid item class="widthFix" style={{ textAlign: "center" }}>
                                                     <Hidden smDown>
                                                         <Slideshow dataCarousel={settings}
