@@ -95,6 +95,9 @@ class Component extends React.Component {
         if (Object.keys(adres.value).length <= 0) {
             localStorage.setItem("panel", 1);
         }
+        // if (!localStorage.getItem("cartDetails")&&Object.keys(adres.value).length <= 0) {
+        //     localStorage.setItem("panel", 1);
+        // }
         if (panel === 2) {
             adres["value"] = {}
             localStorage.removeItem("bil_isactive")
@@ -169,6 +172,9 @@ class Component extends React.Component {
         if (Object.keys(adres.value).length <= 0) {
             localStorage.setItem("panel", 1);
         }
+        // if (!localStorage.getItem("cartDetails")&&Object.keys(adres.value).length <= 0) {
+        //     localStorage.setItem("panel", 1);
+        // }
         return (
             <Grid >
                 <Header wishlist={this.props.wishlistdata} />
