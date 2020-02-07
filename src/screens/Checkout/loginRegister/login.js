@@ -68,7 +68,6 @@ const LoginComponent = (props) => {
     }
     const responseFacebook = response => {
       console.log(response,'facebook');
-        alert(JSON.stringify(response))
         if (response.accessToken) {
             let body = {
                 fbid:response.id
