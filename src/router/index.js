@@ -108,10 +108,10 @@ export const RouterApp = (props) => {
                     <Route key="login" component={UserLogin} exact path={routes.UserLogin} />
             }
 
-            {localStorage.getItem('user_id') ?
+            {Boolean(localStorage.getItem('user_id')) ?
                 <Route key="Account" component={Account} exact path={routes.Account} />
                 :
-                <Route key="stylori-redirect" from="/login" exact to={"/account-allorders"} />
+                <Redirect key="stylori-redirect" from={routes.Account} exact to={"/login"} />
             }
             <Route key="registers" component={UserRegister} exact path={routes.UserRegister} />
         </Switch>
