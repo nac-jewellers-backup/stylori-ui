@@ -203,7 +203,7 @@ class Header extends Component {
                                                             onClick={() => { window.location.href = "/account-profile" }}
                                                         >
                                                             <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
-                                                            <span className="tooltip-slog">{"Login"}</span>
+                                                            <span className="tooltip-slog">{Boolean(localStorage.getItem("user_id")) ?"Account" : "Login" }</span>
                                                         </span></div>
                                                     // <img className="icons-header-sizes" src={usershape}/>
 
@@ -212,7 +212,7 @@ class Header extends Component {
 
                                                         <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
                                                             <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
-                                                            <span className="tooltip-slog">{"Login"}</span>
+                                                            <span className="tooltip-slog">{Boolean(localStorage.getItem("user_id")) ?"Account" :"Login" }</span>
                                                         </span>
 
                                                     </div>
