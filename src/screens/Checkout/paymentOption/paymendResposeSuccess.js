@@ -108,7 +108,7 @@ class PaymentResponseSuccess extends React.Component {
                               }
                               this.props.history.push("/home")
 
-                           }}>Back to home</Button>
+                           }}>Go back Home</Button>
                         </Grid>
                      </Grid>
                   </Grid>
