@@ -11,18 +11,18 @@ class Slideshow extends React.Component {
     this.slider = React.createRef();
   }
   handleVideoCheck = (url) => {
-debugger
-    var extensionVideoLists = ['m4v', 'avi','mpg','mp4', 'webm', 'mp2', 'mpeg', 'mpe', 'mpv', 'ogg', 'm4p', 'wmv', 'mov', 'qt', 'flv', 'swf', 'avchd'];
-    
-    if(url.length>0){
+
+    var extensionVideoLists = ['m4v', 'avi', 'mpg', 'mp4', 'webm', 'mp2', 'mpeg', 'mpe', 'mpv', 'ogg', 'm4p', 'wmv', 'mov', 'qt', 'flv', 'swf', 'avchd'];
+
+    if (url.length > 0) {
       var array_split = url.split(/\.(?=[^\.]+$)/);
       const found = extensionVideoLists.find(element => element.toLowerCase() === array_split[1]);
-      if(found){
+      if (found) {
         return true
       }
       else return false
     }
-    else{
+    else {
       return false
     }
 
@@ -34,11 +34,10 @@ debugger
     return this.props.fadeImages ? this.props.fadeImages.map(imgs => (
       <div className={` ${this.props.class ? this.props.class : ''}`} onClick={e => this.props.getmsg ? this.props.getmsg(e) : ''}>
         {video || this.handleVideoCheck(imgs) ?
-          <video  preload="auto" className={`${imgs ? 'shine imgDiv2' : ''} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs} 
-          poster="https://assets.stylori.com/product/SP0195/500X500/HOVER-SP0195-2Y.webp"
+          <video style={{ verticalAlign: "bottom", zIndex: this.props.zindex, width: "100%" }} preload="auto" className={`${imgs ? 'shine imgDiv2' : ''} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs}
+            poster="https://assets.stylori.com/product/SP0195/500X500/HOVER-SP0195-2Y.webp" type="video/mp4" controls={this.props.videoControls}
           >
- {/* <source src={showimage} type="video/mp4"/> */}
-            </video>
+          </video>
           : <img className={`${imgs ? 'shine imgDiv2' : ''} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs} alt="" />}
       </div>
     )) : ''
@@ -62,7 +61,7 @@ debugger
       ))
     }
     else if (hovereffect) {
-      return hoverlist&&hoverlist.map(val => (
+      return hoverlist && hoverlist.map(val => (
         <div className={"subslider-carousel" + hovereffect ? "hovereffectSilver" : ""}>
           <img src={val.img} className='subslider-carousel-img img-responsive' style={{ width: '100%', height: 'auto' }} alt="" />
           <div className="overlay1">
@@ -76,20 +75,21 @@ debugger
       ))
     }
     else {
-      return hoverlist&&hoverlist.map(val => {
-        
-        return(
+      return hoverlist && hoverlist.map(val => {
 
-        <a className='info' href={`/${val.url}`} >
-          <div className={"subslider-carousel" + hover ? "hovereffect" : ""}>
-            <img src={val.img} className='subslider-carousel-img img-responsive' alt="" />
-            <div className="overlay1">
-              <h2 className='next-price'>{val.title}</h2><br />
-              <a className='info' href={`/${val.url}`}><span className='sub-list-price'> <i className="fa fa-rupee"></i> &nbsp;{val.price}</span></a>
+        return (
+
+          <a className='info' href={`/${val.url}`} >
+            <div className={"subslider-carousel" + hover ? "hovereffect" : ""}>
+              <img src={val.img} className='subslider-carousel-img img-responsive' alt="" />
+              <div className="overlay1">
+                <h2 className='next-price'>{val.title}</h2><br />
+                <a className='info' href={`/${val.url}`}><span className='sub-list-price'> <i className="fa fa-rupee"></i> &nbsp;{val.price}</span></a>
+              </div>
             </div>
-          </div>
-        </a>
-      )}
+          </a>
+        )
+      }
       )
     }
 

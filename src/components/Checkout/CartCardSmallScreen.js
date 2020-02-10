@@ -17,9 +17,9 @@ import { API_URL, CDN_URL } from "config"
 function MediaControlCard(props) {
   const { classes } = props;
   const { dataCard1 } = props.data;
-  debugger
+  
   const handleDeleteLocalStorage = (e, val) => {
-    debugger
+    
     var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
     var currentValue = e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id
     // console.clear()
@@ -82,7 +82,7 @@ function MediaControlCard(props) {
     }
   }
   const filter_image = (imges__val, name, details) => {
-    debugger
+    
     var image_urls;
     const width = window.innerWidth;
     if (imges__val.imageUrl && imges__val.imageUrl.length > 0) {
@@ -139,7 +139,7 @@ function MediaControlCard(props) {
       {props.checkoutbutton}<br /><br /><br />
       {props.data.map(dataval => (
         dataval.productsDetails.map(val => {
-          debugger
+          
           return (
             <Card className={classes.card}>
               {

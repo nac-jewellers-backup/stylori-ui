@@ -353,7 +353,7 @@ class Component extends React.Component {
   }
 
   handleDelete = (value) => {
-    debugger
+    
     let { chipData, checked } = this.state
     Object.entries(checked).map(val => {
       if (val && val[0] === "Category") {
@@ -429,7 +429,7 @@ class Component extends React.Component {
   };
 
   check_goldCoins = (values_) => {
-    debugger
+    
     const Category = this.state.checked
     var valus;
     Object.entries(Category).map(val => {

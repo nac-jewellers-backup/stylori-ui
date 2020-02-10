@@ -120,7 +120,7 @@ const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
         var url_split = url && url.imageUrl.split('/')
         var extension_split = url_split && url_split[url_split.length - 1]
         var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type && browser_type.browser_type}`)
-        debugger
+        
         url_split[url_split && url_split.length - 1] = browser_type_append
         url_split.splice(2, 0, _resolutions);
         var url_construct = url_split.join().replace(/\,/g, '/')
@@ -159,7 +159,7 @@ const generateImgurls = (PD, val, screen_res, tabsChange) => {
     var metalcolor2 = null
     var largeImageZoom = true
     val.map(imgurl => {
-            debugger
+            
         if(imgurl.imageUrl !== "base_images/SK3293_4O.mp4"){
         if (imgurl.imageUrl.split('.')[0].split('-')[1].length > 2) {
 

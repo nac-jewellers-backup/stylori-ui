@@ -29,8 +29,8 @@ const dataCarousel = {
 }
 
 
-const mobilecarousel = (props, val,wishlist) => {
-    debugger
+const mobilecarousel = (props, val, wishlist) => {
+
     const { data, classes } = props;
     return (
         <div>
@@ -49,8 +49,8 @@ const mobilecarousel = (props, val,wishlist) => {
             )}
 
             {/* <div style={{background:"red"}}>Earrings in 18K Yellow Gold and Peridot for Kids</div> */}
-            <Slideshow className='responseve-carousel testingcur' imgClass='responseve-carousel-img'
-                fadeImages={data[0].fadeImages.arrOfurls} dataCarousel={dataCarousel} />
+            <Slideshow zindex="1000" class="middle" className='responseve-carousel testingcur' imgClass='responseve-carousel-img'
+                fadeImages={data[0].fadeImages.arrOfurls} dataCarousel={dataCarousel} videoControls={true} />
         </div>
     );
 };
@@ -86,7 +86,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                         </Grid>
                                     </Grid>
                                 </div> */}
-                                {mobilecarousel(props, val,wishlist)}
+                                {mobilecarousel(props, val, wishlist)}
 
                                 {/* <div style={{ background: "rgb(238, 238, 238)", width: "100%" }}>
                                     <div className="respc">

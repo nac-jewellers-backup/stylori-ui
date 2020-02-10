@@ -219,7 +219,7 @@ const RegisterComponent = (props) => {
                                                 name='contactno'
                                                 onChange={(event) => handlers.handlesetvaluesadrees('contactno', event.target.value)}
                                                 // onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
-                                                placeholder="Phone a*"
+                                                placeholder="Phone*"
                                                 value={valuesadrees.contactno}
                                                 helperText="Enter your 10 digit mobile number"
                                                 isNumber

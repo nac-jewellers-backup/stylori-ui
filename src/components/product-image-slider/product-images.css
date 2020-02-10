@@ -926,7 +926,8 @@ body {
 }
 
 .slick-track {
-    /* width: auto !important; */
+    /* display: flex;
+    align-items: center; */
 }
 
 .vertical-carousel-list-arrow {
@@ -1564,6 +1565,12 @@ body {
     .mannual {
         padding: 0px 17px
     }
+
+    .slick-track {
+        display: flex;
+        align-items: center;
+    }
+
 }
 
 .overall-bo {

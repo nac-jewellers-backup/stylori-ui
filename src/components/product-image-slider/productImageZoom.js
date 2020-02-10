@@ -52,22 +52,20 @@ class ProductImageZoom extends React.Component {
     }
   }
   handleVideoCheck = (url) => {
-    debugger
     var extensionVideoLists = ['m4v', 'avi', 'mpg', 'mp4', 'webm', 'mp2', 'mpeg', 'mpe', 'mpv', 'ogg', 'm4p', 'wmv', 'mov', 'qt', 'flv', 'swf', 'avchd'];
-
-    if (url.length > 0) {
-      var array_split = url.split(/\.(?=[^\.]+$)/);
-      const found = extensionVideoLists.find(element => element.toLowerCase() === array_split[1]);
-      if (found) {
-        return true
+    if (url) {
+      if (url.length > 0) {
+        var array_split = url.split(/\.(?=[^\.]+$)/);
+        const found = extensionVideoLists.find(element => element.toLowerCase() === array_split[1]);
+        if (found) {
+          return true
+        }
+        else return false
       }
-      else return false
     }
     else {
       return false
     }
-
-
   }
   productImageZoom = () => {
 
@@ -152,9 +150,9 @@ class ProductImageZoom extends React.Component {
                 {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship_" ></div> : ""}
                 {
                   this.handleVideoCheck(showimage) ?
-                    <video preload="auto"  autoplay width="500" height="500" controls>
-                       <source src={showimage} type="video/mp4"/>
-                         </video>
+                    <video preload="auto" autoplay width="100%" controls style={{ verticalAlign: "bottom" }}>
+                      <source src={showimage} type="video/mp4" />
+                    </video>
                     :
                     <GlassMagnifier
                       imageSrc={showimage}

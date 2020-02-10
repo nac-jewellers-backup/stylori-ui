@@ -188,7 +188,7 @@ const Provider = (props) => {
         // }
     }, [wishlistDATA, wishlistdata])
     useEffect(() => {
-        debugger
+        
         orderobj["userProfileId"] = userIds
         orderobj1["userprofileId"] = userIds
         if (userIds) wishlistmakeRequest(orderobj1)

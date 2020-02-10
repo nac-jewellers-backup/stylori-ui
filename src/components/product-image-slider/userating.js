@@ -154,7 +154,7 @@ const useRating = (props) => {
         }
     }
     const handelSubmit = (e, props) => {
-        debugger
+        
         var rats = props.ratingcounts.ratingcounts ? props.ratingcounts.ratingcounts : ""
         if ((rats > 0) && values.title.length > 0 && values.message.length > 0) {
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
@@ -200,7 +200,7 @@ const useRating = (props) => {
                 localStorage.setItem('review_location', `${window.location.href}`)
                 props.history.push({ pathname: "/login" })
             }
-            debugger
+            
             values["errortext"]["rateerr"] = ""
             values["error"]["rateerr"] = false
             values["count"] = rats

@@ -42,7 +42,7 @@ class Component extends React.Component {
 
 
     componentWillReceiveProps(nextProps) {
-        debugger
+        
         const { starsSelected } = this.props
         // alert(JSON.stringify("======="))
         if (nextProps.clear_rating && nextProps.clear_rating.length > 0) {

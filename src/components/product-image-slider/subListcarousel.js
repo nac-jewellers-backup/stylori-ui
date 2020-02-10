@@ -115,7 +115,7 @@ class Sublistcarousel extends React.Component {
       <div style={{ width: "100%" }}>
         <Hidden smDown>
           <Container style={{ padding: "0px 17px" }}>
-            <div className="back_img" style={{ padding: "2px 0px",margin:"auto", boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" }}>
+            <div className="back_img" style={{ padding: "2px 0px", margin: "auto", boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" }}>
               <div className='like-and-recently'>
                 <Grid container spacing={12}>
                   <Grid item xs={6} className={`${'like-page'} ${this.state.dataToShow === 'YouMayLike' ? 'recenetly-like-page-active' : ''}`} ><span onClick={() => this.setState({ dataToShow: 'YouMayLike' })}>You may also like</span></Grid>
@@ -216,7 +216,7 @@ class Sublistcarousel extends React.Component {
                                     container
                                     style={{ justifyContent: "center", alignItems: "center", display: "flex" }}
                                   >
-                                    <img style={{ width: "18%" }} src={val.icon} />
+                                    <img style={{ width: "60px" }} src={val.icon} />
                                   </Grid>
                                 </Grid>
                               </>

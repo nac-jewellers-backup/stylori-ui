@@ -128,7 +128,7 @@ class Component extends React.Component {
             // mailId: mailId ? mailId : this.state.mailId
         })
         // }
-        debugger
+        
         if (Object.keys(adres.value).length <= 0 &&obj_values.length <= 0) {
             if (panel === 1) {
                 return localStorage.setItem("panel", 1);
@@ -184,7 +184,7 @@ class Component extends React.Component {
             }
         ]
         adres["value"] = localStorage.getItem("select_addres") ? JSON.parse(localStorage.getItem("select_addres")) : {};
-        debugger
+        
         // if (Object.keys(adres.value).length <= 0) {
         //     if (panel === 1) {
         //         return localStorage.setItem("panel", 1);
