@@ -142,7 +142,7 @@ const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
 
 }
 
-// video check
+// video validation
 
 const handleVideoCheck = (url) => {
     var extensionVideoLists = ['m4v', 'avi', 'mpg', 'mp4', 'webm', 'mp2', 'mpeg', 'mpe', 'mpv', 'ogg', 'm4p', 'wmv', 'mov', 'qt', 'flv', 'swf', 'avchd'];
@@ -167,7 +167,7 @@ const handleVideoCheck = (url) => {
 
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 const generateImgurls = (PD, val, screen_res, tabsChange) => {
-
+debugger
    
     var arrOfurls = []
     var arrOfurls_2X = []
@@ -215,6 +215,7 @@ const generateImgurls = (PD, val, screen_res, tabsChange) => {
             arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
             arrOfurls_2X.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res, largeImageZoom))
         }
+        debugger
         return { arrOfurls, arrOfurls_2X }
         }
         else {
@@ -225,7 +226,7 @@ const generateImgurls = (PD, val, screen_res, tabsChange) => {
     }
     
     )
-
+debugger
     return { arrOfurls, arrOfurls_2X }
 
 }
@@ -322,24 +323,29 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
         mapperdata = [];
     }
     const _format = mapperdata.map(PD => {
+        debugger
         let _d;
         try {
             _d = {
                 message: rating && rating.CodData && rating.CodData.data && rating.CodData.data.allCustomerReviews.nodes,
                 // title: rating.CodData.data.allCustomerReviews.nodes[0].title,
                 // ratings: rating.CodData.data.allCustomerReviews.nodes[0].rating,
-                productId: PD.productListByProductId && PD.productListByProductId.productId,
-                title: PD.productListByProductId.productName,
+                productId: PD.productListByProductId ? PD.productListByProductId.productId : '',
+                title: PD && PD.productListByProductId && PD.productListByProductId.productName ?PD.productListByProductId.productName : '',
                 skuId: PD && PD === undefined ? '' : PD.generatedSku,
-                price: PD.discountPrice,
-                offerPrice: PD.markupPrice,
+                price: PD && PD.discountPrice ? PD.discountPrice : '',
+                offerPrice: PD && PD.markupPrice ?PD.markupPrice : '',
                 save: '5999.9',
                 offerDiscount: '25% OFF',
                 dis: PD && PD !== undefined && PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription !== '' ? PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription : '',
                 productType: PD.productListByProductId.productType && PD.productListByProductId.productType,
-                fadeImages: {arrOfurls:[`${CDN_URL}product/575X575/productnotfound.webp`,`${CDN_URL}product/575X575/productnotfound.webp`,`${CDN_URL}product/575X575/productnotfound.webp`], arrOfurls:[`${CDN_URL}product/575X575/productnotfound.webp`,`${CDN_URL}product/575X575/productnotfound.webp`,`${CDN_URL}product/575X575/productnotfound.webp`]},
-                image_resolution: img_res,
-                image_resolution_two: img_res_X_2,
+                fadeImages: (PD && 
+                PD.productListByProductId &&
+                PD.productListByProductId.productImagesByProductId) &&
+                PD.productListByProductId.productImagesByProductId.nodes.length > 0 ?
+                    generateImgurls(PD, PD.productListByProductId.productImagesByProductId.nodes, colSize, tabsChange) :{arrOfurls:[`${CDN_URL}product/575X575/productnotfound.webp`,`${CDN_URL}product/575X575/productnotfound.webp`,`${CDN_URL}product/575X575/productnotfound.webp`], arrOfurls:[`${CDN_URL}product/575X575/productnotfound.webp`,`${CDN_URL}product/575X575/productnotfound.webp`,`${CDN_URL}product/575X575/productnotfound.webp`]},
+                image_resolution: img_res ? img_res : 1000,
+                image_resolution_two: img_res_X_2 ? img_res_X_2 : 1000,
 
                 productsubHeaderlist: [{
                     name: "From the House of NAC",
