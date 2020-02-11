@@ -22,8 +22,10 @@ const usePromo = (props) => {
             if (data.status === "200") {
                 setCartFilters({
                     discounted_price: data.price_response.discount,
-                    tax_price: 1000,
-                    coupon_type: data.coupon_type
+                    tax_price: Math.round(data.price_response.discount),
+                    coupon_type: data.coupon_type,
+                    gross_amount:data.price_response.gross_amount,
+                    discounted_amount:data.price_response.discounted_price
                 })
             }
             alert(data.message)

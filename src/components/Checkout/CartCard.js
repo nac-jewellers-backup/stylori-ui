@@ -365,12 +365,14 @@ class Checkoutcard extends React.Component {
                                 <Typography className={`subhesder-totsl-size ${classes.normalfonts}`}>Grand Total</Typography>
                             </Grid>
                             <Grid xs={5} >
-                                <Typography className={`subhesder ${classes.normalfonts}`}>{Math.round(dataCard1)}</Typography>
+                                <Typography className={`subhesder ${classes.normalfonts}`}>{props.cartFilters.gross_amount ? Math.round(props.cartFilters.gross_amount) : 
+                                Math.round(dataCard1)
+                                }</Typography>
                                 <Typography className={`subhesder ${classes.normalfonts}`}>{Math.round(yousave)}</Typography>
                                 {props.cartFilters.tax_price ? <Typography className={`subhesder ${classes.normalfonts}`}>
                                     {props.cartFilters.tax_price}</Typography> : ""}
                                 <Typography className={`subhesder ${classes.normalfonts}`}>FREE </Typography>
-                                <Typography className={`subhesder-totsl-size ${classes.normalfonts}`}>{Math.round(dataCard1 - discounted_price)}</Typography>
+                                <Typography className={`subhesder-totsl-size ${classes.normalfonts}`}>{props.cartFilters.discounted_amount ?Math.round(props.cartFilters.discounted_amount) : Math.round(dataCard1 - discounted_price) }</Typography>
                             </Grid>
                         </Grid>
                         {/* // )}  */}
