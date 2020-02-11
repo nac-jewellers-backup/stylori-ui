@@ -61,8 +61,41 @@ const useStyles = makeStyles(theme => ({
 }))
 export default function ElasticSearch(props) {
     const classes = useStyles();
+    const [value, setValue] = React.useState(null)
     const product = ["Bange", "Ring", "pendent", "Nosepin"]
+    const handleChange = (e) =>{
+        setValue(e.target.value)
 
+        const status = (response) => {
+
+            if (response.status >= 200 && response.status < 300) {
+                return Promise.resolve(response)
+            } else {
+                return Promise.reject(new Error(response.statusText))
+            }
+        }
+
+        const json = (response) => {
+            return response.json()
+        }
+        fetch(`http://192.168.0.148:3000/auto_complete/`, {
+
+            method: 'post',
+            // body: {query:seoUrlResult,variables:splitHiphen()}
+            // body: JSON.stringify({query:seoUrlResult}),
+
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                "search_text":`${value}`
+            })
+        })
+            .then(status)
+            .then(json).then(async val => { 
+                console.log(val, "elastic search")
+            })
+    }
     return (
         <Grid container className={classes.root}>
             <Grid xs={12} className={classes.conatinerFull}>
@@ -74,6 +107,8 @@ export default function ElasticSearch(props) {
                         <InputBase
                             className={classes.withinput}
                             placeholder="Search"
+                            value={value}
+                            onChange={(e)=>handleChange(e)}
                             endAdornment={<InputAdornment position="end"><div className={classes.searchcontainerplain}><Seach className={"searchPlain"} />
                             </div></InputAdornment>} />
                     </Grid>

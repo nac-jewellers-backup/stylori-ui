@@ -142,7 +142,24 @@ const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
 
 }
 
-// 
+// video check
+
+const handleVideoCheck = (url) => {
+    var extensionVideoLists = ['m4v', 'avi', 'mpg', 'mp4', 'webm', 'mp2', 'mpeg', 'mpe', 'mpv', 'ogg', 'm4p', 'wmv', 'mov', 'qt', 'flv', 'swf', 'avchd'];
+    if (url) {
+      if (url.length > 0) {
+        var array_split = url.split(/\.(?=[^\.]+$)/);
+        const found = extensionVideoLists.find(element => element.toLowerCase() === array_split[1]);
+        if (found) {
+          return true
+        }
+        else return false
+      }
+    }
+    else {
+      return false
+    }
+  }
 
 
 
@@ -160,7 +177,7 @@ const generateImgurls = (PD, val, screen_res, tabsChange) => {
     var largeImageZoom = true
     val.map(imgurl => {
             
-        if(imgurl.imageUrl !== "base_images/SK3293_4O.mp4"){
+        if(!handleVideoCheck(imgurl.imageUrl)){
         if (imgurl.imageUrl.split('.')[0].split('-')[1].length > 2) {
 
             imgurlsplit = imgurl.imageUrl.split('.')[0].split('-')[1].substr(1)
@@ -320,8 +337,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                 offerDiscount: '25% OFF',
                 dis: PD && PD !== undefined && PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription !== '' ? PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription : '',
                 productType: PD.productListByProductId.productType && PD.productListByProductId.productType,
-                fadeImages: PD.productListByProductId.productImagesByProductId.nodes &&
-                    generateImgurls(PD, PD.productListByProductId.productImagesByProductId.nodes, colSize, tabsChange),
+                fadeImages: {arrOfurls:[`${CDN_URL}product/575X575/productnotfound.webp`,`${CDN_URL}product/575X575/productnotfound.webp`,`${CDN_URL}product/575X575/productnotfound.webp`], arrOfurls:[`${CDN_URL}product/575X575/productnotfound.webp`,`${CDN_URL}product/575X575/productnotfound.webp`,`${CDN_URL}product/575X575/productnotfound.webp`]},
                 image_resolution: img_res,
                 image_resolution_two: img_res_X_2,
 
