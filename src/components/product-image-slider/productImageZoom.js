@@ -46,6 +46,7 @@ class ProductImageZoom extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    debugger
     // Typical usage (don't forget to compare props):
     if (this.props.data[0].fadeImages.arrOfurls[0] !== prevProps.data[0].fadeImages.arrOfurls[0]) {
       this.setState({ showimage: this.props.data[0].fadeImages.arrOfurls[0], largeImage: this.props.data[0].fadeImages.arrOfurls_2X[0] })
@@ -145,7 +146,7 @@ debugger
             </Grid> */}
                 {data.map(val =>
                 {
-debugger
+
                   return(
                     val.offerDiscount ?
                   <span style={{ color: "#fff" }} className="overlayCss11">
@@ -172,7 +173,7 @@ debugger
                       largeImageSrc={largeImage}
                       magnifierBoxShadow="0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)"
                       magnifierBorderColor="#f5003240"
-                      magnifierBackgroundColor="#f5003240"
+                      // magnifierBackgroundColor="#f5003240"
                     />
                 }
 

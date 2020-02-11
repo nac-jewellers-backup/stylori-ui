@@ -167,7 +167,7 @@ const handleVideoCheck = (url) => {
 
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 const generateImgurls = (PD, val, screen_res, tabsChange) => {
-debugger
+
    
     var arrOfurls = []
     var arrOfurls_2X = []
@@ -215,7 +215,7 @@ debugger
             arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
             arrOfurls_2X.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res, largeImageZoom))
         }
-        debugger
+        
         return { arrOfurls, arrOfurls_2X }
         }
         else {
@@ -226,7 +226,7 @@ debugger
     }
     
     )
-debugger
+
     return { arrOfurls, arrOfurls_2X }
 
 }
@@ -323,7 +323,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
         mapperdata = [];
     }
     const _format = mapperdata.map(PD => {
-        debugger
+        
         let _d;
         try {
             _d = {

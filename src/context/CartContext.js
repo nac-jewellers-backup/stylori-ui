@@ -300,7 +300,7 @@ const Provider = (props) => {
 
 
     const updateProductList = () => {
-        debugger
+        
         let variables;
         if (localStorage.getItem('user_id')) {
             const status = (response) => {
