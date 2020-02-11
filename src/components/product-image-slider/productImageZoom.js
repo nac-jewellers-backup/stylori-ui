@@ -46,7 +46,6 @@ class ProductImageZoom extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    debugger
     // Typical usage (don't forget to compare props):
     if (this.props.data[0].fadeImages.arrOfurls[0] !== prevProps.data[0].fadeImages.arrOfurls[0]) {
       this.setState({ showimage: this.props.data[0].fadeImages.arrOfurls[0], largeImage: this.props.data[0].fadeImages.arrOfurls_2X[0] })
@@ -72,7 +71,6 @@ class ProductImageZoom extends React.Component {
 
     // console.log(this.props.data)
     const { classes, data } = this.props
-debugger
     const limit = 4;
     const { showimage, largeImage } = this.state;
     const dataCarousel = {
@@ -168,6 +166,7 @@ debugger
                     <GlassMagnifier
                       imageSrc={showimage}
                       // imageSrc={largeImage}
+                      onError = {(e) =>{e.target.src="https://assets.stylori.com/product/1000X1000/productnotfound.webp"}}
                       imageAlt="Example"
                       magnifierSize="50%"
                       largeImageSrc={largeImage}

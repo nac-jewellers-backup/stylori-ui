@@ -27,10 +27,12 @@ class ProductDetails extends React.Component {
 
                 <Grid container spacing={12} style={{ paddingRight: "20px" }}>
                     {data && data.length > 0 && data[0] && data[0].productsDetails && data[0].productsDetails.map(valueofproductdetail => {
-
+debugger
                         return (valueofproductdetail.namedetail.length === 0) ? false :
                             <>
-                                <div className='overall-boxz' style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" }}>
+                            {
+                                (valueofproductdetail.header !== 'Price Breakup' || (valueofproductdetail.header === 'Price Breakup' && valueofproductdetail.namedetail[5].name === 'Total' && Number(valueofproductdetail.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g,"")) > 13000)) ?
+<div className='overall-boxz' style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" }}>
                                     <div className='overall-bo'>
                                         <span key={valueofproductdetail.name} className={`product-details ${classes.normalfonts}`} > {valueofproductdetail.header}</span>
                                         <hr class="bottom-line"></hr>
@@ -48,10 +50,12 @@ class ProductDetails extends React.Component {
                                                                 </Grid>
                                                                 <Grid container item xs={8} style={{ alignItems: "center" }}>
                                                                     {
+                                                                        // valueofproductdetail.header === 'Price Breakup' && 
                                                                         isArray(res.details) ?
 
                                                                             <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
                                                                                 {res.details.map((Item, Index) => {
+                                                                                    debugger
                                                                                     return (<span style={{ fontSize: "12px", textAlign: 'left' }}> {
                                                                                         (valueofproductdetail.header === 'Price Breakup') ?
                                                                                             ((Index === 0 && (res.details[Index] !== res.details[Index + 1]) ? <del>{Item}</del> :
@@ -76,6 +80,10 @@ class ProductDetails extends React.Component {
                                             )}</>
                                     </div>
                                 </div>
+                                :
+                                null
+                            }
+                                
                             </>
                     })}
                 </Grid>
