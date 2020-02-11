@@ -144,9 +144,19 @@ debugger
               </Grid>
             </Grid> */}
                 {data.map(val =>
+                {
+debugger
+                  return(
+                    val.offerDiscount ?
                   <span style={{ color: "#fff" }} className="overlayCss11">
-                    {val.offerDiscount}
-                  </span>)}
+                  {val.offerDiscount}
+                </span>
+                :
+                null
+                )
+                }
+                  
+                  )}
                 {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship_" ></div> : ""}
                 {
                   this.handleVideoCheck(showimage) ?

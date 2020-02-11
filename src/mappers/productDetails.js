@@ -219,8 +219,8 @@ debugger
         return { arrOfurls, arrOfurls_2X }
         }
         else {
-            arrOfurls.push(`${CDN_URL}base_images/SK3293_4O.mp4`)
-            arrOfurls_2X.push(`${CDN_URL}base_images/SK3293_4O.mp4`)
+            arrOfurls.push(`${CDN_URL}${imgurl.imageUrl}`)
+            arrOfurls_2X.push(`${CDN_URL}${imgurl.imageUrl}`)
             return { arrOfurls, arrOfurls_2X }
         }
     }
@@ -336,7 +336,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                 price: PD && PD.discountPrice ? PD.discountPrice : '',
                 offerPrice: PD && PD.markupPrice ?PD.markupPrice : '',
                 save: '5999.9',
-                offerDiscount: '25% OFF',
+                offerDiscount:PD && PD.discount ? `${PD.discount}% OFF` : null,
                 dis: PD && PD !== undefined && PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription !== '' ? PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription : '',
                 productType: PD.productListByProductId.productType && PD.productListByProductId.productType,
                 fadeImages: (PD && 

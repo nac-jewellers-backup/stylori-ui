@@ -7,6 +7,7 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
       markupPrice
       sellingPrice
       purity
+      discount
       metalColor
       discountPrice
       generatedSku
