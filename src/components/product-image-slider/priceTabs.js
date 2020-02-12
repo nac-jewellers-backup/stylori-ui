@@ -321,7 +321,7 @@ class Component extends React.Component {
                                                              handle_extension(data[0].size_guide) === "document" && 
                                                              <div className={`${classes.modals_document}  "modalin-ring"`}>
                                                              <iframe
-                                                           className="document_iframe"
+                                                           className="document_iframe" 
                                                              src={data[0].size_guide} width="100%" height="100%" />
                                                         
                                                              </div>
