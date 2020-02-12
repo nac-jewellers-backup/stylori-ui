@@ -180,10 +180,8 @@ class Component extends React.Component {
     TabsComponent = () => {
         const { classes } = this.props;
         const data = this.props.data;
-        debugger
-        console.log("------")
-        console.log(data)
         const { value } = this.state;
+        const kadasize = this.props && this.props.data && this.props.data.length > 0 && this.props.data[0] && this.props.data[0].productsDetails && this.props.data[0].productsDetails.length > 0 && this.props.data[0].productsDetails[0] && this.props.data[0].productsDetails[0].namedetail && this.props.data[0].productsDetails[0].namedetail.length > 0 && this.props.data[0].productsDetails[0].namedetail[3] && this.props.data[0].productsDetails[0].namedetail[3].details && this.props.data[0].productsDetails[0].namedetail[3].details
         const limit = 8;
         const settings = {
             className: 'center',
@@ -222,11 +220,11 @@ class Component extends React.Component {
         const handle_extension = (_url) => {
             var url_extension = _url.substring(_url.lastIndexOf(".") + 1, _url.length).toLowerCase();
             var extensionVideoLists = ['m4v', 'avi', 'mpg', 'mp4', 'webm', 'mp2', 'mpeg', 'mpe', 'mpv', 'ogg', 'm4p', 'wmv', 'mov', 'qt', 'flv', 'swf', 'avchd'];
-            var extensionImageLists = ['jpg','jpeg','png','gif'];
-            var extensionDocumentsLists = ['doc','docx','pdf']
-            if(extensionVideoLists.indexOf(url_extension) !== -1) return "video"
-            else if(extensionImageLists.indexOf(url_extension) !== -1) return "image"
-            else if(extensionDocumentsLists.indexOf(url_extension) !== -1) return "document"
+            var extensionImageLists = ['jpg', 'jpeg', 'png', 'gif'];
+            var extensionDocumentsLists = ['doc', 'docx', 'pdf']
+            if (extensionVideoLists.indexOf(url_extension) !== -1) return "video"
+            else if (extensionImageLists.indexOf(url_extension) !== -1) return "image"
+            else if (extensionDocumentsLists.indexOf(url_extension) !== -1) return "document"
             // return last
         }
         // data[0].productTabs[0].tab2.Children
@@ -240,7 +238,7 @@ class Component extends React.Component {
                     return (
                         <>
                             {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
-                                <Grid item lg={3} xs={12} style={{ display: "flex", alignItems: "center" }}><h1 className="rings_tabs">{data[0].productType === "Rings"?val.tab1.header:val.tab1.headerBangle}&nbsp;
+                                <Grid item lg={3} xs={12} style={{ display: "flex", alignItems: "center" }}><h1 className="rings_tabs">{data[0].productType === "Rings" ? val.tab1.header : val.tab1.headerBangle}&nbsp;
                                {data[0].size_guide && <a
                                         onClick={this.handleOpen}
                                         className="my-ringsize">Size Guide </a>}</h1></Grid>
@@ -261,7 +259,7 @@ class Component extends React.Component {
                                                             {arr.map((val, i) => {
                                                                 return (<>
                                                                     <div style={{ justifyContent: "center", display: "flex" }}>
-                                                                        <div className={JSON.stringify(val) === this.state.skuSize ? 'darkouter' : "darkouterWhite"}>
+                                                                        <div className={JSON.stringify(val) === this.state.skuSize || kadasize === val ? 'darkouter' : "darkouterWhite"}>
                                                                             <button
                                                                                 style={{ padding: "0px" }}
                                                                                 className={'page'}
@@ -283,7 +281,7 @@ class Component extends React.Component {
                                                             {arr.map((val, i) => {
                                                                 return (<>
                                                                     <div style={{ justifyContent: "center", display: "flex" }}>
-                                                                        <div className={JSON.stringify(val) === this.state.skuSize ? 'darkouter' : "darkouterWhite"}>
+                                                                        <div className={JSON.stringify(val) === this.state.skuSize || kadasize === val ? 'darkouter' : "darkouterWhite"}>
                                                                             <button
                                                                                 className={'page'}
                                                                                 id={val}
@@ -323,7 +321,7 @@ class Component extends React.Component {
                                                              handle_extension(data[0].size_guide) === "document" && 
                                                              <div className={`${classes.modals_document}  "modalin-ring"`}>
                                                              <iframe
-                                                           className="document_iframe"
+                                                           className="document_iframe" 
                                                              src={data[0].size_guide} width="100%" height="100%" />
                                                         
                                                              </div>
@@ -336,7 +334,6 @@ class Component extends React.Component {
                                                            </video>
                                                            </div>
                                                         }
-                                                        
 
                                                         </>
                                                     {/* </div> */}

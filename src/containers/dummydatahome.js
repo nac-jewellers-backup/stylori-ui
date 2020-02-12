@@ -30,6 +30,11 @@ export const
           navigateUrl: "/gemstone-jewellery?sort=latest"
         },
         {
+          img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-1920-X-656-px.jpg",
+          mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-mobile-805X430-px.jpg",
+          navigateUrl: "/jewellery/kada/csk_kada?skuId=1000001"
+        },
+        {
           img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori-Valentine-banner-web.jpg",
           mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori-Valentine-banner-mob.jpg",
           navigateUrl: "/hearts-jewellery?sort=bestseller"

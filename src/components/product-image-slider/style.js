@@ -1,3 +1,5 @@
+import { Autorenew } from "@material-ui/icons";
+
 const styles = theme => ({
     searchCheck: {
         paddingRight: "12px",
@@ -69,22 +71,18 @@ const styles = theme => ({
     modals_document: {
         [theme.breakpoints.down('xs')]: {
             background: '#fff !important',
-            height: '100%',
+            height: '90%',
             overflow: "none",
             width: '90%',
-            // marginTop: '3%',
-            // marginBottom: '3%',
-            marginLeft: '5%',
+            margin:"auto",
             outline: 'none !important',
         },
         [theme.breakpoints.up('lg')]: {
             background: '#fff !important',
-            height: '100%',
+            height: '90%',
             overflow: "none",
             width: '90%',
-            // marginTop: '3%',
-            // marginBottom: '3%',
-            marginLeft: '5%',
+            margin:"auto",
             outline: 'none !important',
         },
     },
