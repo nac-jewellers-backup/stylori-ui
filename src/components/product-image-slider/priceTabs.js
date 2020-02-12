@@ -218,13 +218,19 @@ class Component extends React.Component {
             }
         }
         const handle_extension = (_url) => {
-            var url_extension = _url.substring(_url.lastIndexOf(".") + 1, _url.length).toLowerCase();
-            var extensionVideoLists = ['m4v', 'avi', 'mpg', 'mp4', 'webm', 'mp2', 'mpeg', 'mpe', 'mpv', 'ogg', 'm4p', 'wmv', 'mov', 'qt', 'flv', 'swf', 'avchd'];
-            var extensionImageLists = ['jpg', 'jpeg', 'png', 'gif'];
-            var extensionDocumentsLists = ['doc', 'docx', 'pdf']
-            if (extensionVideoLists.indexOf(url_extension) !== -1) return "video"
-            else if (extensionImageLists.indexOf(url_extension) !== -1) return "image"
-            else if (extensionDocumentsLists.indexOf(url_extension) !== -1) return "document"
+            if(_url){
+                var url_extension = _url.substring(_url.lastIndexOf(".") + 1, _url.length).toLowerCase();
+                var extensionVideoLists = ['m4v', 'avi', 'mpg', 'mp4', 'webm', 'mp2', 'mpeg', 'mpe', 'mpv', 'ogg', 'm4p', 'wmv', 'mov', 'qt', 'flv', 'swf', 'avchd'];
+                var extensionImageLists = ['jpg', 'jpeg', 'png', 'gif'];
+                var extensionDocumentsLists = ['doc', 'docx', 'pdf']
+                if (extensionVideoLists.indexOf(url_extension) !== -1) return "video"
+                else if (extensionImageLists.indexOf(url_extension) !== -1) return "image"
+                else if (extensionDocumentsLists.indexOf(url_extension) !== -1) return "document"
+            }
+            else{
+                return null
+            }
+            
             // return last
         }
         // data[0].productTabs[0].tab2.Children
