@@ -19,6 +19,8 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
       transSkuDescriptionsBySkuId {
         nodes {
           skuDescription
+          ringsizeImage
+          certificate
         }
       }
       diamondType
