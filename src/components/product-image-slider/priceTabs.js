@@ -281,7 +281,7 @@ class Component extends React.Component {
                                                             {arr.map((val, i) => {
                                                                 return (<>
                                                                     <div style={{ justifyContent: "center", display: "flex" }}>
-                                                                        <div className={JSON.stringify(val) === this.state.skuSize ? 'darkouter' : "darkouterWhite"}>
+                                                                        <div className={JSON.stringify(val) === this.state.skuSize || kadasize === val ? 'darkouter' : "darkouterWhite"}>
                                                                             <button
                                                                                 className={'page'}
                                                                                 id={val}
