@@ -328,7 +328,7 @@ class Component extends React.Component {
                                                              <div className={`${classes.modals_document}  "modalin-ring"`}>
                                                            <object data={data[0].size_guide} type="application/pdf" className="document_iframe"  width="100%" height="100%">
   <p>Your web browser doesn't have a PDF plugin.
-  Instead you can <a href={data[0].size_guide}>click here to
+  Instead you can <a href={data[0].size_guide} download>click here to
   download the PDF file.</a></p>
 </object>
                                                              {/* <iframe
