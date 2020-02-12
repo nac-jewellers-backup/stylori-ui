@@ -224,12 +224,22 @@ class Checkoutcard extends React.Component {
                                         {/* <img src={}/> */}
                                         {val.namedetail !== undefined && val.namedetail.map(val => (
                                             dataval.fadeImages.map(im_ => <>
-                                                {filter_image(im_, val.name, val.details) && filter_image(im_, val.name, val.details).length > 0 ?
-                                                    <>{window.location.pathname !== "/checkout" ? <NavLink to={dataval.skuUrl} style={{ textDecoration: 'none' }}>
+                                                {
+                                                
+                                                filter_image(im_, val.name, val.details) && filter_image(im_, val.name, val.details).length > 0 ?
+                                                    <>
+                                                    {
+                                                        
+                                                    window.location.pathname !== "/checkout" ? 
+                                                    <NavLink to={dataval.skuUrl} style={{ textDecoration: 'none' }}>
                                                         <Slideshow className="image"
                                                             fadeImages={filter_image(im_, val.name, val.details)} dataCarousel={dataCarousel} />
-                                                    </NavLink> : <Slideshow className="image"
-                                                        fadeImages={filter_image(im_, val.name, val.details)} dataCarousel={dataCarousel} />}</> : ""
+                                                    </NavLink>
+                                                     : 
+                                                     <Slideshow className="image"
+                                                        fadeImages={filter_image(im_, val.name, val.details)} dataCarousel={dataCarousel} />
+                                                        }
+                                                        </> : ""
 
                                                 }</>)
                                         ))}
@@ -403,6 +413,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         var data = this.props.data
+        debugger
         const { classes } = this.props;
         // alert(discounted_price)
         let path = window.location.pathname.split('/').pop();

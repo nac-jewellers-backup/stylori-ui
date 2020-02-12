@@ -251,9 +251,9 @@ class Component extends React.Component {
                                                  </div> */}
                                             </Grid>
                                         </>
-                                        : ""}
+                                        : null}
                                 </Grid>
-                            </Grid> : ""}
+                            </Grid> : null}
                             {arr2.length > 0 ?
                                 <Grid container spacing={12} lg={12} style={{ marginBottom: "10px", padding: "0px 10px" }}>
                                     <Grid item lg={3} xs={12}><h1 className="rings_tabs">{val.tab2.header}</h1></Grid>

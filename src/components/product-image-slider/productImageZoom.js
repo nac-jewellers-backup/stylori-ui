@@ -93,17 +93,47 @@ class ProductImageZoom extends React.Component {
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
           <Grid item xs={2}>
             <div style={{ textAlign: 'center', }} className="imgzom-sidecraousel-media">
-              <Button onClick={this.previous}>
+              {
+                data && data.length > 0 && data[0] && data[0].fadeImages.arrOfurls.length > 3 ? 
+                <span  className={data && data.length > 0 && data[0] && data[0].fadeImages.arrOfurls.length === 4 ? classes.cursor_notallowed : null}>
+                <Button onClick={this.previous} 
+                
+               
+                disabled={data && data.length > 0 && data[0] && data[0].fadeImages.arrOfurls.length === 4
+                  ?
+                  true
+                  :
+                  false
+               }>
                 <i class="fa fa-angle-up" style={{ fontSize: "35px", color: "#F699A3" }}></i>
               </Button>
+              </span>
+              :
+              null
+              }
               <Slideshow sliderRef={this.slider}
                 getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img'
                 fadeImages={data[0].fadeImages.arrOfurls_2X} dataCarousel={dataCarousel} />
-              <Button onClick={this.next}>
+             
+             {
+                data && data.length > 0 && data[0] && data[0].fadeImages.arrOfurls.length > 3 ?
+                <span  className={data && data.length > 0 && data[0] && data[0].fadeImages.arrOfurls.length === 4 ? classes.cursor_notallowed : null}>
+                <Button onClick={this.next}
+                
+                disabled={data && data.length > 0 && data[0] && data[0].fadeImages.arrOfurls.length === 4
+                   ?
+                   true
+                   :
+                   false
+                }>
                 <i class="fa fa-angle-down" style={{ fontSize: "35px", color: "#F699A3" }}
                 // className={`${classes.colorMain}`}
                 ></i>
               </Button>
+              </span>
+                :
+                null
+             } 
             </div>
           </Grid>
 

@@ -374,8 +374,8 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
 
                 productTabs: [{
                     tab1: {
-                        header: "Ring Size",
-                        headerBangle: "Bangle Size",
+                        header:  `${PD.productListByProductId.productType ? PD.productListByProductId.productType : null} Size`,
+                        headerBangle: `${PD.productListByProductId.productType ? PD.productListByProductId.productType : null} Size`,
                         Children: PD.productListByProductId && sorting(PD.productListByProductId)
                     },
                     tab2: {
