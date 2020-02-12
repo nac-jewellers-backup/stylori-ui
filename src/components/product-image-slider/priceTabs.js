@@ -326,9 +326,14 @@ class Component extends React.Component {
                                                         {
                                                              handle_extension(data[0].size_guide) === "document" && 
                                                              <div className={`${classes.modals_document}  "modalin-ring"`}>
-                                                             <iframe
+                                                           <object data={data[0].size_guide} type="application/pdf" className="document_iframe"  width="100%" height="100%">
+  <p>Your web browser doesn't have a PDF plugin.
+  Instead you can <a href={data[0].size_guide}>click here to
+  download the PDF file.</a></p>
+</object>
+                                                             {/* <iframe
                                                            className="document_iframe" 
-                                                             src={data[0].size_guide} width="100%" height="100%" />
+                                                             src={data[0].size_guide} width="100%" height="100%" /> */}
                                                         
                                                              </div>
                                                         }
