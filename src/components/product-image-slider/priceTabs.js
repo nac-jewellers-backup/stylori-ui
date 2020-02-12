@@ -339,7 +339,7 @@ class Component extends React.Component {
                                                         }
                                                          {
                                                              handle_extension(data[0].size_guide) === "video" &&
-                                                             <div className={`${classes.modals}  "modalin-ring"`}>
+                                                             <div className={`${classes.modals_video}  "modalin-ring"`}>
                                                              <video preload="auto" autoplay width="100%" controls>
                                                              <source src={data[0].size_guide} type="video/mp4" />
                                                            </video>

@@ -71,9 +71,9 @@ const styles = theme => ({
     modals_document: {
         [theme.breakpoints.down('xs')]: {
             background: '#fff !important',
-            height: '90%',
+            height: '95%',
             overflow: "none",
-            width: '90%',
+            width: '95%',
             margin:"auto",
             outline: 'none !important',
         },
@@ -81,6 +81,24 @@ const styles = theme => ({
             background: '#fff !important',
             height: '90%',
             overflow: "none",
+            width: '90%',
+            margin:"auto",
+            outline: 'none !important',
+        },
+    },
+    modals_video: {
+        [theme.breakpoints.down('xs')]: {
+            background: '#fff !important',
+            // height: '90%',
+            overflowY: "scroll",
+            width: '90%',
+            margin:"auto",
+            outline: 'none !important',
+        },
+        [theme.breakpoints.up('lg')]: {
+            background: '#fff !important',
+            height: '90%',
+            overflowY: "scroll",
             width: '90%',
             margin:"auto",
             outline: 'none !important',
