@@ -8,13 +8,10 @@ body {
     -moz-osx-font-smoothing: grayscale;
 
 }
-.modalElementSizeGuide{
 
-    overflow:auto;
+#modalElementSizeGuide{
+    overflow: hidden;
 }
-.modalElementSizeGuide::-webkit-scrollbar { width: 0 !important }
-/* .modalElementSizeGuide { overflow: -moz-scrollbars-none; }
-.modalElementSizeGuide { -ms-overflow-style: none; } */
 .MuiTab-root,
 .MuiButton-root,
 .MuiInputBase-input {
@@ -888,7 +885,9 @@ body {
     margin-top: -12% !important;
 }
 
-.modalin-ring {}
+.document_iframe{
+    overflow-x: none !important;
+}
 
 .one-day-ship_ {
     z-index: 999 !important;
