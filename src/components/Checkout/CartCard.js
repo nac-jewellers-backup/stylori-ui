@@ -257,7 +257,7 @@ class Checkoutcard extends React.Component {
                                     <Grid container spacing={12} >
                                         <Grid item xs={8} >
                                             {val.namedetail !== undefined && val.namedetail.map(val => {
-                                                debugger
+                                                
                                                 return (
                                                     <>
                                                         {val.name || val.detail  ?
@@ -297,12 +297,16 @@ class Checkoutcard extends React.Component {
                                 <Grid item xs={4} sm={2} lg={3}>
                                     <div style={{ marginTop: "15%" }}>
                                         {dataval.dataCard1.map(val =>
-                                            <Pricing
+                                        {
+                                            debugger
+                                            return(<Pricing
                                                 detail={dataval}
-                                                offerDiscount={dataval.productType === "Gold Coins" ? "" : "25% - OFF"}
+                                                offerDiscount={(val.discount) ? `${val.discount}% - OFF` : null}
                                                 price={val.price}
                                                 offerPrice={val.offerPrice} >
-                                            </Pricing>
+                                            </Pricing>)
+                                        }
+                                            
                                         )}
                                         {/* <span class={`offer-description ${classes.backgsecondary}`}>25% - OFF</span> */}
                                     </div>
@@ -422,7 +426,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         var data = this.props.data
-        
+        debugger
         const { classes } = this.props;
         // alert(discounted_price)
         let path = window.location.pathname.split('/').pop();

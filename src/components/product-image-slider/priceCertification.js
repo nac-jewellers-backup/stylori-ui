@@ -22,7 +22,6 @@ class PriceCertification extends React.Component {
         const { expanded } = this.state;
         
         const { certificates } = this.props.data[0]
-        debugger
         const { classes } = this.props;
         return (
             <div>

@@ -5,6 +5,7 @@ export const CART = `query myquerycart($productList: [String!]) {
       purity
       metalColor
       discountPrice
+      discount
       markupPrice
       skuUrl
       productListByProductId {
