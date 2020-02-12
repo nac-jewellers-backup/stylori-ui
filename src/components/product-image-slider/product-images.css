@@ -9,9 +9,10 @@ body {
 
 }
 
-#modalElementSizeGuide{
+#modalElementSizeGuide {
     overflow: hidden;
 }
+
 .MuiTab-root,
 .MuiButton-root,
 .MuiInputBase-input {
@@ -51,7 +52,7 @@ body {
 }
 
 .bg-clr2 {
-    background: linear-gradient(to bottom, #f6f7f8 0%, #fff 100%);
+    /* background: linear-gradient(to bottom, #f6f7f8 0%, #fff 100%); */
     top: 0px !important;
     margin: 10px 0 10px;
 
@@ -573,7 +574,7 @@ body {
 }
 
 .back_img {
-    background-image: url(https://assets.stylori.com/images/static/bg.png);
+    /* background-image: url(https://assets.stylori.com/images/static/bg.png); */
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -885,7 +886,7 @@ body {
     margin-top: -12% !important;
 }
 
-.document_iframe{
+.document_iframe {
     overflow-x: none !important;
 }
 
