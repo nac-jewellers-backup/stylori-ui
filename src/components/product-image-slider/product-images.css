@@ -888,6 +888,7 @@ body {
 
 .document_iframe {
     overflow-x: none !important;
+    margin:"auto"
 }
 
 .one-day-ship_ {

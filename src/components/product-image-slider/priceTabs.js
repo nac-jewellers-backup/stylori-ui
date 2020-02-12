@@ -218,13 +218,19 @@ class Component extends React.Component {
             }
         }
         const handle_extension = (_url) => {
-            var url_extension = _url.substring(_url.lastIndexOf(".") + 1, _url.length).toLowerCase();
-            var extensionVideoLists = ['m4v', 'avi', 'mpg', 'mp4', 'webm', 'mp2', 'mpeg', 'mpe', 'mpv', 'ogg', 'm4p', 'wmv', 'mov', 'qt', 'flv', 'swf', 'avchd'];
-            var extensionImageLists = ['jpg', 'jpeg', 'png', 'gif'];
-            var extensionDocumentsLists = ['doc', 'docx', 'pdf']
-            if (extensionVideoLists.indexOf(url_extension) !== -1) return "video"
-            else if (extensionImageLists.indexOf(url_extension) !== -1) return "image"
-            else if (extensionDocumentsLists.indexOf(url_extension) !== -1) return "document"
+            if(_url){
+                var url_extension = _url.substring(_url.lastIndexOf(".") + 1, _url.length).toLowerCase();
+                var extensionVideoLists = ['m4v', 'avi', 'mpg', 'mp4', 'webm', 'mp2', 'mpeg', 'mpe', 'mpv', 'ogg', 'm4p', 'wmv', 'mov', 'qt', 'flv', 'swf', 'avchd'];
+                var extensionImageLists = ['jpg', 'jpeg', 'png', 'gif'];
+                var extensionDocumentsLists = ['doc', 'docx', 'pdf']
+                if (extensionVideoLists.indexOf(url_extension) !== -1) return "video"
+                else if (extensionImageLists.indexOf(url_extension) !== -1) return "image"
+                else if (extensionDocumentsLists.indexOf(url_extension) !== -1) return "document"
+            }
+            else{
+                return null
+            }
+            
             // return last
         }
         // data[0].productTabs[0].tab2.Children
@@ -320,6 +326,11 @@ class Component extends React.Component {
                                                         {
                                                              handle_extension(data[0].size_guide) === "document" && 
                                                              <div className={`${classes.modals_document}  "modalin-ring"`}>
+                                                           {/* <object data={data[0].size_guide} type="application/pdf" className="document_iframe"  width="100%" height="100%">
+  <p>Your web browser doesn't have a PDF plugin.
+  Instead you can <a href={data[0].size_guide}>click here to
+  download the PDF file.</a></p>
+</object> */}
                                                              <iframe
                                                            className="document_iframe" 
                                                              src={data[0].size_guide} width="100%" height="100%" />
@@ -328,7 +339,7 @@ class Component extends React.Component {
                                                         }
                                                          {
                                                              handle_extension(data[0].size_guide) === "video" &&
-                                                             <div className={`${classes.modals}  "modalin-ring"`}>
+                                                             <div className={`${classes.modals_video}  "modalin-ring"`}>
                                                              <video preload="auto" autoplay width="100%" controls>
                                                              <source src={data[0].size_guide} type="video/mp4" />
                                                            </video>
