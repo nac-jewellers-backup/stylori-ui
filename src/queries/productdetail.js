@@ -117,6 +117,28 @@ export const CUSTOMERREVIEWS = `query MyQuery($productSku: String) {
   }
 }
 `
+export const USERPROFILES = `query MyQuery($userId: UUID) {
+  allUserProfiles(condition: {id: $userId}) {
+    nodes {
+      id
+      firstName
+      email
+    }
+  }
+}
+`
+
+export const GIFTWRAPS = `query MyQuery($cardId: UUID) {
+  allGiftwraps(condition: {cartId: $cardId}, orderBy: CREATED_AT_DESC) {
+    nodes {
+      giftTo
+      giftFrom
+      message
+    }
+  }
+}
+
+`
 
 export const ADDRESSDETAILS = `query MyQuery($userprofileId: String) {
   allUserAddresses(condition: {userprofileId: $userprofileId, isActive: true}, orderBy: UPDATED_AT_ASC) {

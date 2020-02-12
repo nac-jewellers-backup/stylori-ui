@@ -152,65 +152,44 @@ export default function (data) {
                         pro_header: k.productListByProductId.productName,
                         namedetail: [
                             {
-                                name: k.diamondType&&k.diamondType.length > 0 ? "Diamond Quality" : "",
-                                details: k.diamondType
+                                name: "Product Code",
+                                details: k.generatedSku
                             },
                             {
                                 name: k.metalColor.length > 0 ? "Metal" : "",
                                 details: k.purity + ' ' + k.metalColor
-                            }, {
-                                name: "Gold Weight" ,
-                                details: k.skuWeight + " " + "GM"
                             },
                             {
-                                name: k.skuSize && k.skuSize.length > 0 ? "Size (For rings/bangles)" : "",
+                                name: "Gold Weight (Gm)" ,
+                                details: k.skuWeight
+                            },
+                            {
+                                name: k.skuSize && k.skuSize.length > 0 ? "Size" : null,
                                 details: k.skuSize
                             },
                             {
-                                name: "Product Code",
-                                details: k.generatedSku
-                            }], 
-                        // }, {
-                        //     header: "Diamond Details ",
-
-
-                        //     namedetail: [
-                        //         {
-                        //             name: "Total No of ",
-                        //         },
-                        //         {
-                        //             name: "Diamonds",
-                        //             details: "35"
-                        //         },
-                        //         {
-                        //             name: "Color",
-                        //             details: "IF"
-                        //         },
-                        //         {
-                        //             name: "Clarity",
-                        //             details: "SI"
-                        //         },
-
-                        //     ],
-                        // },
-                        // {
-                        //     header: "Price Breakup",
-                        //     namedetail: [{
-                        //         name: "Metal",
-                        //         details: "SP0679-18110000"
-                        //     },
-                        //     {
-                        //         name: "Diamond",
-                        //         details: "18K Yellow Gold"
-                        //     }, {
-                        //         name: "Making Charges",
-                        //         details: "1.463"
-                        //     },
-                        //     {
-                        //         name: "GST",
-                        //         details: "1.463"
-                        //     },
-                        //     ],
+                                name: k.diamondType&&k.diamondType.length > 0 ? "Diamond Quality" : "",
+                                details: k.diamondType
+                            },
+                      
+                         
+                            {
+                                name:k.productListByProductId.productDiamondsByProductSku.nodes.length>0 ? "Diamond Weight (Ct)" : null,
+                                details:k.productListByProductId.productDiamondsByProductSku.nodes.length>0 ?k.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight: null
+                            },
+                            {
+                                name:k.productListByProductId.productGemstonesByProductSku.nodes.length>0 ?"Gemstone Type" : null,
+                                details:k.productListByProductId.productGemstonesByProductSku.nodes.length>0 ? k.productListByProductId.productGemstonesByProductSku.nodes[0].gemstoneType : null
+                            },
+                            {
+                                name:k.productListByProductId.productGemstonesByProductSku.nodes.length>0 ? "Gemstone Weight" : null,
+                                details:k.productListByProductId.productGemstonesByProductSku.nodes.length>0 ? k.productListByProductId.productGemstonesByProductSku.nodes[0].stoneWeight : null
+                            },
+               
+                         
+                            
+                        ], 
+                     
                     },
                 ],
                 // 

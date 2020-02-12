@@ -256,17 +256,26 @@ class Checkoutcard extends React.Component {
                                     </NavLink> : <h3 className={`title ${classes.normalfonts}`}>{val.pro_header}</h3>}
                                     <Grid container spacing={12} >
                                         <Grid item xs={8} >
-                                            {val.namedetail !== undefined && val.namedetail.map(val => (
-                                                <Grid container spacing={12}>
-                                                    <Grid item xs={6} >
-                                                        <Typography className={`subhesder ${classes.normalfonts}`}>{val.name}</Typography>
-                                                    </Grid>
-                                                    <Grid item xs={6} >
-                                                        <Typography className={`subhesder ${classes.normalfonts}`}>{val.details}</Typography>
-                                                    </Grid>
-                                                </Grid>
+                                            {val.namedetail !== undefined && val.namedetail.map(val => {
+                                                debugger
+                                                return (
+                                                    <>
+                                                        {val.name || val.detail  ?
 
-                                            ))}
+                                                            <Grid container spacing={12}>
+                                                                <Grid item xs={6} >
+                                                                    <Typography className={`subhesder ${classes.normalfonts}`}>{val.name}</Typography>
+                                                                </Grid>
+                                                                <Grid item xs={6} >
+                                                                    <Typography className={`subhesder ${classes.normalfonts}`}>{val.details}</Typography>
+                                                                </Grid>
+                                                            </Grid>
+                                                            :
+                                                            null}
+                                                    </>
+                                                )
+                                            }
+                                            )}
                                         </Grid>
 
                                         <Grid item xs={4} >
@@ -361,7 +370,7 @@ class Checkoutcard extends React.Component {
         let path = window.location.pathname.split('/').pop();
         const { classes } = this.props;
         return (
-            <div style={{ marginTop: "10px" }} > 
+            <div style={{ marginTop: "10px" }} >
                 <Grid container spacing={12}>
                     <Grid item xs={6} />
                     <Grid item xs={6} >

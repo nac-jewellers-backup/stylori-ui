@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
-import { CUSTOMERREVIEWS } from 'queries/productdetail';
+import { CUSTOMERREVIEWS, USERPROFILES } from 'queries/productdetail';
 import { useGraphql } from 'hooks/GraphqlHook';
 // const { setGlobalCtx } = React.useContext(GlobalContext);
 import { ProductDetailContext } from 'context/ProductDetailContext';
@@ -16,6 +16,7 @@ const useRating = (props) => {
         product_sku: "",
         title: "",
         message: "",
+        username: "",
         count: null,
         errortext: {
             rateerr: "",
@@ -33,6 +34,7 @@ const useRating = (props) => {
     var variab = {}
     // const { setratingcounts } = React.useContext(ProductDetailContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CUSTOMERREVIEWS, () => { }, {});
+    const { loading: codloadings, error: coderrors, data: CodDataLisen, makeRequestCod: makeRequest } = useCheckForCod(USERPROFILES, () => { }, {});
     const clear = () => {
         props && props.clear_rating_onchange && props.clear_rating_onchange(true)
         setratingcounts({ ratingcounts: [] })
@@ -90,7 +92,21 @@ const useRating = (props) => {
             setrating({ CodData })
         }
     }, [CodData])
+
     useEffect(() => {
+        var username = CodDataLisen && CodDataLisen.data && CodDataLisen.data.allUserProfiles && CodDataLisen.data.allUserProfiles.nodes.length > 0 && CodDataLisen.data.allUserProfiles.nodes[0] && CodDataLisen.data.allUserProfiles.nodes[0].firstName && CodDataLisen.data.allUserProfiles.nodes[0].firstName
+        if (username) {
+            setValues({
+                ...values,
+                username: username
+            })
+        }
+    }, [CodDataLisen])
+
+    useEffect(() => {
+        var userId = { "userId": localStorage.getItem("user_id") }
+        // alert(JSON.stringify(userId))
+        makeRequest(userId)
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
         // if (window.location.search) {
         //     let urlSearchparams = window.location.search;
@@ -104,7 +120,7 @@ const useRating = (props) => {
         //     mapUrlParamsSplitEqual.map(val => {
         values['product_sku'] = props.data && props.data[0] && props.data[0].skuId
         if (props.data && props.data[0] && props.data[0].skuId.length > 0) {
-            variab['productSku'] = props.data && props.data[0] && props.data[0].productId
+            variab['productSku'] = props.data && props.data[0] && props.data[0].skuId
             makeRequestCod(variab)
             // alert(JSON.stringify(variab))
         }
@@ -154,7 +170,7 @@ const useRating = (props) => {
         }
     }
     const handelSubmit = (e, props) => {
-        
+
         var rats = props.ratingcounts.ratingcounts ? props.ratingcounts.ratingcounts : ""
         if ((rats > 0) && values.title.length > 0 && values.message.length > 0) {
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
@@ -164,6 +180,7 @@ const useRating = (props) => {
                 if (window.location.search) {
                     values['product_sku'] = props.data && props.data[0] && props.data[0].skuId
                     values['user_id'] = user_id
+                    values['username'] = values.username
                     values['product_id'] = props.data && props.data[0] && props.data[0].productId
                     if (props.data && props.data[0] && props.data[0].skuId.length > 0) {
                         variab['productSku'] = props.data && props.data[0] && props.data[0].skuId
@@ -200,7 +217,7 @@ const useRating = (props) => {
                 localStorage.setItem('review_location', `${window.location.href}`)
                 props.history.push({ pathname: "/login" })
             }
-            
+
             values["errortext"]["rateerr"] = ""
             values["error"]["rateerr"] = false
             values["count"] = rats

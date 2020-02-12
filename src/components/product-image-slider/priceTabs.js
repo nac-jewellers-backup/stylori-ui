@@ -308,28 +308,38 @@ class Component extends React.Component {
                                                     aria-describedby="simple-modal-description"
                                                     open={this.state.open}
                                                     onClose={this.handleClose}
-                                                    style={{ overflow: 'scroll' }}
+                                                   
+                                           
                                                     // className="modalElementSizeGuide"
                                                 >
-                                                    <div className={`${classes.modals}  "modalin-ring"`}>
+                                                    {/* <div className={`${classes.modals}  "modalin-ring"`}> */}
+                                                    <>
                                                         {
-                                                            handle_extension(data[0].size_guide) === "image" && <img height='auto' width='100%' src={data[0].size_guide} /> 
+                                                            handle_extension(data[0].size_guide) === "image" &&
+                                                            <div className={`${classes.modals}  "modalin-ring"`}><img height='auto' width='100%' src={data[0].size_guide} /></div>
+                                                             
                                                         }
                                                         {
-                                                             handle_extension(data[0].size_guide) === "document" && <iframe
-                                                             className="modalElementSizeGuide"
-                                                             src={data[0].size_guide} width="100%" height="100%">
-                                                             </iframe>
+                                                             handle_extension(data[0].size_guide) === "document" && 
+                                                             <div className={`${classes.modals_document}  "modalin-ring"`}>
+                                                             <iframe
+                                                           className="document_iframe"
+                                                             src={data[0].size_guide} width="100%" height="100%" />
+                                                        
+                                                             </div>
                                                         }
                                                          {
-                                                             handle_extension(data[0].size_guide) === "video" && <video preload="auto" autoplay width="100%" controls>
+                                                             handle_extension(data[0].size_guide) === "video" &&
+                                                             <div className={`${classes.modals}  "modalin-ring"`}>
+                                                             <video preload="auto" autoplay width="100%" controls>
                                                              <source src={data[0].size_guide} type="video/mp4" />
                                                            </video>
+                                                           </div>
                                                         }
                                                         
 
-                                                        
-                                                    </div>
+                                                        </>
+                                                    {/* </div> */}
                                                 </Modal>
                                                 {/* <div style={{ marginTop: "10px", textAlign: "center" }}>
                                                     <span style={{ cursor: "pointer" }} className={`my-ringsize ${classes.normalfonts} `} >My Ring Size ?</span>
