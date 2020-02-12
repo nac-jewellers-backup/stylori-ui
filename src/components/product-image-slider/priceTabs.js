@@ -180,6 +180,7 @@ class Component extends React.Component {
     TabsComponent = () => {
         const { classes } = this.props;
         const data = this.props.data;
+        debugger
         console.log("------")
         console.log(data)
         const { value } = this.state;
@@ -218,6 +219,16 @@ class Component extends React.Component {
                 return val
             }
         }
+        const handle_extension = (_url) => {
+            var url_extension = _url.substring(_url.lastIndexOf(".") + 1, _url.length).toLowerCase();
+            var extensionVideoLists = ['m4v', 'avi', 'mpg', 'mp4', 'webm', 'mp2', 'mpeg', 'mpe', 'mpv', 'ogg', 'm4p', 'wmv', 'mov', 'qt', 'flv', 'swf', 'avchd'];
+            var extensionImageLists = ['jpg','jpeg','png','gif'];
+            var extensionDocumentsLists = ['doc','docx','pdf']
+            if(extensionVideoLists.indexOf(url_extension) !== -1) return "video"
+            else if(extensionImageLists.indexOf(url_extension) !== -1) return "image"
+            else if(extensionDocumentsLists.indexOf(url_extension) !== -1) return "document"
+            // return last
+        }
         // data[0].productTabs[0].tab2.Children
 
         return (
@@ -230,7 +241,7 @@ class Component extends React.Component {
                         <>
                             {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
                                 <Grid item lg={3} xs={12} style={{ display: "flex", alignItems: "center" }}><h1 className="rings_tabs">{data[0].productType === "Rings"?val.tab1.header:val.tab1.headerBangle}&nbsp;
-                               {data[0].productType === "Rings" && <a
+                               {data[0].size_guide && <a
                                         onClick={this.handleOpen}
                                         className="my-ringsize">Size Guide </a>}</h1></Grid>
                                 <Grid item lg={9} xs={12} >
@@ -298,9 +309,26 @@ class Component extends React.Component {
                                                     open={this.state.open}
                                                     onClose={this.handleClose}
                                                     style={{ overflow: 'scroll' }}
+                                                    // className="modalElementSizeGuide"
                                                 >
-                                                    <div className={`${classes.modals} "modalin-ring"`}>
-                                                        <img height='auto' width='100%' src='https://assets.stylori.com/images/static/Ring-size.jpg' />
+                                                    <div className={`${classes.modals}  "modalin-ring"`}>
+                                                        {
+                                                            handle_extension(data[0].size_guide) === "image" && <img height='auto' width='100%' src={data[0].size_guide} /> 
+                                                        }
+                                                        {
+                                                             handle_extension(data[0].size_guide) === "document" && <iframe
+                                                             className="modalElementSizeGuide"
+                                                             src={data[0].size_guide} width="100%" height="100%">
+                                                             </iframe>
+                                                        }
+                                                         {
+                                                             handle_extension(data[0].size_guide) === "video" && <video preload="auto" autoplay width="100%" controls>
+                                                             <source src={data[0].size_guide} type="video/mp4" />
+                                                           </video>
+                                                        }
+                                                        
+
+                                                        
                                                     </div>
                                                 </Modal>
                                                 {/* <div style={{ marginTop: "10px", textAlign: "center" }}>
