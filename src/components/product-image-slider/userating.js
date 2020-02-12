@@ -94,7 +94,7 @@ const useRating = (props) => {
     }, [CodData])
 
     useEffect(() => {
-        var username = CodDataLisen && CodDataLisen.data && CodDataLisen.data.allUserProfiles && CodDataLisen.data.allUserProfiles.nodes[0].firstName
+        var username = CodDataLisen && CodDataLisen.data && CodDataLisen.data.allUserProfiles && CodDataLisen.data.allUserProfiles.nodes.length > 0 && CodDataLisen.data.allUserProfiles.nodes[0] && CodDataLisen.data.allUserProfiles.nodes[0].firstName && CodDataLisen.data.allUserProfiles.nodes[0].firstName
         if (username) {
             setValues({
                 ...values,
