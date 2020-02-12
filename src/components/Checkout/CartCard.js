@@ -224,12 +224,22 @@ class Checkoutcard extends React.Component {
                                         {/* <img src={}/> */}
                                         {val.namedetail !== undefined && val.namedetail.map(val => (
                                             dataval.fadeImages.map(im_ => <>
-                                                {filter_image(im_, val.name, val.details) && filter_image(im_, val.name, val.details).length > 0 ?
-                                                    <>{window.location.pathname !== "/checkout" ? <NavLink to={dataval.skuUrl} style={{ textDecoration: 'none' }}>
+                                                {
+                                                
+                                                filter_image(im_, val.name, val.details) && filter_image(im_, val.name, val.details).length > 0 ?
+                                                    <>
+                                                    {
+                                                        
+                                                    window.location.pathname !== "/checkout" ? 
+                                                    <NavLink to={dataval.skuUrl} style={{ textDecoration: 'none' }}>
                                                         <Slideshow className="image"
                                                             fadeImages={filter_image(im_, val.name, val.details)} dataCarousel={dataCarousel} />
-                                                    </NavLink> : <Slideshow className="image"
-                                                        fadeImages={filter_image(im_, val.name, val.details)} dataCarousel={dataCarousel} />}</> : ""
+                                                    </NavLink>
+                                                     : 
+                                                     <Slideshow className="image"
+                                                        fadeImages={filter_image(im_, val.name, val.details)} dataCarousel={dataCarousel} />
+                                                        }
+                                                        </> : ""
 
                                                 }</>)
                                         ))}
@@ -369,17 +379,19 @@ class Checkoutcard extends React.Component {
                             <Grid xs={7} >
                                 <Typography className={`subhesder ${classes.normalfonts}`}>Subtotal</Typography>
                                 <Typography className={`subhesder ${classes.normalfonts}`}>You Saved</Typography>
-                                {props.cartFilters.tax_price ? <Typography className={`subhesder ${classes.normalfonts}`}>REGISTRATION</Typography> : ""}
+                        {props.cartFilters.tax_price ? <Typography className={`subhesder ${classes.normalfonts}`}>{props.cartFilters.coupon_type}</Typography> : ""}
                                 <Typography className={`subhesder ${classes.normalfonts}`}>Shipping</Typography>
                                 <Typography className={`subhesder-totsl-size ${classes.normalfonts}`}>Grand Total</Typography>
                             </Grid>
                             <Grid xs={5} >
-                                <Typography className={`subhesder ${classes.normalfonts}`}>{Math.round(dataCard1)}</Typography>
+                                <Typography className={`subhesder ${classes.normalfonts}`}>{props.cartFilters.gross_amount ? Math.round(props.cartFilters.gross_amount) : 
+                                Math.round(dataCard1)
+                                }</Typography>
                                 <Typography className={`subhesder ${classes.normalfonts}`}>{Math.round(yousave)}</Typography>
                                 {props.cartFilters.tax_price ? <Typography className={`subhesder ${classes.normalfonts}`}>
                                     {props.cartFilters.tax_price}</Typography> : ""}
                                 <Typography className={`subhesder ${classes.normalfonts}`}>FREE </Typography>
-                                <Typography className={`subhesder-totsl-size ${classes.normalfonts}`}>{Math.round(dataCard1 - discounted_price)}</Typography>
+                                <Typography className={`subhesder-totsl-size ${classes.normalfonts}`}>{props.cartFilters.discounted_amount ?Math.round(props.cartFilters.discounted_amount) : Math.round(dataCard1 - discounted_price) }</Typography>
                             </Grid>
                         </Grid>
                         {/* // )}  */}
@@ -410,6 +422,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         var data = this.props.data
+        
         const { classes } = this.props;
         // alert(discounted_price)
         let path = window.location.pathname.split('/').pop();

@@ -55,6 +55,7 @@ export const ImgMediaCard = (props) => {
 // );
 // }
 const imageOnError = (event, res) => {
+  
   // var e = event
   // e.target.src.lastIndexOf('\.')
   // var src_img = (e.target.src).lastIndexOf('\.')

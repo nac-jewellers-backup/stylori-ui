@@ -120,7 +120,7 @@ const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
         var url_split = url && url.imageUrl.split('/')
         var extension_split = url_split && url_split[url_split.length - 1]
         var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type && browser_type.browser_type}`)
-        
+
         url_split[url_split && url_split.length - 1] = browser_type_append
         url_split.splice(2, 0, _resolutions);
         var url_construct = url_split.join().replace(/\,/g, '/')
@@ -142,7 +142,24 @@ const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
 
 }
 
-// 
+// video validation
+
+const handleVideoCheck = (url) => {
+    var extensionVideoLists = ['m4v', 'avi', 'mpg', 'mp4', 'webm', 'mp2', 'mpeg', 'mpe', 'mpv', 'ogg', 'm4p', 'wmv', 'mov', 'qt', 'flv', 'swf', 'avchd'];
+    if (url) {
+        if (url.length > 0) {
+            var array_split = url.split(/\.(?=[^\.]+$)/);
+            const found = extensionVideoLists.find(element => element.toLowerCase() === array_split[1]);
+            if (found) {
+                return true
+            }
+            else return false
+        }
+    }
+    else {
+        return false
+    }
+}
 
 
 
@@ -151,7 +168,7 @@ const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 const generateImgurls = (PD, val, screen_res, tabsChange) => {
 
-   
+
     var arrOfurls = []
     var arrOfurls_2X = []
     var imgurlsplit = null
@@ -159,54 +176,55 @@ const generateImgurls = (PD, val, screen_res, tabsChange) => {
     var metalcolor2 = null
     var largeImageZoom = true
     val.map(imgurl => {
-            
-        if(imgurl.imageUrl !== "base_images/SK3293_4O.mp4"){
-        if (imgurl.imageUrl.split('.')[0].split('-')[1].length > 2) {
 
-            imgurlsplit = imgurl.imageUrl.split('.')[0].split('-')[1].substr(1)
-        }
-        else {
-            imgurlsplit = imgurl.imageUrl.split('.')[0].charAt(imgurl.imageUrl.split('.')[0].length - 1)
-        }
-        // var imgurlsplit 
-        if (PD.metalColor.split(' ').length > 1) {
-            var colorOne = PD.metalColor.split(' ')[0].charAt(0)
-            var colorTwo = PD.metalColor.split(' ')[1].charAt(0)
-            metalcolor = colorOne.concat(colorTwo)
-            metalcolor2 = colorTwo.concat(colorOne)
-        }
-        else {
-            if (PD && PD.metalColor) metalcolor = PD.metalColor.charAt(0)
-            else metalcolor = ''
-        }
+        if (!handleVideoCheck(imgurl.imageUrl)) {
+            if (imgurl.imageUrl.split('.')[0].split('-')[1].length > 2) {
 
-        // if (imgurlsplit === metalcolor) {
+                imgurlsplit = imgurl.imageUrl.split('.')[0].split('-')[1].substr(1)
+            }
+            else {
+                imgurlsplit = imgurl.imageUrl.split('.')[0].charAt(imgurl.imageUrl.split('.')[0].length - 1)
+            }
+            // var imgurlsplit 
+            if (PD.metalColor.split(' ').length > 1) {
+                var colorOne = PD.metalColor.split(' ')[0].charAt(0)
+                var colorTwo = PD.metalColor.split(' ')[1].charAt(0)
+                metalcolor = colorOne.concat(colorTwo)
+                metalcolor2 = colorTwo.concat(colorOne)
+            }
+            else {
+                if (PD && PD.metalColor) metalcolor = PD.metalColor.charAt(0)
+                else metalcolor = ''
+            }
 
-        // arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
+            // if (imgurlsplit === metalcolor) {
 
-        // }
-        if (!tabsChange) {
+            // arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
 
-            if (imgurlsplit === metalcolor || imgurlsplit === metalcolor2) {
+            // }
+            if (!tabsChange) {
 
+                if (imgurlsplit === metalcolor || imgurlsplit === metalcolor2) {
+
+                    arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
+                    arrOfurls_2X.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res, largeImageZoom))
+
+                }
+            }
+            else {
                 arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
                 arrOfurls_2X.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res, largeImageZoom))
-
             }
+
+            return { arrOfurls, arrOfurls_2X }
         }
         else {
-            arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
-            arrOfurls_2X.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res, largeImageZoom))
-        }
-        return { arrOfurls, arrOfurls_2X }
-        }
-        else {
-            arrOfurls.push(`${CDN_URL}base_images/SK3293_4O.mp4`)
-            arrOfurls_2X.push(`${CDN_URL}base_images/SK3293_4O.mp4`)
+            arrOfurls.push(`${CDN_URL}${imgurl.imageUrl}`)
+            arrOfurls_2X.push(`${CDN_URL}${imgurl.imageUrl}`)
             return { arrOfurls, arrOfurls_2X }
         }
     }
-    
+
     )
 
     return { arrOfurls, arrOfurls_2X }
@@ -281,13 +299,33 @@ const sorting = (val) => {
     if (val.sizeVarient) {
         var a = val.sizeVarient.split(',')
         var b = a.map(val => {
-            return Number(val)
+
+            if (isNaN(Number(val))) {
+                return val
+            }
+            else {
+                return Number(val)
+            }
+
         })
+
         var c = function myFunction() {
             b.sort(function (a, b) { return a - b });
             return b
         }
         return c()
+    }
+    else {
+        return null
+    }
+
+}
+const handle_mapper = (val) => {
+    var _obj = {}
+    if (val) {
+        var _split = val.split(',')
+        _split.map((val, i) => { _obj[`img${i}`] = val })
+        return [_obj]
     }
     else {
         return null
@@ -305,25 +343,36 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
         mapperdata = [];
     }
     const _format = mapperdata.map(PD => {
+
         let _d;
         try {
             _d = {
                 message: rating && rating.CodData && rating.CodData.data && rating.CodData.data.allCustomerReviews.nodes,
                 // title: rating.CodData.data.allCustomerReviews.nodes[0].title,
                 // ratings: rating.CodData.data.allCustomerReviews.nodes[0].rating,
-                productId: PD.productListByProductId && PD.productListByProductId.productId,
-                title: PD.productListByProductId.productName,
+                productId: PD.productListByProductId ? PD.productListByProductId.productId : '',
+                title: PD && PD.productListByProductId && PD.productListByProductId.productName ? PD.productListByProductId.productName : '',
                 skuId: PD && PD === undefined ? '' : PD.generatedSku,
-                price: PD.discountPrice,
-                offerPrice: PD.markupPrice,
+                price: PD && PD.discountPrice ? PD.discountPrice : '',
+                offerPrice: PD && PD.markupPrice ? PD.markupPrice : '',
                 save: '5999.9',
-                offerDiscount: '25% OFF',
+                offerDiscount: PD && PD.discount ? `${PD.discount}% OFF` : null,
                 dis: PD && PD !== undefined && PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription !== '' ? PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription : '',
                 productType: PD.productListByProductId.productType && PD.productListByProductId.productType,
-                fadeImages: PD.productListByProductId.productImagesByProductId.nodes &&
-                    generateImgurls(PD, PD.productListByProductId.productImagesByProductId.nodes, colSize, tabsChange),
-                image_resolution: img_res,
-                image_resolution_two: img_res_X_2,
+                fadeImages: (PD &&
+                    PD.productListByProductId &&
+                    PD.productListByProductId.productImagesByProductId) &&
+                    PD.productListByProductId.productImagesByProductId.nodes.length > 0 ?
+                    generateImgurls(PD, PD.productListByProductId.productImagesByProductId.nodes, colSize, tabsChange) : { arrOfurls: [`${CDN_URL}product/575X575/productnotfound.webp`, `${CDN_URL}product/575X575/productnotfound.webp`, `${CDN_URL}product/575X575/productnotfound.webp`], arrOfurls: [`${CDN_URL}product/575X575/productnotfound.webp`, `${CDN_URL}product/575X575/productnotfound.webp`, `${CDN_URL}product/575X575/productnotfound.webp`] },
+                image_resolution: img_res ? img_res : 1000,
+                image_resolution_two: img_res_X_2 ? img_res_X_2 : 1000,
+
+                size_guide: PD && PD.transSkuDescriptionsBySkuId && PD.transSkuDescriptionsBySkuId.nodes &&
+                    PD.transSkuDescriptionsBySkuId.nodes.length > 0 && PD.transSkuDescriptionsBySkuId.nodes[0] &&
+                    PD.transSkuDescriptionsBySkuId.nodes[0].ringsizeImage ? PD.transSkuDescriptionsBySkuId.nodes[0].ringsizeImage : null,
+                certificates: PD && PD.transSkuDescriptionsBySkuId && PD.transSkuDescriptionsBySkuId.nodes &&
+                    PD.transSkuDescriptionsBySkuId.nodes.length > 0 && PD.transSkuDescriptionsBySkuId.nodes[0] &&
+                    PD.transSkuDescriptionsBySkuId.nodes[0].certificate ? handle_mapper(PD.transSkuDescriptionsBySkuId.nodes[0].certificate) : null,
 
                 productsubHeaderlist: [{
                     name: "From the House of NAC",
@@ -352,8 +401,8 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
 
                 productTabs: [{
                     tab1: {
-                        header: "Ring Size",
-                        headerBangle: "Bangle Size",
+                        header: `${PD.productListByProductId.productType ? PD.productListByProductId.productType : null} Size`,
+                        headerBangle: `${PD.productListByProductId.productType ? PD.productListByProductId.productType : null} Size`,
                         Children: PD.productListByProductId && sorting(PD.productListByProductId)
                     },
                     tab2: {

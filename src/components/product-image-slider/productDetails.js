@@ -30,7 +30,9 @@ class ProductDetails extends React.Component {
 
                         return (valueofproductdetail.namedetail.length === 0) ? false :
                             <>
-                                <div className='overall-boxz' style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" }}>
+                            {
+                                (valueofproductdetail.header !== 'Price Breakup' || (valueofproductdetail.header === 'Price Breakup' && valueofproductdetail.namedetail[5].name === 'Total' && Number(valueofproductdetail.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g,"")) > 13000)) ?
+<div className='overall-boxz' style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" }}>
                                     <div className='overall-bo'>
                                         <span key={valueofproductdetail.name} className={`product-details ${classes.normalfonts}`} > {valueofproductdetail.header}</span>
                                         <hr class="bottom-line"></hr>
@@ -48,10 +50,12 @@ class ProductDetails extends React.Component {
                                                                 </Grid>
                                                                 <Grid container item xs={8} style={{ alignItems: "center" }}>
                                                                     {
+                                                                        // valueofproductdetail.header === 'Price Breakup' && 
                                                                         isArray(res.details) ?
 
                                                                             <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
                                                                                 {res.details.map((Item, Index) => {
+                                                                                    
                                                                                     return (<span style={{ fontSize: "12px", textAlign: 'left' }}> {
                                                                                         (valueofproductdetail.header === 'Price Breakup') ?
                                                                                             ((Index === 0 && (res.details[Index] !== res.details[Index + 1]) ? <del>{Item}</del> :
@@ -76,6 +80,10 @@ class ProductDetails extends React.Component {
                                             )}</>
                                     </div>
                                 </div>
+                                :
+                                null
+                            }
+                                
                             </>
                     })}
                 </Grid>
@@ -111,53 +119,60 @@ class ProductDetails extends React.Component {
                         return (
                             val.namedetail.length === 0) ? false :
                             <>
+                            {
+                                (val.header !== 'Price Breakup' || (val.header === 'Price Breakup' && val.namedetail[5].name === 'Total' && Number(val.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g,"")) > 13000))
+                                ?
                                 <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", margin: "12px 0px", padding: "0 5px 5px 5px" }} expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
-                                    <ExpansionPanelSummary
+                                <ExpansionPanelSummary
 
 
-                                        expandIcon={<ExpandMoreIcon />}
-                                        aria-controls="panel1a-content"
-                                        id="panel1a-header">
-                                        <div style={{ width: "100%" }} >
-                                            <Typography className={`subtabs-smrt ${classes.normalfonts}`}>{val.header}</Typography>
-                                            {/* <hr class="bottom-line border-line-"></hr> */}
-                                        </div>
-                                    </ExpansionPanelSummary>
-                                    <div style={{ backgroundColor: "fafafa" }}>
-                                        {
-                                            val.namedetail !== undefined && val.namedetail.map(res =>
-                                                res.details !== null && res.details.length === 0 ? false :
-                                                    <span>
-                                                        {
-                                                            <> {res.name && <Grid container item xs={12} style={{ padding: "0px 10px 0px 10px " }}>
-                                                                <Grid xs={4} lg={4}>
-                                                                    <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
-                                                                        <span style={{ fontSize: "12px" }}> {res.name}</span>
-                                                                    </ListItemText>
-                                                                </Grid>
-                                                                <Grid container item xs={8} style={{ alignItems: "center" }}>
-                                                                    {
-                                                                        isArray(res.details) ?
-                                                                            <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
-                                                                                {res.details.map((Item, Index) => {
-                                                                                    return (<span style={{ fontSize: "12px", textAlign: 'left' }}> {
-                                                                                        (val.header === 'Price Breakup') ?
-                                                                                            ((Index === 0 && (res.details[Index] !== res.details[Index + 1]) ? <del>{Item}</del> :
-                                                                                                Index === 0 ? '' : Item)) : Item} </span>)
-                                                                                })}
-                                                                            </ListItemText>
-                                                                            :
-                                                                            <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
-                                                                                <span style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</span>
-                                                                            </ListItemText>
-                                                                    }
-                                                                </Grid>
-                                                            </Grid>
-                                                            }</>}
-                                                    </span>
-                                            )}
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header">
+                                    <div style={{ width: "100%" }} >
+                                        <Typography className={`subtabs-smrt ${classes.normalfonts}`}>{val.header}</Typography>
+                                        {/* <hr class="bottom-line border-line-"></hr> */}
                                     </div>
-                                </ExpansionPanel>
+                                </ExpansionPanelSummary>
+                                <div style={{ backgroundColor: "fafafa" }}>
+                                    {
+                                        val.namedetail !== undefined && val.namedetail.map(res =>
+                                            res.details !== null && res.details.length === 0 ? false :
+                                                <span>
+                                                    {
+                                                        <> {res.name && <Grid container item xs={12} style={{ padding: "0px 10px 0px 10px " }}>
+                                                            <Grid xs={4} lg={4}>
+                                                                <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
+                                                                    <span style={{ fontSize: "12px" }}> {res.name}</span>
+                                                                </ListItemText>
+                                                            </Grid>
+                                                            <Grid container item xs={8} style={{ alignItems: "center" }}>
+                                                                {
+                                                                    isArray(res.details) ?
+                                                                        <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
+                                                                            {res.details.map((Item, Index) => {
+                                                                                return (<span style={{ fontSize: "12px", textAlign: 'left' }}> {
+                                                                                    (val.header === 'Price Breakup') ?
+                                                                                        ((Index === 0 && (res.details[Index] !== res.details[Index + 1]) ? <del>{Item}</del> :
+                                                                                            Index === 0 ? '' : Item)) : Item} </span>)
+                                                                            })}
+                                                                        </ListItemText>
+                                                                        :
+                                                                        <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
+                                                                            <span style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</span>
+                                                                        </ListItemText>
+                                                                }
+                                                            </Grid>
+                                                        </Grid>
+                                                        }</>}
+                                                </span>
+                                        )}
+                                </div>
+                            </ExpansionPanel>
+                                :
+                                null
+                            }
+                               
                             </>
                     })}
 

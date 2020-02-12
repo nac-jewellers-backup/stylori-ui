@@ -71,12 +71,11 @@ class ProductImageZoom extends React.Component {
 
     // console.log(this.props.data)
     const { classes, data } = this.props
-
     const limit = 4;
     const { showimage, largeImage } = this.state;
     const dataCarousel = {
       infinite: false,
-      slidesToShow: data && data.length > 0 && data[0] && data[0].fadeImages.arrOfurls.length > 3 ? limit : data[0].fadeImages.arrOfurls.length,
+      slidesToShow: data && data.length > 0 ? data[0] && data[0].fadeImages.arrOfurls.length > 3 ? limit : data[0].fadeImages.arrOfurls.length : 0,
       slidesToScroll: 1,
       vertical: true,
       verticalSwiping: true,
@@ -94,17 +93,47 @@ class ProductImageZoom extends React.Component {
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
           <Grid item xs={2}>
             <div style={{ textAlign: 'center', }} className="imgzom-sidecraousel-media">
-              <Button onClick={this.previous}>
+              {
+                data && data.length > 0 && data[0] && data[0].fadeImages.arrOfurls.length > 3 ? 
+                <span  className={data && data.length > 0 && data[0] && data[0].fadeImages.arrOfurls.length === 4 ? classes.cursor_notallowed : null}>
+                <Button onClick={this.previous} 
+                
+               
+                disabled={data && data.length > 0 && data[0] && data[0].fadeImages.arrOfurls.length === 4
+                  ?
+                  true
+                  :
+                  false
+               }>
                 <i class="fa fa-angle-up" style={{ fontSize: "35px", color: "#F699A3" }}></i>
               </Button>
+              </span>
+              :
+              null
+              }
               <Slideshow sliderRef={this.slider}
                 getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img'
                 fadeImages={data[0].fadeImages.arrOfurls_2X} dataCarousel={dataCarousel} />
-              <Button onClick={this.next}>
+             
+             {
+                data && data.length > 0 && data[0] && data[0].fadeImages.arrOfurls.length > 3 ?
+                <span  className={data && data.length > 0 && data[0] && data[0].fadeImages.arrOfurls.length === 4 ? classes.cursor_notallowed : null}>
+                <Button onClick={this.next}
+                
+                disabled={data && data.length > 0 && data[0] && data[0].fadeImages.arrOfurls.length === 4
+                   ?
+                   true
+                   :
+                   false
+                }>
                 <i class="fa fa-angle-down" style={{ fontSize: "35px", color: "#F699A3" }}
                 // className={`${classes.colorMain}`}
                 ></i>
               </Button>
+              </span>
+                :
+                null
+             } 
             </div>
           </Grid>
 
@@ -144,9 +173,19 @@ class ProductImageZoom extends React.Component {
               </Grid>
             </Grid> */}
                 {data.map(val =>
+                {
+
+                  return(
+                    val.offerDiscount ?
                   <span style={{ color: "#fff" }} className="overlayCss11">
-                    {val.offerDiscount}
-                  </span>)}
+                  {val.offerDiscount}
+                </span>
+                :
+                null
+                )
+                }
+                  
+                  )}
                 {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship_" ></div> : ""}
                 {
                   this.handleVideoCheck(showimage) ?
@@ -157,12 +196,13 @@ class ProductImageZoom extends React.Component {
                     <GlassMagnifier
                       imageSrc={showimage}
                       // imageSrc={largeImage}
+                      onError = {(e) =>{e.target.src="https://assets.stylori.com/product/1000X1000/productnotfound.webp"}}
                       imageAlt="Example"
                       magnifierSize="50%"
                       largeImageSrc={largeImage}
                       magnifierBoxShadow="0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)"
                       magnifierBorderColor="#f5003240"
-                      magnifierBackgroundColor="#f5003240"
+                      // magnifierBackgroundColor="#f5003240"
                     />
                 }
 

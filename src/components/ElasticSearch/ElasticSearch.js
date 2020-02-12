@@ -6,6 +6,9 @@ import {
     InputAdornment,
     ListItem
 } from '@material-ui/core';
+import {
+    Link
+  } from 'react-router-dom';
 import { makeStyles } from "@material-ui/core/styles";
 import Seach from '../../assets/search'
 
@@ -56,13 +59,52 @@ const useStyles = makeStyles(theme => ({
     },
     searchContainer: {
         maxWidth: "950px",
+    },
+    link:{
+        textDecoration:"none"
     }
 
 }))
 export default function ElasticSearch(props) {
     const classes = useStyles();
+    const [value, setValue] = React.useState(null)
+    const [data, setData] = React.useState({})
     const product = ["Bange", "Ring", "pendent", "Nosepin"]
+    
+    const handleChange = (e) =>{
+        setValue(e.target.value)
 
+        const status = (response) => {
+
+            if (response.status >= 200 && response.status < 300) {
+                return Promise.resolve(response)
+            } else {
+                return Promise.reject(new Error(response.statusText))
+            }
+        }
+
+        const json = (response) => {
+            return response.json()
+        }
+        // fetch(`http://192.168.0.148:3000/auto_complete/`, {
+
+        //     method: 'post',
+        //     // body: {query:seoUrlResult,variables:splitHiphen()}
+        //     // body: JSON.stringify({query:seoUrlResult}),
+
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //         "search_text":`${e.target.value}`
+        //     })
+        // })
+        //     .then(status)
+        //     .then(json).then(async val => { 
+        //         setData(val)
+        //         console.log(val, "elastic search")
+        //     })
+    }
     return (
         <Grid container className={classes.root}>
             <Grid xs={12} className={classes.conatinerFull}>
@@ -74,24 +116,91 @@ export default function ElasticSearch(props) {
                         <InputBase
                             className={classes.withinput}
                             placeholder="Search"
+                            value={value}
+                            onChange={(e)=>handleChange(e)}
                             endAdornment={<InputAdornment position="end"><div className={classes.searchcontainerplain}><Seach className={"searchPlain"} />
                             </div></InputAdornment>} />
                     </Grid>
                 </Grid>
                 <Grid container justify="center" >
-                    <Grid container item className={classes.searchContainer}>
-                        <Grid item className={classes.TitleContainer}>
-                            <Typography className={classes.productTitle}>
-                                Product
-                        </Typography>
-                        </Grid>
-                        <Grid item>
-                            {product.map(val => <Typography className={classes.productSublist}>
-                                {val}
-                            </Typography>
-                            )}
-                        </Grid>
-                    </Grid>
+{
+Object.entries(data).length>0 && data.seo_results.length > 0? 
+        <Grid container item className={classes.searchContainer}>
+        <Grid item className={classes.TitleContainer} xs={12}>
+            <Typography className={classes.productTitle}>
+            seo_results
+        </Typography>
+        </Grid>
+        {
+            
+            data.seo_results.map(val =>
+        <Grid item xs={12} style={{margin:"5px"}}>
+         
+            {/* <a href={`/${val.seo_url}`} className={classes.productSublist}>
+                {val.seo_name}
+            </a> */}
+            <Link to={`/${val.seo_url}`} className={`${classes.productSublist} ${classes.link}`} replace >{val.seo_name}</Link>
+
+        
+        </Grid>
+        )
+           
+        }
+    </Grid>
+    :
+    null
+    
+}
+{
+Object.entries(data).length>0 && data.sku_results.length>0 ? 
+        <Grid container item className={classes.searchContainer}>
+        <Grid item className={classes.TitleContainer} xs={12}>
+            <Typography className={classes.productTitle}>
+            sku_results
+        </Typography>
+        </Grid>
+        {
+                
+            data.sku_results.map(val => 
+        <Grid item xs={12} style={{margin:"5px"}}>
+            {/* <a href={`/${val.sku_url}`} className={classes.productSublist}>
+                {val.sku_code}
+            </a> */}
+            <Link to={`/${val.sku_url}`} className={`${classes.productSublist} ${classes.link}`} replace > {val.sku_code}</Link>
+        </Grid>
+             )
+            }
+    </Grid>
+     :
+     null
+
+}
+{
+ Object.entries(data).length>0 && data.product_results.length > 0? 
+        <Grid container item className={classes.searchContainer}>
+        <Grid item className={classes.TitleContainer} xs={12}>
+            <Typography className={classes.productTitle}>
+            product_results
+        </Typography>
+        </Grid>
+        {
+            
+            data.product_results.map(val =>
+        <Grid item xs={12} style={{margin:"5px"}}>
+       {/* <a href={`/${val.sku_url}`} className={classes.productSublist}>
+                {val.product_name}
+            </a> */}
+            <Link to={`/${val.sku_url}`} className={`${classes.productSublist} ${classes.link}`} replace >{val.product_name}</Link>
+        </Grid>
+                )
+                }
+    </Grid>
+    :
+    null
+}              
+{
+    Object.entries(data).length>0 && data.product_results.length === 0 && data.sku_results.length === 0 && data.seo_results.length === 0 ? 'no results found' : null
+}
                 </Grid>
             </Grid>
         </Grid>

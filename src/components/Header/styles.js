@@ -31,8 +31,10 @@ const styles = theme => ({
 
   menuListCursor: {
     cursor: 'pointer'
+  },
+  cursor_notallowed:{
+    cursor:'not-allowed'
   }
-
 });
 
 export default styles;

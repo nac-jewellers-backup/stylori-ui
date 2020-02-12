@@ -34,11 +34,11 @@ class Slideshow extends React.Component {
     return this.props.fadeImages ? this.props.fadeImages.map(imgs => (
       <div className={` ${this.props.class ? this.props.class : ''}`} onClick={e => this.props.getmsg ? this.props.getmsg(e) : ''}>
         {video || this.handleVideoCheck(imgs) ?
-          <video style={{ verticalAlign: "bottom", zIndex: this.props.zindex, width: "100%" }} preload="auto" className={`${imgs ? 'shine imgDiv2' : ''} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs}
+          <video style={{ verticalAlign: "bottom", zIndex: this.props.zindex }} preload="auto" className={`${imgs ? 'shine imgDiv2' : ''} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs}
             poster="https://assets.stylori.com/product/SP0195/500X500/HOVER-SP0195-2Y.webp" type="video/mp4" controls={this.props.videoControls}
           >
           </video>
-          : <img className={`${imgs ? 'shine imgDiv2' : ''} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs} alt="" />}
+          : <img className={`${imgs ? 'imgDiv2' : 'shine imgDiv2'} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs} alt="" />}
       </div>
     )) : ''
   }

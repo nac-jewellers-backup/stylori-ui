@@ -8,7 +8,13 @@ body {
     -moz-osx-font-smoothing: grayscale;
 
 }
+.modalElementSizeGuide{
 
+    overflow:auto;
+}
+.modalElementSizeGuide::-webkit-scrollbar { width: 0 !important }
+/* .modalElementSizeGuide { overflow: -moz-scrollbars-none; }
+.modalElementSizeGuide { -ms-overflow-style: none; } */
 .MuiTab-root,
 .MuiButton-root,
 .MuiInputBase-input {
@@ -915,7 +921,7 @@ body {
     float: left !important;
     border: 1px solid #CCC;
     margin-bottom: 15px !important;
-    width: 90% !important;
+    width: 88% !important;
     /* height: 80px !important; */
     outline: none !important;
     cursor: pointer;

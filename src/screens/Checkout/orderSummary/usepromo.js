@@ -18,10 +18,14 @@ const usePromo = (props) => {
     const { data, error, loading, makeFetch } = useNetworkRequest('/applyvoucher', {}, false);
     useEffect(() => {
         if (data && Object.entries(data).length > 0 && data.constructor === Object) {
+            
             if (data.status === "200") {
                 setCartFilters({
                     discounted_price: data.price_response.discount,
-                    tax_price: 1000
+                    tax_price: Math.round(data.price_response.discount),
+                    coupon_type: data.coupon_type,
+                    gross_amount:data.price_response.gross_amount,
+                    discounted_amount:data.price_response.discounted_price
                 })
             }
             alert(data.message)
