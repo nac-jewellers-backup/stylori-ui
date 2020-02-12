@@ -23,8 +23,14 @@ import Sublistcarousel from './subListcarousel';
 
 
 const Star = ({ selected = false, onClick = f => f }) =>
-    <div className={(selected) ? "star selected" : "star"}
-        onClick={onClick}>
+    <div >
+        {selected ? <div class="star-rating" >
+            <input type="radio" />
+            <label for="1-stars" class="star">&#9733;</label>
+        </div> : <div class="star-rating">
+                <input type="radio" />
+                <div for="1-stars" >&#9733;</div>
+            </div>}
     </div>
 
 class CustomerReviews extends React.Component {
@@ -52,11 +58,9 @@ class CustomerReviews extends React.Component {
         var value;
         if (val.title !== "" && val.title !== undefined && val.title !== null ||
             val.message !== "" && val.message !== undefined && val.message !== null ||
-            val.rate !== "" && val.rate !== undefined && val.rate !== null) {
+            val.rating !== "" && val.rating !== undefined && val.rating !== null) {
             value = <>
-                <div style={{ width: "100%", fontSize: "16px", marginBottom: "5px" }}>{val.customerName}</div>
-                <div style={{ width: "100%", fontSize: "14px", marginBottom: "5px" }}>{val.message}</div>
-                <div>
+                <div style={{ display: "flex" }}>
                     {[1, 2, 3, 4, 5].map((n, i) =>
                         <Star key={i}
                             selected={i < val.rating}
@@ -64,6 +68,9 @@ class CustomerReviews extends React.Component {
                         />
                     )}
                 </div>
+                <div style={{ width: "100%", fontSize: "16px", marginBottom: "5px" }}>{val.customerName}</div>
+                <div style={{ width: "100%", fontSize: "14px", marginBottom: "5px" }}>{val.message}</div>
+
                 <br />
                 <div className="brder-btom"></div>
             </>
