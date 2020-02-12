@@ -10,12 +10,13 @@ export const
         dots: true,
         infinite: true,
         autoplay: true,
-        speed: 1000,
+        speed: 2000,
         fade: false,
         arrows: false,
         arrowsImg: true,
         dotsClass: "slickdev",
         accessibility: true,
+        autoplaySpeed: 4000,
         centerMode: false,
         focusOnSelect: false,
         pauseOnHover: false,
@@ -25,14 +26,14 @@ export const
       },
       "data": [
         {
-          img: "https://assets.stylori.com/images/Static+Pages/Home+Page/banner1.jpg",
-          mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/gemstone-mob",
-          navigateUrl: "/gemstone-jewellery?sort=latest"
-        },
-        {
           img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-1920-X-656-px.jpg",
           mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-mobile-805X430-px.jpg",
           navigateUrl: "/jewellery/kada/csk_kada?skuId=1000001"
+        },
+        {
+          img: "https://assets.stylori.com/images/Static+Pages/Home+Page/banner1.jpg",
+          mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/gemstone-mob",
+          navigateUrl: "/gemstone-jewellery?sort=latest"
         },
         {
           img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori-Valentine-banner-web.jpg",
