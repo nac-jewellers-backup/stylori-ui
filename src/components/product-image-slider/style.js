@@ -90,6 +90,7 @@ const styles = theme => ({
         [theme.breakpoints.down('xs')]: {
             background: '#fff !important',
             // height: '90%',
+            marginTop:"2%",
             overflowY: "scroll",
             width: '90%',
             margin:"auto",
@@ -97,9 +98,10 @@ const styles = theme => ({
         },
         [theme.breakpoints.up('lg')]: {
             background: '#fff !important',
-            height: '90%',
+            // height: '70%',
+            marginTop:"2%",
             overflowY: "scroll",
-            width: '90%',
+            width: '70%',
             margin:"auto",
             outline: 'none !important',
         },
