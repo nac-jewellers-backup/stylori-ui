@@ -160,7 +160,7 @@ export default function (data) {
                                 details: k.purity + ' ' + k.metalColor
                             },
                             {
-                                name: "Gold Weight (Gm)" ,
+                                name: "Metal Weight (Gm)" ,
                                 details: k.skuWeight
                             },
                             {
