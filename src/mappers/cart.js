@@ -160,7 +160,7 @@ export default function (data) {
                                 details: k.purity + ' ' + k.metalColor
                             },
                             {
-                                name: "Metal Weight (Gm)" ,
+                                name: k.productListByProductId.productType == "Kada"? "Metal Weight (Gm)" : "Gold Weight (Gm)",
                                 details: k.skuWeight
                             },
                             {
