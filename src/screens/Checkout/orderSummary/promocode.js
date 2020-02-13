@@ -38,6 +38,7 @@ const PromoComponent = (props) => {
                                 type="text"
                                 value={values.vouchercode}
                                 required
+                                disabled={data.status === "200" ? true : false}
                                 onChange={e => handlers.handleChange('vouchercode', e.target.value)}
                             />
                         </Grid>

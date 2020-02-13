@@ -58,10 +58,10 @@ class PaymentIndex extends React.Component {
         //     return va  
         // } 
         return (
-            <div className="payment-div">
+            <div className="payment-div" style={{ width: "100%" }}>
                 <Hidden smDown>
                     <Grid container spacing={12} lg={12} className="panel-body">
-                        <Grid item lg={5}>
+                        <Grid item lg={3}>
                             <div className="pay-index-subhed">
                                 {/* <p style={{ background: this.state.isActive == "Creditform" ? "#dfdfdf" : "" }}
                                     style={{ background: "#a8a1a1" }}
@@ -74,19 +74,19 @@ class PaymentIndex extends React.Component {
 
                                 >
                                     <div className="dc-icon"></div> &nbsp; Debit card </p> */}
-                                <p style={{ background: this.state.isActive == "Netbanking" ? "#dfdfdf" : "" }}
+                                <p className={this.state.isActive == "Netbanking" ? "selectedcolor" : "unselected"}
                                     onClick={() => this.toggleCollapsed('Netbanking')}
                                 // style={{ background: "#dfdfdf" }}
                                 >
                                     <div className="net-bnk-icon"></div> &nbsp; Pay Online </p>
-                                <p style={{ background: this.state.isActive == "CashonDelivey" ? "#dfdfdf" : "" }}
+                                <p className={this.state.isActive == "CashonDelivey" ? "selectedcolor" : "unselected"}
                                     onClick={() => this.toggleCollapsed('CashonDelivey')}
                                 >
                                     <div className="code-icon"></div>&nbsp;   Cash on Delivery (COD)</p>
                             </div>
                         </Grid>
                         <Grid item lg={7}>
-                            <div style={{ marginTop: "20px" }} className="pay-index-subhed_datas dz">
+                            <div style={{ marginTop: "20px" }} className="pay-index-subhed_datas ">
                                 {
                                     this.state.isActive == 'Creditform' && <Creditform />
                                 }

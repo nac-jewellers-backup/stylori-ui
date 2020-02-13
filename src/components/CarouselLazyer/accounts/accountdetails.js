@@ -28,8 +28,8 @@ class Accountdetails extends Component {
 
     }
     handleClick = (e) => {
-       
-        this.setState({ currency: e.target.value,isActive:e.target.value });
+
+        this.setState({ currency: e.target.value, isActive: e.target.value });
     };
 
     Activeaccounts = (name) => {
@@ -47,29 +47,29 @@ class Accountdetails extends Component {
         // const { wishlistdata } = this.props.wishlistdata;
         const currencies = [
             {
-              label: 'profile',
+                label: 'profile',
             },
             {
-              label: 'addresses',
+                label: 'addresses',
             },
             {
-              label: 'shopping-cart',
+                label: 'shopping-cart',
             },
             {
-              label: 'wishlist',
+                label: 'wishlist',
             },
             {
                 label: 'allorders',
-              },
-            
-          ];
+            },
+
+        ];
         return (
             <Container>
                 <Hidden smDown>
 
                     <div className="inner-page-title"> My Account </div>
 
-                    <Container style={{margin:"auto"}}>
+                    <Container style={{ margin: "auto" }}>
                         <div className="panel_body">
                             <Grid container spacing={12}  >
                                 <Grid item  >
@@ -99,11 +99,11 @@ class Accountdetails extends Component {
                                     </List>
                                 </Grid>
                                 <Grid item xs={12} sm={12} md={9} lg={9} xl={9}>
-                                    <div className="pay-index-subhed_datas">
+                                    <div className="pay-index-subhed_da">
                                         {
                                             this.state.isActive == 'profile' &&
                                             <>
-                                                    <div style={{PaddingLeft:"30px"}}></div>
+                                                <div style={{ PaddingLeft: "30px" }}></div>
                                                 {/* {c_k_l !== true ? */}
                                                 <Register />
                                                 {/* <Addressform/> */}
@@ -117,15 +117,15 @@ class Accountdetails extends Component {
                                         }
                                         {
                                             this.state.isActive == 'shopping-cart' && <>
-                                            
-                                            {this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
-                                                <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
+
+                                                {this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
+                                                    <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
                                         }
                                         {
                                             this.state.isActive == 'wishlist' && <>
                                                 <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
                                                 {/* {JSON.stringify(this.props.wishlistdata)} */}
-                                            </> 
+                                            </>
                                         }
                                         {
                                             this.state.isActive == 'allorders' && <>
@@ -146,71 +146,71 @@ class Accountdetails extends Component {
                     <Grid>
                         <div className="inner-page-title"> My Account </div>
                     </Grid>
-                    <Grid style={{display:"flex",alignContent:"left",marginTop:"10px"}}>
-                  
+                    <Grid style={{ display: "flex", alignContent: "left", marginTop: "10px" }}>
 
 
-<form noValidate autoComplete="off" style={{width: "100%"}}>
-<div >
-        <TextField
-        style={{width: "70%"}}
-          select
-        //   label="Select the options"
-          value={this.state.isActive}
-          onChange={(e) => this.handleClick(e)}
-          SelectProps={{
-            native: true,
-          }}
-          variant="outlined"
-          helperText=""
-        >
-          {currencies.map(option => (
-            <option key={option.label} value={option.label}>
-              {option.label}
-            </option>
-          ))}
-        </TextField>
-      </div>
-      </form>
+
+                        <form noValidate autoComplete="off" style={{ width: "100%" }}>
+                            <div >
+                                <TextField
+                                    style={{ width: "70%" }}
+                                    select
+                                    //   label="Select the options"
+                                    value={this.state.isActive}
+                                    onChange={(e) => this.handleClick(e)}
+                                    SelectProps={{
+                                        native: true,
+                                    }}
+                                    variant="outlined"
+                                    helperText=""
+                                >
+                                    {currencies.map(option => (
+                                        <option key={option.label} value={option.label}>
+                                            {option.label}
+                                        </option>
+                                    ))}
+                                </TextField>
+                            </div>
+                        </form>
                     </Grid>
 
                     <Grid item xs={9} className="topPadding">
-                                    <div className="pay-index-subhed_datas">
-                                        {
-                                            this.state.isActive == 'profile' &&
-                                            <>
-                                                
-                                                {/* {c_k_l !== true ? */}
-                                                <Register />
-                                                {/* <Addressform/> */}
-                                                {/* : <Login /> */}
-                                                {/* } */}
-                                            </>
+                        <div className="pay-index-subhed_da">
+                            {
+                                this.state.isActive == 'profile' &&
+                                <>
 
-                                        }
-                                        {
-                                            this.state.isActive == 'addresses' && <Addressform />
-                                        }
-                                        {
-                                            this.state.isActive == 'shopping-cart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
-                                                <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
-                                        }
-                                        {
-                                            this.state.isActive == 'wishlist' && <>
-                                                <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
-                                                {/* {JSON.stringify(this.props.wishlistdata)} */}
-                                            </>
-                                        }
-                                        {
-                                            this.state.isActive == 'allorders' && <>
-                                                <Allorders allorderdata={this.props.allorderdata} data={this.props.data} />
+                                    {/* {c_k_l !== true ? */}
+                                    <Register />
+                                    {/* <Addressform/> */}
+                                    {/* : <Login /> */}
+                                    {/* } */}
+                                </>
 
-                                                {/* {JSON.stringify(this.props.allorderdata)} */}
-                                            </>
+                            }
+                            {
+                                this.state.isActive == 'addresses' && <Addressform />
+                            }
+                            {
+                                this.state.isActive == 'shopping-cart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
+                                    <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
+                            }
+                            {
+                                this.state.isActive == 'wishlist' && <>
+                                    <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
+                                    {/* {JSON.stringify(this.props.wishlistdata)} */}
+                                </>
+                            }
+                            {
+                                this.state.isActive == 'allorders' && <>
+                                    <Allorders allorderdata={this.props.allorderdata} data={this.props.data} />
 
-                                        }
-                                    </div>
-                                </Grid>
+                                    {/* {JSON.stringify(this.props.allorderdata)} */}
+                                </>
+
+                            }
+                        </div>
+                    </Grid>
 
 
                 </Hidden>

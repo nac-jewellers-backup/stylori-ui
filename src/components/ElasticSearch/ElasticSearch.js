@@ -1,4 +1,5 @@
 import React from 'react'
+import {API_URL} from 'config.js'
 import {
     Grid,
     InputBase,
@@ -73,7 +74,7 @@ export default function ElasticSearch(props) {
     
     const handleChange = (e) =>{
         setValue(e.target.value)
-
+debugger
         const status = (response) => {
 
             if (response.status >= 200 && response.status < 300) {
@@ -86,24 +87,24 @@ export default function ElasticSearch(props) {
         const json = (response) => {
             return response.json()
         }
-        // fetch(`http://192.168.0.148:3000/auto_complete/`, {
+        fetch(`${API_URL}/auto_complete`, {
 
-        //     method: 'post',
-        //     // body: {query:seoUrlResult,variables:splitHiphen()}
-        //     // body: JSON.stringify({query:seoUrlResult}),
+            method: 'post',
+            // body: {query:seoUrlResult,variables:splitHiphen()}
+            // body: JSON.stringify({query:seoUrlResult}),
 
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({
-        //         "search_text":`${e.target.value}`
-        //     })
-        // })
-        //     .then(status)
-        //     .then(json).then(async val => { 
-        //         setData(val)
-        //         console.log(val, "elastic search")
-        //     })
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                "search_text":`${e.target.value}`
+            })
+        })
+            .then(status)
+            .then(json).then(async val => { 
+                setData(val)
+                console.log(val, "elastic search")
+            })
     }
     return (
         <Grid container className={classes.root}>
@@ -114,6 +115,7 @@ export default function ElasticSearch(props) {
                 <Grid container justify="center" style={{ paddingBottom: "16px" }}>
                     <Grid item container className={classes.searchContainer}>
                         <InputBase
+                        autoFocus
                             className={classes.withinput}
                             placeholder="Search"
                             value={value}

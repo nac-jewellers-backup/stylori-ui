@@ -585,6 +585,7 @@ const Provider = (props) => {
     const CartCtx = {
         cartFilters, loading, error, wishlist_count, data, setCartFilters, allorderdata, wishlistdata, allordersuccesful, noproducts, NewUser
     }
+    debugger
     return (
         <CartContext.Provider value={{ CartCtx, setwishlist_count, setCartFilters, setallorderdata, setwishlistdata, setNoproducts }} >
             {props.children}

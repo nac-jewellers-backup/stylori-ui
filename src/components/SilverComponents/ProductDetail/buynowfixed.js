@@ -14,6 +14,22 @@ class Buynowfixed extends React.Component {
             modelOpen: false,
         }
     }
+    valus = (valueId) => {
+        var valus_locl = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : ""
+
+        var vals;
+        valus_locl && valus_locl.map(val => {
+            const vlx = valueId && valueId
+            if (vlx === val.sku_id) {
+                vals = 1
+                return false
+            } else {
+                vals = 0
+            }
+
+        })
+        return vals
+    }
     render() {
         const { data } = this.props;
         const canceldeletechecklist = () => {
@@ -21,13 +37,18 @@ class Buynowfixed extends React.Component {
                 modelOpen: false,
             })
         }
+
         const handleLocalStorage = () => {
-            this.setState({
-                modelOpen: true,
-            })
+            if (this.valus(this.props.data[0].skuId) === 1) {
+                this.props.deleteComment()
+              }
+            else {
+                this.setState({
+                    modelOpen: true,
+                })
+            }
         }
         const deletechecklists = () => {
-            alert("ss")
             var skuId = this.props.data[0].skuId;
             var products = [];
             var cartId = "";

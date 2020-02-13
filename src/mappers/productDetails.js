@@ -11,6 +11,7 @@ import moment from "moment";
 var colSize = null
 var colSize_like_view = null
 var img_res_X_2 = null;
+var my_actual_size = null;
 const width = window.innerWidth;
 const screenWidth = () => {
     const width = window.innerWidth;
@@ -55,6 +56,7 @@ const screen_width_type_like_view = () => {
         colSize_like_view = 1;
     }
 }
+
 var img_res;
 var screen_width_type = (screen_res, largeImageZoom) => {
     // const {window_width, browser_type} = await lambda_func_front_end()
@@ -67,6 +69,7 @@ var screen_width_type = (screen_res, largeImageZoom) => {
         return subtracting_spacesaroundcard
     }
     var calc = _calc()
+    console.log(calc+"sssss")
     // var img_res;
     var sizes = [275, 300, 350, 375, 400, 500, 600, 675, 700, 775, 800, 900, 975, 1000, 1100, 2400]
     // [50, 60, 70, 80, 90, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525, 550, 575, 600, 625, 650, 675, 700, 725, 750, 775, 800, 825, 850, 875, 900, 925, 950, 975, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400]
@@ -78,6 +81,7 @@ var screen_width_type = (screen_res, largeImageZoom) => {
             if (calc === sizes[i] || calc < sizes[i]) {
 
                 img_res = sizes[i]
+                my_actual_size= sizes[i]
                 img_res_X_2 = sizes[i]
                 break;
             }
@@ -86,6 +90,7 @@ var screen_width_type = (screen_res, largeImageZoom) => {
             else {
                 if (sizes.length - 1 === i) {
                     img_res = sizes[i]
+                    my_actual_size= sizes[i]
                 }
             }
         }
@@ -93,6 +98,7 @@ var screen_width_type = (screen_res, largeImageZoom) => {
             if (calc * 2 === sizes[i] || calc * 2 < sizes[i]) {
 
                 img_res_X_2 = sizes[i]
+                
                 break;
             }
 
@@ -366,7 +372,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                     generateImgurls(PD, PD.productListByProductId.productImagesByProductId.nodes, colSize, tabsChange) : { arrOfurls: [`${CDN_URL}product/575X575/productnotfound.webp`, `${CDN_URL}product/575X575/productnotfound.webp`, `${CDN_URL}product/575X575/productnotfound.webp`], arrOfurls: [`${CDN_URL}product/575X575/productnotfound.webp`, `${CDN_URL}product/575X575/productnotfound.webp`, `${CDN_URL}product/575X575/productnotfound.webp`] },
                 image_resolution: img_res ? img_res : 1000,
                 image_resolution_two: img_res_X_2 ? img_res_X_2 : 1000,
-
+                    size: my_actual_size ?  my_actual_size : 500,
                 size_guide: PD && PD.transSkuDescriptionsBySkuId && PD.transSkuDescriptionsBySkuId.nodes &&
                     PD.transSkuDescriptionsBySkuId.nodes.length > 0 && PD.transSkuDescriptionsBySkuId.nodes[0] &&
                     PD.transSkuDescriptionsBySkuId.nodes[0].ringsizeImage ? PD.transSkuDescriptionsBySkuId.nodes[0].ringsizeImage : null,
@@ -440,7 +446,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                         details: PD && PD.purity + ' ' + PD.metalColor
                     }, {
                         name: "Approx Metal Weight (in gm)",
-                        details: PD.productListByProductId && PD.productListByProductId.defaultWeight
+                        details: PD && PD.skuWeight ? PD.skuWeight : null
                     },
 
                     {

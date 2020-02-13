@@ -817,16 +817,7 @@ body {
     border: 1px solid #ccc !important;
 }
 
-.imagecard {
-    width: 100% !important;
-    /* height: 600px !important; */
-    border: 1px solid #ccc;
-    counter-increment: inherit;
-    /* height: 450px !important; */
-    float: left !important;
-    cursor: pointer !important;
-    box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important;
-}
+
 
 .ribbon_dic {
     z-index: 999 !important;
@@ -888,13 +879,27 @@ body {
 
 .document_iframe {
     overflow-x: none !important;
-    margin:"auto"
+    margin: "auto"
 }
 
 .one-day-ship_ {
     z-index: 999 !important;
     width: 152px !important;
-    height: 9% !important;
+    height: 64px !important;
+    background-image: url(https://assets.stylori.com/images/static/product-details-icons.png);
+    /* margin-top: -30px !important; */
+    position: absolute;
+    background-repeat: no-repeat !important;
+    margin-left: 0px;
+    cursor: pointer !important;
+    margin-left: -36.1px !important;
+}
+
+.one-day-ship_only {
+    z-index: 999 !important;
+    width: 152px !important;
+    height: 33px ! important;
+    background-position: 3px -29px !important;
     background-image: url(https://assets.stylori.com/images/static/product-details-icons.png);
     /* margin-top: -30px !important; */
     position: absolute;
@@ -1685,4 +1690,23 @@ body {
     color: #B94A48 !important;
     font-size: 13px !important;
     padding-left: 8px;
+}
+
+.imagecard {
+    width: 100% !important;
+    /* height: 100%; */
+    border: 1px solid #ccc;
+    counter-increment: inherit;
+    float: left !important;
+    cursor: pointer !important;
+    box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* @media screen and (min-width: 959px) {
+    .imagecard {
+        height: 345px !important;
+    }
+} */
+.imagecard div {
+    display: flex !important;
 }

@@ -124,6 +124,7 @@ const ProductlistComponent = (props) => {
                                                 value={values.gift_from}
                                                 placeholder="From"
                                                 required
+                                                disabled={data && data.message === "Success" || values.haveAlready ?true:false}
                                                 onChange={e => handlers.handleChange('gift_from', e.target.value)}
                                                 helperText="From is required"
 
@@ -135,6 +136,7 @@ const ProductlistComponent = (props) => {
                                                 type="text"
                                                 value={values.gift_to}
                                                 required
+                                                disabled={data && data.message === "Success" || values.haveAlready ?true:false}
                                                 onChange={e => handlers.handleChange('gift_to', e.target.value)}
                                             />
                                             <Input
@@ -144,6 +146,7 @@ const ProductlistComponent = (props) => {
                                                 type="text"
                                                 value={values.message}
                                                 required
+                                                disabled={data && data.message === "Success" || values.haveAlready ?true:false}
                                                 onChange={e => handlers.handleChange('message', e.target.value)}
                                             />
                                             <div className='login-butn'>

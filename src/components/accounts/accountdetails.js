@@ -135,7 +135,7 @@ class Accountdetails extends Component {
                                 </List>
                             </Grid>
                             <Grid item xs={12} sm={12} md={9} lg={9} xl={9} >
-                                <div className="pay-index-subhed_datas">
+                                <div className="pay-index-subhed_da">
                                     {
                                         this.state.isActive == 'profile' &&
                                         <>
@@ -216,7 +216,7 @@ class Accountdetails extends Component {
                     </Grid> */}
 
                     <Grid item xs={12} className="topPadding">
-                        <div className="pay-index-subhed_datas">
+                        <div className="pay-index-subhed_da">
                             {
                                 this.state.isActive == 'profile' &&
                                 <>

@@ -49,9 +49,10 @@ class Checkoutcard extends React.Component {
 
     // }
     handleDeleteLocalStorage = (e) => {
-
+debugger
         var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
-        var currentValue = e.target.id
+        // var currentValue = e.target.id
+        var currentValue = e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id
 
 
         // console.clear()
@@ -75,6 +76,7 @@ class Checkoutcard extends React.Component {
             return response.json()
         }
         if (JSON.parse(localStorage.getItem('cart_id'))) {
+            debugger
             let cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
             let bodyVariableRemoveCartItem = { cart_id: cart_id, product_id: currentValue }
             fetch(`${API_URL}/removecartitem`, {
@@ -92,8 +94,9 @@ class Checkoutcard extends React.Component {
             })
                 .then(status)
                 .then(json).then(val => {
+                    debugger
                     sessionStorage.removeItem('updatedProduct');
-                    alert(JSON.stringify(val.message))
+                    alert(val.message)
                     var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
                     var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
                     var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
@@ -111,11 +114,13 @@ class Checkoutcard extends React.Component {
             var _obj = { cart_id: cartId, user_id: userId, products: _products }
             if (_products.length > 0) {
                 localStorage.setItem('cartDetails', JSON.stringify(_obj))
+                alert("You removed this product successfully")
                 window.location.reload()
 
             }
             else {
                 localStorage.removeItem('cartDetails', _products)
+                alert("You removed this product successfully")
                 window.location.reload()
             }
 
@@ -257,7 +262,7 @@ class Checkoutcard extends React.Component {
                                     <Grid container spacing={12} >
                                         <Grid item xs={8} >
                                             {val.namedetail !== undefined && val.namedetail.map(val => {
-                                                
+                                                debugger
                                                 return (
                                                     <>
                                                         {val.name || val.detail  ?
@@ -286,7 +291,7 @@ class Checkoutcard extends React.Component {
                                             {/* : ""} */}
 
                                             {window.location.pathname !== "/checkout" ? <div className="highlighter" className={`subhesder hov ${classes.normalfonts}`}
-                                                id={val.namedetail[4].details} onClick={(event) => this.handleDeleteLocalStorage(event)}>
+                                                id={dataval.generatedSku} onClick={(event) => this.handleDeleteLocalStorage(event)}>
                                                 <i class="fa fa-trash"></i>
                                                 &nbsp;Remove</div> : ""}
                                         </Grid>

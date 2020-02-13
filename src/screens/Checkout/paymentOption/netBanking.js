@@ -27,7 +27,8 @@ class Netbanking extends React.Component {
             }
         }
         return (
-            <Container>
+            <Grid spacing={12} container lg={12} xs={12} style={{ width: "100%" }}>
+         {/* <Container> */}
                 {/* <Grid spacing={12} container lg={12} xs={12} style={{ textAlign: "center" }}>
                     <Grid item lg={4} xs={4}>
                         <img src=" https://assets.stylori.com/images/static/icons/bank_logo_02.png" />
@@ -59,7 +60,7 @@ class Netbanking extends React.Component {
                         </div>
                     </Grid>
                 </Grid> */}
-                <Grid spacing={12} container lg={12} xs={12} style={{ width: "100%" }}>
+               
                     <Grid item lg={12} xs={12}>
                         <div className="amout-pay"> Amount Payable </div>
                         <div className="credit-btn-div">
@@ -82,7 +83,7 @@ class Netbanking extends React.Component {
                         COD orders are subject to telephonic verification.
                         </div> */}
                 </Grid>
-            </Container>
+            // </Container>
         )
     }
 }
