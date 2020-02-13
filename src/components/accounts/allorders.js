@@ -300,7 +300,7 @@ class Allorders extends React.Component {
                                                                                 {(cart.transSkuListByProductSku && cart.transSkuListByProductSku.purity && cart.transSkuListByProductSku.purity !== undefined) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.purity && cart.transSkuListByProductSku.purity !== null) > 0 ? "Metal" : ""}
                                                                             </Typography>
                                                                             <Typography className="subhesder">
-                                                                                {cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuWeight !== undefined && cart.transSkuListByProductSku.skuWeight !== null ? "Gold Weight" : ""}
+                                                                                {cart && cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuWeight !== undefined && cart.transSkuListByProductSku.skuWeight !== null ? "Weight (Gm)" : ""}
                                                                             </Typography>
                                                                             <Typography className="subhesder">
                                                                                 {(cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight !== undefined) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.productListByProductId && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0] && cart.transSkuListByProductSku.productListByProductId.productDiamondsByProductSku.nodes[0].stoneWeight !== null) ? "Diamond Weight" : ""} </Typography>
@@ -308,10 +308,10 @@ class Allorders extends React.Component {
                                                                             <Typography className="subhesder">
                                                                                 {(cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize !== undefined) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize !== null) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize.length > 0)
                                                                                     ?
-                                                                                    "Ring size"
+                                                                                    "Size"
                                                                                     : ""}
                                                                             </Typography>
-                                                                           
+                                                                           {/* Ring Size */}
                                                                         </Grid>
                                                                         {/*  */}
                                                                         {/*  */}
@@ -461,7 +461,7 @@ class Allorders extends React.Component {
                                                                                     <Grid item lg={6} sm={6}>
 
                                                                                         <Typography className="subhesder">
-                                                                                            {cart.transSkuListByProductSku.skuWeight !== undefined && cart.transSkuListByProductSku.skuWeight !== null ? "Gold Weight" : ""}
+                                                                                            {cart.transSkuListByProductSku.skuWeight !== undefined && cart.transSkuListByProductSku.skuWeight !== null ? "Weight (Gm)" : null}
                                                                                         </Typography>
                                                                                         {/* : ""} */}
 
@@ -479,7 +479,7 @@ class Allorders extends React.Component {
                                                                                         <Typography className="subhesder">
                                                                                             {(cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize !== undefined) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize !== null) && (cart.transSkuListByProductSku && cart.transSkuListByProductSku.skuSize.length > 0)
                                                                                                 ?
-                                                                                                "Ring"
+                                                                                                "Size"
                                                                                                 : ""}
                                                                                         </Typography>
                                                                                         <Typography className="subhesder">
