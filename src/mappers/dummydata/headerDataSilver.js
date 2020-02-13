@@ -21,14 +21,14 @@ export const mainlist = [
         name: "Ready to ship",
         url: "/jewellery-shipping+in+1+day",
     },
-    // {
-    //     name: "CSK MERCHANDISE",
-    //     url: "/jewellery/kada/csk_kada?sku_id=1000000",
-    // },
     {
-        name: "STORIES",
-        url: "/stories",
+        name: "CSK MERCHANDISE",
+        url: "/jewellery/kada/csk_kada?sku_id=1000000",
     },
+    // {
+    //     name: "STORIES",
+    //     url: "/stories",
+    // },
 ];
 
 /// mobile views submenu
@@ -445,8 +445,8 @@ export const menuListHeader =
         { title: 'GOLD COINS', url: "/goldcoins" },
         { title: 'COLLECTIONS', url: "/collections" },
         { title: 'READY TO SHIP', url: "/jewellery-shipping+in+1+day" },
-        // { title: 'CSK MERCHANDISE', url: "/jewellery/kada/csk_kada?sku_id=1000000" },
-        { title: 'STORIES', url: "/stories" }
+        { title: 'CSK MERCHANDISE', url: "/jewellery/kada/csk_kada?sku_id=1000000" },
+        // { title: 'STORIES', url: "/stories" }
     ];
 
 
