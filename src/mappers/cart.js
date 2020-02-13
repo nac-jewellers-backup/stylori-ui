@@ -201,6 +201,7 @@ export default function (data) {
                         title: "Diamond Pendant Ring",
                         dis: 'Pendants set in 18 Kt Yellow Gold 3.95 gm with Diamonds (0.52 ct, GH - SI )',
                         save: '5999.9',
+                        discount:k && k.discount ? k.discount : null,
                         image: {
                             placeImage:
                                 "https://assets-cdn.stylori.com/313x313/images/product/SE0176/SE0176-1R.jpg",

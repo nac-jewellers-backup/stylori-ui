@@ -19,7 +19,7 @@ function MediaControlCard(props) {
   const { dataCard1 } = props.data;
   
   const handleDeleteLocalStorage = (e, val) => {
-    
+    debugger
     var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
     var currentValue = e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id
     // console.clear()
@@ -40,6 +40,7 @@ function MediaControlCard(props) {
       return response.json()
     }
     if (JSON.parse(localStorage.getItem('cart_id'))) {
+      debugger
       let cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
       let bodyVariableRemoveCartItem = { cart_id: cart_id, product_id: currentValue }
       fetch(`${API_URL}/removecartitem`, {
@@ -56,7 +57,7 @@ function MediaControlCard(props) {
         .then(status)
         .then(json).then(val => {
           sessionStorage.removeItem('updatedProduct');
-          alert(JSON.stringify(val.message))
+          alert(val.message)
           var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
           var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
           var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
@@ -73,10 +74,12 @@ function MediaControlCard(props) {
       var _obj = { cart_id: cartId, user_id: userId, products: _products }
       if (_products.length > 0) {
         localStorage.setItem('cartDetails', JSON.stringify(_obj))
+        alert("You removed this product successfully")
         window.location.reload()
       }
       else {
         localStorage.removeItem('cartDetails', _products)
+        alert("You removed this product successfully")
         window.location.reload()
       }
     }
