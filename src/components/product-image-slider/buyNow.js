@@ -164,7 +164,22 @@ class Component extends React.Component {
             ringSize: this.props && this.props.data && this.props.data[0] && this.props.data[0].productsDetails && this.props.data[0].productsDetails[0].namedetail && this.props.data[0].productsDetails[0].namedetail[3] && this.props.data[0].productsDetails[0].namedetail[3].details
         }
     }
+    valus = (valueId) => {
+        var valus_locl = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : ""
 
+        var vals;
+        valus_locl && valus_locl.map(val => {
+            const vlx = valueId && valueId
+            if (vlx === val.sku_id) {
+                vals = 1
+                return false
+            } else {
+                vals = 0
+            }
+
+        })
+        return vals
+    }
     componentDidUpdate(prevProps) {
         // Typical usage (don't forget to compare props):
         var variab = {}
@@ -187,26 +202,21 @@ class Component extends React.Component {
 
     openModel = () => {
         this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
-        // metalColor purity
         sessionStorage.setItem('updatedProduct', JSON.stringify({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
-        // alert('haii')
         window.location.pathname = "/cart"
     }
 
     handleLocalStorage = () => {
-
-        // if (this.props.data && this.props.data[0].productType === "Rings") {
-        this.setState({
-            modelOpen: true,
-        })
-        // }
-        // else {
-        // this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
-
-        // sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
-        // window.location.pathname = "/cart"
-        // }
-
+        if (this.valus(this.props.data[0].skuId) === 1) {
+            this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
+            sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
+            window.location.pathname = "/cart"
+        }
+        else {
+            this.setState({
+                modelOpen: true,
+            })
+        }
     }
 
     canceldeletechecklist = () => {

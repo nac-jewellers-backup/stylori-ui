@@ -1572,3 +1572,12 @@ body {
     border: 2px solid #fff;
     padding: 1px
 }
+
+/* @media screen and (min-width: 959px) {
+    .imagecard {
+        height: 345px !important;
+    }
+} */
+.imagecard div {
+    display: flex !important;
+}

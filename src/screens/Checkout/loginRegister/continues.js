@@ -57,7 +57,7 @@ const ContinuesComponent = (props) => {
                         <Grid item xs={12} lg={6}>
                             {enterotp &&
                                 <>
-                                    <h5 className={`title ${classes.normalfonts}`}>   Number </h5>
+                                    <h5 className={`title ${classes.normalfonts}`}> OTP Number </h5>
                                     <Input
                                         margin="normal"
                                         // variant="outlined"

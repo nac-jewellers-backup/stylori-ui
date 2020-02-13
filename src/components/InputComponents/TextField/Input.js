@@ -64,6 +64,7 @@ export const Input = props => {
         error={invalid}
         multiline={multiline}
         rowsMax={rowsMax}
+        disabled={props.disabled}
         helperText={invalid && <b>{helperText}</b>}
         onKeyPress={handleKeyPress}
         onChange={handleChange}

@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
         marginTop: "3%",
         fontSize: "22px",
         fontFamily: "Roboto",
-        paddingTop:"10px",
+        paddingTop: "10px",
 
     },
     titleColorsmall: {
@@ -39,24 +39,24 @@ const useStyles = makeStyles(theme => ({
         marginTop: "3%",
         fontSize: "16px",
         fontFamily: "Roboto",
-        paddingTop:"10px",
+        paddingTop: "10px",
 
     },
     details: {
-        color:"#394578",
+        color: "#394578",
         borderTop: "0px",
         fontWeight: 600,
         fontSize: "14px",
-        padding:"20px 0px"
+        padding: "20px 0px"
     },
-    icon:{
-        height:"10px",
-        width:"10px",
-        marginRight:"3px",
+    icon: {
+        height: "10px",
+        width: "10px",
+        marginRight: "3px",
     },
-    listeditems:{
-        '&:hover':{
-            backgroundColor:"#fff !important"
+    listeditems: {
+        '&:hover': {
+            backgroundColor: "#fff !important"
         }
     }
 
@@ -64,30 +64,30 @@ const useStyles = makeStyles(theme => ({
 
 export default function ProductCareAccordian(props) {
     const value = props.value;
-    
-    const checkerOpen = ()=>{
-        
-        if(props.accordian==="Plus"){
-           return <Minus className={classes.icon} /> 
-            }
-        
-        else if (props.accordian==="Arrows"){
-            return <ExpandLess /> 
+
+    const checkerOpen = () => {
+
+        if (props.accordian === "Plus") {
+            return <Minus className={classes.icon} />
         }
-        else{
+
+        else if (props.accordian === "Arrows") {
+            return <ExpandLess />
+        }
+        else {
             return ""
         }
     }
-    const checkerClose = ()=>{
-        
-        if(props.accordian==="Plus"){
-           return <Plus className={classes.icon} /> 
-            }
-        
-        else if (props.accordian==="Arrows"){
-            return <ExpandMore /> 
+    const checkerClose = () => {
+
+        if (props.accordian === "Plus") {
+            return <Plus className={classes.icon} />
         }
-        else{
+
+        else if (props.accordian === "Arrows") {
+            return <ExpandMore />
+        }
+        else {
             return ""
         }
     }
@@ -97,71 +97,71 @@ export default function ProductCareAccordian(props) {
     const handleClick = () => {
         setOpen(!open);
     };
-    return(
-        
+    return (
+
         <Grid className={classes.root}  >
-                    <List style={{padding:"0px"}} >
-                        <ListItem style={{padding:"0px"}}  autoFocus={false} className={classes.listeditems} button onClick={handleClick}>
-                            <Typography style={{width:"100%"}} className={classes.details} >{value.Questions}</Typography>
-                           <List style={{float:"end"}}> { open ? checkerOpen():checkerClose()}</List>
-                        </ListItem>
-                        <Collapse in={open} timeout="auto" unmountOnExit>
-                            <List component="div" disablePadding>
-                                <ListItem style={{paddingLeft:"0px",paddingBottom:"0px"}} button className={classes.listeditems}>
-                                    <List style={{ padding: "0px" }}>
-                                        <Grid container style={{ display: "inline-block !important" }} className={classes.listeditems}>
-                                            
-                                                {value.SubTitle &&
-                                                    <Typography style={{ fontWeight: 700, color: "#394578", fontSize: "12px", paddingBottom: "8px",width:"100%" }}>
-                                                        {value.SubTitle}
-                                                    </Typography>
-                                                }
-                                                
-                                                
-                                                <Grid item>
-                                                {value.para &&
-                                                        <Typography style={{width:"100%",fontSize: "13px",color: "#666"}}>{value.para}</Typography>
-                                                    } 
-                                                    </Grid>      
-                                            <Grid item>
-                                            <Grid> 
-                                                 <img style={{width:"100%"}} class="imgPadding" src={value.img} />
-                                            </Grid>
-                                            
-                                            </Grid>
-                                            <Grid container>
-                                                <Grid item class="fifty">
-                                                {value.basicTitle &&
-                                                    <Typography style={{ fontSize: "12px", color: "#394578", paddingBottom: "8px",fontWeight: 700 }}>
+            <List style={{ padding: "0px" }} >
+                <ListItem style={{ padding: "0px" }} autoFocus={false} className={classes.listeditems} button onClick={handleClick}>
+                    <Typography style={{ width: "100%" }} className={classes.details} >{value.Questions}</Typography>
+                    <List style={{ float: "end" }}> {open ? checkerOpen() : checkerClose()}</List>
+                </ListItem>
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        <ListItem style={{ paddingLeft: "0px", paddingBottom: "0px" }} button className={classes.listeditems}>
+                            <List style={{ padding: "0px" }}>
+                                <Grid container style={{ display: "inline-block !important" }} className={classes.listeditems}>
+
+                                    {value.SubTitle &&
+                                        <Typography style={{ fontWeight: 700, color: "#394578", fontSize: "12px", paddingBottom: "8px", width: "100%" }}>
+                                            {value.SubTitle}
+                                        </Typography>
+                                    }
+
+
+                                    <Grid item>
+                                        {value.para &&
+                                            <Typography style={{ width: "100%", fontSize: "13px", color: "#666" }}>{value.para}</Typography>
+                                        }
+                                    </Grid>
+                                    <Grid item>
+                                        <Grid>
+                                            <img style={{ width: "100%" }} class="imgPadding" src={value.img} />
+                                        </Grid>
+
+                                    </Grid>
+                                    <Grid container>
+                                        <Grid item class="fifty">
+                                            {value.basicTitle &&
+                                                <Typography style={{ fontSize: "12px", color: "#394578", paddingBottom: "8px", fontWeight: 700 }}>
                                                     {value.basicTitle}
                                                 </Typography>
-                                                }
-                                                 <Typography dangerouslySetInnerHTML={{ __html: value.Answers }} style={{ fontSize: "13px", color: "#666", paddingBottom: "10px",}}>
-                                                    {/* {value.Answers} */}
-                                                </Typography>
-                                                </Grid>
-                                               
-                                               
-                                                <Grid item class="fiftyImg">
-                                                {value.rightContent &&
-                                                    <Typography dangerouslySetInnerHTML={{ __html: value.rightContent }} class="rightContent" >
-                                                        {/* {value.rightContent} */}
-                                                    </Typography>
-                                                }
-                                                {value.rightImg &&
-                                                    <Typography>
-                                                       <img class="rightImg" style={{justifyContent:`${value.align}`,display:"flex"}} src={value.rightImg} />
-                                                    </Typography>
-                                                }
-                                                </Grid>
-                                            </Grid>
+                                            }
+                                            <Typography dangerouslySetInnerHTML={{ __html: value.Answers }} style={{ fontSize: "13px", color: "#666", paddingBottom: "10px", }}>
+                                                {/* {value.Answers} */}
+                                            </Typography>
                                         </Grid>
-                                    </List>
-                                </ListItem>
+
+
+                                        <Grid item class="fiftyImg">
+                                            {value.rightContent &&
+                                                <Typography dangerouslySetInnerHTML={{ __html: value.rightContent }} class="rightContent" >
+                                                    {/* {value.rightContent} */}
+                                                </Typography>
+                                            }
+                                            {value.rightImg &&
+                                                <Typography>
+                                                    <img class="rightImg" style={{ justifyContent: `${value.align}`, display: "flex" }} src={value.rightImg} />
+                                                </Typography>
+                                            }
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
                             </List>
-                        </Collapse>
+                        </ListItem>
                     </List>
-                </Grid>
-        
+                </Collapse>
+            </List>
+        </Grid>
+
     )
 }
