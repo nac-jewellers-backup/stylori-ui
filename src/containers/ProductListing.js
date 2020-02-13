@@ -98,7 +98,7 @@ class Stylori extends React.Component {
 // const history = (props, aa) => props.history.push(`/stylori?${aa}`);
 
 const Components = props => {
-
+debugger
   let { CartCtx: { allorderdata, wishlistdata } } = React.useContext(CartContext);
   let { FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters, wishlist_count }, setloadingfilters } = React.useContext(FilterOptionsContext);
   let content, mapped = [];

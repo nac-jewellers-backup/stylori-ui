@@ -440,7 +440,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                         details: PD && PD.purity + ' ' + PD.metalColor
                     }, {
                         name: "Approx Metal Weight (in gm)",
-                        details: PD.productListByProductId && PD.productListByProductId.defaultWeight
+                        details: PD && PD.skuWeight ? PD.skuWeight : null
                     },
 
                     {
