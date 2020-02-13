@@ -73,6 +73,11 @@ class PaymentResponseSuccess extends React.Component {
             // console.log(err)
          });
    }
+   
+   componentDidMount()
+{
+if (localStorage.getItem('gut_lg') && localStorage.getItem("user_id")) localStorage.removeItem("user_id")
+}
    render() {
       // alert(JSON.stringify(this.props.data))
       let gut_lg = localStorage.getItem("gut_lg") ? JSON.parse(localStorage.getItem("gut_lg")) : {}

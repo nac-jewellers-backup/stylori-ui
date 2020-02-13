@@ -75,7 +75,7 @@ export default function PaymentHiddenForm(props) {
             body: JSON.stringify(obj)
         }).then(status).then(json).then((data) => {
             localStorage.removeItem("order_id")
-            if (localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
+            // if (localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
             sessionStorage.removeItem('updatedProduct')
             if (data !== null && data !== undefined) {
                 localStorage.setItem("order_id", JSON.stringify(data.order.id))
