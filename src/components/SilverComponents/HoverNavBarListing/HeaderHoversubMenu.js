@@ -29,7 +29,7 @@ function HeaderHoverMenuItem(props) {
                 <Grid item xs={4}>
                   <Grid container className={classes.imgcont} onClick={() => { window.location.href = val.url }} justify="center" alignContent="center" alignItems="center" style={{ cursor: "pointer" }}>
                     <Grid item style={{ justifyContent: "center", alignContent: "center", display: "flex", }}>
-                      {val.img && <img style={{ width: "65%", margin: "auto" }} src={val.img} />}
+                      {val.img && <img style={{ width: "65%", margin: "auto",height:"100%" }} src={val.img} />}
                     </Grid>
                     <Grid item style={{ margin: "auto" }}>
                       <Typography style={{ margin: "auto", textAlign: "center" }} className={classes.listedItemsvalue} >

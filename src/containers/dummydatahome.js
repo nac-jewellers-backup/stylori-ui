@@ -19,7 +19,7 @@ export const
         autoplaySpeed: 4000,
         centerMode: false,
         focusOnSelect: false,
-        pauseOnHover: false,
+        pauseOnHover: true,
         pauseOnDotsHover: false,
         pauseOnFocus: true,
         swipe: false
