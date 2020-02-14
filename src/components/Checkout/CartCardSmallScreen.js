@@ -19,7 +19,7 @@ function MediaControlCard(props) {
   const { dataCard1 } = props.data;
   
   const handleDeleteLocalStorage = (e, val) => {
-    debugger
+    
     var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
     var currentValue = e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id
     // console.clear()
@@ -40,7 +40,7 @@ function MediaControlCard(props) {
       return response.json()
     }
     if (JSON.parse(localStorage.getItem('cart_id'))) {
-      debugger
+      
       let cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
       let bodyVariableRemoveCartItem = { cart_id: cart_id, product_id: currentValue }
       fetch(`${API_URL}/removecartitem`, {
