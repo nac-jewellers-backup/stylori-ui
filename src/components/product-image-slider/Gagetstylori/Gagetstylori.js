@@ -27,19 +27,19 @@ export default function PaperSheet() {
     return (
         <Grid container>
             <Grid item className={classes.mainsource}>
-                <img style={{ width: "70%", height: 'auto' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg"} />
+                <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg"} />
             </Grid>
             <Grid item className={classes.mainsource}>
-                <img style={{ width: "70%", height: 'auto' }} src={"https://assets.stylori.com/images/Static%20Pages/Other%20Pages/certifiedjewellery-pink.svg"} />
+                <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static%20Pages/Other%20Pages/certifiedjewellery-pink.svg"} />
             </Grid>
             <Grid item className={classes.mainsource}>
-                <img style={{ width: "70%", height: 'auto' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/securepayments-pink.svg"} />
+                <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/securepayments-pink.svg"} />
             </Grid>
             <Grid item className={classes.mainsource}>
-                <img style={{ width: "70%", height: 'auto' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/diversestyles-pink.svg"} />
+                <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/diversestyles-pink.svg"} />
             </Grid>
             <Grid item className={classes.mainsource}>
-                <img style={{ width: "70%", height: 'auto' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/easyreturns-pink.svg"} />
+                <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/easyreturns-pink.svg"} />
             </Grid>
         </Grid>
     );
