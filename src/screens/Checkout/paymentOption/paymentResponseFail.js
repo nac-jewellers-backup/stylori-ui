@@ -13,6 +13,12 @@ function PaymentResponseFail(props) {
   function BackToPayment() {
     props.history.push('/')
   }
+  const handleClick = () =>{
+    
+    localStorage.setItem("panel","3")
+    props.history.push('/checkout');
+
+  }
   return (
     <>
       <Header wishlist={props.wishlistdata}  paymentSucces={true} />
@@ -26,7 +32,7 @@ function PaymentResponseFail(props) {
               </Grid>
             </Grid>
             <Grid item style={{ marginLeft: "20px" }}>
-              <Button className="retrypaymentbtn" onClick={() => props.history.push('/checkout')}>Retry Payment</Button>
+              <Button className="retrypaymentbtn" onClick={handleClick}>Retry Payment</Button>
             </Grid>
           </Grid>
         </Grid>

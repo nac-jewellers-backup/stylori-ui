@@ -74,7 +74,7 @@ export default function ElasticSearch(props) {
     
     const handleChange = (e) =>{
         setValue(e.target.value)
-debugger
+
         const status = (response) => {
 
             if (response.status >= 200 && response.status < 300) {

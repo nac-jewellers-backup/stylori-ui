@@ -71,7 +71,7 @@ class CashonDelivey extends React.Component {
                 localStorage.removeItem("bil_isactive")
                 localStorage.removeItem("set_check")
                 localStorage.removeItem("cart_id")
-                if (localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
+                // if (localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
                 sessionStorage.removeItem('updatedProduct')
                 alert(resdata.message)
                 window.location.pathname = `/paymentsuccess/${resdata.order.id}`

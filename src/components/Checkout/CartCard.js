@@ -49,7 +49,7 @@ class Checkoutcard extends React.Component {
 
     // }
     handleDeleteLocalStorage = (e) => {
-debugger
+
         var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
         // var currentValue = e.target.id
         var currentValue = e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id
@@ -76,7 +76,7 @@ debugger
             return response.json()
         }
         if (JSON.parse(localStorage.getItem('cart_id'))) {
-            debugger
+            
             let cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
             let bodyVariableRemoveCartItem = { cart_id: cart_id, product_id: currentValue }
             fetch(`${API_URL}/removecartitem`, {
@@ -94,7 +94,7 @@ debugger
             })
                 .then(status)
                 .then(json).then(val => {
-                    debugger
+                    
                     sessionStorage.removeItem('updatedProduct');
                     alert(val.message)
                     var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
@@ -262,7 +262,7 @@ debugger
                                     <Grid container spacing={12} >
                                         <Grid item xs={8} >
                                             {val.namedetail !== undefined && val.namedetail.map(val => {
-                                                debugger
+                                                
                                                 return (
                                                     <>
                                                         {val.name || val.detail  ?
@@ -303,7 +303,7 @@ debugger
                                     <div style={{ marginTop: "15%" }}>
                                         {dataval.dataCard1.map(val =>
                                         {
-                                            debugger
+                                            
                                             return(<Pricing
                                                 detail={dataval}
                                                 offerDiscount={(val.discount) ? `${val.discount}% - OFF` : null}
@@ -431,7 +431,7 @@ debugger
             arrows: false,
         }
         var data = this.props.data
-        debugger
+        
         const { classes } = this.props;
         // alert(discounted_price)
         let path = window.location.pathname.split('/').pop();

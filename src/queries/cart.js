@@ -68,6 +68,7 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
                   }
                 }
                 productName
+                productType
                 productDiamondsByProductSku {
                   nodes {
                     stoneWeight
@@ -197,6 +198,7 @@ export const ORDERSUCCESSFUL = `query MyQuery($orderId:  OrderCondition) {
                   }
                 }
                 productName
+                productType
                 productDiamondsByProductSku {
                   nodes {
                     stoneWeight
