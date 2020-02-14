@@ -130,7 +130,7 @@ Object.entries(data).length>0 && data.seo_results.length > 0?
         <Grid container item className={classes.searchContainer}>
         <Grid item className={classes.TitleContainer} xs={12}>
             <Typography className={classes.productTitle}>
-            seo_results
+            Categories
         </Typography>
         </Grid>
         {
@@ -158,7 +158,7 @@ Object.entries(data).length>0 && data.sku_results.length>0 ?
         <Grid container item className={classes.searchContainer}>
         <Grid item className={classes.TitleContainer} xs={12}>
             <Typography className={classes.productTitle}>
-            sku_results
+            Product(s)
         </Typography>
         </Grid>
         {
@@ -172,21 +172,8 @@ Object.entries(data).length>0 && data.sku_results.length>0 ?
         </Grid>
              )
             }
-    </Grid>
-     :
-     null
-
-}
-{
- Object.entries(data).length>0 && data.product_results.length > 0? 
-        <Grid container item className={classes.searchContainer}>
-        <Grid item className={classes.TitleContainer} xs={12}>
-            <Typography className={classes.productTitle}>
-            product_results
-        </Typography>
-        </Grid>
-        {
-            
+            {
+            Object.entries(data).length>0 && data.product_results.length > 0 ? 
             data.product_results.map(val =>
         <Grid item xs={12} style={{margin:"5px"}}>
        {/* <a href={`/${val.sku_url}`} className={classes.productSublist}>
@@ -195,11 +182,34 @@ Object.entries(data).length>0 && data.sku_results.length>0 ?
             <Link to={`/${val.sku_url}`} className={`${classes.productSublist} ${classes.link}`} replace >{val.product_name}</Link>
         </Grid>
                 )
+                :
+                null
+                }
+    </Grid>
+     :
+     null
+
+}
+{/* {
+ Object.entries(data).length>0 && data.product_results.length > 0? 
+        <Grid container item className={classes.searchContainer}>
+        <Grid item className={classes.TitleContainer} xs={12}>
+            <Typography className={classes.productTitle}>
+            Product (s)
+        </Typography>
+        </Grid>
+        {
+            
+            data.product_results.map(val =>
+        <Grid item xs={12} style={{margin:"5px"}}>
+            <Link to={`/${val.sku_url}`} className={`${classes.productSublist} ${classes.link}`} replace >{val.product_name}</Link>
+        </Grid>
+                )
                 }
     </Grid>
     :
     null
-}              
+}               */}
 {
     Object.entries(data).length>0 && data.product_results.length === 0 && data.sku_results.length === 0 && data.seo_results.length === 0 ? 'no results found' : null
 }

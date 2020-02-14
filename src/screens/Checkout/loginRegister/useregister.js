@@ -61,7 +61,7 @@ const useRegister = (changePanel, props) => {
     // const { makeFetch: makeFetchedit } = useNetworkRequest('/api/auth/signup', {}, false);
     const { data: reg_update_data, makeFetch: makeFetcheditAddress } = useNetworkRequest('/api/updateuserprofile', {}, false);
     const { data, error, loading, makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
-    const { setCartFilters } = React.useContext(CartContext);
+    const { setCartFilters ,CartCtx} = React.useContext(CartContext);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     const pathnamelog = window.location.pathname === "/registers"
 
@@ -118,6 +118,7 @@ const useRegister = (changePanel, props) => {
     }, [reg_update_data])
 
     useEffect(() => {
+        debugger
         var ms = data && data.message
         if (ms && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
@@ -151,7 +152,7 @@ const useRegister = (changePanel, props) => {
                 // localStorage.setItem("set_check", "123")
                 // localStorage.setItem("addres_id", data.user.id)
                 setValues({ user_id: data.user_profile_id })
-                setCartFilters({ user_id })
+                setCartFilters({...CartCtx.cartFilters, user_id:data.user_profile_id })
                 makeRequestCod(obj);
                 if (!pathnamelog) {
                     changePanel(2)
@@ -214,7 +215,7 @@ const useRegister = (changePanel, props) => {
     const user = data.user_profile_id ? data.user_profile_id : ""
 
     const handleSubmit = (e) => {
-
+debugger
         if (!pathnames) {
             if (values.email === "" && values['error'] && values['errortext']) {
                 values['error']['emerr'] = true
