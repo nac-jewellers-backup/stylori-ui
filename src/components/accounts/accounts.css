@@ -35,7 +35,7 @@
     .pay-index-subhed_datas {
         box-shadow: 1px 2px 7px 4px #DEDADA;
         margin-top: 0px !important;
-        /* margin-left: 40px; */
+        margin-left: 40px;
         padding: 16px 20px;
     }
 }

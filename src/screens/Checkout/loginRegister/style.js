@@ -1,4 +1,17 @@
 export const styles = theme => ({
+    summaryOrder: {
+        background: theme.palette.primary.main,
+        color: " #FFF !important",
+        borderRadius: "0px !important",
+        // border: `1px solid #258056`,
+        fontSize: "0.89rem !important",
+        minWidth: "100px !important",
+        textTransform: " none !important",
+        boxShadow: `0px 1px 5px 1px #294638`,
+        "&:hover": {
+            background: "#1c8454",
+        }
+    },
     normalfonts: {
         color: theme.palette.text.primary,
     },
@@ -11,7 +24,7 @@ export const styles = theme => ({
     backgwhite: {
         background: theme.palette.overallButoon.contrastText
     },
-    fontgray: { 
+    fontgray: {
         color: theme.palette.text.disabled
     },
     // buynow 
@@ -31,5 +44,22 @@ export const styles = theme => ({
             boxShadow: "none",
         },
     },
+    conshoping: {
+        fontSize: "0.96rem",
+        padding: "20px 0px",
+        cursor: "pointer",
+        color: theme.palette.primary.main
+    },
+    TypoSmall: {
+        fontSize: "0.84rem"
+    },
+    typomedium: {
+        fontSize: "0.91rem"
+    },
+    containerBunch: {
+        padding: "20px 0px ",
+
+        borderBottom: "1px solid #8080806e"
+    }
 });
 export default styles;

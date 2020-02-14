@@ -8,15 +8,15 @@
       "darkFade": "#59595b"
     },
     "primary": {
-      "light": "rgba(57, 69, 120, 1)",
-      "main": "rgba(58, 69, 120, 1)",
-      "dark": "rgba(49, 63, 92, 1)",
+      "light": "#03b362",
+      "main": "#009651",
+      "dark": "#027741",
       "contrastText": "#fff"
     },
     "secondary": {
-      "light": "rgba(246, 153, 163, 1)",
-      "main": "rgba(241, 72, 128, 1)",
-      "dark": "#d51f63",
+      "light": "#4949d8",
+      "main": "#33346d",
+      "dark": "#20205a",
       "lightFirst": "rgba(246, 153, 163, 1)",
       "mainFirst": "rgba(241, 72, 128, 1)",
       "darkFirst": "rgba(234, 83, 129, 1)",

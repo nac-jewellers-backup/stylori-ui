@@ -85,7 +85,7 @@ class PaymentIndex extends React.Component {
                                     <div className="code-icon"></div>&nbsp;   Cash on Delivery (COD)</p>
                             </div>
                         </Grid>
-                        <Grid item lg={7}>
+                        <Grid item lg={9}>
                             <div style={{ marginTop: "20px" }} className="pay-index-subhed_datas ">
                                 {
                                     this.state.isActive == 'Creditform' && <Creditform />
