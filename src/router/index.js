@@ -218,8 +218,8 @@ Boolean(localStorage.getItem("gut_lg"))) || !localStorage.getItem("user_id")  ? 
 )}
      
 
-      {Boolean(localStorage.getItem("user_id")) &&
-      Boolean(localStorage.getItem("gut_lg")) ? (
+      {(localStorage.getItem("user_id") &&
+Boolean(localStorage.getItem("gut_lg"))) || !localStorage.getItem("user_id") ? (
         <Redirect
           key="stylori-redirect"
           from={routes.Account}
