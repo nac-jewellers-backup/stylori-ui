@@ -201,15 +201,17 @@ class Component extends React.Component {
     }
 
     openModel = () => {
+        
         this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
         sessionStorage.setItem('updatedProduct', JSON.stringify({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
         window.location.pathname = "/cart"
     }
 
     handleLocalStorage = () => {
+       
         if (this.valus(this.props.data[0].skuId) === 1) {
-            this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
-            sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
+            // this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
+            // sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
             window.location.pathname = "/cart"
         }
         else {

@@ -24,6 +24,7 @@ export default function PaymentHiddenForm(props) {
     obj['payment_mode'] = "Prepaid"
     obj['user_id'] = user_id
     obj['cart_id'] = cart_ids
+    obj['voucher_code'] = cartFilters.vouchercode
 
     const generateOrderdId = async () => {
 

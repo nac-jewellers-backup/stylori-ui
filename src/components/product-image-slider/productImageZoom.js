@@ -12,7 +12,7 @@ import './product-images.css'
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../Header/styles'
 import ReactImageZoom from 'react-image-zoom';
-import StaticView from 'components/CarouselLazyer/StaticView';
+import StaticView from 'components/CarouselLazyer/StaticView'; 
 import Gagetstylori from './Gagetstylori/Gagetstylori';
 import {
   Magnifier,

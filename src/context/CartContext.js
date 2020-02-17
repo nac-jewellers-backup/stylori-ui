@@ -28,6 +28,7 @@ const initialCtx = {
             reload: "",
             jewellery: "",
             _cart_id: {},
+            vouchercode:null
 
 
         },

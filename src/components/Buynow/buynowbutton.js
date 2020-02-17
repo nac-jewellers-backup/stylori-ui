@@ -8,7 +8,9 @@ import {
 let path = window.location.pathname.split('/').pop();
 // const path = window.location.pathname !== "cart" || window.location.pathname!== "checkout"
 class Buynowbutton extends React.Component {
+    
     valus = (props) => {
+        
         var valus_locl = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : ""
         
         var vals;
@@ -23,6 +25,9 @@ class Buynowbutton extends React.Component {
 
         })
         return vals
+    }
+    componentDidUpdate(){
+        this.valus(this.props)
     }
     render() {
         return (

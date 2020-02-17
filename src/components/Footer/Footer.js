@@ -213,7 +213,7 @@ export default function Footer(props) {
         },
         {
             url: "/deliveryreturns",
-            Title: "Shopping & Returns"
+            Title: "Shipping & Returns"
         },
         {
             url: "/privacypolicy",
@@ -461,7 +461,7 @@ export default function Footer(props) {
                                             <>{localStorage.getItem("true") ? <Grid container className={classes.navTitle} onClick={() => { window.location.href = data.url }} href="#">
                                                 {data.Title}
                                             </Grid> :
-                                                <Grid container className={classes.navTitle} onClick={data.url == "/account-profile" ? "" : () => { window.location.href = data.url }} href="#">
+                                                <Grid container className={classes.navTitle} onClick={() => { window.location.href = data.url }} href="#">
                                                     {data.Title}
                                                 </Grid>
                                             }</ >

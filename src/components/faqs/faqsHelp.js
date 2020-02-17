@@ -11,7 +11,7 @@ class faqsHelp extends React.Component {
         return (
             <Grid>
                 {this.props.contactUs ? "" : <Grid item xs={12} className="submain">
-                    <Typography style={{ fontSize: "17px", fontWeight: "600" }} gutterBottom>We're Here To Help?</Typography>
+                    <Typography style={{ fontSize: "17px", fontWeight: "600" }} gutterBottom>We're Here To Help</Typography>
                 </Grid>}
                 <Grid item xs={12} container alignItems="center">
                     <span item xs={3} className="phone" >

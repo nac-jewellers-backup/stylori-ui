@@ -66,3 +66,16 @@ box-shadow: none !important;
 .PrivateNotchedOutline-root-207 {
     border-radius: 0px !important;
 }
+.snackBar div{
+    color: #fff;
+    font-weight: 500;
+    background-color: #4caf50;
+  }
+  .snackBarError div{
+    color: #fff;
+    font-weight: 500;
+    background-color: #f44336;
+  }
+  .closeIcon span svg{
+    fill:white !important
+  }

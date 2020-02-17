@@ -17,10 +17,20 @@ const ContinuesComponent = (props) => {
     // const OtpForm = () => (
     // )
     const clear = () => {
-        setMail({
-            email: "",
-        })
-        props.change()
+        if(email.email.length>0 && !enterotp){
+            setMail({
+                email: "",
+            })
+            props.change()
+        } 
+        else if(email.email.length>0){
+            handlers.setEnterOtp(false)
+        }
+        else{
+            props.change()
+        }
+        
+    
     }
     React.useEffect(()=>{
         if(Object.entries(otpdata).length>0 && otpdata.constructor === Object){

@@ -58,10 +58,11 @@ export const useNetworkRequest = (urlSignin: string, body: string | object | nul
             }, body
         })
             .then(res => {
-                setStatus({ status: Response.status, statusText: res.message })
+                setStatus({ status: res.status, statusText: res.message })
                 return res.json();
             })
             .then(resdata => {
+                
                 setData(resdata);
                 setLoading(false);
             })
