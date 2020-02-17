@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
 import { CartContext } from 'context'
+import { SnackBar } from "components/snackbarAlert/SnackBar"
 
 const usePromo = (props) => {
-    debugger
+    
     let { CartCtx: { setCartFilters, cartFilters } } = React.useContext(CartContext);
     // const { setCartFilters } = React.useContext(CartContext);
     let user_profile_id = cartFilters && cartFilters.cartFilters && cartFilters.cartFilters.user_id && cartFilters.cartFilters.user_id && cartFilters.cartFilters.user_id.length > 0 ? cartFilters.cartFilters.user_id : localStorage.getItem("user_id")
@@ -13,10 +14,13 @@ const usePromo = (props) => {
         user_profile_id,
         cart_id,
         vouchercode: null,
+       
     });
-    debugger
+    const [open, setOpen] = React.useState(false)
+    
+
     // const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
-    const { data, error, loading, makeFetch } = useNetworkRequest('/applyvoucher', {}, false);
+    const { data, error, loading, status, makeFetch } = useNetworkRequest('/applyvoucher', {}, false);
     useEffect(() => {
         if (data && Object.entries(data).length > 0 && data.constructor === Object) {
             
@@ -29,10 +33,16 @@ const usePromo = (props) => {
                     discounted_amount:data.price_response.discounted_price
                 })
             }
-            alert(data.message)
+            // alert(data.message)
+            // alert(JSON.stringify(data))
+            setOpen(true)
+            
         }
 
     }, [data])
+    const handleClose = () => {
+        setOpen(false)
+    }
     const handleChange = (type, value) => {
         setValues({
             ...values,
@@ -40,7 +50,7 @@ const usePromo = (props) => {
         })
     }
     const handleSubmit = (e) => {
-        debugger
+        
         // let { CartCtx: { setCartFilters, cartFilters } } = React.useContext(CartContext);
     // const { setCartFilters } = React.useContext(CartContext);
     let user_profile_id = cartFilters && cartFilters.cartFilters && cartFilters.cartFilters.user_id && cartFilters.cartFilters.user_id && cartFilters.cartFilters.user_id.length > 0 ? cartFilters.cartFilters.user_id : localStorage.getItem("user_id")
@@ -58,9 +68,9 @@ const usePromo = (props) => {
         makeFetch(values);
     }
 
-    const handlers = { handleSubmit, handleChange };
+    const handlers = { handleSubmit, handleChange, handleClose };
 
-    return { data, values, handlers }
+    return { data, values, handlers, open  }
 }
 
 export default usePromo;

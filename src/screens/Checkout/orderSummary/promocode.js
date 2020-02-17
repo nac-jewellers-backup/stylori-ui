@@ -3,7 +3,7 @@ import '../loginRegister/loginRegisters.css'
 import { Grid, Button } from '@material-ui/core';
 import { Input } from '../../../components/InputComponents/TextField/Input'
 import usePromo from './usepromo';
-
+import { SnackBar } from "components/snackbarAlert/SnackBar"
 const Promo = (props) => {
     return <PromoComponent  {...props} />
 }
@@ -24,7 +24,7 @@ const PromoComponent = (props) => {
         }
     }, [])
 
-    const { values, handlers, data } = usePromo();
+    const { values, handlers, data, open } = usePromo();
     return (
         <div className='pt-sm'>
             <form action="javascript:void(0)" onSubmit={() => handlers.handleSubmit()}>
@@ -51,6 +51,17 @@ const PromoComponent = (props) => {
                     </Grid>
                 </div>
             </form>
+            <SnackBar handleClose={handlers.handleClose} 
+            autoHideDuration={100}
+            key={ {vertical: 'top',
+            horizontal: 'right'}}
+            anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center',
+              }}
+        
+                classNameCloseIcon={'closeIcon'}
+                classNames={ data.status === "409" ?"snackBarError":"snackBar"} message={data.message} open={open} />
         </div>
     )
 }

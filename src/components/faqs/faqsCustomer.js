@@ -16,7 +16,7 @@ class FaqsCustomer extends React.Component {
                     </Grid>
                     <Grid className="main">
                 <p style={{lineHeight:"0.2em",color:"#394578"}}>Monday to Saturday</p>
-                <p style={{color:"#394578"}}>10 A.M to 7 P.M IST</p>
+                <p style={{color:"#394578"}}>10 AM to 7 PM IST</p>
                     </Grid>
                 </Grid>
             </Grid>

@@ -118,7 +118,7 @@ const useRegister = (changePanel, props) => {
     }, [reg_update_data])
 
     useEffect(() => {
-        debugger
+        
         var ms = data && data.message
         if (ms && values['error'] && values['errortext']) {
             values['error']['emerr'] = true
@@ -215,7 +215,7 @@ const useRegister = (changePanel, props) => {
     const user = data.user_profile_id ? data.user_profile_id : ""
 
     const handleSubmit = (e) => {
-debugger
+
         if (!pathnames) {
             if (values.email === "" && values['error'] && values['errortext']) {
                 values['error']['emerr'] = true

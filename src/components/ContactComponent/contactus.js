@@ -223,7 +223,7 @@ export default function CustomizedInputs() {
                     <Grid container item xs={12} sm={12} md={12} lg={4} xl={4} className={classes.midconatiner}>
                     <Grid item>
                         <Typography variant="h4" className={classes.Subtitle}>
-                            We're Here To Help?
+                            We're Here To Help
                         </Typography>
                         <Grid className={classes.maginBottomOnly}>
                             <HelpContact contactUs={true} />
@@ -232,7 +232,7 @@ export default function CustomizedInputs() {
                             Customer Care
                         </Typography>
                         <p class={classes.smallSizeTypo}>
-                            Monday to Saturday 10 A.M to 7 P.M IST
+                            Monday to Saturday 10 AM to 7 PM IST
 			      </p>
                     </Grid>
                     </Grid>

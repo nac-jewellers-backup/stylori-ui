@@ -79,6 +79,9 @@ const useLogin = (changePanel, props) => {
                     localStorage.setItem('user_id', bb)
                     sessionStorage.setItem("user_id", bb)
                     localStorage.setItem('accessToken', data.accessToken)
+                    if(localStorage.getItem('gut_lg')){
+                        localStorage.removeItem("gut_lg")
+                    }
                     // setValues({user_id:data.userprofile.id})
                     // changePanel(3)
                 }
