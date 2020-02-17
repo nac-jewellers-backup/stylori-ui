@@ -30,7 +30,8 @@ const usePromo = (props) => {
                     tax_price: Math.round(data.price_response.discount),
                     coupon_type: data.coupon_type,
                     gross_amount:data.price_response.gross_amount,
-                    discounted_amount:data.price_response.discounted_price
+                    discounted_amount:data.price_response.discounted_price,
+                    vouchercode:values.vouchercode
                 })
             }
             // alert(data.message)

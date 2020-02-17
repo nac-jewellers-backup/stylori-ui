@@ -22,7 +22,7 @@ export const
         pauseOnHover: true,
         pauseOnDotsHover: false,
         pauseOnFocus: true,
-        swipe: false
+        swipe: true
       },
       "data": [
         {
@@ -35,11 +35,11 @@ export const
           mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/gemstone-mob",
           navigateUrl: "/gemstone-jewellery?sort=latest"
         },
-        {
-          img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori-Valentine-banner-web.jpg",
-          mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori-Valentine-banner-mob.jpg",
-          navigateUrl: "/hearts-jewellery?sort=bestseller"
-        },
+        // {
+        //   img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori-Valentine-banner-web.jpg",
+        //   mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori-Valentine-banner-mob.jpg",
+        //   navigateUrl: "/hearts-jewellery?sort=bestseller"
+        // },
         {
           img: "https://assets.stylori.com/images/Static+Pages/Home+Page/banner3.jpg",
           mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/rings-collection-mob.jpg",

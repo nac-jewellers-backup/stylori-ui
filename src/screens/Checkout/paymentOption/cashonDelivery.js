@@ -6,13 +6,17 @@ import { CartContext } from 'context'
 import cart from 'mappers/cart'
 import { useNetworkRequest } from 'hooks/index';
 import { API_URL, HOME_PAGE_URL, CDN_URL } from '../../../config';
+// import { CartContext } from 'context'
 
 var obj = {}
 var obj_user = {}
 // let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
 const order_idx = localStorage.getItem('order_id') ? JSON.parse(localStorage.getItem('order_id')) : "yourorder"
-
-class CashonDelivey extends React.Component {
+const CashonDelivey= (props)=>{
+    let { CartCtx: {cartFilters } } = React.useContext(CartContext);
+    return <Component cartFilters={cartFilters} {...props} />
+}
+class Component extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -32,7 +36,7 @@ class CashonDelivey extends React.Component {
     }
 
     makeFetch = async (props) => {
-
+debugger
         // await fetch(`${API_URL}/createorder`, {
         //     method: 'post',
         //     headers: {
@@ -46,6 +50,7 @@ class CashonDelivey extends React.Component {
         //     alert('Order Placed Successfully')
 
         // })
+        debugger
         fetch(`${API_URL}/createorder`, {
 
             method: 'post',
@@ -124,6 +129,7 @@ class CashonDelivey extends React.Component {
         obj['payment_mode'] = "COD"
         obj['user_id'] = user_id
         obj['cart_id'] = cart_ids
+        obj['voucher_code'] = this.props.cartFilters.vouchercode
         // alert(JSON.stringify(dataCard1))
         return (
             <div>
