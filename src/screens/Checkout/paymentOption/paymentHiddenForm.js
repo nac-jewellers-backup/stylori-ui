@@ -121,8 +121,8 @@ export default function PaymentHiddenForm(props) {
                 <div>
                     {/* <label>Chargetotal</label> */}
                     <input size="50" type="hidden" name="chargetotal"
-                        // value="1"
-                    value={`${props.data}`}
+                        value="1"
+                    // value={`${props.data}`}
                     />
                 </div>
                 <div>
