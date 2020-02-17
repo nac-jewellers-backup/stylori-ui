@@ -203,17 +203,20 @@ export const RouterApp = props => {
       )}
       <Route key="cart" exact component={Cart} path={routes.Cart} />
       <Route key="Register" component={Register} exact path={routes.Register} />
-      {localStorage.getItem("user_id") &&
-      Boolean(localStorage.getItem("gut_lg")) ? (
-        <Route
-          key="login"
-          component={UserLogin}
-          exact
-          path={routes.UserLogin}
-        />
-      ) : (
-        <Redirect key="stylori-redirect" from="/login" exact to={"/"} />
-      )}
+     
+      {(localStorage.getItem("user_id") &&
+Boolean(localStorage.getItem("gut_lg"))) || !localStorage.getItem("user_id")  ? (
+  <Route
+    key="login"
+    component={UserLogin}
+    exact
+    path={routes.UserLogin}
+  />
+) 
+: (
+  <Redirect key="stylori-redirect" from="/login" exact to={"/"} />
+)}
+     
 
       {Boolean(localStorage.getItem("user_id")) &&
       Boolean(localStorage.getItem("gut_lg")) ? (
