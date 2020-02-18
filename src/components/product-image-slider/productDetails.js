@@ -31,7 +31,7 @@ class ProductDetails extends React.Component {
                         return (valueofproductdetail.namedetail.length === 0) ? false :
                             <>
                             {
-                                (valueofproductdetail.header !== 'Price Breakup' || (valueofproductdetail.header === 'Price Breakup' && valueofproductdetail.namedetail[5].name === 'Total' && Number(valueofproductdetail.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g,"")) > 13000)) ?
+                                (valueofproductdetail.header !== 'Price Breakup' || (valueofproductdetail.header === 'Price Breakup' && valueofproductdetail.namedetail[5].name === 'Total' && Number(valueofproductdetail.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g,"")) > 15000)) ?
 <div className='overall-boxz' style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" }}>
                                     <div className='overall-bo'>
                                         <span key={valueofproductdetail.name} className={`product-details ${classes.normalfonts}`} > {valueofproductdetail.header}</span>
@@ -120,7 +120,7 @@ class ProductDetails extends React.Component {
                             val.namedetail.length === 0) ? false :
                             <>
                             {
-                                (val.header !== 'Price Breakup' || (val.header === 'Price Breakup' && val.namedetail[5].name === 'Total' && Number(val.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g,"")) > 13000))
+                                (val.header !== 'Price Breakup' || (val.header === 'Price Breakup' && val.namedetail[5].name === 'Total' && Number(val.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g,"")) > 15000))
                                 ?
                                 <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", margin: "12px 0px", padding: "0 5px 5px 5px" }} expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
                                 <ExpansionPanelSummary
