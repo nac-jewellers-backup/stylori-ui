@@ -98,54 +98,54 @@ export default function PaymentHiddenForm(props) {
             <form id="payment_hidden_form" method="POST" action="https://www4.ipg-online.com/connect/gateway/processing">
                 <div>
                     {/* <label>Transaction Type</label> */}
-                    <input size="50"  name="txntype" value="sale" />
+                    <input size="50" type= "hidden" name="txntype" value="sale" />
                 </div>
                 <div>
 
                     {/* <label>Transaction Date Time</label> */}
-                    <input size="50"  name="txndatetime" value={hash.timedate} />
+                    <input size="50" type= "hidden"  name="txndatetime" value={hash.timedate} />
                 </div>
                 <div>
                     {/* <label>Calculated Hash</label> */}
-                    <input size="50"  name="hash" value={hash.hashvalue} />
+                    <input size="50" type= "hidden"  name="hash" value={hash.hashvalue} />
                 </div>
                 <div>
                     {/* <label>Currency</label> */}
-                    <input size="50"  name="currency" value="356" />
+                    <input size="50" type= "hidden"  name="currency" value="356" />
                 </div>
                 <div>
                     {/* <label>Payment Mode</label> */}
-                    <input size="50"  name="mode" value="payonly" />
+                    <input size="50" type= "hidden"  name="mode" value="payonly" />
                 </div>
                 <div>
                     {/* <label>Store Id</label> */}
-                    <input size="50"  name="storename" value="3396023678" />
+                    <input size="50" type= "hidden"  name="storename" value="3396023678" />
                 </div>
                 <div>
                     {/* <label>Chargetotal</label> */}
-                    <input size="50"  name="chargetotal"
+                    <input size="50" type= "hidden"  name="chargetotal"
                         value="1"
                     // value={`${props.data}`}
                     />
                 </div>
                 <div>
                     {/* <label>successpage</label> */}
-                    <input size="50"  name="responseSuccessURL" value={`${API_URL}/paymentsuccess`} />
+                    <input size="50" type= "hidden"  name="responseSuccessURL" value={`${API_URL}/paymentsuccess`} />
                 </div>
                 <div>
                     {/* <label>fail</label> */}
-                    <input size="50"  name="responseFailURL" value={`${API_URL}/paymentfailure`} />
+                    <input size="50" type= "hidden"  name="responseFailURL" value={`${API_URL}/paymentfailure`} />
                 </div>
                 <div>
                     {/* <label>Language</label> */}
-                    <input size="50"  name="language" value="en_EN" />
+                    <input size="50" type= "hidden"  name="language" value="en_EN" />
                 </div>
                 <div>
-                    <input size="50"  name="sharedsecret" value="" />
-                    <input  name="timezone" value="IST" />
-                    <input  name="authenticateTransaction" value="true" />
-                    <input  name='checkoutoption' value="combinedform" />
-                    <input size="50"  name="oid" value={orderId} />
+                    <input size="50" type= "hidden"  name="sharedsecret" value="" />
+                    <input type= "hidden"  name="timezone" value="IST" />
+                    <input type= "hidden"  name="authenticateTransaction" value="true" />
+                    <input type= "hidden"  name='checkoutoption' value="combinedform" />
+                    <input size="50" type= "hidden"  name="oid" value={orderId} />
                     {/* <input size="50" type="hidden" name="paymentMethod" value=""/>
                 <input type="hidden" name="cardFunction" value = "credit" /> */}
                 </div>
