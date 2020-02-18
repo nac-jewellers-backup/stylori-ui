@@ -154,7 +154,7 @@ Object.entries(data).length>0 && data.seo_results.length > 0?
     
 }
 {
-Object.entries(data).length>0 && data.sku_results.length>0 ? 
+(Object.entries(data).length>0 && data.sku_results.length>0) || (Object.entries(data).length>0 && data.product_results.length > 0) ? 
         <Grid container item className={classes.searchContainer}>
         <Grid item className={classes.TitleContainer} xs={12}>
             <Typography className={classes.productTitle}>
@@ -162,7 +162,7 @@ Object.entries(data).length>0 && data.sku_results.length>0 ?
         </Typography>
         </Grid>
         {
-                
+         Object.entries(data).length>0 && data.sku_results.length>0 ?       
             data.sku_results.map(val => 
         <Grid item xs={12} style={{margin:"5px"}}>
             {/* <a href={`/${val.sku_url}`} className={classes.productSublist}>
@@ -171,6 +171,8 @@ Object.entries(data).length>0 && data.sku_results.length>0 ?
             <Link to={`/${val.sku_url}`} className={`${classes.productSublist} ${classes.link}`} replace > {val.sku_code}</Link>
         </Grid>
              )
+             :
+             null
             }
             {
             Object.entries(data).length>0 && data.product_results.length > 0 ? 
