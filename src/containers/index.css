@@ -592,7 +592,7 @@
 
   .slickdev li {
     border: 0px;
-    background-color: rgb(219, 213, 213);
+    background: #fff;
     width: 8px;
     height: 8px;
     margin: 0px 7px;
