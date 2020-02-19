@@ -741,7 +741,28 @@ class Component extends React.Component {
 
                                           }
 
-                                        
+{
+                                            (subFilter[row].length) - 4 !== 0 && (subFilter[row].length) - 4 > 0 &&
+
+                                            <>
+                                              {this.state[`li_${row}`] === undefined || this.state[`li_${row}`] === 4 ?
+
+                                                <div onClick={() => this.setState({ [`li_${row}`]: subFilter[row].length })}
+                                                  className="fil-submenu-icons"
+
+                                                >
+                                                  <p style={{ fontSize: '14px', paddingLeft: '16px', paddingRight: '16px', color: 'rgba(241, 72, 128, 1)', cursor: 'pointer' }}>
+                                                    +&nbsp;{(subFilter[row].length) - 4} More
+                                           </p>
+                                                </div>
+                                                :
+                                                <div className="fil-submenu-icons" onClick={() => this.setState({ [`li_${row}`]: 4 })}>
+                                                  <p style={{ fontSize: '14px', paddingLeft: '16px', paddingRight: '16px', color: 'rgba(241, 72, 128, 1)', cursor: 'pointer' }}>Show Less</p>
+                                                </div>}
+                                            </>
+                                          }
+ 
+
 
 
                                         </>
