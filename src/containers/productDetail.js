@@ -65,7 +65,7 @@ class ProductDetail extends Component {
         })
       }
     }
- console.log("this.props.data[0].fadeImages", this.props.data[0].fadeImages)
+//  console.log("this.props.data[0].fadeImages", this.props.data[0].fadeImages)
  debugger
     // alert(JSON.stringify(this.props.setratingcountsclear))
     return (
