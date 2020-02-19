@@ -33,7 +33,9 @@ class ProductDetail extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      clear: ""
+      clear: "",
+      data:null,
+
     }
   }
   renderUrl = () => {
@@ -47,7 +49,42 @@ class ProductDetail extends Component {
     if (path[2] === 'Rings') return "/rings-jewellery"
 
   }
+   handleMeta = () => {
+     console.log("camein..", "handleMeta")
+    return(
+      // this.state.data && this.state.data[0] && this.state.data[0].length > 0 ?
+      <>
+        <title>{this.state.data[0].title}</title>
+        <meta name="Description" property="og:description" content={this.state.data[0].dis} />
+        <meta name="keywords" content={this.state.data[0].productsPendants[0].name} />
+        <meta name="og_site_name" property="og:site_name" content="Stylori.com"></meta>
+        <meta name="og_title" property="og:title"  content={this.state.data[0].title} />
+        {/* <meta property="og:description" content={'this.state.data[0].dis'} /> */}
+        <meta property="og:type" content="website" />
+        {/* <meta property="og:url" id="fb-product-url" content={window.location.href} /> */}
+        <meta name="og_url" property="og:url" content={window.location.href}></meta>
+        {/* <meta property="og:image" id="fb_imageUrl" content={this.state.data[0].fadeImages.arrOfurls[0]} /> */}
+        {/* <meta name="twitter_card" content="summary" />
+        <meta name="twitter_site" content="@StyloriLove" />
+        <meta name="twitter_title" id="twitter-title" content={this.state.data[0].title} />
+        <meta name="twitter_description" content={this.state.data[0].dis} />
+        <meta name="twitter_image" id="twitter_imageUrl" content={this.state.data[0].fadeImages.arrOfurls[0]} /> */}
+      </>
+      // :
+      // null
+     )
+   };
+   componentDidUpdate(prevProps, prevState) {
+  if(prevProps.data !== prevState.data){
+    console.log("camein", prevProps.data)
+    console.log("camein..", this.props.data)
+    this.setState({data:this.props.data})
+    console.log("camein.....", this.state.data)
+    if(this.state.data  && this.state.data.length > 0) this.handleMeta()
+  }
+   }
   render() {
+
     // alert(JSON.stringify(this.props.data))
     // alert(JSON.stringify(this.props.data))
     var loc = this.props.location.pathname;
@@ -67,6 +104,7 @@ class ProductDetail extends Component {
     }
 //  console.log("this.props.data[0].fadeImages", this.props.data[0].fadeImages)
  debugger
+
     // alert(JSON.stringify(this.props.setratingcountsclear))
     return (
       <div>
@@ -74,26 +112,10 @@ class ProductDetail extends Component {
 
           <MetaTags>
             {
-              // this.props.data && this.props.data[0] && this.props.data[0].length > 0 ?
-                <>
-                  <title>{this.props.data[0].title}</title>
-                  <meta name="Description" property="og:description" content={this.props.data[0].dis} />
-                  <meta name="keywords" content={'this.props.data[0].productsPendants[0].name'} />
-                  <meta name="og_site_name" property="og:site_name" content="Stylori.com"></meta>
-                  <meta name="og_title" property="og:title"  content={'this.props.data[0].title'} />
-                  {/* <meta property="og:description" content={'this.props.data[0].dis'} /> */}
-                  <meta property="og:type" content="website" />
-                  {/* <meta property="og:url" id="fb-product-url" content={window.location.href} /> */}
-                  <meta name="og_url" property="og:url" content={window.location.href}></meta>
-                  {/* <meta property="og:image" id="fb_imageUrl" content={this.props.data[0].fadeImages.arrOfurls[0]} /> */}
-                  {/* <meta name="twitter_card" content="summary" />
-                  <meta name="twitter_site" content="@StyloriLove" />
-                  <meta name="twitter_title" id="twitter-title" content={this.props.data[0].title} />
-                  <meta name="twitter_description" content={this.props.data[0].dis} />
-                  <meta name="twitter_image" id="twitter_imageUrl" content={this.props.data[0].fadeImages.arrOfurls[0]} /> */}
-                </>
-                // :
-                // ''
+              this.state.data && this.state.data.length > 0 ?
+         this.handleMeta()
+         :
+         null
             }
 
           </MetaTags>
