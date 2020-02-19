@@ -85,7 +85,7 @@ class ProductDetail extends Component {
                   <meta property="og:type" content="website" />
                   {/* <meta property="og:url" id="fb-product-url" content={window.location.href} /> */}
                   <meta name="og_url" property="og:url" content={window.location.href}></meta>
-                  <meta property="og:image" id="fb_imageUrl" content={this.props.data[0].fadeImages.arrOfurls[0]} />
+                  {/* <meta property="og:image" id="fb_imageUrl" content={this.props.data[0].fadeImages.arrOfurls[0]} /> */}
                   {/* <meta name="twitter_card" content="summary" />
                   <meta name="twitter_site" content="@StyloriLove" />
                   <meta name="twitter_title" id="twitter-title" content={this.props.data[0].title} />
