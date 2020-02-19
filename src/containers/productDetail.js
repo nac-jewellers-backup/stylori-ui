@@ -51,6 +51,9 @@ class ProductDetail extends Component {
   }
    handleMeta = () => {
      console.log("camein..", "handleMeta")
+
+     
+     
     return(
       // this.state.data && this.state.data[0] && this.state.data[0].length > 0 ?
       <>
@@ -80,7 +83,23 @@ class ProductDetail extends Component {
     console.log("camein..", this.props.data)
     this.setState({data:this.props.data})
     console.log("camein.....", this.state.data)
-    if(this.state.data  && this.state.data.length > 0) this.handleMeta()
+    if(this.state.data  && this.state.data.length > 0) {
+      // this.handleMeta();
+      
+      var arr = [
+        {key:"Description",value:this.state.data[0].dis},
+        {key:"keywords", value:this.state.data[0].productsPendants[0].name},
+         {key:"og_site_name", value:"Stylori.com"},
+          {key:"og_title", value:this.state.data[0].title},
+           {key:"og_type", value:"website"}, 
+           {key:"og_url", value:window.location.href},
+           {key:"title", value:this.state.data[0].title}
+       ]
+       arr.map(val =>{
+         debugger
+       document.getElementById(val.key).setAttribute("content", val.value);
+      })
+    }
   }
    }
   render() {
@@ -108,18 +127,19 @@ class ProductDetail extends Component {
     // alert(JSON.stringify(this.props.setratingcountsclear))
     return (
       <div>
-        <div>
+        {/* <div>
 
           <MetaTags>
             {
               this.state.data && this.state.data.length > 0 ?
+       
          this.handleMeta()
          :
          null
             }
 
           </MetaTags>
-        </div>
+        </div> */}
 
         <Hidden smDown>
           <Header wishlist={this.props.wishlistdata} />
