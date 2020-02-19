@@ -74,22 +74,21 @@ class ProductDetail extends Component {
         <div>
 
           <MetaTags>
-            {
-              // this.props.data && this.props.data[0] && this.props.data[0].length > 0 ?
-                <>
-                  <title>your keyword rich title of the website and/or webpage</title>
-                  <meta name="description" content="description of your website/webpage, make sure you use keywords!" />
-                  <meta property="og:title" content="short title of your website/webpage" />
-                  <meta property="og:url" content="https://www.example.com/webpage/" />
-                  <meta property="og:description" content="description of your website/webpage"></meta>
-                  <meta property="og:image" content="//cdn.example.com/uploads/images/webpage_300x200.png"></meta>
-                </>
-                // :
-                // <>
-                // <title>{'this.props.data[0].title'}</title>
-                // <meta name="description" content={'this.props.data[0].dis'} />
-                // <meta name="keywords" content={'this.props.data[0].productsPendants[0].name'} />
-                // </>
+          <meta name="description" content="We help startup founders and businesses across the globe to craft their ideas into world-class products." />
+    <link rel="canonical" href="https://www.stylori.com/"/>
+    {/* <!-- Og meta dates --> */}
+    <meta property="og:type" content="website" /> 
+    <meta property="og:site_name" content="Stylori" /> 
+    <meta property="og:url" content="https://www.stylori.com/" /> 
+    <meta property="og:title" content="Crayon'd | Breathe Life Into Your Product idea" /> 
+    <meta property="og:description" content="We help startup founders and businesses across the globe to craft their ideas into world-class products.." /> 
+    <meta property="og:image" content="https://crayond.com/images/OGImage.jpg
+" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@StyloriLove" />
+    <meta name="twitter:title" content="Crayon'd | Breathe Life Into Your Product idea" />
+    <meta name="twitter:description" content="We help startup founders and businesses craft their ideas into world-class products" />
+    <meta name="twitter:image" content="https://crayond.com/images/OGImage.jpg"/>
                
             }
 
