@@ -153,7 +153,7 @@ export default function Footer(props) {
 
         {
             url: "/deliveryreturns",
-            Title: "Shopping & Returns"
+            Title: "Shipping & Returns"
         },
         {
             url: "/contactus",

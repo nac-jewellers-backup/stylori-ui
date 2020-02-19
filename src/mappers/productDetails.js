@@ -173,8 +173,9 @@ const handleVideoCheck = (url) => {
 
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 const generateImgurls = (PD, val, screen_res, tabsChange) => {
-
-
+    console.clear()
+console.log(PD, val, "PD , VAL---------")
+debugger
     var arrOfurls = []
     var arrOfurls_2X = []
     var imgurlsplit = null
@@ -210,7 +211,7 @@ const generateImgurls = (PD, val, screen_res, tabsChange) => {
             // }
             if (!tabsChange) {
 
-                if (imgurlsplit === metalcolor || imgurlsplit === metalcolor2) {
+                if (imgurl.productColor === PD.metalColor || imgurl.productColor === PD.metalColor) {
 
                     arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
                     arrOfurls_2X.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res, largeImageZoom))

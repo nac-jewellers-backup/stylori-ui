@@ -392,7 +392,15 @@ const Provider = (props) => {
             }
 
 
-
+            if(pricemax !== 0){
+                if(pricemax > pricemin || pricemax === pricemin){
+                    newObj["price"] = {
+                        min_price:pricemin,
+                        max_price:pricemax
+                    }
+                   }
+            }
+            
             newObj['sortBy'] = sort.values
             newObj['offset'] = offset
 

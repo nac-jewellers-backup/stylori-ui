@@ -56,6 +56,7 @@ class Component extends React.Component {
       showMore: 4,
       Price_button_click: false,
       chipData: [],
+      errorPriceMessage:false
     };
 
   }
@@ -528,8 +529,14 @@ class Component extends React.Component {
     var price_max = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(_price_max));
     var pricemin = Number(price_min.substr(2).replace(/\,/g, ''))
     var pricemax = Number(price_max.substr(2).replace(/\,/g, ''))
-    this.setState(checked)
-    this.setState({ numOne: price_min, numTwo: price_max }, () => { this.props.setPriceMax(pricemax); this.props.setPriceMin(pricemin) })
+    if(pricemin > pricemax){
+      this.setState({errorPriceMessage:true})
+    }
+    else{
+      this.setState(checked)
+      this.setState({ numOne: price_min, numTwo: price_max }, () => { this.props.setPriceMax(pricemax); this.props.setPriceMin(pricemin) })
+    }
+    
   }
   txtFieldChange(e) {
     if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
@@ -602,7 +609,8 @@ class Component extends React.Component {
                         <Grid container spacing={12} style={{ paddingLeft: "14px" }}  >
                           <Grid item xs={4} >
                             <TextField
-                              onChange={(e) => { this.setState({ numOne: e.target.value }) }}
+                            error={this.state.errorPriceMessage}
+                              onChange={(e) => { this.setState({ numOne: e.target.value, errorPriceMessage:false }) }}
                               onKeyPress={(e) => { this.txtFieldChange(e) }}
                               name="numOne"
                               className="price-txt"
@@ -614,7 +622,8 @@ class Component extends React.Component {
                           </Grid>&nbsp;
              <Grid item xs={4}>
                             <TextField
-                              onChange={(e) => { this.setState({ numTwo: e.target.value }) }}
+                            error={this.state.errorPriceMessage}
+                              onChange={(e) => { this.setState({ numTwo: e.target.value, errorPriceMessage:false }) }}
                               onKeyPress={(e) => { this.txtFieldChange(e) }}
                               name="numTwo"
                               className="price-txt"
@@ -628,6 +637,7 @@ class Component extends React.Component {
                             <Button variant="contained" className={`price-btn ${classes.colorMainBackground}`} onClick={() => this.onCurrencyChange_click()}>Go</Button>
                           </Grid>
                         </Grid>
+                        {this.state.errorPriceMessage ? <label className={`${classes.priceError}`}>Max price should be greater</label> : null}
                       </div>
                       {/* filter */}
                       <div>
@@ -731,29 +741,12 @@ class Component extends React.Component {
 
                                           }
 
-                                          {
-                                            (subFilter[row].length) - 4 !== 0 && (subFilter[row].length) - 4 > 0 &&
-
-                                            <>
-                                              {this.state[`li_${row}`] === undefined || this.state[`li_${row}`] === 4 ?
-
-                                                <div onClick={() => this.setState({ [`li_${row}`]: subFilter[row].length })}
-                                                  className="fil-submenu-icons"
-
-                                                >
-                                                  <p style={{ fontSize: '14px', paddingLeft: '16px', paddingRight: '16px', color: 'rgba(241, 72, 128, 1)', cursor: 'pointer' }}>
-                                                    +&nbsp;{(subFilter[row].length) - 4} More
-                                           </p>
-                                                </div>
-                                                :
-                                                <div className="fil-submenu-icons" onClick={() => this.setState({ [`li_${row}`]: 4 })}>
-                                                  <p style={{ fontSize: '14px', paddingLeft: '16px', paddingRight: '16px', color: 'rgba(241, 72, 128, 1)', cursor: 'pointer' }}>Show Less</p>
-                                                </div>}
-                                            </>
-                                          }
+                                        
 
 
                                         </>
+
+                                       
 
 
                                       }
