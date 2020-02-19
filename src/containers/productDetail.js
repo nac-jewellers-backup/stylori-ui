@@ -65,22 +65,34 @@ class ProductDetail extends Component {
         })
       }
     }
- 
+ console.log("this.props.data[0].fadeImages", this.props.data[0].fadeImages)
+ debugger
     // alert(JSON.stringify(this.props.setratingcountsclear))
     return (
       <div>
         <div>
 
           <MetaTags>
-            
-                  <meta property="og_type" content="website" /> 
-                  <meta property="og_site_name" content="Stylori" /> 
-                  <meta property="og_url" content="https://www.stylori.com/" /> 
-                  <meta property="og_title" content="Crayon'd | Breathe Life Into Your Product idea" /> 
-                  <meta property="og_description" content="We help startup founders and businesses across the globe to craft their ideas into world-class products.." /> 
-                  <meta property="og_image" content="https://crayond.com/images/OGImage.jpg
-              " />
-            
+            {
+              // this.props.data && this.props.data[0] && this.props.data[0].length > 0 ?
+                <>
+                  <title>{this.props.data[0].title}</title>
+                  <meta name="description" content={this.props.data[0].dis} />
+                  <meta name="keywords" content={this.props.data[0].productsPendants[0].name} />
+                  <meta property="og_title" id="fb-title" content={this.props.data[0].title} />
+                  <meta property="og_description" content={this.props.data[0].dis} />
+                  <meta property="og_type" content="product" />
+                  <meta property="og_url" id="fb-product-url" content={window.location.href} />
+                  <meta property="og_image" id="fb_imageUrl" content={this.props.data[0].fadeImages.arrOfurls[0]} />
+                  <meta name="twitter_card" content="summary" />
+                  <meta name="twitter_site" content="@StyloriLove" />
+                  <meta name="twitter_title" id="twitter-title" content={this.props.data[0].title} />
+                  <meta name="twitter_description" content={this.props.data[0].dis} />
+                  <meta name="twitter_image" id="twitter_imageUrl" content={this.props.data[0].fadeImages.arrOfurls[0]} />
+                </>
+                // :
+                // ''
+            }
 
           </MetaTags>
         </div>
