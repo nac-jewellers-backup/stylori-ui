@@ -115,7 +115,6 @@ const useLogin = (changePanel, props) => {
                     window.location.href = localStorage.getItem('review_location')
                     return false
                 } else {
-                    console.clear()
                     window.location.href = "/"
                     return false
                 }
