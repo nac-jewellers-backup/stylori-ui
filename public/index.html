@@ -57,6 +57,22 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Stylori</title>
+
+
+<!--  -->
+
+<!-- <title>{this.props.data[0].title}</title> -->
+<meta name="Description" property="og:description" content={this.props.data[0].dis} />
+<meta name="keywords" content='this.props.data[0].productsPendants[0].name' />
+<meta name="og_site_name" property="og:site_name" content="Stylori.com"></meta>
+<meta name="og_title" property="og:title" content='this.props.data[0].title' />
+
+<meta property="og:type" content="website" />
+
+<meta name="og_url" property="og:url" content=window.location.href></meta>
+
+<!--  -->
+
     <link
       rel="icon"
       type="image/gif"

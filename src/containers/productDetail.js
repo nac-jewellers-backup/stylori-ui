@@ -80,7 +80,7 @@ class ProductDetail extends Component {
                   <meta name="Description" property="og:description" content={this.props.data[0].dis} />
                   <meta name="keywords" content={'this.props.data[0].productsPendants[0].name'} />
                   <meta name="og_site_name" property="og:site_name" content="Stylori.com"></meta>
-                  <meta name="og_title" property="og:title" id="fb-title" content={'this.props.data[0].title'} />
+                  <meta name="og_title" property="og:title"  content={'this.props.data[0].title'} />
                   {/* <meta property="og:description" content={'this.props.data[0].dis'} /> */}
                   <meta property="og:type" content="website" />
                   {/* <meta property="og:url" id="fb-product-url" content={window.location.href} /> */}
