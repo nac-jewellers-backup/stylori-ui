@@ -65,8 +65,6 @@ class ProductDetail extends Component {
         })
       }
     }
-    console.log("this.props.data[0].fadeImages", this.props.data[0].fadeImages)
-    debugger
  
     // alert(JSON.stringify(this.props.setratingcountsclear))
     return (
@@ -74,22 +72,25 @@ class ProductDetail extends Component {
         <div>
 
           <MetaTags>
-          <meta name="description" content="We help startup founders and businesses across the globe to craft their ideas into world-class products." />
-    <link rel="canonical" href="https://www.stylori.com/"/>
-    {/* <!-- Og meta dates --> */}
-    <meta property="og:type" content="website" /> 
-    <meta property="og:site_name" content="Stylori" /> 
-    <meta property="og:url" content="https://www.stylori.com/" /> 
-    <meta property="og:title" content="Crayon'd | Breathe Life Into Your Product idea" /> 
-    <meta property="og:description" content="We help startup founders and businesses across the globe to craft their ideas into world-class products.." /> 
-    <meta property="og:image" content="https://crayond.com/images/OGImage.jpg
-" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@StyloriLove" />
-    <meta name="twitter:title" content="Crayon'd | Breathe Life Into Your Product idea" />
-    <meta name="twitter:description" content="We help startup founders and businesses craft their ideas into world-class products" />
-    <meta name="twitter:image" content="https://crayond.com/images/OGImage.jpg"/>
-               
+            {
+              this.props.data && this.props.data[0] && this.props.data[0].length > 0 ?
+                <>
+                  <title>{this.props.data[0].title}</title>
+                  <meta name="description" content={this.props.data[0].dis} />
+                  <meta name="keywords" content={this.props.data[0].productsPendants[0].name} />
+                  <meta property="og:title" id="fb-title" content={this.props.data[0].title} />
+                  <meta property="og:description" content={this.props.data[0].dis} />
+                  <meta property="og:type" content="product" />
+                  <meta property="og:url" id="fb-product-url" content={window.location.href} />
+                  <meta property="og:image" id="fb_imageUrl" content={this.props.data[0].fadeImages} />
+                  <meta name="twitter:card" content="summary" />
+                  <meta name="twitter:site" content="@StyloriLove" />
+                  <meta name="twitter:title" id="twitter-title" content={this.props.data[0].title} />
+                  <meta name="twitter:description" content={this.props.data[0].dis} />
+                  <meta name="twitter:image" id="twitter_imageUrl" content={this.props.data[0].fadeImages} />
+                </>
+                :
+                ''
             }
 
           </MetaTags>
