@@ -34,26 +34,7 @@ const theme_func = () => {
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.handleOGTag()
   }
-  handleOGTag = () =>{
-    if(this.props.data && this.props.data.length>0){
-     var arr = [
-       {key:"Description",value:"stylori"},
-       {key:"keywords", value:"stylori"},
-        {key:"og_site_name", value:"Stylori.com"},
-         {key:"og_title", value:"stylori"},
-          {key:"og_type", value:"website_stylori"}, 
-          {key:"og_url", value:"stylori"},
-         //  {key:"title", value:this.props.data[0].title}
-      ]
-      arr.map(val =>{
-        debugger
-      document.getElementById(val.key).setAttribute("content", val.value);
-     })
-     document.title = "stylori"
-    }
-   }
   async componentDidMount() {
     lambda_func_front_end()
   }
