@@ -25,6 +25,7 @@ import Success from "../screens/Stylori/success";
 import Fail from "../screens/Stylori/fail";
 import Contactus from "../screens/Stylori/contactUs";
 import Careers from "../screens/Stylori/careers";
+import {Helmet} from "react-helmet";
 
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
@@ -69,6 +70,19 @@ export const RouterApp = props => {
   // condition()
   // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
   return (
+    <>
+    <Helmet> 
+    {/* <title>{this.state.data[0].title}</title> */}
+    <meta name="Description" property="og:description" content="stylori" />
+    {/* <meta name="keywords" content={this.state.data[0].productsPendants[0].name} /> */}
+    <meta name="og_site_name" property="og:site_name" content="Stylori.com"></meta>
+    <meta name="og_title" property="og:title"  content="stylori" />
+    {/* <meta property="og:description" content={'this.state.data[0].dis'} /> */}
+    <meta property="og:type" content="website" />
+    {/* <meta property="og:url" id="fb-product-url" content={window.location.href} /> */}
+    <meta name="og_url" property="og:url" content={window.location.href}></meta>
+   
+  </Helmet>
     <Switch history={browserHistory}>
       {/* <Redirect key="stylori-redirect" from="/" exact to={"/"} /> */}
       <Route
@@ -236,6 +250,7 @@ Boolean(localStorage.getItem("gut_lg"))) || !localStorage.getItem("user_id") ? (
         path={routes.UserRegister}
       />
     </Switch>
+    </>
   );
 };
 export default withRouter(RouterApp);

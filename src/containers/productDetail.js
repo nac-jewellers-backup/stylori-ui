@@ -28,7 +28,7 @@ import 'screens/screens.css';
 import MetaTags from 'react-meta-tags';
 import { CartContext } from 'context'
 import { GlobalContext } from 'context'
-import {Helmet} from "react-helmet";
+// import {Helmet} from "react-helmet";
 class ProductDetail extends Component {
   constructor(props) {
     super(props)
@@ -42,7 +42,7 @@ class ProductDetail extends Component {
     
   }
   UNSAFE_componentWillMount(){
-    this.handleOGTag()
+    // this.handleOGTag()
   }
   handleOGTag = () =>{
    if(this.props.data && this.props.data.length>0){
@@ -73,34 +73,34 @@ class ProductDetail extends Component {
     if (path[2] === 'Rings') return "/rings-jewellery"
 
   }
-   handleMeta = () => {
-     console.log("camein..", "handleMeta")
+  //  handleMeta = () => {
+  //    console.log("camein..", "handleMeta")
 
      
      
-    return(
-      // this.state.data && this.state.data[0] && this.state.data[0].length > 0 ?
-      <Helmet> 
-        {/* <title>{this.state.data[0].title}</title> */}
-        <meta name="Description" property="og:description" content={this.state.data[0].dis} />
-        {/* <meta name="keywords" content={this.state.data[0].productsPendants[0].name} /> */}
-        <meta name="og_site_name" property="og:site_name" content="Stylori.com"></meta>
-        <meta name="og_title" property="og:title"  content={this.state.data[0].title} />
-        {/* <meta property="og:description" content={'this.state.data[0].dis'} /> */}
-        <meta property="og:type" content="website" />
-        {/* <meta property="og:url" id="fb-product-url" content={window.location.href} /> */}
-        <meta name="og_url" property="og:url" content={window.location.href}></meta>
-        {/* <meta property="og:image" id="fb_imageUrl" content={this.state.data[0].fadeImages.arrOfurls[0]} /> */}
-        {/* <meta name="twitter_card" content="summary" />
-        <meta name="twitter_site" content="@StyloriLove" />
-        <meta name="twitter_title" id="twitter-title" content={this.state.data[0].title} />
-        <meta name="twitter_description" content={this.state.data[0].dis} />
-        <meta name="twitter_image" id="twitter_imageUrl" content={this.state.data[0].fadeImages.arrOfurls[0]} /> */}
-      </Helmet>
-      // :
-      // null
-     )
-   };
+  //   return(
+  //     // this.state.data && this.state.data[0] && this.state.data[0].length > 0 ?
+  //     <Helmet> 
+  //       {/* <title>{this.state.data[0].title}</title> */}
+  //       <meta name="Description" property="og:description" content={this.state.data[0].dis} />
+  //       {/* <meta name="keywords" content={this.state.data[0].productsPendants[0].name} /> */}
+  //       <meta name="og_site_name" property="og:site_name" content="Stylori.com"></meta>
+  //       <meta name="og_title" property="og:title"  content={this.state.data[0].title} />
+  //       {/* <meta property="og:description" content={'this.state.data[0].dis'} /> */}
+  //       <meta property="og:type" content="website" />
+  //       {/* <meta property="og:url" id="fb-product-url" content={window.location.href} /> */}
+  //       <meta name="og_url" property="og:url" content={window.location.href}></meta>
+  //       {/* <meta property="og:image" id="fb_imageUrl" content={this.state.data[0].fadeImages.arrOfurls[0]} /> */}
+  //       {/* <meta name="twitter_card" content="summary" />
+  //       <meta name="twitter_site" content="@StyloriLove" />
+  //       <meta name="twitter_title" id="twitter-title" content={this.state.data[0].title} />
+  //       <meta name="twitter_description" content={this.state.data[0].dis} />
+  //       <meta name="twitter_image" id="twitter_imageUrl" content={this.state.data[0].fadeImages.arrOfurls[0]} /> */}
+  //     </Helmet>
+  //     // :
+  //     // null
+  //    )
+  //  };
    componentDidUpdate(prevProps, prevState) {
   if(prevProps.data !== prevState.data){
     console.log("camein", prevProps.data)
