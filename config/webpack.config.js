@@ -28,6 +28,9 @@ const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpack
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
 const postcssNormalize = require('postcss-normalize');
+// import {Helmet} from "react-helmet";
+const Helmet = require("react-helmet")
+
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -118,7 +121,7 @@ module.exports = function(webpackEnv) {
   };
 
   return {
-    externals: ["react-helmet"],
+    externals: ["Helmet"],
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
     // Stop compilation early in production
     bail: isEnvProduction,
