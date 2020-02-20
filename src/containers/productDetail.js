@@ -38,7 +38,8 @@ class ProductDetail extends Component {
       data:null,
 
     }
- 
+    console.log('----------this.props.data--------- CONSTRUCTOR', this.props.data)
+    this.handleOGTag()
   }
   handleOGTag = () =>{
    if(this.state.data && this.state.data.length>0){
