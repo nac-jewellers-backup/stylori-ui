@@ -28,6 +28,7 @@ import 'screens/screens.css';
 import MetaTags from 'react-meta-tags';
 import { CartContext } from 'context'
 import { GlobalContext } from 'context'
+import DocumentMeta from 'react-document-meta';
 
 class ProductDetail extends Component {
   constructor(props) {
@@ -95,17 +96,26 @@ class ProductDetail extends Component {
            {key:"og_url", value:window.location.href},
            {key:"title", value:this.state.data[0].title}
        ]
-       arr.map(val =>{
-         debugger
-       document.getElementById(val.key).setAttribute("content", val.value);
-      })
+      //  arr.map(val =>{
+      //    debugger
+      //  document.getElementById(val.key).setAttribute("content", val.value);
+      // })
     }
   }
    }
   render() {
+    const meta = {
+      title: 'Some Meta Title',
+      description: 'I am a description, and I can create multiple tags',
+      canonical: 'http://example.com/path/to/page',
+      meta: {
+        charset: 'utf-8',
+        name: {
+          keywords: 'react,meta,document,html,tags'
+        }
+      }
+    };
 
-    // alert(JSON.stringify(this.props.data))
-    // alert(JSON.stringify(this.props.data))
     var loc = this.props.location.pathname;
     var path = loc.split('/');
     var data_json = [{ title: 'home', url: '/' }, { title: path[2], url: this.renderUrl() }, { title: this.props.data&&this.props.data[0]&&this.props.data[0].title }]
@@ -140,6 +150,7 @@ class ProductDetail extends Component {
 
           </MetaTags>
         </div> */}
+         <DocumentMeta {...meta}>
 
         <Hidden smDown>
           <Header wishlist={this.props.wishlistdata} />
@@ -233,7 +244,7 @@ class ProductDetail extends Component {
             <Footer />
           </Grid>
         </Hidden>
-
+        </DocumentMeta>
       </div>
     )
   }
