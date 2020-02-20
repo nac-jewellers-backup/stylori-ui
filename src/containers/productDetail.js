@@ -94,27 +94,28 @@ class ProductDetail extends Component {
           {key:"og_title", value:this.state.data[0].title},
            {key:"og_type", value:"website"}, 
            {key:"og_url", value:window.location.href},
-           {key:"title", value:this.state.data[0].title}
+          //  {key:"title", value:this.state.data[0].title}
        ]
-      //  arr.map(val =>{
-      //    debugger
-      //  document.getElementById(val.key).setAttribute("content", val.value);
-      // })
+       arr.map(val =>{
+         debugger
+       document.getElementById(val.key).setAttribute("content", val.value);
+      })
+      document.title = this.state.data[0].title
     }
   }
    }
   render() {
-    const meta = {
-      title: 'Some Meta Title',
-      description: 'I am a description, and I can create multiple tags',
-      canonical: 'http://example.com/path/to/page',
-      meta: {
-        charset: 'utf-8',
-        name: {
-          keywords: 'react,meta,document,html,tags'
-        }
-      }
-    };
+    // const meta = {
+    //   title: 'Some Meta Title',
+    //   og_description: 'I am a description, and I can create multiple tags',
+    //   canonical: 'http://example.com/path/to/page',
+    //   meta: {
+    //     charset: 'utf-8',
+    //     name: {
+    //       keywords: 'react,meta,document,html,tags'
+    //     }
+    //   }
+    // };
 
     var loc = this.props.location.pathname;
     var path = loc.split('/');
@@ -150,7 +151,7 @@ class ProductDetail extends Component {
 
           </MetaTags>
         </div> */}
-         <DocumentMeta {...meta}>
+         {/* <DocumentMeta {...meta}> */}
 
         <Hidden smDown>
           <Header wishlist={this.props.wishlistdata} />
@@ -244,7 +245,7 @@ class ProductDetail extends Component {
             <Footer />
           </Grid>
         </Hidden>
-        </DocumentMeta>
+        {/* </DocumentMeta> */}
       </div>
     )
   }
