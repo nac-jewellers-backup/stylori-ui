@@ -43,6 +43,7 @@ class App extends React.Component {
     return (
       <>
           <Helmet> 
+            <title>stylori</title>
 <meta property="og:url" content="https://swiftkey.com/en/united-states-emoji/"/>
 <meta property="og:title" content="The United States of Emoji presented by SwiftKey Keyboard"/>
 <meta property="og:description" content="Which emoji does each US state use more than others? Explore the map above or select a state below to learn more."/>
