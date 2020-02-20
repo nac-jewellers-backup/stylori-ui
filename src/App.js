@@ -47,7 +47,7 @@ class App extends React.Component {
 <meta property="og:title" content="The United States of Emoji presented by SwiftKey Keyboard"/>
 <meta property="og:description" content="Which emoji does each US state use more than others? Explore the map above or select a state below to learn more."/>
 <meta property="og:site_name" content="SwiftKey"/>
-<meta property="og:image" content="https://i.imgur.com/fdPhX2E.png"/>
+{/* <meta property="og:image" content="https://i.imgur.com/fdPhX2E.png"/> */}
    
   </Helmet>
       {/* // <ApolloProvider client={client}> */}
