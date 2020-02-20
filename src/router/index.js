@@ -72,7 +72,7 @@ export const RouterApp = props => {
   return (
     <>
     <Helmet> 
-    {/* <title>{this.state.data[0].title}</title> */}
+    <title>my title</title>
     <meta name="Description" property="og:description" content="stylori" />
     {/* <meta name="keywords" content={this.state.data[0].productsPendants[0].name} /> */}
     <meta name="og_site_name" property="og:site_name" content="Stylori.com"></meta>
