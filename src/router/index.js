@@ -71,6 +71,35 @@ export const RouterApp = props => {
   // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
   return (
     <>
+             <Helmet> 
+         <title>fgdgfdgdf</title>
+         <link rel="canonical" href="https://staging.stylori.com" />
+        {/* <title>{this.props.data[0].title}</title> */}
+         <meta name="Description" property="og:description" content={'dfdfgdf'} />
+        {/* <meta name="keywords" content={this.props.data[0].productsPendants[0].name} /> */}
+        <meta name="og_site_name" property="og:site:name" content="Stylori.com"></meta>
+        <meta name="og_title" property="og:title"  content={'dfgfdg'} />
+        {/* <meta property="og:description" content={'this.props.data[0].dis'} /> */}
+        <meta property="og:type" content="website" />
+        {/* <meta property="og:url" id="fb-product-url" content={window.location.href} /> */}
+        <meta name="og_url" property="og:url" content={window.location.href}></meta>
+        <meta name="Description"  content={'xdfdgfdggfd'} />
+        {/* <meta name="keywords" content={this.props.data[0].productsPendants[0].name} /> */}
+        <meta name="og_site_name"  content="Stylori.com"></meta>
+        <meta name="og_title"   content={'sfsfsfs'} />
+        {/* <meta property="og:description" content={'this.props.data[0].dis'} /> */}
+        <meta  content="website" />
+        {/* <meta property="og:url" id="fb-product-url" content={window.location.href} /> */}
+        <meta name="og_url"  content={window.location.href}></meta>
+        {/* <meta property="og:image" id="fb_imageUrl" content={this.props.data[0].fadeImages.arrOfurls[0]} /> */}
+        {/* <meta name="twitter_card" content="summary" />
+  //       <meta name="twitter_site" content="@StyloriLove" />
+  //       <meta name="twitter_title" id="twitter-title" content={this.props.data[0].title} />
+  //       <meta name="twitter_description" content={this.props.data[0].dis} />
+  //       <meta name="twitter_image" id="twitter_imageUrl" content={this.props.data[0].fadeImages.arrOfurls[0]} /> */}
+          {/* <meta charSet="utf-8" /> */}
+             
+       </Helmet>
     <Switch history={browserHistory}>
       {/* <Redirect key="stylori-redirect" from="/" exact to={"/"} /> */}
       <Route
