@@ -42,15 +42,15 @@ class ProductDetail extends Component {
     this.handleOGTag()
   }
   handleOGTag = () =>{
-   if(this.state.data && this.state.data.length>0){
+   if(this.props.data && this.props.data.length>0){
     var arr = [
-      {key:"Description",value:this.state.data[0].dis},
-      {key:"keywords", value:this.state.data[0].productsPendants[0].name},
+      {key:"Description",value:this.props.data[0].dis},
+      {key:"keywords", value:this.props.data[0].productsPendants[0].name},
        {key:"og_site_name", value:"Stylori.com"},
-        {key:"og_title", value:this.state.data[0].title},
-         {key:"og_type", value:"website"}, 
+        {key:"og_title", value:this.props.data[0].title},
+         {key:"og_type", value:"website_stylori"}, 
          {key:"og_url", value:window.location.href},
-        //  {key:"title", value:this.state.data[0].title}
+        //  {key:"title", value:this.props.data[0].title}
      ]
      arr.map(val =>{
        debugger
@@ -78,15 +78,15 @@ class ProductDetail extends Component {
     return(
       // this.state.data && this.state.data[0] && this.state.data[0].length > 0 ?
       <>
-        <title>{this.state.data[0].title}</title>
-        <meta name="Description" property="og:description" content={this.state.data[0].dis} />
-        <meta name="keywords" content={this.state.data[0].productsPendants[0].name} />
-        <meta name="og_site_name" property="og:site_name" content="Stylori.com"></meta>
-        <meta name="og_title" property="og:title"  content={this.state.data[0].title} />
+        {/* <title>{this.state.data[0].title}</title> */}
+        {/* <meta name="Description" property="og:description" content={this.state.data[0].dis} /> */}
+        {/* <meta name="keywords" content={this.state.data[0].productsPendants[0].name} /> */}
+        {/* <meta name="og_site_name" property="og:site_name" content="Stylori.com"></meta> */}
+        {/* <meta name="og_title" property="og:title"  content={this.state.data[0].title} /> */}
         {/* <meta property="og:description" content={'this.state.data[0].dis'} /> */}
-        <meta property="og:type" content="website" />
+        {/* <meta property="og:type" content="website" /> */}
         {/* <meta property="og:url" id="fb-product-url" content={window.location.href} /> */}
-        <meta name="og_url" property="og:url" content={window.location.href}></meta>
+        {/* <meta name="og_url" property="og:url" content={window.location.href}></meta> */}
         {/* <meta property="og:image" id="fb_imageUrl" content={this.state.data[0].fadeImages.arrOfurls[0]} /> */}
         {/* <meta name="twitter_card" content="summary" />
         <meta name="twitter_site" content="@StyloriLove" />
@@ -104,7 +104,7 @@ class ProductDetail extends Component {
     console.log("camein..", this.props.data)
     this.setState({data:this.props.data})
     console.log("camein.....", this.state.data)
-    this.handleOGTag()
+    // this.handleOGTag()
   }
    }
   render() {
