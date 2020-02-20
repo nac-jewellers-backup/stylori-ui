@@ -38,6 +38,25 @@ class ProductDetail extends Component {
       data:null,
 
     }
+ 
+  }
+  handleOGTag = () =>{
+   if(this.state.data && this.state.data.length>0){
+    var arr = [
+      {key:"Description",value:this.state.data[0].dis},
+      {key:"keywords", value:this.state.data[0].productsPendants[0].name},
+       {key:"og_site_name", value:"Stylori.com"},
+        {key:"og_title", value:this.state.data[0].title},
+         {key:"og_type", value:"website"}, 
+         {key:"og_url", value:window.location.href},
+        //  {key:"title", value:this.state.data[0].title}
+     ]
+     arr.map(val =>{
+       debugger
+     document.getElementById(val.key).setAttribute("content", val.value);
+    })
+    document.title = this.state.data[0].title
+   }
   }
   renderUrl = () => {
     var loc = this.props.location.pathname;
@@ -84,24 +103,7 @@ class ProductDetail extends Component {
     console.log("camein..", this.props.data)
     this.setState({data:this.props.data})
     console.log("camein.....", this.state.data)
-    if(this.state.data  && this.state.data.length > 0) {
-      // this.handleMeta();
-      
-      var arr = [
-        {key:"Description",value:this.state.data[0].dis},
-        {key:"keywords", value:this.state.data[0].productsPendants[0].name},
-         {key:"og_site_name", value:"Stylori.com"},
-          {key:"og_title", value:this.state.data[0].title},
-           {key:"og_type", value:"website"}, 
-           {key:"og_url", value:window.location.href},
-          //  {key:"title", value:this.state.data[0].title}
-       ]
-       arr.map(val =>{
-         debugger
-       document.getElementById(val.key).setAttribute("content", val.value);
-      })
-      document.title = this.state.data[0].title
-    }
+    this.handleOGTag()
   }
    }
   render() {
