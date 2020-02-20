@@ -8,6 +8,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import { lambda_func_front_end } from './utils'
 import Theme from './Theme.js'
 import { withRouter } from 'react-router-dom';
+import {Helmet} from "react-helmet";
 let jewellery_theme = createMuiTheme(require('./jewellery_theme.json'));
 let silver_jewellery_theme = createMuiTheme(require('./silver_jewellery_theme.json'));
 let jewelleryThemes = responsiveFontSizes(jewellery_theme);
@@ -40,7 +41,16 @@ class App extends React.Component {
   }
   render() {
     return (
-      // <ApolloProvider client={client}>
+      <>
+          <Helmet> 
+<meta property="og:url" content="https://swiftkey.com/en/united-states-emoji/"/>
+<meta property="og:title" content="The United States of Emoji presented by SwiftKey Keyboard"/>
+<meta property="og:description" content="Which emoji does each US state use more than others? Explore the map above or select a state below to learn more."/>
+<meta property="og:site_name" content="SwiftKey"/>
+<meta property="og:image" content="https://i.imgur.com/fdPhX2E.png"/>
+   
+  </Helmet>
+      {/* // <ApolloProvider client={client}> */}
       <GlobalProvider>
         <Theme>
           <NetworkProvider>
@@ -54,7 +64,9 @@ class App extends React.Component {
           </NetworkProvider>
         </Theme>
       </GlobalProvider>
-      // </ApolloProvider>
+      {/* // </ApolloProvider> */}
+
+      </>
     );
   }
 

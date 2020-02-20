@@ -71,18 +71,6 @@ export const RouterApp = props => {
   // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
   return (
     <>
-    <Helmet> 
-    <title>my title</title>
-    <meta name="Description" property="og:description" content="stylori" />
-    {/* <meta name="keywords" content={this.state.data[0].productsPendants[0].name} /> */}
-    <meta name="og_site_name" property="og:site_name" content="Stylori.com"></meta>
-    <meta name="og_title" property="og:title"  content="stylori" />
-    {/* <meta property="og:description" content={'this.state.data[0].dis'} /> */}
-    <meta property="og:type" content="website" />
-    {/* <meta property="og:url" id="fb-product-url" content={window.location.href} /> */}
-    <meta name="og_url" property="og:url" content={window.location.href}></meta>
-   
-  </Helmet>
     <Switch history={browserHistory}>
       {/* <Redirect key="stylori-redirect" from="/" exact to={"/"} /> */}
       <Route
