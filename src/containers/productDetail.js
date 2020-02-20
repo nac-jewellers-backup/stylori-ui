@@ -33,12 +33,16 @@ import DocumentMeta from 'react-document-meta';
 class ProductDetail extends Component {
   constructor(props) {
     super(props)
+    
     this.state = {
       clear: "",
       data:null,
 
     }
     console.log('----------this.props.data--------- CONSTRUCTOR', this.props.data)
+    
+  }
+  UNSAFE_componentWillMount(){
     this.handleOGTag()
   }
   handleOGTag = () =>{
