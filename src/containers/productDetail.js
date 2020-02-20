@@ -56,7 +56,7 @@ class ProductDetail extends Component {
        debugger
      document.getElementById(val.key).setAttribute("content", val.value);
     })
-    document.title = this.state.data[0].title
+    document.title = this.props.data[0].title
    }
   }
   renderUrl = () => {
