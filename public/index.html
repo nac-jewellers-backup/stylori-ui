@@ -56,16 +56,16 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Stylori</title>
+    <!-- <title>Stylori</title> -->
 
 
 <!--  -->
 
 <title id="title">Stylori</title>
-<meta name="Description" id="Description" property="og:description"  />
+<meta name="description" id="description" property="og:description"  />
 <meta name="keywords" id="keywords" content='this.props.data[0].productsPendants[0].name' />
 <meta name="og_site_name" id="og_site_name" property="og:site_name" content="Stylori.com"></meta>
-<meta name="og_title" id="og_title" property="og:title" content='this.props.data[0].title' />
+<meta name="og_title" id="og_title" property="og:title"  />
 
 <meta property="og:type" id="og_type" content="website" />
 
@@ -80,7 +80,8 @@
       href="https://assets.stylori.com/images/favicon.gif"
     />
     <script>
-      document.getElementById("Description").setAttribute("content", "Hey i am stylori")
+      document.getElementById("description").setAttribute("content", "Hey i am stylori")
+      document.getElementById("keywords").setAttribute("content", "TESTING")
     </script>
   </head>
   <body style="-webkit-tap-highlight-color: transparent;">
