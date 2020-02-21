@@ -61,13 +61,13 @@
 
 <!--  -->
 
-<title id="title">Stylori</title>
+<!-- <title id="title">Stylori</title> -->
 <!-- <meta name="description" id="description" property="og:description"  /> -->
 <meta name="keywords" id="keywords" content='this.props.data[0].productsPendants[0].name' />
-<meta name="og_site_name" id="og_site_name" property="og:site_name" content="Stylori.com"></meta>
+<!-- <meta name="og_site_name" id="og_site_name" property="og:site_name" content="Stylori.com"></meta> -->
 <!-- <meta name="og_title" id="og_title" property="og:title"  /> -->
 
-<meta property="og:type" id="og_type" content="website" />
+<!-- <meta property="og:type" id="og_type" content="website" /> -->
 
 <!-- <meta name="og_url" id="og_url" property="og:url" content='window.location.href'></meta> -->
 
@@ -80,7 +80,13 @@
       href="https://assets.stylori.com/images/favicon.gif"
     />
     <script>
-      [{property:"og:url", content:document.location}, {property:"og:title", content:'Stylori'}, {property:"og:description", content:'hey i am description'}].map(val=>{
+      [{property:"og:url", content:document.location},
+       {property:"og:title", content:'Stylori'},
+       {property:"og:description", content:'hey i am description'}, 
+       {property:"og:site_name", content:'Staging.stylori.com'}, 
+       {property:"og:type", content:'E-commerce'}, 
+       
+      ].map(val=>{
         var link = document.createElement('meta');
       link.setAttribute('property', val.property);
       link.content = val.content;
