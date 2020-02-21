@@ -32,7 +32,7 @@ import { GlobalContext } from 'context'
 class ProductDetail extends Component {
   constructor(props) {
     super(props)
-    this.handleMeta()
+    // this.handleMeta()
     this.state = {
       clear: "",
       data:null,
