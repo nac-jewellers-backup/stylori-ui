@@ -14,10 +14,16 @@ import { CartContext } from 'context'
 import RemoveWishlist from 'components/wishlist/removewishlist';
 // props.setCartFilters({ skuId: data[0].skuId, qty: 1, price: data[0].offerPrice })
 const Wishlists = (props) => {
-    const { setCartFilters } = React.useContext(CartContext);
-    return <Component setCartFilters={setCartFilters}  {...props} />
+    const { setCartFilters, CartCtx, setLoadingWishlist } = React.useContext(CartContext);
+    return <Component setCartFilters={setCartFilters} CartCtx = {CartCtx} setLoadingWishlist= {setLoadingWishlist} {...props} />
 }
 class Component extends React.Component {
+    constructor(props){
+        super(props)
+        this.state={
+            loading:false
+        }
+    }
     // handleLocalStorage = (props) => {
     //     
     //     var datas;
@@ -38,20 +44,29 @@ class Component extends React.Component {
     //     // return datas
     // }
     render() {
+        // componentDidUpdate(){
+
+        // }
         const { wishlistdata } = this.props.wishlistdata;
         return (
             <> 
                 {/* {JSON.stringify(this.props.wishlistdata)} */}
                 {wishlistdata && wishlistdata.nodes.length > 0 ?
                     <>
-                        {wishlistdata && wishlistdata.nodes.map(first_map =>
+                        {
+                      this.props.CartCtx.LoadingWishlist ?
+                      <div>
+                          loading...
+                          </div>
+                          :
+                          wishlistdata && wishlistdata.nodes.map(first_map =>
                             <>
                                  {/* {first_map && first_map.productListByProductId && first_map.productListByProductId.transSkuListsByProductId && first_map.productListByProductId.transSkuListsByProductId.nodes.map(thrd_map =>  */}
-                                <Grid container spacing={12} xs={12}  style={{paddingBottom:"10px",}}>
+                                <Grid container spacing={12} xs={12}  style={{paddingBottom:"10px", transition:'0.5s'}}>
                                     {/* <Grid  xs={12}> */}
                                     <Grid item  style={{width:"50%"}} >
-                                    <Grid item className="topPaddingwish" style={{paddingRight:"4px",float:"left"}}>
-                                          <div className="remove-product">
+                                    <Grid item className="topPaddingwish" style={{paddingRight:"4px",float:"left"}} >
+                                          <div className="remove-product" >
                                             <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} />
                                         </div>
                                     </Grid>
@@ -89,7 +104,8 @@ class Component extends React.Component {
                                 </Grid>
                                 {/* )}  */}
                             </>
-                        )}</> : <div style={{textAlign: "center", color: "#394578" }}>No wishlist yet</div>}
+                        )
+                        }</> : <div style={{textAlign: "center", color: "#394578" }}>No wishlist yet</div>}
 
 
 

@@ -16,10 +16,16 @@ import { API_URL, CDN_URL } from "config"
 
 // props.setCartFilters({ skuId: data[0].skuId, qty: 1, price: data[0].offerPrice })
 const Wishlists = (props) => {
-    const { setCartFilters } = React.useContext(CartContext);
-    return <Component setCartFilters={setCartFilters}  {...props} />
+    const { setCartFilters, CartCtx, setLoadingWishlist } = React.useContext(CartContext);
+    return <Component setCartFilters={setCartFilters} CartCtx = {CartCtx} setLoadingWishlist= {setLoadingWishlist} {...props} />
 }
 class Component extends React.Component {
+    constructor(props){
+        super(props)
+        this.state={
+            loading:false
+        }
+    }
     // handleLocalStorage = (props) => {
     //     
     //     var datas;
@@ -64,62 +70,70 @@ class Component extends React.Component {
                 {/* {JSON.stringify(this.props.wishlistdata)} */}
                 {wishlistdata && wishlistdata.nodes.length > 0 ?
                     <>
-                        {wishlistdata && wishlistdata.nodes.map(first_map =>
-                            <>
-                                {/* {first_map && first_map.productListByProductId && first_map.productListByProductId.transSkuListsByProductId && first_map.productListByProductId.transSkuListsByProductId.nodes.map(thrd_map =>  */}
-                                <Grid container spacing={12} xs={12} style={{ paddingBottom: "10px"}} >
-                                    {/* <Grid  xs={12}> */}
-                                    <Grid sm={2} lg={2} item class="topPaddingwish" style={{ paddingRight: "4px", marginBottom: "12px", float: "left" }}>
-                                        <RemoveWishlist sku={first_map.skuId} productId={first_map.productId}
-                                            data={
-                                                <>
-                                                    <div className="remove-product">
-                                                    </div>
-                                                </>
-                                            }
-                                        />
-                                    </Grid>
-                                    <Grid item xs={5} sm={3} lg={3}>
-                                        <div className="wishlist_img" >
-                                            <img className="viewport-img" src={this.check_img(first_map.productListByProductId.productImagesByProductId.nodes[0].imageUrl)
-                                            } />
-                                        </div></Grid>
-                                    <Grid item xs={12} sm={5} lg={5}
-                                        style={{ paddingLeft: "15px" }}
-                                    >
-                                        <div>
-                                            <div className="wislist_title">{first_map.productListByProductId.productName}</div>
-
-                                            <div className="wislist_price">{Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice))}</div>
-                                            <div className="add-bag">
-                                                <>
-                                                    <RemoveWishlist
-                                                        sku={first_map.skuId}
-                                                        productId={first_map.productId}
-                                                        add={first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice}
-                                                        data={
-                                                            <><i class="fa fa-shopping-bag"></i>&nbsp;Add to Bag</>
-                                                        }
-                                                    />
-
-                                                </>
-                                                {/* <Button "> */}
-                                                {/* onClick={() => {
-                                                        this.props.setCartFilters({
-                                                            skuId: first_map.skuId,
-                                                            qty: 1,
-                                                            price: first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice
-                                                        })
-                                                    }} className="add-bag"> */}
-                                                {/* </Button> */}
-                                            </div>
-                                        </div>
-                                    </Grid>
-                                    {/* </Grid> */}
+                        {
+                    this.props.CartCtx.loadingWishlist ?
+                    // <div style = {{height:"100vh"}}>
+                    //     loading........
+                    // </div>
+                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    :
+                    wishlistdata && wishlistdata.nodes.map(first_map =>
+                        <>
+                            {/* {first_map && first_map.productListByProductId && first_map.productListByProductId.transSkuListsByProductId && first_map.productListByProductId.transSkuListsByProductId.nodes.map(thrd_map =>  */}
+                            <Grid container spacing={12} xs={12} style={{ paddingBottom: "10px"}} >
+                                {/* <Grid  xs={12}> */}
+                                <Grid sm={2} lg={2} item class="topPaddingwish" style={{ paddingRight: "4px", marginBottom: "12px", float: "left" }} onClick={()=>this.props.setLoadingWishlist(true)}>
+                                    <RemoveWishlist sku={first_map.skuId} productId={first_map.productId}
+                                        data={
+                                            <>
+                                                <div className="remove-product" >
+                                                </div>
+                                            </>
+                                        }
+                                    />
                                 </Grid>
-                                {/* )}  */}
-                            </>
-                        )}</> : <div style={{ textAlign: "center", color: "#394578" }}>No wishlist yet</div>}
+                                <Grid item xs={5} sm={3} lg={3}>
+                                    <div className="wishlist_img" >
+                                        <img className="viewport-img" src={this.check_img(first_map.productListByProductId.productImagesByProductId.nodes[0].imageUrl)
+                                        } />
+                                    </div></Grid>
+                                <Grid item xs={12} sm={5} lg={5}
+                                    style={{ paddingLeft: "15px" }}
+                                >
+                                    <div>
+                                        <div className="wislist_title">{first_map.productListByProductId.productName}</div>
+
+                                        <div className="wislist_price">{Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice))}</div>
+                                        <div className="add-bag">
+                                            <>
+                                                <RemoveWishlist
+                                                    sku={first_map.skuId}
+                                                    productId={first_map.productId}
+                                                    add={first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice}
+                                                    data={
+                                                        <><i class="fa fa-shopping-bag"></i>&nbsp;Add to Bag</>
+                                                    }
+                                                />
+
+                                            </>
+                                            {/* <Button "> */}
+                                            {/* onClick={() => {
+                                                    this.props.setCartFilters({
+                                                        skuId: first_map.skuId,
+                                                        qty: 1,
+                                                        price: first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice
+                                                    })
+                                                }} className="add-bag"> */}
+                                            {/* </Button> */}
+                                        </div>
+                                    </div>
+                                </Grid>
+                                {/* </Grid> */}
+                            </Grid>
+                            {/* )}  */}
+                        </>
+                    )
+                        }</> : <div style={{ textAlign: "center", color: "#394578" }}>No wishlist yet</div>}
 
 
 

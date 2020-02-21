@@ -10,6 +10,7 @@ export const TwitterShare = (props) =>{
     <meta property="og:title" content={props.data[0].title} />
     <meta property="og:description" content={props.data[0].dis} />
     <meta property="og:image" content='https://assets.stylori.com/product/SP0181/600X600/SP0181-1W.webp'/>
+    
  
     </MetaTags>
     )

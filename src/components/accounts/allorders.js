@@ -371,7 +371,7 @@ class Allorders extends React.Component {
 
                                                     <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
                                                         Sub Total&nbsp;{this.calculatetotal(val)}<br />
-                                                        {val.shoppingCartByCartId.discount ? <div class={`subhesder`}>REGISTRATION&nbsp;{val.shoppingCartByCartId.discount}</div>
+                                                        {val.shoppingCartByCartId.discount ? <div class={`subhesder`}>DISCOUNT&nbsp;{val.shoppingCartByCartId.discount}</div>
                                                             : null}
                                                         Shipping&nbsp;FREE<br />
                                                         Shipping Insurance&nbsp;FREE<br />
@@ -550,7 +550,7 @@ class Allorders extends React.Component {
                                                         {/* <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
                                                             Sub Total&nbsp;{this.calculatetotal(val)}<br />
                                                             {val.shoppingCartByCartId.discount !== null ? 
-                                                            <div className={`subhesder`}>REGISTRATION : &nbsp;{val.shoppingCartByCartId.discount}</div>
+                                                            <div className={`subhesder`}>DISCOUNT : &nbsp;{val.shoppingCartByCartId.discount}</div>
                                                                 : ""}
                                                             Shipping&nbsp;FREE<br />
                                                             Shipping Insurance&nbsp;FREE<br />

@@ -32,25 +32,29 @@ const initialCtx = {
 
 
         },
-        loading: false, error: false, data: [], allorderdata: [], wishlistdata: [], wishlist_count: [], noproducts: false, NewUser: {}
+        loading: false, error: false, data: [], allorderdata: [], wishlistdata: [], wishlist_count: [], noproducts: false, NewUser: {}, loadingWishlist:false
     },
     setCartFilters: (filterData) => { },
     setallorderdata: () => { },
     setwishlist_count: () => { },
     setwishlistdata: () => { },
     setNoproducts: () => { },
-    setNewUser: () => { }
+    setNewUser: () => { },
+    setLoading:() =>{},
+    setLoadingWishlist:()=>{}
     // setCartId:() =>{}
 }
 export const CartContext = React.createContext(initialCtx);
 export const CartConsumer = CartContext.Consumer;
 const Provider = (props) => {
+   
     const [cartFilters, setCartFilters] = React.useState(initialCtx.CartCtx);
     const [allorderdata, setallorderdata] = React.useState([])
     const [wishlistdata, setwishlistdata] = React.useState([])
     const [wishlist_count, setwishlist_count] = React.useState([])
     const [noproducts, setNoproducts] = React.useState(false)
     const [NewUser, setNewUser] = React.useState({})
+    const [loadingWishlist, setLoadingWishlist] = React.useState(false)
     // const [_cart_id, setCartId] = React.useState([])
     var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : [];
     const user_id = cartFilters.user_id ? cartFilters.user_id : ""
@@ -177,10 +181,15 @@ const Provider = (props) => {
         const wishlistdatas = allorder ? wishlistDATA && wishlistDATA.data && wishlistDATA.data.allUserWhislists && wishlistDATA.data.allUserWhislists.nodes : ""
         if (wishlistdatas && wishlistdatas.length > 0) {
             objwishlist["wishlistdata"] = wishlistDATA.data.allUserWhislists
+            setTimeout(() => {
+                setLoadingWishlist(false)
+            }, 2000);
+            
             // localStorage.setItem("allorder", allorder.data.allOrders)
             // obj_aishlist_count["wishlist_count"] = wishlistdatas && wishlistdatas.length
             // localStorage.setItem("a__w_l", wishlistdatas && wishlistdatas.length)
             setwishlistdata(objwishlist)
+          
             // setwishlist_count(obj_aishlist_count)
             // alert(JSON.stringify(obj_aishlist_count))
         }
@@ -584,11 +593,11 @@ const Provider = (props) => {
     }, [])
 
     const CartCtx = {
-        cartFilters, loading, error, wishlist_count, data, setCartFilters, allorderdata, wishlistdata, allordersuccesful, noproducts, NewUser
+        cartFilters, loading, error, wishlist_count, data, setCartFilters, allorderdata, wishlistdata, allordersuccesful, noproducts, NewUser, loadingWishlist
     }
     
     return (
-        <CartContext.Provider value={{ CartCtx, setwishlist_count, setCartFilters, setallorderdata, setwishlistdata, setNoproducts }} >
+        <CartContext.Provider value={{ CartCtx, setwishlist_count, setCartFilters, setallorderdata, setwishlistdata, setNoproducts, setLoadingWishlist }} >
             {props.children}
         </CartContext.Provider>
     )
