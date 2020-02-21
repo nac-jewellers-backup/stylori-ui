@@ -162,7 +162,7 @@ Object.entries(data).length>0 && data.seo_results.length > 0?
         </Typography>
         </Grid>
         {
-         Object.entries(data).length>0 && data.sku_results.length>0 ?       
+           Object.entries(data).length>0 && data.sku_results.length>0 ?     
             data.sku_results.map(val => 
         <Grid item xs={12} style={{margin:"5px"}}>
             {/* <a href={`/${val.sku_url}`} className={classes.productSublist}>
