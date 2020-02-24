@@ -119,7 +119,7 @@ const useWishlists = (props) => {
             var _conditionfetchCartId = {
                 "UserId": { "userprofileId": localStorage.getItem("user_id") }
             }
-            debugger
+            
             fetch(`${API_URL}/removewishlist`, {
                 
                 method: 'POST',
@@ -148,7 +148,7 @@ const useWishlists = (props) => {
                         }).then(status)
                             .then(json)
                             .then(val => {
-                                debugger
+                                
                                 if (val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length > 0 &&
                                     val.data.allShoppingCarts.nodes[0].status === "paid") {
                                     // alert(val.data.allShoppingCarts.nodes[0].status)

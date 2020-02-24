@@ -413,7 +413,7 @@ const Provider = props => {
           newObj[toLowerCase] = k[len][0];
         }
       }
-debugger
+
       if (pricemax !== 0) {
         if (pricemax > pricemin || pricemax === pricemin) {
           newObj["price"] = {

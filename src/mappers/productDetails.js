@@ -174,7 +174,7 @@ const handleVideoCheck = (url) => {
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 const generateImgurls = (PD, val, screen_res, tabsChange) => {
 console.log(PD, val, "PD , VAL---------")
-debugger
+
     var arrOfurls = []
     var arrOfurls_2X = []
     var imgurlsplit = null

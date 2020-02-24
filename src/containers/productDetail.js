@@ -56,7 +56,7 @@ class ProductDetail extends Component {
         //  {key:"title", value:this.props.data[0].title}
      ]
      arr.map(val =>{
-       debugger
+       
      document.getElementById(val.key).setAttribute("content", val.value);
     })
     document.title = this.props.data[0].title
@@ -142,7 +142,7 @@ class ProductDetail extends Component {
       }
     }
 //  console.log("this.props.data[0].fadeImages", this.props.data[0].fadeImages)
- debugger
+ 
 
     // alert(JSON.stringify(this.props.setratingcountsclear))
     return (

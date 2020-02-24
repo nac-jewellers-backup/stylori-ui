@@ -36,7 +36,7 @@ class Component extends React.Component {
     }
 
     makeFetch = async (props) => {
-debugger
+
         // await fetch(`${API_URL}/createorder`, {
         //     method: 'post',
         //     headers: {
@@ -50,7 +50,7 @@ debugger
         //     alert('Order Placed Successfully')
 
         // })
-        debugger
+        
         fetch(`${API_URL}/createorder`, {
 
             method: 'post',

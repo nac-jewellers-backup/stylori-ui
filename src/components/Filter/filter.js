@@ -527,7 +527,7 @@ class Component extends React.Component {
     }
     var price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(_price_min));
     var price_max = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(_price_max));
-    debugger
+    
     var pricemin = price_min.indexOf(',') > -1 ? price_min.indexOf(" ") > -1 ? Number(price_min.substr(2).replace(/\,/g, ''))
     
     :
@@ -546,7 +546,7 @@ class Component extends React.Component {
     :
     Number(price_max.substr(1))
     // alert("came in ")
-    // debugger
+    // 
     // alert(pricemin)
     // alert(pricemax)
     if(pricemin > pricemax){

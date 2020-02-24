@@ -66,7 +66,7 @@ export default function PaymentHiddenForm(props) {
         const json = (response) => {
             return response.json()
         }
-        debugger
+        
         await fetch(`${API_URL}/createorder`, {
             method: 'post',
             headers: {
@@ -76,7 +76,7 @@ export default function PaymentHiddenForm(props) {
             // then(async(response) =>await response.json()).
             body: JSON.stringify(obj)
         }).then(status).then(json).then((data) => {
-            debugger
+            
             localStorage.removeItem("order_id")
             // if (localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
             sessionStorage.removeItem('updatedProduct')

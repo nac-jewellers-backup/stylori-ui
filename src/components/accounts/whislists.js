@@ -65,6 +65,7 @@ class Component extends React.Component {
     }
     render() {
         const { wishlistdata } = this.props.wishlistdata;
+        debugger
         return (
             <>
                 {/* {JSON.stringify(this.props.wishlistdata)} */}
