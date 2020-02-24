@@ -25,16 +25,42 @@ import { useGraphql } from 'hooks/GraphqlHook';
 import { ProductDetailContext } from 'context/ProductDetailContext';
 import { CDN_URL } from 'config';
 import 'screens/screens.css';
-import MetaTags from 'react-meta-tags';
+import { Helmet } from "react-helmet";
 import { CartContext } from 'context'
 import { GlobalContext } from 'context'
-
+// import {Helmet} from "react-helmet";
 class ProductDetail extends Component {
   constructor(props) {
     super(props)
+    // this.handleMeta()
     this.state = {
-      clear: ""
+      clear: "",
+      data:null,
+
     }
+    console.log('----------this.props.data--------- CONSTRUCTOR', this.props.data)
+    
+  }
+  UNSAFE_componentWillMount(){
+    // this.handleOGTag()
+  }
+  handleOGTag = () =>{
+   if(this.props.data && this.props.data.length>0){
+    var arr = [
+      {key:"Description",value:this.props.data[0].dis},
+      {key:"keywords", value:this.props.data[0].productsPendants[0].name},
+       {key:"og_site_name", value:"Stylori.com"},
+        {key:"og_title", value:this.props.data[0].title},
+         {key:"og_type", value:"website_stylori"}, 
+         {key:"og_url", value:window.location.href},
+        //  {key:"title", value:this.props.data[0].title}
+     ]
+     arr.map(val =>{
+       
+     document.getElementById(val.key).setAttribute("content", val.value);
+    })
+    document.title = this.props.data[0].title
+   }
   }
   renderUrl = () => {
     var loc = this.props.location.pathname;
@@ -47,9 +73,59 @@ class ProductDetail extends Component {
     if (path[2] === 'Rings') return "/rings-jewellery"
 
   }
+   handleMeta = () => {
+  //    console.log("camein..", "handleMeta")
+
+     
+     
+    return(
+      // this.props.data && this.props.data[0] && this.props.data[0].length > 0 ?
+      <Helmet> 
+        {/* <title>{this.props.data[0].title}</title> */}
+         <meta name="Description" property="og:description" content={this.props.data[0].dis} />
+        {/* <meta name="keywords" content={this.props.data[0].productsPendants[0].name} /> */}
+        <meta name="og_site_name" property="og:site:name" content="Stylori.com"></meta>
+        <meta name="og_title" property="og:title"  content={this.props.data[0].title} />
+        {/* <meta property="og:description" content={'this.props.data[0].dis'} /> */}
+        <meta property="og:type" content="website" />
+        {/* <meta property="og:url" id="fb-product-url" content={window.location.href} /> */}
+        <meta name="og_url" property="og:url" content={window.location.href}></meta>
+        {/* <meta property="og:image" id="fb_imageUrl" content={this.props.data[0].fadeImages.arrOfurls[0]} /> */}
+        {/* <meta name="twitter_card" content="summary" />
+  //       <meta name="twitter_site" content="@StyloriLove" />
+  //       <meta name="twitter_title" id="twitter-title" content={this.props.data[0].title} />
+  //       <meta name="twitter_description" content={this.props.data[0].dis} />
+  //       <meta name="twitter_image" id="twitter_imageUrl" content={this.props.data[0].fadeImages.arrOfurls[0]} /> */}
+          {/* <meta charSet="utf-8" /> */}
+                <title>My Title</title>
+                <link rel="canonical" href="https://staging.stylori.com" />
+       </Helmet>
+      // :
+      // null
+     )
+   };
+   componentDidUpdate(prevProps, prevState) {
+  if(prevProps.data !== prevState.data){
+    console.log("camein", prevProps.data)
+    console.log("camein..", this.props.data)
+    this.setState({data:this.props.data})
+    console.log("camein.....", this.state.data)
+    // this.handleOGTag()
+  }
+   }
   render() {
-    // alert(JSON.stringify(this.props.data))
-    // alert(JSON.stringify(this.props.data))
+    // const meta = {
+    //   title: 'Some Meta Title',
+    //   og_description: 'I am a description, and I can create multiple tags',
+    //   canonical: 'http://example.com/path/to/page',
+    //   meta: {
+    //     charset: 'utf-8',
+    //     name: {
+    //       keywords: 'react,meta,document,html,tags'
+    //     }
+    //   }
+    // };
+
     var loc = this.props.location.pathname;
     var path = loc.split('/');
     var data_json = [{ title: 'home', url: '/' }, { title: path[2], url: this.renderUrl() }, { title: this.props.data&&this.props.data[0]&&this.props.data[0].title }]
@@ -65,36 +141,27 @@ class ProductDetail extends Component {
         })
       }
     }
+//  console.log("this.props.data[0].fadeImages", this.props.data[0].fadeImages)
  
+
     // alert(JSON.stringify(this.props.setratingcountsclear))
     return (
       <div>
-        <div>
+        {/* <div>
 
           <MetaTags>
             {
-              this.props.data && this.props.data[0] && this.props.data[0].length > 0 ?
-                <>
-                  <title>{this.props.data[0].title}</title>
-                  <meta name="description" content={this.props.data[0].dis} />
-                  <meta name="keywords" content={this.props.data[0].productsPendants[0].name} />
-                  <meta property="og:title" id="fb-title" content={this.props.data[0].title} />
-                  <meta property="og:description" content={this.props.data[0].dis} />
-                  <meta property="og:type" content="product" />
-                  <meta property="og:url" id="fb-product-url" content={window.location.href} />
-                  <meta property="og:image" id="fb_imageUrl" content={this.props.data[0].fadeImages} />
-                  <meta name="twitter:card" content="summary" />
-                  <meta name="twitter:site" content="@StyloriLove" />
-                  <meta name="twitter:title" id="twitter-title" content={this.props.data[0].title} />
-                  <meta name="twitter:description" content={this.props.data[0].dis} />
-                  <meta name="twitter:image" id="twitter_imageUrl" content={this.props.data[0].fadeImages} />
-                </>
-                :
-                ''
+              this.state.data && this.state.data.length > 0 ?
+       
+         this.handleMeta()
+         :
+         null
             }
 
           </MetaTags>
-        </div>
+        </div> */}
+         {/* <DocumentMeta {...meta}> */}
+
 
         <Hidden smDown>
           <Header wishlist={this.props.wishlistdata} />
@@ -188,7 +255,7 @@ class ProductDetail extends Component {
             <Footer />
           </Grid>
         </Hidden>
-
+        {/* </DocumentMeta> */}
       </div>
     )
   }

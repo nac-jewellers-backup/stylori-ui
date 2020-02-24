@@ -56,6 +56,7 @@ class Component extends React.Component {
       showMore: 4,
       Price_button_click: false,
       chipData: [],
+      errorPriceMessage:false
     };
 
   }
@@ -526,10 +527,39 @@ class Component extends React.Component {
     }
     var price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(_price_min));
     var price_max = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(_price_max));
-    var pricemin = Number(price_min.substr(2).replace(/\,/g, ''))
-    var pricemax = Number(price_max.substr(2).replace(/\,/g, ''))
-    this.setState(checked)
-    this.setState({ numOne: price_min, numTwo: price_max }, () => { this.props.setPriceMax(pricemax); this.props.setPriceMin(pricemin) })
+    
+    var pricemin = price_min.indexOf(',') > -1 ? price_min.indexOf(" ") > -1 ? Number(price_min.substr(2).replace(/\,/g, ''))
+    
+    :
+    Number(price_min.substr(1).replace(/\,/g, ''))
+    :
+    price_min.indexOf(" ") > -1 ?
+    Number(price_min.substr(2))
+    :
+    Number(price_min.substr(1))
+    var pricemax = price_max.indexOf(',') > -1 ? price_max.indexOf(" ") > -1 ? Number(price_max.substr(2).replace(/\,/g, '')) 
+    :
+    Number(price_max.substr(1).replace(/\,/g, ''))
+    :
+    price_max.indexOf(" ") > -1 ?
+    Number(price_max.substr(2))
+    :
+    Number(price_max.substr(1))
+    // alert("came in ")
+    // 
+    // alert(pricemin)
+    // alert(pricemax)
+    if(pricemin > pricemax){
+      this.setState({errorPriceMessage:true})
+    }
+    else if(pricemin === 0 && pricemax === 0){
+      return false
+    }
+    else{
+      this.setState(checked)
+      this.setState({ numOne: price_min, numTwo: price_max }, () => { this.props.setPriceMax(pricemax); this.props.setPriceMin(pricemin) })
+    }
+    
   }
   txtFieldChange(e) {
     if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
@@ -602,7 +632,8 @@ class Component extends React.Component {
                         <Grid container spacing={12} style={{ paddingLeft: "14px" }}  >
                           <Grid item xs={4} >
                             <TextField
-                              onChange={(e) => { this.setState({ numOne: e.target.value }) }}
+                            error={this.state.errorPriceMessage}
+                              onChange={(e) => { this.setState({ numOne: e.target.value, errorPriceMessage:false }) }}
                               onKeyPress={(e) => { this.txtFieldChange(e) }}
                               name="numOne"
                               className="price-txt"
@@ -614,7 +645,8 @@ class Component extends React.Component {
                           </Grid>&nbsp;
              <Grid item xs={4}>
                             <TextField
-                              onChange={(e) => { this.setState({ numTwo: e.target.value }) }}
+                            error={this.state.errorPriceMessage}
+                              onChange={(e) => { this.setState({ numTwo: e.target.value, errorPriceMessage:false }) }}
                               onKeyPress={(e) => { this.txtFieldChange(e) }}
                               name="numTwo"
                               className="price-txt"
@@ -628,6 +660,7 @@ class Component extends React.Component {
                             <Button variant="contained" className={`price-btn ${classes.colorMainBackground}`} onClick={() => this.onCurrencyChange_click()}>Go</Button>
                           </Grid>
                         </Grid>
+                        {this.state.errorPriceMessage ? <label className={`${classes.priceError}`}>Max price should be greater</label> : null}
                       </div>
                       {/* filter */}
                       <div>
@@ -731,7 +764,7 @@ class Component extends React.Component {
 
                                           }
 
-                                          {
+{
                                             (subFilter[row].length) - 4 !== 0 && (subFilter[row].length) - 4 > 0 &&
 
                                             <>
@@ -751,9 +784,13 @@ class Component extends React.Component {
                                                 </div>}
                                             </>
                                           }
+ 
+
 
 
                                         </>
+
+                                       
 
 
                                       }

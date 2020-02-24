@@ -25,6 +25,7 @@ import Success from "../screens/Stylori/success";
 import Fail from "../screens/Stylori/fail";
 import Contactus from "../screens/Stylori/contactUs";
 import Careers from "../screens/Stylori/careers";
+import {Helmet} from "react-helmet";
 
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
@@ -69,6 +70,8 @@ export const RouterApp = props => {
   // condition()
   // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
   return (
+    <>
+             
     <Switch history={browserHistory}>
       {/* <Redirect key="stylori-redirect" from="/" exact to={"/"} /> */}
       <Route
@@ -236,6 +239,7 @@ Boolean(localStorage.getItem("gut_lg"))) || !localStorage.getItem("user_id") ? (
         path={routes.UserRegister}
       />
     </Switch>
+    </>
   );
 };
 export default withRouter(RouterApp);

@@ -99,7 +99,22 @@ const styles = theme => ({
     }
   },
   colorMainBackground: {
-    backgroundColor: theme.palette.primary.main
+    backgroundColor: theme.palette.primary.main,
+    "&:hover":{
+      backgroundColor: theme.palette.primary.main,
+      opacity:0.9,
+      // '& span::after':{
+      //   content: '"haii"',
+      //   position: 'absolute',
+      //   opacity: 1,
+      //   top: 6,
+
+      //   right: '-20px',
+      //   transition: '0.5s'
+      // }
+      
+    }
+
   },
   productCardscheck: {
     width: '80%',
@@ -126,6 +141,11 @@ const styles = theme => ({
     [theme.breakpoints.up('xl')]: {
       width: '100%',
     },
+  },
+  priceError:{
+    paddingLeft: '14px',
+    fontSize: '14px',
+    color: 'red',
   }
 });
 

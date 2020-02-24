@@ -105,7 +105,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
 
       </div> : ''}
       {
-        Math.round(props.data.offerPrice) === Math.round(props.data.price) ? '' :
+        props.data.discount && props.data.discount !== 0 ? 
           <>
             <span className="overlayCss" style={{ zIndex: 10, color: "#fff", backgroundColor: "#f699a3" }}>
 
@@ -113,6 +113,8 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
 
             </span>
           </>
+          :
+          null
       }
 
       {/* <Grid container >
@@ -452,7 +454,7 @@ sizes="(max-width: 320px) 320w,
 
 
           {
-            Math.round(props.data.offerPrice) === Math.round(props.data.price) ?
+           Math.round(props.data.price) && Math.round(props.data.price) !==0 && Math.round(props.data.offerPrice) === Math.round(props.data.price)   ?
               <CardContent className={classes.cardContent} style={{ display: 'flex' }}>
                 <Grid
                   container

@@ -182,12 +182,13 @@ class Component extends React.Component {
     }
     componentDidUpdate(prevProps) {
         // Typical usage (don't forget to compare props):
+        
         var variab = {}
         variab["pincode"] = this.state.values
         if (prevProps.CodData !== this.props.CodData) {
             // Here i have handeled the "check for COD" condition because the response is not setting to the props instantly
             if (this.props.CodData.data.allPincodeMasters.nodes.length > 0) {
-                if (this.props.data[0].price > this.props.CodData.data.allPincodeMasters.nodes[0].maxCartvalue) {
+                if (this.props.data[0].price >= this.props.CodData.data.allPincodeMasters.nodes[0].minCartvalue || this.props.data[0].price <= this.props.CodData.data.allPincodeMasters.nodes[0].maxCartvalue) {
                     this.setState({ CheckForCodtitle: 'COD Not Available' })
                 }
                 else {

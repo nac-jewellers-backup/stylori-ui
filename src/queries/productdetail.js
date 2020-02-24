@@ -62,6 +62,7 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
             ishover
             imageUrl
             imagePosition
+            productColor
           }
         }
       }

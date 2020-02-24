@@ -247,6 +247,7 @@ export const
             {
                 "Title": "Shipping & Returns",
                 "font": "h2",
+                "accordianIcon": "Arrows",
                 "accordian": [
                     {
                         Questions: "25 D R2R",
@@ -254,7 +255,7 @@ export const
                     },
                     {
                         Questions: "Refund or Exchange",
-                        Answers: "We would love to hear from you on “What didn’t go well in your purchase” and that’s all is required to process your return. That’s all! If its an exchange, we will gladly ship your “Story of love - product” free of cost .<br/>If its money-back for some reason, the same will be credited to your account within 25 days of acceptance of return.",
+                        Answers: "We would love to hear from you on “What didn’t go well in your purchase” and that’s all is required to process your return. That’s all! If its an exchange, we will gladly ship your “Story of love - product” free of cost .<br/>If its money-back for some reason, the same will be credited to your account within 25 days of acceptance of return.<br/>We do not accept returns of product pruchased under CSK MERCHANDISE. If you would like to change the size, you can visit our nearest NAC Jewellers branch with the invoice copy.",
                     },
                     {
                         Questions: "YOUR LIFELONG-EVERGREEN-STYLE WARDROBE",
@@ -304,7 +305,7 @@ export const
         "faqs": [
             {
                 "Title": "Product care",
-                "accordianIcon": "Plus",
+                "accordianIcon": "Arrows",
                 "font": "h2",
                 "accordian": [
                     {
@@ -380,6 +381,7 @@ export const
             {
                 "Title": "Privacy & Cookie Policy",
                 "font": "h2",
+                "accordianIcon": "Arrows",
                 "accordian": [
                     {
                         Questions: "Privacy",
@@ -426,6 +428,7 @@ export const
                 // Main title
                 "Title": "Terms & Conditions",
                 "font": "h2",
+                "accordianIcon": "Arrows",
                 // Listing content
                 "accordian": [
                     {

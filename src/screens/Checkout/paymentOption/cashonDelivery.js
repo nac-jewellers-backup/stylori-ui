@@ -36,7 +36,7 @@ class Component extends React.Component {
     }
 
     makeFetch = async (props) => {
-debugger
+
         // await fetch(`${API_URL}/createorder`, {
         //     method: 'post',
         //     headers: {
@@ -50,7 +50,7 @@ debugger
         //     alert('Order Placed Successfully')
 
         // })
-        debugger
+        
         fetch(`${API_URL}/createorder`, {
 
             method: 'post',
@@ -78,7 +78,7 @@ debugger
                 localStorage.removeItem("cart_id")
                 // if (localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
                 sessionStorage.removeItem('updatedProduct')
-                alert(resdata.message)
+                // alert(resdata.message)
                 window.location.pathname = `/paymentsuccess/${resdata.order.id}`
             })
             .catch(err => {

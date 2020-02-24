@@ -101,6 +101,7 @@ const useWishlists = (props) => {
         return response.json()
     }
     const handelRemove = (num) => {
+        
         setwishlistdata({
             wishlistdata: values.isactive
         })
@@ -118,14 +119,16 @@ const useWishlists = (props) => {
             var _conditionfetchCartId = {
                 "UserId": { "userprofileId": localStorage.getItem("user_id") }
             }
-
+            
             fetch(`${API_URL}/removewishlist`, {
+                
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                     // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: JSON.stringify(values)
+                
             }).then((myJson) => {
                 {
                     values.add &&
@@ -145,6 +148,7 @@ const useWishlists = (props) => {
                         }).then(status)
                             .then(json)
                             .then(val => {
+                                
                                 if (val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length > 0 &&
                                     val.data.allShoppingCarts.nodes[0].status === "paid") {
                                     // alert(val.data.allShoppingCarts.nodes[0].status)

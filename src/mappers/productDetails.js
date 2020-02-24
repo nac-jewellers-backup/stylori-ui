@@ -173,7 +173,7 @@ const handleVideoCheck = (url) => {
 
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 const generateImgurls = (PD, val, screen_res, tabsChange) => {
-
+console.log(PD, val, "PD , VAL---------")
 
     var arrOfurls = []
     var arrOfurls_2X = []
@@ -210,7 +210,7 @@ const generateImgurls = (PD, val, screen_res, tabsChange) => {
             // }
             if (!tabsChange) {
 
-                if (imgurlsplit === metalcolor || imgurlsplit === metalcolor2) {
+                if (imgurl.productColor === PD.metalColor || imgurl.productColor === PD.metalColor) {
 
                     arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
                     arrOfurls_2X.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res, largeImageZoom))
@@ -328,10 +328,14 @@ const sorting = (val) => {
 }
 const handle_mapper = (val) => {
     var _obj = {}
+    _obj['header'] = 'Certificate'
+    _obj['name'] = 'Certificate'
     if (val) {
-        var _split = val.split(',')
-        _split.map((val, i) => { _obj[`img${i}`] = val })
-        return [_obj]
+        // var _split = val.split(',')
+        // _split.map((val, i) => { _obj[`img${i}`] = val })
+        // return [_obj]
+        _obj['image'] = val
+        return _obj
     }
     else {
         return null
