@@ -188,7 +188,7 @@ const Provider = (props) => {
             // localStorage.setItem("allorder", allorder.data.allOrders)
             // obj_aishlist_count["wishlist_count"] = wishlistdatas && wishlistdatas.length
             // localStorage.setItem("a__w_l", wishlistdatas && wishlistdatas.length)
-            debugger
+            
             setwishlistdata(objwishlist)
           
             // setwishlist_count(obj_aishlist_count)
@@ -199,7 +199,7 @@ const Provider = (props) => {
         // }
     }, [wishlistDATA, wishlistdata])
     useEffect(() => {
-        debugger
+        
         orderobj["userProfileId"] = userIds
         orderobj1["userprofileId"] = userIds
         if (userIds) wishlistmakeRequest(orderobj1)

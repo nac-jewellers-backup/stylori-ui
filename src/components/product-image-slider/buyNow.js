@@ -182,7 +182,7 @@ class Component extends React.Component {
     }
     componentDidUpdate(prevProps) {
         // Typical usage (don't forget to compare props):
-        debugger
+        
         var variab = {}
         variab["pincode"] = this.state.values
         if (prevProps.CodData !== this.props.CodData) {
