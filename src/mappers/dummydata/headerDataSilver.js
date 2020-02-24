@@ -261,19 +261,21 @@ export const subheader = {
             {
                 name: '24 KT',
                 url: "/24kt-goldcoins"
-            }, {
-                name: '22 KT',
-                url: "/22kt-goldcoins"
-            },
+            }, 
+            // {
+            //     name: '22 KT',
+            //     url: "/22kt-goldcoins"
+            // },
         ]
     },
     'By Collections': {
         header: 'By Collections',
         name: [
-            {
-                name: 'Halo',
-                url: "/jewellery-from+halo+collection"
-            }, {
+            // {
+            //     name: 'Halo',
+            //     url: "/jewellery-from+halo+collection"
+            // },
+             {
                 name: 'Daisy Days',
                 url: "/jewellery-from+daisy+days+collection"
             }, {
@@ -821,11 +823,11 @@ export const menuLists = {
                                 "content": "24 KT",
                                 "url": "/24kt-goldcoins",
                             },
-                            {
-                                "img": "https://assets.stylori.com/images/Menu/Gold+Coins/By+Purity/22kt+Gold+Coins-04.png",
-                                "content": "22 KT",
-                                "url": "/22kt-goldcoins",
-                            },
+                            // {
+                            //     "img": "https://assets.stylori.com/images/Menu/Gold+Coins/By+Purity/22kt+Gold+Coins-04.png",
+                            //     "content": "22 KT",
+                            //     "url": "/22kt-goldcoins",
+                            // },
                         ]
                     }
                 },
@@ -841,11 +843,11 @@ export const menuLists = {
                     imgContainer: {
 
                         "imageContainer": [
-                            {
-                                "img": "https://assets.stylori.com/images/Menu/Collections/By+Collections/Halo+Collection+Stylori+-06.png",
-                                "content": "Halo",
-                                "url": "/jewellery-from+halo+collection",
-                            },
+                            // {
+                            //     "img": "https://assets.stylori.com/images/Menu/Collections/By+Collections/Halo+Collection+Stylori+-06.png",
+                            //     "content": "Halo",
+                            //     "url": "/jewellery-from+halo+collection",
+                            // },
                             {
                                 "img": "https://assets.stylori.com/images/Menu/Collections/By+Collections/Daisy+Days++Collection+Stylori+-05.png",
                                 "content": "Daisy Days",

@@ -22,50 +22,39 @@ class PriceCertification extends React.Component {
         const { expanded } = this.state;
         
         const { certificates } = this.props.data[0]
+        debugger
         const { classes } = this.props;
         return (
             <div>
                 <Container>
                     {
                     certificates ?
-                    certificates.map(val =>
-                        <>
+                    // certificates.map(val =>
+                    //  {
+// debugger
+                          <>
                         
-                        <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" ,padding:"0 5px"}} expanded={expanded === val.header} onChange={this.handle(val.header)} key={val.name}>
-                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}
-                                        aria-controls="panel1a-content"
-                                        id="panel1a-header"  >
-                                <div style={{ width: "100%" }} >
-                                    <Typography className={`subtabs-smrt ${classes.normalfonts}`}>{val.header}</Typography>
-                                    {/* <hr class="bottom-line border-line-"></hr> */}
-                                </div>
-
-                            </ExpansionPanelSummary>
-                            <Grid container spacing={12} >
-                                <Grid item xs={6} style={{ padding: "0px 33px" }}>
-                                    <Grid item xs={6} >
-                                        <img src={val.img0} alt="" />
-                                    </Grid>
-                                    <Grid item xs={6} style={{ padding: "12px" }}>
-                                        <img src={val.img1} alt="" />
-                                    </Grid>
-                                </Grid>
-                                <Grid item xs={6} style={{ padding: "0px 33px" }}>
-                                    <Grid item xs={6}>
-                                        <img src={val.img2} alt="" />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <img src={val.img3} alt="" />
-                                    </Grid>
-                                </Grid>
+                            <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" ,padding:"0 5px"}} expanded={expanded === certificates.header} onChange={this.handle(certificates.header)} key={certificates.name}>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}
+                                            aria-controls="panel1a-content"
+                                            id="panel1a-header"  >
+                                    <div style={{ width: "100%" }} >
+                                        <Typography className={`subtabs-smrt ${classes.normalfonts}`}>{certificates.header}</Typography>
+                                        {/* <hr class="bottom-line border-line-"></hr> */}
+                                    </div>
+    
+                                </ExpansionPanelSummary>
+                                <Grid container spacing={12} >
+                            <img src={certificates.image} alt="" width="100%"/>
                             </Grid>
-                            <Grid spacing={12}>
-                                <Grid item xs={12} className='certification-img'>
-                                    <img width='100%' height='100%' src={val.img4} alt="" />
-                                </Grid>
-                            </Grid>
-                        </ExpansionPanel>
-                    <br/></>)
+                                {/* <Grid spacing={12}>
+                                    <Grid item xs={12} className='certification-img'>
+                                        <img width='100%' height='100%' src={val.img4} alt="" />
+                                    </Grid>
+                                </Grid> */}
+                            </ExpansionPanel>
+                        <br/></>
+                    //  })
                 :
                 null    
                 }
@@ -83,38 +72,23 @@ class PriceCertification extends React.Component {
                
                 {
 certificates ?
-                certificates.map(val =>
+                // certificates.map(val =>
                     <div className="overall-boxz" style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" }}>
                         <div className="overall-bo">
-                            <span className={`product-details ${classes.normalfonts}`}>{val.header}</span>
+                            <span className={`product-details ${classes.normalfonts}`}>{certificates.header}</span>
                             <hr class="bottom-line"></hr>
                             <Grid container spacing={12} >
-                                <Grid item xs={6} style={{ padding: "0px 33px" }}>
-                                    <Grid item xs={6} >
-                                        <img src={val.img0} alt="" />
-                                    </Grid>
-                                    <Grid item xs={6} style={{ padding: "12px" }}>
-                                        <img src={val.img1} alt="" />
-                                    </Grid>
-                                </Grid>
-                                <Grid item xs={6} style={{ padding: "0px 33px" }}>
-                                    <Grid item xs={6}>
-                                        <img src={val.img2} alt="" />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <img src={val.img3} alt="" />
-                                    </Grid>
-                                </Grid>
+                            <img src={certificates.image} alt="" width="100%"/>
                             </Grid>
-                            <Grid spacing={12}>
+                            {/* <Grid spacing={12}>
                                 <Grid item xs={12} className='certification-img'>
                                     <img width='100%' height='100%' src={val.img4} alt="" />
-                                </Grid>
-                            </Grid>
+                                </Grid> */}
+                            {/* </Grid> */}
                         </div>
                     </div>
 
-                )
+                // )
                 :
                 null
                 }

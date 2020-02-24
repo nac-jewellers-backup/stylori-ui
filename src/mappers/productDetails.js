@@ -328,10 +328,14 @@ const sorting = (val) => {
 }
 const handle_mapper = (val) => {
     var _obj = {}
+    _obj['header'] = 'Certificate'
+    _obj['name'] = 'Certificate'
     if (val) {
-        var _split = val.split(',')
-        _split.map((val, i) => { _obj[`img${i}`] = val })
-        return [_obj]
+        // var _split = val.split(',')
+        // _split.map((val, i) => { _obj[`img${i}`] = val })
+        // return [_obj]
+        _obj['image'] = val
+        return _obj
     }
     else {
         return null
