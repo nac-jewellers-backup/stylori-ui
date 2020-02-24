@@ -19,7 +19,21 @@ class ProductDetails extends React.Component {
     state = {
         expanded: null
     };
+    handleCheck = (name,val) =>{
+        debugger
+        var check = true;
+        if(name ==="Price Breakup"){
+            debugger
+        //  val.map(val=>{
+        if (val.length > 0 && Number(val[1].replace('₹', '').replace (/,/g, "")) !== 0){check =  true }
+        else check =  false
 
+     }
+        else {
+            check =  true
+        }
+        return check;
+    }
     productsDetails = (data) => {
         const { classes } = this.props;
         return (
@@ -42,35 +56,39 @@ class ProductDetails extends React.Component {
                                                     <span>
                                                         {res.details !== null && res.details.length === 0 ? false :
 
-                                                            <Grid container item xs={12} >
-                                                                <Grid xs={4} lg={4}>
-                                                                    <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
-                                                                        <span style={{ fontSize: "12px" }}> {res.name}</span>
-                                                                    </ListItemText>
-                                                                </Grid>
-                                                                <Grid container item xs={8} style={{ alignItems: "center" }}>
-                                                                    {
-                                                                        // valueofproductdetail.header === 'Price Breakup' && 
-                                                                        isArray(res.details) ?
+    this.handleCheck(valueofproductdetail.header, res.details) ?
+    <Grid container item xs={12} >
+    <Grid xs={4} lg={4}>
+        <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
+            <span style={{ fontSize: "12px" }}> {res.name}</span>
+        </ListItemText>
+    </Grid>
+    <Grid container item xs={8} style={{ alignItems: "center" }}>
+        {
+            // valueofproductdetail.header === 'Price Breakup' && 
+            isArray(res.details) ?
 
-                                                                            <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
-                                                                                {res.details.map((Item, Index) => {
-                                                                                    
-                                                                                    return (<span style={{ fontSize: "12px", textAlign: 'left' }}> {
-                                                                                        (valueofproductdetail.header === 'Price Breakup') ?
-                                                                                            ((Index === 0 && (res.details[Index] !== res.details[Index + 1]) ? <del>{Item}</del> :
-                                                                                                Index === 0 ? '' : Item)) : Item} </span>)
-                                                                                })}
-                                                                            </ListItemText>
-                                                                            :
+                <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`} >
+                    {res.details.map((Item, Index) => {
+                        
+                        return (<span style={{ fontSize: "12px", textAlign: 'left' }}> {
+                            (valueofproductdetail.header === 'Price Breakup') ?
+                                ((res.name !== "GST"  && Index === 0 && (res.details[Index] !== res.details[Index + 1] ) ? <del>{Item}</del> :
+                                    Index === 0 && res.name !== "GST"  ? '' : Item)) : Item} </span>)
+                    })}
+                </ListItemText>
+                :
 
-                                                                            <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
-                                                                                {/* {data[0].productsDetails[3].namedetail[1].length > 0} */}
-                                                                                {<span style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</span>}
-                                                                            </ListItemText>
-                                                                    }
-                                                                </Grid>
-                                                            </Grid>
+                <ListItemText variant='' className={`product-subhead-list ${classes.fontgray}`}>
+                    {/* {data[0].productsDetails[3].namedetail[1].length > 0} */}
+                    {<span style={{ fontSize: "12px", marginLeft: '10px' }}> {res.details}</span>}
+                </ListItemText>
+        }
+    </Grid>
+</Grid>
+:
+null
+                                                      
                                                         }
                                                     </span>
 
@@ -140,7 +158,9 @@ class ProductDetails extends React.Component {
                                             res.details !== null && res.details.length === 0 ? false :
                                                 <span>
                                                     {
-                                                        <> {res.name && <Grid container item xs={12} style={{ padding: "0px 10px 0px 10px " }}>
+                                                        <> {
+                                                            this.handleCheck(val.header, res.details) ?
+                                                        <Grid container item xs={12} style={{ padding: "0px 10px 0px 10px " }}>
                                                             <Grid xs={4} lg={4}>
                                                                 <ListItemText variant='' className={`product-subhead ${classes.normalfonts}`}>
                                                                     <span style={{ fontSize: "12px" }}> {res.name}</span>
@@ -153,8 +173,8 @@ class ProductDetails extends React.Component {
                                                                             {res.details.map((Item, Index) => {
                                                                                 return (<span style={{ fontSize: "12px", textAlign: 'left' }}> {
                                                                                     (val.header === 'Price Breakup') ?
-                                                                                        ((Index === 0 && (res.details[Index] !== res.details[Index + 1]) ? <del>{Item}</del> :
-                                                                                            Index === 0 ? '' : Item)) : Item} </span>)
+                                                                                    ((res.name !== "GST"  && Index === 0 && (res.details[Index] !== res.details[Index + 1] ) ? <del>{Item}</del> :
+                                                                                    Index === 0 && res.name !== "GST"  ? '' : Item)) : Item} </span>)
                                                                             })}
                                                                         </ListItemText>
                                                                         :
@@ -164,6 +184,8 @@ class ProductDetails extends React.Component {
                                                                 }
                                                             </Grid>
                                                         </Grid>
+                                                        :
+                                                        null
                                                         }</>}
                                                 </span>
                                         )}
