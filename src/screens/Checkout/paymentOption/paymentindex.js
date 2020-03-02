@@ -8,55 +8,41 @@ import Netbanking from './netBanking';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { CartContext } from 'context'
 import cart from 'mappers/cart'
+import { useCheckForCod } from 'hooks/CheckForCodHook';
+import { CheckForCod } from 'queries/productdetail';
+import { cartCodPincode } from 'queries/pincode'
+import { API_URL } from "config"
 var va = {}
 class PaymentIndex extends React.Component {
     constructor() {
         super();
         this.state = {
             isActive: 'CashonDelivey',
+            disabledCOD:false,
+
         };
     }
 
     toggleCollapsed = (name) => {
-        this.setState({ isActive: [name] })
+        if(name == 'CashonDelivey' && this.state.disabledCOD) {
+            return false
+        }
+        else this.setState({ isActive: [name] })
 
     }
-
+componentDidUpdate(prevProps, prevState){
+    debugger
+    if(prevProps.isCodAvailable !== this.props.isCodAvailable)
+    if(!this.props.isCodAvailable){
+        this.setState({isActive:"Netbanking", disabledCOD:true})
+    }
+   
+}
     render() {
+        var a = 1
+                console.log('state - calling - repeatdly', a + 1)
+                const dataCard1 = this.props.data ? this.props.data : []
 
-        const valus = this.props.CodData.data ? this.props.CodData.data.allPincodeMasters.nodes[0].maxCartvalue : ""
-        const data = this.props.data ? this.props.data : ""
-        var dataCard1;
-        if (data.length > 0 && data !== undefined && data !== null) {
-            dataCard1 = this.props.data && this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
-            function myFunc(total, num, discounted_price) {
-                discounted_price = this && this.props.cartFilters.discounted_price ? JSON.stringify(this.props.cartFilters.discounted_price) : ""
-                if (discounted_price.length > 0) {
-                    var a = Math.round(total + num);
-                    var cart_price = (a - discounted_price)
-                } else {
-                    var cart_price = Math.round(total + num);
-                }
-                if (cart_price === valus || valus <= cart_price) {
-                    var cart_prices = cart_price;
-                    return false
-                } else {
-                    var cart_prices = 0;
-                }
-                return cart_prices
-            }
-        }
-        // const val = () => {
-        //     var va = {};
-        //     if (valus.length > 0) {
-        //         if (dataCard1 === valus) {
-        //             va["true"] = true
-        //         } else {
-        //             va["true"] = false
-        //         } 
-        //     } 
-        //     return va  
-        // } 
         return (
             <div className="payment-div" style={{ width: "100%" }}>
                 <Hidden smDown>
@@ -79,7 +65,10 @@ class PaymentIndex extends React.Component {
                                 // style={{ background: "#dfdfdf" }}
                                 >
                                     <div className="net-bnk-icon"></div> &nbsp; Pay Online </p>
-                                <p className={this.state.isActive == "CashonDelivey" ? "selectedcolor" : "unselected"}
+
+                                <p   className={`${this.state.isActive == "CashonDelivey" ? "selectedcolor" : "unselected" } 
+                            ${this.state.disabledCOD ?  'paragraph_onclick' : null }`   
+                            }
                                     onClick={() => this.toggleCollapsed('CashonDelivey')}
                                 >
                                     <div className="code-icon"></div>&nbsp;   Cash on Delivery (COD)</p>
@@ -137,7 +126,7 @@ class PaymentIndex extends React.Component {
                         </ExpansionPanelDetails>
                     </ExpansionPanel>
 
-                    <ExpansionPanel className="respone-div">
+                    <ExpansionPanel className="respone-div" disabled = {this.state.disabledCOD ? true : false}>
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography className="py-head">  <div className="code-icon"></div>&nbsp;   Cash On Delivery (COD) </Typography>
                         </ExpansionPanelSummary>
@@ -151,15 +140,126 @@ class PaymentIndex extends React.Component {
     }
 }
 const Components = props => {
+    
+    const [codAvailability, setCodAvailability] = React.useState({})
     let { CartCtx: { cartFilters, data, loading, error } } = React.useContext(CartContext);
+
+    // const { loading:codLoading, error:codError, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
+    
+   var  cartId = cartFilters._cart_id ? cartFilters._cart_id : JSON.parse(localStorage.getItem("cart_id")) ? JSON.parse(localStorage.getItem("cart_id")).cart_id : null   
+    const status = (response) => {
+
+        if (response.status >= 200 && response.status < 300) {
+            return Promise.resolve(response)
+        } else {
+            return Promise.reject(new Error(response.statusText))
+        }
+    }
+
+    const json = (response) => {
+        return response.json()
+    }
+    // var codData = {}
     let content, mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
             mapped = cart(data);
         }
     }
-    if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
-    else content = <PaymentIndex {...props} data={mapped} cartFilters={cartFilters} />
+if(cartId){
+    console.log('came in --')
+    fetch(`${API_URL}/graphql`, {
+
+        method: 'post',
+        // body: {query:seoUrlResult,variables:splitHiphen()}
+        // body: JSON.stringify({query:seoUrlResult}),
+
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            query: cartCodPincode,
+            variables: { cartId:cartId },
+        })
+    })
+        .then(status)
+        .then(json).then(val => {
+            // alert(JSON.stringify(val))
+            if(val.data.allCartAddresses.nodes.length > 0){
+                var pincode = val.data.allCartAddresses.nodes[0].pincode
+                // makeRequestCod({pincode:pincode})
+                fetch(`${API_URL}/graphql`, {
+
+                    method: 'post',
+                    // body: {query:seoUrlResult,variables:splitHiphen()}
+                    // body: JSON.stringify({query:seoUrlResult}),
+            
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: CheckForCod,
+                        variables: { pincode:pincode },
+                    })
+                })
+                    .then(status)
+                    .then(json).then(val => {
+                       debugger
+                       if(mapped && mapped.length > 0 && val){
+                        const min_cart_value = val.data ? val.data.allPincodeMasters.nodes[0].minCartvalue : null
+                        const max_cart_value = val.data ? val.data.allPincodeMasters.nodes[0].maxCartvalue : null
+                        const data = mapped ? mapped : []
+                        var dataCard1;
+                        var cart_price;
+                        
+                        if (data.length > 0 ) {
+                            function myFunc(total, num, discounted_price) {
+                                
+                                discounted_price = this && this.props.cartFilters.discounted_price ? JSON.stringify(this.props.cartFilters.discounted_price) : ""
+                                if (discounted_price.length > 0) {
+                                    var a = Math.round(total + num);
+                                     cart_price = (a - discounted_price)
+                                } else {
+                                     cart_price = Math.round(total + num);
+                                }
+                                
+                        
+                                return cart_price
+                            }
+                            dataCard1 = data && data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
+                           
+                            if(min_cart_value && max_cart_value)
+                           {
+                            if (dataCard1 >= min_cart_value && dataCard1  <= max_cart_value) {
+                                // var cart_prices = cart_price;
+                                setCodAvailability(true)
+                                return false
+                            } else {
+                                setCodAvailability(false)
+                             //    this.setState({isActive:"Netbanking", disabledCOD:true})
+                                //  cart_prices = 0;
+                             //    var _number = 1
+                      
+                            }
+                           }
+                            // myFunc()
+                        }
+                     
+                       }         
+                      
+                        // if(Object.entries(codData).length === 0) setCodData(val)
+                    })
+            }
+           
+        })
+}
+
+
+
+//  stopped
+
+    if (Object.keys(data).length === 0 ) content = <div className="overall-loader"><div id="loading"></div></div>
+    else content = <PaymentIndex {...props} data={mapped} cartFilters={cartFilters}  isCodAvailable = {codAvailability}/>
     return content
 }
 export default (Components)
