@@ -19,7 +19,11 @@
     width: 98% !important;
     float: right !important;
 } */
-
+.paragraph_onclick{
+    pointer-events: none;
+    background-color: #f6f5f5;
+    cursor:not-allowed;
+}
 .credit-button {
     margin: 8px 0px 0px 0px !important;
     padding: 7px 15px !important;

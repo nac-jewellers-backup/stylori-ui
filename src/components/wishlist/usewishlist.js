@@ -101,7 +101,7 @@ const useWishlists = (props) => {
         return response.json()
     }
     const handelRemove = (num) => {
-        debugger
+        
         setwishlistdata({
             wishlistdata: values.isactive
         })

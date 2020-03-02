@@ -81,6 +81,14 @@ class ProductDetail extends Component {
     return(
       // this.props.data && this.props.data[0] && this.props.data[0].length > 0 ?
       <Helmet> 
+         {/* <link rel="canonical" href="http://mysite.com/example" /> */}
+         <link
+      rel="icon"
+      type="image/gif"
+      sizes="16x16"
+      href="http://static.nfl.com/static/content/public/static/img/logos/react-helmet.jpg"
+    /> 
+         {/* <link rel="shortcut icon" href="http://static.nfl.com/static/content/public/static/img/logos/react-helmet.jpg"></link> */}
         {/* <title>{this.props.data[0].title}</title> */}
          <meta name="Description" property="og:description" content={this.props.data[0].dis} />
         {/* <meta name="keywords" content={this.props.data[0].productsPendants[0].name} /> */}

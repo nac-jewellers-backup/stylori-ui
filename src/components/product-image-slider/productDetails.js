@@ -37,12 +37,12 @@ import {
   
     handleGst = (name, val, gst) => {
         var check = true
-        debugger
+        
       if (val === "Price Breakup") {
         if (name === "GST") {
-            debugger
+            
           var _gst = gst
-          // debugger
+          // 
             .map(val => {
               if (
                 val.details.length > 0 &&
