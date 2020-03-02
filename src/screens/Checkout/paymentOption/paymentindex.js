@@ -24,7 +24,10 @@ class PaymentIndex extends React.Component {
     }
 
     toggleCollapsed = (name) => {
-        this.setState({ isActive: [name] })
+        if(name == 'CashonDelivey' && this.state.disabledCOD) {
+            return false
+        }
+        else this.setState({ isActive: [name] })
 
     }
 componentDidUpdate(prevProps, prevState){
@@ -123,7 +126,7 @@ componentDidUpdate(prevProps, prevState){
                         </ExpansionPanelDetails>
                     </ExpansionPanel>
 
-                    <ExpansionPanel className="respone-div">
+                    <ExpansionPanel className="respone-div" disabled = {this.state.disabledCOD ? true : false}>
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography className="py-head">  <div className="code-icon"></div>&nbsp;   Cash On Delivery (COD) </Typography>
                         </ExpansionPanelSummary>
@@ -228,7 +231,6 @@ if(cartId){
                             if(min_cart_value && max_cart_value)
                            {
                             if (dataCard1 >= min_cart_value && dataCard1  <= max_cart_value) {
-                                alert(true)
                                 // var cart_prices = cart_price;
                                 setCodAvailability(true)
                                 return false
