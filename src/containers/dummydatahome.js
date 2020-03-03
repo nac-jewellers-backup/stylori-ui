@@ -31,6 +31,16 @@ export const
           navigateUrl: "/jewellery/kada/csk_kada?skuId=1000001"
         },
         {
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Earring-Stylori-2020.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Earring-Stylori--mob-2020.jpg",
+          navigateUrl: "/earrings-jewellery?sort=Featured&startprice=0&endprice=0"
+        },
+        {
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Carve+web+banner+2020.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Carve+mob+banner+2020.jpg",
+          navigateUrl: "/jewellery-from+the+carve+collection"
+        },
+        {
           img: "https://assets.stylori.com/images/Static+Pages/Home+Page/banner1.jpg",
           mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/gemstone-mob",
           navigateUrl: "/gemstone-jewellery?sort=latest"
@@ -40,26 +50,28 @@ export const
         //   mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori-Valentine-banner-mob.jpg",
         //   navigateUrl: "/hearts-jewellery?sort=bestseller"
         // },
+      
         {
           img: "https://assets.stylori.com/images/Static+Pages/Home+Page/banner3.jpg",
           mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/rings-collection-mob.jpg",
           navigateUrl: "/rings-jewellery"
         },
-        {
-          img: "https://assets.stylori.com/images/Static+Pages/Home+Page/banner4.jpg",
-          mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Floral-collection-Mob.jpg",
-          navigateUrl: "/floral-jewellery?sort=latest"
-        },
+        // {
+        //   img: "https://assets.stylori.com/images/Static+Pages/Home+Page/banner4.jpg",
+        //   mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Floral-collection-Mob.jpg",
+        //   navigateUrl: "/floral-jewellery?sort=latest"
+        // },
+        
         {
           img: " https://assets.stylori.com/images/Static+Pages/Home+Page/banner5.jpg",
           mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/halo-collection-mob.jpg",
           navigateUrl: "/jewellery-from+halo+collection"
         },
-        {
-          img: "https://assets.stylori.com/images/Static+Pages/Home+Page/harvest-campaign-web.png",
-          mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/harvest-campaign-mob.png",
-          navigateUrl: "jewellery?sort=bestseller"
-        },
+        // {
+        //   img: "https://assets.stylori.com/images/Static+Pages/Home+Page/harvest-campaign-web.png",
+        //   mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/harvest-campaign-mob.png",
+        //   navigateUrl: "jewellery?sort=bestseller"
+        // },
       ]
     },
     //-------------Grid 5 images ---------- 
