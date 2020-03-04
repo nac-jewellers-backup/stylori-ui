@@ -10,27 +10,34 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
-export const cacheCheck = async () => {
+const cacheCheck = async () => {
 
   // read text from URL location
   var request = new XMLHttpRequest();
 
 
   // alert('i came in', myJson)
-
+debugger
   var local_storage = localStorage.getItem('version')
   if (local_storage && local_storage.length > 0) {
     const condition_async = async () => {
       request.open('GET', '/meta.json', true);
       request.send(null);
       request.onreadystatechange = async function () {
+        if (this.readyState == 4 && this.status == 200) {
+
         var type = await request.getResponseHeader('Content-Type');
-        if (type && type.indexOf("json") !== 1) {
-          var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== "string" ? JSON.parse(request.responseText) : ''
-          if (obj !== '' && Number(local_storage) !== Number(obj.version)) {
+debugger
+        if (type.indexOf("json") !== 1) {
+          var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
+          if (obj && Number(local_storage) !== Number(obj.version)) {
+            
             localStorage.setItem('version', obj.version)
-            window.location.reload()
+
+            window.location.reload(true)
           }
+
+        }
         }
       }
     }
@@ -41,17 +48,19 @@ export const cacheCheck = async () => {
       request.open('GET', '/meta.json', true);
       request.send(null);
       request.onreadystatechange = async function () {
-        // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
+        if (this.readyState == 4 && this.status == 200) {
 
         var type = await request.getResponseHeader('Content-Type');
-        // alert(request.responseText)
+       
 
         if (type.indexOf("json") !== 1) {
           var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
-          console.log('json', type.indexOf("json") !== 1, typeof request.responseText, request.responseText, obj)
-          if (obj !== '') localStorage.setItem('version', obj.version);
+      
+          if (obj !== '') localStorage.setItem('version', obj.version)
+
+
         }
-        // }
+        }
       }
     }
     condition_async()
@@ -68,7 +77,7 @@ const isLocalhost = Boolean(
 );
 
 // setTimeout(function(){ cacheCheck(); }, 20000);
-// alert(process.env.NODE_ENV)
+
 export async function register(config) {
   // cacheCheck();
   await requestNotificationPermission();
@@ -83,31 +92,33 @@ export async function register(config) {
       // serve assets; see https://github.com/facebook/create-react-app/issues/2374
       return;
     }
+    setInterval(function () { cacheCheck(); }, 5000);
     window.addEventListener('load', () => {
+      cacheCheck();
+      
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
-      setInterval(function () {
-        if (navigator.onLine) {
-          cacheCheck();
-        }
-      }, 3000);
+      
 
       if (isLocalhost) {
-        // This is running on localhost. Lets check if a service worker still exists or not.
-        checkValidServiceWorker(swUrl);
-
+        // cacheCheck()
+        // This is running on localhost. Let's check if a service worker still exists or not.
+        checkValidServiceWorker(swUrl, config);
+       
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
-        navigator.serviceWorker.ready.then(swReg => {
+        navigator.serviceWorker.ready.then(() => {
+        
           console.log(
             'This web app is being served cache-first by a service ' +
-            'worker. To learn more, visit https://goo.gl/SC7cgQ'
+            'worker. To learn more, visit https://bit.ly/CRA-PWA'
           );
         });
       } else {
-        // Is not local host. Just register service worker
-        registerValidSW(swUrl);
+        // cacheCheck()
+        // Is not localhost. Just register service worker
+        registerValidSW(swUrl, config);
       }
-    });
+    }); 
   }
 }
 
