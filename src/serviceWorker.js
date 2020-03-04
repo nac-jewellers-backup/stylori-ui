@@ -17,17 +17,17 @@ const cacheCheck = async () => {
 
 
   // alert('i came in', myJson)
-debugger
+
   var local_storage = localStorage.getItem('version')
   if (local_storage && local_storage.length > 0) {
     const condition_async = async () => {
       request.open('GET', '/meta.json', true);
       request.send(null);
       request.onreadystatechange = async function () {
-        if (this.readyState == 4 && this.status == 200) {
+        // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
 
         var type = await request.getResponseHeader('Content-Type');
-debugger
+
         if (type.indexOf("json") !== 1) {
           var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
           if (obj && Number(local_storage) !== Number(obj.version)) {
@@ -38,7 +38,7 @@ debugger
           }
 
         }
-        }
+        // }
       }
     }
     condition_async()
@@ -48,7 +48,7 @@ debugger
       request.open('GET', '/meta.json', true);
       request.send(null);
       request.onreadystatechange = async function () {
-        if (this.readyState == 4 && this.status == 200) {
+        // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
 
         var type = await request.getResponseHeader('Content-Type');
        
@@ -60,7 +60,7 @@ debugger
 
 
         }
-        }
+        // }
       }
     }
     condition_async()
@@ -82,7 +82,7 @@ export async function register(config) {
   // cacheCheck();
   await requestNotificationPermission();
 
-  if (process.env.NODE_ENV === 'production' || 'serviceWorker' in navigator) {
+  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // cacheCheck();
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location);
