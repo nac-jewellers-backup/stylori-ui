@@ -82,7 +82,7 @@ export async function register(config) {
   // cacheCheck();
   await requestNotificationPermission();
 
-  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+  if (process.env.NODE_ENV === 'production' || 'serviceWorker' in navigator) {
     // cacheCheck();
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location);
