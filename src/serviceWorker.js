@@ -24,7 +24,7 @@ const cacheCheck = async () => {
       request.open('GET', '/meta.json', true);
       request.send(null);
       request.onreadystatechange = async function () {
-        // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
+        if (this.readyState == 4 && this.status == 200) {
 
         var type = await request.getResponseHeader('Content-Type');
 
@@ -38,7 +38,7 @@ const cacheCheck = async () => {
           }
 
         }
-        // }
+        }
       }
     }
     condition_async()
@@ -48,7 +48,7 @@ const cacheCheck = async () => {
       request.open('GET', '/meta.json', true);
       request.send(null);
       request.onreadystatechange = async function () {
-        // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
+        if (this.readyState == 4 && this.status == 200) {
 
         var type = await request.getResponseHeader('Content-Type');
        
@@ -60,7 +60,7 @@ const cacheCheck = async () => {
 
 
         }
-        // }
+        }
       }
     }
     condition_async()
