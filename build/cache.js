@@ -35,7 +35,7 @@ self.addEventListener("fetch", e => {
           return caches.open(inA ? cacheKeys[0] : cacheKeys[1]).then(c => {
               console.info('LOADING CACHES FROM',inA ? cacheKeys[0] : cacheKeys[1], inA,inB);
               console.info('CACHES I am reloading... ',inA ? cacheKeys[0] : cacheKeys[1]);
-              window.location.reload(true)
+              // window.location.reload(true)
               c.put(e.request.url, res.clone());
               return res;
           })
@@ -57,7 +57,7 @@ self.addEventListener('activate', event => {
       return Promise.all(
         cacheNames.map(cacheName => {
           if (cacheWhitelist.indexOf(cacheName) === -1) {
-            window.location.reload(true)
+            // window.location.reload(true)
             return caches.delete(cacheName);
           }
         })
