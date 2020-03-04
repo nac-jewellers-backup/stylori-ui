@@ -6,8 +6,6 @@ const cacheFiles = [
 '/manifest.json'
 ], _cacheName_one = 'test-cache';
 
-if(window.location.hostname !== "alpha.stylori.net" && window.location.hostname !== "localhost")
-{
   // NOTE: Caching custom files
 // eslint-disable-next-line no-restricted-globals
 self.addEventListener('install', function(event) {
@@ -68,4 +66,4 @@ self.addEventListener('activate', event => {
   );
 });
 //   var staticCacheName = 'pages-cache-v2';
-}
+// }
