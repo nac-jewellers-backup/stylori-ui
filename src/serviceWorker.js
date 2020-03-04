@@ -21,7 +21,7 @@ const cacheCheck = async () => {
   var local_storage = localStorage.getItem('version')
   if (local_storage && local_storage.length > 0) {
     const condition_async = async () => {
-      request.open('GET', '/meta.json', true);
+      request.open('GET', '/meta.json?_=' + new Date().getTime(), true);
       request.send(null);
       request.onreadystatechange = async function () {
         if (this.readyState == 4 && this.status == 200) {
