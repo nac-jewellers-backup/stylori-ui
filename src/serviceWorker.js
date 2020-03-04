@@ -10,7 +10,7 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
-const cacheCheck = async () => {
+export const cacheCheck = async () => {
 
   // read text from URL location
   var request = new XMLHttpRequest();
@@ -24,21 +24,14 @@ const cacheCheck = async () => {
       request.open('GET', '/meta.json', true);
       request.send(null);
       request.onreadystatechange = async function () {
-        // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
-
         var type = await request.getResponseHeader('Content-Type');
-
-        if (type.indexOf("json") !== 1) {
-          var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
-          if (obj && Number(local_storage) !== Number(obj.version)) {
-            
+        if (type && type.indexOf("json") !== 1) {
+          var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== "string" ? JSON.parse(request.responseText) : ''
+          if (obj !== '' && Number(local_storage) !== Number(obj.version)) {
             localStorage.setItem('version', obj.version)
-
-            window.location.reload(true)
+            window.location.reload()
           }
-
         }
-        // }
       }
     }
     condition_async()
@@ -51,14 +44,12 @@ const cacheCheck = async () => {
         // if (request.readyState === 1 || (request.status === 200 ||request.status === 304)) {
 
         var type = await request.getResponseHeader('Content-Type');
-       
+        // alert(request.responseText)
 
         if (type.indexOf("json") !== 1) {
           var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
-      
-          if (obj !== '') localStorage.setItem('version', obj.version)
-
-
+          console.log('json', type.indexOf("json") !== 1, typeof request.responseText, request.responseText, obj)
+          if (obj !== '') localStorage.setItem('version', obj.version);
         }
         // }
       }
@@ -77,12 +68,12 @@ const isLocalhost = Boolean(
 );
 
 // setTimeout(function(){ cacheCheck(); }, 20000);
-
+// alert(process.env.NODE_ENV)
 export async function register(config) {
   // cacheCheck();
   await requestNotificationPermission();
 
-  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+  if (process.env.NODE_ENV === 'production' || 'serviceWorker' in navigator) {
     // cacheCheck();
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location);
@@ -92,33 +83,31 @@ export async function register(config) {
       // serve assets; see https://github.com/facebook/create-react-app/issues/2374
       return;
     }
-    setInterval(function () { cacheCheck(); }, 5000);
     window.addEventListener('load', () => {
-      cacheCheck();
-      
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
-      
+      setInterval(function () {
+        if (navigator.onLine) {
+          cacheCheck();
+        }
+      }, 3000);
 
       if (isLocalhost) {
-        // cacheCheck()
-        // This is running on localhost. Let's check if a service worker still exists or not.
-        checkValidServiceWorker(swUrl, config);
-       
+        // This is running on localhost. Lets check if a service worker still exists or not.
+        checkValidServiceWorker(swUrl);
+
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
-        navigator.serviceWorker.ready.then(() => {
-        
+        navigator.serviceWorker.ready.then(swReg => {
           console.log(
             'This web app is being served cache-first by a service ' +
-            'worker. To learn more, visit https://bit.ly/CRA-PWA'
+            'worker. To learn more, visit https://goo.gl/SC7cgQ'
           );
         });
       } else {
-        // cacheCheck()
-        // Is not localhost. Just register service worker
-        registerValidSW(swUrl, config);
+        // Is not local host. Just register service worker
+        registerValidSW(swUrl);
       }
-    }); 
+    });
   }
 }
 
