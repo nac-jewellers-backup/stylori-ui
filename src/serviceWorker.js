@@ -34,7 +34,7 @@ const cacheCheck = async () => {
             
             localStorage.setItem('version', obj.version)
 
-            window.location.reload()
+            window.location.reload(true)
           }
 
         }
