@@ -49,21 +49,21 @@ self.addEventListener("fetch", e => {
       }
   }))
 })
-self.addEventListener('activate', event => {
-  const cacheWhitelist = ['sw-precache-v3-sw-precache-webpack-plugin'];
+// self.addEventListener('activate', event => {
+//   const cacheWhitelist = ['sw-precache-v3-sw-precache-webpack-plugin'];
 
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            // window.location.reload(true)
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
-});
+//   event.waitUntil(
+//     caches.keys().then(cacheNames => {
+//       return Promise.all(
+//         cacheNames.map(cacheName => {
+//           if (cacheWhitelist.indexOf(cacheName) === -1) {
+//             // window.location.reload(true)
+//             return caches.delete(cacheName);
+//           }
+//         })
+//       );
+//     })
+//   );
+// });
 //   var staticCacheName = 'pages-cache-v2';
 // }
