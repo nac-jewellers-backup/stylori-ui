@@ -174,64 +174,82 @@ const handleVideoCheck = (url) => {
 const injectUrl = (url, baseUi) => resolutions.map(k => ({ ...k, img: `${baseUi}${k.res}${url}` }))
 const generateImgurls = (PD, val, screen_res, tabsChange) => {
 console.log(PD, val, "PD , VAL---------")
-
     var arrOfurls = []
     var arrOfurls_2X = []
     var imgurlsplit = null
     var metalcolor = null
     var metalcolor2 = null
     var largeImageZoom = true
+   if(val.length > 0){
     val.map(imgurl => {
 
-        if (!handleVideoCheck(imgurl.imageUrl)) {
-            if (imgurl.imageUrl.split('.')[0].split('-')[1].length > 2) {
-
-                imgurlsplit = imgurl.imageUrl.split('.')[0].split('-')[1].substr(1)
-            }
-            else {
-                imgurlsplit = imgurl.imageUrl.split('.')[0].charAt(imgurl.imageUrl.split('.')[0].length - 1)
-            }
-            // var imgurlsplit 
-            if (PD.metalColor.split(' ').length > 1) {
-                var colorOne = PD.metalColor.split(' ')[0].charAt(0)
-                var colorTwo = PD.metalColor.split(' ')[1].charAt(0)
-                metalcolor = colorOne.concat(colorTwo)
-                metalcolor2 = colorTwo.concat(colorOne)
-            }
-            else {
-                if (PD && PD.metalColor) metalcolor = PD.metalColor.charAt(0)
-                else metalcolor = ''
-            }
-
-            // if (imgurlsplit === metalcolor) {
-
-            // arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
-
-            // }
-            if (!tabsChange) {
-
-                if (imgurl.productColor === PD.metalColor || imgurl.productColor === PD.metalColor) {
-
+        if(imgurl && Object.entries(imgurl).length > 0){
+            if (!handleVideoCheck(imgurl.imageUrl)) {
+                if(imgurl && imgurl.imageUrl && imgurl.imageUrl.indexOf('.') > -1 && imgurl.imageUrl.indexOf('-')[0] > -1){
+                    debugger
+                    if (imgurl.imageUrl.split('.')[0].split('-')[1].length > 2) {
+    
+                        imgurlsplit = imgurl.imageUrl.split('.')[0].split('-')[1].substr(1)
+                    }
+                    else {
+                        imgurlsplit = imgurl.imageUrl.split('.')[0].charAt(imgurl.imageUrl.split('.')[0].length - 1)
+                    }
+                }
+                else{
+                    arrOfurls = []
+                    arrOfurls_2X = []
+                }
+                // var imgurlsplit 
+                if (PD.metalColor && PD.metalColor.split(' ').length > 1) {
+                    var colorOne = PD.metalColor.split(' ')[0].charAt(0)
+                    var colorTwo = PD.metalColor.split(' ')[1].charAt(0)
+                    metalcolor = colorOne.concat(colorTwo)
+                    metalcolor2 = colorTwo.concat(colorOne)
+                }
+                else {
+                    if (PD && PD.metalColor) metalcolor = PD.metalColor.charAt(0)
+                    else metalcolor = ''
+                }
+    
+                // if (imgurlsplit === metalcolor) {
+    
+                // arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
+    
+                // }
+                if (!tabsChange) {
+    
+                    if (imgurl.productColor === PD.metalColor || imgurl.productColor === PD.metalColor) {
+    
+                        arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
+                        arrOfurls_2X.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res, largeImageZoom))
+    
+                    }
+                }
+                else {
                     arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
                     arrOfurls_2X.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res, largeImageZoom))
-
                 }
+    
+                return { arrOfurls, arrOfurls_2X }
             }
             else {
-                arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
-                arrOfurls_2X.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res, largeImageZoom))
+                arrOfurls.push(`${CDN_URL}${imgurl.imageUrl}`)
+                arrOfurls_2X.push(`${CDN_URL}${imgurl.imageUrl}`)
+                return { arrOfurls, arrOfurls_2X }
             }
-
-            return { arrOfurls, arrOfurls_2X }
         }
-        else {
-            arrOfurls.push(`${CDN_URL}${imgurl.imageUrl}`)
-            arrOfurls_2X.push(`${CDN_URL}${imgurl.imageUrl}`)
-            return { arrOfurls, arrOfurls_2X }
+        else{
+            arrOfurls = []
+            arrOfurls_2X = []
         }
     }
 
     )
+   }
+   else{
+       arrOfurls = []
+       arrOfurls_2X = []
+   }
 
     return { arrOfurls, arrOfurls_2X }
 
