@@ -208,13 +208,15 @@ class Component extends React.Component {
             slider.current.slickPrev();
         }
         const dimondclarity = (val) => {
-            if (val.length === 4) {
-                return val[0] + val[1] + "-" + val[2] + val[3]
-            }
-            else if (val.length === 5) {
-                return val[0] + val[1] + val[2] + "-" + val[3] + val[4]
-            } else {
-                return val
+            if(val){
+                if (val.length === 4) {
+                    return val[0] + val[1] + "-" + val[2] + val[3]
+                }
+                else if (val.length === 5) {
+                    return val[0] + val[1] + val[2] + "-" + val[3] + val[4]
+                } else {
+                    return val
+                }
             }
         }
         const handle_extension = (_url) => {
@@ -238,7 +240,7 @@ class Component extends React.Component {
         return (
             <div>
                 {data[0].productTabs.map(val => {
-
+debugger
                     const arr = val.tab1.Children !== null && val.tab1.Children
                     const arr2 = val.tab2.Children !== null && (val.tab2.Children).split(',')
                     return (
@@ -452,10 +454,11 @@ class Component extends React.Component {
     //         expanded: expanded ? panel : false,
     //     });
     // };
-
     render() {
         // console.log('lklkkoik9', this.props.filters.defaultVariants.skuSize)
         const { expanded } = this.state;
+debugger
+
         return (
             <div>
                 <Hidden smDown>
