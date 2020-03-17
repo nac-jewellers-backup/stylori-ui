@@ -362,7 +362,7 @@ const handle_mapper = (val) => {
 }
 // icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
 export default function (data, like_data, viewedddatas, rating, tabsChange) {
-
+debugger
     let mapperdata = [];
     try {
         // mapperda = ;
@@ -385,13 +385,14 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                 offerPrice: PD && PD.markupPrice ? PD.markupPrice : '',
                 save: '5999.9',
                 offerDiscount: PD && PD.discount ? `${PD.discount}% OFF` : null,
-                dis: PD && PD !== undefined && PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription !== '' ? PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription : '',
+                dis: PD && PD !== undefined && PD.transSkuDescriptionsBySkuId.nodes &&
+                PD.transSkuDescriptionsBySkuId.nodes.length > 0 && PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription !== '' ? PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription : '',
                 productType: PD.productListByProductId.productType && PD.productListByProductId.productType,
                 fadeImages: (PD &&
                     PD.productListByProductId &&
                     PD.productListByProductId.productImagesByProductId) &&
                     PD.productListByProductId.productImagesByProductId.nodes.length > 0 ?
-                    generateImgurls(PD, PD.productListByProductId.productImagesByProductId.nodes, colSize, tabsChange) : { arrOfurls: [`${CDN_URL}product/575X575/productnotfound.webp`, `${CDN_URL}product/575X575/productnotfound.webp`, `${CDN_URL}product/575X575/productnotfound.webp`], arrOfurls: [`${CDN_URL}product/575X575/productnotfound.webp`, `${CDN_URL}product/575X575/productnotfound.webp`, `${CDN_URL}product/575X575/productnotfound.webp`] },
+                    generateImgurls(PD, PD.productListByProductId.productImagesByProductId.nodes, colSize, tabsChange) : { arrOfurls: [`${CDN_URL}product/575X575/productnotfound.webp`, `${CDN_URL}product/575X575/productnotfound.webp`, `${CDN_URL}product/575X575/productnotfound.webp`], arrOfurls_2X: [`${CDN_URL}product/575X575/productnotfound.webp`, `${CDN_URL}product/575X575/productnotfound.webp`, `${CDN_URL}product/575X575/productnotfound.webp`] },
                 image_resolution: img_res ? img_res : 1000,
                 image_resolution_two: img_res_X_2 ? img_res_X_2 : 1000,
                     size: my_actual_size ?  my_actual_size : 500,
@@ -414,6 +415,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                     name: "Easy Returns",
                     icon: 'https://img.icons8.com/wired/64/000000/diamond.png',
                 },
+
                 {
                     name: "Diverse Styles",
                     icon: 'https://img.icons8.com/wired/64/000000/diamond.png',
@@ -442,7 +444,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                     tab3: {
                         header: "Diamond Clarity",
                         Children:
-                            PD.productListByProductId.productDiamondsByProductSku.nodes &&
+                            PD.productListByProductId.productDiamondsByProductSku.nodes && PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0 && 
                             generatedimondClarity(PD.productListByProductId.productDiamondsByProductSku.nodes)
                         // var c = [...new Set(temp1.map(bill => bill.name))]
 
@@ -457,7 +459,8 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                     isReadyToShip: PD.isReadyToShip
                 }],
                 // //////////////////////////     productsDetails    ////////////////////////////////////////////
-                productsDetails: [{
+                productsDetails: [
+                    {
                     header: "Product Details",
                     namedetail: [{
                         name: "Product Code",
@@ -596,10 +599,10 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                                 PD.productListByProductId.productDiamondsByProductSku.nodes && PD.productListByProductId.productDiamondsByProductSku.nodes.length > 0 ?
                                 [
 
-                                    PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                                    PD.pricingSkuMaterialsByProductSku.nodes && PD.pricingSkuMaterialsByProductSku.nodes.length>0?
                                         calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes, "diamond", "discountPrice"
                                         ) : 0,
-                                    PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                                    PD.pricingSkuMaterialsByProductSku.nodes && PD.pricingSkuMaterialsByProductSku.nodes.length>0?
                                         calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes, "diamond", "markup") : 0
                                 ]
                                 :
@@ -612,9 +615,9 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                             PD && PD.productListByProductId && PD.productListByProductId.productGemstonesByProductSku &&
                                 PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length > 0 ?
 
-                                [PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                                [PD.pricingSkuMaterialsByProductSku.nodes && PD.pricingSkuMaterialsByProductSku.nodes.length>0 ?
                                     calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes, "gemstone", "discountPrice") : 0,
-                                PD.pricingSkuMaterialsByProductSku.nodes !== undefined ?
+                                PD.pricingSkuMaterialsByProductSku.nodes && PD.pricingSkuMaterialsByProductSku.nodes.length>0 ?
                                     calculatetotalms(PD.pricingSkuMaterialsByProductSku.nodes, "gemstone", "markup") : 0
                                 ]
                                 :
@@ -669,7 +672,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                     },
                 ],
                 productsPendants: [{
-                    header: PD && PD !== undefined && PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription !== '' ? PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription : '',
+                    header: PD && PD !== undefined && PD.transSkuDescriptionsBySkuId.nodes && PD.transSkuDescriptionsBySkuId.nodes.length > 0 && PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription !== '' ? PD.transSkuDescriptionsBySkuId.nodes[0].skuDescription : '',
                     name: [
                         '#EveryDay', '#Female', '#THree Stone', '#Spots', '#Special Occasion', '#Designer', '#Essentails', '#EveryDay', '#Female', '#THree Stone', '#Spots', '#Special Occasion', '#Designer', '#Essentails',]
                 }],
@@ -729,9 +732,12 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
         catch (e) {
             // console.log("product detail page error", "-----", e)
         }
+        debugger
 
         return _d
     })
+debugger
+
     return _format;
 }
 
