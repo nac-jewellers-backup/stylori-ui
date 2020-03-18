@@ -31,7 +31,7 @@ class PaymentIndex extends React.Component {
 
     }
 componentDidUpdate(prevProps, prevState){
-    debugger
+    
     if(prevProps.isCodAvailable !== this.props.isCodAvailable)
     if(!this.props.isCodAvailable){
         this.setState({isActive:"Netbanking", disabledCOD:true})
@@ -204,7 +204,7 @@ if(cartId){
                 })
                     .then(status)
                     .then(json).then(val => {
-                       debugger
+                       
                        if(mapped && mapped.length > 0 && val){
                         const min_cart_value = val.data ? val.data.allPincodeMasters.nodes[0].minCartvalue : null
                         const max_cart_value = val.data ? val.data.allPincodeMasters.nodes[0].maxCartvalue : null
