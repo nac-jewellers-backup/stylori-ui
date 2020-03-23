@@ -143,8 +143,7 @@ const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
     }
 
 
-    return img_url
-
+    return `${img_url}?_= ${new Date().getTime()}`
 }
 
 // video validation

@@ -637,7 +637,8 @@ const Provider = props => {
         props.history.push({
           pathname: `${
             mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ""
-          }`
+          }`,
+          search:window.location.search
         });
       }
       setSort("");
@@ -688,7 +689,7 @@ const Provider = props => {
     ) {
       props.history.push({
         pathname: `${mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ""}`,
-        search: filters_seo_condition()
+        search: filters_seo_condition() ? filters_seo_condition() :window.location.search
       });
 
       updatefiltersSort();
