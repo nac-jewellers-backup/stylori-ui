@@ -25,11 +25,11 @@ export const
         swipe: true
       },
       "data": [
-        {
-          img: "https://assets.stylori.com/images/Static+Pages/Home+Page/banner4.jpg",
-          mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Floral-collection-Mob.jpg",
-          navigateUrl: "/floral-jewellery?sort=latest"
-        },
+        // {
+        //   img: "https://assets.stylori.com/images/Static+Pages/Home+Page/banner4.jpg",
+        //   mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Floral-collection-Mob.jpg",
+        //   navigateUrl: "/floral-jewellery?sort=latest"
+        // },
         {
           img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+banner+1920+X+656.jpg",
           mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+mobile+banner+805+X+430.jpg",
