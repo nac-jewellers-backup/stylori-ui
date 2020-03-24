@@ -128,7 +128,7 @@ const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
 
         url_split[url_split && url_split.length - 1] = browser_type_append
         url_split.splice(2, 0, _resolutions);
-        var url_construct = url_split.join().replaces(/\,/g, '/')
+        var url_construct = url_split.join().replace(/\,/g, '/')
         var img_url = `${baseUi}${url_construct}`
     }
     else {
