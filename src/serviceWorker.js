@@ -33,19 +33,19 @@ const cacheCheck = async () => {
           if (obj && Number(local_storage) !== Number(obj.version)) {
             
             localStorage.setItem('version', obj.version)
-            window.addEventListener('activate', function(event) {
-              event.waitUntil(
-                caches.keys().then(function(cacheNames) {
-                  return Promise.all(
-                    cacheNames.filter(function(cacheName) {
-                    return true
-                    }).map(function(cacheName) {
-                      return caches.delete(cacheName);
-                    })
-                  );
-                })
-              );
-            });
+            // window.addEventListener('activate', function(event) {
+            //   event.waitUntil(
+            //     caches.keys().then(function(cacheNames) {
+            //       return Promise.all(
+            //         cacheNames.filter(function(cacheName) {
+            //         return true
+            //         }).map(function(cacheName) {
+            //           return caches.delete(cacheName);
+            //         })
+            //       );
+            //     })
+            //   );
+            // });
             window.location.reload(true)
             // this.location.reload(true);
           }
