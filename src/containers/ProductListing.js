@@ -46,7 +46,7 @@ class Stylori extends React.Component {
         <LiveChat license={5807571} />
         <Grid container >
           <div>
-            {
+            {/* {
               this.props && this.props.mappedFilters && this.props.mappedFilters.seo_url ?
                 <MetaTags>
                   <title>{this.props.mappedFilters.seo_url}</title>
@@ -71,7 +71,7 @@ class Stylori extends React.Component {
                 </MetaTags>
                 :
                 ''
-            }
+            } */}
 
 
           </div>
@@ -104,7 +104,7 @@ const Components = props => {
   let content, mapped = [];
   // alert(JSON.stringify(cartcount))
   var arrFilters = Array(mappedFilters)
-  let mappedFiltersList = filterData(arrFilters)
+  let mappedFiltersList = arrFilters.length > 0 ?  filterData(arrFilters) : []
   // let mappedFilter = filterData(mappedFilters)
   if (!loading && !error) {
     if (Object.keys(data).length !== 0) {

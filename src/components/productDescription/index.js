@@ -150,7 +150,7 @@ class ProductDescription extends Component {
                     {
                       this.state.showLess === true ?
                         <>
-                          {(datadescription).slice(0, 160)}
+                          {datadescription&& (datadescription).slice(0, 160)}
                           <span id="moreDots" style={{ display: 'inline' }}>...</span>
                           <p onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readMore" >
                             <span ><i className="fa faMore">&#xf0da;</i></span> READ MORE

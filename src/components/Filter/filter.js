@@ -62,6 +62,8 @@ class Component extends React.Component {
   }
   componentDidMount() {
     var { checked, chipData, numOne, numTwo, selected } = this.state
+if(this.props.data && this.props.data.length > 0 && this.props.data[0] && this.props.data[0].subFilter['Price Range'])
+   {
     var price_min = Number(this.props.data[0].subFilter['Price Range'].min);
     var price_max = Number(this.props.data[0].subFilter['Price Range'].max);
     var _price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_min));
@@ -71,6 +73,7 @@ class Component extends React.Component {
     // checked['pricemin'] = _price_min
     this.setState(checked)
     this.setState({ numOne: _price_min, numTwo: _price_max })
+   }
 
 
 
@@ -668,12 +671,12 @@ class Component extends React.Component {
                           <>
                             {
 
-                              filter.map((row, i) => {
-
+filter  &&     filter.map((row, i) => {
+debugger
                                 return (
                                   <>
                                     {
-                                      subFilter[row].length > 0 ?
+                                      subFilter && subFilter[row] && subFilter[row].length > 0 ?
                                         <>{window.location.pathname === "/goldcoins" || found === "goldcoins" || found === "/goldcoins" ? row === "Offers" ? "" : <ListItem key={row}
                                           onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
                                           <ListItemText
@@ -852,7 +855,7 @@ class Component extends React.Component {
                     : ""} */}
                   <List className="mbl-filter-list">
                     {filter && filter.map(row => {
-                      return (subFilter[row].length > 0 ?
+                      return (subFilter && subFilter[row] && subFilter[row].length > 0 ?
                         <>{window.location.pathname === "/goldcoins" || found === "/goldcoins" || found === "goldcoins" ? row === "Offers" ? "" : <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
                           onClick={() => this.filterValue(row)}
                         >
