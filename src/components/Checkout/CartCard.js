@@ -417,7 +417,7 @@ class Checkoutcard extends React.Component {
                                 
                                 {props.cartFilters.tax_price ? <Typography className={`subhesder ${classes.normalfonts}`}>
                                     {props.cartFilters.tax_price}</Typography> : null}
-                                <Typography className={`subhesder ${classes.normalfonts}`}>FREE </Typography>
+                                <Typography className={`subhesder ${classes.normalfonts}`}>{props.shipping_charge} </Typography>
                                 <Typography className={`subhesder-totsl-size ${classes.normalfonts}`}>{props.cartFilters.discounted_amount ?Math.round(props.cartFilters.discounted_amount) : Math.round(dataCard1 - discounted_price) }</Typography>
                             </Grid>
                         </Grid>
@@ -449,6 +449,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         var data = this.props.data
+        debugger
         const { classes } = this.props;
         // alert(discounted_price)
         let path = window.location.pathname.split('/').pop();
@@ -475,9 +476,23 @@ class Checkoutcard extends React.Component {
 
 }
 const Components = props => {
+    const [ShippingCharge, setShippingCharge] = React.useState(0)
+    React.useEffect(()=>{
+        fetch(`${API_URL}/getshippingcharge`,{
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+              },
+              body: localStorage.getItem("cart_id"),
+            method:"POST",
+    })
+      .then(async response => response.json())
+      .then(val => {if(val) setShippingCharge(val.shipping_charge)})
+      .catch((err)=>{console.log(err,": in shipping charge API")});
+    },[])
     let { CartCtx: { cartFilters } } = React.useContext(CartContext);
     let content;
-    content = <Checkoutcard {...props} cartFilters={cartFilters} />
+debugger
+    content = <Checkoutcard {...props} cartFilters={cartFilters} shipping_charge = {ShippingCharge}/>
     return content
 }
 export default withStyles(styles)(Components)
