@@ -33,9 +33,8 @@ self.addEventListener("fetch", e => {
           
           console.info('LOADING CACHES FROM',inA ? cacheKeys[0] : cacheKeys[1]);
           return caches.open(inA ? cacheKeys[0] : cacheKeys[1]).then(c => {
-              console.info('LOADING CACHES FROM',inA ? cacheKeys[0] : cacheKeys[1], inA,inB);
-              console.info('CACHES I am reloading... ',inA ? cacheKeys[0] : cacheKeys[1]);
-              // window.location.reload(true)
+              // console.info('LOADING CACHES FROM',inA ? cacheKeys[0] : cacheKeys[1], inA,inB);
+              // console.info('CACHES I am reloading... ',inA ? cacheKeys[0] : cacheKeys[1]);
               c.put(e.request.url, res.clone());
               return res;
           })
