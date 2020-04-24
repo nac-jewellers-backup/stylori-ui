@@ -65,29 +65,3 @@ self.addEventListener("fetch", e => {
 //     })
 //   );
 // });
-
-self.addEventListener('activate', function(event) {
-  const cacheWhitelist = ['sw-precache-v3-sw-precache-webpack-plugin'];
-  event.waitUntil(
-    caches.keys().then(function(cacheNames) {
-      return Promise.all(
-        cacheNames.filter(function(cacheName) {
-          // Return true if you want to remove this cache,
-          // but remember that caches are shared across
-          // the whole origin
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return true
-          }
-        }).map(function(cacheName) {
-          return caches.delete(cacheName);
-        })
-      );
-    })
-  );
-});
-
-
-
-
-//   var staticCacheName = 'pages-cache-v2';
-// }
