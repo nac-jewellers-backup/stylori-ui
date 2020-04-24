@@ -35,11 +35,11 @@ const cacheCheck = async () => {
             localStorage.setItem('version', obj.version)
           
             console.log('@here @here', caches ? true : false)
-            const caches_list = await caches
-            if (caches_list) {
+            // const caches_list = await caches
+            if (caches) {
               // Service worker cache should be cleared with caches.delete()
-              caches_list.keys().then(async function(names) {
-                for (let name of names) await caches_list.delete(name);
+              caches.keys().then(async function(names) {
+                for (let name of names) await caches.delete(name);
               });
             }
          // delete browser cache and hard reload

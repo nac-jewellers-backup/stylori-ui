@@ -9,8 +9,8 @@ const cacheFiles = [
   // NOTE: Caching custom files
 // eslint-disable-next-line no-restricted-globals
 self.addEventListener('install', function(event) {
-  console.info('FOUND-e', 'cache test')
-  console.info('OFFLINE ENTRY TESTING','offline cache testing');
+  // console.info('FOUND-e', 'cache test')
+  // console.info('OFFLINE ENTRY TESTING','offline cache testing');
   event.waitUntil(
     caches.open(_cacheName_one).then(function(cache) {
       return cache.addAll(cacheFiles );
@@ -20,7 +20,7 @@ self.addEventListener('install', function(event) {
 
 
 self.addEventListener("fetch", e => {
-  console.info('FOUND-e', e);
+  // console.info('FOUND-e', e);
   e.respondWith(caches.match(e.request).then(async res => {
 
       if (res) {
@@ -31,7 +31,7 @@ self.addEventListener("fetch", e => {
           const inA = Boolean((await ca.keys()).find(r => r.url !== e.request.url))
           const inB = Boolean((await cb.keys()).find(r => r.url !== e.request.url))
           
-          console.info('LOADING CACHES FROM',inA ? cacheKeys[0] : cacheKeys[1]);
+          // console.info('LOADING CACHES FROM',inA ? cacheKeys[0] : cacheKeys[1]);
           return caches.open(inA ? cacheKeys[0] : cacheKeys[1]).then(c => {
               // console.info('LOADING CACHES FROM',inA ? cacheKeys[0] : cacheKeys[1], inA,inB);
               // console.info('CACHES I am reloading... ',inA ? cacheKeys[0] : cacheKeys[1]);
@@ -39,7 +39,7 @@ self.addEventListener("fetch", e => {
               return res;
           })
       } else {
-           console.info('LOADING CACHES FROM','cache');
+          //  console.info('LOADING CACHES FROM','cache');
           return fetch(e.request);
       }
   }).catch(err => {
