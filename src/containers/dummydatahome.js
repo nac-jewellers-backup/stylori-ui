@@ -26,16 +26,16 @@ export const
       },
       "data": [
         
-        {
-          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+banner+1920+X+656.jpg?_="+ new Date().getTime(),
-          mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+mobile+banner+805+X+430.jpg?_="+ new Date().getTime(),
-          navigateUrl: "https://www.stylori.com/jewellery"
-        },
-        {
-          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-+-+1920x656+copy.jpg?_="+ new Date().getTime(),
-          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-805x430.jpg?_="+ new Date().getTime(),
-          navigateUrl: "https://www.stylori.com/goldcoins"
-        },
+        // {
+        //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+banner+1920+X+656.jpg?_="+ new Date().getTime(),
+        //   mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+mobile+banner+805+X+430.jpg?_="+ new Date().getTime(),
+        //   navigateUrl: "https://www.stylori.com/jewellery"
+        // },
+        // {
+        //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-+-+1920x656+copy.jpg?_="+ new Date().getTime(),
+        //   mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-805x430.jpg?_="+ new Date().getTime(),
+        //   navigateUrl: "https://www.stylori.com/goldcoins"
+        // },
         {
           img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-1920-X-656-px.jpg?_="+ new Date().getTime(),
           mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-mobile-805X430-px.jpg?_="+ new Date().getTime(),
