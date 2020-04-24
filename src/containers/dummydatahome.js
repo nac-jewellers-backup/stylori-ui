@@ -26,34 +26,34 @@ export const
       },
       "data": [
         
-        // {
-        //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+banner+1920+X+656.jpg",
-        //   mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+mobile+banner+805+X+430.jpg",
-        //   navigateUrl: "https://www.stylori.com/jewellery"
-        // },
         {
-          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-+-+1920x656+copy.jpg",
-          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-805x430.jpg",
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+banner+1920+X+656.jpg?_="+ new Date().getTime(),
+          mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+mobile+banner+805+X+430.jpg?_="+ new Date().getTime(),
+          navigateUrl: "https://www.stylori.com/jewellery"
+        },
+        {
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-+-+1920x656+copy.jpg?_="+ new Date().getTime(),
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-805x430.jpg?_="+ new Date().getTime(),
           navigateUrl: "https://www.stylori.com/goldcoins"
         },
         {
-          img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-1920-X-656-px.jpg",
-          mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-mobile-805X430-px.jpg",
+          img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-1920-X-656-px.jpg?_="+ new Date().getTime(),
+          mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-mobile-805X430-px.jpg?_="+ new Date().getTime(),
           navigateUrl: "/jewellery/kada/csk_kada?skuId=1000001"
         },
         {
-          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Earring-Stylori-2020.jpg",
-          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Earring-Stylori--mob-2020.jpg",
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Earring-Stylori-2020.jpg?_="+ new Date().getTime(),
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Earring-Stylori--mob-2020.jpg?_="+ new Date().getTime(),
           navigateUrl: "/earrings-jewellery?sort=Featured&startprice=0&endprice=0"
         },
         {
-          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Carve+web+banner+2020.jpg",
-          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Carve+mob+banner+2020.jpg",
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Carve+web+banner+2020.jpg?_="+ new Date().getTime(),
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Carve+mob+banner+2020.jpg?_="+ new Date().getTime(),
           navigateUrl: "/jewellery-from+the+carve+collection"
         },
         {
-          img: "https://assets.stylori.com/images/Static+Pages/Home+Page/banner1.jpg",
-          mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/gemstone-mob",
+          img: "https://assets.stylori.com/images/Static+Pages/Home+Page/banner1.jpg?_="+ new Date().getTime(),
+          mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/gemstone-mob?_="+ new Date().getTime(),
           navigateUrl: "/gemstone-jewellery?sort=latest"
         },
         // {
@@ -63,8 +63,8 @@ export const
         // },
       
         {
-          img: "https://assets.stylori.com/images/Static+Pages/Home+Page/banner3.jpg",
-          mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/rings-collection-mob.jpg",
+          img: "https://assets.stylori.com/images/Static+Pages/Home+Page/banner3.jpg?_="+ new Date().getTime(),
+          mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/rings-collection-mob.jpg?_="+ new Date().getTime(),
           navigateUrl: "/rings-jewellery"
         },
         // {
@@ -74,8 +74,8 @@ export const
         // },
         
         {
-          img: " https://assets.stylori.com/images/Static+Pages/Home+Page/banner5.jpg",
-          mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/halo-collection-mob.jpg",
+          img: " https://assets.stylori.com/images/Static+Pages/Home+Page/banner5.jpg?_="+ new Date().getTime(),
+          mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/halo-collection-mob.jpg?_="+ new Date().getTime(),
           navigateUrl: "/jewellery-from+halo+collection"
         },
         // {
