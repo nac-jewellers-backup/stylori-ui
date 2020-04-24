@@ -40,11 +40,9 @@ const cacheCheck = async () => {
               // Service worker cache should be cleared with caches.delete()
               const caches_list = await caches.keys() 
             const _caches  = caches_list ? caches_list : {}
-            _caches.keys().then( function(names) {
               debugger
-              console.log('names---------------------------------------', names)
-              for (let name of names)  caches.delete(name);
-            });
+              console.log('names---------------------------------------', caches_list)
+              for (let name of _caches)  caches.delete(name);
           }
          // delete browser cache and hard reload
         window.location.reload(true);
@@ -74,11 +72,11 @@ const cacheCheck = async () => {
             // Service worker cache should be cleared with caches.delete()
             const caches_list = await caches.keys() 
             const _caches  = caches_list ? caches_list : {}
-            _caches.keys().then( function(names) {
+            
               debugger
-              console.log('names---------------------------------------', names)
-              for (let name of names)  caches.delete(name);
-            });
+              console.log('names---------------------------------------', _caches)
+              for (let name of _caches)  caches.delete(name);
+            
           }
        // delete browser cache and hard reload
       window.location.reload(true);
