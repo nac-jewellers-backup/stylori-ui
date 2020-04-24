@@ -43,7 +43,7 @@ const cacheCheck = async () => {
               });
             }
          // delete browser cache and hard reload
-        window.location.reload(true);
+        window.location.reload();
           }
 
         }
