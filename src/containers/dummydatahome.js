@@ -26,11 +26,11 @@ export const
       },
       "data": [
         
-        // {
-        //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+banner+1920+X+656.jpg",
-        //   mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+mobile+banner+805+X+430.jpg",
-        //   navigateUrl: "https://www.stylori.com/jewellery"
-        // },
+        {
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+banner+1920+X+656.jpg",
+          mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+mobile+banner+805+X+430.jpg",
+          navigateUrl: "https://www.stylori.com/jewellery"
+        },
         // {
         //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-+-+1920x656+copy.jpg",
         //   mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-805x430.jpg",
