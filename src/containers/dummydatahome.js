@@ -31,16 +31,16 @@ export const
           mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+mobile+banner+805+X+430.jpg",
           navigateUrl: "https://www.stylori.com/jewellery"
         },
-        // {
-        //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-+-+1920x656+copy.jpg",
-        //   mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-805x430.jpg",
-        //   navigateUrl: "https://www.stylori.com/goldcoins"
-        // },
-        // {
-        //   img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-1920-X-656-px.jpg",
-        //   mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-mobile-805X430-px.jpg",
-        //   navigateUrl: "/jewellery/kada/csk_kada?skuId=1000001"
-        // },
+        {
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-+-+1920x656+copy.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-805x430.jpg",
+          navigateUrl: "https://www.stylori.com/goldcoins"
+        },
+        {
+          img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-1920-X-656-px.jpg",
+          mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-mobile-805X430-px.jpg",
+          navigateUrl: "/jewellery/kada/csk_kada?skuId=1000001"
+        },
         {
           img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Earring-Stylori-2020.jpg",
           mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Earring-Stylori--mob-2020.jpg",
