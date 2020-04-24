@@ -56,6 +56,7 @@ typings/
 # Optional npm cache directory
 .npm
 .sql
+.txt
 # Optional eslint cache
 .eslintcache
 
@@ -99,7 +100,6 @@ typings/
 # git has its own built in compression methods
 *.7z
 *.dmg
-*.gz
 *.iso
 *.jar
 *.rar
