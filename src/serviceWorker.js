@@ -33,21 +33,15 @@ const cacheCheck = async () => {
           if (obj && Number(local_storage) !== Number(obj.version)) {
             
             localStorage.setItem('version', obj.version)
-            // window.addEventListener('activate', function(event) {
-            //   event.waitUntil(
-            //     caches.keys().then(function(cacheNames) {
-            //       return Promise.all(
-            //         cacheNames.filter(function(cacheName) {
-            //         return true
-            //         }).map(function(cacheName) {
-            //           return caches.delete(cacheName);
-            //         })
-            //       );
-            //     })
-            //   );
-            // });
-            window.location.reload(true)
-            // this.location.reload(true);
+          
+            if (caches) {
+              // Service worker cache should be cleared with caches.delete()
+              caches.keys().then(function(names) {
+                for (let name of names) caches.delete(name);
+              });
+            }
+         // delete browser cache and hard reload
+        window.location.reload(true);
           }
 
         }
