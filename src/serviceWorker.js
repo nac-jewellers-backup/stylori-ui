@@ -71,6 +71,8 @@ const cacheCheck = async () => {
             // Service worker cache should be cleared with caches.delete()
             const caches_list = await caches.keys()
             caches_list.keys().then( function(names) {
+              debugger
+              console.log('names---------------------------------------', names)
               for (let name of names)  caches_list.delete(name);
             });
           }
