@@ -38,11 +38,14 @@ const cacheCheck = async () => {
             
             if (caches) {
               // Service worker cache should be cleared with caches.delete()
-              const caches_list = await caches.keys()
-              caches_list.keys().then( function(names) {
-                for (let name of names)  caches_list.delete(name);
-              });
-            }
+              const caches_list = await caches.keys() 
+            const _caches  = caches_list ? caches_list : {}
+            _caches.keys().then( function(names) {
+              debugger
+              console.log('names---------------------------------------', names)
+              for (let name of names)  caches.delete(name);
+            });
+          }
          // delete browser cache and hard reload
         window.location.reload(true);
           }
@@ -69,11 +72,12 @@ const cacheCheck = async () => {
           if (obj !== '') localStorage.setItem('version', obj.version)
           if (caches) {
             // Service worker cache should be cleared with caches.delete()
-            const caches_list = await caches.keys()
-            caches_list.keys().then( function(names) {
+            const caches_list = await caches.keys() 
+            const _caches  = caches_list ? caches_list : {}
+            _caches.keys().then( function(names) {
               debugger
               console.log('names---------------------------------------', names)
-              for (let name of names)  caches_list.delete(name);
+              for (let name of names)  caches.delete(name);
             });
           }
        // delete browser cache and hard reload
