@@ -32,12 +32,12 @@ const useStyles = makeStyles(theme => ({
     },
     containerRoot: {
         width: "100%",
-        backgroundImage: "url(https://alpha-assets.stylori.com/images/static/home/box_bg.png)",
+        backgroundImage: "url(https://assets.stylori.com/images/static/home/box_bg.png)",
         boxShadow: "0 0 5px #888 !important",
 
     },
     imgleft: {
-        backgroundImage: "url(https://alpha-assets.stylori.com/images/static/slider_icon.png) !important",
+        backgroundImage: "url(https://assets.stylori.com/images/static/home/slider_icon.png) !important",
         backgroundPosition: "-27px -229px !important",
         width: "35px !important",
         height: "44px !important",
@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
         borderLeft: " 0px"
     },
     imgRight: {
-        backgroundImage: "url(https://alpha-assets.stylori.com/images/static/slider_icon.png) !important",
+        backgroundImage: "url(https://assets.stylori.com/images/static/home/slider_icon.png) !important",
         backgroundPosition: "-160px -229px !important",
         width: "35px !important",
         height: " 44px !important",
@@ -130,7 +130,7 @@ const useStyles = makeStyles(theme => ({
         borderColor: '#ccc',
     },
     exclIcon: {
-        backgroundImage: 'url(https://alpha-assets.stylori.com/images/static/home/Testimonial_icons.png)',
+        backgroundImage: 'url(https://assets.stylori.com/images/static/home/Testimonial_icons.png)',
         backgroundPosition: '-24px -45px',
         width: '38px',
         height: '37px',
@@ -166,7 +166,7 @@ const useStyles = makeStyles(theme => ({
         color: "#394578"
     },
     excliconright: {
-        backgroundImage: 'url(https://alpha-assets.stylori.com/images/static/home/Testimonial_icons.png)',
+        backgroundImage: 'url(https://assets.stylori.com/images/static/home/Testimonial_icons.png)',
         backgroundPosition: '-82px -45px',
         width: '38px',
         height: '37px',

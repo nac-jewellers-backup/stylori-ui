@@ -180,7 +180,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
     </div>
   )
 };
-// onLoad={(e)=>e.target.src=e.target.style.background='url(https://alpha-assets.stylori.com/images/static/loadingimg.gif') center center / 25% 25% no-repeat rgb(255, 255, 255);'}
+// onLoad={(e)=>e.target.src=e.target.style.background='url(https://assets.stylori.com/images/static/loadingimg.gif') center center / 25% 25% no-repeat rgb(255, 255, 255);'}
 export default trackWindowScroll(Gallery);
 // <img 
 // srcset={renderImages(props, cardstate)}

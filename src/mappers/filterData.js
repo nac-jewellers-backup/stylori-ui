@@ -12,7 +12,7 @@ export default function (data) {
     const get = (data) => (data ? data : []);
     const getstring = (data) => (data ? data : "");
     const getSubFilterLength = (data) => {
-        debugger
+        
       var arr = data && data.length > 0 && data.constructor === Array
         ? data.map(val=>{
             if(val.constructor === Object) return Object.values(val)
@@ -26,7 +26,7 @@ export default function (data) {
     const getSubFilters = (data) => {
       if (data && data.length > 0) {
         Object.keys(data[0]).map((val) => {
-            debugger
+            
           if (val !== "master_category" && val !== "seo_url" && val !== "seo_text") {
              _obj[val] = getSubFilterLength(data[0][val])
           }

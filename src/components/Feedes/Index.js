@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   containerRoot: {
     width: "100%",
     backgroundImage:
-      "url(https://alpha-assets.stylori.com/images/static/home/box_bg.png)",
+      "url(https://assets.stylori.com/images/static/home/box_bg.png)",
     boxShadow: "0 0 5px #888 !important",
     padding: "15px 0px 7px 0px",
     marginBottom: "25px"

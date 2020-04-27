@@ -148,6 +148,13 @@ const styles = theme => ({
     paddingLeft: '14px',
     fontSize: '14px',
     color: 'red',
+  },
+  filtersLoading:{
+    // 83
+    minHeight: 'calc(100vh - 240px)',
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center"
   }
 });
 

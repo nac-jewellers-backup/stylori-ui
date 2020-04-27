@@ -30,7 +30,7 @@ const initialCtx = {
       Gender: {},
       stoneColor: {},
       stoneShape: {},
-      category: {}
+      category: {},
     },
     sort: "",
     pricemax: 5000,
@@ -43,9 +43,9 @@ const initialCtx = {
     dataArr: [],
     first: 24,
     mappedFilters: [],
-    cartcount: ["1"]
+    cartcount: ["1"],
   },
-  setFilters: filterData => {},
+  setFilters: (filterData) => {},
   setOffset: () => {},
   setFirst: () => {},
   updateProductList: () => {},
@@ -53,13 +53,13 @@ const initialCtx = {
   setloadingfilters: () => {},
   setcartcount: () => {},
   setPriceMax: () => {},
-  setPriceMin: () => {}
+  setPriceMin: () => {},
 };
 
 export const FilterOptionsContext = React.createContext(initialCtx);
 export const FilterOptionsConsumer = FilterOptionsContext.Consumer;
 
-const Provider = props => {
+const Provider = (props) => {
   // alert("filters")
   const [filters, setFilters] = React.useState({
     Offers: {},
@@ -76,24 +76,25 @@ const Provider = props => {
     Gender: {},
     stoneColor: {},
     stoneShape: {},
-    category: {}
+    category: {},
   });
-  const [sort, setSort] = React.useState(initialCtx.FilterOptionsCtx.sort);
+  let [sort, setSort] = React.useState(initialCtx.FilterOptionsCtx.sort);
   const [offset, setOffset] = React.useState(0);
   const [first, setFirst] = React.useState(24);
   const [dataArr, setDataArr] = React.useState([]);
   const [cartcount, setcartcount] = React.useState([]);
   const [mappedFilters, setMappedFilters] = React.useState([]);
   const [{ filterLogic }, setFilterLogic] = React.useState({
-    filterLogic: () => []
+    filterLogic: () => [],
   });
   const [LoadingSeoQuery, setLoadingSeoQurey] = React.useState(true);
   const [ErrorSeoQuery, setErrorSeoQuery] = React.useState(false);
   const [DataSeoQuery, setDataSeoQuery] = React.useState([]);
   const [paramsAo, setParamsAo] = React.useState([]);
-  const [pricemin, setPriceMin] = React.useState(0);
-  const [pricemax, setPriceMax] = React.useState(0);
+  let [pricemin, setPriceMin] = React.useState(0);
+  let [pricemax, setPriceMax] = React.useState(0);
   const [loadingfilters, setloadingfilters] = React.useState(false);
+  const [sortFilterCombo, setSortFilterCombo] = React.useState(true)
   useEffect(() => {
     setFilterLogic({ filterLogic: (d, t) => t });
   }, [filters]);
@@ -101,7 +102,7 @@ const Provider = props => {
     setFilterLogic({ filterLogic: (d, t) => [...d, ...t] });
   }, [offset]);
   const {
-    NetworkCtx: { graphqlUrl: uri }
+    NetworkCtx: { graphqlUrl: uri },
   } = React.useContext(NetworkContext);
   const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
 
@@ -111,7 +112,7 @@ const Provider = props => {
     loading: ntx,
     error: ntxerr,
     data: ntxdata,
-    makeFetch
+    makeFetch,
   } = useNetworkRequest("/filterlist", {}, false, {});
   var con_gust = localStorage.getItem("gut_lg")
     ? JSON.parse(localStorage.getItem("gut_lg"))
@@ -137,7 +138,7 @@ const Provider = props => {
       // props.location.push(window.location.pathname)
       matchPath(window.location.pathname, {
         path: ":listingpage",
-        search: window.location.search
+        search: window.location.search,
       });
       let pathnameSplit = window.location.pathname.split("/");
       const splitHiphen = () => {
@@ -147,7 +148,7 @@ const Provider = props => {
       };
 
       const conditionfiltersSeo = {
-        seofilter: { seoUrl: { in: splitHiphen() } }
+        seofilter: { seoUrl: { in: splitHiphen() } },
       };
       // makeRequestSeo(conditionfiltersSeo)
       function status(response) {
@@ -168,16 +169,16 @@ const Provider = props => {
         // body: JSON.stringify({query:seoUrlResult}),
 
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           query: seoUrlResult,
-          variables: { ...conditionfiltersSeo }
-        })
+          variables: { ...conditionfiltersSeo },
+        }),
       })
         .then(status)
         .then(json)
-        .then(async function(data) {
+        .then(async function (data) {
           // ------------ REDIRECTION ----------
 
           if (data.data.allSeoUrlPriorities.nodes.length === 0) {
@@ -191,7 +192,7 @@ const Provider = props => {
             Object.entries(data).length !== 0 &&
             data.constructor === Object &&
             data.data.allSeoUrlPriorities &&
-            data.data.allSeoUrlPriorities.nodes.map(val => {
+            data.data.allSeoUrlPriorities.nodes.map((val) => {
               let attrName = val.attributeName.replace(/\s/g, "");
               let attrVal = val.attributeValue;
               filters[attrName] = { [attrVal]: true };
@@ -205,13 +206,70 @@ const Provider = props => {
               return a;
             });
 
-          Object.entries(a).map(val => {
+            //  ****STARTS****  setting state search parameters ....
+
+          if (window.location.search) {
+            let splitSearchParamers = window.location.search.split("&");
+            if (splitSearchParamers.length > 0) {
+              if (splitSearchParamers.length > 2) {
+                splitSearchParamers.map((val) => {
+                  let equalSplit = val.split("=");
+                  ;
+                  if (equalSplit[0] === "?sort") {
+                    let obj = {};
+                    obj["values"] = equalSplit[1].replace(/%20/g, " ");
+                    sort = obj;
+                    
+                  }
+                  if (equalSplit[0] === "startprice") {
+                    pricemin = Number(equalSplit[1])
+                    
+                  }
+                  if (equalSplit[0] === "endprice") {
+                    
+                    pricemax=Number(equalSplit[1])
+                  }
+                });
+                setSort(sort);
+                setPriceMin(pricemin);
+                setPriceMax(pricemax);
+              } else {
+                splitSearchParamers.map((val) => {
+                  let equalSplit = val.split("=");
+                  ;
+                  if (equalSplit[0] === "?sort") {
+                    let obj = {};
+                    obj["values"] = equalSplit[1].replace(/%20/g, " ");
+                    sort = obj;
+                    
+                  }
+                  if (equalSplit[0] === "startprice") {
+                    pricemin = Number(equalSplit[1])
+                    
+                  }
+                  if (equalSplit[0] === "endprice") {
+                    
+                    pricemax=Number(equalSplit[1])
+                  }
+                });
+                setSort(sort);
+                setPriceMin(pricemin);
+                setPriceMax(pricemax);
+              }
+            }
+          }
+
+          //    ****ENDS**** setting state search parameters ....
+
+
+          
+          Object.entries(a).map((val) => {
             setFilters({ ...filters, a });
           });
           updateFilters(filters);
           // alert(JSON.stringify(filters))
         })
-        .catch(function(error) {
+        .catch(function (error) {
           //  setSeoComponentMount(data)
         });
 
@@ -227,7 +285,7 @@ const Provider = props => {
   const pathQueries = () => {
     // var queries = []
     if (window.location.search) {
-      Object.keys(filters).map(fk => {
+      Object.keys(filters).map((fk) => {
         const filter = filters[fk];
         const fv = Object.keys(filter);
         if (fv.length > 0) {
@@ -247,14 +305,36 @@ const Provider = props => {
       // })
     }
   };
+  // const clearSortIfFiltersIsEmpty = () => {
+  //   var showSortFilter = true
+  //   debugger
+  //   if (window.location.search) {
+  //     Object.keys(filters).map((fk) => {
+  //       const filter = filters[fk];
+  //       const fv = Object.keys(filter);
+  //       if(fk !== "Category" && fk !== "category" && fk !== "filters"){
+  //         if (fv.length > 0) {
+  //           showSortFilter = true
+  //           }
+  //           else{
+  //             showSortFilter = false
+  //           }
+  //       }
+        
+  //     });
+  //     let loc = window.location.pathname.split('?')[0]
+  //     // if (!showSortFilter) window.location.pathname = loc 
+  //   }
 
-  const paramObjects = filtersparms => {
+  // };
+
+  const paramObjects = (filtersparms) => {
     // Destructuring the query parameters from the URL
     let paramsAo = [];
     if (window.location.search) {
       let urlSearchparamsDecode = decodeURI(window.location.search);
       let urlParams = urlSearchparamsDecode.replace("?", "").split("&");
-      let urlSplitparamsEqual = urlParams.map(val => {
+      let urlSplitparamsEqual = urlParams.map((val) => {
         let splitval = val.split("=");
         return { [splitval[0]]: splitval[1] };
       });
@@ -290,7 +370,7 @@ const Provider = props => {
     loading: seoloading,
     error: seoError,
     data: seoData,
-    makeRequest: makeRequestSeo
+    makeRequest: makeRequestSeo,
   } = useGraphql(seoUrlResult, () => {}, {});
 
   useEffect(() => {
@@ -305,7 +385,7 @@ const Provider = props => {
         ? mappedFilters.seo_url
         : window.location.pathname.split("/")[1];
     const conditionfiltersSeo = {
-      seofilter: { seoUrl: { in: paramObjects(path_name) } }
+      seofilter: { seoUrl: { in: paramObjects(path_name) } },
     };
 
     makeRequestSeo(conditionfiltersSeo);
@@ -357,7 +437,8 @@ const Provider = props => {
     if (
       filters &&
       filters.constructor === Object &&
-      Object.entries(filters).length !== 0 && filters.constructor === Object
+      Object.entries(filters).length !== 0 &&
+      filters.constructor === Object
     ) {
       var newObj = {};
       var len;
@@ -365,7 +446,7 @@ const Provider = props => {
         Object.assign(filters, {});
       }
 
-      Object.keys(filters).map(fk => {
+      Object.keys(filters).map((fk) => {
         const filter = filters[fk];
         const fv = filter && Object.keys(filter);
         if (fv && fv.length > 0) {
@@ -378,8 +459,8 @@ const Provider = props => {
           }
         }
       });
-      var k = qtfArr.map(val => Object.values(val));
-      var keyy = qtfArr.map(val => Object.keys(val));
+      var k = qtfArr.map((val) => Object.values(val));
+      var keyy = qtfArr.map((val) => Object.keys(val));
       len = keyy.length;
       while (len--) {
         var key = keyy[len];
@@ -418,7 +499,7 @@ const Provider = props => {
         if (pricemax > pricemin || pricemax === pricemin) {
           newObj["price"] = {
             min_price: pricemin,
-            max_price: pricemax
+            max_price: pricemax,
           };
         }
       }
@@ -455,7 +536,7 @@ const Provider = props => {
         sessionStorage.setItem("category", JSON.stringify(filters.category));
       }
       if (
-        Object.keys(newObj).filter(val => {
+        Object.keys(newObj).filter((val) => {
           if (val === "category") return val;
         }).length !== 0
       )
@@ -465,35 +546,35 @@ const Provider = props => {
 
   useEffect(() => {
     // alert(JSON.stringify(filters.Offers))
+    // clearSortIfFiltersIsEmpty()
+    // if(!sortFilterCombo) setSort("")
     if (
       filters &&
-      Object.entries(filters).length !== 0 && filters.constructor === Object
+      Object.entries(filters).length !== 0 &&
+      filters.constructor === Object
     ) {
       if (
-        Object.values(filters).filter(val => {
+        Object.values(filters).filter((val) => {
           if (Object.entries(val).length > 0 && val.constructor === Object) {
             return val;
           }
         }).length > 0
       ) {
         if (
-          Object.keys(filters).filter(val => {
+          Object.keys(filters).filter((val) => {
             if (val === "a") return val;
           }).length === 0
         )
           updatefiltersSort();
       }
     }
-    setSort("");
   }, [filters]);
   useEffect(() => {
-    // alert("pricemin")
     if (pricemin) {
       updatefiltersSort();
     }
   }, [pricemin]);
   useEffect(() => {
-    // alert("pricemax")
     if (pricemax) {
       updatefiltersSort();
     }
@@ -501,6 +582,8 @@ const Provider = props => {
   useEffect(() => {
     // alert("sort")
     if (sort) {
+      console.clear();
+      console.log(sort, "{}");
       updatefiltersSort();
     }
   }, [sort]);
@@ -523,15 +606,16 @@ const Provider = props => {
   //create your forceUpdate hook
   function useForceUpdate() {
     const [value, setValue] = React.useState(0); // integer state
-    return () => setValue(value => ++value); // update the state to force render
+    return () => setValue((value) => ++value); // update the state to force render
   }
   const forceUpdate = useForceUpdate();
-  const updateFilters = async filters => {
+  const updateFilters = async (filters) => {
     // alert('update filters')
-
+    // clearSortIfFiltersIsEmpty()
+    // if(!sortFilterCombo) setSort("")
     setFilters(filters);
     forceUpdate();
-    setSort("");
+    // setSort("");
     setOffset(0);
 
     setloadingfilters(true);
@@ -542,7 +626,7 @@ const Provider = props => {
     bodyvar = paramObjects();
     // else {
     try {
-      Object.keys(filters).map(fk => {
+      Object.keys(filters).map((fk) => {
         const filter = filters[fk];
         const fv = Object.keys(filter);
         if (fv.length > 0) {
@@ -561,8 +645,8 @@ const Provider = props => {
     } catch (error) {
       // console.log(error)
     }
-    var k = qtfArr.map(val => Object.values(val));
-    var keyy = qtfArr.map(val => Object.keys(val));
+    var k = qtfArr.map((val) => Object.values(val));
+    var keyy = qtfArr.map((val) => Object.keys(val));
     len = keyy.length;
     while (len--) {
       var key = keyy[len];
@@ -598,17 +682,18 @@ const Provider = props => {
     }
     if (
       filters &&
-      Object.entries(filters).length !== 0 && filters.constructor === Object
+      Object.entries(filters).length !== 0 &&
+      filters.constructor === Object
     ) {
       if (
-        Object.values(filters).filter(val => {
+        Object.values(filters).filter((val) => {
           if (Object.entries(val).length > 0 && val.constructor === Object) {
             return val;
           }
         }).length > 0
       ) {
         if (
-          Object.keys(filters).filter(val => {
+          Object.keys(filters).filter((val) => {
             if (val === "a") return val;
           }).length === 0
         )
@@ -628,6 +713,8 @@ const Provider = props => {
   };
 
   useEffect(() => {
+    // clearSortIfFiltersIsEmpty()
+    // if(!sortFilterCombo) setSort("")
     if (
       Object.entries(ntxdata).length !== 0 &&
       ntxdata.constructor === Object
@@ -638,17 +725,17 @@ const Provider = props => {
           pathname: `${
             mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ""
           }`,
-          search:window.location.search
+          search: window.location.search,
         });
       }
-      setSort("");
+      // setSort("");
       paramObjects(mappedFilters.seo_url);
 
       seoUrlFetch();
       var loc = window.location.pathname
         .split("/")[1]
         .split("-")
-        .filter(val => {
+        .filter((val) => {
           if (val === "silver") return val;
         });
       if (loc.length === 0) setGlobalCtx({ ...Globalctx, pathName: false });
@@ -661,9 +748,10 @@ const Provider = props => {
   useEffect(() => {
     const filters_seo_condition = () => {
       if (
-        Object.entries(sort).length > 0 &&
+sort &&       Object.entries(sort).length > 0 &&
         sort.constructor === Object &&
-        pricemin !== null && pricemax !== null
+        pricemin !== null &&
+        pricemax !== null
       ) {
         return (
           sort &&
@@ -677,19 +765,21 @@ const Provider = props => {
       ) {
         return `startprice=${pricemin}&endprice=${pricemax}`;
       } else if (
-        Object.entries(sort).length > 0 &&
+     sort &&   Object.entries(sort).length > 0 &&
         sort.constructor === Object
       ) {
         return sort && `sort=${sort.values}`;
       }
     };
     if (
-      (Object.entries(sort).length > 0 && sort.constructor === Object) ||
+      (sort && Object.entries(sort).length > 0 && sort.constructor === Object) ||
       (pricemin !== null && pricemax !== null)
     ) {
       props.history.push({
         pathname: `${mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ""}`,
-        search: filters_seo_condition() ? filters_seo_condition() :window.location.search
+        search: filters_seo_condition()
+          ? filters_seo_condition()
+          : window.location.search,
       });
 
       updatefiltersSort();
@@ -703,11 +793,11 @@ const Provider = props => {
   useEffect(() => {
     if (window.location.pathname !== "jewellery") {
       matchPath(window.location.pathname, {
-        path: ":listingpage"
+        path: ":listingpage",
       });
     } else {
       matchPath(`/${mappedFilters.seo_url}`, {
-        path: ":listingpage"
+        path: ":listingpage",
       });
     }
   });
@@ -727,7 +817,7 @@ const Provider = props => {
     mappedFilters,
     loadingfilters,
     pricemax,
-    pricemin
+    pricemin,
   };
   return (
     <FilterOptionsContext.Provider
@@ -739,7 +829,7 @@ const Provider = props => {
         setSort,
         setloadingfilters,
         setPriceMax,
-        setPriceMin
+        setPriceMin,
       }}
     >
       {props.children}

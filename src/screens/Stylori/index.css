@@ -37,7 +37,7 @@
     height: 42px !important;
     background-repeat: no-repeat !important;
     opacity: 1 !important;
-    background-image: url("https://alpha-assets.stylori.com/images/static/slider_icon.png") !important;
+    background-image: url("https://assets.stylori.com/images/static/home/slider_icon.png") !important;
     background-position: -27px -229px !important;
     background-color: #fff !important;
     border: 1px solid #ccc;
@@ -54,7 +54,7 @@
   }
 
   .imagenext {
-    background-image: url("https://alpha-assets.stylori.com/images/static/slider_icon.png") !important;
+    background-image: url("https://assets.stylori.com/images/static/home/slider_icon.png") !important;
     width: 35px !important;
     height: 42px !important;
     background-repeat: no-repeat !important;
@@ -77,7 +77,7 @@
   height: 42px !important;
   background-repeat: no-repeat !important;
   opacity: 1 !important;
-  background-image: url("https://alpha-assets.stylori.com/images/static/slider_icon.png") !important;
+  background-image: url("https://assets.stylori.com/images/static/home/slider_icon.png") !important;
   background-position: -27px -229px !important;
   background-color: #fff !important;
   border: 1px solid #ccc;
@@ -105,7 +105,7 @@
 }
 
 .imagenext {
-  background-image: url("https://alpha-assets.stylori.com/images/static/slider_icon.png") !important;
+  background-image: url("https://assets.stylori.com/images/static/home/slider_icon.png") !important;
   width: 35px !important;
   height: 42px !important;
   background-repeat: no-repeat !important;

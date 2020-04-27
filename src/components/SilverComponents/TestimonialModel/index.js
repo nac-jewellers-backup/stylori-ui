@@ -98,7 +98,7 @@ const useStyles = makeStyles(theme => ({
         paddingBottom: "55px"
     },
     excliconright: {
-        backgroundImage: 'url(https://alpha-assets.stylori.com/images/static/home/Testimonial_icons.png)',
+        backgroundImage: 'url(https://assets.stylori.com/images/static/home/Testimonial_icons.png)',
         backgroundPosition: '-82px -45px',
         width: '38px',
         height: '37px',

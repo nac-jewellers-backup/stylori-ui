@@ -21,6 +21,7 @@ import styles from './styles';
 import { FilterOptionsContext } from 'context'
 import { NetworkContext } from 'context/NetworkContext';
 import { PRODUCTLIST, conditions, seoUrlResult } from 'queries/productListing';
+import { withRouter } from 'react-router-dom';
 const PersistentDrawerLeft = (props) => {
   const { setSort, setloadingfilters, setOffset, setPriceMax, setPriceMin, FilterOptionsCtx, setdelete_fil } = React.useContext(FilterOptionsContext);
   const loc = window.location.search
@@ -51,8 +52,8 @@ class Component extends React.Component {
       filtercheck: '',
       productDisplay: true,
       check: true,
-      numOne: '',
-      numTwo: '',
+      numOne: 0,
+      numTwo: 0,
       showMore: 4,
       Price_button_click: false,
       chipData: [],
@@ -76,7 +77,57 @@ if(this.props.data && this.props.data.length > 0 && this.props.data[0] && this.p
    }
 
 
+//  ****STARTS****  setting state search parameters ....
 
+if (window.location.search) {
+  let price_one;
+  let price_two;
+  let splitSearchParamers = window.location.search.split("&");
+  if (splitSearchParamers.length > 0) {
+    // if (splitSearchParamers.length > 2) {
+      splitSearchParamers.map((val) => {
+        debugger
+        let equalSplit = val.split("=");
+        if (splitSearchParamers.length > 2) {
+          if (equalSplit[0] === "startprice") {
+            price_one = Number(equalSplit[1])
+            numOne = Number(equalSplit[1])
+            
+          }
+          if (equalSplit[0] === "endprice") {
+            price_two = Number(equalSplit[1])
+            numTwo=Number(equalSplit[1])
+          }
+        }
+          else{
+            if (equalSplit[0] === "?startprice") {
+              price_one = Number(equalSplit[1])
+              numOne = Number(equalSplit[1])
+              
+            }
+            if (equalSplit[0] === "endprice") {
+              price_two = Number(equalSplit[1])
+              numTwo=Number(equalSplit[1])
+            } 
+          }
+        
+        
+      });
+      debugger
+  // if(numOne !== price_one && numTwo !== price_two){
+    const price_min = Number(price_one);
+    const price_max = Number(price_two);
+    const _price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_min));
+    const _price_max = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_max));
+    this.setState({numOne:_price_min, numTwo:_price_max})
+  // }
+    // }
+  
+  }
+  
+}
+
+//    ****ENDS**** setting state search parameters ....
 
     // This is used for checking the check boxes if we copy and pasted the url to new tab or new window
     // if (window.location.search) {
@@ -235,7 +286,9 @@ if(this.props.data && this.props.data.length > 0 && this.props.data[0] && this.p
       this.state.Price_button_click === false && this.setState({ numOne: numOne, numTwo: numTwo })
       // if( this.props.data[0].subFilter['Price Range'].length > 0 && this.props.data[0].subFilter['Price Range'][0] !== undefined){ 
       //   this.props.setFilters({pricemax:numberTwo, pricemin:numberOne})}  
+      
     }
+
 
   }
 
@@ -267,7 +320,29 @@ if(this.props.data && this.props.data.length > 0 && this.props.data[0] && this.p
     }
     return bz
   })
+  clearSortIfFiltersIsEmpty = () => {
+    var showSortFilter = false
+    debugger
+    if (window.location.search) {
+      Object.keys(this.state.checked).map((fk) => {
+        const filter = this.state.checked[fk];
+        const fv = Object.keys(filter);
+        if(fk !== "Category" && fk !== "category" && fk !== "filters"){
+          if (fv.length > 0) {
+            if(filter[fv[0]])
+            {
+              showSortFilter = true
+              return showSortFilter
+            }
+            }
+        }
+        
+      });
+      let loc = window.location.pathname.split('?')[0]
+      if (!showSortFilter) {this.props.setSort('');this.props.history.push(loc)} 
+    }
 
+  };
   handleChange(value, BoolName, e, title, TargetName) {
     // window.scrollTo(0,2)
     let { chipData } = this.state;
@@ -288,9 +363,10 @@ if(this.props.data && this.props.data.length > 0 && this.props.data[0] && this.p
     //   checked['category'] = _category_obj
     //   this.setState(checked)
     // }
-
+    
 
     if (TargetName === undefined) {
+      this.clearSortIfFiltersIsEmpty()
       if (Object.keys(this.state.checked.category).length === 0 && this.state.checked.category.constructor === Object) {
 
         var _replaceCategory = JSON.parse(sessionStorage.getItem('category'))
@@ -307,6 +383,7 @@ if(this.props.data && this.props.data.length > 0 && this.props.data[0] && this.p
       }, () => this.props.setFilters(checked))
     }
     else {
+      
       let arr1 = [];
       let paramsMapUrlSetState = () => TargetName.map(val => {
         var nameFilter = val[0]
@@ -616,7 +693,7 @@ if(this.props.data && this.props.data.length > 0 && this.props.data[0] && this.p
 
             {/* <CssBaseline /> */}
             <div >
-              <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '135px', overflowY: 'scroll' }} className="SliderFilter scrollBarFilter" id="SliderFilter" >
+              <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '119px', maxHeight: '80vh', overflowY: 'scroll' }} className="SliderFilter scrollBarFilter" id="SliderFilter" >
                 <div >
 
                   <Paper
@@ -671,8 +748,10 @@ if(this.props.data && this.props.data.length > 0 && this.props.data[0] && this.p
                           <>
                             {
 
-filter  &&     filter.map((row, i) => {
-debugger
+filter  && filter.length > 0 ?
+
+filter.map((row, i) => {
+  debugger
                                 return (
                                   <>
                                     {
@@ -806,7 +885,13 @@ debugger
                               }
 
                               )
+                            :
+                            <div class ={classes.filtersLoading}>
+                              <div id="inTurnFadingTextG"><div id="inTurnFadingTextG_1" class="inTurnFadingTextG">L</div><div id="inTurnFadingTextG_2" class="inTurnFadingTextG">o</div><div id="inTurnFadingTextG_3" class="inTurnFadingTextG">a</div><div id="inTurnFadingTextG_4" class="inTurnFadingTextG">d</div><div id="inTurnFadingTextG_5" class="inTurnFadingTextG">i</div><div id="inTurnFadingTextG_6" class="inTurnFadingTextG">n</div><div id="inTurnFadingTextG_7" class="inTurnFadingTextG">g</div><div id="inTurnFadingTextG_8" class="inTurnFadingTextG"> </div><div id="inTurnFadingTextG_9" class="inTurnFadingTextG">.</div><div id="inTurnFadingTextG_10" class="inTurnFadingTextG">.</div><div id="inTurnFadingTextG_11" class="inTurnFadingTextG">.</div></div>
+                              
+                            </div>
                             }
+
                           </>
                         }
                       </div>
@@ -1045,7 +1130,7 @@ Component.propTypes = {
   filterdatas: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(PersistentDrawerLeft)
+export default withRouter(withStyles(styles, { withTheme: true })(PersistentDrawerLeft));
 // (props => {
 //   const { mapped } = useDummyRequest(filterParams);
 //   if (Object.keys(mapped).length === 0) return ''

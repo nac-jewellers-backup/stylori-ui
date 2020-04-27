@@ -40,7 +40,7 @@ const cacheCheck = async () => {
               // Service worker cache should be cleared with caches.delete()
               const caches_list = await caches.keys() 
             const _caches  = caches_list ? caches_list : []
-              debugger
+              
               console.log('names---------------------------------------', caches_list)
               for (let name of _caches)  caches.delete(name);
           }
@@ -73,7 +73,7 @@ const cacheCheck = async () => {
             const caches_list = await caches.keys() 
             const _caches  = caches_list ? caches_list : [] 
             
-              debugger
+              
               console.log('names---------------------------------------', _caches)
               for (let name of _caches)  caches.delete(name);
             

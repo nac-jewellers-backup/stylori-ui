@@ -19,7 +19,7 @@ import styles from './style'
 import { ProductDetailContext } from 'context/ProductDetailContext';
 
 // imgleft: {
-//     backgroundImage: "url(https://alpha-assets.stylori.com/images/static/slider_icon.png) !important",
+//     backgroundImage: "url(https://assets.stylori.com/images/static/home/slider_icon.png) !important",
 //     backgroundPosition: "-27px -229px !important",
 //     width: "35px !important",
 //     height: "44px !important",
@@ -29,7 +29,7 @@ import { ProductDetailContext } from 'context/ProductDetailContext';
 //     borderLeft: " 0px"
 // },
 // imgRight: {
-//     backgroundImage: "url(https://alpha-assets.stylori.com/images/static/slider_icon.png) !important",
+//     backgroundImage: "url(https://assets.stylori.com/images/static/home/slider_icon.png) !important",
 //     backgroundPosition: "-160px -229px !important",
 //     width: "35px !important",
 //     height: " 44px !important",

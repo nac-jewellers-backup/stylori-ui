@@ -10,6 +10,7 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
       discount
       skuWeight
       metalColor
+      isActive
       discountPrice
       generatedSku
       skuId

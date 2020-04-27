@@ -61,7 +61,7 @@ export default function RadioBtn(props) {
   //   setValue({...value, values:event.target.value, helperText: !Boolean((event.target.value != null && event.target.value !== ""))});
   // }
   // console.log(value);
-  // console.info('objectvaluesobjectvalues', props.values.values)
+  console.info('objectvaluesobjectvalues', props.values.values)
   return (
     <div style={{ alignItems: "flex-end", padding: "6px" }} className="classSort">
       <FormControl component="fieldset" className={`${classes.fromControlTwo} ${classes.formControl}`}>
@@ -72,10 +72,13 @@ export default function RadioBtn(props) {
           value={props.values.values}
           onChange={handleChange}
         >
-          {props.radioValues.map(data => (
-            <FormControlLabel className={classes.hoverClass} value={data} control={<Radio color="primary"
-              className={classes.radio} />} label={data} />
-          ))}
+          {props.radioValues.map(data => {
+            return(
+              <FormControlLabel className={classes.hoverClass} value={data} control={<Radio color="primary"
+                className={classes.radio} />} label={data} />
+            )
+
+          })}
         </RadioGroup>
         {value.helperText && <FormHelperText><b style={{ color: 'red' }}>Required</b></FormHelperText>}
       </FormControl>

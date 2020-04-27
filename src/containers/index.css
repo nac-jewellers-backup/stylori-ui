@@ -32,7 +32,7 @@
   top: 0;
   left: 0;
   position: fixed;
-  background: url(https://alpha-assets.stylori.com/images/static/loadingimg.gif) 50% 50% no-repeat #fff;
+  background: url(https://assets.stylori.com/images/static/loadingimg.gif) 50% 50% no-repeat #fff;
 }
 
 .overall-loader {

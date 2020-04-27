@@ -449,7 +449,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         var data = this.props.data
-        debugger
+        
         const { classes } = this.props;
         // alert(discounted_price)
         let path = window.location.pathname.split('/').pop();
@@ -491,7 +491,7 @@ const Components = props => {
     },[])
     let { CartCtx: { cartFilters } } = React.useContext(CartContext);
     let content;
-debugger
+
     content = <Checkoutcard {...props} cartFilters={cartFilters} shipping_charge = {ShippingCharge}/>
     return content
 }
