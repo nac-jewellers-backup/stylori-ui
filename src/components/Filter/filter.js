@@ -616,7 +616,7 @@ if(this.props.data && this.props.data.length > 0 && this.props.data[0] && this.p
 
             {/* <CssBaseline /> */}
             <div >
-              <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '119px', maxHeight: '80vh', overflowY: 'scroll' }} className="SliderFilter scrollBarFilter" id="SliderFilter" >
+              <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '135px', overflowY: 'scroll' }} className="SliderFilter scrollBarFilter" id="SliderFilter" >
                 <div >
 
                   <Paper

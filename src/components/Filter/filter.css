@@ -223,11 +223,14 @@
 .drawer {
   height: 300px !important;
 }
-
+.SliderFilter{
+  min-height: calc(100vh - 136px);
+  max-height: calc(100vh - 136px);
+}
 .SliderFilter ul {
   position: sticky;
   z-index: '6';
-  top: '150px'
+  top: '150px';
 }
 
 

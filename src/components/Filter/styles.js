@@ -37,6 +37,8 @@ const styles = theme => ({
   drawerPaper: {
     width: drawerWidth,
     position: 'sticky !important',
+    minHeight: 'calc(100vh - 136px)',
+    // maxHeight: 'calc(100vh - 136px)',
     // top: '153px'
 
   },
