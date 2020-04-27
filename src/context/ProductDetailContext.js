@@ -102,6 +102,7 @@ export const TabsProvider = (props) => {
 
         if (Object.entries(data).length !== 0 && data.constructor === Object) {
             if (data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
+                debugger
                 handleProductDetatiContext()
             }
         }
@@ -275,7 +276,11 @@ export const TabsProvider = (props) => {
     useEffect(() => {
 
         if (Object.entries(data).length !== 0 && data.constructor === Object) {
+
             if (data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
+                if(!data.data.allTransSkuLists.nodes[0].isActive){
+                    props.history.push('/jewellery')
+                }
                 filters['defaultVariants']['diamondType'] = data.data.allTransSkuLists.nodes[0].diamondType
                 filters['defaultVariants']['metalColor'] = data.data.allTransSkuLists.nodes[0].metalColor
                 filters['defaultVariants']['purity'] = data.data.allTransSkuLists.nodes[0].purity
