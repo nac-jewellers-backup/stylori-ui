@@ -156,9 +156,11 @@ function registerValidSW(swUrl, config) {
         if (installingWorker == null) {
           return;
         }
+        console.log(installingWorker.state,'--installingWorker.state')
         installingWorker.onstatechange = async () => {
      
           if (installingWorker.state === 'installed') {
+            console.log(installingWorker.state,'installingWorker.state')
             let updating = false,
               updateMessage = 'New version of app is installed',
               installedMessage = 'Your app is installed and works offline'
