@@ -136,8 +136,7 @@ export async function register(config) {
           );
         });
       } else {
-        console.log("came in")
-        // cacheCheck()
+        cacheCheck()
         // Is not localhost. Just register service worker
         registerValidSW(swUrl, config);
       }
@@ -157,7 +156,6 @@ function registerValidSW(swUrl, config) {
         if (installingWorker == null) {
           return;
         }
-        // installingWorker.state;
         installingWorker.onstatechange = async () => {
      
           if (installingWorker.state === 'installed') {
@@ -266,7 +264,7 @@ function checkValidServiceWorker(swUrl, config) {
 }
 
 export function unregister() {
-  // cacheCheck();
+  cacheCheck();
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(registration => {
       registration.unregister();
