@@ -122,7 +122,7 @@ export async function register(config) {
       
 
       if (isLocalhost) {
-        cacheCheck()
+        // cacheCheck()
         // This is running on localhost. Let's check if a service worker still exists or not.
         checkValidServiceWorker(swUrl, config);
        
@@ -136,7 +136,8 @@ export async function register(config) {
           );
         });
       } else {
-        cacheCheck()
+        console.log("came in")
+        // cacheCheck()
         // Is not localhost. Just register service worker
         registerValidSW(swUrl, config);
       }
@@ -156,6 +157,7 @@ function registerValidSW(swUrl, config) {
         if (installingWorker == null) {
           return;
         }
+        // installingWorker.state;
         installingWorker.onstatechange = async () => {
      
           if (installingWorker.state === 'installed') {
@@ -201,7 +203,7 @@ function registerValidSW(swUrl, config) {
 }
 
 async function requestNotificationPermission() {
-  cacheCheck();
+  // cacheCheck();
   if (!check()) return false;
   const permission = await window.Notification.requestPermission();
   if (permission !== 'granted') { } //alert('Enable notifications to have great experience!');
@@ -264,7 +266,7 @@ function checkValidServiceWorker(swUrl, config) {
 }
 
 export function unregister() {
-  cacheCheck();
+  // cacheCheck();
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(registration => {
       registration.unregister();
