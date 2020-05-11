@@ -36,16 +36,16 @@ const cacheCheck = async () => {
             localStorage.setItem('version', obj.version)
           
             
-            if (caches) {
-              // Service worker cache should be cleared with caches.delete()
-              const caches_list = await caches.keys() 
-            const _caches  = caches_list ? caches_list : []
+          //   if (caches) {
+          //     // Service worker cache should be cleared with caches.delete()
+          //     const caches_list = await caches.keys() 
+          //   const _caches  = caches_list ? caches_list : []
               
-              console.log('names---------------------------------------', caches_list)
-              for (let name of _caches)  caches.delete(name);
-          }
+          //     console.log('names---------------------------------------', caches_list)
+          //     for (let name of _caches)  caches.delete(name);
+          // }
          // delete browser cache and hard reload
-        window.location.reload(true);
+        // window.location.reload(true);
           }
 
         }
@@ -136,7 +136,7 @@ export async function register(config) {
           );
         });
       } else {
-        cacheCheck()
+        // cacheCheck()
         // Is not localhost. Just register service worker
         registerValidSW(swUrl, config);
       }
@@ -150,7 +150,7 @@ function registerValidSW(swUrl, config) {
     .register(swUrl)
     .then(registration => {
       registration.onupdatefound = () => {
-   
+   console.log("/////////////////////////")
         const installingWorker = registration.installing;
         sendNotification('App is being cached locally for offline purpose!')
         if (installingWorker == null) {
@@ -158,7 +158,7 @@ function registerValidSW(swUrl, config) {
         }
         console.log(installingWorker.state,'installingWorker.state')
         installingWorker.onstatechange = async () => {
-     
+          console.log("--------------------------")
           if (installingWorker.state === 'installed') {
             console.log(installingWorker.state,'installingWorker.state')
             let updating = false,
