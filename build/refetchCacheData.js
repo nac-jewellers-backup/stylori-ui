@@ -81,6 +81,7 @@
 
 
 async function updateCache() {
+    console.info('update-cache-periodicsync')
     self.addEventListener("fetch", e => {
         // console.info('FOUND-e', e);
         e.respondWith(caches.match(e.request).then(async res => {
@@ -128,7 +129,9 @@ async function updateCache() {
   }
   
   self.addEventListener('periodicsync', (event) => {
+    console.info('update-cache-periodicsync')
     if (event.tag === 'update-cache') {
+        console.info('update-cache-periodicsync--------------------------')
       event.waitUntil(async()=>updateCache());
     }
   });
