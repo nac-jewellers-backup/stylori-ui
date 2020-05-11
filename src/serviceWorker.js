@@ -10,84 +10,7 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
-const cacheCheck = async () => {
 
-  // read text from URL location
-  var request = new XMLHttpRequest();
-
-
-  // alert('i came in', myJson)
-
-  var local_storage = localStorage.getItem('version')
-  if (local_storage && local_storage.length > 0) {
-    const condition_async = async () => {
-      request.open('GET', '/meta.json?_='+ new Date().getTime(), true);
-
-      request.send(null);
-      request.onreadystatechange = async function () {
-        if (this.readyState == 4 && this.status == 200) {
-
-        var type = await request.getResponseHeader('Content-Type');
-
-        if (type.indexOf("json") !== 1) {
-          var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
-          if (obj && Number(local_storage) !== Number(obj.version)) {
-            
-            localStorage.setItem('version', obj.version)
-          
-            
-          //   if (caches) {
-          //     // Service worker cache should be cleared with caches.delete()
-          //     const caches_list = await caches.keys() 
-          //   const _caches  = caches_list ? caches_list : []
-              
-          //     console.log('names---------------------------------------', caches_list)
-          //     for (let name of _caches)  caches.delete(name);
-          // }
-         // delete browser cache and hard reload
-        // window.location.reload(true);
-          }
-
-        }
-        }
-      }
-    }
-    condition_async()
-  }
-  else {
-    const condition_async = async () => {
-      request.open('GET', '/meta.json', true);
-      request.send(null);
-      request.onreadystatechange = async function () {
-        if (this.readyState == 4 && this.status == 200) {
-
-        var type = await request.getResponseHeader('Content-Type');
-       
-
-        if (type.indexOf("json") !== 1) {
-          var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
-      
-          if (obj !== '') localStorage.setItem('version', obj.version)
-          if (caches) {
-            // Service worker cache should be cleared with caches.delete()
-            const caches_list = await caches.keys() 
-            const _caches  = caches_list ? caches_list : [] 
-            
-              
-              console.log('names---------------------------------------', _caches)
-              for (let name of _caches)  caches.delete(name);
-            
-          }
-       // delete browser cache and hard reload
-      window.location.reload(true);
-
-        }
-        }
-      }
-    }
-    condition_async()
-  }
-}
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
   // [::1] is the IPv6 localhost address.
@@ -149,7 +72,14 @@ function registerValidSW(swUrl, config) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
-      registration.onupdatefound = () => {
+      if ('periodicSync' in registration) {
+        console.info('Registering Popluations')
+        registration.periodicSync.register('update-cache', {
+          minInterval: 5//24 * 60 * 60 * 1000
+        });
+      }
+     
+      registration.onupdatefound = async () => {
    console.log("/////////////////////////")
         const installingWorker = registration.installing;
         sendNotification('App is being cached locally for offline purpose!')
@@ -266,7 +196,7 @@ function checkValidServiceWorker(swUrl, config) {
 }
 
 export function unregister() {
-  cacheCheck();
+  // cacheCheck();
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(registration => {
       registration.unregister();
