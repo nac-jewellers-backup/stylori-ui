@@ -43,6 +43,7 @@ self.addEventListener("fetch", e => {
            fetch(e.request).then((data)=>{
             return data
           }).catch((err)=>{
+            console.log(err,"url")
             if(err){
               caches.open(inA ? cacheKeys[0] : cacheKeys[1]).then(function(cache) {
                 cache.matchAll(e.request.url).then(function(response) {

@@ -156,7 +156,7 @@ function registerValidSW(swUrl, config) {
         if (installingWorker == null) {
           return;
         }
-        console.log(installingWorker.state,'--installingWorker.state')
+        console.log(installingWorker.state,'installingWorker.state')
         installingWorker.onstatechange = async () => {
      
           if (installingWorker.state === 'installed') {
