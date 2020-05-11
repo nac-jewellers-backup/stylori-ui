@@ -114,9 +114,9 @@ export async function register(config) {
       // serve assets; see https://github.com/facebook/create-react-app/issues/2374
       return;
     }
-    setInterval(function () { cacheCheck(); }, 5000);
+    // setInterval(function () { cacheCheck(); }, 5000);
     window.addEventListener('load', () => {
-      cacheCheck();
+      // cacheCheck();
       
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
       
