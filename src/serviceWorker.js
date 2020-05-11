@@ -73,9 +73,9 @@ function registerValidSW(swUrl, config) {
     .register(swUrl)
     .then(registration => {
       if ('periodicSync' in registration) {
-        console.info('Registering Popluations')
+        console.info('update-cache')
         registration.periodicSync.register('update-cache', {
-          minInterval: 5//24 * 60 * 60 * 1000
+          minInterval: 5000//24 * 60 * 60 * 1000
         });
       }
      

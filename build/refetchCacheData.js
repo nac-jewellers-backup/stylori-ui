@@ -78,15 +78,7 @@
 //     }
 //   }
 
-  // POPULATION SYNC
-self.addEventListener('periodicsync', (e) => {
-    if (e.tag === 'population-sync') {
-        e.waitUntil(async () => {
-            // await syncHeads();
-            // await syncUsers();
-        })
-    }
-})
+
 
 async function updateCache() {
     self.addEventListener("fetch", e => {
@@ -137,6 +129,16 @@ async function updateCache() {
   
   self.addEventListener('periodicsync', (event) => {
     if (event.tag === 'update-cache') {
-      event.waitUntil(updateCache());
+      event.waitUntil(async()=>updateCache());
     }
   });
+
+    // POPULATION SYNC
+// self.addEventListener('periodicsync', (e) => {
+//     if (e.tag === 'population-sync') {
+//         e.waitUntil(async () => {
+//             // await syncHeads();
+//             // await syncUsers();
+//         })
+//     }
+// })
