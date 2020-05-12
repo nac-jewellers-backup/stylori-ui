@@ -10,7 +10,84 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
+const cacheCheck = async () => {
 
+  // read text from URL location
+  var request = new XMLHttpRequest();
+
+
+  // alert('i came in', myJson)
+
+  var local_storage = localStorage.getItem('version')
+  if (local_storage && local_storage.length > 0) {
+    const condition_async = async () => {
+      request.open('GET', '/meta.json?_='+ new Date().getTime(), true);
+
+      request.send(null);
+      request.onreadystatechange = async function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+        var type = await request.getResponseHeader('Content-Type');
+
+        if (type.indexOf("json") !== 1) {
+          var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
+          if (obj && Number(local_storage) !== Number(obj.version)) {
+            
+            localStorage.setItem('version', obj.version)
+          
+            
+            if (caches) {
+              // Service worker cache should be cleared with caches.delete()
+              const caches_list = await caches.keys() 
+            const _caches  = caches_list ? caches_list : []
+              
+              console.log('names---------------------------------------', caches_list)
+              for (let name of _caches)  caches.delete(name);
+          }
+         // delete browser cache and hard reload
+        window.location.reload(true);
+          }
+
+        }
+        }
+      }
+    }
+    condition_async()
+  }
+  else {
+    const condition_async = async () => {
+      request.open('GET', '/meta.json', true);
+      request.send(null);
+      request.onreadystatechange = async function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+        var type = await request.getResponseHeader('Content-Type');
+       
+
+        if (type.indexOf("json") !== 1) {
+          var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
+      
+          if (obj !== '') localStorage.setItem('version', obj.version)
+          if (caches) {
+            // Service worker cache should be cleared with caches.delete()
+            const caches_list = await caches.keys() 
+            const _caches  = caches_list ? caches_list : [] 
+            
+              
+              console.log('names---------------------------------------', _caches)
+              for (let name of _caches)  caches.delete(name);
+            
+          }
+       // delete browser cache and hard reload
+      window.location.reload(true);
+
+        }
+        }
+      }
+    }
+    condition_async()
+  }
+}
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
   // [::1] is the IPv6 localhost address.
@@ -37,9 +114,9 @@ export async function register(config) {
       // serve assets; see https://github.com/facebook/create-react-app/issues/2374
       return;
     }
-    // setInterval(function () { cacheCheck(); }, 5000);
+    setInterval(function () { cacheCheck(); }, 5000);
     window.addEventListener('load', () => {
-      // cacheCheck();
+      cacheCheck();
       
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
       
@@ -72,25 +149,16 @@ function registerValidSW(swUrl, config) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
-      if ('periodicSync' in registration) {
-        console.info('update-cache')
-        registration.periodicSync.register('update-cache', {
-          minInterval: 5000//24 * 60 * 60 * 1000
-        });
-      }
-     
-      registration.onupdatefound = async () => {
-   console.log("/////////////////////////")
+      registration.onupdatefound = () => {
+   
         const installingWorker = registration.installing;
         sendNotification('App is being cached locally for offline purpose!')
         if (installingWorker == null) {
           return;
         }
-        console.log(installingWorker.state,'installingWorker.state')
         installingWorker.onstatechange = async () => {
-          console.log("--------------------------")
+     
           if (installingWorker.state === 'installed') {
-            console.log(installingWorker.state,'installingWorker.state')
             let updating = false,
               updateMessage = 'New version of app is installed',
               installedMessage = 'Your app is installed and works offline'
@@ -161,7 +229,7 @@ function check() {
 }
 
 async function sendNotification(message) {
-  check() ? await new Notification(message) : await requestNotificationPermission();
+  // check() ? await new Notification(message) : await requestNotificationPermission();
   return false;
 }
 

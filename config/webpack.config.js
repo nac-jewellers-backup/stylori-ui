@@ -582,7 +582,8 @@ module.exports = function(webpackEnv) {
             // }
             // console.log('message',message);
         },
-        importScripts:['cache.js','refetchCacheData.js'],
+        // importScripts:['cache.js','refetchCacheData.js'],
+        importScripts:['cache.js'],
         minify: true,
         maximumFileSizeToCacheInBytes: 40* 1024* 1024,
         // For unknown URLs, fallback to the index page
