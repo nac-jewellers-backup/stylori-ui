@@ -476,7 +476,6 @@ class Checkoutcard extends React.Component {
 
 }
 const Components = props => {
-    alert("testing")
     const [ShippingCharge, setShippingCharge] = React.useState(0)
     React.useEffect(()=>{
         fetch(`${API_URL}/getshippingcharge`,{
