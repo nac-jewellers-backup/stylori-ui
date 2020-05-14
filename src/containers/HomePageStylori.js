@@ -103,8 +103,18 @@ class HomeStylori extends React.Component {
                   item
                   onClick={this.previous}
                   className={"imagePrevios"}
-                ></Grid>
-                <Grid item onClick={this.next} className={"imagenext"}></Grid>
+                >
+                  {/* <i
+                class="fa fa-angle-left"
+                style={{ fontSize: "42px", color: "#F699A3" }}
+              ></i> */}
+              </Grid>
+                <Grid item onClick={this.next} className={"imagenext"}>
+                {/* <i
+                class="fa fa-angle-right"
+                style={{ fontSize: "42px", color: "#F699A3" }}
+              ></i> */}
+                </Grid>
               </Grid>
             )}
           </Hidden>

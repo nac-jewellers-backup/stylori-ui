@@ -33,12 +33,12 @@
 
 @media screen and (max-width: 1438px) {
   .imagePrevios {
-    width: 35px !important;
-    height: 42px !important;
+    width: 40px !important;
+    height: 50px !important;
     background-repeat: no-repeat !important;
     opacity: 1 !important;
     background-image: url("https://assets.stylori.com/images/static/home/slider_icon.png") !important;
-    background-position: -27px -229px !important;
+    background-position: -27px -42px!important;
     background-color: #fff !important;
     border: 1px solid #ccc;
     border-left: 0px;
@@ -55,11 +55,11 @@
 
   .imagenext {
     background-image: url("https://assets.stylori.com/images/static/home/slider_icon.png") !important;
-    width: 35px !important;
-    height: 42px !important;
+    width: 40px !important;
+    height: 50px !important;
     background-repeat: no-repeat !important;
     opacity: 1 !important;
-    background-position: -160px -229px !important;
+    background-position: -155px -42px !important;
     background-color: #fff !important;
     border: 1px solid #ccc;
     border-right: 0px;
@@ -73,12 +73,12 @@
 }
 
 .imagePrevios {
-  width: 35px !important;
-  height: 42px !important;
+  width: 40px !important;
+  height: 50px !important;
   background-repeat: no-repeat !important;
   opacity: 1 !important;
   background-image: url("https://assets.stylori.com/images/static/home/slider_icon.png") !important;
-  background-position: -27px -229px !important;
+  background-position: -27px -42px!important;
   background-color: #fff !important;
   border: 1px solid #ccc;
   border-left: 0px;
@@ -106,11 +106,11 @@
 
 .imagenext {
   background-image: url("https://assets.stylori.com/images/static/home/slider_icon.png") !important;
-  width: 35px !important;
-  height: 42px !important;
+  width: 40px !important;
+  height: 50px !important;
   background-repeat: no-repeat !important;
   opacity: 1 !important;
-  background-position: -160px -229px !important;
+  background-position: -155px -42px !important;
   background-color: #fff !important;
   border: 1px solid #ccc;
   border-right: 0px;
