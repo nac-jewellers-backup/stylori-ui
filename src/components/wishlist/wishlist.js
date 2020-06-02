@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Button } from '@material-ui/core';
 import useWishlists from './usewishlist';
+import styles from './style'
 var orderobj = {};
 const Wishlist = (props) => {
     return <WishlistComponent  {...props} />
@@ -8,7 +9,8 @@ const Wishlist = (props) => {
 
 const WishlistComponent = (props) => {
 
-    const { classes } = props;
+    const classes = styles();
+    
     const { values, setValues, handlers } = useWishlists(props);
     React.useEffect(() => {
         
@@ -28,7 +30,7 @@ const WishlistComponent = (props) => {
     return (
         <>
             {values.isactive !== 2 ? <>
-                <i class="fa fa-heart-o overall-icons" style={{ color: props.props ? "#d51f63" : "#d51f63" }}
+                <i   className={`fa fa-heart-o overall-icons ${props.props ? classes.colorTheme : classes.colorTheme}`}
                     onClick={() => {
                         values["product_sku"] = props.sku
                         values["product_id"] = props.productId
@@ -36,7 +38,7 @@ const WishlistComponent = (props) => {
                         handlers.handelSubmit(2)
                     }}
                 ></i></> : <>
-                    <i class="fa fa-heart overall-icons" style={{ color: "#d51f63" }}
+                    <i className={`fa fa-heart overall-icons ${classes.colorTheme}`}
                         onClick={() => {
                             values["product_sku"] = props.sku
                             values["product_id"] = props.productId

@@ -37,6 +37,9 @@
     "overallButoon": {
       "primary": "#F36E23",
       "contrastText": "#fff"
+    },
+    "badgeColor":{
+      "background":"#d51f63"
     }
   }
 }

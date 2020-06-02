@@ -145,6 +145,12 @@ export const styles = theme => ({
   subtitle2Container: {
     backgroundColor: theme.palette.background.darkFade,
   },
+  badgeColor:{
+    '& .MuiBadge-badge':{
+      background: theme.palette.badgeColor.background,
+      color:'white'
+    }
+  }
 });
 
 export const useStyles = makeStyles(theme => ({

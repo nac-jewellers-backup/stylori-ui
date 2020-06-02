@@ -210,7 +210,7 @@ class Header extends Component {
                                                     :
                                                     <div className="tooltip ">
 
-                                                        <span class="MuiBadge-root" onClick={() => window.location.pathname = "/login"}>
+                                                        <span className={`MuiBadge-root ${classes.badgecolor}`}  onClick={() => window.location.pathname = "/login"}>
                                                             <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                             <span className="tooltip-slog">{Boolean(localStorage.getItem("user_id")) && !Boolean(localStorage.getItem("gut_lg"))  ?"Account" :"Login" }</span>
                                                         </span>
@@ -252,8 +252,8 @@ class Header extends Component {
                                                     </div>
                                                 </Popover> */}
                                                 <div className="tooltip">
-                                                    <Badge style={{ marginTop: "9px" }} color="secondary"
-                                                        badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length > 0 ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"} color="secondary"
+                                                    <Badge style={{ marginTop: "9px" }}  className={classes.badgeColor}
+                                                        badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length > 0 ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"}
                                                     // wishlist_count
                                                     // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
                                                     >
@@ -272,13 +272,13 @@ class Header extends Component {
                                                 </div>
 
                                                 <div className="tooltip">
-                                                    <Badge style={{ marginTop: "9px" }} badgeContent={
+                                                    <Badge style={{ marginTop: "9px" }} className={classes.badgeColor} badgeContent={
                                                         (  this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) 
                                                         ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length 
                                                        :
                                                        "0"
                                                         // this.props && this.props.cart_count && this.props.cart_count.length
-                                                    } color="secondary">
+                                                    } >
                                                         <a href="/cart" className="highlighter">
                                                             <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
                                                             <span className="tooltip-s" style={{ color: "#d51f63" }}>Cart</span>

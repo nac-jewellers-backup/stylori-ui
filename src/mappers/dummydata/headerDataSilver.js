@@ -180,7 +180,7 @@ export const subheader = {
             },
         ]
     },
-    'My Material': {
+    'By Material': {
         header: 'By Material',
         name: [
             {
@@ -369,8 +369,8 @@ export const Jewellery = {
             url: "/pages/collections",
             icon: ""
         },
-        MyMaterials: {
-            name: "My Materials",
+        ByMaterials: {
+            name: "By Materials",
             url: "/#/",
             icon: ""
         },

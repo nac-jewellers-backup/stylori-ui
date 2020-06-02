@@ -19,7 +19,7 @@
   background-position: -102px -37px;
   background-repeat: no-repeat;
   cursor: pointer;
-  color: #ed1165 !important;
+  /* color: #ed1165 !important; */
 }
 
 .one-day-ship-listing-page-withoutTop {
@@ -35,7 +35,7 @@
   background-position: -102px -37px;
   background-repeat: no-repeat;
   cursor: pointer;
-  color: #ed1165 !important;
+  /* color: #ed1165 !important; */
 }
 
 .one-day-ship-listing-page-label {
@@ -68,7 +68,7 @@
     /* background-image: url('https://alpha-assets.stylori.com/images/static/product-details-icons.png'); */
     /* top: 5px; */
     background-position: -102px -37px;
-    color: #ed1165 !important;
+    /* color: #ed1165 !important; */
     background-repeat: no-repeat;
     cursor: pointer;
   }

@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
 import { Hidden } from "@material-ui/core";
 import './productCard.css'
 import { CDN_URL } from 'config';
-
+import styles from './style'
 import { ProductDetailContext } from 'context'
 import { LazyLoadImage, trackWindowScroll }
   from 'react-lazy-load-image-component';
@@ -23,8 +23,9 @@ import Wishlist from "components/wishlist/wishlist";
 export const ImgMediaCard = (props) => {
   const { ProductDetailCtx, setFilters } = React.useContext(ProductDetailContext);
   const loc = window.location.search
+  const classes = styles();
 
-  return <Component filters={ProductDetailCtx.filters} setFilters={setFilters} {...props} />
+  return <Component filters={ProductDetailCtx.filters} setFilters={setFilters} classes={classes} {...props} />
 }
 // const MyImage = ( props, callmouseover, callmouseout, cardstate ) => {  
 //   return(
@@ -99,9 +100,9 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
 
   return (
     <div className="imageHeight">
-      {props.data.oneDayShipping ? <div class={Math.round(props.data.offerPrice) === Math.round(props.data.price) ? "one-day-ship-listing-page-withoutTop" : "one-day-ship-listing-page"} style={{ zIndex: 2 }}>
+      {props.data.oneDayShipping ? <div className={`${Math.round(props.data.offerPrice) === Math.round(props.data.price) ? "one-day-ship-listing-page-withoutTop" : "one-day-ship-listing-page"} ${props.classes.colorTheme}`} style={{ zIndex: 2 }}>
         <i class="fa fa-truck" style={{ fontSize: "20px" }}></i>
-        <span class="one-day-ship-listing-page-label">1 day shipping</span>
+        <span className={`one-day-ship-listing-page-label ${props.classes.colorTheme}`}>1 day shipping</span>
 
       </div> : ''}
       {
