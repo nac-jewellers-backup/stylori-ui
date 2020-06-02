@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from 'components/SilverComponents/Header'
 import ProductDescription from 'components/productDescription';
+import SilverProductDescription from 'components/productDescription/silverDescription';
 import { Grid, Hidden } from '@material-ui/core';
 import Filter from 'components/Filter/filter'
 import Footer from "components/Footer/Footer"
@@ -13,7 +14,7 @@ import 'screens/screens.css';
 import filterData from 'mappers/filterData'
 import { async } from 'q';
 import MetaTags from 'react-meta-tags';
-import { CartContext } from 'context'
+import { CartContext, GlobalContext } from 'context'
 import LiveChat from 'react-livechat'
 
 class Stylori extends React.Component {
@@ -21,6 +22,7 @@ class Stylori extends React.Component {
     super()
     this.state = { loading: false };
   }
+  static contextType = GlobalContext;
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
 
@@ -38,6 +40,8 @@ class Stylori extends React.Component {
   }
   render() {
     // alert(JSON.stringify(this.props.wishlist))
+    const context = this.context
+    debugger
     const { data, dataFilter, loading } = this.props
     return (
 
@@ -79,8 +83,17 @@ class Stylori extends React.Component {
           <Header data={data} cartcount={this.props.cartcount} wishlist={this.props.wishlistdata} wishlist_count={this.props.wishlist_count} />
 
           <Grid item xs={12}>
-            <ProductDescription title="Jewellery" data={dataFilter} datalisting={data} wishlist={this.props.wishlistdata} />
+           {context.Globalctx.pathName ? 
+           <>
+            <SilverProductDescription title="Jewellery" data={dataFilter} datalisting={data} wishlist={this.props.wishlistdata} />
             <Filter datas={data} data={dataFilter} loading={loading} wishlist={this.props.wishlistdata} />
+            </>
+          :
+          <>
+          <ProductDescription title="Jewellery" data={dataFilter} datalisting={data} wishlist={this.props.wishlistdata} />
+            <Filter datas={data} data={dataFilter} loading={loading} wishlist={this.props.wishlistdata} />
+            </>
+          }
           </Grid>
           <Grid item xs={12} >
             <Hidden smDown>

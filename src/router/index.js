@@ -162,11 +162,12 @@ export const RouterApp = props => {
         props.location.pathname !== "/paymentfail" &&
         props.location.pathname !== "/paymentsuccess/:id" &&
         props.location.pathname !== "/contactus" &&
-        Globalctx &&
-        Globalctx.pathName === false && (
+        // Globalctx &&
+        // Globalctx.pathName === false && (
           <Route exact={true} component={Stylori} path={"/:listingpage"} />
-        )}
-      {Globalctx &&
+        // )
+        }
+      {/* {Globalctx &&
         Globalctx.pathName &&
         loc_PD.length !== "silverjewellery" && (
           <Route
@@ -174,7 +175,7 @@ export const RouterApp = props => {
             component={SilverListingPage}
             path={window.location.pathname}
           />
-        )}
+        )} */}
       <Route key="sto" component={stories} exact path={routes.Stories} />
       <Route key="sto" component={stories} exact path={routes.Education} />
       <Route
