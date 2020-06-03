@@ -1,7 +1,7 @@
 // import '../../fonts/font.css'
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
-export const styles = theme => ({
+export const styles = makeStyles(theme => ({
   headIcons: {
     color: theme.palette.secondary.dark,
     fontFamily: "fontawesome",
@@ -16,7 +16,7 @@ export const styles = theme => ({
   searchcontainer: {
     padding: "3px 2px 2px 2px",
     marginTop:"-1px",
-    backgroundColor: theme.palette.secondary.dark,
+    backgroundColor: theme.palette.secondary.dark, 
     display: "flex",
     justifyContent: "center",
     alignContent: "center"
@@ -82,19 +82,25 @@ export const styles = theme => ({
   },
   headerNavbarList: {
     color: theme.palette.secondary.dark,
-    textAlign: 'right'
+    // textAlign: 'right'
   },
   menuListCursor: {
     cursor: 'pointer',
     fontFamily: 'Roboto',
     fontWeight: 600,
-    color: "#6e6d72",
+    padding:"10px",
+    color: "white",
+    minWidth:"50px",
+    background:theme.palette.secondary.main,
     borderBottom: "1px solid #fff",
     '&:hover': {
-      color: theme.palette.secondary.dark,
+      background: theme.palette.secondary.dark,
       // paddingBottom: "2px",
-      borderBottom: "1px solid " + theme.palette.secondary.dark,
-    }
+    //   borderBottom: "1px solid " + theme.palette.secondary.dark,
+    },
+"&.mouseOverPopover":{
+top:0
+}
   },
   seletectedMenu: {
     color: theme.palette.secondary.dark,
@@ -104,9 +110,9 @@ export const styles = theme => ({
     fontWeight: 600,
     borderBottom: "1px solid #fff",
     // borderBottom: "1px solid " + theme.palette.secondary.dark,
-    '&:hover': {
-      borderBottom: "1px solid " + theme.palette.secondary.dark,
-    }
+    // '&:hover': {
+    //   borderBottom: "1px solid " + theme.palette.secondary.dark,
+    // }
   },
   mobileNavIcon: {
     color: theme.palette.secondary.dark,
@@ -151,7 +157,7 @@ export const styles = theme => ({
       color:'white'
     }
   }
-});
+}));
 
 export const useStyles = makeStyles(theme => ({
   imgcont: {
@@ -181,22 +187,6 @@ export const useStyles = makeStyles(theme => ({
     },
     '& li:hover': {
       backgroundColor: theme.palette.secondary.dark,
-    }
-  },
-  mouseOverPopoverfilters:{
-    zIndex: 1000,
-    top: '4px !important',
-    backgroundColor: theme.palette.secondary.dark ,
-    color: 'white',
-    '& span': {
-      fontFamily: 'Roboto',
-      letterSpacing: '1px'
-    },
-    '& nav': {
-      padding: '0px !important'
-    },
-    '& li:hover': {
-      backgroundColor: theme.palette.primary.light,
     }
   },
   paperdivsub: {
@@ -266,4 +256,4 @@ export const useStyles = makeStyles(theme => ({
   drawer: {
     backgroundColor: "#394578",
   },
-}));
+}))

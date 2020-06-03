@@ -41,7 +41,7 @@ class Stylori extends React.Component {
   render() {
     // alert(JSON.stringify(this.props.wishlist))
     const context = this.context
-    debugger
+    
     const { data, dataFilter, loading } = this.props
     return (
 

@@ -30,7 +30,7 @@ import { useDummyRequest } from '../../hooks';
 import { headerDataSilver } from '../../mappers';
 import { styles } from './styles';
 import LogoSmallScreen from '../../assets/Stylori Silver logo.svg';
-import Seach from '../../assets/search'
+import Seach from '../../assets/search' 
 import stylorisilverlogo from '../../assets/Stylori Silver logo.svg'
 import Popover from '@material-ui/core/Popover';
 import { NavLink } from 'react-router-dom';
@@ -177,7 +177,7 @@ class Header extends Component {
                                     <Grid container item xs={12} justify="flex-end" alignItems="center">
                                         {this.props.paymentSucces || window.location.pathname === "/cart" || window.location.pathname === '/checkout' ? <Grid item xs={3} className="logoImgHeader1">
                                             <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/" }} style={{ cursor: "pointer" }}>
-                                                <img id="logoImage" style={{ transition: "height 0.2s", marginTop: "9px" }} className={`imges`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                                <img id="logoImage" style={{ transition: "height 0.2s", marginTop: "9px" }} className={`imges`} src={'../../assets/Stylori Silver logo.svg'} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                             </div>
                                         </Grid>
                                             : ""}

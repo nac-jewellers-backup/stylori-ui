@@ -18,17 +18,22 @@ import { filterParams } from 'mappers/index';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import styles from './styles';
-import { FilterOptionsContext } from 'context'
+import { FilterOptionsContext,GlobalContext } from 'context'
 import { NetworkContext } from 'context/NetworkContext';
 import { PRODUCTLIST, conditions, seoUrlResult } from 'queries/productListing';
 import { withRouter } from 'react-router-dom';
+import {TopFilters} from './topFilters'
+import ProductLayoutSilver from '../ProductCard/ProductLayoutSilver'
+import { TempTest } from './TempTest';
 const PersistentDrawerLeft = (props) => {
   const { setSort, setloadingfilters, setOffset, setPriceMax, setPriceMin, FilterOptionsCtx, setdelete_fil } = React.useContext(FilterOptionsContext);
+  
   const loc = window.location.search
   const { NetworkCtx } = React.useContext(NetworkContext);
-
+  const {Globalctx} = React.useContext(GlobalContext)
+  
   return <Component setSort={setSort} setOffset={setOffset} offset={FilterOptionsCtx.offset} setFilters={FilterOptionsCtx.setFilters} setloadingfilters={setloadingfilters} setPriceMax={setPriceMax} setPriceMin={setPriceMin} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort}
-    uri={NetworkCtx.graphqlUrl} setdelete_fil={setdelete_fil}
+    uri={NetworkCtx.graphqlUrl} globalcontext={Globalctx} setdelete_fil={setdelete_fil}
     {...props} />
 }
 
@@ -86,7 +91,7 @@ if (window.location.search) {
   if (splitSearchParamers.length > 0) {
     // if (splitSearchParamers.length > 2) {
       splitSearchParamers.map((val) => {
-        debugger
+        
         let equalSplit = val.split("=");
         if (splitSearchParamers.length > 2) {
           if (equalSplit[0] === "startprice") {
@@ -113,7 +118,7 @@ if (window.location.search) {
         
         
       });
-      debugger
+      
   // if(numOne !== price_one && numTwo !== price_two){
     const price_min = Number(price_one);
     const price_max = Number(price_two);
@@ -322,7 +327,7 @@ if (window.location.search) {
   })
   clearSortIfFiltersIsEmpty = () => {
     var showSortFilter = false
-    debugger
+    
     if (window.location.search) {
       Object.keys(this.state.checked).map((fk) => {
         const filter = this.state.checked[fk];
@@ -343,9 +348,11 @@ if (window.location.search) {
     }
 
   };
-  handleChange(value, BoolName, e, title, TargetName) {
+  handleChange = (value, BoolName, e, title, TargetName, topfilterstate, selectedfiltertop) => {
     // window.scrollTo(0,2)
-    let { chipData } = this.state;
+    debugger
+    let mystate = this.state
+    let { chipData } =this.state ;
     let checked = { ...this.state.checked }
     var queries = [{}]
     let pathnameSplit = window.location.pathname.split('/')
@@ -367,7 +374,7 @@ if (window.location.search) {
 
     if (TargetName === undefined) {
       this.clearSortIfFiltersIsEmpty()
-      if (Object.keys(this.state.checked.category).length === 0 && this.state.checked.category.constructor === Object) {
+      if (Object.keys(mystate.checked.category).length === 0 && mystate.checked.category.constructor === Object) {
 
         var _replaceCategory = JSON.parse(sessionStorage.getItem('category'))
         checked["category"] = _replaceCategory
@@ -377,7 +384,8 @@ if (window.location.search) {
       this.props.setloadingfilters(true)
       let checkedvalue = {};
       checkedvalue[value] = BoolName
-      checked[e.target.name] = checkedvalue
+      debugger
+      checked[e && e.target.name ? e.target.name : selectedfiltertop] = checkedvalue
       this.setState({
         checked
       }, () => this.props.setFilters(checked))
@@ -435,6 +443,7 @@ if (window.location.search) {
 
   handleDelete = (value) => {
     
+    this.handlebye()
     let { chipData, checked } = this.state
     Object.entries(checked).map(val => {
       if (val && val[0] === "Category") {
@@ -508,7 +517,9 @@ if (window.location.search) {
     // });
 
   };
-
+  handlebye = () => {
+alert('haii')
+  }
   check_goldCoins = (values_) => {
     
     const Category = this.state.checked
@@ -671,16 +682,24 @@ if (window.location.search) {
 
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
+    const isTopFilter = this.props.globalcontext.pathName  ? true : false 
     //  const chck_res =  this.state.chipData.map(data => {
     //   return (
     //     data.label
     //   );
     // })
     // alert(JSON.stringify(this.state.selected))
-
-
     return (
       <>
+   {isTopFilter &&
+       <Hidden smDown>
+    <TopFilters filter={filter} state={this.state} subFilter={subFilter} onchangefunc={this.handleChange} filtercheck={this.state.filtercheck} checked={this.state.checked} {...this.props}/>
+      </Hidden>
+   }    
+   {/* <TempTest onchangefunc={this.handleChange}/> */}
+  
+       {
+         !isTopFilter &&
         <Hidden smDown>
           <FilterHeader click={this.handleDelete}
             handleChangeDrawer={this.handleChangeDrawer}
@@ -688,7 +707,10 @@ if (window.location.search) {
             checked={this.state.checked}
           />{/*  handleDrawerOpen={this.handleDrawerOpen.bind(this)} */}
         </Hidden>
+        }
         <div className={classes.root} >
+        {
+         !isTopFilter &&
           <Hidden smDown >
 
             {/* <CssBaseline /> */}
@@ -751,7 +773,7 @@ if (window.location.search) {
 filter  && filter.length > 0 ?
 
 filter.map((row, i) => {
-  debugger
+  
                                 return (
                                   <>
                                     {
@@ -903,15 +925,18 @@ filter.map((row, i) => {
             </div>
 
           </Hidden>
+  }
           {
             this.state.productDisplay &&
             <div
               // className="filter_page_layout"
               className={`${check ? `filter_page_layout ${classes.productCardscheck}` : `filter_page_layout ${classes.productCardsuncheck}`}`}
+              style={{width:isTopFilter ?"100%" : "80%" }}
             >
-
-              <ProductLayout wishlist={this.props.wishlist} data={this.props.datas} loading={this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
-
+              {isTopFilter ?
+              <ProductLayoutSilver wishlist={this.props.wishlist} data={this.props.datas} loading={this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
+              :
+              <ProductLayout wishlist={this.props.wishlist} data={this.props.datas} loading={this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />}
             </div>}
         </div>
 

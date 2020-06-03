@@ -12,9 +12,11 @@ class SilverStylori extends Component {
 
     render() {
         return (
-            <ListingPageProvider>
-                <ListingPage />
-            </ListingPageProvider>
+            // <ListingPageProvider>
+            //     <ListingPage />
+            // </ListingPageProvider>
+            <>
+            </>
         )
     }
 }

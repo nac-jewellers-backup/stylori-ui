@@ -35,7 +35,8 @@ export default function (data) {
       }
       return {..._obj}
     };
-    console.log(getSubFilters(data))
+    console.clear()
+    console.log(data, "datadatadata")
     let _d;
     try {
       _d = {
@@ -43,7 +44,11 @@ export default function (data) {
         //     'Offers', 'Availability', 'Product Type', 'Style', 'Material', 'Theme', 'Collection',
         //     'Metal Color', 'Metal Purity', 'Occasion', 'No Of Stones', 'Gender', 'Stone Color', 'Stone Shape', 'By Design', 'By Weight'
         // ],
-        filter: data && data.length > 0 ? Object.keys(data[0]) : [],
+        filter: data && data.length > 0 ? Object.keys(data[0]).filter((val)=>{
+          if (val !== "master_category" && val !== "seo_url" && val !== "seo_text") {
+          if(data[0][val].length>0) return val
+          }
+        }) : [],
         // subFilter: {
         //     'Offers': [
         //         'Up to  20%',

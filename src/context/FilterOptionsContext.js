@@ -307,7 +307,7 @@ const Provider = (props) => {
   };
   // const clearSortIfFiltersIsEmpty = () => {
   //   var showSortFilter = true
-  //   debugger
+  //   
   //   if (window.location.search) {
   //     Object.keys(filters).map((fk) => {
   //       const filter = filters[fk];

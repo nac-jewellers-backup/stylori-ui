@@ -22,11 +22,12 @@ function HeaderHoverMenuItem(props) {
     setOpens(props.opened);
     setTarget(props.targetopened)
   });
+  
   // top: '18px !important',
   return (
-    <Grid container className={classes.root}>
+    <Grid container className={classes.root} >
       <Grid container item xs={12} className={classes.paperdiv} >
-        <Popper open={opens} id={props.id} anchorEl={target} transition className={`${classes.mouseOverPopover} ${classHover}`}
+        <Popper open={opens} id={props.id} anchorEl={target} transition className={`${props.filters ? classes.mouseOverPopoverfilters:classes.mouseOverPopover} ${classHover}`}
          modifiers={{
           flip: {
             enabled: false,
@@ -39,7 +40,7 @@ function HeaderHoverMenuItem(props) {
                 (props.listHoverItem) && mapper &&
                 (mapper).map(menuList =>
                   (
-                    <ListItem onMouseOver={(event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }} className={classes.listedItems} component="li"
+                    <ListItem onMouseOver={props.submenuDetails ? (event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }: ()=>{}} className={classes.listedItems} component="li"
                       onClick={() => { window.location.href = menuList.url }}
                     >
                       <ListItemText variant>
@@ -59,8 +60,10 @@ function HeaderHoverMenuItem(props) {
 
                   (
 
-                    <ListItem component="li" name={menuList}
-                      onClick={(e) => props.onchoosetype(menuList)}
+                    <ListItem component="li" name={menuList ? menuList : menuList.title}
+                      onClick={(e) => {
+                        debugger
+                        props.onchoosetype(menuList, props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] !== undefined ? !props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] : true, e,null,undefined, props.state, props.filtercheck ? props.filtercheck.replace(/\s/g, "") : "")}}
                     >
 
                       <ListItemText variant >
@@ -81,7 +84,7 @@ function HeaderHoverMenuItem(props) {
                 (props.listHoverItem ) &&
                 (props.listHoverItem['menuTwo']).map(menuList =>
                   (
-                    <ListItem onMouseOver={(event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }} className={classes.listedItemsub} component="li"
+                    <ListItem onMouseOver={props.submenuDetails ? (event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }:()=>{}} className={classes.listedItemsub} component="li"
                       onClick={() => { window.location.href = menuList.url }}
                     >
                       <ListItemText variant >
