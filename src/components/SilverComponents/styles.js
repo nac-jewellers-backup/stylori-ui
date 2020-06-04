@@ -207,6 +207,7 @@ export const useStyles = makeStyles(theme => ({
     width: '100%',
 
   },
+  
   mouseOverPopoversub: {
     zIndex: 1000,
     top: '0px !important',
@@ -244,6 +245,17 @@ export const useStyles = makeStyles(theme => ({
     letterSpacing: 2,
     cursor: "pointer",
 
+  },
+  sortSilver:{
+    "& svg":{
+      fontSize:"1rem"
+    }
+      },
+  filtersList:{
+    "& span":{
+      letterSpacing: 3,
+    }
+    
   },
   listedItemsvalue2: {
     padding: "2px 16px 2px 16px",

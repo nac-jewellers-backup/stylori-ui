@@ -82,7 +82,7 @@ export default function MoreFilters(props) {
                     <FormGroup row>
                    {props.subFilter[val].map((valsub)=>{
                        debugger
-                       if(val){
+                       if(val && val !== 'price_range'){
                         return(
                             // <div>
                             // {val}
@@ -107,6 +107,33 @@ export default function MoreFilters(props) {
                             </Grid>
                             
                            )
+                       }
+                       else{
+                         debugger
+                        return(
+                          // <div>
+                          // {val}
+                          // </div>
+                          <Grid item xs = {12}>
+<FormControlLabel
+                          control={
+                            <Checkbox
+                            className={classes.checkboxgrid}
+                            checked={props.checked[val.replace(/\s/g, "")] && props.checked[val.replace(/\s/g, "")][valsub] !== undefined ?
+                            props.checked[val.replace(/\s/g, "")] && props.checked[val.replace(/\s/g, "")][valsub] : false}
+                            onChange={(e) => {
+                              props.handleClose();
+                              props.onchoosetype(valsub, props.checked[val && val.replace(/\s/g, "")][valsub] !== undefined ? !props.checked[val && val.replace(/\s/g, "")][valsub] : true, e,null,undefined, props.state, val ? val.replace(/\s/g, "") : "")}}
+                              
+                              name={val.replace(/\s/g, "")}
+                                                              color={"secondary"}
+                            />
+                          }
+                          label={valsub}
+                        />
+                          </Grid>
+                          
+                         )
                        }
                       
                    })

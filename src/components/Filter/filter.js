@@ -350,7 +350,7 @@ if (window.location.search) {
   };
   handleChange = (value, BoolName, e, title, TargetName, topfilterstate, selectedfiltertop) => {
     // window.scrollTo(0,2)
-    debugger
+    
     let mystate = this.state
     let { chipData } =this.state ;
     let checked = { ...this.state.checked }
@@ -384,7 +384,7 @@ if (window.location.search) {
       this.props.setloadingfilters(true)
       let checkedvalue = {};
       checkedvalue[value] = BoolName
-      debugger
+      
       checked[e && e.target.name ? e.target.name : selectedfiltertop] = checkedvalue
       this.setState({
         checked

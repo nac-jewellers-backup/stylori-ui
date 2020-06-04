@@ -36,6 +36,7 @@ export const TopFilters = (props) => {
     opened: false,
     morefiltersOpen: false,
     expanded: false,
+    sortOpen:null
   });
   const { mapped } = useDummyRequest(filterParams);
   const { setSort, setOffset, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
@@ -48,13 +49,14 @@ export const TopFilters = (props) => {
     });
   };
   const { sortOptions } = mapped;
+  console.log(sortOptions,"sortOptionssortOptionssortOptionssortOptionssortOptionssortOptionssortOptionssortOptions")
   const classes = styles();
   // props.checked['material'] = 'silver'
   const handleMoreFilters = () => {
     setState({ ...state, morefiltersOpen: !state.morefiltersOpen });
   };
  const handleExpandClick = () => {
-     debugger
+     
     setState({...state, expanded: !state.expanded });
 }
   const handleChange = (event) => {
@@ -65,10 +67,11 @@ export const TopFilters = (props) => {
     window.scrollTo(0, 0);
 
 }
+console.log('test',FilterOptionsCtx.sort)
   return Object.keys(mapped).length === 0 ? (
     <div>loading...</div>
   ) : (
-    <Container>
+    <Container style={{marginTop:"25px"}}>
       <Grid container item xs={12}>
         <Grid
           container
@@ -176,11 +179,15 @@ export const TopFilters = (props) => {
             )}
           </Grid>
         </Grid>
-        {/* <Grid container item xs={3}>
-        <Grid container item xs={12}   spacing={2}
+        <Grid container item xs={3}   onMouseLeave={() => {
+            setState({ ...state,expanded:false, targetopen: null });
+          }}>
+        <Grid container item xs={12} 
               justify="flex-end"
               style={{ paddingBottom: 20 }}>
-        <Grid container item xs={6} className={classes.menuListCursorSort} onClick={()=>{handleExpandClick()}}>
+        <Grid container item xs={6} className={classes.menuListCursorSort} onMouseOver={(e)=>{setState({...state,  targetopen: e.currentTarget, expanded:true})}}
+       
+        >
              
         <Grid container item xs={12}>
         <Grid item xs={6}>
@@ -194,7 +201,7 @@ export const TopFilters = (props) => {
               </Grid>
              
         </Grid>
-        <div className={"testMenu"} style={{
+        {/* <div className={"testMenu"} style={{
                           position: "absolute", width: "215px",
                           right: "15px", top: "65px", boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 7px'
                         }}>
@@ -209,8 +216,27 @@ export const TopFilters = (props) => {
                                     </Grow>
                                 )}
                             </Popper>
-                        </div>
-        </Grid> */}
+                        </div> */}
+                        {state.expanded ? (
+              <HeaderHoverMenuItem
+                tabdata={sortOptions}
+                listHoverItem={sortOptions}
+                // onMouseOver={(event) => { setState({ Menuopen: true }) }}
+                sort={true}
+                opened={state.expanded}
+                targetopened={state.targetopen}
+                // submenuDetails={()=>submenuDetails()}
+                // filtercheck={state.listHoverItem}
+                 values={FilterOptionsCtx.sort}
+                onchoosetype={handleChange}
+                onMouseLeave={() => {
+                  setState({ ...state,expanded:false, targetopen: null });
+                }}
+              />
+            ) : (
+              ""
+            )}
+        </Grid>
       </Grid>
 
       <MorefiltersOpen

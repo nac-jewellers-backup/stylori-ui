@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Popper, List, ListItem, ListItemText, Typography } from '@material-ui/core';
+import { Grid, Popper, List, ListItem, ListItemText, Typography, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 import { useStyles } from '../styles'
 import PropTypes from 'prop-types';
 
@@ -13,6 +13,7 @@ function HeaderHoverMenuItem(props) {
   const { onMouseLeave, onMouseOver, onClick } = props;
   const classes = useStyles();
   const mapper = props.filters ? props.listHoverItem : props.listHoverItem['menuOne']
+  const mapperSort = props.sort ? props.tabdata : ''
   // const mapper_menu2 = props.filters ? props.listHoverItem : props.listHoverItem['menuOne']
   const classHover = props.filters ? classes.mouseOverPopoverfilters : classes.mouseOverPopoverHeader
   // console.log(props.listHoverItem);
@@ -32,11 +33,13 @@ function HeaderHoverMenuItem(props) {
           flip: {
             enabled: false,
           },}}
+          placement="bottom"
+      
         >
           <List component="nav" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
             <Grid className={classes.subtopic1} style={{width:`${props._width}`}}>
               {
-                !props.filters &&
+                !props.filters && !props.sort &&
                 (props.listHoverItem) && mapper &&
                 (mapper).map(menuList =>
                   (
@@ -55,18 +58,18 @@ function HeaderHoverMenuItem(props) {
                   ))
               }
               {
-                props.filters && mapper &&
+                !props.sort && props.filters && mapper &&
                 (mapper).map(menuList =>
 
                   (
 
                     <ListItem component="li" name={menuList ? menuList : menuList.title}
                       onClick={(e) => {
-                        debugger
+                        
                         props.onchoosetype(menuList, props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] !== undefined ? !props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] : true, e,null,undefined, props.state, props.filtercheck ? props.filtercheck.replace(/\s/g, "") : "")}}
                     >
 
-                      <ListItemText variant >
+                      <ListItemText variant className={classes.filtersList} style={{fontSize:"0.9rem"}}>
 
                         {menuList.title ?
                           menuList.title :
@@ -75,6 +78,26 @@ function HeaderHoverMenuItem(props) {
 
                     </ListItem>
                   ))}
+        {props.sort &&
+        <RadioGroup aria-label="gender" name="gender1" value={props.values.values} onChange={(e)=>{props.onchoosetype(e)}} >
+      {
+        mapperSort.map((menuList) => (
+          <ListItem
+            component="li"
+            name={menuList}
+            style={{paddingTop:"0px", paddingBottom:"0px"}}
+          >
+            <ListItemText variant className={`${classes.filtersList} ${classes.sortSilver}`} >
+            <FormControlLabel value={menuList} control={<Radio />} label={menuList}/>
+            </ListItemText>
+          </ListItem>
+        )
+        )
+      }
+
+
+</RadioGroup>
+    }
             </Grid>
      {
        props.listHoverItem && props.listHoverItem['menuTwo'] && 
