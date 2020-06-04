@@ -258,7 +258,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       height: '46px',
       padding: '0 !important',
-      paddingLeft: '10px !important'
+    //   paddingLeft: '10px !important'
     },
     '& div': {
       padding: '0 !important'
