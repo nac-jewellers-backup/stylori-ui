@@ -264,3 +264,7 @@
 .ProductGrids .slick-slider {
   box-shadow: 10px 10px 7px #aaaaaa;
 }
+.silverClassSeoBanner{
+  width: 100% !important;
+  height: 120px !important;
+}

@@ -130,39 +130,39 @@ class ProductDescription extends Component {
               container
               alignItems="center"
             >
-              <Hidden smDown>
+              {/* <Hidden smDown> */}
                 <Grid
                   item
                   xs={12}
-                  style={{ paddingLeft: '4%', textAlign: 'center' }}
+                  style={{ textAlign: 'center' }}
                 >
 
                   {/* < Slideshow fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel} styles={'productDescriptionCarousel'} /> */}
-                  < Slideshow fadeImages={fadeImages} dataCarousel={settings} styles={'productDescriptionCarousel'} />
+                  < Slideshow fadeImages={['https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+banner+1920+X+656.jpg']} dataCarousel={settings} silver={true} className={'silverClassSeoBanner'} styles={'productDescriptionCarousel'} />
                 </Grid>
-              </Hidden>
+              {/* </Hidden> */}
               <Grid
                 item
                 xs={12} sm={12} md={12} lg={12} xl={12}
                 style={{ textAlign: 'center' }}
               >
-                <p>
-                  <div className="DescriptionContent">
+                <p >
+                  <div className="DescriptionContent DescriptionContentsilver">
                     {
                       this.state.showLess === true ?
                         <>
                           {datadescription&& (datadescription).slice(0, 160)}
                           <span id="moreDots" style={{ display: 'inline' }}>...</span>
-                          <p onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readMore" >
+                          <span style={{float:"right"}} onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readMore" >
                             <span ><i className="fa faMore">&#xf0da;</i></span> READ MORE
-                   </p>
+                   </span>
                         </>
                         :
                         <>
                           {datadescription}
-                          <p onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readLess" >
+                          <span style={{float:"right"}} onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readLess" >
                             <span ><i className="fa faMore">&#xf0d8;</i></span> CLOSE
-               </p>
+               </span>
                           <br />
                         </>
                     }

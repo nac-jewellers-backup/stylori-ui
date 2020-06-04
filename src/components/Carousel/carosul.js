@@ -31,6 +31,7 @@ class Slideshow extends React.Component {
   renderFadeImages = () => {
 
     let { video } = this.props;
+    debugger
     return this.props.fadeImages ? this.props.fadeImages.map(imgs => (
       <div className={` ${this.props.class ? this.props.class : ''}`} onClick={e => this.props.getmsg ? this.props.getmsg(e) : ''}>
         {video || this.handleVideoCheck(imgs) ?
@@ -38,7 +39,7 @@ class Slideshow extends React.Component {
             poster="https://assets.stylori.com/images/static/video_preview.png" type="video/mp4" controls={this.props.videoControls}
           >
           </video>
-          : <img className={`${imgs ? 'imgDiv2' : 'shine imgDiv2'} ${this.props.imgClass ? this.props.imgClass : ''}`} src={imgs} alt="" />}
+          : <img className={`${imgs ? 'imgDiv2' : 'shine imgDiv2'} ${this.props.imgClass ? this.props.imgClass : ''} ${this.props.silver ? this.props.className ? this.props.className : '' : ''}`} src={imgs} alt="" />}
       </div>
     )) : ''
   }

@@ -27,7 +27,7 @@ export default function (data) {
       if (data && data.length > 0) {
         Object.keys(data[0]).map((val) => {
             
-          if (val !== "master_category" && val !== "seo_url" && val !== "seo_text") {
+          if (val !== "master_category" && val !== "seo_url" && val !== "seo_text" && val !== "seo_banner") {
              _obj[val] = getSubFilterLength(data[0][val])
           }
         });
@@ -45,7 +45,7 @@ export default function (data) {
         //     'Metal Color', 'Metal Purity', 'Occasion', 'No Of Stones', 'Gender', 'Stone Color', 'Stone Shape', 'By Design', 'By Weight'
         // ],
         filter: data && data.length > 0 ? Object.keys(data[0]).filter((val)=>{
-          if (val !== "master_category" && val !== "seo_url" && val !== "seo_text") {
+          if (val !== "master_category" && val !== "seo_url" && val !== "seo_banner" && val !== "seo_text") {
           if(data[0][val].length>0) return val
           }
         }) : [],
@@ -126,6 +126,7 @@ export default function (data) {
           "Best Seller",
         ],
         seoText: getstring(data[0].seo_text),
+        seoBanner:data && data.length > 0 && data[0].seo_banner? data[0].seo_banner[0] : [],
         dataCarousel: {
           dots: false,
           infinite: true,

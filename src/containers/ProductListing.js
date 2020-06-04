@@ -47,7 +47,7 @@ class Stylori extends React.Component {
 
       <>
 
-        <LiveChat license={5807571} />
+        {/* <LiveChat license={5807571} /> */}
         <Grid container >
           <div>
             {/* {

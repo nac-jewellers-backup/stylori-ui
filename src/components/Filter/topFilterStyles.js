@@ -91,12 +91,69 @@ export const styles = makeStyles(theme => ({
     padding:"10px",
     color: "white",
     minWidth:"50px",
+    // #80808061
+    boxShadow: `6px 7px 6px  ${theme.palette.secondary.light}`,
     background:theme.palette.secondary.main,
-    borderBottom: "1px solid #fff",
+    // borderBottom: "1px solid #fff",
     '&:hover': {
       background: theme.palette.secondary.dark,
       // paddingBottom: "2px",
     //   borderBottom: "1px solid " + theme.palette.secondary.dark,
+    },
+    "& svg":{
+      fill:`white !important`,
+      
+    },
+"&.mouseOverPopover":{
+top:0
+}
+  },
+  menuListCursorSort: {
+    cursor: 'pointer',
+    fontFamily: 'Roboto',
+    fontWeight: 600,
+    padding:"10px",
+    color: theme.palette.secondary.main,
+    boxShadow: `6px 7px 6px  ${theme.palette.secondary.light}`,
+    background:'white',
+    border: `1px solid ${theme.palette.secondary.main}`,
+    '&:hover': {
+      border: `1px solid ${theme.palette.secondary.dark}`,
+      boxShadow: `6px 7px 6px  ${theme.palette.primary.light}`,
+      color: theme.palette.secondary.dark,
+      "& svg":{
+        fill:`${theme.palette.secondary.dark} !important`,
+      },
+    },
+    "& svg":{
+      fill:`${theme.palette.secondary.main} !important`,
+    },
+"&.mouseOverPopover":{
+top:0
+}
+  },
+  menuListCursorMoreFilters: {
+    cursor: 'pointer',
+    fontFamily: 'Roboto',
+    fontWeight: 600,
+    padding:"10px",
+    border: `1px solid ${theme.palette.secondary.dark}`,
+      boxShadow: `6px 7px 6px  ${theme.palette.secondary.light}`,
+      color: theme.palette.secondary.main,
+    background:'white',
+    '&:hover': {
+      color: theme.palette.secondary.main,
+      boxShadow: `6px 7px 6px  ${theme.palette.secondary.main}`,
+      border: `1px solid ${theme.palette.secondary.main}`,
+      // background: theme.palette.secondary.dark,
+      // paddingBottom: "2px",
+    //   borderBottom: "1px solid " + theme.palette.secondary.dark,
+    "& svg":{
+      fill: `${theme.palette.secondary.main} !important`,
+    },
+    },
+    "& svg":{
+      fill:`${theme.palette.secondary.dark} !important`,
     },
 "&.mouseOverPopover":{
 top:0
