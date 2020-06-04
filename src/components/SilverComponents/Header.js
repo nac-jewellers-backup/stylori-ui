@@ -33,6 +33,9 @@ import LogoSmallScreen from '../../assets/Stylori Silver logo.svg';
 import Seach from '../../assets/search' 
 import stylorisilverlogo from '../../assets/Stylori Silver logo.svg'
 import Popover from '@material-ui/core/Popover';
+// import LogoSmallScreen from '../../assets/stylori-silver-logo-small-screen.png';
+// import Seach from '../../assets/search' 
+// import stylorisilverlogo from '../../assets/stylori-silver-logo.png'
 import { NavLink } from 'react-router-dom';
 import logout from "../../assets/Icons/logout.svg"
 import styloriLogo from "../../assets/Stylorilogo.svg"
@@ -383,7 +386,7 @@ class Header extends Component {
                                             </div>
                                         </Grid>
                                         <Grid item xs={6}>
-                                            <div onClick={this.handleSearch} className="mobli-icon1">
+                                            <div onClick={this.handleSearch} className={`mobli-icon1 ${classes.mobile_icon_i}`}>
                                                 <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", alignContent: "center", paddingRight: "10px", paddingBottom: "15px" }}>
                                                     <div className={`head-icons1 ${classes.headIcons}`}  >
 

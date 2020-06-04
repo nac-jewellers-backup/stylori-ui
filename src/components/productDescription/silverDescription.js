@@ -10,7 +10,8 @@ import { withRouter } from 'react-router-dom';
 const styles = theme => ({
 
   colorLight: {
-    color: theme.palette.secondary.light
+    color: 'rgb(109,110,112)'
+    
   },
   colorDark: {
     color: theme.palette.primary.dark,
@@ -154,14 +155,14 @@ class ProductDescription extends Component {
                           {datadescription&& (datadescription).slice(0, 160)}
                           <span id="moreDots" style={{ display: 'inline' }}>...</span>
                           <span style={{float:"right"}} onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readMore" >
-                            <span ><i className="fa faMore">&#xf0da;</i></span> READ MORE
+                            <span ><i className="fa faMore faMoreSilver">&#xf0da;</i></span> READ MORE
                    </span>
                         </>
                         :
                         <>
                           {datadescription}
                           <span style={{float:"right"}} onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readLess" >
-                            <span ><i className="fa faMore">&#xf0d8;</i></span> CLOSE
+                            <span ><i className="fa faMore faMoreSilver">&#xf0d8;</i></span> CLOSE
                </span>
                           <br />
                         </>

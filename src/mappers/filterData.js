@@ -28,8 +28,15 @@ export default function (data) {
         Object.keys(data[0]).map((val) => {
             
           if (val !== "master_category" && val !== "seo_url" && val !== "seo_text" && val !== "seo_banner") {
-             _obj[val] = getSubFilterLength(data[0][val])
+            if(val === 'price_range' || val.toLocaleLowerCase() === 'price')
+          {
+            _obj[val] = data[0][val]
+          } 
+          else{
+            _obj[val] = getSubFilterLength(data[0][val])
+          }  
           }
+
         });
      
       }

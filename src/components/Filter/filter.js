@@ -597,60 +597,68 @@ alert('haii')
   };
 
 
-  onCurrencyChange_click = (e) => {
+  onCurrencyChange_click = (e, silverPrice) => {
+    debugger
     const { checked } = this.state
-    this.setState({ Price_button_click: true })
+    
     var _price_min;
     var _price_max;
-    if (isNaN(Number((document.getElementById('num1').value).charAt(0)))) {
-      _price_min = Number(((document.getElementById('num1').value).substr(1)).replace(/,/g, ''));
-    }
-    else {
-
-      _price_min = Number((document.getElementById('num1').value).replace(/,/g, ''));
-    }
-    if (isNaN(Number((document.getElementById('num2').value).charAt(0)))) {
-      _price_max = Number(((document.getElementById('num2').value).substr(1)).replace(/,/g, ''));
-    }
-    else {
-
-      _price_max = Number((document.getElementById('num2').value).replace(/,/g, ''));
-    }
-    var price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(_price_min));
-    var price_max = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(_price_max));
-    
-    var pricemin = price_min.indexOf(',') > -1 ? price_min.indexOf(" ") > -1 ? Number(price_min.substr(2).replace(/\,/g, ''))
-    
-    :
-    Number(price_min.substr(1).replace(/\,/g, ''))
-    :
-    price_min.indexOf(" ") > -1 ?
-    Number(price_min.substr(2))
-    :
-    Number(price_min.substr(1))
-    var pricemax = price_max.indexOf(',') > -1 ? price_max.indexOf(" ") > -1 ? Number(price_max.substr(2).replace(/\,/g, '')) 
-    :
-    Number(price_max.substr(1).replace(/\,/g, ''))
-    :
-    price_max.indexOf(" ") > -1 ?
-    Number(price_max.substr(2))
-    :
-    Number(price_max.substr(1))
-    // alert("came in ")
-    // 
-    // alert(pricemin)
-    // alert(pricemax)
-    if(pricemin > pricemax){
-      this.setState({errorPriceMessage:true})
-    }
-    else if(pricemin === 0 && pricemax === 0){
-      return false
+    if(silverPrice){
+      this.setState(checked)
+      this.setState({ numOne: silverPrice.min, numTwo: silverPrice.max }, () => { this.props.setPriceMax(silverPrice.max); this.props.setPriceMin(silverPrice.min) })
     }
     else{
-      this.setState(checked)
-      this.setState({ numOne: price_min, numTwo: price_max }, () => { this.props.setPriceMax(pricemax); this.props.setPriceMin(pricemin) })
+      this.setState({ Price_button_click: true })
+      if (isNaN(Number((document.getElementById('num1').value).charAt(0)))) {
+        _price_min = Number(((document.getElementById('num1').value).substr(1)).replace(/,/g, ''));
+      }
+      else {
+  
+        _price_min = Number((document.getElementById('num1').value).replace(/,/g, ''));
+      }
+      if (isNaN(Number((document.getElementById('num2').value).charAt(0)))) {
+        _price_max = Number(((document.getElementById('num2').value).substr(1)).replace(/,/g, ''));
+      }
+      else {
+  
+        _price_max = Number((document.getElementById('num2').value).replace(/,/g, ''));
+      }
+      var price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(_price_min));
+      var price_max = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(_price_max));
+      
+      var pricemin = price_min.indexOf(',') > -1 ? price_min.indexOf(" ") > -1 ? Number(price_min.substr(2).replace(/\,/g, ''))
+      
+      :
+      Number(price_min.substr(1).replace(/\,/g, ''))
+      :
+      price_min.indexOf(" ") > -1 ?
+      Number(price_min.substr(2))
+      :
+      Number(price_min.substr(1))
+      var pricemax = price_max.indexOf(',') > -1 ? price_max.indexOf(" ") > -1 ? Number(price_max.substr(2).replace(/\,/g, '')) 
+      :
+      Number(price_max.substr(1).replace(/\,/g, ''))
+      :
+      price_max.indexOf(" ") > -1 ?
+      Number(price_max.substr(2))
+      :
+      Number(price_max.substr(1))
+      // alert("came in ")
+      // 
+      // alert(pricemin)
+      // alert(pricemax)
+      if(pricemin > pricemax){
+        this.setState({errorPriceMessage:true})
+      }
+      else if(pricemin === 0 && pricemax === 0){
+        return false
+      }
+      else{
+        this.setState(checked)
+        this.setState({ numOne: price_min, numTwo: price_max }, () => { this.props.setPriceMax(pricemax); this.props.setPriceMin(pricemin) })
+      }
+      
     }
-    
   }
   txtFieldChange(e) {
     if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
@@ -693,7 +701,7 @@ alert('haii')
       <>
    {isTopFilter &&
        <Hidden smDown>
-    <TopFilters filter={filter} state={this.state} subFilter={subFilter} onchangefunc={this.handleChange} filtercheck={this.state.filtercheck} checked={this.state.checked} {...this.props}/>
+    <TopFilters filter={filter} state={this.state} subFilter={subFilter} onchangefunc={this.handleChange} onpricechange = {this.onCurrencyChange_click} filtercheck={this.state.filtercheck} checked={this.state.checked} {...this.props}/>
       </Hidden>
    }    
    {/* <TempTest onchangefunc={this.handleChange}/> */}

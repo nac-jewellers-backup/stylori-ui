@@ -38,14 +38,16 @@ const styles = (theme) => ({
     },
   },
   viewmoreColor: {
-    backgroundColor: "#3a4578",
     color: "white",
     padding: "6px 12px",
     "&:hover": {
-      backgroundColor: "#3a4578",
+      backgroundColor: theme.palette.secondary.main,
       opacity: "0.8",
     },
   },
+  viewmoreColorSilver:{
+    backgroundColor:theme.palette.secondary.main
+  }
 });
 const ProductLayoutSilver = (props) => {
   const { setOffset, setFirst, FilterOptionsCtx } = React.useContext(
@@ -139,9 +141,10 @@ class Component extends React.Component {
                         cols={this.state.colSize}
                         style={{ margin: "25px !important" }}
                       >
-                        {data.map((tile) => {
+                        {data.map((tile,i) => {
                           return tile && Object.entries(tile).length > 0 ? (
-                            <GridListTile
+                            
+                          <GridListTile
                               key={tile.title}
                               cols={tile.cols || 1}
                               style={{ padding: "0 !important" }}
@@ -153,9 +156,15 @@ class Component extends React.Component {
                                 wishlist={this.props.wishlist}
                               />
                             </GridListTile>
+                            
+                            // { 8 % i === 0 &&
+                            //   <div>hello</div>}
+                           
                           ) : (
                             ""
                           );
+                         
+                            
                         })}
                       </GridList>
 
@@ -173,7 +182,7 @@ class Component extends React.Component {
                               ) : (
                                 <Button
                                   variant="contained"
-                                  className={`${classes.button}  ${classes.viewmoreColor}`}
+                                  className={`${classes.button}  ${classes.viewmoreColor} ${classes.viewmoreColorSilver}`}
                                   onClick={() => {
                                     this.handleOffset();
                                   }}

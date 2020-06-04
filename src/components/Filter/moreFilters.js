@@ -21,7 +21,10 @@ const useStyles = makeStyles((theme) => ({
     width: "calc(100% - 200px)",
     height: "calc(100vh - 200px)",
     overflowY:"auto",
-    color:theme.palette.primary.main,
+    "& b":{
+      color:`${theme.palette.primary.main} !important`,
+      fontSize:'18px',
+    },
     // .arrow-chek, .MuiSvgIcon-root, .MuiExpansionPanelDetails-root, .MuiExpansionPanelDetails-root
     // "&.arrow-chek":{
     //     "&.MuiSvgIcon-root":{
@@ -32,10 +35,16 @@ const useStyles = makeStyles((theme) => ({
     //         }
     //     }
     // }
-   
+  
+  },
+  checkboxlabel:{
+    color:'rgb(109,110,112)' ,
+    
   },
   checkboxgrid:{
+    
     "& span":{
+      
         "& svg":{
             fill:`${theme.palette.primary.main} !important`
         }
@@ -78,7 +87,9 @@ export default function MoreFilters(props) {
                 {props.filter.map((val)=>{
                     return(
                         <Grid item xs = {3} style={{marginBottom:"3%"}}>
-                    <b>{val}</b>
+                   <div style={{marginBottom:"10px"}}>
+                   <b>{val}</b>
+                   </div>
                     <FormGroup row>
                    {props.subFilter[val].map((valsub)=>{
                        debugger
@@ -87,7 +98,7 @@ export default function MoreFilters(props) {
                             // <div>
                             // {val}
                             // </div>
-                            <Grid item xs = {12}>
+                            <Grid item xs = {12} className={classes.checkboxlabel}>
 <FormControlLabel
                             control={
                               <Checkbox
@@ -114,22 +125,23 @@ export default function MoreFilters(props) {
                           // <div>
                           // {val}
                           // </div>
-                          <Grid item xs = {12}>
+                          <Grid item xs = {12} className={classes.checkboxlabel} >
 <FormControlLabel
                           control={
                             <Checkbox
                             className={classes.checkboxgrid}
-                            checked={props.checked[val.replace(/\s/g, "")] && props.checked[val.replace(/\s/g, "")][valsub] !== undefined ?
-                            props.checked[val.replace(/\s/g, "")] && props.checked[val.replace(/\s/g, "")][valsub] : false}
+                            checked={props.state ?
+                              props.state.numTwo ===  valsub.max : false}
                             onChange={(e) => {
                               props.handleClose();
-                              props.onchoosetype(valsub, props.checked[val && val.replace(/\s/g, "")][valsub] !== undefined ? !props.checked[val && val.replace(/\s/g, "")][valsub] : true, e,null,undefined, props.state, val ? val.replace(/\s/g, "") : "")}}
+                              props.onpricechange(e,valsub)
+                            }}
                               
                               name={val.replace(/\s/g, "")}
                                                               color={"secondary"}
                             />
                           }
-                          label={valsub}
+                          label={valsub.label}
                         />
                           </Grid>
                           

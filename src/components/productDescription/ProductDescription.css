@@ -37,7 +37,16 @@
   cursor: pointer;
   line-height: 1;
 }
-
+.faMoreSilver {
+  color: rgb(109,110,112) !important;
+  font-size: 16px;
+  top: 1px;
+  display: inline-block;
+  position: relative;
+  font-weight: 500;
+  cursor: pointer;
+  line-height: 1;
+}
 .product-dis {
   color: #394578 !important;
   font-size: 15px !important;

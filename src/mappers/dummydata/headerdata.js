@@ -97,7 +97,7 @@ export const subheader = {
         ],
 
     },
-    'My Materials': {
+    'By Materials': {
         header: 'Rs 5000 - Rs 10000 ',
         name: [
             'Pendants', 'Earrings', 'Rings', 'Bracelets', 'Nosepins',
@@ -142,8 +142,8 @@ export const Jewellery = {
             url: "/#/",
             icon: ""
         },
-        MyMaterials: {
-            name: "My Materials",
+        ByMaterials: {
+            name: "By Materials",
             url: "/#/",
             icon: ""
         },
@@ -218,7 +218,7 @@ export const menuLists = {
             ],
         'menuTwo': [{ value: 'Price', title: 'By Price', url: '#Price' },
         { value: 'Collection', title: 'By Collection', url: '#' },
-        { value: 'Material', title: 'By Material', url: '#' },
+        { value: 'Material', title: 'By Materials', url: '#' },
         ]
     },
     'Solitaires': {

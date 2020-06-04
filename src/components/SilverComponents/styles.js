@@ -56,6 +56,15 @@ export const styles = theme => ({
       letterSpacing: "2px",
     },
   },
+  // "&.MuiBadge-colorSecondary":{
+  //   backgroundColor: `red !important`
+  // },
+  mobile_icon_i:{
+    // "&.MuiBadge-colorSecondary":{backgroundColor: `red !important`},
+    "& i":{
+      color: `${theme.palette.secondary.dark} !important`
+    }
+  },
   iconFafaheart: {
     color: theme.palette.secondary.dark,
     marginLeft: "24px",

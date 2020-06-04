@@ -101,9 +101,35 @@ console.log('test',FilterOptionsCtx.sort)
             >
               {/* <nav
             // style={{height:"35px", display:"flex"}}
-            > */}
+            > */} 
+             {/* <Grid
+            item
+            xs={2}
+            className={classes.menuListCursor}
+            onMouseOver={(event) => {
+              setState({
+                ...state,
+                Menuopen: true,
+                submenuOpen: false,
+                subTitleData: null,
+                targetopen: event.currentTarget,
+                listHoverItem: "price_range",
+              });
+            }}
+          >
+              <Grid container item xs={12}>
+    <Grid item xs = {6}>
+    <a href={'#listName'}>{'Price'}</a>
+     </Grid>
+     <Grid item xs = {6} style={{display:"flex", justifyContent:"flex-end"}}>
+     {state.listHoverItem ===  'price_range' ? <ArrowDropUpIcon color="primary"/> : <ArrowDropDownIcon color="primary"/>}
+     </Grid>
+    </Grid>
+           
+          </Grid> */}
               {props.filter.map((listName, i) => {
                 // let urlsmall = listName.title.toLowerCase()
+                
                 if (i < 4)
                   return (
                     <Grid
@@ -241,6 +267,8 @@ console.log('test',FilterOptionsCtx.sort)
 
       <MorefiltersOpen
         open={state.morefiltersOpen}
+        state = {props.state}
+        onpricechange = {props.onpricechange}
         filter={props.filter}
         onchoosetype={props.onchangefunc}
         checked={props.checked}
