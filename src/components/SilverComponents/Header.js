@@ -40,7 +40,7 @@ import { NavLink } from 'react-router-dom';
 import logout from "../../assets/Icons/logout.svg"
 import styloriLogo from "../../assets/Stylorilogo.svg"
 import ElasticSearch from "components/ElasticSearch/ElasticSearch"
-import { CartContext } from 'context'
+import { CartContext, GlobalContext } from 'context'
 
 let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {}
 // var path = window.location.pathname.split('/').pop();
@@ -168,6 +168,7 @@ class Header extends Component {
         const opened = this.state;
         var a = window.location.pathname
         var b = a.split("/")
+        const isSilver = this.props.globalContext.Globalctx.pathName
         // const id = open ? true : undefined;
         return (
             <div style={{ top: "0", zIndex: "1000", width: "100%" }} className={window.location.pathname === "/cart" || b[1] === "paymentsuccess" || b[1] === "paymentfail" || window.location.pathname === '/checkout' ? "headerTopcard" : "headerTop"}>
@@ -180,7 +181,7 @@ class Header extends Component {
                                     <Grid container item xs={12} justify="flex-end" alignItems="center">
                                         {this.props.paymentSucces || window.location.pathname === "/cart" || window.location.pathname === '/checkout' ? <Grid item xs={3} className="logoImgHeader1">
                                             <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/" }} style={{ cursor: "pointer" }}>
-                                                <img id="logoImage" style={{ transition: "height 0.2s", marginTop: "9px" }} className={`imges`} src={'../../assets/Stylori Silver logo.svg'} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                                <img id="logoImage" className={`imges`} src={isSilver ? stylorisilverlogo :styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" style={{ transition: "height 0.2s", height:isSilver ? 70 : 60, marginTop: "9px" }}/>
                                             </div>
                                         </Grid>
                                             : ""}
@@ -298,7 +299,7 @@ class Header extends Component {
                                         <Grid container spacing={12} id="fullcontainer" className="setHeight">
                                             <Grid item xs={3} className="logoImgHeader1">
                                                 <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/" }} style={{ cursor: "pointer" }}>
-                                                    <img id="logoImage" style={{ transition: "height 0.2s" }} className={`imges`} src={styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                                    <img id="logoImage" className={`imges`} src={isSilver ? stylorisilverlogo :styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" style={{ transition: "height 0.2s", height:isSilver ? 70 : 60 }}/>
                                                 </div>
                                             </Grid>
                                             <Grid container item xs={9} id={"containerTitle"} justify="flex-end" alignItems="center" className={`header-navbar-list1 ${classes.headerNavbarList}`}
@@ -382,7 +383,7 @@ class Header extends Component {
 
                                         <Grid item xs={5} className="logoImgHeader1">
                                             <div className="logoDiv1" onClick={() => { window.location.href = "/" }} style={{ cursor: "pointer" }}>
-                                                <img className={`imgsilver`} src={styloriLogo} style={{ width: "100%", height: "auto" }} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
+                                                <img className={`imgsilver`} src={isSilver ? stylorisilverlogo :styloriLogo} style={{ width: "100%", height: "auto" }} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                             </div>
                                         </Grid>
                                         <Grid item xs={6}>
@@ -635,10 +636,13 @@ class Header extends Component {
 
 export default withStyles(styles)(props => {
     let { CartCtx: { cartFilters, data: cart_count, loading, error, allorderdata, wishlistdata, NewUser } } = React.useContext(CartContext);
+
+    let GLobalCtx = React.useContext(GlobalContext)
+    debugger
     const { mapped } = useDummyRequest(headerDataSilver);
     if (Object.keys(mapped).length === 0) return ''
 
-    return <Header {...props} data={mapped} cart_count={cart_count} />
+    return <Header {...props} globalContext ={GLobalCtx} data={mapped} cart_count={cart_count} />
 });
 
 
