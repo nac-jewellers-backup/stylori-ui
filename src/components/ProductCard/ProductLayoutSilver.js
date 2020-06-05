@@ -5,6 +5,7 @@ import {
   Button,
   Grid,
   Container,
+  Hidden,
 } from "@material-ui/core";
 import ProductCards from "./index";
 import { withStyles } from "@material-ui/core/styles";
@@ -16,7 +17,9 @@ import { useGraphql } from "hooks/GraphqlHook";
 import { CDN_URL } from "config";
 import { FilterOptionsContext } from "context";
 import { withRouter } from "react-router";
-import Slideshow from '../Carousel/carosul';
+import { homePageStylori } from "../../containers/dummydatahome";
+import Slideshow from "../Carousel/carosul";
+// ../components/Carousel/carosul
 
 const styles = (theme) => ({
   gridlistmain: {
@@ -118,14 +121,7 @@ class Component extends React.Component {
     // const disabledstate = this.props.data.length < 24 ? 'disabled=true' : ''
     // console.log(dataCard)
     // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
-    const settings = {dataCarousel: {
-      dots: false,
-      infinite: true,
-      autoplay: true,
-      speed: 1000,
-      fade: true,
-      arrows: false,
-    }}
+
     return (
         <Container maxWidth="lg" disableGutters>
         {/* //   <Container maxWidth="lg"> */}
@@ -151,8 +147,69 @@ class Component extends React.Component {
                         style={{ margin: "25px !important" }}
                       >
                         {data.map((tile,i) => {
+                          console.log(i+1 % 8 === 0,"i+1 % 8 === 0i+1 % 8 === 0")
+                          debugger
                           return tile && Object.entries(tile).length > 0 ? (
-                            // <div>
+                             (i+1) % 8 === 0   ?
+                            
+                            [tile, homePageStylori].map(val=>{
+debugger
+                              return(
+                                val.carouselTop ?
+                             data.length !== i+1 ?
+                                <GridListTile
+                                key={val.title}
+                                cols={this.state.colSize}
+                                style={{ padding: "0 !important" }}
+                                className={`${classes.liClass}`}
+                              >
+                                {/* <ProductCard data={tile} /> */}
+                                <Slideshow
+            sliderRef={this.slider}
+            dataCarousel={homePageStylori.carouselTop.settingSilver}
+          >
+            {homePageStylori.carouselTop.data.map((val, index) => (
+              <><Hidden smDown>
+                <Grid container key={index}>
+                  <a href={val.navigateUrl} style={{ width: "100%" }}>
+                    <img
+                      src={val.img}
+                      style={{ width: "100%", height: "100%" }}
+                    />
+                  </a>
+                </Grid>
+              </Hidden>
+                <Hidden mdUp>
+                  <Grid container key={index}>
+                    <a href={val.navigateUrl}>
+                      <img
+                        src={val.mobileImg}
+                        style={{ width: "100%", height: "100%" }}
+                      />
+                    </a>
+                  </Grid>
+                </Hidden></>
+            ))}
+          </Slideshow>
+                              </GridListTile>
+                              :
+                              null
+                                :
+                                 <GridListTile
+                                                            key={val.title}
+                                                            cols={val.cols || 1}
+                                                            style={{ padding: "0 !important" }}
+                                                            className={`${classes.liClass}`}
+                                                          >
+                                                            {/* <ProductCard data={tile} /> */}
+                                                            <ProductCards
+                                                              data={val}
+                                                              wishlist={this.props.wishlist}
+                                                            />
+                                                          </GridListTile>
+                              )
+                                                          })
+                                                          :
                           <GridListTile
                               key={tile.title}
                               cols={tile.cols || 1}
@@ -160,17 +217,14 @@ class Component extends React.Component {
                               className={`${classes.liClass}`}
                             >
                               {/* <ProductCard data={tile} /> */}
-                              
                               <ProductCards
                                 data={tile}
                                 wishlist={this.props.wishlist}
                               />
-
-
                             </GridListTile>
-                           
-                           
                             
+                            // { 8 % i === 0 &&
+                            //   <div>hello</div>}
                            
                           ) : (
                             ""

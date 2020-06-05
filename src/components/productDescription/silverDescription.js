@@ -7,6 +7,14 @@ import { withStyles } from '@material-ui/core/styles';
 import { useDummyRequest } from '../../hooks';
 import { descriptionData } from '../../mappers';
 import { withRouter } from 'react-router-dom';
+import image1 from '../../assets/web_banner_and_mobile-01.jpg';
+import image2 from '../../assets/web_banner_and_mobile-04.jpg';
+import image3 from '../../assets/web_banner_and_mobile-06.jpg';
+import image1mobile from '../../assets/web_banner_and_mobile-02_720.jpg'
+import image2mobile from '../../assets/web_banner_and_mobile-03_720.jpg'
+import image3mobile from '../../assets/web_banner_and_mobile-05.jpg'
+
+
 const styles = theme => ({
 
   colorLight: {
@@ -142,7 +150,12 @@ class ProductDescription extends Component {
                 >
 
                   {/* < Slideshow fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel} styles={'productDescriptionCarousel'} /> */}
-                  < Slideshow fadeImages={['https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+banner+1920+X+656.jpg']} dataCarousel={settings} silver={true} className={'silverClassSeoBanner'} styles={'productDescriptionCarousel'} />
+                 <Hidden smDown>
+                 < Slideshow fadeImages={[image1,image2,image3]} dataCarousel={settings} silver={true} className={'silverClassSeoBanner'} styles={'productDescriptionCarousel'} />
+                 </Hidden>
+                 <Hidden smUp>
+                 < Slideshow fadeImages={[image1mobile,image2mobile,image3mobile]} dataCarousel={settings} silver={true} className={'silverClassSeoBanner'} styles={'productDescriptionCarousel'} />
+                 </Hidden>
                 </Grid>
               {/* </Hidden> */}
               <Grid

@@ -24,6 +24,24 @@ export const
         pauseOnFocus: true,
         swipe: true
       },
+      "settingSilver": {
+        dots: false,
+        infinite: true,
+        autoplay: true,
+        speed: 1000,
+        fade: false,
+        arrows: false,
+        arrowsImg: true,
+        dotsClass: "slickdev",
+        accessibility: true,
+        autoplaySpeed: 2000,
+        centerMode: false,
+        focusOnSelect: false,
+        pauseOnHover: true,
+        pauseOnDotsHover: false,
+        pauseOnFocus: true,
+        swipe: true
+      },
       "data": [
         
         // {
