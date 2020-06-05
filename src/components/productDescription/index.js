@@ -115,7 +115,7 @@ class ProductDescription extends Component {
                 <Grid
                   item
                   xs={6}
-                  style={{ textAlign: 'center' }}
+                  style={{ textAlign: 'left' }}
                   className={` DescriptionTitleSmallScreen `}
                 >
                   <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>

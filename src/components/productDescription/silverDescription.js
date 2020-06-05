@@ -24,6 +24,9 @@ const styles = theme => ({
     fontSize: "1.1rem !important",
     fontWeight: 600,
     letterSpacing: "1px"
+  },
+  TypoDarktitleseo:{
+    fontSize: "0.9rem !important",
   }
 });
 
@@ -81,11 +84,11 @@ class ProductDescription extends Component {
             justify="space-around"
 
           >
-            {/* <Grid
+            <Grid
               item
               container
             >
-              <Hidden smDown>
+              {/* <Hidden smDown>
                 <Grid
                   item
                   xs={3}
@@ -95,19 +98,19 @@ class ProductDescription extends Component {
                   <CustomSeparator
                     list='product-dis'
                     classsubhed='product-backg'
-                    data={data_json} />
-                    //  window.location.pathname.split('/').pop()  
-                </Grid>
-              </Hidden>
+                    data={data_json} /> */}
+                    {/* //  window.location.pathname.split('/').pop()   */}
+                {/* </Grid> */}
+              {/* </Hidden> */}
               <Hidden smDown >
                 <Grid
                   item
-                  xs={6}
+                  xs={12}
                   className={`DescriptionTitle`}
-                  style={{ textAlign: 'center' }}
+                  style={{ textAlign: 'center', paddingBottom:"10px", fontSize:'0.9rem' }}
                 >
-                  <Typography className={`${classes.TypoDark}`} variant='h1' component='h1'>
-                    //  {window.location.pathname.split('/').pop()} 
+                  <Typography className={`${classes.TypoDark} ${classes.TypoDarktitleseo}`}  variant='h1' component='h1'>
+                    {/* {window.location.pathname.split('/').pop()}  */}
                     {renderTitle()}
 
                   </Typography>
@@ -117,7 +120,7 @@ class ProductDescription extends Component {
                 <Grid
                   item
                   xs={6}
-                  style={{ textAlign: 'center' }}
+                  style={{ textAlign: 'left' }}
                   className={` DescriptionTitleSmallScreen `}
                 >
                   <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>
@@ -125,7 +128,7 @@ class ProductDescription extends Component {
                   </Typography>
                 </Grid>
               </Hidden> 
-            </Grid> */}
+            </Grid>
             <Grid
               item
               container
