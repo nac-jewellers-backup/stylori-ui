@@ -208,6 +208,9 @@ export const useStyles = makeStyles(theme => ({
       backgroundColor: theme.palette.primary.dark,
     }
   },
+  mouseOverPopoverfiltersselected : {
+    backgroundColor: `${theme.palette.primary.dark} !important`,
+  },
   paperdivsub: {
     position: 'absolute',
     width: 'fit-content',

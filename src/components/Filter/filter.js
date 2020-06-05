@@ -598,7 +598,7 @@ alert('haii')
 
 
   onCurrencyChange_click = (e, silverPrice) => {
-    debugger
+    
     const { checked } = this.state
     
     var _price_min;

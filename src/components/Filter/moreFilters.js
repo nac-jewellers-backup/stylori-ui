@@ -85,7 +85,7 @@ export default function MoreFilters(props) {
                 <CancelIcon/>
                 </div>
                 {props.filter.map((val,i)=>{
-                  debugger
+                  
                    if(i>3 && val !== 'price' && val !== 'Material'){
                     return(
                       <Grid item xs = {3} style={{marginBottom:"3%"}}>

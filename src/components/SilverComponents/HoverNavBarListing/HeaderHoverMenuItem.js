@@ -16,7 +16,7 @@ function HeaderHoverMenuItem(props) {
   const mapperSort = props.sort ? props.tabdata : ''
   // const mapper_menu2 = props.filters ? props.listHoverItem : props.listHoverItem['menuOne']
   const classHover = props.filters ? classes.mouseOverPopoverfilters : classes.mouseOverPopoverHeader
-  // console.log(props.listHoverItem);
+  console.log(props.filtercheck,props.checked,"props.listHoverItem");
   // onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}
   // listHoverItem
   useEffect(() => {
@@ -63,12 +63,14 @@ function HeaderHoverMenuItem(props) {
 
                   {
                     
-                  return  Object.keys(menuList).length > 0 ?
+                  return  menuList.constructor === Object ?
                   
                   <ListItem component="li" name={menuList ? menuList : menuList.title}
                   onClick={(e) => {
-                    
+                    debugger
                     props.onchoosetypeprice(e,menuList)}}
+                    className={props.state &&
+                                                    props.state.numTwo ===  menuList.max  ? classes.mouseOverPopoverfiltersselected :''}
                 >
 
                   <ListItemText variant className={classes.filtersList} style={{fontSize:"0.9rem"}}>
@@ -88,8 +90,9 @@ function HeaderHoverMenuItem(props) {
                   :
                   <ListItem component="li" name={menuList ? menuList : menuList.title}
                       onClick={(e) => {
-                        
+                        debugger
                         props.onchoosetype(menuList, props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] !== undefined ? !props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] : true, e,null,undefined, props.state, props.filtercheck ? props.filtercheck.replace(/\s/g, "") : "")}}
+                    className={props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] ? classes.mouseOverPopoverfiltersselected :''}
                     >
 
                       <ListItemText variant className={classes.filtersList} style={{fontSize:"0.9rem"}}>
