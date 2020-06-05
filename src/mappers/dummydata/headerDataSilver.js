@@ -369,8 +369,8 @@ export const Jewellery = {
             url: "/pages/collections",
             icon: ""
         },
-        ByMaterials: {
-            name: "By Materials",
+        ByMaterial: {
+            name: "By Material",
             url: "/#/",
             icon: ""
         },
