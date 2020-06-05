@@ -121,7 +121,7 @@ console.log('test',FilterOptionsCtx.sort)
           >
               <Grid container item xs={12}>
     <Grid item xs = {6}>
-    <a >{'Price'.toUpperCase()}</a>
+    <a >{'Price'}</a>
      </Grid>
      <Grid item xs = {6} style={{display:"flex", justifyContent:"flex-end"}}>
      {state.listHoverItem ===  'price' ? <ArrowDropUpIcon color="primary"/> : <ArrowDropDownIcon color="primary"/>}
@@ -151,7 +151,7 @@ console.log('test',FilterOptionsCtx.sort)
                     >
                         <Grid container item xs={12}>
               <Grid item xs = {6}>
-              <a href={listName.url}>{listName.toUpperCase()}</a>
+              <a href={listName.url}>{listName}</a>
                </Grid>
                <Grid item xs = {6} style={{display:"flex", justifyContent:"flex-end"}}>
                {state.listHoverItem ===  listName ? <ArrowDropUpIcon color="primary"/> : <ArrowDropDownIcon color="primary"/>}

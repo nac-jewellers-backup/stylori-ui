@@ -137,23 +137,21 @@ top:0
     fontFamily: 'Roboto',
     fontWeight: 600,
     padding:"10px",
-    border: `1px solid ${theme.palette.secondary.dark}`,
-      boxShadow: `6px 7px 6px  ${theme.palette.secondary.light}`,
-      color: theme.palette.secondary.main,
-    background:'white',
-    '&:hover': {
-      color: theme.palette.secondary.main,
+    color: theme.palette.secondary.main,
       boxShadow: `6px 7px 6px  ${theme.palette.secondary.main}`,
       border: `1px solid ${theme.palette.secondary.main}`,
-      // background: theme.palette.secondary.dark,
-      // paddingBottom: "2px",
-    //   borderBottom: "1px solid " + theme.palette.secondary.dark,
+    background:'white',
+    '&:hover': {
+    
+      border: `1px solid ${theme.palette.secondary.dark}`,
+      boxShadow: `6px 7px 6px  ${theme.palette.secondary.light}`,
+      color: theme.palette.secondary.main,
     "& svg":{
-      fill: `${theme.palette.secondary.main} !important`,
+      fill: `${theme.palette.secondary.dark} !important`,
     },
     },
     "& svg":{
-      fill:`${theme.palette.secondary.dark} !important`,
+      fill:`${theme.palette.secondary.main} !important`,
     },
 "&.mouseOverPopover":{
 top:0
