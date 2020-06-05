@@ -20,7 +20,7 @@ import {
       expanded: null
     };
     handleCheck = (name, val) => {
-debugger
+
       var check = true;
       if (name === "Price Breakup") {
         //  val.map(val=>{

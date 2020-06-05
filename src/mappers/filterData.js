@@ -12,7 +12,7 @@ export default function (data) {
     const get = (data) => (data ? data : []);
     const getstring = (data) => (data ? data : "");
     const getSubFilterLength = (data) => {
-        debugger
+        
       var arr = data && data.length > 0 && data.constructor === Array
         ? data.map(val=>{
             if(val.constructor === Object) return Object.values(val)

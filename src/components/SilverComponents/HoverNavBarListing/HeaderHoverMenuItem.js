@@ -61,9 +61,32 @@ function HeaderHoverMenuItem(props) {
                 !props.sort && props.filters && mapper &&
                 (mapper).map(menuList =>
 
-                  (
+                  {
+                    
+                  return  Object.keys(menuList).length > 0 ?
+                  
+                  <ListItem component="li" name={menuList ? menuList : menuList.title}
+                  onClick={(e) => {
+                    
+                    props.onchoosetypeprice(e,menuList)}}
+                >
 
-                    <ListItem component="li" name={menuList ? menuList : menuList.title}
+                  <ListItemText variant className={classes.filtersList} style={{fontSize:"0.9rem"}}>
+                  {menuList.label ?
+                      menuList.label :
+                      menuList} 
+                   {props.filtercheck === 'price' && 
+                      (<span> &nbsp;
+                        (<i style={{fontSize:'14px'}} class="fa">&#xf156;</i>)
+                      </span>)}
+                    
+                  </ListItemText>
+
+                </ListItem>
+
+                    
+                  :
+                  <ListItem component="li" name={menuList ? menuList : menuList.title}
                       onClick={(e) => {
                         
                         props.onchoosetype(menuList, props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] !== undefined ? !props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] : true, e,null,undefined, props.state, props.filtercheck ? props.filtercheck.replace(/\s/g, "") : "")}}
@@ -77,7 +100,8 @@ function HeaderHoverMenuItem(props) {
                       </ListItemText>
 
                     </ListItem>
-                  ))}
+                }
+                  )}
         {props.sort &&
         <RadioGroup aria-label="gender" name="gender1" value={props.values.values} onChange={(e)=>{props.onchoosetype(e)}} >
       {

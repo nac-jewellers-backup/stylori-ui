@@ -102,7 +102,7 @@ console.log('test',FilterOptionsCtx.sort)
               {/* <nav
             // style={{height:"35px", display:"flex"}}
             > */} 
-             {/* <Grid
+             <Grid
             item
             xs={2}
             className={classes.menuListCursor}
@@ -113,24 +113,24 @@ console.log('test',FilterOptionsCtx.sort)
                 submenuOpen: false,
                 subTitleData: null,
                 targetopen: event.currentTarget,
-                listHoverItem: "price_range",
+                listHoverItem: "price",
               });
             }}
           >
               <Grid container item xs={12}>
     <Grid item xs = {6}>
-    <a href={'#listName'}>{'Price'}</a>
+    <a >{'Price'}</a>
      </Grid>
      <Grid item xs = {6} style={{display:"flex", justifyContent:"flex-end"}}>
-     {state.listHoverItem ===  'price_range' ? <ArrowDropUpIcon color="primary"/> : <ArrowDropDownIcon color="primary"/>}
+     {state.listHoverItem ===  'price' ? <ArrowDropUpIcon color="primary"/> : <ArrowDropDownIcon color="primary"/>}
      </Grid>
     </Grid>
            
-          </Grid> */}
+          </Grid>
               {props.filter.map((listName, i) => {
                 // let urlsmall = listName.title.toLowerCase()
                 
-                if (i < 4)
+                if (i < 3 && listName !== 'Material')
                   return (
                     <Grid
                       item
@@ -195,7 +195,8 @@ console.log('test',FilterOptionsCtx.sort)
                 filtercheck={state.listHoverItem}
                 checked={props.checked}
                 onchoosetype={props.onchangefunc}
-                state={props.state}
+                state = {props.state}
+                onchoosetypeprice={props.onpricechange} 
                 onMouseLeave={() => {
                   setState({ ...state, targetopen: null });
                 }}
@@ -255,6 +256,7 @@ console.log('test',FilterOptionsCtx.sort)
                 // filtercheck={state.listHoverItem}
                  values={FilterOptionsCtx.sort}
                 onchoosetype={handleChange}
+               
                 onMouseLeave={() => {
                   setState({ ...state,expanded:false, targetopen: null });
                 }}

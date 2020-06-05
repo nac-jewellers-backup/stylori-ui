@@ -100,12 +100,12 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
 
   return (
     <div className="imageHeight">
-      {/* {props.data.oneDayShipping ? <div className={`${Math.round(props.data.offerPrice) === Math.round(props.data.price) ? "one-day-ship-listing-page-withoutTop" : "one-day-ship-listing-page"} ${props.classes.colorTheme}`} style={{ zIndex: 2 }}>
+      {props.data.oneDayShipping ? <div className={`one-day-ship-listing-page-withoutTop ${props.classes.colorTheme}`} style={{ zIndex: 2 }}>
         <i class="fa fa-truck" style={{ fontSize: "20px" }}></i>
         <span className={`one-day-ship-listing-page-label ${props.classes.colorTheme}`}>1 day shipping</span>
 
       </div> : ''}
-      {
+      {/* {
         props.data.discount && props.data.discount !== 0 ? 
           <>
             <span className="overlayCss" style={{ zIndex: 10, color: "#fff", backgroundColor: "#f699a3" }}>

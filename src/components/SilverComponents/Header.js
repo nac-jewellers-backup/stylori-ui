@@ -638,7 +638,7 @@ export default withStyles(styles)(props => {
     let { CartCtx: { cartFilters, data: cart_count, loading, error, allorderdata, wishlistdata, NewUser } } = React.useContext(CartContext);
 
     let GLobalCtx = React.useContext(GlobalContext)
-    debugger
+    
     const { mapped } = useDummyRequest(headerDataSilver);
     if (Object.keys(mapped).length === 0) return ''
 

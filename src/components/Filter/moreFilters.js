@@ -84,76 +84,79 @@ export default function MoreFilters(props) {
                 <div className={classes.closeIcon} onClick={()=>{props.handleClose()}}>
                 <CancelIcon/>
                 </div>
-                {props.filter.map((val)=>{
+                {props.filter.map((val,i)=>{
+                  debugger
+                   if(i>3 && val !== 'price' && val !== 'Material'){
                     return(
-                        <Grid item xs = {3} style={{marginBottom:"3%"}}>
-                   <div style={{marginBottom:"10px"}}>
-                   <b>{val}</b>
-                   </div>
-                    <FormGroup row>
-                   {props.subFilter[val].map((valsub)=>{
-                       debugger
-                       if(val && val !== 'price_range'){
-                        return(
-                            // <div>
-                            // {val}
-                            // </div>
-                            <Grid item xs = {12} className={classes.checkboxlabel}>
-<FormControlLabel
-                            control={
-                              <Checkbox
-                              className={classes.checkboxgrid}
-                              checked={props.checked[val.replace(/\s/g, "")] && props.checked[val.replace(/\s/g, "")][valsub] !== undefined ?
-                              props.checked[val.replace(/\s/g, "")] && props.checked[val.replace(/\s/g, "")][valsub] : false}
-                              onChange={(e) => {
-                                props.handleClose();
-                                props.onchoosetype(valsub, props.checked[val && val.replace(/\s/g, "")][valsub] !== undefined ? !props.checked[val && val.replace(/\s/g, "")][valsub] : true, e,null,undefined, props.state, val ? val.replace(/\s/g, "") : "")}}
-                                
-                                name={val.replace(/\s/g, "")}
-                                                                color={"secondary"}
-                              />
-                            }
-                            label={valsub}
-                          />
-                            </Grid>
-                            
-                           )
-                       }
-                       else{
-                         debugger
-                        return(
+                      <Grid item xs = {3} style={{marginBottom:"3%"}}>
+                 <div style={{marginBottom:"10px"}}>
+                 <b>{val}</b>
+                 </div>
+                  <FormGroup row>
+                 {props.subFilter[val].map((valsub)=>{
+                     
+                     if(val && val !== 'price'){
+                      return(
                           // <div>
                           // {val}
                           // </div>
-                          <Grid item xs = {12} className={classes.checkboxlabel} >
+                          <Grid item xs = {12} className={classes.checkboxlabel}>
 <FormControlLabel
                           control={
                             <Checkbox
                             className={classes.checkboxgrid}
-                            checked={props.state ?
-                              props.state.numTwo ===  valsub.max : false}
+                            checked={props.checked[val.replace(/\s/g, "")] && props.checked[val.replace(/\s/g, "")][valsub] !== undefined ?
+                            props.checked[val.replace(/\s/g, "")] && props.checked[val.replace(/\s/g, "")][valsub] : false}
                             onChange={(e) => {
                               props.handleClose();
-                              props.onpricechange(e,valsub)
-                            }}
+                              props.onchoosetype(valsub, props.checked[val && val.replace(/\s/g, "")][valsub] !== undefined ? !props.checked[val && val.replace(/\s/g, "")][valsub] : true, e,null,undefined, props.state, val ? val.replace(/\s/g, "") : "")}}
                               
                               name={val.replace(/\s/g, "")}
                                                               color={"secondary"}
                             />
                           }
-                          label={valsub.label}
+                          label={valsub}
                         />
                           </Grid>
                           
                          )
-                       }
-                      
-                   })
+                     }
+                     else{
+                      return null 
+//                         return(
+//                           // <div>
+//                           // {val}
+//                           // </div>
+//                           <Grid item xs = {12} className={classes.checkboxlabel} >
+// <FormControlLabel
+//                           control={
+//                             <Checkbox
+//                             className={classes.checkboxgrid}
+//                             checked={props.state ?
+//                               props.state.numTwo ===  valsub.max : false}
+//                             onChange={(e) => {
+//                               props.handleClose();
+//                               props.onpricechange(e,valsub)
+//                             }}
+                            
+//                               name={val.replace(/\s/g, "")}
+//                                                               color={"secondary"}
+//                             />
+//                           }
+//                           label={valsub.label}
+//                         />
+//                           </Grid>
+                        
+//                          )
+                     }
+                    
+                 })
 }
 
 </FormGroup>
-             </Grid>
-                    )
+           </Grid>
+                  )
+                   }
                 })}
             </Grid>
           </div>
