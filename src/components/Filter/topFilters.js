@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Grid, Container, Popper, ClickAwayListener, Grow } from "@material-ui/core";
+import { Grid, Container, Popper, ClickAwayListener, Grow, Paper } from "@material-ui/core";
 import HeaderHoverMenuItem from "../SilverComponents/HoverNavBarListing/HeaderHoverMenuItem";
 import HeaderHoversubMenu from "../SilverComponents/HoverNavBarListing/HeaderHoverMenuItem";
 import { filterParams } from "../../mappers";
@@ -71,8 +71,10 @@ console.log('test',FilterOptionsCtx.sort)
   return Object.keys(mapped).length === 0 ? (
     <div>loading...</div>
   ) : (
-    <Container style={{marginTop:"25px"}}>
-      <Grid container item xs={12}>
+    <div className={classes.filtersHeaderTop}>
+    <Container style={{marginTop:"25px"}} >
+   
+      <Grid container item xs={12} >
         <Grid
           container
           item
@@ -278,5 +280,6 @@ console.log('test',FilterOptionsCtx.sort)
         handleClose={handleMoreFilters}
       />
     </Container>
+    </div>
   );
 };

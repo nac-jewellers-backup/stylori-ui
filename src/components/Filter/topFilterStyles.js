@@ -171,6 +171,13 @@ top:0
     //   borderBottom: "1px solid " + theme.palette.secondary.dark,
     // }
   },
+  filtersHeaderTop:{
+    position: "sticky",
+    top: "68px",
+    zIndex: 10,
+    background: 'white',
+    padding: '2px',
+  },
   mobileNavIcon: {
     color: theme.palette.secondary.dark,
     fill: theme.palette.secondary.dark + "!important",
