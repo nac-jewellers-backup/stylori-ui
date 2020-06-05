@@ -20,11 +20,12 @@ import {
       expanded: null
     };
     handleCheck = (name, val) => {
+debugger
       var check = true;
       if (name === "Price Breakup") {
         //  val.map(val=>{
-        if (
-          val.length > 0 &&
+        if (val &&
+          val.length > 0 && val[1] &&
           Number(val[1].replace("₹", "").replace(/,/g, "")) !== 0
         ) {
           check = true;
@@ -45,7 +46,7 @@ import {
           // 
             .map(val => {
               if (
-                val.details.length > 0 &&
+                val.details.length > 0 && val.details[0] && val.details[1] &&
                 Number(val.details[0].replace("₹", "").replace(/,/g, "")) >
                   Number(val.details[1].replace("₹", "").replace(/,/g, ""))
               )
