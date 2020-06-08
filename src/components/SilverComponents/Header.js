@@ -168,7 +168,8 @@ class Header extends Component {
         const opened = this.state;
         var a = window.location.pathname
         var b = a.split("/")
-        const isSilver = this.props.globalContext.Globalctx.pathName
+        debugger
+        const isSilver = this.props.globalContext && this.props.globalContext.Globalctx && this.props.globalContext.Globalctx.pathName && this.props.globalContext.Globalctx.pathName ? this.props.globalContext.Globalctx.pathName : false
         // const id = open ? true : undefined;
         return (
             <div style={{ top: "0", zIndex: "1000", width: "100%" }} className={window.location.pathname === "/cart" || b[1] === "paymentsuccess" || b[1] === "paymentfail" || window.location.pathname === '/checkout' ? "headerTopcard" : "headerTop"}>

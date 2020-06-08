@@ -22,6 +22,7 @@ class Addressdetails extends React.Component {
         this.setState({ open: false });
     };
     Addressdetails = (props, value, value2) => {
+        debugger
         const { setValues, values } = props;
 
         const _add_data_addres = () => {
@@ -29,6 +30,7 @@ class Addressdetails extends React.Component {
             if (con_gust === true) {
                 return value
             } if (con_gust !== true) {
+                debugger
                 return values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes
             }
         }
@@ -189,7 +191,7 @@ class Addressdetails extends React.Component {
                                                </p>
                                         <div className="card-foo">
                                             <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                                +91 {val_addrs1.contactNumber}{val_addrs1.contactno}
+                                                +91 {val_addrs1.contactNo}{val_addrs1.contactno}
                                             </span>
                                             {window.location.pathname.split("-")[0] !== "/account" ?
                                                 <>{JSON.parse(localStorage.getItem("ship_isactive")) === index || JSON.parse(localStorage.getItem("bil_isactive")) === index ? <>
@@ -265,7 +267,7 @@ class Addressdetails extends React.Component {
                                                </p>
                                                 <div className="card-foo">
                                                     <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                                        +91 {val_addrs1.contactNumber}{val_addrs1.contactno}
+                                                        +91 {val_addrs1.contactNo}{val_addrs1.contactno}
                                                     </span>
                                                     {window.location.pathname.split("-")[0] !== "/account" ?
                                                         <>{JSON.parse(localStorage.getItem("ship_isactive")) === index || JSON.parse(localStorage.getItem("bil_isactive")) === index ? <>
@@ -361,7 +363,7 @@ class Addressdetails extends React.Component {
                                                </p>
                                                         <div className="card-foo">
                                                             <span className={`shipping-phonenumber ${classes.normalfonts}`}>
-                                                                +91 {val_addrs2.contactNumber}{val_addrs2.contactno}
+                                                                +91 {val_addrs2.contactNo}{val_addrs2.contactno}
                                                             </span>
 
                                                             <>{JSON.parse(localStorage.getItem("ship_isactive")) === index || JSON.parse(localStorage.getItem("bil_isactive")) === index ? <>
@@ -401,5 +403,5 @@ class Addressdetails extends React.Component {
             </Container>
         )
     }
-}
+}   
 export default withStyles(styles)(Addressdetails);
