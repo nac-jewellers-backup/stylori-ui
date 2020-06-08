@@ -269,6 +269,12 @@ export const useStyles = makeStyles(theme => ({
     }
     
   },
+  filtersListtopfilters:{
+    "& span":{
+      letterSpacing: 2,
+    }
+    
+  },
   listedItemsvalue2: {
     padding: "2px 16px 2px 16px",
     fontSize: "0.7rem !important",

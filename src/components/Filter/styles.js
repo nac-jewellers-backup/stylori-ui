@@ -100,6 +100,13 @@ const styles = theme => ({
       backgroundImage: 'linear-gradient(to left, #f9e3e3, rgba(246, 153, 163, 1))',
     }
   },
+  colorBackgroundListSilver: {
+    backgroundColor: 'white',
+
+    '&:hover': {
+      backgroundImage: `linear-gradient(to left, ${theme.palette.secondary.light}, ${theme.palette.secondary.main})`,
+    }
+  },
   colorMainBackground: {
     backgroundColor: theme.palette.primary.main,
     "&:hover":{

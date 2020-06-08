@@ -35,6 +35,12 @@ const styles = theme => ({
   },
   TypoDarktitleseo:{
     fontSize: "0.9rem !important",
+  },
+  showLess:{
+    whiteSpace: 'nowrap', 
+    width: '100% !important', 
+    overflow: 'hidden',
+    textOverflow: 'ellipsis', 
   }
 });
 
@@ -167,13 +173,23 @@ class ProductDescription extends Component {
                   <div className="DescriptionContent DescriptionContentsilver">
                     {
                       this.state.showLess === true ?
-                        <>
-                          {datadescription&& (datadescription).slice(0, 160)}
-                          <span id="moreDots" style={{ display: 'inline' }}>...</span>
-                          <span style={{float:"right"}} onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readMore" >
+                        <Grid container>
+                          {/* {datadescription&& (datadescription).slice(0, 200)} */}
+                          
+                          <Grid container item xs ={12}  >
+                            
+                            <Grid item xs={9} sm={9} md={11} lg={11} xl={11} className={classes.showLess}>
+                            {datadescription}
+                            </Grid>
+                            <Grid item xs={3} sm={3} md={1} lg={1} xl={1}>
+                            <span style={{float:"right"}} onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readMore" >
                             <span ><i className="fa faMore faMoreSilver">&#xf0da;</i></span> READ MORE
-                   </span>
-                        </>
+                   </span>  
+                            </Grid>
+                            
+                          </Grid>
+                         
+                        </Grid>
                         :
                         <>
                           {datadescription}

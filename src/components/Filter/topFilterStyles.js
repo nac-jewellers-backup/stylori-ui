@@ -84,11 +84,24 @@ export const styles = makeStyles(theme => ({
     color: theme.palette.secondary.dark,
     // textAlign: 'right'
   },
+  headerNavbarList1:{
+    whiteSpace: 'nowrap',
+    width: "100%",
+    letterSpacing: 2,
+    
+    textTransform: "uppercase",
+    fontSize: '12px !important',
+    textDecoration: 'none !important',
+    // margin-left: 5%;
+  },
   menuListCursor: {
     cursor: 'pointer',
     fontFamily: 'Roboto',
     fontWeight: 600,
-    padding:"10px",
+    padding:"5px 4px 5px 15px",
+    display:"flex",
+    margin:'auto',
+    alignItems:'center',
     color: "white",
     minWidth:"50px",
     // #80808061
@@ -108,11 +121,23 @@ export const styles = makeStyles(theme => ({
 top:0
 }
   },
+  topfiltersSticky:{
+    borderBottomLeftRadius: '15px',
+    borderBottomRightRadius: '15px',
+    '-webkit-box-shadow': '0 3px 5px rgba(57, 63, 72, 0.3)',
+    '-moz-box-shadow': '0 3px 5px rgba(57, 63, 72, 0.3)',
+    'box-shadow': '0 3px 5px rgba(57, 63, 72, 0.3)',
+  },
+  spacingfilterdiv:{
+    display:'flex',
+    alignItems:'center'
+  },
   menuListCursorSort: {
     cursor: 'pointer',
     fontFamily: 'Roboto',
     fontWeight: 600,
-    padding:"10px",
+    padding:"5px 4px 5px 15px",
+    
     color: theme.palette.secondary.main,
     boxShadow: `6px 7px 6px  ${theme.palette.secondary.light}`,
     background:'white',
@@ -136,7 +161,10 @@ top:0
     cursor: 'pointer',
     fontFamily: 'Roboto',
     fontWeight: 600,
-    padding:"10px",
+    padding:"5px 4px 5px 15px",
+    display:"flex",
+    margin:'auto',
+    alignItems:'center',
     color: theme.palette.secondary.main,
       boxShadow: `6px 7px 6px  ${theme.palette.secondary.main}`,
       border: `1px solid ${theme.palette.secondary.main}`,

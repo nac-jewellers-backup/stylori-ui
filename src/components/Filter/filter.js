@@ -974,7 +974,7 @@ filter.map((row, i) => {
                   <List className="mbl-filter-list">
                     {filter && filter.map(row => {
                       return (subFilter && subFilter[row] && subFilter[row].length > 0 ?
-                        <>{window.location.pathname === "/goldcoins" || found === "/goldcoins" || found === "goldcoins" ? row === "Offers" ? "" : <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
+                        <>{window.location.pathname === "/goldcoins" || found === "/goldcoins" || found === "goldcoins" ? row === "Offers" ? "" : <ListItem key={row} className={`mbl-filter-list ${isTopFilter ? classes.colorBackgroundListSilver:classes.colorBackgroundList} ${classes.borderBottomList}`}
                           onClick={() => this.filterValue(row)}
                         >
                           <ListItemText
@@ -984,7 +984,7 @@ filter.map((row, i) => {
 
                           </ListItemText>
                         </ListItem>
-                          : <ListItem key={row} className={`mbl-filter-list ${classes.colorBackgroundList} ${classes.borderBottomList}`}
+                          : <ListItem key={row} className={`mbl-filter-list ${isTopFilter ? classes.colorBackgroundListSilver:classes.colorBackgroundList} ${classes.borderBottomList}`}
                             onClick={() => this.filterValue(row)}
                           >
                             <ListItemText

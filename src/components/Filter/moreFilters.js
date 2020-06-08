@@ -40,9 +40,12 @@ const useStyles = makeStyles((theme) => ({
   checkboxlabel:{
     color:'rgb(109,110,112)' ,
     
+    
   },
   checkboxgrid:{
-    
+    "&.MuiIconButton-colorSecondary":{
+      padding:"4px !important"
+    },
     "& span":{
       
         "& svg":{

@@ -67,12 +67,28 @@ export const TopFilters = (props) => {
     window.scrollTo(0, 0);
 
 }
-console.log('test',FilterOptionsCtx.sort)
+
+// window.addEventListener('scroll', function() {
+//   scrollDiv()
+// });
+
+// const scrollDiv = () =>{
+//   var topFilter = document.getElementById('topfilter');
+//   debugger
+//     if(topFilter.scrollTop === 68){
+//   //     if(!topFilter.hasClass(classes.topfiltersSticky)){
+//   //         topFilter.addClass(classes.topfiltersSticky);
+//   //     }
+//   // }else{
+//   //     topFilter.removeClass(classes.topfiltersSticky);
+//   // }
+//     }
+// }
   return Object.keys(mapped).length === 0 ? (
     <div>loading...</div>
   ) : (
-    <div className={classes.filtersHeaderTop}>
-    <Container style={{marginTop:"25px"}} >
+    <div className={classes.filtersHeaderTop} id="topfilter">
+    <Container style={{marginTop:"25px"}}  >
    
       <Grid container item xs={12} >
         <Grid
@@ -82,7 +98,7 @@ console.log('test',FilterOptionsCtx.sort)
           id={"containerTitle"}
           justify="flex-end"
           alignItems="center"
-          className={`header-navbar-list1 ${classes.headerNavbarList}`}
+          className={`${classes.headerNavbarList1} ${classes.headerNavbarList}`}
           onMouseLeave={() => {
             setState({
               ...state,
@@ -119,9 +135,9 @@ console.log('test',FilterOptionsCtx.sort)
               });
             }}
           >
-              <Grid container item xs={12}>
+              <Grid container item xs={12} className={classes.spacingfilterdiv}>
     <Grid item xs = {6}>
-    <a >{'Price'}</a>
+    <a >{'Price'} (<i  class="fa">&#xf156;</i>)</a>
      </Grid>
      <Grid item xs = {6} style={{display:"flex", justifyContent:"flex-end"}}>
      {state.listHoverItem ===  'price' ? <ArrowDropUpIcon color="primary"/> : <ArrowDropDownIcon color="primary"/>}
@@ -149,7 +165,7 @@ console.log('test',FilterOptionsCtx.sort)
                         });
                       }}
                     >
-                        <Grid container item xs={12}>
+                        <Grid container item xs={12} className={classes.spacingfilterdiv}>
               <Grid item xs = {6}>
               <a href={listName.url}>{listName}</a>
                </Grid>
@@ -174,7 +190,7 @@ console.log('test',FilterOptionsCtx.sort)
                   handleMoreFilters();
                 }}
               >
-              <Grid container item xs={12}>
+              <Grid container item xs={12} className={classes.spacingfilterdiv}>
               <Grid item xs = {6}>
                More
                </Grid>
@@ -214,11 +230,11 @@ console.log('test',FilterOptionsCtx.sort)
         <Grid container item xs={12} 
               justify="flex-end"
               style={{ paddingBottom: 20 }}>
-        <Grid container item xs={6} className={classes.menuListCursorSort} onMouseOver={(e)=>{setState({...state,  targetopen: e.currentTarget, expanded:true})}}
+        <Grid container item xs={6} className={`${classes.headerNavbarList1} ${classes.menuListCursorSort}`} onMouseOver={(e)=>{setState({...state,  targetopen: e.currentTarget, expanded:true})}}
        
         >
              
-        <Grid container item xs={12}>
+        <Grid container item xs={12} className={classes.spacingfilterdiv}>
         <Grid item xs={6}>
                 Sort by 
                 </Grid>

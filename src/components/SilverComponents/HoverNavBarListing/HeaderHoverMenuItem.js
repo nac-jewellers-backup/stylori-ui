@@ -73,14 +73,14 @@ function HeaderHoverMenuItem(props) {
                                                     props.state.numTwo ===  menuList.max  ? classes.mouseOverPopoverfiltersselected :''}
                 >
 
-                  <ListItemText variant className={classes.filtersList} style={{fontSize:"0.9rem"}}>
+                  <ListItemText variant className={`${props.filters ? classes.filtersListtopfilters : classes.filtersList}`} style={{fontSize:"0.9rem"}}>
                   {menuList.label ?
                       menuList.label :
                       menuList} 
-                   {props.filtercheck === 'price' && 
+                   {/* {props.filtercheck === 'price' && 
                       (<span> &nbsp;
                         (<i style={{fontSize:'14px'}} class="fa">&#xf156;</i>)
-                      </span>)}
+                      </span>)} */}
                     
                   </ListItemText>
 
@@ -95,7 +95,7 @@ function HeaderHoverMenuItem(props) {
                     className={props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] ? classes.mouseOverPopoverfiltersselected :''}
                     >
 
-                      <ListItemText variant className={classes.filtersList} style={{fontSize:"0.9rem"}}>
+                      <ListItemText variant className={`${props.filters ? classes.filtersListtopfilters : classes.filtersList}`} style={{fontSize:"0.9rem"}}>
 
                         {menuList.title ?
                           menuList.title :
@@ -114,7 +114,7 @@ function HeaderHoverMenuItem(props) {
             name={menuList}
             style={{paddingTop:"0px", paddingBottom:"0px"}}
           >
-            <ListItemText variant className={`${classes.filtersList} ${classes.sortSilver}`} >
+            <ListItemText variant className={`${props.sort ? classes.filtersListtopfilters : classes.filtersList} ${classes.sortSilver}`} >
             <FormControlLabel value={menuList} control={<Radio />} label={menuList}/>
             </ListItemText>
           </ListItem>
