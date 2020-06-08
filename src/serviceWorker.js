@@ -123,7 +123,7 @@ export function register(config) {
   // Added here
   setInterval(function () { cacheCheck(); }, 5000);
 
-  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+  if (process.env.NODE_ENV === 'production' || 'serviceWorker' in navigator) {
 
 
     // The URL constructor is available in all browsers that support SW.
