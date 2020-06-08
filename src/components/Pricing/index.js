@@ -7,6 +7,9 @@ import './pricing.css'
 export default function Pricing(props) {
     const classes = styles();
     let path = window.location.pathname.split('/').pop();
+    const {globalContext} = props
+    debugger
+    const isSilver = globalContext && globalContext.pathName ? true : false
     return (
         <div>
             {
@@ -23,7 +26,7 @@ export default function Pricing(props) {
                     ""
             }
             {/*  */}
-            <Grid spacing={12} style={{ padding: "0px 8px " }} container lg={12}>
+            <Grid spacing={12} style={{ padding:isSilver ?  0  :   "0px 8px" }} container lg={12}>
 
                 {/* <Grid item xs={12}lg={12} >
                     <Grid spacing={12} container xs={12} lg={12} class="leftPadding"> */}

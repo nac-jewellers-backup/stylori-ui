@@ -28,7 +28,6 @@ export const GlobalProvider = (props) => {
         if(window.location.pathname==='/stylorisilver') setGlobalCtx({...Globalctx, pathName:true})
         else if(loc_PD.length > 0 ) setGlobalCtx({...Globalctx, pathName:true})
         else if(loc.length > 0) setGlobalCtx({...Globalctx, pathName:true})
-        
         else setGlobalCtx({...Globalctx, pathName:false})
     },[])
     return (

@@ -67,6 +67,11 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
             productColor
           }
         }
+        productMaterialsByProductSku {
+          nodes {
+            materialName
+          }
+        }
       }
       pricingSkuMaterialsByProductSku {
         nodes {
@@ -88,9 +93,6 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
     }
   }
 }
-
-
-
 
 
 `

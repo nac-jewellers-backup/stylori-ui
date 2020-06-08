@@ -1456,7 +1456,14 @@ body {
     margin-bottom: 12px !important;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .06);
 }
-
+.overall-box-without-shadow{
+    border-radius: 5px;
+    width: 100% !important;
+    /* border: 1px solid #ccc; */
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+    margin-bottom: 12px !important;
+}
 .priceecontainer {
     box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }

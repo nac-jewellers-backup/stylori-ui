@@ -28,6 +28,7 @@ import 'screens/screens.css';
 import { Helmet } from "react-helmet";
 import { CartContext } from 'context'
 import { GlobalContext } from 'context'
+import SilverProductPrice from 'components/product-image-slider/silverProductPrice';
 // import {Helmet} from "react-helmet";
 class ProductDetail extends Component {
   constructor(props) {
@@ -121,6 +122,7 @@ class ProductDetail extends Component {
     // this.handleOGTag()
   }
    }
+   
   render() {
     // const meta = {
     //   title: 'Some Meta Title',
@@ -149,10 +151,8 @@ class ProductDetail extends Component {
         })
       }
     }
-//  console.log("this.props.data[0].fadeImages", this.props.data[0].fadeImages)
- 
-
-    // alert(JSON.stringify(this.props.setratingcountsclear))
+    const {Globalctx} = this.props
+    const isSilver = Globalctx.pathName
     return (
       <div>
         {/* <div>
@@ -174,6 +174,7 @@ class ProductDetail extends Component {
         <Hidden smDown>
           <Header wishlist={this.props.wishlistdata} />
 
+         {!isSilver ?
           <Grid Container spacing={12} style={{ maxWidth: "1600px", margin: "auto" }}>
             <Grid item xs={12}>
               <div className="pricing-breadcrums-media" >
@@ -185,18 +186,33 @@ class ProductDetail extends Component {
             </Grid>
           </Grid>
 
+          :
+          <Grid container item xs={12} style={{marginTop:'30px'}}>
+
+          </Grid>
+          }
+
           <div className="pricing-imgzom-media" style={{ maxWidth: "1600px", margin: "auto" }}>
             <Grid container spacing={12}>
               <Grid item xs={6}>
                 <ProductImageZoom data={this.props.data} />
               </Grid>
               <Grid item xs={6}>
-                <div className='overall-box priceecontainer'>
-                  <ProductPrice data={this.props.data} wishlist={this.props.wishlistdata} />
-                </div>
-                <div className='overall-box priceecontainer'>
+              {/* <div className='overall-box priceecontainer'>
                   <PriceTabs data={this.props.data} />
+                </div> */}
+                {
+                isSilver ? 
+                <div className='overall-box-without-shadow'>
+<SilverProductPrice data={this.props.data} wishlist={this.props.wishlistdata}/>  
                 </div>
+                :
+                <div className='overall-box priceecontainer'>
+<ProductPrice data={this.props.data} wishlist={this.props.wishlistdata} />
+                </div>
+                
+                }
+           
                 <div className='overall-box priceecontainer'>
                   <PriceBuynow data={this.props.data} />
                 </div>
@@ -272,8 +288,25 @@ const Components = props => {
 
   let { CartCtx: { allorderdata, wishlistdata,setratingcountsclear } } = React.useContext(CartContext);
 
-  const { Globalctx } = React.useContext(GlobalContext)
+  const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext)
   const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating } } = React.useContext(ProductDetailContext);
+  const _silverArr = []
+  React.useEffect(()=>{
+    if(data && !loading){
+      if(Object.keys(data).length > 0 ){
+        debugger
+        if(data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0 && data.data.allTransSkuLists.nodes[0].productListByProductId && data.data.allTransSkuLists.nodes[0].productListByProductId.productMaterialsByProductSku && data.data.allTransSkuLists.nodes[0].productListByProductId.productMaterialsByProductSku.nodes.length > 0 ){
+          data.data.allTransSkuLists.nodes[0].productListByProductId.productMaterialsByProductSku.nodes.map((val)=>{
+            _silverArr.push(val.materialName.toLowerCase())
+          })
+          console.log(_silverArr,'_silverArr')        
+          if(_silverArr.indexOf('silver') > -1) setGlobalCtx({...Globalctx, pathName:true})
+          
+        }
+      }
+    }
+  },[data])
+  
   const datas = data;
   let mapped = datas;
 
@@ -282,7 +315,7 @@ const Components = props => {
   }
   if (Object.keys(mapped).length === 0) return <div className="overall-loader"><div id="loading"></div></div>
   else {
-    return <ProductDetail {...props} setratingcountsclear={setratingcountsclear} data={mapped} rating={rating} allorderdata={allorderdata} wishlistdata={wishlistdata} />
+    return <ProductDetail {...props} setratingcountsclear={setratingcountsclear} data={mapped} rating={rating} allorderdata={allorderdata} wishlistdata={wishlistdata} Globalctx={Globalctx}/>
 
   }
 }
