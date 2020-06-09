@@ -110,17 +110,24 @@ class Sublistcarousel extends React.Component {
         class: "image5"
       }
     ];
-
+    debugger
+const _isSilver = this.props.isSilver ? true : false 
     return (
       <div style={{ width: "100%" }}>
         <Hidden smDown>
           <Container style={{ padding: "0px 17px" }}>
             <div className="back_img" style={{ padding: "2px 0px", margin: "auto", boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" }}>
               <div className='like-and-recently'>
-                <Grid container spacing={12}>
+                {_isSilver ?
+                  <Grid container spacing={12}>
+                  <Grid item xs={12} className={`${'like-page'} ${this.state.dataToShow === 'YouMayLike' ? 'recenetly-like-page-active' : ''}`} ><span onClick={() => this.setState({ dataToShow: 'YouMayLike' })}>You may also like</span></Grid>
+                </Grid>
+              :
+              <Grid container spacing={12}>
                   <Grid item xs={6} className={`${'like-page'} ${this.state.dataToShow === 'YouMayLike' ? 'recenetly-like-page-active' : ''}`} ><span onClick={() => this.setState({ dataToShow: 'YouMayLike' })}>You may also like</span></Grid>
                   <Grid item xs={6} className={`${'recenetly-like-page'} ${this.state.dataToShow === 'YouRecentlyViewed' ? 'recenetly-like-page-active' : ''}`} ><span onClick={() => this.setState({ dataToShow: 'YouRecentlyViewed' })}>You recently viewed</span></Grid>
-                </Grid>
+                </Grid>  
+              }
               </div> <div className='sub-carousel-head'>
                 <Container>
                   {this.state.dataToShow === "YouMayLike" && data && data[0] && data[0].fadeImageSublist.length < 0 || this.state.dataToShow === "YouRecentlyViewed" && data && data[0] && data[0].fadeImageSublistRecentlyViewed.length === 0 ?
@@ -172,6 +179,9 @@ class Sublistcarousel extends React.Component {
               </ExpansionPanelDetails>
             </ExpansionPanel>
 
+          {_isSilver ?
+          null
+          :
             <ExpansionPanel style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", padding: "0 5px" }} expanded={expanded1 === true} onChange={this.handle_recent_view(false)}>
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
@@ -231,7 +241,7 @@ class Sublistcarousel extends React.Component {
                   }
                 </div>
               </ExpansionPanelDetails>
-            </ExpansionPanel>
+            </ExpansionPanel>}
           </Container>
 
         </Hidden >

@@ -195,7 +195,7 @@ class ProductDetail extends Component {
           <div className="pricing-imgzom-media" style={{ maxWidth: "1600px", margin: "auto" }}>
             <Grid container spacing={12}>
               <Grid item xs={6}>
-                <ProductImageZoom data={this.props.data} />
+                <ProductImageZoom data={this.props.data} isSilver={isSilver}/>
               </Grid>
               <Grid item xs={6}>
               {/* <div className='overall-box priceecontainer'>
@@ -223,16 +223,18 @@ class ProductDetail extends Component {
           <div style={{ background: "whitesmoke" }} className="pricing-product-media" style={{ maxWidth: "1600px", margin: "auto" }}>
             <Grid container spacing={12}>
               <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
-                <ProductDetails data={this.props.data} />
+                <ProductDetails data={this.props.data} isSilver={isSilver}/>
               </Grid>
-              <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
+              {!isSilver &&
+                <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
                 <PriceCertification data={this.props.data}/>
                 <Request data={this.props.data} />
               </Grid>
+              }
               <br />
             </Grid>
           </div>
-          <Sublistcarousel data={this.props.data} />
+          <Sublistcarousel data={this.props.data} isSilver={isSilver}/>
           <RatingForm data={this.props.data} clear_rating={this.state.clear} clear_rating_onchange={clear_rating} />
           <CustomerReviews rating={this.props.rating} />
 
@@ -264,7 +266,7 @@ class ProductDetail extends Component {
           </Grid>
 
           <Grid item xs={12} >
-            <Sublistcarousel data={this.props.data} />
+            <Sublistcarousel data={this.props.data} isSilver={isSilver}/>
           </Grid>
 
           <Grid item xs={12} >

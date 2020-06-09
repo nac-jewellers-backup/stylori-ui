@@ -123,7 +123,7 @@ export const TopFilters = (props) => {
              <Grid
             item
             xs={2}
-            className={classes.menuListCursor}
+            className={`${classes.menuListCursor} ${classes.menuListCursorfiltersLabel}`}
             onMouseOver={(event) => {
               setState({
                 ...state,
@@ -153,7 +153,7 @@ export const TopFilters = (props) => {
                     <Grid
                       item
                       xs={2}
-                      className={classes.menuListCursor}
+                      className={`${classes.menuListCursor} ${classes.menuListCursorfiltersLabel}`}
                       onMouseOver={(event) => {
                         setState({
                           ...state,
@@ -166,7 +166,7 @@ export const TopFilters = (props) => {
                       }}
                     >
                         <Grid container item xs={12} className={classes.spacingfilterdiv}>
-              <Grid item xs = {6}>
+              <Grid item xs = {6} className={classes.filtersLabel}>
               <a href={listName.url}>{listName}</a>
                </Grid>
                <Grid item xs = {6} style={{display:"flex", justifyContent:"flex-end"}}>

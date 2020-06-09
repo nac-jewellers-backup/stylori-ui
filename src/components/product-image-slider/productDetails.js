@@ -73,15 +73,20 @@ import {
     };
   
     productsDetails = data => {
-      const { classes } = this.props;
+      const { classes, isSilver } = this.props;
+      console.clear()
+      console.log(data[0].productsDetails, 'data[0].productsDetails')
+      const _mapper = data && data.length > 0 && data[0] && data[0].productsDetails.length > 0 ? data[0].productsDetails : [] 
+      const _isSilver = isSilver ? true : false
+      const _mapperChooser = _isSilver 
+    ? 
+      _mapper.length > 0 ? [_mapper[0]] : _mapper 
+    :
+     _mapper
       return (
         <div>
           <Grid container spacing={12} style={{ paddingRight: "20px" }}>
-            {data &&
-              data.length > 0 &&
-              data[0] &&
-              data[0].productsDetails &&
-              data[0].productsDetails.map(valueofproductdetail => {
+            {_mapperChooser.map(valueofproductdetail => {
                 return valueofproductdetail.namedetail.length === 0 ? (
                   false
                 ) : (
@@ -98,6 +103,7 @@ import {
                         className="overall-boxz"
                         style={{
                           boxShadow:
+                          
                             "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)"
                         }}
                       >
@@ -260,12 +266,19 @@ import {
     };
     mobileproductsDetails = () => {
       const { expanded } = this.state;
-      const { data } = this.props;
+      const { data, isSilver } = this.props;
       const { classes } = this.props;
+      const _mapper = data && data.length > 0 && data[0] && data[0].productsDetails.length > 0 ? data[0].productsDetails : [] 
+      const _isSilver = isSilver ? true : false
+      const _mapperChooser = _isSilver 
+    ? 
+      _mapper.length > 0 ? [_mapper[0]] : _mapper 
+    :
+     _mapper
       return (
         <div>
           <Container>
-            {data[0].productsDetails.map(val => {
+            {_mapperChooser.map(val => {
               return val.namedetail.length === 0 ? (
                 false
               ) : (

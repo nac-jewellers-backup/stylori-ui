@@ -265,13 +265,13 @@ class ProductImageZoom extends React.Component {
               </Grid>
             </Grid> */}
                 {data.map(val => {
-                  return val.offerDiscount ? (
+                   return !this.props.isSilver && val.offerDiscount ? (
                     <span style={{ color: "#fff" }} className="overlayCss11">
                       {val.offerDiscount}
                     </span>
                   ) : null;
                 })}
-                {data[0].ProductContactNum[0].isReadyToShip == true ? (
+                {!this.props.isSilver && data[0].ProductContactNum[0].isReadyToShip == true ? (
                   <div
                     class={
                       data && data[0] && data[0].offerDiscount
