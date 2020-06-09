@@ -21,6 +21,8 @@ import Buynowbutton from "../Buynow/buynowbutton";
 import CommenDialog from "../Common/Dialogmodel";
 // import { Button } from '';
 import { GlobalContext, CartContext } from "context";
+import PriceTabs from 'components/product-image-slider/priceTabs'
+import Quantity from '../quantity'
 
 const dataCarousel = {
   dots: true,
@@ -96,7 +98,7 @@ const Productprice = (
   deletechecklists,
   state
 ) => {
-  debugger;
+  ;
   const { data } = props;
   const { classes } = props;
   const open = anchorEl;
@@ -267,7 +269,18 @@ const Productprice = (
                 <Hidden smDown>
                   <Grid container>
                     <Grid container item xs={12}>
+                        <Grid item xs={12}>
+                        <div className='overall-box '>
+                  <PriceTabs data={props.data} isSilver={isSilver}/>
+                </div>
+                        </Grid>
+                        <Grid item xs={12}>
+                        <div className={`${classes.quantity} ` }>
+                  <Quantity />
+                </div>
+                        </Grid>
                       <Grid item xs={12}>
+                      
                         <Grid item xs={4}>
                           <div onClick={handleLocalStorage.bind(this)}>
                             <Buynowbutton
@@ -448,7 +461,7 @@ class Component extends React.Component {
   };
 
   canceldeletechecklist = () => {
-    debugger;
+    ;
     const state = this.state;
     state["modelOpen"] = false;
     this.setState(state);

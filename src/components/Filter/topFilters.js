@@ -74,7 +74,7 @@ export const TopFilters = (props) => {
 
 // const scrollDiv = () =>{
 //   var topFilter = document.getElementById('topfilter');
-//   debugger
+//   
 //     if(topFilter.scrollTop === 68){
 //   //     if(!topFilter.hasClass(classes.topfiltersSticky)){
 //   //         topFilter.addClass(classes.topfiltersSticky);

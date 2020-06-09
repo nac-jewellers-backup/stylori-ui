@@ -152,12 +152,12 @@ class Component extends React.Component {
                       >
                         {data.map((tile,i) => {
                           console.log(i+1 % 8 === 0,"i+1 % 8 === 0i+1 % 8 === 0")
-                          debugger
+                          
                           return tile && Object.entries(tile).length > 0 ? (
                              (i+1) % 8 === 0   ?
                             
                             [tile, homePageStylori].map(val=>{
-debugger
+
                               return(
                                 val.carouselTop ?
                              data.length !== i+1 ?

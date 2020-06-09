@@ -198,9 +198,7 @@ class ProductDetail extends Component {
                 <ProductImageZoom data={this.props.data} isSilver={isSilver}/>
               </Grid>
               <Grid item xs={6}>
-              {/* <div className='overall-box priceecontainer'>
-                  <PriceTabs data={this.props.data} />
-                </div> */}
+            
                 {
                 isSilver ? 
                 <div className='overall-box-without-shadow-silver'>
@@ -212,7 +210,12 @@ class ProductDetail extends Component {
                 </div>
                 
                 }
-           
+           {
+             !isSilver &&
+             <div className='overall-box priceecontainer'>
+             <PriceTabs data={this.props.data} isSilver={isSilver}/>
+           </div>
+           }
               {isSilver ?
                 <div className='overall-box-without-shadow'>
                   <PriceBuynow data={this.props.data} isSilver={isSilver}/>
@@ -302,7 +305,7 @@ const Components = props => {
   React.useEffect(()=>{
     if(data && !loading){
       if(Object.keys(data).length > 0 ){
-        debugger
+        
         if(data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0 && data.data.allTransSkuLists.nodes[0].productListByProductId && data.data.allTransSkuLists.nodes[0].productListByProductId.productMaterialsByProductSku && data.data.allTransSkuLists.nodes[0].productListByProductId.productMaterialsByProductSku.nodes.length > 0 ){
           data.data.allTransSkuLists.nodes[0].productListByProductId.productMaterialsByProductSku.nodes.map((val)=>{
             _silverArr.push(val.materialName.toLowerCase())

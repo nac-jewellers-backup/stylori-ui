@@ -274,6 +274,9 @@ normalcolorbackSilverCancel:{
         backgroundColor:`${theme.palette.primary.main} !important`,
         opacity:'0.9'
     }   
+},
+quantity:{
+margin:'8px 0px 18px 0px'
 }
 });
 export default styles;

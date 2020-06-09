@@ -177,7 +177,7 @@ class Component extends React.Component {
 
     }
 
-    TabsComponent = () => {
+    TabsComponent = (_isSilver) => {
         const { classes } = this.props;
         const data = this.props.data;
         const { value } = this.state;
@@ -457,18 +457,19 @@ class Component extends React.Component {
     render() {
         // console.log('lklkkoik9', this.props.filters.defaultVariants.skuSize)
         const { expanded } = this.state;
+        const { isSilver } = this.props
 
-
+        const _isSilver = isSilver ? true : false
         return (
             <div>
                 <Hidden smDown>
-                    {this.TabsComponent()}
+                    {this.TabsComponent(_isSilver)}
                 </Hidden>
                 <Hidden mdUp>
                     <Container>
                         <div style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" }}>
                             <ExpansionPanel expanded={expanded === "1"} >
-                                {this.TabsComponent()}
+                                {this.TabsComponent(_isSilver)}
                             </ExpansionPanel></div>
                     </Container>
                 </Hidden>

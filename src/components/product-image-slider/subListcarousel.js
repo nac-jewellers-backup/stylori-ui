@@ -110,7 +110,7 @@ class Sublistcarousel extends React.Component {
         class: "image5"
       }
     ];
-    debugger
+    
 const _isSilver = this.props.isSilver ? true : false 
     return (
       <div style={{ width: "100%" }}>

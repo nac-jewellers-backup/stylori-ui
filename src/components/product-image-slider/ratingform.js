@@ -18,7 +18,7 @@ const RatingForm = (props) => {
     return <RatingComponent  {...props} />
 }
 const RatingComponent = (props) => {
-    debugger
+    
     const { classes } = props;
     // const clear1 = () => {
     //     props && props.clear_rating_onchange && props.clear_rating_onchange(true)

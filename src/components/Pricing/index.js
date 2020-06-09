@@ -8,7 +8,7 @@ export default function Pricing(props) {
     const classes = styles();
     let path = window.location.pathname.split('/').pop();
     const {globalContext} = props
-    debugger
+    
     const isSilver = globalContext && globalContext.pathName ? true : false
     return (
         <div>

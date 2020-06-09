@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function PaperSheet(props) {
-    debugger
+    
     const classes = useStyles();
 
     return (
