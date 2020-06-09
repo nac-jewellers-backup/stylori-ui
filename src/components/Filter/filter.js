@@ -938,8 +938,8 @@ filter.map((row, i) => {
             this.state.productDisplay &&
             <div
               // className="filter_page_layout"
-              className={`${check ? `filter_page_layout ${classes.productCardscheck}` : `filter_page_layout ${classes.productCardsuncheck}`}`}
-              style={{width:isTopFilter ?"100%" : "80%" }}
+              className={`${check ? `filter_page_layout ${classes.productCardscheck}` : `filter_page_layout ${classes.productCardsuncheck}`} ${isTopFilter ? classes.widthFilter : ''}`}
+              
             >
               {isTopFilter ?
               <ProductLayoutSilver wishlist={this.props.wishlist} data={this.props.datas} loading={this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />

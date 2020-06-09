@@ -162,6 +162,9 @@ const styles = theme => ({
     display:"flex",
     justifyContent:"center",
     alignItems:"center"
+  },
+  widthFilter:{
+    width:'100%'
   }
 });
 
