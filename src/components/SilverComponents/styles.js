@@ -117,6 +117,11 @@ export const styles = theme => ({
       borderBottom: "1px solid " + theme.palette.secondary.dark,
     }
   },
+  
+mouseOverPopoverfilterslist:{
+  paddingTop:'0px !important',
+  paddingBottom:'0px !important'
+},
   mobileNavIcon: {
     color: theme.palette.secondary.dark,
     fill: theme.palette.secondary.dark + "!important",
@@ -202,7 +207,11 @@ export const useStyles = makeStyles(theme => ({
       letterSpacing: '1px'
     },
     '& nav': {
-      padding: '0px !important'
+      padding: '0px !important',
+      minWidth:150,
+      [theme.breakpoints.only('md')]: {
+        minWidth:100
+      }
     },
     '& li:hover': {
       backgroundColor: theme.palette.primary.dark,
@@ -259,8 +268,15 @@ export const useStyles = makeStyles(theme => ({
 
   },
   sortSilver:{
+    // "&.MuiRadio-root":{
+    //   padding:"0px 5px"
+    // },
+    // "&.MuiIconButton-colorSecondary":{
+    //   padding:"4px !important"
+    // },
     "& svg":{
       fontSize:"1rem"
+      
     }
       },
   filtersList:{
@@ -274,6 +290,10 @@ export const useStyles = makeStyles(theme => ({
       letterSpacing: 2,
     }
     
+  },
+  mouseOverPopoverfilterslist:{
+    paddingTop:'0px !important',
+    paddingBottom:'0px !important'
   },
   listedItemsvalue2: {
     padding: "2px 16px 2px 16px",

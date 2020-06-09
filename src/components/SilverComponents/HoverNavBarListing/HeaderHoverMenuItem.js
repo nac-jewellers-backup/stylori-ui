@@ -28,7 +28,7 @@ function HeaderHoverMenuItem(props) {
   return (
     <Grid container className={classes.root} >
       <Grid container item xs={12} className={classes.paperdiv} >
-        <Popper open={opens} id={props.id} anchorEl={target} transition className={`${props.filters ? classes.mouseOverPopoverfilters:classes.mouseOverPopover} ${classHover}`}
+        <Popper open={opens} id={props.id} anchorEl={target} transition className={`${props.filters || props.sort ? classes.mouseOverPopoverfilters:classes.mouseOverPopover} ${classHover}`}
          modifiers={{
           flip: {
             enabled: false,
@@ -69,8 +69,7 @@ function HeaderHoverMenuItem(props) {
                   onClick={(e) => {
                     debugger
                     props.onchoosetypeprice(e,menuList)}}
-                    className={props.state &&
-                                                    props.state.numTwo ===  menuList.max  ? classes.mouseOverPopoverfiltersselected :''}
+                    className={`${props.state && props.state.numTwo ===  menuList.max  ? classes.mouseOverPopoverfiltersselected :''} ${classes.mouseOverPopoverfilterslist}`}
                 >
 
                   <ListItemText variant className={`${props.filters ? classes.filtersListtopfilters : classes.filtersList}`} style={{fontSize:"0.9rem"}}>
@@ -92,7 +91,7 @@ function HeaderHoverMenuItem(props) {
                       onClick={(e) => {
                         debugger
                         props.onchoosetype(menuList, props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] !== undefined ? !props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] : true, e,null,undefined, props.state, props.filtercheck ? props.filtercheck.replace(/\s/g, "") : "")}}
-                    className={props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] ? classes.mouseOverPopoverfiltersselected :''}
+                    className={`${props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] ? classes.mouseOverPopoverfiltersselected :''} ${classes.mouseOverPopoverfilterslist}`}
                     >
 
                       <ListItemText variant className={`${props.filters ? classes.filtersListtopfilters : classes.filtersList}`} style={{fontSize:"0.9rem"}}>

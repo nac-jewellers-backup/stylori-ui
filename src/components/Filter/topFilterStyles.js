@@ -128,6 +128,16 @@ top:0
     '-moz-box-shadow': '0 3px 5px rgba(57, 63, 72, 0.3)',
     'box-shadow': '0 3px 5px rgba(57, 63, 72, 0.3)',
   },
+  filtersLabel:{
+    [theme.breakpoints.only('md')]: {
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+    }
+    
+  },
+  menuListCursorfiltersLabel:{
+    fontWeight:'unset !important'
+  },
   spacingfilterdiv:{
     display:'flex',
     alignItems:'center'
@@ -155,7 +165,8 @@ top:0
     },
 "&.mouseOverPopover":{
 top:0
-}
+},
+
   },
   menuListCursorMoreFilters: {
     cursor: 'pointer',

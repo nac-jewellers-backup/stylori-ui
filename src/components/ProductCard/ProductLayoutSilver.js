@@ -50,7 +50,11 @@ const styles = (theme) => ({
     },
   },
   viewmoreColorSilver:{
-    backgroundColor:theme.palette.secondary.main
+    backgroundColor:theme.palette.primary.main,
+    "&:hover": {
+      backgroundColor:theme.palette.primary.main,
+      opacity:'0.9'
+    },
   }
 });
 const ProductLayoutSilver = (props) => {
