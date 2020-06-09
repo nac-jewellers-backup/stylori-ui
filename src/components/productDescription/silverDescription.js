@@ -13,7 +13,7 @@ import image3 from '../../assets/web_banner_and_mobile-06.jpg';
 import image1mobile from '../../assets/web_banner_and_mobile-02_720.jpg'
 import image2mobile from '../../assets/web_banner_and_mobile-03_720.jpg'
 import image3mobile from '../../assets/web_banner_and_mobile-05.jpg'
-
+import { homePageStylori } from "../../containers/dummydatahome";
 
 const styles = theme => ({
 
@@ -130,7 +130,7 @@ class ProductDescription extends Component {
                   </Typography>
                 </Grid>
               </Hidden>
-               <Hidden mdUp>
+               {/* <Hidden mdUp>
                 <Grid
                   item
                   xs={6}
@@ -141,7 +141,7 @@ class ProductDescription extends Component {
                     {renderTitle()}
                   </Typography>
                 </Grid>
-              </Hidden> 
+              </Hidden>  */}
             </Grid>
             <Grid
               item
@@ -157,12 +157,96 @@ class ProductDescription extends Component {
 
                   {/* < Slideshow fadeImages={this.props.fadeImages} dataCarousel={this.props.dataCarousel} styles={'productDescriptionCarousel'} /> */}
                  <Hidden smDown>
-                 < Slideshow fadeImages={[image1,image2,image3]} dataCarousel={settings} silver={true} className={'silverClassSeoBanner'} styles={'productDescriptionCarousel'} />
+                 <Slideshow
+            sliderRef={this.slider}
+            dataCarousel={homePageStylori.carouselTop.settingSilver}
+          >
+            {homePageStylori.carouselTop.data.map((val, index) => (
+              <><Hidden smDown>
+                <Grid container key={index}>
+                  <a href={val.navigateUrl} style={{ width: "100%" }}>
+                    <img
+                      src={val.img}
+                      style={{ width: "100%", height: "100%" }}
+                    />
+                  </a>
+                </Grid>
+              </Hidden>
+                <Hidden mdUp>
+                  <Grid container key={index}>
+                    <a href={val.navigateUrl}>
+                      <img
+                        src={val.mobileImg}
+                        style={{ width: "100%", height: "100%" }}
+                      />
+                    </a>
+                  </Grid>
+                </Hidden></>
+            ))}
+          </Slideshow>
                  </Hidden>
                  <Hidden smUp>
-                 < Slideshow fadeImages={['https://assets.stylori.com/images/Static+Pages/Home+Page/rings-collection-mob.jpg', 'https://assets.stylori.com/images/Static+Pages/Home+Page/halo-collection-mob.jpg', 'https://assets.stylori.com/images/Static+Pages/Home+Page/gemstone-mob']} dataCarousel={settings} silver={true} className={'silverClassSeoBanner'} styles={'productDescriptionCarousel'} />
+                 <Slideshow
+            sliderRef={this.slider}
+            dataCarousel={homePageStylori.carouselTop.settingSilver}
+          >
+            {homePageStylori.carouselTop.data.map((val, index) => (
+              <><Hidden smDown>
+                <Grid container key={index}>
+                  <a href={val.navigateUrl} style={{ width: "100%" }}>
+                    <img
+                      src={val.img}
+                      style={{ width: "100%", height: "100%" }}
+                    />
+                  </a>
+                </Grid>
+              </Hidden>
+                <Hidden mdUp>
+                  <Grid container key={index}>
+                    <a href={val.navigateUrl}>
+                      <img
+                        src={val.mobileImg}
+                        style={{ width: "100%", height: "100%" }}
+                      />
+                    </a>
+                  </Grid>
+                </Hidden></>
+            ))}
+          </Slideshow>
                  </Hidden>
                 </Grid>
+                <Grid
+              item
+              container
+            >
+              {/* <Hidden smDown>
+                <Grid
+                  item
+                  xs={3}
+
+                  style={{ textAlign: 'center' }}
+                >
+                  <CustomSeparator
+                    list='product-dis'
+                    classsubhed='product-backg'
+                    data={data_json} /> */}
+                    {/* //  window.location.pathname.split('/').pop()   */}
+                {/* </Grid> */}
+              {/* </Hidden> */}
+              
+               <Hidden mdUp>
+                <Grid
+                  item
+                  xs={12}
+                  style={{ textAlign: 'center', marginTop:'10px' }}
+                  className={` DescriptionTitleSmallScreen `}
+                >
+                  <Typography className={`${classes.colorDark}`} variant='h6' component='h6'>
+                    {renderTitle()}
+                  </Typography>
+                </Grid>
+              </Hidden> 
+            </Grid>
               {/* </Hidden> */}
               <Grid
                 item
@@ -178,10 +262,10 @@ class ProductDescription extends Component {
                           
                           <Grid container item xs ={12}  >
                             
-                            <Grid item xs={9} sm={9} md={11} lg={11} xl={11} className={classes.showLess}>
+                            <Grid item xs={8} sm={9} md={11} lg={11} xl={11} className={classes.showLess}>
                             {datadescription}
                             </Grid>
-                            <Grid item xs={3} sm={3} md={1} lg={1} xl={1}>
+                            <Grid item xs={4} sm={3} md={1} lg={1} xl={1}>
                             <span style={{float:"right"}} onClick={this.handleReadMore} className={`know-txt ${classes.colorLight}`} id="readMore" >
                             <span ><i className="fa faMore faMoreSilver">&#xf0da;</i></span> READ MORE
                    </span>  
