@@ -153,7 +153,7 @@ export const ADDRESSDETAILS = `query MyQuery($userprofileId: String) {
       addressline2
       id
       city
-      contactNumber
+      contactno : contactNumber
       country
       countryCode
       defaultBilling

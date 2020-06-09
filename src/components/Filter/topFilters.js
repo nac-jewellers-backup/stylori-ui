@@ -136,7 +136,7 @@ export const TopFilters = (props) => {
             }}
           >
               <Grid container item xs={12} className={classes.spacingfilterdiv}>
-    <Grid item xs = {6}>
+    <Grid item xs = {6} className={classes.filtersLabel}>
     <a >{'Price'} (<i  class="fa">&#xf156;</i>)</a>
      </Grid>
      <Grid item xs = {6} style={{display:"flex", justifyContent:"flex-end"}}>
@@ -184,7 +184,7 @@ export const TopFilters = (props) => {
               <Grid
                 item
                 xs={2}
-                className={classes.menuListCursorMoreFilters}
+                className={`${classes.menuListCursorMoreFilters} ${classes.menuListCursorfiltersLabel}`}
                 style={{minWidth:'50px'}}
                 onClick={() => {
                   handleMoreFilters();

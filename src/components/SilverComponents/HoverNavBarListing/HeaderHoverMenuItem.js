@@ -28,7 +28,7 @@ function HeaderHoverMenuItem(props) {
   return (
     <Grid container className={classes.root} >
       <Grid container item xs={12} className={classes.paperdiv} >
-        <Popper open={opens} id={props.id} anchorEl={target} transition className={`${props.filters || props.sort? classes.mouseOverPopoverfilters:classes.mouseOverPopover} ${classHover}`}
+        <Popper open={opens} id={props.id} anchorEl={target} transition className={`${props.filters || props.sort ? classes.mouseOverPopoverfilters:classes.mouseOverPopover} ${classHover}`}
          modifiers={{
           flip: {
             enabled: false,
@@ -114,7 +114,7 @@ function HeaderHoverMenuItem(props) {
             style={{paddingTop:"0px", paddingBottom:"0px"}}
           >
             <ListItemText variant className={`${props.sort ? classes.filtersListtopfilters : classes.filtersList} ${classes.sortSilver}`} >
-            <FormControlLabel value={menuList} control={<Radio />} label={menuList}/>
+            <FormControlLabel value={menuList} control={<Radio className={classes.radioBtnsort}/>} label={menuList}/>
             </ListItemText>
           </ListItem>
         )

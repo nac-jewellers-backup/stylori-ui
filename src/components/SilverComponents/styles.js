@@ -117,6 +117,11 @@ export const styles = theme => ({
       borderBottom: "1px solid " + theme.palette.secondary.dark,
     }
   },
+  
+mouseOverPopoverfilterslist:{
+  paddingTop:'0px !important',
+  paddingBottom:'0px !important'
+},
   mobileNavIcon: {
     color: theme.palette.secondary.dark,
     fill: theme.palette.secondary.dark + "!important",
@@ -193,6 +198,12 @@ export const useStyles = makeStyles(theme => ({
     }
   },
   mouseOverPopoverfilters:{
+    "& .MuiRadio-root":{
+      padding:'2px 6px !important'
+    },
+    radioBtnsort:{
+      color:'red'
+    },
     zIndex: 1000,
     top: '4px !important',
     backgroundColor: theme.palette.primary.main ,
@@ -266,9 +277,9 @@ export const useStyles = makeStyles(theme => ({
     // "&.MuiRadio-root":{
     //   padding:"0px 5px"
     // },
-    "&.MuiIconButton-colorSecondary":{
-      padding:"4px !important"
-    },
+    // "&.MuiIconButton-colorSecondary":{
+    //   padding:"4px !important"
+    // },
     "& svg":{
       fontSize:"1rem"
       

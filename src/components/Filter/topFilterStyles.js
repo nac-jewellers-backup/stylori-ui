@@ -128,6 +128,16 @@ top:0
     '-moz-box-shadow': '0 3px 5px rgba(57, 63, 72, 0.3)',
     'box-shadow': '0 3px 5px rgba(57, 63, 72, 0.3)',
   },
+  filtersLabel:{
+    [theme.breakpoints.only('md')]: {
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+    }
+    
+  },
+  menuListCursorfiltersLabel:{
+    fontWeight:'unset !important'
+  },
   spacingfilterdiv:{
     display:'flex',
     alignItems:'center'
@@ -135,9 +145,8 @@ top:0
   menuListCursorSort: {
     cursor: 'pointer',
     fontFamily: 'Roboto',
-    fontWeight: 600,
     padding:"5px 4px 5px 15px",
-    marginRight:'15px',
+    marginRight:15,
     color: theme.palette.secondary.main,
     boxShadow: `6px 7px 6px  ${theme.palette.secondary.light}`,
     background:'white',
@@ -155,7 +164,8 @@ top:0
     },
 "&.mouseOverPopover":{
 top:0
-}
+},
+
   },
   filtersLabel:{
     [theme.breakpoints.only('md')]: {

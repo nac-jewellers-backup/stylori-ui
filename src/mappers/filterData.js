@@ -42,7 +42,6 @@ export default function (data) {
       }
       return {..._obj}
     };
-    console.clear()
     console.log(data, "datadatadata")
     let _d;
     try {

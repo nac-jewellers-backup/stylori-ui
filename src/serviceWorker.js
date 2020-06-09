@@ -66,7 +66,7 @@ const cacheCheck = async () => {
             // }
             
 
-            if(process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator){
+            if(process.env.NODE_ENV === 'production' || 'serviceWorker' in navigator){
               if (caches) {
                 // Service worker cache should be cleared with caches.delete()
                 caches.keys().then(async function(names) {
@@ -123,7 +123,7 @@ export function register(config) {
   // Added here
   setInterval(function () { cacheCheck(); }, 5000);
 
-  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+  if (process.env.NODE_ENV === 'production' || 'serviceWorker' in navigator) {
 
 
     // The URL constructor is available in all browsers that support SW.
