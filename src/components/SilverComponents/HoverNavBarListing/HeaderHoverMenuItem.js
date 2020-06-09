@@ -114,7 +114,7 @@ function HeaderHoverMenuItem(props) {
             style={{paddingTop:"0px", paddingBottom:"0px"}}
           >
             <ListItemText variant className={`${props.sort ? classes.filtersListtopfilters : classes.filtersList} ${classes.sortSilver}`} >
-            <FormControlLabel value={menuList} control={<Radio />} label={menuList}/>
+            <FormControlLabel value={menuList} control={<Radio className={classes.radioBtnsort}/>} label={menuList}/>
             </ListItemText>
           </ListItem>
         )

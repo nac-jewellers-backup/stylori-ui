@@ -198,6 +198,12 @@ export const useStyles = makeStyles(theme => ({
     }
   },
   mouseOverPopoverfilters:{
+    "& .MuiRadio-root":{
+      padding:'2px 6px !important'
+    },
+    radioBtnsort:{
+      color:'red'
+    },
     zIndex: 1000,
     top: '4px !important',
     backgroundColor: theme.palette.primary.main ,
