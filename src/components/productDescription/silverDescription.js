@@ -160,7 +160,7 @@ class ProductDescription extends Component {
                  < Slideshow fadeImages={[image1,image2,image3]} dataCarousel={settings} silver={true} className={'silverClassSeoBanner'} styles={'productDescriptionCarousel'} />
                  </Hidden>
                  <Hidden smUp>
-                 < Slideshow fadeImages={[image1mobile,image2mobile,image3mobile]} dataCarousel={settings} silver={true} className={'silverClassSeoBanner'} styles={'productDescriptionCarousel'} />
+                 < Slideshow fadeImages={['https://assets.stylori.com/images/Static+Pages/Home+Page/rings-collection-mob.jpg', 'https://assets.stylori.com/images/Static+Pages/Home+Page/halo-collection-mob.jpg', 'https://assets.stylori.com/images/Static+Pages/Home+Page/gemstone-mob']} dataCarousel={settings} silver={true} className={'silverClassSeoBanner'} styles={'productDescriptionCarousel'} />
                  </Hidden>
                 </Grid>
               {/* </Hidden> */}
