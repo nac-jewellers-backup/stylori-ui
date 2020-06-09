@@ -36,7 +36,7 @@ export default function Pricing(props) {
                             {props.offerPrice ?
                                 <Typography style={{ display: "flex", width: '100%' }}>
                                     <Typography
-                                        className={`${props.offerPrice != null & props.offerPrice !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} `}
+                                        className={`${props.offerPrice != null & props.offerPrice !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} ${isSilver ? classes.pricesilver : ''}`}
                                     >
                                         {/* ₹&nbsp;{props.offerPrice} */}
                                         {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.offerPrice))}

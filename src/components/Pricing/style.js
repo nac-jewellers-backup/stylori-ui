@@ -67,6 +67,11 @@ const styles = makeStyles(theme => ({
         [theme.breakpoints.only('sm')]: {
            width:"100%"
         },
+    },
+    pricesilver:{
+        color:theme.palette.background.darkFade,
+        fontWeight:'bold',
+        padding:'4px 0px 10px 0px'
     }
 }));
 export default styles;

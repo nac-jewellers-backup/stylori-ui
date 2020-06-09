@@ -19,14 +19,21 @@ const useStyles = makeStyles(theme => ({
         alignContent: "center"
 
     },
+    silverSvg:{
+        "& svg":{
+            fill:theme.palette.secondary.main
+        }
+        
+    }
 }));
 
-export default function PaperSheet() {
+export default function PaperSheet(props) {
+    debugger
     const classes = useStyles();
 
     return (
         <Grid container>
-            <Grid item className={classes.mainsource}>
+            <Grid item className={`${classes.mainsource} ${props.isSilver ? classes.silverSvg : ''}`}>
                 <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg"} />
             </Grid>
             <Grid item className={classes.mainsource}>

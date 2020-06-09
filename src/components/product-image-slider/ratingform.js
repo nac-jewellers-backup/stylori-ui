@@ -18,6 +18,7 @@ const RatingForm = (props) => {
     return <RatingComponent  {...props} />
 }
 const RatingComponent = (props) => {
+    debugger
     const { classes } = props;
     // const clear1 = () => {
     //     props && props.clear_rating_onchange && props.clear_rating_onchange(true)
@@ -28,7 +29,7 @@ const RatingComponent = (props) => {
     return (
         <Grid container style={{ marginTop: "10px" }}>
             <Container style={{ paddingLeft: "17px", paddingRight: "17px" }} >
-                <div className="bg-clr2 priceecontainer" style={{ padding: "20px" }}>
+                <div className={`bg-clr2 ${props.isSilver ?'' : `priceecontainer`}`} style={{ padding: "20px" }}>
                     <form id="Resetform" action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e, props)}>
                         <Grid container spacing={12} >
                             {/* <Grid item lg={1} /> */}
@@ -101,11 +102,11 @@ const RatingComponent = (props) => {
                             <Grid container spacing={12} style={{ marginTop: '20px' }}>
                                 <Grid item xs={12} lg={12}>
                                     <div style={{ float: "right" }}>
-                                        <Button className={`form-reviews-mob ${classes.fontwhite} ${classes.normalcolorback}`} type="submit">Submit</Button>
+                                        <Button className={`form-reviews-mob ${classes.fontwhite} ${classes.normalcolorback} ${props.isSilver ? classes.normalcolorbackSilver : ''}`} type="submit">Submit</Button>
                                         <Button onClick={() => {
                                             handlers.clear()
                                             props.clear_rating_onchange(true)
-                                        }} className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite}`} >Cancel</Button>
+                                        }} className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite} ${props.isSilver ? classes.normalcolorbackSilverCancel : ''}`} >Cancel</Button>
                                     </div>
                                 </Grid>
                             </Grid>

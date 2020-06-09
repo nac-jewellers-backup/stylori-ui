@@ -152,7 +152,7 @@ class ProductDetail extends Component {
       }
     }
     const {Globalctx} = this.props
-    const isSilver = Globalctx.pathName
+    const isSilver = Globalctx.pathName ? true : false
     return (
       <div>
         {/* <div>
@@ -213,14 +213,20 @@ class ProductDetail extends Component {
                 
                 }
            
-                <div className='overall-box priceecontainer'>
-                  <PriceBuynow data={this.props.data} />
+              {isSilver ?
+                <div className='overall-box-without-shadow'>
+                  <PriceBuynow data={this.props.data} isSilver={isSilver}/>
                 </div>
+              :
+              <div className='overall-box priceecontainer'>
+                  <PriceBuynow data={this.props.data} isSilver={isSilver}/>
+                </div>  
+              }
               </Grid>
             </Grid>
           </div>
 
-          <div style={{ background: "whitesmoke" }} className="pricing-product-media" style={{ maxWidth: "1600px", margin: "auto" }}>
+          <div style={{ background:isSilver? "unset" : "whitesmoke",maxWidth: "1600px", margin: "auto"  }} className="pricing-product-media">
             <Grid container spacing={12}>
               <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
                 <ProductDetails data={this.props.data} isSilver={isSilver}/>
@@ -235,8 +241,8 @@ class ProductDetail extends Component {
             </Grid>
           </div>
           <Sublistcarousel data={this.props.data} isSilver={isSilver}/>
-          <RatingForm data={this.props.data} clear_rating={this.state.clear} clear_rating_onchange={clear_rating} />
-          <CustomerReviews rating={this.props.rating} />
+          <RatingForm data={this.props.data} clear_rating={this.state.clear} clear_rating_onchange={clear_rating} isSilver={isSilver}/>
+          <CustomerReviews rating={this.props.rating} isSilver={isSilver}/>
 
           <Grid item xs={12}>
             <Footer />

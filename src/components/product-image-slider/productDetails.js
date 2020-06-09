@@ -100,15 +100,25 @@ import {
                           .replace(/₹/g, "")
                       ) > 15000) ? (
                       <div
-                        className="overall-boxz"
+                        className={`overall-boxz ${_isSilver ? classes.overallBoxz : ''}`}
                         style={{
                           boxShadow:
-                          
+                          _isSilver? 'unset' : 
                             "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)"
                         }}
                       >
                         <div className="overall-bo">
-                          <span
+                         {isSilver ?
+                         <span
+                         key={valueofproductdetail.name}
+                         className={`product-details ${classes.normalfontsSilver}`}
+                       >
+                         {" "}
+                         {valueofproductdetail.header}
+                       </span>
+                         :
+<>                         
+                         <span
                             key={valueofproductdetail.name}
                             className={`product-details ${classes.normalfonts}`}
                           >
@@ -116,6 +126,8 @@ import {
                             {valueofproductdetail.header}
                           </span>
                           <hr class="bottom-line"></hr>
+                          </>
+                          }
                           <>
                             {valueofproductdetail.namedetail !== undefined &&
                               valueofproductdetail.namedetail.map(res => {
@@ -134,13 +146,13 @@ import {
                                             <Grid xs={4} lg={4}>
                                               <ListItemText
                                                 variant=""
-                                                className={`product-subhead ${classes.normalfonts}`}
+                                                className={`product-subhead ${classes.normalfonts} ${_isSilver ? classes.normalFontsColor: ''}`}
                                               >
                                                 <span
                                                   style={{ fontSize: "12px" }}
                                                 >
                                                   {" "}
-                                                  {res.name}
+                                                  {_isSilver ? <b>{res.name}</b> : res.name}
                                                 </span>
                                               </ListItemText>
                                             </Grid>
@@ -154,11 +166,51 @@ import {
                                               isArray(res.details) ? (
                                                 <ListItemText
                                                   variant=""
-                                                  className={`product-subhead-list ${classes.fontgray}`}
+                                                  className={`product-subhead-list ${classes.fontgray} ${_isSilver ? classes.normalFontsColor: ''}`}
                                                 >
                                                   {res.details.map(
                                                     (Item, Index) => {
+                                                      if(_isSilver) {
+                                                        return (
+                                                       
+                                                          <b>
+                                                            <span
+                                                            style={{
+                                                              fontSize: "12px",
+                                                              textAlign: "left"
+                                                            }}
+                                                          >
+                                                            {" "}
+                                                            {valueofproductdetail.header ===
+                                                            "Price Breakup" ? (
+                                                              res.name !== "GST" &&
+                                                              Index === 0 &&
+                                                              res.details[Index] !==
+                                                                res.details[
+                                                                  Index + 1
+                                                                ] ? (
+                                                                <del>{Item}</del>
+                                                              ) : Index === 0 &&
+                                                               ( res.name !== "GST") || ((Index === 0 ) &&  !this.handleGst(
+                                                                  res.name,
+                                                                  valueofproductdetail.header,
+                                                                  valueofproductdetail.namedetail
+                                                                )) ? (
+                                                                ""
+                                                              ) : (
+                                                                Item
+                                                              )
+                                                            ) : (
+                                                              Item
+                                                            )}{" "}
+                                                          </span>
+                                                          </b>
+                                                          
+                                                        );
+                                                      }
+                                                    else{
                                                       return (
+                                                       
                                                         <span
                                                           style={{
                                                             fontSize: "12px",
@@ -189,17 +241,20 @@ import {
                                                             Item
                                                           )}{" "}
                                                         </span>
+                                                        
                                                       );
+                                                    }
                                                     }
                                                   )}
                                                 </ListItemText>
                                               ) : (
                                                 <ListItemText
                                                   variant=""
-                                                  className={`product-subhead-list ${classes.fontgray}`}
+                                                  className={`product-subhead-list ${classes.fontgray} ${_isSilver ? classes.normalFontsColor: ''}`}
                                                 >
                                                   {/* {data[0].productsDetails[3].namedetail[1].length > 0} */}
                                                   {
+                                                    
                                                     <span
                                                       style={{
                                                         fontSize: "12px",
@@ -207,7 +262,7 @@ import {
                                                       }}
                                                     >
                                                       {" "}
-                                                      {res.details}
+                                                      {_isSilver ? <b>{res.details}</b> : res.details}
                                                     </span>
                                                   }
                                                 </ListItemText>
@@ -229,6 +284,7 @@ import {
               })}
           </Grid>
   
+      {!_isSilver &&
           <Grid container spacing={12} style={{ paddingRight: "20px" }}>
             {data[0].productsPendants.map(val => (
               <>
@@ -260,7 +316,7 @@ import {
                 </div>
               </>
             ))}
-          </Grid>
+          </Grid>}
         </div>
       );
     };
@@ -294,6 +350,7 @@ import {
                     <ExpansionPanel
                       style={{
                         boxShadow:
+                        isSilver ? 'unset' :
                           "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)",
                         margin: "12px 0px",
                         padding: "0 5px 5px 5px"

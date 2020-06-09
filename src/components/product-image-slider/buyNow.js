@@ -37,7 +37,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
 
         }}>
             {data[0].ProductContactNum.map(val =>
-                <Grid container spacing={12} className={classes.shadow}>
+                <Grid container spacing={12} className={classes.shadow} item xs={12}>
 
                     <Grid item xs={7} lg={4} sm={7}>
                         {/* <input
@@ -58,18 +58,18 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                             onKeyPress={(e) => { if (!(e.which >= 48 && e.which <= 57)) e.preventDefault(); }}
                         />
                     </Grid>
-                    <Grid item xs={5} lg={3} sm={5}>
-                        <Button style={{ color: "#fff" }} className={state.pincodeNotFound || state.CheckForCodtitle === "COD Not Available" ? "pincodeNotFound" : state.CheckForCodtitle === 'COD is Available' ? "selectedGreen" : "search-button"} onClick={() => { handleCodChange() }}>{state.pincodeNotFound ? <><i class="fa fa-close" style={{ paddingRight: "3px" }} aria-hidden="true"></i> Pincode not found</> : state.CheckForCodtitle === "COD Not Available" ? <><i class="fa fa-close" style={{ paddingRight: "3px" }} aria-hidden="true"></i> COD Not Available</> : state.CheckForCodtitle === 'COD is Available' ? <><i class="fa fa-check" style={{ paddingRight: "3px" }} aria-hidden="true"></i>{state.CheckForCodtitle}</> : state.CheckForCodtitle}</Button>
+                    <Grid item xs={5} lg={3} sm={5} >
+                        <Button style={{ color: "#fff", marginLeft : props.isSilver ? 45 : 0 }} className={state.pincodeNotFound || state.CheckForCodtitle === "COD Not Available" ? "pincodeNotFound" : state.CheckForCodtitle === 'COD is Available' ? "selectedGreen" : props.isSilver ? classes.searchButtonSilver :"search-button"} onClick={() => { handleCodChange() }}>{state.pincodeNotFound ? <><i class="fa fa-close" style={{ paddingRight: "3px" }} aria-hidden="true"></i> Pincode not found</> : state.CheckForCodtitle === "COD Not Available" ? <><i class="fa fa-close" style={{ paddingRight: "3px" }} aria-hidden="true"></i> COD Not Available</> : state.CheckForCodtitle === 'COD is Available' ? <><i class="fa fa-check" style={{ paddingRight: "3px" }} aria-hidden="true"></i>{state.CheckForCodtitle}</> : state.CheckForCodtitle}</Button>
                     </Grid>
 
 
-                    <Hidden smDown>
+                {!props.isSilver &&    <Hidden smDown>
                         <Grid container item justify="center" xs={12} sm={12} lg={5} className="content" style={{ margin: 'auto' }}>
                             <b className={`ships-by ${classes.normalfonts}`}>
                                 <span style={{ textAlign: "center", alignItems: "center", display: "flex", alignContent: "center" }}><i style={{ fontSize: "20px" }} class="fa fa-truck"></i>&nbsp;&nbsp;{val.shipby}</span>
                             </b>
                         </Grid>
-                    </Hidden>
+                    </Hidden>}
                     {/* <label style={{ fontWeight: 'bold', color: 'rgba(185, 74, 72, 1)' }}>{(state.isRequired && 'Please fill out this field') || (state.pincodeNotFound && 'Pincode not found')}</label> */}
                 </Grid>
             )}
@@ -138,7 +138,75 @@ const Buydetails = (props, state, handleChanges, handleCodChange, canceldeletech
 }
 
 
+// SILVER PRODUCT DETAIL PAGE
 
+const BuydetailsSilverdetailpage = (props, state, handleChanges, handleCodChange, canceldeletechecklist, deletechecklists, handleLocalStorage) => {
+    const { data, isSilver } = props;
+    const { classes } = props;
+
+    return (
+        <div>
+            {data[0].ProductContactNum.map(val =>
+                <>
+                 <Grid container>
+                 <Grid item xs={12}>
+                        {inputsearch(props, state, handleChanges, handleCodChange)}
+                        </Grid>
+                 </Grid>
+                    <Grid container spacing={12} style={{ padding: "0 10px" }}>
+                       
+                        <Grid item xs={12} lg={4} style={{}}>
+                            {/* <NavLink to="/cart" style={{ textDecoration: 'none' }} onClick={handleLocalStorage.bind(this)}> */}
+                            {/* <div onClick={handleLocalStorage.bind(this)}>
+                                <Buynowbutton sku={data[0].skuId} class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
+                            </div> */}
+                            {/* </NavLink> */}
+                            {/* <CommenDialog isOpen={state.modelOpen} content={`Verify selected product details before proceeding`} handleClose={canceldeletechecklist} handleSuccess={deletechecklists} negativeBtn="No" positiveBtn="Yes" title="Confirmation" /> */}
+                        </Grid>
+                        
+                        <Grid item container alignContent="center" alignItems="center" xs={12} lg={12} style={{ padding: "20px 0px 0px 0px" }}>
+                            <Grid>
+                                <Grid item lg={12} xs={12} className={`buy-subheaders nd-hlp ${classes.normalfonts}`} style={{paddingBottom:'5px'}}><b>NEED HELP ?</b></Grid>
+                            </Grid>
+                            <Grid container >
+
+                                <Grid item lg={6} xs={12} className={`buy-subheaders ${classes.normalfonts}`}>
+                                { !isSilver &&   <Typography>
+                                        <i class="fa fa-phone overall-icons" aria-hidden="true"></i>&nbsp;
+                                    </Typography>}
+                                    <Typography className={classes.TypoListed}>
+                                        {val.telephone}
+                                    </Typography>
+                                </Grid>
+
+                                <Grid item lg={6} xs={12} className={`buy-subheaders ${classes.normalfonts}`}>
+                                { !isSilver && <Typography>
+                                        <i class="fa fa-whatsapp overall-icons" aria-hidden="true"></i>&nbsp;
+                                </Typography>}
+                                    <Typography className={classes.TypoListed}>
+                                        {val.phonenum}
+                                    </Typography>
+                                </Grid>
+
+                                <Grid item lg={12} xs={12} style={{ cursor: "pointer !important" }} className={`buy-subheaders ${classes.normalfonts} ${isSilver ? classes.chatNowSilverGrid : ''}`}>
+                                 { !isSilver &&  <Typography>
+                                        <i class="fa fa-comments-o overall-icons" aria-hidden="true"></i>&nbsp;
+                                    </Typography>}
+                                    <Typography className={`${classes.TypoListed} ${isSilver ? classes.chatNowSilver : ''}`}>
+                                        {isSilver ? `${val.chat} NOW` : val.chat }
+                                    </Typography>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    
+                </>
+            )}
+        </div>
+    )
+}
+
+// 
 
 const PriceBuynow = (props) => {
     const { loading, error, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
@@ -272,12 +340,19 @@ class Component extends React.Component {
     }
     render() {
         let { showimage } = this.state;
-        const { classes, data } = this.props;
+        const { classes, data, isSilver } = this.props;
 
         return (
             <div>
                 <Hidden smDown>
-                    {Buydetails(this.props, this.state, this.handleChanges, this.handleCodChange, this.canceldeletechecklist, this.deletechecklists, this.handleLocalStorage)}
+
+                    {
+                    isSilver ?
+                    BuydetailsSilverdetailpage(this.props, this.state, this.handleChanges, this.handleCodChange, this.canceldeletechecklist, this.deletechecklists, this.handleLocalStorage)
+                    :
+                    Buydetails(this.props, this.state, this.handleChanges, this.handleCodChange, this.canceldeletechecklist, this.deletechecklists, this.handleLocalStorage)
+                    
+                    }
                 </Hidden>
 
                 <Hidden mdUp>

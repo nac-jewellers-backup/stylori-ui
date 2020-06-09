@@ -12,6 +12,8 @@ const WishlistComponent = (props) => {
     const classes = styles();
     
     const { values, setValues, handlers } = useWishlists(props);
+
+    const isSilver = props.isSilver ? true : false
     React.useEffect(() => {
         
     // alert(JSON.stringify(props.wishlist))
@@ -30,7 +32,7 @@ const WishlistComponent = (props) => {
     return (
         <>
             {values.isactive !== 2 ? <>
-                <i   className={`fa fa-heart-o overall-icons ${props.props ? classes.colorTheme : classes.colorTheme}`}
+                <i   className={`fa fa-heart-o overall-icons ${props.props ? classes.colorTheme : classes.colorTheme} ${isSilver ? classes.silverColor : ''}`}
                     onClick={() => {
                         values["product_sku"] = props.sku
                         values["product_id"] = props.productId
@@ -38,7 +40,7 @@ const WishlistComponent = (props) => {
                         handlers.handelSubmit(2)
                     }}
                 ></i></> : <>
-                    <i className={`fa fa-heart overall-icons ${classes.colorTheme}`}
+                    <i className={`fa fa-heart overall-icons ${classes.colorTheme} ${isSilver ? classes.silverColor : ''}`}
                         onClick={() => {
                             values["product_sku"] = props.sku
                             values["product_id"] = props.productId

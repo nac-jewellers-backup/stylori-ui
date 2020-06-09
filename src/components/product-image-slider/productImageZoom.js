@@ -335,7 +335,7 @@ class ProductImageZoom extends React.Component {
                   marginTop: "10px"
                 }}
               >
-                <Gagetstylori />
+                <Gagetstylori isSilver={this.props.isSilver}/>
               </Grid>
             </Grid>
           </Grid>

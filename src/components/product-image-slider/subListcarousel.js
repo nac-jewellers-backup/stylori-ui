@@ -116,7 +116,7 @@ const _isSilver = this.props.isSilver ? true : false
       <div style={{ width: "100%" }}>
         <Hidden smDown>
           <Container style={{ padding: "0px 17px" }}>
-            <div className="back_img" style={{ padding: "2px 0px", margin: "auto", boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" }}>
+            <div className="back_img" style={{ padding: "2px 0px", margin: "auto", boxShadow: _isSilver ? "unset":"0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" }}>
               <div className='like-and-recently'>
                 {_isSilver ?
                   <Grid container spacing={12}>

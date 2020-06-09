@@ -1,193 +1,279 @@
 import { Autorenew } from "@material-ui/icons";
 
-const styles = theme => ({
-    searchCheck: {
-        paddingRight: "12px",
-        paddingLeft: "12px",
-        marginTop: "12px",
-        [theme.breakpoints.down('sm')]: {
-            marginTop: "12px",
-            paddingRight: "16px",
-            paddingLeft: "16px",
-        }
+const styles = (theme) => ({
+  searchCheck: {
+    paddingRight: "12px",
+    paddingLeft: "12px",
+    marginTop: "12px",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "12px",
+      paddingRight: "16px",
+      paddingLeft: "16px",
     },
-    title: {
-        [theme.breakpoints.down('lg')]: {
-            fontSize: '15px',
-            // fontWeight: 'bold'
-        },
-        [theme.breakpoints.down('xs')]: {
-            fontSize: '11px !important',
-        },
+  },
+  title: {
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "15px",
+      // fontWeight: 'bold'
     },
-    titleSilver:{
-        marginTop:'0 !important',
-        fontSize:'1.1rem'
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "11px !important",
     },
-    dis: {
-        color: theme.palette.text.secondary,
+  },
+  titleSilver: {
+    marginTop: "0 !important",
+    marginBottom: "0 !important",
+    fontSize: "1.1rem !important",
+  },
+  dis: {
+    color: theme.palette.text.secondary,
+  },
+  Pricediv: {
+    color: `${theme.palette.text.secondary} !important`,
+  },
+  normalFontsColor:{
+    color: `rgba(0, 0, 0, 0.54) !important`,
+  },
+  icon: {
+    color: theme.palette.primary.main,
+  },
+  pricedetails: {
+    color: theme.palette.primary.main,
+    [theme.breakpoints.down("xs")]: {
+      padding: "0",
     },
-    Pricediv:{
-        color: `${theme.palette.text.secondary} !important`,
+    [theme.breakpoints.up("lg")]: {
+      padding: "0 10px",
     },
-    icon: {
-        color: theme.palette.primary.main,
+  },
+  width: {
+    [theme.breakpoints.down("xs")]: {
+      padding: "0 10px",
     },
-    pricedetails: {
-        color: theme.palette.primary.main,
-        [theme.breakpoints.down('xs')]: {
-            padding: "0"
+    [theme.breakpoints.up("lg")]: {
+      padding: "0 10px",
+    },
+  },
+  // pricetabs
+  modals: {
+    [theme.breakpoints.down("xs")]: {
+      background: "#fff !important",
+      height: "100%",
+      overflowY: "scroll",
+      width: "60%",
+      marginTop: "3%",
+      marginBottom: "3%",
+      marginLeft: "20%",
+      outline: "none !important",
+    },
+    [theme.breakpoints.up("lg")]: {
+      background: "#fff !important",
+      height: "100%",
+      overflowY: "scroll",
+      width: "60%",
+      marginTop: "3%",
+      marginBottom: "3%",
+      marginLeft: "20%",
+      outline: "none !important",
+    },
+  },
+  modals_document: {
+    [theme.breakpoints.down("xs")]: {
+      background: "#fff !important",
+      height: "95%",
+      overflow: "none",
+      width: "95%",
+      margin: "auto",
+      outline: "none !important",
+    },
+    [theme.breakpoints.up("lg")]: {
+      background: "#fff !important",
+      height: "90%",
+      overflow: "none",
+      width: "90%",
+      margin: "auto",
+      outline: "none !important",
+    },
+  },
+  modals_video: {
+    [theme.breakpoints.down("xs")]: {
+      background: "#fff !important",
+      // height: '90%',
+      marginTop: "2%",
+      overflowY: "scroll",
+      width: "90%",
+      margin: "auto",
+      outline: "none !important",
+    },
+    [theme.breakpoints.up("lg")]: {
+      background: "#fff !important",
+      // height: '70%',
+      marginTop: "2%",
+      overflowY: "scroll",
+      width: "70%",
+      margin: "auto",
+      outline: "none !important",
+    },
+  },
+  pagination: {
+    [theme.breakpoints.down("xs")]: {
+      textAlign: "center",
+      width: "100%",
+    },
+    [theme.breakpoints.up("lg")]: {
+      // textAlign: "center"
+    },
+  },
 
-        },
-        [theme.breakpoints.up('lg')]: {
-            padding: "0 10px"
-        },
+  normalfonts_tabs: {
+    [theme.breakpoints.down("xs")]: {
+      textAlign: "center",
+      marginLeft: "4px",
+      // marginRight: "8px"
     },
-    width: {
-        [theme.breakpoints.down('xs')]: {
-            padding: "0 10px"
+    [theme.breakpoints.up("lg")]: {
+      textAlign: "center",
+      marginLeft: "8px",
+      marginRight: "8px",
+    },
+  },
+  tabs_values_font: {
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "8px !important",
+      marginTop: "5px",
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "10px !important",
+      marginTop: "5px",
+    },
+  },
+  tabsheadcolor: {
+    color: theme.palette.secondary.main,
+  },
+  tabsRingBckg: {
+    background: theme.palette.primary.main,
+  },
 
-        },
-        [theme.breakpoints.up('lg')]: {
-            padding: "0 10px"
-        },
-    },
-    // pricetabs
-    modals: {
-        [theme.breakpoints.down('xs')]: {
-            background: '#fff !important',
-            height: '100%',
-            overflowY: "scroll",
-            width: '60%',
-            marginTop: '3%',
-            marginBottom: '3%',
-            marginLeft: '20%',
-            outline: 'none !important',
-        },
-        [theme.breakpoints.up('lg')]: {
-            background: '#fff !important',
-            height: '100%',
-            overflowY: "scroll",
-            width: '60%',
-            marginTop: '3%',
-            marginBottom: '3%',
-            marginLeft: '20%',
-            outline: 'none !important',
-        },
-    },
-    modals_document: {
-        [theme.breakpoints.down('xs')]: {
-            background: '#fff !important',
-            height: '95%',
-            overflow: "none",
-            width: '95%',
-            margin:"auto",
-            outline: 'none !important',
-        },
-        [theme.breakpoints.up('lg')]: {
-            background: '#fff !important',
-            height: '90%',
-            overflow: "none",
-            width: '90%',
-            margin:"auto",
-            outline: 'none !important',
-        },
-    },
-    modals_video: {
-        [theme.breakpoints.down('xs')]: {
-            background: '#fff !important',
-            // height: '90%',
-            marginTop:"2%",
-            overflowY: "scroll",
-            width: '90%',
-            margin:"auto",
-            outline: 'none !important',
-        },
-        [theme.breakpoints.up('lg')]: {
-            background: '#fff !important',
-            // height: '70%',
-            marginTop:"2%",
-            overflowY: "scroll",
-            width: '70%',
-            margin:"auto",
-            outline: 'none !important',
-        },
-    },
-    pagination: {
-        [theme.breakpoints.down('xs')]: {
-            textAlign: "center",
-            width: "100%"
-        },
-        [theme.breakpoints.up('lg')]: {
-
-            // textAlign: "center"
-        },
-    },
-
-    normalfonts_tabs: {
-        [theme.breakpoints.down('xs')]: {
-            textAlign: "center",
-            marginLeft: "4px",
-            // marginRight: "8px"
-        },
-        [theme.breakpoints.up('lg')]: {
-            textAlign: "center",
-            marginLeft: "8px",
-            marginRight: "8px"
-        },
-    },
-    tabs_values_font: {
-        [theme.breakpoints.down('xs')]: {
-            fontSize: "8px !important",
-            marginTop: "5px"
-        },
-        [theme.breakpoints.up('lg')]: {
-            fontSize: "10px !important",
-            marginTop: "5px"
-        },
-    },
-    tabsheadcolor: {
-        color: theme.palette.secondary.main,
-    },
-    tabsRingBckg: {
-        background: theme.palette.primary.main,
-    },
-
-    TypoListed: {
-        fontSize: "0.8rem",
-        paddingTop: "2px"
-    },
-    normalfonts: {
-        color: theme.palette.text.primary,
-    },
-    normalcolorback: {
-        background: theme.palette.text.primary
-    },
-    fontwhite: {
-        color: theme.palette.overallButoon.contrastText
-    },
-    backgwhite: {
-        background: theme.palette.overallButoon.contrastText
-    },
-    fontgray: {
-        color: theme.palette.text.disabled
-    },
-    // buynow 
-    buttons: {
-        background: theme.palette.overallButoon.primary,
-        color: theme.palette.overallButoon.contrastText
-    },
-    backgsecondary: {
-        background: theme.palette.secondary.main,
-    },
+  TypoListed: {
+    fontSize: "0.8rem",
+    paddingTop: "2px",
+  },
+  normalfonts: {
+    color: theme.palette.text.primary,
+  },
+  normalfontsSilver:{
+    fontSize: '1.3rem',
+    letterSpacing: '8px',
+    textTransform: 'uppercase',
+    color:`${theme.palette.secondary.main} !important`
+  }
+  ,
+  normalcolorback: {
+    background: theme.palette.text.primary,
+  },
+  fontwhite: {
+    color: theme.palette.overallButoon.contrastText,
+  },
+  backgwhite: {
+    background: theme.palette.overallButoon.contrastText,
+  },
+  fontgray: {
+    color: theme.palette.text.disabled,
+  },
+  // buynow
+  buttons: {
+    background: theme.palette.overallButoon.primary,
+    color: theme.palette.overallButoon.contrastText,
+  },
+  buttonsilver: {
+    background: theme.palette.primary.main,
+    color: theme.palette.overallButoon.contrastText,
+  },
+  backgsecondary: {
+    background: theme.palette.secondary.main,
+  },
+  shadow: {
+    boxShadow:
+      "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)",
+  },
+  [theme.breakpoints.up("md")]: {
     shadow: {
-        boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)"
+      boxShadow: "none",
     },
-    [theme.breakpoints.up('md')]: {
-        shadow: {
-            boxShadow: "none"
-        },
-    }
-
+  },
+  silverbuttonSave: {
+    width: "100% !important",
+    borderRadius: "unset !important",
+    boxShadow: "6px 7px 6px rgba(208, 210, 211, 1)",
+    padding: "10px",
+  },
+  saveButtonsilverGrid: {
+    marginTop: "10px",
+  },
+  buynowButtonSilver: {
+    width: "100% !important",
+    height: "45px !important",
+    fontSize: "11px",
+    borderRadius: "unset !important",
+    boxShadow: "6px 7px 6px rgba(208, 210, 211, 1)",
+    textTransform: "uppercase",
+    letterSpacing: "2.5px !important",
+    fontWeight: "500 !important",
+    border: "none",
+    transition: "all 0.3s ease 0s",
+    cursor: "pointer",
+    outline: "none",
+    "&:hover": {
+      background: theme.palette.primary.dark,
+      opacity: "0.9",
+      color: "#fff !important",
+    },
+  },
+  searchButtonSilver :{
+    border: 0,
+    fontSize: '12px !important',
+    borderRadius: '0 !important',
+    height: '36px !important',
+    width: '100% !important',
+    color: '#fff',
+    backgroundColor: `${theme.palette.secondary.main} !important`,
+    fontWeight: '400 !important',
+    lineHeight: '1.42857143',
+    padding: '0px !important',
+    textTransform: 'none !important',
+},
+chatNowSilver:{
+backgroundColor:theme.palette.secondary.main,
+color:'white',
+textTransform:"uppercase",
+padding:'2px 17px !important'
+},
+chatNowSilverGrid:{
+    padding:'5px !important'
+},
+overallBoxz:{
+    borderRadius: '5px',
+    width: '100% !important',
+    background: '#fff',
+    paddingBottom: '4px !important',
+    marginBottom: '10px !important',
+    boxShadow: 'unset',
+    border:'unset',
+    paddingTop: '12px !important',
+},
+normalcolorbackSilver:{
+    backgroundColor:theme.palette.primary.main,
+    border:'unset !important',
+"&:hover":{
+    backgroundColor:`${theme.palette.primary.main} !important`,
+    opacity:'0.9'
+}
+},
+normalcolorbackSilverCancel:{
+    "&:hover":{
+        backgroundColor:`${theme.palette.primary.main} !important`,
+        opacity:'0.9'
+    }   
+}
 });
 export default styles;
