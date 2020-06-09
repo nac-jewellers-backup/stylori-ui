@@ -32,7 +32,12 @@ const WishlistComponent = (props) => {
     return (
         <>
             {values.isactive !== 2 ? <>
-                <i   className={`fa fa-heart-o overall-icons ${props.props ? classes.colorTheme : classes.colorTheme} ${isSilver ? classes.silverColor : ''}`}
+                {isSilver && <span style={{paddingRight:"5px"}} onClick={() => {
+                        values["product_sku"] = props.sku
+                        values["product_id"] = props.productId
+                        setValues({ values, ...values });
+                        handlers.handelSubmit(2)
+                    }}>Save  </span>}<i   className={`fa fa-heart-o overall-icons ${props.props ? classes.colorTheme : classes.colorTheme} ${isSilver ? classes.silverColor : ''}`}
                     onClick={() => {
                         values["product_sku"] = props.sku
                         values["product_id"] = props.productId
@@ -40,7 +45,12 @@ const WishlistComponent = (props) => {
                         handlers.handelSubmit(2)
                     }}
                 ></i></> : <>
-                    <i className={`fa fa-heart overall-icons ${classes.colorTheme} ${isSilver ? classes.silverColor : ''}`}
+                    {isSilver && <span style={{paddingRight:"5px"}} onClick={() => {
+                            values["product_sku"] = props.sku
+                            values["product_id"] = props.productId
+                            setValues({ values, ...values });
+                            handlers.handelRemove(1)
+                        }}>Saved</span>}<i className={`fa fa-heart overall-icons ${classes.colorTheme} ${isSilver ? classes.silverColor : ''}`}
                         onClick={() => {
                             values["product_sku"] = props.sku
                             values["product_id"] = props.productId
