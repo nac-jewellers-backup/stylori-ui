@@ -145,7 +145,6 @@ top:0
   menuListCursorSort: {
     cursor: 'pointer',
     fontFamily: 'Roboto',
-    fontWeight: 600,
     padding:"5px 4px 5px 15px",
     marginRight:15,
     color: theme.palette.secondary.main,
