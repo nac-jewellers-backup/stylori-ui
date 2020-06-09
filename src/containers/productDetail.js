@@ -203,7 +203,7 @@ class ProductDetail extends Component {
                 </div> */}
                 {
                 isSilver ? 
-                <div className='overall-box-without-shadow'>
+                <div className='overall-box-without-shadow-silver'>
 <SilverProductPrice data={this.props.data} wishlist={this.props.wishlistdata}/>  
                 </div>
                 :

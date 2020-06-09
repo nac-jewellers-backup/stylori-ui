@@ -20,8 +20,15 @@ const styles = theme => ({
             fontSize: '11px !important',
         },
     },
+    titleSilver:{
+        marginTop:'0 !important',
+        fontSize:'1.1rem'
+    },
     dis: {
         color: theme.palette.text.secondary,
+    },
+    Pricediv:{
+        color: `${theme.palette.text.secondary} !important`,
     },
     icon: {
         color: theme.palette.primary.main,

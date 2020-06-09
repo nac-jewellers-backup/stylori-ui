@@ -119,13 +119,13 @@ const Productprice = (props, anchorEl, handleClick, handleClose, globalContext) 
                             </div>
                         </Hidden>
                         {/* <Paper elevation={0} style={{ width: "100%", padding: "0px", margin: "0px " }}> */}
-                            <Grid container className="containbev" >
+                            <Grid container className="containbev_silver" >
                                 <Grid item xs={12} lg={9} md={9}>
-                                    <div className="price-div">
+                                    <div className={`price-div ${classes.Pricediv}`}>
                                         <Hidden mdUp>
                                             <Grid container spacing={12} xs={12}>
                                                 <Grid container item xs={8}>
-                                                    <h1 className={`pdp-title ${classes.title}`} style={{ width: "90%" }}>
+                                                    <h1 className={`pdp-title ${classes.title} `} style={{ width: "90%" }}>
                                                         {val.title}
                                                         {/* <i style={{ padding: "2px", fontSize: "12px" }} class="fa fa-info-circle" aria-hidden="true"></i> */}
                                                     </h1>
@@ -158,9 +158,9 @@ const Productprice = (props, anchorEl, handleClick, handleClose, globalContext) 
 
                                         </Hidden>
                                         <Hidden smDown>
-                                            <h1 className={`pdp-title ${classes.title}`}>
+                                            <h5 className={`pdp-title  ${classes.titleSilver}`}>
                                                 {val.title}
-                                            </h1>
+                                            </h5>
                                         </Hidden>
                                         {/* <Hidden smDown>
                                             <p className={`pdp-desc ${classes.dis}`}>

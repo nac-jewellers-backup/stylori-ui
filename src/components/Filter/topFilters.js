@@ -235,12 +235,15 @@ export const TopFilters = (props) => {
         >
              
         <Grid container item xs={12} className={classes.spacingfilterdiv}>
-        <Grid item xs={6}>
+          <Grid container item xs={12} justify="space-between">
+          <Grid item xs={6} style={{margin:'auto'}}>
                 Sort by 
                 </Grid>
                 <Grid item xs = {6} style={{display:"flex", justifyContent:"flex-end"}}>
                {state.expanded ? <ArrowDropUpIcon color="primary"/> : <ArrowDropDownIcon color="primary"/>}
                </Grid>
+          </Grid>
+        
           </Grid>
               
               </Grid>
