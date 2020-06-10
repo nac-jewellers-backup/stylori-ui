@@ -89,16 +89,17 @@ const mobilecarousel = (props, val, wishlist) => {
 
 const Productprice = (
   props,
+  state,
   anchorEl,
   handleClick,
   handleClose,
   globalContext,
   handleLocalStorage,
   canceldeletechecklist,
-  deletechecklists,
-  state
+  deletechecklists
+  
 ) => {
-  ;
+  debugger
   const { data } = props;
   const { classes } = props;
   const open = anchorEl;
@@ -430,6 +431,7 @@ class Component extends React.Component {
       anchorEl: false,
     });
   };
+  
   valus = (valueId) => {
     var valus_locl = localStorage.getItem("cartDetails")
       ? JSON.parse(localStorage.getItem("cartDetails")).products
@@ -455,17 +457,16 @@ class Component extends React.Component {
       window.location.pathname = "/cart";
     } else {
       this.setState({
-        modelOpen: true,
+        modelOpen: !this.state.modelOpen,
       });
     }
   };
 
-  canceldeletechecklist = () => {
-    ;
-    const state = this.state;
-    state["modelOpen"] = false;
-    this.setState(state);
-    this.forceUpdate();
+  canceldeletechecklistCancel = () => {
+   
+    this.setState({
+      modelOpen:false
+    });
   };
 
   deletechecklists = () => {
@@ -498,14 +499,16 @@ class Component extends React.Component {
         <Hidden smDown>
           {Productprice(
             this.props,
+            this.state,
             anchorEl,
             this.handleClick,
             this.handleClose,
             context,
             this.handleLocalStorage,
-            this.canceldeletechecklist,
+            this.canceldeletechecklistCancel,
             this.deletechecklists,
-            this.state
+            this.handletest
+            
           )}
         </Hidden>
 
@@ -513,14 +516,15 @@ class Component extends React.Component {
           <Container style={{ paddingBottom: "6px" }}>
             {Productprice(
               this.props,
+              this.state,
               anchorEl,
               this.handleClick,
               this.handleClose,
               context,
               this.handleLocalStorage,
-              this.canceldeletechecklist,
+              this.canceldeletechecklistCancel,
               this.deletechecklists,
-              this.state
+              this.handletest
             )}
           </Container>
         </Hidden>
