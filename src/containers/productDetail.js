@@ -29,6 +29,7 @@ import { Helmet } from "react-helmet";
 import { CartContext } from 'context'
 import { GlobalContext } from 'context'
 import SilverProductPrice from 'components/product-image-slider/silverProductPrice';
+import { ShopBy } from 'components/shopBy';
 // import {Helmet} from "react-helmet";
 class ProductDetail extends Component {
   constructor(props) {
@@ -244,6 +245,7 @@ class ProductDetail extends Component {
             </Grid>
           </div>
           <Sublistcarousel data={this.props.data} isSilver={isSilver}/>
+          {isSilver && <ShopBy />}
           <RatingForm data={this.props.data} clear_rating={this.state.clear} clear_rating_onchange={clear_rating} isSilver={isSilver}/>
           <CustomerReviews rating={this.props.rating} isSilver={isSilver}/>
 

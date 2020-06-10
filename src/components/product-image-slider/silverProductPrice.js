@@ -276,7 +276,7 @@ const Productprice = (
                 </div>
                         </Grid>
                         <Grid item xs={12}>
-                        <div className={`${classes.quantity} ` }>
+                        <div className={`${classes.quantity}` }>
                   <Quantity />
                 </div>
                         </Grid>
@@ -312,13 +312,13 @@ const Productprice = (
                           color="primary"
                           className={classes.silverbuttonSave}
                         >
-                       Save    <span style={{paddingLeft:'5px'}}><Wishlist
+                        <Wishlist
                                   sku={val.skuId}
                                   productId={val.productId}
                                   wishlist={wishlist}
                                   globalContext={globalContext.Globalctx}
                                   isSilver={isSilver}
-                                /></span>
+                                /> 
                         </Button>
                       </Grid>
                       <Grid item xs={6} style={{margin:'auto'}}>
