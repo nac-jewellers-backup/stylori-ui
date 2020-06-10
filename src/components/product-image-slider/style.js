@@ -277,6 +277,18 @@ normalcolorbackSilverCancel:{
 },
 quantity:{
 margin:'8px 0px 18px 0px'
+},
+labelSilverProductDetail:{
+  marginLeft:107,
+  "& div": {
+    textTransform: "uppercase",
+    color:theme.palette.secondary.main,
+    letterSpacing: "6px",
+    fontWeight: "bold",
+  },
+},
+silverSubCarouselHead:{
+  padding:'15px 30px 30px 30px'
 }
 });
 export default styles;

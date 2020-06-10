@@ -74,7 +74,6 @@ import {
   
     productsDetails = data => {
       const { classes, isSilver } = this.props;
-      console.clear()
       console.log(data[0].productsDetails, 'data[0].productsDetails')
       const _mapper = data && data.length > 0 && data[0] && data[0].productsDetails.length > 0 ? data[0].productsDetails : [] 
       const _isSilver = isSilver ? true : false

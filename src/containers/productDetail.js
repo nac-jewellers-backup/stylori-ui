@@ -29,7 +29,7 @@ import { Helmet } from "react-helmet";
 import { CartContext } from 'context'
 import { GlobalContext } from 'context'
 import SilverProductPrice from 'components/product-image-slider/silverProductPrice';
-import { ShopBy } from 'components/shopBy';
+import ShopBy from 'components/shopBy';
 // import {Helmet} from "react-helmet";
 class ProductDetail extends Component {
   constructor(props) {

@@ -31,14 +31,13 @@ const Quantity = (props) => {
               <Typography variant="body1" component="div"><b>Quantity</b></Typography>
           </Grid>
         <Grid item xs={3} className={classes.qty}>
-        <Paper elevation={3}>
             <Grid container item xs={12} justify="space-between" style={{padding:5}}>
             
             <Grid item xs={3} className={classes.alignGrid}>
             <IndeterminateCheckBoxIcon className={classes.icon} onClick={()=>{decreaseValue(_incrementQty)}}/>
             
           </Grid>
-          <Grid item xs={6} className={classes.alignGrid}>
+          <Grid item xs={6} className={`${classes.alignGrid} ${classes.border}`}>
             <input type="text" id='number' value={_incrementQty} disabled style={{width:'100%'}}/>
           </Grid>
           <Grid item xs={3} className={classes.alignGrid}>
@@ -46,7 +45,6 @@ const Quantity = (props) => {
           </Grid>
 
             </Grid>
-    </Paper>
 
         </Grid>
       </Grid>

@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import './product-images.css'
 import Slideshow from '../Carousel/carosul'
+import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 class Sublistcarousel extends React.Component {
@@ -49,7 +50,7 @@ class Sublistcarousel extends React.Component {
   render() {
     const limit = 4;
     const { expanded, expanded1 } = this.state;
-    const { data } = this.props;
+    const { data, classes } = this.props;
     const mobiledataCarousel = {
       dots: false,
       infinite: true,
@@ -117,18 +118,27 @@ const _isSilver = this.props.isSilver ? true : false
         <Hidden smDown>
           <Container style={{ padding: "0px 17px" }}>
             <div className="back_img" style={{ padding: "2px 0px", margin: "auto", boxShadow: _isSilver ? "unset":"0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" }}>
-              <div className='like-and-recently'>
                 {_isSilver ?
-                  <Grid container spacing={12}>
-                  <Grid item xs={12} className={`${'like-page'} ${this.state.dataToShow === 'YouMayLike' ? 'recenetly-like-page-active' : ''}`} ><span onClick={() => this.setState({ dataToShow: 'YouMayLike' })}>You may also like</span></Grid>
+                  <Container maxWidth="lg">
+                    <Grid container justifyContent={"space-around"} className={classes.labelSilverProductDetail}>
+                  {/* <Grid item xs={10} className={`${'like-page'} ${this.state.dataToShow === 'YouMayLike' ? 'recenetly-like-page-active' : ''}`} ><span onClick={() => this.setState({ dataToShow: 'YouMayLike' })}>You may also like</span></Grid> */}
+                  <Grid container item xs={10} >
+          <Typography variant="body1" component="div">
+            Similar Products
+          </Typography>
+        </Grid>
                 </Grid>
+                  </Container>
               :
+              <div className={`like-and-recently`}>
               <Grid container spacing={12}>
                   <Grid item xs={6} className={`${'like-page'} ${this.state.dataToShow === 'YouMayLike' ? 'recenetly-like-page-active' : ''}`} ><span onClick={() => this.setState({ dataToShow: 'YouMayLike' })}>You may also like</span></Grid>
                   <Grid item xs={6} className={`${'recenetly-like-page'} ${this.state.dataToShow === 'YouRecentlyViewed' ? 'recenetly-like-page-active' : ''}`} ><span onClick={() => this.setState({ dataToShow: 'YouRecentlyViewed' })}>You recently viewed</span></Grid>
-                </Grid>  
+                </Grid> 
+              </div>
+
               }
-              </div> <div className='sub-carousel-head'>
+               <div className={`sub-carousel-head ${classes.silverSubCarouselHead}`}>
                 <Container>
                   {this.state.dataToShow === "YouMayLike" && data && data[0] && data[0].fadeImageSublist.length < 0 || this.state.dataToShow === "YouRecentlyViewed" && data && data[0] && data[0].fadeImageSublistRecentlyViewed.length === 0 ?
 
@@ -253,4 +263,4 @@ Sublistcarousel.propTypes = {
   handle: PropTypes.func,
 };
 
-export default Sublistcarousel;
+export default withStyles(styles, { withTheme: true })(Sublistcarousel);

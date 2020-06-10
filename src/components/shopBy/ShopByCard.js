@@ -7,34 +7,77 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
+import Slideshow from "../Carousel/carosul";
+import {injectUrl_url_construct} from 'common/index'
+import {
+  Grid,
+  Hidden,
+} from "@material-ui/core";
+import { API_URL, CDN_URL } from "../../config";
 const useStyles = makeStyles({
   root: {
-    maxWidth: 200,
+    maxWidth: 'auto',
+    borderRadius:'unset',
+    boxShadow:'6px 7px 6px rgba(208, 210, 211, 1)'
   },
   media: {
-    height: 140,
+    height: 160,
   },
+  label:{
+    display:'flex',
+    justifyContent:'center'
+  }
 });
 
 export default function MediaCard(props) {
+  debugger
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia
+        {/* <CardMedia
           className={classes.media}
           image={props.image}
           title="Contemplative Reptile"
-        />
+        /> */}
+         <Slideshow
+            dataCarousel={props.settingSilver}
+          >
+            {props.image.map((val, index) => (
+              <><Hidden smDown>
+                <Grid container key={index}   className={classes.media}>
+                  <a href={`/silver-${props.label.toLowerCase()}-jewellery`} style={{ width: "100%" }}>
+                    <img
+                      src={injectUrl_url_construct(val)} 
+                      style={{ width: "100%", height: "100%" }}
+                      onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
+                    />
+                  </a>
+                </Grid>
+              </Hidden>
+                {/* <Hidden mdUp>
+                  <Grid container key={index}   className={classes.media}>
+                    <a href={val.navigateUrl}>
+                      <img
+                        src={val.mobileImg}
+                        style={{ width: "100%", height: "100%" }}
+                      />
+                    </a>
+                  </Grid>
+                </Hidden> */}
+                </>
+            ))}
+          </Slideshow>
       </CardActionArea>
-      <CardActions>
+      <a href={`/silver-${props.label.toLowerCase()}-jewellery`} style={{ width: "100%", textDecoration:'none' }}>
+      <CardActions className={classes.label}>
+      
         <Button size="small" color="primary">
         {props.label}
         </Button>
-        
       </CardActions>
+      </a>
     </Card>
   );
 }
