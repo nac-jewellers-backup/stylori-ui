@@ -102,7 +102,7 @@ class Component extends React.Component {
 
   imagehoverchildrens = (hoverlist, globalContext) => {
     let { hover, hovereffect, TopPic, imagecra, isSilver } = this.props;
-    debugger;
+    ;
     if (TopPic) {
       return hoverlist.map((val) => (
         <div

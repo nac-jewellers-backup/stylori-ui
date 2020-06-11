@@ -238,7 +238,7 @@ class Component extends React.Component {
         // data[0].productTabs[0].tab2.Children
 
         return (
-            <div>
+            <div className ={_isSilver ? classes.silverMarginBottom : ''}>
                 {data[0].productTabs.map(val => {
 
                     const arr = val.tab1.Children !== null && val.tab1.Children
@@ -467,10 +467,13 @@ class Component extends React.Component {
                 </Hidden>
                 <Hidden mdUp>
                     <Container>
+                        {_isSilver ?
+                       this.TabsComponent(_isSilver)
+                       :
                         <div style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" }}>
                             <ExpansionPanel expanded={expanded === "1"} >
                                 {this.TabsComponent(_isSilver)}
-                            </ExpansionPanel></div>
+                            </ExpansionPanel></div>}
                     </Container>
                 </Hidden>
             </div >

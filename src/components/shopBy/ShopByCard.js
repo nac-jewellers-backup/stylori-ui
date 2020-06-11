@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 });
 
 export default function MediaCard(props) {
-  debugger
+  
   const classes = useStyles();
 
   return (

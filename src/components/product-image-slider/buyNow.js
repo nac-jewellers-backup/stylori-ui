@@ -22,24 +22,25 @@ import { CartContext } from 'context'
 import { withRouter } from "react-router";
 import CommenDialog from '../Common/Dialogmodel'
 import Buynowfixed from 'components/SilverComponents/ProductDetail/buynowfixed';
+import SilverProductPrice from './silverProductPrice';
 
 
 
 const inputsearch = (props, state, handleChanges, handleCodChange) => {
 
-    const { data } = props;
+    const { data, isSilver } = props;
     const { classes } = props;
 
     // const [] = React.useState()
 
     return (
-        <div className={classes.searchCheck} style={{
+        <div className={isSilver ? classes.searchCheckSilver  : classes.searchCheck} style={{
 
         }}>
             {data[0].ProductContactNum.map(val =>
-                <Grid container spacing={12} className={classes.shadow} item xs={12}>
+                <Grid container spacing={12} className={isSilver ? classes.shadowSilver : classes.shadow} item xs={12}>
 
-                    <Grid item xs={7} lg={4} sm={7}>
+                    <Grid item xs={isSilver ? 5: 7} lg={4} sm={7}>
                         {/* <input
                             placeholder='&#xf041; &nbsp; Enter Pin Code'
                             className='buynow-search'
@@ -58,7 +59,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                             onKeyPress={(e) => { if (!(e.which >= 48 && e.which <= 57)) e.preventDefault(); }}
                         />
                     </Grid>
-                    <Grid item xs={5} lg={3} sm={5} >
+                    <Grid item xs={isSilver? 4:5} lg={3} sm={5} >
                         <Button style={{ color: "#fff", marginLeft : props.isSilver ? 45 : 0 }} className={state.pincodeNotFound || state.CheckForCodtitle === "COD Not Available" ? "pincodeNotFound" : state.CheckForCodtitle === 'COD is Available' ? "selectedGreen" : props.isSilver ? classes.searchButtonSilver :"search-button"} onClick={() => { handleCodChange() }}>{state.pincodeNotFound ? <><i class="fa fa-close" style={{ paddingRight: "3px" }} aria-hidden="true"></i> Pincode not found</> : state.CheckForCodtitle === "COD Not Available" ? <><i class="fa fa-close" style={{ paddingRight: "3px" }} aria-hidden="true"></i> COD Not Available</> : state.CheckForCodtitle === 'COD is Available' ? <><i class="fa fa-check" style={{ paddingRight: "3px" }} aria-hidden="true"></i>{state.CheckForCodtitle}</> : state.CheckForCodtitle}</Button>
                     </Grid>
 
@@ -341,7 +342,7 @@ class Component extends React.Component {
     render() {
         let { showimage } = this.state;
         const { classes, data, isSilver } = this.props;
-
+debugger
         return (
             <div>
                 <Hidden smDown>
@@ -357,11 +358,21 @@ class Component extends React.Component {
 
                 <Hidden mdUp>
                     <div style={{ marginTop: "10px" }}>
+                    {isSilver ?
+                    <SilverProductPrice data={this.props.data} wishlist={this.props.wishlist} pincode ={inputsearch} 
+                    allProps={this.props} allState={this.state} handleChanges ={this.handleChanges} handleCodChange ={this.handleCodChange}
+                    />
+                    :
                         <ProductPrice data={this.props.data} wishlist={this.props.wishlist} />
+}
+                        <PriceTabs data={this.props.data} wishlist={this.props.wishlist} isSilver={isSilver}/>
+                        {
+                            !isSilver&&
+                        inputsearch(this.props, this.state, this.handleChanges, this.handleCodChange)
+                        }
 
-                        <PriceTabs data={this.props.data} wishlist={this.props.wishlist} />
-                        {inputsearch(this.props, this.state, this.handleChanges, this.handleCodChange)}
-                        <Buynowfixed deleteComment={this.deletechecklists} data={this.props.data} onClick={this.handleLocalStorage.bind(this)} />
+                        { !isSilver&&
+                            <Buynowfixed deleteComment={this.deletechecklists} data={this.props.data} onClick={this.handleLocalStorage.bind(this)} />}
                     </div>
 
                 </Hidden>

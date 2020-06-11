@@ -6,7 +6,7 @@ import IndeterminateCheckBoxIcon from "@material-ui/icons/IndeterminateCheckBox"
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 const handleQty = (isMaxMin, _incrementQty, _maxOrderQty, setClass, state) => {
-  debugger;
+  ;
   var element = document.getElementById("number");
   var value = parseInt(element.value, 10);
   var increment = state['maxOrderQty'];
@@ -60,7 +60,7 @@ const Quantity = (props) => {
     qty: _incrementQty ? _incrementQty : 1,
   });
   const setClass = (data) => {
-    debugger
+    
     
       setState({ ...state, minOrderQty: data['minOrderQty'], maxOrderQty: data['maxOrderQty'], qty:data['qty'] });
     

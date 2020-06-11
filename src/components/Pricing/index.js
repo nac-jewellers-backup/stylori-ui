@@ -39,7 +39,7 @@ export default function Pricing(props) {
                                         className={`${props.offerPrice != null & props.offerPrice !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} ${isSilver ? classes.pricesilver : ''}`}
                                     >
                                         {/* ₹&nbsp;{props.offerPrice} */}
-                                        {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.offerPrice))}
+                                        {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.offerPrice)).replace(/^(\D+)/, '$1 ')}
                                     </Typography>
                                 </Typography> : ""}
                         </Grid>

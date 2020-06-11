@@ -20,6 +20,14 @@ const styles = (theme) => ({
       fontSize: "11px !important",
     },
   },
+  titlesmScreen:{
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "15px !important",
+      lineHeight: '20px !important',
+      marginBottom:'0px',
+      
+    },
+  },
   titleSilver: {
     marginTop: "0 !important",
     marginBottom: "0 !important",
@@ -168,6 +176,22 @@ const styles = (theme) => ({
     color:`${theme.palette.secondary.main} !important`
   }
   ,
+  silverMarginBottom:{
+    [theme.breakpoints.down('sm')]:{
+      marginBottom:30,
+      border:'1px solid #ccc',
+      borderRadius:'10px',
+      padding:"8px"
+    }
+  },
+  fontsSmallScreen:{
+    fontWeight:'bold !important',
+    // fontSize:'1.5rem',
+    padding:"0px !important",
+    letterSpacing: '2px',
+    textTransform: 'uppercase !important',
+    color:`${theme.palette.secondary.dark2} !important`
+  },
   normalcolorback: {
     background: theme.palette.text.primary,
   },
@@ -201,14 +225,34 @@ const styles = (theme) => ({
       boxShadow: "none",
     },
   },
+  shadowSilver:{
+    [theme.breakpoints.down('sm')]:{
+      boxShadow: "none !important",
+    }
+    
+  },
   silverbuttonSave: {
     width: "100% !important",
     borderRadius: "unset !important",
     boxShadow: "6px 7px 6px rgba(208, 210, 211, 1)",
     padding: "10px",
+    [theme.breakpoints.down('sm')]:{
+      boxShadow: "unset",
+      padding:'6px 16px',
+      width: "100% !important",
+    }
   },
   saveButtonsilverGrid: {
     marginTop: "10px",
+    [theme.breakpoints.down('sm')]:{
+      marginTop: "0 !important",
+    }
+  },
+  silverSmallScreenButton:{
+    [theme.breakpoints.down('sm')]:{
+    marginBottom:10,
+    boxShadow:`0 12px 10px -7px ${theme.palette.secondary.main}`
+    }
   },
   buynowButtonSilver: {
     width: "100% !important",
@@ -227,6 +271,11 @@ const styles = (theme) => ({
       background: theme.palette.primary.dark,
       opacity: "0.9",
       color: "#fff !important",
+    },
+    [theme.breakpoints.down('sm')]:{
+      boxShadow: "unset",
+      height:'36px !important',
+      width: "99% !important",
     },
   },
   searchButtonSilver :{
@@ -289,6 +338,14 @@ labelSilverProductDetail:{
 },
 silverSubCarouselHead:{
   padding:'15px 30px 30px 30px'
+},
+searchCheckSilver:{
+
+  [theme.breakpoints.down("sm")]: {
+    marginTop: 0,
+    paddingRight: 0,
+    paddingLeft: 0,
+  },
 }
 });
 export default styles;

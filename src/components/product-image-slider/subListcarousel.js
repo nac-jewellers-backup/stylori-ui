@@ -113,7 +113,7 @@ class Sublistcarousel extends React.Component {
     ];
     
 const _isSilver = this.props.isSilver ? true : false 
-debugger
+
     return (
       <div style={{ width: "100%" }}>
         <Hidden smDown>

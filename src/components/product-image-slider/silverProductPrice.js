@@ -21,8 +21,8 @@ import Buynowbutton from "../Buynow/buynowbutton";
 import CommenDialog from "../Common/Dialogmodel";
 // import { Button } from '';
 import { GlobalContext, CartContext } from "context";
-import PriceTabs from 'components/product-image-slider/priceTabs'
-import Quantity from '../quantity'
+import PriceTabs from "components/product-image-slider/priceTabs";
+import Quantity from "../quantity";
 
 const dataCarousel = {
   dots: true,
@@ -97,11 +97,11 @@ const Productprice = (
   handleLocalStorage,
   canceldeletechecklist,
   deletechecklists
-  
 ) => {
-  debugger
-  const { data } = props;
+  const { data, allProps, allState, handleChanges, handleCodChange, pincode } = props;
+  
   const { classes } = props;
+  
   const open = anchorEl;
   var wishlist = props.wishlist;
   const isSilver = globalContext.Globalctx.pathName ? true : false;
@@ -114,7 +114,7 @@ const Productprice = (
         <>
           <Grid container spacing={12} sm={12} className={classes.pricedetails}>
             <Hidden mdUp>
-              <div className="resp">
+              <div className={`resp ${isSilver ? 'respSilver' : ''}`}>
                 {/* <div className="respc"> */}
                 {/* <h1 className={`pdp-title ${classes.title}`}>
                                         {val.title}
@@ -162,22 +162,63 @@ const Productprice = (
                 {/* <br /><br /> */}
               </div>
             </Hidden>
+          {isSilver &&
+            <Hidden mdUp>
+              <Grid container item xs={12} className={classes.silverSmallScreenButton} >
+                <Grid item xs={6}>
+                  <div onClick={handleLocalStorage.bind(this)}>
+                    <Buynowbutton
+                      sku={data[0].skuId}
+                      class={`${classes.buynowButtonSilver} ${classes.buttonsilver}`}
+                      button="buynow-btn-cont"
+                    />
+                    <CommenDialog
+                      isOpen={state.modelOpen}
+                      content={`Verify selected product details before proceeding`}
+                      handleClose={canceldeletechecklist}
+                      handleSuccess={deletechecklists}
+                      negativeBtn="No"
+                      positiveBtn="Yes"
+                      title="Confirmation"
+                    />
+                  </div>
+                </Grid>
+                <Grid item xs={6} className={classes.saveButtonsilverGrid}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.silverbuttonSave}
+                  >
+                    <Wishlist
+                      sku={val.skuId}
+                      productId={val.productId}
+                      wishlist={wishlist}
+                      globalContext={globalContext.Globalctx}
+                      isSilver={isSilver}
+                      label="SAVE"
+                      labelAdded="SAVED"
+                    />
+                  </Button>
+                </Grid>
+              </Grid>
+            </Hidden>}
+
             {/* <Paper elevation={0} style={{ width: "100%", padding: "0px", margin: "0px " }}> */}
             <Grid container className="containbev_silver">
               <Grid item xs={12} lg={9} md={9}>
                 <div className={`price-div ${classes.Pricediv}`}>
                   <Hidden mdUp>
                     <Grid container spacing={12} xs={12}>
-                      <Grid container item xs={8}>
+                      <Grid container item xs={12}>
                         <h1
-                          className={`pdp-title ${classes.title} `}
+                          className={`pdp-title ${classes.title} ${classes.titlesmScreen}`}
                           style={{ width: "90%" }}
                         >
                           {val.title}
                           {/* <i style={{ padding: "2px", fontSize: "12px" }} class="fa fa-info-circle" aria-hidden="true"></i> */}
                         </h1>
 
-                        <div>
+                        {/* <div>
                           {data[0].ProductContactNum.map((val) => (
                             <div>
                               <b
@@ -200,28 +241,106 @@ const Productprice = (
                               </b>
                             </div>
                           ))}
-                        </div>
+                        </div> */}
                       </Grid>
                       <Grid
                         container
                         item
-                        xs={4}
+                        xs={12}
                         alignContent="center"
                         alignItems="center"
                       >
                         <Hidden mdUp>
                           <div
-                            className={classes.width}
-                            style={{ padding: "0px 10px  0px 10px " }}
+                            className={`${isSilver ? '' :  classes.width}`}
                           >
                             <Pricing
-                              price={data[0].price}
                               offerPrice={data[0].offerPrice}
-                              offerDiscount={val.offerDiscount}
+                              globalContext={globalContext.Globalctx}
                             ></Pricing>
                           </div>
                         </Hidden>
                       </Grid>
+                      <Grid
+                        container
+                        item
+                        xs={12}
+                        alignContent="center"
+                        alignItems="center"
+                      >
+                        <Grid item xs={10}>
+                        {
+                        pincode&&
+                        pincode(allProps, allState, handleChanges, handleCodChange)
+                        }
+                        </Grid>
+                        <Grid item xs={2} style={{ margin: "auto" }}>
+                          <div
+                            className="starts product-icons"
+                            style={{ fontFamily: "fontawesome" }}
+                          >
+                            <div
+                              className="row social-shares"
+                              className={classes.icon}
+                            >
+                              <i
+                                class="fa fa-share-alt overall-icons"
+                                aria-owns={open ? "simple-popper" : ""}
+                                onClick={handleClick}
+                              ></i>{" "}
+                              &nbsp;
+                              {/* {JSON.stringify(val.productId)} */}
+                              {/* <Wishlist sku={val.skuId} productId={val.productId} /> */}
+                              <Popover
+                                id="simple-popper"
+                                open={open}
+                                anchorEl={anchorEl}
+                                onClose={handleClose}
+                                anchorOrigin={{
+                                  vertical: "bottom",
+                                  horizontal: "center",
+                                }}
+                                transformOrigin={{
+                                  vertical: "top",
+                                  horizontal: "center",
+                                }}
+                              >
+                                <div className="product-share">
+                                  <h5>Share the Jewellery</h5>
+                                  <a
+                                    class="facebook"
+                                    target="_blank"
+                                    href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
+                                  >
+                                    <img
+                                      class="lazyload"
+                                      src="https://assets.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg"
+                                    />
+                                  </a>
+                                  &nbsp;
+                                  <a
+                                    className="twitter"
+                                    target="_blank"
+                                    href={`http://www.twitter.com/share?url=${window.location.href}`}
+                                  >
+                                    <img
+                                      class="lazyload"
+                                      src="https://assets.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg"
+                                    />
+                                  </a>
+                                  &nbsp;
+                                  {/* <a class="google" target="_blank">
+                                                            <img class="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
+                                                        </a> */}
+                                </div>
+                              </Popover>
+                              {/* <div onClick={() => window.scrollTo(0, 1800)}><Ratings ratings="starts-review" disable={"disable"} /></div> */}
+                              {/* <div><Ratings ratings="starts-review" /></div> */}
+                            </div>
+                          </div>
+                        </Grid>
+                      </Grid>
+                      
                     </Grid>
                   </Hidden>
                   <Hidden smDown>
@@ -270,18 +389,17 @@ const Productprice = (
                 <Hidden smDown>
                   <Grid container>
                     <Grid container item xs={12}>
-                        <Grid item xs={12}>
-                        <div className='overall-box '>
-                  <PriceTabs data={props.data} isSilver={isSilver}/>
-                </div>
-                        </Grid>
-                        <Grid item xs={12}>
-                        <div className={`${classes.quantity}` }>
-                  <Quantity data={props.data}/>
-                </div>
-                        </Grid>
                       <Grid item xs={12}>
-                      
+                        <div className="overall-box ">
+                          <PriceTabs data={props.data} isSilver={isSilver} />
+                        </div>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <div className={`${classes.quantity}`}>
+                          <Quantity data={props.data} />
+                        </div>
+                      </Grid>
+                      <Grid item xs={12}>
                         <Grid item xs={4}>
                           <div onClick={handleLocalStorage.bind(this)}>
                             <Buynowbutton
@@ -301,94 +419,94 @@ const Productprice = (
                           </div>
                         </Grid>
                       </Grid>
-                   <Grid container item xs={12}>
-                   <Grid
-                        item
-                        xs={4}
-                        className={classes.saveButtonsilverGrid}
-                      >
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          className={classes.silverbuttonSave}
+                      <Grid container item xs={12}>
+                        <Grid
+                          item
+                          xs={4}
+                          className={classes.saveButtonsilverGrid}
                         >
-                        <Wishlist
-                                  sku={val.skuId}
-                                  productId={val.productId}
-                                  wishlist={wishlist}
-                                  globalContext={globalContext.Globalctx}
-                                  isSilver={isSilver}
-                                  label = "SAVE"
-                                  labelAdded = "SAVED"
-                                /> 
-                        </Button>
-                      </Grid>
-                      <Grid item xs={6} style={{margin:'auto'}}>
-                        <div
-                          className="starts product-icons"
-                          style={{ fontFamily: "fontawesome" }}
-                        >
-                          <div
-                            className="row social-shares"
-                            className={classes.icon}
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            className={classes.silverbuttonSave}
                           >
-                            <i
-                              class="fa fa-share-alt overall-icons"
-                              aria-owns={open ? "simple-popper" : ""}
-                              onClick={handleClick}
-                            ></i>{" "}
-                            &nbsp;
-                            {/* {JSON.stringify(val.productId)} */}
-                            {/* <Wishlist sku={val.skuId} productId={val.productId} /> */}
-                            <Popover
-                              id="simple-popper"
-                              open={open}
-                              anchorEl={anchorEl}
-                              onClose={handleClose}
-                              anchorOrigin={{
-                                vertical: "bottom",
-                                horizontal: "center",
-                              }}
-                              transformOrigin={{
-                                vertical: "top",
-                                horizontal: "center",
-                              }}
+                            <Wishlist
+                              sku={val.skuId}
+                              productId={val.productId}
+                              wishlist={wishlist}
+                              globalContext={globalContext.Globalctx}
+                              isSilver={isSilver}
+                              label="SAVE"
+                              labelAdded="SAVED"
+                            />
+                          </Button>
+                        </Grid>
+                        <Grid item xs={6} style={{ margin: "auto" }}>
+                          <div
+                            className="starts product-icons"
+                            style={{ fontFamily: "fontawesome" }}
+                          >
+                            <div
+                              className="row social-shares"
+                              className={classes.icon}
                             >
-                              <div className="product-share">
-                                <h5>Share the Jewellery</h5>
-                                <a
-                                  class="facebook"
-                                  target="_blank"
-                                  href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
-                                >
-                                  <img
-                                    class="lazyload"
-                                    src="https://assets.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg"
-                                  />
-                                </a>
-                                &nbsp;
-                                <a
-                                  className="twitter"
-                                  target="_blank"
-                                  href={`http://www.twitter.com/share?url=${window.location.href}`}
-                                >
-                                  <img
-                                    class="lazyload"
-                                    src="https://assets.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg"
-                                  />
-                                </a>
-                                &nbsp;
-                                {/* <a class="google" target="_blank">
+                              <i
+                                class="fa fa-share-alt overall-icons"
+                                aria-owns={open ? "simple-popper" : ""}
+                                onClick={handleClick}
+                              ></i>{" "}
+                              &nbsp;
+                              {/* {JSON.stringify(val.productId)} */}
+                              {/* <Wishlist sku={val.skuId} productId={val.productId} /> */}
+                              <Popover
+                                id="simple-popper"
+                                open={open}
+                                anchorEl={anchorEl}
+                                onClose={handleClose}
+                                anchorOrigin={{
+                                  vertical: "bottom",
+                                  horizontal: "center",
+                                }}
+                                transformOrigin={{
+                                  vertical: "top",
+                                  horizontal: "center",
+                                }}
+                              >
+                                <div className="product-share">
+                                  <h5>Share the Jewellery</h5>
+                                  <a
+                                    class="facebook"
+                                    target="_blank"
+                                    href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
+                                  >
+                                    <img
+                                      class="lazyload"
+                                      src="https://assets.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg"
+                                    />
+                                  </a>
+                                  &nbsp;
+                                  <a
+                                    className="twitter"
+                                    target="_blank"
+                                    href={`http://www.twitter.com/share?url=${window.location.href}`}
+                                  >
+                                    <img
+                                      class="lazyload"
+                                      src="https://assets.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg"
+                                    />
+                                  </a>
+                                  &nbsp;
+                                  {/* <a class="google" target="_blank">
                                                             <img class="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
                                                         </a> */}
-                              </div>
-                            </Popover>
-                            {/* <div onClick={() => window.scrollTo(0, 1800)}><Ratings ratings="starts-review" disable={"disable"} /></div> */}
-                            {/* <div><Ratings ratings="starts-review" /></div> */}
+                                </div>
+                              </Popover>
+                              {/* <div onClick={() => window.scrollTo(0, 1800)}><Ratings ratings="starts-review" disable={"disable"} /></div> */}
+                              {/* <div><Ratings ratings="starts-review" /></div> */}
+                            </div>
                           </div>
-                        </div>
+                        </Grid>
                       </Grid>
-                   </Grid>
                     </Grid>
                   </Grid>
                 </Hidden>
@@ -433,7 +551,7 @@ class Component extends React.Component {
       anchorEl: false,
     });
   };
-  
+
   valus = (valueId) => {
     var valus_locl = localStorage.getItem("cartDetails")
       ? JSON.parse(localStorage.getItem("cartDetails")).products
@@ -465,9 +583,8 @@ class Component extends React.Component {
   };
 
   canceldeletechecklistCancel = () => {
-   
     this.setState({
-      modelOpen:false
+      modelOpen: false,
     });
   };
 
@@ -510,7 +627,6 @@ class Component extends React.Component {
             this.canceldeletechecklistCancel,
             this.deletechecklists,
             this.handletest
-            
           )}
         </Hidden>
 

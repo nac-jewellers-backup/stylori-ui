@@ -308,21 +308,24 @@ class ProductDetail extends Component {
             <PriceBuynow
               data={this.props.data}
               wishlist={this.props.wishlistdata}
+              isSilver={isSilver}
             />
           </Grid>
           <Grid item xs={12}>
             <ProductDetails
               data={this.props.data}
               wishlist={this.props.wishlistdata}
+              isSilver={isSilver}
             />
           </Grid>
 
-          <Grid item xs={12}>
-            <PriceCertification data={this.props.data} />
-          </Grid>
-          <Grid item xs={12}>
+         { !isSilver && <Grid item xs={12}>
+            <PriceCertification data={this.props.data} isSilver={isSilver}/>
+          </Grid>}
+          {
+            !isSilver && <Grid item xs={12}>
             <Request data={this.props.data} />
-          </Grid>
+          </Grid>}
 
           <Grid item xs={12}>
             <Sublistcarousel data={this.props.data} isSilver={isSilver} />

@@ -17,7 +17,8 @@
       "light": "rgba(208, 210, 211, 1)",
       "main": "rgba(166, 168, 171, 1)",
       "dark": "rgba(218, 185, 122, 1)",
-      "contrastText": "rgba(255, 255, 255, 1)"
+      "contrastText": "rgba(255, 255, 255, 1)",
+      "dark2":"rgba(109,110,112,1)"
     },
     "error": {
       "light": "#e57373",

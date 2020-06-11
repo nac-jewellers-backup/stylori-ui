@@ -27,7 +27,7 @@ let settingSilver = {
 }
 
 const _shopsProductss = (val) => {
-  debugger
+  
   // _shopsProducts = [
   //   {
   //     label: val.label,
