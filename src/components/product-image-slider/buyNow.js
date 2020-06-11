@@ -97,7 +97,7 @@ const Buydetails = (props, state, handleChanges, handleCodChange, canceldeletech
 
                         <Grid item container alignContent="center" alignItems="center" xs={12} lg={8} style={{ padding: "0px 0px 0px 25px" }}>
                             <Grid>
-                                <Grid item lg={12} xs={12} className={`buy-subheaders nd-hlp ${classes.normalfonts}`}>Need Help ?</Grid>
+                                <Grid item lg={12} xs={12} className={`buy-subheaders nd-hlp ${classes.normalfonts}`} style={{letterSpacing:2}}>Need Help ?</Grid>
                             </Grid>
                             <Grid container >
 

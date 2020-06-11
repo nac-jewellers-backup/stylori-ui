@@ -277,7 +277,7 @@ const Productprice = (
                         </Grid>
                         <Grid item xs={12}>
                         <div className={`${classes.quantity}` }>
-                  <Quantity />
+                  <Quantity data={props.data}/>
                 </div>
                         </Grid>
                       <Grid item xs={12}>

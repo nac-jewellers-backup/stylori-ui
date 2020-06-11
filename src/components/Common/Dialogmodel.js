@@ -81,7 +81,6 @@ export default function PineDialog(props) {
         style: {
           height: "auto",
           width: "auto",
-          background:'transparent'
         },
       }}
       className={classes.mapped}

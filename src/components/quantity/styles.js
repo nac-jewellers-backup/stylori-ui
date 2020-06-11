@@ -29,6 +29,12 @@ icon:{
     color: theme.palette.overallButoon.contrastText,
     cursor:'pointer',
     borderRadius:'unset !important'
+},
+iconDisabled:{
+  fill: `${theme.palette.secondary.main} !important`,
+    color: theme.palette.overallButoon.contrastText,
+    cursor:'not-allowed !important',
+    borderRadius:'unset !important'
 }
 });
 export default styles;

@@ -398,7 +398,8 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                 certificates: PD && PD.transSkuDescriptionsBySkuId && PD.transSkuDescriptionsBySkuId.nodes &&
                     PD.transSkuDescriptionsBySkuId.nodes.length > 0 && PD.transSkuDescriptionsBySkuId.nodes[0] &&
                     PD.transSkuDescriptionsBySkuId.nodes[0].certificate ? handle_mapper(PD.transSkuDescriptionsBySkuId.nodes[0].certificate) : null,
-
+                maxOrderQty: PD && PD.maxOrderQty ? PD.maxOrderQty : 100000,
+                minOrderQty: PD && PD.minOrderQty ? PD.minOrderQty : 1,
                 productsubHeaderlist: [{
                     name: "From the House of NAC",
                     icon: 'https://img.icons8.com/wired/64/000000/diamond.png',
