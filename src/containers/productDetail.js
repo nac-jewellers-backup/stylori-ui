@@ -30,6 +30,7 @@ import ShopBy from "components/shopBy";
 import ProductModal from "../components/SilverComponents/ProductModal"
 import { shopByStyloriSilver } from "queries/productdetail";
 import ProductTitle from "components/SilverComponents/ProductTitle";
+import Quantity from "../components/quantity";
 // import {Helmet} from "react-helmet";
 class ProductDetail extends Component {
   constructor(props) {
@@ -314,6 +315,9 @@ class ProductDetail extends Component {
               isSilver={isSilver}
             />
           </Grid>
+          {isSilver && <Grid item xs={12} style={{marginBottom:'15px'}}>
+               <Container > <Quantity/></Container>
+                </Grid>}
           <Grid item xs={12}>
             <ProductDetails
               data={this.props.data}
@@ -321,7 +325,7 @@ class ProductDetail extends Component {
               isSilver={isSilver}
             />
           </Grid>
-
+               
          { !isSilver && <Grid item xs={12}>
             <PriceCertification data={this.props.data} isSilver={isSilver}/>
           </Grid>}

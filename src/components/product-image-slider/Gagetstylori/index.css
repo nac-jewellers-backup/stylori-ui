@@ -21,7 +21,11 @@
     height: 33px;
     margin-right: 4px;
 }
-
+.silverSvg img svg{
+    /* background-color: red; */
+    background-image: url("https://assets.stylori.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg") no-repeat center;
+    /* mask: url("https://assets.stylori.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg") no-repeat center; */
+}
 .imagegaget3 {
     background-image: url("https://assets.stylori.com/images/static/details.svg");
     background-repeat: no-repeat;

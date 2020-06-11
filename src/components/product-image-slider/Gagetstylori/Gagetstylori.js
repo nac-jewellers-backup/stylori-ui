@@ -1,6 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Grid } from '@material-ui/core';
+import {Certified} from './Certified'
+import {Diversestyles} from './Diversestyles-pink'
+import {Easyreturns} from './Easyreturns-pink'
+import {Fromthehouseofnac} from './Fromthehouseofnac-pink.js'
+import {Securepayments} from './Securepayments-pink'
 import './index.css'
 
 const useStyles = makeStyles(theme => ({
@@ -14,6 +19,7 @@ const useStyles = makeStyles(theme => ({
     },
     mainsource: {
         width: "20%",
+        
         display: "flex",
         justifyContent: "center",
         alignContent: "center"
@@ -27,26 +33,36 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function PaperSheet(props) {
-    
-    const classes = useStyles();
+const Logo = () =>{
 
+}
+export default function PaperSheet(props) {
+    const isSilver = props.isSilver ? true : false
+    const color = isSilver ? "#a6a8ab" : '#D91965'
+    const classes = useStyles();
+// "#D91965"
     return (
+        
         <Grid container>
-            <Grid item className={`${classes.mainsource} ${props.isSilver ? classes.silverSvg : ''}`}>
-                <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg"} />
+            <Grid item className={`silverSvg ${classes.mainsource} ${props.isSilver ? classes.silverSvg : ''}`} >
+                {/* <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg"} /> */}
+                <Certified color={color} />
             </Grid>
             <Grid item className={classes.mainsource}>
-                <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static%20Pages/Other%20Pages/certifiedjewellery-pink.svg"} />
+                {/* <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static%20Pages/Other%20Pages/certifiedjewellery-pink.svg"} /> */}
+                <Diversestyles color={color}/>
             </Grid>
             <Grid item className={classes.mainsource}>
-                <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/securepayments-pink.svg"} />
+                {/* <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/securepayments-pink.svg"} /> */}
+                <Easyreturns color={color}/>
             </Grid>
             <Grid item className={classes.mainsource}>
-                <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/diversestyles-pink.svg"} />
+                {/* <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/diversestyles-pink.svg"} /> */}
+                <Fromthehouseofnac color={color}/>
             </Grid>
             <Grid item className={classes.mainsource}>
-                <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/easyreturns-pink.svg"} />
+                {/* <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/easyreturns-pink.svg"} /> */}
+                <Securepayments color={color}/>
             </Grid>
         </Grid>
     );

@@ -249,14 +249,26 @@ body {
     font-size: 20px !important;
     /* margin-top: 18px !important; */
 }
-
+.product-icons2 {
+    font-size: 20px !important;
+    
+    color: white;
+    /* margin-top: 18px !important; */
+}
 .product-icons i {
     font-size: 20px !important;
     background-size: 219px;
     background-position: -87px 4px;
     cursor: pointer;
+    
 }
-
+.product-icons2 i {
+    font-size: 20px !important;
+    cursor: pointer;
+    transform: scaleX(-1) !important;
+    color: white;
+    padding:8px !important;
+}
 @keyframes pulse_animation {
     25% {
         -webkit-transform: scale(1.3);

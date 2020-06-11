@@ -26,7 +26,7 @@ import SilverProductPrice from './silverProductPrice';
 
 
 
-const inputsearch = (props, state, handleChanges, handleCodChange) => {
+const inputsearch = (props, state, handleChanges, handleCodChange, customstylingsmallscreen) => {
 
     const { data, isSilver } = props;
     const { classes } = props;
@@ -60,7 +60,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
                         />
                     </Grid>
                     <Grid item xs={isSilver? 4:5} lg={3} sm={5} >
-                        <Button style={{ color: "#fff", marginLeft : props.isSilver ? 45 : 0 }} className={state.pincodeNotFound || state.CheckForCodtitle === "COD Not Available" ? "pincodeNotFound" : state.CheckForCodtitle === 'COD is Available' ? "selectedGreen" : props.isSilver ? classes.searchButtonSilver :"search-button"} onClick={() => { handleCodChange() }}>{state.pincodeNotFound ? <><i class="fa fa-close" style={{ paddingRight: "3px" }} aria-hidden="true"></i> Pincode not found</> : state.CheckForCodtitle === "COD Not Available" ? <><i class="fa fa-close" style={{ paddingRight: "3px" }} aria-hidden="true"></i> COD Not Available</> : state.CheckForCodtitle === 'COD is Available' ? <><i class="fa fa-check" style={{ paddingRight: "3px" }} aria-hidden="true"></i>{state.CheckForCodtitle}</> : state.CheckForCodtitle}</Button>
+                        <Button style={{ color: "#fff", marginLeft : props.isSilver ? 45 : 0 }} className={state.pincodeNotFound || state.CheckForCodtitle === "COD Not Available" ? "pincodeNotFound" : state.CheckForCodtitle === 'COD is Available' ? "selectedGreen" : props.isSilver ? customstylingsmallscreen ?  classes.searchButtonSilver2 : classes.searchButtonSilver :"search-button"} onClick={() => { handleCodChange() }}>{state.pincodeNotFound ? <><i class="fa fa-close" style={{ paddingRight: "3px" }} aria-hidden="true"></i> Pincode not found</> : state.CheckForCodtitle === "COD Not Available" ? <><i class="fa fa-close" style={{ paddingRight: "3px" }} aria-hidden="true"></i> COD Not Available</> : state.CheckForCodtitle === 'COD is Available' ? <><i class="fa fa-check" style={{ paddingRight: "3px" }} aria-hidden="true"></i>{state.CheckForCodtitle}</> : state.CheckForCodtitle}</Button>
                     </Grid>
 
 

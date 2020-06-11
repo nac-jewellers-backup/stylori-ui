@@ -14,6 +14,8 @@ import Slideshow from "../Carousel/carosul";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./style";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 class Sublistcarousel extends React.Component {
   constructor(props) {
     super(props);
@@ -122,6 +124,8 @@ class Sublistcarousel extends React.Component {
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 2000,
+      prevArrow: <ArrowLeftIcon className={classes.carouselCustomArrow}/>,
+      nextArrow: <ArrowRightIcon className={classes.carouselCustomArrow}/>,
     };
     const dataCarousel_ = {
       slidesToShow: 1,

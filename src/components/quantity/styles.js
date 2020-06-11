@@ -7,6 +7,7 @@ const styles = (theme) => ({
   },
   label:{
     margin:'8px 0px',
+    color:theme.palette.primary.main
   },
   qty:{
     margin:'8px 0px',

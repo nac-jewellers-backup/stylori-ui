@@ -76,7 +76,7 @@ const Quantity = (props) => {
           <b>Quantity</b>
         </Typography>
       </Grid>
-      <Grid item xs={3} className={classes.qty}>
+      <Grid item xs={4} sm={3} md={3} lg={3} xl={3} className={classes.qty}>
         <Grid
           container
           item
@@ -96,7 +96,7 @@ const Quantity = (props) => {
           </Grid>
           <Grid
             item
-            xs={6}
+            xs={6} 
             className={`${classes.alignGrid} ${classes.border}`}
           >
             <input

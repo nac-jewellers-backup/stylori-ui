@@ -28,6 +28,20 @@ const styles = (theme) => ({
       
     },
   },
+  productIcons2:{
+    backgroundColor:theme.palette.secondary.dark2,
+    boxShadow:'3px 4px 5px rgba(109,110,112,1)'
+  },
+  sizeSelected:{
+    borderRadius: '100%',
+    padding:'1px',
+    border: `2px solid ${theme.palette.primary.main} !important`
+  },
+  icon2:{
+    display:'flex',
+    alignItems:'center',
+    justifyContent:'center'
+  },
   titleSilver: {
     marginTop: "0 !important",
     marginBottom: "0 !important",
@@ -44,6 +58,12 @@ const styles = (theme) => ({
   },
   normalFontsColor2:{
     color: `${theme.palette.secondary.dark2} !important`,
+  },
+  carouselCustomArrow:{
+    "& svg":{
+      fill:`${theme.palette.secondary.dark2} !important`,
+      fontSize:'1.7rem'
+    }
   },
   icon: {
     color: theme.palette.primary.main,
@@ -181,7 +201,7 @@ const styles = (theme) => ({
   ,
   silverMarginBottom:{
     [theme.breakpoints.down('sm')]:{
-      marginBottom:30,
+      marginBottom:10,
       border:'1px solid #ccc',
       borderRadius:'10px',
       padding:"8px"
@@ -294,6 +314,19 @@ const styles = (theme) => ({
     padding: '0px !important',
     textTransform: 'none !important',
 },
+searchButtonSilver2:{
+  border: 0,
+  fontSize: '12px !important',
+  borderRadius: '0 !important',
+  height: '36px !important',
+  width: '100% !important',
+  color: '#fff',
+  backgroundColor: `${theme.palette.secondary.dark2} !important`,
+  fontWeight: '400 !important',
+  lineHeight: '1.42857143',
+  padding: '0px !important',
+  textTransform: 'none !important',
+},
 chatNowSilver:{
 backgroundColor:theme.palette.secondary.main,
 color:'white',
@@ -305,6 +338,7 @@ chatNowSilverGrid:{
 },
 chatNowSilverDark:{
   backgroundColor:theme.palette.secondary.dark2,
+  boxShadow:'3px 4px 5px rgba(109,110,112,1)'
 },
 overallBoxz:{
     borderRadius: '5px',

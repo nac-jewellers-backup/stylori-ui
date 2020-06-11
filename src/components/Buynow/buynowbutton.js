@@ -37,8 +37,8 @@ class Buynowbutton extends React.Component {
                         <i class="fa fa-shopping-bag buynow-icon"></i>
                         <span> In bag!</span>
                     </> : <>
-                            <i class="fa fa-shopping-bag buynow-icon"></i>
-                            <span className={this.props.button}>{this.props.isSilver ? 'ADD TO CART' : 'Buy Now'}</span>
+                            {!this.props.isSilver && !this.props.smallScreen && <i class="fa fa-shopping-bag buynow-icon"></i>}
+                            {this.props.isSilver && this.props.smallScreen ? 'ADD TO CART' : <span className={this.props.button}>Buy Now</span>}
                         </>
                     }
 

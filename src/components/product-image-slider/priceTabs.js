@@ -178,8 +178,10 @@ class Component extends React.Component {
     }
 
     TabsComponent = (_isSilver) => {
+        
         const { classes } = this.props;
         const data = this.props.data;
+        debugger
         const { value } = this.state;
         const kadasize = this.props && this.props.data && this.props.data.length > 0 && this.props.data[0] && this.props.data[0].productsDetails && this.props.data[0].productsDetails.length > 0 && this.props.data[0].productsDetails[0] && this.props.data[0].productsDetails[0].namedetail && this.props.data[0].productsDetails[0].namedetail.length > 0 && this.props.data[0].productsDetails[0].namedetail[3] && this.props.data[0].productsDetails[0].namedetail[3].details && this.props.data[0].productsDetails[0].namedetail[3].details
         const limit = 8;
@@ -237,10 +239,11 @@ class Component extends React.Component {
         }
         // data[0].productTabs[0].tab2.Children
 
-        return (
-            <div className ={_isSilver ? classes.silverMarginBottom : ''}>
+        return  (  Boolean(_isSilver && data[0].productTabs[0].tab1.Children)) || !_isSilver ?
+         
+         <div className ={_isSilver ? classes.silverMarginBottom : ''}>
                 {data[0].productTabs.map(val => {
-
+debugger
                     const arr = val.tab1.Children !== null && val.tab1.Children
                     const arr2 = val.tab2.Children !== null && (val.tab2.Children).split(',')
                     return (
@@ -267,7 +270,7 @@ class Component extends React.Component {
                                                             {arr.map((val, i) => {
                                                                 return (<>
                                                                     <div style={{ justifyContent: "center", display: "flex" }}>
-                                                                        <div className={JSON.stringify(val) === this.state.skuSize || kadasize === val ? 'darkouter' : "darkouterWhite"}>
+                                                                        <div className={JSON.stringify(val) === this.state.skuSize || kadasize === val ? _isSilver ? `${classes.sizeSelected}` : `darkouter` : "darkouterWhite"}>
                                                                             <button
                                                                                 style={{ padding: "0px" }}
                                                                                 className={'page'}
@@ -289,7 +292,7 @@ class Component extends React.Component {
                                                             {arr.map((val, i) => {
                                                                 return (<>
                                                                     <div style={{ justifyContent: "center", display: "flex" }}>
-                                                                        <div className={JSON.stringify(val) === this.state.skuSize || kadasize === val ? 'darkouter' : "darkouterWhite"}>
+                                                                        <div className={JSON.stringify(val) === this.state.skuSize || kadasize === val ? _isSilver ? `${classes.sizeSelected}` : `darkouter` : "darkouterWhite"}>
                                                                             <button
                                                                                 className={'page'}
                                                                                 id={val}
@@ -359,7 +362,7 @@ class Component extends React.Component {
                                         : ""}
                                 </Grid>
                             </Grid> : ""}
-                            {arr2.length > 0 ?
+                            {! _isSilver && arr2.length > 0 ?
                                 <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
                                     <Grid item lg={3} xs={12} style={{ display: "flex", alignItems: "center" }}><h1 className="rings_tabs">{val.tab2.header}</h1></Grid>
                                     <Grid item lg={9} xs={12}>
@@ -407,7 +410,7 @@ class Component extends React.Component {
                                     </Grid>
                                 </Grid> : ""}
 
-                            {val.tab3.Children.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
+                            {! _isSilver &&  val.tab3.Children.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
                                 <Grid item lg={3} xs={12} style={{ display: "flex", alignItems: "center" }}><h1 className="rings_tabs">{val.tab3.header}</h1></Grid>
                                 <Grid item lg={9} xs={12}>
                                     <Grid container spacing={12} lg={12} >
@@ -415,7 +418,7 @@ class Component extends React.Component {
                                             return (
                                                 <Grid item lg={1} xs={2} className={classes.normalfonts_tabs}>
                                                     <div style={{ justifyContent: "center", display: "flex" }}>
-                                                        <div className={this.state.diamondType === val.name ? 'darkouter' : "darkouterWhite"}>
+                                                        <div className={this.state.diamondType === val.name ? _isSilver ? `${classes.sizeSelected}` : `darkouter` : "darkouterWhite"}>
                                                             <button
                                                                 style={{ background: this.imageRender(val) }}
                                                                 className={'pagetabslst tabs-valus'}
@@ -440,7 +443,9 @@ class Component extends React.Component {
                 }
                 )}
             </div>
-        );
+        :
+        null
+        ;
     }
     // handleChange = (event, value) => {
     //     this.setState({ value });
