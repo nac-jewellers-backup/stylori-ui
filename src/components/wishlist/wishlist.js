@@ -14,6 +14,7 @@ const WishlistComponent = (props) => {
     const { values, setValues, handlers } = useWishlists(props);
 
     const isSilver = props.isSilver ? true : false
+    const customClassName = props.class ? props.class : ''
     React.useEffect(() => {
         
     // alert(JSON.stringify(props.wishlist))
@@ -32,12 +33,12 @@ const WishlistComponent = (props) => {
     return (
         <>
             {values.isactive !== 2 ? <>
-                {isSilver && <span style={{paddingRight:"5px"}} onClick={() => {
+                {isSilver && props.label && <span style={{paddingRight:"5px"}} onClick={() => {
                         values["product_sku"] = props.sku
                         values["product_id"] = props.productId
                         setValues({ values, ...values });
                         handlers.handelSubmit(2)
-                    }}>Save  </span>}<i   className={`fa fa-heart-o overall-icons ${props.props ? classes.colorTheme : classes.colorTheme} ${isSilver ? classes.silverColor : ''}`}
+                    }}>{props.label}</span>}<i   className={`fa fa-heart-o overall-icons ${props.props ? classes.colorTheme : classes.colorTheme} ${isSilver ? classes.silverColor : ''} ${classes[customClassName]}`}
                     onClick={() => {
                         values["product_sku"] = props.sku
                         values["product_id"] = props.productId
@@ -45,12 +46,12 @@ const WishlistComponent = (props) => {
                         handlers.handelSubmit(2)
                     }}
                 ></i></> : <>
-                    {isSilver && <span style={{paddingRight:"5px"}} onClick={() => {
+                    {isSilver && props.labelAdded && <span style={{paddingRight:"5px"}} onClick={() => {
                             values["product_sku"] = props.sku
                             values["product_id"] = props.productId
                             setValues({ values, ...values });
                             handlers.handelRemove(1)
-                        }}>Saved</span>}<i className={`fa fa-heart overall-icons ${classes.colorTheme} ${isSilver ? classes.silverColor : ''}`}
+                        }}>{props.labelAdded}</span>}<i className={`fa fa-heart overall-icons ${classes.colorTheme} ${isSilver ? classes.silverColor : ''} ${classes[customClassName]}`}
                         onClick={() => {
                             values["product_sku"] = props.sku
                             values["product_id"] = props.productId

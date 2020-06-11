@@ -113,6 +113,7 @@ class Sublistcarousel extends React.Component {
     ];
     
 const _isSilver = this.props.isSilver ? true : false 
+debugger
     return (
       <div style={{ width: "100%" }}>
         <Hidden smDown>
@@ -150,10 +151,10 @@ const _isSilver = this.props.isSilver ? true : false
 
                       </Grid>
                       <Grid item style={{ width: "88%" }}>
-                        <Slideshow sliderRef={this.slider} class="subslider-carousel" hoverlist={
+                        <Slideshow sliderRef={this.slider} class="subslider-carousel" isSilver={_isSilver} hoverlist={
                           this.state.dataToShow === "YouMayLike" ? data && data[0] && data[0].fadeImageSublist : data && data[0] && data[0].fadeImageSublistRecentlyViewed
                         }
-                          dataCarousel={dataCarousel} hover={true} imagecra={true}>
+                          dataCarousel={dataCarousel} hover={true} imagecra={true} data={data}>
                         </Slideshow>
                       </Grid>
                       <Grid item style={{ width: "6%", alignItems: "center", justifyContent: "center", display: "flex" }}>

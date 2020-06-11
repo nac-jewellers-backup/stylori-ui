@@ -318,6 +318,8 @@ const Productprice = (
                                   wishlist={wishlist}
                                   globalContext={globalContext.Globalctx}
                                   isSilver={isSilver}
+                                  label = "SAVE"
+                                  labelAdded = "SAVED"
                                 /> 
                         </Button>
                       </Grid>
