@@ -1,4 +1,4 @@
-import { Hidden, Grid } from "@material-ui/core";
+import { Hidden, Grid, Container } from "@material-ui/core";
 import React, { Component } from "react";
 import Header from "components/SilverComponents/Header";
 import CustomSeparator from "components/BreadCrumb/index";
@@ -20,13 +20,16 @@ import productDetails from "mappers/productDetails";
 import { PRODUCTDETAILS, conditions } from "queries/productdetail";
 import { useGraphql } from "hooks/GraphqlHook";
 import { ProductDetailContext } from "context/ProductDetailContext";
-import { CDN_URL } from "config";
+import { CDN_URL, API_URL } from "config";
 import "screens/screens.css";
 import { Helmet } from "react-helmet";
 import { CartContext } from "context";
 import { GlobalContext } from "context";
 import SilverProductPrice from "components/product-image-slider/silverProductPrice";
 import ShopBy from "components/shopBy";
+import ProductModal from "../components/SilverComponents/ProductModal"
+import { shopByStyloriSilver } from "queries/productdetail";
+import ProductTitle from "components/SilverComponents/ProductTitle";
 // import {Helmet} from "react-helmet";
 class ProductDetail extends Component {
   constructor(props) {
@@ -284,7 +287,7 @@ class ProductDetail extends Component {
             </Grid>
           </div>
           <Sublistcarousel data={this.props.data} isSilver={isSilver} />
-          {isSilver && <ShopBy />}
+          {isSilver && <ShopBy shopByStyloriSilver={this.props.shopByStyloriSilver}/>}
           <RatingForm
             data={this.props.data}
             clear_rating={this.state.clear}
@@ -334,12 +337,21 @@ class ProductDetail extends Component {
           <Grid item xs={12}>
             <CustomerReviews data={this.props.data} />
           </Grid>
-
+            <Grid item xs={12}>
+            {isSilver && <Container>
+              <div style={{marginTop:20,marginBottom:10}}>
+              <ProductTitle title={'SHOP BY TYPE'} isSilver={isSilver}/>
+              </div>
+              
+              <ProductModal shopByStyloriSilver={this.props.shopByStyloriSilver}/>
+              </Container>}
+            </Grid>
           <Grid item xs={12}>
             <RatingForm
               data={this.props.data}
               clear_rating={this.state.clear}
               clear_rating_onchange={clear_rating}
+              isSilver={isSilver}
             />
           </Grid>
 
@@ -356,6 +368,69 @@ const Components = (props) => {
   let {
     CartCtx: { allorderdata, wishlistdata, setratingcountsclear },
   } = React.useContext(CartContext);
+
+  // ONLY SILVER PRODUCT DETAIL PAGE
+  const [state, setState] = React.useState({shopByData:[]})
+  const _shopsProductss = (val) => {
+  
+    // _shopsProducts = [
+    //   {
+    //     label: val.label,
+    //     image:val.images[0].imageUrl,
+    //   },
+    
+    // ];
+    let _shopsProducts = Object.keys(val).map((data)=>{return {label:val[data].label, image:val[data].images}})
+    setState({shopByData:_shopsProducts})
+  };
+  
+  const _queryResultsValidator = (_result) => { 
+    console.log(_result, "_result");
+    let _keys = Object.keys(_result);
+    var _obj = {};
+    _keys.map((val) => {
+      var a = _result[val].nodes.map((val) => {
+        return val.productListByProductSku.productImagesByProductId.nodes;
+      });
+  
+      let _arr = [];
+      a.map((val1) => {
+        val1.map((val2) => {
+          if (val2.imagePosition === 2) return _arr.push(val2);
+        });
+      });
+      _obj[val] ={label:val,images:_arr};
+    });
+    console.log(_obj, "aaa");
+    _shopsProductss(_obj)
+  };
+  
+  const _fetchProducts = () => {
+    fetch(`${API_URL}/graphql`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        query: `${shopByStyloriSilver([
+          "Earrings",
+          "Pendants",
+          "Rings",
+          "Bracelets",
+          "Bangles"
+        ])}`,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => _queryResultsValidator(res.data));
+  };
+  
+  
+    React.useEffect(() => {
+      _fetchProducts();
+    }, []);
+
+  // 
+
+console.log(state.shopByData,"-------------+*/-")
 
   const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
   const {
@@ -415,6 +490,7 @@ const Components = (props) => {
         allorderdata={allorderdata}
         wishlistdata={wishlistdata}
         Globalctx={Globalctx}
+        shopByStyloriSilver = {state.shopByData}
       />
     );
   }

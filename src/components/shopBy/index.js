@@ -26,61 +26,62 @@ let settingSilver = {
   swipe: false
 }
 
-const _shopsProductss = (val) => {
+// const _shopsProductss = (val) => {
   
-  // _shopsProducts = [
-  //   {
-  //     label: val.label,
-  //     image:val.images[0].imageUrl,
-  //   },
+//   // _shopsProducts = [
+//   //   {
+//   //     label: val.label,
+//   //     image:val.images[0].imageUrl,
+//   //   },
   
-  // ];
-  _shopsProducts = Object.keys(val).map((data)=>{return {label:val[data].label, image:val[data].images}})
-};
+//   // ];
+//   _shopsProducts = Object.keys(val).map((data)=>{return {label:val[data].label, image:val[data].images}})
+// };
 
-const _queryResultsValidator = (_result) => { 
-  console.log(_result, "_result");
-  let _keys = Object.keys(_result);
-  var _obj = {};
-  _keys.map((val) => {
-    var a = _result[val].nodes.map((val) => {
-      return val.productListByProductSku.productImagesByProductId.nodes;
-    });
+// const _queryResultsValidator = (_result) => { 
+//   console.log(_result, "_result");
+//   let _keys = Object.keys(_result);
+//   var _obj = {};
+//   _keys.map((val) => {
+//     var a = _result[val].nodes.map((val) => {
+//       return val.productListByProductSku.productImagesByProductId.nodes;
+//     });
 
-    let _arr = [];
-    a.map((val1) => {
-      val1.map((val2) => {
-        if (val2.imagePosition === 2) return _arr.push(val2);
-      });
-    });
-    _obj[val] ={label:val,images:_arr};
-  });
-  console.log(_obj, "aaa");
-  _shopsProductss(_obj)
-};
+//     let _arr = [];
+//     a.map((val1) => {
+//       val1.map((val2) => {
+//         if (val2.imagePosition === 2) return _arr.push(val2);
+//       });
+//     });
+//     _obj[val] ={label:val,images:_arr};
+//   });
+//   console.log(_obj, "aaa");
+//   _shopsProductss(_obj)
+// };
 
-const _fetchProducts = () => {
-  fetch(`${API_URL}/graphql`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      query: `${shopByStyloriSilver([
-        "Earrings",
-        "Pendants",
-        "Rings",
-        "Bracelets",
-        "Bangles"
-      ])}`,
-    }),
-  })
-    .then((res) => res.json())
-    .then((res) => _queryResultsValidator(res.data));
-};
+// const _fetchProducts = () => {
+//   fetch(`${API_URL}/graphql`, {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({
+//       query: `${shopByStyloriSilver([
+//         "Earrings",
+//         "Pendants",
+//         "Rings",
+//         "Bracelets",
+//         "Bangles"
+//       ])}`,
+//     }),
+//   })
+//     .then((res) => res.json())
+//     .then((res) => _queryResultsValidator(res.data));
+// };
 
 const ShopBy = (props) => {
-  React.useEffect(() => {
-    _fetchProducts();
-  }, []);
+  
+//   React.useEffect(() => {
+//     _fetchProducts();
+//   }, []);
   const { classes } = props;
   return (
     <Container style={{ padding: "0px 17px" }} maxWidth="lg">
@@ -91,7 +92,7 @@ const ShopBy = (props) => {
           </Typography>
         </Grid>
         <Grid container item xs={10} className={classes.shopbyProductCardGrid}>
-          {_shopsProducts.map((val) => {
+          {props.shopByStyloriSilver.map((val) => {
             return  val.image.length > 0 ?
               <Grid item xs={3} className={classes.productCard}>
                 <ShopByCard label={val.label} image={val.image} settingSilver={settingSilver}/>

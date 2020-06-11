@@ -42,6 +42,9 @@ const styles = (theme) => ({
   normalFontsColor:{
     color: `rgba(0, 0, 0, 0.54) !important`,
   },
+  normalFontsColor2:{
+    color: `${theme.palette.secondary.dark2} !important`,
+  },
   icon: {
     color: theme.palette.primary.main,
   },
@@ -186,7 +189,7 @@ const styles = (theme) => ({
   },
   fontsSmallScreen:{
     fontWeight:'bold !important',
-    // fontSize:'1.5rem',
+    fontSize:'16px !important',
     padding:"0px !important",
     letterSpacing: '2px',
     textTransform: 'uppercase !important',
@@ -300,6 +303,9 @@ padding:'2px 17px !important'
 chatNowSilverGrid:{
     padding:'5px !important'
 },
+chatNowSilverDark:{
+  backgroundColor:theme.palette.secondary.dark2,
+},
 overallBoxz:{
     borderRadius: '5px',
     width: '100% !important',
@@ -346,6 +352,14 @@ searchCheckSilver:{
     paddingRight: 0,
     paddingLeft: 0,
   },
+},
+similarproductssmallScreen:{
+  textAlign: "center",
+  color:theme.palette.secondary.dark2,
+  letterSpacing: "4px",
+  fontSize: "16px !important",
+  fontWeight: "bold !important",
+  marginBottom: "10px !important",
 }
 });
 export default styles;

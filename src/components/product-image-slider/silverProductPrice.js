@@ -7,6 +7,7 @@ import {
   paper,
   Paper,
   Button,
+  Typography,
 } from "@material-ui/core";
 import Slideshow from "../Carousel/carosul";
 import React from "react";
@@ -171,6 +172,7 @@ const Productprice = (
                       sku={data[0].skuId}
                       class={`${classes.buynowButtonSilver} ${classes.buttonsilver}`}
                       button="buynow-btn-cont"
+                      isSilver={isSilver}
                     />
                     <CommenDialog
                       isOpen={state.modelOpen}
@@ -339,6 +341,43 @@ const Productprice = (
                             </div>
                           </div>
                         </Grid>
+                        {data[0].ProductContactNum.map(val =>
+                                                              <Grid item container alignContent="center" alignItems="center" xs={12} lg={12} style={{ padding: "20px 0px 0px 0px" }}>
+                                                              <Grid>
+                                                                  <Grid item lg={12} xs={12} className={`buy-subheaders nd-hlp ${classes.normalfonts} ${isSilver? classes.normalFontsColor2 : ''}`} style={{paddingBottom:'5px'}}><b>NEED HELP ?</b></Grid>
+                                                              </Grid>
+                                                              <Grid container >
+                                  
+                                                                  <Grid item lg={6} xs={6} className={`buy-subheaders ${classes.normalfonts} ${isSilver? classes.normalFontsColor2 : ''}`}>
+                                                                  { !isSilver &&   <Typography>
+                                                                          <i class="fa fa-phone overall-icons" aria-hidden="true"></i>&nbsp;
+                                                                      </Typography>}
+                                                                      <Typography className={classes.TypoListed}>
+                                                                          {val.telephone}
+                                                                      </Typography>
+                                                                  </Grid>
+                                  
+                                                                  <Grid item lg={6} xs={6} className={`buy-subheaders ${classes.normalfonts} ${isSilver? classes.normalFontsColor2 : ''}`}>
+                                                                  { !isSilver && <Typography>
+                                                                          <i class="fa fa-whatsapp overall-icons" aria-hidden="true"></i>&nbsp;
+                                                                  </Typography>}
+                                                                      <Typography className={classes.TypoListed}>
+                                                                          {val.phonenum}
+                                                                      </Typography>
+                                                                  </Grid>
+                                  
+                                                                  <Grid item lg={12} xs={12} style={{ cursor: "pointer !important" }} className={`buy-subheaders ${classes.normalfonts} ${isSilver ? classes.chatNowSilverGrid : ''} ${isSilver? classes.normalFontsColor2 : ''}`}>
+                                                                   { !isSilver &&  <Typography>
+                                                                          <i class="fa fa-comments-o overall-icons" aria-hidden="true"></i>&nbsp;
+                                                                      </Typography>}
+                                                                      <Typography className={`${classes.TypoListed} ${isSilver ? `${`${classes.chatNowSilver} ${classes.chatNowSilverDark}`}` : ''}`}>
+                                                                          {isSilver ? `${val.chat} NOW` : val.chat }
+                                                                      </Typography>
+                                                                  </Grid>
+                                                              </Grid>
+                                                          </Grid>
+                                                        )}
+                     
                       </Grid>
                       
                     </Grid>

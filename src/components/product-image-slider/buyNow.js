@@ -342,7 +342,7 @@ class Component extends React.Component {
     render() {
         let { showimage } = this.state;
         const { classes, data, isSilver } = this.props;
-debugger
+
         return (
             <div>
                 <Hidden smDown>
@@ -363,7 +363,7 @@ debugger
                     allProps={this.props} allState={this.state} handleChanges ={this.handleChanges} handleCodChange ={this.handleCodChange}
                     />
                     :
-                        <ProductPrice data={this.props.data} wishlist={this.props.wishlist} />
+                        <ProductPrice data={this.props.data} wishlist={this.props.wishlist} isSilver={isSilver}/>
 }
                         <PriceTabs data={this.props.data} wishlist={this.props.wishlist} isSilver={isSilver}/>
                         {

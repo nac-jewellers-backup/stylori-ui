@@ -9,6 +9,7 @@ import Wishlist from "components/wishlist/wishlist";
 import { GlobalContext, CartContext } from "context";
 import Buynowbutton from "../Buynow/buynowbutton";
 import CommenDialog from "../Common/Dialogmodel";
+import {injectUrl_url_construct} from 'common/index'
 const Slideshow = (props) => {
   let {
     CartCtx: { allorderdata, wishlistdata, setratingcountsclear },
@@ -263,6 +264,24 @@ class Component extends React.Component {
         className={"subslider-carousel-silver "}
         style={{ display: "block !important " }}
       >
+        {Array.isArray(hoverlist.img)
+        ?
+        hoverlist.img.map((val)=>{
+          
+          return(
+            <img
+            src={injectUrl_url_construct(val)}
+            className="subslider-carousel-img-Silver img-responsive"
+            style={{
+              width: "auto !important",
+              height: "auto",
+              display: "block !important  ",
+            }}
+            alt=""
+          />
+          )
+        })
+        :
         <img
           src={hoverlist.img}
           className="subslider-carousel-img-Silver img-responsive"
@@ -272,7 +291,7 @@ class Component extends React.Component {
             display: "block !important  ",
           }}
           alt=""
-        />
+        />}
         {/* <div class="overlay1">
           <div style={{paddingTop:'40%'}}>
         <h2 className='next-price'>{hoverlist.title}</h2><br />

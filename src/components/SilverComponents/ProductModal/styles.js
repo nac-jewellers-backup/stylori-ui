@@ -61,8 +61,23 @@ export const useStyles = makeStyles(theme => ({
         letterSpacing: '5px',
         fontSize: '22px'
     },
-    productCardTitle: {
+    btnshop2: {
+        backgroundColor: theme.palette.secondary.dark2,
+        borderRadius: 0,
+        color: 'white',
+        boxShadow: '0 8px 16px 0 #ccc, 0 6px 20px 0 #ccc',
+        padding: '0px 22px',
+        fontWeight: 'bold',
         fontFamily: 'Robot-Bold',
+        letterSpacing: '5px',
+        fontSize: '22px',
+        "&:hover":{
+            backgroundColor: theme.palette.secondary.dark2,
+            opacity:0.9
+        }
+    },
+    productCardTitle: {
+        // fontFamily: 'Robot-Bold',
         color: theme.palette.secondary.dark,
         letterSpacing: '5px',
         fontSize: '1.7rem',
@@ -70,10 +85,24 @@ export const useStyles = makeStyles(theme => ({
             fontSize: '1.0rem'
         },
     },
+    productCardTitle2: {
+        // fontFamily: 'Robot-Bold',
+        color: theme.palette.secondary.dark2,
+        letterSpacing: '5px',
+        fontSize: '1.7rem !important',
+        fontWeight:'bold !important'
+    },
     productCardDescription: {
         textAlign: 'center',
-        fontFamily: 'Robot-Regular',
+        // fontFamily: 'Robot-Regular',
         color: theme.palette.secondary.dark,
+        paddingTop: '2%',
+        paddingBottom: '5%',
+    },
+    productCardDescription2: {
+        textAlign: 'center',
+        // fontFamily: 'Robot-Regular',
+        color: theme.palette.secondary.dark2,
         paddingTop: '2%',
         paddingBottom: '5%',
     }
