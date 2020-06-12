@@ -6,6 +6,7 @@ import {Diversestyles} from './Diversestyles-pink'
 import {Easyreturns} from './Easyreturns-pink'
 import {Fromthehouseofnac} from './Fromthehouseofnac-pink.js'
 import {Securepayments} from './Securepayments-pink'
+import {Hypoallergenic} from './Hypoallergenic-pink'
 import './index.css'
 
 const useStyles = makeStyles(theme => ({
@@ -44,7 +45,7 @@ export default function PaperSheet(props) {
     return (
         
         <Grid container>
-            <Grid item className={`silverSvg ${classes.mainsource} ${props.isSilver ? classes.silverSvg : ''}`} >
+            <Grid item className={`silverSvg ${classes.mainsource} ${isSilver ? classes.silverSvg : ''}`} >
                 {/* <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg"} /> */}
                 <Certified color={color} />
             </Grid>
@@ -54,7 +55,9 @@ export default function PaperSheet(props) {
             </Grid>
             <Grid item className={classes.mainsource}>
                 {/* <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/securepayments-pink.svg"} /> */}
-                <Easyreturns color={color}/>
+                {!isSilver ?<Easyreturns color={color}/>
+                :
+                <Hypoallergenic color={color}/>}
             </Grid>
             <Grid item className={classes.mainsource}>
                 {/* <img style={{ width: "70%", height: '100%' }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/diversestyles-pink.svg"} /> */}

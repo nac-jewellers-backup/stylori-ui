@@ -14,7 +14,7 @@ import {
   Hidden,
 } from "@material-ui/core";
 import { API_URL, CDN_URL } from "../../config";
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme=>({
   root: {
     maxWidth: 'auto',
     borderRadius:'unset',
@@ -25,9 +25,12 @@ const useStyles = makeStyles({
   },
   label:{
     display:'flex',
-    justifyContent:'center'
+    justifyContent:'center',
+    "& span":{
+      color:theme.palette.secondary.dark2
+    }
   }
-});
+}));
 
 export default function MediaCard(props) {
   
@@ -74,7 +77,7 @@ export default function MediaCard(props) {
       <CardActions className={classes.label}>
       
         <Button size="small" color="primary">
-        {props.label}
+        <b>{props.label}</b>
         </Button>
       </CardActions>
       </a>
