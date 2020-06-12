@@ -6,6 +6,8 @@ import React from 'react';
 import './product-images.css';
 import Buynowbutton from '../../Buynow/buynowbutton';
 import CommenDialog from '../../../components/Common/Dialogmodel'
+import styles from './style';
+import { withStyles } from '@material-ui/core/styles';
 
 class Buynowfixed extends React.Component {
     constructor(props) {
@@ -31,7 +33,8 @@ class Buynowfixed extends React.Component {
         return vals
     }
     render() {
-        const { data } = this.props;
+        const { data, isSilver, classes } = this.props;
+        const _isSilver = this.isSilver ? true : false
         const canceldeletechecklist = () => {
             this.setState({
                 modelOpen: false,
@@ -78,9 +81,9 @@ class Buynowfixed extends React.Component {
                         </Grid>
                     </Grid> */}
                     <Grid container spacing={12} >
-                        <Grid item xs={6} className='fixed-grid' style={{ textAlign: "center", background: "#EBEAEA" }}>
+                        <Grid item xs={6} className={`fixed-grid ${isSilver ? classes.fixedGridsilver : ''}`} style={{ textAlign: "center", background: "#EBEAEA" }}>
                             <div onClick={handleLocalStorage.bind(this)}>
-                                <Buynowbutton sku={data[0].skuId} class='product-footer-buynow' />
+                                <Buynowbutton sku={data[0].skuId} class={`product-footer-buynow ${isSilver ? classes.fixedGridsilver : ''}`} />
                             </div>
                         </Grid>
                         <CommenDialog isOpen={this.state.modelOpen} content={`Verify selected product details before proceeding`} handleClose={canceldeletechecklist.bind(this)} handleSuccess={() => this.props.deleteComment()} negativeBtn="No" positiveBtn="Yes" title="Confirmation" />
@@ -93,4 +96,4 @@ class Buynowfixed extends React.Component {
         )
     }
 }
-export default Buynowfixed;
+export default withStyles(styles, { withTheme: true })(Buynowfixed);

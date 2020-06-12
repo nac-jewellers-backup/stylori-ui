@@ -33,7 +33,7 @@ const WishlistComponent = (props) => {
     return (
         <>
             {values.isactive !== 2 ? <>
-                {isSilver && props.label && <span style={{letterSpacing:props.class ? '2.5px' : 'unset',fontSize:props.class ? '11px' : "unset" ,paddingRight:"5px"}} onClick={() => {
+                {isSilver && props.label && <span style={{letterSpacing:props.class || props.classMobile ? '2.5px' : 'unset',fontSize:props.class ? '11px' : "unset" ,paddingRight:"5px"}} onClick={() => {
                         values["product_sku"] = props.sku
                         values["product_id"] = props.productId
                         setValues({ values, ...values });

@@ -14,6 +14,9 @@ const styles = theme => ({
     icon: {
         color: theme.palette.primary.main,
     },
+    fixedGridsilver:{
+        backgroundColor:`${theme.palette.primary.main} !important`
+    },
     pricedetails: {
         color: theme.palette.primary.main,
         [theme.breakpoints.down('xs')]: {

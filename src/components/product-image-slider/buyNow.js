@@ -371,8 +371,8 @@ class Component extends React.Component {
                         inputsearch(this.props, this.state, this.handleChanges, this.handleCodChange)
                         }
 
-                        { !isSilver&&
-                            <Buynowfixed deleteComment={this.deletechecklists} data={this.props.data} onClick={this.handleLocalStorage.bind(this)} />}
+                        
+                            <Buynowfixed deleteComment={this.deletechecklists} data={this.props.data} onClick={this.handleLocalStorage.bind(this)} isSilver={isSilver}/>
                     </div>
 
                 </Hidden>

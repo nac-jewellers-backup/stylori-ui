@@ -203,7 +203,7 @@ const Productprice = (
                   xs={12}
                   className={classes.silverSmallScreenButton}
                 >
-                  <Grid item xs={6}>
+                  {/* <Grid item xs={6}>
                     <div onClick={handleLocalStorage.bind(this)}>
                       <Buynowbutton
                         sku={data[0].skuId}
@@ -222,8 +222,8 @@ const Productprice = (
                         title="Confirmation"
                       />
                     </div>
-                  </Grid>
-                  <Grid item xs={6} className={classes.saveButtonsilverGrid}>
+                  </Grid> */}
+                  <Grid item xs={12} className={classes.saveButtonsilverGrid}>
                     <Button
                       variant="contained"
                       color="primary"
@@ -237,6 +237,7 @@ const Productprice = (
                         isSilver={isSilver}
                         label="SAVE"
                         labelAdded="SAVED"
+                        classMobile="savemobile"
                       />
                     </Button>
                   </Grid>
