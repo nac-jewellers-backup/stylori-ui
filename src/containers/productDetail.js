@@ -444,9 +444,9 @@ const Components = (props) => {
   };
   
   
-    React.useEffect(() => {
-      _fetchProducts();
-    }, []);
+    // React.useEffect(() => {
+    //   _fetchProducts();
+    // }, []);
 
   // 
 

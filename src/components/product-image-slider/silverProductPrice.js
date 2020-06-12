@@ -471,6 +471,10 @@ const Productprice = (
                                   </Typography>
                                 )}
                                 <Typography
+                                onClick={()=>{
+                                alert('haii')
+                                  document.getElementById('chat-widget-container').click()
+                                }}
                                   className={`${classes.TypoListed} ${
                                     isSilver
                                       ? `${`${classes.chatNowSilver} ${classes.chatNowSilverDark}`}`
