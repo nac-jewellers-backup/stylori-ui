@@ -8,6 +8,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import { lambda_func_front_end } from './utils'
 import Theme from './Theme.js'
 import { withRouter } from 'react-router-dom';
+import CacheBuster from "./components/cacheBrust";
 let jewellery_theme = createMuiTheme(require('./jewellery_theme.json'));
 let silver_jewellery_theme = createMuiTheme(require('./silver_jewellery_theme.json'));
 let jewelleryThemes = responsiveFontSizes(jewellery_theme);
@@ -41,6 +42,15 @@ class App extends React.Component {
   render() {
     return (
       // <ApolloProvider client={client}>
+      <CacheBuster>
+      {({ loading, isLatestVersion, refreshCacheAndReload }) => {
+        debugger
+        if (loading) return null;
+        if (!loading && !isLatestVersion) {
+          // You can decide how and when you want to force reload
+          refreshCacheAndReload();
+        }
+        return(
       <GlobalProvider>
         <Theme>
           <NetworkProvider>
@@ -54,6 +64,9 @@ class App extends React.Component {
           </NetworkProvider>
         </Theme>
       </GlobalProvider>
+           );
+          }}
+        </CacheBuster>
       // </ApolloProvider>
     );
   }
