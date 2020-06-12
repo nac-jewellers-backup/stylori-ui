@@ -29,8 +29,12 @@ const styles = (theme) => ({
     },
   },
   productIcons2:{
-    backgroundColor:theme.palette.secondary.dark2,
-    boxShadow:'3px 4px 5px rgba(109,110,112,1)'
+    backgroundColor:theme.palette.primary.main,
+    boxShadow:'6px 7px 6px rgba(208, 210, 211, 1)',
+    [theme.breakpoints.down('sm')]:{
+      backgroundColor:theme.palette.secondary.dark2,
+      boxShadow:'3px 4px 5px rgba(109,110,112,1)'
+    }
   },
   sizeSelected:{
     borderRadius: '100%',
@@ -65,9 +69,11 @@ const styles = (theme) => ({
       fontSize:'1.7rem'
     }
   },
+  
   icon: {
-    color: theme.palette.primary.main,
+    color: `${theme.palette.primary.main} !important`,
   },
+  
   pricedetails: {
     color: theme.palette.primary.main,
     [theme.breakpoints.down("xs")]: {
@@ -271,6 +277,11 @@ const styles = (theme) => ({
       marginTop: "0 !important",
     }
   },
+  sharesilver:{
+    margin:'auto',
+    display:'flex',
+    justifyContent:'flex-start'
+  },
   silverSmallScreenButton:{
     [theme.breakpoints.down('sm')]:{
     marginBottom:10,
@@ -365,7 +376,7 @@ normalcolorbackSilverCancel:{
     }   
 },
 quantity:{
-margin:'8px 0px 18px 0px'
+margin:'0px 0px 18px 0px'
 },
 labelSilverProductDetail:{
   marginLeft:107,
@@ -390,6 +401,13 @@ searchCheckSilver:{
 similarproductssmallScreen:{
   textAlign: "center",
   color:theme.palette.secondary.dark2,
+  letterSpacing: "4px",
+  fontSize: "16px !important",
+  fontWeight: "bold !important",
+  marginBottom: "10px !important",
+},
+reviewandratingsmallScreen:{
+  color:theme.palette.secondary.main,
   letterSpacing: "4px",
   fontSize: "16px !important",
   fontWeight: "bold !important",

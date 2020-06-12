@@ -196,7 +196,7 @@ class ProductDetail extends Component {
         <Hidden smDown>
           <Header wishlist={this.props.wishlistdata} />
 
-          {!isSilver ? (
+          {/* {!isSilver ? (
             <Grid
               Container
               spacing={12}
@@ -214,7 +214,23 @@ class ProductDetail extends Component {
             </Grid>
           ) : (
             <Grid container item xs={12} style={{ marginTop: "30px" }}></Grid>
-          )}
+          )} */}
+
+<Grid
+              Container
+              spacing={12}
+              style={{ maxWidth: "1600px", margin: "auto" }}
+            >
+              <Grid item xs={12}>
+                <div className="pricing-breadcrums-media">
+                  <CustomSeparator
+                    list="pricing-loctn"
+                    classsubhed="pricing-loctn-head"
+                    data={data_json}
+                  />
+                </div>
+              </Grid>
+            </Grid>
 
           <div
             className="pricing-imgzom-media"
@@ -309,7 +325,7 @@ class ProductDetail extends Component {
           {/* </Grid> */}
 
           <Grid item xs={12}>
-            <PriceBuynow
+            <PriceBuynow 
               data={this.props.data}
               wishlist={this.props.wishlistdata}
               isSilver={isSilver}

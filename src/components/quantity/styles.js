@@ -7,7 +7,10 @@ const styles = (theme) => ({
   },
   label:{
     margin:'8px 0px',
-    color:theme.palette.primary.main
+    color:theme.palette.primary.main,
+    textTransform:"uppercase",
+    display:'flex',
+    alignItems:'center'
   },
   qty:{
     margin:'8px 0px',

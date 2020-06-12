@@ -105,7 +105,8 @@ class ProductImageZoom extends React.Component {
       return false;
     }
   };
-  productImageZoom = () => {
+  productImageZoom = (_isSilver) => {
+    
     // console.log(this.props.data)
     const { classes, data } = this.props;
     const limit = 4;
@@ -172,8 +173,8 @@ class ProductImageZoom extends React.Component {
                     }
                   >
                     <i
-                      class="fa fa-angle-up"
-                      style={{ fontSize: "35px", color: "#F699A3" }}
+                      className={`fa fa-angle-up ${_isSilver ? classes.iconfill : classes.iconfillStylori}`}
+                      style={{ fontSize: "35px" }}
                     ></i>
                   </Button>
                 </span>
@@ -213,8 +214,8 @@ class ProductImageZoom extends React.Component {
                     }
                   >
                     <i
-                      class="fa fa-angle-down"
-                      style={{ fontSize: "35px", color: "#F699A3" }}
+                      className={`fa fa-angle-down ${_isSilver ? classes.iconfill : classes.iconfillStylori}`}
+                      style={{ fontSize: "35px"}}
                       // className={`${classes.colorMain}`}
                     ></i>
                   </Button>
@@ -377,10 +378,13 @@ class ProductImageZoom extends React.Component {
       largeImage: e.target.src
     });
   };
+  
   render() {
+    const _isSilver = this.props.isSilver ? true : false
+    debugger
     return (
       <div>
-        <Hidden smDown>{this.productImageZoom()}</Hidden>
+        <Hidden smDown>{this.productImageZoom(_isSilver)}</Hidden>
       </div>
     );
   }

@@ -15,7 +15,7 @@ import filterData from 'mappers/filterData'
 import { async } from 'q';
 import MetaTags from 'react-meta-tags';
 import { CartContext, GlobalContext } from 'context'
-import LiveChat from 'react-livechat'
+// import LiveChat from 'react-livechat'
 
 class Stylori extends React.Component {
   constructor(props) {
@@ -47,7 +47,7 @@ class Stylori extends React.Component {
 
       <>
 
-        {/* <LiveChat license={5807571} /> */}
+        {/* <LiveChat license={5807571} id="chatIcon"/> */}
         <Grid container >
           <div>
             {/* {

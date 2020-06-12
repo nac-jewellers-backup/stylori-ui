@@ -14,7 +14,12 @@ const styles = theme => ({
     color: theme.palette.primary.main,
   },
 
-
+  iconfill: {
+    color: `${theme.palette.primary.main} !important`,
+  },
+  iconfillStylori: {
+    color: `${theme.palette.secondary.main} !important`,
+  },
   colorLight: {
     color: theme.palette.primary.main,
   },

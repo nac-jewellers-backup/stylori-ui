@@ -71,18 +71,17 @@ const Quantity = (props) => {
   console.log(state, "//////////QTY");
   return (
     <Grid container item xs={12}>
-      <Grid item xs={12} className={classes.label}>
+      <Grid item xs={4} sm={3} md={12} lg={2} xl={4} className={classes.label}>
         <Typography variant="body1" component="div">
-          <b>Quantity</b>
+          Quantity
         </Typography>
       </Grid>
-      <Grid item xs={4} sm={3} md={3} lg={3} xl={3} className={classes.qty}>
+      <Grid item xs={4} sm={3} md={3} lg={2} xl={2} className={classes.qty}>
         <Grid
           container
           item
           xs={12}
           justify="space-between"
-          style={{ padding: 5 }}
         >
           <Grid item xs={3} className={classes.alignGrid}>
             <IndeterminateCheckBoxIcon

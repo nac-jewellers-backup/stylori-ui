@@ -167,23 +167,23 @@ const BuydetailsSilverdetailpage = (props, state, handleChanges, handleCodChange
                         
                         <Grid item container alignContent="center" alignItems="center" xs={12} lg={12} style={{ padding: "20px 0px 0px 0px" }}>
                             <Grid>
-                                <Grid item lg={12} xs={12} className={`buy-subheaders nd-hlp ${classes.normalfonts}`} style={{paddingBottom:'5px'}}><b>NEED HELP ?</b></Grid>
+                                <Grid item lg={12} xs={12} className={`buy-subheaders nd-hlp ${classes.normalfonts} ${classes.normalFontsColor2}`} style={{paddingBottom:'5px', letterSpacing:'2px'}}><b>NEED HELP ?</b></Grid>
                             </Grid>
                             <Grid container >
 
-                                <Grid item lg={6} xs={12} className={`buy-subheaders ${classes.normalfonts}`}>
-                                { !isSilver &&   <Typography>
+                                <Grid item lg={3} xs={12} className={`buy-subheaders ${classes.normalfonts}`}>
+                                   <Typography>
                                         <i class="fa fa-phone overall-icons" aria-hidden="true"></i>&nbsp;
-                                    </Typography>}
+                                    </Typography>
                                     <Typography className={classes.TypoListed}>
                                         {val.telephone}
                                     </Typography>
                                 </Grid>
 
-                                <Grid item lg={6} xs={12} className={`buy-subheaders ${classes.normalfonts}`}>
-                                { !isSilver && <Typography>
+                                <Grid container item lg={3} xs={12} justify="flex-start" className={`buy-subheaders ${classes.normalfonts}`}>
+                                 <Typography>
                                         <i class="fa fa-whatsapp overall-icons" aria-hidden="true"></i>&nbsp;
-                                </Typography>}
+                                </Typography>
                                     <Typography className={classes.TypoListed}>
                                         {val.phonenum}
                                     </Typography>

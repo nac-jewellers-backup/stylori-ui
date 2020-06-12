@@ -529,13 +529,16 @@ const Productprice = (
                 }}
               >
                 <Hidden smDown>
-                  <Grid container>
+                  <Grid container> 
                     <Grid container item xs={12}>
-                      <Grid item xs={12}>
+                      {Boolean(isSilver && data[0].productTabs[0].tab1.Children)|| !isSilver ? <Grid item xs={12}>
                         <div className="overall-box ">
                           <PriceTabs data={props.data} isSilver={isSilver} />
                         </div>
                       </Grid>
+                    :
+                    null  
+                    }
                       <Grid item xs={12}>
                         <div className={`${classes.quantity}`}>
                           <Quantity data={props.data} />
@@ -561,11 +564,10 @@ const Productprice = (
                           </div>
                         </Grid>
                       </Grid>
-                      <Grid container item xs={12}>
+                      <Grid container item xs={12} className={classes.saveButtonsilverGrid}>
                         <Grid
                           item
                           xs={4}
-                          className={classes.saveButtonsilverGrid}
                         >
                           <Button
                             variant="contained"
@@ -580,20 +582,20 @@ const Productprice = (
                               isSilver={isSilver}
                               label="SAVE"
                               labelAdded="SAVED"
+                              class={'save'}
                             />
                           </Button>
                         </Grid>
-                        <Grid item xs={6} style={{ margin: "auto" }}>
+                        <Grid item xs={6} className={classes.sharesilver}>
                           <div
-                            className="starts product-icons"
+                            className={`starts product-icons2 `}
                             style={{ fontFamily: "fontawesome" }}
                           >
                             <div
-                              className="row social-shares"
-                              className={classes.icon}
+                              className={`row  ${classes.icon2} ${classes.productIcons2}`}
                             >
                               <i
-                                class="fa fa-share-alt overall-icons"
+                                class={`fa fa-share-alt overall-icons `}
                                 aria-owns={open ? "simple-popper" : ""}
                                 onClick={handleClick}
                               ></i>{" "}

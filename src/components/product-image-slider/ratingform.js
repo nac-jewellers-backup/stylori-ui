@@ -25,22 +25,23 @@ const RatingComponent = (props) => {
     // }
     const { values, handlers, setValues } = useRating(props);
     const newLocal = 250;
+    const isSilver = props.isSilver ? true : false
 
     return (
         <Grid container style={{ marginTop: "10px" }}>
             <Container style={{ paddingLeft: "17px", paddingRight: "17px" }} >
-                <div className={`bg-clr2 ${props.isSilver ?'' : `priceecontainer`}`} style={{ padding: "20px" }}>
+                <div className={`bg-clr2 ${isSilver ?'' : `priceecontainer`}`} style={{ padding: "20px" }}>
                     <form id="Resetform" action="javascript:void(0)" onSubmit={(e) => handlers.handelSubmit(e, props)}>
                         <Grid container spacing={12} >
                             {/* <Grid item lg={1} /> */}
                             <Grid item xs={12} lg={12}>
                                 <div className="rating-form ">
-                                    <h5 className={`rating-form-head ${classes.normalfonts}`}>Rating</h5>
-
-                                    <Ratings ratings="starts-review" clear_rating={props.clear_rating} clear_rating_onchange={props.clear_rating_onchange} />
+                                  {!isSilver &&  <h5 className={`rating-form-head ${classes.normalfonts}`}>Rating</h5>}
+                                  {isSilver &&  <h5 className={`rating-form-head ${classes.reviewandratingsmallScreen}`}>{'RATE & REVIEW'}</h5>}
+                                    <Ratings ratings="starts-review" isSilver={isSilver} clear_rating={props.clear_rating} clear_rating_onchange={props.clear_rating_onchange} />
                                     <label className='errtext'> {values.errortext.rateerr ? values.errortext.rateerr : ""}</label>
                                 </div>
-                                <h6 className={`rating-form-head ${classes.normalfonts}`} style={{ marginBottom: "-3px" }}>Write your review</h6>
+                            {!isSilver &&   <h6 className={`rating-form-head ${classes.normalfonts}`} style={{ marginBottom: "-3px" }}>Write your review</h6>}
                                 <Input
                                     margin="normal"
                                     variant="outlined"

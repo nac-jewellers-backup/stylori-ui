@@ -144,6 +144,7 @@ class Sublistcarousel extends React.Component {
       infinite: true,
       accessibility: true,
       speed: 2500,
+     
       // fade: true,
       slidesToShow:
         this.state.dataToShow === "YouMayLike"
@@ -288,10 +289,11 @@ class Sublistcarousel extends React.Component {
                           display: "flex",
                         }}
                       >
-                        <img
+                        {/* <img
                           onClick={() => this.previous()}
                           className={"icon-leftcaro"}
-                        />
+                        /> */}
+                        <ArrowLeftIcon onClick={() => this.previous()} className={`${classes.carouselCustomArrow}`}/>
                       </Grid>
                       <Grid item style={{ width: "88%" }}>
                         <Slideshow
@@ -320,10 +322,11 @@ class Sublistcarousel extends React.Component {
                           display: "flex",
                         }}
                       >
-                        <img
+                        {/* <img
                           onClick={() => this.next()}
                           className={"icon-rightcaro"}
-                        />
+                        /> */}
+                        <ArrowRightIcon  onClick={() => this.next()} className={`${classes.carouselCustomArrow}`}/>,
                       </Grid>
                     </Grid>
                   )}
