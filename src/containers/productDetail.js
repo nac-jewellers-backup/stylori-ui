@@ -227,6 +227,8 @@ class ProductDetail extends Component {
                     list="pricing-loctn"
                     classsubhed="pricing-loctn-head"
                     data={data_json}
+                    listSilver="pricing-loctn-silver"
+                    isSilver={isSilver}
                   />
                 </div>
               </Grid>

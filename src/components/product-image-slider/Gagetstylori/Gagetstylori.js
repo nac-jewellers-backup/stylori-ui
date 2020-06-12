@@ -38,7 +38,7 @@ const Logo = () =>{
 }
 export default function PaperSheet(props) {
     const isSilver = props.isSilver ? true : false
-    const color = isSilver ? "#a6a8ab" : '#D91965'
+    const color = isSilver ? "#42ada4" : '#D91965'
     const classes = useStyles();
 // "#D91965"
     return (

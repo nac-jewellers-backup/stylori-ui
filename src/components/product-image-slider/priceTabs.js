@@ -18,6 +18,8 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
 import { ProductDetailContext } from 'context/ProductDetailContext';
 import { GlobalContext } from 'context'
+import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 
 
 
@@ -249,7 +251,7 @@ debugger
                     return (
                         <>
                             {arr.length > 0 ? <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
-                                <Grid item lg={3} xs={12} style={{ display: "flex", alignItems: "center" }}><h1 className="rings_tabs">{data[0].productType === "Rings" ? val.tab1.header : val.tab1.headerBangle}&nbsp;
+                                <Grid item lg={3} xs={12} style={{ display: "flex", alignItems: "center" }}><h1 className={`rings_tabs ${_isSilver ? classes.rings_tabs_silver : ''}`}>{data[0].productType === "Rings" ? val.tab1.header : val.tab1.headerBangle}&nbsp;
                                {data[0].size_guide && <a
                                         onClick={this.handleOpen}
                                         className="my-ringsize">Size Guide </a>}</h1></Grid>
@@ -258,10 +260,12 @@ debugger
                                         <>
                                             <Grid container style={{ width: "100%" }} className={classes.pagination} style={{ overflow: "hidden" }}>
                                                 {arr.length > 8 && <Hidden smDown> <Grid item style={{ width: "5%", alignItems: "center", justifyContent: "center", display: "flex" }}>
-                                                    <img onClick={() => previous()} className={"icon-leftcaro"} />
+                                                    {/* <img onClick={() => previous()} className={"icon-leftcaro"} /> */}
+                                                    <ArrowLeftIcon onClick={() => previous()} className={`${classes.carouselCustomArrow}`}/>
                                                 </Grid></Hidden>}
                                                 {arr.length > 5 && <Hidden mdUp> <Grid item style={{ width: "5%", alignItems: "center", justifyContent: "center", display: "flex" }}>
-                                                    <img onClick={() => previous()} className={"icon-leftcaro"} />
+                                                    {/* <img onClick={() => previous()} className={"icon-leftcaro"} /> */}
+                                                    <ArrowLeftIcon onClick={() => previous()} className={`${classes.carouselCustomArrow}`}/>
                                                 </Grid></Hidden>}
                                                 <Grid item class="widthFix" style={{ textAlign: "center" }}>
                                                     <Hidden smDown>
@@ -309,8 +313,14 @@ debugger
                                                     </Hidden>
                                                 </Grid>
                                                 <Grid item style={{ width: "5%", alignItems: "center", justifyContent: "center", display: "flex" }}>
-                                                    <Hidden smDown>   {arr.length > 8 && <img onClick={() => next()} className={"icon-rightcaro"} />}</Hidden>
-                                                    <Hidden mdUp>   {arr.length > 5 && <img onClick={() => next()} className={"icon-rightcaro"} />}</Hidden>
+                                                    <Hidden smDown>   {arr.length > 8 && 
+                                                    // <img onClick={() => next()} className={"icon-rightcaro"} />
+                                                    <ArrowRightIcon  onClick={() => next()} className={`${classes.carouselCustomArrow}`}/>
+                                                    }</Hidden>
+                                                    <Hidden mdUp>   {arr.length > 5 &&
+                                                    //  <img onClick={() => next()} className={"icon-rightcaro"} />
+                                                    <ArrowRightIcon  onClick={() => next()} className={`${classes.carouselCustomArrow}`}/>
+                                                     }</Hidden>
                                                 </Grid>
                                                 <Modal
                                                     aria-labelledby="simple-modal-title"

@@ -1634,7 +1634,13 @@ body {
     font-family: roboto;
     font-weight: 500;
 }
-
+.pricing-loctn-silver{
+    color: #6e6d72 !important;
+    font-size: 14px !important;
+    text-transform: capitalize;
+    font-family: roboto;
+    font-weight: 500;
+}
 .pricing-loctn-head {
     margin-top: 1% !important;
     margin-bottom: 1% !important;

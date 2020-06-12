@@ -288,10 +288,11 @@ const styles = (theme) => ({
     boxShadow:`0 12px 10px -7px ${theme.palette.secondary.main}`
     }
   },
+
   buynowButtonSilver: {
     width: "100% !important",
     height: "45px !important",
-    fontSize: "11px",
+    fontSize: "13px",
     borderRadius: "unset !important",
     boxShadow: "6px 7px 6px rgba(208, 210, 211, 1)",
     textTransform: "uppercase",
@@ -325,6 +326,9 @@ const styles = (theme) => ({
     padding: '0px !important',
     textTransform: 'none !important',
 },
+rings_tabs_silver:{
+  color:`${theme.palette.primary.main} !important`
+},
 searchButtonSilver2:{
   border: 0,
   fontSize: '12px !important',
@@ -337,6 +341,9 @@ searchButtonSilver2:{
   lineHeight: '1.42857143',
   padding: '0px !important',
   textTransform: 'none !important',
+},
+colorNoreviews:{
+  color:theme.palette.secondary.main
 },
 chatNowSilver:{
 backgroundColor:theme.palette.secondary.main,
