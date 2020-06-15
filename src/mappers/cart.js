@@ -127,11 +127,13 @@ export default function (data) {
         mapperdata = [];
     }
     const _format = mapperdata.map(k => {
+        
         let _d;
 
         try {
             _d = {
                 generatedSku: k.generatedSku,
+                skuId: k.generatedSku,
                 skuUrl:k.skuUrl,
                 materialName: k.productListByProductId.productMaterialsByProductSku.nodes === undefined ? '' : k.productListByProductId.productMaterialsByProductSku.nodes.map(val => {
                     return val.materialName
@@ -143,6 +145,8 @@ export default function (data) {
                 productId: k.productListByProductId && k.productListByProductId.productId,
                 shipby: generateShipsBy(k.isReadyToShip, k.vendorDeliveryTime),
                 isReadyToShip: k.isReadyToShip,
+                minOrderQty:k.minOrderQty,
+                maxOrderQty:k.maxOrderQty,
                 productsDetails: [
                     //                     Quality	
                     // Metal	

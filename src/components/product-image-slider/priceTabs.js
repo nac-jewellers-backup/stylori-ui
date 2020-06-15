@@ -93,7 +93,7 @@ class Component extends React.Component {
             this.setState({
                 purity: kv,
             })
-            this.props.setFilters(filters);
+            this.props.setFilters({...this.props.filters,filters});
         }
         else {
             filters['defaultVariants'][key] = event.target.id

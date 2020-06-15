@@ -590,7 +590,7 @@ const Provider = (props) => {
     useEffect(() => {
 
         setCartFilters(skus)
-_qty()
+// _qty()
         updateProductList();
         ordersuccessful()
         if (window.location.pathname === "/cart") {

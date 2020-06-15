@@ -744,7 +744,7 @@ class Component extends React.Component {
   deletechecklists = () => {
     this.props.setCartFilters({
       skuId: this.props.data[0].skuId,
-      qty: this.props.quantity,
+      qty: this.props.quantity[this.props.data[0].skuId],
       price: this.props.data[0].offerPrice,
     });
 
@@ -752,7 +752,7 @@ class Component extends React.Component {
       "updatedProduct",
       JSON.stringify({
         sku_id: this.props.data[0].skuId,
-        qty: this.props.quantity,
+        qty: this.props.quantity[this.props.data[0].skuId],
         price: this.props.data[0].offerPrice,
       })
     );

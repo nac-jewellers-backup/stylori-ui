@@ -24,6 +24,7 @@ import { CartContext } from 'context'
 import cart from 'mappers/cart'
 import Wishlist from 'components/wishlist/wishlist';
 import { API_URL, CDN_URL } from "config"
+import Quantity from '../quantity/index'
 
 // import { FilterOptionsContext } from 'context/FilterOptionsContext';
 // 
@@ -286,8 +287,11 @@ class Checkoutcard extends React.Component {
                                         </Grid>
 
                                         <Grid item xs={4} >
-                                            <Typography style={{ marginTop: "8px" }} className={`subhesder ${classes.normalfonts}`}>Quantity {JSON.parse(localStorage.getItem('quantity'))[dataval.generatedSku]}</Typography>
-
+                                            <Typography style={{ marginTop: "8px" }} className={`subhesder ${classes.normalfonts}`}>
+                                                Quantity {JSON.parse(localStorage.getItem('quantity'))[dataval.generatedSku]}
+                                                {/* <Quantity data={this.props.data}/> */}
+                                                </Typography>
+                                                {/* <Quantity data={[dataval]}/> */}
                                             {/* {data[0].isReadyToShip === true ? */}
                                             <Typography className={`subhesder ${classes.normalfonts}`}>{data[0].shipby}</Typography>
                                             {/* : ""} */}
@@ -300,7 +304,9 @@ class Checkoutcard extends React.Component {
 
                                     </Grid>
                                 </Grid>
-
+<Grid xs ={12} item>
+<Quantity  data={[dataval]}/>
+</Grid>
                                 <Grid item xs={4} sm={2} lg={3}>
                                     <div style={{ marginTop: "15%" }}>
                                         {dataval.dataCard1.map(val =>
@@ -380,7 +386,7 @@ class Checkoutcard extends React.Component {
             return cart_price
         }
         var yousave = this.props.data.map((_data) => {
-           debugger
+           
             return (_data.dataCard1[0].price * JSON.parse(localStorage.getItem('quantity'))[_data.generatedSku]) - ( _data.dataCard1[0].offerPrice * JSON.parse(localStorage.getItem('quantity'))[_data.generatedSku])
         }).reduce(myFunc)
         // const yousave = Math.round(Number(dataCard1.price) - Number(dataCard1.offerPrice))

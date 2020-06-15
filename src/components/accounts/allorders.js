@@ -206,7 +206,7 @@ class Allorders extends React.Component {
                             <div style={{ marginTop: "20px", boxShadow: "none" }}>
                                 {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
                                 {allDatas().map((val, index) => {
-debugger
+
                                     return (
                                         <ExpansionPanel
                                             square
@@ -394,7 +394,7 @@ debugger
                                 <Container>
 
                                     {allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes.map(val => {
-debugger
+
                                         return (
                                             <div>
                                                 {/* {JSON.stringify(val)} */}

@@ -7,24 +7,22 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import { ProductDetailContext } from "context/ProductDetailContext";
 const handleQty = (isMaxMin, _incrementQty, _maxOrderQty, setClass, state) => {
-  ;
   var element = document.getElementById("number");
   var value = parseInt(element.value, 10);
-  var increment = state['maxOrderQty'];
-  var decrement = state['minOrderQty'];
+  var increment = state["maxOrderQty"];
+  var decrement = state["minOrderQty"];
   value = isNaN(value) ? 1 : value;
   if (isMaxMin === "max") {
     if (value < _maxOrderQty) {
       increment = true;
-     
+
       value = _incrementQty ? value + _incrementQty : value++;
     } else {
       increment = false;
     }
     if (value > _incrementQty) {
       decrement = true;
-    }
-    else{
+    } else {
       decrement = false;
     }
   } else if (isMaxMin === "min") {
@@ -36,21 +34,21 @@ const handleQty = (isMaxMin, _incrementQty, _maxOrderQty, setClass, state) => {
     }
     if (value < _maxOrderQty) {
       increment = true;
-    }
-    else{
+    } else {
       increment = false;
     }
   }
 
-  setClass({"maxOrderQty":increment,"minOrderQty":decrement,"qty":value});
-  
+  setClass({ maxOrderQty: increment, minOrderQty: decrement, qty: value });
 };
 
 const Quantity = (props) => {
-  const {
-    ProductDetailCtx: { filters },setFilters
-  } = React.useContext(ProductDetailContext);
   
+  const {
+    ProductDetailCtx: { filters },
+    setFilters,
+  } = React.useContext(ProductDetailContext);
+
   const _incrementQty =
     props.data && props.data.length > 0 && props.data[0].minOrderQty
       ? props.data[0].minOrderQty
@@ -59,27 +57,78 @@ const Quantity = (props) => {
     props.data && props.data.length > 0 && props.data[0].maxOrderQty
       ? props.data[0].maxOrderQty
       : 100000;
-  
-      const [state, setState] = React.useState({
-        maxOrderQty: true,
-        minOrderQty: false,
-        qty: _incrementQty ? _incrementQty : 1,
-      });
+
+  const [state, setState] = React.useState({
+    maxOrderQty: true,
+    minOrderQty: false,
+    qty: filters.quantity[props.data[0].skuId] ? filters.quantity[props.data[0].skuId] : _incrementQty ? _incrementQty : 1,
+  });
 
   const setClass = (data) => {
-      setState({ ...state, minOrderQty: data['minOrderQty'], maxOrderQty: data['maxOrderQty'], qty:data['qty'] });
-    
-      
+    setState({
+      ...state,
+      minOrderQty: data["minOrderQty"],
+      maxOrderQty: data["maxOrderQty"],
+      qty: data["qty"],
+    });
   };
-  React.useEffect(()=>{
+  React.useEffect(() => {
+    debugger
+    let quantity = filters.quantity;
+    quantity[props.data[0].skuId] = state.qty;
+    let localStorageQuantity = localStorage.getItem("quantity")
+      ? JSON.parse(localStorage.getItem("quantity"))
+      : null;
     
-    setFilters({...filters,quantity:state.qty})
-  },[state.qty])
-  React.useEffect(()=>{
-    setFilters({...filters,quantity:state.qty})
-  },[])
+      // if(localStorageQuantity && localStorageQuantity[props.data[0].skuId] !== state.qty){
+      //   setFilters({ ...filters, quantity });
+      // }
+
+      if (!localStorageQuantity) {
+        if(localStorageQuantity && !localStorageQuantity[props.data[0].skuId]){
+          let _obj = {};
+          setFilters({ ...filters, quantity });
+          localStorageQuantity[props.data[0].skuId] = state.qty;
+          localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
+          quantity[props.data[0].skuId] = state.qty;
+        }
+        else{
+          let _obj = {};
+        setFilters({ ...filters, quantity });
+        _obj[props.data[0].skuId] = state.qty;
+        localStorage.setItem("quantity", JSON.stringify(_obj));
+        quantity[props.data[0].skuId] = state.qty;
+        }
+      }
+      else{
+        setFilters({ ...filters, quantity });
+        localStorageQuantity[props.data[0].skuId] = state.qty;
+    localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
+      }
+  
+    
+  }, [state.qty]);
+  React.useEffect(() => {
+    debugger
+    let quantity = filters.quantity;
+
+    let localStorageQuantity = localStorage.getItem("quantity")
+      ? JSON.parse(localStorage.getItem("quantity"))
+      : null;
+    ;
+    if (!localStorageQuantity || !localStorageQuantity[props.data[0].skuId]) {
+      let _obj = {};
+      ;
+      _obj[props.data[0].skuId] = state.qty;
+      localStorage.setItem("quantity", JSON.stringify(_obj));
+      quantity[props.data[0].skuId] = state.qty;
+    }
+
+    setFilters({ ...filters, ...quantity, quantity });
+  }, []);
   const { classes } = props;
   console.log(filters, "//////////QTY");
+  
   return (
     <Grid container item xs={12}>
       <Grid item xs={4} sm={3} md={12} lg={2} xl={4} className={classes.label}>
@@ -88,12 +137,7 @@ const Quantity = (props) => {
         </Typography>
       </Grid>
       <Grid item xs={4} sm={3} md={3} lg={2} xl={2} className={classes.qty}>
-        <Grid
-          container
-          item
-          xs={12}
-          justify="space-between"
-        >
+        <Grid container item xs={12} justify="space-between">
           <Grid item xs={3} className={classes.alignGrid}>
             <IndeterminateCheckBoxIcon
               className={`${classes.icon} ${
@@ -106,13 +150,13 @@ const Quantity = (props) => {
           </Grid>
           <Grid
             item
-            xs={6} 
+            xs={6}
             className={`${classes.alignGrid} ${classes.border}`}
           >
             <input
               type="text"
               id="number"
-              value={filters.quantity}
+              value={filters.quantity[props.data[0].skuId]}
               disabled
               style={{ width: "100%" }}
             />

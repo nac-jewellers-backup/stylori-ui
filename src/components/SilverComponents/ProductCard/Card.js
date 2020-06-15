@@ -176,7 +176,7 @@ const handleProductDetatiContext = (props) => {
   // props.filters['skuId'] = props.data.generatedSku
   props.filters['skuId'] = props.data.skuID
 
-  props.setFilters(props.filters)
+  props.setFilters(...props.filters,props.filters)
 
 }
 
