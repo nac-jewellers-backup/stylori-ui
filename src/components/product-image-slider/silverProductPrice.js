@@ -26,6 +26,7 @@ import PriceTabs from "components/product-image-slider/priceTabs";
 import Quantity from "../quantity";
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
+import { ProductDetailContext } from "context/ProductDetailContext";
 
 const dataCarousel = {
   dots: true,
@@ -546,7 +547,7 @@ const Productprice = (
                     }
                       <Grid item xs={12}>
                         <div className={`${classes.quantity}`}>
-                          <Quantity data={props.data} />
+                          <Quantity data={props.data} /> 
                         </div>
                       </Grid>
                       <Grid item xs={12}>
@@ -674,7 +675,10 @@ const Productprice = (
 
 const ProductPrice = (props) => {
   const { setCartFilters } = React.useContext(CartContext);
-  return <Component setCartFilters={setCartFilters} {...props} />;
+  const {
+    ProductDetailCtx: { filters },setFilters
+  } = React.useContext(ProductDetailContext);
+  return <Component setCartFilters={setCartFilters} {...props} quantity={filters.quantity} />;
 };
 
 class Component extends React.Component {
@@ -748,7 +752,7 @@ class Component extends React.Component {
       "updatedProduct",
       JSON.stringify({
         sku_id: this.props.data[0].skuId,
-        qty: 1,
+        qty: this.props.quantity,
         price: this.props.data[0].offerPrice,
       })
     );

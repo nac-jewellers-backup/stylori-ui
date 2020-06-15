@@ -6,8 +6,8 @@ import { withRouter } from 'react-router-dom';
 // const { setValues } = useRegister(); 
 const initialCtx = {
     ProductDetailCtx: {
-        filters: { productId: '', defaultVariants: { diamondType: '', metalColor: '', purity: '', skuSize: '' }, skuId: '' },
-        loading: false, error: false, data: [], likedatas: [], ratingcountsclear: [], viewedddatas: [], price: 0, rating: [], ratingcounts: [], registerurl: ""
+        filters: { productId: '', defaultVariants: { diamondType: '', metalColor: '', purity: '', skuSize: '' }, skuId: '', quantity:1 },
+        loading: false, error: false,  data: [], likedatas: [], ratingcountsclear: [], viewedddatas: [], price: 0, rating: [], ratingcounts: [], registerurl: ""
     },
     setFilters: () => { },
     setlikedata: () => { },

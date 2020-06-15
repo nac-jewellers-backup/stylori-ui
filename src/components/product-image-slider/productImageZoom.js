@@ -381,7 +381,7 @@ class ProductImageZoom extends React.Component {
   
   render() {
     const _isSilver = this.props.isSilver ? true : false
-    debugger
+    
     return (
       <div>
         <Hidden smDown>{this.productImageZoom(_isSilver)}</Hidden>

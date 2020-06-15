@@ -5,6 +5,7 @@ import AddBoxIcon from "@material-ui/icons/AddBox";
 import IndeterminateCheckBoxIcon from "@material-ui/icons/IndeterminateCheckBox";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
+import { ProductDetailContext } from "context/ProductDetailContext";
 const handleQty = (isMaxMin, _incrementQty, _maxOrderQty, setClass, state) => {
   ;
   var element = document.getElementById("number");
@@ -46,6 +47,10 @@ const handleQty = (isMaxMin, _incrementQty, _maxOrderQty, setClass, state) => {
 };
 
 const Quantity = (props) => {
+  const {
+    ProductDetailCtx: { filters },setFilters
+  } = React.useContext(ProductDetailContext);
+  
   const _incrementQty =
     props.data && props.data.length > 0 && props.data[0].minOrderQty
       ? props.data[0].minOrderQty
@@ -54,21 +59,27 @@ const Quantity = (props) => {
     props.data && props.data.length > 0 && props.data[0].maxOrderQty
       ? props.data[0].maxOrderQty
       : 100000;
-  const [state, setState] = React.useState({
-    maxOrderQty: true,
-    minOrderQty: false,
-    qty: _incrementQty ? _incrementQty : 1,
-  });
+  
+      const [state, setState] = React.useState({
+        maxOrderQty: true,
+        minOrderQty: false,
+        qty: _incrementQty ? _incrementQty : 1,
+      });
+
   const setClass = (data) => {
-    
-    
       setState({ ...state, minOrderQty: data['minOrderQty'], maxOrderQty: data['maxOrderQty'], qty:data['qty'] });
     
-    
+      
   };
+  React.useEffect(()=>{
+    
+    setFilters({...filters,quantity:state.qty})
+  },[state.qty])
+  React.useEffect(()=>{
+    setFilters({...filters,quantity:state.qty})
+  },[])
   const { classes } = props;
-
-  console.log(state, "//////////QTY");
+  console.log(filters, "//////////QTY");
   return (
     <Grid container item xs={12}>
       <Grid item xs={4} sm={3} md={12} lg={2} xl={4} className={classes.label}>
@@ -101,7 +112,7 @@ const Quantity = (props) => {
             <input
               type="text"
               id="number"
-              value={state.qty}
+              value={filters.quantity}
               disabled
               style={{ width: "100%" }}
             />

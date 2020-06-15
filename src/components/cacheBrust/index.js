@@ -5,7 +5,7 @@ import React from "react";
 // version from `meta.json` - first param
 // version in bundle file - second param
 const semverGreaterThan = (versionA, versionB) => {
-  debugger;
+  ;
   if (Number(versionA) !== Number(versionB)) {
     localStorage.setItem("version", versionA);
     return true;
@@ -53,7 +53,7 @@ export default class CacheBuster extends React.Component {
         );
 
         if (shouldForceRefresh) {
-          debugger;
+          ;
           console.log(
             `We have a new version - ${latestVersion}. Should force refresh`
           );

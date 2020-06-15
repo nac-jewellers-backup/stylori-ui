@@ -35,7 +35,7 @@ function TabContainer({ children, dir }) {
 const PriceTabs = (props) => {
     const { ProductDetailCtx: { filters }, setFilters } = React.useContext(ProductDetailContext);
     const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext)
-    return <Component setFilters={setFilters} filters={filters} {...props} tabsChange={Globalctx.tabsChange} setGlobalCtx={setGlobalCtx} />
+    return <Component setFilters={setFilters} filters={filters} {...props} GlobalContext={Globalctx} tabsChange={Globalctx.tabsChange} setGlobalCtx={setGlobalCtx} />
 }
 
 class Component extends React.Component {
@@ -63,7 +63,7 @@ class Component extends React.Component {
     };
 
     handleClick = (event, key) => {
-        this.props.setGlobalCtx({ tabsChange: true })
+        this.props.setGlobalCtx({...this.props.GlobalContext, tabsChange: true })
 
         var filters = { ...this.props.filters }
 
@@ -183,7 +183,7 @@ class Component extends React.Component {
         
         const { classes } = this.props;
         const data = this.props.data;
-        debugger
+        
         const { value } = this.state;
         const kadasize = this.props && this.props.data && this.props.data.length > 0 && this.props.data[0] && this.props.data[0].productsDetails && this.props.data[0].productsDetails.length > 0 && this.props.data[0].productsDetails[0] && this.props.data[0].productsDetails[0].namedetail && this.props.data[0].productsDetails[0].namedetail.length > 0 && this.props.data[0].productsDetails[0].namedetail[3] && this.props.data[0].productsDetails[0].namedetail[3].details && this.props.data[0].productsDetails[0].namedetail[3].details
         const limit = 8;
@@ -245,7 +245,7 @@ class Component extends React.Component {
          
          <div className ={_isSilver ? classes.silverMarginBottom : ''}>
                 {data[0].productTabs.map(val => {
-debugger
+
                     const arr = val.tab1.Children !== null && val.tab1.Children
                     const arr2 = val.tab2.Children !== null && (val.tab2.Children).split(',')
                     return (

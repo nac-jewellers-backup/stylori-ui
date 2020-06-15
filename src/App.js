@@ -44,7 +44,7 @@ class App extends React.Component {
       // <ApolloProvider client={client}>
       <CacheBuster>
       {({ loading, isLatestVersion, refreshCacheAndReload }) => {
-        debugger
+        
         if (loading) return null;
         if (!loading && !isLatestVersion) {
           // You can decide how and when you want to force reload

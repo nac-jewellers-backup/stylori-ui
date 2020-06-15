@@ -308,7 +308,22 @@ const Provider = (props) => {
     skus = localStorage.getItem("cartDetails") && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ?
         JSON.parse(localStorage.getItem("cartDetails")).products.filter(val => { if (Object.keys(val).length > 0) return val }).map(val => val.sku_id) : ''
     // JSON.parse(localStorage.getItem("cartDetails")).products.map(val => val.sku_id) : ''
+    const _qty = () => {
+        var obj = {}
+        if(localStorage.getItem("cartDetails") && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0) 
+        {
+            JSON.parse(localStorage.getItem("cartDetails")).products.filter(val => 
+                {
+                    
+                 if (Object.keys(val).length > 0) return val }).map(val => {
+                    
+                    obj[val.sku_id] = val.qty
 
+                    }) 
+                }
+                localStorage.setItem('quantity',JSON.stringify(obj))
+        }
+        
 
     const updateProductList = () => {
         
@@ -573,8 +588,9 @@ const Provider = (props) => {
         }
     }
     useEffect(() => {
-        setCartFilters(skus)
 
+        setCartFilters(skus)
+_qty()
         updateProductList();
         ordersuccessful()
         if (window.location.pathname === "/cart") {
