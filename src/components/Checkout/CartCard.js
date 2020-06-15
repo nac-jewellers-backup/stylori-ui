@@ -39,6 +39,12 @@ class Checkoutcard extends React.Component {
         }
     }
 
+    handleCartQuantity = (skuId) =>{
+        
+        const filters = this.props.filters && this.props.filters.quantity && Object.keys(this.props.filters.quantity).length > 0 ? true : false
+        if(filters) return this.props.filters.quantity[skuId]
+        else return JSON.parse(localStorage.getItem('quantity'))[skuId]
+    }
     // handlereloadcart = (val) => {
     //     const data = this.props.data
     //     
@@ -295,7 +301,7 @@ class Checkoutcard extends React.Component {
                                             <Typography style={{ marginTop: "8px" }} className={`subhesder ${classes.normalfonts}`}>
                                                 {window.location.pathname === "/checkout" || checkMaterial(dataval.materialName)  ?
 
-                                                `Quantity ${JSON.parse(localStorage.getItem('quantity'))[dataval.generatedSku]}`
+                                                `Quantity ${this.props.isdatafromstate[dataval.generatedSku]}`
                                                 :
                                                 <Quantity  data={[dataval]} cart = {true}/>}
                                                 </Typography>
@@ -325,7 +331,7 @@ class Checkoutcard extends React.Component {
                                                 offerDiscount={(val.discount) ? `${val.discount}% - OFF` : null}
                                                 price={val.price}
                                                 offerPrice={val.offerPrice} 
-                                                quantity = {JSON.parse(localStorage.getItem('quantity'))[dataval.generatedSku]}
+                                                quantity = {this.props.isdatafromstate[dataval.generatedSku]}
                                                 >
                                             </Pricing>)
                                         }
@@ -474,7 +480,10 @@ class Checkoutcard extends React.Component {
         const { classes } = this.props;
         // alert(discounted_price)
         let path = window.location.pathname.split('/').pop();
-
+        console.log(this.props.isdatafromstate)
+       
+        
+        
         return (
             <Grid >
                 <Hidden smDown>
@@ -498,8 +507,24 @@ class Checkoutcard extends React.Component {
 }
 const Components = props => {
   
+    
+    
+   
+    const {
+        ProductDetailCtx: { filters },setFilters
+      } = React.useContext(ProductDetailContext);
+      const [state, setState] = React.useState({isdatafromstate:{}, filter:filters})
+      const handleCartQuantity = () =>{
+        
+        const _filters = filters && filters.quantity && Object.keys(filters.quantity).length > 0 ? true : false
+        if(_filters) setState({isdatafromstate:filters})
+        else setState({isdatafromstate:JSON.parse(localStorage.getItem('quantity'))})
+    }
+    
     const [ShippingCharge, setShippingCharge] = React.useState(0)
     React.useEffect(()=>{
+        
+        
         fetch(`${API_URL}/getshippingcharge`,{
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
@@ -511,10 +536,23 @@ const Components = props => {
       .then(val => {if(val) setShippingCharge(val.shipping_charge)})
       .catch((err)=>{console.log(err,": in shipping charge API")});
     },[])
+    
+    React.useEffect(()=>{
+        let localStorageQuantity = localStorage.getItem('quantity') ? JSON.parse(localStorage.getItem('quantity')) : null
+        
+        if(localStorageQuantity){
+          
+          filters.quantity = localStorageQuantity
+          setFilters(filters)
+        }
+        setState({isdatafromstate:filters})
+     }, [])
+    
+    
     let { CartCtx: { cartFilters } } = React.useContext(CartContext);
     let content;
 
-    content = <Checkoutcard {...props} cartFilters={cartFilters} shipping_charge = {ShippingCharge} />
+    content = <Checkoutcard {...props} cartFilters={cartFilters} shipping_charge = {ShippingCharge} isdatafromstate = {filters.quantity} filters={handleCartQuantity}/>
     return content
 }
 export default withStyles(styles)(Components)

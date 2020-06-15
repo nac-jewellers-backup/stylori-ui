@@ -116,15 +116,16 @@ const Components = props => {
         ProductDetailCtx: { filters },setFilters
       } = React.useContext(ProductDetailContext);
 
-     React.useEffect(()=>{
-        let localStorageQuantity = localStorage.getItem('quantity') ? JSON.parse(localStorage.getItem('quantity')) : null
+    //  React.useEffect(()=>{
+    //     let localStorageQuantity = localStorage.getItem('quantity') ? JSON.parse(localStorage.getItem('quantity')) : null
         
-        if(localStorageQuantity){
+    //     if(localStorageQuantity){
           
-          filters.quantity = localStorageQuantity
-          setFilters(filters)
-        }
-     }, [])
+    //       filters.quantity = localStorageQuantity
+    //       setFilters(filters)
+    //     }
+    //  }, [])
+    console.log(filters,"filters+filters-filters")
     let content, mapped;
     let _data = {}
 

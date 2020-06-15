@@ -79,7 +79,7 @@ export const TabsProvider = (props) => {
           filters.quantity = localStorageQuantity
           setFilters(filters)
         }
-        debugger
+        
         if (filters.productId === "") {
             if (window.location.search.length > 0) {
                 let loc = window.location.search.split('=')

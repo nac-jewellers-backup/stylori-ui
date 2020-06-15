@@ -38,16 +38,15 @@ const handleQty = (isMaxMin, _incrementQty, _maxOrderQty, setClass, state) => {
       increment = false;
     }
   }
-
   setClass({ maxOrderQty: increment, minOrderQty: decrement, qty: value });
 };
 
 const Quantity = (props) => {
+  debugger
   const {
     ProductDetailCtx: { filters },
     setFilters,
   } = React.useContext(ProductDetailContext);
-  debugger;
   const _incrementQty =
     props.data && props.data.length > 0 && props.data[0].minOrderQty
       ? props.data[0].minOrderQty
@@ -59,7 +58,11 @@ const Quantity = (props) => {
 
   const [state, setState] = React.useState({
     maxOrderQty: true,
-    minOrderQty: false,
+    minOrderQty:
+      filters.quantity[props.data[0].skuId] &&
+      filters.quantity[props.data[0].skuId] > _incrementQty
+        ? true
+        : false,
     qty: filters.quantity[props.data[0].skuId]
       ? filters.quantity[props.data[0].skuId]
       : _incrementQty
@@ -70,15 +73,15 @@ const Quantity = (props) => {
   const setClass = (data) => {
     setState({
       ...state,
+      qty: data["qty"],
       minOrderQty: data["minOrderQty"],
       maxOrderQty: data["maxOrderQty"],
-      qty: data["qty"],
     });
   };
   React.useEffect(() => {
-    debugger;
-    let quantity = filters.quantity;
-    quantity[props.data[0].skuId] = state.qty;
+    const _funcUpdate = () =>{
+      let { quantity } = filters;
+    // quantity[props.data[0].skuId] = state.qty;
     let localStorageQuantity = localStorage.getItem("quantity")
       ? JSON.parse(localStorage.getItem("quantity"))
       : null;
@@ -100,15 +103,15 @@ const Quantity = (props) => {
         quantity[props.data[0].skuId] = state.qty;
       }
     } else {
-      debugger;
-      quantity[props.data[0].skuId] = state.qty;
       localStorageQuantity[props.data[0].skuId] = state.qty;
       localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
+      quantity[props.data[0].skuId] = localStorageQuantity[props.data[0].skuId];
     }
     setFilters({ ...filters, quantity });
-  }, [state.qty]);
+    }
+    _funcUpdate()
+  }, [state]);
   React.useEffect(() => {
-    debugger;
     let quantity = filters.quantity;
 
     let localStorageQuantity = localStorage.getItem("quantity")
@@ -123,10 +126,11 @@ const Quantity = (props) => {
 
     setFilters({ ...filters, quantity });
   }, []);
+  console.clear();
+  console.log("this.props.isdatafromstate", filters);
   const { classes, cart } = props;
   const _cart = cart ? true : false;
   console.log(filters, "//////////QTY");
-
   return (
     <Grid container item xs={12}>
       {!_cart && (
@@ -146,7 +150,7 @@ const Quantity = (props) => {
       )}
       <Grid
         item
-        xs={_cart? 8 :4}
+        xs={_cart ? 8 : 4}
         sm={_cart ? 4 : 3}
         md={_cart ? 8 : 3}
         lg={_cart ? 8 : 2}

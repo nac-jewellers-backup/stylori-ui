@@ -334,7 +334,7 @@ class ProductDetail extends Component {
             />
           </Grid>
           {isSilver && <Grid item xs={12} style={{marginBottom:'15px'}}>
-               <Container > <Quantity /></Container>
+               <Container > <Quantity data={this.props.data}/></Container>
                 </Grid>}
           <Grid item xs={12}>
             <ProductDetails
