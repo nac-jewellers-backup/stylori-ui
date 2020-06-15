@@ -198,6 +198,8 @@ class Checkoutcard extends React.Component {
                 // alert(JSON.stringify( [image_urls]))
             }
         }
+        console.clear()
+        console.log(this.props.data,"this.props.data----")
         return (
             <div style={{ marginTop: "10px" }}>
                 <Grid container>
@@ -284,7 +286,7 @@ class Checkoutcard extends React.Component {
                                         </Grid>
 
                                         <Grid item xs={4} >
-                                            <Typography style={{ marginTop: "8px" }} className={`subhesder ${classes.normalfonts}`}>Quantity 1</Typography>
+                                            <Typography style={{ marginTop: "8px" }} className={`subhesder ${classes.normalfonts}`}>Quantity {JSON.parse(localStorage.getItem('quantity'))[dataval.generatedSku]}</Typography>
 
                                             {/* {data[0].isReadyToShip === true ? */}
                                             <Typography className={`subhesder ${classes.normalfonts}`}>{data[0].shipby}</Typography>
@@ -308,7 +310,9 @@ class Checkoutcard extends React.Component {
                                                 detail={dataval}
                                                 offerDiscount={(val.discount) ? `${val.discount}% - OFF` : null}
                                                 price={val.price}
-                                                offerPrice={val.offerPrice} >
+                                                offerPrice={val.offerPrice} 
+                                                quantity = {JSON.parse(localStorage.getItem('quantity'))[dataval.generatedSku]}
+                                                >
                                             </Pricing>)
                                         }
                                             
@@ -352,7 +356,10 @@ class Checkoutcard extends React.Component {
         // alert(JSON.stringify(props.cartFilters.discounted_price))
         // const { dataCard1 } = this.props.data;
         var discounted_price = this.props.cartFilters.discounted_price ? this.props.cartFilters.discounted_price : ""
-        const dataCard1 = this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
+        const dataCard1 = this.props.data.map(val => {
+            
+            return (val.dataCard1[0].offerPrice * JSON.parse(localStorage.getItem('quantity'))[val.generatedSku])
+            }).reduce(myFunc);
         // this.props.data.map(val=>{return val.dataCard1[0].offerPrice}).reduce(myFunc)
 
 
@@ -373,8 +380,8 @@ class Checkoutcard extends React.Component {
             return cart_price
         }
         var yousave = this.props.data.map((_data) => {
-           
-            return _data.dataCard1[0].price - _data.dataCard1[0].offerPrice
+           debugger
+            return (_data.dataCard1[0].price * JSON.parse(localStorage.getItem('quantity'))[_data.generatedSku]) - ( _data.dataCard1[0].offerPrice * JSON.parse(localStorage.getItem('quantity'))[_data.generatedSku])
         }).reduce(myFunc)
         // const yousave = Math.round(Number(dataCard1.price) - Number(dataCard1.offerPrice))
         let path = window.location.pathname.split('/').pop();

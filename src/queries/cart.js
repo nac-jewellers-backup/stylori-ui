@@ -172,7 +172,7 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
 //   }
 // }
 
-export const ORDERSUCCESSFUL = `query MyQuery($orderId:  OrderCondition) {
+export const ORDERSUCCESSFUL = `query MyQuery($orderId: OrderCondition) {
   allOrders(condition: $orderId) {
     nodes {
       paymentMode
@@ -180,7 +180,6 @@ export const ORDERSUCCESSFUL = `query MyQuery($orderId:  OrderCondition) {
         discountedPrice
         discount
         shoppingCartItemsByShoppingCartId {
-          
           nodes {
             transSkuListByProductSku {
               discountPrice
@@ -209,6 +208,13 @@ export const ORDERSUCCESSFUL = `query MyQuery($orderId:  OrderCondition) {
               markupPrice
               skuSize
             }
+            qty
+          }
+        }
+        giftwrapsByCartId {
+          nodes {
+            message
+            giftTo
           }
         }
         cartAddressesByCartId(condition: {addressType: 1}) {
@@ -225,18 +231,13 @@ export const ORDERSUCCESSFUL = `query MyQuery($orderId:  OrderCondition) {
             addressType
           }
         }
-        giftwrapsByCartId {
-          nodes {
-            message
-            giftTo
-          }
-        }
       }
       createdAt
       id
     }
   }
 }
+
 
 `
 export const ALLUSERWISHLISTS = `query MyQuery($userprofileId: [UUID!]) {

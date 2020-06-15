@@ -744,7 +744,7 @@ class Component extends React.Component {
   deletechecklists = () => {
     this.props.setCartFilters({
       skuId: this.props.data[0].skuId,
-      qty: 1,
+      qty: this.props.quantity,
       price: this.props.data[0].offerPrice,
     });
 

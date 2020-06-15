@@ -206,7 +206,7 @@ class Allorders extends React.Component {
                             <div style={{ marginTop: "20px", boxShadow: "none" }}>
                                 {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
                                 {allDatas().map((val, index) => {
-
+debugger
                                     return (
                                         <ExpansionPanel
                                             square
@@ -394,7 +394,7 @@ class Allorders extends React.Component {
                                 <Container>
 
                                     {allorderdata && allorderdata.data && allorderdata.data.allOrders.nodes.map(val => {
-
+debugger
                                         return (
                                             <div>
                                                 {/* {JSON.stringify(val)} */}
@@ -522,7 +522,7 @@ class Allorders extends React.Component {
                                                                             </Grid>
                                                                             <Grid item lg={2} sm={2} style={{ alignItems: 'center', display: 'flex', padding: "16px" }}>
                                                                                 <Grid container spacing={12} lg={12}>
-                                                                                    <Typography className="subhesder">Quantity 1</Typography>
+                                                                                            <Typography className="subhesder">Quantity {cart.qty}</Typography>
                                                                                     <Typography className="subhesder">
                                                                                         <img alt="" src="https://assets.stylori.com/images/static/icon-ship.png" /> <a>
                                                                                             {this.generateShipsBy(cart.transSkuListByProductSku.readytoship, cart.transSkuListByProductSku.vendorDeliveryTime)}</a></Typography>
@@ -536,9 +536,11 @@ class Allorders extends React.Component {
                                                                                         price={cart.transSkuListByProductSku.discountPrice}
                                                                                         offerPrice={cart.transSkuListByProductSku.markupPrice}
                                                                                         offerDiscount={"25% - OFF"}
+                                                                                        quantity = {cart.qty}
                                                                                     ></Pricing>
                                                                                     : <Pricing
                                                                                         offerPrice={cart.transSkuListByProductSku.markupPrice}
+                                                                                        quantity = {cart.qty}
                                                                                     ></Pricing>}<br />
                                                                             </Grid>
                                                                         </Grid></>

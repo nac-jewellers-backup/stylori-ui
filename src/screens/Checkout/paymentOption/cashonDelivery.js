@@ -113,7 +113,7 @@ class Component extends React.Component {
         // var { data:coddata, error, loading, makeFetch} = useNetworkRequest('/api/auth/signin', {}, false);
         var dataCard1;
         if (data.length > 0 && data !== undefined && data !== null) {
-            dataCard1 = this.props.data && this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
+            dataCard1 = this.props.data && this.props.data.map(val => { return val.dataCard1[0].offerPrice * JSON.parse(localStorage.getItem('quantity'))[val.generatedSku] }).reduce(myFunc);
             function myFunc(total, num) {
                 discounted_price = this && this.props.cartFilters.discounted_price ? JSON.stringify(this.props.cartFilters.discounted_price) : ""
                 if (discounted_price.length > 0) {

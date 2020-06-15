@@ -205,14 +205,14 @@ function MediaControlCard(props) {
                     </Typography>
                   }
                   {dataval.dataCard1.map(val =>
-                    <Pricing price={val.price} offerPrice={val.offerPrice} offerDiscount={"25% - OFF"}   >
-                      <label className={classes.labelPrice}>
+                    <Pricing price={val.price} offerPrice={val.offerPrice} offerDiscount={"25% - OFF"} quantity = {JSON.parse(localStorage.getItem('quantity'))[dataval.generatedSku]}  >
+                      {/* <label className={classes.labelPrice}>
                         <Typography
                           variant="subtitle1"
                           color="textSecondary"
                           className={classes.labelPriceDel}
                         >
-                          <del>{val.offerPrice}</del>
+                          <del>{val.offerPrice }</del>
                         </Typography>
                         &nbsp;
     <Typography
@@ -229,7 +229,7 @@ function MediaControlCard(props) {
                         >
                           <del>{val.offerPrice}</del>
                         </Typography>
-                      </label>
+                      </label> */}
                     </Pricing>
                   )}
                 </CardContent>

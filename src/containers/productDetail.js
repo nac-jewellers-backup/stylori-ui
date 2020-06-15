@@ -456,8 +456,9 @@ console.log(state.shopByData,"-------------+*/-")
 
   const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
   const {
-    ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating },
+    ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating, filters:{quantity} },
   } = React.useContext(ProductDetailContext);
+  console.log(quantity,"product detail quantity")
   const _silverArr = [];
   React.useEffect(() => {
     if (data && !loading) {

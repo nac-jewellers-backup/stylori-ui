@@ -119,7 +119,7 @@ const generateShipsBy = (readytoship, vendorDeliveryTime) => {
     }
 }
 export default function (data) {
-    debugger
+    
     let mapperdata = [];
     try {
         mapperdata = data.data.allTransSkuLists.nodes;
