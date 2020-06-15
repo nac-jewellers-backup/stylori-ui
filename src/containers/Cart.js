@@ -8,7 +8,7 @@ import { Grid, Container, Hidden } from '@material-ui/core';
 // import CustomSeparator from '../../components/BreadCrumb/index'
 import Header from 'components/SilverComponents/Header'
 import 'screens/Stylori/index.css'
-import { CartContext } from 'context'
+import { CartContext, ProductDetailContext } from 'context'
 import cart from 'mappers/cart'
 import 'screens/screens.css';
 import CustomSeparator from '../components/BreadCrumb/index'
@@ -112,7 +112,19 @@ class Cart extends React.Component {
 
 const Components = props => {
     let { CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata, NewUser } } = React.useContext(CartContext);
+    const {
+        ProductDetailCtx: { filters },setFilters
+      } = React.useContext(ProductDetailContext);
 
+     React.useEffect(()=>{
+        let localStorageQuantity = localStorage.getItem('quantity') ? JSON.parse(localStorage.getItem('quantity')) : null
+        
+        if(localStorageQuantity){
+          
+          filters.quantity = localStorageQuantity
+          setFilters(filters)
+        }
+     }, [])
     let content, mapped;
     let _data = {}
 

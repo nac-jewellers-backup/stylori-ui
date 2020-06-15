@@ -20,7 +20,7 @@ import CardSmallScreen from './CartCardSmallScreen.js';
 import Pricing from '../Pricing/index'
 import styles from "./style"
 import { NavLink } from 'react-router-dom';
-import { CartContext } from 'context'
+import { CartContext, ProductDetailContext } from 'context'
 import cart from 'mappers/cart'
 import Wishlist from 'components/wishlist/wishlist';
 import { API_URL, CDN_URL } from "config"
@@ -199,6 +199,11 @@ class Checkoutcard extends React.Component {
                 // alert(JSON.stringify( [image_urls]))
             }
         }
+        const checkMaterial = (material) =>{
+            let _data = material.map(val=>val.toLowerCase())
+            if(_data.indexOf("silver") > -1)  return false 
+            else return true
+        }
         console.clear()
         console.log(this.props.data,"this.props.data----")
         return (
@@ -288,8 +293,11 @@ class Checkoutcard extends React.Component {
 
                                         <Grid item xs={4} >
                                             <Typography style={{ marginTop: "8px" }} className={`subhesder ${classes.normalfonts}`}>
-                                                Quantity {JSON.parse(localStorage.getItem('quantity'))[dataval.generatedSku]}
-                                                {/* <Quantity data={this.props.data}/> */}
+                                                {window.location.pathname === "/checkout" || checkMaterial(dataval.materialName)  ?
+
+                                                `Quantity ${JSON.parse(localStorage.getItem('quantity'))[dataval.generatedSku]}`
+                                                :
+                                                <Quantity  data={[dataval]} cart = {true}/>}
                                                 </Typography>
                                                 {/* <Quantity data={[dataval]}/> */}
                                             {/* {data[0].isReadyToShip === true ? */}
@@ -304,9 +312,9 @@ class Checkoutcard extends React.Component {
 
                                     </Grid>
                                 </Grid>
-<Grid xs ={12} item>
+{/* <Grid xs ={12} item>
 <Quantity  data={[dataval]}/>
-</Grid>
+</Grid> */}
                                 <Grid item xs={4} sm={2} lg={3}>
                                     <div style={{ marginTop: "15%" }}>
                                         {dataval.dataCard1.map(val =>
@@ -489,6 +497,7 @@ class Checkoutcard extends React.Component {
 
 }
 const Components = props => {
+  
     const [ShippingCharge, setShippingCharge] = React.useState(0)
     React.useEffect(()=>{
         fetch(`${API_URL}/getshippingcharge`,{
@@ -505,7 +514,7 @@ const Components = props => {
     let { CartCtx: { cartFilters } } = React.useContext(CartContext);
     let content;
 
-    content = <Checkoutcard {...props} cartFilters={cartFilters} shipping_charge = {ShippingCharge}/>
+    content = <Checkoutcard {...props} cartFilters={cartFilters} shipping_charge = {ShippingCharge} />
     return content
 }
 export default withStyles(styles)(Components)

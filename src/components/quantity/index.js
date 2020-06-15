@@ -43,12 +43,11 @@ const handleQty = (isMaxMin, _incrementQty, _maxOrderQty, setClass, state) => {
 };
 
 const Quantity = (props) => {
-  
   const {
     ProductDetailCtx: { filters },
     setFilters,
   } = React.useContext(ProductDetailContext);
-
+  debugger;
   const _incrementQty =
     props.data && props.data.length > 0 && props.data[0].minOrderQty
       ? props.data[0].minOrderQty
@@ -61,7 +60,11 @@ const Quantity = (props) => {
   const [state, setState] = React.useState({
     maxOrderQty: true,
     minOrderQty: false,
-    qty: filters.quantity[props.data[0].skuId] ? filters.quantity[props.data[0].skuId] : _incrementQty ? _incrementQty : 1,
+    qty: filters.quantity[props.data[0].skuId]
+      ? filters.quantity[props.data[0].skuId]
+      : _incrementQty
+      ? _incrementQty
+      : 1,
   });
 
   const setClass = (data) => {
@@ -73,70 +76,83 @@ const Quantity = (props) => {
     });
   };
   React.useEffect(() => {
-    debugger
+    debugger;
     let quantity = filters.quantity;
     quantity[props.data[0].skuId] = state.qty;
     let localStorageQuantity = localStorage.getItem("quantity")
       ? JSON.parse(localStorage.getItem("quantity"))
       : null;
-    
-      // if(localStorageQuantity && localStorageQuantity[props.data[0].skuId] !== state.qty){
-      //   setFilters({ ...filters, quantity });
-      // }
 
-      if (!localStorageQuantity) {
-        if(localStorageQuantity && !localStorageQuantity[props.data[0].skuId]){
-          let _obj = {};
-          setFilters({ ...filters, quantity });
-          localStorageQuantity[props.data[0].skuId] = state.qty;
-          localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
-          quantity[props.data[0].skuId] = state.qty;
-        }
-        else{
-          let _obj = {};
-        setFilters({ ...filters, quantity });
+    // if(localStorageQuantity && localStorageQuantity[props.data[0].skuId] !== state.qty){
+    //   setFilters({ ...filters, quantity });
+    // }
+
+    if (!localStorageQuantity) {
+      if (localStorageQuantity && !localStorageQuantity[props.data[0].skuId]) {
+        let _obj = {};
+        localStorageQuantity[props.data[0].skuId] = state.qty;
+        localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
+        quantity[props.data[0].skuId] = state.qty;
+      } else {
+        let _obj = {};
         _obj[props.data[0].skuId] = state.qty;
         localStorage.setItem("quantity", JSON.stringify(_obj));
         quantity[props.data[0].skuId] = state.qty;
-        }
       }
-      else{
-        setFilters({ ...filters, quantity });
-        localStorageQuantity[props.data[0].skuId] = state.qty;
-    localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
-      }
-  
-    
+    } else {
+      debugger;
+      quantity[props.data[0].skuId] = state.qty;
+      localStorageQuantity[props.data[0].skuId] = state.qty;
+      localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
+    }
+    setFilters({ ...filters, quantity });
   }, [state.qty]);
   React.useEffect(() => {
-    debugger
+    debugger;
     let quantity = filters.quantity;
 
     let localStorageQuantity = localStorage.getItem("quantity")
       ? JSON.parse(localStorage.getItem("quantity"))
       : null;
-    ;
     if (!localStorageQuantity || !localStorageQuantity[props.data[0].skuId]) {
       let _obj = {};
-      ;
       _obj[props.data[0].skuId] = state.qty;
       localStorage.setItem("quantity", JSON.stringify(_obj));
       quantity[props.data[0].skuId] = state.qty;
     }
 
-    setFilters({ ...filters, ...quantity, quantity });
+    setFilters({ ...filters, quantity });
   }, []);
-  const { classes } = props;
+  const { classes, cart } = props;
+  const _cart = cart ? true : false;
   console.log(filters, "//////////QTY");
-  
+
   return (
     <Grid container item xs={12}>
-      <Grid item xs={4} sm={3} md={12} lg={2} xl={4} className={classes.label}>
-        <Typography variant="body1" component="div">
-          Quantity
-        </Typography>
-      </Grid>
-      <Grid item xs={4} sm={3} md={3} lg={2} xl={2} className={classes.qty}>
+      {!_cart && (
+        <Grid
+          item
+          xs={4}
+          sm={3}
+          md={12}
+          lg={4}
+          xl={4}
+          className={classes.label}
+        >
+          <Typography variant="body1" component="div">
+            Quantity
+          </Typography>
+        </Grid>
+      )}
+      <Grid
+        item
+        xs={_cart? 8 :4}
+        sm={_cart ? 4 : 3}
+        md={_cart ? 8 : 3}
+        lg={_cart ? 8 : 2}
+        xl={_cart ? 8 : 2}
+        className={classes.qty}
+      >
         <Grid container item xs={12} justify="space-between">
           <Grid item xs={3} className={classes.alignGrid}>
             <IndeterminateCheckBoxIcon

@@ -359,9 +359,11 @@ class Allorders extends React.Component {
                                                                                 price={cart.transSkuListByProductSku.markupPrice}
                                                                                 offerPrice={cart.transSkuListByProductSku.markupPrice}
                                                                                 offerDiscount={"25% - OFF"}
+                                                                                quantity = {cart.qty}
                                                                             ></Pricing>
                                                                             : <Pricing
                                                                                 offerPrice={cart.transSkuListByProductSku.markupPrice}
+                                                                                quantity = {cart.qty}
                                                                             ></Pricing>}<br />
                                                                     </Grid>}
                                                             </Grid></>)
