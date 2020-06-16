@@ -86,13 +86,17 @@ const Quantity = (props) => {
       let _price = props.data[0] && props.data[0].dataCard1 && props.data[0].dataCard1[0].offerPrice ? props.data[0].dataCard1[0].offerPrice : props.data[0].offerPrice
       updateVariables["product"] = {sku_id:props.data[0].skuId,qty:state.qty,price:_price}
       updateVariables["cart_id"] = JSON.parse(localStorage.getItem('cart_id')).cart_id
+   try {
     fetch(`${API_URL}/updatecartitem`, {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(updateVariables),
-})
-  .then(res => res.json())
-  .then(res => console.log(res.data));
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updateVariables),
+    })
+      .then(res => res.json())
+      .then(res => console.log(res.data));
+   } catch (error) {
+     console.log('Error Occoured in quantity updation.', error)
+   }
     }
   }
   React.useEffect(() => {
@@ -148,14 +152,15 @@ const Quantity = (props) => {
     let localStorageQuantity = localStorage.getItem("quantity")
       ? JSON.parse(localStorage.getItem("quantity"))
       : null;
-    if (!localStorageQuantity || !localStorageQuantity[props.data[0].skuId]) {
+      setFilters({ ...filters, quantity });
+      if (!localStorageQuantity || !localStorageQuantity[props.data[0].skuId]) {
       let _obj = {};
       _obj[props.data[0].skuId] = state.qty;
       localStorage.setItem("quantity", JSON.stringify(_obj));
       quantity[props.data[0].skuId] = state.qty;
     }
     
-    setFilters({ ...filters, quantity });
+    
     _updateQuantityApi()
   }, []);
   console.clear();
