@@ -506,6 +506,7 @@ class Checkoutcard extends React.Component {
 
 }
 const Components = props => {
+    debugger
     const [ShippingCharge, setShippingCharge] = React.useState(0)
     React.useEffect(()=>{
         
