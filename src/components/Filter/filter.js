@@ -518,7 +518,6 @@ if (window.location.search) {
 
   };
   handlebye = () => {
-alert('haii')
   }
   check_goldCoins = (values_) => {
     

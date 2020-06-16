@@ -299,9 +299,48 @@ class Component extends React.Component {
     }
 
     deletechecklists = () => {
-        this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
+        // this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
 
-        sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
+        // sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
+        this.props.setCartFilters({
+            skuId: this.props.data[0].skuId,
+            qty: this.props.quantity && this.props.data && this.props.quantity[this.props.data[0].skuId] ? this.props.quantity[this.props.data[0].skuId] : 1,
+            price: this.props.data[0].offerPrice,
+          });
+      
+          const _qty = this.props.quantity && this.props.data &&  this.props.quantity[this.props.data[0].skuId] ? this.props.quantity[this.props.data[0].skuId] : 1
+          this.props.setFilters({
+            ...this.props.filters, quantity:_qty
+          })
+          let localStorageQuantity = localStorage.getItem("quantity")
+          ? JSON.parse(localStorage.getItem("quantity"))
+          : null;
+      
+          if (!localStorageQuantity) {
+            if (localStorageQuantity && !localStorageQuantity[this.props.data[0].skuId]) {
+              let _obj = {};
+              localStorageQuantity[this.props.data[0].skuId] = _qty;
+              localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
+              this.props.filters.quantity[this.props.data[0].skuId] = _qty;
+            } else {
+              let _obj = {};
+              _obj[this.props.data[0].skuId] = _qty;
+              localStorage.setItem("quantity", JSON.stringify(_obj));
+              this.props.filters.quantity[this.props.data[0].skuId] = _qty;
+            }
+          } else {
+            localStorageQuantity[this.props.data[0].skuId] = _qty;
+            localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
+            this.props.filters.quantity[this.props.data[0].skuId] = localStorageQuantity[this.props.data[0].skuId];
+          }
+          sessionStorage.setItem(
+            "updatedProduct",
+            JSON.stringify({
+              sku_id: this.props.data[0].skuId,
+              qty:this.props.quantity && this.props.data && this.props.quantity[this.props.data[0].skuId] ? this.props.quantity[this.props.data[0].skuId] : 1,
+              price: this.props.data[0].offerPrice,
+            })
+          );
         window.location.pathname = "/cart"
 
         this.setState({

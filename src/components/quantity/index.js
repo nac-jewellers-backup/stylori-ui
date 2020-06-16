@@ -6,6 +6,7 @@ import IndeterminateCheckBoxIcon from "@material-ui/icons/IndeterminateCheckBox"
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import { ProductDetailContext } from "context/ProductDetailContext";
+import {API_URL} from "../../config"
 const handleQty = (isMaxMin, _incrementQty, _maxOrderQty, setClass, state, skuId) => {
   var element = document.getElementById(`number${skuId}`);
   var value = parseInt(element.value, 10);
@@ -78,6 +79,20 @@ const Quantity = (props) => {
       maxOrderQty: data["maxOrderQty"],
     });
   };
+  const _updateQuantityApi = () =>{
+    if(localStorage.getItem('cart_id') && JSON.parse(localStorage.getItem('cart_id')).cart_id){
+      let updateVariables = {}
+      updateVariables["product"] = {sku_id:props.data[0].skuId,qty:state.qty,price:props.data[0].dataCard1[0].offerPrice}
+      updateVariables["cart_id"] = JSON.parse(localStorage.getItem('cart_id')).cart_id
+    fetch(`${API_URL}/updatecartitem`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(updateVariables),
+})
+  .then(res => res.json())
+  .then(res => console.log(res.data));
+    }
+  }
   React.useEffect(() => {
     const _funcUpdate = () =>{
       debugger
@@ -122,6 +137,8 @@ const Quantity = (props) => {
     setFilters({ ...filters, quantity });
     }
     _funcUpdate()
+    _updateQuantityApi()
+    
   }, [state.qty]);
   React.useEffect(() => {
     let quantity = filters.quantity;
@@ -135,8 +152,9 @@ const Quantity = (props) => {
       localStorage.setItem("quantity", JSON.stringify(_obj));
       quantity[props.data[0].skuId] = state.qty;
     }
-
+    
     setFilters({ ...filters, quantity });
+    _updateQuantityApi()
   }, []);
   console.clear();
   console.log("this.props.isdatafromstate", filters);

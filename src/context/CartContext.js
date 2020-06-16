@@ -588,7 +588,6 @@ const Provider = (props) => {
         }
     }
     useEffect(() => {
-
         setCartFilters(skus)
 // _qty()
         updateProductList();

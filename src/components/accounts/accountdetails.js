@@ -65,6 +65,8 @@ class Accountdetails extends Component {
         })
     }
     render() {
+        console.log(this.props)
+        debugger
         let c_k_l = localStorage.getItem("c_k_l") ? localStorage.getItem("c_k_l") : {}
         // console.log(this.props)
         // const { wishlistdata } = this.props.wishlistdata;
@@ -157,7 +159,7 @@ class Accountdetails extends Component {
                                     {
                                         this.state.isActive == 'shoppingcart' && <>
 
-                                            {this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
+                                            {this.props.data.length > 0 ? <CartCard data={this.props.data} isStateFilterContextQty={this.props.isdatafromstate}/> :
                                                 <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
                                     }
                                     {
@@ -233,7 +235,7 @@ class Accountdetails extends Component {
                                 this.state.isActive == 'addresses' && <Addressform />
                             }
                             {
-                                this.state.isActive == 'shoppingcart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
+                                this.state.isActive == 'shoppingcart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} isStateFilterContextQty={this.props.isdatafromstate}/> :
                                     <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
                             }
                             {
