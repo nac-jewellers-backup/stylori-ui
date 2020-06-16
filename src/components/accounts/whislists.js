@@ -91,6 +91,7 @@ class Component extends React.Component {
                                                 </div>
                                             </>
                                         }
+                                        datas = {this.props.data}
                                     />
                                 </Grid>
                                 <Grid item xs={5} sm={3} lg={3}>
@@ -114,6 +115,7 @@ class Component extends React.Component {
                                                     data={
                                                         <><i class="fa fa-shopping-bag"></i>&nbsp;Add to Bag</>
                                                     }
+                                                    datas = {this.props.data}
                                                 />
 
                                             </>

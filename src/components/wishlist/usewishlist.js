@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
-import { CartContext } from 'context'
+import { CartContext,ProductDetailContext } from 'context'
 import { API_URL, HOME_PAGE_URL, CDN_URL } from '../../config';
 import { CART, FetchSku, FetchCartId } from 'queries/cart';
 
@@ -18,6 +18,7 @@ const useWishlists = (props) => {
     // const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addwishlist', {}, [], false);
     // const { data: removedata, makeFetch: removemakeFetch, } = useNetworkRequest('/removewishlist', {}, [], false);
     const { setCartFilters, setwishlistdata } = React.useContext(CartContext);
+    const { ProductDetailCtx:{filters}, setFilters } = React.useContext(ProductDetailContext);
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
     const check_gustlog = localStorage.getItem("true") ? localStorage.getItem("true") : {}
     // useEffect(() => {
@@ -101,7 +102,7 @@ const useWishlists = (props) => {
         return response.json()
     }
     const handelRemove = (num) => {
-        
+        debugger
         setwishlistdata({
             wishlistdata: values.isactive
         })
@@ -119,7 +120,31 @@ const useWishlists = (props) => {
             var _conditionfetchCartId = {
                 "UserId": { "userprofileId": localStorage.getItem("user_id") }
             }
-            
+            const _qty = filters && values.product_sku &&  filters[values.product_sku] ? filters[values.product_sku] : 1
+            setFilters({
+              ...filters, quantity:_qty
+            })
+            let localStorageQuantity = localStorage.getItem("quantity")
+            ? JSON.parse(localStorage.getItem("quantity"))
+            : null;
+        
+            if (!localStorageQuantity) {
+              if (localStorageQuantity && !localStorageQuantity[values.product_sku]) {
+                let _obj = {};
+                localStorageQuantity[values.product_sku] = _qty;
+                localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
+                filters.quantity[values.product_sku] = _qty;
+              } else {
+                let _obj = {};
+                _obj[values.product_sku] = _qty;
+                localStorage.setItem("quantity", JSON.stringify(_obj));
+                filters.quantity[values.product_sku] = _qty;
+              }
+            } else {
+              localStorageQuantity[values.product_sku] = _qty;
+              localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
+              filters.quantity[values.product_sku] = localStorageQuantity[values.product_sku];
+            }
             fetch(`${API_URL}/removewishlist`, {
                 
                 method: 'POST',

@@ -81,8 +81,10 @@ const Quantity = (props) => {
   };
   const _updateQuantityApi = () =>{
     if(localStorage.getItem('cart_id') && JSON.parse(localStorage.getItem('cart_id')).cart_id){
+      debugger
       let updateVariables = {}
-      updateVariables["product"] = {sku_id:props.data[0].skuId,qty:state.qty,price:props.data[0].dataCard1[0].offerPrice}
+      let _price = props.data[0] && props.data[0].dataCard1 && props.data[0].dataCard1[0].offerPrice ? props.data[0].dataCard1[0].offerPrice : props.data[0].offerPrice
+      updateVariables["product"] = {sku_id:props.data[0].skuId,qty:state.qty,price:_price}
       updateVariables["cart_id"] = JSON.parse(localStorage.getItem('cart_id')).cart_id
     fetch(`${API_URL}/updatecartitem`, {
   method: 'POST',
