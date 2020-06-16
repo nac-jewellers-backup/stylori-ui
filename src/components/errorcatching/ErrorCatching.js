@@ -9,7 +9,6 @@ export default class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    alert('deii')
     // Catch errors in any components below and re-render with error message
     this.setState({
       error: error,
