@@ -253,7 +253,7 @@ export const TabsProvider = (props) => {
     }, [loading, error, data, price])
     const updateProductList = async () => {
 
-        if (Object.entries(variables).length !== 0 && variables.constructor === Object) {
+        if (variables && Object.entries(variables).length !== 0 && variables.constructor === Object) {
             await makeRequest(variables);
         }
         else {

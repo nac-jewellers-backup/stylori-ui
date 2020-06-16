@@ -6,8 +6,8 @@ import IndeterminateCheckBoxIcon from "@material-ui/icons/IndeterminateCheckBox"
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import { ProductDetailContext } from "context/ProductDetailContext";
-const handleQty = (isMaxMin, _incrementQty, _maxOrderQty, setClass, state) => {
-  var element = document.getElementById("number");
+const handleQty = (isMaxMin, _incrementQty, _maxOrderQty, setClass, state, skuId) => {
+  var element = document.getElementById(`number${skuId}`);
   var value = parseInt(element.value, 10);
   var increment = state["maxOrderQty"];
   var decrement = state["minOrderQty"];
@@ -53,7 +53,7 @@ const Quantity = (props) => {
       : 1;
   const _maxOrderQty =
     props.data && props.data.length > 0 && props.data[0].maxOrderQty
-      ? props.data[0].maxOrderQty
+      ? props.data[0].maxOrderQty 
       : 100000;
 
   const [state, setState] = React.useState({
@@ -80,6 +80,7 @@ const Quantity = (props) => {
   };
   React.useEffect(() => {
     const _funcUpdate = () =>{
+      debugger
       let { quantity } = filters;
     // quantity[props.data[0].skuId] = state.qty;
     let localStorageQuantity = localStorage.getItem("quantity")
@@ -110,7 +111,7 @@ const Quantity = (props) => {
     setFilters({ ...filters, quantity });
     }
     _funcUpdate()
-  }, [state]);
+  }, [state.qty]);
   React.useEffect(() => {
     let quantity = filters.quantity;
 
@@ -164,7 +165,7 @@ const Quantity = (props) => {
                 !state.minOrderQty ? classes.iconDisabled : ""
               }`}
               onClick={() => {
-                handleQty("min", _incrementQty, _maxOrderQty, setClass, state);
+                handleQty("min", _incrementQty, _maxOrderQty, setClass, state, props.data[0].skuId);
               }}
             />
           </Grid>
@@ -175,7 +176,7 @@ const Quantity = (props) => {
           >
             <input
               type="text"
-              id="number"
+              id={`number${[props.data[0].skuId]}`}
               value={filters.quantity[props.data[0].skuId]}
               disabled
               style={{ width: "100%" }}
@@ -187,7 +188,7 @@ const Quantity = (props) => {
                 !state.maxOrderQty ? classes.iconDisabled : ""
               }`}
               onClick={() => {
-                handleQty("max", _incrementQty, _maxOrderQty, setClass, state);
+                handleQty("max", _incrementQty, _maxOrderQty, setClass, state, props.data[0].skuId);
               }}
             />
           </Grid>
