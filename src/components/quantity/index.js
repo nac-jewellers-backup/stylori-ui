@@ -108,6 +108,17 @@ const Quantity = (props) => {
       localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
       quantity[props.data[0].skuId] = localStorageQuantity[props.data[0].skuId];
     }
+    let localStorageCartDetails = JSON.parse(localStorage.getItem('cartDetails'))
+    let _checkValid = localStorageCartDetails && localStorageCartDetails.products ? localStorageCartDetails.products : []
+    if(_checkValid.length > 0){
+      _checkValid.map((val,i)=>{
+        if(val.sku_id ===props.data[0].skuId){
+          localStorageCartDetails.products[i].qty = state.qty
+        
+        }
+        })
+        localStorage.setItem('cartDetails', JSON.stringify(localStorageCartDetails))
+    }
     setFilters({ ...filters, quantity });
     }
     _funcUpdate()
