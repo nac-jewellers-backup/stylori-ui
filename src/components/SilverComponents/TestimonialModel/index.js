@@ -155,6 +155,7 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function ImageGridList(props) {
+    debugger
     const classes = useStyles();
 
     const slider = React.createRef();
@@ -173,6 +174,7 @@ export default function ImageGridList(props) {
                 </div>
             </Grid>
             <Grid item className={classes.menuCenter} >
+               {props.data && props.data.length>0 ?
                 <Slideshow dataCarousel={props.data[0].settings} sliderRef={slider}>
                     {props.data[0].images.map((val, Index) =>
                         <Grid container style={{ height: "100%" }}>
@@ -199,6 +201,9 @@ export default function ImageGridList(props) {
                         </Grid>
                     )}
                 </Slideshow>
+                :
+                <div>Loading...</div>
+                }
             </Grid>
             <Grid item className={classes.imgleftGrid2}>
                 {/* <img onClick={() => next()} className={classes.imgRight} />

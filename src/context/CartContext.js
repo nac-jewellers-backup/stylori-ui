@@ -371,7 +371,22 @@ const Provider = (props) => {
             })
                 .then(status)
                 .then(json).then(async val => {
-
+                    let localStorageCartDetails = JSON.parse(localStorage.getItem('cartDetails'))
+                    let localStorageQty = JSON.parse(localStorage.getItem('quantity'))
+                    let _checkValid = localStorageCartDetails && localStorageCartDetails.products ? localStorageCartDetails.products : []
+                    if(_checkValid.length > 0){
+                        val.data.allShoppingCarts.nodes[0].shoppingCartItemsByShoppingCartId.nodes.map(valresult=>{
+                            _checkValid.map((valProducts,i)=>{
+                                if(valProducts.sku_id ===valresult.productSku){
+                                  localStorageCartDetails.products[i].qty = valresult.qty
+                                  localStorageQty[valresult.productSku]   = valresult.qty
+                                }
+                                })      
+                        })
+                      
+                        localStorage.setItem('quantity', JSON.stringify(localStorageQty))
+                        localStorage.setItem('cartDetails', JSON.stringify(localStorageCartDetails))
+                    }
                     if (val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length > 0 &&
                         val.data.allShoppingCarts.nodes[0].status !== "pending") {
                         // alert(val.data.allShoppingCarts.nodes[0].status)

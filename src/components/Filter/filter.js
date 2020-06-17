@@ -950,7 +950,7 @@ filter.map((row, i) => {
 
         <Hidden mdUp>
           <div style={{ top: '60px', position: 'absolute', backgroundColor: 'white', width: '100%' }}>
-            <div style={{ height: "23px", padding: "9px", borderBottom: "1px solid #e3e3e3", display: openMobile ? 'none' : 'block', position: 'sticky', top: '0px' }}
+            <div style={{ padding: "9px", borderBottom: "1px solid #e3e3e3", display: openMobile ? 'none' : 'block', position: 'sticky', top: '0px' }}
               className={`${classes.colorMain}`}
             >
               <button onClick={this.handleDrawerCloseMobile} style={{ background: 'none', border: 'none', fontWeight: '600', color: 'rgba(58, 69, 120, 1)', padding: '6px 8px' }}>

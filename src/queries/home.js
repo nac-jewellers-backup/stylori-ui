@@ -22,3 +22,13 @@ export const testimonials = `query testimonials {
       }
     }
   }`
+
+  export const silverStyloriHomepage = `query styloriSilverTestimonials {
+    allCustomerReviews(condition: {isPublish: true}, orderBy: IS_PUBLISH_DESC) {
+      nodes {
+        customerName
+        message
+      }
+    }
+  }
+  `

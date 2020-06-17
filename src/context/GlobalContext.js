@@ -1,4 +1,5 @@
 import React from 'react';
+import {routes} from 'router/routes'
 
 const initialCtx = {
     GLobalCtx: {
@@ -24,8 +25,10 @@ export const GlobalProvider = (props) => {
     React.useEffect(()=>{
         
         var loc = window.location.pathname.split('/')[1].split('-').filter(val=>{if(val==='silver') return val})
+        var locsilverStaticPage = window.location.pathname.split('/')[1]
+        console.log('locsilverStaticPage',routes.Silver, `/${locsilverStaticPage}`)
         var loc_PD = window.location.pathname.split('/').filter(val=>{if(val==='silverjewellery') return val})
-        if(window.location.pathname==='/stylorisilver') setGlobalCtx({...Globalctx, pathName:true})
+        if(`/${locsilverStaticPage}` === routes.Silver) setGlobalCtx({...Globalctx, pathName:true})
         else if(loc_PD.length > 0 ) setGlobalCtx({...Globalctx, pathName:true})
         else if(loc.length > 0) setGlobalCtx({...Globalctx, pathName:true})
         else setGlobalCtx({...Globalctx, pathName:false})

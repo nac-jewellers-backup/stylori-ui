@@ -286,9 +286,17 @@ export const FetchCartId = `query FetchCartId($UserId: ShoppingCartCondition) {
       userprofileId
       id
       status
+      shoppingCartItemsByShoppingCartId {
+        nodes {
+          qty
+          productSku
+        }
+      }
     }
   }
 }
+
+
 `
 export const USERPROFILE = `query MyQuery($id: UUID!) {
   userProfileById(id: $id) {
