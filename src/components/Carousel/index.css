@@ -31,8 +31,10 @@
   cursor: pointer;
 }
 .hovereffect-silver {
-  width: 70% !important;
-  margin-left: 15% !important;
+  width: 50% !important;
+  margin-left: 25% !important;
+  box-shadow: 4px 5px 6px rgba(208, 210, 211, 1) !important;
+    margin-bottom: 7px;
 }
 .hovereffect .overlay1 {
   width: 100%;
@@ -270,4 +272,14 @@
 .silverClassSeoBanner{
   width: 100% !important;
   height: 250px !important;
+}
+
+
+/* media query */
+
+@media only screen and (max-width: 600px) {
+  .hovereffect-silver{
+    width: 70% !important;
+  margin-left: 15% !important;
+  }
 }

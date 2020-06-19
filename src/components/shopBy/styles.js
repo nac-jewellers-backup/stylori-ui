@@ -13,7 +13,8 @@ const styles = (theme) => ({
       color:theme.palette.secondary.main,
       letterSpacing: "6px",
       fontWeight: "bold",
-      marginLeft: 40,
+      // marginLeft: 40,
+      padding:'0px 0px 0px 15px'
     },
   },
 });

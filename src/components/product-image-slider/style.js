@@ -389,7 +389,7 @@ quantity:{
 margin:'0px 0px 18px 0px'
 },
 labelSilverProductDetail:{
-  marginLeft:107,
+  // marginLeft:107,
   "& div": {
     textTransform: "uppercase",
     color:theme.palette.secondary.main,

@@ -201,7 +201,7 @@ class Component extends React.Component {
                       color: "rgba(166, 168, 171, 1)",
                       padding:'5px 10px',
                       marginBottom:'10px',
-                      boxShadow:'rgba(208, 210, 211, 0.66) 3px 3px 3px',
+                      boxShadow:'#b9b9b9 3px 3px 3px',
                       minWidth:'100px',
                       fontSize:'12px',
                       letterSpacing:1

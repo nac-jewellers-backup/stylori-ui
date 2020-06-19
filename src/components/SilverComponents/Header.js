@@ -286,7 +286,7 @@ class Header extends Component {
                                                     } >
                                                         <a href="/cart" className="highlighter">
                                                             <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
-                                                            <span className="tooltip-s" style={{ color: "#d51f63" }}>Cart</span>
+                                                            <span className="tooltip-s" style={{ color: isSilver ? 'rgba(218, 185, 122, 1)' :"#d51f63" }}>Cart</span>
                                                         </a> </Badge>
                                                 </div>
                                             </div>

@@ -572,7 +572,12 @@ body {
     padding-left: 25px !important;
     border: 1px solid #ccc;
 }
-
+.pincode-cust-silver{
+    background-image: unset !important;
+    background-position:unset !important;
+    background-repeat:unset !important;
+    padding-left:0 !important;
+}
 .buy-now-iconz {
     background-repeat: no-repeat !important;
     padding-left: 31px !important;

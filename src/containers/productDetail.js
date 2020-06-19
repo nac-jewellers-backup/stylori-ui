@@ -305,15 +305,65 @@ class ProductDetail extends Component {
               <br />
             </Grid>
           </div>
-          <Sublistcarousel data={this.props.data} isSilver={isSilver} />
-          {isSilver && <ShopBy shopByStyloriSilver={this.props.shopByStyloriSilver}/>}
-          <RatingForm
+        {isSilver ?
+          <div    style={{
+              
+              maxWidth: "1600px",
+              margin: "auto",
+              paddingLeft:'5%',
+              paddingRight:"5%" 
+            }}>
+<Sublistcarousel data={this.props.data} isSilver={isSilver} />
+          </div>
+        :
+        <Sublistcarousel data={this.props.data} isSilver={isSilver} />  
+        }
+          {isSilver && 
+            <div    style={{
+              
+              maxWidth: "1600px",
+              margin: "auto",
+              paddingLeft:'5%',
+              paddingRight:"5%" 
+            }}>
+<ShopBy shopByStyloriSilver={this.props.shopByStyloriSilver}/>
+          </div>
+  }
+          {isSilver?
+             <div    style={{
+              
+              maxWidth: "1600px",
+              margin: "auto",
+             
+            }}>
+<RatingForm
+          // 0 0 0 
             data={this.props.data}
             clear_rating={this.state.clear}
             clear_rating_onchange={clear_rating}
             isSilver={isSilver}
           />
-          <CustomerReviews rating={this.props.rating} isSilver={isSilver} />
+          </div>
+          :
+          <RatingForm
+          // 0 0 0 
+            data={this.props.data}
+            clear_rating={this.state.clear}
+            clear_rating_onchange={clear_rating}
+            isSilver={isSilver}
+          />
+            }
+         {isSilver?
+             <div    style={{
+              
+              maxWidth: "1600px",
+              margin: "auto",
+             
+            }}>
+<CustomerReviews rating={this.props.rating} isSilver={isSilver} />
+          </div>
+          :
+          <CustomerReviews rating={this.props.rating} isSilver={isSilver} />}
 
           <Grid item xs={12}>
             <Footer />

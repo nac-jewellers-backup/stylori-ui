@@ -175,8 +175,8 @@ const Quantity = (props) => {
           xs={4}
           sm={3}
           md={12}
-          lg={4}
-          xl={4}
+          lg={2}
+          xl={2}
           className={classes.label}
         >
           <Typography variant="body1" component="div">

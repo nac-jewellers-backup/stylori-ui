@@ -63,7 +63,7 @@ const inputsearch = (
               type="tel"
               placeholder="Enter Pincode"
               maxLength={6}
-              className="pincode-cust buynow-search"
+              className={`pincode-cust buynow-search ${isSilver ? 'pincode-cust-silver' : ''}`}
               value={state.values}
               onChange={(event) => {
                 handleChanges(event);
