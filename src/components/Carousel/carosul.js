@@ -104,7 +104,7 @@ class Component extends React.Component {
   };
 
   imagehoverchildrens = (hoverlist, globalContext, isInjectUrl) => {
-    let { hover, hovereffect, TopPic, imagecra, isSilver } = this.props;
+    let { hover, hovereffect, TopPic, imagecra, isSilver, collectionDataSilverSEO  } = this.props;
     ;
     if (TopPic) {
       return hoverlist.map((val) => (
@@ -144,10 +144,10 @@ class Component extends React.Component {
             />
             <div className="overlay1">
               <div style={{ paddingTop: "40%" }}>
-                <h2 className="next-price">{val.title}</h2>
+                <h2 className="next-price">{val.title.toUpperCase()}</h2>
                 <br />
-                <h5 className="contenttext">{val.description}</h5>
-                <a className="info" href={`/${val.url}`}>
+                <h5 className="contenttext">{collectionDataSilverSEO ?collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText ? collectionDataSilverSEO[val.title].seoText : '' : val.description}</h5>
+                <a className="info" style={{textDecoration:"none"}} href={`${collectionDataSilverSEO ?collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoUrl ? `/jewellery-${collectionDataSilverSEO[val.title].seoUrl}` : '#' : `/${val.url}`}`}>
                   <span className="shop">SHOP</span>
                 </a>
               </div>
@@ -163,7 +163,7 @@ class Component extends React.Component {
             <div className={"subslider-carousel" + hover ? `hovereffect hovereffect-silver ` : ""} >
               <img
                 src={val.img}
-                className="subslider-carousel-img img-responsive"
+                className="subslider-carousel-img img-responsive" 
                 alt=""
                 onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
               />

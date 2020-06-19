@@ -72,9 +72,11 @@ const Components = (props) => {
         })
         .then(status)
         .then(json)
-        .then(data=>{
-          setState({...state,data:data})
-          fetch(`${API_URL}/graphql`, {
+        .then(async data=>{
+            state['data']= data
+          
+          allCollections = data
+        await  fetch(`${API_URL}/graphql`, {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
@@ -86,11 +88,10 @@ const Components = (props) => {
         })
         .then(status)
         .then(json)
-        .then(data=>{
-            debugger
+        .then(res=>{
           const  func = () =>{
                 var obj = {}
-                data.data.allSeoUrlPriorities.nodes.map(val=>{
+                res.data.allSeoUrlPriorities.nodes.map(val=>{
                 obj[val.attributeValue] = {}
                 obj[val.attributeValue]["seoText"] = val.seoText ? val.seoText : " "
                 obj[val.attributeValue]["seoUrl"] = val.seoUrl ? val.seoUrl : " "
@@ -98,9 +99,9 @@ const Components = (props) => {
                 return obj
                 }
                 // let _data =func()
-                // setState({...state,allSeo:func()})
-        //   console.log("allcollections SEO", _data)
+                state['allSeo'] = func()
           debugger
+          setState({...state,data:state.data,allSeo:state.allSeo})
           
         })
         })

@@ -32,7 +32,8 @@ const ProductModal = (props) => {
   const {
     data: { fadeImagessublist },
     shopByStyloriSilver,
-    collectionsData
+    collectionsData,
+    allSeo
   } = props;
 
   let _shopByData =
@@ -107,6 +108,7 @@ var _keysCollections = Object.keys(data).filter(val=>{
   const classes = useStyles();
   // alert(JSON.stringify(props.collectionsData))
   // console.log(props.allSeo,"props.allSeoprops.allSeoprops.allSeoprops.allSeo")
+  debugger
   const paginationtoggle = () =>{
     debugger
     if(state.pagination < collectionData.length){
@@ -142,6 +144,7 @@ var _keysCollections = Object.keys(data).filter(val=>{
                 hovereffect={true}
                 isInjectUrl={true} 
                 type="hover"
+                collectionDataSilverSEO={allSeo}
               />
             </Hidden>
             <Hidden mdUp>
@@ -182,6 +185,7 @@ var _keysCollections = Object.keys(data).filter(val=>{
                   WithoutHoverhover={true}
                   type="hover"
                   isInjectUrl={true} 
+                  
                 />
               )}
               <Grid
@@ -199,7 +203,7 @@ var _keysCollections = Object.keys(data).filter(val=>{
                   justify="center"
                   className={shopByStyloriSilver ? classes.productCardTitle2:classes.productCardTitle}
                 >
-                  {tile.title}
+                  {tile.title.toUpperCase()}
                 </Grid>
                 <Grid
                   container
@@ -207,10 +211,10 @@ var _keysCollections = Object.keys(data).filter(val=>{
                   xs={12}
                   className={shopByStyloriSilver ? `${classes.productCardDescription2}`:`${classes.productCardDescription}`}
                 >
-                  {collectionData ? props.allSeo[tile.title] ? props.allSeo[tile.title] : '' : tile.description}
+                  {collectionsData ? props.allSeo[tile.title] ? props.allSeo[tile.title].seoText : '' : tile.description}
                 </Grid>
                 <Grid container item xs={12} justify="center">
-                    <a href={`/silver-${tile.title.toLowerCase()}-jewellery`} style={{textDecoration:'none'}}>
+                    <a href={collectionsData ? props.allSeo[tile.title] ? `/jewellery-${props.allSeo[tile.title].seoUrl}` : '#' : `/silver-${tile.title.toLowerCase()}-jewellery`} style={{textDecoration:'none'}}>
                     <Button variant="contained" className={shopByStyloriSilver ? `${classes.btnshop2}` :`${classes.btnshop}`}>
                     SHOP
                   </Button>
