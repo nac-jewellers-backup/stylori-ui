@@ -64,11 +64,11 @@ const Quantity = (props) => {
       filters.quantity[props.data[0].skuId] > _incrementQty
         ? true
         : false,
-    qty: filters.quantity[props.data[0].skuId]
-      ? filters.quantity[props.data[0].skuId]
-      : _incrementQty
-      ? _incrementQty
-      : 1,
+    qty:  filters.quantity[props.data[0].skuId]
+    ? filters.quantity[props.data[0].skuId]
+    : _incrementQty
+    ? _incrementQty
+    : 1
   });
 
   const setClass = (data) => {
@@ -160,8 +160,7 @@ const Quantity = (props) => {
       quantity[props.data[0].skuId] = state.qty;
     }
     
-    
-    _updateQuantityApi()
+    // _updateQuantityApi()
   }, []);
   console.clear();
   console.log("this.props.isdatafromstate", filters);

@@ -10,6 +10,7 @@ import { GlobalContext, CartContext } from "context";
 import Buynowbutton from "../Buynow/buynowbutton";
 import CommenDialog from "../Common/Dialogmodel";
 import {injectUrl_url_construct} from 'common/index'
+import {CDN_URL} from '../../config'
 const Slideshow = (props) => {
   let {
     CartCtx: { allorderdata, wishlistdata, setratingcountsclear },
@@ -94,6 +95,7 @@ class Component extends React.Component {
                 }`}
                 src={imgs}
                 alt=""
+                onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
               />
             )}
           </div>
@@ -114,6 +116,7 @@ class Component extends React.Component {
             className="subslider-carousel-img img-responsive"
             style={{ width: "100%", height: "auto" }}
             alt=""
+            onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
           />
           <div className="overlay1">
             <div>
@@ -137,6 +140,7 @@ class Component extends React.Component {
               className="subslider-carousel-img img-responsive"
               style={{ width: "100%", height: "auto" }}
               alt=""
+              onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
             />
             <div className="overlay1">
               <div style={{ paddingTop: "40%" }}>
@@ -161,6 +165,7 @@ class Component extends React.Component {
                 src={val.img}
                 className="subslider-carousel-img img-responsive"
                 alt=""
+                onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
               />
               <div className="overlay1">
                 <div
@@ -240,6 +245,7 @@ class Component extends React.Component {
                   src={val.img}
                   className="subslider-carousel-img img-responsive"
                   alt=""
+                  onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
                 />
                 <div className="overlay1">
                   <h2 className="next-price">{val.title}</h2>
@@ -278,6 +284,7 @@ class Component extends React.Component {
               display: "block !important  ",
             }}
             alt=""
+            onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
           />
           )
         })
@@ -291,6 +298,7 @@ class Component extends React.Component {
             display: "block !important  ",
           }}
           alt=""
+          onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
         />}
         {/* <div class="overlay1">
           <div style={{paddingTop:'40%'}}>
@@ -328,7 +336,7 @@ class Component extends React.Component {
     } else {
       this.setState({
         dialogOpen: !this.state.dialogOpen,
-      });
+      }); 
     }
   };
 

@@ -72,6 +72,7 @@ export const TabsProvider = (props) => {
         setvieweddata(vieweddata)
     }, [vieweddata, price, data])
     useEffect(() => {
+        debugger
         let localStorageQuantity = localStorage.getItem('quantity') ? JSON.parse(localStorage.getItem('quantity')) : null
         
         if(localStorageQuantity){

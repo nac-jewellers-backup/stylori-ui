@@ -211,10 +211,10 @@ const BuydetailsSilverdetailpage = (props, state, handleChanges, handleCodChange
 
 const PriceBuynow = (props) => {
     const { loading, error, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
-    const { ProductDetailCtx, setFilters } = React.useContext(ProductDetailContext);
+    const { ProductDetailCtx:{filters}, setFilters } = React.useContext(ProductDetailContext);
     const { setCartFilters } = React.useContext(CartContext);
 
-    return <Component setCartFilters={setCartFilters} setFilters={setFilters} filters={ProductDetailCtx.filters} makeRequestCod={makeRequestCod} CodData={CodData} {...props} />
+    return <Component setCartFilters={setCartFilters} setFilters={setFilters} filters={filters} quantity={filters.quantity} makeRequestCod={makeRequestCod} CodData={CodData} {...props} />
 }
 
 
@@ -396,7 +396,7 @@ class Component extends React.Component {
                     }
                 </Hidden>
 
-                <Hidden mdUp>
+                <Hidden mdUp> 
                     <div style={{ marginTop: "10px" }}>
                     {isSilver ?
                     <SilverProductPrice data={this.props.data} wishlist={this.props.wishlist} pincode ={inputsearch} 

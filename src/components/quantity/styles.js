@@ -30,14 +30,14 @@ const styles = (theme) => ({
   },
 icon:{
     fill: `${theme.palette.primary.main} !important`,
-    color: theme.palette.overallButoon.contrastText,
+    color: theme.palette.overallButoon.contrastText, 
     cursor:'pointer',
     borderRadius:'unset !important'
 },
 iconDisabled:{
-  fill: `${theme.palette.secondary.main} !important`,
+  fill: `rgba(166, 168, 171, 1) !important`,
     color: theme.palette.overallButoon.contrastText,
-    cursor:'not-allowed !important',
+    cursor:'not-allowed !important', 
     borderRadius:'unset !important'
 }
 });

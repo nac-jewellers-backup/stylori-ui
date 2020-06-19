@@ -161,7 +161,7 @@ function MediaControlCard(props) {
                   filter_image(val_imgUrl, val.name, val.details) && filter_image(val_imgUrl, val.name, val.details).length > 0 ?
                   window.location.pathname !== "/checkout" ?
                   <div style={{ width: "195px" }}>
-                    <NavLink to={`jewellery/${dataval.productType}/${dataval.materialName[0]}/${val.pro_header}?skuId=${dataval.generatedSku}`} style={{ textDecoration: 'none' }}>
+                    <NavLink to={dataval.skuUrl} style={{ textDecoration: 'none' }}>
                      
                       <img
                         src={filter_image(val_imgUrl,val.name, val.details)}
@@ -193,7 +193,7 @@ function MediaControlCard(props) {
               <div className={classes.details}>
                 <CardContent className={classes.content}>
                   {window.location.pathname !== "/checkout" ?
-                    <NavLink to={`jewellery/${dataval.productType}/${dataval.materialName[0]}/${val.pro_header}?skuId=${dataval.generatedSku}`} style={{ textDecoration: 'none' }}>
+                    <NavLink to={dataval.skuUrl} style={{ textDecoration: 'none' }}>
                       <Typography
                         component="div"
                         variant="subtitle1"
@@ -210,7 +210,7 @@ function MediaControlCard(props) {
                       {val.pro_header}
                     </Typography>
                   }
-                  <Typography className={`subhesder ${classes.normalfonts}`}>
+                  <Typography className={`subhesder ${classes.normalfonts}`}> 
                                                 {window.location.pathname === "/checkout" || checkMaterial(dataval.materialName)  ?
 
                                                 `Quantity ${JSON.parse(localStorage.getItem('quantity'))[dataval.generatedSku]}`

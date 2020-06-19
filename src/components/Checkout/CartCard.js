@@ -58,9 +58,11 @@ class Checkoutcard extends React.Component {
     handleDeleteLocalStorage = (e) => {
 
         var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
+
+        var _localStorageQuantity = JSON.parse(localStorage.getItem('quantity'))
+
         // var currentValue = e.target.id
         var currentValue = e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id
-
 
         // console.clear()
         // console.log("e-clear",e.target.id)
@@ -69,7 +71,9 @@ class Checkoutcard extends React.Component {
             if (currentValue !== val.sku_id) {
                 return val
             }
+
         })
+        
         function status(response) {
 
             if (response.status >= 200 && response.status < 300) {
@@ -101,12 +105,14 @@ class Checkoutcard extends React.Component {
             })
                 .then(status)
                 .then(json).then(val => {
-                    
+                    debugger
                     sessionStorage.removeItem('updatedProduct');
                     alert(val.message)
                     var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
                     var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
                     var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
+                    delete _localStorageQuantity[currentValue]
+                    localStorage.setItem('quantity', JSON.stringify(_localStorageQuantity))
                     localStorage.setItem('cartDetails', localstorage)
                     window.location.reload();
                 })
@@ -120,13 +126,17 @@ class Checkoutcard extends React.Component {
             var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
             var _obj = { cart_id: cartId, user_id: userId, products: _products }
             if (_products.length > 0) {
+                
                 localStorage.setItem('cartDetails', JSON.stringify(_obj))
+                delete _localStorageQuantity[currentValue]
+                localStorage.setItem('quantity', JSON.stringify(_localStorageQuantity))
                 alert("You removed this product successfully")
                 window.location.reload()
 
             }
             else {
                 localStorage.removeItem('cartDetails', _products)
+                localStorage.removeItem('quantity')
                 alert("You removed this product successfully")
                 window.location.reload()
             }
