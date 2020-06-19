@@ -17,11 +17,10 @@ class HomeStylori extends React.Component {
     }
     render() {
         return ( 
-            <Grid container>
+            <Grid container> 
                     <Header />
                 <CarosolTop />
-                <ProductModal data={this.props.data} allSeo={this.props.allSeo}/>
-                <MultipleSections />
+                <ProductModal data={this.props.data} allSeo={this.props.allSeo} isPagination={true}/>
                 <Grid item>
                     <Footer silver={true} />
                 </Grid>

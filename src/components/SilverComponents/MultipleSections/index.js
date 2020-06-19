@@ -69,7 +69,7 @@ export default (props => {
     },[])
     const mapperData = (data) => {
         const _stateMapper =data &&  data.data &&  data.data.allCustomerReviews && data.data.allCustomerReviews.nodes.length > 0 && data.data.allCustomerReviews.nodes ? data.data.allCustomerReviews.nodes : []
-        debugger
+        
         if(_stateMapper  && _stateMapper.length > 0){
           return [0,1].map((val)=> ({
             Content: "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.",
@@ -106,7 +106,7 @@ export default (props => {
 
     const { mapped } = useDummyRequest(HomedataSilver);
     if (Object.keys(mapped).length === 0) return ''
-debugger
+
     return <MultipleSections {...props} data={mapped}  testimonyCarousel={state.testimonyCarousel}/>
 });
 

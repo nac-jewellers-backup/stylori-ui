@@ -29,6 +29,7 @@ export const GlobalProvider = (props) => {
         console.log('locsilverStaticPage',routes.Silver, `/${locsilverStaticPage}`)
         var loc_PD = window.location.pathname.split('/').filter(val=>{if(val==='silverjewellery') return val})
         if(`/${locsilverStaticPage}` === routes.Silver) setGlobalCtx({...Globalctx, pathName:true})
+        else if(`/${locsilverStaticPage}` === routes.styloriSilverCollections) setGlobalCtx({...Globalctx, pathName:true})
         else if(loc_PD.length > 0 ) setGlobalCtx({...Globalctx, pathName:true})
         else if(loc.length > 0) setGlobalCtx({...Globalctx, pathName:true})
         else setGlobalCtx({...Globalctx, pathName:false})

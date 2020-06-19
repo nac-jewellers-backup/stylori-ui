@@ -66,7 +66,7 @@ class Accountdetails extends Component {
     }
     render() {
         console.log(this.props)
-        debugger
+        
         let c_k_l = localStorage.getItem("c_k_l") ? localStorage.getItem("c_k_l") : {}
         // console.log(this.props)
         // const { wishlistdata } = this.props.wishlistdata;

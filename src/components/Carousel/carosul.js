@@ -103,7 +103,7 @@ class Component extends React.Component {
       : "";
   };
 
-  imagehoverchildrens = (hoverlist, globalContext) => {
+  imagehoverchildrens = (hoverlist, globalContext, isInjectUrl) => {
     let { hover, hovereffect, TopPic, imagecra, isSilver } = this.props;
     ;
     if (TopPic) {
@@ -136,7 +136,7 @@ class Component extends React.Component {
             }
           >
             <img
-              src={val.img}
+              src={isInjectUrl ?injectUrl_url_construct(val.img) : val.img}
               className="subslider-carousel-img img-responsive"
               style={{ width: "100%", height: "auto" }}
               alt=""
@@ -264,7 +264,8 @@ class Component extends React.Component {
       );
     }
   };
-  imagewithouthoverchildrens = (hoverlist) => {
+  imagewithouthoverchildrens = (hoverlist, gtx,isInjectUrl) => {
+    debugger
     return (
       <div
         className={"subslider-carousel-silver "}
@@ -290,7 +291,7 @@ class Component extends React.Component {
         })
         :
         <img
-          src={hoverlist.img}
+          src={isInjectUrl?injectUrl_url_construct(hoverlist.img): hoverlist.img}
           className="subslider-carousel-img-Silver img-responsive"
           style={{
             width: "auto !important",
@@ -398,10 +399,10 @@ class Component extends React.Component {
             ? this.imagehoverchildrens(this.props.hoverlist, Globalctx)
             : ""}
           {this.props.hovereffect
-            ? this.imagehoverchildrens(this.props.hoverlist, Globalctx)
+            ? this.imagehoverchildrens(this.props.hoverlist, Globalctx, this.props.isInjectUrl)
             : ""}
           {this.props.WithoutHoverhover
-            ? this.imagewithouthoverchildrens(this.props.hoverlist, Globalctx)
+            ? this.imagewithouthoverchildrens(this.props.hoverlist, Globalctx, this.props.isInjectUrl)
             : ""}
           {this.props.TopPic
             ? this.imagehoverchildrens(this.props.hoverlist, Globalctx)

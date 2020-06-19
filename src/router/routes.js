@@ -26,7 +26,8 @@ export const routes = {
     paymenthidden: '/paymenthidden',
     Education: '/education',
     ContactUs: '/contactus',
-    Careers: "/careers"
+    Careers: "/careers",
+    styloriSilverCollections:"/silverCollections" 
 
 }
 

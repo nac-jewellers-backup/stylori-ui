@@ -6,7 +6,8 @@ import { useStyles } from "./styles.js";
 import { Grid, Container, Hidden, Button } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import { injectUrl_url_construct } from "common/index";
-import { CDN_URL } from "config";
+import { CDN_URL, API_URL } from "config";
+import {silverStyloriCollections, silverStyloriAllMasterCollections} from "queries/home"
 
 const ProductModal = (props) => {
   const dataCarousel = {
@@ -26,9 +27,12 @@ const ProductModal = (props) => {
     pauseOnFocus: false,
     swipe: false
   };
+
+  const [state, setState] = React.useState({pagination:4, isShowMore:true})
   const {
     data: { fadeImagessublist },
     shopByStyloriSilver,
+    collectionsData
   } = props;
 
   let _shopByData =
@@ -43,12 +47,81 @@ const ProductModal = (props) => {
       };
     });
 
-  let _mapper = shopByStyloriSilver ? _shopByData : fadeImagessublist;
-  let _data = _mapper ? _mapper : []
+  const handleCollectionDataMapper = (_collectiondata, fadeImagessublist) =>{
+    let data = _collectiondata.data
+console.log(fadeImagessublist,"fadeImagessublist")
+console.log(data,"fadeImagessublist data")
+var _keysCollections = Object.keys(data).filter(val=>{
+  let tempdata = data[val]
+  if(tempdata.nodes.length > 0) return val
+  })
+
+  let _fun = () => {
+    let _arr = []
+    _keysCollections.map(val=>{
+    let tempdata = data ? data[val] : false
+    if(tempdata && tempdata.nodes.length > 0 )
+    {
+    
+    let obj ={}
+    
+    obj["img"]=tempdata.nodes[0].productListByProductId.productImagesByProductId.nodes[0].imageUrl
+    obj["title"] = tempdata.nodes[0].collectionName
+    obj["description"] = "Lorem Ipsum is simply dummy text of the printing a…rem Ipsum has been the industry's standard dummy"
+    _arr.push(obj)
+    
+  
+    }
+    
+    })
+    return _arr
+    }
+
+    return _fun()
+  // let _fun = () => {
+  //   let _arr = []
+  //   a.map(val=>{
+  //   let tempdata = temp1.data[val]
+  //   if(tempdata.nodes.length > 0 )
+  //   {
+  //   tempdata.nodes[0].productListByProductId.productImagesByProductId.nodes.map(val=>{ 
+  //   let obj ={}
+  //   if(val) {
+  //   obj["img"]=val
+  //   obj["collectionName"] = tempdata.nodes[0].collectionName
+  //   _arr.push(obj)
+  //   }
+  //   })
+  //   }
+    
+  //   })
+  //   return _arr
+  //   }
+  }
+  
+// console.log(collectionsData, collectionsData.constructor === Array,"TTTTTT")
+  let collectionData = collectionsData ? collectionsData.constructor === Object && Object.keys(collectionsData).length > 0 ?  handleCollectionDataMapper(collectionsData, fadeImagessublist) : [] : false 
+  let pagination = collectionData ? collectionData.slice(0, state.pagination) : collectionData 
+  let _mapper = collectionData ? pagination : shopByStyloriSilver ? _shopByData : fadeImagessublist;
+  let _data = _mapper ? _mapper : [] 
   const classes = useStyles();
+  // alert(JSON.stringify(props.collectionsData))
+  // console.log(props.allSeo,"props.allSeoprops.allSeoprops.allSeoprops.allSeo")
+  const paginationtoggle = () =>{
+    debugger
+    if(state.pagination < collectionData.length){
+      setState({...state,pagination:(state.pagination) + 4, isShowMore:true})
+    }
+    else{
+      setState({...state, isShowMore:false})
+    }
+  }
+  debugger
   return (
-    <Grid container className={classes.containerTop} justify="center">
+   <>
+ <Grid container className={classes.containerTop} justify="center">
       {_data.map((tile) => {
+        
         return (
             tile.img.length > 0 ?
             <Grid
@@ -67,6 +140,7 @@ const ProductModal = (props) => {
                 hoverlist={[tile]}
                 hover={false}
                 hovereffect={true}
+                isInjectUrl={true} 
                 type="hover"
               />
             </Hidden>
@@ -107,6 +181,7 @@ const ProductModal = (props) => {
                   dataCarousel={dataCarousel}
                   WithoutHoverhover={true}
                   type="hover"
+                  isInjectUrl={true} 
                 />
               )}
               <Grid
@@ -132,7 +207,7 @@ const ProductModal = (props) => {
                   xs={12}
                   className={shopByStyloriSilver ? `${classes.productCardDescription2}`:`${classes.productCardDescription}`}
                 >
-                  {tile.description}
+                  {collectionData ? props.allSeo[tile.title] ? props.allSeo[tile.title] : '' : tile.description}
                 </Grid>
                 <Grid container item xs={12} justify="center">
                     <a href={`/silver-${tile.title.toLowerCase()}-jewellery`} style={{textDecoration:'none'}}>
@@ -150,10 +225,17 @@ const ProductModal = (props) => {
        );
       })}
     </Grid>
+  { props.isPagination && state.isShowMore && <Grid container item xs={12} justify="center" style={{padding:'20px'}}>
+   <Button color="primary" variant="contained" onClick={()=>{paginationtoggle()}}>
+     View more products
+    </Button>
+   </Grid>}
+   </>
   );
 };
 export default (props) => {
+
   const { mapped } = useDummyRequest(HomedataSilver);
   if (Object.keys(mapped).length === 0) return "";
-  return <ProductModal {...props} data={mapped} />;
+  return <ProductModal {...props} data={mapped} collectionsData={props.data} allSeo={props.allSeo}/>;
 };

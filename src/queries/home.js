@@ -32,3 +32,45 @@ export const testimonials = `query testimonials {
     }
   }
   `
+
+  export const silverStyloriAllMasterCollections = `query MyQuery {
+    allMasterCollections {
+      nodes {
+        name
+      }
+    }
+  }`
+  
+  export const silverStyloriCollections = (data) =>`query MyQuery {
+    ${data.map(val=>{
+      return(
+        `query${val.replace(/ /g,'')}:allProductCollections(condition: {collectionName: "${val}"},filter: {productListByProductId: {isactive: {equalTo: true}}}, first: 1) {
+          nodes {
+            collectionName
+            productListByProductId {
+              productImagesByProductId(condition:{imagePosition:2}) {
+                nodes {
+                  imageUrl
+                  imagePosition
+                }
+              } 
+            }
+          }
+          totalCount
+        }`
+      )
+    })} 
+  }`
+
+  export const allSeoPriorities = (arrayOfCollections) =>`
+  query seoCollections{
+    allSeoUrlPriorities(filter: {attributeName: {equalTo: "Collection"}, attributeValue: {in: [${arrayOfCollections}]}}) {
+      nodes {
+        attributeName
+        attributeValue
+        seoUrl
+        seoText
+      }
+    }
+  }
+  `

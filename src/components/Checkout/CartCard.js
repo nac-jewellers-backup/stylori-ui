@@ -105,7 +105,7 @@ class Checkoutcard extends React.Component {
             })
                 .then(status)
                 .then(json).then(val => {
-                    debugger
+                    
                     sessionStorage.removeItem('updatedProduct');
                     alert(val.message)
                     var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
@@ -516,7 +516,7 @@ class Checkoutcard extends React.Component {
 
 }
 const Components = props => {
-    debugger
+    
     const [ShippingCharge, setShippingCharge] = React.useState(0)
     React.useEffect(()=>{
         

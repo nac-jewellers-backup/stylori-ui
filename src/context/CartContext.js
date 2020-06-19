@@ -326,7 +326,7 @@ const Provider = (props) => {
         
 
     const updateProductList = () => {
-        debugger
+        
         let variables;
         if (localStorage.getItem('user_id')) {
             const status = (response) => {
@@ -371,7 +371,7 @@ const Provider = (props) => {
             })
                 .then(status)
                 .then(json).then(async val => {
-                    debugger
+                    
                     let localStorageCartDetails = JSON.parse(localStorage.getItem('cartDetails'))
                     let localStorageQty = JSON.parse(localStorage.getItem('quantity'))
                     let _checkValid = localStorageCartDetails && localStorageCartDetails.products ? localStorageCartDetails.products : []

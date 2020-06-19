@@ -43,7 +43,7 @@ const handleQty = (isMaxMin, _incrementQty, _maxOrderQty, setClass, state, skuId
 };
 
 const Quantity = (props) => {
-  debugger
+  
   const {
     ProductDetailCtx: { filters },
     setFilters,
@@ -81,7 +81,7 @@ const Quantity = (props) => {
   };
   const _updateQuantityApi = () =>{
     if(localStorage.getItem('cart_id') && JSON.parse(localStorage.getItem('cart_id')).cart_id){
-      debugger
+      
       let updateVariables = {}
       let _price = props.data[0] && props.data[0].dataCard1 && props.data[0].dataCard1[0].offerPrice ? props.data[0].dataCard1[0].offerPrice : props.data[0].offerPrice
       updateVariables["product"] = {sku_id:props.data[0].skuId,qty:state.qty,price:_price}
@@ -101,7 +101,7 @@ const Quantity = (props) => {
   }
   React.useEffect(() => {
     const _funcUpdate = () =>{
-      debugger
+      
       let { quantity } = filters;
     // quantity[props.data[0].skuId] = state.qty;
     let localStorageQuantity = localStorage.getItem("quantity")

@@ -1,10 +1,11 @@
 import { API_URL, CDN_URL } from "../config";
 export const injectUrl_url_construct = (url) => {
+    debugger
     var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
-    if (browser_type !== undefined && url !== undefined && url && url.imageUrl.length > 0 ) {
+    if (browser_type !== undefined && url !== undefined && url && ((url.imageUrl && url.imageUrl.length > 0) || url.length>0) ) {
         var resolution = 1000
         var _resolutions =`${resolution}X${resolution}`
-        var url_split = url && url.imageUrl.split('/')
+        var url_split = url && url.imageUrl ? url.imageUrl.split('/') : url.split('/')
         var extension_split = url_split && url_split[url_split.length - 1]
         var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type && browser_type.browser_type}`)
 

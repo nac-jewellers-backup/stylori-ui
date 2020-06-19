@@ -155,7 +155,7 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function ImageGridList(props) {
-    debugger
+    
     const classes = useStyles();
 
     const slider = React.createRef();
