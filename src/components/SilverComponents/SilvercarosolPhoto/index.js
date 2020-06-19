@@ -9,6 +9,7 @@ import {GlobalContext} from 'context'
 import Gadgets from "components/product-image-slider/Gagetstylori/Gagetstylori"
 
 const SilverCarousel = (props) => {
+  debugger
   const dataCarousel = {
     arrows: true,
     dots: true,
@@ -48,7 +49,7 @@ const SilverCarousel = (props) => {
       <Grid
         item
         xs={12}
-        className={classes.seoText}
+        className={`${props.collectionsPageSilver ? `${classes.seoText} ${classes.seoTextNobackground}`  : classes.seoText}`}
       >
        <Hidden smDown>
        <Typography className={classes.TypoGraphy} >

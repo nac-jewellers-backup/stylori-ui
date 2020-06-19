@@ -63,6 +63,9 @@ const styles = (theme) => ({
   normalFontsColor2:{
     color: `${theme.palette.secondary.dark2} !important`,
   },
+  normalfontsSilvercontact:{
+    color: `${theme.palette.secondary.dark2} !important`,
+  },
   carouselCustomArrow:{
     "& svg":{
       fill:`${theme.palette.secondary.dark2} !important`,

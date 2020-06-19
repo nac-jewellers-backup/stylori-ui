@@ -7,7 +7,8 @@ import MultipleSections from 'components/SilverComponents/MultipleSections'
 import Footer from "components/Footer/Footer";
 import CarosolTop from 'components/SilverComponents/SilvercarosolPhoto'
 import { CDN_URL, API_URL } from "config";
-import {silverStyloriCollections, silverStyloriAllMasterCollections, allSeoPriorities} from "queries/home"
+import {silverStyloriCollections, silverStyloriAllMasterCollections, allSeoPriorities} from "queries/home";
+import Title from '../../components/SilverComponents/ProductTitle'
 
 class HomeStylori extends React.Component {
     constructor(props) {
@@ -19,7 +20,8 @@ class HomeStylori extends React.Component {
         return ( 
             <Grid container> 
                     <Header />
-                <CarosolTop />
+                <CarosolTop collectionsPageSilver={true}/>
+                <Title title={"COLLECTIONS"} /> 
                 <ProductModal data={this.props.data} allSeo={this.props.allSeo} isPagination={true}/>
                 <Grid item>
                     <Footer silver={true} />

@@ -182,7 +182,7 @@ class ProductImageZoom extends React.Component {
               <Slideshow
                 sliderRef={this.slider}
                 getmsg={this.getimage}
-                class="vertical-carousel"
+                class={this.props.isSilver ? "vertical-carousel-silver" : `vertical-carousel`}
                 imgClass="vertical-carousel-img"
                 fadeImages={data[0].fadeImages.arrOfurls_2X}
                 dataCarousel={dataCarousel}
@@ -238,7 +238,7 @@ class ProductImageZoom extends React.Component {
 
             <div>
               <div
-                className="imagecard"
+                className={_isSilver ? "imagecardSilver" : "imagecard"}
                 id="divs"
                 style={{
                   height:

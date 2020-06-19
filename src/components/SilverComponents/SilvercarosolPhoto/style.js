@@ -19,4 +19,7 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     display: "flex",
   },
+  seoTextNobackground:{
+    backgroundColor: 'unset !important',
+  }
 }));
