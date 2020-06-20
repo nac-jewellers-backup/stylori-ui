@@ -12,7 +12,7 @@ import {silverStyloriCollections, silverStyloriAllMasterCollections, allSeoPrior
 class HomeStylori extends React.Component {
     constructor(props) {
         super(props);
-        debugger
+        
         this.state = {
         };
     }

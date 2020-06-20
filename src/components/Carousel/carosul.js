@@ -105,7 +105,7 @@ class Component extends React.Component {
 
   imagehoverchildrens = (hoverlist, globalContext, isInjectUrl) => {
     let { hover, hovereffect, TopPic, imagecra, isSilver, collectionDataSilverSEO  } = this.props;
-    debugger
+    
     if (TopPic) {
       return hoverlist.map((val) => (
         <div
@@ -265,7 +265,7 @@ class Component extends React.Component {
     }
   };
   imagewithouthoverchildrens = (hoverlist, gtx,isInjectUrl) => {
-    debugger
+    
     return (
       <div
         className={"subslider-carousel-silver "}
@@ -380,14 +380,14 @@ class Component extends React.Component {
     // });
     // const fadeImages = [
     //   'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
-    //   'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg',
+    //   'https://assets-cdn.stylori.com/120x120/images/product/SE0464/SE0464-1Y.jpg', 
     //   'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg'
     // ];
 
     // const { dataCarousel: { settings }, sliderRef } = this.props;
     const { sliderRef, Globalctx } = this.props;
     var settings = this.props.dataCarousel;
-    debugger
+    
     return (
       <div>
         <Slider ref={sliderRef} {...settings}>

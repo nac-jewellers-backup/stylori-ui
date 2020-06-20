@@ -108,9 +108,9 @@ var _keysCollections = Object.keys(data).filter(val=>{
   const classes = useStyles();
   // alert(JSON.stringify(props.collectionsData))
   // console.log(props.allSeo,"props.allSeoprops.allSeoprops.allSeoprops.allSeo")
-  debugger
+  
   const paginationtoggle = () =>{
-    debugger
+    
     if(state.pagination < collectionData.length){
       setState({...state,pagination:(state.pagination) + 4, isShowMore:true})
     }
@@ -118,7 +118,7 @@ var _keysCollections = Object.keys(data).filter(val=>{
       setState({...state, isShowMore:false})
     }
   }
-  debugger
+  
   return (
    <>
  <Grid container className={classes.containerTop} justify="center">

@@ -6,8 +6,17 @@ import IndeterminateCheckBoxIcon from "@material-ui/icons/IndeterminateCheckBox"
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import { ProductDetailContext } from "context/ProductDetailContext";
-import {API_URL} from "../../config"
-const handleQty = (isMaxMin, _incrementQty, _maxOrderQty, setClass, state, skuId) => {
+import { API_URL } from "../../config";
+import { withRouter } from "react-router-dom";
+const handleQty = (
+  isMaxMin,
+  _incrementQty,
+  _maxOrderQty,
+  setClass,
+  state,
+  skuId
+) => {
+  debugger
   var element = document.getElementById(`number${skuId}`);
   var value = parseInt(element.value, 10);
   var increment = state["maxOrderQty"];
@@ -39,11 +48,11 @@ const handleQty = (isMaxMin, _incrementQty, _maxOrderQty, setClass, state, skuId
       increment = false;
     }
   }
+  debugger
   setClass({ maxOrderQty: increment, minOrderQty: decrement, qty: value });
 };
 
 const Quantity = (props) => {
-  
   const {
     ProductDetailCtx: { filters },
     setFilters,
@@ -54,8 +63,13 @@ const Quantity = (props) => {
       : 1;
   const _maxOrderQty =
     props.data && props.data.length > 0 && props.data[0].maxOrderQty
-      ? props.data[0].maxOrderQty 
+      ? props.data[0].maxOrderQty
       : 100000;
+      const initialState =  filters.quantity[props.data[0].skuId]
+      ? filters.quantity[props.data[0].skuId]
+      : _incrementQty
+      ? _incrementQty
+      : 1
 
   const [state, setState] = React.useState({
     maxOrderQty: true,
@@ -64,14 +78,11 @@ const Quantity = (props) => {
       filters.quantity[props.data[0].skuId] > _incrementQty
         ? true
         : false,
-    qty:  filters.quantity[props.data[0].skuId]
-    ? filters.quantity[props.data[0].skuId]
-    : _incrementQty
-    ? _incrementQty
-    : 1
+    qty:initialState,
   });
 
   const setClass = (data) => {
+    debugger
     setState({
       ...state,
       qty: data["qty"],
@@ -79,72 +90,101 @@ const Quantity = (props) => {
       maxOrderQty: data["maxOrderQty"],
     });
   };
-  // const _updateQuantityApi = () =>{
-  //   if(localStorage.getItem('cart_id') && JSON.parse(localStorage.getItem('cart_id')).cart_id){
-      
-  //     let updateVariables = {}
-  //     let _price = props.data[0] && props.data[0].dataCard1 && props.data[0].dataCard1[0].offerPrice ? props.data[0].dataCard1[0].offerPrice : props.data[0].offerPrice
-  //     updateVariables["product"] = {sku_id:props.data[0].skuId,qty:state.qty,price:_price}
-  //     updateVariables["cart_id"] = JSON.parse(localStorage.getItem('cart_id')).cart_id
-  //  try {
-  //   fetch(`${API_URL}/updatecartitem`, {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify(updateVariables),
-  //   })
-  //     .then(res => res.json())
-  //     .then(res => console.log(res.data));
-  //  } catch (error) {
-  //    console.log('Error Occoured in quantity updation.', error)
-  //  }
-  //   }
-  // }
+  const _updateQuantityApi = () => {
+    if (
+      localStorage.getItem("cart_id") &&
+      JSON.parse(localStorage.getItem("cart_id")).cart_id
+    ) {
+      let updateVariables = {};
+      let _price =
+        props.data[0] &&
+        props.data[0].dataCard1 &&
+        props.data[0].dataCard1[0].offerPrice
+          ? props.data[0].dataCard1[0].offerPrice
+          : props.data[0].offerPrice;
+      updateVariables["product"] = {
+        sku_id: props.data[0].skuId,
+        qty: state.qty,
+        price: _price,
+      };
+      updateVariables["cart_id"] = JSON.parse(
+        localStorage.getItem("cart_id")
+      ).cart_id;
+      try {
+        fetch(`${API_URL}/updatecartitem`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updateVariables),
+        })
+          .then((res) => res.json())
+          .then((res) => console.log(res.data));
+      } catch (error) {
+        console.log("Error Occoured in quantity updation.", error);
+      }
+    }
+  };
   React.useEffect(() => {
-    const _funcUpdate = () =>{
-      
+    _updateQuantityApi();
+    const _funcUpdate = () => {
       let { quantity } = filters;
-    // quantity[props.data[0].skuId] = state.qty;
-    let localStorageQuantity = localStorage.getItem("quantity")
-      ? JSON.parse(localStorage.getItem("quantity"))
-      : null;
+      // quantity[props.data[0].skuId] = state.qty;
+      let localStorageQuantity = localStorage.getItem("quantity")
+        ? JSON.parse(localStorage.getItem("quantity"))
+        : null;
 
-    // if(localStorageQuantity && localStorageQuantity[props.data[0].skuId] !== state.qty){
-    //   setFilters({ ...filters, quantity });
-    // }
+      // if(localStorageQuantity && localStorageQuantity[props.data[0].skuId] !== state.qty){
+      //   setFilters({ ...filters, quantity });
+      // }
 
-    if (!localStorageQuantity) {
-      if (localStorageQuantity && !localStorageQuantity[props.data[0].skuId]) {
-        let _obj = {};
+      if (!localStorageQuantity) {
+        if (
+          localStorageQuantity &&
+          !localStorageQuantity[props.data[0].skuId]
+        ) {
+          let _obj = {};
+          localStorageQuantity[props.data[0].skuId] = state.qty;
+          localStorage.setItem(
+            "quantity",
+            JSON.stringify(localStorageQuantity)
+          );
+          quantity[props.data[0].skuId] = state.qty;
+        } else {
+          let _obj = {};
+          _obj[props.data[0].skuId] = state.qty;
+          localStorage.setItem("quantity", JSON.stringify(_obj));
+          quantity[props.data[0].skuId] = state.qty;
+        }
+      } else {
         localStorageQuantity[props.data[0].skuId] = state.qty;
         localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
-        quantity[props.data[0].skuId] = state.qty;
-      } else {
-        let _obj = {};
-        _obj[props.data[0].skuId] = state.qty;
-        localStorage.setItem("quantity", JSON.stringify(_obj));
-        quantity[props.data[0].skuId] = state.qty;
+        quantity[props.data[0].skuId] =
+          localStorageQuantity[props.data[0].skuId];
       }
-    } else {
-      localStorageQuantity[props.data[0].skuId] = state.qty;
-      localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
-      quantity[props.data[0].skuId] = localStorageQuantity[props.data[0].skuId];
-    }
-    let localStorageCartDetails = JSON.parse(localStorage.getItem('cartDetails'))
-    let _checkValid = localStorageCartDetails && localStorageCartDetails.products ? localStorageCartDetails.products : []
-    if(_checkValid.length > 0){
-      _checkValid.map((val,i)=>{
-        if(val.sku_id ===props.data[0].skuId){
-          localStorageCartDetails.products[i].qty = state.qty
-        
-        }
-        })
-        localStorage.setItem('cartDetails', JSON.stringify(localStorageCartDetails))
-    }
-    setFilters({ ...filters, quantity });
-    }
-    _funcUpdate()
+      let localStorageCartDetails = JSON.parse(
+        localStorage.getItem("cartDetails")
+      );
+      let _checkValid =
+        localStorageCartDetails && localStorageCartDetails.products
+          ? localStorageCartDetails.products
+          : [];
+      if (_checkValid.length > 0) {
+        _checkValid.map((val, i) => {
+          if (val.sku_id === props.data[0].skuId) {
+            localStorageCartDetails.products[i].qty = state.qty;
+          }
+        });
+        localStorage.setItem(
+          "cartDetails",
+          JSON.stringify(localStorageCartDetails)
+        );
+      }
+      if (props.history.location.pathname === "/cart") {
+        ;
+        setFilters({ ...filters, quantity });
+      }
+    };
+    _funcUpdate();
     // _updateQuantityApi()
-    
   }, [state.qty]);
   React.useEffect(() => {
     let quantity = filters.quantity;
@@ -152,14 +192,14 @@ const Quantity = (props) => {
     let localStorageQuantity = localStorage.getItem("quantity")
       ? JSON.parse(localStorage.getItem("quantity"))
       : null;
-      setFilters({ ...filters, quantity });
-      if (!localStorageQuantity || !localStorageQuantity[props.data[0].skuId]) {
+    setFilters({ ...filters, quantity });
+    if (!localStorageQuantity || !localStorageQuantity[props.data[0].skuId]) {
       let _obj = {};
       _obj[props.data[0].skuId] = state.qty;
       localStorage.setItem("quantity", JSON.stringify(_obj));
       quantity[props.data[0].skuId] = state.qty;
     }
-    
+
     // _updateQuantityApi()
   }, []);
   console.clear();
@@ -200,7 +240,14 @@ const Quantity = (props) => {
                 !state.minOrderQty ? classes.iconDisabled : ""
               }`}
               onClick={() => {
-                handleQty("min", _incrementQty, _maxOrderQty, setClass, state, props.data[0].skuId);
+                handleQty(
+                  "min",
+                  _incrementQty,
+                  _maxOrderQty,
+                  setClass,
+                  state,
+                  props.data[0].skuId
+                );
               }}
             />
           </Grid>
@@ -212,7 +259,7 @@ const Quantity = (props) => {
             <input
               type="text"
               id={`number${[props.data[0].skuId]}`}
-              value={filters.quantity[props.data[0].skuId]}
+              value={state.qty}
               disabled
               style={{ width: "100%" }}
             />
@@ -223,7 +270,14 @@ const Quantity = (props) => {
                 !state.maxOrderQty ? classes.iconDisabled : ""
               }`}
               onClick={() => {
-                handleQty("max", _incrementQty, _maxOrderQty, setClass, state, props.data[0].skuId);
+                handleQty(
+                  "max",
+                  _incrementQty,
+                  _maxOrderQty,
+                  setClass,
+                  state,
+                  props.data[0].skuId
+                );
               }}
             />
           </Grid>
@@ -233,4 +287,4 @@ const Quantity = (props) => {
   );
 };
 
-export default withStyles(styles)(Quantity);
+export default withRouter(withStyles(styles)(Quantity));

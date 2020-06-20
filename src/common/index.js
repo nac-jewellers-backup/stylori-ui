@@ -1,6 +1,6 @@
 import { API_URL, CDN_URL } from "../config";
 export const injectUrl_url_construct = (url) => {
-    debugger
+    
     var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
     if (browser_type !== undefined && url !== undefined && url && ((url.imageUrl && url.imageUrl.length > 0)) ) {
         var resolution = 1000
