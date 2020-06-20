@@ -178,7 +178,7 @@ const Quantity = (props) => {
           JSON.stringify(localStorageCartDetails)
         );
       }
-      if (props.history.location.pathname === "/cart") {
+      if (props.history.location.pathname === "/cart" || props.history.location.pathname === "/account-shoppingcart") {
         setFilters({ ...filters, quantity });
       }
     };
