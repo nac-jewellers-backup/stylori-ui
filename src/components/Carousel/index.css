@@ -273,6 +273,9 @@
   width: 100% !important;
   height: 250px !important;
 }
+.currentImageClassSilver{
+  border:1.1px solid rgba(218, 185, 122, 1) !important;
+}
 
 
 /* media query */

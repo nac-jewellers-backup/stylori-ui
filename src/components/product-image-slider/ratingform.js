@@ -56,6 +56,7 @@ const RatingComponent = (props) => {
                             // helperText="please Enter review title"
                             error={values.error && values.error.ratetitle ? true : false}
                         // required
+                        InputProps={{ classes: {input: classes.rating__} }} 
                         />
 
                         <div style={{ width: "100%" }} className={`tool-tips ${classes.normalfonts}`} >Max 60 characters</div>
@@ -68,14 +69,15 @@ const RatingComponent = (props) => {
                                 type="text"
                                 name="message"
                                 fullWidth
-                                placeholder='Write your review here'
-                                className="rating-form-text"
+                                placeholder={isSilver ? 'Type your review here' : 'Write your review here'}
+                                className={`${"rating-form-text "} `}
                                 maxLength={250}
                                 value={values.message}
                                 multiline={true}
                                 rowsMax={4}
                                 onChange={e => handlers.handleChange('message', e.target.value)}
                                 error={values.error && values.error.ratemsg ? true : false}
+                                InputProps={{ classes: {input: classes.rating__} }} 
                             />
                         </div>
 
@@ -157,7 +159,7 @@ const RatingComponent = (props) => {
                             type="text"
                             name="message"
                             fullWidth
-                            placeholder='Write your review here'
+                            placeholder={isSilver ? 'Type your review here' : 'Write your review here'}
                             className="rating-form-text"
                             maxLength={250}
                             value={values.message}

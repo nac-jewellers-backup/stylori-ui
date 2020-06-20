@@ -62,13 +62,15 @@ class Component extends React.Component {
     }
   };
   renderFadeImages = () => {
-    let { video } = this.props;
 
+    let { video, currentImage } = this.props;
+debugger
     return this.props.fadeImages
       ? this.props.fadeImages.map((imgs) => (
           <div
-            className={` ${this.props.class ? this.props.class : ""}`}
+            className={` ${this.props.class ? this.props.class : ""} ${currentImage && currentImage  === imgs ? 'currentImageClassSilver' : ''}`}
             onClick={(e) => (this.props.getmsg ? this.props.getmsg(e) : "")}
+            
           >
             {video || this.handleVideoCheck(imgs) ? (
               <video
@@ -387,7 +389,8 @@ class Component extends React.Component {
     // const { dataCarousel: { settings }, sliderRef } = this.props;
     const { sliderRef, Globalctx } = this.props;
     var settings = this.props.dataCarousel;
-    
+    console.log(this.props)
+    debugger
     return (
       <div>
         <Slider ref={sliderRef} {...settings}>

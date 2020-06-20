@@ -58,7 +58,7 @@ class Component extends React.Component {
         const isSilver = this.props.isSilver ? true : false
 
         return (
-            <div class={this.props.ratings}>
+            <div class={`${this.props.ratings} ${this.props.isSilver}`}>
                 {[1, 2, 3, 4, 5].map((n, i) =>
                     <Star key={i}
                         selected={i < starsSelected}

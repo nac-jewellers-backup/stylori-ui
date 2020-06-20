@@ -92,7 +92,13 @@ body {
     font-family: "Robot-Black" !important;
     /* margin-left: 27% !important;  */
 }
-
+.starts-review-silver {
+    cursor: pointer;
+    margin-top: 5px;
+    color: rgba(109,110,112,1);
+    font-family: "Robot-Black" !important;
+    /* margin-left: 27% !important;  */
+}
 .border-line- {
     margin-bottom: -10px !important;
 }
@@ -576,7 +582,7 @@ body {
     background-image: unset !important;
     background-position:unset !important;
     background-repeat:unset !important;
-    padding-left:0 !important;
+    padding-left: 0 !important;
 }
 .buy-now-iconz {
     background-repeat: no-repeat !important;

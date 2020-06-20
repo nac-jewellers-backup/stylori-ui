@@ -492,9 +492,13 @@ const Productprice = (
                     </Grid>
                   </Hidden>
                   <Hidden smDown>
-                    <h5 className={`pdp-title  ${classes.titleSilver}`}>
+                    {isSilver ? 
+                    <div className={`pdp-title  ${classes.titleSilver}`}>
+                    {val.title}
+                  </div>
+                    :<h5 className={`pdp-title`}>
                       {val.title}
-                    </h5>
+                    </h5>}
                   </Hidden>
                   {/* <Hidden smDown>
                                             <p className={`pdp-desc ${classes.dis}`}>

@@ -11,6 +11,7 @@
     flex-direction: row-reverse;
     font-size:1.4em;
     justify-content:space-around;
+    color:rgba(109,110,112,1);
   }
   .star-rating input {
     display:none;

@@ -63,7 +63,7 @@ const inputsearch = (
               type="tel"
               placeholder="Enter Pincode"
               maxLength={6}
-              className={`pincode-cust buynow-search ${isSilver ? 'pincode-cust-silver' : ''}`}
+              className={`pincode-cust buynow-search ${isSilver ? `${'pincode-cust-silver'} ${classes.rating__}` : ''}`}
               value={state.values}
               onChange={(event) => {
                 handleChanges(event);
@@ -72,6 +72,7 @@ const inputsearch = (
                 if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
               }}
             />
+
           </Grid>
           <Grid item xs={isSilver ? 4 : 5} lg={3} sm={5}>
             <Button

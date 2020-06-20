@@ -186,6 +186,7 @@ class ProductImageZoom extends React.Component {
                 imgClass="vertical-carousel-img"
                 fadeImages={data[0].fadeImages.arrOfurls_2X}
                 dataCarousel={dataCarousel}
+                currentImage = {this.state.showimage}
               />
 
               {data &&

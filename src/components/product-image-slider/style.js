@@ -50,6 +50,7 @@ const styles = (theme) => ({
     marginTop: "0 !important",
     marginBottom: "0 !important",
     fontSize: "1.1rem !important",
+    color:`${theme.palette.secondary.dark2} !important`
   },
   dis: {
     color: theme.palette.text.secondary,
@@ -422,6 +423,32 @@ reviewandratingsmallScreen:{
   fontSize: "16px !important",
   fontWeight: "bold !important",
   marginBottom: "10px !important",
+},
+rating__:{
+  '&::placeholder': {
+    color: `${theme.palette.secondary.light }`,
+    textTransform:"Uppercase",
+    fontSize:'12px',
+    letterSpacing:'1px',
+    fontWeight:500,
+    opacity: 1, /* Firefox */
+  }
+  ,
+  "&:-ms-input-placeholder": { /* Internet Explorer 10-11 */
+   color: `${theme.palette.secondary.light}`,
+   textTransform:"Uppercase",
+   letterSpacing:'1px',
+   fontWeight:500,
+   fontSize:'12px',
+  }
+  ,
+  "&::-ms-input-placeholder": { /* Microsoft Edge */
+   color: `${theme.palette.secondary.light}`,
+   textTransform:"Uppercase",
+   letterSpacing:'1px',
+   fontWeight:500,
+   fontSize:'12px',
+  }
 }
 });
 export default styles;

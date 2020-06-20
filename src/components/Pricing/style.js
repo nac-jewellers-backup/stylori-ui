@@ -69,7 +69,7 @@ const styles = makeStyles(theme => ({
         },
     },
     pricesilver:{
-        color:theme.palette.background.darkFade,
+        color:`${theme.palette.secondary.dark2}`,
         fontWeight:'bold',
         padding:'4px 0px 10px 0px',
         [theme.breakpoints.down('sm')]:{
