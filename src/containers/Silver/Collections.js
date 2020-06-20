@@ -102,7 +102,7 @@ const Components = (props) => {
                 }
                 // let _data =func()
                 state['allSeo'] = func()
-          debugger
+          
           setState({...state,data:state.data,allSeo:state.allSeo})
           
         })

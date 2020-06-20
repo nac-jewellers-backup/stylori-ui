@@ -105,7 +105,7 @@ class Component extends React.Component {
 
   imagehoverchildrens = (hoverlist, globalContext, isInjectUrl) => {
     let { hover, hovereffect, TopPic, imagecra, isSilver, collectionDataSilverSEO  } = this.props;
-    ;
+    debugger
     if (TopPic) {
       return hoverlist.map((val) => (
         <div
@@ -153,7 +153,7 @@ class Component extends React.Component {
               </div>
             </div>
           </div>
-        ))
+        )) 
       );
     } else {
       return (
@@ -387,6 +387,7 @@ class Component extends React.Component {
     // const { dataCarousel: { settings }, sliderRef } = this.props;
     const { sliderRef, Globalctx } = this.props;
     var settings = this.props.dataCarousel;
+    debugger
     return (
       <div>
         <Slider ref={sliderRef} {...settings}>

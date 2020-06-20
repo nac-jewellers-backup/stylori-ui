@@ -12,6 +12,7 @@ import {silverStyloriCollections, silverStyloriAllMasterCollections, allSeoPrior
 class HomeStylori extends React.Component {
     constructor(props) {
         super(props);
+        debugger
         this.state = {
         };
     }
@@ -20,7 +21,7 @@ class HomeStylori extends React.Component {
             <Grid container>
                     <Header />
                 <CarosolTop />
-                <ProductModal data={this.props.data} allSeo={this.props.allSeo}/>
+                <ProductModal data={this.props.data}  allSeo={this.props.allSeo}/>
                 <MultipleSections />
                 <Grid item>
                     <Footer silver={true} />
@@ -32,80 +33,81 @@ class HomeStylori extends React.Component {
 
 const Components = (props) => {
     const [state,setState] = React.useState({data:{},allSeo:{}})
-  React.useEffect(()=>{
-    function status(response) {
-        if (response.status >= 200 && response.status < 300) {
-            return Promise.resolve(response)
-        } else {
-            return Promise.reject(new Error(response.statusText))
-        }
-    }
-
-    function json(response) {
-        return response.json()
-    }
-    let allCollections = []
-    let allSeoCollections = []
-    fetch(`${API_URL}/graphql`, {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-
-        body: JSON.stringify({
-            query: silverStyloriAllMasterCollections
-        })
-    })
-    .then(status)
-    .then(json)
-        .then(data => {
-           allCollections = data.data.allMasterCollections.nodes.map((val)=>{return val.name})
-           allSeoCollections = data.data.allMasterCollections.nodes.map((val)=>{return `"${val.name}"`})
-          fetch(`${API_URL}/graphql`, {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-    
-            body: JSON.stringify({
-                query: silverStyloriCollections(allCollections)
-            })
-        })
-        .then(status)
-        .then(json)
-        .then(data=>{
-          setState({...state,data:data})
-          fetch(`${API_URL}/graphql`, {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-    
-            body: JSON.stringify({
-                query: allSeoPriorities(allSeoCollections)
-            })
-        })
-        .then(status)
-        .then(json)
-        .then(data=>{
-            debugger
-          const  func = () =>{
-                var obj = {}
-                data.data.allSeoUrlPriorities.nodes.map(val=>{
-                obj[val.attributeValue] = {}
-                obj[val.attributeValue]["seoText"] = val.seoText ? val.seoText : " "
-                obj[val.attributeValue]["seoUrl"] = val.seoUrl ? val.seoUrl : " "
-                })
-                return obj
-                }
-                // let _data =func()
-                // setState({...state,allSeo:func()})
-        //   console.log("allcollections SEO", _data)
-          debugger
-          
-        })
-        })
-        })
+    React.useEffect(()=>{
+      function status(response) {
+          if (response.status >= 200 && response.status < 300) {
+              return Promise.resolve(response)
+          } else {
+              return Promise.reject(new Error(response.statusText))
+          }
+      }
+  
+      function json(response) {
+          return response.json()
+      }
+      let allCollections = []
+      let allSeoCollections = []
+      fetch(`${API_URL}/graphql`, {
+          method: 'post',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+  
+          body: JSON.stringify({
+              query: silverStyloriAllMasterCollections
+          })
+      })
+      .then(status)
+      .then(json)
+          .then(data => {
+             allCollections = data.data.allMasterCollections.nodes.map((val)=>{return val.name})
+             allSeoCollections = data.data.allMasterCollections.nodes.map((val)=>{return `"${val.name}"`})
+            fetch(`${API_URL}/graphql`, {
+              method: 'post',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+      
+              body: JSON.stringify({
+                  query: silverStyloriCollections(allCollections)
+              })
+          })
+          .then(status)
+          .then(json)
+          .then(async data=>{
+              state['data']= data
+            
+            allCollections = data
+          await  fetch(`${API_URL}/graphql`, {
+              method: 'post',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+      
+              body: JSON.stringify({
+                  query: allSeoPriorities(allSeoCollections)
+              })
+          })
+          .then(status)
+          .then(json)
+          .then(res=>{
+            const  func = () =>{
+                  var obj = {}
+                  res.data.allSeoUrlPriorities.nodes.map(val=>{
+                  obj[val.attributeValue] = {}
+                  obj[val.attributeValue]["seoText"] = val.seoText ? val.seoText : " "
+                  obj[val.attributeValue]["seoUrl"] = val.seoUrl ? val.seoUrl : " "
+                  })
+                  return obj
+                  }
+                  // let _data =func()
+                  state['allSeo'] = func()
+            
+            setState({...state,data:state.data,allSeo:state.allSeo})
+            
+          })
+          })
+          })
 },[])
 console.log(props.match.path === "/styloriSilver")
     let content = <HomeStylori data={state.data} allSeo={state.allSeo}/>;

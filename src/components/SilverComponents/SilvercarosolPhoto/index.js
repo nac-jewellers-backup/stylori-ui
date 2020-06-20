@@ -9,7 +9,7 @@ import {GlobalContext} from 'context'
 import Gadgets from "components/product-image-slider/Gagetstylori/Gagetstylori"
 
 const SilverCarousel = (props) => {
-  debugger
+  
   const dataCarousel = {
     arrows: true,
     dots: true,

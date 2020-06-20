@@ -66,7 +66,7 @@ var _keysCollections = Object.keys(data).filter(val=>{
     
     let obj ={}
     
-    obj["img"]=tempdata.nodes[0].productListByProductId.productImagesByProductId.nodes[0].imageUrl
+    obj["img"]=tempdata.nodes[0].productListByProductId.productImagesByProductId.nodes[0]
     obj["title"] = tempdata.nodes[0].collectionName
     obj["description"] = "Lorem Ipsum is simply dummy text of the printing a…rem Ipsum has been the industry's standard dummy"
     _arr.push(obj)
@@ -125,7 +125,7 @@ var _keysCollections = Object.keys(data).filter(val=>{
       {_data.map((tile) => {
         
         return (
-            tile.img.length > 0 ?
+          tile && ((tile.constructor === Object && tile.img && tile.img.imageUrl)||(tile.constructor === Array && tile.img.length > 0 )) ?
             <Grid
             item
             xs={12}
