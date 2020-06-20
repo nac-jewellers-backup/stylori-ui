@@ -82,6 +82,7 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
               markupPrice
               skuSize
             }
+            qty
           }
         }
         cartAddressesByCartId(condition: {addressType: 1}) {
@@ -112,6 +113,7 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
     }
   }
 }
+
 
 
 `

@@ -374,14 +374,23 @@ const Provider = (props) => {
                     
                     let localStorageCartDetails = JSON.parse(localStorage.getItem('cartDetails'))
                     let localStorageQty = JSON.parse(localStorage.getItem('quantity'))
+                    let _qty = {}
                     let _checkValid = localStorageCartDetails && localStorageCartDetails.products ? localStorageCartDetails.products : []
                     if(_checkValid.length > 0){
                         val.data.allShoppingCarts.nodes[0].shoppingCartItemsByShoppingCartId.nodes.map(valresult=>{
                             _checkValid.map((valProducts,i)=>{
-                                if(valProducts.sku_id ===valresult.productSku){
-                                  localStorageCartDetails.products[i].qty = valresult.qty
-                                  localStorageQty[valresult.productSku]   = valresult.qty
+                                if(localStorageQty){
+                                    if(valProducts.sku_id ===valresult.productSku){
+                                        localStorageCartDetails.products[i].qty = valresult.qty
+                                        localStorageQty[valresult.productSku]   = valresult.qty
+                                      }
                                 }
+                                else{
+                                    
+                                    localStorageCartDetails.products[i].qty = valresult.qty
+                                    _qty[valresult.productSku]   = valresult.qty
+                                }
+                                
                                 // else if(valProducts.sku_id !== valresult.productSku){
                                 //     localStorageCartDetails.products[i].qty = valresult.qty
                                 //   localStorageQty[valresult.productSku]   = valresult.qty
@@ -389,7 +398,13 @@ const Provider = (props) => {
                                 })      
                         })
                       
-                        localStorage.setItem('quantity', JSON.stringify(localStorageQty))
+                        if(localStorageCartDetails){
+                            localStorage.setItem('quantity', JSON.stringify(localStorageQty))
+                        }
+                        else{
+                            localStorage.setItem('quantity', JSON.stringify(_qty))
+                        }
+                        
                         localStorage.setItem('cartDetails', JSON.stringify(localStorageCartDetails))
                     }
                     if (val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length > 0 &&
