@@ -79,26 +79,26 @@ const Quantity = (props) => {
       maxOrderQty: data["maxOrderQty"],
     });
   };
-  const _updateQuantityApi = () =>{
-    if(localStorage.getItem('cart_id') && JSON.parse(localStorage.getItem('cart_id')).cart_id){
+  // const _updateQuantityApi = () =>{
+  //   if(localStorage.getItem('cart_id') && JSON.parse(localStorage.getItem('cart_id')).cart_id){
       
-      let updateVariables = {}
-      let _price = props.data[0] && props.data[0].dataCard1 && props.data[0].dataCard1[0].offerPrice ? props.data[0].dataCard1[0].offerPrice : props.data[0].offerPrice
-      updateVariables["product"] = {sku_id:props.data[0].skuId,qty:state.qty,price:_price}
-      updateVariables["cart_id"] = JSON.parse(localStorage.getItem('cart_id')).cart_id
-   try {
-    fetch(`${API_URL}/updatecartitem`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(updateVariables),
-    })
-      .then(res => res.json())
-      .then(res => console.log(res.data));
-   } catch (error) {
-     console.log('Error Occoured in quantity updation.', error)
-   }
-    }
-  }
+  //     let updateVariables = {}
+  //     let _price = props.data[0] && props.data[0].dataCard1 && props.data[0].dataCard1[0].offerPrice ? props.data[0].dataCard1[0].offerPrice : props.data[0].offerPrice
+  //     updateVariables["product"] = {sku_id:props.data[0].skuId,qty:state.qty,price:_price}
+  //     updateVariables["cart_id"] = JSON.parse(localStorage.getItem('cart_id')).cart_id
+  //  try {
+  //   fetch(`${API_URL}/updatecartitem`, {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify(updateVariables),
+  //   })
+  //     .then(res => res.json())
+  //     .then(res => console.log(res.data));
+  //  } catch (error) {
+  //    console.log('Error Occoured in quantity updation.', error)
+  //  }
+  //   }
+  // }
   React.useEffect(() => {
     const _funcUpdate = () =>{
       
@@ -143,7 +143,7 @@ const Quantity = (props) => {
     setFilters({ ...filters, quantity });
     }
     _funcUpdate()
-    _updateQuantityApi()
+    // _updateQuantityApi()
     
   }, [state.qty]);
   React.useEffect(() => {
