@@ -74,3 +74,13 @@ export const testimonials = `query testimonials {
     }
   }
   `
+
+  export const customerReviews = `query customerReviews {
+    allCustomerReviews(condition: {isPublish: true}, first: 10) {
+      nodes {
+        customerName
+        message
+        userprofileId
+      }
+    }
+  }`

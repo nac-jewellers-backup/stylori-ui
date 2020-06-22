@@ -109,7 +109,7 @@ export const FeaturedCarousel = [
 export const testimonyCarousel = [
     {
         settings: {
-            dots: true,
+            dots: false,
             infinite: true,
             autoplay: false,
             speed: 1000,

@@ -26,7 +26,7 @@ const MultipleSections = (props) => {
                             <Title title={title} isSilver={true}/> 
                             {title == 'TOP PICKS' &&<GridList GridImage={collectionGrid} isHover={props.isHover}/>}
                             {title == 'FEATURED' && <FeaturedGridComponent data={FeaturedCarousel} />}
-                            {title == 'TESTIMONIALS' && <Testimonialsmodel data={testimonyCarousel} testimonyCarousel={props.testimonyCarousel} />}
+                            {title == 'TESTIMONIALS' && <Testimonialsmodel data={testimonyCarousel} testimonyCarousel={props.testimonyCarousel} dataactual={props.customerReviews}/>}
 
                         </>
                     );

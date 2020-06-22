@@ -7,7 +7,7 @@ import MultipleSections from 'components/SilverComponents/MultipleSections'
 import Footer from "components/Footer/Footer";
 import CarosolTop from 'components/SilverComponents/SilvercarosolPhoto'
 import { CDN_URL, API_URL } from "config";
-import {silverStyloriCollections, silverStyloriAllMasterCollections, allSeoPriorities} from "queries/home"
+import {silverStyloriCollections, silverStyloriAllMasterCollections, allSeoPriorities, customerReviews} from "queries/home"
 
 class HomeStylori extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class HomeStylori extends React.Component {
                     <Header />
                 <CarosolTop />
                 <ProductModal data={this.props.data}  allSeo={this.props.allSeo}/>
-                <MultipleSections isHover={true}/>
+                <MultipleSections isHover={true} customerReviews={this.props.customerReviews}/>
                 <Grid item>
                     <Footer silver={true} />
                 </Grid>
@@ -32,21 +32,57 @@ class HomeStylori extends React.Component {
 }
 
 const Components = (props) => {
-    const [state,setState] = React.useState({data:{},allSeo:{}})
+    const [state,setState] = React.useState({data:{},allSeo:{},customerReviews:[]})
+    function status(response) {
+        if (response.status >= 200 && response.status < 300) {
+            return Promise.resolve(response)
+        } else {
+            return Promise.reject(new Error(response.statusText))
+        }
+    }
+
+    function json(response) {
+        return response.json()
+    }
+    const getcustomerReviews = async()=>{
+        let _arrData = []
+       await fetch(`${API_URL}/graphql`, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+    
+            body: JSON.stringify({
+                query: customerReviews
+            })
+        })
+        .then(status)
+        .then(json)
+            .then(data => {
+                
+              
+                
+                data.data.allCustomerReviews.nodes.map(val=> {
+                    debugger
+                    let _obj ={}
+                
+                _obj['Content']=val.message ? val.message : "-STYLORI"
+                _obj['name']= val.customerName ? val.customerName:"-STYLORI"
+                _obj['location']= 'Chennai'
+                _arrData.push(_obj)
+            }
+                )
+                
+               
+                // console.log('@reviews', data)
+            })
+            return _arrData
+    }
     React.useEffect(()=>{
-      function status(response) {
-          if (response.status >= 200 && response.status < 300) {
-              return Promise.resolve(response)
-          } else {
-              return Promise.reject(new Error(response.statusText))
-          }
-      }
-  
-      function json(response) {
-          return response.json()
-      }
+     
       let allCollections = []
       let allSeoCollections = []
+      
       fetch(`${API_URL}/graphql`, {
           method: 'post',
           headers: {
@@ -90,7 +126,7 @@ const Components = (props) => {
           })
           .then(status)
           .then(json)
-          .then(res=>{
+          .then(async res=>{
             const  func = () =>{
                   var obj = {}
                   res.data.allSeoUrlPriorities.nodes.map(val=>{
@@ -102,15 +138,18 @@ const Components = (props) => {
                   }
                   // let _data =func()
                   state['allSeo'] = func()
+          
+                  state['customerReviews'] = await getcustomerReviews()
+                  debugger
+            setState({...state,data:state.data,allSeo:state.allSeo,customerReviews:state.customerReviews})
             
-            setState({...state,data:state.data,allSeo:state.allSeo})
-            
           })
           })
           })
+          
 },[])
 console.log(props.match.path === "/styloriSilver")
-    let content = <HomeStylori data={state.data} allSeo={state.allSeo}/>;
+    let content = <HomeStylori data={state.data} allSeo={state.allSeo} customerReviews={state.customerReviews}/>;
     return content;
 };
 
