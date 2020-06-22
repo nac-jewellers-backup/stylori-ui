@@ -95,7 +95,7 @@ class Component extends React.Component {
                                     />
                                 </Grid>
                                 <Grid item xs={5} sm={3} lg={3}>
-                                    <div className="wishlist_img" >
+                                    <div className={this.check_img(first_map.productListByProductId.productImagesByProductId.nodes[0].imageUrl) ?"shine box" : `shine box`} >
                                         <img className="viewport-img" src={this.check_img(first_map.productListByProductId.productImagesByProductId.nodes[0].imageUrl)
                                         } 
                                         alt="Stylori"
