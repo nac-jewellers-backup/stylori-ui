@@ -5,10 +5,15 @@ import {
     Button,
 } from '@material-ui/core';
 // var valus = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : ""
-let path = window.location.pathname.split('/').pop();
+// let path = window.location.pathname.split('/').pop();
 // const path = window.location.pathname !== "cart" || window.location.pathname!== "checkout"
 class Buynowbutton extends React.Component {
-    
+    constructor(props){
+        super()
+        this.state={
+            vals: 0
+        }
+    }
     valus = (props) => {
         
         var valus_locl = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : ""
@@ -29,15 +34,12 @@ class Buynowbutton extends React.Component {
             let productIds = valus_locl.map((val) => {
               return val.sku_id;
             });
-            productIds.indexOf(props.sku) > -1 ? (vals = 1) : (vals = 0);
+            productIds.indexOf(props.sku) > -1 ? this.setState({vals: 1}) : this.setState({vals: 0});
           }
-          debugger;
-          return vals;
-        
     }
-    componentDidUpdate(){
+    componentDidUpdate(prevProps,prevState){
         debugger
-        this.valus(this.props)
+        if(prevProps.sku !== this.props.sku) this.valus(this.props)
 
     }
     componentDidMount(){
@@ -48,7 +50,7 @@ class Buynowbutton extends React.Component {
         return (
             <div>
                 <Button  className={this.props.class} style={{ borderRadius: "5px" }}>
-                    {path !== "cart" && path !== "checkout" && this.valus(this.props) === 1 ? <>
+                    {window.location.pathname.split('/').pop() !== "cart" && window.location.pathname.split('/').pop() !== "checkout" && this.state.vals === 1 ? <>
                         <i class="fa fa-shopping-bag buynow-icon"></i>
                         <span> In bag!</span>
                     </> : <>
