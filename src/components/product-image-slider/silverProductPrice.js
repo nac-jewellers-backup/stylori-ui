@@ -710,23 +710,19 @@ class Component extends React.Component {
   };
 
   valus = (valueId) => {
-    var valus_locl = localStorage.getItem("cartDetails")
-      ? JSON.parse(localStorage.getItem("cartDetails")).products
-      : "";
-
+        
+    var valus_locl = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : ""
+    
     var vals;
-    valus_locl &&
-      valus_locl.map((val) => {
-        const vlx = valueId && valueId;
-        if (vlx === val.sku_id) {
-          vals = 1;
-          return false;
-        } else {
-          vals = 0;
-        }
-      });
-    return vals;
-  };
+
+    if (valus_locl) {
+        let productIds = valus_locl.map((val) => {
+          return val.sku_id;
+        });
+        productIds.indexOf(valueId) > -1 ? vals= 1 : vals= 0
+      }
+      return vals
+}
   handleLocalStorage = () => {
     if (this.valus(this.props.data[0].skuId) === 1) {
       // this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
