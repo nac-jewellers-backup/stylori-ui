@@ -22,7 +22,7 @@ class HomeStylori extends React.Component {
                     <Header />
                 <CarosolTop />
                 <ProductModal data={this.props.data}  allSeo={this.props.allSeo}/>
-                <MultipleSections />
+                <MultipleSections isHover={true}/>
                 <Grid item>
                     <Footer silver={true} />
                 </Grid>

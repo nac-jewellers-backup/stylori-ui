@@ -23,8 +23,8 @@ const MultipleSections = (props) => {
                 titleContiner.map(title => {
                     return (
                         <>
-                            <Title title={title} /> 
-                            {title == 'TOP PICKS' &&<GridList GridImage={collectionGrid}/>}
+                            <Title title={title} isSilver={true}/> 
+                            {title == 'TOP PICKS' &&<GridList GridImage={collectionGrid} isHover={props.isHover}/>}
                             {title == 'FEATURED' && <FeaturedGridComponent data={FeaturedCarousel} />}
                             {title == 'TESTIMONIALS' && <Testimonialsmodel data={testimonyCarousel} testimonyCarousel={props.testimonyCarousel} />}
 
