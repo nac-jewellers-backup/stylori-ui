@@ -10,7 +10,7 @@ export const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.up('lg')]: {
         containerTop: {
-            width: "1300px !important",
+            // width: "1300px !important",
             margin: "auto",
             marginTop: "3%",
             marginBottom: "1%",
@@ -51,26 +51,26 @@ export const useStyles = makeStyles(theme => ({
 
     },
     btnshop: {
-        backgroundColor: theme.palette.secondary.dark,
+        backgroundColor: theme.palette.secondary.dark2,
         borderRadius: 0,
         color: 'white',
-        boxShadow: '0 8px 16px 0 #ccc, 0 6px 20px 0 #ccc',
-        padding: '0px 22px',
+        boxShadow: 'rgb(204, 204, 204) 5px 6px 8px',
+        padding: '0px 12px',
         fontWeight: 'bold',
         fontFamily: 'Robot-Bold',
         letterSpacing: '5px',
-        fontSize: '22px'
+        fontSize: '16px'
     },
     btnshop2: {
         backgroundColor: theme.palette.secondary.dark2,
         borderRadius: 0,
         color: 'white',
         boxShadow: '0 8px 16px 0 #ccc, 0 6px 20px 0 #ccc',
-        padding: '0px 22px',
+        padding: '0px 12px',
         fontWeight: 'bold',
         fontFamily: 'Robot-Bold',
         letterSpacing: '5px',
-        fontSize: '22px',
+        fontSize: '16px',
         "&:hover":{
             backgroundColor: theme.palette.secondary.dark2,
             opacity:0.9
@@ -78,11 +78,12 @@ export const useStyles = makeStyles(theme => ({
     },
     productCardTitle: {
         // fontFamily: 'Robot-Bold',
-        color: theme.palette.secondary.dark,
+        color: theme.palette.secondary.dark2,
         letterSpacing: '5px',
         fontSize: '1.7rem',
         [theme.breakpoints.down('xs')]: {
-            fontSize: '1.0rem'
+            fontSize: '1.3rem',
+            fontWeight:'bold'
         },
     },
     productCardTitle2: {
@@ -90,19 +91,27 @@ export const useStyles = makeStyles(theme => ({
         color: theme.palette.secondary.dark2,
         letterSpacing: '5px',
         fontSize: '1.7rem !important',
-        fontWeight:'bold !important'
+        fontWeight:'bold !important',
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '1.3rem',
+            fontWeight:'bold'
+        },
     },
     productCardDescription: {
         textAlign: 'center',
         // fontFamily: 'Robot-Regular',
-        color: theme.palette.secondary.dark,
+        color: theme.palette.secondary.dark2,
         paddingTop: '2%',
         paddingBottom: '5%',
+        [theme.breakpoints.down('sm')]:{
+            fontSize: '0.8rem !important',
+        }
         
     },
     productCardDescription2: {
         textAlign: 'center',
         // fontFamily: 'Robot-Regular',
+        
         color: theme.palette.secondary.dark2,
         paddingTop: '2%',
         marginBottom: "5%",
@@ -111,5 +120,8 @@ export const useStyles = makeStyles(theme => ({
         "-webkit-line-clamp": 3,
         "-webkit-box-orient": "vertical",
         overflow: "hidden",
+        [theme.breakpoints.down('sm')]:{
+            fontSize: '0.8rem !important',
+        }
     }
 }));

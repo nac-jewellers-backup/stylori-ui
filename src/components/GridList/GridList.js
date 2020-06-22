@@ -108,7 +108,7 @@ export default function ImageGridList(props) {
         <Grid className={classes.root}>
             <Hidden mdUp>
             {props.isHover ?
-                  <Grid container>
+                  <Grid container style={{ marginTop:30, marginBottom:10 }}>
                   <Grid item className={classes.firstcolumn} md={9} lg={0} xl={0}>
                       <Grid container >
                           <Grid item md={12} sm={12} xs={12} className={`hovereffectSilvertoppicks`}>
@@ -242,7 +242,7 @@ export default function ImageGridList(props) {
             <Hidden smDown>
                 {props.isHover ?
                 
-                <Grid container style={{ padding: "0px 15px" }} >
+                <Grid container style={{ padding: "0px 15px", marginTop:50, marginBottom:10 }} >
                 <Grid item className={classes.firstcolumn} md={9} lg={9} xl={9}>
                   <Grid container>
                     <Grid item md={8} lg={8} xl={8} className={`hovereffectSilvertoppicks`}>

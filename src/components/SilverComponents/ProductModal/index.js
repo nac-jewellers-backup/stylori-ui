@@ -141,7 +141,7 @@ var _keysCollections = Object.keys(data).filter(val=>{
             className={`${shopByStyloriSilver ? classes.shopBySilver:'ProductGrids'} ${classes.ProductGrids}`}
             justify={"center"}
           >
-            <Grid item xs={8}>
+            <Grid item xs={10} sm={10} md={8} lg={8} xl={8}>
             <Hidden smDown>
               <Slideshow
                 class="subslider-carousel"
@@ -209,7 +209,7 @@ var _keysCollections = Object.keys(data).filter(val=>{
                   xs={12}
                   justify="center"
                   className={shopByStyloriSilver ? classes.productCardTitle2:classes.productCardTitle}
-                  style={{textAlign:'center'}}
+                  style={{textAlign:'center', marginTop:5}}
                 >
                   {tile.title.toUpperCase()}
                 </Grid>

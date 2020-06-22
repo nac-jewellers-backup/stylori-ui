@@ -25,7 +25,7 @@ export const useStyles = makeStyles(theme => ({
         color: theme.palette.secondary.dark2,
         // fontFamily: 'Robot-black',
         letterSpacing: '5px',
-        fontSize: '16px',
+        fontSize: '18px',
         fontWeight:"bold",
         [theme.breakpoints.only('xs')]: {
             letterSpacing: '1px',

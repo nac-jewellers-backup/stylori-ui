@@ -21,8 +21,10 @@ class HomeStylori extends React.Component {
             <Grid container>
                     <Header />
                 <CarosolTop />
+                <Container maxWidth={"lg"}>
                 <ProductModal data={this.props.data}  allSeo={this.props.allSeo}/>
                 <MultipleSections isHover={true} customerReviews={this.props.customerReviews}/>
+                </Container>
                 <Grid item>
                     <Footer silver={true} />
                 </Grid>
