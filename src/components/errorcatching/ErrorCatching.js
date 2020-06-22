@@ -15,7 +15,6 @@ export default class ErrorBoundary extends React.Component {
       errorInfo: errorInfo,
       handleError: true
     });
-    localStorage.clear()
     // , () => {
 
     //   if (!localStorage.getItem('error') || (localStorage.getItem('error') && localStorage.getItem('error') !== this.state.error.toString())) {
