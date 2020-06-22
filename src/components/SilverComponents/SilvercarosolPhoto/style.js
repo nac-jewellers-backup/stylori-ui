@@ -15,8 +15,9 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   seoText: {
-    backgroundColor: theme.palette.secondary.light,
+    backgroundColor: theme.palette.primary.light,
     justifyContent: "center",
+    color:theme.palette.secondary.dark2,
     display: "flex",
   },
   seoTextNobackground:{
