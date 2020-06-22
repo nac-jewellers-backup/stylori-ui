@@ -21,5 +21,6 @@ export const useStyles = makeStyles((theme) => ({
   },
   seoTextNobackground:{
     backgroundColor: 'unset !important',
+    color:theme.palette.secondary.dark2
   }
 }));

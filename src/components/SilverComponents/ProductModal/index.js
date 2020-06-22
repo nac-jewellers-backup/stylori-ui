@@ -123,6 +123,7 @@ var _keysCollections = Object.keys(data).filter(val=>{
   
   return (
    <>
+   
  <Grid container className={classes.containerTop} justify="center">
       {_data.map((tile) => {
          
@@ -130,6 +131,7 @@ var _keysCollections = Object.keys(data).filter(val=>{
           // tile.constructor === Array &&
           tile && ((tile.constructor === Object && tile.img && tile.img.imageUrl)||( tile.img.length > 0 )) ?
             <Grid
+           container
             item
             xs={12}
             sm={5}
@@ -137,7 +139,9 @@ var _keysCollections = Object.keys(data).filter(val=>{
             lg={5} 
             xl={5}
             className={`${shopByStyloriSilver ? classes.shopBySilver:'ProductGrids'} ${classes.ProductGrids}`}
+            justify={"center"}
           >
+            <Grid item xs={8}>
             <Hidden smDown>
               <Slideshow
                 class="subslider-carousel"
@@ -205,6 +209,7 @@ var _keysCollections = Object.keys(data).filter(val=>{
                   xs={12}
                   justify="center"
                   className={shopByStyloriSilver ? classes.productCardTitle2:classes.productCardTitle}
+                  style={{textAlign:'center'}}
                 >
                   {tile.title.toUpperCase()}
                 </Grid>
@@ -226,6 +231,9 @@ var _keysCollections = Object.keys(data).filter(val=>{
                 </Grid>
               </Grid>
             </Hidden>
+          
+            </Grid>
+           
           </Grid>
        :
        null

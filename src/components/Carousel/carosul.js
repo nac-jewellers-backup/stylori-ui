@@ -107,7 +107,8 @@ class Component extends React.Component {
 
   imagehoverchildrens = (hoverlist, globalContext, isInjectUrl) => {
     let { hover, hovereffect, TopPic, imagecra, isSilver, collectionDataSilverSEO  } = this.props;
-    
+    const collectiondatacheck = (val) => collectionDataSilverSEO ?collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText && collectionDataSilverSEO[val.title].seoText.replace(/ /g,'').length > 0 ? collectionDataSilverSEO[val.title].seoText : false : val.description
+    debugger
     if (TopPic) {
       return hoverlist.map((val) => (
         <div
@@ -145,14 +146,34 @@ class Component extends React.Component {
               onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
             />
             <div className="overlay1">
-              <div style={{ paddingTop: "40%" }}>
-                <h2 className="next-price">{val.title.toUpperCase()}</h2>
+           { collectionDataSilverSEO ?
+              <div className={'collectionDataSilverSEOflex'}>
+               <div style={{margin:'auto'}}>
+               <h2 className="next-price">{val.title.toUpperCase()}</h2>
                 <br />
-                <h5 className="contenttext">{collectionDataSilverSEO ?collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText ? collectionDataSilverSEO[val.title].seoText : '' : val.description}</h5>
+                {collectiondatacheck(val) ?
+                  <h5 className="contenttext">{collectionDataSilverSEO ?collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText ? collectionDataSilverSEO[val.title].seoText : '' : val.description}</h5>
+                :
+                null
+                }
                 <a className="info" style={{textDecoration:"none"}} href={`${collectionDataSilverSEO ?collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoUrl ? `/jewellery-${collectionDataSilverSEO[val.title].seoUrl}` : '#' : `/${val.url}`}`}>
                   <span className="shop">SHOP</span>
                 </a>
+                 </div>
               </div>
+              :
+              <div style={{ paddingTop: "40%" }}>
+                <h2 className="next-price">{val.title.toUpperCase()}</h2>
+                <br />
+                {collectiondatacheck(val) ?
+                  <h5 className="contenttext">{collectionDataSilverSEO ?collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText ? collectionDataSilverSEO[val.title].seoText : '' : val.description}</h5>
+                :
+                null
+                }
+                <a className="info" style={{textDecoration:"none"}} href={`${collectionDataSilverSEO ?collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoUrl ? `/jewellery-${collectionDataSilverSEO[val.title].seoUrl}` : '#' : `/${val.url}`}`}>
+                  <span className="shop">SHOP</span>
+                </a>
+              </div>}
             </div>
           </div>
         )) 

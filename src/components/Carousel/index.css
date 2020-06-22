@@ -214,7 +214,7 @@
 .hovereffectSilver h5 {
   color: #dedede;
   text-align: center;
-  margin: auto;
+  /* margin: auto; */
   width: 300px;
   margin-top: 0px;
   padding-top: 0px;
@@ -222,7 +222,12 @@
   font-weight: 500 !important;
 
 }
-
+.collectionDataSilverSEOflex{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
 .hovereffectSilver span {
   padding: 5px 13px 5px 12px;
   letter-spacing: 4px;

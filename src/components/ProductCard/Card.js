@@ -243,7 +243,7 @@ const useStyles = makeStyles(theme => ({
   priceClass: {
     // boxShadow: "0px 0px 5px #F699A3 inset",
     padding: "10px",
-    // height: '56px',
+    height: '70px',
     display: 'flex',
     boxShadow: " 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
     borderRadius: '0 !important',
