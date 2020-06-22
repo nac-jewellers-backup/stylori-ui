@@ -167,7 +167,7 @@ export default function ImageGridList(props) {
                                           <div className="overlay1">
                             <div className={"collectionDataSilverSEOflex"}>
                               <div style={{ margin: "auto" }}>
-                                <h2 className="next-price" style={{fontSize:'0.5rem'}}>
+                                <h2 className="next-price" style={{fontSize:'0.5rem !important'}}>
                                   {"Bangles".toUpperCase()}
                                 </h2>
                               </div>
