@@ -44,5 +44,11 @@ export const useStyles = makeStyles(theme => ({
     },
     hrlineright: {
         textAlign: 'left'
+    },
+    silverPDPage:{
+        color: theme.palette.secondary.main,
+    },
+    silverPDPagehrline:{
+        border: `1px solid ${theme.palette.secondary.main}`,
     }
 }))

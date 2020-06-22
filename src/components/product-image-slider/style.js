@@ -206,7 +206,10 @@ const styles = (theme) => ({
     fontSize: '1.3rem',
     letterSpacing: '8px',
     textTransform: 'uppercase',
-    color:`${theme.palette.secondary.main} !important`
+    color:`${theme.palette.secondary.main} !important`,
+    [theme.breakpoints.up('sm')]:{
+      marginBottom:'15px'
+    }
   }
   ,
   silverMarginBottom:{
@@ -396,6 +399,9 @@ labelSilverProductDetail:{
     color:theme.palette.secondary.main,
     letterSpacing: "6px",
     fontWeight: "bold",
+    [theme.breakpoints.up("sm")]: {
+      marginBottom: 10,
+    },
   },
 },
 silverSubCarouselHead:{
@@ -413,9 +419,9 @@ similarproductssmallScreen:{
   textAlign: "center",
   color:theme.palette.secondary.dark2,
   letterSpacing: "4px",
-  fontSize: "16px !important",
+  fontSize: "20px !important",
   fontWeight: "bold !important",
-  marginBottom: "10px !important",
+  
 },
 reviewandratingsmallScreen:{
   color:theme.palette.secondary.main,

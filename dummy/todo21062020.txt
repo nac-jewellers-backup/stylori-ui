@@ -1,0 +1,30 @@
+Make Quantity label bold
+Pincode placeholder margin - spacing fix
+Chat now click
+Product details text indendation
+Similar products text indentation 
+
+ADD TO CART - rgb(166, 168, 171) 3px 3px 3px
+
+
+Collections Grid 
+1) Size change
+2) Text indentation
+3) Text title bold
+
+Top picks Grid , Featured Grid, Testimonials
+1) Margin indentation
+
+Silver homepage
+
+1) SEO text background color and text color need to be changed
+
+All header color change with spacing 
+
+Featured grid
+
+Carousel dots remove shadow
+
+
+SEO color below banner in silver collections
+

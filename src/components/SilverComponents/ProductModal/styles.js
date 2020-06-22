@@ -98,12 +98,18 @@ export const useStyles = makeStyles(theme => ({
         color: theme.palette.secondary.dark,
         paddingTop: '2%',
         paddingBottom: '5%',
+        
     },
     productCardDescription2: {
         textAlign: 'center',
         // fontFamily: 'Robot-Regular',
         color: theme.palette.secondary.dark2,
         paddingTop: '2%',
-        paddingBottom: '5%',
+        marginBottom: "5%",
+        textOverflow: "ellipsis",
+        display: "-webkit-box",
+        "-webkit-line-clamp": 3,
+        "-webkit-box-orient": "vertical",
+        overflow: "hidden",
     }
 }));

@@ -7,7 +7,7 @@ const styles = (theme) => ({
     justifyContent: "space-around",
   },
   shopByLabel: {
-      margin:"10px 0px 15px 0px",
+      margin:"10px 0px 30px 0px",
     "& div": {
       textTransform: "uppercase",
       color:theme.palette.secondary.main,

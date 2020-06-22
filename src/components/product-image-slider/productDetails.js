@@ -108,13 +108,13 @@ import {
                       >
                         <div className="overall-bo">
                          {isSilver ?
-                         <span
+                         <div
                          key={valueofproductdetail.name}
                          className={`product-details ${classes.normalfontsSilver}`}
                        >
                          {" "}
                          {valueofproductdetail.header}
-                       </span>
+                       </div>
                          :
 <>                         
                          <span
@@ -504,9 +504,11 @@ import {
             
             <div style={{ backgroundColor: "fafafa" }}>
               {val.namedetail !== undefined &&
-                val.namedetail.map(res =>
-                  res.details !== null && res.details.length === 0 ? (
-                    false
+                val.namedetail.map(res =>{
+                  
+                  return(
+                  !(Boolean(res.name &&  res.details)) ? (
+                    null
                   ) : (
                     <span>
                       {
@@ -596,8 +598,9 @@ import {
                         </>
                       }
                     </span>
-                  )
-                )}
+                  ))}
+                )
+                }
             </div>
          </>
         ) : null}

@@ -28,7 +28,7 @@ import { GlobalContext } from "context";
 import SilverProductPrice from "components/product-image-slider/silverProductPrice";
 import ShopBy from "components/shopBy";
 import ProductModal from "../components/SilverComponents/ProductModal"
-import { shopByStyloriSilver } from "queries/productdetail";
+import { shopByStyloriSilver, allSeoPriorities } from "queries/productdetail";
 import ProductTitle from "components/SilverComponents/ProductTitle";
 import Quantity from "../components/quantity";
 // import {Helmet} from "react-helmet";
@@ -406,16 +406,14 @@ class ProductDetail extends Component {
             <Sublistcarousel data={this.props.data} isSilver={isSilver} />
           </Grid>
 
-          <Grid item xs={12}>
-            <CustomerReviews data={this.props.data} />
-          </Grid>
+         
             <Grid item xs={12}>
             {isSilver && <Container>
               <div style={{marginTop:20,marginBottom:10}}>
-              <ProductTitle title={'SHOP BY TYPE'} isSilver={isSilver}/>
+              <ProductTitle title={'SHOP BY TYPE'} class={['silverPDPage', 'silverPDPagehrline']} isSilver={isSilver}/>
               </div>
               
-              <ProductModal shopByStyloriSilver={this.props.shopByStyloriSilver}/>
+              <ProductModal shopByStyloriSilver={this.props.shopByStyloriSilver} allSeo={this.props.allSeo}/>
               </Container>}
             </Grid>
           <Grid item xs={12}>
@@ -426,7 +424,9 @@ class ProductDetail extends Component {
               isSilver={isSilver}
             />
           </Grid>
-
+          <Grid item xs={12}>
+            <CustomerReviews data={this.props.data} />
+          </Grid>
           <Grid item style={{ paddingBottom: "50px" }}>
             <Footer />
           </Grid>
@@ -442,7 +442,8 @@ const Components = (props) => {
   } = React.useContext(CartContext);
 
   // ONLY SILVER PRODUCT DETAIL PAGE
-  const [state, setState] = React.useState({shopByData:[]})
+  let _shopsProducts = []
+  const [state, setState] = React.useState({shopByData:[], allSeo:{}})
   const _shopsProductss = (val) => {
   
     // _shopsProducts = [
@@ -452,8 +453,8 @@ const Components = (props) => {
     //   },
     
     // ];
-    let _shopsProducts = Object.keys(val).map((data)=>{return {label:val[data].label, image:val[data].images}})
-    setState({shopByData:_shopsProducts})
+     _shopsProducts = Object.keys(val).map((data)=>{return {label:val[data].label, image:val[data].images}})
+    // setState({...state,shopByData:_shopsProducts})
   };
   
   const _queryResultsValidator = (_result) => { 
@@ -485,14 +486,47 @@ const Components = (props) => {
         query: `${shopByStyloriSilver([
           "Earrings",
           "Pendants",
-          "Rings",
+          "Rings", 
           "Bracelets",
           "Bangles"
         ])}`,
       }),
     })
       .then((res) => res.json())
-      .then((res) => _queryResultsValidator(res.data));
+      .then(async(res) => {
+        _queryResultsValidator(res.data);
+        await  fetch(`${API_URL}/graphql`, {
+          method: 'post',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+  
+          body: JSON.stringify({
+              query: allSeoPriorities([`"Earrings"`,
+              `"Pendants"`,
+              `"Rings"`, 
+              `"Bracelets"`,
+              `"Bangles"`])
+          })
+      })
+      .then((res) => res.json())
+      .then(res=>{
+        const  func = () =>{
+              var obj = {}
+              res.data.allSeoUrlPriorities.nodes.map(val=>{
+              obj[val.attributeValue] = {}
+              obj[val.attributeValue]["seoText"] = val.seoText ? val.seoText : " "
+              obj[val.attributeValue]["seoUrl"] = val.seoUrl ? val.seoUrl : " "
+              })
+              return obj
+              }
+              // let _data =func()
+              state['allSeo'] = func()
+        
+        setState({...state,shopByData:_shopsProducts,allSeo:state.allSeo})
+        
+      })
+      });
   };
   
   
@@ -537,7 +571,6 @@ console.log(state.shopByData,"-------------+*/-")
 
   const datas = data;
   let mapped = datas;
-
   if (!loading && !error) {
     mapped = productDetails(
       datas,
@@ -564,6 +597,7 @@ console.log(state.shopByData,"-------------+*/-")
         wishlistdata={wishlistdata}
         Globalctx={Globalctx}
         shopByStyloriSilver = {state.shopByData}
+        allSeo={state.allSeo}
       />
     );
   }

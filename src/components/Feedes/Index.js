@@ -127,11 +127,12 @@ export default function StaticView(props) {
               <Typography className={classes.Title}>Instagram</Typography>
             </Grid>
             <Grid item container className={classes.photo} style={{ height: "390px" }}>
-              <iframe
+                  <iframe
                 src="https://assets-cdn.stylori.com/assets/7b4c4135f67d8ee467c80ebc286cd3c3bad477ad.html"
                 width="100%"
                 frameBorder={0}
               ></iframe>
+
             </Grid>
           </Grid>
           <Grid

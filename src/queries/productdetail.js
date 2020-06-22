@@ -281,6 +281,18 @@ export const shopByStyloriSilver = (data) =>{ return `query MyQuery {
 }
 
   `}
+  export const allSeoPriorities = (arrayOfProductTypes) =>`
+  query seoCollections{
+    allSeoUrlPriorities(filter: {attributeName: {equalTo: "Product Type"}, attributeValue: {in: [${arrayOfProductTypes}]}}) {
+      nodes {
+        attributeName
+        attributeValue
+        seoUrl
+        seoText
+      }
+    }
+  }
+  `
 export const filterProductMatrix = (type, value) => {
   let fc = { table: "", type: "" }
   switch (type) {

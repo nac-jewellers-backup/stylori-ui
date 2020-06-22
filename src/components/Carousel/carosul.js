@@ -64,7 +64,7 @@ class Component extends React.Component {
   renderFadeImages = () => {
 
     let { video, currentImage } = this.props;
-debugger
+
     return this.props.fadeImages
       ? this.props.fadeImages.map((imgs) => (
           <div
@@ -203,7 +203,7 @@ debugger
                       color: "rgba(166, 168, 171, 1)",
                       padding:'5px 10px',
                       marginBottom:'10px',
-                      boxShadow:'#b9b9b9 3px 3px 3px',
+                      boxShadow:'rgb(166, 168, 171) 3px 3px 3px',
                       minWidth:'100px',
                       fontSize:'12px',
                       letterSpacing:1
@@ -217,7 +217,7 @@ debugger
                       background: "white",
                       color: "rgba(166, 168, 171, 1)",
                       padding:'5px 10px',
-                      boxShadow:'rgba(208, 210, 211, 0.66) 3px 3px 3px',
+                      boxShadow:'rgb(166, 168, 171) 3px 3px 3px',
                       minWidth:'100px',
                       fontSize:'12px',
                       letterSpacing:1
@@ -390,7 +390,7 @@ debugger
     const { sliderRef, Globalctx } = this.props;
     var settings = this.props.dataCarousel;
     console.log(this.props)
-    debugger
+    
     return (
       <div>
         <Slider ref={sliderRef} {...settings}>

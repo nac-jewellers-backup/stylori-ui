@@ -461,7 +461,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                     header: "Product Details",
                     namedetail: [{
                         name: "Product Code",
-                        details: PD && PD.generatedSku !== '' ? PD.generatedSku : ''
+                        details: PD && PD.generatedSku !== '' ? PD.generatedSku : null
                     },
                     {
                         name: "Metal Type",
@@ -473,18 +473,18 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
 
                     {
 
-                        name: PD && PD.skuSize ? "Size" : '',
-                        details: PD && PD.generatedSku !== '' ? PD.skuSize : ''
+                        name: PD && PD.skuSize ? "Size" : null,
+                        details: PD && PD.generatedSku !== '' ? PD.skuSize : null
                     },
                     {
 
-                        name: PD && PD.productListByProductId.width ? "Height (in mm)" : '',
-                        details: PD && PD.productListByProductId.width !== '' ? PD.productListByProductId.width : ''
+                        name: PD && PD.productListByProductId.width ? "Height (in mm)" : null,
+                        details: PD && PD.productListByProductId.width !== '' ? PD.productListByProductId.width : null
                     },
                     {
 
-                        name: PD && PD.productListByProductId.height ? "Width (in mm)" : '',
-                        details: PD && PD.productListByProductId.height !== '' ? PD.productListByProductId.height : ''
+                        name: PD && PD.productListByProductId.height ? "Width (in mm)" : null,
+                        details: PD && PD.productListByProductId.height !== '' ? PD.productListByProductId.height : null
                     }
                     ],
                 },
@@ -540,40 +540,40 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                             [{
                                 name: "Stone Type",
                                 details: PD.productListByProductId.productGemstonesByProductSku.nodes &&
-                                    PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
+                                    PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? null :
                                     gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
                                         PD.productListByProductId.productGemstonesByProductSku.nodes, 'gemstoneType')
                             },
                             {
                                 name: "Shape",
                                 details: PD.productListByProductId.productGemstonesByProductSku.nodes &&
-                                    PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
+                                    PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? null :
                                     gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
                                         PD.productListByProductId.productGemstonesByProductSku.nodes, 'gemstoneShape')
 
                             },
                             {
                                 name: "Total No of Stones",
-                                details: PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
+                                details: PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? null :
                                     gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
                                         PD.productListByProductId.productGemstonesByProductSku.nodes, 'stoneCount')
                             },
                             {
                                 name: "Size (in mm)",
-                                details: PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
+                                details: PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? null :
                                     gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
                                         PD.productListByProductId.productGemstonesByProductSku.nodes, 'gemstoneSize')
                             },
 
                             {
                                 name: "Setting",
-                                details: PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
+                                details: PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? null :
                                     gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
                                         PD.productListByProductId.productGemstonesByProductSku.nodes, 'gemstoneSetting')
                             },
                             {
                                 name: "Weight (Carat)",
-                                details: PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? '' :
+                                details: PD.productListByProductId.productGemstonesByProductSku.nodes && PD.productListByProductId.productGemstonesByProductSku.nodes.length === 0 ? null :
                                     gemstoneType(PD.productListByProductId.productGemstonesByProductSku.nodes,
                                         PD.productListByProductId.productGemstonesByProductSku.nodes, 'stoneWeight')
                             }

@@ -207,7 +207,7 @@ class Allorders extends React.Component {
                             <div style={{ marginTop: "20px", boxShadow: "none" }}>
                                 {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
                                 {allDatas().map((val, index) => {
-debugger
+
                                     return (
                                         <ExpansionPanel
                                             square
@@ -255,7 +255,7 @@ debugger
                                                     {/* ))} */}
                                                     <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.shoppingCartByCartId.discountedPrice))}</span></div>
                                                     {val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(cart => {
-                                                        debugger
+                                                        
                                                         return (<>
                                                             <br />
                                                             <Grid container spacing={12} lg={12} style={{ outline: "none", padding: " 10px", boxShadow: " 1px 2px 13px 7px #DEDADA", marginBottom: "20px", marginTop: "12px" }}>

@@ -49,7 +49,7 @@ const inputsearch = (
           item
           xs={12}
         >
-          <Grid item xs={isSilver ? 5 : 7} lg={4} sm={7}>
+          <Grid item xs={isSilver ? 6 : 7} lg={4} sm={7}>
             {/* <input
                             placeholder='&#xf041; &nbsp; Enter Pin Code'
                             className='buynow-search'
@@ -63,7 +63,7 @@ const inputsearch = (
               type="tel"
               placeholder="Enter Pincode"
               maxLength={6}
-              className={`pincode-cust buynow-search ${isSilver ? `${'pincode-cust-silver'} ${classes.rating__}` : ''}`}
+              className={`buynow-search ${isSilver ? `${'pincode-cust-silver'} ${classes.rating__}` : 'pincode-cust'}`}
               value={state.values}
               onChange={(event) => {
                 handleChanges(event);
@@ -74,7 +74,7 @@ const inputsearch = (
             />
 
           </Grid>
-          <Grid item xs={isSilver ? 4 : 5} lg={3} sm={5}>
+          <Grid item xs={isSilver ? 5 : 5} lg={3} sm={5}>
             <Button
               style={{ color: "#fff", marginLeft: props.isSilver ? 8 : 0 }}
               className={

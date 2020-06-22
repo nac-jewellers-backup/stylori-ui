@@ -16,7 +16,7 @@ const handleQty = (
   state,
   skuId
 ) => {
-  debugger
+  
   var element = document.getElementById(`number${skuId}`);
   var value = parseInt(element.value, 10);
   var increment = state["maxOrderQty"];
@@ -48,7 +48,7 @@ const handleQty = (
       increment = false;
     }
   }
-  debugger
+  
   setClass({ maxOrderQty: increment, minOrderQty: decrement, qty: value });
 };
 
@@ -82,7 +82,7 @@ const Quantity = (props) => {
   });
 
   const setClass = (data) => {
-    debugger
+    
     setState({
       ...state,
       qty: data["qty"],
@@ -219,7 +219,7 @@ const Quantity = (props) => {
           className={classes.label}
         >
           <Typography variant="body1" component="div">
-            Quantity
+            <b>Quantity</b>
           </Typography>
         </Grid>
       )}

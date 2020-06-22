@@ -39,11 +39,13 @@ const ProductModal = (props) => {
   let _shopByData =
   shopByStyloriSilver && shopByStyloriSilver.length > 0 &&
     shopByStyloriSilver.map((val) => {
+      
+      debugger
       return {
         img: val.image,
         title: val.label,
         description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ",
+          allSeo && allSeo[val.label] ? allSeo[val.label].seoText : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ",
         price: "98.89789",
       };
     });
@@ -123,15 +125,16 @@ var _keysCollections = Object.keys(data).filter(val=>{
    <>
  <Grid container className={classes.containerTop} justify="center">
       {_data.map((tile) => {
-        
+         
         return (
-          tile && ((tile.constructor === Object && tile.img && tile.img.imageUrl)||(tile.constructor === Array && tile.img.length > 0 )) ?
+          // tile.constructor === Array &&
+          tile && ((tile.constructor === Object && tile.img && tile.img.imageUrl)||( tile.img.length > 0 )) ?
             <Grid
             item
             xs={12}
             sm={5}
             md={5}
-            lg={5}
+            lg={5} 
             xl={5}
             className={`${shopByStyloriSilver ? classes.shopBySilver:'ProductGrids'} ${classes.ProductGrids}`}
           >
