@@ -103,6 +103,11 @@ export const useStyles = makeStyles(theme => ({
         color: theme.palette.secondary.dark2,
         paddingTop: '2%',
         paddingBottom: '5%',
+        textOverflow: "ellipsis",
+        display: "-webkit-box",
+        "-webkit-line-clamp": 3,
+        "-webkit-box-orient": "vertical",
+        overflow: "hidden",
         [theme.breakpoints.down('sm')]:{
             fontSize: '0.8rem !important',
         }
