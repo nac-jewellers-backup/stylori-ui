@@ -293,6 +293,13 @@ export const shopByStyloriSilver = (data) =>{ return `query MyQuery {
     }
   }
   `
+export const checkProductAlreadyExistInCart = (data) =>` {
+    allShoppingCartItems(condition: {productSku: "${data.skuId}", shoppingCartId: "${data.cartId}"}) {
+      nodes {
+        productSku
+      }
+    }
+  }`
 export const filterProductMatrix = (type, value) => {
   let fc = { table: "", type: "" }
   switch (type) {

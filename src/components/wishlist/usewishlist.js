@@ -3,6 +3,7 @@ import { useNetworkRequest } from 'hooks/index';
 import { CartContext,ProductDetailContext } from 'context'
 import { API_URL, HOME_PAGE_URL, CDN_URL } from '../../config';
 import { CART, FetchSku, FetchCartId } from 'queries/cart';
+import { checkProductAlreadyExistInCart } from "queries/productdetail";
 
 var orderobj = {};
 var orderobj_cart = {};
@@ -69,17 +70,46 @@ const useWishlists = (props) => {
     //             console.log(myJson);
     //         });
     // }
+const checkProductAlreadyAddedInWishlist = async(num) =>{
+    const cartId = JSON.parse(localStorage.getItem('cart_id')).cart_id
+    await  fetch(`${API_URL}/graphql`, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+        },
 
+        body: JSON.stringify({
+            query: checkProductAlreadyExistInCart({skuId:values.product_sku, cartId:cartId})
+        })
+    })
+    .then((res) => res.json())
+    .then(res=>{
+      debugger
+      if(res.data.allShoppingCartItems.nodes.length > 0){
+          alert("This product is already added in the cart")
+      }
+      else{
+        values["isactive"] = num
+        values["user_id"] = user_id
+        setValues({ values, ...values });
+        makeFetch()
+      }
+            // let _data =func()
+            // state['allSeo'] = func()
+      
+    //   setState({...state,shopByData:_shopsProducts,allSeo:state.allSeo})
+      
+    })
+    
+}
     const handelSubmit = (num) => {
 
         setwishlistdata({
             wishlistdata: values.isactive
         })
         if (user_id.length > 0 && check_gustlog === "false") {
-            values["isactive"] = num
-            values["user_id"] = user_id
-            setValues({ values, ...values });
-            makeFetch()
+            checkProductAlreadyAddedInWishlist(num)
+            
         } else {
             alert("Please login your email Id")
             localStorage.setItem('review_location', `${window.location.href}`)
