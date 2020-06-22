@@ -292,6 +292,7 @@ export const FetchCartId = `query FetchCartId($UserId: ShoppingCartCondition) {
         nodes {
           qty
           productSku
+          price
         }
       }
     }

@@ -371,42 +371,76 @@ const Provider = (props) => {
             })
                 .then(status)
                 .then(json).then(async val => {
-                    
+                    debugger
                     let localStorageCartDetails = JSON.parse(localStorage.getItem('cartDetails'))
                     let localStorageQty = JSON.parse(localStorage.getItem('quantity'))
                     let _qty = {}
                     let _checkValid = localStorageCartDetails && localStorageCartDetails.products ? localStorageCartDetails.products : []
-                    if(_checkValid.length > 0){
                         val.data.allShoppingCarts.nodes[0].shoppingCartItemsByShoppingCartId.nodes.map(valresult=>{
-                            _checkValid.map((valProducts,i)=>{
+                         if(localStorageCartDetails){
+                            if(_checkValid.length > 0){
+                                _checkValid.map((valProducts,i)=>{
+                                debugger
                                 if(localStorageQty){
                                     if(valProducts.sku_id ===valresult.productSku){
                                         localStorageCartDetails.products[i].qty = valresult.qty
                                         localStorageQty[valresult.productSku]   = valresult.qty
+                                        localStorage.setItem('quantity',JSON.stringify({...localStorageQty}))
+                                        localStorage.setItem('cartDetails',JSON.stringify({...localStorageCartDetails})) 
+                                      }
+                                      else if(!Boolean(_qty[valresult.productSku])){
+                                          let _newProductQty = {}
+                                          let _newProduct = {}
+                                          _newProductQty[valresult.productSku] = valresult.qty
+                                          localStorageQty ={...localStorageQty, ..._newProductQty}
+                                          _newProduct['sku_id'] = valresult.productSku
+                                          _newProduct['price'] = valresult.price
+                                          _newProduct['qty'] = valresult.qty
+                                          localStorageCartDetails['products'] = {..._checkValid,..._newProduct}
+                                          localStorage.setItem('quantity',JSON.stringify({...localStorageQty}))
+                                          localStorage.setItem('cartDetails',JSON.stringify({...localStorageCartDetails})) 
                                       }
                                 }
                                 else{
-                                    
-                                    localStorageCartDetails.products[i].qty = valresult.qty
-                                    _qty[valresult.productSku]   = valresult.qty
+                                    let _newProductQty = {}
+                                    _newProductQty[valresult.productSku] = valresult.qty
+                                  
+                                    localStorage.setItem('quantity',JSON.stringify({..._newProductQty}))
                                 }
+                               
                                 
                                 // else if(valProducts.sku_id !== valresult.productSku){
                                 //     localStorageCartDetails.products[i].qty = valresult.qty
                                 //   localStorageQty[valresult.productSku]   = valresult.qty
                                 // }
                                 })      
+                            }
+                            else{
+                                let _newProductQty = {}
+                                let _newProduct = {}
+                                _newProductQty[valresult.productSku] = valresult.qty
+                                _newProduct['sku_id'] = valresult.productSku
+                                _newProduct['price'] = valresult.price
+                                _newProduct['qty'] = valresult.qty
+                                localStorageQty ={..._newProductQty}
+                                localStorageCartDetails['products'] = {..._newProduct}
+                            }
+                         }
+                         else{
+                            var skuObj = { "cart_id": "", "user_id": "userId", "products": [] }
+                            let _newProductQty = {}
+                            let _newProduct = {}
+                            _newProductQty[valresult.productSku] = valresult.qty
+                            _newProduct['sku_id'] = valresult.productSku
+                            _newProduct['price'] = valresult.price
+                            _newProduct['qty'] = valresult.qty
+                            skuObj['products'] = [{..._newProduct}]
+                            localStorage.setItem('quantity',JSON.stringify({..._newProductQty}))
+                            localStorage.setItem('cartDetails',JSON.stringify({...skuObj})) 
+                         }
                         })
                       
-                        if(localStorageCartDetails){
-                            localStorage.setItem('quantity', JSON.stringify(localStorageQty))
-                        }
-                        else{
-                            localStorage.setItem('quantity', JSON.stringify(_qty))
-                        }
-                        
-                        localStorage.setItem('cartDetails', JSON.stringify(localStorageCartDetails))
-                    }
+                     
                     if (val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length > 0 &&
                         val.data.allShoppingCarts.nodes[0].status !== "pending") {
                         // alert(val.data.allShoppingCarts.nodes[0].status)
