@@ -14,20 +14,35 @@ class Buynowbutton extends React.Component {
         var valus_locl = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : ""
         
         var vals;
-        valus_locl && valus_locl.map(val => {
-            const vlx = this.props && this.props.sku
-            if (vlx === val.sku_id) {
-                vals = 1
-                return false
-            } else {
-                vals = 0
-            }
+        // return valus_locl && valus_locl.map(val => {
+        //     const vlx = this.props && this.props.sku
+        //     if (vlx === val.sku_id) {
+        //         vals = 1
+        //         return vals
+        //     } else {
+        //         vals = 0
+        //         return vals
+        //     }
 
-        })
-        return vals
+        // })
+        if (valus_locl) {
+            let productIds = valus_locl.map((val) => {
+              return val.sku_id;
+            });
+            productIds.indexOf(props.sku) > -1 ? (vals = 1) : (vals = 0);
+          }
+          debugger;
+          return vals;
+        
     }
     componentDidUpdate(){
+        debugger
         this.valus(this.props)
+
+    }
+    componentDidMount(){
+        this.valus(this.props)
+
     }
     render() {
         return (

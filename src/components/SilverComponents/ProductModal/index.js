@@ -40,7 +40,7 @@ const ProductModal = (props) => {
   shopByStyloriSilver && shopByStyloriSilver.length > 0 &&
     shopByStyloriSilver.map((val) => {
       
-      debugger
+      
       return {
         img: val.image,
         title: val.label,

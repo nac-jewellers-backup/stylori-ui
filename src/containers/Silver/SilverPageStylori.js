@@ -65,7 +65,7 @@ const Components = (props) => {
               
                 
                 data.data.allCustomerReviews.nodes.map(val=> {
-                    debugger
+                    
                     let _obj ={}
                 
                 _obj['Content']=val.message ? val.message : "-STYLORI"
@@ -142,7 +142,7 @@ const Components = (props) => {
                   state['allSeo'] = func()
           
                   state['customerReviews'] = await getcustomerReviews()
-                  debugger
+                  
             setState({...state,data:state.data,allSeo:state.allSeo,customerReviews:state.customerReviews})
             
           })

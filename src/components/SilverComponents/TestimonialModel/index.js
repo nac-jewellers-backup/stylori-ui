@@ -166,7 +166,7 @@ export default function ImageGridList(props) {
         slider.current.slickPrev();
     }
     console.log(props.dataactual)
-    debugger
+    
     return (
         <Grid container className={classes.root}>
             <Grid item className={classes.imgleftGrid}>

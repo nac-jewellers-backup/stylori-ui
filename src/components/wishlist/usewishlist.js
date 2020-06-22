@@ -84,7 +84,7 @@ const checkProductAlreadyAddedInWishlist = async(num) =>{
     })
     .then((res) => res.json())
     .then(res=>{
-      debugger
+      
       if(res.data.allShoppingCartItems.nodes.length > 0){
           alert("This product is already added in the cart")
       }
