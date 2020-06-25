@@ -5,8 +5,8 @@ export const useStyles = makeStyles(theme => ({
     containerTop: {
         display: 'flex',
         backgroundColor: "#fff",
-        width: "100%",
-        margin: "3% 0% 3% 0%"
+        width: "1300px",
+        margin: "3% 0% 3% 0%",
     },
     [theme.breakpoints.up('lg')]: {
         containerTop: {
@@ -21,7 +21,7 @@ export const useStyles = makeStyles(theme => ({
         containerTop: {
             display: 'flex',
             backgroundColor: "#fff",
-            width: "100%",
+            width: "100% !mportant" ,
             margin: "2% 0% 0% 0% !important"
         },
         productCardDetail: {
