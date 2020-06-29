@@ -551,11 +551,11 @@ const Productprice = (
                     :
                     null  
                     }
-                      <Grid item xs={12}>
+                      {/* <Grid item xs={12}>
                         <div className={`${classes.quantity}`}>
                           <Quantity data={props.data} /> 
                         </div>
-                      </Grid>
+                      </Grid> */}
                       <Grid item xs={12}>
                         <Grid item xs={4}>
                           <div onClick={handleLocalStorage.bind(this)}>

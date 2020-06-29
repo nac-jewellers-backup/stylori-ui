@@ -203,8 +203,8 @@ const Quantity = (props) => {
   }, []);
   console.clear();
   console.log("this.props.isdatafromstate", filters);
-  const { classes, cart } = props;
-  const _cart = cart ? true : false;
+  const { classes, cart, pdpage } = props;
+  const _cart = cart || pdpage ? true : false;
   console.log(filters, "//////////QTY");
   return (
     <Grid container item xs={12}>
