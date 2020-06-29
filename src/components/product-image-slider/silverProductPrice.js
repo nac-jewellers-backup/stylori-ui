@@ -472,15 +472,17 @@ const Productprice = (
                                   </Typography>
                                 )}
                                 <Typography
-                                onClick={()=>{
-                                alert('haii')
-                                  document.getElementById('chat-widget-container').click()
-                                }}
+                               onClick={()=>{
+                                 debugger
+                                 window.LC_API.open_chat_window()
+                               }}
+                               variant="subtitle1" component="div"
                                   className={`${classes.TypoListed} ${
                                     isSilver
                                       ? `${`${classes.chatNowSilver} ${classes.chatNowSilverDark}`}`
                                       : ""
                                   }`}
+                                  style={{cursor:'pointer'}}
                                 >
                                   {isSilver ? `${val.chat} NOW` : val.chat}
                                 </Typography>

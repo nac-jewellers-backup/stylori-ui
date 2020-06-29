@@ -247,6 +247,7 @@ const Buydetails = (
                   item
                   style={{ cursor: "pointer !important" }}
                   className={`buy-subheaders ${classes.normalfonts}`}
+                  onClick={()=>window.LC_API.open_chat_window()}
                 >
                   <Typography>
                     <i
@@ -377,6 +378,12 @@ const BuydetailsSilverdetailpage = (
                     </Typography>
                   )}
                   <Typography
+                  onClick={()=>{
+                    debugger
+                    window.LC_API.open_chat_window()
+                  
+                  }}
+                  style={{cursor:'pointer'}}
                     className={`${classes.TypoListed} ${
                       isSilver ? classes.chatNowSilver : ""
                     }`}
