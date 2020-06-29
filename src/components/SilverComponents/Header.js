@@ -181,7 +181,7 @@ class Header extends Component {
                                 <Grid container spacing={12} className={window.location.pathname === "/cart" || b[1] === "paymentsuccess" || b[1] === "paymentfail" || window.location.pathname === '/checkout' ? "cartheader" : "cartcardrelese"}>
                                     <Grid container item xs={12} justify="flex-end" alignItems="center">
                                         {this.props.paymentSucces || window.location.pathname === "/cart" || window.location.pathname === '/checkout' ? <Grid item xs={3} className="logoImgHeader1">
-                                            <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/" }} style={{ cursor: "pointer" }}>
+                                            <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = isSilver  ? "/styloriSilver" : "/" }} style={{ cursor: "pointer" }}>
                                                 <img id="logoImage" className={`imges`} src={isSilver ? stylorisilverlogo :styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" style={{ transition: "height 0.2s", height:isSilver ? 70 : 60, marginTop: "9px" }}/>
                                             </div>
                                         </Grid>
@@ -299,7 +299,7 @@ class Header extends Component {
                                     <Container maxWidth="lg" >
                                         <Grid container spacing={12} id="fullcontainer" className="setHeight">
                                             <Grid item xs={3} className="logoImgHeader1">
-                                                <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/" }} style={{ cursor: "pointer" }}>
+                                                <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = isSilver  ? "/styloriSilver" : "/" }} style={{ cursor: "pointer" }}>
                                                     <img id="logoImage" className={`imges`} src={isSilver ? stylorisilverlogo :styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" style={{ transition: "height 0.2s", height:isSilver ? 70 : 60 }}/>
                                                 </div>
                                             </Grid>
@@ -383,7 +383,7 @@ class Header extends Component {
                                         </Grid>
 
                                         <Grid item xs={5} className="logoImgHeader1">
-                                            <div className="logoDiv1" onClick={() => { window.location.href = "/" }} style={{ cursor: "pointer" }}>
+                                            <div className="logoDiv1" onClick={() => { window.location.href = isSilver  ? "/styloriSilver" : "/" }} style={{ cursor: "pointer" }}>
                                                 <img className={`imgsilver`} src={isSilver ? stylorisilverlogo :styloriLogo} style={{ width: "100%", height: "auto" }} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                             </div>
                                         </Grid>
