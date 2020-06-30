@@ -22,7 +22,7 @@ class Addressdetails extends React.Component {
         this.setState({ open: false });
     };
     Addressdetails = (props, value, value2) => {
-        debugger
+        
         const { setValues, values } = props;
 
         const _add_data_addres = () => {
@@ -30,7 +30,7 @@ class Addressdetails extends React.Component {
             if (con_gust === true) {
                 return value
             } if (con_gust !== true) {
-                debugger
+                
                 return values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes
             }
         }

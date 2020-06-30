@@ -126,6 +126,7 @@ export default function CustomSeparator(props) {
     }
   }
 
+  const isSilver = props.isSilver ? true : false
 
   return (
     <div className={window.location.pathname === "/cart" || b[1] === "paymentsuccess" || window.location.pathname === "/checkout" ? "bread_stic" : ""}>
@@ -150,7 +151,7 @@ export default function CustomSeparator(props) {
                       //  <Link color="inherit" to={{pathname:data.url}} style={{ fontSize: "14px" }} className={props.list}>
 
                       <div style={{ cursor: "pointer" }} onClick={() => handleUrl(data.title)}  >
-                        <li className={activetabs(data) ? ` isactives ${props.list}` : props.list}>
+                        <li className={activetabs(data) ? ` isactives ${isSilver ? props.listSilver : props.list}` : `${isSilver ? props.listSilver : props.list}`}>
                           {data.title}</li>
                       </div>
                       //  </Link>

@@ -145,6 +145,7 @@ class HomeStylori extends React.Component {
                 </Hidden></>
             ))}
           </Slideshow>
+          
         </Grid>
         <Hidden mdUp>
           <Grid container>

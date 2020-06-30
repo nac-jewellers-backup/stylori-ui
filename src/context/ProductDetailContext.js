@@ -6,8 +6,8 @@ import { withRouter } from 'react-router-dom';
 // const { setValues } = useRegister(); 
 const initialCtx = {
     ProductDetailCtx: {
-        filters: { productId: '', defaultVariants: { diamondType: '', metalColor: '', purity: '', skuSize: '' }, skuId: '' },
-        loading: false, error: false, data: [], likedatas: [], ratingcountsclear: [], viewedddatas: [], price: 0, rating: [], ratingcounts: [], registerurl: ""
+        filters: { productId: '', defaultVariants: { diamondType: '', metalColor: '', purity: '', skuSize: '' }, skuId: '', quantity:{} },
+        loading: false, error: false,  data: [], likedatas: [], ratingcountsclear: [], viewedddatas: [], price: 0, rating: [], ratingcounts: [], registerurl: ""
     },
     setFilters: () => { },
     setlikedata: () => { },
@@ -50,15 +50,19 @@ export const TabsProvider = (props) => {
     const myStorage = sessionStorage.getItem("user_id");
     const localvalues_check = JSON.parse(localStorage.getItem('gut_lg')) === true ? true : false
     React.useEffect(() => {
+       
+    
+    
         if (localvalues_check === true) {
             if (con_gust === true) {
                 if (!myStorage) {
                     localStorage.clear();
                     sessionStorage.clear();
-
                 }
             }
         }
+        console.log("----filters----",filters)
+        
     }, [])
     useEffect(() => {
         setlikedata(likedata)
@@ -68,7 +72,15 @@ export const TabsProvider = (props) => {
         setvieweddata(vieweddata)
     }, [vieweddata, price, data])
     useEffect(() => {
-
+        
+        let localStorageQuantity = localStorage.getItem('quantity') ? JSON.parse(localStorage.getItem('quantity')) : null
+        
+        if(localStorageQuantity){
+          
+          filters.quantity = localStorageQuantity
+          setFilters(filters)
+        }
+        
         if (filters.productId === "") {
             if (window.location.search.length > 0) {
                 let loc = window.location.search.split('=')
@@ -95,6 +107,9 @@ export const TabsProvider = (props) => {
             })
 
         }
+        
+  
+        
 
     }, [])
 
@@ -239,7 +254,7 @@ export const TabsProvider = (props) => {
     }, [loading, error, data, price])
     const updateProductList = async () => {
 
-        if (Object.entries(variables).length !== 0 && variables.constructor === Object) {
+        if (variables && Object.entries(variables).length !== 0 && variables.constructor === Object) {
             await makeRequest(variables);
         }
         else {

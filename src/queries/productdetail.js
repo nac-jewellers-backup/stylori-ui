@@ -11,6 +11,8 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
       skuWeight
       isActive
       metalColor
+      maxOrderQty
+      minOrderQty
       isActive
       discountPrice
       generatedSku
@@ -67,6 +69,11 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
             productColor
           }
         }
+        productMaterialsByProductSku {
+          nodes {
+            materialName
+          }
+        }
       }
       pricingSkuMaterialsByProductSku {
         nodes {
@@ -88,9 +95,6 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
     }
   }
 }
-
-
-
 
 
 `
@@ -254,6 +258,48 @@ export const youRecentlyViewed = `query youRecentlyViewed($filtersku:  TransSkuL
     }
   }
   `
+export const shopByStyloriSilver = (data) =>{ return `query MyQuery {
+ ${data.map(val=>{
+   return(
+     `${val}: allProductMaterials(filter: {and: {materialName: {includes: "Silver"}, productListByProductSku: {isactive: {equalTo: true}, productType: {equalTo: "${val}"}}}}) {
+      nodes {
+        materialName
+        productListByProductSku {
+          productType
+          productImagesByProductId {
+            nodes {
+              imageUrl
+              imagePosition
+            }
+          }
+        }
+      }
+      totalCount
+    }`
+   )
+ })}
+}
+
+  `}
+  export const allSeoPriorities = (arrayOfProductTypes) =>`
+  query seoCollections{
+    allSeoUrlPriorities(filter: {attributeName: {equalTo: "Product Type"}, attributeValue: {in: [${arrayOfProductTypes}]}}) {
+      nodes {
+        attributeName
+        attributeValue
+        seoUrl
+        seoText
+      }
+    }
+  }
+  `
+export const checkProductAlreadyExistInCart = (data) =>` {
+    allShoppingCartItems(condition: {productSku: "${data.skuId}", shoppingCartId: "${data.cartId}"}) {
+      nodes {
+        productSku
+      }
+    }
+  }`
 export const filterProductMatrix = (type, value) => {
   let fc = { table: "", type: "" }
   switch (type) {

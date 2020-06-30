@@ -7,6 +7,7 @@ import Debitform from '../Checkout/paymentOption/debitForm';
 import Netbanking from '../Checkout/paymentOption/netBanking';
 import CashonDelivey from '../Checkout/paymentOption/cashonDelivery';
 import PaymentIndex from '../Checkout/paymentOption/paymentindex';
+import { ProductDetailProvider } from "context";
 export default class Checkout extends Component {
     componentDidMount(){
         localStorage.setItem('navfblogin',false)
@@ -21,7 +22,9 @@ export default class Checkout extends Component {
                         <Header />
                     </Grid>
                 </Grid> */}
+                <ProductDetailProvider>
                 <Chckoutindex />
+                </ProductDetailProvider>
             </div>
         )
     }

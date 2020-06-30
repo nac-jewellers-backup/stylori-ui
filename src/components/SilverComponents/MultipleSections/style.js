@@ -10,7 +10,7 @@ export const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.up('lg')]: {
         containerTop: {
-            width: "1300px !important",
+            // width: "1300px !important",
             margin: "auto",
             backgroundColor: "#fff",
             padding: "20px 0px 80px 0px !important"
@@ -18,7 +18,7 @@ export const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.only('xl')]: {
         containerTop: {
-            width: "1700px !important",
+            // width: "1700px !important",
             margin: "auto",
             backgroundColor: "#fff",
             padding: "20px 0px 80px 0px !important"

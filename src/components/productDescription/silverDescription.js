@@ -121,7 +121,7 @@ class ProductDescription extends Component {
                   item
                   xs={12}
                   className={`DescriptionTitle`}
-                  style={{ textAlign: 'center', paddingBottom:"10px", fontSize:'0.9rem' }}
+                  style={{ textAlign: 'center', paddingBottom:"10px", fontSize:'1rem' }}
                 >
                   <Typography className={`${classes.TypoDark} ${classes.TypoDarktitleseo}`}  variant='h1' component='h1'>
                     {/* {window.location.pathname.split('/').pop()}  */}

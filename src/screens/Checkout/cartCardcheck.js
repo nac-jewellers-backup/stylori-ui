@@ -25,7 +25,7 @@ import { cartdatas } from '../../mappers';
 import CustomSeparator from '../../components/BreadCrumb/index'
 import styles from '../Checkout/loginRegister/style';
 import CartCard from '../../components/Checkout/CartCard'
-import { CartContext } from '../../context/CartContext';
+import { CartContext, ProductDetailContext } from '../../context';
 import cart from '../../mappers/cart';
 import { CheckForCod } from 'queries/productdetail';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
@@ -36,7 +36,7 @@ var variab = {}
 const CartCardCheck = (props) => {
     const { loading, error, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     let { CartCtx: { setCartFilters } } = React.useContext(CartContext);
-    return <Component  {...props} CodData={CodData} makeRequestCod={makeRequestCod} setCartFilters={setCartFilters} />
+    return <Component  {...props} CodData={CodData} makeRequestCod={makeRequestCod} setCartFilters={setCartFilters} isdatafromstate={props.isdatafromstate}/>
 }
 
 var obj_values = {};
@@ -287,7 +287,7 @@ class Component extends React.Component {
                                             </Grid>
                                         </Grid><br />
 
-                                        <CartCard data={data} />
+                                        <CartCard data={data} isStateFilterContextQty={this.props.isdatafromstate} isdatafromstate={this.props.isdatafromstate}/>
 
                                         <Hidden smDown>
                                             <Grid container>
@@ -352,7 +352,9 @@ const Components = props => {
     //     localStorage.setItem('panel', 1)
     // },[])
     let { CartCtx: { data, loading, error, allorderdata, wishlistdata } } = React.useContext(CartContext);
-
+    const {
+        ProductDetailCtx: { filters },setFilters
+      } = React.useContext(ProductDetailContext);
     let content, mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
@@ -366,7 +368,7 @@ const Components = props => {
     if (Object.keys(data).length === 0 || data.data.allTransSkuLists.nodes.length === 0) content = <div className="overall-loader">
         {/* {cartValueEmpty() */}
     </div>
-    else content = <CartCardCheck {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
+    else content = <CartCardCheck {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} isdatafromstate={filters.quantity}/>
 
 
     if (Object.keys(data).length === 0 && data.constructor === Object) content = <div className="overall-loader"> {/* {cartValueEmpty()} */}</div>
@@ -376,7 +378,7 @@ const Components = props => {
     }
     else {
 
-        content = <CartCardCheck {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
+        content = <CartCardCheck {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} isdatafromstate={filters.quantity}/>
     }
     return content
 }

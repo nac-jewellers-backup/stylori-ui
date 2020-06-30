@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
-import { CartContext } from 'context'
+import { CartContext,ProductDetailContext } from 'context'
 import { API_URL, HOME_PAGE_URL, CDN_URL } from '../../config';
 import { CART, FetchSku, FetchCartId } from 'queries/cart';
+import { checkProductAlreadyExistInCart } from "queries/productdetail";
 
 var orderobj = {};
 var orderobj_cart = {};
@@ -18,6 +19,7 @@ const useWishlists = (props) => {
     // const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addwishlist', {}, [], false);
     // const { data: removedata, makeFetch: removemakeFetch, } = useNetworkRequest('/removewishlist', {}, [], false);
     const { setCartFilters, setwishlistdata } = React.useContext(CartContext);
+    const { ProductDetailCtx:{filters}, setFilters } = React.useContext(ProductDetailContext);
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
     const check_gustlog = localStorage.getItem("true") ? localStorage.getItem("true") : {}
     // useEffect(() => {
@@ -68,17 +70,46 @@ const useWishlists = (props) => {
     //             console.log(myJson);
     //         });
     // }
+const checkProductAlreadyAddedInWishlist = async(num) =>{
+    const cartId = JSON.parse(localStorage.getItem('cart_id')).cart_id
+    await  fetch(`${API_URL}/graphql`, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+        },
 
+        body: JSON.stringify({
+            query: checkProductAlreadyExistInCart({skuId:values.product_sku, cartId:cartId})
+        })
+    })
+    .then((res) => res.json())
+    .then(res=>{
+      
+      if(res.data.allShoppingCartItems.nodes.length > 0){
+          alert("This product is already added in the cart")
+      }
+      else{
+        values["isactive"] = num
+        values["user_id"] = user_id
+        setValues({ values, ...values });
+        makeFetch()
+      }
+            // let _data =func()
+            // state['allSeo'] = func()
+      
+    //   setState({...state,shopByData:_shopsProducts,allSeo:state.allSeo})
+      
+    })
+    
+}
     const handelSubmit = (num) => {
 
         setwishlistdata({
             wishlistdata: values.isactive
         })
         if (user_id.length > 0 && check_gustlog === "false") {
-            values["isactive"] = num
-            values["user_id"] = user_id
-            setValues({ values, ...values });
-            makeFetch()
+            checkProductAlreadyAddedInWishlist(num)
+            
         } else {
             alert("Please login your email Id")
             localStorage.setItem('review_location', `${window.location.href}`)
@@ -119,7 +150,31 @@ const useWishlists = (props) => {
             var _conditionfetchCartId = {
                 "UserId": { "userprofileId": localStorage.getItem("user_id") }
             }
-            
+            const _qty = filters && values.product_sku &&  filters[values.product_sku] ? filters[values.product_sku] : 1
+            setFilters({
+              ...filters, quantity:_qty
+            })
+            let localStorageQuantity = localStorage.getItem("quantity")
+            ? JSON.parse(localStorage.getItem("quantity"))
+            : null;
+        
+            if (!localStorageQuantity) {
+              if (localStorageQuantity && !localStorageQuantity[values.product_sku]) {
+                let _obj = {};
+                localStorageQuantity[values.product_sku] = _qty;
+                localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
+                filters.quantity[values.product_sku] = _qty;
+              } else {
+                let _obj = {};
+                _obj[values.product_sku] = _qty;
+                localStorage.setItem("quantity", JSON.stringify(_obj));
+                filters.quantity[values.product_sku] = _qty;
+              }
+            } else {
+              localStorageQuantity[values.product_sku] = _qty;
+              localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
+              filters.quantity[values.product_sku] = localStorageQuantity[values.product_sku];
+            }
             fetch(`${API_URL}/removewishlist`, {
                 
                 method: 'POST',

@@ -8,7 +8,7 @@ import { Grid, Container, Hidden } from '@material-ui/core';
 // import CustomSeparator from '../../components/BreadCrumb/index'
 import Header from 'components/SilverComponents/Header'
 import 'screens/Stylori/index.css'
-import { CartContext } from 'context'
+import { CartContext, ProductDetailContext } from 'context'
 import cart from 'mappers/cart'
 import 'screens/screens.css';
 import CustomSeparator from '../components/BreadCrumb/index'
@@ -48,7 +48,7 @@ const cartsubdata = [
 ]
 class Cart extends React.Component {
     render() {
-        const { data, classes } = this.props
+        const { data, classes, isStateFilterContextQty } = this.props
 
         let path = window.location.pathname.split('/').pop();
         return (
@@ -69,7 +69,7 @@ class Cart extends React.Component {
                     <div className="cart-ovralldiv-media " style={{ marginTop: "3%" }}>
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>
-                                <CartCard data={data} />
+                                <CartCard data={data} isStateFilterContextQty={isStateFilterContextQty}/>
                             </Grid> : <><div className="noproductsfound">There are no items in this cart. </div>
                                     <a href="/jewellery" className="highlighter" ><div className="continueshopping"> Continue shopping</div></a></>
 
@@ -94,7 +94,7 @@ class Cart extends React.Component {
                     <Container>
                         <Grid Container spacing={12}>
                             {this.props.data.length > 0 ? <Grid item xs={12}>
-                                <CartCard data={data} />
+                                <CartCard data={data} isStateFilterContextQty={isStateFilterContextQty}/>
                             </Grid> : <><div className="noproductsfound">There are no items in this cart.</div><a href="/jewellery"> <div className="continueshopping"> Continue shopping</div></a></>}
                         </Grid>
                     </Container>
@@ -112,7 +112,21 @@ class Cart extends React.Component {
 
 const Components = props => {
     let { CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata, NewUser } } = React.useContext(CartContext);
-
+    const {
+        ProductDetailCtx: { filters },setFilters
+      } = React.useContext(ProductDetailContext);
+      let {quantity} = filters
+    //  React.useEffect(()=>{
+    //     let localStorageQuantity = localStorage.getItem('quantity') ? JSON.parse(localStorage.getItem('quantity')) : null
+        
+    //     if(localStorageQuantity){
+          
+    //       quantity = localStorageQuantity
+    //       setFilters({...filters, quantity})
+    //     }
+    //  }, [])
+    // alert(JSON.stringify(filters)) 
+    console.log(filters,"filters+filters-filters")
     let content, mapped;
     let _data = {}
 
@@ -134,7 +148,7 @@ const Components = props => {
 
 
     if (Object.keys(_data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
-    else content = <Cart {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
+    else content = <Cart {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} isStateFilterContextQty = {filters.quantity}/>
     // if (mapped !== undefined && mapped !== null) {
     //     localStorage.setItem("a__c_t", mapped && mapped.length)
     // }

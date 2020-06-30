@@ -1,12 +1,12 @@
 import React from "react";
 import "./rating.css";
 import { ProductDetailContext } from 'context/ProductDetailContext';
-const Star = ({ selected = false, onClick = f => f }) =>
+const Star = ({ selected = false, onClick = f => f, isSilver }) =>
     <div onClick={onClick}>
-        {selected ? <div class="star-rating" >
+        {selected ? <div className={isSilver ? 'star-rating-silver' : 'star-rating'} >
             <input type="radio" />
             <label for="1-stars" class="star">&#9733;</label>
-        </div> : <div class="star-rating">
+        </div> : <div className={isSilver ? 'star-rating-silver' : 'star-rating'}>
                 <input type="radio" />
                 <div for="1-stars" >&#9733;</div>
             </div>}
@@ -55,13 +55,15 @@ class Component extends React.Component {
         // alert(JSON.stringify(this.props.setratingcountsclear))
         const { totalStars } = this.props;
         const { starsSelected } = this.state;
+        const isSilver = this.props.isSilver ? true : false
 
         return (
-            <div class={this.props.ratings}>
+            <div class={`${this.props.ratings} ${this.props.isSilver}`}>
                 {[1, 2, 3, 4, 5].map((n, i) =>
                     <Star key={i}
                         selected={i < starsSelected}
                         onClick={() => this.change(this.props.disable === "disable" ? "" : i + 1)}
+                        isSilver={isSilver}
                     />
                 )}
                 {/* <p>{starsSelected} of {totalStars} stars</p> */}

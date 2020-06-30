@@ -12,6 +12,7 @@ class Stylori extends Component {
     //   // ringSize:
     // }
   }
+  
 
   render() {
     let productId = window.location.search.replace('?', '')

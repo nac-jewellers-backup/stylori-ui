@@ -20,10 +20,11 @@ import CardSmallScreen from './CartCardSmallScreen.js';
 import Pricing from '../Pricing/index'
 import styles from "./style"
 import { NavLink } from 'react-router-dom';
-import { CartContext } from 'context'
+import { CartContext, ProductDetailContext } from 'context'
 import cart from 'mappers/cart'
 import Wishlist from 'components/wishlist/wishlist';
 import { API_URL, CDN_URL } from "config"
+import Quantity from '../quantity/index'
 
 // import { FilterOptionsContext } from 'context/FilterOptionsContext';
 // 
@@ -38,6 +39,12 @@ class Checkoutcard extends React.Component {
         }
     }
 
+    handleCartQuantity = (skuId) =>{
+        
+        const filters = this.props.filters && this.props.filters.quantity && Object.keys(this.props.filters.quantity).length > 0 ? true : false
+        if(filters) return this.props.filters.quantity[skuId]
+        else return JSON.parse(localStorage.getItem('quantity'))[skuId]
+    }
     // handlereloadcart = (val) => {
     //     const data = this.props.data
     //     
@@ -51,9 +58,11 @@ class Checkoutcard extends React.Component {
     handleDeleteLocalStorage = (e) => {
 
         var local_storage = JSON.parse(localStorage.getItem('cartDetails'))
+
+        var _localStorageQuantity = JSON.parse(localStorage.getItem('quantity'))
+
         // var currentValue = e.target.id
         var currentValue = e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id
-
 
         // console.clear()
         // console.log("e-clear",e.target.id)
@@ -62,7 +71,9 @@ class Checkoutcard extends React.Component {
             if (currentValue !== val.sku_id) {
                 return val
             }
+
         })
+        
         function status(response) {
 
             if (response.status >= 200 && response.status < 300) {
@@ -100,6 +111,8 @@ class Checkoutcard extends React.Component {
                     var cartId = JSON.parse(localStorage.getItem('cartDetails')).cart_id
                     var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
                     var localstorage = JSON.stringify({ "cart_id": `${cartId}`, "user_id": `${userId}`, "products": a })
+                    delete _localStorageQuantity[currentValue]
+                    localStorage.setItem('quantity', JSON.stringify(_localStorageQuantity))
                     localStorage.setItem('cartDetails', localstorage)
                     window.location.reload();
                 })
@@ -113,13 +126,17 @@ class Checkoutcard extends React.Component {
             var userId = JSON.parse(localStorage.getItem('cartDetails')).user_id
             var _obj = { cart_id: cartId, user_id: userId, products: _products }
             if (_products.length > 0) {
+                
                 localStorage.setItem('cartDetails', JSON.stringify(_obj))
+                delete _localStorageQuantity[currentValue]
+                localStorage.setItem('quantity', JSON.stringify(_localStorageQuantity))
                 alert("You removed this product successfully")
                 window.location.reload()
 
             }
             else {
                 localStorage.removeItem('cartDetails', _products)
+                localStorage.removeItem('quantity')
                 alert("You removed this product successfully")
                 window.location.reload()
             }
@@ -146,7 +163,7 @@ class Checkoutcard extends React.Component {
             arrows: false,
         }
         const { classes, data } = this.props;
-
+        // Quantity {JSON.parse(localStorage.getItem('quantity'))[val.namedetail[0].details]}
         const { productsDetails, fadeImages, dataCard1 } = this.props.data;
         // const { FilterOptionsCtx: { setcartcount } } = React.useContext(FilterOptionsContext);
         // React.useEffect(()=>{
@@ -198,6 +215,13 @@ class Checkoutcard extends React.Component {
                 // alert(JSON.stringify( [image_urls]))
             }
         }
+        const checkMaterial = (material) =>{
+            let _data = material.map(val=>val.toLowerCase())
+            if(_data.indexOf("silver") > -1)  return false 
+            else return true
+        }
+        console.clear()
+        console.log(this.props.data,"this.props.data----")
         return (
             <div style={{ marginTop: "10px" }}>
                 <Grid container>
@@ -284,8 +308,14 @@ class Checkoutcard extends React.Component {
                                         </Grid>
 
                                         <Grid item xs={4} >
-                                            <Typography style={{ marginTop: "8px" }} className={`subhesder ${classes.normalfonts}`}>Quantity 1</Typography>
+                                            <Typography style={{ marginTop: "8px" }} className={`subhesder ${classes.normalfonts}`}>
+                                                {window.location.pathname === "/checkout" || checkMaterial(dataval.materialName)  ?
 
+                                                `Quantity ${this.props.isdatafromstate[dataval.generatedSku]}`
+                                                :
+                                                <Quantity  data={[dataval]} cart = {true}/>}
+                                                </Typography>
+                                                {/* <Quantity data={[dataval]}/> */}
                                             {/* {data[0].isReadyToShip === true ? */}
                                             <Typography className={`subhesder ${classes.normalfonts}`}>{data[0].shipby}</Typography>
                                             {/* : ""} */}
@@ -298,7 +328,9 @@ class Checkoutcard extends React.Component {
 
                                     </Grid>
                                 </Grid>
-
+{/* <Grid xs ={12} item>
+<Quantity  data={[dataval]}/>
+</Grid> */}
                                 <Grid item xs={4} sm={2} lg={3}>
                                     <div style={{ marginTop: "15%" }}>
                                         {dataval.dataCard1.map(val =>
@@ -308,7 +340,9 @@ class Checkoutcard extends React.Component {
                                                 detail={dataval}
                                                 offerDiscount={(val.discount) ? `${val.discount}% - OFF` : null}
                                                 price={val.price}
-                                                offerPrice={val.offerPrice} >
+                                                offerPrice={val.offerPrice} 
+                                                quantity = {this.props.isdatafromstate[dataval.generatedSku]}
+                                                >
                                             </Pricing>)
                                         }
                                             
@@ -352,7 +386,10 @@ class Checkoutcard extends React.Component {
         // alert(JSON.stringify(props.cartFilters.discounted_price))
         // const { dataCard1 } = this.props.data;
         var discounted_price = this.props.cartFilters.discounted_price ? this.props.cartFilters.discounted_price : ""
-        const dataCard1 = this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
+        const dataCard1 = this.props.data.map(val => {
+            
+            return (val.dataCard1[0].offerPrice * JSON.parse(localStorage.getItem('quantity'))[val.generatedSku])
+            }).reduce(myFunc);
         // this.props.data.map(val=>{return val.dataCard1[0].offerPrice}).reduce(myFunc)
 
 
@@ -374,7 +411,7 @@ class Checkoutcard extends React.Component {
         }
         var yousave = this.props.data.map((_data) => {
            
-            return _data.dataCard1[0].price - _data.dataCard1[0].offerPrice
+            return (_data.dataCard1[0].price * JSON.parse(localStorage.getItem('quantity'))[_data.generatedSku]) - ( _data.dataCard1[0].offerPrice * JSON.parse(localStorage.getItem('quantity'))[_data.generatedSku])
         }).reduce(myFunc)
         // const yousave = Math.round(Number(dataCard1.price) - Number(dataCard1.offerPrice))
         let path = window.location.pathname.split('/').pop();
@@ -453,7 +490,10 @@ class Checkoutcard extends React.Component {
         const { classes } = this.props;
         // alert(discounted_price)
         let path = window.location.pathname.split('/').pop();
-
+        console.log(this.props.isdatafromstate)
+       
+        
+        
         return (
             <Grid >
                 <Hidden smDown>
@@ -476,8 +516,11 @@ class Checkoutcard extends React.Component {
 
 }
 const Components = props => {
+    
     const [ShippingCharge, setShippingCharge] = React.useState(0)
     React.useEffect(()=>{
+        
+        
         fetch(`${API_URL}/getshippingcharge`,{
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
@@ -489,10 +532,13 @@ const Components = props => {
       .then(val => {if(val) setShippingCharge(val.shipping_charge)})
       .catch((err)=>{console.log(err,": in shipping charge API")});
     },[])
+    
+    
+    
     let { CartCtx: { cartFilters } } = React.useContext(CartContext);
     let content;
 
-    content = <Checkoutcard {...props} cartFilters={cartFilters} shipping_charge = {ShippingCharge}/>
+    content = <Checkoutcard {...props} cartFilters={cartFilters} shipping_charge = {ShippingCharge}  isdatafromstate={props.isStateFilterContextQty}/>
     return content
 }
 export default withStyles(styles)(Components)

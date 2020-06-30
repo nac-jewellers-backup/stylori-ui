@@ -308,7 +308,22 @@ const Provider = (props) => {
     skus = localStorage.getItem("cartDetails") && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 ?
         JSON.parse(localStorage.getItem("cartDetails")).products.filter(val => { if (Object.keys(val).length > 0) return val }).map(val => val.sku_id) : ''
     // JSON.parse(localStorage.getItem("cartDetails")).products.map(val => val.sku_id) : ''
+    const _qty = () => {
+        var obj = {}
+        if(localStorage.getItem("cartDetails") && JSON.parse(localStorage.getItem("cartDetails")).products.length > 0) 
+        {
+            JSON.parse(localStorage.getItem("cartDetails")).products.filter(val => 
+                {
+                    
+                 if (Object.keys(val).length > 0) return val }).map(val => {
+                    
+                    obj[val.sku_id] = val.qty
 
+                    }) 
+                }
+                localStorage.setItem('quantity',JSON.stringify(obj))
+        }
+        
 
     const updateProductList = () => {
         
@@ -356,7 +371,90 @@ const Provider = (props) => {
             })
                 .then(status)
                 .then(json).then(async val => {
-
+                    
+                  let cartItems = val.data.allShoppingCarts.nodes[0].shoppingCartItemsByShoppingCartId.nodes ? val.data.allShoppingCarts.nodes[0].shoppingCartItemsByShoppingCartId.nodes : []
+                 
+                            let localStorageCartDetails = JSON.parse(localStorage.getItem('cartDetails'))
+                            let localStorageQty = JSON.parse(localStorage.getItem('quantity'))
+                            let _qty = {}
+                            let _checkValid = localStorageCartDetails && localStorageCartDetails.products ? localStorageCartDetails.products : []
+                         if(localStorageCartDetails){
+                            cartItems.map(valresult=>{
+                                localStorageCartDetails = JSON.parse(localStorage.getItem('cartDetails'))
+                                localStorageQty = JSON.parse(localStorage.getItem('quantity'))
+                            if(_checkValid.length > 0){
+                                _checkValid.map((valProducts,i)=>{
+                                    localStorageCartDetails = JSON.parse(localStorage.getItem('cartDetails'))
+                                    localStorageQty = JSON.parse(localStorage.getItem('quantity'))
+                                if(localStorageQty){
+                                    if(valProducts.sku_id ===valresult.productSku){
+                                        localStorageCartDetails.products[i].qty = valresult.qty
+                                        localStorageQty[valresult.productSku]   = valresult.qty
+                                        
+                                        localStorage.setItem('quantity',JSON.stringify({...localStorageQty}))
+                                        localStorage.setItem('cartDetails',JSON.stringify({...localStorageCartDetails})) 
+                                      }
+                                      else if(!Boolean(localStorageQty[valresult.productSku])){
+                                          let _newProductQty = {}
+                                          let _newProduct = {}
+                                          _newProductQty[valresult.productSku] = valresult.qty
+                                          localStorageQty ={...localStorageQty, ..._newProductQty}
+                                          _newProduct['sku_id'] = valresult.productSku
+                                          _newProduct['price'] = valresult.price
+                                          _newProduct['qty'] = valresult.qty
+                                          
+                                          localStorageCartDetails['products'].push({..._newProduct})
+                                          
+                                          localStorage.setItem('quantity',JSON.stringify({...localStorageQty}))
+                                          localStorage.setItem('cartDetails',JSON.stringify({...localStorageCartDetails})) 
+                                      }
+                                }
+                                else{
+                                    let _newProductQty = {}
+                                    _newProductQty[valresult.productSku] = valresult.qty
+                                  
+                                    localStorage.setItem('quantity',JSON.stringify({..._newProductQty}))
+                                }
+                               
+                                
+                                // else if(valProducts.sku_id !== valresult.productSku){
+                                //     localStorageCartDetails.products[i].qty = valresult.qty
+                                //   localStorageQty[valresult.productSku]   = valresult.qty
+                                // }
+                                })      
+                            }
+                            else{
+                                let _newProductQty = {}
+                                let _newProduct = {}
+                                _newProductQty[valresult.productSku] = valresult.qty
+                                _newProduct['sku_id'] = valresult.productSku
+                                _newProduct['price'] = valresult.price
+                                _newProduct['qty'] = valresult.qty
+                                
+                                localStorageQty ={..._newProductQty}
+                                localStorageCartDetails['products'].push({..._newProduct})
+                            }
+                        })
+                         }
+                         else{
+                            var skuObj = { "cart_id": "", "user_id": "userId", "products": [] }
+                            let _newProductQty = {}
+                            let _newProduct = {}
+                            cartItems.map(valresult=>{
+                            _newProductQty[valresult.productSku] = valresult.qty
+                            _newProduct['sku_id'] = valresult.productSku
+                            _newProduct['price'] = valresult.price
+                            _newProduct['qty'] = valresult.qty
+                            
+                            skuObj['products'].push({..._newProduct})
+                        })
+                        
+                        localStorage.setItem('quantity',JSON.stringify({..._newProductQty}))
+                        localStorage.setItem('cartDetails',JSON.stringify({...skuObj})) 
+                        }
+                        
+                      
+                     
                     if (val && val.data && val.data.allShoppingCarts && val.data.allShoppingCarts.nodes && val.data.allShoppingCarts.nodes.length > 0 &&
                         val.data.allShoppingCarts.nodes[0].status !== "pending") {
                         // alert(val.data.allShoppingCarts.nodes[0].status)
@@ -574,7 +672,7 @@ const Provider = (props) => {
     }
     useEffect(() => {
         setCartFilters(skus)
-
+// _qty()
         updateProductList();
         ordersuccessful()
         if (window.location.pathname === "/cart") {

@@ -36,6 +36,7 @@ import Silver from "screens/SilverStylori";
 import SilverListingPage from "screens/SilverStylori/listingpage";
 import SilverProductDetail from "screens/SilverStylori/productDetail";
 import ChangePassword from "screens/Checkout/loginRegister/ChangePassword";
+import SilverCollection from "screens/SilverStylori/silverCollections";
 
 // SILVER SCREENS ENDS
 
@@ -80,7 +81,8 @@ export const RouterApp = props => {
         exact
         path={routes.HomePageStylori}
       />
-      <Route key="Silver" component={Silver} exact path={routes.Silver} />
+      {/* <Route key="Silver" component={Silver} exact path={routes.Silver} /> */}
+      {/* <Route key="SilverCollection" component={SilverCollection} exact path={routes.styloriSilverCollections} /> */}
       <Route key="Faqs" component={Faqs} exact path={routes.Faqs} />
       <Route
         key="ProductCare"

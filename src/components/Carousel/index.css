@@ -30,7 +30,12 @@
   border: 1px solid #ccc !important;
   cursor: pointer;
 }
-
+.hovereffect-silver {
+  width: 50% !important;
+  margin-left: 25% !important;
+  box-shadow: 4px 5px 6px rgba(208, 210, 211, 1) !important;
+    margin-bottom: 7px;
+}
 .hovereffect .overlay1 {
   width: 100%;
   height: 170px !important;
@@ -43,7 +48,12 @@
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out
 }
-
+.fontSizebig{
+  font-size:18px !important;
+}
+.fontSizebig h2{
+  font-size:18px !important;
+}
 .boxshadow {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px 4px, rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
 }
@@ -209,7 +219,7 @@
 .hovereffectSilver h5 {
   color: #dedede;
   text-align: center;
-  margin: auto;
+  /* margin: auto; */
   width: 300px;
   margin-top: 0px;
   padding-top: 0px;
@@ -217,7 +227,12 @@
   font-weight: 500 !important;
 
 }
-
+.collectionDataSilverSEOflex{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
 .hovereffectSilver span {
   padding: 5px 13px 5px 12px;
   letter-spacing: 4px;
@@ -267,4 +282,17 @@
 .silverClassSeoBanner{
   width: 100% !important;
   height: 250px !important;
+}
+.currentImageClassSilver{
+  border:1.1px solid rgba(218, 185, 122, 1) !important;
+}
+
+
+/* media query */
+
+@media only screen and (max-width: 600px) {
+  .hovereffect-silver{
+    width: 70% !important;
+  margin-left: 15% !important;
+  }
 }

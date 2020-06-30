@@ -168,7 +168,7 @@ class Header extends Component {
         const opened = this.state;
         var a = window.location.pathname
         var b = a.split("/")
-        debugger
+        
         const isSilver = this.props.globalContext && this.props.globalContext.Globalctx && this.props.globalContext.Globalctx.pathName && this.props.globalContext.Globalctx.pathName ? this.props.globalContext.Globalctx.pathName : false
         // const id = open ? true : undefined;
         return (
@@ -181,7 +181,7 @@ class Header extends Component {
                                 <Grid container spacing={12} className={window.location.pathname === "/cart" || b[1] === "paymentsuccess" || b[1] === "paymentfail" || window.location.pathname === '/checkout' ? "cartheader" : "cartcardrelese"}>
                                     <Grid container item xs={12} justify="flex-end" alignItems="center">
                                         {this.props.paymentSucces || window.location.pathname === "/cart" || window.location.pathname === '/checkout' ? <Grid item xs={3} className="logoImgHeader1">
-                                            <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/" }} style={{ cursor: "pointer" }}>
+                                            <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = isSilver  ? "/styloriSilver" : "/" }} style={{ cursor: "pointer" }}>
                                                 <img id="logoImage" className={`imges`} src={isSilver ? stylorisilverlogo :styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" style={{ transition: "height 0.2s", height:isSilver ? 70 : 60, marginTop: "9px" }}/>
                                             </div>
                                         </Grid>
@@ -207,7 +207,7 @@ class Header extends Component {
                                                             // onClick={this.handleClickPopover}
                                                             onClick={() => { window.location.href = "/account-profile" }}
                                                         >
-                                                            <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                            <i style={{ fontSize: "20px",}} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                             <span className="tooltip-slog">{Boolean(localStorage.getItem("user_id")) && !Boolean(localStorage.getItem("gut_lg")) ?"Account" : "Login" }</span>
                                                         </span></div>
                                                     // <img className="icons-header-sizes" src={usershape}/>
@@ -216,7 +216,7 @@ class Header extends Component {
                                                     <div className="tooltip ">
 
                                                         <span className={`MuiBadge-root ${classes.badgecolor}`}  onClick={() => window.location.pathname = "/login"}>
-                                                            <i style={{ fontSize: "20px", marginTop: "9px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                                                            <i style={{ fontSize: "20px"}} class={`fa fa-user  ${classes.iconFafa}`}></i>
                                                             <span className="tooltip-slog">{Boolean(localStorage.getItem("user_id")) && !Boolean(localStorage.getItem("gut_lg"))  ?"Account" :"Login" }</span>
                                                         </span>
 
@@ -257,7 +257,7 @@ class Header extends Component {
                                                     </div>
                                                 </Popover> */}
                                                 <div className="tooltip">
-                                                    <Badge style={{ marginTop: "9px" }}  className={classes.badgeColor}
+                                                    <Badge   className={classes.badgeColor}
                                                         badgeContent={this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length > 0 ? this.props.wishlist && this.props.wishlist.wishlistdata && this.props.wishlist.wishlistdata.nodes && this.props.wishlist.wishlistdata.nodes.length : "0"}
                                                     // wishlist_count
                                                     // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
@@ -277,7 +277,7 @@ class Header extends Component {
                                                 </div>
 
                                                 <div className="tooltip">
-                                                    <Badge style={{ marginTop: "9px" }} className={classes.badgeColor} badgeContent={
+                                                    <Badge  className={classes.badgeColor} badgeContent={
                                                         (  this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length > 0) 
                                                         ? this.props.cart_count && this.props.cart_count.data && this.props.cart_count.data.allTransSkuLists && this.props.cart_count.data.allTransSkuLists.nodes.length 
                                                        :
@@ -286,7 +286,7 @@ class Header extends Component {
                                                     } >
                                                         <a href="/cart" className="highlighter">
                                                             <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
-                                                            <span className="tooltip-s" style={{ color: "#d51f63" }}>Cart</span>
+                                                            <span className="tooltip-s" style={{ color: isSilver ? 'rgba(218, 185, 122, 1)' :"#d51f63" }}>Cart</span>
                                                         </a> </Badge>
                                                 </div>
                                             </div>
@@ -299,7 +299,7 @@ class Header extends Component {
                                     <Container maxWidth="lg" >
                                         <Grid container spacing={12} id="fullcontainer" className="setHeight">
                                             <Grid item xs={3} className="logoImgHeader1">
-                                                <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = "/" }} style={{ cursor: "pointer" }}>
+                                                <div id="logoDiv1" className="logoDiv1" onClick={() => { window.location.href = isSilver  ? "/styloriSilver" : "/" }} style={{ cursor: "pointer" }}>
                                                     <img id="logoImage" className={`imges`} src={isSilver ? stylorisilverlogo :styloriLogo} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" style={{ transition: "height 0.2s", height:isSilver ? 70 : 60 }}/>
                                                 </div>
                                             </Grid>
@@ -383,7 +383,7 @@ class Header extends Component {
                                         </Grid>
 
                                         <Grid item xs={5} className="logoImgHeader1">
-                                            <div className="logoDiv1" onClick={() => { window.location.href = "/" }} style={{ cursor: "pointer" }}>
+                                            <div className="logoDiv1" onClick={() => { window.location.href = isSilver  ? "/styloriSilver" : "/" }} style={{ cursor: "pointer" }}>
                                                 <img className={`imgsilver`} src={isSilver ? stylorisilverlogo :styloriLogo} style={{ width: "100%", height: "auto" }} onLoad={() => this.setState({ load: true })} onLoadedData={() => this.setState({ load: false })} alt="" />
                                             </div>
                                         </Grid>

@@ -105,7 +105,8 @@ class ProductImageZoom extends React.Component {
       return false;
     }
   };
-  productImageZoom = () => {
+  productImageZoom = (_isSilver) => {
+    
     // console.log(this.props.data)
     const { classes, data } = this.props;
     const limit = 4;
@@ -172,8 +173,8 @@ class ProductImageZoom extends React.Component {
                     }
                   >
                     <i
-                      class="fa fa-angle-up"
-                      style={{ fontSize: "35px", color: "#F699A3" }}
+                      className={`fa fa-angle-up ${_isSilver ? classes.iconfill : classes.iconfillStylori}`}
+                      style={{ fontSize: "35px" }}
                     ></i>
                   </Button>
                 </span>
@@ -181,10 +182,11 @@ class ProductImageZoom extends React.Component {
               <Slideshow
                 sliderRef={this.slider}
                 getmsg={this.getimage}
-                class="vertical-carousel"
+                class={this.props.isSilver ? "vertical-carousel-silver" : `vertical-carousel`}
                 imgClass="vertical-carousel-img"
                 fadeImages={data[0].fadeImages.arrOfurls_2X}
                 dataCarousel={dataCarousel}
+                currentImage = {this.state.showimage}
               />
 
               {data &&
@@ -213,8 +215,8 @@ class ProductImageZoom extends React.Component {
                     }
                   >
                     <i
-                      class="fa fa-angle-down"
-                      style={{ fontSize: "35px", color: "#F699A3" }}
+                      className={`fa fa-angle-down ${_isSilver ? classes.iconfill : classes.iconfillStylori}`}
+                      style={{ fontSize: "35px"}}
                       // className={`${classes.colorMain}`}
                     ></i>
                   </Button>
@@ -237,7 +239,7 @@ class ProductImageZoom extends React.Component {
 
             <div>
               <div
-                className="imagecard"
+                className={_isSilver ? "imagecardSilver" : "imagecard"}
                 id="divs"
                 style={{
                   height:
@@ -265,13 +267,13 @@ class ProductImageZoom extends React.Component {
               </Grid>
             </Grid> */}
                 {data.map(val => {
-                  return val.offerDiscount ? (
+                   return !this.props.isSilver && val.offerDiscount ? (
                     <span style={{ color: "#fff" }} className="overlayCss11">
                       {val.offerDiscount}
                     </span>
                   ) : null;
                 })}
-                {data[0].ProductContactNum[0].isReadyToShip == true ? (
+                {!this.props.isSilver && data[0].ProductContactNum[0].isReadyToShip == true ? (
                   <div
                     class={
                       data && data[0] && data[0].offerDiscount
@@ -335,7 +337,7 @@ class ProductImageZoom extends React.Component {
                   marginTop: "10px"
                 }}
               >
-                <Gagetstylori />
+                <Gagetstylori isSilver={this.props.isSilver}/>
               </Grid>
             </Grid>
           </Grid>
@@ -377,10 +379,13 @@ class ProductImageZoom extends React.Component {
       largeImage: e.target.src
     });
   };
+  
   render() {
+    const _isSilver = this.props.isSilver ? true : false
+    
     return (
       <div>
-        <Hidden smDown>{this.productImageZoom()}</Hidden>
+        <Hidden smDown>{this.productImageZoom(_isSilver)}</Hidden>
       </div>
     );
   }

@@ -7,23 +7,39 @@
     font-size:1.4em;
     justify-content:space-around;
   }
-  
+  .star-rating-silver {
+    flex-direction: row-reverse;
+    font-size:1.4em;
+    justify-content:space-around;
+    color:rgba(109,110,112,1);
+  }
   .star-rating input {
     display:none;
   }
-  
+  .star-rating-silver input {
+    display:none;
+  }
   .star-rating label {
     color:#F16882!important;
     cursor:pointer;
   }
-  
+  .star-rating-silver label {
+    color:rgba(218, 185, 122, 1)!important;
+    cursor:pointer;
+  }
   .star-rating :checked ~ label {
     color:#F16882!important;
+  }
+  .star-rating-silver :checked ~ label{
+    color:rgba(218, 185, 122, 1) !important;
   }
   
   .star-rating label:hover,
   .star-rating label:hover ~ label {
     color:#F16882!important;
   }
-  
+  .star-rating-silver label:hover,
+  .star-rating-silver label:hover ~ label {
+    color:rgba(218, 185, 122, 1)!important;
+  }
   

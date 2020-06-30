@@ -164,7 +164,7 @@ const styles = theme => ({
     alignItems:"center"
   },
   widthFilter:{
-    width:'100%'
+    width:'100% !important'
   }
 });
 

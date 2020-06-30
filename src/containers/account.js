@@ -8,7 +8,7 @@ import 'screens/screens.css';
 import Header from 'components/SilverComponents/Header'
 // import Header from "components/SilverComponents/Header";
 import Accountdetails from "../components/accounts/accountdetails"
-import { CartContext } from 'context'
+import { CartContext, ProductDetailContext} from 'context'
 import cart from 'mappers/cart'
 import Footer from "../components/Footer/Footer";
 // const Accounts = (props) => {
@@ -22,7 +22,7 @@ class Accounts extends React.Component {
                     <Header wishlist={this.props.wishlistdata} />
 
                     <Grid item xs={12}>
-                        <Accountdetails data={this.props.data} wishlistdata={this.props.wishlistdata} allorderdata={this.props.allorderdata} />
+                        <Accountdetails data={this.props.data} wishlistdata={this.props.wishlistdata} allorderdata={this.props.allorderdata} isdatafromstate={this.props.isdatafromstate}/>
                     </Grid>
                 </Hidden>
 
@@ -41,7 +41,7 @@ class Accounts extends React.Component {
                     </Grid>
 
                     <Grid item xs={12}>
-                        <Accountdetails data={this.props.data} wishlistdata={this.props.wishlistdata} allorderdata={this.props.allorderdata} />
+                        <Accountdetails data={this.props.data} wishlistdata={this.props.wishlistdata} allorderdata={this.props.allorderdata} isdatafromstate={this.props.isdatafromstate}/>
                     </Grid>
                 </Hidden>
                 <Grid item xs={12} style={{ marginTop: 20 }}>
@@ -54,6 +54,9 @@ class Accounts extends React.Component {
 const Components = props => {
 
     let { CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata, NewUser } } = React.useContext(CartContext);
+    const {
+        ProductDetailCtx: { filters },setFilters
+      } = React.useContext(ProductDetailContext);
     
     
     let content, mapped;
@@ -75,7 +78,7 @@ const Components = props => {
     
     
     if (Object.keys(_data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
-    else content = <Accounts {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} />
+    else content = <Accounts {...props} data={mapped} allorderdata={allorderdata} wishlistdata={wishlistdata} isdatafromstate={filters.quantity}/>
     // localStorage.setItem("a__w_l", wishlistdata && wishlistdata.length)
     return content
 }

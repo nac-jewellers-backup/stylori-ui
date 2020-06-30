@@ -94,6 +94,8 @@
     "build": "npm run generate-build-version &&  node scripts/build",
     "test": "node scripts/test",
     "serve": "npm run build && serve -S build",
+    "deploy_staging": "npm run build && git add . && git commit -m `Updated to the latest version` && git push origin master",
+    "deploy_prod": "npm run build && git add . && git commit -m `Updated to the latest version` && git push origin prod",
     "lint": "eslint src/*.js",
     "hint": "hint http://localhost:8080",
     "generate-report": "lighthouse --chrome-flags=\"--headless --no-sandbox\" http://localhost:8080 --output html --output-path ./report.html",

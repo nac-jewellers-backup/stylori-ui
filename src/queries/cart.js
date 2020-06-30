@@ -6,6 +6,9 @@ export const CART = `query myquerycart($productList: [String!]) {
       metalColor
       discountPrice
       discount
+      minOrderQty
+      maxOrderQty
+      skuId
       markupPrice
       skuUrl
       productListByProductId {
@@ -79,6 +82,7 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
               markupPrice
               skuSize
             }
+            qty
           }
         }
         cartAddressesByCartId(condition: {addressType: 1}) {
@@ -109,6 +113,7 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
     }
   }
 }
+
 
 
 `
@@ -172,7 +177,7 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
 //   }
 // }
 
-export const ORDERSUCCESSFUL = `query MyQuery($orderId:  OrderCondition) {
+export const ORDERSUCCESSFUL = `query MyQuery($orderId: OrderCondition) {
   allOrders(condition: $orderId) {
     nodes {
       paymentMode
@@ -180,7 +185,6 @@ export const ORDERSUCCESSFUL = `query MyQuery($orderId:  OrderCondition) {
         discountedPrice
         discount
         shoppingCartItemsByShoppingCartId {
-          
           nodes {
             transSkuListByProductSku {
               discountPrice
@@ -209,6 +213,13 @@ export const ORDERSUCCESSFUL = `query MyQuery($orderId:  OrderCondition) {
               markupPrice
               skuSize
             }
+            qty
+          }
+        }
+        giftwrapsByCartId {
+          nodes {
+            message
+            giftTo
           }
         }
         cartAddressesByCartId(condition: {addressType: 1}) {
@@ -225,18 +236,13 @@ export const ORDERSUCCESSFUL = `query MyQuery($orderId:  OrderCondition) {
             addressType
           }
         }
-        giftwrapsByCartId {
-          nodes {
-            message
-            giftTo
-          }
-        }
       }
       createdAt
       id
     }
   }
 }
+
 
 `
 export const ALLUSERWISHLISTS = `query MyQuery($userprofileId: [UUID!]) {
@@ -282,9 +288,18 @@ export const FetchCartId = `query FetchCartId($UserId: ShoppingCartCondition) {
       userprofileId
       id
       status
+      shoppingCartItemsByShoppingCartId {
+        nodes {
+          qty
+          productSku
+          price
+        }
+      }
     }
   }
 }
+
+
 `
 export const USERPROFILE = `query MyQuery($id: UUID!) {
   userProfileById(id: $id) {

@@ -274,6 +274,7 @@ class ProductPrice extends Component {
             anchorEl: false
         }
     }
+    
     handleClick = event => {
         this.setState({
             anchorEl: event.currentTarget,

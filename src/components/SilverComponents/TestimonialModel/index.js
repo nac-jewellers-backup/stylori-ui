@@ -155,6 +155,7 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function ImageGridList(props) {
+    
     const classes = useStyles();
 
     const slider = React.createRef();
@@ -164,6 +165,8 @@ export default function ImageGridList(props) {
     const previous = () => {
         slider.current.slickPrev();
     }
+    console.log(props.dataactual)
+    
     return (
         <Grid container className={classes.root}>
             <Grid item className={classes.imgleftGrid}>
@@ -173,8 +176,9 @@ export default function ImageGridList(props) {
                 </div>
             </Grid>
             <Grid item className={classes.menuCenter} >
+               {props.dataactual && props.dataactual.length>0 ?
                 <Slideshow dataCarousel={props.data[0].settings} sliderRef={slider}>
-                    {props.data[0].images.map((val, Index) =>
+                    {props.dataactual.map((val, Index) =>
                         <Grid container style={{ height: "100%" }}>
                             <Grid item>
                                 <Quodes className={classes.Quodes} />
@@ -196,9 +200,12 @@ export default function ImageGridList(props) {
                                     </Grid>
                                 </Grid>
                             </Grid>
-                        </Grid>
+                        </Grid> 
                     )}
                 </Slideshow>
+                :
+                <div>No Reviews Yet...</div>
+                }
             </Grid>
             <Grid item className={classes.imgleftGrid2}>
                 {/* <img onClick={() => next()} className={classes.imgRight} />

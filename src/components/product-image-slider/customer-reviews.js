@@ -97,26 +97,49 @@ class CustomerReviews extends React.Component {
         };
 
         // const { productsubHead } = this.props.data
-        const { classes, data } = this.props;
+        const { classes, data , isSilver} = this.props;
+        
         const { starsSelected } = this.state;
         return (
-            <div style={{ width: "100%" }}>
-                <Hidden smDown>
-                    <Container style={{ paddingLeft: "15px", paddingRight: "15px", paddingTop: "5px" }}>
-                        <div style={{ padding: " 20px 0px 0px 0px !important" }}>
-                            <div className="reviews-header">
-                                <span className={`reviews-customer ${classes.normalfonts}`}>Customer Reviews</span>
+            <div style={{ width: "100%", paddingLeft:'5%', paddingRight:'5%' }}>
+              {
+                  this.props.isSilver
+                  ?
+                  <Hidden smDown>
+                    <Grid container item xs={12} style={{ paddingTop: "5px" }}>
+                        <div style={{ padding: " 20px 0px 0px 0px !important", width:'100%' }}>
+                            <div className="reviews-header" style={{margin:"0px 0px 0px 15px"}}>
+                                {!this.props.isSilver && <span className={`reviews-customer ${classes.normalfonts}`}>Customer Reviews</span>}
+                                {this.props.isSilver &&  <h5 className={`reviews-customer ${classes.reviewandratingsmallScreen}`}>{'CUSTOMER REVIEWS'}</h5>}
                             </div>
                             <div className="reviews">
                                 <span className={`data-reviews ${classes.normalfonts}`}>
                                     <Grid spacing={12} container style={{ float: "left", padding: "2%", lineHeight: "23px" }}>
-                                        <Grid item lg={12}>{this.rat_map_title() ? this.rat_map_title() : <div style={{ textAlign: "center", fontWeight: "bold" }}> No reviews found</div>}</Grid>
+                                        <Grid item lg={12}>{this.rat_map_title() ? this.rat_map_title() : <div style={{ textAlign: "center", fontWeight: "bold" }} className={this.props.isSilver?`${classes.colorNoreviews}`:''}> No reviews found</div>}</Grid>
+                                    </Grid>
+                                </span>
+                            </div>
+                        </div>
+                    </Grid>
+                </Hidden>
+                  :
+                <Hidden smDown>
+                    <Container style={{ paddingLeft: "15px", paddingRight: "15px", paddingTop: "5px" }}>
+                        <div style={{ padding: " 20px 0px 0px 0px !important" }}>
+                            <div className="reviews-header">
+                                {!this.props.isSilver && <span className={`reviews-customer ${classes.normalfonts}`}>Customer Reviews</span>}
+                                {this.props.isSilver &&  <h5 className={`reviews-customer ${classes.reviewandratingsmallScreen}`}>{'CUSTOMER REVIEWS'}</h5>}
+                            </div>
+                            <div className="reviews">
+                                <span className={`data-reviews ${classes.normalfonts}`}>
+                                    <Grid spacing={12} container style={{ float: "left", padding: "2%", lineHeight: "23px" }}>
+                                        <Grid item lg={12}>{this.rat_map_title() ? this.rat_map_title() : <div style={{ textAlign: "center", fontWeight: "bold" }} className={this.props.isSilver?`${classes.colorNoreviews}`:''}> No reviews found</div>}</Grid>
                                     </Grid>
                                 </span>
                             </div>
                         </div>
                     </Container>
-                </Hidden>
+                </Hidden>}
 
                 {/* <Hidden mdUp>
                     <Container>

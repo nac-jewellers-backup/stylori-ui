@@ -1,9 +1,10 @@
 import React from 'react'
-import { Grid } from '@material-ui/core'
+import { Grid, Hidden } from '@material-ui/core'
 import { useStyles } from './style'
 import Slideshow from '../../Carousel/carosul'
 import './index.css'
 import NacGagets from '../../../components/NacGagets/NacGagets'
+import Gadgets from "components/product-image-slider/Gagetstylori/Gagetstylori"
 
 export const FeaturedGridComponent = (props) => {
     const classes = useStyles();
@@ -17,7 +18,16 @@ export const FeaturedGridComponent = (props) => {
                 </Slideshow>
 
             </Grid>
-            < NacGagets />
+            <Hidden smDown>
+            <Grid container >
+                <Grid container item xs={12} style={{marginTop:50}} justify={"center"}>
+                <Grid item xs={6}>
+                <Gadgets isSilver={true}/>
+                </Grid>
+                </Grid>
+            </Grid>
+            </Hidden>
+            
 
         </Grid>
     );

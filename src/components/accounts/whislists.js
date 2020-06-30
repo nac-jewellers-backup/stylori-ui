@@ -91,12 +91,16 @@ class Component extends React.Component {
                                                 </div>
                                             </>
                                         }
+                                        datas = {this.props.data}
                                     />
                                 </Grid>
                                 <Grid item xs={5} sm={3} lg={3}>
-                                    <div className="wishlist_img" >
+                                    <div className={this.check_img(first_map.productListByProductId.productImagesByProductId.nodes[0].imageUrl) ?"shine box" : `shine box`} >
                                         <img className="viewport-img" src={this.check_img(first_map.productListByProductId.productImagesByProductId.nodes[0].imageUrl)
-                                        } />
+                                        } 
+                                        alt="Stylori"
+                                        onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
+                                        />
                                     </div></Grid>
                                 <Grid item xs={12} sm={5} lg={5}
                                     style={{ paddingLeft: "15px" }}
@@ -114,6 +118,7 @@ class Component extends React.Component {
                                                     data={
                                                         <><i class="fa fa-shopping-bag"></i>&nbsp;Add to Bag</>
                                                     }
+                                                    datas = {this.props.data}
                                                 />
 
                                             </>

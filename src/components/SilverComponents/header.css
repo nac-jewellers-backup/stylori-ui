@@ -154,7 +154,7 @@
 .search {
   border: 1px solid #ccc;
   width: 190px !important;
-  height: 25px !important;
+  /* height: 25px !important; */
   font-size: 0.96rem !important;
   padding: 0px 0px 0px 6px !important;
   font-family: inherit !important;
@@ -312,7 +312,7 @@ i {
 .tooltip-s {
   display: none;
   position: absolute;
-  top: 17px;
+  top: 15px;
   left: 18px;
   font-size: 14px;
 
@@ -321,7 +321,7 @@ i {
 .tooltip-slog {
   display: none;
   position: absolute;
-  top: 27px;
+  top: 20px;
   left: 18px;
   font-size: 14px;
 
@@ -624,7 +624,7 @@ i {
 
 @media only screen and (max-width: 2560px) and (min-width: 959px) {
   .headerTop {
-    height: 140px
+    height: 135px
   }
 }
 
