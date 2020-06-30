@@ -242,7 +242,7 @@ var _keysCollections = Object.keys(data).filter(val=>{
     </Grid>
   { props.isPagination && state.isShowMore && <Grid container item xs={12} justify="center" style={{padding:'20px'}}>
    <Button color="primary" variant="contained" onClick={()=>{paginationtoggle()}}>
-     View more products
+     View more Collections
     </Button>
    </Grid>}
    </>

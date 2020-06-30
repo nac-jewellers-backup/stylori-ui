@@ -27,14 +27,14 @@ class HomeStylori extends React.Component {
       <Hidden smDown>
       <Grid container item xs={12} justify={"center"} style={{marginTop:30}}>
         <Grid  item xs={10} >
-          <Title isSilver={true} title={"COLLECTIONS"} />
+          <Title isSilver={true} title={"COLLECTION"} />
         </Grid>
         </Grid>
       </Hidden>
       <Hidden mdUp>
       <Grid container item xs={12} justify={"center"} style={{marginTop:30, marginBottom:30}}>
         <Grid  item xs={10} >
-          <Title isSilver={true} title={"COLLECTIONS"} />
+          <Title isSilver={true} title={"COLLECTION"} />
         </Grid>
         </Grid>
       </Hidden>
