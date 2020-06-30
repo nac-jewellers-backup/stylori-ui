@@ -336,7 +336,7 @@ export default function ImageGridList(props) {
             style={{
               padding: "0px 15px",
               marginTop: 50,
-              marginBottom: 10,
+              marginBottom: 50,
               height: 570,
             }}
           >

@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "components/SilverComponents/Header";
-import { Grid, Container } from "@material-ui/core";
+import { Grid, Container, Hidden } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 import ProductModal from "components/SilverComponents/ProductModal";
 import MultipleSections from "components/SilverComponents/MultipleSections";
@@ -24,11 +24,20 @@ class HomeStylori extends React.Component {
       <Grid container>
         <Header />
         <CarosolTop collectionsPageSilver={true} />
-        <Grid container item xs={12} justify={"center"}>
+      <Hidden smDown>
+      <Grid container item xs={12} justify={"center"} style={{marginTop:30}}>
         <Grid  item xs={10} >
           <Title isSilver={true} title={"COLLECTIONS"} />
         </Grid>
         </Grid>
+      </Hidden>
+      <Hidden mdUp>
+      <Grid container item xs={12} justify={"center"} style={{marginTop:30, marginBottom:30}}>
+        <Grid  item xs={10} >
+          <Title isSilver={true} title={"COLLECTIONS"} />
+        </Grid>
+        </Grid>
+      </Hidden>
         <ProductModal
           data={this.props.data}
           allSeo={this.props.allSeo}

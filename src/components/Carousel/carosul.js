@@ -145,11 +145,11 @@ class Component extends React.Component {
               alt=""
               onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
             />
-            <div className="overlay1">
+            <div className="overlay1" >
            { collectionDataSilverSEO ?
-              <div className={'collectionDataSilverSEOflex'}>
+              <div className={`collectionDataSilverSEOflex ${'fontSizebig'}`} >
                <div style={{margin:'auto'}}>
-               <h2 className="next-price">{val.title.toUpperCase()}</h2>
+               <h2 className={`next-price ${'fontSizebig'}`}>{val.title.toUpperCase()}</h2>
                 <br />
                 {collectiondatacheck(val) ?
                   <h5 className="contenttext">{collectionDataSilverSEO ?collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText ? collectionDataSilverSEO[val.title].seoText : '' : val.description}</h5>

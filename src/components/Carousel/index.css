@@ -48,7 +48,12 @@
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out
 }
-
+.fontSizebig{
+  font-size:18px !important;
+}
+.fontSizebig h2{
+  font-size:18px !important;
+}
 .boxshadow {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px 4px, rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
 }
