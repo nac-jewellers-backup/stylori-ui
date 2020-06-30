@@ -81,8 +81,8 @@ export const RouterApp = props => {
         exact
         path={routes.HomePageStylori}
       />
-      <Route key="Silver" component={Silver} exact path={routes.Silver} />
-      <Route key="SilverCollection" component={SilverCollection} exact path={routes.styloriSilverCollections} />
+      {/* <Route key="Silver" component={Silver} exact path={routes.Silver} /> */}
+      {/* <Route key="SilverCollection" component={SilverCollection} exact path={routes.styloriSilverCollections} /> */}
       <Route key="Faqs" component={Faqs} exact path={routes.Faqs} />
       <Route
         key="ProductCare"
