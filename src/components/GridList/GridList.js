@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     backgroundColor: theme.palette.background.paper,
     width: "100%",
-    margin: "0px 0px 20px 0px ",
+    margin: "0px 0px 40px 0px ",
   },
   [theme.breakpoints.down("md")]: {
     imagefull: {
@@ -337,7 +337,7 @@ export default function ImageGridList(props) {
               padding: "0px 15px",
               marginTop: 50,
               marginBottom: 50,
-              height: 570,
+              height: 470,
             }}
           >
             <Grid
