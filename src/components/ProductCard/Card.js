@@ -62,8 +62,8 @@ function checkImage(imageSrc, good, bad) {
   img.src = imageSrc;
 }
 const imageOnError = async(event, res, setLoading) => {
-  
-  
+  console.log(event,'event')
+  const _event  = event && event.target ? event.target : event.currentTarget  
   setLoading(true)
 const check_image_exists_in_server =  (url) =>{
     
@@ -79,7 +79,7 @@ const check_image_exists_in_server =  (url) =>{
 }
 let _url = `${CDN_URL}${res.url_1000x1000}`;
 let _notFound = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`;
-event.target.src = await check_image_exists_in_server(_url) ? _url : _notFound
+_event.src = await check_image_exists_in_server(_url) ? _url : _notFound
 // setLoading(false)
 //  `${CDN_URL}${res.url_1000x1000}`
 // check_image_exists_in_server()
