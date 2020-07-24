@@ -34,7 +34,24 @@ class ProductImageZoom extends React.Component {
     this.previous = this.previous.bind(this);
     this.slider = React.createRef();
   }
+  checkImage = (imageSrc, good, bad) =>{
+    var img = new Image();
+    img.onload = good;
+    img.onerror = bad;
+    img.src = imageSrc;
+  }
+  check_image_exists_in_server =  (url) =>{
+      
   
+    // var _url = url.replace(res.img_res, '1000X1000');
+
+    return new Promise(async(resolve, reject) => {
+        // create an XHR object
+        await this.checkImage(url, ()=>{resolve(true)}, ()=>{resolve(false)}  )
+     });
+   
+
+} 
   state = {
     // backgroundImage: `url(${src})`,
     backgroundPosition: "0% 0%",
@@ -47,7 +64,7 @@ class ProductImageZoom extends React.Component {
       this.props.data[0].fadeImages.arrOfurls &&
       this.props.data[0].fadeImages.arrOfurls.length > 0 &&
       this.props.data[0].fadeImages.arrOfurls[0]
-        ? this.props.data[0].fadeImages.arrOfurls[0]
+        ? this.check_image_exists_in_server(this.props.data[0].fadeImages.arrOfurls[0]) ? this.props.data[0].fadeImages.arrOfurls[0] :this.props.data[0].fadeImages.arrOfurls[0].replace("600X600","2400X2400")
         : "",
     largeImage:
       this.props &&
@@ -68,7 +85,7 @@ class ProductImageZoom extends React.Component {
         this.props.data[0].fadeImages.arrOfurls &&
         this.props.data[0].fadeImages.arrOfurls.length > 0 &&
         this.props.data[0].fadeImages.arrOfurls[0]
-          ? this.props.data[0].fadeImages.arrOfurls[0].replace("1000X1000","2400X2400")
+          ? this.props.data[0].fadeImages.arrOfurls[0].replace("600X600","2400X2400")
           : "",
       largeImageBig:
         this.props &&
@@ -90,7 +107,7 @@ class ProductImageZoom extends React.Component {
       prevProps.data[0].fadeImages.arrOfurls[0]
     ) {
       this.setState({
-        showimage: this.props.data[0].fadeImages.arrOfurls[0],
+        showimage:  this.props.data[0].fadeImages.arrOfurls[0]  ,
         largeImage: this.props.data[0].fadeImages.arrOfurls_2X[0]
       });
     }
@@ -195,6 +212,7 @@ class ProductImageZoom extends React.Component {
 
     return (
       <div>
+        {/* {JSON.stringify(showimage)} */}
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
           <Grid item xs={2}>
             <div
@@ -338,6 +356,7 @@ class ProductImageZoom extends React.Component {
                 ) : (
                   ""
                 )}
+                
                 {this.handleVideoCheck(showimage) ? (
                   <video
                     preload="auto"
@@ -350,7 +369,7 @@ class ProductImageZoom extends React.Component {
                   </video>
                 ) : (
                   <GlassMagnifier
-                    imageSrc={[showimage,showimageBig,  `${CDN_URL}product/1000X1000/productnotfound.webp`]}
+                    imageSrc={[largeImage,showimageBig,  `${CDN_URL}product/1000X1000/productnotfound.webp`]}
                     // imageSrc={largeImage}
                     // onImageLoad={this.imageSrc=`${CDN_URL}product/1000X1000/productnotfound.webp`}
                     imageAlt="Stylori"
