@@ -473,7 +473,7 @@ const Productprice = (
                                 )}
                                 <Typography
                                onClick={()=>{
-                                 debugger
+                                 
                                  window.LC_API.open_chat_window()
                                }}
                                variant="subtitle1" component="div"

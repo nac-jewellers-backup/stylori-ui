@@ -3,7 +3,7 @@ import { useGraphql } from "hooks/GraphqlHook";
 import { useNetworkRequest } from "hooks/NetworkHooks";
 import { PRODUCTLIST, conditions, seoUrlResult } from "queries/productListing";
 import { withRouter } from "react-router-dom";
-import {_mainFunc} from "mappers/productlist";
+import productlist from "mappers/productlist";
 import { CDN_URL } from "config";
 import { matchPath } from "react-router";
 import { createApolloFetch } from "apollo-fetch";
@@ -424,15 +424,12 @@ const Provider = (props) => {
     setDataSeoQuery(seoData);
   }, [seoData, seoloading, seoError]);
   useEffect(() => {
-   const _func = async() =>{
     if (!loading) {
-      const mapped = await _mainFunc(data, CDN_URL);
+      const mapped = productlist(data, CDN_URL);
       const newUpdatedList = filterLogic(dataArr, mapped);
       if (offset === 0) setDataArr(mapped);
       else setDataArr(newUpdatedList);
     }
-   }
-   _func()
   }, [data, error, loading]);
 
   useEffect(() => {}, [data, error, loading]);

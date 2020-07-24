@@ -57,22 +57,6 @@ const screen_width_type_like_view = () => {
 }
 
 var img_res;
-
-function checkImage(imageSrc, good, bad) {
-    var img = new Image();
-    img.onload = good;
-    img.onerror = bad;
-    img.src = imageSrc;
-}
-const check_image_exists_in_server =  (url) =>{
-    
-    return new Promise(async(resolve, reject) => {
-        // create an XHR object
-        await checkImage(url, ()=>{resolve(true)}, ()=>{resolve(false)}  )
-     });
-   
-
-}
 var screen_width_type = (screen_res, largeImageZoom) => {
     // const {window_width, browser_type} = await lambda_func_front_end()
     var window_width = JSON.parse(localStorage.getItem('browserDetails'))
@@ -133,11 +117,10 @@ screenWidth()
 
 // const baseUi = "https://assets-cdn.stylori.com/";
 // const injectUrl = (url, baseUi) => url ? resolutions.map(k => ({ ...k, img: `${baseUi}${url.imageUrl===undefined  ? url : url.imageUrl}` })) : [];
-const injectUrl_url_construct = async(url, baseUi, screen_res, largeImageZoom) => {
+const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
     var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
     if (browser_type !== undefined && url !== undefined && url && url.imageUrl.length > 0 && screen_res !== undefined && baseUi !== undefined) {
         var resolution = screen_width_type(screen_res, largeImageZoom)
-        var _resolution1000X1000 = '1000X1000'
         var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`
         var url_split = url && url.imageUrl.split('/')
         var extension_split = url_split && url_split[url_split.length - 1]
@@ -146,29 +129,7 @@ const injectUrl_url_construct = async(url, baseUi, screen_res, largeImageZoom) =
         url_split[url_split && url_split.length - 1] = browser_type_append
         url_split.splice(2, 0, _resolutions);
         var url_construct = url_split.join().replace(/\,/g, '/')
-        var img_url
-        if(await check_image_exists_in_server(`${baseUi}${url_construct}`)){
-            img_url = `${baseUi}${url_construct}`
-           
-        }
-
-        else {
-            let _1000X1000 = url_construct.replace(_resolutions, _resolution1000X1000);
-            
-            // url_construct = url_split.join().replace(/\,/g, '/')
-            if(await check_image_exists_in_server(`${baseUi}${_1000X1000}`)){
-                img_url = `${baseUi}${_1000X1000}`
-            }
-            else{
-                
-                let _2400X2400 = url_construct.replace(_resolutions, "2400X2400");
-                
-            // url_construct = url_split.join().replace(/\,/g, '/')
-            img_url = `${baseUi}${_2400X2400}`
-            }
-             
-        }
-        
+        var img_url = `${baseUi}${url_construct}`
     }
     else {
 
@@ -181,7 +142,7 @@ const injectUrl_url_construct = async(url, baseUi, screen_res, largeImageZoom) =
         url_construct = url_split.join().replace(/\,/g, '/')
     }
 
-debugger
+
     return `${img_url}?_=${new Date().getTime()}`
 }
 

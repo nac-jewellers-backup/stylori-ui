@@ -379,7 +379,7 @@ const BuydetailsSilverdetailpage = (
                   )}
                   <Typography
                   onClick={()=>{
-                    debugger
+                    
                     window.LC_API.open_chat_window()
                   
                   }}

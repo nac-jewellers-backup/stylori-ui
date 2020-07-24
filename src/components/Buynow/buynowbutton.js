@@ -38,7 +38,7 @@ class Buynowbutton extends React.Component {
           }
     }
     componentDidUpdate(prevProps,prevState){
-        debugger
+        
         if(prevProps.sku !== this.props.sku) this.valus(this.props)
 
     }

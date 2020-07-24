@@ -9,6 +9,7 @@ import styles from "../Header/styles";
 import ReactImageZoom from "react-image-zoom";
 import StaticView from "components/CarouselLazyer/StaticView";
 import Gagetstylori from "./Gagetstylori/Gagetstylori";
+import { CDN_URL } from 'config';
 import {
   Magnifier,
   GlassMagnifier,
@@ -27,11 +28,13 @@ import {
 
 class ProductImageZoom extends React.Component {
   constructor(props) {
+    debugger
     super(props);
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
     this.slider = React.createRef();
   }
+  
   state = {
     // backgroundImage: `url(${src})`,
     backgroundPosition: "0% 0%",
@@ -45,7 +48,7 @@ class ProductImageZoom extends React.Component {
       this.props.data[0].fadeImages.arrOfurls.length > 0 &&
       this.props.data[0].fadeImages.arrOfurls[0]
         ? this.props.data[0].fadeImages.arrOfurls[0]
-        : [],
+        : "",
     largeImage:
       this.props &&
       this.props.data &&
@@ -56,7 +59,28 @@ class ProductImageZoom extends React.Component {
       this.props.data[0].fadeImages.arrOfurls_2X.length > 0 &&
       this.props.data[0].fadeImages.arrOfurls_2X[0]
         ? this.props.data[0].fadeImages.arrOfurls_2X[0]
-        : []
+        : "",
+        showimageBig: this.props &&
+        this.props.data &&
+        this.props.data.length > 0 &&
+        this.props.data[0] &&
+        this.props.data[0].fadeImages &&
+        this.props.data[0].fadeImages.arrOfurls &&
+        this.props.data[0].fadeImages.arrOfurls.length > 0 &&
+        this.props.data[0].fadeImages.arrOfurls[0]
+          ? this.props.data[0].fadeImages.arrOfurls[0].replace("1000X1000","2400X2400")
+          : "",
+      largeImageBig:
+        this.props &&
+        this.props.data &&
+        this.props.data.length > 0 &&
+        this.props.data[0] &&
+        this.props.data[0].fadeImages &&
+        this.props.data[0].fadeImages.arrOfurls_2X &&
+        this.props.data[0].fadeImages.arrOfurls_2X.length > 0 &&
+        this.props.data[0].fadeImages.arrOfurls_2X[0]
+          ? this.props.data[0].fadeImages.arrOfurls_2X[0].replace("1000X1000","2400X2400")
+          : "",
   };
 
   componentDidUpdate(prevProps) {
@@ -105,12 +129,41 @@ class ProductImageZoom extends React.Component {
       return false;
     }
   };
+
+   checkImage = (imageSrc, good, bad) =>{
+    var img = new Image();
+    img.onload = good;
+    img.onerror = bad;
+    img.src = imageSrc;
+  }
+  check_image_exists_in_server =  (url) =>{
+      
+  
+    // var _url = url.replace(res.img_res, '1000X1000');
+
+    return new Promise(async(resolve, reject) => {
+        // create an XHR object
+        await this.checkImage(url, ()=>{resolve(true)}, ()=>{resolve(false)}  )
+     });
+   
+
+}
+    onErrorImage = async(event,largeImage) =>{
+      alert("came")
+      let _url = largeImage.replace('1000X1000', '2400X2400');
+      let _notFound = `${CDN_URL}product/1000X1000/productnotfound.webp`;
+      return await this.check_image_exists_in_server(_url) ? _url : _notFound
+    }
+    handledeii = () =>{
+      alert('deii')
+    }
+  
   productImageZoom = (_isSilver) => {
     
     // console.log(this.props.data)
     const { classes, data } = this.props;
     const limit = 4;
-    const { showimage, largeImage } = this.state;
+    const { showimage, largeImage, showimageBig, largeImageBig } = this.state;
     const dataCarousel = {
       infinite: false,
       slidesToShow:
@@ -132,6 +185,7 @@ class ProductImageZoom extends React.Component {
       img: `${showimage}`,
       zoomStyle: "z-index:2"
     };
+
     var a = showimage && showimage;
     console.log(this.props.data[0], "this.props.data[0]");
     // alert(JSON.stringify(this.props.data[0]))
@@ -296,15 +350,12 @@ class ProductImageZoom extends React.Component {
                   </video>
                 ) : (
                   <GlassMagnifier
-                    imageSrc={showimage}
+                    imageSrc={[showimage,showimageBig,  `${CDN_URL}product/1000X1000/productnotfound.webp`]}
                     // imageSrc={largeImage}
-                    onError={e => {
-                      e.target.src =
-                        "https://assets.stylori.com/product/1000X1000/productnotfound.webp";
-                    }}
-                    imageAlt="Example"
+                    // onImageLoad={this.imageSrc=`${CDN_URL}product/1000X1000/productnotfound.webp`}
+                    imageAlt="Stylori"
                     magnifierSize="50%"
-                    largeImageSrc={largeImage}
+                    largeImageSrc={[largeImage,largeImageBig, `${CDN_URL}product/2400X2400/productnotfound.webp`,`${CDN_URL}product/1000X1000/productnotfound.webp`]}
                     magnifierBoxShadow="0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)"
                     magnifierBorderColor="#f5003240"
                     // magnifierBackgroundColor="#f5003240"

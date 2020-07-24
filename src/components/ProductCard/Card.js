@@ -55,48 +55,40 @@ export const ImgMediaCard = (props) => {
 //     />
 // );
 // }
-const imageOnError = (event, res) => {
+function checkImage(imageSrc, good, bad) {
+  var img = new Image();
+  img.onload = good;
+  img.onerror = bad;
+  img.src = imageSrc;
+}
+const imageOnError = async(event, res, setLoading) => {
   
-  // var e = event
-  // e.target.src.lastIndexOf('\.')
-  // var src_img = (e.target.src).lastIndexOf('\.')
-  // var _arr = e.target.src.split('/')
-  // _arr.splice(_arr.length - 2, 1, '1000X1000')
-  // const URL_1000x1000 = _arr.join('/')
-  // var URL_JPG = (e.target.src).substr(0, src_img).concat('.jpg')
+  
+  setLoading(true)
+const check_image_exists_in_server =  (url) =>{
+    
 
-  // try {
+    // var _url = url.replace(res.img_res, '1000X1000');
 
-  //   var _image = ''
-  //   e.target.onerror = null;
+    return new Promise(async(resolve, reject) => {
+        // create an XHR object
+        await checkImage(url, ()=>{resolve(true)}, ()=>{resolve(false)}  )
+     });
+   
 
-  //   const testImage = (URL, e) => {
-  //     var tester = new Image();
-  //     tester.src = URL;
-  //     tester.onload = imageFound;
-  //     tester.onerror = imageNotFound;
-  //     // tester.on("error" , imageNotFound)
-
-
-
-  //   }
-  //   const imageFound = (e) => {
-  //     e.target.src = URL_1000x1000
-
-  //   }
-  //   const imageNotFound = (e) => {
-  //     e.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
-
-
-  //   }
-  //   return testImage(URL_1000x1000, e);
-  //   // e.target.src = (e.target.src).substr(0, src_img).concat('.jpg')
-  // } catch (error) {
-  //   console.log(error)
-  // }
-  event.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
+}
+let _url = `${CDN_URL}${res.url_1000x1000}`;
+let _notFound = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`;
+event.target.src = await check_image_exists_in_server(_url) ? _url : _notFound
+// setLoading(false)
+//  `${CDN_URL}${res.url_1000x1000}`
+// check_image_exists_in_server()
+// check_image_exists_in_server()
+  // event.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
 }
 const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => {
+
+  const [loading, setLoading] = React.useState(false)
 
   return (
     <div className="imageHeight">
@@ -145,7 +137,8 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
         <LazyLoadImage
           alt={'props.data.title'}
           effect="blur"
-          src={renderImages(props, cardstate)}
+          src={loading ? `${CDN_URL}product/${props.data.imageResolution.img_res}X${props.data.imageResolution.img_res}/productnotfound.webp` :renderImages(props, cardstate)}
+          // onLoadedData={()=>{setLoading(false)}}
           //  srcset={renderImages(props, cardstate)}
           //      sizes="(max-width: 320px) 320w,
           //              (max-width: 480px) 375w,
@@ -156,7 +149,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
           //              2560w
 
           //  "
-          onError={(e) => imageOnError(e, props.data.imageResolution)}
+          onError={(e) => imageOnError(e, props.data.imageResolution, setLoading)}
           title={props.data.title}
           onMouseOver={() => {
             callmouseover()
