@@ -121,7 +121,7 @@ const Components = props => {
   // let mappedFilter = filterData(mappedFilters)
   if (!loading && !error) {
     if (Object.keys(data).length !== 0) {
-      mapped = async () => await productList(data, CDN_URL);
+      // mapped = async () => await productList(data, CDN_URL);
     }
   }
   if (Object.keys(data).length === 0) content = <div className="overall-loader"><div id="loading"></div></div>
