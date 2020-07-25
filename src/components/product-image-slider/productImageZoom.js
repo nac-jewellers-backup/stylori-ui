@@ -64,7 +64,7 @@ class ProductImageZoom extends React.Component {
       this.props.data[0].fadeImages.arrOfurls &&
       this.props.data[0].fadeImages.arrOfurls.length > 0 &&
       this.props.data[0].fadeImages.arrOfurls[0]
-        ? this.check_image_exists_in_server(this.props.data[0].fadeImages.arrOfurls[0]) ? this.props.data[0].fadeImages.arrOfurls[0] :this.props.data[0].fadeImages.arrOfurls[0].replace("600X600","2400X2400")
+        ? this.check_image_exists_in_server(this.props.data[0].fadeImages.arrOfurls[0]) ? this.props.data[0].fadeImages.arrOfurls[0] :this.props.data[0].fadeImages.arrOfurls[0].replace(`${this.props.data[0].size}X${this.props.data[0].size}`,"2400X2400")
         : "",
     largeImage:
       this.props &&
@@ -85,7 +85,7 @@ class ProductImageZoom extends React.Component {
         this.props.data[0].fadeImages.arrOfurls &&
         this.props.data[0].fadeImages.arrOfurls.length > 0 &&
         this.props.data[0].fadeImages.arrOfurls[0]
-          ? this.props.data[0].fadeImages.arrOfurls[0].replace("600X600","2400X2400")
+          ? this.props.data[0].fadeImages.arrOfurls[0].replace(`${this.props.data[0].size}X${this.props.data[0].size}`,"2400X2400")
           : "",
       largeImageBig:
         this.props &&
