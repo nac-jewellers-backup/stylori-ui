@@ -61,11 +61,34 @@ class Component extends React.Component {
       return false;
     }
   };
-  renderFadeImages = () => {
+  checkImage = (imageSrc, good, bad) =>{
+    var img = new Image();
+    img.onload = good;
+    img.onerror = bad;
+    img.src = imageSrc;
+  }
+  check_image_exists_in_server =  (url) =>{
+      
+  
+    // var _url = url.replace(res.img_res, '1000X1000');
+
+    return new Promise(async(resolve, reject) => {
+        // create an XHR object
+        await this.checkImage(url, ()=>{resolve(true)}, ()=>{resolve(false)}  )
+     });
+   
+
+} 
+  handleFunc = async(imgs) =>{
+    debugger
+    // imgs.replace((`${this.props.size*2}X${this.props.size*2}`), "2400X2400")
+    return await this.check_image_exists_in_server(imgs) ? imgs : imgs.replace('1000X1000', '2400X2400')
+  }
+  renderFadeImages =  () => {
 
     let { video, currentImage } = this.props;
 
-    return this.props.fadeImages
+    return  this.props.fadeImages
       ? this.props.fadeImages.map((imgs) => (
           <div
             className={` ${this.props.class ? this.props.class : ""} ${currentImage && currentImage  === imgs ? 'currentImageClassSilver' : ''}`}
@@ -97,7 +120,15 @@ class Component extends React.Component {
                 }`}
                 src={imgs}
                 alt=""
-                onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
+
+                onError={(e)=>{
+                  debugger
+                  let _size = this.props.size
+                  if(this.props.size) e.target.src=imgs.replace(`${_size*2}X${_size*2}`, '2400X2400')
+                  else e.target.src=imgs.replace('1000X1000', '2400X2400')
+                }
+                  
+                }
               />
             )}
           </div>

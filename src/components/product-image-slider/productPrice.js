@@ -50,7 +50,7 @@ const mobilecarousel = (props, val, wishlist) => {
 
             {/* <div style={{background:"red"}}>Earrings in 18K Yellow Gold and Peridot for Kids</div> */}
             <Slideshow zindex="1000" class="middle" className='responseve-carousel testingcur' imgClass='responseve-carousel-img'
-                fadeImages={data[0].fadeImages.arrOfurls} dataCarousel={dataCarousel} videoControls={true} />
+                fadeImages={data[0].fadeImages.arrOfurls} dataCarousel={dataCarousel} videoControls={true} size={props.data[0].size}/>
         </div>
     );
 };
