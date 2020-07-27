@@ -59,16 +59,33 @@ export const
           mobileImg:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Raksha-Bandhan-Banner-805-X-430.jpg",
           navigateUrl:'https://www.stylori.com/rakhis-jewellery'
         },
+        
+        // ADDED ON 27-07-2020
+
+        {
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Raksha-Bandhan-Return-Gift+web.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Raksha-Bandhan-Returhn-Gift-mobile+(1).jpg",
+          navigateUrl: "https://www.stylori.com/jewellery-for+women?sort=Featured&startprice=0&endprice=0"
+        },
+
+        // 
+        
         {
           img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+banner+1920+X+656.jpg",
           mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+mobile+banner+805+X+430.jpg",
           navigateUrl: "https://www.stylori.com/jewellery"
         },
-        {
-          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-+-+1920x656+copy.jpg",
-          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-805x430.jpg",
-          navigateUrl: "https://www.stylori.com/goldcoins"
-        },
+        
+
+        // REMOVED ON 27-07-2020
+
+        // {
+        //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-+-+1920x656+copy.jpg",
+        //   mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-805x430.jpg",
+        //   navigateUrl: "https://www.stylori.com/goldcoins"
+        // },
+
+        // 
         {
           img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-1920-X-656-px.jpg",
           mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-mobile-805X430-px.jpg",
