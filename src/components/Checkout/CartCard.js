@@ -252,7 +252,7 @@ class Checkoutcard extends React.Component {
                                         /> */}
                                         {/* <img src={}/> */}
                                         {val.namedetail !== undefined && val.namedetail.map(val => (
-                                            dataval.fadeImages.map(im_ => 
+                                            [dataval.fadeImages[0]].map(im_ => 
                                             {
                                                 const width = window.innerWidth;
                                                 var resolution = 500
