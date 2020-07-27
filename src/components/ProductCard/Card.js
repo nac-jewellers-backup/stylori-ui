@@ -61,8 +61,7 @@ function checkImage(imageSrc, good, bad) {
   img.onerror = bad;
   img.src = imageSrc;
 }
-const imageOnError = async(event, res, setLoading) => {
-  console.log(event,'event')
+const imageOnError = async(event, res, setLoading, url, props) => {
   const _event  = event && event.target ? event.target : event.currentTarget  
   setLoading(true)
 const check_image_exists_in_server =  (url) =>{
@@ -149,7 +148,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
           //              2560w
 
           //  "
-          onError={(e) => imageOnError(e, props.data.imageResolution, setLoading)}
+          onError={(e) => imageOnError(e, props.data.imageResolution, setLoading, renderImages(props, cardstate))}
           title={props.data.title}
           onMouseOver={() => {
             callmouseover()

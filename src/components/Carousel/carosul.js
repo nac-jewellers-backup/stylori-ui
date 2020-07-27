@@ -15,7 +15,7 @@ const Slideshow = (props) => {
   let {
     CartCtx: { allorderdata, wishlistdata, setratingcountsclear },
   } = React.useContext(CartContext);
-  const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
+  const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext); 
   return <Component Globalctx={Globalctx} wishlist={wishlistdata} {...props} />;
 };
 
@@ -67,7 +67,7 @@ class Component extends React.Component {
     img.onerror = bad;
     img.src = imageSrc;
   }
-  check_image_exists_in_server =  (url) =>{
+  check_image_exists_in_server =  (url) =>{ 
       
   
     // var _url = url.replace(res.img_res, '1000X1000');
@@ -87,7 +87,7 @@ class Component extends React.Component {
   renderFadeImages =  () => {
 
     let { video, currentImage } = this.props;
-
+    debugger
     return  this.props.fadeImages
       ? this.props.fadeImages.map((imgs) => (
           <div
@@ -123,8 +123,8 @@ class Component extends React.Component {
 
                 onError={(e)=>{
                   debugger
-                  let _size = this.props.size
-                  if(this.props.size) e.target.src=imgs.replace(`${_size*2}X${_size*2}`, '2400X2400')
+                  let _size = this.props.size ? this.props.size*2 : this.props.cartcard
+                  if(_size) e.target.src=imgs.replace(`${_size}X${_size}`, '2400X2400')
                   else e.target.src=imgs.replace('1000X1000', '2400X2400')
                 }
                   
