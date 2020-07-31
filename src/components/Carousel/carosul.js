@@ -84,6 +84,49 @@ class Component extends React.Component {
     // imgs.replace((`${this.props.size*2}X${this.props.size*2}`), "2400X2400")
     return await this.check_image_exists_in_server(imgs) ? imgs : imgs.replace('1000X1000', '2400X2400')
   }
+   checkImage = (imageSrc, good, bad) => {
+    var img = new Image();
+    img.onload = good;
+    img.onerror = bad;
+    img.src = imageSrc;
+  }
+   imageOnError = async(event,url) => {
+    debugger
+    const _event  = event && event.target ? event.target : event.currentTarget  
+    
+  const check_image_exists_in_server =  (url) =>{
+      
+  
+      // var _url = url.replace(res.img_res, '1000X1000');
+  
+      return new Promise(async(resolve, reject) => {
+          // create an XHR object
+          await this.checkImage(url, ()=>{resolve(true)}, ()=>{resolve(false)}  )
+       }); 
+     
+  
+  }
+  let _url = ""
+  const urlCheck = (size) =>{
+    var current_url = url.split('/')
+  current_url.splice(current_url.length-2, 1 , size)
+   _url = current_url.join().replace(/\,/g, '/');
+   return _url
+  } 
+  // let _url_2400X2400 = res.url_1000x1000; 
+  let _notFound = `${CDN_URL}product/1000X1000/productnotfound.webp`;
+  _event.src = `${CDN_URL}product/1000X1000/productnotfound.webp`;
+  
+  let _image = await check_image_exists_in_server(urlCheck('1000X1000')) ? _url : await check_image_exists_in_server(urlCheck('2400X2400'))  ? _url :_notFound
+  _event.src =  _image
+  // loadAndSaveErrorImage(_image)
+  // setLoading(false)
+  // setLoading(false)
+  //  `${CDN_URL}${res.url_1000x1000}`
+  // check_image_exists_in_server()
+  // check_image_exists_in_server()
+    // event.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
+  }
   renderFadeImages =  () => {
 
     let { video, currentImage } = this.props;
@@ -123,9 +166,10 @@ class Component extends React.Component {
 
                 onError={(e)=>{
                   debugger
-                  let _size = this.props.size ? this.props.size*2 : this.props.cartcard
-                  if(_size) e.target.src=imgs.replace(`${_size}X${_size}`, '2400X2400')
-                  else e.target.src=imgs.replace('1000X1000', '2400X2400')
+                  this.imageOnError(e,imgs)
+                  // let _size = this.props.size ? this.props.size*2 : this.props.cartcard
+                  // if(_size) this.target.src=imgs.replace(`${_size}X${_size}`, '2400X2400')
+                  // else this.target.src=imgs.replace('1000X1000', '2400X2400')
                 }
                   
                 }

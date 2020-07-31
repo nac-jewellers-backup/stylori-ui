@@ -28,7 +28,7 @@ import {
 
 class ProductImageZoom extends React.Component {
   constructor(props) {
-    debugger
+    
     super(props);
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);

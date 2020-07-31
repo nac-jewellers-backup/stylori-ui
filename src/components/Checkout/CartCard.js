@@ -252,34 +252,31 @@ class Checkoutcard extends React.Component {
                                         /> */}
                                         {/* <img src={}/> */}
                                         {val.namedetail !== undefined && val.namedetail.map(val => (
-                                            [dataval.fadeImages[0]].map(im_ => 
-                                            {
-                                                const width = window.innerWidth;
-                                                var resolution = 500
-                        var _resolutions = width < 960 ? resolution * 2 : resolution
-                                                return(
-                                                    <>
-                                                {
-                                                
-                                                filter_image(im_, val.name, val.details) && filter_image(im_, val.name, val.details).length > 0 ?
+                                            dataval.fadeImages.map(im_ =>
+                                             {
+                                                 debugger
+                                                 return(
                                                     <>
                                                     {
-                                                        
-                                                    window.location.pathname !== "/checkout" ? 
-                                                    <NavLink to={dataval.skuUrl} style={{ textDecoration: 'none' }}>
-                                                        <Slideshow className="image"
-                                                            fadeImages={filter_image(im_, val.name, val.details)} dataCarousel={dataCarousel} cartcard={_resolutions}/>
-                                                    </NavLink>
-                                                     : 
-                                                     <Slideshow className="image"
-                                                        fadeImages={filter_image(im_, val.name, val.details)} dataCarousel={dataCarousel} cartcard={_resolutions}/>
-                                                        }
-                                                        </> : ""
-
-                                                }
-                                                </>
-                                                )
-                                            }
+                                                    
+                                                    filter_image(im_, val.name, val.details) && filter_image(im_, val.name, val.details).length > 0 ?
+                                                        <>
+                                                        {
+                                                            
+                                                        window.location.pathname !== "/checkout" ? 
+                                                        <NavLink to={dataval.skuUrl} style={{ textDecoration: 'none' }}>
+                                                            <Slideshow className="image"
+                                                                fadeImages={filter_image(im_, val.name, val.details)} dataCarousel={dataCarousel} />
+                                                        </NavLink>
+                                                         : 
+                                                         <Slideshow className="image"
+                                                            fadeImages={filter_image(im_, val.name, val.details)} dataCarousel={dataCarousel} />
+                                                            }
+                                                            </> : ""
+    
+                                                    }</>
+                                                 )
+                                             }
                                                 )
                                         ))}
                                     </Card>
