@@ -15,6 +15,7 @@ import { NavLink } from 'react-router-dom';
 import Cart from './Cart.css'
 import { API_URL, CDN_URL } from "config"
 import Quantity from '../quantity/index'
+import { Slideshow } from "components";
 function MediaControlCard(props) {
   const { classes } = props;
   const { dataCard1 } = props.data;
@@ -135,6 +136,10 @@ function MediaControlCard(props) {
     if(_data.indexOf("silver") > -1)  return false 
     else return true
 }
+const dataCarousel = {
+  slidesToShow: 1,
+  arrows: false,
+}
   return (
     <div style={{ paddingTop: "10px" }}>
       {/* <Grid container>
@@ -163,22 +168,26 @@ function MediaControlCard(props) {
                   <div style={{ width: "195px" }}>
                     <NavLink to={dataval.skuUrl} style={{ textDecoration: 'none' }}>
                      
-                      <img
+                      {/* <img
                         src={filter_image(val_imgUrl,val.name, val.details)}
                         width="100%"
                         height="100%"
                         alt=""
-                      />
+                      /> */}
+                      <Slideshow className="image"
+                                                                fadeImages={filter_image(val_imgUrl, val.name, val.details)} dataCarousel={dataCarousel} />
                     </NavLink>   
                     </div>
                   :
                   <div style={{ width: "195px" }}>
-                    <img
+                    {/* <img
                       src={filter_image(val_imgUrl,val.name, val.details)}
                       width="100%"
                       height="100%"
                       alt=""
-                    />
+                    /> */}
+                     <Slideshow className="image"
+                                                                fadeImages={filter_image(val_imgUrl, val.name, val.details)} dataCarousel={dataCarousel} />
                   </div>
                   :
                   null
