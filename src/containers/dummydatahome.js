@@ -54,19 +54,19 @@ export const
         //   mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-805x430.jpg",
         //   navigateUrl: "https://www.stylori.com/goldcoins"
         // },
-        {
-          img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Raksha-Bandhan-Banner-1920X656.jpg",
-          mobileImg:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Raksha-Bandhan-Banner-805-X-430.jpg",
-          navigateUrl:'https://www.stylori.com/rakhis-jewellery'
-        },
+        // {
+        //   img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Raksha-Bandhan-Banner-1920X656.jpg",
+        //   mobileImg:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Raksha-Bandhan-Banner-805-X-430.jpg",
+        //   navigateUrl:'https://www.stylori.com/rakhis-jewellery'
+        // },
         
         // ADDED ON 27-07-2020
 
-        {
-          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Raksha-Bandhan-Return-Gift+web.jpg",
-          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Raksha-Bandhan-Returhn-Gift-mobile+(1).jpg",
-          navigateUrl: "https://www.stylori.com/jewellery-for+women?sort=Featured&startprice=0&endprice=0"
-        },
+        // {
+        //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Raksha-Bandhan-Return-Gift+web.jpg",
+        //   mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Raksha-Bandhan-Returhn-Gift-mobile+(1).jpg",
+        //   navigateUrl: "https://www.stylori.com/jewellery-for+women?sort=Featured&startprice=0&endprice=0"
+        // },
 
         // 
         
