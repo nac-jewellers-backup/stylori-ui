@@ -123,11 +123,12 @@ class HomeStylori extends React.Component {
             dataCarousel={homePageStylori.carouselTop.setting}
           >
             {homePageStylori.carouselTop.data.map((val, index) => (
-              <><Hidden smDown>
+              <>
+              <Hidden smDown>
                 <Grid container key={index}>
                   <a href={val.navigateUrl} style={{ width: "100%" }}>
                     <img
-                      src={val.img}
+                      src={val.img} loading="auto" alt="…"
                       style={{ width: "100%", height: "100%" }}
                     />
                   </a>

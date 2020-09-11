@@ -70,6 +70,12 @@ export const
 
         // 
         
+        
+        {
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/CSK_Stylori-web-banner.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/CSK_Stylori-mob-Banner.jpg",
+          navigateUrl: "https://www.stylori.com/jewellery"
+        },
         {
           img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+banner+1920+X+656.jpg",
           mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+mobile+banner+805+X+430.jpg",
