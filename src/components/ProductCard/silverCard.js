@@ -55,49 +55,51 @@ export const SilverImgMediaCard = (props) => {
 //     />
 // );
 // }
-const imageOnError = (event, res) => {
-  
-  // var e = event
-  // e.target.src.lastIndexOf('\.')
-  // var src_img = (e.target.src).lastIndexOf('\.')
-  // var _arr = e.target.src.split('/')
-  // _arr.splice(_arr.length - 2, 1, '1000X1000')
-  // const URL_1000x1000 = _arr.join('/')
-  // var URL_JPG = (e.target.src).substr(0, src_img).concat('.jpg')
-
-  // try {
-
-  //   var _image = ''
-  //   e.target.onerror = null;
-
-  //   const testImage = (URL, e) => {
-  //     var tester = new Image();
-  //     tester.src = URL;
-  //     tester.onload = imageFound;
-  //     tester.onerror = imageNotFound;
-  //     // tester.on("error" , imageNotFound)
-
-
-
-  //   }
-  //   const imageFound = (e) => {
-  //     e.target.src = URL_1000x1000
-
-  //   }
-  //   const imageNotFound = (e) => {
-  //     e.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
-
-
-  //   }
-  //   return testImage(URL_1000x1000, e);
-  //   // e.target.src = (e.target.src).substr(0, src_img).concat('.jpg')
-  // } catch (error) {
-  //   console.log(error)
-  // }
-  event.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
+function checkImage(imageSrc, good, bad) {
+  var img = new Image();
+  img.onload = good;
+  img.onerror = bad;
+  img.src = imageSrc;
 }
-const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) => {
+const imageOnError = async(event, res, setLoading, url, loadAndSaveErrorImage) => {
+  
+  const _event  = event && event.target ? event.target : event.currentTarget  
+  setLoading(true)
+const check_image_exists_in_server =  (url) =>{
+    
 
+    // var _url = url.replace(res.img_res, '1000X1000');
+
+    return new Promise(async(resolve, reject) => {
+        // create an XHR object
+        await checkImage(url, ()=>{resolve(true)}, ()=>{resolve(false)}  )
+     }); 
+   
+
+}
+let _url = ""
+const urlCheck = (size) =>{
+  var current_url = url.split('/')
+current_url.splice(current_url.length-2, 1 , size)
+ _url = current_url.join().replace(/\,/g, '/');
+ return _url
+} 
+// let _url_2400X2400 = res.url_1000x1000; 
+let _notFound = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`;
+_event.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`;
+
+let _image = await check_image_exists_in_server(urlCheck('1000X1000')) ? _url : await check_image_exists_in_server(urlCheck('2400X2400'))  ? _url :_notFound
+_event.src =  _image
+loadAndSaveErrorImage(_image)
+setLoading(false)
+// setLoading(false)
+//  `${CDN_URL}${res.url_1000x1000}`
+// check_image_exists_in_server()
+// check_image_exists_in_server()
+  // event.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
+}
+const Gallery = (props, callmouseover, callmouseout, cardstate, loadAndSaveErrorImage, scrollPosition) => {
+  const [loading, setLoading] = React.useState(false)
   return (
     <div className="imageHeight">
       {props.data.oneDayShipping ? <div className={`one-day-ship-listing-page-withoutTop ${props.classes.colorTheme}`} style={{ zIndex: 2 }}>
@@ -141,11 +143,12 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
       {/* <div class="wishListStyle" >
         <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} />
       </div> */}
-      <Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }} target="_blank" onClick={handleProductDetatiContext(props)}>
+<Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }} target="_blank" onClick={handleProductDetatiContext(props)}>
         <LazyLoadImage
           alt={'props.data.title'}
           effect="blur"
           src={renderImages(props, cardstate)}
+          // onLoadedData={()=>{setLoading(false)}}
           //  srcset={renderImages(props, cardstate)}
           //      sizes="(max-width: 320px) 320w,
           //              (max-width: 480px) 375w,
@@ -156,8 +159,9 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, scrollPosition) 
           //              2560w
 
           //  "
-          onError={(e) => imageOnError(e, props.data.imageResolution)}
+          onError={(e) => imageOnError(e, props.data.imageResolution, setLoading, renderImages(props, cardstate), loadAndSaveErrorImage)}
           title={props.data.title}
+          placeholderSrc={`${CDN_URL}product/1000X1000/productnotfound.webp`}
           onMouseOver={() => {
             callmouseover()
           }}
@@ -373,11 +377,17 @@ const useStyles = makeStyles(theme => ({
 }));
 const renderImages = (props, cardstate) => {
 
-  const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
 
-  // console.info('props.data.image[filterType]',props.data.image[filterType]);
-  // return props.data.image['hoverImage'].length === 0 ?"https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg" : props.data.image[filterType].map(imgs => `${imgs.img} ${imgs.size}`).toString()
-  return props.data.image['hoverImage'].length === 0 ? "https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg" : props.data.image[filterType].img
+  const filterType = cardstate.hovered ? "hoverImage" : "placeImage";
+  if(cardstate.image[filterType]){
+    return cardstate.image[filterType] 
+  }
+  else{
+    
+    // console.info('props.data.image[filterType]',props.data.image[filterType]);
+    // return props.data.image['hoverImage'].length === 0 ?"https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg" : props.data.image[filterType].map(imgs => `${imgs.img} ${imgs.size}`).toString()
+    return props.data.image['hoverImage'].length === 0 ? "https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg" : props.data.image[filterType].img
+  }
 }
 
 function Component(props) {
@@ -386,7 +396,8 @@ function Component(props) {
   const [cardstate, setCardState] = React.useState({
     hovered: false,
     loaded: false,
-    dataLoaded: true
+    dataLoaded: true,
+    image:{hoverImage:null, placeImage:null}
   });
   const _height = props.data.imageResolution.img_res
   const callmouseover = () => {
@@ -394,6 +405,11 @@ function Component(props) {
   }
   const callmouseout = () => {
     setCardState({ ...cardstate, hovered: !cardstate.hovered });
+  }
+  const loadAndSaveErrorImage = async(image) =>{
+    
+    cardstate.image[cardstate.hovered ? 'hoverImage' : 'placeImage'] = image
+    await setCardState({ ...cardstate, ...image });
   }
   return (
     <div className={classes.root} style={{ marginLeft: "0px !important" }}>
@@ -451,7 +467,7 @@ sizes="(max-width: 320px) 320w,
 
 
 
-          {Gallery(props, callmouseover, callmouseout, cardstate)}
+{Gallery(props, callmouseover, callmouseout, cardstate, loadAndSaveErrorImage)}
         </CardActions>
         <Card className={classes.priceClass}>
 
