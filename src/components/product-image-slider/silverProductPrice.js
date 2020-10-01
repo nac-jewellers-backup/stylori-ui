@@ -196,7 +196,7 @@ const Productprice = (
                 </div>
               </Container>
             </Hidden>
-            {isSilver && (
+            {/* {isSilver && (
               <Hidden mdUp>
                 <Grid
                   container
@@ -204,26 +204,7 @@ const Productprice = (
                   xs={12}
                   className={classes.silverSmallScreenButton}
                 >
-                  {/* <Grid item xs={6}>
-                    <div onClick={handleLocalStorage.bind(this)}>
-                      <Buynowbutton
-                        sku={data[0].skuId}
-                        class={`${classes.buynowButtonSilver} ${classes.buttonsilver}`}
-                        button="buynow-btn-cont"
-                        isSilver={isSilver}
-                        smallScreen={true}
-                      />
-                      <CommenDialog
-                        isOpen={state.modelOpen}
-                        content={`Verify selected product details before proceeding`}
-                        handleClose={canceldeletechecklist}
-                        handleSuccess={deletechecklists}
-                        negativeBtn="No"
-                        positiveBtn="Yes"
-                        title="Confirmation"
-                      />
-                    </div>
-                  </Grid> */}
+                
                   <Grid item xs={12} className={classes.saveButtonsilverGrid}>
                     <Button
                       variant="contained"
@@ -244,7 +225,7 @@ const Productprice = (
                   </Grid>
                 </Grid>
               </Hidden>
-            )}
+            )} */}
 
             {/* <Paper elevation={0} style={{ width: "100%", padding: "0px", margin: "0px " }}> */}
             <Grid container className="containbev_silver">
@@ -252,7 +233,8 @@ const Productprice = (
                 <div className={`price-div ${classes.Pricediv}`}>
                   <Hidden mdUp>
                     <Grid container spacing={12} xs={12}>
-                      <Grid container item xs={12}>
+                    <Grid container item xs={12} alignItems="center">
+                    <Grid  item xs={10}>
                         <h1
                           className={`pdp-title ${classes.title} ${classes.titlesmScreen}`}
                           style={{ width: "90%" }}
@@ -286,6 +268,17 @@ const Productprice = (
                           ))}
                         </div> */}
                       </Grid>
+                     <Grid container item xs={2} justify="flex-end">
+                     <Wishlist
+                        sku={val.skuId}
+                        productId={val.productId}
+                        wishlist={wishlist}
+                        globalContext={globalContext.Globalctx}
+                        
+                      />
+                     </Grid>
+                    
+                    </Grid>
                       <Grid
                         container
                         item
@@ -319,7 +312,7 @@ const Productprice = (
                               'isSilverSmallScreen'
                             )}
                         </Grid>
-                        <Grid item xs={2} style={{ margin: "auto" }}>
+                        {/* <Grid item xs={2} style={{ margin: "auto" }}>
                           <div
                             className={`starts product-icons2 ${classes.productIcons2}`}
                             style={{ fontFamily: "fontawesome" }}
@@ -333,8 +326,7 @@ const Productprice = (
                                 onClick={handleClick}
                               ></i>{" "}
                               &nbsp;
-                              {/* {JSON.stringify(val.productId)} */}
-                              {/* <Wishlist sku={val.skuId} productId={val.productId} /> */}
+                              
                               <Popover
                                 id="simple-popper"
                                 open={open}
@@ -373,17 +365,15 @@ const Productprice = (
                                     />
                                   </a>
                                   &nbsp;
-                                  {/* <a class="google" target="_blank">
-                                                            <img class="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
-                                                        </a> */}
+                                
                                 </div>
                               </Popover>
-                              {/* <div onClick={() => window.scrollTo(0, 1800)}><Ratings ratings="starts-review" disable={"disable"} /></div> */}
-                              {/* <div><Ratings ratings="starts-review" /></div> */}
+                              
                             </div>
                           </div>
                         </Grid>
-                        {data[0].ProductContactNum.map((val) => (
+                      */}
+                        {/* {data[0].ProductContactNum.map((val) => (
                           <Grid
                             item
                             container
@@ -406,6 +396,7 @@ const Productprice = (
                                 <b>NEED HELP ?</b>
                               </Grid>
                             </Grid>
+                           
                             <Grid container>
                               <Grid
                                 item
@@ -490,6 +481,7 @@ const Productprice = (
                             </Grid>
                           </Grid>
                         ))}
+                      */}
                       </Grid>
                     </Grid>
                   </Hidden>

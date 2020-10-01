@@ -24,7 +24,7 @@ const styles = (theme) => ({
     [theme.breakpoints.down("xs")]: {
       fontSize: "15px !important",
       lineHeight: "20px !important",
-      marginBottom: "0px",
+      // marginBottom: "0px",
     },
   },
   productIcons2: {

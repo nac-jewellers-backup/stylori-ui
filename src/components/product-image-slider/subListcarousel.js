@@ -92,7 +92,7 @@ class Sublistcarousel extends React.Component {
     return (
       <Container>
         <div style={{ width: "100%", margin:"20px 0px" }}>
-          <Typography variant="h1" component="h1" className={`subtabs-smrt ${props.classes.similarproductssmallScreen}`}>SIMILAR PRODUCTS</Typography>
+          <Typography variant="h1" component="h1" className={`subtabs-smrt ${props.classes.similarproductssmallScreen}` } style={{textAlign:"center"}}>{props?.label ? props.label : 'SIMILAR PRODUCTS'}</Typography>
           {/* <hr class="bottom-line border-line-"></hr> */}
         </div>
 

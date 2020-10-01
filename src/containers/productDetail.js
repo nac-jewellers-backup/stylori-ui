@@ -327,6 +327,7 @@ class ProductDetail extends Component {
                 margin: "auto",
                 paddingLeft: "5%",
                 paddingRight: "5%",
+                paddingTop:'4%'
               }}
             >
               <Sublistcarousel data={this.props.data} isSilver={isSilver} customLimit={4} label="BUY TOGETHER"/>
@@ -338,6 +339,7 @@ class ProductDetail extends Component {
                 margin: "auto",
                 paddingLeft: "5%",
                 paddingRight: "5%",
+                paddingTop:'4%'
               }}
             >
               <Sublistcarousel data={this.props.data} isSilver={isSilver} customLimit={4}/>
@@ -352,6 +354,7 @@ class ProductDetail extends Component {
                 margin: "auto",
                 paddingLeft: "5%",
                 paddingRight: "5%",
+                paddingTop:'4%'
               }}
             >
               <ShopBy shopByStyloriSilver={this.props.shopByStyloriSilver} />
@@ -435,9 +438,11 @@ class ProductDetail extends Component {
           )}
 
           <Grid item xs={12}>
-            <Sublistcarousel data={this.props.data} isSilver={isSilver} />
+            <Sublistcarousel data={this.props.data} isSilver={isSilver} customLimit={4}/>
           </Grid>
-
+          <Grid item xs={12}>
+            <Sublistcarousel data={this.props.data} isSilver={isSilver} label="BUY TOGETHER" customLimit={4}/>
+          </Grid>
           <Grid item xs={12}>
             {isSilver && (
               <Container>
