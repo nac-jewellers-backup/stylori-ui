@@ -15,7 +15,7 @@ const styles = theme => ({
   },
 
   iconfill: {
-    color: `${theme.palette.primary.main} !important`,
+    color: `${theme.palette.secondary.main} !important`,
   },
   iconfillStylori: {
     color: `${theme.palette.secondary.main} !important`,
