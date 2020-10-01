@@ -20,37 +20,37 @@ const styles = (theme) => ({
       fontSize: "11px !important",
     },
   },
-  titlesmScreen:{
+  titlesmScreen: {
     [theme.breakpoints.down("xs")]: {
       fontSize: "15px !important",
-      lineHeight: '20px !important',
-      marginBottom:'0px',
-      
+      lineHeight: "20px !important",
+      marginBottom: "0px",
     },
   },
-  productIcons2:{
-    backgroundColor:theme.palette.primary.main,
-    boxShadow:'6px 7px 6px rgba(208, 210, 211, 1)',
-    [theme.breakpoints.down('sm')]:{
-      backgroundColor:theme.palette.secondary.dark2,
-      boxShadow:'3px 4px 5px rgba(109,110,112,1)'
-    }
+  productIcons2: {
+    // backgroundColor: theme.palette.primary.main,
+    // boxShadow: "6px 7px 6px rgba(208, 210, 211, 1)",
+    
+    [theme.breakpoints.down("sm")]: {
+      backgroundColor: theme.palette.secondary.dark2,
+      boxShadow: "3px 4px 5px rgba(109,110,112,1)",
+    },
   },
-  sizeSelected:{
-    borderRadius: '100%',
-    padding:'1px',
-    border: `2px solid ${theme.palette.primary.main} !important`
+  sizeSelected: {
+    borderRadius: "100%",
+    padding: "1px",
+    border: `2px solid ${theme.palette.primary.main} !important`,
   },
-  icon2:{
-    display:'flex',
-    alignItems:'center',
-    justifyContent:'center'
+  icon2: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   titleSilver: {
     marginTop: "0 !important",
     marginBottom: "0 !important",
     fontSize: "1.1rem !important",
-    color:`${theme.palette.secondary.dark2} !important`
+    color: `${theme.palette.ternary.dark} !important`,
   },
   dis: {
     color: theme.palette.text.secondary,
@@ -58,26 +58,26 @@ const styles = (theme) => ({
   Pricediv: {
     color: `${theme.palette.text.secondary} !important`,
   },
-  normalFontsColor:{
+  normalFontsColor: {
     color: `rgba(0, 0, 0, 0.54) !important`,
   },
-  normalFontsColor2:{
+  normalFontsColor2: {
     color: `${theme.palette.secondary.dark2} !important`,
   },
-  normalfontsSilvercontact:{
+  normalfontsSilvercontact: {
     color: `${theme.palette.secondary.dark2} !important`,
   },
-  carouselCustomArrow:{
-    "& svg":{
-      fill:`${theme.palette.secondary.dark2} !important`,
-      fontSize:'1.7rem'
-    }
+  carouselCustomArrow: {
+    "& svg": {
+      fill: `${theme.palette.secondary.dark2} !important`,
+      fontSize: "1.7rem",
+    },
   },
-  
+
   icon: {
     color: `${theme.palette.primary.main} !important`,
   },
-  
+
   pricedetails: {
     color: theme.palette.primary.main,
     [theme.breakpoints.down("xs")]: {
@@ -202,31 +202,30 @@ const styles = (theme) => ({
   normalfonts: {
     color: theme.palette.text.primary,
   },
-  normalfontsSilver:{
-    fontSize: '1.3rem',
-    letterSpacing: '8px',
-    textTransform: 'uppercase',
-    color:`${theme.palette.secondary.main} !important`,
-    [theme.breakpoints.up('sm')]:{
-      marginBottom:'15px'
-    }
-  }
-  ,
-  silverMarginBottom:{
-    [theme.breakpoints.down('sm')]:{
-      marginBottom:10,
-      border:'1px solid #ccc',
-      borderRadius:'10px',
-      padding:"8px"
-    }
+  normalfontsSilver: {
+    fontSize: "1.3rem",
+    letterSpacing: "8px",
+    textTransform: "uppercase",
+    color: `${theme.palette.secondary.main} !important`,
+    [theme.breakpoints.up("sm")]: {
+      marginBottom: "15px",
+    },
   },
-  fontsSmallScreen:{
-    fontWeight:'bold !important',
-    fontSize:'16px !important',
-    padding:"0px !important",
-    letterSpacing: '2px',
-    textTransform: 'uppercase !important',
-    color:`${theme.palette.secondary.dark2} !important`
+  silverMarginBottom: {
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: 10,
+      border: "1px solid #ccc",
+      borderRadius: "10px",
+      padding: "8px",
+    },
+  },
+  fontsSmallScreen: {
+    fontWeight: "bold !important",
+    fontSize: "16px !important",
+    padding: "0px !important",
+    letterSpacing: "2px",
+    textTransform: "uppercase !important",
+    color: `${theme.palette.secondary.dark2} !important`,
   },
   normalcolorback: {
     background: theme.palette.text.primary,
@@ -246,6 +245,10 @@ const styles = (theme) => ({
     color: theme.palette.overallButoon.contrastText,
   },
   buttonsilver: {
+    background: theme.palette.secondary.main,
+    color: theme.palette.overallButoon.contrastText,
+  },
+  buttonsilverAddToCart: {
     background: theme.palette.primary.main,
     color: theme.palette.overallButoon.contrastText,
   },
@@ -261,41 +264,64 @@ const styles = (theme) => ({
       boxShadow: "none",
     },
   },
-  shadowSilver:{
-    [theme.breakpoints.down('sm')]:{
+  shadowSilver: {
+    [theme.breakpoints.down("sm")]: {
       boxShadow: "none !important",
-    }
-    
+    },
   },
   silverbuttonSave: {
     width: "100% !important",
     borderRadius: "unset !important",
     boxShadow: "6px 7px 6px rgba(208, 210, 211, 1)",
     padding: "10px",
-    [theme.breakpoints.down('sm')]:{
+    [theme.breakpoints.down("sm")]: {
       boxShadow: "unset",
-      padding:'6px 16px',
+      padding: "6px 16px",
       width: "100% !important",
-    }
+    },
   },
   saveButtonsilverGrid: {
-    marginTop: "10px",
-    [theme.breakpoints.down('sm')]:{
-      marginTop: "0 !important",
-    }
+    // marginTop: "10px",
+    // [theme.breakpoints.down("sm")]: {
+    //   marginTop: "0 !important",
+    // },
+    textAlign:"center"
   },
-  sharesilver:{
-    margin:'auto',
-    display:'flex',
-    justifyContent:'flex-start'
+  sharesilver: {
+    margin: "auto",
+    display: "flex",
+    justifyContent: "flex-start",
   },
-  silverSmallScreenButton:{
-    [theme.breakpoints.down('sm')]:{
-    marginBottom:10,
-    boxShadow:`0 12px 10px -7px ${theme.palette.secondary.main}`
-    }
+  silverSmallScreenButton: {
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: 10,
+      boxShadow: `0 12px 10px -7px ${theme.palette.secondary.main}`,
+    },
   },
-
+  buttonHeightAddToCart:{
+    width: "100% !important",
+    height: "30px !important",
+    fontSize: "13px",
+    borderRadius: "unset !important",
+    boxShadow: "6px 7px 6px rgba(208, 210, 211, 1)",
+    textTransform: "uppercase",
+    letterSpacing: "1px !important",
+    fontWeight: "500 !important",
+    border: "none",
+    transition: "all 0.3s ease 0s",
+    cursor: "pointer",
+    outline: "none",
+    "&:hover": {
+      background: theme.palette.primary.dark,
+      opacity: "0.9",
+      color: "#fff !important",
+    },
+    [theme.breakpoints.down("sm")]: {
+      boxShadow: "unset",
+      height: "36px !important",
+      width: "99% !important",
+    },
+  },
   buynowButtonSilver: {
     width: "100% !important",
     height: "45px !important",
@@ -310,151 +336,147 @@ const styles = (theme) => ({
     cursor: "pointer",
     outline: "none",
     "&:hover": {
-      background: theme.palette.primary.dark,
+      background: theme.palette.secondary.dark,
       opacity: "0.9",
       color: "#fff !important",
     },
-    [theme.breakpoints.down('sm')]:{
+    [theme.breakpoints.down("sm")]: {
       boxShadow: "unset",
-      height:'36px !important',
+      height: "36px !important",
       width: "99% !important",
     },
   },
-  searchButtonSilver :{
+  searchButtonSilver: {
     border: 0,
-    fontSize: '12px !important',
-    borderRadius: '0 !important',
-    height: '36px !important',
-    width: '100% !important',
-    color: '#fff',
-    backgroundColor: `${theme.palette.secondary.main} !important`,
-    fontWeight: '400 !important',
-    lineHeight: '1.42857143',
-    padding: '0px !important',
-    textTransform: 'none !important',
-},
-rings_tabs_silver:{
-  color:`${theme.palette.primary.main} !important`
-},
-searchButtonSilver2:{
-  border: 0,
-  fontSize: '12px !important',
-  borderRadius: '0 !important',
-  height: '36px !important',
-  width: '100% !important',
-  color: '#fff',
-  backgroundColor: `${theme.palette.secondary.dark2} !important`,
-  fontWeight: '400 !important',
-  lineHeight: '1.42857143',
-  padding: '0px !important',
-  textTransform: 'none !important',
-},
-colorNoreviews:{
-  color:theme.palette.secondary.main
-},
-chatNowSilver:{
-backgroundColor:theme.palette.secondary.main,
-color:'white',
-textTransform:"uppercase",
-padding:'2px 17px !important'
-},
-chatNowSilverGrid:{
-    padding:'5px !important'
-},
-chatNowSilverDark:{
-  backgroundColor:theme.palette.secondary.dark2,
-  boxShadow:'3px 4px 5px rgba(109,110,112,1)'
-},
-overallBoxz:{
-    borderRadius: '5px',
-    width: '100% !important',
-    background: '#fff',
-    paddingBottom: '4px !important',
-    marginBottom: '10px !important',
-    boxShadow: 'unset',
-    border:'unset',
-    paddingTop: '12px !important',
-},
-normalcolorbackSilver:{
-    backgroundColor:theme.palette.primary.main,
-    border:'unset !important',
-"&:hover":{
-    backgroundColor:`${theme.palette.primary.main} !important`,
-    opacity:'0.9'
-}
-},
-normalcolorbackSilverCancel:{
-    "&:hover":{
-        backgroundColor:`${theme.palette.primary.main} !important`,
-        opacity:'0.9'
-    }   
-},
-quantity:{
-margin:'0px 0px 18px 0px'
-},
-labelSilverProductDetail:{
-  // marginLeft:107,
-  "& div": {
+    fontSize: "12px !important",
+    borderRadius: "0 !important",
+    height: "36px !important",
+    width: "100% !important",
+    color: "#fff",
+    backgroundColor: `${theme.palette.primary.main} !important`,
+    fontWeight: "400 !important",
+    lineHeight: "1.42857143",
+    padding: "0px !important",
+    textTransform: "none !important",
+  },
+  rings_tabs_silver: {
+    color: `${theme.palette.primary.main} !important`,
+  },
+  searchButtonSilver2: {
+    border: 0,
+    fontSize: "12px !important",
+    borderRadius: "0 !important",
+    height: "36px !important",
+    width: "100% !important",
+    color: "#fff",
+    backgroundColor: `${theme.palette.secondary.dark2} !important`,
+    fontWeight: "400 !important",
+    lineHeight: "1.42857143",
+    padding: "0px !important",
+    textTransform: "none !important",
+  },
+  colorNoreviews: {
+    color: theme.palette.secondary.main,
+  },
+  chatNowSilver: {
+    backgroundColor: theme.palette.secondary.main,
+    color: "white",
     textTransform: "uppercase",
-    color:theme.palette.secondary.main,
-    letterSpacing: "6px",
-    fontWeight: "bold",
-    [theme.breakpoints.up("sm")]: {
-      marginBottom: 10,
+    padding: "2px 17px !important",
+  },
+  chatNowSilverGrid: {
+    padding: "5px !important",
+  },
+  chatNowSilverDark: {
+    backgroundColor: theme.palette.secondary.dark2,
+    boxShadow: "3px 4px 5px rgba(109,110,112,1)",
+  },
+  overallBoxz: {
+    borderRadius: "5px",
+    width: "100% !important",
+    background: "#fff",
+    paddingBottom: "4px !important",
+    marginBottom: "10px !important",
+    boxShadow: "unset",
+    border: "unset",
+    paddingTop: "12px !important",
+  },
+  normalcolorbackSilver: {
+    backgroundColor: theme.palette.primary.main,
+    border: "unset !important",
+    "&:hover": {
+      backgroundColor: `${theme.palette.primary.main} !important`,
+      opacity: "0.9",
     },
   },
-},
-silverSubCarouselHead:{
-  padding:'15px 30px 30px 30px'
-},
-searchCheckSilver:{
-
-  [theme.breakpoints.down("sm")]: {
-    marginTop: 0,
-    paddingRight: 0,
-    paddingLeft: 0,
+  normalcolorbackSilverCancel: {
+    "&:hover": {
+      backgroundColor: `${theme.palette.primary.main} !important`,
+      opacity: "0.9",
+    },
   },
-},
-similarproductssmallScreen:{
-  textAlign: "center",
-  color:theme.palette.secondary.dark2,
-  letterSpacing: "4px",
-  fontSize: "20px !important",
-  fontWeight: "bold !important",
-  
-},
-reviewandratingsmallScreen:{
-  color:theme.palette.secondary.main,
-  letterSpacing: "4px",
-  fontSize: "16px !important",
-  fontWeight: "bold !important",
-  marginBottom: "10px !important",
-},
-rating__:{
-  '&::placeholder': {
-    color: `${theme.palette.secondary.light }`,
-    textTransform:"Uppercase",
-    fontSize:'12px',
-    letterSpacing:'1px',
-    fontWeight:500,
-    opacity: 1, /* Firefox */
-  }
-  ,
-  "&:-ms-input-placeholder": { /* Internet Explorer 10-11 */
-   color: `${theme.palette.secondary.light}`,
-   textTransform:"Uppercase",
-   letterSpacing:'1px',
-   fontWeight:500,
-   fontSize:'12px',
-  }
-  ,
-  "&::-ms-input-placeholder": { /* Microsoft Edge */
-   color: `${theme.palette.secondary.light}`,
-   textTransform:"Uppercase",
-   letterSpacing:'1px',
-   fontWeight:500,
-   fontSize:'12px',
-  }
-}
+  quantity: {
+    margin: "0px 0px 18px 0px",
+  },
+  labelSilverProductDetail: {
+    // marginLeft:107,
+    "& div": {
+      textTransform: "uppercase",
+      color: theme.palette.secondary.main,
+      letterSpacing: "6px",
+      fontWeight: "bold",
+      [theme.breakpoints.up("sm")]: {
+        marginBottom: 10,
+      },
+    },
+  },
+  silverSubCarouselHead: {
+    padding: "15px 30px 30px 30px",
+  },
+  searchCheckSilver: {
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 0,
+      paddingRight: 0,
+      paddingLeft: 0,
+    },
+  },
+  similarproductssmallScreen: {
+    textAlign: "center",
+    color: theme.palette.secondary.dark2,
+    letterSpacing: "4px",
+    fontSize: "20px !important",
+    fontWeight: "bold !important",
+  },
+  reviewandratingsmallScreen: {
+    color: theme.palette.secondary.main,
+    letterSpacing: "4px",
+    fontSize: "16px !important",
+    fontWeight: "bold !important",
+    marginBottom: "10px !important",
+  },
+  rating__: {
+    "&::placeholder": {
+      color: `${theme.palette.secondary.light}`,
+      textTransform: "Uppercase",
+      fontSize: "12px",
+      letterSpacing: "1px",
+      fontWeight: 500,
+      opacity: 1 /* Firefox */,
+    },
+    "&:-ms-input-placeholder": {
+      /* Internet Explorer 10-11 */ color: `${theme.palette.secondary.light}`,
+      textTransform: "Uppercase",
+      letterSpacing: "1px",
+      fontWeight: 500,
+      fontSize: "12px",
+    },
+    "&::-ms-input-placeholder": {
+      /* Microsoft Edge */ color: `${theme.palette.secondary.light}`,
+      textTransform: "Uppercase",
+      letterSpacing: "1px",
+      fontWeight: 500,
+      fontSize: "12px",
+    },
+  },
 });
 export default styles;

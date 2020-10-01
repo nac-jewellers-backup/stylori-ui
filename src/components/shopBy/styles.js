@@ -1,6 +1,6 @@
 const styles = (theme) => ({
   productCard: {
-    maxWidth: "200px",
+    // maxWidth: "200px",
     padding: "0px 10px",
   },
   shopbyProductCardGrid: {

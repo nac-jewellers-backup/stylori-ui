@@ -95,7 +95,8 @@ const ShopBy = (props) => {
           {props.shopByStyloriSilver.map((val) => {
             return  val.image.length > 0 ?
               <Grid item xs={3} className={classes.productCard}>
-                <ShopByCard label={val.label} image={val.image} settingSilver={settingSilver}/>
+                {/* showButton={true} height={400} */}
+                <ShopByCard label={val.label} image={val.image} settingSilver={settingSilver} />
               </Grid>
               : 
               null

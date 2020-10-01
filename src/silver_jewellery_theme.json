@@ -8,9 +8,9 @@
       "darkFade": "#515152fc"
     },
     "primary": {
-      "light": "rgb(6, 171, 159)",
-      "main": "rgba(218, 185, 122, 1)",
-      "dark": "rgb(6, 171, 159)",
+      "light": "rgb(58,69,120)",
+      "main": "rgb(58,69,120)",
+      "dark": "rgb(58,69,120)",
       "contrastText": "rgba(255, 255, 255, 1)"
     },
     "secondary": {
@@ -18,7 +18,14 @@
       "main": "rgb(6, 171, 159)",
       "dark": "rgb(6, 171, 159)",
       "contrastText": "rgba(255, 255, 255, 1)",
-      "dark2":"rgba(109,110,112,1)"
+      "dark2":"rgb(58,69,120)"
+    },
+    "ternary":{
+      "light": "rgb(230, 231, 232)",
+      "main": "rgb(166, 168, 171)",
+      "dark": "rgb(96, 97, 97)",
+      "contrastText": "rgba(255, 255, 255, 1)",
+      "dark2":"rgb(58,69,120)"
     },
     "error": {
       "light": "#e57373",
@@ -37,7 +44,7 @@
       "contrastText": "#fff"
     },
     "badgeColor":{
-      "background":"rgba(218, 185, 122, 1)"
+      "background":"rgb(6, 171, 159)"
     }
   }
 }

@@ -556,7 +556,14 @@ const Productprice = (
                           <Quantity data={props.data} /> 
                         </div>
                       </Grid> */}
-                      <Grid item xs={12}>
+                       {isSilver&&   <Grid item xs={12} style={{paddingBottom:10}}>
+                        <Grid item xs={3}>
+                          {/* <div onClick={handleLocalStorage.bind(this)}> */}
+                            <Button variant="contained" color="primary" class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart}`} >Add to Cart</Button>
+                          {/* </div> */}
+                        </Grid>
+                      </Grid>}
+                      <Grid container item xs={12}>
                         <Grid item xs={4}>
                           <div onClick={handleLocalStorage.bind(this)}>
                             <Buynowbutton
@@ -575,29 +582,24 @@ const Productprice = (
                             />
                           </div>
                         </Grid>
-                      </Grid>
-                      <Grid container item xs={12} className={classes.saveButtonsilverGrid}>
+                        <Grid container item xs={4} className={classes.saveButtonsilverGrid}>
                         <Grid
-                          item
+                     container
+                     item
+                     alignItems="center"
+                     justify="center"
                           xs={4}
                         >
-                          <Button
-                            variant="contained"
-                            color="primary"
-                            className={classes.silverbuttonSave}
-                          >
                             <Wishlist
                               sku={val.skuId}
                               productId={val.productId}
                               wishlist={wishlist}
                               globalContext={globalContext.Globalctx}
                               isSilver={isSilver}
-                              label="SAVE"
-                              labelAdded="SAVED"
-                              class={'save'}
+                              
                             />
-                          </Button>
                         </Grid>
+                     
                         <Grid item xs={6} className={classes.sharesilver}>
                           <div
                             className={`starts product-icons2 `}
@@ -663,6 +665,9 @@ const Productprice = (
                           </div>
                         </Grid>
                       </Grid>
+                    
+                      </Grid>
+                     
                     </Grid>
                   </Grid>
                 </Hidden>

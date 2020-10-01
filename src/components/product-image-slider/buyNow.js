@@ -303,7 +303,7 @@ const BuydetailsSilverdetailpage = (
               {/* <CommenDialog isOpen={state.modelOpen} content={`Verify selected product details before proceeding`} handleClose={canceldeletechecklist} handleSuccess={deletechecklists} negativeBtn="No" positiveBtn="Yes" title="Confirmation" /> */}
             </Grid>
 
-            <Grid
+            {/* <Grid
               item
               container
               alignContent="center"
@@ -393,6 +393,7 @@ const BuydetailsSilverdetailpage = (
                 </Grid>
               </Grid>
             </Grid>
+          */}
           </Grid>
         </>
       ))}

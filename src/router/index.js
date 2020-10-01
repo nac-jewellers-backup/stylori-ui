@@ -25,7 +25,7 @@ import Success from "../screens/Stylori/success";
 import Fail from "../screens/Stylori/fail";
 import Contactus from "../screens/Stylori/contactUs";
 import Careers from "../screens/Stylori/careers";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
@@ -48,13 +48,13 @@ let user_id = localStorage.getItem("user_id")
 browserHistory.listen((location, action) => {
   window.scrollTo(0, 0);
 });
-export const RouterApp = props => {
+export const RouterApp = (props) => {
   const { Globalctx } = React.useContext(GlobalContext);
   const func_location_silver = () => {
     var loc = window.location.pathname
       .split("/")[1]
       .split("-")
-      .filter(val => {
+      .filter((val) => {
         if (val === "silver") return val;
       });
     return loc[0];
@@ -63,113 +63,124 @@ export const RouterApp = props => {
   const paths = [
     "/:params1/:params2",
     "/:params1/:params2/:params3",
-    "/:params1/:params2/:params3/:params4"
+    "/:params1/:params2/:params3/:params4",
   ];
-  var loc_PD = window.location.pathname.split("/").filter(val => {
+  var loc_PD = window.location.pathname.split("/").filter((val) => {
     if (val === "silverjewellery") return val;
   });
   // condition()
   // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
   return (
     <>
-             
-    <Switch history={browserHistory}>
-      {/* <Redirect key="stylori-redirect" from="/" exact to={"/"} /> */}
-      <Route
-        key="HomePageStylori"
-        component={HomePageStylori}
-        exact
-        path={routes.HomePageStylori}
-      />
-      {/* <Route key="Silver" component={Silver} exact path={routes.Silver} /> */}
-      {/* <Route key="SilverCollection" component={SilverCollection} exact path={routes.styloriSilverCollections} /> */}
-      <Route key="Faqs" component={Faqs} exact path={routes.Faqs} />
-      <Route
-        key="ProductCare"
-        component={Faqs}
-        exact
-        path={routes.ProductCare}
-      />
-      <Route key="Shipping" component={Faqs} exact path={routes.Shipping} />
-      <Route
-        key="PrivacyPolicy"
-        component={Faqs}
-        exact
-        path={routes.PrivacyPolicy}
-      />
-      <Route
-        key="TermsConditions"
-        component={Faqs}
-        exact
-        path={routes.TermsConditions}
-      />
-      <Route key="Checkout" component={Checkout} exact path={routes.Checkout} />
-      <Route key="AboutUs" component={AboutPage} exact path={routes.AboutUs} />
-      <Route
-        key="ContactUs"
-        component={Contactus}
-        exact
-        path={routes.ContactUs}
-      />
-      <Route key="Careers" component={Careers} exact path={routes.Careers} />
-      <Route
-        key="forgotpassword"
-        component={ForgotPassword}
-        exact
-        path={routes.ForgotPassword}
-      />
-      <Route
-        key="resetPassword"
-        component={ResetPassword}
-        exact
-        path={`${routes.ResetPassword}/:id`}
-      />
-      <Route
-        key="ChangePassword"
-        component={ChangePassword}
-        exact
-        path={routes.ChangePassword}
-      />
-      <Route
-        key="paymenthidden"
-        component={PaymentHiddenForm}
-        exact
-        path={routes.paymenthidden}
-      />
-      <Route
-        key="paymentsuccess"
-        component={Success}
-        exact
-        path={`${routes.paymentsuccess}/:id`}
-      />
-      <Route
-        key="paymentfail"
-        component={Fail}
-        exact
-        path={`${routes.paymentfail}/:id`}
-      />
-      {props.location.pathname !== "/cart" &&
-        props.location.pathname !==
-          `/account${"-" + window.location.pathname.split("-")[1]}` &&
-        props.location.pathname !== "/registers" &&
-        props.location.pathname !== "/login" &&
-        props.location.pathname !== "/checkout" &&
-        props.location.pathname !== "/forgotpassword" &&
-        props.location.pathname !== "/careers" &&
-        props.location.pathname !== "/resetpassword/:id" &&
-        props.location.pathname !== "/changepassword" &&
-        props.location.pathname !== "/collections" &&
-        props.location.pathname !== "/education" &&
-        props.location.pathname !== "/stories" &&
-        props.location.pathname !== "/paymentfail" &&
-        props.location.pathname !== "/paymentsuccess/:id" &&
-        props.location.pathname !== "/contactus" &&
-        // Globalctx &&
-        // Globalctx.pathName === false && (
-          <Route exact={true} component={Stylori} path={"/:listingpage"} />
-        // )
+      <Switch history={browserHistory}>
+        {/* <Redirect key="stylori-redirect" from="/" exact to={"/"} /> */}
+        <Route
+          key="HomePageStylori"
+          component={HomePageStylori}
+          exact
+          path={routes.HomePageStylori}
+        />
+        {/* <Route key="Silver" component={Silver} exact path={routes.Silver} /> */}
+        {/* <Route key="SilverCollection" component={SilverCollection} exact path={routes.styloriSilverCollections} /> */}
+        <Route key="Faqs" component={Faqs} exact path={routes.Faqs} />
+        <Route
+          key="ProductCare"
+          component={Faqs}
+          exact
+          path={routes.ProductCare}
+        />
+        <Route key="Shipping" component={Faqs} exact path={routes.Shipping} />
+        <Route
+          key="PrivacyPolicy"
+          component={Faqs}
+          exact
+          path={routes.PrivacyPolicy}
+        />
+        <Route
+          key="TermsConditions"
+          component={Faqs}
+          exact
+          path={routes.TermsConditions}
+        />
+        <Route
+          key="Checkout"
+          component={Checkout}
+          exact
+          path={routes.Checkout}
+        />
+        <Route
+          key="AboutUs"
+          component={AboutPage}
+          exact
+          path={routes.AboutUs}
+        />
+        <Route
+          key="ContactUs"
+          component={Contactus}
+          exact
+          path={routes.ContactUs}
+        />
+        <Route key="Careers" component={Careers} exact path={routes.Careers} />
+        <Route
+          key="forgotpassword"
+          component={ForgotPassword}
+          exact
+          path={routes.ForgotPassword}
+        />
+        <Route
+          key="resetPassword"
+          component={ResetPassword}
+          exact
+          path={`${routes.ResetPassword}/:id`}
+        />
+        <Route
+          key="ChangePassword"
+          component={ChangePassword}
+          exact
+          path={routes.ChangePassword}
+        />
+        <Route
+          key="paymenthidden"
+          component={PaymentHiddenForm}
+          exact
+          path={routes.paymenthidden}
+        />
+        <Route
+          key="paymentsuccess"
+          component={Success}
+          exact
+          path={`${routes.paymentsuccess}/:id`}
+        />
+        <Route
+          key="paymentfail"
+          component={Fail}
+          exact
+          path={`${routes.paymentfail}/:id`}
+        />
+        {
+          props.location.pathname !== "/cart" &&
+            props.location.pathname !==
+              `/account${"-" + window.location.pathname.split("-")[1]}` &&
+            props.location.pathname !== "/registers" &&
+            props.location.pathname !== "/login" &&
+            props.location.pathname !== "/checkout" &&
+            props.location.pathname !== "/forgotpassword" &&
+            props.location.pathname !== "/careers" &&
+            props.location.pathname !== "/resetpassword/:id" &&
+            props.location.pathname !== "/changepassword" &&
+            props.location.pathname !== "/collections" &&
+            props.location.pathname !== "/education" &&
+            props.location.pathname !== "/stories" &&
+            props.location.pathname !== "/paymentfail" &&
+            props.location.pathname !== "/paymentsuccess/:id" &&
+            props.location.pathname !== "/contactus" && (
+              // Globalctx &&
+              // Globalctx.pathName === false && (
+              <Route exact={true} component={Stylori} path={"/:listingpage"} />
+            )
+          // )
         }
-      {/* {Globalctx &&
+        {/* {Globalctx &&
         Globalctx.pathName &&
         loc_PD.length !== "silverjewellery" && (
           <Route
@@ -178,70 +189,80 @@ export const RouterApp = props => {
             path={window.location.pathname}
           />
         )} */}
-      <Route key="sto" component={stories} exact path={routes.Stories} />
-      <Route key="sto" component={stories} exact path={routes.Education} />
-      <Route
-        key="Collection"
-        component={Collection}
-        exact
-        path={routes.Collection}
-      />
-      {props.location.pathname !== "/cart" &&
-        props.location.pathname !==
-          `/account${"-" + window.location.pathname.split("-")[1]}` &&
-        props.location.pathname !== "/registers" &&
-        props.location.pathname !== "/login" &&
-        props.location.pathname !== "/checkout" &&
-        props.location.pathname !== "/careers" &&
-        props.location.pathname !== "/forgotpassword" &&
-        props.location.pathname !== "/resetpassword/:id" &&
-        props.location.pathname !== "/changepassword" &&
-        props.location.pathname !== "/paymentfail" &&
-        props.location.pathname !== "/contactus" &&
-        props.location.pathname !== "/paymentsuccess/:id" && (
-          <Route exact={true} component={Stylori} path={"/:listingpage"} />
+        <Route key="sto" component={stories} exact path={routes.Stories} />
+        <Route key="sto" component={stories} exact path={routes.Education} />
+        <Route
+          key="Collection"
+          component={Collection}
+          exact
+          path={routes.Collection}
+        />
+        {props.location.pathname !== "/cart" &&
+          props.location.pathname !==
+            `/account${"-" + window.location.pathname.split("-")[1]}` &&
+          props.location.pathname !== "/registers" &&
+          props.location.pathname !== "/login" &&
+          props.location.pathname !== "/checkout" &&
+          props.location.pathname !== "/careers" &&
+          props.location.pathname !== "/forgotpassword" &&
+          props.location.pathname !== "/resetpassword/:id" &&
+          props.location.pathname !== "/changepassword" &&
+          props.location.pathname !== "/paymentfail" &&
+          props.location.pathname !== "/contactus" &&
+          props.location.pathname !== "/paymentsuccess/:id" && (
+            <Route exact={true} component={Stylori} path={"/:listingpage"} />
+          )}
+
+        {Globalctx && Globalctx.pathName && loc_PD.length > 0 ? (
+          <Route exact component={SilverProductDetail} path={paths} />
+        ) : (
+          <Route exact component={PricingPage} path={paths} />
+        )}
+        <Route key="cart" exact component={Cart} path={routes.Cart} />
+        <Route
+          key="Register"
+          component={Register}
+          exact
+          path={routes.Register}
+        />
+
+        {(localStorage.getItem("user_id") &&
+          Boolean(localStorage.getItem("gut_lg"))) ||
+        !localStorage.getItem("user_id") ? (
+          <Route
+            key="login"
+            component={UserLogin}
+            exact
+            path={routes.UserLogin}
+          />
+        ) : (
+          <Redirect key="stylori-redirect" from="/login" exact to={"/"} />
         )}
 
-      {Globalctx && Globalctx.pathName && loc_PD.length > 0 ? (
-        <Route exact component={SilverProductDetail} path={paths} />
-      ) : (
-        <Route exact component={PricingPage} path={paths} />
-      )}
-      <Route key="cart" exact component={Cart} path={routes.Cart} />
-      <Route key="Register" component={Register} exact path={routes.Register} />
-     
-      {(localStorage.getItem("user_id") &&
-Boolean(localStorage.getItem("gut_lg"))) || !localStorage.getItem("user_id")  ? (
-  <Route
-    key="login"
-    component={UserLogin}
-    exact
-    path={routes.UserLogin}
-  />
-) 
-: (
-  <Redirect key="stylori-redirect" from="/login" exact to={"/"} />
-)}
-     
-
-      {(localStorage.getItem("user_id") &&
-Boolean(localStorage.getItem("gut_lg"))) || !localStorage.getItem("user_id") ? (
-        <Redirect
-          key="stylori-redirect"
-          from={routes.Account}
+        {(localStorage.getItem("user_id") &&
+          Boolean(localStorage.getItem("gut_lg"))) ||
+        !localStorage.getItem("user_id") ? (
+          <Redirect
+            key="stylori-redirect"
+            from={routes.Account}
+            exact
+            to={"/login"}
+          />
+        ) : (
+          <Route
+            key="Account"
+            component={Account}
+            exact
+            path={routes.Account}
+          />
+        )}
+        <Route
+          key="registers"
+          component={UserRegister}
           exact
-          to={"/login"}
+          path={routes.UserRegister}
         />
-      ) : (
-        <Route key="Account" component={Account} exact path={routes.Account} />
-      )}
-      <Route
-        key="registers"
-        component={UserRegister}
-        exact
-        path={routes.UserRegister}
-      />
-    </Switch>
+      </Switch>
     </>
   );
 };

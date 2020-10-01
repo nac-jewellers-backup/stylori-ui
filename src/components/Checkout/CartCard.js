@@ -254,7 +254,7 @@ class Checkoutcard extends React.Component {
                                         {val.namedetail !== undefined && val.namedetail.map(val => (
                                             dataval.fadeImages.map(im_ =>
                                              {
-                                                 debugger
+                                                 
                                                  return(
                                                     <>
                                                     {

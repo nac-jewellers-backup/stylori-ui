@@ -80,7 +80,7 @@ class Component extends React.Component {
 
 } 
   handleFunc = async(imgs) =>{
-    debugger
+    
     // imgs.replace((`${this.props.size*2}X${this.props.size*2}`), "2400X2400")
     return await this.check_image_exists_in_server(imgs) ? imgs : imgs.replace('1000X1000', '2400X2400')
   }
@@ -91,7 +91,7 @@ class Component extends React.Component {
     img.src = imageSrc;
   }
    imageOnError = async(event,url) => {
-    debugger
+    
     const _event  = event && event.target ? event.target : event.currentTarget  
     
   const check_image_exists_in_server =  (url) =>{
@@ -130,7 +130,7 @@ class Component extends React.Component {
   renderFadeImages =  () => {
 
     let { video, currentImage } = this.props;
-    debugger
+    
     return  this.props.fadeImages
       ? this.props.fadeImages.map((imgs) => (
           <div
@@ -166,7 +166,7 @@ class Component extends React.Component {
                 alt="..."
 
                 onError={(e)=>{
-                  debugger
+                  
                   this.imageOnError(e,imgs)
                   // let _size = this.props.size ? this.props.size*2 : this.props.cartcard
                   // if(_size) this.target.src=imgs.replace(`${_size}X${_size}`, '2400X2400')

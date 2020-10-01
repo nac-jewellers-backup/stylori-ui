@@ -21,7 +21,8 @@ const useStyles = makeStyles(theme=>({
     boxShadow:'6px 7px 6px rgba(208, 210, 211, 1)'
   },
   media: {
-    height: 160,
+    height:160,
+    // height:(props)=> (props.height ? props.height : 160),
   },
   label:{
     display:'flex',

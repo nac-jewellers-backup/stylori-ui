@@ -272,11 +272,18 @@ class ProductDetail extends Component {
                     <PriceBuynow data={this.props.data} isSilver={isSilver} />
                   </div>
                 )}
+                  {isSilver &&<Grid
+                item
+                xs={12}
+                style={{ marginBottom: "20px", marginTop: "20px" }}
+              >
+                <ProductDetails data={this.props.data} isSilver={isSilver} />
+              </Grid>}
               </Grid>
             </Grid>
           </div>
 
-          <div
+          {!isSilver && ( <div
             style={{
               background: isSilver ? "unset" : "whitesmoke",
               maxWidth: "1600px",
@@ -304,7 +311,7 @@ class ProductDetail extends Component {
               )}
               <br />
             </Grid>
-          </div>
+          </div>)}
         {isSilver ?
           <div    style={{
               
