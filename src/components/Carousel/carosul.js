@@ -259,14 +259,14 @@ class Component extends React.Component {
         hoverlist &&
         hoverlist.map((val) => {
           return isSilver ? (
-            <div className={"subslider-carousel" + hover ? `hovereffect hovereffect-silver ` : ""} >
+            <div className={"subslider-carousel" + hover ? `hovereffect-silver hovereffect  ` : ""} >
               <img
                 src={val.img}
                 className="subslider-carousel-img img-responsive" 
                 alt=""
                 onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
               />
-              <div className="overlay1">
+              <div className="overlay1silver" >
                 <div
                   style={{
                     display: "flex",
@@ -301,12 +301,13 @@ class Component extends React.Component {
                       padding:'5px 10px',
                       marginBottom:'10px',
                       boxShadow:'rgb(166, 168, 171) 3px 3px 3px',
-                      minWidth:'100px',
+                      // minWidth:'100px',
                       fontSize:'12px',
-                      letterSpacing:1
+                      // letterSpacing:1
                     }}
                   >
-                   <b>ADD TO CART</b>
+                   {/* <b>ADD TO CART</b> */}
+                   <i class="fa fa-shopping-cart  Component-iconFafa-10" style={{fontSize: 20,marginLeft:0}}></i>
                   </div>
                   </a>
                   <div
@@ -315,7 +316,7 @@ class Component extends React.Component {
                       color: "rgba(166, 168, 171, 1)",
                       padding:'5px 10px',
                       boxShadow:'rgb(166, 168, 171) 3px 3px 3px',
-                      minWidth:'100px',
+                      // minWidth:'100px',
                       fontSize:'12px',
                       letterSpacing:1
                     }}
@@ -326,9 +327,9 @@ class Component extends React.Component {
                       productId={val.productId}
                       wishlist={this.props.wishlist}
                       globalContext={globalContext}
-                      isSilver={isSilver}
-                      label = {<b>SAVE</b>}
-                      labelAdded = "SAVED"
+                      // isSilver={isSilver}
+                      // label = {<b>SAVE</b>}
+                      // labelAdded = "SAVED"
                       class="similarProducts"
                     />{" "}
                   </div>

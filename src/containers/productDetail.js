@@ -27,7 +27,7 @@ import { CartContext } from "context";
 import { GlobalContext } from "context";
 import SilverProductPrice from "components/product-image-slider/silverProductPrice";
 import ShopBy from "components/shopBy";
-import ProductModal from "../components/SilverComponents/ProductModal"
+import ProductModal from "../components/SilverComponents/ProductModal";
 import { shopByStyloriSilver, allSeoPriorities } from "queries/productdetail";
 import ProductTitle from "components/SilverComponents/ProductTitle";
 import Quantity from "../components/quantity";
@@ -126,6 +126,7 @@ class ProductDetail extends Component {
       </Helmet>
       // :
       // null
+      /*:*/
      /*:*/);
   };
   componentDidUpdate(prevProps, prevState) {
@@ -216,23 +217,23 @@ class ProductDetail extends Component {
             <Grid container item xs={12} style={{ marginTop: "30px" }}></Grid>
           )} */}
 
-<Grid
-              Container
-              spacing={12}
-              style={{ maxWidth: "1600px", margin: "auto" }}
-            >
-              <Grid item xs={12}>
-                <div className="pricing-breadcrums-media">
-                  <CustomSeparator
-                    list="pricing-loctn"
-                    classsubhed="pricing-loctn-head"
-                    data={data_json}
-                    listSilver="pricing-loctn-silver"
-                    isSilver={isSilver}
-                  />
-                </div>
-              </Grid>
+          <Grid
+            Container
+            spacing={12}
+            style={{ maxWidth: "1600px", margin: "auto" }}
+          >
+            <Grid item xs={12}>
+              <div className="pricing-breadcrums-media">
+                <CustomSeparator
+                  list="pricing-loctn"
+                  classsubhed="pricing-loctn-head"
+                  data={data_json}
+                  listSilver="pricing-loctn-silver"
+                  isSilver={isSilver}
+                />
+              </div>
             </Grid>
+          </Grid>
 
           <div
             className="pricing-imgzom-media"
@@ -272,105 +273,126 @@ class ProductDetail extends Component {
                     <PriceBuynow data={this.props.data} isSilver={isSilver} />
                   </div>
                 )}
-                  {isSilver &&<Grid
-                item
-                xs={12}
-                style={{ marginBottom: "20px", marginTop: "20px" }}
-              >
-                <ProductDetails data={this.props.data} isSilver={isSilver} />
-              </Grid>}
+                {isSilver && (
+                  <Grid
+                    item
+                    xs={12}
+                    style={{ marginBottom: "20px", marginTop: "20px" }}
+                  >
+                    <ProductDetails
+                      data={this.props.data}
+                      isSilver={isSilver}
+                    />
+                  </Grid>
+                )}
               </Grid>
             </Grid>
           </div>
 
-          {!isSilver && ( <div
-            style={{
-              background: isSilver ? "unset" : "whitesmoke",
-              maxWidth: "1600px",
-              margin: "auto",
-            }}
-            className="pricing-product-media"
-          >
-            <Grid container spacing={12}>
-              <Grid
-                item
-                xs={6}
-                style={{ marginBottom: "20px", marginTop: "20px" }}
-              >
-                <ProductDetails data={this.props.data} isSilver={isSilver} />
-              </Grid>
-              {!isSilver && (
+          {!isSilver && (
+            <div
+              style={{
+                background: isSilver ? "unset" : "whitesmoke",
+                maxWidth: "1600px",
+                margin: "auto",
+              }}
+              className="pricing-product-media"
+            >
+              <Grid container spacing={12}>
                 <Grid
                   item
                   xs={6}
                   style={{ marginBottom: "20px", marginTop: "20px" }}
                 >
-                  <PriceCertification data={this.props.data} />
-                  <Request data={this.props.data} />
+                  <ProductDetails data={this.props.data} isSilver={isSilver} />
                 </Grid>
-              )}
-              <br />
-            </Grid>
-          </div>)}
-        {isSilver ?
-          <div    style={{
-              
-              maxWidth: "1600px",
-              margin: "auto",
-              paddingLeft:'5%',
-              paddingRight:"5%" 
-            }}>
-<Sublistcarousel data={this.props.data} isSilver={isSilver} />
-          </div>
-        :
-        <Sublistcarousel data={this.props.data} isSilver={isSilver} />  
-        }
-          {isSilver && 
-            <div    style={{
-              
-              maxWidth: "1600px",
-              margin: "auto",
-              paddingLeft:'5%',
-              paddingRight:"5%" 
-            }}>
-<ShopBy shopByStyloriSilver={this.props.shopByStyloriSilver}/>
-          </div>
-  }
-          {isSilver?
-             <div    style={{
-              
-              maxWidth: "1600px",
-              margin: "auto",
-             
-            }}>
-<RatingForm
-          // 0 0 0 
-            data={this.props.data}
-            clear_rating={this.state.clear}
-            clear_rating_onchange={clear_rating}
-            isSilver={isSilver}
-          />
-          </div>
-          :
-          <RatingForm
-          // 0 0 0 
-            data={this.props.data}
-            clear_rating={this.state.clear}
-            clear_rating_onchange={clear_rating}
-            isSilver={isSilver}
-          />
-            }
-         {isSilver?
-             <div    style={{
-              
-              maxWidth: "1600px",
-              margin: "auto",
-             
-            }}>
-<CustomerReviews rating={this.props.rating} isSilver={isSilver} />
-          </div>
-          :
-          <CustomerReviews rating={this.props.rating} isSilver={isSilver} />}
+                {!isSilver && (
+                  <Grid
+                    item
+                    xs={6}
+                    style={{ marginBottom: "20px", marginTop: "20px" }}
+                  >
+                    <PriceCertification data={this.props.data} />
+                    <Request data={this.props.data} />
+                  </Grid>
+                )}
+                <br />
+              </Grid>
+            </div>
+          )}
+          {isSilver && (
+            <div
+              style={{
+                maxWidth: "1600px",
+                margin: "auto",
+                paddingLeft: "5%",
+                paddingRight: "5%",
+              }}
+            >
+              <Sublistcarousel data={this.props.data} isSilver={isSilver} customLimit={4} label="BUY TOGETHER"/>
+            </div>)}
+          {isSilver ? (
+            <div
+              style={{
+                maxWidth: "1600px",
+                margin: "auto",
+                paddingLeft: "5%",
+                paddingRight: "5%",
+              }}
+            >
+              <Sublistcarousel data={this.props.data} isSilver={isSilver} customLimit={4}/>
+            </div>
+          ) : (
+            <Sublistcarousel data={this.props.data} isSilver={isSilver} />
+          )}
+          {isSilver && (
+            <div
+              style={{
+                maxWidth: "1600px",
+                margin: "auto",
+                paddingLeft: "5%",
+                paddingRight: "5%",
+              }}
+            >
+              <ShopBy shopByStyloriSilver={this.props.shopByStyloriSilver} />
+            </div>
+          )}
+          {isSilver ? (
+            <div
+              style={{
+                maxWidth: "1600px",
+                margin: "auto",
+              }}
+            >
+              <RatingForm
+                // 0 0 0
+                data={this.props.data}
+                clear_rating={this.state.clear}
+                clear_rating_onchange={clear_rating}
+                isSilver={isSilver}
+              />
+            </div>
+          ) : (
+            <RatingForm
+              // 0 0 0
+              data={this.props.data}
+              clear_rating={this.state.clear}
+              clear_rating_onchange={clear_rating}
+              isSilver={isSilver}
+            />
+          )}
+          {isSilver ? (
+            <div
+              style={{
+                maxWidth: "1600px",
+                margin: "auto",
+              }}
+            >
+              <CustomerReviews rating={this.props.rating} isSilver={isSilver} />
+            </div>
+          ) : (
+            <CustomerReviews rating={this.props.rating} isSilver={isSilver} />
+          )}
 
           <Grid item xs={12}>
             <Footer />
@@ -384,7 +406,7 @@ class ProductDetail extends Component {
           {/* </Grid> */}
 
           <Grid item xs={12}>
-            <PriceBuynow 
+            <PriceBuynow
               data={this.props.data}
               wishlist={this.props.wishlistdata}
               isSilver={isSilver}
@@ -400,29 +422,40 @@ class ProductDetail extends Component {
               isSilver={isSilver}
             />
           </Grid>
-               
-         { !isSilver && <Grid item xs={12}>
-            <PriceCertification data={this.props.data} isSilver={isSilver}/>
-          </Grid>}
-          {
-            !isSilver && <Grid item xs={12}>
-            <Request data={this.props.data} />
-          </Grid>}
+
+          {!isSilver && (
+            <Grid item xs={12}>
+              <PriceCertification data={this.props.data} isSilver={isSilver} />
+            </Grid>
+          )}
+          {!isSilver && (
+            <Grid item xs={12}>
+              <Request data={this.props.data} />
+            </Grid>
+          )}
 
           <Grid item xs={12}>
             <Sublistcarousel data={this.props.data} isSilver={isSilver} />
           </Grid>
 
-         
-            <Grid item xs={12}>
-            {isSilver && <Container>
-              <div style={{marginTop:20,marginBottom:10}}>
-              <ProductTitle title={'SHOP BY TYPE'} class={['silverPDPage', 'silverPDPagehrline']} isSilver={isSilver}/>
-              </div>
-              
-              <ProductModal shopByStyloriSilver={this.props.shopByStyloriSilver} allSeo={this.props.allSeo}/>
-              </Container>}
-            </Grid>
+          <Grid item xs={12}>
+            {isSilver && (
+              <Container>
+                <div style={{ marginTop: 20, marginBottom: 10 }}>
+                  <ProductTitle
+                    title={"SHOP BY TYPE"}
+                    class={["silverPDPage", "silverPDPagehrline"]}
+                    isSilver={isSilver}
+                  />
+                </div>
+
+                <ProductModal
+                  shopByStyloriSilver={this.props.shopByStyloriSilver}
+                  allSeo={this.props.allSeo}
+                />
+              </Container>
+            )}
+          </Grid>
           <Grid item xs={12}>
             <RatingForm
               data={this.props.data}
@@ -449,22 +482,23 @@ const Components = (props) => {
   } = React.useContext(CartContext);
 
   // ONLY SILVER PRODUCT DETAIL PAGE
-  let _shopsProducts = []
-  const [state, setState] = React.useState({shopByData:[], allSeo:{}})
+  let _shopsProducts = [];
+  const [state, setState] = React.useState({ shopByData: [], allSeo: {} });
   const _shopsProductss = (val) => {
-  
     // _shopsProducts = [
     //   {
     //     label: val.label,
     //     image:val.images[0].imageUrl,
     //   },
-    
+
     // ];
-     _shopsProducts = Object.keys(val).map((data)=>{return {label:val[data].label, image:val[data].images}})
+    _shopsProducts = Object.keys(val).map((data) => {
+      return { label: val[data].label, image: val[data].images };
+    });
     // setState({...state,shopByData:_shopsProducts})
   };
-  
-  const _queryResultsValidator = (_result) => { 
+
+  const _queryResultsValidator = (_result) => {
     console.log(_result, "_result");
     let _keys = Object.keys(_result);
     var _obj = {};
@@ -472,19 +506,19 @@ const Components = (props) => {
       var a = _result[val].nodes.map((val) => {
         return val.productListByProductSku.productImagesByProductId.nodes;
       });
-  
+
       let _arr = [];
       a.map((val1) => {
         val1.map((val2) => {
           if (val2.imagePosition === 2) return _arr.push(val2);
         });
       });
-      _obj[val] ={label:val,images:_arr};
+      _obj[val] = { label: val, images: _arr };
     });
     console.log(_obj, "aaa");
-    _shopsProductss(_obj)
+    _shopsProductss(_obj);
   };
-  
+
   const _fetchProducts = () => {
     fetch(`${API_URL}/graphql`, {
       method: "POST",
@@ -493,63 +527,79 @@ const Components = (props) => {
         query: `${shopByStyloriSilver([
           "Earrings",
           "Pendants",
-          "Rings", 
+          "Rings",
           "Bracelets",
-          "Bangles"
+          "Bangles",
         ])}`,
       }),
     })
       .then((res) => res.json())
-      .then(async(res) => {
+      .then(async (res) => {
         _queryResultsValidator(res.data);
-        await  fetch(`${API_URL}/graphql`, {
-          method: 'post',
+        await fetch(`${API_URL}/graphql`, {
+          method: "post",
           headers: {
-              'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
-  
+
           body: JSON.stringify({
-              query: allSeoPriorities([`"Earrings"`,
+            query: allSeoPriorities([
+              `"Earrings"`,
               `"Pendants"`,
-              `"Rings"`, 
+              `"Rings"`,
               `"Bracelets"`,
-              `"Bangles"`])
-          })
-      })
-      .then((res) => res.json())
-      .then(res=>{
-        const  func = () =>{
-              var obj = {}
-              res.data.allSeoUrlPriorities.nodes.map(val=>{
-              obj[val.attributeValue] = {}
-              obj[val.attributeValue]["seoText"] = val.seoText ? val.seoText : " "
-              obj[val.attributeValue]["seoUrl"] = val.seoUrl ? val.seoUrl : " "
-              })
-              return obj
-              }
-              // let _data =func()
-              state['allSeo'] = func()
-        
-        setState({...state,shopByData:_shopsProducts,allSeo:state.allSeo})
-        
-      })
+              `"Bangles"`,
+            ]),
+          }),
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            const func = () => {
+              var obj = {};
+              res.data.allSeoUrlPriorities.nodes.map((val) => {
+                obj[val.attributeValue] = {};
+                obj[val.attributeValue]["seoText"] = val.seoText
+                  ? val.seoText
+                  : " ";
+                obj[val.attributeValue]["seoUrl"] = val.seoUrl
+                  ? val.seoUrl
+                  : " ";
+              });
+              return obj;
+            };
+            // let _data =func()
+            state["allSeo"] = func();
+
+            setState({
+              ...state,
+              shopByData: _shopsProducts,
+              allSeo: state.allSeo,
+            });
+          });
       });
   };
-  
-  
-    React.useEffect(() => {
-      _fetchProducts();
-    }, []);
 
-  // 
+  React.useEffect(() => {
+    _fetchProducts();
+  }, []);
 
-console.log(state.shopByData,"-------------+*/-")
+  //
+
+  console.log(state.shopByData, "-------------+*/-");
 
   const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
   const {
-    ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating, filters:{quantity} },
+    ProductDetailCtx: {
+      data,
+      loading,
+      error,
+      likedatas,
+      viewedddatas,
+      rating,
+      filters: { quantity },
+    },
   } = React.useContext(ProductDetailContext);
-  console.log(quantity,"product detail quantity")
+  console.log(quantity, "product detail quantity");
   const _silverArr = [];
   React.useEffect(() => {
     if (data && !loading) {
@@ -603,7 +653,7 @@ console.log(state.shopByData,"-------------+*/-")
         allorderdata={allorderdata}
         wishlistdata={wishlistdata}
         Globalctx={Globalctx}
-        shopByStyloriSilver = {state.shopByData}
+        shopByStyloriSilver={state.shopByData}
         allSeo={state.allSeo}
       />
     );

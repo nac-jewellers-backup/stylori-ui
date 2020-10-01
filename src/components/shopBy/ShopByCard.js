@@ -16,13 +16,13 @@ import {
 import { API_URL, CDN_URL } from "../../config";
 const useStyles = makeStyles(theme=>({
   root: {
-    maxWidth: 'auto',
+    maxWidth: (props) => (props.width ? props.width : 'auto'),
     borderRadius:'unset',
     boxShadow:'6px 7px 6px rgba(208, 210, 211, 1)'
   },
   media: {
-    height:160,
-    // height:(props)=> (props.height ? props.height : 160),
+    // height:160,
+    height:(props)=> (props.height ? props.height : 160),
   },
   label:{
     display:'flex',
@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme=>({
 
 export default function MediaCard(props) {
   
-  const classes = useStyles();
+  const classes = useStyles(props);
 
   return (
     <Card className={classes.root}>
@@ -74,14 +74,14 @@ export default function MediaCard(props) {
             ))}
           </Slideshow>
       </CardActionArea>
-      <a href={`/silver-${props.label.toLowerCase()}-jewellery`} style={{ width: "100%", textDecoration:'none' }}>
+      {!props.showtitle && <a href={`/silver-${props.label.toLowerCase()}-jewellery`} style={{ width: "100%", textDecoration:'none' }}>
       <CardActions className={classes.label}>
       
         <Button size="small" color="primary">
         <b>{props.label}</b>
         </Button>
       </CardActions>
-      </a>
+      </a>}
     </Card>
   );
 }

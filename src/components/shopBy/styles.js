@@ -1,7 +1,7 @@
 const styles = (theme) => ({
   productCard: {
     // maxWidth: "200px",
-    padding: "0px 10px",
+    padding: "10px 10px",
   },
   shopbyProductCardGrid: {
     justifyContent: "space-around",

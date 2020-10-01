@@ -85,8 +85,8 @@ const ShopBy = (props) => {
   const { classes } = props;
   return (
     // <Container style={{ padding: "0px 17px" }} maxWidth="lg">
-      <Grid container item xs={12} justify="space-around">
-        <Grid container item xs={12} className={classes.shopByLabel}>
+      <Grid container xs={12} justify="space-around">
+        <Grid container item xs={12} className={classes.shopByLabel} justify="center">
           <Typography variant="body1" component="div">
             Shop by
           </Typography>
@@ -94,9 +94,9 @@ const ShopBy = (props) => {
         <Grid container item xs={12} className={classes.shopbyProductCardGrid}>
           {props.shopByStyloriSilver.map((val) => {
             return  val.image.length > 0 ?
-              <Grid item xs={3} className={classes.productCard}>
+              <Grid item xs={5} className={classes.productCard}>
                 {/* showButton={true} height={400} */}
-                <ShopByCard label={val.label} image={val.image} settingSilver={settingSilver} />
+                <ShopByCard label={val.label} image={val.image} settingSilver={settingSilver} height={400}  showtitle={true}/>
               </Grid>
               : 
               null

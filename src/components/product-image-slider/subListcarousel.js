@@ -115,7 +115,7 @@ class Sublistcarousel extends React.Component {
   render() {
     const limit = 4;
     const { expanded, expanded1 } = this.state;
-    const { data, classes } = this.props;
+    const { data, classes, customLimit } = this.props;
     const mobiledataCarousel = {
       dots: false,
       infinite: true,
@@ -149,13 +149,15 @@ class Sublistcarousel extends React.Component {
      
       // fade: true,
       slidesToShow:
-        this.state.dataToShow === "YouMayLike"
+        customLimit ? customLimit :this.state.dataToShow === "YouMayLike"
           ? data && data[0] && data[0].fadeImageSublist.length > 4
             ? limit
             : data && data[0] && data[0].fadeImageSublist.length
           : data && data[0] && data[0].fadeImageSublistRecentlyViewed.length > 4
           ? limit
-          : data && data[0] && data[0].fadeImageSublistRecentlyViewed.length,
+          : data && data[0] && data[0].fadeImageSublistRecentlyViewed.length
+        
+          ,
       slidesToScroll: 4,
     };
     const dataCarousel = {
@@ -168,7 +170,7 @@ class Sublistcarousel extends React.Component {
      
       // fade: true,
       slidesToShow:
-        this.state.dataToShow === "YouMayLike"
+      customLimit ? customLimit :this.state.dataToShow === "YouMayLike"
           ? data && data[0] && data[0].fadeImageSublist.length > 4
             ? limit
             : data && data[0] && data[0].fadeImageSublist.length
@@ -237,9 +239,9 @@ class Sublistcarousel extends React.Component {
            style={{padding:"0px 0px 0px 12px"}}
          >
            {/* <Grid item xs={10} className={`${'like-page'} ${this.state.dataToShow === 'YouMayLike' ? 'recenetly-like-page-active' : ''}`} ><span onClick={() => this.setState({ dataToShow: 'YouMayLike' })}>You may also like</span></Grid> */}
-           <Grid container item xs={12}>
+           <Grid container item xs={12} justify="center">
              <Typography variant="body1" component="div">
-               Similar Products
+               {this.props.label ? this.props.label : 'Similar Products'}
              </Typography>
            </Grid>
          </Grid>
@@ -304,7 +306,8 @@ class Sublistcarousel extends React.Component {
            <Grid container style={{ width: "100%" }}>
            
              <Grid item style={{ width: "100%" }}>
-               <Slideshow
+               <Slideshow 
+             
                  sliderRef={this.slider}
                  class="subslider-carousel"
                  isSilver={_isSilver}
