@@ -133,7 +133,7 @@ var _keysCollections = Object.keys(data).filter(val=>{
             <Grid
           //  container
             item
-            xs={12}
+            xs={props?.layout ? props.layout : 12}
             sm={5}
             md={5}
             lg={5} 
@@ -195,6 +195,8 @@ var _keysCollections = Object.keys(data).filter(val=>{
                   
                 />
               )}
+           
+           {!Boolean(props.isShowDetails)&&
               <Grid
                 container
                 item
@@ -230,6 +232,7 @@ var _keysCollections = Object.keys(data).filter(val=>{
                   
                 </Grid>
               </Grid>
+        }
             </Hidden>
           
             {/* </Grid> */}

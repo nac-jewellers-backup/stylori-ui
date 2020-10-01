@@ -310,7 +310,8 @@
 
 @media only screen and (max-width: 600px) {
   .hovereffect-silver{
-    width: 70% !important;
-  margin-left: 15% !important;
+    /* width: 70% !important;
+  margin-left: 15% !important; */
+  height: 170px !important;
   }
 }

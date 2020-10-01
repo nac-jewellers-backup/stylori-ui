@@ -31,6 +31,14 @@ import ProductModal from "../components/SilverComponents/ProductModal";
 import { shopByStyloriSilver, allSeoPriorities } from "queries/productdetail";
 import ProductTitle from "components/SilverComponents/ProductTitle";
 import Quantity from "../components/quantity";
+import { Slideshow } from "components";
+import {Diversestyles} from '../components/product-image-slider/Gagetstylori/Diversestyles-pink'
+import {Certified} from '../components/product-image-slider/Gagetstylori/Certified'
+import {Fromthehouseofnac} from '../components/product-image-slider/Gagetstylori/Fromthehouseofnac-pink'
+import {Hypoallergenic} from '../components/product-image-slider/Gagetstylori/Hypoallergenic-pink'
+import {Securepayments} from '../components/product-image-slider/Gagetstylori/Securepayments-pink'
+import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 // import {Helmet} from "react-helmet";
 class ProductDetail extends Component {
   constructor(props) {
@@ -177,6 +185,17 @@ class ProductDetail extends Component {
     };
     const { Globalctx } = this.props;
     const isSilver = Globalctx.pathName ? true : false;
+    const mobiledataCarousel = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: false,
+      autoplaySpeed: 2000,
+      prevArrow: <ArrowLeftIcon style={{ fill:"rgb(6, 171, 159)" ,fontSize: "1.7rem"}}/>,
+      nextArrow: <ArrowRightIcon style={{ fill:"rgb(6, 171, 159)" ,fontSize: "1.7rem"}}/>,
+    };
     return (
       <div>
         {/* <div>
@@ -443,6 +462,31 @@ class ProductDetail extends Component {
           <Grid item xs={12}>
             <Sublistcarousel data={this.props.data} isSilver={isSilver} label="BUY TOGETHER" customLimit={4}/>
           </Grid>
+          {
+            isSilver &&
+            <Container>
+              <Container>
+           <Grid container xs={12}>
+                        <Grid
+                          item
+                          xs={12}
+                          alignItems="center"
+                          style={{ paddingTop: "10%" }}
+                        >
+             
+            <Slideshow dataCarousel={mobiledataCarousel}>
+              <Certified color="rgb(6, 171, 159)"/>
+              <Diversestyles color="rgb(6, 171, 159)"/>
+              <Hypoallergenic color="rgb(6, 171, 159)"/>
+              <Fromthehouseofnac color="rgb(6, 171, 159)"/>
+              <Securepayments color="rgb(6, 171, 159)"/>
+              </Slideshow>
+              
+              </Grid>
+              </Grid>
+              </Container>
+              </Container>
+          }
           <Grid item xs={12}>
             {isSilver && (
               <Container>
@@ -457,6 +501,8 @@ class ProductDetail extends Component {
                 <ProductModal
                   shopByStyloriSilver={this.props.shopByStyloriSilver}
                   allSeo={this.props.allSeo}
+                  isShowDetails={true}
+                  layout={6}
                 />
               </Container>
             )}
