@@ -16,7 +16,7 @@ const initialCtx = {
     setratingcounts: () => { },
     setratingcountsclear: () => { },
 }
-export const ProductDetailContext = React.createContext(initialCtx);
+export const ProductDetailContext = React.createContext(initialCtx); 
 export const ProductDetailConsumer = ProductDetailContext.Consumer;
 export const TabsProvider = (props) => {
 
