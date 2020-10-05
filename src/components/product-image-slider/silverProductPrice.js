@@ -551,17 +551,20 @@ const Productprice = (
                        {isSilver&&   <Grid item xs={12} style={{paddingBottom:10}}>
                         <Grid item xs={3}>
                           {/* <div onClick={handleLocalStorage.bind(this)}> */}
-                            <Button variant="contained" color="primary" class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart}`} >Add to Cart</Button>
+                            <Button variant="contained" color="primary" class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart}`} ><i style={{ fontSize: "14px",paddingRight:5 }} class={`fa fa-shopping-cart`}></i> Add to Cart</Button>
                           {/* </div> */}
                         </Grid>
                       </Grid>}
                       <Grid container item xs={12}>
                         <Grid item xs={4}>
-                          <div onClick={handleLocalStorage.bind(this)}>
+                        <Button variant="contained" color="primary" class={`${classes.buynowButtonSilver} ${classes.buttonsilver}`} >BUY NOW</Button>
+                          <div onClick={handleLocalStorage.bind(this)} style={{display:"none"}}>
                             <Buynowbutton
                               sku={data[0].skuId}
                               class={`${classes.buynowButtonSilver} ${classes.buttonsilver}`}
                               button="buynow-btn-cont"
+                              id="silverButton"
+                              
                             />
                             <CommenDialog
                               isOpen={state.modelOpen}

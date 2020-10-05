@@ -6,6 +6,11 @@ const styles = (theme) => ({
   shopbyProductCardGrid: {
     justifyContent: "space-around",
   },
+  silverLabel:{
+    "& div": {
+    color:`${theme.palette.primary.main} !important`,
+    }
+  },
   shopByLabel: {
       margin:"10px 0px 30px 0px",
     "& div": {

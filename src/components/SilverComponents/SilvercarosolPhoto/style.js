@@ -15,13 +15,19 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   seoText: {
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: theme.palette.secondary.light,
     justifyContent: "center",
-    color:theme.palette.secondary.dark2,
+    color:'white',
     display: "flex",
   },
   seoTextNobackground:{
     backgroundColor: 'unset !important',
     color:theme.palette.secondary.dark2
+  },
+  backgroundImageColor:{
+    background:"rgb(6, 171, 159)",
+    [theme.breakpoints.down('sm')]:{
+      background:'transparent'
+    }
   }
 }));

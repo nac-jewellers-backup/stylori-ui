@@ -80,7 +80,7 @@ export const RouterApp = (props) => {
           exact
           path={routes.HomePageStylori}
         />
-        {/* <Route key="Silver" component={Silver} exact path={routes.Silver} /> */}
+        <Route key="Silver" component={Silver} exact path={routes.Silver} />
         {/* <Route key="SilverCollection" component={SilverCollection} exact path={routes.styloriSilverCollections} /> */}
         <Route key="Faqs" component={Faqs} exact path={routes.Faqs} />
         <Route
@@ -171,6 +171,7 @@ export const RouterApp = (props) => {
             props.location.pathname !== "/collections" &&
             props.location.pathname !== "/education" &&
             props.location.pathname !== "/stories" &&
+            props.location.pathname !== "/styloriSilver" &&
             props.location.pathname !== "/paymentfail" &&
             props.location.pathname !== "/paymentsuccess/:id" &&
             props.location.pathname !== "/contactus" && (
@@ -209,6 +210,7 @@ export const RouterApp = (props) => {
           props.location.pathname !== "/changepassword" &&
           props.location.pathname !== "/paymentfail" &&
           props.location.pathname !== "/contactus" &&
+          props.location.pathname !== "/styloriSilver" &&
           props.location.pathname !== "/paymentsuccess/:id" && (
             <Route exact={true} component={Stylori} path={"/:listingpage"} />
           )}

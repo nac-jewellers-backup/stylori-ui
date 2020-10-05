@@ -49,7 +49,7 @@ class Buynowbutton extends React.Component {
     render() {
         return (
             <div>
-                <Button  className={this.props.class} style={{ borderRadius: "5px" }}>
+                <Button  className={this.props.class} style={{ borderRadius: "5px",...this.props.style }}>
                     {window.location.pathname.split('/').pop() !== "cart" && window.location.pathname.split('/').pop() !== "checkout" && this.state.vals === 1 ? <>
                         <i class="fa fa-shopping-bag buynow-icon"></i>
                         <span> In bag!</span>

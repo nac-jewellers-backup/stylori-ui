@@ -203,10 +203,10 @@ const styles = (theme) => ({
     color: theme.palette.text.primary,
   },
   normalfontsSilver: {
-    fontSize: "1.3rem",
-    letterSpacing: "8px",
+    fontSize: "1rem",
+    letterSpacing: "1px",
     textTransform: "uppercase",
-    color: `${theme.palette.secondary.main} !important`,
+    color: `${theme.palette.primary.main} !important`,
     [theme.breakpoints.up("sm")]: {
       marginBottom: "15px",
     },
@@ -325,7 +325,7 @@ const styles = (theme) => ({
   buynowButtonSilver: {
     width: "100% !important",
     height: "45px !important",
-    fontSize: "13px",
+    fontSize: "2rem",
     borderRadius: "unset !important",
     boxShadow: "6px 7px 6px rgba(208, 210, 211, 1)",
     textTransform: "uppercase",
@@ -422,7 +422,7 @@ const styles = (theme) => ({
     // marginLeft:107,
     "& div": {
       textTransform: "uppercase",
-      color: theme.palette.secondary.main,
+      color: theme.palette.primary.main,
       letterSpacing: "6px",
       fontWeight: "bold",
       [theme.breakpoints.up("sm")]: {

@@ -20,13 +20,14 @@ const SilverCarousel = (props) => {
   const classes = useStyles();
   return (
     <Grid container xs={12}>
-      <Grid item xs={12} style={{background: window.location.pathname === "/styloriSilver" ? 'rgba(226, 213, 185, 1)' : ''}}>
+      <Grid item xs={12}  className={window.location.pathname === "/styloriSilver" ? classes.backgroundImageColor : ''}
+      >
       
         <Hidden smUp>
         <Slideshow dataCarousel={carouselTop[0].settings}>
         {carouselTop[0].images.map((val, index) => (
                 <Grid container key={index} >
-                  <img
+                  <img 
                     src={val.mobileImg}
                     alt="Stylori"
                     style={{ width: "100%", height: "auto" }}
@@ -56,9 +57,9 @@ const SilverCarousel = (props) => {
           {carouselTop[0].content}
         </Typography>
        </Hidden>
-        <Hidden smUp>
+        {/* <Hidden smUp>
        <Gadgets isSilver={props.isSilver}/>
-        </Hidden>
+        </Hidden> */}
       </Grid>
     </Grid>
   );

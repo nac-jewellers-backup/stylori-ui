@@ -376,7 +376,7 @@ class ProductDetail extends Component {
                 paddingTop:'4%'
               }}
             >
-              <ShopBy shopByStyloriSilver={this.props.shopByStyloriSilver} />
+              <ShopBy isSilver={isSilver} shopByStyloriSilver={this.props.shopByStyloriSilver} />
             </div>
           )}
           {isSilver ? (

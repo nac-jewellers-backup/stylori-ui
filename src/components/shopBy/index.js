@@ -82,11 +82,11 @@ const ShopBy = (props) => {
 //   React.useEffect(() => {
 //     _fetchProducts();
 //   }, []);
-  const { classes } = props;
+  const { classes, isSilver } = props;
   return (
     // <Container style={{ padding: "0px 17px" }} maxWidth="lg">
       <Grid container xs={12} justify="space-around">
-        <Grid container item xs={12} className={classes.shopByLabel} justify="center">
+        <Grid container item xs={12} className={`${classes.shopByLabel} ${ isSilver ?  classes.silverLabel : ''}`} justify="center">
           <Typography variant="body1" component="div">
             Shop by
           </Typography>

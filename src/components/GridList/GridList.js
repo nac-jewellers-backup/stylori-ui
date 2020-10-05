@@ -205,13 +205,13 @@ export default function ImageGridList(props) {
                 </div>
               </Grid>
             </Grid>
-            <Grid
-              container
-              item
-              
-              xs={12}
-            >
-              <Grid item xs={6} style={{ padding: "0 4px 0 0" }} className={`hovereffectSilvertoppicks`}>
+            <Grid container item xs={12}>
+              <Grid
+                item
+                xs={6}
+                style={{ padding: "0 4px 0 0" }}
+                className={`hovereffectSilvertoppicks`}
+              >
                 <a className={classes.imagefull} href={"rings-jewellery"}>
                   <img
                     className={classes.imagefulllong}
@@ -220,15 +220,18 @@ export default function ImageGridList(props) {
                   <div className="overlay1">
                     <div className={"collectionDataSilverSEOflex"}>
                       <div style={{ margin: "auto" }}>
-                        <h2 className="next-price">
-                          {"Rings".toUpperCase()}
-                        </h2>
+                        <h2 className="next-price">{"Rings".toUpperCase()}</h2>
                       </div>
                     </div>
                   </div>
                 </a>
               </Grid>
-              <Grid item xs={6} style={{ padding: "0 0 0 4px" }} className={`hovereffectSilvertoppicks`}>
+              <Grid
+                item
+                xs={6}
+                style={{ padding: "0 0 0 4px" }}
+                className={`hovereffectSilvertoppicks`}
+              >
                 <a className={classes.imagefull} href={"bracelets-jewellery"}>
                   <img
                     className={classes.imagefulllong}
@@ -337,7 +340,7 @@ export default function ImageGridList(props) {
               padding: "0px 15px",
               marginTop: 50,
               marginBottom: 50,
-              height: 470,
+              // height: 470,
             }}
           >
             <Grid
@@ -350,7 +353,7 @@ export default function ImageGridList(props) {
               className={`hovereffectSilvertoppicks`}
             >
               <a className={classes.imagefull} href={"rings-jewellery"}>
-                <img className={classes.imagefull} src={tileData[4].img} />
+                <img className={classes.imagefull} src={tileData[4].img} style={{height:400}}/>
                 <div className="overlay1">
                   <div className={"collectionDataSilverSEOflex"}>
                     <div style={{ margin: "auto" }}>
@@ -363,9 +366,9 @@ export default function ImageGridList(props) {
             <Grid
               item
               className={classes.firstcolumnsilver}
-              md={6}
-              lg={6}
-              xl={6}
+              md={8}
+              lg={8}
+              xl={8}
             >
               <Grid container>
                 <Grid
@@ -383,7 +386,7 @@ export default function ImageGridList(props) {
                       <img
                         className={classes.imagefull}
                         src={tileData[1].img}
-                        style={{ paddingTop: "2px" }}
+                        style={{ paddingTop: "2px", height:200 }}
                       />
                       <div className="overlay1">
                         <div className={"collectionDataSilverSEOflex"}>
@@ -412,7 +415,7 @@ export default function ImageGridList(props) {
                       <img
                         className={classes.imagefull}
                         src={tileData[1].img}
-                        style={{ paddingTop: "2px" }}
+                        style={{ paddingTop: "2px", height:200 }}
                       />
                       <div className="overlay1">
                         <div className={"collectionDataSilverSEOflex"}>
@@ -426,6 +429,7 @@ export default function ImageGridList(props) {
                     </a>
                   </div>
                 </Grid>
+
                 <Grid item container style={{ paddingTop: "10px" }}>
                   {/* <Grid
                         item
@@ -458,9 +462,9 @@ export default function ImageGridList(props) {
                       </Grid> */}
                   <Grid
                     item
-                    md={12}
-                    lg={12}
-                    xl={12}
+                    md={6}
+                    lg={6}
+                    xl={6}
                     className={`hovereffectSilvertoppicks`}
                   >
                     <div>
@@ -470,7 +474,8 @@ export default function ImageGridList(props) {
                       >
                         <img
                           className={classes.imagefull}
-                          src={tileData[3].img}
+                          src={tileData[1].img}
+                          style={{height:200}}
                         />
                         <div className="overlay1">
                           <div className={"collectionDataSilverSEOflex"}>
@@ -484,30 +489,36 @@ export default function ImageGridList(props) {
                       </a>
                     </div>
                   </Grid>
+                  <Grid
+                    item
+                    className={classes.marginAuto}
+                    md={6}
+                    lg={6}
+                    xl={6}
+                    className={`hovereffectSilvertoppicks`}
+                  >
+                    <a
+                      className={classes.imagefull}
+                      href={"bracelets-jewellery"}
+                    >
+                      <img
+                        className={classes.imagefull}
+                        src={tileData[1].img}
+                        style={{height:200}}
+                      />
+                      <div className="overlay1">
+                        <div className={"collectionDataSilverSEOflex"}>
+                          <div style={{ margin: "auto" }}>
+                            <h2 className="next-price">
+                              {"Bracelets".toUpperCase()}
+                            </h2>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-            <Grid
-              container
-              item
-              className={classes.marginAuto}
-              md={3}
-              lg={3}
-              xl={3}
-              className={`hovereffectSilvertoppicks`}
-            >
-              <a className={classes.imagefull} href={"bracelets-jewellery"}>
-                <img className={classes.imagefull} src={tileData[4].img} />
-                <div className="overlay1">
-                  <div className={"collectionDataSilverSEOflex"}>
-                    <div style={{ margin: "auto" }}>
-                      <h2 className="next-price">
-                        {"Bracelets".toUpperCase()}
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-              </a>
             </Grid>
           </Grid>
         ) : (
