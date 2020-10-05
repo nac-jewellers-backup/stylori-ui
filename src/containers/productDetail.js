@@ -39,6 +39,7 @@ import {Hypoallergenic} from '../components/product-image-slider/Gagetstylori/Hy
 import {Securepayments} from '../components/product-image-slider/Gagetstylori/Securepayments-pink'
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
+import {NeedHelp} from 'components/needHelp'
 // import {Helmet} from "react-helmet";
 class ProductDetail extends Component {
   constructor(props) {
@@ -253,7 +254,11 @@ class ProductDetail extends Component {
               </div>
             </Grid>
           </Grid>
-
+          {isSilver && 
+              <div style={{position:"fixed",top:'50%', right:0, zIndex:20}}>
+                <NeedHelp position='left'/>
+              </div>
+              }
           <div
             className="pricing-imgzom-media"
             style={{ maxWidth: "1600px", margin: "auto" }}
@@ -444,7 +449,11 @@ class ProductDetail extends Component {
               isSilver={isSilver}
             />
           </Grid>
-
+              {isSilver && 
+              <div style={{position:"fixed",top:'50%', right:0, zIndex:20}}>
+                <NeedHelp position='top'/>
+              </div>
+              }
           {!isSilver && (
             <Grid item xs={12}>
               <PriceCertification data={this.props.data} isSilver={isSilver} />

@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Grid } from "@material-ui/core";
+import { Container, Grid, Hidden } from "@material-ui/core";
 import Title from "../ProductTitle";
 import { TopPicksGridComponent } from "../TopPicksGridComponent/index";
 import { useDummyRequest } from "../../../hooks";
@@ -53,6 +53,7 @@ const MultipleSections = (props) => {
           <>
             {title == "TESTIMONIALS" && (
               <>
+                <Hidden mdUp>
                 {props?.isGadgets && (
                   <Container>
                     <Container>
@@ -75,6 +76,7 @@ const MultipleSections = (props) => {
                     </Container>
                   </Container>
                 )}
+                </Hidden>
                 <Title title={title} isSilver={true} />
               </>
             )}
