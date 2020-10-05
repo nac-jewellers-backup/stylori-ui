@@ -51,10 +51,10 @@ class Buynowbutton extends React.Component {
             <div>
                 <Button  className={this.props.class} style={{ borderRadius: "5px",...this.props.style }}>
                     {window.location.pathname.split('/').pop() !== "cart" && window.location.pathname.split('/').pop() !== "checkout" && this.state.vals === 1 ? <>
-                        <i class="fa fa-shopping-bag buynow-icon"></i>
+                        {!this.props.withoutBag &&<i class="fa fa-shopping-bag buynow-icon"></i>}
                         <span> In bag!</span>
                     </> : <>
-                            {!this.props.isSilver && !this.props.smallScreen && <i class="fa fa-shopping-bag buynow-icon"></i>}
+                            {!this.props.withoutBag && !this.props.isSilver && !this.props.smallScreen && <i class="fa fa-shopping-bag buynow-icon"></i>}
                             {this.props.isSilver && this.props.smallScreen ? 'ADD TO CART' : <span className={this.props.button}>Buy Now</span>}
                         </>
                     }

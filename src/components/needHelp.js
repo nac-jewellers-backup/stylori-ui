@@ -4,7 +4,8 @@ import Popper from "@material-ui/core/Popper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import Fade from "@material-ui/core/Fade";
+// import Fade from "@material-ui/core/Fade";
+import Collapse from '@material-ui/core/Collapse';
 import Paper from "@material-ui/core/Paper";
 import ChatIcon from "@material-ui/icons/Chat";
 import CallIcon from "@material-ui/icons/Call";
@@ -48,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.main,
     fontWeight: "bold",
     fontSize: 14,
+    cursor:"pointer"
   },
 }));
 
@@ -73,7 +75,7 @@ export function NeedHelp(props) {
         className={classes.popper}
       >
         {({ TransitionProps }) => (
-          <Fade {...TransitionProps} timeout={350}>
+          <Collapse {...TransitionProps} timeout={500} >
             <Paper>
               <Hidden mdUp>
                 <Grid item xs={12} sm={4} style={{ padding: "5px 0px" }}>
@@ -128,7 +130,7 @@ export function NeedHelp(props) {
                 </Grid>
               </Hidden>
             </Paper>
-          </Fade>
+          </Collapse>
         )}
       </Popper>
       <Grid container justify="center">

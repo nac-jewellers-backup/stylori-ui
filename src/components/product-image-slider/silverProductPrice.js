@@ -557,13 +557,13 @@ const Productprice = (
                       </Grid>}
                       <Grid container item xs={12}>
                         <Grid item xs={4}>
-                        <Button variant="contained" color="primary" class={`${classes.buynowButtonSilver} ${classes.buttonsilver}`} >BUY NOW</Button>
-                          <div onClick={handleLocalStorage.bind(this)} style={{display:"none"}}>
+                        <div onClick={handleLocalStorage.bind(this)} style={{display:"hidden"}}>
                             <Buynowbutton
                               sku={data[0].skuId}
                               class={`${classes.buynowButtonSilver} ${classes.buttonsilver}`}
                               button="buynow-btn-cont"
                               id="silverButton"
+                              withoutBag={true}
                               
                             />
                             <CommenDialog
@@ -576,6 +576,8 @@ const Productprice = (
                               title="Confirmation"
                             />
                           </div>
+                        {/* <Button variant="contained" color="primary" class={`${classes.buynowButtonSilver} ${classes.buttonsilver}`} onClick={()=>{document.getElementById('silverButton').click()}} >BUY NOW</Button> */}
+                          
                         </Grid>
                         <Grid container item xs={4} className={classes.saveButtonsilverGrid}>
                         <Grid
