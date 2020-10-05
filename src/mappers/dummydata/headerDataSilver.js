@@ -1,4 +1,4 @@
-// mobile views menu
+// MOBILE views menu - LAYER 1
 export const mainlist = [
 
     {
@@ -31,7 +31,7 @@ export const mainlist = [
     // },
 ];
 
-/// mobile views submenu
+/// MOBILE views submenu - LAYER 3
 export const subheader = {
     "Earrings": {
         header: 'Earrings',
@@ -331,7 +331,7 @@ export const subheader = {
     },
 };
 
-//layer 3 named jewellery
+//layer 2 named jewellery MOBILE
 export const Jewellery = {
     Jewellery: {
         Earrings: {
@@ -439,7 +439,7 @@ export const Jewellery = {
 }
 
 
-//desktop views
+//DESKTOP views
 export const menuListHeader =
     [
         { title: 'JEWELLERY', url: "/jewellery" },
@@ -452,7 +452,7 @@ export const menuListHeader =
     ];
 
 
-// List header hover
+//DESKTOP  List header hover -  LAYER 3
 export const menuLists = {
     'JEWELLERY': {
         //----SUBLAYER1 ------
@@ -937,3 +937,4 @@ export const menuLists = {
             ]
     },
 }
+ 

@@ -137,10 +137,64 @@ mouseOverPopoverfilterslist:{
     height: "max-content",
     backgroundColor: theme.palette.background.fade,
   },
+  drawerPaperSilver:{
+    height: "100% !important",
+    width:"100%",
+    color:theme.palette.secondary.main,
+    backgroundColor: 'white',
+    "& .MuiList-padding":{
+      paddingTop:0,
+      paddingBottom:0
+    }
+  },
+  listItems1:{
+    
+    textAlign: 'left',
+  whiteSpace: 'nowrap',
+  width: '100%',
+  fontSize: '11px !important',
+  letterSpacing: '1px',
+  textTransform: 'capitalize',
+  fontFamily: 'Roboto',
+  },
+  menulistItem:{
+    color:"white",
+    textAlign:"center",
+    fontWeight:'bold',
+    fontSize:'20px !important'
+  },
   iconbuttons: {
     position: "fixed",
     left: "228px",
     top: "-9px"
+  },
+  iconbuttonsSilver:{
+
+  },
+  menuTitle:{
+    textAlign:"center",
+    display:"flex",
+    margin:"auto",
+    backgroundColor:theme.palette.secondary.main,
+    color:"white",
+    "& .MuiListItemText-root":{
+      display:"flex"
+    },
+    "& .MuiListItemText-primary":{
+      display:"inline-flex",
+      alignItems:"center"
+    }
+  },
+  drawerArrowSilver:{
+color:`${theme.palette.secondary.main} !important`
+  },
+  drawerList1:{
+    '&:hover': {
+      "& .MuiTypography-root":{
+        backgroundColor: 'transparent',
+        borderBottom:'1px solid' 
+      }
+    }
   },
   subtitles: {
     color: theme.palette.background.darkFade,
@@ -150,11 +204,32 @@ mouseOverPopoverfilterslist:{
     letterSpacing: "1px",
     fontFamily: "Roboto",
   },
+
   subtitleContainer: {
-    backgroundColor: "#fff !important",
+    backgroundColor:"#fff !important",
     '&:hover': {
       backgroundColor: "#fff !important",
     }
+  },
+  subtitleContainerSilver:{
+    backgroundColor: theme.palette.ternary.light,
+    '&:hover': {
+      backgroundColor: theme.palette.secondary.main,
+      '& .MuiTypography-root':{
+        color:'white !important'
+      },
+      "& i":{
+        color:'white !important'
+      }
+    }
+  },
+  subtitlesSilver:{
+    color: theme.palette.secondary.main,
+    textAlign: "left",
+    width: "100%",
+    fontSize: "11px",
+    letterSpacing: "1px",
+    fontFamily: "Roboto",
   },
   subtitle2Container: {
     backgroundColor: theme.palette.background.darkFade,
@@ -184,8 +259,8 @@ export const useStyles = makeStyles(theme => ({
   mouseOverPopover: {
     zIndex: 1000,
     top: '4px !important',
-    backgroundColor: theme.palette.background.fade,
-    color: 'white',
+    backgroundColor:(props)=>props.isSilver ? 'white' : theme.palette.background.fade,
+    color: (props)=>props.isSilver ? theme.palette.secondary.main : 'white',
     '& span': {
       fontFamily: 'Roboto',
       letterSpacing: '1px'
@@ -194,7 +269,8 @@ export const useStyles = makeStyles(theme => ({
       padding: '0px !important'
     },
     '& li:hover': {
-      backgroundColor: theme.palette.secondary.dark,
+      backgroundColor: (props)=>props.isSilver ? theme.palette.secondary.main : theme.palette.secondary.dark,
+      color:(props)=>props.isSilver ? 'white':'white'
     }
   },
   mouseOverPopoverfilters:{
@@ -317,7 +393,7 @@ export const useStyles = makeStyles(theme => ({
   subtopic2: {
     padding: "10px 0px 10px 0px",
     borderTop: "1px solid",
-    backgroundColor: theme.palette.background.darkFade,
+    backgroundColor: (props)=>props.isSilver ? theme.palette.ternary.light :  theme.palette.background.darkFade,
   },
   drawer: {
     backgroundColor: "#394578",

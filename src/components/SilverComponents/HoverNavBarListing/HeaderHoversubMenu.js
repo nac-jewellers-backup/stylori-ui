@@ -10,7 +10,7 @@ function HeaderHoverMenuItem(props) {
 
   const [opens, setOpens] = React.useState(props.opened);
   const [target, setTarget] = React.useState(props.subMenuTarget);
-  const { onMouseLeave, onMouseOver } = props;
+  const { onMouseLeave, onMouseOver, isSilver } = props;
   const classes = useStyles();
   useEffect(() => {
     setOpens(props.opened);
@@ -24,9 +24,14 @@ function HeaderHoverMenuItem(props) {
           placement={'left-start'}
           open={opens} anchorEl={target} transition className={classes.mouseOverPopoversub}>
           <List component="nav" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
-            {props.data && props.data.imageContainer && <Grid container style={{ width: "350px", background: "#fff", padding: "10px", zIndex: "10000" }}>
+          
+            {props.data && props.data.imageContainer && <Grid container style={{ width: "450px", maxHeight:"450px", overflowY:'auto', background: "#fff", padding: "10px", zIndex: "10000" }}>
+            <Grid container item xs={4}>
+              {isSilver && props?.data?.imageContainer && <img style={{ width: "100%", margin: "auto",height:"auto" }} src={props.data.imageContainer[0].img} />}
+              </Grid>
+              <Grid container item xs={isSilver ? 8 : 12}>
               {props.data.imageContainer.map((val, index) =>
-                <Grid item xs={4}>
+                <Grid item xs={isSilver ? 6 : 4}>
                   <Grid container className={classes.imgcont} onClick={() => { window.location.href = val.url }} justify="center" alignContent="center" alignItems="center" style={{ cursor: "pointer" }}>
                     <Grid item style={{ justifyContent: "center", alignContent: "center", display: "flex", }}>
                       {val.img && <img style={{ width: "65%", margin: "auto",height:"100%" }} src={val.img} />}
@@ -38,7 +43,9 @@ function HeaderHoverMenuItem(props) {
                     </Grid>
                   </Grid>
                 </Grid>
-              )} </Grid>
+              )}
+              </Grid>
+               </Grid>
             }
             {props.data && props.data.onlyText && props.data.onlyText.map((val, index) => <>
 

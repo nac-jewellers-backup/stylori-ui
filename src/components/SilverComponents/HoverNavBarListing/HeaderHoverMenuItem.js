@@ -11,7 +11,7 @@ function HeaderHoverMenuItem(props) {
   const [opens, setOpens] = React.useState(props.opened);
   const [target, setTarget] = React.useState(props.targetopened);
   const { onMouseLeave, onMouseOver, onClick } = props;
-  const classes = useStyles();
+  const classes = useStyles(props);
   const mapper = props.filters ? props.listHoverItem : props.listHoverItem['menuOne']
   const mapperSort = props.sort ? props.tabdata : ''
   // const mapper_menu2 = props.filters ? props.listHoverItem : props.listHoverItem['menuOne']
