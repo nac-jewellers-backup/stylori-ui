@@ -51,8 +51,9 @@ const MultipleSections = (props) => {
       {titleContiner.map((title) => {
         return (
           <>
+          <>
             {title == "TESTIMONIALS" && (
-              <>
+              
                 <Hidden mdUp>
                 {props?.isGadgets && (
                   <Container>
@@ -77,9 +78,9 @@ const MultipleSections = (props) => {
                   </Container>
                 )}
                 </Hidden>
+            )}
                 <Title title={title} isSilver={true} />
               </>
-            )}
             {title == "TOP PICKS" && (
               <GridList GridImage={collectionGrid} isHover={props.isHover} />
             )}

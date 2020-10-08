@@ -6,7 +6,7 @@
 .hovereffectSilvertoppicks {
     width: 100% !important;
     /* display: inline-flex !important; */
-    height: auto !important;
+    /* height: auto !important; */
     float: left;
     overflow: hidden;
     position: relative;
@@ -93,13 +93,14 @@
     -ms-transform: scale(1.2);
     -webkit-transform: scale(1.2);
     transform: scale(1.2);
-  
+    transform-origin: 50% 50%;
   
   }
   
   .hovereffectSilvertoppicks:hover .overlay1 {
     opacity: 1;
     filter: alpha(opacity=100);
+    overflow: hidden;     
   }
   
   .hovereffectSilvertoppicks:hover h2,

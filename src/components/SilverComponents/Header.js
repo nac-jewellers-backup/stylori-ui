@@ -31,6 +31,7 @@ import HeaderHoversubMenu from "./HoverNavBarListing/HeaderHoversubMenu";
 import { withStyles } from "@material-ui/core/styles";
 import { useDummyRequest } from "../../hooks";
 import { headerDataSilver } from "../../mappers";
+import { headerDataStyloriSilver } from "../../mappers";
 import { styles } from "./styles";
 import LogoSmallScreen from "../../assets/Stylori Silver logo.svg";
 import Seach from "../../assets/search";
@@ -535,7 +536,7 @@ class Header extends Component {
                                     });
                                   }}
                                 >
-                                  {listName.title}
+                                  {listName.title === "VISIT STYLORI.COM" ? <img src="https://assets.stylori.com/images/favicon.gif" width="25px" height="25px" alt="stylori"/> : listName.title}
                                 </a>
                               );
                             })}
@@ -1301,7 +1302,14 @@ export default withStyles(styles)((props) => {
 
   let GLobalCtx = React.useContext(GlobalContext);
 
-  const { mapped } = useDummyRequest(headerDataSilver);
+    const isSilver =
+    GLobalCtx.Globalctx &&
+    GLobalCtx.Globalctx.pathName &&
+    GLobalCtx.Globalctx.pathName
+        ? GLobalCtx.Globalctx.pathName
+        : false;
+
+  const { mapped } = useDummyRequest(isSilver ? headerDataStyloriSilver : headerDataSilver);
   if (Object.keys(mapped).length === 0) return "";
 
   return (

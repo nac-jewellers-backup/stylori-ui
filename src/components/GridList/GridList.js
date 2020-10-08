@@ -96,7 +96,53 @@ const useStyles = makeStyles((theme) => ({
   img2container: {
     marginTop: 0,
   },
+  isHoverGrid:{
+    height:"100%", 
+    padding:"0px 6px 0px 6px",
+    [theme.breakpoints.down('sm')]:{
+      padding:"0px 4px 0px 4px",
+    }
+  }
 }));
+function FormRow() {
+  const classes = useStyles();
+  return (
+    <React.Fragment>
+      <Grid item xs={6} className={`${classes.isHoverGrid} hovereffectSilvertoppicks`}>
+        <img
+          alt=""
+          src="https://styloriimages-staging.s3.ap-south-1.amazonaws.com/product/SE3355/600X600/SE3355-1S.webp?_=1601995111621"
+          style={{ width: "100%", height: "100%" }}
+        />
+          <div className="overlay1">
+            <div className={"collectionDataSilverSEOflex"}>
+              <div style={{ margin: "auto" }}>
+                <h2 className="next-price">
+                  {"Bracelets".toUpperCase()}
+                </h2>
+              </div>
+            </div>
+          </div>
+      </Grid>
+      <Grid item xs={6} className={`${classes.isHoverGrid} hovereffectSilvertoppicks`}>
+        <img
+          alt=""
+          src="https://styloriimages-staging.s3.ap-south-1.amazonaws.com/product/SE0389/575X575/HOVER-SE0389-2W.webp"
+          style={{ width: "100%", height: "100%" }}
+        />
+          <div className="overlay1">
+            <div className={"collectionDataSilverSEOflex"}>
+              <div style={{ margin: "auto" }}>
+                <h2 className="next-price">
+                  {"Bracelets".toUpperCase()}
+                </h2>
+              </div>
+            </div>
+          </div>
+      </Grid>
+    </React.Fragment>
+  );
+}
 
 export default function ImageGridList(props) {
   const tileData = props.GridImage;
@@ -106,150 +152,33 @@ export default function ImageGridList(props) {
     <Grid className={classes.root}>
       <Hidden mdUp>
         {props.isHover ? (
-          <>
-            <Grid container style={{ marginTop: 30, marginBottom: 10 }}>
-              <Grid item xs={12}>
-                <Grid container>
-                  <Grid
-                    item
-                    xs={6}
-                    className={`hovereffectSilvertoppicks`}
-                    style={{ padding: "0 4px 0 0" }}
-                  >
-                    <div>
-                      <a
-                        className={classes.imagefull}
-                        href={"earrings-jewellery"}
-                      >
-                        <img
-                          className={classes.imagefull}
-                          src={tileData[1].img}
-                        />
-                        <div className="overlay1">
-                          <div className={"collectionDataSilverSEOflex"}>
-                            <div style={{ margin: "auto" }}>
-                              <h2 className="next-price">
-                                {"Earrings".toUpperCase()}
-                              </h2>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
+                <Grid container  style={{height:300, paddingTop:30}}>
+                <Grid container item xs={6} className="hovereffectSilvertoppicks" style={{height:"100%"}}>
+                  <img
+                    alt=""
+                    src="https://assets.stylori.com/images/Static+Pages/Home+Page/blush+3.png"
+                    style={{ width: "100%", height: "100%" }}
+                  />
+                  <div className="overlay1">
+            <div className={"collectionDataSilverSEOflex"}>
+              <div style={{ margin: "auto" }}>
+                <h2 className="next-price">
+                  {"Bracelets".toUpperCase()}
+                </h2>
+              </div>
+            </div>
+          </div>
+                </Grid>
+                <Grid container item xs={6} style={{height:"100%"}}>
+                  <Grid container item xs={12}  style={{height:"50%", paddingBottom:4}}>
+                    <FormRow />
                   </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                    className={`hovereffectSilvertoppicks`}
-                    style={{ padding: "0 0 0 4px" }}
-                  >
-                    <div>
-                      <a
-                        className={classes.imagefull}
-                        href={"pendants-jewellery"}
-                      >
-                        <img
-                          className={classes.imagefull}
-                          src={tileData[1].img}
-                        />
-
-                        <div className="overlay1">
-                          <div className={"collectionDataSilverSEOflex"}>
-                            <div style={{ margin: "auto" }}>
-                              <h2 className="next-price">
-                                {"Pendants".toUpperCase()}
-                              </h2>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
+                  <Grid container item xs={12}  style={{height:"50%", paddingTop:4}}>
+                    <FormRow />
                   </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-            <Grid
-              item
-              container
-              style={{ paddingTop: "2px", marginBottom: 15 }}
-              className={`${classes.img2container} `}
-              xs={12}
-            >
-              <Grid
-                item
-                md={12}
-                sm={12}
-                xs={12}
-                className={`hovereffectSilvertoppicks`}
-              >
-                <div>
-                  <a className={classes.imagefull} href={"bangles-jewellery"}>
-                    <img
-                      className={classes.daisyday}
-                      src={tileData[3].img}
-                      style={{ paddingTop: "2px" }}
-                    />
-                    <div className="overlay1">
-                      <div className={"collectionDataSilverSEOflex"}>
-                        <div style={{ margin: "auto" }}>
-                          <h2
-                            className="next-price"
-                            style={{ fontSize: "0.5rem !important" }}
-                          >
-                            {"Bangles".toUpperCase()}
-                          </h2>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </Grid>
-            </Grid>
-            <Grid container item xs={12}>
-              <Grid
-                item
-                xs={6}
-                style={{ padding: "0 4px 0 0" }}
-                className={`hovereffectSilvertoppicks`}
-              >
-                <a className={classes.imagefull} href={"rings-jewellery"}>
-                  <img
-                    className={classes.imagefulllong}
-                    src={tileData[4].img}
-                  />
-                  <div className="overlay1">
-                    <div className={"collectionDataSilverSEOflex"}>
-                      <div style={{ margin: "auto" }}>
-                        <h2 className="next-price">{"Rings".toUpperCase()}</h2>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </Grid>
-              <Grid
-                item
-                xs={6}
-                style={{ padding: "0 0 0 4px" }}
-                className={`hovereffectSilvertoppicks`}
-              >
-                <a className={classes.imagefull} href={"bracelets-jewellery"}>
-                  <img
-                    className={classes.imagefulllong}
-                    src={tileData[4].img}
-                  />
-                  <div className="overlay1">
-                    <div className={"collectionDataSilverSEOflex"}>
-                      <div style={{ margin: "auto" }}>
-                        <h2 className="next-price">
-                          {"Bracelets".toUpperCase()}
-                        </h2>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </Grid>
-            </Grid>
-          </>
+      
         ) : (
           <Grid container>
             <Grid item className={classes.firstcolumn} md={9} lg={0} xl={0}>
@@ -334,193 +263,34 @@ export default function ImageGridList(props) {
       </Hidden>
       <Hidden smDown>
         {props.isHover ? (
-          <Grid
-            container
-            style={{
-              padding: "0px 15px",
-              marginTop: 50,
-              marginBottom: 50,
-              // height: 470,
-            }}
-          >
-            <Grid
-              container
-              item
-              className={classes.marginAuto}
-              md={3}
-              lg={3}
-              xl={3}
-              className={`hovereffectSilvertoppicks`}
-            >
-              <a className={classes.imagefull} href={"rings-jewellery"}>
-                <img className={classes.imagefull} src={tileData[4].img} style={{height:400}}/>
-                <div className="overlay1">
-                  <div className={"collectionDataSilverSEOflex"}>
-                    <div style={{ margin: "auto" }}>
-                      <h2 className="next-price"> {"Rings".toUpperCase()}</h2>
-                    </div>
-                  </div>
-                </div>
-              </a>
+        <Grid container spacing={1} style={{height:500, paddingTop:30}}>
+          <Grid container item xs={3} style={{height:"100%"}} className="hovereffectSilvertoppicks">
+            <img
+              alt=""
+              src="https://assets.stylori.com/images/Static+Pages/Home+Page/blush+3.png"
+              style={{ width: "100%", height: "100%" }}
+            />
+                  <div className="overlay1">
+            <div className={"collectionDataSilverSEOflex"}>
+              <div style={{ margin: "auto" }}>
+                <h2 className="next-price">
+                  {"Bracelets".toUpperCase()}
+                </h2>
+              </div>
+            </div>
+          </div>
+          </Grid>
+          <Grid container item xs={9} style={{height:"100%"}}>
+            <Grid container item xs={12}  style={{height:"50%", paddingBottom:6}}>
+              <FormRow />
             </Grid>
-            <Grid
-              item
-              className={classes.firstcolumnsilver}
-              md={8}
-              lg={8}
-              xl={8}
-            >
-              <Grid container>
-                <Grid
-                  item
-                  md={6}
-                  lg={6}
-                  xl={6}
-                  className={`hovereffectSilvertoppicks`}
-                >
-                  <div style={{ padding: "0px 4px 0px 0px " }}>
-                    <a
-                      className={classes.imagefull}
-                      href={"earrings-jewellery"}
-                    >
-                      <img
-                        className={classes.imagefull}
-                        src={tileData[1].img}
-                        style={{ paddingTop: "2px", height:200 }}
-                      />
-                      <div className="overlay1">
-                        <div className={"collectionDataSilverSEOflex"}>
-                          <div style={{ margin: "auto" }}>
-                            <h2 className="next-price">
-                              {"Earrings".toUpperCase()}
-                            </h2>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </Grid>
-                <Grid
-                  item
-                  md={6}
-                  lg={6}
-                  xl={6}
-                  className={`hovereffectSilvertoppicks`}
-                >
-                  <div style={{ padding: "0px 0px 0px 4px " }}>
-                    <a
-                      className={classes.imagefull}
-                      href={"pendants-jewellery"}
-                    >
-                      <img
-                        className={classes.imagefull}
-                        src={tileData[1].img}
-                        style={{ paddingTop: "2px", height:200 }}
-                      />
-                      <div className="overlay1">
-                        <div className={"collectionDataSilverSEOflex"}>
-                          <div style={{ margin: "auto" }}>
-                            <h2 className="next-price">
-                              {"Pendants".toUpperCase()}
-                            </h2>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </Grid>
-
-                <Grid item container style={{ paddingTop: "10px" }}>
-                  {/* <Grid
-                        item
-                        md={4}
-                        lg={4}
-                        xl={4}
-                        className={classes.imgsmall}
-                        className={`hovereffectSilvertoppicks`}
-                      >
-                        <div style={{ padding: "0px 8px 0px 0px " }}>
-                          <a
-                            className={classes.imagefull}
-                            href={'rings-jewellery'}
-                          >
-                            <img
-                              className={classes.imagefull}
-                              src={tileData[2].img}
-                            />
-                            <div className="overlay1">
-                              <div className={"collectionDataSilverSEOflex"}>
-                                <div style={{ margin: "auto" }}>
-                                  <h2 className="next-price">
-                                    {"Rings".toUpperCase()}
-                                  </h2>
-                                </div>
-                              </div>
-                            </div>
-                          </a>
-                        </div>
-                      </Grid> */}
-                  <Grid
-                    item
-                    md={6}
-                    lg={6}
-                    xl={6}
-                    className={`hovereffectSilvertoppicks`}
-                  >
-                    <div>
-                      <a
-                        className={classes.imagefull}
-                        href={"bangles-jewellery"}
-                      >
-                        <img
-                          className={classes.imagefull}
-                          src={tileData[1].img}
-                          style={{height:200}}
-                        />
-                        <div className="overlay1">
-                          <div className={"collectionDataSilverSEOflex"}>
-                            <div style={{ margin: "auto" }}>
-                              <h2 className="next-price">
-                                {"Bangles".toUpperCase()}
-                              </h2>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                  </Grid>
-                  <Grid
-                    item
-                    className={classes.marginAuto}
-                    md={6}
-                    lg={6}
-                    xl={6}
-                    className={`hovereffectSilvertoppicks`}
-                  >
-                    <a
-                      className={classes.imagefull}
-                      href={"bracelets-jewellery"}
-                    >
-                      <img
-                        className={classes.imagefull}
-                        src={tileData[1].img}
-                        style={{height:200}}
-                      />
-                      <div className="overlay1">
-                        <div className={"collectionDataSilverSEOflex"}>
-                          <div style={{ margin: "auto" }}>
-                            <h2 className="next-price">
-                              {"Bracelets".toUpperCase()}
-                            </h2>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </Grid>
-                </Grid>
-              </Grid>
+            <Grid container item xs={12}  style={{height:"50%", paddingTop:6}}>
+              <FormRow />
             </Grid>
           </Grid>
+        </Grid>
+      
+    
         ) : (
           <Grid container style={{ padding: "0px 15px" }}>
             <Grid item className={classes.firstcolumn} md={9} lg={9} xl={9}>
@@ -595,6 +365,7 @@ export default function ImageGridList(props) {
               </a>
             </Grid>
           </Grid>
+        
         )}
       </Hidden>
     </Grid>

@@ -1,12 +1,11 @@
 // ************
-// HEADER DATA FOR STYLORI 
+// HEADER DATA FOR STYLORI SILVER
 
 
 // MOBILE views menu - LAYER 1
 export const mainlist = [
-
     {
-        name: "Jewellery",
+        name: "JEWELLERY",
         url: "/jewellery",
     },
     // {
@@ -14,31 +13,31 @@ export const mainlist = [
     //     url: "/stylorisilver",
     // },
     {
-        name: "Gold Coins",
-        url: "/goldcoins",
+        name: "STYLE",
+        url: "/silver-cocktail-jewellery",
     },
     {
-        name: "Collections",
-        url: "/collections",
+        name: "COLLECTIONS",
+        url: "/silver-jewellery-from+loops+collection",
     },
     {
-        name: "Ready to ship",
-        url: "/jewellery-shipping+in+1+day",
+        name: "GIFTS",
+        url: "/silver-classic-jewellery",
     },
     {
-        name: "CSK MERCHANDISE",
-        url: "/jewellery/kada/csk_kada?sku_id=1000000",
+        name: "READY TO SHIP",
+        url: "/silver-jewellery?sort=Ready%20to%20Ship&startprice=0&endprice=0",
     },
-    // {
-    //     name: "STORIES",
-    //     url: "/stories",
-    // },
+    {
+        name: "VISIT STYLORI.COM",
+        url: "/",
+    }
 ];
 
 /// MOBILE views submenu - LAYER 3
 export const subheader = {
-    "Earrings": {
-        header: 'Earrings',
+    "EARRINGS": {
+        header: 'EARRINGS',
         name: [
             {
                 name: 'Studs',
@@ -61,8 +60,8 @@ export const subheader = {
             }
         ]
     },
-    "Pendants": {
-        header: 'Pendants',
+    "NECKLACE": {
+        header: 'NECKLACE',
         name: [
             {
                 name: 'Classic',
@@ -337,29 +336,39 @@ export const subheader = {
 
 //layer 2 named jewellery MOBILE
 export const Jewellery = {
-    Jewellery: {
-        Earrings: {
-            name: "Earrings",
+    JEWELLERY: {
+        NewArraivals: {
+            name: "NEW ARRAIVALS",
             url: "/earrings-jewellery",
             icon: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjUiIGhlaWdodD0iMjUiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iI2JmYmZiZiI+PHBhdGggZD0iTTg2LDE3LjJjLTM3Ljk5NDgsMCAtNjguOCwzMC44MDUyIC02OC44LDY4LjhjMCwzNy45OTQ4IDMwLjgwNTIsNjguOCA2OC44LDY4LjhjMzcuOTk0OCwwIDY4LjgsLTMwLjgwNTIgNjguOCwtNjguOGMwLC0zNy45OTQ4IC0zMC44MDUyLC02OC44IC02OC44LC02OC44ek0xMjAuNCw5MS43MzMzM2gtMjguNjY2Njd2MjguNjY2NjdjMCwzLjE3MDUzIC0yLjU2ODUzLDUuNzMzMzMgLTUuNzMzMzMsNS43MzMzM2MtMy4xNjQ4LDAgLTUuNzMzMzMsLTIuNTYyOCAtNS43MzMzMywtNS43MzMzM3YtMjguNjY2NjdoLTI4LjY2NjY3Yy0zLjE2NDgsMCAtNS43MzMzMywtMi41NjI4IC01LjczMzMzLC01LjczMzMzYzAsLTMuMTcwNTMgMi41Njg1MywtNS43MzMzMyA1LjczMzMzLC01LjczMzMzaDI4LjY2NjY3di0yOC42NjY2N2MwLC0zLjE3MDUzIDIuNTY4NTMsLTUuNzMzMzMgNS43MzMzMywtNS43MzMzM2MzLjE2NDgsMCA1LjczMzMzLDIuNTYyOCA1LjczMzMzLDUuNzMzMzN2MjguNjY2NjdoMjguNjY2NjdjMy4xNjQ4LDAgNS43MzMzMywyLjU2MjggNS43MzMzMyw1LjczMzMzYzAsMy4xNzA1MyAtMi41Njg1Myw1LjczMzMzIC01LjczMzMzLDUuNzMzMzN6Ij48L3BhdGg+PC9nPjwvZz48L3N2Zz4=',
         },
-        Pendants: {
-            name: "Pendants",
+        BestSellers: {
+            name: "BEST SELLERS",
             url: "/pendants-jewellery",
             icon: ""
         },
-        Rings: {
-            name: "Rings",
+        Necklace: {
+            name: "NECKLACE",
             url: "/rings-jewellery",
             icon: ""
         },
-        NosePins: {
-            name: "Nose Pins",
+        Earrings: {
+            name: "EARRINGS",
             url: "/nose+pin+online-jewellery",
             icon: ""
         },
-        BanglesBracelets: {
-            name: "Bangles & Bracelets",
+        Rings: {
+            name: "RINGS",
+            url: "/bangles-jewellery",
+            icon: ""
+        },
+        NosePins: {
+            name: "NOSE PINS",
+            url: "/bangles-jewellery",
+            icon: ""
+        },
+        anklets: {
+            name: "ANKLETS",
             url: "/bangles-jewellery",
             icon: ""
         },
@@ -446,12 +455,34 @@ export const Jewellery = {
 //DESKTOP views
 export const menuListHeader =
     [
-        { title: 'JEWELLERY', url: "/jewellery" },
-        // { title: 'SILVER', url: "/stylorisilver" },
-        { title: 'GOLD COINS', url: "/goldcoins" },
-        { title: 'COLLECTIONS', url: "/collections" },
-        { title: 'READY TO SHIP', url: "/jewellery-shipping+in+1+day" },
-        { title: 'CSK MERCHANDISE', url: "/jewellery/kada/csk_kada?sku_id=1000000" },
+        {
+            title: "JEWELLERY",
+            url: "/jewellery",
+        },
+        // {
+        //     title: "Silver",
+        //     url: "/stylorisilver",
+        // },
+        {
+            title: "STYLE",
+            url: "/silver-cocktail-jewellery",
+        },
+        {
+            title: "COLLECTIONS",
+            url: "/silver-jewellery-from+loops+collection",
+        },
+        {
+            title: "GIFTS",
+            url: "/silver-classic-jewellery",
+        },
+        {
+            title: "READY TO SHIP",
+            url: "/silver-jewellery?sort=Ready%20to%20Ship&startprice=0&endprice=0",
+        },
+        {
+            title: "VISIT STYLORI.COM",
+            url: "/",
+        }
         // { title: 'STORIES', url: "/stories" }
     ];
 
@@ -463,8 +494,8 @@ export const menuLists = {
         'menuOne':
             [
                 {
-                    value: 'earrings', title: 'Earrings', url: '/earrings-jewellery',
-                    imgContainer: {
+                    value: 'newarraivals', title: 'New Arraivals', url: '/earrings-jewellery',
+                    imgContainer: { 
 
                         //-----------LAYER 3--------
                         "imageContainer": [
@@ -502,7 +533,7 @@ export const menuLists = {
                     }
                 },
                 {
-                    value: 'pendants', title: 'Pendants', url: '/pendants-jewellery',
+                    value: 'bestSellers', title: 'Best Sellers', url: '/pendants-jewellery',
                     imgContainer: {
 
                         "imageContainer": [
@@ -535,7 +566,7 @@ export const menuLists = {
                     }
                 },
                 {
-                    value: 'rings', title: 'Rings', url: '/rings-jewellery',
+                    value: 'necklace', title: 'NECKLACE', url: '/rings-jewellery',
                     imgContainer: {
 
                         "imageContainer": [
@@ -573,7 +604,7 @@ export const menuLists = {
                     }
                 },
                 {
-                    value: 'nosepins', title: 'Nose pins', url: '/nose+pin+online-jewellery',
+                    value: 'earrings', title: 'Earrings', url: '/nose+pin+online-jewellery',
                     // imgContainer: {
 
                     //     "imageContainer": [
@@ -596,7 +627,53 @@ export const menuLists = {
                     // }
                 },
                 {
-                    value: 'banglesbracelets', title: 'Bangles & Bracelets', url: '/bangles-jewellery',
+                    value: 'rings', title: 'Rings', url: '/bangles-jewellery',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bangle+stylori+-02.png",
+                                "content": "Bangles",
+                                "url": "/bangles-jewellery",
+                            },
+                            {
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bracelet+stylori+Bracelets-01.png",
+                                "content": "Bracelets",
+                                "url": "/bracelets-jewellery",
+                            },
+                            {
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Oval+Bracelet+stylori+-03.png",
+                                "content": "Oval Bracelets",
+                                "url": "/oval+bracelets-jewellery",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'nosepins', title: 'Nose Pins', url: '/bangles-jewellery',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bangle+stylori+-02.png",
+                                "content": "Bangles",
+                                "url": "/bangles-jewellery",
+                            },
+                            {
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bracelet+stylori+Bracelets-01.png",
+                                "content": "Bracelets",
+                                "url": "/bracelets-jewellery",
+                            },
+                            {
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Oval+Bracelet+stylori+-03.png",
+                                "content": "Oval Bracelets",
+                                "url": "/oval+bracelets-jewellery",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'anklets', title: 'Anklets', url: '/bangles-jewellery',
                     imgContainer: {
 
                         "imageContainer": [
@@ -945,9 +1022,3 @@ export const menuLists = {
 
 
 // *************
-
-
-
-// --------------------------------------------------------------
-
-
