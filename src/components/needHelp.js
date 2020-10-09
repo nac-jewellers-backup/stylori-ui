@@ -11,6 +11,7 @@ import ChatIcon from "@material-ui/icons/Chat";
 import CallIcon from "@material-ui/icons/Call";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import { Divider, Hidden } from "@material-ui/core";
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme) => ({
   //   root: {
@@ -18,10 +19,10 @@ const useStyles = makeStyles((theme) => ({
   //   },
 
   root: {
-    padding: theme.spacing(2),
+    // padding: theme.spacing(2),
   },
   popper: {
-    minWidth: 320,
+    minWidth: 400,
     [theme.breakpoints.down("sm")]: {
       minWidth: 0,
     },
@@ -33,17 +34,30 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   needHelpText: {
-    "-ms-transform": "rotate(270deg)" /* IE 9 */,
-    transform: "rotate(270deg)",
-    position: "absolute",
-    right: 0,
+    transform: 'rotate(-90deg)', /* Equal to rotateZ(45deg) */
+  transformOrigin: 'right bottom',
     background: theme.palette.primary.main,
     "& span": {
       color: "white",
+      fontWeight:"bold",
+      fontSize:'1.1rem'
     },
+  },
+  needHelpTextWithoutRotate:{
+      background: theme.palette.primary.main,
+      width:90,
+      "& span": {
+        color: "white",
+        fontWeight:"bold",
+        fontSize:'0.9rem'
+      },
+  },
+  noWidth:{
+width:'auto !important'
   },
   number: {
     fontSize: 12,
+    color:theme.palette.ternary.dark
   },
   chatNow: {
     color: theme.palette.secondary.main,
@@ -51,6 +65,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
     cursor:"pointer"
   },
+  closeIcon:{
+    fill:"white !important"
+  }
 }));
 
 export function NeedHelp(props) {
@@ -95,7 +112,7 @@ export function NeedHelp(props) {
               </Hidden>
               <Hidden smDown>
                 <Grid container>
-                  <Grid item xs={12} sm={4} style={{ padding: "5px 0px" }}>
+                  <Grid item xs={12} sm={3} style={{ padding: "5px 0px" , borderRight:'1px solid rgb(166, 168, 171)' }}>
                     <Typography
                       variant="body1"
                       className={classes.chatNow}
@@ -104,8 +121,7 @@ export function NeedHelp(props) {
                       Chat Now
                     </Typography>
                   </Grid>
-                  <Divider orientation="vertical" />
-                  <Grid item xs={12} sm={4} style={{ padding: "5px 0px" }}>
+                  <Grid item xs={12} sm={4} style={{ padding: "5px 0px 0px 15px ", borderRight:'1px solid rgb(166, 168, 171)' }}>
                     <a
                       href="tel:1800-102-0330"
                       style={{ textDecoration: "none" }}
@@ -115,8 +131,7 @@ export function NeedHelp(props) {
                       </Typography>
                     </a>
                   </Grid>
-                  <Divider orientation="vertical" />
-                  <Grid item xs={12} sm={4} style={{ padding: "5px 0px" }}>
+                  <Grid item xs={12} sm={4} style={{ padding: "5px 0px 0px 15px " }}>
                     <a
                       href="tel:+91 99526 25252"
                       style={{ textDecoration: "none" }}
@@ -134,9 +149,16 @@ export function NeedHelp(props) {
         )}
       </Popper>
       <Grid container justify="center">
+        <Hidden smDown>
+        <Grid item className={`${classes.needHelpTextWithoutRotate} ${open ? classes.noWidth : ''}`}>
+          <Button onClick={handleClick(props.position)}>{open ? <CloseIcon className={classes.closeIcon}/> : 'Need Help ?'}</Button>
+        </Grid>
+        </Hidden>
+        <Hidden mdUp>
         <Grid item className={classes.needHelpText}>
           <Button onClick={handleClick(props.position)}>Need Help ?</Button>
         </Grid>
+        </Hidden>
       </Grid>
     </div>
   );

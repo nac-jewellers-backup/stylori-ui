@@ -53,6 +53,7 @@ class HomeStylori extends React.Component {
           />
           <Hidden smDown>
             <Feedes
+            isShowInsideDiv={true}
               style={{
                 boxShadow: "rgb(204, 204, 204) 7px 8px 6px",
                 border: "1px solid #ccc",

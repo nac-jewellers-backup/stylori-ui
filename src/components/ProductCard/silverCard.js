@@ -485,34 +485,7 @@ sizes="(max-width: 320px) 320w,
 
 
 
-                  <Grid container item xs={12} sm={12} className={`${classes.priceClassMain}`} style={{ alignItems: "center" }}>
-
-
-                    <Typography
-                      variant="h6"
-                      component="h6"
-                      className={classes.offerMainPrice}
-                      style={{
-                        width: "100%",
-                        justifyContent: "center",
-                        display: "flex",
-                        paddingLeft: "5px",
-
-                      }}>
-                      {/* <i
-                       
-                       className="fa"
-                     >
-                       &#xf156;
-                     </i> */}
-                      {/* {Math.round(props.data.offerPrice)} */}
-                      {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.offerPrice))}
-                    </Typography>
-
-
-
-
-                  </Grid>
+               
 
                   {/* <Hidden smDown> */}
                     <Grid container xs={12}>
@@ -523,6 +496,34 @@ sizes="(max-width: 320px) 320w,
                       </Typography>
 
                     </Grid>
+                    <Grid container item xs={12} sm={12} className={`${classes.priceClassMain}`} style={{ alignItems: "center" }}>
+
+
+<Typography
+  variant="h6"
+  component="h6"
+  className={classes.offerMainPrice}
+  style={{
+    width: "100%",
+    justifyContent: "center",
+    display: "flex",
+    paddingLeft: "5px",
+
+  }}>
+  {/* <i
+   
+   className="fa"
+ >
+   &#xf156;
+ </i> */}
+  {/* {Math.round(props.data.offerPrice)} */}
+  {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.offerPrice))}
+</Typography>
+
+
+
+
+</Grid>
                     {/* </Grid> */}
                   {/* </Hidden> */}
 

@@ -32,14 +32,14 @@ import { shopByStyloriSilver, allSeoPriorities } from "queries/productdetail";
 import ProductTitle from "components/SilverComponents/ProductTitle";
 import Quantity from "../components/quantity";
 import { Slideshow } from "components";
-import {Diversestyles} from '../components/product-image-slider/Gagetstylori/Diversestyles-pink'
-import {Certified} from '../components/product-image-slider/Gagetstylori/Certified'
-import {Fromthehouseofnac} from '../components/product-image-slider/Gagetstylori/Fromthehouseofnac-pink'
-import {Hypoallergenic} from '../components/product-image-slider/Gagetstylori/Hypoallergenic-pink'
-import {Securepayments} from '../components/product-image-slider/Gagetstylori/Securepayments-pink'
+import { Diversestyles } from "../components/product-image-slider/Gagetstylori/Diversestyles-pink";
+import { Certified } from "../components/product-image-slider/Gagetstylori/Certified";
+import { Fromthehouseofnac } from "../components/product-image-slider/Gagetstylori/Fromthehouseofnac-pink";
+import { Hypoallergenic } from "../components/product-image-slider/Gagetstylori/Hypoallergenic-pink";
+import { Securepayments } from "../components/product-image-slider/Gagetstylori/Securepayments-pink";
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
-import {NeedHelp} from 'components/needHelp'
+import { NeedHelp } from "components/needHelp";
 // import {Helmet} from "react-helmet";
 class ProductDetail extends Component {
   constructor(props) {
@@ -136,6 +136,7 @@ class ProductDetail extends Component {
       // :
       // null
       /*:*/
+      /*:*/
      /*:*/);
   };
   componentDidUpdate(prevProps, prevState) {
@@ -194,8 +195,16 @@ class ProductDetail extends Component {
       slidesToScroll: 1,
       autoplay: false,
       autoplaySpeed: 2000,
-      prevArrow: <ArrowLeftIcon style={{ fill:"rgb(6, 171, 159)" ,fontSize: "1.7rem"}}/>,
-      nextArrow: <ArrowRightIcon style={{ fill:"rgb(6, 171, 159)" ,fontSize: "1.7rem"}}/>,
+      prevArrow: (
+        <ArrowLeftIcon
+          style={{ fill: "rgb(6, 171, 159)", fontSize: "1.7rem" }}
+        />
+      ),
+      nextArrow: (
+        <ArrowRightIcon
+          style={{ fill: "rgb(6, 171, 159)", fontSize: "1.7rem" }}
+        />
+      ),
     };
     return (
       <div>
@@ -254,11 +263,34 @@ class ProductDetail extends Component {
               </div>
             </Grid>
           </Grid>
-          {isSilver && 
-              <div style={{position:"fixed",top:'50%', right:0, zIndex:20}}>
-                <NeedHelp position='left'/>
-              </div>
-              }
+          {isSilver && (
+            <>
+              <Hidden smDown>
+                <div
+                  style={{
+                    position: "fixed",
+                    top: "50%",
+                    right: 0,
+                    zIndex: 20,
+                  }}
+                >
+                  <NeedHelp position="left" />
+                </div>
+              </Hidden>
+              <Hidden mdUp>
+                <div
+                  style={{
+                    position: "fixed",
+                    top: "50%",
+                    right: 0,
+                    zIndex: 20,
+                  }}
+                >
+                  <NeedHelp position="left" />
+                </div>
+              </Hidden>
+            </>
+          )}
           <div
             className="pricing-imgzom-media"
             style={{ maxWidth: "1600px", margin: "auto" }}
@@ -351,11 +383,17 @@ class ProductDetail extends Component {
                 margin: "auto",
                 paddingLeft: "5%",
                 paddingRight: "5%",
-                paddingTop:'4%'
+                paddingTop: "4%",
               }}
             >
-              <Sublistcarousel data={this.props.data} isSilver={isSilver} customLimit={4} label="BUY TOGETHER"/>
-            </div>)}
+              <Sublistcarousel
+                data={this.props.data}
+                isSilver={isSilver}
+                customLimit={4}
+                label="BUY TOGETHER"
+              />
+            </div>
+          )}
           {isSilver ? (
             <div
               style={{
@@ -363,10 +401,14 @@ class ProductDetail extends Component {
                 margin: "auto",
                 paddingLeft: "5%",
                 paddingRight: "5%",
-                paddingTop:'4%'
+                paddingTop: "4%",
               }}
             >
-              <Sublistcarousel data={this.props.data} isSilver={isSilver} customLimit={4}/>
+              <Sublistcarousel
+                data={this.props.data}
+                isSilver={isSilver}
+                customLimit={4}
+              />
             </div>
           ) : (
             <Sublistcarousel data={this.props.data} isSilver={isSilver} />
@@ -378,10 +420,13 @@ class ProductDetail extends Component {
                 margin: "auto",
                 paddingLeft: "5%",
                 paddingRight: "5%",
-                paddingTop:'4%'
+                paddingTop: "4%",
               }}
             >
-              <ShopBy isSilver={isSilver} shopByStyloriSilver={this.props.shopByStyloriSilver} />
+              <ShopBy
+                isSilver={isSilver}
+                shopByStyloriSilver={this.props.shopByStyloriSilver}
+              />
             </div>
           )}
           {isSilver ? (
@@ -449,11 +494,13 @@ class ProductDetail extends Component {
               isSilver={isSilver}
             />
           </Grid>
-              {isSilver && 
-              <div style={{position:"fixed",top:'50%', right:0, zIndex:20}}>
-                <NeedHelp position='top'/>
-              </div>
-              }
+          {isSilver && (
+            <div
+              style={{ position: "fixed", top: "50%", right: 0, zIndex: 20 }}
+            >
+              <NeedHelp position="top" />
+            </div>
+          )}
           {!isSilver && (
             <Grid item xs={12}>
               <PriceCertification data={this.props.data} isSilver={isSilver} />
@@ -466,36 +513,42 @@ class ProductDetail extends Component {
           )}
 
           <Grid item xs={12}>
-            <Sublistcarousel data={this.props.data} isSilver={isSilver} customLimit={4}/>
+            <Sublistcarousel
+              data={this.props.data}
+              isSilver={isSilver}
+              customLimit={4}
+            />
           </Grid>
           <Grid item xs={12}>
-            <Sublistcarousel data={this.props.data} isSilver={isSilver} label="BUY TOGETHER" customLimit={4}/>
+            <Sublistcarousel
+              data={this.props.data}
+              isSilver={isSilver}
+              label="BUY TOGETHER"
+              customLimit={4}
+            />
           </Grid>
-          {
-            isSilver &&
+          {isSilver && (
             <Container>
               <Container>
-           <Grid container xs={12}>
-                        <Grid
-                          item
-                          xs={12}
-                          alignItems="center"
-                          style={{ paddingTop: "10%" }}
-                        >
-             
-            <Slideshow dataCarousel={mobiledataCarousel}>
-              <Certified color="rgb(6, 171, 159)"/>
-              <Diversestyles color="rgb(6, 171, 159)"/>
-              <Hypoallergenic color="rgb(6, 171, 159)"/>
-              <Fromthehouseofnac color="rgb(6, 171, 159)"/>
-              <Securepayments color="rgb(6, 171, 159)"/>
-              </Slideshow>
-              
-              </Grid>
-              </Grid>
+                <Grid container xs={12}>
+                  <Grid
+                    item
+                    xs={12}
+                    alignItems="center"
+                    style={{ paddingTop: "10%" }}
+                  >
+                    <Slideshow dataCarousel={mobiledataCarousel}>
+                      <Certified color="rgb(6, 171, 159)" />
+                      <Diversestyles color="rgb(6, 171, 159)" />
+                      <Hypoallergenic color="rgb(6, 171, 159)" />
+                      <Fromthehouseofnac color="rgb(6, 171, 159)" />
+                      <Securepayments color="rgb(6, 171, 159)" />
+                    </Slideshow>
+                  </Grid>
+                </Grid>
               </Container>
-              </Container>
-          }
+            </Container>
+          )}
           <Grid item xs={12}>
             {isSilver && (
               <Container>

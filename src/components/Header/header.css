@@ -183,7 +183,7 @@ html {
 .search {
   border: 1px solid #ccc;
   width: 190px !important;
-  height: 30px !important;
+  /* height: 30px !important; */
   /* padding: 1px 10px !important; */
   font-family: 'Robot-Black' !important;
 }
