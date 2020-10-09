@@ -49,7 +49,7 @@ const styles = (theme) => ({
   titleSilver: {
     marginTop: "0 !important",
     marginBottom: "0 !important",
-    fontSize: "1.1rem !important",
+    fontSize: "0.9rem !important",
     color: `${theme.palette.ternary.dark} !important`,
   },
   dis: {
@@ -300,10 +300,10 @@ const styles = (theme) => ({
   },
   buttonHeightAddToCart:{
     width: "100% !important",
-    height: "30px !important",
-    fontSize: "0.8rem",
+    height: "40px !important",
+    fontSize: "0.9rem",
     borderRadius: "unset !important",
-    boxShadow: "6px 7px 6px rgba(208, 210, 211, 1)",
+    boxShadow: "8px 8px 5px rgba(208, 210, 211, 1)",
     textTransform: "uppercase",
     letterSpacing: "1px !important",
     fontWeight: "500 !important",
@@ -324,13 +324,13 @@ const styles = (theme) => ({
   },
   buynowButtonSilver: {
     width: "90% !important",
-    height: "40px !important",
-    fontSize: "1.5rem",
+    height: "50px !important",
+    fontSize: "1.9rem",
     borderRadius: "unset !important",
-    boxShadow: "6px 7px 6px rgba(208, 210, 211, 1)",
+    boxShadow: "8px 8px 5px rgba(208, 210, 211, 1)",
     textTransform: "uppercase",
     letterSpacing: "2.5px !important",
-    fontWeight: "500 !important",
+    fontWeight: "900 !important",
     border: "none",
     transition: "all 0.3s ease 0s",
     cursor: "pointer",
@@ -353,14 +353,20 @@ const styles = (theme) => ({
     height: "36px !important",
     width: "100% !important",
     color: "#fff",
+    boxShadow:"8px 8px 5px rgba(208, 210, 211, 1)",
     backgroundColor: `${theme.palette.primary.main} !important`,
-    fontWeight: "400 !important",
+    fontWeight: "700 !important",
     lineHeight: "1.42857143",
     padding: "0px !important",
-    textTransform: "none !important",
+    textTransform: "uppercase !important",
   },
   rings_tabs_silver: {
     color: `${theme.palette.primary.main} !important`,
+  },
+  iconSilver:{
+"& i":{
+  fontSize:"28px !important"
+}
   },
   searchButtonSilver2: {
     border: 0,
@@ -369,11 +375,12 @@ const styles = (theme) => ({
     height: "36px !important",
     width: "100% !important",
     color: "#fff",
+    boxShadow:"8px 8px 5px rgba(208, 210, 211, 1)",
     backgroundColor: `${theme.palette.secondary.dark2} !important`,
-    fontWeight: "400 !important",
+    fontWeight: "700 !important",
     lineHeight: "1.42857143",
     padding: "0px !important",
-    textTransform: "none !important",
+    textTransform: "uppercase !important",
   },
   colorNoreviews: {
     color: theme.palette.secondary.main,
@@ -424,6 +431,7 @@ const styles = (theme) => ({
       textTransform: "uppercase",
       color: theme.palette.primary.main,
       letterSpacing: "6px",
+      fontSize:'24px !important',
       fontWeight: "bold",
       [theme.breakpoints.up("sm")]: {
         marginBottom: 10,
@@ -456,7 +464,7 @@ const styles = (theme) => ({
   },
   rating__: {
     "&::placeholder": {
-      color: `${theme.palette.secondary.light}`,
+      color: `${theme.palette.ternary.main}`,
       textTransform: "Uppercase",
       fontSize: "12px",
       letterSpacing: "1px",
@@ -464,14 +472,14 @@ const styles = (theme) => ({
       opacity: 1 /* Firefox */,
     },
     "&:-ms-input-placeholder": {
-      /* Internet Explorer 10-11 */ color: `${theme.palette.secondary.light}`,
+      /* Internet Explorer 10-11 */ color: `${theme.palette.ternary.main}`,
       textTransform: "Uppercase",
       letterSpacing: "1px",
       fontWeight: 500,
       fontSize: "12px",
     },
     "&::-ms-input-placeholder": {
-      /* Microsoft Edge */ color: `${theme.palette.secondary.light}`,
+      /* Microsoft Edge */ color: `${theme.palette.ternary.main}`,
       textTransform: "Uppercase",
       letterSpacing: "1px",
       fontWeight: 500,

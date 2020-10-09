@@ -70,7 +70,8 @@ const styles = makeStyles(theme => ({
     },
     pricesilver:{
         color:`${theme.palette.secondary.dark2}`,
-        fontWeight:'bold',
+        fontWeight:'bolder',
+        fontSize:26,
         padding:'4px 0px 10px 0px',
         [theme.breakpoints.down('sm')]:{
             color: theme.palette.primary.main,

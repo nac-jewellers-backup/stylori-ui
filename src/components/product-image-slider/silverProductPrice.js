@@ -548,7 +548,7 @@ const Productprice = (
                           <Quantity data={props.data} /> 
                         </div>
                       </Grid> */}
-                       {isSilver&&   <Grid item xs={12} style={{padding:'30px 0px 20px 0px'}}>
+                       {isSilver&&   <Grid item xs={12} style={{padding:'10px 0px 20px 0px'}}>
                         <Grid item xs={3} sm={4} md={4} lg={3}>
                           {/* <div onClick={handleLocalStorage.bind(this)}> */}
                             <Button variant="contained" color="primary" class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart}`} ><i style={{ fontSize: "14px",paddingRight:5 }} class={`fa fa-shopping-cart`}></i> Add to Cart</Button>
@@ -594,12 +594,13 @@ const Productprice = (
                               globalContext={globalContext.Globalctx}
                               isSilver={isSilver}
                               
+                              
                             />
                         </Grid>
                      
                         <Grid item xs={6} className={classes.sharesilver}>
                           <div
-                            className={`starts product-icons2 `}
+                            className={`starts product-icons2 ${isSilver ? classes.iconSilver : ""}`}
                             style={{ fontFamily: "fontawesome" }}
                           >
                             <div

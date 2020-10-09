@@ -354,7 +354,7 @@ class Sublistcarousel extends React.Component {
                   >
                     {/* <Grid item xs={10} className={`${'like-page'} ${this.state.dataToShow === 'YouMayLike' ? 'recenetly-like-page-active' : ''}`} ><span onClick={() => this.setState({ dataToShow: 'YouMayLike' })}>You may also like</span></Grid> */}
                     <Grid container item xs={10}>
-                      <Typography variant="body1" component="div">
+                      <Typography variant="body1" component="div" >
                         Similar Products
                       </Typography>
                     </Grid>

@@ -389,7 +389,7 @@ class ProductDetail extends Component {
               <Sublistcarousel
                 data={this.props.data}
                 isSilver={isSilver}
-                customLimit={4}
+                customLimit={2}
                 label="BUY TOGETHER"
               />
             </div>
@@ -407,7 +407,7 @@ class ProductDetail extends Component {
               <Sublistcarousel
                 data={this.props.data}
                 isSilver={isSilver}
-                customLimit={4}
+                customLimit={2}
               />
             </div>
           ) : (

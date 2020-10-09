@@ -22,12 +22,12 @@ const useStyles = makeStyles((theme) => ({
     // padding: theme.spacing(2),
   },
   popper: {
-    minWidth: 400,
+    minWidth: 500,
     [theme.breakpoints.down("sm")]: {
       minWidth: 0,
     },
     "& .MuiPaper-root": {
-      padding: theme.spacing(2),
+      // padding: '16px 16px 16px 34px',
     },
     "& .MuiSvgIcon-root": {
       fill: `${theme.palette.secondary.main} !important`,
@@ -45,25 +45,25 @@ const useStyles = makeStyles((theme) => ({
   },
   needHelpTextWithoutRotate:{
       background: theme.palette.primary.main,
-      width:90,
       "& span": {
         color: "white",
         fontWeight:"bold",
-        fontSize:'0.9rem'
+        fontSize:'1.5rem'
       },
   },
   noWidth:{
 width:'auto !important'
   },
   number: {
-    fontSize: 12,
+    fontSize: 17,
     color:theme.palette.ternary.dark
   },
   chatNow: {
     color: theme.palette.secondary.main,
     fontWeight: "bold",
-    fontSize: 14,
-    cursor:"pointer"
+    fontSize: 17,
+    cursor:"pointer",
+    textTransform:"uppercase"
   },
   closeIcon:{
     fill:"white !important"
@@ -111,7 +111,7 @@ export function NeedHelp(props) {
                 </Grid>
               </Hidden>
               <Hidden smDown>
-                <Grid container>
+                <Grid container spacing={2}>
                   <Grid item xs={12} sm={3} style={{ padding: "5px 0px" , borderRight:'1px solid rgb(166, 168, 171)' }}>
                     <Typography
                       variant="body1"

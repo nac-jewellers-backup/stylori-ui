@@ -373,10 +373,10 @@ class ProductImageZoom extends React.Component {
                     // imageSrc={largeImage}
                     // onImageLoad={this.imageSrc=`${CDN_URL}product/1000X1000/productnotfound.webp`}
                     imageAlt="Stylori"
-                    magnifierSize="20%"
+                    magnifierSize={this.props.isSilver ? "30%" : "50%"}
                     largeImageSrc={[largeImage,largeImageBig, `${CDN_URL}product/2400X2400/productnotfound.webp`,`${CDN_URL}product/1000X1000/productnotfound.webp`]}
                     magnifierBoxShadow="0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)"
-                    magnifierBorderColor="#f5003240"
+                    magnifierBorderColor={this.props.isSilver ? "rgb(58,69,120)" : '#f5003240'}
                     // magnifierBackgroundColor="#f5003240"
                   />
                 )}

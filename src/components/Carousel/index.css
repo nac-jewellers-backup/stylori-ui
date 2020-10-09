@@ -32,14 +32,14 @@
 }
 .hovereffect-silver {
   /* width: 50% !important; */
-  height: 200px !important;
+  height: 450px !important;
   /* margin-left: 25% !important; */
   box-shadow: 4px 5px 6px rgba(208, 210, 211, 1) !important;
     margin-bottom: 7px;
 }
 .hovereffect-silver .overlay1silver {
   width: 100%;
-  height: 200px !important;
+  height: 450px !important;
   position: absolute;
   overflow: hidden;
   top: 0;
@@ -312,6 +312,7 @@
   .hovereffect-silver{
     /* width: 70% !important;
   margin-left: 15% !important; */
-  height: 170px !important;
+  /* height: 170px !important; */
+  height: 150px !important;
   }
 }
