@@ -71,6 +71,7 @@ const ProductModal = (props) => {
     });
 
     let _fun = () => {
+      debugger
       let _arr = [];
       _keysCollections.map((val) => {
         let tempdata = data ? data[val] : false;
@@ -78,7 +79,7 @@ const ProductModal = (props) => {
           let obj = {};
 
           obj["img"] =
-            tempdata.nodes[0].productListByProductId.productImagesByProductId.nodes[0];
+            tempdata?.nodes[0]?.productListByProductId?.productImagesByProductId?.nodes[0] ? tempdata.nodes[0].productListByProductId.productImagesByProductId.nodes[0] : `${CDN_URL}product/575X575/productnotfound.webp`;
           obj["title"] = tempdata.nodes[0].collectionName;
           obj["description"] =
             "Lorem Ipsum is simply dummy text of the printing a…rem Ipsum has been the industry's standard dummy";
@@ -228,8 +229,8 @@ const ProductModal = (props) => {
                   {!Boolean(props.isShowDetails) && (
                     <ExpansionPanel
                       className={classes.expandCollapse}
-                      expanded={expanded === "panel1"}
-                      onChange={handleChange("panel1")}
+                      expanded={expanded === tile.title}
+                      onChange={handleChange(tile.title)}
                     >
                       <ExpansionPanelSummary
                         expandIcon={<ExpandMoreIcon />}
