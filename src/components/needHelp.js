@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     // padding: theme.spacing(2),
   },
   popper: {
-    minWidth: '35%',
+    minWidth: '40%',
     [theme.breakpoints.down("sm")]: {
       minWidth: 0,
     },

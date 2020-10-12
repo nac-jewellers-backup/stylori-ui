@@ -178,8 +178,8 @@ class ProductImageZoom extends React.Component {
   productImageZoom = (_isSilver) => {
     
     // console.log(this.props.data)
-    const { classes, data } = this.props;
-    const limit = 4;
+    const { classes, data, customLimit } = this.props;
+    const limit = customLimit ? customLimit : 4;
     const { showimage, largeImage, showimageBig, largeImageBig } = this.state;
     const dataCarousel = {
       infinite: false,
@@ -317,7 +317,7 @@ class ProductImageZoom extends React.Component {
                   height:
                     window.innerWidth > 2250
                       ? "800px"
-                      : this.props.data[0].size,
+                      : _isSilver ? (this.props.data[0].size - 100) : this.props.data[0].size, 
                   display: "flex",
                   alignItem: "center"
                 }}

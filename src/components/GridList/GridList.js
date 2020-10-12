@@ -263,8 +263,10 @@ export default function ImageGridList(props) {
       </Hidden>
       <Hidden smDown>
         {props.isHover ? (
-        <Grid container spacing={1} style={{height:500, paddingTop:30}}>
-          <Grid container item xs={4} style={{height:"100%"}} className="hovereffectSilvertoppicks">
+        <Grid container justify="center" style={{paddingTop:30, height:600}}>
+          <Grid item xs={5} style={{height:"100%", padding:"2%"}}>
+          {/* <Grid container spacing={1} style={{height:500, paddingTop:30}}> */}
+          <Grid  item xs={12} style={{height:"100%"}} className="hovereffectSilvertoppicks">
             <img
               alt=""
               src="https://assets.stylori.com/images/Static+Pages/Home+Page/blush+3.png"
@@ -280,7 +282,12 @@ export default function ImageGridList(props) {
             </div>
           </div>
           </Grid>
-          <Grid container item xs={8} style={{height:"100%"}}>
+       
+        {/* </Grid> */}
+      
+          </Grid>
+          <Grid item xs={5} style={{height:"100%", padding:"2%"}}>
+          <Grid container item xs={12} style={{height:"100%"}}>
             <Grid container item xs={12}  style={{height:"50%", paddingBottom:6}}>
               <FormRow />
             </Grid>
@@ -288,8 +295,9 @@ export default function ImageGridList(props) {
               <FormRow />
             </Grid>
           </Grid>
+       
+          </Grid>
         </Grid>
-      
     
         ) : (
           <Grid container style={{ padding: "0px 15px" }}>

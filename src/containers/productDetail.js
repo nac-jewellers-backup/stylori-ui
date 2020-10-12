@@ -295,9 +295,14 @@ class ProductDetail extends Component {
             className="pricing-imgzom-media"
             style={{ maxWidth: "1600px", margin: "auto" }}
           >
-            <Grid container spacing={12}>
+            <Grid container spacing={isSilver ? 5 : 12} justify={isSilver ? 'space-between' : 'space-evenly'}>
               <Grid item xs={6}>
-                <ProductImageZoom data={this.props.data} isSilver={isSilver} />
+                {
+                  isSilver ? 
+                  <ProductImageZoom data={this.props.data} isSilver={isSilver} customLimit={3}/>
+                  :
+                  <ProductImageZoom data={this.props.data} isSilver={isSilver}/>
+                }
               </Grid>
               <Grid item xs={6}>
                 {isSilver ? (

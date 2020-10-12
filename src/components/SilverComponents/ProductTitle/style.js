@@ -29,7 +29,7 @@ export const useStyles = makeStyles(theme => ({
         fontWeight:"bold",
         [theme.breakpoints.only('xs')]: {
             letterSpacing: '1px',
-            fontSize: '12px'
+            fontSize: '16px'
         },
 
     },
