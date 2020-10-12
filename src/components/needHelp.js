@@ -67,6 +67,11 @@ width:'auto !important'
   },
   closeIcon:{
     fill:"white !important"
+  },
+  paper:{
+  [theme.breakpoints.down('sm')]:{
+    padding:8
+  }
   }
 }));
 
@@ -93,7 +98,7 @@ export function NeedHelp(props) {
       >
         {({ TransitionProps }) => (
           <Collapse {...TransitionProps} timeout={500} >
-            <Paper>
+            <Paper className={classes.paper}>
               <Hidden mdUp>
                 <Grid item xs={12} sm={4} style={{ padding: "5px 0px" }}>
                   <ChatIcon onClick={() => window.LC_API.open_chat_window()} />
