@@ -124,8 +124,8 @@ class Sublistcarousel extends React.Component {
       slidesToScroll: 1,
       autoplay: false,
       autoplaySpeed: 2000,
-      prevArrow: <ArrowLeftIcon className={classes.carouselCustomArrow}/>,
-      nextArrow: <ArrowRightIcon className={classes.carouselCustomArrow}/>,
+      prevArrow: <ArrowLeftIcon className={classes.carouselCustomArrow} style={{fontSize:'3rem'}}/>,
+      nextArrow: <ArrowRightIcon className={classes.carouselCustomArrow} style={{fontSize:'3rem'}}/>,
     };
     const dataCarousel_ = {
       slidesToShow: 1,
@@ -311,6 +311,7 @@ class Sublistcarousel extends React.Component {
                  sliderRef={this.slider}
                  class="subslider-carousel"
                  isSilver={_isSilver}
+                 nextPreviousIconSize={this.props.nextPreviousIconSize}
                  hoverlist={
                    this.state.dataToShow === "YouMayLike"
                      ? data && data[0] && data[0].fadeImageSublist
@@ -432,7 +433,7 @@ class Sublistcarousel extends React.Component {
                           onClick={() => this.previous()}
                           className={"icon-leftcaro"}
                         /> */}
-                        <ArrowLeftIcon onClick={() => this.previous()} className={`${classes.carouselCustomArrow}`}/>
+                        <ArrowLeftIcon onClick={() => this.previous()} className={`${classes.carouselCustomArrow}`} nextPreviousIconSize={this.props.nextPreviousIconSize}/>
                       </Grid>
                       <Grid item style={{ width: "88%" }}>
                         <Slideshow
@@ -449,6 +450,7 @@ class Sublistcarousel extends React.Component {
                           dataCarousel={dataCarousel}
                           hover={true}
                           imagecra={true}
+                          nextPreviousIconSize={this.props.nextPreviousIconSize}
                           data={data}
                         ></Slideshow>
                       </Grid>
@@ -521,6 +523,7 @@ class Sublistcarousel extends React.Component {
                           data[0] &&
                           data[0].fadeImageSublistRecentlyViewed
                         }
+                        nextPreviousIconSize={this.props.nextPreviousIconSize}
                         dataCarousel={mobiledataCarousel}
                         hover={true}
                       ></Slideshow>
@@ -539,7 +542,7 @@ class Sublistcarousel extends React.Component {
                               textAlign: "center",
                             }}
                           >
-                            <Slideshow dataCarousel={dataCarousel_}>
+                            <Slideshow dataCarousel={dataCarousel_} nextPreviousIconSize={this.props.nextPreviousIconSize}>
                               {productsubHead.map((val, index) => (
                                 <>
                                   <Grid

@@ -207,9 +207,9 @@ const styles = (theme) => ({
     letterSpacing: "1px",
     textTransform: "uppercase",
     color: `${theme.palette.primary.main} !important`,
-    [theme.breakpoints.up("sm")]: {
-      marginBottom: "15px",
-    },
+    // [theme.breakpoints.up("sm")]: {
+    //   marginBottom: "15px",
+    // },
   },
   silverMarginBottom: {
     [theme.breakpoints.down("sm")]: {

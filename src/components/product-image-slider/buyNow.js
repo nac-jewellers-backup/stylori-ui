@@ -63,7 +63,11 @@ const inputsearch = (
               type="tel"
               placeholder="Enter Pincode"
               maxLength={6}
-              className={`buynow-search ${isSilver ? `${'pincode-cust-silver'} ${classes.rating__}` : 'pincode-cust'}`}
+              className={`buynow-search ${
+                isSilver
+                  ? `${"pincode-cust-silver"} ${classes.rating__}`
+                  : "pincode-cust"
+              }`}
               value={state.values}
               onChange={(event) => {
                 handleChanges(event);
@@ -72,7 +76,6 @@ const inputsearch = (
                 if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
               }}
             />
-
           </Grid>
           <Grid item xs={isSilver ? 5 : 5} lg={3} sm={5}>
             <Button
@@ -247,7 +250,7 @@ const Buydetails = (
                   item
                   style={{ cursor: "pointer !important" }}
                   className={`buy-subheaders ${classes.normalfonts}`}
-                  onClick={()=>window.LC_API.open_chat_window()}
+                  onClick={() => window.LC_API.open_chat_window()}
                 >
                   <Typography>
                     <i
@@ -293,14 +296,14 @@ const BuydetailsSilverdetailpage = (
               {inputsearch(props, state, handleChanges, handleCodChange)}
             </Grid>
           </Grid>
-          <Grid container spacing={12} style={{ padding: "0 10px" }}>
-            <Grid item xs={12} lg={4} style={{}}>
-              {/* <NavLink to="/cart" style={{ textDecoration: 'none' }} onClick={handleLocalStorage.bind(this)}> */}
-              {/* <div onClick={handleLocalStorage.bind(this)}>
-                                <Buynowbutton sku={data[0].skuId} class={`buynow-button ${classes.buttons}`} button='buynow-btn-cont' />
-                            </div> */}
-              {/* </NavLink> */}
-              {/* <CommenDialog isOpen={state.modelOpen} content={`Verify selected product details before proceeding`} handleClose={canceldeletechecklist} handleSuccess={deletechecklists} negativeBtn="No" positiveBtn="Yes" title="Confirmation" /> */}
+          <Grid container style={{ marginTop: 10 }}>
+            <Grid
+              item
+              xs={12}
+              lg={4}
+              style={{ fontSize: "0.8rem", color: "rgb(58,69,120)" }}
+            >
+              {val.shipby}
             </Grid>
 
             {/* <Grid
@@ -478,20 +481,21 @@ class Component extends React.Component {
   //     });
   //   return vals;
   // };
-   valus = (valueId) => {
-        
-        var valus_locl = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : ""
-        
-        var vals;
+  valus = (valueId) => {
+    var valus_locl = localStorage.getItem("cartDetails")
+      ? JSON.parse(localStorage.getItem("cartDetails")).products
+      : "";
 
-        if (valus_locl) {
-            let productIds = valus_locl.map((val) => {
-              return val.sku_id;
-            });
-            productIds.indexOf(valueId) > -1 ? vals= 1 : vals= 0
-          }
-          return vals
+    var vals;
+
+    if (valus_locl) {
+      let productIds = valus_locl.map((val) => {
+        return val.sku_id;
+      });
+      productIds.indexOf(valueId) > -1 ? (vals = 1) : (vals = 0);
     }
+    return vals;
+  };
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
 
@@ -715,7 +719,22 @@ class Component extends React.Component {
                 this.handleChanges,
                 this.handleCodChange
               )}
-
+            {isSilver && (
+              <Container>
+                
+                <Grid container style={{padding:"0px 8px 5px 8px"}}>
+                <Grid
+                  item
+                  xs={12}
+                  lg={4}
+                  style={{ fontSize: "0.8rem", color: "rgb(58,69,120)" }}
+                >
+                  {this.props.data[0].ProductContactNum[0].shipby}
+                </Grid>
+              </Grid>
+              
+              </Container>
+            )}
             <Buynowfixed
               deleteComment={this.deletechecklists}
               data={this.props.data}

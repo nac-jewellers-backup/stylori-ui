@@ -491,7 +491,7 @@ class Component extends React.Component {
     
     return (
       <div>
-        <Slider ref={sliderRef} {...settings}>
+        <Slider ref={sliderRef} {...settings} className={ this.props.nextPreviousIconSize ? "customIconSize" : ''}>
           {this.props.children ? this.props.children : this.renderFadeImages()}
           {this.props.hover
             ? this.imagehoverchildrens(this.props.hoverlist, Globalctx)

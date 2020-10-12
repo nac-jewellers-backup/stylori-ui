@@ -9,6 +9,7 @@ const styles = (theme) => ({
   silverLabel:{
     "& div": {
     color:`${theme.palette.primary.main} !important`,
+    fontSize:24
     }
   },
   shopByLabel: {

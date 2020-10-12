@@ -389,6 +389,7 @@ class ProductDetail extends Component {
               <Sublistcarousel
                 data={this.props.data}
                 isSilver={isSilver}
+                nextPreviousIconSize = {'3rem'}
                 customLimit={2}
                 label="BUY TOGETHER"
               />
@@ -408,6 +409,7 @@ class ProductDetail extends Component {
                 data={this.props.data}
                 isSilver={isSilver}
                 customLimit={2}
+                nextPreviousIconSize = {'3rem'}
               />
             </div>
           ) : (
@@ -552,12 +554,13 @@ class ProductDetail extends Component {
           <Grid item xs={12}>
             {isSilver && (
               <Container>
-                <div style={{ marginTop: 20, marginBottom: 10 }}>
-                  <ProductTitle
+                <div style={{ marginTop: 20, marginBottom: 10, fontSize:20, color:"rgb(58,69,120)", fontWeight:"bold", letterSpacing:4, textAlign:"center" }}>
+                  {/* <ProductTitle
                     title={"SHOP BY TYPE"}
                     class={["silverPDPage", "silverPDPagehrline"]}
                     isSilver={isSilver}
-                  />
+                  /> */}
+                  SHOP BY TYPE
                 </div>
 
                 <ProductModal

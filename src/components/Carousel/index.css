@@ -316,3 +316,7 @@
   height: 150px !important;
   }
 }
+
+.customIconSize .MuiSvgIcon-root{
+  font-size: 3rem !important;
+}

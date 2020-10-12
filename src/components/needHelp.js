@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     // padding: theme.spacing(2),
   },
   popper: {
-    minWidth: 500,
+    minWidth: '35%',
     [theme.breakpoints.down("sm")]: {
       minWidth: 0,
     },
@@ -111,8 +111,8 @@ export function NeedHelp(props) {
                 </Grid>
               </Hidden>
               <Hidden smDown>
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={3} style={{ padding: "5px 0px" , borderRight:'1px solid rgb(166, 168, 171)' }}>
+                <Grid container style={{padding:"10px 15px"}}>
+                  <Grid item xs={12} sm={4} style={{ padding: "5px 0px" , borderRight:'1px solid rgb(166, 168, 171)' }}>
                     <Typography
                       variant="body1"
                       className={classes.chatNow}

@@ -606,6 +606,7 @@ const Productprice = (
                             <div
                               className={`row  ${classes.icon2} ${classes.productIcons2}`}
                             >
+                                
                               <i
                                 class={`fa fa-share-alt overall-icons `}
                                 aria-owns={open ? "simple-popper" : ""}
@@ -795,6 +796,7 @@ class Component extends React.Component {
   render() {
     const { anchorEl } = this.state;
     const context = this.context;
+    debugger
     // alert(JSON.stringify(this.props.wishlist))
     return (
       <div>
