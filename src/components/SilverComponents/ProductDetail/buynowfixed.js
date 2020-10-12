@@ -89,7 +89,7 @@ class Buynowfixed extends React.Component {
                             {isSilver ? null : <i class="fa fa-comments" >
                         </i> }
                         &nbsp;
-                            {isSilver ? 'Deii culprit' :'Talk To Us'}</a></Grid>
+                            {isSilver ? 'Add To Cart' :'Talk To Us'}</a></Grid>
                     </Grid>
                 </AppBar>
 
