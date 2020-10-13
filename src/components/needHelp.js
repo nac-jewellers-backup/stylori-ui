@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
       "& span": {
         color: "white",
         fontWeight:"bold",
-        fontSize:'1.5rem'
+        fontSize:'1.3rem'
       },
   },
   noWidth:{

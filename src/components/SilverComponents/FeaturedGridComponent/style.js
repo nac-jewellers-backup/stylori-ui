@@ -6,7 +6,7 @@ export const useStyles = makeStyles(theme => ({
         bottom: "-5px",
         height:'600px !important',
         [theme.breakpoints.down('sm')]:{
-            height:'300px !important',
+            height:'500px !important',
         }
 
     },
