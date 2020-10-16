@@ -325,7 +325,7 @@ const styles = (theme) => ({
   buynowButtonSilver: {
     width: "90% !important",
     height: "50px !important",
-    fontSize: "1.9rem",
+    fontSize: "1.95rem",
     borderRadius: "unset !important",
     boxShadow: "8px 8px 5px rgba(208, 210, 211, 1)",
     textTransform: "uppercase",
@@ -486,5 +486,11 @@ const styles = (theme) => ({
       fontSize: "12px",
     },
   },
+  robotoBoldFont:{
+    fontFamily:'Roboto-bold , serif !important'
+  },
+  robotoBlack:{
+    fontFamily:'Roboto-black , serif !important'
+  }
 });
 export default styles;

@@ -70,12 +70,16 @@ const styles = makeStyles(theme => ({
     },
     pricesilver:{
         color:`${theme.palette.secondary.dark2}`,
-        fontWeight:'bolder',
-        fontSize:26,
+        // fontWeight:'bolder',
+        fontSize:31,
+        fontFamily:'Roboto-black , serif !important',
         padding:'4px 0px 10px 0px',
         [theme.breakpoints.down('sm')]:{
             color: theme.palette.primary.main,
         }
-    }
+    },
+    // robotoBlack:{
+    //     fontFamily:'Roboto-black , serif !important'
+    //   }
 }));
 export default styles;

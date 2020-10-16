@@ -551,7 +551,7 @@ const Productprice = (
                        {isSilver&&   <Grid item xs={12} style={{padding:'10px 0px 20px 0px'}}>
                         <Grid item xs={3} sm={4} md={5} lg={4}>
                           {/* <div onClick={handleLocalStorage.bind(this)}> */}
-                            <Button variant="contained" color="primary" class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart}`} ><i style={{ fontSize: "1rem",paddingRight:5 }} class={`fa fa-shopping-cart`}></i> Add to Cart</Button>
+                            <Button variant="contained" color="primary" class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart}`} ><i style={{ fontSize: "1rem",paddingRight:5 }} class={`fa fa-shopping-cart`}></i> <span className={classes.robotoBoldFont}>Add to Cart</span></Button>
                           {/* </div> */}
                         </Grid>
                       </Grid>}
@@ -560,7 +560,7 @@ const Productprice = (
                         <div onClick={handleLocalStorage.bind(this)} style={{display:"hidden"}}>
                             <Buynowbutton
                               sku={data[0].skuId}
-                              class={`${classes.buynowButtonSilver} ${classes.buttonsilver}`}
+                              class={`${classes.buynowButtonSilver} ${classes.buttonsilver} ${classes.robotoBoldFont}`}
                               button="buynow-btn-cont"
                               id="silverButton"
                               withoutBag={true}

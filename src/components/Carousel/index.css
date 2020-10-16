@@ -267,19 +267,23 @@
   box-shadow: 0 0 4px #fff;
 }
 
-.hovereffectSilver:hover img {
+
+/* commented on 17-10-2020 */
+/* .hovereffectSilver:hover img {
   -ms-transform: scale(1.2);
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
 
 
-}
+} */
 
 .hovereffectSilver:hover .overlay1 {
   opacity: 1;
   filter: alpha(opacity=100);
 }
-
+.hovereffectSilver:hover .overlay1 h2{
+  font-weight: bold !important;
+}
 .hovereffectSilver:hover h2,
 .hovereffectSilver:hover a.info {
   opacity: 1;

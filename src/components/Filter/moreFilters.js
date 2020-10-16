@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     height: "calc(100vh - 200px)",
     overflowY:"auto",
     "& b":{
-      color:`${theme.palette.primary.main} !important`,
+      color:`${theme.palette.secondary.main} !important`,
       fontSize:'18px',
     },
     // .arrow-chek, .MuiSvgIcon-root, .MuiExpansionPanelDetails-root, .MuiExpansionPanelDetails-root
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   
   },
   checkboxlabel:{
-    color:'rgb(109,110,112)' ,
+    color:theme.palette.secondary.main ,
     
     
   },
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     "& span":{
       
         "& svg":{
-            fill:`${theme.palette.primary.main} !important`
+            fill:`${theme.palette.secondary.main} !important`
         }
     }
   },

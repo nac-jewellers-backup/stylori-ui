@@ -15,7 +15,8 @@ const styles = theme => ({
         color: theme.palette.primary.main,
     },
     fixedGridsilver:{
-        backgroundColor:`${theme.palette.primary.main} !important`
+        backgroundColor:`${theme.palette.primary.main} !important`,
+            fontFamily:'Roboto-bold , serif !important'
     },
     pricedetails: {
         color: theme.palette.primary.main,
@@ -115,7 +116,8 @@ const styles = theme => ({
         shadow: {
             boxShadow: "none"
         }, 
-    }
+    },
+    
 
 });
 export default styles;

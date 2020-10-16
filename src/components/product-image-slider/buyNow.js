@@ -739,7 +739,7 @@ class Component extends React.Component {
               deleteComment={this.deletechecklists}
               data={this.props.data}
               onClick={this.handleLocalStorage.bind(this)}
-              isSilver={isSilver}
+              isSilver={isSilver} 
             />
           </div>
         </Hidden>

@@ -8,11 +8,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/2.css"
   },
   {
-    "revision": "ac45719cfbc98b41b359",
+    "revision": "dc4bb540820f6dd9edbb",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "68cf12b528906fcad1c2",
+    "revision": "ddcdbdfa3b7e03317b02",
     "url": "/static/css/main.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.js"
   },
   {
-    "revision": "ac45719cfbc98b41b359",
+    "revision": "dc4bb540820f6dd9edbb",
     "url": "/static/js/3.js"
   },
   {
@@ -28,7 +28,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/4.js"
   },
   {
-    "revision": "68cf12b528906fcad1c2",
+    "revision": "ddcdbdfa3b7e03317b02",
     "url": "/static/js/main.js"
   },
   {
@@ -42,6 +42,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "92e2d23a1a2929823738532362c05eea",
     "url": "/static/media/FlowerDimon.jpg"
+  },
+  {
+    "revision": "5ebb24ee1112dd9562629375c387879a",
+    "url": "/static/media/Roboto-Black.ttf"
+  },
+  {
+    "revision": "e07df86cef2e721115583d61d1fb68a6",
+    "url": "/static/media/Roboto-Bold.ttf"
   },
   {
     "revision": "11eabca2251325cfc5589c9c6fb57b46",

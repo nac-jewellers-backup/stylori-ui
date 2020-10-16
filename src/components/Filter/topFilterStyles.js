@@ -102,19 +102,23 @@ export const styles = makeStyles(theme => ({
     display:"flex",
     margin:'auto',
     alignItems:'center',
-    color: "white",
+    color: theme.palette.secondary.main,
     minWidth:"50px",
     // #80808061
-    boxShadow: `6px 7px 6px  ${theme.palette.secondary.light}`,
-    background:theme.palette.secondary.main,
+    border:`1px solid ${theme.palette.secondary.light}`,
+    boxShadow: `6px 7px 6px  ${theme.palette.ternary.main}`,
+    background:'white',
     // borderBottom: "1px solid #fff",
     '&:hover': {
       background: theme.palette.secondary.dark,
-      // paddingBottom: "2px",
-    //   borderBottom: "1px solid " + theme.palette.secondary.dark,
+      color:'white',
+      "& svg":{
+        fill:`white !important`,
+        
+      },
     },
     "& svg":{
-      fill:`white !important`,
+      fill:`${theme.palette.secondary.main} !important`,
       
     },
 "&.mouseOverPopover":{
@@ -148,7 +152,7 @@ top:0
     padding:"5px 4px 5px 15px",
     marginRight:15,
     color: theme.palette.secondary.main,
-    boxShadow: `6px 7px 6px  ${theme.palette.secondary.light}`,
+    boxShadow: `6px 7px 6px  ${theme.palette.ternary.main}`,
     background:'white',
     border: `1px solid ${theme.palette.secondary.main}`,
     '&:hover': {
@@ -186,7 +190,7 @@ top:0
     margin:'auto',
     alignItems:'center',
     color: theme.palette.secondary.main,
-      boxShadow: `6px 7px 6px  ${theme.palette.secondary.main}`,
+      boxShadow: `6px 7px 6px  ${theme.palette.ternary.main}`,
       border: `1px solid ${theme.palette.secondary.main}`,
     background:'white',
     '&:hover': {

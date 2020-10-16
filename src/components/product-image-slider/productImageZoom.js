@@ -213,9 +213,10 @@ class ProductImageZoom extends React.Component {
     return (
       <div>
         {/* {JSON.stringify(showimage)} */}
-        <Grid container spacing={12} style={{ paddingRight: "20px" }}>
-          <Grid item xs={2}>
-            <div
+        <Grid container spacing={_isSilver ? 2 : 12} style={{ paddingRight: _isSilver ? "auto" : "20px" }}>
+          <Grid item xs={_isSilver ? 3 : 2}>
+          <Grid item xs={_isSilver ? 10 : 12}>
+          <div
               style={{ textAlign: "center" }}
               className="imgzom-sidecraousel-media"
             >
@@ -295,9 +296,11 @@ class ProductImageZoom extends React.Component {
                 </span>
               ) : null}
             </div>
+          
+          </Grid>
           </Grid>
 
-          <Grid item xs={10}>
+          <Grid item xs={_isSilver ? 9 : 10}>
             {/* <div className='imagecard' id="divs" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
                 {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship" ></div> : ""} */}
             {/* <div id='flashlight'></div> */}
@@ -316,7 +319,7 @@ class ProductImageZoom extends React.Component {
                 style={{
                   height:
                     window.innerWidth > 2250
-                      ? "800px"
+                      ? _isSilver ? "500px" : "800px"
                       : _isSilver ? (this.props.data[0].size - 100) : this.props.data[0].size, 
                   display: "flex",
                   alignItem: "center"

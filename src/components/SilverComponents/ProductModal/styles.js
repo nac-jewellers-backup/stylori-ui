@@ -26,7 +26,7 @@ export const useStyles = makeStyles((theme) => ({
     },
     display: "flex",
     backgroundColor: "#fff",
-    width: "1300px",
+    // width: "1300px",
     margin: "3% 0% 3% 0%",
   },
   [theme.breakpoints.up("lg")]: {
