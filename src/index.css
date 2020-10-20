@@ -1,15 +1,15 @@
 @font-face {
     font-family: "Roboto";
-    src: url("fonts/roboto/Roboto-Regular.ttf") format("truetype");
+    src: url("https://styloriimages-staging.s3.ap-south-1.amazonaws.com/roboto/Roboto-Regular.ttf") format("truetype");
   }
   
   @font-face {
     font-family: "Roboto-black";
-    src: url("fonts/roboto/Roboto-Black.ttf") format('truetype');
+    src: url("https://styloriimages-staging.s3.ap-south-1.amazonaws.com/roboto/Roboto-Black.ttf") format('truetype');
   }
   @font-face {
     font-family: "Roboto-bold";
-    src: url("fonts/roboto/Roboto-Bold.ttf") format('truetype');
+    src: url("https://styloriimages-staging.s3.ap-south-1.amazonaws.com/roboto/Roboto-Bold.ttf") format('truetype');
   }
   * {
     margin: 0;

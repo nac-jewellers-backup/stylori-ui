@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/3.css"
   },
   {
-    "revision": "e03b090ef9f7b9f69a16",
+    "revision": "373099fa10f281265b62",
     "url": "/static/css/main.css"
   },
   {
@@ -28,7 +28,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/4.js"
   },
   {
-    "revision": "e03b090ef9f7b9f69a16",
+    "revision": "373099fa10f281265b62",
     "url": "/static/js/main.js"
   },
   {
@@ -42,18 +42,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "92e2d23a1a2929823738532362c05eea",
     "url": "/static/media/FlowerDimon.jpg"
-  },
-  {
-    "revision": "5ebb24ee1112dd9562629375c387879a",
-    "url": "/static/media/Roboto-Black.ttf"
-  },
-  {
-    "revision": "e07df86cef2e721115583d61d1fb68a6",
-    "url": "/static/media/Roboto-Bold.ttf"
-  },
-  {
-    "revision": "11eabca2251325cfc5589c9c6fb57b46",
-    "url": "/static/media/Roboto-Regular.ttf"
   },
   {
     "revision": "1a38a224b9dfb66dda91904348a8e0a8",
