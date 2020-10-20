@@ -16,7 +16,7 @@ const styles = theme => ({
     },
     fixedGridsilver:{
         backgroundColor:`${theme.palette.primary.main} !important`,
-            fontFamily:'Roboto-bold , serif !important'
+            fontFamily:'Roboto-bold !important'
     },
     pricedetails: {
         color: theme.palette.primary.main,

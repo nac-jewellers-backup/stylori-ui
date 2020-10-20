@@ -89,7 +89,7 @@ class Buynowfixed extends React.Component {
                             {isSilver ? null : <i class="fa fa-comments" >
                         </i> }
                         &nbsp;
-                            {isSilver ? <span style={{fontFamily:'Roboto-bold , serif'}}>Add To Cart</span>  :'Talk To Us'}</a></Grid>
+                            {isSilver ? <span style={{fontFamily:'Roboto-bold'}}>Add To Cart</span>  :'Talk To Us'}</a></Grid>
                     </Grid>
                 </AppBar>
 
