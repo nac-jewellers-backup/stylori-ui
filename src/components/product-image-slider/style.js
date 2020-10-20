@@ -487,7 +487,7 @@ const styles = (theme) => ({
     },
   },
   robotoBoldFont:{
-    fontFamily:'Roboto-bold , serif !important'
+    fontFamily:'Roboto-bold, serif !important'
   },
   robotoBlack:{
     fontFamily:'Roboto-black , serif !important'

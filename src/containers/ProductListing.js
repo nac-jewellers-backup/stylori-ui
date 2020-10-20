@@ -16,6 +16,7 @@ import { async } from 'q';
 import MetaTags from 'react-meta-tags';
 import { CartContext, GlobalContext } from 'context'
 import LiveChat from 'react-livechat'
+import { NeedHelp } from 'components/needHelp';
 
 class Stylori extends React.Component {
   constructor(props) {
@@ -102,6 +103,29 @@ class Stylori extends React.Component {
               <Footer />
             </Hidden>
           </Grid>
+          {context.Globalctx.pathName  && (
+            <>
+              <Hidden smDown>
+                <div
+                  style={{
+                    position: "fixed",
+                    top: "50%",
+                    right: 0,
+                    zIndex: 20,
+                  }}
+                >
+                  <NeedHelp position="left" />
+                </div>
+              </Hidden>
+              <Hidden mdUp>
+              <div
+              style={{ position: "fixed", top: "50%", right: 0, zIndex: 20 }}
+            >
+              <NeedHelp position="top" />
+            </div>
+              </Hidden>
+            </>
+          )}
         </Grid>
       </>
     )

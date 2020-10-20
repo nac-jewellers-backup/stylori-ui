@@ -13,7 +13,7 @@
     font-display: fallback;
 }
 @font-face {
-    font-family: Roboto-bold;
+    font-family: 'Roboto-bold';
     src: url(./fonts/roboto/Roboto-Bold.ttf) format('truetype');
     /* url(/path/to/fonts/examplefont.eot) format('eot'); */
     font-weight: bold;
@@ -21,7 +21,7 @@
     /* font-display: fallback; */
 }
 @font-face {
-    font-family: Roboto-black;
+    font-family: 'Roboto-black';
     src: url(./fonts/roboto/Roboto-Black.ttf) format('truetype');
     /* url(/path/to/fonts/examplefont.eot) format('eot'); */
     font-weight: bold;

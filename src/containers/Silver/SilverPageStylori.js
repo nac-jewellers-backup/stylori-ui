@@ -21,6 +21,7 @@ import {
 } from "queries/home";
 import Feedes from "components/Feedes/Index";
 import { InstagramFeed } from "components/Feedes/instagramfeed";
+import { NeedHelp } from "components/needHelp";
 
 const styles = (theme) => ({
   instagramTitle: {
@@ -53,7 +54,7 @@ class HomeStylori extends React.Component {
           />
           <Hidden smDown>
             <Feedes
-            isShowInsideDiv={true}
+              isShowInsideDiv={true}
               style={{
                 boxShadow: "rgb(204, 204, 204) 7px 8px 6px",
                 border: "1px solid #ccc",
@@ -72,6 +73,28 @@ class HomeStylori extends React.Component {
         <Grid item>
           <Footer silver={true} />
         </Grid>
+
+        <>
+          <Hidden smDown>
+            <div
+              style={{
+                position: "fixed",
+                top: "50%",
+                right: 0,
+                zIndex: 20,
+              }}
+            >
+              <NeedHelp position="left" />
+            </div>
+          </Hidden>
+          <Hidden mdUp>
+            <div
+              style={{ position: "fixed", top: "50%", right: 0, zIndex: 20 }}
+            >
+              <NeedHelp position="top" />
+            </div>
+          </Hidden>
+        </>
       </Grid>
     );
   }
