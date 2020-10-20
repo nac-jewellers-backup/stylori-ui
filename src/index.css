@@ -5,8 +5,8 @@
 /* @value assetURL: 'https://assets.stylori.com/'; */
 
 @font-face {
-    font-family: roboto-regular;
-    src: url(./fonts/roboto/Roboto-Regular.ttf) format('truetype');
+    font-family: 'roboto-regular';
+    src: url("fonts/roboto/Roboto-Regular.ttf") format('truetype');
     /* url(/path/to/fonts/examplefont.eot) format('eot'); */
     font-weight: 400;
     font-style: normal;
@@ -14,7 +14,7 @@
 }
 @font-face {
     font-family: 'Roboto-bold';
-    src: url(./fonts/roboto/Roboto-Bold.ttf) format('truetype');
+    src: url("fonts/roboto/Roboto-Bold.ttf") format('truetype');
     /* url(/path/to/fonts/examplefont.eot) format('eot'); */
     font-weight: bold;
     font-style: normal;
@@ -22,7 +22,7 @@
 }
 @font-face {
     font-family: 'Roboto-black';
-    src: url(./fonts/roboto/Roboto-Black.ttf) format('truetype');
+    src: url("fonts/roboto/Roboto-Black.ttf") format('truetype');
     /* url(/path/to/fonts/examplefont.eot) format('eot'); */
     font-weight: bold;
     font-style: normal;
@@ -30,7 +30,7 @@
 }
 body {
     margin: 0;
-    font-family: "Roboto", roboto-regular, serif;
+    font-family: 'roboto-regular, serif';
 
 }
 
