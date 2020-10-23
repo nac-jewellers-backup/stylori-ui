@@ -206,7 +206,8 @@ if(cartId){
                     .then(json).then(val => {
                        
                        if(mapped && mapped.length > 0 && val){
-                        const min_cart_value = val.data ? val.data.allPincodeMasters.nodes[0].minCartvalue : null
+                        // const min_cart_value = val.data ? val.data.allPincodeMasters.nodes[0].minCartvalue : null
+                        const min_cart_value = 5000
                         const max_cart_value = val.data ? val.data.allPincodeMasters.nodes[0].maxCartvalue : null
                         const data = mapped ? mapped : []
                         var dataCard1;
