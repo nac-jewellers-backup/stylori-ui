@@ -12,7 +12,7 @@
     src: url("https://styloriimages-staging.s3.ap-south-1.amazonaws.com/roboto/Roboto-Bold.ttf") format('truetype');
   }
   * {
-    margin: 0;
+    /* margin: 0; */
     font-family: Roboto;
 
 }
