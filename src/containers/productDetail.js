@@ -381,7 +381,8 @@ class ProductDetail extends Component {
               </Grid>
             </div>
           )}
-          {isSilver && (
+          {/* BUY TOGETHER - COMMENTED FOR SOME RESON DON'T REMOVE IT */}
+          {/* {isSilver && (
             <div
               style={{
                 maxWidth: "1600px",
@@ -399,7 +400,8 @@ class ProductDetail extends Component {
                 label="BUY TOGETHER"
               />
             </div>
-          )}
+          )} */}
+          {/* -------------------------------- */}
           {isSilver ? (
             <div
               style={{
@@ -526,14 +528,15 @@ class ProductDetail extends Component {
               customLimit={4}
             />
           </Grid>
-          <Grid item xs={12}>
+         {/* BUY TOGETHER - COMMENTED FOR SOME RESON DON'T REMOVE IT */}
+          {/* <Grid item xs={12}>
             <Sublistcarousel
               data={this.props.data}
               isSilver={isSilver}
               label="BUY TOGETHER"
               customLimit={4}
             />
-          </Grid>
+          </Grid> */}
           {isSilver && (
             <Container>
               <Container>

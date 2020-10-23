@@ -605,7 +605,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
               },
               {
                 name: "Fastening",
-                details: PD?.productListByProductId.earringBacking
+                details: PD?.productListByProductId?.earringBacking
                   ? PD.productListByProductId.earringBacking
                   : null,
               },

@@ -796,7 +796,6 @@ class Component extends React.Component {
   render() {
     const { anchorEl } = this.state;
     const context = this.context;
-    debugger
     // alert(JSON.stringify(this.props.wishlist))
     return (
       <div>

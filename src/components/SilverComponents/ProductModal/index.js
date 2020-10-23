@@ -71,7 +71,6 @@ const ProductModal = (props) => {
     });
 
     let _fun = () => {
-      debugger
       let _arr = [];
       _keysCollections.map((val) => {
         let tempdata = data ? data[val] : false;
