@@ -254,6 +254,7 @@ class ProductImageZoom extends React.Component {
               ) : null}
               <Slideshow
                 sliderRef={this.slider}
+                height={70}
                 getmsg={this.getimage}
                 class={this.props.isSilver ? "vertical-carousel-silver" : `vertical-carousel`}
                 imgClass="vertical-carousel-img"

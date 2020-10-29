@@ -978,7 +978,7 @@ body {
     border: 1px solid #CCC;
     margin-bottom: 15px !important;
     width: 100% !important;
-    /* height: 80px !important; */
+    height: 120px !important;
     outline: none !important;
     cursor: pointer;
     box-shadow: 4px 5px 6px rgba(208, 210, 211, 1);

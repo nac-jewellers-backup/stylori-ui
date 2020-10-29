@@ -153,7 +153,6 @@ class ProductDetails extends React.Component {
                       <>
                         {valueofproductdetail.namedetail !== undefined &&
                           valueofproductdetail.namedetail.map((res) => {
-                            debugger
                             return (
                               <>
                                 {res.name && (
@@ -555,7 +554,6 @@ res.details.length === 0 ? (
         ? data[0].productsDetails
         : [];
     const _isSilver = isSilver ? true : false;
-    debugger
     return (
       <>
         {val.header !== "Price Breakup" ||
@@ -595,7 +593,6 @@ res.details.length === 0 ? (
             <div style={{ backgroundColor: "fafafa" }}>
               {val.namedetail !== undefined &&
                 val.namedetail.map((res) => {
-                  debugger
                   return !Boolean(res.name && res.details) ? null : (
                     <span>
                       {
