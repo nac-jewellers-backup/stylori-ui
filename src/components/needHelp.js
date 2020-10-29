@@ -156,7 +156,10 @@ export function NeedHelp(props) {
       <Grid container justify="center">
         <Hidden smDown>
         <Grid item className={`${classes.needHelpTextWithoutRotate} ${open ? classes.noWidth : ''}`}>
-          <Button onClick={handleClick(props.position)}>{open ? <CloseIcon className={classes.closeIcon}/> : 'Need Help ?'}</Button>
+          <Button onClick={handleClick(props.position)}>{open ? <CloseIcon className={classes.closeIcon}/> : <div style={{display:"flex"}}>
+          <div style={{fontSize:'0.9rem'}}>Need<br/>Help</div>
+          <div style={{margin:"auto"}}><i style={{fontSize:'2.5rem'}} class="fa fa-5x">&#xf128;</i></div>
+          </div> }</Button>
         </Grid>
         </Hidden>
         <Hidden mdUp>

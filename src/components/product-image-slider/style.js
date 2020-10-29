@@ -87,6 +87,15 @@ const styles = (theme) => ({
       padding: "0 10px",
     },
   },
+  silverpricedetails: {
+    color: theme.palette.primary.main,
+    [theme.breakpoints.down("xs")]: {
+      padding: "0",
+    },
+    [theme.breakpoints.up("lg")]: {
+      padding: "0",
+    },
+  },
   width: {
     [theme.breakpoints.down("xs")]: {
       padding: "0 10px",

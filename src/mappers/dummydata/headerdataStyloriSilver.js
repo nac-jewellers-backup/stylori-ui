@@ -6,7 +6,7 @@
 export const mainlist = [
     {
         name: "JEWELLERY",
-        url: "/jewellery",
+        url: "/silver-jewellery",
     },
     // {
     //     name: "Silver",
@@ -105,6 +105,37 @@ export const subheader = {
             },
         ]
     },
+    "Bangle": {
+        header: 'Bangle',
+        name: [
+            {
+                name: 'Classic',
+                url: "/classic-nose+pin+online-jewellery"
+            }, {
+                name: 'Fashion',
+                url: "/fashion-nose+pin+online-jewellery"
+            }, {
+                name: 'Stud Nose Pin',
+                url: "/nose+studs+online-jewellery"
+            },
+        ]
+    },
+    "Chain Bracelets": {
+        header: 'Chain Bracelets',
+        name: [
+            {
+                name: 'Classic',
+                url: "/classic-nose+pin+online-jewellery"
+            }, {
+                name: 'Fashion',
+                url: "/fashion-nose+pin+online-jewellery"
+            }, {
+                name: 'Stud Nose Pin',
+                url: "/nose+studs+online-jewellery"
+            },
+        ]
+    },
+    
     "Nose Pins": {
         header: 'Nose Pins',
         name: [
@@ -153,36 +184,36 @@ export const subheader = {
             },
         ]
     },
-    'By Collections': {
-        header: 'By Collections',
-        name: [
-            {
-                name: 'Carve',
-                url: "/jewellery-from+the+carve+collection?sort=latest"
-            }, {
-                name: 'Blush',
-                url: "/jewellery-blush"
-            }, {
-                name: 'Molecute',
-                url: "/jewellery-molecute+collection"
-            }, {
-                name: 'Gemstone',
-                url: "/gemstone-jewellery?sort=latest"
-            }, {
-                name: 'Mistletoe',
-                url: "/jewellery-from+mistletoe+collection"
-            }, {
-                name: 'The Renaissance',
-                url: "/jewellery-from+the+renaissance+collection"
-            }, {
-                name: 'Monsoon',
-                url: "/jewellery-from+monsoon+collection"
-            }, {
-                name: 'Summer',
-                url: "/jewellery-from+the+summer+collection"
-            },
-        ]
-    },
+    // 'By Collections': {
+    //     header: 'By Collections',
+    //     name: [
+    //         {
+    //             name: 'Carve',
+    //             url: "/jewellery-from+the+carve+collection?sort=latest"
+    //         }, {
+    //             name: 'Blush',
+    //             url: "/jewellery-blush"
+    //         }, {
+    //             name: 'Molecute',
+    //             url: "/jewellery-molecute+collection"
+    //         }, {
+    //             name: 'Gemstone',
+    //             url: "/gemstone-jewellery?sort=latest"
+    //         }, {
+    //             name: 'Mistletoe',
+    //             url: "/jewellery-from+mistletoe+collection"
+    //         }, {
+    //             name: 'The Renaissance',
+    //             url: "/jewellery-from+the+renaissance+collection"
+    //         }, {
+    //             name: 'Monsoon',
+    //             url: "/jewellery-from+monsoon+collection"
+    //         }, {
+    //             name: 'Summer',
+    //             url: "/jewellery-from+the+summer+collection"
+    //         },
+    //     ]
+    // },
     'By Material': {
         header: 'By Material',
         name: [
@@ -271,37 +302,37 @@ export const subheader = {
             // },
         ]
     },
-    'By Collections': {
-        header: 'By Collections',
-        name: [
-            // {
-            //     name: 'Halo',
-            //     url: "/jewellery-from+halo+collection"
-            // },
-             {
-                name: 'Daisy Days',
-                url: "/jewellery-from+daisy+days+collection"
-            }, {
-                name: 'Monsoon',
-                url: "/jewellery-from+monsoon+collection"
-            }, {
-                name: 'Mango',
-                url: "/jewellery-from+the+summer+collection"
-            }, {
-                name: 'Blush',
-                url: "/jewellery-blush"
-            }, {
-                name: 'Molecute',
-                url: "/jewellery-molecute+collection"
-            }, {
-                name: 'Gemstone',
-                url: "/gemstone-jewellery?sort=latest"
-            }, {
-                name: 'Butterfly',
-                url: "/jewellery-butterfly?sort=latest"
-            },
-        ]
-    },
+    // 'By Collections': {
+    //     header: 'By Collections',
+    //     name: [
+    //         // {
+    //         //     name: 'Halo',
+    //         //     url: "/jewellery-from+halo+collection"
+    //         // },
+    //          {
+    //             name: 'Daisy Days',
+    //             url: "/jewellery-from+daisy+days+collection"
+    //         }, {
+    //             name: 'Monsoon',
+    //             url: "/jewellery-from+monsoon+collection"
+    //         }, {
+    //             name: 'Mango',
+    //             url: "/jewellery-from+the+summer+collection"
+    //         }, {
+    //             name: 'Blush',
+    //             url: "/jewellery-blush"
+    //         }, {
+    //             name: 'Molecute',
+    //             url: "/jewellery-molecute+collection"
+    //         }, {
+    //             name: 'Gemstone',
+    //             url: "/gemstone-jewellery?sort=latest"
+    //         }, {
+    //             name: 'Butterfly',
+    //             url: "/jewellery-butterfly?sort=latest"
+    //         },
+    //     ]
+    // },
     'By Theme': {
         header: 'By Theme',
         name: [
@@ -339,26 +370,41 @@ export const Jewellery = {
     JEWELLERY: {
         NewArraivals: {
             name: "NEW ARRAIVALS",
-            url: "/earrings-jewellery",
+            url: "/silver-jewellery?sort=New%20to%20Stylori&startprice=0&endprice=0",
             icon: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjUiIGhlaWdodD0iMjUiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iI2JmYmZiZiI+PHBhdGggZD0iTTg2LDE3LjJjLTM3Ljk5NDgsMCAtNjguOCwzMC44MDUyIC02OC44LDY4LjhjMCwzNy45OTQ4IDMwLjgwNTIsNjguOCA2OC44LDY4LjhjMzcuOTk0OCwwIDY4LjgsLTMwLjgwNTIgNjguOCwtNjguOGMwLC0zNy45OTQ4IC0zMC44MDUyLC02OC44IC02OC44LC02OC44ek0xMjAuNCw5MS43MzMzM2gtMjguNjY2Njd2MjguNjY2NjdjMCwzLjE3MDUzIC0yLjU2ODUzLDUuNzMzMzMgLTUuNzMzMzMsNS43MzMzM2MtMy4xNjQ4LDAgLTUuNzMzMzMsLTIuNTYyOCAtNS43MzMzMywtNS43MzMzM3YtMjguNjY2NjdoLTI4LjY2NjY3Yy0zLjE2NDgsMCAtNS43MzMzMywtMi41NjI4IC01LjczMzMzLC01LjczMzMzYzAsLTMuMTcwNTMgMi41Njg1MywtNS43MzMzMyA1LjczMzMzLC01LjczMzMzaDI4LjY2NjY3di0yOC42NjY2N2MwLC0zLjE3MDUzIDIuNTY4NTMsLTUuNzMzMzMgNS43MzMzMywtNS43MzMzM2MzLjE2NDgsMCA1LjczMzMzLDIuNTYyOCA1LjczMzMzLDUuNzMzMzN2MjguNjY2NjdoMjguNjY2NjdjMy4xNjQ4LDAgNS43MzMzMywyLjU2MjggNS43MzMzMyw1LjczMzMzYzAsMy4xNzA1MyAtMi41Njg1Myw1LjczMzMzIC01LjczMzMzLDUuNzMzMzN6Ij48L3BhdGg+PC9nPjwvZz48L3N2Zz4=',
         },
         BestSellers: {
             name: "BEST SELLERS",
-            url: "/pendants-jewellery",
+            url: "/silver-jewellery?sort=Best%20Seller&startprice=0&endprice=0",
             icon: ""
         },
         Necklace: {
             name: "NECKLACE",
-            url: "/rings-jewellery",
+            url: "/silver-necklace-jewellery",
             icon: ""
         },
         Earrings: {
             name: "EARRINGS",
-            url: "/nose+pin+online-jewellery",
+            url: "/silver-earrings-jewellery",
             icon: ""
         },
         Rings: {
             name: "RINGS",
+            url: "/silver-rings-jewellery",
+            icon: ""
+        },
+        Bangle: {
+            name: "BANGLE",
+            url: "/silver-bangles-jewellery",
+            icon: ""
+        },
+        ChainBracelets: {
+            name: "CHAIN BRACELETS",
+            url: "/silver-bracelets-jewellery",
+            icon: ""
+        },
+        bridal: {
+            name: "BRIDAL",
             url: "/bangles-jewellery",
             icon: ""
         },
@@ -367,21 +413,17 @@ export const Jewellery = {
             url: "/bangles-jewellery",
             icon: ""
         },
-        anklets: {
-            name: "ANKLETS",
-            url: "/bangles-jewellery",
-            icon: ""
-        },
+      
         ByPrice: {
             name: "By Price",
             url: "/#/",
             icon: ""
         },
-        ByCollections: {
-            name: "By Collections",
-            url: "/pages/collections",
-            icon: ""
-        },
+        // ByCollections: {
+        //     name: "By Collections",
+        //     url: "/pages/collections",
+        //     icon: ""
+        // },
         ByMaterial: {
             name: "By Material",
             url: "/#/",
@@ -457,7 +499,7 @@ export const menuListHeader =
     [
         {
             title: "JEWELLERY",
-            url: "/jewellery",
+            url: "/silver-jewellery",
         },
         // {
         //     title: "Silver",
@@ -494,7 +536,7 @@ export const menuLists = {
         'menuOne':
             [
                 {
-                    value: 'newarraivals', title: 'New Arraivals', url: '/earrings-jewellery',
+                    value: 'newarraivals', title: 'New Arraivals', url: '/silver-jewellery?sort=New%20to%20Stylori&startprice=0&endprice=0',
                     imgContainer: { 
 
                         //-----------LAYER 3--------
@@ -533,7 +575,7 @@ export const menuLists = {
                     }
                 },
                 {
-                    value: 'bestSellers', title: 'Best Sellers', url: '/pendants-jewellery',
+                    value: 'bestSellers', title: 'Best Sellers', url: '/silver-jewellery?sort=Best%20Seller&startprice=0&endprice=0',
                     imgContainer: {
 
                         "imageContainer": [
@@ -566,7 +608,7 @@ export const menuLists = {
                     }
                 },
                 {
-                    value: 'necklace', title: 'NECKLACE', url: '/rings-jewellery',
+                    value: 'necklace', title: 'NECKLACE', url: '/silver-necklace-jewellery',
                     imgContainer: {
 
                         "imageContainer": [
@@ -604,7 +646,7 @@ export const menuLists = {
                     }
                 },
                 {
-                    value: 'earrings', title: 'Earrings', url: '/nose+pin+online-jewellery',
+                    value: 'earrings', title: 'Earrings', url: '/silver-earrings-jewellery',
                     // imgContainer: {
 
                     //     "imageContainer": [
@@ -627,7 +669,76 @@ export const menuLists = {
                     // }
                 },
                 {
-                    value: 'rings', title: 'Rings', url: '/bangles-jewellery',
+                    value: 'rings', title: 'Rings', url: '/silver-rings-jewellery',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bangle+stylori+-02.png",
+                                "content": "Bangles",
+                                "url": "/bangles-jewellery",
+                            },
+                            {
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bracelet+stylori+Bracelets-01.png",
+                                "content": "Bracelets",
+                                "url": "/bracelets-jewellery",
+                            },
+                            {
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Oval+Bracelet+stylori+-03.png",
+                                "content": "Oval Bracelets",
+                                "url": "/oval+bracelets-jewellery",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'bangle', title: 'Bangle', url: '/silver-bangles-jewellery',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bangle+stylori+-02.png",
+                                "content": "Bangles",
+                                "url": "/bangles-jewellery",
+                            },
+                            {
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bracelet+stylori+Bracelets-01.png",
+                                "content": "Bracelets",
+                                "url": "/bracelets-jewellery",
+                            },
+                            {
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Oval+Bracelet+stylori+-03.png",
+                                "content": "Oval Bracelets",
+                                "url": "/oval+bracelets-jewellery",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'chainbracelets', title: 'Chain Bracelets', url: '/silver-bangles-jewellery',
+                    imgContainer: {
+
+                        "imageContainer": [
+                            {
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bangle+stylori+-02.png",
+                                "content": "Bangles",
+                                "url": "/bangles-jewellery",
+                            },
+                            {
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bracelet+stylori+Bracelets-01.png",
+                                "content": "Bracelets",
+                                "url": "/bracelets-jewellery",
+                            },
+                            {
+                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Oval+Bracelet+stylori+-03.png",
+                                "content": "Oval Bracelets",
+                                "url": "/oval+bracelets-jewellery",
+                            },
+                        ]
+                    }
+                },
+                {
+                    value: 'bridal', title: 'Bridal', url: '/bangles-jewellery',
                     imgContainer: {
 
                         "imageContainer": [
@@ -672,29 +783,7 @@ export const menuLists = {
                         ]
                     }
                 },
-                {
-                    value: 'anklets', title: 'Anklets', url: '/bangles-jewellery',
-                    imgContainer: {
-
-                        "imageContainer": [
-                            {
-                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bangle+stylori+-02.png",
-                                "content": "Bangles",
-                                "url": "/bangles-jewellery",
-                            },
-                            {
-                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bracelet+stylori+Bracelets-01.png",
-                                "content": "Bracelets",
-                                "url": "/bracelets-jewellery",
-                            },
-                            {
-                                "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Oval+Bracelet+stylori+-03.png",
-                                "content": "Oval Bracelets",
-                                "url": "/oval+bracelets-jewellery",
-                            },
-                        ]
-                    }
-                },
+               
             ],
         //----SUBLAYER2 ------
         'menuTwo': [{
@@ -722,53 +811,53 @@ export const menuLists = {
 
             }
         },
-        {
-            value: 'Collection', title: 'By Collection', url: '/collections',
-            imgContainer: {
-                "imageContainer": [
-                    {
-                        "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Carve+Collection+Stylori-08.png",
-                        "content": "Carve",
-                        "url": "/jewellery-from+the+carve+collection?sort=latest",
-                    },
-                    {
-                        "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Blush+Collection+Stylori+-.png",
-                        "content": "Blush",
-                        "url": "/jewellery-blush",
-                    },
-                    {
-                        "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Molecute+Collection+Stylori+-01.png",
-                        "content": "Molecute",
-                        "url": "/jewellery-molecute+collection",
-                    },
-                    {
-                        "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Gemstone+Collection+Stylori+-02.png",
-                        "content": "Gemstone",
-                        "url": "/gemstone-jewellery?sort=latest",
-                    },
-                    {
-                        "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Mistletoe+Collection+Stylori-01.png",
-                        "content": "Mistletoe",
-                        "url": "/jewellery-from+mistletoe+collection",
-                    },
-                    {
-                        "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Renaissance+Collection+Stylori+-04.png",
-                        "content": "The Renaissance",
-                        "url": "/jewellery-from+the+renaissance+collection",
-                    },
-                    {
-                        "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Monsoon+Collection+Stylori-02.png",
-                        "content": "Monsoon",
-                        "url": "/jewellery-from+monsoon+collection",
-                    },
-                    {
-                        "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Summer+Collection+Stylori-06.png",
-                        "content": "Summer",
-                        "url": "/jewellery-from+the+summer+collection",
-                    },
-                ]
-            }
-        },
+        // {
+        //     value: 'Collection', title: 'By Collection', url: '/collections',
+        //     imgContainer: {
+        //         "imageContainer": [
+        //             {
+        //                 "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Carve+Collection+Stylori-08.png",
+        //                 "content": "Carve",
+        //                 "url": "/jewellery-from+the+carve+collection?sort=latest",
+        //             },
+        //             {
+        //                 "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Blush+Collection+Stylori+-.png",
+        //                 "content": "Blush",
+        //                 "url": "/jewellery-blush",
+        //             },
+        //             {
+        //                 "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Molecute+Collection+Stylori+-01.png",
+        //                 "content": "Molecute",
+        //                 "url": "/jewellery-molecute+collection",
+        //             },
+        //             {
+        //                 "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Gemstone+Collection+Stylori+-02.png",
+        //                 "content": "Gemstone",
+        //                 "url": "/gemstone-jewellery?sort=latest",
+        //             },
+        //             {
+        //                 "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Mistletoe+Collection+Stylori-01.png",
+        //                 "content": "Mistletoe",
+        //                 "url": "/jewellery-from+mistletoe+collection",
+        //             },
+        //             {
+        //                 "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Renaissance+Collection+Stylori+-04.png",
+        //                 "content": "The Renaissance",
+        //                 "url": "/jewellery-from+the+renaissance+collection",
+        //             },
+        //             {
+        //                 "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Monsoon+Collection+Stylori-02.png",
+        //                 "content": "Monsoon",
+        //                 "url": "/jewellery-from+monsoon+collection",
+        //             },
+        //             {
+        //                 "img": "https://assets.stylori.com/images/Menu/Jewellery/Jewellery+by+Collections/Summer+Collection+Stylori-06.png",
+        //                 "content": "Summer",
+        //                 "url": "/jewellery-from+the+summer+collection",
+        //             },
+        //         ]
+        //     }
+        // },
         {
             value: 'Material', title: 'By Material', url: '#',
             imgContainer: {

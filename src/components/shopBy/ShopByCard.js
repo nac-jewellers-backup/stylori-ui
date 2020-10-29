@@ -62,9 +62,10 @@ const useStyles = makeStyles((theme) => ({
   text: {
     // backgroundColor: "#4CAF50",
     color: "white",
-    fontSize: "16px",
-    letterSpacing:2,
+    fontSize: "1.7rem",
+    letterSpacing:3,
     padding: "16px 32px",
+    textTransform:"uppercase"
   },
 }));
 

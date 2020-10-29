@@ -144,7 +144,7 @@ const Productprice = (
     <div>
       {data.map((val) => (
         <>
-          <Grid container spacing={12} sm={12} className={classes.pricedetails}>
+          <Grid container spacing={12} sm={12} className={isSilver ? classes.silverpricedetails : classes.pricedetails}>
             <Hidden mdUp>
               <Container>
                 <div className={`resp ${isSilver ? `${`respSilver ${classes.carouselCustomArrow}`}` : ""}`}>
