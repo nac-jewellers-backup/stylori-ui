@@ -309,7 +309,7 @@ const styles = (theme) => ({
   },
   buttonHeightAddToCart:{
     width: "100% !important",
-    height: "40px !important",
+    height: "36px !important",
     fontSize: "0.9rem",
     borderRadius: "unset !important",
     boxShadow: "8px 8px 5px rgba(208, 210, 211, 1)",
@@ -334,7 +334,7 @@ const styles = (theme) => ({
   buynowButtonSilver: {
     width: "90% !important",
     height: "50px !important",
-    fontSize: "1.95rem",
+    fontSize: "1.7rem",
     borderRadius: "unset !important",
     boxShadow: "8px 8px 5px rgba(208, 210, 211, 1)",
     textTransform: "uppercase",

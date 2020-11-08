@@ -138,11 +138,11 @@ export function NeedHelp(props) {
                   </Grid>
                   <Grid item xs={12} sm={4} style={{ padding: "5px 0px 0px 15px " }}>
                     <a
-                      href="tel:+91 99526 25252"
+                      href="mailto:hello@stylori.com"
                       style={{ textDecoration: "none" }}
                     >
                       <Typography variant="body1" className={classes.number}>
-                        +91 99526 25252
+                        hello@stylori.com
                       </Typography>
                     </a>
                   </Grid>

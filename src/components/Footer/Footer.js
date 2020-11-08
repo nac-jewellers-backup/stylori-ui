@@ -122,7 +122,7 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function Footer(props) {
-    const silver = props.silver
+    const {silver} = props
     const [state, setState] = React.useState('')
     const [open, setOpen] = React.useState(false)
     const [message, setMessage] = React.useState('')
@@ -326,7 +326,7 @@ export default function Footer(props) {
                     </Grid>
                 </Grid></>}
 
-            <Hidden only={['sm', 'xs']}>
+          {!silver &&  <Hidden only={['sm', 'xs']}>
                 <Grid container item className={classes.topConatinerfooter} xs={12} >
                     <Container>
                         <Grid container>
@@ -381,12 +381,12 @@ export default function Footer(props) {
                         </Grid>
                     </Container>
                 </Grid>
-            </Hidden>
+            </Hidden>}
 
 
             <Hidden only={['lg', 'xl', 'md']} >
                 <Grid container item className={classes.topConatinerfooter} xs={12} >
-                    <Grid container className={classes.messageconatainer}>
+                   {!silver && <Grid container className={classes.messageconatainer}>
                         <Grid item style={{ textAlign: 'left' }}>
                             Join the Stylori mailing list to stay up to date on the <br />
                             most exciting offers on your favourite jewellery collections
@@ -408,7 +408,7 @@ export default function Footer(props) {
                                 <Button type="submit" id="_button" className={`${classes.searchButtonFooter}`} onClick={(e) => handleEmail(e)}>Stay Informed</Button>
                             </Grid>
                         </Grid>
-                    </Grid>
+                    </Grid>}
 
                     <Grid container item xl={5} lg={5} md={5} xs={12} sm={12}>
                         <Grid container item xs={12} style={{ backgroundColor: 'colorMain', fontSize: '12px', padding: '15px' }} alignItems="center" className={`${classes.colorWhiteBorder} ${classes.colorWhite}`}>
@@ -426,7 +426,7 @@ export default function Footer(props) {
                     </Grid>
                 </Grid>
             </Hidden>
-            <Hidden only={['lg', 'xl', 'md']}>
+           {!silver && <Hidden only={['lg', 'xl', 'md']}>
 
                 <Grid container item xs={12} className={`${classes.colorWhite} ${classes.colorMain} ${classes.colorWhiteBorder}`} style={{ display: 'flex', justifyContent: 'left', padding: '15px', lineHeight: "16px" }}>
                     <Grid item xs={12}  >
@@ -447,7 +447,7 @@ export default function Footer(props) {
                             <i style={{ fontSize: '24px', color: 'white', paddingLeft: '7%' }} className="fa ">&#xf167;</i></a>
                     </Grid>
                 </Grid>
-            </Hidden>
+            </Hidden>}
 
             <Container>
                 <Hidden only={['sm', 'xs']}>

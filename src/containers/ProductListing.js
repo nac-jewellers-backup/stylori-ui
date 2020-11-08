@@ -100,7 +100,7 @@ class Stylori extends React.Component {
             <Hidden smDown>
               {/* <ChatHelp data={data} wishlist={this.props.wishlistdata} /> */}
 
-              <Footer />
+              <Footer silver={context.Globalctx.pathName }/>
             </Hidden>
           </Grid>
           {context.Globalctx.pathName  && (

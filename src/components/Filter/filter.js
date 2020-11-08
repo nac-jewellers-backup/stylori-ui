@@ -700,7 +700,7 @@ if (window.location.search) {
       <>
    {isTopFilter &&
        <Hidden smDown>
-    <TopFilters filter={filter} state={this.state} subFilter={subFilter} onchangefunc={this.handleChange} onpricechange = {this.onCurrencyChange_click} filtercheck={this.state.filtercheck} checked={this.state.checked} {...this.props}/>
+    <TopFilters filter={filter} state={this.state} subFilter={subFilter} onchangefunc={this.handleChange} onpricechange = {this.onCurrencyChange_click} filtercheck={this.state.filtercheck} checked={this.state.checked} chips={this.state.chipData} check={this.state.check} click={this.handleDelete} {...this.props}/>
       </Hidden>
    }    
    {/* <TempTest onchangefunc={this.handleChange}/> */}

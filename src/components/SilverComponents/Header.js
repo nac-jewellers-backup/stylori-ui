@@ -514,7 +514,6 @@ class Header extends Component {
                         <Grid item xs={12} className="titleTop" id={"titleTop"}>
                           <nav>
                             {menuListHeader.map((listName) => {
-                              debugger
                               let urlsmall = listName.title.toLowerCase();
                               return (
                                 <a
@@ -1311,7 +1310,6 @@ export default withStyles(styles)((props) => {
         : false;
 
   const { mapped } = useDummyRequest(isSilver ? headerDataStyloriSilver : headerDataSilver);
-  debugger
   if (Object.keys(mapped).length === 0) return "";
 
   return (

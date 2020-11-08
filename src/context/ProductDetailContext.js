@@ -168,7 +168,6 @@ const { Globalctx } = React.useContext(GlobalContext);
             }
 
             if (data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]) {
-                debugger
                 if (filters['productType'] && filters['productType'].length > 0) {
 
 
@@ -233,7 +232,6 @@ const { Globalctx } = React.useContext(GlobalContext);
             //     }
             // }
             console.log(Globalctx.pathName,"")
-            debugger
             if (data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]) {
                 if (filters['productType'] && filters['productType'].length > 0) {
 
