@@ -21,7 +21,7 @@ function HeaderHoverMenuItem(props) {
       <Grid container item xs={12} className={classes.paperdivsub} >
         <Popper
           style={{ border: "1px solid #ccc" }}
-          placement={'left-start'}
+          placement={'right-start'}
           open={opens} anchorEl={target} transition className={classes.mouseOverPopoversub}>
           <List component="nav" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
           
