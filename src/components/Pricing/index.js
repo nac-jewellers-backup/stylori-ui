@@ -5,7 +5,6 @@ import styles from './style'
 import './pricing.css'
 
 export default function Pricing(props) {
-    debugger
     const classes = styles();
     let path = window.location.pathname.split('/').pop();
     const {globalContext, quantity} = props

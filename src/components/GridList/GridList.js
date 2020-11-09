@@ -280,8 +280,8 @@ export default function ImageGridList(props) {
                 </h2> */}
                 <div style={{color:"white"}}>Pretty Adornments Silver pendant</div>
                 <h6 style={{color:"white"}}>Rs 5800</h6>
-                {/* <div><Button variant="contained"  style={{color:"white"}}>Add to cart</Button></div>
-                <div style={{marginTop:20}}><Button variant="contained" style={{color:"white"}}>Save</Button></div> */}
+                <div><Button variant="contained" color="secondary" style={{padding:10}} >Add to cart</Button></div>
+                <div style={{marginTop:20}}><Button variant="contained" color="secondary" style={{padding:10}}>Save</Button></div>
               </div>
             </div>
           </div>

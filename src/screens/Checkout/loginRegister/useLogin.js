@@ -67,7 +67,6 @@ const useLogin = (changePanel, props) => {
             if (JSON.stringify(a).length > 10 && values['error'] && values['errortext']) {
                 values['error']['passerr'] = false
                 values['errortext']['passerr'] = ""
-
                 var bbn = data && data.userprofile && data.userprofile.id ? data.userprofile.id : ""
                 if (bbn.length > 0 || bbn !== undefined) {
                     localStorage.setItem("email", data.userprofile.email)
