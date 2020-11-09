@@ -81,6 +81,9 @@ export const useStyles = makeStyles((theme) => ({
     fontFamily: "Robot-Bold",
     letterSpacing: "5px",
     fontSize: "16px",
+    "& span":{
+      backgroundColor: `${theme.palette.secondary.dark2} !important`
+    }
   },
   btnshop2: {
     backgroundColor: theme.palette.secondary.dark2,
@@ -96,6 +99,9 @@ export const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.secondary.dark2,
       opacity: 0.9,
     },
+    "& span":{
+      backgroundColor: `${theme.palette.secondary.dark2} !important`
+    }
   },
   productCardTitle: {
     // fontFamily: 'Robot-Bold',

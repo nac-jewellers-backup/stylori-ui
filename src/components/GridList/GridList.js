@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import "./GridList.css";
-import { Grid, Hidden } from "@material-ui/core";
+import { Button, Grid, Hidden } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -275,9 +275,13 @@ export default function ImageGridList(props) {
                   <div className="overlay1">
             <div className={"collectionDataSilverSEOflex"}>
               <div style={{ margin: "auto" }}>
-                <h2 className="next-price">
-                  {"Bracelets".toUpperCase()}
-                </h2>
+                {/* <h2 className="next-price">
+                
+                </h2> */}
+                <div style={{color:"white"}}>Pretty Adornments Silver pendant</div>
+                <h6 style={{color:"white"}}>Rs 5800</h6>
+                {/* <div><Button variant="contained"  style={{color:"white"}}>Add to cart</Button></div>
+                <div style={{marginTop:20}}><Button variant="contained" style={{color:"white"}}>Save</Button></div> */}
               </div>
             </div>
           </div>

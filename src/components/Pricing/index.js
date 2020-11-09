@@ -5,6 +5,7 @@ import styles from './style'
 import './pricing.css'
 
 export default function Pricing(props) {
+    debugger
     const classes = styles();
     let path = window.location.pathname.split('/').pop();
     const {globalContext, quantity} = props
@@ -87,7 +88,7 @@ export default function Pricing(props) {
                         </Grid></>
                 }
 
-                <Grid item xs={12}
+               {!props.withOffer && <Grid item xs={12}
                     lg={window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/cart" && window.location.pathname.split("-")[1] !== "allorders" ? 6 : 6} style={{ display: "flex", alignItems: "normal" }}>
                     <Hidden smDown>
                         {
@@ -109,7 +110,7 @@ export default function Pricing(props) {
                     {/* </Grid>
 
                     </Grid> */}
-                </Grid>
+                </Grid>}
             </Grid>
 
             {/*  */}

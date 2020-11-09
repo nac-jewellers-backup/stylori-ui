@@ -282,7 +282,7 @@ const Productprice = (
                       <Grid
                         container
                         item
-                        xs={12}
+                         xs={12}
                         alignContent="center"
                         alignItems="center"
                       >
@@ -290,6 +290,8 @@ const Productprice = (
                           <div className={`${isSilver ? "" : classes.width}`}>
                             <Pricing
                               offerPrice={data[0].offerPrice}
+                              price={data[0].price}
+                                                                offerDiscount={val.offerDiscount}
                               globalContext={globalContext.Globalctx}
                             ></Pricing>
                           </div>
@@ -515,8 +517,13 @@ const Productprice = (
                   }}
                 >
                   <Pricing
-                    globalContext={globalContext.Globalctx}
+                    // globalContext={globalContext.Globalctx}
+                    // offerPrice={data[0].offerPrice}
                     offerPrice={data[0].offerPrice}
+                    price={data[0].price}
+                                                      offerDiscount={val.offerDiscount}
+                                                      withOffer={true}
+                    globalContext={globalContext.Globalctx}
                   />
                 </Grid>
               </Hidden>
