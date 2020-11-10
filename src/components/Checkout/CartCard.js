@@ -316,7 +316,7 @@ class Checkoutcard extends React.Component {
 
                                         <Grid item xs={4} >
                                             <Typography style={{ marginTop: "8px" }} className={`subhesder ${classes.normalfonts}`}>
-                                                {window.location.pathname === "/checkout" || checkMaterial(dataval.materialName)  ?
+                                                {window.location.pathname === "/checkout" || (checkMaterial(dataval.materialName) || (!Boolean(dataval?.[0]?.maxOrderQty) || dataval?.[0]?.maxOrderQty <2))  ?
 
                                                 `Quantity ${this.props.isdatafromstate[dataval.generatedSku]}`
                                                 :

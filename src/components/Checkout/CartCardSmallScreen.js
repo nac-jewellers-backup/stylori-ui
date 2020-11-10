@@ -251,7 +251,7 @@ function MediaControlCard(props) {
                   )}
                   <Typography className={`subhesder ${classes.normalfonts}`}>
                     {window.location.pathname === "/checkout" ||
-                    (checkMaterial(dataval.materialName) || dataval?.[0]?.maxOrderQty < 2)  ? (
+                    (checkMaterial(dataval.materialName) || (!Boolean(dataval?.[0]?.maxOrderQty) || dataval?.[0]?.maxOrderQty <2))  ? (
                       `Quantity ${
                         JSON.parse(localStorage.getItem("quantity"))[
                           dataval.generatedSku
