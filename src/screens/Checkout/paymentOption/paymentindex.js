@@ -30,6 +30,11 @@ class PaymentIndex extends React.Component {
         else this.setState({ isActive: [name] })
 
     }
+    componentDidMount(){
+        if(!this.props.isCodAvailable){
+            this.setState({isActive:"Netbanking", disabledCOD:true})
+        }    
+    }
 componentDidUpdate(prevProps, prevState){
     
     if(prevProps.isCodAvailable !== this.props.isCodAvailable)
@@ -168,6 +173,13 @@ const Components = props => {
     }
 if(cartId){
     console.log('came in --')
+    if(data.data.allTransSkuLists.nodes.map(val=>{return val.productListByProductId.productMaterialsByProductSku.nodes}).flat().findIndex(val=> Boolean(val.materialName === "Silver")) > -1){
+    
+        if(codAvailability !== false){
+            setCodAvailability(false)
+        }
+    }
+    else{
     fetch(`${API_URL}/graphql`, {
 
         method: 'post',
@@ -253,7 +265,8 @@ if(cartId){
             }
            
         })
-}
+    }
+    }
 
 
 

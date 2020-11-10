@@ -293,10 +293,10 @@ const BuydetailsSilverdetailpage = (
         <>
           <Grid container>
             <Grid item xs={12}>
-              {inputsearch(props, state, handleChanges, handleCodChange)}
+              {/* {inputsearch(props, state, handleChanges, handleCodChange)} */}
             </Grid>
           </Grid>
-          <Grid container style={{ marginTop: 10 }}>
+          <Grid container >
             <Grid
               item
               xs={12}
@@ -722,7 +722,7 @@ class Component extends React.Component {
             {isSilver && (
               <Container>
                 
-                <Grid container style={{padding:"0px 8px 5px 8px"}}>
+                <Grid container style={{padding:"0px 8px 0px 8px"}}>
                 <Grid
                   item
                   xs={12}

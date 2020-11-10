@@ -76,6 +76,7 @@ const styles = makeStyles(theme => ({
         padding:'4px 0px 10px 0px',
         [theme.breakpoints.down('sm')]:{
             color: theme.palette.primary.main,
+            padding:'0px',
         }
     },
     // robotoBlack:{

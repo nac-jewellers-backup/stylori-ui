@@ -21,17 +21,17 @@ function HeaderHoverMenuItem(props) {
       <Grid container item xs={12} className={classes.paperdivsub} >
         <Popper
           style={{ border: "1px solid #ccc" }}
-          placement={'left-start'}
+          placement={'right-start'}
           open={opens} anchorEl={target} transition className={classes.mouseOverPopoversub}>
           <List component="nav" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
           
             {props.data && props.data.imageContainer && <Grid container style={{ width: "450px", maxHeight:"450px", overflowY:'auto', background: "#fff", padding: "10px", zIndex: "10000" }}>
-            <Grid container item xs={4}>
+            {/* <Grid container item xs={4}>
               {isSilver && props?.data?.imageContainer && <img style={{ width: "100%", margin: "auto",height:"auto" }} src={props.data.imageContainer[0].img} />}
-              </Grid>
+              </Grid> */}
               <Grid container item xs={isSilver ? 8 : 12}>
               {props.data.imageContainer.map((val, index) =>
-                <Grid item xs={isSilver ? 6 : 4}>
+                <Grid item xs={isSilver ? 4 : 4}>
                   <Grid container className={classes.imgcont} onClick={() => { window.location.href = val.url }} justify="center" alignContent="center" alignItems="center" style={{ cursor: "pointer" }}>
                     <Grid item style={{ justifyContent: "center", alignContent: "center", display: "flex", }}>
                       {val.img && <img style={{ width: "65%", margin: "auto",height:"100%" }} src={val.img} />}
@@ -44,6 +44,9 @@ function HeaderHoverMenuItem(props) {
                   </Grid>
                 </Grid>
               )}
+              </Grid>
+              <Grid container item xs={4}>
+              {isSilver && props?.data?.imageContainer && <img style={{ width: "100%", margin: "auto",height:"auto" }} src={props.data.imageContainer[0].img} />}
               </Grid>
                </Grid>
             }

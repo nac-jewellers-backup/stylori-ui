@@ -138,11 +138,11 @@ export function NeedHelp(props) {
                   </Grid>
                   <Grid item xs={12} sm={4} style={{ padding: "5px 0px 0px 15px " }}>
                     <a
-                      href="tel:+91 99526 25252"
+                      href="mailto:hello@stylori.com"
                       style={{ textDecoration: "none" }}
                     >
                       <Typography variant="body1" className={classes.number}>
-                        +91 99526 25252
+                        hello@stylori.com
                       </Typography>
                     </a>
                   </Grid>
@@ -156,7 +156,10 @@ export function NeedHelp(props) {
       <Grid container justify="center">
         <Hidden smDown>
         <Grid item className={`${classes.needHelpTextWithoutRotate} ${open ? classes.noWidth : ''}`}>
-          <Button onClick={handleClick(props.position)}>{open ? <CloseIcon className={classes.closeIcon}/> : 'Need Help ?'}</Button>
+          <Button onClick={handleClick(props.position)}>{open ? <CloseIcon className={classes.closeIcon}/> : <div style={{display:"flex"}}>
+          <div style={{fontSize:'0.9rem'}}>Need<br/>Help</div>
+          <div style={{margin:"auto"}}><i style={{fontSize:'2.5rem'}} class="fa fa-5x">&#xf128;</i></div>
+          </div> }</Button>
         </Grid>
         </Hidden>
         <Hidden mdUp>

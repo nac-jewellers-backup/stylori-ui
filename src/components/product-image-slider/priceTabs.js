@@ -565,7 +565,7 @@ class Component extends React.Component {
               ) : (
                 ""
               )}
-            {_isSilver &&
+            {_isSilver && this.props?.data?.[0]?.maxOrderQty > 1 &&
               <Grid container spacing={12}>
                 <Grid
                   item
@@ -585,7 +585,7 @@ class Component extends React.Component {
                     <div>
                       <Quantity data={this.props.data} pdpage={true} />
                     </div>
-                  </Grid>
+                  </Grid> 
                 </Grid>
               </Grid>}
               {!_isSilver && arr2.length > 0 ? (

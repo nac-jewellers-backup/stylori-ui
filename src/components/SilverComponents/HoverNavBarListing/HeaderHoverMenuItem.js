@@ -90,7 +90,14 @@ function HeaderHoverMenuItem(props) {
                   <ListItem component="li" name={menuList ? menuList : menuList.title}
                       onClick={(e) => {
                         
-                        props.onchoosetype(menuList, props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] !== undefined ? !props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] : true, e,null,undefined, props.state, props.filtercheck ? props.filtercheck.replace(/\s/g, "") : "")}}
+                        props.onchoosetype(menuList, 
+                          props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] !== undefined ? !props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] : true, 
+                          e,
+                          props.filtercheck ? props.filtercheck.replace(/\s/g, "") : "",
+                          undefined, 
+                          props.state, props.filtercheck ? props.filtercheck.replace(/\s/g, "") : ""
+                          )
+                        }}
                     className={`${props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] ? classes.mouseOverPopoverfiltersselected :''} ${classes.mouseOverPopoverfilterslist}`}
                     >
 

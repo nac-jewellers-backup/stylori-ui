@@ -111,7 +111,7 @@ class ProductDetails extends React.Component {
                         : "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)",
                     }}
                   >
-                    <div className="overall-bo">
+                    <div className={isSilver ? " " :"overall-bo"}>
                       {isSilver ? (
                         <>
                           <div
@@ -153,7 +153,6 @@ class ProductDetails extends React.Component {
                       <>
                         {valueofproductdetail.namedetail !== undefined &&
                           valueofproductdetail.namedetail.map((res) => {
-                            debugger
                             return (
                               <>
                                 {res.name && (
@@ -555,7 +554,6 @@ res.details.length === 0 ? (
         ? data[0].productsDetails
         : [];
     const _isSilver = isSilver ? true : false;
-    debugger
     return (
       <>
         {val.header !== "Price Breakup" ||
@@ -595,7 +593,6 @@ res.details.length === 0 ? (
             <div style={{ backgroundColor: "fafafa" }}>
               {val.namedetail !== undefined &&
                 val.namedetail.map((res) => {
-                  debugger
                   return !Boolean(res.name && res.details) ? null : (
                     <span>
                       {

@@ -326,7 +326,7 @@ class ProductDetail extends Component {
                   </div>
                 )}
                 {isSilver ? (
-                  <div className="overall-box-without-shadow">
+                  <div >
                     <PriceBuynow data={this.props.data} isSilver={isSilver} />
                   </div>
                 ) : (
@@ -415,7 +415,7 @@ class ProductDetail extends Component {
               <Sublistcarousel
                 data={this.props.data}
                 isSilver={isSilver}
-                customLimit={2}
+                customLimit={4}
                 nextPreviousIconSize = {'3rem'}
               />
             </div>
@@ -476,7 +476,7 @@ class ProductDetail extends Component {
           )}
 
           <Grid item xs={12}>
-            <Footer />
+            <Footer silver={isSilver}/>
           </Grid>
         </Hidden>
 
@@ -592,7 +592,7 @@ class ProductDetail extends Component {
             <CustomerReviews data={this.props.data} />
           </Grid>
           <Grid item style={{ paddingBottom: "50px" }}>
-            <Footer />
+            <Footer silver={isSilver}/>
           </Grid>
         </Hidden>
         {/* </DocumentMeta> */}

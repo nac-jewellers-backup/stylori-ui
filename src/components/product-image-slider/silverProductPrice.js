@@ -144,7 +144,7 @@ const Productprice = (
     <div>
       {data.map((val) => (
         <>
-          <Grid container spacing={12} sm={12} className={classes.pricedetails}>
+          <Grid container spacing={12} sm={12} className={isSilver ? classes.silverpricedetails : classes.pricedetails}>
             <Hidden mdUp>
               <Container>
                 <div className={`resp ${isSilver ? `${`respSilver ${classes.carouselCustomArrow}`}` : ""}`}>
@@ -282,7 +282,7 @@ const Productprice = (
                       <Grid
                         container
                         item
-                        xs={12}
+                         xs={12}
                         alignContent="center"
                         alignItems="center"
                       >
@@ -290,6 +290,8 @@ const Productprice = (
                           <div className={`${isSilver ? "" : classes.width}`}>
                             <Pricing
                               offerPrice={data[0].offerPrice}
+                              price={data[0].price}
+                              offerDiscount={val.offerDiscount}
                               globalContext={globalContext.Globalctx}
                             ></Pricing>
                           </div>
@@ -302,7 +304,9 @@ const Productprice = (
                         alignContent="center"
                         alignItems="center"
                       >
-                        <Grid item xs={10}>
+                        
+                        {/* commented because silver product doesn't have COD */}
+                        {/* <Grid item xs={10}>
                           {pincode &&
                             pincode(
                               allProps,
@@ -311,7 +315,9 @@ const Productprice = (
                               handleCodChange,
                               'isSilverSmallScreen'
                             )}
-                        </Grid>
+                        </Grid> */}
+
+
                         {/* <Grid item xs={2} style={{ margin: "auto" }}>
                           <div
                             className={`starts product-icons2 ${classes.productIcons2}`}
@@ -515,8 +521,13 @@ const Productprice = (
                   }}
                 >
                   <Pricing
-                    globalContext={globalContext.Globalctx}
+                    // globalContext={globalContext.Globalctx}
+                    // offerPrice={data[0].offerPrice}
                     offerPrice={data[0].offerPrice}
+                    price={data[0].price}
+                                                      offerDiscount={val.offerDiscount}
+                                                      withOffer={true}
+                    globalContext={globalContext.Globalctx}
                   />
                 </Grid>
               </Hidden>
@@ -549,15 +560,15 @@ const Productprice = (
                         </div>
                       </Grid> */}
                        {isSilver&&   <Grid item xs={12} style={{padding:'10px 0px 20px 0px'}}>
-                        <Grid item xs={3} sm={4} md={5} lg={4}>
+                        <Grid item xs={3} sm={4} md={3} lg={3}>
                           {/* <div onClick={handleLocalStorage.bind(this)}> */}
                             <Button variant="contained" color="primary" class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart}`} ><i style={{ fontSize: "1rem",paddingRight:5 }} class={`fa fa-shopping-cart`}></i> <span className={classes.robotoBoldFont}>Add to Cart</span></Button>
                           {/* </div> */}
                         </Grid>
                       </Grid>}
                       <Grid container item xs={12}>
-                        <Grid item xs={3} sm={4} md={6} lg={5}>
-                        <div onClick={handleLocalStorage.bind(this)} style={{display:"hidden"}}>
+                        <Grid item xs={3} sm={4} md={5} lg={4}>
+                        <div onClick={handleLocalStorage.bind(this)} >
                             <Buynowbutton
                               sku={data[0].skuId}
                               class={`${classes.buynowButtonSilver} ${classes.buttonsilver} ${classes.robotoBoldFont}`}
@@ -814,7 +825,7 @@ class Component extends React.Component {
           )}
         </Hidden>
 
-        <Hidden mdUp>
+        <Hidden mdUp> 
           <Container style={{ paddingBottom: "6px" }}>
             {Productprice(
               this.props,

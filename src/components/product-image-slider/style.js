@@ -87,6 +87,15 @@ const styles = (theme) => ({
       padding: "0 10px",
     },
   },
+  silverpricedetails: {
+    color: theme.palette.primary.main,
+    [theme.breakpoints.down("xs")]: {
+      padding: "0",
+    },
+    [theme.breakpoints.up("lg")]: {
+      padding: "0",
+    },
+  },
   width: {
     [theme.breakpoints.down("xs")]: {
       padding: "0 10px",
@@ -300,7 +309,7 @@ const styles = (theme) => ({
   },
   buttonHeightAddToCart:{
     width: "100% !important",
-    height: "40px !important",
+    height: "36px !important",
     fontSize: "0.9rem",
     borderRadius: "unset !important",
     boxShadow: "8px 8px 5px rgba(208, 210, 211, 1)",
@@ -324,8 +333,8 @@ const styles = (theme) => ({
   },
   buynowButtonSilver: {
     width: "90% !important",
-    height: "50px !important",
-    fontSize: "1.95rem",
+    height: "45px !important",
+    fontSize: "1.5rem",
     borderRadius: "unset !important",
     boxShadow: "8px 8px 5px rgba(208, 210, 211, 1)",
     textTransform: "uppercase",

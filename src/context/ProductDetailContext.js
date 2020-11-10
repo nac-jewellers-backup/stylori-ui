@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { PRODUCTDETAILS, conditions, YouMayAlsoLike, youRecentlyViewed } from 'queries/productdetail';
 import { withRouter } from 'react-router-dom';
+import { GlobalContext } from "context";
 // import useRegister from '../components/LoginAndRegister/useregister';
 // const { setValues } = useRegister(); 
 const initialCtx = {
@@ -20,6 +21,9 @@ export const ProductDetailContext = React.createContext(initialCtx);
 export const ProductDetailConsumer = ProductDetailContext.Consumer;
 export const TabsProvider = (props) => {
 
+// GLOBAL CONTEXT
+const { Globalctx } = React.useContext(GlobalContext);
+
     const [filters, setFilters] = React.useState(initialCtx.ProductDetailCtx.filters);
     const [likedatas, setlikedata] = React.useState([])
     const [viewedddatas, setvieweddata] = React.useState()
@@ -28,6 +32,7 @@ export const TabsProvider = (props) => {
     const [registerurl, setregisterurl] = React.useState("")
     const [ratingcounts, setratingcounts] = React.useState([])
     const [price, setPrice] = React.useState(0)
+    
     // alert(JSON.stringify(ratingcounts))
     let queries = [];
     const pathQueries = () => {
@@ -166,17 +171,41 @@ export const TabsProvider = (props) => {
                 if (filters['productType'] && filters['productType'].length > 0) {
 
 
-                    variableslike['filterdata'] = { "productType": { equalTo: filters['productType'] } }
+                    variableslike['filterdata'] = {and:{ "productType": { equalTo: filters['productType'] } }}
+                    if(Globalctx.pathName){
+                        variableslike['filterdata']["and"] = {"productMaterialsByProductSkuExist": true}
+                        variableslike['filterdata']["and"] = {"productMaterialsByProductSku": {
+                            "every": {
+                              "materialName": {
+                                "equalTo": "Silver"
+                              }
+                            }
+                          }}
+                        
+                    }
                 }
                 else {
                     var productType = data.data.allTransSkuLists.nodes[0].productListByProductId.productType
-                    variableslike['filterdata'] = { "productType": { equalTo: productType } }
+                    variableslike['filterdata'] = {and:{ "productType": { equalTo: productType } }}
+                    
+                    
+                    if(Globalctx.pathName){
+                        variableslike['filterdata']["and"] = {"productMaterialsByProductSkuExist": true}
+                        variableslike['filterdata']["and"] = {"productMaterialsByProductSku": {
+                            "every": {
+                              "materialName": {
+                                "equalTo": "Silver"
+                              }
+                            }
+                          }}
+                        
+                    }
                 }
             }
 
             if (data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]) {
                 var greaterthanprice = (price - 5000) > 0 ? price - 5000 : 0
-                variableslike['filterdata']['transSkuListsByProductId'] = {
+                variableslike['filterdata']["and"]['transSkuListsByProductId'] = {
                     every: {
                         discountPrice: {
                             lessThanOrEqualTo:
@@ -185,7 +214,7 @@ export const TabsProvider = (props) => {
                         }
                     }
                 }
-                variableslike['filterdata']["isactive"] = { "equalTo": true }
+                variableslike['filterdata']["and"]["isactive"] = { "equalTo": true }
                 variableslike["Conditiondatatranssku"] = {
                     "isdefault": true
                 }
@@ -202,15 +231,40 @@ export const TabsProvider = (props) => {
             //         "notEqualTo": data && data.allTransSkuLists && data.allTransSkuLists.nodes ? data.allTransSkuLists.nodes[0].skuId:''
             //     }
             // }
+            console.log(Globalctx.pathName,"")
             if (data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]) {
                 if (filters['productType'] && filters['productType'].length > 0) {
 
-                    variableslike['filterdata2'] = { "productType": { equalTo: filters['productType'] } }
+                    variableslike['filterdata2'] = {and:{ "productType": { equalTo: filters['productType'] } }}
+                    
+                    if(Globalctx.pathName){
+                        variableslike['filterdata2']["and"] = {"productMaterialsByProductSkuExist": true}
+                        variableslike['filterdata2']["and"] = {"productMaterialsByProductSku": {
+                            "every": {
+                              "materialName": {
+                                "equalTo": "Silver"
+                              }
+                            }
+                          }}
+                        
+                    }
                 }
 
                 else {
                     var productType2 = data.data.allTransSkuLists.nodes[0].productListByProductId.productType
-                    variableslike['filterdata2'] = { "productType": { equalTo: productType2 } }
+                    variableslike['filterdata2'] = {and:{ "productType": { equalTo: productType2 } }}
+                    
+                    if(Globalctx.pathName){
+                        variableslike['filterdata2']["and"] = {"productMaterialsByProductSkuExist": true}
+                        variableslike['filterdata2']["and"] = {"productMaterialsByProductSku": {
+                            "every": {
+                              "materialName": {
+                                "equalTo": "Silver"
+                              }
+                            }
+                          }}
+                        
+                    }
                 }
             }
 
@@ -218,7 +272,7 @@ export const TabsProvider = (props) => {
 
             // variableslike['filterdata2']['transSkuListsByProductId'] = { some: { isdefault: { equalTo: true }} }
             if (data && Object.entries(data).length > 0 && data.constructor === Object && data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes && data.data.allTransSkuLists.nodes[0]) {
-                variableslike['filterdata2']["isactive"] = { "equalTo": true }
+                variableslike['filterdata2']["and"]["isactive"] = { "equalTo": true }
                 variableslike["Conditiondatatranssku2"] = {
                     "isdefault": true
                 }
