@@ -291,7 +291,7 @@ const Productprice = (
                             <Pricing
                               offerPrice={data[0].offerPrice}
                               price={data[0].price}
-                                                                offerDiscount={val.offerDiscount}
+                              offerDiscount={val.offerDiscount}
                               globalContext={globalContext.Globalctx}
                             ></Pricing>
                           </div>
@@ -304,7 +304,9 @@ const Productprice = (
                         alignContent="center"
                         alignItems="center"
                       >
-                        <Grid item xs={10}>
+                        
+                        {/* commented because silver product doesn't have COD */}
+                        {/* <Grid item xs={10}>
                           {pincode &&
                             pincode(
                               allProps,
@@ -313,7 +315,9 @@ const Productprice = (
                               handleCodChange,
                               'isSilverSmallScreen'
                             )}
-                        </Grid>
+                        </Grid> */}
+
+
                         {/* <Grid item xs={2} style={{ margin: "auto" }}>
                           <div
                             className={`starts product-icons2 ${classes.productIcons2}`}
@@ -821,7 +825,7 @@ class Component extends React.Component {
           )}
         </Hidden>
 
-        <Hidden mdUp>
+        <Hidden mdUp> 
           <Container style={{ paddingBottom: "6px" }}>
             {Productprice(
               this.props,

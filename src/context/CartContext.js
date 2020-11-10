@@ -145,6 +145,7 @@ const Provider = (props) => {
         }
         if (crtdata && Object.keys(crtdata).length > 0 && crtdata.constructor === Object) {
             localStorage.setItem('cart_id', JSON.stringify(crtdata))
+            updateProductList();
             cartFilters['_cart_id'] = crtdata
             // _cart_id:crtdata
             setCartFilters({ cartFilters })
@@ -369,10 +370,10 @@ const Provider = (props) => {
                     variables: { ..._conditionfetchCartId },
                 })
             })
-                .then(status)
+                .then(status) 
                 .then(json).then(async val => {
-                    
-                  let cartItems = val.data.allShoppingCarts.nodes[0].shoppingCartItemsByShoppingCartId.nodes ? val.data.allShoppingCarts.nodes[0].shoppingCartItemsByShoppingCartId.nodes : []
+                    debugger
+                  let cartItems =Boolean( val.data.allShoppingCarts.nodes?.length>0?.[0]?.shoppingCartItemsByShoppingCartId?.nodes) ? val.data.allShoppingCarts.nodes[0].shoppingCartItemsByShoppingCartId.nodes : []
                  
                             let localStorageCartDetails = JSON.parse(localStorage.getItem('cartDetails'))
                             let localStorageQty = JSON.parse(localStorage.getItem('quantity'))
@@ -671,6 +672,7 @@ const Provider = (props) => {
         }
     }
     useEffect(() => {
+        debugger
         setCartFilters(skus)
 // _qty()
         updateProductList();

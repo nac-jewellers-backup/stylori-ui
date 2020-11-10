@@ -326,7 +326,7 @@ class ProductDetail extends Component {
                   </div>
                 )}
                 {isSilver ? (
-                  <div className="overall-box-without-shadow">
+                  <div >
                     <PriceBuynow data={this.props.data} isSilver={isSilver} />
                   </div>
                 ) : (
