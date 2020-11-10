@@ -116,12 +116,12 @@ class Component extends React.Component {
             dataCard1 = this.props.data && this.props.data.map(val => { return val.dataCard1[0].offerPrice * JSON.parse(localStorage.getItem('quantity'))[val.generatedSku] }).reduce(myFunc);
             function myFunc(total, num) {
                 discounted_price = this && this.props.cartFilters.discounted_price ? JSON.stringify(this.props.cartFilters.discounted_price) : ""
-                if (discounted_price.length > 0) {
-                    var a = Math.round(total + num);
-                    var cart_price = (a - discounted_price)
-                } else {
+                // if (discounted_price.length > 0) {
+                //     var a = Math.round(total + num);
+                //     var cart_price = (a - discounted_price)
+                // } else {
                     var cart_price = Math.round(total + num);
-                }
+                // }
                 return cart_price
             }
         }

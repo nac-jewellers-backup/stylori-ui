@@ -11,18 +11,19 @@ class Netbanking extends React.Component {
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
         const data = this.props.data ? this.props.data : ""
         var discounted_price = this.props.cartFilters.discounted_price ? this.props.cartFilters.discounted_price : ""
+
         // var { data:coddata, error, loading, makeFetch} = useNetworkRequest('/api/auth/signin', {}, false);
         var dataCard1;
         if (data.length > 0 && data !== undefined && data !== null) {
             dataCard1 = this.props.data && this.props.data.map(val => { return val.dataCard1[0].offerPrice  * JSON.parse(localStorage.getItem('quantity'))[val.generatedSku] }).reduce(myFunc);
             function myFunc(total, num) {
-                discounted_price = this && this.props.cartFilters.discounted_price ? JSON.stringify(this.props.cartFilters.discounted_price) : ""
-                if (discounted_price.length > 0) {
-                    var a = Math.round(total + num);
-                    var cart_price = (a - discounted_price)
-                } else {
+                // discounted_price = this && this.props.cartFilters.discounted_price ? JSON.stringify(this.props.cartFilters.discounted_price) : ""
+                // if (discounted_price > 0) {
+                //     var a = Math.round(total + num);
+                //     var cart_price = (a - discounted_price)
+                // } else {
                     var cart_price = Math.round(total + num);
-                }
+                // }
                 return cart_price
             }
         }
@@ -90,6 +91,7 @@ class Netbanking extends React.Component {
 // export default Netbanking;
 const Components = props => {
     let { CartCtx: { setCartFilters, cartFilters, data, loading, error } } = React.useContext(CartContext);
+
     let content, mapped;
     if (!loading && !error) {
         if (Object.keys(data).length !== 0) {
