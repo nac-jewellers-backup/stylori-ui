@@ -224,7 +224,7 @@ top:0
   filtersHeaderTop:{
     position: "sticky",
     top: "68px",
-    zIndex: 10,
+    zIndex: 15,
     background: 'white',
     padding: '2px',
   },

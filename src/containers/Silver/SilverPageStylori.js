@@ -79,12 +79,12 @@ class HomeStylori extends React.Component {
             <div
               style={{
                 position: "fixed",
-                top: "50%",
+                bottom: "10%",
                 right: 0,
                 zIndex: 20,
               }}
             >
-              <NeedHelp position="left" />
+              <NeedHelp position="top" />
             </div>
           </Hidden>
           <Hidden mdUp>
@@ -100,7 +100,7 @@ class HomeStylori extends React.Component {
   }
 }
 
-const Components = (props) => {
+const Components = (props) => { 
   const [state, setState] = React.useState({
     data: {},
     allSeo: {},

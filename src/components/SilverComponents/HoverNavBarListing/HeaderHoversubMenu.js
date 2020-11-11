@@ -11,8 +11,9 @@ function HeaderHoverMenuItem(props) {
   const [opens, setOpens] = React.useState(props.opened);
   const [target, setTarget] = React.useState(props.subMenuTarget);
   const { onMouseLeave, onMouseOver, isSilver } = props;
+  debugger
   const classes = useStyles();
-  useEffect(() => {
+  useEffect(() => { 
     setOpens(props.opened);
     setTarget(props.targetopened)
   });
@@ -39,14 +40,14 @@ function HeaderHoverMenuItem(props) {
                     <Grid item style={{ margin: "auto" }}>
                       <Typography style={{ margin: "auto", textAlign: "center" }} className={classes.listedItemsvalue} >
                         {val.content.toUpperCase()}
-                      </Typography>
+                      </Typography> 
                     </Grid>
                   </Grid>
                 </Grid>
               )}
               </Grid>
-              <Grid container item xs={4}>
-              {isSilver && props?.data?.imageContainer && <img style={{ width: "100%", margin: "auto",height:"auto" }} src={props.data.imageContainer[0].img} />}
+              <Grid container item xs={4} style={{paddingLeft:5}}>
+              {isSilver && props?.allData?.imgContainer?.bigImage?.img && <img style={{ width: "100%", margin: "auto",height:"auto" }} src={props?.allData?.imgContainer?.bigImage?.img} />}
               </Grid>
                </Grid>
             }

@@ -161,7 +161,7 @@ class ProductDescription extends Component {
             sliderRef={this.slider}
             dataCarousel={homePageStylori.carouselTop.settingSilver}
           >
-            {homePageStylori.carouselTop.data.map((val, index) => (
+            {homePageStylori.carouselTop.silverListingPageData.map((val, index) => (
               <><Hidden smDown>
                 <Grid container key={index}>
                   <a href={val.navigateUrl} style={{ width: "100%" }}>
@@ -190,7 +190,7 @@ class ProductDescription extends Component {
             sliderRef={this.slider}
             dataCarousel={homePageStylori.carouselTop.settingSilver}
           >
-            {homePageStylori.carouselTop.data.map((val, index) => (
+            {homePageStylori.carouselTop.silverListingPageData.map((val, index) => (
               <><Hidden smDown>
                 <Grid container key={index}>
                   <a href={val.navigateUrl} style={{ width: "100%" }}>

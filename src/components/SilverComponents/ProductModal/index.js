@@ -43,7 +43,7 @@ const ProductModal = (props) => {
     data: { fadeImagessublist },
     shopByStyloriSilver,
     collectionsData,
-    allSeo,
+    // allSeo,
   } = props;
 
   let _shopByData =
@@ -70,6 +70,7 @@ const ProductModal = (props) => {
       if (tempdata.nodes.length > 0) return val;
     });
 
+   
     let _fun = () => {
       let _arr = [];
       _keysCollections.map((val) => {
@@ -125,7 +126,32 @@ const ProductModal = (props) => {
     : shopByStyloriSilver
     ? _shopByData
     : fadeImagessublist;
-  let _data = _mapper ? _mapper : [];
+  let _data = [{img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Contemporary.jpg", title:'Contemporary', url:"silver-jewellery-Contemporary"},{img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Everyday.jpg",title:"Everyday", url:"silver-jewellery-everyday"}, {img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Folklore.jpg",title:"Folklore", url:"silver-jewellery-Folklore"},{img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Mudra.jpg",title:"Mudra",url:"silver-jewellery-dmudra"}].map(val=>{
+    return({
+      "img": val.img,
+      "title": val.title,
+      "description": "",
+      url:val.url
+    })
+  });
+  let allSeo = {
+    "Contemporary": {
+      "seoText": "Modern jewellery for the modern woman. Geometric shapes, minimal aesthetics and unique colours make these statement pieces a woman’s new best friend.",
+      "seoUrl": "silver-jewellery-Contemporary"
+    },
+   "Everyday": {
+      "seoText": "Light-weight pieces. Happy designs. It's the perfect dainty jewellery to compliment your everyday outfits.",
+      "seoUrl": "silver-jewellery-everyday"
+    },
+    "Folklore": {
+      "seoText": "Why blend in when you can stand out? Our line of Oxidised Silver Jewellery is as versatile as you are. Pair it up with a cocktail dress for a girls night out or with a plain kurta for a friend's Mehendi ceremony. These statement pieces will get you the attention you deserve.",
+      "seoUrl": "silver-jewellery-Folklore"
+    },
+    "Mudra": {
+      "seoText": `There's grace in everything we do. We portray the "navarasas" every day. We are all dancers. Our Mudra style features traditional dance jewellery but is not made only for dancers. Pick a piece from the style or a whole set and move through the dance of life.`,
+      "seoUrl": "silver-jewellery-dmudra"
+    },
+  }
   const classes = useStyles();
   // alert(JSON.stringify(props.collectionsData))
   // console.log(props.allSeo,"props.allSeoprops.allSeoprops.allSeoprops.allSeo")
@@ -150,6 +176,7 @@ const ProductModal = (props) => {
     <>
       <Grid container className={classes.containerTop} justify="center">
         {_data.map((tile) => {
+          debugger
           return (
             // tile.constructor === Array &&
             tile &&
@@ -176,9 +203,9 @@ const ProductModal = (props) => {
                     hoverlist={[tile]}
                     hover={false}
                     hovereffect={true}
-                    isInjectUrl={true}
+                    // isInjectUrl={true}
                     type="hover"
-                    collectionDataSilverSEO={allSeo}
+                    // collectionDataSilverSEO={allSeo}
                   />
                 </Hidden>
                 <Hidden mdUp>
@@ -192,7 +219,7 @@ const ProductModal = (props) => {
                               style={{ width: "100%" }}
                             >
                               <img
-                                src={injectUrl_url_construct(val)}
+                                src={val}
                                 style={{ width: "100%", height: "100%" }}
                                 onError={(e) => {
                                   e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg`;
@@ -221,7 +248,7 @@ const ProductModal = (props) => {
                       dataCarousel={dataCarousel}
                       WithoutHoverhover={true}
                       type="hover"
-                      isInjectUrl={true}
+                      // isInjectUrl={true}
                     />
                   )}
 
@@ -270,31 +297,40 @@ const ProductModal = (props) => {
                                 : `${classes.productCardDescription}`
                             }
                           >
-                            {collectionsData
-                              ? props.allSeo[tile.title]
-                                ? props.allSeo[tile.title].seoText
+                            {collectionsData || allSeo
+                              ? allSeo[tile.title]
+                                ? allSeo[tile.title].seoText
                                 : ""
                               : tile.description}
                           </Grid>
                           <Grid container item xs={12} justify="center">
                             <a
                               href={
-                                collectionsData
-                                  ? props.allSeo[tile.title]
-                                    ? `/jewellery-${
-                                        props.allSeo[tile.title].seoUrl
-                                      }`
-                                    : "#"
-                                  : `/silver-${tile.title.toLowerCase()}-jewellery`
+                                // collectionsData
+                                //   ? props.allSeo[tile.title]
+                                //     ? `/jewellery-${
+                                //         props.allSeo[tile.title].seoUrl
+                                //       }`
+                                //     : "#"
+                                //   : `/silver-${tile.title.toLowerCase()}-jewellery`
+                                collectionsData || allSeo
+                                ? allSeo[tile.title]
+                                  ? `/${
+                                     allSeo[tile.title].seoUrl
+                                    }`
+                                  : "#"
+                                : `/silver-${tile.title.toLowerCase()}-jewellery`
                               }
                               style={{ textDecoration: "none" }}
                             >
                               <Button
                                 variant="contained"
+                                style={{color:"white"}}
+                                color="primary"
                                 className={
                                   shopByStyloriSilver
                                     ? `${classes.btnshop2}`
-                                    : `${classes.btnshop}`
+                                    : ''
                                 }
                               >
                                 SHOP

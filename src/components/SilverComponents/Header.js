@@ -63,12 +63,13 @@ class Header extends Component {
       selected1: "",
       Checked: false,
       load: false,
-      listHoverItem: "Jewellery",
+      listHoverItem: "Jewellery", 
       headerHeightprops: 0,
       anchorOne: null,
       targetopen: null,
       targetopenSubmenu: null,
       subTitleData: null,
+      subTitleAllData:null,
       subMenuTarget: null,
       anchorEl: false,
       opened: false,
@@ -87,7 +88,7 @@ class Header extends Component {
     } else {
       window.addEventListener("scroll", this.scrolling);
       if (!this.state.Menuopen && !this.state.submenuOpen) {
-        return this.setState({ subTitleData: "", subMenuTarget: "" });
+        return this.setState({ subTitleData: "", subMenuTarget: "", subTitleAllData:"" });
       } else {
         return true;
       }
@@ -161,11 +162,12 @@ class Header extends Component {
       }
     }
   };
-  submenuDetails = (data, target) => {
+  submenuDetails = (data, target, alldata) => {
     this.setState({
       subMenuTarget: target,
       subTitleData: data,
       submenuOpen: true,
+      subTitleAllData:alldata
     });
   };
   handleExpandClickClose = () => {
@@ -180,6 +182,7 @@ class Header extends Component {
       menuListHeader,
       menuLists,
     } = this.props.data;
+    debugger
     let { selected, selected1 } = this.state;
     const { classes } = this.props;
     const { anchorEl } = this.state;
@@ -196,6 +199,7 @@ class Header extends Component {
         ? this.props.globalContext.Globalctx.pathName
         : false;
     // const id = open ? true : undefined;
+    console.log(subheader , selected1 ,subheader[selected1], subheader?.[selected1] &&  '&&&&&')
     return (
       <div
         style={{ top: "0", zIndex: "1000", width: "100%" }}
@@ -528,6 +532,7 @@ class Header extends Component {
                                       Menuopen: true,
                                       submenuOpen: false,
                                       subTitleData: null,
+                                      subTitleAllData:null,
                                       targetopen: event.currentTarget,
                                       listHoverItem: listName.title.replace(
                                         / +/g,
@@ -546,7 +551,7 @@ class Header extends Component {
                             <HeaderHoverMenuItem
                               tabdata={this.props.data}
                               listHoverItem={
-                                menuLists[this.state.listHoverItem]
+                                menuLists[this.state.listHoverItem] 
                               }
                               isSilver={isSilver}
                               onMouseOver={(event) => {
@@ -576,12 +581,14 @@ class Header extends Component {
                                 menuLists[this.state.listHoverItem]
                               }
                               data={this.state.subTitleData}
+                              allData={this.state.subTitleAllData}
                               subMenuTarget={this.subMenuTarget}
                               targetopened={this.state.subMenuTarget}
                               onMouseLeave={() => {
                                 this.setState({
                                   submenuOpen: false,
                                   subTitleData: "",
+                                  subTitleAllData:"",
                                   subMenuTarget: "",
                                 });
                               }}
@@ -993,158 +1000,91 @@ class Header extends Component {
                                                                 <span style={{ paddingTop: "5px" }} className="header-viewal1">View All</span>
                                                             </ListItemText>
                                                         </ListItem> */}
-                                {subheader[selected1] &&
-                                  subheader[selected1].name &&
+                                {Boolean(subheader && selected1 && subheader?.[selected1]) ?
                                   //   subheader[selected1].name
-                                  [1].map((row, i) => {
-                                    if (isSilver) {
+                                  isSilver ?
+                                  <Grid
+                                  container
+                                  style={{
+                                    // width: "450px",
+                                    // maxHeight: "450px",
+                                    overflowY: "auto",
+                                    background: "#fff",
+                                    padding: "10px",
+                                    zIndex: "10000",
+                                  }}
+                                >
+                                 {
+                                 
+                                 subheader[selected1]?.name.map((row, i) => {
+                                    debugger
+                                    
                                       return (
-                                        <Grid
+                                    row.img ?
+                                        <Grid item xs={6} 
+                                        style={{marginBottom:30}}
+                                          onClick={() => {
+                                          window.location.href = row.url
+                                        }}>
+                                        {/* <Grid
                                           container
-                                          style={{
-                                            // width: "450px",
-                                            // maxHeight: "450px",
-                                            overflowY: "auto",
-                                            background: "#fff",
-                                            padding: "10px",
-                                            zIndex: "10000",
+                                          className={classes.imgcont}
+                                          onClick={() => {
+                                            window.location.href =
+                                              "/studs-earrings-jewellery";
                                           }}
-                                        >
-                                          <Grid container item xs={12}>
-                                            {[1, 2, 3].map((val, index) => (
-                                              <Grid item xs={6}>
-                                                <Grid
-                                                  container
-                                                  className={classes.imgcont}
-                                                  onClick={() => {
-                                                    window.location.href =
-                                                      "/studs-earrings-jewellery";
-                                                  }}
-                                                  justify="center"
-                                                  alignContent="center"
-                                                  alignItems="center"
-                                                  style={{ cursor: "pointer" }}
-                                                >
-                                                  <Grid
-                                                    item
-                                                    style={{
-                                                      justifyContent: "center",
-                                                      alignContent: "center",
-                                                      display: "flex",
-                                                    }}
-                                                  >
-                                                    {true && (
-                                                      <img
-                                                        style={{
-                                                          width: "65%",
-                                                          margin: "auto",
-                                                          height: "100%",
-                                                        }}
-                                                        src={
-                                                          "https://assets.stylori.com/images/Menu/Jewellery/Earrings/Studs+Earrings+Stylori-01.png"
-                                                        }
-                                                      />
-                                                    )}
-                                                  </Grid>
-                                                  <Grid
-                                                    item
-                                                    style={{ margin: "auto" }}
-                                                  >
-                                                    <Typography
-                                                      style={{
-                                                        margin: "auto",
-                                                        textAlign: "center",
-                                                        color:"rgb(96, 97, 97)"
-                                                      }}
-                                                      
-                                                      className={
-                                                        classes.listedItemsvalue
-                                                      }
-                                                    >
-                                                      {"Studs".toUpperCase()}
-                                                    </Typography>
-                                                  </Grid>
-                                                </Grid>
-                                              </Grid>
-                                            ))}
+                                          justify="center"
+                                          alignContent="center"
+                                          alignItems="center"
+                                          style={{ cursor: "pointer" }}
+                                        > */}
+                                          <Grid
+                                            item
+                                            style={{
+                                              justifyContent: "center",
+                                              alignContent: "center",
+                                              display: "flex",
+                                            }}
+                                          >
+                                              <img
+                                                style={{
+                                                  width: "55%",
+                                                  margin: "auto",
+                                                  height: "100%",
+                                                }}
+                                                src={
+                                                  row.img
+                                                }
+                                              />
                                           </Grid>
-                                          
-                                            <Divider
+                                          <Grid
+                                            item
+                                            style={{ margin: "auto" }}
+                                          >
+                                            <Typography
                                               style={{
-                                                width: "100%",
-                                                backgroundColor:
-                                                  "rgb(6, 171, 159)",
-                                                  margin:'5px 0'
+                                                margin: "auto",
+                                                textAlign: "center",
+                                                color:"rgb(96, 97, 97)",
+                                                fontWeight:"bold",
+                                                fontSize:'0.6rem'
                                               }}
-                                            />
-                                          <List className={classes.root}>
-                                            <ListItem>
-                                              <ListItemText>
-                                                <Typography
-                                                  variant="body1"
-                                                  style={{
-                                                    color: "rgb(6, 171, 159)",
-                                                    fontSize:'0.8rem'
-                                                  }}
-                                                >
-                                                  SHOP BY STYLE
-                                                </Typography>
-                                              </ListItemText>
-                                            </ListItem>
-                                            <ListItem>
-                                              <ListItemAvatar>
-                                                <Avatar
-                                                  alt="a"
-                                                  src="https://styloriimages-staging.s3.ap-south-1.amazonaws.com/product/SE0048/275X275/HOVER-SE0048-2W.webp"
-                                                />
-                                              </ListItemAvatar>
-                                              <ListItemText primary="Everyday" style={{color:"rgb(96, 97, 97)"}}/>
-                                            </ListItem>
-                                            <ListItem>
-                                              <ListItemAvatar>
-                                                <Avatar
-                                                  alt="a"
-                                                  src="https://styloriimages-staging.s3.ap-south-1.amazonaws.com/product/SE0048/275X275/HOVER-SE0048-2W.webp"
-                                                />
-                                              </ListItemAvatar>
-                                              <ListItemText primary="Traditional" style={{color:"rgb(96, 97, 97)"}}/>
-                                            </ListItem>
-                                            <ListItem>
-                                              <ListItemAvatar>
-                                                <Avatar
-                                                  alt="a"
-                                                  src="https://styloriimages-staging.s3.ap-south-1.amazonaws.com/product/SE0163/275X275/HOVER-SE0163-2Y.webp"
-                                                />
-                                              </ListItemAvatar>
-                                              <ListItemText primary="Folklore" style={{color:"rgb(96, 97, 97)"}}/>
-                                            </ListItem>
-                                          </List>
-                                          <Divider
-                                              style={{
-                                                width: "100%",
-                                                backgroundColor:
-                                                  "rgb(6, 171, 159)",
-                                                  margin:'5px 0'
-                                              }}
-                                            />
-                                              <List className={classes.root}>
-                                            <ListItem>
-                                              <ListItemText>
-                                                <Typography
-                                                  variant="body1"
-                                                  style={{
-                                                    color: "rgb(6, 171, 159)",
-                                                    fontSize:'0.8rem'
-                                                  }}
-                                                >
-                                                  SHOP BY PRICE
-                                                </Typography>
-                                              </ListItemText>
-                                            </ListItem>
-                                                <Grid container>
-                                                {["UNDER 1500","1500 - 3000", "3000 - 5000", "5000 - 7000", "Above 7000"].map(val=>{
-                                                    return(
-                                                  <Grid item xs={4}>
+                                              
+                                              // className={
+                                              //   classes.listedItemsvalue
+                                              // }
+                                            >
+                                              {row?.name?.toUpperCase()}
+                                            </Typography>
+                                          </Grid>
+                                        </Grid>
+                                          :
+                                          // <Grid container>
+                                          //       {["UNDER 1500","1500 - 3000", "3000 - 5000", "5000 - 7000", "Above 7000"].map(val=>{
+                                          //           return(
+                                                  <Grid item xs={6} onClick={() => {
+                                                    window.location.href = row.url
+                                                  }}>
                                                             <ListItem>
                                                         <ListItemText>
                                                         <Typography
@@ -1154,21 +1094,126 @@ class Header extends Component {
                                                             border:"1px solid rgb(204, 204, 204)",
                                                             padding:5,
                                                             color: "rgb(96, 97, 97)",
-                                                            fontSize:'0.8rem'
+                                                            fontSize:'0.8rem',
+                                                            fontWeight:"bold",
+                                                            textAlign:"center",
                                                           }}
                                                         >
-                                                          {val}
+                                                          {row.name}
                                                         </Typography>
                                                       </ListItemText>
                                                     </ListItem>
                                                       </Grid>
-                                                    )
-                                                })}
-                                                </Grid>
-                                            </List>
-                                        </Grid>
+                                                    // )
+                                                // })}
+                                                // {/* </Grid> */}
+                                          //   {/* <Divider
+                                          //     style={{
+                                          //       width: "100%",
+                                          //       backgroundColor:
+                                          //         "rgb(6, 171, 159)",
+                                          //         margin:'5px 0'
+                                          //     }}
+                                          //   />
+                                          // <List className={classes.root}>
+                                          //   <ListItem>
+                                          //     <ListItemText>
+                                          //       <Typography
+                                          //         variant="body1"
+                                          //         style={{
+                                          //           color: "rgb(6, 171, 159)",
+                                          //           fontSize:'0.8rem'
+                                          //         }}
+                                          //       >
+                                          //         SHOP BY STYLE
+                                          //       </Typography>
+                                          //     </ListItemText>
+                                          //   </ListItem>
+                                          //   <ListItem>
+                                          //     <ListItemAvatar>
+                                          //       <Avatar
+                                          //         alt="a"
+                                          //         src="https://styloriimages-staging.s3.ap-south-1.amazonaws.com/product/SE0048/275X275/HOVER-SE0048-2W.webp"
+                                          //       />
+                                          //     </ListItemAvatar>
+                                          //     <ListItemText primary="Everyday" style={{color:"rgb(96, 97, 97)"}}/>
+                                          //   </ListItem>
+                                          //   <ListItem>
+                                          //     <ListItemAvatar>
+                                          //       <Avatar
+                                          //         alt="a"
+                                          //         src="https://styloriimages-staging.s3.ap-south-1.amazonaws.com/product/SE0048/275X275/HOVER-SE0048-2W.webp"
+                                          //       />
+                                          //     </ListItemAvatar>
+                                          //     <ListItemText primary="Traditional" style={{color:"rgb(96, 97, 97)"}}/>
+                                          //   </ListItem>
+                                          //   <ListItem>
+                                          //     <ListItemAvatar>
+                                          //       <Avatar
+                                          //         alt="a"
+                                          //         src="https://styloriimages-staging.s3.ap-south-1.amazonaws.com/product/SE0163/275X275/HOVER-SE0163-2Y.webp"
+                                          //       />
+                                          //     </ListItemAvatar>
+                                          //     <ListItemText primary="Folklore" style={{color:"rgb(96, 97, 97)"}}/>
+                                          //   </ListItem>
+                                          // </List>
+                                          // <Divider
+                                          //     style={{
+                                          //       width: "100%",
+                                          //       backgroundColor:
+                                          //         "rgb(6, 171, 159)",
+                                          //         margin:'5px 0'
+                                          //     }}
+                                          //   />
+                                          //     <List className={classes.root}>
+                                          //   <ListItem>
+                                          //     <ListItemText>
+                                          //       <Typography
+                                          //         variant="body1"
+                                          //         style={{
+                                          //           color: "rgb(6, 171, 159)",
+                                          //           fontSize:'0.8rem'
+                                          //         }}
+                                          //       >
+                                          //         SHOP BY PRICE
+                                          //       </Typography>
+                                          //     </ListItemText>
+                                          //   </ListItem>
+                                          //       <Grid container>
+                                          //       {["UNDER 1500","1500 - 3000", "3000 - 5000", "5000 - 7000", "Above 7000"].map(val=>{
+                                          //           return(
+                                          //         <Grid item xs={4}>
+                                          //                   <ListItem>
+                                          //               <ListItemText>
+                                          //               <Typography
+                                          //                 variant="body1"
+                                          //                 style={{
+                                          //                   boxShadow:"rgb(204, 204, 204) 3px 3px 2px",
+                                          //                   border:"1px solid rgb(204, 204, 204)",
+                                          //                   padding:5,
+                                          //                   color: "rgb(96, 97, 97)",
+                                          //                   fontSize:'0.8rem'
+                                          //                 }}
+                                          //               >
+                                          //                 {val}
+                                          //               </Typography>
+                                          //             </ListItemText>
+                                          //           </ListItem>
+                                          //             </Grid>
+                                          //           )
+                                          //       })}
+                                          //       </Grid>
+                                          //   </List>
+                                        //  */}
+                                        // {/* </Grid> */}
                                       );
-                                    } else {
+                                    
+                                  })}
+                                </Grid>
+                                  :
+                                  subheader[selected1].name.map((row, i) => {
+                                    debugger
+                                
                                       return (
                                         <>
                                           <ListItem
@@ -1190,8 +1235,11 @@ class Header extends Component {
                                           </ListItem>
                                         </>
                                       );
-                                    }
-                                  })}
+                                
+                                  })
+                                :
+                                null
+                                }
                               </>
                             )}
                           </>

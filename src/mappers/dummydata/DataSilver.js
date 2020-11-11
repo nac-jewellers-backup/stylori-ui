@@ -29,17 +29,17 @@ export const carouselTop = [
         },
         images: [
             {
-                img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+banner+1920+X+656.jpg",
-                mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+mobile+banner+805+X+430.jpg",
-                navigateUrl: "https://www.stylori.com/jewellery"
+                img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Home-banner-silver.jpg",
+                mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Home-banner-silver+mobile.jpg",
+                navigateUrl: "https://www.stylori.com/silver-jewellery"
               },
-              {
-                img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-+-+1920x656+copy.jpg",
-                mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-805x430.jpg",
-                navigateUrl: "https://www.stylori.com/goldcoins"
-              },
+              // {
+              //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-+-+1920x656+copy.jpg",
+              //   mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-805x430.jpg",
+              //   navigateUrl: "https://www.stylori.com/goldcoins"
+              // },
         ],
-        content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic ."
+        content: "Stylori Silver, from NAC Jewellers, is a brand of exclusive silver Jewellery for the modern woman. From dainty Everyday styles to dressy Folklore pieces, Stylori Silver Offers you hypo allergenic and stylish designs to match your versatile taste."
     }] 
     
 //square images
@@ -49,7 +49,7 @@ export const fadeImagessublist = [
     { img: `${img3}`, title: "CONTEMPORARY", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ", price: "98.89789" },
     { img: `${img4}`, title: "TRADITIONAL", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ", price: "98.89789" }
 ]
-//title for divider
+//title for divider 
 export const titleContiner = ['TOP PICKS', 'FEATURED', 'TESTIMONIALS']
 //top pic container
 export const TopPicksimages = [
@@ -99,9 +99,9 @@ export const FeaturedCarousel = [
         },
         images:
             [
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
+                "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori+Silver+-+Mudra+Banner-1920X656.jpg",
+                // "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
+                // "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
             ]
     }
 ]

@@ -43,7 +43,7 @@ function HeaderHoverMenuItem(props) {
                 (props.listHoverItem) && mapper &&
                 (mapper).map(menuList =>
                   (
-                    <ListItem onMouseOver={props.submenuDetails ? (event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget) }: ()=>{}} className={classes.listedItems} component="li"
+                    <ListItem onMouseOver={props.submenuDetails ? (event) => { props.submenuDetails(menuList.imgContainer, event.currentTarget, menuList) }: ()=>{}} className={classes.listedItems} component="li"
                       onClick={() => { window.location.href = menuList.url }}
                     >
                       <ListItemText variant>

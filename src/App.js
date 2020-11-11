@@ -53,7 +53,7 @@ class App extends React.Component {
         }
         return(
           <ErrorBoundary>
-      <GlobalProvider>
+      <GlobalProvider> 
         <Theme>
           <NetworkProvider>
             {/*productId="SP1135" <ProductDetailProvider productId="SP1135">*/}
