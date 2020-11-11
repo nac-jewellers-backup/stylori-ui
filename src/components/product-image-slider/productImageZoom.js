@@ -349,7 +349,8 @@ class ProductImageZoom extends React.Component {
                     </span>
                   ) : null;
                 })}
-                {!this.props.isSilver && data[0].ProductContactNum[0].isReadyToShip == true ? (
+                {/* !this.props.isSilver &&  */}
+                {data[0].ProductContactNum[0].isReadyToShip == true ? (
                   <div
                     class={
                       data && data[0] && data[0].offerDiscount

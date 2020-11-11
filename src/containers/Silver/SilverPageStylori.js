@@ -79,7 +79,7 @@ class HomeStylori extends React.Component {
             <div
               style={{
                 position: "fixed",
-                top: "50%",
+                bottom: "10%",
                 right: 0,
                 zIndex: 20,
               }}

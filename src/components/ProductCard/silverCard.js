@@ -140,9 +140,9 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, loadAndSaveError
       </Grid> */}
 
 
-      {/* <div class="wishListStyle" >
+      <div class="wishListStyle" >
         <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} />
-      </div> */}
+      </div>
 <Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }} target="_blank" onClick={handleProductDetatiContext(props)}>
         <LazyLoadImage
           alt={'props.data.title'}

@@ -269,7 +269,7 @@ class ProductDetail extends Component {
                 <div
                   style={{
                     position: "fixed",
-                    top: "50%",
+                    bottom: "10%",
                     right: 0,
                     zIndex: 20,
                   }}
