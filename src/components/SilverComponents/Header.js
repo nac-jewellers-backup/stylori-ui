@@ -69,6 +69,7 @@ class Header extends Component {
       targetopen: null,
       targetopenSubmenu: null,
       subTitleData: null,
+      subTitleAllData:null,
       subMenuTarget: null,
       anchorEl: false,
       opened: false,
@@ -87,7 +88,7 @@ class Header extends Component {
     } else {
       window.addEventListener("scroll", this.scrolling);
       if (!this.state.Menuopen && !this.state.submenuOpen) {
-        return this.setState({ subTitleData: "", subMenuTarget: "" });
+        return this.setState({ subTitleData: "", subMenuTarget: "", subTitleAllData:"" });
       } else {
         return true;
       }
@@ -161,11 +162,12 @@ class Header extends Component {
       }
     }
   };
-  submenuDetails = (data, target) => {
+  submenuDetails = (data, target, alldata) => {
     this.setState({
       subMenuTarget: target,
       subTitleData: data,
       submenuOpen: true,
+      subTitleAllData:alldata
     });
   };
   handleExpandClickClose = () => {
@@ -528,6 +530,7 @@ class Header extends Component {
                                       Menuopen: true,
                                       submenuOpen: false,
                                       subTitleData: null,
+                                      subTitleAllData:null,
                                       targetopen: event.currentTarget,
                                       listHoverItem: listName.title.replace(
                                         / +/g,
@@ -546,7 +549,7 @@ class Header extends Component {
                             <HeaderHoverMenuItem
                               tabdata={this.props.data}
                               listHoverItem={
-                                menuLists[this.state.listHoverItem]
+                                menuLists[this.state.listHoverItem] 
                               }
                               isSilver={isSilver}
                               onMouseOver={(event) => {
@@ -576,12 +579,14 @@ class Header extends Component {
                                 menuLists[this.state.listHoverItem]
                               }
                               data={this.state.subTitleData}
+                              allData={this.state.subTitleAllData}
                               subMenuTarget={this.subMenuTarget}
                               targetopened={this.state.subMenuTarget}
                               onMouseLeave={() => {
                                 this.setState({
                                   submenuOpen: false,
                                   subTitleData: "",
+                                  subTitleAllData:"",
                                   subMenuTarget: "",
                                 });
                               }}
