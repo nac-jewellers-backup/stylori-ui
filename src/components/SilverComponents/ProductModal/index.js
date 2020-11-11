@@ -136,19 +136,19 @@ const ProductModal = (props) => {
   });
   let allSeo = {
     "Contemporary": {
-      "seoText": " ",
+      "seoText": "Modern jewellery for the modern woman. Geometric shapes, minimal aesthetics and unique colours make these statement pieces a woman’s new best friend.",
       "seoUrl": "silver-jewellery-Contemporary"
     },
    "Everyday": {
-      "seoText": " ",
+      "seoText": "Light-weight pieces. Happy designs. It's the perfect dainty jewellery to compliment your everyday outfits.",
       "seoUrl": "silver-jewellery-everyday"
     },
     "Folklore": {
-      "seoText": " ",
+      "seoText": "Why blend in when you can stand out? Our line of Oxidised Silver Jewellery is as versatile as you are. Pair it up with a cocktail dress for a girls night out or with a plain kurta for a friend's Mehendi ceremony. These statement pieces will get you the attention you deserve.",
       "seoUrl": "silver-jewellery-Folklore"
     },
     "Mudra": {
-      "seoText": " ",
+      "seoText": `There's grace in everything we do. We portray the "navarasas" every day. We are all dancers. Our Mudra style features traditional dance jewellery but is not made only for dancers. Pick a piece from the style or a whole set and move through the dance of life.`,
       "seoUrl": "silver-jewellery-dmudra"
     },
   }
@@ -297,9 +297,9 @@ const ProductModal = (props) => {
                                 : `${classes.productCardDescription}`
                             }
                           >
-                            {collectionsData
-                              ? props.allSeo[tile.title]
-                                ? props.allSeo[tile.title].seoText
+                            {collectionsData || allSeo
+                              ? allSeo[tile.title]
+                                ? allSeo[tile.title].seoText
                                 : ""
                               : tile.description}
                           </Grid>

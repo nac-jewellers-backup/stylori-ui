@@ -84,7 +84,7 @@ class HomeStylori extends React.Component {
                 zIndex: 20,
               }}
             >
-              <NeedHelp position="left" />
+              <NeedHelp position="top" />
             </div>
           </Hidden>
           <Hidden mdUp>

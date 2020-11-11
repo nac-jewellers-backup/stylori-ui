@@ -39,7 +39,7 @@ export const carouselTop = [
               //   navigateUrl: "https://www.stylori.com/goldcoins"
               // },
         ],
-        content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic ."
+        content: "Stylori Silver, from NAC Jewellers, is a brand of exclusive silver Jewellery for the modern woman. From dainty Everyday styles to dressy Folklore pieces, Stylori Silver Offers you hypo allergenic and stylish designs to match your versatile taste."
     }] 
     
 //square images
@@ -99,7 +99,7 @@ export const FeaturedCarousel = [
         },
         images:
             [
-                "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori+Silver+-+Desktop+-+Mudra.jpg",
+                "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori+Silver+-+Mudra+Banner-1920X656.jpg",
                 // "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
                 // "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
             ]

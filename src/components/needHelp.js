@@ -23,8 +23,10 @@ const useStyles = makeStyles((theme) => ({
     // padding: theme.spacing(2),
   },
   popper: {
-    minWidth: "200px",
-    zIndex:10,
+    // minWidth: "200px",
+    minWidth: 60,
+    marginBottom:5,
+    zIndex: 10,
     [theme.breakpoints.down("sm")]: {
       minWidth: 0,
     },
@@ -102,11 +104,11 @@ export function NeedHelp(props) {
         {({ TransitionProps }) => (
           <Collapse {...TransitionProps} timeout={500}>
             <Paper className={classes.paper}>
-              <Hidden mdUp>
-                <Grid item xs={12} sm={4} style={{ padding: "5px 0px" }}>
+              {/* <Hidden mdUp> */}
+                <Grid item xs={12} sm={4} style={{ padding: "5px 0px", margin:'auto' }}>
                   <ChatIcon onClick={() => window.LC_API.open_chat_window()} />
                 </Grid>
-                <Grid item xs={12} sm={4} style={{ padding: "5px 0px" }}>
+                <Grid item xs={12} sm={4} style={{ padding: "5px 0px", margin:'auto' }}>
                   <a
                     href="tel:1800-102-0330"
                     style={{ textDecoration: "none" }}
@@ -114,7 +116,7 @@ export function NeedHelp(props) {
                     <CallIcon />
                   </a>
                 </Grid>
-                <Grid item xs={12} sm={4} style={{ padding: "5px 0px" }}>
+                <Grid item xs={12} sm={4} style={{ padding: "5px 0px", margin:'auto' }}>
                   <a
                     href="mailto:hello@stylori.com"
                     style={{ textDecoration: "none" }}
@@ -123,10 +125,12 @@ export function NeedHelp(props) {
                   </a>
                 </Grid>
 
-                <Grid item xs={12} sm={4} style={{ padding: "5px 0px" }}>
-                  <HighlightOffIcon onClick={handleClick(null)} />
+                <Grid item xs={12} sm={4} style={{ padding: "5px 0px", margin:'auto' }}>
+                  <HighlightOffIcon onClick={handleClick(props.position)} />
                 </Grid>
-              </Hidden>
+              {/* </Hidden> */}
+            {/* 
+            
               <Hidden smDown>
                 <Grid container style={{ padding: "10px 15px" }}>
                   <Grid
@@ -160,9 +164,9 @@ export function NeedHelp(props) {
                       style={{ textDecoration: "none" }}
                     >
                       <Typography variant="body1" className={classes.number}>
-                        {/* 1800-102-0330 */}
+                        // 1800-102-0330 
 
-                        <CallIcon />
+<CallIcon />
                       </Typography>
                     </a>
                   </Grid>
@@ -184,6 +188,8 @@ export function NeedHelp(props) {
                   <Divider orientation="vertical" style={{ width: "1px" }} />
                 </Grid>
               </Hidden>
+            
+            */}
             </Paper>
           </Collapse>
         )}

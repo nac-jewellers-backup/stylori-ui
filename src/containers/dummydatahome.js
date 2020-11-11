@@ -139,6 +139,34 @@ export const
         //   mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/harvest-campaign-mob.png",
         //   navigateUrl: "jewellery?sort=bestseller"
         // },
+      ], 
+      "silverListingPageData":[
+        {
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Contemporary+main.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Contemporary+main.jpg",
+          navigateUrl: "/silver-jewellery-Contemporary"
+        },
+        {
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Everyday+main.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Everyday+main.jpg",
+          navigateUrl: "/silver-jewellery-everyday"
+        },
+        {
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Folklore+main.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Folklore+main.jpg",
+          navigateUrl: "/silver-jewellery-Folklore"
+        },
+        {
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Mudra+main.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Mudra+main.jpg",
+          navigateUrl: "/silver-jewellery-dmudra"
+        },
+        {
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Traditional+main.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Traditional+main.jpg",
+          navigateUrl: "/silver-jewellery-traditional"
+        },
+        
       ]
     },
     //-------------Grid 5 images ---------- 
