@@ -100,7 +100,7 @@ class HomeStylori extends React.Component {
   }
 }
 
-const Components = (props) => {
+const Components = (props) => { 
   const [state, setState] = React.useState({
     data: {},
     allSeo: {},

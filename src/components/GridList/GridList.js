@@ -104,21 +104,21 @@ const useStyles = makeStyles((theme) => ({
     }
   }
 }));
-function FormRow() {
+function FormRow(props) {
   const classes = useStyles();
   return (
     <React.Fragment>
       <Grid item xs={6} className={`${classes.isHoverGrid} hovereffectSilvertoppicks`}>
         <img
           alt=""
-          src="https://styloriimages-staging.s3.ap-south-1.amazonaws.com/product/SE3355/600X600/SE3355-1S.webp?_=1601995111621"
+          src={props.imageOne}
           style={{ width: "100%", height: "100%" }}
         />
           <div className="overlay1">
             <div className={"collectionDataSilverSEOflex"}>
               <div style={{ margin: "auto" }}>
                 <h2 className="next-price">
-                  {"Bracelets".toUpperCase()}
+                  {"".toUpperCase()}
                 </h2>
               </div>
             </div>
@@ -127,14 +127,14 @@ function FormRow() {
       <Grid item xs={6} className={`${classes.isHoverGrid} hovereffectSilvertoppicks`}>
         <img
           alt=""
-          src="https://styloriimages-staging.s3.ap-south-1.amazonaws.com/product/SE0389/575X575/HOVER-SE0389-2W.webp"
+          src={props.imageTwo}
           style={{ width: "100%", height: "100%" }}
         />
           <div className="overlay1">
             <div className={"collectionDataSilverSEOflex"}>
               <div style={{ margin: "auto" }}>
                 <h2 className="next-price">
-                  {"Bracelets".toUpperCase()}
+                  {"".toUpperCase()}
                 </h2>
               </div>
             </div>
@@ -156,7 +156,7 @@ export default function ImageGridList(props) {
                 <Grid container item xs={5} className="hovereffectSilvertoppicks" style={{height:"100%"}}>
                   <img
                     alt=""
-                    src="https://assets.stylori.com/images/Static+Pages/Home+Page/blush+3.png"
+                    src="https://assets.stylori.com/product/SNSC4270/1000X1000/SNSC4270-2G.webp?_=1605092387781"
                     style={{ width: "100%", height: "100%" }}
                   />
                   <div className="overlay1">
@@ -171,10 +171,10 @@ export default function ImageGridList(props) {
                 </Grid>
                 <Grid container item xs={7} style={{height:"100%"}}>
                   <Grid container item xs={12}  style={{height:"50%", paddingBottom:4}}>
-                    <FormRow />
-                  </Grid>
-                  <Grid container item xs={12}  style={{height:"50%", paddingTop:4}}>
-                    <FormRow />
+                  <FormRow imageOne = "https://assets.stylori.com/product/SE3391/1000X1000/SE3391-2S.webp?_=1605092766692" imageTwo = "https://assets.stylori.com/product/SNLC4195/1000X1000/SNLC4195-2D.webp?_=1605093270200"/>
+            </Grid>
+            <Grid container item xs={12}  style={{height:"50%", paddingTop:6}}>
+              <FormRow imageOne = "https://assets.stylori.com/product/SBA4093/1000X1000/SBA4093-2G.webp?_=1605093140435" imageTwo = "https://assets.stylori.com/product/SR3976/1000X1000/SR3976-2LS.webp?_=1605093196279"/>
                   </Grid>
                 </Grid>
               </Grid>
@@ -269,7 +269,7 @@ export default function ImageGridList(props) {
           <Grid  item xs={12} style={{height:"100%"}} className="hovereffectSilvertoppicks">
             <img
               alt=""
-              src="https://assets.stylori.com/images/Static+Pages/Home+Page/blush+3.png"
+              src="https://assets.stylori.com/product/SNSC4270/1000X1000/SNSC4270-2G.webp?_=1605092387781"
               style={{ width: "100%", height: "100%" }}
             />
                   <div className="overlay1">
@@ -278,8 +278,8 @@ export default function ImageGridList(props) {
                 {/* <h2 className="next-price">
                 
                 </h2> */}
-                <div style={{color:"white"}}>Pretty Adornments Silver pendant</div>
-                <h6 style={{color:"white"}}>Rs 5800</h6>
+                <div style={{color:"white"}}>Charming Kasu Silver Necklace</div>
+                <h6 style={{color:"white"}}>Rs 13,199</h6>
                 <div><Button variant="contained" color="secondary" style={{padding:10}} >Add to cart</Button></div>
                 <div style={{marginTop:20}}><Button variant="contained" color="secondary" style={{padding:10}}>Save</Button></div>
               </div>
@@ -293,10 +293,10 @@ export default function ImageGridList(props) {
           <Grid item xs={5} style={{height:"100%", padding:"2%"}}>
           <Grid container item xs={12} style={{height:"100%"}}>
             <Grid container item xs={12}  style={{height:"50%", paddingBottom:6}}>
-              <FormRow />
+              <FormRow imageOne = "https://assets.stylori.com/product/SE3391/1000X1000/SE3391-2S.webp?_=1605092766692" imageTwo = "https://assets.stylori.com/product/SNLC4195/1000X1000/SNLC4195-2D.webp?_=1605093270200"/>
             </Grid>
             <Grid container item xs={12}  style={{height:"50%", paddingTop:6}}>
-              <FormRow />
+              <FormRow imageOne = "https://assets.stylori.com/product/SBA4093/1000X1000/SBA4093-2G.webp?_=1605093140435" imageTwo = "https://assets.stylori.com/product/SR3976/1000X1000/SR3976-2LS.webp?_=1605093196279"/>
             </Grid>
           </Grid>
        
