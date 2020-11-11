@@ -949,6 +949,19 @@ body {
     cursor: pointer !important;
     margin-left: -36.1px !important;
 }
+.one-day-ship_only_silver {
+    z-index: 999 !important;
+    width: 152px !important;
+    height: 60px ! important;
+    background-position: 3px -29px !important;
+    /* background-image: url(https://assets.stylori.com/images/static/product-details-icons.png); */
+    /* margin-top: -30px !important; */
+    position: absolute;
+    background-repeat: no-repeat !important;
+    margin-left: 0px;
+    cursor: pointer !important;
+    margin-left: -36.1px !important;
+}
 
 .overly-img {
     left: 48.8%;

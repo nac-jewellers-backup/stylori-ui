@@ -350,7 +350,18 @@ class ProductImageZoom extends React.Component {
                   ) : null;
                 })}
                 {/* !this.props.isSilver &&  */}
-                {data[0].ProductContactNum[0].isReadyToShip == true ? (
+                {data[0].ProductContactNum[0].isReadyToShip == true ? 
+                this.props.isSilver ?
+(
+
+  <div
+  class={"one-day-ship_only_silver"}
+>
+  <img src={require('assets/StyloriSilver-truckIcon.svg')} alt=""/>
+</div>
+)
+                :
+                (
                   <div
                     class={
                       data && data[0] && data[0].offerDiscount

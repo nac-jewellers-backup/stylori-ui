@@ -4,23 +4,23 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "ed9ce8c6ca7ef5902cb4",
+    "revision": "511ac39247b7194ded2a",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "65d1b956c0ee42acd79c",
+    "revision": "824cdfc925cfefb93681",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "568f8451ca76c7853753",
+    "revision": "6d64e22757c571ecfbf3",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "ed9ce8c6ca7ef5902cb4",
+    "revision": "511ac39247b7194ded2a",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "65d1b956c0ee42acd79c",
+    "revision": "824cdfc925cfefb93681",
     "url": "/static/js/3.js"
   },
   {
@@ -28,7 +28,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/4.js"
   },
   {
-    "revision": "568f8451ca76c7853753",
+    "revision": "6d64e22757c571ecfbf3",
     "url": "/static/js/main.js"
   },
   {
@@ -46,6 +46,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "1a38a224b9dfb66dda91904348a8e0a8",
     "url": "/static/media/Stylori Silver logo.svg"
+  },
+  {
+    "revision": "34074cbb94b9fe2663250bfed2f2213f",
+    "url": "/static/media/StyloriSilver-truckIcon.svg"
   },
   {
     "revision": "04639ae8969c77110a53303b92b57712",
