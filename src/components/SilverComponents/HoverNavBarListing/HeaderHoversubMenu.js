@@ -11,7 +11,6 @@ function HeaderHoverMenuItem(props) {
   const [opens, setOpens] = React.useState(props.opened);
   const [target, setTarget] = React.useState(props.subMenuTarget);
   const { onMouseLeave, onMouseOver, isSilver } = props;
-  debugger
   const classes = useStyles();
   useEffect(() => { 
     setOpens(props.opened);

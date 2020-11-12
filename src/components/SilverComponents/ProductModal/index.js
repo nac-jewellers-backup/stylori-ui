@@ -45,7 +45,24 @@ const ProductModal = (props) => {
     collectionsData,
     // allSeo,
   } = props;
-
+  let allSeo = {
+    "Contemporary": {
+      "seoText": "Modern jewellery for the modern woman. Geometric shapes, minimal aesthetics and unique colours make these statement pieces a woman’s new best friend.",
+      "seoUrl": "silver-jewellery-Contemporary"
+    },
+   "Everyday": {
+      "seoText": "Light-weight pieces. Happy designs. It's the perfect dainty jewellery to compliment your everyday outfits.",
+      "seoUrl": "silver-jewellery-everyday"
+    },
+    "Folklore": {
+      "seoText": "Why blend in when you can stand out? Our line of Oxidised Silver Jewellery is as versatile as you are. Pair it up with a cocktail dress for a girls night out or with a plain kurta for a friend's Mehendi ceremony. These statement pieces will get you the attention you deserve.",
+      "seoUrl": "silver-jewellery-Folklore"
+    },
+    "Mudra": {
+      "seoText": `There's grace in everything we do. We portray the "navarasas" every day. We are all dancers. Our Mudra style features traditional dance jewellery but is not made only for dancers. Pick a piece from the style or a whole set and move through the dance of life.`,
+      "seoUrl": "silver-jewellery-dmudra"
+    },
+  }
   let _shopByData =
     shopByStyloriSilver &&
     shopByStyloriSilver.length > 0 &&
@@ -118,15 +135,7 @@ const ProductModal = (props) => {
       ? handleCollectionDataMapper(collectionsData, fadeImagessublist)
       : []
     : false;
-  let pagination = collectionData
-    ? collectionData.slice(0, state.pagination)
-    : collectionData;
-  let _mapper = collectionData
-    ? pagination
-    : shopByStyloriSilver
-    ? _shopByData
-    : fadeImagessublist;
-  let _data = [{img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Contemporary.jpg", title:'Contemporary', url:"silver-jewellery-Contemporary"},{img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Everyday.jpg",title:"Everyday", url:"silver-jewellery-everyday"}, {img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Folklore.jpg",title:"Folklore", url:"silver-jewellery-Folklore"},{img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Mudra.jpg",title:"Mudra",url:"silver-jewellery-dmudra"}].map(val=>{
+  let pagination = [{img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Contemporary.jpg", title:'Contemporary', url:"silver-jewellery-Contemporary"},{img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Everyday.jpg",title:"Everyday", url:"silver-jewellery-everyday"}, {img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Folklore.jpg",title:"Folklore", url:"silver-jewellery-Folklore"},{img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Mudra.jpg",title:"Mudra",url:"silver-jewellery-dmudra"}].map(val=>{
     return({
       "img": val.img,
       "title": val.title,
@@ -134,24 +143,14 @@ const ProductModal = (props) => {
       url:val.url
     })
   });
-  let allSeo = {
-    "Contemporary": {
-      "seoText": "Modern jewellery for the modern woman. Geometric shapes, minimal aesthetics and unique colours make these statement pieces a woman’s new best friend.",
-      "seoUrl": "silver-jewellery-Contemporary"
-    },
-   "Everyday": {
-      "seoText": "Light-weight pieces. Happy designs. It's the perfect dainty jewellery to compliment your everyday outfits.",
-      "seoUrl": "silver-jewellery-everyday"
-    },
-    "Folklore": {
-      "seoText": "Why blend in when you can stand out? Our line of Oxidised Silver Jewellery is as versatile as you are. Pair it up with a cocktail dress for a girls night out or with a plain kurta for a friend's Mehendi ceremony. These statement pieces will get you the attention you deserve.",
-      "seoUrl": "silver-jewellery-Folklore"
-    },
-    "Mudra": {
-      "seoText": `There's grace in everything we do. We portray the "navarasas" every day. We are all dancers. Our Mudra style features traditional dance jewellery but is not made only for dancers. Pick a piece from the style or a whole set and move through the dance of life.`,
-      "seoUrl": "silver-jewellery-dmudra"
-    },
-  }
+  let _mapper = collectionData
+    ? pagination
+    : shopByStyloriSilver
+    ? _shopByData
+    : fadeImagessublist;
+  let _data = _mapper ? _mapper : [];
+  
+
   const classes = useStyles();
   // alert(JSON.stringify(props.collectionsData))
   // console.log(props.allSeo,"props.allSeoprops.allSeoprops.allSeoprops.allSeo")

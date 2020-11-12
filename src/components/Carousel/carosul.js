@@ -184,7 +184,6 @@ class Component extends React.Component {
   imagehoverchildrens = (hoverlist, globalContext, isInjectUrl) => {
     let { hover, hovereffect, TopPic, imagecra, isSilver, collectionDataSilverSEO  } = this.props;
     const collectiondatacheck = (val) => collectionDataSilverSEO ?collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText && collectionDataSilverSEO[val.title].seoText.replace(/ /g,'').length > 0 ? collectionDataSilverSEO[val.title].seoText : false : val.description
-    debugger
     if (TopPic) {
       return hoverlist.map((val) => (
         <div

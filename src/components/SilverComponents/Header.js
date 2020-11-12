@@ -182,7 +182,6 @@ class Header extends Component {
       menuListHeader,
       menuLists,
     } = this.props.data;
-    debugger
     let { selected, selected1 } = this.state;
     const { classes } = this.props;
     const { anchorEl } = this.state;
@@ -1017,7 +1016,6 @@ class Header extends Component {
                                  {
                                  
                                  subheader[selected1]?.name.map((row, i) => {
-                                    debugger
                                     
                                       return (
                                     row.img ?
@@ -1212,7 +1210,6 @@ class Header extends Component {
                                 </Grid>
                                   :
                                   subheader[selected1].name.map((row, i) => {
-                                    debugger
                                 
                                       return (
                                         <>
