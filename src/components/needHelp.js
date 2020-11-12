@@ -207,7 +207,7 @@ export function NeedHelp(props) {
               ) : (
                 <div>
                   <div style={{ fontSize: "1rem" }}>
-                    Help
+                    Hel
                     <i
                       style={{ fontSize: "1.2rem", paddingLeft: 3 }}
                       class="fa"
