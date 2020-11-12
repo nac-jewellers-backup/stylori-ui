@@ -263,7 +263,7 @@ export default function ImageGridList(props) {
       </Hidden>
       <Hidden smDown>
         {props.isHover ? (
-        <Grid container justify="center" style={{paddingTop:30, height:600}}>
+        <Grid container justify="center" style={{paddingTop:30, height:500}}>
           <Grid item xs={5} style={{height:"100%", padding:"2%"}}>
           {/* <Grid container spacing={1} style={{height:500, paddingTop:30}}> */}
           <Grid  item xs={12} style={{height:"100%"}} className="hovereffectSilvertoppicks">
