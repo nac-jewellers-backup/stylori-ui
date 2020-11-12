@@ -100,7 +100,8 @@ export const FeaturedCarousel = [
         images:
             [
                 {web:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori+Silver+-+Mudra+Banner-1920X656.jpg",
-              mob:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/featured-banner-mudra.jpg"},
+              mob:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/featured-banner-mudra.jpg",
+            url:"/silver-jewellery-dmudra"},
                 // "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
                 // "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",
             ]
