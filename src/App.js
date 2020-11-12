@@ -52,7 +52,7 @@ class App extends React.Component {
           refreshCacheAndReload();
         }
         return(
-          <ErrorBoundary> 
+          <ErrorBoundary>
       <GlobalProvider> 
         <Theme>
           <NetworkProvider>
