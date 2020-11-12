@@ -11,11 +11,20 @@ export const FeaturedGridComponent = (props) => {
     return (
         <Grid container xs={12} className={classes.containerset} style={{}} justify="center">
             <Grid item xs={12} style={{ boxShadow: '10px 10px 5px #ccc' }}>
+                <Hidden mdUp>
                 <Slideshow dataCarousel={props.data[0].settings} >
                     {props.data[0].images.map((val, Index) =>
-                        <img src={val} className={`${classes.img}`} />
+                        <img src={val.mob} className={`${classes.img}`} />
                     )}
                 </Slideshow>
+                </Hidden>
+                <Hidden smDown>
+                <Slideshow dataCarousel={props.data[0].settings} >
+                    {props.data[0].images.map((val, Index) =>
+                        <img src={val.web} className={`${classes.img}`} />
+                    )}
+                </Slideshow>
+                </Hidden>
 
             </Grid>
             <Hidden smDown>
