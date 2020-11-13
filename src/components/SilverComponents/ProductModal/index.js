@@ -204,7 +204,7 @@ const ProductModal = (props) => {
                     hovereffect={true}
                     // isInjectUrl={true}
                     type="hover"
-                    // collectionDataSilverSEO={allSeo}
+                    collectionDataSilverSEO={allSeo}
                   />
                 </Hidden>
                 <Hidden mdUp>

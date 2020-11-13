@@ -137,6 +137,7 @@ export const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     [theme.breakpoints.down("sm")]: {
       fontSize: "0.8rem !important",
+      color: 'white',
     },
   },
   productCardDescription2: {

@@ -67,11 +67,11 @@ const SilverCarousel = (props) => {
             : classes.seoText
         }`}
       >
-        <Hidden smDown>
+        {/* <Hidden smDown> */}
           <Typography className={classes.TypoGraphy}>
             {carouselTop[0].content}
           </Typography>
-        </Hidden>
+        {/* </Hidden> */}
         {/* <Hidden smUp>
        <Gadgets isSilver={props.isSilver}/>
         </Hidden> */}
