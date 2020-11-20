@@ -70,7 +70,7 @@ const ProductModal = (props) => {
       if (tempdata.nodes.length > 0) return val;
     });
 
-   
+
     let _fun = () => {
       let _arr = [];
       _keysCollections.map((val) => {
@@ -123,15 +123,26 @@ const ProductModal = (props) => {
     : collectionData;
   let _mapper = collectionData
     ? pagination
-    : shopByStyloriSilver
-    ? _shopByData
-    : fadeImagessublist;
-  let _data = [{img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Contemporary.jpg", title:'Contemporary', url:"silver-jewellery-Contemporary"},{img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Everyday.jpg",title:"Everyday", url:"silver-jewellery-everyday"}, {img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Folklore.jpg",title:"Folklore", url:"silver-jewellery-Folklore"},{img:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Mudra.jpg",title:"Mudra",url:"silver-jewellery-dmudra"}].map(val=>{
-    return({
+    : shopByStyloriSilver 
+      ? _shopByData
+      : fadeImagessublist;
+
+  // { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Contemporary.jpg", title: 'Contemporary', url: "silver-jewellery-Contemporary" },
+  // { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Everyday.jpg", title: "Everyday", url: "silver-jewellery-everyday" },
+  // { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Folklore.jpg", title: "Folklore", url: "silver-jewellery-Folklore" },
+  // { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Mudra.jpg", title: "Mudra", url: "silver-jewellery-dmudra" }
+
+  let _data = [
+    { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Contemporary.jpg", title: 'Contemporary', url: "silver-jewellery-contemporary" },
+    { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Everyday.jpg", title: "Everyday", url: "silver-jewellery-everyday" },
+    { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Folklore.jpg", title: "Folklore", url: "silver-jewellery-folklore" },
+    { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Traditional.jpg", title: "Mudra", url: "silver-jewellery-traditional" }
+  ].map(val => {
+    return ({
       "img": val.img,
       "title": val.title,
       "description": "",
-      url:val.url
+      url: val.url
     })
   });
   let allSeo = {
@@ -139,7 +150,7 @@ const ProductModal = (props) => {
       "seoText": "Modern jewellery for the modern woman. Geometric shapes, minimal aesthetics and unique colours make these statement pieces a woman’s new best friend.",
       "seoUrl": "silver-jewellery-Contemporary"
     },
-   "Everyday": {
+    "Everyday": {
       "seoText": "Light-weight pieces. Happy designs. It's the perfect dainty jewellery to compliment your everyday outfits.",
       "seoUrl": "silver-jewellery-everyday"
     },
@@ -149,7 +160,7 @@ const ProductModal = (props) => {
     },
     "Mudra": {
       "seoText": `There's grace in everything we do. We portray the "navarasas" every day. We are all dancers. Our Mudra style features traditional dance jewellery but is not made only for dancers. Pick a piece from the style or a whole set and move through the dance of life.`,
-      "seoUrl": "silver-jewellery-dmudra"
+      "seoUrl": "silver-jewellery-traditional"
     },
   }
   const classes = useStyles();
@@ -182,53 +193,52 @@ const ProductModal = (props) => {
             tile &&
               ((tile.constructor === Object && tile?.img?.imageUrl) ||
                 tile?.img?.length > 0) ? (
-              <Grid
-                //  container
-                item
-                xs={props?.layout ? props.layout : 12}
-                sm={5}
-                md={5}
-                lg={5}
-                xl={5}
-                className={`${
-                  shopByStyloriSilver ? classes.shopBySilver : "ProductGrids"
-                } ${classes.ProductGrids}`}
+                <Grid
+                  //  container
+                  item
+                  xs={props?.layout ? props.layout : 12}
+                  sm={5}
+                  md={5}
+                  lg={5}
+                  xl={5}
+                  className={`${shopByStyloriSilver ? classes.shopBySilver : "ProductGrids"
+                    } ${classes.ProductGrids}`}
                 // justify={"center"}
-              >
-                {/* <Grid item xs={10} sm={10} md={8} lg={12} xl={12}> */}
-                <Hidden smDown>
-                  <Slideshow
-                    class="subslider-carousel"
-                    dataCarousel={dataCarousel}
-                    hoverlist={[tile]}
-                    hover={false}
-                    hovereffect={true}
-                    // isInjectUrl={true}
-                    type="hover"
+                >
+                  {/* <Grid item xs={10} sm={10} md={8} lg={12} xl={12}> */}
+                  <Hidden smDown>
+                    <Slideshow
+                      class="subslider-carousel"
+                      dataCarousel={dataCarousel}
+                      hoverlist={[tile]}
+                      hover={false}
+                      hovereffect={true}
+                      // isInjectUrl={true}
+                      type="hover"
                     // collectionDataSilverSEO={allSeo}
-                  />
-                </Hidden>
-                <Hidden mdUp>
-                  {shopByStyloriSilver ? (
-                    <Slideshow dataCarousel={dataCarousel}>
-                      {tile.img.map((val, index) => (
-                        <>
-                          <Grid container key={index} className={classes.media}>
-                            <a
-                              href={`/silver-jewellery`}
-                              style={{ width: "100%" }}
-                            >
-                              <img
-                                src={val}
-                                style={{ width: "100%", height: "100%" }}
-                                onError={(e) => {
-                                  e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg`;
-                                }}
-                                alt="Stylori"
-                              />
-                            </a>
-                          </Grid>
-                          {/* <Hidden mdUp>
+                    />
+                  </Hidden>
+                  <Hidden mdUp>
+                    {shopByStyloriSilver ? (
+                      <Slideshow dataCarousel={dataCarousel}>
+                        {tile.img.map((val, index) => (
+                          <>
+                            <Grid container key={index} className={classes.media}>
+                              <a
+                                href={`/silver-jewellery`}
+                                style={{ width: "100%" }}
+                              >
+                                <img
+                                  src={val}
+                                  style={{ width: "100%", height: "100%" }}
+                                  onError={(e) => {
+                                    e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg`;
+                                  }}
+                                  alt="Stylori"
+                                />
+                              </a>
+                            </Grid>
+                            {/* <Hidden mdUp>
                   <Grid container key={index}   className={classes.media}>
                     <a href={val.navigateUrl}>
                       <img
@@ -238,114 +248,113 @@ const ProductModal = (props) => {
                     </a>
                   </Grid>
                 </Hidden> */}
-                        </>
-                      ))}
-                    </Slideshow>
-                  ) : (
-                    <Slideshow
-                      class="subslider-carousel"
-                      hoverlist={tile}
-                      dataCarousel={dataCarousel}
-                      WithoutHoverhover={true}
-                      type="hover"
-                      // isInjectUrl={true}
-                    />
-                  )}
+                          </>
+                        ))}
+                      </Slideshow>
+                    ) : (
+                        <Slideshow
+                          class="subslider-carousel"
+                          hoverlist={tile}
+                          dataCarousel={dataCarousel}
+                          WithoutHoverhover={true}
+                          type="hover"
+                        // isInjectUrl={true}
+                        />
+                      )}
 
-                  {!Boolean(props.isShowDetails) && (
-                    <ExpansionPanel
-                      className={classes.expandCollapse}
-                      expanded={expanded === tile.title}
-                      onChange={handleChange(tile.title)}
-                    >
-                      <ExpansionPanelSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1bh-content"
-                        id="panel1bh-header"
+                    {!Boolean(props.isShowDetails) && (
+                      <ExpansionPanel
+                        className={classes.expandCollapse}
+                        expanded={expanded === tile.title}
+                        onChange={handleChange(tile.title)}
                       >
-                        <Grid
-                          container
-                          item
-                          xs={12}
-                          justify="center"
-                          className={
-                            shopByStyloriSilver
-                              ? classes.productCardTitle2
-                              : classes.productCardTitle
-                          }
-                          style={{ textAlign: "center", marginTop: 5 }}
-                        >
-                          {tile.title.toUpperCase()}
-                        </Grid>
-                      </ExpansionPanelSummary>
-                      <ExpansionPanelDetails>
-                        <Grid
-                          container
-                          item
-                          xs={12}
-                          alignContent="space-between"
-                          justify="center"
-                          className={classes.productCardDetail}
+                        <ExpansionPanelSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel1bh-content"
+                          id="panel1bh-header"
                         >
                           <Grid
                             container
                             item
                             xs={12}
+                            justify="center"
                             className={
                               shopByStyloriSilver
-                                ? `${classes.productCardDescription2}`
-                                : `${classes.productCardDescription}`
+                                ? classes.productCardTitle2
+                                : classes.productCardTitle
                             }
+                            style={{ textAlign: "center", marginTop: 5 }}
                           >
-                            {collectionsData || allSeo
-                              ? allSeo[tile.title]
-                                ? allSeo[tile.title].seoText
-                                : ""
-                              : tile.description}
+                            {tile.title.toUpperCase()}
                           </Grid>
-                          <Grid container item xs={12} justify="center">
-                            <a
-                              href={
-                                // collectionsData
-                                //   ? props.allSeo[tile.title]
-                                //     ? `/jewellery-${
-                                //         props.allSeo[tile.title].seoUrl
-                                //       }`
-                                //     : "#"
-                                //   : `/silver-${tile.title.toLowerCase()}-jewellery`
-                                collectionsData || allSeo
-                                ? allSeo[tile.title]
-                                  ? `/${
-                                     allSeo[tile.title].seoUrl
-                                    }`
-                                  : "#"
-                                : `/silver-${tile.title.toLowerCase()}-jewellery`
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                          <Grid
+                            container
+                            item
+                            xs={12}
+                            alignContent="space-between"
+                            justify="center"
+                            className={classes.productCardDetail}
+                          >
+                            <Grid
+                              container
+                              item
+                              xs={12}
+                              className={
+                                shopByStyloriSilver
+                                  ? `${classes.productCardDescription2}`
+                                  : `${classes.productCardDescription}`
                               }
-                              style={{ textDecoration: "none" }}
                             >
-                              <Button
-                                variant="contained"
-                                style={{color:"white"}}
-                                color="primary"
-                                className={
-                                  shopByStyloriSilver
-                                    ? `${classes.btnshop2}`
-                                    : ''
+                              {collectionsData || allSeo
+                                ? allSeo[tile.title]
+                                  ? allSeo[tile.title].seoText
+                                  : ""
+                                : tile.description}
+                            </Grid>
+                            <Grid container item xs={12} justify="center">
+                              <a
+                                href={
+                                  // collectionsData
+                                  //   ? props.allSeo[tile.title]
+                                  //     ? `/jewellery-${
+                                  //         props.allSeo[tile.title].seoUrl
+                                  //       }`
+                                  //     : "#"
+                                  //   : `/silver-${tile.title.toLowerCase()}-jewellery`
+                                  collectionsData || allSeo
+                                    ? allSeo[tile.title]
+                                      ? `/${allSeo[tile.title].seoUrl
+                                      }`
+                                      : "#"
+                                    : `/silver-${tile.title.toLowerCase()}-jewellery`
                                 }
+                                style={{ textDecoration: "none" }}
                               >
-                                SHOP
+                                <Button
+                                  variant="contained"
+                                  style={{ color: "white" }}
+                                  color="primary"
+                                  className={
+                                    shopByStyloriSilver
+                                      ? `${classes.btnshop2}`
+                                      : ''
+                                  }
+                                >
+                                  SHOP
                               </Button>
-                            </a>
+                              </a>
+                            </Grid>
                           </Grid>
-                        </Grid>
-                      </ExpansionPanelDetails>
-                    </ExpansionPanel>
-                  )}
-                </Hidden>
+                        </ExpansionPanelDetails>
+                      </ExpansionPanel>
+                    )}
+                  </Hidden>
 
-                {/* </Grid> */}
-              </Grid>
-            ) : null
+                  {/* </Grid> */}
+                </Grid>
+              ) : null
           );
         })}
       </Grid>

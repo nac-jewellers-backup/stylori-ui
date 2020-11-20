@@ -13,11 +13,12 @@
   cursor: default;
   /* border: 1px solid #ccc !important; */
   outline: none;
+  height: 450px;
 }
 
 .hovereffectSilvertoppicks .overlay1 {
-  width: 100%;
-  height: 100% !important;
+  /* width: 200px;
+  height: 200px !important; */
   position: absolute;
   overflow: hidden;
   top: 0;
@@ -32,8 +33,8 @@
   position: relative;
   -webkit-transition: all 0.4s linear;
   transition: all 0.4s linear;
-  width: 100% !important;
-  height: auto;
+  /* width: 100% !important; */
+  /* height: auto; */
 }
 
 .hovereffectSilvertoppicks h2 {
@@ -65,12 +66,14 @@
   padding-bottom: 20px;
   font-weight: 500 !important;
 }
+
 .collectionDataSilverSEOflex {
   display: flex;
   justify-content: center;
   flex-direction: column;
   height: 100%;
 }
+
 .hovereffectSilvertoppicks span {
   /* padding: 5px 13px 5px 12px; */
   letter-spacing: 4px;
@@ -112,6 +115,7 @@
   -webkit-transition-delay: 0.2s;
   transition-delay: 0.2s;
 }
+
 /* .addToCart{
   color:white !important;
 }

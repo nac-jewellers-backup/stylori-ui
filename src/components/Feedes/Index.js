@@ -115,27 +115,27 @@ const useStyles = makeStyles((theme) => ({
 
 export default function StaticView(props) {
   const classes = useStyles(props);
-  const {isShowInsideDiv} = props
+  const { isShowInsideDiv } = props
   return (
     <>
       <Helmet>
         <script async src="//www.instagram.com/embed.js"></script>
       </Helmet>
       <Grid container justify="center">
-{isShowInsideDiv && 
-  ['Instagram', 'Facebook', 'Twitter'].map(val=>{
-    return(
-      <Grid item xs={4} style={{display:"flex", justifyContent:"center"}}>
-      <Typography  className={classes.Title} style={{fontWeight:'bold'}}>{val}</Typography>
-  </Grid>
-    )
-  })
-}
-          </Grid>
+        {isShowInsideDiv &&
+          ['Instagram', 'Facebook', 'Twitter'].map(val => {
+            return (
+              <Grid item xs={4} style={{ display: "flex", justifyContent: "center" }}>
+                <Typography className={classes.Title} style={{ fontWeight: 'bold' }}>{val}</Typography>
+              </Grid>
+            )
+          })
+        }
+      </Grid>
       <Grid container className={classes.containItems}>
         <Grid item className={classes.containerRoot}>
           <Grid container>
-         
+
             <Grid
               item
               md={4}
@@ -164,12 +164,12 @@ export default function StaticView(props) {
               xs={4}
               className={classes.threeContain}
             >
-              {!isShowInsideDiv&&<Grid item container>
+              {!isShowInsideDiv && <Grid item container>
                 <Typography className={classes.Title}>Facebook</Typography>
               </Grid>}
               <Grid item container className={classes.photo}>
                 <iframe
-                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fstylori&amp;tabs=timeline&amp;width=340&amp;height=500&amp;small_header=true&amp;hide_cta=false&amp;adapt_container_width=false&amp;hide_cover=true&amp;show_facepile=false&amp;appId"
+                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStyloriSilver%2F&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=2175392015888999"
                   style={{
                     border: "none",
                     overflow: "hidden",
@@ -190,7 +190,7 @@ export default function StaticView(props) {
               xs={4}
               className={classes.threeContain}
             >
-              {!isShowInsideDiv &&<Grid item container>
+              {!isShowInsideDiv && <Grid item container>
                 <Typography className={classes.Title}>Twitter</Typography>
               </Grid>}
               <Tweeterfeed />

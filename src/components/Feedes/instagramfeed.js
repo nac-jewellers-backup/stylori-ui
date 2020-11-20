@@ -5,7 +5,7 @@ export const InstagramFeed = () => {
     <blockquote
       className="instagram-media"
       data-instgrm-captioned
-      data-instgrm-permalink="https://www.instagram.com/p/CFMYI0IpFIN/?utm_source=ig_embed&utm_campaign=loading"
+      data-instgrm-permalink="https://www.instagram.com/p/CHxHtszjay_/?utm_source=ig_embed&amp;utm_campaign=loading"
       data-instgrm-version={12}
       style={{
         background: "#FFF",
@@ -22,7 +22,7 @@ export const InstagramFeed = () => {
       <div style={{ padding: "16px" }}>
         {" "}
         <a
-          href="https://www.instagram.com/p/CFMYI0IpFIN/?utm_source=ig_embed&utm_campaign=loading"
+          href="https://www.instagram.com/p/CHxHtszjay_/?utm_source=ig_embed&amp;utm_campaign=loading"
           style={{
             background: "#FFFFFF",
             lineHeight: 0,
@@ -224,7 +224,7 @@ export const InstagramFeed = () => {
         <p style={{ margin: "8px 0 0 0", padding: "0 4px" }}>
           {" "}
           <a
-            href="https://www.instagram.com/p/CFMYI0IpFIN/?utm_source=ig_embed&utm_campaign=loading"
+            href="https://www.instagram.com/p/CHxHtszjay_/?utm_source=ig_embed&amp;utm_campaign=loading"
             style={{
               color: "#000",
               fontFamily: "Arial,sans-serif",
@@ -262,7 +262,7 @@ export const InstagramFeed = () => {
         >
           A post shared by{" "}
           <a
-            href="https://www.instagram.com/stylorilove/?utm_source=ig_embed&utm_campaign=loading"
+            href="https://www.instagram.com/p/CHxHtszjay_/?utm_source=ig_embed&amp;utm_campaign=loading"
             style={{
               color: "#c9c8cd",
               fontFamily: "Arial,sans-serif",
