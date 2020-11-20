@@ -323,7 +323,7 @@ export default function ImageGridList(props) {
                 <Grid container item xs={12} style={{ height: "50%", paddingTop: 25 }}>
                   <FormRow imageOne="https://assets.stylori.com/product/SBA4093/1000X1000/SBA4093-2G.webp?_=1605093140435" imageTwo="https://assets.stylori.com/product/SR3976/1000X1000/SR3976-2LS.webp?_=1605093196279" />
                 </Grid>
-              </Grid> 
+              </Grid>  
 
             </Grid>
           </Grid>
