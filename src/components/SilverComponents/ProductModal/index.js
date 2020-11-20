@@ -153,7 +153,7 @@ const ProductModal = (props) => {
     "Everyday": {
       "seoText": "Light-weight pieces. Happy designs. It's the perfect dainty jewellery to compliment your everyday outfits.",
       "seoUrl": "silver-jewellery-everyday"
-    }, 
+    },  
     "Folklore": {
       "seoText": "Why blend in when you can stand out? Our line of Oxidised Silver Jewellery is as versatile as you are. Pair it up with a cocktail dress for a girls night out or with a plain kurta for a friend's Mehendi ceremony. These statement pieces will get you the attention you deserve.",
       "seoUrl": "silver-jewellery-Folklore"
