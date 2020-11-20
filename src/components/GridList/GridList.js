@@ -311,7 +311,7 @@ export default function ImageGridList(props) {
                   </div>
                 </div> */}
               </Grid>
-
+ 
               {/* </Grid> */}
 
             </Grid>
