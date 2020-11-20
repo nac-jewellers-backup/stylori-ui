@@ -51,6 +51,7 @@ class HomeStylori extends React.Component {
             isHover={true}
             customerReviews={this.props.customerReviews}
             isGadgets={true}
+            {...this.props}
           />
           <Hidden smDown>
             <Feedes

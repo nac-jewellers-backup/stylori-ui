@@ -105,6 +105,7 @@ const useStyles = makeStyles((theme) => ({
   },
   navlist: {
     width: "200px", height: "200px", overflow: "hidden",
+    cursor: "pointer",
     [theme.breakpoints.down('sm')]: {
       width: "100%", height: "100%", overflow: "hidden",
     }
@@ -126,8 +127,11 @@ function FormRow(props) {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Grid item xs={6} className={`${classes.isHoverGrid} hovereffectSilvertoppicks`}>
-        <div className={classes.navlist}>
+      <Grid item xs={6} className={`${classes.isHoverGrid} hovereffectSilvertoppicks`}
+        onClick={() => window.location.href = props.linkone}
+      >
+        <div className={classes.navlist}
+        >
           <img
             alt=""
             src={props.imageOne}
@@ -144,8 +148,11 @@ function FormRow(props) {
           </div>
         </div>
       </Grid>
-      <Grid item xs={6} className={`${classes.isHoverGrid} hovereffectSilvertoppicks`}>
-        <div className={classes.navlist}>
+      <Grid item xs={6} className={`${classes.isHoverGrid} hovereffectSilvertoppicks`}
+        onClick={() => window.location.href = props.linktwo}
+      >
+        <div className={classes.navlist}
+        >
           <img
             alt=""
             src={props.imageTwo}
@@ -193,10 +200,19 @@ export default function ImageGridList(props) {
             </Grid>
             <Grid container item xs={7} style={{ height: "100%" }}>
               <Grid container item xs={12} style={{ height: "50%", paddingBottom: 2 }}>
-                <FormRow imageOne="https://assets.stylori.com/product/SE3391/1000X1000/SE3391-2S.webp?_=1605092766692" imageTwo="https://assets.stylori.com/product/SNLC4195/1000X1000/SNLC4195-2D.webp?_=1605093270200" />
+                <FormRow
+                  imageOne="https://assets.stylori.com/product/SE3391/1000X1000/SE3391-2S.webp?_=1605887194324"
+                  imageTwo="https://assets.stylori.com/product/SNLC4195/1000X1000/SNLC4195-2D.webp?_=1605093270200"
+                  linkone="https://www.stylori.com/jewellery/earrings/Scintillating-Swan%20Silver%20Ear%20Stud?sku_id=1000118"
+                  linktwo="https://www.stylori.com/jewellery/long%20necklace/Clinking-Dual%20Tone%20Long%20Silver%20Necklace?sku_id=1000890"
+                />
               </Grid>
               <Grid container item xs={12} style={{ height: "50%", paddingTop: 2 }}>
-                <FormRow imageOne="https://assets.stylori.com/product/SBA4093/1000X1000/SBA4093-2G.webp?_=1605093140435" imageTwo="https://assets.stylori.com/product/SR3976/1000X1000/SR3976-2LS.webp?_=1605093196279" />
+                <FormRow imageOne="https://assets.stylori.com/product/SBA4093/1000X1000/SBA4093-2G.webp?_=1605093140435"
+                  imageTwo="https://assets.stylori.com/product/SR3976/1000X1000/SR3976-2LS.webp?_=1605093196279"
+                  linkone="https://www.stylori.com/jewellery/bangles/Refined-Red%20and%20Green%20Silver%20Bangle?sku_id=1000838"
+                  linktwo="https://www.stylori.com/jewellery/rings/Outward-Twin%20Finger%20Siver%20Ring?sku_id=1000701"
+                />
               </Grid>
             </Grid>
           </Grid>
@@ -293,7 +309,7 @@ export default function ImageGridList(props) {
                   <img
                     alt=""
                     src="https://assets.stylori.com/product/SNSC4270/1000X1000/SNSC4270-2G.webp?_=1605092387781"
-                    style={{ width: "100%", height: "100%" }}
+                    style={{ width: "100%", height: "100%", cursor: "unset" }}
                   />
                 </div>
                 {/* <h2 className="next-price">
@@ -311,19 +327,25 @@ export default function ImageGridList(props) {
                   </div>
                 </div> */}
               </Grid>
- 
+
               {/* </Grid> */}
 
             </Grid>
             <Grid item xs={5} style={{ height: "100%", padding: "2%" }}>
               <Grid container item xs={12} >
                 <Grid container item xs={12} style={{ height: "50%", paddingBottom: 25 }}>
-                  <FormRow imageOne="https://assets.stylori.com/product/SE3391/1000X1000/SE3391-2S.webp?_=1605092766692" imageTwo="https://assets.stylori.com/product/SNLC4195/1000X1000/SNLC4195-2D.webp?_=1605093270200" />
+                  <FormRow imageOne="https://assets.stylori.com/product/SE3391/1000X1000/SE3391-2S.webp?_=1605092766692" imageTwo="https://assets.stylori.com/product/SNLC4195/1000X1000/SNLC4195-2D.webp?_=1605093270200"
+                    linkone="https://www.stylori.com/jewellery/earrings/Scintillating-Swan%20Silver%20Ear%20Stud?sku_id=1000118"
+                    linktwo="https://www.stylori.com/jewellery/long%20necklace/Clinking-Dual%20Tone%20Long%20Silver%20Necklace?sku_id=1000890"
+                  />
                 </Grid>
                 <Grid container item xs={12} style={{ height: "50%", paddingTop: 25 }}>
-                  <FormRow imageOne="https://assets.stylori.com/product/SBA4093/1000X1000/SBA4093-2G.webp?_=1605093140435" imageTwo="https://assets.stylori.com/product/SR3976/1000X1000/SR3976-2LS.webp?_=1605093196279" />
+                  <FormRow imageOne="https://assets.stylori.com/product/SBA4093/1000X1000/SBA4093-2G.webp?_=1605093140435" imageTwo="https://assets.stylori.com/product/SR3976/1000X1000/SR3976-2LS.webp?_=1605093196279"
+                    linkone="https://www.stylori.com/jewellery/bangles/Refined-Red%20and%20Green%20Silver%20Bangle?sku_id=1000838"
+                    linktwo="https://www.stylori.com/jewellery/rings/Outward-Twin%20Finger%20Siver%20Ring?sku_id=1000701"
+                  />
                 </Grid>
-              </Grid>  
+              </Grid>
 
             </Grid>
           </Grid>

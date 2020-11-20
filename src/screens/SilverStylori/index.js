@@ -13,9 +13,9 @@ class SilverStylori extends Component {
     render() {
         return (
             <div>
-                <SilverPageStylori />
+                <SilverPageStylori {...this.props}/>
             </div>
-        )
+        ) 
     }
 }
 export default withRouter(SilverStylori)

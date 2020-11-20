@@ -259,14 +259,14 @@
   /* color: #9e9e9e; */
   text-align: center;
   /* background-color: #fff; */
-  background-color: green;
+  background-color: rgb(6, 171, 159);
   color: #fff;
   cursor: pointer;
 
 }
 
 .hovereffectSilver span:hover {
-  box-shadow:0 0 4px #4CAF50;
+  box-shadow:0 0 2px #18d6c8;
 }
 
 

@@ -35,6 +35,7 @@
   transition: all 0.4s linear;
   /* width: 100% !important; */
   /* height: auto; */
+  cursor: pointer;
 }
 
 .hovereffectSilvertoppicks h2 {
@@ -90,10 +91,11 @@
 }
 
 .hovereffectSilvertoppicks:hover img {
-  -ms-transform: scale(1.2);
+  cursor: pointer;
+  /* -ms-transform: scale(1.2);
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
-  transform-origin: 50% 50%;
+  transform-origin: 50% 50%; */
 }
 
 .hovereffectSilvertoppicks:hover .overlay1 {
