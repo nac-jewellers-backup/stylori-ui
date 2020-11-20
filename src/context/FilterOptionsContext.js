@@ -506,7 +506,7 @@ const Provider = (props) => {
 
       newObj["sortBy"] = sort.values;
       newObj["offset"] = offset;
-      newObj['isJewellery']=false
+      newObj['isJewellery']=true
 
       // alert(JSON.stringify('filters',filters))
       // alert(JSON.stringify(newObj))
@@ -541,14 +541,20 @@ const Provider = (props) => {
           if (val === "category") return val;
         }).length !== 0
       )
-      
+      debugger
       if(Object.keys(newObj).findIndex(val=>val==='material') > -1){
-        if(newObj.category === "Jewellery"){
+        // if(newObj.category === "Jewellery"){
           if(!(newObj.material === 'Silver')){
             newObj['isJewellery']=true
           }
-        }
+          else{
+            newObj['isJewellery']=false
+          }
+        // }
         
+      }
+      else{
+        newObj['isJewellery']=true
       }
       debugger
       // data.data.allTransSkuLists.nodes.map(val=>{return val.productListByProductId.productMaterialsByProductSku.nodes}).flat().findIndex(val=> Boolean(val.materialName === "Silver")) > -1
