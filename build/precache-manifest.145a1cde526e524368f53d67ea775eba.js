@@ -4,16 +4,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-<<<<<<< HEAD:build/precache-manifest.9c3038ee910cf0080f099b9fb8bbd2a5.js
     "revision": "ca32e75f631fbd1cc19c",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "6e675407b58bd1592f8b",
+    "revision": "73c9ff02e6fb6a9d35ef",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "da9d8b6adf6d043694d1",
+    "revision": "f3dae435813eb38ab9ea",
     "url": "/static/css/main.css"
   },
   {
@@ -21,38 +20,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.js"
   },
   {
-    "revision": "6e675407b58bd1592f8b",
-=======
-    "revision": "df561cba85701cb32ae6",
-    "url": "/static/css/2.css"
-  },
-  {
-    "revision": "61f5a80df61e4d263723",
-    "url": "/static/css/3.css"
-  },
-  {
-    "revision": "e5b123cc52ad5042b358",
-    "url": "/static/css/main.css"
-  },
-  {
-    "revision": "df561cba85701cb32ae6",
-    "url": "/static/js/2.js"
-  },
-  {
-    "revision": "61f5a80df61e4d263723",
->>>>>>> 6e2cda74cfca5350af0738fcef9cf0b03f6fb0a2:build/precache-manifest.3a9c9a6cc9f03b5091f313781079d8d9.js
+    "revision": "73c9ff02e6fb6a9d35ef",
     "url": "/static/js/3.js"
   },
   {
-    "revision": "c06c4319724e2427f35c",
+    "revision": "4a85697eff07db8d4c11",
     "url": "/static/js/4.js"
   },
   {
-<<<<<<< HEAD:build/precache-manifest.9c3038ee910cf0080f099b9fb8bbd2a5.js
-    "revision": "da9d8b6adf6d043694d1",
-=======
-    "revision": "e5b123cc52ad5042b358",
->>>>>>> 6e2cda74cfca5350af0738fcef9cf0b03f6fb0a2:build/precache-manifest.3a9c9a6cc9f03b5091f313781079d8d9.js
+    "revision": "f3dae435813eb38ab9ea",
     "url": "/static/js/main.js"
   },
   {
