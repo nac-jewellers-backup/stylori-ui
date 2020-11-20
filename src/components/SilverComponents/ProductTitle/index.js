@@ -2,11 +2,10 @@ import React from 'react'
 import { Grid, Container } from '@material-ui/core'
 
 import { useStyles } from './style'
-const ProductTitle = (props) => {
+const ProductTitle = (props) => { 
     const classes = useStyles();
     const isSilver = props.isSilver ? true : false
-    return (
-
+    return ( 
         <Grid container xs={12} justify="space-evenly" className={classes.containervalue}>
             <Grid item xs={2} sm={3} md={4} lg={5} xl={5} style={{ margin: 'auto' }}>
 
