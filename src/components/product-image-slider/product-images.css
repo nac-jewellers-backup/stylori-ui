@@ -34,17 +34,20 @@ body {
     padding: 5px 8px 5px 8px;
     margin: 4px 0px 10px 0px;
 }
+
 .containbev_silver {
     box-shadow: none !important;
     padding: 0px 8px 5px 8px;
     margin: 0px 0px 10px 0px;
 }
+
 @media only screen and (min-width: 959px) {
     .containbev {
         box-shadow: none !important;
         padding: 5px 8px 5px 8px;
         margin: 4px 0px 4px 0px;
     }
+
     .containbev_silver {
         box-shadow: none !important;
         padding: 0px 0px 5px 0px;
@@ -92,13 +95,15 @@ body {
     font-family: "Robot-Black" !important;
     /* margin-left: 27% !important;  */
 }
+
 .starts-review-silver {
     cursor: pointer;
     margin-top: 5px;
-    color: rgba(109,110,112,1);
+    color: rgba(109, 110, 112, 1);
     font-family: "Robot-Black" !important;
     /* margin-left: 27% !important;  */
 }
+
 .border-line- {
     margin-bottom: -10px !important;
 }
@@ -255,26 +260,30 @@ body {
     font-size: 20px !important;
     /* margin-top: 18px !important; */
 }
+
 .product-icons2 {
     font-size: 20px !important;
-    
+
     color: white;
     /* margin-top: 18px !important; */
 }
+
 .product-icons i {
     font-size: 20px !important;
     background-size: 219px;
     background-position: -87px 4px;
     cursor: pointer;
-    
+
 }
+
 .product-icons2 i {
     font-size: 20px !important;
     cursor: pointer;
     transform: scaleX(-1) !important;
-    color: rgb(58,69,120);
-    padding:8px !important;
+    color: rgb(58, 69, 120);
+    padding: 8px !important;
 }
+
 @keyframes pulse_animation {
     25% {
         -webkit-transform: scale(1.3);
@@ -507,7 +516,7 @@ body {
 
 /* //:nth-child(2n) */
 .product-subhead-list span {
-    margin-top: 3px !important;
+    margin-top: 3px;
     display: flex;
     flex: 1;
 }
@@ -578,10 +587,11 @@ body {
     padding-left: 25px !important;
     border: 1px solid #ccc;
 }
-.pincode-cust-silver{
+
+.pincode-cust-silver {
     background-image: unset !important;
-    background-position:unset !important;
-    background-repeat:unset !important;
+    background-position: unset !important;
+    background-repeat: unset !important;
     padding-left: 0 !important;
     color: #394578;
     font-size: 12px !important;
@@ -591,6 +601,7 @@ body {
     float: left;
     border: 1px solid #ccc;
 }
+
 .buy-now-iconz {
     background-repeat: no-repeat !important;
     padding-left: 31px !important;
@@ -949,6 +960,7 @@ body {
     cursor: pointer !important;
     margin-left: -36.1px !important;
 }
+
 .one-day-ship_only_silver {
     z-index: 999 !important;
     width: 152px !important;
@@ -977,7 +989,7 @@ body {
     background-color: #fff !important;
 }
 
-.vertical-carousel { 
+.vertical-carousel {
     float: left !important;
     border: 1px solid #CCC;
     margin-bottom: 15px !important;
@@ -986,16 +998,18 @@ body {
     outline: none !important;
     cursor: pointer;
 }
-.vertical-carousel-silver{
+
+.vertical-carousel-silver {
     float: left !important;
     border: 1px solid #CCC;
     margin-bottom: 15px !important;
-    width: 100% !important;
-    height: 120px !important;
+    width: 102px !important;
+    height: 102px !important;
     outline: none !important;
     cursor: pointer;
     box-shadow: 4px 5px 6px rgba(208, 210, 211, 1);
 }
+
 .imgzom-sidecraousel-media .slick-track {
     height: auto !important;
 }
@@ -1086,7 +1100,7 @@ body {
     color: red !important;
 }
 
-.next-price { 
+.next-price {
     text-transform: uppercase;
     color: #fff;
     text-align: center;
@@ -1095,7 +1109,7 @@ body {
     align-items: center !important;
     position: relative;
     font-family: Roboto !important;
-    font-size: 14px; 
+    font-size: 14px;
     transform: translatey(-100px);
     transition: all .2s ease-in-out;
     padding: 10px;
@@ -1427,11 +1441,12 @@ body {
 
 
 }
+
 @media only screen and (max-width: 600px) {
-.containbev_silver{
-    padding: 0px 8px 0px 8px;
-    margin: 0px 0px 0px 0px;
-}
+    .containbev_silver {
+        padding: 0px 8px 0px 8px;
+        margin: 0px 0px 0px 0px;
+    }
 }
 
 
@@ -1526,7 +1541,8 @@ body {
     margin-bottom: 12px !important;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .06);
 }
-.overall-box-without-shadow{
+
+.overall-box-without-shadow {
     border-radius: 5px;
     width: 100% !important;
     /* border: 1px solid #ccc; */
@@ -1534,7 +1550,8 @@ body {
     padding-bottom: 14px !important;
     margin-bottom: 12px !important;
 }
-.overall-box-without-shadow-silver{
+
+.overall-box-without-shadow-silver {
     border-radius: 5px;
     width: 100% !important;
     /* border: 1px solid #ccc; */
@@ -1542,6 +1559,7 @@ body {
     padding-bottom: 14px !important;
     margin-bottom: 12px !important;
 }
+
 .priceecontainer {
     box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
@@ -1681,13 +1699,15 @@ body {
     font-family: roboto;
     font-weight: 500;
 }
-.pricing-loctn-silver{
+
+.pricing-loctn-silver {
     color: #6e6d72 !important;
     font-size: 14px !important;
     text-transform: capitalize;
     font-family: roboto;
     font-weight: 500;
 }
+
 .pricing-loctn-head {
     margin-top: 1% !important;
     margin-bottom: 1% !important;
@@ -1701,9 +1721,11 @@ body {
     margin-top: 18px
         /* padding: 10px; */
 }
-.respSilver{
+
+.respSilver {
     margin-bottom: 15px !important;
 }
+
 .respc {
     padding-right: 5px !important;
     padding-left: 5px !important;
@@ -1794,6 +1816,7 @@ body {
     cursor: pointer !important;
     box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important;
 }
+
 .imagecardSilver {
     width: 100% !important;
     /* height: 100%; */
@@ -1812,6 +1835,7 @@ body {
 .imagecard div {
     display: flex !important;
 }
-.imagecardSilver div{
+
+.imagecardSilver div {
     display: flex !important;
 }

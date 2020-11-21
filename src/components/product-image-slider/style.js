@@ -332,8 +332,8 @@ const styles = (theme) => ({
     },
   },
   buynowButtonSilver: {
-    width: "90% !important",
-    height: "45px !important",
+    width: "86% !important",
+    height: "42px !important",
     fontSize: "1.5rem",
     borderRadius: "unset !important",
     boxShadow: "8px 8px 5px rgba(208, 210, 211, 1)",

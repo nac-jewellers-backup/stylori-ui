@@ -18,7 +18,26 @@ import {
 } from "@material-ui/core";
 
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+let allSeo = {
+  "Everyday": {
+    "seoText": "Light-weight pieces. Happy designs. It's the perfect dainty jewellery to compliment your everyday outfits.",
+    "seoUrl": "silver-jewellery-everyday"
+  },
+  "Folklore": {
+    "seoText": "Why blend in when you can stand out? Our line of Oxidised Silver Jewellery is as versatile as you are. Pair it up with a cocktail dress for a girls night out or with a plain kurta for a friend's Mehendi ceremony. These statement pieces will get you the attention you deserve.",
+    "seoUrl": "silver-jewellery-Folklore"
+  },
+  "Contemporary": {
+    "seoText": "Modern jewellery for the modern woman. Geometric shapes, minimal aesthetics and unique colours make these statement pieces a woman’s new best friend.",
+    "seoUrl": "silver-jewellery-Contemporary"
+  },
 
+
+  "Traditional": {
+    "seoText": `There's grace in everything we do. We portray the "navarasas" every day. We are all dancers. Our Mudra style features traditional dance jewellery but is not made only for dancers. Pick a piece from the style or a whole set and move through the dance of life.`,
+    "seoUrl": "silver-jewellery-traditional"
+  },
+}
 const ProductModal = (props) => {
   const dataCarousel = {
     dots: false,
@@ -51,8 +70,8 @@ const ProductModal = (props) => {
     shopByStyloriSilver.length > 0 &&
     shopByStyloriSilver.map((val) => {
       return {
-        img: val.image,
-        title: val.label,
+        img: val?.image,
+        title: val?.label,
         description:
           allSeo && allSeo[val.label]
             ? allSeo[val.label].seoText
@@ -145,26 +164,7 @@ const ProductModal = (props) => {
       url: val.url
     })
   });
-  let allSeo = {
-    "Everyday": {
-      "seoText": "Light-weight pieces. Happy designs. It's the perfect dainty jewellery to compliment your everyday outfits.",
-      "seoUrl": "silver-jewellery-everyday"
-    },
-    "Folklore": {
-      "seoText": "Why blend in when you can stand out? Our line of Oxidised Silver Jewellery is as versatile as you are. Pair it up with a cocktail dress for a girls night out or with a plain kurta for a friend's Mehendi ceremony. These statement pieces will get you the attention you deserve.",
-      "seoUrl": "silver-jewellery-Folklore"
-    },
-    "Contemporary": {
-      "seoText": "Modern jewellery for the modern woman. Geometric shapes, minimal aesthetics and unique colours make these statement pieces a woman’s new best friend.",
-      "seoUrl": "silver-jewellery-Contemporary"
-    },
 
-
-    "Traditional": {
-      "seoText": `There's grace in everything we do. We portray the "navarasas" every day. We are all dancers. Our Mudra style features traditional dance jewellery but is not made only for dancers. Pick a piece from the style or a whole set and move through the dance of life.`,
-      "seoUrl": "silver-jewellery-traditional"
-    },
-  }
   const classes = useStyles();
   // alert(JSON.stringify(props.collectionsData))
   // console.log(props.allSeo,"props.allSeoprops.allSeoprops.allSeoprops.allSeo")
@@ -232,7 +232,7 @@ const ProductModal = (props) => {
                                 style={{ width: "100%" }}
                               >
                                 <img
-                                  src={val}
+                                  src={injectUrl_url_construct(val)}
                                   style={{ width: "100%", height: "100%" }}
                                   onError={(e) => {
                                     e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg`;
