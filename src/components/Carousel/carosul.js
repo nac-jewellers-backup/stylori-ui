@@ -9,13 +9,13 @@ import Wishlist from "components/wishlist/wishlist";
 import { GlobalContext, CartContext } from "context";
 import Buynowbutton from "../Buynow/buynowbutton";
 import CommenDialog from "../Common/Dialogmodel";
-import {injectUrl_url_construct} from 'common/index'
-import {CDN_URL} from '../../config'
+import { injectUrl_url_construct } from 'common/index'
+import { CDN_URL } from '../../config'
 const Slideshow = (props) => {
   let {
     CartCtx: { allorderdata, wishlistdata, setratingcountsclear },
   } = React.useContext(CartContext);
-  const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext); 
+  const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
   return <Component Globalctx={Globalctx} wishlist={wishlistdata} {...props} />;
 };
 
@@ -23,7 +23,7 @@ class Component extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dialogOpen:false
+      dialogOpen: false
     }
     this.slider = React.createRef();
   }
@@ -61,129 +61,126 @@ class Component extends React.Component {
       return false;
     }
   };
-  checkImage = (imageSrc, good, bad) =>{
+  checkImage = (imageSrc, good, bad) => {
     var img = new Image();
     img.onload = good;
     img.onerror = bad;
     img.src = imageSrc;
   }
-  check_image_exists_in_server =  (url) =>{ 
-      
-  
+  check_image_exists_in_server = (url) => {
+
+
     // var _url = url.replace(res.img_res, '1000X1000');
 
-    return new Promise(async(resolve, reject) => {
-        // create an XHR object
-        await this.checkImage(url, ()=>{resolve(true)}, ()=>{resolve(false)}  )
-     });
-   
+    return new Promise(async (resolve, reject) => {
+      // create an XHR object
+      await this.checkImage(url, () => { resolve(true) }, () => { resolve(false) })
+    });
 
-} 
-  handleFunc = async(imgs) =>{
-    
+
+  }
+  handleFunc = async (imgs) => {
+
     // imgs.replace((`${this.props.size*2}X${this.props.size*2}`), "2400X2400")
     return await this.check_image_exists_in_server(imgs) ? imgs : imgs.replace('1000X1000', '2400X2400')
   }
-   checkImage = (imageSrc, good, bad) => {
+  checkImage = (imageSrc, good, bad) => {
     var img = new Image();
     img.onload = good;
     img.onerror = bad;
     img.src = imageSrc;
   }
-   imageOnError = async(event,url) => {
-    
-    const _event  = event && event.target ? event.target : event.currentTarget  
-    
-  const check_image_exists_in_server =  (url) =>{
-      
-  
+  imageOnError = async (event, url) => {
+
+    const _event = event && event.target ? event.target : event.currentTarget
+
+    const check_image_exists_in_server = (url) => {
+
+
       // var _url = url.replace(res.img_res, '1000X1000');
-  
-      return new Promise(async(resolve, reject) => {
-          // create an XHR object
-          await this.checkImage(url, ()=>{resolve(true)}, ()=>{resolve(false)}  )
-       }); 
-     
-  
-  }
-  let _url = ""
-  const urlCheck = (size) =>{
-    var current_url = url.split('/')
-  current_url.splice(current_url.length-2, 1 , size)
-   _url = current_url.join().replace(/\,/g, '/');
-   return _url
-  } 
-  // let _url_2400X2400 = res.url_1000x1000; 
-  let _notFound = `${CDN_URL}product/1000X1000/productnotfound.webp`;
-  _event.src = `${CDN_URL}product/1000X1000/productnotfound.webp`;
-  
-  let _image = await check_image_exists_in_server(urlCheck('1000X1000')) ? _url : await check_image_exists_in_server(urlCheck('2400X2400'))  ? _url :_notFound
-  _event.src =  _image
-  // loadAndSaveErrorImage(_image)
-  // setLoading(false)
-  // setLoading(false)
-  //  `${CDN_URL}${res.url_1000x1000}`
-  // check_image_exists_in_server()
-  // check_image_exists_in_server()
+
+      return new Promise(async (resolve, reject) => {
+        // create an XHR object
+        await this.checkImage(url, () => { resolve(true) }, () => { resolve(false) })
+      });
+
+
+    }
+    let _url = ""
+    const urlCheck = (size) => {
+      var current_url = url.split('/')
+      current_url.splice(current_url.length - 2, 1, size)
+      _url = current_url.join().replace(/\,/g, '/');
+      return _url
+    }
+    // let _url_2400X2400 = res.url_1000x1000; 
+    let _notFound = `${CDN_URL}product/1000X1000/productnotfound.webp`;
+    _event.src = `${CDN_URL}product/1000X1000/productnotfound.webp`;
+
+    let _image = await check_image_exists_in_server(urlCheck('1000X1000')) ? _url : await check_image_exists_in_server(urlCheck('2400X2400')) ? _url : _notFound
+    _event.src = _image
+    // loadAndSaveErrorImage(_image)
+    // setLoading(false)
+    // setLoading(false)
+    //  `${CDN_URL}${res.url_1000x1000}`
+    // check_image_exists_in_server()
+    // check_image_exists_in_server()
     // event.target.src = `${CDN_URL}product/${res.img_res}X${res.img_res}/productnotfound.webp`
   }
-  renderFadeImages =  () => {
+  renderFadeImages = () => {
 
     let { video, currentImage } = this.props;
-    
-    return  this.props.fadeImages
+
+    return this.props.fadeImages
       ? this.props.fadeImages.map((imgs) => (
-          <div
-            className={` ${this.props.class ? this.props.class : ""} ${currentImage && currentImage  === imgs ? 'currentImageClassSilver' : ''}`}
-            onClick={(e) => (this.props.getmsg ? this.props.getmsg(e) : "")}
-            
-          >
-            {video || this.handleVideoCheck(imgs) ? (
-              <video
-                style={{ verticalAlign: "bottom", zIndex: this.props.zindex }}
-                preload="auto"
-                className={`${imgs ? "" : "shine imgDiv2"} ${
-                  this.props.imgClass ? this.props.imgClass : ""
+        <div
+          className={` ${this.props.class ? this.props.class : ""} ${currentImage && currentImage === imgs ? 'currentImageClassSilver' : ''}`}
+          onClick={(e) => (this.props.getmsg ? this.props.getmsg(e) : "")}
+
+        >
+          {video || this.handleVideoCheck(imgs) ? (
+            <video
+              style={{ verticalAlign: "bottom", zIndex: this.props.zindex }}
+              preload="auto"
+              className={`${imgs ? "" : "shine imgDiv2"} ${this.props.imgClass ? this.props.imgClass : ""
                 }`}
-                src={imgs}
-                poster="https://assets.stylori.com/images/static/video_preview.png"
-                type="video/mp4"
-                controls={this.props.videoControls}
-              ></video>
-            ) : (
+              src={imgs}
+              poster="https://assets.stylori.com/images/static/video_preview.png"
+              type="video/mp4"
+              controls={this.props.videoControls}
+            ></video>
+          ) : (
               <img
-                className={`${imgs ? "imgDiv2" : "shine imgDiv2"} ${
-                  this.props.imgClass ? this.props.imgClass : ""
-                } ${
-                  this.props.silver
+                className={`${imgs ? "imgDiv2" : "shine imgDiv2"} ${this.props.imgClass ? this.props.imgClass : ""
+                  } ${this.props.silver
                     ? this.props.className
                       ? this.props.className
                       : ""
                     : ""
-                }`}
+                  }`}
                 src={imgs}
                 loading="auto"
                 alt="..."
 
-                onError={(e)=>{
-                  
-                  this.imageOnError(e,imgs)
+                onError={(e) => {
+
+                  this.imageOnError(e, imgs)
                   // let _size = this.props.size ? this.props.size*2 : this.props.cartcard
                   // if(_size) this.target.src=imgs.replace(`${_size}X${_size}`, '2400X2400')
                   // else this.target.src=imgs.replace('1000X1000', '2400X2400')
                 }
-                  
+
                 }
               />
             )}
-          </div>
-        ))
+        </div>
+      ))
       : "";
   };
 
   imagehoverchildrens = (hoverlist, globalContext, isInjectUrl) => {
-    let { hover, hovereffect, TopPic, imagecra, isSilver, collectionDataSilverSEO  } = this.props;
-    const collectiondatacheck = (val) => collectionDataSilverSEO ?collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText && collectionDataSilverSEO[val.title].seoText.replace(/ /g,'').length > 0 ? collectionDataSilverSEO[val.title].seoText : false : val.description
+    let { hover, hovereffect, TopPic, imagecra, isSilver, collectionDataSilverSEO, Homepagefont } = this.props;
+    const collectiondatacheck = (val) => collectionDataSilverSEO ? collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText && collectionDataSilverSEO[val.title].seoText.replace(/ /g, '').length > 0 ? collectionDataSilverSEO[val.title].seoText : false : val.description
     debugger
     if (TopPic) {
       return hoverlist.map((val) => (
@@ -195,7 +192,7 @@ class Component extends React.Component {
             className="subslider-carousel-img img-responsive"
             style={{ width: "100%", height: "auto" }}
             alt=""
-            onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
+            onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
           />
           <div className="overlay1">
             <div>
@@ -215,44 +212,44 @@ class Component extends React.Component {
             }
           >
             <img
-              src={isInjectUrl ?injectUrl_url_construct(val.img) : val.img}
+              src={isInjectUrl ? injectUrl_url_construct(val.img) : val.img}
               className="subslider-carousel-img img-responsive"
               style={{ width: "100%", height: "auto" }}
               alt=""
-              onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
+              onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
             />
             <div className="overlay1" >
-           { collectionDataSilverSEO ?
-              <div className={`collectionDataSilverSEOflex ${'fontSizebig'}`} >
-               <div style={{margin:'auto'}}>
-               <h2 className={`next-price ${'fontSizebig'}`}>{val.title.toUpperCase()}</h2>
-                <br />
-                {collectiondatacheck(val) ?
-                  <h5 className="contenttext">{collectionDataSilverSEO ?collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText ? collectionDataSilverSEO[val.title].seoText : '' : val.description}</h5>
+              {collectionDataSilverSEO ?
+                <div className={`collectionDataSilverSEOflex ${'fontSizebig'}`} >
+                  <div style={{ margin: 'auto' }}>
+                    <h2 className={`next-price ${'fontSizebig'}`}>{val.title.toUpperCase()}</h2>
+                    <br />
+                    {collectiondatacheck(val) ?
+                      <h5 className="contenttext">{collectionDataSilverSEO ? collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText ? collectionDataSilverSEO[val.title].seoText : '' : val.description}</h5>
+                      :
+                      null
+                    }
+                    <a className="info" style={{ textDecoration: "none" }} href={`${collectionDataSilverSEO ? collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoUrl ? `/jewellery-${collectionDataSilverSEO[val.title].seoUrl}` : '#' : `/${val.url}`}`}>
+                      <span className="shop">SHOP</span>
+                    </a>
+                  </div>
+                </div>
                 :
-                null
-                }
-                <a className="info" style={{textDecoration:"none"}} href={`${collectionDataSilverSEO ?collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoUrl ? `/jewellery-${collectionDataSilverSEO[val.title].seoUrl}` : '#' : `/${val.url}`}`}>
-                  <span className="shop">SHOP</span>
-                </a>
-                 </div>
-              </div>
-              :
-              <div style={{ paddingTop: "40%" }}>
-                <h2 className="next-price">{val.title.toUpperCase()}</h2>
-                <br />
-                {collectiondatacheck(val) ?
-                  <h5 className="contenttext">{collectionDataSilverSEO ?collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText ? collectionDataSilverSEO[val.title].seoText : '' : val.description}</h5>
-                :
-                null
-                }
-                <a className="info" style={{textDecoration:"none"}} href={`${collectionDataSilverSEO ?collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoUrl ? `/jewellery-${collectionDataSilverSEO[val.title].seoUrl}` : '#' : `/${val.url}`}`}>
-                  <span className="shop">SHOP</span>
-                </a>
-              </div>}
+                <div style={{ paddingTop: "40%" }}>
+                  <h2 className={"next-price"} style={{ fontSize: Homepagefont && "37px" }}>{val.title.toUpperCase()}</h2>
+                  <br />
+                  {collectiondatacheck(val) ?
+                    <h5 className="contenttext" style={{ fontSize: Homepagefont && "14.35px" }}>{collectionDataSilverSEO ? collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText ? collectionDataSilverSEO[val.title].seoText : '' : val.description}</h5>
+                    :
+                    null
+                  }
+                  <a className="info" style={{ textDecoration: "none" }} href={`${collectionDataSilverSEO ? collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoUrl ? `/jewellery-${collectionDataSilverSEO[val.title].seoUrl}` : '#' : `/${val.url}`}`}>
+                    <span className="shop" style={{ fontSize: Homepagefont && "21.6px" }}>SHOP</span>
+                  </a>
+                </div>}
             </div>
           </div>
-        )) 
+        ))
       );
     } else {
       return (
@@ -262,9 +259,9 @@ class Component extends React.Component {
             <div className={"subslider-carousel" + hover ? `hovereffect-silver hovereffect  ` : ""} >
               <img
                 src={val.img}
-                className="subslider-carousel-img img-responsive" 
+                className="subslider-carousel-img img-responsive"
                 alt=""
-                onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
+                onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
               />
               <div className="overlay1silver" >
                 <div
@@ -273,10 +270,10 @@ class Component extends React.Component {
                     justifyContent: "center",
                     alignItems: "center",
                     height: "100%",
-                    flexDirection:'column'
+                    flexDirection: 'column'
                   }}
                 >
-                   {/* <div onClick={this.handleLocalStorage.bind(this)}>
+                  {/* <div onClick={this.handleLocalStorage.bind(this)}>
                             <Buynowbutton
                               sku={this.props.data[0].skuId}
                               // class={`${classes.buynowButtonSilver} ${classes.buttonsilver}`}
@@ -293,32 +290,32 @@ class Component extends React.Component {
                               title="Confirmation"
                             />
                           </div> */}
-                           <a style={{textDecoration:'none'}} href={`/${val.url}`}>
-                  <div
-                    style={{
-                      background: "white",
-                      color: "rgba(166, 168, 171, 1)",
-                      padding:'5px 10px',
-                      marginBottom:'10px',
-                      boxShadow:'rgb(166, 168, 171) 3px 3px 3px',
-                      // minWidth:'100px',
-                      fontSize:'12px',
-                      // letterSpacing:1
-                    }}
-                  >
-                   {/* <b>ADD TO CART</b> */}
-                   <i class="fa fa-shopping-cart  Component-iconFafa-10" style={{fontSize: 20,marginLeft:0}}></i>
-                  </div>
+                  <a style={{ textDecoration: 'none' }} href={`/${val.url}`}>
+                    <div
+                      style={{
+                        background: "white",
+                        color: "rgba(166, 168, 171, 1)",
+                        padding: '5px 10px',
+                        marginBottom: '10px',
+                        boxShadow: 'rgb(166, 168, 171) 3px 3px 3px',
+                        // minWidth:'100px',
+                        fontSize: '12px',
+                        // letterSpacing:1
+                      }}
+                    >
+                      {/* <b>ADD TO CART</b> */}
+                      <i class="fa fa-shopping-cart  Component-iconFafa-10" style={{ fontSize: 20, marginLeft: 0 }}></i>
+                    </div>
                   </a>
                   <div
                     style={{
                       background: "white",
                       color: "rgba(166, 168, 171, 1)",
-                      padding:'5px 10px',
-                      boxShadow:'rgb(166, 168, 171) 3px 3px 3px',
+                      padding: '5px 10px',
+                      boxShadow: 'rgb(166, 168, 171) 3px 3px 3px',
                       // minWidth:'100px',
-                      fontSize:'12px',
-                      letterSpacing:1
+                      fontSize: '12px',
+                      letterSpacing: 1
                     }}
                   >
                     {" "}
@@ -337,47 +334,61 @@ class Component extends React.Component {
               </div>
             </div>
           ) : (
-            <a className="info" href={`/${val.url}`}>
-              <div
-                className={"subslider-carousel" + hover ? "hovereffect" : ""}
-              >
-                <img
-                  src={val.img}
-                  className="subslider-carousel-img img-responsive"
-                  alt=""
-                  onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
-                />
-                <div className="overlay1">
-                  <h2 className="next-price">{val.title}</h2>
-                  <br />
-                  <a className="info" href={`/${val.url}`}>
-                    <span className="sub-list-price">
-                      {" "}
-                      <i className="fa fa-rupee"></i> &nbsp;{val.price}
-                    </span>
-                  </a>
+              <a className="info" href={`/${val.url}`}>
+                <div
+                  className={"subslider-carousel" + hover ? "hovereffect" : ""}
+                >
+                  <img
+                    src={val.img}
+                    className="subslider-carousel-img img-responsive"
+                    alt=""
+                    onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
+                  />
+                  <div className="overlay1">
+                    <h2 className="next-price">{val.title}</h2>
+                    <br />
+                    <a className="info" href={`/${val.url}`}>
+                      <span className="sub-list-price">
+                        {" "}
+                        <i className="fa fa-rupee"></i> &nbsp;{val.price}
+                      </span>
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </a>
-          );
+              </a>
+            );
         })
       );
     }
   };
-  imagewithouthoverchildrens = (hoverlist, gtx,isInjectUrl) => {
-    
+  imagewithouthoverchildrens = (hoverlist, gtx, isInjectUrl) => {
+
     return (
       <div
         className={"subslider-carousel-silver "}
         style={{ display: "block !important " }}
       >
         {Array.isArray(hoverlist.img)
-        ?
-        hoverlist.img.map((val)=>{
-          
-          return(
-            <img
-            src={injectUrl_url_construct(val)}
+          ?
+          hoverlist.img.map((val) => {
+
+            return (
+              <img
+                src={injectUrl_url_construct(val)}
+                className="subslider-carousel-img-Silver img-responsive"
+                style={{
+                  width: "auto !important",
+                  height: "auto",
+                  display: "block !important  ",
+                }}
+                alt=""
+                onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
+              />
+            )
+          })
+          :
+          <img
+            src={isInjectUrl ? injectUrl_url_construct(hoverlist.img) : hoverlist.img}
             className="subslider-carousel-img-Silver img-responsive"
             style={{
               width: "auto !important",
@@ -385,22 +396,8 @@ class Component extends React.Component {
               display: "block !important  ",
             }}
             alt=""
-            onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
-          />
-          )
-        })
-        :
-        <img
-          src={isInjectUrl?injectUrl_url_construct(hoverlist.img): hoverlist.img}
-          className="subslider-carousel-img-Silver img-responsive"
-          style={{
-            width: "auto !important",
-            height: "auto",
-            display: "block !important  ",
-          }}
-          alt=""
-          onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
-        />}
+            onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
+          />}
         {/* <div class="overlay1">
           <div style={{paddingTop:'40%'}}>
         <h2 className='next-price'>{hoverlist.title}</h2><br />
@@ -437,14 +434,14 @@ class Component extends React.Component {
     } else {
       this.setState({
         dialogOpen: !this.state.dialogOpen,
-      }); 
+      });
     }
   };
 
   canceldeletechecklistCancel = () => {
-   
+
     this.setState({
-      dialogOpen:false
+      dialogOpen: false
     });
   };
 
@@ -488,10 +485,9 @@ class Component extends React.Component {
     const { sliderRef, Globalctx } = this.props;
     var settings = this.props.dataCarousel;
     console.log(this.props)
-    
     return (
       <div>
-        <Slider ref={sliderRef} {...settings} className={ this.props.nextPreviousIconSize ? "customIconSize" : ''}>
+        <Slider ref={sliderRef} {...settings} className={this.props.nextPreviousIconSize ? "customIconSize" : ''}>
           {this.props.children ? this.props.children : this.renderFadeImages()}
           {this.props.hover
             ? this.imagehoverchildrens(this.props.hoverlist, Globalctx)
@@ -522,4 +518,3 @@ Slideshow.propTypes = {
   settings: PropTypes.object.isRequired,
   fadeImages: PropTypes.array.isRequired,
 };
- 

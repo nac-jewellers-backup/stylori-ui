@@ -85,9 +85,10 @@ const MultipleSections = (props) => {
               <GridList GridImage={collectionGrid} isHover={props.isHover} {...props}/> 
             )}
             {title == "FEATURED" && (
-              <FeaturedGridComponent data={FeaturedCarousel} />
+              <FeaturedGridComponent 
+              data={FeaturedCarousel} 
+              />
             )}
-
             {title == "TESTIMONIALS" && (
               <>
                 <Testimonialsmodel
