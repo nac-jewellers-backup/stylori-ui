@@ -232,7 +232,7 @@ const ProductModal = (props) => {
                                 style={{ width: "100%" }}
                               >
                                 <img
-                                  src={injectUrl_url_construct(val)}
+                                  src={injectUrl_url_construct(val)} 
                                   style={{ width: "100%", height: "100%" }}
                                   onError={(e) => {
                                     e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg`;
