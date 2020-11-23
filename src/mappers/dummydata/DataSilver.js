@@ -27,7 +27,7 @@ export const carouselTop = [
       pauseOnFocus: false,
       swipe: false
     },
-    images: [
+    images: [ 
       {
         img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Home-banner-silver.jpg",
         mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Home-banner-silver+mobile.jpg",

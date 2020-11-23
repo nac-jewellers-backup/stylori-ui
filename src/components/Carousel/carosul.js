@@ -239,7 +239,7 @@ class Component extends React.Component {
                   <h2 className={"next-price"} style={{ fontSize: Homepagefont && "37px" }}>{val.title.toUpperCase()}</h2>
                   <br />
                   {collectiondatacheck(val) ?
-                    <h5 className="contenttext" style={{ fontSize: Homepagefont && "14.35px" }}>{collectionDataSilverSEO ? collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText ? collectionDataSilverSEO[val.title].seoText : '' : val.description}</h5>
+                    <h5 className="contenttext" style={{ fontSize: Homepagefont && "14.35px", margin: Homepagefont && "auto" }}>{collectionDataSilverSEO ? collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText ? collectionDataSilverSEO[val.title].seoText : '' : val.description}</h5>
                     :
                     null
                   }

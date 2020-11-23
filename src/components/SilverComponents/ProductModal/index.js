@@ -18,26 +18,6 @@ import {
 } from "@material-ui/core";
 
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-let allSeo = {
-  "Everyday": {
-    "seoText": "Light-weight pieces. Happy designs. It's the perfect dainty jewellery to compliment your everyday outfits.",
-    "seoUrl": "silver-jewellery-everyday"
-  },
-  "Folklore": {
-    "seoText": "Why blend in when you can stand out? Our line of Oxidised Silver Jewellery is as versatile as you are. Pair it up with a cocktail dress for a girls night out or with a plain kurta for a friend's Mehendi ceremony. These statement pieces will get you the attention you deserve.",
-    "seoUrl": "silver-jewellery-Folklore"
-  },
-  "Contemporary": {
-    "seoText": "Modern jewellery for the modern woman. Geometric shapes, minimal aesthetics and unique colours make these statement pieces a woman’s new best friend.",
-    "seoUrl": "silver-jewellery-Contemporary"
-  },
-
-
-  "Traditional": {
-    "seoText": `There's grace in everything we do. We portray the "navarasas" every day. We are all dancers. Our Mudra style features traditional dance jewellery but is not made only for dancers. Pick a piece from the style or a whole set and move through the dance of life.`,
-    "seoUrl": "silver-jewellery-traditional"
-  },
-}
 const ProductModal = (props) => {
   const dataCarousel = {
     dots: false,
@@ -54,68 +34,68 @@ const ProductModal = (props) => {
     pauseOnHover: false,
     pauseOnDotsHover: false,
     pauseOnFocus: false,
-    swipe: false,
+    swipe: false
   };
 
-  const [state, setState] = React.useState({ pagination: 4, isShowMore: true });
+  const [state, setState] = React.useState({ pagination: 4, isShowMore: true })
   const {
     data: { fadeImagessublist },
     shopByStyloriSilver,
     collectionsData,
-    // allSeo,
+    allSeo
   } = props;
 
   let _shopByData =
-    shopByStyloriSilver &&
-    shopByStyloriSilver.length > 0 &&
+    shopByStyloriSilver && shopByStyloriSilver.length > 0 &&
     shopByStyloriSilver.map((val) => {
+
+
       return {
-        img: val?.image,
-        title: val?.label,
+        img: val.image,
+        title: val.label,
         description:
-          allSeo && allSeo[val.label]
-            ? allSeo[val.label].seoText
-            : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ",
+          allSeo && allSeo[val.label] ? allSeo[val.label].seoText : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ",
         price: "98.89789",
       };
     });
 
   const handleCollectionDataMapper = (_collectiondata, fadeImagessublist) => {
-    let data = _collectiondata.data;
-    console.log(fadeImagessublist, "fadeImagessublist");
-    console.log(data, "fadeImagessublist data");
-    var _keysCollections = Object.keys(data).filter((val) => {
-      let tempdata = data[val];
-      if (tempdata.nodes.length > 0) return val;
-    });
+    let data = _collectiondata.data
 
+    console.log(data, "fadeImagessublist data")
+    var _keysCollections = Object.keys(data).filter(val => {
+      let tempdata = data[val]
+      if (tempdata.nodes.length > 0) return val
+    })
 
     let _fun = () => {
-      let _arr = [];
-      _keysCollections.map((val) => {
-        let tempdata = data ? data[val] : false;
+      let _arr = []
+      _keysCollections.map(val => {
+        let tempdata = data ? data[val] : false
         if (tempdata && tempdata.nodes.length > 0) {
-          let obj = {};
 
-          obj["img"] =
-            tempdata?.nodes[0]?.productListByProductId?.productImagesByProductId?.nodes[0] ? tempdata.nodes[0].productListByProductId.productImagesByProductId.nodes[0] : `${CDN_URL}product/575X575/productnotfound.webp`;
-          obj["title"] = tempdata.nodes[0].collectionName;
-          obj["description"] =
-            "Lorem Ipsum is simply dummy text of the printing a…rem Ipsum has been the industry's standard dummy";
-          _arr.push(obj);
+          let obj = {}
+
+          obj["img"] = tempdata.nodes[0].productListByProductId.productImagesByProductId.nodes[0]
+          obj["title"] = tempdata.nodes[0].collectionName
+          obj["description"] = "Lorem Ipsum is simply dummy text of the printing a…rem Ipsum has been the industry's standard dummy"
+          _arr.push(obj)
+
+
         }
-      });
-      return _arr;
-    };
 
-    return _fun();
+      })
+      return _arr
+    }
+
+    return _fun()
     // let _fun = () => {
     //   let _arr = []
     //   a.map(val=>{
     //   let tempdata = temp1.data[val]
     //   if(tempdata.nodes.length > 0 )
     //   {
-    //   tempdata.nodes[0].productListByProductId.productImagesByProductId.nodes.map(val=>{
+    //   tempdata.nodes[0].productListByProductId.productImagesByProductId.nodes.map(val=>{ 
     //   let obj ={}
     //   if(val) {
     //   obj["img"]=val
@@ -128,30 +108,35 @@ const ProductModal = (props) => {
     //   })
     //   return _arr
     //   }
-  };
+  }
 
   // console.log(collectionsData, collectionsData.constructor === Array,"TTTTTT")
-  let collectionData = collectionsData
-    ? collectionsData.constructor === Object &&
-      Object.keys(collectionsData).length > 0
-      ? handleCollectionDataMapper(collectionsData, fadeImagessublist)
-      : []
-    : false;
-  let pagination = collectionData
-    ? collectionData.slice(0, state.pagination)
-    : collectionData;
-  let _mapper = collectionData
-    ? pagination
-    : shopByStyloriSilver
-      ? _shopByData
-      : fadeImagessublist;
+  let collectionData = collectionsData ? collectionsData.constructor === Object && Object.keys(collectionsData).length > 0 ? handleCollectionDataMapper(collectionsData, fadeImagessublist) : [] : false
+  let pagination = collectionData ? collectionData.slice(0, state.pagination) : collectionData
+  console.log(collectionData, "collectionDatacollectionData")
+  let _mapper = collectionData ? pagination : shopByStyloriSilver ? _shopByData : fadeImagessublist;
+  let _data = _mapper ? _mapper : []
+  const classes = useStyles();
+  // alert(JSON.stringify(props.collectionsData))
+  // console.log(props.allSeo,"props.allSeoprops.allSeoprops.allSeoprops.allSeo")
 
-  // { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Contemporary.jpg", title: 'Contemporary', url: "silver-jewellery-Contemporary" },
-  // { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Everyday.jpg", title: "Everyday", url: "silver-jewellery-everyday" },
-  // { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Folklore.jpg", title: "Folklore", url: "silver-jewellery-Folklore" },
-  // { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Homepage---Category-Tile---Mudra.jpg", title: "Mudra", url: "silver-jewellery-dmudra" }
+  const paginationtoggle = () => {
 
-  let _data = [
+    if (state.pagination < collectionData.length) {
+      setState({ ...state, pagination: (state.pagination) + 4, isShowMore: true })
+    }
+    else {
+      setState({ ...state, isShowMore: false })
+    }
+  }
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
+
+  let ___data = [
     { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Everyday.jpg", title: "Everyday", url: "silver-jewellery-everyday" },
     { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Folklore.jpg", title: "Folklore", url: "silver-jewellery-folklore" },
     { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Contemporary.jpg", title: 'Contemporary', url: "silver-jewellery-contemporary" },
@@ -164,31 +149,11 @@ const ProductModal = (props) => {
       url: val.url
     })
   });
-
-  const classes = useStyles();
-  // alert(JSON.stringify(props.collectionsData))
-  // console.log(props.allSeo,"props.allSeoprops.allSeoprops.allSeoprops.allSeo")
-
-  const paginationtoggle = () => {
-    if (state.pagination < collectionData.length) {
-      setState({
-        ...state,
-        pagination: state.pagination + 4,
-        isShowMore: true,
-      });
-    } else {
-      setState({ ...state, isShowMore: false });
-    }
-  };
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
+  let mapped_ = props.homepagecollections ? _data : ___data;
   return (
     <>
       <Grid container className={classes.containerTop} justify="center">
-        {_data.map((tile) => {
+        {mapped_.map((tile) => {
           debugger
           return (
             // tile.constructor === Array &&
@@ -232,7 +197,7 @@ const ProductModal = (props) => {
                                 style={{ width: "100%" }}
                               >
                                 <img
-                                  src={injectUrl_url_construct(val)} 
+                                  src={injectUrl_url_construct(val)}
                                   style={{ width: "100%", height: "100%" }}
                                   onError={(e) => {
                                     e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg`;
