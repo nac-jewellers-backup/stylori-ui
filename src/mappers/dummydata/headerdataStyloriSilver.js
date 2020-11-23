@@ -42,25 +42,25 @@ export const subheader = {
             {
                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori+silver+MAANG+TIKKA.jpg",
                 "content": "MAANG TIKKA",
-                "url": "https://www.stylori.com/silver-maang+tikka-Bridal+Accessories-jewellery",
+                "url": "/silver-maang+tikka-Bridal+Accessories-jewellery",
             }, {
                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori+silver++OODIYANAM.jpg",
                 "content": "OODIYANAM",
-                "url": "https://www.stylori.com/silver-oddiyanam-bridal+accessories-jewellery",
+                "url": "/silver-oddiyanam-bridal+accessories-jewellery",
             }, {
                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori+silver+ARMLET.jpg",
                 "content": "ARMLET",
-                "url": "https://www.stylori.com/silver-armlet-bridal+accessories-jewellery",
+                "url": "/silver-armlet-bridal+accessories-jewellery",
             }, {
                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori+silver++HAIR+ORNAMENTS.jpg",
                 "content": "HAIR ORNAMENTS",
-                "url": "https://www.stylori.com/silver-hair+ornaments-bridal+accessories-jewellery",
+                "url": "/silver-hair+ornaments-bridal+accessories-jewellery",
             },
             {
                 "style": [
-                    { name: "Folklore", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Bridal-Accessory-Folklore.jpg", url: "https://www.stylori.com/silver-bridal+accessories-jewellery-folklore" },
-                    { name: "Traditional", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Bridal-Accessory-Traditional.jpg", url: "https://www.stylori.com/silver-bridal+accessories-jewellery-traditional" },
-                    { name: "Mudra", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Bridal-Accessory-Dmudra.jpg", url: "https://www.stylori.com/silver-bridal+accessories-jewellery-dmudra" },
+                    { name: "Folklore", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Bridal-Accessory-Folklore.jpg", url: "/silver-bridal+accessories-jewellery-folklore" },
+                    { name: "Traditional", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Bridal-Accessory-Traditional.jpg", url: "/silver-bridal+accessories-jewellery-traditional" },
+                    { name: "Mudra", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Bridal-Accessory-Dmudra.jpg", url: "/silver-bridal+accessories-jewellery-dmudra" },
                 ]
             },
 
@@ -79,54 +79,54 @@ export const subheader = {
             {
                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/STUDS.webp",
                 "content": "STUDS",
-                "url": "https://www.stylori.com/silver-studs-earrings-jewellery",
+                "url": "/silver-studs-earrings-jewellery",
             },
             {
                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/JHUMKAS.webp",
                 "content": "JHUMKAS",
-                "url": "https://www.stylori.com/silver-jhumkas+online-earrings-jewellery",
+                "url": "/silver-jhumkas+online-earrings-jewellery",
             },
             {
                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/DANGLERS+%26+DROPS.webp",
                 "content": "DANGLERS & DROPS",
-                "url": "https://www.stylori.com/silver-danglers+drops-earrings-jewellery",
+                "url": "/silver-danglers+drops-earrings-jewellery",
             },
             {
                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/HOOKS.webp",
                 "content": "HOOKS & HOOPS",
-                "url": "https://www.stylori.com/silver-hooks+hoops-earrings-jewellery",
+                "url": "/silver-hooks+hoops-earrings-jewellery",
             },
             {
                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/EAR+CUFFS.webp",
                 "content": "EAR CUFFS",
-                "url": "https://www.stylori.com/silver-ear+cuffs-earrings-jewellery",
+                "url": "/silver-ear+cuffs-earrings-jewellery",
             },
             {
                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/CHANDBALI.webp",
                 "content": "CHANDBALI",
-                "url": "https://www.stylori.com/silver-chandbali-earrings-jewellery",
+                "url": "/silver-chandbali-earrings-jewellery",
             },
             {
                 "style": [
                     {
                         name: "Everyday", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Earring-Everyday.jpg",
-                        url: "https://www.stylori.com/silver-earrings-jewellery-everyday"
+                        url: "/silver-earrings-jewellery-everyday"
                     },
                     {
                         name: "Folklore", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Earring-Folklore.jpg",
-                        url: "https://www.stylori.com/silver-earrings-jewellery-folklore"
+                        url: "/silver-earrings-jewellery-folklore"
                     },
                     {
                         name: "Contemperory", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Earring-Contemprory.jpg",
-                        url: "https://www.stylori.com/silver-earrings-jewellery-contemporary"
+                        url: "/silver-earrings-jewellery-contemporary"
                     },
                     {
                         name: "Traditional", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Earring-Traditional.jpg",
-                        url: "https://www.stylori.com/silver-earrings-jewellery-traditional"
+                        url: "/silver-earrings-jewellery-traditional"
                     },
                     {
                         name: "Mudra", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Earring-Dmudra.jpg",
-                        url: "https://www.stylori.com/silver-earrings-jewellery-dmudra"
+                        url: "/silver-earrings-jewellery-dmudra"
                     },
                 ]
             },
@@ -134,19 +134,19 @@ export const subheader = {
                 "TextPrice": [
                     {
                         "name": "Under 1500",
-                        "url": "https://www.stylori.com/silver-earrings-jewellery?startprice=0&endprice=1500"
+                        "url": "/silver-earrings-jewellery?startprice=0&endprice=1500"
                     },
                     {
                         "name": "1001 - 3000",
-                        "url": "https://www.stylori.com/silver-earrings-jewellery?startprice=1001&endprice=3000"
+                        "url": "/silver-earrings-jewellery?startprice=1001&endprice=3000"
                     },
                     {
                         "name": "3001 - 5000",
-                        "url": "https://www.stylori.com/silver-earrings-jewellery?startprice=3001&endprice=5000"
+                        "url": "/silver-earrings-jewellery?startprice=3001&endprice=5000"
                     },
                     {
                         "name": "More than 5001",
-                        "url": "https://www.stylori.com/silver-earrings-jewellery?startprice=5001&endprice=100000"
+                        "url": "/silver-earrings-jewellery?startprice=5001&endprice=100000"
 
                     }
                 ],
@@ -171,54 +171,54 @@ export const subheader = {
             {
                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/CHOKERS.webp",
                 "name": "CHOKERS",
-                "url": "https://www.stylori.com/silver-chokers-jewellery",
+                "url": "/silver-chokers-jewellery",
             },
             {
                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/SINGLE+LINE+NECKLACES.webp",
                 "name": "SINGLE LINE NECKLACES",
-                "url": "https://www.stylori.com/silver-single+line+necklaces-jewellery",
+                "url": "/silver-single+line+necklaces-jewellery",
             },
             {
                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/PENDANT+NECKLACES.webp",
                 "name": "PENDANT NECKLACES",
-                "url": "https://www.stylori.com/silver-pendant+necklaces-jewellery",
+                "url": "/silver-pendant+necklaces-jewellery",
             },
             {
                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/STATEMENT+NECKLACES+LONG.webp",
                 "name": "STATEMENT NECKLACES",
-                "url": "https://www.stylori.com/silver-statement+necklaces-jewellery",
+                "url": "/silver-statement+necklaces-jewellery",
             },
             {
                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/LAYERED+NECKLACES.webp",
                 "name": "LAYERED NECKLACES",
-                "url": "https://www.stylori.com/silver-layered+necklaces-jewellery",
+                "url": "/silver-layered+necklaces-jewellery",
             },
             {
                 "style": [
-                    { name: "Everyday", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Necklace-Everyday.jpg", url: "https://www.stylori.com/silver-necklaces-jewellery-everyday" },
-                    { name: "Folklore", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Necklace-Folklore.jpg", url: "https://www.stylori.com/silver-necklaces-jewellery-folklore" },
-                    { name: "Contemperory", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Necklace-Contemprory.jpg", url: "https://www.stylori.com/silver-necklaces-jewellery-contemporary" },
-                    { name: "Traditional", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Necklace-Traditional.jpg", url: "https://www.stylori.com/silver-necklaces-jewellery-traditional" },
-                    { name: "Mudra", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Necklace-Dmudra.jpg", url: "https://www.stylori.com/silver-necklaces-jewellery-dmudra" },
+                    { name: "Everyday", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Necklace-Everyday.jpg", url: "/silver-necklaces-jewellery-everyday" },
+                    { name: "Folklore", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Necklace-Folklore.jpg", url: "/silver-necklaces-jewellery-folklore" },
+                    { name: "Contemperory", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Necklace-Contemprory.jpg", url: "/silver-necklaces-jewellery-contemporary" },
+                    { name: "Traditional", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Necklace-Traditional.jpg", url: "/silver-necklaces-jewellery-traditional" },
+                    { name: "Mudra", img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/Necklace-Dmudra.jpg", url: "/silver-necklaces-jewellery-dmudra" },
                 ]
             },
             {
                 "TextPrice": [
                     {
                         "name": "Under 1500",
-                        "url": "https://www.stylori.com/silver-necklaces-jewellery?startprice=0&endprice=1500"
+                        "url": "/silver-necklaces-jewellery?startprice=0&endprice=1500"
                     },
                     {
                         "name": "1001 - 3000",
-                        "url": "https://www.stylori.com/silver-necklaces-jewellery?startprice=1001&endprice=3000"
+                        "url": "/silver-necklaces-jewellery?startprice=1001&endprice=3000"
                     },
                     {
                         "name": "3001 - 5000",
-                        "url": "https://www.stylori.com/silver-necklaces-jewellery?startprice=3001&endprice=5000"
+                        "url": "/silver-necklaces-jewellery?startprice=3001&endprice=5000"
                     },
                     {
                         "name": "More than 5001",
-                        "url": "https://www.stylori.com/silver-necklaces-jewellery?startprice=5001&endprice=100000"
+                        "url": "/silver-necklaces-jewellery?startprice=5001&endprice=100000"
 
                     }
                 ],
@@ -270,7 +270,7 @@ export const subheader = {
             {
                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/CHAIN+BRACELETS.webp",
                 "content": "CHAIN BRACELETS",
-                "url": "https://www.stylori.com/silver-bracelets-jewellery",
+                "url": "/silver-bracelets-jewellery",
             },
 
         ].map(val => {
@@ -1125,27 +1125,27 @@ export const menuLists = {
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/CHOKERS.webp",
                                 "content": "CHOKERS",
-                                "url": "https://www.stylori.com/silver-chokers-jewellery",
+                                "url": "/silver-chokers-jewellery",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/SINGLE+LINE+NECKLACES.webp",
                                 "content": "SINGLE LINE NECKLACES",
-                                "url": "https://www.stylori.com/silver-single+line+necklaces-jewellery",
+                                "url": "/silver-single+line+necklaces-jewellery",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/PENDANT+NECKLACES.webp",
                                 "content": "PENDANT NECKLACES",
-                                "url": "https://www.stylori.com/silver-pendant+necklaces-jewellery",
+                                "url": "/silver-pendant+necklaces-jewellery",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/STATEMENT+NECKLACES+LONG.webp",
                                 "content": "STATEMENT NECKLACES",
-                                "url": "https://www.stylori.com/silver-statement+necklaces-jewellery",
+                                "url": "/silver-statement+necklaces-jewellery",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/LAYERED+NECKLACES.webp",
                                 "content": "LAYERED NECKLACES",
-                                "url": "https://www.stylori.com/silver-layered+necklaces-jewellery",
+                                "url": "/silver-layered+necklaces-jewellery",
                             },
                             // {
                             //     "img": "https://assets-cdn.stylori.com/296x296/images/product/SR0201/SR0201-1YW.jpg",
@@ -1168,32 +1168,32 @@ export const menuLists = {
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/STUDS.webp",
                                 "content": "STUDS",
-                                "url": "https://www.stylori.com/silver-studs-earrings-jewellery",
+                                "url": "/silver-studs-earrings-jewellery",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/JHUMKAS.webp",
                                 "content": "JHUMKAS",
-                                "url": "https://www.stylori.com/silver-jhumkas+online-earrings-jewellery",
+                                "url": "/silver-jhumkas+online-earrings-jewellery",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/DANGLERS+%26+DROPS.webp",
                                 "content": "DANGLERS & DROPS",
-                                "url": "https://www.stylori.com/silver-danglers+drops-earrings-jewellery",
+                                "url": "/silver-danglers+drops-earrings-jewellery",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/HOOKS.webp",
                                 "content": "HOOKS & HOOPS",
-                                "url": "https://www.stylori.com/silver-hooks+hoops-earrings-jewellery",
+                                "url": "/silver-hooks+hoops-earrings-jewellery",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/EAR+CUFFS.webp",
                                 "content": "EAR CUFFS",
-                                "url": "https://www.stylori.com/silver-ear+cuffs-earrings-jewellery",
+                                "url": "/silver-ear+cuffs-earrings-jewellery",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/CHANDBALI.webp",
                                 "content": "CHANDBALI",
-                                "url": "https://www.stylori.com/silver-chandbali-earrings-jewellery",
+                                "url": "/silver-chandbali-earrings-jewellery",
                             },
                         ]
                     }
@@ -1256,7 +1256,7 @@ export const menuLists = {
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Jewellery+Category/Webp/CHAIN+BRACELETS.webp",
                                 "content": "CHAIN BRACELETS",
-                                "url": "https://www.stylori.com/silver-bracelets-jewellery",
+                                "url": "/silver-bracelets-jewellery",
                             },
 
                         ]
@@ -1275,22 +1275,22 @@ export const menuLists = {
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori+silver+MAANG+TIKKA.jpg",
                                 "content": "MAANG TIKKA",
-                                "url": "https://www.stylori.com/silver-maang+tikka-Bridal+Accessories-jewellery",
+                                "url": "/silver-maang+tikka-Bridal+Accessories-jewellery",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori+silver++OODIYANAM.jpg",
                                 "content": "OODIYANAM",
-                                "url": "https://www.stylori.com/silver-oddiyanam-bridal+accessories-jewellery",
+                                "url": "/silver-oddiyanam-bridal+accessories-jewellery",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori+silver+ARMLET.jpg",
                                 "content": "ARMLET",
-                                "url": "https://www.stylori.com/silver-armlet-bridal+accessories-jewellery",
+                                "url": "/silver-armlet-bridal+accessories-jewellery",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori+silver++HAIR+ORNAMENTS.jpg",
                                 "content": "HAIR ORNAMENTS",
-                                "url": "https://www.stylori.com/silver-hair+ornaments-bridal+accessories-jewellery",
+                                "url": "/silver-hair+ornaments-bridal+accessories-jewellery",
                             }
                         ]
                     }
@@ -1615,47 +1615,47 @@ export const menuLists = {
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Style+category+jpeg+W/TRADITIONAL/Jped+Web/BANGLE.jpg",
                                 "content": "Bangles",
-                                "url": "https://www.stylori.com/silver-bangles-jewellery-traditional",
+                                "url": "/silver-bangles-jewellery-traditional",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/T+Bracelets.jpg",
                                 "content": "Bracelets",
-                                "url": "https://www.stylori.com/silver-bracelets-jewellery-traditional",
+                                "url": "/silver-bracelets-jewellery-traditional",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/T-B-accessories.jpg",
                                 "content": "Bridal Accessories",
-                                "url": "https://www.stylori.com/silver-bridal+accessories-jewellery-traditional",
+                                "url": "/silver-bridal+accessories-jewellery-traditional",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Style+category+jpeg+W/TRADITIONAL/Jped+Web/EARRING.jpg",
                                 "content": "Earrings",
-                                "url": "https://www.stylori.com/silver-earrings-jewellery-traditional",
+                                "url": "/silver-earrings-jewellery-traditional",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/T-L-necklace.jpg",
                                 "content": "Long Necklace",
-                                "url": "https://www.stylori.com/silver-long+necklace-jewellery-traditional",
+                                "url": "/silver-long+necklace-jewellery-traditional",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/T-Nosepin.jpg",
                                 "content": "Nosepin",
-                                "url": "https://www.stylori.com/silver-nose+pin+online-jewellery-traditional",
+                                "url": "/silver-nose+pin+online-jewellery-traditional",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/T-pendant.jpg",
                                 "content": "Pendant",
-                                "url": "https://www.stylori.com/silver-pendants-jewellery-traditional",
+                                "url": "/silver-pendants-jewellery-traditional",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/T-rind.jpg",
                                 "content": "Rings",
-                                "url": "https://www.stylori.com/silver-rings-jewellery-traditional",
+                                "url": "/silver-rings-jewellery-traditional",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/T-s-Necklace.jpg",
                                 "content": "Short Necklace",
-                                "url": "https://www.stylori.com/silver-short+necklace-jewellery-traditional",
+                                "url": "/silver-short+necklace-jewellery-traditional",
                             },
                         ]
                     }
@@ -1674,38 +1674,38 @@ export const menuLists = {
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Style+category+jpeg+W/FOLKLORE/Jped+Web/BANGLE.jpg",
                                 "content": "Bangles",
-                                "url": "https://www.stylori.com/silver-bangles-jewellery-folklore",
+                                "url": "/silver-bangles-jewellery-folklore",
                             },
 
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/F-B-Accessories.jpg",
                                 "content": "Bridal Accessories",
-                                "url": "https://www.stylori.com/silver-bridal+accessories-jewellery-folklore",
+                                "url": "/silver-bridal+accessories-jewellery-folklore",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Style+category+jpeg+W/FOLKLORE/Jped+Web/EARRING.jpg",
                                 "content": "Earrings",
-                                "url": "https://www.stylori.com/silver-earrings-jewellery-folklore",
+                                "url": "/silver-earrings-jewellery-folklore",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/F-L-Necklace.jpg",
                                 "content": "Long Necklace",
-                                "url": "https://www.stylori.com/silver-long+necklace-jewellery-folklore",
+                                "url": "/silver-long+necklace-jewellery-folklore",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/F-Nosepin.jpg",
                                 "content": "Nosepin",
-                                "url": "https://www.stylori.com/silver-nose+pin+online-jewellery-folklore",
+                                "url": "/silver-nose+pin+online-jewellery-folklore",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/F-pendant.jpg",
                                 "content": "Pendant",
-                                "url": "https://www.stylori.com/silver-pendants-jewellery-folklore",
+                                "url": "/silver-pendants-jewellery-folklore",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Style+category+jpeg+W/FOLKLORE/Jped+Web/Ring.jpg",
                                 "content": "Rings",
-                                "url": "https://www.stylori.com/silver-rings-jewellery-folklore",
+                                "url": "/silver-rings-jewellery-folklore",
                             },
                             // {
                             //     "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Style+Category/TRADITIONAL/Webp/EARRING.webp",
@@ -1715,7 +1715,7 @@ export const menuLists = {
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/F-S-necklace.jpg",
                                 "content": "Short Necklace",
-                                "url": "https://www.stylori.com/silver-short+necklace-jewellery-folklore",
+                                "url": "/silver-short+necklace-jewellery-folklore",
                             },
                         ]
                     }
@@ -1734,13 +1734,13 @@ export const menuLists = {
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Style+category+jpeg+W/CONTEMPORARY/Jpeg+Web/BANGLE.jpg",
                                 "content": "Bangles",
-                                "url": "https://www.stylori.com/silver-bangles-jewellery-contemporary",
+                                "url": "/silver-bangles-jewellery-contemporary",
                             },
 
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/C-bracelets.jpg",
                                 "content": "Bracelets",
-                                "url": "https://www.stylori.com/silver-bracelets-jewellery-contemporary",
+                                "url": "/silver-bracelets-jewellery-contemporary",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Style+category+jpeg+W/CONTEMPORARY/Jpeg+Web/EARRING.jpg",
@@ -1750,24 +1750,24 @@ export const menuLists = {
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/C-L-necklace.jpg",
                                 "content": "Long Necklace",
-                                "url": "https://www.stylori.com/silver-long+necklace-jewellery-contemporary",
+                                "url": "/silver-long+necklace-jewellery-contemporary",
                             },
 
 
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/C-s-necklace.jpg",
                                 "content": "Short Necklace",
-                                "url": "https://www.stylori.com/silver-short+necklace-jewellery-contemporary",
+                                "url": "/silver-short+necklace-jewellery-contemporary",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/C-pendant.jpg",
                                 "content": "Pendants",
-                                "url": "https://www.stylori.com/silver-pendants-jewellery-contemporary",
+                                "url": "/silver-pendants-jewellery-contemporary",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Style+category+jpeg+W/CONTEMPORARY/Jpeg+Web/RING.jpg",
                                 "content": "Rings",
-                                "url": "https://www.stylori.com/silver-rings-jewellery-contemporary",
+                                "url": "/silver-rings-jewellery-contemporary",
                             },
                         ]
                     }
@@ -1785,27 +1785,27 @@ export const menuLists = {
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/E-s-Necklace.jpg",
                                 "content": "Short Necklace",
-                                "url": "https://www.stylori.com/silver-short+necklace-jewellery-everyday",
+                                "url": "/silver-short+necklace-jewellery-everyday",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Style+category+jpeg+W/EVERYDAY/Jped+Web/EARRING.jpg",
                                 "content": "Earring",
-                                "url": "https://www.stylori.com/silver-earrings-jewellery-everyday",
+                                "url": "/silver-earrings-jewellery-everyday",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Style+category+jpeg+W/EVERYDAY/Jped+Web/RING.jpg",
                                 "content": "Rings",
-                                "url": "https://www.stylori.com/silver-rings-jewellery-everyday",
+                                "url": "/silver-rings-jewellery-everyday",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/E-pendant.jpg",
                                 "content": "Pendants",
-                                "url": "https://www.stylori.com/silver-pendants-jewellery-everyday",
+                                "url": "/silver-pendants-jewellery-everyday",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/E-bracelets.jpg",
                                 "content": "Bracelets",
-                                "url": "https://www.stylori.com/silver-bracelets-jewellery-everyday",
+                                "url": "/silver-bracelets-jewellery-everyday",
                             },
                             // {
                             //     "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Style+Category/TRADITIONAL/Webp/EARRING.webp",
@@ -1833,25 +1833,25 @@ export const menuLists = {
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Style+category+jpeg+W/MUDRA/Jped+Web/EARRING.jpg",
                                 "content": "Earrings",
-                                "url": "https://www.stylori.com/silver-earrings-jewellery-dmudra",
+                                "url": "/silver-earrings-jewellery-dmudra",
                             },
 
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/D-L-necklace.jpg",
                                 "content": "Long Necklace",
-                                "url": "https://www.stylori.com/silver-long+necklace-jewellery-dmudra",
+                                "url": "/silver-long+necklace-jewellery-dmudra",
                             },
 
 
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/D-s-necklace.jpg",
                                 "content": "Short Necklace",
-                                "url": "https://www.stylori.com/silver-short+necklace-jewellery-dmudra",
+                                "url": "/silver-short+necklace-jewellery-dmudra",
                             },
                             {
                                 "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu+images/D-b-Accessories.jpg",
                                 "content": "Bridal Accessories",
-                                "url": "https://www.stylori.com/silver-bridal+accessories-jewellery-dmudra",
+                                "url": "/silver-bridal+accessories-jewellery-dmudra",
                             },
                             // {
                             //     "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Menu/Silver+Menu/Style+Category/TRADITIONAL/Webp/EARRING.webp",
