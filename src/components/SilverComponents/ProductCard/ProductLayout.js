@@ -108,7 +108,7 @@ class Component extends React.Component {
     // console.log(dataCard)
     // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
     return (
-      <div className={`productLayoutRoot `} style={this.props.styles}>
+      <div className={`productLayoutRoot `} style={this.props.styles}> 
         {
           <>
             {this.state.loading && <div className="overall-loaders"><div id="loadings"><img src="https://assets.stylori.com/images/static/loadingimg.gif" alt="loading..." /></div></div>}

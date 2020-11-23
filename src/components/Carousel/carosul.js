@@ -256,7 +256,7 @@ class Component extends React.Component {
         hoverlist &&
         hoverlist.map((val) => {
           return isSilver ? (
-            <div className={"subslider-carousel" + hover ? `hovereffect-silver hovereffect  ` : ""} >
+            <div className={"subslider-carousel" + hover ? `hovereffect-silver hovereffect  eff` : ""} >
               <img
                 src={val.img}
                 className="subslider-carousel-img img-responsive"

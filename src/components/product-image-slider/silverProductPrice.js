@@ -524,12 +524,12 @@ const Productprice = (
                     paddingBottom:-4
                   }}
                 >
-                  <Pricing  
+                  <Pricing   
                     // globalContext={globalContext.Globalctx}
                     // offerPrice={data[0].offerPrice}
                     offerPrice={data[0].offerPrice}
                     price={data[0].price}
-                    offerDiscount={val.offerDiscount}
+                    offerDiscount={data[0].offerDiscount}
                     withOffer={true}
                     globalContext={globalContext.Globalctx}
                   />
@@ -602,13 +602,13 @@ const Productprice = (
                             justify="center"
                             xs={4}
                           >
-                            <Wishlist
+                            <Wishlist 
                               sku={val.skuId}
                               productId={val.productId}
                               wishlist={wishlist}
                               globalContext={globalContext.Globalctx}
                               isSilver={isSilver}
-
+                              isSilverbool={true}
 
                             />
                           </Grid>

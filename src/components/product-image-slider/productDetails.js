@@ -116,10 +116,10 @@ class ProductDetails extends React.Component {
                               <div
                                 key={valueofproductdetail.name}
                                 className={`product-details ${classes.normalfontsSilver}`}
-                                style={{marginBottom:4}}
+                                style={{ marginBottom: 4 }}
                               >
                                 {" "}
-                                {valueofproductdetail.header}
+                                <span className={_isSilver && "pd_details"}>{valueofproductdetail.header}</span>
                               </div>
                               {/* SEO TEXT FOR STYLORI SILTER - COMMENTED FOR SOME RESON DON'T REMOVE IT */}
                               {/* <div
@@ -177,7 +177,7 @@ class ProductDetails extends React.Component {
                                                       <span style={{ fontSize: "12px" }}>
                                                         {" "}
                                                         {_isSilver ? (
-                                                          <span>{res.name}</span>
+                                                          <span style={{ fontSize: _isSilver && 14 }}>{res.name}</span>
                                                         ) : (
                                                             res.name
                                                           )}
@@ -311,7 +311,8 @@ class ProductDetails extends React.Component {
                                                                 {" "}
                                                                 {_isSilver ? (
                                                                   <span style={{
-                                                                    marginTop: 0
+                                                                    marginTop: 0, fontSize: _isSilver && 14,
+                                                                    marginLeft:-8
                                                                   }}>{res.details}</span>
                                                                 ) : (
                                                                     res.details
@@ -578,8 +579,8 @@ class ProductDetails extends React.Component {
                   variant="h1"
                   component="h1"
                   className={`subtabs-smrt ${_isSilver
-                      ? ` ${classes.fontsSmallScreen}`
-                      : classes.normalfonts
+                    ? ` ${classes.fontsSmallScreen}`
+                    : classes.normalfonts
                     }`}
                 >
                   {val.header}

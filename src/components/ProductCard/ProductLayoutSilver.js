@@ -132,7 +132,7 @@ class Component extends React.Component {
             <div className={`productLayoutRoot `} style={this.props.styles}>
               {
                 <>
-                  {this.props.loadingFilterCtx && (
+                  {this.props.loadingFilterCtx && ( 
                     <div className="overall-loaders">
                       <div id="loadings">
                         <img

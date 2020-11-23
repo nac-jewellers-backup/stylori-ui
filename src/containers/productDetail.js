@@ -411,7 +411,7 @@ class ProductDetail extends Component {
                 paddingRight: "5%",
                 paddingTop: "4%",
               }}
-            >
+            > 
               <Sublistcarousel
                 data={this.props.data}
                 isSilver={isSilver}

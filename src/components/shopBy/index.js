@@ -89,7 +89,7 @@ const ShopBy = (props) => {
     <Grid container xs={12} justify="space-around">
       <Grid container item xs={12} className={`${classes.shopByLabel} ${isSilver ? classes.silverLabel : ''}`} justify="center">
         <Typography variant="body1" component="div">
-          Shop by
+          SHOP BY TYPE
           </Typography>
       </Grid>
       <Grid container item xs={12} className={classes.shopbyProductCardGrid}>
