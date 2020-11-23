@@ -469,7 +469,7 @@ body {
 
 /* //:nth-child(2n) */
 .product-subhead-list span {
-    margin-top: 3px;
+    /* margin-top: 3px; */
     display: flex;
     flex: 1;
 }

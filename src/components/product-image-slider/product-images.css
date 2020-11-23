@@ -516,7 +516,7 @@ body {
 
 /* //:nth-child(2n) */
 .product-subhead-list span {
-    margin-top: 3px;
+    /* margin-top: 2px; */
     display: flex;
     flex: 1;
 }
@@ -1331,6 +1331,12 @@ body {
     border-radius: 100%;
     /* margin-bottom: 6px; */
     outline: none !important;
+}
+
+@media only screen and (max-width: 1025px) {
+    .vertical-carousel-silver {
+        width: 100% !important;
+    }
 }
 
 @media only screen and (max-width: 480px) {
