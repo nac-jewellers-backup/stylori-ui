@@ -503,7 +503,7 @@ const styles = (theme) => ({
   },
   margindek: {
     [theme.breakpoints.up("lg")]: {
-      marginRight: -34
+      marginRight: -40
     }
   }
 });
