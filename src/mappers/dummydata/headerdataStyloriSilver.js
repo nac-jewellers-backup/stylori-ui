@@ -331,21 +331,25 @@ export const subheader = {
     //         },
     //     ]
     // },
+
     'By Finish': {
         header: 'By Finish',
         name: [
             {
-                name: 'Oxidised Silver',
-                url: "/oxidised-silver-jewellery"
-            }, {
-                name: 'Gold',
-                url: "/silver-silver-jewellery"
-            }, {
-                name: 'Rose Gold',
-                url: "/rose+gold-silver-jewellery"
-            }, {
-                name: 'Dual tone',
-                url: "/dual+tone-silver-jewellery"
+                "name": "Oxidised",
+                "url": "/oxidised-silver-jewellery"
+            },
+            {
+                "name": "Gold",
+                "url": "/gold-plain+gold-silver-jewellery"
+            },
+            {
+                "name": "Rose Gold",
+                "url": "/rose+gold-rose-silver-jewellery"
+            },
+            {
+                "name": "Dual tone",
+                "url": "/dual+tone-silver-jewellery"
             },
         ]
     },
@@ -629,22 +633,21 @@ export const subheader = {
     "By Price": {
         header: "",
         name: [{
-            "content": "Under 1500",
-            "url": "/silver-jewellery?sort=Price%20Low%20to%20High&startprice=0&endprice=1500"
-        },
-        {
-            "content": "1001 - 3000",
-            "url": "/silver-jewellery?sort=Price%20Low%20to%20High&startprice=1001&endprice=3000"
-        },
-        {
-            "content": "3001 - 5000",
-            "url": "/silver-jewellery?sort=Price%20Low%20to%20High&startprice=3001&endprice=5000"
-        },
-        {
-            "content": "More than 5001",
-            "url": "/silver-jewellery?sort=Price%20Low%20to%20High&startprice=5001&endprice=3000000"
-
-        }
+                    "content": "Under 1500",
+                    "url": "/silver-jewellery?startprice=0&endprice=1500"
+                },
+                {
+                    "content": "1001 - 3000",
+                    "url": "/silver-jewellery?startprice=1001&endprice=3000"
+                },
+                {
+                    "content": "3001 - 5000",
+                    "url": "/silver-jewellery?startprice=3001&endprice=5000"
+                },
+                {
+                    "content": "More Then 5000",
+                    "url": "/silver-jewellery?startprice=5001&endprice=100000"
+                },
         ].map(val => {
             return {
                 name: val.content,
@@ -1394,7 +1397,7 @@ export const menuLists = {
                         "url": "/silver-jewellery?startprice=3001&endprice=5000"
                     },
                     {
-                        "content": "Above 5000",
+                        "content": "More Then 5000",
                         "url": "/silver-jewellery?startprice=5001&endprice=100000"
                     },
                 ],
@@ -1453,15 +1456,15 @@ export const menuLists = {
             imgContainer: {
                 "onlyText": [{
                     "content": "Oxidised",
-                    "url": "/oxidised+silver-silver-jewellery"
+                    "url": "/oxidised-silver-jewellery"
                 },
                 {
                     "content": "Gold",
-                    "url": "/silver-silver-jewellery"
+                    "url": "/gold-plain+gold-silver-jewellery"
                 },
                 {
                     "content": "Rose Gold",
-                    "url": "/rose+gold-silver-jewellery"
+                    "url": "/rose+gold-rose-silver-jewellery"
                 },
                 {
                     "content": "Dual tone",
