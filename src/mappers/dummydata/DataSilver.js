@@ -13,8 +13,9 @@ export const carouselTop = [
     settings: {
       dots: false,
       infinite: false,
-      autoplay: false,
-
+      autoplay: true,
+      infinite: true,
+      speed: 2000,
       fade: false,
       arrows: false,
       arrowsImg: false,
@@ -27,17 +28,17 @@ export const carouselTop = [
       pauseOnFocus: false,
       swipe: false
     },
-    images: [ 
+    images: [
       {
         img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Home-banner-silver.jpg",
-        mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Home-banner-silver+mobile.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Home-banner-silver+mobile.jpg",
         navigateUrl: "https://www.stylori.com/silver-jewellery"
       },
-      // {
-      //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-+-+1920x656+copy.jpg",
-      //   mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/Gold+C+stylori+-805x430.jpg",
-      //   navigateUrl: "https://www.stylori.com/goldcoins"
-      // },
+      {
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-free-shipping-m.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-free-shipping-W.jpg",
+        navigateUrl: "https://www.stylori.com/silver-jewellery"
+      },
     ],
     content: "Stylori Silver, from NAC Jewellers, is a brand of exclusive silver Jewellery for the modern woman. From dainty Everyday styles to dressy Folklore pieces, Stylori Silver Offers you hypo allergenic and stylish designs to match your versatile taste."
   }]
