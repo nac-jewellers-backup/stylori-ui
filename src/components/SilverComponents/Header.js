@@ -151,8 +151,12 @@ class Header extends Component {
         document.getElementById("topNav").style.marginTop = "-69px";
       }
       if (document.getElementById("logoImage")) {
-        document.getElementById("logoImage").style.width = "100%";
-        document.getElementById("logoImage").style.height = "70px";
+        if (this.props?.globalContext?.Globalctx?.pathName) {
+          document.getElementById("logoImage").style.width = "100%";
+          document.getElementById("logoImage").style.height = "70px";
+        } else {
+          document.getElementById("logoImage").style.width = "80%";
+        }
       }
     } else {
       if (document.getElementById("topNav")) {
@@ -160,7 +164,9 @@ class Header extends Component {
       }
       if (document.getElementById("logoImage")) {
         document.getElementById("logoImage").style.width = "100%";
-        document.getElementById("logoImage").style.height = "120px";
+        if (this.props?.globalContext?.Globalctx?.pathName) {
+          document.getElementById("logoImage").style.height = "120px";
+        }
       }
     }
   };
